@@ -1,4 +1,4 @@
-# Nynorskkurs for 9. trinn
+# Nynorskkurs for ungdomsskulen
 
 Eit statisk nettsted som let elevar arbeide med nynorsk i sitt eige tempo.
 Kurset er bygd på kompetansemåla i LK20 og følgjer gjeldande nynorskrettskriving

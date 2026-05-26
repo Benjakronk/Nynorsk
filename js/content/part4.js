@@ -493,17 +493,318 @@ Modules.register({
       ],
     },
 
+    /* ---------- Tekst 7: C.S. Lewis-inspirasjon (Sehnsucht) ---------- */
+    {
+      type: "reading",
+      title: "7. «Det vi ikkje har namn på» — inspirert av C.S. Lewis",
+      passage: `
+        <p>Det finst ei kjensle som du har hatt mange gonger, men som du kanskje aldri
+        har gitt eit namn. Ho kjem ofte når du er åleine. Ho kan kome ein søndag
+        ettermiddag, når lyset er på veg ned og du sit ved kjøkenbordet med ein kopp
+        som har vorte kald. Eller når du står ved busshaldeplassen ein vinter og ser
+        himmelen bli rosa. Eller når du les ei setning i ei bok som du aldri kjem til
+        å gløyme, sjølv om du ikkje veit kvifor.</p>
+
+        <p>Det er ein slags lengsle. Men ikkje lengsle etter noko du veit kva er. Ikkje
+        lengsle etter ein gut eller jente, eller eit kjøp, eller ein stad du har vore.
+        Det er som om noko inne i deg peikar mot ein stad, og du ikkje veit kvar staden
+        er — berre at han finst.</p>
+
+        <p>Vaksne er ofte redde for denne kjensla. Dei prøver å fylle henne med noko.
+        Dei kjøper ein ny telefon, dei flyttar, dei byrjar med yoga eller spring eit
+        maraton. Og ofte er kjensla borte for ei stund. Men ho kjem alltid att, kanskje
+        sterkare, kanskje med eit anna ansikt, men ho kjem.</p>
+
+        <p>Eg trur ikkje vi skal bli kvitt henne. Eg trur ho fortel oss noko. Ho seier
+        kanskje: «Du er meir enn det du ser. Verda er meir enn det du veit. Det du
+        leitar etter, finst, sjølv om du ikkje veit kva det er.»</p>
+
+        <p>Ein gut eg kjenner gret ein gong fordi han høyrde ein song. Han kunne ikkje
+        forklare det. Songen var ikkje sørgmodig. Han var berre vakker. Då han var
+        ferdig med å gråte, sa han: «Det var som om eg hugsa noko eg aldri hadde
+        opplevd.»</p>
+
+        <p>Slik er det. Vi hugsar ting vi ikkje har opplevd. Vi lengtar mot stader vi
+        aldri har vore. Og dersom vi tek denne kjensla på alvor — ikkje som ein
+        sjukdom som skal lækjast, men som ein peikar som vil oss noko — kan ho føre
+        oss langt.</p>
+
+        <p>Kva er det du lengtar mot, du som les dette no? Du veit kanskje ikkje. Det
+        er heilt greitt. Det er nettopp det som er poenget.</p>
+      `,
+      questions: [
+        {
+          type: "multipleChoice",
+          question: "Korleis vil forfattaren at vi skal forhalde oss til den underlege lengsla?",
+          options: [
+            "Bli kvitt henne så fort som mogleg.",
+            "Bytte henne ut med noko konkret, t.d. eit nytt kjøp.",
+            "Ta henne på alvor som noko som vil seie oss noko viktig.",
+            "Sjå på henne som ein sjukdom.",
+          ],
+          correct: 2,
+        },
+        {
+          type: "multipleChoice",
+          question: "Korleis reagerer guten på songen han høyrer?",
+          options: [
+            "Han ler og syng med.",
+            "Han græt, og seier at det var som å hugse noko han ikkje hadde opplevd.",
+            "Han slår av musikken.",
+            "Han blir sint.",
+          ],
+          correct: 1,
+        },
+        {
+          type: "freeShort",
+          question: "Kva trur du forfattaren meiner med «vi hugsar ting vi ikkje har opplevd»?",
+          modelAnswer: "Forfattaren peikar på at vi kan kjenne ein slags gjenkjenning eller heimkomstkjensle ved noko vi aldri har sett før — eit landskap, ein melodi, ei setning. Det er som om noko inne i oss veit at det vi opplever, høyrer til ein større heilskap vi ikkje har tilgang til, men som vi er ein del av.",
+        },
+        {
+          type: "freeShort",
+          question: "Har du sjølv kjent på noko liknande som det forfattaren skildrar? Skriv kort om ein situasjon — eller skriv om kvifor det er vanskeleg å setje ord på.",
+          modelAnswer: "Eit svar kan vere: Ja, eg har kjent det ein gong i fjor då eg gjekk åleine heim ein kveld og himmelen var raud. Eg vart plutseleg trist, men på ein god måte. Eg veit ikkje kva eg lengta etter, men det kjentest viktig.",
+        },
+      ],
+    },
+
+    /* ---------- Tekst 8: C.S. Lewis-inspirasjon (små val) ---------- */
+    {
+      type: "reading",
+      title: "8. «Den breie og den smale døra» — inspirert av C.S. Lewis",
+      passage: `
+        <p>Eg trudde lenge at dei store vala var dei viktige. Yrkesvalet. Ekteskapet.
+        Flyttinga. Det folk skriv om i sjølvbiografiar. Eg trudde at ein vart den ein
+        vart på grunn av få, store korsvegar — kanskje fem eller seks i eit
+        menneskeliv.</p>
+
+        <p>No er eg ikkje så sikker.</p>
+
+        <p>Eg har lagt merke til noko. Når eg ser på dei eg kjenner — dei eg verkeleg
+        kjenner — kan eg sjeldan peike på eitt val som forklarar kven dei er. Dei er
+        meir slik dei er fordi dei tusen gonger har gjort eit lite val på same måte.
+        Han som alltid seier sanninga sjølv når det er lite på spel — det er hundre
+        tusen gonger han har gjort det, ikkje éin gong. Ho som alltid finn noko
+        vennleg å seie til ein ny — det er øving. Ikkje moralsk geni. Ikkje eit stort
+        val. Tusen små.</p>
+
+        <p>Det er to dører, har eg byrja å tenkje. Den eine er brei og open. Du går
+        gjennom henne fordi det er enklast. Du seier ein liten løgn fordi det er
+        ubehageleg å seie sanninga. Du går forbi nokon som er åleine fordi det er
+        ubehageleg å gå bort til dei. Du svarar irritert fordi du er sliten. Ingen
+        ser det. Det er berre eit lite val. Du gjer det og går vidare.</p>
+
+        <p>Den andre er smal. Du går gjennom henne fordi du veit at det er rett, sjølv
+        om det er litt vondt. Du seier sanninga, sjølv når det kostar. Du går bort til
+        den som er åleine, sjølv om du skulle gått heim. Du svarar mildt, sjølv om du
+        er sliten.</p>
+
+        <p>Det merkelege er at ingen av desse vala synest store. Du tenkjer på dei i
+        to sekund. Du tenkjer kanskje at dei ikkje betyr noko.</p>
+
+        <p>Men gjer du same valet hundre tusen gonger, blir du eit menneske. Eit
+        bestemt slags menneske. Den breie døra fører til éin person. Den smale til ein
+        annan. Og ingen av dei to personane vart til på grunn av eit stort val. Dei
+        vart til på grunn av tusen små.</p>
+
+        <p>Du sit kanskje no og tenkjer: dette gjeld ikkje meg, ikkje no, ikkje i
+        kveld. Men det gjer det. Det gjer det heile tida.</p>
+      `,
+      questions: [
+        {
+          type: "multipleChoice",
+          question: "Kva trur forfattaren no formar karakteren vår mest?",
+          options: [
+            "Eit fåtal store val som yrkesval og ekteskap.",
+            "Genetikk og oppvekst.",
+            "Tusen små val vi gjer kvar dag, ofte utan å tenkje på dei.",
+            "Tilfeldigheiter vi ikkje kan styre.",
+          ],
+          correct: 2,
+        },
+        {
+          type: "multipleChoice",
+          question: "Korleis forklarar forfattaren det at somme menneske alltid finn noko vennleg å seie?",
+          options: [
+            "Dei er fødd snillare enn andre.",
+            "Det er ei øving — dei har gjort det same valet mange gonger.",
+            "Det er fordi dei har det godt sjølv.",
+            "Det er flaks.",
+          ],
+          correct: 1,
+        },
+        {
+          type: "freeShort",
+          question: "Forklar med eigne ord kva metaforen om «den breie og den smale døra» tyder.",
+          modelAnswer: "Dei to dørene står for to slags val — det lette valet, der ein gjer det som er enklast for seg sjølv i augneblinken, og det vanskelege valet, der ein gjer det som er rett sjølv om det kostar litt. Forfattaren meiner at desse to slags val, gjort hundrevis av gonger, formar oss til kven vi blir.",
+        },
+        {
+          type: "freeShort",
+          question: "Er du einig i at små val formar oss meir enn store? Grunngi standpunktet ditt.",
+          modelAnswer: "Eit døme på svar: Ja, eg trur det. Eit stort val som å velje skule kan bli endra, men måten ein behandlar andre på kvar dag bygger ein vane som er vanskeleg å snu. Eller motsett: Nei, eg trur dei store vala har størst makt, fordi dei opnar eller stengjer dører som ingen små val kan endre.",
+        },
+      ],
+    },
+
+    /* ---------- Tekst 9: C.S. Lewis-inspirasjon (tid og minne) ---------- */
+    {
+      type: "reading",
+      title: "9. «Brevet til den eg var» — inspirert av C.S. Lewis",
+      passage: `
+        <p>Eg har skrive eit brev som eg aldri kjem til å sende. Det er adressert til
+        meg sjølv — til den eg var då eg var tolv år gamal.</p>
+
+        <p>Eg skreiv at det går bra. At den dagen ho ikkje ville sitje saman med deg
+        i bussen, ho som du tenkte var beste venen din — det var ikkje fordi du var
+        vond. Det var fordi ho hadde sine eigne ting, ting du ikkje visste om. De vart
+        venner att, faktisk. Eller — kanskje ikkje slik du hadde tenkt. Men ho hugsar
+        deg. Ho har sagt det til andre.</p>
+
+        <p>Eg skreiv at det du tenkte var verda — den klassen, den skulen, dei jentene
+        — ikkje er heile verda. Det er berre ein liten flekk på eit stort kart. Du kjem
+        til å flytte. Du kjem til å møte folk som ikkje veit kven du er, og det kjem
+        til å vere fint, ikkje skummelt.</p>
+
+        <p>Eg skreiv at boka i hylla ved senga di — ho du las tre gonger fordi du ikkje
+        skjønte at det var lov å lese ho fire — den var god. Det var ikkje noko gale
+        med deg. Det finst bøker som er verde å lese ti gonger.</p>
+
+        <p>Eg skreiv at det er ingenting du må gjere fortare enn du gjer. Du tenkjer
+        kanskje at du må bli klar for noko snart — for ungdomsskulen, for vidaregåande,
+        for vaksenlivet. Du må ikkje. Du blir klar. Det skjer av seg sjølv. Det er
+        kroppen og hjernen som veks. Du treng ikkje hjelpe dei.</p>
+
+        <p>Eg skreiv at du er allereie god nok. Du må berre halde fram med å vere her.</p>
+
+        <p>Eg legg ikkje brevet i ein konvolutt. Eg veit jo at han ikkje kan nå
+        adressaten. Men eg legg han i ein skuff. For kanskje, om mange år, finn nokon
+        han. Kanskje eit barnebarn. Kanskje eg sjølv, eldre. Kanskje ein eller annan
+        som treng å lese akkurat dette, frå ein eller annan som ein gong var tolv og
+        ikkje visste.</p>
+      `,
+      questions: [
+        {
+          type: "multipleChoice",
+          question: "Kvifor sender forfattaren ikkje brevet?",
+          options: [
+            "Han har ikkje frimerke.",
+            "Han veit at brevet ikkje kan nå adressaten, som er han sjølv som tolvåring.",
+            "Han er flau over innhaldet.",
+            "Han har gløymt adressa.",
+          ],
+          correct: 1,
+        },
+        {
+          type: "multipleChoice",
+          question: "Kva for ein tone har brevet?",
+          options: [
+            "Sint og bebreidande.",
+            "Kald og distansert.",
+            "Mild, trøystande og varm.",
+            "Spøkefull og ironisk.",
+          ],
+          correct: 2,
+        },
+        {
+          type: "freeShort",
+          question: "Kva slags brev ville du sjølv ha skrive til deg sjølv for tre år sidan? Skriv tre setningar.",
+          modelAnswer: "Eit døme: «Du treng ikkje vere så redd for å seie noko feil. Folk hugsar ikkje halvparten av det du seier — dei hugsar korleis du fekk dei til å kjenne seg. Den eine venen du tenkte du hadde mista, kjem til å vere venen din om to år.»",
+        },
+        {
+          type: "freeShort",
+          question: "Kva tyder linja «du er allereie god nok» i denne samanhengen?",
+          modelAnswer: "Forfattaren prøver å fortelje tolvåringen at han eller ho ikkje treng å bli ein annan person for å vere verdt noko. Ein treng ikkje gjere alt rett, ikkje vere som dei andre, ikkje skunde seg å bli vaksen. Det å vere den ein er, der ein er, er nok.",
+        },
+      ],
+    },
+
+    /* ---------- Tekst 10: C.S. Lewis-inspirasjon (venting) ---------- */
+    {
+      type: "reading",
+      title: "10. «Om å vente» — inspirert av C.S. Lewis",
+      passage: `
+        <p>Eg er ikkje god til å vente. Ingen er det, trur eg, sjølv om somme later som
+        dei er.</p>
+
+        <p>Når eg er på legevakta og ventar i to timar, blir eg sint på alle. På
+        sjukepleiarane. På han som kom inn etter meg. På meg sjølv, fordi eg gjekk dit.
+        Det er ein slags krenking, å vente, eit slags vondt minutt etter minutt.</p>
+
+        <p>Men eg har lagt merke til noko underleg. Det er to slags venting.</p>
+
+        <p>Den eine er den eg gjorde på legevakta. Ho er passiv. Eg sit, eg er irritert,
+        eg tek opp telefonen, eg legg han frå meg. Ingenting skjer i meg. Tida går
+        utan å skape noko. Når eg endeleg blir kalla inn, går eg ut att etter tjue
+        minutt med eit plaster, og kjem heim like tom som då eg drog.</p>
+
+        <p>Den andre slags venting er ulik. Eg har venta slik ein gong, då bestemor låg
+        for døden. Vi sat ved sengekanten. Vi visste ikkje når det skulle skje. Det
+        kunne vere ein time eller tre dagar. Eg sat der med mor, og eg sat med tante,
+        og eg sat for det meste åleine om natta. Og eg venta. Men noko skjedde i meg
+        medan eg venta. Eg byrja å sjå bestemor på ein måte eg aldri hadde sett henne
+        før. Eg såg den unge jenta i den gamle kvinna. Eg hugsa kvar gong ho hadde
+        sagt noko til meg som hadde betydd noko. Eg gret. Eg lo òg, somme tider, eg
+        veit ikkje kvifor.</p>
+
+        <p>Den ventinga gjorde meg til ein annan person. Den passive ventinga gjorde
+        meg berre sliten.</p>
+
+        <p>Eg tenkjer at det same gjeld for mykje av livet. Det er ting vi ventar på
+        fordi vi vil ha dei unna. Og det er ting vi ventar på fordi dei er noko som
+        veks i oss medan vi ventar. Det første ventet slit oss ut. Det andre — eg
+        veit ikkje noko sterkare ord — det forandrar oss.</p>
+
+        <p>Det krev ein viss type merksemd å skilje dei to. Og det krev mot å velje
+        den andre, fordi ho er meir smerteleg. Men ho gjer noko med oss.</p>
+      `,
+      questions: [
+        {
+          type: "multipleChoice",
+          question: "Korleis skildrar forfattaren dei to typane venting?",
+          options: [
+            "Begge er like vonde og slitande.",
+            "Den eine er passiv og tek krefter; den andre er smerteleg, men forandrar oss.",
+            "Den eine er kjedeleg, den andre er morosam.",
+            "Den eine skjer på legevakta, den andre på flyplass.",
+          ],
+          correct: 1,
+        },
+        {
+          type: "multipleChoice",
+          question: "Kva skjer med forfattaren medan ho/han ventar ved sengekanten til bestemor?",
+          options: [
+            "Forfattaren blir berre meir sliten.",
+            "Forfattaren søv det meste av tida.",
+            "Forfattaren byrjar å sjå bestemor på ein ny måte og blir endra av ventinga.",
+            "Forfattaren slår av telefonen og les ei bok.",
+          ],
+          correct: 2,
+        },
+        {
+          type: "freeShort",
+          question: "Kva slags venting har du sjølv vore i? Var det den eine eller den andre typen? Forklar kort.",
+          modelAnswer: "Eit døme på svar: Eg har venta på resultata frå ein test. Det var den passive sorten — eg klarte ikkje å tenkje på anna, eg gjorde ingenting nyttig, eg vart berre sliten. Eit anna døme: Eg venta heime då far min var på operasjon. Det er litt meir lik den andre slags venting — eg tenkte mykje på kva han betydde for meg, og eg vart liksom mjukare av det.",
+        },
+        {
+          type: "freeShort",
+          question: "Kvifor trur du forfattaren seier at det krev mot å velje den «andre» typen venting?",
+          modelAnswer: "Fordi den ventinga ikkje gøymer oss frå det vonde. Vi sit i det, vi kjenner det, og det gjer vondt. Det er enklare å skru på telefonen, scrolle, distrahere seg. Mot er å la ventinga gjere det ho skal — å la henne forandre oss, sjølv om vi ikkje veit nøyaktig korleis.",
+        },
+      ],
+    },
+
     /* ---------- Avsluttande refleksjon ---------- */
     {
       type: "exercise",
       exerciseType: "freeText",
       title: "Eiga reflektering",
-      question: "Kva av dei seks tekstane likte du best, og kvifor? Skriv 80–150 ord. Bruk gjerne konkrete døme frå teksten du valde.",
-      minWords: 80,
+      question: "Kva av dei ti tekstane likte du best, og kvifor? Skriv 100–200 ord. Bruk gjerne konkrete døme frå teksten du valde, og samanlikn han gjerne med éin av dei andre tekstane.",
+      minWords: 100,
       checklist: [
         "Vel ein tekst og namngi han.",
         "Forklar kva du likte ved stilen eller innhaldet.",
-        "Bruk minst eitt døme frå teksten.",
+        "Bruk minst eitt konkret døme frå teksten.",
+        "Samanlikn gjerne med ein annan av dei ti tekstane.",
         "Skriv på nynorsk.",
       ],
     },
