@@ -6,15 +6,18 @@ Modules.register({
   id: "lesing-korte-tekstar",
   part: 4,
   title: "Lesetrening — korte tekstar",
-  summary: "Seks korte tekstar i ulik stil, med forståingsspørsmål.",
-  estimatedMinutes: 45,
+  summary: "Åtte korte tekstar i ulik stil, med forståingsspørsmål.",
+  estimatedMinutes: 60,
   sections: [
     {
       type: "lesson",
       title: "Slik bruker du modulen",
       content: `
-        <p>Her får du seks korte tekstar i ulik stil. Kvar tekst er skriven med
-        inspirasjon frå ein kjend nynorskforfattar — namnet står i innleiinga.</p>
+        <p>Her får du åtte korte tekstar i ulik stil. Dei seks første er inspirerte
+        av kjende nynorskforfattarar, og dei to siste av den engelske forfattaren
+        C.S. Lewis. Namnet på inspirasjonskjelda står i tittelen.</p>
+        <p>Vil du lære meir om dei nynorske forfattarane? Sjå modulen
+        <em class="nn">Møt nynorskforfattarane</em>.</p>
         <p>Slik gjer du:</p>
         <ol>
           <li>Les teksten ein gong gjennom utan å stoppe opp.</li>
@@ -646,165 +649,433 @@ Modules.register({
       ],
     },
 
-    /* ---------- Tekst 9: C.S. Lewis-inspirasjon (tid og minne) ---------- */
-    {
-      type: "reading",
-      title: "9. «Brevet til den eg var» — inspirert av C.S. Lewis",
-      passage: `
-        <p>Eg har skrive eit brev som eg aldri kjem til å sende. Det er adressert til
-        meg sjølv — til den eg var då eg var tolv år gamal.</p>
-
-        <p>Eg skreiv at det går bra. At den dagen ho ikkje ville sitje saman med deg
-        i bussen, ho som du tenkte var beste venen din — det var ikkje fordi du var
-        vond. Det var fordi ho hadde sine eigne ting, ting du ikkje visste om. De vart
-        venner att, faktisk. Eller — kanskje ikkje slik du hadde tenkt. Men ho hugsar
-        deg. Ho har sagt det til andre.</p>
-
-        <p>Eg skreiv at det du tenkte var verda — den klassen, den skulen, dei jentene
-        — ikkje er heile verda. Det er berre ein liten flekk på eit stort kart. Du kjem
-        til å flytte. Du kjem til å møte folk som ikkje veit kven du er, og det kjem
-        til å vere fint, ikkje skummelt.</p>
-
-        <p>Eg skreiv at boka i hylla ved senga di — ho du las tre gonger fordi du ikkje
-        skjønte at det var lov å lese ho fire — den var god. Det var ikkje noko gale
-        med deg. Det finst bøker som er verde å lese ti gonger.</p>
-
-        <p>Eg skreiv at det er ingenting du må gjere fortare enn du gjer. Du tenkjer
-        kanskje at du må bli klar for noko snart — for ungdomsskulen, for vidaregåande,
-        for vaksenlivet. Du må ikkje. Du blir klar. Det skjer av seg sjølv. Det er
-        kroppen og hjernen som veks. Du treng ikkje hjelpe dei.</p>
-
-        <p>Eg skreiv at du er allereie god nok. Du må berre halde fram med å vere her.</p>
-
-        <p>Eg legg ikkje brevet i ein konvolutt. Eg veit jo at han ikkje kan nå
-        adressaten. Men eg legg han i ein skuff. For kanskje, om mange år, finn nokon
-        han. Kanskje eit barnebarn. Kanskje eg sjølv, eldre. Kanskje ein eller annan
-        som treng å lese akkurat dette, frå ein eller annan som ein gong var tolv og
-        ikkje visste.</p>
-      `,
-      questions: [
-        {
-          type: "multipleChoice",
-          question: "Kvifor sender forfattaren ikkje brevet?",
-          options: [
-            "Han har ikkje frimerke.",
-            "Han veit at brevet ikkje kan nå adressaten, som er han sjølv som tolvåring.",
-            "Han er flau over innhaldet.",
-            "Han har gløymt adressa.",
-          ],
-          correct: 1,
-        },
-        {
-          type: "multipleChoice",
-          question: "Kva for ein tone har brevet?",
-          options: [
-            "Sint og bebreidande.",
-            "Kald og distansert.",
-            "Mild, trøystande og varm.",
-            "Spøkefull og ironisk.",
-          ],
-          correct: 2,
-        },
-        {
-          type: "freeShort",
-          question: "Kva slags brev ville du sjølv ha skrive til deg sjølv for tre år sidan? Skriv tre setningar.",
-          modelAnswer: "Eit døme: «Du treng ikkje vere så redd for å seie noko feil. Folk hugsar ikkje halvparten av det du seier — dei hugsar korleis du fekk dei til å kjenne seg. Den eine venen du tenkte du hadde mista, kjem til å vere venen din om to år.»",
-        },
-        {
-          type: "freeShort",
-          question: "Kva tyder linja «du er allereie god nok» i denne samanhengen?",
-          modelAnswer: "Forfattaren prøver å fortelje tolvåringen at han eller ho ikkje treng å bli ein annan person for å vere verdt noko. Ein treng ikkje gjere alt rett, ikkje vere som dei andre, ikkje skunde seg å bli vaksen. Det å vere den ein er, der ein er, er nok.",
-        },
-      ],
-    },
-
-    /* ---------- Tekst 10: C.S. Lewis-inspirasjon (venting) ---------- */
-    {
-      type: "reading",
-      title: "10. «Om å vente» — inspirert av C.S. Lewis",
-      passage: `
-        <p>Eg er ikkje god til å vente. Ingen er det, trur eg, sjølv om somme later som
-        dei er.</p>
-
-        <p>Når eg er på legevakta og ventar i to timar, blir eg sint på alle. På
-        sjukepleiarane. På han som kom inn etter meg. På meg sjølv, fordi eg gjekk dit.
-        Det er ein slags krenking, å vente, eit slags vondt minutt etter minutt.</p>
-
-        <p>Men eg har lagt merke til noko underleg. Det er to slags venting.</p>
-
-        <p>Den eine er den eg gjorde på legevakta. Ho er passiv. Eg sit, eg er irritert,
-        eg tek opp telefonen, eg legg han frå meg. Ingenting skjer i meg. Tida går
-        utan å skape noko. Når eg endeleg blir kalla inn, går eg ut att etter tjue
-        minutt med eit plaster, og kjem heim like tom som då eg drog.</p>
-
-        <p>Den andre slags venting er ulik. Eg har venta slik ein gong, då bestemor låg
-        for døden. Vi sat ved sengekanten. Vi visste ikkje når det skulle skje. Det
-        kunne vere ein time eller tre dagar. Eg sat der med mor, og eg sat med tante,
-        og eg sat for det meste åleine om natta. Og eg venta. Men noko skjedde i meg
-        medan eg venta. Eg byrja å sjå bestemor på ein måte eg aldri hadde sett henne
-        før. Eg såg den unge jenta i den gamle kvinna. Eg hugsa kvar gong ho hadde
-        sagt noko til meg som hadde betydd noko. Eg gret. Eg lo òg, somme tider, eg
-        veit ikkje kvifor.</p>
-
-        <p>Den ventinga gjorde meg til ein annan person. Den passive ventinga gjorde
-        meg berre sliten.</p>
-
-        <p>Eg tenkjer at det same gjeld for mykje av livet. Det er ting vi ventar på
-        fordi vi vil ha dei unna. Og det er ting vi ventar på fordi dei er noko som
-        veks i oss medan vi ventar. Det første ventet slit oss ut. Det andre — eg
-        veit ikkje noko sterkare ord — det forandrar oss.</p>
-
-        <p>Det krev ein viss type merksemd å skilje dei to. Og det krev mot å velje
-        den andre, fordi ho er meir smerteleg. Men ho gjer noko med oss.</p>
-      `,
-      questions: [
-        {
-          type: "multipleChoice",
-          question: "Korleis skildrar forfattaren dei to typane venting?",
-          options: [
-            "Begge er like vonde og slitande.",
-            "Den eine er passiv og tek krefter; den andre er smerteleg, men forandrar oss.",
-            "Den eine er kjedeleg, den andre er morosam.",
-            "Den eine skjer på legevakta, den andre på flyplass.",
-          ],
-          correct: 1,
-        },
-        {
-          type: "multipleChoice",
-          question: "Kva skjer med forfattaren medan ho/han ventar ved sengekanten til bestemor?",
-          options: [
-            "Forfattaren blir berre meir sliten.",
-            "Forfattaren søv det meste av tida.",
-            "Forfattaren byrjar å sjå bestemor på ein ny måte og blir endra av ventinga.",
-            "Forfattaren slår av telefonen og les ei bok.",
-          ],
-          correct: 2,
-        },
-        {
-          type: "freeShort",
-          question: "Kva slags venting har du sjølv vore i? Var det den eine eller den andre typen? Forklar kort.",
-          modelAnswer: "Eit døme på svar: Eg har venta på resultata frå ein test. Det var den passive sorten — eg klarte ikkje å tenkje på anna, eg gjorde ingenting nyttig, eg vart berre sliten. Eit anna døme: Eg venta heime då far min var på operasjon. Det er litt meir lik den andre slags venting — eg tenkte mykje på kva han betydde for meg, og eg vart liksom mjukare av det.",
-        },
-        {
-          type: "freeShort",
-          question: "Kvifor trur du forfattaren seier at det krev mot å velje den «andre» typen venting?",
-          modelAnswer: "Fordi den ventinga ikkje gøymer oss frå det vonde. Vi sit i det, vi kjenner det, og det gjer vondt. Det er enklare å skru på telefonen, scrolle, distrahere seg. Mot er å la ventinga gjere det ho skal — å la henne forandre oss, sjølv om vi ikkje veit nøyaktig korleis.",
-        },
-      ],
-    },
-
     /* ---------- Avsluttande refleksjon ---------- */
     {
       type: "exercise",
       exerciseType: "freeText",
       title: "Eiga reflektering",
-      question: "Kva av dei ti tekstane likte du best, og kvifor? Skriv 100–200 ord. Bruk gjerne konkrete døme frå teksten du valde, og samanlikn han gjerne med éin av dei andre tekstane.",
+      question: "Kva av dei åtte tekstane likte du best, og kvifor? Skriv 100–200 ord. Bruk gjerne konkrete døme frå teksten du valde, og samanlikn han gjerne med éin av dei andre tekstane.",
       minWords: 100,
       checklist: [
         "Vel ein tekst og namngi han.",
         "Forklar kva du likte ved stilen eller innhaldet.",
         "Bruk minst eitt konkret døme frå teksten.",
-        "Samanlikn gjerne med ein annan av dei ti tekstane.",
+        "Samanlikn gjerne med ein annan av dei åtte tekstane.",
+        "Skriv på nynorsk.",
+      ],
+    },
+  ],
+});
+
+Modules.register({
+  id: "nynorskforfattarane",
+  part: 4,
+  title: "Møt nynorskforfattarane",
+  summary: "Bli kjend med ni kjende nynorskforfattarar — frå Vinje til Olaug Nilssen.",
+  estimatedMinutes: 40,
+  sections: [
+    {
+      type: "lesson",
+      title: "Kvifor møte forfattarane?",
+      content: `
+        <p>Tekstane du har lese (eller skal lese) i lesetreningsmodulane er originale —
+        eg har skrive dei sjølv — men dei er <em class="nn">inspirerte av stilen</em>
+        til ni kjende nynorskforfattarar. I denne modulen får du møte dei sjølve.</p>
+
+        <p>Vi går kronologisk — frå 1800-talet og fram til i dag. Etter kvar forfattar
+        nemner eg eit par av dei viktigaste verka deira, så du kan finne fram til
+        ekte tekstar på biblioteket eller på nettet om du blir nysgjerrig.</p>
+
+        <p>Til slutt får du ein liten quiz og ei skriveoppgåve.</p>
+      `,
+    },
+
+    {
+      type: "lesson",
+      title: "1. Aasmund Olavsson Vinje (1818–1870)",
+      content: `
+        <p><strong>Frå:</strong> Vinje i Telemark.<br>
+        <strong>Yrke:</strong> Journalist, lyrikar, reiseskildrar.</p>
+
+        <p>Vinje voks opp i fattige kår og arbeidde seg fram som lærar og seinare jurist
+        og journalist. Han var ein av dei første som tok i bruk landsmålet til Ivar
+        Aasen i praktisk skrift. I 1858 grunnla han bladet <em class="nn">Dølen</em>,
+        som han skreiv mest sjølv — eit slags eit-mannsblad fullt av reisebrev,
+        meiningar, dikt og kommentarar.</p>
+
+        <p><strong>Stil:</strong> Han var observant og ironisk, og blanda høgt og lågt
+        på ein måte som var ny i norsk skrift. Han kunne skifte frå filosofisk
+        refleksjon til ein vits om kva han åt på krua.</p>
+
+        <p><strong>Kjende verk:</strong></p>
+        <ul>
+          <li><em class="nn">Ferdaminne fraa Sumaren 1860</em> — reiseskildring frå
+              turen til kroninga av Karl 15. i Trondheim. Rekna som ein klassikar.</li>
+          <li>Dikt: <em class="nn">«Ved Rondane»</em> («No ser eg atter slike fjell og
+              dalar …»), <em class="nn">«Blåmann»</em>, <em class="nn">«Den dag kjem
+              aldri at eg deg gløymer»</em>.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Vil du lese?</strong> «Ved Rondane» er kort, vakker og finst gratis på
+          mange nettstader. Mange syng henne òg — Edvard Grieg sette musikk til.
+        </div>
+      `,
+    },
+
+    {
+      type: "lesson",
+      title: "2. Arne Garborg (1851–1924)",
+      content: `
+        <p><strong>Frå:</strong> Time på Jæren.<br>
+        <strong>Yrke:</strong> Romanforfattar, lyrikar, kulturkritikar.</p>
+
+        <p>Garborg var ein av dei sterkaste røystene i nynorsk-bevegelsen på 1800- og
+        tidleg 1900-tal. Han skreiv om bondelivet han kom frå, om reisa til byen, om
+        unge menneske som strir med tru, tvil og lengsel.</p>
+
+        <p><strong>Stil:</strong> Sosialrealistisk og psykologisk. Han var blant dei
+        første som skreiv om indre liv på nynorsk — kjenslene, tankane,
+        sjølvransakinga til vanlege folk.</p>
+
+        <p><strong>Kjende verk:</strong></p>
+        <ul>
+          <li><em class="nn">Bondestudentar</em> (1883) — roman om unge bondegutar som
+              prøver å studere seg fram i byen.</li>
+          <li><em class="nn">Trætte Mænd</em> (1891) — roman om livskrise.</li>
+          <li><em class="nn">Fred</em> (1892) — roman om religiøs uro.</li>
+          <li><em class="nn">Haugtussa</em> (1895) — diktsyklus om jenta Veslemøy, som
+              har synske evner. Edvard Grieg tonsette delar av han.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Vil du lese?</strong> Diktet <em class="nn">«Du ser meg ikkje»</em> frå
+          Haugtussa er ein god start. Garborgs gard på Jæren — Knudaheio — er i dag
+          eit museum.
+        </div>
+      `,
+    },
+
+    {
+      type: "lesson",
+      title: "3. Olav Duun (1876–1939)",
+      content: `
+        <p><strong>Frå:</strong> Jøa i Namdalen (Trøndelag).<br>
+        <strong>Yrke:</strong> Lærar og romanforfattar.</p>
+
+        <p>Duun voks opp på ein liten øy ved kysten og bar med seg heile livet språket
+        og forteljingane derifrå. Hovudverket hans er ein svær slektsroman om
+        Juvik-folket, ein gard ved kysten i Trøndelag, gjennom mange generasjonar.</p>
+
+        <p><strong>Stil:</strong> Episk og dramatisk. Duun skreiv om sterke karakterar
+        som strir med naturen, med sine eigne kjensler og med lagnaden. Bøkene hans
+        kan minne litt om islandsk sagalitteratur — det er liv og død og kamp.</p>
+
+        <p><strong>Kjende verk:</strong></p>
+        <ul>
+          <li><em class="nn">Juvikfolket</em> (1918–1923, seks band) — slektsroman frå
+              kysten. Rekna som eit av dei store norske romanverka.</li>
+          <li><em class="nn">Medmenneske</em> (1929) — roman om val og samvit.</li>
+          <li><em class="nn">Ragnhild</em> (1931).</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Visste du?</strong> Olav Duun vart fleire gonger nominert til
+          Nobelprisen i litteratur, men fekk han aldri.
+        </div>
+      `,
+    },
+
+    {
+      type: "lesson",
+      title: "4. Tarjei Vesaas (1897–1970)",
+      content: `
+        <p><strong>Frå:</strong> Vinje i Telemark.<br>
+        <strong>Yrke:</strong> Romanforfattar og lyrikar.</p>
+
+        <p>Tarjei Vesaas voks opp på ein gard og budde mesteparten av livet i bygda si.
+        Han har skrive nokre av dei mest leste romanane på nynorsk i det 20. hundreåret.
+        Han var gift med lyrikaren Halldis Moren Vesaas.</p>
+
+        <p><strong>Stil:</strong> Sparsom, poetisk, symbolsk. Vesaas brukar enkle ord
+        og korte setningar, men det han skriv om er ofte djupt — frykt, einsemd,
+        venskap, naturen som spegel for menneskesinnet.</p>
+
+        <p><strong>Kjende verk:</strong></p>
+        <ul>
+          <li><em class="nn">Is-slottet</em> (1963) — kort roman om to jenter og eit
+              dramatisk møte med naturen. Fekk Nordisk råds litteraturpris i 1964.</li>
+          <li><em class="nn">Fuglane</em> (1957) — roman om den lett utviklingshemma
+              Mattis.</li>
+          <li><em class="nn">Kimen</em> (1940) — symbolladd roman skriven under
+              andre verdskrigen.</li>
+          <li><em class="nn">Vindane</em> (1952) — diktsamling.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Vil du lese?</strong> <em class="nn">Is-slottet</em> er kort (omtrent
+          200 sider), den er omsett til mange språk, og opningskapitla er nokre av dei
+          finaste i norsk litteratur.
+        </div>
+      `,
+    },
+
+    {
+      type: "lesson",
+      title: "5. Halldis Moren Vesaas (1907–1995)",
+      content: `
+        <p><strong>Frå:</strong> Trysil i Innlandet.<br>
+        <strong>Yrke:</strong> Lyrikar, gjendiktar, kulturpersonlegheit.</p>
+
+        <p>Halldis Moren Vesaas debuterte tidleg og vart raskt ein av dei viktigaste
+        lyrikarane i si tid. Ho var gift med Tarjei Vesaas og budde med han i Telemark,
+        men forfattarskapen hennar var sjølvstendig og kraftig.</p>
+
+        <p><strong>Stil:</strong> Lyrisk og varm, men òg modig. Ho skreiv om kvinneliv,
+        om kjærleik og familie, om krig og om det daglege. Mange av dikta hennar har
+        ein eigen, stille kraft.</p>
+
+        <p><strong>Kjende verk:</strong></p>
+        <ul>
+          <li><em class="nn">Harpe og dolk</em> (1929) — debutsamling.</li>
+          <li><em class="nn">Strender</em> (1933) — diktsamling.</li>
+          <li><em class="nn">Tung tids tale</em> (1945) — dikt skrivne under krigen.
+              Tittelkvadet er eitt av dei mest kjende dikta på nynorsk.</li>
+          <li><em class="nn">I ein annan skog</em> (1955).</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Vil du lese?</strong> Tittelkvadet <em class="nn">«Tung tids tale»</em>
+          opnar med linjene «Det heiter ikkje: eg — no lenger. Heretter heiter det: vi.»
+          Det er kort, sterkt og verdt å lese i kveld.
+        </div>
+      `,
+    },
+
+    {
+      type: "lesson",
+      title: "6. Jon Fosse (1959–)",
+      content: `
+        <p><strong>Frå:</strong> Haugesund. Bur i dag dels i Oslo, dels i Hardanger.<br>
+        <strong>Yrke:</strong> Dramatikar, romanforfattar, lyrikar, omsetjar.</p>
+
+        <p>Jon Fosse fekk <strong>Nobelprisen i litteratur i 2023</strong> — den
+        fjerde norske nobelvinnaren i litteratur. Han er ein av dei mest spelte
+        samtidsdramatikarane i verda, og bøkene hans er omsette til over 50 språk.</p>
+
+        <p><strong>Stil:</strong> Minimalistisk og repetitiv. Fosse skriv lange setningar
+        utan vanlege punktum, dialogen er sparsam, det same blir sagt om att, og det
+        skjer ofte lite på overflata — men under ligg det djupe spørsmål om liv, død
+        og Gud.</p>
+
+        <p><strong>Kjende verk:</strong></p>
+        <ul>
+          <li><em class="nn">Nokon kjem til å koma</em> (1996, drama) — kanskje hans
+              mest spelte stykke.</li>
+          <li><em class="nn">Morgon og kveld</em> (2000) — kort roman om eit liv frå
+              fødsel til død.</li>
+          <li><em class="nn">Septologien</em> (2019–2021, tre band) — eit hovudverk,
+              med tittelen <em class="nn">«Det andre namnet»</em>, <em class="nn">«Eg er
+              ein annan»</em> og <em class="nn">«Eit nytt namn»</em>.</li>
+          <li><em class="nn">Trilogien</em> (2014) — fekk Nordisk råds litteraturpris.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Vil du lese?</strong> <em class="nn">Morgon og kveld</em> er kort og
+          ein god inngang. Septologien er lang, men mange seier ho er som å bu i ein
+          annan persons hovud i ei veke.
+        </div>
+      `,
+    },
+
+    {
+      type: "lesson",
+      title: "7. Frode Grytten (1960–)",
+      content: `
+        <p><strong>Frå:</strong> Odda i Hardanger.<br>
+        <strong>Yrke:</strong> Forfattar og journalist.</p>
+
+        <p>Grytten voks opp i industribygda Odda, og industriarbeidarane og
+        bygdesamfunnet pregar mykje av forfattarskapen. Han har skrive romanar,
+        kortprosa, songtekstar og kommentarar i avisene.</p>
+
+        <p><strong>Stil:</strong> Urban og kvardagsleg. Han skriv ofte korte forteljingar
+        som zoomar inn på små augneblink — ein bussreise, eit møte, ein middag — og
+        får dei til å vere viktige.</p>
+
+        <p><strong>Kjende verk:</strong></p>
+        <ul>
+          <li><em class="nn">Bikubesong</em> (1999) — roman bygd opp som mange
+              forteljingar om naboar i ein blokk i Odda. Brageprisen.</li>
+          <li><em class="nn">Flytande bjørn</em> (2005) — kortprosasamling.</li>
+          <li><em class="nn">Saganatt</em> (2011) — roman.</li>
+          <li><em class="nn">Menn som ingen treng</em> (2020).</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Vil du lese?</strong> <em class="nn">Bikubesong</em> er sett saman av
+          mange korte historier — du kan lese éi av gongen utan å miste samanhengen.
+        </div>
+      `,
+    },
+
+    {
+      type: "lesson",
+      title: "8. Marit Eikemo (1971–)",
+      content: `
+        <p><strong>Frå:</strong> Odda i Hardanger.<br>
+        <strong>Yrke:</strong> Forfattar, essayist, kulturarbeidar.</p>
+
+        <p>Marit Eikemo skriv både skjønnlitteratur og sakprosa, og har vore leiar
+        for Litteratursymposiet i Odda. Ho er kjend for å skrive nært på samtida —
+        om kva som skjer med oss og kulturen vår akkurat no.</p>
+
+        <p><strong>Stil:</strong> Essayistisk og reflekterande. Ho stiller spørsmål
+        meir enn ho gjev svar, og brukar konkrete kvardagsbilete for å snakke om
+        store spørsmål.</p>
+
+        <p><strong>Kjende verk:</strong></p>
+        <ul>
+          <li><em class="nn">Samtidsruinar</em> (2005) — sakprosa om kva som blir att
+              etter industrisamfunna.</li>
+          <li><em class="nn">Etterlatne saker</em> (2007) — roman.</li>
+          <li><em class="nn">Anbefalingar</em> (2015) — essay.</li>
+          <li><em class="nn">Alt inkludert</em> (2017) — roman.</li>
+        </ul>
+      `,
+    },
+
+    {
+      type: "lesson",
+      title: "9. Olaug Nilssen (1977–)",
+      content: `
+        <p><strong>Frå:</strong> Førde i Sunnfjord.<br>
+        <strong>Yrke:</strong> Forfattar og dramatikar.</p>
+
+        <p>Olaug Nilssen er ein av dei sterkaste samtidsstemmene på nynorsk. Ho skriv
+        ofte rått og personleg, om ting som ikkje er lette å skrive om — psykisk
+        helse, foreldreskap, kjønn, omsorg.</p>
+
+        <p><strong>Stil:</strong> Direkte, ærleg, somme gonger humoristisk, somme
+        gonger smerteleg. Ho stiller spørsmål ved kva som er «normalt» og kven som
+        får setje grensene.</p>
+
+        <p><strong>Kjende verk:</strong></p>
+        <ul>
+          <li><em class="nn">Få meg på, for faen</em> (2005) — roman om ungdom og
+              seksualitet. Vart òg film.</li>
+          <li><em class="nn">Tung tids tale</em> (2017) — sakprosa om å vere mor til
+              ein son med autisme. Brageprisen.</li>
+          <li><em class="nn">Yt etter evne, få etter behov</em> (2020) — sakprosa
+              om psykisk helse.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Visste du?</strong> Tittelen <em class="nn">«Tung tids tale»</em>
+          er ein medviten referanse til Halldis Moren Vesaas sitt dikt frå 1945.
+          Nilssen seier at det no òg er ei tung tid for mange foreldre.
+        </div>
+      `,
+    },
+
+    /* ---------- Quiz ---------- */
+    {
+      type: "exercise",
+      exerciseType: "matching",
+      question: "Para saman forfattar og verk:",
+      pairs: [
+        ["Tarjei Vesaas", "Is-slottet"],
+        ["Arne Garborg", "Haugtussa"],
+        ["Olav Duun", "Juvikfolket"],
+        ["Jon Fosse", "Septologien"],
+        ["Frode Grytten", "Bikubesong"],
+        ["Halldis Moren Vesaas", "Tung tids tale (1945)"],
+        ["A. O. Vinje", "Ferdaminne fraa Sumaren 1860"],
+      ],
+      explanation: "Olaug Nilssen brukte same tittel — <em class=\"nn\">Tung tids tale</em> — i 2017 som ein medviten referanse til diktet til Halldis Moren Vesaas frå 1945.",
+    },
+
+    {
+      type: "exercise",
+      exerciseType: "categorize",
+      question: "Sorter forfattarane etter levetid:",
+      categories: {
+        "1800-talet": ["Aasmund Olavsson Vinje", "Arne Garborg"],
+        "Tidleg 1900-tal": ["Olav Duun", "Tarjei Vesaas", "Halldis Moren Vesaas"],
+        "Samtid (fødd etter 1950)": ["Jon Fosse", "Frode Grytten", "Marit Eikemo", "Olaug Nilssen"],
+      },
+      explanation: "Garborg og Vinje var sentrale på 1800-talet då nynorsken vart bygd opp. Duun og dei to Vesaas-forfattarane prega 1900-talet. Fosse, Grytten, Eikemo og Nilssen skriv i dag.",
+    },
+
+    {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Kven fekk Nobelprisen i litteratur i 2023?",
+      options: ["Tarjei Vesaas", "Jon Fosse", "Olaug Nilssen", "Olav Duun"],
+      correct: 1,
+      explanation: "Jon Fosse vart den fjerde norske nobelprisvinnaren i litteratur, etter Bjørnstjerne Bjørnson (1903), Knut Hamsun (1920) og Sigrid Undset (1928).",
+    },
+
+    {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Kven grunnla bladet <em class=\"nn\">Dølen</em> i 1858?",
+      options: ["Ivar Aasen", "Arne Garborg", "A. O. Vinje", "Olav Duun"],
+      correct: 2,
+      explanation: "Vinje skreiv det meste av bladet sjølv — det var nesten eit eit-mannsblad.",
+    },
+
+    {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Kva er Olav Duun mest kjend for?",
+      options: [
+        "Diktsyklusen «Haugtussa».",
+        "Slektsromanen «Juvikfolket».",
+        "Skodespelet «Nokon kjem til å koma».",
+        "Reiseskildringa «Ferdaminne».",
+      ],
+      correct: 1,
+    },
+
+    {
+      type: "exercise",
+      exerciseType: "fillIn",
+      question: "Fyll inn rett namn:",
+      items: [
+        { prompt: "___ Moren Vesaas skreiv «Tung tids tale» i 1945.", accept: ["Halldis"] },
+        { prompt: "Tarjei Vesaas fekk Nordisk råds litteraturpris i 1964 for ___.", accept: ["Is-slottet", "Isslottet"] },
+        { prompt: "Olaug Nilssen kjem frå ___ i Sunnfjord.", accept: ["Førde", "Forde"] },
+        { prompt: "Frode Gryttens roman «Bikubesong» frå ___ vann Brageprisen.", accept: ["1999"] },
+      ],
+    },
+
+    /* ---------- Avsluttande oppgåver ---------- */
+    {
+      type: "exercise",
+      exerciseType: "freeText",
+      title: "Vel ein forfattar du vil lese meir av",
+      question: "Sjå tilbake på dei ni forfattarane. Vel éin du har lyst til å lese ein ekte tekst av, og forklar kvifor. Skriv 80–150 ord.",
+      minWords: 80,
+      checklist: [
+        "Namngi forfattaren.",
+        "Nemn minst eitt konkret verk du vil lese.",
+        "Forklar kvifor (stil, tema, samanheng med tekst du las i lesetreningsmodulen, eller anna).",
+        "Skriv på nynorsk.",
+      ],
+    },
+
+    {
+      type: "exercise",
+      exerciseType: "freeText",
+      title: "Stikk innom biblioteket eller nettet",
+      question: "Finn éin ekte tekst skriven av ein av forfattarane (kan vere eit kort dikt, ein side i ei bok, eit utdrag på nettet). Skriv eit kort referat (60–120 ord) av kva teksten handla om, og samanlikn han med kva du hadde venta ut frå skildringa i denne modulen.",
+      hint: "Tips: «Ved Rondane» av Vinje, eit dikt frå «Tung tids tale» av Halldis Moren Vesaas, opningskapitlet i «Is-slottet» av Tarjei Vesaas — alle finst lett tilgjengelege.",
+      minWords: 60,
+      checklist: [
+        "Skriv kva tekst du har lese, og av kven.",
+        "Kort referat — kva handla teksten om?",
+        "Stemde han med det du hadde venta?",
         "Skriv på nynorsk.",
       ],
     },
