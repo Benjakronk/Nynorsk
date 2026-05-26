@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="nn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Nynorskkurs for 9. trinn</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">N</span>
+      <span class="brand-text">Nynorskkurs · 9. trinn</span>
+    </a>
+    <nav class="topnav">
+      <a href="index.html" class="active">Oversikt</a>
+      <a href="om.html">Om kurset</a>
+      <button id="data-menu-btn" class="ghost">Data ▾</button>
+    </nav>
+  </div>
+  <div id="data-menu" class="data-menu" hidden>
+    <button id="export-btn">Last ned backup (JSON)</button>
+    <label class="filebtn">
+      Last opp backup
+      <input type="file" id="import-input" accept="application/json" hidden />
+    </label>
+    <button id="reset-btn" class="danger">Nullstill all framdrift</button>
+  </div>
+</header>
+
+<main class="page">
+  <section class="hero">
+    <h1>Lær nynorsk på din eigen måte</h1>
+    <p class="lede">
+      Eit kurs i tre delar: <strong>språkhistorie og debatt</strong>,
+      <strong>grammatikk og skriveregler</strong>, og
+      <strong>skriving og tekstarbeid</strong>.
+      Du vel sjølv kvar du vil byrje og kva du vil jobbe med.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num" id="stat-done">0</div>
+        <div class="stat-label">fullførte modular</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-correct">0</div>
+        <div class="stat-label">rette svar</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-texts">0</div>
+        <div class="stat-label">lagra tekstar</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="part" id="part-1">
+    <header class="part-head">
+      <span class="part-tag">Del 1</span>
+      <h2>Språkhistorie og debatt</h2>
+      <p>Korleis vart nynorsk til, og kvifor finst det to skriftspråk i Noreg i dag?</p>
+    </header>
+    <div class="modules" data-part="1"></div>
+  </section>
+
+  <section class="part" id="part-2">
+    <header class="part-head">
+      <span class="part-tag">Del 2</span>
+      <h2>Grammatikk og skriveregler</h2>
+      <p>Substantiv, verb, pronomen og dei vanlegaste fallgruvene.</p>
+    </header>
+    <div class="modules" data-part="2"></div>
+  </section>
+
+  <section class="part" id="part-3">
+    <header class="part-head">
+      <span class="part-tag">Del 3</span>
+      <h2>Skriving og tekstarbeid</h2>
+      <p>Frå korte setningar til lengre eigne tekstar på nynorsk.</p>
+    </header>
+    <div class="modules" data-part="3"></div>
+  </section>
+
+  <section class="part" id="part-4">
+    <header class="part-head">
+      <span class="part-tag">Del 4</span>
+      <h2>Lesing og tekstforståing</h2>
+      <p>Les tekstar på nynorsk og svar på spørsmål. Tekstane er inspirerte av kjende nynorskforfattarar.</p>
+    </header>
+    <div class="modules" data-part="4"></div>
+  </section>
+</main>
+
+<!-- Backup modal -->
+<div id="export-modal" class="modal" hidden>
+  <div class="modal-backdrop"></div>
+  <div class="modal-card" role="dialog" aria-labelledby="export-modal-title" aria-modal="true">
+    <h2 id="export-modal-title">Last ned backup</h2>
+    <p class="muted">
+      Skriv inn namn og klasse. Dette blir brukt til å namngje fila slik at læraren
+      kan kjenne att kven backupen høyrer til.
+    </p>
+    <form id="export-form">
+      <label class="field">
+        <span>Fornamn</span>
+        <input type="text" id="ef-firstname" required autocomplete="given-name" />
+      </label>
+      <label class="field">
+        <span>Etternamn</span>
+        <input type="text" id="ef-lastname" required autocomplete="family-name" />
+      </label>
+      <label class="field">
+        <span>Klasse</span>
+        <input type="text" id="ef-class" required placeholder="t.d. 9A" autocomplete="off" />
+      </label>
+      <div class="modal-actions">
+        <button type="button" class="btn secondary" id="ef-cancel">Avbryt</button>
+        <button type="submit" class="btn">Last ned</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer class="foot">
+  <p>Kjelder: Læreplanen i norsk (LK20) og Språkrådet sine rettskrivingsreglar for nynorsk.</p>
+</footer>
+
+<script src="js/storage.js"></script>
+<script src="js/modules.js"></script>
+<script src="js/content/part1.js"></script>
+<script src="js/content/part2.js"></script>
+<script src="js/content/part3.js"></script>
+<script src="js/content/part4.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

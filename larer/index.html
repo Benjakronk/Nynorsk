@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="nn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Lærarverktøy · Nynorskkurs</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="css/teacher.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">L</span>
+      <span class="brand-text">Lærarverktøy · Nynorskkurs</span>
+    </a>
+    <nav class="topnav">
+      <a href="../index.html">Til elevsida</a>
+    </nav>
+  </div>
+</header>
+
+<main class="teacher-layout">
+  <aside class="sidebar">
+    <div class="loader">
+      <h2>Last inn elevsvar</h2>
+      <p class="muted">
+        Be elevane laste ned backup-fila si, gi ho fila namnet
+        <code>fornamn.json</code> eller <code>fornamn-etternamn.json</code>,
+        og samle filene i ein mappe.
+      </p>
+      <button id="pick-folder" class="btn">Vel mappe …</button>
+      <label class="btn secondary filebtn">
+        Eller vel filer
+        <input type="file" id="pick-files" accept="application/json" multiple hidden />
+      </label>
+      <div id="loader-status" class="muted" style="margin-top:8px;"></div>
+    </div>
+
+    <div class="student-list" id="student-list">
+      <p class="muted small">Ingen elevar lasta inn enno.</p>
+    </div>
+  </aside>
+
+  <section class="main-pane" id="main-pane">
+    <div class="empty-state">
+      <h1>Velkommen, lærar</h1>
+      <p>Vel ein mappe med elevbackupar til venstre, så får du oversikt over kva
+         elevane har jobba med og kor langt dei har kome.</p>
+      <ul>
+        <li><strong>Mappe:</strong> Krev Chrome, Edge eller Opera (File System Access).</li>
+        <li><strong>Filer:</strong> Fungerer i alle nettlesarar — vel JSON-filer manuelt.</li>
+      </ul>
+      <p class="muted">Alt går føre seg i nettlesaren din. Ingen data blir sendt nokon stad.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Lærarverktøy for nynorskkurset · Alt køyrer lokalt i din eigen nettlesar.</p>
+</footer>
+
+<!-- Same data as the student app -->
+<script src="../js/modules.js"></script>
+<script src="../js/content/part1.js"></script>
+<script src="../js/content/part2.js"></script>
+<script src="../js/content/part3.js"></script>
+<script src="../js/content/part4.js"></script>
+<script src="js/teacher.js"></script>
+</body>
+</html>
