@@ -36,6 +36,17 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
   root.appendChild(progressWrap);
 
+  // Print / save as PDF button
+  const printRow = document.createElement("div");
+  printRow.className = "print-row no-print";
+  const printBtn = document.createElement("button");
+  printBtn.type = "button";
+  printBtn.className = "btn secondary small";
+  printBtn.textContent = "Skriv ut / lagre som PDF";
+  printBtn.addEventListener("click", () => window.print());
+  printRow.appendChild(printBtn);
+  root.appendChild(printRow);
+
   // Sections
   mod.sections.forEach(section => {
     const card = document.createElement("section");
@@ -50,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Bottom nav
   const nav = document.createElement("div");
-  nav.className = "module-nav";
+  nav.className = "module-nav no-print";
   const all = Modules.byPart(mod.part);
   const idx = all.findIndex(m => m.id === mod.id);
   const prev = idx > 0 ? all[idx - 1] : null;

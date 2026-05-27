@@ -722,6 +722,78 @@ button.ghost:hover { background: var(--bg); }
   margin-top: 18px;
 }
 
+/* Print row (button to save module as PDF) */
+.print-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 18px;
+}
+
+/* Print styles: hide UI chrome, show only lesson content */
+@media print {
+  :root {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --shadow: none;
+  }
+  html, body {
+    background: #fff;
+    color: #000;
+    font-size: 12pt;
+    line-height: 1.45;
+  }
+  .topbar, .foot, .module-nav, .module-progress, .print-row,
+  .no-print, .data-menu, .modal {
+    display: none !important;
+  }
+  .page, .page.module-page {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+  .section {
+    background: #fff;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0 0 14pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .module-page h1 { font-size: 22pt; margin-bottom: 4pt; }
+  .module-page .summary { font-size: 12pt; margin-bottom: 16pt; }
+  .section h2 { font-size: 15pt; color: #000; }
+  .section h3 { font-size: 13pt; }
+  .section .callout,
+  .reading .passage {
+    background: #f4f4f4;
+    border-left: 2pt solid #555;
+    color: #000;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .section em.nn { color: #000; font-weight: 700; }
+  .section em.bm { color: #444; font-style: italic; }
+  /* Hide interactive answer-machinery */
+  .btn, .btn-row, .feedback, .ex-tag, .hint { display: none !important; }
+  /* Make inputs/textareas look like blank writing space */
+  textarea, input[type="text"] {
+    border: 1px solid #999 !important;
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+  }
+  textarea { min-height: 80pt; }
+  .choice, .match-item, .match-target, .bucket, .pool-item {
+    background: #fff !important;
+    border: 1px solid #bbb !important;
+    color: #000 !important;
+  }
+  a { color: #000; text-decoration: none; }
+  /* Avoid splitting tables awkwardly */
+  table, tr, td, th { page-break-inside: avoid; break-inside: avoid; }
+}
+
 @media (max-width: 640px) {
   .hero h1 { font-size: 28px; }
   .matching { grid-template-columns: 1fr; }
