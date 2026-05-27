@@ -65,6 +65,13 @@ const Exercises = (() => {
     });
     root.appendChild(choices);
 
+    // Restore previous answer
+    const savedMC = Store.getModule(modId).sections[s.id];
+    if (savedMC && typeof savedMC.answer === "number" && inputs[savedMC.answer]) {
+      inputs[savedMC.answer].checked = true;
+      choices.children[savedMC.answer].classList.add("selected");
+    }
+
     const btns = el("div", { class: "btn-row" });
     const check = el("button", { class: "btn" }, "Sjekk svar");
     btns.appendChild(check);
@@ -113,6 +120,14 @@ const Exercises = (() => {
       root.appendChild(row);
     });
 
+    // Restore previous answers
+    const savedFI = Store.getModule(modId).sections[s.id];
+    if (savedFI && Array.isArray(savedFI.answer)) {
+      inputs.forEach((obj, i) => {
+        if (savedFI.answer[i] != null) obj.input.value = savedFI.answer[i];
+      });
+    }
+
     const btns = el("div", { class: "btn-row" });
     const check = el("button", { class: "btn" }, "Sjekk svar");
     btns.appendChild(check);
@@ -153,6 +168,10 @@ const Exercises = (() => {
 
     const ta = el("textarea", { rows: 2, placeholder: "Skriv setninga på nynorsk …", autocomplete: "off", spellcheck: "false" });
     root.appendChild(ta);
+
+    // Restore previous answer
+    const savedT = Store.getModule(modId).sections[s.id];
+    if (savedT && typeof savedT.answer === "string") ta.value = savedT.answer;
 
     const btns = el("div", { class: "btn-row" });
     const check = el("button", { class: "btn" }, "Sjekk svar");
@@ -201,12 +220,56 @@ const Exercises = (() => {
     const targets = el("div", { class: "targets" });
 
     let selected = null; // {kind: "pool"|"target", node, value}
+    let dragged = null;  // {node, kind, value}
+
+    function attachDrag(node, kind) {
+      node.draggable = true;
+      node.addEventListener("dragstart", e => {
+        dragged = { node, kind, value: node.textContent };
+        node.classList.add("dragging");
+        e.dataTransfer.effectAllowed = "move";
+        try { e.dataTransfer.setData("text/plain", node.textContent); } catch (err) {}
+      });
+      node.addEventListener("dragend", () => {
+        node.classList.remove("dragging");
+        dragged = null;
+      });
+    }
+
+    function makeChip(val) {
+      const chip = el("div", { class: "placed", tabindex: "0" }, val);
+      chip.addEventListener("click", e => { e.stopPropagation(); selectItem(chip, "target", chip.textContent); });
+      attachDrag(chip, "target");
+      return chip;
+    }
 
     function makePoolItem(val) {
       const it = el("div", { class: "match-item", tabindex: "0" }, val);
       it.addEventListener("click", () => selectItem(it, "pool", val));
       it.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); it.click(); } });
+      attachDrag(it, "pool");
       return it;
+    }
+
+    function dropOntoTarget(target, value, sourceNode, sourceKind) {
+      // If target already has chip, send it back to pool
+      const existing = target.querySelector(".placed");
+      if (existing) {
+        pool.appendChild(makePoolItem(existing.textContent));
+        existing.remove();
+      }
+      const slot = target.querySelector(".slot");
+      slot.innerHTML = "";
+      slot.appendChild(makeChip(value));
+      target.classList.add("filled");
+      target.classList.remove("right", "wrong");
+      if (sourceNode) {
+        const fromTarget = sourceNode.closest && sourceNode.closest(".match-target");
+        sourceNode.remove();
+        if (fromTarget && fromTarget !== target && !fromTarget.querySelector(".placed")) {
+          fromTarget.classList.remove("filled");
+        }
+      }
     }
 
     function selectItem(node, kind, value) {
@@ -275,11 +338,57 @@ const Exercises = (() => {
           root.querySelectorAll(".match-item, .match-target .placed").forEach(n => n.style.outline = "");
         }
       });
+      // Drag-and-drop on the target
+      t.addEventListener("dragover", e => {
+        if (!dragged) return;
+        e.preventDefault();
+        t.classList.add("over");
+      });
+      t.addEventListener("dragleave", () => t.classList.remove("over"));
+      t.addEventListener("drop", e => {
+        e.preventDefault();
+        t.classList.remove("over");
+        if (!dragged) return;
+        dropOntoTarget(t, dragged.value, dragged.node, dragged.kind);
+      });
       targets.appendChild(t);
+    });
+
+    // Pool is a drop zone too — drag a placed chip back to release it
+    pool.addEventListener("dragover", e => {
+      if (!dragged || dragged.kind !== "target") return;
+      e.preventDefault();
+      pool.classList.add("over");
+    });
+    pool.addEventListener("dragleave", () => pool.classList.remove("over"));
+    pool.addEventListener("drop", e => {
+      e.preventDefault();
+      pool.classList.remove("over");
+      if (!dragged || dragged.kind !== "target") return;
+      const fromTarget = dragged.node.closest(".match-target");
+      pool.appendChild(makePoolItem(dragged.value));
+      dragged.node.remove();
+      if (fromTarget && !fromTarget.querySelector(".placed")) fromTarget.classList.remove("filled");
     });
 
     const grid = el("div", { class: "matching" }, [pool, targets]);
     root.appendChild(grid);
+
+    // Restore previous placements
+    const savedM = Store.getModule(modId).sections[s.id];
+    if (savedM && savedM.answer && typeof savedM.answer === "object") {
+      Object.entries(savedM.answer).forEach(([leftVal, rightVal]) => {
+        if (!rightVal) return;
+        const target = Array.from(targets.children).find(t => t.dataset.left === leftVal);
+        if (!target) return;
+        const poolItem = Array.from(pool.children).find(c => c.textContent === rightVal);
+        if (!poolItem) return;
+        const slot = target.querySelector(".slot");
+        slot.appendChild(makeChip(rightVal));
+        target.classList.add("filled");
+        poolItem.remove();
+      });
+    }
 
     const btns = el("div", { class: "btn-row" });
     const check = el("button", { class: "btn" }, "Sjekk svar");
@@ -331,6 +440,7 @@ const Exercises = (() => {
 
     const pool = el("div", { class: "pool" });
     let selectedItem = null;
+    let draggedItem = null;
 
     function makeItem(val) {
       const it = el("div", { class: "pool-item", tabindex: "0" }, val);
@@ -345,6 +455,17 @@ const Exercises = (() => {
         }
       });
       it.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); it.click(); } });
+      it.draggable = true;
+      it.addEventListener("dragstart", e => {
+        draggedItem = it;
+        it.classList.add("dragging");
+        e.dataTransfer.effectAllowed = "move";
+        try { e.dataTransfer.setData("text/plain", val); } catch (err) {}
+      });
+      it.addEventListener("dragend", () => {
+        it.classList.remove("dragging");
+        draggedItem = null;
+      });
       return it;
     }
 
@@ -365,7 +486,37 @@ const Exercises = (() => {
         selectedItem.classList.remove("right", "wrong");
         selectedItem = null;
       });
+      b.addEventListener("dragover", e => {
+        if (!draggedItem) return;
+        e.preventDefault();
+        b.classList.add("over");
+      });
+      b.addEventListener("dragleave", () => b.classList.remove("over"));
+      b.addEventListener("drop", e => {
+        e.preventDefault();
+        b.classList.remove("over");
+        if (!draggedItem) return;
+        b.appendChild(draggedItem);
+        draggedItem.style.outline = "";
+        draggedItem.classList.remove("right", "wrong");
+      });
       buckets.appendChild(b);
+    });
+
+    // Drop on pool to send an item back
+    pool.addEventListener("dragover", e => {
+      if (!draggedItem) return;
+      e.preventDefault();
+      pool.classList.add("over");
+    });
+    pool.addEventListener("dragleave", () => pool.classList.remove("over"));
+    pool.addEventListener("drop", e => {
+      e.preventDefault();
+      pool.classList.remove("over");
+      if (!draggedItem) return;
+      pool.appendChild(draggedItem);
+      draggedItem.style.outline = "";
+      draggedItem.classList.remove("right", "wrong");
     });
 
     // Click on an item already in a bucket to send back to pool
@@ -396,9 +547,19 @@ const Exercises = (() => {
     obs.observe(buckets, { childList: true, subtree: true });
     obs.observe(pool, { childList: true });
 
-    root.appendChild(el("div", { class: "hint" }, "Vel eit ord (klikk), så klikk på den kategorien det høyrer til. Dobbeltklikk for å sende attende til samlinga."));
+    root.appendChild(el("div", { class: "hint" }, "Dra eit ord til riktig kategori, eller klikk det og deretter kategorien. Dobbeltklikk eller dra attende til samlinga for å fjerne det."));
     root.appendChild(pool);
     root.appendChild(buckets);
+
+    // Restore previous placements
+    const savedC = Store.getModule(modId).sections[s.id];
+    if (savedC && savedC.answer && typeof savedC.answer === "object") {
+      Object.entries(savedC.answer).forEach(([item, cat]) => {
+        const it = Array.from(pool.children).find(c => c.textContent === item);
+        const bucket = Array.from(buckets.children).find(b => b.dataset.category === cat);
+        if (it && bucket) bucket.appendChild(it);
+      });
+    }
 
     const btns = el("div", { class: "btn-row" });
     const check = el("button", { class: "btn" }, "Sjekk svar");
@@ -457,9 +618,16 @@ const Exercises = (() => {
     const ta = el("textarea", {
       placeholder: "Skriv her … alt blir lagra automatisk.",
       spellcheck: "false",
+      class: "no-print",
     });
     ta.value = (existing && existing.value) || "";
     root.appendChild(ta);
+
+    // Ruled writing lines that only appear in print
+    const printLines = el("div", { class: "print-only-lines", "aria-hidden": "true" });
+    const lineCount = s.minWords ? Math.max(12, Math.ceil(s.minWords / 8)) : 14;
+    for (let i = 0; i < lineCount; i++) printLines.appendChild(el("div", { class: "rule" }));
+    root.appendChild(printLines);
 
     const meta = el("div", { class: "meta" });
     const wc = el("span");
@@ -552,6 +720,21 @@ const Exercises = (() => {
       }
       root.appendChild(wrap);
     });
+
+    // Restore previous answers
+    const savedR = Store.getModule(modId).sections[s.id];
+    if (savedR && Array.isArray(savedR.answer)) {
+      inputs.forEach((item, i) => {
+        const a = savedR.answer[i];
+        if (a == null) return;
+        if (item.type === "mc" && typeof a === "number" && item.radios[a]) {
+          item.radios[a].checked = true;
+          item.choices.children[a].classList.add("selected");
+        } else if (item.type === "free" && typeof a === "string") {
+          item.ta.value = a;
+        }
+      });
+    }
 
     const btns = el("div", { class: "btn-row" });
     const check = el("button", { class: "btn" }, "Sjekk svara");

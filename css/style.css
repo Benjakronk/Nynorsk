@@ -729,6 +729,16 @@ button.ghost:hover { background: var(--bg); }
   margin-bottom: 18px;
 }
 
+/* Drag-and-drop visual cues */
+.match-item, .match-target .placed, .pool-item { cursor: grab; }
+.match-item:active, .match-target .placed:active, .pool-item:active { cursor: grabbing; }
+.match-item.dragging, .pool-item.dragging, .placed.dragging { opacity: .4; }
+.match-target.over { border-color: var(--accent); background: var(--accent-soft); border-style: solid; }
+.pool.over { outline: 2px dashed var(--accent); outline-offset: 2px; }
+
+/* Print-only writing lines for free-text (hidden on screen) */
+.print-only-lines { display: none; }
+
 /* Print styles: hide UI chrome, show only lesson content */
 @media print {
   :root {
@@ -792,6 +802,35 @@ button.ghost:hover { background: var(--bg); }
   a { color: #000; text-decoration: none; }
   /* Avoid splitting tables awkwardly */
   table, tr, td, th { page-break-inside: avoid; break-inside: avoid; }
+
+  /* Free-text: replace the editable textarea with ruled writing lines */
+  .exercise.freetext textarea,
+  .exercise.freetext .meta {
+    display: none !important;
+  }
+  .exercise.freetext .checklist {
+    background: #f7f7f7 !important;
+    border: 1px solid #ccc;
+    padding: 6pt 10pt;
+    margin-bottom: 8pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .print-only-lines {
+    display: block;
+    margin-top: 10pt;
+    page-break-inside: auto;
+  }
+  .print-only-lines .rule {
+    height: 22pt;
+    border-bottom: 1pt solid #777;
+  }
+  /* Reading: free-short subquestions also need writing space */
+  .reading .sub-q textarea {
+    min-height: 60pt;
+    background: #fff !important;
+    border: 1px solid #999 !important;
+  }
 }
 
 @media (max-width: 640px) {
