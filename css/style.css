@@ -104,6 +104,7 @@ button.ghost {
   cursor: pointer;
 }
 button.ghost:hover { background: var(--bg); }
+.data-menu[hidden] { display: none; }
 .data-menu {
   position: absolute;
   right: 24px;
