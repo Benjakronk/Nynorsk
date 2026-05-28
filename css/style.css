@@ -657,6 +657,11 @@ button.ghost:hover { background: var(--bg); }
   font-size: 13px;
   border-top: 1px solid var(--line);
 }
+.foot p { margin: 4px 0; }
+.foot .copyright {
+  font-size: 12px;
+  opacity: .8;
+}
 .loading { color: var(--ink-faint); }
 
 /* Modal */
