@@ -8,7 +8,7 @@ Eit reint statisk verktøy for å sjå over elevbackupar frå nynorskkurset.
    i Data-menyen). Dei får ein dialog som spør om fornamn, etternamn og klasse.
 2. Filnamnet blir automatisk på forma `klasse_etternamn_fornamn.json`, t.d.
    `9a_nordmann_ola.json`. Sjølve namnet og klassa ligg òg lagra inne i JSON-fila.
-3. Samle alle filene i ein mappe på maskina di.
+3. Samle alle filene i ei mappe på maskina di.
 4. Opne `larer/index.html` i nettlesaren og vel mappa (eller alle filene).
 
 Alt går føre seg lokalt i nettlesaren — ingenting blir sendt nokon stad.
@@ -21,11 +21,11 @@ Alt går føre seg lokalt i nettlesaren — ingenting blir sendt nokon stad.
 
 ## Krav
 
-- Mappevalg krev Chrome, Edge eller Opera (File System Access API).
+- Mappeval krev Chrome, Edge eller Opera (File System Access API).
 - I andre nettlesarar brukar du «Vel filer» og merkar JSON-filene manuelt.
 
 ## Filplassering
 
-Mappa `larer/` ligg ved sida av elevsida. Han brukar dei same modul-definisjonane
+Mappa `larer/` ligg ved sida av elevsida. Ho brukar dei same modul-definisjonane
 (`../js/modules.js` og `../js/content/*.js`), så fasiten er alltid i synk med
 det elevane møter.

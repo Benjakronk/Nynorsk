@@ -7,13 +7,13 @@ frå Språkrådet.
 ## Innhald
 
 - **Del 1 — Språkhistorie og debatt** (4 modular): bakgrunn før 1850, Ivar Aasen, språkstriden og samnorsk, nynorsk i dag
-- **Del 2 — Grammatikk og skriveregler** (5 modular): substantiv, verb, pronomen, adjektiv, vanlege fallgruver
+- **Del 2 — Grammatikk og skrivereglar** (5 modular): substantiv, verb, pronomen, adjektiv, vanlege fallgruver
 - **Del 3 — Skriving og tekstarbeid** (3 modular): omsetjing, korte tekstar, lengre tekstar
 
 ## Funksjonalitet
 
 - Ikkje-lineær progresjon — eleven vel sjølv modul
-- Varierte oppgåvetypar: fleirvalg, fyll inn, omsetjing, dra-og-slepp/sortering, leseoppgåver, fritekst
+- Varierte oppgåvetypar: fleirval, fyll inn, omsetjing, dra-og-slepp/sortering, leseoppgåver, fritekst
 - Automatisk fasit på objektive oppgåver
 - Eigne tekstar blir lagra i `localStorage`
 - Backup som JSON kan lastast ned og lastast opp att

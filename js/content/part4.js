@@ -24,7 +24,7 @@ Modules.register({
           <li>Les han ein gong til, no sakte og tenk gjennom kva som faktisk står der.</li>
           <li>Svar på spørsmåla. Bruk gjerne teksten medan du svarar.</li>
         </ol>
-        <p>Spørsmåla er av to typar: fleirvalg (med fasit) og friskrift (du formulerer
+        <p>Spørsmåla er av to typar: fleirval (med fasit) og friskrift (du formulerer
         sjølv eit kort svar). På friskrift kan du klikke fram eit dømesvar etter at du
         har skrive ditt eige.</p>
       `,
@@ -45,7 +45,7 @@ Modules.register({
         vaksne òg: vi gjev svar med stødig stemme, sjølv om vi berre delvis veit kva
         vi snakkar om.</p>
 
-        <p>Toget bremsar inn på Finse. «Vi er på taket av Noreg», seier konduktøren
+        <p>Toget bremsar inn på Finse. «Vi er på Noregs tak», seier konduktøren
         over høgtalaren, og folk reiser seg for å fotografere kvarandre framfor
         stasjonsskiltet. To engelskmenn står med ryggsekkar like store som dei sjølve.
         Dei skal gå over vidda til Aurland, høyrer eg — fire dagar i raude jakker
@@ -64,7 +64,7 @@ Modules.register({
         Vi ser ingen, berre stein og lav og himmel.</p>
 
         <p>Når vi når Myrdal, har guten sovna. Mora pakkar saman appelsinskal og
-        leikar. Toget rular nedover, og det luktar plutseleg sjø. Slik er Noreg: ein
+        leikar. Toget rullar nedover, og det luktar plutseleg sjø. Slik er Noreg: ein
         dag er du på vidda, neste augneblink kjenner du tang frå fjorden.</p>
       `,
       questions: [
@@ -85,7 +85,7 @@ Modules.register({
           options: [
             "Som «midt i Noreg».",
             "Som «den høgaste stasjonen i Europa».",
-            "Som «taket av Noreg».",
+            "Som «Noregs tak».",
             "Som «porten til vidda».",
           ],
           correct: 2,
@@ -93,7 +93,7 @@ Modules.register({
         {
           type: "freeShort",
           question: "Kva trur du forteljaren meiner med setninga «vi gjev svar med stødig stemme, sjølv om vi berre delvis veit kva vi snakkar om»?",
-          modelAnswer: "Forteljaren peikar på at vaksne ofte verkar sikre sjølv om dei eigentleg ikkje veit alt. Vi spelar ein rolle som kunnskapsrike for borna — og kanskje for kvarandre — sjølv om vi er meir usikre enn vi vil seie.",
+          modelAnswer: "Forteljaren peikar på at vaksne ofte verkar sikre sjølv om dei eigentleg ikkje veit alt. Vi spelar ei rolle som kunnskapsrike for borna — og kanskje for kvarandre — sjølv om vi er meir usikre enn vi vil seie.",
         },
         {
           type: "freeShort",
@@ -211,7 +211,7 @@ Modules.register({
 
         <p>Ho seier ikkje noko. Ser ut av vindauget. Marius forstår.</p>
 
-        <p>Bussen rular gjennom regnet. Forbi Coop Extra, forbi den nye blokka som dei
+        <p>Bussen rullar gjennom regnet. Forbi Coop Extra, forbi den nye blokka som dei
         reiv vekk parken for. Lina hugsar at ho leikte i den parken då ho var lita. No
         står det bygningar der, og folk bur i dei, og det er sikkert greitt for dei
         som bur der, men ho saknar parken.</p>
@@ -239,7 +239,7 @@ Modules.register({
         — Eg er hjå Marte. Eg kjem heim i kveld.<br>
         — Greitt, seier mor.</p>
 
-        <p>Stemma er liten, som om mor òg har grini.</p>
+        <p>Stemma er lita, som om mor òg har grine.</p>
 
         <p>Då dei legg på, sit Lina lenge på senga til Marte og ser ut. Det regnar enno.
         Men ho er innandørs no, og det luktar te, og det er nesten greitt.</p>
@@ -307,7 +307,7 @@ Modules.register({
 
         <p>Då eg går ut, vinkar far frå vindauget. Eg vinkar attende. Og det er ingenting
         spesielt med denne morgonen, og det er kanskje difor eg hugsar han. For det
-        fanst ein tid då slike morgonar var alle eg hadde. Ein far i kjøkenet. Eit brød.
+        fanst ei tid då slike morgonar var alle eg hadde. Ein far i kjøkenet. Eit brød.
         Eit lys på golvet. Ei mor som sov.</p>
 
         <p>Slike ting er det ikkje noko stort med, før dei er borte. Då vert dei det
@@ -344,7 +344,7 @@ Modules.register({
       type: "reading",
       title: "5. «Klassebilete» — inspirert av Olaug Nilssen",
       passage: `
-        <p>Eg har sett på det klassebilete frå 7. trinn fleire gonger denne hausten. Eg
+        <p>Eg har sett på det klassebiletet frå 7. trinn fleire gonger denne hausten. Eg
         veit ikkje kvifor. Det ligg i ein skuff på rommet mitt, saman med gamle prøver
         og eit halvbrukt notathefte. Eg drog det fram ein dag eg skulle rydde, og no
         ligg det øvst, og eg ser på det.</p>
@@ -355,7 +355,7 @@ Modules.register({
         hugsar at eg syntest var stygg, men som mor sa eg måtte ha på den dagen fordi
         alt anna var i vasken.</p>
 
-        <p>To av jentene på bilete bur ikkje i landet lenger. Familiane deira flytta.
+        <p>To av jentene på biletet bur ikkje i landet lenger. Familiane deira flytta.
         Tre av gutane går i klassen min på vidaregåande no, men vi seier ikkje hei
         lenger. Ein gut — Mikkel — døydde i ei ulukke i fjor sommar. Han står lengst
         til venstre, smiler skeivt, har på seg ei Brann-trøye.</p>
@@ -365,8 +365,8 @@ Modules.register({
         jente som hadde alt framom seg, alt ope, alt mogleg. No er eg femten, og det
         meste er framleis ope, men det er mindre ope enn det var.</p>
 
-        <p>Mor kom inn forleden då eg sat med bilete på fanget.<br>
-        — Ser du på dei gamle bilete?<br>
+        <p>Mor kom inn her om dagen då eg sat med biletet på fanget.<br>
+        — Ser du på dei gamle bileta?<br>
         — Litt.<br>
         — Var det ikkje noko du skulle gjere?<br>
         — Jo.</p>
@@ -376,13 +376,13 @@ Modules.register({
         <p>Eg trur kanskje vaksne ikkje skjønar at å sjå på eit gamalt bilete kan vere
         arbeid òg. Det er ikkje berre nostalgi. Det er noko ein gjer for å finne ut
         korleis ein er kome hit. Kor mange val og uhell og avskjeder som skal til for
-        at den jenta på bilete — ho i den stygge blå hettegenseren — blir til den jenta
+        at den jenta på biletet — ho i den stygge blå hettegenseren — blir til den jenta
         som no sit på senga si og tenkjer.</p>
       `,
       questions: [
         {
           type: "multipleChoice",
-          question: "Kvifor likte forteljaren ikkje hettegenseren ho hadde på seg på klassebilete?",
+          question: "Kvifor likte forteljaren ikkje hettegenseren ho hadde på seg på klassebiletet?",
           options: [
             "Han var for liten.",
             "Ho syntest han var stygg, men måtte ha han på fordi alt anna var i vasken.",
@@ -437,7 +437,7 @@ Modules.register({
         neppe har tenkt på lukt i det heile.</p>
 
         <p>Slik kan ei bok bli. Ho blir ikkje informasjon. Ho blir lukt og rom og kjensle.
-        Og det krev tid. Det krev at ein gjev frå seg kontrollen ein liten stund, at ein
+        Og det krev tid. Det krev at ein gjev frå seg kontrollen ei lita stund, at ein
         lar teksten skje med ein sjølv.</p>
 
         <p>Eg er ikkje sikker på at eg kan det lenger. Når eg les ein artikkel på fjorten
@@ -447,7 +447,7 @@ Modules.register({
 
         <p>Men eg meiner at vi taper noko her. Ikkje noko stort, kanskje, men noko
         presist: evna til å bli endra av ein tekst. Ein artikkel kan endre meg dersom eg
-        les han sakte, dersom eg blir ståande att i han ein stund. Dersom eg les han
+        les han sakte, dersom eg blir ståande att i han ei stund. Dersom eg les han
         raskt, blir han berre ein ting eg veit.</p>
 
         <p>Ein lærar fortalde meg ein gong at ho bad elevane sine lese same dikt tre
@@ -763,7 +763,7 @@ Modules.register({
         <p><strong>Frå:</strong> Jøa i Namdalen (Trøndelag).<br>
         <strong>Yrke:</strong> Lærar og romanforfattar.</p>
 
-        <p>Duun voks opp på ein liten øy ved kysten og bar med seg heile livet språket
+        <p>Duun voks opp på ei lita øy ved kysten og bar med seg heile livet språket
         og forteljingane derifrå. Hovudverket hans er ein svær slektsroman om
         Juvik-folket, ein gard ved kysten i Trøndelag, gjennom mange generasjonar.</p>
 
@@ -906,7 +906,7 @@ Modules.register({
         <p><strong>Kjende verk:</strong></p>
         <ul>
           <li><em class="nn">Bikubesong</em> (1999) — roman bygd opp som mange
-              forteljingar om naboar i ein blokk i Odda. Brageprisen.</li>
+              forteljingar om naboar i ei blokk i Odda. Brageprisen.</li>
           <li><em class="nn">Flytande bjørn</em> (2005) — kortprosasamling.</li>
           <li><em class="nn">Saganatt</em> (2011) — roman.</li>
           <li><em class="nn">Menn som ingen treng</em> (2020).</li>
@@ -1069,7 +1069,7 @@ Modules.register({
       type: "exercise",
       exerciseType: "freeText",
       title: "Stikk innom biblioteket eller nettet",
-      question: "Finn éin ekte tekst skriven av ein av forfattarane (kan vere eit kort dikt, ein side i ei bok, eit utdrag på nettet). Skriv eit kort referat (60–120 ord) av kva teksten handla om, og samanlikn han med kva du hadde venta ut frå skildringa i denne modulen.",
+      question: "Finn éin ekte tekst skriven av ein av forfattarane (kan vere eit kort dikt, ei side i ei bok, eit utdrag på nettet). Skriv eit kort referat (60–120 ord) av kva teksten handla om, og samanlikn han med kva du hadde venta ut frå skildringa i denne modulen.",
       hint: "Tips: «Ved Rondane» av Vinje, eit dikt frå «Tung tids tale» av Halldis Moren Vesaas, opningskapitlet i «Is-slottet» av Tarjei Vesaas — alle finst lett tilgjengelege.",
       minWords: 60,
       checklist: [
@@ -1099,7 +1099,7 @@ Modules.register({
         <p>Tekstane er svært ulike i form. Den første er ei psykologisk forteljing
         om ein heimkomst, den andre er dramatisk og handlar om eit gardsbruk i
         storm, og den tredje er ein indre tankestraum med mykje gjentaking.</p>
-        <p>Etter kvar tekst får du både fleirvalg-spørsmål og friskriftsspørsmål.</p>
+        <p>Etter kvar tekst får du både fleirvalsspørsmål og friskriftsspørsmål.</p>
       `,
     },
 
@@ -1284,7 +1284,7 @@ Modules.register({
 
         <p>Då vi var ved porten, såg eg far. Han stod midt i beitet med tre sauer rundt
         seg, og han prøvde å få dei mot huset, men dei sneia på sida. Ein låg som om
-        han var snubla i ei søkk.</p>
+        han var snubla i eit søkk.</p>
 
         <p>Bestefar gjekk rett mot far. Han ropte noko som eg ikkje høyrde, fordi
         vinden tok orda. Far snudde seg, såg han, og eg såg det — eit gløtt av kva
@@ -1464,7 +1464,7 @@ Modules.register({
         {
           type: "freeShort",
           question: "Korleis tolkar du linja «eg har vore lenger vekk enn nokon kan vite»?",
-          modelAnswer: "Sjølv om han ikkje har reist langt fysisk, har han vore på ein indre reise — han har trekt seg unna alt, tenkt mykje, kome ein heilt annan stad i hovudet sitt. Det er ein måte å seie at det viktigaste skjer i sinnet, ikkje på kartet.",
+          modelAnswer: "Sjølv om han ikkje har reist langt fysisk, har han vore på ei indre reise — han har trekt seg unna alt, tenkt mykje, kome ein heilt annan stad i hovudet sitt. Det er ein måte å seie at det viktigaste skjer i sinnet, ikkje på kartet.",
         },
       ],
     },

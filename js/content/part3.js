@@ -359,7 +359,7 @@ Modules.register({
       type: "exercise",
       exerciseType: "freeText",
       title: "Skildring — kort tekst",
-      question: "Skriv ein skildring (100–200 ord) på nynorsk av ein stad du kjenner godt. Bruk alle fem sansane minst éin gong.",
+      question: "Skriv ei skildring (100–200 ord) på nynorsk av ein stad du kjenner godt. Bruk alle fem sansane minst éin gong.",
       minWords: 100,
       checklist: [
         "Syn — kva ser du?",

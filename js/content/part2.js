@@ -1,4 +1,4 @@
-/* Del 2 — Grammatikk og skriveregler */
+/* Del 2 — Grammatikk og skrivereglar */
 
 Modules.register({
   id: "grammatikk-substantiv",
@@ -586,7 +586,7 @@ Modules.register({
 Modules.register({
   id: "grammatikk-skriveregler",
   part: 2,
-  title: "Skriveregler og vanlege fallgruver",
+  title: "Skrivereglar og vanlege fallgruver",
   summary: "Dei viktigaste skilnadene og fellene du må passe på.",
   estimatedMinutes: 25,
   sections: [
@@ -618,7 +618,7 @@ Modules.register({
         <h3>Diftongar</h3>
         <p>Mange ord har diftong på nynorsk der bokmål har monoftong:</p>
         <ul>
-          <li>bein (ben), stein (sten), bein (bein), reisa (reisa)</li>
+          <li>bein (ben), stein (sten), auge (øye), heim (hjem)</li>
           <li>raud (rød), draum (drøm), straum (strøm)</li>
           <li>høyre (høre), nøye (nøyaktig)</li>
         </ul>

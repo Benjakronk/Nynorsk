@@ -766,7 +766,7 @@ const Exercises = (() => {
         }
       });
       const summary = gradable > 0
-        ? `${right} av ${gradable} fleirvalg rett.${inputs.some(i => i.type === "free") ? " Friskriftssvara må du vurdere sjølv eller saman med lærar." : ""}`
+        ? `${right} av ${gradable} fleirval rett.${inputs.some(i => i.type === "free") ? " Friskriftssvara må du vurdere sjølv eller saman med lærar." : ""}`
         : "Svara dine er lagra. Samanlikn med dømesvara om du vil.";
       fbHolder.innerHTML = "";
       fbHolder.appendChild(feedbackEl(allRight, s.explanation || summary));

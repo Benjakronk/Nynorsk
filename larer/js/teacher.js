@@ -418,7 +418,7 @@ function showStudent(idx) {
   for (let part = 1; part <= 4; part++) {
     const mods = Modules.byPart(part);
     if (mods.length === 0) continue;
-    const partName = ["", "Del 1 · Språkhistorie og debatt", "Del 2 · Grammatikk og skriveregler", "Del 3 · Skriving og tekstarbeid", "Del 4 · Lesing og tekstforståing"][part];
+    const partName = ["", "Del 1 · Språkhistorie og debatt", "Del 2 · Grammatikk og skrivereglar", "Del 3 · Skriving og tekstarbeid", "Del 4 · Lesing og tekstforståing"][part];
     html += `<div class="part-group"><h2>${escapeHtml(partName)}</h2>`;
     mods.forEach(mod => {
       html += renderModuleBlock(mod, s.data);
