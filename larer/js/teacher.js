@@ -416,12 +416,15 @@ function showStudent(idx) {
   `;
 
   for (let part = 1; part <= 4; part++) {
-    const mods = Modules.byPart(part);
-    if (mods.length === 0) continue;
+    const groups = Modules.groupsFor(part);
+    if (groups.every(g => g.modules.length === 0)) continue;
     const partName = ["", "Del 1 · Språkhistorie og debatt", "Del 2 · Grammatikk og skrivereglar", "Del 3 · Skriving og tekstarbeid", "Del 4 · Lesing og tekstforståing"][part];
     html += `<div class="part-group"><h2>${escapeHtml(partName)}</h2>`;
-    mods.forEach(mod => {
-      html += renderModuleBlock(mod, s.data);
+    groups.forEach(({ group, modules }) => {
+      if (group) html += `<h3 class="group-head">${escapeHtml(group.title)}</h3>`;
+      modules.forEach(mod => {
+        html += renderModuleBlock(mod, s.data);
+      });
     });
     html += `</div>`;
   }
@@ -625,6 +628,8 @@ function promptText(section) {
   if (t === "translate") return `<strong>Set om:</strong> «${escapeHtml(section.source)}»`;
   if (t === "matching") return `<strong>Para saman:</strong> ${escapeHtml(stripHtml(section.question || ""))}`;
   if (t === "categorize") return `<strong>Sorter:</strong> ${escapeHtml(stripHtml(section.question || ""))}`;
+  if (t === "drill") return `<strong>Mengdetrening:</strong> ${escapeHtml(stripHtml(section.title || section.intro || ""))}`;
+  if (t === "findError") return `<strong>Finn feilen:</strong> «${escapeHtml(section.text || "")}»`;
   return escapeHtml(stripHtml(section.question || ""));
 }
 
@@ -650,6 +655,16 @@ function formatAnswer(section, answer) {
     if (typeof answer !== "object") return escapeHtml(String(answer));
     return Object.entries(answer).map(([k, v]) => `${escapeHtml(k)} → ${escapeHtml(v || "—")}`).join("; ");
   }
+  if (t === "drill") {
+    if (typeof answer !== "object" || !answer.best) return escapeHtml(String(answer));
+    const rounds = answer.rounds || 0;
+    return `Beste runde ${answer.best.right}/${answer.best.total} · siste ${answer.last ? `${answer.last.right}/${answer.last.total}` : "—"} · ${rounds} ${rounds === 1 ? "runde" : "rundar"} · ${answer.totalRight || 0} av ${answer.totalItems || 0} rett totalt`;
+  }
+  if (t === "findError") {
+    if (!Array.isArray(answer)) return escapeHtml(String(answer));
+    if (answer.length === 0) return "<em>ingen ord markerte</em>";
+    return answer.map(a => `${escapeHtml(a.token)} → <code>${escapeHtml(a.fix || "")}</code>`).join("; ");
+  }
   return escapeHtml(String(answer));
 }
 
@@ -669,6 +684,12 @@ function formatCorrect(section) {
   }
   if (t === "categorize") {
     return Object.entries(section.categories).map(([cat, items]) => `${escapeHtml(cat)}: ${items.map(escapeHtml).join(", ")}`).join(" | ");
+  }
+  if (t === "drill") {
+    return "– (tilfeldige oppgåver frå ordbanken; rekna som rett ved minst 80 % i beste runde)";
+  }
+  if (t === "findError") {
+    return (section.errors || []).map(e => `${escapeHtml(e.token)} → <code>${escapeHtml((e.accept || [])[0] || "")}</code>`).join("; ");
   }
   return "";
 }

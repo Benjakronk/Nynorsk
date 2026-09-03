@@ -17,10 +17,34 @@ function renderStats() {
 function renderParts() {
   document.querySelectorAll(".modules").forEach(container => {
     const part = parseInt(container.dataset.part, 10);
-    const mods = Modules.byPart(part);
+    const groups = Modules.groupsFor(part);
     container.innerHTML = "";
-    mods.forEach((mod, idx) => {
-      container.appendChild(renderModuleCard(mod, idx + 1));
+    let counter = 0;
+
+    if (groups.length === 1 && !groups[0].group) {
+      container.classList.remove("grouped");
+      groups[0].modules.forEach(mod => container.appendChild(renderModuleCard(mod, ++counter)));
+      return;
+    }
+
+    // Part with named groups: heading + blurb + its own grid per group.
+    container.classList.add("grouped");
+    groups.forEach(({ group, modules }) => {
+      const head = document.createElement("h3");
+      head.className = "group-head";
+      head.id = `group-${part}-${group.id}`;
+      head.textContent = group.title;
+      container.appendChild(head);
+      if (group.blurb) {
+        const blurb = document.createElement("p");
+        blurb.className = "group-blurb";
+        blurb.textContent = group.blurb;
+        container.appendChild(blurb);
+      }
+      const grid = document.createElement("div");
+      grid.className = "modules-grid";
+      modules.forEach(mod => grid.appendChild(renderModuleCard(mod, ++counter)));
+      container.appendChild(grid);
     });
   });
 }

@@ -157,6 +157,14 @@
   border-bottom: 1px solid var(--line);
   padding-bottom: 4px;
 }
+.part-group h3.group-head {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 16px 0 6px;
+}
 
 .mod-block {
   background: var(--surface);

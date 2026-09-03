@@ -777,6 +777,373 @@ const Exercises = (() => {
     return root;
   }
 
+  /* ---------- Drill (mengdetrening) ---------- */
+  function renderDrill(s, modId) {
+    const root = el("div", { class: "exercise drill" });
+    root.appendChild(tag("Mengdetrening"));
+    if (s.intro) root.appendChild(el("div", { class: "question", html: s.intro }));
+    if (s.hint) root.appendChild(el("div", { class: "hint" }, s.hint));
+
+    let pool = [];
+    try {
+      pool = (typeof Drills !== "undefined") ? Drills.build(s) : [];
+    } catch (e) {
+      console.error("Drill-feil:", e);
+    }
+    if (!pool.length) {
+      root.appendChild(el("div", { class: "feedback wrong" }, "Fann ingen oppgåver for denne treninga."));
+      return root;
+    }
+
+    const perRound = Math.min(s.perRound || 10, pool.length);
+    const recent = new Set(); // keys used in the previous full round (session only)
+    const forceKind = s.mode === "type" ? "type" : (s.mode === "choice" ? "choice" : null);
+
+    const status = el("div", { class: "drill-status no-print" });
+    const stage = el("div", { class: "drill-stage no-print" });
+    root.append(status, stage);
+
+    function renderStatus() {
+      const rec = Store.getModule(modId).sections[s.id];
+      status.innerHTML = "";
+      if (rec && rec.answer && rec.answer.best) {
+        status.appendChild(el("span", { class: "drill-best" }, `Beste runde: ${rec.answer.best.right}/${rec.answer.best.total}`));
+        status.appendChild(el("span", {}, `${rec.answer.rounds} ${rec.answer.rounds === 1 ? "runde" : "rundar"} fullført`));
+      } else {
+        status.appendChild(el("span", {}, `${pool.length} oppgåver i banken · ${perRound} per runde`));
+      }
+    }
+
+    function showStart() {
+      stage.innerHTML = "";
+      const btn = el("button", { class: "btn" }, `Start runde (${perRound} oppgåver)`);
+      btn.addEventListener("click", () => startRound(Drills.sample(pool, perRound, recent), false));
+      stage.appendChild(el("div", { class: "drill-start" }, [
+        el("p", {}, "Du får éi oppgåve om gongen. Skriv svaret og trykk Enter, eller vel eit alternativ. Etter runden kan du øve på det du bomma på."),
+        el("div", { class: "btn-row" }, btn),
+      ]));
+    }
+
+    function startRound(items, practice) {
+      if (!practice) {
+        recent.clear();
+        items.forEach(it => recent.add(it.key));
+      }
+      showItem({ items, i: 0, right: 0, streak: 0, misses: [], practice });
+    }
+
+    function showItem(state) {
+      const it = state.items[state.i];
+      const p = Drills.present(it, forceKind);
+      let phase = "answer";
+      stage.innerHTML = "";
+
+      const head = el("div", { class: "drill-head" }, [
+        el("span", { class: "drill-count" }, `${state.i + 1} / ${state.items.length}`),
+        el("span", { class: "drill-streak" }, state.streak >= 2 ? `${state.streak} på rad` : ""),
+        el("span", { class: "drill-score" }, `${state.right} rett`),
+      ]);
+      const bar = el("div", { class: "drill-bar" }, el("span", { style: `width:${(state.i / state.items.length) * 100}%` }));
+      const card = el("div", { class: "drill-card" });
+      card.appendChild(el("div", { class: "drill-prompt" }, it.prompt));
+      if (it.cue) card.appendChild(el("div", { class: "drill-cue" }, it.cue));
+
+      let getAnswer, focusEl;
+      const fb = el("div", { class: "drill-fb" });
+      const check = el("button", { class: "btn" }, "Sjekk");
+      const next = el("button", { class: "btn secondary", hidden: true }, state.i + 1 < state.items.length ? "Neste →" : "Sjå resultat");
+
+      if (p.kind === "choice") {
+        const choices = el("div", { class: "drill-choices" });
+        let chosen = -1;
+        p.options.forEach((opt, idx) => {
+          const b = el("button", { type: "button", class: "drill-choice" }, [el("kbd", {}, String(idx + 1)), " ", opt]);
+          b.addEventListener("click", () => {
+            if (phase !== "answer") return;
+            chosen = idx;
+            choices.querySelectorAll(".drill-choice").forEach(c => c.classList.remove("selected"));
+            b.classList.add("selected");
+            doCheck();
+          });
+          choices.appendChild(b);
+        });
+        card.appendChild(choices);
+        getAnswer = () => (chosen >= 0 ? p.options[chosen] : "");
+        focusEl = choices.querySelector("button");
+        check.hidden = true; // choosing checks immediately
+      } else {
+        const input = el("input", { type: "text", class: "drill-input", autocomplete: "off", autocapitalize: "off", spellcheck: "false", placeholder: "Skriv svaret …" });
+        card.appendChild(input);
+        getAnswer = () => input.value;
+        focusEl = input;
+      }
+
+      function doCheck() {
+        if (phase !== "answer") return;
+        const ans = getAnswer();
+        if (!ans.trim()) { if (focusEl) focusEl.focus(); return; }
+        phase = "checked";
+        const ok = Drills.isRight(it, ans);
+        if (ok) { state.right++; state.streak++; }
+        else { state.streak = 0; state.misses.push({ item: it, answer: ans }); }
+        card.classList.add(ok ? "right" : "wrong");
+        if (p.kind === "choice") {
+          card.querySelectorAll(".drill-choice").forEach((b, idx) => {
+            b.disabled = true;
+            if (idx === p.correct) b.classList.add("right");
+            else if (b.classList.contains("selected")) b.classList.add("wrong");
+          });
+        } else {
+          focusEl.classList.add(ok ? "right" : "wrong");
+          focusEl.readOnly = true;
+        }
+        fb.innerHTML = "";
+        const verdict = el("div", { class: "drill-verdict" }, ok ? "Rett!" : "Rett svar: ");
+        if (!ok) verdict.appendChild(el("em", { class: "nn" }, it.accept[0]));
+        fb.appendChild(verdict);
+        if (it.why) fb.appendChild(el("div", { class: "explanation", html: it.why }));
+        check.hidden = true;
+        next.hidden = false;
+        next.focus();
+      }
+      function doNext() {
+        state.i++;
+        if (state.i >= state.items.length) finish(state); else showItem(state);
+      }
+      check.addEventListener("click", doCheck);
+      next.addEventListener("click", doNext);
+      card.addEventListener("keydown", e => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          if (phase === "answer") doCheck(); else doNext();
+        } else if (p.kind === "choice" && phase === "answer" && /^[1-4]$/.test(e.key)) {
+          const b = card.querySelectorAll(".drill-choice")[Number(e.key) - 1];
+          if (b) b.click();
+        }
+      });
+      card.append(el("div", { class: "btn-row" }, [check, next]), fb);
+      stage.append(head, bar, card);
+      if (focusEl) focusEl.focus();
+    }
+
+    function finish(state) {
+      const total = state.items.length;
+      if (!state.practice) {
+        const rec = Store.getModule(modId).sections[s.id];
+        const prev = (rec && rec.answer && typeof rec.answer === "object") ? rec.answer : {};
+        const better = !prev.best || (state.right / total) > (prev.best.right / prev.best.total);
+        const best = better ? { right: state.right, total } : prev.best;
+        const answer = {
+          rounds: (prev.rounds || 0) + 1,
+          best,
+          last: { right: state.right, total },
+          totalRight: (prev.totalRight || 0) + state.right,
+          totalItems: (prev.totalItems || 0) + total,
+        };
+        Store.recordAnswer(modId, s.id, { correct: best.right / best.total >= 0.8, answer });
+        document.dispatchEvent(new CustomEvent("exercise-answered"));
+        renderStatus();
+      }
+      stage.innerHTML = "";
+      const pct = Math.round((state.right / total) * 100);
+      const sum = el("div", { class: "drill-summary" });
+      sum.appendChild(el("div", { class: "drill-result" }, `${state.right} av ${total} rett`));
+      sum.appendChild(el("div", { class: "drill-sub" },
+        pct === 100 ? "Feilfritt! Ta ei ny runde med nye ord."
+          : pct >= 80 ? "Bra jobba! Ta ei ny runde, eller øv på det du bomma på."
+          : "Øv på feila dine først, og ta så ei ny runde."));
+      if (state.misses.length) {
+        const ul = el("ul", { class: "drill-misses" });
+        state.misses.forEach(m => ul.appendChild(el("li", {}, [
+          el("span", { class: "drill-q" }, m.item.prompt + ": "),
+          el("span", { class: "drill-wrong" }, m.answer),
+          " → ",
+          el("em", { class: "nn" }, m.item.accept[0]),
+        ])));
+        sum.appendChild(ul);
+      }
+      const row = el("div", { class: "btn-row" });
+      const again = el("button", { class: "btn" }, "Ny runde");
+      again.addEventListener("click", () => startRound(Drills.sample(pool, perRound, recent), false));
+      row.appendChild(again);
+      if (state.misses.length) {
+        const prac = el("button", { class: "btn secondary" }, `Øv på feila (${state.misses.length})`);
+        prac.addEventListener("click", () => startRound(Drills.shuffle(state.misses.map(m => m.item)), true));
+        row.appendChild(prac);
+      }
+      const done = el("button", { class: "btn secondary" }, "Ferdig");
+      done.addEventListener("click", showStart);
+      row.appendChild(done);
+      sum.appendChild(row);
+      stage.appendChild(sum);
+      again.focus();
+    }
+
+    // Print-only worksheet: a fixed sample with writing space
+    const ws = el("div", { class: "drill-print print-only", "aria-hidden": "true" });
+    const ol = el("ol");
+    Drills.sample(pool, Math.min(20, pool.length), null).forEach(it => {
+      ol.appendChild(el("li", {}, [`${it.prompt}${it.cue ? " " + it.cue : ""}: `, el("span", { class: "print-blank" })]));
+    });
+    ws.appendChild(ol);
+    root.appendChild(ws);
+
+    renderStatus();
+    showStart();
+    return root;
+  }
+
+  /* ---------- Find the error (finn feilen) ---------- */
+  function tokenizeText(text) {
+    const out = [];
+    const re = /(\s+)|(\S+)/g;
+    let m;
+    while ((m = re.exec(text))) {
+      if (m[1]) { out.push({ type: "ws", text: m[1] }); continue; }
+      const mm = /^([«"“(\[]*)(.*?)([»"”)\].,;:!?…]*)$/.exec(m[2]);
+      out.push({ type: "tok", pre: mm[1], core: mm[2], post: mm[3] });
+    }
+    return out;
+  }
+
+  // Map each declared error to a token position: first unused occurrence, or the nth occurrence.
+  function resolveErrors(tokens, errors) {
+    const used = new Set();
+    const at = new Map();
+    const unresolved = [];
+    errors.forEach(err => {
+      const all = tokens.map((t, i) => (t.type === "tok" && t.core === err.token ? i : -1)).filter(i => i >= 0);
+      const pos = err.nth ? all[err.nth - 1] : all.find(i => !used.has(i));
+      if (pos == null || used.has(pos)) { unresolved.push(err); return; }
+      used.add(pos);
+      at.set(pos, err);
+    });
+    return { at, unresolved };
+  }
+
+  function renderFindError(s, modId) {
+    const root = el("div", { class: "exercise finderror" });
+    root.appendChild(tag("Finn feilen"));
+    if (s.question) root.appendChild(el("div", { class: "question", html: s.question }));
+    if (s.hint) root.appendChild(el("div", { class: "hint" }, s.hint));
+
+    const tokens = tokenizeText(s.text || "");
+    const errors = s.errors || [];
+    const { at: errAt, unresolved } = resolveErrors(tokens, errors);
+    if (unresolved.length) console.warn("Finn feilen: fann ikkje ordet i teksten:", unresolved.map(e => e.token));
+
+    const textEl = el("div", { class: "fe-text" });
+    const fixes = el("div", { class: "fe-fixes no-print" });
+    const picked = new Map(); // pos -> { btn, input, row }
+
+    function refreshFixes() {
+      fixes.innerHTML = "";
+      Array.from(picked.keys()).sort((a, b) => a - b).forEach(pos => fixes.appendChild(picked.get(pos).row));
+      fixes.hidden = picked.size === 0;
+    }
+    function resetMarks() {
+      root.classList.remove("checked");
+      tokens.forEach(t => t.btn && t.btn.classList.remove("right", "wrong", "partly", "missed"));
+      picked.forEach(p => p.input.classList.remove("right", "wrong"));
+    }
+    function toggle(pos, btn, initialFix) {
+      if (picked.has(pos)) {
+        picked.get(pos).row.remove();
+        picked.delete(pos);
+        btn.classList.remove("picked");
+        btn.setAttribute("aria-pressed", "false");
+      } else {
+        const input = el("input", { type: "text", autocomplete: "off", autocapitalize: "off", spellcheck: "false", placeholder: "Rett form" });
+        if (initialFix) input.value = initialFix;
+        const row = el("div", { class: "fe-fix-row" }, [el("span", { class: "fe-fix-word" }, tokens[pos].core), " → ", input]);
+        picked.set(pos, { btn, input, row });
+        btn.classList.add("picked");
+        btn.setAttribute("aria-pressed", "true");
+        if (!initialFix) setTimeout(() => input.focus(), 0);
+      }
+      refreshFixes();
+    }
+
+    tokens.forEach((t, pos) => {
+      if (t.type === "ws") { textEl.appendChild(document.createTextNode(t.text)); return; }
+      if (t.pre) textEl.appendChild(document.createTextNode(t.pre));
+      if (t.core) {
+        const btn = el("button", { type: "button", class: "fe-token", "aria-pressed": "false" }, t.core);
+        btn.addEventListener("click", () => {
+          if (root.classList.contains("checked")) resetMarks();
+          toggle(pos, btn);
+        });
+        t.btn = btn;
+        textEl.appendChild(btn);
+      }
+      if (t.post) textEl.appendChild(document.createTextNode(t.post));
+    });
+    root.append(textEl, fixes);
+
+    // Restore previous answer
+    const savedFE = Store.getModule(modId).sections[s.id];
+    if (savedFE && Array.isArray(savedFE.answer)) {
+      savedFE.answer.forEach(a => {
+        const t = tokens[a.i];
+        if (t && t.btn && t.core === a.token && !picked.has(a.i)) toggle(a.i, t.btn, a.fix || "");
+      });
+    }
+    refreshFixes();
+
+    const btns = el("div", { class: "btn-row" });
+    const check = el("button", { class: "btn" }, "Sjekk svar");
+    btns.appendChild(check);
+    root.appendChild(btns);
+    const fbHolder = el("div");
+    root.appendChild(fbHolder);
+
+    check.addEventListener("click", () => {
+      resetMarks();
+      root.classList.add("checked");
+      let allRight = true;
+      const answer = [];
+      const missed = [];
+      tokens.forEach((t, pos) => {
+        if (!t.btn) return;
+        const err = errAt.get(pos);
+        const pk = picked.get(pos);
+        if (pk) {
+          const fix = pk.input.value;
+          answer.push({ i: pos, token: t.core, fix });
+          if (err) {
+            const ok = eqAny(fix, err.accept);
+            t.btn.classList.add(ok ? "right" : "partly");
+            pk.input.classList.toggle("right", ok);
+            pk.input.classList.toggle("wrong", !ok);
+            if (!ok) { allRight = false; missed.push(err); }
+          } else {
+            t.btn.classList.add("wrong");
+            pk.input.classList.add("wrong");
+            allRight = false;
+          }
+        } else if (err) {
+          t.btn.classList.add("missed");
+          allRight = false;
+          missed.push(err);
+        }
+      });
+      const fasit = missed.length
+        ? "Fasit: " + missed.map(e => `<em class="bm">${e.token}</em> → <em class="nn">${e.accept[0]}</em>`).join(", ") + ". "
+        : "";
+      fbHolder.innerHTML = "";
+      fbHolder.appendChild(feedbackEl(allRight, (allRight ? "" : fasit) + (s.explanation || "")));
+      Store.recordAnswer(modId, s.id, { correct: allRight, answer });
+      document.dispatchEvent(new CustomEvent("exercise-answered"));
+    });
+
+    // Print: ruled lines for corrections
+    const printLines = el("div", { class: "print-only-lines", "aria-hidden": "true" });
+    for (let i = 0; i < Math.max(3, errors.length); i++) printLines.appendChild(el("div", { class: "rule" }));
+    root.appendChild(printLines);
+
+    return root;
+  }
+
   /* ---------- Dispatcher ---------- */
   function render(section, modId) {
     if (section.type === "lesson") {
@@ -791,6 +1158,8 @@ const Exercises = (() => {
       matching: renderMatching,
       categorize: renderCategorize,
       freeText: renderFreeText,
+      drill: renderDrill,
+      findError: renderFindError,
     };
     const fn = map[section.exerciseType];
     if (!fn) {
@@ -799,5 +1168,5 @@ const Exercises = (() => {
     return fn(section, modId);
   }
 
-  return { render };
+  return { render, tokenizeText, resolveErrors };
 })();

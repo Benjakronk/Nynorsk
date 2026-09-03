@@ -3,6 +3,7 @@
 Modules.register({
   id: "grammatikk-substantiv",
   part: 2,
+  group: "ordklassar",
   title: "Substantiv — kjønn og bøying",
   summary: "Hankjønn, hokjønn og inkjekjønn med rette endingar.",
   estimatedMinutes: 25,
@@ -145,12 +146,22 @@ Modules.register({
         "Bruk gjerne både eintal og fleirtal.",
       ],
     },
+    {
+      type: "lesson",
+      title: "Vil du øve meir?",
+      content: `
+        <p>Under <strong>Mengdetrening</strong> finn du modulen
+        <a href="modul.html?id=trening-substantiv">Substantiv – kjønn og bøying</a>. Der får du nye ord i kvar runde,
+        og kan øve på det du bommar på til det sit.</p>
+      `,
+    },
   ],
 });
 
 Modules.register({
   id: "grammatikk-verb",
   part: 2,
+  group: "ordklassar",
   title: "Verb — sterke og svake",
   summary: "Presens, preteritum og perfektum partisipp.",
   estimatedMinutes: 30,
@@ -300,12 +311,22 @@ Modules.register({
         "Skriv på nynorsk.",
       ],
     },
+    {
+      type: "lesson",
+      title: "Vil du øve meir?",
+      content: `
+        <p>Under <strong>Mengdetrening</strong> finn du modulen
+        <a href="modul.html?id=trening-verb">Verb – tider og klassar</a>. Der får du nye ord i kvar runde,
+        og kan øve på det du bommar på til det sit.</p>
+      `,
+    },
   ],
 });
 
 Modules.register({
   id: "grammatikk-pronomen",
   part: 2,
+  group: "ordklassar",
   title: "Pronomen og spørjeord",
   summary: "Personlege pronomen, eigedom og kva/korleis/kvifor.",
   estimatedMinutes: 20,
@@ -373,10 +394,9 @@ Modules.register({
         ["meg", "meg"],
         ["hun", "ho"],
         ["henne", "henne"],
-        ["dere", "de"],
-        ["deres (objekt)", "dykk"],
-        ["de", "dei"],
-        ["dem", "dei"],
+        ["dere (subjekt)", "de"],
+        ["dere (objekt)", "dykk"],
+        ["de / dem", "dei"],
       ],
     },
     {
@@ -445,12 +465,22 @@ Modules.register({
       hint: "«hvor» → «kvar» (stad); «hvorfor» → «kvifor»; «dere» → «de» (subjekt).",
       explanation: "Subjektsforma er <em class=\"nn\">de</em>; objektsforma er <em class=\"nn\">dykk</em>. Her er det subjektet for verbet «flytta», så det skal vere <em class=\"nn\">de</em>.",
     },
+    {
+      type: "lesson",
+      title: "Vil du øve meir?",
+      content: `
+        <p>Under <strong>Mengdetrening</strong> finn du modulen
+        <a href="modul.html?id=trening-smaord">Pronomen, spørjeord og småord</a>. Der får du nye ord i kvar runde,
+        og kan øve på det du bommar på til det sit.</p>
+      `,
+    },
   ],
 });
 
 Modules.register({
   id: "grammatikk-adjektiv",
   part: 2,
+  group: "ordklassar",
   title: "Adjektiv — samsvarsbøying",
   summary: "Korleis adjektivet rettar seg etter substantivet.",
   estimatedMinutes: 20,
@@ -580,12 +610,22 @@ Modules.register({
         "Hugs samsvar: «huset er stort», «bilane er store».",
       ],
     },
+    {
+      type: "lesson",
+      title: "Vil du øve meir?",
+      content: `
+        <p>Under <strong>Mengdetrening</strong> finn du modulen
+        <a href="modul.html?id=trening-adjektiv">Adjektiv – samsvar og gradbøying</a>. Der får du nye ord i kvar runde,
+        og kan øve på det du bommar på til det sit.</p>
+      `,
+    },
   ],
 });
 
 Modules.register({
   id: "grammatikk-skriveregler",
   part: 2,
+  group: "feil",
   title: "Skrivereglar og vanlege fallgruver",
   summary: "Dei viktigaste skilnadene og fellene du må passe på.",
   estimatedMinutes: 25,

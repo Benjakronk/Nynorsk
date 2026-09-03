@@ -15,12 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.title = `${mod.title} · Nynorskkurs`;
+  root.innerHTML = "";
 
   // Header
-  const part = ["", "Del 1 · Språkhistorie", "Del 2 · Grammatikk", "Del 3 · Skriving", "Del 4 · Lesing"][mod.part] || "";
+  const partLabel = ["", "Del 1 · Språkhistorie", "Del 2 · Grammatikk", "Del 3 · Skriving", "Del 4 · Lesing"][mod.part] || "";
+  const group = Modules.groupOf(mod);
+  const crumbs = group ? `${partLabel} · ${group.title}` : partLabel;
   const header = document.createElement("div");
   header.innerHTML = `
-    <div class="crumbs">${escapeHtml(part)}</div>
+    <div class="crumbs">${escapeHtml(crumbs)}</div>
     <h1>${escapeHtml(mod.title)}</h1>
     <p class="summary">${escapeHtml(mod.summary)}</p>
   `;
@@ -62,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Bottom nav
   const nav = document.createElement("div");
   nav.className = "module-nav no-print";
-  const all = Modules.byPart(mod.part);
+  const all = Modules.orderedByPart(mod.part);
   const idx = all.findIndex(m => m.id === mod.id);
   const prev = idx > 0 ? all[idx - 1] : null;
   const next = idx < all.length - 1 ? all[idx + 1] : null;
