@@ -7,13 +7,20 @@ frå Språkrådet.
 ## Innhald
 
 - **Del 1 — Språkhistorie og debatt** (4 modular): bakgrunn før 1850, Ivar Aasen, språkstriden og samnorsk, nynorsk i dag
-- **Del 2 — Grammatikk og skrivereglar** (5 modular): substantiv, verb, pronomen, adjektiv, vanlege fallgruver
+- **Del 2 — Grammatikk og skrivereglar**, delt i fire grupper:
+  - *Grunnomgrep* (4 modular): ordet (stamme, ending, rot), ordklassane, bøyingsomgrep, setningslære
+  - *Ordklassar* (4 modular): substantiv, verb, pronomen, adjektiv
+  - *Mengdetrening* (5 modular): drill-rundar med tilfeldige oppgåver frå ein ordbank
+  - *Typiske feil* (6 modular): skrivereglar, bokmålsord, bøyingsfeil, småord, setningsbygnad, rettelesing
 - **Del 3 — Skriving og tekstarbeid** (3 modular): omsetjing, korte tekstar, lengre tekstar
+- **Del 4 — Lesing og tekstforståing** (3 modular): korte og lengre tekstar inspirerte av nynorskforfattarar, forfattarportrett
 
 ## Funksjonalitet
 
 - Ikkje-lineær progresjon — eleven vel sjølv modul
 - Varierte oppgåvetypar: fleirval, fyll inn, omsetjing, dra-og-slepp/sortering, leseoppgåver, fritekst
+- Mengdetrening (`drill`): éi oppgåve om gongen, trekt tilfeldig frå ordbanken, umiddelbar tilbakemelding, «Øv på feila», beste runde blir lagra
+- Finn feilen (`findError`): eleven klikkar på feil ord i ein tekst og skriv rett form
 - Automatisk fasit på objektive oppgåver
 - Eigne tekstar blir lagra i `localStorage`
 - Backup som JSON kan lastast ned og lastast opp att
@@ -43,14 +50,23 @@ npx serve .
 ├── css/style.css
 ├── js/
 │   ├── storage.js          localStorage + eksport/import
-│   ├── modules.js          Modulregister
+│   ├── modules.js          Modulregister (med grupper for Del 2)
 │   ├── exercises.js        Oppgåvetypar (rendering + grading)
+│   ├── drills.js           Motor for mengdetrening (ordbank → oppgåver)
 │   ├── app.js              Logikk for oversiktssida
 │   ├── modul.js            Logikk for modulsida
 │   └── content/
-│       ├── part1.js        Innhald: språkhistorie
-│       ├── part2.js        Innhald: grammatikk
-│       └── part3.js        Innhald: skriving
+│       ├── bank.js              Ordbankar for mengdetrening
+│       ├── part1.js             Del 1: språkhistorie
+│       ├── part2-omgrep.js      Del 2: grunnomgrep
+│       ├── part2.js             Del 2: ordklassar + skrivereglar
+│       ├── part2-trening.js     Del 2: mengdetrening
+│       ├── part2-feil.js        Del 2: typiske feil
+│       ├── part2-rettelesing.js Del 2: rettelesing
+│       ├── part3.js             Del 3: skriving
+│       └── part4.js             Del 4: lesing
+├── larer/                  Lærarportal (les elevane sine backup-filer)
+├── tools/validate-content.js   Validerer alt innhald: node tools/validate-content.js
 └── README.md
 ```
 
@@ -58,6 +74,36 @@ npx serve .
 
 Alt innhald ligg i `js/content/part*.js`. Kvar modul er eit objekt med ei liste
 seksjonar — `lesson`, `exercise` eller `reading`. Sjå eksempel i `part1.js`.
+Modular i Del 2 må ha eit `group`-felt (`omgrep`, `ordklassar`, `trening` eller `feil`);
+gruppene er definerte i `js/modules.js`. Nye innhaldsfiler må leggjast til som
+`<script>` i `index.html`, `modul.html` og `larer/index.html`.
+
+Køyr `node tools/validate-content.js` etter endringar. Skriptet sjekkar skjema,
+fasitar, drill-bankar og finn-feilen-tekstar utan nettlesar.
+
+### Mengdetrening (`drill`)
+
+```js
+{ type: "exercise", exerciseType: "drill",
+  title: "Bestemt form eintal", intro: "Skriv ordet i bestemt form.",
+  bank: "nouns",                 // nouns | verbs | adjectives | words | sentences
+  tasks: ["defSg"],              // sjå generatorane øvst i js/drills.js
+  filter: { g: ["f"] },          // valfritt: berre hokjønnsord
+  perRound: 10, mode: "type" }   // type | choice | mixed
+```
+
+Orda ligg i `js/content/bank.js`. Jamstilte former skriv du med `|`: `"gav|ga"`.
+
+### Finn feilen (`findError`)
+
+```js
+{ type: "exercise", exerciseType: "findError",
+  question: "Finn og rett feila. Det er <strong>2 feil</strong>.",
+  text: "Jenten kastet ballen.",             // rein tekst
+  errors: [ { token: "Jenten", accept: ["Jenta"] },
+            { token: "kastet", accept: ["kasta"] } ],   // nth: 2 om ordet står fleire gonger
+  explanation: "Hokjønn får -a; a-verb får -a i preteritum." }
+```
 
 ### Oppgåvetypar
 
