@@ -195,7 +195,7 @@ all.forEach(mod => {
         if (e.accept && e.accept.some(a => a === e.token)) err(`${sw}: feil ${k + 1}: accept er lik token «${e.token}»`);
         const occ = tokens.map((tk, i) => (tk === e.token ? i : -1)).filter(i => i >= 0);
         if (!occ.length) { err(`${sw}: fann ikkje ordet «${e.token}» i teksten`); return; }
-        if (occ.length > 1 && !e.nth) warn(`${sw}: «${e.token}» står ${occ.length} gonger – legg til nth om ikkje det første skal rettast`);
+        if (occ.length > 1 && !e.nth) warn(`${sw}: «${e.token}» står ${occ.length} gonger. Legg til nth om ikkje det første skal rettast`);
         const pos = e.nth ? occ[e.nth - 1] : occ.find(i => !used.has(i));
         if (pos == null || used.has(pos)) err(`${sw}: klarte ikkje plassere feilen «${e.token}»`);
         used.add(pos);

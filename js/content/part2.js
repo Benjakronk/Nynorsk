@@ -1,10 +1,10 @@
-/* Del 2 — Grammatikk og skrivereglar */
+/* Del 2: Grammatikk og skrivereglar */
 
 Modules.register({
   id: "grammatikk-substantiv",
   part: 2,
   group: "ordklassar",
-  title: "Substantiv — kjønn og bøying",
+  title: "Substantiv: kjønn og bøying",
   summary: "Hankjønn, hokjønn og inkjekjønn med rette endingar.",
   estimatedMinutes: 25,
   sections: [
@@ -67,7 +67,7 @@ Modules.register({
     {
       type: "exercise",
       exerciseType: "fillIn",
-      question: "Set inn rett artikkel — <em class=\"nn\">ein</em>, <em class=\"nn\">ei</em> eller <em class=\"nn\">eit</em>:",
+      question: "Set inn rett artikkel: <em class=\"nn\">ein</em>, <em class=\"nn\">ei</em> eller <em class=\"nn\">eit</em>:",
       items: [
         { prompt: "___ gut ", accept: ["ein"] },
         { prompt: "___ jente ", accept: ["ei"] },
@@ -151,7 +151,7 @@ Modules.register({
       title: "Vil du øve meir?",
       content: `
         <p>Under <strong>Mengdetrening</strong> finn du modulen
-        <a href="modul.html?id=trening-substantiv">Substantiv – kjønn og bøying</a>. Der får du nye ord i kvar runde,
+        <a href="modul.html?id=trening-substantiv">Substantiv: kjønn og bøying</a>. Der får du nye ord i kvar runde,
         og kan øve på det du bommar på til det sit.</p>
       `,
     },
@@ -162,7 +162,7 @@ Modules.register({
   id: "grammatikk-verb",
   part: 2,
   group: "ordklassar",
-  title: "Verb — sterke og svake",
+  title: "Verb: sterke og svake",
   summary: "Presens, preteritum og perfektum partisipp.",
   estimatedMinutes: 30,
   sections: [
@@ -173,7 +173,7 @@ Modules.register({
         <p>Verb på nynorsk har infinitiv på <strong>-e</strong> (hovudform). Du finn fire
         store grupper svake verb og ei stor gruppe sterke verb.</p>
 
-        <h3>Svake verb — fire klasser</h3>
+        <h3>Svake verb: fire klasser</h3>
         <table>
           <thead><tr><th>Klasse</th><th>Infinitiv</th><th>Presens</th><th>Preteritum</th><th>Perf. partisipp</th></tr></thead>
           <tbody>
@@ -184,7 +184,7 @@ Modules.register({
           </tbody>
         </table>
 
-        <h3>Sterke verb — vokalskifte</h3>
+        <h3>Sterke verb: vokalskifte</h3>
         <p>Sterke verb skifter vokal i preteritum og endar ikkje på -te/-de:</p>
         <table>
           <tbody>
@@ -198,7 +198,7 @@ Modules.register({
         </table>
 
         <div class="callout">
-          <strong>Tips:</strong> Sterke verb må du lære utanåt — som engelske «irregular
+          <strong>Tips:</strong> Sterke verb må du lære utanåt, som engelske «irregular
           verbs». Ei kort liste med 20–30 vanlege sterke verb dekkjer det meste.
         </div>
 
@@ -316,7 +316,7 @@ Modules.register({
       title: "Vil du øve meir?",
       content: `
         <p>Under <strong>Mengdetrening</strong> finn du modulen
-        <a href="modul.html?id=trening-verb">Verb – tider og klassar</a>. Der får du nye ord i kvar runde,
+        <a href="modul.html?id=trening-verb">Verb: tider og klassar</a>. Der får du nye ord i kvar runde,
         og kan øve på det du bommar på til det sit.</p>
       `,
     },
@@ -371,7 +371,7 @@ Modules.register({
           <tbody>
             <tr><td>kva</td><td>hva (bm)</td></tr>
             <tr><td>kven</td><td>hvem (bm)</td></tr>
-            <tr><td>kvar / kor</td><td>hvor (bm) — «kvar» = stad, «kor» = grad/mengd</td></tr>
+            <tr><td>kvar / kor</td><td>hvor (bm): «kvar» = stad, «kor» = grad/mengd</td></tr>
             <tr><td>korleis</td><td>hvordan (bm)</td></tr>
             <tr><td>kvifor</td><td>hvorfor (bm)</td></tr>
             <tr><td>når</td><td>når (likt)</td></tr>
@@ -380,8 +380,8 @@ Modules.register({
 
         <div class="callout">
           <strong>Merk:</strong> <em class="nn">kvar</em> og <em class="nn">kor</em> kan vere
-          litt forvirrande. <em class="nn">Kvar bur du?</em> (stad) — <em class="nn">Kor
-          mange er de?</em> (mengd) — <em class="nn">Kor fort spring du?</em> (grad).
+          litt forvirrande. <em class="nn">Kvar bur du?</em> (stad). <em class="nn">Kor
+          mange er de?</em> (mengd). <em class="nn">Kor fort spring du?</em> (grad).
         </div>
       `,
     },
@@ -406,7 +406,7 @@ Modules.register({
       items: [
         { prompt: "___ heiter Ola. (Eg/Du?)", accept: ["Eg", "eg"] },
         { prompt: "Læraren såg ___. (meg/eg?)", accept: ["meg"] },
-        { prompt: "___ er beste venen min. (Han/Ho/Det?) — det er Sara.", accept: ["Ho", "ho"] },
+        { prompt: "___ er beste venen min. (Han/Ho/Det?) Det er Sara.", accept: ["Ho", "ho"] },
         { prompt: "Gi boka til ___. (henne/ho?)", accept: ["henne"] },
         { prompt: "Vil ___ vere med? (de/dykk?)", accept: ["de"] },
         { prompt: "Eg ringjer ___ i kveld. (dykk/de?)", accept: ["dykk"] },
@@ -433,7 +433,7 @@ Modules.register({
       question: "Kva er rett spørjeord: «___ heiter du?»",
       options: ["Kva", "Korleis", "Kvifor", "Kvar"],
       correct: 0,
-      explanation: "Du spør om eit namn — det blir <em class=\"nn\">Kva heiter du?</em>",
+      explanation: "Du spør om eit namn, og då blir det <em class=\"nn\">Kva heiter du?</em>",
     },
     {
       type: "exercise",
@@ -481,7 +481,7 @@ Modules.register({
   id: "grammatikk-adjektiv",
   part: 2,
   group: "ordklassar",
-  title: "Adjektiv — samsvarsbøying",
+  title: "Adjektiv: samsvarsbøying",
   summary: "Korleis adjektivet rettar seg etter substantivet.",
   estimatedMinutes: 20,
   sections: [
@@ -489,7 +489,7 @@ Modules.register({
       type: "lesson",
       title: "Adjektivet rettar seg etter substantivet",
       content: `
-        <p>Adjektivet endrar form etter kjønn og tal på substantivet — også i predikativ
+        <p>Adjektivet endrar form etter kjønn og tal på substantivet, også i predikativ
         bruk (etter «er»).</p>
 
         <h3>Ubestemt form</h3>
@@ -615,7 +615,7 @@ Modules.register({
       title: "Vil du øve meir?",
       content: `
         <p>Under <strong>Mengdetrening</strong> finn du modulen
-        <a href="modul.html?id=trening-adjektiv">Adjektiv – samsvar og gradbøying</a>. Der får du nye ord i kvar runde,
+        <a href="modul.html?id=trening-adjektiv">Adjektiv: samsvar og gradbøying</a>. Der får du nye ord i kvar runde,
         og kan øve på det du bommar på til det sit.</p>
       `,
     },
@@ -728,7 +728,7 @@ Modules.register({
     {
       type: "exercise",
       exerciseType: "fillIn",
-      question: "Rett opp setningane — fyll inn rett nynorskord:",
+      question: "Rett opp setningane. Fyll inn rett nynorskord:",
       items: [
         { prompt: "Eg veit ___ (ikke) kva du meiner.", accept: ["ikkje"] },
         { prompt: "Han er ___ (bare) ti år.", accept: ["berre"] },
@@ -741,7 +741,7 @@ Modules.register({
     {
       type: "exercise",
       exerciseType: "categorize",
-      question: "Sorter formene — kva er rett nynorsk og kva er feil?",
+      question: "Sorter formene: kva er rett nynorsk og kva er feil?",
       categories: {
         "Rett nynorsk": ["ikkje", "berre", "kva", "frå", "korleis", "mykje", "kvifor"],
         "Ikkje rett (bokmål)": ["ikke", "bare", "hva", "fra", "hvordan", "mye", "hvorfor"],

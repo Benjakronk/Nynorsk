@@ -103,7 +103,7 @@ const Drills = (() => {
   function nounWhy(n, formIdx) {
     const exp = nounExpected(n);
     const regular = normalize(first(n.f[formIdx])) === normalize(exp[formIdx]);
-    const rule = regular ? " " + NOUN_RULE[n.g][formIdx] : " Dette ordet er uregelrett – lær heile rekkja.";
+    const rule = regular ? " " + NOUN_RULE[n.g][formIdx] : " Dette ordet er uregelrett, så lær heile rekkja.";
     return `${GENDER[n.g].charAt(0).toUpperCase() + GENDER[n.g].slice(1)}: <em class="nn">${nounParadigm(n)}</em>.${rule}`;
   }
   function nounWrongForms(n, formIdx) {
@@ -164,7 +164,7 @@ const Drills = (() => {
     j: "J-verb misser j-en utanom infinitiv: spør – spurde – har spurt.",
     kort: "Kortverb får -r i presens og -dde i preteritum: bur – budde – har budd.",
     sterk: "Sterke verb skifter vokal i preteritum og har inga ending der.",
-    u: "Uregelrette verb følgjer ikkje eit mønster – lær heile rekkja utanåt.",
+    u: "Uregelrette verb følgjer ikkje eit mønster, så lær heile rekkja utanåt.",
   };
   function verbParadigm(v) {
     return `å ${first(v.inf)} – ${first(v.f[0])} – ${first(v.f[1])} – har ${first(v.f[2])}`;

@@ -1,4 +1,4 @@
-/* Del 2 · Typiske feil — modular ordna etter feiltype.
+/* Del 2 · Typiske feil: modular ordna etter feiltype.
    Oppgåvetypen «findError» let eleven klikke på feil ord og rette det:
      { type: "exercise", exerciseType: "findError",
        question: "Finn og rett feila. Det er 2 feil.",
@@ -34,7 +34,7 @@ Modules.register({
             <tr><td><em class="bm">har skrevet, har funnet</em></td><td><em class="nn">har skrive, har funne</em></td>
                 <td>Sterke verb har eiga perfektumsform på <strong>-e</strong>.</td></tr>
             <tr><td><em class="bm">har kjøpet, har lært</em></td><td><em class="nn">har kjøpt, har lært</em></td>
-                <td>E-verb får <strong>-t</strong> i perfektum. (Her er «har lært» rett – men pass på a-verba!)</td></tr>
+                <td>E-verb får <strong>-t</strong> i perfektum. (Her er «har lært» rett, men pass på a-verba!)</td></tr>
           </tbody>
         </table>
 
@@ -86,7 +86,7 @@ Modules.register({
         "Rett nynorsk": ["kasta", "kjem", "boka", "husa", "bilar", "jentene", "har skrive", "eit stort hus"],
         "Feil (bokmålsending)": ["kastet", "kommer", "boken", "husene", "biler", "jentane", "har skrevet", "eit stor hus"],
       },
-      explanation: "Legg merke til «jentene»: hokjønnsord får -ene i bestemt fleirtal, så det er rett. «jentane» er feil – den endinga høyrer hankjønn til.",
+      explanation: "Legg merke til «jentene»: hokjønnsord får -ene i bestemt fleirtal, så det er rett. «jentane» er feil, for den endinga høyrer hankjønn til.",
     },
     {
       type: "exercise",
@@ -169,7 +169,7 @@ Modules.register({
     {
       type: "exercise",
       exerciseType: "findError",
-      question: "No er teksten lengre. Det er <strong>5 feil</strong> – alle er bøyingsfeil.",
+      question: "No er teksten lengre. Det er <strong>5 feil</strong>, og alle er bøyingsfeil.",
       text: "I sommar reiste vi til ei lita hytte ved sjøen. Kvar morgon hoppet vi i vatnet, og etterpå spilte vi fotball på stranden. Om kvelden leste far høgt frå ei gammal bok, og vi sovnet tidleg. Det var dei beste vekene i heile året.",
       errors: [
         { token: "hoppet", accept: ["hoppa"] },
@@ -184,7 +184,7 @@ Modules.register({
       type: "exercise",
       exerciseType: "freeText",
       title: "Skriv og kontroller",
-      question: "Skriv fem–åtte setningar om noko du gjorde i helga. Bruk minst tre a-verb og to sterke verb i preteritum, og minst to hokjønnsord og eitt inkjekjønnsord i bestemt form. Gå så gjennom teksten med dei tre raske kontrollane frå leksjonen.",
+      question: "Skriv fem til åtte setningar om noko du gjorde i helga. Bruk minst tre a-verb og to sterke verb i preteritum, og minst to hokjønnsord og eitt inkjekjønnsord i bestemt form. Gå så gjennom teksten med dei tre raske kontrollane frå leksjonen.",
       minWords: 50,
       checklist: [
         "Ingen verb i fortid på -et.",
@@ -208,7 +208,7 @@ Modules.register({
       title: "To slags bokmålsord",
       content: `
         <p>Når du skriv nynorsk, snik det seg inn ord frå bokmål utan at du merkar det. Dei kjem i
-        to slag. Nokre ord <strong>finst rett og slett ikkje</strong> på nynorsk – dei må du byte ut.
+        to slag. Nokre ord <strong>finst rett og slett ikkje</strong> på nynorsk, og dei må du byte ut.
         Andre ord er <strong>lov</strong>, men nynorsk har ofte eit betre og meir naturleg ord.
         Det er viktig å skilje mellom desse to gruppene, så du ikkje rettar det som er rett.</p>
 
@@ -259,7 +259,7 @@ Modules.register({
             <tr><td><em class="nn">forskjell</em></td><td>Lov, men finst betre ord</td><td><em class="nn">skilnad</em></td></tr>
             <tr><td><em class="nn">erfaring</em></td><td>Lov, men finst betre ord</td><td><em class="nn">røynsle</em> (eller erfaring)</td></tr>
             <tr><td><em class="nn">begynne</em></td><td>Heilt greitt</td><td>(<em class="nn">byrje</em> er like bra)</td></tr>
-            <tr><td><em class="nn">betale, bety, bestemme, forklaring, moglegheit</em></td><td>Heilt greitt</td><td>–</td></tr>
+            <tr><td><em class="nn">betale, bety, bestemme, forklaring, moglegheit</em></td><td>Heilt greitt</td><td>(ingen)</td></tr>
           </tbody>
         </table>
 
@@ -272,7 +272,7 @@ Modules.register({
         <div class="callout warn">
           <strong>Ikkje overrett!</strong> Om du strekar under kvart einaste be-ord i teksten din, endar du
           med å rette ord som er heilt rette. <em class="nn">Betale</em> er nynorsk. <em class="nn">Forklaring</em>
-          er nynorsk. Er du usikker, slå opp i Nynorskordboka – står ordet der, er det lov.
+          er nynorsk. Er du usikker, slå opp i Nynorskordboka. Står ordet der, er det lov.
         </div>
 
         <div class="callout">
@@ -408,7 +408,7 @@ Modules.register({
         { token: "gjøre", accept: ["gjere", "gjera"] },
         { token: "friheten", accept: ["fridomen", "fridommen"] },
       ],
-      explanation: "«Selv» heiter «sjølv», «ikke» heiter «ikkje», «uke» heiter «veke», «hverandre» heiter «kvarandre», og «gjøre» heiter «gjere». «Frihet» finst ikkje på nynorsk – ordet er «fridom», i bestemt form «fridomen» (eller «fridommen»).",
+      explanation: "«Selv» heiter «sjølv», «ikke» heiter «ikkje», «uke» heiter «veke», «hverandre» heiter «kvarandre», og «gjøre» heiter «gjere». «Frihet» finst ikkje på nynorsk. Ordet er «fridom», i bestemt form «fridomen» (eller «fridommen»).",
     },
   ],
 });
@@ -443,7 +443,7 @@ Modules.register({
 
         <div class="callout warn">
           <strong>Den største fella: «de».</strong> På bokmål tyder <em class="bm">de</em> «dei andre». På nynorsk
-          tyder <em class="nn">de</em> «dere» – altså dei du snakkar til! «<em class="nn">De</em> må skunde
+          tyder <em class="nn">de</em> «dere», altså dei du snakkar til! «<em class="nn">De</em> må skunde
           <em class="nn">dykk</em>» = «Dere må skynde dere». «<em class="nn">Dei</em> må skunde seg» = «De må skynde seg».
           Og <em class="bm">ham</em>, <em class="bm">dem</em>, <em class="bm">hennes</em> og <em class="bm">deres</em>
           finst ikkje på nynorsk.
@@ -489,8 +489,8 @@ Modules.register({
         <p>På nynorsk unngår vi s-genitiv. I staden skriv vi anten <em class="nn">boka til Kari</em> eller
         <em class="nn">Kari si bok</em>. Vel du <em class="nn">sin</em>-forma, må ho <strong>samsvare</strong> med det ein eig:</p>
         <ul>
-          <li><em class="nn">Kari sin</em> bil (hankjønn) – <em class="nn">Kari si</em> bok (hokjønn) –
-              <em class="nn">Kari sitt</em> hus (inkjekjønn) – <em class="nn">Kari sine</em> bøker (fleirtal)</li>
+          <li><em class="nn">Kari sin</em> bil (hankjønn), <em class="nn">Kari si</em> bok (hokjønn),
+              <em class="nn">Kari sitt</em> hus (inkjekjønn), <em class="nn">Kari sine</em> bøker (fleirtal)</li>
           <li>Feil: <em class="bm">Karis bok</em> (s-genitiv) og <em class="bm">Kari sin bok</em> (manglar samsvar)</li>
         </ul>
 
@@ -517,7 +517,7 @@ Modules.register({
           <ol>
             <li>Kvar gong du har skrive <em class="nn">de</em> eller <em class="nn">dei</em>: Snakkar nokon <em>til</em> dei (de), eller <em>om</em> dei (dei)?</li>
             <li>Kvar gong du har skrive <em class="nn">sin/si/sitt/sine</em>: Peikar ordet tilbake på subjektet? Om ikkje, skal det vere <em class="nn">hans/hennar/deira</em>.</li>
-            <li>Leit etter <em class="bm">hun, ham, dem, hennes, deres, en, et</em> – dei finst ikkje på nynorsk.</li>
+            <li>Leit etter <em class="bm">hun, ham, dem, hennes, deres, en, et</em>. Dei finst ikkje på nynorsk.</li>
           </ol>
         </div>
       `,
@@ -606,7 +606,7 @@ Modules.register({
         { token: "Karis", accept: ["Kari sitt"] },
         { token: "hennes", accept: ["hennar"] },
       ],
-      explanation: "Bok er hokjønn, så det heiter «Kari si bok». S-genitiv unngår vi: «Kari sitt penal» (penal er inkjekjønn) eller «penalet til Kari». «Hennes» heiter «hennar» – og her er det rett med «hennar», ikkje «sin», sidan sekken er Kari sin, ikkje Per sin.",
+      explanation: "Bok er hokjønn, så det heiter «Kari si bok». S-genitiv unngår vi: «Kari sitt penal» (penal er inkjekjønn) eller «penalet til Kari». «Hennes» heiter «hennar», og her er det rett med «hennar», ikkje «sin», sidan sekken er Kari sin, ikkje Per sin.",
     },
     {
       type: "exercise",
@@ -651,7 +651,7 @@ Modules.register({
                 <td>Bruk <strong>bli/verte + partisipp</strong>, eller skriv om til aktiv.</td></tr>
             <tr><td><em class="bm">Billettar selges i døra.</em></td><td><em class="nn">Billettar blir selde i døra.</em><br><em class="nn">Dei sel billettar i døra.</em></td>
                 <td>Same regel. Hugs samsvar: billettar → selde.</td></tr>
-            <tr><td>–</td><td><em class="nn">Bilen må vaskast. Billettane kan kjøpast i døra. Dette skal gjerast i dag.</em></td>
+            <tr><td>(ikkje aktuelt)</td><td><em class="nn">Bilen må vaskast. Billettane kan kjøpast i døra. Dette skal gjerast i dag.</em></td>
                 <td>Etter <strong>kan, skal, må, bør, vil</strong> er s-passiv heilt greitt.</td></tr>
           </tbody>
         </table>
@@ -675,8 +675,8 @@ Modules.register({
 
         <h3>S-genitiv og garpegenitiv</h3>
         <ul>
-          <li>Feil: <em class="bm">skulens rektor, kommunens budsjett</em>. Rett: <em class="nn">rektoren på skulen, budsjettet til kommunen</em>
-              – eller <em class="nn">skulen sin rektor, kommunen sitt budsjett</em>.</li>
+          <li>Feil: <em class="bm">skulens rektor, kommunens budsjett</em>. Rett: <em class="nn">rektoren på skulen, budsjettet til kommunen</em>,
+              eller <em class="nn">skulen sin rektor, kommunen sitt budsjett</em>.</li>
           <li>Faste uttrykk med -s er greie: <em class="nn">til fjells, til sjøs, til bords</em>.</li>
           <li>Men ikkje overdriv <em class="nn">sin</em>-forma. <em class="bm">Bilen sin motor sin lyd</em> er tungt.
               Skriv heller <em class="nn">lyden frå motoren i bilen</em>.</li>
@@ -705,10 +705,10 @@ Modules.register({
         <table>
           <thead><tr><th>Regel</th><th>Døme</th></tr></thead>
           <tbody>
-            <tr><td><strong>har blitt / er blitt</strong> – begge er rette.</td>
+            <tr><td><strong>har blitt / er blitt</strong>: begge er rette.</td>
                 <td><em class="nn">Ho har blitt sjuk. Ho er blitt sjuk. Ho har vorte sjuk.</em></td></tr>
             <tr><td><strong>Dobbel bestemming</strong>: etter <em class="nn">den/det/dei</em> skal substantivet stå i bestemt form.</td>
-                <td><em class="nn">den nye bilen, det store huset, dei gamle bøkene</em> – ikkje <em class="bm">den nye bil</em>.</td></tr>
+                <td><em class="nn">den nye bilen, det store huset, dei gamle bøkene</em>, ikkje <em class="bm">den nye bil</em>.</td></tr>
             <tr><td><strong>Ingen artikkel</strong> framfor yrke og nasjonalitet.</td>
                 <td><em class="nn">Ho er lærar. Han er svensk.</em> Men med adjektiv: <em class="nn">Ho er ein flink lærar.</em></td></tr>
           </tbody>
@@ -799,7 +799,7 @@ Modules.register({
     {
       type: "exercise",
       exerciseType: "findError",
-      question: "Finn og rett feila. Det er <strong>3 feil</strong>. Éin s-passiv er rett – ikkje rør han!",
+      question: "Finn og rett feila. Det er <strong>3 feil</strong>. Éin s-passiv er rett, så ikkje rør han!",
       text: "Skulens nye gymsal opnast i morgon, og alle elevane er inviterte. Den gamle sal skal rivast til hausten.",
       errors: [
         { token: "Skulens", accept: ["Skulen sin"] },
@@ -830,7 +830,7 @@ Modules.register({
       question: "Avsnittet under er korrekt nynorsk, men tungt og fullt av substantivsjuke og s-passiv. Skriv det om så det blir aktivt og konkret: Bruk verb i staden for substantiv, og bruk s-passiv berre etter modalverb. Innhaldet skal vere det same.<br><br><em>«Innsamling av pengar til klasseturen skjer i heile vår. Gjennomføring av kakesal finn stad kvar fredag, og det vart gjort ei avgjerd av elevrådet om at inntektene delast likt mellom klassane. Ei vurdering av reisemål vil bli gjort av lærarane i mai.»</em>",
       minWords: 30,
       checklist: [
-        "Ingen «skjer», «finn stad» eller «blir gjort» – handlinga ligg i verbet.",
+        "Ingen «skjer», «finn stad» eller «blir gjort». Handlinga ligg i verbet.",
         "Ingen s-passiv utan modalverb («delast» er skrive om).",
         "Kvar setning har eit tydeleg subjekt som gjer noko: vi, elevrådet, lærarane.",
         "Innhaldet er det same som i originalen.",

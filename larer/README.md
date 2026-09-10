@@ -11,7 +11,7 @@ Eit reint statisk verktøy for å sjå over elevbackupar frå nynorskkurset.
 3. Samle alle filene i ei mappe på maskina di.
 4. Opne `larer/index.html` i nettlesaren og vel mappa (eller alle filene).
 
-Alt går føre seg lokalt i nettlesaren — ingenting blir sendt nokon stad.
+Alt går føre seg lokalt i nettlesaren, og ingenting blir sendt nokon stad.
 
 ## Kva du ser
 

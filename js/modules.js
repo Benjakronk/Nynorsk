@@ -10,9 +10,9 @@ const Modules = (() => {
   const PART_GROUPS = {
     2: [
       { id: "omgrep",     title: "Grunnomgrep",   blurb: "Kva er eit ord bygd opp av, kva ordklassar finst, og kva tyder bøying og setningsledd?" },
-      { id: "ordklassar", title: "Ordklassar",    blurb: "Substantiv, verb, pronomen og adjektiv – reglane og dei viktigaste skilnadene frå bokmål." },
+      { id: "ordklassar", title: "Ordklassar",    blurb: "Substantiv, verb, pronomen og adjektiv: reglane og dei viktigaste skilnadene frå bokmål." },
       { id: "trening",    title: "Mengdetrening", blurb: "Korte rundar med mange oppgåver. Du får nye ord kvar gong, og kan øve på det du bomma på." },
-      { id: "feil",       title: "Typiske feil",  blurb: "Feila elevar oftast gjer på nynorsk – og korleis du finn og rettar dei i eigen tekst." },
+      { id: "feil",       title: "Typiske feil",  blurb: "Feila elevar oftast gjer på nynorsk, og korleis du finn og rettar dei i eigen tekst." },
     ],
   };
 

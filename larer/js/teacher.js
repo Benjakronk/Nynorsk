@@ -1,4 +1,4 @@
-/* Teacher dashboard — load student backups, show progress and answers. */
+/* Teacher dashboard: load student backups, show progress and answers. */
 
 const students = []; // [{name, fileName, data}]
 let activeIndex = -1; // -1 = cohort overview
@@ -349,7 +349,7 @@ function renderCohortRows() {
       const pct = totalModules > 0 ? (r.st.completedModules / totalModules) * 100 : 0;
       return `
         <tr class="clickable" data-idx="${r.i}">
-          <td>${escapeHtml(r.s.className || "—")}</td>
+          <td>${escapeHtml(r.s.className || "Ukjend")}</td>
           <td><strong>${escapeHtml(r.s.name)}</strong></td>
           <td><span class="mini-bar"><span style="width:${pct.toFixed(0)}%"></span></span>${r.st.completedModules}/${totalModules}</td>
           <td class="num">${r.st.correct}</td>
@@ -649,16 +649,16 @@ function formatAnswer(section, answer) {
   }
   if (t === "matching") {
     if (typeof answer !== "object") return escapeHtml(String(answer));
-    return Object.entries(answer).map(([k, v]) => `${escapeHtml(k)} → ${escapeHtml(v || "—")}`).join("; ");
+    return Object.entries(answer).map(([k, v]) => `${escapeHtml(k)} → ${escapeHtml(v || "(tomt)")}`).join("; ");
   }
   if (t === "categorize") {
     if (typeof answer !== "object") return escapeHtml(String(answer));
-    return Object.entries(answer).map(([k, v]) => `${escapeHtml(k)} → ${escapeHtml(v || "—")}`).join("; ");
+    return Object.entries(answer).map(([k, v]) => `${escapeHtml(k)} → ${escapeHtml(v || "(tomt)")}`).join("; ");
   }
   if (t === "drill") {
     if (typeof answer !== "object" || !answer.best) return escapeHtml(String(answer));
     const rounds = answer.rounds || 0;
-    return `Beste runde ${answer.best.right}/${answer.best.total} · siste ${answer.last ? `${answer.last.right}/${answer.last.total}` : "—"} · ${rounds} ${rounds === 1 ? "runde" : "rundar"} · ${answer.totalRight || 0} av ${answer.totalItems || 0} rett totalt`;
+    return `Beste runde ${answer.best.right}/${answer.best.total} · siste ${answer.last ? `${answer.last.right}/${answer.last.total}` : "ingen"} · ${rounds} ${rounds === 1 ? "runde" : "rundar"} · ${answer.totalRight || 0} av ${answer.totalItems || 0} rett totalt`;
   }
   if (t === "findError") {
     if (!Array.isArray(answer)) return escapeHtml(String(answer));
@@ -686,7 +686,7 @@ function formatCorrect(section) {
     return Object.entries(section.categories).map(([cat, items]) => `${escapeHtml(cat)}: ${items.map(escapeHtml).join(", ")}`).join(" | ");
   }
   if (t === "drill") {
-    return "– (tilfeldige oppgåver frå ordbanken; rekna som rett ved minst 80 % i beste runde)";
+    return "Tilfeldige oppgåver trekte frå ei oppgåveliste; rekna som rett ved minst 80 % i beste runde.";
   }
   if (t === "findError") {
     return (section.errors || []).map(e => `${escapeHtml(e.token)} → <code>${escapeHtml((e.accept || [])[0] || "")}</code>`).join("; ");
@@ -705,7 +705,7 @@ function escapeHtml(s) {
 }
 
 function formatDate(iso) {
-  if (!iso) return "—";
+  if (!iso) return "Ikkje sett";
   try {
     const d = new Date(iso);
     return d.toLocaleString("nn-NO", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });

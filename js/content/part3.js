@@ -1,9 +1,9 @@
-/* Del 3 — Skriving og tekstarbeid */
+/* Del 3: Skriving og tekstarbeid */
 
 Modules.register({
   id: "skriving-omsetjing",
   part: 3,
-  title: "Frå bokmål til nynorsk — strategiar",
+  title: "Frå bokmål til nynorsk: strategiar",
   summary: "Korleis tenkje når du skal setje om frå bokmål.",
   estimatedMinutes: 25,
   sections: [
@@ -47,14 +47,14 @@ Modules.register({
         <div class="callout">
           <strong>Bruk ordlista:</strong> Når du er usikker, slå opp på
           <em class="nn">Nynorskordboka</em> (ordbokene.no). Mange tilrår òg å bruke
-          ein bokmål–nynorsk-ordbok parallelt.
+          ein bokmål-nynorsk-ordbok parallelt.
         </div>
       `,
     },
     {
       type: "exercise",
       exerciseType: "translate",
-      question: "Kort setning — sjå om småorda:",
+      question: "Kort setning. Sjå om småorda:",
       source: "Jeg vet ikke hva jeg skal gjøre.",
       accept: [
         "Eg veit ikkje kva eg skal gjere.",
@@ -139,7 +139,7 @@ Modules.register({
 Modules.register({
   id: "skriving-korte-tekstar",
   part: 3,
-  title: "Korte tekstar — melding, e-post, dagbok",
+  title: "Korte tekstar: melding, e-post, dagbok",
   summary: "Øv på å skrive korte, kvardagslege tekstar på nynorsk.",
   estimatedMinutes: 30,
   sections: [
@@ -149,10 +149,10 @@ Modules.register({
       content: `
         <p>Ein kort tekst skal nå fram raskt. Tilpass språket til mottakaren:</p>
         <ul>
-          <li><strong>Melding til ein venn</strong> — uformelt, korte setningar, gjerne smilefjes.</li>
-          <li><strong>E-post til ein lærar</strong> — høfleg, fullstendige setningar,
+          <li><strong>Melding til ein venn:</strong> uformelt, korte setningar, gjerne smilefjes.</li>
+          <li><strong>E-post til ein lærar:</strong> høfleg, fullstendige setningar,
               opning og avslutning.</li>
-          <li><strong>Dagboknotat</strong> — personleg, kjenslene dine kjem fram.</li>
+          <li><strong>Dagboknotat:</strong> personleg, kjenslene dine kjem fram.</li>
         </ul>
 
         <h3>Døme: melding</h3>
@@ -176,7 +176,7 @@ Modules.register({
         </div>
 
         <div class="callout warn">
-          <strong>Hugs:</strong> Sjølv ein kort tekst skal vere konsekvent — du kan ikkje
+          <strong>Hugs:</strong> Sjølv ein kort tekst skal vere konsekvent, for du kan ikkje
           blande «jeg» og «eg» i same tekst.
         </div>
       `,
@@ -248,7 +248,7 @@ Modules.register({
 Modules.register({
   id: "skriving-lengre-tekstar",
   part: 3,
-  title: "Lengre tekstar — fortelje og argumentere",
+  title: "Lengre tekstar: fortelje og argumentere",
   summary: "Oppbygging av forteljande og argumenterande tekst.",
   estimatedMinutes: 40,
   sections: [
@@ -258,17 +258,17 @@ Modules.register({
       content: `
         <p>Ein forteljande tekst kan byggjast opp i fem steg:</p>
         <ol>
-          <li><strong>Anslag</strong> — opninga som dreg lesaren inn.</li>
-          <li><strong>Presentasjon</strong> — kven, kvar og når.</li>
-          <li><strong>Stigning</strong> — noko skjer, spenninga aukar.</li>
-          <li><strong>Klimaks</strong> — vendepunktet.</li>
-          <li><strong>Avrunding</strong> — kva sit lesaren att med?</li>
+          <li><strong>Anslag:</strong> opninga som dreg lesaren inn.</li>
+          <li><strong>Presentasjon:</strong> kven, kvar og når.</li>
+          <li><strong>Stigning:</strong> noko skjer, spenninga aukar.</li>
+          <li><strong>Klimaks:</strong> vendepunktet.</li>
+          <li><strong>Avrunding:</strong> kva sit lesaren att med?</li>
         </ol>
 
         <h3>Verkemiddel</h3>
         <ul>
           <li>Skildring (kva du ser, høyrer, kjenner).</li>
-          <li>Replikkar (det dei seier — bruk tankestrek: — Eg veit ikkje, sa han.).</li>
+          <li>Replikkar (det dei seier). Bruk hermeteikn: «Eg veit ikkje», sa han.</li>
           <li>Variasjon i setningslengd.</li>
           <li>Indre tankar hos hovudpersonen.</li>
         </ul>
@@ -280,18 +280,18 @@ Modules.register({
       content: `
         <p>Ein argumenterande tekst skal overtyde. Ein vanleg struktur er:</p>
         <ol>
-          <li><strong>Innleiing</strong> — tema og standpunkt.</li>
-          <li><strong>Hovuddel</strong> — to–tre argument med døme og kjelder.</li>
-          <li><strong>Motargument</strong> — vis at du har vurdert det andre synet,
+          <li><strong>Innleiing:</strong> tema og standpunkt.</li>
+          <li><strong>Hovuddel:</strong> to til tre argument med døme og kjelder.</li>
+          <li><strong>Motargument:</strong> vis at du har vurdert det andre synet,
               og forklar kvifor ditt eige argument er sterkare.</li>
-          <li><strong>Avslutning</strong> — oppsummering og konklusjon.</li>
+          <li><strong>Avslutning:</strong> oppsummering og konklusjon.</li>
         </ol>
 
         <h3>Argumenttypar</h3>
         <ul>
-          <li><strong>Logos</strong> — fakta og fornuft.</li>
-          <li><strong>Etos</strong> — truverd, kjelder.</li>
-          <li><strong>Patos</strong> — kjensler, eksempel som rørar.</li>
+          <li><strong>Logos:</strong> fakta og fornuft.</li>
+          <li><strong>Etos:</strong> truverd, kjelder.</li>
+          <li><strong>Patos:</strong> kjensler, eksempel som rørar.</li>
         </ul>
 
         <div class="callout">
@@ -323,7 +323,7 @@ Modules.register({
         "Å unngå å ta standpunkt.",
       ],
       correct: 1,
-      explanation: "Eit motargument viser at du har vurdert andre syn — og det gjer ditt eige standpunkt sterkare.",
+      explanation: "Eit motargument viser at du har vurdert andre syn, og det gjer ditt eige standpunkt sterkare.",
     },
     {
       type: "exercise",
@@ -332,7 +332,7 @@ Modules.register({
       question: "Skriv ei kort forteljing (200–400 ord) på nynorsk om ein dag som ikkje gjekk som planlagt. Bygg teksten opp med anslag, stigning, klimaks og avrunding.",
       minWords: 200,
       checklist: [
-        "Tydeleg anslag — fang lesaren med éin gong.",
+        "Tydeleg anslag: fang lesaren med éin gong.",
         "Skildre kvar og når det skjer.",
         "Bygg opp spenning før klimaks.",
         "Bruk minst éin replikk (med tankestrek).",
@@ -358,15 +358,15 @@ Modules.register({
     {
       type: "exercise",
       exerciseType: "freeText",
-      title: "Skildring — kort tekst",
+      title: "Skildring: kort tekst",
       question: "Skriv ei skildring (100–200 ord) på nynorsk av ein stad du kjenner godt. Bruk alle fem sansane minst éin gong.",
       minWords: 100,
       checklist: [
-        "Syn — kva ser du?",
-        "Høyrsel — kva høyrer du?",
-        "Lukt — kva luktar?",
-        "Smak — kva smakar?",
-        "Berøring — kva kjenner du?",
+        "Syn: kva ser du?",
+        "Høyrsel: kva høyrer du?",
+        "Lukt: kva luktar?",
+        "Smak: kva smakar?",
+        "Berøring: kva kjenner du?",
         "Bruk minst seks adjektiv i rett form.",
       ],
     },

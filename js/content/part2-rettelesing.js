@@ -1,4 +1,4 @@
-/* Del 2 · Typiske feil — Rettelesing: finn og rett feila
+/* Del 2 · Typiske feil · Rettelesing: finn og rett feila
    Fem lengre findError-tekstar med stigande vanskegrad. Sjå toppkommentaren i
    part2-feil.js for skjemaet. Alle ord som ikkje er registrerte feil, må vere
    korrekt nynorsk, sidan eleven kan klikke på kva som helst ord. */
@@ -16,7 +16,7 @@ Modules.register({
       title: "Slik les du korrektur",
       content: `
         <p>Når du har skrive ferdig ein tekst på nynorsk, er du ikkje ferdig. Dei fleste feila
-        oppdagar du først når du les teksten <strong>éin gong til</strong> – og då hjelper det å
+        oppdagar du først når du les teksten <strong>éin gong til</strong>, og då hjelper det å
         vite kva du leitar etter. Å lese korrektur er ein eigen dugleik, og han kan trenast.</p>
 
         <div class="callout">
@@ -31,7 +31,7 @@ Modules.register({
           </ol>
         </div>
 
-        <p>Eit tips: Les teksten <strong>høgt</strong>, eller les setningane <strong>baklengs</strong> – siste
+        <p>Eit tips: Les teksten <strong>høgt</strong>, eller les setningane <strong>baklengs</strong>, siste
         setning først. Då sluttar hjernen å gjette kva som står der, og du ser det som faktisk står.</p>
 
         <h3>Sjekkliste: dei vanlegaste feila</h3>
@@ -90,7 +90,7 @@ Modules.register({
         { token: "kommer", accept: ["kjem"] },
         { token: "bare", accept: ["berre"] },
       ],
-      explanation: "Emma snakkar til Jonas og broren, altså «de» (subjekt i 2. person fleirtal), ikkje «dei». Billett er hankjønn: billettane. Pengar er fleirtal, så det heiter «nokre pengar» (eller «nokon pengar» i spørsmål) – «noko» brukar vi berre om ting i eintal, som «noko mat». «Hun» heiter «ho». Sterke verb har inga -er-ending i presens: kjem. Og «bare» heiter «berre».",
+      explanation: "Emma snakkar til Jonas og broren, altså «de» (subjekt i 2. person fleirtal), ikkje «dei». Billett er hankjønn: billettane. Pengar er fleirtal, så det heiter «nokre pengar» (eller «nokon pengar» i spørsmål). «Noko» brukar vi berre om ting i eintal, som «noko mat». «Hun» heiter «ho». Sterke verb har inga -er-ending i presens: kjem. Og «bare» heiter «berre».",
     },
     {
       type: "exercise",
@@ -107,7 +107,7 @@ Modules.register({
         { token: "deres", accept: ["deira"] },
         { token: "saken", accept: ["saka"] },
       ],
-      explanation: "Hankjønn: elevane. A-verb: samla. «Då dei starta aksjonen» – det skjedde éin gong i fortida, så det heiter «då», ikkje «når». Inkjekjønn i bestemt fleirtal: argumenta. «Kor mange» – kor brukar vi om grad og mengd, kvar om stad (legg merke til at «Kvar dei ekstra minutta skal hentast frå» er rett!). Possessiv i fleirtal: deira. Hokjønn: saka.",
+      explanation: "Hankjønn: elevane. A-verb: samla. «Då dei starta aksjonen»: det skjedde éin gong i fortida, så det heiter «då», ikkje «når». Inkjekjønn i bestemt fleirtal: argumenta. «Kor mange»: kor brukar vi om grad og mengd, kvar om stad (legg merke til at «Kvar dei ekstra minutta skal hentast frå» er rett!). Possessiv i fleirtal: deira. Hokjønn: saka.",
     },
     {
       type: "exercise",
@@ -125,13 +125,13 @@ Modules.register({
         { token: "kommer", accept: ["kjem"] },
         { token: "dem", accept: ["dei"] },
       ],
-      explanation: "S-passiv brukar vi berre etter modale hjelpeverb (kan lagast, skal lagast). Elles skriv vi «blir laga» eller «vert laga». S-genitiv finst ikkje på nynorsk: «kommunen sitt budsjett» (eller «budsjettet til kommunen»). Hankjønn: prisar, bilane. Preteritum av bli: blei eller vart. «Samme» heiter «same», «kommer» heiter «kjem», og «dem» heiter «dei» – nynorsk har same form i subjekt og objekt.",
+      explanation: "S-passiv brukar vi berre etter modale hjelpeverb (kan lagast, skal lagast). Elles skriv vi «blir laga» eller «vert laga». S-genitiv finst ikkje på nynorsk: «kommunen sitt budsjett» (eller «budsjettet til kommunen»). Hankjønn: prisar, bilane. Preteritum av bli: blei eller vart. «Samme» heiter «same», «kommer» heiter «kjem», og «dem» heiter «dei», for nynorsk har same form i subjekt og objekt.",
     },
     {
       type: "exercise",
       exerciseType: "findError",
       title: "Tekst 5: Utdrag av ei forteljing",
-      question: "Eit utdrag av ei forteljing. Det er <strong>10 feil</strong>, og alle feiltypane er med. Ein av feila er ei særskriving: klikk då på det <strong>første</strong> ordet og skriv heile det samansette ordet i feltet. Eitt av feilorda står fleire gonger i teksten – berre éin av gongene er det feil.",
+      question: "Eit utdrag av ei forteljing. Det er <strong>10 feil</strong>, og alle feiltypane er med. Ein av feila er ei særskriving: klikk då på det <strong>første</strong> ordet og skriv heile det samansette ordet i feltet. Eitt av feilorda står fleire gonger i teksten, men berre éin av gongene er det feil.",
       text: "Det var alt mørkt då Nora og Sam kom fram til det gamle naustet. Regnet hadde slutta, men vinden reiv i takplatene, og sjøen slo mot steinane nedanfor. Nora fann fram lomme lykta og lyste inn gjennom sprekken i døra.\n\n«Ser du noko?» kviskra Sam.\n\n«Berre gamle garn og ei bøtte», sa ho. «Og … vent litt.» Lyset stoppet på noko blankt inst i kroken. Ei kiste. Ho var ikkje stor, men låsen glinsa som om nokon nyleg hadde pussa han. Låsen brukast tydelegvis framleis.\n\nSam trakk pusten. «Vi kan ikkje berre gå inn. Dette er Halvorsens naust.»\n\n«Halvorsen har vore død i tre år», sa Nora og dytta opp døra. Ho stoppa brått. På golvet låg det ferske fotspor, og dei var større enn hennes eigne. Nokon hadde vore her, kanskje for berre noen minutt sidan.\n\nBak dei knirka trinnene i trappa.\n\n«Hva var det?» kviskra Sam.\n\nNora snudde seg så fort at lykta datt i golvet og slokna. I mørkret høyrde dei ei stemme dei ikkje kjende igjen.\n\n«Så de fann fram likevel», sa stemma roleg. «Eg lurte på når dei kom til å dukke opp.»",
       errors: [
         { token: "lomme", accept: ["lommelykta"] },
@@ -145,7 +145,7 @@ Modules.register({
         { token: "Hva", accept: ["Kva"] },
         { token: "dei", accept: ["de"], nth: 5 },
       ],
-      explanation: "Særskriving: «lomme lykta» skal vere eitt ord, lommelykta. A-verb: stoppa. S-passiv utan modalt hjelpeverb er feil: «blir brukt» / «vert brukt». «Trekkje» er eit e-verb med preteritum «trekte» (ein kan òg seie «drog pusten»). S-genitiv finst ikkje: «Halvorsen sitt naust» (eller «naustet til Halvorsen»). Possessiv: hennar. «Noen» heiter «nokre» (eller «nokon» i fleirtal). Inkjekjønn i bestemt fleirtal: trinna. «Hva» heiter «kva». Og i den siste replikken snakkar stemma til Nora og Sam, så det skal vere «de kom til å dukke opp» – dei andre gongene «dei» står i teksten, tyder det «dei andre» og er rett.",
+      explanation: "Særskriving: «lomme lykta» skal vere eitt ord, lommelykta. A-verb: stoppa. S-passiv utan modalt hjelpeverb er feil: «blir brukt» / «vert brukt». «Trekkje» er eit e-verb med preteritum «trekte» (ein kan òg seie «drog pusten»). S-genitiv finst ikkje: «Halvorsen sitt naust» (eller «naustet til Halvorsen»). Possessiv: hennar. «Noen» heiter «nokre» (eller «nokon» i fleirtal). Inkjekjønn i bestemt fleirtal: trinna. «Hva» heiter «kva». Og i den siste replikken snakkar stemma til Nora og Sam, så det skal vere «de kom til å dukke opp». Dei andre gongene «dei» står i teksten, tyder det «dei andre» og er rett.",
     },
     {
       type: "exercise",

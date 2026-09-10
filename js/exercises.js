@@ -33,7 +33,7 @@ const Exercises = (() => {
 
   function feedbackEl(isRight, explanation) {
     const f = el("div", { class: "feedback " + (isRight ? "right" : "wrong") });
-    f.appendChild(el("div", {}, isRight ? "Rett!" : "Ikkje heilt — prøv igjen, eller les forklaringa under."));
+    f.appendChild(el("div", {}, isRight ? "Rett!" : "Ikkje heilt. Prøv igjen, eller les forklaringa under."));
     if (explanation) {
       const ex = el("div", { class: "explanation", html: "<strong>Forklaring:</strong> " + explanation });
       f.appendChild(ex);
@@ -354,7 +354,7 @@ const Exercises = (() => {
       targets.appendChild(t);
     });
 
-    // Pool is a drop zone too — drag a placed chip back to release it
+    // Pool is a drop zone too: drag a placed chip back to release it
     pool.addEventListener("dragover", e => {
       if (!dragged || dragged.kind !== "target") return;
       e.preventDefault();

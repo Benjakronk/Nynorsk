@@ -6,25 +6,25 @@ frå Språkrådet.
 
 ## Innhald
 
-- **Del 1 — Språkhistorie og debatt** (4 modular): bakgrunn før 1850, Ivar Aasen, språkstriden og samnorsk, nynorsk i dag
-- **Del 2 — Grammatikk og skrivereglar**, delt i fire grupper:
+- **Del 1: Språkhistorie og debatt** (6 modular): bakgrunn før 1850, Ivar Aasen, språkstriden og samnorsk, nynorsk i dag, skriveoppgåver, repetisjonstest
+- **Del 2: Grammatikk og skrivereglar**, delt i fire grupper:
   - *Grunnomgrep* (4 modular): ordet (stamme, ending, rot), ordklassane, bøyingsomgrep, setningslære
   - *Ordklassar* (4 modular): substantiv, verb, pronomen, adjektiv
   - *Mengdetrening* (5 modular): drill-rundar med tilfeldige oppgåver frå ein ordbank
   - *Typiske feil* (6 modular): skrivereglar, bokmålsord, bøyingsfeil, småord, setningsbygnad, rettelesing
-- **Del 3 — Skriving og tekstarbeid** (3 modular): omsetjing, korte tekstar, lengre tekstar
-- **Del 4 — Lesing og tekstforståing** (3 modular): korte og lengre tekstar inspirerte av nynorskforfattarar, forfattarportrett
+- **Del 3: Skriving og tekstarbeid** (3 modular): omsetjing, korte tekstar, lengre tekstar
+- **Del 4: Lesing og tekstforståing** (11 modular): forfattarportrett, ni lesemodular med éin tekst kvar, og ein samanliknande modul til slutt. Modulane om Vinje, Garborg og Duun har i tillegg ein ekte tekst av forfattaren, i original staving med ordliste. Dei seks andre har ei oppgåve som sender eleven til Nettbiblioteket for å lese ei ekte bok
 
 ## Funksjonalitet
 
-- Ikkje-lineær progresjon — eleven vel sjølv modul
+- Ikkje-lineær progresjon: eleven vel sjølv modul
 - Varierte oppgåvetypar: fleirval, fyll inn, omsetjing, dra-og-slepp/sortering, leseoppgåver, fritekst
 - Mengdetrening (`drill`): éi oppgåve om gongen, trekt tilfeldig frå ordbanken, umiddelbar tilbakemelding, «Øv på feila», beste runde blir lagra
 - Finn feilen (`findError`): eleven klikkar på feil ord i ein tekst og skriv rett form
 - Automatisk fasit på objektive oppgåver
 - Eigne tekstar blir lagra i `localStorage`
 - Backup som JSON kan lastast ned og lastast opp att
-- Heile sida er statisk — fungerer på GitHub Pages utan byggjesteg
+- Heile sida er statisk og fungerer på GitHub Pages utan byggjesteg
 
 ## Køyre lokalt
 
@@ -73,7 +73,7 @@ npx serve .
 ## Leggje til eller endre innhald
 
 Alt innhald ligg i `js/content/part*.js`. Kvar modul er eit objekt med ei liste
-seksjonar — `lesson`, `exercise` eller `reading`. Sjå eksempel i `part1.js`.
+seksjonar: `lesson`, `exercise` eller `reading`. Sjå eksempel i `part1.js`.
 Modular i Del 2 må ha eit `group`-felt (`omgrep`, `ordklassar`, `trening` eller `feil`);
 gruppene er definerte i `js/modules.js`. Nye innhaldsfiler må leggjast til som
 `<script>` i `index.html`, `modul.html` og `larer/index.html`.
@@ -107,10 +107,10 @@ Orda ligg i `js/content/bank.js`. Jamstilte former skriv du med `|`: `"gav|ga"`.
 
 ### Oppgåvetypar
 
-- `multipleChoice` — `options[]`, `correct` (index)
-- `fillIn` — `items: [{prompt: "Eg ___ heim", accept: ["går"]}]`
-- `translate` — `source`, `accept[]` (fleire tillatne svar)
-- `matching` — `pairs: [[venstre, høgre]]`
-- `categorize` — `categories: { "Namn": [ord, ord, …] }`
-- `freeText` — `question`, `minWords`, `checklist[]` (ikkje automatisk retta)
-- `reading` — `passage`, `questions[]` (kvar kan vere `multipleChoice` eller `freeShort`)
+- `multipleChoice`: `options[]`, `correct` (index)
+- `fillIn`: `items: [{prompt: "Eg ___ heim", accept: ["går"]}]`
+- `translate`: `source`, `accept[]` (fleire tillatne svar)
+- `matching`: `pairs: [[venstre, høgre]]`
+- `categorize`: `categories: { "Namn": [ord, ord, …] }`
+- `freeText`: `question`, `minWords`, `checklist[]` (ikkje automatisk retta)
+- `reading`: `passage`, `questions[]` (kvar kan vere `multipleChoice` eller `freeShort`)

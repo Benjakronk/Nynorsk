@@ -1,4 +1,4 @@
-/* Del 1 — Språkhistorie og debatt */
+/* Del 1: Språkhistorie og debatt */
 
 Modules.register({
   id: "historie-bakgrunn",
@@ -9,7 +9,7 @@ Modules.register({
   sections: [
     {
       type: "lesson",
-      title: "Frå 1380 til 1814 — eit dansk skriftspråk",
+      title: "Frå 1380 til 1814: eit dansk skriftspråk",
       content: `
         <p>I 1380 gjekk Noreg i union med Danmark. Unionen varte i over 400 år, heilt til 1814.
         I løpet av desse hundreåra forsvann det gamalnorske skriftspråket, og dansk vart det
@@ -18,7 +18,7 @@ Modules.register({
 
         <p>Men <em class="nn">talemålet</em> heldt fram med å vere norsk. Folk snakka dialektar
         som var heilt ulike dansk. Ein bonde på Vestlandet, ein fiskar i Nord-Noreg og ein
-        handverkar på Austlandet snakka kvar sin variant av eit nedarva norsk talemål — sjølv
+        handverkar på Austlandet snakka kvar sin variant av eit nedarva norsk talemål, sjølv
         om dei skreiv (om dei i det heile skreiv) på dansk.</p>
 
         <h3>Embetsmannsspråket</h3>
@@ -26,7 +26,7 @@ Modules.register({
         dansk skrift. Mange uttala dansken med ein litt norsk tonefall, og slik oppstod det
         som ofte blir kalla <em class="nn">dansk-norsk</em> eller embetsmannsspråket.</p>
 
-        <h3>1814 — ein ny situasjon</h3>
+        <h3>1814: ein ny situasjon</h3>
         <p>I 1814 vart Noreg løyst frå Danmark og gjekk inn i union med Sverige. Vi fekk eiga
         grunnlov og eige storting. Men skriftspråket var framleis dansk. Mange byrja å spørje:
         kan eit fritt land verkeleg ha eit anna lands språk som sitt einaste skriftspråk?</p>
@@ -110,7 +110,7 @@ Modules.register({
       checklist: [
         "Nemn unionen med Danmark.",
         "Nemn skilnaden mellom skriftspråk og talemål.",
-        "Skriv på nynorsk så godt du kan — bruk «ikkje», «eg», «kva», «frå».",
+        "Skriv på nynorsk så godt du kan, og bruk «ikkje», «eg», «kva», «frå».",
       ],
     },
   ],
@@ -129,7 +129,7 @@ Modules.register({
       content: `
         <p><strong>Ivar Aasen</strong> (1813–1896) voks opp på ein liten gard i Ørsta på
         Sunnmøre. Familien var fattig, og Ivar måtte tidleg ut og jobbe. Men han var
-        usedvanleg lærenem og lærte seg språk på eiga hand — først dansk og latin, seinare
+        usedvanleg lærenem og lærte seg språk på eiga hand, først dansk og latin, seinare
         tysk, engelsk, fransk og fleire.</p>
 
         <h3>Reisene 1842–1846</h3>
@@ -145,7 +145,7 @@ Modules.register({
         </ul>
         <p>I 1853 gav han ut <em class="nn">Prøver af Landsmaalet i Norge</em>, der han
         viste korleis eit nytt norsk skriftspråk kunne sjå ut. Han kalla det
-        <strong>landsmål</strong> — språket for heile landet.</p>
+        <strong>landsmål</strong>, språket for heile landet.</p>
 
         <h3>Korleis bygde han det opp?</h3>
         <p>Aasen ville ikkje berre velje éin dialekt og gjere han til skriftspråk. I staden
@@ -155,7 +155,7 @@ Modules.register({
 
         <div class="callout">
           <strong>Hugs:</strong> Landsmålet vart seinare kalla <em class="nn">nynorsk</em>
-          (frå 1929). Ordet «nynorsk» kan forvirre — det handlar ikkje om eit nytt språk,
+          (frå 1929). Ordet «nynorsk» kan forvirre, for det handlar ikkje om eit nytt språk,
           men om eit skriftspråk bygd på det levande norske talemålet.
         </div>
       `,
@@ -253,7 +253,7 @@ Modules.register({
   sections: [
     {
       type: "lesson",
-      title: "To liner — Knud Knudsen og Ivar Aasen",
+      title: "To liner: Knud Knudsen og Ivar Aasen",
       content: `
         <p>Medan Ivar Aasen bygde landsmål frå dialektane, gjekk <strong>Knud Knudsen</strong>
         (1812–1895) ein annan veg. Han ville <em class="nn">fornorske</em> dansk skrift
@@ -277,14 +277,14 @@ Modules.register({
         På slutten av 1940-talet vart <em class="nn">foreldreaksjonen mot samnorsk</em>
         starta. Dei retta lærebøkene tilbake mot eldre former. Striden var hard på 1950-talet.</p>
 
-        <h3>1981 — samnorsklinja oppgitt</h3>
+        <h3>1981: samnorsklinja oppgitt</h3>
         <p>I 1981 vedtok Stortinget at samnorskpolitikken ikkje lenger skulle gjelde.
         Bokmål og nynorsk skulle få utvikle seg kvar for seg. Seinare har det kome
         moderne rettskrivingar: <strong>2005 for bokmål</strong> og
         <strong>2012 for nynorsk</strong>.</p>
 
         <div class="callout warn">
-          <strong>Viktig omgrep:</strong> «Samnorsk» tyder ikkje at språka vart eitt — det
+          <strong>Viktig omgrep:</strong> «Samnorsk» tyder ikkje at språka vart eitt. Det
           var ein <em>politikk</em> som freista å smelte dei saman. Politikken vart altså
           aldri gjennomført fullt ut, og vart formelt avslutta i 1981.
         </div>
@@ -353,7 +353,7 @@ Modules.register({
     },
     {
       type: "reading",
-      title: "Foreldreaksjonen — kort kjelde",
+      title: "Foreldreaksjonen: kort kjelde",
       passage: `
         <p>På slutten av 1940-talet og utover 1950-talet retta foreldre rundt om i landet
         sjølv lærebøkene til borna sine. Dei sletta ut samnorske former med blekk og skreiv
@@ -361,7 +361,7 @@ Modules.register({
         mot samnorsk</em> i 1951.</p>
         <p>Mange opplevde at reformene gjorde skriftspråket framand for dei. Andre meinte
         at språket måtte vere meir folkeleg, og at samnorsk var ein god tanke. Striden
-        viste at språk handlar om identitet — ikkje berre om reglar.</p>
+        viste at språk handlar om identitet, ikkje berre om reglar.</p>
       `,
       questions: [
         {
@@ -412,7 +412,7 @@ Modules.register({
         <p>I dag har om lag <strong>10–12 %</strong> av nordmenn nynorsk som hovudmål.
         Kjerneområda er <strong>Vestland</strong>, <strong>Møre og Romsdal</strong>, samt
         delar av indre Austlandet (Valdres, Hallingdal, Gudbrandsdalen). Resten av landet
-        har bokmål som hovudmål, men alle elevar lærer båe — det eine som <em class="nn">hovudmål</em>
+        har bokmål som hovudmål, men alle elevar lærer båe, det eine som <em class="nn">hovudmål</em>
         og det andre som <em class="nn">sidemål</em>.</p>
 
         <h3>Mållova (no: språklova frå 2022)</h3>
@@ -445,7 +445,7 @@ Modules.register({
 
         <div class="callout">
           <strong>Status no:</strong> Nynorsk er likeverdig med bokmål i lov, har faste
-          krav i offentleg sektor, og blir brukt av ein stabil del av folket — men
+          krav i offentleg sektor, og blir brukt av ein stabil del av folket, men
           debatten om plassen til nynorsk i skulen kjem opp att med jamne mellomrom.
         </div>
       `,
@@ -556,3 +556,391 @@ Modules.register({
     },
   ],
 });
+
+Modules.register({
+  id: "historie-skriving",
+  part: 1,
+  title: "Skriv om språkhistoria",
+  summary: "Fem skriveoppgåver som byggjer på alt fagstoffet i Del 1.",
+  estimatedMinutes: 60,
+  sections: [
+    {
+      type: "lesson",
+      title: "Slik skriv du om språkhistorie",
+      content: `
+        <p>No har du lese om vegen frå dansk skriftspråk til to jamstilte norske skriftspråk.
+        I denne modulen skal du bruke det du kan. Her er det ikkje nye fakta som ventar, men
+        fem skriveoppgåver av ulikt slag: forklare, samanlikne, formidle, dikte og
+        oppsummere.</p>
+
+        <h3>Fakta er ikkje nok</h3>
+        <p>Ein svak fagtekst er ei liste: «I 1380 gjekk Noreg i union med Danmark. I 1814 vart
+        Noreg fritt. I 1885 kom jamstillingsvedtaket.» Alt er rett, men ingenting heng saman.
+        Ein god fagtekst viser <strong>samanhengen</strong>: kvifor det eine førte til det
+        andre.</p>
+        <table>
+          <thead><tr><th>I staden for</th><th>Skriv heller</th></tr></thead>
+          <tbody>
+            <tr><td>Aasen reiste rundt i Noreg. Han gav ut ei ordbok.</td>
+                <td>Fordi Aasen ville byggje skriftspråket på levande talemål, måtte han
+                    først reise rundt og samle ord. Resultatet vart ordboka frå 1850.</td></tr>
+            <tr><td>I 1885 kom jamstillingsvedtaket.</td>
+                <td>Etter tretti år med landsmål i bruk vedtok Stortinget i 1885 at dei to
+                    skriftspråka skulle vere likeverdige.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Bindeord som viser samanheng</h3>
+        <p>Desse orda gjer arbeidet for deg: <em class="nn">fordi, difor, derfor, slik at,
+        men, samtidig, seinare, først, deretter, til slutt, likevel, altså</em>.</p>
+
+        <h3>Faktabank: tidslinje</h3>
+        <p>Bruk denne når du skriv. Ta med årstal berre når dei betyr noko for poenget ditt.</p>
+        <table>
+          <thead><tr><th>År</th><th>Hending</th></tr></thead>
+          <tbody>
+            <tr><td>1380</td><td>Noreg går i union med Danmark. Unionen varer i over 400 år.</td></tr>
+            <tr><td>1814</td><td>Noreg blir løyst frå Danmark, får eiga grunnlov og eige storting, men skriftspråket er framleis dansk.</td></tr>
+            <tr><td>1842–1846</td><td>Ivar Aasen reiser rundt i Noreg og samlar dialektar.</td></tr>
+            <tr><td>1848</td><td><em class="nn">Det norske Folkesprogs Grammatik</em></td></tr>
+            <tr><td>1850</td><td><em class="nn">Ordbog over det norske Folkesprog</em></td></tr>
+            <tr><td>1853</td><td><em class="nn">Prøver af Landsmaalet i Norge</em>. Aasen kallar språket landsmål.</td></tr>
+            <tr><td>1885</td><td>Jamstillingsvedtaket: landsmål og det norsk-danske skriftspråket blir likeverdige.</td></tr>
+            <tr><td>1907</td><td>Alle norske elevar skal lære båe skriftspråka. Første rettskrivingsreforma i samnorskretning.</td></tr>
+            <tr><td>1917 og 1938</td><td>To nye rettskrivingsreformer i samnorskretning.</td></tr>
+            <tr><td>1929</td><td>Landsmål får namnet nynorsk.</td></tr>
+            <tr><td>1940-talet</td><td>Foreldreaksjonen mot samnorsk blir starta. Striden er hard på 1950-talet.</td></tr>
+            <tr><td>1980</td><td>Staten blir pålagd å bruke begge skriftspråka (mållova).</td></tr>
+            <tr><td>1981</td><td>Stortinget gir opp samnorskpolitikken.</td></tr>
+            <tr><td>2005 og 2012</td><td>Moderne rettskriving for bokmål (2005) og nynorsk (2012).</td></tr>
+            <tr><td>2022</td><td>Ny språklov: norsk er hovudspråket, og bokmål og nynorsk er likeverdige.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Faktabank: to menn, to metodar</h3>
+        <table>
+          <thead><tr><th></th><th>Ivar Aasen (1813–1896)</th><th>Knud Knudsen (1812–1895)</th></tr></thead>
+          <tbody>
+            <tr><td>Utgangspunkt</td><td>Dei norske dialektane</td><td>Dansk skrift</td></tr>
+            <tr><td>Metode</td><td>Samla dei eldre formene dialektane hadde felles</td><td>Fornorska dansk skrift steg for steg</td></tr>
+            <tr><td>Førte til</td><td>Landsmål, seinare nynorsk</td><td>Riksmål, seinare bokmål</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout">
+          <strong>Skriv på nynorsk.</strong> Alle oppgåvene her skal skrivast på nynorsk.
+          Hugs <em class="nn">eg, ikkje, kva, frå, mykje</em> og <em class="nn">-a</em> i
+          hokjønn bestemt eintal: <em class="nn">boka, historia, tida</em>. Teksten blir
+          lagra automatisk, og du kan laste han ned som fil når du er ferdig.
+        </div>
+      `,
+    },
+    {
+      type: "exercise",
+      exerciseType: "freeText",
+      title: "1. Fortel historia",
+      question: "Skriv ein samanhengande tekst (200–300 ord) om korleis nynorsk vart til. Start før 1850 og avslutt med at landsmålet fekk namnet nynorsk. Teksten skal lesast av nokon som ikkje kan noko om emnet frå før.",
+      hint: "Tenk på det som ei forteljing med ei årsak: eit land utan eige skriftspråk, ein mann som gjer noko med det, og eit resultat.",
+      minWords: 200,
+      checklist: [
+        "Bruk minst fem årstal frå tidslinja, og bruk dei rett.",
+        "Forklar kvifor spørsmålet om skriftspråk vart viktig etter 1814.",
+        "Gjer greie for kva Aasen faktisk gjorde på reisene sine.",
+        "Forklar kva ordet landsmål tyder, og kvifor han valde nettopp det ordet.",
+        "Bind setningane saman med ord som fordi, difor, seinare og til slutt.",
+      ],
+    },
+    {
+      type: "exercise",
+      exerciseType: "freeText",
+      title: "2. Samanlikn Aasen og Knudsen",
+      question: "Skriv ein samanliknande tekst (150–250 ord) om Ivar Aasen og Knud Knudsen. Dei ville begge gi Noreg eit norsk skriftspråk, men dei gjekk motsett veg. Forklar korleis, og kva dei to linene førte til.",
+      hint: "Ein samanliknande tekst kan byggjast på to måtar: enten éin person av gongen, eller eitt punkt av gongen (utgangspunkt, metode, resultat). Vel éin av dei og hald deg til han.",
+      minWords: 150,
+      checklist: [
+        "Gjer greie for kva kvar av dei tok utgangspunkt i.",
+        "Forklar metoden til begge med eigne ord.",
+        "Nemn kva skriftspråk kvar line førte til i dag.",
+        "Peik på minst éin ting dei hadde felles.",
+        "Avslutt med kva du sjølv meiner var den beste framgangsmåten, og kvifor.",
+      ],
+    },
+    {
+      type: "exercise",
+      exerciseType: "freeText",
+      title: "3. Forklar eit omgrep",
+      question: "Vel <strong>eitt</strong> av desse omgrepa: <em class=\"nn\">landsmål</em>, <em class=\"nn\">jamstilling</em>, <em class=\"nn\">samnorsk</em> eller <em class=\"nn\">sidemål</em>. Forklar det (120–200 ord) for ein elev på 6. trinn som aldri har høyrt ordet før.",
+      hint: "Skriv omgrepet du valde øvst i teksten. Å forklare noko enkelt er vanskelegare enn å forklare det innfløkt: unngå faguttrykk du ikkje forklarar undervegs.",
+      minWords: 120,
+      checklist: [
+        "Skriv kva omgrepet tyder, med korte setningar.",
+        "Gi eit konkret døme som ein sjetteklassing kjenner seg att i.",
+        "Ta med minst eitt årstal, og forklar kvifor det året er viktig.",
+        "Unngå vanskelege ord, eller forklar dei med ein gong du bruker dei.",
+        "Avslutt med éi setning om kvifor omgrepet framleis betyr noko i dag.",
+      ],
+    },
+    {
+      type: "exercise",
+      exerciseType: "freeText",
+      title: "4. Dagbok frå reisa",
+      question: "Skriv eit dagboknotat (150–250 ord) frå ein dag på ei av reisene til Ivar Aasen, i eg-form, som om du var han. Du dikter sjølv stemninga og staden, men alt det faglege skal stemme med det du har lese.",
+      hint: "Reisene gjekk føre seg mellom 1842 og 1846, med stipend frå Det Kongelige Norske Videnskabers Selskab. Vel deg ein stad og ein dato innanfor desse åra.",
+      minWords: 150,
+      checklist: [
+        "Skriv i eg-form og set dato og stad øvst.",
+        "Vis minst tre konkrete ting Aasen gjorde: lytta, skreiv ned ord, samanlikna bøyingar frå ulike bygder.",
+        "Få fram kvifor han ikkje ville nøye seg med éin einaste dialekt.",
+        "Hald deg til fakta frå modulen. Ikkje dikt opp bøker eller årstal.",
+        "Skriv på nynorsk, men du treng ikkje skrive slik dei skreiv på 1800-talet.",
+      ],
+    },
+    {
+      type: "exercise",
+      exerciseType: "freeText",
+      title: "5. Frå 1885 til i dag",
+      question: "Skriv ein kort fagtekst (180–260 ord) om kva som har skjedd med nynorsken etter jamstillingsvedtaket. Kva har språket oppnådd, og kva er framleis uavklart?",
+      hint: "Her skal du bruke stoffet frå dei to siste modulane i Del 1: språkstriden og samnorsk, og nynorsk i dag.",
+      minWords: 180,
+      checklist: [
+        "Forklar kort kva jamstillingsvedtaket frå 1885 innebar.",
+        "Gjer greie for samnorskpolitikken og korleis han enda.",
+        "Ta med minst to fakta om stillinga i dag, til dømes språklova, kravet om 25 % eller kor mange som har nynorsk som hovudmål.",
+        "Skriv minst éi setning om kva som framleis blir diskutert.",
+        "Skil klart mellom fakta og dine eigne meiningar.",
+      ],
+    },
+  ],
+});
+
+/* Repetisjonsmodulen. Oppgåvene ligg i tre lister som blir trekte tilfeldig av
+   drill-motoren i js/drills.js. Dei to første testane tek éi liste kvar, den
+   siste blandar alle tre. */
+(() => {
+  // Korte svar: årstal og tal. Går som skriving eller val.
+  const AARSTAL = [
+    { key: "rep-aar-union", prompt: "Kva år gjekk Noreg i union med Danmark?", cue: "(årstal)",
+      accept: ["1380"], options: ["1814", "1450"],
+      why: "Unionen med Danmark varte i over 400 år, frå 1380 til 1814." },
+    { key: "rep-aar-1814", prompt: "Kva år vart Noreg løyst frå Danmark?", cue: "(årstal)",
+      accept: ["1814"], options: ["1380", "1885"],
+      why: "I 1814 gjekk Noreg inn i union med Sverige og fekk eiga grunnlov og eige storting. Skriftspråket var framleis dansk." },
+    { key: "rep-aar-grammatik", prompt: "Kva år gav Aasen ut grammatikken sin?", cue: "(årstal)",
+      accept: ["1848"], options: ["1850", "1853"],
+      why: "<em class=\"nn\">Det norske Folkesprogs Grammatik</em> kom i 1848, to år etter at reisene var over." },
+    { key: "rep-aar-ordbog", prompt: "Kva år kom ordboka til Aasen?", cue: "(årstal)",
+      accept: ["1850"], options: ["1848", "1853"],
+      why: "<em class=\"nn\">Ordbog over det norske Folkesprog</em> kom i 1850." },
+    { key: "rep-aar-prover", prompt: "Kva år viste Aasen for første gong korleis landsmålet kunne sjå ut?", cue: "(årstal)",
+      accept: ["1853"], options: ["1850", "1885"],
+      why: "I 1853 gav han ut <em class=\"nn\">Prøver af Landsmaalet i Norge</em>." },
+    { key: "rep-aar-reiser", prompt: "Kor mange år reiste Aasen rundt og samla dialektar?", cue: "(tal)",
+      accept: ["fire", "4"], options: ["to", "ti"],
+      why: "Reisene varte frå 1842 til 1846, altså fire år." },
+    { key: "rep-aar-jamstilling", prompt: "Kva år kom jamstillingsvedtaket?", cue: "(årstal)",
+      accept: ["1885"], options: ["1853", "1907"],
+      why: "I 1885 vedtok Stortinget at landsmål og det norsk-danske skriftspråket skulle vere jamstilte." },
+    { key: "rep-aar-sidemaal", prompt: "Sidan kva år har alle norske elevar lært båe skriftspråka?", cue: "(årstal)",
+      accept: ["1907"], options: ["1885", "1938"],
+      why: "Sidan 1907 har sidemål vore ein del av skulen for alle." },
+    { key: "rep-aar-namnet", prompt: "Kva år fekk landsmålet namnet nynorsk?", cue: "(årstal)",
+      accept: ["1929"], options: ["1907", "1938"],
+      why: "Namnet vart endra i 1929. Språket var det same." },
+    { key: "rep-aar-foreldre", prompt: "Kva tiår vart foreldreaksjonen mot samnorsk starta i?", cue: "(tiår)",
+      accept: ["1940-talet", "1940-åra", "40-talet", "1940"], options: ["1950-talet", "1960-talet"],
+      why: "Aksjonen vart starta på slutten av 1940-talet. Striden var hardast på 1950-talet." },
+    { key: "rep-aar-mallov", prompt: "Kva år vart staten pålagd å bruke begge skriftspråka?", cue: "(årstal)",
+      accept: ["1980"], options: ["1981", "2022"],
+      why: "Mållova frå 1980 gav staten plikt til å bruke både bokmål og nynorsk." },
+    { key: "rep-aar-1981", prompt: "Kva år gav Stortinget opp samnorskpolitikken?", cue: "(årstal)",
+      accept: ["1981"], options: ["1938", "1959"],
+      why: "I 1981 vart det vedteke at bokmål og nynorsk skulle få utvikle seg kvar for seg." },
+    { key: "rep-aar-bokmal2005", prompt: "Kva år fekk bokmål si moderne rettskriving?", cue: "(årstal)",
+      accept: ["2005"], options: ["2012", "1981"],
+      why: "Bokmål fekk ny rettskriving i 2005, nynorsk i 2012." },
+    { key: "rep-aar-nynorsk2012", prompt: "Kva år fekk nynorsk den rettskrivinga som gjeld i dag?", cue: "(årstal)",
+      accept: ["2012"], options: ["2005", "2022"],
+      why: "Rettskrivingsvedtaket for nynorsk kom i 2012." },
+    { key: "rep-aar-spraaklov", prompt: "Kva år fekk Noreg ei ny språklov?", cue: "(årstal)",
+      accept: ["2022"], options: ["1980", "2012"],
+      why: "Språklova frå 2022 slår fast at norsk er hovudspråket, og at bokmål og nynorsk er likeverdige." },
+  ];
+
+  // Korte svar: namn og omgrep. Går som skriving eller val.
+  const OMGREP = [
+    { key: "rep-om-aasen", prompt: "Kven bygde eit skriftspråk på dei norske dialektane?", cue: "(namn)",
+      accept: ["Ivar Aasen", "Aasen"], options: ["Knud Knudsen", "Stortinget"],
+      why: "Ivar Aasen samla dialektformer på reisene sine og bygde landsmålet av dei." },
+    { key: "rep-om-knudsen", prompt: "Kven ville fornorske dansk skrift steg for steg?", cue: "(namn)",
+      accept: ["Knud Knudsen", "Knudsen"], options: ["Ivar Aasen", "foreldreaksjonen"],
+      why: "Knud Knudsen (1812–1895) ville endre dansk skrift gradvis mot det danna talemålet i norske byar." },
+    { key: "rep-om-landsmaal", prompt: "Kva kalla Aasen skriftspråket sitt?", cue: "(eitt ord)",
+      accept: ["landsmål"], options: ["bokmål", "riksmål"],
+      why: "Landsmål tyder språket for heile landet. Frå 1929 heitte det nynorsk." },
+    { key: "rep-om-bokmal", prompt: "Kva skriftspråk voks fram av lina til Knudsen?", cue: "(eitt ord)",
+      accept: ["bokmål"], options: ["nynorsk", "landsmål"],
+      why: "Lina til Knudsen vart riksmål og seinare bokmål." },
+    { key: "rep-om-orsta", prompt: "Kvar voks Ivar Aasen opp?", cue: "(stad)",
+      accept: ["Ørsta", "Ørsta på Sunnmøre", "Sunnmøre"], options: ["Bergen", "Kristiania"],
+      why: "Han voks opp på ein liten gard i Ørsta på Sunnmøre." },
+    { key: "rep-om-samnorsk", prompt: "Kva heiter politikken som skulle føre bokmål og nynorsk saman til eitt språk?", cue: "(eitt ord)",
+      accept: ["samnorsk", "samnorskpolitikken"], options: ["jamstilling", "fornorsking"],
+      why: "Samnorsk var ein politikk, ikkje eit ferdig språk. Han vart aldri gjennomført fullt ut." },
+    { key: "rep-om-jamstilling", prompt: "Kva heiter vedtaket frå 1885 som gjorde dei to skriftspråka likeverdige?", cue: "(eitt ord)",
+      accept: ["jamstillingsvedtaket", "jamstilling"], options: ["språklova", "mållova"],
+      why: "Jamstillingsvedtaket gav landsmålet offisiell status i skule og forvaltning." },
+    { key: "rep-om-sidemaal", prompt: "Du har bokmål som hovudmål. Kva kallar vi då nynorsk for deg?", cue: "(eitt ord)",
+      accept: ["sidemål"], options: ["hovudmål", "landsmål"],
+      why: "Har du bokmål som hovudmål, er nynorsk sidemålet ditt, og omvendt." },
+    { key: "rep-om-dialektar", prompt: "Kva slags norsk brukte folk medan skriftspråket var dansk?", cue: "(eitt ord)",
+      accept: ["dialektar", "dialekt", "talemål"], options: ["gamalnorsk", "riksmål"],
+      why: "Skriftspråket var dansk, men talemålet heldt fram med å vere norske dialektar." },
+    { key: "rep-om-embetsmann", prompt: "Kva blir talemålet blant embetsmenn og borgarskap i byane ofte kalla?", cue: "(omgrep)",
+      accept: ["dansk-norsk", "embetsmannsspråket", "dansknorsk"], options: ["landsmål", "gamalnorsk"],
+      why: "Dei uttala dansk med norsk tonefall, og det blir kalla dansk-norsk eller embetsmannsspråket." },
+    { key: "rep-om-nrk", prompt: "Kor mange prosent nynorsk må NRK ha i sendingane sine?", cue: "(tal)",
+      accept: ["25", "25 prosent"], options: ["10", "50"],
+      why: "Kravet er minst 25 %, og det gjeld både tekst og munnleg." },
+    { key: "rep-om-dagogtid", prompt: "Kva avis blir skriven berre på nynorsk?", cue: "(namn)",
+      accept: ["Dag og Tid"], options: ["Aftenposten", "Bergens Tidende"],
+      why: "Dag og Tid kjem ut berre på nynorsk." },
+  ];
+
+  // Lengre svar. Desse blir alltid vist som fleirval.
+  const KONSEPT = [
+    { key: "rep-kon-gamalnorsk", prompt: "Kvifor forsvann det gamalnorske skriftspråket?",
+      accept: ["Noreg var i union med Danmark, og dansk vart det einaste skriftspråket"],
+      options: ["Folk slutta å snakke norsk", "Ivar Aasen erstatta det med landsmål"],
+      why: "Gjennom over 400 år i union skreiv embetsmenn, prestar og forfattarar dansk, og dansk var språket i skulen." },
+    { key: "rep-kon-1814", prompt: "Kva var nytt med språkspørsmålet etter 1814?",
+      accept: ["Noreg var eit fritt land, men hadde framleis eit anna lands språk som skriftspråk"],
+      options: ["Dansk vart forbode i skulen", "Noreg fekk eit ferdig norsk skriftspråk"],
+      why: "Med eiga grunnlov og eige storting byrja mange å spørje om eit fritt land kunne skrive dansk." },
+    { key: "rep-kon-metode", prompt: "Korleis bygde Aasen opp landsmålet?",
+      accept: ["Han fann dei eldre formene som dei norske dialektane hadde felles"],
+      options: ["Han valde éin dialekt og gjorde han til skriftspråk", "Han omsette dansk ord for ord"],
+      why: "Aasen ville ikkje løfte fram éin dialekt, men finne det fellesgjeldande i mange." },
+    { key: "rep-kon-vestnorsk", prompt: "Kvifor vekta Aasen former frå Vestlandet og frå dei indre bygdene?",
+      accept: ["Fordi dei ofte stod nærare gamalnorsk"],
+      options: ["Fordi flest folk budde der", "Fordi han sjølv ikkje kjende andre dialektar"],
+      why: "Desse formene hadde endra seg mindre, og låg difor nærare det gamle språket." },
+    { key: "rep-kon-jamstilling", prompt: "Kva innebar jamstillingsvedtaket?",
+      accept: ["At landsmål og det norsk-danske skriftspråket skulle vere likeverdige i skule og forvaltning"],
+      options: ["At alle måtte skrive landsmål", "At dansk vart forbode i Noreg"],
+      why: "Vedtaket gjorde landsmålet offisielt, men tvinga ingen til å bruke det." },
+    { key: "rep-kon-samnorsk", prompt: "Kva var målet med samnorskpolitikken?",
+      accept: ["Å føre bokmål og nynorsk saman til eitt felles skriftspråk"],
+      options: ["Å fjerne nynorsk heilt", "Å gjere dansk til hovudspråk igjen"],
+      why: "Tre store rettskrivingsreformer i 1907, 1917 og 1938 endra begge språka i denne retninga." },
+    { key: "rep-kon-foreldre", prompt: "Kva gjorde foreldra i foreldreaksjonen mot samnorsk?",
+      accept: ["Dei retta lærebøkene tilbake mot eldre former"],
+      options: ["Dei kravde meir nynorsk i skulen", "Dei starta ei eiga avis"],
+      why: "Aksjonen var sterkast på Austlandet og i byane, og striden var hard på 1950-talet." },
+    { key: "rep-kon-1981", prompt: "Kva vart resultatet av at samnorskpolitikken vart gitt opp i 1981?",
+      accept: ["Bokmål og nynorsk skulle få utvikle seg kvar for seg"],
+      options: ["Nynorsk mista den offisielle statusen sin", "Dei to språka vart slått saman"],
+      why: "Etterpå kom moderne rettskrivingar for kvart språk: 2005 for bokmål og 2012 for nynorsk." },
+    { key: "rep-kon-spraaklov", prompt: "Kva slår språklova frå 2022 fast?",
+      accept: ["At norsk er hovudspråket, og at bokmål og nynorsk er likeverdige skriftspråk"],
+      options: ["At nynorsk er hovudspråket i Noreg", "At statsorgan sjølve kan velje éi målform"],
+      why: "Lova vidarefører prinsippet frå jamstillingsvedtaket, no i moderne form." },
+    { key: "rep-kon-statsorgan", prompt: "Kor mykje nynorsk skal statsorgan bruke i tekstar retta mot ålmenta?",
+      accept: ["Minst 25 %"], options: ["Minst 10 %", "Minst 50 %"],
+      why: "Kravet er minst 25 % nynorsk og minst 25 % bokmål." },
+    { key: "rep-kon-andel", prompt: "Om lag kor stor del av nordmenn har nynorsk som hovudmål?",
+      accept: ["Om lag 10–12 %"], options: ["Om lag 25 %", "Om lag 40 %"],
+      why: "Delen har halde seg nokså stabil over tid." },
+    { key: "rep-kon-kjerne", prompt: "Kvar ligg kjerneområda for nynorsk?",
+      accept: ["Vestland, Møre og Romsdal og delar av indre Austlandet"],
+      options: ["Oslo og Viken", "Nord-Noreg og Trøndelag"],
+      why: "Valdres, Hallingdal og Gudbrandsdalen er dei viktigaste austlandsområda." },
+    { key: "rep-kon-argfor", prompt: "Kva er eit vanleg argument som støttar sidemålsopplæring?",
+      accept: ["Nynorsk er ein del av kulturarven, og utan opplæring blir språket sett under press"],
+      options: ["Nynorsk er lettare å lære enn bokmål", "Sidemål gir betre karakterar i engelsk"],
+      why: "Motargumentet er at tida heller kunne brukast på andre fag." },
+    { key: "rep-kon-grammatik", prompt: "Kva heiter grammatikken Aasen gav ut i 1848?",
+      accept: ["Det norske Folkesprogs Grammatik"],
+      options: ["Ordbog over det norske Folkesprog", "Prøver af Landsmaalet i Norge"],
+      why: "Grammatikken kom i 1848, ordboka i 1850 og tekstprøvene i 1853." },
+    { key: "rep-kon-prover", prompt: "I kva bok viste Aasen korleis eit nytt norsk skriftspråk kunne sjå ut?",
+      accept: ["Prøver af Landsmaalet i Norge"],
+      options: ["Det norske Folkesprogs Grammatik", "Ordbog over det norske Folkesprog"],
+      why: "Boka kom i 1853. Det var her landsmålet vart vist i praksis." },
+  ];
+
+  Modules.register({
+    id: "historie-repetisjon",
+    part: 1,
+    title: "Repetisjon: kva hugsar du?",
+    summary: "Test deg sjølv med tilfeldig valde oppgåver frå heile Del 1.",
+    estimatedMinutes: 25,
+    sections: [
+      {
+        type: "lesson",
+        title: "Slik fungerer testen",
+        content: `
+          <p>Denne modulen inneheld ingen nye fakta. Her skal du finne ut kor mykje som sit
+          att etter dei fire første modulane i Del 1.</p>
+          <ul>
+            <li>Kvar test trekkjer oppgåvene <strong>tilfeldig</strong>, så du får ei ny
+                blanding kvar gong.</li>
+            <li>Du får éi oppgåve om gongen. Skriv svaret og trykk <strong>Enter</strong>,
+                eller vel eit alternativ.</li>
+            <li>Du får vite med ein gong om det var rett, og kvifor.</li>
+            <li>Etter runden kan du <strong>øve på det du bomma på</strong> før du tek ei ny
+                runde.</li>
+            <li>Beste resultatet blir lagra. Ei runde med minst 80&nbsp;% rett tel som
+                fullført.</li>
+          </ul>
+
+          <h3>Tre testar</h3>
+          <p>Dei to første er korte og målretta. Den siste er den store prøven på alt.</p>
+          <table>
+            <thead><tr><th>Test</th><th>Handlar om</th><th>Form</th></tr></thead>
+            <tbody>
+              <tr><td>Årstal og hendingar</td><td>Tidslinja frå 1380 til 2022</td><td>Skriving eller fleirval</td></tr>
+              <tr><td>Personar og omgrep</td><td>Namn, stader og faguttrykk</td><td>Skriving eller fleirval</td></tr>
+              <tr><td>Stor test</td><td>Alt, òg dei lengre spørsmåla</td><td>Fleirval</td></tr>
+            </tbody>
+          </table>
+
+          <div class="callout">
+            <strong>Fekk du under 80 %?</strong> Gå tilbake til modulen det gjeld og les
+            leksjonen ein gong til:
+            <a href="modul.html?id=historie-bakgrunn">Norsk språk før 1850</a>,
+            <a href="modul.html?id=historie-aasen">Ivar Aasen og landsmålet</a>,
+            <a href="modul.html?id=historie-striden">Språkstriden og samnorsk</a> eller
+            <a href="modul.html?id=historie-i-dag">Nynorsk i dag og den moderne debatten</a>.
+          </div>
+        `,
+      },
+      {
+        type: "exercise",
+        exerciseType: "drill",
+        title: "Test 1: årstal og hendingar",
+        intro: "Åtte tilfeldige spørsmål om tidslinja. Svar med tal.",
+        items: AARSTAL,
+        perRound: 8,
+        mode: "mixed",
+      },
+      {
+        type: "exercise",
+        exerciseType: "drill",
+        title: "Test 2: personar og omgrep",
+        intro: "Åtte tilfeldige spørsmål om namn, stader og faguttrykk.",
+        items: OMGREP,
+        perRound: 8,
+        mode: "mixed",
+      },
+      {
+        type: "exercise",
+        exerciseType: "drill",
+        title: "Test 3: stor test frå heile Del 1",
+        intro: "Femten tilfeldige spørsmål frå alle dei fire modulane, med fleirval. Klarer du 80&nbsp;%?",
+        mix: [{ items: AARSTAL }, { items: OMGREP }, { items: KONSEPT }],
+        perRound: 15,
+        mode: "choice",
+      },
+    ],
+  });
+})();

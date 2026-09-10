@@ -6,7 +6,7 @@ Modules.register({
   id: "trening-substantiv",
   part: 2,
   group: "trening",
-  title: "Substantiv – kjønn og bøying",
+  title: "Substantiv: kjønn og bøying",
   summary: "Kjønn, bestemt form og fleirtal for over hundre substantiv. Nye ord i kvar runde.",
   estimatedMinutes: 20,
   sections: [
@@ -24,8 +24,8 @@ Modules.register({
         </ul>
         <div class="callout">
           <strong>Hugs mønstera:</strong> hankjønn <em class="nn">-en, -ar, -ane</em> ·
-          hokjønn <em class="nn">-a, -er, -ene</em> · inkjekjønn <em class="nn">-et, –, -a</em>.
-          Treng du repetisjon? Sjå <a href="modul.html?id=grammatikk-substantiv">Substantiv — kjønn og bøying</a>.
+          hokjønn <em class="nn">-a, -er, -ene</em> · inkjekjønn <em class="nn">-et, (inga ending), -a</em>.
+          Treng du repetisjon? Sjå <a href="modul.html?id=grammatikk-substantiv">Substantiv: kjønn og bøying</a>.
         </div>
       `,
     },
@@ -72,7 +72,7 @@ Modules.register({
     {
       type: "exercise",
       exerciseType: "drill",
-      title: "Hokjønnsord – her går det oftast gale",
+      title: "Hokjønnsord: her går det oftast gale",
       intro: "Berre hokjønnsord. Pass på <em class=\"nn\">-a</em> i bestemt eintal og omlyd i ord som <em class=\"nn\">bok – bøker</em>.",
       bank: "nouns",
       filter: { g: ["f"] },
@@ -118,7 +118,7 @@ Modules.register({
   id: "trening-verb",
   part: 2,
   group: "trening",
-  title: "Verb – tider og klassar",
+  title: "Verb: tider og klassar",
   summary: "Presens, preteritum og perfektum av nesten hundre verb: a-verb, e-verb, j-verb, kortverb og sterke verb.",
   estimatedMinutes: 25,
   sections: [
@@ -143,7 +143,7 @@ Modules.register({
           <strong>Hugs:</strong> bokmål <em class="bm">-et</em> i preteritum → a-verb (<em class="nn">kasta</em>);
           bokmål <em class="bm">-te/-de</em> → e-verb (<em class="nn">kjøpte, høyrde</em>). Sterke verb har aldri
           <em class="bm">-er</em> i presens: <em class="nn">kjem, finn, skriv</em>. Repetisjon finn du i
-          <a href="modul.html?id=grammatikk-verb">Verb — sterke og svake</a> og
+          <a href="modul.html?id=grammatikk-verb">Verb: sterke og svake</a> og
           <a href="modul.html?id=omgrep-boying">Bøyingsomgrep</a>. Der to former er tillatne
           (<em class="nn">gav/ga, blei/vart</em>), blir begge godtekne.
         </div>
@@ -219,7 +219,7 @@ Modules.register({
       type: "exercise",
       exerciseType: "drill",
       title: "Kva slags verb er det?",
-      intro: "Vel verbklasse. Tenk på preteritum: endar det på <em class=\"nn\">-a</em>, <em class=\"nn\">-de/-te</em>, <em class=\"nn\">-dde</em> – eller skifter det vokal?",
+      intro: "Vel verbklasse. Tenk på preteritum: endar det på <em class=\"nn\">-a</em>, <em class=\"nn\">-de/-te</em>, <em class=\"nn\">-dde</em>, eller skifter det vokal?",
       bank: "verbs",
       tasks: ["cls"],
       perRound: 10,
@@ -252,7 +252,7 @@ Modules.register({
   id: "trening-adjektiv",
   part: 2,
   group: "trening",
-  title: "Adjektiv – samsvar og gradbøying",
+  title: "Adjektiv: samsvar og gradbøying",
   summary: "Inkjekjønn, fleirtal, komparativ og superlativ for over femti adjektiv.",
   estimatedMinutes: 15,
   sections: [
@@ -268,7 +268,7 @@ Modules.register({
           i inkjekjønn (<em class="nn">eit vanleg hus, eit viktig val</em>). Nynorsk gradbøyer med
           <em class="nn">-are/-ast</em>, ikkje <em class="bm">-ere/-est</em>. Nokre adjektiv er uregelrette:
           <em class="nn">god – betre – best, liten – mindre – minst, gammal – eldre – eldst</em>.
-          Repetisjon: <a href="modul.html?id=grammatikk-adjektiv">Adjektiv — samsvarsbøying</a>.
+          Repetisjon: <a href="modul.html?id=grammatikk-adjektiv">Adjektiv: samsvarsbøying</a>.
         </div>
       `,
     },
@@ -337,7 +337,7 @@ Modules.register({
       type: "lesson",
       title: "Slik trener du",
       content: `
-        <p>Småorda er dei orda hjernen hoppar over når du les fort – og difor dei som oftast blir
+        <p>Småorda er dei orda hjernen hoppar over når du les fort. Difor er det dei som oftast blir
         ståande på bokmål: <em class="bm">ikke, bare, hva, hvordan, noen</em>. Her trener du dei
         på to måtar: først som gloser (kva heiter ordet på nynorsk?), så i setningar der du må velje
         rett form.</p>
@@ -422,7 +422,7 @@ Modules.register({
       type: "exercise",
       exerciseType: "drill",
       title: "Då eller når? Kvar eller kor?",
-      intro: "«Den gongen då – kvar gong når.» «Kvar bur du? – Kor gammal er du?»",
+      intro: "«Den gongen då, kvar gong når.» «Kvar bur du? Kor gammal er du?»",
       bank: "sentences",
       set: ["daNar", "kvarKor"],
       perRound: 10,
@@ -469,7 +469,7 @@ Modules.register({
         slik det gjer når du skriv ein tekst: eit substantiv i fleirtal, eit verb i preteritum, eit
         adjektiv i inkjekjønn, eit småord. Det er den beste testen på om kunnskapen sit.</p>
         <div class="callout">
-          <strong>Tips:</strong> Ta ei runde her <em>før</em> du skriv ein tekst på nynorsk, som oppvarming –
+          <strong>Tips:</strong> Ta ei runde her <em>før</em> du skriv ein tekst på nynorsk, som oppvarming,
           og éi etterpå, med dei orda du var usikker på friskt i minnet. Under 80 % rett? Gå tilbake til
           den treningsmodulen som handlar om det du bomma på.
         </div>
