@@ -9,6 +9,7 @@ Modules.register({
   estimatedMinutes: 25,
   sections: [
     {
+      id: "ord1",
       type: "lesson",
       title: "Kva er eit ord bygd opp av?",
       content: `
@@ -24,7 +25,7 @@ Modules.register({
             <tr>
               <td><strong>Rot</strong></td>
               <td>Den minste delen av ordet som har tyding, og som ikkje kan delast vidare.</td>
-              <td><em class="nn">gut</em>, <em class="nn">kast</em>, <em class="nn">fin</em>, <em class="nn">far</em> (i <em class="nn">ufarleg</em>)</td>
+              <td><em class="nn">gut</em>, <em class="nn">kast</em>, <em class="nn">fin</em>, <em class="nn">fri</em> (i <em class="nn">fridom</em>)</td>
             </tr>
             <tr>
               <td><strong>Stamme</strong></td>
@@ -43,7 +44,27 @@ Modules.register({
           </tbody>
         </table>
 
-        <h3>Slik ser det ut i praksis</h3>
+      `,
+    },
+    {
+      id: "ord2",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: stamme og ending",
+      question: "Kva er <em class=\"nn\">stamma</em> i ordet <em class=\"nn\">gutane</em>?",
+      options: [
+        "gut-",
+        "gutane",
+        "-ane",
+      ],
+      correct: 0,
+      explanation: "Stamma er den delen endingane blir hengde på. <em class=\"nn\">gutane</em> er stamma <em class=\"nn\">gut-</em> pluss endinga <em class=\"nn\">-ane</em>, som fortel bestemt form fleirtal.",
+    },
+    {
+      id: "ord3",
+      type: "lesson",
+      title: "Slik ser det ut i praksis",
+      content: `        <h3>Slik ser det ut i praksis</h3>
         <table>
           <thead><tr><th>Ord</th><th>Stamme</th><th>Ending</th><th>Kva endinga fortel</th></tr></thead>
           <tbody>
@@ -84,6 +105,21 @@ Modules.register({
       `,
     },
     {
+      id: "ord4",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: stamma når ordet endar på -e",
+      question: "Ordet <em class=\"nn\">jente</em> blir <em class=\"nn\">jenta</em> i bestemt form. Kva er stamma?",
+      options: [
+        "jent-",
+        "jente-",
+        "jenta-",
+      ],
+      correct: 0,
+      explanation: "Når ordet endar på <em class=\"nn\">-e</em> i grunnforma, fell den <em class=\"nn\">-e</em>-en bort før endinga. Difor heiter det <em class=\"nn\">jenta</em> og <em class=\"nn\">jenter</em>, ikkje <em class=\"nn\">jentea</em>.",
+    },
+    {
+      id: "ord5",
       type: "lesson",
       title: "Bøying eller orddanning?",
       content: `
@@ -99,7 +135,27 @@ Modules.register({
         <p>Når vi driv <strong>orddanning</strong>, lagar vi eit nytt ord med ny tyding, og
         ofte ny ordklasse. Det skjer på to måtar:</p>
 
-        <h3>1. Avleiing: forstaving eller etterstaving</h3>
+      `,
+    },
+    {
+      id: "ord6",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: bøying mot orddanning",
+      question: "<em class=\"nn\">kastar</em> og <em class=\"nn\">kasting</em> er laga frå same stamme. Kva er kva?",
+      options: [
+        "<em class=\"nn\">kastar</em> er bøying, <em class=\"nn\">kasting</em> er orddanning",
+        "Begge er bøying",
+        "Begge er orddanning",
+      ],
+      correct: 0,
+      explanation: "<em class=\"nn\">kastar</em> er framleis verbet <em class=\"nn\">kaste</em>, berre i presens. <em class=\"nn\">kasting</em> er eit nytt ord i ei ny ordklasse, eit substantiv.",
+    },
+    {
+      id: "ord7",
+      type: "lesson",
+      title: "Orddanning 1: avleiing",
+      content: `        <h3>1. Avleiing: forstaving eller etterstaving</h3>
         <table>
           <thead><tr><th>Forstaving (prefiks)</th><th>Døme</th><th>Kva ho gjer</th></tr></thead>
           <tbody>
@@ -127,7 +183,27 @@ Modules.register({
         <em class="bm">-else</em>: <em class="nn">fridom</em> (frihet), <em class="nn">kjærleik</em>
         (kjærlighet), <em class="nn">søknad</em> (søknad), <em class="nn">røynsle</em> (erfaring).</p>
 
-        <h3>2. Samansetning: to ord blir eitt</h3>
+      `,
+    },
+    {
+      id: "ord8",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: forstaving og etterstaving",
+      question: "I ordet <em class=\"nn\">ufarleg</em>, kva er <em class=\"nn\">u-</em> og <em class=\"nn\">-leg</em>?",
+      options: [
+        "<em class=\"nn\">u-</em> er forstaving, <em class=\"nn\">-leg</em> er etterstaving",
+        "Begge er forstavingar",
+        "<em class=\"nn\">u-</em> er etterstaving, <em class=\"nn\">-leg</em> er forstaving",
+      ],
+      correct: 0,
+      explanation: "Ei forstaving står framfor stamma, ei etterstaving etter. <em class=\"nn\">u-</em> snur tydinga, og <em class=\"nn\">-leg</em> gjer substantivet <em class=\"nn\">fare</em> om til eit adjektiv.",
+    },
+    {
+      id: "ord9",
+      type: "lesson",
+      title: "Orddanning 2: samansetning",
+      content: `        <h3>2. Samansetning: to ord blir eitt</h3>
         <p><em class="nn">skule + bok = skulebok</em>, <em class="nn">fot + ball = fotball</em>,
         <em class="nn">sommar + ferie = sommarferie</em>. Nokre gonger kjem det ein bindebokstav
         mellom ledda: <em class="nn">barn<strong>e</strong>hage</em>, <em class="nn">arbeid<strong>s</strong>dag</em>.</p>
@@ -148,6 +224,21 @@ Modules.register({
       `,
     },
     {
+      id: "ord10",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: sisteleddet bestemmer",
+      question: "Kva kjønn har ordet <em class=\"nn\">skulebok</em>?",
+      options: [
+        "Hokjønn, fordi <em class=\"nn\">bok</em> er hokjønn",
+        "Hankjønn, fordi <em class=\"nn\">skule</em> er hankjønn",
+        "Inkjekjønn",
+      ],
+      correct: 0,
+      explanation: "Sisteleddet avgjer kjønn og bøying i eit samansett ord. <em class=\"nn\">bok</em> er hokjønn, så det heiter <em class=\"nn\">ei skulebok</em>.",
+    },
+    {
+      id: "ord11",
       type: "exercise",
       exerciseType: "fillIn",
       question: "Del ordet i stamme og ending. Skriv stamma utan bindestrek og endinga med bindestrek (t.d. <em class=\"nn\">gut</em> og <em class=\"nn\">-ane</em>).",
@@ -164,6 +255,7 @@ Modules.register({
       explanation: "Stamma er den delen endinga blir hengd på. Hugs at -e i grunnforma (jente, kaste) fell bort før endinga: jent-a, kast-ar.",
     },
     {
+      id: "ord12",
       type: "exercise",
       exerciseType: "categorize",
       question: "Bøying, avleiing eller samansetning? Sorter orda.",
@@ -175,6 +267,7 @@ Modules.register({
       explanation: "Bøying gir ei ny form av same ord (gut → gutar). Avleiing legg til ei forstaving eller etterstaving og lagar eit nytt ord (fri → fridom). Samansetning set saman to ord (skule + bok).",
     },
     {
+      id: "ord13",
       type: "exercise",
       exerciseType: "matching",
       question: "Para saman endinga med det ho fortel:",
@@ -190,14 +283,16 @@ Modules.register({
       explanation: "Same bokstav kan vere ulike endingar: -a er bestemt eintal på hokjønnsord (jenta), bestemt fleirtal på inkjekjønnsord (husa) og preteritum av a-verb (kasta).",
     },
     {
+      id: "ord14",
       type: "exercise",
       exerciseType: "multipleChoice",
-      question: "Kva er <strong>rota</strong> i ordet <em class=\"nn\">ufarlege</em>?",
-      options: ["u", "far", "farleg", "ufarleg"],
-      correct: 1,
-      explanation: "Rota er den minste delen med tyding: <em class=\"nn\">far</em> (= fare). <em class=\"nn\">u-</em> er ei forstaving, <em class=\"nn\">-leg</em> ei etterstaving og <em class=\"nn\">-e</em> ei bøyingsending (fleirtal/bestemt form).",
+      question: "Kva er <strong>rota</strong> i ordet <em class=\"nn\">sjukdomen</em>?",
+      options: ["sjuk", "sjukdom", "dom", "sjukdomen"],
+      correct: 0,
+      explanation: "Rota er den minste delen med tyding, og her er det <em class=\"nn\">sjuk</em>. Så kjem etterstavinga <em class=\"nn\">-dom</em>, som lagar eit substantiv av adjektivet, og til slutt bøyingsendinga <em class=\"nn\">-en</em> (bestemt form eintal). Heile ordet: <em class=\"nn\">sjuk + dom + en</em>.",
     },
     {
+      id: "ord15",
       type: "exercise",
       exerciseType: "multipleChoice",
       question: "Kva for eit av desse orda er laga ved <strong>avleiing</strong>?",
@@ -206,6 +301,7 @@ Modules.register({
       explanation: "<em class=\"nn\">kasting</em> er verbet <em class=\"nn\">kaste</em> + etterstavinga <em class=\"nn\">-ing</em>, altså eit nytt ord (substantiv). <em class=\"nn\">fotball</em> er samansetning, <em class=\"nn\">gutane</em> og <em class=\"nn\">huset</em> er bøying.",
     },
     {
+      id: "ord16",
       type: "exercise",
       exerciseType: "fillIn",
       question: "Lag nye ord med etterstaving:",
@@ -220,6 +316,7 @@ Modules.register({
       explanation: "Nynorsk brukar gjerne -ar (lesar), -dom (fridom, sjukdom), -ing (kasting), -nad (søknad) og -leik (kjærleik).",
     },
     {
+      id: "ord17",
       type: "exercise",
       exerciseType: "fillIn",
       question: "Set saman orda til eitt ord, og vel rett artikkel til slutt:",
@@ -234,6 +331,7 @@ Modules.register({
       explanation: "Sisteleddet bestemmer kjønnet: bok er hokjønn (ei skulebok), lag er inkjekjønn (eit fotballag).",
     },
     {
+      id: "ord18",
       type: "exercise",
       exerciseType: "freeText",
       title: "Ordjakt",
@@ -257,6 +355,7 @@ Modules.register({
   estimatedMinutes: 30,
   sections: [
     {
+      id: "okl1",
       type: "lesson",
       title: "Ti ordklassar",
       content: `
@@ -331,7 +430,27 @@ Modules.register({
           </tbody>
         </table>
 
-        <h3>Bøyelege og ubøyelege ordklassar</h3>
+      `,
+    },
+    {
+      id: "okl2",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: testen for verb",
+      question: "Du vil finne ut om eit ord er eit verb. Kva test brukar du?",
+      options: [
+        "Kan du setje <em class=\"nn\">å</em> framfor og bøye ordet i tid?",
+        "Kan du setje <em class=\"nn\">ein/ei/eit</em> framfor?",
+        "Kan du gradbøye ordet?",
+      ],
+      correct: 0,
+      explanation: "<em class=\"nn\">å kaste, kastar, kasta</em>. Testen med <em class=\"nn\">ein/ei/eit</em> høyrer til substantiv, og gradbøying høyrer til adjektiv.",
+    },
+    {
+      id: "okl3",
+      type: "lesson",
+      title: "Bøyelege og ubøyelege ordklassar",
+      content: `        <h3>Bøyelege og ubøyelege ordklassar</h3>
         <p>Nokre ordklassar kan skifte form, og dei er <strong>bøyelege</strong>. Andre ser alltid like
         ut, og dei er <strong>ubøyelege</strong>.</p>
         <table>
@@ -366,8 +485,23 @@ Modules.register({
       `,
     },
     {
+      id: "okl4",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: bøyeleg eller ubøyeleg",
+      question: "Kva for ei av desse ordklassane er <strong>ubøyeleg</strong>?",
+      options: [
+        "Preposisjon",
+        "Substantiv",
+        "Adjektiv",
+      ],
+      correct: 0,
+      explanation: "Preposisjonar som <em class=\"nn\">på, i, til</em> ser alltid like ut. Substantiv bøyer seg i tal og bestemtheit, og adjektiv i grad og samsvar.",
+    },
+    {
+      id: "okl5",
       type: "lesson",
-      title: "Tre forvekslingar du må kunne",
+      title: "Forveksling 1: adjektiv eller adverb?",
       content: `
         <p>Same ord kan høyre til ulike ordklassar alt etter korleis det blir brukt. Difor må du
         alltid sjå på ordet <em>i setninga</em>, ikkje berre på ordet åleine.</p>
@@ -387,7 +521,27 @@ Modules.register({
         <strong>adverb</strong>. Legg merke til at adverbet ofte har same form som adjektivet
         i inkjekjønn (<em class="nn">fint, raskt</em>).</p>
 
-        <h3>2. Preposisjon eller subjunksjon?</h3>
+      `,
+    },
+    {
+      id: "okl6",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: adjektiv eller adverb",
+      question: "I setninga <em class=\"nn\">Ho song fint</em>, kva ordklasse er <em class=\"nn\">fint</em>?",
+      options: [
+        "Adverb, for det fortel korleis ho song",
+        "Adjektiv, for det endar på <em class=\"nn\">-t</em>",
+        "Substantiv",
+      ],
+      correct: 0,
+      explanation: "<em class=\"nn\">fint</em> seier noko om verbet <em class=\"nn\">song</em>, ikkje om eit substantiv. Då er det adverb. I <em class=\"nn\">eit fint hus</em> er same ordet adjektiv.",
+    },
+    {
+      id: "okl7",
+      type: "lesson",
+      title: "Forveksling 2: preposisjon eller subjunksjon?",
+      content: `        <h3>2. Preposisjon eller subjunksjon?</h3>
         <table>
           <thead><tr><th>Setning</th><th>Kva kjem etter ordet?</th><th>Ordklasse</th></tr></thead>
           <tbody>
@@ -402,7 +556,27 @@ Modules.register({
         <strong>subjunksjon</strong>. Ord som <em class="nn">etter, før, sidan</em> og
         <em class="nn">til</em> kan vere begge delar.</p>
 
-        <h3>3. Determinativ eller pronomen?</h3>
+      `,
+    },
+    {
+      id: "okl8",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: preposisjon eller subjunksjon",
+      question: "I <em class=\"nn\">før vi åt</em>, kva ordklasse er <em class=\"nn\">før</em>?",
+      options: [
+        "Subjunksjon, for det kjem ei heil setning etter",
+        "Preposisjon, for det kjem eit substantiv etter",
+        "Adverb",
+      ],
+      correct: 0,
+      explanation: "Etter <em class=\"nn\">før</em> står her setninga <em class=\"nn\">vi åt</em>, med både subjekt og verbal. Då er <em class=\"nn\">før</em> subjunksjon. I <em class=\"nn\">før middagen</em> er det preposisjon.",
+    },
+    {
+      id: "okl9",
+      type: "lesson",
+      title: "Forveksling 3: determinativ eller pronomen?",
+      content: `        <h3>3. Determinativ eller pronomen?</h3>
         <table>
           <thead><tr><th>Setning</th><th>Forklaring</th><th>Ordklasse</th></tr></thead>
           <tbody>
@@ -430,6 +604,21 @@ Modules.register({
       `,
     },
     {
+      id: "okl10",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: determinativ eller pronomen",
+      question: "I spørsmålet <em class=\"nn\">Har du lese dei?</em>, kva er <em class=\"nn\">dei</em>?",
+      options: [
+        "Pronomen, for det står i staden for substantivet",
+        "Determinativ, for det peikar ut noko",
+        "Subjunksjon",
+      ],
+      correct: 0,
+      explanation: "Her erstattar <em class=\"nn\">dei</em> heile substantivfrasen. I <em class=\"nn\">dei bøkene</em> står ordet saman med substantivet, og då er det determinativ.",
+    },
+    {
+      id: "okl11",
       type: "exercise",
       exerciseType: "categorize",
       question: "Runde 1: Substantiv, verb eller adjektiv? Sorter orda.",
@@ -441,6 +630,7 @@ Modules.register({
       explanation: "Substantiv kan ha ein/ei/eit framfor (ei bok, eit hus). Verb kan ha å framfor og bøyast i tid (å kaste – kasta). Adjektiv kan gradbøyast (fin – finare – finast).",
     },
     {
+      id: "okl12",
       type: "exercise",
       exerciseType: "multipleChoice",
       question: "Kva ordklasse er det utheva ordet? «Ho song <strong>fint</strong> på konserten.»",
@@ -449,6 +639,7 @@ Modules.register({
       explanation: "<em class=\"nn\">fint</em> fortel <em>korleis</em> ho song, og det seier noko om verbet, ikkje om eit substantiv. Då er det brukt som adverb. I «ein <em class=\"nn\">fin</em> konsert» hadde det vore adjektiv.",
     },
     {
+      id: "okl13",
       type: "exercise",
       exerciseType: "categorize",
       question: "Runde 2: No med fem ordklassar. Sorter orda.",
@@ -462,6 +653,7 @@ Modules.register({
       explanation: "Adverb som ikkje, ofte, her og no er ubøyelege og svarer på kvar/når/korleis. Pronomen står i staden for eit substantiv (ho = Kari). Glede er eit substantiv sjølv om det er ei kjensle: ei glede.",
     },
     {
+      id: "okl14",
       type: "exercise",
       exerciseType: "fillIn",
       question: "Skriv namnet på ordklassen. Sjå på det ordet som står i hermeteikn, slik det er brukt i setninga.",
@@ -478,6 +670,7 @@ Modules.register({
       explanation: "Preposisjonen har eit substantiv etter seg (på bordet), konjunksjonen bind saman to heilsetningar, subjunksjonen innleier ei leddsetning (fordi du bad meg). Denne står til boka (determinativ), ho står i staden for eit namn (pronomen).",
     },
     {
+      id: "okl15",
       type: "exercise",
       exerciseType: "multipleChoice",
       question: "Kva ordklasse er det utheva uttrykket? «<strong>Etter at</strong> vi hadde ete, gjekk vi ut.»",
@@ -486,6 +679,7 @@ Modules.register({
       explanation: "Etter <em class=\"nn\">etter at</em> kjem ei heil setning med subjekt og verbal (<em class=\"nn\">vi hadde ete</em>). Då er det ein subjunksjon. I «<em class=\"nn\">etter</em> middagen» er <em class=\"nn\">etter</em> preposisjon, fordi det berre kjem eit substantiv etter.",
     },
     {
+      id: "okl16",
       type: "exercise",
       exerciseType: "matching",
       question: "Para saman ordklassen med kjenneteiknet:",
@@ -504,6 +698,7 @@ Modules.register({
       explanation: "Kvar ordklasse har sin test. Dei fem første er bøyelege, dei fem siste er (stort sett) ubøyelege.",
     },
     {
+      id: "okl17",
       type: "exercise",
       exerciseType: "categorize",
       question: "Runde 3: Dei vanskelege småorda. Sorter orda.",
@@ -517,6 +712,7 @@ Modules.register({
       explanation: "Determinativ står til eit substantiv (min bil, tre hus). Pronomen står åleine i staden for eit substantiv (han, seg, kven). Preposisjonar har eit substantiv etter seg, konjunksjonar bind saman like ledd, og subjunksjonar innleier leddsetningar.",
     },
     {
+      id: "okl18",
       type: "exercise",
       exerciseType: "multipleChoice",
       question: "Kva ordklasse er det utheva ordet? «Har du lese <strong>dei</strong> bøkene?»",
@@ -536,8 +732,9 @@ Modules.register({
   estimatedMinutes: 30,
   sections: [
     {
+      id: "boy1",
       type: "lesson",
-      title: "Omgrepa vi brukar om substantiv",
+      title: "Kjønn, tal og bestemtheit",
       content: `
         <p>Når du slår opp eit substantiv i ordboka, står det gjerne noko slikt:
         <em class="nn">bok f. -a, bøker, bøkene</em>. For å lese det må du kunne tre omgrep:
@@ -565,7 +762,27 @@ Modules.register({
         På norsk ligg bestemtheita i <em>endinga</em>: <em class="nn">-en, -a, -et</em> i eintal,
         <em class="nn">-ane, -ene, -a</em> i fleirtal.</p>
 
-        <h3>Dei fire formene</h3>
+      `,
+    },
+    {
+      id: "boy2",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: kjønn",
+      question: "Kva kjønn har ordet <em class=\"nn\">bok</em>?",
+      options: [
+        "Hokjønn",
+        "Hankjønn",
+        "Inkjekjønn",
+      ],
+      correct: 0,
+      explanation: "Det heiter <em class=\"nn\">ei bok</em>. Hokjønnsord får <em class=\"nn\">-a</em> i bestemt eintal: <em class=\"nn\">boka</em>.",
+    },
+    {
+      id: "boy3",
+      type: "lesson",
+      title: "Dei fire formene",
+      content: `        <h3>Dei fire formene</h3>
         <p>Set du saman tal og bestemtheit, får kvart substantiv fire former. Kjønnet avgjer
         kva endingar som blir brukte:</p>
         <table>
@@ -583,7 +800,27 @@ Modules.register({
           (<em class="nn">husa, epla, barna</em>, ikkje <em class="bm">husene</em>).
         </div>
 
-        <h3>Eigedom: ikkje s-genitiv</h3>
+      `,
+    },
+    {
+      id: "boy4",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: bestemt form eintal",
+      question: "Kva er rett bestemt form eintal av <em class=\"nn\">ei sol</em>?",
+      options: [
+        "sola",
+        "solen",
+        "solet",
+      ],
+      correct: 0,
+      explanation: "Hokjønn bestemt eintal får <em class=\"nn\">-a</em> på nynorsk. <em class=\"bm\">solen</em> er bokmålsforma, og er ein av dei vanlegaste feila.",
+    },
+    {
+      id: "boy5",
+      type: "lesson",
+      title: "Eigedom: ikkje s-genitiv",
+      content: `        <h3>Eigedom: ikkje s-genitiv</h3>
         <p>På bokmål viser du ofte eigedom med <em class="bm">-s</em>: <em class="bm">Karis bok,
         guttens sykkel</em>. På nynorsk skal du vanlegvis <strong>ikkje</strong> bruke s-genitiv.
         Du har to gode alternativ:</p>
@@ -604,10 +841,24 @@ Modules.register({
       `,
     },
     {
+      id: "boy6",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: sin, si, sitt, sine",
+      question: "Kva er rett på nynorsk?",
+      options: [
+        "Kari si bok",
+        "Kari sin bok",
+        "Karis bok",
+      ],
+      correct: 0,
+      explanation: "<em class=\"nn\">sin/si/sitt/sine</em> rettar seg etter det som blir eigd. <em class=\"nn\">bok</em> er hokjønn, difor <em class=\"nn\">si</em>. S-genitiv unngår vi på nynorsk.",
+    },
+    {
+      id: "boy7",
       type: "lesson",
-      title: "Omgrepa vi brukar om verb",
-      content: `
-        <h3>Infinitiv: grunnforma</h3>
+      title: "Infinitiv, finitt og infinitt",
+      content: `        <h3>Infinitiv: grunnforma</h3>
         <p><strong>Infinitiv</strong> er den forma du finn i ordboka, og den som kan ha
         <em class="nn">å</em> framfor seg: <em class="nn">å kaste, å skrive, å bu</em>. Infinitiven
         fortel ikkje noko om <em>når</em> noko skjer.</p>
@@ -626,7 +877,27 @@ Modules.register({
           </tbody>
         </table>
 
-        <h3>Tempus: tidene</h3>
+      `,
+    },
+    {
+      id: "boy8",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: finitt eller infinitt",
+      question: "Er <em class=\"nn\">kastar</em> ei finitt eller ei infinitt verbform?",
+      options: [
+        "Finitt, for ho er bøygd i tid",
+        "Infinitt, for ho kan stå etter <em class=\"nn\">har</em>",
+        "Infinitt, for ho er grunnforma",
+      ],
+      correct: 0,
+      explanation: "<em class=\"nn\">kastar</em> står i presens og er difor finitt. Ei setning må ha eit finitt verb. <em class=\"nn\">(å) kaste</em> og <em class=\"nn\">(har) kasta</em> er infinitte.",
+    },
+    {
+      id: "boy9",
+      type: "lesson",
+      title: "Tempus: tidene",
+      content: `        <h3>Tempus: tidene</h3>
         <p><strong>Tempus</strong> tyder «tid». Dei to enkle tidene lagar du med ending eller
         vokalskifte; dei to samansette lagar du med hjelpeverbet <em class="nn">ha</em> pluss
         perfektum partisipp.</p>
@@ -660,7 +931,27 @@ Modules.register({
         Framtid uttrykkjer vi med <em class="nn">skal</em> eller <em class="nn">vil</em> pluss
         infinitiv: <em class="nn">Eg skal kaste ballen.</em></p>
 
-        <h3>Dei to partisippa</h3>
+      `,
+    },
+    {
+      id: "boy10",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: tempus",
+      question: "Kva tempus står verbet i i setninga <em class=\"nn\">Eg hadde kasta ballen då du kom</em>?",
+      options: [
+        "Preteritum perfektum",
+        "Presens perfektum",
+        "Preteritum",
+      ],
+      correct: 0,
+      explanation: "<em class=\"nn\">hadde</em> pluss perfektum partisipp gir preteritum perfektum, altså noko som var ferdig før noko anna i fortida. Med <em class=\"nn\">har</em> hadde det vore presens perfektum.",
+    },
+    {
+      id: "boy11",
+      type: "lesson",
+      title: "Partisipp og imperativ",
+      content: `        <h3>Dei to partisippa</h3>
         <ul>
           <li><strong>Perfektum partisipp</strong> er forma som står etter <em class="nn">har/hadde</em>
           (<em class="nn">har kasta, har høyrt, har skrive</em>). Ho kan òg brukast som adjektiv:
@@ -677,7 +968,27 @@ Modules.register({
         <em class="nn">kom! skriv! kast! høyr! et!</em> Kortverb er like i infinitiv og imperativ:
         <em class="nn">bu her! nå bussen!</em></p>
 
-        <h3>Sterke og svake verb</h3>
+      `,
+    },
+    {
+      id: "boy12",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: presens partisipp",
+      question: "Kva er rett presens partisipp på nynorsk?",
+      options: [
+        "ein syngjande fugl",
+        "ein syngende fugl",
+        "ein syngen fugl",
+      ],
+      correct: 0,
+      explanation: "Presens partisipp endar alltid på <em class=\"nn\">-ande</em> på nynorsk. <em class=\"bm\">-ende</em> er bokmålsforma.",
+    },
+    {
+      id: "boy13",
+      type: "lesson",
+      title: "Sterke og svake verb",
+      content: `        <h3>Sterke og svake verb</h3>
         <p>Dette er dei to hovudgruppene av verb, og skilnaden ligg i korleis dei lagar
         <strong>preteritum</strong>:</p>
         <ul>
@@ -707,7 +1018,27 @@ Modules.register({
           (<em class="bm">bygde/bygget</em>); då må du slå opp.
         </div>
 
-        <h3>To små grupper: j-verb og kortverb</h3>
+      `,
+    },
+    {
+      id: "boy14",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: a-verb eller e-verb",
+      question: "Bokmål har <em class=\"bm\">hoppet</em> i preteritum. Kva verbklasse blir dette på nynorsk?",
+      options: [
+        "A-verb, så det heiter <em class=\"nn\">hoppa</em>",
+        "E-verb, så det heiter <em class=\"nn\">hoppte</em>",
+        "Sterkt verb",
+      ],
+      correct: 0,
+      explanation: "Bokmål <em class=\"bm\">-et</em> eller <em class=\"bm\">-a</em> i preteritum tyder a-verb på nynorsk. Presens får <em class=\"nn\">-ar</em>: <em class=\"nn\">hoppar</em>.",
+    },
+    {
+      id: "boy15",
+      type: "lesson",
+      title: "J-verb og kortverb",
+      content: `        <h3>To små grupper: j-verb og kortverb</h3>
         <p><strong>J-verb</strong> har <em class="nn">-je</em> eller <em class="nn">-ja</em> i infinitiv. Dei mistar
         <em class="nn">j</em>-en i dei andre formene, får <strong>inga ending i presens</strong> og
         skiftar ofte vokal i preteritum, men dei er likevel svake, fordi dei har ending
@@ -744,6 +1075,21 @@ Modules.register({
       `,
     },
     {
+      id: "boy16",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: kvifor j-verb er svake",
+      question: "Kvifor er <em class=\"nn\">å spørje</em> rekna som eit svakt verb?",
+      options: [
+        "Fordi det har ending i preteritum: <em class=\"nn\">spurde</em>",
+        "Fordi det skiftar vokal",
+        "Fordi det mistar <em class=\"nn\">j</em>-en",
+      ],
+      correct: 0,
+      explanation: "Skiljet mellom sterkt og svakt går på om preteritum har ending. J-verb skiftar ofte vokal, men dei har <em class=\"nn\">-de</em> i preteritum, og då er dei svake.",
+    },
+    {
+      id: "boy17",
       type: "exercise",
       exerciseType: "fillIn",
       question: "Bøy heile rekkja. Fyll inn forma som manglar.",
@@ -760,6 +1106,7 @@ Modules.register({
       explanation: "Substantiv: ubestemt eintal – bestemt eintal – ubestemt fleirtal – bestemt fleirtal. Verb: infinitiv – presens – preteritum – presens perfektum. Hugs -a i jenta og epla, og at sterke verb som skrive skiftar vokal i preteritum (skreiv).",
     },
     {
+      id: "boy18",
       type: "exercise",
       exerciseType: "categorize",
       question: "Kva tempus står verbet i? Sorter setningane.",
@@ -772,6 +1119,7 @@ Modules.register({
       explanation: "Presens og preteritum er enkle tider (éi verbform). Presens perfektum har hjelpeverbet har, preteritum perfektum har hadde, og begge har perfektum partisipp etter.",
     },
     {
+      id: "boy19",
       type: "exercise",
       exerciseType: "matching",
       question: "Para saman omgrepet med dømet:",
@@ -788,6 +1136,7 @@ Modules.register({
       explanation: "Legg merke til at same form kan ha ulike namn etter kva ho gjer: skriv er presens i «ho skriv», men imperativ i «skriv!». Skrive er infinitiv med å, men perfektum partisipp etter har/er.",
     },
     {
+      id: "boy20",
       type: "exercise",
       exerciseType: "multipleChoice",
       question: "Kva er god nynorsk for bokmål <em class=\"bm\">Karis bok</em>?",
@@ -796,6 +1145,7 @@ Modules.register({
       explanation: "Nynorsk unngår s-genitiv. Skriv <em class=\"nn\">boka til Kari</em> eller <em class=\"nn\">Kari si bok</em>. <em class=\"nn\">Kari sin bok</em> er feil fordi <em class=\"nn\">bok</em> er hokjønn, og då må det vere <em class=\"nn\">si</em>.",
     },
     {
+      id: "boy21",
       type: "exercise",
       exerciseType: "multipleChoice",
       question: "Bokmål har <em class=\"bm\">hun hoppet</em>. Bruk tommelfingerregelen: kva verbklasse er <em class=\"nn\">hoppe</em> på nynorsk, og kva blir preteritum?",
@@ -804,6 +1154,7 @@ Modules.register({
       explanation: "Bokmål <em class=\"bm\">-et</em> i preteritum (<em class=\"bm\">hoppet</em>) tyder a-verb på nynorsk: <em class=\"nn\">hoppe – hoppar – hoppa – har hoppa</em>. Hadde bokmål hatt <em class=\"bm\">-te</em> (som i <em class=\"bm\">kjøpte</em>), hadde det vore e-verb.",
     },
     {
+      id: "boy22",
       type: "exercise",
       exerciseType: "categorize",
       question: "Sterkt eller svakt verb? Sjå på preteritumsforma og sorter.",
@@ -814,6 +1165,7 @@ Modules.register({
       explanation: "Sterke verb har inga ending i preteritum, men skiftar vokal: skrive → skreiv, ete → åt. Svake verb får ei ending: -a (kasta), -de (høyrde, spurde), -te (kjøpte) eller -dde (budde).",
     },
     {
+      id: "boy23",
       type: "exercise",
       exerciseType: "fillIn",
       question: "J-verb og kortverb. Fyll inn rett form av verbet i parentes.",
@@ -830,6 +1182,7 @@ Modules.register({
       explanation: "J-verb mistar j-en og har inga ending i presens (set, spør), men får -de/-te i preteritum (spurde, sette) og -t i partisipp (valt). Kortverb får -r, -dde, -dd: bur, nådde, trudd, sydde.",
     },
     {
+      id: "boy24",
       type: "exercise",
       exerciseType: "translate",
       question: "Omset setninga til nynorsk. Sjå på verba: eitt er a-verb og eitt er e-verb.",
@@ -852,6 +1205,7 @@ Modules.register({
   estimatedMinutes: 30,
   sections: [
     {
+      id: "set1",
       type: "lesson",
       title: "Setningsledda",
       content: `
@@ -901,7 +1255,27 @@ Modules.register({
           </tbody>
         </table>
 
-        <h3>Framgangsmåten</h3>
+      `,
+    },
+    {
+      id: "set2",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: indirekte objekt",
+      question: "I setninga <em class=\"nn\">Kari gav guten ei bok</em>, kva ledd er <em class=\"nn\">guten</em>?",
+      options: [
+        "Indirekte objekt",
+        "Subjekt",
+        "Objekt",
+      ],
+      correct: 0,
+      explanation: "Spør «til kven?». Kari gav ei bok til guten, så <em class=\"nn\">guten</em> er indirekte objekt. <em class=\"nn\">ei bok</em> er objektet.",
+    },
+    {
+      id: "set3",
+      type: "lesson",
+      title: "Framgangsmåten",
+      content: `        <h3>Framgangsmåten</h3>
         <ol>
           <li>Finn <strong>verbalet</strong>. Det er nøkkelen til alt anna.</li>
           <li>Spør «kven/kva + verbal?» → <strong>subjektet</strong>.</li>
@@ -929,10 +1303,24 @@ Modules.register({
       `,
     },
     {
+      id: "set4",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: kva du finn først",
+      question: "Kva ledd bør du alltid finne først når du analyserer ei setning?",
+      options: [
+        "Verbalet",
+        "Subjektet",
+        "Adverbialet",
+      ],
+      correct: 0,
+      explanation: "Verbalet er nøkkelen til alt anna. Når du har det, finn du subjektet ved å spørje «kven eller kva + verbal?».",
+    },
+    {
+      id: "set5",
       type: "lesson",
-      title: "Heilsetning, leddsetning og ordstilling",
-      content: `
-        <h3>Heilsetning og leddsetning</h3>
+      title: "Heilsetning og leddsetning",
+      content: `        <h3>Heilsetning og leddsetning</h3>
         <p>Ei <strong>heilsetning</strong> kan stå åleine og gi meining: <em class="nn">Vi gjekk
         heim.</em> Ei <strong>leddsetning</strong> er ei setning inne i ei anna setning. Ho
         fungerer som eit <em>ledd</em> i heilsetninga og kan ikkje stå åleine:
@@ -956,7 +1344,27 @@ Modules.register({
         <em class="nn">Boka <strong>som eg las</strong>, var god.</em> Hugs komma
         etter ei innskoten leddsetning.</p>
 
-        <h3>Då eller når?</h3>
+      `,
+    },
+    {
+      id: "set6",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: konjunksjon eller subjunksjon",
+      question: "Kva skil ein subjunksjon frå ein konjunksjon?",
+      options: [
+        "Subjunksjonen gjer setninga som kjem etter, til ei leddsetning",
+        "Subjunksjonen bind saman to heilsetningar",
+        "Det er ingen skilnad",
+      ],
+      correct: 0,
+      explanation: "<em class=\"nn\">Eg kom, men ho gjekk</em> har to heilsetningar bundne saman av konjunksjonen <em class=\"nn\">men</em>. <em class=\"nn\">Eg kom fordi ho gjekk</em> har ei leddsetning, innleidd av subjunksjonen <em class=\"nn\">fordi</em>.",
+    },
+    {
+      id: "set7",
+      type: "lesson",
+      title: "Då eller når?",
+      content: `        <h3>Då eller når?</h3>
         <p>Begge er subjunksjonar som innleier tidssetningar, men dei tyder ikkje det same.
         Hugseregelen er: <strong>«Den gongen då, kvar gong når.»</strong></p>
         <table>
@@ -972,7 +1380,27 @@ Modules.register({
           (<em class="nn">då gjekk vi</em>, <em class="nn">kom då!</em>).
         </div>
 
-        <h3>Ordstilling: verbalet på andreplass</h3>
+      `,
+    },
+    {
+      id: "set8",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: då eller når",
+      question: "Kva er rett: <em class=\"nn\">___ eg var liten, budde vi i Bergen</em>?",
+      options: [
+        "Då",
+        "Når",
+        "Da",
+      ],
+      correct: 0,
+      explanation: "Det skjedde éin bestemt gong i fortida, så det heiter <em class=\"nn\">då</em>. Hugseregelen er «den gongen då, kvar gong når». Bokmål <em class=\"bm\">da</em> finst ikkje på nynorsk.",
+    },
+    {
+      id: "set9",
+      type: "lesson",
+      title: "Ordstilling: V2-regelen",
+      content: `        <h3>Ordstilling: verbalet på andreplass</h3>
         <p>I ei forteljande heilsetning står det finitte verbalet <strong>alltid på andreplass</strong>
         (dette blir kalla <strong>V2</strong>). Første plass kan fyllast av subjektet, men òg av eit
         adverbial eller eit objekt. Flyttar du noko anna fram, må subjektet vike plass og stå
@@ -1011,6 +1439,21 @@ Modules.register({
       `,
     },
     {
+      id: "set10",
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      title: "Sjekk: verbalet på andreplass",
+      question: "Kva er rett?",
+      options: [
+        "Då han kom heim, åt han middag.",
+        "Då han kom heim, han åt middag.",
+        "Då han kom heim, middag åt han.",
+      ],
+      correct: 0,
+      explanation: "Ei leddsetning som står først, tel som eitt ledd på plass 1. Difor må det finitte verbalet kome rett etter kommaet, og subjektet etterpå.",
+    },
+    {
+      id: "set11",
       type: "exercise",
       exerciseType: "fillIn",
       question: "Finn setningsledda. Skriv berre orda som utgjer leddet.",
@@ -1027,6 +1470,7 @@ Modules.register({
       explanation: "Finn verbalet først. «Kven kjøpte?» → guten (subjekt). «Kva kjøpte guten?» → nye sko (objekt). «Når?» → i går (adverbial). Etter er kjem eit predikativ, ikkje eit objekt: stort.",
     },
     {
+      id: "set12",
       type: "exercise",
       exerciseType: "categorize",
       question: "Heilsetning eller leddsetning? Sorter.",
@@ -1037,6 +1481,7 @@ Modules.register({
       explanation: "Leddsetningane byrjar med ein subjunksjon (fordi, at, når, som, dersom) og gir ikkje meining åleine, for dei treng ei heilsetning å høyre til.",
     },
     {
+      id: "set13",
       type: "exercise",
       exerciseType: "categorize",
       question: "Konjunksjon eller subjunksjon? Sorter bindeorda.",
@@ -1047,6 +1492,7 @@ Modules.register({
       explanation: "Det er berre ei handfull konjunksjonar: og, men, eller, for. Alle dei andre bindeorda er subjunksjonar og gjer setninga etter til ei leddsetning.",
     },
     {
+      id: "set14",
       type: "exercise",
       exerciseType: "multipleChoice",
       question: "Kva ord skal inn? «___ eg var liten, budde vi i Bergen.»",
@@ -1055,6 +1501,7 @@ Modules.register({
       explanation: "Det handlar om éin bestemt periode i fortida («den gongen då»). <em class=\"bm\">Da</em> finst ikkje på nynorsk, og <em class=\"nn\">nå</em> er eit adverb som tyder «no».",
     },
     {
+      id: "set15",
       type: "exercise",
       exerciseType: "multipleChoice",
       question: "Kva setning har rett ordstilling?",
@@ -1068,6 +1515,7 @@ Modules.register({
       explanation: "I ei heilsetning skal verbalet stå på andreplass: <em class=\"nn\">I går <strong>kom</strong> han</em>. I leddsetninga <em class=\"nn\">at han ikkje kom</em> må <em class=\"nn\">ikkje</em> stå framfor verbalet, og difor er det tredje alternativet feil.",
     },
     {
+      id: "set16",
       type: "exercise",
       exerciseType: "translate",
       question: "Omset til nynorsk. Pass på då/når, ordstillinga etter leddsetninga og plasseringa av «ikkje».",
@@ -1082,6 +1530,7 @@ Modules.register({
       explanation: "<em class=\"nn\">Då</em> fordi det er éin bestemt gong. Leddsetninga står først, så verbalet kjem rett etter kommaet: <em class=\"nn\">åt han</em>. I leddsetninga <em class=\"nn\">fordi han ikkje var svolten</em> står <em class=\"nn\">ikkje</em> framfor verbalet.",
     },
     {
+      id: "set17",
       type: "exercise",
       exerciseType: "matching",
       question: "Para saman setningsleddet med det utheva dømet. Alle døma er henta frå setninga «I går gav Kari guten ei bok på skulen» og «Kari er glad».",
@@ -1097,6 +1546,7 @@ Modules.register({
       explanation: "Kven gav? Kari (subjekt). Kva gav ho? Ei bok (objekt). Til kven? Guten (indirekte objekt). Når og kvar? I går, på skulen (adverbial). Etter er kjem predikativet glad.",
     },
     {
+      id: "set18",
       type: "exercise",
       exerciseType: "freeText",
       title: "Skriv og analyser",
