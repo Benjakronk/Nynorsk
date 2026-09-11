@@ -1279,11 +1279,11 @@ Modules.register({
 
         <div class="callout">
           <strong>Vil du lese ekte tekstar av Tarjei Vesaas (1897–1970)?</strong>
-          <p>Vesaas døydde i 1970, så bøkene hans er framleis verna av opphavsretten fram til
-        2041. Men du kan lese dei gratis på nett gjennom Nettbiblioteket til
+          <p>Du kan lese bøkene til Vesaas gratis på nett gjennom Nettbiblioteket til
         <a href="https://www.nb.no" target="_blank" rel="noopener">Nasjonalbiblioteket</a>,
-        som har nesten alle norske bøker gitt ut til og med 2005. Du må vere i Noreg, og du kan
-        lese, men ikkje laste ned.</p>
+        som har nesten alle norske bøker gitt ut til og med 2005. Både
+        <em class="nn">Is-slottet</em> og <em class="nn">Fuglane</em> ligg der. Du må vere i
+        Noreg for å lese.</p>
           <p>Nedst i modulen finn du ei oppgåve som tek deg rett dit.</p>
           <p>Meir om forfattaren i modulen
           <a href="modul.html?id=nynorskforfattarane">Møt nynorskforfattarane</a>.</p>
@@ -1445,10 +1445,9 @@ Modules.register({
 
         <div class="callout">
           <strong>Vil du lese ekte tekstar av Halldis Moren Vesaas (1907–1995)?</strong>
-          <p>Halldis Moren Vesaas døydde i 1995, så dikta hennar er verna til 2066. Bøkene
-        hennar kan lesast gratis på nett gjennom Nettbiblioteket til
+          <p>Dikta hennar kan du lese gratis på nett gjennom Nettbiblioteket til
         <a href="https://www.nb.no" target="_blank" rel="noopener">Nasjonalbiblioteket</a>,
-        og finst på alle bibliotek. Diktet <em class="nn">Tung tids tale</em> står i dei
+        og dei finst på alle bibliotek. Diktet <em class="nn">Tung tids tale</em> står i dei
         fleste norske lyrikkantologiar.</p>
           <p>Nedst i modulen finn du ei oppgåve som tek deg rett dit.</p>
           <p>Meir om forfattaren i modulen
@@ -1587,10 +1586,10 @@ Modules.register({
 
         <div class="callout">
           <strong>Vil du lese ekte tekstar av Jon Fosse (1959–)?</strong>
-          <p>Fosse lever, så bøkene hans er verna av opphavsretten. Dei eldre bøkene hans,
-        gitt ut til og med 2005, kan lesast gratis gjennom Nettbiblioteket til
-        <a href="https://www.nb.no" target="_blank" rel="noopener">Nasjonalbiblioteket</a>.
-        <em class="nn">Morgon og kveld</em> (2000) er ei kort bok og eit godt sted å byrje.</p>
+          <p><em class="nn">Morgon og kveld</em> (2000) er ei kort bok og ein god stad å byrje.
+        Du kan lese henne gratis gjennom Nettbiblioteket til
+        <a href="https://www.nb.no" target="_blank" rel="noopener">Nasjonalbiblioteket</a>,
+        som har norske bøker gitt ut til og med 2005.</p>
           <p>Nedst i modulen finn du ei oppgåve som tek deg rett dit.</p>
           <p>Meir om forfattaren i modulen
           <a href="modul.html?id=nynorskforfattarane">Møt nynorskforfattarane</a>.</p>
@@ -1775,9 +1774,8 @@ Modules.register({
 
         <div class="callout">
           <strong>Vil du lese ekte tekstar av Frode Grytten (1960–)?</strong>
-          <p>Grytten lever, så bøkene hans er verna av opphavsretten. <em class="nn">Bikubesong</em>
-        (1999) og <em class="nn">Flytande bjørn</em> (2005) kan lesast gratis gjennom
-        Nettbiblioteket til
+          <p><em class="nn">Bikubesong</em> (1999) og <em class="nn">Flytande bjørn</em> (2005)
+        kan du lese gratis gjennom Nettbiblioteket til
         <a href="https://www.nb.no" target="_blank" rel="noopener">Nasjonalbiblioteket</a>.
         Han skriv òg kommentarar i avisene, som ofte ligg fritt på nett.</p>
           <p>Nedst i modulen finn du ei oppgåve som tek deg rett dit.</p>
@@ -1952,12 +1950,12 @@ Modules.register({
 
         <div class="callout">
           <strong>Vil du lese ekte tekstar av Marit Eikemo (1971–)?</strong>
-          <p>Eikemo lever, så bøkene hennar er verna av opphavsretten.
-        <em class="nn">Samtidsruinar</em> (2008) er for ny for Nettbiblioteket, som berre
-        dekkjer bøker til og med 2005. Men debutboka hennar <em class="nn">Her, no</em> (1999)
-        kan lesast gratis gjennom Nettbiblioteket til
+          <p>Debutboka hennar <em class="nn">Her, no</em> (1999) kan du lese gratis gjennom
+        Nettbiblioteket til
         <a href="https://www.nb.no" target="_blank" rel="noopener">Nasjonalbiblioteket</a>.
-        Ho skriv òg essay og kommentarar i aviser og tidsskrift.</p>
+        Ho skriv òg essay og kommentarar i aviser og tidsskrift.
+        <em class="nn">Samtidsruinar</em> (2008) er derimot for ny for Nettbiblioteket, som
+        dekkjer bøker til og med 2005.</p>
           <p>Nedst i modulen finn du ei oppgåve som tek deg rett dit.</p>
           <p>Meir om forfattaren i modulen
           <a href="modul.html?id=nynorskforfattarane">Møt nynorskforfattarane</a>.</p>
@@ -2062,7 +2060,7 @@ Modules.register({
       type: "exercise",
       exerciseType: "freeText",
       title: "Les ekte Eikemo på Nettbiblioteket",
-      question: "<em class=\"nn\">Samtidsruinar</em> (2008) er for ny for Nettbiblioteket, som berre dekkjer bøker til og med 2005. Gå difor til Nettbiblioteket og les i <em class=\"nn\">Her, no: møte med unge menneske</em> (1999) av Marit Eikemo: <a href=\"https://www.nb.no/items/8652b8b376b75414f12657124acb0969\" target=\"_blank\" rel=\"noopener\">opne boka på nb.no</a>. Les minst eitt heilt portrett eller kapittel. Skriv deretter 150–250 ord.",
+      question: "Gå til Nettbiblioteket og les i <em class=\"nn\">Her, no: møte med unge menneske</em> (1999) av Marit Eikemo: <a href=\"https://www.nb.no/items/8652b8b376b75414f12657124acb0969\" target=\"_blank\" rel=\"noopener\">opne boka på nb.no</a>. Les minst eitt heilt portrett eller kapittel. Skriv deretter 150–250 ord.",
       hint: "Nettbiblioteket er gratis og krev ingen innlogging, men du må sitje i Noreg. Du kan lese på skjermen, men ikkje laste ned eller skrive ut. Bla med pilene, eller skriv sidetal i feltet øvst. Finn du ikkje boka, søk på tittelen på nb.no.",
       minWords: 150,
       checklist: [
@@ -2117,9 +2115,8 @@ Modules.register({
 
         <div class="callout">
           <strong>Vil du lese ekte tekstar av Olaug Nilssen (1977–)?</strong>
-          <p>Nilssen lever, så bøkene hennar er verna av opphavsretten.
-        <em class="nn">Få meg på, for faen</em> (2005) kan lesast gratis gjennom Nettbiblioteket
-        til <a href="https://www.nb.no" target="_blank" rel="noopener">Nasjonalbiblioteket</a>.
+          <p><em class="nn">Få meg på, for faen</em> (2005) kan du lese gratis gjennom
+        Nettbiblioteket til <a href="https://www.nb.no" target="_blank" rel="noopener">Nasjonalbiblioteket</a>.
         Tittelen <em class="nn">Tung tids tale</em> er ein medviten referanse til diktet til
         Halldis Moren Vesaas frå 1945.</p>
           <p>Nedst i modulen finn du ei oppgåve som tek deg rett dit.</p>
