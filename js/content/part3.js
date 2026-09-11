@@ -45,8 +45,7 @@ Modules.register({
         </table>
 
         <div class="callout">
-          <strong>Bruk ordlista:</strong> Når du er usikker, slå opp på
-          <em class="nn">Nynorskordboka</em> (ordbokene.no). Mange tilrår òg å bruke
+          <strong>Bruk ordlista:</strong> Når du er usikker, slå opp i <a href="https://ordbokene.no/nno" target="_blank" rel="noopener">Nynorskordboka</a>. Mange tilrår òg å bruke
           ein bokmål-nynorsk-ordbok parallelt.
         </div>
       `,

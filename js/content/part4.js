@@ -85,9 +85,10 @@ Modules.register({
         </ul>
 
         <div class="callout">
-          <strong>Vil du lese?</strong> Diktet <em class="nn">«Du ser meg ikkje»</em> frå
-          Haugtussa er ein god start. Garborgs gard på Jæren, Knudaheio, er i dag
-          eit museum.
+          <strong>Vil du lese?</strong> Diktet <em class="nn">«Veslemøy»</em> opnar
+          Haugtussa og er ein god start. Grieg tonsette mellom anna
+          <em class="nn">«Killingdans»</em> og <em class="nn">«Ved Gjætle-bekken»</em> frå
+          same samlinga. Sommarstova til Garborg på Jæren, Knudaheio, er i dag eit museum.
         </div>
       `,
     },
@@ -143,7 +144,8 @@ Modules.register({
               Mattis.</li>
           <li><em class="nn">Kimen</em> (1940): symbolladd roman skriven under
               andre verdskrigen.</li>
-          <li><em class="nn">Vindane</em> (1952): diktsamling.</li>
+          <li><em class="nn">Vindane</em> (1952): novellesamling. Fekk Venezia-prisen i
+              1953, og gav Vesaas det internasjonale gjennombrotet.</li>
         </ul>
 
         <div class="callout">
@@ -188,7 +190,8 @@ Modules.register({
       type: "lesson",
       title: "6. Jon Fosse (1959–)",
       content: `
-        <p><strong>Frå:</strong> Haugesund. Bur i dag dels i Oslo, dels i Hardanger.<br>
+        <p><strong>Frå:</strong> Haugesund. Bur i dag i æresbustaden Grotten i Oslo, og har
+        heim på Frekhaug ved Bergen og i Hainburg i Austerrike.<br>
         <strong>Yrke:</strong> Dramatikar, romanforfattar, lyrikar, omsetjar.</p>
 
         <p>Jon Fosse fekk <strong>Nobelprisen i litteratur i 2023</strong>, den
@@ -240,7 +243,7 @@ Modules.register({
               forteljingar om naboar i ei blokk i Odda. Brageprisen.</li>
           <li><em class="nn">Flytande bjørn</em> (2005): kortprosasamling.</li>
           <li><em class="nn">Saganatt</em> (2011): roman.</li>
-          <li><em class="nn">Menn som ingen treng</em> (2020).</li>
+          <li><em class="nn">Menn som ingen treng</em> (2016): noveller.</li>
         </ul>
 
         <div class="callout">
@@ -266,11 +269,11 @@ Modules.register({
 
         <p><strong>Kjende verk:</strong></p>
         <ul>
-          <li><em class="nn">Samtidsruinar</em> (2005): sakprosa om kva som blir att
+          <li><em class="nn">Mellom oss sagt</em> (2006): roman.</li>
+          <li><em class="nn">Samtidsruinar</em> (2008): essaysamling om kva som blir att
               etter industrisamfunna.</li>
-          <li><em class="nn">Etterlatne saker</em> (2007): roman.</li>
-          <li><em class="nn">Anbefalingar</em> (2015): essay.</li>
-          <li><em class="nn">Alt inkludert</em> (2017): roman.</li>
+          <li><em class="nn">Alt inkludert</em> (2015): roman.</li>
+          <li><em class="nn">Team Tuva</em> (2021): roman.</li>
         </ul>
       `,
     },
@@ -293,10 +296,10 @@ Modules.register({
         <ul>
           <li><em class="nn">Få meg på, for faen</em> (2005): roman om ungdom og
               seksualitet. Vart òg film.</li>
-          <li><em class="nn">Tung tids tale</em> (2017): sakprosa om å vere mor til
+          <li><em class="nn">Tung tids tale</em> (2017): roman om å vere mor til
               ein son med autisme. Brageprisen.</li>
-          <li><em class="nn">Yt etter evne, få etter behov</em> (2020): sakprosa
-              om psykisk helse.</li>
+          <li><em class="nn">Yt etter evne, få etter behov</em> (2020): roman om
+              omsorg, plikt og kva ein familie orkar å bere.</li>
         </ul>
 
         <div class="callout">
@@ -388,8 +391,8 @@ Modules.register({
       type: "exercise",
       exerciseType: "freeText",
       title: "Stikk innom biblioteket eller nettet",
-      question: "Finn éin ekte tekst skriven av ein av forfattarane (kan vere eit kort dikt, ei side i ei bok, eit utdrag på nettet). Skriv eit kort referat (60–120 ord) av kva teksten handla om, og samanlikn han med kva du hadde venta ut frå skildringa i denne modulen.",
-      hint: "Tips: «Ved Rondane» av Vinje, eit dikt frå «Tung tids tale» av Halldis Moren Vesaas, opningskapitlet i «Is-slottet» av Tarjei Vesaas. Alle finst lett tilgjengelege.",
+      question: "Finn éin ekte tekst skriven av ein av forfattarane, og les han. Skriv eit kort referat (60–120 ord) av kva teksten handla om, og samanlikn han med kva du hadde venta ut frå skildringa i denne modulen.<br><br><strong>Her går du rett til tekstane:</strong><ul><li>Vinje: <a href=\"https://www.bokselskap.no/forfattere/vinje\" target=\"_blank\" rel=\"noopener\">alle verka gratis hjå bokselskap.no</a>, til dømes diktet <a href=\"https://no.wikisource.org/wiki/Ved_Rundarne_(1864)\" target=\"_blank\" rel=\"noopener\">«Ved Rundarne»</a></li><li>Garborg: <a href=\"https://www.bokselskap.no/forfattere/garborg\" target=\"_blank\" rel=\"noopener\">alle verka gratis hjå bokselskap.no</a>, til dømes <a href=\"https://www.bokselskap.no/boker/bondestudentar1utg/i\" target=\"_blank\" rel=\"noopener\">«Bondestudentar»</a></li><li>Duun: <a href=\"https://www.bokselskap.no/forfattere/duun\" target=\"_blank\" rel=\"noopener\">alle verka gratis hjå bokselskap.no</a>, til dømes <a href=\"https://www.bokselskap.no/boker/juvikingar/fra-gammalt-av\" target=\"_blank\" rel=\"noopener\">«Juvikingar»</a></li><li>Tarjei Vesaas: <a href=\"https://www.nb.no/items/e29c53bfc2df62f380d47026aece939d\" target=\"_blank\" rel=\"noopener\">«Is-slottet»</a> eller <a href=\"https://www.nb.no/items/858f48335cdd3e4b0ed6b5f180041885\" target=\"_blank\" rel=\"noopener\">«Fuglane»</a></li><li>Halldis Moren Vesaas: <a href=\"https://www.nb.no/items/4d2650a1f63fe15022d4b35e6de4f973\" target=\"_blank\" rel=\"noopener\">«Tung tids tale»</a></li><li>Jon Fosse: <a href=\"https://www.nb.no/items/de8649c24e8bb97d7e73fb1f65af842a\" target=\"_blank\" rel=\"noopener\">«Morgon og kveld»</a></li><li>Frode Grytten: <a href=\"https://www.nb.no/items/5da13cdfb598391234f0d92d8d46d1bf\" target=\"_blank\" rel=\"noopener\">«Bikubesong»</a></li><li>Marit Eikemo: <a href=\"https://www.nb.no/items/8652b8b376b75414f12657124acb0969\" target=\"_blank\" rel=\"noopener\">«Her, no»</a></li><li>Olaug Nilssen: <a href=\"https://www.nb.no/items/a0537db137e7903470f85578c2209ab3\" target=\"_blank\" rel=\"noopener\">«Få meg på, for faen»</a></li></ul>",
+      hint: "Bokselskap.no er gratis for alle. Nettbiblioteket (nb.no) er gratis utan innlogging, men du må sitje i Noreg, og du kan lese utan å laste ned. Du treng ikkje lese heile boka: eit dikt, eit kapittel eller nokre sider held.",
       minWords: 60,
       checklist: [
         "Skriv kva tekst du har lese, og av kven.",
@@ -404,8 +407,8 @@ Modules.register({
 Modules.register({
   id: "lesing-vinje",
   part: 4,
-  title: "Vinje: «Med toget over vidda»",
-  summary: "Ei reiseskildring i Vinje sin ånd, med observasjon og ettertanke om kvarandre.",
+  title: "«Med toget over vidda»",
+  summary: "Reiseskildring skriven for kurset i stilen til Vinje. Modulen har òg eit ekte dikt av han.",
   estimatedMinutes: 40,
   sections: [
     {
@@ -660,8 +663,8 @@ Modules.register({
 Modules.register({
   id: "lesing-garborg",
   part: 4,
-  title: "Garborg: «Heim att»",
-  summary: "Ei lengre psykologisk forteljing om ein heimkomst, i Garborg sin stil.",
+  title: "«Heim att»",
+  summary: "Lengre forteljing om ein heimkomst, skriven for kurset i stilen til Garborg. Modulen har òg eit ekte utdrag av han.",
   estimatedMinutes: 50,
   sections: [
     {
@@ -942,8 +945,8 @@ Modules.register({
 Modules.register({
   id: "lesing-duun",
   part: 4,
-  title: "Duun: «Bestefar og stormen»",
-  summary: "Ei dramatisk forteljing om eit gardsbruk i storm, i Duun sin episke stil.",
+  title: "«Bestefar og stormen»",
+  summary: "Dramatisk forteljing om eit gardsbruk i storm, skriven for kurset i stilen til Duun. Modulen har òg eit ekte utdrag av han.",
   estimatedMinutes: 50,
   sections: [
     {
@@ -1238,8 +1241,8 @@ Modules.register({
 Modules.register({
   id: "lesing-t-vesaas",
   part: 4,
-  title: "Tarjei Vesaas: «Jenta og isen»",
-  summary: "Ein sparsam, symbolsk tekst om ei jente på isen, i Vesaas sin stil.",
+  title: "«Jenta og isen»",
+  summary: "Sparsam, symbolsk tekst om ei jente på isen, skriven for kurset i stilen til Tarjei Vesaas.",
   estimatedMinutes: 40,
   sections: [
     {
@@ -1404,8 +1407,8 @@ Modules.register({
 Modules.register({
   id: "lesing-hm-vesaas",
   part: 4,
-  title: "Halldis Moren Vesaas: «Ein morgon»",
-  summary: "Ein lyrisk kvardagstekst om ein heilt vanleg morgon.",
+  title: "«Ein morgon»",
+  summary: "Lyrisk kvardagstekst om ein heilt vanleg morgon, skriven for kurset i stilen til Halldis Moren Vesaas.",
   estimatedMinutes: 35,
   sections: [
     {
@@ -1546,8 +1549,8 @@ Modules.register({
 Modules.register({
   id: "lesing-fosse",
   part: 4,
-  title: "Fosse: «Frå hytta»",
-  summary: "Ein lengre indre tankestraum med mykje gjentaking, i Fosse sin stil.",
+  title: "«Frå hytta»",
+  summary: "Lengre tankestraum med mykje gjentaking, skriven for kurset i stilen til Jon Fosse.",
   estimatedMinutes: 50,
   sections: [
     {
@@ -1734,8 +1737,8 @@ Modules.register({
 Modules.register({
   id: "lesing-grytten",
   part: 4,
-  title: "Grytten: «Bussen klokka kvart over fem»",
-  summary: "Ein urban kvardagstekst der mykje er underforstått.",
+  title: "«Bussen klokka kvart over fem»",
+  summary: "Urban kvardagstekst der mykje er underforstått, skriven for kurset i stilen til Frode Grytten.",
   estimatedMinutes: 40,
   sections: [
     {
@@ -1911,8 +1914,8 @@ Modules.register({
 Modules.register({
   id: "lesing-eikemo",
   part: 4,
-  title: "Eikemo: «Om å lese sakte»",
-  summary: "Ein essayistisk tekst som stiller spørsmål meir enn han gjev svar.",
+  title: "«Om å lese sakte»",
+  summary: "Essayistisk tekst som stiller spørsmål meir enn han svarar, skriven for kurset i stilen til Marit Eikemo.",
   estimatedMinutes: 40,
   sections: [
     {
@@ -1950,7 +1953,9 @@ Modules.register({
         <div class="callout">
           <strong>Vil du lese ekte tekstar av Marit Eikemo (1971–)?</strong>
           <p>Eikemo lever, så bøkene hennar er verna av opphavsretten.
-        <em class="nn">Samtidsruinar</em> (2005) kan lesast gratis gjennom Nettbiblioteket til
+        <em class="nn">Samtidsruinar</em> (2008) er for ny for Nettbiblioteket, som berre
+        dekkjer bøker til og med 2005. Men debutboka hennar <em class="nn">Her, no</em> (1999)
+        kan lesast gratis gjennom Nettbiblioteket til
         <a href="https://www.nb.no" target="_blank" rel="noopener">Nasjonalbiblioteket</a>.
         Ho skriv òg essay og kommentarar i aviser og tidsskrift.</p>
           <p>Nedst i modulen finn du ei oppgåve som tek deg rett dit.</p>
@@ -2057,7 +2062,7 @@ Modules.register({
       type: "exercise",
       exerciseType: "freeText",
       title: "Les ekte Eikemo på Nettbiblioteket",
-      question: "<em class=\"nn\">Samtidsruinar</em> er dessverre ikkje fritt tilgjengeleg. Men gå til Nettbiblioteket og les i <em class=\"nn\">Her, no: møte med unge menneske</em> (1999) av Marit Eikemo: <a href=\"https://www.nb.no/items/8652b8b376b75414f12657124acb0969\" target=\"_blank\" rel=\"noopener\">opne boka på nb.no</a>. Les minst eitt heilt portrett eller kapittel. Skriv deretter 150–250 ord.",
+      question: "<em class=\"nn\">Samtidsruinar</em> (2008) er for ny for Nettbiblioteket, som berre dekkjer bøker til og med 2005. Gå difor til Nettbiblioteket og les i <em class=\"nn\">Her, no: møte med unge menneske</em> (1999) av Marit Eikemo: <a href=\"https://www.nb.no/items/8652b8b376b75414f12657124acb0969\" target=\"_blank\" rel=\"noopener\">opne boka på nb.no</a>. Les minst eitt heilt portrett eller kapittel. Skriv deretter 150–250 ord.",
       hint: "Nettbiblioteket er gratis og krev ingen innlogging, men du må sitje i Noreg. Du kan lese på skjermen, men ikkje laste ned eller skrive ut. Bla med pilene, eller skriv sidetal i feltet øvst. Finn du ikkje boka, søk på tittelen på nb.no.",
       minWords: 150,
       checklist: [
@@ -2074,8 +2079,8 @@ Modules.register({
 Modules.register({
   id: "lesing-nilssen",
   part: 4,
-  title: "Olaug Nilssen: «Klassebilete»",
-  summary: "Ein direkte og ærleg tekst om eit gammalt klassebilete.",
+  title: "«Klassebilete»",
+  summary: "Direkte og ærleg tekst om eit gammalt klassebilete, skriven for kurset i stilen til Olaug Nilssen.",
   estimatedMinutes: 40,
   sections: [
     {
@@ -2084,7 +2089,7 @@ Modules.register({
       content: `
         <p><strong>Olaug Nilssen</strong> skriv direkte og ærleg, somme gonger humoristisk,
         somme gonger smerteleg. Ho stiller spørsmål ved kva som er «normalt» og kven som får
-        setje grensene. <em class="nn">Tung tids tale</em> (2017) er sakprosa om å vere mor til
+        setje grensene. <em class="nn">Tung tids tale</em> (2017) er ein roman om å vere mor til
         eit barn med store hjelpebehov.</p>
 
         <h3>Sjå etter dette når du les</h3>
@@ -2247,17 +2252,17 @@ Modules.register({
         <p>I denne modulen skal du sjå dei i samanheng. Det er ofte lettare å seie kva ein tekst
         gjer når du held han opp mot ein annan.</p>
         <table>
-          <thead><tr><th>Tekst</th><th>Sjanger</th><th>Det mest særmerkte</th></tr></thead>
+          <thead><tr><th>Tekst</th><th>Skriven i stilen til</th><th>Sjanger</th><th>Det mest særmerkte</th></tr></thead>
           <tbody>
-            <tr><td>Vinje: «Med toget over vidda»</td><td>Reiseskildring</td><td>Observasjon som blir til ettertanke</td></tr>
-            <tr><td>Garborg: «Heim att»</td><td>Psykologisk forteljing</td><td>Alt det som ikkje blir sagt</td></tr>
-            <tr><td>Duun: «Bestefar og stormen»</td><td>Dramatisk forteljing</td><td>Naturen som motstandar</td></tr>
-            <tr><td>Tarjei Vesaas: «Jenta og isen»</td><td>Symbolsk kortprosa</td><td>Korte setningar, enkle ord</td></tr>
-            <tr><td>Halldis Moren Vesaas: «Ein morgon»</td><td>Lyrisk kvardagsskildring</td><td>Ein augneblink som får all plassen</td></tr>
-            <tr><td>Fosse: «Frå hytta»</td><td>Tankestraum</td><td>Gjentaking</td></tr>
-            <tr><td>Grytten: «Bussen klokka kvart over fem»</td><td>Urban kortprosa</td><td>Det underforståtte</td></tr>
-            <tr><td>Eikemo: «Om å lese sakte»</td><td>Essay</td><td>Spørsmål utan fasit</td></tr>
-            <tr><td>Olaug Nilssen: «Klassebilete»</td><td>Personleg prosa</td><td>Nøktern tone om noko vondt</td></tr>
+            <tr><td>«Med toget over vidda»</td><td>Vinje</td><td>Reiseskildring</td><td>Observasjon som blir til ettertanke</td></tr>
+            <tr><td>«Heim att»</td><td>Garborg</td><td>Psykologisk forteljing</td><td>Alt det som ikkje blir sagt</td></tr>
+            <tr><td>«Bestefar og stormen»</td><td>Duun</td><td>Dramatisk forteljing</td><td>Naturen som motstandar</td></tr>
+            <tr><td>«Jenta og isen»</td><td>Tarjei Vesaas</td><td>Symbolsk kortprosa</td><td>Korte setningar, enkle ord</td></tr>
+            <tr><td>«Ein morgon»</td><td>Halldis Moren Vesaas</td><td>Lyrisk kvardagsskildring</td><td>Ein augneblink som får all plassen</td></tr>
+            <tr><td>«Frå hytta»</td><td>Jon Fosse</td><td>Tankestraum</td><td>Gjentaking</td></tr>
+            <tr><td>«Bussen klokka kvart over fem»</td><td>Frode Grytten</td><td>Urban kortprosa</td><td>Det underforståtte</td></tr>
+            <tr><td>«Om å lese sakte»</td><td>Marit Eikemo</td><td>Essay</td><td>Spørsmål utan fasit</td></tr>
+            <tr><td>«Klassebilete»</td><td>Olaug Nilssen</td><td>Personleg prosa</td><td>Nøktern tone om noko vondt</td></tr>
           </tbody>
         </table>
       `,

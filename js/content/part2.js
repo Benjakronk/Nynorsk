@@ -62,7 +62,7 @@ Modules.register({
         "Hokjønn (ei …)": ["jente", "bok", "klokke", "natt", "sol"],
         "Inkjekjønn (eit …)": ["hus", "barn", "eple", "tre", "år"],
       },
-      explanation: "Kjønnet kan du sjekke i ei ordliste (t.d. Nynorskordboka). Det er sjeldan å sjå på ordet kva kjønn det har.",
+      explanation: "Kjønnet kan du sjekke i ei ordliste, til dømes <a href=\"https://ordbokene.no/nno\" target=\"_blank\" rel=\"noopener\">Nynorskordboka</a>. Det er sjeldan å sjå på ordet kva kjønn det har.",
     },
     {
       type: "exercise",

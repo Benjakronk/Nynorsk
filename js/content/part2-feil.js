@@ -272,7 +272,7 @@ Modules.register({
         <div class="callout warn">
           <strong>Ikkje overrett!</strong> Om du strekar under kvart einaste be-ord i teksten din, endar du
           med å rette ord som er heilt rette. <em class="nn">Betale</em> er nynorsk. <em class="nn">Forklaring</em>
-          er nynorsk. Er du usikker, slå opp i Nynorskordboka. Står ordet der, er det lov.
+          er nynorsk. Er du usikker, slå opp i <a href="https://ordbokene.no/nno" target="_blank" rel="noopener">Nynorskordboka</a>. Står ordet der, er det lov.
         </div>
 
         <div class="callout">
