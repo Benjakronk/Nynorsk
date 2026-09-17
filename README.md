@@ -7,12 +7,13 @@ frå Språkrådet.
 ## Innhald
 
 - **Del 1: Språkhistorie og debatt** (6 modular): bakgrunn før 1850, Ivar Aasen, språkstriden og samnorsk, nynorsk i dag, skriveoppgåver, repetisjonstest
-- **Del 2: Grammatikk og skrivereglar**, delt i fire grupper:
+- **Del 2: Grammatikk og skrivereglar**, delt i tre grupper:
   - *Grunnomgrep* (4 modular): ordet (stamme, ending, rot), ordklassane, bøyingsomgrep, setningslære
   - *Ordklassar* (4 modular): substantiv, verb, pronomen, adjektiv
   - *Mengdetrening* (5 modular): drill-rundar med tilfeldige oppgåver frå ein ordbank
+- **Del 3: Skriving og tekstarbeid**, delt i to grupper:
+  - *Skriv tekstar* (3 modular): omsetjing, korte tekstar, lengre tekstar
   - *Typiske feil* (6 modular): skrivereglar, bokmålsord, bøyingsfeil, småord, setningsbygnad, rettelesing
-- **Del 3: Skriving og tekstarbeid** (3 modular): omsetjing, korte tekstar, lengre tekstar
 - **Del 4: Lesing og tekstforståing** (11 modular): forfattarportrett, ni lesemodular med éin tekst kvar, og ein samanliknande modul til slutt. Modulane om Vinje, Garborg og Duun har i tillegg ein ekte tekst av forfattaren, i original staving med ordliste. Dei seks andre har ei oppgåve som sender eleven til Nettbiblioteket for å lese ei ekte bok
 
 ## Funksjonalitet
@@ -49,7 +50,7 @@ npx serve .
 ├── css/style.css
 ├── js/
 │   ├── storage.js          localStorage
-│   ├── modules.js          Modulregister (med grupper for Del 2)
+│   ├── modules.js          Modulregister (med grupper for Del 2 og 3)
 │   ├── exercises.js        Oppgåvetypar (rendering + grading)
 │   ├── drills.js           Motor for mengdetrening (ordbank → oppgåver)
 │   ├── app.js              Logikk for oversiktssida
@@ -58,11 +59,11 @@ npx serve .
 │       ├── bank.js              Ordbankar for mengdetrening
 │       ├── part1.js             Del 1: språkhistorie
 │       ├── part2-omgrep.js      Del 2: grunnomgrep
-│       ├── part2.js             Del 2: ordklassar + skrivereglar
+│       ├── part2.js             Del 2: ordklassar
 │       ├── part2-trening.js     Del 2: mengdetrening
-│       ├── part2-feil.js        Del 2: typiske feil
-│       ├── part2-rettelesing.js Del 2: rettelesing
-│       ├── part3.js             Del 3: skriving
+│       ├── part3.js             Del 3: skriv tekstar
+│       ├── part3-feil.js        Del 3: typiske feil
+│       ├── part3-rettelesing.js Del 3: rettelesing
 │       └── part4.js             Del 4: lesing
 ├── tools/validate-content.js   Validerer alt innhald: node tools/validate-content.js
 └── README.md
@@ -72,7 +73,7 @@ npx serve .
 
 Alt innhald ligg i `js/content/part*.js`. Kvar modul er eit objekt med ei liste
 seksjonar: `lesson`, `exercise` eller `reading`. Sjå eksempel i `part1.js`.
-Modular i Del 2 må ha eit `group`-felt (`omgrep`, `ordklassar`, `trening` eller `feil`);
+Modular i Del 2 og 3 må ha eit `group`-felt (Del 2: `omgrep`, `ordklassar` eller `trening`; Del 3: `skriving` eller `feil`);
 gruppene er definerte i `js/modules.js`. Nye innhaldsfiler må leggjast til som
 `<script>` i `index.html` og `modul.html`.
 

@@ -3,6 +3,7 @@
 Modules.register({
   id: "skriving-omsetjing",
   part: 3,
+  group: "skriving",
   title: "Frå bokmål til nynorsk: strategiar",
   summary: "Korleis tenkje når du skal setje om frå bokmål.",
   estimatedMinutes: 25,
@@ -138,6 +139,7 @@ Modules.register({
 Modules.register({
   id: "skriving-korte-tekstar",
   part: 3,
+  group: "skriving",
   title: "Korte tekstar: melding, e-post, dagbok",
   summary: "Øv på å skrive korte, kvardagslege tekstar på nynorsk.",
   estimatedMinutes: 30,
@@ -247,6 +249,7 @@ Modules.register({
 Modules.register({
   id: "skriving-lengre-tekstar",
   part: 3,
+  group: "skriving",
   title: "Lengre tekstar: fortelje og argumentere",
   summary: "Oppbygging av forteljande og argumenterande tekst.",
   estimatedMinutes: 40,

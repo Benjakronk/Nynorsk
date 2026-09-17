@@ -1,11 +1,11 @@
-/* Del 2 · Typiske feil · Rettelesing: finn og rett feila
+/* Del 3 · Typiske feil · Rettelesing: finn og rett feila
    Fem lengre findError-tekstar med stigande vanskegrad. Sjå toppkommentaren i
-   part2-feil.js for skjemaet. Alle ord som ikkje er registrerte feil, må vere
+   part3-feil.js for skjemaet. Alle ord som ikkje er registrerte feil, må vere
    korrekt nynorsk, sidan eleven kan klikke på kva som helst ord. */
 
 Modules.register({
   id: "feil-rettelesing",
-  part: 2,
+  part: 3,
   group: "feil",
   title: "Rettelesing: finn og rett feila",
   summary: "Fem heile tekstar med skjulte feil, frå dagboknotat til forteljing. Tren på å lese korrektur slik du må gjere på din eigen tekst.",

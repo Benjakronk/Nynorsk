@@ -1,4 +1,4 @@
-/* Del 2 · Typiske feil: modular ordna etter feiltype.
+/* Del 3 · Typiske feil: modular ordna etter feiltype.
    Oppgåvetypen «findError» let eleven klikke på feil ord og rette det:
      { type: "exercise", exerciseType: "findError",
        question: "Finn og rett feila. Det er 2 feil.",
@@ -8,8 +8,169 @@
        explanation: "…" } */
 
 Modules.register({
+  id: "grammatikk-skriveregler",
+  part: 3,
+  group: "feil",
+  title: "Skrivereglar og vanlege fallgruver",
+  summary: "Dei viktigaste skilnadene og fellene du må passe på.",
+  estimatedMinutes: 25,
+  sections: [
+    {
+      type: "lesson",
+      title: "Dei vanlegaste fallgruvene",
+      content: `
+        <h3>Småord du må kunne</h3>
+        <table>
+          <thead><tr><th>Bokmål</th><th>Nynorsk</th></tr></thead>
+          <tbody>
+            <tr><td>ikke</td><td>ikkje</td></tr>
+            <tr><td>bare</td><td>berre</td></tr>
+            <tr><td>fra</td><td>frå</td></tr>
+            <tr><td>også</td><td>også / òg</td></tr>
+            <tr><td>mye</td><td>mykje</td></tr>
+            <tr><td>noe</td><td>noko</td></tr>
+            <tr><td>noen (hank./hokj.)</td><td>nokon</td></tr>
+            <tr><td>noen (inkjekj./mengd)</td><td>noko</td></tr>
+            <tr><td>hva</td><td>kva</td></tr>
+            <tr><td>hvem</td><td>kven</td></tr>
+            <tr><td>hvor (stad)</td><td>kvar</td></tr>
+            <tr><td>hvor (grad/mengd)</td><td>kor</td></tr>
+            <tr><td>hvordan</td><td>korleis</td></tr>
+            <tr><td>hvorfor</td><td>kvifor</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Diftongar</h3>
+        <p>Mange ord har diftong på nynorsk der bokmål har monoftong:</p>
+        <ul>
+          <li>bein (ben), stein (sten), auge (øye), heim (hjem)</li>
+          <li>raud (rød), draum (drøm), straum (strøm)</li>
+          <li>høyre (høre), nøye (nøyaktig)</li>
+        </ul>
+
+        <h3>«Noko» og «nokon»</h3>
+        <p>Dette er ein klassisk feilkjelde:</p>
+        <ul>
+          <li><em class="nn">noko</em> brukar du om <strong>mengd</strong> eller om
+              <strong>inkjekjønn</strong>: «Eg ser <em class="nn">noko</em>», «Vil du ha
+              <em class="nn">noko</em> brød?»</li>
+          <li><em class="nn">nokon</em> brukar du om <strong>hankjønn/hokjønn</strong>:
+              «Står det <em class="nn">nokon</em> der?»</li>
+          <li>Fleirtal: <em class="nn">nokre</em>: «<em class="nn">nokre</em> bøker»</li>
+        </ul>
+
+        <h3>Samansette ord</h3>
+        <p>Som i bokmål skal samansette ord skrivast i <strong>eitt ord</strong>:</p>
+        <ul>
+          <li>Rett: <em class="nn">bilkøyring</em>, <em class="nn">skuleelev</em></li>
+          <li>Feil: <em class="bm">bil køyring</em>, <em class="bm">skule elev</em></li>
+        </ul>
+
+        <h3>«Vart» og «blei»</h3>
+        <p>Båe er tillatne for preteritum av <em class="nn">å bli/verte</em>. Mange bruker
+        <em class="nn">vart</em> i nynorsk: «Det <em class="nn">vart</em> seint.»</p>
+      `,
+    },
+    {
+      type: "exercise",
+      exerciseType: "matching",
+      question: "Para saman bokmål og nynorsk:",
+      pairs: [
+        ["ikke", "ikkje"],
+        ["bare", "berre"],
+        ["hva", "kva"],
+        ["hvordan", "korleis"],
+        ["hvorfor", "kvifor"],
+        ["fra", "frå"],
+        ["mye", "mykje"],
+        ["hvem", "kven"],
+      ],
+    },
+    {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Kva er rett: «Eg vil ha ___ brød.»",
+      options: ["noko", "nokon", "nokre", "noen"],
+      correct: 0,
+      explanation: "«Brød» er inkjekjønn (eit brød). Då brukar vi <em class=\"nn\">noko</em>.",
+    },
+    {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Kva er rett: «Er det ___ heime?»",
+      options: ["noko", "nokon", "nokre", "noen"],
+      correct: 1,
+      explanation: "Spørsmålet handlar om ein person (hankjønn/hokjønn) → <em class=\"nn\">nokon</em>.",
+    },
+    {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Kva er rett: «Eg las ___ bøker i ferien.»",
+      options: ["noko", "nokon", "nokre", "noen"],
+      correct: 2,
+      explanation: "Fleirtal av «nokon» er <em class=\"nn\">nokre</em>.",
+    },
+    {
+      type: "exercise",
+      exerciseType: "fillIn",
+      question: "Rett opp setningane. Fyll inn rett nynorskord:",
+      items: [
+        { prompt: "Eg veit ___ (ikke) kva du meiner.", accept: ["ikkje"] },
+        { prompt: "Han er ___ (bare) ti år.", accept: ["berre"] },
+        { prompt: "___ (Hvordan) går det med deg?", accept: ["Korleis", "korleis"] },
+        { prompt: "Vi kjem ___ (fra) Bergen.", accept: ["frå"] },
+        { prompt: "___ (Hva) heiter du?", accept: ["Kva", "kva"] },
+        { prompt: "Ho et ___ (mye) frukt.", accept: ["mykje"] },
+      ],
+    },
+    {
+      type: "exercise",
+      exerciseType: "categorize",
+      question: "Sorter formene: kva er rett nynorsk og kva er feil?",
+      categories: {
+        "Rett nynorsk": ["ikkje", "berre", "kva", "frå", "korleis", "mykje", "kvifor"],
+        "Ikkje rett (bokmål)": ["ikke", "bare", "hva", "fra", "hvordan", "mye", "hvorfor"],
+      },
+    },
+    {
+      type: "exercise",
+      exerciseType: "translate",
+      question: "Set om til nynorsk:",
+      source: "Jeg vet ikke hvorfor han ikke kom.",
+      accept: [
+        "Eg veit ikkje kvifor han ikkje kom.",
+      ],
+      hint: "«vet» → «veit»; «ikke» → «ikkje»; «hvorfor» → «kvifor».",
+    },
+    {
+      type: "exercise",
+      exerciseType: "translate",
+      question: "Set om til nynorsk:",
+      source: "Vi har bare litt mat, men det er nok til oss alle.",
+      accept: [
+        "Vi har berre litt mat, men det er nok til oss alle.",
+        "Me har berre litt mat, men det er nok til oss alle.",
+      ],
+      hint: "«bare» → «berre»; «vi» kan bli «vi» eller «me».",
+    },
+    {
+      type: "exercise",
+      exerciseType: "freeText",
+      title: "Eigen feilretting",
+      question: "Skriv fem setningar på bokmål, og deretter dei same fem på nynorsk. Marker gjerne kva som er endra.",
+      minWords: 40,
+      checklist: [
+        "Fem setningar på bokmål.",
+        "Same setningar på nynorsk.",
+        "Bruk minst tre av småorda: ikkje, berre, kva, kvifor, korleis, frå, mykje.",
+      ],
+    },
+  ],
+});
+
+Modules.register({
   id: "feil-boying",
-  part: 2,
+  part: 3,
   group: "feil",
   title: "Feil i bøying",
   summary: "-et der det skal vere -a, -er på sterke verb, -en på hokjønnsord: endingsfeila du kan luke ut.",
@@ -197,7 +358,7 @@ Modules.register({
 
 Modules.register({
   id: "feil-bokmalsord",
-  part: 2,
+  part: 3,
   group: "feil",
   title: "Bokmålsord som snik seg inn",
   summary: "Ord som berre finst på bokmål, og an-/be-/-het/-else-ord: kva som er feil, kva som er lov, og kva som finst betre ord for.",
@@ -415,7 +576,7 @@ Modules.register({
 
 Modules.register({
   id: "feil-smaord",
-  part: 2,
+  part: 3,
   group: "feil",
   title: "Småord og funksjonsord",
   summary: "Pronomen, eigedomsord og dei små orda som avslører bokmålstenking: de/dei, ho/henne, sin/hans, då/når, kvar/kor.",
@@ -629,7 +790,7 @@ Modules.register({
 
 Modules.register({
   id: "feil-setning",
-  part: 2,
+  part: 3,
   group: "feil",
   title: "Setningsbygnad og stil",
   summary: "S-passiv, substantivsjuke, s-genitiv og tunge setningar: slik skriv du nynorsk som flyt, ikkje bokmål med nynorske endingar.",

@@ -13,9 +13,9 @@ const CONTENT_FILES = [
   "js/content/part2-omgrep.js",
   "js/content/part2.js",
   "js/content/part2-trening.js",
-  "js/content/part2-feil.js",
-  "js/content/part2-rettelesing.js",
   "js/content/part3.js",
+  "js/content/part3-feil.js",
+  "js/content/part3-rettelesing.js",
   "js/content/part4.js",
 ];
 
