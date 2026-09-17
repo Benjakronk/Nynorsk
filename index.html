@@ -15,30 +15,28 @@
       <span class="brand-mark">N</span>
       <span class="brand-text">Nynorskkurs · ungdomsskulen</span>
     </a>
-    <nav class="topnav">
-      <a href="index.html" class="active">Oversikt</a>
-      <a href="om.html">Om kurset</a>
-      <button id="data-menu-btn" class="ghost">Data ▾</button>
-    </nav>
+    <button id="data-menu-btn" class="ghost">Data ▾</button>
   </div>
+  <nav class="tabs" aria-label="Delar av kurset">
+    <div class="tabs-inner">
+      <a href="index.html" data-tab="oversikt" class="active" aria-current="page">Oversikt</a>
+      <a href="index.html#del-1" data-tab="del-1"><span class="tab-no">Del 1</span> Språkhistorie</a>
+      <a href="index.html#del-2" data-tab="del-2"><span class="tab-no">Del 2</span> Grammatikk</a>
+      <a href="index.html#del-3" data-tab="del-3"><span class="tab-no">Del 3</span> Skriving</a>
+      <a href="index.html#del-4" data-tab="del-4"><span class="tab-no">Del 4</span> Lesing</a>
+      <a href="om.html" data-tab="om">Om kurset</a>
+    </div>
+  </nav>
   <div id="data-menu" class="data-menu" hidden>
-    <button id="export-btn">Last ned backup (JSON)</button>
-    <label class="filebtn">
-      Last opp backup
-      <input type="file" id="import-input" accept="application/json" hidden />
-    </label>
     <button id="reset-btn" class="danger">Nullstill all framdrift</button>
   </div>
 </header>
 
 <main class="page">
-  <section class="hero">
-    <h1>Lær nynorsk på din eigen måte</h1>
+  <section class="view hero" data-view="oversikt">
     <p class="lede">
-      Eit kurs i fire delar: <strong>språkhistorie og debatt</strong>,
-      <strong>grammatikk og skrivereglar</strong>,
-      <strong>skriving og tekstarbeid</strong> og <strong>lesing</strong>.
-      Du vel sjølv kvar du vil byrje og kva du vil jobbe med.
+      Eit nynorskkurs for ungdomsskulen i fire delar. Du vel sjølv kvar du vil
+      byrje, og framdrifta di blir lagra automatisk i nettlesaren.
     </p>
     <div class="hero-stats">
       <div class="stat">
@@ -54,9 +52,35 @@
         <div class="stat-label">lagra tekstar</div>
       </div>
     </div>
+    <div class="part-cards">
+      <a class="part-card" href="#del-1" data-part="1">
+        <span class="part-tag">Del 1</span>
+        <h2>Språkhistorie og debatt</h2>
+        <p>Kvar nynorsken kjem frå, og kvifor vi har to skriftspråk.</p>
+        <div class="part-progress"></div>
+      </a>
+      <a class="part-card" href="#del-2" data-part="2">
+        <span class="part-tag">Del 2</span>
+        <h2>Grammatikk og skrivereglar</h2>
+        <p>Grunnomgrep, ordklassar, mengdetrening og typiske feil.</p>
+        <div class="part-progress"></div>
+      </a>
+      <a class="part-card" href="#del-3" data-part="3">
+        <span class="part-tag">Del 3</span>
+        <h2>Skriving og tekstarbeid</h2>
+        <p>Frå korte setningar til lengre eigne tekstar.</p>
+        <div class="part-progress"></div>
+      </a>
+      <a class="part-card" href="#del-4" data-part="4">
+        <span class="part-tag">Del 4</span>
+        <h2>Lesing og tekstforståing</h2>
+        <p>Tekstar i stilen til kjende nynorskforfattarar, med spørsmål.</p>
+        <div class="part-progress"></div>
+      </a>
+    </div>
   </section>
 
-  <section class="part" id="part-1">
+  <section class="view part" data-view="del-1" hidden>
     <header class="part-head">
       <span class="part-tag">Del 1</span>
       <h2>Språkhistorie og debatt</h2>
@@ -65,7 +89,7 @@
     <div class="modules" data-part="1"></div>
   </section>
 
-  <section class="part" id="part-2">
+  <section class="view part" data-view="del-2" hidden>
     <header class="part-head">
       <span class="part-tag">Del 2</span>
       <h2>Grammatikk og skrivereglar</h2>
@@ -74,7 +98,7 @@
     <div class="modules" data-part="2"></div>
   </section>
 
-  <section class="part" id="part-3">
+  <section class="view part" data-view="del-3" hidden>
     <header class="part-head">
       <span class="part-tag">Del 3</span>
       <h2>Skriving og tekstarbeid</h2>
@@ -83,7 +107,7 @@
     <div class="modules" data-part="3"></div>
   </section>
 
-  <section class="part" id="part-4">
+  <section class="view part" data-view="del-4" hidden>
     <header class="part-head">
       <span class="part-tag">Del 4</span>
       <h2>Lesing og tekstforståing</h2>
@@ -92,36 +116,6 @@
     <div class="modules" data-part="4"></div>
   </section>
 </main>
-
-<!-- Backup modal -->
-<div id="export-modal" class="modal" hidden>
-  <div class="modal-backdrop"></div>
-  <div class="modal-card" role="dialog" aria-labelledby="export-modal-title" aria-modal="true">
-    <h2 id="export-modal-title">Last ned backup</h2>
-    <p class="muted">
-      Skriv inn namn og klasse. Dette blir brukt til å namngje fila slik at læraren
-      kan kjenne att kven backupen høyrer til.
-    </p>
-    <form id="export-form">
-      <label class="field">
-        <span>Fornamn</span>
-        <input type="text" id="ef-firstname" required autocomplete="given-name" />
-      </label>
-      <label class="field">
-        <span>Etternamn</span>
-        <input type="text" id="ef-lastname" required autocomplete="family-name" />
-      </label>
-      <label class="field">
-        <span>Klasse</span>
-        <input type="text" id="ef-class" required placeholder="t.d. 9A" autocomplete="off" />
-      </label>
-      <div class="modal-actions">
-        <button type="button" class="btn secondary" id="ef-cancel">Avbryt</button>
-        <button type="submit" class="btn">Last ned</button>
-      </div>
-    </form>
-  </div>
-</div>
 
 <footer class="foot">
   <p>Kjelder: Læreplanen i norsk (LK20) og Språkrådet sine rettskrivingsreglar for nynorsk.</p>

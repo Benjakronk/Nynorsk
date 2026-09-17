@@ -3,7 +3,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   renderStats();
   renderParts();
+  renderPartProgress();
   wireDataMenu();
+  showView();
+  window.addEventListener("hashchange", () => { showView(); window.scrollTo(0, 0); });
 });
 
 function renderStats() {
@@ -12,6 +15,26 @@ function renderStats() {
   set("stat-done", t.completed);
   set("stat-correct", t.correct);
   set("stat-texts", t.texts);
+}
+
+// Tabs: #del-1 … #del-4 show one part; anything else shows the overview.
+function showView() {
+  const m = location.hash.match(/^#del-([1-4])$/);
+  const view = m ? `del-${m[1]}` : "oversikt";
+  document.querySelectorAll(".view").forEach(el => { el.hidden = el.dataset.view !== view; });
+  setActiveTab(view);
+}
+
+function renderPartProgress() {
+  document.querySelectorAll(".part-card").forEach(card => {
+    const mods = Modules.orderedByPart(parseInt(card.dataset.part, 10));
+    const done = mods.filter(mod => Store.moduleStats(mod.id).completed).length;
+    const ratio = mods.length ? done / mods.length : 0;
+    card.querySelector(".part-progress").innerHTML = `
+      <div class="mod-meta"><span>${mods.length} modular</span><span>${done} fullførte</span></div>
+      <div class="progress" aria-hidden="true"><span style="width:${(ratio * 100).toFixed(0)}%"></span></div>
+    `;
+  });
 }
 
 function renderParts() {
@@ -72,75 +95,19 @@ function renderModuleCard(mod, indexInPart) {
   return a;
 }
 
+function setActiveTab(key) {
+  document.querySelectorAll(".tabs a").forEach(a => {
+    const on = a.dataset.tab === key;
+    a.classList.toggle("active", on);
+    if (on) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
+  });
+}
+
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => (
     { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
   ));
-}
-
-function slugify(s) {
-  return (s || "")
-    .replace(/æ/gi, "ae").replace(/ø/gi, "o").replace(/å/gi, "a")
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .replace(/[^a-zA-Z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .toLowerCase();
-}
-
-function openExportModal() {
-  const modal = document.getElementById("export-modal");
-  const id = Store.getIdentity() || {};
-  document.getElementById("ef-firstname").value = id.firstName || "";
-  document.getElementById("ef-lastname").value = id.lastName || "";
-  document.getElementById("ef-class").value = id.className || "";
-  modal.hidden = false;
-  setTimeout(() => {
-    const first = document.getElementById("ef-firstname");
-    if (!first.value) first.focus();
-    else document.getElementById("ef-class").focus();
-  }, 0);
-}
-
-function closeExportModal() {
-  document.getElementById("export-modal").hidden = true;
-}
-
-function wireExportModal() {
-  const modal = document.getElementById("export-modal");
-  if (!modal) return;
-  modal.querySelector(".modal-backdrop").addEventListener("click", closeExportModal);
-  document.getElementById("ef-cancel").addEventListener("click", closeExportModal);
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape" && !modal.hidden) closeExportModal();
-  });
-  document.getElementById("export-form").addEventListener("submit", e => {
-    e.preventDefault();
-    const firstName = document.getElementById("ef-firstname").value.trim();
-    const lastName = document.getElementById("ef-lastname").value.trim();
-    const className = document.getElementById("ef-class").value.trim();
-    if (!firstName || !lastName || !className) return;
-
-    Store.setIdentity({ firstName, lastName, className });
-
-    const fileName = [
-      slugify(className),
-      slugify(lastName),
-      slugify(firstName),
-    ].filter(Boolean).join("_") + ".json";
-
-    const blob = new Blob([Store.exportJSON()], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = fileName;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-
-    closeExportModal();
-  });
 }
 
 function wireDataMenu() {
@@ -155,28 +122,8 @@ function wireDataMenu() {
     if (!menu.hidden && !menu.contains(e.target) && e.target !== btn) menu.hidden = true;
   });
 
-  document.getElementById("export-btn").addEventListener("click", () => {
-    menu.hidden = true;
-    openExportModal();
-  });
-
-  document.getElementById("import-input").addEventListener("change", async e => {
-    const file = e.target.files[0];
-    if (!file) return;
-    try {
-      const text = await file.text();
-      Store.importJSON(text);
-      alert("Backup lasta inn. Sida blir oppdatert.");
-      location.reload();
-    } catch (err) {
-      alert("Klarte ikkje å lese fila: " + err.message);
-    }
-  });
-
-  wireExportModal();
-
   document.getElementById("reset-btn").addEventListener("click", () => {
-    if (confirm("Er du heilt sikker? All framdrift og alle tekstar blir sletta. Det kan ikkje angrast (med mindre du har lasta ned ein backup).")) {
+    if (confirm("Er du heilt sikker? All framdrift og alle tekstar blir sletta. Det kan ikkje angrast.")) {
       Store.reset();
       location.reload();
     }

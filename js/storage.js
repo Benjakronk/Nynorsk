@@ -113,37 +113,6 @@ const Store = (() => {
     return { completed, correct, texts };
   }
 
-  function getIdentity() {
-    return cache.meta.identity || null;
-  }
-
-  function setIdentity(identity) {
-    cache.meta.identity = {
-      firstName: (identity.firstName || "").trim(),
-      lastName: (identity.lastName || "").trim(),
-      className: (identity.className || "").trim(),
-      updated: new Date().toISOString(),
-    };
-    save(cache);
-  }
-
-  function exportJSON() {
-    return JSON.stringify(cache, null, 2);
-  }
-
-  function importJSON(text) {
-    const data = JSON.parse(text);
-    if (typeof data !== "object" || data === null) throw new Error("Ugyldig fil.");
-    if (!data.progress || !data.texts) throw new Error("Filen manglar progresjons- eller tekstdata.");
-    cache = {
-      version: data.version || 1,
-      meta: data.meta || { createdAt: new Date().toISOString() },
-      progress: data.progress,
-      texts: data.texts,
-    };
-    save(cache);
-  }
-
   function reset() {
     cache = blank();
     save(cache);
@@ -152,7 +121,6 @@ const Store = (() => {
   return {
     getAll, getModule, recordAnswer, setCompleted,
     getText, saveText, moduleStats, totals,
-    getIdentity, setIdentity,
-    exportJSON, importJSON, reset,
+    reset,
   };
 })();

@@ -15,11 +15,17 @@
       <span class="brand-mark">N</span>
       <span class="brand-text">Nynorskkurs · ungdomsskulen</span>
     </a>
-    <nav class="topnav">
-      <a href="index.html">Oversikt</a>
-      <a href="om.html" class="active">Om kurset</a>
-    </nav>
   </div>
+  <nav class="tabs" aria-label="Delar av kurset">
+    <div class="tabs-inner">
+      <a href="index.html" data-tab="oversikt">Oversikt</a>
+      <a href="index.html#del-1" data-tab="del-1"><span class="tab-no">Del 1</span> Språkhistorie</a>
+      <a href="index.html#del-2" data-tab="del-2"><span class="tab-no">Del 2</span> Grammatikk</a>
+      <a href="index.html#del-3" data-tab="del-3"><span class="tab-no">Del 3</span> Skriving</a>
+      <a href="index.html#del-4" data-tab="del-4"><span class="tab-no">Del 4</span> Lesing</a>
+      <a href="om.html" data-tab="om" class="active" aria-current="page">Om kurset</a>
+    </div>
+  </nav>
 </header>
 
 <main class="page prose">
@@ -55,10 +61,8 @@
     Framdrifta er knytt til denne nettlesaren på denne maskina.
   </p>
   <p>
-    For tryggleiks skuld kan du laste ned ei backup-fil (JSON) som
-    inneheld all framdrift og alle tekstane dine. Om noko blir sletta,
-    kan du laste opp att backupen og halde fram der du slutta. Bruk
-    <em>Data</em>-menyen oppe til høgre.
+    Om du tømmer nettlesardata eller byter maskin, forsvinn framdrifta.
+    Vil du byrje på nytt, kan du nullstille alt i <em>Data</em>-menyen oppe til høgre.
   </p>
 
   <h2>Læreplangrunnlag</h2>

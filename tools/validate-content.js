@@ -60,7 +60,7 @@ if (!Modules || !Bank || !Drills) {
   process.exit(1);
 }
 
-/* ---------- Script tags in the three HTML pages ---------- */
+/* ---------- Script tags in the two HTML pages ---------- */
 function checkScriptTags(htmlRel, prefix) {
   const html = fs.readFileSync(path.join(ROOT, htmlRel), "utf8");
   CONTENT_FILES.forEach(f => {
@@ -69,7 +69,6 @@ function checkScriptTags(htmlRel, prefix) {
 }
 checkScriptTags("index.html", "");
 checkScriptTags("modul.html", "");
-checkScriptTags("larer/index.html", "../");
 {
   const html = fs.readFileSync(path.join(ROOT, "modul.html"), "utf8");
   const order = ["js/content/bank.js", "js/drills.js", "js/exercises.js", "js/modul.js"].map(f => html.indexOf(`src="${f}"`));

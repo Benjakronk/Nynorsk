@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.title = `${mod.title} · Nynorskkurs`;
+  setActiveTab(`del-${mod.part}`);
   root.innerHTML = "";
 
   // Header
@@ -71,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const next = idx < all.length - 1 ? all[idx + 1] : null;
   nav.innerHTML = `
     <div>${prev ? `<a class="btn secondary" href="modul.html?id=${encodeURIComponent(prev.id)}">← ${escapeHtml(prev.title)}</a>` : ""}</div>
-    <div><a class="btn secondary" href="index.html">Til oversikta</a></div>
+    <div><a class="btn secondary" href="index.html#del-${mod.part}">Til Del ${mod.part}</a></div>
     <div>${next ? `<a class="btn" href="modul.html?id=${encodeURIComponent(next.id)}">${escapeHtml(next.title)} →</a>` : ""}</div>
   `;
   root.appendChild(nav);
@@ -108,6 +109,15 @@ function updateProgress(mod, wrap) {
   if (fullyDone && !modProg.completed) {
     Store.setCompleted(mod.id, true);
   }
+}
+
+function setActiveTab(key) {
+  document.querySelectorAll(".tabs a").forEach(a => {
+    const on = a.dataset.tab === key;
+    a.classList.toggle("active", on);
+    if (on) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
+  });
 }
 
 function escapeHtml(s) {

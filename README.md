@@ -23,7 +23,6 @@ frå Språkrådet.
 - Finn feilen (`findError`): eleven klikkar på feil ord i ein tekst og skriv rett form
 - Automatisk fasit på objektive oppgåver
 - Eigne tekstar blir lagra i `localStorage`
-- Backup som JSON kan lastast ned og lastast opp att
 - Heile sida er statisk og fungerer på GitHub Pages utan byggjesteg
 
 ## Køyre lokalt
@@ -49,7 +48,7 @@ npx serve .
 ├── om.html                 Kort om kurset
 ├── css/style.css
 ├── js/
-│   ├── storage.js          localStorage + eksport/import
+│   ├── storage.js          localStorage
 │   ├── modules.js          Modulregister (med grupper for Del 2)
 │   ├── exercises.js        Oppgåvetypar (rendering + grading)
 │   ├── drills.js           Motor for mengdetrening (ordbank → oppgåver)
@@ -65,7 +64,6 @@ npx serve .
 │       ├── part2-rettelesing.js Del 2: rettelesing
 │       ├── part3.js             Del 3: skriving
 │       └── part4.js             Del 4: lesing
-├── larer/                  Lærarportal (les elevane sine backup-filer)
 ├── tools/validate-content.js   Validerer alt innhald: node tools/validate-content.js
 └── README.md
 ```
@@ -76,7 +74,7 @@ Alt innhald ligg i `js/content/part*.js`. Kvar modul er eit objekt med ei liste
 seksjonar: `lesson`, `exercise` eller `reading`. Sjå eksempel i `part1.js`.
 Modular i Del 2 må ha eit `group`-felt (`omgrep`, `ordklassar`, `trening` eller `feil`);
 gruppene er definerte i `js/modules.js`. Nye innhaldsfiler må leggjast til som
-`<script>` i `index.html`, `modul.html` og `larer/index.html`.
+`<script>` i `index.html` og `modul.html`.
 
 Køyr `node tools/validate-content.js` etter endringar. Skriptet sjekkar skjema,
 fasitar, drill-bankar og finn-feilen-tekstar utan nettlesar.
