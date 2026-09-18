@@ -171,7 +171,9 @@ const Spell = (() => {
       .then(text => {
         const set = new Set();
         for (const line of text.split("\n")) {
-          if (line) set.add(line);
+          // trim: fila kan ha fått CRLF på vegen
+          const word = line.trim();
+          if (word) set.add(word);
         }
         words = set;
         loading = null;
