@@ -20,7 +20,7 @@ function renderStats() {
 
 // Tabs: #del-1 … #del-4 show one part; anything else shows the overview.
 function showView() {
-  const m = location.hash.match(/^#del-([1-4])$/);
+  const m = location.hash.match(/^#del-([1-5])$/);
   const view = m ? `del-${m[1]}` : "oversikt";
   document.querySelectorAll(".view").forEach(el => { el.hidden = el.dataset.view !== view; });
   setActiveTab(view);

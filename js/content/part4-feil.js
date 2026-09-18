@@ -1,4 +1,4 @@
-/* Del 3 · Typiske feil: modular ordna etter feiltype.
+/* Del 4 · Typiske feil: modular ordna etter feiltype.
    Oppgåvetypen «findError» let eleven klikke på feil ord og rette det:
      { type: "exercise", exerciseType: "findError",
        question: "Finn og rett feila. Det er 2 feil.",
@@ -9,7 +9,7 @@
 
 Modules.register({
   id: "grammatikk-skriveregler",
-  part: 3,
+  part: 4,
   group: "feil",
   title: "Skrivereglar og vanlege fallgruver",
   summary: "Dei viktigaste skilnadene og fellene du må passe på.",
@@ -170,7 +170,7 @@ Modules.register({
 
 Modules.register({
   id: "feil-boying",
-  part: 3,
+  part: 4,
   group: "feil",
   title: "Feil i bøying",
   summary: "-et der det skal vere -a, -er på sterke verb, -en på hokjønnsord: endingsfeila du kan luke ut.",
@@ -358,7 +358,7 @@ Modules.register({
 
 Modules.register({
   id: "feil-bokmalsord",
-  part: 3,
+  part: 4,
   group: "feil",
   title: "Bokmålsord som snik seg inn",
   summary: "Ord som berre finst på bokmål, og an-/be-/-het/-else-ord: kva som er feil, kva som er lov, og kva som finst betre ord for.",
@@ -576,7 +576,7 @@ Modules.register({
 
 Modules.register({
   id: "feil-smaord",
-  part: 3,
+  part: 4,
   group: "feil",
   title: "Småord og funksjonsord",
   summary: "Pronomen, eigedomsord og dei små orda som avslører bokmålstenking: de/dei, ho/henne, sin/hans, då/når, kvar/kor.",
@@ -790,7 +790,7 @@ Modules.register({
 
 Modules.register({
   id: "feil-setning",
-  part: 3,
+  part: 4,
   group: "feil",
   title: "Setningsbygnad og stil",
   summary: "S-passiv, substantivsjuke, s-genitiv og tunge setningar: slik skriv du nynorsk som flyt, ikkje bokmål med nynorske endingar.",

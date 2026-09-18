@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   root.innerHTML = "";
 
   // Header
-  const partLabel = ["", "Del 1 · Språkhistorie", "Del 2 · Grammatikk", "Del 3 · Skriving", "Del 4 · Lesing"][mod.part] || "";
+  const partLabel = ["", "Del 1 · Språkhistorie", "Del 2 · Grammatikk", "Del 3 · Ordbok", "Del 4 · Skriving", "Del 5 · Lesing"][mod.part] || "";
   const group = Modules.groupOf(mod);
   const crumbs = group ? `${partLabel} · ${group.title}` : partLabel;
   const header = document.createElement("div");

@@ -11,10 +11,11 @@ frå Språkrådet.
   - *Grunnomgrep* (4 modular): ordet (stamme, ending, rot), ordklassane, bøyingsomgrep, setningslære
   - *Ordklassar* (4 modular): substantiv, verb, pronomen, adjektiv
   - *Mengdetrening* (5 modular): drill-rundar med tilfeldige oppgåver frå ein ordbank
-- **Del 3: Skriving og tekstarbeid**, delt i to grupper:
+- **Del 3: Ordbok og oppslag** (4 modular): dei tre ordbøkene og kva dei er laga for, finne oppslagsordet, lese ein ordbokartikkel, bruke ordboka mens du skriv
+- **Del 4: Skriving og tekstarbeid**, delt i to grupper:
   - *Skriv tekstar* (3 modular): omsetjing, korte tekstar, lengre tekstar
   - *Typiske feil* (6 modular): skrivereglar, bokmålsord, bøyingsfeil, småord, setningsbygnad, rettelesing
-- **Del 4: Lesing og tekstforståing** (11 modular): forfattarportrett, ni lesemodular med éin tekst kvar, og ein samanliknande modul til slutt. Modulane om Vinje, Garborg og Duun har i tillegg ein ekte tekst av forfattaren, i original staving med ordliste. Dei seks andre har ei oppgåve som sender eleven til Nettbiblioteket for å lese ei ekte bok
+- **Del 5: Lesing og tekstforståing** (11 modular): forfattarportrett, ni lesemodular med éin tekst kvar, og ein samanliknande modul til slutt. Modulane om Vinje, Garborg og Duun har i tillegg ein ekte tekst av forfattaren, i original staving med ordliste. Dei seks andre har ei oppgåve som sender eleven til Nettbiblioteket for å lese ei ekte bok
 
 ## Funksjonalitet
 
@@ -51,7 +52,7 @@ npx serve .
 ├── css/style.css
 ├── js/
 │   ├── storage.js          localStorage
-│   ├── modules.js          Modulregister (med grupper for Del 2 og 3)
+│   ├── modules.js          Modulregister (med grupper for Del 2 og 4)
 │   ├── exercises.js        Oppgåvetypar (rendering + grading)
 │   ├── drills.js           Motor for mengdetrening (ordbank → oppgåver)
 │   ├── spell.js            Språksjekk for skriveoppgåvene
@@ -63,10 +64,11 @@ npx serve .
 │       ├── part2-omgrep.js      Del 2: grunnomgrep
 │       ├── part2.js             Del 2: ordklassar
 │       ├── part2-trening.js     Del 2: mengdetrening
-│       ├── part3.js             Del 3: skriv tekstar
-│       ├── part3-feil.js        Del 3: typiske feil
-│       ├── part3-rettelesing.js Del 3: rettelesing
-│       └── part4.js             Del 4: lesing
+│       ├── part3.js             Del 3: ordbokbruk
+│       ├── part4.js             Del 4: skriv tekstar
+│       ├── part4-feil.js        Del 4: typiske feil
+│       ├── part4-rettelesing.js Del 4: rettelesing
+│       └── part5.js             Del 5: lesing
 ├── data/
 │   ├── nn-ordliste.txt     412 000 nynorske ordformer (sjå data/KJELDE.md)
 │   └── KJELDE.md           Kjelde og CC BY 4.0-lisens for ordlista
@@ -100,7 +102,7 @@ kurset aldri kan bli ståande i cachen hjå eleven.
 
 Alt innhald ligg i `js/content/part*.js`. Kvar modul er eit objekt med ei liste
 seksjonar: `lesson`, `exercise` eller `reading`. Sjå eksempel i `part1.js`.
-Modular i Del 2 og 3 må ha eit `group`-felt (Del 2: `omgrep`, `ordklassar` eller `trening`; Del 3: `skriving` eller `feil`);
+Modular i Del 2 og 4 må ha eit `group`-felt (Del 2: `omgrep`, `ordklassar` eller `trening`; Del 4: `skriving` eller `feil`);
 gruppene er definerte i `js/modules.js`. Nye innhaldsfiler må leggjast til som
 `<script>` i `index.html` og `modul.html`.
 
