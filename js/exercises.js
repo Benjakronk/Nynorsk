@@ -723,20 +723,65 @@ const Exercises = (() => {
       return;
     }
 
+    // Kvar tyding er to nettverkskall, så vi held talet nede. Resten av
+    // forslaga står utan tyding, men har framleis lenkje til artikkelen.
+    let oppslagIgjen = 12;
+
+    // Berre det første forslaget får tyding. Dei andre er som regel andre
+    // bøyingsformer av same ord, og då ville forklaringa stått tre gonger.
+    const suggestionRow = (word, medTyding) => {
+      const li = el("li");
+      const har = typeof Ordbok !== "undefined";
+      li.appendChild(har
+        ? el("a", { class: "spell-sug-word", href: Ordbok.artikkelUrl(word), target: "_blank", rel: "noopener" }, word)
+        : el("strong", { class: "spell-sug-word" }, word));
+      if (!har || !medTyding || oppslagIgjen <= 0) return li;
+
+      oppslagIgjen--;
+      const tyding = el("span", { class: "spell-def" }, " slår opp …");
+      li.appendChild(tyding);
+      Ordbok.lookup(word).then(treff => {
+        tyding.textContent = "";
+        if (!treff) return;
+        if (treff.ordklasse) {
+          tyding.appendChild(document.createTextNode(" "));
+          tyding.appendChild(el("em", { class: "spell-pos" }, treff.ordklasse));
+        }
+        if (treff.tyding) {
+          const kort = treff.tyding.length > 120 ? treff.tyding.slice(0, 117) + "…" : treff.tyding;
+          tyding.appendChild(document.createTextNode(" " + kort));
+        }
+      });
+      return li;
+    };
+
     const list = (title, items, klass) => {
       if (!items.length) return;
       panel.appendChild(el("h4", { class: klass }, title));
       const ul = el("ul", { class: "spell-list" });
       items.forEach(f => {
         const li = el("li");
-        li.appendChild(el("span", { class: "spell-word" }, f.word));
-        if (f.right.length) {
-          li.appendChild(document.createTextNode(" → "));
-          li.appendChild(el("strong", {}, f.right.slice(0, 3).join(", ")));
-        } else {
-          li.appendChild(document.createTextNode(" (ingen forslag)"));
-        }
+        const head = el("div", { class: "spell-line" });
+        head.appendChild(el("span", { class: "spell-word" }, f.word));
+        if (!f.right.length) head.appendChild(document.createTextNode(" (ingen forslag)"));
+        li.appendChild(head);
         if (f.why) li.appendChild(el("div", { class: "spell-why", html: f.why }));
+
+        if (f.right.length) {
+          const sugs = el("ul", { class: "spell-sug" });
+          f.right.slice(0, 3).forEach((word, i) => sugs.appendChild(suggestionRow(word, i === 0)));
+          li.appendChild(sugs);
+        }
+
+        // Bokmålsordet sjølv er verdt eit oppslag, for eleven veit ikkje alltid
+        // kva det tyder. Eit ukjent ord er som regel feilstava, og då gir det
+        // ikkje meining å slå det opp.
+        if (f.type === "bokmal" && typeof Ordbok !== "undefined") {
+          li.appendChild(el("div", { class: "spell-links" }, [
+            el("a", { href: Ordbok.artikkelUrl(f.word, "bm"), target: "_blank", rel: "noopener" },
+              `Kva tyder «${f.word}»? Slå opp i Bokmålsordboka`),
+          ]));
+        }
         ul.appendChild(li);
       });
       panel.appendChild(ul);
@@ -749,6 +794,16 @@ const Exercises = (() => {
       panel.appendChild(el("p", { class: "muted" }, "Ordlista er ikkje lasta ned, så vanlege skrivefeil er ikkje sjekka denne gongen."));
     } else {
       panel.appendChild(el("p", { class: "muted" }, "Sjekken er ei hjelp, ikkje ein fasit. Namn og sjeldne ord kan hamne i lista over ord han ikkje kjenner att."));
+    }
+
+    if (typeof Ordbok !== "undefined") {
+      const kjelde = el("p", { class: "muted spell-source" });
+      kjelde.appendChild(document.createTextNode("Tydingane kjem frå "));
+      kjelde.appendChild(el("a", { href: "https://ordbokene.no/nno/nn", target: "_blank", rel: "noopener" }, "Nynorskordboka"));
+      kjelde.appendChild(document.createTextNode(" (Språkrådet og Universitetet i Bergen). Du kan òg søkje i "));
+      kjelde.appendChild(el("a", { href: Ordbok.lexinUrl(), target: "_blank", rel: "noopener" }, "Lexin"));
+      kjelde.appendChild(document.createTextNode("."));
+      panel.appendChild(kjelde);
     }
   }
 

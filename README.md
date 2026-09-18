@@ -25,7 +25,7 @@ frå Språkrådet.
 - Finn feilen (`findError`): eleven klikkar på feil ord i ein tekst og skriv rett form
 - Automatisk fasit på objektive oppgåver
 - Eigne tekstar blir lagra i `localStorage`
-- Språksjekk i skriveoppgåvene: bokmålsvarsel bygd på ordbanken i kurset, og skrivefeil mot ei nynorsk ordliste på 412 000 former
+- Språksjekk i skriveoppgåvene: bokmålsvarsel bygd på ordbanken i kurset, og skrivefeil mot ei nynorsk ordliste på 412 000 former, med tyding og direktelenkje til ordbokene.no for kvart forslag
 - Heile sida er statisk og fungerer på GitHub Pages utan byggjesteg
 
 ## Køyre lokalt
@@ -56,6 +56,7 @@ npx serve .
 │   ├── exercises.js        Oppgåvetypar (rendering + grading)
 │   ├── drills.js           Motor for mengdetrening (ordbank → oppgåver)
 │   ├── spell.js            Språksjekk for skriveoppgåvene
+│   ├── ordbok.js           Oppslag i Nynorskordboka (ord.uib.no)
 │   ├── app.js              Logikk for oversiktssida
 │   ├── modul.js            Logikk for modulsida
 │   └── content/
@@ -97,6 +98,15 @@ samanheng (*si*, *bare*, *sette*).
 
 `sw.js` cachar berre ordlista, aldri kursfilene, slik at ei oppdatering av
 kurset aldri kan bli ståande i cachen hjå eleven.
+
+`js/ordbok.js` hentar ordklasse og første tyding frå det opne API-et til
+ordbokene.no (`ord.uib.no`), som svarar på tvers av domene. Berre det første
+forslaget per funn blir slege opp, høgst tolv per sjekk, og svara blir
+mellomlagra. Har eit ord fleire artiklar, går funksjonsord (pronomen, adverb)
+føre innhaldsord, for elles blir <em>eg</em> til substantivet «eg» (ego) og
+<em>ho</em> til eit hodyr. Feilar oppslaget, står forslaget att utan tyding, og
+lenkjene verkar framleis. Dette er den einaste staden kurset kontaktar ein
+annan tenar.
 
 ## Leggje til eller endre innhald
 
