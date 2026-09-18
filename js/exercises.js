@@ -756,7 +756,7 @@ const Exercises = (() => {
   function renderReading(s, modId) {
     const root = el("div", { class: "exercise reading" });
     root.appendChild(tag("Les og svar"));
-    if (s.title) root.appendChild(el("div", { class: "question" }, s.title));
+    // Tittelen står alt som overskrift over seksjonen (sjå headingEl i modul.js)
 
     const passage = el("div", { class: "passage", html: s.passage });
     root.appendChild(passage);
