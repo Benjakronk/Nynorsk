@@ -621,7 +621,11 @@ const Exercises = (() => {
       class: "no-print",
     });
     ta.value = (existing && existing.value) || "";
-    root.appendChild(ta);
+    // Markeringslaget ligg bak skrivefeltet og viser kva ord språksjekken står på
+    const taWrap = el("div", { class: "ta-wrap no-print" });
+    const overlay = el("div", { class: "ta-overlay", "aria-hidden": "true" });
+    taWrap.append(overlay, ta);
+    root.appendChild(taWrap);
 
     // Ruled writing lines that only appear in print
     const printLines = el("div", { class: "print-only-lines", "aria-hidden": "true" });
@@ -655,7 +659,7 @@ const Exercises = (() => {
     });
 
     const btns = el("div", { class: "btn-row" });
-    const spell = spellChecker(ta);
+    const spell = spellChecker(ta, overlay);
     btns.appendChild(spell.btn);
     const downloadBtn = el("button", { class: "btn secondary small" }, "Last ned som .txt");
     downloadBtn.addEventListener("click", () => {
@@ -678,9 +682,14 @@ const Exercises = (() => {
 
   /* ---------- Språksjekk under skrivefeltet ----------
      Sjekken går på ein knapp, ikkje mens eleven skriv: raude strekar under
-     halvskrivne ord stoppar skrivinga meir enn dei hjelper. Sjå js/spell.js. */
+     halvskrivne ord stoppar skrivinga meir enn dei hjelper. Sjå js/spell.js.
 
-  function spellChecker(ta) {
+     Panelet viser eitt funn om gongen, og ordet blir markert i teksten. Ein
+     lang tekst kan gi tjue funn, og alle på ein gong er meir enn ein elev
+     orkar å ta inn. Markeringa ligg i eit lag bak skrivefeltet, som har same
+     skrift og same innrykk, slik at orda hamnar oppå kvarandre. */
+
+  function spellChecker(ta, overlay) {
     const panel = el("div", { class: "spellcheck no-print", hidden: "" });
     if (typeof Spell === "undefined") {
       return { btn: document.createDocumentFragment(), panel };
@@ -689,11 +698,45 @@ const Exercises = (() => {
     // Ordlista blir henta med ein gong modulen er open, så ho er klar til bruk.
     Spell.load().catch(() => {});
 
+    let funn = [];
+    let noverande = 0;
+    let sjekkaTekst = "";
+
+    function visMarkering() {
+      overlay.textContent = "";
+      const f = funn[noverande];
+      if (!f || ta.value !== sjekkaTekst) return;
+      const tekst = ta.value;
+      overlay.appendChild(document.createTextNode(tekst.slice(0, f.start)));
+      const merke = el("mark", {}, tekst.slice(f.start, f.end));
+      overlay.appendChild(merke);
+      overlay.appendChild(document.createTextNode(tekst.slice(f.end)));
+      // Rull skrivefeltet slik at det markerte ordet er synleg
+      const midt = merke.offsetTop - ta.clientHeight / 2 + merke.offsetHeight / 2;
+      ta.scrollTop = Math.max(0, midt);
+      overlay.scrollTop = ta.scrollTop;
+    }
+
+    function tomPanel() {
+      funn = [];
+      overlay.textContent = "";
+    }
+
+    ta.addEventListener("scroll", () => { overlay.scrollTop = ta.scrollTop; });
+    ta.addEventListener("input", () => {
+      if (!funn.length) return;
+      // Teksten er endra, så plasseringane stemmer ikkje lenger
+      tomPanel();
+      panel.innerHTML = "";
+      panel.appendChild(el("p", { class: "muted" }, "Du har endra teksten. Trykk «Sjekk språket» igjen."));
+    });
+
     const btn = el("button", { class: "btn secondary small" }, "Sjekk språket");
     btn.addEventListener("click", () => {
-      const text = ta.value.trim();
+      const tekst = ta.value.trim();
       panel.hidden = false;
-      if (!text) {
+      tomPanel();
+      if (!tekst) {
         panel.innerHTML = "";
         panel.appendChild(el("p", { class: "muted" }, "Skriv litt tekst først."));
         return;
@@ -705,106 +748,128 @@ const Exercises = (() => {
         .catch(() => null)
         .then(() => {
           btn.disabled = false;
-          showResult(panel, Spell.check(text));
+          const resultat = Spell.check(ta.value);
+          funn = resultat.findings;
+          noverande = 0;
+          sjekkaTekst = ta.value;
+          visFunn(panel, resultat, funn, () => noverande, i => { noverande = i; }, visMarkering);
         });
     });
+
     return { btn, panel };
   }
 
-  function showResult(panel, result) {
-    panel.innerHTML = "";
-    const bokmal = result.findings.filter(f => f.type === "bokmal");
-    const ukjende = result.findings.filter(f => f.type === "ukjent");
+  const OVERSKRIFT = {
+    bokmal: "Ser ut som bokmål",
+    ukjent: "Ord eg ikkje kjenner att",
+  };
 
-    if (!bokmal.length && !ukjende.length) {
-      panel.appendChild(el("p", { class: "spell-ok" }, result.checkedList
+  // Tegnar heile panelet på nytt for det funnet eleven står på.
+  function visFunn(panel, resultat, funn, hentIndeks, settIndeks, visMarkering) {
+    panel.innerHTML = "";
+
+    if (!funn.length) {
+      panel.appendChild(el("p", { class: "spell-ok" }, resultat.checkedList
         ? "Ingen bokmålsord eller skrivefeil funne. Hugs at sjekken ikkje ser alt."
         : "Ingen bokmålsord funne. Ordlista er ikkje lasta, så skrivefeil er ikkje sjekka."));
+      visMarkering();
       return;
     }
 
-    // Kvar tyding er to nettverkskall, så vi held talet nede. Resten av
-    // forslaga står utan tyding, men har framleis lenkje til artikkelen.
-    let oppslagIgjen = 12;
+    const i = hentIndeks();
+    const f = funn[i];
 
-    // Berre det første forslaget får tyding. Dei andre er som regel andre
-    // bøyingsformer av same ord, og då ville forklaringa stått tre gonger.
-    const suggestionRow = (word, medTyding) => {
-      const li = el("li");
-      const har = typeof Ordbok !== "undefined";
-      li.appendChild(har
-        ? el("a", { class: "spell-sug-word", href: Ordbok.artikkelUrl(word), target: "_blank", rel: "noopener" }, word)
-        : el("strong", { class: "spell-sug-word" }, word));
-      if (!har || !medTyding || oppslagIgjen <= 0) return li;
-
-      oppslagIgjen--;
-      const tyding = el("span", { class: "spell-def" }, " slår opp …");
-      li.appendChild(tyding);
-      Ordbok.lookup(word).then(treff => {
-        tyding.textContent = "";
-        if (!treff) return;
-        if (treff.ordklasse) {
-          tyding.appendChild(document.createTextNode(" "));
-          tyding.appendChild(el("em", { class: "spell-pos" }, treff.ordklasse));
-        }
-        if (treff.tyding) {
-          const kort = treff.tyding.length > 120 ? treff.tyding.slice(0, 117) + "…" : treff.tyding;
-          tyding.appendChild(document.createTextNode(" " + kort));
-        }
-      });
-      return li;
+    const topp = el("div", { class: "spell-nav" });
+    topp.appendChild(el("span", { class: "spell-head " + (f.type === "bokmal" ? "bm" : "unknown") }, OVERSKRIFT[f.type]));
+    const knappar = el("div", { class: "spell-steps" });
+    const teljar = el("span", { class: "spell-count" }, `${i + 1} av ${funn.length}`);
+    const forrige = el("button", { class: "btn secondary small" }, "‹ Førre");
+    const neste = el("button", { class: "btn secondary small" }, "Neste ›");
+    forrige.disabled = i === 0;
+    neste.disabled = i === funn.length - 1;
+    const gaTil = ny => {
+      settIndeks(ny);
+      visFunn(panel, resultat, funn, hentIndeks, settIndeks, visMarkering);
     };
+    forrige.addEventListener("click", () => gaTil(i - 1));
+    neste.addEventListener("click", () => gaTil(i + 1));
+    knappar.append(teljar, forrige, neste);
+    topp.appendChild(knappar);
+    panel.appendChild(topp);
 
-    const list = (title, items, klass) => {
-      if (!items.length) return;
-      panel.appendChild(el("h4", { class: klass }, title));
-      const ul = el("ul", { class: "spell-list" });
-      items.forEach(f => {
-        const li = el("li");
-        const head = el("div", { class: "spell-line" });
-        head.appendChild(el("span", { class: "spell-word" }, f.word));
-        if (!f.right.length) head.appendChild(document.createTextNode(" (ingen forslag)"));
-        li.appendChild(head);
-        if (f.why) li.appendChild(el("div", { class: "spell-why", html: f.why }));
+    panel.appendChild(el("div", { class: "spell-line" }, [el("span", { class: "spell-word" }, f.word)]));
+    if (f.why) panel.appendChild(el("div", { class: "spell-why", html: f.why }));
 
-        if (f.right.length) {
-          const sugs = el("ul", { class: "spell-sug" });
-          f.right.slice(0, 3).forEach((word, i) => sugs.appendChild(suggestionRow(word, i === 0)));
-          li.appendChild(sugs);
-        }
-
-        // Bokmålsordet sjølv er verdt eit oppslag, for eleven veit ikkje alltid
-        // kva det tyder. Eit ukjent ord er som regel feilstava, og då gir det
-        // ikkje meining å slå det opp.
-        if (f.type === "bokmal" && typeof Ordbok !== "undefined") {
-          li.appendChild(el("div", { class: "spell-links" }, [
-            el("a", { href: Ordbok.artikkelUrl(f.word, "bm"), target: "_blank", rel: "noopener" },
-              `Kva tyder «${f.word}»? Slå opp i Bokmålsordboka`),
-          ]));
-        }
-        ul.appendChild(li);
-      });
-      panel.appendChild(ul);
-    };
-
-    list("Ser ut som bokmål", bokmal, "spell-head bm");
-    list("Ord eg ikkje kjenner att", ukjende, "spell-head unknown");
-
-    if (!result.checkedList) {
-      panel.appendChild(el("p", { class: "muted" }, "Ordlista er ikkje lasta ned, så vanlege skrivefeil er ikkje sjekka denne gongen."));
+    if (f.right.length) {
+      const sugs = el("ul", { class: "spell-sug" });
+      // Berre funnet på skjermen slår opp tydingar, så ein lang tekst ikkje
+      // sender tjue oppslag på ein gong. Svara blir mellomlagra i js/ordbok.js.
+      // Eit feilstava ord får forslag som er ulike ord, og då treng eleven
+      // tydinga på kvart. Eit bokmålsord får bøyingsformer av det same ordet,
+      // så der held det med den første.
+      f.right.slice(0, 3).forEach((ord, n) => sugs.appendChild(forslagsRad(ord, n === 0 || f.type === "ukjent")));
+      panel.appendChild(sugs);
     } else {
-      panel.appendChild(el("p", { class: "muted" }, "Sjekken er ei hjelp, ikkje ein fasit. Namn og sjeldne ord kan hamne i lista over ord han ikkje kjenner att."));
+      panel.appendChild(el("p", { class: "muted" }, "Sjekken har ingen forslag til dette ordet."));
     }
 
-    if (typeof Ordbok !== "undefined") {
-      const kjelde = el("p", { class: "muted spell-source" });
-      kjelde.appendChild(document.createTextNode("Tydingane kjem frå "));
-      kjelde.appendChild(el("a", { href: "https://ordbokene.no/nno/nn", target: "_blank", rel: "noopener" }, "Nynorskordboka"));
-      kjelde.appendChild(document.createTextNode(" (Språkrådet og Universitetet i Bergen). Du kan òg søkje i "));
-      kjelde.appendChild(el("a", { href: Ordbok.lexinUrl(), target: "_blank", rel: "noopener" }, "Lexin"));
-      kjelde.appendChild(document.createTextNode("."));
-      panel.appendChild(kjelde);
+    if (f.type === "bokmal" && typeof Ordbok !== "undefined") {
+      const bmLenkje = el("a", { href: Ordbok.artikkelUrl(f.word, "bm"), target: "_blank", rel: "noopener" },
+        `Kva tyder «${f.word}»? Slå opp i Bokmålsordboka`);
+      Ordbok.lookup(f.word, "bm").then(treff => { if (treff) bmLenkje.href = treff.url; });
+      panel.appendChild(el("div", { class: "spell-links" }, [bmLenkje]));
     }
+
+    const bunn = el("p", { class: "muted spell-source" });
+    if (!resultat.checkedList) {
+      bunn.appendChild(document.createTextNode("Ordlista er ikkje lasta ned, så vanlege skrivefeil er ikkje sjekka denne gongen. "));
+    }
+    if (typeof Ordbok !== "undefined") {
+      bunn.appendChild(document.createTextNode("Tydingane kjem frå "));
+      bunn.appendChild(el("a", { href: "https://ordbokene.no/nno/nn", target: "_blank", rel: "noopener" }, "Nynorskordboka"));
+      bunn.appendChild(document.createTextNode(". Du kan òg søkje i "));
+      bunn.appendChild(el("a", { href: Ordbok.lexinUrl(), target: "_blank", rel: "noopener" }, "Lexin"));
+      bunn.appendChild(document.createTextNode(". Sjekken er ei hjelp, ikkje ein fasit."));
+    }
+    panel.appendChild(bunn);
+
+    visMarkering();
+  }
+
+  function forslagsRad(word, medTyding) {
+    const li = el("li");
+    if (typeof Ordbok === "undefined") {
+      li.appendChild(el("strong", { class: "spell-sug-word" }, word));
+      return li;
+    }
+
+    const lenkje = el("a", { class: "spell-sug-word", href: Ordbok.artikkelUrl(word), target: "_blank", rel: "noopener" }, word);
+    li.appendChild(lenkje);
+    const grunnform = el("span", { class: "spell-lemma" });
+    li.appendChild(grunnform);
+    const tyding = el("span", { class: "spell-def" }, medTyding ? " slår opp …" : "");
+    li.appendChild(tyding);
+
+    // Oppslaget gir grunnforma, og lenkja blir retta dit. Utan det hamnar
+    // eleven på ei side som berre seier at lærarane er ei bøygd form av lærar.
+    Ordbok.lookup(word).then(treff => {
+      tyding.textContent = "";
+      if (!treff) return;
+      lenkje.href = treff.url;
+      if (treff.lemma && treff.lemma !== word) {
+        grunnform.textContent = " (oppslagsord: " + treff.lemma + ")";
+      }
+      if (!medTyding) return;
+      if (treff.ordklasse) {
+        tyding.appendChild(document.createTextNode(" "));
+        tyding.appendChild(el("em", { class: "spell-pos" }, treff.ordklasse));
+      }
+      if (treff.tyding) {
+        const kort = treff.tyding.length > 120 ? treff.tyding.slice(0, 117) + "…" : treff.tyding;
+        tyding.appendChild(document.createTextNode(" " + kort));
+      }
+    });
+    return li;
   }
 
   /* ---------- Reading (passage + sub-questions) ---------- */

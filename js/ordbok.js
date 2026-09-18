@@ -93,29 +93,35 @@ const Ordbok = (() => {
     return plass.length ? Math.min(...plass) : PRIORITET.length;
   }
 
-  function hentArtikkel(id) {
-    return fetch(API + "/nn/article/" + id + ".json")
+  function hentArtikkel(id, dict) {
+    return fetch(API + "/" + dict + "/article/" + id + ".json")
       .then(res => (res.ok ? res.json() : Promise.reject(new Error("HTTP " + res.status))));
   }
 
-  // Returnerer { word, tyding, ordklasse, url } eller null om ordet ikkje finst.
-  // Feilar oppslaget, blir det null, og den som kallar viser berre lenkjene.
-  function lookup(word) {
-    const key = word.toLowerCase();
+  // Returnerer { word, lemma, tyding, ordklasse, url } eller null om ordet ikkje
+  // finst. Feilar oppslaget, blir det null, og den som kallar viser berre ordet.
+  // dict er "nn" (standard) eller "bm".
+  function lookup(word, dict) {
+    const ordbok = dict === "bm" ? "bm" : "nn";
+    const key = ordbok + ":" + word.toLowerCase();
     if (cache.has(key)) return Promise.resolve(cache.get(key));
 
-    const svar = fetch(API + "/api/articles?w=" + encodeURIComponent(key) + "&dict=nn")
+    const svar = fetch(API + "/api/articles?w=" + encodeURIComponent(word.toLowerCase()) + "&dict=" + ordbok)
       .then(res => (res.ok ? res.json() : Promise.reject(new Error("HTTP " + res.status))))
       .then(data => {
-        const ids = ((data.articles || {}).nn) || [];
+        const ids = ((data.articles || {}).nn || data.articles[ordbok]) || [];
         if (!ids.length) return null;
-        return Promise.all(ids.slice(0, 3).map(hentArtikkel)).then(artiklar => {
+        return Promise.all(ids.slice(0, 3).map(id => hentArtikkel(id, ordbok))).then(artiklar => {
           const beste = artiklar.slice().sort((a, b) => rangering(a) - rangering(b))[0];
+          // Grunnforma, så lenkja går til artikkelen og ikkje til ei side som
+          // berre seier at lærarane er ei bøygd form av lærar.
+          const lemma = ((beste.lemmas || [])[0] || {}).lemma || word.toLowerCase();
           return {
-            word: key,
+            word: word.toLowerCase(),
+            lemma,
             tyding: forsteTyding(beste),
             ordklasse: ordklasse(beste),
-            url: artikkelUrl(key),
+            url: artikkelUrl(lemma, ordbok),
           };
         });
       })

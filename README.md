@@ -89,7 +89,18 @@ npx serve .
    Treng ingen nedlasting.
 2. **Ordliste** (`data/nn-ordliste.txt`): fangar skrivefeil. Ukjende ord blir
    prøvde delte som samansetning før dei blir melde, og forslag kjem frå ord
-   som er eitt, eller for lengre ord to, teiknbyte unna.
+   som er eitt, eller for lengre ord to, teiknbyte unna. Forslaga blir sorterte
+   etter kor likt ordet er det eleven skreiv, der starten av ordet tel dobbelt.
+   To bonusar på toppen: ord som set tilbake ein diftong (*løse* → *løyse*), og
+   ord eleven møter i kurset. Bokmålsformer fell ut av forslagslista, for eit
+   forslag skal aldri vere bokmål.
+
+Panelet viser eitt funn om gongen, med teljar og knappar for å bla, og ordet
+blir markert i teksten. Markeringa ligg i eit lag bak skrivefeltet (`.ta-wrap`
+og `.ta-overlay` i CSS-en), som må ha same skrift, innrykk og linjehøgd som
+skrivefeltet for at orda skal hamne oppå kvarandre. Endrar eleven teksten,
+stemmer ikkje plasseringane lenger, og panelet ber om ein ny sjekk. Berre det
+funnet som er på skjermen, slår opp tydingar.
 
 Bokmålsvarselet går først, for ordlista er ei rein formliste og har ein del
 bokmålsord som homografar (*hun*, *boken*). Lista `TVITYDIGE` øvst i
@@ -99,8 +110,10 @@ samanheng (*si*, *bare*, *sette*).
 `sw.js` cachar berre ordlista, aldri kursfilene, slik at ei oppdatering av
 kurset aldri kan bli ståande i cachen hjå eleven.
 
-`js/ordbok.js` hentar ordklasse og første tyding frå det opne API-et til
-ordbokene.no (`ord.uib.no`), som svarar på tvers av domene. Berre det første
+`js/ordbok.js` hentar ordklasse, grunnform og første tyding frå det opne API-et
+til ordbokene.no (`ord.uib.no`), som svarar på tvers av domene. Lenkjene går til
+grunnforma: `ordbokene.no/nno/nn/lærarane` gir null treff og ei side som berre
+seier at ordet er ei bøygd form, mens `/nno/nn/lærar` gir artikkelen. Berre det første
 forslaget per funn blir slege opp, høgst tolv per sjekk, og svara blir
 mellomlagra. Har eit ord fleire artiklar, går funksjonsord (pronomen, adverb)
 føre innhaldsord, for elles blir <em>eg</em> til substantivet «eg» (ego) og
