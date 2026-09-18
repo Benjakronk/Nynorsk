@@ -23,6 +23,7 @@ const Spell = (() => {
   let loading = null;        // Promise medan lasting går føre seg
   let bokmal = null;         // Map: feilform → { right: [...], why }
   let correct = null;        // Alle rette nynorskformer i ordbanken
+  let ordetNo = "";          // Ordet suggest() arbeider med, brukt av diftong()
 
   /* Bokmålsformer som samtidig er vanlege, rette nynorskord. Ordbanken i
      bank.js parar dei med ei betre nynorskform (si → seie, skole → skule), men
@@ -221,6 +222,21 @@ const Spell = (() => {
     return isCompound(word);
   }
 
+  // Ein av dei vanlegaste nynorskfeila er å skrive vekk diftongen, slik bokmål
+  // gjer: løyse blir løse, høyre blir høre, lauge blir lage. Eit forslag som
+  // set diftongen tilbake, er difor ofte det ordet eleven meinte.
+  const DIFTONGAR = [["ø", "øy"], ["e", "ei"], ["a", "au"], ["o", "au"]];
+
+  function diftong(cand) {
+    return DIFTONGAR.some(([kort, lang]) => {
+      let i = -1;
+      while ((i = cand.indexOf(lang, i + 1)) >= 0) {
+        if (cand.slice(0, i) + kort + cand.slice(i + lang.length) === ordetNo) return true;
+      }
+      return false;
+    });
+  }
+
   // Alle strengar eitt teiknbyte unna ordet.
   function edits(word) {
     const out = [];
@@ -236,22 +252,18 @@ const Spell = (() => {
     return out;
   }
 
-  // Forslag: alle ord i lista som er eitt teiknbyte unna. Lista inneheld ein
-  // del bokmålsformer, så eit forslag som står i bokmålsvarselet blir bytt ut
-  // med nynorskforma si.
+  // Forslag: alle ord i lista som er eitt teiknbyte unna. Ord som står i
+  // bokmålsvarselet fell ut: å byte dei mot nynorskforma gav forslag som ikkje
+  // likna på det eleven skreiv (løse → løpe → springe, når han meinte løyse).
   function suggest(word, max, deep) {
+    ordetNo = word;
     const out = [];
     const bm = bokmalMap();
     const seen = new Set([word]);
     const push = cand => {
       if (seen.has(cand)) return;
       seen.add(cand);
-      if (!words.has(cand)) return;
-      const hit = bm.get(cand);
-      if (hit) {
-        hit.right.forEach(r => { if (!out.includes(r)) out.push(r); });
-        return;
-      }
+      if (!words.has(cand) || bm.has(cand)) return;
       out.push(cand);
     };
     for (let i = 0; i < word.length; i++) {
@@ -273,13 +285,22 @@ const Spell = (() => {
         if (out.length >= (max || 3) * 3) break;
       }
     }
-    // Ord eleven møter i kurset først, deretter dei som liknar mest på starten
-    const felles = cand => {
-      let i = 0;
-      while (i < cand.length && i < word.length && cand[i] === word[i]) i++;
-      return i;
+    // Dei som liknar mest kjem først. Starten av ordet tel dobbelt, for eleven
+    // har som regel byrjinga rett og bommar lenger ute: løse skal gi løyse, ikkje
+    // sløse, som berre deler slutten. Står det likt, vinn ordet eleven møter i
+    // kurset.
+    const skaar = cand => {
+      let start = 0;
+      while (start < cand.length && start < word.length && cand[start] === word[start]) start++;
+      let slutt = 0;
+      while (slutt < cand.length - start && slutt < word.length - start
+        && cand[cand.length - 1 - slutt] === word[word.length - 1 - slutt]) slutt++;
+      let poeng = start * 2 + slutt - Math.abs(cand.length - word.length) / 2;
+      if (diftong(cand)) poeng += 2;      // løse → løyse
+      if (correct.has(cand)) poeng += 1;  // ord eleven møter i kurset
+      return poeng;
     };
-    out.sort((a, b) => (correct.has(b) - correct.has(a)) || (felles(b) - felles(a)));
+    out.sort((a, b) => skaar(b) - skaar(a));
     return out.slice(0, max || 3);
   }
 
