@@ -655,6 +655,8 @@ const Exercises = (() => {
     });
 
     const btns = el("div", { class: "btn-row" });
+    const spell = spellChecker(ta);
+    btns.appendChild(spell.btn);
     const downloadBtn = el("button", { class: "btn secondary small" }, "Last ned som .txt");
     downloadBtn.addEventListener("click", () => {
       const blob = new Blob([ta.value], { type: "text/plain;charset=utf-8" });
@@ -669,8 +671,85 @@ const Exercises = (() => {
     });
     btns.appendChild(downloadBtn);
     root.appendChild(btns);
+    root.appendChild(spell.panel);
 
     return root;
+  }
+
+  /* ---------- Språksjekk under skrivefeltet ----------
+     Sjekken går på ein knapp, ikkje mens eleven skriv: raude strekar under
+     halvskrivne ord stoppar skrivinga meir enn dei hjelper. Sjå js/spell.js. */
+
+  function spellChecker(ta) {
+    const panel = el("div", { class: "spellcheck no-print", hidden: "" });
+    if (typeof Spell === "undefined") {
+      return { btn: document.createDocumentFragment(), panel };
+    }
+
+    // Ordlista blir henta med ein gong modulen er open, så ho er klar til bruk.
+    Spell.load().catch(() => {});
+
+    const btn = el("button", { class: "btn secondary small" }, "Sjekk språket");
+    btn.addEventListener("click", () => {
+      const text = ta.value.trim();
+      panel.hidden = false;
+      if (!text) {
+        panel.innerHTML = "";
+        panel.appendChild(el("p", { class: "muted" }, "Skriv litt tekst først."));
+        return;
+      }
+      panel.innerHTML = "";
+      panel.appendChild(el("p", { class: "muted" }, "Sjekkar …"));
+      btn.disabled = true;
+      Spell.load()
+        .catch(() => null)
+        .then(() => {
+          btn.disabled = false;
+          showResult(panel, Spell.check(text));
+        });
+    });
+    return { btn, panel };
+  }
+
+  function showResult(panel, result) {
+    panel.innerHTML = "";
+    const bokmal = result.findings.filter(f => f.type === "bokmal");
+    const ukjende = result.findings.filter(f => f.type === "ukjent");
+
+    if (!bokmal.length && !ukjende.length) {
+      panel.appendChild(el("p", { class: "spell-ok" }, result.checkedList
+        ? "Ingen bokmålsord eller skrivefeil funne. Hugs at sjekken ikkje ser alt."
+        : "Ingen bokmålsord funne. Ordlista er ikkje lasta, så skrivefeil er ikkje sjekka."));
+      return;
+    }
+
+    const list = (title, items, klass) => {
+      if (!items.length) return;
+      panel.appendChild(el("h4", { class: klass }, title));
+      const ul = el("ul", { class: "spell-list" });
+      items.forEach(f => {
+        const li = el("li");
+        li.appendChild(el("span", { class: "spell-word" }, f.word));
+        if (f.right.length) {
+          li.appendChild(document.createTextNode(" → "));
+          li.appendChild(el("strong", {}, f.right.slice(0, 3).join(", ")));
+        } else {
+          li.appendChild(document.createTextNode(" (ingen forslag)"));
+        }
+        if (f.why) li.appendChild(el("div", { class: "spell-why", html: f.why }));
+        ul.appendChild(li);
+      });
+      panel.appendChild(ul);
+    };
+
+    list("Ser ut som bokmål", bokmal, "spell-head bm");
+    list("Ord eg ikkje kjenner att", ukjende, "spell-head unknown");
+
+    if (!result.checkedList) {
+      panel.appendChild(el("p", { class: "muted" }, "Ordlista er ikkje lasta ned, så vanlege skrivefeil er ikkje sjekka denne gongen."));
+    } else {
+      panel.appendChild(el("p", { class: "muted" }, "Sjekken er ei hjelp, ikkje ein fasit. Namn og sjeldne ord kan hamne i lista over ord han ikkje kjenner att."));
+    }
   }
 
   /* ---------- Reading (passage + sub-questions) ---------- */

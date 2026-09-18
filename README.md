@@ -24,6 +24,7 @@ frå Språkrådet.
 - Finn feilen (`findError`): eleven klikkar på feil ord i ein tekst og skriv rett form
 - Automatisk fasit på objektive oppgåver
 - Eigne tekstar blir lagra i `localStorage`
+- Språksjekk i skriveoppgåvene: bokmålsvarsel bygd på ordbanken i kurset, og skrivefeil mot ei nynorsk ordliste på 412 000 former
 - Heile sida er statisk og fungerer på GitHub Pages utan byggjesteg
 
 ## Køyre lokalt
@@ -53,6 +54,7 @@ npx serve .
 │   ├── modules.js          Modulregister (med grupper for Del 2 og 3)
 │   ├── exercises.js        Oppgåvetypar (rendering + grading)
 │   ├── drills.js           Motor for mengdetrening (ordbank → oppgåver)
+│   ├── spell.js            Språksjekk for skriveoppgåvene
 │   ├── app.js              Logikk for oversiktssida
 │   ├── modul.js            Logikk for modulsida
 │   └── content/
@@ -65,9 +67,34 @@ npx serve .
 │       ├── part3-feil.js        Del 3: typiske feil
 │       ├── part3-rettelesing.js Del 3: rettelesing
 │       └── part4.js             Del 4: lesing
-├── tools/validate-content.js   Validerer alt innhald: node tools/validate-content.js
+├── data/
+│   ├── nn-ordliste.txt     412 000 nynorske ordformer (sjå data/KJELDE.md)
+│   └── KJELDE.md           Kjelde og CC BY 4.0-lisens for ordlista
+├── sw.js                   Service worker: cachar berre ordlista
+├── tools/
+│   ├── validate-content.js Validerer alt innhald: node tools/validate-content.js
+│   └── lag-ordliste.js     Lagar ordlista på nytt frå Norsk ordbank
 └── README.md
 ```
+
+## Språksjekk
+
+`js/spell.js` sjekkar elevtekstane i to lag:
+
+1. **Bokmålsvarsel** frå `js/content/bank.js`: dei registrerte bokmålsformene,
+   pluss bøyingsformer som er systematisk feil (biler/bilene, boken, kastet).
+   Treng ingen nedlasting.
+2. **Ordliste** (`data/nn-ordliste.txt`): fangar skrivefeil. Ukjende ord blir
+   prøvde delte som samansetning før dei blir melde, og forslag kjem frå ord
+   som er eitt, eller for lengre ord to, teiknbyte unna.
+
+Bokmålsvarselet går først, for ordlista er ei rein formliste og har ein del
+bokmålsord som homografar (*hun*, *boken*). Lista `TVITYDIGE` øvst i
+`spell.js` held att varsel for ord som er gyldig nynorsk i ein annan
+samanheng (*si*, *bare*, *sette*).
+
+`sw.js` cachar berre ordlista, aldri kursfilene, slik at ei oppdatering av
+kurset aldri kan bli ståande i cachen hjå eleven.
 
 ## Leggje til eller endre innhald
 

@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderParts();
   renderPartProgress();
   wireDataMenu();
+  if (typeof Spell !== "undefined") Spell.warm();
   showView();
   window.addEventListener("hashchange", () => { showView(); window.scrollTo(0, 0); });
 });

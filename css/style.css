@@ -720,6 +720,60 @@ button.ghost:hover { background: var(--bg); }
 }
 .loading { color: var(--ink-faint); }
 
+/* Språksjekk i fritekstoppgåvene */
+.spellcheck {
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  padding: 14px 16px;
+}
+.spellcheck[hidden] { display: none; }
+.spellcheck .muted {
+  color: var(--ink-faint);
+  font-size: 14px;
+  margin: 8px 0 0;
+}
+.spellcheck .muted:first-child { margin-top: 0; }
+.spell-ok {
+  margin: 0;
+  color: var(--good);
+  font-size: 15px;
+}
+.spell-head {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin: 14px 0 6px;
+}
+.spell-head:first-child { margin-top: 0; }
+.spell-head.bm { color: var(--warm); }
+.spell-head.unknown { color: var(--ink-faint); }
+.spell-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+}
+.spell-list li {
+  padding: 6px 0;
+  border-top: 1px solid var(--line);
+}
+.spell-list li:first-child { border-top: none; }
+.spell-word {
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--warm-soft);
+  border-radius: var(--radius-sm);
+  padding: 1px 6px;
+}
+.spell-why {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
 /* Print row (button to save module as PDF) */
 .print-row {
   display: flex;
