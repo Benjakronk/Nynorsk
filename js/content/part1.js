@@ -23,7 +23,7 @@ Modules.register({
 
         <h3>Embetsmannsspråket</h3>
         <p>I byane voks det fram eit talemål blant embetsmenn og borgarskap som låg nærare
-        dansk skrift. Mange uttala dansken med ein litt norsk tonefall, og slik oppstod det
+        dansk skrift. Mange uttala dansken med eit litt norsk tonefall, og slik oppstod det
         som ofte blir kalla <em class="nn">dansk-norsk</em> eller embetsmannsspråket.</p>
 
         <h3>1814: ein ny situasjon</h3>
@@ -887,9 +887,9 @@ Modules.register({
             <li>Du får éi oppgåve om gongen. Skriv svaret og trykk <strong>Enter</strong>,
                 eller vel eit alternativ.</li>
             <li>Du får vite med ein gong om det var rett, og kvifor.</li>
-            <li>Etter runden kan du <strong>øve på det du bomma på</strong> før du tek ei ny
+            <li>Etter runden kan du <strong>øve på det du bomma på</strong> før du tek ein ny
                 runde.</li>
-            <li>Beste resultatet blir lagra. Ei runde med minst 80&nbsp;% rett tel som
+            <li>Beste resultatet blir lagra. Ein runde med minst 80&nbsp;% rett tel som
                 fullført.</li>
           </ul>
 

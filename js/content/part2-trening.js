@@ -18,8 +18,8 @@ Modules.register({
         ordbank. Skriv svaret og trykk <strong>Enter</strong>, eller vel eit alternativ. Du får
         vite med ein gong om det var rett, og kvifor.</p>
         <ul>
-          <li>Etter runden kan du <strong>øve på feila</strong> før du tek ei ny runde.</li>
-          <li>Beste resultatet ditt blir lagra. Ei runde med minst 80&nbsp;% rett tel som fullført.</li>
+          <li>Etter runden kan du <strong>øve på feila</strong> før du tek ein ny runde.</li>
+          <li>Beste resultatet ditt blir lagra. Ein runde med minst 80&nbsp;% rett tel som fullført.</li>
           <li>Der to former er tillatne (t.d. <em class="nn">barna</em> og <em class="nn">borna</em>), blir begge godtekne.</li>
         </ul>
         <div class="callout">
@@ -469,8 +469,8 @@ Modules.register({
         slik det gjer når du skriv ein tekst: eit substantiv i fleirtal, eit verb i preteritum, eit
         adjektiv i inkjekjønn, eit småord. Det er den beste testen på om kunnskapen sit.</p>
         <div class="callout">
-          <strong>Tips:</strong> Ta ei runde her <em>før</em> du skriv ein tekst på nynorsk, som oppvarming,
-          og éi etterpå, med dei orda du var usikker på friskt i minnet. Under 80 % rett? Gå tilbake til
+          <strong>Tips:</strong> Ta ein runde her <em>før</em> du skriv ein tekst på nynorsk, som oppvarming,
+          og éin etterpå, med dei orda du var usikker på friskt i minnet. Under 80 % rett? Gå tilbake til
           den treningsmodulen som handlar om det du bomma på.
         </div>
       `,

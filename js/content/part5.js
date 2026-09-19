@@ -784,7 +784,7 @@ Modules.register({
 
         <p>Det var det dei sa om saka. Anders såg ut over enga. Han tenkte: kanskje eg
         blir verande. Kanskje eg reiser igjen. Han visste ikkje. Men for første gong
-        sidan i fjor haust, var det å ikkje vite ikkje ei vond ting. Det var berre ei
+        sidan i fjor haust, var det å ikkje vite ikkje ein vond ting. Det var berre ein
         ting. Han kunne leve med det ei stund.</p>
       `,
       questions: [
@@ -1461,10 +1461,10 @@ Modules.register({
       passage: `
         <p>Det er ikkje noko stort med ein morgon i april. Sola står opp, slik ho gjer
         kvar dag. Fuglane syng utanfor. Eg ligg under dyna og ser strålane finne vegen
-        mellom gardinene og leggje ein lys stripe over golvet.</p>
+        mellom gardinene og leggje ei lys stripe over golvet.</p>
 
         <p>Eg veit at i kjøkenet står far. Han kokar kaffe. Vatnet syd, han slår det
-        over filteret, og ein lukt, brun og bitter og varm, legg seg over heile huset.
+        over filteret, og ei lukt, brun og bitter og varm, legg seg over heile huset.
         Det er denne lukta som vekkjer meg, meir enn fuglane, meir enn lyset.</p>
 
         <p>Eg kjem ned i pysjamasen. Far snur seg ikkje. Han veit at eg er der.<br>
@@ -1644,7 +1644,7 @@ Modules.register({
 
         <p>Det er rart med snø. Han er kald, men når du står lenge nok i han, blir det
         varmt på ein måte. Det er ikkje varmt på huda. Det er noko anna. Eg hugsar då
-        eg var seks år og fall i ein snøfonn, og eg vart liggjande, og mor måtte hente
+        eg var seks år og fall i ei snøfonn, og eg vart liggjande, og mor måtte hente
         meg, og då eg kom inn att, var det som om eg hadde vore på ei lang reise.</p>
 
         <p>Det er det same no. Eg har vore på ei lang reise sidan i går kveld. Eg sit
