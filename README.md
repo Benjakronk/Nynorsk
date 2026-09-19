@@ -56,6 +56,7 @@ npx serve .
 │   ├── exercises.js        Oppgåvetypar (rendering + grading)
 │   ├── drills.js           Motor for mengdetrening (ordbank → oppgåver)
 │   ├── spell.js            Språksjekk for skriveoppgåvene
+│   ├── grammatikk.js       Grammatikksjekk: kjønn, samsvar, då/når
 │   ├── ordbok.js           Oppslag i Nynorskordboka (ord.uib.no)
 │   ├── app.js              Logikk for oversiktssida
 │   ├── modul.js            Logikk for modulsida
@@ -71,12 +72,13 @@ npx serve .
 │       ├── part4-rettelesing.js Del 4: rettelesing
 │       └── part5.js             Del 5: lesing
 ├── data/
-│   ├── nn-ordliste.txt     412 000 nynorske ordformer (sjå data/KJELDE.md)
-│   └── KJELDE.md           Kjelde og CC BY 4.0-lisens for ordlista
-├── sw.js                   Service worker: cachar berre ordlista
+│   ├── nn-ordbank.txt      412 000 nynorske ordformer med morfologi (sjå data/KJELDE.md)
+│   └── KJELDE.md           Kjelde, format og CC BY 4.0-lisens
+├── sw.js                   Service worker: cachar berre ordbanken
 ├── tools/
 │   ├── validate-content.js Validerer alt innhald: node tools/validate-content.js
-│   └── lag-ordliste.js     Lagar ordlista på nytt frå Norsk ordbank
+│   ├── lag-ordbank.js      Lagar ordbanken på nytt frå Norsk ordbank
+│   └── test-grammatikk.js  Testar grammatikkreglane mot feil og kursprosa
 └── README.md
 ```
 
@@ -87,7 +89,7 @@ npx serve .
 1. **Bokmålsvarsel** frå `js/content/bank.js`: dei registrerte bokmålsformene,
    pluss bøyingsformer som er systematisk feil (biler/bilene, boken, kastet).
    Treng ingen nedlasting.
-2. **Ordliste** (`data/nn-ordliste.txt`): fangar skrivefeil. Ukjende ord blir
+2. **Ordliste** (`data/nn-ordbank.txt`): fangar skrivefeil. Ukjende ord blir
    prøvde delte som samansetning før dei blir melde, og forslag kjem frå ord
    som er eitt, eller for lengre ord to, teiknbyte unna. Forslaga blir sorterte
    etter kor likt ordet er det eleven skreiv, der starten av ordet tel dobbelt.
@@ -95,11 +97,33 @@ npx serve .
    ord eleven møter i kurset. Bokmålsformer fell ut av forslagslista, for eit
    forslag skal aldri vere bokmål.
 
+### Grammatikksjekk
+
+`js/grammatikk.js` bruker morfologien i `data/nn-ordbank.txt` til tre reglar:
+
+1. **Kjønn på artikkelen**: *eit bok* → *ei bok*, *ein hus* → *eit hus*
+2. **Samsvar etter «eit»**: *eit stor hus* → *eit stort hus*
+3. **«når» om éi hending i fortida**: *Når vi kom fram* → *Då vi kom fram*
+
+Kvar regel er skriven for å teie heller enn å gjette. 18 % av ordformene kan
+tolkast på fleire måtar, så regelen held att når eit ord er ukjent, kan vere
+eit namn, eller kan vere eit verbal, pronomen eller bindeord (*ein veit aldri*,
+*ein låg der*, *i*, *då*). Regel 3 teier om setninga tyder på gjentaking
+(*alltid*, *kvar gong*), er eit spørsmål, eller er eit indirekte spørsmål
+(*eg veit ikkje når han kom*).
+
+Målt ved innføringa: 14 av 14 konstruerte feil fanga, 0 av 20 korrekte
+konstruerte setningar melde, og 0 falske alarmar i 15 000 ord kursprosa. Nye
+reglar skal gjennom same testen før dei kjem inn: `node tools/test-grammatikk.js`.
+
 Panelet viser eitt funn om gongen, med teljar og knappar for å bla, og ordet
 blir markert i teksten. Markeringa ligg i eit lag bak skrivefeltet (`.ta-wrap`
 og `.ta-overlay` i CSS-en), som må ha same skrift, innrykk og linjehøgd som
 skrivefeltet for at orda skal hamne oppå kvarandre. Endrar eleven teksten,
-stemmer ikkje plasseringane lenger, og panelet ber om ein ny sjekk. Berre det
+stemmer ikkje plasseringane lenger. Panelet blir ståande, men dempa, med ein
+knapp for ein ny sjekk. Etter sjekken held panelet fram der eleven var: står
+same ordet att omtrent same staden, blei det ikkje retta, og eleven blir
+verande. Er ordet borte, går panelet til det første funnet etter det. Berre det
 funnet som er på skjermen, slår opp tydingar.
 
 Bokmålsvarselet går først, for ordlista er ei rein formliste og har ein del

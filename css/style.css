@@ -757,6 +757,7 @@ button.ghost:hover { background: var(--bg); }
 .spell-head:first-child { margin-top: 0; }
 .spell-head.bm { color: var(--warm); }
 .spell-head.unknown { color: var(--ink-faint); }
+.spell-head.gram { color: var(--accent); }
 .spell-list {
   list-style: none;
   margin: 0;
@@ -841,6 +842,21 @@ button.ghost:hover { background: var(--bg); }
   border-radius: 3px;
   box-shadow: 0 0 0 2px var(--warm-soft);
 }
+.spell-stale {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: var(--warm-soft);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.spell-stale[hidden] { display: none; }
+.spell-dim { opacity: .45; }
+
 .spell-nav {
   display: flex;
   align-items: center;

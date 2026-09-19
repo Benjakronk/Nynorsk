@@ -5,8 +5,10 @@
       (biler/bilene for bilar/bilane, boken for boka, kastet for kasta).
       Dette laget treng ingen nedlasting og går alltid.
 
-   2. Ordliste. data/nn-ordliste.txt er 412 000 nynorske ordformer henta frå
-      Norsk ordbank (nynorsk 2012) hjå Nasjonalbiblioteket. Ho blir lasta ned i
+   2. Ordliste. data/nn-ordbank.txt er 412 000 nynorske ordformer henta frå
+      Norsk ordbank (nynorsk 2012) hjå Nasjonalbiblioteket, kvar med
+      morfologien sin (ordklasse, kjønn, tal, tempus), som grammatikksjekken
+      i js/grammatikk.js bruker. Lista blir lasta ned i
       bakgrunnen (sjå sw.js) og fangar vanlege skrivefeil. Ukjende ord blir
       først prøvde delte som samansetning, slik at skulebiblioteket, som ikkje
       står i lista, ikkje blir melt som feil.
@@ -16,10 +18,11 @@
    kan ikkje avgjere kva som er bokmål. Det gjer ordbanken i kurset. */
 
 const Spell = (() => {
-  const LIST_URL = "data/nn-ordliste.txt";
+  const LIST_URL = "data/nn-ordbank.txt";
   const ALPHA = "abcdefghijklmnopqrstuvwxyzæøåéèêóòôäëü";
 
-  let words = null;          // Set med nynorske former, null til lista er lasta
+  let words = null;          // Map: ordform → tag-id-ar, null til lista er lasta
+  let tagTabell = [];        // Tagkombinasjonane id-ane peikar på
   let loading = null;        // Promise medan lasting går føre seg
   let bokmal = null;         // Map: feilform → { right: [...], why }
   let correct = null;        // Alle rette nynorskformer i ordbanken
@@ -170,13 +173,20 @@ const Spell = (() => {
         return res.text();
       })
       .then(text => {
-        const set = new Set();
-        for (const line of text.split("\n")) {
+        // Første linje er tagtabellen, resten «ord<TAB>id,id» i base 36. Id-ane
+        // blir liggjande som tekst og blir berre tolka når grammatikksjekken
+        // spør etter eit ord.
+        const nl = text.indexOf("\n");
+        tagTabell = JSON.parse(text.slice(0, nl));
+        const map = new Map();
+        for (const line of text.slice(nl + 1).split("\n")) {
           // trim: fila kan ha fått CRLF på vegen
-          const word = line.trim();
-          if (word) set.add(word);
+          const l = line.trim();
+          if (!l) continue;
+          const tab = l.indexOf("\t");
+          map.set(l.slice(0, tab), l.slice(tab + 1));
         }
-        words = set;
+        words = map;
         loading = null;
         return words;
       })
@@ -188,6 +198,14 @@ const Spell = (() => {
   }
 
   function isReady() { return words !== null; }
+
+  // Morfologien til ei ordform, til dømes ["subst fem eint ub"] for «bok».
+  // null om ordet er ukjent eller lista ikkje er lasta.
+  function tagar(word) {
+    if (!words) return null;
+    const ids = words.get(word.toLowerCase());
+    return ids ? ids.split(",").map(id => tagTabell[parseInt(id, 36)]) : null;
+  }
 
   function known(word) {
     return words.has(word);
@@ -342,5 +360,5 @@ const Spell = (() => {
     return { checkedList: words !== null, findings };
   }
 
-  return { warm, load, isReady, check, suggest, LIST_URL };
+  return { warm, load, isReady, check, suggest, tagar, LIST_URL };
 })();

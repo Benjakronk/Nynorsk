@@ -687,7 +687,11 @@ const Exercises = (() => {
      Panelet viser eitt funn om gongen, og ordet blir markert i teksten. Ein
      lang tekst kan gi tjue funn, og alle på ein gong er meir enn ein elev
      orkar å ta inn. Markeringa ligg i eit lag bak skrivefeltet, som har same
-     skrift og same innrykk, slik at orda hamnar oppå kvarandre. */
+     skrift og same innrykk, slik at orda hamnar oppå kvarandre.
+
+     Rettar eleven noko, stemmer ikkje plasseringane lenger. Panelet blir
+     ståande med det same funnet, men dempa og med ein knapp for å køyre
+     sjekken på nytt, slik at han ikkje forsvinn under hendene på eleven. */
 
   function spellChecker(ta, overlay) {
     const panel = el("div", { class: "spellcheck no-print", hidden: "" });
@@ -700,12 +704,20 @@ const Exercises = (() => {
 
     let funn = [];
     let noverande = 0;
-    let sjekkaTekst = "";
+    let foreldet = false;
+
+    const varsel = el("div", { class: "spell-stale", hidden: "" });
+    const paaNytt = el("button", { class: "btn secondary small" }, "Sjekk på nytt");
+    varsel.append(el("span", {}, "Du har endra teksten sidan sjekken."), paaNytt);
+    const innhald = el("div");
+    panel.append(varsel, innhald);
+
+    const btn = el("button", { class: "btn secondary small" }, "Sjekk språket");
 
     function visMarkering() {
       overlay.textContent = "";
       const f = funn[noverande];
-      if (!f || ta.value !== sjekkaTekst) return;
+      if (!f || foreldet) return;
       const tekst = ta.value;
       overlay.appendChild(document.createTextNode(tekst.slice(0, f.start)));
       const merke = el("mark", {}, tekst.slice(f.start, f.end));
@@ -717,52 +729,86 @@ const Exercises = (() => {
       overlay.scrollTop = ta.scrollTop;
     }
 
-    function tomPanel() {
-      funn = [];
-      overlay.textContent = "";
+    function melding(tekst) {
+      innhald.innerHTML = "";
+      innhald.appendChild(el("p", { class: "muted" }, tekst));
     }
 
-    ta.addEventListener("scroll", () => { overlay.scrollTop = ta.scrollTop; });
-    ta.addEventListener("input", () => {
-      if (!funn.length) return;
-      // Teksten er endra, så plasseringane stemmer ikkje lenger
-      tomPanel();
-      panel.innerHTML = "";
-      panel.appendChild(el("p", { class: "muted" }, "Du har endra teksten. Trykk «Sjekk språket» igjen."));
-    });
-
-    const btn = el("button", { class: "btn secondary small" }, "Sjekk språket");
-    btn.addEventListener("click", () => {
-      const tekst = ta.value.trim();
+    function kjor() {
       panel.hidden = false;
-      tomPanel();
-      if (!tekst) {
-        panel.innerHTML = "";
-        panel.appendChild(el("p", { class: "muted" }, "Skriv litt tekst først."));
+      varsel.hidden = true;
+      innhald.classList.remove("spell-dim");
+      foreldet = false;
+      overlay.textContent = "";
+
+      if (!ta.value.trim()) {
+        funn = [];
+        melding("Skriv litt tekst først.");
         return;
       }
-      panel.innerHTML = "";
-      panel.appendChild(el("p", { class: "muted" }, "Sjekkar …"));
+
+      // Hald fram der eleven var, i staden for å sende han til det første
+      // funnet igjen når han har retta noko midt i teksten. Ei retting lenger
+      // oppe flyttar alle plasseringane, så vi kjenner att funnet på ordet.
+      const forrige = funn[noverande] || null;
+
+      melding("Sjekkar …");
       btn.disabled = true;
+      paaNytt.disabled = true;
       Spell.load()
         .catch(() => null)
         .then(() => {
           btn.disabled = false;
+          paaNytt.disabled = false;
           const resultat = Spell.check(ta.value);
           funn = resultat.findings;
-          noverande = 0;
-          sjekkaTekst = ta.value;
-          visFunn(panel, resultat, funn, () => noverande, i => { noverande = i; }, visMarkering);
+          // Grammatikksjekken treng morfologien frå ordbanken, så han går berre
+          // når lista er lasta. Funna blir flette inn i teksten si rekkjefølgje.
+          if (typeof Grammatikk !== "undefined" && Spell.isReady()) {
+            funn = funn.concat(Grammatikk.sjekk(ta.value, Spell.tagar))
+              .sort((a, b) => a.start - b.start);
+          }
+          noverande = finnAtt(funn, forrige);
+          visFunn(innhald, resultat, funn, () => noverande, i => { noverande = i; }, visMarkering);
         });
+    }
+
+    ta.addEventListener("scroll", () => { overlay.scrollTop = ta.scrollTop; });
+    ta.addEventListener("input", () => {
+      if (!funn.length || foreldet) return;
+      foreldet = true;
+      overlay.textContent = "";
+      varsel.hidden = false;
+      innhald.classList.add("spell-dim");
     });
 
+    btn.addEventListener("click", kjor);
+    paaNytt.addEventListener("click", kjor);
+
     return { btn, panel };
+  }
+
+  // Kvar skal panelet stå etter ein ny sjekk? Står det same ordet att omtrent
+  // same staden, blei det ikkje retta, og eleven skal bli verande. Elles går vi
+  // til det første funnet etter der han var.
+  const GLID = 30;
+
+  function finnAtt(funn, forrige) {
+    if (!forrige) return 0;
+    const same = funn.findIndex(f => f.word === forrige.word && Math.abs(f.start - forrige.start) <= GLID);
+    if (same >= 0) return same;
+    // Ordet er borte, altså retta. Då går vi framover, ikkje bakover: eit funn
+    // som ligg tidlegare i teksten, har eleven alt vore forbi.
+    const etter = funn.findIndex(f => f.start >= forrige.start);
+    return etter < 0 ? 0 : etter;
   }
 
   const OVERSKRIFT = {
     bokmal: "Ser ut som bokmål",
     ukjent: "Ord eg ikkje kjenner att",
+    grammatikk: "Grammatikk",
   };
+  const OVERSKRIFT_KLASSE = { bokmal: "bm", ukjent: "unknown", grammatikk: "gram" };
 
   // Tegnar heile panelet på nytt for det funnet eleven står på.
   function visFunn(panel, resultat, funn, hentIndeks, settIndeks, visMarkering) {
@@ -770,7 +816,7 @@ const Exercises = (() => {
 
     if (!funn.length) {
       panel.appendChild(el("p", { class: "spell-ok" }, resultat.checkedList
-        ? "Ingen bokmålsord eller skrivefeil funne. Hugs at sjekken ikkje ser alt."
+        ? "Ingen bokmålsord, skrivefeil eller grammatikkfeil funne. Hugs at sjekken ikkje ser alt."
         : "Ingen bokmålsord funne. Ordlista er ikkje lasta, så skrivefeil er ikkje sjekka."));
       visMarkering();
       return;
@@ -780,7 +826,7 @@ const Exercises = (() => {
     const f = funn[i];
 
     const topp = el("div", { class: "spell-nav" });
-    topp.appendChild(el("span", { class: "spell-head " + (f.type === "bokmal" ? "bm" : "unknown") }, OVERSKRIFT[f.type]));
+    topp.appendChild(el("span", { class: "spell-head " + OVERSKRIFT_KLASSE[f.type] }, OVERSKRIFT[f.type]));
     const knappar = el("div", { class: "spell-steps" });
     const teljar = el("span", { class: "spell-count" }, `${i + 1} av ${funn.length}`);
     const forrige = el("button", { class: "btn secondary small" }, "‹ Førre");
@@ -800,7 +846,15 @@ const Exercises = (() => {
     panel.appendChild(el("div", { class: "spell-line" }, [el("span", { class: "spell-word" }, f.word)]));
     if (f.why) panel.appendChild(el("div", { class: "spell-why", html: f.why }));
 
-    if (f.right.length) {
+    if (f.type === "grammatikk") {
+      // Grammatikkforslaga er små ord som ei, eit, stort og då. Tydinga deira
+      // hjelper ikkje eleven, så dei står utan ordbokoppslag.
+      if (f.right.length) {
+        const sugs = el("ul", { class: "spell-sug" });
+        f.right.forEach(ord => sugs.appendChild(el("li", {}, [el("strong", { class: "spell-sug-word" }, ord)])));
+        panel.appendChild(sugs);
+      }
+    } else if (f.right.length) {
       const sugs = el("ul", { class: "spell-sug" });
       // Berre funnet på skjermen slår opp tydingar, så ein lang tekst ikkje
       // sender tjue oppslag på ein gong. Svara blir mellomlagra i js/ordbok.js.
@@ -822,7 +876,7 @@ const Exercises = (() => {
 
     const bunn = el("p", { class: "muted spell-source" });
     if (!resultat.checkedList) {
-      bunn.appendChild(document.createTextNode("Ordlista er ikkje lasta ned, så vanlege skrivefeil er ikkje sjekka denne gongen. "));
+      bunn.appendChild(document.createTextNode("Ordlista er ikkje lasta ned, så skrivefeil og grammatikk er ikkje sjekka denne gongen. "));
     }
     if (typeof Ordbok !== "undefined") {
       bunn.appendChild(document.createTextNode("Tydingane kjem frå "));
