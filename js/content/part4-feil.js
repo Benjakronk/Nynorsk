@@ -29,8 +29,8 @@ Modules.register({
             <tr><td>også</td><td>også / òg</td></tr>
             <tr><td>mye</td><td>mykje</td></tr>
             <tr><td>noe</td><td>noko</td></tr>
-            <tr><td>noen (hank./hokj.)</td><td>nokon</td></tr>
-            <tr><td>noen (inkjekj./mengd)</td><td>noko</td></tr>
+            <tr><td>noen (person eller ting, i spørsmål og nekting)</td><td>nokon, noka, noko</td></tr>
+            <tr><td>noe brød (mengd)</td><td>noko brød</td></tr>
             <tr><td>hva</td><td>kva</td></tr>
             <tr><td>hvem</td><td>kven</td></tr>
             <tr><td>hvor (stad)</td><td>kvar</td></tr>
@@ -49,15 +49,52 @@ Modules.register({
         </ul>
 
         <h3>«Noko» og «nokon»</h3>
-        <p>Dette er ein klassisk feilkjelde:</p>
+        <p>Mange lærer regelen «<em class="nn">noko</em> er inkjekjønn». Han kjem til
+        kort, for <em class="nn">noko brød</em> går fint, mens <em class="nn">noko hus</em>
+        ikkje gjer det, sjølv om begge orda er inkjekjønn. Det som styrer valet, er
+        <strong>om du kan telje det</strong>, og <strong>om setninga er positiv eller eit
+        spørsmål eller ei nekting</strong>.</p>
+
+        <table>
+          <tr><th>Situasjon</th><th>Ord</th><th>Døme</th></tr>
+          <tr><td>Mengd du ikkje kan telje</td>
+              <td><em class="nn">noko</em></td>
+              <td><em class="nn">noko brød, noko vatn, noko kaffi</em></td></tr>
+          <tr><td>Éin ting du kan telje, i positiv setning</td>
+              <td><em class="nn">ein, ei, eit</em></td>
+              <td><em class="nn">Eg vil ha eit hus.</em></td></tr>
+          <tr><td>Éin ting du kan telje, i spørsmål eller nekting</td>
+              <td><em class="nn">nokon, noka, noko</em></td>
+              <td><em class="nn">Ser du noko hus? Eg såg ikkje noko hus.</em></td></tr>
+          <tr><td>Fleire ting, i positiv setning</td>
+              <td><em class="nn">nokre</em></td>
+              <td><em class="nn">Eg las nokre bøker.</em></td></tr>
+          <tr><td>Fleire ting, i spørsmål eller nekting</td>
+              <td><em class="nn">nokon</em></td>
+              <td><em class="nn">Har du lese nokon bøker?</em></td></tr>
+        </table>
+
+        <p>Står ordet åleine, tyder <em class="nn">noko</em> «noe» og
+        <em class="nn">nokon</em> «noen»: «Eg ser <em class="nn">noko</em>»,
+        «Er det <em class="nn">nokon</em> heime?»</p>
+
+        <div class="callout warn">
+          <strong>Testen:</strong> Kan du telje det? «Eg vil ha <em class="nn">noko</em>
+          brød» går fint, for her er brød ei mengd, altså litt brød. «Eg vil ha
+          <em class="bm">noko</em> hus» går ikkje, for hus er noko du tel. Då heiter det
+          <em class="nn">eit hus</em>.
+        </div>
+
+        <p>Mange ord kan vere begge delar, alt etter kva du meiner. Brød er eit godt
+        døme, og begge desse setningane er rette:</p>
         <ul>
-          <li><em class="nn">noko</em> brukar du om <strong>mengd</strong> eller om
-              <strong>inkjekjønn</strong>: «Eg ser <em class="nn">noko</em>», «Vil du ha
-              <em class="nn">noko</em> brød?»</li>
-          <li><em class="nn">nokon</em> brukar du om <strong>hankjønn/hokjønn</strong>:
-              «Står det <em class="nn">nokon</em> der?»</li>
-          <li>Fleirtal: <em class="nn">nokre</em>: «<em class="nn">nokre</em> bøker»</li>
+          <li><em class="nn">Eg kjøpte noko brød.</em> Ei mengd brød, altså litt brød.</li>
+          <li><em class="nn">Eg kjøpte nokre brød.</em> Fleire heile brød, som du kan telje:
+              eitt, to, tre.</li>
         </ul>
+        <p>Spørsmålet «kan eg telje det?» handlar altså om kva du meiner, ikkje om sjølve
+        ordet. Med <em class="nn">hus</em> er det ikkje noko val: hus er alltid noko du
+        tel, og difor går <em class="bm">noko hus</em> aldri i ei positiv setning.</p>
 
         <h3>Samansette ord</h3>
         <p>Som i bokmål skal samansette ord skrivast i <strong>eitt ord</strong>:</p>
@@ -89,10 +126,39 @@ Modules.register({
     {
       type: "exercise",
       exerciseType: "multipleChoice",
-      question: "Kva er rett: «Eg vil ha ___ brød.»",
+      question: "Kva er rett: «Eg vil ha ___ mjølk i kaffien.»",
       options: ["noko", "nokon", "nokre", "noen"],
       correct: 0,
-      explanation: "«Brød» er inkjekjønn (eit brød). Då brukar vi <em class=\"nn\">noko</em>.",
+      explanation: "Mjølk er ei <strong>mengd</strong> du ikkje kan telje, og då brukar vi <em class=\"nn\">noko</em>. Merk at det ikkje er kjønnet som avgjer: «Eg vil ha <em class=\"bm\">noko</em> hus» går ikkje, sjølv om hus er inkjekjønn, for eit hus kan du telje.",
+    },
+    {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Begge desse setningane er rette. Kva er skilnaden på «Eg kjøpte <em class=\"nn\">noko</em> brød» og «Eg kjøpte <em class=\"nn\">nokre</em> brød»?",
+      options: [
+        "Ingen skilnad, det er to måtar å seie det same på",
+        "<em class=\"nn\">Noko brød</em> er litt brød, ei mengd. <em class=\"nn\">Nokre brød</em> er fleire heile brød, som du kan telje.",
+        "<em class=\"nn\">Nokre brød</em> er feil, for brød er inkjekjønn",
+        "<em class=\"nn\">Noko brød</em> blir berre brukt i spørsmål",
+      ],
+      correct: 1,
+      explanation: "Same ordet kan vere begge delar, alt etter kva du meiner. Tenkjer du på brød som ei mengd, seier du <em class=\"nn\">noko brød</em>. Tenkjer du på heile brød du kan telje, seier du <em class=\"nn\">eit brød</em> eller <em class=\"nn\">nokre brød</em>. Det er difor spørsmålet «kan eg telje det?» handlar om kva du meiner, ikkje berre om kva ord du bruker.",
+    },
+    {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Kva er rett: «Eg vil ha ___ hus når eg blir vaksen.»",
+      options: ["noko", "nokon", "eit", "noka"],
+      correct: 2,
+      explanation: "Eit hus er noko du kan telje, og setninga er positiv. Då heiter det <em class=\"nn\">eit hus</em>. <em class=\"nn\">Noko</em> ville passa i eit spørsmål eller ei nekting: «Ser du <em class=\"nn\">noko</em> hus?»",
+    },
+    {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Kva er rett: «Vi gjekk lenge, men vi såg ikkje ___ hus.»",
+      options: ["eit", "noko", "nokon", "nokre"],
+      correct: 1,
+      explanation: "No er setninga ei nekting, og då brukar vi <em class=\"nn\">noko</em> om inkjekjønnsord: <em class=\"nn\">ikkje noko hus</em>. I ei positiv setning ville det heitt <em class=\"nn\">eit hus</em>.",
     },
     {
       type: "exercise",
@@ -108,7 +174,7 @@ Modules.register({
       question: "Kva er rett: «Eg las ___ bøker i ferien.»",
       options: ["noko", "nokon", "nokre", "noen"],
       correct: 2,
-      explanation: "Fleirtal av «nokon» er <em class=\"nn\">nokre</em>.",
+      explanation: "I ei positiv setning heiter fleirtalet <em class=\"nn\">nokre</em>. I spørsmål og nekting kan du bruke <em class=\"nn\">nokon</em>: «Har du lese <em class=\"nn\">nokon</em> bøker?»",
     },
     {
       type: "exercise",

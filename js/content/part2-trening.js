@@ -346,7 +346,7 @@ Modules.register({
           <ul>
             <li><em class="nn">ho</em> er subjekt, <em class="nn">henne</em> er objekt. <em class="nn">han</em> er begge delar.</li>
             <li><em class="nn">de</em> = «dere» (subjekt), <em class="nn">dykk</em> = «dere» (objekt), <em class="nn">dei</em> = «de/dem».</li>
-            <li><em class="nn">nokon</em> (person / hankjønn), <em class="nn">noka</em> (hokjønn), <em class="nn">noko</em> (inkjekjønn / mengd), <em class="nn">nokre</em> (fleirtal).</li>
+            <li><em class="nn">noko</em> om mengd (<em class="nn">noko brød</em>); <em class="nn">nokon</em>, <em class="nn">noka</em>, <em class="nn">noko</em> om éin ting i spørsmål og nekting (<em class="nn">ikkje noko hus</em>); <em class="nn">ein</em>, <em class="nn">ei</em>, <em class="nn">eit</em> om éin ting i positiv setning; <em class="nn">nokre</em> i fleirtal.</li>
             <li><em class="nn">då</em> = éin gong i fortida, <em class="nn">når</em> = kvar gong / framtid. <em class="nn">kvar</em> = stad, <em class="nn">kor</em> = grad.</li>
             <li><em class="nn">sin/si/sitt/sine</em> viser tilbake til subjektet; elles <em class="nn">hans/hennar/deira</em>.</li>
           </ul>
