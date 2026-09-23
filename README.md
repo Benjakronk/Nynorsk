@@ -26,6 +26,7 @@ frå Språkrådet.
 - Automatisk fasit på objektive oppgåver
 - Eigne tekstar blir lagra i `localStorage`
 - Språksjekk i skriveoppgåvene: bokmålsvarsel bygd på ordbanken i kurset, og skrivefeil mot ei nynorsk ordliste på 412 000 former, med tyding og direktelenkje til ordbokene.no for kvart forslag
+- Reisene til Ivar Aasen (`aasen-reise.html`): interaktiv forelesing på eit 3D-kart over Noreg, der eleven følgjer ruta hans kapittel for kapittel, med stoppestader, datoar og tekst undervegs
 - Heile sida er statisk og fungerer på GitHub Pages utan byggjesteg
 
 ## Køyre lokalt
@@ -49,8 +50,12 @@ npx serve .
 ├── index.html              Oversiktsside / dashbord
 ├── modul.html              Sida for kvar modul (?id=<modul-id>)
 ├── om.html                 Kort om kurset
+├── aasen-reise.html        Reisene til Ivar Aasen: 3D-kart med forelesing
 ├── css/style.css
+├── css/aasen-reise.css     Stil for kartsida
 ├── js/
+│   ├── aasen-reise.js      3D-kartet: terreng, kamera, ruter og kapittel
+│   ├── vendor/three.min.js three.js r147 (MIT), einaste eksterne bibliotek
 │   ├── storage.js          localStorage
 │   ├── modules.js          Modulregister (med grupper for Del 2 og 4)
 │   ├── exercises.js        Oppgåvetypar (rendering + grading)
@@ -70,17 +75,43 @@ npx serve .
 │       ├── part4.js             Del 4: skriv tekstar
 │       ├── part4-feil.js        Del 4: typiske feil
 │       ├── part4-rettelesing.js Del 4: rettelesing
-│       └── part5.js             Del 5: lesing
+│       ├── part5.js             Del 5: lesing
+│       └── aasen-reise.js       Stoppestader og kapittel i forelesinga om Aasen
 ├── data/
 │   ├── nn-ordbank.txt      412 000 nynorske ordformer med morfologi (sjå data/KJELDE.md)
-│   └── KJELDE.md           Kjelde, format og CC BY 4.0-lisens
+│   ├── noreg-terreng.js    Høgdekart over Noreg (PNG som base64) for 3D-kartet
+│   └── KJELDE.md           Kjelder, format og lisensar for datafilene
 ├── sw.js                   Service worker: cachar berre ordbanken
 ├── tools/
 │   ├── validate-content.js Validerer alt innhald: node tools/validate-content.js
 │   ├── lag-ordbank.js      Lagar ordbanken på nytt frå Norsk ordbank
+│   ├── lag-terreng.js      Lagar høgdekartet på nytt frå opne terrengdata
 │   └── test-grammatikk.js  Testar grammatikkreglane mot feil og kursprosa
 └── README.md
 ```
+
+## Reisene til Ivar Aasen
+
+`aasen-reise.html` er ei forelesing i 19 kapittel på eit 3D-kart over Noreg.
+Kvart kapittel har ein tekst, ei liste stoppestader med datoar, og ei rute som
+veks fram på kartet medan markøren flyttar seg. Eleven blar med knappane eller
+piltastane, kan snu og zoome kartet, hoppe til eit stopp ved å klikke på det i
+lista, eller la forelesinga gå av seg sjølv.
+
+Innhaldet ligg i `js/content/aasen-reise.js`: `stader` er stoppestadene med
+koordinatar (frå stadnamnregisteret til Kartverket), og `kapittel` er
+forelesinga. Datoane kjem frå reisekarta i skriftserien til Ivar
+Aasen-selskapet, slik dei er attgjevne på allmenning.no/reiser, og frå Ottar
+Grepstads biografi på nynorsk.no. Stader som ikkje lét seg plassere sikkert, er
+utelatne, og ruta er teikna som rette liner mellom stoppa.
+
+Kartet (`js/aasen-reise.js`) er eitt trekantnett bygd av høgdekartet i
+`data/noreg-terreng.js`, 2 km per piksel, i Lamberts konforme kjegleprojeksjon.
+Høgdene er overdrivne 6,5 gonger for at fjordar og fjell skal synast frå lufta.
+Høgdekartet er bakt inn som base64, og three.js ligg i `js/vendor`, så sida
+verkar òg opna rett frå disk. Går teikninga tregt, byggjer sida terrenget om
+att med halv oppløysing. Kjelder og lisensar for terrengdata står i
+`data/KJELDE.md`, og `node tools/lag-terreng.js` lagar høgdekartet på nytt.
 
 ## Språksjekk
 

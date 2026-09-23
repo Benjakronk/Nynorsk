@@ -1,0 +1,218 @@
+/* Sida med 3D-kartet over reisene til Ivar Aasen (aasen-reise.html).
+   Kartet fyller skjermen, panelet med forelesinga ligg til venstre. */
+
+.reise-side, .reise-side body { height: 100%; }
+.reise-side { overflow: hidden; }
+.reise-side .topbar { position: relative; }
+.reise-tilbake {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.reise-tilbake:hover { color: var(--ink); text-decoration: underline; }
+
+.reise-main {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  height: calc(100vh - 57px);
+  height: calc(100dvh - 57px);
+}
+
+/* Kartet */
+.reise-kart {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  order: 2;
+}
+.reise-kart canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+}
+.reise-kart canvas:active { cursor: grabbing; }
+.etikettar { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.stad-etikett {
+  position: absolute;
+  left: 0; top: 0;
+  transform: translate(-1000px, -1000px);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 12px;
+  line-height: 1.25;
+  color: var(--ink-soft);
+  padding: 2px 6px 2px 10px;
+  margin: -20px 0 0 4px;
+  white-space: nowrap;
+  text-shadow: 0 0 3px var(--bg), 0 0 6px var(--bg), 0 0 8px var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+.stad-etikett.naadd { color: var(--ink); }
+.stad-etikett.aktiv .stad-namn { font-weight: 600; color: var(--accent-ink); }
+.stad-dato { display: none; font-size: 11px; color: var(--warm); }
+.stad-etikett.aktiv .stad-dato { display: block; }
+
+.kart-lastar {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  background: var(--bg);
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--ink-soft);
+  padding: 24px;
+  text-align: center;
+}
+.kart-lastar[hidden] { display: none; }
+.kart-verktoy {
+  position: absolute;
+  top: 12px; right: 12px;
+  display: flex; gap: 8px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 13px;
+}
+.kart-verktoy button { background: var(--surface); box-shadow: var(--shadow); }
+.kart-verktoy button[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-ink); }
+.kart-teiknforklaring {
+  position: absolute;
+  left: 12px; bottom: 12px;
+  display: flex; flex-wrap: wrap; gap: 6px 14px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 12px;
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, .8);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+}
+.kart-teiknforklaring i { display: inline-block; vertical-align: middle; margin-right: 4px; }
+.tf-no { width: 18px; height: 4px; border-radius: 2px; background: #b76a2b; }
+.tf-for { width: 18px; height: 4px; border-radius: 2px; background: #c9ad8e; }
+.tf-markor { width: 11px; height: 11px; border-radius: 50%; background: var(--accent); }
+.kart-hint {
+  position: absolute;
+  right: 12px; bottom: 12px;
+  margin: 0;
+  max-width: 260px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 11px;
+  color: var(--ink-faint);
+  text-align: right;
+}
+
+/* Panelet */
+.reise-panel {
+  order: 1;
+  overflow-y: auto;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+  padding: 20px 26px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.reise-topp {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+.kap-liste-wrap[hidden] { display: none; }
+.kap-liste {
+  list-style: none;
+  margin: 4px 0 8px; padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  max-height: 260px;
+  overflow-y: auto;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 13px;
+}
+.kap-liste button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 7px 10px;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+.kap-liste li:last-child button { border-bottom: 0; }
+.kap-liste button:hover { background: var(--bg); color: var(--ink); }
+.kap-liste li.aktiv button { background: var(--accent-soft); color: var(--accent-ink); }
+.kap-liste-tid { display: inline-block; min-width: 96px; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+.kap-liste li.aktiv .kap-liste-tid { color: var(--warm); }
+.reise-tid {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--warm);
+  margin-top: 8px;
+}
+.reise-panel h1 { font-size: 26px; line-height: 1.2; margin: 0 0 6px; }
+.reise-tekst p { margin: 0 0 12px; }
+.rute-wrap[hidden] { display: none; }
+.rute-wrap h2 {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 10px 0 6px;
+}
+.rute-liste {
+  list-style: none; margin: 0 0 8px; padding: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 13px;
+  columns: 2; column-gap: 14px;
+}
+.rute-liste li { break-inside: avoid; }
+.rute-liste button {
+  width: 100%;
+  text-align: left;
+  background: none; border: 0; padding: 3px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex; flex-direction: column;
+  line-height: 1.25;
+}
+.rute-liste button:hover { background: var(--bg); }
+.rute-namn { color: var(--ink); }
+.rute-dato { color: var(--ink-faint); font-size: 11.5px; }
+.reise-nav {
+  display: flex; justify-content: space-between; gap: 10px;
+  margin-top: 10px;
+  position: sticky; bottom: 0;
+  background: var(--surface);
+  padding: 10px 0 4px;
+  border-top: 1px solid var(--line);
+}
+.reise-nav .btn { flex: 1; text-align: center; }
+.reise-kjelde {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+  line-height: 1.45;
+  margin: 8px 0 0;
+}
+
+@media (max-width: 860px) {
+  .reise-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 46vh 1fr;
+    grid-template-rows: 46dvh 1fr;
+  }
+  .reise-kart { order: 1; }
+  .reise-panel { order: 2; border-right: 0; border-top: 1px solid var(--line); padding: 14px 18px 20px; }
+  .reise-panel h1 { font-size: 22px; }
+  .kart-hint { display: none; }
+  .kart-teiknforklaring { font-size: 11px; padding: 4px 8px; }
+  .rute-liste { columns: 1; }
+  .brand-text { display: none; }
+}

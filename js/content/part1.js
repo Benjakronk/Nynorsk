@@ -136,6 +136,11 @@ Modules.register({
         <p>Med stipend frå Det Kongelige Norske Videnskabers Selskab reiste Aasen rundt i
         store delar av Noreg i fire år. Han lytta til dialektane, skreiv ned ord og
         bøyingar, og bygde seg eit detaljert bilete av norsk talemål.</p>
+        <div class="callout">
+          <strong>Følg reisa på kartet:</strong> I <a href="aasen-reise.html">Reisene til
+          Ivar Aasen</a> kan du følgje ruta hans på eit 3D-kart over Noreg, kapittel for
+          kapittel, med stadene han stoppa på og kva som hende undervegs.
+        </div>
 
         <h3>Grammatikken og ordboka</h3>
         <p>Resultatet vart to banebrytande bøker:</p>

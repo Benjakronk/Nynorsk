@@ -225,9 +225,42 @@ all.forEach(mod => {
   });
 });
 
+/* ---------- Reisene til Ivar Aasen (aasen-reise.html) ---------- */
+{
+  const sb = {}; sb.window = sb;
+  vm.createContext(sb);
+  try {
+    vm.runInContext(fs.readFileSync(path.join(ROOT, "js/content/aasen-reise.js"), "utf8"), sb, { filename: "js/content/aasen-reise.js" });
+    const D = sb.AASEN_REISE;
+    const kapIds = new Set();
+    D.kapittel.forEach((k, i) => {
+      const where = `Aasen-reise, kapittel ${i + 1} («${k.tittel}»)`;
+      if (!k.id || !k.tid || !k.tittel || !k.tekst || !Array.isArray(k.stopp)) err(`${where}: treng id, tid, tittel, tekst og stopp`);
+      if (kapIds.has(k.id)) err(`${where}: id «${k.id}» er brukt to gonger`);
+      kapIds.add(k.id);
+      k.stopp.forEach(([id, dato]) => {
+        if (!D.stader[id]) err(`${where}: ukjend stad «${id}»`);
+        if (typeof dato !== "string") err(`${where}: stoppet «${id}» manglar dato`);
+      });
+      if (/—/.test(k.tekst) || /[^\d]–[^\d]/.test(stripTags(k.tekst))) warn(`${where}: tankestrek i teksten`);
+    });
+    Object.entries(D.stader).forEach(([id, s]) => {
+      if (!s.namn || typeof s.lat !== "number" || typeof s.lon !== "number" || s.lat < 57 || s.lat > 72 || s.lon < 4 || s.lon > 32) err(`Aasen-reise: staden «${id}» manglar namn eller har koordinatar utanfor Noreg`);
+    });
+    const html = fs.readFileSync(path.join(ROOT, "aasen-reise.html"), "utf8");
+    ["js/vendor/three.min.js", "data/noreg-terreng.js", "js/content/aasen-reise.js", "js/aasen-reise.js"].forEach(f => {
+      if (!html.includes(`src="${f}"`)) err(`aasen-reise.html manglar <script src="${f}">`);
+    });
+    stats["Aasen-reise"] = { modules: D.kapittel.length, sections: 0, exercises: Object.keys(D.stader).length, drillItems: 0, label: "kapittel/stader" };
+  } catch (e) {
+    err(`Aasen-reise: ${e.message}`);
+  }
+}
+
 /* ---------- Report ---------- */
 console.log("Innhald per del/gruppe:");
 Object.entries(stats).forEach(([k, v]) => {
+  if (v.label) { console.log(`  ${k.padEnd(22)} ${String(v.modules).padStart(2)} kapittel ${String(v.exercises).padStart(3)} stader`); return; }
   console.log(`  ${k.padEnd(22)} ${String(v.modules).padStart(2)} modular  ${String(v.exercises).padStart(3)} oppgåver${v.drillItems ? `  (${v.drillItems} drill-element)` : ""}`);
 });
 console.log(`Ordbank: ${(Bank.nouns || []).length} substantiv, ${(Bank.verbs || []).length} verb, ${(Bank.adjectives || []).length} adjektiv, ${(Bank.words || []).length} småord, ${Object.values(Bank.sentences || {}).reduce((a, b) => a + b.length, 0)} setningar`);

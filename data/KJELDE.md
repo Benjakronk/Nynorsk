@@ -1,3 +1,29 @@
+# Kjelder og lisensar for datafilene
+
+Denne mappa har to datafiler: `nn-ordbank.txt` (ordlista til språksjekken) og
+`noreg-terreng.js` (høgdekartet til 3D-kartet over reisene til Ivar Aasen).
+
+## noreg-terreng.js
+
+Eit PNG-bilete på 615 × 768 pikslar, bakt inn som base64 i eit JS-objekt, der
+kvar piksel er 2 × 2 km i Lamberts konforme kjegleprojeksjon (standardparallellar
+60° og 70° N, sentralmeridian 15° A). Raud kanal er høgda over havet i
+kvadratrotskala (0 til 2500 m), grøn er havdjupet, og blå er ei maske: 0 hav,
+128 anna land, 255 Noreg. Objektet har òg projeksjonsparametrane og hjørnet
+øvst til venstre, slik at `js/aasen-reise.js` kan plassere stader på kartet.
+
+Kjelder:
+
+- **Høgder og havdjup:** Terrarium-fliser frå *Terrain Tiles* på AWS Open Data
+  (Mapzen), zoom 6. Datasettet er sett saman av SRTM, GMTED2010 og ETOPO1,
+  som alle er offentlege data utan opphavsrettslege krav.
+  <https://registry.opendata.aws/terrain-tiles/>
+- **Landegrenser:** Natural Earth 1:10M, Admin 0 Countries, public domain.
+  <https://www.naturalearthdata.com/>
+
+`node tools/lag-terreng.js` lastar ned flisene og grensene, projiserer om,
+rasteriserer maska og skriv fila.
+
 # Kjelde og lisens for nn-ordbank.txt
 
 `nn-ordbank.txt` er 412 221 nynorske ordformer, kvar med morfologien sin
