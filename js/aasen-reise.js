@@ -371,24 +371,35 @@
   const scener = new Map();   // stad-id -> { g, synt, t0 }
   let sceneSkala = 1;
   function tomScener() { for (const { g } of scener.values()) { scene.remove(g); g.traverse(o => { if (o.geometry && !takGeo.has(o.geometry.uuid)) o.geometry.dispose(); }); } scener.clear(); }
+  // Scenene står eit stykke ut til sida for ruta, vinkelrett på gangretninga
+  // ved stoppet, så figuren ikkje går tvers gjennom husa. Sida blir vald mot
+  // aust (og elles sør), slik at kystbyane hamnar på land og ikkje i sjøen.
   function byggScener(idar, straks) {
     tomScener();
     idar.forEach((id, i) => {
       const st = STADER[id];
-      if (!st.scene || !SCENER[st.scene]) return;
+      if (!st.scene || !SCENER[st.scene] || scener.has(id)) return;
       const g = new THREE.Group();
       SCENER[st.scene](g);
       const p = stadXZ(id);
-      g.position.set(p.x, hoegdVed(p.x, p.z) * EXAG + 0.05, p.z);
-      g.rotation.y = (i * 2.4) % (2 * Math.PI);
+      const fra = i > 0 ? stadXZ(idar[i - 1]) : p, til = i < idar.length - 1 ? stadXZ(idar[i + 1]) : p;
+      let tx = til.x - fra.x, tz = til.z - fra.z;
+      if (Math.hypot(tx, tz) < 1e-6) { tx = 0; tz = 1; }
+      const l = Math.hypot(tx, tz);
+      let px = -tz / l, pz = tx / l;
+      if (px < -1e-6 || (Math.abs(px) <= 1e-6 && pz < 0)) { px = -px; pz = -pz; }
+      g.rotation.y = Math.atan2(-px, -pz);
       g.scale.setScalar(0.0001);
       scene.add(g);
-      scener.set(id, { g, synt: !!straks, t0: straks ? -Infinity : 0 });
+      scener.set(id, { g, synt: !!straks, t0: straks ? -Infinity : 0, x: p.x, z: p.z, px, pz });
     });
   }
   function visScene(id) { const s = scener.get(id); if (s && !s.synt) { s.synt = true; s.t0 = performance.now(); } }
   function stegScener(no) {
+    const d = sceneSkala * 4.5;
     for (const s of scener.values()) {
+      const x = s.x + s.px * d, z = s.z + s.pz * d;
+      s.g.position.set(x, hoegdVed(x, z) * EXAG + 0.05, z);
       if (!s.synt) continue;
       const u = Math.min(1, (no - s.t0) / 600), k = 1 - Math.pow(1 - u, 3);
       s.g.scale.setScalar(Math.max(0.0001, sceneSkala * k));
