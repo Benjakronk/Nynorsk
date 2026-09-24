@@ -154,6 +154,7 @@ Modules.register({
   summary: "Følg Aasen på eit 3D-kart over Noreg, stad for stad, og svar på oppgåver undervegs.",
   estimatedMinutes: 40,
   href: "aasen-reise.html",
+  fasit: true,   // oppgåvene står langt frå teksten, så eleven får rett svar med ein gong
   sections: [
     {
       id: "kap-innleiing", type: "lesson", title: "Eit land utan eige skriftspråk",

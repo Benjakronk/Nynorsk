@@ -43,6 +43,16 @@ const Exercises = (() => {
 
   function tag(text) { return el("div", { class: "ex-tag" }, text); }
 
+  // Skal eleven få rett svar saman med forklaringa? Ein modul (eller ein
+  // seksjon) kan setje fasit: true. «Reisene til Ivar Aasen» gjer det, for der
+  // står oppgåvene langt frå teksten dei byggjer på.
+  function visFasit(s, modId) {
+    if (s.fasit !== undefined) return !!s.fasit;
+    const mod = typeof Modules !== "undefined" && Modules.get ? Modules.get(modId) : null;
+    return !!(mod && mod.fasit);
+  }
+  const fasitEl = html => el("div", { class: "fasit", html: "<strong>Rett svar:</strong> " + html });
+
   /* ---------- Multiple choice ---------- */
   function renderMultipleChoice(s, modId) {
     const root = el("div", { class: "exercise multiplechoice" });
@@ -89,6 +99,7 @@ const Exercises = (() => {
       if (!correct) choices.children[s.correct].classList.add("right");
       fbHolder.innerHTML = "";
       fbHolder.appendChild(feedbackEl(correct, s.explanation));
+      if (!correct && visFasit(s, modId)) fbHolder.appendChild(fasitEl(s.options[s.correct]));
       Store.recordAnswer(modId, s.id, { correct, answer: idx });
       document.dispatchEvent(new CustomEvent("exercise-answered"));
     });
@@ -148,6 +159,7 @@ const Exercises = (() => {
       });
       fbHolder.innerHTML = "";
       fbHolder.appendChild(feedbackEl(allRight, s.explanation || (allRight ? "" : "Sjå rettferda variant i forklaringa eller prøv igjen.")));
+      if (!allRight && visFasit(s, modId)) fbHolder.appendChild(fasitEl(inputs.map(o => `<em class="nn">${o.accept[0]}</em>`).join(", ")));
       Store.recordAnswer(modId, s.id, { correct: allRight, answer: answers });
       document.dispatchEvent(new CustomEvent("exercise-answered"));
     });
@@ -167,7 +179,8 @@ const Exercises = (() => {
     if (s.hint) root.appendChild(el("div", { class: "hint" }, s.hint));
 
     const ta = el("textarea", { rows: 2, placeholder: "Skriv setninga på nynorsk …", autocomplete: "off", spellcheck: "false" });
-    root.appendChild(ta);
+    const overlay = el("div", { class: "ta-overlay", "aria-hidden": "true" });
+    root.appendChild(el("div", { class: "ta-wrap" }, [overlay, ta]));
 
     // Restore previous answer
     const savedT = Store.getModule(modId).sections[s.id];
@@ -176,11 +189,13 @@ const Exercises = (() => {
     const btns = el("div", { class: "btn-row" });
     const check = el("button", { class: "btn" }, "Sjekk svar");
     const show = el("button", { class: "btn secondary" }, "Vis eit godkjent svar");
-    btns.append(check, show);
+    const spell = spellChecker(ta, overlay);
+    btns.append(check, show, spell.btn);
     root.appendChild(btns);
 
     const fbHolder = el("div");
     root.appendChild(fbHolder);
+    root.appendChild(spell.panel);
 
     check.addEventListener("click", () => {
       const ok = eqAny(ta.value, s.accept);
@@ -191,6 +206,7 @@ const Exercises = (() => {
         ? "Godkjent svar."
         : `Eit godkjent svar er: <em class="nn">${s.accept[0]}</em>. Andre variantar kan også vere rette.`);
       fbHolder.appendChild(feedbackEl(ok, explain));
+      if (!ok && s.explanation && visFasit(s, modId)) fbHolder.appendChild(fasitEl(`<em class="nn">${s.accept[0]}</em>`));
       Store.recordAnswer(modId, s.id, { correct: ok, answer: ta.value });
       document.dispatchEvent(new CustomEvent("exercise-answered"));
     });
@@ -414,6 +430,7 @@ const Exercises = (() => {
       const allRight = right === total;
       fbHolder.innerHTML = "";
       fbHolder.appendChild(feedbackEl(allRight, allRight ? s.explanation : `${right} av ${total} rett. ${s.explanation || ""}`));
+      if (!allRight && visFasit(s, modId)) fbHolder.appendChild(fasitEl(s.pairs.map(p => `${p[0]} → ${p[1]}`).join("; ")));
       Store.recordAnswer(modId, s.id, { correct: allRight, answer: answers });
       document.dispatchEvent(new CustomEvent("exercise-answered"));
     });
@@ -591,6 +608,7 @@ const Exercises = (() => {
       const allRight = right === allItems.length;
       fbHolder.innerHTML = "";
       fbHolder.appendChild(feedbackEl(allRight, allRight ? s.explanation : `${right} av ${allItems.length} rett plasserte. ${s.explanation || ""}`));
+      if (!allRight && visFasit(s, modId)) fbHolder.appendChild(fasitEl(categories.map(cat => `<strong>${cat}:</strong> ${s.categories[cat].join(", ")}`).join(" · ")));
       Store.recordAnswer(modId, s.id, { correct: allRight, answer: placed });
       document.dispatchEvent(new CustomEvent("exercise-answered"));
     });
@@ -681,7 +699,7 @@ const Exercises = (() => {
   }
 
   /* ---------- Språksjekk under skrivefeltet ----------
-     Sjekken går på ein knapp, ikkje mens eleven skriv: raude strekar under
+     Sjekken startar på ein knapp, ikkje mens eleven skriv: raude strekar under
      halvskrivne ord stoppar skrivinga meir enn dei hjelper. Sjå js/spell.js.
 
      Panelet viser eitt funn om gongen, og ordet blir markert i teksten. Ein
@@ -689,9 +707,12 @@ const Exercises = (() => {
      orkar å ta inn. Markeringa ligg i eit lag bak skrivefeltet, som har same
      skrift og same innrykk, slik at orda hamnar oppå kvarandre.
 
-     Rettar eleven noko, stemmer ikkje plasseringane lenger. Panelet blir
-     ståande med det same funnet, men dempa og med ein knapp for å køyre
-     sjekken på nytt, slik at han ikkje forsvinn under hendene på eleven. */
+     Når sjekken først er i gang, heng han med i skrivinga. Rettar eleven
+     noko, blir funna etter rettinga flytte med ein gong, så markeringa og
+     teljaren stemmer, og funn som låg der eleven skreiv, forsvinn. Litt etter
+     går sjekken over teksten på nytt i det stille. Det er billig, for
+     Spell.check hugsar kva ord han alt har vurdert; det dyre arbeidet er
+     forslaga til ukjende ord, og dei blir berre rekna ut éin gong per ord. */
 
   function spellChecker(ta, overlay) {
     const panel = el("div", { class: "spellcheck no-print", hidden: "" });
@@ -704,20 +725,19 @@ const Exercises = (() => {
 
     let funn = [];
     let noverande = 0;
-    let foreldet = false;
+    let resultat = { checkedList: false, findings: [] };
+    let aktiv = false;      // eleven har slått på sjekken for dette feltet
+    let sistTekst = "";     // teksten funna gjeld for
+    let timer = null;
 
-    const varsel = el("div", { class: "spell-stale", hidden: "" });
-    const paaNytt = el("button", { class: "btn secondary small" }, "Sjekk på nytt");
-    varsel.append(el("span", {}, "Du har endra teksten sidan sjekken."), paaNytt);
     const innhald = el("div");
-    panel.append(varsel, innhald);
-
+    panel.append(innhald);
     const btn = el("button", { class: "btn secondary small" }, "Sjekk språket");
 
     function visMarkering() {
       overlay.textContent = "";
       const f = funn[noverande];
-      if (!f || foreldet) return;
+      if (!f) return;
       const tekst = ta.value;
       overlay.appendChild(document.createTextNode(tekst.slice(0, f.start)));
       const merke = el("mark", {}, tekst.slice(f.start, f.end));
@@ -734,56 +754,67 @@ const Exercises = (() => {
       innhald.appendChild(el("p", { class: "muted" }, tekst));
     }
 
-    function kjor() {
-      panel.hidden = false;
-      varsel.hidden = true;
-      innhald.classList.remove("spell-dim");
-      foreldet = false;
-      overlay.textContent = "";
+    function teikn() {
+      visFunn(innhald, resultat, funn, () => noverande, i => { noverande = i; }, visMarkering);
+    }
 
-      if (!ta.value.trim()) {
-        funn = [];
-        melding("Skriv litt tekst først.");
-        return;
-      }
-
-      // Hald fram der eleven var, i staden for å sende han til det første
-      // funnet igjen når han har retta noko midt i teksten. Ei retting lenger
-      // oppe flyttar alle plasseringane, så vi kjenner att funnet på ordet.
+    function sjekk(forsteGong) {
       const forrige = funn[noverande] || null;
-
-      melding("Sjekkar …");
-      btn.disabled = true;
-      paaNytt.disabled = true;
-      Spell.load()
-        .catch(() => null)
-        .then(() => {
-          btn.disabled = false;
-          paaNytt.disabled = false;
-          const resultat = Spell.check(ta.value);
-          funn = resultat.findings;
-          // Grammatikksjekken treng morfologien frå ordbanken, så han går berre
-          // når lista er lasta. Funna blir flette inn i teksten si rekkjefølgje.
-          if (typeof Grammatikk !== "undefined" && Spell.isReady()) {
-            funn = funn.concat(Grammatikk.sjekk(ta.value, Spell.tagar))
-              .sort((a, b) => a.start - b.start);
-          }
-          noverande = finnAtt(funn, forrige);
-          visFunn(innhald, resultat, funn, () => noverande, i => { noverande = i; }, visMarkering);
-        });
+      const ferdig = () => {
+        btn.disabled = false;
+        const tekst = ta.value;
+        sistTekst = tekst;
+        if (!tekst.trim()) {
+          funn = [];
+          overlay.textContent = "";
+          melding("Skriv litt tekst først.");
+          return;
+        }
+        resultat = Spell.check(tekst);
+        funn = resultat.findings;
+        // Grammatikksjekken treng morfologien frå ordbanken, så han går berre
+        // når lista er lasta. Funna blir flette inn i teksten si rekkjefølgje.
+        if (typeof Grammatikk !== "undefined" && Spell.isReady()) {
+          funn = funn.concat(Grammatikk.sjekk(tekst, Spell.tagar)).sort((a, b) => a.start - b.start);
+        }
+        // Hald fram der eleven var, i staden for å sende han til det første
+        // funnet igjen når han har retta noko midt i teksten.
+        noverande = finnAtt(funn, forrige);
+        teikn();
+      };
+      if (Spell.isReady()) { ferdig(); return; }
+      if (forsteGong) { melding("Sjekkar …"); btn.disabled = true; }
+      Spell.load().catch(() => null).then(ferdig);
     }
 
     ta.addEventListener("scroll", () => { overlay.scrollTop = ta.scrollTop; });
     ta.addEventListener("input", () => {
-      if (!funn.length || foreldet) return;
-      foreldet = true;
-      overlay.textContent = "";
-      varsel.hidden = false;
-      innhald.classList.add("spell-dim");
+      if (!aktiv) return;
+      // Kvar i teksten skjedde endringa? Alt før det felles starten og alt
+      // etter den felles slutten er urørt, så funna der kan bli ståande.
+      const ny = ta.value, gammal = sistTekst;
+      let p = 0;
+      while (p < ny.length && p < gammal.length && ny[p] === gammal[p]) p++;
+      let s = 0;
+      while (s < ny.length - p && s < gammal.length - p && ny[ny.length - 1 - s] === gammal[gammal.length - 1 - s]) s++;
+      const delta = ny.length - gammal.length, sluttGammal = gammal.length - s;
+      const forrige = funn[noverande] || null;
+      funn = funn.filter(f => f.end <= p || f.start >= sluttGammal);
+      for (const f of funn) if (f.start >= sluttGammal) { f.start += delta; f.end += delta; }
+      sistTekst = ny;
+      noverande = forrige ? Math.max(0, funn.indexOf(forrige)) : 0;
+      if (forrige && !funn.includes(forrige)) noverande = finnAtt(funn, forrige);
+      if (funn.length) teikn(); else overlay.textContent = "";
+      clearTimeout(timer);
+      timer = setTimeout(() => sjekk(false), 600);
     });
 
-    btn.addEventListener("click", kjor);
-    paaNytt.addEventListener("click", kjor);
+    btn.addEventListener("click", () => {
+      aktiv = true;
+      panel.hidden = false;
+      clearTimeout(timer);
+      sjekk(true);
+    });
 
     return { btn, panel };
   }
@@ -958,7 +989,11 @@ const Exercises = (() => {
         inputs.push({ q, radios, type: "mc", choices });
       } else if (q.type === "freeShort") {
         const ta = el("textarea", { rows: 3, placeholder: "Svar med eigne ord …", spellcheck: "false" });
-        wrap.appendChild(ta);
+        const overlay = el("div", { class: "ta-overlay", "aria-hidden": "true" });
+        wrap.appendChild(el("div", { class: "ta-wrap" }, [overlay, ta]));
+        const spell = spellChecker(ta, overlay);
+        const rad = el("div", { class: "btn-row" }, spell.btn);
+        wrap.appendChild(rad);
         if (q.modelAnswer) {
           const showBtn = el("button", { class: "btn secondary small" }, "Vis døme på svar");
           const md = el("div", { class: "callout", style: "display:none;margin-top:8px" });
@@ -966,9 +1001,10 @@ const Exercises = (() => {
           showBtn.addEventListener("click", () => {
             md.style.display = md.style.display === "none" ? "block" : "none";
           });
-          wrap.appendChild(el("div", { class: "btn-row" }, showBtn));
+          rad.appendChild(showBtn);
           wrap.appendChild(md);
         }
+        wrap.appendChild(spell.panel);
         inputs.push({ q, ta, type: "free" });
       }
       root.appendChild(wrap);

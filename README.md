@@ -23,7 +23,7 @@ frå Språkrådet.
 - Varierte oppgåvetypar: fleirval, fyll inn, omsetjing, dra-og-slepp/sortering, leseoppgåver, fritekst
 - Mengdetrening (`drill`): éi oppgåve om gongen, trekt tilfeldig frå ordbanken, umiddelbar tilbakemelding, «Øv på feila», beste runde blir lagra
 - Finn feilen (`findError`): eleven klikkar på feil ord i ein tekst og skriv rett form
-- Automatisk fasit på objektive oppgåver
+- Automatisk fasit på objektive oppgåver. Modular med `fasit: true` (Reisene til Ivar Aasen) viser òg rett svar under forklaringa når svaret er feil
 - Eigne tekstar blir lagra i `localStorage`
 - Språksjekk i skriveoppgåvene: bokmålsvarsel bygd på ordbanken i kurset, og skrivefeil mot ei nynorsk ordliste på 412 000 former, med tyding og direktelenkje til ordbokene.no for kvart forslag
 - Reisene til Ivar Aasen (`aasen-reise.html`): modul med interaktiv forelesing på eit 3D-kart over Noreg, der eleven følgjer ein liten Aasen-figur langs ruta kapittel for kapittel, med stoppestader, datoar og oppgåver undervegs
@@ -169,12 +169,17 @@ reglar skal gjennom same testen før dei kjem inn: `node tools/test-grammatikk.j
 Panelet viser eitt funn om gongen, med teljar og knappar for å bla, og ordet
 blir markert i teksten. Markeringa ligg i eit lag bak skrivefeltet (`.ta-wrap`
 og `.ta-overlay` i CSS-en), som må ha same skrift, innrykk og linjehøgd som
-skrivefeltet for at orda skal hamne oppå kvarandre. Endrar eleven teksten,
-stemmer ikkje plasseringane lenger. Panelet blir ståande, men dempa, med ein
-knapp for ein ny sjekk. Etter sjekken held panelet fram der eleven var: står
-same ordet att omtrent same staden, blei det ikkje retta, og eleven blir
-verande. Er ordet borte, går panelet til det første funnet etter det. Berre det
-funnet som er på skjermen, slår opp tydingar.
+skrivefeltet for at orda skal hamne oppå kvarandre. Sjekken startar på
+knappen, men heng deretter med i skrivinga: rettar eleven noko, blir funna
+etter rettinga flytte med ein gong, så markeringa og teljaren stemmer, og funn
+som låg der eleven skreiv, forsvinn. Litt etter går sjekken over teksten på
+nytt i det stille og held fram der eleven var: står same ordet att omtrent
+same staden, blei det ikkje retta, og eleven blir verande. Er ordet borte, går
+panelet til det første funnet etter det. Ein ny gjennomgang er billig, for
+`Spell.check` hugsar om eit ord er godkjent og kva forslag det fekk; det dyre
+er forslaga til ukjende ord, og dei blir rekna ut éin gong per ord. Berre det
+funnet som er på skjermen, slår opp tydingar. Sjekken finst i alle skrivefelt:
+dei lengre tekstane, omsetjingane og dei korte svara i leseoppgåvene.
 
 Bokmålsvarselet går først, for ordlista er ei rein formliste og har ein del
 bokmålsord som homografar (*hun*, *boken*). Lista `TVITYDIGE` øvst i

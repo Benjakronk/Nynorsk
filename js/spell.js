@@ -326,6 +326,25 @@ const Spell = (() => {
 
   const TOKEN = /[a-zæøåéèêóòôäëüA-ZÆØÅÉÈÊÓÒÔÄËÜ]+(?:-[a-zæøåéèêóòôäëüA-ZÆØÅÉÈÊÓÒÔÄËÜ]+)*/g;
 
+  // Sjekken hugsar frå gong til gong om eit ord er godkjent, og kva forslag
+  // det fekk. Det dyre arbeidet er forslaga til ukjende ord (opptil 0,2 sekund
+  // for eit djupt søk), og ein tekst som blir sjekka på nytt etter kvar
+  // retting, har nesten berre ord sjekken har sett før. Minnet gjeld berre
+  // etter at ordlista er lasta, for før det finst det ingen ukjende ord.
+  const hugsGodkjent = new Map();
+  const hugsForslag = new Map();
+  function godkjent(word) {
+    let ok = hugsGodkjent.get(word);
+    if (ok === undefined) { ok = accepted(word); hugsGodkjent.set(word, ok); }
+    return ok;
+  }
+  function forslag(word, deep) {
+    const key = word + (deep ? "|2" : "|1");
+    let ut = hugsForslag.get(key);
+    if (!ut) { ut = suggest(word, 3, deep); hugsForslag.set(key, ut); }
+    return ut;
+  }
+
   // Returnerer { checkedList, findings: [{ word, start, end, type, right, why }] }
   // type er "bokmal" eller "ukjent". Ukjende ord kjem berre med når lista er lasta.
   function check(text) {
@@ -349,12 +368,12 @@ const Spell = (() => {
       if (!words || word.length < 2) continue;
       // Eit ord med stor forbokstav midt i teksten er truleg eit namn
       if (raw[0] !== word[0] && m.index > 0 && !/[.!?]\s*$/.test(text.slice(0, m.index))) continue;
-      if (accepted(word)) continue;
+      if (godkjent(word)) continue;
       if (seenUnknown.has(word)) continue;
       seenUnknown.add(word);
       // Det djupe søket tek ~0,2 sekund per ord, så det går berre på dei første
       // ukjende orda. Resten får forslag om dei er eitt teiknbyte unna.
-      const right = suggest(word, 3, seenUnknown.size <= 5);
+      const right = forslag(word, seenUnknown.size <= 5);
       findings.push({ word: raw, start: m.index, end: m.index + raw.length, type: "ukjent", right, why: "" });
     }
     return { checkedList: words !== null, findings };

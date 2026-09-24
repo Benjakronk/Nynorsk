@@ -186,7 +186,7 @@
 
   /* ---------- Peikar og tastatur ---------- */
   const peikarar = new Map();
-  let sistPinch = 0, brukarHarSnudd = false;   // har eleven teke over kameraet i dette kapittelet?
+  let sistPinch = 0;
   canvas.addEventListener("pointerdown", e => { canvas.setPointerCapture(e.pointerId); peikarar.set(e.pointerId, { x: e.clientX, y: e.clientY, knapp: e.button, shift: e.shiftKey || e.ctrlKey }); });
   canvas.addEventListener("pointerup", e => peikarar.delete(e.pointerId));
   canvas.addEventListener("pointercancel", e => peikarar.delete(e.pointerId));
@@ -194,7 +194,7 @@
     const p = peikarar.get(e.pointerId); if (!p) return;
     const dx = e.clientX - p.x, dy = e.clientY - p.y;
     p.x = e.clientX; p.y = e.clientY;
-    tween = null; brukarHarSnudd = true;
+    tween = null;
     if (peikarar.size >= 2) {
       const [a, b] = [...peikarar.values()];
       const avst = Math.hypot(a.x - b.x, a.y - b.y);
@@ -208,7 +208,7 @@
     else { kam.theta -= dx * 0.005; kam.phi = Math.min(1.35, Math.max(0.1, kam.phi - dy * 0.005)); }
   });
   canvas.addEventListener("contextmenu", e => e.preventDefault());
-  canvas.addEventListener("wheel", e => { e.preventDefault(); tween = null; brukarHarSnudd = true; kam.avstand = klemAvstand(kam.avstand * Math.exp(e.deltaY * 0.0012)); }, { passive: false });
+  canvas.addEventListener("wheel", e => { e.preventDefault(); tween = null; kam.avstand = klemAvstand(kam.avstand * Math.exp(e.deltaY * 0.0012)); }, { passive: false });
   const klemAvstand = a => Math.min(4500, Math.max(25, a));
   function panorer(dx, dy) {
     const k = kam.avstand * 0.0016;
@@ -531,7 +531,7 @@
       const tot = stoppPos[stoppPos.length - 1].t || 1;
       stoppPos.forEach(s => { s.t = s.t / tot; });
       // Tidsplan: figuren går om lag 50 km i sekundet mellom stoppa og står
-      // ei lita stund ved kvart. Kameraet følgjer fasane (sjå kameraFase).
+      // ei lita stund ved kvart.
       const DVEL = reduserRorsle ? 0 : 1500, fasar = [];
       let akkMs = 0;
       for (let j = 0; j < stoppPos.length; j++) {
@@ -544,7 +544,7 @@
         fasar.push({ type: "stopp", j, t: stoppPos[j].t, start: akkMs, dur: DVEL });
         akkMs += DVEL;
       }
-      noRute = { punkt, idar, stoppPos, lengd, fasar, dur: akkMs, framdrift: 0, fase: -1, t0: performance.now() + 1800, mesh: null, seg: 0, ferdig: false, oversikt: null };
+      noRute = { punkt, idar, stoppPos, lengd, fasar, dur: akkMs, framdrift: 0, t0: performance.now() + 1800, mesh: null, seg: 0, ferdig: false };
     }
     bygdForAvstand = 0; // tvinger ny oppbygging med rett tjukkleik
 
@@ -561,12 +561,9 @@
 
     byggScener(synlege, !noRute);
 
-    // Kamera: først oversikt over heile kapittelet, så følgjer det figuren.
-    brukarHarSnudd = false;
+    // Kamera: oversikt over heile kapittelet. Eleven snur og zoomar sjølv.
     const alle = k.kamera === "land" ? null : punkt.length ? punkt : synlege.map(stadXZ);
-    const oversikt = alle ? passTil(alle) : LANDET();
-    if (noRute) noRute.oversikt = oversikt;
-    flyTil(oversikt, 1800);
+    flyTil(alle ? passTil(alle) : LANDET(), 1800);
     figur.g.visible = punkt.length >= 1;
     pauseBtn.hidden = !noRute;
     oppdaterMarkor();
@@ -575,23 +572,12 @@
   function hoppTilStopp(j) {
     if (!noRute) return;
     const s = noRute.stoppPos[j];
-    noRute.framdrift = s.t; noRute.ferdig = true; brukarHarSnudd = true;
+    noRute.framdrift = s.t; noRute.ferdig = true;
     const p = stadXZ(s.id);
     flyTil({ maal: new THREE.Vector3(p.x, hoegdVed(p.x, p.z) * EXAG, p.z), avstand: Math.min(kam.avstand, 140) }, 1200);
     pauseBtn.hidden = true;
     oppdaterMarkor();
     planleggNeste();
-  }
-
-  // Tett på ved kvart stopp. På etappane går kameraet ut så både stoppet
-  // figuren kjem frå og det han går til, er i biletet: lange etappar gir vidt
-  // utsyn, korte etappar berre ei lita panorering.
-  const NAER = 150;
-  function kameraFase(fase) {
-    if (brukarHarSnudd || reduserRorsle || !noRute) return;
-    const p = stadXZ(noRute.idar[fase.j]);
-    if (fase.type === "stopp") flyTil({ maal: new THREE.Vector3(p.x, hoegdVed(p.x, p.z) * EXAG, p.z), avstand: NAER, phi: 0.9 }, 1000);
-    else flyTil(passTil([stadXZ(noRute.idar[fase.j - 1]), p], { phi: 0.8 }), Math.min(1300, Math.max(400, fase.dur * 0.7)));
   }
 
   function settPause(p) {
@@ -727,7 +713,7 @@
   forreBtn.addEventListener("click", () => gaaTil(seksIdx - 1));
   nesteBtn.addEventListener("click", () => gaaTil(seksIdx + 1));
   pauseBtn.addEventListener("click", () => settPause(!pausa));
-  document.getElementById("landet-btn").addEventListener("click", () => { brukarHarSnudd = true; flyTil(LANDET(), 1500); });
+  document.getElementById("landet-btn").addEventListener("click", () => flyTil(LANDET(), 1500));
   SEKS.forEach((s, i) => {
     const li = document.createElement("li");
     li.dataset.idx = i;
@@ -784,7 +770,6 @@
           if (f < 0) f = noRute.fasar.length - 1;
           const fase = noRute.fasar[f];
           noRute.framdrift = fase.type === "gang" ? fase.fra + (fase.til - fase.fra) * Math.min(1, (gaatt - fase.start) / fase.dur) : fase.t;
-          if (f !== noRute.fase) { noRute.fase = f; kameraFase(fase); }
         }
         oppdaterMarkor();
       }
