@@ -75,6 +75,7 @@
         L.djup[i] = d[i * 4 + 1] / 255;
         L.maske[i] = d[i * 4 + 2];
       }
+      L.kyst = lagKyst(L);
       return L;
     };
     if (!src.startsWith("data:") && window.createImageBitmap) {
@@ -89,6 +90,24 @@
       img.onerror = () => rej(new Error("Kunne ikkje lese høgdekartet"));
       img.src = src;
     });
+  }
+  // Kystfeltet: landmaska jamna med ein 3 × 3-kjerne (vekter 1-2-1), så
+  // kysten blir eit jamnt felt frå 0 (hav) til 1 (land) i staden for ei hard
+  // ja/nei-maske. Utan det får øyene pikselkantar i rette vinklar, for
+  // høgda og fargen hoppar frå hav til land i eitt steg.
+  function lagKyst(L) {
+    const { W, H, maske } = L, n = W * H;
+    const rad = new Float32Array(n), kyst = new Float32Array(n);
+    for (let i = 0; i < n; i++) {
+      const r = i % W;
+      const v = maske[i - 1 * (r > 0)] ? 1 : 0, s = maske[i] ? 2 : 0, h = maske[i + 1 * (r < W - 1)] ? 1 : 0;
+      rad[i] = (v + s + h) / 4;
+    }
+    for (let i = 0; i < n; i++) {
+      const o = i >= W ? rad[i - W] : rad[i], u = i < n - W ? rad[i + W] : rad[i];
+      kyst[i] = (o + 2 * rad[i] + u) / 4;
+    }
+    return kyst;
   }
   function lesTerreng() {
     return lesHoegdekart(T.png, W, H).then(L => { hoegd = L.hoegd; maske = L.maske; djup = L.djup; });
@@ -121,7 +140,7 @@
   const SKUGGE_Z = 4;   // overdriving av hellinga i skuggen
   // Teiknar kartbiletet for eit lag L = { W, H, km, hoegd, maske, djup }.
   function lagKartbilete(L) {
-    const { W, H, km, hoegd, maske, djup } = L;
+    const { W, H, km, hoegd, maske, djup, kyst } = L;
     const hLand = i => maske[i] ? hoegd[i] : 0;
     // Relieffskugge: lys frå nordvest 45° over horisonten, rekna av hellinga
     // i høgdekartet.
@@ -145,7 +164,12 @@
     };
     const farge = i => {
       const kl = maske[i];
-      if (kl === KL.hav) return mix(HAV_GRUNT, HAV_DJUPT, djup[i]);
+      if (kl === KL.hav) {
+        const hav = mix(HAV_GRUNT, HAV_DJUPT, djup[i]);
+        // Ein havpiksel som kystfeltet løftar over vatn, skal sjå ut som strand, ikkje som ein blå flekk.
+        const f = kyst[i];
+        return f > 0.4 ? mix(hav, rampe(0), Math.min(1, (f - 0.4) / 0.25)) : hav;
+      }
       if (kl === KL.innsjo) return INNSJO;
       let c = kl === KL.bre ? BRE : rampe(hoegd[i]);
       if (kl === KL.annaLand) c = mix(c, ANNA_LAND, 0.7);
@@ -241,7 +265,17 @@
     const n = cols * rows, nk = kant.length;
     const pos = new Float32Array((n + nk) * 3), uv = new Float32Array((n + nk) * 2);
     // Land står på høgda si, hav ligg under havflata med botnen, så flata skjer landet i strandlinja.
-    const yAv = i => L.maske[i] ? Math.max(L.hoegd[i], 0.03) * EXAG : -(0.08 + 0.6 * L.djup[i]) * EXAG;
+    // Rein hav og reint land står på sitt; i kystsona går høgda mjukt frå
+    // like under havflata til landhøgda etter kystfeltet, så strandlinja
+    // (der nettet skjer havflata) følgjer ei avrunda kurve.
+    const yAv = i => {
+      const f = L.kyst[i];
+      if (f >= 0.999) return Math.max(L.hoegd[i], 0.03) * EXAG;
+      if (f <= 0.001) return -(0.08 + 0.6 * L.djup[i]) * EXAG;
+      const t = Math.min(1, Math.max(0, (f - 0.25) / 0.5));
+      const glatt = t * t * (3 - 2 * t);
+      return -0.06 * EXAG + (Math.max(L.hoegd[i], 0.03) * EXAG + 0.06 * EXAG) * glatt;
+    };
     let v = 0;
     const sett = (c, r, senk) => {
       const px = Math.min(x1, x0 + c * steg), py = Math.min(y1, y0 + r * steg), i = py * L.W + px;
@@ -296,7 +330,7 @@
     }
   }
   function byggTerreng() {
-    basisLag = { W, H, km: KM, hoegd, maske, djup };
+    basisLag = { W, H, km: KM, hoegd, maske, djup, kyst: lagKyst({ W, H, maske }) };
     kartbilete = lagKartbilete(basisLag);
     landMaterial.map = kartbilete;
     landMaterial.needsUpdate = true;
@@ -317,7 +351,7 @@
   let havMaterial = null;
   function lagHav() {
     const data = new Uint8Array(W * H * 4);
-    for (let i = 0; i < W * H; i++) { data[i * 4] = djup[i] * 255; data[i * 4 + 1] = maske[i] ? 255 : 0; data[i * 4 + 3] = 255; }
+    for (let i = 0; i < W * H; i++) { data[i * 4] = djup[i] * 255; data[i * 4 + 1] = basisLag.kyst[i] * 255; data[i * 4 + 3] = 255; }
     const kart = new THREE.DataTexture(data, W, H, THREE.RGBAFormat);
     kart.magFilter = kart.minFilter = THREE.LinearFilter;
     kart.needsUpdate = true;
@@ -338,7 +372,7 @@
         void main() {
           vec2 k = texture2D(kart, vUv).rg;
           float djup = k.r;      // 0..1 i kvadratrotskala, 1 = 1000 m
-          float land = k.g;      // lineært filtrert, så han stig mot land
+          float land = k.g;      // kystfeltet: stig jamt mot land
           vec3 grunt = vec3(0.26, 0.50, 0.66);
           vec3 djupt = vec3(0.05, 0.19, 0.38);
           vec3 farge = mix(grunt, djupt, smoothstep(0.05, 0.8, djup));
@@ -353,7 +387,7 @@
           float glimt = pow(max(dot(n, h), 0.0), 60.0) * 0.25 * naer;
           float lys = 0.92 + 0.08 * max(dot(n, sol), 0.0);
           // Strandkanta: lysare og grønare vatn inn mot land.
-          float strand = smoothstep(0.0, 0.7, land);
+          float strand = smoothstep(0.05, 0.6, land);
           farge = mix(farge, vec3(0.50, 0.74, 0.80), strand * 0.75);
           gl_FragColor = vec4(farge * lys + glimt, 1.0);
         }`,
