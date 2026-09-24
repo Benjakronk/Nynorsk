@@ -10,6 +10,7 @@ const vm = require("vm");
 const ROOT = path.resolve(__dirname, "..");
 const CONTENT_FILES = [
   "js/content/part1.js",
+  "js/content/aasen-reise.js",
   "js/content/part2-omgrep.js",
   "js/content/part2.js",
   "js/content/part2-trening.js",
@@ -28,6 +29,7 @@ function warn(msg) { warnings.push(msg); }
 /* ---------- Load the same code the browser runs ---------- */
 const sandbox = { console, module: { exports: {} }, exports: {} };
 sandbox.globalThis = sandbox;
+sandbox.window = sandbox;
 vm.createContext(sandbox);
 
 function runFile(rel) {
@@ -227,33 +229,32 @@ all.forEach(mod => {
 
 /* ---------- Reisene til Ivar Aasen (aasen-reise.html) ---------- */
 {
-  const sb = {}; sb.window = sb;
-  vm.createContext(sb);
-  try {
-    vm.runInContext(fs.readFileSync(path.join(ROOT, "js/content/aasen-reise.js"), "utf8"), sb, { filename: "js/content/aasen-reise.js" });
-    const D = sb.AASEN_REISE;
-    const kapIds = new Set();
-    D.kapittel.forEach((k, i) => {
-      const where = `Aasen-reise, kapittel ${i + 1} («${k.tittel}»)`;
-      if (!k.id || !k.tid || !k.tittel || !k.tekst || !Array.isArray(k.stopp)) err(`${where}: treng id, tid, tittel, tekst og stopp`);
-      if (kapIds.has(k.id)) err(`${where}: id «${k.id}» er brukt to gonger`);
-      kapIds.add(k.id);
-      k.stopp.forEach(([id, dato]) => {
+  const D = sandbox.AASEN_REISE;
+  const mod = Modules.get("historie-aasen-reise");
+  if (!D || !mod) err("Aasen-reise: fann ikkje AASEN_REISE eller modulen historie-aasen-reise");
+  else {
+    if (mod.href !== "aasen-reise.html") err("Aasen-reise: modulen må ha href: \"aasen-reise.html\"");
+    let kap = 0;
+    mod.sections.forEach((s, i) => {
+      if (s.type !== "lesson" || !s.reise) return;
+      kap++;
+      const where = `Aasen-reise, kapittel ${kap} («${s.title}»)`;
+      if (!s.reise.tid || !Array.isArray(s.reise.stopp)) err(`${where}: reise treng tid og stopp`);
+      (s.reise.stopp || []).forEach(([id, dato]) => {
         if (!D.stader[id]) err(`${where}: ukjend stad «${id}»`);
         if (typeof dato !== "string") err(`${where}: stoppet «${id}» manglar dato`);
       });
-      if (/—/.test(k.tekst) || /[^\d]–[^\d]/.test(stripTags(k.tekst))) warn(`${where}: tankestrek i teksten`);
+      if (/—/.test(s.content) || /[^d]–[^d]/.test(stripTags(s.content))) warn(`${where}: tankestrek i teksten`);
     });
+    if (!(mod.sections[0].type === "lesson" && mod.sections[0].reise)) err("Aasen-reise: første seksjonen må vere eit kapittel");
     Object.entries(D.stader).forEach(([id, s]) => {
       if (!s.namn || typeof s.lat !== "number" || typeof s.lon !== "number" || s.lat < 57 || s.lat > 72 || s.lon < 4 || s.lon > 32) err(`Aasen-reise: staden «${id}» manglar namn eller har koordinatar utanfor Noreg`);
     });
     const html = fs.readFileSync(path.join(ROOT, "aasen-reise.html"), "utf8");
-    ["js/vendor/three.min.js", "data/noreg-terreng.js", "js/content/aasen-reise.js", "js/aasen-reise.js"].forEach(f => {
+    ["js/storage.js", "js/modules.js", "js/content/part1.js", "js/content/aasen-reise.js", "js/exercises.js", "js/vendor/three.min.js", "data/noreg-terreng.js", "js/aasen-reise.js"].forEach(f => {
       if (!html.includes(`src="${f}"`)) err(`aasen-reise.html manglar <script src="${f}">`);
     });
-    stats["Aasen-reise"] = { modules: D.kapittel.length, sections: 0, exercises: Object.keys(D.stader).length, drillItems: 0, label: "kapittel/stader" };
-  } catch (e) {
-    err(`Aasen-reise: ${e.message}`);
+    stats["Aasen-reise"] = { modules: kap, sections: 0, exercises: Object.keys(D.stader).length, drillItems: 0, label: "kapittel/stader" };
   }
 }
 

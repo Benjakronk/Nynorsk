@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // Modular med eiga side (t.d. Reisene til Ivar Aasen) blir viste der.
+  if (mod.href) { location.replace(mod.href + location.hash); return; }
+
   document.title = `${mod.title} · Nynorskkurs`;
   setActiveTab(`del-${mod.part}`);
   root.innerHTML = "";
@@ -70,10 +73,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const idx = all.findIndex(m => m.id === mod.id);
   const prev = idx > 0 ? all[idx - 1] : null;
   const next = idx < all.length - 1 ? all[idx + 1] : null;
+  const lenkje = m => m.href || `modul.html?id=${encodeURIComponent(m.id)}`;
   nav.innerHTML = `
-    <div>${prev ? `<a class="btn secondary" href="modul.html?id=${encodeURIComponent(prev.id)}">← ${escapeHtml(prev.title)}</a>` : ""}</div>
+    <div>${prev ? `<a class="btn secondary" href="${lenkje(prev)}">← ${escapeHtml(prev.title)}</a>` : ""}</div>
     <div><a class="btn secondary" href="index.html#del-${mod.part}">Til Del ${mod.part}</a></div>
-    <div>${next ? `<a class="btn" href="modul.html?id=${encodeURIComponent(next.id)}">${escapeHtml(next.title)} →</a>` : ""}</div>
+    <div>${next ? `<a class="btn" href="${lenkje(next)}">${escapeHtml(next.title)} →</a>` : ""}</div>
   `;
   root.appendChild(nav);
 

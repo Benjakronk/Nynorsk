@@ -79,7 +79,7 @@ function renderModuleCard(mod, indexInPart) {
   const ratio = totalGradable > 0 ? Math.min(1, stats.done / totalGradable) : 0;
 
   const a = document.createElement("a");
-  a.href = `modul.html?id=${encodeURIComponent(mod.id)}`;
+  a.href = mod.href || `modul.html?id=${encodeURIComponent(mod.id)}`;
   a.className = "mod-card" + (stats.completed ? " done" : "");
 
   a.innerHTML = `

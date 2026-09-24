@@ -1,11 +1,15 @@
-/* 3D-kartet over reisene til Ivar Aasen.
+/* 3D-kartet over reisene til Ivar Aasen, og sida som viser modulen
+   «Reisene til Ivar Aasen» (Del 1) éin seksjon om gongen.
 
    Kartet er eitt trekantnett bygd av høgdekartet i data/noreg-terreng.js
    (laga av tools/lag-terreng.js). Kvar piksel i høgdekartet er 2 km, og
    høgdene er overdrivne (EXAG) for at fjell og fjordar skal synast frå lufta.
    Stadene i js/content/aasen-reise.js blir plasserte med same
-   kjegleprojeksjonen som høgdekartet, og ruta i kvart kapittel blir teikna som
-   ei slange lagd oppå terrenget, som veks fram medan markøren flyttar seg.
+   kjegleprojeksjonen som høgdekartet. Kvart kapittel (lesson med `reise`)
+   teiknar ruta si som ei slange lagd oppå terrenget, og ein liten figur av
+   Aasen går langs henne. Oppgåvene mellom kapitla blir teikna av
+   js/exercises.js og lagra som i resten av kurset, så modulen får framdrift
+   og «Fullført» på oversikta.
 
    Alt her er reint klientside: three.js ligg i js/vendor, og høgdekartet er
    bakt inn som base64, så sida verkar òg opna rett frå disk. */
@@ -13,7 +17,10 @@
   "use strict";
 
   const T = window.NOREG_TERRENG;
-  const D = window.AASEN_REISE;
+  const STADER = window.AASEN_REISE.stader;
+  const MOD = Modules.get("historie-aasen-reise");
+  const SEKS = MOD.sections;
+  const erKapittel = s => s.type === "lesson" && !!s.reise;
   const rotEl = document.getElementById("kart");
   const canvas = document.getElementById("kart-lerret");
   const etikettEl = document.getElementById("etikettar");
@@ -37,6 +44,7 @@
     const px = R * rho * Math.sin(th), py = R * (rho0 - rho * Math.cos(th));
     return { x: px - T.x0 - BREIDD_KM / 2, z: T.y0 - py - HOGD_KM / 2 };
   }
+  const stadXZ = id => verdXZ(STADER[id].lat, STADER[id].lon);
 
   /* ---------- Høgdekartet ---------- */
   let hoegd, maske, djup;      // per piksel: km over havet, landmaske, havdjup 0..1
@@ -171,14 +179,14 @@
     const cx = (minX + maxX) / 2, cz = (minZ + maxZ) / 2;
     const utstrekning = Math.max(maxX - minX, (maxZ - minZ) * 1.15, 40);
     const aspekt = Math.min(1, renderer.domElement.clientWidth / Math.max(1, renderer.domElement.clientHeight));
-    const avstand = Math.max(70, utstrekning / aspekt / (2 * Math.tan(rad(camera.fov / 2))) * 1.25 + 30);
+    const avstand = Math.max(110, utstrekning / aspekt / (2 * Math.tan(rad(camera.fov / 2))) * 1.25 + 30);
     return Object.assign({ maal: new THREE.Vector3(cx, hoegdVed(cx, cz) * EXAG, cz), avstand, theta: 0, phi: 0.72 }, ekstra);
   }
   const LANDET = () => passTil([{ x: -BREIDD_KM * 0.42, z: -HOGD_KM * 0.46 }, { x: BREIDD_KM * 0.3, z: HOGD_KM * 0.46 }], { phi: 0.42, theta: 0 });
 
   /* ---------- Peikar og tastatur ---------- */
   const peikarar = new Map();
-  let brukarHarSnudd = false, sistPinch = 0;
+  let sistPinch = 0;
   canvas.addEventListener("pointerdown", e => { canvas.setPointerCapture(e.pointerId); peikarar.set(e.pointerId, { x: e.clientX, y: e.clientY, knapp: e.button, shift: e.shiftKey || e.ctrlKey }); });
   canvas.addEventListener("pointerup", e => peikarar.delete(e.pointerId));
   canvas.addEventListener("pointercancel", e => peikarar.delete(e.pointerId));
@@ -186,7 +194,7 @@
     const p = peikarar.get(e.pointerId); if (!p) return;
     const dx = e.clientX - p.x, dy = e.clientY - p.y;
     p.x = e.clientX; p.y = e.clientY;
-    tween = null; brukarHarSnudd = true;
+    tween = null;
     if (peikarar.size >= 2) {
       const [a, b] = [...peikarar.values()];
       const avst = Math.hypot(a.x - b.x, a.y - b.y);
@@ -200,7 +208,7 @@
     else { kam.theta -= dx * 0.005; kam.phi = Math.min(1.35, Math.max(0.1, kam.phi - dy * 0.005)); }
   });
   canvas.addEventListener("contextmenu", e => e.preventDefault());
-  canvas.addEventListener("wheel", e => { e.preventDefault(); tween = null; brukarHarSnudd = true; kam.avstand = klemAvstand(kam.avstand * Math.exp(e.deltaY * 0.0012)); }, { passive: false });
+  canvas.addEventListener("wheel", e => { e.preventDefault(); tween = null; kam.avstand = klemAvstand(kam.avstand * Math.exp(e.deltaY * 0.0012)); }, { passive: false });
   const klemAvstand = a => Math.min(4500, Math.max(25, a));
   function panorer(dx, dy) {
     const k = kam.avstand * 0.0016;
@@ -211,32 +219,72 @@
     kam.maal.y = hoegdVed(kam.maal.x, kam.maal.z) * EXAG;
   }
   document.addEventListener("keydown", e => {
-    if (e.target.closest("input, textarea, select")) return;
-    if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") { e.preventDefault(); gaaTil(kapIdx + 1); }
-    else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); gaaTil(kapIdx - 1); }
+    if (e.target.closest("input, textarea, select, button")) return;
+    if (e.key === "ArrowRight" || e.key === "PageDown") { e.preventDefault(); gaaTil(seksIdx + 1); }
+    else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); gaaTil(seksIdx - 1); }
+    else if (e.key === " ") { e.preventDefault(); settPause(!pausa); }
     else if (e.key === "Home") { e.preventDefault(); gaaTil(0); }
-    else if (e.key === "End") { e.preventDefault(); gaaTil(D.kapittel.length - 1); }
+    else if (e.key === "End") { e.preventDefault(); gaaTil(SEKS.length - 1); }
   });
 
-  /* ---------- Ruter og markørar ---------- */
-  const RUTE_NO = new THREE.Color("#b76a2b"), RUTE_FOR = new THREE.Color("#c9ad8e"), MARKOR = new THREE.Color("#1f5d4c");
+  /* ---------- Ruter, stopp og figuren ---------- */
+  const RUTE_NO = new THREE.Color("#b76a2b"), RUTE_FOR = new THREE.Color("#c9ad8e");
   const materialNo = new THREE.MeshBasicMaterial({ color: RUTE_NO });
   const materialFor = new THREE.MeshBasicMaterial({ color: RUTE_FOR });
   const materialStopp = new THREE.MeshBasicMaterial({ color: RUTE_NO });
   const gruppeFor = new THREE.Group(), gruppeNo = new THREE.Group();
   scene.add(gruppeFor, gruppeNo);
-  const markor = new THREE.Mesh(new THREE.SphereGeometry(1, 20, 14), new THREE.MeshLambertMaterial({ color: MARKOR }));
-  const markorRing = new THREE.Mesh(new THREE.RingGeometry(1.6, 2.2, 32), new THREE.MeshBasicMaterial({ color: MARKOR, side: THREE.DoubleSide, transparent: true, opacity: 0.55 }));
-  markorRing.rotation.x = -Math.PI / 2;
-  markor.visible = markorRing.visible = false;
-  scene.add(markor, markorRing);
+
+  /* Ein liten, stilisert Ivar Aasen: svart frakk, flosshatt, skreppe på
+     ryggen og stav i handa. Figuren er om lag 3,2 einingar høg og blir
+     skalert etter kameraavstanden, slik at han alltid er synleg. */
+  function lagFigur() {
+    const svart = new THREE.MeshLambertMaterial({ color: 0x2a2a30 });
+    const hud = new THREE.MeshLambertMaterial({ color: 0xe6c7a6 });
+    const brun = new THREE.MeshLambertMaterial({ color: 0x7a5a3a });
+    const graa = new THREE.MeshLambertMaterial({ color: 0x4a4a54 });
+    const g = new THREE.Group();
+    const lem = (r1, r2, lengd, y, x, mat) => {
+      const ledd = new THREE.Group();
+      const m = new THREE.Mesh(new THREE.CylinderGeometry(r1, r2, lengd, 8), mat);
+      m.position.y = -lengd / 2;
+      ledd.add(m);
+      ledd.position.set(x, y, 0);
+      g.add(ledd);
+      return ledd;
+    };
+    const beinV = lem(0.15, 0.12, 0.9, 0.9, -0.17, graa), beinH = lem(0.15, 0.12, 0.9, 0.9, 0.17, graa);
+    const armV = lem(0.12, 0.1, 0.85, 1.95, -0.5, svart), armH = lem(0.12, 0.1, 0.85, 1.95, 0.5, svart);
+    const kropp = new THREE.Mesh(new THREE.CylinderGeometry(0.36, 0.52, 1.25, 10), svart); kropp.position.y = 1.45;
+    const hovud = new THREE.Mesh(new THREE.SphereGeometry(0.32, 14, 10), hud); hovud.position.y = 2.38;
+    const brem = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.06, 16), svart); brem.position.y = 2.63;
+    const pull = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.32, 0.55, 16), svart); pull.position.y = 2.93;
+    const skreppe = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.65, 0.3), brun); skreppe.position.set(0, 1.65, -0.5);
+    const stav = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 1.6, 6), brun);
+    stav.position.set(0.05, -0.55, 0.3); stav.rotation.x = 0.2; armH.add(stav);
+    const skugge = new THREE.Mesh(new THREE.CircleGeometry(0.75, 20), new THREE.MeshBasicMaterial({ color: 0x1f5d4c, transparent: true, opacity: 0.35 }));
+    skugge.rotation.x = -Math.PI / 2; skugge.position.y = 0.02;
+    g.add(kropp, hovud, brem, pull, skreppe, skugge);
+    g.visible = false;
+    scene.add(g);
+    return { g, beinV, beinH, armV, armH, hovud, brem, pull };
+  }
+  const figur = lagFigur();
+  function stillFigur(fase) {
+    // fase i radianar langs gangsyklusen; 0 = stå i ro
+    const sving = Math.sin(fase);
+    figur.beinV.rotation.x = sving * 0.55; figur.beinH.rotation.x = -sving * 0.55;
+    figur.armV.rotation.x = -sving * 0.45; figur.armH.rotation.x = sving * 0.45 + 0.25;
+    const bob = Math.abs(Math.cos(fase)) * 0.06;
+    figur.hovud.position.y = 2.38 + bob; figur.brem.position.y = 2.63 + bob; figur.pull.position.y = 2.93 + bob;
+  }
+  stillFigur(0);
 
   // Ei rute er ei liste punkt {x, z, h} med ~2,5 km mellomrom, drapert på terrenget.
   function lagRute(stoppIdar) {
     const punkt = [];
     for (let i = 0; i < stoppIdar.length; i++) {
-      const s = D.stader[stoppIdar[i]];
-      const p = verdXZ(s.lat, s.lon);
+      const p = stadXZ(stoppIdar[i]);
       if (i === 0) { punkt.push({ x: p.x, z: p.z, h: hoegdVed(p.x, p.z) }); continue; }
       const q = punkt[punkt.length - 1];
       const nSeg = Math.max(1, Math.ceil(Math.hypot(p.x - q.x, p.z - q.z) / 2.5));
@@ -262,42 +310,66 @@
   }
   function tomGruppe(g) { while (g.children.length) { const c = g.children.pop(); if (c.geometry) c.geometry.dispose(); } }
 
-  /* ---------- Kapittel ---------- */
-  let kapIdx = -1;
-  let noRute = null;       // { punkt, mesh, seg, framdrift, dur, t0, stoppPos: [{id, t}] }
+  /* ---------- Seksjonar: kapittel og oppgåver ---------- */
+  let seksIdx = -1;        // gjeldande seksjon i modulen
+  let kapIdx = -1;         // siste kapittelet som er vist (kartet viser det)
+  let noRute = null;       // { punkt, idar, stoppPos, lengd, framdrift, dur, t0, mesh, seg, ferdig }
   let bygdForAvstand = 0;
   let autoTimer = null;
-  const etikettar = new Map(); // id -> element
+  let pausa = false, pauseStart = 0;
+  const etikettar = new Map(); // stad-id -> element
 
   const kapTid = document.getElementById("kap-tid"), kapTittel = document.getElementById("kap-tittel"),
     kapTekst = document.getElementById("kap-tekst"), kapTeljar = document.getElementById("kap-teljar"),
+    oppFramdrift = document.getElementById("opp-framdrift"),
     ruteListe = document.getElementById("rute-liste"), forreBtn = document.getElementById("forre"),
     nesteBtn = document.getElementById("neste"), kapListe = document.getElementById("kap-liste"),
-    autoBtn = document.getElementById("auto-btn");
+    autoBtn = document.getElementById("auto-btn"), pauseBtn = document.getElementById("pause-btn"),
+    modulNav = document.getElementById("modul-nav");
 
   function gaaTil(i) {
-    if (i < 0 || i >= D.kapittel.length || i === kapIdx) return;
-    visKapittel(i);
+    if (i < 0 || i >= SEKS.length || i === seksIdx) return;
+    visSeksjon(i);
   }
 
-  function visKapittel(i) {
-    kapIdx = i;
-    const k = D.kapittel[i];
+  function visSeksjon(i) {
+    seksIdx = i;
+    const s = SEKS[i];
     clearTimeout(autoTimer);
-    brukarHarSnudd = false;
     if (history.replaceState) history.replaceState(null, "", "#k=" + (i + 1));
 
-    kapTid.textContent = k.tid;
-    kapTittel.textContent = k.tittel;
-    kapTekst.innerHTML = k.tekst;
-    kapTeljar.textContent = `Kapittel ${i + 1} av ${D.kapittel.length}`;
+    kapTeljar.textContent = `${i + 1} av ${SEKS.length}`;
     forreBtn.disabled = i === 0;
-    nesteBtn.disabled = i === D.kapittel.length - 1;
-    nesteBtn.textContent = i === D.kapittel.length - 1 ? "Slutt" : "Neste";
+    nesteBtn.disabled = i === SEKS.length - 1;
+    modulNav.hidden = i !== SEKS.length - 1;
     for (const li of kapListe.children) li.classList.toggle("aktiv", +li.dataset.idx === i);
     const aktivLi = kapListe.children[i];
     if (aktivLi && aktivLi.scrollIntoView) aktivLi.scrollIntoView({ block: "nearest" });
     document.querySelector(".reise-panel").scrollTop = 0;
+
+    kapTekst.innerHTML = "";
+    if (erKapittel(s)) {
+      kapTid.textContent = s.reise.tid;
+      kapTittel.textContent = s.title;
+      kapTekst.innerHTML = s.content;
+      visKapittel(i);
+    } else {
+      kapTid.textContent = "Oppgåve undervegs";
+      kapTittel.textContent = s.title || "Prøv deg";
+      const kort = document.createElement("section");
+      kort.className = "section exercise-wrap";
+      kort.appendChild(Exercises.render(s, MOD.id));
+      kapTekst.appendChild(kort);
+      ruteListe.parentElement.hidden = true;
+      // Kartet blir ståande på det siste kapittelet, og figuren står i ro.
+      if (auto && erSvart(s)) planleggNeste();
+    }
+  }
+
+  function visKapittel(i) {
+    kapIdx = i;
+    const k = SEKS[i].reise;
+    settPause(false);
 
     // Stopplista i panelet
     ruteListe.innerHTML = "";
@@ -305,7 +377,7 @@
       const li = document.createElement("li");
       const b = document.createElement("button");
       b.type = "button";
-      b.innerHTML = `<span class="rute-namn">${D.stader[id].namn}</span><span class="rute-dato">${dato}</span>`;
+      b.innerHTML = `<span class="rute-namn">${STADER[id].namn}</span><span class="rute-dato">${dato}</span>`;
       b.addEventListener("click", () => hoppTilStopp(j));
       li.appendChild(b);
       ruteListe.appendChild(li);
@@ -315,7 +387,7 @@
     // Tidlegare ruter, dempa
     tomGruppe(gruppeFor); tomGruppe(gruppeNo);
     const punktFor = [];
-    for (let j = 0; j < i; j++) if (D.kapittel[j].stopp.length >= 2) punktFor.push(lagRute(D.kapittel[j].stopp.map(s => s[0])));
+    for (let j = 0; j < i; j++) if (erKapittel(SEKS[j]) && SEKS[j].reise.stopp.length >= 2) punktFor.push(lagRute(SEKS[j].reise.stopp.map(s => s[0])));
     gruppeFor.userData.ruter = punktFor;
 
     // Denne ruta
@@ -327,104 +399,110 @@
       const stoppPos = [];
       let akk = 0;
       for (let j = 0; j < idar.length; j++) {
-        if (j > 0) { const a = verdXZ(D.stader[idar[j - 1]].lat, D.stader[idar[j - 1]].lon), b = verdXZ(D.stader[idar[j]].lat, D.stader[idar[j]].lon); akk += Math.hypot(b.x - a.x, b.z - a.z); }
+        if (j > 0) { const a = stadXZ(idar[j - 1]), b = stadXZ(idar[j]); akk += Math.hypot(b.x - a.x, b.z - a.z); }
         stoppPos.push({ id: idar[j], t: akk });
       }
       const tot = stoppPos[stoppPos.length - 1].t || 1;
       stoppPos.forEach(s => { s.t = s.t / tot; });
-      noRute = { punkt, idar, stoppPos, lengd, framdrift: 0, dur: reduserRorsle ? 0 : Math.min(11000, Math.max(2500, lengd / 0.13)), t0: performance.now() + 900, mesh: null, seg: 0 };
+      // Roleg tempo: om lag 50 km i sekundet, mellom 5 og 28 sekund per kapittel.
+      noRute = { punkt, idar, stoppPos, lengd, framdrift: 0, dur: reduserRorsle ? 0 : Math.min(28000, Math.max(5000, lengd / 0.05)), t0: performance.now() + 900, mesh: null, seg: 0, ferdig: false };
     }
     bygdForAvstand = 0; // tvinger ny oppbygging med rett tjukkleik
 
     // Etikettar
     etikettEl.innerHTML = ""; etikettar.clear();
-    const synlege = idar.length ? [...new Set(idar)] : [];
+    const synlege = [...new Set(idar)];
     for (const id of synlege) {
       const el = document.createElement("div");
       el.className = "stad-etikett";
-      el.innerHTML = `<span class="stad-namn">${D.stader[id].namn}</span><span class="stad-dato"></span>`;
+      el.innerHTML = `<span class="stad-namn">${STADER[id].namn}</span><span class="stad-dato"></span>`;
       etikettEl.appendChild(el);
       etikettar.set(id, el);
     }
 
     // Kamera
-    const alle = k.kamera === "land" ? null : punkt.length ? punkt : synlege.map(id => verdXZ(D.stader[id].lat, D.stader[id].lon));
+    const alle = k.kamera === "land" ? null : punkt.length ? punkt : synlege.map(stadXZ);
     flyTil(alle ? passTil(alle) : LANDET(), 1800);
-    markor.visible = markorRing.visible = punkt.length >= 2;
-    if (punkt.length === 1) { markor.visible = markorRing.visible = true; }
+    figur.g.visible = punkt.length >= 1;
+    pauseBtn.hidden = !noRute;
     oppdaterMarkor();
   }
 
   function hoppTilStopp(j) {
     if (!noRute) return;
     const s = noRute.stoppPos[j];
-    noRute.framdrift = s.t; noRute.t0 = -Infinity; noRute.ferdig = true;
-    const st = D.stader[s.id], p = verdXZ(st.lat, st.lon);
-    brukarHarSnudd = true;
+    noRute.framdrift = s.t; noRute.ferdig = true;
+    const p = stadXZ(s.id);
     flyTil({ maal: new THREE.Vector3(p.x, hoegdVed(p.x, p.z) * EXAG, p.z), avstand: Math.min(kam.avstand, 140) }, 1200);
+    pauseBtn.hidden = true;
     oppdaterMarkor();
     planleggNeste();
+  }
+
+  function settPause(p) {
+    if (!noRute || noRute.ferdig) p = false;
+    if (p === pausa) return;
+    pausa = p;
+    const no = performance.now();
+    if (pausa) pauseStart = no; else if (noRute) noRute.t0 += no - pauseStart;
+    pauseBtn.textContent = pausa ? "Hald fram" : "Pause";
+    pauseBtn.setAttribute("aria-pressed", pausa);
   }
 
   function byggRuter() {
     const radius = Math.max(0.35, kam.avstand * 0.0032);
     tomGruppe(gruppeFor); tomGruppe(gruppeNo);
     for (const punkt of gruppeFor.userData.ruter || []) { const m = ruteMesh(punkt, radius * 0.8, materialFor); if (m) gruppeFor.add(m); }
+    const kule = new THREE.SphereGeometry(radius * 1.9, 12, 8);
+    const stoppIdar = noRute ? noRute.stoppPos.map(s => s.id) : kapIdx >= 0 ? SEKS[kapIdx].reise.stopp.map(s => s[0]) : [];
+    for (const id of stoppIdar) {
+      const p = stadXZ(id);
+      const dot = new THREE.Mesh(kule, materialStopp);
+      dot.position.set(p.x, hoegdVed(p.x, p.z) * EXAG + radius * 1.4 + 0.15 * EXAG, p.z);
+      gruppeNo.add(dot);
+    }
     if (noRute) {
       const m = ruteMesh(noRute.punkt, radius, materialNo);
       noRute.mesh = m; noRute.seg = m.geometry.parameters.tubularSegments;
       gruppeNo.add(m);
-      const kule = new THREE.SphereGeometry(radius * 1.9, 12, 8);
-      for (const s of noRute.stoppPos) {
-        const st = D.stader[s.id], p = verdXZ(st.lat, st.lon);
-        const dot = new THREE.Mesh(kule, materialStopp);
-        dot.position.set(p.x, hoegdVed(p.x, p.z) * EXAG + radius * 1.4 + 0.15 * EXAG, p.z);
-        gruppeNo.add(dot);
-      }
-    } else if (kapIdx >= 0) {
-      const kule = new THREE.SphereGeometry(radius * 1.9, 12, 8);
-      for (const [id] of D.kapittel[kapIdx].stopp) {
-        const st = D.stader[id], p = verdXZ(st.lat, st.lon);
-        const dot = new THREE.Mesh(kule, materialStopp);
-        dot.position.set(p.x, hoegdVed(p.x, p.z) * EXAG + radius * 1.4 + 0.15 * EXAG, p.z);
-        gruppeNo.add(dot);
-      }
     }
-    const s = radius * 2.6;
-    markor.scale.setScalar(s); markorRing.scale.setScalar(s);
+    figur.g.scale.setScalar(radius * 2.8);
     bygdForAvstand = kam.avstand;
     oppdaterMarkor();
   }
 
   function oppdaterMarkor() {
+    const s = figur.g.scale.x;
     if (!noRute || !noRute.mesh) {
-      if (kapIdx >= 0 && D.kapittel[kapIdx].stopp.length === 1) {
-        const st = D.stader[D.kapittel[kapIdx].stopp[0][0]], p = verdXZ(st.lat, st.lon);
-        markor.position.set(p.x, hoegdVed(p.x, p.z) * EXAG + markor.scale.x, p.z);
-        markorRing.position.set(p.x, hoegdVed(p.x, p.z) * EXAG + 0.3, p.z);
+      if (kapIdx >= 0 && SEKS[kapIdx].reise.stopp.length === 1) {
+        const p = stadXZ(SEKS[kapIdx].reise.stopp[0][0]);
+        figur.g.position.set(p.x, hoegdVed(p.x, p.z) * EXAG + 0.1 * EXAG, p.z);
       }
+      stillFigur(0);
       return;
     }
-    const u = noRute.framdrift;
+    const u = Math.min(1, Math.max(0, noRute.framdrift));
     noRute.mesh.geometry.setDrawRange(0, Math.max(0, Math.floor(u * noRute.seg)) * 6 * 6);
     const sti = noRute.mesh.geometry.parameters.path;
-    const p = sti.getPointAt(Math.min(1, Math.max(0, u)));
-    markor.position.set(p.x, p.y + markor.scale.x * 0.6, p.z);
-    markorRing.position.set(p.x, hoegdVed(p.x, p.z) * EXAG + 0.3, p.z);
-    // Datoen står berre ved det siste stoppet markøren har nådd.
+    const p = sti.getPointAt(u);
+    figur.g.position.set(p.x, p.y + s * 0.15, p.z);
+    const t = sti.getTangentAt(u);
+    if (t.x || t.z) figur.g.rotation.y = Math.atan2(t.x, t.z);
+    // Gangsyklusen følgjer avstanden som er gått: eitt steg er om lag ei figurbreidd.
+    stillFigur(noRute.ferdig ? 0 : (u * noRute.lengd) / (1.1 * s) * Math.PI);
+
+    // Datoen står berre ved det siste stoppet figuren har nådd.
     let aktiv = null;
-    for (const s of noRute.stoppPos) if (s.t <= u + 1e-6) aktiv = s;
-    const kap = D.kapittel[kapIdx];
+    for (const st of noRute.stoppPos) if (st.t <= u + 1e-6) aktiv = st;
+    const stopp = SEKS[kapIdx].reise.stopp;
     for (const [id, el] of etikettar) {
       const erAktiv = aktiv && aktiv.id === id;
       el.classList.toggle("aktiv", !!erAktiv);
-      const naadd = noRute.stoppPos.some(s => s.id === id && s.t <= u + 1e-6);
-      el.classList.toggle("naadd", naadd);
+      el.classList.toggle("naadd", noRute.stoppPos.some(st => st.id === id && st.t <= u + 1e-6));
       if (erAktiv) {
-        const stopp = kap.stopp.filter(s => s[0] === id);
-        const j = noRute.stoppPos.indexOf(aktiv);
-        const same = noRute.stoppPos.slice(0, j + 1).filter(s => s.id === id).length - 1;
-        el.querySelector(".stad-dato").textContent = (stopp[same] || stopp[0])[1];
+        const same = noRute.stoppPos.slice(0, noRute.stoppPos.indexOf(aktiv) + 1).filter(st => st.id === id).length - 1;
+        const treff = stopp.filter(st => st[0] === id);
+        el.querySelector(".stad-dato").textContent = (treff[same] || treff[0])[1];
       }
     }
   }
@@ -435,7 +513,7 @@
     const viste = [];
     const rekkje = [...etikettar.entries()].sort((a, b) => (b[1].classList.contains("aktiv") - a[1].classList.contains("aktiv")));
     for (const [id, el] of rekkje) {
-      const st = D.stader[id], p = verdXZ(st.lat, st.lon);
+      const p = stadXZ(id);
       projV.set(p.x, hoegdVed(p.x, p.z) * EXAG, p.z).project(camera);
       if (projV.z > 1 || projV.x < -1.05 || projV.x > 1.05 || projV.y < -1.05 || projV.y > 1.05) { el.style.display = "none"; continue; }
       const x = (projV.x + 1) / 2 * w, y = (1 - projV.y) / 2 * h;
@@ -447,33 +525,61 @@
     }
   }
 
+  /* ---------- Framdrift i modulen ---------- */
+  function erSvart(s) {
+    const prog = Store.getModule(MOD.id);
+    if (s.exerciseType === "freeText") { const t = Store.getText(MOD.id, s.id); return !!(t && t.value && t.value.trim()); }
+    return !!(prog.sections || {})[s.id];
+  }
+  function oppdaterFramdrift() {
+    const oppg = SEKS.filter(s => s.type === "exercise" || s.type === "reading");
+    const gjort = oppg.filter(erSvart).length;
+    oppFramdrift.textContent = `${gjort} av ${oppg.length} oppgåver`;
+    SEKS.forEach((s, i) => { if (s.type === "exercise") kapListe.children[i].classList.toggle("svart", erSvart(s)); });
+    const prog = Store.getModule(MOD.id);
+    if (Modules.isModuleFullyDone(MOD, prog, Store.getAll().texts) && !prog.completed) Store.setCompleted(MOD.id, true);
+  }
+  document.addEventListener("exercise-answered", () => {
+    oppdaterFramdrift();
+    if (auto && seksIdx >= 0 && SEKS[seksIdx].type === "exercise") planleggNeste(5000);
+  });
+
   /* ---------- Automatisk framdrift ---------- */
   let auto = false;
   autoBtn.addEventListener("click", () => {
     auto = !auto;
     autoBtn.setAttribute("aria-pressed", auto);
     autoBtn.textContent = auto ? "Stopp automatikken" : "Spel av automatisk";
-    if (auto && noRute && noRute.ferdig) planleggNeste();
-    if (auto && !noRute) planleggNeste();
-    if (!auto) clearTimeout(autoTimer);
+    if (!auto) { clearTimeout(autoTimer); return; }
+    const s = SEKS[seksIdx];
+    if (erKapittel(s) ? !noRute || noRute.ferdig : erSvart(s)) planleggNeste();
   });
-  function planleggNeste() {
+  // Går vidare av seg sjølv når ruta er gått og teksten er lesen. Ved ei
+  // oppgåve ventar vi til eleven har svart.
+  function planleggNeste(vent) {
     clearTimeout(autoTimer);
-    if (!auto || kapIdx >= D.kapittel.length - 1) return;
-    const ord = D.kapittel[kapIdx].tekst.replace(/<[^>]+>/g, " ").trim().split(/\s+/).length;
-    autoTimer = setTimeout(() => gaaTil(kapIdx + 1), Math.max(9000, ord * 380));
+    if (!auto || seksIdx >= SEKS.length - 1) return;
+    const s = SEKS[seksIdx];
+    if (s.type === "exercise" && !erSvart(s)) return;
+    const ord = (s.content || s.question || "").replace(/<[^>]+>/g, " ").trim().split(/\s+/).length;
+    autoTimer = setTimeout(() => gaaTil(seksIdx + 1), vent ?? Math.max(9000, ord * 380));
   }
 
-  /* ---------- Knappar ---------- */
-  forreBtn.addEventListener("click", () => gaaTil(kapIdx - 1));
-  nesteBtn.addEventListener("click", () => gaaTil(kapIdx + 1));
-  document.getElementById("landet-btn").addEventListener("click", () => { brukarHarSnudd = true; flyTil(LANDET(), 1500); });
-  D.kapittel.forEach((k, i) => {
+  /* ---------- Knappar og lister ---------- */
+  forreBtn.addEventListener("click", () => gaaTil(seksIdx - 1));
+  nesteBtn.addEventListener("click", () => gaaTil(seksIdx + 1));
+  pauseBtn.addEventListener("click", () => settPause(!pausa));
+  document.getElementById("landet-btn").addEventListener("click", () => flyTil(LANDET(), 1500));
+  SEKS.forEach((s, i) => {
     const li = document.createElement("li");
     li.dataset.idx = i;
+    li.className = erKapittel(s) ? "kapittel" : "oppgaave";
     const b = document.createElement("button");
     b.type = "button";
-    b.innerHTML = `<span class="kap-liste-tid">${k.tid}</span> ${k.tittel}`;
+    const tid = document.createElement("span");
+    tid.className = "kap-liste-tid";
+    tid.textContent = erKapittel(s) ? s.reise.tid : "Oppgåve";
+    b.append(tid, " ", s.title || "Prøv deg");
     b.addEventListener("click", () => gaaTil(i));
     li.appendChild(b);
     kapListe.appendChild(li);
@@ -483,6 +589,18 @@
     const open = kapListe.parentElement.toggleAttribute("hidden");
     listeBtn.setAttribute("aria-expanded", !open);
   });
+  {
+    // Lenkjer til modulane før og etter i Del 1, som på modulsida.
+    const alle = Modules.orderedByPart(MOD.part);
+    const idx = alle.findIndex(m => m.id === MOD.id);
+    const lenkje = m => m.href || `modul.html?id=${encodeURIComponent(m.id)}`;
+    const forrige = idx > 0 ? alle[idx - 1] : null, neste = idx < alle.length - 1 ? alle[idx + 1] : null;
+    const a = (m, kl, tekst) => { const e = document.createElement("a"); e.className = "btn " + kl; e.href = lenkje(m); e.textContent = tekst; return e; };
+    if (forrige) modulNav.appendChild(a(forrige, "secondary", forrige.title));
+    const del = document.createElement("a"); del.className = "btn secondary"; del.href = `index.html#del-${MOD.part}`; del.textContent = `Til Del ${MOD.part}`;
+    modulNav.appendChild(del);
+    if (neste) modulNav.appendChild(a(neste, "", neste.title));
+  }
 
   /* ---------- Storleik og teiknesløyfe ---------- */
   function tilpass() {
@@ -498,11 +616,11 @@
   function teikn(no) {
     requestAnimationFrame(teikn);
     stegTween(no);
-    if (noRute && !noRute.ferdig) {
+    if (noRute && !noRute.ferdig && !pausa) {
       const u = noRute.dur === 0 ? 1 : Math.min(1, (no - noRute.t0) / noRute.dur);
       if (u >= 0) {
         noRute.framdrift = u;
-        if (u >= 1) { noRute.ferdig = true; planleggNeste(); }
+        if (u >= 1) { noRute.ferdig = true; pauseBtn.hidden = true; planleggNeste(); }
         oppdaterMarkor();
       }
     }
@@ -529,12 +647,17 @@
     byggTerreng(steg);
     tilpass();
     const m = /#k=(\d+)/.exec(location.hash);
-    const idx = m ? Math.min(D.kapittel.length, Math.max(1, +m[1])) - 1 : 0;
+    const idx = m ? Math.min(SEKS.length, Math.max(1, +m[1])) - 1 : 0;
     Object.assign(kam, LANDET());
     kam.avstand *= 1.6;
     oppdaterKamera();
     lastEl.hidden = true;
-    visKapittel(idx);
+    oppdaterFramdrift();
+    // Startar eleven midt i modulen, må kartet først vise det siste kapittelet før.
+    let sisteKap = idx;
+    while (sisteKap > 0 && !erKapittel(SEKS[sisteKap])) sisteKap--;
+    if (sisteKap !== idx && erKapittel(SEKS[sisteKap])) { visSeksjon(sisteKap); if (noRute) { noRute.framdrift = 1; noRute.ferdig = true; pauseBtn.hidden = true; } }
+    visSeksjon(idx);
     requestAnimationFrame(teikn);
   }
 

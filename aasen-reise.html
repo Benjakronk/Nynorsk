@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Reisene til Ivar Aasen · Nynorskkurs</title>
-<meta name="description" content="Interaktiv forelesing: følg Ivar Aasen på reisene der han samla dialektar til landsmålet, på eit 3D-kart over Noreg." />
+<meta name="description" content="Modul med interaktiv forelesing: følg Ivar Aasen på reisene der han samla dialektar til landsmålet, på eit 3D-kart over Noreg, med oppgåver undervegs." />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <meta name="theme-color" content="#1f5d4c" />
 <link rel="stylesheet" href="css/style.css" />
@@ -17,7 +17,8 @@
       <span class="brand-mark">N</span>
       <span class="brand-text">Nynorskkurs · ungdomsskulen</span>
     </a>
-    <a class="reise-tilbake" href="modul.html?id=historie-aasen">Til modulen om Ivar Aasen</a>
+    <span class="reise-crumbs">Del 1 · Språkhistorie · Reisene til Ivar Aasen</span>
+    <a class="reise-tilbake" href="index.html#del-1">Til Del 1</a>
   </div>
 </header>
 
@@ -27,6 +28,7 @@
     <div id="etikettar" class="etikettar" aria-hidden="true"></div>
     <div id="kart-lastar" class="kart-lastar"><p>Byggjer kartet …</p></div>
     <div class="kart-verktoy">
+      <button id="pause-btn" type="button" class="ghost" aria-pressed="false" hidden>Pause</button>
       <button id="landet-btn" type="button" class="ghost">Heile landet</button>
       <button id="auto-btn" type="button" class="ghost" aria-pressed="false">Spel av automatisk</button>
     </div>
@@ -35,15 +37,15 @@
       <span><i class="tf-for"></i> tidlegare reiser</span>
       <span><i class="tf-markor"></i> Ivar Aasen</span>
     </div>
-    <p class="kart-hint">Dra for å snu kartet, rull for å zoome, dra med høgre knapp eller skift for å flytte.</p>
+    <p class="kart-hint">Dra for å snu kartet, rull for å zoome, dra med høgre knapp eller skift for å flytte. Mellomrom stoppar figuren.</p>
   </section>
 
   <aside class="reise-panel">
     <div class="reise-topp">
-      <span id="kap-teljar" class="reise-teljar">Kapittel 1 av 19</span>
-      <button id="liste-btn" type="button" class="ghost small" aria-expanded="false" aria-controls="kap-liste">Alle kapitla</button>
+      <span><span id="kap-teljar" class="reise-teljar">1 av 30</span> · <span id="opp-framdrift">0 av 11 oppgåver</span></span>
+      <button id="liste-btn" type="button" class="ghost small" aria-expanded="false" aria-controls="kap-liste">Innhald</button>
     </div>
-    <nav class="kap-liste-wrap" hidden aria-label="Kapittel">
+    <nav class="kap-liste-wrap" hidden aria-label="Kapittel og oppgåver">
       <ol id="kap-liste" class="kap-liste"></ol>
     </nav>
     <span id="kap-tid" class="reise-tid"></span>
@@ -57,18 +59,24 @@
       <button id="forre" type="button" class="btn secondary">Førre</button>
       <button id="neste" type="button" class="btn">Neste</button>
     </div>
+    <div id="modul-nav" class="reise-modulnav" hidden></div>
     <p class="reise-kjelde">
       Datoar og stader: reisekarta i <em>Målsamlingar frå Ivar Aasen</em> (Ivar Aasen-selskapet, 1994–2002), attgjevne på
       <a href="http://www.allmenning.no/reiser/" target="_blank" rel="noopener">allmenning.no</a>, og Ottar Grepstads
       biografi på <a href="https://www.nynorsk.no/biografi" target="_blank" rel="noopener">nynorsk.no</a>.
       Ruta er teikna som rette liner mellom stoppestadene. Terreng: Mapzen/AWS Terrain Tiles og Natural Earth.
+      Svara dine blir lagra i nettlesaren, som i resten av kurset.
     </p>
   </aside>
 </main>
 
+<script src="js/storage.js"></script>
+<script src="js/modules.js"></script>
+<script src="js/content/part1.js"></script>
+<script src="js/content/aasen-reise.js"></script>
+<script src="js/exercises.js"></script>
 <script src="js/vendor/three.min.js"></script>
 <script src="data/noreg-terreng.js"></script>
-<script src="js/content/aasen-reise.js"></script>
 <script src="js/aasen-reise.js"></script>
 </body>
 </html>

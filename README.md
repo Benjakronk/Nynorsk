@@ -6,7 +6,7 @@ frå Språkrådet.
 
 ## Innhald
 
-- **Del 1: Språkhistorie og debatt** (6 modular): bakgrunn før 1850, Ivar Aasen, språkstriden og samnorsk, nynorsk i dag, skriveoppgåver, repetisjonstest
+- **Del 1: Språkhistorie og debatt** (7 modular): bakgrunn før 1850, Ivar Aasen, reisene til Ivar Aasen på eit 3D-kart, språkstriden og samnorsk, nynorsk i dag, skriveoppgåver, repetisjonstest
 - **Del 2: Grammatikk og skrivereglar**, delt i tre grupper:
   - *Grunnomgrep* (4 modular): ordet (stamme, ending, rot), ordklassane, bøyingsomgrep, setningslære
   - *Ordklassar* (4 modular): substantiv, verb, pronomen, adjektiv
@@ -26,7 +26,7 @@ frå Språkrådet.
 - Automatisk fasit på objektive oppgåver
 - Eigne tekstar blir lagra i `localStorage`
 - Språksjekk i skriveoppgåvene: bokmålsvarsel bygd på ordbanken i kurset, og skrivefeil mot ei nynorsk ordliste på 412 000 former, med tyding og direktelenkje til ordbokene.no for kvart forslag
-- Reisene til Ivar Aasen (`aasen-reise.html`): interaktiv forelesing på eit 3D-kart over Noreg, der eleven følgjer ruta hans kapittel for kapittel, med stoppestader, datoar og tekst undervegs
+- Reisene til Ivar Aasen (`aasen-reise.html`): modul med interaktiv forelesing på eit 3D-kart over Noreg, der eleven følgjer ein liten Aasen-figur langs ruta kapittel for kapittel, med stoppestader, datoar og oppgåver undervegs
 - Heile sida er statisk og fungerer på GitHub Pages utan byggjesteg
 
 ## Køyre lokalt
@@ -54,7 +54,7 @@ npx serve .
 ├── css/style.css
 ├── css/aasen-reise.css     Stil for kartsida
 ├── js/
-│   ├── aasen-reise.js      3D-kartet: terreng, kamera, ruter og kapittel
+│   ├── aasen-reise.js      3D-kartet: terreng, kamera, ruter, figuren og seksjonane
 │   ├── vendor/three.min.js three.js r147 (MIT), einaste eksterne bibliotek
 │   ├── storage.js          localStorage
 │   ├── modules.js          Modulregister (med grupper for Del 2 og 4)
@@ -76,7 +76,7 @@ npx serve .
 │       ├── part4-feil.js        Del 4: typiske feil
 │       ├── part4-rettelesing.js Del 4: rettelesing
 │       ├── part5.js             Del 5: lesing
-│       └── aasen-reise.js       Stoppestader og kapittel i forelesinga om Aasen
+│       └── aasen-reise.js       Modulen «Reisene til Ivar Aasen»: stader, kapittel, oppgåver
 ├── data/
 │   ├── nn-ordbank.txt      412 000 nynorske ordformer med morfologi (sjå data/KJELDE.md)
 │   ├── noreg-terreng.js    Høgdekart over Noreg (PNG som base64) for 3D-kartet
@@ -92,15 +92,23 @@ npx serve .
 
 ## Reisene til Ivar Aasen
 
-`aasen-reise.html` er ei forelesing i 19 kapittel på eit 3D-kart over Noreg.
-Kvart kapittel har ein tekst, ei liste stoppestader med datoar, og ei rute som
-veks fram på kartet medan markøren flyttar seg. Eleven blar med knappane eller
-piltastane, kan snu og zoome kartet, hoppe til eit stopp ved å klikke på det i
-lista, eller la forelesinga gå av seg sjølv.
+Modulen `historie-aasen-reise` i Del 1 blir vist på `aasen-reise.html`, ikkje
+på `modul.html` (feltet `href` i modulen sender dit, og oversikta lenkjer rett
+dit). Sida viser modulen éin seksjon om gongen ved sida av eit 3D-kart over
+Noreg: 19 kapittel og 11 oppgåver. Kvart kapittel er ein `lesson`-seksjon med eit
+`reise`-felt (tid, stopp med datoar, eventuelt `kamera: "land"`); ruta veks fram
+på kartet medan ein liten figur av Aasen går langs henne, om lag 50 km i
+sekundet. Oppgåvene mellom kapitla er vanlege oppgåvetypar frå `js/exercises.js`,
+og svara blir lagra som i resten av kurset, så modulen får framdrift og
+«Fullført» på oversikta. Eleven blar med knappane eller piltastane, kan snu og
+zoome kartet, stoppe figuren med mellomrom, hoppe til eit stopp ved å klikke på
+det i lista, eller la forelesinga gå av seg sjølv (ho ventar ved oppgåvene til
+eleven har svart).
 
 Innhaldet ligg i `js/content/aasen-reise.js`: `stader` er stoppestadene med
-koordinatar (frå stadnamnregisteret til Kartverket), og `kapittel` er
-forelesinga. Datoane kjem frå reisekarta i skriftserien til Ivar
+koordinatar (frå stadnamnregisteret til Kartverket), og modulen registrerer seg
+som dei andre, med `after: "historie-aasen"` for å hamne rett etter modulen om
+Aasen i Del 1. Datoane kjem frå reisekarta i skriftserien til Ivar
 Aasen-selskapet, slik dei er attgjevne på allmenning.no/reiser, og frå Ottar
 Grepstads biografi på nynorsk.no. Stader som ikkje lét seg plassere sikkert, er
 utelatne, og ruta er teikna som rette liner mellom stoppa.

@@ -24,7 +24,9 @@ const Modules = (() => {
     mod.sections.forEach((s, i) => {
       if (!s.id) s.id = `s${i + 1}`;
     });
-    list.push(mod);
+    // A module from another file can ask to be placed right after a given module.
+    const etter = mod.after ? list.findIndex(m => m.id === mod.after) : -1;
+    if (etter >= 0) list.splice(etter + 1, 0, mod); else list.push(mod);
   }
 
   function all() { return list.slice(); }
