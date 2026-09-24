@@ -28,7 +28,7 @@
    dårleg som støy og ville doble fila.) Blå kanal: klasse i dei tre øvste
    bitane (0 hav, 1 innsjø, 2 anna land, 3 bre, 4 Noreg) og avstand til
    nærmaste innsjøkant i dei fem nedste (16 er kanten, over 16 er utanfor,
-   16 steg per kilometer, klemt til ±1 km), så innsjøane òg får jamne
+   6 steg per kilometer, klemt til ±2,5 km), så innsjøane òg får jamne
    strender i kartbiletet. Kvar piksel er eit snitt av 3 × 3 delprøver, så
    kartet er jamnare enn ei enkel utplukking. Kartet ligg i Lamberts konforme
    kjegleprojeksjon, same projeksjonen som js/aasen-reise.js bruker for å
@@ -331,7 +331,7 @@ async function main() {
       }
       return felt;
     }
-    const KYST_MAKS = 3.2, VATN_MAKS = 1.0;
+    const KYST_MAKS = 3.2, VATN_MAKS = 2.5;
     const kyst = avstandsfelt(Object.values(land), erLand, KYST_MAKS);          // positiv på land
     const vatnAvst = avstandsfelt([innsjoar], vatn.map(v => v ? 0 : 1), VATN_MAKS);   // negativ i innsjø
 
@@ -354,7 +354,7 @@ async function main() {
       rgb[i * 3 + 1] = Math.max(0, Math.min(255, Math.round(128 + kyst[i] * 40)));
       // Blå kanal: klassen i dei tre øvste bitane, avstand til innsjøkant i dei fem nedste.
       const klasse = !erLand[i] ? 0 : bre[i] ? 3 : vatn[i] ? 1 : maske[i] === 255 ? 4 : 2;
-      const vatnKode = Math.max(0, Math.min(31, Math.round(16 + vatnAvst[i] * 16)));
+      const vatnKode = Math.max(0, Math.min(31, Math.round(16 + vatnAvst[i] * 6)));
       rgb[i * 3 + 2] = (klasse << 5) | vatnKode;
       if (klasse === 4) noreg++;
     }
@@ -390,7 +390,7 @@ async function main() {
   const ut = {
     format: 4, breidd: W, hogd: H, kmPerPx: KM_PER_PX, hMaks: H_MAKS, kystPerKm: 40, kystMaks: 3.2, proj: PROJ,
     klassar: { hav: 0, innsjo: 1, annaLand: 2, bre: 3, noreg: 4 },   // blå kanal >> 5
-    vatnPerKm: 16, vatnMaks: 1.0,                                       // blå kanal & 31, minus 16
+    vatnPerKm: 6, vatnMaks: 2.5,                                       // blå kanal & 31, minus 16
     x0: minX, y0: maxY,
     elvar, grenser,
     fin: { fil: "noreg-terreng-fin.png", breidd: W * 2, hogd: H * 2, kmPerPx: KM_PER_PX / 2, versjon: "" },

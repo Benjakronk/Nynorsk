@@ -156,7 +156,10 @@
       // Innsjøane: fargen går mjukt over kanten etter avstanden til
       // innsjøpolygonet, så strendene blir jamne kurver og ikkje pikselkantar.
       const v = vatn[i];
-      if (v < 0.3) { const w = Math.min(1, Math.max(0, (0.3 - v) / 0.6)); c = mix(c, INNSJO, w * w * (3 - 2 * w)); }
+      // Breidda på overgangen følgjer pikselstorleiken, så det grove laget
+      // (frå disk) òg får jamne kantar.
+      const kant = 0.25 * km, breidd = 1.4 * km;
+      if (v < kant) { const w = Math.min(1, Math.max(0, (kant - v) / breidd)); c = mix(c, INNSJO, w * w * (3 - 2 * w)); }
       return c;
     };
     const c = document.createElement("canvas");

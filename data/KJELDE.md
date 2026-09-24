@@ -14,8 +14,8 @@ snittet av 3 × 3 delprøver. Raud kanal er høgda over havet i kvadratrotskala
 avstanden til kystlinja i landpolygona med forteikn (128 er kystlinja, 40 steg
 per kilometer, klemt til ±3,2 km). Blå kanal har klassen i dei tre øvste
 bitane (0 hav, 1 innsjø, 2 anna land, 3 bre, 4 Noreg) og avstanden til
-nærmaste innsjøkant i dei fem nedste (16 er kanten, 16 steg per kilometer,
-klemt til ±1 km). Avstandane kjem frå sjølve polygona, så strandlinjene i
+nærmaste innsjøkant i dei fem nedste (16 er kanten, 6 steg per kilometer,
+klemt til ±2,5 km). Avstandane kjem frå sjølve polygona, så strandlinjene i
 3D-kartet er jamne kurver òg når ein er nærare enn pikslane. Objektet har òg projeksjonsparametrane og hjørnet
 øvst til venstre, slik at `js/aasen-reise.js` kan plassere stader på kartet.
 
