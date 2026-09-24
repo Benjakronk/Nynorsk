@@ -124,8 +124,12 @@ som årsløner den gongen (dreng, lærar, rektor). Tala og kjeldene står i
 kommentaren øvst i innhaldsfila.
 
 Kartet (`js/aasen-reise.js`) er eitt trekantnett bygd av høgdekartet i
-`data/noreg-terreng.js`, 2 km per piksel, i Lamberts konforme kjegleprojeksjon.
-Høgdene er overdrivne 6,5 gonger for at fjordar og fjell skal synast frå lufta.
+`data/noreg-terreng.js`, 1,25 km per piksel, i Lamberts konforme
+kjegleprojeksjon. Høgdene er overdrivne 6,5 gonger for at fjordar og fjell skal
+synast frå lufta. Fargane ligg i eit kartbilete som blir teikna éin gong ved
+oppstart og lagt oppå terrenget som tekstur: høgdefargar, relieffskugge med lys
+frå nordvest rekna av høgdekartet, hav med djupfargar, innsjøar, brear og
+riksgrensa. Difor er detaljane per piksel, ikkje per hjørne i nettet.
 Kystlinja følgjer landpolygona frå Natural Earth, ikkje høgdedataa, for
 høgdedataa fyller att tronge sund som Drøbaksundet.
 Høgdekartet er bakt inn som base64, og three.js ligg i `js/vendor`, så sida

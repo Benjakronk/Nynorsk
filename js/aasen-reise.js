@@ -2,8 +2,12 @@
    «Reisene til Ivar Aasen» (Del 1) éin seksjon om gongen.
 
    Kartet er eitt trekantnett bygd av høgdekartet i data/noreg-terreng.js
-   (laga av tools/lag-terreng.js). Kvar piksel i høgdekartet er 2 km, og
+   (laga av tools/lag-terreng.js). Kvar piksel i høgdekartet er 1,25 km, og
    høgdene er overdrivne (EXAG) for at fjell og fjordar skal synast frå lufta.
+   Fargane ligg i eit kartbilete som blir teikna éin gong ved oppstart:
+   høgdefargar, relieffskugge frå høgdekartet, hav med djupfargar, innsjøar,
+   brear og riksgrensa. Biletet blir lagt oppå terrenget som tekstur, så
+   detaljane er per piksel, ikkje per hjørne i nettet.
    Stadene i js/content/aasen-reise.js blir plasserte med same
    kjegleprojeksjonen som høgdekartet. Kvart kapittel (lesson med `reise`)
    teiknar ruta si som ei slange lagd oppå terrenget, og ein liten figur av
@@ -47,7 +51,8 @@
   const stadXZ = id => verdXZ(STADER[id].lat, STADER[id].lon);
 
   /* ---------- Høgdekartet ---------- */
-  let hoegd, maske, djup;      // per piksel: km over havet, landmaske, havdjup 0..1
+  const KL = T.klassar;        // hav, innsjo, annaLand, bre, noreg
+  let hoegd, maske, djup;      // per piksel: km over havet, klasse, havdjup 0..1
   function lesTerreng() {
     return new Promise((res, rej) => {
       const img = new Image();
@@ -85,7 +90,8 @@
     [0.00, [0.66, 0.75, 0.55]], [0.15, [0.75, 0.78, 0.56]], [0.45, [0.80, 0.74, 0.54]],
     [0.90, [0.72, 0.66, 0.56]], [1.40, [0.78, 0.76, 0.72]], [1.90, [0.93, 0.93, 0.91]], [2.50, [1, 1, 1]],
   ];
-  const HAV_GRUNT = [0.78, 0.86, 0.91], HAV_DJUPT = [0.62, 0.75, 0.84], ANNA_LAND = [0.89, 0.88, 0.84];
+  const HAV_GRUNT = [0.80, 0.88, 0.92], HAV_DJUPT = [0.58, 0.73, 0.84], ANNA_LAND = [0.90, 0.89, 0.85];
+  const INNSJO = [0.62, 0.78, 0.88], BRE = [0.95, 0.97, 0.99], GRENSE = [0.55, 0.47, 0.42];
   function rampe(h) {
     for (let i = 1; i < RAMPE.length; i++) if (h <= RAMPE[i][0]) {
       const [h0, a] = RAMPE[i - 1], [h1, b] = RAMPE[i], t = (h - h0) / (h1 - h0);
@@ -93,11 +99,52 @@
     }
     return RAMPE[RAMPE.length - 1][1];
   }
+  const mix = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
   function farge(i) {
-    if (!maske[i]) { const t = djup[i]; return [HAV_GRUNT[0] + (HAV_DJUPT[0] - HAV_GRUNT[0]) * t, HAV_GRUNT[1] + (HAV_DJUPT[1] - HAV_GRUNT[1]) * t, HAV_GRUNT[2] + (HAV_DJUPT[2] - HAV_GRUNT[2]) * t]; }
-    const c = rampe(hoegd[i]);
-    if (maske[i] === 255) return c;
-    return [c[0] + (ANNA_LAND[0] - c[0]) * 0.7, c[1] + (ANNA_LAND[1] - c[1]) * 0.7, c[2] + (ANNA_LAND[2] - c[2]) * 0.7];
+    const kl = maske[i];
+    if (kl === KL.hav) return mix(HAV_GRUNT, HAV_DJUPT, djup[i]);
+    if (kl === KL.innsjo) return INNSJO;
+    let c = kl === KL.bre ? BRE : rampe(hoegd[i]);
+    if (kl === KL.annaLand) c = mix(c, ANNA_LAND, 0.7);
+    // Relieffskugge: lys frå nordvest 45° over horisonten, rekna av hellinga
+    // i høgdekartet, med litt grunnlys så nordaustsidene ikkje blir svarte.
+    const s = 0.52 + 0.48 * skugge(i);
+    return [c[0] * s, c[1] * s, c[2] * s];
+  }
+  const SKUGGE_Z = 4;   // overdriving av hellinga i skuggen
+  const hLand = i => maske[i] ? hoegd[i] : 0;
+  function skugge(i) {
+    const r = i % W, k = (i - r) / W;
+    const dx = (hLand(k * W + Math.min(W - 1, r + 1)) - hLand(k * W + Math.max(0, r - 1))) / (2 * KM) * SKUGGE_Z;
+    const dy = (hLand(Math.min(H - 1, k + 1) * W + r) - hLand(Math.max(0, k - 1) * W + r)) / (2 * KM) * SKUGGE_Z;
+    const n = 1 / Math.sqrt(dx * dx + dy * dy + 1);
+    return Math.max(0, (dx * 0.5 + dy * 0.5 + Math.SQRT1_2) * n);
+  }
+  // Riksgrensa: norsk landpiksel med anna land som nabo
+  function erGrense(i) {
+    if (maske[i] !== KL.noreg) return false;
+    const r = i % W;
+    for (const n of [i - 1, i + 1, i - W, i + W]) {
+      if (n < 0 || n >= W * H) continue;
+      if ((n === i - 1 && r === 0) || (n === i + 1 && r === W - 1)) continue;
+      if (maske[n] === KL.annaLand) return true;
+    }
+    return false;
+  }
+  function lagKartbilete() {
+    const c = document.createElement("canvas");
+    c.width = W; c.height = H;
+    const ctx = c.getContext("2d");
+    const bilete = ctx.createImageData(W, H), d = bilete.data;
+    for (let i = 0; i < W * H; i++) {
+      const f = erGrense(i) ? GRENSE : farge(i);
+      d[i * 4] = f[0] * 255; d[i * 4 + 1] = f[1] * 255; d[i * 4 + 2] = f[2] * 255; d[i * 4 + 3] = 255;
+    }
+    ctx.putImageData(bilete, 0, 0);
+    const tekstur = new THREE.CanvasTexture(c);
+    tekstur.flipY = false;
+    tekstur.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    return tekstur;
   }
 
   /* ---------- Scene ---------- */
@@ -106,22 +153,24 @@
   const camera = new THREE.PerspectiveCamera(42, 1, 1, 20000);
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  // Lyset er for figuren, rutene og scenene. Terrenget har skuggen bakt inn i kartbiletet.
   scene.add(new THREE.AmbientLight(0xffffff, 0.55));
   const sol = new THREE.DirectionalLight(0xffffff, 0.85);
   sol.position.set(-900, 1100, -500);
   scene.add(sol);
 
-  let terrengMesh = null;
+  let terrengMesh = null, kartbilete = null;
   function byggTerreng(steg) {
     if (terrengMesh) { scene.remove(terrengMesh); terrengMesh.geometry.dispose(); }
+    if (!kartbilete) kartbilete = lagKartbilete();
     const cols = Math.ceil(W / steg), rows = Math.ceil(H / steg);
-    const pos = new Float32Array(cols * rows * 3), col = new Float32Array(cols * rows * 3);
+    const pos = new Float32Array(cols * rows * 3), uv = new Float32Array(cols * rows * 2);
     for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
       const px = Math.min(W - 1, c * steg), py = Math.min(H - 1, r * steg), i = py * W + px, o = (r * cols + c) * 3;
       pos[o] = (px + 0.5) * KM - BREIDD_KM / 2;
       pos[o + 1] = maske[i] ? Math.max(hoegd[i], 0.03) * EXAG : -0.3 * EXAG;
       pos[o + 2] = (py + 0.5) * KM - HOGD_KM / 2;
-      const f = farge(i); col[o] = f[0]; col[o + 1] = f[1]; col[o + 2] = f[2];
+      uv[(r * cols + c) * 2] = (px + 0.5) / W; uv[(r * cols + c) * 2 + 1] = (py + 0.5) / H;
     }
     const idx = new Uint32Array((cols - 1) * (rows - 1) * 6);
     let k = 0;
@@ -131,10 +180,9 @@
     }
     const g = new THREE.BufferGeometry();
     g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
-    g.setAttribute("color", new THREE.BufferAttribute(col, 3));
+    g.setAttribute("uv", new THREE.BufferAttribute(uv, 2));
     g.setIndex(new THREE.BufferAttribute(idx, 1));
-    g.computeVertexNormals();
-    terrengMesh = new THREE.Mesh(g, new THREE.MeshLambertMaterial({ vertexColors: true }));
+    terrengMesh = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ map: kartbilete }));
     scene.add(terrengMesh);
   }
 

@@ -1,15 +1,20 @@
 /* Lagar høgdekartet som 3D-kartet over reisene til Ivar Aasen er bygd på.
 
    Kjelder:
-   - Høgder: Terrarium-fliser frå Mapzen/AWS Terrain Tiles (zoom 6), som
-     samlar SRTM, GMTED og ETOPO1 (havdjup). https://registry.opendata.aws/terrain-tiles/
-   - Landegrenser: Natural Earth 1:10M (public domain), brukt til å skilje
-     norsk land frå Sverige, Finland, Russland og Danmark.
+   - Høgder: Terrarium-fliser frå Mapzen/AWS Terrain Tiles (zoom 7, om lag
+     0,6 km per piksel på 60° N), som samlar SRTM, GMTED og ETOPO1 (havdjup).
+     https://registry.opendata.aws/terrain-tiles/
+   - Landegrenser, innsjøar og brear: Natural Earth 1:10M (public domain).
+     Grensene skil norsk land frå Sverige, Finland, Russland og Danmark og
+     gir kystlinja; innsjøane og breane blir teikna i eigne fargar.
 
    Resultatet er data/noreg-terreng.js: eit PNG-bilete som base64 i eit
    JS-objekt, slik at kartet òg verkar når kurset blir opna rett frå disk.
-   Raud kanal = høgd (sqrt-skala, 0 til hMaks), grøn = havdjup, blå = maske
-   (0 hav, 128 anna land, 255 Noreg). Kartet ligg i Lamberts konforme
+   Raud kanal = høgd (sqrt-skala, 0 til hMaks). Grøn kanal = havdjup for
+   hav, elles 0 (relieffskuggen blir rekna i nettlesaren, for ein skugge per
+   piksel komprimerer like dårleg som støy og ville doble fila). Blå kanal =
+   klasse: 0 hav, 64 innsjø, 128 anna land, 192 bre, 255 Noreg. Kvar piksel er eit snitt av 3 × 3 delprøver, så
+   kartet er jamnare enn ei enkel utplukking. Kartet ligg i Lamberts konforme
    kjegleprojeksjon, same projeksjonen som js/aasen-reise.js bruker for å
    plassere stadene.
 
@@ -22,9 +27,10 @@ const https = require("https");
 const os = require("os");
 
 const [OUT = "data/noreg-terreng.js", CACHE = path.join(os.tmpdir(), "noreg-terreng-cache")] = process.argv.slice(2);
-const Z = 6;
-const KM_PER_PX = 2;
-const H_MAKS = 2500;
+const Z = 7;
+const KM_PER_PX = 1.25;
+const DELPROVER = 3;   // delprøver per akse i kvar piksel
+const H_MAKS = 2500;   // meter, toppen av sqrt-skalaen
 const PROJ = { phi1: 60, phi2: 70, phi0: 64, lam0: 15, R: 6371 };
 const LAND = { Norway: 255, Sweden: 128, Finland: 128, Russia: 128, Denmark: 128 };
 
@@ -151,6 +157,11 @@ async function main() {
     const polys = f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates;
     land[namn] = polys;
   }
+  const NE = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/";
+  const polysAv = fil => JSON.parse((fil).toString("utf8")).features
+    .flatMap(f => f.geometry ? (f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.type === "MultiPolygon" ? f.geometry.coordinates : []) : []);
+  const innsjoar = polysAv(await hent(NE + "ne_10m_lakes.geojson"));
+  const brear = polysAv(await hent(NE + "ne_10m_glaciated_areas.geojson"));
   let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
   for (const ring of land.Norway.flat()) for (const [lon, lat] of ring) {
     if (lat > 72 || lat < 57 || lon < 3) continue; // Svalbard, Jan Mayen, Bjørnøya og Bouvetøya er ikkje med
@@ -181,10 +192,10 @@ async function main() {
   }
   console.log(`henta ${(fx1 - fx0 + 1) * (fy1 - fy0 + 1)} fliser`);
 
-  // Maske: rasteriser landpolygona i utsnittet (scanline, partal/oddetal).
+  // Maske: rasteriser polygona i utsnittet (scanline, partal/oddetal).
   const maske = new Uint8Array(W * H);
   const tilPx = (lon, lat) => { const p = fram(lat, lon); return [(p.x - minX) / KM_PER_PX, (maxY - p.y) / KM_PER_PX]; };
-  for (const [namn, polys] of Object.entries(land)) {
+  function rasteriser(polys, mal, verdi) {
     for (const poly of polys) {
       const ringar = poly.map(r => r.map(([lon, lat]) => tilPx(lon, lat)));
       let rMin = Infinity, rMax = -Infinity;
@@ -197,22 +208,35 @@ async function main() {
         }
         kryss.sort((a, b) => a - b);
         for (let k = 0; k + 1 < kryss.length; k += 2) {
-          for (let col = Math.max(0, Math.round(kryss[k])); col < Math.min(W, Math.round(kryss[k + 1])); col++) maske[row * W + col] = LAND[namn];
+          for (let col = Math.max(0, Math.round(kryss[k])); col < Math.min(W, Math.round(kryss[k + 1])); col++) mal[row * W + col] = verdi;
         }
       }
     }
   }
+  for (const [namn, polys] of Object.entries(land)) rasteriser(polys, maske, LAND[namn]);
+  const vatn = new Uint8Array(W * H), bre = new Uint8Array(W * H);
+  rasteriser(innsjoar, vatn, 1);
+  rasteriser(brear, bre, 1);
 
-  // Sampl høgda for kvar piksel (bilineært frå Mercator-rutenettet).
+  // Sampl høgda for kvar piksel: snittet av DELPROVER × DELPROVER bilineære
+  // prøver frå Mercator-rutenettet, så fjell og dalar blir jamne og ikkje
+  // hakkete når flisene er finare enn kartet.
   const h = new Float32Array(W * H);
-  for (let row = 0; row < H; row++) for (let col = 0; col < W; col++) {
-    const g = tilbake(minX + (col + 0.5) * KM_PER_PX, maxY - (row + 0.5) * KM_PER_PX);
+  const proveVed = (x, y) => {
+    const g = tilbake(x, y);
     const m = merc(g.lat, g.lon);
     const mx = m.x - fx0 * 256 - 0.5, my = m.y - fy0 * 256 - 0.5;
     const x0 = Math.max(0, Math.min(MW - 2, Math.floor(mx))), y0 = Math.max(0, Math.min(MH - 2, Math.floor(my)));
     const fx = Math.max(0, Math.min(1, mx - x0)), fy = Math.max(0, Math.min(1, my - y0));
     const i = y0 * MW + x0;
-    h[row * W + col] = (hoegd[i] * (1 - fx) + hoegd[i + 1] * fx) * (1 - fy) + (hoegd[i + MW] * (1 - fx) + hoegd[i + MW + 1] * fx) * fy;
+    return (hoegd[i] * (1 - fx) + hoegd[i + 1] * fx) * (1 - fy) + (hoegd[i + MW] * (1 - fx) + hoegd[i + MW + 1] * fx) * fy;
+  };
+  for (let row = 0; row < H; row++) for (let col = 0; col < W; col++) {
+    let sum = 0;
+    for (let a = 0; a < DELPROVER; a++) for (let b = 0; b < DELPROVER; b++) {
+      sum += proveVed(minX + (col + (a + 0.5) / DELPROVER) * KM_PER_PX, maxY - (row + (b + 0.5) / DELPROVER) * KM_PER_PX);
+    }
+    h[row * W + col] = sum / (DELPROVER * DELPROVER);
   }
 
   // Kystlinja følgjer landpolygona, ikkje høgdedataa: høgdedataa (1,2 km per
@@ -248,14 +272,15 @@ async function main() {
   for (let i = 0; i < W * H; i++) {
     const v = h[i];
     rgb[i * 3] = erLand[i] ? Math.round(Math.sqrt(Math.min(Math.max(v, 0), H_MAKS) / H_MAKS) * 255) : 0;
-    rgb[i * 3 + 1] = !erLand[i] && v < 0 ? Math.round(Math.sqrt(Math.min(-v, 1000) / 1000) * 255) : 0;
-    rgb[i * 3 + 2] = erLand[i] ? maske[i] || 128 : 0;
+    rgb[i * 3 + 1] = erLand[i] ? 0 : Math.round(Math.sqrt(Math.min(Math.max(-v, 0), 1000) / 1000) * 255);
+    rgb[i * 3 + 2] = !erLand[i] ? 0 : bre[i] ? 192 : vatn[i] ? 64 : maske[i] || 128;
     if (rgb[i * 3 + 2] === 255) noreg++;
   }
   const png = kodPng(W, H, rgb);
   fs.writeFileSync(path.join(CACHE, "noreg-terreng.png"), png);
   const ut = {
-    breidd: W, hogd: H, kmPerPx: KM_PER_PX, hMaks: H_MAKS, proj: PROJ,
+    format: 2, breidd: W, hogd: H, kmPerPx: KM_PER_PX, hMaks: H_MAKS, proj: PROJ,
+    klassar: { hav: 0, innsjo: 64, annaLand: 128, bre: 192, noreg: 255 },
     x0: minX, y0: maxY,
     png: "data:image/png;base64," + png.toString("base64"),
   };
