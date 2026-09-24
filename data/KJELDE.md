@@ -27,9 +27,10 @@ Kjelder:
   <https://registry.opendata.aws/terrain-tiles/>
 - **Landegrenser, innsjøar, brear og elvar:** Natural Earth 1:10M (Admin 0
   Countries, Lakes, Glaciated Areas, Rivers + Lake Centerlines og
-  Rivers Europe), public domain. Elvane ligg som vektorliner i
-  `noreg-terreng.js` (`elvar`, km frå øvre venstre hjørne, med
-  storleiksklasse) og blir teikna inn i kartbiletet av nettlesaren.
+  Rivers Europe), public domain. Elvane og riksgrensa (Admin 0
+  Boundary Lines Land) ligg som vektorliner i `noreg-terreng.js` (`elvar`
+  og `grenser`, km frå øvre venstre hjørne, elvane med storleiksklasse) og
+  blir teikna som band på terrenget av nettlesaren.
   <https://www.naturalearthdata.com/>
 
 `node tools/lag-terreng.js` lastar ned flisene og grensene, projiserer om,

@@ -118,7 +118,7 @@
     [0.90, [0.72, 0.66, 0.56]], [1.40, [0.78, 0.76, 0.72]], [1.90, [0.93, 0.93, 0.91]], [2.50, [1, 1, 1]],
   ];
   const ANNA_LAND = [0.90, 0.89, 0.85];
-  const INNSJO = [0.30, 0.52, 0.68], BRE = [0.95, 0.97, 0.99], GRENSE = [0.55, 0.47, 0.42];
+  const INNSJO = [0.30, 0.52, 0.68], BRE = [0.95, 0.97, 0.99];
   function rampe(h) {
     for (let i = 1; i < RAMPE.length; i++) if (h <= RAMPE[i][0]) {
       const [h0, a] = RAMPE[i - 1], [h1, b] = RAMPE[i], t = (h - h0) / (h1 - h0);
@@ -140,17 +140,6 @@
       const dy = (hLand(Math.min(H - 1, k + 1) * W + r) - hLand(Math.max(0, k - 1) * W + r)) / (2 * km) * SKUGGE_Z;
       const n = 1 / Math.sqrt(dx * dx + dy * dy + 1);
       return Math.max(0, (dx * 0.5 + dy * 0.5 + Math.SQRT1_2) * n);
-    };
-    // Riksgrensa: norsk landpiksel med anna land som nabo
-    const erGrense = i => {
-      if (maske[i] !== KL.noreg) return false;
-      const r = i % W;
-      for (const n of [i - 1, i + 1, i - W, i + W]) {
-        if (n < 0 || n >= W * H) continue;
-        if ((n === i - 1 && r === 0) || (n === i + 1 && r === W - 1)) continue;
-        if (maske[n] === KL.annaLand) return true;
-      }
-      return false;
     };
     const farge = i => {
       const kl = maske[i];
@@ -175,25 +164,10 @@
     const ctx = c.getContext("2d");
     const bilete = ctx.createImageData(W, H), d = bilete.data;
     for (let i = 0; i < W * H; i++) {
-      const f = erGrense(i) ? GRENSE : farge(i);
+      const f = farge(i);
       d[i * 4] = f[0] * 255; d[i * 4 + 1] = f[1] * 255; d[i * 4 + 2] = f[2] * 255; d[i * 4 + 3] = 255;
     }
     ctx.putImageData(bilete, 0, 0);
-    // Elvane: vektorliner frå datafila, teikna oppå med breidd etter
-    // storleiksklassen (i km, så dei er like breie i begge laga).
-    if (T.elvar) {
-      ctx.lineCap = "round"; ctx.lineJoin = "round";
-      ctx.strokeStyle = "rgba(58, 108, 158, 0.9)";
-      for (const e of T.elvar) {
-        ctx.lineWidth = (e.s <= 7 ? 0.9 : 0.6) / km;
-        ctx.beginPath();
-        for (let k = 0; k < e.p.length; k += 2) {
-          const x = e.p[k] / km, y = e.p[k + 1] / km;
-          if (k === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-        }
-        ctx.stroke();
-      }
-    }
     const tekstur = new THREE.CanvasTexture(c);
     tekstur.flipY = false;
     tekstur.anisotropy = renderer.capabilities.getMaxAnisotropy();
@@ -738,6 +712,62 @@
   }
   function tomGruppe(g) { while (g.children.length) { const c = g.children.pop(); if (c.geometry) c.geometry.dispose(); } }
 
+  /* ---------- Elvar og riksgrense som band på terrenget ----------
+     Vektorlinene frå datafila (km frå øvre venstre hjørne) blir til flate
+     band drapert på terrenget, med breidd som følgjer zoomen slik rutene
+     gjer. Som geometri er dei skarpe uansett kor nær ein kjem, i motsetnad
+     til liner teikna inn i kartbiletet. */
+  const materialElv = new THREE.MeshBasicMaterial({ color: 0x3a6c9e, side: THREE.DoubleSide });
+  const materialGrense = new THREE.MeshBasicMaterial({ color: 0x8a6e5c, side: THREE.DoubleSide });
+  const linjeGruppe = new THREE.Group();
+  scene.add(linjeGruppe);
+  function band(punkt, breidd, loft, material) {
+    // punkt: [x, z, x, z, …] i verdskoordinatar; band av kvart segment med rund skøyt
+    const n = punkt.length / 2;
+    if (n < 2) return null;
+    const pos = [], idx = [];
+    for (let i = 0; i < n; i++) {
+      const x = punkt[i * 2], z = punkt[i * 2 + 1];
+      const x0 = punkt[Math.max(0, i - 1) * 2], z0 = punkt[Math.max(0, i - 1) * 2 + 1];
+      const x1 = punkt[Math.min(n - 1, i + 1) * 2], z1 = punkt[Math.min(n - 1, i + 1) * 2 + 1];
+      let dx = x1 - x0, dz = z1 - z0;
+      const l = Math.hypot(dx, dz) || 1; dx /= l; dz /= l;
+      const nx = -dz * breidd / 2, nz = dx * breidd / 2;
+      for (const s of [-1, 1]) {
+        const px = x + nx * s, pz = z + nz * s;
+        pos.push(px, hoegdVed(px, pz) * EXAG + loft, pz);
+      }
+      if (i > 0) { const a = (i - 1) * 2; idx.push(a, a + 2, a + 1, a + 1, a + 2, a + 3); }
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
+    g.setIndex(idx);
+    return new THREE.Mesh(g, material);
+  }
+  // Legg ei line med jamne mellomrom (så bandet følgjer terrenget) og flytt til verdskoordinatar
+  function tettLine(p, steg) {
+    const ut = [];
+    for (let k = 0; k < p.length - 2; k += 2) {
+      const x0 = p[k] - BREIDD_KM / 2, z0 = p[k + 1] - HOGD_KM / 2, x1 = p[k + 2] - BREIDD_KM / 2, z1 = p[k + 3] - HOGD_KM / 2;
+      const m = Math.max(1, Math.ceil(Math.hypot(x1 - x0, z1 - z0) / steg));
+      for (let s = 0; s < m; s++) ut.push(x0 + (x1 - x0) * s / m, z0 + (z1 - z0) * s / m);
+    }
+    ut.push(p[p.length - 2] - BREIDD_KM / 2, p[p.length - 1] - HOGD_KM / 2);
+    return ut;
+  }
+  function byggLinjer(radius) {
+    tomGruppe(linjeGruppe);
+    const loft = 0.06 * EXAG, steg = Math.max(0.6, radius * 2);
+    for (const e of T.elvar || []) {
+      const m = band(tettLine(e.p, steg), Math.max(0.3, radius * (e.s <= 7 ? 0.9 : 0.6)), loft, materialElv);
+      if (m) linjeGruppe.add(m);
+    }
+    for (const g of T.grenser || []) {
+      const m = band(tettLine(g.p, steg), Math.max(0.25, radius * 0.5), loft + 0.02, materialGrense);
+      if (m) linjeGruppe.add(m);
+    }
+  }
+
   /* ---------- Seksjonar: kapittel og oppgåver ---------- */
   let seksIdx = -1;        // gjeldande seksjon i modulen
   let kapIdx = -1;         // siste kapittelet som er vist (kartet viser det)
@@ -890,6 +920,7 @@
 
   function byggRuter() {
     const radius = Math.max(0.35, kam.avstand * 0.0032);
+    byggLinjer(radius);
     tomGruppe(gruppeFor); tomGruppe(gruppeNo);
     for (const punkt of gruppeFor.userData.ruter || []) { const m = ruteMesh(punkt, radius * 0.8, materialFor); if (m) gruppeFor.add(m); }
     const kule = new THREE.SphereGeometry(radius * 1.9, 12, 8);
