@@ -721,7 +721,6 @@
      gjer. Som geometri er dei skarpe uansett kor nær ein kjem, i motsetnad
      til liner teikna inn i kartbiletet. */
   const materialElv = new THREE.MeshBasicMaterial({ color: 0x3a6c9e, side: THREE.DoubleSide });
-  const materialElvIVatn = new THREE.MeshBasicMaterial({ color: 0x4d85ad, side: THREE.DoubleSide });   // innsjøfargen
   const materialGrense = new THREE.MeshBasicMaterial({ color: 0x8a6e5c, side: THREE.DoubleSide });
   const linjeGruppe = new THREE.Group();
   scene.add(linjeGruppe);
@@ -761,9 +760,12 @@
   }
   function byggLinjer(radius) {
     tomGruppe(linjeGruppe);
-    const loft = 0.06 * EXAG, steg = Math.max(0.6, radius * 2);
+    // Tett nok til at bandet følgjer terrenget òg i det fine nettet, og
+    // med nok loft til at det ikkje dukkar under mellom to prøver.
+    const loft = 0.1 * EXAG, steg = Math.min(0.35, Math.max(0.2, radius));
     for (const e of T.elvar || []) {
-      const m = band(tettLine(e.p, steg), Math.max(0.3, radius * (e.s <= 7 ? 0.9 : 0.6)), loft, e.v ? materialElvIVatn : materialElv);
+      if (e.v) continue;   // innsjø-midtlinene blir ikkje teikna: innsjøen er alt blå
+      const m = band(tettLine(e.p, steg), Math.max(0.3, radius * (e.s <= 7 ? 0.9 : 0.6)), loft, materialElv);
       if (m) linjeGruppe.add(m);
     }
     for (const g of T.grenser || []) {

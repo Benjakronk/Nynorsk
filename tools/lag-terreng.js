@@ -403,7 +403,7 @@ async function main() {
   // forlengd til ho når vatn, for Natural Earth-elvane stoppar ofte ein
   // kilometer eller to før kysten. Innsjø-midtliner og punkt i vatn står.
   function leggIDalbotnen(liner, lag) {
-    const { h, erLand, W, H, kmPx } = lag, LEIT = 3, STEG = 0.25, STRAFF = 0.012, STRAFF_HOPP = 0.25;
+    const { h, erLand, W, H, kmPx } = lag, LEIT = 3, STEG = 0.25, STRAFF = 0.012, STRAFF_HOPP = 0.7;
     const hVed = (x, y) => {
       const c = Math.min(W - 1, Math.max(0, Math.round(x / kmPx - 0.5))), r = Math.min(H - 1, Math.max(0, Math.round(y / kmPx - 0.5)));
       const i = r * W + c;
@@ -455,8 +455,8 @@ async function main() {
         if (sum[i * K + k] < Infinity) { ny[i * 2] = px[i * K + k]; ny[i * 2 + 1] = py[i * K + k]; }
         k = fra[i * K + k];
       }
-      // Glatting (to rundar med 1-2-1), endepunkta står
-      for (let runde = 0; runde < 2; runde++) {
+      // Glatting (fire rundar med 1-2-1), endepunkta står
+      for (let runde = 0; runde < 4; runde++) {
         const g = ny.slice();
         for (let i = 1; i < n - 1; i++) {
           g[i * 2] = (ny[i * 2 - 2] + 2 * ny[i * 2] + ny[i * 2 + 2]) / 4;
@@ -464,22 +464,25 @@ async function main() {
         }
         for (let i = 0; i < ny.length; i++) ny[i] = g[i];
       }
-      // Forleng enden nedover til ho når vatn (hav eller innsjø), høgst 8 km:
-      // gå steg for steg i den retninga som fell mest, med retninga elva alt har.
+      // Forleng enden nedover til ho når vatn (hav eller innsjø), høgst 6 km:
+      // gå steg for steg i den retninga som fell mest, med små svingar frå
+      // retninga elva alt har, og berre så lenge det går nedover. Elles
+      // ville enden kunne snirkle seg rundt på flat mark.
       {
         let x = ny[ny.length - 2], y = ny[ny.length - 1];
-        let dx = x - ny[ny.length - 4], dy = y - ny[ny.length - 3];
+        let dx = x - ny[ny.length - 6], dy = y - ny[ny.length - 5];
         const l0 = Math.hypot(dx, dy) || 1; dx /= l0; dy /= l0;
-        for (let steg = 0; steg < 32 && hVed(x, y) >= 0; steg++) {
+        let hNo = hVed(x, y);
+        for (let steg = 0; steg < 24 && hNo >= 0; steg++) {
           let best = Infinity, bx = x, by = y, bdx = dx, bdy = dy;
-          for (let v = -1.0; v <= 1.0; v += 0.25) {
+          for (let v = -0.4; v <= 0.4; v += 0.2) {
             const c = Math.cos(v), s = Math.sin(v), ndx = dx * c - dy * s, ndy = dx * s + dy * c;
             const cx = x + ndx * 0.25, cy = y + ndy * 0.25, hh = hVed(cx, cy);
-            const k = (hh < 0 ? -1 : hh) + 0.02 * Math.abs(v);
+            const k = (hh < 0 ? -1 : hh) + 0.01 * Math.abs(v);
             if (k < best) { best = k; bx = cx; by = cy; bdx = ndx; bdy = ndy; }
           }
-          if (bx === x && by === y) break;
-          x = bx; y = by; dx = bdx; dy = bdy;
+          if (best >= 0 && best > hNo + 0.003) break;   // det går oppover: stopp
+          x = bx; y = by; dx = bdx; dy = bdy; hNo = best < 0 ? -1 : best;
           ny.push(x, y);
         }
       }
