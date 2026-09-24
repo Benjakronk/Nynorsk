@@ -531,7 +531,8 @@
       const tot = stoppPos[stoppPos.length - 1].t || 1;
       stoppPos.forEach(s => { s.t = s.t / tot; });
       // Tidsplan: figuren går om lag 50 km i sekundet mellom stoppa og står
-      // ei lita stund ved kvart.
+      // ei lita stund berre ved dei viktige stoppa, dei som har ei scene.
+      // Resten går han rett gjennom.
       const DVEL = reduserRorsle ? 0 : 1500, fasar = [];
       let akkMs = 0;
       for (let j = 0; j < stoppPos.length; j++) {
@@ -541,8 +542,9 @@
           fasar.push({ type: "gang", j, fra: stoppPos[j - 1].t, til: stoppPos[j].t, start: akkMs, dur: ms });
           akkMs += ms;
         }
-        fasar.push({ type: "stopp", j, t: stoppPos[j].t, start: akkMs, dur: DVEL });
-        akkMs += DVEL;
+        const dvel = STADER[stoppPos[j].id].scene ? DVEL : 0;
+        fasar.push({ type: "stopp", j, t: stoppPos[j].t, start: akkMs, dur: dvel });
+        akkMs += dvel;
       }
       noRute = { punkt, idar, stoppPos, lengd, fasar, dur: akkMs, framdrift: 0, t0: performance.now() + 1800, mesh: null, seg: 0, ferdig: false };
     }
