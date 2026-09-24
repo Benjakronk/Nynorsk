@@ -40,7 +40,13 @@ self.addEventListener("fetch", event => {
       cache.match(event.request).then(hit => {
         if (hit) return hit;
         return fetch(event.request).then(res => {
-          if (res.ok) cache.put(event.request, res.clone());
+          if (res.ok) {
+            cache.put(event.request, res.clone());
+            // Ein ny versjon (anna ?v=) erstattar den gamle av same fila.
+            cache.keys().then(nøklar => nøklar.forEach(n => {
+              if (n.url !== event.request.url && new URL(n.url).pathname === url.pathname) cache.delete(n);
+            }));
+          }
           return res;
         });
       })

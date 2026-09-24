@@ -134,10 +134,13 @@ langs kantane så det ikkje blir sprekker. Havet er eit eige flatt plan med
 eigen shader: fargen går frå grunt til djupt etter havdjupet, det er ei lys
 strandkant inn mot land og eit svakt solglimt frå låge bølgjer når ein er
 nær. Landnettet held fram under havflata med havbotnen, så strandlinja er
-snittet mellom plan og land, ikkje ein kant i nettet. Kysten kjem frå eit
-jamna kystfelt (landmaska med ein 3 × 3-kjerne), ikkje frå den harde
-ja/nei-maska per piksel, så øyene får avrunda strender i staden for
-pikselkantar i rette vinklar. Fargane ligg i eit kartbilete som blir teikna éin gong ved
+snittet mellom plan og land, ikkje ein kant i nettet. Kysten og innsjøkantane
+kjem frå avstandsfelt rekna av sjølve polygona i verktøyet (lagra i
+høgdekartet), ikkje frå pikslane: nærmast kystlinja er høgda ei rett skråning
+gjennom null, like bratt på begge sider, så strandlinja følgjer polygonkysten,
+og dei næraste bitane blir bygde dobbelt så tett som pikslane med bikubisk
+interpolasjon. Innsjøane får fargen sin etter avstanden til innsjøkanten. Difor
+er strendene jamne kurver òg når ein zoomar tett inn. Fargane ligg i eit kartbilete som blir teikna éin gong ved
 oppstart og lagt oppå terrenget som tekstur: høgdefargar, relieffskugge med lys
 frå nordvest rekna av høgdekartet, hav med djupfargar, innsjøar, brear og
 riksgrensa. Difor er detaljane per piksel, ikkje per hjørne i nettet. Er sida

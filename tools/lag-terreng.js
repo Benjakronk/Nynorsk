@@ -14,10 +14,18 @@
    data/noreg-terreng-fin.png er same kartet med dobbel oppløysing (halve
    pikselstorleiken, fliser frå zoom Z + 1), som sida hentar separat når ho er
    på nett og bruker til kartbiletet, så relieffet blir finare.
-   Raud kanal = høgd (sqrt-skala, 0 til hMaks). Grøn kanal = havdjup for
-   hav, elles 0 (relieffskuggen blir rekna i nettlesaren, for ein skugge per
-   piksel komprimerer like dårleg som støy og ville doble fila). Blå kanal =
-   klasse: 0 hav, 64 innsjø, 128 anna land, 192 bre, 255 Noreg. Kvar piksel er eit snitt av 3 × 3 delprøver, så
+   Raud kanal = høgd (sqrt-skala, 0 til hMaks) for land, og havdjup
+   (sqrt-skala, 0 til 1000 m) for hav. Grøn kanal = avstand til kystlinja i
+   landpolygona, med forteikn: 128 er sjølve kystlinja, over 128 er land,
+   under er hav, 40 steg per kilometer, klemt til ±3,2 km. Denne avstanden
+   kjem frå sjølve polygona, ikkje frå pikslane, så strandlinja i 3D-kartet
+   blir ei jamn kurve òg når ein er nærare enn pikslane. (Relieffskuggen
+   blir rekna i nettlesaren, for ein skugge per piksel komprimerer like
+   dårleg som støy og ville doble fila.) Blå kanal: klasse i dei tre øvste
+   bitane (0 hav, 1 innsjø, 2 anna land, 3 bre, 4 Noreg) og avstand til
+   nærmaste innsjøkant i dei fem nedste (16 er kanten, over 16 er utanfor,
+   16 steg per kilometer, klemt til ±1 km), så innsjøane òg får jamne
+   strender i kartbiletet. Kvar piksel er eit snitt av 3 × 3 delprøver, så
    kartet er jamnare enn ei enkel utplukking. Kartet ligg i Lamberts konforme
    kjegleprojeksjon, same projeksjonen som js/aasen-reise.js bruker for å
    plassere stadene.
@@ -247,24 +255,66 @@ async function main() {
       h[row * W + col] = sum / (DELPROVER * DELPROVER);
     }
   
-    // Kystlinja følgjer landpolygona, ikkje høgdedataa: høgdedataa (1,2 km per
-    // piksel) fyller att tronge sund som Drøbaksundet, så Oslofjorden og andre
-    // smale fjordar vart brotne av land. Ein piksel er land om han ligg inne i
-    // eit landpolygon, eller har høgd over havet og ligg meir enn to pikslar frå
-    // polygonland (småøyar som polygona ikkje har med). Elles er han hav.
+    // Kystlinja følgjer landpolygona, ikkje høgdedataa: høgdedataa fyller att
+    // tronge sund som Drøbaksundet, så Oslofjorden og andre smale fjordar
+    // vart brotne av land.
+    // Land er nøyaktig det som ligg inne i landpolygona. Høgdedataa avgjer
+    // ikkje kystlinja: dei er generaliserte annleis enn polygona, og land frå
+    // høgdedataa utanfor polygona gav harde pikselkantar som kystavstanden
+    // ikkje kunne jamne (han er rekna av polygona).
     const polyLand = maske.slice();
     const erLand = new Uint8Array(W * H);
-    for (let i = 0; i < W * H; i++) {
-      if (polyLand[i]) { erLand[i] = 1; continue; }
-      if (h[i] <= 0) continue;
-      const r = i % W, k = (i - r) / W;
-      let naer = false;
-      for (let dy = -2; dy <= 2 && !naer; dy++) for (let dx = -2; dx <= 2; dx++) {
-        const x = r + dx, y = k + dy;
-        if (x >= 0 && x < W && y >= 0 && y < H && polyLand[y * W + x]) { naer = true; break; }
+    for (let i = 0; i < W * H; i++) erLand[i] = polyLand[i] ? 1 : 0;
+    // Avstand til kystlinja (polygonkantane), i km, med forteikn: positiv på
+    // land, negativ i hav, klemt til ±KYST_MAKS. Kantane blir lagde i eit
+    // rutenett av celler, og kvar piksel som har ein kant innan rekkjevidd,
+    // måler avstanden til dei nærmaste kantane.
+    // Avstand til nærmaste polygonkant, i km, med forteikn: positiv der
+    // `inne` er sann, negativ elles, klemt til ±maks. Kantane blir lagde i
+    // eit rutenett av celler, og kvar piksel måler avstanden til kantane i
+    // cellene rundt seg.
+    function avstandsfelt(polyListe, inne, maks) {
+      const celle = Math.ceil(maks / kmPx) + 1;
+      const CW = Math.ceil(W / celle) + 1;
+      const celler = new Map();
+      for (const polys of polyListe) for (const poly of polys) for (const ring of poly) {
+        for (let i = 0; i < ring.length - 1; i++) {
+          const [x1, y1] = tilPx(ring[i][0], ring[i][1]), [x2, y2] = tilPx(ring[i + 1][0], ring[i + 1][1]);
+          if (Math.max(x1, x2) < -celle || Math.min(x1, x2) > W + celle || Math.max(y1, y2) < -celle || Math.min(y1, y2) > H + celle) continue;
+          const cx0 = Math.floor(Math.min(x1, x2) / celle), cx1 = Math.floor(Math.max(x1, x2) / celle);
+          const cy0 = Math.floor(Math.min(y1, y2) / celle), cy1 = Math.floor(Math.max(y1, y2) / celle);
+          for (let cy = cy0; cy <= cy1; cy++) for (let cx = cx0; cx <= cx1; cx++) {
+            const nr = cy * CW + cx;
+            if (!celler.has(nr)) celler.set(nr, []);
+            celler.get(nr).push(x1, y1, x2, y2);
+          }
+        }
       }
-      if (!naer) erLand[i] = 1;
+      const felt = new Float32Array(W * H);
+      for (let row = 0; row < H; row++) for (let col = 0; col < W; col++) {
+        const px = col + 0.5, py = row + 0.5, cx = Math.floor(px / celle), cy = Math.floor(py / celle);
+        let best = Infinity;
+        for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+          const seg = celler.get((cy + dy) * CW + cx + dx);
+          if (!seg) continue;
+          for (let s = 0; s < seg.length; s += 4) {
+            const ax = seg[s], ay = seg[s + 1], bx = seg[s + 2] - ax, by = seg[s + 3] - ay;
+            const l2 = bx * bx + by * by;
+            const u = l2 ? Math.max(0, Math.min(1, ((px - ax) * bx + (py - ay) * by) / l2)) : 0;
+            const ex = ax + u * bx - px, ey = ay + u * by - py;
+            const d2 = ex * ex + ey * ey;
+            if (d2 < best) best = d2;
+          }
+        }
+        const d = Math.min(maks, Math.sqrt(best) * kmPx);
+        felt[row * W + col] = inne[row * W + col] ? d : -d;
+      }
+      return felt;
     }
+    const KYST_MAKS = 3.2, VATN_MAKS = 1.0;
+    const kyst = avstandsfelt(Object.values(land), erLand, KYST_MAKS);          // positiv på land
+    const vatnAvst = avstandsfelt([innsjoar], vatn.map(v => v ? 0 : 1), VATN_MAKS);   // negativ i innsjø
+
     // Land som polygona ikkje dekkjer, får merket til næraste nabo.
     for (let runde = 0; runde < 6; runde++) {
       const kopi = maske.slice();
@@ -279,10 +329,14 @@ async function main() {
     let noreg = 0;
     for (let i = 0; i < W * H; i++) {
       const v = h[i];
-      rgb[i * 3] = erLand[i] ? Math.round(Math.sqrt(Math.min(Math.max(v, 0), H_MAKS) / H_MAKS) * 255) : 0;
-      rgb[i * 3 + 1] = erLand[i] ? 0 : Math.round(Math.sqrt(Math.min(Math.max(-v, 0), 1000) / 1000) * 255);
-      rgb[i * 3 + 2] = !erLand[i] ? 0 : bre[i] ? 192 : vatn[i] ? 64 : maske[i] || 128;
-      if (rgb[i * 3 + 2] === 255) noreg++;
+      rgb[i * 3] = erLand[i] ? Math.round(Math.sqrt(Math.min(Math.max(v, 0), H_MAKS) / H_MAKS) * 255)
+        : Math.round(Math.sqrt(Math.min(Math.max(-v, 0), 1000) / 1000) * 255);
+      rgb[i * 3 + 1] = Math.max(0, Math.min(255, Math.round(128 + kyst[i] * 40)));
+      // Blå kanal: klassen i dei tre øvste bitane, avstand til innsjøkant i dei fem nedste.
+      const klasse = !erLand[i] ? 0 : bre[i] ? 3 : vatn[i] ? 1 : maske[i] === 255 ? 4 : 2;
+      const vatnKode = Math.max(0, Math.min(31, Math.round(16 + vatnAvst[i] * 16)));
+      rgb[i * 3 + 2] = (klasse << 5) | vatnKode;
+      if (klasse === 4) noreg++;
     }
     return { rgb, noreg };
   }
@@ -292,10 +346,11 @@ async function main() {
   const png = kodPng(W, H, rgb);
   fs.writeFileSync(path.join(CACHE, "noreg-terreng.png"), png);
   const ut = {
-    format: 2, breidd: W, hogd: H, kmPerPx: KM_PER_PX, hMaks: H_MAKS, proj: PROJ,
-    klassar: { hav: 0, innsjo: 64, annaLand: 128, bre: 192, noreg: 255 },
+    format: 4, breidd: W, hogd: H, kmPerPx: KM_PER_PX, hMaks: H_MAKS, kystPerKm: 40, kystMaks: 3.2, proj: PROJ,
+    klassar: { hav: 0, innsjo: 1, annaLand: 2, bre: 3, noreg: 4 },   // blå kanal >> 5
+    vatnPerKm: 16, vatnMaks: 1.0,                                       // blå kanal & 31, minus 16
     x0: minX, y0: maxY,
-    fin: { fil: "noreg-terreng-fin.png", breidd: W * 2, hogd: H * 2, kmPerPx: KM_PER_PX / 2 },
+    fin: { fil: "noreg-terreng-fin.png", breidd: W * 2, hogd: H * 2, kmPerPx: KM_PER_PX / 2, versjon: "" },
     png: "data:image/png;base64," + png.toString("base64"),
   };
   fs.writeFileSync(OUT,
@@ -309,6 +364,14 @@ async function main() {
   const fin = await lagLag(Z + 1, KM_PER_PX / 2, W * 2, H * 2);
   const pngFin = kodPng(W * 2, H * 2, fin.rgb);
   fs.writeFileSync(OUT_FIN, pngFin);
+  // Versjonen (ein hash av fila) står i adressa sida hentar, så ein ny
+  // versjon aldri blir forveksla med ein gammal i nettlesaren eller
+  // service workeren sin cache.
+  ut.fin.versjon = require("crypto").createHash("sha1").update(pngFin).digest("hex").slice(0, 10);
+  fs.writeFileSync(OUT,
+    "/* Høgdekart over Noreg for 3D-kartet over reisene til Ivar Aasen.\n" +
+    "   Laga av tools/lag-terreng.js, sjå data/KJELDE.md. Ikkje rediger for hand. */\n" +
+    "window.NOREG_TERRENG = " + JSON.stringify(ut) + ";\n", "utf8");
   console.log(`skreiv ${OUT_FIN}: ${(pngFin.length / 1e6).toFixed(2)} MB`);
 }
 

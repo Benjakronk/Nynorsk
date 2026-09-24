@@ -68,14 +68,15 @@
       ctx.drawImage(bilete, 0, 0);
       const d = ctx.getImageData(0, 0, breidd, hogd).data;
       const n = breidd * hogd;
-      const L = { W: breidd, H: hogd, hoegd: new Float32Array(n), maske: new Uint8Array(n), djup: new Float32Array(n) };
+      const L = { W: breidd, H: hogd, hoegd: new Float32Array(n), maske: new Uint8Array(n), djup: new Float32Array(n), kyst: new Float32Array(n), vatn: new Float32Array(n) };
       for (let i = 0; i < n; i++) {
         const r = d[i * 4] / 255;
-        L.hoegd[i] = r * r * T.hMaks / 1000;
-        L.djup[i] = d[i * 4 + 1] / 255;
-        L.maske[i] = d[i * 4 + 2];
+        L.maske[i] = d[i * 4 + 2] >> 5;
+        L.vatn[i] = ((d[i * 4 + 2] & 31) - 16) / T.vatnPerKm;   // km til innsjøkant, negativ i innsjø
+        L.hoegd[i] = L.maske[i] ? r * r * T.hMaks / 1000 : 0;
+        L.djup[i] = L.maske[i] ? 0 : r;
+        L.kyst[i] = (d[i * 4 + 1] - 128) / T.kystPerKm;   // km til kystlinja, negativ i hav
       }
-      L.kyst = lagKyst(L);
       return L;
     };
     if (!src.startsWith("data:") && window.createImageBitmap) {
@@ -91,34 +92,23 @@
       img.src = src;
     });
   }
-  // Kystfeltet: landmaska jamna med ein 3 × 3-kjerne (vekter 1-2-1), så
-  // kysten blir eit jamnt felt frå 0 (hav) til 1 (land) i staden for ei hard
-  // ja/nei-maske. Utan det får øyene pikselkantar i rette vinklar, for
-  // høgda og fargen hoppar frå hav til land i eitt steg.
-  function lagKyst(L) {
-    const { W, H, maske } = L, n = W * H;
-    const rad = new Float32Array(n), kyst = new Float32Array(n);
-    for (let i = 0; i < n; i++) {
-      const r = i % W;
-      const v = maske[i - 1 * (r > 0)] ? 1 : 0, s = maske[i] ? 2 : 0, h = maske[i + 1 * (r < W - 1)] ? 1 : 0;
-      rad[i] = (v + s + h) / 4;
-    }
-    for (let i = 0; i < n; i++) {
-      const o = i >= W ? rad[i - W] : rad[i], u = i < n - W ? rad[i + W] : rad[i];
-      kyst[i] = (o + 2 * rad[i] + u) / 4;
-    }
-    return kyst;
-  }
+  // Kystlinja: kvar piksel har avstanden til kystlinja i landpolygona (km,
+  // negativ i hav), rekna av tools/lag-terreng.js frå sjølve polygonkantane.
+  // Difor blir strandlinja ei jamn kurve òg når nettet er tettare enn pikslane.
+  let kystBasis = null, vatnBasis = null;
   function lesTerreng() {
-    return lesHoegdekart(T.png, W, H).then(L => { hoegd = L.hoegd; maske = L.maske; djup = L.djup; });
+    return lesHoegdekart(T.png, W, H).then(L => { hoegd = L.hoegd; maske = L.maske; djup = L.djup; kystBasis = L.kyst; vatnBasis = L.vatn; });
   }
   // Høgd i km på eit punkt i verda (bilineær mellom pikselsentra).
+  // Bruker det fine laget når det er lasta, så ruter og figur følgjer same
+  // terrenget som nettet nær kameraet.
   function hoegdVed(x, z) {
-    const c = Math.min(W - 1.001, Math.max(0, (x + BREIDD_KM / 2) / KM - 0.5));
-    const r = Math.min(H - 1.001, Math.max(0, (z + HOGD_KM / 2) / KM - 0.5));
+    const L = finLag || basisLag || { W, H, km: KM, hoegd };
+    const c = Math.min(L.W - 1.001, Math.max(0, (x + BREIDD_KM / 2) / L.km - 0.5));
+    const r = Math.min(L.H - 1.001, Math.max(0, (z + HOGD_KM / 2) / L.km - 0.5));
     const c0 = Math.floor(c), r0 = Math.floor(r), fc = c - c0, fr = r - r0;
-    const i = r0 * W + c0;
-    const h = (hoegd[i] * (1 - fc) + hoegd[i + 1] * fc) * (1 - fr) + (hoegd[i + W] * (1 - fc) + hoegd[i + W + 1] * fc) * fr;
+    const i = r0 * L.W + c0, hg = L.hoegd;
+    const h = (hg[i] * (1 - fc) + hg[i + 1] * fc) * (1 - fr) + (hg[i + L.W] * (1 - fc) + hg[i + L.W + 1] * fc) * fr;
     return Math.max(h, 0);
   }
 
@@ -140,7 +130,7 @@
   const SKUGGE_Z = 4;   // overdriving av hellinga i skuggen
   // Teiknar kartbiletet for eit lag L = { W, H, km, hoegd, maske, djup }.
   function lagKartbilete(L) {
-    const { W, H, km, hoegd, maske } = L;
+    const { W, H, km, hoegd, maske, vatn } = L;
     const hLand = i => maske[i] ? hoegd[i] : 0;
     // Relieffskugge: lys frå nordvest 45° over horisonten, rekna av hellinga
     // i høgdekartet.
@@ -169,12 +159,16 @@
       // fjordpiksel og fjellpikselen ved sida av strekkje blått oppover
       // heile fjellveggen, for fjorden er berre éin piksel brei i teksturen.
       if (kl === KL.hav) { const c = rampe(0), s = 0.52 + 0.48 * skugge(i); return [c[0] * s, c[1] * s, c[2] * s]; }
-      if (kl === KL.innsjo) return INNSJO;
       let c = kl === KL.bre ? BRE : rampe(hoegd[i]);
       if (kl === KL.annaLand) c = mix(c, ANNA_LAND, 0.7);
       // Litt grunnlys, så nordaustsidene ikkje blir svarte.
       const s = 0.52 + 0.48 * skugge(i);
-      return [c[0] * s, c[1] * s, c[2] * s];
+      c = [c[0] * s, c[1] * s, c[2] * s];
+      // Innsjøane: fargen går mjukt over kanten etter avstanden til
+      // innsjøpolygonet, så strendene blir jamne kurver og ikkje pikselkantar.
+      const v = vatn[i];
+      if (v < 0.3) { const w = Math.min(1, Math.max(0, (0.3 - v) / 0.6)); c = mix(c, INNSJO, w * w * (3 - 2 * w)); }
+      return c;
     };
     const c = document.createElement("canvas");
     c.width = W; c.height = H;
@@ -195,7 +189,7 @@
   // så då står det innebygde kartet.
   function hentFintKart(forsok) {
     if (!T.fin || location.protocol === "file:" || new URLSearchParams(location.search).get("fin") === "0") { registrerSW(); return; }
-    lesHoegdekart("data/" + T.fin.fil, T.fin.breidd, T.fin.hogd)
+    lesHoegdekart("data/" + T.fin.fil + "?v=" + (T.fin.versjon || "1"), T.fin.breidd, T.fin.hogd)
       .then(L => {
         L.km = T.fin.kmPerPx;
         const ny = lagKartbilete(L);
@@ -205,6 +199,7 @@
         kartbilete = ny;
         if (gammal) gammal.dispose();
         finLag = L;          // bitane nær kameraet blir bygde om frå det fine laget
+        bygdForAvstand = 0;  // rutene òg, så dei følgjer det fine terrenget
       })
       .then(registrerSW, e => {
         // Eit nettverksglipp første gongen: prøv ein gong til før vi gir oss.
@@ -248,12 +243,28 @@
   const landMaterial = new THREE.MeshBasicMaterial();
   const landGruppe = new THREE.Group();
   scene.add(landGruppe);
-  let kartbilete = null, basisLag = null, finLag = null, kvalitet = 1;   // kvalitet 0 = treg maskin
+  let kartbilete = null, basisLag = null, finLag = null, kvalitet = 1, laasKvalitet = false;   // kvalitet 0 = treg maskin
   const bitar = [];                  // { x0, y0, x1, y1, x, z, nivaa, mesh }
   let ventande = [];                 // bitar som skal byggjast om
 
+  // Bikubisk (Catmull-Rom) prøve av eit felt mellom pikslane, med kantane
+  // klemde. Brukt på det finaste nivået, der nettet er tettare enn pikslane:
+  // lineært mellom pikslane gir knekk i kvar piksel, bikubisk gir ei jamn kurve.
+  function bikubisk(felt, W, H, x, y) {
+    const x0 = Math.floor(x), y0 = Math.floor(y), tx = x - x0, ty = y - y0;
+    const cr = (p0, p1, p2, p3, t) => 0.5 * (2 * p1 + (-p0 + p2) * t + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t * t + (-p0 + 3 * p1 - 3 * p2 + p3) * t * t * t);
+    const rad = new Array(4);
+    for (let k = -1; k <= 2; k++) {
+      const yy = Math.min(H - 1, Math.max(0, y0 + k)) * W;
+      const xa = Math.min(W - 1, Math.max(0, x0 - 1)), xb = Math.min(W - 1, Math.max(0, x0)), xc = Math.min(W - 1, Math.max(0, x0 + 1)), xd = Math.min(W - 1, Math.max(0, x0 + 2));
+      rad[k + 1] = cr(felt[yy + xa], felt[yy + xb], felt[yy + xc], felt[yy + xd], tx);
+    }
+    return cr(rad[0], rad[1], rad[2], rad[3], ty);
+  }
+
   // Bygg ei bit av laget L, pikslar x0..x1 og y0..y1 (begge inkluderte, så
-  // nabobitar deler kantane), med kvar steg-te piksel.
+  // nabobitar deler kantane), med kvar steg-te piksel (steg 0,5 gir eit nett
+  // som er dobbelt så tett som pikslane).
   function lagBit(L, x0, y0, x1, y1, steg) {
     const cols = Math.ceil((x1 - x0) / steg) + 1, rows = Math.ceil((y1 - y0) / steg) + 1;
     const kant = [];
@@ -267,19 +278,30 @@
     // Rein hav og reint land står på sitt; i kystsona går høgda mjukt frå
     // like under havflata til landhøgda etter kystfeltet, så strandlinja
     // (der nettet skjer havflata) følgjer ei avrunda kurve.
-    const yAv = i => {
-      const f = L.kyst[i];
-      if (f >= 0.999) return Math.max(L.hoegd[i], 0.03) * EXAG;
-      if (f <= 0.001) return -(0.08 + 0.6 * L.djup[i]) * EXAG;
-      const t = Math.min(1, Math.max(0, (f - 0.25) / 0.5));
-      const glatt = t * t * (3 - 2 * t);
-      return -0.06 * EXAG + (Math.max(L.hoegd[i], 0.03) * EXAG + 0.06 * EXAG) * glatt;
+    // Nærmast kystlinja er høgda ei rett skråning gjennom null, like bratt på
+    // begge sider (SKRAA einingar per km). Lenger ute går ho mjukt over i
+    // landhøgda eller havbotnen. Skråninga må vere lik på begge sider: elles
+    // ville ei høg fjellside dra strandlinja (der nettet skjer havflata) mot
+    // havpikslane, og ho hadde følgt pikselkantane att i staden for kystlinja.
+    const SONE1 = 1.3 * L.km, SONE2 = 2.6 * L.km, SKRAA = 1.0;
+    const yAv = (h, k, d) => {
+      const maal = k >= 0 ? Math.max(h, 0.03) * EXAG : -(0.08 + 0.6 * d) * EXAG;
+      const t = Math.min(1, Math.max(0, (Math.abs(k) - SONE1) / (SONE2 - SONE1))), glatt = t * t * (3 - 2 * t);
+      return SKRAA * k * (1 - glatt) + maal * glatt;
     };
     let v = 0;
     const sett = (c, r, senk) => {
-      const px = Math.min(x1, x0 + c * steg), py = Math.min(y1, y0 + r * steg), i = py * L.W + px;
+      const px = Math.min(x1, x0 + c * steg), py = Math.min(y1, y0 + r * steg);
+      let y;
+      if (Number.isInteger(px) && Number.isInteger(py)) {
+        const i = py * L.W + px;
+        y = yAv(L.hoegd[i], L.kyst[i], L.djup[i]);
+      } else {
+        // Tettare enn pikslane: bikubisk mellom dei, så strandlinja blir ei jamn kurve.
+        y = yAv(bikubisk(L.hoegd, L.W, L.H, px, py), bikubisk(L.kyst, L.W, L.H, px, py), bikubisk(L.djup, L.W, L.H, px, py));
+      }
       pos[v * 3] = (px + 0.5) * L.km - BREIDD_KM / 2;
-      pos[v * 3 + 1] = yAv(i) - senk;
+      pos[v * 3 + 1] = y - senk;
       pos[v * 3 + 2] = (py + 0.5) * L.km - HOGD_KM / 2;
       uv[v * 2] = (px + 0.5) / L.W; uv[v * 2 + 1] = (py + 0.5) / L.H;
       v++;
@@ -308,6 +330,8 @@
 
   function nivaaFor(b) {
     const d = Math.hypot(b.x - kam.maal.x, b.z - kam.maal.z), a = kam.avstand;
+    // Tett på: nettet dobbelt så tett som det fine laget, bikubisk mellom pikslane.
+    if (finLag && kvalitet && a < 280 && d < Math.max(70, a * 0.55)) return 3;
     if (a < 900 && d < Math.max(140, a * 0.6)) return finLag && kvalitet ? 2 : 1;
     if (d < a * 1.3 + 120) return kvalitet ? 1 : 0;
     return 0;
@@ -322,14 +346,14 @@
       const b = ventande.shift(), n = nivaaFor(b);
       if (n === b.nivaa) continue;
       if (b.mesh) { landGruppe.remove(b.mesh); b.mesh.geometry.dispose(); }
-      const L = n === 2 ? finLag : basisLag, f = n === 2 ? 2 : 1, steg = n === 0 ? 2 : 1;
+      const L = n >= 2 ? finLag : basisLag, f = n >= 2 ? 2 : 1, steg = n === 0 ? 2 : n === 3 ? 0.5 : 1;
       b.mesh = new THREE.Mesh(lagBit(L, b.x0 * f, b.y0 * f, b.x1 * f, b.y1 * f, steg), landMaterial);
       b.nivaa = n;
       landGruppe.add(b.mesh);
     }
   }
   function byggTerreng() {
-    basisLag = { W, H, km: KM, hoegd, maske, djup, kyst: lagKyst({ W, H, maske }) };
+    basisLag = { W, H, km: KM, hoegd, maske, djup, kyst: kystBasis, vatn: vatnBasis };
     kartbilete = lagKartbilete(basisLag);
     landMaterial.map = kartbilete;
     landMaterial.needsUpdate = true;
@@ -350,7 +374,7 @@
   let havMaterial = null;
   function lagHav() {
     const data = new Uint8Array(W * H * 4);
-    for (let i = 0; i < W * H; i++) { data[i * 4] = djup[i] * 255; data[i * 4 + 1] = basisLag.kyst[i] * 255; data[i * 4 + 3] = 255; }
+    for (let i = 0; i < W * H; i++) { data[i * 4] = djup[i] * 255; data[i * 4 + 1] = Math.max(0, Math.min(255, 128 + basisLag.kyst[i] * T.kystPerKm)); data[i * 4 + 3] = 255; }
     const kart = new THREE.DataTexture(data, W, H, THREE.RGBAFormat);
     kart.magFilter = kart.minFilter = THREE.LinearFilter;
     kart.needsUpdate = true;
@@ -371,7 +395,7 @@
         void main() {
           vec2 k = texture2D(kart, vUv).rg;
           float djup = k.r;      // 0..1 i kvadratrotskala, 1 = 1000 m
-          float land = k.g;      // kystfeltet: stig jamt mot land
+          float kyst = (k.g - 0.5) * 255.0 / ${T.kystPerKm}.0;   // km til kystlinja, negativ i hav
           vec3 grunt = vec3(0.26, 0.50, 0.66);
           vec3 djupt = vec3(0.05, 0.19, 0.38);
           vec3 farge = mix(grunt, djupt, smoothstep(0.05, 0.8, djup));
@@ -386,14 +410,16 @@
           float glimt = pow(max(dot(n, h), 0.0), 60.0) * 0.25 * naer;
           float lys = 0.92 + 0.08 * max(dot(n, sol), 0.0);
           // Strandkanta: lysare og grønare vatn inn mot land.
-          float strand = smoothstep(0.05, 0.6, land);
+          float strand = smoothstep(-1.4, 0.05, kyst);
           farge = mix(farge, vec3(0.50, 0.74, 0.80), strand * 0.75);
           gl_FragColor = vec4(farge * lys + glimt, 1.0);
         }`,
     });
     const g = new THREE.PlaneGeometry(BREIDD_KM, HOGD_KM);
     g.rotateX(Math.PI / 2);   // v = 0 i nord, som i høgdekartet
-    scene.add(new THREE.Mesh(g, havMaterial));
+    const havMesh = new THREE.Mesh(g, havMaterial);
+    havMesh.visible = new URLSearchParams(location.search).get("hav") !== "0";   // til testing
+    scene.add(havMesh);
   }
 
   /* ---------- Kamera: krinsar om eit mål på bakken ---------- */
@@ -674,7 +700,7 @@
       const p = stadXZ(stoppIdar[i]);
       if (i === 0) { punkt.push({ x: p.x, z: p.z, h: hoegdVed(p.x, p.z) }); continue; }
       const q = punkt[punkt.length - 1];
-      const nSeg = Math.max(1, Math.ceil(Math.hypot(p.x - q.x, p.z - q.z) / 2.5));
+      const nSeg = Math.max(1, Math.ceil(Math.hypot(p.x - q.x, p.z - q.z) / 1.0));
       for (let j = 1; j <= nSeg; j++) {
         const x = q.x + (p.x - q.x) * j / nSeg, z = q.z + (p.z - q.z) * j / nSeg;
         punkt.push({ x, z, h: hoegdVed(x, z) });
@@ -683,7 +709,7 @@
     return punkt;
   }
   function ruteKurve(punkt, radius) {
-    const loft = radius * 1.4 + 0.15 * EXAG;
+    const loft = radius * 1.4 + 0.2 * EXAG;
     const v = punkt.map(p => new THREE.Vector3(p.x, p.h * EXAG + loft, p.z));
     const sti = new THREE.CurvePath();
     for (let i = 1; i < v.length; i++) sti.add(new THREE.LineCurve3(v[i - 1], v[i]));
@@ -1044,7 +1070,7 @@
       rammetider.push(no - sistRamme);
       if (rammetider.length === 90) {
         const sortert = rammetider.slice().sort((a, b) => a - b);
-        if (sortert[45] > 34) { kvalitet = 0; planleggLOD(); }
+        if (sortert[45] > 34 && !laasKvalitet) { kvalitet = 0; planleggLOD(); }
       }
     }
     sistRamme = no;
@@ -1052,7 +1078,9 @@
 
   /* ---------- Start ---------- */
   function start() {
-    if (new URLSearchParams(location.search).get("kvalitet") === "0") kvalitet = 0;
+    const kv = new URLSearchParams(location.search).get("kvalitet");   // 0 = grov, 1 = full utan nedjustering
+    if (kv === "0") kvalitet = 0;
+    if (kv === "1") laasKvalitet = true;
     byggTerreng();
     tilpass();
     const m = /#k=(\d+)/.exec(location.hash);
@@ -1069,6 +1097,8 @@
     visSeksjon(idx);
     requestAnimationFrame(teikn);
     hentFintKart(false);
+    const zoom = +new URLSearchParams(location.search).get("zoom");   // til testing: startavstand i km
+    if (zoom) { tween = null; kam.avstand = klemAvstand(zoom); }
   }
 
   const glTest = document.createElement("canvas");

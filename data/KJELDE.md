@@ -10,8 +10,13 @@ Eit PNG-bilete på 984 × 1229 pikslar, bakt inn som base64 i eit JS-objekt, der
 kvar piksel er 1,25 × 1,25 km i Lamberts konforme kjegleprojeksjon
 (standardparallellar 60° og 70° N, sentralmeridian 15° A). Kvar piksel er
 snittet av 3 × 3 delprøver. Raud kanal er høgda over havet i kvadratrotskala
-(0 til 2500 m), grøn er havdjupet, og blå er ei klasse: 0 hav, 64 innsjø,
-128 anna land, 192 bre, 255 Noreg. Objektet har òg projeksjonsparametrane og hjørnet
+(0 til 2500 m) for land, og havdjupet (0 til 1000 m) for hav. Grøn kanal er
+avstanden til kystlinja i landpolygona med forteikn (128 er kystlinja, 40 steg
+per kilometer, klemt til ±3,2 km). Blå kanal har klassen i dei tre øvste
+bitane (0 hav, 1 innsjø, 2 anna land, 3 bre, 4 Noreg) og avstanden til
+nærmaste innsjøkant i dei fem nedste (16 er kanten, 16 steg per kilometer,
+klemt til ±1 km). Avstandane kjem frå sjølve polygona, så strandlinjene i
+3D-kartet er jamne kurver òg når ein er nærare enn pikslane. Objektet har òg projeksjonsparametrane og hjørnet
 øvst til venstre, slik at `js/aasen-reise.js` kan plassere stader på kartet.
 
 Kjelder:
