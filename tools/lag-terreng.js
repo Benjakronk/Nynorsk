@@ -468,9 +468,10 @@ async function main() {
       // gå steg for steg i den retninga som fell mest, med små svingar frå
       // retninga elva alt har, og berre så lenge det går nedover. Elles
       // ville enden kunne snirkle seg rundt på flat mark.
-      {
+      if (ny.length >= 6) {
         let x = ny[ny.length - 2], y = ny[ny.length - 1];
-        let dx = x - ny[ny.length - 6], dy = y - ny[ny.length - 5];
+        const bak = Math.max(0, ny.length - 6);
+        let dx = x - ny[bak], dy = y - ny[bak + 1];
         const l0 = Math.hypot(dx, dy) || 1; dx /= l0; dy /= l0;
         let hNo = hVed(x, y);
         for (let steg = 0; steg < 24 && hNo >= 0; steg++) {
@@ -488,6 +489,16 @@ async function main() {
       }
       e.p = ny.map(v => Math.round(v * 10) / 10);
     }
+    // Tryggleik: ingen ugyldige tal (dei ville hamna i hjørnet av kartet), og
+    // ingen liner med under to punkt.
+    for (const e of liner) {
+      const p = [];
+      for (let k = 0; k < e.p.length; k += 2) if (Number.isFinite(e.p[k]) && Number.isFinite(e.p[k + 1])) p.push(e.p[k], e.p[k + 1]);
+      e.p = p;
+    }
+    const n0 = liner.length;
+    for (let i = liner.length - 1; i >= 0; i--) if (liner[i].p.length < 4) liner.splice(i, 1);
+    if (n0 !== liner.length) console.log(`fjerna ${n0 - liner.length} for korte elveliner`);
   }
   for (const g of grenser) g.p = g.p.map(v => Math.round(v * 10) / 10);
 

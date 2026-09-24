@@ -750,6 +750,7 @@
   // Legg ei line med jamne mellomrom (så bandet følgjer terrenget) og flytt til verdskoordinatar
   function tettLine(p, steg) {
     const ut = [];
+    if (p.some(v => !Number.isFinite(v))) return ut;   // eit ugyldig punkt ville hamna i hjørnet av kartet
     for (let k = 0; k < p.length - 2; k += 2) {
       const x0 = p[k] - BREIDD_KM / 2, z0 = p[k + 1] - HOGD_KM / 2, x1 = p[k + 2] - BREIDD_KM / 2, z1 = p[k + 3] - HOGD_KM / 2;
       const m = Math.max(1, Math.ceil(Math.hypot(x1 - x0, z1 - z0) / steg));
