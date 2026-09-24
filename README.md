@@ -204,7 +204,9 @@ panelet til det første funnet etter det. Ein ny gjennomgang er billig, for
 `Spell.check` hugsar om eit ord er godkjent og kva forslag det fekk; det dyre
 er forslaga til ukjende ord, og dei blir rekna ut éin gong per ord. Berre det
 funnet som er på skjermen, slår opp tydingar. Sjekken finst i alle skrivefelt:
-dei lengre tekstane, omsetjingane og dei korte svara i leseoppgåvene.
+dei lengre tekstane, omsetjingane og dei korte svara i leseoppgåvene, og
+knappen slår sjekken av att for feltet. Sjekken er berre aktiv for felta
+eleven har slått han på i, og køyrer berre på det feltet eleven skriv i.
 
 Bokmålsvarselet går først, for ordlista er ei rein formliste og har ein del
 bokmålsord som homografar (*hun*, *boken*). Lista `TVITYDIGE` øvst i

@@ -809,10 +809,15 @@ const Exercises = (() => {
       timer = setTimeout(() => sjekk(false), 600);
     });
 
+    // Knappen slår sjekken på og av for dette feltet. Av: panelet og
+    // markeringa forsvinn, og feltet blir ikkje sjekka meir før neste trykk.
     btn.addEventListener("click", () => {
-      aktiv = true;
-      panel.hidden = false;
+      aktiv = !aktiv;
+      btn.textContent = aktiv ? "Slå av språksjekken" : "Sjekk språket";
+      btn.setAttribute("aria-pressed", aktiv);
       clearTimeout(timer);
+      if (!aktiv) { panel.hidden = true; overlay.textContent = ""; funn = []; return; }
+      panel.hidden = false;
       sjekk(true);
     });
 
