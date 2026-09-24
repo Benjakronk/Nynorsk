@@ -44,6 +44,19 @@ Modules.register({
           </tbody>
         </table>
 
+        <h3>Sjå ordet bli bygd</h3>
+        <div class="ordbygg" data-spel>
+          <div class="ord">
+            <span class="del forledd">skule</span><span class="del rot">gut</span><span class="del ending">ane</span>
+          </div>
+          <div class="forklar">
+            <span class="merk forledd">skule: forledd i samansetninga</span>
+            <span class="merk rot">gut: rot, den minste delen med tyding</span>
+            <span class="merk ending">-ane: ending, bestemt form fleirtal</span>
+          </div>
+          <p class="stamme-linje">Stamma er alt før endinga: <em class="nn">skulegut-</em></p>
+          <button type="button" class="btn secondary small spel-btn">Spel av på nytt</button>
+        </div>
       `,
     },
     {
@@ -800,6 +813,14 @@ Modules.register({
           (<em class="nn">husa, epla, barna</em>, ikkje <em class="bm">husene</em>).
         </div>
 
+        <h3>Same ordet, fire former</h3>
+        <div class="former" data-spel>
+          <div class="form"><span class="etikett">ubestemt eintal</span><span class="ordform">ein <b>gut</b></span></div>
+          <div class="form"><span class="etikett">bestemt eintal</span><span class="ordform">gut<b>en</b></span></div>
+          <div class="form"><span class="etikett">ubestemt fleirtal</span><span class="ordform">gut<b>ar</b></span></div>
+          <div class="form"><span class="etikett">bestemt fleirtal</span><span class="ordform">gut<b>ane</b></span></div>
+        </div>
+        <p class="muted-note">Stamma <em class="nn">gut-</em> står i ro. Det er berre endinga som skifter.</p>
       `,
     },
     {
@@ -1209,6 +1230,13 @@ Modules.register({
       type: "lesson",
       title: "Setningsledda",
       content: `
+        <div class="leddsetning">
+          <span class="ledd subjekt">Kari<small>subjekt</small></span>
+          <span class="ledd verbal">gav<small>verbal</small></span>
+          <span class="ledd iobj">guten<small>indirekte objekt</small></span>
+          <span class="ledd objekt">ei bok<small>objekt</small></span>
+          <span class="ledd adverbial">i går<small>adverbial</small></span>
+        </div>
         <p>Ei setning er bygd opp av <strong>setningsledd</strong>. Eit ledd kan vere eitt ord
         eller fleire ord som høyrer saman og gjer same jobb. Du finn ledda ved å
         <em>stille spørsmål</em> til setninga, alltid i same rekkjefølgje.</p>
@@ -1400,7 +1428,16 @@ Modules.register({
       id: "set9",
       type: "lesson",
       title: "Ordstilling: V2-regelen",
-      content: `        <h3>Ordstilling: verbalet på andreplass</h3>
+      content: `
+        <div class="v2demo" data-v2>
+          <div class="v2rad">
+            <span class="ledd subjekt" data-plass="1">Han</span>
+            <span class="ledd verbal" data-plass="2">kom</span>
+            <span class="ledd adverbial" data-plass="3">i går</span>
+          </div>
+          <button type="button" class="btn secondary small v2-btn">Flytt «i går» fremst</button>
+          <p class="v2forklar">Verbalet <em class="nn">kom</em> står på andreplass same kva som står først.</p>
+        </div>        <h3>Ordstilling: verbalet på andreplass</h3>
         <p>I ei forteljande heilsetning står det finitte verbalet <strong>alltid på andreplass</strong>
         (dette blir kalla <strong>V2</strong>). Første plass kan fyllast av subjektet, men òg av eit
         adverbial eller eit objekt. Flyttar du noko anna fram, må subjektet vike plass og stå

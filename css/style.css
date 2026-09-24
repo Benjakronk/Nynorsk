@@ -1216,3 +1216,232 @@ button.ghost:hover { background: var(--bg); }
   .drill .drill-prompt { font-size: 19px; }
   .finderror .fe-text { font-size: 17px; }
 }
+
+/* ---------- Figurar og små animasjonar i modulane (sjå js/figurar.js) ---------- */
+.figur {
+  margin: 4px 0 18px;
+  font-family: "Inter", system-ui, sans-serif;
+}
+.figur img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+}
+.figur figcaption {
+  font-size: 13px;
+  color: var(--ink-faint);
+  line-height: 1.4;
+  margin-top: 6px;
+}
+.figur.portrett {
+  float: right;
+  width: 200px;
+  margin: 4px 0 12px 22px;
+}
+.figur.portrett.liten { width: 150px; }
+.figur.brei { clear: both; }
+.section::after { content: ""; display: block; clear: both; }
+.muted-note { color: var(--ink-faint); font-size: 14px; margin: 4px 0 12px; }
+
+/* Glir inn når dei kjem til syne */
+.figur, .tidslinje, .toliner, .ordbygg, .former, .leddsetning, .v2demo, .kjonnkort, .ordartikkel {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.synleg { opacity: 1; transform: none; }
+
+/* Tidslinje */
+.tidslinje {
+  list-style: none;
+  margin: 8px 0 16px;
+  padding: 0 0 0 22px;
+  border-left: 2px solid var(--line-strong);
+  font-family: "Inter", system-ui, sans-serif;
+}
+.tidslinje li {
+  position: relative;
+  padding: 0 0 14px;
+  font-size: 15px;
+}
+.tidslinje li::before {
+  content: "";
+  position: absolute;
+  left: -29px; top: 5px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--surface);
+}
+.tidslinje .aar { display: block; font-weight: 600; color: var(--warm); font-size: 13px; letter-spacing: .04em; }
+.tidslinje.synleg li { animation: figur-inn .5s ease both; }
+.tidslinje.synleg li:nth-child(2) { animation-delay: .15s; }
+.tidslinje.synleg li:nth-child(3) { animation-delay: .3s; }
+.tidslinje.synleg li:nth-child(4) { animation-delay: .45s; }
+.tidslinje.synleg li:nth-child(5) { animation-delay: .6s; }
+.tidslinje.synleg li:nth-child(6) { animation-delay: .75s; }
+.tidslinje.synleg li:nth-child(7) { animation-delay: .9s; }
+.tidslinje.synleg li:nth-child(8) { animation-delay: 1.05s; }
+@keyframes figur-inn { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
+
+/* To liner: Aasen og Knudsen */
+.toliner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  margin: 8px 0 16px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 14px;
+}
+.toliner .line { display: flex; flex-direction: column; align-items: stretch; gap: 4px; }
+.toliner .line.midt { justify-content: space-around; max-width: 190px; }
+.toliner .boks {
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  text-align: center;
+}
+.toliner .aasen .boks { border-color: var(--accent); }
+.toliner .knudsen .boks { border-color: var(--warm); }
+.toliner .boks.sterk { font-weight: 700; color: #fff; }
+.toliner .aasen .boks.sterk { background: var(--accent); }
+.toliner .knudsen .boks.sterk { background: var(--warm); }
+.toliner .boks.svak { background: var(--bg); color: var(--ink-soft); font-size: 13px; border-style: dashed; }
+.toliner .pil { text-align: center; color: var(--ink-faint); font-size: 12.5px; padding: 2px 0; }
+.toliner.synleg .boks, .toliner.synleg .pil { animation: figur-inn .5s ease both; }
+.toliner.synleg .line > :nth-child(2) { animation-delay: .25s; }
+.toliner.synleg .line > :nth-child(3) { animation-delay: .5s; }
+.toliner.synleg .line > :nth-child(4) { animation-delay: .75s; }
+.toliner.synleg .line > :nth-child(5) { animation-delay: 1s; }
+
+/* Ordbygg: skule + gut + ane */
+.ordbygg { margin: 8px 0 16px; font-family: "Inter", system-ui, sans-serif; }
+.ordbygg .ord { font-size: 34px; font-weight: 700; letter-spacing: .01em; display: flex; margin-bottom: 10px; }
+.ordbygg .del { padding: 4px 8px; border-radius: 6px; opacity: 0; transform: translateY(12px); }
+.ordbygg .forklar { display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+.ordbygg .merk { padding: 3px 10px; border-radius: 999px; align-self: flex-start; opacity: 0; }
+.ordbygg .forledd { background: #e3ecf6; color: #24466b; }
+.ordbygg .rot { background: var(--accent-soft); color: var(--accent-ink); }
+.ordbygg .ending { background: var(--warm-soft); color: #7a4316; }
+.ordbygg .stamme-linje { font-size: 14px; color: var(--ink-soft); margin: 8px 0; opacity: 0; }
+.ordbygg.spelar .del { animation: del-inn .5s ease both; }
+.ordbygg.spelar .del.rot { animation-delay: .1s; }
+.ordbygg.spelar .del.forledd { animation-delay: .9s; }
+.ordbygg.spelar .del.ending { animation-delay: 1.7s; }
+.ordbygg.spelar .merk { animation: merk-inn .4s ease both; }
+.ordbygg.spelar .merk.rot { animation-delay: .5s; }
+.ordbygg.spelar .merk.forledd { animation-delay: 1.3s; }
+.ordbygg.spelar .merk.ending { animation-delay: 2.1s; }
+.ordbygg.spelar .stamme-linje { animation: merk-inn .4s ease 2.7s both; }
+@keyframes del-inn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes merk-inn { from { opacity: 0; } to { opacity: 1; } }
+.spel-btn { margin-top: 6px; }
+
+/* Dei fire formene */
+.former { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 8px 0 6px; font-family: "Inter", system-ui, sans-serif; }
+.former .form {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 10px 8px;
+  text-align: center;
+  background: var(--surface);
+}
+.former .etikett { display: block; font-size: 11.5px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+.former .ordform { font-size: 20px; }
+.former .ordform b { color: var(--warm); }
+.former.spelar .form { animation: form-lys 8s ease-in-out infinite; }
+.former.spelar .form:nth-child(2) { animation-delay: 2s; }
+.former.spelar .form:nth-child(3) { animation-delay: 4s; }
+.former.spelar .form:nth-child(4) { animation-delay: 6s; }
+@keyframes form-lys {
+  0%, 22%, 100% { border-color: var(--line); background: var(--surface); transform: none; }
+  5%, 17% { border-color: var(--accent); background: var(--accent-soft); transform: translateY(-3px); }
+}
+
+/* Setningsledd */
+.leddsetning { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 16px; font-family: "Inter", system-ui, sans-serif; }
+.ledd {
+  display: inline-flex; flex-direction: column; align-items: center;
+  padding: 6px 12px 5px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font-size: 18px;
+  line-height: 1.2;
+}
+.ledd small { font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; margin-top: 3px; opacity: .8; }
+.ledd.subjekt { background: #e3ecf6; color: #24466b; border-color: #b9cde6; }
+.ledd.verbal { background: var(--warm-soft); color: #7a4316; border-color: #e9c9a6; }
+.ledd.objekt { background: var(--accent-soft); color: var(--accent-ink); border-color: #b9d6cb; }
+.ledd.iobj { background: #efe6f7; color: #4d2f6b; border-color: #d4c1e6; }
+.ledd.adverbial { background: var(--bg); color: var(--ink-soft); border-color: var(--line-strong); }
+.leddsetning.synleg .ledd { animation: figur-inn .4s ease both; }
+.leddsetning.synleg .ledd:nth-child(2) { animation-delay: .15s; }
+.leddsetning.synleg .ledd:nth-child(3) { animation-delay: .3s; }
+.leddsetning.synleg .ledd:nth-child(4) { animation-delay: .45s; }
+.leddsetning.synleg .ledd:nth-child(5) { animation-delay: .6s; }
+
+/* V2-demonstrasjonen */
+.v2demo { margin: 4px 0 16px; font-family: "Inter", system-ui, sans-serif; }
+.v2rad { display: flex; gap: 8px; margin-bottom: 8px; }
+.v2rad .ledd { position: relative; transition: transform .4s ease; }
+.v2rad .ledd::before { content: attr(data-plass); position: absolute; top: -9px; left: -6px; width: 18px; height: 18px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 11px; display: grid; place-items: center; }
+.v2demo .v2forklar { font-size: 14px; color: var(--ink-soft); margin: 8px 0 0; }
+
+/* Tre kjønn */
+.kjonnkort { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 4px 0 16px; font-family: "Inter", system-ui, sans-serif; }
+.kjonnkort .kort { border-radius: var(--radius); padding: 12px 10px; text-align: center; border: 1px solid transparent; }
+.kjonnkort .artikkel { display: block; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; opacity: .8; }
+.kjonnkort .ord { display: block; font-size: 26px; font-weight: 700; margin: 2px 0 4px; }
+.kjonnkort .former { display: block; font-size: 13px; opacity: .85; }
+.kjonnkort .han { background: #e3ecf6; color: #24466b; border-color: #b9cde6; }
+.kjonnkort .ho { background: var(--bad-soft); color: #7a2a24; border-color: #ebc1bd; }
+.kjonnkort .inkje { background: var(--accent-soft); color: var(--accent-ink); border-color: #b9d6cb; }
+
+/* Ordbokartikkelen med nummererte merke */
+.ordartikkel {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin: 4px 0 14px;
+  line-height: 1.7;
+}
+.ordartikkel .hovud { font-size: 17px; }
+.ordartikkel .dome { padding-left: 18px; color: var(--ink-soft); }
+.merk[data-n] { position: relative; }
+.merk[data-n]::before {
+  content: attr(data-n);
+  display: inline-grid; place-items: center;
+  width: 17px; height: 17px;
+  border-radius: 50%;
+  background: var(--warm);
+  color: #fff;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 11px; font-weight: 600;
+  margin-right: 4px;
+  vertical-align: 2px;
+}
+li > .merk[data-n]::before { margin-right: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .figur, .tidslinje, .toliner, .ordbygg, .former, .leddsetning, .v2demo, .kjonnkort, .ordartikkel { opacity: 1; transform: none; transition: none; }
+  .tidslinje li, .toliner .boks, .toliner .pil, .leddsetning .ledd, .former .form { animation: none !important; }
+  .ordbygg .del, .ordbygg .merk, .ordbygg .stamme-linje { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .v2rad .ledd { transition: none; }
+}
+@media (max-width: 640px) {
+  .figur.portrett { width: 140px; margin-left: 14px; }
+  .toliner { grid-template-columns: 1fr; }
+  .toliner .line.midt { max-width: none; flex-direction: row; flex-wrap: wrap; }
+  .former { grid-template-columns: repeat(2, 1fr); }
+  .kjonnkort { grid-template-columns: 1fr; }
+  .ordbygg .ord { font-size: 26px; }
+}
+@media print {
+  .figur, .tidslinje, .toliner, .ordbygg, .former, .leddsetning, .v2demo, .kjonnkort, .ordartikkel { opacity: 1; transform: none; }
+  .ordbygg .del, .ordbygg .merk, .ordbygg .stamme-linje { opacity: 1; transform: none; }
+  .spel-btn, .v2-btn { display: none; }
+}

@@ -27,6 +27,7 @@ frå Språkrådet.
 - Eigne tekstar blir lagra i `localStorage`
 - Språksjekk i skriveoppgåvene: bokmålsvarsel bygd på ordbanken i kurset, og skrivefeil mot ei nynorsk ordliste på 412 000 former, med tyding og direktelenkje til ordbokene.no for kvart forslag
 - Reisene til Ivar Aasen (`aasen-reise.html`): modul med interaktiv forelesing på eit 3D-kart over Noreg, der eleven følgjer ein liten Aasen-figur langs ruta kapittel for kapittel, med stoppestader, datoar og oppgåver undervegs
+- Bilete og små animerte figurar i modulane: portrett og historiske bilete frå Wikimedia Commons (`bilete/`, lisensar i `bilete/KJELDE.md`), tidslinje, «to liner»-diagram, ordbygg, dei fire formene, setningsledd, V2-demonstrasjon, kjønnskort og ein nummerert ordbokartikkel (`js/figurar.js` og «Figurar» i `css/style.css`)
 - Heile sida er statisk og fungerer på GitHub Pages utan byggjesteg
 
 ## Køyre lokalt
@@ -51,6 +52,7 @@ npx serve .
 ├── modul.html              Sida for kvar modul (?id=<modul-id>)
 ├── om.html                 Kort om kurset
 ├── aasen-reise.html        Reisene til Ivar Aasen: 3D-kart med forelesing
+├── bilete/                 Portrett og historiske bilete (kjelder i bilete/KJELDE.md)
 ├── css/style.css
 ├── css/aasen-reise.css     Stil for kartsida
 ├── js/
@@ -65,6 +67,7 @@ npx serve .
 │   ├── ordbok.js           Oppslag i Nynorskordboka (ord.uib.no)
 │   ├── app.js              Logikk for oversiktssida
 │   ├── modul.js            Logikk for modulsida
+│   ├── figurar.js          Figurar og små animasjonar i modulane
 │   └── content/
 │       ├── bank.js              Ordbankar for mengdetrening
 │       ├── part1.js             Del 1: språkhistorie
@@ -236,7 +239,18 @@ gruppene er definerte i `js/modules.js`. Nye innhaldsfiler må leggjast til som
 `<script>` i `index.html` og `modul.html`.
 
 Køyr `node tools/validate-content.js` etter endringar. Skriptet sjekkar skjema,
-fasitar, drill-bankar og finn-feilen-tekstar utan nettlesar.
+fasitar, drill-bankar, finn-feilen-tekstar og at bileta finst og har alt-tekst,
+utan nettlesar.
+
+### Figurar
+
+Eit bilete i ein lesson er ein `<figure class="figur">` med `<img>` og
+`<figcaption>`; klassen `portrett` legg det til høgre i teksten, `brei` over
+heile breidda. Bilettekstane skal namngje opphavsperson og lisens. Dei små
+figurane (`.tidslinje`, `.toliner`, `.ordbygg`, `.former`, `.leddsetning`,
+`.v2demo`, `.kjonnkort`, `.ordartikkel`) er rein HTML med klassar, styrte av
+`js/figurar.js`: dei glir inn når dei kjem til syne, `data-spel` startar ein
+animasjon, og alt står i ro for elevar som har slått på redusert rørsle.
 
 ### Mengdetrening (`drill`)
 

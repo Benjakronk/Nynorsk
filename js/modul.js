@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateProgress(mod, progressWrap);
   document.addEventListener("exercise-answered", () => updateProgress(mod, progressWrap));
+  if (typeof Figurar !== "undefined") Figurar.init();
 });
 
 function headingEl(section) {

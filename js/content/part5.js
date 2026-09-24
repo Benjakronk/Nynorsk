@@ -31,6 +31,10 @@ Modules.register({
       type: "lesson",
       title: "1. Aasmund Olavsson Vinje (1818–1870)",
       content: `
+        <figure class="figur portrett">
+          <img src="bilete/vinje.jpg" alt="Portrett av Aasmund Olavsson Vinje" loading="lazy">
+          <figcaption>Aasmund Olavsson Vinje. Foto: Nasjonalbiblioteket (ingen kjende restriksjonar).</figcaption>
+        </figure>
         <p><strong>Frå:</strong> Vinje i Telemark.<br>
         <strong>Yrke:</strong> Journalist, lyrikar, reiseskildrar.</p>
 
@@ -63,6 +67,10 @@ Modules.register({
       type: "lesson",
       title: "2. Arne Garborg (1851–1924)",
       content: `
+        <figure class="figur portrett">
+          <img src="bilete/garborg.jpg" alt="Portrett av Arne Garborg" loading="lazy">
+          <figcaption>Arne Garborg. Foto: Nasjonalbiblioteket (ingen kjende restriksjonar).</figcaption>
+        </figure>
         <p><strong>Frå:</strong> Time på Jæren.<br>
         <strong>Yrke:</strong> Romanforfattar, lyrikar, kulturkritikar.</p>
 
@@ -96,6 +104,10 @@ Modules.register({
       type: "lesson",
       title: "3. Olav Duun (1876–1939)",
       content: `
+        <figure class="figur portrett">
+          <img src="bilete/duun.jpg" alt="Portrett av Olav Duun" loading="lazy">
+          <figcaption>Olav Duun. Foto: Nasjonalbiblioteket (CC BY 2.0).</figcaption>
+        </figure>
         <p><strong>Frå:</strong> Jøa i Namdalen (Trøndelag).<br>
         <strong>Yrke:</strong> Lærar og romanforfattar.</p>
 
@@ -125,6 +137,10 @@ Modules.register({
       type: "lesson",
       title: "4. Tarjei Vesaas (1897–1970)",
       content: `
+        <figure class="figur portrett">
+          <img src="bilete/t-vesaas.jpg" alt="Portrett av Tarjei Vesaas" loading="lazy">
+          <figcaption>Tarjei Vesaas. Foto: Nasjonalbiblioteket (ingen kjende restriksjonar).</figcaption>
+        </figure>
         <p><strong>Frå:</strong> Vinje i Telemark.<br>
         <strong>Yrke:</strong> Romanforfattar og lyrikar.</p>
 
@@ -159,6 +175,10 @@ Modules.register({
       type: "lesson",
       title: "5. Halldis Moren Vesaas (1907–1995)",
       content: `
+        <figure class="figur portrett">
+          <img src="bilete/hm-vesaas.png" alt="Portrett av Halldis Moren Vesaas" loading="lazy">
+          <figcaption>Halldis Moren Vesaas. Foto via Wikimedia Commons, User:Orland (fri bruk).</figcaption>
+        </figure>
         <p><strong>Frå:</strong> Trysil i Innlandet.<br>
         <strong>Yrke:</strong> Lyrikar, gjendiktar, kulturpersonlegheit.</p>
 
@@ -190,6 +210,10 @@ Modules.register({
       type: "lesson",
       title: "6. Jon Fosse (1959–)",
       content: `
+        <figure class="figur portrett">
+          <img src="bilete/fosse.jpg" alt="Portrett av Jon Fosse" loading="lazy">
+          <figcaption>Jon Fosse. Foto: Tom A. Kolstad / Det Norske Samlaget (CC BY-SA 4.0).</figcaption>
+        </figure>
         <p><strong>Frå:</strong> Haugesund. Bur i dag i æresbustaden Grotten i Oslo, og har
         heim på Frekhaug ved Bergen og i Hainburg i Austerrike.<br>
         <strong>Yrke:</strong> Dramatikar, romanforfattar, lyrikar, omsetjar.</p>
@@ -226,6 +250,10 @@ Modules.register({
       type: "lesson",
       title: "7. Frode Grytten (1960–)",
       content: `
+        <figure class="figur portrett">
+          <img src="bilete/grytten.jpg" alt="Portrett av Frode Grytten" loading="lazy">
+          <figcaption>Frode Grytten. Foto: Jarvin (CC BY 3.0).</figcaption>
+        </figure>
         <p><strong>Frå:</strong> Odda i Hardanger.<br>
         <strong>Yrke:</strong> Forfattar og journalist.</p>
 
@@ -281,6 +309,10 @@ Modules.register({
       type: "lesson",
       title: "9. Olaug Nilssen (1977–)",
       content: `
+        <figure class="figur portrett">
+          <img src="bilete/nilssen.jpg" alt="Portrett av Olaug Nilssen" loading="lazy">
+          <figcaption>Olaug Nilssen. Foto: Olav Helland (CC BY-SA 4.0).</figcaption>
+        </figure>
         <p><strong>Frå:</strong> Førde i Sunnfjord.<br>
         <strong>Yrke:</strong> Forfattar og dramatikar.</p>
 

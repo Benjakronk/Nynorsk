@@ -215,6 +215,22 @@ function tokenize(text) {
   });
 }
 
+/* ---------- Bilete i innhaldet ---------- */
+all.forEach(mod => {
+  (mod.sections || []).forEach(s => {
+    const re = /src="(bilete\/[^"]+)"/g;
+    let m;
+    while ((m = re.exec(s.content || ""))) {
+      if (!fs.existsSync(path.join(ROOT, m[1]))) err(`Modul «${mod.id}»: biletet ${m[1]} finst ikkje`);
+    }
+    if (/<img(?![^>]*\balt=)/.test(s.content || "")) err(`Modul «${mod.id}»: eit bilete manglar alt-tekst`);
+  });
+});
+{
+  const html = fs.readFileSync(path.join(ROOT, "modul.html"), "utf8");
+  if (!html.includes("src=\"js/figurar.js\"")) err("modul.html manglar <script src=\"js/figurar.js\">");
+}
+
 /* ---------- Links between modules ---------- */
 all.forEach(mod => {
   (mod.sections || []).forEach(s => {

@@ -12,6 +12,11 @@ Modules.register({
       type: "lesson",
       title: "Tre kjønn",
       content: `
+        <div class="kjonnkort">
+          <div class="kort han"><span class="artikkel">ein</span><span class="ord">gut</span><span class="former">guten · gutar · gutane</span></div>
+          <div class="kort ho"><span class="artikkel">ei</span><span class="ord">jente</span><span class="former">jenta · jenter · jentene</span></div>
+          <div class="kort inkje"><span class="artikkel">eit</span><span class="ord">hus</span><span class="former">huset · hus · husa</span></div>
+        </div>
         <p>På nynorsk har substantiva tre kjønn: <strong>hankjønn</strong>,
         <strong>hokjønn</strong> og <strong>inkjekjønn</strong>. Kjønnet styrer kva artikkel
         og endingar du brukar.</p>

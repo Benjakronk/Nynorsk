@@ -256,26 +256,26 @@ Modules.register({
         <p>Ein ordbokartikkel er tettpakka med informasjon. Slik ser ein typisk artikkel ut
         i Nynorskordboka, litt forenkla:</p>
 
-        <div class="callout">
-          <strong>bok</strong> f1 &nbsp; <em>bøying:</em> boka, bøker, bøkene<br>
-          1 samling av blad med tekst, bundne saman mellom to permar<br>
-          &nbsp;&nbsp;<em>lese ei bok, ei bok om fuglar</em><br>
-          2 rekneskap, protokoll<br>
-          &nbsp;&nbsp;<em>føre bok over utgiftene</em>
+        <div class="ordartikkel">
+          <div class="hovud"><span class="merk" data-n="1"><strong>bok</strong></span> <span class="merk" data-n="2">f1</span> &nbsp; <em>bøying:</em> <span class="merk" data-n="3">boka, bøker, bøkene</span></div>
+          <div class="tyding"><span class="merk" data-n="4">1</span> samling av blad med tekst, bundne saman mellom to permar</div>
+          <div class="dome"><span class="merk" data-n="5"><em>lese ei bok, ei bok om fuglar</em></span></div>
+          <div class="tyding"><span class="merk" data-n="4">2</span> rekneskap, protokoll</div>
+          <div class="dome"><span class="merk" data-n="5"><em>føre bok over utgiftene</em></span></div>
         </div>
 
         <ul>
-          <li><strong>bok</strong> i halvfeit skrift er <strong>oppslagsordet</strong>,
+          <li><span class="merk" data-n="1"></span><strong>bok</strong> i halvfeit skrift er <strong>oppslagsordet</strong>,
               altså grunnforma.</li>
-          <li><strong>f</strong> tyder hokjønn. Du vil òg sjå <strong>m</strong> for
+          <li><span class="merk" data-n="2"></span><strong>f</strong> tyder hokjønn. Du vil òg sjå <strong>m</strong> for
               hankjønn, <strong>n</strong> for inkjekjønn, <strong>v</strong> for verb og
               <strong>adj</strong> for adjektiv. Talet etter, som <strong>f1</strong>,
               viser kva bøyingsmønster ordet følgjer.</li>
-          <li><strong>Bøyinga</strong> står i rekkjefølgja bestemt eintal, ubestemt fleirtal,
+          <li><span class="merk" data-n="3"></span><strong>Bøyinga</strong> står i rekkjefølgja bestemt eintal, ubestemt fleirtal,
               bestemt fleirtal: <em class="nn">boka, bøker, bøkene</em>. Står det fleire
               former skilde med komma på same plass, er begge lov.</li>
-          <li><strong>Tydingane</strong> er nummererte. Den vanlegaste kjem først.</li>
-          <li><strong>Døma</strong> står i kursiv og viser ordet i bruk. Dei er ofte det
+          <li><span class="merk" data-n="4"></span><strong>Tydingane</strong> er nummererte. Den vanlegaste kjem først.</li>
+          <li><span class="merk" data-n="5"></span><strong>Døma</strong> står i kursiv og viser ordet i bruk. Dei er ofte det
               mest nyttige i heile artikkelen, for dei viser kva preposisjon eller
               bøyingsform ordet plar ha.</li>
         </ul>

@@ -11,6 +11,10 @@ Modules.register({
       type: "lesson",
       title: "Frå 1380 til 1814: eit dansk skriftspråk",
       content: `
+        <figure class="figur brei">
+          <img src="bilete/eidsvoll-1814.jpg" alt="Måleri av riksforsamlinga på Eidsvoll i 1814, mange menn i ein stor sal" loading="lazy">
+          <figcaption>Riksforsamlinga på Eidsvoll i 1814 gav Noreg ei eiga grunnlov. Skriftspråket var framleis dansk. Måleri av Oscar Wergeland, 1885 (offentleg eigedom).</figcaption>
+        </figure>
         <p>I 1380 gjekk Noreg i union med Danmark. Unionen varte i over 400 år, heilt til 1814.
         I løpet av desse hundreåra forsvann det gamalnorske skriftspråket, og dansk vart det
         einaste skriftspråket i Noreg. Embetsmenn, prestar og forfattarar skreiv dansk, og det
@@ -36,6 +40,17 @@ Modules.register({
           i Noreg dansk, sjølv om folk snakka norske dialektar. Etter 1814 byrja folk å
           tenkje på korleis Noreg kunne få sitt eige skriftspråk.
         </div>
+        <h3>Tidslinje</h3>
+        <ol class="tidslinje">
+          <li><span class="aar">1380</span><span class="hend">Noreg går i union med Danmark. Dansk blir etter kvart det einaste skriftspråket.</span></li>
+          <li><span class="aar">1814</span><span class="hend">Eiga grunnlov og eige storting. Kan eit fritt land ha eit anna lands skriftspråk?</span></li>
+          <li><span class="aar">1836</span><span class="hend">Ivar Aasen, 22 år gamal, skriv planen om eit norsk skriftspråk bygd på dialektane.</span></li>
+          <li><span class="aar">1848–1850</span><span class="hend">Aasen gjev ut grammatikk og ordbok over «det norske Folkesprog».</span></li>
+          <li><span class="aar">1885</span><span class="hend">Stortinget jamstiller landsmål og det dansk-norske skriftspråket.</span></li>
+          <li><span class="aar">1929</span><span class="hend">Namna blir nynorsk og bokmål.</span></li>
+          <li><span class="aar">1981</span><span class="hend">Samnorskpolitikken blir oppgitt. Dei to skriftspråka utviklar seg kvar for seg.</span></li>
+          <li><span class="aar">2022</span><span class="hend">Ny språklov: bokmål og nynorsk er likeverdige skriftspråk.</span></li>
+        </ol>
       `,
     },
     {
@@ -127,6 +142,10 @@ Modules.register({
       type: "lesson",
       title: "Ein språkmann frå Ørsta",
       content: `
+        <figure class="figur portrett">
+          <img src="bilete/aasen-1871.jpg" alt="Portrett av Ivar Aasen i 1871, ein mann med briller og mørk frakk" loading="lazy">
+          <figcaption>Ivar Aasen i 1871. Foto: Carl Christian Wischmann / Ivar Aasen-tunet (CC BY-SA 3.0).</figcaption>
+        </figure>
         <p><strong>Ivar Aasen</strong> (1813–1896) voks opp på ein liten gard i Ørsta på
         Sunnmøre. Familien var fattig, og Ivar måtte tidleg ut og jobbe. Men han var
         usedvanleg lærenem og lærte seg språk på eiga hand, først dansk og latin, seinare
@@ -143,6 +162,10 @@ Modules.register({
         </div>
 
         <h3>Grammatikken og ordboka</h3>
+        <figure class="figur portrett liten">
+          <img src="bilete/grammatik-1848.jpg" alt="Tittelsida til Det norske Folkesprogs Grammatik frå 1848" loading="lazy">
+          <figcaption>Tittelsida til <em class="nn">Det norske Folkesprogs Grammatik</em> (1848), den første boka om det nye språket (offentleg eigedom).</figcaption>
+        </figure>
         <p>Resultatet vart to banebrytande bøker:</p>
         <ul>
           <li><em class="nn">Det norske Folkesprogs Grammatik</em> (1848)</li>
@@ -163,6 +186,10 @@ Modules.register({
           (frå 1929). Ordet «nynorsk» kan forvirre, for det handlar ikkje om eit nytt språk,
           men om eit skriftspråk bygd på det levande norske talemålet.
         </div>
+        <figure class="figur brei">
+          <img src="bilete/aasentunet.jpg" alt="Ivar Aasen-tunet i Ørsta, eit moderne museumsbygg ved den gamle garden" loading="lazy">
+          <figcaption>Ivar Aasen-tunet i Ørsta, museum og dokumentasjonssenter for nynorsk skriftkultur, ligg på heimegarden Åsen. Foto: Andrva (CC BY-SA 3.0).</figcaption>
+        </figure>
       `,
     },
     {
@@ -260,6 +287,10 @@ Modules.register({
       type: "lesson",
       title: "To liner: Knud Knudsen og Ivar Aasen",
       content: `
+        <figure class="figur portrett">
+          <img src="bilete/knud-knudsen.jpg" alt="Portrett av Knud Knudsen, ein eldre mann med kvitt hår" loading="lazy">
+          <figcaption>Knud Knudsen (1812–1895) ville fornorske dansk skrift steg for steg. Ukjend fotograf (offentleg eigedom).</figcaption>
+        </figure>
         <p>Medan Ivar Aasen bygde landsmål frå dialektane, gjekk <strong>Knud Knudsen</strong>
         (1812–1895) ein annan veg. Han ville <em class="nn">fornorske</em> dansk skrift
         steg for steg, slik at skriftspråket gradvis kom nærare det danna talemålet i
@@ -292,6 +323,28 @@ Modules.register({
           <strong>Viktig omgrep:</strong> «Samnorsk» tyder ikkje at språka vart eitt. Det
           var ein <em>politikk</em> som freista å smelte dei saman. Politikken vart altså
           aldri gjennomført fullt ut, og vart formelt avslutta i 1981.
+        </div>
+        <h3>Dei to linene i eitt bilete</h3>
+        <div class="toliner">
+          <div class="line aasen">
+            <div class="boks">Dei norske dialektane</div>
+            <div class="pil">↓ Ivar Aasen samlar og byggjer</div>
+            <div class="boks">Landsmål (1853)</div>
+            <div class="pil">↓ nytt namn 1929</div>
+            <div class="boks sterk">Nynorsk</div>
+          </div>
+          <div class="line midt">
+            <div class="boks svak">1885: jamstilte</div>
+            <div class="boks svak">1907, 1917, 1938: samnorsk-reformer prøver å føre dei saman</div>
+            <div class="boks svak">1981: oppgitt, kvar sin veg</div>
+          </div>
+          <div class="line knudsen">
+            <div class="boks">Dansk skriftspråk</div>
+            <div class="pil">↓ Knud Knudsen fornorskar steg for steg</div>
+            <div class="boks">Riksmål</div>
+            <div class="pil">↓ nytt namn 1929</div>
+            <div class="boks sterk">Bokmål</div>
+          </div>
         </div>
       `,
     },
