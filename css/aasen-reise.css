@@ -165,6 +165,17 @@
 }
 .reise-panel h1 { font-size: 26px; line-height: 1.2; margin: 0 0 6px; }
 .reise-tekst p { margin: 0 0 12px; }
+/* Faktaboksar i kapitteltekstane */
+.reise-tekst .callout {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin: 4px 0 14px;
+  font-size: 15.5px;
+  line-height: 1.5;
+}
+.reise-tekst .callout strong { color: var(--accent-ink); }
 /* Oppgåver i panelet: same kort som på modulsida, men utan ytre luft */
 .reise-tekst .section { margin: 4px 0 8px; padding: 16px 18px; }
 .reise-tekst .exercise .question { font-size: 16px; }

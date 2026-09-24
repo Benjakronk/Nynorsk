@@ -1,7 +1,16 @@
 /* Modulen «Reisene til Ivar Aasen» (Del 1), som blir vist på aasen-reise.html.
 
    `stader` er alle stoppestadene med koordinatar (grader nord og aust, frå
-   stadnamnregisteret til Kartverket). Modulen har vanlege seksjonar: lesson
+   stadnamnregisteret til Kartverket). Feltet `scene` gir viktige stopp ein
+   liten stilisert modell på kartet (sjå SCENER i js/aasen-reise.js): gard,
+   by, kyrkje, domkyrkje, herregard, stabbur, vinter, frukt, jaeren, bok,
+   varde, baat, dampskip, hjell, hovudstad.
+
+   Pengeverdiane i tekstane er rekna om med konsumprisindeksen til Norges Bank
+   (1516 og framover, 2015=100) og SSB (årsgjennomsnitt 2025): 1 spesidalar =
+   4 kroner (1875), 1842: 1,17, 1851: 1,24, 1884: 1,54, 2025: 137,7. Lønene
+   for tenestefolk på 1840-talet er frå Liers historie (lier.kommune.no), og
+   lærarløna frå skulelova av 1827. Modulen har vanlege seksjonar: lesson
    med eit `reise`-felt er eit kapittel i forelesinga (tid, stopp i
    rekkjefølgje og eventuelt kamera: "land"), og oppgåvene mellom kapitla er
    dei same oppgåvetypane som elles i kurset. Kartet teiknar ruta som rette
@@ -14,13 +23,13 @@
 
 window.AASEN_REISE = {
   stader: {
-    aasen:        { namn: "Åsen i Ørsta",       lat: 62.179, lon: 6.062 },
-    ekset:        { namn: "Ekset",              lat: 62.163, lon: 6.030 },
-    heroy:        { namn: "Herøy",              lat: 62.314, lon: 5.679 },
-    solnor:       { namn: "Solnør",             lat: 62.488, lon: 6.730 },
+    aasen:        { namn: "Åsen i Ørsta",       lat: 62.179, lon: 6.062, scene: "gard" },
+    ekset:        { namn: "Ekset",              lat: 62.163, lon: 6.030, scene: "bok" },
+    heroy:        { namn: "Herøy",              lat: 62.314, lon: 5.679, scene: "kyrkje" },
+    solnor:       { namn: "Solnør",             lat: 62.488, lon: 6.730, scene: "herregard" },
     volda:        { namn: "Volda",              lat: 62.146, lon: 6.071 },
     alesund:      { namn: "Ålesund",            lat: 62.472, lon: 6.155 },
-    bergen:       { namn: "Bergen",             lat: 60.393, lon: 5.324 },
+    bergen:       { namn: "Bergen",             lat: 60.393, lon: 5.324, scene: "by" },
     nordfjordeid: { namn: "Nordfjordeid",       lat: 61.912, lon: 5.986 },
     breim:        { namn: "Breim",              lat: 61.734, lon: 6.434 },
     forde:        { namn: "Førde",              lat: 61.452, lon: 5.857 },
@@ -29,28 +38,28 @@ window.AASEN_REISE = {
     laerdal:      { namn: "Lærdalsøyri",        lat: 61.100, lon: 7.474 },
     kroken:       { namn: "Kroken",             lat: 61.308, lon: 7.351 },
     solvorn:      { namn: "Solvorn",            lat: 61.301, lon: 7.247 },
-    sogndal:      { namn: "Sogndal",            lat: 61.229, lon: 7.096 },
+    sogndal:      { namn: "Sogndal",            lat: 61.229, lon: 7.096, scene: "vinter" },
     vik:          { namn: "Vik",                lat: 61.087, lon: 6.579 },
     sygnefest:    { namn: "Sygnefest",          lat: 61.063, lon: 5.074 },
-    eivindvik:    { namn: "Eivindvik",          lat: 60.981, lon: 5.075 },
+    eivindvik:    { namn: "Eivindvik",          lat: 60.981, lon: 5.075, scene: "kyrkje" },
     fonnebost:    { namn: "Fonnebost",          lat: 60.746, lon: 5.172 },
     haus:         { namn: "Haus",               lat: 60.453, lon: 5.495 },
-    litlebergen:  { namn: "Litlebergen",        lat: 60.541, lon: 5.235 },
+    litlebergen:  { namn: "Litlebergen",        lat: 60.541, lon: 5.235, scene: "gard" },
     vaksdal:      { namn: "Vaksdal",            lat: 60.479, lon: 5.737 },
     evanger:      { namn: "Evanger",            lat: 60.647, lon: 6.112 },
-    voss:         { namn: "Vossevangen",        lat: 60.629, lon: 6.415 },
+    voss:         { namn: "Vossevangen",        lat: 60.629, lon: 6.415, scene: "kyrkje" },
     granvin:      { namn: "Granvin",            lat: 60.524, lon: 6.719 },
-    ullensvang:   { namn: "Ullensvang",         lat: 60.320, lon: 6.655 },
+    ullensvang:   { namn: "Ullensvang",         lat: 60.320, lon: 6.655, scene: "frukt" },
     strandebarm:  { namn: "Strandebarm",        lat: 60.271, lon: 6.012 },
     hellvik:      { namn: "Hellvik",            lat: 59.916, lon: 5.792 },
-    skanevik:     { namn: "Skånevik",           lat: 59.733, lon: 5.938 },
+    skanevik:     { namn: "Skånevik",           lat: 59.733, lon: 5.938, scene: "gard" },
     etne:         { namn: "Etne",               lat: 59.665, lon: 5.937 },
     olen:         { namn: "Ølen",               lat: 59.604, lon: 5.808 },
     sandeid:      { namn: "Sandeid",            lat: 59.544, lon: 5.862 },
     hinderavag:   { namn: "Hinderåvåg",         lat: 59.348, lon: 5.800 },
     judaberg:     { namn: "Judaberg",           lat: 59.172, lon: 5.876 },
-    stavanger:    { namn: "Stavanger",          lat: 58.969, lon: 5.729 },
-    mossige:      { namn: "Mossige",            lat: 58.693, lon: 5.722 },
+    stavanger:    { namn: "Stavanger",          lat: 58.969, lon: 5.729, scene: "by" },
+    mossige:      { namn: "Mossige",            lat: 58.693, lon: 5.722, scene: "jaeren" },
     haarr:        { namn: "Hårr",               lat: 58.560, lon: 5.661 },
     egersund:     { namn: "Egersund",           lat: 58.452, lon: 6.002 },
     heskestad:    { namn: "Heskestad",          lat: 58.494, lon: 6.357 },
@@ -61,20 +70,20 @@ window.AASEN_REISE = {
     vigeland:     { namn: "Vigeland",           lat: 58.084, lon: 7.305 },
     mandal:       { namn: "Mandal",             lat: 58.027, lon: 7.453 },
     sogne:        { namn: "Søgne",              lat: 58.093, lon: 7.783 },
-    kristiansand: { namn: "Kristiansand",       lat: 58.146, lon: 7.996 },
+    kristiansand: { namn: "Kristiansand",       lat: 58.146, lon: 7.996, scene: "by" },
     mosby:        { namn: "Mosby",              lat: 58.218, lon: 7.923 },
     haegeland:    { namn: "Hægeland",           lat: 58.383, lon: 7.741 },
     kile:         { namn: "Kile",               lat: 58.408, lon: 7.764 },
     longerak:     { namn: "Longerak",           lat: 58.750, lon: 7.853 },
     langeid:      { namn: "Langeid",            lat: 58.989, lon: 7.538 },
-    homme:        { namn: "Homme i Valle",      lat: 59.235, lon: 7.548 },
+    homme:        { namn: "Homme i Valle",      lat: 59.235, lon: 7.548, scene: "stabbur" },
     landvik:      { namn: "Landvik",            lat: 58.339, lon: 8.522 },
     arendal:      { namn: "Arendal",            lat: 58.461, lon: 8.767 },
     amli:         { namn: "Åmli",               lat: 58.766, lon: 8.484 },
     haugsjasund:  { namn: "Haugsjåsund",        lat: 58.944, lon: 8.505 },
     nissedal:     { namn: "Nissedal",           lat: 59.162, lon: 8.506 },
     spjotsodd:    { namn: "Spjotsodd",          lat: 59.363, lon: 8.526 },
-    seljord:      { namn: "Seljord",            lat: 59.485, lon: 8.630 },
+    seljord:      { namn: "Seljord",            lat: 59.485, lon: 8.630, scene: "kyrkje" },
     hjartdal:     { namn: "Hjartdal",           lat: 59.597, lon: 8.718 },
     heddal:       { namn: "Heddal",             lat: 59.581, lon: 9.109 },
     kongsberg:    { namn: "Kongsberg",          lat: 59.663, lon: 9.647 },
@@ -82,8 +91,8 @@ window.AASEN_REISE = {
     norderhov:    { namn: "Norderhov",          lat: 60.131, lon: 10.270 },
     krodsherad:   { namn: "Krødsherad",         lat: 60.125, lon: 9.784 },
     gulsvik:      { namn: "Gulsvik",            lat: 60.383, lon: 9.609 },
-    nesbyen:      { namn: "Nes i Hallingdal",   lat: 60.568, lon: 9.103 },
-    christiania:  { namn: "Christiania",        lat: 59.913, lon: 10.746 },
+    nesbyen:      { namn: "Nes i Hallingdal",   lat: 60.568, lon: 9.103, scene: "gard" },
+    christiania:  { namn: "Christiania",        lat: 59.913, lon: 10.746, scene: "hovudstad" },
     bruflat:      { namn: "Bruflat",            lat: 60.889, lon: 9.643 },
     fagernes:     { namn: "Fagernes",           lat: 60.986, lon: 9.232 },
     aurdal:       { namn: "Aurdal",             lat: 60.924, lon: 9.415 },
@@ -91,34 +100,34 @@ window.AASEN_REISE = {
     ringsaker:    { namn: "Ringsaker",          lat: 60.903, lon: 10.725 },
     lillehammer:  { namn: "Lillehammer",        lat: 61.115, lon: 10.466 },
     ringebu:      { namn: "Ringebu",            lat: 61.530, lon: 10.139 },
-    formo:        { namn: "Formo i Sel",        lat: 61.834, lon: 9.499 },
+    formo:        { namn: "Formo i Sel",        lat: 61.834, lon: 9.499, scene: "gard" },
     tofte:        { namn: "Tofte",              lat: 62.003, lon: 9.239 },
     fokstua:      { namn: "Fokstugu",           lat: 62.114, lon: 9.280 },
-    hjerkinn:     { namn: "Hjerkinn",           lat: 62.223, lon: 9.550 },
+    hjerkinn:     { namn: "Hjerkinn",           lat: 62.223, lon: 9.550, scene: "varde" },
     kongsvoll:    { namn: "Kongsvoll",          lat: 62.303, lon: 9.606 },
     oppdal:       { namn: "Oppdal",             lat: 62.601, lon: 9.677 },
     berkak:       { namn: "Berkåk",             lat: 62.828, lon: 10.009 },
     melhus:       { namn: "Melhus",             lat: 63.287, lon: 10.275 },
-    trondheim:    { namn: "Trondheim",          lat: 63.430, lon: 10.395 },
-    kristiansund: { namn: "Kristiansund",       lat: 63.110, lon: 7.728 },
+    trondheim:    { namn: "Trondheim",          lat: 63.430, lon: 10.395, scene: "domkyrkje" },
+    kristiansund: { namn: "Kristiansund",       lat: 63.110, lon: 7.728, scene: "baat" },
     donnem:       { namn: "Dønnem",             lat: 62.932, lon: 7.797 },
     surnadal:     { namn: "Surnadal",           lat: 62.974, lon: 8.726 },
     garberg:      { namn: "Garberg",            lat: 63.102, lon: 9.473 },
-    bergem:       { namn: "Bergem",             lat: 63.164, lon: 9.683 },
+    bergem:       { namn: "Bergem",             lat: 63.164, lon: 9.683, scene: "gard" },
     orkanger:     { namn: "Orkanger",           lat: 63.307, lon: 9.850 },
     agdenes:      { namn: "Agdenes",            lat: 63.644, lon: 9.738 },
-    beian:        { namn: "Beian",              lat: 63.652, lon: 9.569 },
+    beian:        { namn: "Beian",              lat: 63.652, lon: 9.569, scene: "baat" },
     bjoroya:      { namn: "Bjørøya",            lat: 64.573, lon: 10.847 },
-    alstahaug:    { namn: "Alstahaug",          lat: 65.893, lon: 12.398 },
+    alstahaug:    { namn: "Alstahaug",          lat: 65.893, lon: 12.398, scene: "kyrkje" },
     sovik:        { namn: "Søvik",              lat: 65.922, lon: 12.457 },
-    kulstad:      { namn: "Kulstad i Vefsn",    lat: 65.877, lon: 13.229 },
+    kulstad:      { namn: "Kulstad i Vefsn",    lat: 65.877, lon: 13.229, scene: "gard" },
     luktvatnet:   { namn: "Luktvatnet",         lat: 66.047, lon: 13.528 },
     krakoya:      { namn: "Kråkøya",            lat: 64.766, lon: 11.186 },
     fosnes:       { namn: "Fosnes",             lat: 64.684, lon: 11.300 },
     havika:       { namn: "Havika",             lat: 64.489, lon: 11.500 },
     argard:       { namn: "Årgård",             lat: 64.271, lon: 11.191 },
     steinkjer:    { namn: "Steinkjer",          lat: 64.015, lon: 11.495 },
-    svepstad:     { namn: "Svepstad",           lat: 63.960, lon: 11.516 },
+    svepstad:     { namn: "Svepstad",           lat: 63.960, lon: 11.516, scene: "gard" },
     frosta:       { namn: "Frosta",             lat: 63.605, lon: 10.774 },
     ler:          { namn: "Ler",                lat: 63.199, lon: 10.301 },
     storen:       { namn: "Støren",             lat: 63.039, lon: 10.285 },
@@ -126,13 +135,13 @@ window.AASEN_REISE = {
     os:           { namn: "Os i Østerdalen",    lat: 62.496, lon: 11.223 },
     tylldalen:    { namn: "Tylldalen",          lat: 62.102, lon: 10.791 },
     akre:         { namn: "Åkre",               lat: 61.722, lon: 11.199 },
-    opphus:       { namn: "Opphus",             lat: 61.330, lon: 11.257 },
+    opphus:       { namn: "Opphus",             lat: 61.330, lon: 11.257, scene: "gard" },
     aset:         { namn: "Åset",               lat: 61.082, lon: 11.351 },
     minne:        { namn: "Minne",              lat: 60.394, lon: 11.221 },
     klofta:       { namn: "Kløfta",             lat: 60.074, lon: 11.138 },
-    svolvaer:     { namn: "Svolvær",            lat: 68.235, lon: 14.564 },
-    kabelvag:     { namn: "Kabelvåg",           lat: 68.211, lon: 14.476 },
-    tromso:       { namn: "Tromsø",             lat: 69.655, lon: 18.964 },
+    svolvaer:     { namn: "Svolvær",            lat: 68.235, lon: 14.564, scene: "baat" },
+    kabelvag:     { namn: "Kabelvåg",           lat: 68.211, lon: 14.476, scene: "hjell" },
+    tromso:       { namn: "Tromsø",             lat: 69.655, lon: 18.964, scene: "dampskip" },
     bodo:         { namn: "Bodø",               lat: 67.283, lon: 14.375 },
   },
 };
@@ -193,7 +202,15 @@ Modules.register({
         <p>Artiklane vart lesne i Trondheim. Der leidde Frederik Moltke Bugge Det
         Kongelige Norske Videnskabers Selskab, og han sytte for at Aasen fekk eit årleg
         stipend på 150 spesidalar for å granske dialektane i Bergens stift. «Intet kan
-        sammenlignes med Reiser», skreiv Aasen i dagboka etter Bergensturen.</p>`,
+        sammenlignes med Reiser», skreiv Aasen i dagboka etter Bergensturen.</p>
+        <div class="callout">
+          <strong>Kor mykje var 150 spesidalar?</strong> Rekna etter prisane svarar det til
+          om lag 70 000 kroner i dag. Men lønene var mykje lågare den gongen: ein dreng
+          på ein gard fekk 24 til 25 spesidalar i året pluss kost og losji, og ein lærar
+          ved fastskulen skulle etter lova ha 20. Stipendet var altså seks årsløner for
+          ein tenestekar, nok til å reise heile året utan anna arbeid, men langt frå
+          rikdom: ein rektor ved ein lærd skule kunne ha 900 spesidalar.
+        </div>`,
     },
     {
       id: "opp-stipend", type: "exercise", exerciseType: "multipleChoice",
@@ -205,7 +222,7 @@ Modules.register({
         "Universitetet i Kristiania",
       ],
       correct: 0,
-      explanation: "Etter omtalen i Bergens Stiftstidende sytte Frederik Moltke Bugge i Videnskabsselskabet for eit årleg stipend på 150 spesidalar. Stortinget tok over først i 1851.",
+      explanation: "Etter omtalen i Bergens Stiftstidende sytte Frederik Moltke Bugge i Videnskabsselskabet for eit årleg stipend på 150 spesidalar, om lag 70 000 kroner i dag rekna etter prisane, eller seks årsløner for ein dreng. Stortinget tok over først i 1851.",
     },
     {
       id: "kap-1842", type: "lesson", title: "Nordfjord, Sunnfjord og Sogn",
@@ -473,7 +490,12 @@ Modules.register({
         <p>Frå august 1850 til september 1851 budde han heime i Ørsta. I 1851 vedtok
         Stortinget å gi han eit årleg stipend på 300 spesidalar, og han vart den første
         statsstipendiaten i landet. Same året gav han det nye språket namnet
-        landsmål.</p>`,
+        landsmål.</p>
+        <div class="callout">
+          <strong>300 spesidalar</strong> var det same som ein universitetsstipendiat fekk,
+          og tolv årsløner for ein dreng. Rekna etter prisane er det om lag 130 000
+          kroner i dag. Aasen levde enkelt og budde billig, så det rakk godt.
+        </div>`,
     },
     {
       id: "opp-aarstal", type: "exercise", exerciseType: "matching",
@@ -515,6 +537,9 @@ Modules.register({
         kunne sjå ut. Så kom «Norsk Grammatik» i 1864 og «Norsk Ordbog» i 1873, med om
         lag 45 000 oppslagsord. I 1885 vedtok Stortinget at landsmålet skulle vere
         jamstilt med det danske skriftspråket.</p>
+        <p>Statsstipendet voks med åra. Frå 1884 fekk han 3500 kroner i året, som
+        svarar til over 300 000 kroner i dag rekna etter prisane, og fleire gonger det
+        ein vanleg arbeidar tente. Aasen brukte lite på seg sjølv.</p>
         <p>Alt i alt reiste Aasen om lag 28 350 kilometer og var på farten 2794 dagar.
         Han var innom halvparten av dagens kommunar. Ivar Aasen døydde i Kristiania
         23. september 1896, 83 år gamal.</p>`,

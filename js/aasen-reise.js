@@ -280,6 +280,121 @@
   }
   stillFigur(0);
 
+  /* ---------- Små scener ved viktige stopp ----------
+     Kvar scene er ei gruppe av enkle primitiv (boksar, kjegler, sylindrar) i
+     same målestokk som figuren, bygd av byggjarane i SCENER. Ho dukkar opp med
+     ei lita veksing når figuren når stoppet. Kva stopp som får kva scene, står
+     i feltet `scene` i js/content/aasen-reise.js. */
+  const M = {
+    raud: new THREE.MeshLambertMaterial({ color: 0xb0392f }), kvit: new THREE.MeshLambertMaterial({ color: 0xf2efe6 }),
+    oker: new THREE.MeshLambertMaterial({ color: 0xd9b25c }), tak: new THREE.MeshLambertMaterial({ color: 0x9a5a44 }),
+    gron: new THREE.MeshLambertMaterial({ color: 0x4f7a45 }), stein: new THREE.MeshLambertMaterial({ color: 0x8d8a85 }),
+    brun: new THREE.MeshLambertMaterial({ color: 0x7a5a3a }), mork: new THREE.MeshLambertMaterial({ color: 0x2a2a30 }),
+    sno: new THREE.MeshLambertMaterial({ color: 0xf7f7f4 }), blom: new THREE.MeshLambertMaterial({ color: 0xe9b7c4 }),
+    segl: new THREE.MeshLambertMaterial({ color: 0xf4efe2, side: THREE.DoubleSide }), fisk: new THREE.MeshLambertMaterial({ color: 0xd8c9a3 }),
+    royk: new THREE.MeshLambertMaterial({ color: 0xb9b9b9, transparent: true, opacity: 0.7 }),
+    bok1: new THREE.MeshLambertMaterial({ color: 0x8a3b2e }), bok2: new THREE.MeshLambertMaterial({ color: 0x2f4f6f }), bok3: new THREE.MeshLambertMaterial({ color: 0x5b6b3a }),
+  };
+  const boks = (b, h, d, mat, x = 0, y = 0, z = 0) => { const m = new THREE.Mesh(new THREE.BoxGeometry(b, h, d), mat); m.position.set(x, y + h / 2, z); return m; };
+  const syl = (r1, r2, h, mat, x = 0, y = 0, z = 0, seg = 12) => { const m = new THREE.Mesh(new THREE.CylinderGeometry(r1, r2, h, seg), mat); m.position.set(x, y + h / 2, z); return m; };
+  const kule = (r, mat, x, y, z) => { const m = new THREE.Mesh(new THREE.SphereGeometry(r, 10, 8), mat); m.position.set(x, y, z); return m; };
+  const takGeo = new Map();
+  function tak(b, d, h, mat, x = 0, y = 0, z = 0) {
+    const key = [b, d, h].join();
+    if (!takGeo.has(key)) {
+      const sh = new THREE.Shape(); sh.moveTo(-b / 2, 0); sh.lineTo(b / 2, 0); sh.lineTo(0, h); sh.closePath();
+      const g = new THREE.ExtrudeGeometry(sh, { depth: d, bevelEnabled: false }); g.translate(0, 0, -d / 2); takGeo.set(key, g);
+    }
+    const m = new THREE.Mesh(takGeo.get(key), mat); m.position.set(x, y, z); return m;
+  }
+  function hus(g, b, h, d, vegg, x = 0, z = 0, rot = 0, takMat = M.tak) {
+    const k = new THREE.Group();
+    k.add(boks(b, h, d, vegg), tak(b + 0.16, d + 0.16, h * 0.55, takMat, 0, h));
+    k.position.set(x, 0, z); k.rotation.y = rot; g.add(k); return k;
+  }
+  const gran = (g, x, z, h = 1.2) => { g.add(syl(0.05, 0.08, h * 0.35, M.brun, x, 0, z, 6), syl(0, h * 0.35, h * 0.75, M.gron, x, h * 0.3, z, 8)); };
+  const lauv = (g, x, z, mat = M.gron, r = 0.45) => { g.add(syl(0.06, 0.09, 0.5, M.brun, x, 0, z, 6), kule(r, mat, x, 0.5 + r * 0.8, z)); };
+  function kyrkje(g, stor) {
+    const s = stor ? 1.5 : 1, vegg = stor ? M.stein : M.kvit;
+    hus(g, 1.5 * s, 1.2 * s, 2.6 * s, vegg);
+    g.add(boks(0.7 * s, 2.2 * s, 0.7 * s, vegg, 0, 0, 1.3 * s), syl(0, 0.5 * s, 1.1 * s, M.tak, 0, 2.2 * s, 1.3 * s, 4));
+    if (stor) { g.add(boks(0.7 * s, 2.2 * s, 0.7 * s, vegg, -0.9, 0, 1.3 * s), syl(0, 0.5 * s, 1.1 * s, M.tak, -0.9, 2.2 * s, 1.3 * s, 4)); g.children[2].position.x = 0.9; g.children[3].position.x = 0.9; }
+  }
+  function baat(g, x = 0, z = 0, rot = 0.4) {
+    const k = new THREE.Group();
+    const skrog = boks(2.2, 0.45, 0.8, M.brun); skrog.scale.set(1, 1, 1); k.add(skrog);
+    k.add(syl(0.04, 0.04, 2.1, M.brun, 0.1, 0.4, 0, 6));
+    const segl = new THREE.Mesh(new THREE.PlaneGeometry(1.1, 1.3), M.segl); segl.position.set(0.15, 1.5, 0.02); k.add(segl);
+    k.position.set(x, 0, z); k.rotation.y = rot; g.add(k);
+  }
+  const SCENER = {
+    gard(g) { hus(g, 1.7, 1.0, 1.2, M.kvit, -0.9, 0.2, 0.15); hus(g, 2.3, 1.2, 1.3, M.raud, 1.2, -0.6, -0.3); gran(g, -1.9, -1.0); gran(g, 2.6, 0.9, 1.0); },
+    herregard(g) { hus(g, 2.8, 1.5, 1.4, M.kvit, 0, 0, 0.1); hus(g, 1.3, 0.9, 1.0, M.raud, 2.3, -1.2, 0.3); lauv(g, -2.2, 0.6); lauv(g, -1.6, -1.2); lauv(g, 1.6, 1.4); },
+    by(g) {
+      const fargar = [M.kvit, M.oker, M.raud, M.kvit, M.kvit, M.oker];
+      for (let i = 0; i < 7; i++) { const a = i * 2.4 + 0.7, r = 1.4 + (i % 3) * 0.5; hus(g, 0.9 + (i % 2) * 0.3, 0.8 + (i % 3) * 0.35, 0.9, fargar[i % fargar.length], Math.cos(a) * r, Math.sin(a) * r, a); }
+      const k = new THREE.Group(); kyrkje(k, false); k.scale.setScalar(0.6); g.add(k);
+      baat(g, 3.2, 0.6, 0.3); baat(g, 3.0, -1.4, -0.5);
+    },
+    hovudstad(g) {
+      SCENER.by(g);
+      const k = new THREE.Group(); k.add(boks(3.2, 1.5, 1.4, M.oker), tak(3.4, 1.6, 0.5, M.tak, 0, 1.5));
+      for (let i = 0; i < 4; i++) k.add(syl(0.1, 0.1, 1.5, M.kvit, -1.1 + i * 0.73, 0, 0.75, 8));
+      k.position.set(-0.6, 0, -3.0); g.add(k);
+    },
+    kyrkje(g) { kyrkje(g, false); gran(g, -1.5, -0.6, 1.0); },
+    domkyrkje(g) { kyrkje(g, true); },
+    stabbur(g) {
+      for (const [x, z] of [[-0.45, -0.35], [0.45, -0.35], [-0.45, 0.35], [0.45, 0.35]]) g.add(syl(0.08, 0.1, 0.5, M.brun, x, 0, z, 6));
+      g.add(boks(1.1, 0.7, 0.9, M.brun, 0, 0.5, 0), boks(1.4, 0.6, 1.15, M.brun, 0, 1.2, 0), tak(1.55, 1.3, 0.6, M.tak, 0, 1.8));
+      hus(g, 1.6, 0.9, 1.1, M.brun, 2.0, -0.4, 0.2); gran(g, -1.6, 0.8);
+    },
+    vinter(g) { hus(g, 1.7, 1.0, 1.2, M.kvit, -0.9, 0.2, 0.15, M.sno); hus(g, 2.3, 1.2, 1.3, M.raud, 1.2, -0.6, -0.3, M.sno); gran(g, -1.9, -1.0); const d = new THREE.Mesh(new THREE.CircleGeometry(3.2, 24), M.sno); d.rotation.x = -Math.PI / 2; d.position.y = 0.01; g.add(d); },
+    frukt(g) { hus(g, 1.7, 1.0, 1.2, M.kvit, 0, -0.9, 0.1); for (const [x, z] of [[-1.6, 0.9], [-0.5, 1.2], [0.7, 1.3], [1.8, 0.8], [2.1, -0.6]]) lauv(g, x, z, M.blom, 0.42); },
+    jaeren(g) { hus(g, 1.9, 0.8, 1.1, M.kvit, 0, 0, 0.05); g.add(boks(4.0, 0.3, 0.25, M.stein, 0.4, 0, 1.5)); for (const [x, z] of [[-1.6, -1.0], [-0.9, -1.4], [1.9, -0.9]]) g.add(kule(0.28, M.kvit, x, 0.3, z), kule(0.14, M.mork, x + 0.25, 0.38, z)); },
+    bok(g) { g.add(boks(1.1, 0.2, 0.8, M.bok1, 0, 0, 0), boks(1.0, 0.2, 0.75, M.bok2, 0.08, 0.2, 0.05), boks(1.05, 0.2, 0.8, M.bok3, -0.05, 0.4, -0.03)); const v = boks(0.7, 0.06, 0.9, M.kvit, -0.34, 0.6, 0); v.rotation.z = 0.18; const h = boks(0.7, 0.06, 0.9, M.kvit, 0.34, 0.6, 0); h.rotation.z = -0.18; g.add(v, h); },
+    varde(g) { g.add(syl(0.55, 0.6, 0.4, M.stein, 0, 0, 0, 8), syl(0.42, 0.5, 0.4, M.stein, 0, 0.4, 0, 8), syl(0.3, 0.38, 0.4, M.stein, 0, 0.8, 0, 8), syl(0.15, 0.24, 0.4, M.stein, 0, 1.2, 0, 8)); for (const [x, z, r] of [[-1.6, 0.6, 0.7], [1.4, -0.8, 0.5], [0.8, 1.5, 0.45]]) { const d = new THREE.Mesh(new THREE.CircleGeometry(r, 12), M.sno); d.rotation.x = -Math.PI / 2; d.position.set(x, 0.02, z); g.add(d); } },
+    baat(g) { baat(g, 0, 0, 0.3); baat(g, 1.6, -1.6, -0.6); },
+    dampskip(g) {
+      const k = new THREE.Group();
+      k.add(boks(3.2, 0.6, 1.0, M.mork), boks(1.6, 0.5, 0.7, M.kvit, -0.2, 0.6, 0), syl(0.16, 0.16, 0.9, M.mork, 0.4, 1.1, 0, 10), syl(0.17, 0.17, 0.2, M.raud, 0.4, 1.7, 0, 10));
+      k.add(kule(0.2, M.royk, 0.5, 2.2, 0), kule(0.28, M.royk, 0.75, 2.65, 0.1), kule(0.36, M.royk, 1.1, 3.1, 0.2));
+      k.rotation.y = 0.5; g.add(k);
+    },
+    hjell(g) {
+      for (const x of [-1.2, 1.2]) for (const s of [-1, 1]) { const p = syl(0.05, 0.05, 1.9, M.brun, x + s * 0.45, 0, 0, 6); p.rotation.z = -s * 0.42; p.position.y = 0.9; g.add(p); }
+      const tv = syl(0.04, 0.04, 2.8, M.brun, 0, 1.6, 0, 6); tv.rotation.z = Math.PI / 2; g.add(tv);
+      for (let i = 0; i < 8; i++) g.add(boks(0.1, 0.5, 0.2, M.fisk, -1.05 + i * 0.3, 1.1, 0));
+      baat(g, 0.6, 2.0, 1.3);
+    },
+  };
+  const scener = new Map();   // stad-id -> { g, synt, t0 }
+  let sceneSkala = 1;
+  function tomScener() { for (const { g } of scener.values()) { scene.remove(g); g.traverse(o => { if (o.geometry && !takGeo.has(o.geometry.uuid)) o.geometry.dispose(); }); } scener.clear(); }
+  function byggScener(idar, straks) {
+    tomScener();
+    idar.forEach((id, i) => {
+      const st = STADER[id];
+      if (!st.scene || !SCENER[st.scene]) return;
+      const g = new THREE.Group();
+      SCENER[st.scene](g);
+      const p = stadXZ(id);
+      g.position.set(p.x, hoegdVed(p.x, p.z) * EXAG + 0.05, p.z);
+      g.rotation.y = (i * 2.4) % (2 * Math.PI);
+      g.scale.setScalar(0.0001);
+      scene.add(g);
+      scener.set(id, { g, synt: !!straks, t0: straks ? -Infinity : 0 });
+    });
+  }
+  function visScene(id) { const s = scener.get(id); if (s && !s.synt) { s.synt = true; s.t0 = performance.now(); } }
+  function stegScener(no) {
+    for (const s of scener.values()) {
+      if (!s.synt) continue;
+      const u = Math.min(1, (no - s.t0) / 600), k = 1 - Math.pow(1 - u, 3);
+      s.g.scale.setScalar(Math.max(0.0001, sceneSkala * k));
+    }
+  }
+
   // Ei rute er ei liste punkt {x, z, h} med ~2,5 km mellomrom, drapert på terrenget.
   function lagRute(stoppIdar) {
     const punkt = [];
@@ -420,6 +535,8 @@
       etikettar.set(id, el);
     }
 
+    byggScener(synlege, !noRute);
+
     // Kamera
     const alle = k.kamera === "land" ? null : punkt.length ? punkt : synlege.map(stadXZ);
     flyTil(alle ? passTil(alle) : LANDET(), 1800);
@@ -467,6 +584,7 @@
       gruppeNo.add(m);
     }
     figur.g.scale.setScalar(radius * 2.8);
+    sceneSkala = radius * 3.0;
     bygdForAvstand = kam.avstand;
     oppdaterMarkor();
   }
@@ -498,7 +616,9 @@
     for (const [id, el] of etikettar) {
       const erAktiv = aktiv && aktiv.id === id;
       el.classList.toggle("aktiv", !!erAktiv);
-      el.classList.toggle("naadd", noRute.stoppPos.some(st => st.id === id && st.t <= u + 1e-6));
+      const naadd = noRute.stoppPos.some(st => st.id === id && st.t <= u + 1e-6);
+      el.classList.toggle("naadd", naadd);
+      if (naadd) visScene(id);
       if (erAktiv) {
         const same = noRute.stoppPos.slice(0, noRute.stoppPos.indexOf(aktiv) + 1).filter(st => st.id === id).length - 1;
         const treff = stopp.filter(st => st[0] === id);
@@ -625,6 +745,7 @@
       }
     }
     if (!bygdForAvstand || Math.abs(kam.avstand - bygdForAvstand) > bygdForAvstand * 0.3) byggRuter();
+    stegScener(no);
     oppdaterKamera();
     renderer.render(scene, camera);
     plasserEtikettar();

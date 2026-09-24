@@ -98,7 +98,10 @@ dit). Sida viser modulen éin seksjon om gongen ved sida av eit 3D-kart over
 Noreg: 19 kapittel og 11 oppgåver. Kvart kapittel er ein `lesson`-seksjon med eit
 `reise`-felt (tid, stopp med datoar, eventuelt `kamera: "land"`); ruta veks fram
 på kartet medan ein liten figur av Aasen går langs henne, om lag 50 km i
-sekundet. Oppgåvene mellom kapitla er vanlege oppgåvetypar frå `js/exercises.js`,
+sekundet. Viktige stopp har ein liten stilisert modell (gard, by, kyrkje,
+stabbur, båt, dampskip, fiskehjell og så vidare) som dukkar opp når figuren kjem
+fram; kva stopp som får kva, står i feltet `scene` på staden, og modellane er
+bygde av enkle primitiv i `SCENER` i `js/aasen-reise.js`. Oppgåvene mellom kapitla er vanlege oppgåvetypar frå `js/exercises.js`,
 og svara blir lagra som i resten av kurset, så modulen får framdrift og
 «Fullført» på oversikta. Eleven blar med knappane eller piltastane, kan snu og
 zoome kartet, stoppe figuren med mellomrom, hoppe til eit stopp ved å klikke på
@@ -111,7 +114,11 @@ som dei andre, med `after: "historie-aasen"` for å hamne rett etter modulen om
 Aasen i Del 1. Datoane kjem frå reisekarta i skriftserien til Ivar
 Aasen-selskapet, slik dei er attgjevne på allmenning.no/reiser, og frå Ottar
 Grepstads biografi på nynorsk.no. Stader som ikkje lét seg plassere sikkert, er
-utelatne, og ruta er teikna som rette liner mellom stoppa.
+utelatne, og ruta er teikna som rette liner mellom stoppa. Pengesummar
+(stipendet på 150 spesidalar og så vidare) er forklarte for eleven både som
+kjøpekraft i dag, rekna om med konsumprisindeksen til Norges Bank og SSB, og
+som årsløner den gongen (dreng, lærar, rektor). Tala og kjeldene står i
+kommentaren øvst i innhaldsfila.
 
 Kartet (`js/aasen-reise.js`) er eitt trekantnett bygd av høgdekartet i
 `data/noreg-terreng.js`, 2 km per piksel, i Lamberts konforme kjegleprojeksjon.
