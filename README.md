@@ -142,8 +142,8 @@ og dei næraste bitane blir bygde dobbelt så tett som pikslane med bikubisk
 interpolasjon. Innsjøane får fargen sin etter avstanden til innsjøkanten. Difor
 er strendene jamne kurver òg når ein zoomar tett inn. Fargane ligg i eit kartbilete som blir teikna éin gong ved
 oppstart og lagt oppå terrenget som tekstur: høgdefargar, relieffskugge med lys
-frå nordvest rekna av høgdekartet, hav med djupfargar, innsjøar, brear og
-riksgrensa. Difor er detaljane per piksel, ikkje per hjørne i nettet. Er sida
+frå nordvest rekna av høgdekartet, hav med djupfargar, innsjøar, brear, dei
+store elvane (vektorliner frå Natural Earth i datafila) og riksgrensa. Difor er detaljane per piksel, ikkje per hjørne i nettet. Er sida
 på nett, hentar ho i tillegg `data/noreg-terreng-fin.png`, same kartet med
 0,625 km per piksel (om lag 3 MB, cacha av `sw.js`), og teiknar kartbiletet
 på nytt frå det. Opna frå disk står det innebygde kartet, for nettlesaren

@@ -179,6 +179,21 @@
       d[i * 4] = f[0] * 255; d[i * 4 + 1] = f[1] * 255; d[i * 4 + 2] = f[2] * 255; d[i * 4 + 3] = 255;
     }
     ctx.putImageData(bilete, 0, 0);
+    // Elvane: vektorliner frå datafila, teikna oppå med breidd etter
+    // storleiksklassen (i km, så dei er like breie i begge laga).
+    if (T.elvar) {
+      ctx.lineCap = "round"; ctx.lineJoin = "round";
+      ctx.strokeStyle = "rgba(58, 108, 158, 0.9)";
+      for (const e of T.elvar) {
+        ctx.lineWidth = (e.s <= 7 ? 0.9 : 0.6) / km;
+        ctx.beginPath();
+        for (let k = 0; k < e.p.length; k += 2) {
+          const x = e.p[k] / km, y = e.p[k + 1] / km;
+          if (k === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+    }
     const tekstur = new THREE.CanvasTexture(c);
     tekstur.flipY = false;
     tekstur.anisotropy = renderer.capabilities.getMaxAnisotropy();

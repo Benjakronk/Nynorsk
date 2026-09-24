@@ -4,9 +4,12 @@
    - Høgder: Terrarium-fliser frå Mapzen/AWS Terrain Tiles (zoom 7, om lag
      0,6 km per piksel på 60° N), som samlar SRTM, GMTED og ETOPO1 (havdjup).
      https://registry.opendata.aws/terrain-tiles/
-   - Landegrenser, innsjøar og brear: Natural Earth 1:10M (public domain).
-     Grensene skil norsk land frå Sverige, Finland, Russland og Danmark og
-     gir kystlinja; innsjøane og breane blir teikna i eigne fargar.
+   - Landegrenser, innsjøar, brear og elvar: Natural Earth 1:10M (public
+     domain). Grensene skil norsk land frå Sverige, Finland, Russland og
+     Danmark og gir kystlinja; innsjøane og breane blir teikna i eigne
+     fargar, og dei store elvane ligg som vektorliner i datafila (`elvar`,
+     i km frå øvre venstre hjørne, med storleiksklassen frå Natural Earth)
+     og blir teikna inn i kartbiletet av nettlesaren.
 
    Resultatet er to filer. data/noreg-terreng.js har eit PNG-bilete som base64
    i eit JS-objekt, slik at kartet òg verkar når kurset blir opna rett frå
@@ -176,6 +179,15 @@ async function main() {
     .flatMap(f => f.geometry ? (f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.type === "MultiPolygon" ? f.geometry.coordinates : []) : []);
   const innsjoar = polysAv(await hent(NE + "ne_10m_lakes.geojson"));
   const brear = polysAv(await hent(NE + "ne_10m_glaciated_areas.geojson"));
+  // Elvar: hovudfila og Europa-tillegget, berre elvar (ikkje innsjø-midtliner).
+  const elvLinjer = [];
+  for (const fil of ["ne_10m_rivers_lake_centerlines.geojson", "ne_10m_rivers_europe.geojson"]) {
+    for (const f of JSON.parse((await hent(NE + fil)).toString("utf8")).features) {
+      if (!f.geometry || /lake/i.test(f.properties.featurecla || "")) continue;
+      const linjer = f.geometry.type === "LineString" ? [f.geometry.coordinates] : f.geometry.type === "MultiLineString" ? f.geometry.coordinates : [];
+      for (const l of linjer) elvLinjer.push({ s: f.properties.scalerank || 10, l });
+    }
+  }
   let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
   for (const ring of land.Norway.flat()) for (const [lon, lat] of ring) {
     if (lat > 72 || lat < 57 || lon < 3) continue; // Svalbard, Jan Mayen, Bjørnøya og Bouvetøya er ikkje med
@@ -341,6 +353,23 @@ async function main() {
     return { rgb, noreg };
   }
 
+  // Elvane i utsnittet, i km frå øvre venstre hjørne, forenkla til punkt
+  // med minst 0,3 km mellom seg og runda til 0,1 km.
+  const elvar = [];
+  for (const { s, l } of elvLinjer) {
+    const p = [];
+    let sistX = Infinity, sistY = Infinity;
+    for (const [lon, lat] of l) {
+      const q = fram(lat, lon), ex = q.x - minX, ey = maxY - q.y;
+      if (ex < 0 || ey < 0 || ex > maxX - minX || ey > maxY - minY) { if (p.length >= 4) elvar.push({ s, p }); p.length = 0; sistX = Infinity; continue; }
+      if (Math.hypot(ex - sistX, ey - sistY) < 0.3) continue;
+      p.push(Math.round(ex * 10) / 10, Math.round(ey * 10) / 10);
+      sistX = ex; sistY = ey;
+    }
+    if (p.length >= 4) elvar.push({ s, p: p.slice() });
+  }
+  console.log(`elvar i utsnittet: ${elvar.length} liner, ${elvar.reduce((a, e) => a + e.p.length / 2, 0)} punkt`);
+
   const grov = await lagLag(Z, KM_PER_PX, W, H);
   const rgb = grov.rgb, noreg = grov.noreg;
   const png = kodPng(W, H, rgb);
@@ -350,6 +379,7 @@ async function main() {
     klassar: { hav: 0, innsjo: 1, annaLand: 2, bre: 3, noreg: 4 },   // blå kanal >> 5
     vatnPerKm: 16, vatnMaks: 1.0,                                       // blå kanal & 31, minus 16
     x0: minX, y0: maxY,
+    elvar,
     fin: { fil: "noreg-terreng-fin.png", breidd: W * 2, hogd: H * 2, kmPerPx: KM_PER_PX / 2, versjon: "" },
     png: "data:image/png;base64," + png.toString("base64"),
   };

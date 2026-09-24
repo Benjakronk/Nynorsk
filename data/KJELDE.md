@@ -25,8 +25,11 @@ Kjelder:
   (Mapzen), zoom 7 for det innebygde kartet og zoom 8 for det fine. Datasettet er sett saman av SRTM, GMTED2010 og ETOPO1,
   som alle er offentlege data utan opphavsrettslege krav.
   <https://registry.opendata.aws/terrain-tiles/>
-- **Landegrenser, innsjøar og brear:** Natural Earth 1:10M (Admin 0 Countries,
-  Lakes, Glaciated Areas), public domain.
+- **Landegrenser, innsjøar, brear og elvar:** Natural Earth 1:10M (Admin 0
+  Countries, Lakes, Glaciated Areas, Rivers + Lake Centerlines og
+  Rivers Europe), public domain. Elvane ligg som vektorliner i
+  `noreg-terreng.js` (`elvar`, km frå øvre venstre hjørne, med
+  storleiksklasse) og blir teikna inn i kartbiletet av nettlesaren.
   <https://www.naturalearthdata.com/>
 
 `node tools/lag-terreng.js` lastar ned flisene og grensene, projiserer om,
