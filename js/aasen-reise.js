@@ -7,7 +7,10 @@
    Fargane ligg i eit kartbilete som blir teikna éin gong ved oppstart:
    høgdefargar, relieffskugge frå høgdekartet, hav med djupfargar, innsjøar,
    brear og riksgrensa. Biletet blir lagt oppå terrenget som tekstur, så
-   detaljane er per piksel, ikkje per hjørne i nettet.
+   detaljane er per piksel, ikkje per hjørne i nettet. Er sida på nett, hentar
+   ho i tillegg data/noreg-terreng-fin.png, same kartet med dobbel oppløysing,
+   og teiknar kartbiletet på nytt frå det. Nettet er det same; berre biletet
+   blir finare.
    Stadene i js/content/aasen-reise.js blir plasserte med same
    kjegleprojeksjonen som høgdekartet. Kvart kapittel (lesson med `reise`)
    teiknar ruta si som ei slange lagd oppå terrenget, og ein liten figur av
@@ -53,27 +56,42 @@
   /* ---------- Høgdekartet ---------- */
   const KL = T.klassar;        // hav, innsjo, annaLand, bre, noreg
   let hoegd, maske, djup;      // per piksel: km over havet, klasse, havdjup 0..1
-  function lesTerreng() {
+  // Les eit høgdekart-PNG (sjå tools/lag-terreng.js for kanalane) til tabellar.
+  // Det innebygde kartet er ein data-URL og går gjennom eit Image-element. Det
+  // fine kartet blir henta med fetch og dekoda med createImageBitmap, som
+  // ikkje gir opp like lett på store bilete når WebGL alt held mykje minne.
+  function lesHoegdekart(src, breidd, hogd) {
+    const tilTabellar = bilete => {
+      const c = document.createElement("canvas");
+      c.width = breidd; c.height = hogd;
+      const ctx = c.getContext("2d");
+      ctx.drawImage(bilete, 0, 0);
+      const d = ctx.getImageData(0, 0, breidd, hogd).data;
+      const n = breidd * hogd;
+      const L = { W: breidd, H: hogd, hoegd: new Float32Array(n), maske: new Uint8Array(n), djup: new Float32Array(n) };
+      for (let i = 0; i < n; i++) {
+        const r = d[i * 4] / 255;
+        L.hoegd[i] = r * r * T.hMaks / 1000;
+        L.djup[i] = d[i * 4 + 1] / 255;
+        L.maske[i] = d[i * 4 + 2];
+      }
+      return L;
+    };
+    if (!src.startsWith("data:") && window.createImageBitmap) {
+      return fetch(src)
+        .then(r => { if (!r.ok) throw new Error("Fekk ikkje " + src + " (" + r.status + ")"); return r.blob(); })
+        .then(blob => createImageBitmap(blob))
+        .then(bm => { const L = tilTabellar(bm); bm.close(); return L; });
+    }
     return new Promise((res, rej) => {
       const img = new Image();
-      img.onload = () => {
-        const c = document.createElement("canvas");
-        c.width = W; c.height = H;
-        const ctx = c.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-        const d = ctx.getImageData(0, 0, W, H).data;
-        hoegd = new Float32Array(W * H); maske = new Uint8Array(W * H); djup = new Float32Array(W * H);
-        for (let i = 0; i < W * H; i++) {
-          const r = d[i * 4] / 255;
-          hoegd[i] = r * r * T.hMaks / 1000;
-          djup[i] = d[i * 4 + 1] / 255;
-          maske[i] = d[i * 4 + 2];
-        }
-        res();
-      };
+      img.onload = () => { try { res(tilTabellar(img)); } catch (e) { rej(e); } };
       img.onerror = () => rej(new Error("Kunne ikkje lese høgdekartet"));
-      img.src = T.png;
+      img.src = src;
     });
+  }
+  function lesTerreng() {
+    return lesHoegdekart(T.png, W, H).then(L => { hoegd = L.hoegd; maske = L.maske; djup = L.djup; });
   }
   // Høgd i km på eit punkt i verda (bilineær mellom pikselsentra).
   function hoegdVed(x, z) {
@@ -100,38 +118,41 @@
     return RAMPE[RAMPE.length - 1][1];
   }
   const mix = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
-  function farge(i) {
-    const kl = maske[i];
-    if (kl === KL.hav) return mix(HAV_GRUNT, HAV_DJUPT, djup[i]);
-    if (kl === KL.innsjo) return INNSJO;
-    let c = kl === KL.bre ? BRE : rampe(hoegd[i]);
-    if (kl === KL.annaLand) c = mix(c, ANNA_LAND, 0.7);
-    // Relieffskugge: lys frå nordvest 45° over horisonten, rekna av hellinga
-    // i høgdekartet, med litt grunnlys så nordaustsidene ikkje blir svarte.
-    const s = 0.52 + 0.48 * skugge(i);
-    return [c[0] * s, c[1] * s, c[2] * s];
-  }
   const SKUGGE_Z = 4;   // overdriving av hellinga i skuggen
-  const hLand = i => maske[i] ? hoegd[i] : 0;
-  function skugge(i) {
-    const r = i % W, k = (i - r) / W;
-    const dx = (hLand(k * W + Math.min(W - 1, r + 1)) - hLand(k * W + Math.max(0, r - 1))) / (2 * KM) * SKUGGE_Z;
-    const dy = (hLand(Math.min(H - 1, k + 1) * W + r) - hLand(Math.max(0, k - 1) * W + r)) / (2 * KM) * SKUGGE_Z;
-    const n = 1 / Math.sqrt(dx * dx + dy * dy + 1);
-    return Math.max(0, (dx * 0.5 + dy * 0.5 + Math.SQRT1_2) * n);
-  }
-  // Riksgrensa: norsk landpiksel med anna land som nabo
-  function erGrense(i) {
-    if (maske[i] !== KL.noreg) return false;
-    const r = i % W;
-    for (const n of [i - 1, i + 1, i - W, i + W]) {
-      if (n < 0 || n >= W * H) continue;
-      if ((n === i - 1 && r === 0) || (n === i + 1 && r === W - 1)) continue;
-      if (maske[n] === KL.annaLand) return true;
-    }
-    return false;
-  }
-  function lagKartbilete() {
+  // Teiknar kartbiletet for eit lag L = { W, H, km, hoegd, maske, djup }.
+  function lagKartbilete(L) {
+    const { W, H, km, hoegd, maske, djup } = L;
+    const hLand = i => maske[i] ? hoegd[i] : 0;
+    // Relieffskugge: lys frå nordvest 45° over horisonten, rekna av hellinga
+    // i høgdekartet.
+    const skugge = i => {
+      const r = i % W, k = (i - r) / W;
+      const dx = (hLand(k * W + Math.min(W - 1, r + 1)) - hLand(k * W + Math.max(0, r - 1))) / (2 * km) * SKUGGE_Z;
+      const dy = (hLand(Math.min(H - 1, k + 1) * W + r) - hLand(Math.max(0, k - 1) * W + r)) / (2 * km) * SKUGGE_Z;
+      const n = 1 / Math.sqrt(dx * dx + dy * dy + 1);
+      return Math.max(0, (dx * 0.5 + dy * 0.5 + Math.SQRT1_2) * n);
+    };
+    // Riksgrensa: norsk landpiksel med anna land som nabo
+    const erGrense = i => {
+      if (maske[i] !== KL.noreg) return false;
+      const r = i % W;
+      for (const n of [i - 1, i + 1, i - W, i + W]) {
+        if (n < 0 || n >= W * H) continue;
+        if ((n === i - 1 && r === 0) || (n === i + 1 && r === W - 1)) continue;
+        if (maske[n] === KL.annaLand) return true;
+      }
+      return false;
+    };
+    const farge = i => {
+      const kl = maske[i];
+      if (kl === KL.hav) return mix(HAV_GRUNT, HAV_DJUPT, djup[i]);
+      if (kl === KL.innsjo) return INNSJO;
+      let c = kl === KL.bre ? BRE : rampe(hoegd[i]);
+      if (kl === KL.annaLand) c = mix(c, ANNA_LAND, 0.7);
+      // Litt grunnlys, så nordaustsidene ikkje blir svarte.
+      const s = 0.52 + 0.48 * skugge(i);
+      return [c[0] * s, c[1] * s, c[2] * s];
+    };
     const c = document.createElement("canvas");
     c.width = W; c.height = H;
     const ctx = c.getContext("2d");
@@ -145,6 +166,23 @@
     tekstur.flipY = false;
     tekstur.anisotropy = renderer.capabilities.getMaxAnisotropy();
     return tekstur;
+  }
+  // Det fine kartbiletet (dobbel oppløysing) blir henta separat når sida er
+  // på nett. Frå disk (file:) kan ikkje nettlesaren lese pikslane i eit bilete,
+  // så då står det innebygde kartet.
+  function hentFintKart() {
+    if (!T.fin || location.protocol === "file:" || new URLSearchParams(location.search).get("fin") === "0") return;
+    lesHoegdekart("data/" + T.fin.fil, T.fin.breidd, T.fin.hogd)
+      .then(L => {
+        L.km = T.fin.kmPerPx;
+        const ny = lagKartbilete(L);
+        const gammal = terrengMesh.material.map;
+        terrengMesh.material.map = ny;
+        terrengMesh.material.needsUpdate = true;
+        kartbilete = ny;
+        if (gammal) gammal.dispose();
+      })
+      .catch(e => console.warn("Fint kart ikkje lasta:", e && e.message));
   }
 
   /* ---------- Scene ---------- */
@@ -162,7 +200,7 @@
   let terrengMesh = null, kartbilete = null;
   function byggTerreng(steg) {
     if (terrengMesh) { scene.remove(terrengMesh); terrengMesh.geometry.dispose(); }
-    if (!kartbilete) kartbilete = lagKartbilete();
+    if (!kartbilete) kartbilete = lagKartbilete({ W, H, km: KM, hoegd, maske, djup });
     const cols = Math.ceil(W / steg), rows = Math.ceil(H / steg);
     const pos = new Float32Array(cols * rows * 3), uv = new Float32Array(cols * rows * 2);
     for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
@@ -856,6 +894,9 @@
     if (sisteKap !== idx && erKapittel(SEKS[sisteKap])) { visSeksjon(sisteKap); if (noRute) { noRute.framdrift = 1; noRute.ferdig = true; pauseBtn.hidden = true; } }
     visSeksjon(idx);
     requestAnimationFrame(teikn);
+    hentFintKart();
+    // Service workeren held det fine kartet og ordlista i cache (sjå sw.js).
+    if ("serviceWorker" in navigator && location.protocol !== "file:") navigator.serviceWorker.register("sw.js").catch(() => {});
   }
 
   const glTest = document.createElement("canvas");

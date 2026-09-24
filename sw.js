@@ -1,6 +1,8 @@
-/* Service worker med éi einaste oppgåve: halde nynorskordbanken (~5,9 MB, om
-   lag 1,5 MB over nettet) i cache, slik at han blir lasta ned i bakgrunnen
-   første gongen og ligg klar seinare, òg utan nett.
+/* Service worker med éi einaste oppgåve: halde dei store datafilene i cache,
+   slik at dei blir lasta ned i bakgrunnen første gongen og ligg klare
+   seinare, òg utan nett: nynorskordbanken (~5,9 MB, om lag 1,5 MB over
+   nettet) og det fine høgdekartet til 3D-kartet over reisene til Ivar Aasen
+   (~3 MB).
 
    Alt anna går rett på nettet. Det er med vilje: ein service worker som
    cachar sjølve kurset, ville kunne servere gamle modular etter ei oppdatering,
@@ -8,14 +10,14 @@
 
    Nytt namn på cachen fjernar den gamle: activate slettar alle andre. */
 
-const CACHE = "nn-ordbank-v1";
-const LIST = "data/nn-ordbank.txt";
+const CACHE = "nn-data-v2";
+const FILER = ["data/nn-ordbank.txt", "data/noreg-terreng-fin.png"];
 
 self.addEventListener("install", event => {
-  // Hent ordlista med ein gong, men la installasjonen lykkast om nettet sviktar.
+  // Hent filene med ein gong, men la installasjonen lykkast om nettet sviktar.
   event.waitUntil(
     caches.open(CACHE)
-      .then(cache => cache.add(LIST))
+      .then(cache => Promise.all(FILER.map(f => cache.add(f).catch(() => {}))))
       .catch(() => {})
       .then(() => self.skipWaiting())
   );
@@ -31,7 +33,7 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", event => {
   const url = new URL(event.request.url);
-  if (event.request.method !== "GET" || !url.pathname.endsWith(LIST)) return;
+  if (event.request.method !== "GET" || !FILER.some(f => url.pathname.endsWith(f))) return;
 
   event.respondWith(
     caches.open(CACHE).then(cache =>

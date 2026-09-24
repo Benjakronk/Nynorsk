@@ -8,8 +8,12 @@
      Grensene skil norsk land frå Sverige, Finland, Russland og Danmark og
      gir kystlinja; innsjøane og breane blir teikna i eigne fargar.
 
-   Resultatet er data/noreg-terreng.js: eit PNG-bilete som base64 i eit
-   JS-objekt, slik at kartet òg verkar når kurset blir opna rett frå disk.
+   Resultatet er to filer. data/noreg-terreng.js har eit PNG-bilete som base64
+   i eit JS-objekt, slik at kartet òg verkar når kurset blir opna rett frå
+   disk; det er grunnlaget for terrengnettet og reserve for kartbiletet.
+   data/noreg-terreng-fin.png er same kartet med dobbel oppløysing (halve
+   pikselstorleiken, fliser frå zoom Z + 1), som sida hentar separat når ho er
+   på nett og bruker til kartbiletet, så relieffet blir finare.
    Raud kanal = høgd (sqrt-skala, 0 til hMaks). Grøn kanal = havdjup for
    hav, elles 0 (relieffskuggen blir rekna i nettlesaren, for ein skugge per
    piksel komprimerer like dårleg som støy og ville doble fila). Blå kanal =
@@ -18,7 +22,8 @@
    kjegleprojeksjon, same projeksjonen som js/aasen-reise.js bruker for å
    plassere stadene.
 
-   Køyr: node tools/lag-terreng.js [ut-fil] [mellomlager]  */
+   Køyr: node tools/lag-terreng.js [ut-fil] [mellomlager]
+   Den fine fila får namn etter ut-fila: noreg-terreng.js → noreg-terreng-fin.png  */
 "use strict";
 const fs = require("fs");
 const path = require("path");
@@ -27,6 +32,7 @@ const https = require("https");
 const os = require("os");
 
 const [OUT = "data/noreg-terreng.js", CACHE = path.join(os.tmpdir(), "noreg-terreng-cache")] = process.argv.slice(2);
+const OUT_FIN = OUT.replace(/\.js$/, "-fin.png");
 const Z = 7;
 const KM_PER_PX = 1.25;
 const DELPROVER = 3;   // delprøver per akse i kvar piksel
@@ -141,8 +147,8 @@ function tilbake(x, y) {
 }
 
 /* Web Mercator-pikslar på zoom Z (256 px per flis). */
-function merc(lat, lon) {
-  const s = 256 * Math.pow(2, Z);
+function merc(lat, lon, z) {
+  const s = 256 * Math.pow(2, z);
   const l = rad(lat);
   return { x: (lon + 180) / 360 * s, y: (1 - Math.log(Math.tan(l) + 1 / Math.cos(l)) / Math.PI) / 2 * s };
 }
@@ -172,116 +178,124 @@ async function main() {
   const marg = 30;
   minX -= marg; maxX += marg; minY -= marg; maxY += marg;
   const W = Math.ceil((maxX - minX) / KM_PER_PX), H = Math.ceil((maxY - minY) / KM_PER_PX);
-  console.log(`utsnitt ${W}×${H} px, ${KM_PER_PX} km/px`);
 
-  // Kva fliser trengst? Gå gjennom hjørna og kantane av utsnittet.
-  let tminX = Infinity, tmaxX = -Infinity, tminY = Infinity, tmaxY = -Infinity;
-  for (let i = 0; i <= 40; i++) for (const [x, y] of [[minX + (maxX - minX) * i / 40, minY], [minX + (maxX - minX) * i / 40, maxY], [minX, minY + (maxY - minY) * i / 40], [maxX, minY + (maxY - minY) * i / 40]]) {
-    const g = tilbake(x, y), m = merc(g.lat, g.lon);
-    tminX = Math.min(tminX, m.x); tmaxX = Math.max(tmaxX, m.x); tminY = Math.min(tminY, m.y); tmaxY = Math.max(tmaxY, m.y);
-  }
-  const fx0 = Math.floor(tminX / 256), fx1 = Math.floor(tmaxX / 256), fy0 = Math.floor(tminY / 256), fy1 = Math.floor(tmaxY / 256);
-  const MW = (fx1 - fx0 + 1) * 256, MH = (fy1 - fy0 + 1) * 256;
-  const hoegd = new Float32Array(MW * MH);
-  for (let ty = fy0; ty <= fy1; ty++) for (let tx = fx0; tx <= fx1; tx++) {
-    const png = dekodPng(await hent(`https://s3.amazonaws.com/elevation-tiles-prod/terrarium/${Z}/${tx}/${ty}.png`));
-    for (let y = 0; y < 256; y++) for (let x = 0; x < 256; x++) {
-      const i = (y * 256 + x) * png.kanalar;
-      hoegd[(ty - fy0) * 256 * MW + (tx - fx0) * 256 + y * MW + x] = png.data[i] * 256 + png.data[i + 1] + png.data[i + 2] / 256 - 32768;
+  // Byggjer eitt lag: høgder frå fliser på zoom Z, W × H pikslar à kmPx km.
+  async function lagLag(Z, kmPx, W, H) {
+    console.log(`lag ${W}×${H} px, ${kmPx} km/px, zoom ${Z}`);
+    // Kva fliser trengst? Gå gjennom hjørna og kantane av utsnittet.
+    let tminX = Infinity, tmaxX = -Infinity, tminY = Infinity, tmaxY = -Infinity;
+    for (let i = 0; i <= 40; i++) for (const [x, y] of [[minX + (maxX - minX) * i / 40, minY], [minX + (maxX - minX) * i / 40, maxY], [minX, minY + (maxY - minY) * i / 40], [maxX, minY + (maxY - minY) * i / 40]]) {
+      const g = tilbake(x, y), m = merc(g.lat, g.lon, Z);
+      tminX = Math.min(tminX, m.x); tmaxX = Math.max(tmaxX, m.x); tminY = Math.min(tminY, m.y); tmaxY = Math.max(tmaxY, m.y);
     }
-  }
-  console.log(`henta ${(fx1 - fx0 + 1) * (fy1 - fy0 + 1)} fliser`);
-
-  // Maske: rasteriser polygona i utsnittet (scanline, partal/oddetal).
-  const maske = new Uint8Array(W * H);
-  const tilPx = (lon, lat) => { const p = fram(lat, lon); return [(p.x - minX) / KM_PER_PX, (maxY - p.y) / KM_PER_PX]; };
-  function rasteriser(polys, mal, verdi) {
-    for (const poly of polys) {
-      const ringar = poly.map(r => r.map(([lon, lat]) => tilPx(lon, lat)));
-      let rMin = Infinity, rMax = -Infinity;
-      for (const r of ringar) for (const [, y] of r) { rMin = Math.min(rMin, y); rMax = Math.max(rMax, y); }
-      for (let row = Math.max(0, Math.floor(rMin)); row < Math.min(H, Math.ceil(rMax)); row++) {
-        const yc = row + 0.5, kryss = [];
-        for (const r of ringar) for (let i = 0; i < r.length - 1; i++) {
-          const [x1, y1] = r[i], [x2, y2] = r[i + 1];
-          if ((y1 <= yc) !== (y2 <= yc)) kryss.push(x1 + (yc - y1) / (y2 - y1) * (x2 - x1));
-        }
-        kryss.sort((a, b) => a - b);
-        for (let k = 0; k + 1 < kryss.length; k += 2) {
-          for (let col = Math.max(0, Math.round(kryss[k])); col < Math.min(W, Math.round(kryss[k + 1])); col++) mal[row * W + col] = verdi;
+    const fx0 = Math.floor(tminX / 256), fx1 = Math.floor(tmaxX / 256), fy0 = Math.floor(tminY / 256), fy1 = Math.floor(tmaxY / 256);
+    const MW = (fx1 - fx0 + 1) * 256, MH = (fy1 - fy0 + 1) * 256;
+    const hoegd = new Float32Array(MW * MH);
+    for (let ty = fy0; ty <= fy1; ty++) for (let tx = fx0; tx <= fx1; tx++) {
+      const png = dekodPng(await hent(`https://s3.amazonaws.com/elevation-tiles-prod/terrarium/${Z}/${tx}/${ty}.png`));
+      for (let y = 0; y < 256; y++) for (let x = 0; x < 256; x++) {
+        const i = (y * 256 + x) * png.kanalar;
+        hoegd[(ty - fy0) * 256 * MW + (tx - fx0) * 256 + y * MW + x] = png.data[i] * 256 + png.data[i + 1] + png.data[i + 2] / 256 - 32768;
+      }
+    }
+    console.log(`henta ${(fx1 - fx0 + 1) * (fy1 - fy0 + 1)} fliser`);
+  
+    // Maske: rasteriser polygona i utsnittet (scanline, partal/oddetal).
+    const maske = new Uint8Array(W * H);
+    const tilPx = (lon, lat) => { const p = fram(lat, lon); return [(p.x - minX) / kmPx, (maxY - p.y) / kmPx]; };
+    function rasteriser(polys, mal, verdi) {
+      for (const poly of polys) {
+        const ringar = poly.map(r => r.map(([lon, lat]) => tilPx(lon, lat)));
+        let rMin = Infinity, rMax = -Infinity;
+        for (const r of ringar) for (const [, y] of r) { rMin = Math.min(rMin, y); rMax = Math.max(rMax, y); }
+        for (let row = Math.max(0, Math.floor(rMin)); row < Math.min(H, Math.ceil(rMax)); row++) {
+          const yc = row + 0.5, kryss = [];
+          for (const r of ringar) for (let i = 0; i < r.length - 1; i++) {
+            const [x1, y1] = r[i], [x2, y2] = r[i + 1];
+            if ((y1 <= yc) !== (y2 <= yc)) kryss.push(x1 + (yc - y1) / (y2 - y1) * (x2 - x1));
+          }
+          kryss.sort((a, b) => a - b);
+          for (let k = 0; k + 1 < kryss.length; k += 2) {
+            for (let col = Math.max(0, Math.round(kryss[k])); col < Math.min(W, Math.round(kryss[k + 1])); col++) mal[row * W + col] = verdi;
+          }
         }
       }
     }
-  }
-  for (const [namn, polys] of Object.entries(land)) rasteriser(polys, maske, LAND[namn]);
-  const vatn = new Uint8Array(W * H), bre = new Uint8Array(W * H);
-  rasteriser(innsjoar, vatn, 1);
-  rasteriser(brear, bre, 1);
-
-  // Sampl høgda for kvar piksel: snittet av DELPROVER × DELPROVER bilineære
-  // prøver frå Mercator-rutenettet, så fjell og dalar blir jamne og ikkje
-  // hakkete når flisene er finare enn kartet.
-  const h = new Float32Array(W * H);
-  const proveVed = (x, y) => {
-    const g = tilbake(x, y);
-    const m = merc(g.lat, g.lon);
-    const mx = m.x - fx0 * 256 - 0.5, my = m.y - fy0 * 256 - 0.5;
-    const x0 = Math.max(0, Math.min(MW - 2, Math.floor(mx))), y0 = Math.max(0, Math.min(MH - 2, Math.floor(my)));
-    const fx = Math.max(0, Math.min(1, mx - x0)), fy = Math.max(0, Math.min(1, my - y0));
-    const i = y0 * MW + x0;
-    return (hoegd[i] * (1 - fx) + hoegd[i + 1] * fx) * (1 - fy) + (hoegd[i + MW] * (1 - fx) + hoegd[i + MW + 1] * fx) * fy;
-  };
-  for (let row = 0; row < H; row++) for (let col = 0; col < W; col++) {
-    let sum = 0;
-    for (let a = 0; a < DELPROVER; a++) for (let b = 0; b < DELPROVER; b++) {
-      sum += proveVed(minX + (col + (a + 0.5) / DELPROVER) * KM_PER_PX, maxY - (row + (b + 0.5) / DELPROVER) * KM_PER_PX);
+    for (const [namn, polys] of Object.entries(land)) rasteriser(polys, maske, LAND[namn]);
+    const vatn = new Uint8Array(W * H), bre = new Uint8Array(W * H);
+    rasteriser(innsjoar, vatn, 1);
+    rasteriser(brear, bre, 1);
+  
+    // Sampl høgda for kvar piksel: snittet av DELPROVER × DELPROVER bilineære
+    // prøver frå Mercator-rutenettet, så fjell og dalar blir jamne og ikkje
+    // hakkete når flisene er finare enn kartet.
+    const h = new Float32Array(W * H);
+    const proveVed = (x, y) => {
+      const g = tilbake(x, y);
+      const m = merc(g.lat, g.lon, Z);
+      const mx = m.x - fx0 * 256 - 0.5, my = m.y - fy0 * 256 - 0.5;
+      const x0 = Math.max(0, Math.min(MW - 2, Math.floor(mx))), y0 = Math.max(0, Math.min(MH - 2, Math.floor(my)));
+      const fx = Math.max(0, Math.min(1, mx - x0)), fy = Math.max(0, Math.min(1, my - y0));
+      const i = y0 * MW + x0;
+      return (hoegd[i] * (1 - fx) + hoegd[i + 1] * fx) * (1 - fy) + (hoegd[i + MW] * (1 - fx) + hoegd[i + MW + 1] * fx) * fy;
+    };
+    for (let row = 0; row < H; row++) for (let col = 0; col < W; col++) {
+      let sum = 0;
+      for (let a = 0; a < DELPROVER; a++) for (let b = 0; b < DELPROVER; b++) {
+        sum += proveVed(minX + (col + (a + 0.5) / DELPROVER) * kmPx, maxY - (row + (b + 0.5) / DELPROVER) * kmPx);
+      }
+      h[row * W + col] = sum / (DELPROVER * DELPROVER);
     }
-    h[row * W + col] = sum / (DELPROVER * DELPROVER);
-  }
-
-  // Kystlinja følgjer landpolygona, ikkje høgdedataa: høgdedataa (1,2 km per
-  // piksel) fyller att tronge sund som Drøbaksundet, så Oslofjorden og andre
-  // smale fjordar vart brotne av land. Ein piksel er land om han ligg inne i
-  // eit landpolygon, eller har høgd over havet og ligg meir enn to pikslar frå
-  // polygonland (småøyar som polygona ikkje har med). Elles er han hav.
-  const polyLand = maske.slice();
-  const erLand = new Uint8Array(W * H);
-  for (let i = 0; i < W * H; i++) {
-    if (polyLand[i]) { erLand[i] = 1; continue; }
-    if (h[i] <= 0) continue;
-    const r = i % W, k = (i - r) / W;
-    let naer = false;
-    for (let dy = -2; dy <= 2 && !naer; dy++) for (let dx = -2; dx <= 2; dx++) {
-      const x = r + dx, y = k + dy;
-      if (x >= 0 && x < W && y >= 0 && y < H && polyLand[y * W + x]) { naer = true; break; }
-    }
-    if (!naer) erLand[i] = 1;
-  }
-  // Land som polygona ikkje dekkjer, får merket til næraste nabo.
-  for (let runde = 0; runde < 6; runde++) {
-    const kopi = maske.slice();
+  
+    // Kystlinja følgjer landpolygona, ikkje høgdedataa: høgdedataa (1,2 km per
+    // piksel) fyller att tronge sund som Drøbaksundet, så Oslofjorden og andre
+    // smale fjordar vart brotne av land. Ein piksel er land om han ligg inne i
+    // eit landpolygon, eller har høgd over havet og ligg meir enn to pikslar frå
+    // polygonland (småøyar som polygona ikkje har med). Elles er han hav.
+    const polyLand = maske.slice();
+    const erLand = new Uint8Array(W * H);
     for (let i = 0; i < W * H; i++) {
-      if (!erLand[i] || kopi[i]) continue;
-      const nab = [i - 1, i + 1, i - W, i + W].filter(j => j >= 0 && j < W * H && kopi[j]);
-      if (nab.length) maske[i] = kopi[nab[0]];
+      if (polyLand[i]) { erLand[i] = 1; continue; }
+      if (h[i] <= 0) continue;
+      const r = i % W, k = (i - r) / W;
+      let naer = false;
+      for (let dy = -2; dy <= 2 && !naer; dy++) for (let dx = -2; dx <= 2; dx++) {
+        const x = r + dx, y = k + dy;
+        if (x >= 0 && x < W && y >= 0 && y < H && polyLand[y * W + x]) { naer = true; break; }
+      }
+      if (!naer) erLand[i] = 1;
     }
+    // Land som polygona ikkje dekkjer, får merket til næraste nabo.
+    for (let runde = 0; runde < 6; runde++) {
+      const kopi = maske.slice();
+      for (let i = 0; i < W * H; i++) {
+        if (!erLand[i] || kopi[i]) continue;
+        const nab = [i - 1, i + 1, i - W, i + W].filter(j => j >= 0 && j < W * H && kopi[j]);
+        if (nab.length) maske[i] = kopi[nab[0]];
+      }
+    }
+  
+    const rgb = Buffer.alloc(W * H * 3);
+    let noreg = 0;
+    for (let i = 0; i < W * H; i++) {
+      const v = h[i];
+      rgb[i * 3] = erLand[i] ? Math.round(Math.sqrt(Math.min(Math.max(v, 0), H_MAKS) / H_MAKS) * 255) : 0;
+      rgb[i * 3 + 1] = erLand[i] ? 0 : Math.round(Math.sqrt(Math.min(Math.max(-v, 0), 1000) / 1000) * 255);
+      rgb[i * 3 + 2] = !erLand[i] ? 0 : bre[i] ? 192 : vatn[i] ? 64 : maske[i] || 128;
+      if (rgb[i * 3 + 2] === 255) noreg++;
+    }
+    return { rgb, noreg };
   }
 
-  const rgb = Buffer.alloc(W * H * 3);
-  let noreg = 0;
-  for (let i = 0; i < W * H; i++) {
-    const v = h[i];
-    rgb[i * 3] = erLand[i] ? Math.round(Math.sqrt(Math.min(Math.max(v, 0), H_MAKS) / H_MAKS) * 255) : 0;
-    rgb[i * 3 + 1] = erLand[i] ? 0 : Math.round(Math.sqrt(Math.min(Math.max(-v, 0), 1000) / 1000) * 255);
-    rgb[i * 3 + 2] = !erLand[i] ? 0 : bre[i] ? 192 : vatn[i] ? 64 : maske[i] || 128;
-    if (rgb[i * 3 + 2] === 255) noreg++;
-  }
+  const grov = await lagLag(Z, KM_PER_PX, W, H);
+  const rgb = grov.rgb, noreg = grov.noreg;
   const png = kodPng(W, H, rgb);
   fs.writeFileSync(path.join(CACHE, "noreg-terreng.png"), png);
   const ut = {
     format: 2, breidd: W, hogd: H, kmPerPx: KM_PER_PX, hMaks: H_MAKS, proj: PROJ,
     klassar: { hav: 0, innsjo: 64, annaLand: 128, bre: 192, noreg: 255 },
     x0: minX, y0: maxY,
+    fin: { fil: "noreg-terreng-fin.png", breidd: W * 2, hogd: H * 2, kmPerPx: KM_PER_PX / 2 },
     png: "data:image/png;base64," + png.toString("base64"),
   };
   fs.writeFileSync(OUT,
@@ -290,6 +304,12 @@ async function main() {
     "window.NOREG_TERRENG = " + JSON.stringify(ut) + ";\n", "utf8");
   console.log(`skreiv ${OUT}: ${(fs.statSync(OUT).size / 1e6).toFixed(2)} MB, PNG ${(png.length / 1e3).toFixed(0)} kB, ` +
     `norsk land ${(noreg * KM_PER_PX * KM_PER_PX / 1e3).toFixed(0)} tusen km²`);
+
+  // Det fine laget: same utsnitt, dobbel oppløysing, finare fliser.
+  const fin = await lagLag(Z + 1, KM_PER_PX / 2, W * 2, H * 2);
+  const pngFin = kodPng(W * 2, H * 2, fin.rgb);
+  fs.writeFileSync(OUT_FIN, pngFin);
+  console.log(`skreiv ${OUT_FIN}: ${(pngFin.length / 1e6).toFixed(2)} MB`);
 }
 
 main().catch(e => { console.error(e); process.exit(1); });

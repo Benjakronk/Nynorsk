@@ -80,8 +80,9 @@ npx serve .
 ├── data/
 │   ├── nn-ordbank.txt      412 000 nynorske ordformer med morfologi (sjå data/KJELDE.md)
 │   ├── noreg-terreng.js    Høgdekart over Noreg (PNG som base64) for 3D-kartet
+│   ├── noreg-terreng-fin.png Same kartet med dobbel oppløysing, henta når sida er på nett
 │   └── KJELDE.md           Kjelder, format og lisensar for datafilene
-├── sw.js                   Service worker: cachar berre ordbanken
+├── sw.js                   Service worker: cachar ordbanken og det fine høgdekartet
 ├── tools/
 │   ├── validate-content.js Validerer alt innhald: node tools/validate-content.js
 │   ├── lag-ordbank.js      Lagar ordbanken på nytt frå Norsk ordbank
@@ -129,7 +130,11 @@ kjegleprojeksjon. Høgdene er overdrivne 6,5 gonger for at fjordar og fjell skal
 synast frå lufta. Fargane ligg i eit kartbilete som blir teikna éin gong ved
 oppstart og lagt oppå terrenget som tekstur: høgdefargar, relieffskugge med lys
 frå nordvest rekna av høgdekartet, hav med djupfargar, innsjøar, brear og
-riksgrensa. Difor er detaljane per piksel, ikkje per hjørne i nettet.
+riksgrensa. Difor er detaljane per piksel, ikkje per hjørne i nettet. Er sida
+på nett, hentar ho i tillegg `data/noreg-terreng-fin.png`, same kartet med
+0,625 km per piksel (om lag 3 MB, cacha av `sw.js`), og teiknar kartbiletet
+på nytt frå det. Opna frå disk står det innebygde kartet, for nettlesaren
+kan ikkje lese pikslane i eit bilete frå `file:`.
 Kystlinja følgjer landpolygona frå Natural Earth, ikkje høgdedataa, for
 høgdedataa fyller att tronge sund som Drøbaksundet.
 Høgdekartet er bakt inn som base64, og three.js ligg i `js/vendor`, så sida
@@ -191,8 +196,8 @@ bokmålsord som homografar (*hun*, *boken*). Lista `TVITYDIGE` øvst i
 `spell.js` held att varsel for ord som er gyldig nynorsk i ein annan
 samanheng (*si*, *bare*, *sette*).
 
-`sw.js` cachar berre ordlista, aldri kursfilene, slik at ei oppdatering av
-kurset aldri kan bli ståande i cachen hjå eleven.
+`sw.js` cachar berre ordlista og det fine høgdekartet, aldri kursfilene, slik
+at ei oppdatering av kurset aldri kan bli ståande i cachen hjå eleven.
 
 `js/ordbok.js` hentar ordklasse, grunnform og første tyding frå det opne API-et
 til ordbokene.no (`ord.uib.no`), som svarar på tvers av domene. Lenkjene går til

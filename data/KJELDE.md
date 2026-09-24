@@ -1,9 +1,10 @@
 # Kjelder og lisensar for datafilene
 
-Denne mappa har to datafiler: `nn-ordbank.txt` (ordlista til språksjekken) og
-`noreg-terreng.js` (høgdekartet til 3D-kartet over reisene til Ivar Aasen).
+Denne mappa har tre datafiler: `nn-ordbank.txt` (ordlista til språksjekken),
+`noreg-terreng.js` (høgdekartet til 3D-kartet over reisene til Ivar Aasen) og
+`noreg-terreng-fin.png` (same kartet med dobbel oppløysing).
 
-## noreg-terreng.js
+## noreg-terreng.js og noreg-terreng-fin.png
 
 Eit PNG-bilete på 984 × 1229 pikslar, bakt inn som base64 i eit JS-objekt, der
 kvar piksel er 1,25 × 1,25 km i Lamberts konforme kjegleprojeksjon
@@ -16,7 +17,7 @@ snittet av 3 × 3 delprøver. Raud kanal er høgda over havet i kvadratrotskala
 Kjelder:
 
 - **Høgder og havdjup:** Terrarium-fliser frå *Terrain Tiles* på AWS Open Data
-  (Mapzen), zoom 7. Datasettet er sett saman av SRTM, GMTED2010 og ETOPO1,
+  (Mapzen), zoom 7 for det innebygde kartet og zoom 8 for det fine. Datasettet er sett saman av SRTM, GMTED2010 og ETOPO1,
   som alle er offentlege data utan opphavsrettslege krav.
   <https://registry.opendata.aws/terrain-tiles/>
 - **Landegrenser, innsjøar og brear:** Natural Earth 1:10M (Admin 0 Countries,
@@ -24,7 +25,9 @@ Kjelder:
   <https://www.naturalearthdata.com/>
 
 `node tools/lag-terreng.js` lastar ned flisene og grensene, projiserer om,
-rasteriserer maska og skriv fila. Kystlinja følgjer landpolygona: ein piksel
+rasteriserer maska og skriv begge filene. `noreg-terreng-fin.png` er eit
+reint PNG-bilete på 1968 × 2458 pikslar med same kanalar, 0,625 km per piksel,
+som sida hentar separat når ho er på nett. Kystlinja følgjer landpolygona: ein piksel
 er land om han ligg inne i eit landpolygon, eller har høgd over havet og ligg
 meir enn to pikslar frå polygonland. Elles hadde tronge sund som Drøbaksundet
 blitt fylte att av høgdedataa.
