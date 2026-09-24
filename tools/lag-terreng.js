@@ -187,13 +187,16 @@ async function main() {
     const linjer = f.geometry.type === "LineString" ? [f.geometry.coordinates] : f.geometry.type === "MultiLineString" ? f.geometry.coordinates : [];
     for (const l of linjer) grenseLinjer.push({ s: 0, l });
   }
-  // Elvar: hovudfila og Europa-tillegget, berre elvar (ikkje innsjø-midtliner).
+  // Elvar: hovudfila og Europa-tillegget. Innsjø-midtlinene er med, merkte
+  // med v: 1, så elvane held fram gjennom innsjøane i staden for å stoppe
+  // ved innsjøkanten; nettlesaren teiknar dei i innsjøfargen.
   const elvLinjer = [];
   for (const fil of ["ne_10m_rivers_lake_centerlines.geojson", "ne_10m_rivers_europe.geojson"]) {
     for (const f of JSON.parse((await hent(NE + fil)).toString("utf8")).features) {
-      if (!f.geometry || /lake/i.test(f.properties.featurecla || "")) continue;
+      if (!f.geometry) continue;
+      const v = /lake/i.test(f.properties.featurecla || "") ? 1 : 0;
       const linjer = f.geometry.type === "LineString" ? [f.geometry.coordinates] : f.geometry.type === "MultiLineString" ? f.geometry.coordinates : [];
-      for (const l of linjer) elvLinjer.push({ s: f.properties.scalerank || 10, l });
+      for (const l of linjer) elvLinjer.push({ s: f.properties.scalerank || 10, v, l });
     }
   }
   let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
@@ -358,24 +361,27 @@ async function main() {
       rgb[i * 3 + 2] = (klasse << 5) | vatnKode;
       if (klasse === 4) noreg++;
     }
-    return { rgb, noreg };
+    return { rgb, noreg, h, erLand, W, H, kmPx };
   }
 
   // Elvane i utsnittet, i km frå øvre venstre hjørne, forenkla til punkt
   // med minst 0,3 km mellom seg og runda til 0,1 km.
   function linjerIUtsnittet(liste, minAvst) {
     const ut = [];
-    for (const { s, l } of liste) {
+    for (const { s, v, l } of liste) {
       let p = [];
       let sistX = Infinity, sistY = Infinity;
-      for (const [lon, lat] of l) {
+      const legg = () => { if (p.length >= 4) ut.push(v ? { s, v, p } : { s, p }); p = []; sistX = Infinity; };
+      for (let i = 0; i < l.length; i++) {
+        const [lon, lat] = l[i];
         const q = fram(lat, lon), ex = q.x - minX, ey = maxY - q.y;
-        if (ex < 0 || ey < 0 || ex > maxX - minX || ey > maxY - minY) { if (p.length >= 4) ut.push({ s, p }); p = []; sistX = Infinity; continue; }
-        if (Math.hypot(ex - sistX, ey - sistY) < minAvst) continue;
-        p.push(Math.round(ex * 10) / 10, Math.round(ey * 10) / 10);
+        if (ex < 0 || ey < 0 || ex > maxX - minX || ey > maxY - minY) { legg(); continue; }
+        // Endepunkta må alltid med, elles stoppar elva før ho når sjøen eller hovudelva.
+        if (i < l.length - 1 && Math.hypot(ex - sistX, ey - sistY) < minAvst) continue;
+        p.push(ex, ey);
         sistX = ex; sistY = ey;
       }
-      if (p.length >= 4) ut.push({ s, p });
+      legg();
     }
     return ut;
   }
@@ -387,6 +393,60 @@ async function main() {
   const rgb = grov.rgb, noreg = grov.noreg;
   const png = kodPng(W, H, rgb);
   fs.writeFileSync(path.join(CACHE, "noreg-terreng.png"), png);
+  // Natural Earth-linene ligg ofte ein kilometer eller to unna dalbotnen, og
+  // ei elv drapert på terrenget hamnar då oppe i dalsida. Difor blir kvart
+  // punkt flytta til det lågaste terrenget på tvers av elva (innan ±LEIT km,
+  // med litt straff for å flytte seg), etter at lina er tetta til 0,5 km.
+  // Så blir lina glatta. Innsjø-midtliner og punkt i vatn står i ro.
+  function leggIDalbotnen(liner, lag) {
+    const { h, erLand, W, H, kmPx } = lag, LEIT = 3, STEG = 0.25, STRAFF = 0.012;
+    const hVed = (x, y) => {
+      const c = Math.min(W - 1, Math.max(0, Math.round(x / kmPx - 0.5))), r = Math.min(H - 1, Math.max(0, Math.round(y / kmPx - 0.5)));
+      const i = r * W + c;
+      return erLand[i] ? Math.max(0, h[i]) / 1000 : -1;
+    };
+    for (const e of liner) {
+      if (e.v) { e.p = e.p.map(v => Math.round(v * 10) / 10); continue; }
+      // Tett til 0,5 km
+      const tett = [];
+      for (let k = 0; k < e.p.length - 2; k += 2) {
+        const x0 = e.p[k], y0 = e.p[k + 1], x1 = e.p[k + 2], y1 = e.p[k + 3];
+        const m = Math.max(1, Math.ceil(Math.hypot(x1 - x0, y1 - y0) / 0.5));
+        for (let s = 0; s < m; s++) tett.push(x0 + (x1 - x0) * s / m, y0 + (y1 - y0) * s / m);
+      }
+      tett.push(e.p[e.p.length - 2], e.p[e.p.length - 1]);
+      const n = tett.length / 2, ny = tett.slice();
+      for (let i = 0; i < n; i++) {
+        const x = tett[i * 2], y = tett[i * 2 + 1];
+        if (hVed(x, y) < 0) continue;   // i vatn: står
+        const xa = tett[Math.max(0, i - 1) * 2], ya = tett[Math.max(0, i - 1) * 2 + 1];
+        const xb = tett[Math.min(n - 1, i + 1) * 2], yb = tett[Math.min(n - 1, i + 1) * 2 + 1];
+        let dx = xb - xa, dy = yb - ya;
+        const l = Math.hypot(dx, dy) || 1; dx /= l; dy /= l;
+        let best = Infinity, bx = x, by = y;
+        for (let o = -LEIT; o <= LEIT; o += STEG) {
+          const px = x - dy * o, py = y + dx * o;
+          const hh = hVed(px, py);
+          if (hh < 0) continue;
+          const kost = hh + STRAFF * Math.abs(o);
+          if (kost < best) { best = kost; bx = px; by = py; }
+        }
+        ny[i * 2] = bx; ny[i * 2 + 1] = by;
+      }
+      // Glatting (to rundar med 1-2-1), endepunkta står
+      for (let runde = 0; runde < 2; runde++) {
+        const g = ny.slice();
+        for (let i = 1; i < n - 1; i++) {
+          g[i * 2] = (ny[i * 2 - 2] + 2 * ny[i * 2] + ny[i * 2 + 2]) / 4;
+          g[i * 2 + 1] = (ny[i * 2 - 1] + 2 * ny[i * 2 + 1] + ny[i * 2 + 3]) / 4;
+        }
+        for (let i = 0; i < ny.length; i++) ny[i] = g[i];
+      }
+      e.p = ny.map(v => Math.round(v * 10) / 10);
+    }
+  }
+  for (const g of grenser) g.p = g.p.map(v => Math.round(v * 10) / 10);
+
   const ut = {
     format: 4, breidd: W, hogd: H, kmPerPx: KM_PER_PX, hMaks: H_MAKS, kystPerKm: 40, kystMaks: 3.2, proj: PROJ,
     klassar: { hav: 0, innsjo: 1, annaLand: 2, bre: 3, noreg: 4 },   // blå kanal >> 5
@@ -396,17 +456,14 @@ async function main() {
     fin: { fil: "noreg-terreng-fin.png", breidd: W * 2, hogd: H * 2, kmPerPx: KM_PER_PX / 2, versjon: "" },
     png: "data:image/png;base64," + png.toString("base64"),
   };
-  fs.writeFileSync(OUT,
-    "/* Høgdekart over Noreg for 3D-kartet over reisene til Ivar Aasen.\n" +
-    "   Laga av tools/lag-terreng.js, sjå data/KJELDE.md. Ikkje rediger for hand. */\n" +
-    "window.NOREG_TERRENG = " + JSON.stringify(ut) + ";\n", "utf8");
-  console.log(`skreiv ${OUT}: ${(fs.statSync(OUT).size / 1e6).toFixed(2)} MB, PNG ${(png.length / 1e3).toFixed(0)} kB, ` +
-    `norsk land ${(noreg * KM_PER_PX * KM_PER_PX / 1e3).toFixed(0)} tusen km²`);
+  console.log(`grunnlag: PNG ${(png.length / 1e3).toFixed(0)} kB, norsk land ${(noreg * KM_PER_PX * KM_PER_PX / 1e3).toFixed(0)} tusen km²`);
 
   // Det fine laget: same utsnitt, dobbel oppløysing, finare fliser.
   const fin = await lagLag(Z + 1, KM_PER_PX / 2, W * 2, H * 2);
   const pngFin = kodPng(W * 2, H * 2, fin.rgb);
   fs.writeFileSync(OUT_FIN, pngFin);
+  leggIDalbotnen(elvar, fin);
+  console.log(`elvar etter tetting: ${elvar.reduce((a, e) => a + e.p.length / 2, 0)} punkt`);
   // Versjonen (ein hash av fila) står i adressa sida hentar, så ein ny
   // versjon aldri blir forveksla med ein gammal i nettlesaren eller
   // service workeren sin cache.
@@ -415,7 +472,7 @@ async function main() {
     "/* Høgdekart over Noreg for 3D-kartet over reisene til Ivar Aasen.\n" +
     "   Laga av tools/lag-terreng.js, sjå data/KJELDE.md. Ikkje rediger for hand. */\n" +
     "window.NOREG_TERRENG = " + JSON.stringify(ut) + ";\n", "utf8");
-  console.log(`skreiv ${OUT_FIN}: ${(pngFin.length / 1e6).toFixed(2)} MB`);
+  console.log(`skreiv ${OUT}: ${(fs.statSync(OUT).size / 1e6).toFixed(2)} MB og ${OUT_FIN}: ${(pngFin.length / 1e6).toFixed(2)} MB`);
 }
 
 main().catch(e => { console.error(e); process.exit(1); });
