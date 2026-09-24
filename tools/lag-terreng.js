@@ -361,7 +361,7 @@ async function main() {
       rgb[i * 3 + 2] = (klasse << 5) | vatnKode;
       if (klasse === 4) noreg++;
     }
-    return { rgb, noreg, h, erLand, W, H, kmPx };
+    return { rgb, noreg, h, erLand, vatn, W, H, kmPx };
   }
 
   // Elvane i utsnittet, i km frå øvre venstre hjørne, forenkla til punkt
@@ -403,11 +403,11 @@ async function main() {
   // forlengd til ho når vatn, for Natural Earth-elvane stoppar ofte ein
   // kilometer eller to før kysten. Innsjø-midtliner og punkt i vatn står.
   function leggIDalbotnen(liner, lag) {
-    const { h, erLand, W, H, kmPx } = lag, LEIT = 3, STEG = 0.25, STRAFF = 0.012, STRAFF_HOPP = 0.7;
+    const { h, erLand, vatn, W, H, kmPx } = lag, LEIT = 3, STEG = 0.25, STRAFF = 0.012, STRAFF_HOPP = 0.7;
     const hVed = (x, y) => {
       const c = Math.min(W - 1, Math.max(0, Math.round(x / kmPx - 0.5))), r = Math.min(H - 1, Math.max(0, Math.round(y / kmPx - 0.5)));
       const i = r * W + c;
-      return erLand[i] ? Math.max(0, h[i]) / 1000 : -1;
+      return erLand[i] && !vatn[i] ? Math.max(0, h[i]) / 1000 : -1;
     };
     for (const e of liner) {
       if (e.v) { e.p = e.p.map(v => Math.round(v * 10) / 10); continue; }
@@ -433,7 +433,7 @@ async function main() {
         for (let k = 0; k < K; k++) {
           const o = off(k), cx = x - dy * o, cy = y + dx * o;
           px[i * K + k] = cx; py[i * K + k] = cy;
-          if (iVatn) { kost[i * K + k] = o === 0 ? 0 : Infinity; continue; }   // i vatn: står
+          if (iVatn || i === 0 || i === n - 1) { kost[i * K + k] = o === 0 ? 0 : Infinity; continue; }   // i vatn og i endane: står
           const hh = hVed(cx, cy);
           kost[i * K + k] = hh < 0 ? Infinity : hh + STRAFF * Math.abs(o);
         }
@@ -464,31 +464,52 @@ async function main() {
         }
         for (let i = 0; i < ny.length; i++) ny[i] = g[i];
       }
-      // Forleng enden nedover til ho når vatn (hav eller innsjø), høgst 6 km:
-      // gå steg for steg i den retninga som fell mest, med små svingar frå
-      // retninga elva alt har, og berre så lenge det går nedover. Elles
-      // ville enden kunne snirkle seg rundt på flat mark.
-      if (ny.length >= 6) {
-        let x = ny[ny.length - 2], y = ny[ny.length - 1];
-        const bak = Math.max(0, ny.length - 6);
-        let dx = x - ny[bak], dy = y - ny[bak + 1];
-        const l0 = Math.hypot(dx, dy) || 1; dx /= l0; dy /= l0;
-        let hNo = hVed(x, y);
-        for (let steg = 0; steg < 24 && hNo >= 0; steg++) {
-          let best = Infinity, bx = x, by = y, bdx = dx, bdy = dy;
-          for (let v = -0.4; v <= 0.4; v += 0.2) {
-            const c = Math.cos(v), s = Math.sin(v), ndx = dx * c - dy * s, ndy = dx * s + dy * c;
-            const cx = x + ndx * 0.25, cy = y + ndy * 0.25, hh = hVed(cx, cy);
-            const k = (hh < 0 ? -1 : hh) + 0.01 * Math.abs(v);
-            if (k < best) { best = k; bx = cx; by = cy; bdx = ndx; bdy = ndy; }
-          }
-          if (best >= 0 && best > hNo + 0.003) break;   // det går oppover: stopp
-          x = bx; y = by; dx = bdx; dy = bdy; hNo = best < 0 ? -1 : best;
-          ny.push(x, y);
-        }
-      }
       e.p = ny.map(v => Math.round(v * 10) / 10);
     }
+    // Natural Earth-linene stoppar ofte eit stykke før innsjøen, havet eller
+    // hovudelva, og delar av same elv møtest ikkje alltid nøyaktig. Kvar ende
+    // som ikkje står i vatn, blir difor kopla med ei rett line til det
+    // nærmaste vatnet (innan KOPL_VATN km) eller, om det er nærare, til den
+    // nærmaste andre elva (innan KOPL_ELV km). Det gjeld begge endane, så
+    // elva held fram på begge sider av ein innsjø.
+    const KOPL_VATN = 5, KOPL_ELV = 3.5;
+    const alle = [];   // alle punkt i alle liner, til å finne nærmaste elv
+    liner.forEach((e, nr) => { if (!e.v) for (let k = 0; k < e.p.length; k += 2) alle.push(e.p[k], e.p[k + 1], nr); });
+    const naermasteVatn = (x, y) => {
+      const c0 = Math.round(x / kmPx - 0.5), r0 = Math.round(y / kmPx - 0.5), rad = Math.ceil(KOPL_VATN / kmPx);
+      let best = KOPL_VATN * KOPL_VATN, bx = null, by = null;
+      for (let r = Math.max(0, r0 - rad); r <= Math.min(H - 1, r0 + rad); r++) for (let c = Math.max(0, c0 - rad); c <= Math.min(W - 1, c0 + rad); c++) {
+        const i = r * W + c;
+        if (erLand[i] && !vatn[i]) continue;
+        const px = (c + 0.5) * kmPx, py = (r + 0.5) * kmPx, d = (px - x) ** 2 + (py - y) ** 2;
+        if (d < best) { best = d; bx = px; by = py; }
+      }
+      return bx === null ? null : [bx, by, Math.sqrt(best)];
+    };
+    const naermasteElv = (x, y, nr) => {
+      let best = KOPL_ELV * KOPL_ELV, bx = null, by = null;
+      for (let k = 0; k < alle.length; k += 3) {
+        if (alle[k + 2] === nr) continue;
+        const d = (alle[k] - x) ** 2 + (alle[k + 1] - y) ** 2;
+        if (d < best) { best = d; bx = alle[k]; by = alle[k + 1]; }
+      }
+      return bx === null ? null : [bx, by, Math.sqrt(best)];
+    };
+    liner.forEach((e, nr) => {
+      if (e.v || e.p.length < 4) return;
+      for (const front of [true, false]) {
+        const x = front ? e.p[0] : e.p[e.p.length - 2], y = front ? e.p[1] : e.p[e.p.length - 1];
+        if (hVed(x, y) < 0) continue;
+        const v = naermasteVatn(x, y), l = naermasteElv(x, y, nr);
+        const maal = v && (!l || v[2] <= l[2]) ? v : l;
+        if (!maal || maal[2] < 0.05) continue;
+        const m = Math.ceil(maal[2] / 0.25), bit = [];
+        for (let s = 1; s <= m; s++) bit.push(Math.round((x + (maal[0] - x) * s / m) * 10) / 10, Math.round((y + (maal[1] - y) * s / m) * 10) / 10);
+        if (front) { bit.reverse(); for (let k = 0; k < bit.length; k += 2) [bit[k], bit[k + 1]] = [bit[k + 1], bit[k]]; e.p = bit.concat(e.p); }
+        else e.p = e.p.concat(bit);
+      }
+    });
+
     // Tryggleik: ingen ugyldige tal (dei ville hamna i hjørnet av kartet), og
     // ingen liner med under to punkt.
     for (const e of liner) {
