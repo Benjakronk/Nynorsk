@@ -251,7 +251,7 @@ all.forEach(mod => {
       if (!s.namn || typeof s.lat !== "number" || typeof s.lon !== "number" || s.lat < 57 || s.lat > 72 || s.lon < 4 || s.lon > 32) err(`Aasen-reise: staden «${id}» manglar namn eller har koordinatar utanfor Noreg`);
     });
     const html = fs.readFileSync(path.join(ROOT, "aasen-reise.html"), "utf8");
-    ["js/storage.js", "js/modules.js", "js/content/part1.js", "js/content/aasen-reise.js", "js/exercises.js", "js/vendor/three.min.js", "data/noreg-terreng.js", "js/aasen-reise.js"].forEach(f => {
+    ["js/storage.js", "js/modules.js", "js/content/part1.js", "js/content/aasen-reise.js", "js/content/bank.js", "js/spell.js", "js/grammatikk.js", "js/ordbok.js", "js/exercises.js", "js/vendor/three.min.js", "data/noreg-terreng.js", "js/aasen-reise.js"].forEach(f => {
       if (!html.includes(`src="${f}"`)) err(`aasen-reise.html manglar <script src="${f}">`);
     });
     stats["Aasen-reise"] = { modules: kap, sections: 0, exercises: Object.keys(D.stader).length, drillItems: 0, label: "kapittel/stader" };
