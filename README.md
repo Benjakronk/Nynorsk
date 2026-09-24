@@ -98,8 +98,8 @@ dit). Sida viser modulen éin seksjon om gongen ved sida av eit 3D-kart over
 Noreg: 19 kapittel og 11 oppgåver. Kvart kapittel er ein `lesson`-seksjon med eit
 `reise`-felt (tid, stopp med datoar, eventuelt `kamera: "land"`); ruta veks fram
 på kartet medan ein liten figur av Aasen går langs henne, om lag 50 km i
-sekundet, og stoppar berre ved dei viktige stadene, dei som har ei scene.
-Kameraet viser heile kapittelet, og eleven snur og zoomar sjølv. Viktige stopp har ein liten stilisert modell (gard, by, kyrkje,
+sekundet, jamt frå første til siste stopp. Kameraet viser heile kapittelet,
+og eleven snur og zoomar sjølv. Viktige stopp har ein liten stilisert modell (gard, by, kyrkje,
 stabbur, båt, dampskip, fiskehjell og så vidare) som dukkar opp når figuren kjem
 fram; kva stopp som får kva, står i feltet `scene` på staden, og modellane er
 bygde av enkle primitiv i `SCENER` i `js/aasen-reise.js`. Modellane har fast

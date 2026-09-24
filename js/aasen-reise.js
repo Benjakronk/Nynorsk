@@ -533,23 +533,17 @@
       }
       const tot = stoppPos[stoppPos.length - 1].t || 1;
       stoppPos.forEach(s => { s.t = s.t / tot; });
-      // Tidsplan: figuren går om lag 50 km i sekundet mellom stoppa og står
-      // ei lita stund berre ved dei viktige stoppa, dei som har ei scene.
-      // Resten går han rett gjennom.
-      const DVEL = reduserRorsle ? 0 : 1500, fasar = [];
+      // Tidsplan: figuren går om lag 50 km i sekundet, jamt frå første til
+      // siste stopp utan å stoppe undervegs, og tek til når kameraet er på plass.
+      const fasar = [];
       let akkMs = 0;
-      for (let j = 0; j < stoppPos.length; j++) {
-        if (j > 0) {
-          const km = (stoppPos[j].t - stoppPos[j - 1].t) * tot;
-          const ms = reduserRorsle ? 0 : Math.max(400, km / 0.05);
-          fasar.push({ type: "gang", j, fra: stoppPos[j - 1].t, til: stoppPos[j].t, start: akkMs, dur: ms });
-          akkMs += ms;
-        }
-        const dvel = STADER[stoppPos[j].id].scene ? DVEL : 0;
-        fasar.push({ type: "stopp", j, t: stoppPos[j].t, start: akkMs, dur: dvel });
-        akkMs += dvel;
+      for (let j = 1; j < stoppPos.length; j++) {
+        const km = (stoppPos[j].t - stoppPos[j - 1].t) * tot;
+        const ms = reduserRorsle ? 0 : Math.max(200, km / 0.05);
+        fasar.push({ type: "gang", j, fra: stoppPos[j - 1].t, til: stoppPos[j].t, start: akkMs, dur: ms });
+        akkMs += ms;
       }
-      noRute = { punkt, idar, stoppPos, lengd, fasar, dur: akkMs, framdrift: 0, t0: performance.now() + 1800, mesh: null, seg: 0, ferdig: false };
+      noRute = { punkt, idar, stoppPos, lengd, fasar, dur: akkMs, framdrift: 0, t0: performance.now() + 1600, mesh: null, seg: 0, ferdig: false };
     }
     bygdForAvstand = 0; // tvinger ny oppbygging med rett tjukkleik
 
@@ -773,7 +767,7 @@
           let f = noRute.fasar.findIndex(x => gaatt < x.start + x.dur);
           if (f < 0) f = noRute.fasar.length - 1;
           const fase = noRute.fasar[f];
-          noRute.framdrift = fase.type === "gang" ? fase.fra + (fase.til - fase.fra) * Math.min(1, (gaatt - fase.start) / fase.dur) : fase.t;
+          noRute.framdrift = fase.fra + (fase.til - fase.fra) * Math.min(1, (gaatt - fase.start) / fase.dur);
         }
         oppdaterMarkor();
       }
