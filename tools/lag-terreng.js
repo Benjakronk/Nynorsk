@@ -215,12 +215,29 @@ async function main() {
     h[row * W + col] = (hoegd[i] * (1 - fx) + hoegd[i + 1] * fx) * (1 - fy) + (hoegd[i + MW] * (1 - fx) + hoegd[i + MW + 1] * fx) * fy;
   }
 
-  // Land som polygona ikkje dekkjer (småøyar, kystpikslar) får merket til næraste nabo.
-  const erLand = i => h[i] > 0;
+  // Kystlinja følgjer landpolygona, ikkje høgdedataa: høgdedataa (1,2 km per
+  // piksel) fyller att tronge sund som Drøbaksundet, så Oslofjorden og andre
+  // smale fjordar vart brotne av land. Ein piksel er land om han ligg inne i
+  // eit landpolygon, eller har høgd over havet og ligg meir enn to pikslar frå
+  // polygonland (småøyar som polygona ikkje har med). Elles er han hav.
+  const polyLand = maske.slice();
+  const erLand = new Uint8Array(W * H);
+  for (let i = 0; i < W * H; i++) {
+    if (polyLand[i]) { erLand[i] = 1; continue; }
+    if (h[i] <= 0) continue;
+    const r = i % W, k = (i - r) / W;
+    let naer = false;
+    for (let dy = -2; dy <= 2 && !naer; dy++) for (let dx = -2; dx <= 2; dx++) {
+      const x = r + dx, y = k + dy;
+      if (x >= 0 && x < W && y >= 0 && y < H && polyLand[y * W + x]) { naer = true; break; }
+    }
+    if (!naer) erLand[i] = 1;
+  }
+  // Land som polygona ikkje dekkjer, får merket til næraste nabo.
   for (let runde = 0; runde < 6; runde++) {
     const kopi = maske.slice();
     for (let i = 0; i < W * H; i++) {
-      if (!erLand(i) || kopi[i]) continue;
+      if (!erLand[i] || kopi[i]) continue;
       const nab = [i - 1, i + 1, i - W, i + W].filter(j => j >= 0 && j < W * H && kopi[j]);
       if (nab.length) maske[i] = kopi[nab[0]];
     }
@@ -230,9 +247,9 @@ async function main() {
   let noreg = 0;
   for (let i = 0; i < W * H; i++) {
     const v = h[i];
-    rgb[i * 3] = v > 0 ? Math.round(Math.sqrt(Math.min(v, H_MAKS) / H_MAKS) * 255) : 0;
-    rgb[i * 3 + 1] = v < 0 ? Math.round(Math.sqrt(Math.min(-v, 1000) / 1000) * 255) : 0;
-    rgb[i * 3 + 2] = v > 0 ? maske[i] || 128 : 0;
+    rgb[i * 3] = erLand[i] ? Math.round(Math.sqrt(Math.min(Math.max(v, 0), H_MAKS) / H_MAKS) * 255) : 0;
+    rgb[i * 3 + 1] = !erLand[i] && v < 0 ? Math.round(Math.sqrt(Math.min(-v, 1000) / 1000) * 255) : 0;
+    rgb[i * 3 + 2] = erLand[i] ? maske[i] || 128 : 0;
     if (rgb[i * 3 + 2] === 255) noreg++;
   }
   const png = kodPng(W, H, rgb);

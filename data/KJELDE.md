@@ -22,7 +22,10 @@ Kjelder:
   <https://www.naturalearthdata.com/>
 
 `node tools/lag-terreng.js` lastar ned flisene og grensene, projiserer om,
-rasteriserer maska og skriv fila.
+rasteriserer maska og skriv fila. Kystlinja følgjer landpolygona: ein piksel
+er land om han ligg inne i eit landpolygon, eller har høgd over havet og ligg
+meir enn to pikslar frå polygonland. Elles hadde tronge sund som Drøbaksundet
+blitt fylte att av høgdedataa.
 
 # Kjelde og lisens for nn-ordbank.txt
 

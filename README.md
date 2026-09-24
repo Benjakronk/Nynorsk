@@ -98,7 +98,9 @@ dit). Sida viser modulen éin seksjon om gongen ved sida av eit 3D-kart over
 Noreg: 19 kapittel og 11 oppgåver. Kvart kapittel er ein `lesson`-seksjon med eit
 `reise`-felt (tid, stopp med datoar, eventuelt `kamera: "land"`); ruta veks fram
 på kartet medan ein liten figur av Aasen går langs henne, om lag 50 km i
-sekundet. Viktige stopp har ein liten stilisert modell (gard, by, kyrkje,
+sekundet, med ein liten stopp ved kvar stad. Kameraet viser først heile
+kapittelet, går så tett på kvart stopp og ut att på etappane, til eleven sjølv
+tek over ved å dra eller zoome. Viktige stopp har ein liten stilisert modell (gard, by, kyrkje,
 stabbur, båt, dampskip, fiskehjell og så vidare) som dukkar opp når figuren kjem
 fram; kva stopp som får kva, står i feltet `scene` på staden, og modellane er
 bygde av enkle primitiv i `SCENER` i `js/aasen-reise.js`. Oppgåvene mellom kapitla er vanlege oppgåvetypar frå `js/exercises.js`,
@@ -123,6 +125,8 @@ kommentaren øvst i innhaldsfila.
 Kartet (`js/aasen-reise.js`) er eitt trekantnett bygd av høgdekartet i
 `data/noreg-terreng.js`, 2 km per piksel, i Lamberts konforme kjegleprojeksjon.
 Høgdene er overdrivne 6,5 gonger for at fjordar og fjell skal synast frå lufta.
+Kystlinja følgjer landpolygona frå Natural Earth, ikkje høgdedataa, for
+høgdedataa fyller att tronge sund som Drøbaksundet.
 Høgdekartet er bakt inn som base64, og three.js ligg i `js/vendor`, så sida
 verkar òg opna rett frå disk. Går teikninga tregt, byggjer sida terrenget om
 att med halv oppløysing. Kjelder og lisensar for terrengdata står i
