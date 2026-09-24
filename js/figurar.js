@@ -30,7 +30,7 @@
   function init() {
     if (starta) return;
     starta = true;
-    const alle = document.querySelectorAll(".figur, .tidslinje, .toliner, .ordbygg, .former, .leddsetning, .v2demo, .kjonnkort, .ordartikkel");
+    const alle = document.querySelectorAll(".figur, .tidslinje, .toliner, .ordbygg, .former, .leddsetning, .v2demo, .kjonnkort, .ordartikkel, .ordklassar, .tempuslinje, .vegvisar, .analyse, .setningsboksar, .daanaar, .vokalskifte, .pronomenpar");
     if (roleg || !("IntersectionObserver" in window)) {
       alle.forEach(el => { el.classList.add("synleg"); if (el.hasAttribute("data-spel")) el.classList.add("spelar"); });
     } else {
@@ -65,6 +65,40 @@
           ? "No står adverbialet først, og subjektet <em class=\"nn\">han</em> må vike plass: <em class=\"nn\">I går <strong>kom han</strong></em>. Verbalet er framleis på andreplass."
           : "Verbalet <em class=\"nn\">kom</em> står på andreplass same kva som står først.";
       });
+    });
+
+    // Ordklassane: eit trykk på ein klasse lyser opp orda hennar i setninga.
+    document.querySelectorAll(".ordklassar").forEach(fig => {
+      const ord = [...fig.querySelectorAll(".ordkl")], knappar = [...fig.querySelectorAll(".ordkl-knapp")];
+      let vald = null;
+      const vis = kl => {
+        vald = kl;
+        ord.forEach(o => { o.classList.toggle("lys", !!kl && o.dataset.kl === kl); o.classList.toggle("demp", !!kl && o.dataset.kl !== kl); });
+        knappar.forEach(k => k.classList.toggle("vald", k.dataset.kl === kl));
+      };
+      knappar.forEach(k => k.addEventListener("click", () => vis(vald === k.dataset.kl ? null : k.dataset.kl)));
+      ord.forEach(o => o.addEventListener("click", () => vis(vald === o.dataset.kl ? null : o.dataset.kl)));
+    });
+
+    // Setningsanalyse steg for steg: verbal, subjekt, objekt, adverbial.
+    document.querySelectorAll("[data-analyse]").forEach(fig => {
+      const ord = [...fig.querySelectorAll(".an-ord")], spm = fig.querySelector(".an-spm");
+      const neste = fig.querySelector(".an-neste"), start = fig.querySelector(".an-start");
+      const steg = [
+        ["verbal", "1. Finn verbalet: kva skjer? <b>kjøpte</b>."],
+        ["subjekt", "2. Kven kjøpte? <b>guten</b>: subjektet."],
+        ["objekt", "3. Kva kjøpte guten? <b>nye sko</b>: objektet."],
+        ["adverbial", "4. Når og kvar? <b>i går</b>, <b>på senteret</b>: adverbial. Ferdig!"],
+      ];
+      let i = 0;
+      const nullstill = () => { i = 0; ord.forEach(o => { o.className = "an-ord"; }); spm.innerHTML = "Trykk «Neste steg» og analyser setninga i rett rekkjefølgje."; neste.hidden = false; start.hidden = true; };
+      neste.addEventListener("click", () => {
+        const [ledd, tekst] = steg[i++];
+        ord.forEach(o => { o.classList.remove("naa"); if (o.dataset.ledd === ledd) o.classList.add("ledd", ledd, "naa"); });
+        spm.innerHTML = tekst;
+        if (i >= steg.length) { neste.hidden = true; start.hidden = false; }
+      });
+      start.addEventListener("click", nullstill);
     });
   }
   window.Figurar = { init };

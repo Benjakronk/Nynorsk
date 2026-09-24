@@ -372,6 +372,11 @@ Modules.register({
       type: "lesson",
       title: "Ti ordklassar",
       content: `
+        <div class="ordklassar" data-spel>
+          <p class="ordkl-setning"><span class="ordkl" data-kl="interjeksjon">Au!</span> <span class="ordkl" data-kl="determinativ">Den</span> <span class="ordkl" data-kl="adjektiv">gamle</span> <span class="ordkl" data-kl="substantiv">mannen</span> <span class="ordkl" data-kl="verb">gjekk</span> <span class="ordkl" data-kl="adverb">sakte</span> <span class="ordkl" data-kl="preposisjon">over</span> <span class="ordkl" data-kl="determinativ">den</span> <span class="ordkl" data-kl="adjektiv">lange</span> <span class="ordkl" data-kl="substantiv">brua,</span> <span class="ordkl" data-kl="konjunksjon">men</span> <span class="ordkl" data-kl="pronomen">han</span> <span class="ordkl" data-kl="verb">datt</span> <span class="ordkl" data-kl="adverb">ikkje,</span> <span class="ordkl" data-kl="subjunksjon">fordi</span> <span class="ordkl" data-kl="pronomen">han</span> <span class="ordkl" data-kl="verb">heldt</span> <span class="ordkl" data-kl="pronomen">seg</span> <span class="ordkl" data-kl="preposisjon">i</span> <span class="ordkl" data-kl="substantiv">rekkverket.</span></p>
+          <div class="ordkl-legende"><button type="button" class="ordkl-knapp" data-kl="substantiv"><i class="ordkl-farge substantiv"></i>substantiv</button><button type="button" class="ordkl-knapp" data-kl="verb"><i class="ordkl-farge verb"></i>verb</button><button type="button" class="ordkl-knapp" data-kl="adjektiv"><i class="ordkl-farge adjektiv"></i>adjektiv</button><button type="button" class="ordkl-knapp" data-kl="adverb"><i class="ordkl-farge adverb"></i>adverb</button><button type="button" class="ordkl-knapp" data-kl="pronomen"><i class="ordkl-farge pronomen"></i>pronomen</button><button type="button" class="ordkl-knapp" data-kl="determinativ"><i class="ordkl-farge determinativ"></i>determinativ</button><button type="button" class="ordkl-knapp" data-kl="preposisjon"><i class="ordkl-farge preposisjon"></i>preposisjon</button><button type="button" class="ordkl-knapp" data-kl="konjunksjon"><i class="ordkl-farge konjunksjon"></i>konjunksjon</button><button type="button" class="ordkl-knapp" data-kl="subjunksjon"><i class="ordkl-farge subjunksjon"></i>subjunksjon</button><button type="button" class="ordkl-knapp" data-kl="interjeksjon"><i class="ordkl-farge interjeksjon"></i>interjeksjon</button></div>
+          <p class="muted-note">Trykk på ein ordklasse for å sjå kva ord i setninga som høyrer til han. Alle ti er med.</p>
+        </div>
         <p>Alle ord i språket høyrer til ein <strong>ordklasse</strong>. Ordklassen fortel
         kva slags ord det er, korleis det kan bøyast, og kva jobb det kan gjere i ei setning.
         I skulen deler vi orda i <strong>ti ordklassar</strong>. Du treng ikkje pugge dei
@@ -918,7 +923,15 @@ Modules.register({
       id: "boy9",
       type: "lesson",
       title: "Tempus: tidene",
-      content: `        <h3>Tempus: tidene</h3>
+      content: `
+        <div class="tempuslinje">
+          <div class="tl-akse"><span class="tl-fortid">fortid</span><span class="tl-no">no</span><span class="tl-framtid">framtid</span></div>
+          <div class="tl-punkt" style="--x: 8%"><b>hadde kasta</b><small>preteritum perfektum: ferdig før noko anna i fortida</small></div>
+          <div class="tl-punkt" style="--x: 30%"><b>kasta</b><small>preteritum: i går</small></div>
+          <div class="tl-punkt tl-bru" style="--x: 50%"><b>har kasta</b><small>presens perfektum: har skjedd, og gjeld framleis no</small></div>
+          <div class="tl-punkt tl-naa" style="--x: 64%"><b>kastar</b><small>presens: no, vanlegvis</small></div>
+          <div class="tl-punkt" style="--x: 88%"><b>skal kaste</b><small>framtid: med hjelpeverb</small></div>
+        </div>        <h3>Tempus: tidene</h3>
         <p><strong>Tempus</strong> tyder «tid». Dei to enkle tidene lagar du med ending eller
         vokalskifte; dei to samansette lagar du med hjelpeverbet <em class="nn">ha</em> pluss
         perfektum partisipp.</p>
@@ -1039,6 +1052,16 @@ Modules.register({
           (<em class="bm">bygde/bygget</em>); då må du slå opp.
         </div>
 
+        <h3>Vegvisar: kva verbklasse er det?</h3>
+        <div class="vegvisar">
+          <div class="vv-start">Kva endar verbet på i preteritum på bokmål?</div>
+          <div class="vv-greiner">
+            <div class="vv-grein"><span class="vv-val"><em class="bm">-et</em> / <em class="bm">-a</em></span><span class="vv-pil">↓</span><span class="vv-svar a">a-verb<small>kasta · kastar</small></span></div>
+            <div class="vv-grein"><span class="vv-val"><em class="bm">-te</em> / <em class="bm">-de</em></span><span class="vv-pil">↓</span><span class="vv-svar e">e-verb<small>kjøpte · kjøper</small></span></div>
+            <div class="vv-grein"><span class="vv-val"><em class="bm">-dde</em></span><span class="vv-pil">↓</span><span class="vv-svar kort">kortverb<small>budde · bur</small></span></div>
+            <div class="vv-grein"><span class="vv-val">ny vokal, inga ending</span><span class="vv-pil">↓</span><span class="vv-svar sterk">sterkt verb<small>skreiv · skriv</small></span></div>
+          </div>
+        </div>
       `,
     },
     {
@@ -1303,7 +1326,18 @@ Modules.register({
       id: "set3",
       type: "lesson",
       title: "Framgangsmåten",
-      content: `        <h3>Framgangsmåten</h3>
+      content: `
+        <div class="analyse" data-analyse>
+          <p class="an-setning">
+            <span class="an-ord" data-ledd="adverbial">I går</span>
+            <span class="an-ord" data-ledd="verbal">kjøpte</span>
+            <span class="an-ord" data-ledd="subjekt">guten</span>
+            <span class="an-ord" data-ledd="objekt">nye sko</span>
+            <span class="an-ord" data-ledd="adverbial">på senteret.</span>
+          </p>
+          <p class="an-spm">Trykk «Neste steg» og analyser setninga i rett rekkjefølgje.</p>
+          <div class="btn-row"><button type="button" class="btn secondary small an-neste">Neste steg</button><button type="button" class="btn secondary small an-start" hidden>Start på nytt</button></div>
+        </div>        <h3>Framgangsmåten</h3>
         <ol>
           <li>Finn <strong>verbalet</strong>. Det er nøkkelen til alt anna.</li>
           <li>Spør «kven/kva + verbal?» → <strong>subjektet</strong>.</li>
@@ -1372,6 +1406,12 @@ Modules.register({
         <em class="nn">Boka <strong>som eg las</strong>, var god.</em> Hugs komma
         etter ei innskoten leddsetning.</p>
 
+        <h3>Setning i setning</h3>
+        <div class="setningsboksar">
+          <div class="setningsboks heil"><span class="sb-namn">heilsetning</span>Vi gjekk heim <span class="setningsboks ledd"><span class="sb-namn">leddsetning (adverbial)</span><b>fordi</b> det regna</span>.</div>
+          <div class="setningsboks heil"><span class="sb-namn">heilsetning</span>Guten <span class="setningsboks ledd"><span class="sb-namn">relativsetning</span><b>som</b> bur her</span>, er snill.</div>
+          <div class="setningsboks heil"><span class="sb-namn">heilsetning</span>Eg kom</div><span class="sb-bind"><b>men</b> (konjunksjon bind saman)</span><div class="setningsboks heil"><span class="sb-namn">heilsetning</span>ho gjekk.</div>
+        </div>
       `,
     },
     {
@@ -1392,7 +1432,11 @@ Modules.register({
       id: "set7",
       type: "lesson",
       title: "Då eller når?",
-      content: `        <h3>Då eller når?</h3>
+      content: `
+        <div class="daanaar">
+          <div class="dn-rad"><span class="dn-ord">då</span><span class="dn-linje"><i class="dn-prikk"></i></span><span class="dn-tekst">éin bestemt gong i fortida: <em class="nn">Då eg var liten …</em></span></div>
+          <div class="dn-rad"><span class="dn-ord">når</span><span class="dn-linje fleire"><i class="dn-prikk"></i><i class="dn-prikk"></i><i class="dn-prikk"></i><i class="dn-prikk"></i><i class="dn-pil"></i></span><span class="dn-tekst">kvar gong, vanlegvis, eller i framtida: <em class="nn">Når eg kjem heim, …</em></span></div>
+        </div>        <h3>Då eller når?</h3>
         <p>Begge er subjunksjonar som innleier tidssetningar, men dei tyder ikkje det same.
         Hugseregelen er: <strong>«Den gongen då, kvar gong når.»</strong></p>
         <table>

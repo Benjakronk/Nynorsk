@@ -1445,3 +1445,154 @@ li > .merk[data-n]::before { margin-right: 6px; }
   .ordbygg .del, .ordbygg .merk, .ordbygg .stamme-linje { opacity: 1; transform: none; }
   .spel-btn, .v2-btn { display: none; }
 }
+
+/* ---------- Fleire grammatikkfigurar ---------- */
+.ordklassar, .tempuslinje, .vegvisar, .analyse, .setningsboksar, .daanaar, .vokalskifte, .pronomenpar {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .6s ease, transform .6s ease;
+  font-family: "Inter", system-ui, sans-serif;
+  margin: 4px 0 16px;
+}
+
+/* Ordklassane i ei setning */
+.ordklassar .ordkl-setning { font-family: "Source Serif Pro", "Charter", Georgia, serif; font-size: 19px; line-height: 1.9; margin: 0 0 8px; }
+.ordkl { padding: 1px 4px; border-radius: 4px; cursor: pointer; transition: opacity .25s, background .25s; border-bottom: 3px solid transparent; }
+.ordkl[data-kl="substantiv"] { border-color: #2f6fb3; }
+.ordkl[data-kl="verb"] { border-color: #c0392b; }
+.ordkl[data-kl="adjektiv"] { border-color: #2c8a4a; }
+.ordkl[data-kl="adverb"] { border-color: #8bc34a; }
+.ordkl[data-kl="pronomen"] { border-color: #7b4fb0; }
+.ordkl[data-kl="determinativ"] { border-color: #b98ad8; }
+.ordkl[data-kl="preposisjon"] { border-color: #e69a2e; }
+.ordkl[data-kl="konjunksjon"] { border-color: #8a6e5c; }
+.ordkl[data-kl="subjunksjon"] { border-color: #4a4a54; }
+.ordkl[data-kl="interjeksjon"] { border-color: #e0559c; }
+.ordkl.lys { background: var(--warm-soft); }
+.ordkl.demp { opacity: .3; }
+.ordkl-legende { display: flex; flex-wrap: wrap; gap: 6px; }
+.ordkl-knapp { display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 13px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); cursor: pointer; }
+.ordkl-knapp.vald { border-color: var(--ink); background: var(--bg); }
+.ordkl-farge { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.ordkl-farge.substantiv { background: #2f6fb3; } .ordkl-farge.verb { background: #c0392b; } .ordkl-farge.adjektiv { background: #2c8a4a; }
+.ordkl-farge.adverb { background: #8bc34a; } .ordkl-farge.pronomen { background: #7b4fb0; } .ordkl-farge.determinativ { background: #b98ad8; }
+.ordkl-farge.preposisjon { background: #e69a2e; } .ordkl-farge.konjunksjon { background: #8a6e5c; } .ordkl-farge.subjunksjon { background: #4a4a54; }
+.ordkl-farge.interjeksjon { background: #e0559c; }
+.ordklassar.spelar .ordkl { animation: figur-inn .4s ease both; }
+.ordklassar.spelar .ordkl:nth-child(n+2) { animation-delay: calc(var(--i, 0) * 0s + .06s); }
+
+/* Tempus på ei tidslinje */
+.tempuslinje { position: relative; height: 150px; }
+.tl-akse { position: absolute; left: 0; right: 0; top: 66px; height: 3px; background: linear-gradient(90deg, var(--line-strong), var(--ink) 60%, var(--line-strong)); border-radius: 2px; }
+.tl-akse span { position: absolute; top: 8px; font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-faint); }
+.tl-akse .tl-fortid { left: 0; }
+.tl-akse .tl-no { left: 64%; transform: translateX(-50%); color: var(--ink); font-weight: 600; }
+.tl-akse .tl-framtid { right: 0; }
+.tl-akse .tl-no::before { content: ""; position: absolute; left: 50%; top: -14px; width: 3px; height: 14px; background: var(--ink); transform: translateX(-50%); }
+.tl-punkt { position: absolute; left: var(--x); top: 0; transform: translateX(-50%); width: 130px; text-align: center; }
+.tl-punkt::after { content: ""; position: absolute; left: 50%; top: 58px; width: 12px; height: 12px; border-radius: 50%; background: var(--warm); border: 2px solid var(--surface); transform: translateX(-50%); }
+.tl-punkt.tl-naa::after { background: var(--accent); }
+.tl-punkt.tl-bru::before { content: ""; position: absolute; left: 50%; top: 61px; width: 60px; height: 6px; background: var(--warm-soft); border-top: 2px dashed var(--warm); }
+.tl-punkt b { display: block; font-size: 15px; }
+.tl-punkt small { display: block; font-size: 10.5px; color: var(--ink-faint); line-height: 1.25; margin-top: 2px; height: 30px; }
+.tl-punkt:nth-child(odd) small { }
+.tempuslinje.synleg .tl-punkt { animation: figur-inn .5s ease both; }
+.tempuslinje.synleg .tl-punkt:nth-child(3) { animation-delay: .15s; }
+.tempuslinje.synleg .tl-punkt:nth-child(4) { animation-delay: .3s; }
+.tempuslinje.synleg .tl-punkt:nth-child(5) { animation-delay: .45s; }
+.tempuslinje.synleg .tl-punkt:nth-child(6) { animation-delay: .6s; }
+
+/* Vegvisar for verbklassar */
+.vv-start { text-align: center; padding: 8px 12px; border: 1px solid var(--ink); border-radius: var(--radius-sm); font-weight: 600; font-size: 14px; margin-bottom: 8px; }
+.vv-greiner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.vv-grein { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 13.5px; text-align: center; }
+.vv-val { padding: 4px 8px; background: var(--bg); border-radius: 4px; }
+.vv-pil { color: var(--ink-faint); }
+.vv-svar { width: 100%; padding: 8px 6px; border-radius: var(--radius-sm); font-weight: 600; color: #fff; }
+.vv-svar small { display: block; font-weight: 400; font-size: 12px; opacity: .9; }
+.vv-svar.a { background: var(--accent); }
+.vv-svar.e { background: #2f6fb3; }
+.vv-svar.kort { background: #7b4fb0; }
+.vv-svar.sterk { background: var(--warm); }
+.vegvisar.synleg .vv-grein { animation: figur-inn .5s ease both; }
+.vegvisar.synleg .vv-grein:nth-child(2) { animation-delay: .15s; }
+.vegvisar.synleg .vv-grein:nth-child(3) { animation-delay: .3s; }
+.vegvisar.synleg .vv-grein:nth-child(4) { animation-delay: .45s; }
+
+/* Setningsanalyse steg for steg */
+.an-setning { font-family: "Source Serif Pro", "Charter", Georgia, serif; font-size: 20px; margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+.an-ord { padding: 4px 8px; border-radius: var(--radius-sm); border: 1px solid transparent; transition: background .3s, border-color .3s; }
+.an-ord.ledd { display: inline-block; font-size: 20px; }
+.an-ord.naa { box-shadow: 0 0 0 3px var(--warm-soft); }
+.an-spm { font-size: 15px; color: var(--ink-soft); margin: 0 0 8px; min-height: 22px; }
+
+/* Setning i setning */
+.setningsboksar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-family: "Source Serif Pro", "Charter", Georgia, serif; font-size: 17px; }
+.setningsboks { position: relative; display: inline-block; padding: 18px 12px 8px; border-radius: var(--radius-sm); }
+.setningsboks.heil { border: 2px solid var(--accent); background: var(--surface); }
+.setningsboks.ledd { border: 2px dashed var(--warm); background: var(--warm-soft); margin: 0 2px; padding-top: 20px; }
+.sb-namn { position: absolute; left: 8px; top: 3px; font-family: "Inter", system-ui, sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-faint); white-space: nowrap; }
+.setningsboks.ledd .sb-namn { color: #7a4316; }
+.sb-bind { font-family: "Inter", system-ui, sans-serif; font-size: 12.5px; color: var(--ink-faint); }
+.setningsboksar .setningsboks.heil { flex: 0 1 auto; }
+
+/* Då eller når */
+.daanaar { display: flex; flex-direction: column; gap: 10px; }
+.dn-rad { display: grid; grid-template-columns: 52px 150px 1fr; align-items: center; gap: 12px; font-size: 14px; }
+.dn-ord { font-family: "Source Serif Pro", "Charter", Georgia, serif; font-size: 22px; font-weight: 700; color: var(--accent-ink); }
+.dn-linje { position: relative; height: 3px; background: var(--line-strong); border-radius: 2px; display: flex; align-items: center; justify-content: center; gap: 22px; }
+.dn-linje.fleire { justify-content: flex-start; padding-left: 12px; gap: 26px; }
+.dn-prikk { width: 12px; height: 12px; border-radius: 50%; background: var(--warm); border: 2px solid var(--surface); }
+.dn-pil { position: absolute; right: -6px; top: -5px; border: 6px solid transparent; border-left: 10px solid var(--line-strong); }
+.daanaar.synleg .dn-prikk { animation: figur-inn .4s ease both; }
+.daanaar.synleg .dn-prikk:nth-child(2) { animation-delay: .15s; }
+.daanaar.synleg .dn-prikk:nth-child(3) { animation-delay: .3s; }
+.daanaar.synleg .dn-prikk:nth-child(4) { animation-delay: .45s; }
+
+/* Vokalskifte */
+.vokalskifte { display: flex; flex-direction: column; gap: 8px; }
+.vs-rad { display: grid; grid-template-columns: 170px auto auto auto auto auto; align-items: center; gap: 8px; font-size: 20px; }
+.vs-namn { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-faint); }
+.vs-form b { padding: 0 2px; border-radius: 3px; }
+.vs-rad.svak b { background: var(--warm-soft); color: #7a4316; }
+.vs-rad.sterk b { background: var(--accent-soft); color: var(--accent-ink); }
+.vs-pil { color: var(--ink-faint); font-size: 16px; }
+.vokalskifte.spelar .vs-form b { animation: vs-lys 3s ease-in-out infinite; }
+.vokalskifte.spelar .vs-form:nth-of-type(2) b { animation-delay: 1s; }
+.vokalskifte.spelar .vs-form:nth-of-type(3) b { animation-delay: 2s; }
+@keyframes vs-lys { 0%, 40%, 100% { transform: none; } 15% { transform: scale(1.35); } }
+.vs-form b { display: inline-block; }
+
+/* Pronomenpar */
+.pronomenpar { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.pp-par { display: inline-flex; align-items: center; gap: 6px; }
+.pp-pil { color: var(--ink-faint); }
+.pronomenpar .ledd { font-size: 17px; padding: 4px 10px; }
+.pp-dome { width: 100%; margin: 6px 0 0; font-family: "Source Serif Pro", "Charter", Georgia, serif; font-size: 18px; }
+.pp-dome .ledd { font-size: 18px; padding: 2px 8px; display: inline-block; }
+.pronomenpar.synleg .pp-par { animation: figur-inn .4s ease both; }
+.pronomenpar.synleg .pp-par:nth-child(2) { animation-delay: .1s; }
+.pronomenpar.synleg .pp-par:nth-child(3) { animation-delay: .2s; }
+.pronomenpar.synleg .pp-par:nth-child(4) { animation-delay: .3s; }
+.pronomenpar.synleg .pp-par:nth-child(5) { animation-delay: .4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ordklassar, .tempuslinje, .vegvisar, .analyse, .setningsboksar, .daanaar, .vokalskifte, .pronomenpar { opacity: 1; transform: none; transition: none; }
+  .ordkl, .tl-punkt, .vv-grein, .dn-prikk, .pp-par, .vs-form b { animation: none !important; }
+}
+@media (max-width: 640px) {
+  .vv-greiner { grid-template-columns: repeat(2, 1fr); }
+  .tempuslinje { height: 190px; }
+  .tl-punkt { width: 90px; }
+  .tl-punkt small { font-size: 10px; height: 44px; }
+  .dn-rad { grid-template-columns: 44px 110px 1fr; }
+  .vs-rad { grid-template-columns: 1fr; gap: 2px; }
+  .vs-pil { display: none; }
+}
+@media print {
+  .ordklassar, .tempuslinje, .vegvisar, .analyse, .setningsboksar, .daanaar, .vokalskifte, .pronomenpar { opacity: 1; transform: none; }
+  .an-neste, .an-start { display: none; }
+}
+
+/* Må stå sist: figurane over har same spesifisitet som .synleg */
+.synleg { opacity: 1; transform: none; }

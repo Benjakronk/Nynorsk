@@ -214,6 +214,12 @@ Modules.register({
           <li><em class="bm">sier</em> → <em class="nn">seier</em> (seie – seier – sa – har sagt)</li>
           <li><em class="bm">blir</em> → <em class="nn">blir</em> eller <em class="nn">vert</em> (vere/verte er litt ulike verb)</li>
         </ul>
+        <h3>Sjå skilnaden</h3>
+        <div class="vokalskifte" data-spel>
+          <div class="vs-rad svak"><span class="vs-namn">svakt verb: ending</span><span class="vs-form">kast<b>ar</b></span><span class="vs-pil">→</span><span class="vs-form">kast<b>a</b></span><span class="vs-pil">→</span><span class="vs-form">har kast<b>a</b></span></div>
+          <div class="vs-rad sterk"><span class="vs-namn">sterkt verb: vokalskifte</span><span class="vs-form">skr<b>i</b>v</span><span class="vs-pil">→</span><span class="vs-form">skr<b>ei</b>v</span><span class="vs-pil">→</span><span class="vs-form">har skr<b>i</b>ve</span></div>
+          <div class="vs-rad sterk"><span class="vs-namn"></span><span class="vs-form">f<b>i</b>nn</span><span class="vs-pil">→</span><span class="vs-form">f<b>a</b>nn</span><span class="vs-pil">→</span><span class="vs-form">har f<b>u</b>nne</span></div>
+        </div>
       `,
     },
     {
@@ -340,6 +346,14 @@ Modules.register({
       type: "lesson",
       title: "Personlege pronomen",
       content: `
+        <div class="pronomenpar">
+          <div class="pp-par"><span class="ledd subjekt">eg</span><span class="pp-pil">→</span><span class="ledd objekt">meg</span></div>
+          <div class="pp-par"><span class="ledd subjekt">du</span><span class="pp-pil">→</span><span class="ledd objekt">deg</span></div>
+          <div class="pp-par"><span class="ledd subjekt">ho</span><span class="pp-pil">→</span><span class="ledd objekt">henne</span></div>
+          <div class="pp-par"><span class="ledd subjekt">vi</span><span class="pp-pil">→</span><span class="ledd objekt">oss</span></div>
+          <div class="pp-par"><span class="ledd subjekt">de</span><span class="pp-pil">→</span><span class="ledd objekt">dykk</span></div>
+          <p class="pp-dome"><span class="ledd subjekt">Eg</span> ser <span class="ledd objekt">deg</span>. <span class="ledd subjekt">Du</span> ser <span class="ledd objekt">meg</span>.</p>
+        </div>
         <table>
           <thead><tr><th></th><th>Subjekt</th><th>Objekt</th></tr></thead>
           <tbody>
@@ -494,6 +508,12 @@ Modules.register({
       type: "lesson",
       title: "Adjektivet rettar seg etter substantivet",
       content: `
+        <div class="former" data-spel>
+          <div class="form"><span class="etikett">hankjønn</span><span class="ordform">ein <b>fin</b> gut</span></div>
+          <div class="form"><span class="etikett">hokjønn</span><span class="ordform">ei <b>fin</b> jente</span></div>
+          <div class="form"><span class="etikett">inkjekjønn</span><span class="ordform">eit fin<b>t</b> hus</span></div>
+          <div class="form"><span class="etikett">fleirtal</span><span class="ordform">fin<b>e</b> gutar</span></div>
+        </div>
         <p>Adjektivet endrar form etter kjønn og tal på substantivet, også i predikativ
         bruk (etter «er»).</p>
 

@@ -248,8 +248,9 @@ Eit bilete i ein lesson er ein `<figure class="figur">` med `<img>` og
 `<figcaption>`; klassen `portrett` legg det til høgre i teksten, `brei` over
 heile breidda. Bilettekstane skal namngje opphavsperson og lisens. Dei små
 figurane (`.tidslinje`, `.toliner`, `.ordbygg`, `.former`, `.leddsetning`,
-`.v2demo`, `.kjonnkort`, `.ordartikkel`) er rein HTML med klassar, styrte av
-`js/figurar.js`: dei glir inn når dei kjem til syne, `data-spel` startar ein
+`.v2demo`, `.kjonnkort`, `.ordartikkel`, `.ordklassar`, `.tempuslinje`,
+`.vegvisar`, `.analyse`, `.setningsboksar`, `.daanaar`, `.vokalskifte`,
+`.pronomenpar`) er rein HTML med klassar, styrte av `js/figurar.js`: dei glir inn når dei kjem til syne, `data-spel` startar ein
 animasjon, og alt står i ro for elevar som har slått på redusert rørsle.
 
 ### Mengdetrening (`drill`)
