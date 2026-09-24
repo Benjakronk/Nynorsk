@@ -1148,7 +1148,7 @@
     requestAnimationFrame(teikn);
     hentFintKart(false);
     const zoom = +new URLSearchParams(location.search).get("zoom");   // til testing: startavstand i km
-    if (zoom) { tween = null; kam.avstand = klemAvstand(zoom); }
+    if (zoom) { if (tween) kam.maal.copy(tween.til.maal); tween = null; kam.avstand = klemAvstand(zoom); }
   }
 
   const glTest = document.createElement("canvas");

@@ -394,12 +394,16 @@ async function main() {
   const png = kodPng(W, H, rgb);
   fs.writeFileSync(path.join(CACHE, "noreg-terreng.png"), png);
   // Natural Earth-linene ligg ofte ein kilometer eller to unna dalbotnen, og
-  // ei elv drapert på terrenget hamnar då oppe i dalsida. Difor blir kvart
-  // punkt flytta til det lågaste terrenget på tvers av elva (innan ±LEIT km,
-  // med litt straff for å flytte seg), etter at lina er tetta til 0,5 km.
-  // Så blir lina glatta. Innsjø-midtliner og punkt i vatn står i ro.
+  // ei elv drapert på terrenget hamnar då oppe i dalsida. Difor blir lina
+  // tetta til 0,5 km og kvart punkt flytta sidelengs (innan ±LEIT km) til
+  // det lågaste terrenget, men som éin samanhengande veg: flyttinga frå
+  // punkt til punkt kostar (STRAFF_HOPP per km), så elva ikkje hoppar over
+  // ein rygg mellom to punkt der begge ligg lågt kvar for seg. Vegen blir
+  // vald med dynamisk programmering over alle punkta. Til slutt blir enden
+  // forlengd til ho når vatn, for Natural Earth-elvane stoppar ofte ein
+  // kilometer eller to før kysten. Innsjø-midtliner og punkt i vatn står.
   function leggIDalbotnen(liner, lag) {
-    const { h, erLand, W, H, kmPx } = lag, LEIT = 3, STEG = 0.25, STRAFF = 0.012;
+    const { h, erLand, W, H, kmPx } = lag, LEIT = 3, STEG = 0.25, STRAFF = 0.012, STRAFF_HOPP = 0.25;
     const hVed = (x, y) => {
       const c = Math.min(W - 1, Math.max(0, Math.round(x / kmPx - 0.5))), r = Math.min(H - 1, Math.max(0, Math.round(y / kmPx - 0.5)));
       const i = r * W + c;
@@ -416,22 +420,40 @@ async function main() {
       }
       tett.push(e.p[e.p.length - 2], e.p[e.p.length - 1]);
       const n = tett.length / 2, ny = tett.slice();
+      const K = Math.round(2 * LEIT / STEG) + 1, off = k => -LEIT + k * STEG;
+      // Kandidatkostnad per punkt og sideforskyving (Infinity = ikkje lov)
+      const kost = new Float64Array(n * K), px = new Float64Array(n * K), py = new Float64Array(n * K);
       for (let i = 0; i < n; i++) {
         const x = tett[i * 2], y = tett[i * 2 + 1];
-        if (hVed(x, y) < 0) continue;   // i vatn: står
         const xa = tett[Math.max(0, i - 1) * 2], ya = tett[Math.max(0, i - 1) * 2 + 1];
         const xb = tett[Math.min(n - 1, i + 1) * 2], yb = tett[Math.min(n - 1, i + 1) * 2 + 1];
         let dx = xb - xa, dy = yb - ya;
         const l = Math.hypot(dx, dy) || 1; dx /= l; dy /= l;
-        let best = Infinity, bx = x, by = y;
-        for (let o = -LEIT; o <= LEIT; o += STEG) {
-          const px = x - dy * o, py = y + dx * o;
-          const hh = hVed(px, py);
-          if (hh < 0) continue;
-          const kost = hh + STRAFF * Math.abs(o);
-          if (kost < best) { best = kost; bx = px; by = py; }
+        const iVatn = hVed(x, y) < 0;
+        for (let k = 0; k < K; k++) {
+          const o = off(k), cx = x - dy * o, cy = y + dx * o;
+          px[i * K + k] = cx; py[i * K + k] = cy;
+          if (iVatn) { kost[i * K + k] = o === 0 ? 0 : Infinity; continue; }   // i vatn: står
+          const hh = hVed(cx, cy);
+          kost[i * K + k] = hh < 0 ? Infinity : hh + STRAFF * Math.abs(o);
         }
-        ny[i * 2] = bx; ny[i * 2 + 1] = by;
+      }
+      // Dynamisk programmering: billigaste veg gjennom kandidatane
+      const sum = new Float64Array(n * K), fra = new Int16Array(n * K);
+      for (let k = 0; k < K; k++) sum[k] = kost[k];
+      for (let i = 1; i < n; i++) for (let k = 0; k < K; k++) {
+        let best = Infinity, bk = k;
+        if (kost[i * K + k] < Infinity) for (let q = 0; q < K; q++) {
+          const s = sum[(i - 1) * K + q] + STRAFF_HOPP * Math.abs(off(k) - off(q));
+          if (s < best) { best = s; bk = q; }
+        }
+        sum[i * K + k] = best + kost[i * K + k]; fra[i * K + k] = bk;
+      }
+      let k = 0;
+      for (let q = 1; q < K; q++) if (sum[(n - 1) * K + q] < sum[(n - 1) * K + k]) k = q;
+      for (let i = n - 1; i >= 0; i--) {
+        if (sum[i * K + k] < Infinity) { ny[i * 2] = px[i * K + k]; ny[i * 2 + 1] = py[i * K + k]; }
+        k = fra[i * K + k];
       }
       // Glatting (to rundar med 1-2-1), endepunkta står
       for (let runde = 0; runde < 2; runde++) {
@@ -441,6 +463,25 @@ async function main() {
           g[i * 2 + 1] = (ny[i * 2 - 1] + 2 * ny[i * 2 + 1] + ny[i * 2 + 3]) / 4;
         }
         for (let i = 0; i < ny.length; i++) ny[i] = g[i];
+      }
+      // Forleng enden nedover til ho når vatn (hav eller innsjø), høgst 8 km:
+      // gå steg for steg i den retninga som fell mest, med retninga elva alt har.
+      {
+        let x = ny[ny.length - 2], y = ny[ny.length - 1];
+        let dx = x - ny[ny.length - 4], dy = y - ny[ny.length - 3];
+        const l0 = Math.hypot(dx, dy) || 1; dx /= l0; dy /= l0;
+        for (let steg = 0; steg < 32 && hVed(x, y) >= 0; steg++) {
+          let best = Infinity, bx = x, by = y, bdx = dx, bdy = dy;
+          for (let v = -1.0; v <= 1.0; v += 0.25) {
+            const c = Math.cos(v), s = Math.sin(v), ndx = dx * c - dy * s, ndy = dx * s + dy * c;
+            const cx = x + ndx * 0.25, cy = y + ndy * 0.25, hh = hVed(cx, cy);
+            const k = (hh < 0 ? -1 : hh) + 0.02 * Math.abs(v);
+            if (k < best) { best = k; bx = cx; by = cy; bdx = ndx; bdy = ndy; }
+          }
+          if (bx === x && by === y) break;
+          x = bx; y = by; dx = bdx; dy = bdy;
+          ny.push(x, y);
+        }
       }
       e.p = ny.map(v => Math.round(v * 10) / 10);
     }
