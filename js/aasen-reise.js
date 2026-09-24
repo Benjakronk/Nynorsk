@@ -127,7 +127,7 @@
     [0.00, [0.66, 0.75, 0.55]], [0.15, [0.75, 0.78, 0.56]], [0.45, [0.80, 0.74, 0.54]],
     [0.90, [0.72, 0.66, 0.56]], [1.40, [0.78, 0.76, 0.72]], [1.90, [0.93, 0.93, 0.91]], [2.50, [1, 1, 1]],
   ];
-  const HAV_GRUNT = [0.40, 0.62, 0.74], HAV_DJUPT = [0.08, 0.22, 0.42], ANNA_LAND = [0.90, 0.89, 0.85];
+  const ANNA_LAND = [0.90, 0.89, 0.85];
   const INNSJO = [0.30, 0.52, 0.68], BRE = [0.95, 0.97, 0.99], GRENSE = [0.55, 0.47, 0.42];
   function rampe(h) {
     for (let i = 1; i < RAMPE.length; i++) if (h <= RAMPE[i][0]) {
@@ -140,7 +140,7 @@
   const SKUGGE_Z = 4;   // overdriving av hellinga i skuggen
   // Teiknar kartbiletet for eit lag L = { W, H, km, hoegd, maske, djup }.
   function lagKartbilete(L) {
-    const { W, H, km, hoegd, maske, djup, kyst } = L;
+    const { W, H, km, hoegd, maske } = L;
     const hLand = i => maske[i] ? hoegd[i] : 0;
     // Relieffskugge: lys frå nordvest 45° over horisonten, rekna av hellinga
     // i høgdekartet.
@@ -164,12 +164,11 @@
     };
     const farge = i => {
       const kl = maske[i];
-      if (kl === KL.hav) {
-        const hav = mix(HAV_GRUNT, HAV_DJUPT, djup[i]);
-        // Ein havpiksel som kystfeltet løftar over vatn, skal sjå ut som strand, ikkje som ein blå flekk.
-        const f = kyst[i];
-        return f > 0.4 ? mix(hav, rampe(0), Math.min(1, (f - 0.4) / 0.25)) : hav;
-      }
+      // Havet blir teikna av havplanet, så landteksturen har ikkje blått: ein
+      // havpiksel får låglandsfargen. Elles ville trekanten mellom ein djup
+      // fjordpiksel og fjellpikselen ved sida av strekkje blått oppover
+      // heile fjellveggen, for fjorden er berre éin piksel brei i teksturen.
+      if (kl === KL.hav) { const c = rampe(0), s = 0.52 + 0.48 * skugge(i); return [c[0] * s, c[1] * s, c[2] * s]; }
       if (kl === KL.innsjo) return INNSJO;
       let c = kl === KL.bre ? BRE : rampe(hoegd[i]);
       if (kl === KL.annaLand) c = mix(c, ANNA_LAND, 0.7);
