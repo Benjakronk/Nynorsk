@@ -102,7 +102,9 @@ sekundet, og stoppar berre ved dei viktige stadene, dei som har ei scene.
 Kameraet viser heile kapittelet, og eleven snur og zoomar sjølv. Viktige stopp har ein liten stilisert modell (gard, by, kyrkje,
 stabbur, båt, dampskip, fiskehjell og så vidare) som dukkar opp når figuren kjem
 fram; kva stopp som får kva, står i feltet `scene` på staden, og modellane er
-bygde av enkle primitiv i `SCENER` i `js/aasen-reise.js`. Oppgåvene mellom kapitla er vanlege oppgåvetypar frå `js/exercises.js`,
+bygde av enkle primitiv i `SCENER` i `js/aasen-reise.js`. Modellane har fast
+storleik på kartet (eit hus er om lag tre kilometer), medan figuren blir
+skalert med zoomen så han alltid er synleg. Oppgåvene mellom kapitla er vanlege oppgåvetypar frå `js/exercises.js`,
 og svara blir lagra som i resten av kurset, så modulen får framdrift og
 «Fullført» på oversikta. Eleven blar med knappane eller piltastane, kan snu og
 zoome kartet, stoppe figuren med mellomrom, hoppe til eit stopp ved å klikke på

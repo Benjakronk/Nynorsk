@@ -281,8 +281,8 @@
   stillFigur(0);
 
   /* ---------- Små scener ved viktige stopp ----------
-     Kvar scene er ei gruppe av enkle primitiv (boksar, kjegler, sylindrar) i
-     same målestokk som figuren, bygd av byggjarane i SCENER. Ho dukkar opp med
+     Kvar scene er ei gruppe av enkle primitiv (boksar, kjegler, sylindrar)
+     med fast storleik på kartet, bygd av byggjarane i SCENER. Ho dukkar opp med
      ei lita veksing når figuren når stoppet. Kva stopp som får kva scene, står
      i feltet `scene` i js/content/aasen-reise.js. */
   const M = {
@@ -369,7 +369,10 @@
     },
   };
   const scener = new Map();   // stad-id -> { g, synt, t0 }
-  let sceneSkala = 1;
+  // Scenene har fast storleik på kartet (km per figureining), uavhengig av
+  // zoomen: eit hus er om lag tre kilometer og ei kyrkje fem. Figuren derimot
+  // blir skalert med zoomen, så han alltid er synleg.
+  const sceneSkala = 2.0;
   function tomScener() { for (const { g } of scener.values()) { scene.remove(g); g.traverse(o => { if (o.geometry && !takGeo.has(o.geometry.uuid)) o.geometry.dispose(); }); } scener.clear(); }
   // Scenene står eit stykke ut til sida for ruta, vinkelrett på gangretninga
   // ved stoppet, så figuren ikkje går tvers gjennom husa. Sida blir vald mot
@@ -610,7 +613,6 @@
       gruppeNo.add(m);
     }
     figur.g.scale.setScalar(radius * 2.8);
-    sceneSkala = radius * 3.0;
     bygdForAvstand = kam.avstand;
     oppdaterMarkor();
   }
