@@ -108,8 +108,8 @@
     [0.00, [0.66, 0.75, 0.55]], [0.15, [0.75, 0.78, 0.56]], [0.45, [0.80, 0.74, 0.54]],
     [0.90, [0.72, 0.66, 0.56]], [1.40, [0.78, 0.76, 0.72]], [1.90, [0.93, 0.93, 0.91]], [2.50, [1, 1, 1]],
   ];
-  const HAV_GRUNT = [0.80, 0.88, 0.92], HAV_DJUPT = [0.58, 0.73, 0.84], ANNA_LAND = [0.90, 0.89, 0.85];
-  const INNSJO = [0.62, 0.78, 0.88], BRE = [0.95, 0.97, 0.99], GRENSE = [0.55, 0.47, 0.42];
+  const HAV_GRUNT = [0.40, 0.62, 0.74], HAV_DJUPT = [0.08, 0.22, 0.42], ANNA_LAND = [0.90, 0.89, 0.85];
+  const INNSJO = [0.30, 0.52, 0.68], BRE = [0.95, 0.97, 0.99], GRENSE = [0.55, 0.47, 0.42];
   function rampe(h) {
     for (let i = 1; i < RAMPE.length; i++) if (h <= RAMPE[i][0]) {
       const [h0, a] = RAMPE[i - 1], [h1, b] = RAMPE[i], t = (h - h0) / (h1 - h0);
@@ -170,19 +170,30 @@
   // Det fine kartbiletet (dobbel oppløysing) blir henta separat når sida er
   // på nett. Frå disk (file:) kan ikkje nettlesaren lese pikslane i eit bilete,
   // så då står det innebygde kartet.
-  function hentFintKart() {
-    if (!T.fin || location.protocol === "file:" || new URLSearchParams(location.search).get("fin") === "0") return;
+  function hentFintKart(forsok) {
+    if (!T.fin || location.protocol === "file:" || new URLSearchParams(location.search).get("fin") === "0") { registrerSW(); return; }
     lesHoegdekart("data/" + T.fin.fil, T.fin.breidd, T.fin.hogd)
       .then(L => {
         L.km = T.fin.kmPerPx;
         const ny = lagKartbilete(L);
-        const gammal = terrengMesh.material.map;
-        terrengMesh.material.map = ny;
-        terrengMesh.material.needsUpdate = true;
+        const gammal = landMaterial.map;
+        landMaterial.map = ny;
+        landMaterial.needsUpdate = true;
         kartbilete = ny;
         if (gammal) gammal.dispose();
+        finLag = L;          // bitane nær kameraet blir bygde om frå det fine laget
       })
-      .catch(e => console.warn("Fint kart ikkje lasta:", e && e.message));
+      .then(registrerSW, e => {
+        // Eit nettverksglipp første gongen: prøv ein gong til før vi gir oss.
+        if (!forsok) setTimeout(() => hentFintKart(true), 1500);
+        else { console.warn("Fint kart ikkje lasta:", e && e.message); registrerSW(); }
+      });
+  }
+  // Service workeren held det fine kartet og ordlista i cache (sjå sw.js). Han
+  // blir registrert først etter at det fine kartet er henta, så installeringa
+  // hans ikkje kjem i vegen for den hentinga.
+  function registrerSW() {
+    if ("serviceWorker" in navigator && location.protocol !== "file:") navigator.serviceWorker.register("sw.js").catch(() => {});
   }
 
   /* ---------- Scene ---------- */
@@ -197,31 +208,159 @@
   sol.position.set(-900, 1100, -500);
   scene.add(sol);
 
-  let terrengMesh = null, kartbilete = null;
-  function byggTerreng(steg) {
-    if (terrengMesh) { scene.remove(terrengMesh); terrengMesh.geometry.dispose(); }
-    if (!kartbilete) kartbilete = lagKartbilete({ W, H, km: KM, hoegd, maske, djup });
-    const cols = Math.ceil(W / steg), rows = Math.ceil(H / steg);
-    const pos = new Float32Array(cols * rows * 3), uv = new Float32Array(cols * rows * 2);
-    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
-      const px = Math.min(W - 1, c * steg), py = Math.min(H - 1, r * steg), i = py * W + px, o = (r * cols + c) * 3;
-      pos[o] = (px + 0.5) * KM - BREIDD_KM / 2;
-      pos[o + 1] = maske[i] ? Math.max(hoegd[i], 0.03) * EXAG : -0.3 * EXAG;
-      pos[o + 2] = (py + 0.5) * KM - HOGD_KM / 2;
-      uv[(r * cols + c) * 2] = (px + 0.5) / W; uv[(r * cols + c) * 2 + 1] = (py + 0.5) / H;
-    }
-    const idx = new Uint32Array((cols - 1) * (rows - 1) * 6);
+  /* ---------- Terreng i bitar med detaljnivå ----------
+     Landet er delt i bitar på CHUNK × CHUNK pikslar i det innebygde kartet.
+     Kvar bit blir bygd på eitt av tre nivå etter kor nær kameramålet ho er:
+     grov (kvar andre piksel), mellom (kvar piksel) eller fin (det fine
+     høgdelaget, dobbelt så tett) når det er lasta. Nivåa blir vurderte på
+     nytt medan kameraet flyttar seg, og nokre få bitar blir bygde om per
+     bilete, så det ikkje hakkar. Kantane på bitane får eit «skjørt» som heng
+     ned, så det ikkje blir sprekker der to nivå møtest.
+
+     Havet er eit eige, flatt plan med eigen shader (sjå lagHav). Landnettet
+     held fram under havflata med havbotnen, så strandlinja er snittet mellom
+     dei to og ikkje ein kant i nettet der teksturen blir dregen ut. */
+  const CHUNK = 64;                  // pikslar i grunnlaget per bit
+  const SKJORT = 1.5;                // kor langt skjørtet heng ned
+  const landMaterial = new THREE.MeshBasicMaterial();
+  const landGruppe = new THREE.Group();
+  scene.add(landGruppe);
+  let kartbilete = null, basisLag = null, finLag = null, kvalitet = 1;   // kvalitet 0 = treg maskin
+  const bitar = [];                  // { x0, y0, x1, y1, x, z, nivaa, mesh }
+  let ventande = [];                 // bitar som skal byggjast om
+
+  // Bygg ei bit av laget L, pikslar x0..x1 og y0..y1 (begge inkluderte, så
+  // nabobitar deler kantane), med kvar steg-te piksel.
+  function lagBit(L, x0, y0, x1, y1, steg) {
+    const cols = Math.ceil((x1 - x0) / steg) + 1, rows = Math.ceil((y1 - y0) / steg) + 1;
+    const kant = [];
+    for (let c = 0; c < cols; c++) kant.push([c, 0]);
+    for (let r = 1; r < rows; r++) kant.push([cols - 1, r]);
+    for (let c = cols - 2; c >= 0; c--) kant.push([c, rows - 1]);
+    for (let r = rows - 2; r > 0; r--) kant.push([0, r]);
+    const n = cols * rows, nk = kant.length;
+    const pos = new Float32Array((n + nk) * 3), uv = new Float32Array((n + nk) * 2);
+    // Land står på høgda si, hav ligg under havflata med botnen, så flata skjer landet i strandlinja.
+    const yAv = i => L.maske[i] ? Math.max(L.hoegd[i], 0.03) * EXAG : -(0.08 + 0.6 * L.djup[i]) * EXAG;
+    let v = 0;
+    const sett = (c, r, senk) => {
+      const px = Math.min(x1, x0 + c * steg), py = Math.min(y1, y0 + r * steg), i = py * L.W + px;
+      pos[v * 3] = (px + 0.5) * L.km - BREIDD_KM / 2;
+      pos[v * 3 + 1] = yAv(i) - senk;
+      pos[v * 3 + 2] = (py + 0.5) * L.km - HOGD_KM / 2;
+      uv[v * 2] = (px + 0.5) / L.W; uv[v * 2 + 1] = (py + 0.5) / L.H;
+      v++;
+    };
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) sett(c, r, 0);
+    for (const [c, r] of kant) sett(c, r, SKJORT);
+    const idx = new Uint32Array((cols - 1) * (rows - 1) * 6 + nk * 12);
     let k = 0;
     for (let r = 0; r < rows - 1; r++) for (let c = 0; c < cols - 1; c++) {
       const a = r * cols + c, b = a + 1, d = a + cols, e = d + 1;
       idx[k++] = a; idx[k++] = d; idx[k++] = b; idx[k++] = b; idx[k++] = d; idx[k++] = e;
     }
+    // Skjørtet: ein vegg frå kvar kant ned til den senka kopien, teikna frå begge sider.
+    for (let q = 0; q < nk; q++) {
+      const [c0, r0] = kant[q], [c1, r1] = kant[(q + 1) % nk];
+      const t0 = r0 * cols + c0, t1 = r1 * cols + c1, s0 = n + q, s1 = n + (q + 1) % nk;
+      idx[k++] = t0; idx[k++] = s0; idx[k++] = t1; idx[k++] = t1; idx[k++] = s0; idx[k++] = s1;
+      idx[k++] = t0; idx[k++] = t1; idx[k++] = s0; idx[k++] = t1; idx[k++] = s1; idx[k++] = s0;
+    }
     const g = new THREE.BufferGeometry();
     g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
     g.setAttribute("uv", new THREE.BufferAttribute(uv, 2));
     g.setIndex(new THREE.BufferAttribute(idx, 1));
-    terrengMesh = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ map: kartbilete }));
-    scene.add(terrengMesh);
+    return g;
+  }
+
+  function nivaaFor(b) {
+    const d = Math.hypot(b.x - kam.maal.x, b.z - kam.maal.z), a = kam.avstand;
+    if (a < 900 && d < Math.max(140, a * 0.6)) return finLag && kvalitet ? 2 : 1;
+    if (d < a * 1.3 + 120) return kvalitet ? 1 : 0;
+    return 0;
+  }
+  // Finn bitane som treng eit anna nivå, nærast kameramålet først.
+  function planleggLOD() {
+    ventande = bitar.filter(b => nivaaFor(b) !== b.nivaa)
+      .sort((p, q) => Math.hypot(p.x - kam.maal.x, p.z - kam.maal.z) - Math.hypot(q.x - kam.maal.x, q.z - kam.maal.z));
+  }
+  function byggVentande(maks) {
+    for (let i = 0; i < maks && ventande.length; i++) {
+      const b = ventande.shift(), n = nivaaFor(b);
+      if (n === b.nivaa) continue;
+      if (b.mesh) { landGruppe.remove(b.mesh); b.mesh.geometry.dispose(); }
+      const L = n === 2 ? finLag : basisLag, f = n === 2 ? 2 : 1, steg = n === 0 ? 2 : 1;
+      b.mesh = new THREE.Mesh(lagBit(L, b.x0 * f, b.y0 * f, b.x1 * f, b.y1 * f, steg), landMaterial);
+      b.nivaa = n;
+      landGruppe.add(b.mesh);
+    }
+  }
+  function byggTerreng() {
+    basisLag = { W, H, km: KM, hoegd, maske, djup };
+    kartbilete = lagKartbilete(basisLag);
+    landMaterial.map = kartbilete;
+    landMaterial.needsUpdate = true;
+    for (let y0 = 0; y0 < H - 1; y0 += CHUNK) for (let x0 = 0; x0 < W - 1; x0 += CHUNK) {
+      const x1 = Math.min(W - 1, x0 + CHUNK), y1 = Math.min(H - 1, y0 + CHUNK);
+      bitar.push({ x0, y0, x1, y1, x: ((x0 + x1) / 2 + 0.5) * KM - BREIDD_KM / 2, z: ((y0 + y1) / 2 + 0.5) * KM - HOGD_KM / 2, nivaa: -1, mesh: null });
+    }
+    planleggLOD();
+    byggVentande(bitar.length);
+    lagHav();
+  }
+
+  /* ---------- Havet ----------
+     Eit flatt plan i havflata med eigen shader: fargen går frå grunt til
+     djupt etter havdjupet i høgdekartet, det er små bølgjer i normalen som
+     gir eit svakt solglimt når ein er nær, og ei lys strandkant der planet
+     grensar til land. */
+  let havMaterial = null;
+  function lagHav() {
+    const data = new Uint8Array(W * H * 4);
+    for (let i = 0; i < W * H; i++) { data[i * 4] = djup[i] * 255; data[i * 4 + 1] = maske[i] ? 255 : 0; data[i * 4 + 3] = 255; }
+    const kart = new THREE.DataTexture(data, W, H, THREE.RGBAFormat);
+    kart.magFilter = kart.minFilter = THREE.LinearFilter;
+    kart.needsUpdate = true;
+    havMaterial = new THREE.ShaderMaterial({
+      uniforms: { kart: { value: kart }, tid: { value: 0 }, sol: { value: new THREE.Vector3(-0.5, 0.65, -0.4).normalize() } },
+      side: THREE.DoubleSide,
+      vertexShader: `
+        varying vec2 vUv; varying vec3 vPos;
+        void main() {
+          vUv = uv;
+          vec4 wp = modelMatrix * vec4(position, 1.0);
+          vPos = wp.xyz;
+          gl_Position = projectionMatrix * viewMatrix * wp;
+        }`,
+      fragmentShader: `
+        uniform sampler2D kart; uniform float tid; uniform vec3 sol;
+        varying vec2 vUv; varying vec3 vPos;
+        void main() {
+          vec2 k = texture2D(kart, vUv).rg;
+          float djup = k.r;      // 0..1 i kvadratrotskala, 1 = 1000 m
+          float land = k.g;      // lineært filtrert, så han stig mot land
+          vec3 grunt = vec3(0.26, 0.50, 0.66);
+          vec3 djupt = vec3(0.05, 0.19, 0.38);
+          vec3 farge = mix(grunt, djupt, smoothstep(0.05, 0.8, djup));
+          // Lange, låge bølgjer i normalen, berre til solglimtet, og berre når
+          // ein er nær: på avstand ville dei gi striper (moaré) i biletet.
+          float naer = clamp(1.0 - length(cameraPosition - vPos) / 320.0, 0.0, 1.0);
+          float w1 = sin(vPos.x * 0.45 + vPos.z * 0.25 + tid * 0.6);
+          float w2 = sin(vPos.x * 0.17 - vPos.z * 0.5 - tid * 0.45);
+          vec3 n = normalize(vec3(0.03 * naer * (w1 + 0.5 * w2), 1.0, 0.03 * naer * (w2 - 0.5 * w1)));
+          vec3 v = normalize(cameraPosition - vPos);
+          vec3 h = normalize(sol + v);
+          float glimt = pow(max(dot(n, h), 0.0), 60.0) * 0.25 * naer;
+          float lys = 0.92 + 0.08 * max(dot(n, sol), 0.0);
+          // Strandkanta: lysare og grønare vatn inn mot land.
+          float strand = smoothstep(0.0, 0.7, land);
+          farge = mix(farge, vec3(0.50, 0.74, 0.80), strand * 0.75);
+          gl_FragColor = vec4(farge * lys + glimt, 1.0);
+        }`,
+    });
+    const g = new THREE.PlaneGeometry(BREIDD_KM, HOGD_KM);
+    g.rotateX(Math.PI / 2);   // v = 0 i nord, som i høgdekartet
+    scene.add(new THREE.Mesh(g, havMaterial));
   }
 
   /* ---------- Kamera: krinsar om eit mål på bakken ---------- */
@@ -840,10 +979,13 @@
   window.addEventListener("resize", tilpass);
 
   const rammetider = [];
-  let steg = 1, sistRamme = 0;
+  let sistRamme = 0, ramme = 0;
   function teikn(no) {
     requestAnimationFrame(teikn);
     stegTween(no);
+    if (++ramme % 12 === 0) planleggLOD();
+    byggVentande(4);
+    if (havMaterial) havMaterial.uniforms.tid.value = no / 1000;
     if (noRute && !noRute.ferdig && !pausa) {
       const gaatt = no - noRute.t0;
       if (gaatt >= 0) {
@@ -864,12 +1006,12 @@
     renderer.render(scene, camera);
     plasserEtikettar();
 
-    // Går det tregt på denne maskina, bygg terrenget grovare.
-    if (steg === 1 && sistRamme) {
+    // Går det tregt på denne maskina, hald terrenget grovare.
+    if (kvalitet === 1 && sistRamme && !ventande.length) {
       rammetider.push(no - sistRamme);
       if (rammetider.length === 90) {
         const sortert = rammetider.slice().sort((a, b) => a - b);
-        if (sortert[45] > 34) { steg = 2; byggTerreng(2); }
+        if (sortert[45] > 34) { kvalitet = 0; planleggLOD(); }
       }
     }
     sistRamme = no;
@@ -877,9 +1019,8 @@
 
   /* ---------- Start ---------- */
   function start() {
-    const parm = new URLSearchParams(location.search);
-    if (parm.get("steg") === "2") steg = 2;
-    byggTerreng(steg);
+    if (new URLSearchParams(location.search).get("kvalitet") === "0") kvalitet = 0;
+    byggTerreng();
     tilpass();
     const m = /#k=(\d+)/.exec(location.hash);
     const idx = m ? Math.min(SEKS.length, Math.max(1, +m[1])) - 1 : 0;
@@ -894,9 +1035,7 @@
     if (sisteKap !== idx && erKapittel(SEKS[sisteKap])) { visSeksjon(sisteKap); if (noRute) { noRute.framdrift = 1; noRute.ferdig = true; pauseBtn.hidden = true; } }
     visSeksjon(idx);
     requestAnimationFrame(teikn);
-    hentFintKart();
-    // Service workeren held det fine kartet og ordlista i cache (sjå sw.js).
-    if ("serviceWorker" in navigator && location.protocol !== "file:") navigator.serviceWorker.register("sw.js").catch(() => {});
+    hentFintKart(false);
   }
 
   const glTest = document.createElement("canvas");

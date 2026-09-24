@@ -124,10 +124,17 @@ kjøpekraft i dag, rekna om med konsumprisindeksen til Norges Bank og SSB, og
 som årsløner den gongen (dreng, lærar, rektor). Tala og kjeldene står i
 kommentaren øvst i innhaldsfila.
 
-Kartet (`js/aasen-reise.js`) er eitt trekantnett bygd av høgdekartet i
-`data/noreg-terreng.js`, 1,25 km per piksel, i Lamberts konforme
-kjegleprojeksjon. Høgdene er overdrivne 6,5 gonger for at fjordar og fjell skal
-synast frå lufta. Fargane ligg i eit kartbilete som blir teikna éin gong ved
+Kartet (`js/aasen-reise.js`) er bygd av høgdekartet i `data/noreg-terreng.js`,
+1,25 km per piksel, i Lamberts konforme kjegleprojeksjon. Høgdene er
+overdrivne 6,5 gonger for at fjordar og fjell skal synast frå lufta. Landet er
+delt i bitar på 64 × 64 pikslar som blir bygde på tre detaljnivå etter kor nær
+kameramålet dei er: grov, mellom og fin (det fine høgdelaget, når det er
+lasta). Nivåa blir vurderte på nytt medan kameraet flyttar seg, med skjørt
+langs kantane så det ikkje blir sprekker. Havet er eit eige flatt plan med
+eigen shader: fargen går frå grunt til djupt etter havdjupet, det er ei lys
+strandkant inn mot land og eit svakt solglimt frå låge bølgjer når ein er
+nær. Landnettet held fram under havflata med havbotnen, så strandlinja er
+snittet mellom plan og land, ikkje ein kant i nettet. Fargane ligg i eit kartbilete som blir teikna éin gong ved
 oppstart og lagt oppå terrenget som tekstur: høgdefargar, relieffskugge med lys
 frå nordvest rekna av høgdekartet, hav med djupfargar, innsjøar, brear og
 riksgrensa. Difor er detaljane per piksel, ikkje per hjørne i nettet. Er sida
@@ -138,8 +145,8 @@ kan ikkje lese pikslane i eit bilete frå `file:`.
 Kystlinja følgjer landpolygona frå Natural Earth, ikkje høgdedataa, for
 høgdedataa fyller att tronge sund som Drøbaksundet.
 Høgdekartet er bakt inn som base64, og three.js ligg i `js/vendor`, så sida
-verkar òg opna rett frå disk. Går teikninga tregt, byggjer sida terrenget om
-att med halv oppløysing. Kjelder og lisensar for terrengdata står i
+verkar òg opna rett frå disk. Går teikninga tregt, held sida terrenget på dei
+grovare nivåa. Kjelder og lisensar for terrengdata står i
 `data/KJELDE.md`, og `node tools/lag-terreng.js` lagar høgdekartet på nytt.
 
 ## Språksjekk
