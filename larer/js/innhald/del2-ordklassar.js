@@ -64,7 +64,7 @@ Larar.register("grammatikk-substantiv", {
             <tr><td>Inkjekjønn</td><td><em class="nn">eit hus</em></td><td><em class="nn">hus<strong>et</strong></em></td><td><em class="nn">hus</em></td><td><em class="nn">hus<strong>a</strong></em></td></tr>
           </tbody>
         </table>`,
-      notes: "Gå gjennom kolonnane med spørsmål: ein, denne, mange, alle. <em>ein gut, denne guten, mange gutar, alle gutane.</em> Dei fire hjelpeorda gjer det lett å høyre kva form ein treng. Legg merke til at inkjekjønn ikkje får noka ending i ubestemt fleirtal: <em>mange hus</em>.",
+      notes: "Gå gjennom kolonnane med spørsmål: ein/ei/eit, denne/dette, mange, alle. <em>ein gut, denne guten, mange gutar, alle gutane</em>, men <em>eit hus, dette huset</em>. Hjelpeorda gjer det lett å høyre kva form ein treng. Legg merke til at inkjekjønn ikkje får noka ending i ubestemt fleirtal: <em>mange hus</em>.",
     },
     {
       title: "Endingane du må hugse",

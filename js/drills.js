@@ -125,7 +125,8 @@ const Drills = (() => {
       kind: "choice",
       why: nounWhy(n, 1),
     }),
-    defSg: (n, all) => formTask(n, all, 1, "Bestemt form eintal", "(denne …)"),
+    // Determinativet må følgje kjønnet: denne guten, denne jenta, men dette huset.
+    defSg: (n, all) => formTask(n, all, 1, "Bestemt form eintal", n.g === "n" ? "(dette …)" : "(denne …)"),
     indefPl: (n, all) => formTask(n, all, 2, "Ubestemt form fleirtal", "(mange …)"),
     defPl: (n, all) => formTask(n, all, 3, "Bestemt form fleirtal", "(alle …)"),
     fromBm: (n, all) => {
