@@ -896,7 +896,7 @@ Larar.register("lesing-duun", {
           <li>La personane snakke lite og gjere mykje.</li>
         </ul>`,
       tid: 15,
-      notes: "Merk: to av spørsmåla til <em>Juvikingar</em> handlar om at Per takkar nei til Mærit, og om setninga «Han var ingen husmanns-larv, vilde dei vita det!». Dette står ikkje i utdraget i modulen, men lenger ut i kapittelet. Fortel elevane dette, og la dei lese vidare på bokselskap.no eller svare ut frå det spørsmålet sjølv fortel. I skriveoppgåva: minn elevane på at noko må stå på spel, og at det skal vere eit vendepunkt der nokon tek eit val.",
+      notes: "Spørsmåla til <em>Juvikingar</em> handlar mellom anna om at Per takkar nei til Mærit, og om den siste setninga i utdraget: «Han var ingen husmanns-larv, vilde dei vita det!». I skriveoppgåva: minn elevane på at noko må stå på spel, og at det skal vere eit vendepunkt der nokon tek eit val.",
     },
     {
       title: "Oppsummering",
@@ -922,7 +922,6 @@ Larar.register("lesing-duun", {
     forebuing: [
       "Les begge tekstane i modulen på førehand.",
       "Bestefar har ein sjukdom som gjer at han gløymer. Tenk gjennom om nokon elevar har besteforeldre med demens.",
-      "Merk deg at to av spørsmåla til <em class=\"nn\">Juvikingar</em> viser til delar av kapittelet som ikkje står i utdraget (Per og Mærit, og setninga om «husmanns-larv»). Les vidare på bokselskap.no, eller førebu elevane på det (lysbilete 16).",
       "Ha lappar klare til exit-lappen.",
     ],
     okt: [
@@ -953,7 +952,7 @@ Larar.register("lesing-duun", {
         "La elevar som strevar med dialektforma i <em class=\"nn\">Juvikingar</em>, lese første avsnitt og sitatet med ordlista.",
       ],
       utfordring: [
-        "Be elevane lese resten av kapittelet «Frå gammalt av» på bokselskap.no og svare på spørsmåla om Mærit.",
+        "Be elevane lese resten av kapittelet «Frå gammalt av» på bokselskap.no, der Per slår seg ned i Juvika og dei neste juvikingane kjem til.",
         "La elevane skrive same scene frå far sin ståstad, med tankane han har når han ser bestefar kome.",
       ],
     },

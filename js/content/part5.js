@@ -1199,7 +1199,7 @@ Modules.register({
       title: "Ekte tekst: frå «Juvikingar» (1918)",
       passage: `
         <div class="callout warn">
-          <strong>Dette er Duun sine eigne ord.</strong> Utdraget er opninga av
+          <strong>Dette er Duun sine eigne ord.</strong> Utdraget er det første avsnittet i
           <em class="nn">Juvikingar</em> (1918), første bandet i <em class="nn">Juvikfolket</em>.
           Her møter du den aller første juvikingen. Språket er nynorsk frå 1918 med sterk
           trøndsk dialektfarge, og ligg nærare det du skriv sjølv enn Vinje og Garborg gjer.
@@ -1218,7 +1218,11 @@ Modules.register({
         og sa dem ut; han var grov i måle åt dem. Per vart med han oppetter, og i bjørkeholte
         straks nedanfor garen tok han på husbonden sin, han knegjekk han og han saumfór han så
         det var ei synd. Lines’n tagde og tok med, han var ikkje kleinare kar; han drog seg
-        heim med blodvegen etter seg.</em></p>
+        heim med blodvegen etter seg. Dei hadde eit herm etter Per frå den gongen: «Æg tok
+        borti’om urliti; æg va ikkj god-te anna.» Lines’n skikka kona si ned med bud, at ho
+        Mærit kunde han få, når det stod til som det gjorde. Per sa nei takk, han skulde ikkje
+        ha. Mærit sjøl var nedover, og kom gråtande att; men Per skipa skrape sitt i båten og
+        rodde. Han var ingen husmanns-larv, vilde dei vita det!</em></p>
 
         <h3>Ordliste</h3>
         <table>
@@ -1243,6 +1247,15 @@ Modules.register({
             <tr><td><em class="nn">tagde og tok med</em></td><td>sa ingenting og tok imot</td></tr>
             <tr><td><em class="nn">kleinare</em></td><td>veikare</td></tr>
             <tr><td><em class="nn">blodvegen</em></td><td>blodspor</td></tr>
+            <tr><td><em class="nn">eit herm</em></td><td>ord folk hugsa og gjentok etter nokon</td></tr>
+            <tr><td><em class="nn">Æg tok borti’om urliti; æg va ikkj god-te anna</em></td><td>Eg tok berre litt i han; eg kunne ikkje anna (på dialekt)</td></tr>
+            <tr><td><em class="nn">skikka … ned med bud</em></td><td>sende bod ned</td></tr>
+            <tr><td><em class="nn">ho Mærit kunde han få</em></td><td>han kunne få Mærit (dottera) til kone</td></tr>
+            <tr><td><em class="nn">han skulde ikkje ha</em></td><td>han ville ikkje ha henne</td></tr>
+            <tr><td><em class="nn">var nedover</em></td><td>gjekk ned til han</td></tr>
+            <tr><td><em class="nn">skipa skrape sitt i båten</em></td><td>lasta det vesle han åtte, i båten</td></tr>
+            <tr><td><em class="nn">husmanns-larv</em></td><td>husmannsstakkar, ein som let seg kue</td></tr>
+            <tr><td><em class="nn">vilde dei vita det</em></td><td>skulle dei vite</td></tr>
           </tbody>
         </table>
 
@@ -1454,7 +1467,7 @@ Modules.register({
       type: "exercise",
       exerciseType: "freeText",
       title: "Les ekte Vesaas på Nettbiblioteket",
-      question: "Gå til Nettbiblioteket og les byrjinga av <em class=\"nn\">Is-slottet</em> (1971) av Tarjei Vesaas: <a href=\"https://www.nb.no/items/e29c53bfc2df62f380d47026aece939d\" target=\"_blank\" rel=\"noopener\">opne boka på nb.no</a>. Les minst dei fem første sidene. Vil du heller lese <em class=\"nn\">Fuglane</em> (1957), ligg ho <a href=\"https://www.nb.no/items/858f48335cdd3e4b0ed6b5f180041885\" target=\"_blank\" rel=\"noopener\">her</a>. Skriv deretter 150–250 ord om det du las.",
+      question: "Gå til Nettbiblioteket og les byrjinga av <em class=\"nn\">Is-slottet</em> (1963) av Tarjei Vesaas: <a href=\"https://www.nb.no/items/e29c53bfc2df62f380d47026aece939d\" target=\"_blank\" rel=\"noopener\">opne boka på nb.no</a>. Les minst dei fem første sidene. Vil du heller lese <em class=\"nn\">Fuglane</em> (1957), ligg ho <a href=\"https://www.nb.no/items/858f48335cdd3e4b0ed6b5f180041885\" target=\"_blank\" rel=\"noopener\">her</a>. Skriv deretter 150–250 ord om det du las.",
       hint: "Nettbiblioteket er gratis og krev ingen innlogging, men du må sitje i Noreg. Du kan lese på skjermen, men ikkje laste ned eller skrive ut. Bla med pilene, eller skriv sidetal i feltet øvst. Finn du ikkje boka, søk på tittelen på nb.no.",
       minWords: 150,
       checklist: [

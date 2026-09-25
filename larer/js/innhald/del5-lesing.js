@@ -178,7 +178,6 @@ Larar.register("lesing-t-vesaas", {
     forebuing: [
       "Les «Jenta og isen» høgt for deg sjølv på førehand, så du finn rytmen og pausane.",
       "Sjekk at Nettbiblioteket opnar Is-slottet frå skulenettet.",
-      "Oppgåva i modulen oppgir 1971 ved Is-slottet, truleg årstalet for utgåva på Nettbiblioteket. Romanen kom første gong i 1963, slik det står i Møt nynorskforfattarane.",
     ],
     okt: [
       { fase: "Førlesing", min: 5, gjer: "<p>Mål for timen, kort om Vesaas, forventingar ut frå tittelen og ord i teksten.</p>", lysbilete: "2 til 5" },
