@@ -235,7 +235,7 @@ Larar.register("nynorskforfattarane", {
           <li>Sorter forfattarane etter tid.</li>
           <li>Skriv 80 til 150 ord om forfattaren du vil lese meir av.</li>
         </ul>`,
-      tid: 20,
+      tid: 15,
       notes: "Modulen har eitt fleirvalsspørsmål etter kvar forfattar, ei sortering og to skriveoppgåver. Den siste skriveoppgåva, der elevane finn og les ein ekte tekst, passar godt som heimearbeid eller til ei biblioteksøkt. Lenkjene står i modulen: bokselskap.no for Vinje, Garborg og Duun, og Nettbiblioteket (nb.no) for dei andre. Nb.no krev at ein sit i Noreg.",
     },
     {
@@ -250,7 +250,7 @@ Larar.register("nynorskforfattarane", {
     },
   ],
   guide: {
-    tid: "Éi økt på 60 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Modulen er inngangen til Del 5 og presenterer ni nynorskforfattarar kronologisk: Vinje og Garborg frå 1800-talet, Duun og dei to Vesaas-forfattarane frå 1900-talet, og Fosse, Grytten, Eikemo og Nilssen frå samtida. For kvar forfattar får elevane bakgrunn, stil og kjende verk, og eit lite spørsmål. Presentasjonen gjer det same på tavla, med vekt på stil og på at nynorsk har ein lang litterær tradisjon. Lesemodulane i Del 5 byggjer på dette, fordi kursteksten i kvar modul er skriven i stilen til ein av forfattarane.</p>",
     mal: [
       "Elevane kan namngi fleire nynorskforfattarar og plassere dei i tid.",
@@ -267,12 +267,12 @@ Larar.register("nynorskforfattarane", {
       "Ha lappar klare til exit-lappen.",
     ],
     okt: [
-      { fase: "Oppstart", min: 5, gjer: "<p>Gå gjennom måla og la elevane samle det dei alt veit. Vis dei tre tidene.</p>", lysbilete: "2 til 4" },
-      { fase: "1800-talet og 1900-talet", min: 13, gjer: "<p>Vinje, Garborg, Duun og dei to Vesaas-forfattarane. Ta spørsmålet om Grieg og samtalen om «eg» og «vi».</p>", lysbilete: "5 til 12" },
-      { fase: "Samtida", min: 12, gjer: "<p>Fosse, Grytten, Eikemo og Nilssen. Avslutt med dei to tekstane som heiter <em class=\"nn\">Tung tids tale</em>, og ein kjapp tidssjekk.</p>", lysbilete: "13 til 19" },
-      { fase: "Val av forfattar", min: 3, gjer: "<p>Elevane vel ein forfattar og fortel sidemannen kvifor.</p>", lysbilete: "20" },
-      { fase: "Eigenarbeid", min: 22, gjer: "<p>Elevane arbeider i modulen: spørsmåla, sorteringa og den første skriveoppgåva. Den andre skriveoppgåva kan bli heimearbeid.</p>", lysbilete: "21" },
-      { fase: "Avslutning", min: 5, gjer: "<p>Oppsummer og lat elevane skrive exit-lapp med ein forfattar og eitt stikkord om stilen.</p>", lysbilete: "22" },
+      { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og la elevane samle det dei alt veit. Vis dei tre tidene.</p>", lysbilete: "2 til 4" },
+      { fase: "1800-talet og 1900-talet", min: 10, gjer: "<p>Vinje, Garborg, Duun og dei to Vesaas-forfattarane. Ta spørsmålet om Grieg og samtalen om «eg» og «vi».</p>", lysbilete: "5 til 12" },
+      { fase: "Samtida", min: 9, gjer: "<p>Fosse, Grytten, Eikemo og Nilssen. Avslutt med dei to tekstane som heiter <em class=\"nn\">Tung tids tale</em>, og ein kjapp tidssjekk.</p>", lysbilete: "13 til 19" },
+      { fase: "Val av forfattar", min: 4, gjer: "<p>Elevane vel ein forfattar og fortel sidemannen kvifor.</p>", lysbilete: "20" },
+      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane arbeider i modulen: spørsmåla, sorteringa og den første skriveoppgåva. Den andre skriveoppgåva kan bli heimearbeid.</p>", lysbilete: "21" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive exit-lapp med ein forfattar og eitt stikkord om stilen.</p>", lysbilete: "22" },
     ],
     misoppfatningar: [
       { feil: "«Nynorsk er eit skulespråk, ikkje eit ordentleg litteraturspråk.»", hjelp: "Vis tidslinja og nobelprisen til Fosse. Nynorsk har vore brukt i dikt, romanar, drama og journalistikk sidan Vinje grunnla <em class=\"nn\">Dølen</em> i 1858." },
@@ -457,7 +457,7 @@ Larar.register("lesing-vinje", {
           <li>Skriv di eiga reiseskildring: 150 til 250 ord.</li>
           <li>Bland det du såg med det du tenkte.</li>
         </ul>`,
-      tid: 20,
+      tid: 15,
       notes: "Friskriftsspørsmåla har dømesvar som elevane kan klikke fram etter at dei har skrive sitt eige. Minn dei på å skrive først. I skriveoppgåva er det vanlegaste problemet at elevane lagar ei ruteliste: «Så kom vi til … Så åt vi …». Spør: kva la du merke til, og kva fekk det deg til å tenkje på? Dei som blir tidleg ferdige, kan lese meir Vinje på bokselskap.no.",
     },
     {
@@ -471,7 +471,7 @@ Larar.register("lesing-vinje", {
     },
   ],
   guide: {
-    tid: "Éi økt på 60 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Modulen har to tekstar. Den første, «Med toget over vidda», er ei reiseskildring skriven for kurset i stilen til Vinje: ein eg-forteljar tek toget over Hardangervidda og lèt små observasjonar føre til større tankar. Den andre er det ekte diktet «Ved Rundarne» frå 1864 i original staving, med ordliste. Presentasjonen er lagd opp som ei leseøkt med førlesing, lesing, samtale om verkemiddel og tolking, og overgang til spørsmåla og skriveoppgåva i modulen.</p>",
     mal: [
       "Elevane kan skilje mellom det forteljaren ser og det han tenkjer, og forklare korleis teksten går frå det konkrete til det allmenne.",
@@ -488,12 +488,12 @@ Larar.register("lesing-vinje", {
       "Ha lappar klare til exit-lappen.",
     ],
     okt: [
-      { fase: "Førlesing", min: 7, gjer: "<p>Gå gjennom måla, presenter Vinje og la elevane snakke om ei reise dei har gjort. Gå gjennom orda og lesestrategien.</p>", lysbilete: "2 til 6" },
+      { fase: "Førlesing", min: 5, gjer: "<p>Gå gjennom måla, presenter Vinje og la elevane snakke om ei reise dei har gjort. Gå gjennom orda og lesestrategien.</p>", lysbilete: "2 til 6" },
       { fase: "Lesing", min: 6, gjer: "<p>Elevane les «Med toget over vidda» to gonger, eller du les høgt første gongen.</p>", lysbilete: "7" },
-      { fase: "Samtale om kursteksten", min: 10, gjer: "<p>Samtal om sitatet om vaksne, tabellen over sjå og tenkje, tonen, og tanken om engelskmannen.</p>", lysbilete: "8 til 11" },
-      { fase: "Det ekte diktet", min: 10, gjer: "<p>Innfør stavinga, les første strofe høgt og samtal om to nøkkellinjer. Samanlikn tekstane.</p>", lysbilete: "12 til 15" },
-      { fase: "Eigenarbeid", min: 22, gjer: "<p>Elevane svarer på spørsmåla og byrjar på reiseskildringa. Resten kan bli heimearbeid.</p>", lysbilete: "16" },
-      { fase: "Avslutning", min: 5, gjer: "<p>Oppsummer og lat elevane skrive exit-lapp med éin observasjon og éin tanke.</p>", lysbilete: "17" },
+      { fase: "Samtale om kursteksten", min: 8, gjer: "<p>Samtal om sitatet om vaksne, tabellen over sjå og tenkje, tonen, og tanken om engelskmannen.</p>", lysbilete: "8 til 11" },
+      { fase: "Det ekte diktet", min: 8, gjer: "<p>Innfør stavinga, les første strofe høgt og samtal om to nøkkellinjer. Samanlikn tekstane.</p>", lysbilete: "12 til 15" },
+      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane svarer på spørsmåla og byrjar på reiseskildringa. Resten kan bli heimearbeid.</p>", lysbilete: "16" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive exit-lapp med éin observasjon og éin tanke.</p>", lysbilete: "17" },
     ],
     misoppfatningar: [
       { feil: "«Kursteksten er skriven av Vinje.»", hjelp: "Den første teksten er skriven for kurset i stilen til Vinje, og handlar om eit moderne tog. Berre diktet «Ved Rundarne» er Vinje sine eigne ord." },
@@ -671,7 +671,7 @@ Larar.register("lesing-garborg", {
           <li>Skriv om å kome attende: 150 til 250 ord.</li>
           <li>Forbodne ord: <em class="nn">glad, trist, redd, sint</em>.</li>
         </ul>`,
-      tid: 20,
+      tid: 15,
       notes: "Skriveregelen er streng med vilje: alt må visast gjennom detaljar, handlingar og replikkar. Gå rundt og spør: kva gjer personen din med hendene? Kva legg han eller ho merke til? Minn elevane på at ein replikkveksling kan vere berre tre ord, som mellom Anders og far.",
     },
     {
@@ -685,7 +685,7 @@ Larar.register("lesing-garborg", {
     },
   ],
   guide: {
-    tid: "Éi økt på 60 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Modulen har to tekstar. «Heim att» er skriven for kurset i stilen til Garborg: Anders kjem heim til garden etter fire år i Oslo, der noko har «knekt». I familien seier ein lite om det viktige, og kjenslene kjem fram gjennom detaljar og korte replikkar. Den andre teksten er eit ekte utdrag frå første kapittel av <em class=\"nn\">Bondestudentar</em> (1883), om bondeguten Daniel som drøymer om å bli prest. Presentasjonen er lagd opp som ei leseøkt: førlesing, lesing, samtale om det usagde og om å vise i staden for å fortelje, det ekte utdraget, og overgang til spørsmåla og skriveoppgåva.</p>",
     mal: [
       "Elevane kan tolke korte replikkar og forklare kva som ligg under det som blir sagt.",
@@ -702,12 +702,12 @@ Larar.register("lesing-garborg", {
       "Ha lappar klare til exit-lappen.",
     ],
     okt: [
-      { fase: "Førlesing", min: 6, gjer: "<p>Gå gjennom måla, presenter Garborg, la elevane gjette ut frå tittelen, og gå gjennom orda og lesestrategien.</p>", lysbilete: "2 til 6" },
+      { fase: "Førlesing", min: 4, gjer: "<p>Gå gjennom måla, presenter Garborg, la elevane gjette ut frå tittelen, og gå gjennom orda og lesestrategien.</p>", lysbilete: "2 til 6" },
       { fase: "Lesing", min: 8, gjer: "<p>Elevane les «Heim att». Les gjerne byrjinga høgt.</p>", lysbilete: "7" },
-      { fase: "Samtale om kursteksten", min: 13, gjer: "<p>Samtal om replikkane til far, setninga om stort og lite, vis-ikkje-fortel, forteljarsynsvinkelen og slutten.</p>", lysbilete: "8 til 12" },
-      { fase: "Det ekte utdraget", min: 8, gjer: "<p>Innfør Daniel og stavinga, les sitatet og samanlikn dei to unge mennene.</p>", lysbilete: "13 til 15" },
-      { fase: "Eigenarbeid", min: 20, gjer: "<p>Elevane svarer på spørsmåla og byrjar på skriveoppgåva. Resten kan bli heimearbeid.</p>", lysbilete: "16" },
-      { fase: "Avslutning", min: 5, gjer: "<p>Oppsummer og lat elevane skrive ei setning som viser nervøsitet utan å namngi han.</p>", lysbilete: "17" },
+      { fase: "Samtale om kursteksten", min: 9, gjer: "<p>Samtal om replikkane til far, setninga om stort og lite, vis-ikkje-fortel, forteljarsynsvinkelen og slutten.</p>", lysbilete: "8 til 12" },
+      { fase: "Det ekte utdraget", min: 6, gjer: "<p>Innfør Daniel og stavinga, les sitatet og samanlikn dei to unge mennene.</p>", lysbilete: "13 til 15" },
+      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane svarer på spørsmåla og byrjar på skriveoppgåva. Resten kan bli heimearbeid.</p>", lysbilete: "16" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive ei setning som viser nervøsitet utan å namngi han.</p>", lysbilete: "17" },
     ],
     misoppfatningar: [
       { feil: "«Far bryr seg ikkje om Anders, han seier nesten ingenting.»", hjelp: "Vis setninga «Det var ikkje mangel på kjærleik.» Stillheita er måten familien viser omsorg på. Far gir Anders lov til å bli «så lenge du vil»." },
@@ -883,7 +883,7 @@ Larar.register("lesing-duun", {
           <li>Skriv ei dramatisk scene: naturen står imot, 150 til 250 ord.</li>
           <li>La personane snakke lite og gjere mykje.</li>
         </ul>`,
-      tid: 20,
+      tid: 15,
       notes: "Merk: to av spørsmåla til <em>Juvikingar</em> handlar om at Per takkar nei til Mærit, og om setninga «Han var ingen husmanns-larv, vilde dei vita det!». Dette står ikkje i utdraget i modulen, men lenger ut i kapittelet. Fortel elevane dette, og la dei lese vidare på bokselskap.no eller svare ut frå det spørsmålet sjølv fortel. I skriveoppgåva: minn elevane på at noko må stå på spel, og at det skal vere eit vendepunkt der nokon tek eit val.",
     },
     {
@@ -897,7 +897,7 @@ Larar.register("lesing-duun", {
     },
   ],
   guide: {
-    tid: "Éi økt på 60 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Modulen har to tekstar. «Bestefar og stormen» er skriven for kurset i stilen til Duun: ein gut fortel om kvelden då bestefaren, som har ein sjukdom som gjer at han gløymer, går ut i stormen etter sauene. Far vel å la han hjelpe til utan å seie eit ord om det. Den andre teksten er opninga av <em class=\"nn\">Juvikingar</em> (1918), første bandet i <em class=\"nn\">Juvikfolket</em>, om husmannen Per som set seg opp mot husbonden sin. Presentasjonen er lagd opp som ei leseøkt med førlesing, lesing, samtale om verkemiddel som samanlikning, besjeling og knapp stil, det ekte utdraget, og overgang til spørsmåla og skriveoppgåva.</p>",
     mal: [
       "Elevane kan forklare korleis naturen fungerer som motstandar i ein tekst, og kjenne att besjeling og samanlikning.",
@@ -914,12 +914,12 @@ Larar.register("lesing-duun", {
       "Ha lappar klare til exit-lappen.",
     ],
     okt: [
-      { fase: "Førlesing", min: 6, gjer: "<p>Gå gjennom måla, presenter Duun, la elevane gjette ut frå tittelen, og gå gjennom orda og lesestrategien.</p>", lysbilete: "2 til 6" },
+      { fase: "Førlesing", min: 4, gjer: "<p>Gå gjennom måla, presenter Duun, la elevane gjette ut frå tittelen, og gå gjennom orda og lesestrategien.</p>", lysbilete: "2 til 6" },
       { fase: "Lesing", min: 8, gjer: "<p>Les «Bestefar og stormen» høgt, eller la elevane lese sjølve.</p>", lysbilete: "7" },
-      { fase: "Samtale om kursteksten", min: 13, gjer: "<p>Samtal om første setning, samanlikninga med elva, naturen som motstandar, far sitt val og slutten.</p>", lysbilete: "8 til 12" },
-      { fase: "Det ekte utdraget", min: 8, gjer: "<p>Innfør Per og språket, les sitatet og samanlikn far og Per.</p>", lysbilete: "13 til 15" },
-      { fase: "Eigenarbeid", min: 20, gjer: "<p>Elevane svarer på spørsmåla og byrjar på skriveoppgåva. Resten kan bli heimearbeid.</p>", lysbilete: "16" },
-      { fase: "Avslutning", min: 5, gjer: "<p>Oppsummer og lat elevane skrive ei setning der vêret gjer noko, som om det levde.</p>", lysbilete: "17" },
+      { fase: "Samtale om kursteksten", min: 9, gjer: "<p>Samtal om første setning, samanlikninga med elva, naturen som motstandar, far sitt val og slutten.</p>", lysbilete: "8 til 12" },
+      { fase: "Det ekte utdraget", min: 6, gjer: "<p>Innfør Per og språket, les sitatet og samanlikn far og Per.</p>", lysbilete: "13 til 15" },
+      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane svarer på spørsmåla og byrjar på skriveoppgåva. Resten kan bli heimearbeid.</p>", lysbilete: "16" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive ei setning der vêret gjer noko, som om det levde.</p>", lysbilete: "17" },
     ],
     misoppfatningar: [
       { feil: "«Bestefar går ut fordi han er forvirra.»", hjelp: "Vis at auga hans er «klårare enn dei hadde vore på månader». Han kjenner att noko han har gjort heile livet. Det er det rette svaret på fleirvalsspørsmålet i modulen." },

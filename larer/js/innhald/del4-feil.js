@@ -1229,7 +1229,7 @@ Larar.register("feil-rettelesing", {
           <li>Klikk på feilen, skriv rett form.</li>
           <li>Les tre gonger før du trykkjer «Sjekk svar».</li>
         </ul>`,
-      tid: 15,
+      tid: 10,
       notes: `Minn elevane om at alle ord som ikkje er feil, er korrekt nynorsk. Dei treng altså ikkje tvile på kvart ord. Oppmuntre dei til å bruke metoden, ikkje berre lese éin gong og klikke. Ikkje alle rekk alle fem tekstane, og det er greitt.`,
     },
     {
@@ -1240,7 +1240,7 @@ Larar.register("feil-rettelesing", {
           <li>Les han tre gonger med sjekklista.</li>
           <li>Skriv kva feil du fann, og kva du må passe på.</li>
         </ul>`,
-      tid: 14,
+      tid: 10,
       notes: `Har elevane ingen eigen tekst, skriv dei ein ny på minst 100 ord om ein dag dei hugsar godt. Oppsummeringa deira er gull for deg: ho viser kva feiltypar kvar elev slit med. Samle henne inn eller be elevane lagre henne.`,
     },
     {
@@ -1255,7 +1255,7 @@ Larar.register("feil-rettelesing", {
     },
   ],
   guide: {
-    tid: "Éi økt på 60 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: `<p>Modulen avsluttar Typiske feil. Elevane lærer ein metode for korrekturlesing: les teksten tre gonger, éin gong for innhald, éin for endingar og éin for småord, og bruk ei sjekkliste med dei vanlegaste feila. Så trenar dei på fem heile tekstar med skjulte feil og stigande vanskegrad, frå dagboknotat til forteljing, og avsluttar med å rette sin eigen tekst.</p>`,
     mal: [
       `Elevane kan bruke ein fast metode for korrekturlesing med tre gjennomlesingar.`,
@@ -1270,12 +1270,12 @@ Larar.register("feil-rettelesing", {
       `Skriv gjerne ut sjekklista frå leksjonen til elevar som vil ha henne på papir.`,
     ],
     okt: [
-      { fase: "Oppstart", min: 4, gjer: `<p>Gå gjennom måla og lat elevane diskutere kvifor det er vanskeleg å sjå eigne feil.</p>`, lysbilete: "2 og 3" },
-      { fase: "Metoden", min: 8, gjer: `<p>Gå gjennom dei tre gjennomlesingane, tipsa om å lese høgt og baklengs, og dei tre delane av sjekklista.</p>`, lysbilete: "4 til 8" },
-      { fase: "Korrektur saman", min: 14, gjer: `<p>Les dagboknotatet saman med metoden, ta spørsmålet om de/dei og finn feila i utdraga frå tekst 3, 4 og 5.</p>`, lysbilete: "9 til 13" },
-      { fase: "Refleksjon", min: 2, gjer: `<p>Elevane tenkjer over kva feiltype dei sjølve gjer oftast.</p>`, lysbilete: "14" },
-      { fase: "Eigenarbeid: tekstane", min: 15, gjer: `<p>Elevane arbeider med tekst 1 til 5 i modulen.</p>`, lysbilete: "15" },
-      { fase: "Eigenarbeid: eigen tekst", min: 14, gjer: `<p>Elevane rettar sin eigen tekst med metoden og skriv oppsummeringa.</p>`, lysbilete: "16" },
+      { fase: "Oppstart", min: 3, gjer: `<p>Gå gjennom måla og lat elevane diskutere kvifor det er vanskeleg å sjå eigne feil.</p>`, lysbilete: "2 og 3" },
+      { fase: "Metoden", min: 6, gjer: `<p>Gå gjennom dei tre gjennomlesingane, tipsa om å lese høgt og baklengs, og dei tre delane av sjekklista.</p>`, lysbilete: "4 til 8" },
+      { fase: "Korrektur saman", min: 10, gjer: `<p>Les dagboknotatet saman med metoden, ta spørsmålet om de/dei og finn feila i utdraga frå tekst 3, 4 og 5.</p>`, lysbilete: "9 til 13" },
+      { fase: "Refleksjon", min: 3, gjer: `<p>Elevane tenkjer over kva feiltype dei sjølve gjer oftast.</p>`, lysbilete: "14" },
+      { fase: "Eigenarbeid: tekstane", min: 10, gjer: `<p>Elevane arbeider med tekst 1 til 5 i modulen.</p>`, lysbilete: "15" },
+      { fase: "Eigenarbeid: eigen tekst", min: 10, gjer: `<p>Elevane rettar sin eigen tekst med metoden og skriv oppsummeringa.</p>`, lysbilete: "16" },
       { fase: "Avslutning", min: 3, gjer: `<p>Oppsummer metoden og lat elevane velje eit personleg fokuspunkt.</p>`, lysbilete: "17" },
     ],
     misoppfatningar: [

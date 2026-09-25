@@ -803,7 +803,7 @@ Larar.register("ordbok-i-skriving", {
           <li>Slå opp <strong>minst fem ord</strong> undervegs.</li>
           <li>List orda og kva du fann ut, nedst i teksten.</li>
         </ul>`,
-      tid: 20,
+      tid: 15,
       notes: "Sjekklista i modulen ber elevane slå opp kjønnet på minst to substantiv, preteritum av minst eitt sterkt verb og minst eitt ord dei mistenkjer er bokmål. Til slutt bruker dei «Sjekk språket»-knappen. Gå rundt og sjå på lista over oppslag: der ser du om dei slår opp dei rette tinga.",
     },
     {
@@ -826,7 +826,7 @@ Larar.register("ordbok-i-skriving", {
     },
   ],
   guide: {
-    tid: "Éi økt på 60 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Modulen samlar det elevane har lært i Del 3 og set det i arbeid i eigen tekst. Elevane lærer fire situasjonar der det løner seg å slå opp: tvil om kjønn, tvil om bøying, ord som luktar bokmål og ord som er brukte for mange gonger. Dei lærer òg ein framgangsmåte for å finne nynorskordet når dei berre kjenner bokmålsordet, og å sjekke at ordet dei finn, passar i teksten.</p>",
     mal: [
       "Elevane kan nemne dei fire situasjonane der det løner seg å slå opp.",
@@ -842,12 +842,12 @@ Larar.register("ordbok-i-skriving", {
       "Sjå til at elevane har maskin og kan opne ordbokene.no mens dei skriv.",
     ],
     okt: [
-      { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og la elevane ta stilling til påstanden om å skrive som det høyrest ut.</p>", lysbilete: "2 og 3" },
-      { fase: "Når slår vi opp?", min: 7, gjer: "<p>Gå gjennom dei fire situasjonane, kjønn som smittar, og spørsmålet om null treff.</p>", lysbilete: "4 til 6" },
-      { fase: "Frå bokmål til nynorsk", min: 10, gjer: "<p>Vis vegvisaren og demonstrer <em class=\"bm\">anledning</em> live. Ta spørsmålet om <em class=\"bm\">forskjellen</em> og snakk om fella.</p>", lysbilete: "7 til 10" },
-      { fase: "Øving i klassen", min: 7, gjer: "<p>Vel rett plass i bøyingsrekkja, og set om ei setning med ordboka open.</p>", lysbilete: "11 og 12" },
-      { fase: "Eigenarbeid", min: 25, gjer: "<p>Elevane skriv teksten om ein stad og slår opp minst fem ord. Dei som blir ferdige, gjer resten av modulen.</p>", lysbilete: "13" },
-      { fase: "Avslutning", min: 7, gjer: "<p>Gå tilbake til påstanden frå oppstarten og oppsummer.</p>", lysbilete: "14 og 15" },
+      { fase: "Oppstart", min: 3, gjer: "<p>Gå gjennom måla og la elevane ta stilling til påstanden om å skrive som det høyrest ut.</p>", lysbilete: "2 og 3" },
+      { fase: "Når slår vi opp?", min: 5, gjer: "<p>Gå gjennom dei fire situasjonane, kjønn som smittar, og spørsmålet om null treff.</p>", lysbilete: "4 til 6" },
+      { fase: "Frå bokmål til nynorsk", min: 8, gjer: "<p>Vis vegvisaren og demonstrer <em class=\"bm\">anledning</em> live. Ta spørsmålet om <em class=\"bm\">forskjellen</em> og snakk om fella.</p>", lysbilete: "7 til 10" },
+      { fase: "Øving i klassen", min: 8, gjer: "<p>Vel rett plass i bøyingsrekkja, og set om ei setning med ordboka open.</p>", lysbilete: "11 og 12" },
+      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane skriv teksten om ein stad og slår opp minst fem ord. Dei som blir ferdige, gjer resten av modulen.</p>", lysbilete: "13" },
+      { fase: "Avslutning", min: 6, gjer: "<p>Gå tilbake til påstanden frå oppstarten og oppsummer.</p>", lysbilete: "14 og 15" },
     ],
     misoppfatningar: [
       { feil: "«Står ordet i Nynorskordboka, kan eg bruke det.»", hjelp: "Skrivemåten er lov, men ordet må òg tyde det du meiner. Les forklaringa og eitt døme." },

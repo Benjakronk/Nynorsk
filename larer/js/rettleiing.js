@@ -23,15 +23,26 @@ document.addEventListener("DOMContentLoaded", () => {
     m.estimatedMinutes ? `om lag ${m.estimatedMinutes} min for eleven i modulen` : "",
   ].filter(Boolean).join(" · ");
 
-  const okt = g.okt && g.okt.length ? `
+  // Skuletimane er på 45 minutt. Går modulen over fleire økter, får kvar økt si eiga overskrift i tabellen.
+  const okt = (() => {
+    if (!g.okt || !g.okt.length) return "";
+    const total = g.okt.reduce((s, f) => s + (Number(f.min) || 0), 0);
+    const økter = Math.max(1, Math.round(total / 45));
+    let akk = 0, nr = 1, rader = "";
+    g.okt.forEach((f, i) => {
+      if (økter > 1 && (i === 0 || akk === 45 * (nr - 1))) rader += `<tr class="okt-skilje"><td colspan="3">Økt ${nr++}</td></tr>`;
+      akk += Number(f.min) || 0;
+      rader += `
+        <tr><td>${E(String(f.fase).replace(/^Økt \d+:\s*/, "").replace(/^./, c => c.toUpperCase()))}</td><td class="min">${f.min ? `${f.min} min` : ""}</td>
+        <td>${f.gjer}${f.lysbilete ? `<span class="okt-lb">Lysbilete ${E(f.lysbilete)}</span>` : ""}</td></tr>`;
+    });
+    return `
     <table class="okt-tabell">
       <thead><tr><th>Fase</th><th>Tid</th><th>Kva de gjer</th></tr></thead>
-      <tbody>${g.okt.map(f => `
-        <tr><td>${E(f.fase)}</td><td class="min">${f.min ? `${f.min} min` : ""}</td>
-        <td>${f.gjer}${f.lysbilete ? `<span class="okt-lb">Lysbilete ${E(f.lysbilete)}</span>` : ""}</td></tr>`).join("")}
-      </tbody>
+      <tbody>${rader}</tbody>
     </table>
-    <p class="liten muted">Samla tid: ${g.okt.reduce((s, f) => s + (Number(f.min) || 0), 0)} minutt.</p>` : "";
+    <p class="liten muted">Samla tid: ${total} minutt${økter > 1 ? `, fordelt på ${økter} økter à 45 minutt` : ""}.</p>`;
+  })();
 
   const km = g.lareplan && g.lareplan.length ? `
     <p class="muted">Frå ${E(Larar.LAREPLAN.namn)}. Mål for opplæringa er at eleven skal kunne</p>

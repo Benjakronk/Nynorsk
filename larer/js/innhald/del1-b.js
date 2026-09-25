@@ -158,7 +158,7 @@ Larar.register("historie-i-dag", {
           <li>Les debattutdraget og svar på spørsmåla.</li>
           <li>Skriv drøftingsteksten (150–250 ord) med minst to fakta.</li>
         </ul>`,
-      tid: 20,
+      tid: 14,
       notes: "Gå rundt medan elevane skriv drøftinga. Spør: kva er faktumet ditt, og kvar fann du det? Elevar som står fast, kan starte med ei setning frå meiningslinja: kva sa dei då?",
     },
     {
@@ -173,7 +173,7 @@ Larar.register("historie-i-dag", {
     },
   ],
   guide: {
-    tid: "Éi økt på 60 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Modulen er den siste fagmodulen i Del 1 og knyter språkhistoria til notida: kor mange som skriv nynorsk og kvar, kva språklova frå 2022 seier, kravet om 25 % nynorsk hos statsorgan og NRK, og sidemålsdebatten. Timen har eit tydeleg drøftingspreg: elevane skal kunne skilje fakta frå meining og byggje eigne standpunkt på fakta frå modulen.</p>",
     mal: [
       "Elevane kan gjere greie for kor stor del av folket som har nynorsk som hovudmål, og kvar kjerneområda ligg.",
@@ -190,11 +190,11 @@ Larar.register("historie-i-dag", {
       "Sjå til at elevane har tilgang til kurset på eigen maskin.",
     ],
     okt: [
-      { fase: "Oppstart", min: 5, gjer: "<p>Gå gjennom måla og la elevane finne døme på nynorsk i kvardagen.</p>", lysbilete: "2 og 3" },
-      { fase: "Status og lov", min: 13, gjer: "<p>Gå gjennom talet på brukarar, kjerneområda, hovudmål og sidemål, språklova og 25 %-kravet, med tre spørsmål undervegs.</p>", lysbilete: "4 til 10" },
-      { fase: "Sidemålsdebatten", min: 14, gjer: "<p>Vis argumenta for og mot, ta spørsmålet, les debattutdraget og gjennomfør meiningslinja.</p>", lysbilete: "11 til 14" },
-      { fase: "Kultur og drøfting", min: 5, gjer: "<p>Vis nynorsk i kulturen og gå gjennom strukturen for ein drøftingstekst.</p>", lysbilete: "15 og 16" },
-      { fase: "Eigenarbeid", min: 20, gjer: "<p>Elevane arbeider i modulen og skriv drøftingsteksten.</p>", lysbilete: "17" },
+      { fase: "Oppstart", min: 3, gjer: "<p>Gå gjennom måla og la elevane finne døme på nynorsk i kvardagen.</p>", lysbilete: "2 og 3" },
+      { fase: "Status og lov", min: 9, gjer: "<p>Gå gjennom talet på brukarar, kjerneområda, hovudmål og sidemål, språklova og 25 %-kravet, med tre spørsmål undervegs.</p>", lysbilete: "4 til 10" },
+      { fase: "Sidemålsdebatten", min: 12, gjer: "<p>Vis argumenta for og mot, ta spørsmålet, les debattutdraget og gjennomfør meiningslinja.</p>", lysbilete: "11 til 14" },
+      { fase: "Kultur og drøfting", min: 4, gjer: "<p>Vis nynorsk i kulturen og gå gjennom strukturen for ein drøftingstekst.</p>", lysbilete: "15 og 16" },
+      { fase: "Eigenarbeid", min: 14, gjer: "<p>Elevane arbeider i modulen og skriv drøftingsteksten.</p>", lysbilete: "17" },
       { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive eitt motargument dei no forstår betre.</p>", lysbilete: "18" },
     ],
     misoppfatningar: [
@@ -421,7 +421,7 @@ Larar.register("historie-skriving", {
           <li>Bruk faktabanken i modulen.</li>
           <li>Gå gjennom sjekklista før du er ferdig.</li>
         </ul>`,
-      tid: 35,
+      tid: 40,
       notes: "Gå rundt og les første avsnitt hos kvar elev. Spør: kva er poenget ditt? Kvar viser du samanhengen? Elevar som står fast, kan starte med modellinnleiinga og skrive vidare. Dei som blir tidleg ferdige, tek ei oppgåve til.",
     },
     {
@@ -445,7 +445,7 @@ Larar.register("historie-skriving", {
     },
   ],
   guide: {
-    tid: "Éi økt på 90 minutt, eller to økter på 45 minutt",
+    tid: "To økter på 45 minutt",
     intro: "<p>Skrivemodulen samlar Del 1 i fem skriveoppgåver av ulikt slag: forklare, samanlikne, formidle, dikte og oppsummere. Modulen har ein faktabank med tidslinje og ein tabell over Aasen og Knudsen, og kvar oppgåve har eige ordtal, hint og sjekkliste. Hovudpoenget i undervisninga er at ein god fagtekst viser samanheng, ikkje berre fakta. Presentasjonen går gjennom dette, viser strukturen i kvar oppgåve og gir elevane ei modellinnleiing før dei skriv.</p>",
     mal: [
       "Elevane kan skrive ein samanhengande fagtekst om språkhistoria på nynorsk.",
@@ -463,12 +463,14 @@ Larar.register("historie-skriving", {
       "Opne Reisene til Ivar Aasen i kurset om du vil vise kartet ved oppgåve 4.",
     ],
     okt: [
-      { fase: "Oppstart", min: 5, gjer: "<p>Gå gjennom måla og dei fem oppgåvene.</p>", lysbilete: "2 og 3" },
-      { fase: "Samanheng i fagtekst", min: 13, gjer: "<p>Vis den svake teksten, diskuter kva som manglar, og gå gjennom omskrivinga, bindeorda og tidslinja.</p>", lysbilete: "4 til 9" },
-      { fase: "Oppgåvene", min: 20, gjer: "<p>Gå gjennom strukturen i kvar oppgåve med modellinnleiing, spørsmål og ei kort munnleg øving i å forklare enkelt.</p>", lysbilete: "10 til 17" },
-      { fase: "Skriving", min: 38, gjer: "<p>Ta nynorsksjekken, og la elevane skrive. Gå rundt og les første avsnitt.</p>", lysbilete: "18 og 19" },
-      { fase: "Respons", min: 9, gjer: "<p>Parrespons med konkret oppdrag, og tid til å skrive om éin stad.</p>", lysbilete: "20" },
-      { fase: "Avslutning", min: 5, gjer: "<p>Oppsummer og spør kva som var vanskelegast.</p>", lysbilete: "21" },
+      { fase: "Økt 1: Oppstart", min: 4, gjer: "<p>Gå gjennom måla og dei fem oppgåvene.</p>", lysbilete: "2 og 3" },
+      { fase: "Økt 1: Samanheng i fagtekst", min: 12, gjer: "<p>Vis den svake teksten, diskuter kva som manglar, og gå gjennom omskrivinga, bindeorda og tidslinja.</p>", lysbilete: "4 til 9" },
+      { fase: "Økt 1: Oppgåvene", min: 17, gjer: "<p>Gå gjennom strukturen i kvar oppgåve med modellinnleiing, spørsmål og ei kort munnleg øving i å forklare enkelt.</p>", lysbilete: "10 til 17" },
+      { fase: "Økt 1: Skriving", min: 12, gjer: "<p>Ta nynorsksjekken, og la elevane velje oppgåve, lage ein plan og skrive innleiinga.</p>", lysbilete: "18 og 19" },
+      { fase: "Økt 2: Oppstart", min: 3, gjer: "<p>Elevane les det dei skreiv sist og ser over planen. Vis nynorsksjekken på lysbilete 18 att.</p>", lysbilete: "18" },
+      { fase: "Økt 2: Skriving", min: 28, gjer: "<p>Elevane skriv ferdig. Gå rundt og les første avsnitt.</p>", lysbilete: "19" },
+      { fase: "Økt 2: Respons", min: 10, gjer: "<p>Parrespons med konkret oppdrag, og tid til å skrive om éin stad.</p>", lysbilete: "20" },
+      { fase: "Økt 2: Avslutning", min: 4, gjer: "<p>Oppsummer og spør kva som var vanskelegast.</p>", lysbilete: "21" },
     ],
     misoppfatningar: [
       { feil: "«Jo fleire årstal, jo betre tekst.»", hjelp: "Vis den svake teksten: tre rette årstal utan samanheng. Årstal skal berre med når dei betyr noko for poenget." },

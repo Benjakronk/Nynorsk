@@ -128,7 +128,7 @@ Larar.register("trening-substantiv", {
           <li>Start med hokjønn og inkjekjønn i fleirtal.</li>
           <li>Øv på feila etter kvar runde. Mål: minst 80 % rett.</li>
         </ul>`,
-      tid: 14,
+      tid: 19,
       notes: "Gå rundt og sjå på resultata. Elevar som kjem over 80 % raskt, kan ta den blanda økta og prøve å klare 15 på rad. Elevar som slit, bør halde seg til éin seksjon og ta han fleire gonger.",
     },
     {
@@ -142,7 +142,7 @@ Larar.register("trening-substantiv", {
     },
   ],
   guide: {
-    tid: "Éi økt på 40 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Ei kort treningsøkt der klassen repeterer bøyingsmønstera for substantiv og øver saman på tavla før elevane trenar sjølve i modulen. Tavleøvingane trekkjer ord frå den same ordbanken som modulen, så klassen får nye ord kvar gong. Økta passar som oppvarming før ein skrivetime eller som repetisjon etter modulen Substantiv: kjønn og bøying.</p>",
     mal: [
       "Elevane kan velje rett artikkel (<em class=\"nn\">ein, ei, eit</em>) for vanlege substantiv.",
@@ -162,7 +162,7 @@ Larar.register("trening-substantiv", {
       { fase: "Kjønn og bestemt form", min: 7, gjer: "<p>Repeter mønstera i kor, ta fingerrunden om kjønn, spørsmålet om <em class=\"nn\">husa</em> og ein skriftleg runde på mini-tavler.</p>", lysbilete: "4 til 7" },
       { fase: "Fleirtal", min: 6, gjer: "<p>Vis dei tre fleirtalsendingane og ta ein skriftleg runde og ein lagkonkurranse.</p>", lysbilete: "8 til 10" },
       { fase: "Hokjønn og inkjekjønn", min: 6, gjer: "<p>Repeter <em class=\"nn\">-a</em> og omlyd, og ta tavlerundane om hokjønn, inkjekjønn og bokmålsord.</p>", lysbilete: "11 til 14" },
-      { fase: "Eigentrening", min: 14, gjer: "<p>Elevane trenar i modulen og øver på feila sine etter kvar runde.</p>", lysbilete: "15" },
+      { fase: "Eigentrening", min: 19, gjer: "<p>Elevane trenar i modulen og øver på feila sine etter kvar runde.</p>", lysbilete: "15" },
       { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og samle ordlista med dei orda klassen bomma på.</p>", lysbilete: "16" },
     ],
     misoppfatningar: [
@@ -517,7 +517,7 @@ Larar.register("trening-adjektiv", {
           <li>Start med inkjekjønn, så komparativ og superlativ.</li>
           <li>Mål: minst 80 % rett i den blanda økta.</li>
         </ul>`,
-      tid: 8,
+      tid: 23,
       notes: "Modulen er kort, så dei fleste rekk alle seksjonane. Elevar som blir tidleg ferdige, kan ta predikativ-seksjonen i mengdetreninga i setningslære, der adjektivet skal bøyast etter subjektet.",
     },
     {
@@ -531,7 +531,7 @@ Larar.register("trening-adjektiv", {
     },
   ],
   guide: {
-    tid: "Éi økt på 30 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Ei kort treningsøkt om adjektiv. Klassen repeterer samsvarsbøying og gradbøying og øver saman på tavla før elevane trenar i modulen. Dei vanlegaste feila er <em class=\"bm\">-t</em> på adjektiv som endar på <em class=\"nn\">-leg</em> og <em class=\"nn\">-ig</em>, og bokmålsendingane <em class=\"bm\">-ere</em> og <em class=\"bm\">-est</em>. Økta passar som oppvarming eller som repetisjon etter modulen Adjektiv: samsvarsbøying.</p>",
     mal: [
       "Elevane kan bøye adjektiv i inkjekjønn, fleirtal og bestemt form, også dei vanlegaste unntaka.",
@@ -550,7 +550,7 @@ Larar.register("trening-adjektiv", {
       { fase: "Samsvarsbøying", min: 8, gjer: "<p>Repeter figuren og unntakstabellen, ta ein skriftleg runde med inkjekjønn, spørsmålet om <em class=\"nn\">viktig</em> og ein runde med fleirtal.</p>", lysbilete: "4 til 8" },
       { fase: "Gradbøying", min: 5, gjer: "<p>Vis <em class=\"nn\">-are/-ast</em> og dei uregelrette, og ta rundane med komparativ og superlativ.</p>", lysbilete: "9 til 11" },
       { fase: "Lagkonkurranse", min: 3, gjer: "<p>Blanda runde med lag mot lag.</p>", lysbilete: "12" },
-      { fase: "Eigentrening", min: 8, gjer: "<p>Elevane trenar i modulen.</p>", lysbilete: "13" },
+      { fase: "Eigentrening", min: 23, gjer: "<p>Elevane trenar i modulen.</p>", lysbilete: "13" },
       { fase: "Avslutning", min: 2, gjer: "<p>Oppsummer og samle inn exit-lappane.</p>", lysbilete: "14" },
     ],
     misoppfatningar: [
@@ -923,7 +923,7 @@ Larar.register("trening-setning", {
           <li>Start med verbal og subjekt, så resten.</li>
           <li>Mål: minst 80 % rett i den blanda økta.</li>
         </ul>`,
-      tid: 11,
+      tid: 16,
       notes: "Gå rundt og spør elevane kva spørsmål dei stiller for å finne leddet. Dei som slit, bør halde seg til verbal og subjekt til dei klarer 80 %. Dei andre kan prøve å klare 15 på rad i den blanda økta.",
     },
     {
@@ -937,7 +937,7 @@ Larar.register("trening-setning", {
     },
   ],
   guide: {
-    tid: "Éi økt på 40 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Ei treningsøkt i setningslære der klassen repeterer framgangsmåten frå modulen Setningslære og øver i fellesskap på å finne verbal og subjekt, kjenne att ledda, skilje heilsetning og leddsetning, og få ordstillinga rett. Tavleøvingane trekkjer setningar frå den same banken som modulen, så økta kan gjerast fleire gonger.</p>",
     mal: [
       "Elevane kan finne verbalet og subjektet i ei setning, også når subjektet står etter verbalet.",
@@ -957,7 +957,7 @@ Larar.register("trening-setning", {
       { fase: "Verbal, subjekt og ledd", min: 9, gjer: "<p>Skriftlege rundar med verbal og subjekt, spørsmålet om subjektet etter verbalet og lagkonkurransen om ledda.</p>", lysbilete: "4 til 7" },
       { fase: "Heilsetning og leddsetning", min: 6, gjer: "<p>Repeter setningsboksane og bindeorda, og ta rundane om heilsetning, leddsetning og bindeord.</p>", lysbilete: "8 til 10" },
       { fase: "Ordstilling og samsvar", min: 8, gjer: "<p>Diskuter feilen med V2, ta rundane om V2 og <em class=\"nn\">ikkje</em>, og ein skriftleg runde med predikativ.</p>", lysbilete: "11 til 14" },
-      { fase: "Eigentrening", min: 11, gjer: "<p>Elevane trenar i modulen.</p>", lysbilete: "15" },
+      { fase: "Eigentrening", min: 16, gjer: "<p>Elevane trenar i modulen.</p>", lysbilete: "15" },
       { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og samle inn exit-lappane.</p>", lysbilete: "16" },
     ],
     misoppfatningar: [
@@ -1109,7 +1109,7 @@ Larar.register("trening-blanda", {
           <li>Under 80 %? Gå til den modulen som passar til feila dine.</li>
           <li>Over 80 %? Ta setningsrunden òg.</li>
         </ul>`,
-      tid: 9,
+      tid: 24,
       notes: "Gå rundt og sjå kva modular elevane vel etter blandingsrunden. Målet er at dei sjølve finn ut kva dei treng å øve meir på. Det er ein god læringsvane å ta med seg.",
     },
     {
@@ -1122,7 +1122,7 @@ Larar.register("trening-blanda", {
     },
   ],
   guide: {
-    tid: "Éi økt på 30 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Blandingsøkta samlar alt frå mengdetreninga: substantiv, verb, adjektiv, småord og setningar om kvarandre. Presentasjonen er bygd som ein lagkonkurranse i tre rundar med ein kort tekst der elevane skal finne feila. Målet er at kvar elev finn ut kva han eller ho bør trene meir på. Økta passar som oppvarming før ein skrivetime, som repetisjon før ei prøve, eller som ein avslutning på arbeidet med grammatikken i Del 2.</p>",
     mal: [
       "Elevane kan bruke rette former av substantiv, verb, adjektiv og småord når oppgåvene kjem om kvarandre.",
@@ -1141,7 +1141,7 @@ Larar.register("trening-blanda", {
       { fase: "Runde 1 og 2", min: 7, gjer: "<p>Lagkonkurranse med ord og former, spørsmålet med fire setningar og setningsrunden.</p>", lysbilete: "5 til 7" },
       { fase: "Runde 3 og finale", min: 6, gjer: "<p>Laga finn dei seks feila i teksten, og så kjem finalerunden.</p>", lysbilete: "8 og 9" },
       { fase: "Refleksjon", min: 2, gjer: "<p>Klassen ser på kva som gjekk dårlegast, og kvar elev samanliknar med gjetninga si.</p>", lysbilete: "10" },
-      { fase: "Eigentrening", min: 9, gjer: "<p>Elevane tek ein blandingsrunde og går vidare til den modulen som passar feila deira.</p>", lysbilete: "11" },
+      { fase: "Eigentrening", min: 24, gjer: "<p>Elevane tek ein blandingsrunde og går vidare til den modulen som passar feila deira.</p>", lysbilete: "11" },
       { fase: "Avslutning", min: 2, gjer: "<p>Exit-lapp med éin feil eleven vil sjå etter i neste tekst.</p>", lysbilete: "12" },
     ],
     misoppfatningar: [

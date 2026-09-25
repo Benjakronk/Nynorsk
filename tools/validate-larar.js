@@ -65,6 +65,44 @@ function gåGjennom(id, stad, v) {
   else if (v && typeof v === "object") for (const [k, x] of Object.entries(v)) if (k !== "spec") gåGjennom(id, `${stad}.${k}`, x);
 }
 
+/* Skuletimane er på 45 minutt. Kvar modul er planlagd for éi eller to økter,
+   og øktene må gå opp: fasane summerer til 45 per økt, og ei ny økt byrjar ved
+   eit fasskifte. Samtaleklokkene (diskuter.tid) og eigenarbeidet
+   (oppgave.tid) må få plass i fasane som viser til lysbiletet. */
+const ØKTER = { "Éi økt på 45 minutt": 1, "To økter på 45 minutt": 2, "Tre økter på 45 minutt": 3 };
+function lysbileteI(tekst) {
+  const ut = new Set();
+  const s = String(tekst || "");
+  for (const m of s.matchAll(/(\d+)\s*til\s*(\d+)/g)) for (let n = +m[1]; n <= +m[2]; n++) ut.add(n);
+  for (const m of s.replace(/(\d+)\s*til\s*(\d+)/g, "").matchAll(/\d+/g)) ut.add(+m[0]);
+  return ut;
+}
+function sjekkTider(id, g, slides) {
+  const økter = ØKTER[g.tid];
+  if (!økter) { err(id, `guide.tid må vere ${Object.keys(ØKTER).map(t => `«${t}»`).join(" eller ")}, ikkje «${g.tid}»`); return; }
+  const sum = g.okt.reduce((s, f) => s + (Number(f.min) || 0), 0);
+  if (sum !== 45 * økter) err(id, `fasane summerer til ${sum} minutt, men ${økter} økt${økter > 1 ? "er" : ""} er ${45 * økter}`);
+  let akk = 0;
+  const skifte = new Set();
+  g.okt.forEach(f => { akk += Number(f.min) || 0; skifte.add(akk); });
+  for (let k = 1; k < økter; k++) if (!skifte.has(45 * k)) err(id, `økt ${k + 1} byrjar ikkje ved eit fasskifte (etter ${45 * k} minutt)`);
+  const fasar = g.okt.map(f => ({ min: Number(f.min) || 0, nr: lysbileteI(f.lysbilete), klokke: 0 }));
+  slides.forEach((s, i) => {
+    const nr = i + 2;
+    const mine = fasar.filter(f => f.nr.has(nr));
+    if (s.type === "diskuter" && s.tid) {
+      if (!mine.length) err(id, `lysbilete ${nr}: samtaleklokka (${s.tid} min) er ikkje med i nokon fase i økta`);
+      else mine[0].klokke += Number(s.tid);
+    }
+    if (s.type === "oppgave" && s.tid) {
+      const tid = mine.reduce((t, f) => t + f.min, 0);
+      if (!mine.length) err(id, `lysbilete ${nr}: eigenarbeidet (${s.tid} min) er ikkje med i nokon fase i økta`);
+      else if (Number(s.tid) > tid) err(id, `lysbilete ${nr}: eigenarbeidet er ${s.tid} min, men fasane har berre ${tid} min`);
+    }
+  });
+  fasar.forEach((f, i) => { if (f.klokke > f.min) err(id, `guide.okt[${i}] har ${f.min} min, men samtaleklokkene i fasen tek ${f.klokke} min`); });
+}
+
 const moduler = [];
 for (let p = 1; p <= 5; p++) moduler.push(...Modules.orderedByPart(p));
 const kjende = new Set(moduler.map(m => m.id));
@@ -132,6 +170,7 @@ for (const m of moduler) {
         nr.forEach(n => { if (Number(n) > tal) err(id, `guide.okt[${i}]: lysbilete ${n} finst ikkje (${tal} i alt)`); });
       }
     });
+    if (Array.isArray(g.okt)) sjekkTider(id, g, slides);
     if (!Array.isArray(g.misoppfatningar) || g.misoppfatningar.length < 2) err(id, "guide.misoppfatningar treng minst 2");
     else g.misoppfatningar.forEach((x, i) => { if (!x.feil || !x.hjelp) err(id, `guide.misoppfatningar[${i}] treng feil og hjelp`); });
     if (!Array.isArray(g.samtale) || g.samtale.length < 2) err(id, "guide.samtale treng minst 2 spørsmål");

@@ -450,7 +450,7 @@ Larar.register("omgrep-ordklassar", {
           <li>Fyll inn namnet på ordklassen i oppgåva med setningane.</li>
           <li>Para saman ordklasse og kjenneteikn til slutt.</li>
         </ul>`,
-      tid: 16,
+      tid: 12,
       notes: "Sorteringsrundane blir vanskelegare frå runde 1 til runde 3. Gå rundt og spør «kva test brukte du?» når elevane er usikre. Dei som blir tidleg ferdige, kan finne alle ti ordklassane i ein tekst frå Del 5.",
     },
     {
@@ -465,7 +465,7 @@ Larar.register("omgrep-ordklassar", {
     },
   ],
   guide: {
-    tid: "Éi økt på 60 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Modulen gir ei oversikt over dei ti ordklassane med ein test for kvar, skil mellom bøyelege og ubøyelege ordklassar og tek for seg dei tre vanlegaste forvekslingane: adjektiv og adverb, preposisjon og subjunksjon, determinativ og pronomen. Hovudpoenget er at ordklassen avheng av kva ordet gjer i setninga. Kunnskapen er grunnlaget for bøyingsmodulane i Del 2, fordi det er i dei bøyelege ordklassane nynorskfeila oppstår.</p>",
     mal: [
       "Elevane kan namngi dei ti ordklassane og gi døme på kvar.",
@@ -481,12 +481,12 @@ Larar.register("omgrep-ordklassar", {
       "Ha små lappar klare til exit-lappen.",
     ],
     okt: [
-      { fase: "Oppstart", min: 5, gjer: "<p>Gå gjennom måla og lat elevane namngi så mange ordklassar dei kan.</p>", lysbilete: "2 og 3" },
-      { fase: "Ti ordklassar", min: 15, gjer: "<p>Vis alle ti i figuren, gå gjennom testane i tre grupper og køyr tavleøvinga.</p>", lysbilete: "4 til 9" },
-      { fase: "Bøyelege og ubøyelege", min: 5, gjer: "<p>Del ordklassane i to og knyt det til kvar nynorskfeila skjer.</p>", lysbilete: "10 og 11" },
-      { fase: "Forvekslingar", min: 15, gjer: "<p>Gå gjennom dei tre forvekslingane med spørsmål til kvar, og avslutt med «før» i tre setningar.</p>", lysbilete: "12 til 18" },
-      { fase: "Eigenarbeid", min: 16, gjer: "<p>Elevane arbeider med sorteringsrundane og oppgåvene i modulen.</p>", lysbilete: "19" },
-      { fase: "Avslutning", min: 4, gjer: "<p>Oppsummer og lat elevane skrive to setningar med <em class=\"nn\">fint</em> på exit-lappen.</p>", lysbilete: "20" },
+      { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og lat elevane namngi så mange ordklassar dei kan.</p>", lysbilete: "2 og 3" },
+      { fase: "Ti ordklassar", min: 11, gjer: "<p>Vis alle ti i figuren, gå gjennom testane i tre grupper og køyr tavleøvinga.</p>", lysbilete: "4 til 9" },
+      { fase: "Bøyelege og ubøyelege", min: 4, gjer: "<p>Del ordklassane i to og knyt det til kvar nynorskfeila skjer.</p>", lysbilete: "10 og 11" },
+      { fase: "Forvekslingar", min: 11, gjer: "<p>Gå gjennom dei tre forvekslingane med spørsmål til kvar, og avslutt med «før» i tre setningar.</p>", lysbilete: "12 til 18" },
+      { fase: "Eigenarbeid", min: 12, gjer: "<p>Elevane arbeider med sorteringsrundane og oppgåvene i modulen.</p>", lysbilete: "19" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive to setningar med <em class=\"nn\">fint</em> på exit-lappen.</p>", lysbilete: "20" },
     ],
     misoppfatningar: [
       { feil: "«Eit ord har alltid same ordklasse.»", hjelp: "Vis <em class=\"nn\">før</em> i tre setningar: preposisjon, subjunksjon og adverb. Spør alltid kva ordet gjer her." },
@@ -721,7 +721,7 @@ Larar.register("omgrep-boying", {
           <li>Bøy heile rekkja og sorter setningane etter tempus.</li>
           <li>Øv på j-verb og kortverb, og omset setninga til slutt.</li>
         </ul>`,
-      tid: 13,
+      tid: 10,
       notes: "Gå rundt og be elevane bruke omgrepa når dei forklarer, til dømes «det er preteritum av eit e-verb». Dei som blir tidleg ferdige, kan ta mengdetreninga for substantiv og verb.",
     },
     {
@@ -736,7 +736,7 @@ Larar.register("omgrep-boying", {
     },
   ],
   guide: {
-    tid: "Éi økt på 60 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Modulen forklarar omgrepa bak bøyinga av substantiv og verb: kjønn, tal og bestemtheit, eigedom utan s-genitiv, finitte og infinitte former, tempus, partisipp, imperativ, sterke og svake verb og dei små gruppene j-verb og kortverb. Målet er at elevane skal forstå kva omgrepa tyder, ikkje berre kjenne tabellane, slik at dei kan lese ordboka, forstå tilbakemeldingar og bruke fagspråk om eigne feil.</p>",
     mal: [
       "Elevane kan forklare kjønn, tal og bestemtheit og bøye substantiv i alle fire formene.",
@@ -752,11 +752,11 @@ Larar.register("omgrep-boying", {
       "Ha små lappar klare til exit-lappen.",
     ],
     okt: [
-      { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og lat elevane tolke ordbokoppslaget.</p>", lysbilete: "2 og 3" },
-      { fase: "Substantiv", min: 14, gjer: "<p>Gå gjennom kjønn, tal og bestemtheit og dei fire formene, køyr tavleøvinga og vis eigedom utan s-genitiv.</p>", lysbilete: "4 til 9" },
-      { fase: "Verbformer", min: 14, gjer: "<p>Skil finitte og infinitte former, gå gjennom tempuslinja og vis partisipp og imperativ.</p>", lysbilete: "10 til 14" },
-      { fase: "Verbklassar", min: 12, gjer: "<p>Vis sterke og svake verb, bruk vegvisaren, gå gjennom j-verb og kortverb, og køyr tavleøvinga.</p>", lysbilete: "15 til 19" },
-      { fase: "Eigenarbeid", min: 13, gjer: "<p>Elevane arbeider med oppgåvene i modulen.</p>", lysbilete: "20" },
+      { fase: "Oppstart", min: 3, gjer: "<p>Gå gjennom måla og lat elevane tolke ordbokoppslaget.</p>", lysbilete: "2 og 3" },
+      { fase: "Substantiv", min: 10, gjer: "<p>Gå gjennom kjønn, tal og bestemtheit og dei fire formene, køyr tavleøvinga og vis eigedom utan s-genitiv.</p>", lysbilete: "4 til 9" },
+      { fase: "Verbformer", min: 10, gjer: "<p>Skil finitte og infinitte former, gå gjennom tempuslinja og vis partisipp og imperativ.</p>", lysbilete: "10 til 14" },
+      { fase: "Verbklassar", min: 9, gjer: "<p>Vis sterke og svake verb, bruk vegvisaren, gå gjennom j-verb og kortverb, og køyr tavleøvinga.</p>", lysbilete: "15 til 19" },
+      { fase: "Eigenarbeid", min: 10, gjer: "<p>Elevane arbeider med oppgåvene i modulen.</p>", lysbilete: "20" },
       { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane bøye eitt substantiv og eitt verb på exit-lappen.</p>", lysbilete: "21" },
     ],
     misoppfatningar: [
@@ -978,7 +978,7 @@ Larar.register("omgrep-setning", {
           <li>Gjer sorteringsoppgåvene om heilsetning, leddsetning og bindeord.</li>
           <li>Skriv den korte teksten til slutt og analyser to av setningane.</li>
         </ul>`,
-      tid: 20,
+      tid: 13,
       notes: "Gå rundt og spør elevane kva spørsmål dei stiller for å finne leddet. Dei som blir tidleg ferdige, kan ta mengdetreninga i setningslære.",
     },
     {
@@ -993,7 +993,7 @@ Larar.register("omgrep-setning", {
     },
   ],
   guide: {
-    tid: "Éi økt på 60 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Modulen gir elevane omgrepa dei treng for å snakke om og rette setningsbygnad: setningsledd, heilsetning og leddsetning, konjunksjon og subjunksjon, <em class=\"nn\">då</em> og <em class=\"nn\">når</em>, verbalet på andreplass og samsvar i predikativ. Stoffet er grunnlaget for modulen om setningsbygnad under Typiske feil i Del 4 og for mengdetreninga i setningslære.</p>",
     mal: [
       "Elevane kan finne verbal, subjekt, objekt, indirekte objekt, predikativ og adverbial med faste spørsmål.",
@@ -1009,12 +1009,12 @@ Larar.register("omgrep-setning", {
       "Sjå til at elevane har tilgang til kurset på eigen maskin.",
     ],
     okt: [
-      { fase: "Oppstart", min: 5, gjer: "<p>Gå gjennom måla og la elevane diskutere kva som er ei setning.</p>", lysbilete: "2 og 3" },
-      { fase: "Setningsledd", min: 15, gjer: "<p>Innfør ledda og framgangsmåten. Analyser setninga saman, ta spørsmålet og predikativet, og køyr ein tavlerunde.</p>", lysbilete: "4 til 9" },
-      { fase: "Heilsetning og leddsetning", min: 10, gjer: "<p>Vis setningsboksane, skil konjunksjon frå subjunksjon, og gå gjennom då og når med tavleøving.</p>", lysbilete: "10 til 14" },
-      { fase: "Ordstilling", min: 8, gjer: "<p>Demonstrer V2 med figuren og ikkje-testen, og ta ein kort tavlerunde.</p>", lysbilete: "15 til 17" },
-      { fase: "Eigenarbeid", min: 17, gjer: "<p>Elevane arbeider i modulen. Dei som blir ferdige, går vidare til mengdetreninga i setningslære.</p>", lysbilete: "18" },
-      { fase: "Avslutning", min: 5, gjer: "<p>Oppsummer og lat elevane skrive ein exit-lapp med den regelen dei har mest bruk for.</p>", lysbilete: "19" },
+      { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og la elevane diskutere kva som er ei setning.</p>", lysbilete: "2 og 3" },
+      { fase: "Setningsledd", min: 11, gjer: "<p>Innfør ledda og framgangsmåten. Analyser setninga saman, ta spørsmålet og predikativet, og køyr ein tavlerunde.</p>", lysbilete: "4 til 9" },
+      { fase: "Heilsetning og leddsetning", min: 8, gjer: "<p>Vis setningsboksane, skil konjunksjon frå subjunksjon, og gå gjennom då og når med tavleøving.</p>", lysbilete: "10 til 14" },
+      { fase: "Ordstilling", min: 6, gjer: "<p>Demonstrer V2 med figuren og ikkje-testen, og ta ein kort tavlerunde.</p>", lysbilete: "15 til 17" },
+      { fase: "Eigenarbeid", min: 13, gjer: "<p>Elevane arbeider i modulen. Dei som blir ferdige, går vidare til mengdetreninga i setningslære.</p>", lysbilete: "18" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive ein exit-lapp med den regelen dei har mest bruk for.</p>", lysbilete: "19" },
     ],
     misoppfatningar: [
       { feil: "«Subjektet er det som står først.»", hjelp: "Vis ei setning som byrjar med eit adverbial, som <em class=\"nn\">I går kjøpte guten sko</em>. Finn verbalet først og spør «kven kjøpte?»." },

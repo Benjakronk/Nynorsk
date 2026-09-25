@@ -174,7 +174,7 @@ Larar.register("skriving-omsetjing", {
           <li>Set om den korte teksten til slutt.</li>
           <li>Les korrektur i tre rundar før du leverer.</li>
         </ul>`,
-      tid: 15,
+      tid: 13,
       notes: "Gå rundt og spør: kva runde er du på no? Når ei omsetjing blir godkjend med ein gong, be eleven forklare kvifor dei endra kvart ord. Dei som blir tidleg ferdige, kan gå vidare til Bokmålsord som snik seg inn.",
     },
     {
@@ -388,7 +388,7 @@ Larar.register("skriving-korte-tekstar", {
           <li>Skriv ein e-post til ein lærar.</li>
           <li>Skriv eit dagboknotat med minst fem verb i preteritum.</li>
         </ul>`,
-      tid: 20,
+      tid: 17,
       notes: "Be elevane bruke sjekklista under kvar oppgåve i modulen. Gå rundt og spør: kven er mottakaren her? Er e-posten høfleg nok? Dei som blir tidleg ferdige, kan byte tekst med sidemannen og lese korrektur med dei tre stega frå omsetjingsmodulen.",
     },
     {
@@ -403,7 +403,7 @@ Larar.register("skriving-korte-tekstar", {
     },
   ],
   guide: {
-    tid: "Éi økt på 60 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Modulen handlar om korte kvardagstekstar: melding, e-post og dagboknotat. Elevane lærer å tilpasse språket til mottakar og formål, å byggje opp ein høfleg e-post og å skrive eit dagboknotat i preteritum. Presentasjonen modellerer korleis ein dårleg e-post kan skrivast om, og legg vekt på at sjølv korte tekstar skal vere konsekvente.</p>",
     mal: [
       "Elevane kan tilpasse språk og tone til mottakar og formål.",
@@ -419,12 +419,12 @@ Larar.register("skriving-korte-tekstar", {
       "Sjå til at elevane har tilgang til kurset og kan skrive i fritekstfelta.",
     ],
     okt: [
-      { fase: "Oppstart", min: 6, gjer: "<p>Gå gjennom måla og la elevane samanlikne ei melding til ein venn og til læraren.</p>", lysbilete: "2 og 3" },
-      { fase: "Melding og e-post", min: 14, gjer: "<p>Innfør mottakar og formål, les meldinga og e-posten, ta spørsmåla og skriv om den dårlege e-posten saman.</p>", lysbilete: "4 til 10" },
-      { fase: "Dagbok", min: 7, gjer: "<p>Les dagboknotatet, finn verb i preteritum og bindeord, og køyr ein tavlerunde.</p>", lysbilete: "11 til 13" },
-      { fase: "Konsekvent og samtale", min: 7, gjer: "<p>Snakk om valfrie former, og la para skrive same bodskap til tre mottakarar.</p>", lysbilete: "14 og 15" },
-      { fase: "Eigenarbeid", min: 22, gjer: "<p>Elevane skriv dei tre tekstane i modulen og brukar sjekklistene.</p>", lysbilete: "16" },
-      { fase: "Avslutning", min: 4, gjer: "<p>Oppsummer og spør kva sjanger som var lettast å skrive på nynorsk.</p>", lysbilete: "17" },
+      { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og la elevane samanlikne ei melding til ein venn og til læraren.</p>", lysbilete: "2 og 3" },
+      { fase: "Melding og e-post", min: 10, gjer: "<p>Innfør mottakar og formål, les meldinga og e-posten, ta spørsmåla og skriv om den dårlege e-posten saman.</p>", lysbilete: "4 til 10" },
+      { fase: "Dagbok", min: 5, gjer: "<p>Les dagboknotatet, finn verb i preteritum og bindeord, og køyr ein tavlerunde.</p>", lysbilete: "11 til 13" },
+      { fase: "Konsekvent og samtale", min: 6, gjer: "<p>Snakk om valfrie former, og la para skrive same bodskap til tre mottakarar.</p>", lysbilete: "14 og 15" },
+      { fase: "Eigenarbeid", min: 17, gjer: "<p>Elevane skriv dei tre tekstane i modulen og brukar sjekklistene.</p>", lysbilete: "16" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og spør kva sjanger som var lettast å skrive på nynorsk.</p>", lysbilete: "17" },
     ],
     misoppfatningar: [
       { feil: "«Ei melding treng ikkje vere på nynorsk, for det er berre ei melding.»", hjelp: "I oppgåva er poenget å øve nynorsk i ein kvardagssjanger. Meldinga får vere uformell i tonen, men orda skal vere nynorske: <em class=\"nn\">eg, kjem, heim</em>." },
@@ -639,7 +639,7 @@ Larar.register("skriving-lengre-tekstar", {
           <li>Skriv forteljinga <strong>eller</strong> den argumenterande teksten.</li>
           <li>Skriv skildringa med alle fem sansane.</li>
         </ul>`,
-      tid: 40,
+      tid: 22,
       notes: "Tekstane er lange, så det er lurt å dele skrivinga over to økter: forteljinga i den eine og den argumenterande teksten i den andre. Gå rundt og spør om planen: kva er anslaget ditt? Kva er standpunktet? Elevar som står fast, kan starte med å skrive eit tankekart.",
     },
     {
@@ -654,7 +654,7 @@ Larar.register("skriving-lengre-tekstar", {
     },
   ],
   guide: {
-    tid: "To økter på 60 minutt",
+    tid: "To økter på 45 minutt",
     intro: "<p>Modulen handlar om to sentrale skrivesjangrar: den forteljande og den argumenterande teksten. Elevane lærer ein struktur for kvar sjanger, verkemiddel som skildring og replikkar, dei tre appellformene og korleis bindeord bind teksten saman. Presentasjonen viser ein modelltekst del for del, modellerer korleis ei flat setning kan skrivast om, og analyserer eit argumenterande modellavsnitt. Skrivinga er lang, så modulen passar best over to økter.</p>",
     mal: [
       "Elevane kan byggje opp ei forteljing med anslag, presentasjon, stigning, klimaks og avrunding.",
@@ -671,14 +671,14 @@ Larar.register("skriving-lengre-tekstar", {
       "Ha tavleplass klar til spenningskurva og argumenta for og mot.",
     ],
     okt: [
-      { fase: "Økt 1: oppstart", min: 5, gjer: "<p>Gå gjennom måla og snakk om kva som får elevane til å lese vidare.</p>", lysbilete: "2 og 3" },
-      { fase: "Økt 1: forteljing", min: 12, gjer: "<p>Innfør dei fem stega, les modellteksten del for del og ta spørsmålet om anslag.</p>", lysbilete: "4 til 7" },
-      { fase: "Økt 1: verkemiddel", min: 13, gjer: "<p>Gå gjennom verkemiddel og replikkar, modeller «vis, ikkje fortel» og la para prøve sjølve.</p>", lysbilete: "8 til 11" },
-      { fase: "Økt 1: skriving", min: 30, gjer: "<p>Elevane gjer omgrepsoppgåvene og skriv forteljinga eller skildringa.</p>", lysbilete: "19" },
-      { fase: "Økt 2: argumentasjon", min: 15, gjer: "<p>Innfør strukturen og appellformene, ta spørsmålet og analyser modellavsnittet saman.</p>", lysbilete: "12 til 15" },
-      { fase: "Økt 2: tekstbinding og planlegging", min: 10, gjer: "<p>Gå gjennom bindeorda, la gruppene finne argument for og mot, og vis sjekklista.</p>", lysbilete: "16 til 18" },
-      { fase: "Økt 2: skriving", min: 30, gjer: "<p>Elevane skriv den argumenterande teksten og les korrektur med sjekklista.</p>", lysbilete: "19" },
-      { fase: "Avslutning", min: 5, gjer: "<p>Oppsummer og lat elevane skrive ned kva dei vil bli betre på.</p>", lysbilete: "20" },
+      { fase: "Økt 1: oppstart", min: 4, gjer: "<p>Gå gjennom måla og snakk om kva som får elevane til å lese vidare.</p>", lysbilete: "2 og 3" },
+      { fase: "Økt 1: forteljing", min: 9, gjer: "<p>Innfør dei fem stega, les modellteksten del for del og ta spørsmålet om anslag.</p>", lysbilete: "4 til 7" },
+      { fase: "Økt 1: verkemiddel", min: 10, gjer: "<p>Gå gjennom verkemiddel og replikkar, modeller «vis, ikkje fortel» og la para prøve sjølve.</p>", lysbilete: "8 til 11" },
+      { fase: "Økt 1: skriving", min: 22, gjer: "<p>Elevane gjer omgrepsoppgåvene og skriv forteljinga eller skildringa.</p>", lysbilete: "19" },
+      { fase: "Økt 2: argumentasjon", min: 11, gjer: "<p>Innfør strukturen og appellformene, ta spørsmålet og analyser modellavsnittet saman.</p>", lysbilete: "12 til 15" },
+      { fase: "Økt 2: tekstbinding og planlegging", min: 9, gjer: "<p>Gå gjennom bindeorda, la gruppene finne argument for og mot, og vis sjekklista.</p>", lysbilete: "16 til 18" },
+      { fase: "Økt 2: skriving", min: 22, gjer: "<p>Elevane skriv den argumenterande teksten og les korrektur med sjekklista.</p>", lysbilete: "19" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive ned kva dei vil bli betre på.</p>", lysbilete: "20" },
     ],
     misoppfatningar: [
       { feil: "«Ei forteljing byrjar med kven, kvar og når.»", hjelp: "Det er presentasjonen. Eit godt anslag kjem før og vekkjer eit spørsmål. Samanlikn dei tre alternativa på lysbilete 7." },

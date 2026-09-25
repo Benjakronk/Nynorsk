@@ -60,7 +60,7 @@ fire til fem punkt. Det lange står i notata.
 
 ```js
 guide: {
-  tid: "Éi økt på 60 minutt",
+  tid: "Éi økt på 45 minutt",
   intro: "<p>Kva modulen handlar om, og kvifor.</p>",
   mal: ["Elevane kan …"],                 // 2 til 5 læringsmål
   lareplan: [11, 12],                     // nummer på kompetansemål (1 til 16), sjå larar.js
@@ -76,6 +76,13 @@ guide: {
 ```
 
 Lysbilete blir nummererte frå 1, og framsida er nummer 1.
+
+Skuletimane er på 45 minutt. `tid` er «Éi økt på 45 minutt» eller «To økter
+på 45 minutt», og fasane i `okt` summerer til 45 minutt per økt. Går modulen
+over to økter, byrjar økt 2 ved eit fasskifte etter 45 minutt, og fasane kan
+heite «Økt 1: …» og «Økt 2: …». Validatoren sjekkar òg at samtaleklokkene
+(`tid` på diskuter-lysbilete) og eigenarbeidet (`tid` på oppgåvelysbilete) får
+plass i fasane som viser til lysbiletet.
 
 ## Språk
 

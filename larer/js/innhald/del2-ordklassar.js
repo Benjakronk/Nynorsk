@@ -164,7 +164,7 @@ Larar.register("grammatikk-substantiv", {
           <li>Gjer utfyllingsoppgåvene i bestemt eintal og fleirtal.</li>
           <li>Skriv fem setningar med ord frå alle tre kjønna.</li>
         </ul>`,
-      tid: 15,
+      tid: 11,
       notes: "Gå rundt og spør: kva kjønn har ordet, og korleis veit du det? Oppmuntre elevane til å slå opp i Nynorskordboka når dei er usikre. Dei som blir tidleg ferdige, kan gå vidare til mengdetreninga Substantiv: kjønn og bøying.",
     },
     {
@@ -179,7 +179,7 @@ Larar.register("grammatikk-substantiv", {
     },
   ],
   guide: {
-    tid: "Éi økt på 60 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Modulen tek for seg dei tre kjønna i nynorsk og korleis substantiva blir bøygde i ubestemt og bestemt form, eintal og fleirtal. Elevar med bokmål som hovudmål bommar særleg på to endingar: <em class=\"nn\">-a</em> i bestemt eintal hokjønn (<em class=\"nn\">jenta</em>) og <em class=\"nn\">-a</em> i bestemt fleirtal inkjekjønn (<em class=\"nn\">husa</em>). Når desse sit, forsvinn ein stor del av feila i sidemålstekstane.</p>",
     mal: [
       "Elevane kan avgjere kjønnet på eit substantiv og bruke ordboka når dei er usikre.",
@@ -195,12 +195,12 @@ Larar.register("grammatikk-substantiv", {
       "Ha små lappar klare til exit-lappen til slutt.",
     ],
     okt: [
-      { fase: "Oppstart", min: 5, gjer: "<p>Gå gjennom måla og lat elevane seie ein, ei eller eit om seks ord.</p>", lysbilete: "2 og 3" },
-      { fase: "Kjønn", min: 10, gjer: "<p>Vis kjønnskorta, snakk om korleis ein finn kjønnet, og køyr tavleøvinga om kjønn.</p>", lysbilete: "4 til 6" },
-      { fase: "Bøying", min: 14, gjer: "<p>Gå gjennom tabellen og endingane, ta spørsmålet om <em class=\"nn\">boka</em> og køyr ein tavlerunde med bøying.</p>", lysbilete: "7 til 10" },
-      { fase: "Inkjekjønn, omlyd og bokmål", min: 13, gjer: "<p>Vis dei to inkjekjønnsmønstra, hokjønnsorda med vokalskifte og bokmålsfeila. Avslutt med tavleøving og omsetjing i par.</p>", lysbilete: "11 til 16" },
-      { fase: "Eigenarbeid", min: 14, gjer: "<p>Elevane arbeider i modulen. Dei som blir ferdige, går vidare til mengdetreninga.</p>", lysbilete: "17" },
-      { fase: "Avslutning", min: 4, gjer: "<p>Oppsummer og lat elevane skrive eit hokjønnsord og eit inkjekjønnsord i alle fire formene på ein exit-lapp.</p>", lysbilete: "18" },
+      { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og lat elevane seie ein, ei eller eit om seks ord.</p>", lysbilete: "2 og 3" },
+      { fase: "Kjønn", min: 7, gjer: "<p>Vis kjønnskorta, snakk om korleis ein finn kjønnet, og køyr tavleøvinga om kjønn.</p>", lysbilete: "4 til 6" },
+      { fase: "Bøying", min: 10, gjer: "<p>Gå gjennom tabellen og endingane, ta spørsmålet om <em class=\"nn\">boka</em> og køyr ein tavlerunde med bøying.</p>", lysbilete: "7 til 10" },
+      { fase: "Inkjekjønn, omlyd og bokmål", min: 10, gjer: "<p>Vis dei to inkjekjønnsmønstra, hokjønnsorda med vokalskifte og bokmålsfeila. Avslutt med tavleøving og omsetjing i par.</p>", lysbilete: "11 til 16" },
+      { fase: "Eigenarbeid", min: 11, gjer: "<p>Elevane arbeider i modulen. Dei som blir ferdige, går vidare til mengdetreninga.</p>", lysbilete: "17" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive eit hokjønnsord og eit inkjekjønnsord i alle fire formene på ein exit-lapp.</p>", lysbilete: "18" },
     ],
     misoppfatningar: [
       { feil: "«Det heiter <em>jenten</em> og <em>boken</em>.»", hjelp: "Spør kva kjønn ordet har. Hokjønn får alltid <em class=\"nn\">-a</em> i bestemt eintal: <em class=\"nn\">jenta, boka, sola</em>." },
@@ -402,7 +402,7 @@ Larar.register("grammatikk-verb", {
           <li>Set om <em class="bm">Vi gikk hjem og spiste middag.</em></li>
           <li>Skriv ein dag-tekst med minst fem verb i preteritum.</li>
         </ul>`,
-      tid: 15,
+      tid: 11,
       notes: "Gå rundt og les dag-tekstane. Når du finn ein feil, peik på verbet og spør: er det svakt eller sterkt? Dei som blir tidleg ferdige, kan gå vidare til mengdetreninga Verb: tider og klassar.",
     },
     {
@@ -417,7 +417,7 @@ Larar.register("grammatikk-verb", {
     },
   ],
   guide: {
-    tid: "Éi økt på 60 minutt",
+    tid: "Éi økt på 45 minutt",
     intro: "<p>Modulen gir elevane oversikt over verbsystemet i nynorsk: dei fire klassane av svake verb (a-verb, e-verb, j-verb og kortverb) og dei sterke verba med vokalskifte. Dei viktigaste feilkjeldene er presens av a-verb (<em class=\"bm\">kaster</em> i staden for <em class=\"nn\">kastar</em>) og preteritum og perfektum av sterke verb. Elevane lærer ein enkel test for å skilje svake og sterke verb og øver på dei vanlegaste verba som skil seg frå bokmål.</p>",
     mal: [
       "Elevane kan bøye verb i presens, preteritum og perfektum.",
@@ -433,12 +433,12 @@ Larar.register("grammatikk-verb", {
       "Ha kladdelappar eller mini-tavler klare til tavleøvinga utan alternativ på lysbilete 14.",
     ],
     okt: [
-      { fase: "Oppstart", min: 5, gjer: "<p>Gå gjennom måla og lat elevane fortelje kva dei gjorde i går. Skriv verba på tavla.</p>", lysbilete: "2 og 3" },
-      { fase: "Tempus, svake og sterke verb", min: 9, gjer: "<p>Vis tempuslinja, skilnaden på ending og vokalskifte, og bruk «i går»-testen på lista frå oppstarten.</p>", lysbilete: "4 til 6" },
-      { fase: "Svake verb", min: 14, gjer: "<p>Gå gjennom dei fire klassane med vekt på -ar i presens av a-verb. Ta spørsmålet og to tavleøvingar.</p>", lysbilete: "7 til 12" },
-      { fase: "Sterke verb og bokmål", min: 13, gjer: "<p>Les dei sterke verba i kor, køyr tavleøving utan alternativ, ta perfektumsspørsmålet og gå gjennom verba som skil seg mest frå bokmål.</p>", lysbilete: "13 til 17" },
-      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane arbeider i modulen og skriv dag-teksten. Dei som blir ferdige, går vidare til mengdetreninga.</p>", lysbilete: "18" },
-      { fase: "Avslutning", min: 4, gjer: "<p>Oppsummer og lat elevane velje tre sterke verb dei skal lære utanåt.</p>", lysbilete: "19" },
+      { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og lat elevane fortelje kva dei gjorde i går. Skriv verba på tavla.</p>", lysbilete: "2 og 3" },
+      { fase: "Tempus, svake og sterke verb", min: 7, gjer: "<p>Vis tempuslinja, skilnaden på ending og vokalskifte, og bruk «i går»-testen på lista frå oppstarten.</p>", lysbilete: "4 til 6" },
+      { fase: "Svake verb", min: 10, gjer: "<p>Gå gjennom dei fire klassane med vekt på -ar i presens av a-verb. Ta spørsmålet og to tavleøvingar.</p>", lysbilete: "7 til 12" },
+      { fase: "Sterke verb og bokmål", min: 10, gjer: "<p>Les dei sterke verba i kor, køyr tavleøving utan alternativ, ta perfektumsspørsmålet og gå gjennom verba som skil seg mest frå bokmål.</p>", lysbilete: "13 til 17" },
+      { fase: "Eigenarbeid", min: 11, gjer: "<p>Elevane arbeider i modulen og skriv dag-teksten. Dei som blir ferdige, går vidare til mengdetreninga.</p>", lysbilete: "18" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane velje tre sterke verb dei skal lære utanåt.</p>", lysbilete: "19" },
     ],
     misoppfatningar: [
       { feil: "«Presens heiter <em>kaster</em> på nynorsk òg.»", hjelp: "a-verba har <em class=\"nn\">-ar</em> i presens: <em class=\"nn\">kastar, snakkar, hoppar</em>. Samanlikn med preteritum <em class=\"nn\">kasta</em>: presens har ein ekstra r." },
