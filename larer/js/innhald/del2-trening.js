@@ -818,7 +818,7 @@ Larar.register("trening-smaord", {
         "<p class=\"stor\"><em class=\"nn\">seg</em> om same person, <em class=\"nn\">kvarandre</em> når dei gjer noko mot kvarandre</p>",
         "<p class=\"stor\"><em class=\"nn\">òg</em> = også, <em class=\"nn\">og</em> bind saman: <em class=\"nn\">Kari og Per kjem òg.</em></p>",
       ],
-      notes: "Still spørsmålet «kven eig det?» og «er det subjektet?». Er svaret ja, blir det <em>sin, si, sitt, sine</em>, bøygd etter kjønnet på det som blir eigd. Nemn òg <em>enno</em> og <em>endå</em>: begge kan tyde «fortsatt», men berre <em>endå</em> tyder «enda» som i <em>endå betre</em>.",
+      notes: "Still spørsmålet «kven eig det?» og «er det subjektet?». Er svaret ja, blir det <em>sin, si, sitt, sine</em>, bøygd etter kjønnet på det som blir eigd. Nemn òg <em>enno</em> og <em>endå</em>: begge kan tyde «framleis», men berre <em>endå</em> tyder «enda» som i <em>endå betre</em>.",
     },
     {
       type: "drill",
@@ -1227,7 +1227,7 @@ Larar.register("trening-blanda", {
         <p>Skriv det ned før vi byrjar. Vi ser om du hadde rett til slutt.</p>`,
       form: "Tenk sjølv, så fortel sidemannen",
       tid: 2,
-      notes: "Poenget er at elevane skal bli bevisste på eigne feil. Be dei skrive gjetninga si på ein lapp. I avslutninga samanliknar dei med kva dei faktisk bomma på i tavlerundane og i oppgåvene i skriveboka.",
+      notes: "Poenget er at elevane skal bli bevisste på eigne feil. Be dei skrive gjettinga si på ein lapp. I avslutninga samanliknar dei med kva dei faktisk bomma på i tavlerundane og i oppgåvene i skriveboka.",
     },
     {
       title: "Sjekklista",
@@ -1395,19 +1395,19 @@ Larar.register("trening-blanda", {
     forebuing: [
       "Test tavleøvingane på førehand og prøv knappen «Nye oppgåver».",
       "Bestem laginndelinga og lag ei enkel poengtavle på sida av tavla.",
-      "Ha lappar klare til gjetninga i starten og exit-lappen til slutt.",
+      "Ha lappar klare til gjettinga i starten og exit-lappen til slutt.",
       "Sjå til at elevane har skrivebok og ein penn i ein annan farge til å rette med.",
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: "<p>Del inn i lag, la elevane gjette kva feil dei sjølve gjer oftast, og gå raskt gjennom sjekklista.</p>", lysbilete: "2 til 4" },
       { fase: "Runde 1 og 2", min: 7, gjer: "<p>Lagkonkurranse med ord og former, spørsmålet med fire setningar og setningsrunden.</p>", lysbilete: "5 til 7" },
       { fase: "Runde 3 og finale", min: 6, gjer: "<p>Laga finn dei seks feila i teksten, og så kjem finalerunden.</p>", lysbilete: "8 og 9" },
-      { fase: "Refleksjon", min: 2, gjer: "<p>Klassen ser på kva som gjekk dårlegast, og kvar elev samanliknar med gjetninga si.</p>", lysbilete: "10" },
+      { fase: "Refleksjon", min: 2, gjer: "<p>Klassen ser på kva som gjekk dårlegast, og kvar elev samanliknar med gjettinga si.</p>", lysbilete: "10" },
       { fase: "Eigentrening", min: 24, gjer: "<p>Elevane løyser tre korte oppgåver i skriveboka og rettar sjølve etter fasiten. Til slutt skriv dei fem eller seks setningar om helga og byter med sidemannen for å sjå etter feil frå sjekklista.</p>", lysbilete: "11 til 14" },
       { fase: "Avslutning", min: 2, gjer: "<p>Exit-lapp med éin feil eleven vil sjå etter i neste tekst.</p>", lysbilete: "15" },
     ],
     misoppfatningar: [
-      { feil: "«Eg kan reglane, så eg treng ikkje trene.»", hjelp: "Blandingsrunden viser skilnaden på å kunne ein regel og å bruke han når alt kjem om kvarandre. Samanlikn resultatet med gjetninga frå starten." },
+      { feil: "«Eg kan reglane, så eg treng ikkje trene.»", hjelp: "Blandingsrunden viser skilnaden på å kunne ein regel og å bruke han når alt kjem om kvarandre. Samanlikn resultatet med gjettinga frå starten." },
       { feil: "«Har ikke nokon hage» blir retta til «ikkje noko hage».", hjelp: "<em class=\"nn\">hage</em> er hankjønn, så i spørsmål og nekting heiter det <em class=\"nn\">nokon hage</em>. <em class=\"nn\">noko</em> brukar vi om inkjekjønnsord og mengd." },
       { feil: "«Da eg kom heim, eg åt …»", hjelp: "To feil på éin gong: <em class=\"bm\">da</em> finst ikkje på nynorsk, og verbalet skal stå på andreplass: <em class=\"nn\">Då eg kom heim, åt eg …</em>" },
       { feil: "«Huset hennar er stor.»", hjelp: "Predikativet rettar seg etter subjektet: <em class=\"nn\">huset</em> er inkjekjønn, så det heiter <em class=\"nn\">stort</em>." },

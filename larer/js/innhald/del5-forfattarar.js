@@ -64,14 +64,14 @@ Larar.register("nynorskforfattarane", {
           <li><em class="nn">Bondestudentar</em> (1883)</li>
           <li><em class="nn">Haugtussa</em> (1895)</li>
         </ul>`,
-      notes: "Garborg var ein av dei sterkaste røystene i nynorskrørsla. Stilen er sosialrealistisk og psykologisk, og han var blant dei første som skreiv om kjenslene, tankane og sjølvransakinga til vanlege folk på nynorsk. <em>Bondestudentar</em> handlar om unge bondegutar som prøver å studere seg fram i byen. <em>Haugtussa</em> er ein diktsyklus om jenta Veslemøy, som har synske evner, og Grieg tonsette delar av han. Andre verk: <em>Trætte Mænd</em> (1891) og <em>Fred</em> (1892). Spør gjerne: kjenner nokon seg att i å flytte frå ein liten stad til ein by?",
+      notes: "Garborg var ein av dei sterkaste røystene i nynorskrørsla. Stilen er sosialrealistisk og psykologisk, og han var blant dei første som skreiv om kjenslene, tankane og sjølvransakinga til vanlege folk på nynorsk. <em>Bondestudentar</em> handlar om unge bondegutar som prøver å studere seg fram i byen. <em>Haugtussa</em> er ein diktsyklus om jenta Veslemøy, som har synske evner, og Grieg tonesette delar av han. Andre verk: <em>Trætte Mænd</em> (1891) og <em>Fred</em> (1892). Spør gjerne: kjenner nokon seg att i å flytte frå ein liten stad til ein by?",
     },
     {
       type: "sporsmal",
       question: "Edvard Grieg sette musikk til tekstar av to av forfattarane. Kven?",
       options: ["Duun og Fosse", "Vinje og Garborg", "Grytten og Nilssen", "Tarjei og Halldis Moren Vesaas"],
       correct: 1,
-      explain: "Grieg tonsette «Ved Rondane» av Vinje og delar av <em class=\"nn\">Haugtussa</em> av Garborg. Begge levde på 1800-talet, same tid som Grieg.",
+      explain: "Grieg tonesette «Ved Rondane» av Vinje og delar av <em class=\"nn\">Haugtussa</em> av Garborg. Begge levde på 1800-talet, same tid som Grieg.",
       notes: "Eit lett spørsmål som får elevane til å kople forfattarane til tida dei levde i. Om nokon svarer Vesaas, spør: levde Grieg på same tid som dei?",
     },
     {
@@ -102,7 +102,7 @@ Larar.register("nynorskforfattarane", {
           <li><em class="nn">Fuglane</em> (1957)</li>
           <li><em class="nn">Is-slottet</em> (1963)</li>
         </ul>`,
-      notes: "Vesaas budde mesteparten av livet i bygda si og skreiv nokre av dei mest leste romanane på nynorsk i det 20. hundreåret. Stilen er sparsom, poetisk og symbolsk: frykt, einsemd, venskap, naturen som spegel for menneskesinnet. <em>Is-slottet</em> handlar om to jenter og eit dramatisk møte med naturen, og fekk Nordisk råds litteraturpris i 1964. <em>Fuglane</em> handlar om Mattis. <em>Vindane</em> (1952) gav han det internasjonale gjennombrotet. Legg merke til at han kjem frå same bygd som Vinje, og at han var gift med Halldis Moren Vesaas, som kjem på neste lysbilete.",
+      notes: "Vesaas budde mesteparten av livet i bygda si og skreiv nokre av dei mest leste romanane på nynorsk i det 20. hundreåret. Stilen er sparsam, poetisk og symbolsk: frykt, einsemd, venskap, naturen som spegel for menneskesinnet. <em>Is-slottet</em> handlar om to jenter og eit dramatisk møte med naturen, og fekk Nordisk råds litteraturpris i 1964. <em>Fuglane</em> handlar om Mattis. <em>Vindane</em> (1952) gav han det internasjonale gjennombrotet. Legg merke til at han kjem frå same bygd som Vinje, og at han var gift med Halldis Moren Vesaas, som kjem på neste lysbilete.",
     },
     {
       type: "bilete",
@@ -278,7 +278,7 @@ Larar.register("nynorskforfattarane", {
     lareplan: [1, 2, 3, 15],
     forkunnskapar: "Elevane bør kjenne hovudtrekka i språkhistoria frå Del 1, særleg Ivar Aasen og landsmålet. Det er ein fordel om dei veit kva ein roman, ei novelle, eit dikt og ein diktsyklus er.",
     forebuing: [
-      "Test at portretta visest på tavla.",
+      "Test at portretta blir viste på tavla.",
       "Finn gjerne eit opptak av «Ved Rondane» eller ein Haugtussa-song med musikken til Grieg (lysbilete 5 og 6).",
       "Ta med ei eller to bøker av forfattarane frå skulebiblioteket, til dømes <em class=\"nn\">Is-slottet</em> eller <em class=\"nn\">Bikubesong</em>.",
       "Ha lappar klare til exit-lappen.",
@@ -469,7 +469,7 @@ Larar.register("lesing-vinje", {
         <p>Kva meiner forteljaren at engelskmannen skjønar? Er du samd?</p>`,
       form: "Snakk i grupper på tre",
       tid: 3,
-      notes: "Her kan elevane tolke fritt. Mogelege svar: at det er verdt å gå sakte, at naturen opplevest betre til fots, at vi tek fjellet for gitt. Utfordr dei: er det noko ironisk i at det er ein utlending som må minne nordmenn på dette? Kople gjerne til Vinje, som sjølv gjekk og reiste mykje.",
+      notes: "Her kan elevane tolke fritt. Mogelege svar: at det er verdt å gå sakte, at ein opplever naturen betre til fots, at vi tek fjellet for gitt. Utfordr dei: er det noko ironisk i at det er ein utlending som må minne nordmenn på dette? Kople gjerne til Vinje, som sjølv gjekk og reiste mykje.",
     },
     {
       title: "Ekte Vinje: «Ved Rundarne» (1864)",
@@ -1107,7 +1107,7 @@ Larar.register("lesing-duun", {
         <p>Kva trur du skjer? Kva kan ein storm gjere i ei forteljing, i tillegg til å vere vêr?</p>`,
       form: "Snakk med sidemannen",
       tid: 2,
-      notes: "Få fram at vêr i litteraturen ofte speglar kjensler eller skaper ein prøve for personane. Samle gjetningar og kom tilbake til dei etterpå. Ikkje avslør at bestefar gløymer. Det er betre at elevane oppdagar det i teksten.",
+      notes: "Få fram at vêr i litteraturen ofte speglar kjensler eller skaper ein prøve for personane. Samle gjettingar og kom tilbake til dei etterpå. Ikkje avslør at bestefar gløymer. Det er betre at elevane oppdagar det i teksten.",
     },
     {
       title: "Ord i teksten",
@@ -1238,7 +1238,7 @@ Larar.register("lesing-duun", {
       text: "Det var den haustkvelden bestefar gjekk ut etter sauene at vi forstod at han ikkje var den same lenger.",
       kjelde: "«Bestefar og stormen», første setning",
       steps: ["<p>Kva veit vi allereie etter éi setning?</p>"],
-      notes: "Første setning fortel at noko avgjerande skjedde, og at forteljaren ser tilbake på det. Det skaper spenning: vi veit at noko vil skje, men ikkje kva. Spør: kven er «vi»? Og kvifor seier forteljaren «ikkje den same lenger» når det er denne kvelden bestefar faktisk er seg sjølv? Det er ein fin tvitydnad å diskutere.",
+      notes: "Første setning fortel at noko avgjerande skjedde, og at forteljaren ser tilbake på det. Det skaper spenning: vi veit at noko vil skje, men ikkje kva. Spør: kven er «vi»? Og kvifor seier forteljaren «ikkje den same lenger» når det er denne kvelden bestefar faktisk er seg sjølv? Setninga kan tydast på to måtar, og det er fint å diskutere.",
     },
     {
       type: "sitat",
@@ -1460,7 +1460,7 @@ Larar.register("lesing-duun", {
     tilpassing: {
       stotte: [
         "Les kursteksten høgt, og stopp ved vendepunktet for å la elevane gjette kva far gjer.",
-        "Gi elevane ei liste med vêrverb (riv, pisker, ular, finn) til skriveoppgåva.",
+        "Gi elevane ei liste med vêrverb (riv, piskar, ular, finn) til skriveoppgåva.",
         "La elevar som strevar med dialektforma i <em class=\"nn\">Juvikingar</em>, lese første avsnitt og sitatet med ordlista.",
       ],
       utfordring: [

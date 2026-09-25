@@ -98,12 +98,12 @@ Modules.register({
           <li><em class="nn">Trætte Mænd</em> (1891): roman om livskrise.</li>
           <li><em class="nn">Fred</em> (1892): roman om religiøs uro.</li>
           <li><em class="nn">Haugtussa</em> (1895): diktsyklus om jenta Veslemøy, som
-              har synske evner. Edvard Grieg tonsette delar av han.</li>
+              har synske evner. Edvard Grieg tonesette delar av han.</li>
         </ul>
 
         <div class="callout">
           <strong>Vil du lese?</strong> Diktet <em class="nn">«Veslemøy»</em> opnar
-          Haugtussa og er ein god start. Grieg tonsette mellom anna
+          Haugtussa og er ein god start. Grieg tonesette mellom anna
           <em class="nn">«Killingdans»</em> og <em class="nn">«Ved Gjætle-bekken»</em> frå
           same samlinga. Sommarstova til Garborg på Jæren, Knudaheio, er i dag eit museum.
         </div>
@@ -115,7 +115,7 @@ Modules.register({
       question: "Kva handlar diktsyklusen <em class=\"nn\">Haugtussa</em> om?",
       options: ["Ein bondegut som studerer i byen.","Jenta Veslemøy, som har synske evner.","Ei reise til Trondheim.","Ein gard i Trøndelag gjennom mange generasjonar."],
       correct: 1,
-      explanation: "Haugtussa (1895) handlar om Veslemøy, som ser det andre ikkje ser. Edvard Grieg tonsette delar av verket. Bondeguten som studerer i byen, er frå ein annan Garborg-roman, Bondestudentar.",
+      explanation: "Haugtussa (1895) handlar om Veslemøy, som ser det andre ikkje ser. Edvard Grieg tonesette delar av verket. Bondeguten som studerer i byen, er frå ein annan Garborg-roman, Bondestudentar.",
     },
     {
       type: "lesson",

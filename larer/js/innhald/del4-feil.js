@@ -846,10 +846,10 @@ Larar.register("feil-smaord", {
     },
     {
       title: "Finn feila",
-      body: `<p class="stor"><em class="bm">Kari sin bok ligg på bordet, men Karis penal er borte. Per seier at han la det i sekken hennes i går.</em></p>`,
+      body: `<p class="stor"><em class="bm">Kari sin bok ligg på bordet, men Karis pennal er borte. Per seier at han la det i sekken hennes i går.</em></p>`,
       steps: [`<p class="midt">Det er <strong>3 feil</strong>, og alle handlar om eigedom.</p>`],
-      svar: `<em class="nn">Kari <strong>si</strong> bok</em>, <em class="nn">Kari <strong>sitt</strong> penal</em> (eller <em class="nn">penalet til Kari</em>), <em class="nn">sekken <strong>hennar</strong></em>`,
-      notes: `Bok er hokjønn: <em>si</em>. Penal er inkjekjønn: <em>sitt</em>. Til slutt er det <em>hennar</em> og ikkje <em>sin</em>, for subjektet er Per, og sekken er Kari sin.`,
+      svar: `<em class="nn">Kari <strong>si</strong> bok</em>, <em class="nn">Kari <strong>sitt</strong> pennal</em> (eller <em class="nn">pennalet til Kari</em>), <em class="nn">sekken <strong>hennar</strong></em>`,
+      notes: `Bok er hokjønn: <em>si</em>. Pennal er inkjekjønn: <em>sitt</em>. Til slutt er det <em>hennar</em> og ikkje <em>sin</em>, for subjektet er Per, og sekken er Kari sin.`,
     },
     {
       type: "oppgave",
@@ -1348,7 +1348,7 @@ Larar.register("feil-rettelesing", {
           <div class="boks steg"><h3>Tekst 3</h3>
             <p><em class="bm">elevene</em> → <em class="nn">elevane</em><br><em class="bm">samlet</em> → <em class="nn">samla</em><br><em class="bm">når</em> → <em class="nn">då</em><br><em class="bm">argumentene</em> → <em class="nn">argumenta</em><br><em class="bm">kvar mange</em> → <em class="nn">kor mange</em><br><em class="bm">deres</em> → <em class="nn">deira</em><br><em class="bm">saken</em> → <em class="nn">saka</em></p></div>
         </div>`,
-      notes: `Fasiten kjem fram éin tekst om gongen. Lat elevane rette i skriveboka og telje kor mange feil dei fann av kvar type: endingar, småord eller bokmålsord. <em>Nokon pengar</em> er òg rett i eit spørsmål. Spør kva feil dei overså, og kva for ei av dei tre gjennomlesingane som skulle ha fanga han.`,
+      notes: `Fasiten kjem fram éin tekst om gongen. Lat elevane rette i skriveboka og telje kor mange feil dei fann av kvar type: endingar, småord eller bokmålsord. <em>Nokon pengar</em> er òg rett i eit spørsmål. Spør kva feil dei oversåg, og kva for ei av dei tre gjennomlesingane som skulle ha fanga han.`,
     },
     {
       type: "oppgave",

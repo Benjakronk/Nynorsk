@@ -585,7 +585,7 @@ Larar.register("historie-aasen-reise", {
         "<p class=\"stor\">1836, 22 år gamal: planen <em class=\"nn\">«Om vort Skriftsprog»</em></p>",
         "<p class=\"stor merk\">Men då måtte nokon reise og lytte.</p>",
       ],
-      notes: "Dette er innleiingskapitlet på kartet. Legg merke til at Aasen skreiv planen på dansk: tittelen «Om vort Skriftsprog» tyder om lag «Om skriftspråket vårt». Spør elevane om dei kan omsetje han.",
+      notes: "Dette er innleiingskapittelet på kartet. Legg merke til at Aasen skreiv planen på dansk: tittelen «Om vort Skriftsprog» tyder om lag «Om skriftspråket vårt». Spør elevane om dei kan omsetje han.",
     },
     {
       title: "Åsen og Ekset",
@@ -831,7 +831,7 @@ Larar.register("historie-aasen-reise", {
     ],
     tilpassing: {
       stotte: [
-        "La ein elev få styre kartet på tavla medan ein annan les høgt frå kapitlet.",
+        "La ein elev få styre kartet på tavla medan ein annan les høgt frå kapittelet.",
         "Gi elevane ei liste med fem stader dei skal følgje med på når kartet er på tavla, og skrive éi setning om: Ørsta, Bergen, Sogndal, Christiania og Trondheim.",
         "Skriv stadnamna frå oppgåvene på tavla tidleg i timen, så elevane kjenner dei att undervegs.",
       ],

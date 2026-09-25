@@ -398,7 +398,7 @@ Larar.register("skriving-korte-tekstar", {
       type: "diskuter",
       title: "Same sak, tre tekstar",
       prompt: `<p>Du kjem ikkje på treninga i dag.</p>
-        <p>Skriv éi setning til <strong>ein venn</strong>, éi til <strong>treneren</strong> og éi i <strong>dagboka</strong>.</p>`,
+        <p>Skriv éi setning til <strong>ein venn</strong>, éi til <strong>trenaren</strong> og éi i <strong>dagboka</strong>.</p>`,
       form: "Skriv i par",
       tid: 4,
       notes: "La tre eller fire par lese opp. Spør klassen: kva gjorde at vi høyrde kven mottakaren var? Sjekk samtidig nynorsken i døma: <em>kjem</em>, <em>ikkje</em>, <em>i dag</em>. Setninga til dagboka kan gjerne handle om kvifor eleven ikkje kom og korleis det kjendest.",

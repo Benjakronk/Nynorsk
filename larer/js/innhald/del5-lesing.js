@@ -417,7 +417,7 @@ Larar.register("lesing-hm-vesaas", {
         `<p class="stor"><em class="nn">«For det fanst ei tid då slike morgonar var alle eg hadde.»</em></p>`,
         `<p><strong>fanst</strong> er preteritum: forteljaren ser <strong>tilbake</strong>. Den tida er over.</p>`,
       ],
-      notes: "Dette er nøkkelen til teksten, og dei fleste elevane oversjår det på første lesing. Morgonen blir fortald som om han skjer no, men så skjønar vi at forteljaren hugsar. Spør: kor gammal kan forteljaren vere no? Kva kan ha endra seg? Ikkje gi svar, det kjem i neste samtale.",
+      notes: "Dette er nøkkelen til teksten, og dei fleste elevane overser det på første lesing. Morgonen blir fortald som om han skjer no, men så skjønar vi at forteljaren hugsar. Spør: kor gammal kan forteljaren vere no? Kva kan ha endra seg? Ikkje gi svar, det kjem i neste samtale.",
     },
     {
       type: "sitat",
@@ -477,7 +477,7 @@ Larar.register("lesing-hm-vesaas", {
       title: "Vidare: les ekte dikt",
       body: `<p class="stor"><em class="nn">Tung tids tale</em> (1945) ligg på Nettbiblioteket.</p>
         <p class="stor"><em class="nn">«Det heiter ikkje: eg no lenger. Heretter heiter det: vi.»</em></p>`,
-      notes: "Linja er gjengitt slik ho står i Nettbiblioteket-oppgåva i elevmodulen. Dikta er skrivne under krigen. Spør: kvifor kan det vere viktig å seie «vi» i staden for «eg» i ei tung tid? Oppgåva i elevmodulen ber elevane lese titteldiktet og to andre dikt og samanlikne tonen med «Ein morgon». Ho passar som frivillig lekse. Olaug Nilssen har lånt tittelen til romanen sin frå dette diktet, og det kjem elevane til å møte seinare.",
+      notes: "Linja er attgjeven slik ho står i Nettbiblioteket-oppgåva i elevmodulen. Dikta er skrivne under krigen. Spør: kvifor kan det vere viktig å seie «vi» i staden for «eg» i ei tung tid? Oppgåva i elevmodulen ber elevane lese titteldiktet og to andre dikt og samanlikne tonen med «Ein morgon». Ho passar som frivillig lekse. Olaug Nilssen har lånt tittelen til romanen sin frå dette diktet, og det kjem elevane til å møte seinare.",
     },
   ],
   guide: {
@@ -736,7 +736,7 @@ Larar.register("lesing-fosse", {
         `<p class="stor">Telefonen ligg i jakka i gangen.</p>`,
         `<p class="stor"><em class="nn">«Ho kjem ikkje til å tru meg. Men ho kjem ikkje til å spørje meir heller.»</em></p>`,
       ],
-      notes: "Elevane oversjår ofte at forteljaren er ung: han bur heime, hytta er foreldra sine, han må forklare seg for mor. Spør: kva seier «Vi har den slags forhold no» om han og mor? Kjenner elevane att behovet for å vere i fred ei stund? Hald samtalen på teksten om det blir personleg.",
+      notes: "Elevane overser ofte at forteljaren er ung: han bur heime, hytta er foreldra sine, han må forklare seg for mor. Spør: kva seier «Vi har den slags forhold no» om han og mor? Kjenner elevane att behovet for å vere i fred ei stund? Hald samtalen på teksten om det blir personleg.",
     },
     {
       type: "oppgave",
@@ -1070,7 +1070,7 @@ Larar.register("lesing-grytten", {
     forkunnskapar: "Ingen særlege. Har elevane lese «Jenta og isen» eller «Frå hytta», kan du vise til at òg dei tekstane held mykje tilbake.",
     forebuing: [
       "Les teksten og lag dine eigne lister over kva vi veit og ikkje veit, så du kan hjelpe gruppene.",
-      "Merk deg ordet «òg» i setninga om stemma til mor. Det er ein detalj mange oversjår.",
+      "Merk deg ordet «òg» i setninga om stemma til mor. Det er ein detalj mange overser.",
       "Bla gjennom tekstlysbiletet (lysbilete 8) på tavla på førehand, så du veit kvar sidene skiftar.",
       "Sjekk at Bikubesong opnar på Nettbiblioteket, så du kan vise vegen dit når du gir leksa.",
     ],
@@ -1442,7 +1442,7 @@ Larar.register("lesing-nilssen", {
       steps: [
         `<p class="stor">1. Den <strong>nøkterne</strong> tonen når ho fortel om noko vondt.</p>`,
         `<p class="stor">2. Korleis eit <strong>bilete</strong> blir ein måte å forstå seg sjølv på.</p>`,
-        `<p class="stor">3. Kva ho nemner <strong>kort</strong>, og kva ho <strong>dvelar</strong> ved.</p>`,
+        `<p class="stor">3. Kva ho nemner <strong>kort</strong>, og kva ho <strong>dvel</strong> ved.</p>`,
       ],
       notes: "Lesestrategi: be elevane lage to lister i skriveboka: det som blir nemnt kort, og det forteljaren bruker mange ord på. Dei vil sjå at det vondaste får færrast ord.",
     },
@@ -1543,7 +1543,7 @@ Larar.register("lesing-nilssen", {
       type: "sitat",
       text: "Eg trur kanskje vaksne ikkje skjønar at å sjå på eit gamalt bilete kan vere arbeid òg. Det er ikkje berre nostalgi. Det er noko ein gjer for å finne ut korleis ein er kome hit.",
       kjelde: KJELDE_NILSSEN,
-      notes: "Dette er tolkingsnøkkelen, og tema for spørsmål 3 på lysbilete 16. Elevane oversjår ofte ordet «kanskje»: forteljaren er ikkje skråsikker. Legg òg merke til at teksten sluttar med «den jenta som no sit på senga si og tenkjer», altså i notida, med biletet i fanget.",
+      notes: "Dette er tolkingsnøkkelen, og tema for spørsmål 3 på lysbilete 16. Elevane overser ofte ordet «kanskje»: forteljaren er ikkje skråsikker. Legg òg merke til at teksten sluttar med «den jenta som no sit på senga si og tenkjer», altså i notida, med biletet i fanget.",
     },
     {
       type: "diskuter",
@@ -1617,7 +1617,7 @@ Larar.register("lesing-nilssen", {
     ],
     misoppfatningar: [
       { feil: "«Ho bryr seg ikkje om Mikkel, for ho skriv så lite om han.»", hjelp: "Den nøkterne tonen er eit verkemiddel. Spør kvifor ho hugsar det skeive smilet og Brann-trøya, og kva det seier." },
-      { feil: "«Teksten handlar om Mikkel.»", hjelp: "Teksten handlar om forteljaren og korleis ho har kome dit ho er. Mikkel er ein av fleire skjebner ho nemner." },
+      { feil: "«Teksten handlar om Mikkel.»", hjelp: "Teksten handlar om forteljaren og korleis ho har kome dit ho er. Mikkel er ein av fleire lagnader ho nemner." },
       { feil: "«Mor er slem.»", hjelp: "Mor ser berre overflata. Teksten seier at vaksne «kanskje» ikkje skjønar. Poenget er at det er vanskeleg å forklare, ikkje at nokon er slem." },
       { feil: "«Nøktern betyr kjenslekald.»", hjelp: "Nøktern betyr sakleg og roleg. Kjenslene er der, men dei blir viste gjennom detaljar i staden for å bli sagt." },
     ],
@@ -1820,7 +1820,7 @@ Larar.register("lesing-samanlikning", {
         "Grytten-teksten handlar om ein buss.",
       ],
       correct: 2,
-      explain: "Den tredje setninga seier kva som er ulikt, bruker eit fagomgrep og har eit konkret døme. Dei andre er smak, gjenfortelling eller for vage.",
+      explain: "Den tredje setninga seier kva som er ulikt, bruker eit fagomgrep og har eit konkret døme. Dei andre er smak, attforteljing eller for vage.",
       notes: "Bruk svaret som modell. Be elevane skrive éi slik setning om dei to tekstane dei snakka om i gruppa, før dei går i gang med skrivinga.",
     },
     {
