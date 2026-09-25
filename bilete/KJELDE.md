@@ -33,3 +33,7 @@ Lisenstekstane: <https://creativecommons.org/licenses/by/2.0/deed.no>,
 <https://creativecommons.org/licenses/by/3.0/deed.no>,
 <https://creativecommons.org/licenses/by-sa/3.0/deed.no>,
 <https://creativecommons.org/licenses/by-sa/4.0/deed.no>.
+
+## Ikon og logo (rota av prosjektet)
+
+favicon.svg, favicon.ico, favicon-16.png, favicon-32.png, apple-touch-icon.png, icon-192.png, icon-512.png og ivar-aasen.png er ein ikonpakke med eit stilisert portrett av Ivar Aasen, levert av kurseigaren (september 2026). favicon.svg er ein SVG-behaldar med innebygd PNG, ikkje ei vektorisert teikning.
