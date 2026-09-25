@@ -10,7 +10,7 @@ frå Språkrådet.
 - **Del 2: Grammatikk og skrivereglar**, delt i tre grupper:
   - *Grunnomgrep* (4 modular): ordet (stamme, ending, rot), ordklassane, bøyingsomgrep, setningslære
   - *Ordklassar* (4 modular): substantiv, verb, pronomen, adjektiv
-  - *Mengdetrening* (5 modular): drill-rundar med tilfeldige oppgåver frå ein ordbank
+  - *Mengdetrening* (6 modular): drill-rundar med tilfeldige oppgåver frå ein ordbank, medrekna ei økt i setningslære (verbal, subjekt, ledd, heilsetning og leddsetning, ordstilling, predikativ)
 - **Del 3: Ordbok og oppslag** (4 modular): dei tre ordbøkene og kva dei er laga for, finne oppslagsordet, lese ein ordbokartikkel, bruke ordboka mens du skriv
 - **Del 4: Skriving og tekstarbeid**, delt i to grupper:
   - *Skriv tekstar* (3 modular): omsetjing, korte tekstar, lengre tekstar

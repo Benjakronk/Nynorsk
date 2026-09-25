@@ -549,6 +549,1123 @@ Bank.sentences = {
     { prompt: "Barna kledde på ___.", cue: "(seg / dei)", accept: ["seg"], options: ["dei", "dem"], why: "Refleksivt: barna kledde på <em class=\"nn\">seg</em> (seg sjølve)." },
     { prompt: "Dei to snakkar aldri med ___.", cue: "(seg / kvarandre)", accept: ["kvarandre"], options: ["seg", "hverandre"], why: "Gjensidig: <em class=\"nn\">kvarandre</em>." },
   ],
+  /* ---- Setningslære (modulen trening-setning) ---- */
+  ledd: [
+    {
+        "prompt": "I setninga «Kari les ei bok.» er «Kari» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "subjekt"
+        ],
+        "options": [
+            "verbal",
+            "objekt",
+            "indirekte objekt",
+            "predikativ",
+            "adverbial"
+        ],
+        "why": "Kven les? Kari. Den som gjer handlinga, er subjektet."
+    },
+    {
+        "prompt": "I setninga «Kari les ei bok.» er «les» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "verbal"
+        ],
+        "options": [
+            "subjekt",
+            "objekt",
+            "indirekte objekt",
+            "predikativ",
+            "adverbial"
+        ],
+        "why": "Verbalet fortel kva som skjer, og er alltid eit verb: les."
+    },
+    {
+        "prompt": "I setninga «Kari les ei bok.» er «ei bok» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "objekt"
+        ],
+        "options": [
+            "subjekt",
+            "verbal",
+            "indirekte objekt",
+            "predikativ",
+            "adverbial"
+        ],
+        "why": "Kva les Kari? Ei bok. Det handlinga går ut over, er objektet."
+    },
+    {
+        "prompt": "I setninga «Kari gav guten ei bok.» er «guten» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "indirekte objekt"
+        ],
+        "options": [
+            "subjekt",
+            "verbal",
+            "objekt",
+            "predikativ",
+            "adverbial"
+        ],
+        "why": "Til kven gav Kari ei bok? Guten. Den som får noko, er indirekte objekt."
+    },
+    {
+        "prompt": "I setninga «Kari er glad.» er «glad» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "predikativ"
+        ],
+        "options": [
+            "subjekt",
+            "verbal",
+            "objekt",
+            "indirekte objekt",
+            "adverbial"
+        ],
+        "why": "Etter vere/bli/verte/heite kjem eit predikativ, som seier korleis subjektet er."
+    },
+    {
+        "prompt": "I setninga «Kari las boka i går.» er «i går» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "adverbial"
+        ],
+        "options": [
+            "subjekt",
+            "verbal",
+            "objekt",
+            "indirekte objekt",
+            "predikativ"
+        ],
+        "why": "Når las Kari boka? I går. Svar på kvar/når/korleis/kvifor er adverbial."
+    },
+    {
+        "prompt": "I setninga «Hunden jaga katten.» er «Hunden» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "subjekt"
+        ],
+        "options": [
+            "verbal",
+            "objekt",
+            "indirekte objekt",
+            "predikativ",
+            "adverbial"
+        ],
+        "why": "Kven jaga? Hunden."
+    },
+    {
+        "prompt": "I setninga «Hunden jaga katten.» er «katten» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "objekt"
+        ],
+        "options": [
+            "subjekt",
+            "verbal",
+            "indirekte objekt",
+            "predikativ",
+            "adverbial"
+        ],
+        "why": "Kva jaga hunden? Katten."
+    },
+    {
+        "prompt": "I setninga «Ho har lese boka.» er «har lese» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "verbal"
+        ],
+        "options": [
+            "subjekt",
+            "objekt",
+            "indirekte objekt",
+            "predikativ",
+            "adverbial"
+        ],
+        "why": "Verbalet kan vere fleire ord: hjelpeverbet har pluss partisippet lese."
+    },
+    {
+        "prompt": "I setninga «Han les på rommet.» er «på rommet» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "adverbial"
+        ],
+        "options": [
+            "subjekt",
+            "verbal",
+            "objekt",
+            "indirekte objekt",
+            "predikativ"
+        ],
+        "why": "Kvar les han? På rommet: adverbial."
+    },
+    {
+        "prompt": "I setninga «Mor mi er lærar.» er «lærar» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "predikativ"
+        ],
+        "options": [
+            "subjekt",
+            "verbal",
+            "objekt",
+            "indirekte objekt",
+            "adverbial"
+        ],
+        "why": "Etter er: predikativ. Det seier kva subjektet er."
+    },
+    {
+        "prompt": "I setninga «Læraren viste oss filmen.» er «oss» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "indirekte objekt"
+        ],
+        "options": [
+            "subjekt",
+            "verbal",
+            "objekt",
+            "predikativ",
+            "adverbial"
+        ],
+        "why": "Til kven viste læraren filmen? Oss: indirekte objekt. Filmen er objektet."
+    },
+    {
+        "prompt": "I setninga «Læraren viste oss filmen.» er «filmen» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "objekt"
+        ],
+        "options": [
+            "subjekt",
+            "verbal",
+            "indirekte objekt",
+            "predikativ",
+            "adverbial"
+        ],
+        "why": "Kva viste læraren? Filmen: objektet."
+    },
+    {
+        "prompt": "I setninga «Barna sov lenge.» er «Barna» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "subjekt"
+        ],
+        "options": [
+            "verbal",
+            "objekt",
+            "indirekte objekt",
+            "predikativ",
+            "adverbial"
+        ],
+        "why": "Kven sov? Barna."
+    },
+    {
+        "prompt": "I setninga «Barna sov lenge.» er «lenge» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "adverbial"
+        ],
+        "options": [
+            "subjekt",
+            "verbal",
+            "objekt",
+            "indirekte objekt",
+            "predikativ"
+        ],
+        "why": "Kor lenge sov barna? Lenge: adverbial."
+    },
+    {
+        "prompt": "I setninga «Barna vart trøytte.» er «trøytte» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "predikativ"
+        ],
+        "options": [
+            "subjekt",
+            "verbal",
+            "objekt",
+            "indirekte objekt",
+            "adverbial"
+        ],
+        "why": "Etter vart (av verte): predikativ, som rettar seg etter subjektet i fleirtal."
+    },
+    {
+        "prompt": "I setninga «Vi kjøpte is på stranda.» er «Vi» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "subjekt"
+        ],
+        "options": [
+            "verbal",
+            "objekt",
+            "indirekte objekt",
+            "predikativ",
+            "adverbial"
+        ],
+        "why": "Kven kjøpte? Vi."
+    },
+    {
+        "prompt": "I setninga «Vi kjøpte is på stranda.» er «is» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "objekt"
+        ],
+        "options": [
+            "subjekt",
+            "verbal",
+            "indirekte objekt",
+            "predikativ",
+            "adverbial"
+        ],
+        "why": "Kva kjøpte vi? Is."
+    },
+    {
+        "prompt": "I setninga «Vi kjøpte is på stranda.» er «på stranda» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "adverbial"
+        ],
+        "options": [
+            "subjekt",
+            "verbal",
+            "objekt",
+            "indirekte objekt",
+            "predikativ"
+        ],
+        "why": "Kvar kjøpte vi is? På stranda."
+    },
+    {
+        "prompt": "I setninga «Jenta skreiv eit brev til bestemor.» er «skreiv» ___.",
+        "cue": "(subjekt / verbal / objekt / indirekte objekt / predikativ / adverbial)",
+        "accept": [
+            "verbal"
+        ],
+        "options": [
+            "subjekt",
+            "objekt",
+            "indirekte objekt",
+            "predikativ",
+            "adverbial"
+        ],
+        "why": "Finn verbet først: skreiv."
+    }
+],
+  finnVerbal: [
+    {
+        "prompt": "Verbalet i «Kari les ei bok.» er ___.",
+        "cue": "(skriv verbalet, gjerne fleire ord)",
+        "accept": [
+            "les"
+        ],
+        "why": "Verbalet fortel kva som skjer: <em class=\"nn\">les</em>. Finn det alltid først."
+    },
+    {
+        "prompt": "Verbalet i «Guten spring til skulen.» er ___.",
+        "cue": "(skriv verbalet, gjerne fleire ord)",
+        "accept": [
+            "spring"
+        ],
+        "why": "Verbalet fortel kva som skjer: <em class=\"nn\">spring</em>. Finn det alltid først."
+    },
+    {
+        "prompt": "Verbalet i «Ho har lese boka.» er ___.",
+        "cue": "(skriv verbalet, gjerne fleire ord)",
+        "accept": [
+            "har lese"
+        ],
+        "why": "Verbalet fortel kva som skjer: <em class=\"nn\">har lese</em>. Finn det alltid først."
+    },
+    {
+        "prompt": "Verbalet i «I går kjøpte vi is.» er ___.",
+        "cue": "(skriv verbalet, gjerne fleire ord)",
+        "accept": [
+            "kjøpte"
+        ],
+        "why": "Verbalet fortel kva som skjer: <em class=\"nn\">kjøpte</em>. Finn det alltid først."
+    },
+    {
+        "prompt": "Verbalet i «Dei skal reise i morgon.» er ___.",
+        "cue": "(skriv verbalet, gjerne fleire ord)",
+        "accept": [
+            "skal reise"
+        ],
+        "why": "Verbalet fortel kva som skjer: <em class=\"nn\">skal reise</em>. Finn det alltid først."
+    },
+    {
+        "prompt": "Verbalet i «Bestefar sov i stolen.» er ___.",
+        "cue": "(skriv verbalet, gjerne fleire ord)",
+        "accept": [
+            "sov"
+        ],
+        "why": "Verbalet fortel kva som skjer: <em class=\"nn\">sov</em>. Finn det alltid først."
+    },
+    {
+        "prompt": "Verbalet i «Kven kjem?» er ___.",
+        "cue": "(skriv verbalet, gjerne fleire ord)",
+        "accept": [
+            "kjem"
+        ],
+        "why": "Verbalet fortel kva som skjer: <em class=\"nn\">kjem</em>. Finn det alltid først."
+    },
+    {
+        "prompt": "Verbalet i «Barna er trøytte.» er ___.",
+        "cue": "(skriv verbalet, gjerne fleire ord)",
+        "accept": [
+            "er"
+        ],
+        "why": "Verbalet fortel kva som skjer: <em class=\"nn\">er</em>. Finn det alltid først."
+    },
+    {
+        "prompt": "Verbalet i «Vi har aldri sett noko liknande.» er ___.",
+        "cue": "(skriv verbalet, gjerne fleire ord)",
+        "accept": [
+            "har sett"
+        ],
+        "why": "Verbalet fortel kva som skjer: <em class=\"nn\">har sett</em>. Finn det alltid først."
+    },
+    {
+        "prompt": "Verbalet i «No må du gå.» er ___.",
+        "cue": "(skriv verbalet, gjerne fleire ord)",
+        "accept": [
+            "må gå"
+        ],
+        "why": "Verbalet fortel kva som skjer: <em class=\"nn\">må gå</em>. Finn det alltid først."
+    },
+    {
+        "prompt": "Verbalet i «Katten låg på trappa heile dagen.» er ___.",
+        "cue": "(skriv verbalet, gjerne fleire ord)",
+        "accept": [
+            "låg"
+        ],
+        "why": "Verbalet fortel kva som skjer: <em class=\"nn\">låg</em>. Finn det alltid først."
+    },
+    {
+        "prompt": "Verbalet i «Snart blir det vår.» er ___.",
+        "cue": "(skriv verbalet, gjerne fleire ord)",
+        "accept": [
+            "blir"
+        ],
+        "why": "Verbalet fortel kva som skjer: <em class=\"nn\">blir</em>. Finn det alltid først."
+    }
+],
+  finnSubjekt: [
+    {
+        "prompt": "Subjektet i «Kari les ei bok.» er ___.",
+        "cue": "(kven eller kva + verbalet?)",
+        "accept": [
+            "Kari"
+        ],
+        "why": "Spør «kven/kva + verbal?»: <em class=\"nn\">Kari</em>. Hugs at subjektet kan stå etter verbalet når noko anna står først."
+    },
+    {
+        "prompt": "Subjektet i «I går kjøpte vi is.» er ___.",
+        "cue": "(kven eller kva + verbalet?)",
+        "accept": [
+            "vi"
+        ],
+        "why": "Spør «kven/kva + verbal?»: <em class=\"nn\">vi</em>. Hugs at subjektet kan stå etter verbalet når noko anna står først."
+    },
+    {
+        "prompt": "Subjektet i «No kjem toget.» er ___.",
+        "cue": "(kven eller kva + verbalet?)",
+        "accept": [
+            "toget"
+        ],
+        "why": "Spør «kven/kva + verbal?»: <em class=\"nn\">toget</em>. Hugs at subjektet kan stå etter verbalet når noko anna står først."
+    },
+    {
+        "prompt": "Subjektet i «Den gamle mannen sov.» er ___.",
+        "cue": "(kven eller kva + verbalet?)",
+        "accept": [
+            "den gamle mannen"
+        ],
+        "why": "Spør «kven/kva + verbal?»: <em class=\"nn\">den gamle mannen</em>. Hugs at subjektet kan stå etter verbalet når noko anna står først."
+    },
+    {
+        "prompt": "Subjektet i «Har du sett hunden?» er ___.",
+        "cue": "(kven eller kva + verbalet?)",
+        "accept": [
+            "du"
+        ],
+        "why": "Spør «kven/kva + verbal?»: <em class=\"nn\">du</em>. Hugs at subjektet kan stå etter verbalet når noko anna står først."
+    },
+    {
+        "prompt": "Subjektet i «Bestemor til Kari bur i Bergen.» er ___.",
+        "cue": "(kven eller kva + verbalet?)",
+        "accept": [
+            "bestemor til Kari"
+        ],
+        "why": "Spør «kven/kva + verbal?»: <em class=\"nn\">bestemor til Kari</em>. Hugs at subjektet kan stå etter verbalet når noko anna står først."
+    },
+    {
+        "prompt": "Subjektet i «Etter middagen gjekk barna ut.» er ___.",
+        "cue": "(kven eller kva + verbalet?)",
+        "accept": [
+            "barna"
+        ],
+        "why": "Spør «kven/kva + verbal?»: <em class=\"nn\">barna</em>. Hugs at subjektet kan stå etter verbalet når noko anna står først."
+    },
+    {
+        "prompt": "Subjektet i «Det regnar.» er ___.",
+        "cue": "(kven eller kva + verbalet?)",
+        "accept": [
+            "det"
+        ],
+        "why": "Spør «kven/kva + verbal?»: <em class=\"nn\">det</em>. Hugs at subjektet kan stå etter verbalet når noko anna står først."
+    },
+    {
+        "prompt": "Subjektet i «Boka ligg på bordet.» er ___.",
+        "cue": "(kven eller kva + verbalet?)",
+        "accept": [
+            "boka"
+        ],
+        "why": "Spør «kven/kva + verbal?»: <em class=\"nn\">boka</em>. Hugs at subjektet kan stå etter verbalet når noko anna står først."
+    },
+    {
+        "prompt": "Subjektet i «Kvar dag syklar Per til skulen.» er ___.",
+        "cue": "(kven eller kva + verbalet?)",
+        "accept": [
+            "Per"
+        ],
+        "why": "Spør «kven/kva + verbal?»: <em class=\"nn\">Per</em>. Hugs at subjektet kan stå etter verbalet når noko anna står først."
+    },
+    {
+        "prompt": "Subjektet i «Bilen min er raud.» er ___.",
+        "cue": "(kven eller kva + verbalet?)",
+        "accept": [
+            "bilen min"
+        ],
+        "why": "Spør «kven/kva + verbal?»: <em class=\"nn\">bilen min</em>. Hugs at subjektet kan stå etter verbalet når noko anna står først."
+    },
+    {
+        "prompt": "Subjektet i «Kven tok kaka?» er ___.",
+        "cue": "(kven eller kva + verbalet?)",
+        "accept": [
+            "kven"
+        ],
+        "why": "Spør «kven/kva + verbal?»: <em class=\"nn\">kven</em>. Hugs at subjektet kan stå etter verbalet når noko anna står først."
+    }
+],
+  heilLedd: [
+    {
+        "prompt": "«fordi det regna» i «Vi gjekk heim fordi det regna.» er ___.",
+        "cue": "(heilsetning / leddsetning / berre eit ledd)",
+        "accept": [
+            "leddsetning"
+        ],
+        "options": [
+            "heilsetning",
+            "berre eit ledd, utan verbal"
+        ],
+        "why": "«fordi det regna» kan ikkje stå åleine. Ho er adverbial i heilsetninga, og svarer på «kvifor?»."
+    },
+    {
+        "prompt": "«Vi gjekk heim» i «Vi gjekk heim fordi det regna.» er ___.",
+        "cue": "(heilsetning / leddsetning / berre eit ledd)",
+        "accept": [
+            "heilsetning"
+        ],
+        "options": [
+            "leddsetning",
+            "berre eit ledd, utan verbal"
+        ],
+        "why": "«Vi gjekk heim» gir meining åleine: heilsetning."
+    },
+    {
+        "prompt": "«som bur her» i «Guten som bur her, er snill.» er ___.",
+        "cue": "(heilsetning / leddsetning / berre eit ledd)",
+        "accept": [
+            "leddsetning"
+        ],
+        "options": [
+            "heilsetning",
+            "berre eit ledd, utan verbal"
+        ],
+        "why": "Relativsetning med som: ei leddsetning som beskriv guten."
+    },
+    {
+        "prompt": "«at ho kjem» i «Eg trur at ho kjem.» er ___.",
+        "cue": "(heilsetning / leddsetning / berre eit ledd)",
+        "accept": [
+            "leddsetning"
+        ],
+        "options": [
+            "heilsetning",
+            "berre eit ledd, utan verbal"
+        ],
+        "why": "«at ho kjem» er objekt i heilsetninga og kan ikkje stå åleine."
+    },
+    {
+        "prompt": "«Eg kom» i «Eg kom, men ho gjekk.» er ___.",
+        "cue": "(heilsetning / leddsetning / berre eit ledd)",
+        "accept": [
+            "heilsetning"
+        ],
+        "options": [
+            "leddsetning",
+            "berre eit ledd, utan verbal"
+        ],
+        "why": "To heilsetningar bundne saman med konjunksjonen men. Begge kan stå åleine."
+    },
+    {
+        "prompt": "«ho gjekk» i «Eg kom, men ho gjekk.» er ___.",
+        "cue": "(heilsetning / leddsetning / berre eit ledd)",
+        "accept": [
+            "heilsetning"
+        ],
+        "options": [
+            "leddsetning",
+            "berre eit ledd, utan verbal"
+        ],
+        "why": "«ho gjekk» er ei heilsetning. Konjunksjonen men bind saman to heilsetningar."
+    },
+    {
+        "prompt": "«dersom du vil» i «Du kan kome dersom du vil.» er ___.",
+        "cue": "(heilsetning / leddsetning / berre eit ledd)",
+        "accept": [
+            "leddsetning"
+        ],
+        "options": [
+            "heilsetning",
+            "berre eit ledd, utan verbal"
+        ],
+        "why": "Innleidd av subjunksjonen dersom: leddsetning."
+    },
+    {
+        "prompt": "«Det snør» i «Det snør, og vi går på ski.» er ___.",
+        "cue": "(heilsetning / leddsetning / berre eit ledd)",
+        "accept": [
+            "heilsetning"
+        ],
+        "options": [
+            "leddsetning",
+            "berre eit ledd, utan verbal"
+        ],
+        "why": "Heilsetning. og er ein konjunksjon."
+    },
+    {
+        "prompt": "«når det snør» i «Vi går på ski når det snør.» er ___.",
+        "cue": "(heilsetning / leddsetning / berre eit ledd)",
+        "accept": [
+            "leddsetning"
+        ],
+        "options": [
+            "heilsetning",
+            "berre eit ledd, utan verbal"
+        ],
+        "why": "Innleidd av subjunksjonen når: leddsetning (adverbial)."
+    },
+    {
+        "prompt": "«sjølv om det var kaldt» i «Vi bada sjølv om det var kaldt.» er ___.",
+        "cue": "(heilsetning / leddsetning / berre eit ledd)",
+        "accept": [
+            "leddsetning"
+        ],
+        "options": [
+            "heilsetning",
+            "berre eit ledd, utan verbal"
+        ],
+        "why": "sjølv om er ein subjunksjon: leddsetning."
+    },
+    {
+        "prompt": "«på stranda» i «Vi bada på stranda.» er ___.",
+        "cue": "(heilsetning / leddsetning / berre eit ledd)",
+        "accept": [
+            "berre eit ledd, utan verbal"
+        ],
+        "options": [
+            "heilsetning",
+            "leddsetning"
+        ],
+        "why": "«på stranda» har ikkje noko verbal, så det er ikkje ei setning, berre eit adverbial."
+    },
+    {
+        "prompt": "«den gamle mannen» i «Den gamle mannen sov.» er ___.",
+        "cue": "(heilsetning / leddsetning / berre eit ledd)",
+        "accept": [
+            "berre eit ledd, utan verbal"
+        ],
+        "options": [
+            "heilsetning",
+            "leddsetning"
+        ],
+        "why": "«den gamle mannen» har ikkje noko verbal. Det er subjektet i setninga, ikkje ei setning."
+    }
+],
+  konjSubj: [
+    {
+        "prompt": "I «Eg kom, men ho gjekk.» er «men» ein ___.",
+        "cue": "(konjunksjon / subjunksjon / preposisjon)",
+        "accept": [
+            "konjunksjon"
+        ],
+        "options": [
+            "subjunksjon",
+            "preposisjon"
+        ],
+        "why": "men bind saman to heilsetningar: konjunksjon."
+    },
+    {
+        "prompt": "I «Eg kom fordi ho gjekk.» er «fordi» ein ___.",
+        "cue": "(konjunksjon / subjunksjon / preposisjon)",
+        "accept": [
+            "subjunksjon"
+        ],
+        "options": [
+            "konjunksjon",
+            "preposisjon"
+        ],
+        "why": "fordi gjer setninga etter til ei leddsetning: subjunksjon."
+    },
+    {
+        "prompt": "I «Han les og ho skriv.» er «og» ein ___.",
+        "cue": "(konjunksjon / subjunksjon / preposisjon)",
+        "accept": [
+            "konjunksjon"
+        ],
+        "options": [
+            "subjunksjon",
+            "preposisjon"
+        ],
+        "why": "og bind saman to like ledd eller heilsetningar: konjunksjon."
+    },
+    {
+        "prompt": "I «Ho sa at ho kom.» er «at» ein ___.",
+        "cue": "(konjunksjon / subjunksjon / preposisjon)",
+        "accept": [
+            "subjunksjon"
+        ],
+        "options": [
+            "konjunksjon",
+            "preposisjon"
+        ],
+        "why": "at innleier ei leddsetning: subjunksjon."
+    },
+    {
+        "prompt": "I «Boka som eg las, var god.» er «som» ein ___.",
+        "cue": "(konjunksjon / subjunksjon / preposisjon)",
+        "accept": [
+            "subjunksjon"
+        ],
+        "options": [
+            "konjunksjon",
+            "preposisjon"
+        ],
+        "why": "som innleier ei relativsetning: subjunksjon."
+    },
+    {
+        "prompt": "I «Vil du ha te eller kaffi?» er «eller» ein ___.",
+        "cue": "(konjunksjon / subjunksjon / preposisjon)",
+        "accept": [
+            "konjunksjon"
+        ],
+        "options": [
+            "subjunksjon",
+            "preposisjon"
+        ],
+        "why": "eller bind saman to like ledd: konjunksjon."
+    },
+    {
+        "prompt": "I «Ring dersom du treng hjelp.» er «dersom» ein ___.",
+        "cue": "(konjunksjon / subjunksjon / preposisjon)",
+        "accept": [
+            "subjunksjon"
+        ],
+        "options": [
+            "konjunksjon",
+            "preposisjon"
+        ],
+        "why": "dersom innleier ei leddsetning (vilkår): subjunksjon."
+    },
+    {
+        "prompt": "I «Eg gjekk heim, for eg var trøytt.» er «for» ein ___.",
+        "cue": "(konjunksjon / subjunksjon / preposisjon)",
+        "accept": [
+            "konjunksjon"
+        ],
+        "options": [
+            "subjunksjon",
+            "preposisjon"
+        ],
+        "why": "for som bindeord bind saman to heilsetningar: konjunksjon. Merk: fordi er subjunksjon."
+    },
+    {
+        "prompt": "I «Vi bada sjølv om det var kaldt.» er «sjølv om» ein ___.",
+        "cue": "(konjunksjon / subjunksjon / preposisjon)",
+        "accept": [
+            "subjunksjon"
+        ],
+        "options": [
+            "konjunksjon",
+            "preposisjon"
+        ],
+        "why": "sjølv om innleier ei leddsetning: subjunksjon."
+    },
+    {
+        "prompt": "I «Vi jubla då laget skåra.» er «då» ein ___.",
+        "cue": "(konjunksjon / subjunksjon / preposisjon)",
+        "accept": [
+            "subjunksjon"
+        ],
+        "options": [
+            "konjunksjon",
+            "preposisjon"
+        ],
+        "why": "då innleier ei tidssetning: subjunksjon."
+    },
+    {
+        "prompt": "I «Vi gjekk heim etter kampen.» er «etter» ein ___.",
+        "cue": "(konjunksjon / subjunksjon / preposisjon)",
+        "accept": [
+            "preposisjon"
+        ],
+        "options": [
+            "konjunksjon",
+            "subjunksjon"
+        ],
+        "why": "etter står framfor eit substantiv (kampen), ikkje ei setning: preposisjon. Etter at vi hadde sett kampen, ville vore subjunksjon."
+    },
+    {
+        "prompt": "I «Kom heim før middag.» er «før» ein ___.",
+        "cue": "(konjunksjon / subjunksjon / preposisjon)",
+        "accept": [
+            "preposisjon"
+        ],
+        "options": [
+            "konjunksjon",
+            "subjunksjon"
+        ],
+        "why": "før står her framfor eit substantiv: preposisjon. Før du et, er subjunksjon."
+    }
+],
+  v2: [
+    {
+        "prompt": "Set orda i rett rekkjefølgje, med «i går» først: ___",
+        "cue": "(i går / kom / han / heim)",
+        "accept": [
+            "I går kom han heim."
+        ],
+        "options": [
+            "I går han kom heim.",
+            "Han i går kom heim."
+        ],
+        "why": "Verbalet skal stå på andreplass. Når «i går» står først, må subjektet vike: <em class=\"nn\">I går kom han heim</em>."
+    },
+    {
+        "prompt": "Set orda i rett rekkjefølgje, med «då han kom heim» først: ___",
+        "cue": "(då han kom heim / åt / han / middag)",
+        "accept": [
+            "Då han kom heim, åt han middag."
+        ],
+        "options": [
+            "Då han kom heim, han åt middag.",
+            "Då han kom heim, middag åt han."
+        ],
+        "why": "Leddsetninga tel som eitt ledd på plass 1, så verbalet kjem rett etter kommaet: <em class=\"nn\">åt han</em>."
+    },
+    {
+        "prompt": "Set orda i rett rekkjefølgje, med «no» først: ___",
+        "cue": "(no / må / vi / gå)",
+        "accept": [
+            "No må vi gå."
+        ],
+        "options": [
+            "No vi må gå.",
+            "No gå må vi."
+        ],
+        "why": "«No» står først, så det finitte verbalet må kome på andreplass: <em class=\"nn\">No må vi gå</em>."
+    },
+    {
+        "prompt": "Set orda i rett rekkjefølgje, med «kvar dag» først: ___",
+        "cue": "(kvar dag / syklar / Per / til skulen)",
+        "accept": [
+            "Kvar dag syklar Per til skulen."
+        ],
+        "options": [
+            "Kvar dag Per syklar til skulen.",
+            "Kvar dag til skulen syklar Per."
+        ],
+        "why": "Adverbialet «kvar dag» først, så verbalet: <em class=\"nn\">Kvar dag syklar Per</em>."
+    },
+    {
+        "prompt": "Set orda i rett rekkjefølgje, med «etter middagen» først: ___",
+        "cue": "(etter middagen / gjekk / barna / ut)",
+        "accept": [
+            "Etter middagen gjekk barna ut."
+        ],
+        "options": [
+            "Etter middagen barna gjekk ut.",
+            "Etter middagen ut gjekk barna."
+        ],
+        "why": "V2: verbalet på andreplass, subjektet etter: <em class=\"nn\">Etter middagen gjekk barna ut</em>."
+    },
+    {
+        "prompt": "Set orda i rett rekkjefølgje, med «dersom det regnar» først: ___",
+        "cue": "(dersom det regnar / blir / vi / inne)",
+        "accept": [
+            "Dersom det regnar, blir vi inne."
+        ],
+        "options": [
+            "Dersom det regnar, vi blir inne.",
+            "Dersom det regnar, inne blir vi."
+        ],
+        "why": "Leddsetninga står på plass 1, verbalet på plass 2: <em class=\"nn\">blir vi</em>."
+    },
+    {
+        "prompt": "Set orda i rett rekkjefølgje, med «boka» først: ___",
+        "cue": "(boka / las / eg / i går)",
+        "accept": [
+            "Boka las eg i går."
+        ],
+        "options": [
+            "Boka eg las i går.",
+            "Boka i går las eg."
+        ],
+        "why": "Objektet «boka» står først, så verbalet: <em class=\"nn\">Boka las eg i går</em>."
+    },
+    {
+        "prompt": "Set orda i rett rekkjefølgje, med «heldigvis» først: ___",
+        "cue": "(heldigvis / kom / dei / fram i tide)",
+        "accept": [
+            "Heldigvis kom dei fram i tide."
+        ],
+        "options": [
+            "Heldigvis dei kom fram i tide.",
+            "Heldigvis fram i tide kom dei."
+        ],
+        "why": "Setningsadverbialet «heldigvis» først, verbalet på andreplass: <em class=\"nn\">Heldigvis kom dei fram</em>."
+    },
+    {
+        "prompt": "Set orda i rett rekkjefølgje, med «i fjor» først: ___",
+        "cue": "(i fjor / var / vi / i Spania)",
+        "accept": [
+            "I fjor var vi i Spania."
+        ],
+        "options": [
+            "I fjor vi var i Spania.",
+            "I fjor i Spania var vi."
+        ],
+        "why": "V2: <em class=\"nn\">I fjor var vi i Spania</em>."
+    },
+    {
+        "prompt": "Set orda i rett rekkjefølgje, med «når du er ferdig» først: ___",
+        "cue": "(når du er ferdig / kan / du / ringje meg)",
+        "accept": [
+            "Når du er ferdig, kan du ringje meg."
+        ],
+        "options": [
+            "Når du er ferdig, du kan ringje meg.",
+            "Når du er ferdig, ringje meg kan du."
+        ],
+        "why": "Leddsetninga først, så verbalet: <em class=\"nn\">kan du</em>."
+    }
+],
+  ikkjePlass: [
+    {
+        "prompt": "Han kom ikkje, ___.",
+        "cue": "(fordi han ikkje ville / fordi han ville ikkje / fordi ikkje han ville)",
+        "accept": [
+            "fordi han ikkje ville"
+        ],
+        "options": [
+            "fordi han ville ikkje",
+            "fordi ikkje han ville"
+        ],
+        "why": "I ei leddsetning står ikkje framfor verbalet: <em class=\"nn\">fordi han ikkje ville</em>."
+    },
+    {
+        "prompt": "Ho sa ___.",
+        "cue": "(at ho ikkje kom / at ho kom ikkje / at ikkje ho kom)",
+        "accept": [
+            "at ho ikkje kom"
+        ],
+        "options": [
+            "at ho kom ikkje",
+            "at ikkje ho kom"
+        ],
+        "why": "Leddsetning: ikkje framfor verbalet, <em class=\"nn\">at ho ikkje kom</em>."
+    },
+    {
+        "prompt": "___, så vi gjekk.",
+        "cue": "(Bussen kom ikkje / Bussen ikkje kom / Ikkje bussen kom)",
+        "accept": [
+            "Bussen kom ikkje"
+        ],
+        "options": [
+            "Bussen ikkje kom",
+            "Ikkje bussen kom"
+        ],
+        "why": "Heilsetning: ikkje etter verbalet, <em class=\"nn\">Bussen kom ikkje</em>."
+    },
+    {
+        "prompt": "Eg kjenner ein gut ___.",
+        "cue": "(som aldri gir opp / som gir aldri opp / som gir opp aldri)",
+        "accept": [
+            "som aldri gir opp"
+        ],
+        "options": [
+            "som gir aldri opp",
+            "som gir opp aldri"
+        ],
+        "why": "Relativsetning er ei leddsetning: aldri framfor verbalet."
+    },
+    {
+        "prompt": "___ i går.",
+        "cue": "(Dei kom ikkje / Dei ikkje kom / Ikkje dei kom)",
+        "accept": [
+            "Dei kom ikkje"
+        ],
+        "options": [
+            "Dei ikkje kom",
+            "Ikkje dei kom"
+        ],
+        "why": "Heilsetning: <em class=\"nn\">Dei kom ikkje i går</em>."
+    },
+    {
+        "prompt": "Vi bada ___.",
+        "cue": "(sjølv om det ikkje var varmt / sjølv om det var ikkje varmt / sjølv om ikkje det var varmt)",
+        "accept": [
+            "sjølv om det ikkje var varmt"
+        ],
+        "options": [
+            "sjølv om det var ikkje varmt",
+            "sjølv om ikkje det var varmt"
+        ],
+        "why": "Leddsetning: ikkje framfor verbalet."
+    },
+    {
+        "prompt": "Han spør ___.",
+        "cue": "(om du alltid er så sein / om du er alltid så sein / om alltid du er så sein)",
+        "accept": [
+            "om du alltid er så sein"
+        ],
+        "options": [
+            "om du er alltid så sein",
+            "om alltid du er så sein"
+        ],
+        "why": "Leddsetning: setningsadverbialet alltid står framfor verbalet."
+    },
+    {
+        "prompt": "___, men eg gjekk likevel.",
+        "cue": "(Eg ville ikkje / Eg ikkje ville / Ikkje eg ville)",
+        "accept": [
+            "Eg ville ikkje"
+        ],
+        "options": [
+            "Eg ikkje ville",
+            "Ikkje eg ville"
+        ],
+        "why": "Heilsetning: <em class=\"nn\">Eg ville ikkje</em>."
+    },
+    {
+        "prompt": "Ho seier ___.",
+        "cue": "(at ho aldri et kjøt / at ho et aldri kjøt / at aldri ho et kjøt)",
+        "accept": [
+            "at ho aldri et kjøt"
+        ],
+        "options": [
+            "at ho et aldri kjøt",
+            "at aldri ho et kjøt"
+        ],
+        "why": "Leddsetning: aldri framfor verbalet, <em class=\"nn\">at ho aldri et kjøt</em>."
+    },
+    {
+        "prompt": "___, seier han.",
+        "cue": "(Eg et aldri kjøt / Eg aldri et kjøt / Aldri eg et kjøt)",
+        "accept": [
+            "Eg et aldri kjøt"
+        ],
+        "options": [
+            "Eg aldri et kjøt",
+            "Aldri eg et kjøt"
+        ],
+        "why": "Heilsetning: aldri etter verbalet, <em class=\"nn\">Eg et aldri kjøt</em>."
+    }
+],
+  predikativ: [
+    {
+        "prompt": "Huset er ___ (stor).",
+        "cue": "(bøy adjektivet etter subjektet)",
+        "accept": [
+            "stort"
+        ],
+        "why": "Subjektet huset er inkjekjønn eintal, så predikativet får -t: <em class=\"nn\">stort</em>."
+    },
+    {
+        "prompt": "Bilen er ___ (stor).",
+        "cue": "(bøy adjektivet etter subjektet)",
+        "accept": [
+            "stor"
+        ],
+        "why": "Hankjønn eintal: inga ending, <em class=\"nn\">stor</em>."
+    },
+    {
+        "prompt": "Bøkene er ___ (gammal).",
+        "cue": "(bøy adjektivet etter subjektet)",
+        "accept": [
+            "gamle"
+        ],
+        "why": "Fleirtal: -e, <em class=\"nn\">gamle</em>."
+    },
+    {
+        "prompt": "Jenta er ___ (glad).",
+        "cue": "(bøy adjektivet etter subjektet)",
+        "accept": [
+            "glad"
+        ],
+        "why": "Hokjønn eintal: inga ending."
+    },
+    {
+        "prompt": "Barna er ___ (glad).",
+        "cue": "(bøy adjektivet etter subjektet)",
+        "accept": [
+            "glade"
+        ],
+        "why": "Fleirtal: -e, <em class=\"nn\">glade</em>."
+    },
+    {
+        "prompt": "Eplet er ___ (raud).",
+        "cue": "(bøy adjektivet etter subjektet)",
+        "accept": [
+            "raudt"
+        ],
+        "why": "Inkjekjønn eintal: -t, <em class=\"nn\">raudt</em>."
+    },
+    {
+        "prompt": "Husa er ___ (fin).",
+        "cue": "(bøy adjektivet etter subjektet)",
+        "accept": [
+            "fine"
+        ],
+        "why": "Fleirtal (husa = bestemt fleirtal av hus): <em class=\"nn\">fine</em>."
+    },
+    {
+        "prompt": "Vêret vart ___ (kald).",
+        "cue": "(bøy adjektivet etter subjektet)",
+        "accept": [
+            "kaldt"
+        ],
+        "why": "Vêret er inkjekjønn: <em class=\"nn\">kaldt</em>. Etter vart gjeld same samsvaret som etter er."
+    },
+    {
+        "prompt": "Gutane vart ___ (trøytt).",
+        "cue": "(bøy adjektivet etter subjektet)",
+        "accept": [
+            "trøytte"
+        ],
+        "why": "Fleirtal: <em class=\"nn\">trøytte</em>."
+    },
+    {
+        "prompt": "Suppa er ___ (varm).",
+        "cue": "(bøy adjektivet etter subjektet)",
+        "accept": [
+            "varm"
+        ],
+        "why": "Hokjønn eintal: <em class=\"nn\">varm</em>."
+    }
+],
 };
 
 if (typeof module !== "undefined" && module.exports) module.exports = Bank;

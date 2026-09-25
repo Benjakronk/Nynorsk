@@ -445,8 +445,128 @@ Modules.register({
       intro: "Gloser og setningar om kvarandre.",
       mix: [
         { bank: "words", tasks: ["bm2nn"] },
-        { bank: "sentences" },
+        { bank: "sentences", set: ["pronomen", "nokon", "daNar", "kvarKor", "possessiv", "ennoEnda", "ogsaa", "refleksiv"] },
       ],
+      perRound: 15,
+      mode: "mixed",
+    },
+  ],
+});
+
+Modules.register({
+  id: "trening-setning",
+  part: 2,
+  group: "trening",
+  title: "Setningslære: ledd, setningar og ordstilling",
+  summary: "Finn verbalet og subjektet, kjenn att ledda, skil heilsetning frå leddsetning, og få ordstillinga rett.",
+  estimatedMinutes: 20,
+  sections: [
+    {
+      type: "lesson",
+      title: "Slik trener du",
+      content: `
+        <p>Her øver du på det du lærte i <a href="modul.html?id=omgrep-setning">Setningslære</a>:
+        éi setning om gongen, med svar og forklaring med ein gong. Byrja alltid med verbalet, så
+        subjektet. Det er nøkkelen til alt anna.</p>
+        <ul>
+          <li>Skriv svaret og trykk <strong>Enter</strong>, eller vel eit alternativ.</li>
+          <li>Etter runden kan du <strong>øve på feila</strong> før du tek ein ny runde.</li>
+          <li>Beste resultatet ditt blir lagra. Ein runde med minst 80&nbsp;% rett tel som fullført.</li>
+        </ul>
+        <div class="callout">
+          <strong>Hugs:</strong> verbal først (kva skjer?), så «kven/kva + verbal?» for subjektet og
+          «kven/kva + subjekt + verbal?» for objektet. I ei forteljande heilsetning står verbalet alltid
+          på andreplass, og i ei leddsetning står <em class="nn">ikkje</em> framfor verbalet.
+        </div>
+      `,
+    },
+    {
+      type: "exercise",
+      exerciseType: "drill",
+      title: "Finn verbalet",
+      intro: "Skriv verbalet i setninga. Er det sett saman av fleire ord (<em class=\"nn\">har lese</em>, <em class=\"nn\">skal reise</em>), skriv du alle.",
+      bank: "sentences",
+      set: "finnVerbal",
+      perRound: 10,
+      mode: "type",
+    },
+    {
+      type: "exercise",
+      exerciseType: "drill",
+      title: "Finn subjektet",
+      intro: "Spør «kven eller kva + verbalet?». Subjektet kan vere fleire ord, og det kan stå etter verbalet.",
+      bank: "sentences",
+      set: "finnSubjekt",
+      perRound: 10,
+      mode: "type",
+    },
+    {
+      type: "exercise",
+      exerciseType: "drill",
+      title: "Kva ledd er det?",
+      intro: "Subjekt, verbal, objekt, indirekte objekt, predikativ eller adverbial?",
+      bank: "sentences",
+      set: "ledd",
+      perRound: 12,
+      mode: "choice",
+    },
+    {
+      type: "exercise",
+      exerciseType: "drill",
+      title: "Heilsetning eller leddsetning?",
+      intro: "Kan delen stå åleine og gi meining? Då er ho ei heilsetning. Manglar ho verbal, er ho ikkje ei setning i det heile.",
+      bank: "sentences",
+      set: "heilLedd",
+      perRound: 10,
+      mode: "choice",
+    },
+    {
+      type: "exercise",
+      exerciseType: "drill",
+      title: "Konjunksjon eller subjunksjon?",
+      intro: "Bind ordet saman to heilsetningar (konjunksjon), gjer det setninga etter til ei leddsetning (subjunksjon), eller står det berre framfor eit substantiv (preposisjon)?",
+      bank: "sentences",
+      set: "konjSubj",
+      perRound: 10,
+      mode: "choice",
+    },
+    {
+      type: "exercise",
+      exerciseType: "drill",
+      title: "Ordstilling: verbalet på andreplass",
+      intro: "Noko anna enn subjektet står først. Set orda i rett rekkjefølgje.",
+      bank: "sentences",
+      set: "v2",
+      perRound: 10,
+      mode: "choice",
+    },
+    {
+      type: "exercise",
+      exerciseType: "drill",
+      title: "Kvar står «ikkje»?",
+      intro: "I heilsetningar etter verbalet, i leddsetningar framfor. Vel rett variant.",
+      bank: "sentences",
+      set: "ikkjePlass",
+      perRound: 10,
+      mode: "choice",
+    },
+    {
+      type: "exercise",
+      exerciseType: "drill",
+      title: "Predikativet rettar seg etter subjektet",
+      intro: "Bøy adjektivet i parentesen etter subjektet: <em class=\"nn\">Huset er stort</em>, <em class=\"nn\">Bøkene er gamle</em>.",
+      bank: "sentences",
+      set: "predikativ",
+      perRound: 10,
+      mode: "type",
+    },
+    {
+      type: "exercise",
+      exerciseType: "drill",
+      title: "Blanda setningsøkt",
+      intro: "Alt om kvarandre, medrekna då/når. Klarer du 15 på rad?",
+      bank: "sentences",
+      set: ["finnVerbal", "finnSubjekt", "ledd", "heilLedd", "konjSubj", "v2", "ikkjePlass", "predikativ", "daNar"],
       perRound: 15,
       mode: "mixed",
     },
@@ -493,7 +613,7 @@ Modules.register({
       type: "exercise",
       exerciseType: "drill",
       title: "Setningar",
-      intro: "Alle setningsoppgåvene: pronomen, noko/nokon, då/når, kvar/kor, sin/hans, seg/kvarandre, enno/endå og òg/og.",
+      intro: "Alle setningsoppgåvene: pronomen, noko/nokon, då/når, kvar/kor, sin/hans, seg/kvarandre, enno/endå, òg/og, og setningslære.",
       bank: "sentences",
       perRound: 15,
       mode: "mixed",
