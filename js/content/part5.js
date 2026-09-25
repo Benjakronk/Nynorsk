@@ -24,7 +24,8 @@ Modules.register({
         nemner eg eit par av dei viktigaste verka deira, så du kan finne fram til
         ekte tekstar på biblioteket eller på nettet om du blir nysgjerrig.</p>
 
-        <p>Til slutt får du ein liten quiz og ei skriveoppgåve.</p>
+        <p>Etter kvar forfattar kjem eit lite spørsmål om det du nettopp har lese, så
+        du får festa det viktigaste før du går vidare. Til slutt får du ei skriveoppgåve.</p>
       `,
     },
     {
@@ -64,6 +65,14 @@ Modules.register({
       `,
     },
     {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Vinje grunnla bladet <em class=\"nn\">Dølen</em> i 1858. Kva var spesielt med det?",
+      options: ["Det var det første bladet på bokmål.","Det kom berre ut éin gong.","Han skreiv det meste av bladet sjølv, på landsmål.","Det handla berre om musikk."],
+      correct: 2,
+      explanation: "Dølen var nesten eit eit-mannsblad: reisebrev, meiningar, dikt og kommentarar, det meste skrive av Vinje sjølv. Han var ein av dei første som brukte landsmålet til Aasen i praktisk skrift.",
+    },
+    {
       type: "lesson",
       title: "2. Arne Garborg (1851–1924)",
       content: `
@@ -101,6 +110,14 @@ Modules.register({
       `,
     },
     {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Kva handlar diktsyklusen <em class=\"nn\">Haugtussa</em> om?",
+      options: ["Ein bondegut som studerer i byen.","Jenta Veslemøy, som har synske evner.","Ei reise til Trondheim.","Ein gard i Trøndelag gjennom mange generasjonar."],
+      correct: 1,
+      explanation: "Haugtussa (1895) handlar om Veslemøy, som ser det andre ikkje ser. Edvard Grieg tonsette delar av verket. Bondeguten som studerer i byen, er frå ein annan Garborg-roman, Bondestudentar.",
+    },
+    {
       type: "lesson",
       title: "3. Olav Duun (1876–1939)",
       content: `
@@ -132,6 +149,14 @@ Modules.register({
           Nobelprisen i litteratur, men fekk han aldri.
         </div>
       `,
+    },
+    {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Kva er Olav Duun mest kjend for?",
+      options: ["Diktsyklusen <em class=\"nn\">Haugtussa</em>.","Skodespelet <em class=\"nn\">Nokon kjem til å koma</em>.","Reiseskildringa <em class=\"nn\">Ferdaminne</em>.","Slektsromanen <em class=\"nn\">Juvikfolket</em>."],
+      correct: 3,
+      explanation: "Juvikfolket (1918–1923) følgjer ei slekt ved kysten i Trøndelag gjennom mange generasjonar, og er rekna som eit av dei store norske romanverka.",
     },
     {
       type: "lesson",
@@ -172,6 +197,14 @@ Modules.register({
       `,
     },
     {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Korleis skriv Tarjei Vesaas?",
+      options: ["Sparsamt og symbolsk, med enkle ord og korte setningar.","Lange setningar utan punktum.","Ironisk og journalistisk.","Episk og dramatisk, som ei saga."],
+      correct: 0,
+      explanation: "Vesaas brukar enkle ord og korte setningar, men skriv om djupe ting: frykt, einsemd, venskap. Is-slottet (1963) er det mest kjende dømet.",
+    },
+    {
       type: "lesson",
       title: "5. Halldis Moren Vesaas (1907–1995)",
       content: `
@@ -205,6 +238,14 @@ Modules.register({
           Det er kort, sterkt og verdt å lese i kveld.
         </div>
       `,
+    },
+    {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Når vart dikta i <em class=\"nn\">Tung tids tale</em> skrivne?",
+      options: ["På 1800-talet.","I 2017.","Under andre verdskrigen.","Etter at ho fekk Nobelprisen."],
+      correct: 2,
+      explanation: "Samlinga kom i 1945, og dikta er skrivne under krigen. Tittelkvadet, som opnar med at det ikkje lenger heiter «eg», men «vi», er eitt av dei mest kjende dikta på nynorsk.",
     },
     {
       type: "lesson",
@@ -247,6 +288,14 @@ Modules.register({
       `,
     },
     {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Kven fekk Nobelprisen i litteratur i 2023?",
+      options: ["Tarjei Vesaas","Jon Fosse","Olaug Nilssen","Olav Duun"],
+      correct: 1,
+      explanation: "Jon Fosse vart den fjerde norske nobelprisvinnaren i litteratur, etter Bjørnstjerne Bjørnson (1903), Knut Hamsun (1920) og Sigrid Undset (1928).",
+    },
+    {
       type: "lesson",
       title: "7. Frode Grytten (1960–)",
       content: `
@@ -281,6 +330,14 @@ Modules.register({
       `,
     },
     {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Korleis er romanen <em class=\"nn\">Bikubesong</em> bygd opp?",
+      options: ["Som eitt langt brev.","Som ein slektsroman i seks band.","Som ein diktsyklus.","Som mange korte forteljingar om naboar i ei blokk i Odda."],
+      correct: 3,
+      explanation: "Bikubesong (1999) er sett saman av mange korte historier om folk i same blokka, og ein kan lese éi av gongen. Boka fekk Brageprisen.",
+    },
+    {
       type: "lesson",
       title: "8. Marit Eikemo (1971–)",
       content: `
@@ -304,6 +361,14 @@ Modules.register({
           <li><em class="nn">Team Tuva</em> (2021): roman.</li>
         </ul>
       `,
+    },
+    {
+      type: "exercise",
+      exerciseType: "multipleChoice",
+      question: "Kva kjenneteiknar tekstane til Marit Eikemo?",
+      options: ["Dei er essayistiske og stiller spørsmål om samtida, gjerne med konkrete kvardagsbilete.","Dei er reiseskildringar frå 1800-talet.","Dei er skodespel utan dialog.","Dei handlar om Juvik-folket."],
+      correct: 0,
+      explanation: "Eikemo skriv både skjønnlitteratur og sakprosa, nært på det som skjer med oss og kulturen akkurat no, og stiller spørsmål meir enn ho gjev svar.",
     },
     {
       type: "lesson",
@@ -343,68 +408,23 @@ Modules.register({
     },
     {
       type: "exercise",
-      exerciseType: "matching",
-      question: "Para saman forfattar og verk:",
-      pairs: [
-        ["Tarjei Vesaas", "Is-slottet"],
-        ["Arne Garborg", "Haugtussa"],
-        ["Olav Duun", "Juvikfolket"],
-        ["Jon Fosse", "Septologien"],
-        ["Frode Grytten", "Bikubesong"],
-        ["Halldis Moren Vesaas", "Tung tids tale (1945)"],
-        ["A. O. Vinje", "Ferdaminne fraa Sumaren 1860"],
-      ],
-      explanation: "Olaug Nilssen brukte same tittel, <em class=\"nn\">Tung tids tale</em>, i 2017 som ein medviten referanse til diktet til Halldis Moren Vesaas frå 1945.",
+      exerciseType: "multipleChoice",
+      question: "Tittelen <em class=\"nn\">Tung tids tale</em> (2017) er ein medviten referanse. Til kva?",
+      options: ["Ein roman av Jon Fosse.","Ei vise av Vinje.","Diktet til Halldis Moren Vesaas frå 1945.","Tittelen på ei avis frå Odda."],
+      correct: 2,
+      explanation: "Nilssen lånte tittelen frå diktet til Halldis Moren Vesaas, og seier at det no òg er ei tung tid for mange foreldre. Romanen handlar om å vere mor til ein son med autisme, og fekk Brageprisen.",
     },
     {
       type: "exercise",
       exerciseType: "categorize",
-      question: "Sorter forfattarane etter levetid:",
+      title: "Til slutt: kven høyrer til kva tid?",
+      question: "Sorter forfattarane etter når dei levde. Årstala står i overskriftene over, så bla gjerne tilbake:",
       categories: {
         "1800-talet": ["Aasmund Olavsson Vinje", "Arne Garborg"],
         "Tidleg 1900-tal": ["Olav Duun", "Tarjei Vesaas", "Halldis Moren Vesaas"],
         "Samtid (fødd etter 1950)": ["Jon Fosse", "Frode Grytten", "Marit Eikemo", "Olaug Nilssen"],
       },
       explanation: "Garborg og Vinje var sentrale på 1800-talet då nynorsken vart bygd opp. Duun og dei to Vesaas-forfattarane prega 1900-talet. Fosse, Grytten, Eikemo og Nilssen skriv i dag.",
-    },
-    {
-      type: "exercise",
-      exerciseType: "multipleChoice",
-      question: "Kven fekk Nobelprisen i litteratur i 2023?",
-      options: ["Tarjei Vesaas", "Jon Fosse", "Olaug Nilssen", "Olav Duun"],
-      correct: 1,
-      explanation: "Jon Fosse vart den fjerde norske nobelprisvinnaren i litteratur, etter Bjørnstjerne Bjørnson (1903), Knut Hamsun (1920) og Sigrid Undset (1928).",
-    },
-    {
-      type: "exercise",
-      exerciseType: "multipleChoice",
-      question: "Kven grunnla bladet <em class=\"nn\">Dølen</em> i 1858?",
-      options: ["Ivar Aasen", "Arne Garborg", "A. O. Vinje", "Olav Duun"],
-      correct: 2,
-      explanation: "Vinje skreiv det meste av bladet sjølv. Det var nesten eit eit-mannsblad.",
-    },
-    {
-      type: "exercise",
-      exerciseType: "multipleChoice",
-      question: "Kva er Olav Duun mest kjend for?",
-      options: [
-        "Diktsyklusen «Haugtussa».",
-        "Slektsromanen «Juvikfolket».",
-        "Skodespelet «Nokon kjem til å koma».",
-        "Reiseskildringa «Ferdaminne».",
-      ],
-      correct: 1,
-    },
-    {
-      type: "exercise",
-      exerciseType: "fillIn",
-      question: "Fyll inn rett namn:",
-      items: [
-        { prompt: "___ Moren Vesaas skreiv «Tung tids tale» i 1945.", accept: ["Halldis"] },
-        { prompt: "Tarjei Vesaas fekk Nordisk råds litteraturpris i 1964 for ___.", accept: ["Is-slottet", "Isslottet"] },
-        { prompt: "Olaug Nilssen kjem frå ___ i Sunnfjord.", accept: ["Førde", "Forde"] },
-        { prompt: "Frode Gryttens roman «Bikubesong» frå ___ vann Brageprisen.", accept: ["1999"] },
-      ],
     },
     {
       type: "exercise",
