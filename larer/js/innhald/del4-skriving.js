@@ -29,7 +29,7 @@ Larar.register("skriving-omsetjing", {
         "<p class=\"stor\">2. <strong>Verb og bøying</strong>: presens, preteritum, perfektum</p>",
         "<p class=\"stor\">3. <strong>Substantiv og samsvar</strong>: <em class=\"nn\">jenta, boka, husa</em></p>",
       ],
-      notes: "Dette er metoden i modulen. Rekkjefølgja er med vilje: småorda er flest og lettast å rette, så dei tek vi først. Verba er det nest vanlegaste feilområdet. Substantiv og adjektiv krev mest tankearbeid, derfor kjem dei til slutt. Be elevane skrive dei tre stega i margen på arket når dei skriv.",
+      notes: "Dette er metoden i dag. Rekkjefølgja er med vilje: småorda er flest og lettast å rette, så dei tek vi først. Verba er det nest vanlegaste feilområdet. Substantiv og adjektiv krev mest tankearbeid, derfor kjem dei til slutt. Be elevane skrive dei tre stega i margen på arket når dei skriv.",
     },
     {
       title: "Steg 1: småorda",
@@ -56,7 +56,7 @@ Larar.register("skriving-omsetjing", {
       ],
       correct: 1,
       explain: "Fem ord skal byttast: <em class=\"nn\">eg, veit, ikkje, kva</em> og <em class=\"nn\">gjere</em>. Verbet <em class=\"nn\">vite</em> heiter <em class=\"nn\">veit</em> i presens.",
-      notes: "Dette er den første oppgåva i modulen. Lat elevane vise svaret med fingrane. Dei som vel A, har gløymt at presens av <em>vite</em> er <em>veit</em>. Det er ein fin overgang til steg 2.",
+      notes: "Lat elevane vise svaret med fingrane. Dei som vel A, har gløymt at presens av <em>vite</em> er <em>veit</em>. Det er ein fin overgang til steg 2.",
     },
     {
       title: "Steg 2: verba",
@@ -76,7 +76,7 @@ Larar.register("skriving-omsetjing", {
         "<p class=\"midt\">Sterke verb har <strong>inga ending</strong> i presens: <em class=\"nn\">kjem, et, ligg</em>.</p>",
         "<p class=\"midt\">A-verb endar på <strong>-a</strong> i preteritum, aldri <em class=\"bm\">-et</em>.</p>",
       ],
-      notes: "Dei to reglane på stega fangar dei fleste verbfeila. Sterke verb får ikkje <em>-er</em> i presens: <em>kjem</em>, ikkje <em>kjemer</em>. Svake verb som <em>flytte</em> og <em>kaste</em> får <em>-a</em> i preteritum. Elevar som skriv <em>flytta</em> på bokmål, er alt vane med forma. Vis til modulen Verb: sterke og svake for dei som treng meir.",
+      notes: "Dei to reglane på stega fangar dei fleste verbfeila. Sterke verb får ikkje <em>-er</em> i presens: <em>kjem</em>, ikkje <em>kjemer</em>. Svake verb som <em>flytte</em> og <em>kaste</em> får <em>-a</em> i preteritum. Elevar som skriv <em>flytta</em> på bokmål, er alt vane med forma. Elevar som treng meir, kan ta modulen Verb: sterke og svake i kurset som lekse.",
     },
     {
       type: "drill",
@@ -164,18 +164,41 @@ Larar.register("skriving-omsetjing", {
         "<p class=\"stor\">Runde 2: sjekk <strong>kvart verb</strong></p>",
         "<p class=\"stor\">Runde 3: sjekk <strong>substantiv og adjektiv</strong></p>",
       ],
-      notes: "Å lese med eitt mål om gongen er meir effektivt enn å lese éin gong og leite etter alt. Ver tydeleg på at dette er det elevane skal gjere på den siste oppgåva i modulen. Nokre elevar likar å understreke alle verba med blyant før runde 2.",
+      notes: "Å lese med eitt mål om gongen er meir effektivt enn å lese éin gong og leite etter alt. Ver tydeleg på at dette er det elevane skal gjere med tekstomsetjinga på lysbilete 18. Nokre elevar likar å understreke alle verba med blyant før runde 2.",
     },
     {
       type: "oppgave",
-      title: "No set de om sjølve",
-      body: `<ul>
-          <li>Gjer omsetjingsoppgåvene i modulen.</li>
-          <li>Set om den korte teksten til slutt.</li>
-          <li>Les korrektur i tre rundar før du leverer.</li>
-        </ul>`,
-      tid: 13,
-      notes: "Gå rundt og spør: kva runde er du på no? Når ei omsetjing blir godkjend med ein gong, be eleven forklare kvifor dei endra kvart ord. Dei som blir tidleg ferdige, kan gå vidare til Bokmålsord som snik seg inn.",
+      title: "Set om til nynorsk",
+      form: "Åleine",
+      body: `<ol>
+          <li><em class="bm">Vi spiser middag klokka fem.</em></li>
+          <li><em class="bm">Hvorfor flyttet familien din hit fra Oslo?</em></li>
+          <li><em class="bm">Jeg har ikke sett boken hennes.</em></li>
+          <li>Berre orda: <em class="bm">hvor, vet, fra, spiste, gikk, mye</em></li>
+        </ol>`,
+      tid: 5,
+      svar: `<ol>
+          <li><em class="nn">Vi et middag klokka fem.</em></li>
+          <li><em class="nn">Kvifor flytta familien din hit frå Oslo?</em></li>
+          <li><em class="nn">Eg har ikkje sett boka hennar.</em></li>
+          <li><em class="nn">kvar, veit, frå, åt, gjekk, mykje</em></li>
+        </ol>`,
+      notes: "Elevane skriv svara i skriveboka. Kvar setning øver eitt av stega: <em>et</em> er presens av det sterke verbet <em>ete</em>, <em>flytta</em> er eit a-verb i preteritum, og <em>boka</em> er hokjønn. Gå rundt og spør: kva steg er du på no? Gå gjennom fasiten saman før de går vidare til teksten, og la elevane rette med ein annan farge.",
+    },
+    {
+      type: "oppgave",
+      title: "Set om teksten",
+      form: "Åleine",
+      body: `<div class="boks"><p><em class="bm">Jeg liker å gå på skolen om morgenen. Det er ikke alltid like lett å stå opp, men når jeg først er ute, blir jeg glad. Vennene mine venter på meg, og vi går sammen. Hvis det regner, tar vi bussen.</em></p></div>
+        <ol>
+          <li>Skriv teksten på nynorsk.</li>
+          <li>Les korrektur i tre rundar.</li>
+          <li>Tel kor mange ord du har endra.</li>
+        </ol>`,
+      tid: 8,
+      svar: `<p><em class="nn">Eg likar å gå på skulen om morgonen. Det er ikkje alltid like lett å stå opp, men når eg først er ute, blir eg glad. Vennene mine ventar på meg, og vi går saman. Viss det regnar, tek vi bussen.</em></p>
+        <p>12 ord er endra.</p>`,
+      notes: "Gå rundt og spør: kva runde er du på no? Dei tolv endra orda er <em>eg</em> (tre gonger), <em>likar, skulen, morgonen, ikkje, ventar, saman, viss, regnar</em> og <em>tek</em>. <em>Om det regnar</em> er òg rett, og <em>venene</em> er ei jamstilt form av <em>vennene</em>. Mange gløymer at a-verba får <em>-ar</em> i presens: <em>likar, ventar, regnar</em>. Be ein elev som blir tidleg ferdig, forklare kvifor <em>tar</em> blir <em>tek</em>. Elevmodulen har same tekst med språksjekk, og han passar som frivillig lekse eller til reinskriving.",
     },
     {
       title: "Oppsummering",
@@ -208,8 +231,8 @@ Larar.register("skriving-omsetjing", {
       { fase: "Tre tankesteg", min: 13, gjer: "<p>Innfør metoden og gå gjennom småord, verb og ulike ord, med spørsmål og ein tavlerunde på sterke verb.</p>", lysbilete: "4 til 10" },
       { fase: "Substantiv og modellering", min: 8, gjer: "<p>Ta steg 3 og spørsmålet med alle tre stega. Set om modellteksten saman med klassen, setning for setning.</p>", lysbilete: "11 til 14" },
       { fase: "Verktøy", min: 3, gjer: "<p>Vis eit ordbokoppslag og innfør korrektur i tre rundar.</p>", lysbilete: "15 og 16" },
-      { fase: "Eigenarbeid", min: 13, gjer: "<p>Elevane gjer oppgåvene i modulen og set om den korte teksten.</p>", lysbilete: "17" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive ned ordet dei oftast gløymer.</p>", lysbilete: "18" },
+      { fase: "Eigenarbeid", min: 13, gjer: "<p>Elevane set om setningane på tavla i skriveboka, rettar mot fasiten og set så om den korte teksten.</p>", lysbilete: "17 og 18" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive ned ordet dei oftast gløymer.</p>", lysbilete: "19" },
     ],
     misoppfatningar: [
       { feil: "«Nynorsk er bokmål med nokre andre ord.»", hjelp: "Vis at bøyinga òg er ulik: <em class=\"nn\">boka, husa, flytta, kjem</em>. Det er ikkje nok å byte ut småorda." },
@@ -236,12 +259,12 @@ Larar.register("skriving-omsetjing", {
     },
     vurdering: [
       "Fleirvalsspørsmåla og tavleøvinga viser raskt kva steg klassen er usikker på.",
-      "Omsetjinga av den korte teksten til slutt i modulen viser om eleven brukar metoden.",
+      "Omsetjinga av den korte teksten på lysbilete 18 viser om eleven brukar metoden. Samle inn skrivebøkene eller la elevane rette for kvarandre med fasiten.",
       "Kjenneteikn på låg måloppnåing: eleven byter ut dei vanlegaste småorda, men verb og substantiv står att på bokmål.",
       "Kjenneteikn på middels måloppnåing: eleven rettar småord og dei fleste verba, men gløymer hokjønn og samsvar.",
       "Kjenneteikn på høg måloppnåing: eleven set om teksten konsekvent, bøyer verb og substantiv rett, brukar ordboka når det trengst og kan grunngi vala.",
     ],
-    vidare: "Følg opp med Bokmålsord som snik seg inn og Småord og funksjonsord under Typiske feil i Del 4. Neste skrivemodul er Korte tekstar: melding, e-post, dagbok.",
+    vidare: "Elevmodulen har dei same omsetjingane med språksjekk og passar som frivillig lekse. Følg opp med Bokmålsord som snik seg inn og Småord og funksjonsord under Typiske feil i Del 4. Neste skrivemodul er Korte tekstar: melding, e-post, dagbok.",
   },
 });
 
@@ -256,7 +279,7 @@ Larar.register("skriving-korte-tekstar", {
         <li>skrive om ein e-post <strong>saman</strong></li>
         <li>skrive <strong>konsekvent</strong> nynorsk</li>
       </ul>`,
-      notes: "Gå raskt gjennom måla. Fortel at elevane skal skrive tre korte tekstar i modulen, og at vi i dag øver på kva som skil dei.",
+      notes: "Gå raskt gjennom måla. Fortel at elevane skal skrive tre korte tekstar i skriveboka til slutt, og at vi først øver på kva som skil dei.",
     },
     {
       type: "diskuter",
@@ -281,7 +304,7 @@ Larar.register("skriving-korte-tekstar", {
       type: "sitat",
       kicker: "Melding",
       text: "<em class=\"nn\">Hei! Kjem du heim til meg etter skulen? Eg har lyst til å sjå ein film. Skriv tilbake :)</em>",
-      kjelde: "Døme frå modulen",
+      kjelde: "Døme på ei melding",
       notes: "Les meldinga høgt og spør: kva gjer at dette er ei melding og ikkje ein e-post? Korte setningar, eit spørsmål, eit smilefjes, ingen avslutning. Spør så: kva ord ville vore annleis på bokmål? <em>kjem, heim, skulen, eg, sjå</em>.",
     },
     {
@@ -294,13 +317,13 @@ Larar.register("skriving-korte-tekstar", {
       ],
       correct: 1,
       explain: "<em class=\"nn\">kjem, heim, i morgon</em>. Sjølv i ei kort melding skal alle orda vere nynorske.",
-      notes: "Dette er òg ei oppgåve i modulen. Elevane som vel C, har berre retta verbet. Minn om dei tre tankestega frå omsetjingsmodulen.",
+      notes: "Elevane skal setje om ei lengre utgåve av meldinga på lysbilete 16. Elevane som vel C, har berre retta verbet. Minn om dei tre tankestega frå omsetjingsmodulen.",
     },
     {
       type: "sitat",
       kicker: "E-post til læraren",
       text: "<em class=\"nn\">Hei [Lærar],<br>Eg vart sjuk i går og rakk ikkje innleveringa. Kan eg få utsetjing til fredag?<br>Helsing [Namn]</em>",
-      kjelde: "Døme frå modulen",
+      kjelde: "Døme på ein e-post",
       notes: "Peik på dei tre delane: opning med namn, sjølve saka og ei helsing. E-posten er kort, men han har alt læraren treng: kva som skjedde, kva eleven ber om, og kven som skriv.",
     },
     {
@@ -325,7 +348,7 @@ Larar.register("skriving-korte-tekstar", {
       ],
       correct: 1,
       explain: "Berre B er både høfleg og nynorsk. A og D blandar inn <em class=\"bm\">jeg</em>, C har ei engelsk helsing, og <em class=\"nn\">spørsmål</em> er inkjekjønn: <em class=\"nn\">eit spørsmål</em>.",
-      notes: "Spørsmålet er henta frå modulen. D har to feil: <em>jeg</em> og <em>ein spørsmål</em>. Spør om nokon fann begge.",
+      notes: "D har to feil: <em>jeg</em> og <em>ein spørsmål</em>. Spør om nokon fann begge.",
     },
     {
       title: "Vi skriv om ein e-post",
@@ -342,7 +365,7 @@ Larar.register("skriving-korte-tekstar", {
       type: "sitat",
       kicker: "Dagboknotat",
       text: "<em class=\"nn\">I dag var ein merkeleg dag. Eg gledde meg til turen, men så byrja det å regne, og alle vart litt sure. Likevel hadde vi det moro då vi sat i hytta og laga middag saman.</em>",
-      kjelde: "Døme frå modulen",
+      kjelde: "Døme på eit dagboknotat",
       notes: "Spør: kva skil dette frå meldinga og e-posten? Teksten er skriven til eleven sjølv, han fortel om noko som har skjedd, og kjenslene kjem fram: <em>gledde meg, sure, moro</em>. Legg merke til <em>då</em>: éin bestemt gong i fortida.",
     },
     {
@@ -382,14 +405,44 @@ Larar.register("skriving-korte-tekstar", {
     },
     {
       type: "oppgave",
-      title: "No skriv de sjølve",
-      body: `<ul>
-          <li>Skriv ei melding til ein venn.</li>
-          <li>Skriv ein e-post til ein lærar.</li>
-          <li>Skriv eit dagboknotat med minst fem verb i preteritum.</li>
-        </ul>`,
-      tid: 17,
-      notes: "Be elevane bruke sjekklista under kvar oppgåve i modulen. Gå rundt og spør: kven er mottakaren her? Er e-posten høfleg nok? Dei som blir tidleg ferdige, kan byte tekst med sidemannen og lese korrektur med dei tre stega frå omsetjingsmodulen.",
+      title: "Oppgåve 1: melding",
+      form: "Åleine",
+      body: `<ol>
+          <li>Set om: <em class="bm">Hei! Kommer du hjem til meg i morgen? Jeg har lyst på pizza.</em></li>
+          <li>Skriv ei melding til ein venn, 30 til 60 ord. Inviter han eller henne på noko i helga.</li>
+        </ol>
+        <p class="boks">Hugs <em class="nn">eg, kjem, heim, i morgon</em>. Hels og avslutt naturleg.</p>`,
+      tid: 5,
+      svar: "<em class=\"nn\">Hei! Kjem du heim til meg i morgon? Eg har lyst på pizza.</em>",
+      notes: "Vis fasiten på omsetjinga før elevane skriv si eiga melding, så dei har rette former å byggje på. Meldinga skal vere uformell i tonen, men orda skal vere nynorske. Gå rundt og sjekk <em>eg</em> og <em>kjem</em>: det er dei bokmålsorda som oftast blir ståande.",
+    },
+    {
+      type: "oppgave",
+      title: "Oppgåve 2: e-post til læraren",
+      form: "Åleine",
+      body: `<p>Be om utsetjing på ei innlevering. 60 til 120 ord.</p>
+        <ol>
+          <li><strong>Opning</strong> med namn</li>
+          <li><strong>Grunn:</strong> kva har skjedd?</li>
+          <li><strong>Spørsmål</strong> og <strong>forslag</strong> til ny dato</li>
+          <li><strong>Helsing</strong> og namnet ditt</li>
+        </ol>`,
+      tid: 6,
+      notes: "Dette er malen frå lysbilete 8, samla i fire punkt. Gå rundt og spør: er e-posten høfleg nok? Har du med ein konkret dato? Minn om at det er lov å vere kort: e-posten på lysbilete 7 er tre linjer.",
+    },
+    {
+      type: "oppgave",
+      title: "Oppgåve 3: dagboknotat",
+      form: "Åleine",
+      body: `<p>Skriv om ein dag du hugsar godt. 80 til 150 ord.</p>
+        <ol>
+          <li>Bruk minst <strong>fem ulike verb</strong> i preteritum.</li>
+          <li>Skriv om <strong>kjenslene</strong> dine.</li>
+          <li>Bind saman: <em class="nn">først, så, etterpå, til slutt</em></li>
+          <li>Les korrektur: småord, verb, substantiv.</li>
+        </ol>`,
+      tid: 6,
+      notes: "Be elevane understreke verba i preteritum når dei er ferdige, og telje dei. Dei som blir tidleg ferdige, kan byte skrivebok med sidemannen og lese korrektur med dei tre stega frå omsetjinga. Elevmodulen har dei same tre skriveoppgåvene med sjekklister og passar til reinskriving heime.",
     },
     {
       title: "Oppsummering",
@@ -416,19 +469,19 @@ Larar.register("skriving-korte-tekstar", {
     forebuing: [
       "Test presentasjonen på tavla, særleg tavleøvinga på lysbilete 13.",
       "Tenk ut namn til e-postdømet på lysbilete 10, gjerne ditt eige.",
-      "Sjå til at elevane har tilgang til kurset og kan skrive i fritekstfelta.",
+      "Sjå til at elevane har skrivebok. Vil du samle inn tekstane, kan dei skrive på ark.",
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og la elevane samanlikne ei melding til ein venn og til læraren.</p>", lysbilete: "2 og 3" },
       { fase: "Melding og e-post", min: 10, gjer: "<p>Innfør mottakar og formål, les meldinga og e-posten, ta spørsmåla og skriv om den dårlege e-posten saman.</p>", lysbilete: "4 til 10" },
       { fase: "Dagbok", min: 5, gjer: "<p>Les dagboknotatet, finn verb i preteritum og bindeord, og køyr ein tavlerunde.</p>", lysbilete: "11 til 13" },
       { fase: "Konsekvent og samtale", min: 6, gjer: "<p>Snakk om valfrie former, og la para skrive same bodskap til tre mottakarar.</p>", lysbilete: "14 og 15" },
-      { fase: "Eigenarbeid", min: 17, gjer: "<p>Elevane skriv dei tre tekstane i modulen og brukar sjekklistene.</p>", lysbilete: "16" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og spør kva sjanger som var lettast å skrive på nynorsk.</p>", lysbilete: "17" },
+      { fase: "Eigenarbeid", min: 17, gjer: "<p>Elevane skriv dei tre tekstane i skriveboka etter oppgåvene og sjekkpunkta på tavla. Vis fasiten på omsetjinga i oppgåve 1 før dei skriv meldinga.</p>", lysbilete: "16 til 18" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og spør kva sjanger som var lettast å skrive på nynorsk.</p>", lysbilete: "19" },
     ],
     misoppfatningar: [
       { feil: "«Ei melding treng ikkje vere på nynorsk, for det er berre ei melding.»", hjelp: "I oppgåva er poenget å øve nynorsk i ein kvardagssjanger. Meldinga får vere uformell i tonen, men orda skal vere nynorske: <em class=\"nn\">eg, kjem, heim</em>." },
-      { feil: "«Høfleg betyr lang og stiv.»", hjelp: "Vis e-posten frå modulen: han er tre linjer og likevel høfleg. Å vere høfleg handlar om opning, tydeleg ærend og helsing, ikkje om lengd." },
+      { feil: "«Høfleg betyr lang og stiv.»", hjelp: "Vis e-posten på lysbilete 7: han er tre linjer og likevel høfleg. Å vere høfleg handlar om opning, tydeleg ærend og helsing, ikkje om lengd." },
       { feil: "«Eg kan skrive både vart og blei i same tekst, for begge er rette.»", hjelp: "Begge formene er rette, men ein tekst skal vere konsekvent. Vel éi form og hald deg til henne." },
       { feil: "«Dagboka skal stå i presens fordi det er i dag.»", hjelp: "Eit dagboknotat fortel om noko som alt har skjedd, derfor står det mest i preteritum: <em class=\"nn\">i dag var, eg gjekk, vi åt</em>." },
     ],
@@ -451,12 +504,12 @@ Larar.register("skriving-korte-tekstar", {
     },
     vurdering: [
       "Samtalen i par viser om elevane høyrer skilnaden på uformell og formell tone.",
-      "Dei tre tekstane i modulen viser om eleven kan tilpasse språket og skrive konsekvent nynorsk.",
+      "Dei tre tekstane i skriveboka viser om eleven kan tilpasse språket og skrive konsekvent nynorsk.",
       "Kjenneteikn på låg måloppnåing: eleven skriv teksten, men tonen passar dårleg til mottakaren, og bokmålsord blir ståande.",
       "Kjenneteikn på middels måloppnåing: eleven tilpassar tonen og har dei viktigaste delane i e-posten, men har nokre feil i verb og småord.",
       "Kjenneteikn på høg måloppnåing: eleven tilpassar tone og innhald tydeleg til mottakaren, skriv konsekvent nynorsk og brukar preteritum og bindeord variert i dagboknotatet.",
     ],
-    vidare: "Neste skrivemodul er Lengre tekstar: fortelje og argumentere. Til korrektur av tekstane passar Rettelesing: finn og rett feila i Del 4.",
+    vidare: "Elevmodulen har dei same skriveoppgåvene med sjekklister og språksjekk, og han passar til reinskriving eller som frivillig lekse. Neste skrivemodul er Lengre tekstar: fortelje og argumentere. Til korrektur av tekstane passar Rettelesing: finn og rett feila i Del 4.",
   },
 });
 
@@ -471,7 +524,7 @@ Larar.register("skriving-lengre-tekstar", {
         <li>byggje opp ein <strong>argumenterande tekst</strong></li>
         <li>binde teksten saman med <strong>bindeord</strong></li>
       </ul>`,
-      notes: "Gå raskt gjennom måla. Fortel at første halvdel handlar om å fortelje og andre halvdel om å argumentere. Elevane skal skrive begge sjangrane i modulen.",
+      notes: "Gå raskt gjennom måla. Fortel at første halvdel handlar om å fortelje og andre halvdel om å argumentere. Elevane skal skrive ei forteljing i skriveboka i første økt og ein argumenterande tekst i andre.",
     },
     {
       type: "diskuter",
@@ -542,7 +595,7 @@ Larar.register("skriving-lengre-tekstar", {
         "<p>Spørjeteikn og utropsteikn står <strong>inne i</strong> hermeteiknet.</p>",
         "<p>Ny talar gir <strong>nytt avsnitt</strong>.</p>",
       ],
-      notes: "Teiknsetjinga i replikkar er eit område der mange elevar gjer feil. Modulen brukar hermeteikn i døma, men sjekklista i oppgåva nemner replikkstrek. Begge delar er rett, så lenge eleven vel éin måte og held seg til han gjennom heile teksten. Nemn òg at det er lurt å variere verba: <em>sa, spurde, svarte, ropte, kviskra</em>.",
+      notes: "Teiknsetjinga i replikkar er eit område der mange elevar gjer feil. Kurset brukar hermeteikn i døma, men replikkstrek er òg rett, så lenge eleven vel éin måte og held seg til han gjennom heile teksten. Nemn òg at det er lurt å variere verba: <em>sa, spurde, svarte, ropte, kviskra</em>.",
     },
     {
       title: "Vis, ikkje fortel",
@@ -562,6 +615,34 @@ Larar.register("skriving-lengre-tekstar", {
       form: "Skriv i par",
       tid: 3,
       notes: "La tre par lese opp. Ros bruk av sansar og kroppsreaksjonar, til dømes <em>hendene skalv</em> eller <em>magen vreid seg</em>. Sjekk nynorsken samtidig: <em>skalv</em> er preteritum av <em>skjelve</em>.",
+    },
+    {
+      type: "oppgave",
+      title: "Skriv ei forteljing",
+      form: "Åleine",
+      body: `<p class="stor"><strong>Ein dag som ikkje gjekk som planlagt</strong></p>
+        <ol>
+          <li>Planlegg dei fem stega i margen.</li>
+          <li>Skriv 200 til 400 ord.</li>
+          <li>Ta med minst éin <strong>replikk</strong> og noko du <strong>viser</strong>, ikkje fortel.</li>
+          <li>Les korrektur: småord, verb, substantiv.</li>
+        </ol>`,
+      tid: 22,
+      notes: "Elevane skriv for hand i skriveboka. Gå rundt og spør om planen: kva er anslaget ditt? Kvar er klimaks? Elevar som står fast, kan starte med å teikne spenningskurva og skrive eitt stikkord ved kvart steg. Minn om at stigninga skal vere den lengste delen. Dei som ikkje blir ferdige, skriv ferdig heime. Elevmodulen har same oppgåve med sjekkliste og språksjekk, og han kan brukast til reinskriving.",
+    },
+    {
+      type: "oppgave",
+      kicker: "Ferdig med forteljinga?",
+      title: "Skriv ei skildring",
+      form: "Åleine",
+      body: `<p class="stor"><strong>Ein stad du kjenner godt</strong></p>
+        <ol>
+          <li>Skriv 100 til 200 ord.</li>
+          <li>Bruk alle fem sansane: syn, høyrsel, lukt, smak og kjensle.</li>
+          <li>Bruk minst seks adjektiv i rett form.</li>
+        </ol>`,
+      tid: 10,
+      notes: "Dette er ei ekstraoppgåve for dei som blir tidleg ferdige, eller ei kortare oppgåve for elevar som treng det i staden for forteljinga. Be elevane understreke adjektiva og sjekke samsvaret: <em>ein kald vind, ei kald hand, eit kaldt rom, kalde steinar</em>.",
     },
     {
       title: "Argumenterande tekst",
@@ -603,6 +684,20 @@ Larar.register("skriving-lengre-tekstar", {
       notes: "Les avsnittet høgt og be elevane finne standpunktet, argumentet og motargumentet. Standpunktet står først. <em>For det første</em> signaliserer at fleire argument kjem. <em>Nokon vil kanskje seie</em> innleier motargumentet, og <em>Det er rett at …, men</em> svarer på det. Merk at <em>søv</em> er presens av <em>sove</em>.",
     },
     {
+      type: "oppgave",
+      title: "Forklar omgrepa",
+      form: "Åleine",
+      body: `<p class="stor midt"><strong>anslag · klimaks · logos · etos · patos</strong></p>
+        <ol>
+          <li>Forklar kvart omgrep med éi setning.</li>
+          <li>Kvifor bør ein argumenterande tekst ha eit motargument?</li>
+        </ol>`,
+      tid: 4,
+      svar: `<p><strong>Anslag:</strong> opninga som fangar lesaren. <strong>Klimaks:</strong> vendepunktet i forteljinga. <strong>Logos:</strong> argument som byggjer på fakta og fornuft. <strong>Etos:</strong> argument som byggjer truverd. <strong>Patos:</strong> argument som vekkjer kjensler.</p>
+        <p>Motargumentet viser at du forstår det andre synet og kan svare på det. Det gjer standpunktet ditt sterkare.</p>`,
+      notes: "Ei kort oppsummering av omgrepa frå begge øktene før elevane skal skrive sjølve. Godta forklaringar med eigne ord. Mange blandar etos og logos: spør om argumentet handlar om saka eller om den som skriv. Til spørsmål 2 er det eit vanleg feilsvar at motargumentet gjer teksten lengre.",
+    },
+    {
       title: "Tekstbinding",
       steps: [
         "<p class=\"stor\">Rekkjefølgje: <em class=\"nn\">for det første, dessutan, til slutt</em></p>",
@@ -619,7 +714,7 @@ Larar.register("skriving-lengre-tekstar", {
         <p>Finn <strong>eitt argument for</strong> og <strong>eitt argument mot</strong>.</p>`,
       form: "Snakk i grupper på tre",
       tid: 4,
-      notes: "Dette er temaet i skriveoppgåva i modulen, så samtalen er ein planleggingsfase. Skriv argumenta på tavla i to kolonnar. Minn elevane om at dei treng begge sider: sitt eige standpunkt og eit motargument dei kan svare på. Ver nøytral sjølv: elevane skal få vurdere saka på eiga hand.",
+      notes: "Dette er temaet i skriveoppgåva på lysbilete 22, så samtalen er ein planleggingsfase. Skriv argumenta på tavla i to kolonnar. Minn elevane om at dei treng begge sider: sitt eige standpunkt og eit motargument dei kan svare på. Ver nøytral sjølv: elevane skal få vurdere saka på eiga hand.",
     },
     {
       title: "Før du leverer",
@@ -633,14 +728,17 @@ Larar.register("skriving-lengre-tekstar", {
     },
     {
       type: "oppgave",
-      title: "No skriv de sjølve",
-      body: `<ul>
-          <li>Gjer omgrepsoppgåva og fleirvalsspørsmålet.</li>
-          <li>Skriv forteljinga <strong>eller</strong> den argumenterande teksten.</li>
-          <li>Skriv skildringa med alle fem sansane.</li>
-        </ul>`,
-      tid: 22,
-      notes: "Tekstane er lange, så det er lurt å dele skrivinga over to økter: forteljinga i den eine og den argumenterande teksten i den andre. Gå rundt og spør om planen: kva er anslaget ditt? Kva er standpunktet? Elevar som står fast, kan starte med å skrive eit tankekart.",
+      title: "Skriv ein argumenterande tekst",
+      form: "Åleine",
+      body: `<p class="stor"><strong>Bør sidemålskarakteren behaldast i ungdomsskulen?</strong></p>
+        <ol>
+          <li>Innleiing med tema og tydeleg <strong>standpunkt</strong>.</li>
+          <li>Minst to <strong>argument</strong> med døme, eitt per avsnitt.</li>
+          <li>Eitt <strong>motargument</strong> som du svarer på.</li>
+          <li><strong>Avslutning</strong> som oppsummerer. 200 til 400 ord.</li>
+        </ol>`,
+      tid: 19,
+      notes: "Elevane skriv for hand i skriveboka og brukar argumenta frå gruppesamtalen. Gå rundt og spør: kva er standpunktet ditt? Kva motargument har du valt, og korleis svarer du på det? Elevar som står fast, kan skrive eitt argument for og eitt mot i to kolonnar før dei byrjar. Minn om sjekklista på lysbilete 21 og om å tenkje på logos, etos og patos. Det som ikkje blir ferdig, skriv elevane heime. Elevmodulen har same oppgåve med sjekkliste og språksjekk, og han kan brukast til reinskriving.",
     },
     {
       title: "Oppsummering",
@@ -667,18 +765,18 @@ Larar.register("skriving-lengre-tekstar", {
     forkunnskapar: "Elevane bør kunne dei tre tankestega frå Frå bokmål til nynorsk: strategiar og ha skrive korte tekstar på nynorsk. Det er ein fordel om dei kjenner V2-regelen frå Setningar og setningsledd.",
     forebuing: [
       "Test presentasjonen på tavla, særleg lysbileta med steg (5, 6 og 10).",
-      "Bestem om elevane skal skrive begge dei lange tekstane, eller velje éin.",
+      "Bestem om elevane skal skrive begge dei lange tekstane, eller velje éin. Elevane skriv for hand i skriveboka eller på ark om du vil samle inn tekstane.",
       "Ha tavleplass klar til spenningskurva og argumenta for og mot.",
     ],
     okt: [
       { fase: "Økt 1: oppstart", min: 4, gjer: "<p>Gå gjennom måla og snakk om kva som får elevane til å lese vidare.</p>", lysbilete: "2 og 3" },
       { fase: "Økt 1: forteljing", min: 9, gjer: "<p>Innfør dei fem stega, les modellteksten del for del og ta spørsmålet om anslag.</p>", lysbilete: "4 til 7" },
       { fase: "Økt 1: verkemiddel", min: 10, gjer: "<p>Gå gjennom verkemiddel og replikkar, modeller «vis, ikkje fortel» og la para prøve sjølve.</p>", lysbilete: "8 til 11" },
-      { fase: "Økt 1: skriving", min: 22, gjer: "<p>Elevane gjer omgrepsoppgåvene og skriv forteljinga eller skildringa.</p>", lysbilete: "19" },
-      { fase: "Økt 2: argumentasjon", min: 11, gjer: "<p>Innfør strukturen og appellformene, ta spørsmålet og analyser modellavsnittet saman.</p>", lysbilete: "12 til 15" },
-      { fase: "Økt 2: tekstbinding og planlegging", min: 9, gjer: "<p>Gå gjennom bindeorda, la gruppene finne argument for og mot, og vis sjekklista.</p>", lysbilete: "16 til 18" },
-      { fase: "Økt 2: skriving", min: 22, gjer: "<p>Elevane skriv den argumenterande teksten og les korrektur med sjekklista.</p>", lysbilete: "19" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive ned kva dei vil bli betre på.</p>", lysbilete: "20" },
+      { fase: "Økt 1: skriving", min: 22, gjer: "<p>Elevane skriv forteljinga for hand i skriveboka. Dei som blir tidleg ferdige, eller som treng ei kortare oppgåve, skriv skildringa.</p>", lysbilete: "12 og 13" },
+      { fase: "Økt 2: argumentasjon", min: 14, gjer: "<p>Innfør strukturen og appellformene, ta spørsmålet og analyser modellavsnittet saman. Elevane forklarer omgrepa frå begge øktene i skriveboka.</p>", lysbilete: "14 til 18" },
+      { fase: "Økt 2: tekstbinding og planlegging", min: 9, gjer: "<p>Gå gjennom bindeorda, la gruppene finne argument for og mot, og vis sjekklista.</p>", lysbilete: "19 til 21" },
+      { fase: "Økt 2: skriving", min: 19, gjer: "<p>Elevane skriv den argumenterande teksten i skriveboka og les korrektur med sjekklista.</p>", lysbilete: "22" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive ned kva dei vil bli betre på.</p>", lysbilete: "23" },
     ],
     misoppfatningar: [
       { feil: "«Ei forteljing byrjar med kven, kvar og når.»", hjelp: "Det er presentasjonen. Eit godt anslag kjem før og vekkjer eit spørsmål. Samanlikn dei tre alternativa på lysbilete 7." },
@@ -707,12 +805,12 @@ Larar.register("skriving-lengre-tekstar", {
       ],
     },
     vurdering: [
-      "Spørsmåla og parøvinga viser om elevane kjenner att strukturen og verkemidla.",
+      "Spørsmåla, parøvinga og omgrepsoppgåva på lysbilete 18 viser om elevane kjenner att strukturen og verkemidla.",
       "Dei to lange tekstane er grunnlaget for vurderinga. Vurder struktur, verkemiddel, tekstbinding og nynorsk kvar for seg.",
       "Kjenneteikn på låg måloppnåing: teksten har ein enkel struktur, men delane er lite utvikla, bindeord manglar og det er mange bokmålsformer.",
       "Kjenneteikn på middels måloppnåing: teksten følgjer strukturen, har nokre verkemiddel eller argument med døme, og nynorsken er stort sett korrekt.",
       "Kjenneteikn på høg måloppnåing: teksten har eit fengande anslag eller tydeleg standpunkt, verkemiddel eller appellformer blir brukte medvite, motargumentet blir svart på, tekstbindinga er variert og nynorsken er konsekvent og korrekt.",
     ],
-    vidare: "Følg opp med Rettelesing: finn og rett feila og Setningsbygnad og stil i Del 4. Lesemodulane i Del 5 gir fleire modelltekstar å samanlikne med.",
+    vidare: "Som frivillig lekse kan elevane reinskrive tekstane sine i elevmodulen, som har språksjekk. Følg opp med Rettelesing: finn og rett feila og Setningsbygnad og stil i Del 4. Lesemodulane i Del 5 gir fleire modelltekstar å samanlikne med.",
   },
 });

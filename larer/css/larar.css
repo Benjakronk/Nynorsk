@@ -158,13 +158,28 @@ body.presentasjon {
 .lb-bilde-rad .lb-bilde img { max-height: 330px; }
 .lb-bilde-rad .lb-bilde-tekst > :first-child { margin-top: 0; }
 
-/* Oppgåve i modulen */
-.lb-lenkje {
-  margin-top: 18px !important; padding: 14px 18px;
-  background: var(--warm-soft); border-radius: var(--radius);
-  font-size: 20px;
+/* Elevane arbeider: merke for utstyr, arbeidsform og tid */
+.lb-merkerad { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 14px !important; }
+.lb-merke {
+  font-family: "Inter", system-ui, sans-serif; font-size: 14px; font-weight: 600;
+  padding: 3px 12px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent-ink);
 }
-.lb-tid { font-family: "Inter", system-ui, sans-serif; font-size: 15px; color: var(--warm); margin-left: 8px; }
+.lb-merke-ordbok, .lb-merke-pc { background: var(--warm-soft); color: var(--warm); }
+.lb-merke-form { background: var(--surface); border: 1px solid var(--line-strong); color: var(--ink-soft); }
+.lb-merke-tid { background: transparent; border: 1px solid var(--line-strong); color: var(--ink-soft); font-weight: 500; }
+.lb-oppgave .lb-kropp ol > li { margin-bottom: .45em; }
+
+/* Lange tekstar side for side */
+.lb-tekstvindauge { position: relative; }
+.lb-tekstinnhald { font-size: 21px; line-height: 1.55; max-width: 880px; transition: transform .35s ease; }
+.lb-tekstinnhald p { margin: 0 0 1.55em; }
+.lb-tekstinnhald h3 { font-size: 21px; line-height: 1.55; margin: 0; }
+.lb-tekstbotn {
+  display: flex; justify-content: space-between; gap: 20px; margin: 6px 0 0 !important;
+  font-family: "Inter", system-ui, sans-serif; font-size: 13px; color: var(--ink-faint);
+}
+.lb-side { white-space: nowrap; }
 
 /* Tavleøving frå ordbanken */
 .lb-drill-intro { color: var(--ink-soft); font-size: 20px; }

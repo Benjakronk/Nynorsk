@@ -67,24 +67,73 @@ Larar.register("lesing-t-vesaas", {
         `<p class="stor">2. <strong>Isen</strong> som meir enn berre is.</p>`,
         `<p class="stor">3. Alt som <strong>ikkje</strong> blir forklart.</p>`,
       ],
-      notes: "Dette er dei same tre punkta som står i modulen. Lesestrategi: første gong les elevane utan å stoppe. Andre gong les dei sakte med blyant, og set ein strek i margen der dei kjenner at tempoet går ned, og eit spørsmålsteikn der noko ikkje blir forklart.",
+      notes: "Dette er dei same tre punkta som står i elevmodulen. Lesestrategi: første gong les elevane utan å stoppe. Andre gong les dei sakte og skriv ned i skriveboka éi linje der dei kjenner at tempoet går ned, og éin ting som ikkje blir forklart.",
     },
     {
       type: "oppgave",
       title: "Les «Jenta og isen»",
       body: `<ol>
-          <li>Lytt medan læraren les høgt.</li>
-          <li>Opne modulen og les teksten sjølv, sakte.</li>
-          <li>Merk av: kvar går tempoet ned? Kva blir ikkje forklart?</li>
+          <li>Lytt medan læraren les teksten høgt på tavla.</li>
+          <li>Les han ein gong til, stille og sakte.</li>
+          <li>Skriv i skriveboka: éi linje der tempoet går ned, og éin ting som ikkje blir forklart.</li>
         </ol>`,
+      form: "Åleine",
       tid: 8,
-      notes: "Les høgt første gong, og ta pausar der det er linjeskift. Pausane er ein del av teksten. Mange elevar les korte tekstar for fort, så gi dei tida. Ikkje start samtalen før dei fleste har lese to gonger.",
+      notes: "Teksten står på neste lysbilete og blir vist side for side. Les høgt første gong, og ta pausar der det er linjeskift. Pausane er ein del av teksten. Andre gong les elevane stille medan du blar i roleg tempo: spør om alle er ferdige før du blar vidare. Mange elevar les korte tekstar for fort, så gi dei tida. Ikkje start samtalen før dei fleste har lese to gonger.",
+    },
+    {
+      type: "tekst",
+      title: "«Jenta og isen»",
+      text: `
+        <p>Jenta gjekk åleine ut på isen.<br>
+        Det var første gong i år.<br>
+        Isen var ny og blank, og det knaka i han, slik ny is gjer.</p>
+
+        <p>Ho stod stilt ei lang stund.<br>
+        Stein i hand.<br>
+        Slepp han.<br>
+        Kanskje han ville sprekke gjennom, kanskje han ville gli og bli liggjande.<br>
+        Steinen gleid og stoppa to meter framme.<br>
+        Isen heldt.</p>
+
+        <p>Då våga ho seg fram, eit steg om gongen, lyttande.<br>
+        Innunder seg såg ho noko mørkt. Ein skugge. Kanskje ein fisk.<br>
+        Eller ei grein som hang ned. Det skulle ikkje vere fisk her, tenkte ho. Vatnet er
+        for grunt. Men kanskje.</p>
+
+        <p>Lyset frå sola låg som ein veg over isen, like rett som om nokon hadde streka
+        han opp med ein linjal.<br>
+        Ho gjekk langs vegen.<br>
+        Bortover.</p>
+
+        <p>Det var stilt.<br>
+        Ein måse skreik langt borte.<br>
+        Snøen ved bredda var blå i skuggen, gul der sola tok.<br>
+        Heile dalen heldt pusten.</p>
+
+        <p>Då ho hadde gått så langt at huset hennar berre var ein liten prikk, snudde
+        ho.<br>
+        Det var som ho hadde vore på ei lang reise.<br>
+        Nokon ville sjå etter henne snart, mor kanskje, eller veslesyster, og då måtte
+        ho vere der.</p>
+
+        <p>Men ho ville gjerne berre stå her ein augneblink til.<br>
+        Berre kjenne at ho var åleine.<br>
+        Berre ho og isen og dei mørke skuggane under.</p>
+
+        <p>Ein dag, tenkte ho, skulle ho skrive om dette. Ho visste ikkje korleis, og
+        ikkje når, men ho skulle hugse det. Den første gongen ho gjekk åleine på isen.
+        Den blå snøen. Steinen som ikkje sprakk gjennom.</p>
+
+        <p>Då snudde ho og gjekk heim, og fotspora hennar var dei einaste på isen den dagen.</p>`,
+      kjelde: KJELDE_T_VESAAS,
+      notes: "Heile teksten, ordrett som i elevmodulen. Kvart trykk blar ei side. Les høgt første gong, og la elevane lese stille andre gong medan du blar. Kom tilbake hit når elevane svarar på spørsmåla på lysbilete 15 og treng å sjå i teksten.",
     },
     {
       type: "sitat",
       text: "Ho stod stilt ei lang stund.<br>Stein i hand.<br>Slepp han.",
       kjelde: KJELDE_T_VESAAS,
-      notes: "Spør: er «Stein i hand» ei heil setning? Nei, det manglar verbal. Kva gjer det med lesinga? Det går seint, som om vi står der saman med henne. Følg opp: kvifor slepp ho steinen? Ho testar isen. Teksten seier det aldri, men lesaren skjønar det. Det er fleirvalsspørsmål i modulen, så ikkje gå for djupt i svaret her.",
+      notes: "Spør: er «Stein i hand» ei heil setning? Nei, det manglar verbal. Kva gjer det med lesinga? Det går seint, som om vi står der saman med henne. Følg opp: kvifor slepp ho steinen? Ho testar isen. Teksten seier det aldri, men lesaren skjønar det. Spørsmål 2 på lysbilete 15 handlar om dette, så ikkje gå for djupt i svaret her.",
     },
     {
       type: "sporsmal",
@@ -97,7 +146,7 @@ Larar.register("lesing-t-vesaas", {
       ],
       correct: 1,
       explain: "Kvar linje får stå åleine. Lesaren stoppar opp, akkurat slik jenta gjer ute på isen. Rytmen i teksten speglar det som skjer.",
-      notes: "Mange vel det første alternativet, fordi korte setningar ofte gir fart i actionscener. Her er det motsett: det er stilt, og kvar linje er eit nytt bilete. Dette førebur det tredje spørsmålet i modulen, så la elevane formulere det med eigne ord.",
+      notes: "Mange vel det første alternativet, fordi korte setningar ofte gir fart i actionscener. Her er det motsett: det er stilt, og kvar linje er eit nytt bilete. Dette førebur spørsmål 3 på lysbilete 15, så la elevane formulere det med eigne ord.",
     },
     {
       type: "sitat",
@@ -136,37 +185,43 @@ Larar.register("lesing-t-vesaas", {
     },
     {
       type: "oppgave",
-      title: "Svar på spørsmåla i modulen",
-      body: `<ul>
-          <li>To fleirvalsspørsmål og to korte svar.</li>
-          <li>Bruk teksten: sjå tilbake før du svarar.</li>
-          <li>Skriv ditt eige svar før du opnar dømesvaret.</li>
-        </ul>`,
+      title: "Spørsmål til teksten",
+      body: `<p>Svar med heile setningar. Sjå tilbake i teksten før du svarar.</p>
+        <ol>
+          <li>Korleis verkar jenta gjennom teksten?</li>
+          <li>Kvifor kastar jenta ein stein på isen?</li>
+          <li>Kvifor trur du forfattaren brukar så korte avsnitt, somme tider berre éi setning per linje?</li>
+          <li>Kva tyder setninga «Heile dalen heldt pusten» i denne samanhengen?</li>
+        </ol>`,
+      form: "Åleine",
       tid: 7,
-      notes: "Gå rundt og les dei korte svara. Ver særleg merksam på spørsmålet om korte avsnitt: eit godt svar seier både kva avsnitta gjer med tempoet og korleis det passar med stemninga. Minn elevane på at dømesvaret er eitt av fleire moglege svar.",
+      svar: "1. Full av undring og åleine, men ikkje skremd. 2. For å teste om isen er sterk nok. 3. Døme: lesaren stoppar opp ved kvart bilete, og den rolege rytmen passar med stemninga på isen. 4. Døme: det er heilt stilt, som om naturen ventar saman med jenta.",
+      notes: "Gå rundt og les svara. Spørsmål 1 og 2 har eitt rett svar, 3 og 4 er tolking. Ver særleg merksam på spørsmålet om korte avsnitt: eit godt svar seier både kva avsnitta gjer med tempoet og korleis det passar med stemninga. Treng elevane teksten, gå tilbake til lysbilete 8. Minn elevane på at svara på 3 og 4 er døme, eitt av fleire moglege svar.",
     },
     {
       type: "oppgave",
       title: "Skriv som Vesaas",
-      body: `<p>Nokon gjer noko dei er redde for.</p>
-        <ul>
+      body: `<p>Skriv 120–200 ord om nokon som gjer noko dei er redde for.</p>
+        <ol>
           <li>Ingen setning lengre enn ti ord.</li>
+          <li>Bruk vanlege, enkle ord.</li>
           <li>La naturen spegle det personen kjenner.</li>
           <li>Ikkje forklar slutten.</li>
-        </ul>`,
+        </ol>`,
+      form: "Åleine",
       tid: 8,
-      notes: "Elevane byrjar på skriveoppgåva i modulen og gjer ho ferdig heime om dei ikkje rekk det. Tiordsgrensa er eit godt verktøy: be elevane telje orda i den lengste setninga si. Mange synest det er vanskeleg å la vere å forklare slutten. Spør: kva ville Vesaas ha kutta?",
+      notes: "Elevane byrjar på skriveoppgåva i skriveboka og gjer ho ferdig heime om dei ikkje rekk det. Tiordsgrensa er eit godt verktøy: be elevane telje orda i den lengste setninga si. Mange synest det er vanskeleg å la vere å forklare slutten. Spør: kva ville Vesaas ha kutta?",
     },
     {
       title: "Vidare: les ekte Vesaas",
       body: `<p class="stor"><em class="nn">Is-slottet</em> og <em class="nn">Fuglane</em> ligg gratis på Nettbiblioteket (nb.no).</p>
-        <p>Oppgåva nedst i modulen tek deg rett dit. Les minst fem sider.</p>`,
-      notes: "Nettbiblioteket krev inga innlogging, men elevane må vere i Noreg. Dei kan lese på skjermen, men ikkje laste ned. Anbefal Is-slottet: han er kort, og opningskapitla høyrer til dei finaste i norsk litteratur. Oppgåva kan vere lekse.",
+        <p>Lekse: les minst fem sider av <em class="nn">Is-slottet</em>.</p>`,
+      notes: "Nettbiblioteket krev inga innlogging, men elevane må vere i Noreg. Dei kan lese på skjermen, men ikkje laste ned. Anbefal Is-slottet: han er kort, og opningskapitla høyrer til dei finaste i norsk litteratur. Oppgåva nedst i elevmodulen fører rett til boka og har skrivespørsmål til lesinga. Ho kan givast som frivillig lekse.",
     },
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Modulen er ei leseøkt med den korte teksten «Jenta og isen», skriven for kurset i stilen til Tarjei Vesaas. Teksten er enkel å lese, men krev tolking: korte setningar, naturskildring som speglar kjensler, og symbol som ikkje blir forklarte. Presentasjonen følgjer førlesing, lesing og samtale, og sender elevane til spørsmåla, ei skriveoppgåve og den ekte Vesaas på Nettbiblioteket.</p>",
+    intro: "<p>Modulen er ei leseøkt med den korte teksten «Jenta og isen», skriven for kurset i stilen til Tarjei Vesaas. Teksten er enkel å lese, men krev tolking: korte setningar, naturskildring som speglar kjensler, og symbol som ikkje blir forklarte. Presentasjonen følgjer førlesing, lesing og samtale. Heile teksten står på tavla, og elevane svarar på spørsmål og skriv i skriveboka. Til slutt får dei vegen til den ekte Vesaas på Nettbiblioteket som lekse.</p>",
     mal: [
       "Elevane kan forklare korleis korte setningar og avsnitt påverkar tempo og stemning.",
       "Elevane kan tolke isen og naturskildringa som symbol og grunngi tolkinga med døme frå teksten.",
@@ -177,18 +232,19 @@ Larar.register("lesing-t-vesaas", {
     forkunnskapar: "Ingen særlege. Det er ein fordel om elevane har vore gjennom Møt nynorskforfattarane, men lysbilete 3 gir det dei treng å vite om Vesaas.",
     forebuing: [
       "Les «Jenta og isen» høgt for deg sjølv på førehand, så du finn rytmen og pausane.",
-      "Sjekk at Nettbiblioteket opnar Is-slottet frå skulenettet.",
+      "Bla gjennom tekstlysbiletet (lysbilete 8) på tavla på førehand, så du veit kvar sidene skiftar.",
+      "Sjekk at Nettbiblioteket opnar Is-slottet, så du kan vise vegen dit når du gir leksa.",
     ],
     okt: [
       { fase: "Førlesing", min: 5, gjer: "<p>Mål for timen, kort om Vesaas, forventingar ut frå tittelen og ord i teksten.</p>", lysbilete: "2 til 5" },
-      { fase: "Lesing", min: 10, gjer: "<p>Gå gjennom kva elevane skal sjå etter. Les teksten høgt, og la elevane lese han sjølv ein gong til.</p>", lysbilete: "6 og 7" },
-      { fase: "Samtale", min: 12, gjer: "<p>Snakk om korte setningar og tempo, besjelinga av dalen, isen som symbol og slutten. Samle stiltrekka i tabellen.</p>", lysbilete: "8 til 13" },
-      { fase: "Spørsmål i modulen", min: 7, gjer: "<p>Elevane svarar på spørsmåla til teksten.</p>", lysbilete: "14" },
-      { fase: "Skriving", min: 8, gjer: "<p>Elevane byrjar på skriveoppgåva med berre korte setningar.</p>", lysbilete: "15" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Vis vegen til den ekte Vesaas og gi Nettbiblioteket-oppgåva som lekse.</p>", lysbilete: "16" },
+      { fase: "Lesing", min: 10, gjer: "<p>Gå gjennom kva elevane skal sjå etter. Les teksten høgt frå tavla, og la elevane lese han stille ein gong til medan du blar.</p>", lysbilete: "6 til 8" },
+      { fase: "Samtale", min: 12, gjer: "<p>Snakk om korte setningar og tempo, besjelinga av dalen, isen som symbol og slutten. Samle stiltrekka i tabellen.</p>", lysbilete: "9 til 14" },
+      { fase: "Spørsmål til teksten", min: 7, gjer: "<p>Elevane svarar på dei fire spørsmåla i skriveboka. Vis svaret til slutt.</p>", lysbilete: "15" },
+      { fase: "Skriving", min: 8, gjer: "<p>Elevane byrjar på skriveoppgåva med berre korte setningar i skriveboka.</p>", lysbilete: "16" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Vis vegen til den ekte Vesaas og gi Is-slottet på Nettbiblioteket som lekse.</p>", lysbilete: "17" },
     ],
     misoppfatningar: [
-      { feil: "«Teksten er skriven av Tarjei Vesaas.»", hjelp: "Teksten er skriven for kurset i stilen til Vesaas. Det står i modulen, og det er difor elevane skal lese ein ekte tekst til slutt." },
+      { feil: "«Teksten er skriven av Tarjei Vesaas.»", hjelp: "Teksten er skriven for kurset i stilen til Vesaas. Det står under teksten på tavla, og det er difor elevane får ein ekte tekst som lekse." },
       { feil: "«Korte setningar er barnslege.»", hjelp: "Vis at dei korte setningane gir ro og stillheit, og at orda er enkle medan tema er djupe: frykt, einsemd og mot." },
       { feil: "«Det skjer jo ingenting.»", hjelp: "Spør kva som skjer inne i jenta. Ho gjer noko for første gong, åleine, og bestemmer seg for å hugse det. I tekstar som denne er det indre det viktigaste." },
       { feil: "«Ei tolking er berre det eg synest.»", hjelp: "Ei tolking må byggje på noko som står i teksten. Be eleven peike på ordet eller linja tolkinga kjem frå." },
@@ -201,7 +257,7 @@ Larar.register("lesing-t-vesaas", {
     ],
     tilpassing: {
       stotte: [
-        "Les teksten høgt saman, og la eleven følgje med i teksten på skjermen.",
+        "Les teksten høgt saman, og la eleven følgje med i teksten på tavla.",
         "Gi eleven dei tre punkta frå lysbilete 6 som ei lesehjelp på papir.",
         "La eleven svare munnleg på dei korte spørsmåla før han eller ho skriv.",
       ],
@@ -215,7 +271,7 @@ Larar.register("lesing-t-vesaas", {
       "Skriveoppgåva viser om eleven kan bruke stiltrekka sjølv: korte setningar, natur som spegel og open slutt.",
       "Kjenneteikn på god måloppnåing: eleven tolkar isen eller slutten, grunngir med sitat og forklarer kva verkemidla gjer med lesaren.",
     ],
-    vidare: "Gå vidare til «Ein morgon» i stilen til Halldis Moren Vesaas, som var gift med Tarjei Vesaas. Til slutt samanliknar elevane alle tekstane i modulen Samanlikn tekstane.",
+    vidare: "Gå vidare til «Ein morgon» i stilen til Halldis Moren Vesaas, som var gift med Tarjei Vesaas. Til slutt samanliknar elevane alle tekstane i Samanlikn tekstane. Som frivillig lekse kan elevane lese Is-slottet på Nettbiblioteket og skrive om lesinga, slik oppgåva nedst i elevmodulen legg opp til. Elevmodulen har òg same tekst og spørsmål med dømesvar.",
   },
 });
 
@@ -280,18 +336,53 @@ Larar.register("lesing-hm-vesaas", {
         `<p class="stor">2. <strong>Lukter og lydar</strong> i staden for forklaringar.</p>`,
         `<p class="stor">3. Den siste tanken om kva vi først skjønar <strong>i ettertid</strong>.</p>`,
       ],
-      notes: "Punkta er frå modulen. Lesestrategi: be elevane streke under alle sanseinntrykk med éin farge, og alt som er sagt høgt med ein annan. Dei vil sjå at det er mykje meir av det første.",
+      notes: "Punkta er frå elevmodulen. Lesestrategi: be elevane skrive alle sanseinntrykk i éi liste i skriveboka, og alt som blir sagt høgt i ei anna. Dei vil sjå at det er mykje meir av det første.",
     },
     {
       type: "oppgave",
       title: "Les «Ein morgon»",
       body: `<ol>
-          <li>Lytt medan læraren les høgt.</li>
-          <li>Les teksten sjølv i modulen.</li>
-          <li>Strek under lukter, lydar og lys.</li>
+          <li>Lytt medan læraren les teksten høgt på tavla.</li>
+          <li>Les han ein gong til, stille.</li>
+          <li>Skriv tre overskrifter i skriveboka: <strong>lukter</strong>, <strong>lydar</strong> og <strong>lys</strong>. Skriv det du finn under kvar.</li>
         </ol>`,
+      form: "Åleine",
       tid: 7,
-      notes: "Les roleg. Teksten har ein lågmælt tone, og det bør høyrast. Merk deg kven som blir ferdig fort: be dei lese dei to siste avsnitta ein gong til.",
+      notes: "Teksten står på neste lysbilete og blir vist side for side. Les roleg. Teksten har ein lågmælt tone, og det bør høyrast. Andre gong les elevane stille medan du blar. Merk deg kven som blir ferdig fort: be dei lese dei to siste avsnitta ein gong til.",
+    },
+    {
+      type: "tekst",
+      title: "«Ein morgon»",
+      text: `
+        <p>Det er ikkje noko stort med ein morgon i april. Sola står opp, slik ho gjer
+        kvar dag. Fuglane syng utanfor. Eg ligg under dyna og ser strålane finne vegen
+        mellom gardinene og leggje ei lys stripe over golvet.</p>
+
+        <p>Eg veit at i kjøkenet står far. Han kokar kaffe. Vatnet syd, han slår det
+        over filteret, og ei lukt, brun og bitter og varm, legg seg over heile huset.
+        Det er denne lukta som vekkjer meg, meir enn fuglane, meir enn lyset.</p>
+
+        <p>Eg kjem ned i pysjamasen. Far snur seg ikkje. Han veit at eg er der.<br>
+        «Brød på bordet», seier han.<br>
+        «Mm.»</p>
+
+        <p>Vi sit, og vi seier ikkje mykje. Det er ikkje fordi vi ikkje har noko å seie.
+        Det er fordi det er morgon, og vi har heile dagen til å seie det. No skal vi
+        berre vere her, han og eg, med kaffe og brød og lyset som flyttar seg over
+        kjøkenbordet.</p>
+
+        <p>Mor søv enno. Ho jobbar kveldsskift, kjem heim seint. Eg går stilt når eg
+        skal opp att for å hente skuleboka. Eg lukkar døra utan ein lyd.</p>
+
+        <p>Då eg går ut, vinkar far frå vindauget. Eg vinkar attende. Og det er ingenting
+        spesielt med denne morgonen, og det er kanskje difor eg hugsar han. For det
+        fanst ei tid då slike morgonar var alle eg hadde. Ein far i kjøkenet. Eit brød.
+        Eit lys på golvet. Ei mor som sov.</p>
+
+        <p>Slike ting er det ikkje noko stort med, før dei er borte. Då vert dei det
+        største vi har att.</p>`,
+      kjelde: KJELDE_HM_VESAAS,
+      notes: "Heile teksten, ordrett som i elevmodulen. Kvart trykk blar ei side. Les høgt første gong, og la elevane lese stille andre gong medan du blar. Kom tilbake hit når elevane svarar på spørsmåla på lysbilete 16.",
     },
     {
       type: "sitat",
@@ -356,25 +447,42 @@ Larar.register("lesing-hm-vesaas", {
     },
     {
       type: "oppgave",
-      title: "Arbeid i modulen",
-      body: `<ul>
-          <li>Svar på dei tre spørsmåla til teksten.</li>
-          <li>Skriv om ein heilt vanleg augneblink heime.</li>
-          <li>Du får ikkje skrive <em>at</em> han betyr noko.</li>
-        </ul>`,
-      tid: 14,
-      notes: "Skriveoppgåva er krevjande fordi elevane ikkje får forklare. Tips: vel ein augneblink som varer under eit minutt, og ta med minst éin lukt og éin lyd. Les gjerne opp eit par gode setningar undervegs, med løyve frå eleven.",
+      title: "Spørsmål til teksten",
+      body: `<p>Svar med heile setningar. Sjå tilbake i teksten før du svarar.</p>
+        <ol>
+          <li>Kva tid på året er det i teksten?</li>
+          <li>Korleis verkar forholdet mellom forteljaren og faren?</li>
+          <li>Kva meiner forteljaren med setninga «Slike ting er det ikkje noko stort med, før dei er borte»?</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 5,
+      svar: "1. April. 2. Stilt, varmt og innforstått. 3. Døme: vi ser sjeldan kor verdfulle dei små kvardagsaugneblinkane er medan vi har dei. Først når dei tek slutt, skjønar vi kor mykje dei betydde.",
+      notes: "Dei to første spørsmåla går fort. Bruk tida på det tredje: eit godt svar tolkar setninga og ikkje berre gjentek henne. Treng elevane teksten, gå tilbake til lysbilete 8.",
+    },
+    {
+      type: "oppgave",
+      title: "Skriv: ein heilt vanleg augneblink",
+      body: `<p>Skriv 120–200 ord om ein heilt vanleg augneblink heime, så nøye at lesaren skjønar at han betyr noko.</p>
+        <ol>
+          <li>Vel éin augneblink, ikkje ein heil dag.</li>
+          <li>Ta med minst éin lukt og éin lyd.</li>
+          <li>Du får ikkje skrive <em>at</em> augneblinken betyr noko.</li>
+          <li>Avslutt med ei setning som opnar i staden for å lukke.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 9,
+      notes: "Skriveoppgåva er krevjande fordi elevane ikkje får forklare. Tips: vel ein augneblink som varer under eit minutt. Les gjerne opp eit par gode setningar undervegs, med løyve frå eleven. Det dei ikkje rekk, kan vere lekse.",
     },
     {
       title: "Vidare: les ekte dikt",
       body: `<p class="stor"><em class="nn">Tung tids tale</em> (1945) ligg på Nettbiblioteket.</p>
         <p class="stor"><em class="nn">«Det heiter ikkje: eg no lenger. Heretter heiter det: vi.»</em></p>`,
-      notes: "Linja er gjengitt slik ho står i oppgåva i modulen. Dikta er skrivne under krigen. Spør: kvifor kan det vere viktig å seie «vi» i staden for «eg» i ei tung tid? Nettbiblioteket-oppgåva ber elevane lese titteldiktet og to andre dikt og samanlikne tonen med «Ein morgon». Olaug Nilssen har lånt tittelen til romanen sin frå dette diktet, og det kjem elevane til å møte seinare.",
+      notes: "Linja er gjengitt slik ho står i Nettbiblioteket-oppgåva i elevmodulen. Dikta er skrivne under krigen. Spør: kvifor kan det vere viktig å seie «vi» i staden for «eg» i ei tung tid? Oppgåva i elevmodulen ber elevane lese titteldiktet og to andre dikt og samanlikne tonen med «Ein morgon». Ho passar som frivillig lekse. Olaug Nilssen har lånt tittelen til romanen sin frå dette diktet, og det kjem elevane til å møte seinare.",
     },
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Modulen er ei leseøkt med «Ein morgon», ein kort, lyrisk kvardagstekst skriven for kurset i stilen til Halldis Moren Vesaas. Det skjer nesten ingenting, og nettopp difor må elevane lese nøye: sansane, dei små handlingane og skiftet frå presens til eit tilbakeblikk gjer teksten til ein tekst om tap og takksemd. Økta sender elevane vidare til spørsmåla, ei skriveoppgåve og diktsamlinga Tung tids tale på Nettbiblioteket.</p>",
+    intro: "<p>Modulen er ei leseøkt med «Ein morgon», ein kort, lyrisk kvardagstekst skriven for kurset i stilen til Halldis Moren Vesaas. Det skjer nesten ingenting, og nettopp difor må elevane lese nøye: sansane, dei små handlingane og skiftet frå presens til eit tilbakeblikk gjer teksten til ein tekst om tap og takksemd. Heile teksten står på tavla, og elevane svarar på spørsmåla og skriv i skriveboka. Diktsamlinga Tung tids tale på Nettbiblioteket kan vere lekse.</p>",
     mal: [
       "Elevane kan forklare korleis sanseinntrykk og små handlingar skaper stemning og viser kjensler.",
       "Elevane kan sjå at forteljaren ser tilbake, og forklare kva det gjer med tydinga av teksten.",
@@ -385,16 +493,17 @@ Larar.register("lesing-hm-vesaas", {
     forkunnskapar: "Elevane bør kjenne omgrepa presens og preteritum. Modulen passar godt etter «Jenta og isen», sidan dei to forfattarane var gifte.",
     forebuing: [
       "Les teksten høgt for deg sjølv og finn stadene der tempus skifter.",
-      "Ha to fargeblyantar eller markeringsfargar klare til kvar elev, til lesinga på lysbilete 7.",
-      "Sjekk at Tung tids tale opnar på Nettbiblioteket frå skulenettet.",
+      "Bla gjennom tekstlysbiletet (lysbilete 8) på tavla på førehand, så du veit kvar sidene skiftar.",
+      "Sjekk at Tung tids tale opnar på Nettbiblioteket, så du kan vise vegen dit når du gir leksa.",
       "Tenk gjennom om nokon i klassen har opplevd tap nyleg, og hald samtalen om kva som er «borte» nær teksten.",
     ],
     okt: [
       { fase: "Førlesing", min: 5, gjer: "<p>Mål for timen, kort om forfattaren, samtale om sansar på ein vanleg morgon og ord i teksten.</p>", lysbilete: "2 til 5" },
-      { fase: "Lesing", min: 9, gjer: "<p>Gå gjennom kva elevane skal sjå etter. Les høgt, og la elevane lese sjølv og streke under sanseinntrykk.</p>", lysbilete: "6 og 7" },
-      { fase: "Samtale", min: 14, gjer: "<p>Lukt og sansar, stillheita mellom far og barn, omsorg i handling, tempusskiftet, ramma og kva som er borte. Samle trekka ved lyrisk prosa.</p>", lysbilete: "8 til 14" },
-      { fase: "Arbeid i modulen", min: 14, gjer: "<p>Elevane svarar på spørsmåla og skriv om ein vanleg augneblink.</p>", lysbilete: "15" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Vis vegen til Tung tids tale og snakk kort om linja om «eg» og «vi».</p>", lysbilete: "16" },
+      { fase: "Lesing", min: 9, gjer: "<p>Gå gjennom kva elevane skal sjå etter. Les høgt frå tavla, og la elevane lese stille ein gong til og skrive ned lukter, lydar og lys.</p>", lysbilete: "6 til 8" },
+      { fase: "Samtale", min: 14, gjer: "<p>Lukt og sansar, stillheita mellom far og barn, omsorg i handling, tempusskiftet, ramma og kva som er borte. Samle trekka ved lyrisk prosa.</p>", lysbilete: "9 til 15" },
+      { fase: "Spørsmål til teksten", min: 5, gjer: "<p>Elevane svarar på dei tre spørsmåla i skriveboka. Vis svaret til slutt.</p>", lysbilete: "16" },
+      { fase: "Skriving", min: 9, gjer: "<p>Elevane skriv om ein vanleg augneblink i skriveboka.</p>", lysbilete: "17" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Vis vegen til Tung tids tale og snakk kort om linja om «eg» og «vi».</p>", lysbilete: "18" },
     ],
     misoppfatningar: [
       { feil: "«Dei seier så lite, så dei er nok uvener.»", hjelp: "Vis setninga «Det er ikkje fordi vi ikkje har noko å seie.» Stillheita er trygg. Spør korleis far viser at han veit at barnet er der." },
@@ -424,7 +533,7 @@ Larar.register("lesing-hm-vesaas", {
       "Skriveoppgåva viser om eleven kan skape stemning med sansar utan å forklare.",
       "Kjenneteikn på god måloppnåing: eleven ser tilbakeblikket, knyter slutten til byrjinga og bruker sitat i tolkinga.",
     ],
-    vidare: "Gå vidare til «Frå hytta» i stilen til Jon Fosse, som er ein heilt annan måte å skrive stille på. Nettbiblioteket-oppgåva om Tung tids tale passar godt som lekse, og knyter an til Olaug Nilssen seinare i kurset.",
+    vidare: "Gå vidare til «Frå hytta» i stilen til Jon Fosse, som er ein heilt annan måte å skrive stille på. Nettbiblioteket-oppgåva om Tung tids tale i elevmodulen passar godt som frivillig lekse, og knyter an til Olaug Nilssen seinare i kurset. Elevmodulen har òg same tekst og spørsmål med dømesvar.",
   },
 });
 
@@ -488,12 +597,84 @@ Larar.register("lesing-fosse", {
       type: "oppgave",
       title: "Les «Frå hytta»",
       body: `<ol>
-          <li>Lytt til første avsnitt, lese høgt.</li>
-          <li>Les resten sjølv i modulen.</li>
-          <li>Tel: kor mange gonger står <em class="nn">snøen fell</em>?</li>
+          <li>Lytt medan læraren les første avsnitt høgt.</li>
+          <li>Les resten stille på tavla.</li>
+          <li>Tel: kor mange gonger står <em class="nn">snøen fell</em>? Skriv talet i skriveboka.</li>
         </ol>`,
+      form: "Åleine",
       tid: 10,
-      notes: "Les første avsnitt høgt utan å ta pause ved komma, nesten i eitt andedrag. Då høyrer elevane rytmen. Teksten er lang, så la dei lese resten sjølve. Elevar som strevar, kan lese avsnitta med bestefar og slutten nøye og skumlese resten.",
+      notes: "Teksten står på neste lysbilete og blir vist side for side. Les første avsnitt høgt utan å ta pause ved komma, nesten i eitt andedrag. Då høyrer elevane rytmen. Teksten er lang, så la dei lese resten stille medan du blar i roleg tempo. Spør om alle er ferdige før du blar vidare. Elevar som strevar, kan lese avsnitta med bestefar og slutten nøye og skumlese resten.",
+    },
+    {
+      type: "tekst",
+      title: "«Frå hytta»",
+      text: `
+        <p>Eg sit ved vindauget i hytta og ser ut og snøen fell og det er stilt og eg
+        har sett ut sidan klokka åtte, ja eg har sett ut og snøen har falle og det har
+        vore stilt heile tida. Det er ingen som veit kvar eg er. Det er ingen som har
+        spurt heller. Eg drog hit i går kveld. Eg drog hit fordi eg måtte. Eg veit
+        ikkje kvifor eg måtte, men eg måtte, og no er eg her, og snøen fell.</p>
+
+        <p>Det er ei gammal hytte. Ho høyrer til mor og far, men dei brukar henne
+        ikkje lenger, dei vart for gamle, og det er ikkje veg heilt fram, du må gå dei
+        siste tre hundre meter, og det er for mykje for far no. Så hytta står. Eg har
+        nøkkelen i ein skuff heime. Eg tok han med meg. Eg sa ikkje til nokon at eg
+        tok han.</p>
+
+        <p>Snøen fell. Det er noko med snø som fell. Det er at han fell, ja, det er
+        det. Han fell og han fell, og under han ligg det meir snø, og under det meir,
+        og slik er snø, han kjem på toppen av seg sjølv og blir djupare. Eg såg ein
+        gong i ein dokumentar at ein nede i Antarktis kunne grave gjennom snø som var
+        ti tusen år gamal. Ti tusen år. Eg veit ikkje kvifor eg tenkjer på det no, men
+        det er det eg tenkjer på.</p>
+
+        <p>Klokka er kanskje to. Eg har ikkje sett på klokka. Eg ser ikkje på klokka.
+        Det er noko frigjerande ved å ikkje sjå på klokka. Klokka går likevel, men ho
+        går ikkje for meg no.</p>
+
+        <p>Eg har det ikkje verre. Det er ikkje difor eg drog hit. Eg har det ikkje
+        betre heller. Det er ikkje difor. Det er noko anna. Det er at eg ville sjå.
+        Sjå noko. Sjå snøen falle, kanskje. Sjå at noko fell, og fell, og fell, og at
+        det er greitt at det fell.</p>
+
+        <p>Mor ringjer kanskje. Eg veit ikkje. Telefonen er i jakka i gangen, og eg
+        har ikkje vore i gangen sidan i går kveld. Kanskje ho har ringt mange gonger.
+        Kanskje ho ikkje har ringt i det heile. Det er noko spesielt med å ikkje vite,
+        å berre la noko vere.</p>
+
+        <p>Eg tenkjer på bestefar. Eg veit ikkje kvifor. Han har vore død i seks år.
+        Men eg tenkjer på han no. Han brukte å sitje ved dette vindauget, han òg. Han
+        sat med ein kopp kaffe. Han sa ikkje mykje. Han sat berre. Eg trudde då at
+        han var keisam. Eg trudde han ikkje hadde noko å seie. No skjønar eg at han
+        kanskje hadde alt å seie, og at han berre såg ut av vindauget, og at det å sjå
+        ut av vindauget var hans måte å seie det på.</p>
+
+        <p>Snøen fell.</p>
+
+        <p>Det er rart med snø. Han er kald, men når du står lenge nok i han, blir det
+        varmt på ein måte. Det er ikkje varmt på huda. Det er noko anna. Eg hugsar då
+        eg var seks år og fall i ei snøfonn, og eg vart liggjande, og mor måtte hente
+        meg, og då eg kom inn att, var det som om eg hadde vore på ei lang reise.</p>
+
+        <p>Det er det same no. Eg har vore på ei lang reise sidan i går kveld. Eg sit
+        her og eg har ikkje gått nokon stad, men eg har vore lenger vekk enn nokon
+        kan vite.</p>
+
+        <p>Klokka er kanskje tre.</p>
+
+        <p>Eg trur eg blir her natta over. Det er nok ved. Det er pasta i skapet. Mor
+        og far rydda ikkje skikkeleg etter siste gong dei var her.</p>
+
+        <p>Snøen fell.</p>
+
+        <p>I morgon skal eg gå ned att. Eg skal seie til mor at eg var hjå Sander. Ho
+        kjem ikkje til å tru meg. Men ho kjem ikkje til å spørje meir heller. Vi har
+        den slags forhold no.</p>
+
+        <p>Snøen fell, og det er stilt, og eg veit ikkje kva eg gjer her, men det er
+        kanskje det eg gjer. Som ikkje veit. Som sit.</p>`,
+      kjelde: KJELDE_FOSSE,
+      notes: "Heile teksten, ordrett som i elevmodulen. Kvart trykk blar ei side. Les første avsnitt høgt, og bla så i roleg tempo medan elevane les stille og tel «snøen fell». Kom tilbake hit når elevane svarar på spørsmåla på lysbilete 16.",
     },
     {
       type: "sitat",
@@ -532,7 +713,7 @@ Larar.register("lesing-fosse", {
       type: "sitat",
       text: "Eg sit her og eg har ikkje gått nokon stad, men eg har vore lenger vekk enn nokon kan vite.",
       kjelde: KJELDE_FOSSE,
-      notes: "Dette er setninga det siste spørsmålet i modulen handlar om. La elevane forklare med eigne ord kva ei indre reise er. Knyt det gjerne til minnet om snøfonna: «då eg kom inn att, var det som om eg hadde vore på ei lang reise». Same bilete, same tyding.",
+      notes: "Dette er setninga spørsmål 4 på lysbilete 16 handlar om. La elevane forklare med eigne ord kva ei indre reise er. Knyt det gjerne til minnet om snøfonna: «då eg kom inn att, var det som om eg hadde vore på ei lang reise». Same bilete, same tyding.",
     },
     {
       type: "diskuter",
@@ -559,20 +740,38 @@ Larar.register("lesing-fosse", {
     },
     {
       type: "oppgave",
-      title: "Svar på spørsmåla i modulen",
-      body: `<ul>
-          <li>To fleirvalsspørsmål og to korte svar.</li>
-          <li>Bruk teljinga di i svaret om gjentaking.</li>
-          <li>Skriveoppgåva: ein tankestraum med ei setning som kjem att fire gonger.</li>
-        </ul>`,
-      tid: 10,
-      notes: "Dei fleste rekk spørsmåla i timen, og skriveoppgåva kan vere lekse. I svaret om gjentaking er det bra om eleven både nemner kva som blir gjenteke og kva det gjer med stemninga. Minn om at tankestraumen skal ha lange setningar og lite punktum.",
+      title: "Spørsmål til teksten",
+      body: `<p>Svar med heile setningar. Bruk teljinga di i svaret om gjentaking.</p>
+        <ol>
+          <li>Korleis kom forteljaren til hytta?</li>
+          <li>Kva tenkjer forteljaren om bestefar?</li>
+          <li>Korleis brukar forfattaren gjentaking til å skape stemning?</li>
+          <li>Korleis tolkar du linja «eg har vore lenger vekk enn nokon kan vite»?</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 7,
+      svar: "1. Han drog dit åleine, utan å seie det til nokon. 2. Han forstår no at bestefar kanskje hadde mykje å seie, men sa det ved å sitje stille og sjå ut. 3. Døme: «snøen fell» kjem att seks gonger og gir ein langsam rytme, så lesaren òg sit lenge. 4. Døme: han har vore på ei indre reise. Det viktigaste skjer i hovudet, ikkje på kartet.",
+      notes: "I svaret om gjentaking er det bra om eleven både nemner kva som blir gjenteke og kva det gjer med stemninga. Treng elevane teksten, gå tilbake til lysbilete 8.",
+    },
+    {
+      type: "oppgave",
+      title: "Skriv: ein tankestraum",
+      body: `<p>Skriv 150–250 ord frå ein person som sit stille ein stad. Byrj no, skriv ferdig heime.</p>
+        <ol>
+          <li>Vel éi setning som kjem att minst fire gonger.</li>
+          <li>La personen sitje stille. Handlinga skjer inne i hovudet.</li>
+          <li>Bruk lange setningar bundne saman med <em>og</em>, og lite punktum.</li>
+          <li>Ingen forklaring til lesaren.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 3,
+      notes: "Elevane rekk berre å byrje i timen, så resten er lekse. Be dei velje gjentakinga først og skrive henne øvst i skriveboka. Minn om at tankestraumen skal ha lange setningar og lite punktum.",
     },
     {
       title: "Vidare: les ekte Fosse",
       body: `<p class="stor"><em class="nn">Morgon og kveld</em> (2000) ligg på Nettbiblioteket.</p>
         <p>Kort bok. Opninga handlar om ein fødsel. Les minst ti sider.</p>`,
-      notes: "Førebu elevane på at den ekte Fosse går endå lenger enn kurstekstane: lange setningar utan vanlege punktum. Be dei tel ei gjentaking der òg, slik oppgåva ber om. Oppgåva passar som lekse.",
+      notes: "Førebu elevane på at den ekte Fosse går endå lenger enn kurstekstane: lange setningar utan vanlege punktum. Nettbiblioteket-oppgåva i elevmodulen ber elevane telje ei gjentaking der òg. Ho passar som frivillig lekse.",
     },
   ],
   guide: {
@@ -589,14 +788,15 @@ Larar.register("lesing-fosse", {
     forebuing: [
       "Øv på å lese første avsnitt høgt utan pausar, så elevane høyrer rytmen.",
       "Tel sjølv kor mange gonger «snøen fell» står i teksten, så du kan kontrollere elevane: seks gonger, to som eigne avsnitt.",
-      "Sjekk at Morgon og kveld opnar på Nettbiblioteket frå skulenettet.",
+      "Bla gjennom tekstlysbiletet (lysbilete 8) på tavla på førehand. Teksten er lang og går over fleire sider.",
+      "Sjekk at Morgon og kveld opnar på Nettbiblioteket, så du kan vise vegen dit når du gir leksa.",
     ],
     okt: [
       { fase: "Førlesing", min: 5, gjer: "<p>Mål for timen, kort om Fosse, samtale om å sitje stille og omgrepa tankestraum og gjentaking.</p>", lysbilete: "2 til 5" },
-      { fase: "Lesing", min: 11, gjer: "<p>Gi teljeoppdraget. Les første avsnitt høgt, og la elevane lese resten sjølve.</p>", lysbilete: "6 og 7" },
-      { fase: "Samtale", min: 16, gjer: "<p>Lange setningar og gjentaking, overflate og djup, bestefar, den indre reisa, kvifor han drog og ungdommen i teksten.</p>", lysbilete: "8 til 14" },
-      { fase: "Spørsmål i modulen", min: 10, gjer: "<p>Elevane svarar på spørsmåla. Skriveoppgåva kan vere lekse.</p>", lysbilete: "15" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Vis vegen til Morgon og kveld på Nettbiblioteket.</p>", lysbilete: "16" },
+      { fase: "Lesing", min: 11, gjer: "<p>Gi teljeoppdraget. Les første avsnitt høgt frå tavla, og bla vidare medan elevane les resten stille.</p>", lysbilete: "6 til 8" },
+      { fase: "Samtale", min: 16, gjer: "<p>Lange setningar og gjentaking, overflate og djup, bestefar, den indre reisa, kvifor han drog og ungdommen i teksten.</p>", lysbilete: "9 til 15" },
+      { fase: "Spørsmål og skriving", min: 10, gjer: "<p>Elevane svarar på dei fire spørsmåla i skriveboka, og byrjar på tankestraumen. Resten av skriveoppgåva er lekse.</p>", lysbilete: "16 og 17" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Vis vegen til Morgon og kveld på Nettbiblioteket.</p>", lysbilete: "18" },
     ],
     misoppfatningar: [
       { feil: "«Gjentaking er dårleg språk.»", hjelp: "I ein fagtekst kan gjentaking vere slurv, men her er ho vald med vilje. Spør kva teksten ville mista om vi strauk alle «snøen fell» utanom den første." },
@@ -626,7 +826,7 @@ Larar.register("lesing-fosse", {
       "Tankestraumen i skriveoppgåva viser om eleven kan bruke gjentaking medvite.",
       "Kjenneteikn på god måloppnåing: eleven skil overflate frå djup, tolkar den indre reisa og bruker konkrete døme frå teksten.",
     ],
-    vidare: "Gå vidare til «Bussen klokka kvart over fem» i stilen til Frode Grytten. Fosse og Grytten er eit godt par i samanlikningsmodulen: lange, bundne setningar mot korte og klipte.",
+    vidare: "Gå vidare til «Bussen klokka kvart over fem» i stilen til Frode Grytten. Fosse og Grytten er eit godt par i samanlikningsmodulen: lange, bundne setningar mot korte og klipte. Som frivillig lekse kan elevane lese Morgon og kveld på Nettbiblioteket, slik oppgåva nedst i elevmodulen legg opp til.",
   },
 });
 
@@ -686,18 +886,78 @@ Larar.register("lesing-grytten", {
         `<p class="stor">2. Kor mykje som ligg i at ho avviser mora <strong>to gonger</strong>.</p>`,
         `<p class="stor">3. Den korte, <strong>klipte</strong> rytmen.</p>`,
       ],
-      notes: "Lesestrategi: be elevane lage to lister medan dei les andre gong. Den eine: kva veit vi? Den andre: kva veit vi ikkje? Listene blir brukte på lysbilete 10.",
+      notes: "Lesestrategi: be elevane lage to lister i skriveboka medan dei les andre gong. Den eine: kva veit vi? Den andre: kva veit vi ikkje? Listene blir brukte på lysbilete 11.",
     },
     {
       type: "oppgave",
       title: "Les «Bussen klokka kvart over fem»",
       body: `<ol>
-          <li>Lytt medan læraren les høgt.</li>
-          <li>Les teksten sjølv i modulen.</li>
-          <li>Lag to lister: <strong>Kva veit vi?</strong> og <strong>Kva veit vi ikkje?</strong></li>
+          <li>Lytt medan læraren les teksten høgt på tavla.</li>
+          <li>Les han ein gong til, stille.</li>
+          <li>Lag to lister i skriveboka: <strong>Kva veit vi?</strong> og <strong>Kva veit vi ikkje?</strong></li>
         </ol>`,
+      form: "Åleine",
       tid: 8,
-      notes: "Les replikkane nøkternt og kort, slik dei står. Ikkje legg for mykje kjensle i stemma: det er det teksten sjølv held att.",
+      notes: "Teksten står på neste lysbilete og blir vist side for side. Les replikkane nøkternt og kort, slik dei står. Ikkje legg for mykje kjensle i stemma: det er det teksten sjølv held att. Andre gong les elevane stille medan du blar.",
+    },
+    {
+      type: "tekst",
+      title: "«Bussen klokka kvart over fem»",
+      text: `
+        <p>Lina står på busshaldeplassen klokka kvart over fem. Det regnar.</p>
+
+        <p>Ikkje skikkeleg regn, berre den slags som gjer alt litt fuktig utan å gi seg
+        utslag i pyttar. Ho har på seg ei tynn jakke. Den nye, frå Zara. Ho er litt for
+        kald, men ho vil ikkje gå inn att.</p>
+
+        <p>Mor ringjer.<br>
+        Ho svarar ikkje.</p>
+
+        <p>Bussen kjem ti minutt for seint, slik bussar pleier. Ho set seg lengst bak.
+        Ein gut ho kjenner litt frå skulen, Marius, set seg ned ved sida av henne.</p>
+
+        <p>«Hei», seier han.<br>
+        «Hei.»<br>
+        «Skal du heim?»<br>
+        «Til Marte.»<br>
+        «Å. Du har ikkje sett Sander i dag?»</p>
+
+        <p>Ho seier ikkje noko. Ser ut av vindauget. Marius forstår.</p>
+
+        <p>Bussen rullar gjennom regnet. Forbi Coop Extra, forbi den nye blokka som dei
+        reiv vekk parken for. Lina hugsar at ho leikte i den parken då ho var lita. No
+        står det bygningar der, og folk bur i dei, og det er sikkert greitt for dei
+        som bur der, men ho saknar parken.</p>
+
+        <p>«Det går nok bra», seier Marius. Han veit ikkje kva som har skjedd, men han
+        skjønar noko.<br>
+        «Mm.»</p>
+
+        <p>Mor ringjer igjen. Ho avviser samtalen.</p>
+
+        <p>Ved Solheim går Marius av.<br>
+        «Bra du klemmer på», seier han når han reiser seg. «Du veit. Du må ikkje vere
+        åleine om det er noko.»</p>
+
+        <p>Ho nikkar. Han er litt rar, Marius, men nokre gonger seier han slike ting, og
+        då veit ein at han har lytta heile tida.</p>
+
+        <p>Bussen tek til venstre opp Fløensbakken. Lina lener panna mot vindauget.
+        Kaldt. Bra.</p>
+
+        <p>Heime hjå Marte er det varmt. Marte gjev henne ein tørr genser. Ein kopp te.
+        Ingen spørsmål.</p>
+
+        <p>Etter ein time ringjer Lina mor.<br>
+        «Eg er hjå Marte. Eg kjem heim i kveld.»<br>
+        «Greitt», seier mor.</p>
+
+        <p>Stemma er lita, som om mor òg har grine.</p>
+
+        <p>Då dei legg på, sit Lina lenge på senga til Marte og ser ut. Det regnar enno.
+        Men ho er innandørs no, og det luktar te, og det er nesten greitt.</p>`,
+      kjelde: KJELDE_GRYTTEN,
+      notes: "Heile teksten, ordrett som i elevmodulen. Kvart trykk blar ei side. Les høgt første gong, og la elevane lese stille andre gong medan du blar. Kom tilbake hit når elevane svarar på spørsmåla på lysbilete 16.",
     },
     {
       type: "sitat",
@@ -730,7 +990,7 @@ Larar.register("lesing-grytten", {
       type: "sitat",
       text: "Bussen tek til venstre opp Fløensbakken. Lina lener panna mot vindauget. Kaldt. Bra.",
       kjelde: KJELDE_GRYTTEN,
-      notes: "«Kaldt. Bra.» er to ord utan verb. Kvifor er det bra at vindauget er kaldt? Ho treng noko som kjølar ned, kanskje etter å ha grine, kanskje for å roe seg. Den klipte rytmen passar med ein person som ikkje vil tenkje for mykje. Dette er stoff til det siste spørsmålet i modulen.",
+      notes: "«Kaldt. Bra.» er to ord utan verb. Kvifor er det bra at vindauget er kaldt? Ho treng noko som kjølar ned, kanskje etter å ha grine, kanskje for å roe seg. Den klipte rytmen passar med ein person som ikkje vil tenkje for mykje. Dette er stoff til spørsmål 4 på lysbilete 16.",
     },
     {
       type: "bilete",
@@ -763,20 +1023,38 @@ Larar.register("lesing-grytten", {
     },
     {
       type: "oppgave",
-      title: "Arbeid i modulen",
-      body: `<ul>
-          <li>Svar på dei fire spørsmåla.</li>
-          <li>Skriv ei kort forteljing frå ein buss, ein butikk eller ein heis.</li>
-          <li>Det viktigaste skal aldri seiast rett ut.</li>
-        </ul>`,
-      tid: 13,
-      notes: "Skriveoppgåva er vanskeleg fordi elevane gjerne vil forklare. Tips: skriv først ned kva som har skjedd på ein lapp, og la det så vere ute av teksten. Gå rundt og spør: kvar i teksten din kan lesaren sjå at noko er gale?",
+      title: "Spørsmål til teksten",
+      body: `<p>Svar med heile setningar. Sjå tilbake i teksten før du svarar.</p>
+        <ol>
+          <li>Korleis verkar forholdet mellom Lina og mora hennar?</li>
+          <li>Kva slags person verkar Marius som?</li>
+          <li>Korleis brukar forfattaren det at Lina ikkje svarar telefonen frå mora, til å skildre kjenslene hennar?</li>
+          <li>Kvifor trur du teksten er sett saman av så korte setningar og avsnitt?</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 6,
+      svar: "1. Anstrengt: det er noko som ikkje er sagt mellom dei. 2. Stille, men merksam: han skjønar at noko er gale. 3. Døme: ho avviser mora to gonger utan eit ord, så vi skjønar at noko er vondt utan å få vite kva. 4. Døme: den klipte rytmen passar med at Lina ikkje vil snakke om det som har skjedd.",
+      notes: "Spørsmål 3 og 4 er dei viktigaste. Eit godt svar peikar på noko i teksten, som dei to avvisingane eller «Kaldt. Bra.». Treng elevane teksten, gå tilbake til lysbilete 8.",
+    },
+    {
+      type: "oppgave",
+      title: "Skriv: ein augneblink som betyr meir",
+      body: `<p>Skriv ei kort forteljing (150–250 ord) frå ein buss, ein butikk eller ein heis. To personar møtest. Noko har skjedd som lesaren aldri får vite heilt kva er.</p>
+        <ol>
+          <li>Hald deg til éin stad og eit kort tidsrom.</li>
+          <li>Bruk korte setningar og korte replikkar.</li>
+          <li>Ikkje forklar kva som har skjedd.</li>
+          <li>Ta med éin detalj frå omgivnadene som speglar stemninga.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 7,
+      notes: "Skriveoppgåva er vanskeleg fordi elevane gjerne vil forklare. Tips: skriv først ned kva som har skjedd på ein lapp, og la det så vere ute av teksten. Gå rundt og spør: kvar i teksten din kan lesaren sjå at noko er gale? Det elevane ikkje rekk, kan vere lekse.",
     },
     {
       title: "Vidare: les ekte Grytten",
       body: `<p class="stor"><em class="nn">Bikubesong</em> (1999) ligg på Nettbiblioteket.</p>
         <p>Korte historier frå same bygard i Odda. Byrj kvar som helst.</p>`,
-      notes: "Oppgåva ber elevane lese to eller tre kapittel og finne noko teksten ikkje seier rett ut. Det er same ferdigheit som i timen i dag. Passar som lekse.",
+      notes: "Nettbiblioteket-oppgåva i elevmodulen ber elevane lese to eller tre kapittel og finne noko teksten ikkje seier rett ut. Det er same ferdigheit som i timen i dag. Ho passar som frivillig lekse.",
     },
   ],
   guide: {
@@ -793,14 +1071,16 @@ Larar.register("lesing-grytten", {
     forebuing: [
       "Les teksten og lag dine eigne lister over kva vi veit og ikkje veit, så du kan hjelpe gruppene.",
       "Merk deg ordet «òg» i setninga om stemma til mor. Det er ein detalj mange oversjår.",
-      "Sjekk at Bikubesong opnar på Nettbiblioteket frå skulenettet.",
+      "Bla gjennom tekstlysbiletet (lysbilete 8) på tavla på førehand, så du veit kvar sidene skiftar.",
+      "Sjekk at Bikubesong opnar på Nettbiblioteket, så du kan vise vegen dit når du gir leksa.",
     ],
     okt: [
       { fase: "Førlesing", min: 5, gjer: "<p>Mål for timen, kort om Grytten, samtale om teikn på at noko er gale og omgrepet underforstått.</p>", lysbilete: "2 til 5" },
-      { fase: "Lesing", min: 9, gjer: "<p>Gå gjennom kva elevane skal sjå etter. Les høgt, og la elevane lese sjølve og lage to lister.</p>", lysbilete: "6 og 7" },
-      { fase: "Samtale", min: 15, gjer: "<p>Avvisingane, tausheita om Sander, kva vi veit og ikkje veit, klipt rytme, staden som spegel, ordet «òg» og kva som har skjedd.</p>", lysbilete: "8 til 14" },
-      { fase: "Arbeid i modulen", min: 13, gjer: "<p>Elevane svarar på spørsmåla og byrjar på forteljinga der det viktigaste aldri blir sagt.</p>", lysbilete: "15" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Vis vegen til Bikubesong på Nettbiblioteket.</p>", lysbilete: "16" },
+      { fase: "Lesing", min: 9, gjer: "<p>Gå gjennom kva elevane skal sjå etter. Les høgt frå tavla, og la elevane lese stille ein gong til og lage to lister i skriveboka.</p>", lysbilete: "6 til 8" },
+      { fase: "Samtale", min: 15, gjer: "<p>Avvisingane, tausheita om Sander, kva vi veit og ikkje veit, klipt rytme, staden som spegel, ordet «òg» og kva som har skjedd.</p>", lysbilete: "9 til 15" },
+      { fase: "Spørsmål til teksten", min: 6, gjer: "<p>Elevane svarar på dei fire spørsmåla i skriveboka. Vis svaret til slutt.</p>", lysbilete: "16" },
+      { fase: "Skriving", min: 7, gjer: "<p>Elevane byrjar på forteljinga der det viktigaste aldri blir sagt.</p>", lysbilete: "17" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Vis vegen til Bikubesong på Nettbiblioteket.</p>", lysbilete: "18" },
     ],
     misoppfatningar: [
       { feil: "«Teksten er uferdig, for han fortel ikkje kva som skjedde.»", hjelp: "Det er eit medvite val. Spør kva teksten ville mista om første avsnitt forklarte alt." },
@@ -818,7 +1098,7 @@ Larar.register("lesing-grytten", {
       stotte: [
         "Gi eleven ei ferdig tabell med to kolonnar, Kva veit vi? og Kva veit vi ikkje?, med eitt døme i kvar.",
         "Les dialogane saman i klassen med to elevar som tek rollene.",
-        "La eleven svare på fleirvalsspørsmåla før dei korte spørsmåla.",
+        "La eleven svare på dei to første spørsmåla, som har eitt rett svar, før dei to tolkingsspørsmåla.",
       ],
       utfordring: [
         "Be eleven skrive det same møtet frå synsvinkelen til Marius, framleis utan å seie kva som har skjedd.",
@@ -830,7 +1110,7 @@ Larar.register("lesing-grytten", {
       "Skriveoppgåva viser om eleven kan halde tilbake informasjon og likevel gjere alvoret synleg.",
       "Kjenneteikn på god måloppnåing: eleven finn fleire spor, skil tolking frå gjetting og forklarer kva det underforståtte gjer med lesaren.",
     ],
-    vidare: "Gå vidare til «Om å lese sakte» i stilen til Marit Eikemo, som òg er frå Odda, men skriv essay. Grytten og Fosse er eit godt par i samanlikningsmodulen.",
+    vidare: "Gå vidare til «Om å lese sakte» i stilen til Marit Eikemo, som òg er frå Odda, men skriv essay. Grytten og Fosse er eit godt par i samanlikningsmodulen. Som frivillig lekse kan elevane lese i Bikubesong på Nettbiblioteket, slik oppgåva nedst i elevmodulen legg opp til.",
   },
 });
 
@@ -867,7 +1147,7 @@ Larar.register("lesing-eikemo", {
         <p>Når las du sist noko så lenge at du gløymde tida?</p>`,
       form: "Snakk med sidemannen",
       tid: 3,
-      notes: "La elevane vere ærlege. Mange les sjeldan lenge, og det er ikkje noko nederlag. Samle nokre svar på tavla i to kolonnar: kort og lenge. Du kjem tilbake til dei på lysbilete 10.",
+      notes: "La elevane vere ærlege. Mange les sjeldan lenge, og det er ikkje noko nederlag. Samle nokre svar på tavla i to kolonnar: kort og lenge. Du kjem tilbake til dei på lysbilete 11.",
     },
     {
       title: "Kva er eit essay?",
@@ -880,7 +1160,7 @@ Larar.register("lesing-eikemo", {
             <tr><td>konklusjon</td><td>kan ende i eit spørsmål</td></tr>
           </tbody>
         </table>`,
-      notes: "Elevane kjenner argumenterande tekstar godt frå skriving. Poenget er skilnaden: eit essay er ikkje ute etter å vinne ein diskusjon, men å utforske. Det er lov å skifte meining undervegs. Minn om at skilnaden står som første punkt i «Sjå etter dette» i modulen.",
+      notes: "Elevane kjenner argumenterande tekstar godt frå skriving. Poenget er skilnaden: eit essay er ikkje ute etter å vinne ein diskusjon, men å utforske. Det er lov å skifte meining undervegs. Minn om at skilnaden er første punkt på neste lysbilete, «Sjå etter dette når du les».",
     },
     {
       title: "Sjå etter dette når du les",
@@ -889,24 +1169,71 @@ Larar.register("lesing-eikemo", {
         `<p class="stor">2. Korleis eit <strong>kvardagsleg bilete</strong> seier noko stort.</p>`,
         `<p class="stor">3. At teksten <strong>ikkje</strong> endar i ein fasit.</p>`,
       ],
-      notes: "Lesestrategi: be elevane setje ring rundt kvart spørsmålsteikn i teksten. Det viser raskt kor mykje teksten spør. Ord som kan trenge forklaring: <em>i sveip</em> (fort og overflatisk), <em>meiningsmotstand</em> (nokon som er usamd), <em>institusjon</em>.",
+      notes: "Lesestrategi: be elevane skrive av kvart spørsmål teksten stiller. Det viser raskt kor mykje teksten spør. Ord som kan trenge forklaring: <em>i sveip</em> (fort og overflatisk), <em>meiningsmotstand</em> (nokon som er usamd), <em>institusjon</em>.",
     },
     {
       type: "oppgave",
       title: "Les «Om å lese sakte»",
       body: `<ol>
-          <li>Les teksten i modulen.</li>
-          <li>Set ring rundt kvart spørsmålsteikn.</li>
+          <li>Les teksten stille på tavla.</li>
+          <li>Skriv av kvart spørsmål teksten stiller.</li>
           <li>Les han ein gong til, sakte.</li>
         </ol>`,
+      form: "Åleine",
       tid: 8,
-      notes: "La elevane lese sjølve denne gongen. Det passar godt med tema. Du kan gjerne seie at dei skal lese han sakte med vilje, og sjå om dei merkar skilnaden.",
+      notes: "Teksten står på neste lysbilete og blir vist side for side. La elevane lese stille sjølve denne gongen: det passar godt med tema. Bla i roleg tempo, og spør om alle er ferdige før du blar vidare. Du kan gjerne seie at dei skal lese han sakte med vilje, og sjå om dei merkar skilnaden. Teksten stiller fire spørsmål.",
+    },
+    {
+      type: "tekst",
+      title: "«Om å lese sakte»",
+      text: `
+        <p>Det er noko som har endra seg dei siste åra. Eg les meir enn nokon gong, men
+        eg les annleis. Ein artikkel på nettet tek eg i sveip. Eg får tak i hovudpoenget,
+        eg sjekkar lengda på kommentarfelta, eg blar ned for å sjå om det kjem ein
+        meiningsmotstand. Heile teksten har eg lese på eit halvt minutt. Eg veit kva han
+        seier, eg veit kva han prøver å gjere, og eg går vidare.</p>
+
+        <p>Men er det å lese?</p>
+
+        <p>Då eg var tolv år, sat eg i ein lenestol heile laurdagen og las ei bok om
+        ein gut som rømde frå ein institusjon. Eg veit at det var ein laurdag fordi mor
+        laga middag to gonger, og eg åt på dei begge utan å skjøne kor lang tid det
+        hadde gått. Eg hugsar ikkje slutten av boka. Eg hugsar ein scene der guten
+        gøymer seg i ein hekk, og lukta av hekk har sidan hatt noko med den scenen å
+        gjere, sjølv om eg ikkje veit kva slags hekk det skulle vere, og forfattaren
+        neppe har tenkt på lukt i det heile.</p>
+
+        <p>Slik kan ei bok bli. Ho blir ikkje informasjon. Ho blir lukt og rom og kjensle.
+        Og det krev tid. Det krev at ein gjev frå seg kontrollen ei lita stund, at ein
+        lar teksten skje med ein sjølv.</p>
+
+        <p>Eg er ikkje sikker på at eg kan det lenger. Når eg les ein artikkel på fjorten
+        minutt, sit eg og uroleg vippar med foten. Eg har lyst til å gå vidare. Eg veit
+        at ingen kjem til å spørje meg ut om teksten. Eg veit at det viktige er at eg
+        har lese han, ikkje at eg har lese han godt.</p>
+
+        <p>Men eg meiner at vi taper noko her. Ikkje noko stort, kanskje, men noko
+        presist: evna til å bli endra av ein tekst. Ein artikkel kan endre meg dersom eg
+        les han sakte, dersom eg blir ståande att i han ei stund. Dersom eg les han
+        raskt, blir han berre ein ting eg veit.</p>
+
+        <p>Ein lærar fortalde meg ein gong at ho bad elevane sine lese same dikt tre
+        gonger på rad. Første gongen for å skjøne. Andre gongen for å høyre. Tredje
+        gongen for å bu i det. Ho sa at det var den tredje gongen som var lesinga. Dei
+        to første var berre øvingar.</p>
+
+        <p>Eg trur det stemmer. Og eg trur at vi alle treng å spørje oss sjølve: kva er
+        det å lese, eigentleg? Er det å trekke informasjon ut av tekst? Eller er det
+        noko meir? Eg veit ikkje kva svaret er. Eg veit berre at eg saknar laurdagar i
+        lenestolen.</p>`,
+      kjelde: KJELDE_EIKEMO,
+      notes: "Heile teksten, ordrett som i elevmodulen. Kvart trykk blar ei side. Elevane les stille medan du blar, to gonger. Kom tilbake hit når elevane svarar på spørsmåla på lysbilete 16.",
     },
     {
       type: "sitat",
       text: "Men er det å lese?",
       kjelde: KJELDE_EIKEMO,
-      notes: "Eit heilt avsnitt med berre fem ord, rett etter ei skildring av rask lesing. Spør: kvifor står spørsmålet åleine? Det bremsar lesaren og vender teksten. Dette er ikkje eit retorisk spørsmål med eit opplagt svar, men eit spørsmål teksten sjølv undersøkjer. Tel spørsmålsteikna elevane fann: det er fleire enn dei trur.",
+      notes: "Eit heilt avsnitt med berre fem ord, rett etter ei skildring av rask lesing. Spør: kvifor står spørsmålet åleine? Det bremsar lesaren og vender teksten. Dette er ikkje eit retorisk spørsmål med eit opplagt svar, men eit spørsmål teksten sjølv undersøkjer. Samanlikn med spørsmåla elevane skreiv av: det er fire, og tre av dei står tett saman i det siste avsnittet.",
     },
     {
       type: "sitat",
@@ -936,6 +1263,7 @@ Larar.register("lesing-eikemo", {
       type: "diskuter",
       title: "Prøv sjølv",
       prompt: `<p class="stor">Les det siste avsnittet tre gonger.</p>
+        <p><em class="nn">«Eg trur det stemmer. Og eg trur at vi alle treng å spørje oss sjølve: kva er det å lese, eigentleg? Er det å trekke informasjon ut av tekst? Eller er det noko meir? Eg veit ikkje kva svaret er. Eg veit berre at eg saknar laurdagar i lenestolen.»</em></p>
         <p>Kva la du merke til den tredje gongen som du ikkje såg den første?</p>`,
       form: "Åleine, så sidemannen",
       tid: 4,
@@ -965,20 +1293,38 @@ Larar.register("lesing-eikemo", {
     },
     {
       type: "oppgave",
-      title: "Arbeid i modulen",
-      body: `<ul>
-          <li>Svar på dei fire spørsmåla.</li>
-          <li>Skriv eit lite essay om ein vane du har.</li>
-          <li>Du treng ikkje konkludere.</li>
-        </ul>`,
-      tid: 12,
-      notes: "Essayoppgåva ber elevane prøve ein tanke dei avviser etterpå. Det er uvant. Gi eit døme munnleg: «Først tenkte eg at eg sjekkar mobilen fordi eg kjeder meg. Men eigentleg …». Det siste spørsmålet i modulen handlar om eleven sjølv, så her finst ikkje fasit.",
+      title: "Spørsmål til teksten",
+      body: `<p>Svar med heile setningar. Sjå tilbake i teksten før du svarar.</p>
+        <ol>
+          <li>Kva meiner forfattaren om å lese ein artikkel på eit halvt minutt?</li>
+          <li>Kva sa læraren om å lese eit dikt tre gonger på rad?</li>
+          <li>Kva meiner forfattaren med å «bli endra av ein tekst»?</li>
+          <li>Liknar lesinga di meir på den raske eller den sakte måten forfattaren skildrar? Grunngi.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 6,
+      svar: "1. At det knapt er å lese: ein får informasjon, men ikkje meir. 2. At den tredje gongen er den eigentlege lesinga: då bur ein i diktet. 3. Døme: at ein tekst kan gjere noko med tankane og kjenslene våre når vi les sakte og gir han tid. 4. Her finst ingen fasit, men svaret må grunngivast med eit døme.",
+      notes: "Spørsmål 4 handlar om eleven sjølv, så her finst ikkje fasit. Treng elevane teksten, gå tilbake til lysbilete 8.",
+    },
+    {
+      type: "oppgave",
+      title: "Skriv: eit lite essay",
+      body: `<p>Skriv eit lite essay (150–250 ord) der du stiller spørsmål ved ein vane du sjølv har.</p>
+        <ol>
+          <li>Start i noko heilt konkret og kvardagsleg.</li>
+          <li>Still minst to spørsmål undervegs.</li>
+          <li>Prøv éin tanke som du sjølv avviser etterpå.</li>
+          <li>Du treng ikkje konkludere, men avslutninga skal vere medviten.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 6,
+      notes: "Essayoppgåva ber elevane prøve ein tanke dei avviser etterpå. Det er uvant. Gi eit døme munnleg: «Først tenkte eg at eg sjekkar mobilen fordi eg kjeder meg. Men eigentleg …». Elevane byrjar i timen og skriv ferdig heime.",
     },
     {
       title: "Vidare: les ekte Eikemo",
       body: `<p class="stor"><em class="nn">Her, no</em> (1999) ligg på Nettbiblioteket.</p>
         <p>Les minst eitt heilt portrett eller kapittel.</p>`,
-      notes: "Her, no er debutboka hennar, med undertittelen «møte med unge menneske». Samtidsruinar (2008) er for ny for Nettbiblioteket, som dekkjer bøker til og med 2005. Oppgåva ber elevane finne eit spørsmål Eikemo stiller utan å svare på det. Passar som lekse.",
+      notes: "Her, no er debutboka hennar, med undertittelen «møte med unge menneske». Samtidsruinar (2008) er for ny for Nettbiblioteket, som dekkjer bøker til og med 2005. Nettbiblioteket-oppgåva i elevmodulen ber elevane finne eit spørsmål Eikemo stiller utan å svare på det. Ho passar som frivillig lekse.",
     },
   ],
   guide: {
@@ -995,14 +1341,16 @@ Larar.register("lesing-eikemo", {
     forebuing: [
       "Tenk gjennom eitt eige døme på rask og sakte lesing som du kan fortelje om.",
       "Førebu eit munnleg døme på ein tanke som blir avvist i eit essay, til skriveoppgåva.",
-      "Sjekk at Her, no opnar på Nettbiblioteket frå skulenettet.",
+      "Bla gjennom tekstlysbiletet (lysbilete 8) på tavla på førehand, så du veit kvar sidene skiftar.",
+      "Sjekk at Her, no opnar på Nettbiblioteket, så du kan vise vegen dit når du gir leksa.",
     ],
     okt: [
       { fase: "Førlesing", min: 5, gjer: "<p>Mål for timen, kort om Eikemo, samtale om eigne lesevanar og kva eit essay er.</p>", lysbilete: "2 til 5" },
-      { fase: "Lesing", min: 9, gjer: "<p>Gå gjennom kva elevane skal sjå etter. Elevane les sjølve, set ring rundt spørsmålsteikn og les ein gong til.</p>", lysbilete: "6 og 7" },
-      { fase: "Samtale", min: 16, gjer: "<p>Spørsmålet som vender teksten, biletet av boka som lukt, rask og sakte lesing, tre gonger lesing i praksis, den opne slutten og ein klassesamtale om skjermlesing.</p>", lysbilete: "8 til 14" },
-      { fase: "Arbeid i modulen", min: 12, gjer: "<p>Elevane svarar på spørsmåla og byrjar på essayet.</p>", lysbilete: "15" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Vis vegen til Her, no på Nettbiblioteket.</p>", lysbilete: "16" },
+      { fase: "Lesing", min: 9, gjer: "<p>Gå gjennom kva elevane skal sjå etter. Elevane les stille på tavla medan du blar, skriv av spørsmåla i teksten og les ein gong til.</p>", lysbilete: "6 til 8" },
+      { fase: "Samtale", min: 16, gjer: "<p>Spørsmålet som vender teksten, biletet av boka som lukt, rask og sakte lesing, tre gonger lesing i praksis, den opne slutten og ein klassesamtale om skjermlesing.</p>", lysbilete: "9 til 15" },
+      { fase: "Spørsmål til teksten", min: 6, gjer: "<p>Elevane svarar på dei fire spørsmåla i skriveboka. Vis svaret til slutt.</p>", lysbilete: "16" },
+      { fase: "Skriving", min: 6, gjer: "<p>Elevane byrjar på essayet i skriveboka og skriv ferdig heime.</p>", lysbilete: "17" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Vis vegen til Her, no på Nettbiblioteket.</p>", lysbilete: "18" },
     ],
     misoppfatningar: [
       { feil: "«Forfattaren meiner at det er gale å lese på skjerm.»", hjelp: "Ho les sjølv raskt og seier at ho ikkje veit svaret. Ho spør kva vi taper, ho fordømer ikkje." },
@@ -1032,7 +1380,7 @@ Larar.register("lesing-eikemo", {
       "Essayet viser om eleven kan tenkje høgt, stille spørsmål og avslutte medvite utan fasit.",
       "Kjenneteikn på god måloppnåing: eleven skil essay frå argumenterande tekst, bruker døme frå teksten og reflekterer sjølvstendig over eigne lesevanar.",
     ],
-    vidare: "Gå vidare til «Klassebilete» i stilen til Olaug Nilssen. Samanlikningsmodulen til slutt byggjer på dei same stiltrekka.",
+    vidare: "Gå vidare til «Klassebilete» i stilen til Olaug Nilssen. Samanlikningsmodulen til slutt byggjer på dei same stiltrekka. Som frivillig lekse kan elevane lese i Her, no på Nettbiblioteket, slik oppgåva nedst i elevmodulen legg opp til.",
   },
 });
 
@@ -1096,18 +1444,60 @@ Larar.register("lesing-nilssen", {
         `<p class="stor">2. Korleis eit <strong>bilete</strong> blir ein måte å forstå seg sjølv på.</p>`,
         `<p class="stor">3. Kva ho nemner <strong>kort</strong>, og kva ho <strong>dvelar</strong> ved.</p>`,
       ],
-      notes: "Lesestrategi: be elevane merke med éin farge det som blir nemnt kort, og med ein annan det forteljaren bruker mange ord på. Dei vil sjå at det vondaste får færrast ord.",
+      notes: "Lesestrategi: be elevane lage to lister i skriveboka: det som blir nemnt kort, og det forteljaren bruker mange ord på. Dei vil sjå at det vondaste får færrast ord.",
     },
     {
       type: "oppgave",
       title: "Les «Klassebilete»",
       body: `<ol>
-          <li>Lytt medan læraren les høgt.</li>
-          <li>Les teksten sjølv i modulen.</li>
-          <li>Merk av: kva blir nemnt kort? Kva får mange ord?</li>
+          <li>Lytt medan læraren les teksten høgt på tavla.</li>
+          <li>Les han ein gong til, stille.</li>
+          <li>Lag to lister i skriveboka: <strong>Kva blir nemnt kort?</strong> og <strong>Kva får mange ord?</strong></li>
         </ol>`,
+      form: "Åleine",
       tid: 7,
-      notes: "Les roleg og sakleg, utan å dramatisere avsnittet om Mikkel. Den nøkterne tonen skal høyrast.",
+      notes: "Teksten står på neste lysbilete og blir vist side for side. Les roleg og sakleg, utan å dramatisere avsnittet om Mikkel. Den nøkterne tonen skal høyrast. Andre gong les elevane stille medan du blar.",
+    },
+    {
+      type: "tekst",
+      title: "«Klassebilete»",
+      text: `
+        <p>Eg har sett på det klassebiletet frå 7. trinn fleire gonger denne hausten. Eg
+        veit ikkje kvifor. Det ligg i ein skuff på rommet mitt, saman med gamle prøver
+        og eit halvbrukt notathefte. Eg drog det fram ein dag eg skulle rydde, og no
+        ligg det øvst, og eg ser på det.</p>
+
+        <p>Tjueåtte ungar. Sju lærarar bak. Eg står på bakerste rad mellom Lisa og
+        Henrik. Lisa har raudt hår og smiler så det skin. Henrik ser ned i golvet. Eg
+        ser rett i kamera, men eg smiler ikkje. Eg har på meg ein blå hettegenser eg
+        hugsar at eg syntest var stygg, men som mor sa eg måtte ha på den dagen fordi
+        alt anna var i vasken.</p>
+
+        <p>To av jentene på biletet bur ikkje i landet lenger. Familiane deira flytta.
+        Tre av gutane går i klassen min på vidaregåande no, men vi seier ikkje hei
+        lenger. Ein gut, Mikkel, døydde i ei ulukke i fjor sommar. Han står lengst
+        til venstre, smiler skeivt, har på seg ei Brann-trøye.</p>
+
+        <p>Eg veit ikkje kva eg leitar etter når eg ser på det. Kanskje noko som ein
+        gong var rett. Kanskje meg sjølv, slik eg såg meg sjølv den gongen: som ei
+        jente som hadde alt framom seg, alt ope, alt mogleg. No er eg femten, og det
+        meste er framleis ope, men det er mindre ope enn det var.</p>
+
+        <p>Mor kom inn her om dagen då eg sat med biletet på fanget.<br>
+        «Ser du på dei gamle bileta?»<br>
+        «Litt.»<br>
+        «Var det ikkje noko du skulle gjere?»<br>
+        «Jo.»</p>
+
+        <p>Eg la det vekk då. Men neste dag tok eg det fram att.</p>
+
+        <p>Eg trur kanskje vaksne ikkje skjønar at å sjå på eit gamalt bilete kan vere
+        arbeid òg. Det er ikkje berre nostalgi. Det er noko ein gjer for å finne ut
+        korleis ein er kome hit. Kor mange val og uhell og avskjeder som skal til for
+        at den jenta på biletet, ho i den stygge blå hettegenseren, blir til den jenta
+        som no sit på senga si og tenkjer.</p>`,
+      kjelde: KJELDE_NILSSEN,
+      notes: "Heile teksten, ordrett som i elevmodulen. Kvart trykk blar ei side. Les høgt første gong, og la elevane lese stille andre gong medan du blar. Kom tilbake hit når elevane svarar på spørsmåla på lysbilete 16.",
     },
     {
       type: "sitat",
@@ -1153,7 +1543,7 @@ Larar.register("lesing-nilssen", {
       type: "sitat",
       text: "Eg trur kanskje vaksne ikkje skjønar at å sjå på eit gamalt bilete kan vere arbeid òg. Det er ikkje berre nostalgi. Det er noko ein gjer for å finne ut korleis ein er kome hit.",
       kjelde: KJELDE_NILSSEN,
-      notes: "Dette er tolkingsnøkkelen, og tema for det tredje spørsmålet i modulen. Elevane oversjår ofte ordet «kanskje»: forteljaren er ikkje skråsikker. Legg òg merke til at teksten sluttar med «den jenta som no sit på senga si og tenkjer», altså i notida, med biletet i fanget.",
+      notes: "Dette er tolkingsnøkkelen, og tema for spørsmål 3 på lysbilete 16. Elevane oversjår ofte ordet «kanskje»: forteljaren er ikkje skråsikker. Legg òg merke til at teksten sluttar med «den jenta som no sit på senga si og tenkjer», altså i notida, med biletet i fanget.",
     },
     {
       type: "diskuter",
@@ -1167,20 +1557,38 @@ Larar.register("lesing-nilssen", {
     },
     {
       type: "oppgave",
-      title: "Arbeid i modulen",
-      body: `<ul>
-          <li>Svar på dei fire spørsmåla.</li>
-          <li>Skriv om eit bilete du kjenner godt.</li>
-          <li>Skildre biletet konkret først. Hald tonen nøktern.</li>
-        </ul>`,
-      tid: 13,
-      notes: "Skriveoppgåva ber elevane skrive om eit eige bilete. Opne for at dei kan dikte, så ingen må skrive om noko privat dei ikkje vil. Tips: nemn tre personar eller detaljar før du seier noko om kva som har endra seg.",
+      title: "Spørsmål til teksten",
+      body: `<p>Svar med heile setningar. Sjå tilbake i teksten før du svarar.</p>
+        <ol>
+          <li>Kvifor likte forteljaren ikkje hettegenseren ho hadde på seg på klassebiletet?</li>
+          <li>Korleis snakkar forteljaren om Mikkel?</li>
+          <li>Kva meiner forteljaren med at «å sjå på eit gamalt bilete kan vere arbeid»?</li>
+          <li>Korleis viser teksten at livet til forteljaren har endra seg sidan 7. trinn?</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 6,
+      svar: "1. Ho syntest han var stygg, men måtte ha han på fordi alt anna var i vasken. 2. Sakleg og kort, men med nærleik. 3. Døme: det er ein måte å forstå seg sjølv på, å sjå kva som har skjedd mellom då og no. 4. To jenter har flytta ut av landet, tre gutar seier ikkje hei lenger, Mikkel er død, og det meste er «mindre ope» enn før.",
+      notes: "Spørsmål 3 og 4 er dei viktigaste. På spørsmål 4 bør eleven nemne fleire konkrete endringar. Treng elevane teksten, gå tilbake til lysbilete 8.",
+    },
+    {
+      type: "oppgave",
+      title: "Skriv: eit bilete du hugsar",
+      body: `<p>Vel eit bilete du kjenner godt: eit klassebilete, eit feriebilete eller eit familiebilete. Skriv 150–250 ord slik at lesaren skjønar kva som har endra seg sidan biletet vart teke.</p>
+        <ol>
+          <li>Skildre biletet konkret før du seier noko om det.</li>
+          <li>Nemn minst tre personar eller detaljar.</li>
+          <li>Skriv om minst éin ting som har endra seg.</li>
+          <li>Hald tonen nøktern. Du kan gjerne dikte biletet.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 7,
+      notes: "Skriveoppgåva ber elevane skrive om eit eige bilete. Sei tydeleg at dei kan dikte, så ingen må skrive om noko privat dei ikkje vil. Tips: nemn tre personar eller detaljar før du seier noko om kva som har endra seg. Det elevane ikkje rekk, kan vere lekse.",
     },
     {
       title: "Vidare: les ekte Nilssen",
       body: `<p class="stor"><em class="nn">Få meg på, for faen</em> (2005) ligg på Nettbiblioteket.</p>
         <p>Roman om ungdom. Les minst ti sider.</p>`,
-      notes: "Romanen handlar om ungdom og seksualitet, har ein direkte tittel og vart òg film. Kjenn til innhaldet før du gir oppgåva, og vurder om nokre elevar bør få velje ein annan tekst frå Del 5 i staden. Oppgåva ber elevane finne stader der språket ligg tett på talemål, og sjå korleis humor og alvor går om kvarandre.",
+      notes: "Romanen handlar om ungdom og seksualitet, har ein direkte tittel og vart òg film. Kjenn til innhaldet før du gir oppgåva, og vurder om nokre elevar bør få velje ein annan tekst frå Del 5 i staden. Nettbiblioteket-oppgåva i elevmodulen ber elevane finne stader der språket ligg tett på talemål, og sjå korleis humor og alvor går om kvarandre. Ho passar som frivillig lekse.",
     },
   ],
   guide: {
@@ -1196,15 +1604,16 @@ Larar.register("lesing-nilssen", {
     forkunnskapar: "Ingen særlege. Har elevane lese «Ein morgon», kan dei samanlikne to tekstar der forteljaren ser tilbake.",
     forebuing: [
       "Tenk gjennom om nokon i klassen har mist ein venn eller eit familiemedlem, og snakk eventuelt med eleven på førehand.",
-      "Ha fargeblyantar klare til lesinga på lysbilete 7.",
-      "Kjenn til innhaldet i Få meg på, for faen før du gir Nettbiblioteket-oppgåva, og ha eit alternativ klart.",
+      "Bla gjennom tekstlysbiletet (lysbilete 8) på tavla på førehand, så du veit kvar sidene skiftar.",
+      "Kjenn til innhaldet i Få meg på, for faen før du gir Nettbiblioteket-leksa, og ha eit alternativ klart.",
     ],
     okt: [
       { fase: "Førlesing", min: 5, gjer: "<p>Mål for timen, kort om Nilssen, ein stille tankeøving om klassebilete og omgrepa nøktern og nostalgi.</p>", lysbilete: "2 til 5" },
-      { fase: "Lesing", min: 9, gjer: "<p>Gå gjennom kva elevane skal sjå etter. Les høgt, og la elevane lese sjølve og merke kva som er kort og langt.</p>", lysbilete: "6 og 7" },
-      { fase: "Samtale", min: 15, gjer: "<p>Biletskildringa, setningane om Mikkel, kva det er å vere femten, samtalen med mor og tanken om at bilete kan vere arbeid.</p>", lysbilete: "8 til 14" },
-      { fase: "Arbeid i modulen", min: 13, gjer: "<p>Elevane svarar på spørsmåla og skriv om eit bilete dei kjenner godt.</p>", lysbilete: "15" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Vis vegen til Nettbiblioteket, og gi eventuelt eit alternativ til dei som treng det.</p>", lysbilete: "16" },
+      { fase: "Lesing", min: 9, gjer: "<p>Gå gjennom kva elevane skal sjå etter. Les høgt frå tavla, og la elevane lese stille ein gong til og skrive ned kva som er kort og langt.</p>", lysbilete: "6 til 8" },
+      { fase: "Samtale", min: 15, gjer: "<p>Biletskildringa, setningane om Mikkel, kva det er å vere femten, samtalen med mor og tanken om at bilete kan vere arbeid.</p>", lysbilete: "9 til 15" },
+      { fase: "Spørsmål til teksten", min: 6, gjer: "<p>Elevane svarar på dei fire spørsmåla i skriveboka. Vis svaret til slutt.</p>", lysbilete: "16" },
+      { fase: "Skriving", min: 7, gjer: "<p>Elevane skriv om eit bilete dei kjenner godt, eller eit oppdikta bilete.</p>", lysbilete: "17" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Vis vegen til Nettbiblioteket, og gi eventuelt eit alternativ til dei som treng det.</p>", lysbilete: "18" },
     ],
     misoppfatningar: [
       { feil: "«Ho bryr seg ikkje om Mikkel, for ho skriv så lite om han.»", hjelp: "Den nøkterne tonen er eit verkemiddel. Spør kvifor ho hugsar det skeive smilet og Brann-trøya, og kva det seier." },
@@ -1234,14 +1643,14 @@ Larar.register("lesing-nilssen", {
       "Skriveoppgåva viser om eleven kan halde ein nøktern tone og la detaljar bere kjenslene.",
       "Kjenneteikn på god måloppnåing: eleven forklarer verknaden av den nøkterne tonen, bruker sitat og reflekterer over kva teksten seier om å vere ung.",
     ],
-    vidare: "Avslutt lesemodulane med Samanlikn tekstane, der elevane held dei ni tekstane opp mot kvarandre. Nilssen og Halldis Moren Vesaas er eit godt par, sidan Nilssen har lånt tittelen Tung tids tale frå diktet hennar.",
+    vidare: "Avslutt lesemodulane med Samanlikn tekstane, der elevane held dei ni tekstane opp mot kvarandre. Nilssen og Halldis Moren Vesaas er eit godt par, sidan Nilssen har lånt tittelen Tung tids tale frå diktet hennar. Som frivillig lekse kan elevane lese i Få meg på, for faen på Nettbiblioteket, slik oppgåva nedst i elevmodulen legg opp til, eller ein annan tekst du har valt.",
   },
 });
 
 /* ------------------------------------------------------------------ */
 
 Larar.register("lesing-samanlikning", {
-  tittelnotat: "Dette er avslutninga på lesemodulane i Del 5. Elevane skal sjå dei ni tekstane i samanheng og setje ord på kva som skil stilane. Det går best om dei har lese dei fleste tekstane. Har dei lese få, kan du bruke sitata på lysbileta som ein felles referanse.",
+  tittelnotat: "Dette er avslutninga på lesemodulane i Del 5. Elevane skal sjå dei ni tekstane i samanheng og setje ord på kva som skil stilane. Det går best om dei har lese dei fleste tekstane. Har dei lese få, kan du bruke sitata på lysbileta og utdraga frå alle ni tekstane på lysbilete 9 som ein felles referanse.",
   slides: [
     {
       title: "I dag skal vi",
@@ -1269,7 +1678,7 @@ Larar.register("lesing-samanlikning", {
             <tr><td>Nilssen</td><td>«Klassebilete»</td><td>nøktern tone om noko vondt</td></tr>
           </tbody>
         </table>`,
-      notes: "Tabellen står i modulen, med sjanger i tillegg. Spør klassen kva tekst dei hugsar best, og kvifor. Ofte er det teksten med det tydelegaste stiltrekket. Legg merke til at stikkorda i høgre kolonne er verkemiddel, ikkje handling.",
+      notes: "Tabellen står i elevmodulen, med sjanger i tillegg. Spør klassen kva tekst dei hugsar best, og kvifor. Ofte er det teksten med det tydelegaste stiltrekket. Legg merke til at stikkorda i høgre kolonne er verkemiddel, ikkje handling.",
     },
     {
       title: "Kven er stilen?",
@@ -1297,7 +1706,7 @@ Larar.register("lesing-samanlikning", {
           <div class="boks"><h3>Form</h3><p>setningslengd</p><p>avsnitt</p><p>gjentaking</p><p>dialog</p></div>
           <div class="boks"><h3>Innhald og tone</h3><p>kva blir sagt, kva blir ikkje sagt</p><p>stad og natur</p><p>tone: varm, nøktern, klipt</p><p>kven fortel</p></div>
         </div>`,
-      notes: "Dette er spørsmåla elevane kan stille til kva tekst som helst. Be dei skrive dei ned. Samanlikningsoppgåva i modulen ber særleg om setningar, avsnitt, gjentaking og dialog. Fagomgrep gir betre samanlikningar: «Fosse bruker gjentaking» er betre enn «Fosse seier det same mange gonger».",
+      notes: "Dette er spørsmåla elevane kan stille til kva tekst som helst. Be dei skrive dei ned i skriveboka. Samanlikningsoppgåva på lysbilete 14 ber særleg om setningar, avsnitt, gjentaking og dialog. Fagomgrep gir betre samanlikningar: «Fosse bruker gjentaking» er betre enn «Fosse seier det same mange gonger».",
     },
     {
       title: "Lang og kort",
@@ -1319,13 +1728,76 @@ Larar.register("lesing-samanlikning", {
       notes: "Mange av tekstane har eit felles tema: det som ikkje blir sagt mellom foreldre og barn. Men tausheita betyr ulike ting. Hos Halldis Moren Vesaas er ho trygg. Hos Grytten er ho vond. Hos Garborg er ho ein måte å vise kjærleik på. Spør klassen kva tausheita tyder i kvar tekst.",
     },
     {
+      type: "tekst",
+      title: "Utdrag frå dei ni tekstane",
+      text: `
+        <p><strong>«Med toget over vidda»</strong> (Vinje)</p>
+        <p>Eg sit att med ein liten tanke om at det er noko fint med eit folk som
+        framleis går til fots over fjellet. Vi har bilar og fly og hurtigbåtar, og
+        likevel finn ein engelskmann ut at det beste han kan gjere i Noreg, er å gå.
+        Kanskje han skjønar noko vi har gløymt.</p>
+
+        <p><strong>«Heim att»</strong> (Garborg)</p>
+        <p>Far kom inn etter ein halvtime. «Du er heime», sa han.<br>
+        «Ja.»<br>
+        «Det var fint.»</p>
+        <p>Far gjekk ut att. Det var ikkje mangel på kjærleik. Det var berre måten dei
+        var her, alle saman. Når noko var stort, sa ein lite. Når noko var lite, sa ein
+        meir.</p>
+
+        <p><strong>«Bestefar og stormen»</strong> (Duun)</p>
+        <p>Bestefar gjekk mot beitet. Han gjekk så raskt at vi hadde vondt for å nå
+        han. Vinden bles rett i andleta våre. Det byrja å regne òg, men i sidesprut,
+        ikkje rett ned. Det var den slags regn som finn deg uansett kva du har på deg.</p>
+
+        <p><strong>«Jenta og isen»</strong> (Tarjei Vesaas)</p>
+        <p>Det var stilt.<br>
+        Ein måse skreik langt borte.<br>
+        Snøen ved bredda var blå i skuggen, gul der sola tok.<br>
+        Heile dalen heldt pusten.</p>
+
+        <p><strong>«Ein morgon»</strong> (Halldis Moren Vesaas)</p>
+        <p>Vi sit, og vi seier ikkje mykje. Det er ikkje fordi vi ikkje har noko å seie.
+        Det er fordi det er morgon, og vi har heile dagen til å seie det. No skal vi
+        berre vere her, han og eg, med kaffe og brød og lyset som flyttar seg over
+        kjøkenbordet.</p>
+
+        <p><strong>«Frå hytta»</strong> (Jon Fosse)</p>
+        <p>Eg sit ved vindauget i hytta og ser ut og snøen fell og det er stilt og eg
+        har sett ut sidan klokka åtte, ja eg har sett ut og snøen har falle og det har
+        vore stilt heile tida. Det er ingen som veit kvar eg er. Det er ingen som har
+        spurt heller. Eg drog hit i går kveld. Eg drog hit fordi eg måtte. Eg veit
+        ikkje kvifor eg måtte, men eg måtte, og no er eg her, og snøen fell.</p>
+
+        <p><strong>«Bussen klokka kvart over fem»</strong> (Frode Grytten)</p>
+        <p>Mor ringjer.<br>
+        Ho svarar ikkje.</p>
+        <p>Bussen tek til venstre opp Fløensbakken. Lina lener panna mot vindauget.
+        Kaldt. Bra.</p>
+
+        <p><strong>«Om å lese sakte»</strong> (Marit Eikemo)</p>
+        <p>Men er det å lese?</p>
+        <p>Eg trur det stemmer. Og eg trur at vi alle treng å spørje oss sjølve: kva er
+        det å lese, eigentleg? Er det å trekke informasjon ut av tekst? Eller er det
+        noko meir? Eg veit ikkje kva svaret er. Eg veit berre at eg saknar laurdagar i
+        lenestolen.</p>
+
+        <p><strong>«Klassebilete»</strong> (Olaug Nilssen)</p>
+        <p>To av jentene på biletet bur ikkje i landet lenger. Familiane deira flytta.
+        Tre av gutane går i klassen min på vidaregåande no, men vi seier ikkje hei
+        lenger. Ein gut, Mikkel, døydde i ei ulukke i fjor sommar. Han står lengst
+        til venstre, smiler skeivt, har på seg ei Brann-trøye.</p>`,
+      kjelde: "Alle ni er skrivne for kurset i stilen til forfattarane.",
+      notes: "Eitt utdrag frå kvar tekst, ordrett, så elevane har døme å vise til i gruppesamtalen og i samanlikninga sjølv om dei ikkje hugsar tekstane. Bla gjennom utdraga saman, og les gjerne nokre av dei høgt. Når elevane skriv, kan du gå tilbake hit og bla til dei to tekstane dei fleste har valt. Elevane kan òg bruke sitata på lysbilete 4, 7 og 8.",
+    },
+    {
       type: "diskuter",
       title: "Vel to",
       prompt: `<p class="stor">Vel to tekstar som er svært ulike.</p>
         <p>Korleis skaper dei stemning på kvar sin måte? Finn eitt døme frå kvar.</p>`,
       form: "I grupper på tre",
       tid: 6,
-      notes: "Gode par er Fosse og Grytten, eller Duun og Halldis Moren Vesaas, slik tipset i modulen foreslår. Gruppene skal bruke verktøykassa. Be kvar gruppe presentere éi setning der dei samanliknar med eit døme. Samtalen er ei munnleg øving til skriveoppgåva.",
+      notes: "Gode par er Fosse og Grytten, eller Duun og Halldis Moren Vesaas. Gruppene skal bruke verktøykassa og utdraga på lysbilete 9. Be kvar gruppe presentere éi setning der dei samanliknar med eit døme. Samtalen er ei munnleg øving til skriveoppgåva.",
     },
     {
       title: "Slik byggjer du ei samanlikning",
@@ -1363,18 +1835,33 @@ Larar.register("lesing-samanlikning", {
             <tr><td>Olaug Nilssen</td><td>nøktern tone om noko alvorleg</td></tr>
           </tbody>
         </table>`,
-      notes: "Den siste oppgåva i modulen ber elevane skrive ein ny tekst i stilen til éin forfattar, om eit emne forfattaren aldri har skrive om. Tabellen er henta frå skriveoppgåvene i lesemodulane. Ein morosam variant er å skrive om noko heilt kvardagsleg, som ein matpakke, i stilen til Fosse. Å etterlikne ein stil er ein av dei beste måtane å oppdage kva stilen består av.",
+      notes: "Oppgåve 2 på lysbilete 15 lèt elevane skrive ein ny tekst i stilen til éin forfattar, om eit emne forfattaren aldri har skrive om. Tabellen er henta frå skriveoppgåvene i lesemodulane. Ein morosam variant er å skrive om noko heilt kvardagsleg, som ein matpakke, i stilen til Fosse. Å etterlikne ein stil er ein av dei beste måtane å oppdage kva stilen består av.",
     },
     {
       type: "oppgave",
-      title: "Arbeid i modulen",
-      body: `<ul>
-          <li><strong>Vel din favoritt</strong>: kvifor traff han deg?</li>
-          <li><strong>Samanlikning</strong>: to tekstar, døme frå kvar.</li>
-          <li><strong>Skriv vidare på ein stil</strong>: namnet øvst.</li>
-        </ul>`,
-      tid: 19,
-      notes: "Alle bør gjere samanlikninga. Favoritt og stilskriving kan dei velje mellom om tida er knapp, og resten kan vere lekse. Gå rundt og sjekk at samanlikningane har eitt konkret døme frå kvar tekst. Det er det elevane oftast gløymer.",
+      title: "Samanlikn to tekstar",
+      body: `<p>Vel to av dei ni tekstane og samanlikn dei. Skriv 150–250 ord.</p>
+        <ol>
+          <li>Namngi dei to tekstane.</li>
+          <li>Stil: lange eller korte setningar, gjentaking, dialog.</li>
+          <li>Stemning og innhald: kva kjensler skaper tekstane?</li>
+          <li>Minst eitt konkret døme frå kvar tekst.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 12,
+      svar: "Døme på ei god setning: Medan Fosse bind setningane saman med «og», kappar Grytten dei opp: «Kaldt. Bra.»",
+      notes: "Alle skal gjere samanlikninga. Gå rundt og sjekk at samanlikningane har eitt konkret døme frå kvar tekst. Det er det elevane oftast gløymer. Treng dei døme, gå tilbake til utdraga på lysbilete 9 og bla til tekstane dei har valt.",
+    },
+    {
+      type: "oppgave",
+      title: "Vel éi oppgåve til",
+      body: `<ol>
+          <li><strong>Favoritten din</strong>: kva tekst likte du best, og kvifor? Skriv 100–200 ord med minst eitt døme frå teksten.</li>
+          <li><strong>Skriv i ein stil</strong>: skriv ein ny tekst (150–250 ord) i stilen til éin av forfattarane, om noko han eller ho aldri har skrive om. Skriv namnet øvst, og tre linjer til slutt om korleis du trefte stilen.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 7,
+      notes: "Elevane vel éi av dei to oppgåvene og byrjar i timen. Resten kan vere lekse. Tabellen på lysbilete 13 hjelper dei som vel stilskriving.",
     },
     {
       title: "Vidare: frå kurstekst til ekte bok",
@@ -1393,21 +1880,21 @@ Larar.register("lesing-samanlikning", {
       "Elevane kan bruke stiltrekk frå ein forfattar i ein eigen tekst og grunngi vala.",
     ],
     lareplan: [1, 2, 3, 12, 13],
-    forkunnskapar: "Elevane bør ha lese dei fleste av dei ni lesemodulane i Del 5, minst tre eller fire. Sitata på lysbileta gir ein felles referanse for dei som har lese færre.",
+    forkunnskapar: "Elevane bør ha lese dei fleste av dei ni lesemodulane i Del 5, minst tre eller fire. Sitata på lysbileta og utdraga på lysbilete 9 gir ein felles referanse for dei som har lese færre.",
     forebuing: [
-      "Sjå gjennom tabellen i modulen og vel eit par tekstpar du kan tilrå til elevar som ikkje veit kva dei skal velje.",
+      "Sjå gjennom tabellen på lysbilete 3 og utdraga på lysbilete 9, og vel eit par tekstpar du kan tilrå til elevar som ikkje veit kva dei skal velje.",
       "Finn ut kva tekstar klassen har lese, så du veit kva du kan byggje på.",
       "Ha lappar klare til exit-lappen.",
     ],
     okt: [
       { fase: "Oppstart", min: 6, gjer: "<p>Mål for timen, oversikt over dei ni tekstane og sitatleiken om kven stilen er.</p>", lysbilete: "2 til 5" },
-      { fase: "Verktøy for samanlikning", min: 11, gjer: "<p>Verktøykassa, lang og kort setning, det som ikkje blir sagt, og gruppesamtale om to tekstar.</p>", lysbilete: "6 til 9" },
-      { fase: "Frå samtale til tekst", min: 6, gjer: "<p>Struktur for ei samanlikning, modellsetninga og kva stiltrekk elevane kan låne.</p>", lysbilete: "10 til 12" },
-      { fase: "Arbeid i modulen", min: 19, gjer: "<p>Elevane skriv samanlikninga, og vel mellom favoritt og stilskriving.</p>", lysbilete: "13" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Vis vegen til ekte tekstar og ta exit-lappen.</p>", lysbilete: "14" },
+      { fase: "Verktøy for samanlikning", min: 11, gjer: "<p>Verktøykassa, lang og kort setning, det som ikkje blir sagt, utdraga frå dei ni tekstane og gruppesamtale om to tekstar.</p>", lysbilete: "6 til 10" },
+      { fase: "Frå samtale til tekst", min: 6, gjer: "<p>Struktur for ei samanlikning, modellsetninga og kva stiltrekk elevane kan låne.</p>", lysbilete: "11 til 13" },
+      { fase: "Skriving", min: 19, gjer: "<p>Elevane skriv samanlikninga i skriveboka, og vel så mellom favoritt og stilskriving.</p>", lysbilete: "14 og 15" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Vis vegen til ekte tekstar og ta exit-lappen.</p>", lysbilete: "16" },
     ],
     misoppfatningar: [
-      { feil: "«Å samanlikne er å fortelje kva begge tekstane handlar om.»", hjelp: "Ei samanlikning viser kva som er likt og ulikt, og kva det gjer. Vis modellsetninga på lysbilete 11." },
+      { feil: "«Å samanlikne er å fortelje kva begge tekstane handlar om.»", hjelp: "Ei samanlikning viser kva som er likt og ulikt, og kva det gjer. Vis modellsetninga på lysbilete 12." },
       { feil: "«Tekstane med same tema er like.»", hjelp: "Fosse og Grytten har begge ein ungdom som unngår mor, men stilen er motsett. Tema og stil er to ulike ting." },
       { feil: "«Den beste teksten er den eg likar best.»", hjelp: "Smak er lov i favorittoppgåva, men i samanlikninga skal eleven forklare verknad, ikkje rangere." },
       { feil: "«Alle tekstane i kurset er skrivne av forfattarane.»", hjelp: "Dei fleste er skrivne for kurset i stilen til forfattarane. Berre dei merkte utdraga frå Vinje, Garborg og Duun er ekte." },

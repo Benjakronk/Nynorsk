@@ -33,7 +33,7 @@ Larar.register("nynorskforfattarane", {
       steps: [
         "<p class=\"midt\">Dei første skreiv på <strong>landsmål</strong>, like etter at Ivar Aasen laga det skriftlege grunnlaget.</p>",
       ],
-      notes: "Kople til Del 1: Aasen gav ut grammatikken og ordboka si, og då måtte nokon vise at språket kunne brukast til skjønnlitteratur, journalistikk og dikt. Det gjorde Vinje og Garborg. Poenget for elevane er at nynorsken ikkje berre er ei rettskrivingsregel, men eit språk med ein lang litterær tradisjon. Denne sorteringa kjem att i oppgåva til slutt i modulen.",
+      notes: "Kople til Del 1: Aasen gav ut grammatikken og ordboka si, og då måtte nokon vise at språket kunne brukast til skjønnlitteratur, journalistikk og dikt. Det gjorde Vinje og Garborg. Poenget for elevane er at nynorsken ikkje berre er ei rettskrivingsregel, men eit språk med ein lang litterær tradisjon. Denne sorteringa kjem att i oppgåva til slutt i timen (lysbilete 21).",
     },
     {
       type: "bilete",
@@ -216,7 +216,7 @@ Larar.register("nynorskforfattarane", {
       options: ["Aasmund Olavsson Vinje", "Arne Garborg", "Halldis Moren Vesaas"],
       correct: 2,
       explain: "Halldis Moren Vesaas (1907–1995) høyrer til 1900-talet. Vinje og Garborg var sentrale på 1800-talet, då nynorsken vart bygd opp.",
-      notes: "Ein kjapp sjekk før elevane skal sortere forfattarane i modulen. Om mange bommar, gå tilbake til lysbilete 4.",
+      notes: "Ein kjapp sjekk før elevane skal sortere forfattarane i skriveboka. Om mange bommar, gå tilbake til lysbilete 4.",
     },
     {
       type: "diskuter",
@@ -225,18 +225,35 @@ Larar.register("nynorskforfattarane", {
         <p>Kvifor akkurat han eller henne? Stil, tema, staden dei kjem frå?</p>`,
       form: "Fortel sidemannen",
       tid: 3,
-      notes: "Dette er munnleg oppvarming til skriveoppgåva i modulen. Be elevane grunngi med noko konkret frå presentasjonen, ikkje berre «han verkar kul». Lytt etter elevar som vel same forfattar: dei kan samarbeide om å finne ein tekst. Tips til skeptiske lesarar: <em>Bikubesong</em>, fordi historiene er korte, eller «Ved Rondane», som er eit kort dikt.",
+      notes: "Dette er munnleg oppvarming til skriveoppgåva på lysbilete 22. Be elevane grunngi med noko konkret frå presentasjonen, ikkje berre «han verkar kul». Lytt etter elevar som vel same forfattar: dei kan samarbeide om å finne ein tekst. Tips til skeptiske lesarar: <em>Bikubesong</em>, fordi historiene er korte, eller «Ved Rondane», som er eit kort dikt.",
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Les om kvar forfattar og svar på spørsmålet etterpå.</li>
-          <li>Sorter forfattarane etter tid.</li>
-          <li>Skriv 80 til 150 ord om forfattaren du vil lese meir av.</li>
-        </ul>`,
-      tid: 15,
-      notes: "Modulen har eitt fleirvalsspørsmål etter kvar forfattar, ei sortering og to skriveoppgåver. Den siste skriveoppgåva, der elevane finn og les ein ekte tekst, passar godt som heimearbeid eller til ei biblioteksøkt. Lenkjene står i modulen: bokselskap.no for Vinje, Garborg og Duun, og Nettbiblioteket (nb.no) for dei andre. Nb.no krev at ein sit i Noreg.",
+      title: "Kven, kva og når?",
+      body: `<ol>
+          <li>Lag tre kolonnar: <strong>1800-talet</strong>, <strong>1900-talet</strong> og <strong>i dag</strong>. Skriv dei ni forfattarane i rett kolonne, med eitt stikkord om stilen ved kvart namn.</li>
+          <li>Kva var spesielt med bladet <em class="nn">Dølen</em>?</li>
+          <li>Kven fekk Nobelprisen i litteratur i 2023, og kor mange nordmenn hadde fått han før?</li>
+          <li>Kvifor kalla Olaug Nilssen romanen sin <em class="nn">Tung tids tale</em>?</li>
+        </ol>`,
+      form: "I par",
+      tid: 7,
+      svar: `<p>1. 1800-talet: Vinje (ironisk), Garborg (psykologisk). 1900-talet: Duun (episk), Tarjei Vesaas (sparsam), Halldis Moren Vesaas (lyrisk). I dag: Fosse (repetitiv), Grytten (kvardagsleg), Eikemo (essayistisk), Nilssen (direkte).</p>
+        <p>2. Vinje skreiv det meste sjølv, på landsmål. 3. Jon Fosse. Tre før han: Bjørnson, Hamsun og Undset. 4. Tittelen viser til diktsamlinga til Halldis Moren Vesaas frå 1945: det er ei tung tid for mange foreldre no òg.</p>`,
+      notes: "Stikkorda treng ikkje vere dei same som i fasiten, berre dei passar. Godta til dømes «enkle ord» for Tarjei Vesaas og «ærleg» for Nilssen. Bla gjerne tilbake til lysbilete 4 om nokon står fast på tidene. Spørsmål 2 har svaret i notatet til lysbilete 5, så fortel det om du ikkje sa det då.",
+    },
+    {
+      type: "oppgave",
+      title: "Skriv: forfattaren du vil lese",
+      body: `<p class="stor">Vel éin av dei ni forfattarane du har lyst til å lese ein ekte tekst av.</p>
+        <ol>
+          <li>Skriv 80 til 150 ord på nynorsk.</li>
+          <li>Namngi forfattaren og minst eitt verk du vil lese.</li>
+          <li>Forklar kvifor: stil, tema, staden forfattaren kjem frå, eller noko anna.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 8,
+      notes: "Elevane har nettopp fortalt sidemannen om valet sitt, så dei har noko å byggje på. Gå rundt og spør etter noko konkret: kva verk, og kva ved stilen? Det dei ikkje blir ferdige med, kan bli lekse. Som frivillig lekse kan elevane òg finne og lese ein ekte tekst av forfattaren dei valde: bokselskap.no har Vinje, Garborg og Duun gratis, og Nettbiblioteket (nb.no) har dei andre. Nb.no krev at ein sit i Noreg. Elevmodulen har lenkjer til tekstane.",
     },
     {
       title: "Oppsummering",
@@ -251,7 +268,7 @@ Larar.register("nynorskforfattarane", {
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Modulen er inngangen til Del 5 og presenterer ni nynorskforfattarar kronologisk: Vinje og Garborg frå 1800-talet, Duun og dei to Vesaas-forfattarane frå 1900-talet, og Fosse, Grytten, Eikemo og Nilssen frå samtida. For kvar forfattar får elevane bakgrunn, stil og kjende verk, og eit lite spørsmål. Presentasjonen gjer det same på tavla, med vekt på stil og på at nynorsk har ein lang litterær tradisjon. Lesemodulane i Del 5 byggjer på dette, fordi kursteksten i kvar modul er skriven i stilen til ein av forfattarane.</p>",
+    intro: "<p>Modulen er inngangen til Del 5 og presenterer ni nynorskforfattarar kronologisk: Vinje og Garborg frå 1800-talet, Duun og dei to Vesaas-forfattarane frå 1900-talet, og Fosse, Grytten, Eikemo og Nilssen frå samtida. For kvar forfattar får elevane bakgrunn, stil og kjende verk på tavla, med vekt på stil og på at nynorsk har ein lang litterær tradisjon. Undervegs kjem nokre spørsmål og samtalar, og til slutt sorterer elevane forfattarane etter tid, svarer på spørsmål og skriv om forfattaren dei vil lese meir av, alt i skriveboka. Lesemodulane i Del 5 byggjer på dette, fordi kursteksten i kvar modul er skriven i stilen til ein av forfattarane.</p>",
     mal: [
       "Elevane kan namngi fleire nynorskforfattarar og plassere dei i tid.",
       "Elevane kan skildre stilen til nokre av forfattarane med eigne ord og fagomgrep.",
@@ -271,8 +288,8 @@ Larar.register("nynorskforfattarane", {
       { fase: "1800-talet og 1900-talet", min: 10, gjer: "<p>Vinje, Garborg, Duun og dei to Vesaas-forfattarane. Ta spørsmålet om Grieg og samtalen om «eg» og «vi».</p>", lysbilete: "5 til 12" },
       { fase: "Samtida", min: 9, gjer: "<p>Fosse, Grytten, Eikemo og Nilssen. Avslutt med dei to tekstane som heiter <em class=\"nn\">Tung tids tale</em>, og ein kjapp tidssjekk.</p>", lysbilete: "13 til 19" },
       { fase: "Val av forfattar", min: 4, gjer: "<p>Elevane vel ein forfattar og fortel sidemannen kvifor.</p>", lysbilete: "20" },
-      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane arbeider i modulen: spørsmåla, sorteringa og den første skriveoppgåva. Den andre skriveoppgåva kan bli heimearbeid.</p>", lysbilete: "21" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive exit-lapp med ein forfattar og eitt stikkord om stilen.</p>", lysbilete: "22" },
+      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane sorterer forfattarane og svarer på spørsmåla i par, og skriv så åleine om forfattaren dei vil lese meir av. Det dei ikkje blir ferdige med, kan bli lekse.</p>", lysbilete: "21 til 22" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive exit-lapp med ein forfattar og eitt stikkord om stilen.</p>", lysbilete: "23" },
     ],
     misoppfatningar: [
       { feil: "«Nynorsk er eit skulespråk, ikkje eit ordentleg litteraturspråk.»", hjelp: "Vis tidslinja og nobelprisen til Fosse. Nynorsk har vore brukt i dikt, romanar, drama og journalistikk sidan Vinje grunnla <em class=\"nn\">Dølen</em> i 1858." },
@@ -291,19 +308,19 @@ Larar.register("nynorskforfattarane", {
       stotte: [
         "Gi elevane ei tabell med tre kolonnar (namn, tid, stil) dei fyller ut undervegs.",
         "La elevane konsentrere seg om tre forfattarar, éin frå kvar tid.",
-        "Les forfattarportretta i modulen høgt saman med elevar som les seint.",
+        "Skriv stikkorda for kvar forfattar på tavla undervegs, så elevane har dei framfor seg når dei sorterer.",
       ],
       utfordring: [
         "Be elevane finne og lese «Ved Rondane» eller eit dikt frå <em class=\"nn\">Haugtussa</em> i original staving og seie kva som skil språket frå nynorsk i dag.",
-        "La elevane lese første kapittel av ein roman av Fosse, Grytten eller Nilssen og samanlikne stilen med skildringa i modulen.",
+        "La elevane lese første kapittel av ein roman av Fosse, Grytten eller Nilssen og samanlikne stilen med skildringa i timen.",
       ],
     },
     vurdering: [
-      "Spørsmåla i modulen og på tavla viser om elevane har fått med seg dei viktigaste fakta.",
+      "Fleirvalsspørsmåla på tavla og svara i skriveboka viser om elevane har fått med seg dei viktigaste fakta.",
       "Exit-lappen viser om elevane kan knyte eit stilomgrep til ein forfattar.",
       "Kjenneteikn på god måloppnåing: eleven plasserer forfattarane i tid, skildrar stilen med fagomgrep og grunngir valet sitt med konkrete verk og trekk.",
     ],
-    vidare: "Gå vidare til lesemodulane i Del 5. Lesemodulane om Vinje, Garborg og Duun passar godt rett etter, fordi elevane der møter både ein kurstekst og ein ekte tekst i original staving. Knyt gjerne an til språkhistoria i Del 1.",
+    vidare: "Gå vidare til lesemodulane i Del 5. Lesemodulane om Vinje, Garborg og Duun passar godt rett etter, fordi elevane der møter både ein kurstekst og ein ekte tekst i original staving. Knyt gjerne an til språkhistoria i Del 1. Som frivillig lekse kan elevane finne og lese ein ekte tekst av forfattaren dei valde, på bokselskap.no eller i Nettbiblioteket (nb.no), og skrive eit kort referat. Elevmodulen har lenkjer til tekstane og eit spørsmål til kvar forfattar.",
   },
 });
 
@@ -333,7 +350,7 @@ Larar.register("lesing-vinje", {
           <li class="steg">Bladet <em class="nn">Dølen</em></li>
           <li class="steg"><em class="nn">Ferdaminne fraa Sumaren 1860</em></li>
         </ul>`,
-      notes: "Om klassen har hatt modulen Møt nynorskforfattarane, spør kva dei hugsar om Vinje før du trykkjer fram punkta eitt og eitt. Stilen hans var observant og ironisk, og han blanda høgt og lågt: frå filosofisk refleksjon til ein vits om kva han åt på krua. <em>Ferdaminne</em> er ei reiseskildring frå turen til kroninga av Karl 15. i Trondheim. Det er difor kursteksten i dag er ei reiseskildring.",
+      notes: "Om klassen har hatt timen om nynorskforfattarane, spør kva dei hugsar om Vinje før du trykkjer fram punkta eitt og eitt. Stilen hans var observant og ironisk, og han blanda høgt og lågt: frå filosofisk refleksjon til ein vits om kva han åt på krua. <em>Ferdaminne</em> er ei reiseskildring frå turen til kroninga av Karl 15. i Trondheim. Det er difor kursteksten i dag er ei reiseskildring.",
     },
     {
       type: "diskuter",
@@ -342,7 +359,7 @@ Larar.register("lesing-vinje", {
         <p>Kva såg du ut av vindauget? Kva tenkte du på medan du såg?</p>`,
       form: "Snakk med sidemannen",
       tid: 2,
-      notes: "Førlesinga aktiverer det elevane veit, og gir dei det viktigaste lesegrepet for timen: skiljet mellom det ein ser og det ein tenkjer. Be eitt par dele. Skriv på tavla i to kolonnar: SÅG og TENKTE. Den same oppstillinga kjem att på lysbilete 9.",
+      notes: "Førlesinga aktiverer det elevane veit, og gir dei det viktigaste lesegrepet for timen: skiljet mellom det ein ser og det ein tenkjer. Be eitt par dele. Skriv på tavla i to kolonnar: SÅG og TENKTE. Den same oppstillinga kjem att på lysbilete 10.",
     },
     {
       title: "Ord i teksten",
@@ -366,16 +383,57 @@ Larar.register("lesing-vinje", {
           <li>Den lune, litt <strong>sjølvironiske</strong> tonen</li>
         </ul>`,
       steps: ["<p class=\"midt\">Les éin gong utan å stoppe. Les så ein gong til, sakte.</p>"],
-      notes: "Dette er lesestrategien frå modulen. Forklar sjølvironisk: at ein ler litt av seg sjølv eller av «oss vaksne». Be elevane merke seg ein stad der forteljaren slepper det han ser og byrjar å tenkje. Dei som vil, kan skrive ned ei linje. Elevane pleier å lese reiseskildringar som ei ruteliste, så minn dei på at det er tankane som gjer teksten til litteratur.",
+      notes: "Dette er lesestrategien for timen. Forklar sjølvironisk: at ein ler litt av seg sjølv eller av «oss vaksne». Be elevane merke seg ein stad der forteljaren slepper det han ser og byrjar å tenkje. Dei som vil, kan skrive ned ei linje. Elevane pleier å lese reiseskildringar som ei ruteliste, så minn dei på at det er tankane som gjer teksten til litteratur.",
     },
     {
       type: "oppgave",
       title: "Les teksten",
-      body: `<p class="stor">Les «Med toget over vidda» to gonger.</p>
-        <p>Vent med spørsmåla. Vi snakkar om teksten saman først.</p>`,
-      del: "teksten «Med toget over vidda»",
+      body: `<p class="stor">Vi les «Med toget over vidda» på tavla, to gonger.</p>
+        <ol>
+          <li>Lytt når teksten blir lesen høgt.</li>
+          <li>Les han stille ein gong til.</li>
+          <li>Skriv ned éi setning der forteljaren går frå det han <strong>ser</strong> til det han <strong>tenkjer</strong>.</li>
+        </ol>`,
+      form: "Heile klassen",
       tid: 6,
-      notes: "Alternativ: les teksten høgt for klassen første gongen, og la elevane lese sjølve andre gongen. Høgtlesing hjelper elevar som les seint og gir alle same tempo. Teksten er kort, så seks minutt er nok for to gjennomlesingar.",
+      notes: "Teksten står på neste lysbilete og blir vist side for side. Les han høgt for klassen første gongen, og bla så tilbake og la elevane lese stille andre gongen. Du kan òg la elevane lese stille begge gongene. Høgtlesing hjelper elevar som les seint og gir alle same tempo. Teksten er kort, så seks minutt er nok for to gjennomlesingar og ei setning i skriveboka. Gode setningar til oppgåve 3: «Slik er det med oss vaksne òg: vi gjev svar med stødig stemme …» og «Kanskje han skjønar noko vi har gløymt.» Vent med spørsmåla: de snakkar om teksten saman først, og tabellen på lysbilete 10 viser fleire svar.",
+    },
+    {
+      type: "tekst",
+      title: "«Med toget over vidda»",
+      text: `<p>Det er noko underleg med å sitje på eit tog og sjå Noreg gli forbi vindauget.
+        Eg har sett vidda mange gonger, men kvar gong ho viser seg på nytt, kjenner eg
+        meg som ein framand i mitt eige land.</p>
+
+        <p>Ein gut på kanskje seks år sit ved sida av meg og peikar. «Mor, kva er det
+        der?» Han spør om eit reinsdyr, eit fjell, ein liten innsjø. Mora hans svarar
+        tolmodig, men det er tydeleg at ho sjølv ikkje veit alt. Slik er det med oss
+        vaksne òg: vi gjev svar med stødig stemme, sjølv om vi berre delvis veit kva
+        vi snakkar om.</p>
+
+        <p>Toget bremsar inn på Finse. «Vi er på Noregs tak», seier konduktøren
+        over høgtalaren, og folk reiser seg for å fotografere kvarandre framfor
+        stasjonsskiltet. To engelskmenn står med ryggsekkar like store som dei sjølve.
+        Dei skal gå over vidda til Aurland, høyrer eg, fire dagar i raude jakker
+        mellom kvite stein.</p>
+
+        <p>«Trur du dei klarer det?» spør guten.<br>
+        «Sikkert», seier mora.</p>
+
+        <p>Eg sit att med ein liten tanke om at det er noko fint med eit folk som
+        framleis går til fots over fjellet. Vi har bilar og fly og hurtigbåtar, og
+        likevel finn ein engelskmann ut at det beste han kan gjere i Noreg, er å gå.
+        Kanskje han skjønar noko vi har gløymt.</p>
+
+        <p>Lokomotivet plystrar. Vidda opnar seg igjen, og eg ser etter reinsdyr. Det
+        er for varmt i dag, seier ein eldre mann i setet bak. Dei held seg i skuggen.
+        Vi ser ingen, berre stein og lav og himmel.</p>
+
+        <p>Når vi når Myrdal, har guten sovna. Mora pakkar saman appelsinskal og
+        leikar. Toget rullar nedover, og det luktar plutseleg sjø. Slik er Noreg: ein
+        dag er du på vidda, neste augneblink kjenner du tang frå fjorden.</p>`,
+      kjelde: "Skriven for kurset i stilen til Vinje",
+      notes: "Heile kursteksten, ordrett. Kvart trykk blar ei side. Les sakte og tydeleg, og stopp ikkje for å forklare undervegs: orda er gjennomgått på lysbilete 5. Andre gongen kan du bla i takt med at dei fleste har lese ferdig sida.",
     },
     {
       type: "sitat",
@@ -425,14 +483,85 @@ Larar.register("lesing-vinje", {
           </tbody>
         </table>`,
       steps: ["<p>Landsmål frå 1864: <strong>stor bokstav</strong> i substantiv, <em class=\"nn\">aa</em> der vi skriv <em class=\"nn\">å</em>.</p>"],
-      notes: "Førlesing til den andre teksten. Vis at språket ser framandt ut, men at det meste blir forståeleg når ein les høgt. Ordlista i modulen har fleire ord. Tittelen er i original staving «Ved Rundarne»; i dag heiter diktet oftast «Ved Rondane». Kople til Del 1: dette er landsmålet slik det såg ut berre nokre år etter at Aasen gav ut grammatikken og ordboka.",
+      notes: "Førlesing til den andre teksten. Vis at språket ser framandt ut, men at det meste blir forståeleg når ein les høgt. Heile ordlista står på neste lysbilete. Tittelen er i original staving «Ved Rundarne»; i dag heiter diktet oftast «Ved Rondane». Kople til Del 1: dette er landsmålet slik det såg ut berre nokre år etter at Aasen gav ut grammatikken og ordboka.",
+    },
+    {
+      type: "tekst",
+      kicker: "Ordliste",
+      title: "Ord i «Ved Rundarne»",
+      text: `<table>
+          <thead><tr><th>I teksten</th><th>I dag</th></tr></thead>
+          <tbody>
+            <tr><td><em class="nn">seer</em></td><td>ser</td></tr>
+            <tr><td><em class="nn">deim</em></td><td>dei</td></tr>
+            <tr><td><em class="nn">saag</em></td><td>såg</td></tr>
+            <tr><td><em class="nn">sama</em></td><td>same</td></tr>
+            <tr><td><em class="nn">svalar</em></td><td>kjøler</td></tr>
+            <tr><td><em class="nn">Snjo</em></td><td>snø</td></tr>
+            <tr><td><em class="nn">Barnemaal</em></td><td>morsmål, barnespråk</td></tr>
+            <tr><td><em class="nn">fjaag</em></td><td>glad, oppglødd</td></tr>
+            <tr><td><em class="nn">anda</em></td><td>puste</td></tr>
+            <tr><td><em class="nn">altid</em></td><td>alltid</td></tr>
+            <tr><td><em class="nn">hysa</em></td><td>gi hus, ta imot</td></tr>
+            <tr><td><em class="nn">Notti</em></td><td>natta</td></tr>
+            <tr><td><em class="nn">forklaarat</em></td><td>gjort klarare</td></tr>
+            <tr><td><em class="nn">bjart</em></td><td>lyst</td></tr>
+            <tr><td><em class="nn">daarat</em></td><td>dåra, lokka</td></tr>
+            <tr><td><em class="nn">hver</em></td><td>kvar</td></tr>
+            <tr><td><em class="nn">hvem</em></td><td>kven</td></tr>
+            <tr><td><em class="nn">haage Nut</em></td><td>høge fjelltoppen</td></tr>
+            <tr><td><em class="nn">huggar</em></td><td>trøystar</td></tr>
+          </tbody>
+        </table>`,
+      notes: "Heile ordlista til diktet. Gå raskt gjennom ho, gjerne ved å lese orda høgt: mange blir forståelege med ein gong dei blir uttalte. Elevane kan skrive ned dei fem eller seks orda dei synest er vanskelegast, så har dei dei i skriveboka når dei les diktet og svarer på spørsmåla. Bla gjerne tilbake hit medan de les.",
+    },
+    {
+      type: "tekst",
+      title: "«Ved Rundarne»",
+      text: `<p><em class="nn">No seer eg atter slike Fjell og Dalar,<br>
+        som deim eg i min fyrste Ungdom saag,<br>
+        og sama Vind den heite Panna svalar;<br>
+        og Gullet ligg paa Snjo, som før det laag.<br>
+        Det er eit Barnemaal, som til meg talar,<br>
+        og gjer meg tankefull, men endaa fjaag.<br>
+        Med Ungdomsminne er den Tala blandad:<br>
+        det strøymer paa meg, so eg knapt kan anda.</em></p>
+
+        <p><em class="nn">Ja, Livet strøymer paa meg, som det strøymde,<br>
+        naar under Snjo eg saag det grøne Straa.<br>
+        Eg drøymer no, som før eg altid drøymde,<br>
+        naar slike Fjell eg saag i Lufti blaa.<br>
+        Eg gløymer Dagsens Strid, som før eg gløymde,<br>
+        naar eg mot Kveld av Sol eit Glimt fekk sjaa.<br>
+        Eg finner vel eit Hus, som vil meg hysa,<br>
+        naar Soli heim til Notti vil meg lysa.</em></p>
+
+        <p><em class="nn">Alt er som før, men det er meir forklaarat,<br>
+        so Dagsens Ljos meg synes meire bjart,<br>
+        og det, som beit og skar meg, so det saarat,<br>
+        det gjerer sjølve Skuggen mindre svart;<br>
+        sjølv det, som til at synda tidt meg daarat,<br>
+        sjølv det gjer harde Fjellet mindre hardt.<br>
+        Forsonad’ koma atter gamle Tankar;<br>
+        det sama Hjarta er, som eldre bankar.</em></p>
+
+        <p><em class="nn">Og hver ein Stein eg som ein Kjenning finner,<br>
+        for slik var den, eg flaug ikring som Gut.<br>
+        som det var Kjempur, spyr eg, hvem som vinner<br>
+        av den og denne andre haage Nut.<br>
+        Alt minner meg; det minner, og det minner,<br>
+        til Soli burt i Snjoen sloknar ut.<br>
+        Og inn i siste Svevn meg eingong huggar<br>
+        dei gamle Minne og dei gamle Skuggar.</em></p>`,
+      kjelde: "Aasmund Olavsson Vinje, «Ved Rundarne», i <em class=\"nn\">Diktsamling</em> (1864), s. 161 til 162. Fri tekst, etter Wikikilden",
+      notes: "Heile diktet i original staving. Les det høgt, sakte, og la elevane følgje med på tavla. Les gjerne éin gong til, eller la elevane lese stille med orda i skriveboka framfor seg. Spel gjerne melodien til Grieg etterpå. Mange kjenner att melodien, men har aldri lese teksten.",
     },
     {
       type: "sitat",
       text: "No seer eg atter slike Fjell og Dalar,<br>som deim eg i min fyrste Ungdom saag,<br>og sama Vind den heite Panna svalar;<br>og Gullet ligg paa Snjo, som før det laag.",
       kjelde: "Aasmund Olavsson Vinje, «Ved Rundarne», 1864",
       steps: ["<p>Kva ser han? Kvar har han sett det før?</p>"],
-      notes: "Les strofa høgt, sakte, to gonger. Spel gjerne melodien til Grieg etterpå. Spør: kva er «Gullet» som ligg på snøen? Det er sollyset. Det er ein metafor. Elevane pleier å tru at diktet handlar om første gong han ser fjella, men «atter» betyr igjen: han kjem attende til landskapet frå ungdomen. Det er svaret på det første fleirvalsspørsmålet i modulen.",
+      notes: "Gå tilbake til første strofe og les ho ein gong til. Spør: kva er «Gullet» som ligg på snøen? Det er sollyset. Det er ein metafor. Elevane pleier å tru at diktet handlar om første gong han ser fjella, men «atter» betyr igjen: han kjem attende til landskapet frå ungdomen. Det er svaret på spørsmål 1 på lysbilete 20.",
     },
     {
       type: "diskuter",
@@ -451,18 +580,49 @@ Larar.register("lesing-vinje", {
           <div class="boks"><h3>«Ved Rundarne»</h3><p>tett, høgtidleg tone</p><p>minne og kjensler</p><p>dikt med rim</p></div>
         </div>`,
       steps: ["<p class=\"midt stor\">Begge: frå det ein <strong>ser</strong> til det ein <strong>tenkjer</strong>.</p>"],
-      notes: "La elevane seie kva som er likt før du viser steget. Dette er det siste friskriftsspørsmålet i modulen, så samtalen er ei god førebuing. Be dei finne rimorda i første strofe: Dalar, svalar, talar; saag, laag, fjaag. Det viser at diktet er bygd strengt, medan kursteksten er laus prosa.",
+      notes: "La elevane seie kva som er likt før du viser steget. Det siste spørsmålet på lysbilete 20 ber elevane samanlikne tekstane, så samtalen er ei god førebuing. Be dei finne rimorda i første strofe: Dalar, svalar, talar; saag, laag, fjaag. Det viser at diktet er bygd strengt, medan kursteksten er laus prosa.",
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Svar på spørsmåla til begge tekstane.</li>
-          <li>Skriv di eiga reiseskildring: 150 til 250 ord.</li>
-          <li>Bland det du såg med det du tenkte.</li>
-        </ul>`,
-      tid: 15,
-      notes: "Friskriftsspørsmåla har dømesvar som elevane kan klikke fram etter at dei har skrive sitt eige. Minn dei på å skrive først. I skriveoppgåva er det vanlegaste problemet at elevane lagar ei ruteliste: «Så kom vi til … Så åt vi …». Spør: kva la du merke til, og kva fekk det deg til å tenkje på? Dei som blir tidleg ferdige, kan lese meir Vinje på bokselskap.no.",
+      title: "Spørsmål til «Med toget over vidda»",
+      body: `<ol>
+          <li>Korleis omtalar konduktøren stasjonen på Finse?</li>
+          <li>Kva tenkjer forteljaren om dei to engelskmennene?</li>
+          <li>Kva meiner forteljaren med at <em class="nn">«vi gjev svar med stødig stemme, sjølv om vi berre delvis veit kva vi snakkar om»</em>?</li>
+          <li>Skildra stemninga i teksten med eigne ord, i to til tre setningar.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 4,
+      svar: `<p>1. Som «Noregs tak». 2. At det er noko fint med at dei vil gå over vidda til fots. 3. Vaksne verkar ofte sikre sjølv om dei ikkje veit alt. 4. Døme: Stemninga er roleg, observerande og litt ettertenksam. Forteljaren legg merke til små ting utan å vere dramatisk.</p>`,
+      notes: "Bla tilbake til teksten på lysbilete 8 om elevane vil sjå etter. Spørsmål 1 og 2 er rett fram, 3 og 4 krev tolking. Be elevane skrive sitt eige svar før du viser fasiten: svar 3 og 4 er berre døme.",
+    },
+    {
+      type: "oppgave",
+      title: "Spørsmål til «Ved Rundarne»",
+      body: `<ol>
+          <li>Kva er situasjonen i diktet? Ser han landskapet for første gong?</li>
+          <li>Kva ligg i linja <em class="nn">«Alt er som før, men det er meir forklaarat»</em>?</li>
+          <li><em class="nn">«Det er eit Barnemaal, som til meg talar.»</em> Kva meiner Vinje med at landskapet talar eit barnespråk til han?</li>
+          <li>Samanlikn med «Med toget over vidda»: kva gjer begge tekstane med det ein ser og det ein tenkjer?</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 4,
+      svar: `<p>1. Han ser att eit fjellandskap han kjende i ungdomen. 2. Landskapet er det same, men han forstår det betre no. 3. Landskapet vekkjer minne og kjensler frå oppveksten, noko som ligg djupare enn vaksne tankar. 4. Begge startar i noko konkret og lèt synet føre til ein større tanke. Diktet er tettare og meir høgtidleg, kursteksten lausare, med replikkar og humor.</p>`,
+      notes: "Mykje av dette har klassen snakka om på lysbilete 16 til 18, så elevane skal no formulere det sjølve. Bla tilbake til ordlista på lysbilete 14 om nokon står fast på orda.",
+    },
+    {
+      type: "oppgave",
+      title: "Skriv: di eiga reiseskildring",
+      body: `<p class="stor">Skriv om ei reise du har gjort, kort eller lang.</p>
+        <ol>
+          <li>Skriv 150 til 250 ord i eg-form.</li>
+          <li>Ta med minst tre ting du såg, høyrde eller lukta.</li>
+          <li>La minst éin observasjon føre til ein tanke om noko større.</li>
+          <li>Prøv deg på ein lun eller sjølvironisk kommentar.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 7,
+      notes: "Ei reiseskildring er ikkje ei ruteliste. Det vanlegaste problemet er at elevane skriv «Så kom vi til … Så åt vi …». Spør: kva la du merke til, og kva fekk det deg til å tenkje på? Vis gjerne tabellen på lysbilete 10 att som modell. Resten av teksten kan bli lekse. Som frivillig lekse kan elevane som vil lese meir, finne <em>Ferdaminne</em> og dikta til Vinje gratis på bokselskap.no.",
     },
     {
       title: "Oppsummering",
@@ -476,7 +636,7 @@ Larar.register("lesing-vinje", {
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Modulen har to tekstar. Den første, «Med toget over vidda», er ei reiseskildring skriven for kurset i stilen til Vinje: ein eg-forteljar tek toget over Hardangervidda og lèt små observasjonar føre til større tankar. Den andre er det ekte diktet «Ved Rundarne» frå 1864 i original staving, med ordliste. Presentasjonen er lagd opp som ei leseøkt med førlesing, lesing, samtale om verkemiddel og tolking, og overgang til spørsmåla og skriveoppgåva i modulen.</p>",
+    intro: "<p>Modulen har to tekstar. Den første, «Med toget over vidda», er ei reiseskildring skriven for kurset i stilen til Vinje: ein eg-forteljar tek toget over Hardangervidda og lèt små observasjonar føre til større tankar. Den andre er det ekte diktet «Ved Rundarne» frå 1864 i original staving, med ordliste. Presentasjonen er lagd opp som ei leseøkt med førlesing, lesing, samtale om verkemiddel og tolking, og til slutt spørsmål og ei skriveoppgåve på tavla. Begge tekstane står ordrett på tekstlysbilete, så elevane les på tavla og skriv i skriveboka.</p>",
     mal: [
       "Elevane kan skilje mellom det forteljaren ser og det han tenkjer, og forklare korleis teksten går frå det konkrete til det allmenne.",
       "Elevane kan skildre tonen i ein tekst og peike på ord og setningar som skaper han.",
@@ -484,25 +644,25 @@ Larar.register("lesing-vinje", {
       "Elevane kan samanlikne ein moderne prosatekst og eit eldre dikt.",
     ],
     lareplan: [1, 2, 3, 6, 15],
-    forkunnskapar: "Elevane bør ha møtt Vinje i modulen Møt nynorskforfattarane og kjenne til landsmålet til Ivar Aasen frå Del 1. Omgrepa metafor og rim er nyttige, men kan introduserast undervegs.",
+    forkunnskapar: "Elevane bør ha møtt Vinje i timen Møt nynorskforfattarane og kjenne til landsmålet til Ivar Aasen frå Del 1. Omgrepa metafor og rim er nyttige, men kan introduserast undervegs.",
     forebuing: [
-      "Les begge tekstane i modulen på førehand.",
+      "Les begge tekstane på førehand (lysbilete 8 og 15).",
       "Finn gjerne eit kart over Bergensbanen (Finse, Myrdal) og eit opptak av «Ved Rondane» med melodien til Grieg.",
       "Avgjer om du vil lese kursteksten høgt første gongen (lysbilete 7).",
       "Ha lappar klare til exit-lappen.",
     ],
     okt: [
       { fase: "Førlesing", min: 5, gjer: "<p>Gå gjennom måla, presenter Vinje og la elevane snakke om ei reise dei har gjort. Gå gjennom orda og lesestrategien.</p>", lysbilete: "2 til 6" },
-      { fase: "Lesing", min: 6, gjer: "<p>Elevane les «Med toget over vidda» to gonger, eller du les høgt første gongen.</p>", lysbilete: "7" },
-      { fase: "Samtale om kursteksten", min: 8, gjer: "<p>Samtal om sitatet om vaksne, tabellen over sjå og tenkje, tonen, og tanken om engelskmannen.</p>", lysbilete: "8 til 11" },
-      { fase: "Det ekte diktet", min: 8, gjer: "<p>Innfør stavinga, les første strofe høgt og samtal om to nøkkellinjer. Samanlikn tekstane.</p>", lysbilete: "12 til 15" },
-      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane svarer på spørsmåla og byrjar på reiseskildringa. Resten kan bli heimearbeid.</p>", lysbilete: "16" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive exit-lapp med éin observasjon og éin tanke.</p>", lysbilete: "17" },
+      { fase: "Lesing", min: 6, gjer: "<p>Klassen les «Med toget over vidda» på tavla to gonger. Les gjerne høgt første gongen.</p>", lysbilete: "7 til 8" },
+      { fase: "Samtale om kursteksten", min: 7, gjer: "<p>Samtal om sitatet om vaksne, tabellen over sjå og tenkje, tonen, og tanken om engelskmannen.</p>", lysbilete: "9 til 12" },
+      { fase: "Det ekte diktet", min: 9, gjer: "<p>Innfør stavinga og ordlista, les heile diktet høgt på tavla, sjå nærare på første strofe og samtal om to nøkkellinjer. Samanlikn tekstane.</p>", lysbilete: "13 til 18" },
+      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane svarer på spørsmåla til begge tekstane i skriveboka og byrjar på reiseskildringa. Resten kan bli lekse.</p>", lysbilete: "19 til 21" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive exit-lapp med éin observasjon og éin tanke.</p>", lysbilete: "22" },
     ],
     misoppfatningar: [
       { feil: "«Kursteksten er skriven av Vinje.»", hjelp: "Den første teksten er skriven for kurset i stilen til Vinje, og handlar om eit moderne tog. Berre diktet «Ved Rundarne» er Vinje sine eigne ord." },
       { feil: "«I diktet ser han fjella for første gong.»", hjelp: "Peik på <em class=\"nn\">atter</em> og <em class=\"nn\">som før det laag</em>: han kjem attende til landskapet frå ungdomen." },
-      { feil: "«Ei reiseskildring er å fortelje kva ein gjorde i rekkjefølgje.»", hjelp: "Vis tabellen på lysbilete 9: det er tankane som heng seg på observasjonane, som gjer teksten verd å lese." },
+      { feil: "«Ei reiseskildring er å fortelje kva ein gjorde i rekkjefølgje.»", hjelp: "Vis tabellen på lysbilete 10: det er tankane som heng seg på observasjonane, som gjer teksten verd å lese." },
       { feil: "«Vinje skreiv feil, han kunne ikkje nynorsk.»", hjelp: "Han skreiv landsmål slik det var normert og brukt i 1860-åra. Nynorsken har endra seg sidan, som alle skriftspråk gjer." },
     ],
     samtale: [
@@ -513,21 +673,21 @@ Larar.register("lesing-vinje", {
     ],
     tilpassing: {
       stotte: [
-        "Les begge tekstane høgt for elevane, og la dei følgje med i modulen.",
+        "Les begge tekstane høgt for elevane, og la dei følgje med på tavla.",
         "Gi elevane ein tokolonne-mal (SÅG og TENKTE) til reiseskildringa.",
         "La elevar som strevar med diktet, konsentrere seg om første strofe og ordlista.",
       ],
       utfordring: [
-        "Be elevane lese eit utdrag frå <em class=\"nn\">Ferdaminne</em> på bokselskap.no og finne ein stad der Vinje blandar høgt og lågt.",
+        "Som lekse: be elevane lese eit utdrag frå <em class=\"nn\">Ferdaminne</em> på bokselskap.no og finne ein stad der Vinje blandar høgt og lågt.",
         "La elevane skrive om første strofe av «Ved Rundarne» til moderne nynorsk og diskutere kva som går tapt.",
       ],
     },
     vurdering: [
-      "Fleirvalsspørsmåla i modulen viser om elevane har forstått innhaldet i begge tekstane.",
-      "Friskriftssvara viser om elevane kan tolke og samanlikne, ikkje berre attgi.",
+      "Svara på dei enkle spørsmåla (1 og 2 på lysbilete 19 og 20) viser om elevane har forstått innhaldet i begge tekstane.",
+      "Svara på tolkingsspørsmåla i skriveboka viser om elevane kan tolke og samanlikne, ikkje berre attgi.",
       "Kjenneteikn på god måloppnåing i reiseskildringa: eleven skriv i eg-form, tek med konkrete sanseinntrykk, lèt minst éin observasjon føre til ein større tanke og prøver ein lun tone.",
     ],
-    vidare: "Gå vidare til lesemodulen om Garborg, der elevane møter ein lengre tekst om heimkomst og eit ekte utdrag frå <em class=\"nn\">Bondestudentar</em>. Språket i Garborg-utdraget er landsmål frå 1883 og kan samanliknast med Vinje.",
+    vidare: "Gå vidare til lesemodulen om Garborg, der elevane møter ein lengre tekst om heimkomst og eit ekte utdrag frå <em class=\"nn\">Bondestudentar</em>. Språket i Garborg-utdraget er landsmål frå 1883 og kan samanliknast med Vinje. Som frivillig lekse kan elevane gjere spørsmåla i elevmodulen, der dei får dømesvar å samanlikne med.",
   },
 });
 
@@ -595,11 +755,90 @@ Larar.register("lesing-garborg", {
     {
       type: "oppgave",
       title: "Les teksten",
-      body: `<p class="stor">Les «Heim att».</p>
-        <p>Vent med spørsmåla. Vi snakkar om teksten saman først.</p>`,
-      del: "teksten «Heim att»",
+      body: `<p class="stor">Vi les «Heim att» på tavla.</p>
+        <ol>
+          <li>Lytt når byrjinga blir lesen høgt.</li>
+          <li>Les resten stille.</li>
+          <li>Skriv ned ein replikk som seier lite, men som du trur betyr mykje.</li>
+        </ol>`,
+      form: "Heile klassen",
       tid: 8,
-      notes: "Teksten er lengre enn Vinje-teksten. Vurder å lese dei første fire avsnitta høgt, fram til Anders kjem inn i kjøkenet, og la elevane lese resten sjølve. Dei som les fort, kan lese ein gong til og markere replikkar som seier lite.",
+      notes: "Teksten står på neste lysbilete og blir vist side for side. Han er lengre enn Vinje-teksten. Vurder å lese dei første fire avsnitta høgt, fram til Anders kjem inn i kjøkenet, og la elevane lese resten stille medan du blar i eit roleg tempo. Du kan òg lese heile teksten høgt. Oppgåve 3 gir elevane noko å gjere medan dei ventar på at sida skal blaast, og svara kjem godt med på dei neste lysbileta. Gode døme: «Du er heime» og «Det treng du ikkje vite enno.»",
+    },
+    {
+      type: "tekst",
+      title: "«Heim att»",
+      text: `<p>Han hadde ikkje vore heime på fire år. Då han steig av bussen i bygda, var
+        det første han la merke til, at det lukta annleis enn han hugsa. Tang og
+        granskog og noko anna, noko han ikkje fekk tak i.</p>
+
+        <p>Anders sette frå seg ryggsekken på stasjonen og såg seg om. Bygda låg der ho
+        låg. Tre nye hus oppe i bakken. Men dei gamle, dei var som før. Butikken på
+        hjørnet var open. Skiltet på frisørsalongen var det same. Berre dei nye
+        målestrøka var ulike.</p>
+
+        <p>Han hadde studert i Oslo. Sosialantropologi. Han hadde tenkt at det skulle
+        vere noko som opna verda for han, og det hadde det vore òg, ein periode. Men i
+        fjor hadde noko knekt. Han fekk dårlege karakterar i to fag, han slutta å gå på
+        førelesingar, han låg i senga frå klokka sju om morgonen til klokka to om
+        ettermiddagen. Mor ringde kvar søndag, og han fortalde at alt var bra.</p>
+
+        <p>No skulle han heim eit halvår. Det var ikkje noko han ville fortelje folk.
+        Han skulle berre vere her ei stund. Hjelpe far med fjøsen. Lese litt. Tenkje.
+        Det var ord han hadde brukt overfor seg sjølv mange gonger, og han kjende at
+        dei vart tynnare for kvar gong.</p>
+
+        <p>Mor stod i kjøkenet då han kom inn. Ho sette frå seg kaffekoppen, kom mot
+        han, og klemde han lenge utan å seie noko. Det var akkurat det han hadde grua
+        seg til og lengta etter på same tid: at ho ikkje skulle spørje. At ho berre
+        skulle klemme.</p>
+
+        <p>«Eg har laga grøt», sa ho.<br>
+        «Eg er ikkje særleg svolten.»<br>
+        «Du må ete litt.»</p>
+
+        <p>Han åt litt. Ho såg på han over bordet, og han kjende auga hennar over heile
+        andletet, og han ville sjå opp og smile, men han klarte ikkje.</p>
+
+        <p>Far kom inn etter ein halvtime. «Du er heime», sa han.<br>
+        «Ja.»<br>
+        «Det var fint.»</p>
+
+        <p>Far gjekk ut att. Det var ikkje mangel på kjærleik. Det var berre måten dei
+        var her, alle saman. Når noko var stort, sa ein lite. Når noko var lite, sa ein
+        meir. Det var ein logikk Anders hadde dyrka inn i seg som ung, og som han no
+        skjøna at han kanskje hadde teke med seg som ein sjukdom inn i livet i byen,
+        der folk venta at ein skulle snakke om det viktige.</p>
+
+        <p>Den første natta sov han ikkje. Han låg og høyrde fjøsen. Kyrne snufsa. Ein
+        hund glefsa langt borte. Han høyrde elva bak låven, ho som hadde rensa
+        kveldsdusta i alle hans somrar. Det var ein lyd som var så velkjend at han
+        hadde gløymt at han var der.</p>
+
+        <p>Klokka fem reiste han seg, kledde på seg dei gamle arbeidskleda som hang i
+        gangen, og gjekk ut til far. Far snudde seg på fjøsdøra.<br>
+        «Du er tidleg ute.»<br>
+        «Eg fekk ikkje sove.»</p>
+
+        <p>Far nikka. Det vart ikkje sagt meir. Dei stelte saman. Anders kjende at
+        ryggen hugsa det. Bøttene, mjølkemaskina, fôret. Det var som om kroppen hans
+        hadde halde på desse rørslene i fire år, venta på at han skulle kome attende og
+        bruke dei.</p>
+
+        <p>Då dei var ferdige, sat dei på stabburet og åt brød med ost. Sola kom opp.
+        Anders kjende noko som han ikkje hadde kjent på lenge: at han var her, og berre
+        her, og at det var nok ein augneblink.</p>
+
+        <p>«Du må gjerne bli», sa far utan å sjå på han. «Så lenge du vil.»<br>
+        «Eg veit ikkje kva eg vil.»<br>
+        «Det treng du ikkje vite enno.»</p>
+
+        <p>Det var det dei sa om saka. Anders såg ut over enga. Han tenkte: kanskje eg
+        blir verande. Kanskje eg reiser igjen. Han visste ikkje. Men for første gong
+        sidan i fjor haust, var det å ikkje vite ikkje ein vond ting. Det var berre ein
+        ting. Han kunne leve med det ei stund.</p>`,
+      kjelde: "Skriven for kurset i stilen til Garborg",
+      notes: "Heile kursteksten, ordrett. Kvart trykk blar ei side. Ikkje stopp for å forklare undervegs. Orda er gjennomgått på lysbilete 5. Ver merksam på avsnittet om at noko «knekt» i Oslo: det kan treffe nokon i klassen.",
     },
     {
       type: "sitat",
@@ -614,7 +853,7 @@ Larar.register("lesing-garborg", {
       text: "Når noko var stort, sa ein lite. Når noko var lite, sa ein meir.",
       kjelde: "«Heim att»",
       steps: ["<p>Stemmer dette i di familie? Kva er fordelen, og kva er ulempa?</p>"],
-      notes: "Denne setninga er nøkkelen til heile teksten, og ho er eit av friskriftsspørsmåla i modulen. Legg merke til oppbygginga: to setningar som speglar kvarandre, med stort og lite bytt om. Det er eit verkemiddel (kiasme eller spegling). Teksten seier sjølv kva ulempa er: Anders har teke med seg denne logikken «som ein sjukdom» til byen, der folk venta at ein skulle snakke om det viktige.",
+      notes: "Denne setninga er nøkkelen til heile teksten, og ho kjem att i spørsmål 4 på lysbilete 19. Legg merke til oppbygginga: to setningar som speglar kvarandre, med stort og lite bytt om. Det er eit verkemiddel (kiasme eller spegling). Teksten seier sjølv kva ulempa er: Anders har teke med seg denne logikken «som ein sjukdom» til byen, der folk venta at ein skulle snakke om det viktige.",
     },
     {
       title: "Vis, ikkje fortel",
@@ -652,14 +891,65 @@ Larar.register("lesing-garborg", {
           <li>Presteskulen er dyr, og faren er ikkje rik</li>
         </ul>`,
       steps: ["<p>Landsmål frå 1883: <em class=\"nn\">Aalvor</em> (alvor), <em class=\"nn\">honom</em> (han), <em class=\"nn\">nokot</em> (noko), <em class=\"nn\">verta</em> (bli)</p>"],
-      notes: "Førlesing til den andre teksten. Forklar at det å bli prest på den tida var ein av dei få vegane oppover for ein bondegut, og at det kosta mykje. Språket ligg nærare nynorsk i dag enn Vinje, men har framleis stor bokstav i substantiv og <em>aa</em> for å. Be elevane lese høgt for seg sjølve, halvhøgt, og bruke ordlista.",
+      notes: "Førlesing til den andre teksten. Forklar at det å bli prest på den tida var ein av dei få vegane oppover for ein bondegut, og at det kosta mykje. Språket ligg nærare nynorsk i dag enn Vinje, men har framleis stor bokstav i substantiv og <em>aa</em> for å. Heile ordlista står på neste lysbilete, og utdraget på lysbiletet etter det.",
+    },
+    {
+      type: "tekst",
+      kicker: "Ordliste",
+      title: "Ord i <em class=\"nn\">Bondestudentar</em>",
+      text: `<table>
+          <thead><tr><th>I teksten</th><th>I dag</th></tr></thead>
+          <tbody>
+            <tr><td><em class="nn">Soga</em></td><td>soge, forteljing</td></tr>
+            <tr><td><em class="nn">Aalvor</em></td><td>alvor</td></tr>
+            <tr><td><em class="nn">Age</em></td><td>age, respekt</td></tr>
+            <tr><td><em class="nn">Oskefot</em></td><td>oskeladd</td></tr>
+            <tr><td><em class="nn">vunnet</em></td><td>vunne</td></tr>
+            <tr><td><em class="nn">lyddest det</em></td><td>lydde det, høyrdest det ut</td></tr>
+            <tr><td><em class="nn">Lurtonar</em></td><td>lurtonar, lokketonar</td></tr>
+            <tr><td><em class="nn">lokkad</em></td><td>lokka</td></tr>
+            <tr><td><em class="nn">honom</em></td><td>han</td></tr>
+            <tr><td><em class="nn">Fant</em></td><td>fattig omstreifar</td></tr>
+            <tr><td><em class="nn">Riking</em></td><td>rik mann</td></tr>
+            <tr><td><em class="nn">Voner</em></td><td>voner, håp</td></tr>
+            <tr><td><em class="nn">um</em></td><td>om</td></tr>
+            <tr><td><em class="nn">nokot</em></td><td>noko</td></tr>
+            <tr><td><em class="nn">elder</em></td><td>eller</td></tr>
+            <tr><td><em class="nn">stundom</em></td><td>av og til</td></tr>
+            <tr><td><em class="nn">verta</em></td><td>bli</td></tr>
+            <tr><td><em class="nn">tidt</em></td><td>ofte</td></tr>
+          </tbody>
+        </table>`,
+      notes: "Heile ordlista til utdraget. Les orda høgt og gå raskt gjennom. Elevane kan skrive ned dei orda dei synest er vanskelegast, så har dei dei framfor seg når dei les. Bla gjerne tilbake hit medan de les.",
+    },
+    {
+      type: "tekst",
+      title: "Frå <em class=\"nn\">Bondestudentar</em> (1883)",
+      text: `<p><em class="nn">Det var ei Soga, som vart fortald med slikt eit Aalvor og slik ein
+        Age, som galdt det ein Oskefot, som hadde vunnet eit Kongerike. Og kvar Gong dei kom
+        til det, at «no var han Prest og hadde kanskje sine 600 Dalar um Aaret», so lyddest
+        det for Daniel som Lurtonar, som lokkad han ut til store Eventyr. Skulde slikt kunna
+        henda med honom –? Den Presteskulen var so fælt dyr. Sjølve Jo Kleppe, som no var slik
+        ein Riking, døydde som Fant tilslutt, sagde dei, fordi han hadde kostat so mykje ut
+        paa Sonen. Og Far, han var nok ikkje nokon Riking, han. – Der var smaae Voner.</em></p>
+
+        <p><em class="nn">Men meir og meir drøymde Daniel um Presteskulen, og meir og meir
+        trudde han, at Vaarherre vilde hjelpa han dit. Det kunde snart koma Raad og Hjelp,
+        naar han fyrst vilde.</em></p>
+
+        <p><em class="nn">Og det hende tidt nok, at Folk gav desse hans Draumar Næring. «Det
+        kunde verta nokot stort av den Guten», fekk han stundom høyra at den elder den hadde
+        sagt, «berre det var nokon, som vilde halda han paa Skular». Nokot stort! – Det maatte
+        vera Prest, det.</em></p>`,
+      kjelde: "Arne Garborg, <em class=\"nn\">Bondestudentar</em>, første utgåva 1883, kapittel I. Fri tekst, etter bokselskap.no",
+      notes: "Garborg sine eigne ord, i original staving. Les utdraget høgt éin gong, sakte, og la så elevane lese det halvhøgt for seg sjølve. Det går lettare når ein høyrer det. Forklar at Daniel er ein bondegut som drøymer om å bli prest, og at tankestrekane står slik i originalen.",
     },
     {
       type: "sitat",
       text: "Det var ei Soga, som vart fortald med slikt eit Aalvor og slik ein Age, som galdt det ein Oskefot, som hadde vunnet eit Kongerike.",
       kjelde: "Arne Garborg, <em class=\"nn\">Bondestudentar</em>, 1883",
       steps: ["<p>Kva blir det å bli prest samanlikna med?</p>"],
-      notes: "Folk i bygda fortel om ein som vart prest, som om det var eventyret om oskeladden som vann kongeriket. Samanlikninga viser kor stor avstanden var mellom bondestanden og embetsstanden. <em>Age</em> betyr respekt, nesten litt frykt. Dette er eit av friskriftsspørsmåla i modulen, så la samtalen vere kort og opne.",
+      notes: "Folk i bygda fortel om ein som vart prest, som om det var eventyret om oskeladden som vann kongeriket. Samanlikninga viser kor stor avstanden var mellom bondestanden og embetsstanden. <em>Age</em> betyr respekt, nesten litt frykt. Dette kjem att i spørsmål 3 på lysbilete 20, så la samtalen vere kort og open.",
     },
     {
       type: "diskuter",
@@ -669,18 +959,50 @@ Larar.register("lesing-garborg", {
         <p>Kva kostar det å reise ut? Kva kostar det å kome att?</p>`,
       form: "Snakk med sidemannen",
       tid: 3,
-      notes: "Dette er det siste friskriftsspørsmålet i modulen. Hjelp elevane å sjå at dei to tekstane er to sider av same rørsle, skrivne med 140 års mellomrom. Kople til livssituasjonen til unge i dag: mange må flytte for å ta utdanning. Spør: kva forventingar møter unge som flyttar ut, og som flyttar heim?",
+      notes: "Dette kjem att i spørsmål 4 på lysbilete 20. Hjelp elevane å sjå at dei to tekstane er to sider av same rørsle, skrivne med 140 års mellomrom. Kople til livssituasjonen til unge i dag: mange må flytte for å ta utdanning. Spør: kva forventingar møter unge som flyttar ut, og som flyttar heim?",
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Svar på spørsmåla til begge tekstane.</li>
-          <li>Skriv om å kome attende: 150 til 250 ord.</li>
-          <li>Forbodne ord: <em class="nn">glad, trist, redd, sint</em>.</li>
-        </ul>`,
-      tid: 15,
-      notes: "Skriveregelen er streng med vilje: alt må visast gjennom detaljar, handlingar og replikkar. Gå rundt og spør: kva gjer personen din med hendene? Kva legg han eller ho merke til? Minn elevane på at ein replikkveksling kan vere berre tre ord, som mellom Anders og far.",
+      title: "Spørsmål til «Heim att»",
+      body: `<ol>
+          <li>Kvifor kjem Anders heim?</li>
+          <li>Korleis tek mor imot han?</li>
+          <li>Kva gjer fjøsarbeidet med Anders?</li>
+          <li>Forklar med eigne ord: <em class="nn">«Når noko var stort, sa ein lite. Når noko var lite, sa ein meir.»</em></li>
+          <li>Korleis vil du skildre Anders som person?</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 4,
+      svar: `<p>1. Han har slite psykisk i Oslo og treng å vere ein stad han kjenner. 2. Med ein stille klem og mat. 3. Kroppen hugsar arbeidet, og det gir han ro. 4. Dei store tinga snakkar dei nesten ikkje om, småtinga pratar dei om. Det kan gjere det vanskeleg å seie det viktige. 5. Døme: reflektert, stille og sliten, ærleg om at noko har knekt, og han finn litt ro på garden.</p>`,
+      notes: "Bla tilbake til teksten på lysbilete 8 om elevane vil sjå etter. Spørsmål 1 til 3 er rett fram, 4 og 5 krev tolking, og svara der er berre døme. Be elevane skrive sitt eige svar før du viser fasiten.",
+    },
+    {
+      type: "oppgave",
+      title: "Spørsmål til <em class=\"nn\">Bondestudentar</em>",
+      body: `<ol>
+          <li>Kva drøymer Daniel om?</li>
+          <li>Kvifor er draumen vanskeleg å nå?</li>
+          <li>Folk fortel om presten <em class="nn">«som galdt det ein Oskefot, som hadde vunnet eit Kongerike»</em>. Kva fortel samanlikninga om bygda Daniel veks opp i?</li>
+          <li>Samanlikn med «Heim att». Begge handlar om ein ung mann og heimen, men retninga er ulik. Forklar.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 4,
+      svar: `<p>1. Å kome inn på presteskulen og bli prest. 2. Presteskulen er svært dyr, og faren er ikkje rik. 3. Å bli prest var nesten eventyrleg: avstanden mellom bondestanden og embetsstanden var enorm, og folk såg opp til presten. 4. Daniel drøymer seg bort frå heimen, Anders kjem heim att. To sider av same rørsle: kva det kostar å reise ut, og kva det kostar å kome att.</p>`,
+      notes: "Klassen har snakka om spørsmål 3 og 4 på lysbilete 17 og 18, så no skal elevane formulere det sjølve. Bla tilbake til ordlista på lysbilete 15 om nokon står fast.",
+    },
+    {
+      type: "oppgave",
+      title: "Skriv: å kome attende",
+      body: `<p class="stor">Ein person kjem attende til ein stad han eller ho har vore borte frå.</p>
+        <ol>
+          <li>Skriv 150 til 250 ord. Gjer staden konkret med tre eller fire detaljar.</li>
+          <li>Vis kjenslene, ikkje skriv dei. Forbodne ord: <em class="nn">glad, trist, redd, sint</em>.</li>
+          <li>Ta med minst éin kort replikkveksling.</li>
+          <li>La noko vere usagt mellom personane.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 7,
+      notes: "Skriveregelen er streng med vilje: alt må visast gjennom detaljar, handlingar og replikkar. Gå rundt og spør: kva gjer personen din med hendene? Kva legg han eller ho merke til? Minn elevane på at ein replikkveksling kan vere berre tre ord, som mellom Anders og far. Resten av teksten kan bli lekse.",
     },
     {
       title: "Oppsummering",
@@ -694,7 +1016,7 @@ Larar.register("lesing-garborg", {
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Modulen har to tekstar. «Heim att» er skriven for kurset i stilen til Garborg: Anders kjem heim til garden etter fire år i Oslo, der noko har «knekt». I familien seier ein lite om det viktige, og kjenslene kjem fram gjennom detaljar og korte replikkar. Den andre teksten er eit ekte utdrag frå første kapittel av <em class=\"nn\">Bondestudentar</em> (1883), om bondeguten Daniel som drøymer om å bli prest. Presentasjonen er lagd opp som ei leseøkt: førlesing, lesing, samtale om det usagde og om å vise i staden for å fortelje, det ekte utdraget, og overgang til spørsmåla og skriveoppgåva.</p>",
+    intro: "<p>Modulen har to tekstar. «Heim att» er skriven for kurset i stilen til Garborg: Anders kjem heim til garden etter fire år i Oslo, der noko har «knekt». I familien seier ein lite om det viktige, og kjenslene kjem fram gjennom detaljar og korte replikkar. Den andre teksten er eit ekte utdrag frå første kapittel av <em class=\"nn\">Bondestudentar</em> (1883), om bondeguten Daniel som drøymer om å bli prest. Presentasjonen er lagd opp som ei leseøkt: førlesing, lesing, samtale om det usagde og om å vise i staden for å fortelje, det ekte utdraget, og til slutt spørsmål og ei skriveoppgåve på tavla. Begge tekstane står ordrett på tekstlysbilete, så elevane les på tavla og skriv i skriveboka.</p>",
     mal: [
       "Elevane kan tolke korte replikkar og forklare kva som ligg under det som blir sagt.",
       "Elevane kan forklare korleis ein tekst viser kjensler gjennom detaljar og handlingar i staden for å namngi dei.",
@@ -702,20 +1024,20 @@ Larar.register("lesing-garborg", {
       "Elevane kan samanlikne korleis to tekstar frå ulike tider framstiller unge menneske og heimen.",
     ],
     lareplan: [1, 2, 3, 5, 6],
-    forkunnskapar: "Elevane bør ha møtt Garborg i modulen Møt nynorskforfattarane. Det er nyttig om dei kjenner omgrepa forteljar og replikk. Lesemodulen om Vinje gir ein fin bakgrunn for det eldre språket.",
+    forkunnskapar: "Elevane bør ha møtt Garborg i timen Møt nynorskforfattarane. Det er nyttig om dei kjenner omgrepa forteljar og replikk. Lesemodulen om Vinje gir ein fin bakgrunn for det eldre språket.",
     forebuing: [
-      "Les begge tekstane i modulen på førehand.",
+      "Les begge tekstane på førehand (lysbilete 8 og 16).",
       "Teksten tek opp at Anders har det tungt psykisk. Tenk gjennom om nokon i klassen kan bli særleg treft, og ha eventuelt ein plan for det.",
       "Avgjer om du vil lese byrjinga av «Heim att» høgt (lysbilete 7).",
       "Ha lappar klare til exit-lappen.",
     ],
     okt: [
       { fase: "Førlesing", min: 4, gjer: "<p>Gå gjennom måla, presenter Garborg, la elevane gjette ut frå tittelen, og gå gjennom orda og lesestrategien.</p>", lysbilete: "2 til 6" },
-      { fase: "Lesing", min: 8, gjer: "<p>Elevane les «Heim att». Les gjerne byrjinga høgt.</p>", lysbilete: "7" },
-      { fase: "Samtale om kursteksten", min: 9, gjer: "<p>Samtal om replikkane til far, setninga om stort og lite, vis-ikkje-fortel, forteljarsynsvinkelen og slutten.</p>", lysbilete: "8 til 12" },
-      { fase: "Det ekte utdraget", min: 6, gjer: "<p>Innfør Daniel og stavinga, les sitatet og samanlikn dei to unge mennene.</p>", lysbilete: "13 til 15" },
-      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane svarer på spørsmåla og byrjar på skriveoppgåva. Resten kan bli heimearbeid.</p>", lysbilete: "16" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive ei setning som viser nervøsitet utan å namngi han.</p>", lysbilete: "17" },
+      { fase: "Lesing", min: 8, gjer: "<p>Klassen les «Heim att» på tavla. Les gjerne byrjinga høgt.</p>", lysbilete: "7 til 8" },
+      { fase: "Samtale om kursteksten", min: 8, gjer: "<p>Samtal om replikkane til far, setninga om stort og lite, vis-ikkje-fortel, forteljarsynsvinkelen og slutten.</p>", lysbilete: "9 til 13" },
+      { fase: "Det ekte utdraget", min: 7, gjer: "<p>Innfør Daniel, stavinga og ordlista, les utdraget høgt på tavla, sjå nærare på sitatet og samanlikn dei to unge mennene.</p>", lysbilete: "14 til 18" },
+      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane svarer på spørsmåla til begge tekstane i skriveboka og byrjar på skriveoppgåva. Resten kan bli lekse.</p>", lysbilete: "19 til 21" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive ei setning som viser nervøsitet utan å namngi han.</p>", lysbilete: "22" },
     ],
     misoppfatningar: [
       { feil: "«Far bryr seg ikkje om Anders, han seier nesten ingenting.»", hjelp: "Vis setninga «Det var ikkje mangel på kjærleik.» Stillheita er måten familien viser omsorg på. Far gir Anders lov til å bli «så lenge du vil»." },
@@ -738,15 +1060,15 @@ Larar.register("lesing-garborg", {
       ],
       utfordring: [
         "Be elevane skrive same scene, far og Anders på stabburet, frå far sin ståstad.",
-        "La elevane lese meir av første kapittel av <em class=\"nn\">Bondestudentar</em> på bokselskap.no og skildre Daniel.",
+        "Som lekse: la elevane lese meir av første kapittel av <em class=\"nn\">Bondestudentar</em> på bokselskap.no og skildre Daniel.",
       ],
     },
     vurdering: [
-      "Fleirvalsspørsmåla viser om elevane har fått med seg handlinga i begge tekstane.",
-      "Friskriftssvara om setninga med stort og lite og om dei to retningane viser om elevane kan tolke og samanlikne.",
+      "Svara på dei enkle spørsmåla (1 til 3 på lysbilete 19, 1 og 2 på lysbilete 20) viser om elevane har fått med seg handlinga i begge tekstane.",
+      "Svara om setninga med stort og lite og om dei to retningane viser om elevane kan tolke og samanlikne.",
       "Kjenneteikn på god måloppnåing i skriveoppgåva: eleven viser kjensler gjennom konkrete detaljar og handlingar, har ein kort replikkveksling og lèt noko vere usagt.",
     ],
-    vidare: "Gå vidare til lesemodulen om Duun, der naturen er ein motstandar og personane handlar meir enn dei snakkar. Grepet med å vise i staden for å fortelje kjem att der.",
+    vidare: "Gå vidare til lesemodulen om Duun, der naturen er ein motstandar og personane handlar meir enn dei snakkar. Grepet med å vise i staden for å fortelje kjem att der. Som frivillig lekse kan elevane gjere spørsmåla i elevmodulen, der dei får dømesvar å samanlikne med.",
   },
 });
 
@@ -805,16 +1127,111 @@ Larar.register("lesing-duun", {
           <li>Augneblinken der far tek eit <strong>val</strong> utan å seie eit ord</li>
         </ul>`,
       steps: ["<p class=\"midt\">Les éin gong samanhengande, så éin gong sakte.</p>"],
-      notes: "Lesestrategi: be elevane teikne ei lita pil i margen, eller notere, der dei trur vendepunktet er. Mange vel augneblinken då bestefar går ut. Vendepunktet teksten peikar på, er når far peikar. Det kjem vi tilbake til.",
+      notes: "Lesestrategi: be elevane notere i skriveboka kvar dei trur vendepunktet er. Mange vel augneblinken då bestefar går ut. Vendepunktet teksten peikar på, er når far peikar. Det kjem vi tilbake til.",
     },
     {
       type: "oppgave",
       title: "Les teksten",
-      body: `<p class="stor">Les «Bestefar og stormen».</p>
-        <p>Vent med spørsmåla. Vi snakkar om teksten saman først.</p>`,
-      del: "teksten «Bestefar og stormen»",
+      body: `<p class="stor">Vi les «Bestefar og stormen» på tavla.</p>
+        <ol>
+          <li>Følg med når teksten blir lesen høgt.</li>
+          <li>Skriv ned kvar du trur <strong>vendepunktet</strong> i forteljinga er.</li>
+          <li>Skriv ned eitt ord eller ei setning der vêret gjer noko, som om det levde.</li>
+        </ol>`,
+      form: "Heile klassen",
       tid: 8,
-      notes: "Teksten eignar seg godt til høgtlesing fordi han har mange korte replikkar og aukande spenning. Les gjerne sjølv, og la elevane følgje med. Stopp ikkje undervegs.",
+      notes: "Teksten står på neste lysbilete og blir vist side for side. Han eignar seg godt til høgtlesing fordi han har mange korte replikkar og aukande spenning. Les gjerne sjølv og bla i takt, og stopp ikkje undervegs. Du kan òg la elevane lese stille. Oppgåve 2 og 3 skriv elevane etter lesinga. Svara kjem på lysbilete 11 og 12: vendepunktet teksten peikar på, er når far peikar, og døme på vêr som lever er «Vinden reiv i alt han nådde».",
+    },
+    {
+      type: "tekst",
+      title: "«Bestefar og stormen»",
+      text: `<p>Det var den haustkvelden bestefar gjekk ut etter sauene at vi forstod at han
+        ikkje var den same lenger.</p>
+
+        <p>Stormen kom inn frå nordvest, slik han alltid gjorde i oktober. Mor høyrde
+        det først på vinden i pipa, ho som hadde lytta på den lyden i seksti år.<br>
+        «Vi må få sauene inn», sa ho.<br>
+        «Eg går», sa far.<br>
+        «Eg går òg», sa eg.<br>
+        «Du blir her», sa far. «Med bestefar.»</p>
+
+        <p>Bestefar sat ved omnen. Han hadde site der mest heile dagen. Han hadde
+        slutta å snakke så mykje det siste året. Det hadde kome langsamt, som ei elv
+        som vart smalare og smalare. Først berre at han gløymde namn. Så at han
+        gløymde kvar han var. No, somme tider, gløymde han kven vi var, mor og far
+        og eg. Men ikkje sauene. Han gløymde aldri sauene.</p>
+
+        <p>Då far hadde gått ut, reiste bestefar seg. Han gjekk til vindauget. Han stod
+        der med dei tunge, gamle nevane sine på vindaugskarmen, og han såg ut.<br>
+        «Sauene», sa han.<br>
+        «Far er ute med dei», sa eg. «Han kjem snart att.»<br>
+        Han svara ikkje. Han stod og stod.</p>
+
+        <p>Då snudde han seg mot meg, og auga hans var klåre, klårare enn dei hadde
+        vore på månader.<br>
+        «Eg må òg.»<br>
+        «Nei, bestefar.»<br>
+        «Eg må òg, gut.»</p>
+
+        <p>Han var raskare enn eg trudde. Han hadde alt fått på seg jakka før eg fekk
+        reist meg. Sjøstøvlane. Den gamle olja.<br>
+        «Bestefar, det er storm.»<br>
+        «Eg veit kva storm er.»</p>
+
+        <p>Eg sprang opp på loftet etter mor.<br>
+        «Bestefar er på veg ut», sa eg.<br>
+        Ho slapp glaset, det slo i golvet, og ho sprang ned.</p>
+
+        <p>Då vi kom ned i gangen, var bestefar alt ute. Eg såg han forsvinne mellom
+        låven og fjøsen. Vinden reiv i alt han nådde.</p>
+
+        <p>Vi gjekk etter. Mor heldt meg i armen.<br>
+        «Vi må hente han heim», sa ho.<br>
+        «Far har sauene. Han greier seg», sa eg.<br>
+        «Det er ikkje sauene eg er redd for, gut. Det er bestefar.»</p>
+
+        <p>Bestefar gjekk mot beitet. Han gjekk så raskt at vi hadde vondt for å nå
+        han. Vinden bles rett i andleta våre. Det byrja å regne òg, men i sidesprut,
+        ikkje rett ned. Det var den slags regn som finn deg uansett kva du har på deg.</p>
+
+        <p>«Far!» ropte mor. «Far!»<br>
+        Han høyrde ikkje, eller han høyrde det og brydde seg ikkje. Han gjekk vidare.</p>
+
+        <p>Då vi var ved porten, såg eg far. Han stod midt i beitet med tre sauer rundt
+        seg, og han prøvde å få dei mot huset, men dei sneia på sida. Ein låg som om
+        han var snubla i eit søkk.</p>
+
+        <p>Bestefar gjekk rett mot far. Han ropte noko som eg ikkje høyrde, fordi
+        vinden tok orda. Far snudde seg, såg han, og eg såg det, eit gløtt av kva
+        han skulle gjere. Skulle han sende bestefar attende? Skulle han gjere det
+        rette og bestemte? Eller skulle han la bestefar få vere her, i stormen, med
+        sauene som han hadde gått etter i seksti år?</p>
+
+        <p>Far sa ingenting. Han peika berre.<br>
+        «Den der, far. Ho heng att i greinene.»</p>
+
+        <p>Bestefar gjekk dit. Han bøygde seg ned, plukka sauen ut frå krattet, sette
+        han på beina. Han gjorde det utan å nøle. Som om han hadde gjort det fem
+        hundre gonger før, fordi han hadde det.</p>
+
+        <p>Saman gjekk dei to, far og bestefar, med sauene framfor seg. Eg og mor
+        venta ved porten. Mor heldt meg framleis i armen, men ikkje så hardt no.</p>
+
+        <p>Då dei kom forbi oss, snudde bestefar seg mot mor.<br>
+        «Du må òg ha jakka på, jenta mi.»</p>
+
+        <p>Det var det første han hadde sagt til henne på fjorten dagar. Det var ikkje
+        særleg, og det var ikkje noko klokt. Men ho byrja å gråte, mor, der ho stod,
+        med regnet og vinden og alt, og eg hadde aldri sett henne gråte før.</p>
+
+        <p>Vi fekk sauene inn. Bestefar gjekk attende til omnen sin. Tre dagar etter
+        visste han ikkje lenger kvar fjøsen var.</p>
+
+        <p>Men den kvelden, akkurat den kvelden, var han ute i stormen og redda ein
+        sau. Det er den eg vil hugse han med. Ikkje stolen ved omnen. Stormen. Sauen
+        i krattet. Mor som gret.</p>`,
+      kjelde: "Skriven for kurset i stilen til Duun",
+      notes: "Heile kursteksten, ordrett. Kvart trykk blar ei side. Les med roleg, aukande tempo mot stormscena, og la det vere stille eit augneblink etter siste setning før du går vidare. Bestefar har ein sjukdom som gjer at han gløymer. Ver merksam på elevar med besteforeldre med demens.",
     },
     {
       type: "sitat",
@@ -869,14 +1286,77 @@ Larar.register("lesing-duun", {
           <li>Nynorsk frå 1918 med <strong>trøndsk</strong> dialektfarge</li>
         </ul>`,
       steps: ["<p><em class=\"nn\">sunnant</em> (sørfrå), <em class=\"nn\">bygsla</em> (leigde), <em class=\"nn\">dem</em> (dei), <em class=\"nn\">kleinare</em> (veikare)</p>"],
-      notes: "Førlesing til den ekte teksten. Språket ligg nærare det elevane skriv sjølve enn Vinje og Garborg, men har mange trønderske former. Forklar kort situasjonen: Per er husmann og har bygsla ein plass under garden Lines. Husbonden krev meir pliktarbeid enn dei var samde om. Forklar pliktarbeid: arbeid husmannen måtte gjere for bonden som betaling for plassen.",
+      notes: "Førlesing til den ekte teksten. Språket ligg nærare det elevane skriv sjølve enn Vinje og Garborg, men har mange trønderske former. Forklar kort situasjonen: Per er husmann og har bygsla ein plass under garden Lines. Husbonden krev meir pliktarbeid enn dei var samde om. Forklar pliktarbeid: arbeid husmannen måtte gjere for bonden som betaling for plassen. Heile ordlista står på neste lysbilete, og utdraget på lysbiletet etter det.",
+    },
+    {
+      type: "tekst",
+      kicker: "Ordliste",
+      title: "Ord i <em class=\"nn\">Juvikingar</em>",
+      text: `<table>
+          <thead><tr><th>I teksten</th><th>I dag</th></tr></thead>
+          <tbody>
+            <tr><td><em class="nn">fortele</em></td><td>fortelje</td></tr>
+            <tr><td><em class="nn">sunnant</em></td><td>sørfrå</td></tr>
+            <tr><td><em class="nn">havt gar og grunn</em></td><td>hatt gard og jord</td></tr>
+            <tr><td><em class="nn">bygsla</em></td><td>leigde</td></tr>
+            <tr><td><em class="nn">Ein dagen</em></td><td>ein dag</td></tr>
+            <tr><td><em class="nn">forlikte om</em></td><td>samde om</td></tr>
+            <tr><td><em class="nn">hinka</em></td><td>halta</td></tr>
+            <tr><td><em class="nn">råke</em></td><td>treffe</td></tr>
+            <tr><td><em class="nn">matmora</em></td><td>husfrua på garden</td></tr>
+            <tr><td><em class="nn">sjøl</em></td><td>sjølv</td></tr>
+            <tr><td><em class="nn">dem</em></td><td>dei</td></tr>
+            <tr><td><em class="nn">rakkjin min</em></td><td>uslingen min</td></tr>
+            <tr><td><em class="nn">gullbane ditt</em></td><td>gullbarnet ditt</td></tr>
+            <tr><td><em class="nn">grov i måle</em></td><td>grov i målet, hard i tonen</td></tr>
+            <tr><td><em class="nn">knegjekk</em></td><td>gjekk laus på med knea</td></tr>
+            <tr><td><em class="nn">saumfór</em></td><td>gjekk grundig laus på</td></tr>
+            <tr><td><em class="nn">tagde og tok med</em></td><td>sa ingenting og tok imot</td></tr>
+            <tr><td><em class="nn">kleinare</em></td><td>veikare</td></tr>
+            <tr><td><em class="nn">blodvegen</em></td><td>blodspor</td></tr>
+            <tr><td><em class="nn">eit herm</em></td><td>ord folk hugsa og gjentok etter nokon</td></tr>
+            <tr><td><em class="nn">Æg tok borti’om urliti; æg va ikkj god-te anna</em></td><td>Eg tok berre litt i han; eg kunne ikkje anna (på dialekt)</td></tr>
+            <tr><td><em class="nn">skikka … ned med bud</em></td><td>sende bod ned</td></tr>
+            <tr><td><em class="nn">ho Mærit kunde han få</em></td><td>han kunne få Mærit (dottera) til kone</td></tr>
+            <tr><td><em class="nn">han skulde ikkje ha</em></td><td>han ville ikkje ha henne</td></tr>
+            <tr><td><em class="nn">var nedover</em></td><td>gjekk ned til han</td></tr>
+            <tr><td><em class="nn">skipa skrape sitt i båten</em></td><td>lasta det vesle han åtte, i båten</td></tr>
+            <tr><td><em class="nn">husmanns-larv</em></td><td>husmannsstakkar, ein som let seg kue</td></tr>
+            <tr><td><em class="nn">vilde dei vita det</em></td><td>skulle dei vite</td></tr>
+          </tbody>
+        </table>`,
+      notes: "Heile ordlista til utdraget. Ho er lang, så bla raskt gjennom og stopp ved dei orda som trengst for å skjøne handlinga: bygsla, pliktarbeid, knegjekk, kleinare, husmanns-larv. Elevane kan skrive ned dei orda dei synest er vanskelegast. Bla gjerne tilbake hit medan de les.",
+    },
+    {
+      type: "tekst",
+      title: "Frå <em class=\"nn\">Juvikingar</em> (1918)",
+      text: `<p><em class="nn">Den første juvikingen dei veit å fortele om, var kommen sunnant,
+        ifrå Sparbun eller Stoe eller kor det no var. Han heitte Per.</em></p>
+
+        <p><em class="nn">Han hadde vore gift, vart det sagt, og havt gar og grunn, og mor si
+        hadde han med seg. Kva som hadde jaga han ut, det visste Vårherre. Han bygsla seg ein
+        plass under Lines. – Ein dagen kom Lines’n og krevde han etter meir pliktarbeid enn
+        dei var forlikte om. Per såg berre på han. Kom gjorde han ikkje. Utpå kvelden hinka
+        gamle mora hans oppover til garen, vilde råke matmora sjøl. Veit du kva dem forteler
+        borti garane? sa ho. Dei seier det, at rakkjin min skal ha gullbane ditt, – forlate
+        meg synda seier dei så ja. På Lines hadde dei berre ei dotter. Dagen etter kom Lines’n
+        og sa dem ut; han var grov i måle åt dem. Per vart med han oppetter, og i bjørkeholte
+        straks nedanfor garen tok han på husbonden sin, han knegjekk han og han saumfór han så
+        det var ei synd. Lines’n tagde og tok med, han var ikkje kleinare kar; han drog seg
+        heim med blodvegen etter seg. Dei hadde eit herm etter Per frå den gongen: «Æg tok
+        borti’om urliti; æg va ikkj god-te anna.» Lines’n skikka kona si ned med bud, at ho
+        Mærit kunde han få, når det stod til som det gjorde. Per sa nei takk, han skulde ikkje
+        ha. Mærit sjøl var nedover, og kom gråtande att; men Per skipa skrape sitt i båten og
+        rodde. Han var ingen husmanns-larv, vilde dei vita det!</em></p>`,
+      kjelde: "Olav Duun, <em class=\"nn\">Juvikingar</em> (1918), kapittelet «Frå gammalt av». Fri tekst, etter bokselskap.no",
+      notes: "Duun sine eigne ord, i original staving. Les utdraget høgt, sakte, og gjer gjerne replikken til mora og hermet etter Per med litt trøndsk. Stopp gjerne etter «Kom gjorde han ikkje» og spør: kva trur de skjer no? Tankestrekane står slik i originalen.",
     },
     {
       type: "sitat",
       text: "Ein dagen kom Lines’n og krevde han etter meir pliktarbeid enn dei var forlikte om. Per såg berre på han. Kom gjorde han ikkje.",
       kjelde: "Olav Duun, <em class=\"nn\">Juvikingar</em>, 1918",
       steps: ["<p>Kor mykje skjer på desse få orda?</p>"],
-      notes: "To korte setningar fortel om trass, eit maktforhold og kva Per kjem til å gjere seinare. Duun forklarar ingenting, og lesaren må fylle ut. Legg merke til ordstillinga i «Kom gjorde han ikkje»: <em>kom</em> er flytta fremst, og <em>gjorde</em> tek plassen som verbal. Det gir trykk. Dette er eitt av friskriftsspørsmåla i modulen, så elevane kan bruke dette dømet eller finne eit anna.",
+      notes: "To korte setningar fortel om trass, eit maktforhold og kva Per kjem til å gjere seinare. Duun forklarar ingenting, og lesaren må fylle ut. Legg merke til ordstillinga i «Kom gjorde han ikkje»: <em>kom</em> er flytta fremst, og <em>gjorde</em> tek plassen som verbal. Det gir trykk. Dette kjem att i spørsmål 4 på lysbilete 20, så elevane kan bruke dette dømet eller finne eit anna.",
     },
     {
       type: "diskuter",
@@ -889,14 +1369,46 @@ Larar.register("lesing-duun", {
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Svar på spørsmåla til begge tekstane.</li>
-          <li>Skriv ei dramatisk scene: naturen står imot, 150 til 250 ord.</li>
+      title: "Spørsmål til «Bestefar og stormen»",
+      body: `<ol>
+          <li>Kva er det med bestefar som har endra seg?</li>
+          <li>Kvifor blir bestefar med ut i stormen?</li>
+          <li>Korleis reagerer far når bestefar dukkar opp i stormen?</li>
+          <li>Kvifor trur du forteljaren vil hugse bestefar slik han var denne kvelden?</li>
+          <li>Kva betyr det at mor græt på slutten, etter at bestefar har snakka til henne?</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 4,
+      svar: `<p>1. Han har fått ein sjukdom som gjer at han gløymer. 2. Han kjenner att noko han har gjort heile livet: å sjå etter sauene. 3. Han ber bestefar om å hjelpe, utan å lage ei sak ut av det. 4. Den kvelden var bestefar seg sjølv att, mannen som tok seg av sauene, ikkje den gløymsame mannen ved omnen. 5. Både lette og sorg: far hennar er der ein augneblink, men ho veit at slike augneblink er sjeldne no.</p>`,
+      notes: "Bla tilbake til teksten på lysbilete 8 om elevane vil sjå etter. Spørsmål 1 til 3 er rett fram, 4 og 5 krev tolking, og svara der er berre døme. Be elevane skrive sitt eige svar før du viser fasiten.",
+    },
+    {
+      type: "oppgave",
+      title: "Spørsmål til <em class=\"nn\">Juvikingar</em>",
+      body: `<ol>
+          <li>Kvifor går Per laus på husbonden sin?</li>
+          <li>Kva viser det at Per takkar nei når han får tilbod om å få Mærit?</li>
+          <li><em class="nn">«Han var ingen husmanns-larv, vilde dei vita det!»</em> Kva fortel setninga om Per, og kvifor står ho heilt til slutt?</li>
+          <li>Duun fortel svært knapt. Finn ei setning der mykje skjer på få ord, og forklar kva han oppnår.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 4,
+      svar: `<p>1. Husbonden kravde meir pliktarbeid enn dei var samde om, og sa han så opp. 2. Han vil ikkje ta imot noko som eit oppgjer, han vil stå på eigne bein. 3. Per set æra si over alt: han er fattig, men ingen stakkar. Til slutt blir setninga ein konklusjon som forklarer alt han har gjort. 4. Døme: «Per såg berre på han. Kom gjorde han ikkje.» Trass og maktforhold på få ord, og lesaren må fylle ut sjølv.</p>`,
+      notes: "Klassen har snakka om spørsmål 4 på lysbilete 17, så no skal elevane formulere det sjølve, gjerne med eit anna døme. Bla tilbake til utdraget på lysbilete 16 og ordlista på lysbilete 15 om nokon står fast.",
+    },
+    {
+      type: "oppgave",
+      title: "Skriv: naturen som motstandar",
+      body: `<p class="stor">Skriv ei dramatisk scene der naturen står imot menneska: uvêr, kulde, sjø, snø eller mørker.</p>
+        <ol>
+          <li>Skriv 150 til 250 ord. Noko skal stå på spel, utan at du seier det rett ut.</li>
+          <li>Bruk minst fem konkrete sanseinntrykk frå vêret.</li>
           <li>La personane snakke lite og gjere mykje.</li>
-        </ul>`,
-      tid: 15,
-      notes: "Spørsmåla til <em>Juvikingar</em> handlar mellom anna om at Per takkar nei til Mærit, og om den siste setninga i utdraget: «Han var ingen husmanns-larv, vilde dei vita det!». I skriveoppgåva: minn elevane på at noko må stå på spel, og at det skal vere eit vendepunkt der nokon tek eit val.",
+          <li>Ha eit vendepunkt der nokon tek eit val.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 7,
+      notes: "Duun lèt sjeldan personane forklare seg. Dei handlar, og lesaren skjønar resten. Minn elevane på at noko må stå på spel, og at det skal vere eit vendepunkt der nokon tek eit val, slik far gjer når han peikar. Vis gjerne lysbilete 11 om besjeling att. Resten av teksten kan bli lekse.",
     },
     {
       title: "Oppsummering",
@@ -910,7 +1422,7 @@ Larar.register("lesing-duun", {
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Modulen har to tekstar. «Bestefar og stormen» er skriven for kurset i stilen til Duun: ein gut fortel om kvelden då bestefaren, som har ein sjukdom som gjer at han gløymer, går ut i stormen etter sauene. Far vel å la han hjelpe til utan å seie eit ord om det. Den andre teksten er opninga av <em class=\"nn\">Juvikingar</em> (1918), første bandet i <em class=\"nn\">Juvikfolket</em>, om husmannen Per som set seg opp mot husbonden sin. Presentasjonen er lagd opp som ei leseøkt med førlesing, lesing, samtale om verkemiddel som samanlikning, besjeling og knapp stil, det ekte utdraget, og overgang til spørsmåla og skriveoppgåva.</p>",
+    intro: "<p>Modulen har to tekstar. «Bestefar og stormen» er skriven for kurset i stilen til Duun: ein gut fortel om kvelden då bestefaren, som har ein sjukdom som gjer at han gløymer, går ut i stormen etter sauene. Far vel å la han hjelpe til utan å seie eit ord om det. Den andre teksten er opninga av <em class=\"nn\">Juvikingar</em> (1918), første bandet i <em class=\"nn\">Juvikfolket</em>, om husmannen Per som set seg opp mot husbonden sin. Presentasjonen er lagd opp som ei leseøkt med førlesing, lesing, samtale om verkemiddel som samanlikning, besjeling og knapp stil, det ekte utdraget, og til slutt spørsmål og ei skriveoppgåve på tavla. Begge tekstane står ordrett på tekstlysbilete, så elevane les på tavla og skriv i skriveboka.</p>",
     mal: [
       "Elevane kan forklare korleis naturen fungerer som motstandar i ein tekst, og kjenne att besjeling og samanlikning.",
       "Elevane kan tolke handlingar som seier meir enn replikkane, og peike på vendepunktet i forteljinga.",
@@ -918,22 +1430,22 @@ Larar.register("lesing-duun", {
       "Elevane kan skrive ei dramatisk scene der personane handlar meir enn dei snakkar.",
     ],
     lareplan: [1, 2, 3, 6, 13],
-    forkunnskapar: "Elevane bør ha møtt Duun i modulen Møt nynorskforfattarane. Det er ein fordel om dei har lese Garborg-modulen, der vi arbeidde med det usagde. Omgrepa samanlikning og vendepunkt blir forklarte undervegs.",
+    forkunnskapar: "Elevane bør ha møtt Duun i timen Møt nynorskforfattarane. Det er ein fordel om dei har hatt timen om Garborg, der vi arbeidde med det usagde. Omgrepa samanlikning og vendepunkt blir forklarte undervegs.",
     forebuing: [
-      "Les begge tekstane i modulen på førehand.",
+      "Les begge tekstane på førehand (lysbilete 8 og 16).",
       "Bestefar har ein sjukdom som gjer at han gløymer. Tenk gjennom om nokon elevar har besteforeldre med demens.",
       "Ha lappar klare til exit-lappen.",
     ],
     okt: [
       { fase: "Førlesing", min: 4, gjer: "<p>Gå gjennom måla, presenter Duun, la elevane gjette ut frå tittelen, og gå gjennom orda og lesestrategien.</p>", lysbilete: "2 til 6" },
-      { fase: "Lesing", min: 8, gjer: "<p>Les «Bestefar og stormen» høgt, eller la elevane lese sjølve.</p>", lysbilete: "7" },
-      { fase: "Samtale om kursteksten", min: 9, gjer: "<p>Samtal om første setning, samanlikninga med elva, naturen som motstandar, far sitt val og slutten.</p>", lysbilete: "8 til 12" },
-      { fase: "Det ekte utdraget", min: 6, gjer: "<p>Innfør Per og språket, les sitatet og samanlikn far og Per.</p>", lysbilete: "13 til 15" },
-      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane svarer på spørsmåla og byrjar på skriveoppgåva. Resten kan bli heimearbeid.</p>", lysbilete: "16" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive ei setning der vêret gjer noko, som om det levde.</p>", lysbilete: "17" },
+      { fase: "Lesing", min: 8, gjer: "<p>Les «Bestefar og stormen» høgt på tavla, eller la elevane lese stille der.</p>", lysbilete: "7 til 8" },
+      { fase: "Samtale om kursteksten", min: 8, gjer: "<p>Samtal om første setning, samanlikninga med elva, naturen som motstandar, far sitt val og slutten.</p>", lysbilete: "9 til 13" },
+      { fase: "Det ekte utdraget", min: 7, gjer: "<p>Innfør Per, språket og ordlista, les utdraget høgt på tavla, sjå nærare på sitatet og samanlikn far og Per.</p>", lysbilete: "14 til 18" },
+      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane svarer på spørsmåla til begge tekstane i skriveboka og byrjar på skriveoppgåva. Resten kan bli lekse.</p>", lysbilete: "19 til 21" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive ei setning der vêret gjer noko, som om det levde.</p>", lysbilete: "22" },
     ],
     misoppfatningar: [
-      { feil: "«Bestefar går ut fordi han er forvirra.»", hjelp: "Vis at auga hans er «klårare enn dei hadde vore på månader». Han kjenner att noko han har gjort heile livet. Det er det rette svaret på fleirvalsspørsmålet i modulen." },
+      { feil: "«Bestefar går ut fordi han er forvirra.»", hjelp: "Vis at auga hans er «klårare enn dei hadde vore på månader». Han kjenner att noko han har gjort heile livet. Det er svaret på spørsmål 2 på lysbilete 19." },
       { feil: "«Far er streng når han berre peikar.»", hjelp: "Les avsnittet før, der forteljaren lurer på om far skal sende bestefar heim. Å peike er å gi bestefar ei oppgåve og la han vere seg sjølv." },
       { feil: "«Mor græt fordi ho er redd.»", hjelp: "Ho græt etter at far hennar snakkar til henne for første gong på fjorten dagar. Det er både lette og sorg." },
       { feil: "«Per er berre valdeleg.»", hjelp: "Duun viser eit maktforhold: husbonden krev meir enn avtalt og seier dei opp. Per forsvarer æra si. Det gjer ikkje valden rett, men han har ein grunn." },
@@ -952,15 +1464,15 @@ Larar.register("lesing-duun", {
         "La elevar som strevar med dialektforma i <em class=\"nn\">Juvikingar</em>, lese første avsnitt og sitatet med ordlista.",
       ],
       utfordring: [
-        "Be elevane lese resten av kapittelet «Frå gammalt av» på bokselskap.no, der Per slår seg ned i Juvika og dei neste juvikingane kjem til.",
+        "Som lekse: be elevane lese resten av kapittelet «Frå gammalt av» på bokselskap.no, der Per slår seg ned i Juvika og dei neste juvikingane kjem til.",
         "La elevane skrive same scene frå far sin ståstad, med tankane han har når han ser bestefar kome.",
       ],
     },
     vurdering: [
-      "Fleirvalsspørsmåla viser om elevane har forstått kva som skjer med bestefar, og kvifor Per går laus på husbonden.",
-      "Friskriftssvara viser om elevane kan tolke handlingar og forklare verknaden av ein knapp stil.",
+      "Svara på dei enkle spørsmåla (1 til 3 på lysbilete 19, 1 og 2 på lysbilete 20) viser om elevane har forstått kva som skjer med bestefar, og kvifor Per går laus på husbonden.",
+      "Svara på tolkingsspørsmåla viser om elevane kan tolke handlingar og forklare verknaden av ein knapp stil.",
       "Kjenneteikn på god måloppnåing i skriveoppgåva: det står noko på spel, vêret er skildra med konkrete sanseinntrykk, personane snakkar lite, og det er eit tydeleg vendepunkt.",
     ],
-    vidare: "Gå vidare til lesemodulen om Tarjei Vesaas, som òg brukar naturen, men på ein meir stille og symbolsk måte. Samanlikn gjerne korleis Duun og Vesaas skildrar natur.",
+    vidare: "Gå vidare til lesemodulen om Tarjei Vesaas, som òg brukar naturen, men på ein meir stille og symbolsk måte. Samanlikn gjerne korleis Duun og Vesaas skildrar natur. Som frivillig lekse kan elevane gjere spørsmåla i elevmodulen, der dei får dømesvar å samanlikne med.",
   },
 });

@@ -180,14 +180,29 @@ Larar.register("omgrep-ordet", {
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Gjer sjekkspørsmåla og oppgåvene i modulen.</li>
-          <li>Sorter bøying, avleiing og samansetning.</li>
-          <li>Start på ordjakta: ti ord delte i stamme og ending.</li>
-        </ul>`,
-      tid: 12,
-      notes: "Gå rundt og be elevane forklare kva endinga fortel. Ordjakta kan gjerast ferdig heime eller i neste time, gjerne med ein tekst frå Del 5.",
+      title: "Stamme og ending",
+      body: `<ol>
+          <li>Del i stamme og ending:<br><em class="nn">gutane · jenta · kastar · høyrde · finare · husa</em></li>
+          <li>Skriv kva endinga fortel.<br>Døme: <em class="nn">bøkene = bøk- + -ene</em>: bestemt fleirtal</li>
+          <li>Lag nye ord med etterstaving:<br><em class="nn">lese → ein ___ · fri → ___ · søkje → ein ___ · kjær → ___</em></li>
+        </ol>`,
+      form: "Åleine",
+      tid: 6,
+      svar: "1 og 2: <em class=\"nn\">gut- + -ane</em> bestemt fleirtal, <em class=\"nn\">jent- + -a</em> bestemt eintal, <em class=\"nn\">kast- + -ar</em> presens, <em class=\"nn\">høyr- + -de</em> preteritum, <em class=\"nn\">fin- + -are</em> komparativ, <em class=\"nn\">hus- + -a</em> bestemt fleirtal. 3: <em class=\"nn\">lesar, fridom, søknad, kjærleik</em>.",
+      notes: "Elevane skriv orda i skriveboka og markerer gjerne endinga med ein annan farge. Gå rundt og be dei forklare kva endinga fortel. <em>husa</em> er med med vilje: same <em>-a</em> som i <em>jenta</em>, men her er det bestemt fleirtal av eit inkjekjønnsord. I oppgåve 3 er det mange som skriv <em>fridomen</em> eller <em>kjærligheit</em>: minn om at dei skal lage grunnforma, og at nynorsk har <em>-leik</em>.",
+    },
+    {
+      type: "oppgave",
+      title: "Sorter og set saman",
+      body: `<ol>
+          <li>Lag tre kolonnar: <strong>bøying</strong>, <strong>avleiing</strong>, <strong>samansetning</strong>. Sorter:<br><em class="nn">kasta · lærar · regnjakke · jentene · misnøgd · sommarferie · kasting · husa · skulebok</em></li>
+          <li>Set saman til eitt ord, og skriv artikkelen framfor:<br><em class="nn">fot + ball + lag · barn + hage · skule + veg</em></li>
+          <li>Ferdig? Skriv fem eigne ord og del dei i stamme og ending.</li>
+        </ol>`,
+      form: "I par",
+      tid: 6,
+      svar: "1: Bøying: <em class=\"nn\">kasta, jentene, husa</em>. Avleiing: <em class=\"nn\">lærar, misnøgd, kasting</em>. Samansetning: <em class=\"nn\">regnjakke, sommarferie, skulebok</em>. 2: <em class=\"nn\">eit fotballag, ein barnehage, ein skuleveg</em>.",
+      notes: "Minn om den raske testen: same ord i ny form er bøying, ny tyding eller ny ordklasse er avleiing, to ord er samansetning. I oppgåve 2 er det sisteleddet som avgjer artikkelen, og <em>barnehage</em> får bindebokstaven <em>e</em>. Ordjakta i elevmodulen, der elevane deler ti ord frå ein ekte tekst, passar som lekse.",
     },
     {
       title: "Oppsummering",
@@ -215,13 +230,14 @@ Larar.register("omgrep-ordet", {
       "Test figuren på lysbilete 5 på tavla, og sjå at knappen «Spel av på nytt» verkar.",
       "Ha tre tusjar i ulike fargar klare, så du kan teikne ord i rot, stamme og ending på tavla.",
       "Ha små lappar klare til exit-lappen til slutt.",
+      "Elevane treng berre skrivebok. Oppgåvene og fasiten står på lysbilete 19 og 20.",
     ],
     okt: [
       { fase: "Oppstart", min: 5, gjer: "<p>Gå gjennom måla og lat elevane dele ordet <em class=\"nn\">skulegutane</em> i bitar.</p>", lysbilete: "2 og 3" },
       { fase: "Rot, stamme og ending", min: 12, gjer: "<p>Innfør dei tre omgrepa med figuren, finn stamma i fleire ord og vis kvifor endinga er det viktigaste på nynorsk. Avslutt med ein tavlerunde på endingar.</p>", lysbilete: "4 til 11" },
       { fase: "Bøying og orddanning", min: 13, gjer: "<p>Skil bøying frå orddanning, gå gjennom avleiing og samansetning, og lat elevane sortere orda i par.</p>", lysbilete: "12 til 18" },
-      { fase: "Eigenarbeid", min: 12, gjer: "<p>Elevane arbeider i modulen og startar på ordjakta.</p>", lysbilete: "19" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane dele eitt ord i stamme og ending på ein exit-lapp.</p>", lysbilete: "20" },
+      { fase: "Eigenarbeid", min: 12, gjer: "<p>Elevane arbeider i skriveboka med oppgåvene på tavla: først stamme og ending åleine, så sortering og samansetning i par. Vis fasiten etter kvart lysbilete.</p>", lysbilete: "19 og 20" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane dele eitt ord i stamme og ending på ein exit-lapp.</p>", lysbilete: "21" },
     ],
     misoppfatningar: [
       { feil: "«Stamma i <em class=\"nn\">jenta</em> er <em class=\"nn\">jente-</em>.»", hjelp: "Vis at den trykklette <em class=\"nn\">-e</em>-en fell bort før endinga: <em class=\"nn\">jent-a, jent-er, jent-ene</em>. Stamma er det som er likt i alle formene." },
@@ -248,10 +264,11 @@ Larar.register("omgrep-ordet", {
     },
     vurdering: [
       "Tavlespørsmåla og sorteringa i par viser raskt om klassen skil stamme frå ending og bøying frå orddanning.",
-      "Ordjakta viser om eleven kan bruke omgrepa på ord frå ekte tekstar.",
+      "Oppgåvene i skriveboka viser om den enkelte eleven kan dele ord i stamme og ending og skilje bøying, avleiing og samansetning.",
+      "Ordjakta i elevmodulen, gitt som lekse, viser om eleven kan bruke omgrepa på ord frå ekte tekstar.",
       "Kjenneteikn på god måloppnåing: eleven deler ord rett også når rot og stamme er ulike, og forklarer kva endinga fortel med rett fagomgrep.",
     ],
-    vidare: "Gå vidare til modulen Ordklassane: ei oversikt og deretter Bøyingsomgrep: substantiv og verb, der endingane blir sette i system.",
+    vidare: "Gå vidare til modulen Ordklassane: ei oversikt og deretter Bøyingsomgrep: substantiv og verb, der endingane blir sette i system. Elevmodulen Ordet: stamme, ending og rot kan brukast som frivillig lekse, med fleire oppgåver og ordjakta.",
   },
 });
 
@@ -444,14 +461,28 @@ Larar.register("omgrep-ordklassar", {
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Gjer sjekkspørsmåla og sorteringsrundane i modulen.</li>
-          <li>Fyll inn namnet på ordklassen i oppgåva med setningane.</li>
-          <li>Para saman ordklasse og kjenneteikn til slutt.</li>
-        </ul>`,
-      tid: 12,
-      notes: "Sorteringsrundane blir vanskelegare frå runde 1 til runde 3. Gå rundt og spør «kva test brukte du?» når elevane er usikre. Dei som blir tidleg ferdige, kan finne alle ti ordklassane i ein tekst frå Del 5.",
+      title: "Sorter orda",
+      body: `<ol>
+          <li>Lag fem kolonnar:<br><strong>substantiv · verb · adjektiv · adverb · pronomen</strong></li>
+          <li>Sorter orda:<br><em class="nn">skule · springe · trøytt · ikkje · seg · lærar · gå · blå · ofte · ho</em></li>
+          <li>Skriv testen du brukte øvst i kvar kolonne.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 6,
+      svar: "Substantiv: <em class=\"nn\">skule, lærar</em> (<em class=\"nn\">ein/ei/eit</em> framfor). Verb: <em class=\"nn\">springe, gå</em> (<em class=\"nn\">å</em> framfor, bøying i tid). Adjektiv: <em class=\"nn\">trøytt, blå</em> (gradbøying). Adverb: <em class=\"nn\">ikkje, ofte</em> (korleis, kvar, når). Pronomen: <em class=\"nn\">seg, ho</em> (i staden for eit substantiv).",
+      notes: "Oppgåva byggjer på dei tre store og legg til adverb og pronomen, slik gjennomgangen gjorde. Gå rundt og spør «kva test brukte du?» når elevane er usikre. Er testen skriven øvst i kolonnen, har eleven ein huskelapp til seinare.",
+    },
+    {
+      type: "oppgave",
+      title: "Dei vanskelege småorda",
+      body: `<ol>
+          <li>Sorter: <em class="nn">min · han · under · og · at · denne · frå · men · fordi · vi</em><br><strong>determinativ · pronomen · preposisjon · konjunksjon · subjunksjon</strong></li>
+          <li>Kva ordklasse er ordet i feit skrift?<br>a) <em class="nn">Vi drog heim <strong>etter</strong> kampen.</em><br>b) <em class="nn">Vi drog heim <strong>etter at</strong> kampen var slutt.</em><br>c) <em class="nn"><strong>Dei</strong> bilane er nye.</em> &nbsp; d) <em class="nn">Ho song <strong>fint</strong>.</em></li>
+        </ol>`,
+      form: "I par",
+      tid: 6,
+      svar: "1: Determinativ: <em class=\"nn\">min, denne</em>. Pronomen: <em class=\"nn\">han, vi</em>. Preposisjon: <em class=\"nn\">under, frå</em>. Konjunksjon: <em class=\"nn\">og, men</em>. Subjunksjon: <em class=\"nn\">at, fordi</em>. 2: a) preposisjon, b) subjunksjon, c) determinativ, d) adverb.",
+      notes: "Oppgåve 2 samlar dei tre forvekslingane frå timen. Krev at para grunngir kvart svar: kva kjem etter ordet, står ordet saman med eit substantiv, kva beskriv ordet? Dei som blir tidleg ferdige, kan skrive ei setning der alle ti ordklassane er med.",
     },
     {
       title: "Oppsummering",
@@ -479,14 +510,15 @@ Larar.register("omgrep-ordklassar", {
       "Test figuren på lysbilete 4 på tavla, og sjå at knappane for kvar ordklasse lyser opp orda.",
       "Skriv setningane frå lysbilete 17 og 18 på tavla om du vil stryke og endre dei medan du forklarar.",
       "Ha små lappar klare til exit-lappen.",
+      "Elevane treng berre skrivebok. Oppgåvene og fasiten står på lysbilete 19 og 20.",
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og lat elevane namngi så mange ordklassar dei kan.</p>", lysbilete: "2 og 3" },
       { fase: "Ti ordklassar", min: 11, gjer: "<p>Vis alle ti i figuren, gå gjennom testane i tre grupper og køyr tavleøvinga.</p>", lysbilete: "4 til 9" },
       { fase: "Bøyelege og ubøyelege", min: 4, gjer: "<p>Del ordklassane i to og knyt det til kvar nynorskfeila skjer.</p>", lysbilete: "10 og 11" },
       { fase: "Forvekslingar", min: 11, gjer: "<p>Gå gjennom dei tre forvekslingane med spørsmål til kvar, og avslutt med «før» i tre setningar.</p>", lysbilete: "12 til 18" },
-      { fase: "Eigenarbeid", min: 12, gjer: "<p>Elevane arbeider med sorteringsrundane og oppgåvene i modulen.</p>", lysbilete: "19" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive to setningar med <em class=\"nn\">fint</em> på exit-lappen.</p>", lysbilete: "20" },
+      { fase: "Eigenarbeid", min: 12, gjer: "<p>Elevane arbeider i skriveboka med oppgåvene på tavla: først sortering i fem ordklassar åleine, så dei vanskelege småorda i par. Vis fasiten etter kvart lysbilete.</p>", lysbilete: "19 og 20" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive to setningar med <em class=\"nn\">fint</em> på exit-lappen.</p>", lysbilete: "21" },
     ],
     misoppfatningar: [
       { feil: "«Eit ord har alltid same ordklasse.»", hjelp: "Vis <em class=\"nn\">før</em> i tre setningar: preposisjon, subjunksjon og adverb. Spør alltid kva ordet gjer her." },
@@ -502,7 +534,7 @@ Larar.register("omgrep-ordklassar", {
     ],
     tilpassing: {
       stotte: [
-        "Start med dei tre store ordklassane og legg til dei andre gradvis, slik sorteringsrundane i modulen gjer.",
+        "Start med dei tre store ordklassane og legg til dei andre gradvis, slik sorteringsoppgåvene på tavla gjer.",
         "Gi elevane ei huskelapp med testen for kvar ordklasse.",
         "Bruk same fargar som i figuren når elevane markerer ord i ein tekst.",
       ],
@@ -513,10 +545,10 @@ Larar.register("omgrep-ordklassar", {
     },
     vurdering: [
       "Tavleøvinga og spørsmåla viser om elevane brukar testane eller gjettar ut frå ordet åleine.",
-      "Sorteringsrundane i modulen viser kva ordklassar den enkelte eleven meistrar.",
+      "Sorteringa i skriveboka viser kva ordklassar den enkelte eleven meistrar, og testane øvst i kolonnane viser om eleven har forstått kvifor.",
       "Kjenneteikn på god måloppnåing: eleven avgjer ordklassen ut frå funksjonen i setninga og grunngir svaret med ein test.",
     ],
-    vidare: "Gå vidare til Bøyingsomgrep: substantiv og verb, og deretter til bøyingsmodulane i Del 2. Setningslæra i Grunnomgrep byggjer vidare på skiljet mellom konjunksjon og subjunksjon.",
+    vidare: "Gå vidare til Bøyingsomgrep: substantiv og verb, og deretter til bøyingsmodulane i Del 2. Setningslæra i Grunnomgrep byggjer vidare på skiljet mellom konjunksjon og subjunksjon. Elevmodulen Ordklassane: ei oversikt har tre sorteringsrundar og fleire oppgåver, og passar som frivillig lekse.",
   },
 });
 
@@ -715,14 +747,37 @@ Larar.register("omgrep-boying", {
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Gjer sjekkspørsmåla i modulen.</li>
-          <li>Bøy heile rekkja og sorter setningane etter tempus.</li>
-          <li>Øv på j-verb og kortverb, og omset setninga til slutt.</li>
-        </ul>`,
-      tid: 10,
-      notes: "Gå rundt og be elevane bruke omgrepa når dei forklarer, til dømes «det er preteritum av eit e-verb». Dei som blir tidleg ferdige, kan ta mengdetreninga for substantiv og verb.",
+      title: "Bøy heile rekkja",
+      body: `<p>Skriv av rekkja og fyll inn forma som manglar.</p>
+        <div class="to-kol">
+          <ol>
+            <li><em class="nn">ei jente · ___ · jenter · jentene</em></li>
+            <li><em class="nn">ei bok · boka · ___ · bøkene</em></li>
+            <li><em class="nn">eit eple · eplet · eple · ___</em></li>
+          </ol>
+          <ol start="4">
+            <li><em class="nn">å kaste · kastar · ___ · har kasta</em></li>
+            <li><em class="nn">å høyre · ___ · høyrde · har høyrt</em></li>
+            <li><em class="nn">å skrive · skriv · ___ · har skrive</em></li>
+          </ol>
+        </div>`,
+      form: "Åleine",
+      tid: 5,
+      svar: "1 <em class=\"nn\">jenta</em> · 2 <em class=\"nn\">bøker</em> · 3 <em class=\"nn\">epla</em> · 4 <em class=\"nn\">kasta</em> · 5 <em class=\"nn\">høyrer</em> · 6 <em class=\"nn\">skreiv</em>",
+      notes: "Substantiva står i rekkjefølgja ubestemt eintal, bestemt eintal, ubestemt fleirtal, bestemt fleirtal, og verba i infinitiv, presens, preteritum, presens perfektum. Be elevane skrive namnet på forma dei fyller inn, til dømes «bestemt eintal hokjønn». <em>jenta</em> og <em>epla</em> er dei to <em>-a</em>-endingane frå gjennomgangen.",
+    },
+    {
+      type: "oppgave",
+      title: "Verb og tempus",
+      body: `<ol>
+          <li>Fyll inn rett form:<br><em class="nn">(spørje) Ho ___ læraren i går.<br>(bu) Dei ___ i Bergen no.<br>(nå) Eg ___ bussen i dag tidleg.</em></li>
+          <li>Kva tempus? <em class="nn">ho har skrive · eg kasta · dei hadde budd her · ho skriv</em></li>
+          <li>Omset: <em class="bm">Jeg kastet ballen før jeg hørte deg.</em></li>
+        </ol>`,
+      form: "I par",
+      tid: 5,
+      svar: "1: <em class=\"nn\">spurde, bur, nådde</em>. 2: presens perfektum, preteritum, preteritum perfektum, presens. 3: <em class=\"nn\">Eg kasta ballen før eg høyrde deg.</em>",
+      notes: "Be elevane bruke omgrepa når dei forklarer, til dømes «<em>spurde</em> er preteritum av eit j-verb» eller «<em>høyrde</em> kjem av bokmål <em>hørte</em>, så det er eit e-verb». I omsetjinga er det lett å gløyme diftongen <em>øy</em>. Mengdetreninga for substantiv og verb og elevmodulen kan brukast som lekse for dei som vil øve meir.",
     },
     {
       title: "Oppsummering",
@@ -750,14 +805,15 @@ Larar.register("omgrep-boying", {
       "Test figurane på lysbilete 5, 12 og 15 på tavla.",
       "Ha ei ordbok eller ordbokene.no klar, så du kan vise eit ekte oppslag etter lysbilete 3.",
       "Ha små lappar klare til exit-lappen.",
+      "Elevane treng berre skrivebok. Oppgåvene og fasiten står på lysbilete 20 og 21.",
     ],
     okt: [
       { fase: "Oppstart", min: 3, gjer: "<p>Gå gjennom måla og lat elevane tolke ordbokoppslaget.</p>", lysbilete: "2 og 3" },
       { fase: "Substantiv", min: 10, gjer: "<p>Gå gjennom kjønn, tal og bestemtheit og dei fire formene, køyr tavleøvinga og vis eigedom utan s-genitiv.</p>", lysbilete: "4 til 9" },
       { fase: "Verbformer", min: 10, gjer: "<p>Skil finitte og infinitte former, gå gjennom tempuslinja og vis partisipp og imperativ.</p>", lysbilete: "10 til 14" },
       { fase: "Verbklassar", min: 9, gjer: "<p>Vis sterke og svake verb, bruk vegvisaren, gå gjennom j-verb og kortverb, og køyr tavleøvinga.</p>", lysbilete: "15 til 19" },
-      { fase: "Eigenarbeid", min: 10, gjer: "<p>Elevane arbeider med oppgåvene i modulen.</p>", lysbilete: "20" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane bøye eitt substantiv og eitt verb på exit-lappen.</p>", lysbilete: "21" },
+      { fase: "Eigenarbeid", min: 10, gjer: "<p>Elevane arbeider i skriveboka med oppgåvene på tavla: bøyingsrekkjer åleine, så verb, tempus og omsetjing i par. Vis fasiten etter kvart lysbilete.</p>", lysbilete: "20 og 21" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane bøye eitt substantiv og eitt verb på exit-lappen.</p>", lysbilete: "22" },
     ],
     misoppfatningar: [
       { feil: "«Kjønnet har med biologi å gjere.»", hjelp: "Kjønn er eit grammatisk merke som styrer artikkel og endingar. <em class=\"nn\">ei bok</em> er ikkje meir kvinneleg enn <em class=\"nn\">ein stol</em>." },
@@ -785,10 +841,10 @@ Larar.register("omgrep-boying", {
     },
     vurdering: [
       "Tavleøvingane viser om klassen held kjønna og verbklassane frå kvarandre.",
-      "Oppgåvene med bøyingsrekkjer og tempus i modulen viser om den enkelte eleven kan bruke omgrepa.",
+      "Bøyingsrekkjene og tempusoppgåvene i skriveboka viser om den enkelte eleven kan bruke omgrepa.",
       "Kjenneteikn på god måloppnåing: eleven bøyer substantiv rett i alle tre kjønn, skil tempusa og forklarer verbklassen med rett fagomgrep.",
     ],
-    vidare: "Gå vidare til bøyingsmodulane i Del 2, der substantiv og verb blir øvde grundig, og til mengdetreninga for substantiv og verb. Ordbokmodulane i Del 3 byggjer på at elevane kan lese forkortingar som f. og -a.",
+    vidare: "Gå vidare til bøyingsmodulane i Del 2, der substantiv og verb blir øvde grundig, og til mengdetreninga for substantiv og verb. Ordbokmodulane i Del 3 byggjer på at elevane kan lese forkortingar som f. og -a. Elevmodulen Bøyingsomgrep: substantiv og verb har fleire oppgåver og passar som frivillig lekse.",
   },
 });
 
@@ -972,14 +1028,29 @@ Larar.register("omgrep-setning", {
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Les gjennom fagtekstane og gjer sjekkspørsmåla.</li>
-          <li>Gjer sorteringsoppgåvene om heilsetning, leddsetning og bindeord.</li>
-          <li>Skriv den korte teksten til slutt og analyser to av setningane.</li>
-        </ul>`,
-      tid: 13,
-      notes: "Gå rundt og spør elevane kva spørsmål dei stiller for å finne leddet. Dei som blir tidleg ferdige, kan ta mengdetreninga i setningslære.",
+      title: "Finn ledda",
+      body: `<ol>
+          <li>Skriv av og merk ledda:<br><em class="nn">Etter skulen kjøpte Ola ein ny sykkel.</em><br><em class="nn">Kari gav bestemor ei bok i jula.</em></li>
+          <li>Heilsetning eller leddsetning?<br><em class="nn">Det regnar. · fordi det regna · som bur her · Vi gjekk ut. · dersom du vil</em></li>
+          <li>Rett ordstillinga: <em class="nn">I går han kom ikkje heim.</em></li>
+        </ol>`,
+      form: "Åleine",
+      tid: 5,
+      svar: "1: <em class=\"nn\">Etter skulen</em> adverbial, <em class=\"nn\">kjøpte</em> verbal, <em class=\"nn\">Ola</em> subjekt, <em class=\"nn\">ein ny sykkel</em> objekt. <em class=\"nn\">Kari</em> subjekt, <em class=\"nn\">gav</em> verbal, <em class=\"nn\">bestemor</em> indirekte objekt, <em class=\"nn\">ei bok</em> objekt, <em class=\"nn\">i jula</em> adverbial. 2: Heilsetningar: <em class=\"nn\">Det regnar, Vi gjekk ut</em>. Resten er leddsetningar. 3: <em class=\"nn\">I går kom han ikkje heim.</em>",
+      notes: "Minn om rekkjefølgja: verbalet først, så «kven/kva + verbal?» for subjektet. I den første setninga står subjektet etter verbalet, fordi setninga byrjar med eit adverbial. Spør elevane kva spørsmål dei stilte for å finne kvart ledd.",
+    },
+    {
+      type: "oppgave",
+      title: "Omset og skriv",
+      body: `<ol>
+          <li>Omset til nynorsk:<br><em class="bm">Da han kom hjem, spiste han ikke middag fordi han ikke var sulten.</em></li>
+          <li>Skriv fem setningar om helga di. Bruk <em class="nn">då</em>, <em class="nn">fordi</em> og <em class="nn">sjølv om</em>, og byrj éi setning med <em class="nn">I går</em>.</li>
+          <li>Vel to av setningane og merk subjekt, verbal og objekt.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 8,
+      svar: "1: <em class=\"nn\">Då han kom heim, åt han ikkje middag fordi han ikkje var svolten.</em> (<em class=\"nn\">sulten</em> er òg rett.)",
+      notes: "Omsetjinga samlar tre reglar frå timen: <em>då</em> for éin gong i fortida, verbalet rett etter kommaet når leddsetninga står først, og <em>ikkje</em> framfor verbalet i leddsetninga. <em>spise</em> blir <em>ete</em>, med preteritum <em>åt</em>. I skriveoppgåva: sjekk at setninga med <em>I går</em> har verbalet på andreplass. Mengdetreninga i setningslære og skriveoppgåva i elevmodulen passar som lekse.",
     },
     {
       title: "Oppsummering",
@@ -1004,17 +1075,17 @@ Larar.register("omgrep-setning", {
     lareplan: [11, 12],
     forkunnskapar: "Elevane bør kjenne ordklassane, særleg verb, substantiv og adjektiv. Modulen Ordklassane: ei oversikt dekkjer dette.",
     forebuing: [
-      "Test presentasjonen på tavla på førehand, særleg dei interaktive figurane på lysbilete 5 og 14.",
+      "Test presentasjonen på tavla på førehand, særleg dei interaktive figurane på lysbilete 6 og 15.",
       "Ha små lappar klare til exit-lappen til slutt.",
-      "Sjå til at elevane har tilgang til kurset på eigen maskin.",
+      "Elevane treng berre skrivebok. Oppgåvene og fasiten står på lysbilete 18 og 19.",
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og la elevane diskutere kva som er ei setning.</p>", lysbilete: "2 og 3" },
       { fase: "Setningsledd", min: 11, gjer: "<p>Innfør ledda og framgangsmåten. Analyser setninga saman, ta spørsmålet og predikativet, og køyr ein tavlerunde.</p>", lysbilete: "4 til 9" },
       { fase: "Heilsetning og leddsetning", min: 8, gjer: "<p>Vis setningsboksane, skil konjunksjon frå subjunksjon, og gå gjennom då og når med tavleøving.</p>", lysbilete: "10 til 14" },
       { fase: "Ordstilling", min: 6, gjer: "<p>Demonstrer V2 med figuren og ikkje-testen, og ta ein kort tavlerunde.</p>", lysbilete: "15 til 17" },
-      { fase: "Eigenarbeid", min: 13, gjer: "<p>Elevane arbeider i modulen. Dei som blir ferdige, går vidare til mengdetreninga i setningslære.</p>", lysbilete: "18" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive ein exit-lapp med den regelen dei har mest bruk for.</p>", lysbilete: "19" },
+      { fase: "Eigenarbeid", min: 13, gjer: "<p>Elevane arbeider i skriveboka med oppgåvene på tavla: først setningsanalyse og ordstilling, så omsetjing og fem eigne setningar. Vis fasiten etter kvart lysbilete.</p>", lysbilete: "18 og 19" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive ein exit-lapp med den regelen dei har mest bruk for.</p>", lysbilete: "20" },
     ],
     misoppfatningar: [
       { feil: "«Subjektet er det som står først.»", hjelp: "Vis ei setning som byrjar med eit adverbial, som <em class=\"nn\">I går kjøpte guten sko</em>. Finn verbalet først og spør «kven kjøpte?»." },
@@ -1041,9 +1112,9 @@ Larar.register("omgrep-setning", {
     },
     vurdering: [
       "Tavleøvingane viser raskt om klassen har forstått ledda, då/når og plasseringa av ikkje.",
-      "Skriveoppgåva til slutt i modulen viser om eleven kan bruke leddsetningar og analysere eigne setningar.",
+      "Dei fem setningane i skriveboka viser om eleven kan bruke leddsetningar, V2 og då/når, og analysere eigne setningar.",
       "Kjenneteikn på god måloppnåing: eleven finn ledda i lengre setningar, grunngir svaret med spørsmåla og bruker V2 rett etter innleiande leddsetningar.",
     ],
-    vidare: "Følg opp med mengdetreninga i setningslære i Del 2 og modulen om setningsbygnad under Typiske feil i Del 4.",
+    vidare: "Følg opp med mengdetreninga i setningslære i Del 2 og modulen om setningsbygnad under Typiske feil i Del 4. Elevmodulen Setningslære har fleire oppgåver og ei lengre skriveoppgåve, og passar som frivillig lekse.",
   },
 });

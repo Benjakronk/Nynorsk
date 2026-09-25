@@ -163,18 +163,37 @@ Larar.register("grammatikk-skriveregler", {
         `<p class="midt">Det er <strong>3 feil</strong>.</p>`,
       ],
       svar: `<em class="nn">Vi har <strong>berre</strong> litt mat, men mor kjem heim <strong>frå</strong> butikken med <strong>mykje</strong> godt.</em>`,
-      notes: `Lat elevane skrive rettinga på eit ark eller ei minitavle før du viser svaret. Legg merke til at <em>vi</em> er rett: både <em>vi</em> og <em>me</em> er tillatne på nynorsk.`,
+      notes: `Lat elevane skrive rettinga i skriveboka før du viser svaret. Legg merke til at <em>vi</em> er rett: både <em>vi</em> og <em>me</em> er tillatne på nynorsk.`,
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Les leksjonen og para saman bokmål og nynorsk.</li>
-          <li>Gjer fleirvalsoppgåvene om <em class="nn">noko, nokon, nokre</em>.</li>
-          <li>Skriv fem setningar på bokmål og dei same på nynorsk til slutt.</li>
-        </ul>`,
-      tid: 12,
-      notes: `Gå rundt og sjå særleg på noko/nokon-oppgåvene. Spør elevar som svarer feil: kan du telje det? Dei som blir tidleg ferdige, kan ta mengdetreninga med småord i Del 2.`,
+      title: "Småord og noko/nokon",
+      body: `<ol>
+          <li>Skriv på nynorsk: <em class="bm">ikke, bare, hva, hvordan, hvorfor, fra, mye, hvem</em></li>
+          <li>Skriv setningane med <em class="nn">noko, nokon, nokre</em> eller <em class="nn">eit</em>:
+            <br>a) Eg vil ha ___ mjølk i kaffien.
+            <br>b) Er det ___ heime?
+            <br>c) Eg las ___ bøker i ferien.
+            <br>d) Eg vil ha ___ hus når eg blir stor.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 5,
+      svar: `1. <em class="nn">ikkje, berre, kva, korleis, kvifor, frå, mykje, kven</em><br>2. a) <em class="nn">noko</em> (mengd) b) <em class="nn">nokon</em> (person) c) <em class="nn">nokre</em> (fleire, positiv setning) d) <em class="nn">eit</em> (du kan telje hus)`,
+      notes: `Elevane skriv i skriveboka. Gå rundt og sjå særleg på oppgåve 2. Spør elevar som svarer feil: kan du telje det, og er setninga eit spørsmål eller ei nekting? Gå gjennom svaret i fellesskap før de går vidare.`,
+    },
+    {
+      type: "oppgave",
+      title: "Set om til nynorsk",
+      body: `<ol>
+          <li><em class="bm">Vi har bare litt mat, men det er nok til oss alle.</em></li>
+          <li><em class="bm">Hvor mange elever går i klassen din?</em></li>
+          <li><em class="bm">Hvem vet hvordan vi kommer hjem?</em></li>
+          <li>Skriv fem eigne setningar med småord frå tavla. Strek under småorda.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 7,
+      svar: `1. <em class="nn">Vi har berre litt mat, men det er nok til oss alle.</em> 2. <em class="nn">Kor mange elevar går i klassen din?</em> 3. <em class="nn">Kven veit korleis vi kjem heim?</em> 4. Byt skrivebok med sidemannen og rett kvarandre.`,
+      notes: `Oppgåve 3 har fem ord som må endrast, mellom anna diftongen i <em>heim</em> og det sterke verbet <em>kjem</em>. I oppgåve 2 er <em>kor</em> rett fordi det handlar om mengd. Dei som blir tidleg ferdige, kan skrive fleire setningar og byte med sidemannen. Mengdetreninga med småord i Del 2 passar som frivillig lekse.`,
     },
     {
       title: "Oppsummering",
@@ -200,7 +219,7 @@ Larar.register("grammatikk-skriveregler", {
     forkunnskapar: `Elevane bør kjenne omgrepa substantiv og kjønn. Modulane om substantiv og om småord i Del 2 er ein fordel, men ikkje eit krav.`,
     forebuing: [
       `Test presentasjonen og dei to tavleøvingane (lysbilete 7 og 14) på tavla.`,
-      `Ha minitavler eller kladdeark klare til finn-feila-lysbiletet.`,
+      `Sjå til at elevane har skrivebok. Dei skriv rettingane og oppgåvene der.`,
       `Ha små lappar klare til avslutninga.`,
     ],
     okt: [
@@ -208,8 +227,8 @@ Larar.register("grammatikk-skriveregler", {
       { fase: "Småord og spørjeord", min: 9, gjer: `<p>Les lista i kor, gå gjennom kvar og kor, ta spørsmålet og ein tavlerunde med spørjeord. Vis diftongane.</p>`, lysbilete: "4 til 8" },
       { fase: "Noko og nokon", min: 11, gjer: `<p>Innfør teljetesten, vis tabellen for spørsmål og nekting, ta dei to spørsmåla etter kvarandre og samtalen om brød. Avslutt med tavleøving.</p>`, lysbilete: "9 til 14" },
       { fase: "Samansette ord og feilfinning", min: 5, gjer: `<p>Vis særskriving og vart/blei, og lat elevane finne feila i setninga.</p>`, lysbilete: "15 og 16" },
-      { fase: "Eigenarbeid", min: 12, gjer: `<p>Elevane arbeider i modulen.</p>`, lysbilete: "17" },
-      { fase: "Avslutning", min: 3, gjer: `<p>Oppsummer og lat elevane skrive ned det småordet dei oftast skriv feil.</p>`, lysbilete: "18" },
+      { fase: "Eigenarbeid", min: 12, gjer: `<p>Elevane gjer oppgåvene på tavla i skriveboka: småord og noko/nokon (5 min), deretter omsetjing og eigne setningar (7 min). Gå gjennom svaret etter kvart lysbilete.</p>`, lysbilete: "17 og 18" },
+      { fase: "Avslutning", min: 3, gjer: `<p>Oppsummer og lat elevane skrive ned det småordet dei oftast skriv feil.</p>`, lysbilete: "19" },
     ],
     misoppfatningar: [
       { feil: `«<em class="nn">Noko</em> er inkjekjønn, så det heiter <em class="bm">noko hus</em>.»`, hjelp: `Bruk teljetesten. Hus kan du telje, så i ei positiv setning heiter det <em class="nn">eit hus</em>. <em class="nn">Noko</em> står til mengder (<em class="nn">noko brød</em>) og i spørsmål og nekting (<em class="nn">ikkje noko hus</em>).` },
@@ -225,7 +244,7 @@ Larar.register("grammatikk-skriveregler", {
       stotte: [
         `Gi elevane ein huskelapp med småorda og spørjeorda, bokmål til venstre og nynorsk til høgre.`,
         `Lat elevane bruke teljetesten som to faste spørsmål: kan eg telje det, og er setninga positiv?`,
-        `Start med mengdetreninga i spørjeord før dei går laus på noko/nokon.`,
+        `Lat elevane bruke småordlista på lysbilete 4 når dei gjer oppgåve 1 på lysbilete 17.`,
       ],
       utfordring: [
         `Be elevane lage fem eigne setningar der <em class="nn">noko</em>, <em class="nn">nokon</em>, <em class="nn">nokre</em> og <em class="nn">eit</em> alle er med, og forklare valet.`,
@@ -234,10 +253,10 @@ Larar.register("grammatikk-skriveregler", {
     },
     vurdering: [
       `Tavleøvingane og dei to noko-spørsmåla viser raskt om klassen har forstått teljetesten.`,
-      `Omsetjingsoppgåvene og skriveoppgåva til slutt viser om eleven bruker småorda rett i eigne setningar.`,
+      `Omsetjingane og dei eigne setningane i skriveboka (lysbilete 18) viser om eleven bruker småorda rett i eigne setningar.`,
       `Kjenneteikn på god måloppnåing: eleven skriv småorda rett utan hjelp og kan grunngi valet mellom <em class="nn">noko, nokon</em> og <em class="nn">nokre</em>.`,
     ],
-    vidare: `Gå vidare til Feil i bøying. Elevar som treng meir øving på småorda, kan bruke mengdetreninga med småord i Del 2.`,
+    vidare: `Gå vidare til Feil i bøying. Elevar som treng meir øving på småorda, kan som frivillig lekse gjere elevmodulen Skrivereglar og vanlege fallgruver eller mengdetreninga med småord i Del 2.`,
   },
 });
 
@@ -373,15 +392,33 @@ Larar.register("feil-boying", {
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Sorter formene: rett eller feil?</li>
-          <li>Fyll inn verb og substantiv.</li>
-          <li>Finn feila i setningane og teksten.</li>
-          <li>Skriv om helga di og kontroller teksten.</li>
-        </ul>`,
-      tid: 12,
-      notes: `Gå rundt og be elevane seie kva for ein regel dei bruker når dei rettar. Dei som blir tidleg ferdige, kan ta mengdetreninga med verb og substantiv i Del 2.`,
+      title: "Skriv rett form",
+      body: `<p>Skriv berre det rette ordet.</p>
+        <ol>
+          <li>I går ___ (kaste) han ballen langt.</li>
+          <li>Ho ___ (kome) alltid for seint.</li>
+          <li>Har du ___ (finne) nøklane?</li>
+          <li>Eg las ___ (bok, bestemt eintal) i går.</li>
+          <li>Alle ___ (hus, bestemt fleirtal) i gata er raude.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 4,
+      svar: `1. <em class="nn">kasta</em> 2. <em class="nn">kjem</em> 3. <em class="nn">funne</em> 4. <em class="nn">boka</em> 5. <em class="nn">husa</em>`,
+      notes: `Éi oppgåve for kvar regel: a-verb i fortid, sterkt verb i presens, sterkt verb i perfektum, hokjønn og inkjekjønn i fleirtal. Når de går gjennom svaret, be elevane seie regelen bak kvart ord.`,
+    },
+    {
+      type: "oppgave",
+      title: "Finn feila",
+      body: `<p><em class="bm">I helga besøkte vi bestemor på landet. Vi plukket bær i skogen, og etterpå laga vi syltetøy. Bestefar sat i stolen sin og leste avisen. Om kvelden fann vi eit gammal album på loftet. Bestemor fortalde at ho hadde skrevet namna på alle under bileta.</em></p>
+        <ol>
+          <li>Det er <strong>5 feil</strong>. Skriv dei retta orda.</li>
+          <li>Skriv kva regel du brukte for kvar retting.</li>
+          <li>Ferdig? Skriv fem setningar om helga di og kontroller dei.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 8,
+      svar: `<em class="bm">plukket</em> → <em class="nn">plukka</em> (a-verb), <em class="bm">leste</em> → <em class="nn">las</em> (sterkt verb), <em class="bm">avisen</em> → <em class="nn">avisa</em> (hokjønn), <em class="bm">gammal</em> → <em class="nn">gammalt</em> (inkjekjønn: -t), <em class="bm">skrevet</em> → <em class="nn">skrive</em> (sterkt verb i perfektum)`,
+      notes: `Gå rundt og be elevane seie kva for ein regel dei bruker når dei rettar. <em>Besøkte</em>, <em>laga</em>, <em>sat</em>, <em>fann</em> og <em>fortalde</em> er rette: besøkje er eit e-verb, lage er eit a-verb, og dei tre andre er sterke eller uregelrette. <em>Bileta</em> er rett, for bilete er inkjekjønn. Oppgåve 3 er for dei som blir tidleg ferdige: dei kan byte skrivebok med sidemannen og leite etter feil i kvarandre sine setningar.`,
     },
     {
       title: "Tre raske kontrollar",
@@ -406,16 +443,15 @@ Larar.register("feil-boying", {
     forkunnskapar: `Elevane bør kjenne verbklassane (a-verb, e-verb, sterke verb) og dei tre kjønna. Modulane om verb og substantiv i Del 2 dekkjer dette.`,
     forebuing: [
       `Test tavleøvingane på lysbilete 5, 8 og 11 på førehand.`,
-      `Ha minitavler eller kladdeark klare til finn-feila-lysbileta.`,
-      `Sjå til at elevane har tilgang til kurset på eigen maskin.`,
+      `Sjå til at elevane har skrivebok. Dei skriv rettingane der.`,
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: `<p>Gå gjennom måla og lat elevane finne dei to feila i setninga om jenta.</p>`, lysbilete: "2 og 3" },
       { fase: "Verb", min: 10, gjer: `<p>Gå gjennom -et og -er, ta spørsmålet om <em class="nn">søv</em> og to korte tavlerundar.</p>`, lysbilete: "4 til 8" },
       { fase: "Substantiv og adjektiv", min: 11, gjer: `<p>Vis tabellen, ta spørsmålet om <em class="nn">jentene</em>, tavlerunden og finn-feila-setninga. Gå gjennom adjektivet.</p>`, lysbilete: "9 til 14" },
       { fase: "Feilfinning i tekst", min: 5, gjer: `<p>Elevane finn dei fem feila to og to før du viser svaret.</p>`, lysbilete: "15" },
-      { fase: "Eigenarbeid", min: 12, gjer: `<p>Elevane arbeider i modulen.</p>`, lysbilete: "16" },
-      { fase: "Avslutning", min: 3, gjer: `<p>Gå gjennom dei tre kontrollane og lat elevane skrive dei ned.</p>`, lysbilete: "17" },
+      { fase: "Eigenarbeid", min: 12, gjer: `<p>Elevane skriv rett form av fem ord (4 min) og finn feila i teksten om helga hos bestemor (8 min) i skriveboka. Gå gjennom svaret etter kvart lysbilete.</p>`, lysbilete: "16 og 17" },
+      { fase: "Avslutning", min: 3, gjer: `<p>Gå gjennom dei tre kontrollane og lat elevane skrive dei ned.</p>`, lysbilete: "18" },
     ],
     misoppfatningar: [
       { feil: `«Alle fleirtalsformer på nynorsk endar på -ar og -ane.»`, hjelp: `Berre hankjønnsord. Hokjønn har <em class="nn">jenter, jentene</em>, og inkjekjønn har <em class="nn">hus, husa</em>. Lat eleven finne kjønnet først.` },
@@ -440,10 +476,10 @@ Larar.register("feil-boying", {
     },
     vurdering: [
       `Finn-feila-lysbileta viser raskt kva feiltypar klassen ser, og kva dei overser.`,
-      `Skriveoppgåva til slutt i modulen viser om eleven brukar kontrollane på eigen tekst.`,
+      `Grunngivinga på lysbilete 17 viser om eleven kjenner regelen bak kvar retting, og dei eigne setningane viser om eleven brukar kontrollane på eigen tekst.`,
       `Kjenneteikn på god måloppnåing: eleven finn endingsfeila utan hint og kan forklare regelen bak kvar retting.`,
     ],
-    vidare: `Gå vidare til Bokmålsord som snik seg inn. Elevar som treng meir øving, kan bruke mengdetreninga med verb og substantiv i Del 2.`,
+    vidare: `Gå vidare til Bokmålsord som snik seg inn. Elevar som treng meir øving, kan som frivillig lekse gjere elevmodulen Feil i bøying eller mengdetreninga med verb og substantiv i Del 2.`,
   },
 });
 
@@ -491,7 +527,7 @@ Larar.register("feil-bokmalsord", {
             </tbody>
           </table>
         </div>`,
-      notes: `Sei bokmålsordet og lat klassen svare. Pass på <em>spise</em>: nynorsk har <em>ete, et, åt, har ete</em>. Elevane skriv ofte <em class="bm">spiste</em> sjølv når resten av teksten er god nynorsk. Resten av lista står i leksjonen: <em>hjem → heim, vei → veg, penger → pengar, klær → klede</em>.`,
+      notes: `Sei bokmålsordet og lat klassen svare. Pass på <em>spise</em>: nynorsk har <em>ete, et, åt, har ete</em>. Elevane skriv ofte <em class="bm">spiste</em> sjølv når resten av teksten er god nynorsk. Fleire ord i same gruppa: <em>hjem → heim, vei → veg, penger → pengar, klær → klede</em>.`,
     },
     {
       type: "drill",
@@ -595,14 +631,32 @@ Larar.register("feil-bokmalsord", {
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Para saman bokmål og nynorsk.</li>
-          <li>Sorter orda i dei tre gruppene.</li>
-          <li>Fyll inn, set om og finn feila i tekstane.</li>
-        </ul>`,
-      tid: 12,
-      notes: `Gå rundt og sjå særleg på sorteringsoppgåva. Spør elevar som plasserer be-ord under «feil»: har du sjekka ordboka? Dei som blir tidleg ferdige, kan ta -het-drillen i Del 2.`,
+      title: "Skriv nynorskordet",
+      body: `<p>Skriv setningane på nynorsk.</p>
+        <ol>
+          <li>Vi ___ (spise) middag klokka fem.</li>
+          <li>Eg har ikkje sett henne ___ (siden) i fjor.</li>
+          <li>Har du ___ (penger) til bussen?</li>
+          <li>___ (Hvis) det regnar, blir vi heime.</li>
+          <li>Eg er ikkje ferdig ___ (ennå).</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 5,
+      svar: `1. <em class="nn">et</em> 2. <em class="nn">sidan</em> 3. <em class="nn">pengar</em> 4. <em class="nn">Viss</em>, <em class="nn">Dersom</em> eller <em class="nn">Om</em> 5. <em class="nn">enno</em> eller <em class="nn">endå</em>`,
+      notes: `Oppgåve 1 er den vanskelegaste: <em>ete</em> er sterkt, så presens er <em>et</em>. Minn om bøyinga <em>ete, et, åt, har ete</em>. I oppgåve 4 og 5 er fleire svar rette.`,
+    },
+    {
+      type: "oppgave",
+      title: "Finn feila",
+      body: `<p><em class="bm">Kvar sommar reiser familien min til ei lita øy på Vestlandet. Vi bur i eit gammalt hus som bestefar bygde selv. I fjor fekk bror min ein diger torsk, og han var så stolt at han ikke ville snakke om noko anna på ei heil uke. Det beste med ferien er at vi har god tid til hverandre. Ingen må gjøre noko dei ikkje har lyst til. Eg trur at den friheten er grunnen til at vi kjem tilbake.</em></p>
+        <ol>
+          <li>Det er <strong>6 feil</strong>: fem bokmålsord og eitt ord på <em class="bm">-het</em>. Skriv dei retta orda.</li>
+          <li>Ferdig? Skriv tre setningar om ein ferie. Bruk <em class="nn">veke, saman</em> og <em class="nn">kvarandre</em>.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 7,
+      svar: `<em class="bm">selv</em> → <em class="nn">sjølv</em>, <em class="bm">ikke</em> → <em class="nn">ikkje</em>, <em class="bm">uke</em> → <em class="nn">veke</em>, <em class="bm">hverandre</em> → <em class="nn">kvarandre</em>, <em class="bm">gjøre</em> → <em class="nn">gjere</em>, <em class="bm">friheten</em> → <em class="nn">fridomen</em>`,
+      notes: `Gå rundt og sjå om elevane overrettar: <em>bygde</em>, <em>noko</em>, <em>eit gammalt hus</em> og <em>ikkje</em> i nest siste setning er rette. <em>Friheten</em> er vanskelegast, for eleven må både finne ordet <em>fridom</em> og bøye det: <em>fridomen</em> (eller <em>fridommen</em>). <em>Gjere</em> kan òg skrivast <em>gjera</em>. Oppgåve 2 er for dei som blir tidleg ferdige.`,
     },
     {
       title: "Tre raske kontrollar",
@@ -635,8 +689,8 @@ Larar.register("feil-bokmalsord", {
       { fase: "Ord som ikkje finst", min: 9, gjer: `<p>Gå gjennom lista, ta ein tavlerunde, spørsmålet om <em class="nn">nå</em> og den første feilfinninga.</p>`, lysbilete: "4 til 7" },
       { fase: "-het, -else og be-ord", min: 12, gjer: `<p>Vis tabellen og mønsteret, ta tavlerunden og gå gjennom orda som er lov. Snakk om overretting.</p>`, lysbilete: "8 til 13" },
       { fase: "Sortering og feilfinning", min: 5, gjer: `<p>Elevane sorterer orda to og to og finn feila i teksten.</p>`, lysbilete: "14 og 15" },
-      { fase: "Eigenarbeid", min: 12, gjer: `<p>Elevane arbeider i modulen.</p>`, lysbilete: "16" },
-      { fase: "Avslutning", min: 3, gjer: `<p>Gå gjennom dei tre kontrollane og lat elevane skrive ned eitt ord dei ofte skriv feil.</p>`, lysbilete: "17" },
+      { fase: "Eigenarbeid", min: 12, gjer: `<p>Elevane skriv nynorskorda i fem setningar (5 min) og finn feila i ferieteksten (7 min) i skriveboka. Gå gjennom svaret etter kvart lysbilete.</p>`, lysbilete: "16 og 17" },
+      { fase: "Avslutning", min: 3, gjer: `<p>Gå gjennom dei tre kontrollane og lat elevane skrive ned eitt ord dei ofte skriv feil.</p>`, lysbilete: "18" },
     ],
     misoppfatningar: [
       { feil: `«Alle ord som byrjar på an- eller be-, er feil på nynorsk.»`, hjelp: `Mange er heilt vanlege: <em class="nn">betale, begynne, bety, bestemme</em>. Lær elevane å slå opp før dei rettar.` },
@@ -661,10 +715,10 @@ Larar.register("feil-bokmalsord", {
     },
     vurdering: [
       `Sorteringa på lysbilete 14 viser om elevane skil mellom feil og tillatne ord.`,
-      `Finn-feila-oppgåvene i modulen viser om eleven ser bokmålsorda i ein samanhengande tekst.`,
+      `Ferieteksten på lysbilete 17 viser om eleven ser bokmålsorda i ein samanhengande tekst.`,
       `Kjenneteikn på god måloppnåing: eleven rettar reine bokmålsord, vel gjerne nynorske alternativ, og overrettar ikkje tillatne ord.`,
     ],
-    vidare: `Gå vidare til Småord og funksjonsord. Elevar som treng meir øving, kan bruke drillen med -het og -else i mengdetreninga med småord i Del 2.`,
+    vidare: `Gå vidare til Småord og funksjonsord. Elevar som treng meir øving, kan som frivillig lekse gjere elevmodulen Bokmålsord som snik seg inn eller drillen med -het og -else i mengdetreninga med småord i Del 2.`,
   },
 });
 
@@ -799,14 +853,32 @@ Larar.register("feil-smaord", {
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Fleirval om <em class="nn">de/dei</em> og <em class="nn">si/hennar</em>.</li>
-          <li>Fyll inn pronomen og småord.</li>
-          <li>Finn feila i setningane og i klassetur-teksten.</li>
-        </ul>`,
-      tid: 12,
-      notes: `Klassetur-teksten til slutt har sju feil og er den vanskelegaste. Hjelp elevane med hintet: sjå særleg etter de/dei, då/når og eigedomsord. Dei som blir tidleg ferdige, kan ta småordsdrillane i Del 2.`,
+      title: "Skriv rett småord",
+      body: `<p>Bokmålsordet står i parentes. Skriv nynorskordet.</p>
+        <ol>
+          <li>Kan ___ (dere) hjelpe meg med dette?</li>
+          <li>Eg helsar på ___ (dere) i morgon.</li>
+          <li>Har du sett ___ (dem) i dag?</li>
+          <li>Boka ___ (hennes) ligg på bordet.</li>
+          <li>___ (Da/Når) eg var liten, budde vi i Bergen.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 5,
+      svar: `1. <em class="nn">de</em> (subjekt) 2. <em class="nn">dykk</em> (objekt) 3. <em class="nn">dei</em> 4. <em class="nn">hennar</em> 5. <em class="nn">Då</em> (éin gong i fortida). <em class="nn">Dokker</em> er òg rett i 1 og 2.`,
+      notes: `Oppgåve 1 og 2 er den same fella: <em>dere</em> blir <em>de</em> som subjekt og <em>dykk</em> som objekt. Be elevane seie om ordet er subjekt eller objekt når de går gjennom svaret.`,
+    },
+    {
+      type: "oppgave",
+      title: "Finn feila",
+      body: `<p><em class="bm">«Dei må møte på stasjonen klokka åtte», sa læraren til oss, men Jonas kom ikkje før halv ni. Når han endeleg dukka opp, sa Sara at ho aldri meir ville vente på ham. Ida hadde gløymt jakka si, så Mia lånte henne en genser. Kristian påstod at han hadde vore i Bergen før med foreldrene hans. Då vi kom heim, var Jonas ennå sur.</em></p>
+        <ol>
+          <li>Det er <strong>7 feil</strong>, alle i småord eller bøying. Skriv dei retta orda.</li>
+          <li>Sjå særleg etter <em class="nn">de/dei</em>, <em class="nn">då/når</em> og eigedomsord.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 7,
+      svar: `<em class="bm">Dei</em> → <em class="nn">De</em>, <em class="bm">Når</em> → <em class="nn">Då</em>, <em class="bm">ham</em> → <em class="nn">han</em>, <em class="bm">en</em> → <em class="nn">ein</em>, <em class="bm">foreldrene hans</em> → <em class="nn">foreldra sine</em> (to feil), <em class="bm">ennå</em> → <em class="nn">enno</em> eller <em class="nn">endå</em>`,
+      notes: `Dette er den vanskelegaste oppgåva i timen. Læraren snakkar til elevane, så det er <em>De må møte</em>. Kristian snakkar om sine eigne foreldre, så det er <em>sine</em> og ikkje <em>hans</em>, og foreldre er inkjekjønn i fleirtal: <em>foreldra</em>. <em>Si</em>, <em>henne</em> og <em>Då vi kom heim</em> er rette. <em>Honom</em> er òg rett for <em>ham</em>.`,
     },
     {
       title: "Tre raske kontrollar",
@@ -831,7 +903,7 @@ Larar.register("feil-smaord", {
     forkunnskapar: `Elevane bør kjenne omgrepa subjekt og objekt. Modulane om pronomen i Del 2 og om setningsledd i Grunnomgrep dekkjer dette.`,
     forebuing: [
       `Test tavleøvingane på lysbilete 6, 8 og 12, og sjå at då/når-figuren på lysbilete 7 blir vist rett.`,
-      `Ha minitavler eller kladdeark klare til finn-feila-lysbileta.`,
+      `Sjå til at elevane har skrivebok. Dei skriv rettingane der.`,
       `Tenk ut eit par eigne døme med de og dei frå klasserommet.`,
     ],
     okt: [
@@ -840,8 +912,8 @@ Larar.register("feil-smaord", {
       { fase: "Då, når, kvar, kor", min: 5, gjer: `<p>Vis figuren og ta ein tavlerunde.</p>`, lysbilete: "7 og 8" },
       { fase: "Eigedom", min: 9, gjer: `<p>Gå gjennom sin-forma og samsvar, sin mot hans, spørsmålet om Kari si bok og ein tavlerunde. Vis ein/ei/eit og kva for ein.</p>`, lysbilete: "9 til 13" },
       { fase: "Feilfinning", min: 5, gjer: `<p>Elevane finn feila i dei to setningane.</p>`, lysbilete: "14 og 15" },
-      { fase: "Eigenarbeid", min: 12, gjer: `<p>Elevane arbeider i modulen.</p>`, lysbilete: "16" },
-      { fase: "Avslutning", min: 3, gjer: `<p>Gå gjennom dei tre kontrollane med ein munnleg runde.</p>`, lysbilete: "17" },
+      { fase: "Eigenarbeid", min: 12, gjer: `<p>Elevane skriv rett småord i fem setningar (5 min) og finn feila i klassetur-teksten (7 min) i skriveboka. Gå gjennom svaret etter kvart lysbilete.</p>`, lysbilete: "16 og 17" },
+      { fase: "Avslutning", min: 3, gjer: `<p>Gå gjennom dei tre kontrollane med ein munnleg runde.</p>`, lysbilete: "18" },
     ],
     misoppfatningar: [
       { feil: `«<em class="nn">Dei</em> er nynorsk for <em class="bm">de</em>, så <em class="nn">de</em> er alltid feil.»`, hjelp: `<em class="nn">De</em> finst på nynorsk, men tyder <em class="bm">dere</em>. Spør: snakkar du til nokon eller om nokon?` },
@@ -867,10 +939,10 @@ Larar.register("feil-smaord", {
     },
     vurdering: [
       `Spørsmålet på lysbilete 3 viser kor mange som har de/dei-fella før undervisninga. Spør same spørsmål på slutten av timen og samanlikn.`,
-      `Klassetur-teksten i modulen viser om eleven finn småordfeila i ein lengre tekst.`,
+      `Klassetur-teksten på lysbilete 17 viser om eleven finn småordfeila i ein lengre tekst.`,
       `Kjenneteikn på god måloppnåing: eleven bruker de, dei og dykk rett, vel sin eller hans ut frå subjektet og skriv ikkje bokmålspronomen.`,
     ],
-    vidare: `Gå vidare til Setningsbygnad og stil. Elevar som treng meir øving, kan bruke drillane med pronomen, possessiv og då/når i mengdetreninga med småord i Del 2.`,
+    vidare: `Gå vidare til Setningsbygnad og stil. Elevar som treng meir øving, kan som frivillig lekse gjere elevmodulen Småord og funksjonsord eller drillane med pronomen, possessiv og då/når i mengdetreninga med småord i Del 2.`,
   },
 });
 
@@ -953,7 +1025,7 @@ Larar.register("feil-setning", {
           <div class="boks"><h3>saman med</h3><p class="stor"><em class="bm">skjer, finn stad, blir gjort, av</em></p></div>
         </div>`,
       steps: [`<p class="stor midt">Der ligg det ofte eit verb og ventar.</p>`],
-      notes: `Døme frå leksjonen: <em class="bm">Gjennomføring av testen skjer i morgon</em> blir <em>Vi gjennomfører testen i morgon</em>. Ord på -ing er ikkje feil i seg sjølv, det er kombinasjonen med eit tomt verb som gjer setninga tung.`,
+      notes: `Eit døme til: <em class="bm">Gjennomføring av testen skjer i morgon</em> blir <em>Vi gjennomfører testen i morgon</em>. Ord på -ing er ikkje feil i seg sjølv, det er kombinasjonen med eit tomt verb som gjer setninga tung.`,
     },
     {
       type: "diskuter",
@@ -963,7 +1035,7 @@ Larar.register("feil-setning", {
       form: "Skriv om to og to",
       tid: 3,
       svar: `<em class="nn">Vi samlar inn pengar i mai.</em> <em class="nn">Vi gjennomfører testen i morgon.</em> (eller <em class="nn">Testen blir gjennomført i morgon.</em>)`,
-      notes: `Be elevane skrive på minitavle eller ark. Spør etterpå: kven gjer noko i setninga no? Mange ulike løysingar kan vere rette, så lenge verbet gjer jobben.`,
+      notes: `Be elevane skrive i skriveboka. Spør etterpå: kven gjer noko i setninga no? Mange ulike løysingar kan vere rette, så lenge verbet gjer jobben.`,
     },
     {
       title: "S-genitiv",
@@ -1021,15 +1093,30 @@ Larar.register("feil-setning", {
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Set om til god nynorsk.</li>
-          <li>Sorter: grei s-form eller skriv om?</li>
-          <li>Finn feila i idrettsdag-teksten.</li>
-          <li>Skriv om det tunge avsnittet til slutt.</li>
-        </ul>`,
-      tid: 12,
-      notes: `Omskrivingsoppgåva til slutt har mange rette løysingar. Gå rundt og spør: kven gjer noko i setninga di? Dei som blir tidleg ferdige, kan sjå på ein eigen tekst og leite etter s-passiv.`,
+      title: "Set om til god nynorsk",
+      body: `<ol>
+          <li><em class="bm">Bilen vaskes hver lørdag.</em></li>
+          <li><em class="bm">Gjennomføringen av prøven skjer i morgen.</em></li>
+          <li><em class="bm">Kommunens budsjett er for lite.</em></li>
+        </ol>
+        <p>Unngå s-passiv, substantivsjuke og s-genitiv.</p>`,
+      form: "Åleine",
+      tid: 5,
+      svar: `1. <em class="nn">Bilen blir vaska kvar laurdag.</em> / <em class="nn">Vi vaskar bilen kvar laurdag.</em> 2. <em class="nn">Vi gjennomfører prøva i morgon.</em> / <em class="nn">Prøva blir gjennomført i morgon.</em> 3. <em class="nn">Budsjettet til kommunen er for lite.</em> / <em class="nn">Kommunen sitt budsjett er for lite.</em>`,
+      notes: `Fleire løysingar er rette. Spør: kven gjer noko i setninga di? I oppgåve 2 må elevane hugse at prøve er hokjønn: <em>prøva</em>. <em>Vert</em> er like rett som <em>blir</em>.`,
+    },
+    {
+      type: "oppgave",
+      title: "Finn feila",
+      body: `<p><em class="bm">Kvar vår arrangerer skulen vår ein idrettsdag. Dagen planleggjast av elevrådet, og lærarane hjelper til der det trengst. I år ble det bestemt at dagen skulle haldast på den nye bane ved elva. Billettar til grillfesten selges i kantina. Kommunens ordførar har lova å kome. Premiane delast ut klokka fem.</em></p>
+        <ol>
+          <li>Det er <strong>6 feil</strong>. Skriv dei retta orda. Rettinga kan vere fleire ord.</li>
+          <li>Ferdig? Skriv om: <em class="bm">Innsamling av pengar finn stad kvar fredag.</em></li>
+        </ol>`,
+      form: "Åleine",
+      tid: 7,
+      svar: `<em class="nn">blir planlagd</em>, <em class="nn">blei</em> eller <em class="nn">vart</em>, <em class="nn">den nye banen</em>, <em class="nn">blir selde</em>, <em class="nn">Kommunen sin ordførar</em> (eller <em class="nn">ordføraren i kommunen</em>), <em class="nn">blir delte ut</em>. Ekstra: <em class="nn">Vi samlar inn pengar kvar fredag.</em>`,
+      notes: `<em>Skulle haldast</em> og <em>trengst</em> er rette: den første har modalverb framfor, og <em>trengst</em> er eit eige verb på -st. Spør klassen kven som rørte dei. <em>Vert</em> er like rett som <em>blir</em>, og <em>planlagt, selt, delt</em> er òg rette former.`,
     },
     {
       title: "Tre raske kontrollar",
@@ -1053,9 +1140,9 @@ Larar.register("feil-setning", {
     lareplan: [11, 12],
     forkunnskapar: `Elevane bør kjenne omgrepa verb, subjekt og modalverb, og ha vore gjennom Feil i bøying og Småord og funksjonsord. Grunnomgrep i Del 2 er ein fordel for ordstillinga.`,
     forebuing: [
-      `Ha minitavler eller kladdeark klare til omskrivingane på lysbilete 10.`,
+      `Be elevane skrive omskrivingane på lysbilete 10 i skriveboka.`,
       `Finn gjerne eit døme på substantivsjuke frå ein ekte tekst, til dømes eit skriv frå skulen eller kommunen.`,
-      `Sjå til at elevane har tilgang til kurset på eigen maskin.`,
+      `Sjå til at elevane har skrivebok. Dei skriv omskrivingane og rettingane der.`,
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: `<p>Gå gjennom måla og lat elevane samanlikne dei to setningane om avgjerda.</p>`, lysbilete: "2 og 3" },
@@ -1063,8 +1150,8 @@ Larar.register("feil-setning", {
       { fase: "Substantivsjuke", min: 6, gjer: `<p>Vis dømet og kva elevane skal leite etter, og lat dei skrive om to setningar.</p>`, lysbilete: "8 til 10" },
       { fase: "S-genitiv og andre feller", min: 8, gjer: `<p>Gå gjennom s-genitiv, tunge setningar, ordstilling og dei tre småtinga. Ta spørsmålet om Kari si syster.</p>`, lysbilete: "11 til 15" },
       { fase: "Feilfinning", min: 3, gjer: `<p>Elevane finn dei tre feila i gymsal-setninga.</p>`, lysbilete: "16" },
-      { fase: "Eigenarbeid", min: 12, gjer: `<p>Elevane arbeider i modulen.</p>`, lysbilete: "17" },
-      { fase: "Avslutning", min: 3, gjer: `<p>Gå gjennom dei tre kontrollane.</p>`, lysbilete: "18" },
+      { fase: "Eigenarbeid", min: 12, gjer: `<p>Elevane skriv om tre setningar (5 min) og finn feila i idrettsdag-teksten (7 min) i skriveboka. Gå gjennom svaret etter kvart lysbilete.</p>`, lysbilete: "17 og 18" },
+      { fase: "Avslutning", min: 3, gjer: `<p>Gå gjennom dei tre kontrollane.</p>`, lysbilete: "19" },
     ],
     misoppfatningar: [
       { feil: `«S-passiv er alltid feil på nynorsk.»`, hjelp: `Etter modalverb er han heilt rett: <em class="nn">Bilen må vaskast</em>. Lat eleven sjå etter <em class="nn">kan, skal, må, bør, vil</em> framfor verbet.` },
@@ -1090,10 +1177,10 @@ Larar.register("feil-setning", {
     },
     vurdering: [
       `Tommel-runden på lysbilete 7 viser om elevane skil mellom s-passiv etter modalverb og utan.`,
-      `Omskrivingsoppgåva til slutt i modulen viser om eleven kan gjere ein tung tekst lettare utan å endre innhaldet.`,
+      `Omskrivingane på lysbilete 17 og feilfinninga på lysbilete 18 viser om eleven kan rette s-passiv, s-genitiv og substantivsjuke utan å endre innhaldet.`,
       `Kjenneteikn på god måloppnåing: eleven rettar s-passiv og s-genitiv, skriv om substantivsjuke til aktive setningar og overrettar ikkje s-passiv etter modalverb.`,
     ],
-    vidare: `Gå vidare til Rettelesing: finn og rett feila, der alle feiltypane frå Typiske feil kjem saman i heile tekstar.`,
+    vidare: `Gå vidare til Rettelesing: finn og rett feila, der alle feiltypane frå Typiske feil kjem saman i heile tekstar. Som frivillig lekse kan elevane gjere elevmodulen Setningsbygnad og stil, der dei mellom anna skriv om eit tungt avsnitt om innsamling til klasseturen.`,
   },
 });
 
@@ -1173,14 +1260,14 @@ Larar.register("feil-rettelesing", {
             <tr><td><em class="bm">ikke, bare, hva, jeg, hun</em></td><td><em class="nn">ikkje, berre, kva, eg, ho</em></td></tr>
           </tbody>
         </table>`,
-      notes: `S-passiv er berre lov etter modalverb. S-genitiv skriv vi om med preposisjon eller sin-form. Heile sjekklista står i leksjonen i modulen, så elevane kan ha henne open når dei arbeider.`,
+      notes: `S-passiv er berre lov etter modalverb. S-genitiv skriv vi om med preposisjon eller sin-form. Dei tre sjekklistelysbileta (6 til 8) kan du vise att medan elevane rettar eigen tekst til slutt i timen.`,
     },
     {
       title: "Vi les korrektur saman",
       body: `<p><em>Kjære dagbok! I dag var den verste dagen på lenge. Eg vakna for seint, hoppet over frukosten og sprang til bussen, men han køyrde rett forbi meg. Då eg endeleg kom fram til skulen, hadde klassa alt byrja på prøven i matte. Læraren såg strengt på meg, men sa ikke noko. Etterpå snakket eg med Sara i friminuttet, og ho lo så ho grein. No ligg eg i sengen og håpar at morgondagen blir betre.</em></p>`,
       steps: [`<p class="midt">Det er <strong>5 feil</strong>.</p>`],
       svar: `<em class="bm">hoppet</em> → <em class="nn">hoppa</em>, <em class="bm">prøven</em> → <em class="nn">prøva</em>, <em class="bm">ikke</em> → <em class="nn">ikkje</em>, <em class="bm">snakket</em> → <em class="nn">snakka</em>, <em class="bm">sengen</em> → <em class="nn">senga</em>`,
-      notes: `Dette er tekst 1 i modulen. Gjer metoden høgt: les éin gong for endingar (hoppet, prøven, snakket, sengen), så éin gong for småord (ikke). Legg merke til at teksten er skriven utan markering av feila, slik elevane møter dei i eigen tekst. <em>Klassa</em> og <em>han køyrde</em> (om bussen) er rette.`,
+      notes: `Dette er tekst 1 av dei fem tekstane i elevmodulen. Gjer metoden høgt: les éin gong for endingar (hoppet, prøven, snakket, sengen), så éin gong for småord (ikke). Legg merke til at teksten er skriven utan markering av feila, slik elevane møter dei i eigen tekst. <em>Klassa</em> og <em>han køyrde</em> (om bussen) er rette.`,
     },
     {
       type: "sporsmal",
@@ -1206,12 +1293,12 @@ Larar.register("feil-rettelesing", {
       notes: `Frå tekst 4, lesarinnlegget. Her er feila vanskelegare å sjå fordi orda liknar nynorsk: <em>lagast</em> har nynorsk ending, men står utan modalverb. Spør: kva hjelpeverb står framfor?`,
     },
     {
-      title: "To feller i tekst 5",
+      title: "To feller i ei forteljing",
       steps: [
         `<p class="stor"><em class="bm">Nora fann fram lomme lykta.</em> → <em class="nn">lommelykta</em></p>`,
         `<p class="stor">Stemma snakkar til Nora og Sam:<br><em class="bm">«Eg lurte på når dei kom til å dukke opp.»</em> → <em class="nn">de</em></p>`,
       ],
-      notes: `Tekst 5 er den vanskelegaste. Særskrivinga rettar eleven ved å klikke på det første ordet og skrive heile ordet. <em>Dei</em> står fleire gonger i teksten, men berre éin gong er det feil. Det er ei god øving i å lese kvar setning for seg og spørje: til eller om?`,
+      notes: `Utdraga er frå tekst 5 i elevmodulen, den vanskelegaste teksten. Særskrivinga rettar elevane ved å skrive heile ordet i eitt. <em>Dei</em> står fleire gonger i teksten, men berre éin gong er det feil. Det er ei god øving i å lese kvar setning for seg og spørje: til eller om?`,
     },
     {
       type: "diskuter",
@@ -1219,29 +1306,61 @@ Larar.register("feil-rettelesing", {
       prompt: `<p class="stor">Tenk på den siste nynorskteksten din. Kva for éin feiltype trur du du gjer oftast?</p>`,
       form: "Tenk sjølv, så del med sidemannen",
       tid: 2,
-      notes: `Dette førebur den siste oppgåva i modulen, der elevane rettar eigen tekst og skriv ei oppsummering. Ta gjerne ei rask handsopprekking: kor mange trur det er endingar? Småord? Bokmålsord?`,
+      notes: `Dette førebur den siste oppgåva i timen, der elevane rettar eigen tekst og skriv ei oppsummering. Ta gjerne ei rask handsopprekking: kor mange trur det er endingar? Småord? Bokmålsord?`,
     },
     {
       type: "oppgave",
-      title: "Fem tekstar",
-      body: `<ul>
-          <li>Tekst 1 til 5 blir lengre og vanskelegare.</li>
-          <li>Klikk på feilen, skriv rett form.</li>
-          <li>Les tre gonger før du trykkjer «Sjekk svar».</li>
-        </ul>`,
-      tid: 10,
-      notes: `Minn elevane om at alle ord som ikkje er feil, er korrekt nynorsk. Dei treng altså ikkje tvile på kvart ord. Oppmuntre dei til å bruke metoden, ikkje berre lese éin gong og klikke. Ikkje alle rekk alle fem tekstane, og det er greitt.`,
+      title: "Rett to tekstar",
+      body: `<ol>
+          <li>Les tekst 2 tre gonger: innhald, endingar, småord. Det er <strong>6 feil</strong>.</li>
+          <li>Skriv kvar feil og rett form i skriveboka: <em class="bm">kastet</em> → <em class="nn">kasta</em>.</li>
+          <li>Ferdig? Ta tekst 3. Det er <strong>7 feil</strong>.</li>
+        </ol>
+        <p>Alle andre ord er rett nynorsk.</p>`,
+      form: "Åleine",
+      tid: 8,
+      notes: `Vis dette lysbiletet først, og gå så vidare til tekst 2. Tekst 3 er for dei som blir ferdige. La tekst 2 stå til dei fleste er ferdige, og gå så vidare til tekst 3. Blir teksten delt på fleire sider, blar du med vanleg trykk. Minn elevane om at alle ord som ikkje er feil, er korrekt nynorsk, så dei treng ikkje tvile på kvart ord. Oppmuntre dei til å bruke metoden, ikkje berre lese éin gong. De/dei-feilen i tekst 2 kjenner dei frå spørsmålet tidlegare, og tre av feila i tekst 3 har dei sett i utdraget. Det gjer ingenting: no skal dei finne dei att i ein heil tekst. Fasiten kjem på lysbilete 18.`,
+    },
+    {
+      type: "tekst",
+      title: "Tekst 2: Melding til ein ven",
+      text: `<p>Hei Jonas! Er du heime i kveld? Eg og Mia tenkte å dra på kino, og vi lurte på om du og bror din vil vere med. Filmen startar halv åtte, så dei må vere ved kinoen seinast klokka sju. Eg har alt kjøpt billettene, så de treng ikkje tenkje på det. Har du noko pengar til popkorn? Eg har bare femti kroner sjølv, for eg gløymde lommeboka mi heime i går, og mor mi blei skikkeleg irritert. Hun sa at eg må skjerpe meg. Svar så fort du kan! Vi kommer ikkje til å vente om du er sein.</p>
+        <p>Klem, Emma</p>`,
+      kjelde: "6 feil",
+      notes: `Teksten er skriven utan markering av feila, slik elevane møter dei i eigen tekst. Feila er: <em>dei, billettene, noko (pengar), bare, Hun, kommer</em>. <em>Blei</em>, <em>lommeboka mi</em> og <em>de treng</em> er rette.`,
+    },
+    {
+      type: "tekst",
+      title: "Tekst 3: Nyheitssak frå skuleavisa",
+      text: `<h3>Elevrådet vann kampen om lengre friminutt</h3>
+        <p>Etter fleire månader med diskusjon har rektor endeleg sagt ja: Frå neste veke får elevene ved Fjellheim ungdomsskule ti minutt lengre storefri.</p>
+        <p>«Vi er kjempenøgde», seier elevrådsleiar Aisha Khan (15). Ho fortel at elevrådet samlet inn over to hundre underskrifter når dei starta aksjonen i haust. Mange elevar meinte at storefri var for kort til å rekkje både mat og frisk luft.</p>
+        <p>Rektor Per Nesheim seier at han var skeptisk i byrjinga, men at argumentene til elevane overtydde han. «Eg veit ikkje kvar mange som har klaga på dette», seier han. Også lærarane deres har støtta saken. Kvar dei ekstra minutta skal hentast frå, er enno ikkje avgjort, men elevane håpar at skuledagen ikkje blir lengre.</p>
+        <p>«Dette viser at det nyttar å seie ifrå», seier Aisha.</p>`,
+      kjelde: "7 feil",
+      notes: `Feila er: <em>elevene, samlet, når, argumentene, kvar (mange), deres, saken</em>. <em>Kvar dei ekstra minutta skal hentast frå</em> er rett, for det handlar om stad. <em>Også</em> er rett nynorsk.`,
+    },
+    {
+      title: "Fasit",
+      body: `<div class="to-kol">
+          <div class="boks steg"><h3>Tekst 2</h3>
+            <p><em class="bm">dei</em> → <em class="nn">de</em><br><em class="bm">billettene</em> → <em class="nn">billettane</em><br><em class="bm">noko</em> → <em class="nn">nokre</em> (pengar)<br><em class="bm">bare</em> → <em class="nn">berre</em><br><em class="bm">Hun</em> → <em class="nn">Ho</em><br><em class="bm">kommer</em> → <em class="nn">kjem</em></p></div>
+          <div class="boks steg"><h3>Tekst 3</h3>
+            <p><em class="bm">elevene</em> → <em class="nn">elevane</em><br><em class="bm">samlet</em> → <em class="nn">samla</em><br><em class="bm">når</em> → <em class="nn">då</em><br><em class="bm">argumentene</em> → <em class="nn">argumenta</em><br><em class="bm">kvar mange</em> → <em class="nn">kor mange</em><br><em class="bm">deres</em> → <em class="nn">deira</em><br><em class="bm">saken</em> → <em class="nn">saka</em></p></div>
+        </div>`,
+      notes: `Fasiten kjem fram éin tekst om gongen. Lat elevane rette i skriveboka og telje kor mange feil dei fann av kvar type: endingar, småord eller bokmålsord. <em>Nokon pengar</em> er òg rett i eit spørsmål. Spør kva feil dei overså, og kva for ei av dei tre gjennomlesingane som skulle ha fanga han.`,
     },
     {
       type: "oppgave",
       title: "Rett din eigen tekst",
-      body: `<ul>
-          <li>Hent fram ein nynorsktekst du har skrive før.</li>
+      body: `<ol>
+          <li>Finn ein nynorsktekst i skriveboka som du har skrive før. Har du ingen, skriv ein ny på 100 ord om ein dag du hugsar godt.</li>
           <li>Les han tre gonger med sjekklista.</li>
           <li>Skriv kva feil du fann, og kva du må passe på.</li>
-        </ul>`,
+        </ol>`,
+      form: "Åleine",
       tid: 10,
-      notes: `Har elevane ingen eigen tekst, skriv dei ein ny på minst 100 ord om ein dag dei hugsar godt. Oppsummeringa deira er gull for deg: ho viser kva feiltypar kvar elev slit med. Samle henne inn eller be elevane lagre henne.`,
+      notes: `Oppsummeringa deira er gull for deg: ho viser kva feiltypar kvar elev slit med. Samle inn skrivebøkene etter timen. Gå gjerne tilbake til sjekklista på lysbilete 6 til 8 medan elevane arbeider.`,
     },
     {
       title: "Oppsummering",
@@ -1256,7 +1375,7 @@ Larar.register("feil-rettelesing", {
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: `<p>Modulen avsluttar Typiske feil. Elevane lærer ein metode for korrekturlesing: les teksten tre gonger, éin gong for innhald, éin for endingar og éin for småord, og bruk ei sjekkliste med dei vanlegaste feila. Så trenar dei på fem heile tekstar med skjulte feil og stigande vanskegrad, frå dagboknotat til forteljing, og avsluttar med å rette sin eigen tekst.</p>`,
+    intro: `<p>Modulen avsluttar Typiske feil. Elevane lærer ein metode for korrekturlesing: les teksten tre gonger, éin gong for innhald, éin for endingar og éin for småord, og bruk ei sjekkliste med dei vanlegaste feila. Så rettar dei saman eit dagboknotat og utdrag frå fleire tekstar på tavla, rettar ei melding og ei nyheitssak sjølve i skriveboka, og avsluttar med å rette sin eigen tekst. Alle tekstane står på tavla.</p>`,
     mal: [
       `Elevane kan bruke ein fast metode for korrekturlesing med tre gjennomlesingar.`,
       `Elevane kan finne og rette bøyingsfeil, bokmålsord, småordfeil og feil i setningsbygnad i ein samanhengande tekst.`,
@@ -1266,21 +1385,21 @@ Larar.register("feil-rettelesing", {
     forkunnskapar: `Elevane bør ha vore gjennom dei andre modulane i Typiske feil: skrivereglar, bøying, bokmålsord, småord og setningsbygnad. Modulen repeterer alle feiltypane.`,
     forebuing: [
       `Be elevane på førehand ta med eller finne fram ein nynorsktekst dei har skrive, til den siste oppgåva.`,
-      `Les gjennom dei fem tekstane i modulen og fasiten i rettleiinga, så du kjenner feila.`,
-      `Skriv gjerne ut sjekklista frå leksjonen til elevar som vil ha henne på papir.`,
+      `Les gjennom tekstane på lysbilete 9 og 16 til 17 og fasiten på lysbilete 18, så du kjenner feila.`,
+      `Skriv gjerne ut sjekklista (lysbilete 6 til 8) til elevar som vil ha henne på papir.`,
     ],
     okt: [
       { fase: "Oppstart", min: 3, gjer: `<p>Gå gjennom måla og lat elevane diskutere kvifor det er vanskeleg å sjå eigne feil.</p>`, lysbilete: "2 og 3" },
       { fase: "Metoden", min: 6, gjer: `<p>Gå gjennom dei tre gjennomlesingane, tipsa om å lese høgt og baklengs, og dei tre delane av sjekklista.</p>`, lysbilete: "4 til 8" },
       { fase: "Korrektur saman", min: 10, gjer: `<p>Les dagboknotatet saman med metoden, ta spørsmålet om de/dei og finn feila i utdraga frå tekst 3, 4 og 5.</p>`, lysbilete: "9 til 13" },
       { fase: "Refleksjon", min: 3, gjer: `<p>Elevane tenkjer over kva feiltype dei sjølve gjer oftast.</p>`, lysbilete: "14" },
-      { fase: "Eigenarbeid: tekstane", min: 10, gjer: `<p>Elevane arbeider med tekst 1 til 5 i modulen.</p>`, lysbilete: "15" },
-      { fase: "Eigenarbeid: eigen tekst", min: 10, gjer: `<p>Elevane rettar sin eigen tekst med metoden og skriv oppsummeringa.</p>`, lysbilete: "16" },
-      { fase: "Avslutning", min: 3, gjer: `<p>Oppsummer metoden og lat elevane velje eit personleg fokuspunkt.</p>`, lysbilete: "17" },
+      { fase: "Eigenarbeid: tekstane", min: 10, gjer: `<p>Elevane les tekst 2 med metoden og skriv feila og rett form i skriveboka. Dei som blir ferdige, tek tekst 3. Gå gjennom fasiten dei siste minutta.</p>`, lysbilete: "15 til 18" },
+      { fase: "Eigenarbeid: eigen tekst", min: 10, gjer: `<p>Elevane rettar sin eigen tekst med metoden og skriv oppsummeringa.</p>`, lysbilete: "19" },
+      { fase: "Avslutning", min: 3, gjer: `<p>Oppsummer metoden og lat elevane velje eit personleg fokuspunkt.</p>`, lysbilete: "20" },
     ],
     misoppfatningar: [
       { feil: `«Eg har lese gjennom teksten éin gong, så han er ferdig.»`, hjelp: `Éi gjennomlesing fangar lite, fordi hjernen fyller inn det du meinte. Lat eleven lese éin gong berre for endingar og ein gong berre for småord, og sjå kor mange fleire feil han finn.` },
-      { feil: `«Når eit ord står rett éin stad, står det rett overalt.»`, hjelp: `I tekst 5 står <em class="nn">dei</em> fleire gonger, og berre éin gong er det feil. Kvar setning må lesast for seg.` },
+      { feil: `«Når eit ord står rett éin stad, står det rett overalt.»`, hjelp: `I forteljinga på lysbilete 13 (tekst 5 i elevmodulen) står <em class="nn">dei</em> fleire gonger, og berre éin gong er det feil. Kvar setning må lesast for seg.` },
       { feil: `«<em class="nn">Når</em> og <em class="nn">kvar</em> er nynorsk, så dei er alltid rette.»`, hjelp: `Begge orda finst, men har ulik tyding. Eleven må forstå setninga: éin gong i fortida gir <em class="nn">då</em>, grad og mengd gir <em class="nn">kor</em>.` },
     ],
     samtale: [
@@ -1290,7 +1409,7 @@ Larar.register("feil-rettelesing", {
     ],
     tilpassing: {
       stotte: [
-        `Lat elevane berre gjere tekst 1 og 2, og bruke tida på å lese dei med metoden.`,
+        `Lat elevane berre gjere tekst 2, og bruke tida på å lese han tre gonger med metoden.`,
         `Gi elevane sjekklista på papir, og lat dei krysse av for kvar feiltype dei har leita etter.`,
         `Lat elevane arbeide to og to på dei lengste tekstane, der den eine les høgt.`,
       ],
@@ -1300,10 +1419,10 @@ Larar.register("feil-rettelesing", {
       ],
     },
     vurdering: [
-      `Tekst 1 til 5 i modulen viser kor langt eleven kjem med stigande vanskegrad, og kva feiltypar han overser.`,
+      `Tekst 2 og 3 på lysbilete 16 og 17 viser kor langt eleven kjem, og kva feiltypar han overser.`,
       `Oppsummeringa i den siste oppgåva viser om eleven kjenner sine eigne typiske feil.`,
-      `Kjenneteikn på god måloppnåing: eleven finn dei fleste feila i tekst 4 og 5, grunngir rettingane og brukar metoden på eigen tekst.`,
+      `Kjenneteikn på god måloppnåing: eleven finn dei fleste feila i tekst 2 og 3, grunngir rettingane og brukar metoden på eigen tekst.`,
     ],
-    vidare: `Bruk metoden og sjekklista i alle nynorsktekstar elevane skriv framover, til dømes i skrivemodulane i Del 4. Oppsummeringane frå den siste oppgåva gir deg eit godt grunnlag for individuelle mål i sidemålsundervisninga.`,
+    vidare: `Bruk metoden og sjekklista i alle nynorsktekstar elevane skriv framover, til dømes i skrivemodulane i Del 4. Tekst 4 og 5 i elevmodulen Rettelesing kan brukast som frivillig lekse. Oppsummeringane frå den siste oppgåva gir deg eit godt grunnlag for individuelle mål i sidemålsundervisninga.`,
   },
 });

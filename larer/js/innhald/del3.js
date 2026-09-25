@@ -19,7 +19,7 @@ Larar.register("ordbok-verktoya", {
         <li>finne ut kva kvar av dei er <strong>best</strong> til</li>
         <li>øve på å <strong>velje rett ordbok</strong> til rett spørsmål</li>
       </ul>`,
-      notes: "Gå raskt gjennom måla. Sei at timen er praktisk: du kjem til å slå opp live på tavla, og elevane skal etterpå prøve sjølve i modulen.",
+      notes: "Gå raskt gjennom måla. Sei at timen er praktisk: du kjem til å slå opp live på tavla, og elevane skal etterpå prøve sjølve og skrive i skriveboka.",
     },
     {
       type: "diskuter",
@@ -165,14 +165,31 @@ Larar.register("ordbok-verktoya", {
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Les dei to fagtekstane i modulen.</li>
-          <li>Gjer fleirvalet og paroppgåva.</li>
-          <li>Skriv til slutt: kva gjer du før prøva?</li>
-        </ul>`,
-      tid: 15,
-      notes: "Be elevane ha begge nettordbøkene opne i kvar si fane mens dei arbeider, og prøve minst eitt oppslag i kvar. Skriveoppgåva om prøva er ein god stad å fange opp kven som veit kva hjelpemiddel dei får bruke.",
+      title: "Prøv begge ordbøkene",
+      body: `<ol class="stor">
+          <li>Slå opp <em class="nn">vindauge</em> i Lexin. Skriv forklaringa med eigne ord.</li>
+          <li>Slå opp same ord i Nynorskordboka. Kva kjønn har det?</li>
+          <li>Skriv to ting som står i Nynorskordboka, men ikkje i Lexin.</li>
+          <li>Er <em class="nn">kjærleik</em> lov på nynorsk? Kvar sjekka du?</li>
+        </ol>`,
+      utstyr: ["skrivebok", "ordbok"],
+      form: "I par",
+      tid: 8,
+      svar: "2 Inkjekjønn: <em class=\"nn\">eit vindauge</em>. 3 Til dømes fleire bøyingsformer, ordhistorie og faste uttrykk. 4 Ja, <em class=\"nn\">kjærleik</em> står i Nynorskordboka, og då er ordet lov.",
+      notes: "Para deler éin skjerm, mobil eller PC, med lexin.oslomet.no og ordbokene.no. Den eine søkjer, den andre skriv. Har ikkje elevane tilgang til ordbøkene, gjer du oppslaga på tavla og lèt klassen svare i skriveboka. Poenget med nummer 3 er at elevane ser kor mykje meir Nynorskordboka har. Prøv oppslaga på førehand.",
+    },
+    {
+      type: "oppgave",
+      title: "Planlegg prøva",
+      body: `<p class="stor">Du skal ha prøve i nynorsk om to veker. Skriv 40 til 80 ord om kva du gjer <strong>før</strong> prøva.</p>
+        <ol class="stor">
+          <li>Kva spør du læraren om?</li>
+          <li>Kva hjelpemiddel øver du på, og kvifor?</li>
+          <li>Kvifor held det ikkje å slå opp første gong midt i prøva?</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 6,
+      notes: "Skriveoppgåva er ein god stad å fange opp kven som veit kva hjelpemiddel dei får bruke. Les nokre svar undervegs, og ta med eitt eller to gode svar i oppsummeringa.",
     },
     {
       title: "Oppsummering",
@@ -200,13 +217,15 @@ Larar.register("ordbok-verktoya", {
       "Slå opp <em class=\"nn\">høve</em>, <em class=\"nn\">bok</em> og <em class=\"nn\">venskap</em> på førehand, så du veit kva som kjem opp.",
       "Ha med ei papirordbok å vise fram.",
       "Finn ut kva hjelpemiddel som gjeld på neste prøve, så du kan svare konkret på lysbilete 15.",
+      "Sjå til at para har tilgang til lexin.oslomet.no og ordbokene.no på mobil eller PC til oppgåva på lysbilete 16. Elles gjer du oppslaga felles på tavla.",
+      "Elevane treng skrivebok.",
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og la elevane fortelje når dei sist slo opp noko.</p>", lysbilete: "2 og 3" },
       { fase: "Tre ordbøker", min: 14, gjer: "<p>Gå gjennom dei fire spørsmåla, og presenter kvar ordbok. Gjer dei to demonstrasjonane live på tavla.</p>", lysbilete: "4 til 9" },
       { fase: "Kva vel du når?", min: 9, gjer: "<p>Hugseregelen, vegvisaren, to spørsmål og samtalen om fire situasjonar. Avslutt med kva som gjeld på prøver.</p>", lysbilete: "10 til 15" },
-      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane arbeider i modulen med begge nettordbøkene opne.</p>", lysbilete: "16" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og kom tilbake til lista frå oppstarten.</p>", lysbilete: "17" },
+      { fase: "Eigenarbeid", min: 15, gjer: "<p>Para slår opp same ord i Lexin og Nynorskordboka og skriv svara i skriveboka. Deretter skriv kvar elev om kva dei gjer før prøva.</p>", lysbilete: "16 og 17" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og kom tilbake til lista frå oppstarten.</p>", lysbilete: "18" },
     ],
     misoppfatningar: [
       { feil: "«Lexin og Nynorskordboka er det same.»", hjelp: "Lexin er laga for dei som lærer norsk, med enkle forklaringar. Nynorskordboka er mykje større og viser den offisielle norma. Slå opp same ord i begge og samanlikn." },
@@ -232,10 +251,11 @@ Larar.register("ordbok-verktoya", {
     },
     vurdering: [
       "Spørsmåla og samtalen om fire situasjonar viser om klassen skil mellom Lexin og Nynorskordboka.",
+      "Oppslagsoppgåva viser om eleven finn fram i begge nettordbøkene og ser kva Nynorskordboka har som Lexin manglar.",
       "Skriveoppgåva om prøva viser om eleven har ein plan for å bruke ordboka godt.",
       "Kjenneteikn på god måloppnåing: eleven vel rett ordbok og grunngir valet med kva ordboka er laga for.",
     ],
-    vidare: "Gå vidare til Finn oppslagsordet, der elevane lærer å finne grunnforma og bruke alfabetet i papirordboka.",
+    vidare: "Gå vidare til Finn oppslagsordet, der elevane lærer å finne grunnforma og bruke alfabetet i papirordboka. Elevmodulen Tre ordbøker, tre styrkar kan brukast som frivillig lekse.",
   },
 });
 
@@ -380,14 +400,47 @@ Larar.register("ordbok-grunnform", {
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Skriv grunnforma til fem ord.</li>
-          <li>Alfabetet og paroppgåva med oppslagsord.</li>
-          <li>Forklar: <em class="nn">Dei bar sekkene opp bakken.</em></li>
-        </ul>`,
-      tid: 15,
-      notes: "Skriveoppgåva til slutt handlar om <em>bar</em>, som er eit sterkt verb (grunnform <em>bere</em>), og <em>sekkene</em> (grunnform <em>sekk</em>). Sjå etter om elevane forklarar kvifor verbet ikkje kan løysast ved å stryke ei ending. La gjerne nokre elevar prøve papirordboka i staden for nettet.",
+      title: "Finn oppslagsordet",
+      body: `<p class="stor">Skriv grunnforma. Set ei stjerne ved dei orda der det ikkje held å stryke endinga.</p>
+        <ol class="stor">
+          <li><em class="nn">nettene</em></li>
+          <li><em class="nn">drakk</em></li>
+          <li><em class="nn">kjøpte</em></li>
+          <li><em class="nn">yngste</em></li>
+          <li><em class="nn">bøndene</em></li>
+        </ol>`,
+      form: "Åleine",
+      tid: 5,
+      svar: "<em class=\"nn\">natt, drikke, kjøpe, ung, bonde</em>. Stjerne ved <em class=\"nn\">nettene, drakk, yngste</em> og <em class=\"nn\">bøndene</em>: dei byter vokal.",
+      notes: "Berre <em>kjøpte</em> kan løysast ved å stryke endinga og leggje til -e. <em>Yngste</em> høyrer til <em>ung</em>: ung, yngre, yngst. Ta svara munnleg før du viser fasiten, og spør korleis elevane visste grunnforma til dei orda som byter vokal.",
+    },
+    {
+      type: "oppgave",
+      title: "Alfabetet",
+      body: `<p class="stor">Skriv orda i alfabetisk rekkjefølgje.</p>
+        <ol class="stor">
+          <li><em class="nn">øy · sol · åker · snø · ære</em></li>
+          <li><em class="nn">skule · skog · skip · skjorte</em></li>
+        </ol>`,
+      form: "Åleine",
+      tid: 3,
+      svar: "1 <em class=\"nn\">snø, sol, ære, øy, åker</em>. 2 <em class=\"nn\">skip, skjorte, skog, skule</em>: alle byrjar på sk, så du sorterer på den tredje bokstaven.",
+      notes: "Den første rekkja øver på æ, ø og å sist. Den andre øver på ord som byrjar likt. Har du papirordbøker, kan to eller tre elevar sjekke svaret ved å finne orda i boka.",
+    },
+    {
+      type: "oppgave",
+      title: "Forklar framgangsmåten",
+      body: `<p class="kjempe midt"><em class="nn">Dei bar sekkene opp bakken.</em></p>
+        <p class="stor">Skriv 30 til 60 ord:</p>
+        <ol class="stor">
+          <li>Kva verb og kva substantiv må du slå opp?</li>
+          <li>Kva er grunnforma til kvart av dei?</li>
+          <li>Kvifor held det ikkje å stryke ei ending på det eine?</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 6,
+      svar: "<em class=\"nn\">bar</em> → <em class=\"nn\">bere</em> og <em class=\"nn\">sekkene</em> → <em class=\"nn\">sekk</em>. <em class=\"nn\">Bere</em> er eit sterkt verb som byter vokal, så du må kjenne verbet eller søkje på nett. (<em class=\"nn\">bakken</em> → <em class=\"nn\">bakke</em> er òg rett.)",
+      notes: "Sjå etter om elevane forklarar kvifor verbet ikkje kan løysast ved å stryke ei ending. Å stryke -ene i <em>sekkene</em> går fint. Nokre vel <em>bakken</em> i staden for <em>sekkene</em>, og det er òg rett.",
     },
     {
       title: "Oppsummering",
@@ -415,13 +468,14 @@ Larar.register("ordbok-grunnform", {
       "Test søka på lysbilete 10 på ordbokene.no før timen: <em class=\"nn\">bøkene</em>, <em class=\"nn\">sprang</em> og <em class=\"nn\">verst</em>.",
       "Ha med ei eller fleire papirordbøker, gjerne nok til at para kan dele.",
       "Finn eit ord i papirordboka på førehand som du kan bruke til å vise leieorda.",
+      "Elevane treng berre skrivebok. Oppgåvene på lysbilete 15 til 17 kan gjerast utan ordbok.",
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og la elevane forklare kvifor <em class=\"nn\">bøkene</em> ikkje står i ordboka.</p>", lysbilete: "2 og 3" },
       { fase: "Grunnforma", min: 13, gjer: "<p>Gå gjennom tabellen, substantiv, svake og sterke verb. Ta spørsmålet om <em class=\"nn\">gutane</em> og la para finne grunnforma til fem ord.</p>", lysbilete: "4 til 9" },
       { fase: "Snarveg og alfabet", min: 10, gjer: "<p>Demonstrer søket på ordbokene.no live. Vis alfabetet og leieorda i papirordboka, og ta øvingane om rekkjefølgje og <em class=\"nn\">verst</em>.</p>", lysbilete: "10 til 14" },
-      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane arbeider i modulen.</p>", lysbilete: "15" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og ta ein munnleg runde med bøygde ord.</p>", lysbilete: "16" },
+      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane skriv grunnforma til fem ord, set ord i alfabetisk rekkjefølgje og forklarar framgangsmåten for <em class=\"nn\">Dei bar sekkene opp bakken</em> i skriveboka. Gå gjennom fasiten etter kvar oppgåve.</p>", lysbilete: "15 til 17" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og ta ein munnleg runde med bøygde ord.</p>", lysbilete: "18" },
     ],
     misoppfatningar: [
       { feil: "«Ordet finst ikkje, så det er feil.»", hjelp: "Ordet står i grunnform. Rull bøyinga tilbake og prøv på nytt." },
@@ -450,7 +504,7 @@ Larar.register("ordbok-grunnform", {
       "Skriveoppgåva om <em class=\"nn\">Dei bar sekkene opp bakken</em> viser om eleven kan forklare framgangsmåten og skil mellom svake og sterke verb.",
       "Kjenneteikn på god måloppnåing: eleven finn grunnforma til sterke verb og uregelrette adjektiv, og kan grunngi kvifor.",
     ],
-    vidare: "Gå vidare til Les ein ordbokartikkel, der elevane lærer å hente ut kjønn, bøying og døme når dei har funne ordet.",
+    vidare: "Gå vidare til Les ein ordbokartikkel, der elevane lærer å hente ut kjønn, bøying og døme når dei har funne ordet. Elevmodulen Finn oppslagsordet kan brukast som frivillig lekse.",
   },
 });
 
@@ -597,18 +651,41 @@ Larar.register("ordbok-artikkel", {
       form: "Snakk med sidemannen",
       tid: 3,
       svar: "Døma viser ordet i bruk: kjønnet (<em class=\"nn\">ei bok</em>), bøyingsforma og kva preposisjon ordet plar ha (<em class=\"nn\">ei bok om fuglar</em>). Tydinga veit du som regel frå før.",
-      notes: "Dette er ei munnleg oppvarming til skriveoppgåva i modulen. Lat to eller tre par dele svaret sitt før du viser svaret.",
+      notes: "Dette er det viktigaste poenget i timen, og det kjem att når elevane slår opp sjølve om litt. Lat to eller tre par dele svaret sitt før du viser svaret.",
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Leseoppgåva med <em class="nn">lærar</em> og <em class="nn">skrive</em>.</li>
-          <li>Fyll inn formene av <em class="nn">bok</em>.</li>
-          <li>Skriv om kva døma er gode for.</li>
-        </ul>`,
-      tid: 15,
-      notes: "Be elevane som blir tidleg ferdige, slå opp tre ord frå eigne tekstar på ordbokene.no og skrive ned kjønn og bøying. Sjå etter at dei bruker rekkjefølgja i bøyinga når dei vel form.",
+      title: "Les artikkelen",
+      body: `<div class="boks">
+          <p class="stor"><strong>fjell</strong> n1 · <em>bøying:</em> fjellet, fjell, fjella</p>
+          <p class="stor"><strong>drikke</strong> v · <em>bøying:</em> drikk, drakk, drukke</p>
+        </div>
+        <ol class="stor">
+          <li>Kva kjønn har <em class="nn">fjell</em>? Skriv <em class="nn">ein</em>, <em class="nn">ei</em> eller <em class="nn">eit</em> framfor.</li>
+          <li><em class="nn">Vi gjekk på tre ___ i ferien.</em></li>
+          <li><em class="nn">Vi såg ned frå ___ .</em></li>
+          <li><em class="nn">I går ___ eg to glas vatn.</em></li>
+        </ol>`,
+      form: "Åleine",
+      tid: 6,
+      svar: "1 Inkjekjønn: <em class=\"nn\">eit fjell</em>. 2 <em class=\"nn\">fjell</em> (ubestemt fleirtal). 3 <em class=\"nn\">fjellet</em> (bestemt eintal). 4 <em class=\"nn\">drakk</em> (preteritum).",
+      notes: "Artiklane er forenkla. Be elevane seie kva form setninga krev før dei vel plass i rekkja. Nummer 2 er ei felle: inkjekjønnsord som <em>fjell</em> har ingen ending i ubestemt fleirtal, så forma er lik oppslagsordet.",
+    },
+    {
+      type: "oppgave",
+      title: "Slå opp sjølve",
+      body: `<p class="stor">Slå opp i Nynorskordboka. Skriv kjønn eller ordklasse og bøyinga.</p>
+        <ol class="stor">
+          <li><em class="nn">jente</em></li>
+          <li><em class="nn">hest</em></li>
+          <li><em class="nn">springe</em></li>
+          <li>Skriv av eitt døme. Kva viser det om ordet?</li>
+        </ol>`,
+      utstyr: ["skrivebok", "ordbok"],
+      form: "I par",
+      tid: 7,
+      svar: "<em class=\"nn\">jente</em> hokjønn: <em class=\"nn\">jenta, jenter, jentene</em>. <em class=\"nn\">hest</em> hankjønn: <em class=\"nn\">hesten, hestar, hestane</em>. <em class=\"nn\">springe</em> verb: <em class=\"nn\">spring, sprang, sprunge</em>.",
+      notes: "Para deler éin skjerm med ordbokene.no, mobil eller PC. Har ikkje elevane tilgang, slår du opp orda på tavla og lèt klassen skrive ned kjønn og bøying frå den ekte artikkelen. Sjekk før timen korleis artiklane ser ut: ordboka kan vise fleire tillatne former enn fasiten. Dei som blir tidleg ferdige, kan slå opp tre ord frå eigne tekstar og skrive kjønn og bøying.",
     },
     {
       title: "Oppsummering",
@@ -636,13 +713,15 @@ Larar.register("ordbok-artikkel", {
       "Slå opp <em class=\"nn\">bok</em> og <em class=\"nn\">skrive</em> på ordbokene.no før timen og sjå korleis artiklane ser ut.",
       "Ha ordbokene.no open i ei fane, så du kan byte raskt til demonstrasjonen på lysbilete 8.",
       "Ha små lappar klare til oppsummeringa.",
+      "Sjå til at para har tilgang til ordbokene.no på mobil eller PC til oppgåva på lysbilete 16, eller ha papirordbøker klare. Elles slår du opp orda felles på tavla.",
+      "Slå opp <em class=\"nn\">jente</em>, <em class=\"nn\">hest</em> og <em class=\"nn\">springe</em> på førehand, så du veit kva former ordboka viser.",
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og la elevane nemne kva som står i ein ordbokartikkel.</p>", lysbilete: "2 og 3" },
       { fase: "Delane i artikkelen", min: 12, gjer: "<p>Gå gjennom figuren, forkortingane, rekkjefølgja i bøyinga og tydingar og døme. Demonstrer ein ekte artikkel live.</p>", lysbilete: "4 til 8" },
       { fase: "Øving i klassen", min: 11, gjer: "<p>Tre spørsmål, fyll inn formene av <em class=\"nn\">bok</em>, og samtale om kva døma er gode for.</p>", lysbilete: "9 til 14" },
-      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane arbeider i modulen.</p>", lysbilete: "15" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og la elevane skrive rekkjefølgja i bøyinga på ein lapp.</p>", lysbilete: "16" },
+      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane les to artiklar på tavla og vel rett form i skriveboka. Deretter slår para opp tre ord i Nynorskordboka og skriv ned kjønn og bøying.</p>", lysbilete: "15 og 16" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og la elevane skrive rekkjefølgja i bøyinga på ein lapp.</p>", lysbilete: "17" },
     ],
     misoppfatningar: [
       { feil: "«Talet i <strong>f1</strong> er talet på tydingar.»", hjelp: "Talet viser bøyingsmønsteret. Tydingane har eigne nummer lenger ned i artikkelen." },
@@ -668,10 +747,11 @@ Larar.register("ordbok-artikkel", {
     },
     vurdering: [
       "Spørsmåla på tavla viser om klassen kan lese kjønn og bøying ut av artikkelen.",
-      "Leseoppgåva og fyll inn-oppgåva i modulen viser om eleven vel rett form ut frå rekkjefølgja.",
+      "Oppgåva med <em class=\"nn\">fjell</em> og <em class=\"nn\">drikke</em> viser om eleven vel rett form ut frå rekkjefølgja.",
+      "Oppslagsoppgåva viser om eleven finn kjønn og bøying i ein ekte artikkel.",
       "Kjenneteikn på god måloppnåing: eleven hentar ut kjønn, rett bøyingsform og preposisjon frå ein ukjend artikkel, og forklarar kvifor døma er nyttige.",
     ],
-    vidare: "Gå vidare til Bruk ordboka mens du skriv, der elevane bruker det dei har lært i eigne tekstar og lærer å finne nynorskordet når dei berre kjenner bokmålsordet.",
+    vidare: "Gå vidare til Bruk ordboka mens du skriv, der elevane bruker det dei har lært i eigne tekstar og lærer å finne nynorskordet når dei berre kjenner bokmålsordet. Elevmodulen Les ein ordbokartikkel kan brukast som frivillig lekse.",
   },
 });
 
@@ -750,7 +830,7 @@ Larar.register("ordbok-i-skriving", {
         `<p class="stor">3. Søk <em class="nn">høve</em> i Nynorskordboka</p>`,
         `<p class="stor">4. Les eitt døme</p>`,
       ],
-      notes: "Gjer dette live på ordbokene.no. I modulen blir <em>anledning</em> forklart som «høve, sjanse» i Bokmålsordboka. Be klassen sjå etter kva ord forklaringa gir, og søk så vidare på <em>høve</em>. Les eit døme høgt, så klassen ser at ordet passar i same samanheng. Vis gjerne til slutt at du kan søkje i begge ordbøkene samtidig. Test oppslaget på førehand.",
+      notes: "Gjer dette live på ordbokene.no. I Bokmålsordboka blir <em>anledning</em> forklart som «høve, sjanse» i Bokmålsordboka. Be klassen sjå etter kva ord forklaringa gir, og søk så vidare på <em>høve</em>. Les eit døme høgt, så klassen ser at ordet passar i same samanheng. Vis gjerne til slutt at du kan søkje i begge ordbøkene samtidig. Test oppslaget på førehand.",
     },
     {
       type: "sporsmal",
@@ -798,13 +878,18 @@ Larar.register("ordbok-i-skriving", {
     {
       type: "oppgave",
       title: "Skriv og slå opp",
-      body: `<ul>
-          <li>Skriv 80 til 150 ord om ein <strong>stad du kjenner godt</strong>.</li>
-          <li>Slå opp <strong>minst fem ord</strong> undervegs.</li>
-          <li>List orda og kva du fann ut, nedst i teksten.</li>
-        </ul>`,
+      body: `<p class="stor">Skriv 80 til 150 ord om ein <strong>stad du kjenner godt</strong>. Slå opp minst fem ord:</p>
+        <ol class="stor">
+          <li><strong>Kjønnet</strong> på minst to substantiv</li>
+          <li><strong>Preteritum</strong> av minst eitt sterkt verb</li>
+          <li>Minst eitt ord som <strong>luktar bokmål</strong></li>
+          <li>List orda og kva du fann ut, <strong>nedst</strong> i teksten.</li>
+        </ol>`,
+      steps: [`<p class="midt">Ferdig? Byt skrivebok med sidemannen og finn eitt ord som burde vore slått opp.</p>`],
+      utstyr: ["skrivebok", "ordbok"],
+      form: "Åleine",
       tid: 15,
-      notes: "Sjekklista i modulen ber elevane slå opp kjønnet på minst to substantiv, preteritum av minst eitt sterkt verb og minst eitt ord dei mistenkjer er bokmål. Til slutt bruker dei «Sjekk språket»-knappen. Gå rundt og sjå på lista over oppslag: der ser du om dei slår opp dei rette tinga.",
+      notes: "Elevane skriv i skriveboka og slår opp på ordbokene.no på mobil eller PC, eller i papirordboka. Gå rundt og sjå på lista over oppslag: der ser du om dei slår opp dei rette tinga. Trykk fram steget for dei som blir tidleg ferdige.",
     },
     {
       type: "diskuter",
@@ -813,7 +898,7 @@ Larar.register("ordbok-i-skriving", {
         <p>Kor lang tid tok dei fem oppslaga dine? Kva fann du ut?</p>`,
       form: "Heile klassen",
       tid: 4,
-      notes: "Spør kor lang tid fem oppslag tok. Svaret er som regel eit par minutt. Spør så kva slags feil elevane fann som dei ikkje ville ha høyrt: typisk kjønn, fleirtal og preteritum. Dette er ei munnleg førebuing til den siste skriveoppgåva i modulen, Svar medeleven, som kan vere lekse.",
+      notes: "Spør kor lang tid fem oppslag tok. Svaret er som regel eit par minutt. Spør så kva slags feil elevane fann som dei ikkje ville ha høyrt: typisk kjønn, fleirtal og preteritum. Som lekse kan elevane skrive 40 til 80 ord om kva dei vil svare ein medelev som seier dette, eller gjere den siste skriveoppgåva i elevmodulen, Svar medeleven.",
     },
     {
       title: "Oppsummering",
@@ -839,14 +924,14 @@ Larar.register("ordbok-i-skriving", {
     forebuing: [
       "Test oppslaga på ordbokene.no før timen: <em class=\"bm\">anledning</em>, <em class=\"nn\">høve</em>, <em class=\"bm\">forskjell</em> og <em class=\"nn\">skilnad</em>.",
       "Ha ordbokene.no og Lexin opne i kvar si fane på tavla.",
-      "Sjå til at elevane har maskin og kan opne ordbokene.no mens dei skriv.",
+      "Sjå til at elevane har tilgang til ordbokene.no på mobil eller PC på lysbilete 12 og 13, eller ha papirordbøker klare. Elevane skriv i skriveboka.",
     ],
     okt: [
       { fase: "Oppstart", min: 3, gjer: "<p>Gå gjennom måla og la elevane ta stilling til påstanden om å skrive som det høyrest ut.</p>", lysbilete: "2 og 3" },
       { fase: "Når slår vi opp?", min: 5, gjer: "<p>Gå gjennom dei fire situasjonane, kjønn som smittar, og spørsmålet om null treff.</p>", lysbilete: "4 til 6" },
       { fase: "Frå bokmål til nynorsk", min: 8, gjer: "<p>Vis vegvisaren og demonstrer <em class=\"bm\">anledning</em> live. Ta spørsmålet om <em class=\"bm\">forskjellen</em> og snakk om fella.</p>", lysbilete: "7 til 10" },
       { fase: "Øving i klassen", min: 8, gjer: "<p>Vel rett plass i bøyingsrekkja, og set om ei setning med ordboka open.</p>", lysbilete: "11 og 12" },
-      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane skriv teksten om ein stad og slår opp minst fem ord. Dei som blir ferdige, gjer resten av modulen.</p>", lysbilete: "13" },
+      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane skriv teksten om ein stad og slår opp minst fem ord. Dei som blir ferdige, byter skrivebok med sidemannen og finn eitt ord som burde vore slått opp.</p>", lysbilete: "13" },
       { fase: "Avslutning", min: 6, gjer: "<p>Gå tilbake til påstanden frå oppstarten og oppsummer.</p>", lysbilete: "14 og 15" },
     ],
     misoppfatningar: [
@@ -877,6 +962,6 @@ Larar.register("ordbok-i-skriving", {
       "Omsetjingsoppgåva viser om eleven kan gå via Bokmålsordboka.",
       "Kjenneteikn på god måloppnåing: eleven slår opp målretta undervegs, finn nynorskord via forklaringar og sjekkar at ordet passar i samanhengen.",
     ],
-    vidare: "Følg opp i skrivemodulane i Del 4. Be elevane halde fram med å liste oppslaga sine under tekstane, og bruk modulane under Typiske feil for å øve på kjønn og bøying.",
+    vidare: "Følg opp i skrivemodulane i Del 4. Be elevane halde fram med å liste oppslaga sine under tekstane, og bruk modulane under Typiske feil for å øve på kjønn og bøying. Elevmodulen Bruk ordboka mens du skriv kan brukast som frivillig lekse.",
   },
 });

@@ -128,15 +128,50 @@
       return { el, steg: v.tal, vis: v.vis };
     },
 
-    oppgave(s, m) {
+    // Elevane arbeider med oppgåvene på tavla, i skriveboka om ikkje anna er sagt.
+    // `utstyr` seier kva dei treng: skrivebok, ordbok (på nett) eller pc.
+    oppgave(s) {
+      const NAMN = { skrivebok: "I skriveboka", ordbok: "Ordbok på nett", pc: "På PC" };
+      const utstyr = s.utstyr && s.utstyr.length ? s.utstyr : ["skrivebok"];
+      const merke = utstyr.map(u => `<span class="lb-merke lb-merke-${E(u)}">${NAMN[u] || E(u)}</span>`).join("")
+        + (s.form ? `<span class="lb-merke lb-merke-form">${E(s.form)}</span>` : "")
+        + (s.tid ? `<span class="lb-merke lb-merke-tid">Om lag ${Number(s.tid)} min</span>` : "");
       const el = ramme(Object.assign({ kicker: "Elevane arbeider" }, s), "lb-oppgave", `
         <div class="lb-kropp">
+          <p class="lb-merkerad">${merke}</p>
           ${s.body || ""}
-          <p class="lb-lenkje">Opne modulen <b>${E(m.title)}</b> i kurset${s.del ? `, ${E(s.del)}` : ""}.${s.tid ? ` <span class="lb-tid">Om lag ${Number(s.tid)} min</span>` : ""}</p>
           ${stegOgSvar(s)}
         </div>`);
       const v = stegVisar(el);
       return { el, steg: v.tal, vis: v.vis };
+    },
+
+    // Ein lang tekst (til dømes ein lesetekst) som blir vist side for side.
+    // Talet på sider blir målt når lysbileta er bygde (sjå mål()).
+    tekst(s) {
+      const el = ramme(Object.assign({ kicker: "Les" }, s), "lb-tekst", `
+        <div class="lb-kropp lb-tekstvindauge"><div class="lb-tekstinnhald">${s.text || ""}</div></div>
+        <p class="lb-tekstbotn"><span>${s.kjelde || ""}</span><span class="lb-side"></span></p>`);
+      const vindauge = el.querySelector(".lb-tekstvindauge"), inn = el.querySelector(".lb-tekstinnhald"), side = el.querySelector(".lb-side");
+      let sider = 1, steglengd = 0, maks = 0;
+      const b = { el, steg: 0, ingenSkala: true };
+      b.mål = () => {
+        const lh = parseFloat(getComputedStyle(inn).lineHeight) || 32;
+        // Vindauget blir runda av til heile liner, så ingen line blir kutta på tvers nedst.
+        vindauge.style.flex = ""; vindauge.style.height = "";
+        const h = Math.max(lh, Math.floor(vindauge.clientHeight / lh) * lh);
+        vindauge.style.flex = "none"; vindauge.style.height = h + "px";
+        // Kvar side overlappar med éi line, så lesaren ikkje mistar tråden.
+        steglengd = Math.max(lh, Math.floor(h / lh) * lh - lh);
+        maks = Math.max(0, inn.scrollHeight - h);
+        sider = maks > 2 ? 1 + Math.ceil(maks / steglengd) : 1;
+        b.steg = sider - 1;
+      };
+      b.vis = k => {
+        inn.style.transform = `translateY(${-Math.min(k * steglengd, maks)}px)`;
+        side.textContent = sider > 1 ? `Side ${Math.min(k, sider - 1) + 1} av ${sider}` : "";
+      };
+      return b;
     },
 
     // Tavleoppgåver trekte frå ordbanken, med same spesifikasjon som ein drill-seksjon.
@@ -203,7 +238,7 @@
       b.el.insertAdjacentHTML("beforeend", `<p class="lb-fot"><span>${E(m.title)}</span><span>${nr + 1} / ${slides.length}</span></p>`);
       // Innhaldet i lysbiletet ligg i ein eigen boks som kan krympast om det ikkje får plass.
       const kropp = b.el.querySelector(".lb-kropp");
-      if (kropp) {
+      if (kropp && !b.ingenSkala) {
         const skala = document.createElement("div");
         skala.className = "lb-skala";
         while (kropp.firstChild) skala.appendChild(kropp.firstChild);
@@ -213,6 +248,10 @@
       stage.appendChild(b.el);
       return b;
     });
+    // Lange tekstar blir målte når dei er på plass, så vi veit kor mange sider dei har.
+    const mål = () => bygde.forEach(b => { if (b.mål) { const skjult = b.el.hidden; b.el.hidden = false; b.mål(); b.el.hidden = skjult; } });
+    mål();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { mål(); vis(true); });
     const drillRunde = {};
 
     let i = 0, k = 0;

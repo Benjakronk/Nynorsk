@@ -115,10 +115,18 @@ Larar.register("historie-i-dag", {
       notes: "Etter svaret: be ein elev snu argumentet. Kva ville ein tilhengjar av sidemål svare på «tida kunne brukast til andre fag»? Slik øver dei på motargument, som dei treng i drøftingsteksten.",
     },
     {
-      type: "sitat",
-      text: "Kvart par år kjem det forslag om å fjerne karakter i sidemål, eller å gjere sidemål valfritt.",
-      kjelde: "Debattutdraget i modulen",
-      notes: "Les heile debattutdraget i modulen høgt, eller la ein elev lese. Poenga der: tilhengjarane meiner det gir meir motiverte elevar, motstandarane meiner karakteren er det som får elevane til å arbeide med faget, og eit kompromiss har vore éin felles norskkarakter.",
+      type: "tekst",
+      title: "Debattutdrag",
+      text: `<p>Kvart par år kjem det forslag om å fjerne karakter i sidemål, eller å gjere
+        sidemål valfritt. Tilhengjarane meiner det vil gi meir motiverte elevar, og at
+        opplæring framleis kan halde fram utan eigen karakter. Motstandarane meiner det vil
+        svekkje stillinga til nynorsken kraftig, fordi karakteren er det som faktisk får
+        elevar til å arbeide med faget.</p>
+        <p>Eit kompromissforslag har vore å gi <em class="nn">éin felles norskkarakter</em>
+        som inkluderer både hovudmål og sidemål. Det er allereie prøvd ut, og diskusjonen
+        går framleis.</p>`,
+      kjelde: "Debattutdrag",
+      notes: "Les utdraget høgt, eller la ein elev lese. Spør så: kva er hovudsplitten i debatten? Svar: om sidemål skal ha eigen karakter eller ikkje. Poenga: tilhengjarane meiner det gir meir motiverte elevar, motstandarane meiner karakteren er det som får elevane til å arbeide med faget, og eit kompromiss har vore éin felles norskkarakter.",
     },
     {
       type: "diskuter",
@@ -147,19 +155,38 @@ Larar.register("historie-i-dag", {
           <li>Ditt <strong>standpunkt</strong>, grunngitt.</li>
         </ol>`,
       steps: ["<p class=\"midt\">Fakta: språklova, 25 %, 10–12 %, kjerneområde</p>"],
-      notes: "Dette er strukturen elevane skal bruke i skriveoppgåva til slutt i modulen, som krev minst to fakta. Vanleg feil: eleven skriv berre si eiga meining. Minn om at ein drøftingstekst skal vise at du forstår motparten.",
+      notes: "Dette er strukturen elevane skal bruke i drøftingsteksten til slutt i timen (lysbilete 18), som krev minst to fakta. Vanleg feil: eleven skriv berre si eiga meining. Minn om at ein drøftingstekst skal vise at du forstår motparten.",
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Les fagteksten og gjer oppgåvene om språklova og NRK.</li>
-          <li>Sorter argumenta i sidemålsdebatten.</li>
-          <li>Les debattutdraget og svar på spørsmåla.</li>
-          <li>Skriv drøftingsteksten (150–250 ord) med minst to fakta.</li>
-        </ul>`,
-      tid: 14,
-      notes: "Gå rundt medan elevane skriv drøftinga. Spør: kva er faktumet ditt, og kvar fann du det? Elevar som står fast, kan starte med ei setning frå meiningslinja: kva sa dei då?",
+      title: "Fakta og argument",
+      body: `<ol>
+          <li>Kor mange prosent av nordmenn har nynorsk som hovudmål?</li>
+          <li>Kva år kom den nye språklova?</li>
+          <li>Set om til nynorsk: <em class="bm">Alle norske elever lærer både bokmål og nynorsk på skolen.</em></li>
+          <li>For eller mot sidemål? Skriv F eller M.<br>
+            a) Det er for likt hovudmålet til å vere lærerikt.<br>
+            b) Det styrkjer språkforståinga å kjenne begge variantane.<br>
+            c) Det er vanskeleg å bli vurdert i to skriftspråk.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 4,
+      svar: "1. Om lag 10–12 %. 2. 2022. 3. <em class=\"nn\">Alle norske elevar lærer både bokmål og nynorsk på skulen.</em> 4. a) M, b) F, c) M.",
+      notes: "Ei kort oppvarming før drøftinga. Gå gjennom svara saman. På oppgåve 3 er det to byte: <em>elevar</em> og <em>skulen</em>. På oppgåve 4 kan du be ein elev snu eitt av mot-argumenta til eit for-argument.",
+    },
+    {
+      type: "oppgave",
+      title: "Skriv ei drøfting",
+      body: `<p class="stor">Kva plass skal nynorsk ha i Noreg i dag?</p>
+        <ol>
+          <li>Skriv 150–250 ord på nynorsk.</li>
+          <li>Bruk minst to fakta: språklova, 25 %, 10–12 %, kjerneområde.</li>
+          <li>Få med argument både for og mot.</li>
+          <li>Avslutt med ditt eige standpunkt, grunngitt.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 10,
+      notes: "Gå rundt medan elevane skriv. Spør: kva er faktumet ditt, og kvar fann du det? Elevar som står fast, kan starte med ei setning frå meiningslinja: kva sa dei då? Bla gjerne tilbake til lysbilete 16 med strukturen. Dei som ikkje blir ferdige, skriv ferdig som lekse.",
     },
     {
       title: "Oppsummering",
@@ -174,7 +201,7 @@ Larar.register("historie-i-dag", {
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Modulen er den siste fagmodulen i Del 1 og knyter språkhistoria til notida: kor mange som skriv nynorsk og kvar, kva språklova frå 2022 seier, kravet om 25 % nynorsk hos statsorgan og NRK, og sidemålsdebatten. Timen har eit tydeleg drøftingspreg: elevane skal kunne skilje fakta frå meining og byggje eigne standpunkt på fakta frå modulen.</p>",
+    intro: "<p>Modulen er den siste fagmodulen i Del 1 og knyter språkhistoria til notida: kor mange som skriv nynorsk og kvar, kva språklova frå 2022 seier, kravet om 25 % nynorsk hos statsorgan og NRK, og sidemålsdebatten. Timen har eit tydeleg drøftingspreg: elevane skal kunne skilje fakta frå meining og byggje eigne standpunkt på fakta frå timen. Til slutt svarer elevane på nokre korte oppgåver og skriv ein drøftingstekst for hand i skriveboka.</p>",
     mal: [
       "Elevane kan gjere greie for kor stor del av folket som har nynorsk som hovudmål, og kvar kjerneområda ligg.",
       "Elevane kan forklare kva språklova frå 2022 seier om bokmål og nynorsk, og kva 25 %-kravet inneber.",
@@ -187,15 +214,15 @@ Larar.register("historie-i-dag", {
       "Ha klar ein stad i klasserommet der elevane kan stille seg på ei meiningslinje (lysbilete 14).",
       "Finn gjerne eit kort utdrag av ein låt med nynorsk tekst til lysbilete 15.",
       "Tenk gjennom korleis du tek vare på nynorskelevar eller elevar med sterke meiningar i debatten.",
-      "Sjå til at elevane har tilgang til kurset på eigen maskin.",
+      "Elevane treng skrivebok til oppgåvene og drøftingsteksten til slutt (lysbilete 17 og 18).",
     ],
     okt: [
       { fase: "Oppstart", min: 3, gjer: "<p>Gå gjennom måla og la elevane finne døme på nynorsk i kvardagen.</p>", lysbilete: "2 og 3" },
       { fase: "Status og lov", min: 9, gjer: "<p>Gå gjennom talet på brukarar, kjerneområda, hovudmål og sidemål, språklova og 25 %-kravet, med tre spørsmål undervegs.</p>", lysbilete: "4 til 10" },
       { fase: "Sidemålsdebatten", min: 12, gjer: "<p>Vis argumenta for og mot, ta spørsmålet, les debattutdraget og gjennomfør meiningslinja.</p>", lysbilete: "11 til 14" },
       { fase: "Kultur og drøfting", min: 4, gjer: "<p>Vis nynorsk i kulturen og gå gjennom strukturen for ein drøftingstekst.</p>", lysbilete: "15 og 16" },
-      { fase: "Eigenarbeid", min: 14, gjer: "<p>Elevane arbeider i modulen og skriv drøftingsteksten.</p>", lysbilete: "17" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive eitt motargument dei no forstår betre.</p>", lysbilete: "18" },
+      { fase: "Eigenarbeid", min: 14, gjer: "<p>Elevane svarer på dei korte oppgåvene i skriveboka, og de går gjennom svara. Deretter skriv dei drøftingsteksten for hand.</p>", lysbilete: "17 og 18" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive eitt motargument dei no forstår betre.</p>", lysbilete: "19" },
     ],
     misoppfatningar: [
       { feil: "«Sidemål er det same som nynorsk.»", hjelp: "Sidemål er det skriftspråket du ikkje har som hovudmål. For ein elev med nynorsk som hovudmål er bokmål sidemålet." },
@@ -212,7 +239,7 @@ Larar.register("historie-i-dag", {
     tilpassing: {
       stotte: [
         "Gi elevane ei skriveramme til drøftinga med startsetningar: «Nokre meiner at …», «Andre peikar på at …», «Eg meiner …».",
-        "La elevane velje to fakta frå oppsummeringslysbiletet før dei byrjar å skrive.",
+        "La elevane velje to fakta frå lysbilete 16 før dei byrjar å skrive.",
         "Sorteringsoppgåva kan gjerast i par før eleven skriv åleine.",
       ],
       utfordring: [
@@ -225,7 +252,7 @@ Larar.register("historie-i-dag", {
       "Meiningslinja viser om elevane kan grunngi standpunkt med argument.",
       "Kjenneteikn på god måloppnåing i drøftingsteksten: eleven bruker minst to korrekte fakta, presenterer begge sider rettferdig og grunngir eit tydeleg standpunkt, og teksten er skriven på nynorsk.",
     ],
-    vidare: "Gå vidare til skrivemodulen Skriv om språkhistoria, der oppgåve 5 byggjer direkte på denne modulen, og til repetisjonen av heile Del 1.",
+    vidare: "Gå vidare til skrivemodulen Skriv om språkhistoria, der oppgåve 5 byggjer direkte på denne modulen, og til repetisjonen av heile Del 1. Elevmodulen Nynorsk i dag og den moderne debatten kan brukast som frivillig lekse.",
   },
 });
 
@@ -259,7 +286,7 @@ Larar.register("historie-skriving", {
     {
       type: "sitat",
       text: "I 1380 gjekk Noreg i union med Danmark. I 1814 vart Noreg fritt. I 1885 kom jamstillingsvedtaket.",
-      kjelde: "Døme på ein svak fagtekst, frå modulen",
+      kjelde: "Døme på ein svak fagtekst",
       notes: "Les teksten høgt med flat stemme. Spør: er noko av dette feil? Nei. Kvifor er det likevel ein svak tekst? Lat elevane svare før neste lysbilete.",
     },
     {
@@ -278,9 +305,11 @@ Larar.register("historie-skriving", {
           <tbody>
             <tr><td><em class="nn">Aasen reiste rundt i Noreg. Han gav ut ei ordbok.</em></td>
                 <td><em class="nn"><strong>Fordi</strong> Aasen ville byggje skriftspråket på levande talemål, måtte han først reise rundt og samle ord. Resultatet vart ordboka frå 1850.</em></td></tr>
+            <tr class="steg"><td><em class="nn">I 1885 kom jamstillingsvedtaket.</em></td>
+                <td><em class="nn"><strong>Etter tretti år</strong> med landsmål i bruk vedtok Stortinget i 1885 at dei to skriftspråka skulle vere likeverdige.</em></td></tr>
           </tbody>
         </table>`,
-      notes: "Peik på fordi og resultatet vart: det er orda som gjer jobben. Modulen har eit døme til, om jamstillingsvedtaket. Be elevane finne det og sjå kva som er lagt til: «Etter tretti år med landsmål i bruk».",
+      notes: "Peik på fordi og resultatet vart: det er orda som gjer jobben. Vis så den andre rada og spør: kva er lagt til? «Etter tretti år med landsmål i bruk» set vedtaket inn i ein samanheng.",
     },
     {
       title: "Bindeord som viser samanheng",
@@ -290,7 +319,7 @@ Larar.register("historie-skriving", {
         "<p class=\"stor\"><strong>Tid:</strong> <em class=\"nn\">først, deretter, seinare, til slutt</em></p>",
         "<p class=\"stor\"><strong>Oppsummering:</strong> <em class=\"nn\">altså</em></p>",
       ],
-      notes: "Grupperinga er ei hjelp frå læraren, modulen listar orda utan grupper. Minn om at <em>difor</em> og <em>derfor</em> begge er rette på nynorsk. Bokmålsforma <em>da</em> finst ikkje: skriv <em>då</em> eller <em>når</em>.",
+      notes: "Grupperinga hjelper elevane å velje rett ord til rett bruk. Minn om at <em>difor</em> og <em>derfor</em> begge er rette på nynorsk. Bokmålsforma <em>da</em> finst ikkje: skriv <em>då</em> eller <em>når</em>.",
     },
     {
       type: "sporsmal",
@@ -301,28 +330,48 @@ Larar.register("historie-skriving", {
       notes: "Bruk høvet til å minne om V2-regelen frå Del 2: <em>difor reiste han</em>, ikkje <em>difor han reiste</em>. Det er ein vanleg feil når elevane byrjar å bruke fleire bindeord.",
     },
     {
-      title: "Faktabanken: bruk tidslinja",
-      body: `<ol class="tidslinje">
-          <li><span class="aar">1380</span><span class="hend">Union med Danmark</span></li>
-          <li><span class="aar">1814</span><span class="hend">Eiga grunnlov, framleis dansk skrift</span></li>
-          <li><span class="aar">1848–1850</span><span class="hend">Grammatikken og ordboka til Aasen</span></li>
-          <li><span class="aar">1885</span><span class="hend">Jamstillingsvedtaket</span></li>
-          <li><span class="aar">1929</span><span class="hend">Namna nynorsk og bokmål</span></li>
-          <li><span class="aar">1981</span><span class="hend">Samnorskpolitikken blir oppgitt</span></li>
-          <li><span class="aar">2022</span><span class="hend">Ny språklov</span></li>
-        </ol>`,
+      title: "Faktabanken: 1380 til 1885",
+      body: `<table>
+          <thead><tr><th>År</th><th>Hending</th></tr></thead>
+          <tbody>
+            <tr><td>1380</td><td>Noreg i union med Danmark i over 400 år</td></tr>
+            <tr><td>1814</td><td>Eiga grunnlov og eige storting, men framleis dansk skrift</td></tr>
+            <tr><td>1842–1846</td><td>Aasen reiser rundt og samlar dialektar</td></tr>
+            <tr><td>1848</td><td>Grammatikken til Aasen</td></tr>
+            <tr><td>1850</td><td>Ordboka til Aasen</td></tr>
+            <tr><td>1853</td><td><em class="nn">Prøver af Landsmaalet i Norge</em>: namnet landsmål</td></tr>
+            <tr><td>1885</td><td>Jamstillingsvedtaket: dei to skriftspråka blir likeverdige</td></tr>
+          </tbody>
+        </table>`,
       steps: ["<p class=\"midt\">Ta med årstal berre når dei betyr noko for poenget ditt.</p>"],
-      notes: "Den fulle faktabanken står i modulen, med fleire årstal og ein tabell over Aasen og Knudsen. Elevane skal bruke han aktivt. Oppgåve 1 krev minst fem årstal, men åtvar mot å stappe inn årstal som ikkje har noko å gjere i teksten.",
+      notes: "Faktabanken står på tavla i tre lysbilete: tidslinja her og på neste lysbilete, og tabellen over Aasen og Knudsen på lysbilete 14. Elevane skal bruke han aktivt når dei skriv, og du kan bla tilbake hit medan dei arbeider. Oppgåve 1 krev minst fem årstal, men åtvar mot å stappe inn årstal som ikkje har noko å gjere i teksten.",
+    },
+    {
+      title: "Faktabanken: 1907 til 2022",
+      body: `<table>
+          <thead><tr><th>År</th><th>Hending</th></tr></thead>
+          <tbody>
+            <tr><td>1907</td><td>Alle elevar skal lære båe skriftspråka</td></tr>
+            <tr><td>1907, 1917, 1938</td><td>Rettskrivingsreformer i samnorskretning</td></tr>
+            <tr><td>1929</td><td>Landsmål får namnet nynorsk</td></tr>
+            <tr><td>1940-talet</td><td>Foreldreaksjonen mot samnorsk blir starta</td></tr>
+            <tr><td>1980</td><td>Mållova: staten skal bruke begge skriftspråka</td></tr>
+            <tr><td>1981</td><td>Stortinget gir opp samnorskpolitikken</td></tr>
+            <tr><td>2005 og 2012</td><td>Ny rettskriving for bokmål og for nynorsk</td></tr>
+            <tr><td>2022</td><td>Ny språklov: bokmål og nynorsk er likeverdige</td></tr>
+          </tbody>
+        </table>`,
+      notes: "Andre halvdel av tidslinja trengst mest til oppgåve 5. Minn om at striden rundt foreldreaksjonen var hard på 1950-talet, og at 1929 berre gav nye namn: riksmål vart samtidig bokmål, og språka var dei same.",
     },
     {
       title: "Oppgåve 1: Fortel historia",
-      body: `<p class="liten">200–300 ord, for ein lesar som ikkje kan noko om emnet</p>`,
+      body: `<p class="liten">200–300 ord, for ein lesar som ikkje kan noko om emnet. Minst fem årstal.</p>`,
       steps: [
         "<p class=\"stor\"><strong>Innleiing:</strong> eit land utan eige skriftspråk</p>",
         "<p class=\"stor\"><strong>Hovuddel:</strong> 1814, Aasen og reisene, bøkene</p>",
         "<p class=\"stor\"><strong>Avslutning:</strong> landsmålet får namnet nynorsk</p>",
       ],
-      notes: "Hintet i modulen seier: tenk på det som ei forteljing med ei årsak. Sjekklista krev at eleven forklarer kvifor språkspørsmålet vart viktig etter 1814, kva Aasen gjorde på reisene, og kva ordet landsmål tyder. Det siste gløymer mange: landsmål er språket for heile landet.",
+      notes: "Gi elevane dette rådet: tenk på det som ei forteljing med ei årsak. Sjekklista til oppgåva krev at eleven forklarer kvifor språkspørsmålet vart viktig etter 1814, kva Aasen gjorde på reisene, og kva ordet landsmål tyder. Det siste gløymer mange: landsmål er språket for heile landet.",
     },
     {
       type: "sitat",
@@ -350,6 +399,18 @@ Larar.register("historie-skriving", {
       notes: "Modell B er vanskelegare, men gir betre samanlikning, fordi lesaren ser skilnaden punkt for punkt. Sjekklista krev at eleven peikar på minst éin ting dei hadde felles, og avsluttar med eige syn. Minn om at teksten skal ha ord som viser motsetnad: <em>medan, men, i motsetnad til</em>.",
     },
     {
+      title: "Faktabanken: to menn, to metodar",
+      body: `<table>
+          <thead><tr><th></th><th>Ivar Aasen (1813–1896)</th><th>Knud Knudsen (1812–1895)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Utgangspunkt</strong></td><td>Dei norske dialektane</td><td>Dansk skrift</td></tr>
+            <tr><td><strong>Metode</strong></td><td>Samla dei eldre formene dialektane hadde felles</td><td>Fornorska dansk skrift steg for steg</td></tr>
+            <tr><td><strong>Førte til</strong></td><td>Landsmål, seinare nynorsk</td><td>Riksmål, seinare bokmål</td></tr>
+          </tbody>
+        </table>`,
+      notes: "Tabellen er faktabanken til oppgåve 2, og radene passar rett inn i modell B: utgangspunkt, metode, resultat. Spør: kva står ikkje i tabellen, men må med i teksten? Det dei hadde felles, og ditt eige syn.",
+    },
+    {
       type: "sporsmal",
       question: "Kva hadde Aasen og Knudsen felles?",
       options: [
@@ -369,7 +430,7 @@ Larar.register("historie-skriving", {
         <p class="liten">Ingen faguttrykk utan forklaring. Bruk eit døme frå kvardagen.</p>`,
       form: "Par, byt etter 30 sekund",
       tid: 3,
-      notes: "Lytt etter gode kvardagsdøme og la eitt eller to par vise fram. Eit døme kan vere to lag som får like mykje tid på banen. Oppgåve 3 i modulen let eleven velje mellom landsmål, jamstilling, samnorsk og sidemål. Poenget: det er vanskelegare å forklare enkelt enn innfløkt.",
+      notes: "Lytt etter gode kvardagsdøme og la eitt eller to par vise fram. Eit døme kan vere to lag som får like mykje tid på banen. Skriveoppgåve 3 (lysbilete 21) let eleven velje mellom landsmål, jamstilling, samnorsk og sidemål. Poenget: det er vanskelegare å forklare enkelt enn innfløkt.",
     },
     {
       type: "bilete",
@@ -382,7 +443,7 @@ Larar.register("historie-skriving", {
           <li>mellom 1842 og 1846</li>
           <li>dikt stemninga, ikkje fakta</li>
         </ul>`,
-      notes: "Reisene gjekk føre seg 1842–1846 med stipend frå Det Kongelige Norske Videnskabers Selskab. Eleven skal vise minst tre konkrete ting Aasen gjorde: lytta, skreiv ned ord, samanlikna bøyingar frå ulike bygder, og få fram kvifor han ikkje nøgde seg med éin dialekt. Tips: la elevane opne Reisene til Ivar Aasen i kurset og velje ein stad på kartet.",
+      notes: "Reisene gjekk føre seg 1842–1846 med stipend frå Det Kongelige Norske Videnskabers Selskab. Eleven skal vise minst tre konkrete ting Aasen gjorde: lytta, skreiv ned ord, samanlikna bøyingar frå ulike bygder, og få fram kvifor han ikkje nøgde seg med éin dialekt. Tips: vis kartet i Reisene til Ivar Aasen på tavla frå lærarmaskina, og la elevane velje ein stad derifrå.",
     },
     {
       type: "sporsmal",
@@ -411,18 +472,22 @@ Larar.register("historie-skriving", {
       body: `<p class="stor"><em class="nn">eg, ikkje, kva, frå, mykje</em></p>
         <p class="stor">Hokjønn: <em class="nn">boka, historia, tida</em></p>`,
       steps: ["<p>Du treng ikkje skrive slik dei skreiv på 1800-talet.</p>"],
-      notes: "Be elevane lese gjennom teksten éin gong berre for desse orda før dei leverer. Teksten blir lagra automatisk i modulen, og elevane kan laste han ned som fil når dei er ferdige.",
+      notes: "Be elevane lese gjennom teksten i skriveboka éin gong berre for desse orda før dei leverer. Vis lysbiletet att i starten av økt 2.",
     },
     {
       type: "oppgave",
-      title: "No skriv de",
-      body: `<ul>
-          <li>Vel éi oppgåve, eller den læraren har valt.</li>
-          <li>Bruk faktabanken i modulen.</li>
-          <li>Gå gjennom sjekklista før du er ferdig.</li>
-        </ul>`,
+      title: "Vel éi oppgåve og skriv",
+      body: `<ol>
+          <li><strong>Fortel historia</strong> om korleis nynorsk vart til. <span class="liten">200–300 ord</span></li>
+          <li><strong>Samanlikn</strong> Aasen og Knudsen. <span class="liten">150–250 ord</span></li>
+          <li><strong>Forklar</strong> landsmål, jamstilling, samnorsk eller sidemål for ein sjetteklassing. <span class="liten">120–200 ord</span></li>
+          <li><strong>Dagbok</strong> frå ein dag på reisa til Aasen, i eg-form. <span class="liten">150–250 ord</span></li>
+          <li><strong>Frå 1885 til i dag:</strong> kva har nynorsken oppnådd, og kva er uavklart? <span class="liten">180–260 ord</span></li>
+        </ol>
+        <p class="liten">Lag ein plan først. Bruk faktabanken og nynorsksjekken.</p>`,
+      form: "Åleine",
       tid: 40,
-      notes: "Gå rundt og les første avsnitt hos kvar elev. Spør: kva er poenget ditt? Kvar viser du samanhengen? Elevar som står fast, kan starte med modellinnleiinga og skrive vidare. Dei som blir tidleg ferdige, tek ei oppgåve til.",
+      notes: "Elevane skriv for hand i skriveboka. La oppgåvelista stå medan dei vel oppgåve og lagar plan. Når dei skriv, kan du bla tilbake til faktabanken (lysbilete 9, 10 og 14) og la han stå, eller til lysbiletet for den oppgåva dei fleste har valt. Gå rundt og les første avsnitt hos kvar elev. Spør: kva er poenget ditt? Kvar viser du samanhengen? Elevar som står fast i oppgåve 1, kan starte med modellinnleiinga på lysbilete 12 og skrive vidare. Dei som blir tidleg ferdige, tek ei oppgåve til.",
     },
     {
       type: "diskuter",
@@ -446,7 +511,7 @@ Larar.register("historie-skriving", {
   ],
   guide: {
     tid: "To økter på 45 minutt",
-    intro: "<p>Skrivemodulen samlar Del 1 i fem skriveoppgåver av ulikt slag: forklare, samanlikne, formidle, dikte og oppsummere. Modulen har ein faktabank med tidslinje og ein tabell over Aasen og Knudsen, og kvar oppgåve har eige ordtal, hint og sjekkliste. Hovudpoenget i undervisninga er at ein god fagtekst viser samanheng, ikkje berre fakta. Presentasjonen går gjennom dette, viser strukturen i kvar oppgåve og gir elevane ei modellinnleiing før dei skriv.</p>",
+    intro: "<p>Skrivetimane samlar Del 1 i fem skriveoppgåver av ulikt slag: forklare, samanlikne, formidle, dikte og oppsummere. Faktabanken står på tavla: tidslinja på lysbilete 9 og 10 og tabellen over Aasen og Knudsen på lysbilete 14. Hovudpoenget i undervisninga er at ein god fagtekst viser samanheng, ikkje berre fakta. Presentasjonen går gjennom dette, viser strukturen i kvar oppgåve og gir elevane ei modellinnleiing. Deretter skriv elevane for hand i skriveboka, med oppgåvelista på lysbilete 21.</p>",
     mal: [
       "Elevane kan skrive ein samanhengande fagtekst om språkhistoria på nynorsk.",
       "Elevane kan bruke bindeord som viser årsak, motsetnad og tid.",
@@ -458,19 +523,19 @@ Larar.register("historie-skriving", {
     forkunnskapar: "Elevane bør ha gått gjennom dei fire fagmodulane i Del 1. Frå Del 2 er det nyttig å kjenne V2-regelen og konjunksjonar og subjunksjonar.",
     forebuing: [
       "Bestem på førehand kor mange oppgåver elevane skal skrive, og om nokon skal få tildelt oppgåve.",
-      "Les gjennom sjekklistene for alle fem oppgåvene i modulen.",
-      "Vurder om elevane skal levere teksten som nedlasta fil eller på anna vis.",
-      "Opne Reisene til Ivar Aasen i kurset om du vil vise kartet ved oppgåve 4.",
+      "Les gjennom sjekklistene til dei fem oppgåvene i elevmodulen, så du kan hjelpe elevane med kva som må med.",
+      "Elevane skriv for hand og treng skrivebok i begge øktene. Bestem om du samlar inn bøkene etterpå.",
+      "Vil du vise kartet i Reisene til Ivar Aasen ved oppgåve 4, opne det på lærarmaskina på førehand.",
     ],
     okt: [
       { fase: "Økt 1: Oppstart", min: 4, gjer: "<p>Gå gjennom måla og dei fem oppgåvene.</p>", lysbilete: "2 og 3" },
-      { fase: "Økt 1: Samanheng i fagtekst", min: 12, gjer: "<p>Vis den svake teksten, diskuter kva som manglar, og gå gjennom omskrivinga, bindeorda og tidslinja.</p>", lysbilete: "4 til 9" },
-      { fase: "Økt 1: Oppgåvene", min: 17, gjer: "<p>Gå gjennom strukturen i kvar oppgåve med modellinnleiing, spørsmål og ei kort munnleg øving i å forklare enkelt.</p>", lysbilete: "10 til 17" },
-      { fase: "Økt 1: Skriving", min: 12, gjer: "<p>Ta nynorsksjekken, og la elevane velje oppgåve, lage ein plan og skrive innleiinga.</p>", lysbilete: "18 og 19" },
-      { fase: "Økt 2: Oppstart", min: 3, gjer: "<p>Elevane les det dei skreiv sist og ser over planen. Vis nynorsksjekken på lysbilete 18 att.</p>", lysbilete: "18" },
-      { fase: "Økt 2: Skriving", min: 28, gjer: "<p>Elevane skriv ferdig. Gå rundt og les første avsnitt.</p>", lysbilete: "19" },
-      { fase: "Økt 2: Respons", min: 10, gjer: "<p>Parrespons med konkret oppdrag, og tid til å skrive om éin stad.</p>", lysbilete: "20" },
-      { fase: "Økt 2: Avslutning", min: 4, gjer: "<p>Oppsummer og spør kva som var vanskelegast.</p>", lysbilete: "21" },
+      { fase: "Økt 1: Samanheng i fagtekst", min: 12, gjer: "<p>Vis den svake teksten, diskuter kva som manglar, og gå gjennom omskrivinga, bindeorda og tidslinja i faktabanken.</p>", lysbilete: "4 til 10" },
+      { fase: "Økt 1: Oppgåvene", min: 17, gjer: "<p>Gå gjennom strukturen i kvar oppgåve med modellinnleiing, tabellen over Aasen og Knudsen, spørsmål og ei kort munnleg øving i å forklare enkelt.</p>", lysbilete: "11 til 19" },
+      { fase: "Økt 1: Skriving", min: 12, gjer: "<p>Ta nynorsksjekken, og la elevane velje oppgåve, lage ein plan og skrive innleiinga i skriveboka.</p>", lysbilete: "20 og 21" },
+      { fase: "Økt 2: Oppstart", min: 3, gjer: "<p>Elevane les det dei skreiv sist og ser over planen. Vis nynorsksjekken på lysbilete 20 att.</p>", lysbilete: "20" },
+      { fase: "Økt 2: Skriving", min: 28, gjer: "<p>Elevane skriv ferdig i skriveboka. La oppgåvelista eller faktabanken (lysbilete 9, 10 og 14) stå på tavla. Gå rundt og les første avsnitt.</p>", lysbilete: "21" },
+      { fase: "Økt 2: Respons", min: 10, gjer: "<p>Parrespons med konkret oppdrag, og tid til å skrive om éin stad.</p>", lysbilete: "22" },
+      { fase: "Økt 2: Avslutning", min: 4, gjer: "<p>Oppsummer og spør kva som var vanskelegast.</p>", lysbilete: "23" },
     ],
     misoppfatningar: [
       { feil: "«Jo fleire årstal, jo betre tekst.»", hjelp: "Vis den svake teksten: tre rette årstal utan samanheng. Årstal skal berre med når dei betyr noko for poenget." },
@@ -502,12 +567,12 @@ Larar.register("historie-skriving", {
       "Kjenneteikn på god måloppnåing: teksten viser samanheng mellom hendingane, fakta og årstal er rette og relevante, teksten er tilpassa mottakaren, og nynorsken er stort sett korrekt, særleg dei vanlege orda og hokjønnsformene.",
       "Parresponsen viser om elevane kan kjenne att tekstbinding hos andre.",
     ],
-    vidare: "Gå vidare til repetisjonen av heile Del 1. Skrivereglane om tekstbinding og då/når blir følgde opp i Del 4.",
+    vidare: "Gå vidare til repetisjonen av heile Del 1. Elevar som vil skrive fleire oppgåver, kan gjere det i elevmodulen som frivillig lekse. Skrivereglane om tekstbinding og då/når blir følgde opp i Del 4.",
   },
 });
 
 Larar.register("historie-repetisjon", {
-  tittelnotat: "Repetisjonen er ein tavlequiz over heile Del 1 før elevane tek testane i modulen. Del gjerne klassen i lag og hald poeng. Sei det høgt: målet er ikkje å vinne, men å finne ut kva de må lese om att.",
+  tittelnotat: "Repetisjonen er ein tavlequiz over heile Del 1, med ein kort skriftleg test i skriveboka til slutt. Del gjerne klassen i lag og hald poeng. Sei det høgt: målet er ikkje å vinne, men å finne ut kva de må lese om att.",
   slides: [
     {
       title: "Slik gjer vi det",
@@ -774,29 +839,63 @@ Larar.register("historie-repetisjon", {
     },
     {
       type: "oppgave",
-      title: "No testar de dykk sjølve",
-      body: `<ul>
-          <li><strong>Test 1:</strong> årstal og hendingar</li>
-          <li><strong>Test 2:</strong> personar og omgrep</li>
-          <li><strong>Test 3:</strong> stor test frå heile Del 1</li>
-          <li>Under 80 %? Les leksjonen om att og prøv på nytt.</li>
-        </ul>`,
-      tid: 15,
-      notes: "Testane trekkjer oppgåver tilfeldig, så elevane kan ta dei fleire gonger. Etter kvar runde kan dei øve på det dei bomma på. Minst 80 % rett tel som fullført. Be elevane notere resultatet på Test 3.",
+      kicker: "Test deg sjølv · 1",
+      title: "Årstal",
+      body: `<ol>
+          <li>Kva år kom ordboka til Aasen?</li>
+          <li>Kva år kom <em class="nn">Prøver af Landsmaalet i Norge</em>?</li>
+          <li>Sidan kva år har alle elevar lært båe skriftspråka?</li>
+          <li>Kva år vart staten pålagd å bruke begge skriftspråka?</li>
+          <li>Kva år fekk nynorsk rettskrivinga som gjeld i dag?</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 3,
+      svar: "1. 1850 &nbsp; 2. 1853 &nbsp; 3. 1907 &nbsp; 4. 1980 &nbsp; 5. 2012",
+      notes: "Den skriftlege testen er individuell: elevane skriv svara i skriveboka utan å snakke saman. Etter kvar del viser du svaret, og elevane rettar sjølve og set eitt poeng per rett svar. Mållova frå 1980 og rettskrivinga frå 2012 var ikkje med i quizen, så her ser du om dei har lese tidslinja.",
+    },
+    {
+      type: "oppgave",
+      kicker: "Test deg sjølv · 2",
+      title: "Personar og omgrep",
+      body: `<ol>
+          <li>Kva skriftspråk voks fram av lina til Knudsen?</li>
+          <li>Kva tyder ordet <em class="nn">landsmål</em>?</li>
+          <li>Kva slags norsk snakka folk medan skriftspråket var dansk?</li>
+          <li>Kva avis kjem ut berre på nynorsk?</li>
+          <li>Du har bokmål som hovudmål. Kva er nynorsk for deg?</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 4,
+      svar: "1. Riksmål, seinare bokmål &nbsp; 2. Språket for heile landet &nbsp; 3. Dialektar &nbsp; 4. <em class=\"nn\">Dag og Tid</em> &nbsp; 5. Sidemål",
+      notes: "Godta «bokmål» på spørsmål 1 og «talemål» på spørsmål 3. På spørsmål 2 held det at eleven får fram at språket skulle vere for heile landet, ikkje for éin stad.",
+    },
+    {
+      type: "oppgave",
+      kicker: "Test deg sjølv · 3",
+      title: "Forklar med ei heil setning",
+      body: `<ol>
+          <li>Kva innebar jamstillingsvedtaket i 1885?</li>
+          <li>Kva skjedde med bokmål og nynorsk etter 1981?</li>
+          <li>Gi eitt argument for og eitt mot sidemålsopplæring.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 6,
+      svar: "1. Landsmål og det norsk-danske skriftspråket skulle vere likeverdige i skule og forvaltning. 2. Dei skulle få utvikle seg kvar for seg. 3. For: nynorsk er kulturarv, og utan opplæring kjem språket under press. Mot: tida kunne brukast til andre fag.",
+      notes: "Gi to poeng per svar: eitt for rett innhald og eitt for ei heil, forståeleg setning. På spørsmål 3 er alle argumenta frå timen om sidemålsdebatten gode svar. Til slutt legg elevane saman poenga frå alle tre delane. Det er 16 poeng i alt, og under 13 poeng er eit teikn på at eleven bør repetere.",
     },
     {
       type: "diskuter",
       title: "Exit-lapp",
       prompt: `<p class="stor">Kva sit best? Kva må du lese om att?</p>
-        <p>Skriv ned éin modul du vil gå tilbake til.</p>`,
+        <p>Skriv ned poenga dine og eitt emne du vil repetere.</p>`,
       form: "Kvar for seg",
       tid: 2,
-      notes: "Samle lappane. Dei viser kva modul klassen treng å repetere før ei prøve.",
+      notes: "Samle lappane. Dei viser kva emne klassen treng å repetere før ei prøve: før 1850, Aasen, språkstriden eller nynorsk i dag.",
     },
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Repetisjonsmodulen har ingen nye fakta. Han har tre testar som trekkjer oppgåver tilfeldig: årstal og hendingar, personar og omgrep, og ein stor test over heile Del 1. Presentasjonen er ein quiz i fire rundar som følgjer dei fire fagmodulane, med ein finale der laga set hendingar i rekkjefølgje. Quizen gir læraren eit raskt bilete av kva klassen kan, og elevane ei oppvarming før dei testar seg sjølve.</p>",
+    intro: "<p>Repetisjonen har ingen nye fakta. Presentasjonen er ein quiz i fire rundar som følgjer dei fire fagmodulane, med ein finale der laga set hendingar i rekkjefølgje. Til slutt tek elevane ein kort skriftleg test i tre delar på tavla: årstal, personar og omgrep, og forklaringar. Dei svarer i skriveboka, rettar sjølve og tel poeng. Quizen gir læraren eit raskt bilete av kva klassen kan, og testen viser kvar den einskilde eleven står.</p>",
     mal: [
       "Elevane kan plassere dei viktigaste hendingane i norsk språkhistorie frå 1380 til 2022 i tid.",
       "Elevane kan forklare kva Ivar Aasen og Knud Knudsen gjorde, og kva linene deira førte til.",
@@ -809,15 +908,15 @@ Larar.register("historie-repetisjon", {
       "Del klassen i lag på tre til fire elevar.",
       "Ha mini-tavler eller papirlappar klare, og ein stad på tavla til poeng.",
       "Ha lappar klare til exit-lappen.",
-      "Sjå til at elevane har tilgang til kurset på eigen maskin.",
+      "Elevane treng skrivebok til den skriftlege testen (lysbilete 23 til 25).",
     ],
     okt: [
       { fase: "Oppstart", min: 2, gjer: "<p>Forklar reglane og del i lag.</p>", lysbilete: "2" },
       { fase: "Runde 1 og 2", min: 10, gjer: "<p>Før 1850 og Ivar Aasen.</p>", lysbilete: "3 til 11" },
       { fase: "Runde 3 og 4", min: 11, gjer: "<p>Språkstriden og nynorsk i dag.</p>", lysbilete: "12 til 21" },
       { fase: "Finale", min: 4, gjer: "<p>Laga set hendingane i rekkjefølgje. Kår vinnaren og snakk om kva som var vanskelegast.</p>", lysbilete: "22" },
-      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane tek testane i modulen og øver på det dei bomma på.</p>", lysbilete: "23" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Exit-lapp: kva modul vil du gå tilbake til?</p>", lysbilete: "24" },
+      { fase: "Skriftleg test", min: 15, gjer: "<p>Elevane svarer åleine i skriveboka på dei tre delane av testen. Vis svaret etter kvar del, og la elevane rette sjølve og telje poeng.</p>", lysbilete: "23 til 25" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Exit-lapp: poenga på testen og eitt emne eleven vil repetere.</p>", lysbilete: "26" },
     ],
     misoppfatningar: [
       { feil: "«Folk i Noreg snakka dansk før 1850.»", hjelp: "Skriftspråket var dansk, men talemålet var heile tida norske dialektar. Berre embetsmenn og borgarskap i byane snakka noko som låg nær dansk." },
@@ -833,8 +932,8 @@ Larar.register("historie-repetisjon", {
     tilpassing: {
       stotte: [
         "Set saman laga slik at kvart lag har minst éin elev som hugsar stoffet godt.",
-        "La elevane ha tidslinja frå modulen Norsk språk før 1850 framfor seg under runde 1 og 3.",
-        "Tilrå Test 1 og Test 2 før den store testen.",
+        "Gi elevar som treng det, ei utskrift av tidslinja frå Del 1 under runde 1 og 3.",
+        "La elevar som treng det, svare munnleg til deg på del 3 av testen i staden for å skrive.",
       ],
       utfordring: [
         "Be elevane lage eigne quizspørsmål med tre feilsvar som er truverdige, til dømes rette hendingar med feil årstal.",
@@ -843,9 +942,9 @@ Larar.register("historie-repetisjon", {
     },
     vurdering: [
       "Quizen viser kva spørsmål heile klassen bommar på, og dermed kva som må repeterast.",
-      "Resultatet på Test 3 i modulen viser kvar eleven står. Minst 80 % rett tel som fullført.",
+      "Den skriftlege testen viser kvar eleven står. Han gir 16 poeng i alt, og minst 13 poeng (om lag 80 %) tyder at eleven kan stoffet godt.",
       "Exit-lappen viser om eleven kan vurdere eigen kunnskap.",
     ],
-    vidare: "Elevar som fekk under 80 %, går tilbake til den modulen det gjeld. Deretter går klassen vidare til Del 2 om grammatikk, eller til skrivemodulen om han ikkje er gjennomført.",
+    vidare: "Elevar som fekk under 13 poeng, repeterer det emnet dei skreiv på exit-lappen. Testane i elevmodulen Repetisjon: kva hugsar du? kan brukast som frivillig lekse. Deretter går klassen vidare til Del 2 om grammatikk, eller til skrivemodulen om han ikkje er gjennomført.",
   },
 });

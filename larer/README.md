@@ -42,7 +42,8 @@ slutt, i ein grøn boks merkt «Svar»).
 | `diskuter` | `prompt`, `form` (t.d. «Snakk med sidemannen»), `tid` (minutt) | samtaleoppgåve, med knapp som startar ei nedteljing. Klokka blir stoppa med same knappen, med klikk på nedteljinga eller med Escape |
 | `sitat` | `text`, `kjelde` | sitat eller tekstutdrag i stor skrift |
 | `bilete` | `src`, `alt`, `caption`, valfritt `body` | bilete frå `bilete/`, med tekst ved sida om `body` er med |
-| `oppgave` | `title`, `body`, `tid`, valfritt `del` | «Elevane arbeider»: går over til arbeid i modulen |
+| `oppgave` | `title`, `body`, `tid`, `utstyr`, valfritt `form` og `svar` | «Elevane arbeider»: oppgåver som står på tavla og blir gjorde i skriveboka. `utstyr` er ei liste med `skrivebok` (standard), `ordbok` (ordbok på nett) og `pc`. `form` er t.d. «Åleine» eller «I par». `svar` er fasiten, som kjem fram til slutt |
+| `tekst` | `text`, valfritt `kjelde` | lang tekst, til dømes ein lesetekst, som blir vist side for side. Avsnitta er `<p>`, og kvart trykk blar ei side |
 | `drill` | `spec`, `n`, `intro` | tavleøving med `n` oppgåver trekte frå ordbanken. `spec` er same spesifikasjon som ein drill-seksjon i modulane (`bank`, `set`, `tasks`, `filter`, `mode`). Første trykk viser svaret, neste trykk neste oppgåve |
 
 Skal noko i sjølve innhaldet haldast att, som ein kolonne eller rader i ein
@@ -91,8 +92,18 @@ heite «Økt 1: …» og «Økt 2: …». Validatoren sjekkar òg at samtaleklok
 (`tid` på diskuter-lysbilete) og eigenarbeidet (`tid` på oppgåvelysbilete) får
 plass i fasane som viser til lysbiletet.
 
+## Tavlegjennomgangen skal kunne køyrast åleine
+
+Elevane skal ikkje trenge PC eller elevmodulen for å følgje presentasjonen.
+Alt dei skal arbeide med, står på tavla: oppgåvene på oppgåvelysbileta,
+lesetekstane på tekstlysbilete og fasiten i `svar`. Dei skriv i
+skriveboka. Ordbok på nett eller PC blir brukt berre når oppgåva krev det,
+og då står det i `utstyr`. Elevmodulen kan nemnast i `guide.vidare` eller i
+notata som lekse eller vidare arbeid, men lysbileta og planen for økta skal
+ikkje sende elevane dit. Validatoren sjekkar dette.
+
 ## Språk
 
 Alt er på nynorsk, i same form som resten av kurset (a-mål, `ikkje`, `eg`,
 `kva`, `korleis`, `mellom anna`). Ingen tankestrek i brødteksten: bruk kolon,
-komma eller ei ny setning. Tankestrek er berre lov i talrekkjer (1814–1905).
+komma eller ei ny setning. Tankestrek er berre lov i talrekkjer (1814–1905) og i ordrette tekstar og sitat (`text` på tekst- og sitatlysbilete).

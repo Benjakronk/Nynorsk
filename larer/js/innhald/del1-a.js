@@ -110,13 +110,13 @@ Larar.register("historie-bakgrunn", {
       form: "Grupper på tre",
       tid: 4,
       svar: "For dansk: alle bøker og lover var alt skrivne på dansk, og det ville vere upraktisk å byte. For norsk: det er lettare å lære å lese og skrive når skriftspråket liknar på det ein snakkar.",
-      notes: "Lat halve klassen finne argument for kvar side, og ta ein kort runde etterpå. Argumenta i svaret er dei same som i leseoppgåva i modulen, så elevane har nytte av samtalen når dei arbeider sjølve. Hald fram at begge sider hadde gode grunnar: dei som ville halde på dansk, var ikkje nødvendigvis mot Noreg.",
+      notes: "Lat halve klassen finne argument for kvar side, og ta ein kort runde etterpå. Elevane har nytte av argumenta når dei skriv refleksjonen på lysbilete 17. Hald fram at begge sider hadde gode grunnar: dei som ville halde på dansk, var ikkje nødvendigvis mot Noreg.",
     },
     {
       type: "sitat",
       title: "Tenk deg …",
       text: "Når du byrjar på skulen, lærer du å lese og skrive på dansk. Læraren rettar deg når du skriv slik du snakkar.",
-      kjelde: "Frå leseoppgåva i modulen, om ein elev i Noreg rundt 1830",
+      kjelde: "Om ein elev i Noreg rundt 1830",
       notes: "Les sitatet høgt, sakte. Spør: korleis ville det kjennast? Knyt til elevar som har eit anna morsmål enn norsk: mange av dei kjenner denne situasjonen frå sin eigen kvardag, men vent med å peike nokon ut. La dei som vil, fortelje.",
     },
     {
@@ -148,15 +148,43 @@ Larar.register("historie-bakgrunn", {
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Les fagteksten og sjå på tidslinja.</li>
-          <li>Gjer fleirvalsoppgåvene og para saman omgrepa.</li>
-          <li>Les «Les og tenk over» og svar på spørsmåla.</li>
-          <li>Skriv refleksjonen til slutt: 80 til 150 ord på nynorsk.</li>
+      title: "Oppgåve 1: para saman",
+      body: `<p>Skriv tal og bokstav i skriveboka, til dømes <strong>1 c</strong>.</p>
+        <div class="to-kol">
+          <div class="boks"><p>1 Unionen med Danmark</p><p>2 Embetsmannsspråket</p><p>3 Talemålet i Noreg</p><p>4 1814</p></div>
+          <div class="boks"><p>a Norske dialektar</p><p>b Året Noreg fekk eiga grunnlov</p><p>c Varte frå 1380 til 1814</p><p>d Dansk skrift med norsk uttale</p></div>
+        </div>`,
+      form: "Åleine",
+      tid: 4,
+      svar: "1 c, 2 d, 3 a, 4 b",
+      notes: "Ei rask oppvarming med omgrepa frå timen. Tidslinja på lysbilete 14 hjelper dei som er usikre på årstala. Gå gjennom fasiten saman før de går vidare, og spør særleg kven som valde a for embetsmannsspråket: då blandar dei framleis saman skrift og tale.",
+    },
+    {
+      type: "oppgave",
+      title: "Oppgåve 2: svar med heile setningar",
+      body: `<ol class="stor">
+          <li>Kva skriftspråk brukte folk i Noreg på 1700-talet?</li>
+          <li>Kva språk snakka dei?</li>
+          <li>Kvifor vart språket eit viktig spørsmål etter 1814?</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 5,
+      svar: "<ol><li>Dei skreiv dansk.</li><li>Dei snakka norske dialektar.</li><li>Noreg fekk eiga grunnlov og eige storting, og mange meinte at eit fritt land burde ha sitt eige skriftspråk.</li></ol>",
+      notes: "Krev heile setningar på nynorsk, ikkje berre eitt ord. Spørsmål 1 og 2 skil mellom skrift og tale, som er hovudpoenget i timen. På spørsmål 3 svarer mange «fordi Noreg vart fritt»: be dei forklare kva det hadde med språket å gjere.",
+    },
+    {
+      type: "oppgave",
+      title: "Oppgåve 3: skriv ein refleksjon",
+      body: `<p class="stor">Kvifor vart språk eit viktig spørsmål i Noreg etter 1814?</p>
+        <p>Skriv 80 til 150 ord på nynorsk.</p>
+        <ul>
+          <li>Nemn unionen med Danmark.</li>
+          <li>Forklar skilnaden på skriftspråk og talemål.</li>
+          <li>Bruk <em class="nn">ikkje</em>, <em class="nn">eg</em>, <em class="nn">kva</em> og <em class="nn">frå</em>.</li>
         </ul>`,
-      tid: 20,
-      notes: "Gå rundt og les refleksjonane undervegs. Sjekklista i modulen krev at eleven nemner unionen og skilnaden mellom skriftspråk og talemål. Mange skriv berre årstal: spør «kvifor vart det viktig?» for å få dei til å forklare samanhengen. Dei som blir tidleg ferdige, kan byrje på modulen om Ivar Aasen.",
+      form: "Åleine",
+      tid: 11,
+      notes: "Gå rundt og les refleksjonane undervegs. Dei tre punkta er sjekklista: eleven skal nemne unionen og skilnaden mellom skriftspråk og talemål. Mange skriv berre årstal: spør «kvifor vart det viktig?» for å få dei til å forklare samanhengen. Argumenta frå samtalen på lysbilete 11 kan brukast. Dei som blir tidleg ferdige, kan skrive eit kort innlegg frå 1830 for eller mot eit nytt norsk skriftspråk.",
     },
     {
       title: "Oppsummering",
@@ -192,15 +220,15 @@ Larar.register("historie-bakgrunn", {
       "Test presentasjonen på tavla, særleg biletet på lysbilete 9 og tidslinja på lysbilete 14.",
       "Tenk ut nokre døme frå dialekta på staden der du underviser, til samtalen på lysbilete 3.",
       "Ha lappar klare til exit-lappen til slutt.",
-      "Sjå til at elevane har tilgang til kurset på eigen maskin.",
+      "Elevane treng berre skriveboka. Alle oppgåvene står på lysbilete 15 til 17.",
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og la elevane samanlikne sitt eige talemål med skriftspråket.</p>", lysbilete: "2 og 3" },
       { fase: "Unionstida", min: 7, gjer: "<p>Forklar unionen, skilnaden mellom skrift og tale og embetsmannsspråket. Ta dei to spørsmåla med heile klassen.</p>", lysbilete: "4 til 8" },
       { fase: "1814", min: 9, gjer: "<p>Vis biletet frå Eidsvoll, gå gjennom den nye situasjonen og la gruppene finne argument for og mot å halde på dansk. Les sitatet og ta kontrollspørsmålet.</p>", lysbilete: "9 til 13" },
-      { fase: "Vegen vidare", min: 2, gjer: "<p>Vis tidslinja og peik fram mot Ivar Aasen i neste modul.</p>", lysbilete: "14" },
-      { fase: "Eigenarbeid", min: 20, gjer: "<p>Elevane arbeider i modulen og skriv refleksjonen til slutt.</p>", lysbilete: "15" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive exit-lappen.</p>", lysbilete: "16 og 17" },
+      { fase: "Vegen vidare", min: 2, gjer: "<p>Vis tidslinja og peik fram mot Ivar Aasen i neste økt.</p>", lysbilete: "14" },
+      { fase: "Eigenarbeid", min: 20, gjer: "<p>Elevane gjer dei tre oppgåvene på tavla i skriveboka: para saman, svar med heile setningar og skriv refleksjonen. Gå gjennom fasiten på dei to første før refleksjonen.</p>", lysbilete: "15 til 17" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive exit-lappen.</p>", lysbilete: "18 og 19" },
     ],
     misoppfatningar: [
       { feil: "«Folk i Noreg snakka dansk før 1814.»", hjelp: "Skil mellom skrift og tale. Talemålet var heile tida norske dialektar. Det var berre skriftspråket som var dansk, og i byane eit dansk-norsk talemål blant embetsmenn og borgarskap." },
@@ -217,7 +245,7 @@ Larar.register("historie-bakgrunn", {
     tilpassing: {
       stotte: [
         "Teikn to kolonnar på tavla, skrift og tale, og la elevane sortere omgrepa frå timen inn i dei.",
-        "La elevane skrive refleksjonen med sjekklista frå modulen som ramme, gjerne med setningsstartarar som «Fordi …» og «Etter 1814 …».",
+        "La elevane skrive refleksjonen med dei tre punkta på lysbilete 17 som ramme, gjerne med setningsstartarar som «Fordi …» og «Etter 1814 …».",
         "Gi elevar som strevar med nynorsk lov til å skrive refleksjonen munnleg eller i kortare form.",
       ],
       utfordring: [
@@ -227,10 +255,10 @@ Larar.register("historie-bakgrunn", {
     },
     vurdering: [
       "Spørsmåla på tavla og exit-lappen viser om elevane skil mellom skriftspråk og talemål.",
-      "Refleksjonsteksten i modulen viser om eleven kan forklare samanhengen mellom 1814 og språkspørsmålet, ikkje berre ramse opp årstal.",
+      "Refleksjonen i skriveboka (lysbilete 17) viser om eleven kan forklare samanhengen mellom 1814 og språkspørsmålet, ikkje berre ramse opp årstal.",
       "Kjenneteikn på god måloppnåing: eleven forklarar med eigne ord kvifor dansk var skriftspråket, nemner embetsmannsspråket og viser kvifor sjølvstendet i 1814 gjorde språket til eit politisk spørsmål.",
     ],
-    vidare: "Gå vidare til modulen Ivar Aasen og landsmålet, som viser korleis Aasen svarte på spørsmålet frå 1814. Tidslinja frå denne modulen kjem att i skrivemodulen til slutt i Del 1.",
+    vidare: "Gå vidare til Ivar Aasen og landsmålet, som viser korleis Aasen svarte på spørsmålet frå 1814. Som frivillig lekse kan elevane lese fagteksten og gjere oppgåvene i elevmodulen Norsk språk før 1850. Tidslinja kjem att i skrivemodulen til slutt i Del 1.",
   },
 });
 
@@ -365,7 +393,7 @@ Larar.register("historie-aasen", {
       form: "Heile klassen",
       tid: 3,
       svar: "Eit skriftspråk bygd på éi dialekt ville favorisere dei som snakka akkurat den dialekta. Ved å leite etter det dialektane hadde felles, ville Aasen lage eit språk som høyrde til heile landet.",
-      notes: "Gå tilbake til lista frå lysbilete 3. Kryss av forslag som liknar på Aasen, og spør kva som ville ha skjedd med dei andre forslaga. Denne samtalen førebur skriveoppgåva i modulen, som spør om kvifor det var viktig at han lytta til folk i ulike delar av landet.",
+      notes: "Gå tilbake til lista frå lysbilete 3. Kryss av forslag som liknar på Aasen, og spør kva som ville ha skjedd med dei andre forslaga. Denne samtalen førebur refleksjonen på lysbilete 19, som spør om kvifor det var viktig at han lytta til folk i ulike delar av landet.",
     },
     {
       title: "Nynorsk: eit nytt språk?",
@@ -395,15 +423,57 @@ Larar.register("historie-aasen", {
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Les fagteksten om Ivar Aasen.</li>
-          <li>Para saman årstal, gjer fleirval og sortering.</li>
-          <li>Fyll ut setningane.</li>
-          <li>Skriv refleksjonen: 60 til 120 ord på nynorsk.</li>
+      title: "Oppgåve 1: para saman",
+      body: `<p>Skriv tal og bokstav, til dømes <strong>1 c</strong>.</p>
+        <div class="to-kol">
+          <div class="boks"><p>1 1813</p><p>2 1842–1846</p><p>3 1848</p><p>4 1850</p><p>5 1853</p><p>6 1896</p></div>
+          <div class="boks"><p>a Grammatikken kjem ut</p><p>b Aasen døyr</p><p>c Aasen blir fødd i Ørsta</p><p>d Ordboka kjem ut</p><p>e Aasen reiser og samlar dialektar</p><p>f Aasen viser dømetekstar på landsmål</p></div>
+        </div>`,
+      form: "Åleine",
+      tid: 3,
+      svar: "1 c, 2 e, 3 a, 4 d, 5 f, 6 b",
+      notes: "Alle årstala har vore på tavla i timen. Dei som er usikre, kan tenkje på rekkjefølgja: fødd, reiser, bøker, død. Grammatikken før ordboka, og prøvene sist.",
+    },
+    {
+      type: "oppgave",
+      title: "Oppgåve 2: fyll inn",
+      body: `<p>Skriv heile setninga.</p>
+        <ol class="stor">
+          <li>Ivar Aasen vart fødd i <span class="blank"></span> i 1813.</li>
+          <li>Han kalla det nye skriftspråket <span class="blank"></span>.</li>
+          <li>På reisene samla han <span class="blank"></span> frå store delar av landet.</li>
+          <li>Frå 1929 vart språket kalla <span class="blank"></span>.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 2,
+      svar: "1 Ørsta, 2 landsmål, 3 dialektar, 4 nynorsk",
+      notes: "Be elevane skrive heile setninga, så dei får øvd på nynorske former som <em class=\"nn\">vart</em> og <em class=\"nn\">frå</em>. Godta òg <em class=\"nn\">landsmålet</em> i setning 2.",
+    },
+    {
+      type: "oppgave",
+      title: "Oppgåve 3: Aasen eller seinare?",
+      body: `<p>Lag to lister: <strong>Ivar Aasen</strong> og <strong>Andre eller seinare</strong>.</p>
+        <div class="to-kol">
+          <div class="boks"><p>grammatikken frå 1848</p><p>bokmålet</p><p>reisene 1842–1846</p><p>samnorsk</p></div>
+          <div class="boks"><p>landsmålet</p><p>rettskrivinga frå 2012</p><p>ordboka frå 1850</p><p>reformene til Knud Knudsen</p></div>
+        </div>`,
+      form: "Åleine",
+      tid: 3,
+      svar: "Ivar Aasen: grammatikken frå 1848, reisene 1842–1846, landsmålet, ordboka frå 1850. Andre eller seinare: bokmålet, samnorsk, rettskrivinga frå 2012, reformene til Knud Knudsen.",
+      notes: "Oppgåva har med Knud Knudsen og samnorsk, som elevane ikkje har lært om enno. Sei at dei kan gjette ut frå kva som ikkje høyrer til Aasen. Bokmål kjem frå arbeidet til Knudsen, og samnorsk og dei nye reformene kom på 1900-talet. Det kjem i økta om språkstriden.",
+    },
+    {
+      type: "oppgave",
+      title: "Oppgåve 4: reflekter",
+      body: `<p class="stor">Kvifor var det viktig at Aasen lytta til folk i heile landet, og ikkje berre brukte si eiga dialekt?</p>
+        <p>Skriv 60 til 120 ord på nynorsk.</p>
+        <ul>
+          <li>Kva gjer eit skriftspråk rettferdig for ulike grupper?</li>
+          <li>Bruk minst eitt døme.</li>
         </ul>`,
-      tid: 15,
-      notes: "Sorteringsoppgåva har med Knud Knudsen og samnorsk, som elevane ikkje har lært om enno. Sei at dei kan gjette ut frå kva som ikkje høyrer til Aasen: fasiten forklarar det, og det kjem i modulen om språkstriden. I refleksjonen bør elevane bruke eit døme. Dei som blir tidleg ferdige, kan opne kartet med reisene.",
+      form: "Åleine",
+      tid: 7,
+      notes: "Samtalen på lysbilete 12 har førebudd denne oppgåva, og figuren på lysbilete 10 er ei god ramme: mange dialektar, det dei har felles, landsmålet. Gå rundt og les. Eit godt døme kan vere at ein elev frå Nord-Noreg ville ha fått eit framandt skriftspråk om Aasen berre hadde brukt sunnmørsmålet.",
     },
     {
       title: "Oppsummering",
@@ -426,12 +496,12 @@ Larar.register("historie-aasen", {
       "Elevane kan forklare kva landsmål tyder, og at namnet nynorsk kom i 1929.",
     ],
     lareplan: [15, 16, 9, 10],
-    forkunnskapar: "Elevane bør ha arbeidd med modulen Norsk språk før 1850, slik at dei veit at skriftspråket var dansk og talemålet norske dialektar.",
+    forkunnskapar: "Elevane bør ha hatt økta om Norsk språk før 1850, slik at dei veit at skriftspråket var dansk og talemålet norske dialektar.",
     forebuing: [
       "Test presentasjonen på tavla, særleg bileta på lysbilete 4, 8 og 15.",
-      "Opne aasen-reise.html på førehand om du vil vise kartet kort på lysbilete 6. Det kan ta litt tid å laste.",
+      "Opne aasen-reise.html på tavlemaskina på førehand om du vil vise kartet kort på lysbilete 6. Det kan ta litt tid å laste.",
       "Ha klar ein stad på tavla der forslaga frå samtalen på lysbilete 3 kan stå til lysbilete 12.",
-      "Sjå til at elevane har tilgang til kurset på eigen maskin.",
+      "Elevane treng berre skriveboka. Alle oppgåvene står på lysbilete 16 til 19.",
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og la gruppene foreslå korleis dei ville lage eit skriftspråk for heile landet. Skriv forslaga på tavla.</p>", lysbilete: "2 og 3" },
@@ -440,8 +510,8 @@ Larar.register("historie-aasen", {
       { fase: "Bøkene og landsmålet", min: 5, gjer: "<p>Gå gjennom dei tre bøkene og kva ordet landsmål tyder.</p>", lysbilete: "8 og 9" },
       { fase: "Metoden", min: 7, gjer: "<p>Forklar korleis Aasen bygde opp landsmålet, ta spørsmålet og samanlikn med forslaga til elevane.</p>", lysbilete: "10 til 12" },
       { fase: "Namnet nynorsk", min: 3, gjer: "<p>Rydd opp i misforståinga om at nynorsk er eit nytt språk, og vis Ivar Aasen-tunet.</p>", lysbilete: "13 til 15" },
-      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane arbeider i modulen og skriv refleksjonen til slutt.</p>", lysbilete: "16" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer, og lat elevane forklare metoden til Aasen for kvarandre.</p>", lysbilete: "17" },
+      { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane gjer oppgåvene på tavla i skriveboka: para saman, fyll inn, sorter og skriv refleksjonen til slutt. Gå gjennom fasiten på dei tre første før refleksjonen.</p>", lysbilete: "16 til 19" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer, og lat elevane forklare metoden til Aasen for kvarandre.</p>", lysbilete: "20" },
     ],
     misoppfatningar: [
       { feil: "«Nynorsk er sunnmørsdialekten til Aasen.»", hjelp: "Aasen samla dialektar frå store delar av landet og leita etter det dei hadde felles. Han valde ikkje sitt eige mål. Samanlikn med forslaga elevane kom med i starten av timen." },
@@ -462,21 +532,21 @@ Larar.register("historie-aasen", {
         "La elevane skrive refleksjonen i punkt først og så binde punkta saman.",
       ],
       utfordring: [
-        "La elevane opne kartet med reisene og finne ut kvar Aasen var lengst, og kvifor han valde nettopp dei stadene.",
+        "Be elevane skrive ned kva dei trur Aasen måtte gjere for å finne det dialektane hadde felles, og sjekke det i økta om reisene hans.",
         "Be elevane skrive refleksjonen som eit brev frå Aasen til ein venn, der han forklarar kvifor han ikkje kan bruke berre sunnmørsdialekten.",
       ],
     },
     vurdering: [
       "Spørsmåla på tavla og samtalen på lysbilete 12 viser om elevane har forstått metoden til Aasen.",
-      "Refleksjonen i modulen viser om eleven kan forklare kvifor det var viktig at Aasen lytta til folk i ulike delar av landet, med minst eitt døme.",
+      "Refleksjonen i skriveboka (lysbilete 19) viser om eleven kan forklare kvifor det var viktig at Aasen lytta til folk i ulike delar av landet, med minst eitt døme.",
       "Kjenneteikn på god måloppnåing: eleven forklarar metoden med eigne ord, skil mellom landsmål og ei enkelt dialekt og plasserer bøkene rett i tid.",
     ],
-    vidare: "Følg opp med modulen Reisene til Ivar Aasen, der elevane følgjer ruta hans på eit 3D-kart. Deretter kjem Språkstriden og samnorsk, der Aasen blir samanlikna med Knud Knudsen.",
+    vidare: "Følg opp med Reisene til Ivar Aasen, der klassen følgjer ruta hans på 3D-kartet på tavla. Deretter kjem Språkstriden og samnorsk, der Aasen blir samanlikna med Knud Knudsen. Som frivillig lekse kan elevane lese fagteksten og gjere oppgåvene i elevmodulen Ivar Aasen og landsmålet.",
   },
 });
 
 Larar.register("historie-aasen-reise", {
-  tittelnotat: "Denne modulen er ei eiga side med eit 3D-kart der elevane følgjer Aasen stad for stad, kapittel for kapittel, med oppgåver undervegs. Presentasjonen oppsummerer kapitla. Har du god skjerm, kan du opne kartet i ein eigen fane og vise det medan du går gjennom lysbileta.",
+  tittelnotat: "Elevmodulen er ei eiga side med eit 3D-kart der ein følgjer Aasen stad for stad, kapittel for kapittel. I denne økta opnar du kartet på tavla og følgjer reisa saman med klassen, medan presentasjonen oppsummerer kapitla. Elevane opnar ikkje kartet sjølve: dei skriv stikkord i skriveboka undervegs og gjer oppgåvene på tavla til slutt.",
   slides: [
     {
       title: "I dag skal vi",
@@ -488,13 +558,13 @@ Larar.register("historie-aasen-reise", {
       notes: "Minn om førre modul: Aasen ville byggje skriftspråket på det dialektane hadde felles. I dag ser vi kva det kravde i praksis.",
     },
     {
-      title: "Opne kartet",
+      title: "Vi følgjer kartet saman",
       body: `<p class="stor midt"><a href="aasen-reise.html" target="_blank">Reisene til Ivar Aasen</a></p>
-        <ul>
-          <li>Knappane eller piltastane: neste kapittel</li>
-          <li>Dra i kartet for å snu det</li>
+        <ul class="stor">
+          <li>Vi følgjer ruta på tavla.</li>
+          <li>Skriv stikkord i skriveboka: <strong>stad</strong>, <strong>år</strong>, <strong>kva han gjorde</strong>.</li>
         </ul>`,
-      notes: "Opne kartet i ein ny fane (lenkja opnar ein ny fane) og vis det på tavla. Gå gjerne gjennom innleiinga og det første kapitlet på kartet saman med klassen, så elevane ser korleis det verkar før dei arbeider sjølve. Du kan byte mellom presentasjonen og kartet undervegs: lysbileta nedanfor følgjer kapitla i same rekkjefølgje. Ruta er ei forenkling: stader som ikkje lét seg plassere sikkert, er utelatne.",
+      notes: "Opne kartet i ein ny fane på tavlemaskina (lenkja opnar ein ny fane). Du styrer: knappane eller piltastane går til neste kapittel, og du kan dra i kartet for å snu det. Elevane opnar ikkje kartet sjølve. Be dei skrive stikkord i skriveboka medan de går gjennom kapitla: stikkorda får dei bruk for i oppgåvene på lysbilete 21 til 23. Byt mellom presentasjonen og kartet undervegs: lysbileta nedanfor følgjer kapitla i same rekkjefølgje. Ruta er ei forenkling: stader som ikkje lét seg plassere sikkert, er utelatne.",
     },
     {
       type: "diskuter",
@@ -603,7 +673,7 @@ Larar.register("historie-aasen-reise", {
           <li><span class="aar">Sommaren 1846</span><span class="hend">Nordmøre, Fosen og med båt nord til Helgeland.</span></li>
           <li><span class="aar">Hausten 1846</span><span class="hend">Namdalen og Innherad. Tilbake i Trondheim 5. desember.</span></li>
         </ol>`,
-      notes: "Seljord var den tredje vinteren på reise. Trondheim er byen stipendet kom frå. Helgeland var det lengste nord han kom på langferda. Spør elevane om nokon av dei bur nær ein av stadene, og la dei finne heimstaden sin på kartet.",
+      notes: "Seljord var den tredje vinteren på reise. Trondheim er byen stipendet kom frå. Helgeland var det lengste nord han kom på langferda. Spør elevane om nokon av dei bur nær ein av stadene, og la dei peike ut heimstaden sin på kartet på tavla.",
     },
     {
       type: "bilete",
@@ -674,14 +744,43 @@ Larar.register("historie-aasen-reise", {
     },
     {
       type: "oppgave",
-      title: "Følg reisa sjølve",
-      body: `<ul>
-          <li>Opne kartet og gå gjennom kapitla i rekkjefølgje.</li>
-          <li>Svar på oppgåvene mellom kapitla.</li>
-          <li>Finn heimstaden din, eller næraste stad Aasen var.</li>
-        </ul>`,
-      tid: 14,
-      notes: "Oppgåvene i denne modulen viser rett svar med ein gong, fordi dei står langt frå teksten dei byggjer på. Be elevane lese forklaringa når dei svarer feil. Gå rundt og spør kvar Aasen er no, og kvifor han vart verande lenge på nett den staden. Kartet kan vere tungt på eldre maskiner: la elevane i så fall arbeide to og to.",
+      title: "Oppgåve 1: para saman",
+      body: `<p>Det første reiseåret. Skriv tal og bokstav, til dømes <strong>1 c</strong>.</p>
+        <div class="to-kol">
+          <div class="boks"><p>1 Ekset</p><p>2 Lærdalsøyri</p><p>3 Sogndal</p><p>4 Eivindvik</p></div>
+          <div class="boks"><p>a Den første vinteren på reise</p><p>b Nesten to månader våren 1843</p><p>c Der reisa starta 29. september 1842</p><p>d Ti dagar inst i Sognefjorden</p></div>
+        </div>`,
+      form: "Åleine",
+      tid: 3,
+      svar: "1 c, 2 d, 3 a, 4 b",
+      notes: "Elevane kan bruke stikkorda sine frå kartet. Er mange usikre, kan du opne kapitla om 1842 og 1843 på kartet att. Aasen gjekk sørover frå Ekset, innover Sognefjorden til Lærdal, sat vinteren i Sogndal og enda våren ytst i Gulen.",
+    },
+    {
+      type: "oppgave",
+      title: "Oppgåve 2: fyll inn",
+      body: `<p>Skriv heile setninga.</p>
+        <ol class="stor">
+          <li>Aasen budde <span class="blank"></span> månader på Litlebergen i Meland.</li>
+          <li>På langferda reiste han om lag <span class="blank"></span> kilometer.</li>
+          <li>Langferda enda i <span class="blank"></span> 5. desember 1846.</li>
+          <li>Det lengste nord han kom på langferda, var <span class="blank"></span>.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 4,
+      svar: "1 ni, 2 4550, 3 Trondheim, 4 Helgeland",
+      notes: "Svara står på tidslinjene på lysbilete 13 og 14 og i spørsmålet om kilometer. Helgeland var nordgrensa for langferda. Tromsø kom han først til i 1851, og det er eit poeng å ta opp om nokon svarer det.",
+    },
+    {
+      type: "oppgave",
+      title: "Oppgåve 3: sorter og set om",
+      body: `<ol>
+          <li>Lag to lister, <strong>Vestlandet</strong> og <strong>Sørlandet</strong>:<br>Sogndal · Kristiansand · Vossevangen · Mandal · Stavanger · Homme i Valle · Eivindvik · Flekkefjord</li>
+          <li>Set om til nynorsk:<br><em class="bm">Han bodde to måneder på Formo i Sel før han gikk over Dovrefjell.</em></li>
+        </ol>`,
+      form: "Åleine",
+      tid: 4,
+      svar: "<ol><li>Vestlandet: Sogndal, Vossevangen, Stavanger, Eivindvik. Sørlandet: Kristiansand, Mandal, Homme i Valle, Flekkefjord.</li><li><em class=\"nn\">Han budde to månader på Formo i Sel før han gjekk over Dovrefjell.</em></li></ol>",
+      notes: "Valle ligg i Setesdal, som høyrer til Agder, og difor står han under Sørlandet. I omsetjinga er det tre ord som skal endrast: <em class=\"bm\">bodde</em> blir <em class=\"nn\">budde</em>, <em class=\"bm\">måneder</em> blir <em class=\"nn\">månader</em> og <em class=\"bm\">gikk</em> blir <em class=\"nn\">gjekk</em>. Godta òg <em class=\"nn\">månadar</em>.",
     },
     {
       type: "diskuter",
@@ -695,7 +794,7 @@ Larar.register("historie-aasen-reise", {
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Modulen er ei eiga side, <a href=\"aasen-reise.html\">aasen-reise.html</a>, med eit 3D-kart der elevane følgjer Ivar Aasen stad for stad. Forelesinga er delt i kapittel frå oppveksten i Ørsta, via åra som huslærar på Solnør og stipendet frå Trondheim, gjennom langferda 1842–1846 og fram til grammatikken, ordboka og dei seinare reisene. Mellom kapitla er det oppgåver av same slag som elles i kurset, og elevane får rett svar med ein gong. Hovudpoenget er å vise kva metoden til Aasen kravde i praksis: han måtte høyre talemålet i heile landet.</p>",
+    intro: "<p>Modulen er ei eiga side, <a href=\"aasen-reise.html\">aasen-reise.html</a>, med eit 3D-kart der ein følgjer Ivar Aasen stad for stad. Forteljinga er delt i kapittel frå oppveksten i Ørsta, via åra som huslærar på Solnør og stipendet frå Trondheim, gjennom langferda 1842–1846 og fram til grammatikken, ordboka og dei seinare reisene. I økta viser du kartet på tavla, og klassen følgjer reisa saman medan elevane skriv stikkord i skriveboka. Til slutt gjer dei oppgåvene på tavla i skriveboka. Hovudpoenget er å vise kva metoden til Aasen kravde i praksis: han måtte høyre talemålet i heile landet.</p>",
     mal: [
       "Elevane kan fortelje om oppveksten til Aasen og korleis han fekk stipendet.",
       "Elevane kan skildre korleis Aasen arbeidde på reisene, og kvifor han tok seg god tid i dei indre bygdene.",
@@ -703,20 +802,20 @@ Larar.register("historie-aasen-reise", {
       "Elevane kan plassere dei viktigaste delane av ruta på kartet over Noreg.",
     ],
     lareplan: [15, 16, 9],
-    forkunnskapar: "Elevane bør ha arbeidd med modulane Norsk språk før 1850 og Ivar Aasen og landsmålet, slik at dei kjenner metoden til Aasen.",
+    forkunnskapar: "Elevane bør ha hatt øktene om Norsk språk før 1850 og Ivar Aasen og landsmålet, slik at dei kjenner metoden til Aasen.",
     forebuing: [
       "Opne aasen-reise.html på tavlemaskina på førehand og sjekk at kartet lastar. Ha det klart i ein eigen fane.",
-      "Test at elevmaskinene klarer kartet. Er dei trege, planlegg arbeid to og to.",
+      "Elevane treng berre skriveboka. Dei følgjer kartet på tavla og opnar det ikkje på eigne maskiner.",
       "Test presentasjonen, særleg tidslinjene på lysbilete 13 og 14.",
       "Finn ut kva stad på ruta som ligg nærast skulen, så du kan bruke han som døme.",
     ],
     okt: [
-      { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla, opne kartet i ein ny fane og la elevane tenkje over korleis ein reiste i 1840-åra.</p>", lysbilete: "2 til 4" },
-      { fase: "Før reisa", min: 9, gjer: "<p>Gå gjennom innleiinga, oppveksten, Solnør og stipendet. Ta spørsmålet om spesidalar og sitata. Vis gjerne dei første kapitla på kartet.</p>", lysbilete: "5 til 11" },
-      { fase: "Langferda", min: 10, gjer: "<p>Gå gjennom tidslinjene og vis kapitla på kartet. Knyt reisa til metoden med lysbiletet om bygdene og dei to spørsmåla.</p>", lysbilete: "12 til 17" },
+      { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla, opne kartet i ein ny fane på tavla og la elevane tenkje over korleis ein reiste i 1840-åra. Be dei skrive stikkord i skriveboka undervegs.</p>", lysbilete: "2 til 4" },
+      { fase: "Før reisa", min: 9, gjer: "<p>Gå gjennom innleiinga, oppveksten, Solnør og stipendet. Ta spørsmålet om spesidalar og sitata. Vis dei første kapitla på kartet på tavla.</p>", lysbilete: "5 til 11" },
+      { fase: "Langferda", min: 13, gjer: "<p>Gå gjennom tidslinjene og følg kapitla på kartet saman med klassen. Knyt reisa til metoden med lysbiletet om bygdene og dei to spørsmåla.</p>", lysbilete: "12 til 17" },
       { fase: "Bøkene og dei seinare reisene", min: 4, gjer: "<p>Fortel om flyttinga til Christiania, bøkene, statsstipendet og turen til Tromsø, og vis tala til slutt.</p>", lysbilete: "18 til 20" },
-      { fase: "Eigenarbeid", min: 14, gjer: "<p>Elevane går gjennom kartet sjølve og svarar på oppgåvene mellom kapitla.</p>", lysbilete: "21" },
-      { fase: "Avslutning", min: 4, gjer: "<p>Elevane forklarar med éi setning kvifor Aasen måtte reise.</p>", lysbilete: "22" },
+      { fase: "Eigenarbeid", min: 11, gjer: "<p>Elevane gjer dei tre oppgåvene på tavla i skriveboka, med hjelp av stikkorda sine. Gå gjennom fasiten etter kvar oppgåve.</p>", lysbilete: "21 til 23" },
+      { fase: "Avslutning", min: 4, gjer: "<p>Elevane forklarar med éi setning kvifor Aasen måtte reise.</p>", lysbilete: "24" },
     ],
     misoppfatningar: [
       { feil: "«Aasen reiste rundt og skreiv ned éi dialekt som han likte best.»", hjelp: "Han samanlikna kvar bygd med dei førre. Målet var å finne det dialektane hadde felles, og difor måtte han høyre mange." },
@@ -732,9 +831,9 @@ Larar.register("historie-aasen-reise", {
     ],
     tilpassing: {
       stotte: [
-        "Lat elevane arbeide to og to, der den eine styrer kartet og den andre les høgt.",
-        "Gi elevane ei liste med fem stader dei skal finne på kartet og skrive éi setning om: Ørsta, Bergen, Sogndal, Christiania og Trondheim.",
-        "Gå gjennom dei tre første kapitla på tavla før elevane arbeider sjølve.",
+        "La ein elev få styre kartet på tavla medan ein annan les høgt frå kapitlet.",
+        "Gi elevane ei liste med fem stader dei skal følgje med på når kartet er på tavla, og skrive éi setning om: Ørsta, Bergen, Sogndal, Christiania og Trondheim.",
+        "Skriv stadnamna frå oppgåvene på tavla tidleg i timen, så elevane kjenner dei att undervegs.",
       ],
       utfordring: [
         "Be elevane skrive eit dagboknotat frå éin av stadene på ruta, slik oppgåve 4 i skrivemodulen i Del 1 ber om.",
@@ -742,11 +841,11 @@ Larar.register("historie-aasen-reise", {
       ],
     },
     vurdering: [
-      "Oppgåvene mellom kapitla gir elevane rett svar med ein gong, så bruk heller spørsmåla på tavla og exit-samtalen til å sjå kva som sit.",
-      "Setninga på lysbilete 22 viser om eleven har forstått samanhengen mellom reisene og metoden.",
+      "Oppgåvene på lysbilete 21 til 23 og spørsmåla på tavla viser om elevane har fått med seg ruta og tala.",
+      "Setninga på lysbilete 24 viser om eleven har forstått samanhengen mellom reisene og metoden.",
       "Kjenneteikn på god måloppnåing: eleven forklarar kvifor Aasen måtte reise, kvifor han tok seg tid i dei indre bygdene, og korleis reisenotata vart til grammatikk og ordbok.",
     ],
-    vidare: "Gå vidare til Språkstriden og samnorsk, der Aasen blir samanlikna med Knud Knudsen. Dagboknotatet i skrivemodulen til slutt i Del 1 byggjer direkte på denne modulen.",
+    vidare: "Gå vidare til Språkstriden og samnorsk, der Aasen blir samanlikna med Knud Knudsen. Som frivillig lekse kan elevane gå gjennom kartet og oppgåvene mellom kapitla i aasen-reise.html heime. Dagboknotatet i skrivemodulen til slutt i Del 1 byggjer direkte på denne modulen.",
   },
 });
 
@@ -867,9 +966,9 @@ Larar.register("historie-striden", {
     {
       type: "sitat",
       text: "Striden viste at språk handlar om identitet, ikkje berre om reglar.",
-      kjelde: "Frå leseteksten om foreldreaksjonen i modulen",
+      kjelde: "Om foreldreaksjonen mot samnorsk",
       steps: ["<p class=\"midt\">Kva meiner teksten med <strong>identitet</strong>?</p>"],
-      notes: "Dette spørsmålet er òg med i leseoppgåva i modulen, så ta ein kort samtale no og la elevane skrive svaret sjølve seinare. Hjelp dei på veg: kjenner de dykk som ein del av ein stad når de snakkar dialekt? Korleis ville det kjennast om nokon sa at dialekta di var feil?",
+      notes: "Dette spørsmålet kjem att i oppgåve 2 på lysbilete 19, så ta ein kort samtale no og la elevane skrive svaret sjølve seinare. Hjelp dei på veg: kjenner de dykk som ein del av ein stad når de snakkar dialekt? Korleis ville det kjennast om nokon sa at dialekta di var feil?",
     },
     {
       title: "1981: kvar sin veg",
@@ -934,19 +1033,49 @@ Larar.register("historie-striden", {
       form: "Grupper på tre",
       tid: 4,
       svar: "For: det kunne vore enklare og spart tid å lære eitt skriftspråk. Mot: mange opplevde at reformene gjorde skriftspråket framandt for dei, fordi språk handlar om identitet.",
-      notes: "Dette førebur drøftingsoppgåva i modulen, der elevane skal gi eitt argument for, eitt mot og eit eige standpunkt. Skriv argumenta på tavla, så dei kan bruke dei når dei skriv. Pass på at begge sider får plass: målet er å argumentere sakleg, ikkje å vinne.",
+      notes: "Dette førebur drøftinga på lysbilete 20, der elevane skal gi eitt argument for, eitt mot og eit eige standpunkt. Skriv argumenta på tavla, så dei kan bruke dei når dei skriv. Pass på at begge sider får plass: målet er å argumentere sakleg, ikkje å vinne.",
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Les fagteksten og sjå på figuren med dei to linene.</li>
-          <li>Gjer fleirval, para saman og fyll inn.</li>
-          <li>Set om setninga til nynorsk.</li>
-          <li>Les kjelda om foreldreaksjonen, og skriv drøftinga: 100 til 180 ord.</li>
+      title: "Oppgåve 1: fyll inn",
+      body: `<p>Skriv heile setninga.</p>
+        <ol class="stor">
+          <li>Jamstillingsvedtaket vart gjort i <span class="blank"></span>.</li>
+          <li>Samnorskpolitikken vart oppgitt i <span class="blank"></span>.</li>
+          <li>Den nye nynorskrettskrivinga kom i <span class="blank"></span>.</li>
+          <li>Knud Knudsen ville <span class="blank"></span> dansk skrift.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 2,
+      svar: "1 1885, 2 1981, 3 2012, 4 fornorske",
+      notes: "Alle svara har stått på tavla i timen. Godta òg <em class=\"nn\">fornorska</em> i setning 4. Har du tid til overs, kan elevane para saman munnleg: Aasen, Knudsen, foreldreaksjonen og Stortinget i 1885, og kva kvar av dei gjorde.",
+    },
+    {
+      type: "oppgave",
+      title: "Oppgåve 2: set om og svar",
+      body: `<ol>
+          <li>Set om til nynorsk:<br><em class="bm">Stortinget vedtok i 1885 at landsmål og bokmål skulle være likestilte.</em></li>
+          <li>Kva gjorde foreldra i aksjonen mot samnorsk?</li>
+          <li>Kva meiner vi med at språk handlar om <strong>identitet</strong>? Svar med eigne ord.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 3,
+      svar: "<ol><li><em class=\"nn\">Stortinget vedtok i 1885 at landsmål og bokmål skulle vere jamstilte.</em></li><li>Dei retta lærebøkene til borna med blekk og skreiv inn dei eldre formene.</li><li>Språket kan kjennast som ein del av kven du er, så når nokon endrar det, kan det kjennast som om dei endrar noko ved deg eller heimstaden din.</li></ol>",
+      notes: "I omsetjinga er både <em class=\"nn\">jamstilte</em> og <em class=\"nn\">likestilte</em> godtekne, men <em class=\"nn\">jamstilte</em> er fagomgrepet frå 1885. Mange skriv <em class=\"bm\">være</em>: minn om <em class=\"nn\">vere</em>. Spørsmål 3 har ikkje eitt rett svar, men svaret bør knyte språket til kven ein er eller kvar ein kjem frå.",
+    },
+    {
+      type: "oppgave",
+      title: "Oppgåve 3: drøft",
+      body: `<p class="stor">Burde Noreg ha hatt éitt felles skriftspråk?</p>
+        <p>Skriv 100 til 180 ord på nynorsk.</p>
+        <ul>
+          <li>Eitt argument <strong>for</strong></li>
+          <li>Eitt argument <strong>mot</strong></li>
+          <li>Ditt eige <strong>standpunkt</strong>, med ein grunn</li>
         </ul>`,
-      tid: 12,
-      notes: "I omsetjingsoppgåva er både jamstilte og likestilte godtekne, men jamstilte er fagomgrepet frå 1885. Mange skriv være: minn om vere. I drøftinga bør elevane skilje mellom argument og eige standpunkt. Dei som blir ferdige, kan gå vidare til modulen om nynorsk i dag.",
+      form: "Åleine",
+      tid: 7,
+      notes: "Elevane kan bruke argumenta som står på tavla frå samtalen på lysbilete 17. I drøftinga bør dei skilje mellom argument og eige standpunkt. Blir dei ikkje ferdige, kan dei skrive ferdig heime. Ein skrivemal hjelper dei som strevar: «Eit argument for er … Eit argument mot er … Eg meiner … fordi …».",
     },
     {
       title: "Oppsummering",
@@ -969,12 +1098,12 @@ Larar.register("historie-striden", {
       "Elevane kan drøfte om Noreg burde hatt eitt felles skriftspråk, med argument for og mot.",
     ],
     lareplan: [15, 16, 9, 10, 11],
-    forkunnskapar: "Elevane bør ha arbeidd med dei tidlegare modulane i Del 1, særleg Norsk språk før 1850 (embetsmannsspråket) og Ivar Aasen og landsmålet.",
+    forkunnskapar: "Elevane bør ha hatt dei tidlegare øktene i Del 1, særleg Norsk språk før 1850 (embetsmannsspråket) og Ivar Aasen og landsmålet.",
     forebuing: [
       "Test presentasjonen på tavla, særleg tabellen på lysbilete 5 og figuren med dei to linene på lysbilete 15.",
       "Ha ein stad på tavla klar for argumenta frå samtalen på lysbilete 17, så elevane kan bruke dei i drøftinga.",
       "Ha lappar klare til oppsummeringa.",
-      "Sjå til at elevane har tilgang til kurset på eigen maskin.",
+      "Elevane treng berre skriveboka. Alle oppgåvene står på lysbilete 18 til 20.",
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og la elevane velje mellom dei to vegane til eit norsk skriftspråk.</p>", lysbilete: "2 og 3" },
@@ -983,8 +1112,8 @@ Larar.register("historie-striden", {
       { fase: "Samnorsk og foreldreaksjonen", min: 8, gjer: "<p>Forklar samnorskpolitikken, la elevane tenkje seg inn i situasjonen, og fortel om foreldreaksjonen. Snakk om sitatet om identitet.</p>", lysbilete: "9 til 12" },
       { fase: "1981 og oversikta", min: 4, gjer: "<p>Fortel korleis samnorskpolitikken enda, ta spørsmåla og gå gjennom figuren med dei to linene.</p>", lysbilete: "13 til 16" },
       { fase: "Drøfting", min: 5, gjer: "<p>Gruppene finn argument for og mot eitt felles skriftspråk. Skriv dei på tavla.</p>", lysbilete: "17" },
-      { fase: "Eigenarbeid", min: 12, gjer: "<p>Elevane arbeider i modulen og skriv drøftinga til slutt.</p>", lysbilete: "18" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive kva som overraska dei mest.</p>", lysbilete: "19" },
+      { fase: "Eigenarbeid", min: 12, gjer: "<p>Elevane gjer oppgåvene på tavla i skriveboka: fyll inn, set om og svar, og skriv drøftinga til slutt. Gå raskt gjennom fasiten på dei to første før drøftinga.</p>", lysbilete: "18 til 20" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive kva som overraska dei mest.</p>", lysbilete: "21" },
     ],
     misoppfatningar: [
       { feil: "«Samnorsk er eit språk som finst.»", hjelp: "Samnorsk var ein politikk som ville føre bokmål og nynorsk saman. Han vart aldri gjennomført fullt ut og vart avslutta i 1981." },
@@ -1011,9 +1140,9 @@ Larar.register("historie-striden", {
     },
     vurdering: [
       "Spørsmåla på tavla viser om elevane skil mellom jamstilling, samnorsk og dei to linene.",
-      "Drøftinga i modulen viser om eleven kan gi argument for og mot og grunngi eit eige standpunkt sakleg.",
+      "Drøftinga i skriveboka (lysbilete 20) viser om eleven kan gi argument for og mot og grunngi eit eige standpunkt sakleg.",
       "Kjenneteikn på god måloppnåing: eleven forklarar kva samnorsk var og kvifor politikken møtte motstand, samanliknar Aasen og Knudsen presist og skil mellom fakta og meining i drøftinga.",
     ],
-    vidare: "Gå vidare til modulen Nynorsk i dag og den moderne debatten, som tek opp språklova, sidemålsdebatten og nynorsk i media. Samanlikninga av Aasen og Knudsen er òg ei eiga oppgåve i skrivemodulen til slutt i Del 1.",
+    vidare: "Gå vidare til modulen Nynorsk i dag og den moderne debatten, som tek opp språklova, sidemålsdebatten og nynorsk i media. Som frivillig lekse kan elevane lese fagteksten og gjere oppgåvene i elevmodulen Språkstriden og samnorsk, mellom anna para saman og fleirvalsoppgåvene. Samanlikninga av Aasen og Knudsen er òg ei eiga oppgåve i skrivemodulen til slutt i Del 1.",
   },
 });

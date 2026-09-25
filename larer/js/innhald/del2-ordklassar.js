@@ -74,7 +74,7 @@ Larar.register("grammatikk-substantiv", {
           <div class="boks"><h3>Inkjekjønn</h3><p class="stor">-et</p><p class="stor">(inga)</p><p class="stor">-a</p></div>
         </div>`,
       steps: ["<p class=\"midt merk\">Hokjønn: <strong>-a</strong> i bestemt eintal. Inkjekjønn: <strong>-a</strong> i bestemt fleirtal.</p>"],
-      notes: "Dette er lysbiletet elevane bør ta bilete av. Les kolonnane høgt i kor: «en, ar, ane». Dei to a-endingane i det siste steget er dei som oftast blir feil hos bokmålsbrukarar, så gjenta dei.",
+      notes: "Dette er lysbiletet elevane bør skrive av i skriveboka. Les kolonnane høgt i kor: «en, ar, ane». Dei to a-endingane i det siste steget er dei som oftast blir feil hos bokmålsbrukarar, så gjenta dei.",
     },
     {
       type: "sporsmal",
@@ -130,14 +130,14 @@ Larar.register("grammatikk-substantiv", {
       body: `<table>
           <thead><tr><th>Bokmål</th><th>Nynorsk</th></tr></thead>
           <tbody>
-            <tr><td><em class="bm">jenten</em></td><td><em class="nn">jenta</em></td></tr>
-            <tr><td><em class="bm">boken</em></td><td><em class="nn">boka</em></td></tr>
-            <tr><td><em class="bm">husene</em></td><td><em class="nn">husa</em></td></tr>
-            <tr><td><em class="bm">bilene</em></td><td><em class="nn">bilane</em></td></tr>
+            <tr><td><em class="bm">jenten</em></td><td class="steg"><em class="nn">jenta</em></td></tr>
+            <tr><td><em class="bm">boken</em></td><td class="steg"><em class="nn">boka</em></td></tr>
+            <tr><td><em class="bm">husene</em></td><td class="steg"><em class="nn">husa</em></td></tr>
+            <tr><td><em class="bm">bilene</em></td><td class="steg"><em class="nn">bilane</em></td></tr>
           </tbody>
         </table>`,
       steps: ["<p class=\"midt\"><em class=\"nn\">bøkene</em> er likt på begge skriftspråka.</p>"],
-      notes: "Dekk til høgre kolonne og lat elevane gjette nynorskforma før du viser steget. Poenget med <em>bøkene</em> er at elevane skal tenkje på kjønnet, ikkje berre byte ut alle -ene med -a: <em>bok</em> er hokjønn, og hokjønn har -ene i bestemt fleirtal.",
+      notes: "Nynorskformene kjem fram éi og éi. Lat elevane gjette forma før du trykkjer. Poenget med <em>bøkene</em> er at elevane skal tenkje på kjønnet, ikkje berre byte ut alle -ene med -a: <em>bok</em> er hokjønn, og hokjønn har -ene i bestemt fleirtal.",
     },
     {
       type: "drill",
@@ -154,18 +154,37 @@ Larar.register("grammatikk-substantiv", {
       form: "Skriv saman i par",
       tid: 3,
       svar: "<em class=\"nn\">Jenta las boka heile dagen.</em> (Òg rett: <em class=\"nn\">Jenta las boka i heile dag.</em>)",
-      notes: "Denne setninga står òg i modulen. <em>lese</em> er eit sterkt verb: <em>lese, les, las, har lese</em>. Det kjem vi tilbake til i verbmodulen. Be eit par skrive svaret sitt på tavla, og la klassen rette.",
+      notes: "<em>lese</em> er eit sterkt verb: <em>lese, les, las, har lese</em>. Det kjem vi tilbake til i verbmodulen. Be eit par skrive svaret sitt på tavla, og la klassen rette.",
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Les fagteksten og sorter substantiva etter kjønn.</li>
-          <li>Gjer utfyllingsoppgåvene i bestemt eintal og fleirtal.</li>
-          <li>Skriv fem setningar med ord frå alle tre kjønna.</li>
+      title: "Kjønn og bøying",
+      body: `<ol>
+          <li>Skriv med <em class="nn">ein</em>, <em class="nn">ei</em> eller <em class="nn">eit</em>: <em class="nn">stol, klokke, barn, sol, år</em></li>
+          <li>Bestemt eintal: <em class="nn">ein bil, ei bok, eit eple</em></li>
+          <li>Bestemt fleirtal: <em class="nn">gutar, bøker, hus, eple</em></li>
+          <li>Skriv på nynorsk: <em class="bm">jenten, husene, epler, bilene</em></li>
+        </ol>`,
+      form: "Åleine",
+      tid: 6,
+      svar: `<div class="to-kol">
+          <div>1. <em class="nn">ein stol, ei klokke, eit barn, ei sol, eit år</em><br>2. <em class="nn">bilen, boka, eplet</em></div>
+          <div>3. <em class="nn">gutane, bøkene, husa, epla</em><br>4. <em class="nn">jenta, husa, eple, bilane</em></div>
+        </div>`,
+      notes: "Gå rundt og spør: kva kjønn har ordet, og korleis veit du det? Er nokon usikre på kjønnet, kan dei prøve med ein, ei og eit høgt eller spørje sidemannen. Oppgåve 4 har ei felle: <em>epler</em> er ubestemt fleirtal og blir <em>eple</em>, ikkje <em>epla</em>. Vis fasiten etter om lag seks minutt og la elevane rette sjølve.",
+    },
+    {
+      type: "oppgave",
+      title: "Skriv setningar",
+      body: `<p class="stor">Skriv fem setningar med substantiv frå alle tre kjønna.</p>
+        <ul>
+          <li>Minst eitt ord med <em class="nn">ein</em>, eitt med <em class="nn">ei</em> og eitt med <em class="nn">eit</em></li>
+          <li>Bruk både eintal og fleirtal</li>
+          <li>Strek under substantiva</li>
         </ul>`,
-      tid: 11,
-      notes: "Gå rundt og spør: kva kjønn har ordet, og korleis veit du det? Oppmuntre elevane til å slå opp i Nynorskordboka når dei er usikre. Dei som blir tidleg ferdige, kan gå vidare til mengdetreninga Substantiv: kjønn og bøying.",
+      form: "Åleine",
+      tid: 5,
+      notes: "Les over skuldra og peik på eitt substantiv i kvar tekst: kva kjønn har det, og stemmer endinga? Dei som blir tidleg ferdige, kan byte skrivebok med sidemannen og rette kvarandre. Mengdetreninga Substantiv: kjønn og bøying i kurset passar som frivillig lekse.",
     },
     {
       title: "Oppsummering",
@@ -192,6 +211,7 @@ Larar.register("grammatikk-substantiv", {
     forebuing: [
       "Test presentasjonen på tavla, særleg dei tre tavleøvingane på lysbilete 6, 10 og 15.",
       "Ha ordbokene.no opne i ei eiga fane, så du kan slå opp ord saman med klassen.",
+      "Elevane treng berre skrivebok og blyant. Oppgåvene står på lysbilete 17 og 18.",
       "Ha små lappar klare til exit-lappen til slutt.",
     ],
     okt: [
@@ -199,8 +219,8 @@ Larar.register("grammatikk-substantiv", {
       { fase: "Kjønn", min: 7, gjer: "<p>Vis kjønnskorta, snakk om korleis ein finn kjønnet, og køyr tavleøvinga om kjønn.</p>", lysbilete: "4 til 6" },
       { fase: "Bøying", min: 10, gjer: "<p>Gå gjennom tabellen og endingane, ta spørsmålet om <em class=\"nn\">boka</em> og køyr ein tavlerunde med bøying.</p>", lysbilete: "7 til 10" },
       { fase: "Inkjekjønn, omlyd og bokmål", min: 10, gjer: "<p>Vis dei to inkjekjønnsmønstra, hokjønnsorda med vokalskifte og bokmålsfeila. Avslutt med tavleøving og omsetjing i par.</p>", lysbilete: "11 til 16" },
-      { fase: "Eigenarbeid", min: 11, gjer: "<p>Elevane arbeider i modulen. Dei som blir ferdige, går vidare til mengdetreninga.</p>", lysbilete: "17" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive eit hokjønnsord og eit inkjekjønnsord i alle fire formene på ein exit-lapp.</p>", lysbilete: "18" },
+      { fase: "Eigenarbeid", min: 11, gjer: "<p>Elevane bøyer substantiv i skriveboka og rettar sjølve når du viser fasiten. Så skriv dei fem setningar med ord frå alle tre kjønna.</p>", lysbilete: "17 og 18" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive eit hokjønnsord og eit inkjekjønnsord i alle fire formene på ein exit-lapp.</p>", lysbilete: "19" },
     ],
     misoppfatningar: [
       { feil: "«Det heiter <em>jenten</em> og <em>boken</em>.»", hjelp: "Spør kva kjønn ordet har. Hokjønn får alltid <em class=\"nn\">-a</em> i bestemt eintal: <em class=\"nn\">jenta, boka, sola</em>." },
@@ -221,16 +241,16 @@ Larar.register("grammatikk-substantiv", {
         "Start med vanlege ord dei kjenner godt, som <em class=\"nn\">gut, jente, hus</em>.",
       ],
       utfordring: [
-        "Lat elevane finne fem hokjønnsord og fem inkjekjønnsord i ein nynorsktekst frå Del 5 og bøye dei.",
+        "Lat elevane finne fem hokjønnsord og fem inkjekjønnsord i ein nynorsktekst du deler ut, og bøye dei.",
         "Be elevane undersøkje ord med særleg bøying i Nynorskordboka, til dømes <em class=\"nn\">ein fot</em> (<em class=\"nn\">føter</em>) og <em class=\"nn\">ein bror</em> (<em class=\"nn\">brør</em>).",
       ],
     },
     vurdering: [
       "Tavleøvingane viser raskt om klassen har skjønt kjønn og endingar.",
-      "Skriveoppgåva i modulen viser om eleven brukar alle tre kjønna og bøyer rett i eigen tekst.",
+      "Bøyingsoppgåvene på lysbilete 17 viser kven som har fått med seg endingane, og setningane på lysbilete 18 viser om eleven brukar alle tre kjønna og bøyer rett i eigen tekst.",
       "Kjenneteikn på god måloppnåing: eleven bøyer hokjønns- og inkjekjønnsord rett utan hjelp og slår opp kjønnet når han eller ho er usikker.",
     ],
-    vidare: "Følg opp med mengdetreninga Substantiv: kjønn og bøying i Del 2. Adjektivmodulen byggjer vidare på kjønna, sidan adjektivet rettar seg etter kjønnet til substantivet.",
+    vidare: "Følg opp med mengdetreninga Substantiv: kjønn og bøying i Del 2 som frivillig lekse. Elevmodulen har dei same oppgåvene med automatisk retting og kan òg brukast heime. Adjektivmodulen byggjer vidare på kjønna, sidan adjektivet rettar seg etter kjønnet til substantivet.",
   },
 });
 
@@ -270,7 +290,7 @@ Larar.register("grammatikk-verb", {
           <div class="tl-punkt" style="--x: 88%"><b>skal kaste</b><small>framtid: med hjelpeverb</small></div>
         </div>`,
       steps: ["<p class=\"midt\">Perfektum = <em class=\"nn\">har</em> + <strong>perfektum partisipp</strong></p>"],
-      notes: "Hugsereglane: presens er no eller vanlegvis, preteritum er i går, perfektum er «har gjort». I modulen øver elevane på dei tre formene presens, preteritum og perfektum partisipp. Når dei kan dei tre, kan dei lage alle tidene, for preteritum perfektum er berre <em>hadde</em> + den same partisippen.",
+      notes: "Hugsereglane: presens er no eller vanlegvis, preteritum er i går, perfektum er «har gjort». I dag øver elevane på dei tre formene presens, preteritum og perfektum partisipp. Når dei kan dei tre, kan dei lage alle tidene, for preteritum perfektum er berre <em>hadde</em> + den same partisippen.",
     },
     {
       title: "Svake og sterke verb",
@@ -396,14 +416,33 @@ Larar.register("grammatikk-verb", {
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Sorter verba og gjer utfyllingsoppgåvene i presens, preteritum og perfektum.</li>
-          <li>Set om <em class="bm">Vi gikk hjem og spiste middag.</em></li>
-          <li>Skriv ein dag-tekst med minst fem verb i preteritum.</li>
-        </ul>`,
-      tid: 11,
-      notes: "Gå rundt og les dag-tekstane. Når du finn ein feil, peik på verbet og spør: er det svakt eller sterkt? Dei som blir tidleg ferdige, kan gå vidare til mengdetreninga Verb: tider og klassar.",
+      title: "Bøy verba",
+      body: `<p>Skriv <strong>presens, preteritum</strong> og <strong>perfektum</strong>. Set <strong>S</strong> ved dei sterke.</p>
+        <p class="liten">Døme: <em class="nn">hoppe: hoppar, hoppa, har hoppa</em></p>
+        <div class="to-kol">
+          <ol><li><em class="nn">kaste</em></li><li><em class="nn">høyre</em></li><li><em class="nn">bu</em></li></ol>
+          <ol start="4"><li><em class="nn">skrive</em></li><li><em class="nn">gå</em></li><li><em class="nn">ete</em></li></ol>
+        </div>`,
+      form: "Åleine",
+      tid: 6,
+      svar: `<div class="to-kol">
+          <div>1. <em class="nn">kastar, kasta, har kasta</em><br>2. <em class="nn">høyrer, høyrde, har høyrt</em><br>3. <em class="nn">bur, budde, har budd</em></div>
+          <div>4. <em class="nn">skriv, skreiv, har skrive</em> (S)<br>5. <em class="nn">går, gjekk, har gått</em> (S)<br>6. <em class="nn">et, åt, har ete</em> (S)</div>
+        </div>`,
+      notes: "Minn elevane om «i går»-testen når dei skal finne dei sterke verba. Sjå særleg etter <em>kaster</em> i staden for <em>kastar</em>, og <em>har skreiv</em> i staden for <em>har skrive</em>. Vis fasiten etter om lag seks minutt og la elevane rette sjølve.",
+    },
+    {
+      type: "oppgave",
+      title: "Set om og skriv",
+      body: `<ol>
+          <li>Skriv på nynorsk: <em class="bm">Vi gikk hjem og spiste middag.</em></li>
+          <li>Skriv på nynorsk: <em class="bm">Hun sier at hun gjør leksene.</em></li>
+          <li>Skriv om kva du gjorde i går. Bruk minst <strong>fem verb i preteritum</strong>, både svake og sterke.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 5,
+      svar: "1. <em class=\"nn\">Vi gjekk heim og åt middag.</em> (Òg rett: <em class=\"nn\">Me gjekk …</em>)<br>2. <em class=\"nn\">Ho seier at ho gjer leksene.</em>",
+      notes: "Dei to første setningane har verba som skil seg mest frå bokmål: <em>gjekk, åt, seier, gjer</em>. Gå rundt og les dag-tekstane. Når du finn ein feil, peik på verbet og spør: er det svakt eller sterkt? Dag-teksten kan gjerast ferdig som lekse, og mengdetreninga Verb: tider og klassar i kurset passar som frivillig ekstraøving.",
     },
     {
       title: "Oppsummering",
@@ -431,14 +470,15 @@ Larar.register("grammatikk-verb", {
       "Test presentasjonen på tavla, særleg tempuslinja på lysbilete 4 og tavleøvingane.",
       "Førebu ei liste med 20 til 30 vanlege sterke verb som elevane kan få med seg.",
       "Ha kladdelappar eller mini-tavler klare til tavleøvinga utan alternativ på lysbilete 14.",
+      "Elevane treng berre skrivebok og blyant. Oppgåvene står på lysbilete 18 og 19.",
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og lat elevane fortelje kva dei gjorde i går. Skriv verba på tavla.</p>", lysbilete: "2 og 3" },
       { fase: "Tempus, svake og sterke verb", min: 7, gjer: "<p>Vis tempuslinja, skilnaden på ending og vokalskifte, og bruk «i går»-testen på lista frå oppstarten.</p>", lysbilete: "4 til 6" },
       { fase: "Svake verb", min: 10, gjer: "<p>Gå gjennom dei fire klassane med vekt på -ar i presens av a-verb. Ta spørsmålet og to tavleøvingar.</p>", lysbilete: "7 til 12" },
       { fase: "Sterke verb og bokmål", min: 10, gjer: "<p>Les dei sterke verba i kor, køyr tavleøving utan alternativ, ta perfektumsspørsmålet og gå gjennom verba som skil seg mest frå bokmål.</p>", lysbilete: "13 til 17" },
-      { fase: "Eigenarbeid", min: 11, gjer: "<p>Elevane arbeider i modulen og skriv dag-teksten. Dei som blir ferdige, går vidare til mengdetreninga.</p>", lysbilete: "18" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane velje tre sterke verb dei skal lære utanåt.</p>", lysbilete: "19" },
+      { fase: "Eigenarbeid", min: 11, gjer: "<p>Elevane bøyer seks verb i skriveboka og rettar sjølve når du viser fasiten. Så set dei om to setningar og skriv ein kort dag-tekst i preteritum.</p>", lysbilete: "18 og 19" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane velje tre sterke verb dei skal lære utanåt.</p>", lysbilete: "20" },
     ],
     misoppfatningar: [
       { feil: "«Presens heiter <em>kaster</em> på nynorsk òg.»", hjelp: "a-verba har <em class=\"nn\">-ar</em> i presens: <em class=\"nn\">kastar, snakkar, hoppar</em>. Samanlikn med preteritum <em class=\"nn\">kasta</em>: presens har ein ekstra r." },
@@ -459,16 +499,16 @@ Larar.register("grammatikk-verb", {
         "Start med a-verb, som er den største og mest regelrette gruppa.",
       ],
       utfordring: [
-        "Lat elevane finne ti verb i ein nynorsktekst frå Del 5, sortere dei i klassar og bøye dei.",
+        "Lat elevane finne ti verb i ein nynorsktekst du deler ut, sortere dei i klassar og bøye dei.",
         "Be elevane samanlikne sterke verb i nynorsk, bokmål, engelsk og eit anna språk dei kan.",
       ],
     },
     vurdering: [
       "Tavleøvingane viser om klassen skil mellom presens og preteritum og kjenner dei sterke verba.",
-      "Dag-teksten i modulen viser om eleven bruker preteritum rett i eigen tekst.",
+      "Bøyingsoppgåva på lysbilete 18 viser kven som kan formene, og dag-teksten på lysbilete 19 viser om eleven bruker preteritum rett i eigen tekst.",
       "Kjenneteikn på god måloppnåing: eleven bøyer a-verb rett i presens, kan dei vanlegaste sterke verba og rettar verbfeil i eigne tekstar.",
     ],
-    vidare: "Følg opp med mengdetreninga Verb: tider og klassar i Del 2, og la elevane øve på dei sterke verba over fleire veker. Verb kjem att i Typiske feil i Del 4.",
+    vidare: "Følg opp med mengdetreninga Verb: tider og klassar i Del 2 som frivillig lekse, og la elevane øve på dei sterke verba over fleire veker. Verb kjem att i Typiske feil i Del 4.",
   },
 });
 
@@ -559,7 +599,7 @@ Larar.register("grammatikk-pronomen", {
           <div class="form"><span class="etikett">fleirtal</span><span class="ordform">bøkene <b>mine</b></span></div>
         </div>`,
       steps: ["<p class=\"midt\">Eigedomspronomenet rettar seg etter <strong>substantivet</strong>, ikkje etter eigaren.</p>"],
-      notes: "Same mønster gjeld <em>din, di, ditt, dine</em>. Legg merke til at eigedomspronomenet vanlegvis står etter substantivet, og at substantivet då står i bestemt form: <em>boka mi</em>. Hokjønnsforma <em>mi</em> er den som oftast forsvinn hos bokmålsbrukarar: dei skriv <em>boka min</em>. Hugs kjønnet frå substantivmodulen.",
+      notes: "Same mønster gjeld <em>din, di, ditt, dine</em>. Legg merke til at eigedomspronomenet vanlegvis står etter substantivet, og at substantivet då står i bestemt form: <em>boka mi</em>. Hokjønnsforma <em>mi</em> er den som oftast forsvinn hos bokmålsbrukarar: dei skriv <em>boka min</em>. Minn om kjønna frå timen om substantiv.",
     },
     {
       title: "Nokre bøyer seg ikkje",
@@ -627,14 +667,32 @@ Larar.register("grammatikk-pronomen", {
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Para saman bokmål og nynorsk.</li>
-          <li>Set inn rett personleg pronomen og eigedomspronomen.</li>
-          <li>Sorter orda og gjer omsetjinga.</li>
-        </ul>`,
-      tid: 10,
-      notes: "Gå rundt og spør: er pronomenet subjekt eller objekt? Kva kjønn har substantivet? Dei som blir tidleg ferdige, kan gå vidare til mengdetreninga Pronomen, spørjeord og småord.",
+      title: "Rett form av pronomenet",
+      body: `<p>Skriv setninga med rett form av ordet i parentes.</p>
+        <div class="to-kol">
+          <ol><li><em class="nn">Læraren såg ___ .</em> (eg)</li><li><em class="nn">Gi boka til ___ .</em> (ho)</li><li><em class="nn">Vil ___ vere med?</em> (de)</li><li><em class="nn">Eg ringjer ___ i kveld.</em> (de)</li></ol>
+          <ol start="5"><li><em class="nn">boka ___</em> (min)</li><li><em class="nn">huset ___</em> (din)</li><li><em class="nn">bøkene ___</em> (min)</li><li><em class="nn">eplet ___</em> (vår)</li></ol>
+        </div>`,
+      form: "Åleine",
+      tid: 5,
+      svar: "1. <em class=\"nn\">meg</em> &nbsp; 2. <em class=\"nn\">henne</em> &nbsp; 3. <em class=\"nn\">de</em> &nbsp; 4. <em class=\"nn\">dykk</em> &nbsp;·&nbsp; 5. <em class=\"nn\">mi</em> &nbsp; 6. <em class=\"nn\">ditt</em> &nbsp; 7. <em class=\"nn\">mine</em> &nbsp; 8. <em class=\"nn\">vårt</em>",
+      notes: "I oppgåve 1 til 4 må elevane avgjere om pronomenet er subjekt eller objekt. I oppgåve 5 til 8 må dei finne kjønn og tal på substantivet. Gå rundt og spør: gjer personen noko, eller blir noko gjort med han eller ho? Kva kjønn har substantivet?",
+    },
+    {
+      type: "oppgave",
+      title: "Spørsmål på nynorsk",
+      body: `<p>Skriv spørsmålet på nynorsk.</p>
+        <div class="to-kol">
+          <ol><li><em class="bm">Hva heter du?</em></li><li><em class="bm">Hvem er det?</em></li><li><em class="bm">Hvordan går det med dere?</em></li></ol>
+          <ol start="4"><li><em class="bm">Hvor mange er dere?</em></li><li><em class="bm">Hvorfor kom de så sent?</em></li><li>Skriv tre eigne spørsmål til sidemannen.</li></ol>
+        </div>`,
+      form: "Åleine",
+      tid: 5,
+      svar: `<div class="to-kol">
+          <div>1. <em class="nn">Kva heiter du?</em><br>2. <em class="nn">Kven er det?</em><br>3. <em class="nn">Korleis går det med dykk?</em></div>
+          <div>4. <em class="nn">Kor mange er de?</em><br>5. <em class="nn">Kvifor kom dei så seint?</em></div>
+        </div>`,
+      notes: "Oppgåve 3 og 5 har feller: <em>med dere</em> er objekt og blir <em>med dykk</em>, og <em>de</em> i oppgåve 5 er bokmål for <em>dei</em>. Spør: snakkar du til dei, eller om dei? Dei som blir ferdige, kan stille sidemannen dei tre spørsmåla sine og få svar på nynorsk. Mengdetreninga Pronomen, spørjeord og småord i kurset passar som frivillig lekse.",
     },
     {
       title: "Oppsummering",
@@ -661,15 +719,15 @@ Larar.register("grammatikk-pronomen", {
     forebuing: [
       "Test presentasjonen på tavla, særleg tavleøvingane på lysbilete 8, 14 og 15.",
       "Tenk gjennom korleis du forklarer skilnaden på å snakke til nokon og om nokon, som er nøkkelen til <em class=\"nn\">de</em> og <em class=\"nn\">dei</em>.",
-      "Sjå til at elevane har tilgang til kurset på eigen maskin.",
+      "Elevane treng berre skrivebok og blyant. Oppgåvene står på lysbilete 17 og 18.",
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom måla og lat elevane gjette nynorskformene av fem bokmålsord.</p>", lysbilete: "2 og 3" },
       { fase: "Personlege pronomen", min: 12, gjer: "<p>Vis pronomenpara og tabellen, forklar fella med <em class=\"nn\">de</em> og <em class=\"nn\">dei</em>, ta spørsmålet og køyr tavleøvinga.</p>", lysbilete: "4 til 8" },
       { fase: "Eigedomspronomen", min: 7, gjer: "<p>Vis korleis eigedomspronomenet rettar seg etter substantivet, og ta spørsmålet om <em class=\"nn\">klokka di</em>.</p>", lysbilete: "9 til 11" },
       { fase: "Spørjeord", min: 9, gjer: "<p>Gå gjennom spørjeorda og <em class=\"nn\">kvar</em>/<em class=\"nn\">kor</em>, køyr to korte tavleøvingar og lat elevane setje om ei setning i par.</p>", lysbilete: "12 til 16" },
-      { fase: "Eigenarbeid", min: 10, gjer: "<p>Elevane arbeider i modulen. Dei som blir ferdige, går vidare til mengdetreninga.</p>", lysbilete: "17" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane stille kvarandre spørsmål med nynorske spørjeord.</p>", lysbilete: "18" },
+      { fase: "Eigenarbeid", min: 10, gjer: "<p>Elevane fyller inn pronomen og set om fem spørsmål i skriveboka. Vis fasiten etter kvart lysbilete og la dei rette sjølve.</p>", lysbilete: "17 og 18" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane stille kvarandre spørsmål med nynorske spørjeord.</p>", lysbilete: "19" },
     ],
     misoppfatningar: [
       { feil: "«<em>de</em> tyder det same som på bokmål.»", hjelp: "Nynorsk <em class=\"nn\">de</em> tyder bokmål <em class=\"bm\">dere</em>. Når du snakkar om andre, skal det vere <em class=\"nn\">dei</em>. Spør: til eller om?" },
@@ -690,16 +748,16 @@ Larar.register("grammatikk-pronomen", {
         "Øv på <em class=\"nn\">de</em> og <em class=\"nn\">dei</em> munnleg med korte setningar før dei skriv.",
       ],
       utfordring: [
-        "Lat elevane øve på <em class=\"nn\">sin, si, sitt, sine</em> og <em class=\"nn\">hans, hennar</em> i mengdetreninga for pronomen og småord.",
+        "Lat elevane skrive setningar med <em class=\"nn\">sin, si, sitt, sine</em> og <em class=\"nn\">hans, hennar</em> og forklare skilnaden.",
         "Be elevane skrive ein kort dialog der alle personlege pronomen er med minst éin gong.",
       ],
     },
     vurdering: [
       "Tavleøvingane viser om klassen skil subjekts- og objektsform og kan spørjeorda.",
-      "Utfyllings- og omsetjingsoppgåvene i modulen viser om eleven bruker pronomena rett i setningar.",
+      "Utfyllings- og omsetjingsoppgåvene på lysbilete 17 og 18 viser om eleven bruker pronomena rett i setningar.",
       "Kjenneteikn på god måloppnåing: eleven bruker <em class=\"nn\">de, dykk</em> og <em class=\"nn\">dei</em> rett, bøyer eigedomspronomen etter kjønn og skriv spørjeorda utan bokmålsformer.",
     ],
-    vidare: "Følg opp med mengdetreninga Pronomen, spørjeord og småord i Del 2, der elevane òg øver på <em class=\"nn\">nokon/noko/nokre</em> og <em class=\"nn\">sin/hans</em>.",
+    vidare: "Følg opp med mengdetreninga Pronomen, spørjeord og småord i Del 2 som frivillig lekse, der elevane òg øver på <em class=\"nn\">nokon/noko/nokre</em> og <em class=\"nn\">sin/hans</em>.",
   },
 });
 
@@ -826,7 +884,7 @@ Larar.register("grammatikk-adjektiv", {
           </tbody>
         </table>`,
       steps: ["<p class=\"midt\">Adjektiv på <strong>-eg, -ig</strong> og <strong>-isk</strong> får ikkje -t.</p>"],
-      notes: "Mange skriv <em>vanlegt</em> og <em>praktiskt</em>, men dei orda får ingen -t. Adjektiv som endar på trykksterk vokal, får dobbel t: <em>nytt, blått</em>. <em>liten</em> er heilt uregelrett: <em>ein liten gut, ei lita jente, eit lite hus, små hus, den vesle guten</em>. Dette er ekstra stoff utover modulen, så ta det etter kor langt klassen har kome.",
+      notes: "Mange skriv <em>vanlegt</em> og <em>praktiskt</em>, men dei orda får ingen -t. Adjektiv som endar på trykksterk vokal, får dobbel t: <em>nytt, blått</em>. <em>liten</em> er heilt uregelrett: <em>ein liten gut, ei lita jente, eit lite hus, små hus, den vesle guten</em>. Dette er ekstra stoff, så ta det etter kor langt klassen har kome.",
     },
     {
       title: "Gradbøying",
@@ -858,18 +916,33 @@ Larar.register("grammatikk-adjektiv", {
       form: "Skriv saman i par",
       tid: 3,
       svar: "Til dømes: <em class=\"nn\">Tavla er kvit. Golvet er reint. Stolane er harde.</em>",
-      notes: "Døma er valde så elevane får eitt hokjønnsord, eitt inkjekjønnsord og eitt fleirtalsord. Lat nokre par lese opp, og be klassen lytte etter endingane. Denne oppgåva er ei god oppvarming til skriveoppgåva i modulen.",
+      notes: "Døma er valde så elevane får eitt hokjønnsord, eitt inkjekjønnsord og eitt fleirtalsord. Lat nokre par lese opp, og be klassen lytte etter endingane. Denne oppgåva er ei god oppvarming til skildringa på lysbilete 18.",
     },
     {
       type: "oppgave",
-      title: "No arbeider de sjølve",
-      body: `<ul>
-          <li>Set <em class="nn">fin</em> og <em class="nn">stor</em> i rett form.</li>
-          <li>Para saman gradbøyingane.</li>
-          <li>Skildre eit rom eller ein stad med minst seks adjektiv.</li>
+      title: "Bøy adjektivet",
+      body: `<p>Skriv med adjektivet i rett form.</p>
+        <div class="to-kol">
+          <ol><li><em class="nn">eit ___ hus</em> (fin)</li><li><em class="nn">den ___ jenta</em> (fin)</li><li><em class="nn">Bilane er ___ .</em> (fin)</li><li><em class="nn">Huset er ___ .</em> (stor)</li></ol>
+          <ol start="5"><li><em class="nn">ei ___ klokke</em> (stor)</li><li><em class="nn">mange ___ tre</em> (stor)</li><li><em class="nn">fin, ___ , finast</em></li><li><em class="nn">god, betre, ___</em></li></ol>
+        </div>`,
+      form: "Åleine",
+      tid: 5,
+      svar: "1. <em class=\"nn\">fint</em> &nbsp; 2. <em class=\"nn\">fine</em> &nbsp; 3. <em class=\"nn\">fine</em> &nbsp; 4. <em class=\"nn\">stort</em> &nbsp; 5. <em class=\"nn\">stor</em> &nbsp; 6. <em class=\"nn\">store</em> &nbsp; 7. <em class=\"nn\">finare</em> &nbsp; 8. <em class=\"nn\">best</em>",
+      notes: "Be elevane finne kjønn og tal på substantivet før dei skriv. Oppgåve 4 er den vanskelegaste: <em>huset</em> er inkjekjønn, så det blir <em>stort</em>, sjølv om adjektivet står etter <em>er</em>. Sjå etter <em>finere</em> i oppgåve 7. Vis fasiten etter om lag fem minutt og la elevane rette sjølve.",
+    },
+    {
+      type: "oppgave",
+      title: "Skildre ein stad",
+      body: `<p class="stor">Skildre eit rom eller ein stad du kjenner godt.</p>
+        <ul>
+          <li>Bruk minst <strong>seks adjektiv</strong></li>
+          <li>Ta med ord med <em class="nn">ein</em>, <em class="nn">ei</em> og <em class="nn">eit</em></li>
+          <li>Minst to gonger etter <em class="nn">er</em>: <em class="nn">Huset er stort.</em></li>
         </ul>`,
-      tid: 10,
-      notes: "Gå rundt og les skildringane. Peik på eit adjektiv og spør: kva substantiv høyrer det til, og kva kjønn har det? Dei som blir tidleg ferdige, kan gå vidare til mengdetreninga Adjektiv: samsvar og gradbøying.",
+      form: "Åleine",
+      tid: 5,
+      notes: "Gå rundt og les skildringane. Peik på eit adjektiv og spør: kva substantiv høyrer det til, og kva kjønn har det? Dei som blir tidleg ferdige, kan byte skrivebok med sidemannen og sjekke adjektiva til kvarandre. Mengdetreninga Adjektiv: samsvar og gradbøying i kurset passar som frivillig lekse.",
     },
     {
       title: "Oppsummering",
@@ -896,6 +969,7 @@ Larar.register("grammatikk-adjektiv", {
     forebuing: [
       "Test presentasjonen på tavla, særleg figuren på lysbilete 4 og tavleøvingane.",
       "Ha kladdelappar eller mini-tavler klare til tavleøvinga utan alternativ på lysbilete 12.",
+      "Elevane treng berre skrivebok og blyant. Oppgåvene står på lysbilete 17 og 18.",
       "Ha små lappar klare til exit-lappen til slutt.",
     ],
     okt: [
@@ -903,8 +977,8 @@ Larar.register("grammatikk-adjektiv", {
       { fase: "Ubestemt form", min: 9, gjer: "<p>Vis figuren og tabellen, ta spørsmålet om <em class=\"nn\">eit stort tre</em> og køyr tavleøvinga i inkjekjønn.</p>", lysbilete: "4 til 7" },
       { fase: "Bestemt form og predikativ", min: 10, gjer: "<p>Gå gjennom bestemt form og samsvar etter <em class=\"nn\">er</em>, med spørsmål og to tavleøvingar.</p>", lysbilete: "8 til 12" },
       { fase: "Unntak og gradbøying", min: 9, gjer: "<p>Vis adjektiva som skil seg ut, gå gjennom gradbøyinga med tavleøving og lat elevane skildre klasserommet i par.</p>", lysbilete: "13 til 16" },
-      { fase: "Eigenarbeid", min: 10, gjer: "<p>Elevane arbeider i modulen. Dei som blir ferdige, går vidare til mengdetreninga.</p>", lysbilete: "17" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive éi setning med inkjekjønn etter <em class=\"nn\">er</em> på ein exit-lapp.</p>", lysbilete: "18" },
+      { fase: "Eigenarbeid", min: 10, gjer: "<p>Elevane bøyer adjektiv i skriveboka og rettar sjølve når du viser fasiten. Så skildrar dei eit rom eller ein stad med minst seks adjektiv.</p>", lysbilete: "17 og 18" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive éi setning med inkjekjønn etter <em class=\"nn\">er</em> på ein exit-lapp.</p>", lysbilete: "19" },
     ],
     misoppfatningar: [
       { feil: "«<em>Huset er stor</em> er rett, for <em>stor</em> er grunnforma.»", hjelp: "Adjektivet etter <em class=\"nn\">er</em> bøyer seg etter subjektet. Tenk deg adjektivet framfor substantivet: <em class=\"nn\">eit stort hus</em> gir <em class=\"nn\">huset er stort</em>." },
@@ -925,15 +999,15 @@ Larar.register("grammatikk-adjektiv", {
         "Bruk dei same få adjektiva, som <em class=\"nn\">fin</em> og <em class=\"nn\">stor</em>, til mønsteret sit.",
       ],
       utfordring: [
-        "Lat elevane finne adjektiv i ein nynorsktekst frå Del 5 og forklare forma på kvart av dei.",
+        "Lat elevane finne adjektiv i ein nynorsktekst du deler ut, og forklare forma på kvart av dei.",
         "Be elevane undersøkje bøyinga av <em class=\"nn\">liten</em> og <em class=\"nn\">annan</em> i Nynorskordboka og lage ein tabell.",
       ],
     },
     vurdering: [
       "Tavleøvingane viser om klassen meistrar inkjekjønn, fleirtal, predikativ og gradbøying.",
-      "Skildringa i modulen viser om eleven får samsvar mellom adjektiv og substantiv i eigen tekst.",
+      "Skildringa på lysbilete 18 viser om eleven får samsvar mellom adjektiv og substantiv i eigen tekst.",
       "Kjenneteikn på god måloppnåing: eleven bøyer adjektiv rett både framfor substantivet og etter <em class=\"nn\">er</em>, og gradbøyer utan bokmålsendingar.",
     ],
-    vidare: "Følg opp med mengdetreninga Adjektiv: samsvar og gradbøying i Del 2. Samsvar i predikativ kjem att i setningslæra og under Typiske feil i Del 4.",
+    vidare: "Følg opp med mengdetreninga Adjektiv: samsvar og gradbøying i Del 2 som frivillig lekse. Samsvar i predikativ kjem att i setningslæra og under Typiske feil i Del 4.",
   },
 });

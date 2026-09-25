@@ -13,7 +13,7 @@ Larar.register("trening-substantiv", {
         <li>ubestemt og bestemt fleirtal</li>
         <li>hokjønn og inkjekjønn, der feila skjer</li>
       </ul>`,
-      notes: "Fortel at økta er bygd som ei treningsøkt: kort oppvarming, mange repetisjonar i fellesskap og så eigentrening i modulen. Elevane treng ein lapp, eit ark eller ei mini-tavle til dei skriftlege rundane.",
+      notes: "Fortel at økta er bygd som ei treningsøkt: kort oppvarming, mange repetisjonar i fellesskap og så eigentrening med oppgåver på tavla. Elevane treng skrivebok, og gjerne ei mini-tavle eller eit ark til dei skriftlege rundane.",
     },
     {
       type: "diskuter",
@@ -122,14 +122,46 @@ Larar.register("trening-substantiv", {
     },
     {
       type: "oppgave",
-      title: "No trenar de sjølve",
-      body: `<ul>
-          <li>Opne <strong>Substantiv: kjønn og bøying</strong> under Mengdetrening.</li>
-          <li>Start med hokjønn og inkjekjønn i fleirtal.</li>
-          <li>Øv på feila etter kvar runde. Mål: minst 80 % rett.</li>
-        </ul>`,
-      tid: 19,
-      notes: "Gå rundt og sjå på resultata. Elevar som kjem over 80 % raskt, kan ta den blanda økta og prøve å klare 15 på rad. Elevar som slit, bør halde seg til éin seksjon og ta han fleire gonger.",
+      title: "1. Kjønn og bestemt form",
+      body: `<p>Skriv ordet med <em class="nn">ein, ei</em> eller <em class="nn">eit</em>, og så i bestemt form eintal.<br><span class="liten">Døme: <em class="nn">gut</em> → <em class="nn">ein gut, guten</em></span></p>
+        <div class="to-kol stor">
+          <ol><li>bok</li><li>hus</li><li>skule</li><li>jente</li><li>eple</li></ol>
+          <ol start="6"><li>veke</li><li>hage</li><li>vindauge</li><li>natt</li><li>tre</li></ol>
+        </div>`,
+      form: "Åleine",
+      tid: 5,
+      svar: "1 ei bok, boka · 2 eit hus, huset · 3 ein skule, skulen · 4 ei jente, jenta · 5 eit eple, eplet · 6 ei veke, veka · 7 ein hage, hagen · 8 eit vindauge, vindauget · 9 ei natt, natta · 10 eit tre, treet",
+      notes: "Elevane skriv i skriveboka og rettar sjølve med ein annan farge når fasiten kjem. Be dei setje ring rundt dei orda dei bomma på: det blir ordlista deira til avslutninga. Sjå særleg etter <em class=\"bm\">boken, uken</em> og <em class=\"bm\">natten</em>.",
+    },
+    {
+      type: "oppgave",
+      title: "2. Fleirtal",
+      body: `<p>Skriv ubestemt og bestemt fleirtal: <em class="nn">mange …, alle …</em><br><span class="liten">Døme: <em class="nn">ein gut</em> → <em class="nn">gutar, gutane</em></span></p>
+        <div class="to-kol stor">
+          <ol><li>ein bil</li><li>ei klokke</li><li>eit år</li><li>ei hand</li><li>ein fot</li></ol>
+          <ol start="6"><li>eit brev</li><li>ei øy</li><li>ei tann</li><li>eit bilete</li><li>ein bonde</li></ol>
+        </div>`,
+      form: "Åleine",
+      tid: 6,
+      svar: "1 bilar, bilane · 2 klokker, klokkene · 3 år, åra · 4 hender, hendene · 5 føter, føtene · 6 brev, breva · 7 øyar, øyane · 8 tenner, tennene · 9 bilete, bileta · 10 bønder, bøndene",
+      notes: "Her kjem alle tre mønstera og nokre uregelrette ord. Når fasiten kjem, spør: kva ord har vokalskifte? (<em>hender, føter, tenner, bønder</em>). Og kva hokjønnsord får <em>-ar</em>? (<em>øyar</em>). Inkjekjønnsorda <em>år, brev, bilete</em> har inga ending i ubestemt fleirtal.",
+    },
+    {
+      type: "oppgave",
+      title: "3. Rett substantiva",
+      body: `<p>Substantiva står på bokmål. Skriv setningane rett på nynorsk.</p>
+        <ol>
+          <li>Boken ligg på bordet.</li>
+          <li>Husene i byen er gamle.</li>
+          <li>Klokken er snart tolv.</li>
+          <li>Skolen ligg ved elven.</li>
+          <li>Barna åt eplene.</li>
+          <li>Vi las navnene på brevene.</li>
+        </ol>`,
+      form: "Åleine, så samanlikn med sidemannen",
+      tid: 5,
+      svar: "1 <em class=\"nn\">Boka</em> ligg på bordet. 2 <em class=\"nn\">Husa</em> i byen er gamle. 3 <em class=\"nn\">Klokka</em> er snart tolv. 4 <em class=\"nn\">Skulen</em> ligg ved <em class=\"nn\">elva</em>. 5 Barna åt <em class=\"nn\">epla</em>. 6 Vi las <em class=\"nn\">namna</em> på <em class=\"nn\">breva</em>.",
+      notes: "Oppgåva trenar dei to vanlegaste feila: <em>-en</em> på hokjønnsord og <em>-ene</em> på inkjekjønn i fleirtal. I tillegg er <em>skule</em> og <em>namn</em> ulike ord på dei to skriftspråka. Er det tid til overs, kan elevane skrive tre eigne setningar med hokjønnsord i bestemt form.",
     },
     {
       title: "Oppsummering",
@@ -143,7 +175,7 @@ Larar.register("trening-substantiv", {
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Ei kort treningsøkt der klassen repeterer bøyingsmønstera for substantiv og øver saman på tavla før elevane trenar sjølve i modulen. Tavleøvingane trekkjer ord frå den same ordbanken som modulen, så klassen får nye ord kvar gong. Økta passar som oppvarming før ein skrivetime eller som repetisjon etter modulen Substantiv: kjønn og bøying.</p>",
+    intro: "<p>Ei kort treningsøkt der klassen repeterer bøyingsmønstera for substantiv og øver saman på tavla før elevane løyser oppgåver i skriveboka. Tavleøvingane trekkjer ord frå ordbanken i kurset, så klassen får nye ord kvar gong, og oppgåvelysbileta har fasit som elevane rettar etter. Heile økta kan gjennomførast utan PC. Økta passar som oppvarming før ein skrivetime eller som repetisjon etter modulen Substantiv: kjønn og bøying.</p>",
     mal: [
       "Elevane kan velje rett artikkel (<em class=\"nn\">ein, ei, eit</em>) for vanlege substantiv.",
       "Elevane kan bøye substantiv i alle tre kjønn i bestemt eintal og i fleirtal.",
@@ -155,15 +187,15 @@ Larar.register("trening-substantiv", {
       "Test tavleøvingane på førehand, og legg merke til at knappen «Nye oppgåver» gir nye ord.",
       "Ha mini-tavler, ark eller lappar klare til dei skriftlege rundane.",
       "Bestem korleis du deler klassen i to lag til lysbilete 10.",
-      "Sjå til at elevane har tilgang til kurset på eigen maskin.",
+      "Sjå til at elevane har skrivebok og ein penn i ein annan farge til å rette med.",
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom målet for økta og la elevane rette bokmålssetninga i par.</p>", lysbilete: "2 og 3" },
       { fase: "Kjønn og bestemt form", min: 7, gjer: "<p>Repeter mønstera i kor, ta fingerrunden om kjønn, spørsmålet om <em class=\"nn\">husa</em> og ein skriftleg runde på mini-tavler.</p>", lysbilete: "4 til 7" },
       { fase: "Fleirtal", min: 6, gjer: "<p>Vis dei tre fleirtalsendingane og ta ein skriftleg runde og ein lagkonkurranse.</p>", lysbilete: "8 til 10" },
       { fase: "Hokjønn og inkjekjønn", min: 6, gjer: "<p>Repeter <em class=\"nn\">-a</em> og omlyd, og ta tavlerundane om hokjønn, inkjekjønn og bokmålsord.</p>", lysbilete: "11 til 14" },
-      { fase: "Eigentrening", min: 19, gjer: "<p>Elevane trenar i modulen og øver på feila sine etter kvar runde.</p>", lysbilete: "15" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og samle ordlista med dei orda klassen bomma på.</p>", lysbilete: "16" },
+      { fase: "Eigentrening", min: 19, gjer: "<p>Elevane løyser tre oppgåver i skriveboka: kjønn og bestemt form, fleirtal og retting av bokmålsformer. Vis fasiten etter kvar oppgåve, og la elevane rette sjølve og setje ring rundt orda dei bomma på.</p>", lysbilete: "15 til 17" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og samle ordlista med dei orda klassen bomma på.</p>", lysbilete: "18" },
     ],
     misoppfatningar: [
       { feil: "«Jenten, boken, solen.»", hjelp: "Hokjønnsord får <em class=\"nn\">-a</em> i bestemt eintal på nynorsk. Bruk kjønnskortet: <em class=\"nn\">ei jente, jenta</em>." },
@@ -179,20 +211,20 @@ Larar.register("trening-substantiv", {
     tilpassing: {
       stotte: [
         "Gi elevane kjønnskortet frå lysbilete 4 som huskelapp under eigentreninga.",
-        "La elevane halde seg til éin seksjon om gongen, til dømes bestemt form eintal, før dei går vidare.",
+        "La elevar som skriv seint, gjere berre dei fem første orda i oppgåve 1 og 2.",
         "Bruk fleirvalsrundane (tommel eller fingrar) meir enn dei skriftlege for elevar som skriv seint.",
       ],
       utfordring: [
-        "Utfordre elevane til å klare 15 på rad i den blanda substantivøkta.",
+        "La elevane som blir tidleg ferdige, skrive fem eigne setningar med hokjønnsord og inkjekjønnsord i bestemt fleirtal.",
         "La elevane finne fem uregelrette substantiv i Nynorskordboka og lage ei tavleoppgåve til klassen.",
       ],
     },
     vurdering: [
       "Fingerrunden og mini-tavlene viser raskt kva kjønn og former klassen er usikker på.",
-      "Resultata i modulen blir lagra. Be elevane vise det beste resultatet sitt for kvar seksjon til slutt i timen.",
+      "Skrivebøkene viser kva ord kvar elev bomma på. Be elevane telje feila i kvar oppgåve, eller sjå over eit utval bøker etter timen.",
       "Kjenneteikn på god måloppnåing: eleven bøyer også hokjønns- og inkjekjønnsord rett i eigne tekstar, ikkje berre i øvingane.",
     ],
-    vidare: "Følg opp med mengdetreninga i verb og adjektiv, og bruk blandingsøkta som oppvarming før neste skrivetime. Ordlista frå avslutninga kan hengast opp i klasserommet.",
+    vidare: "Følg opp med treningsøktene i verb og adjektiv, og bruk blandingsøkta som oppvarming før neste skrivetime. Ordlista frå avslutninga kan hengast opp i klasserommet. Mengdetreninga Substantiv: kjønn og bøying i kurset kan elevane bruke på PC som frivillig lekse.",
   },
 });
 
@@ -330,14 +362,52 @@ Larar.register("trening-verb", {
     },
     {
       type: "oppgave",
-      title: "No trenar de sjølve",
-      body: `<ul>
-          <li>Opne <strong>Verb: tider og klassar</strong> under Mengdetrening.</li>
-          <li>Start med den gruppa du bomma mest på i dag.</li>
-          <li>Øv på feila etter kvar runde. Mål: minst 80 % rett.</li>
-        </ul>`,
-      tid: 15,
-      notes: "Gå rundt og spør elevane kva gruppe dei trenar på og kvifor. Dei som når 80 % i fleire seksjonar, kan prøve den blanda verbøkta og klare 15 på rad.",
+      title: "1. Bøy verba",
+      body: `<p>Skriv presens, preteritum og perfektum.<br><span class="liten">Døme: <em class="nn">kaste</em> → <em class="nn">kastar, kasta, har kasta</em></span></p>
+        <div class="to-kol stor">
+          <ol><li>høyre</li><li>spørje</li><li>bu</li><li>skrive</li></ol>
+          <ol start="5"><li>kjøpe</li><li>gå</li><li>seie</li><li>snakke</li></ol>
+        </div>`,
+      form: "Åleine",
+      tid: 6,
+      svar: "1 høyrer, høyrde, har høyrt · 2 spør, spurde, har spurt · 3 bur, budde, har budd · 4 skriv, skreiv, har skrive · 5 kjøper, kjøpte, har kjøpt · 6 går, gjekk, har gått · 7 seier, sa, har sagt · 8 snakkar, snakka, har snakka",
+      notes: "Eitt verb frå kvar gruppe, pluss eitt uregelrett og eitt ekstra a-verb. Når fasiten kjem, spør: kva gruppe høyrer kvart verb til? Sjå etter <em class=\"bm\">spurte</em>, <em class=\"bm\">skriver</em> og <em class=\"bm\">snakket</em>.",
+    },
+    {
+      type: "oppgave",
+      title: "2. I går …",
+      body: `<p>Skriv verbet i preteritum.</p>
+        <ol>
+          <li>I går ___ eg ei heil bok. (lese)</li>
+          <li>Ho ___ ballen over gjerdet. (kaste)</li>
+          <li>Han ___ eit brev til bestemor. (skrive)</li>
+          <li>Dei ___ i Bergen i fem år. (bu)</li>
+          <li>Kven ___ den siste kaka? (ete)</li>
+          <li>Vi ___ heim etter skulen. (gå)</li>
+          <li>Guten ___ på isen. (falle)</li>
+          <li>Eg ___ ikkje svaret. (vite)</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 5,
+      svar: "1 las · 2 kasta · 3 skreiv · 4 budde · 5 åt · 6 gjekk · 7 fall · 8 visste",
+      notes: "Mange av desse er sterke verb. Når fasiten kjem, lat elevane lese setningane høgt: <em>las, skreiv, åt, gjekk, fall</em> skal høyrast naturlege ut. <em class=\"bm\">falt</em> og <em class=\"bm\">gikk</em> er bokmål.",
+    },
+    {
+      type: "oppgave",
+      title: "3. Rett verba",
+      body: `<p>Verba står på bokmål. Skriv setningane rett på nynorsk.</p>
+        <ol>
+          <li>Ho skriver brev kvar veke.</li>
+          <li>Eg finner ikkje nøklane.</li>
+          <li>Han kommer heim klokka fem.</li>
+          <li>Vi snakker nynorsk i timen.</li>
+          <li>Eg kastet ballen i går.</li>
+          <li>Han har skrevet ei lang bok.</li>
+        </ol>`,
+      form: "Åleine, så samanlikn med sidemannen",
+      tid: 4,
+      svar: "1 <em class=\"nn\">skriv</em> · 2 <em class=\"nn\">finn</em> · 3 <em class=\"nn\">kjem</em> · 4 <em class=\"nn\">snakkar</em> · 5 <em class=\"nn\">kasta</em> · 6 <em class=\"nn\">har skrive</em>",
+      notes: "Dei fire første er presens. Minn om regelen: sterke verb får inga ending i presens, a-verb får <em>-ar</em>. Elevar som blir tidleg ferdige, kan skrive heile rekkja (infinitiv, presens, preteritum, perfektum) for kvart verb.",
     },
     {
       title: "Oppsummering",
@@ -351,7 +421,7 @@ Larar.register("trening-verb", {
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Ei treningsøkt der klassen repeterer dei fem verbgruppene på nynorsk og øver gruppe for gruppe på tavla før elevane trenar sjølve i modulen. Verb er det området der elevane gjer flest feil på sidemål, og der mengdetrening gir mest att. Tavleøvingane trekkjer verb frå den same ordbanken som modulen, så økta kan gjerast fleire gonger med nye verb.</p>",
+    intro: "<p>Ei treningsøkt der klassen repeterer dei fem verbgruppene på nynorsk og øver gruppe for gruppe på tavla før elevane løyser oppgåver i skriveboka. Verb er det området der elevane gjer flest feil på sidemål, og der mengdetrening gir mest att. Tavleøvingane trekkjer verb frå ordbanken i kurset, så økta kan gjerast fleire gonger med nye verb. Heile økta kan gjennomførast utan PC.</p>",
     mal: [
       "Elevane kan avgjere om eit verb er a-verb, e-verb, j-verb, kortverb eller sterkt verb.",
       "Elevane kan bøye svake verb i presens, preteritum og perfektum utan bokmålsendingar.",
@@ -362,15 +432,15 @@ Larar.register("trening-verb", {
     forebuing: [
       "Test tavleøvingane på førehand. Knappen «Nye oppgåver» gir nye verb.",
       "Ha mini-tavler, ark eller lappar klare, og bestem korleis du deler klassen i to lag til lysbilete 12.",
-      "Sjå til at elevane har tilgang til kurset på eigen maskin.",
+      "Sjå til at elevane har skrivebok og ein penn i ein annan farge til å rette med.",
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: "<p>Gå gjennom planen og la elevane rette bokmålssetninga i par.</p>", lysbilete: "2 og 3" },
       { fase: "Repetisjon av gruppene", min: 5, gjer: "<p>Les tabellen i kor, vis knepet med preteritum og ta ein fingerrunde om verbklasse.</p>", lysbilete: "4 til 6" },
       { fase: "Svake verb", min: 7, gjer: "<p>Skriftlege rundar med a-verb og e-verb, spørsmålet om <em class=\"nn\">skriv</em> og ein tommelrunde med presens.</p>", lysbilete: "7 til 10" },
       { fase: "Sterke og uregelrette verb", min: 9, gjer: "<p>Vis vokalskiftet, køyr lagkonkurransen med sterke verb og ta rundane med små grupper og bokmålsord.</p>", lysbilete: "11 til 15" },
-      { fase: "Eigentrening", min: 16, gjer: "<p>Elevane trenar i modulen, gjerne med den gruppa dei bomma mest på.</p>", lysbilete: "16" },
-      { fase: "Avslutning", min: 4, gjer: "<p>Oppsummer og lat elevane skrive tre verb med heile rekkja på ein lapp.</p>", lysbilete: "17" },
+      { fase: "Eigentrening", min: 16, gjer: "<p>Elevane løyser tre oppgåver i skriveboka: bøy verba, set inn preteritum og rett bokmålsformer. Vis fasiten etter kvar oppgåve, og la elevane rette sjølve.</p>", lysbilete: "16 til 18" },
+      { fase: "Avslutning", min: 4, gjer: "<p>Oppsummer og lat elevane skrive tre verb med heile rekkja på ein lapp.</p>", lysbilete: "19" },
     ],
     misoppfatningar: [
       { feil: "«Ho kastet ballen.»", hjelp: "A-verb får <em class=\"nn\">-a</em> i preteritum og perfektum: <em class=\"nn\">kasta, har kasta</em>. <em class=\"bm\">-et</em> finst ikkje i nynorske verbformer." },
@@ -386,20 +456,20 @@ Larar.register("trening-verb", {
     tilpassing: {
       stotte: [
         "Gi elevane tabellen frå lysbilete 4 som huskelapp under eigentreninga.",
-        "La elevane starte med a-verba, som alle følgjer same mønster, før dei går vidare.",
+        "La elevar som skriv seint, gjere berre dei fire første verba i oppgåve 1 og bruke tabellen som hjelp.",
         "Lag ei eiga liste med dei ti vanlegaste sterke verba som eleven lærer utanåt.",
       ],
       utfordring: [
-        "Utfordre elevane til å klare 15 på rad i den blanda verbøkta.",
+        "La elevane som blir tidleg ferdige, finne fem sterke verb til og skrive heile rekkja for kvart av dei.",
         "La elevane skrive ein kort tekst i preteritum og markere alle verba etter gruppe.",
       ],
     },
     vurdering: [
       "Fingerrunden viser om elevane kan plassere verba i rett gruppe. Mini-tavlene viser kva former som sit.",
-      "Resultata i modulen blir lagra. Sjå særleg på sterke verb i preteritum og presens av svake verb.",
+      "Skrivebøkene viser kva former som sit. Sjå særleg på sterke verb i preteritum (oppgåve 2) og presens (oppgåve 3).",
       "Kjenneteikn på god måloppnåing: eleven bruker rette verbformer i eigne tekstar og kan grunngi forma med verbgruppa.",
     ],
-    vidare: "Følg opp med ein skrivetime der elevane fortel noko i preteritum, og bruk blandingsøkta som oppvarming. Elevar som slit med sterke verb, kan ta seksjonen om sterke verb i modulen fleire gonger.",
+    vidare: "Følg opp med ein skrivetime der elevane fortel noko i preteritum, og bruk blandingsøkta som oppvarming. Elevar som slit med sterke verb, kan lære ti verb utanåt til neste gong. Mengdetreninga Verb: tider og klassar i kurset kan elevane bruke på PC som frivillig lekse.",
   },
 });
 
@@ -511,14 +581,52 @@ Larar.register("trening-adjektiv", {
     },
     {
       type: "oppgave",
-      title: "No trenar de sjølve",
-      body: `<ul>
-          <li>Opne <strong>Adjektiv: samsvar og gradbøying</strong> under Mengdetrening.</li>
-          <li>Start med inkjekjønn, så komparativ og superlativ.</li>
-          <li>Mål: minst 80 % rett i den blanda økta.</li>
-        </ul>`,
-      tid: 23,
-      notes: "Modulen er kort, så dei fleste rekk alle seksjonane. Elevar som blir tidleg ferdige, kan ta predikativ-seksjonen i mengdetreninga i setningslære, der adjektivet skal bøyast etter subjektet.",
+      title: "1. Inkjekjønn",
+      body: `<p>Skriv frasen med adjektivet i rett form.</p>
+        <div class="to-kol stor">
+          <ol><li>eit (stor) hus</li><li>eit (vanleg) problem</li><li>eit (ny) bilete</li><li>eit (open) vindauge</li><li>eit (snill) barn</li></ol>
+          <ol start="6"><li>eit (lett) spørsmål</li><li>eit (raud) eple</li><li>eit (viktig) val</li><li>eit (gammal) fjell</li><li>eit (liten) egg</li></ol>
+        </div>`,
+      form: "Åleine",
+      tid: 5,
+      svar: "1 stort · 2 vanleg · 3 nytt · 4 ope · 5 snilt · 6 lett · 7 raudt · 8 viktig · 9 gammalt · 10 lite",
+      notes: "Nesten alle radene i unntakstabellen er med. Når fasiten kjem, spør for kvart unntak: kva rad i tabellen høyrer det til? Sjå særleg etter <em class=\"bm\">vanlegt</em>, <em class=\"bm\">viktigt</em> og <em class=\"bm\">opent</em>.",
+    },
+    {
+      type: "oppgave",
+      title: "2. Fleirtal og bestemt form",
+      body: `<p>Skriv frasen med adjektivet i rett form.</p>
+        <div class="to-kol stor">
+          <ol><li>mange (fin) bilar</li><li>den (stor) båten</li><li>dei (gammal) husa</li><li>to (liten) kattar</li><li>det (open) vindauget</li></ol>
+          <ol start="6"><li>(vakker) fjell</li><li>den (vanleg) feilen</li><li>dei (trøytt) elevane</li><li>(sikker) svar</li><li>det (kvit) huset</li></ol>
+        </div>`,
+      form: "Åleine",
+      tid: 5,
+      svar: "1 fine · 2 store · 3 gamle · 4 små · 5 opne · 6 vakre · 7 vanlege · 8 trøytte · 9 sikre · 10 kvite",
+      notes: "Alle får <em>-e</em>, men nokre mistar ein vokal: <em>gamle, opne, vakre, sikre</em>. Og <em>liten</em> blir <em>små</em>. Minn om at bestemt form og fleirtal har same adjektivform.",
+    },
+    {
+      type: "oppgave",
+      title: "3. Gradbøying",
+      body: `<p>Skriv komparativ og superlativ.<br><span class="liten">Døme: <em class="nn">fin</em> → <em class="nn">finare, finast</em></span></p>
+        <div class="to-kol stor">
+          <ol><li>varm</li><li>stor</li><li>god</li><li>vanleg</li><li>gammal</li></ol>
+          <ol start="6"><li>vakker</li><li>liten</li><li>rask</li><li>open</li><li>ung</li></ol>
+        </div>`,
+      form: "Åleine",
+      tid: 5,
+      svar: "1 varmare, varmast · 2 større, størst · 3 betre, best · 4 vanlegare, vanlegast · 5 eldre, eldst · 6 vakrare, vakrast · 7 mindre, minst · 8 raskare, raskast · 9 opnare, opnast · 10 yngre, yngst",
+      notes: "Sjå etter <em class=\"bm\">-ere</em> og <em class=\"bm\">-est</em>. Dei uregelrette (<em>større, betre, eldre, mindre, yngre</em>) sit ofte allereie, så feila kjem helst på dei regelrette.",
+    },
+    {
+      type: "oppgave",
+      title: "4. Finn og rett feila",
+      body: `<p class="stor">Den sommaren var den varmeste på lenge. Vi budde i eit gammalt og vanlegt hus ved sjøen. Huset var stor, men hagen var liten. Om kvelden var vatnet finere enn om dagen. Det var den fineste ferien eg har hatt.</p>
+        <p>Det er fem feil. Skriv dei rette formene.</p>`,
+      form: "I par",
+      tid: 5,
+      svar: "<em class=\"nn\">varmaste</em> · <em class=\"nn\">vanleg</em> (hus) · <em class=\"nn\">stort</em> (huset var …) · <em class=\"nn\">finare</em> · <em class=\"nn\">finaste</em>",
+      notes: "Para skriv ned feila og rettingane i skriveboka. Merk at <em>hagen var liten</em> er rett: <em>hage</em> er hankjønn. Spør etterpå kva regel kvar feil bryt: gradbøying, <em>-leg</em> utan <em>-t</em>, eller predikativ i inkjekjønn.",
     },
     {
       title: "Oppsummering",
@@ -532,7 +640,7 @@ Larar.register("trening-adjektiv", {
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Ei kort treningsøkt om adjektiv. Klassen repeterer samsvarsbøying og gradbøying og øver saman på tavla før elevane trenar i modulen. Dei vanlegaste feila er <em class=\"bm\">-t</em> på adjektiv som endar på <em class=\"nn\">-leg</em> og <em class=\"nn\">-ig</em>, og bokmålsendingane <em class=\"bm\">-ere</em> og <em class=\"bm\">-est</em>. Økta passar som oppvarming eller som repetisjon etter modulen Adjektiv: samsvarsbøying.</p>",
+    intro: "<p>Ei kort treningsøkt om adjektiv. Klassen repeterer samsvarsbøying og gradbøying og øver saman på tavla før elevane løyser oppgåver i skriveboka, med fasit på tavla. Heile økta kan gjennomførast utan PC. Dei vanlegaste feila er <em class=\"bm\">-t</em> på adjektiv som endar på <em class=\"nn\">-leg</em> og <em class=\"nn\">-ig</em>, og bokmålsendingane <em class=\"bm\">-ere</em> og <em class=\"bm\">-est</em>. Økta passar som oppvarming eller som repetisjon etter modulen Adjektiv: samsvarsbøying.</p>",
     mal: [
       "Elevane kan bøye adjektiv i inkjekjønn, fleirtal og bestemt form, også dei vanlegaste unntaka.",
       "Elevane kan gradbøye adjektiv med <em class=\"nn\">-are</em> og <em class=\"nn\">-ast</em> og kjenner dei vanlegaste uregelrette adjektiva.",
@@ -550,8 +658,8 @@ Larar.register("trening-adjektiv", {
       { fase: "Samsvarsbøying", min: 8, gjer: "<p>Repeter figuren og unntakstabellen, ta ein skriftleg runde med inkjekjønn, spørsmålet om <em class=\"nn\">viktig</em> og ein runde med fleirtal.</p>", lysbilete: "4 til 8" },
       { fase: "Gradbøying", min: 5, gjer: "<p>Vis <em class=\"nn\">-are/-ast</em> og dei uregelrette, og ta rundane med komparativ og superlativ.</p>", lysbilete: "9 til 11" },
       { fase: "Lagkonkurranse", min: 3, gjer: "<p>Blanda runde med lag mot lag.</p>", lysbilete: "12" },
-      { fase: "Eigentrening", min: 23, gjer: "<p>Elevane trenar i modulen.</p>", lysbilete: "13" },
-      { fase: "Avslutning", min: 2, gjer: "<p>Oppsummer og samle inn exit-lappane.</p>", lysbilete: "14" },
+      { fase: "Eigentrening", min: 23, gjer: "<p>Elevane løyser fire oppgåver i skriveboka: inkjekjønn, fleirtal og bestemt form, gradbøying og ein kort tekst med feil. Vis fasiten etter kvar oppgåve, og la elevane rette sjølve.</p>", lysbilete: "13 til 16" },
+      { fase: "Avslutning", min: 2, gjer: "<p>Oppsummer og samle inn exit-lappane.</p>", lysbilete: "17" },
     ],
     misoppfatningar: [
       { feil: "«Eit vanlegt hus», «eit viktigt val».", hjelp: "Adjektiv på <em class=\"nn\">-leg</em> og <em class=\"nn\">-ig</em> får aldri <em class=\"nn\">-t</em>: <em class=\"nn\">eit vanleg hus, eit viktig val</em>." },
@@ -571,16 +679,16 @@ Larar.register("trening-adjektiv", {
         "Start med den vanlege gradbøyinga (<em class=\"nn\">fin, finare, finast</em>) før dei uregelrette.",
       ],
       utfordring: [
-        "Utfordre elevane til å klare 15 på rad i den blanda adjektivøkta.",
+        "La elevane som blir tidleg ferdige med oppgåve 4, skrive ein tilsvarande tekst med fem adjektivfeil til sidemannen.",
         "La elevane skrive ein reklametekst med minst ti adjektiv i ulike former og bytte med sidemannen for retting.",
       ],
     },
     vurdering: [
-      "Mini-tavlene med inkjekjønn viser raskt om klassen har fått med seg unntaka.",
+      "Mini-tavlene og oppgåve 1 i skriveboka viser raskt om klassen har fått med seg unntaka i inkjekjønn.",
       "Exit-lappen viser om eleven brukar <em class=\"nn\">-ast</em> i superlativ.",
       "Kjenneteikn på god måloppnåing: eleven bøyer adjektiva rett også når dei står etter <em class=\"nn\">er</em> og <em class=\"nn\">blir</em> i eigne tekstar.",
     ],
-    vidare: "Følg opp med predikativ-oppgåvene i mengdetreninga i setningslære, der adjektivet skal bøyast etter subjektet, og med blandingsøkta.",
+    vidare: "Følg opp med treningsøkta i setningslære, der adjektivet som predikativ skal bøyast etter subjektet, og med blandingsøkta. Mengdetreninga Adjektiv: samsvar og gradbøying i kurset kan elevane bruke på PC som frivillig lekse.",
   },
 });
 
@@ -722,14 +830,69 @@ Larar.register("trening-smaord", {
     },
     {
       type: "oppgave",
-      title: "No trenar de sjølve",
-      body: `<ul>
-          <li>Opne <strong>Pronomen, spørjeord og småord</strong> under Mengdetrening.</li>
-          <li>Start med glosene, så setningane.</li>
-          <li>Mål: minst 80 % rett i den blanda økta.</li>
-        </ul>`,
-      tid: 15,
-      notes: "Gå rundt og sjå kva seksjonar elevane slit mest med. Er det mange som bommar på <em>noko/nokon</em> eller <em>sin/hans</em>, samle klassen i to minutt før slutt og ta ein ny tavlerunde.",
+      title: "1. Småord på nynorsk",
+      body: `<p>Skriv ordet på nynorsk.</p>
+        <div class="to-kol stor">
+          <ol><li><em class="bm">ikke</em></li><li><em class="bm">bare</em></li><li><em class="bm">hvordan</em></li><li><em class="bm">noe</em></li><li><em class="bm">fra</em></li></ol>
+          <ol start="6"><li><em class="bm">mye</em></li><li><em class="bm">sammen</em></li><li><em class="bm">hvis</em></li><li><em class="bm">hjemme</em></li><li><em class="bm">hverandre</em></li></ol>
+        </div>`,
+      form: "Åleine",
+      tid: 4,
+      svar: "1 ikkje · 2 berre · 3 korleis · 4 noko · 5 frå · 6 mykje · 7 saman · 8 viss, dersom eller om · 9 heime · 10 kvarandre",
+      notes: "Sjå etter stavefeil som <em>ikje</em>, <em>mykkje</em> og <em>kverandre</em>. Til nr. 8: alle tre formene er rette.",
+    },
+    {
+      type: "oppgave",
+      title: "2. Pronomen",
+      body: `<p>Vel rett ord og skriv heile setninga.</p>
+        <ol>
+          <li>Eg såg ___ i går. (ho / henne)</li>
+          <li>___ kjem i morgon. (ho / henne)</li>
+          <li>Kan ___ hjelpe meg? (de / dykk)</li>
+          <li>Eg skal ringje ___ i kveld. (de / dykk)</li>
+          <li>___ er trøytte etter turen. (dei / de)</li>
+          <li>Ho fortalde ___ alt. (vi / oss)</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 3,
+      svar: "1 henne · 2 Ho · 3 de · 4 dykk · 5 Dei · 6 oss",
+      notes: "Be elevane grunngi når fasiten kjem: er pronomenet subjekt eller objekt? Nr. 5 handlar om andre personar, og då blir det <em>dei</em>. <em>dokker</em> er òg rett i nr. 3 og 4.",
+    },
+    {
+      type: "oppgave",
+      title: "3. Noko, nokon eller nokre?",
+      body: `<p>Skriv setninga med rett ord.</p>
+        <ol>
+          <li>Er det ___ heime?</li>
+          <li>Vil du ha ___ kaffi?</li>
+          <li>Eg har lese ___ bøker i sommar.</li>
+          <li>Eg ser ikkje ___ hus her.</li>
+          <li>Kan ___ hjelpe meg med leksene?</li>
+          <li>Det står ___ elevar utanfor.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 3,
+      svar: "1 nokon · 2 noko · 3 nokre · 4 noko · 5 nokon · 6 nokre",
+      notes: "Bruk spørsmåla frå tabellen: ein person? <em>nokon</em>. Ei mengd eller eit inkjekjønnsord? <em>noko</em>. Fleire? <em>nokre</em>. Nr. 4 er ei felle: <em>hus</em> er inkjekjønn, så det blir <em>noko</em>.",
+    },
+    {
+      type: "oppgave",
+      title: "4. Blanda småord",
+      body: `<p>Vel rett ord og skriv heile setninga.</p>
+        <ol>
+          <li>___ eg var liten, budde vi i Bergen. (då / når)</li>
+          <li>Ring meg ___ du kjem fram. (då / når)</li>
+          <li>___ gammal er du? (kvar / kor)</li>
+          <li>Veit du ___ nøklane er? (kvar / kor)</li>
+          <li>Per tok ___ bok og gjekk. (si / hans)</li>
+          <li>Kari møtte Ola og ___ bror. (sin / hans)</li>
+          <li>Dei hjelpte ___ med leksene. (seg / kvarandre)</li>
+          <li>Eg vil ___ vere med. (òg / og)</li>
+        </ol>`,
+      form: "I par",
+      tid: 4,
+      svar: "1 Då · 2 når · 3 Kor · 4 kvar · 5 si · 6 hans · 7 kvarandre · 8 òg (eller også)",
+      notes: "Para skal kunne seie regelen bak kvart svar. Har du tid, ta to eller tre av setningane i plenum og lat eit par forklare. Er det mange som bommar på <em>sin/hans</em>, gå tilbake til lysbilete 14.",
     },
     {
       title: "Oppsummering",
@@ -743,7 +906,7 @@ Larar.register("trening-smaord", {
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Ei treningsøkt om småorda: spørjeord, pronomen og andre ord som ofte blir ståande på bokmål. Klassen repeterer dei viktigaste reglane og øver i fellesskap, først som gloser og så i setningar med <em class=\"nn\">ho/henne</em>, <em class=\"nn\">de/dykk/dei</em>, <em class=\"nn\">noko/nokon/nokre</em>, <em class=\"nn\">då/når</em>, <em class=\"nn\">kvar/kor</em> og <em class=\"nn\">sin/hans</em>. Småorda står i nesten kvar setning, så det lønner seg å øve dei inn til dei kjem av seg sjølv.</p>",
+    intro: "<p>Ei treningsøkt om småorda: spørjeord, pronomen og andre ord som ofte blir ståande på bokmål. Klassen repeterer dei viktigaste reglane og øver i fellesskap, først som gloser og så i setningar med <em class=\"nn\">ho/henne</em>, <em class=\"nn\">de/dykk/dei</em>, <em class=\"nn\">noko/nokon/nokre</em>, <em class=\"nn\">då/når</em>, <em class=\"nn\">kvar/kor</em> og <em class=\"nn\">sin/hans</em>. Småorda står i nesten kvar setning, så det lønner seg å øve dei inn til dei kjem av seg sjølv. Til slutt løyser elevane oppgåver i skriveboka, med fasit på tavla, så heile økta kan gjennomførast utan PC.</p>",
     mal: [
       "Elevane kan skrive dei vanlegaste spørjeorda og småorda på nynorsk.",
       "Elevane kan velje rett mellom subjekts- og objektsform av pronomena, og mellom <em class=\"nn\">de</em>, <em class=\"nn\">dykk</em> og <em class=\"nn\">dei</em>.",
@@ -762,8 +925,8 @@ Larar.register("trening-smaord", {
       { fase: "Gloser", min: 8, gjer: "<p>Repeter spørjeorda og ta tre rundar: spørjeord i kor, småord på mini-tavle og ord på <em class=\"bm\">-het</em> og <em class=\"bm\">-else</em>.</p>", lysbilete: "4 til 7" },
       { fase: "Pronomen og noko/nokon", min: 7, gjer: "<p>Vis pronomenpara og tabellen for <em class=\"nn\">noko/nokon/nokre</em>, med ein tavlerunde etter kvar.</p>", lysbilete: "8 til 11" },
       { fase: "Då/når, kvar/kor og sin/hans", min: 8, gjer: "<p>Spørsmål om <em class=\"nn\">kor</em>, tavlerunde med då/når og kvar/kor, repetisjon av <em class=\"nn\">sin/hans</em> og lagkonkurranse.</p>", lysbilete: "12 til 15" },
-      { fase: "Eigentrening", min: 15, gjer: "<p>Elevane trenar i modulen, gloser først og så setningar.</p>", lysbilete: "16" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive sin eigen sjekklistelapp med tre småord.</p>", lysbilete: "17" },
+      { fase: "Eigentrening", min: 15, gjer: "<p>Elevane løyser fire oppgåver i skriveboka, gloser først og så setningar. Vis fasiten etter kvar oppgåve, og la elevane rette sjølve.</p>", lysbilete: "16 til 19" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive sin eigen sjekklistelapp med tre småord.</p>", lysbilete: "20" },
     ],
     misoppfatningar: [
       { feil: "«De kom i går» om ein gjeng andre personar.", hjelp: "Nynorsk <em class=\"nn\">de</em> tyder «dere». Om andre personar heiter det <em class=\"nn\">dei</em>, både som subjekt og objekt." },
@@ -780,11 +943,11 @@ Larar.register("trening-smaord", {
     tilpassing: {
       stotte: [
         "Gi elevane ei liste med dei tjue vanlegaste småorda som huskelapp.",
-        "La elevane arbeide med glosene i modulen før dei går vidare til setningane.",
+        "La elevar som skriv seint, skrive berre ordet som manglar i oppgåve 2 til 4, ikkje heile setninga.",
         "Bruk alternativa på tavla (tommel opp og ned) meir enn skriftlege rundar.",
       ],
       utfordring: [
-        "Utfordre elevane til å klare 15 på rad i den blanda småordøkta.",
+        "La elevane som blir tidleg ferdige, lage éi eiga setning til kvar av reglane i oppgåve 4.",
         "La elevane ta ein bokmålstekst på 100 ord og omsetje alle småorda, og telje kor mange det var.",
       ],
     },
@@ -793,7 +956,7 @@ Larar.register("trening-smaord", {
       "Lagkonkurransen med bonuspoeng viser om elevane kan forklare <em class=\"nn\">sin/hans</em> og <em class=\"nn\">seg/kvarandre</em>, ikkje berre gjette.",
       "Kjenneteikn på god måloppnåing: eleven har få eller ingen bokmålssmåord i eigne tekstar og brukar <em class=\"nn\">de/dei</em> og <em class=\"nn\">noko/nokon</em> rett.",
     ],
-    vidare: "Følg opp med ein korrekturrunde på ein eigen tekst der elevane berre ser etter småord, og med blandingsøkta.",
+    vidare: "Følg opp med ein korrekturrunde på ein eigen tekst der elevane berre ser etter småord, og med blandingsøkta. Mengdetreninga Pronomen, spørjeord og småord i kurset kan elevane bruke på PC som frivillig lekse.",
   },
 });
 
@@ -917,14 +1080,67 @@ Larar.register("trening-setning", {
     },
     {
       type: "oppgave",
-      title: "No trenar de sjølve",
-      body: `<ul>
-          <li>Opne <strong>Setningslære: ledd, setningar og ordstilling</strong> under Mengdetrening.</li>
-          <li>Start med verbal og subjekt, så resten.</li>
-          <li>Mål: minst 80 % rett i den blanda økta.</li>
-        </ul>`,
-      tid: 16,
-      notes: "Gå rundt og spør elevane kva spørsmål dei stiller for å finne leddet. Dei som slit, bør halde seg til verbal og subjekt til dei klarer 80 %. Dei andre kan prøve å klare 15 på rad i den blanda økta.",
+      title: "1. Verbal og subjekt",
+      body: `<p>Skriv verbalet og subjektet i kvar setning.</p>
+        <ol>
+          <li>Kari les ei bok.</li>
+          <li>I går kjøpte vi is.</li>
+          <li>Ho har lese boka.</li>
+          <li>No kjem toget.</li>
+          <li>Etter middagen gjekk barna ut.</li>
+          <li>Bestemor til Kari bur i Bergen.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 4,
+      svar: "1 les, Kari · 2 kjøpte, vi · 3 har lese, Ho · 4 kjem, toget · 5 gjekk, barna · 6 bur, Bestemor til Kari",
+      notes: "Minn om rekkjefølgja: verbalet først, så «kven eller kva + verbalet?». I nr. 2, 4 og 5 står subjektet etter verbalet. I nr. 6 er heile <em>Bestemor til Kari</em> subjektet.",
+    },
+    {
+      type: "oppgave",
+      title: "2. Kva ledd er det?",
+      body: `<p>Kva ledd er orda i feit skrift? Vel mellom subjekt, objekt, indirekte objekt, predikativ og adverbial.</p>
+        <ol>
+          <li>Kari gav <strong>guten</strong> ei bok.</li>
+          <li>Mor mi er <strong>lærar</strong>.</li>
+          <li><strong>Hunden</strong> jaga katten.</li>
+          <li>Vi kjøpte is <strong>på stranda</strong>.</li>
+          <li>Læraren viste oss <strong>filmen</strong>.</li>
+          <li>Barna vart <strong>trøytte</strong>.</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 4,
+      svar: "1 indirekte objekt · 2 predikativ · 3 subjekt · 4 adverbial · 5 objekt · 6 predikativ",
+      notes: "Be elevane skrive spørsmålet dei stilte ved sida av svaret, til dømes «til kven gav Kari?» i nr. 1. Då ser du om dei grunngir eller gjettar.",
+    },
+    {
+      type: "oppgave",
+      title: "3. Rett ordstillinga",
+      body: `<p>Skriv setningane med rett ordstilling.</p>
+        <ol>
+          <li>I går han kom heim.</li>
+          <li>Då han kom heim, han åt middag.</li>
+          <li>Dersom det regnar, vi blir inne.</li>
+          <li>Han kom ikkje fordi han ville ikkje.</li>
+          <li>Ho sa at ho kom ikkje.</li>
+          <li>Eg kjenner ein gut som gir aldri opp.</li>
+        </ol>`,
+      form: "Åleine, så samanlikn med sidemannen",
+      tid: 4,
+      svar: "1 I går <strong>kom han</strong> heim. 2 Då han kom heim, <strong>åt han</strong> middag. 3 Dersom det regnar, <strong>blir vi</strong> inne. 4 … fordi han <strong>ikkje ville</strong>. 5 … at ho <strong>ikkje kom</strong>. 6 … som <strong>aldri gir</strong> opp.",
+      notes: "Dei tre første handlar om V2: verbalet på andreplass. Dei tre siste handlar om <em>ikkje</em> og <em>aldri</em> i leddsetningar: framfor verbalet.",
+    },
+    {
+      type: "oppgave",
+      title: "4. Predikativ",
+      body: `<p>Bøy adjektivet etter subjektet.</p>
+        <div class="to-kol stor">
+          <ol><li>Huset er (stor).</li><li>Bilen er (stor).</li><li>Bøkene er (gammal).</li><li>Barna er (glad).</li></ol>
+          <ol start="5"><li>Eplet er (raud).</li><li>Vêret vart (kald).</li><li>Gutane vart (trøytt).</li><li>Suppa er (varm).</li></ol>
+        </div>`,
+      form: "Åleine",
+      tid: 3,
+      svar: "1 stort · 2 stor · 3 gamle · 4 glade · 5 raudt · 6 kaldt · 7 trøytte · 8 varm",
+      notes: "Knepet: set adjektivet framfor subjektet. <em>eit stort hus</em>, altså <em>Huset er stort</em>. Hokjønn og hankjønn i eintal får inga ending: <em>Bilen er stor, Suppa er varm</em>.",
     },
     {
       title: "Oppsummering",
@@ -938,7 +1154,7 @@ Larar.register("trening-setning", {
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Ei treningsøkt i setningslære der klassen repeterer framgangsmåten frå modulen Setningslære og øver i fellesskap på å finne verbal og subjekt, kjenne att ledda, skilje heilsetning og leddsetning, og få ordstillinga rett. Tavleøvingane trekkjer setningar frå den same banken som modulen, så økta kan gjerast fleire gonger.</p>",
+    intro: "<p>Ei treningsøkt i setningslære der klassen repeterer framgangsmåten frå modulen Setningslære og øver i fellesskap på å finne verbal og subjekt, kjenne att ledda, skilje heilsetning og leddsetning, og få ordstillinga rett. Tavleøvingane trekkjer setningar frå oppgåvebanken i kurset, så økta kan gjerast fleire gonger. Til slutt løyser elevane oppgåver i skriveboka, med fasit på tavla, så heile økta kan gjennomførast utan PC.</p>",
     mal: [
       "Elevane kan finne verbalet og subjektet i ei setning, også når subjektet står etter verbalet.",
       "Elevane kan kjenne att dei vanlege setningsledda og grunngi svaret med faste spørsmål.",
@@ -957,8 +1173,8 @@ Larar.register("trening-setning", {
       { fase: "Verbal, subjekt og ledd", min: 9, gjer: "<p>Skriftlege rundar med verbal og subjekt, spørsmålet om subjektet etter verbalet og lagkonkurransen om ledda.</p>", lysbilete: "4 til 7" },
       { fase: "Heilsetning og leddsetning", min: 6, gjer: "<p>Repeter setningsboksane og bindeorda, og ta rundane om heilsetning, leddsetning og bindeord.</p>", lysbilete: "8 til 10" },
       { fase: "Ordstilling og samsvar", min: 8, gjer: "<p>Diskuter feilen med V2, ta rundane om V2 og <em class=\"nn\">ikkje</em>, og ein skriftleg runde med predikativ.</p>", lysbilete: "11 til 14" },
-      { fase: "Eigentrening", min: 16, gjer: "<p>Elevane trenar i modulen.</p>", lysbilete: "15" },
-      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og samle inn exit-lappane.</p>", lysbilete: "16" },
+      { fase: "Eigentrening", min: 16, gjer: "<p>Elevane løyser fire oppgåver i skriveboka: verbal og subjekt, ledd, ordstilling og predikativ. Vis fasiten etter kvar oppgåve, og la elevane rette sjølve.</p>", lysbilete: "15 til 18" },
+      { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og samle inn exit-lappane.</p>", lysbilete: "19" },
     ],
     misoppfatningar: [
       { feil: "«Subjektet er det første ordet i setninga.»", hjelp: "Vis ei setning som byrjar med eit adverbial: <em class=\"nn\">I går kjøpte guten sko.</em> Finn verbalet først og spør «kven kjøpte?»." },
@@ -974,20 +1190,20 @@ Larar.register("trening-setning", {
     tilpassing: {
       stotte: [
         "Gi elevane ei huskelapp med dei fem spørsmåla i rekkjefølgje.",
-        "La elevane berre arbeide med verbal og subjekt i eigentreninga til dei klarer 80 %.",
-        "La elevane markere ledda med fargar på utskrivne setningar.",
+        "La elevar som slit, gjere oppgåve 1 og 4 grundig før dei tek fatt på dei andre.",
+        "La elevane markere ledda med fargar når dei skriv av setningane i skriveboka.",
       ],
       utfordring: [
-        "Utfordre elevane til å klare 15 på rad i den blanda setningsøkta.",
+        "La elevane som blir tidleg ferdige, skrive tre eigne setningar som byrjar med ei leddsetning, med rett ordstilling.",
         "La elevane finne fem setningar i ein eigen tekst som byrjar med noko anna enn subjektet, og sjekke V2.",
       ],
     },
     vurdering: [
-      "Mini-tavlene med verbal og subjekt viser om grunnlaget sit.",
+      "Mini-tavlene og oppgåve 1 i skriveboka viser om grunnlaget med verbal og subjekt sit.",
       "Bonuspoenga i lagkonkurransen viser om elevane kan grunngi ledda, ikkje berre gjette.",
       "Kjenneteikn på god måloppnåing: eleven brukar V2 rett etter innleiande leddsetningar og plasserer <em class=\"nn\">ikkje</em> rett i eigne tekstar.",
     ],
-    vidare: "Følg opp med modulen om setningsbygnad under Typiske feil i Del 4, der elevane brukar setningslæra til å rette tekstar, og med blandingsøkta.",
+    vidare: "Følg opp med modulen om setningsbygnad under Typiske feil i Del 4, der elevane brukar setningslæra til å rette tekstar, og med blandingsøkta. Mengdetreninga Setningslære: ledd, setningar og ordstilling i kurset kan elevane bruke på PC som frivillig lekse.",
   },
 });
 
@@ -1011,7 +1227,7 @@ Larar.register("trening-blanda", {
         <p>Skriv det ned før vi byrjar. Vi ser om du hadde rett til slutt.</p>`,
       form: "Tenk sjølv, så fortel sidemannen",
       tid: 2,
-      notes: "Poenget er at elevane skal bli bevisste på eigne feil. Be dei skrive gjetninga si på ein lapp. I avslutninga samanliknar dei med kva dei faktisk bomma på i tavlerundane og i modulen.",
+      notes: "Poenget er at elevane skal bli bevisste på eigne feil. Be dei skrive gjetninga si på ein lapp. I avslutninga samanliknar dei med kva dei faktisk bomma på i tavlerundane og i oppgåvene i skriveboka.",
     },
     {
       title: "Sjekklista",
@@ -1090,59 +1306,105 @@ Larar.register("trening-blanda", {
     {
       title: "Kva bomma vi på?",
       body: `<table>
-          <thead><tr><th>Bomma du på …</th><th>Tren vidare i …</th></tr></thead>
+          <thead><tr><th>Bomma du på …</th><th>Sjå ekstra godt etter i …</th></tr></thead>
           <tbody>
-            <tr><td>kjønn og fleirtal</td><td>Substantiv: kjønn og bøying</td></tr>
-            <tr><td>verbformer</td><td>Verb: tider og klassar</td></tr>
-            <tr><td><em class="nn">-t</em>, <em class="nn">-are</em>, <em class="nn">-ast</em></td><td>Adjektiv: samsvar og gradbøying</td></tr>
-            <tr><td>småord og pronomen</td><td>Pronomen, spørjeord og småord</td></tr>
-            <tr><td>ledd og ordstilling</td><td>Setningslære</td></tr>
+            <tr><td>kjønn, fleirtal og verbformer</td><td>oppgåve 1</td></tr>
+            <tr><td><em class="nn">-t</em>, <em class="nn">-are</em>, <em class="nn">-ast</em> og småord</td><td>oppgåve 2</td></tr>
+            <tr><td>pronomen, <em class="nn">då/når</em>, <em class="nn">kvar/kor</em></td><td>oppgåve 3</td></tr>
+            <tr><td>ordstilling</td><td>oppgåve 4, din eigen tekst</td></tr>
           </tbody>
         </table>`,
-      notes: "Spør klassen: kva slags oppgåver gjekk dårlegast i dag? Samanlikn med det du noterte i runde 1 og 2. Be kvar elev sjå på lappen frå starten: hadde dei rett i kva feil dei gjer oftast?",
+      notes: "Spør klassen: kva slags oppgåver gjekk dårlegast i dag? Samanlikn med det du noterte i runde 1 og 2. Be kvar elev sjå på lappen frå starten: hadde dei rett i kva feil dei gjer oftast? Tabellen viser kvar i oppgåvene som kjem, dei skal vere ekstra merksame.",
     },
     {
       type: "oppgave",
-      title: "No trenar de sjølve",
-      body: `<ul>
-          <li>Ta ein runde i <strong>Blandingsøkt</strong> under Mengdetrening.</li>
-          <li>Under 80 %? Gå til den modulen som passar til feila dine.</li>
-          <li>Over 80 %? Ta setningsrunden òg.</li>
+      title: "1. Substantiv og verb",
+      body: `<p>Skriv forma.</p>
+        <div class="to-kol">
+          <ol><li>bestemt eintal: <em class="nn">ei jente</em></li><li>bestemt fleirtal: <em class="nn">eit år</em></li><li>ubestemt fleirtal: <em class="nn">ei hand</em></li><li>bestemt fleirtal: <em class="nn">ein gut</em></li><li>bestemt eintal: <em class="nn">ei bok</em></li></ol>
+          <ol start="6"><li>preteritum: <em class="nn">kaste</em></li><li>presens: <em class="nn">skrive</em></li><li>preteritum: <em class="nn">høyre</em></li><li>perfektum: <em class="nn">finne</em></li><li>presens: <em class="nn">kome</em></li></ol>
+        </div>`,
+      form: "Åleine",
+      tid: 5,
+      svar: "1 jenta · 2 åra · 3 hender · 4 gutane · 5 boka · 6 kasta · 7 skriv · 8 høyrde · 9 har funne · 10 kjem",
+      notes: "Elevane rettar sjølve med ein annan farge og tel kor mange dei hadde rett. Dei skriv talet i margen, så dei ser kva del som gjekk dårlegast til slutt.",
+    },
+    {
+      type: "oppgave",
+      title: "2. Adjektiv og småord",
+      body: `<p>Skriv rett form, eller skriv ordet på nynorsk.</p>
+        <div class="to-kol">
+          <ol><li>eit (vanleg) hus</li><li>eit (stor) hus</li><li>komparativ: <em class="nn">fin</em></li><li>superlativ: <em class="nn">gammal</em></li><li>mange (gammal) bøker</li></ol>
+          <ol start="6"><li><em class="bm">ikke</em></li><li><em class="bm">hvordan</em></li><li><em class="bm">bare</em></li><li><em class="bm">fra</em></li><li><em class="bm">hjemme</em></li></ol>
+        </div>`,
+      form: "Åleine",
+      tid: 5,
+      svar: "1 vanleg · 2 stort · 3 finare · 4 eldst · 5 gamle · 6 ikkje · 7 korleis · 8 berre · 9 frå · 10 heime",
+      notes: "Same framgangsmåte: rett med ein annan farge og skriv talet på rette svar i margen.",
+    },
+    {
+      type: "oppgave",
+      title: "3. Set inn rett ord",
+      body: `<p>Skriv setninga med rett ord.</p>
+        <ol>
+          <li>Eg såg ___ i går. (ho / henne)</li>
+          <li>___ eg var liten, budde vi i Bergen. (då / når)</li>
+          <li>___ gammal er du? (kvar / kor)</li>
+          <li>Vil du ha ___ kaffi? (nokon / noko / nokre)</li>
+          <li>Jentene henta ___ jakker. (sine / deira)</li>
+          <li>___ er trøytte etter turen. (dei / de)</li>
+        </ol>`,
+      form: "Åleine",
+      tid: 4,
+      svar: "1 henne · 2 Då · 3 Kor · 4 noko · 5 sine · 6 Dei",
+      notes: "Når fasiten kjem, be elevar som svara rett, seie regelen: objektsform, éin gong i fortida, grad, mengd, eigaren er subjektet, andre personar.",
+    },
+    {
+      type: "oppgave",
+      title: "4. Skriv sjølv",
+      body: `<p class="stor">Skriv fem eller seks setningar om kva du gjorde i helga.</p>
+        <ul>
+          <li>Bruk minst tre verb i preteritum.</li>
+          <li>Bruk eitt adjektiv i inkjekjønn.</li>
+          <li>Byrj éi setning med <em class="nn">Då …</em></li>
+          <li>Les over med sjekklista før du er ferdig.</li>
         </ul>`,
-      tid: 24,
-      notes: "Gå rundt og sjå kva modular elevane vel etter blandingsrunden. Målet er at dei sjølve finn ut kva dei treng å øve meir på. Det er ein god læringsvane å ta med seg.",
+      form: "Åleine, så byt med sidemannen",
+      tid: 6,
+      notes: "Etter fire minutt byter elevane bok med sidemannen og ser etter feil frå sjekklista på lysbilete 4. Bla gjerne tilbake dit. Sjå særleg etter ordstillinga etter <em>Då …</em>: <em>Då eg kom heim, åt eg middag</em>.",
     },
     {
       title: "Til neste gong du skriv",
       steps: [
         "<p class=\"stor\">Skriv ned <strong>éin</strong> feil du vil sjå etter i neste tekst.</p>",
-        "<p class=\"stor\">Ta ein blandingsrunde <strong>før</strong> du skriv, som oppvarming.</p>",
+        "<p class=\"stor\">Les sjekklista <strong>før</strong> du skriv, som oppvarming.</p>",
       ],
       notes: "Exit-lapp: elevane skriv den eine feilen dei vil sjå etter, og leverer lappen i døra. Del lappane ut att før neste skrivetime, så dei har sjekkpunktet sitt klart.",
     },
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Blandingsøkta samlar alt frå mengdetreninga: substantiv, verb, adjektiv, småord og setningar om kvarandre. Presentasjonen er bygd som ein lagkonkurranse i tre rundar med ein kort tekst der elevane skal finne feila. Målet er at kvar elev finn ut kva han eller ho bør trene meir på. Økta passar som oppvarming før ein skrivetime, som repetisjon før ei prøve, eller som ein avslutning på arbeidet med grammatikken i Del 2.</p>",
+    intro: "<p>Blandingsøkta samlar alt frå mengdetreninga: substantiv, verb, adjektiv, småord og setningar om kvarandre. Presentasjonen er bygd som ein lagkonkurranse i tre rundar med ein kort tekst der elevane skal finne feila. Etterpå løyser elevane oppgåver i skriveboka, med fasit på tavla, og skriv ein kort tekst sjølve. Heile økta kan gjennomførast utan PC. Målet er at kvar elev finn ut kva han eller ho bør trene meir på. Økta passar som oppvarming før ein skrivetime, som repetisjon før ei prøve, eller som ein avslutning på arbeidet med grammatikken i Del 2.</p>",
     mal: [
       "Elevane kan bruke rette former av substantiv, verb, adjektiv og småord når oppgåvene kjem om kvarandre.",
       "Elevane kan finne og rette typiske bokmålsfeil og ordstillingsfeil i ein kort tekst.",
       "Elevane kan vurdere kva dei sjølve bør trene meir på.",
     ],
     lareplan: [11, 12],
-    forkunnskapar: "Elevane bør ha arbeidd med dei fleste treningsmodulane i Del 2, eller i alle fall med grammatikkmodulane om substantiv, verb, adjektiv og pronomen.",
+    forkunnskapar: "Elevane bør ha hatt dei fleste treningsøktene i Del 2, eller i alle fall ha arbeidd med grammatikken om substantiv, verb, adjektiv og pronomen.",
     forebuing: [
       "Test tavleøvingane på førehand og prøv knappen «Nye oppgåver».",
       "Bestem laginndelinga og lag ei enkel poengtavle på sida av tavla.",
       "Ha lappar klare til gjetninga i starten og exit-lappen til slutt.",
+      "Sjå til at elevane har skrivebok og ein penn i ein annan farge til å rette med.",
     ],
     okt: [
       { fase: "Oppstart", min: 4, gjer: "<p>Del inn i lag, la elevane gjette kva feil dei sjølve gjer oftast, og gå raskt gjennom sjekklista.</p>", lysbilete: "2 til 4" },
       { fase: "Runde 1 og 2", min: 7, gjer: "<p>Lagkonkurranse med ord og former, spørsmålet med fire setningar og setningsrunden.</p>", lysbilete: "5 til 7" },
       { fase: "Runde 3 og finale", min: 6, gjer: "<p>Laga finn dei seks feila i teksten, og så kjem finalerunden.</p>", lysbilete: "8 og 9" },
       { fase: "Refleksjon", min: 2, gjer: "<p>Klassen ser på kva som gjekk dårlegast, og kvar elev samanliknar med gjetninga si.</p>", lysbilete: "10" },
-      { fase: "Eigentrening", min: 24, gjer: "<p>Elevane tek ein blandingsrunde og går vidare til den modulen som passar feila deira.</p>", lysbilete: "11" },
-      { fase: "Avslutning", min: 2, gjer: "<p>Exit-lapp med éin feil eleven vil sjå etter i neste tekst.</p>", lysbilete: "12" },
+      { fase: "Eigentrening", min: 24, gjer: "<p>Elevane løyser tre korte oppgåver i skriveboka og rettar sjølve etter fasiten. Til slutt skriv dei fem eller seks setningar om helga og byter med sidemannen for å sjå etter feil frå sjekklista.</p>", lysbilete: "11 til 14" },
+      { fase: "Avslutning", min: 2, gjer: "<p>Exit-lapp med éin feil eleven vil sjå etter i neste tekst.</p>", lysbilete: "15" },
     ],
     misoppfatningar: [
       { feil: "«Eg kan reglane, så eg treng ikkje trene.»", hjelp: "Blandingsrunden viser skilnaden på å kunne ein regel og å bruke han når alt kjem om kvarandre. Samanlikn resultatet med gjetninga frå starten." },
@@ -1158,19 +1420,19 @@ Larar.register("trening-blanda", {
     tilpassing: {
       stotte: [
         "Gi elevane sjekklista frå lysbilete 4 som huskelapp.",
-        "La elevane som slit, gå rett til éin treningsmodul i staden for blandingsøkta.",
+        "La elevar som skriv seint, gjere oppgåve 1 til 3 og skrive tre setningar i oppgåve 4.",
         "Sett saman laga slik at sterke og svake elevar er fordelte.",
       ],
       utfordring: [
-        "Utfordre elevane til å klare 20 av 20 i blandingsrunden.",
+        "Utfordre elevane til å skrive teksten i oppgåve 4 utan éin einaste feil, og til å bruke minst tre leddsetningar.",
         "La elevane skrive sin eigen «finn feila»-tekst med seks feil til eit anna lag.",
       ],
     },
     vurdering: [
       "Poengtavla og notata dine frå runde 1 og 2 viser kva område klassen samla sett er svakast på.",
-      "Resultatet frå blandingsrunden i modulen gir eit raskt bilete av kvar enkelt elev.",
-      "Kjenneteikn på god måloppnåing: eleven får over 80 % i blandingsøkta og finn alle seks feila i teksten.",
+      "Talet på rette svar i margen i oppgåve 1 til 3 og teksten i oppgåve 4 gir eit raskt bilete av kvar enkelt elev.",
+      "Kjenneteikn på god måloppnåing: eleven har nesten alt rett i oppgåve 1 til 3, finn alle seks feila i teksten og skriv ein eigen tekst med få feil.",
     ],
-    vidare: "Bruk blandingsøkta som fast oppvarming før skrivetimar. Elevane går vidare til den treningsmodulen som passar feila deira, og til Typiske feil i Del 4.",
+    vidare: "Bruk blandingsøkta som fast oppvarming før skrivetimar. Følg opp med den treningsøkta som passar feila klassen gjorde, og med Typiske feil i Del 4. Blandingsøkta og dei andre mengdetreningane i kurset kan elevane bruke på PC som frivillig lekse.",
   },
 });

@@ -41,15 +41,27 @@ const feil = [], åtvaringar = [];
 const err = (id, msg) => feil.push(`${id}: ${msg}`);
 const warn = (id, msg) => åtvaringar.push(`${id}: ${msg}`);
 
-const TYPAR = new Set(["standard", "sporsmal", "diskuter", "sitat", "bilete", "oppgave", "drill"]);
+const TYPAR = new Set(["standard", "sporsmal", "diskuter", "sitat", "bilete", "oppgave", "drill", "tekst"]);
+const UTSTYR = new Set(["skrivebok", "ordbok", "pc"]);
+
+/* Tavlegjennomgangen skal kunne køyrast åleine: elevane arbeider i skriveboka
+   med det som står på tavla, ikkje i modulane på PC-en. Det elevane ser, og
+   planen for økta, skal difor ikkje sende dei til modulen. PC er berre lov
+   på oppgåvelysbilete som har `utstyr: ["pc"]`. */
+const TIL_MODULEN = /\bmodulen\b|\bmodular\b|elevmodul|\bi kurset\b/i;
+const TIL_PC = /\bpc\b|\bpc-en\b|datamaskin|nettbrett|chromebook/i;
+const synleg = s => [s.title, s.kicker, s.body, s.svar, s.prompt, s.text, s.question, s.explain, s.intro, s.caption, s.kjelde,
+  ...(s.steps || []), ...(s.options || [])].filter(Boolean).join(" ").replace(/<[^>]+>/g, " ");
 const TAGGAR = ["p", "ul", "ol", "li", "div", "strong", "em", "b", "i", "span", "table", "tr", "td", "th", "h3", "blockquote", "a", "small", "figure", "figcaption"];
 
 // Tekstsjekk på alle strengar i eit objekt.
 function sjekkTekst(id, stad, s) {
   if (typeof s !== "string") return;
-  if (s.includes("—")) err(id, `${stad}: tankestrek (—) i teksten`);
+  // `text` på tekst- og sitatlysbilete er ordrette tekstar og sitat, og der skal teiknsetjinga stå som i originalen.
+  const ordrett = /\.slides\[\d+\]\.text$/.test(stad);
+  if (!ordrett && s.includes("—")) err(id, `${stad}: tankestrek (—) i teksten`);
   const utanRekkjer = s.replace(/\d\s*–\s*\d/g, "");
-  if (utanRekkjer.includes("–")) err(id, `${stad}: tankestrek (–) i teksten, bruk kolon, komma eller ny setning`);
+  if (!ordrett && utanRekkjer.includes("–")) err(id, `${stad}: tankestrek (–) i teksten, bruk kolon, komma eller ny setning`);
   for (const t of TAGGAR) {
     const opne = (s.match(new RegExp(`<${t}[\\s>]`, "g")) || []).length;
     const lukka = (s.match(new RegExp(`</${t}>`, "g")) || []).length;
@@ -128,7 +140,7 @@ for (const m of moduler) {
     if (!TYPAR.has(type)) { err(id, `${stad}: ukjend type «${type}»`); return; }
     if (!s.notes) utanNotat++;
     // Det som skal haldast att, skal vere steg i presentasjonen, ikkje noko læraren dekkjer til på tavla.
-    if (/dekk?(je)? (over|til)|dekkjer (over|til)|skjul|gøym (dei|det|kolonn|rad)/i.test(String(s.notes || "").replace(/<[^>]+>/g, "")))
+    if (/\bdekk?(je)? (over|til)\b|\bdekkjer (over|til)\b|\bskjul\b|\bgøym (dei|det|kolonn|rad)/i.test(String(s.notes || "").replace(/<[^>]+>/g, "")))
       err(id, `${stad}: notatet ber læraren dekkje til eller gøyme noko. Bruk steg (steps eller class="steg") i staden`);
     if (type === "standard" && !s.title) err(id, `${stad}: manglar title`);
     if (type === "standard" && !s.body && !(s.steps && s.steps.length)) err(id, `${stad}: manglar body og steps`);
@@ -140,11 +152,19 @@ for (const m of moduler) {
     }
     if (type === "diskuter" && !s.prompt) err(id, `${stad}: diskuter utan prompt`);
     if (type === "sitat" && !s.text) err(id, `${stad}: sitat utan text`);
+    if (type === "tekst" && !s.text) err(id, `${stad}: tekst utan text`);
+    {
+      const t = synleg(s);
+      if (TIL_MODULEN.test(t)) err(id, `${stad}: lysbiletet sender elevane til modulen («${t.match(TIL_MODULEN)[0]}»). Oppgåvene skal stå på tavla`);
+      if (TIL_PC.test(t) && !(type === "oppgave" && (s.utstyr || []).includes("pc"))) err(id, `${stad}: lysbiletet nemner PC, men har ikkje utstyr: ["pc"]`);
+    }
     if (type === "bilete") {
       if (!s.src || !fs.existsSync(path.join(ROT, s.src))) err(id, `${stad}: fann ikkje biletet ${s.src}`);
       if (!s.alt) err(id, `${stad}: biletet manglar alt-tekst`);
     }
     if (type === "oppgave" && !s.title) err(id, `${stad}: oppgåve utan title`);
+    if (type === "oppgave" && !s.body) err(id, `${stad}: oppgåve utan body (oppgåvene skal stå på tavla)`);
+    if (type === "oppgave" && s.utstyr && !(Array.isArray(s.utstyr) && s.utstyr.every(u => UTSTYR.has(u)))) err(id, `${stad}: utstyr må vere ei liste med skrivebok, ordbok og/eller pc`);
     if (type === "drill") {
       if (!s.spec) err(id, `${stad}: drill utan spec`);
       else {
@@ -168,6 +188,7 @@ for (const m of moduler) {
     if (!Array.isArray(g.okt) || g.okt.length < 3) err(id, "guide.okt treng minst 3 fasar");
     else g.okt.forEach((f, i) => {
       if (!f.fase || !f.gjer || !(f.min > 0)) err(id, `guide.okt[${i}] treng fase, min og gjer`);
+      if (TIL_MODULEN.test(String(f.gjer).replace(/<[^>]+>/g, " "))) err(id, `guide.okt[${i}]: fasen sender elevane til modulen. Tavlegjennomgangen skal kunne køyrast utan`);
       if (f.lysbilete) {
         const nr = String(f.lysbilete).match(/\d+/g) || [];
         nr.forEach(n => { if (Number(n) > tal) err(id, `guide.okt[${i}]: lysbilete ${n} finst ikkje (${tal} i alt)`); });
