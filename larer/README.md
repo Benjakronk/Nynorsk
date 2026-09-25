@@ -39,7 +39,7 @@ slutt, i ein grøn boks merkt «Svar»).
 |---|---|---|
 | `standard` (kan sløyfast) | `title`, `body` | vanleg lysbilete |
 | `sporsmal` | `question`, `options` (2 til 5), `correct` (indeks), `explain` | fleirval på tavla. Første trykk viser rett svar og forklaringa |
-| `diskuter` | `prompt`, `form` (t.d. «Snakk med sidemannen»), `tid` (minutt) | samtaleoppgåve, med knapp som startar ei nedteljing |
+| `diskuter` | `prompt`, `form` (t.d. «Snakk med sidemannen»), `tid` (minutt) | samtaleoppgåve, med knapp som startar ei nedteljing. Klokka blir stoppa med same knappen, med klikk på nedteljinga eller med Escape |
 | `sitat` | `text`, `kjelde` | sitat eller tekstutdrag i stor skrift |
 | `bilete` | `src`, `alt`, `caption`, valfritt `body` | bilete frå `bilete/`, med tekst ved sida om `body` er med |
 | `oppgave` | `title`, `body`, `tid`, valfritt `del` | «Elevane arbeider»: går over til arbeid i modulen |

@@ -355,22 +355,63 @@
     document.addEventListener("mousemove", () => { document.body.classList.remove("roleg"); clearTimeout(tidar); tidar = setTimeout(vekk, 2500); });
     tidar = setTimeout(vekk, 2500);
 
-    /* ---------- klokke til samtaleoppgåver ---------- */
+    /* ---------- klokke til samtaleoppgåver ----------
+       Knappen på lysbiletet startar klokka og blir til ein stoppknapp. Klokka kan
+       òg stoppast med eit klikk på sjølve nedteljinga eller med Escape, sjølv om
+       læraren har gått vidare til eit anna lysbilete. Start og stopp blir sende
+       til det andre vindauget, så tavla og talarvindauget viser same klokke. */
     const nedteljing = document.getElementById("nedteljing");
-    let slutt = 0, klokke = null;
-    stage.addEventListener("click", e => {
-      const b = e.target.closest(".lb-klokke-btn");
-      if (!b) return;
-      e.stopPropagation();
-      if (klokke) { clearInterval(klokke); klokke = null; nedteljing.hidden = true; return; }
-      slutt = Date.now() + Number(b.dataset.min) * 60000;
+    nedteljing.title = "Klikk for å stoppe klokka";
+    let slutt = 0, klokke = null, gøymTidar = null;
+    const knappar = () => stage.querySelectorAll(".lb-klokke-btn");
+    function merkKnappar() {
+      knappar().forEach(k => {
+        k.textContent = klokke ? "Stopp klokka" : `Start klokka (${k.dataset.min} min)`;
+        k.classList.toggle("gaar", !!klokke);
+      });
+    }
+    function stoppKlokke(fraAnnan) {
+      clearInterval(klokke); clearTimeout(gøymTidar);
+      klokke = null;
+      nedteljing.hidden = true;
+      nedteljing.classList.remove("ferdig");
+      merkKnappar();
+      if (!fraAnnan) send({ nn: "klokke", id, slutt: 0 });
+    }
+    function startKlokke(nySlutt, fraAnnan) {
+      clearInterval(klokke); clearTimeout(gøymTidar);
+      slutt = nySlutt;
       nedteljing.hidden = false; nedteljing.classList.remove("ferdig");
       const tikk = () => {
         const igjen = Math.max(0, Math.round((slutt - Date.now()) / 1000));
         nedteljing.textContent = `${Math.floor(igjen / 60)}:${String(igjen % 60).padStart(2, "0")}`;
-        if (!igjen) { nedteljing.classList.add("ferdig"); clearInterval(klokke); klokke = null; setTimeout(() => { if (!klokke) nedteljing.hidden = true; }, 8000); }
+        if (!igjen) {
+          // Tida er ute: nedteljinga blinkar ei stund og forsvinn så av seg sjølv.
+          clearInterval(klokke); klokke = null; merkKnappar();
+          nedteljing.classList.add("ferdig");
+          gøymTidar = setTimeout(() => { if (!klokke) nedteljing.hidden = true; }, 8000);
+        }
       };
-      tikk(); klokke = setInterval(tikk, 500);
+      klokke = setInterval(tikk, 500);
+      tikk();
+      merkKnappar();
+      if (!fraAnnan) send({ nn: "klokke", id, slutt });
+    }
+    stage.addEventListener("click", e => {
+      const b = e.target.closest(".lb-klokke-btn");
+      if (!b) return;
+      e.stopPropagation();
+      if (klokke) stoppKlokke();
+      else startKlokke(Date.now() + Number(b.dataset.min) * 60000);
+    });
+    nedteljing.addEventListener("click", e => { e.stopPropagation(); stoppKlokke(); });
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && !nedteljing.hidden) stoppKlokke();
+    });
+    window.addEventListener("message", e => {
+      const d = e.data || {};
+      if (d.nn !== "klokke" || d.id !== id) return;
+      if (d.slutt > Date.now()) startKlokke(d.slutt, true); else stoppKlokke(true);
     });
 
     if (talar) {

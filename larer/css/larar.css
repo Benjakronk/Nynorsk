@@ -133,8 +133,12 @@ body.presentasjon {
   position: absolute; right: 24px; top: 20px;
   font-family: "Inter", system-ui, sans-serif; font-size: 34px; font-weight: 700;
   color: #fff; background: var(--accent); padding: 4px 18px; border-radius: 12px;
-  font-variant-numeric: tabular-nums; pointer-events: none;
+  font-variant-numeric: tabular-nums; cursor: pointer; z-index: 5;
 }
+.nedteljing::after { content: "×"; margin-left: 12px; font-size: 24px; opacity: .7; vertical-align: 3px; }
+.nedteljing:hover::after { opacity: 1; }
+.lb-klokke-btn.gaar { background: var(--warm); border-color: var(--warm); color: #fff; }
+.lb-klokke-btn.gaar:hover { background: var(--warm); opacity: .9; }
 .nedteljing.ferdig { background: var(--warm); animation: blink 1s ease-in-out 4; }
 @keyframes blink { 50% { opacity: .35; } }
 
