@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="nn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Blekkrannet · Nynorskkurs</title>
+<meta name="description" content="Eit lite spel om Ivar Aasen: gå ruta hans over Noreg, fang dialektorda att frå blekklatten, og slå Sildesalaten og Blekklatten med nynorsken din." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=aasen1" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+<link rel="manifest" href="manifest.webmanifest" />
+<meta name="theme-color" content="#1f5d4c" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/aasen-reise.css" />
+<link rel="stylesheet" href="css/spel.css" />
+</head>
+<body class="reise-side spel-side">
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand">
+      <img class="brand-mark" src="ivar-aasen.png" width="32" height="32" alt="" />
+      <span class="brand-text">Nynorskkurs · ungdomsskulen</span>
+    </a>
+  </div>
+  <nav class="tabs" aria-label="Delar av kurset">
+    <div class="tabs-inner">
+      <a href="index.html" data-tab="oversikt">Oversikt</a>
+      <a href="index.html#del-1" data-tab="del-1"><span class="tab-no">Del 1</span> Språkhistorie</a>
+      <a href="index.html#del-2" data-tab="del-2"><span class="tab-no">Del 2</span> Grammatikk</a>
+      <a href="index.html#del-3" data-tab="del-3"><span class="tab-no">Del 3</span> Ordbok</a>
+      <a href="index.html#del-4" data-tab="del-4"><span class="tab-no">Del 4</span> Skriving</a>
+      <a href="index.html#del-5" data-tab="del-5"><span class="tab-no">Del 5</span> Lesing</a>
+      <a href="spel.html" data-tab="spel" class="active" aria-current="page">Spel</a>
+      <a href="om.html" data-tab="om">Om kurset</a>
+    </div>
+  </nav>
+</header>
+
+<main class="reise-main spel-main">
+  <section id="kart" class="reise-kart" aria-label="Verdskartet: ruta til Ivar Aasen over Noreg">
+    <canvas id="kart-lerret"></canvas>
+    <div id="etikettar" class="etikettar spel-etikettar"></div>
+    <div id="kart-lastar" class="kart-lastar"><p>Byggjer kartet …</p></div>
+    <div class="kart-verktoy">
+      <button id="landet-btn" type="button" class="ghost">Heile ruta</button>
+    </div>
+    <p class="kart-hint">Klikk på eit stopp for å velje nivå. Dra for å snu kartet, rull for å zoome.</p>
+  </section>
+
+  <aside class="reise-panel spel-panel">
+    <div class="spel-topp">
+      <p class="spel-logo">Blekkrannet</p>
+      <div class="spel-knappar">
+        <button id="ordbok-btn" type="button" class="btn secondary small">Ordboka <span id="ordbok-tal" class="spel-tal"></span></button>
+        <button id="evner-btn" type="button" class="btn secondary small">Evner</button>
+        <button id="forteljing-btn" type="button" class="btn secondary small">Forteljinga</button>
+      </div>
+    </div>
+    <div id="nivaa-kort" class="nivaa-kort"></div>
+    <h2 class="nivaa-overskrift">Ruta</h2>
+    <ol id="nivaa-liste" class="nivaa-liste"></ol>
+    <p class="spel-fot"><button id="nullstill-btn" type="button" class="ghost small">Byrj spelet på nytt</button></p>
+  </aside>
+</main>
+
+<div id="spel-lag" class="spel-lag" hidden>
+  <div id="spel-rot" class="spel-vindauge" role="dialog" aria-modal="true" aria-label="Minispel"></div>
+</div>
+<div id="panel-lag" class="spel-lag panel-lag" hidden>
+  <div id="panel-rot" class="spel-vindauge panel-vindauge" role="dialog" aria-modal="true"></div>
+</div>
+
+<script src="js/storage.js"></script>
+<script src="js/modules.js"></script>
+<script src="js/content/part1.js"></script>
+<script src="js/content/aasen-reise.js"></script>
+<script src="js/content/part2-omgrep.js"></script>
+<script src="js/content/part2.js"></script>
+<script src="js/content/part2-trening.js"></script>
+<script src="js/content/part3.js"></script>
+<script src="js/content/part4.js"></script>
+<script src="js/content/part4-feil.js"></script>
+<script src="js/content/part4-rettelesing.js"></script>
+<script src="js/content/part5.js"></script>
+<script src="js/content/bank.js"></script>
+<script src="js/drills.js"></script>
+<script src="js/vendor/three.min.js"></script>
+<script src="data/noreg-terreng.js"></script>
+<script src="js/kart3d.js"></script>
+<script src="js/spel-minispel.js"></script>
+<script src="js/spel.js"></script>
+</body>
+</html>

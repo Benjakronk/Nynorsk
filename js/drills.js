@@ -175,8 +175,9 @@ const Drills = (() => {
     return `${CLASS_NAME[v.cls].charAt(0).toUpperCase() + CLASS_NAME[v.cls].slice(1)}: <em class="nn">${verbParadigm(v)}</em>. ${VERB_RULE[v.cls] || ""}`.trim();
   }
   function verbWrongForms(v, idx) {
-    const st = stemOf(v.inf);
-    if (idx === 0) return [st + "er", st + "ar", st + "r", v.inf];
+    // Berre den første infinitiven: «synge|syngje» skal gi «synga», ikkje «synge|syngja».
+    const inf = first(v.inf), st = stemOf(inf);
+    if (idx === 0) return [st + "er", st + "ar", st + "r", inf];
     if (idx === 1) return [st + "et", st + "te", st + "a", st + "de"];
     if (idx === 2) return [st + "et", st + "t", st + "a", st + "d"];
     return [];

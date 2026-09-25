@@ -28,6 +28,7 @@ frå Språkrådet.
 - Språksjekk i skriveoppgåvene: bokmålsvarsel bygd på ordbanken i kurset, og skrivefeil mot ei nynorsk ordliste på 412 000 former, med tyding og direktelenkje til ordbokene.no for kvart forslag
 - Reisene til Ivar Aasen (`aasen-reise.html`): modul med interaktiv forelesing på eit 3D-kart over Noreg, der eleven følgjer ein liten Aasen-figur langs ruta kapittel for kapittel, med stoppestader, datoar og oppgåver undervegs
 - Bilete og små animerte figurar i modulane: portrett, historiske bilete, kart og norsk kunst frå Wikimedia Commons (`bilete/`, lisensar i `bilete/KJELDE.md`), tidslinje, «to liner»-diagram, ordbygg, dei fire formene, setningsledd, V2-demonstrasjon, kjønnskort og ein nummerert ordbokartikkel (`js/figurar.js` og «Figurar» i `css/style.css`)
+- Spelet «Blekkrannet» (`spel.html`): ein blekklatt har ete dialektorda, og Ivar Aasen går ruta si frå 1842 til 1847 for å fange dei att. Verdskartet er 3D-kartet frå reisemodulen (`js/kart3d.js`). Kvart stopp er eit nivå med eit minispel frå ordbanken (`js/spel-minispel.js`): Kjønnsportane, Vokalskifte-trolldom, V2-brua og Rytmeval, og to bossar, Sildesalaten og Blekklatten. Rette svar fangar ord til ei eiga ordbok, og fullførte modular i kurset gir evner i spelet
 - Lærarsida (`larer/`): presentasjon til tavleundervisning og lærarrettleiing til kvar modul, med talarvindauge, tavleøvingar frå ordbanken, kompetansemål frå læreplanen i norsk (NOR01-08), manus og automatisk fasit. Formatet står i `larer/README.md`, og `node tools/validate-larar.js` sjekkar innhaldet
 - Heile sida er statisk og fungerer på GitHub Pages utan byggjesteg
 
@@ -53,12 +54,16 @@ npx serve .
 ├── modul.html              Sida for kvar modul (?id=<modul-id>)
 ├── om.html                 Kort om kurset
 ├── aasen-reise.html        Reisene til Ivar Aasen: 3D-kart med forelesing
+├── spel.html               Spelet «Blekkrannet» på same kartet
 ├── larer/                  Lærarsida: presentasjonar og rettleiingar (sjå larer/README.md)
 ├── bilete/                 Portrett og historiske bilete (kjelder i bilete/KJELDE.md)
 ├── css/style.css
 ├── css/aasen-reise.css     Stil for kartsida
 ├── js/
-│   ├── aasen-reise.js      3D-kartet: terreng, kamera, ruter, figuren og seksjonane
+│   ├── kart3d.js           3D-kartet: terreng, hav, kamera, ruter, figuren og scenene
+│   ├── aasen-reise.js      Sida for reisemodulen: kapittel, oppgåver og ruta på kartet
+│   ├── spel.js             Spelet: nivå, lagring, ordboka og evner frå kurset
+│   ├── spel-minispel.js    Minispela og bossane i spelet
 │   ├── vendor/three.min.js three.js r147 (MIT), einaste eksterne bibliotek
 │   ├── storage.js          localStorage
 │   ├── modules.js          Modulregister (med grupper for Del 2 og 4)
