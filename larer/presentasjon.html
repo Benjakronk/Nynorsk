@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="nn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<base href="../" />
+<title>Presentasjon · Nynorskkurs</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=aasen1" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<meta name="theme-color" content="#1f5d4c" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="larer/css/larar.css" />
+</head>
+<body class="presentasjon">
+<div class="pres-rad">
+  <div id="scene" class="scene">
+    <div id="stage" class="stage"></div>
+    <div id="nedteljing" class="nedteljing" hidden></div>
+  </div>
+  <aside class="talarpanel" aria-label="Talarvindauge">
+    <p id="t-klokke" class="t-klokke"></p>
+    <p class="t-etikett">Neste lysbilete</p>
+    <p id="t-neste" class="t-neste"></p>
+    <p id="t-steg" class="t-steg"></p>
+    <div class="t-knappar">
+      <button type="button" data-a="forrige">‹ Førre</button>
+      <button type="button" data-a="neste">Neste ›</button>
+    </div>
+  </aside>
+</div>
+
+<div id="notat" class="notat" aria-live="polite">
+  <p class="t-etikett">Notat til læraren</p>
+  <div class="notat-tekst"></div>
+</div>
+
+<nav id="innhald" class="innhald" aria-label="Lysbileta">
+  <p class="t-etikett">Lysbileta</p>
+  <ol></ol>
+</nav>
+
+<div id="svart" class="svart"></div>
+
+<div class="kontroll" role="toolbar" aria-label="Styring">
+  <button type="button" data-a="forrige" title="Førre (←)">‹</button>
+  <span id="teljar" class="teljar"></span>
+  <button type="button" data-a="neste" title="Neste (→)">›</button>
+  <button type="button" data-a="innhald" title="Innhald (I)">Innhald</button>
+  <button type="button" data-a="notat" title="Notat (N)">Notat</button>
+  <button type="button" data-a="talar" class="berre-tavle" title="Talarvindauge (T)">Talarvindauge</button>
+  <button type="button" data-a="svart" title="Svart skjerm (B)">Svart</button>
+  <button type="button" data-a="fullskjerm" title="Fullskjerm (F)">Fullskjerm</button>
+  <a href="larer/index.html" class="berre-tavle">Lukk</a>
+</div>
+
+<script src="js/modules.js"></script>
+<script src="js/content/part1.js"></script>
+<script src="js/content/aasen-reise.js"></script>
+<script src="js/content/part2-omgrep.js"></script>
+<script src="js/content/part2.js"></script>
+<script src="js/content/part2-trening.js"></script>
+<script src="js/content/part3.js"></script>
+<script src="js/content/part4.js"></script>
+<script src="js/content/part4-feil.js"></script>
+<script src="js/content/part4-rettelesing.js"></script>
+<script src="js/content/part5.js"></script>
+<script src="js/content/bank.js"></script>
+<script src="js/drills.js"></script>
+<script src="larer/js/larar.js"></script>
+<script src="larer/js/innhald/del1-a.js"></script>
+<script src="larer/js/innhald/del1-b.js"></script>
+<script src="larer/js/innhald/del2-omgrep.js"></script>
+<script src="larer/js/innhald/del2-ordklassar.js"></script>
+<script src="larer/js/innhald/del2-trening.js"></script>
+<script src="larer/js/innhald/del3.js"></script>
+<script src="larer/js/innhald/del4-skriving.js"></script>
+<script src="larer/js/innhald/del4-feil.js"></script>
+<script src="larer/js/innhald/del5-forfattarar.js"></script>
+<script src="larer/js/innhald/del5-lesing.js"></script>
+<script src="js/figurar.js"></script>
+<script src="larer/js/presentasjon.js"></script>
+</body>
+</html>

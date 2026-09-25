@@ -1,0 +1,150 @@
+#!/usr/bin/env node
+/* Sjekkar lærarinnhaldet i larer/js/innhald/: at kvar modul har presentasjon og
+   rettleiing, at felta er fylte ut, at spørsmål og tavleøvingar verkar, og at
+   teksten følgjer skrivereglane i kurset (ingen tankestrek i prosa).
+
+   Bruk:  node tools/validate-larar.js            alle filene
+          node tools/validate-larar.js del3.js    berre modulane i éi fil */
+"use strict";
+const fs = require("fs");
+const path = require("path");
+const vm = require("vm");
+
+const ROT = path.join(__dirname, "..");
+const berreFil = process.argv[2] || null;
+
+const ctx = { console, window: {}, document: { addEventListener() {} } };
+ctx.window = ctx;
+vm.createContext(ctx);
+const last = f => vm.runInContext(fs.readFileSync(path.join(ROT, f), "utf8"), ctx, { filename: f });
+// const/let på toppnivå blir ikkje eigenskapar på context, så vi hentar dei ut med eit uttrykk.
+["js/modules.js", "js/content/part1.js", "js/content/aasen-reise.js", "js/content/part2-omgrep.js",
+ "js/content/part2.js", "js/content/part2-trening.js", "js/content/part3.js", "js/content/part4.js",
+ "js/content/part4-feil.js", "js/content/part4-rettelesing.js", "js/content/part5.js",
+ "js/content/bank.js", "js/drills.js", "larer/js/larar.js"].forEach(last);
+
+const html = fs.readFileSync(path.join(ROT, "larer/presentasjon.html"), "utf8");
+const innhaldsfiler = [...html.matchAll(/src="(larer\/js\/innhald\/[^"]+)"/g)].map(m => m[1]);
+const registrertI = {};
+for (const f of innhaldsfiler) {
+  if (!fs.existsSync(path.join(ROT, f))) { if (!berreFil) console.log(`(manglar enno: ${f})`); continue; }
+  const før = new Set(vm.runInContext("Larar.ids()", ctx));
+  last(f);
+  vm.runInContext("Larar.ids()", ctx).filter(id => !før.has(id)).forEach(id => { registrertI[id] = path.basename(f); });
+}
+
+const Modules = vm.runInContext("Modules", ctx);
+const Larar = vm.runInContext("Larar", ctx);
+const Drills = vm.runInContext("Drills", ctx);
+
+const feil = [], åtvaringar = [];
+const err = (id, msg) => feil.push(`${id}: ${msg}`);
+const warn = (id, msg) => åtvaringar.push(`${id}: ${msg}`);
+
+const TYPAR = new Set(["standard", "sporsmal", "diskuter", "sitat", "bilete", "oppgave", "drill"]);
+const TAGGAR = ["p", "ul", "ol", "li", "div", "strong", "em", "b", "i", "span", "table", "tr", "td", "th", "h3", "blockquote", "a", "small", "figure", "figcaption"];
+
+// Tekstsjekk på alle strengar i eit objekt.
+function sjekkTekst(id, stad, s) {
+  if (typeof s !== "string") return;
+  if (s.includes("—")) err(id, `${stad}: tankestrek (—) i teksten`);
+  const utanRekkjer = s.replace(/\d\s*–\s*\d/g, "");
+  if (utanRekkjer.includes("–")) err(id, `${stad}: tankestrek (–) i teksten, bruk kolon, komma eller ny setning`);
+  for (const t of TAGGAR) {
+    const opne = (s.match(new RegExp(`<${t}[\\s>]`, "g")) || []).length;
+    const lukka = (s.match(new RegExp(`</${t}>`, "g")) || []).length;
+    if (opne !== lukka) err(id, `${stad}: <${t}> er opna ${opne} gonger og lukka ${lukka}`);
+  }
+  for (const m of s.matchAll(/src="([^"]+)"/g)) {
+    if (!/^https?:/.test(m[1]) && !fs.existsSync(path.join(ROT, m[1]))) err(id, `${stad}: fann ikkje biletet ${m[1]}`);
+  }
+}
+function gåGjennom(id, stad, v) {
+  if (typeof v === "string") sjekkTekst(id, stad, v);
+  else if (Array.isArray(v)) v.forEach((x, i) => gåGjennom(id, `${stad}[${i}]`, x));
+  else if (v && typeof v === "object") for (const [k, x] of Object.entries(v)) if (k !== "spec") gåGjennom(id, `${stad}.${k}`, x);
+}
+
+const moduler = [];
+for (let p = 1; p <= 5; p++) moduler.push(...Modules.orderedByPart(p));
+const kjende = new Set(moduler.map(m => m.id));
+
+for (const id of Larar.ids()) if (!kjende.has(id)) err(id, "lærarinnhald for ein modul som ikkje finst");
+
+let sjekka = 0;
+for (const m of moduler) {
+  const l = Larar.get(m.id);
+  if (berreFil && registrertI[m.id] !== berreFil) continue;
+  if (!l) { if (!berreFil) err(m.id, "manglar presentasjon og rettleiing"); continue; }
+  sjekka++;
+  const id = m.id;
+  const slides = l.slides || [];
+  const tal = slides.length + 1;
+
+  if (slides.length < 6) err(id, `berre ${slides.length} lysbilete (minst 6 i tillegg til framsida)`);
+  if (!l.tittelnotat) warn(id, "framsida har ikkje notat (tittelnotat)");
+  let utanNotat = 0;
+  slides.forEach((s, i) => {
+    const stad = `lysbilete ${i + 2}`;
+    const type = s.type || "standard";
+    if (!TYPAR.has(type)) { err(id, `${stad}: ukjend type «${type}»`); return; }
+    if (!s.notes) utanNotat++;
+    if (type === "standard" && !s.title) err(id, `${stad}: manglar title`);
+    if (type === "standard" && !s.body && !(s.steps && s.steps.length)) err(id, `${stad}: manglar body og steps`);
+    if (type === "sporsmal") {
+      if (!s.question) err(id, `${stad}: spørsmål utan question`);
+      if (!Array.isArray(s.options) || s.options.length < 2 || s.options.length > 5) err(id, `${stad}: treng 2 til 5 options`);
+      else if (!(s.correct >= 0 && s.correct < s.options.length)) err(id, `${stad}: correct peikar utanfor options`);
+      if (!s.explain) err(id, `${stad}: spørsmål utan explain`);
+    }
+    if (type === "diskuter" && !s.prompt) err(id, `${stad}: diskuter utan prompt`);
+    if (type === "sitat" && !s.text) err(id, `${stad}: sitat utan text`);
+    if (type === "bilete") {
+      if (!s.src || !fs.existsSync(path.join(ROT, s.src))) err(id, `${stad}: fann ikkje biletet ${s.src}`);
+      if (!s.alt) err(id, `${stad}: biletet manglar alt-tekst`);
+    }
+    if (type === "oppgave" && !s.title) err(id, `${stad}: oppgåve utan title`);
+    if (type === "drill") {
+      if (!s.spec) err(id, `${stad}: drill utan spec`);
+      else {
+        try {
+          const items = Drills.build(JSON.parse(JSON.stringify(s.spec)));
+          if (items.length < (s.n || 6)) err(id, `${stad}: spec gir berre ${items.length} oppgåver, treng ${s.n || 6}`);
+        } catch (e) { err(id, `${stad}: spec feilar: ${e.message}`); }
+      }
+    }
+  });
+  if (utanNotat > slides.length * 0.25) warn(id, `${utanNotat} av ${slides.length} lysbilete manglar notat`);
+
+  const g = l.guide;
+  if (!g) { err(id, "manglar guide"); }
+  else {
+    for (const f of ["tid", "intro", "forkunnskapar", "vidare"]) if (!g[f]) err(id, `guide.${f} manglar`);
+    if (!Array.isArray(g.mal) || g.mal.length < 2) err(id, "guide.mal treng minst 2 læringsmål");
+    if (!Array.isArray(g.lareplan) || !g.lareplan.length) err(id, "guide.lareplan manglar");
+    else g.lareplan.forEach(n => { if (!(Number.isInteger(n) && n >= 1 && n <= 16)) err(id, `guide.lareplan: ${n} er ikkje eit kompetansemål (1 til 16)`); });
+    if (!Array.isArray(g.forebuing) || !g.forebuing.length) err(id, "guide.forebuing manglar");
+    if (!Array.isArray(g.okt) || g.okt.length < 3) err(id, "guide.okt treng minst 3 fasar");
+    else g.okt.forEach((f, i) => {
+      if (!f.fase || !f.gjer || !(f.min > 0)) err(id, `guide.okt[${i}] treng fase, min og gjer`);
+      if (f.lysbilete) {
+        const nr = String(f.lysbilete).match(/\d+/g) || [];
+        nr.forEach(n => { if (Number(n) > tal) err(id, `guide.okt[${i}]: lysbilete ${n} finst ikkje (${tal} i alt)`); });
+      }
+    });
+    if (!Array.isArray(g.misoppfatningar) || g.misoppfatningar.length < 2) err(id, "guide.misoppfatningar treng minst 2");
+    else g.misoppfatningar.forEach((x, i) => { if (!x.feil || !x.hjelp) err(id, `guide.misoppfatningar[${i}] treng feil og hjelp`); });
+    if (!Array.isArray(g.samtale) || g.samtale.length < 2) err(id, "guide.samtale treng minst 2 spørsmål");
+    if (!g.tilpassing || !(g.tilpassing.stotte || []).length || !(g.tilpassing.utfordring || []).length) err(id, "guide.tilpassing treng stotte og utfordring");
+    if (!Array.isArray(g.vurdering) || !g.vurdering.length) err(id, "guide.vurdering manglar");
+  }
+  gåGjennom(id, "innhald", l);
+}
+
+åtvaringar.forEach(w => console.log("Åtvaring: " + w));
+if (feil.length) {
+  feil.forEach(e => console.log("FEIL: " + e));
+  console.log(`\n${feil.length} feil i ${sjekka} modular.`);
+  process.exit(1);
+}
+console.log(`Alt i orden (${sjekka} modular sjekka).`);
