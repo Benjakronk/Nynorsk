@@ -1,4 +1,4 @@
-/* «Blekkrannet»: eit lite spel om Ivar Aasen, bygd på kurset (spel.html).
+/* «Blekkranet»: eit lite spel om Ivar Aasen, bygd på kurset (spel.html).
 
    Ein blekklatt, fire hundre år med dansk kanselliskrift, har ete opp
    dialektorda, og orda har flykta ut i landskapet. Aasen går ruta si frå
@@ -22,7 +22,7 @@
   const TYPENAMN = { kjonn: "Kjønnsportane", vokal: "Vokalskifte-trolldom", v2: "V2-brua", val: "Rytmeval", boss: "Bosskamp" };
   const NIVAA = [
     {
-      stad: "aasen", aar: "Hausten 1842", tittel: "Blekkrannet",
+      stad: "aasen", aar: "Hausten 1842", tittel: "Blekkranet",
       tekst: "Ein haustkveld i 1842 veltar noko i ei skuff: ein blekklatt, fire hundre år gammal og full av dansk kanselliskrift. Han et alle orda han finn. Orda flyktar ut i lyngen. Ivar tek skreppa og notatboka. Orda vil berre bli med heim om du kjenner kjønnet deira.",
       spel: { type: "kjonn", n: 10, falltid: 7000 },
     },
@@ -346,7 +346,7 @@
   function visIntro() {
     opnePanel(`
       <div class="intro-kunst">${Minispel.KUNST.blekk}</div>
-      <h2>Blekkrannet</h2>
+      <h2>Blekkranet</h2>
       <p>Det er hausten 1842. I fire hundre år har alt i Noreg vore skrive på dansk, og i ei skuff har det samla seg ein blekklatt av gammal kanselliskrift. Ein kveld vaknar han, og han er svolten.</p>
       <p>Han et dialektorda: <em>skreppe</em>, <em>ljore</em>, <em>tun</em>. Orda som slepp unna, flyktar ut i fjellet, fjorden og lyngen.</p>
       <p>Ein ung mann frå Ørsta tek skreppa på ryggen. Han skal gå over heile landet og samle dei att, stad for stad. Han heiter Ivar Aasen, og han treng hjelp.</p>

@@ -1,7 +1,7 @@
 /* Sida som viser modulen «Reisene til Ivar Aasen» (Del 1) éin seksjon om gongen.
 
    Sjølve 3D-kartet (terreng, hav, kamera, figuren, scenene og rutene) ligg i
-   js/kart3d.js, som spelet «Blekkrannet» òg brukar. Her ligg det som høyrer
+   js/kart3d.js, som spelet «Blekkranet» òg brukar. Her ligg det som høyrer
    til modulen: stadene i js/content/aasen-reise.js blir plasserte på kartet,
    kvart kapittel (lesson med `reise`) teiknar ruta si som ei slange lagd oppå
    terrenget, og ein liten figur av Aasen går langs henne. Oppgåvene mellom

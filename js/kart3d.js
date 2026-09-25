@@ -1,5 +1,5 @@
 /* Kartkjernen: 3D-kartet over Noreg, brukt av «Reisene til Ivar Aasen»
-   (js/aasen-reise.js) og spelet «Blekkrannet» (js/spel.js).
+   (js/aasen-reise.js) og spelet «Blekkranet» (js/spel.js).
 
    Kartet er eitt trekantnett bygd av høgdekartet i data/noreg-terreng.js
    (laga av tools/lag-terreng.js). Kvar piksel i høgdekartet er 1,25 km, og

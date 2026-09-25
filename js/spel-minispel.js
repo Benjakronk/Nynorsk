@@ -1,4 +1,4 @@
-/* Minispela i «Blekkrannet» (spel.html).
+/* Minispela i «Blekkranet» (spel.html).
 
    Kvart minispel stiller éitt spørsmål om gongen og byggjer på ordbanken i
    js/content/bank.js gjennom motoren i js/drills.js, så det er dei same orda

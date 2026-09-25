@@ -1,4 +1,4 @@
-/* «Blekkrannet» (spel.html). Byggjer på kartsida i css/aasen-reise.css. */
+/* «Blekkranet» (spel.html). Byggjer på kartsida i css/aasen-reise.css. */
 
 /* Sida: toppstripa med faner, så kartet og panelet fyller resten. */
 body.spel-side { display: flex; flex-direction: column; height: 100vh; height: 100dvh; }
