@@ -475,6 +475,10 @@ Modules.register({
         i norsk skrift, og kunne skifte frå filosofisk refleksjon til ein vits om kva han åt på
         krua.</p>
 
+        <figure class="figur halv">
+          <img src="bilete/finse-1909.jpg" alt="Svart-kvitt fotografi av jernbanelina over snødekt høgfjell ved Finse" loading="lazy">
+          <figcaption>Bergensbanen ved Finse i 1909, same året som banen opna. Foto: Anders Beer Wilse (CC0).</figcaption>
+        </figure>
         <h3>Sjå etter dette når du les</h3>
         <ul>
             <li>Kva forteljaren <em>ser</em>, og kva han <em>tenkjer</em> om det han ser.</li>
@@ -728,6 +732,10 @@ Modules.register({
         vanlege folk. I <em class="nn">Bondestudentar</em> (1883) skreiv han om unge bondegutar
         som kjem til byen, og i <em class="nn">Haugtussa</em> (1895) om jenta Veslemøy.</p>
 
+        <figure class="figur halv">
+          <img src="bilete/kielland-jaeren.jpg" alt="Måleri av eit flatt, ope landskap på Jæren med lyng, steinar og ein låg himmel" loading="lazy">
+          <figcaption>«Fra Jæren» av Kitty Kielland, 1878. Garborg voks opp på Jæren, og landskapet går att i mange av bøkene hans (offentleg eigedom).</figcaption>
+        </figure>
         <h3>Sjå etter dette når du les</h3>
         <ul>
             <li>Kor lite som blir sagt høgt, og kor mykje som ligg under.</li>
@@ -1010,6 +1018,10 @@ Modules.register({
         om islandsk sagalitteratur: det er liv og død og kamp. Hovudverket er
         <em class="nn">Juvikfolket</em> (1918–1923), ein slektsroman i seks band.</p>
 
+        <figure class="figur halv">
+          <img src="bilete/balke-storm.jpg" alt="Måleri av eit mørkt, stormfullt hav med tunge skyer og ein liten båt" loading="lazy">
+          <figcaption>Storm på havet. Måleri av Peder Balke, 1870 (offentleg eigedom).</figcaption>
+        </figure>
         <h3>Sjå etter dette når du les</h3>
         <ul>
             <li>Naturen som ein motstandar med eigen vilje.</li>
@@ -1472,6 +1484,10 @@ Modules.register({
         har ein eigen, stille kraft. <em class="nn">Tung tids tale</em> (1945) er kanskje det
         mest kjende diktet hennar.</p>
 
+        <figure class="figur portrett">
+          <img src="bilete/backer-blatt-interior.jpg" alt="Måleri av ei kvinne som sit og syr i ei stille stove med blå møblar og ei potteplante ved vindauget" loading="lazy">
+          <figcaption>«Blått interiør» av Harriet Backer, 1883. Ein heilt vanleg augneblink, måla med stor merksemd på lys og ting (offentleg eigedom).</figcaption>
+        </figure>
         <h3>Sjå etter dette når du les</h3>
         <ul>
             <li>Kor små hendingane er, og kor mykje plass dei får.</li>
@@ -1613,6 +1629,10 @@ Modules.register({
         same blir sagt om att, og det skjer ofte lite på overflata. Under ligg det djupe
         spørsmål om liv, død og Gud.</p>
 
+        <figure class="figur halv">
+          <img src="bilete/hytte-sno.jpg" alt="Ei gammal tømmerhytte med snø på taket i eit kvitt fjellandskap" loading="lazy">
+          <figcaption>Ei gammal hytte på Rekdalsetra i Vestnes. Foto: Mænsard vokser (CC BY-SA 4.0).</figcaption>
+        </figure>
         <h3>Sjå etter dette når du les</h3>
         <ul>
             <li>Kva ord og setningar som kjem att, og kor ofte.</li>
@@ -1801,6 +1821,10 @@ Modules.register({
         får dei til å vere viktige. <em class="nn">Bikubesong</em> (1999) er bygd opp som mange
         korte historier frå same bygard.</p>
 
+        <figure class="figur halv">
+          <img src="bilete/odda-1890.jpg" alt="Farga fotografi av Odda innst i Sørfjorden, med kyrkje, hus og høge fjell" loading="lazy">
+          <figcaption>Odda i Hardanger rundt 1890–1900. Frode Grytten er frå Odda, og byen går att i tekstane hans. Fotokrom: Detroit Publishing Co. / Library of Congress (ingen kjende restriksjonar).</figcaption>
+        </figure>
         <h3>Sjå etter dette når du les</h3>
         <ul>
             <li>Alt teksten ikkje fortel deg om kva som har skjedd.</li>
@@ -1977,6 +2001,10 @@ Modules.register({
         spørsmål. Ho har vore leiar for Litteratursymposiet i Odda og skriv både skjønnlitteratur
         og sakprosa.</p>
 
+        <figure class="figur halv">
+          <img src="bilete/backer-lampelys.jpg" alt="Måleri av ei kvinne som sit og les ved eit bord med ei oljelampe i ei gammal stove" loading="lazy">
+          <figcaption>«Ved lampelys» av Harriet Backer, 1890 (offentleg eigedom).</figcaption>
+        </figure>
         <h3>Sjå etter dette når du les</h3>
         <ul>
             <li>Skilnaden mellom eit essay og ein argumenterande tekst.</li>
@@ -2142,6 +2170,10 @@ Modules.register({
         setje grensene. <em class="nn">Tung tids tale</em> (2017) er ein roman om å vere mor til
         eit barn med store hjelpebehov.</p>
 
+        <figure class="figur halv">
+          <img src="bilete/klassebilete-1903.jpg" alt="Gammalt svart-kvitt klassebilete av jenter i rader med lærarinnene sine" loading="lazy">
+          <figcaption>Klassebilete frå Frk. Christies skole i Trondheim, om lag 1903. Fotograf ukjend, Trondheim byarkiv (CC BY 2.0).</figcaption>
+        </figure>
         <h3>Sjå etter dette når du les</h3>
         <ul>
             <li>Den nøkterne tonen når ho fortel om noko vondt.</li>

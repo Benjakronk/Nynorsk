@@ -60,14 +60,14 @@ Larar.register("omgrep-ordet", {
       body: `<table>
           <thead><tr><th>Ord</th><th>Stamme</th><th>Ending</th><th>Endinga fortel</th></tr></thead>
           <tbody>
-            <tr><td><em class="nn">gutane</em></td><td>gut-</td><td>-ane</td><td>bestemt fleirtal</td></tr>
-            <tr><td><em class="nn">jenta</em></td><td>jent-</td><td>-a</td><td>bestemt eintal</td></tr>
-            <tr><td><em class="nn">kastar</em></td><td>kast-</td><td>-ar</td><td>presens</td></tr>
-            <tr><td><em class="nn">høyrde</em></td><td>høyr-</td><td>-de</td><td>preteritum</td></tr>
-            <tr><td><em class="nn">finare</em></td><td>fin-</td><td>-are</td><td>komparativ</td></tr>
+            <tr><td><em class="nn">gutane</em></td><td>gut-</td><td class="steg" data-steg="r1">-ane</td><td class="steg" data-steg="r1">bestemt fleirtal</td></tr>
+            <tr><td><em class="nn">jenta</em></td><td>jent-</td><td class="steg" data-steg="r2">-a</td><td class="steg" data-steg="r2">bestemt eintal</td></tr>
+            <tr><td><em class="nn">kastar</em></td><td>kast-</td><td class="steg" data-steg="r3">-ar</td><td class="steg" data-steg="r3">presens</td></tr>
+            <tr><td><em class="nn">høyrde</em></td><td>høyr-</td><td class="steg" data-steg="r4">-de</td><td class="steg" data-steg="r4">preteritum</td></tr>
+            <tr><td><em class="nn">finare</em></td><td>fin-</td><td class="steg" data-steg="r5">-are</td><td class="steg" data-steg="r5">komparativ</td></tr>
           </tbody>
         </table>`,
-      notes: "Dek over dei to siste kolonnane og lat klassen fylle ut rad for rad før du viser dei. Poenget er at endingane finst i alle dei bøyelege ordklassane: substantiv, verb og adjektiv.",
+      notes: "Dei to siste kolonnane kjem fram rad for rad. La klassen seie endinga og kva ho fortel før du trykkjer fram kvar rad. Poenget er at endingane finst i alle dei bøyelege ordklassane: substantiv, verb og adjektiv.",
     },
     {
       title: "Når ordet endar på -e",

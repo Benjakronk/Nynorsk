@@ -19,6 +19,10 @@ Modules.register({
         I løpet av desse hundreåra forsvann det gamalnorske skriftspråket, og dansk vart det
         einaste skriftspråket i Noreg. Embetsmenn, prestar og forfattarar skreiv dansk, og det
         var dansk ein lærde i skulen.</p>
+        <figure class="figur halv">
+          <img src="bilete/danmark-noreg-1780.png" alt="Kart over Europa der Danmark, Noreg, Island, Færøyane og Grønland er farga raude" loading="lazy">
+          <figcaption>Danmark-Noreg i 1780. Riket omfatta òg Island, Færøyane og Grønland. Kart: Derfel73, cthuljew og Kasper Holl (offentleg eigedom).</figcaption>
+        </figure>
 
         <p>Men <em class="nn">talemålet</em> heldt fram med å vere norsk. Folk snakka dialektar
         som var heilt ulike dansk. Ein bonde på Vestlandet, ein fiskar i Nord-Noreg og ein
@@ -31,6 +35,10 @@ Modules.register({
         som ofte blir kalla <em class="nn">dansk-norsk</em> eller embetsmannsspråket.</p>
 
         <h3>1814: ein ny situasjon</h3>
+        <figure class="figur halv">
+          <img src="bilete/unionsflagg-1844.png" alt="Det norske flagget med unionsmerket i øvre hjørne, eit merke i norske og svenske fargar" loading="lazy">
+          <figcaption>Frå 1844 hadde det norske og det svenske flagget eit felles unionsmerke i hjørnet. Folk kalla det «sildesalaten». Handelsflagget vart «reint» att i 1899, og unionen vart oppløyst i 1905 (offentleg eigedom).</figcaption>
+        </figure>
         <p>I 1814 vart Noreg løyst frå Danmark og gjekk inn i union med Sverige. Vi fekk eiga
         grunnlov og eige storting. Men skriftspråket var framleis dansk. Mange byrja å spørje:
         kan eit fritt land verkeleg ha eit anna lands språk som sitt einaste skriftspråk?</p>
@@ -155,6 +163,10 @@ Modules.register({
         <p>Med stipend frå Det Kongelige Norske Videnskabers Selskab reiste Aasen rundt i
         store delar av Noreg i fire år. Han lytta til dialektane, skreiv ned ord og
         bøyingar, og bygde seg eit detaljert bilete av norsk talemål.</p>
+        <figure class="figur halv">
+          <img src="bilete/dahl-sognefjorden.jpg" alt="Måleri av ein snødekt gard ved Sognefjorden med bratte fjell og ein båt i fjæra" loading="lazy">
+          <figcaption>«Vinter ved Sognefjorden» av J.C. Dahl, 1827. Aasen budde i Sogndal vinteren 1842–43 (offentleg eigedom).</figcaption>
+        </figure>
         <div class="callout">
           <strong>Følg reisa på kartet:</strong> I <a href="aasen-reise.html">Reisene til
           Ivar Aasen</a> kan du følgje ruta hans på eit 3D-kart over Noreg, kapittel for
@@ -175,6 +187,11 @@ Modules.register({
         viste korleis eit nytt norsk skriftspråk kunne sjå ut. Han kalla det
         <strong>landsmål</strong>, språket for heile landet.</p>
 
+
+        <figure class="figur brei">
+          <img src="bilete/brudeferd-hardanger.jpg" alt="Måleri av ein brudefølgje i robåtar på ein blank fjord med fjell og grøne lier" loading="lazy">
+          <figcaption>«Brudeferd i Hardanger» (1848) av Adolph Tidemand og Hans Gude. Same år som Aasen gav ut grammatikken, leitte kunstnarar, diktarar og forskarar etter det særnorske i bygdene. Tida blir kalla nasjonalromantikken (offentleg eigedom).</figcaption>
+        </figure>
         <h3>Korleis bygde han det opp?</h3>
         <p>Aasen ville ikkje berre velje éin dialekt og gjere han til skriftspråk. I staden
         prøvde han å finne dei eldre, fellesgjeldande formene som dei norske dialektane
@@ -301,6 +318,10 @@ Modules.register({
         <p>I 1885 gjorde Stortinget eit historisk vedtak: landsmål og det norsk-danske
         skriftspråket skulle vere <em class="nn">jamstilte</em>. Det vil seie at begge skulle
         vere likeverdige i skule og forvaltning. Dette gav landsmålet ein offisiell status.</p>
+        <figure class="figur halv">
+          <img src="bilete/stortinget.jpg" alt="Gammalt fotografi av Stortingsbygningen i Kristiania, ein stor bygning i gul murstein" loading="lazy">
+          <figcaption>Stortingsbygningen i Kristiania. Her vedtok Stortinget i 1885 at landsmålet skulle vere jamstilt med det norsk-danske skriftspråket. Foto: Marthinius Skøien, mellom 1880 og 1910 (offentleg eigedom).</figcaption>
+        </figure>
 
         <h3>Samnorskpolitikken</h3>
         <p>Frå tidleg 1900-tal og fram til 1960-talet prøvde styresmaktene å føre dei to

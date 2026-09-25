@@ -1141,13 +1141,13 @@ Larar.register("feil-rettelesing", {
       body: `<table>
           <thead><tr><th>Feil</th><th>Rett</th></tr></thead>
           <tbody>
-            <tr><td><em class="bm">kastet, snakket</em></td><td><em class="nn">kasta, snakka</em></td></tr>
-            <tr><td><em class="bm">kommer, finner</em></td><td><em class="nn">kjem, finn</em></td></tr>
-            <tr><td><em class="bm">boken, døren</em></td><td><em class="nn">boka, døra</em></td></tr>
-            <tr><td><em class="bm">husene, barnene</em></td><td><em class="nn">husa, barna</em></td></tr>
+            <tr><td><em class="bm">kastet, snakket</em></td><td class="steg"><em class="nn">kasta, snakka</em></td></tr>
+            <tr><td><em class="bm">kommer, finner</em></td><td class="steg"><em class="nn">kjem, finn</em></td></tr>
+            <tr><td><em class="bm">boken, døren</em></td><td class="steg"><em class="nn">boka, døra</em></td></tr>
+            <tr><td><em class="bm">husene, barnene</em></td><td class="steg"><em class="nn">husa, barna</em></td></tr>
           </tbody>
         </table>`,
-      notes: `Dette er repetisjon frå Feil i bøying. Spør klassen om regelen bak kvar rad før du går vidare: a-verb, sterke verb, hokjønn, inkjekjønn i fleirtal.`,
+      notes: `Dette er repetisjon frå Feil i bøying. Den rette forma kjem fram rad for rad. Spør klassen om rett form og regelen bak før du trykkjer: a-verb, sterke verb, hokjønn, inkjekjønn i fleirtal.`,
     },
     {
       title: "Sjekkliste: småord",

@@ -266,12 +266,12 @@ Larar.register("ordbok-grunnform", {
       body: `<table>
           <thead><tr><th>Ordklasse</th><th>Grunnforma er</th><th>Døme</th></tr></thead>
           <tbody>
-            <tr><td>Substantiv</td><td>ubestemt form eintal</td><td><em class="nn">bøkene</em> → <em class="nn">bok</em></td></tr>
-            <tr><td>Verb</td><td>infinitiv</td><td><em class="nn">sprang</em> → <em class="nn">springe</em></td></tr>
-            <tr><td>Adjektiv</td><td>positiv, den korte forma</td><td><em class="nn">finaste</em> → <em class="nn">fin</em></td></tr>
+            <tr class="steg"><td>Substantiv</td><td>ubestemt form eintal</td><td><em class="nn">bøkene</em> → <em class="nn">bok</em></td></tr>
+            <tr class="steg"><td>Verb</td><td>infinitiv</td><td><em class="nn">sprang</em> → <em class="nn">springe</em></td></tr>
+            <tr class="steg"><td>Adjektiv</td><td>positiv, den korte forma</td><td><em class="nn">finaste</em> → <em class="nn">fin</em></td></tr>
           </tbody>
         </table>`,
-      notes: "Dette er tabellen elevane skal kunne. Spør klassen etter eitt døme til på kvar rad før du går vidare. Hugs å seie kva positiv er: den forma adjektivet har før det blir gradbøygd.",
+      notes: "Dette er tabellen elevane skal kunne. Radene kjem fram éi og éi. Spør klassen etter eitt døme til på kvar rad før du trykkjer fram den neste. Hugs å seie kva positiv er: den forma adjektivet har før det blir gradbøygd.",
     },
     {
       title: "Substantiv: stryk endinga",

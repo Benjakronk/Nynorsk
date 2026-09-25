@@ -127,6 +127,9 @@ for (const m of moduler) {
     const type = s.type || "standard";
     if (!TYPAR.has(type)) { err(id, `${stad}: ukjend type «${type}»`); return; }
     if (!s.notes) utanNotat++;
+    // Det som skal haldast att, skal vere steg i presentasjonen, ikkje noko læraren dekkjer til på tavla.
+    if (/dekk?(je)? (over|til)|dekkjer (over|til)|skjul|gøym (dei|det|kolonn|rad)/i.test(String(s.notes || "").replace(/<[^>]+>/g, "")))
+      err(id, `${stad}: notatet ber læraren dekkje til eller gøyme noko. Bruk steg (steps eller class="steg") i staden`);
     if (type === "standard" && !s.title) err(id, `${stad}: manglar title`);
     if (type === "standard" && !s.body && !(s.steps && s.steps.length)) err(id, `${stad}: manglar body og steps`);
     if (type === "sporsmal") {

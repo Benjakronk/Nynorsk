@@ -271,6 +271,10 @@ Larar.register("lesing-hm-vesaas", {
       notes: "<em>vert</em> og <em>blir</em> er begge rett på nynorsk. Teksten bruker <em>vert</em> i den siste setninga, noko som gir ein litt høgtidleg klang. Det er eit lite stilval elevane kan leggje merke til.",
     },
     {
+      type: "bilete",
+      src: "bilete/backer-blatt-interior.jpg",
+      alt: "Måleri av ei kvinne som sit og syr i ei stille stove med blå møblar og ei potteplante ved vindauget",
+      caption: "«Blått interiør» av Harriet Backer, 1883 (offentleg eigedom)",
       title: "Sjå etter dette når du les",
       steps: [
         `<p class="stor">1. Kor <strong>små</strong> hendingane er, og kor mykje plass dei får.</p>`,
@@ -542,6 +546,10 @@ Larar.register("lesing-fosse", {
       notes: "Be gruppene finne minst to spor i teksten. Mange peikar på mor: han tek nøkkelen utan å seie det, telefonen ligg i gangen, og han skal lyge om at han var hjå Sander. Spør: er det bekymringsfullt at han rømmer, eller er det sunt å trekkje seg unna? Det er ein god samtale om korleis teksten framstiller livet til unge.",
     },
     {
+      type: "bilete",
+      src: "bilete/hytte-sno.jpg",
+      alt: "Ei gammal tømmerhytte med snø på taket i eit kvitt fjellandskap",
+      caption: "Hytte på Rekdalsetra. Foto: Mænsard vokser (CC BY-SA 4.0)",
       title: "Ein ungdom i hytta",
       steps: [
         `<p class="stor">Han tek nøkkelen utan å seie det til nokon.</p>`,
@@ -726,6 +734,10 @@ Larar.register("lesing-grytten", {
       notes: "«Kaldt. Bra.» er to ord utan verb. Kvifor er det bra at vindauget er kaldt? Ho treng noko som kjølar ned, kanskje etter å ha grine, kanskje for å roe seg. Den klipte rytmen passar med ein person som ikkje vil tenkje for mykje. Dette er stoff til det siste spørsmålet i modulen.",
     },
     {
+      type: "bilete",
+      src: "bilete/odda-1890.jpg",
+      alt: "Farga fotografi av Odda innst i Sørfjorden, med kyrkje, hus og høge fjell",
+      caption: "Odda rundt 1890–1900. Detroit Publishing Co. / Library of Congress (ingen kjende restriksjonar)",
       title: "Staden speglar stemninga",
       steps: [
         `<p class="stor"><strong>Regnet</strong>: <em class="nn">den slags som gjer alt litt fuktig</em></p>`,
@@ -904,6 +916,10 @@ Larar.register("lesing-eikemo", {
       notes: "Dette er det konkrete biletet som ber det store spørsmålet: hekken og lukta frå boka forfattaren las som tolvåring. Poenget er at ho ikkje hugsar slutten, men ho hugsar ei lukt. Spør elevane om dei hugsar ein detalj frå ei bok eller ein film betre enn handlinga.",
     },
     {
+      type: "bilete",
+      src: "bilete/backer-lampelys.jpg",
+      alt: "Måleri av ei kvinne som sit og les ved eit bord med ei oljelampe i ei gammal stove",
+      caption: "«Ved lampelys» av Harriet Backer, 1890 (offentleg eigedom)",
       title: "To måtar å lese på",
       body: `<div class="to-kol">
           <div class="boks"><h3>Rask</h3><p><em class="nn">i sveip</em></p><p>hovudpoenget</p><p><em class="nn">ein ting eg veit</em></p></div>
@@ -1071,6 +1087,10 @@ Larar.register("lesing-nilssen", {
       notes: "Nøktern er nøkkelordet. Poenget er kontrasten: innhaldet er alvorleg, men tonen er roleg. Nostalgi kjem att i teksten, der forteljaren seier at det å sjå på biletet ikkje berre er nostalgi.",
     },
     {
+      type: "bilete",
+      src: "bilete/klassebilete-1903.jpg",
+      alt: "Gammalt svart-kvitt klassebilete av jenter i rader med lærarinnene sine",
+      caption: "Klassebilete, Trondheim om lag 1903. Trondheim byarkiv (CC BY 2.0)",
       title: "Sjå etter dette når du les",
       steps: [
         `<p class="stor">1. Den <strong>nøkterne</strong> tonen når ho fortel om noko vondt.</p>`,

@@ -23,6 +23,10 @@ Larar.register("historie-bakgrunn", {
       notes: "Lat elevane kome med døme frå eigen dialekt og skriv nokre på tavla. Uttale som <em>æ</em> eller <em>i</em> for eg, eller ulike former av ikkje, fungerer godt. Poenget er at alle alt lever med ein avstand mellom tale og skrift. Seinare i timen ser vi at denne avstanden var mykje større før 1850, fordi skriftspråket var eit anna språk.",
     },
     {
+      type: "bilete",
+      src: "bilete/danmark-noreg-1780.png",
+      alt: "Kart over Europa der Danmark, Noreg, Island, Færøyane og Grønland er farga raude",
+      caption: "Kart: Derfel73, cthuljew og Kasper Holl (offentleg eigedom)",
       title: "1380: union med Danmark",
       steps: [
         "<p class=\"stor\">Noreg og Danmark i union i <strong>over 400 år</strong></p>",
@@ -83,6 +87,10 @@ Larar.register("historie-bakgrunn", {
       notes: "Mange elevar kjenner biletet frå samfunnsfag. Spør kva som skjedde i 1814 før du trykkjer vidare. Legg merke til at måleriet er frå 1885, over 70 år etter hendinga: det er ei framstilling, ikkje eit fotografi. Det same året, 1885, vart landsmålet jamstilt, som vi kjem til seinare.",
     },
     {
+      type: "bilete",
+      src: "bilete/unionsflagg-1844.png",
+      alt: "Det norske flagget med unionsmerket i øvre hjørne, eit merke i norske og svenske fargar",
+      caption: "Unionsflagget frå 1844, med «sildesalaten» i hjørnet (offentleg eigedom)",
       title: "Ein ny situasjon",
       steps: [
         "<p class=\"stor\">Noreg blir løyst frå Danmark</p>",
@@ -270,6 +278,10 @@ Larar.register("historie-aasen", {
       notes: "Årstalet står på tidslinja i førre modul. Mange gjettar høgt. Poenget er at ein ung mann utan utdanning tok på seg ei enorm oppgåve. Spør: kva kunne de tenkje dykk å ta på dykk om fem til ti år?",
     },
     {
+      type: "bilete",
+      src: "bilete/dahl-sognefjorden.jpg",
+      alt: "Måleri av ein snødekt gard ved Sognefjorden med bratte fjell og ein båt i fjæra",
+      caption: "«Vinter ved Sognefjorden» av J.C. Dahl, 1827 (offentleg eigedom)",
       title: "Reisene 1842–1846",
       steps: [
         "<p class=\"stor\">Stipend frå <strong>Det Kongelige Norske Videnskabers Selskab</strong></p>",
@@ -306,6 +318,10 @@ Larar.register("historie-aasen", {
       notes: "Peik på tittelsida: boka om det norske folkespråket er skriven på dansk. Aasen skreiv sjølv dansk, fordi det var skriftspråket. Forklar kva som er kva: ein grammatikk viser korleis orda blir bøygde og sett saman, ei ordbok samlar orda, og prøvene viste korleis språket kunne sjå ut i tekstar.",
     },
     {
+      type: "bilete",
+      src: "bilete/brudeferd-hardanger.jpg",
+      alt: "Måleri av ein brudefølgje i robåtar på ein blank fjord med fjell og grøne lier",
+      caption: "«Brudeferd i Hardanger» av Adolph Tidemand og Hans Gude, 1848 (offentleg eigedom)",
       title: "Landsmål",
       steps: [
         "<p class=\"kjempe midt\">landsmål</p>",
@@ -590,6 +606,10 @@ Larar.register("historie-aasen-reise", {
       notes: "Seljord var den tredje vinteren på reise. Trondheim er byen stipendet kom frå. Helgeland var det lengste nord han kom på langferda. Spør elevane om nokon av dei bur nær ein av stadene, og la dei finne heimstaden sin på kartet.",
     },
     {
+      type: "bilete",
+      src: "bilete/dahl-sognefjorden.jpg",
+      alt: "Måleri av ein snødekt gard ved Sognefjorden med bratte fjell og ein båt i fjæra",
+      caption: "«Vinter ved Sognefjorden» av J.C. Dahl, 1827 (offentleg eigedom)",
       title: "Bygdene, ikkje byane",
       steps: [
         "<p class=\"stor\">Christiania: berre <strong>ni dagar</strong></p>",
@@ -790,6 +810,10 @@ Larar.register("historie-striden", {
       notes: "Ein enkel kontroll. Dei som vel samnorsk, har kanskje høyrt ordet før: det kjem om nokre minutt.",
     },
     {
+      type: "bilete",
+      src: "bilete/stortinget.jpg",
+      alt: "Gammalt fotografi av Stortingsbygningen i Kristiania, ein stor bygning i gul murstein",
+      caption: "Foto: Marthinius Skøien, mellom 1880 og 1910 (offentleg eigedom)",
       title: "1885: jamstillingsvedtaket",
       steps: [
         "<p class=\"stor\"><strong>Stortinget</strong> vedtek:</p>",

@@ -27,7 +27,7 @@ frå Språkrådet.
 - Eigne tekstar blir lagra i `localStorage`
 - Språksjekk i skriveoppgåvene: bokmålsvarsel bygd på ordbanken i kurset, og skrivefeil mot ei nynorsk ordliste på 412 000 former, med tyding og direktelenkje til ordbokene.no for kvart forslag
 - Reisene til Ivar Aasen (`aasen-reise.html`): modul med interaktiv forelesing på eit 3D-kart over Noreg, der eleven følgjer ein liten Aasen-figur langs ruta kapittel for kapittel, med stoppestader, datoar og oppgåver undervegs
-- Bilete og små animerte figurar i modulane: portrett og historiske bilete frå Wikimedia Commons (`bilete/`, lisensar i `bilete/KJELDE.md`), tidslinje, «to liner»-diagram, ordbygg, dei fire formene, setningsledd, V2-demonstrasjon, kjønnskort og ein nummerert ordbokartikkel (`js/figurar.js` og «Figurar» i `css/style.css`)
+- Bilete og små animerte figurar i modulane: portrett, historiske bilete, kart og norsk kunst frå Wikimedia Commons (`bilete/`, lisensar i `bilete/KJELDE.md`), tidslinje, «to liner»-diagram, ordbygg, dei fire formene, setningsledd, V2-demonstrasjon, kjønnskort og ein nummerert ordbokartikkel (`js/figurar.js` og «Figurar» i `css/style.css`)
 - Lærarsida (`larer/`): presentasjon til tavleundervisning og lærarrettleiing til kvar modul, med talarvindauge, tavleøvingar frå ordbanken, kompetansemål frå læreplanen i norsk (NOR01-08), manus og automatisk fasit. Formatet står i `larer/README.md`, og `node tools/validate-larar.js` sjekkar innhaldet
 - Heile sida er statisk og fungerer på GitHub Pages utan byggjesteg
 

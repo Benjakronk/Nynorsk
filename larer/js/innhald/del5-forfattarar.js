@@ -328,12 +328,12 @@ Larar.register("lesing-vinje", {
       alt: "Portrett av Aasmund Olavsson Vinje",
       caption: "Foto: Nasjonalbiblioteket (ingen kjende restriksjonar)",
       body: `<ul>
-          <li>Journalist, dikter, reiseskildrar</li>
-          <li>Tok landsmålet i bruk i praksis</li>
-          <li>Bladet <em class="nn">Dølen</em></li>
-          <li><em class="nn">Ferdaminne fraa Sumaren 1860</em></li>
+          <li class="steg">Journalist, dikter, reiseskildrar</li>
+          <li class="steg">Tok landsmålet i bruk i praksis</li>
+          <li class="steg">Bladet <em class="nn">Dølen</em></li>
+          <li class="steg"><em class="nn">Ferdaminne fraa Sumaren 1860</em></li>
         </ul>`,
-      notes: "Om klassen har hatt modulen Møt nynorskforfattarane, spør kva dei hugsar om Vinje før du viser punkta. Stilen hans var observant og ironisk, og han blanda høgt og lågt: frå filosofisk refleksjon til ein vits om kva han åt på krua. <em>Ferdaminne</em> er ei reiseskildring frå turen til kroninga av Karl 15. i Trondheim. Det er difor kursteksten i dag er ei reiseskildring.",
+      notes: "Om klassen har hatt modulen Møt nynorskforfattarane, spør kva dei hugsar om Vinje før du trykkjer fram punkta eitt og eitt. Stilen hans var observant og ironisk, og han blanda høgt og lågt: frå filosofisk refleksjon til ein vits om kva han åt på krua. <em>Ferdaminne</em> er ei reiseskildring frå turen til kroninga av Karl 15. i Trondheim. Det er difor kursteksten i dag er ei reiseskildring.",
     },
     {
       type: "diskuter",
@@ -355,6 +355,10 @@ Larar.register("lesing-vinje", {
       notes: "Viss du har eit kart, vis ruta over Hardangervidda frå Finse til Myrdal og ned mot fjorden. Mange elevar har aldri vore der, og teksten blir lettare når dei ser at toget går frå snaufjell til fjord på kort tid. Det er poenget i siste avsnitt.",
     },
     {
+      type: "bilete",
+      src: "bilete/finse-1909.jpg",
+      alt: "Svart-kvitt fotografi av jernbanelina over snødekt høgfjell ved Finse",
+      caption: "Bergensbanen ved Finse, 1909. Foto: Anders Beer Wilse (CC0)",
       title: "Sjå etter dette når du les",
       body: `<ul class="stor">
           <li>Kva forteljaren <strong>ser</strong>, og kva han <strong>tenkjer</strong></li>
@@ -575,6 +579,10 @@ Larar.register("lesing-garborg", {
       notes: "Det siste punktet er ikkje eit vanskeleg ord, men ein nøkkel til teksten: Anders gruar seg til og lengtar etter det same, at mor skal klemme han utan å spørje. Spør om nokon har kjent det slik. Det er eit døme på motstridande kjensler, som er typisk for psykologisk realisme.",
     },
     {
+      type: "bilete",
+      src: "bilete/kielland-jaeren.jpg",
+      alt: "Måleri av eit flatt, ope landskap på Jæren med lyng, steinar og ein låg himmel",
+      caption: "«Fra Jæren» av Kitty Kielland, 1878 (offentleg eigedom)",
       title: "Sjå etter dette når du les",
       body: `<ul class="stor">
           <li>Kor lite som blir sagt <strong>høgt</strong></li>
@@ -824,6 +832,10 @@ Larar.register("lesing-duun", {
       notes: "Etter sitatet kjem ei trapp: først namn, så kvar han var, så kven dei var. Men ikkje sauene. Be elevane finne denne rekkja i teksten. Ho viser korleis sjukdomen tek meir og meir, og førebur at sauene er det siste han har att.",
     },
     {
+      type: "bilete",
+      src: "bilete/balke-storm.jpg",
+      alt: "Måleri av eit mørkt, stormfullt hav med tunge skyer og ein liten båt",
+      caption: "Storm på havet. Peder Balke, 1870 (offentleg eigedom)",
       title: "Naturen som motstandar",
       steps: [
         "<p class=\"stor\"><em class=\"nn\">«Vinden reiv i alt han nådde.»</em></p>",

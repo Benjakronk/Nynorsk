@@ -1240,7 +1240,14 @@ button.ghost:hover { background: var(--bg); }
 }
 .figur.portrett.liten { width: 150px; }
 .figur.brei { clear: both; }
+.figur.halv {
+  float: right;
+  width: 44%;
+  margin: 4px 0 12px 22px;
+}
 .section::after { content: ""; display: block; clear: both; }
+/* Boksar ved sida av eit flytande bilete skal ikkje gå inn under biletet. */
+.section .callout { display: flow-root; }
 .muted-note { color: var(--ink-faint); font-size: 14px; margin: 4px 0 12px; }
 
 /* Glir inn når dei kjem til syne */
@@ -1432,6 +1439,7 @@ li > .merk[data-n]::before { margin-right: 6px; }
 }
 @media (max-width: 640px) {
   .figur.portrett { width: 140px; margin-left: 14px; }
+  .figur.halv { float: none; width: 100%; margin-left: 0; }
   .toliner { grid-template-columns: 1fr; }
   .toliner .line.midt { max-width: none; flex-direction: row; flex-wrap: wrap; }
   .former { grid-template-columns: repeat(2, 1fr); }

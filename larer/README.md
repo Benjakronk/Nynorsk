@@ -45,6 +45,13 @@ slutt, i ein grøn boks merkt «Svar»).
 | `oppgave` | `title`, `body`, `tid`, valfritt `del` | «Elevane arbeider»: går over til arbeid i modulen |
 | `drill` | `spec`, `n`, `intro` | tavleøving med `n` oppgåver trekte frå ordbanken. `spec` er same spesifikasjon som ein drill-seksjon i modulane (`bank`, `set`, `tasks`, `filter`, `mode`). Første trykk viser svaret, neste trykk neste oppgåve |
 
+Skal noko i sjølve innhaldet haldast att, som ein kolonne eller rader i ein
+tabell, får elementa klassen `steg`. Dei kjem fram eitt og eitt i den
+rekkjefølgja dei står, før `steps` og `svar`. Element med same `data-steg`
+kjem fram på same trykk, til dømes to celler i same rad:
+`<td class="steg" data-steg="r1">`. Notata skal aldri be læraren dekkje til
+tavla. Validatoren melder feil om dei gjer det.
+
 Hjelpeklassar i `body` og `steps`: `stor`, `kjempe`, `midt`, `liten`, `merk`,
 `to-kol` og `tre-kol` (kolonnar), `boks` (kvit boks), `callout`. Tabellar og
 `<em class="nn">`/`<em class="bm">` verkar som i kurset. Figurane frå

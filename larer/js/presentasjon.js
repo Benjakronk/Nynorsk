@@ -53,9 +53,17 @@
     const svar = s.svar ? `<div class="svar steg"><span class="svar-merke">Svar</span>${s.svar}</div>` : "";
     return steps + svar;
   }
+  // Alt med klassen `steg` blir vist eitt og eitt, i den rekkjefølgja det står.
+  // Element med same `data-steg` (t.d. to celler i same tabellrad) kjem fram på same trykk.
   function stegVisar(el) {
-    const alle = [...el.querySelectorAll(":scope .steg")];
-    return { tal: alle.length, vis: k => alle.forEach((d, j) => d.classList.toggle("vist", j < k)) };
+    const grupper = new Map();
+    el.querySelectorAll(":scope .steg").forEach((d, j) => {
+      const nøkkel = d.dataset.steg ? "g:" + d.dataset.steg : "e:" + j;
+      if (!grupper.has(nøkkel)) grupper.set(nøkkel, []);
+      grupper.get(nøkkel).push(d);
+    });
+    const liste = [...grupper.values()];
+    return { tal: liste.length, vis: k => liste.forEach((g, j) => g.forEach(d => d.classList.toggle("vist", j < k))) };
   }
 
   const BYGG = {
