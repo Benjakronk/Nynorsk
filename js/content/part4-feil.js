@@ -2,8 +2,8 @@
    Oppgåvetypen «findError» let eleven klikke på feil ord og rette det:
      { type: "exercise", exerciseType: "findError",
        question: "Finn og rett feila. Det er 2 feil.",
-       text: "Jenten kastet ballen.",                 // rein tekst, ingen HTML
-       errors: [ { token: "Jenten", accept: ["Jenta"] },
+       text: "Venninnen kastet ballen.",                 // rein tekst, ingen HTML
+       errors: [ { token: "Venninnen", accept: ["Venninna"] },
                  { token: "kastet", accept: ["kasta"] } ],  // token må stå ordrett i teksten; nth: 2 om ordet står fleire gonger
        explanation: "…" } */
 
@@ -269,7 +269,7 @@ Modules.register({
         <table>
           <thead><tr><th>Feil</th><th>Rett</th><th>Regel</th></tr></thead>
           <tbody>
-            <tr><td><em class="bm">boken, jenten, døren</em></td><td><em class="nn">boka, jenta, døra</em></td>
+            <tr><td><em class="bm">boken, døren, solen</em></td><td><em class="nn">boka, døra, sola</em></td>
                 <td>Hokjønnsord får <strong>-a</strong> i bestemt form eintal.</td></tr>
             <tr><td><em class="bm">husene, barnene, årene</em></td><td><em class="nn">husa, barna, åra</em></td>
                 <td>Inkjekjønnsord får <strong>-a</strong> i bestemt form fleirtal.</td></tr>
@@ -363,12 +363,12 @@ Modules.register({
       type: "exercise",
       exerciseType: "findError",
       question: "Finn og rett feila. Klikk på eit ord for å markere det, og skriv rett form. Det er <strong>2 feil</strong> i setninga.",
-      text: "Jenten kastet ballen til hunden sin.",
+      text: "Venninnen kastet ballen til hunden sin.",
       errors: [
-        { token: "Jenten", accept: ["Jenta"] },
+        { token: "Venninnen", accept: ["Venninna"] },
         { token: "kastet", accept: ["kasta"] },
       ],
-      explanation: "Hokjønn får -a i bestemt form eintal (jenta). A-verb får -a i preteritum (kasta).",
+      explanation: "Hokjønn får -a i bestemt form eintal (venninna). A-verb får -a i preteritum (kasta).",
     },
     {
       type: "exercise",

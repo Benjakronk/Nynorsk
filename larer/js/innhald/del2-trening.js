@@ -18,12 +18,12 @@ Larar.register("trening-substantiv", {
     {
       type: "diskuter",
       title: "Kva er gale?",
-      prompt: `<p class="stor"><em class="bm">Jenten</em> las <em class="bm">boken</em> i eit av <em class="bm">husene</em>.</p>
+      prompt: `<p class="stor"><em class="bm">Venninnen</em> las <em class="bm">boken</em> i eit av <em class="bm">husene</em>.</p>
         <p>Rett setninga til nynorsk. Kvifor trur du så mange skriv slik?</p>`,
       form: "Snakk med sidemannen",
       tid: 2,
-      svar: "<em class=\"nn\">Jenta las boka i eit av husa.</em> Bokmål brukar ofte <em class=\"bm\">-en</em> på hokjønnsord og <em class=\"bm\">-ene</em> på inkjekjønn i fleirtal. Nynorsk har <em class=\"nn\">-a</em> på begge stadene.",
-      notes: "Lat elevane forklare kvifor feila kjem: dei fleste les og høyrer mest bokmål, og bokmål kan bruke hankjønnsendingar på hokjønnsord. Poenget er at <em>-a</em> er ei nøkkelending på nynorsk: <em>jenta, boka</em> i eintal og <em>husa</em> i fleirtal.",
+      svar: "<em class=\"nn\">Venninna las boka i eit av husa.</em> Bokmål brukar ofte <em class=\"bm\">-en</em> på hokjønnsord og <em class=\"bm\">-ene</em> på inkjekjønn i fleirtal. Nynorsk har <em class=\"nn\">-a</em> på begge stadene.",
+      notes: "Lat elevane forklare kvifor feila kjem: dei fleste les og høyrer mest bokmål, og bokmål kan bruke hankjønnsendingar på hokjønnsord. Poenget er at <em>-a</em> er ei nøkkelending på nynorsk: <em>venninna, boka</em> i eintal og <em>husa</em> i fleirtal.",
     },
     {
       title: "Tre kjønn, tre mønster",
@@ -198,7 +198,7 @@ Larar.register("trening-substantiv", {
       { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og samle ordlista med dei orda klassen bomma på.</p>", lysbilete: "18" },
     ],
     misoppfatningar: [
-      { feil: "«Jenten, boken, solen.»", hjelp: "Hokjønnsord får <em class=\"nn\">-a</em> i bestemt eintal på nynorsk. Bruk kjønnskortet: <em class=\"nn\">ei jente, jenta</em>." },
+      { feil: "«Boken, døren, solen.»", hjelp: "Hokjønnsord får <em class=\"nn\">-a</em> i bestemt eintal på nynorsk. Bruk kjønnskortet: <em class=\"nn\">ei jente, jenta</em>." },
       { feil: "«Husene, eplene, årene.»", hjelp: "Inkjekjønn har <em class=\"nn\">-a</em> i bestemt fleirtal: <em class=\"nn\">husa, epla, åra</em>. Lat elevane seie rekkja <em class=\"nn\">eit hus, huset, hus, husa</em> høgt." },
       { feil: "«Mange husar» eller «mange huser».", hjelp: "Inkjekjønnsord har inga ending i ubestemt fleirtal: <em class=\"nn\">mange hus, mange eple</em>." },
       { feil: "«Alle bokene.»", hjelp: "Nokre hokjønnsord skifter vokal i fleirtal: <em class=\"nn\">bøker, bøkene</em>. Samanlikn med engelsk <em>foot, feet</em>." },
@@ -1238,7 +1238,7 @@ Larar.register("trening-blanda", {
         "<p class=\"stor\">Småord: <em class=\"nn\">ikkje, berre, kva, nokon, då</em></p>",
         "<p class=\"stor\">Ordstilling: verbalet på <strong>andreplass</strong></p>",
       ],
-      notes: "Gå raskt gjennom lista, eitt punkt om gongen. For kvart punkt kan du spørje: kva er den vanlegaste feilen her? Svara er <em class=\"bm\">jenten</em>, <em class=\"bm\">kastet</em>, <em class=\"bm\">skriver</em>, <em class=\"bm\">vanligt</em>, <em class=\"bm\">ikke</em> og subjektet på plass 2.",
+      notes: "Gå raskt gjennom lista, eitt punkt om gongen. For kvart punkt kan du spørje: kva er den vanlegaste feilen her? Svara er <em class=\"bm\">boken</em>, <em class=\"bm\">kastet</em>, <em class=\"bm\">skriver</em>, <em class=\"bm\">vanligt</em>, <em class=\"bm\">ikke</em> og subjektet på plass 2.",
     },
     {
       type: "drill",
@@ -1260,13 +1260,13 @@ Larar.register("trening-blanda", {
       type: "sporsmal",
       question: "Kva for ei setning er skriven rett?",
       options: [
-        "<em>Jenten kasta ballen til dei.</em>",
-        "<em>Jenta kastet ballen til dei.</em>",
-        "<em>Jenta kasta ballen til dei.</em>",
-        "<em>Jenta kasta ballen til dem.</em>",
+        "<em>Venninnen kasta ballen til dei.</em>",
+        "<em>Venninna kastet ballen til dei.</em>",
+        "<em>Venninna kasta ballen til dei.</em>",
+        "<em>Venninna kasta ballen til dem.</em>",
       ],
       correct: 2,
-      explain: "<em class=\"nn\">Jenta kasta ballen til dei.</em> Hokjønn får <em class=\"nn\">-a</em>, a-verb får <em class=\"nn\">-a</em> i preteritum, og <em class=\"bm\">dem</em> heiter <em class=\"nn\">dei</em> på nynorsk.",
+      explain: "<em class=\"nn\">Venninna kasta ballen til dei.</em> Hokjønn får <em class=\"nn\">-a</em>, a-verb får <em class=\"nn\">-a</em> i preteritum, og <em class=\"bm\">dem</em> heiter <em class=\"nn\">dei</em> på nynorsk.",
       notes: "Fingerrunde, éin til fire. Kvart feil alternativ har éin feil. Be elevane som valde rett, peike ut feilen i dei tre andre.",
     },
     {
@@ -1280,11 +1280,11 @@ Larar.register("trening-blanda", {
     {
       type: "diskuter",
       title: "Runde 3: finn feila",
-      prompt: `<p>I går skrev eg eit brev til bestemor. Da eg kom heim, eg åt middag med jenten som bur ved sida av oss. Huset hennar er stor, men ho har ikke nokon hage.</p>
+      prompt: `<p>I går skrev eg eit brev til bestemor. Da eg kom heim, eg åt middag med venninnen min som bur ved sida av oss. Huset hennar er stor, men ho har ikke nokon hage.</p>
         <p class="stor">Det er seks feil. Finn alle!</p>`,
       form: "Laget samarbeider",
       tid: 3,
-      svar: "<em class=\"nn\">skreiv</em> (sterkt verb), <em class=\"nn\">Då</em> (éin gong i fortida), <em class=\"nn\">åt eg</em> (verbalet på andreplass), <em class=\"nn\">jenta</em> (hokjønn), <em class=\"nn\">stort</em> (predikativ etter <em class=\"nn\">huset</em>), <em class=\"nn\">ikkje</em>.",
+      svar: "<em class=\"nn\">skreiv</em> (sterkt verb), <em class=\"nn\">Då</em> (éin gong i fortida), <em class=\"nn\">åt eg</em> (verbalet på andreplass), <em class=\"nn\">venninna</em> (hokjønn), <em class=\"nn\">stort</em> (predikativ etter <em class=\"nn\">huset</em>), <em class=\"nn\">ikkje</em>.",
       notes: "Laga skriv ned feila og rettingane. Eitt poeng per feil dei finn og rettar, og minuspoeng for ting som var rette. <em>nokon hage</em> er rett: hankjønn i ei nekting. Mange går i den fella og tel det som feil.",
     },
     {

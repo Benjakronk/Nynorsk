@@ -4,7 +4,7 @@
    SUBSTANTIV: KJØNN OG BØYING
    ====================================================================== */
 Larar.register("grammatikk-substantiv", {
-  tittelnotat: "Substantivbøying er det elevane oftast bommar på i sidemålstekstar, og det er lett å rette når dei kan tre små mønster. Sei det høgt: når timen er over, skal de aldri meir skrive <em>jenten</em> eller <em>husene</em> på nynorsk.",
+  tittelnotat: "Substantivbøying er det elevane oftast bommar på i sidemålstekstar, og det er lett å rette når dei kan tre små mønster. Sei det høgt: når timen er over, skal de aldri meir skrive <em>boken</em> eller <em>husene</em> på nynorsk.",
   slides: [
     {
       title: "I dag skal vi",
@@ -130,8 +130,8 @@ Larar.register("grammatikk-substantiv", {
       body: `<table>
           <thead><tr><th>Bokmål</th><th>Nynorsk</th></tr></thead>
           <tbody>
-            <tr><td><em class="bm">jenten</em></td><td class="steg"><em class="nn">jenta</em></td></tr>
             <tr><td><em class="bm">boken</em></td><td class="steg"><em class="nn">boka</em></td></tr>
+            <tr><td><em class="bm">solen</em></td><td class="steg"><em class="nn">sola</em></td></tr>
             <tr><td><em class="bm">husene</em></td><td class="steg"><em class="nn">husa</em></td></tr>
             <tr><td><em class="bm">bilene</em></td><td class="steg"><em class="nn">bilane</em></td></tr>
           </tbody>
@@ -150,10 +150,10 @@ Larar.register("grammatikk-substantiv", {
     {
       type: "diskuter",
       title: "Set om til nynorsk",
-      prompt: `<p class="stor midt"><em class="bm">Jenten leste boken i hele dag.</em></p>`,
+      prompt: `<p class="stor midt"><em class="bm">Hun leste boken i hele dag.</em></p>`,
       form: "Skriv saman i par",
       tid: 3,
-      svar: "<em class=\"nn\">Jenta las boka heile dagen.</em> (Òg rett: <em class=\"nn\">Jenta las boka i heile dag.</em>)",
+      svar: "<em class=\"nn\">Ho las boka heile dagen.</em> (Òg rett: <em class=\"nn\">Ho las boka i heile dag.</em>)",
       notes: "<em>lese</em> er eit sterkt verb: <em>lese, les, las, har lese</em>. Det kjem vi tilbake til i verbmodulen. Be eit par skrive svaret sitt på tavla, og la klassen rette.",
     },
     {
@@ -163,13 +163,13 @@ Larar.register("grammatikk-substantiv", {
           <li>Skriv med <em class="nn">ein</em>, <em class="nn">ei</em> eller <em class="nn">eit</em>: <em class="nn">stol, klokke, barn, sol, år</em></li>
           <li>Bestemt eintal: <em class="nn">ein bil, ei bok, eit eple</em></li>
           <li>Bestemt fleirtal: <em class="nn">gutar, bøker, hus, eple</em></li>
-          <li>Skriv på nynorsk: <em class="bm">jenten, husene, epler, bilene</em></li>
+          <li>Skriv på nynorsk: <em class="bm">døren, husene, epler, bilene</em></li>
         </ol>`,
       form: "Åleine",
       tid: 6,
       svar: `<div class="to-kol">
           <div>1. <em class="nn">ein stol, ei klokke, eit barn, ei sol, eit år</em><br>2. <em class="nn">bilen, boka, eplet</em></div>
-          <div>3. <em class="nn">gutane, bøkene, husa, epla</em><br>4. <em class="nn">jenta, husa, eple, bilane</em></div>
+          <div>3. <em class="nn">gutane, bøkene, husa, epla</em><br>4. <em class="nn">døra, husa, eple, bilane</em></div>
         </div>`,
       notes: "Gå rundt og spør: kva kjønn har ordet, og korleis veit du det? Er nokon usikre på kjønnet, kan dei prøve med ein, ei og eit høgt eller spørje sidemannen. Oppgåve 4 har ei felle: <em>epler</em> er ubestemt fleirtal og blir <em>eple</em>, ikkje <em>epla</em>. Vis fasiten etter om lag seks minutt og la elevane rette sjølve.",
     },
@@ -190,7 +190,7 @@ Larar.register("grammatikk-substantiv", {
       title: "Oppsummering",
       steps: [
         "<p class=\"stor\">Nynorsk har <strong>tre kjønn</strong>: <em class=\"nn\">ein, ei, eit</em>.</p>",
-        "<p class=\"stor\">Hokjønn: <em class=\"nn\">jent<strong>a</strong></em>, ikkje <em class=\"bm\">jenten</em>.</p>",
+        "<p class=\"stor\">Hokjønn: <em class=\"nn\">bok<strong>a</strong></em>, ikkje <em class=\"bm\">boken</em>.</p>",
         "<p class=\"stor\">Inkjekjønn: <em class=\"nn\">hus<strong>a</strong></em>, ikkje <em class=\"bm\">husene</em>.</p>",
         "<p class=\"stor\">Usikker på kjønnet? <strong>Slå opp.</strong></p>",
       ],
@@ -204,7 +204,7 @@ Larar.register("grammatikk-substantiv", {
       "Elevane kan avgjere kjønnet på eit substantiv og bruke ordboka når dei er usikre.",
       "Elevane kan bøye substantiv i hankjønn, hokjønn og inkjekjønn i alle fire formene.",
       "Elevane kan bøye inkjekjønnsord rett i fleirtal (<em class=\"nn\">hus, husa, eple, epla</em>).",
-      "Elevane kan rette typiske bokmålsformer som <em class=\"bm\">jenten</em> og <em class=\"bm\">husene</em>.",
+      "Elevane kan rette typiske bokmålsformer som <em class=\"bm\">boken</em> og <em class=\"bm\">husene</em>.",
     ],
     lareplan: [11, 12],
     forkunnskapar: "Elevane bør vite kva eit substantiv er. Modulen Ordklassane: ei oversikt og bøyingsdelen av grunnomgrepa i Del 2 gir eit godt grunnlag, men modulen kan òg brukast åleine.",
@@ -223,7 +223,7 @@ Larar.register("grammatikk-substantiv", {
       { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive eit hokjønnsord og eit inkjekjønnsord i alle fire formene på ein exit-lapp.</p>", lysbilete: "19" },
     ],
     misoppfatningar: [
-      { feil: "«Det heiter <em>jenten</em> og <em>boken</em>.»", hjelp: "Spør kva kjønn ordet har. Hokjønn får alltid <em class=\"nn\">-a</em> i bestemt eintal: <em class=\"nn\">jenta, boka, sola</em>." },
+      { feil: "«Det heiter <em>boken</em> og <em>døren</em>.»", hjelp: "Spør kva kjønn ordet har. Hokjønn får alltid <em class=\"nn\">-a</em> i bestemt eintal: <em class=\"nn\">jenta, boka, sola</em>." },
       { feil: "«Inkjekjønn får -ene i bestemt fleirtal, som på bokmål.»", hjelp: "Inkjekjønn får <em class=\"nn\">-a</em>: <em class=\"nn\">husa, barna, epla</em>. Lat elevane seie «alle husa» høgt til det sit." },
       { feil: "«Alle ord som endar på -e, er hokjønn.»", hjelp: "Vis motdøme: <em class=\"nn\">ein hage</em> er hankjønn og <em class=\"nn\">eit eple</em> er inkjekjønn. Kjønnet står i ordboka, ikkje i endinga." },
       { feil: "«Kjønnet har med biologisk kjønn å gjere.»", hjelp: "Grammatisk kjønn er ein ordklasse, ikkje eit biologisk kjønn. <em class=\"nn\">ei bok</em> og <em class=\"nn\">ei sol</em> er hokjønn, <em class=\"nn\">eit barn</em> er inkjekjønn." },

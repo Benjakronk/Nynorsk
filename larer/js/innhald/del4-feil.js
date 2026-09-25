@@ -276,10 +276,10 @@ Larar.register("feil-boying", {
     },
     {
       title: "Finn feila",
-      body: `<p class="kjempe midt"><em class="bm">Jenten kastet ballen til hunden sin.</em></p>`,
+      body: `<p class="kjempe midt"><em class="bm">Venninnen kastet ballen til hunden sin.</em></p>`,
       steps: [`<p class="midt">Det er <strong>2 feil</strong>.</p>`],
-      svar: `<em class="nn"><strong>Jenta kasta</strong> ballen til hunden sin.</em> Hokjønn får -a i bestemt form, og a-verb får -a i fortid.`,
-      notes: `Start med å la elevane finne feila utan hjelp. Mange ser <em>kastet</em>, færre ser <em>jenten</em>. Legg merke til at <em>hunden</em> er rett, for hund er hankjønn.`,
+      svar: `<em class="nn"><strong>Venninna kasta</strong> ballen til hunden sin.</em> Hokjønn får -a i bestemt form, og a-verb får -a i fortid.`,
+      notes: `Start med å la elevane finne feila utan hjelp. Mange ser <em>kastet</em>, færre ser <em>venninnen</em>. Legg merke til at <em>hunden</em> er rett, for hund er hankjønn.`,
     },
     {
       title: "A-verb: -a, ikkje -et",

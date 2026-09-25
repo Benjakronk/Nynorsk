@@ -109,7 +109,8 @@ const Drills = (() => {
   function nounWrongForms(n, formIdx) {
     const st = stemOf(n.w);
     const w = n.w;
-    if (formIdx === 1) return [st + "en", st + "et", st + "a"];
+    // bmA: hokjønnsord der bokmål òg brukar -a (jenta, hytta, kua), så -en er ikkje ein realistisk feil.
+    if (formIdx === 1) return n.bmA ? [st + "et", st + "a"] : [st + "en", st + "et", st + "a"];
     if (formIdx === 2) return [st + "er", st + "ar", st + "e", w];
     if (formIdx === 3) return [st + "ene", st + "ane", st + "a", st + "erne"];
     return [];

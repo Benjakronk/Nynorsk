@@ -48,13 +48,13 @@ Modules.register({
         <p>Bokmål har gjerne <em class="bm">en/et</em> og fleirtal på <em class="bm">-ene</em>
         i inkjekjønn (husene). Nynorsk har <em class="nn">ein/ei/eit</em> og fleirtal på
         <em class="nn">-a</em> i inkjekjønn (<em class="nn">husa</em>). Hokjønn på nynorsk
-        får ikkje «-en», men <em class="nn">-a</em>: <em class="nn">jenta</em>, ikkje
-        <em class="bm">jenten</em>.</p>
+        får ikkje «-en», men <em class="nn">-a</em>: <em class="nn">boka</em>, ikkje
+        <em class="bm">boken</em>.</p>
 
         <div class="callout warn">
-          <strong>Vanleg feil:</strong> <em class="bm">jenten</em>, <em class="bm">boken</em>,
-          <em class="bm">husene</em>. Rett nynorsk: <em class="nn">jenta</em>,
-          <em class="nn">boka</em>, <em class="nn">husa</em>.
+          <strong>Vanleg feil:</strong> <em class="bm">boken</em>, <em class="bm">døren</em>,
+          <em class="bm">husene</em>. Rett nynorsk: <em class="nn">boka</em>,
+          <em class="nn">døra</em>, <em class="nn">husa</em>.
         </div>
       `,
     },
@@ -117,7 +117,7 @@ Modules.register({
       exerciseType: "matching",
       question: "Para saman bokmål og nynorsk:",
       pairs: [
-        ["jenten", "jenta"],
+        ["solen", "sola"],
         ["boken", "boka"],
         ["husene", "husa"],
         ["epler", "eple"],
@@ -130,10 +130,10 @@ Modules.register({
       type: "exercise",
       exerciseType: "translate",
       question: "Set om til nynorsk:",
-      source: "Jenten leste boken i hele dag.",
+      source: "Hun leste boken i hele dag.",
       accept: [
-        "Jenta las boka heile dagen.",
-        "Jenta las boka i heile dag.",
+        "Ho las boka heile dagen.",
+        "Ho las boka i heile dag.",
       ],
       hint: "«leste» (preteritum av lese) heiter «las» på nynorsk; «heile» har ofte ein -e meir.",
       explanation: "Verbet «å lese» er sterkt og bøyest: lese – les – las – har lese.",

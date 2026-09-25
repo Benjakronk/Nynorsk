@@ -112,7 +112,7 @@ Larar.register("skriving-omsetjing", {
     {
       title: "Steg 3: substantiv og samsvar",
       steps: [
-        "<p class=\"stor\">Hokjønn: <em class=\"bm\">boken</em> → <em class=\"nn\">boka</em>, <em class=\"bm\">jenten</em> → <em class=\"nn\">jenta</em></p>",
+        "<p class=\"stor\">Hokjønn: <em class=\"bm\">boken</em> → <em class=\"nn\">boka</em>, <em class=\"bm\">døren</em> → <em class=\"nn\">døra</em></p>",
         "<p class=\"stor\">Inkjekjønn fleirtal: <em class=\"bm\">husene</em> → <em class=\"nn\">husa</em></p>",
         "<p class=\"stor\">Adjektivet følgjer med: <em class=\"nn\">eit stort hus, bøkene er gamle</em></p>",
       ],
