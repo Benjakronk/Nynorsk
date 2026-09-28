@@ -1,5 +1,5 @@
-/* «Blekkranet» (spel.html): pikselskjerm med vindauge i stil med dei klassiske
-   Final Fantasy-spela: blå gradient, kvit kant og kvit tekst. */
+/* «Blekkranet» (spel.html): pikselskjerm med vindauge i stil med 16-bits
+   Final Fantasy-spela: blå gradient, dobbel kvit og grå kant, kvit tekst. */
 
 body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 100dvh; overflow: hidden; background: #0e0c12; }
 .rpg-side .topbar { flex: none; }
@@ -10,9 +10,9 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 
 /* Vindauge */
 .rpg-vindauge {
-  background: linear-gradient(180deg, #3446a8 0%, #1b2566 100%);
-  border: 3px solid #e8e8f0; border-radius: 8px;
-  box-shadow: 0 0 0 2px #0e0c12, 0 8px 24px rgba(0, 0, 0, .5);
+  background: linear-gradient(180deg, #3a4cb0 0%, #24307c 45%, #141a52 100%);
+  border: 3px solid #f0f0f8; border-radius: 7px;
+  box-shadow: inset 0 0 0 2px #7880a8, 0 0 0 2px #0a0514, 0 8px 24px rgba(0, 0, 0, .5);
   color: #fff; font-family: "Inter", system-ui, sans-serif;
   text-shadow: 1px 1px 0 #0e0c12;
 }
@@ -48,6 +48,7 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 .rpg-tale-namn { margin: 0 0 4px; font-weight: 700; color: #ffe39a; font-size: 15px; }
 .rpg-tale-namn[hidden] { display: none; }
 .rpg-tale-tekst { margin: 0; font-size: 18px; line-height: 1.45; }
+.rpg-ord { color: #ffe39a; font-weight: 700; text-decoration: underline dotted rgba(255, 227, 154, .6); text-underline-offset: 3px; }
 .rpg-tale.klar::after { content: "▼"; position: absolute; right: 14px; bottom: 6px; font-size: 12px; animation: blink-pil .8s steps(2) infinite; }
 @keyframes blink-pil { 50% { opacity: 0; } }
 .rpg-val { display: flex; flex-direction: column; margin-top: 8px; }
@@ -77,7 +78,15 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 .mn-hogre h3 { margin: 4px 0 6px; font-size: 18px; color: #ffe39a; }
 .mn-hogre h3 small { color: #cfd4ff; font-weight: 400; font-size: 13px; }
 .mn-hogre p { margin: 0 0 6px; }
-.mn-kort { padding: 8px 0 10px; border-bottom: 1px solid rgba(232, 232, 240, .25); }
+.mn-kort { padding: 8px 0 10px; border-bottom: 1px solid rgba(232, 232, 240, .25); display: flex; gap: 14px; align-items: center; }
+.mn-figur { width: 48px; height: 72px; image-rendering: pixelated; flex: none; }
+.ob-fam { border-left: 6px solid var(--fam); padding-left: 8px; margin-top: 14px !important; }
+.ob-fam-li { border-left: 4px solid var(--fam); }
+.ob-liste { list-style: none; padding: 0; margin: 0 0 6px; display: grid; gap: 6px; }
+.ob-liste li { padding: 6px 10px; background: rgba(255, 255, 255, .07); border-radius: 6px; line-height: 1.5; }
+.ob-liste small { color: #cfd4ff; }
+.ob-form { color: #ffe39a; font-weight: 600; }
+.ob-kjelde { color: #8b93c9; }
 .mn-liten { font-size: 13px; color: #cfd4ff; }
 .mn-liste { list-style: none; padding: 0; margin: 0 0 10px; display: grid; gap: 8px; }
 .mn-liste li { padding: 6px 10px; background: rgba(255, 255, 255, .07); border-radius: 6px; }
@@ -110,10 +119,22 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 .kp-mp { color: #9fd0ff; }
 .kp-atb { height: 8px; border-radius: 99px; background: #0e1540; border: 1px solid #8b93c9; overflow: hidden; }
 .kp-atb i { display: block; height: 100%; background: linear-gradient(90deg, #f4c430, #ffe39a); }
-.kamp-meny { position: absolute; left: 12px; bottom: 124px; min-width: 210px; display: flex; flex-direction: column; padding: 8px 6px; }
+.kamp-meny { position: absolute; left: 12px; bottom: 124px; min-width: 230px; max-width: calc(100% - 24px); max-height: calc(100% - 150px); display: flex; flex-direction: column; padding: 8px 6px; overflow: auto; }
 .kamp-meny[hidden] { display: none; }
+.km-alt { display: grid; }
+.kamp-meny.brei .km-alt { grid-template-columns: 1fr 1fr; column-gap: 8px; }
 .kamp-meny button { font-size: 17px; display: flex; justify-content: space-between; gap: 18px; }
-.kamp-meny button small { color: #9fd0ff; }
+.kamp-meny button[style*="--fam"] span::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 2px; background: var(--fam); box-shadow: 1px 1px 0 #0a0514; }
+.kamp-meny button.rettskriven span { color: #ff9a8a; font-style: italic; }
+.kamp-meny button small { color: #9fd0ff; white-space: nowrap; }
+.km-info { margin: 6px 8px 0; padding-top: 6px; border-top: 1px solid rgba(232, 232, 240, .3); font-size: 13px; color: #cfd4ff; max-width: 460px; }
+.km-info[hidden] { display: none; }
+.kamp-hint {
+  position: absolute; top: 60px; left: 50%; transform: translateX(-50%); margin: 0; padding: 6px 14px;
+  background: rgba(10, 5, 20, .78); color: #ffe39a; border-radius: 6px; font: 14px "Inter", system-ui, sans-serif;
+}
+.kamp-fiendar small.avslort { color: #7fd0f0; }
+.kamp-fiendar small.sov { color: #d8c8f8; }
 .km-tittel { margin: 0 0 4px 8px; font-size: 13px; color: #ffe39a; }
 
 .kamp-sporsmal {
@@ -129,6 +150,8 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 .sp-tekst { margin: 6px 0 12px; font-size: 20px; }
 .sp-ord { font-family: "Source Serif Pro", Georgia, serif; font-size: 30px; font-weight: 700; }
 .sp-cue { color: #cfd4ff; font-size: 15px; }
+.sp-hint { margin: -4px 0 12px; font-size: 14px; color: #ffe39a; }
+.kamp-sporsmal.rettskriven { border-color: #ff8a80; box-shadow: 0 0 30px rgba(255, 138, 128, .35); }
 .sp-setning { font-family: "Source Serif Pro", Georgia, serif; font-size: 22px; }
 .sp-alt { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .sp-alt button {
@@ -160,7 +183,7 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
   background: radial-gradient(ellipse at 50% 40%, #2a2150 0%, #0e0c12 70%); color: #f1ead6; text-align: center; padding: 20px;
 }
 .rpg-tittel[hidden] { display: none; }
-.rpg-tittel canvas { width: 128px; height: 128px; image-rendering: pixelated; animation: svev 3s ease-in-out infinite; }
+.rpg-tittel .tt-latt { width: 240px; height: 216px; image-rendering: pixelated; animation: svev 3s ease-in-out infinite; }
 @keyframes svev { 50% { transform: translateY(-8px); } }
 .rpg-tittel h1 {
   margin: 0; font-family: "Source Serif Pro", Georgia, serif; font-size: clamp(40px, 8vw, 72px); letter-spacing: .04em;

@@ -1,14 +1,19 @@
 /* Feltmotoren i «Blekkranet»: kart sett ovanfrå, rørsle, dører, folk,
    kister, møte med fiendar, samtaleboksar og forteljarskjerm.
 
+   Figurane er 16 × 24 pikslar og står med føtene nedst i ruta si. Tretoppar
+   blir teikna etter figurane, så ein kan gå bak dei.
+
    Teikninga skjer på eit lerret på 320 × 192 pikslar (20 × 12 fliser), som
    blir skalert opp med heile tal utan utjamning. Samtalar, menyar og
    forteljing er HTML over lerretet, så teksten blir skarp.
 
    Motor.last(kartId, merke)  lastar eit kart og set spelaren på merket
-   Motor.krokar               { samtale(folk), kiste(k), lampe(), plante(x, y),
-                                dor(d), inngang(i), kamp(lag), verd(), meny() }
-   Motor.tale(tekst, namn)    samtaleboks, gir eit løfte som blir oppfylt ved Z
+   Motor.krokar               { tilstand(), modus(), samtale(folk), kiste(k), lampe(),
+                                dor(d), laast(tekst), inngang(i), kamp(lag), meny(),
+                                opna(k), synleg(k) }
+   Motor.tale(tekst, namn)    samtaleboks, gir eit løfte som blir oppfylt ved Z.
+                              ⟪ord⟫ i teksten blir utheva.
    Motor.fort(linjer)         forteljing på svart skjerm
    Motor.pause(true|false)    stoppar rørsla (under samtalar, menyar og kamp) */
 window.Motor = (function () {
@@ -26,7 +31,7 @@ window.Motor = (function () {
   let spelar = { x: 0, y: 0, dir: 0, fx: 0, fy: 0, flytt: null, steg: 0, sprite: null };
   let pausa = true, stegTilKamp = 20;
   const krokar = {};
-  let fylgje = null;          // skreppa som går etter Ivar
+  let fylgje = null;          // den i partiet som går etter Ivar
 
   /* ---------- Tastatur og berøring ---------- */
   const halde = new Set();
@@ -82,7 +87,7 @@ window.Motor = (function () {
       if (f.flis) fliser[y][x] = f.flis;
       return Object.assign({}, f, { x, y, dir: 0, sprite: f.usynleg ? null : Pikslar.figur(RPGData.U[f.u]) });
     });
-    kart = { id, def, w, h, fliser, merke, folk, kister: def.kister || [], dorer: def.dorer || [] };
+    kart = { id, def, w, h, fliser, merke, folk, kister: def.kister || [], dorer: (def.dorer || []).filter(d => d.til) };
     const [sx, sy] = merke[merkeId] || merke["1"] || [1, 1];
     spelar.x = sx; spelar.y = sy; spelar.fx = sx; spelar.fy = sy; spelar.flytt = null;
     if (dir != null) spelar.dir = dir;
@@ -90,21 +95,20 @@ window.Motor = (function () {
     stegTilKamp = 12 + Math.floor(Math.random() * 14);
     $("rpg-stadnamn").textContent = def.namn;
     $("rpg-stadnamn").classList.remove("vis"); void $("rpg-stadnamn").offsetWidth; $("rpg-stadnamn").classList.add("vis");
-    // Plantene som alt er plukka, er vanleg gras.
-    if (def.planter) for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) if (fliser[y][x] === "u" && krokar.plukka && krokar.plukka(x, y)) fliser[y][x] = def.golv;
     const inngang = (def.inngang || []).find(i => i.merke === merkeId);
     if (inngang && krokar.inngang) setTimeout(() => krokar.inngang(inngang), 50);
   }
 
   const doraVed = (x, y) => kart.dorer.find(d => d.ved[0] === x && d.ved[1] === y);
-  const kisteVed = (x, y) => kart.kister.find(k => k.ved[0] === x && k.ved[1] === y);
+  const kisteSynleg = k => !k.gøymd || (krokar.synleg && krokar.synleg(k));
+  const kisteVed = (x, y) => kart.kister.find(k => k.ved[0] === x && k.ved[1] === y && kisteSynleg(k));
   const folkVed = (x, y) => kart.folk.find(f => f.x === x && f.y === y);
   function kanGaa(x, y) {
     if (x < 0 || y < 0 || x >= kart.w || y >= kart.h) return false;
     const c = kart.fliser[y][x];
     if (c === "D" || c === "d" || c === "E") return !!doraVed(x, y);
     if (Pikslar.FAST.has(c)) return false;
-    if (folkVed(x, y)) return false;
+    if (folkVed(x, y) || kisteVed(x, y)) return false;
     return true;
   }
 
@@ -153,7 +157,7 @@ window.Motor = (function () {
     }
     const f = kart.def.fiendar;
     const c = kart.fliser[spelar.y][spelar.x];
-    if (f && (f.alle || c === ",") && krokar.kamp) {
+    if (f && !kart.def.fristad && (f.alle || c === ",") && krokar.kamp) {
       if (--stegTilKamp <= 0) {
         stegTilKamp = 14 + Math.floor(Math.random() * 14);
         const lag = f.lag[Math.floor(Math.random() * f.lag.length)];
@@ -170,10 +174,9 @@ window.Motor = (function () {
     if (k && krokar.kiste) { krokar.kiste(k); return; }
     const c = kart.fliser[ty] && kart.fliser[ty][tx];
     if (c === "L" && krokar.lampe) { krokar.lampe(); return; }
-    if (c === "u" && kart.def.planter && krokar.plante) { krokar.plante(tx, ty); return; }
-    if ((c === "D" || c === "d") && !doraVed(tx, ty) && krokar.laast) krokar.laast("Døra er stengd.");
+    if ((c === "D" || c === "d" || c === "E") && krokar.laast) { const d = (kart.def.dorer || []).find(d => d.ved[0] === tx && d.ved[1] === ty); if (!d || !d.til) krokar.laast((d && d.laast) || "Døra er stengd."); }
   }
-  function fjernFlis(x, y) { kart.fliser[y][x] = kart.def.golv; }
+  function fjernFolk(merke) { if (kart) kart.folk = kart.folk.filter(f => f.merke !== merke); }
 
   /* ---------- Teikning ---------- */
   function teikn(no) {
@@ -185,37 +188,64 @@ window.Motor = (function () {
     const x0 = Math.floor(-ox) - 1, y0 = Math.floor(-oy) - 1;
     for (let y = Math.max(0, y0); y < Math.min(kart.h, y0 + VH + 2); y++) for (let x = Math.max(0, x0); x < Math.min(kart.w, x0 + VW + 2); x++) {
       const c = kart.fliser[y][x];
-      // Folk som står på ei flis (setjekassa, pulten), har sin eigen tegnrute.
-      g.drawImage(Pikslar.flis(c, no), Math.round((x + ox) * S), Math.round((y + oy) * S));
+      const sx = Math.round((x + ox) * S), sy = Math.round((y + oy) * S);
+      // Veggar med vegg eller dør under seg er sidevegger: dei blir teikna ovanfrå.
+      const under = y + 1 < kart.h ? kart.fliser[y + 1][x] : null;
+      const topp = "XcG".includes(c) && (under === null || "XcGE".includes(under));
+      g.drawImage(Pikslar.flis(topp ? c + "t" : c, no, x, y, kart.def.golv), sx, sy);
       const k = kisteVed(x, y);
-      if (k && krokar.opna && krokar.opna(k)) { g.fillStyle = "rgba(0,0,0,.35)"; g.fillRect(Math.round((x + ox) * S) + 2, Math.round((y + oy) * S) + 4, 12, 3); }
+      if (k && k.gøymd) g.drawImage(Pikslar.flis("K", 0, 0, 0, kart.def.golv), sx, sy);
+      if (k && krokar.opna && krokar.opna(k)) { g.fillStyle = "rgba(10,5,20,.45)"; g.fillRect(sx + 2, sy + 4, 12, 3); }
     }
+    const GANG = [1, 0, 2, 0];
     const figurar = kart.folk.filter(f => f.sprite).map(f => ({ y: f.y, sp: f.sprite, x: f.x, dir: f.dir, steg: 0 }));
     const gaar = !!spelar.flytt;
-    if (fylgje) figurar.push({ y: fylgje.fy, x: fylgje.fx, sp: fylgje.sprite, dir: fylgje.dir, steg: gaar ? Math.floor(no / 140) % 2 : 0 });
-    figurar.push({ y: spelar.fy, x: spelar.fx, sp: spelar.sprite, dir: spelar.dir, steg: gaar ? Math.floor(no / 140) % 2 : 0 });
+    const steg = gaar ? GANG[Math.floor(no / 110) % 4] : 0;
+    if (fylgje) figurar.push({ y: fylgje.fy, x: fylgje.fx, sp: fylgje.sprite, dir: fylgje.dir, steg });
+    figurar.push({ y: spelar.fy, x: spelar.fx, sp: spelar.sprite, dir: spelar.dir, steg });
     figurar.sort((a, b) => a.y - b.y);
-    for (const f of figurar) g.drawImage(f.sp.rammer[f.dir][f.steg], Math.round((f.x + ox) * S), Math.round((f.y + oy) * S) - 2);
+    for (const f of figurar) {
+      const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S);
+      g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx + 3, sy + 13, 10, 3); g.fillRect(sx + 4, sy + 12, 8, 5);
+      g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy - 9);
+    }
+    // Tretoppar over figurane
+    for (let y = Math.max(0, y0); y < Math.min(kart.h, y0 + VH + 3); y++) for (let x = Math.max(0, x0); x < Math.min(kart.w, x0 + VW + 2); x++) {
+      const t = Pikslar.topp(kart.fliser[y][x]);
+      if (t) g.drawImage(t, Math.round((x + ox) * S), Math.round((y - 1 + oy) * S));
+    }
   }
 
   /* ---------- Samtalar og forteljing ---------- */
   const boks = $("rpg-tale"), boksNamn = $("rpg-tale-namn"), boksTekst = $("rpg-tale-tekst");
+  // ⟪ord⟫ blir utheva. Skrivemaskinteksten viser dei første n teikna.
+  function taleHtml(tekst, n) {
+    let ut = "", i = 0, inne = false;
+    for (const ch of tekst) {
+      if (ch === "⟪") { inne = true; ut += '<b class="rpg-ord">'; continue; }
+      if (ch === "⟫") { inne = false; ut += "</b>"; continue; }
+      if (i++ >= n) break;
+      ut += E(ch);
+    }
+    return ut + (inne ? "</b>" : "");
+  }
   function tale(tekst, namn) {
     return new Promise(res => {
       boks.hidden = false;
       boksNamn.textContent = namn || "";
       boksNamn.hidden = !namn;
       boksTekst.textContent = "";
+      const lengd = [...tekst.replace(/[⟪⟫]/g, "")].length;
       let i = 0, ferdig = false;
       const skriv = setInterval(() => {
         i += 2;
-        boksTekst.textContent = tekst.slice(0, i);
-        if (i >= tekst.length) { clearInterval(skriv); ferdig = true; boks.classList.add("klar"); }
+        boksTekst.innerHTML = taleHtml(tekst, i);
+        if (i >= lengd) { clearInterval(skriv); ferdig = true; boks.classList.add("klar"); }
       }, 16);
       boks.classList.remove("klar");
       const slepp = lytt({
         a: () => {
-          if (!ferdig) { clearInterval(skriv); boksTekst.textContent = tekst; ferdig = true; boks.classList.add("klar"); return; }
+          if (!ferdig) { clearInterval(skriv); boksTekst.innerHTML = taleHtml(tekst, Infinity); ferdig = true; boks.classList.add("klar"); return; }
           slepp(); boks.hidden = true; res();
         },
       });
@@ -274,7 +304,7 @@ window.Motor = (function () {
   window.addEventListener("resize", tilpass);
 
   return {
-    VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFlis,
+    VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk,
     pause(p) { pausa = p; if (p) halde.clear(); },
     get kart() { return kart; }, get spelar() { return spelar; },
     settSpelar(sprite) { spelar.sprite = sprite; },

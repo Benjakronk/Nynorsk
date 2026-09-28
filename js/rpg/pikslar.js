@@ -1,199 +1,580 @@
-/* Pikselgrafikken i «Blekkranet»: fliser, figurar og fiendar, teikna i kode.
+/* Pikselgrafikken i «Blekkranet», i 16-bitsstil: fliser, figurar og fiendar.
 
-   Alt blir teikna éin gong til små lerret (16 × 16 pikslar for fliser og
-   figurar, 32 × 32 for fiendar) og skalert opp utan utjamning, så det ser ut
-   som eit gammalt konsollspel. Spelet treng difor ingen biletfiler.
+   Nesten alt blir teikna i kode. Figurar og fiendar blir bygde som eit
+   rutenett av «materiale» (hud, hår, jakke, blekk …). Så får kvart materiale
+   ein fargeskala (fem tonar frå skugge til lys), lyset kjem frå oppe til
+   venstre, og ein mørk omrisslinje blir lagd rundt. Det gir same uttrykket
+   som i konsollspela på 90-talet. Blekklatten (bilete/spel/blekklatten.png)
+   er teikna for hand og viser stilen resten følgjer.
 
-   Pikslar.flis(teikn, t)        lerret for eit flisteikn (t = tid, for vatn)
-   Pikslar.figur(utsjånad)       { rammer[retning][steg] } for ein person
-   Pikslar.fiende(namn)          lerret for ein fiende
-   Retningane er 0 ned, 1 opp, 2 venstre, 3 høgre. */
+   Pikslar.flis(teikn, t, x, y, golv)  16 × 16-lerret for eit flisteikn
+   Pikslar.topp(teikn)                 det som stikk opp over flisa (tretoppar), eller null
+   Pikslar.figur(utsjånad)             { rammer[retning][steg] }, 16 × 24 pikslar,
+                                       retning 0 ned, 1 opp, 2 venstre, 3 høgre, steg 0 står, 1 og 2 går
+   Pikslar.fiende(namn)                lerret for ein fiende i kamp */
 window.Pikslar = (function () {
   "use strict";
-  const S = 16;
+  const S = 16, FW = 16, FH = 24;
 
-  function lerret(w, h) { const c = document.createElement("canvas"); c.width = w; c.height = h || w; return c; }
-  // Eit enkelt, fast tilfeldig tal per (x, y, frø), så grasmønsteret er likt kvar gong.
-  const hash = (x, y, s) => { let h = (x * 374761393 + y * 668265263 + s * 2147483647) | 0; h = (h ^ (h >>> 13)) * 1274126177; return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
+  function lerret(w, h) { const c = document.createElement("canvas"); c.width = w; c.height = h == null ? w : h; return c; }
+  const hash = (x, y, s) => { let h = (x * 374761393 + y * 668265263 + s * 1442695041) | 0; h = (h ^ (h >>> 13)) * 1274126177; return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
   const px = (g, x, y, f, w = 1, h = 1) => { g.fillStyle = f; g.fillRect(x, y, w, h); };
 
-  const F = {
-    gras: "#5d9b45", gras2: "#4f8a3b", gras3: "#6fae52", villgras: "#467a36", villgras2: "#3c6b2e",
-    jord: "#b89060", jord2: "#a37d50", stein: "#8d8a85", stein2: "#6f6c68", stein3: "#aaa7a0",
-    vatn: "#2f6fa8", vatn2: "#3f86c2", vatn3: "#9fd0ee",
-    tre: "#2f6b3a", tre2: "#23542d", tre3: "#3f8248", stamme: "#6b4a2a",
-    raud: "#9c3b2e", raud2: "#7e2d23", kvit: "#e9e4d4", kvit2: "#cfc8b4",
-    torv: "#5f8a3a", torv2: "#4b7030", skifer: "#4d5663", skifer2: "#3a424d",
-    plank: "#a8804f", plank2: "#8e6a40", plank3: "#c09462",
-    mork: "#2a2530", mork2: "#1c1820", gull: "#e0b43c", papir: "#f1ead6",
-  };
-
-  /* ---------- Fliser ---------- */
-  function gras(g, x0, y0, base, a, b, fro) {
-    px(g, 0, 0, base, S, S);
-    for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
-      const r = hash(x + x0, y + y0, fro);
-      if (r < 0.08) px(g, x, y, a); else if (r > 0.94) px(g, x, y, b);
-    }
+  /* ---------- Fargar ---------- */
+  const hx = h => { h = h.replace("#", ""); if (h.length === 3) h = h.split("").map(c => c + c).join(""); const n = parseInt(h, 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+  const rgb = a => "#" + a.map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, "0")).join("");
+  const blend = (a, b, t) => { const A = hx(a), B = hx(b); return rgb(A.map((v, i) => v + (B[i] - v) * t)); };
+  // Skuggane dreg mot djup fiolett og lyset mot varm kvit, slik pikselkunstnarar gjer.
+  const SKUGGE = "#1a1238", LYS = "#fff1c4", OMRISS = "#0a0514";
+  const rampar = new Map();
+  function ramp(base) {
+    if (rampar.has(base)) return rampar.get(base);
+    const r = [blend(base, SKUGGE, 0.62), blend(base, SKUGGE, 0.34), base, blend(base, LYS, 0.26), blend(base, LYS, 0.52)];
+    rampar.set(base, r);
+    return r;
   }
-  const FLIS = {
-    ".": g => gras(g, 0, 0, F.gras, F.gras2, F.gras3, 1),
-    ",": g => { gras(g, 0, 0, F.villgras, F.villgras2, F.gras2, 2); for (const [x, y] of [[3, 5], [10, 3], [6, 11], [13, 12]]) { px(g, x, y, F.gras3); px(g, x, y - 1, F.gras3); px(g, x + 1, y - 2, F.gras3); } },
-    '"': g => { gras(g, 0, 0, F.gras, F.gras2, F.gras3, 3); for (const [x, y, c] of [[3, 4, "#f2d34b"], [11, 6, "#e8e8f0"], [6, 11, "#d9577a"], [13, 13, "#f2d34b"]]) { px(g, x, y, c); px(g, x - 1, y, c); px(g, x + 1, y, c); px(g, x, y - 1, c); px(g, x, y + 1, "#2e5a24"); } },
-    "u": g => { FLIS["."](g); px(g, 7, 9, "#2e5a24", 2, 6); px(g, 4, 5, "#c65fd6", 3, 3); px(g, 9, 4, "#c65fd6", 3, 3); px(g, 7, 2, "#e38af0", 2, 3); px(g, 5, 6, "#f4d8f7"); px(g, 10, 5, "#f4d8f7"); },
-    "#": g => { FLIS["."](g); px(g, 7, 12, F.stamme, 2, 4); for (let r = 0; r < 12; r++) { const w = 2 + Math.floor(r * 0.9); px(g, 8 - w / 2 | 0, r, r % 3 === 2 ? F.tre2 : F.tre, w, 1); } px(g, 6, 3, F.tre3, 2, 1); px(g, 5, 7, F.tre3, 2, 1); },
-    "t": g => { FLIS["."](g); px(g, 7, 10, F.stamme, 2, 6); px(g, 2, 2, F.tre, 12, 9); px(g, 3, 1, F.tre, 10, 1); px(g, 1, 4, F.tre, 14, 5); px(g, 4, 3, F.tre3, 4, 2); px(g, 3, 8, F.tre2, 10, 2); },
-    "~": (g, t) => { px(g, 0, 0, F.vatn, S, S); const f = Math.floor(t / 400) % 4; for (let y = 2; y < S; y += 5) for (let x = 0; x < S; x += 8) { const xx = (x + f * 2 + (y % 2) * 3) % S; px(g, xx, y, F.vatn2, 4, 1); px(g, (xx + 1) % S, y - 1, F.vatn3, 2, 1); } },
-    "_": g => { px(g, 0, 0, "#dcc79a", S, S); for (let i = 0; i < 12; i++) px(g, hash(i, 1, 4) * S | 0, hash(i, 2, 4) * S | 0, "#c7b081"); },
-    "=": g => { px(g, 0, 0, F.jord, S, S); for (let i = 0; i < 14; i++) px(g, hash(i, 3, 5) * S | 0, hash(i, 4, 5) * S | 0, i % 2 ? F.jord2 : "#c9a574"); },
-    "^": g => { px(g, 0, 0, F.stein2, S, S); for (let r = 0; r < S; r++) { const w = S - Math.abs(8 - r) * 0; px(g, 0, r, r < 3 ? F.kvit : r % 4 === 0 ? F.stein2 : F.stein, w, 1); } px(g, 2, 5, F.stein3, 5, 1); px(g, 9, 9, F.stein3, 4, 1); px(g, 0, 15, F.stein2, S, 1); },
-    "o": g => { FLIS["."](g); px(g, 3, 6, F.stein2, 10, 8); px(g, 4, 5, F.stein, 8, 8); px(g, 5, 6, F.stein3, 3, 2); },
-    "|": g => { FLIS["."](g); for (const x of [1, 8, 15]) px(g, x - 1, 4, F.plank2, 2, 10); for (const y of [6, 10]) px(g, 0, y, F.plank, S, 2); },
-    "W": g => { px(g, 0, 0, F.raud, S, S); for (let y = 3; y < S; y += 4) px(g, 0, y, F.raud2, S, 1); px(g, 0, 0, F.raud2, 1, S); },
-    "w": g => { px(g, 0, 0, F.kvit, S, S); for (let y = 3; y < S; y += 4) px(g, 0, y, F.kvit2, S, 1); },
-    "v": g => { px(g, 0, 0, F.raud, S, S); for (let y = 3; y < S; y += 4) px(g, 0, y, F.raud2, S, 1); px(g, 4, 4, F.kvit, 8, 8); px(g, 5, 5, "#6aa3c9", 6, 6); px(g, 7, 5, F.kvit, 2, 6); px(g, 5, 7, F.kvit, 6, 2); },
-    "V": g => { FLIS.w(g); px(g, 4, 4, F.raud2, 8, 8); px(g, 5, 5, "#6aa3c9", 6, 6); px(g, 7, 5, F.raud2, 2, 6); px(g, 5, 7, F.raud2, 6, 2); },
-    "R": g => { px(g, 0, 0, F.torv, S, S); for (let i = 0; i < 20; i++) px(g, hash(i, 5, 6) * S | 0, hash(i, 6, 6) * S | 0, i % 2 ? F.torv2 : F.gras3); px(g, 0, 15, F.stamme, S, 1); },
-    "r": g => { px(g, 0, 0, F.skifer, S, S); for (let y = 0; y < S; y += 4) for (let x = (y / 4) % 2 ? 0 : 4; x < S; x += 8) px(g, x, y, F.skifer2, 1, 4); for (let y = 3; y < S; y += 4) px(g, 0, y, F.skifer2, S, 1); },
-    "D": g => { px(g, 0, 0, F.raud, S, S); px(g, 3, 2, F.plank2, 10, 14); px(g, 4, 3, F.plank, 8, 13); px(g, 10, 9, F.gull, 1, 2); },
-    "d": g => { px(g, 0, 0, F.kvit, S, S); px(g, 3, 2, F.plank2, 10, 14); px(g, 4, 3, F.plank, 8, 13); px(g, 10, 9, F.gull, 1, 2); },
-    "E": g => { px(g, 0, 0, F.plank2, S, S); px(g, 2, 0, F.mork, 12, S); px(g, 3, 12, F.plank3, 10, 4); },
-    "P": g => { px(g, 0, 0, F.plank, S, S); for (let y = 0; y < S; y += 4) { px(g, 0, y + 3, F.plank2, S, 1); px(g, (y * 5) % S, y, F.plank2, 1, 3); } },
-    "X": g => { px(g, 0, 0, F.mork, S, S); px(g, 0, 12, F.plank2, S, 4); px(g, 0, 12, F.plank3, S, 1); },
-    "B": g => { px(g, 0, 0, F.plank2, S, S); for (let y = 1; y < S; y += 5) { px(g, 1, y, F.mork2, 14, 4); for (let x = 2; x < 14; x += 2) px(g, x, y + (x % 3 === 0 ? 1 : 0), ["#8a3b2e", "#2f4f6f", "#5b6b3a", "#b08a3a", "#6b3f6f"][(x + y) % 5], 1, 4 - (x % 3 === 0 ? 1 : 0)); } },
-    "K": g => { FLIS.P(g); px(g, 2, 5, F.plank2, 12, 9); px(g, 2, 4, "#8a5a2a", 12, 3); px(g, 2, 7, F.gull, 12, 1); px(g, 7, 7, F.gull, 2, 3); },
-    "k": g => { FLIS.P(g); px(g, 1, 4, F.plank3, 14, 6); px(g, 1, 10, F.plank2, 14, 1); px(g, 2, 11, F.plank2, 2, 4); px(g, 12, 11, F.plank2, 2, 4); px(g, 6, 5, F.papir, 4, 3); },
-    "b": g => { FLIS.P(g); px(g, 1, 1, F.plank2, 14, 14); px(g, 2, 2, F.kvit, 12, 4); px(g, 2, 6, "#3d6fa0", 12, 9); },
-    "p": g => { FLIS.P(g); px(g, 2, 2, F.mork, 12, 12); px(g, 3, 3, "#4a4450", 10, 4); px(g, 7, 0, F.stein2, 2, 3); px(g, 4, 9, F.papir, 8, 3); px(g, 5, 10, F.mork, 6, 1); },
-    "S": g => { FLIS.P(g); px(g, 1, 2, F.plank2, 14, 12); for (let y = 3; y < 13; y += 3) for (let x = 2; x < 14; x += 3) px(g, x, y, F.stein3, 2, 2); },
-    "L": (g, t) => { FLIS.P(g); px(g, 5, 10, F.plank2, 6, 5); px(g, 7, 4, F.gull, 2, 6); const f = (Math.floor(t / 300) % 2) ? "#ffe9a0" : "#ffd35c"; px(g, 6, 1, f, 4, 4); px(g, 7, 0, "#fff6d0", 2, 2); },
-    "Y": g => { px(g, 0, 0, "#8a6b3a", S, S); for (let x = 1; x < S; x += 3) for (let y = 1; y < S; y += 4) { px(g, x, y, "#d6b54a", 1, 3); px(g, x + 1, y, "#c49d34", 1, 2); } },
-    "Q": g => { px(g, 0, 0, F.plank, S, S); for (let x = 0; x < S; x += 4) px(g, x + 3, 0, F.plank2, 1, S); },
-    "c": g => { px(g, 0, 0, F.stein3, S, S); for (let y = 0; y < S; y += 4) for (let x = (y / 4) % 2 ? 0 : 4; x < S; x += 8) px(g, x, y, F.stein, 1, 4); for (let y = 3; y < S; y += 4) px(g, 0, y, F.stein, S, 1); },
-    "f": (g, t) => { px(g, 0, 0, F.stein2, S, S); px(g, 2, 2, F.stein, 12, 12); px(g, 4, 6, F.mork2, 8, 8); const k = Math.floor(t / 200) % 2; px(g, 6, 9 - k, "#f08a24", 4, 5 + k); px(g, 7, 10, "#ffd35c", 2, 3); },
-    "z": g => { FLIS.P(g); px(g, 4, 3, F.plank2, 8, 2); px(g, 4, 8, F.plank3, 8, 3); px(g, 4, 11, F.plank2, 1, 4); px(g, 11, 11, F.plank2, 1, 4); },
-    "g": g => { px(g, 0, 0, "#3a3540", S, S); px(g, 0, 0, "#4a4450", S, 2); for (let i = 0; i < 6; i++) px(g, hash(i, 7, 8) * S | 0, 3 + hash(i, 8, 8) * 12 | 0, "#26222b", 2, 1); },
-    "G": g => { px(g, 0, 0, "#58505e", S, S); for (let y = 0; y < S; y += 4) for (let x = (y / 4) % 2 ? 0 : 4; x < S; x += 8) px(g, x, y, "#46404b", 1, 4); for (let y = 3; y < S; y += 4) px(g, 0, y, "#46404b", S, 1); },
-    "n": g => { FLIS.P(g); px(g, 3, 6, "#1c1d20", 10, 7); px(g, 2, 5, "#1c1d20", 12, 2); px(g, 5, 3, "#1c1d20", 6, 3); px(g, 6, 7, "#fff", 1, 1); px(g, 9, 7, "#fff", 1, 1); },
-    " ": g => px(g, 0, 0, "#0e0c12", S, S),
-  };
-  const FAST = new Set(["#", "t", "~", "^", "o", "|", "W", "w", "v", "V", "R", "r", "B", "K", "k", "b", "p", "S", "L", "X", "c", "f", "z", "G", "n", " "]);
-  const cache = new Map();
-  function flis(teikn, t = 0) {
-    const anim = teikn === "~" || teikn === "L" || teikn === "f";
-    const nokkel = anim ? `${teikn}:${Math.floor(t / 200) % 8}` : teikn;
-    if (cache.has(nokkel)) return cache.get(nokkel);
-    const c = lerret(S), g = c.getContext("2d");
-    (FLIS[teikn] || FLIS[" "])(g, t);
-    cache.set(nokkel, c);
+
+  /* ---------- Materialrutenett ---------- */
+  function Rutenett(w, h) {
+    const m = Array.from({ length: h }, () => Array(w).fill(null));
+    const R = {
+      w, h, m,
+      get: (x, y) => (x < 0 || y < 0 || x >= w || y >= h) ? null : m[y][x],
+      set(k, x, y) { if (x >= 0 && y >= 0 && x < w && y < h) m[y][x] = k; return R; },
+      rect(k, x, y, rw, rh) { for (let j = 0; j < rh; j++) for (let i = 0; i < rw; i++) R.set(k, x + i, y + j); return R; },
+      ell(k, cx, cy, rx, ry) { for (let y = Math.floor(cy - ry); y <= Math.ceil(cy + ry); y++) for (let x = Math.floor(cx - rx); x <= Math.ceil(cx + rx); x++) { const dx = (x + 0.5 - cx) / rx, dy = (y + 0.5 - cy) / ry; if (dx * dx + dy * dy <= 1) R.set(k, x, y); } return R; },
+      // Vassrett strek på rad y frå x0 til og med x1
+      rad(k, y, x0, x1) { for (let x = x0; x <= x1; x++) R.set(k, x, y); return R; },
+      // Fyller rad for rad: [[y, x0, x1], …]
+      form(k, rader) { for (const [y, x0, x1] of rader) R.rad(k, y, x0, x1); return R; },
+      spegl() { for (const rad of m) rad.reverse(); return R; },
+    };
+    return R;
+  }
+  /* Teiknar rutenettet. pal: { materiale: farge | { fast: farge } | { farge, rund: true } }.
+     «fast» er ein farge utan skugge (auge, munn). «rund» gir mjuk skugge over heile
+     forma (hovud, blekkropp), elles får berre kantane lys og skugge. */
+  function mal(R, pal, opt = {}) {
+    const c = lerret(R.w, R.h), g = c.getContext("2d");
+    const boks = {};
+    for (let y = 0; y < R.h; y++) for (let x = 0; x < R.w; x++) {
+      const k = R.m[y][x]; if (k == null) continue;
+      const b = boks[k] || (boks[k] = { x0: x, y0: y, x1: x, y1: y });
+      b.x0 = Math.min(b.x0, x); b.y0 = Math.min(b.y0, y); b.x1 = Math.max(b.x1, x); b.y1 = Math.max(b.y1, y);
+    }
+    for (let y = 0; y < R.h; y++) for (let x = 0; x < R.w; x++) {
+      const k = R.m[y][x]; if (k == null) continue;
+      let p = pal[k]; if (p == null) p = "#ff00ff";
+      if (typeof p === "string") p = { farge: p };
+      if (p.fast) { px(g, x, y, p.fast); continue; }
+      const r = ramp(p.farge);
+      let v = 2;
+      if (p.rund) {
+        const b = boks[k], bw = Math.max(1, b.x1 - b.x0), bh = Math.max(1, b.y1 - b.y0);
+        const u = ((x - b.x0) / bw) * 0.45 + ((y - b.y0) / bh) * 0.55;
+        v = 3.6 - u * 3;
+      }
+      if (R.get(x, y - 1) !== k) v += 1;
+      else if (R.get(x - 1, y) !== k) v += 0.5;
+      if (R.get(x, y + 1) !== k) v -= 1;
+      if (R.get(x + 1, y) !== k) v -= 0.6;
+      const f = v - Math.floor(v);
+      let i = Math.floor(v) + (f > 0.5 && (x + y) % 2 === 0 ? 1 : 0);
+      i = Math.max(0, Math.min(4, i));
+      px(g, x, y, r[i]);
+    }
+    if (opt.omriss !== false) {
+      const d = g.getImageData(0, 0, R.w, R.h), a = d.data;
+      const fylt = (x, y) => x >= 0 && y >= 0 && x < R.w && y < R.h && R.m[y][x] != null && !((pal[R.m[y][x]] || {}).utanOmriss);
+      const [or, og, ob] = hx(opt.omrissFarge || OMRISS);
+      for (let y = 0; y < R.h; y++) for (let x = 0; x < R.w; x++) {
+        if (R.m[y][x] != null) continue;
+        if (fylt(x - 1, y) || fylt(x + 1, y) || fylt(x, y - 1) || fylt(x, y + 1)) { const i = (y * R.w + x) * 4; a[i] = or; a[i + 1] = og; a[i + 2] = ob; a[i + 3] = 255; }
+      }
+      g.putImageData(d, 0, 0);
+    }
     return c;
   }
 
-  /* ---------- Figurar ---------- */
-  // utsjånad: { hud, har, jakke, bukse, hatt, kjole, skjegg, sekk }
-  function figur(u) {
-    const rammer = [[], [], [], []];
-    for (let dir = 0; dir < 4; dir++) for (let steg = 0; steg < 2; steg++) {
-      const c = lerret(S), g = c.getContext("2d");
-      const beinSkil = steg === 1 ? 1 : 0;
-      // skugge
-      px(g, 4, 14, "rgba(0,0,0,.25)", 8, 2);
-      // bein
-      if (u.kjole) { px(g, 4, 9, u.kjole, 8, 5); px(g, 5, 14, u.sko || "#2a2530", 2, 1); px(g, 9, 14, u.sko || "#2a2530", 2, 1); }
-      else if (dir < 2) { px(g, 5, 10 + beinSkil, u.bukse, 2, 4 - beinSkil); px(g, 9, 10 + (1 - beinSkil), u.bukse, 2, 4 - (1 - beinSkil)); px(g, 5, 14, "#2a2530", 2, 1); px(g, 9, 14, "#2a2530", 2, 1); }
-      else { px(g, 6 + (steg ? -1 : 1), 10, u.bukse, 2, 4); px(g, 8 + (steg ? 1 : -1), 10, u.bukse, 2, 4); px(g, 6, 14, "#2a2530", 4, 1); }
-      // kropp
-      if (!u.kjole) px(g, 4, 6, u.jakke, 8, 5); else px(g, 4, 6, u.jakke, 8, 4);
-      px(g, 3, 7, u.jakke, 1, 3); px(g, 12, 7, u.jakke, 1, 3);
-      px(g, 3, 10, u.hud, 1, 1); px(g, 12, 10, u.hud, 1, 1);
-      if (u.sekk && dir !== 0) px(g, dir === 2 ? 11 : dir === 3 ? 2 : 5, 6, "#7a5a3a", dir === 1 ? 6 : 3, 5);
-      // hovud
-      px(g, 5, 1, u.hud, 6, 5);
-      px(g, 5, 0, u.har, 6, 2);
-      if (dir === 1) px(g, 5, 1, u.har, 6, 4);
-      else if (dir === 2) px(g, 9, 1, u.har, 2, 3);
-      else if (dir === 3) px(g, 5, 1, u.har, 2, 3);
-      else { px(g, 5, 1, u.har, 1, 2); px(g, 10, 1, u.har, 1, 2); }
-      if (dir !== 1) {
-        const ax = dir === 2 ? [6] : dir === 3 ? [9] : [6, 9];
-        for (const x of ax) px(g, x, 3, "#1c1d20");
-        if (u.skjegg) px(g, dir === 2 ? 5 : dir === 3 ? 7 : 6, 5, u.skjegg, dir === 0 ? 4 : 4, 1);
-      }
-      if (u.hatt) { px(g, 4, 0, u.hatt, 8, 1); px(g, 5, -1 + 0, u.hatt, 6, 1); }
-      rammer[dir][steg] = c;
+  /* ---------- Fliser ---------- */
+  const RAMP = {
+    gras: ["#27502d", "#35683a", "#4a8a3f", "#68a84a", "#92c65e"],
+    villgras: ["#1d3f28", "#285632", "#3a7236", "#548f42", "#79ad50"],
+    vatn: ["#172c66", "#1f418c", "#2a5cac", "#4282cc", "#9ed2f2"],
+    sand: ["#8a6a48", "#b08c5c", "#ceac74", "#e2c890", "#f2e2b4"],
+    jord: ["#4a3020", "#6a4630", "#8a6040", "#a87c52", "#c89c6a"],
+    stein: ["#2a2838", "#44425a", "#686680", "#8e8ca4", "#bcbccc"],
+    tommer: ["#2a160e", "#4a2a18", "#6c4024", "#8c5a32", "#b07c48"],
+    plank: ["#4a2e1a", "#6e4626", "#8e6034", "#ac7c46", "#c89a60"],
+    kvit: ["#6e6c86", "#a2a2b8", "#d2d0dc", "#ecebf0", "#ffffff"],
+    torv: ["#26401e", "#35582a", "#4a7234", "#628c40", "#86a852"],
+    skifer: ["#1a1e2e", "#283046", "#3a4460", "#52607e", "#76849e"],
+    korn: ["#6a4a1e", "#9a7028", "#c49a38", "#dcbc54", "#f0dc88"],
+    raud: ["#3a0e18", "#62182a", "#8a2638", "#b03c46", "#d06a64"],
+    blekk: ["#080010", "#101028", "#201848", "#383070", "#5848a0"],
+    stamme: ["#2e1a14", "#4a2c1c", "#6a4428", "#8a5e36", "#a87c4c"],
+  };
+  const R_ = RAMP;
+  function spreidd(v, fro, n, fn) { for (let i = 0; i < n; i++) fn(Math.floor(hash(i, v, fro) * S), Math.floor(hash(i, v + 17, fro + 3) * S), hash(i, v + 31, fro + 7)); }
+  function gras(g, v) {
+    const r = R_.gras;
+    px(g, 0, 0, r[2], S, S);
+    for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
+      const h = hash(x + v * 16, y, 11);
+      if (h < 0.05) px(g, x, y, r[1]); else if (h > 0.95) px(g, x, y, r[3]);
     }
-    return { rammer };
+    spreidd(v, 5, 4, (x, y) => { px(g, x, y, r[1]); px(g, x - 1, y - 1, r[3]); px(g, x + 1, y - 1, r[3]); px(g, x, y - 2, r[4]); });
+  }
+  let golvNo = "P";
+  const underGolv = (g, t, v) => (FLIS[golvNo] || FLIS.P)(g, t, v);
+  const FLIS = {
+    ".": (g, t, v) => gras(g, v),
+    ",": (g, t, v) => {
+      const r = R_.villgras;
+      px(g, 0, 0, r[1], S, S);
+      for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) if (hash(x + v * 16, y, 21) < 0.1) px(g, x, y, r[0]);
+      for (let i = 0; i < 9; i++) {
+        const x = Math.floor(hash(i, v, 22) * 15), y = 5 + Math.floor(hash(i, v, 23) * 11);
+        px(g, x, y - 4, r[3]); px(g, x, y - 3, r[3]); px(g, x, y - 2, r[2]); px(g, x, y - 1, r[2]); px(g, x + 1, y - 2, r[2]); px(g, x + 1, y - 1, r[1]);
+        px(g, x, y - 5, r[4]);
+      }
+    },
+    '"': (g, t, v) => {
+      gras(g, v);
+      const blom = [["#f8f0d8", "#d8c8a0", "#f8d840"], ["#f8d840", "#c09020", "#f8f0d8"], ["#e878a8", "#a84068", "#f8e0f0"], ["#a8b8f8", "#6070c8", "#f8f8ff"]];
+      spreidd(v, 31, 4, (x, y, h) => { const [a, b, c] = blom[Math.floor(h * 4)]; x = Math.min(13, Math.max(1, x)); y = Math.min(12, Math.max(1, y)); px(g, x - 1, y, a); px(g, x + 1, y, a); px(g, x, y - 1, a); px(g, x, y + 1, b); px(g, x, y, c); px(g, x, y + 2, R_.gras[1]); });
+    },
+    "~": (g, t, v) => {
+      const r = R_.vatn, f = Math.floor(t / 250) % 8;
+      px(g, 0, 0, r[2], S, S);
+      for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) if ((x + y * 3) % 7 === 0 && y % 4 === 1) px(g, x, y, r[1]);
+      for (let k = 0; k < 3; k++) {
+        const y = 2 + k * 5, x = (k * 6 + f * 2 + v * 3) % S;
+        px(g, x, y, r[3], 4, 1); px(g, (x + 1) % S, y - 1, r[4], 2, 1); px(g, (x + 4) % S, y + 1, r[1], 3, 1);
+      }
+      if ((f + v) % 4 === 0) px(g, (v * 5 + 3) % S, (v * 7 + 9) % S, "#ffffff");
+    },
+    "_": (g, t, v) => { const r = R_.sand; px(g, 0, 0, r[2], S, S); for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) { const h = hash(x + v * 16, y, 41); if (h < 0.1) px(g, x, y, r[1]); else if (h > 0.9) px(g, x, y, r[3]); } },
+    "=": (g, t, v) => {
+      const r = R_.jord; px(g, 0, 0, r[2], S, S);
+      for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) { const h = hash(x + v * 16, y, 51); if (h < 0.09) px(g, x, y, r[1]); else if (h > 0.93) px(g, x, y, r[3]); }
+      spreidd(v, 52, 3, (x, y) => { px(g, x, y, R_.stein[3], 2, 1); px(g, x, y + 1, R_.stein[1], 2, 1); });
+    },
+    "^": (g, t, v) => {
+      const r = R_.stein; px(g, 0, 0, r[1], S, S);
+      for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
+        const lag = (y + Math.floor(hash(Math.floor(x / 5), v, 61) * 4)) % 6;
+        px(g, x, y, lag === 0 ? r[3] : lag === 1 ? r[2] : lag === 5 ? r[0] : r[1]);
+      }
+      spreidd(v, 62, 2, (x, y) => { px(g, x, y, r[0], 1, 3); px(g, x + 1, y + 2, r[0], 1, 2); });
+    },
+    "o": (g, t, v) => { gras(g, v); const R = Rutenett(16, 16).ell("s", 8, 9.5, 6.5, 5); R.rad(null, 15, 0, 15); g.drawImage(mal(R, { s: { farge: "#686680", rund: true } }), 0, 0); },
+    "h": (g, t, v) => { gras(g, v); const R = Rutenett(16, 16).ell("h", 8, 9, 7.5, 6.5); g.drawImage(mal(R, { h: { farge: "#4a8a3f", rund: true } }), 0, 0); px(g, 4, 6, R_.gras[4], 2, 1); px(g, 7, 5, R_.gras[4], 3, 1); },
+    "x": (g, t, v) => { gras(g, v); const R = Rutenett(16, 16).rect("k", 7, 3, 2, 11).rect("k", 4, 6, 8, 2); g.drawImage(mal(R, { k: "#7a7888" }), 0, 0); px(g, 5, 15, "rgba(0,0,0,.25)", 7, 1); },
+    "|": (g, t, v) => {
+      gras(g, v);
+      const R = Rutenett(16, 16);
+      for (const x of [2, 13]) R.rect("p", x, 3, 1, 12);
+      for (let i = 0; i < 3; i++) for (let k = 0; k < 16; k++) R.set("s", k, 12 - Math.floor(k * 0.4) - i * 3);
+      g.drawImage(mal(R, { p: "#6a4428", s: "#8e6034" }), 0, 0);
+    },
+    "j": (g, t, v) => {
+      gras(g, v);
+      const R = Rutenett(16, 16);
+      R.ell("a", 4, 10, 4, 3.5).ell("b", 11.5, 10.5, 4.2, 3.5).ell("c", 8, 6, 4, 3);
+      g.drawImage(mal(R, { a: { farge: "#7a788e", rund: true }, b: { farge: "#686680", rund: true }, c: { farge: "#8e8ca4", rund: true } }), 0, 0);
+    },
+    "Y": (g, t, v) => {
+      const r = R_.korn; px(g, 0, 0, r[1], S, S);
+      for (let x = 0; x < S; x += 4) for (let y = 0; y < S; y += 2) { px(g, x + 1, y, r[3], 1, 2); px(g, x + 2, y, r[2], 1, 2); if ((y + x + v) % 6 === 0) px(g, x + 1, y, r[4]); }
+      for (let x = 0; x < S; x += 4) px(g, x, 0, r[0], 1, S);
+    },
+    "Q": g => { const r = R_.plank; px(g, 0, 0, r[2], S, S); for (let y = 0; y < S; y += 4) { px(g, 0, y, r[3], S, 1); px(g, 0, y + 3, r[0], S, 1); } px(g, 3, 1, r[1], 1, 1); px(g, 11, 9, r[1], 1, 1); },
+    /* Hus sett frå sida: tømmer, kvit panel, tak */
+    "W": g => { const r = R_.tommer; for (let y = 0; y < S; y += 4) { px(g, 0, y, r[3], S, 1); px(g, 0, y + 1, r[2], S, 2); px(g, 0, y + 3, r[0], S, 1); } px(g, 5, 2, r[1], 2, 1); px(g, 11, 10, r[1], 3, 1); },
+    "v": g => { FLIS.W(g); vindauge(g, "#8e6034"); },
+    "w": g => { const r = R_.kvit; px(g, 0, 0, r[2], S, S); for (let x = 0; x < S; x += 4) { px(g, x, 0, r[1], 1, S); px(g, x + 1, 0, r[3], 1, S); } px(g, 0, 15, r[0], S, 1); },
+    "V": g => { FLIS.w(g); vindauge(g, "#5a6e8a"); },
+    "R": (g, t, v) => {
+      const r = R_.torv; px(g, 0, 0, r[2], S, S);
+      for (let y = 0; y < 13; y++) for (let x = 0; x < S; x++) { const h = hash(x + v * 16, y, 71); if (h < 0.12) px(g, x, y, r[1]); else if (h > 0.9) px(g, x, y, r[3]); else if (h > 0.87) px(g, x, y, r[4]); }
+      px(g, 0, 13, R_.stamme[3], S, 1); px(g, 0, 14, R_.stamme[1], S, 1); px(g, 0, 15, R_.stamme[0], S, 1);
+    },
+    "r": g => {
+      const r = R_.skifer; px(g, 0, 0, r[2], S, S);
+      for (let y = 0; y < S; y += 4) { for (let x = (y / 4) % 2 ? 0 : 3; x < S; x += 6) { px(g, x, y, r[0], 1, 4); px(g, x + 1, y, r[3], 2, 1); } px(g, 0, y + 3, r[1], S, 1); }
+    },
+    "D": g => { FLIS.W(g); dor(g); },
+    "d": g => { FLIS.w(g); dor(g); },
+    "I": g => {
+      FLIS.w(g);
+      const R = Rutenett(16, 16).form("o", [[3, 6, 9], [4, 5, 10], [5, 4, 11]]).rect("o", 4, 6, 8, 7);
+      g.drawImage(mal(R, { o: { fast: "#1c1428" } }, { omriss: false }), 0, 0);
+      for (let y = 7; y < 13; y += 2) px(g, 5, y, "#4a3a2a", 6, 1);
+    },
+    "A": g => {
+      px(g, 0, 0, "#8fc0e0", S, S);
+      const R = Rutenett(16, 16); for (let y = 3; y < 16; y++) { const w = Math.floor((y - 3) * 0.62); R.rad("t", y, 8 - w, 7 + w); }
+      R.rect("k", 7, 0, 2, 3).rect("k", 6, 1, 4, 1);
+      g.drawImage(mal(R, { t: { farge: "#3a4460", rund: true }, k: "#c08018" }), 0, 0);
+    },
+    /* Inne */
+    "P": (g, t, v) => { const r = R_.plank; px(g, 0, 0, r[2], S, S); for (let y = 0; y < S; y += 4) { px(g, 0, y, r[3], S, 1); px(g, 0, y + 3, r[0], S, 1); px(g, ((y * 5 + v * 3) % 12) + 2, y + 1, r[1], 1, 2); } },
+    "X": g => { const r = R_.tommer; for (let y = 0; y < 12; y += 4) { px(g, 0, y, r[2], S, 1); px(g, 0, y + 1, r[1], S, 2); px(g, 0, y + 3, r[0], S, 1); } px(g, 0, 12, R_.plank[4], S, 1); px(g, 0, 13, R_.plank[2], S, 2); px(g, 0, 15, R_.plank[0], S, 1); },
+    "c": g => { const r = R_.stein; px(g, 0, 0, r[2], S, S); for (let y = 0; y < S; y += 4) { for (let x = (y / 4) % 2 ? 0 : 4; x < S; x += 8) { px(g, x, y, r[0], 1, 4); px(g, x + 1, y, r[3], 5, 1); } px(g, 0, y + 3, r[1], S, 1); } },
+    "g": (g, t, v) => { const r = ["#6a6474", "#8a8494", "#a8a2b0", "#c2bcc8", "#dcd8e0"]; px(g, 0, 0, r[2], S, S); for (let y = 0; y < S; y += 8) for (let x = (y / 8) % 2 ? -4 : 0; x < S; x += 8) { px(g, x, y, r[3], 7, 1); px(g, x, y + 7, r[0], 8, 1); px(g, x + 7, y, r[1], 1, 8); } if (v % 3 === 0) px(g, 5, 11, r[1], 2, 1); },
+    "G": g => { const r = R_.kvit; px(g, 0, 0, r[3], S, 11); px(g, 0, 10, r[2], S, 1); px(g, 0, 11, "#6e4a3a", S, 1); px(g, 0, 12, "#8a5e44", S, 3); px(g, 0, 15, "#3a2418", S, 1); for (let x = 1; x < S; x += 5) px(g, x, 12, "#6e4a3a", 1, 3); },
+    "B": (g, t, v) => {
+      const r = R_.plank; px(g, 0, 0, r[1], S, S); px(g, 0, 0, r[3], S, 1);
+      const bok = ["#8a2638", "#2c4288", "#3a7236", "#c08018", "#6a3a7a", "#4a2c1c"];
+      for (let y = 1; y < S - 4; y += 5) {
+        px(g, 1, y, r[0], 14, 4);
+        for (let x = 1; x < 15;) { const b = Math.floor(hash(x, y + v * 16, 81) * 6), w = Math.min(15 - x, 1 + Math.floor(hash(x, y, 82) * 2)), hh = 3 + (hash(x, y, 83) > 0.7 ? 0 : 1); const rr = ramp(bok[b]); px(g, x, y + 4 - hh, rr[2], w, hh); px(g, x, y + 4 - hh, rr[3], 1, hh); x += w + (hash(x, y, 84) > 0.8 ? 1 : 0); }
+        px(g, 0, y + 4, r[3], S, 1);
+      }
+    },
+    "y": (g, t, v) => {
+      FLIS.B(g, t, v);
+      const b = R_.blekk;
+      for (let y = 1; y < S - 4; y += 5) for (let x = 1; x < 15; x += 2) { px(g, x, y, b[hash(x, y, 91) > 0.5 ? 1 : 2], 2, 4); px(g, x, y, b[3], 1, 1); }
+      const f = Math.floor(t / 300) % 4;
+      px(g, 4 + v % 5, 5, b[3], 1, 3 + f); px(g, 11, 10, b[2], 1, 2 + (f + 2) % 4);
+    },
+    "K": g => {
+      underGolv(g, 0, 0);
+      const R = Rutenett(16, 16).rect("l", 1, 3, 14, 4).rect("k", 1, 7, 14, 7).rect("m", 7, 6, 2, 3);
+      g.drawImage(mal(R, { l: "#2c4288", k: "#2c4288", m: "#c08018" }), 0, 0);
+      for (const [x, y] of [[3, 10], [5, 9], [10, 9], [12, 10], [8, 11]]) px(g, x, y, "#d06a64");
+      for (const [x, y] of [[4, 11], [11, 11]]) px(g, x, y, "#f8d840");
+      px(g, 2, 4, "#6c8ccc", 12, 1);
+    },
+    "k": g => {
+      underGolv(g, 0, 1);
+      const R = Rutenett(16, 16).rect("t", 1, 3, 14, 8).rect("b", 2, 11, 2, 4).rect("b", 12, 11, 2, 4);
+      g.drawImage(mal(R, { t: { farge: "#ac7c46", rund: true }, b: "#6e4626" }), 0, 0);
+    },
+    "z": g => { underGolv(g, 0, 2); const R = Rutenett(16, 16).ell("s", 8, 8, 5, 4).rect("b", 4, 11, 2, 3).rect("b", 10, 11, 2, 3); g.drawImage(mal(R, { s: { farge: "#8e6034", rund: true }, b: "#4a2e1a" }), 0, 0); },
+    "b": g => {
+      underGolv(g, 0, 3);
+      const R = Rutenett(16, 16).rect("r", 1, 0, 14, 16).rect("p", 3, 1, 10, 4).rect("d", 2, 5, 12, 10);
+      g.drawImage(mal(R, { r: "#6e4626", p: "#ecebf0", d: "#8a2638" }), 0, 0);
+      for (let y = 7; y < 15; y += 3) for (let x = 3; x < 14; x += 3) px(g, x, y, "#d06a64");
+    },
+    "f": (g, t) => {
+      const R = Rutenett(16, 16).rect("s", 0, 0, 16, 16).rect("o", 3, 5, 10, 11);
+      g.drawImage(mal(R, { s: { farge: "#686680" }, o: { fast: "#140c10" } }, { omriss: false }), 0, 0);
+      for (let y = 0; y < 5; y += 2) for (let x = (y / 2) % 2 ? 0 : 3; x < S; x += 6) px(g, x, y, R_.stein[1], 1, 2);
+      const k = Math.floor(t / 150) % 3;
+      px(g, 5, 12, "#8a2638", 6, 3); px(g, 6, 9 + k % 2, "#e86a20", 4, 5 - k % 2); px(g, 7, 7 + k, "#f8b830", 2, 6 - k); px(g, 7, 12, "#f8f0a0", 2, 2);
+      px(g, 3, 15, "#4a2c1c", 10, 1);
+    },
+    "L": (g, t) => {
+      underGolv(g, t, 0);
+      const k = Math.floor(t / 300) % 2;
+      g.fillStyle = "rgba(248,216,64,0.2)"; g.beginPath(); g.arc(8, 5, 6 + k, 0, Math.PI * 2); g.fill();
+      const R = Rutenett(16, 16).rect("m", 7, 6, 2, 7).form("m", [[13, 5, 10], [14, 4, 11]]).rect("l", 7, 4, 2, 2);
+      g.drawImage(mal(R, { m: "#c08018", l: "#f2ead0" }), 0, 0);
+      px(g, 7, 1 + k, "#f8d840", 2, 3 - k); px(g, 8, k, "#fff8d0", 1, 2);
+    },
+    "E": g => { px(g, 0, 0, "#140c10", S, S); px(g, 0, 0, R_.tommer[1], 2, S); px(g, 14, 0, R_.tommer[1], 2, S); px(g, 2, 13, R_.plank[3], 12, 1); px(g, 2, 14, R_.plank[2], 12, 2); },
+    "n": (g, t, v) => {
+      underGolv(g, t, v);
+      const f = Math.floor(t / 400) % 4;
+      const R = Rutenett(16, 16).ell("b", 8, 9, 7, 5).ell("b", 3, 4, 2, 2).ell("b", 13, 14, 2, 1.5);
+      g.drawImage(mal(R, { b: { farge: "#201848", rund: true } }), 0, 0);
+      px(g, 5, 7, "#8878d0", 2, 1); px(g, 4, 8, "#5848a0"); if (f === 1) { px(g, 10, 9, "#5848a0", 2, 2); px(g, 10, 9, "#8878d0"); }
+    },
+    "e": g => {
+      FLIS.g(g, 0, 1);
+      const R = Rutenett(16, 16).rect("s", 0, 5, 16, 6).rect("r", 0, 2, 16, 3).rect("b", 1, 11, 2, 3).rect("b", 13, 11, 2, 3);
+      g.drawImage(mal(R, { s: "#8e6034", r: "#6e4626", b: "#4a2e1a" }), 0, 0);
+    },
+    "a": g => {
+      FLIS.g(g, 0, 2);
+      const R = Rutenett(16, 16).rect("d", 1, 4, 14, 11).rect("k", 1, 3, 14, 3).rect("l", 3, 0, 1, 3).rect("l", 12, 0, 1, 3);
+      g.drawImage(mal(R, { d: "#8a2638", k: "#ecebf0", l: "#f2ead0" }), 0, 0);
+      px(g, 7, 7, "#e8b830", 2, 6); px(g, 5, 9, "#e8b830", 6, 2);
+    },
+    "l": g => {
+      const r = R_.raud; px(g, 0, 0, r[2], S, S); px(g, 0, 0, r[1], S, 1); px(g, 0, 15, r[1], S, 1);
+      for (let y = 3; y < 14; y += 5) for (let x = 2; x < 15; x += 4) { px(g, x, y, "#e8b830", 2, 1); px(g, x - 1, y + 1, "#2c4288", 1, 1); px(g, x + 2, y + 1, "#2c4288", 1, 1); }
+      for (let x = 0; x < S; x += 2) { px(g, x, 1, "#ecebf0"); px(g, x + 1, 14, "#ecebf0"); }
+    },
+    " ": g => px(g, 0, 0, "#0a0514", S, S),
+    // Veggtoppar: sideveggene og botnveggen sett ovanfrå
+    "Xt": g => { const r = R_.tommer; px(g, 0, 0, r[1], S, S); for (let x = 1; x < S; x += 5) px(g, x, 0, r[0], 1, S); px(g, 0, 0, r[2], S, 1); px(g, 2, 3, r[2], 2, 5); px(g, 12, 9, r[2], 2, 4); },
+    "ct": g => { const r = R_.stein; px(g, 0, 0, r[1], S, S); for (let y = 0; y < S; y += 5) { px(g, 0, y, r[0], S, 1); px(g, (y * 3) % 11, y + 1, r[2], 4, 1); } },
+    "Gt": g => { const r = R_.kvit; px(g, 0, 0, r[2], S, S); px(g, 0, 0, r[3], S, 2); px(g, 0, 14, r[1], S, 2); },
+  };
+  function vindauge(g, ramme) {
+    const R = Rutenett(16, 16).rect("r", 3, 3, 10, 9).rect("g", 4, 4, 8, 7);
+    g.drawImage(mal(R, { r: ramme, g: { fast: "#2a3c6a" } }), 0, 0);
+    px(g, 4, 4, "#6c8ccc", 3, 3); px(g, 9, 4, "#4462aa", 3, 3); px(g, 4, 8, "#4462aa", 3, 3); px(g, 9, 8, "#2c4288", 3, 3);
+    px(g, 4, 4, "#bfe0ff", 1, 1); px(g, 7, 4, R_.kvit[3], 2, 7); px(g, 4, 7, R_.kvit[3], 8, 1);
+  }
+  function dor(g) {
+    const R = Rutenett(16, 16).rect("k", 2, 1, 12, 15).rect("d", 3, 2, 10, 14);
+    g.drawImage(mal(R, { k: "#4a2a18", d: "#8e6034" }), 0, 0);
+    for (let x = 5; x < 12; x += 3) px(g, x, 3, R_.plank[1], 1, 12);
+    px(g, 10, 9, "#e8b830", 1, 2); px(g, 3, 5, "#2e1a14", 10, 1); px(g, 3, 12, "#2e1a14", 10, 1);
+  }
+
+  /* Tre som stikk opp over flisa over seg: botnen blir flisa, toppen blir teikna etter figurane. */
+  const TRE = {
+    "#": () => {
+      const R = Rutenett(16, 32);
+      for (let lag = 0; lag < 4; lag++) { const y0 = 2 + lag * 6; for (let y = 0; y < 9; y++) { const w = Math.min(7.4, 1 + y * 0.7 + lag * 0.9); R.rad(lag % 2 ? "b" : "a", y0 + y, Math.round(8 - w), Math.round(7 + w)); } }
+      R.rect("s", 7, 26, 2, 5);
+      return mal(R, { a: { farge: "#1f4c38", rund: true }, b: { farge: "#265a42", rund: true }, s: "#4a2c1c" });
+    },
+    "t": () => {
+      const R = Rutenett(16, 32);
+      R.rect("s", 7, 20, 3, 10).set("s", 6, 29).set("s", 10, 29);
+      R.ell("a", 8, 13, 7.5, 8).ell("b", 5, 10, 3.2, 3).ell("c", 11, 16, 3.5, 3);
+      return mal(R, { a: { farge: "#347436", rund: true }, b: { farge: "#4a8a40", rund: true }, c: { farge: "#2c6630", rund: true }, s: "#6a4428" });
+    },
+  };
+  const treCache = {};
+  const treBilete = k => treCache[k] || (treCache[k] = TRE[k]());
+
+  const FAST = new Set(["#", "t", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "X", "c", "f", "z", "G", "e", "a", "n", " "]);
+  const ANIM = new Set(["~", "L", "f", "n", "y"]);
+  const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t"]);
+  const cache = new Map();
+  function flis(teikn, t = 0, x = 0, y = 0, golv = "P") {
+    const v = VARIANT.has(teikn) ? Math.floor(hash(x, y, 7) * 4) : 0;
+    const gl = "LnKkzb".includes(teikn) ? golv : "";
+    const nokkel = `${teikn}${gl}:${v}:${ANIM.has(teikn) ? Math.floor(t / 150) % 16 : 0}`;
+    if (cache.has(nokkel)) return cache.get(nokkel);
+    const c = lerret(S), g = c.getContext("2d");
+    golvNo = golv;
+    if (TRE[teikn]) { gras(g, v); g.drawImage(treBilete(teikn), 0, -16); }
+    else (FLIS[teikn] || FLIS[" "])(g, t, v);
+    cache.set(nokkel, c);
+    return c;
+  }
+  function topp(teikn) {
+    if (!TRE[teikn]) return null;
+    const k = "topp:" + teikn;
+    if (cache.has(k)) return cache.get(k);
+    const c = lerret(S); c.getContext("2d").drawImage(treBilete(teikn), 0, 0);
+    cache.set(k, c);
+    return c;
+  }
+
+  /* ---------- Figurar (16 × 24) ---------- */
+  /* utsjånad: { hud, har, frisyre: kort|langt|skalle|skaut, skaut, jakke, bukse, kjole, sko,
+     hatt, flosshatt, krage, skjegg, briller, hale, sekk, forkle, belte } */
+  function figurRamme(u, dir, steg) {
+    const R = Rutenett(FW, FH);
+    const side = dir >= 2;
+    const lang = !!u.kjole;
+    const swing = steg === 1 ? 1 : steg === 2 ? -1 : 0;
+    const f = u.frisyre || "kort";
+    // Hår bak ryggen (langt hår)
+    if (f === "langt" && dir !== 1) { if (!side) R.rect("har", 3, 8, 10, 7); else R.rect("har", 8, 8, 4, 8); }
+    if (f === "langt" && dir === 1) R.rect("har", 4, 9, 8, 7);
+    // Kuhala til huldra
+    if (u.hale && dir !== 0) { if (side) R.rect("hale", 11, 16, 1, 4).rect("haletopp", 12, 19, 2, 2); else R.rect("hale", 8, 18, 1, 3).rect("haletopp", 7, 21, 3, 1); }
+    // Bein og sko
+    if (lang) {
+      if (!side) R.form("kjole", [[15, 4, 11], [16, 4, 11], [17, 3, 12], [18, 3, 12], [19, 3, 12], [20, 3, 12]]);
+      else R.form("kjole", [[15, 5, 10], [16, 5, 10], [17, 4, 11], [18, 4, 11], [19, 4, 11], [20, 4, 11]]);
+      R.rect("sko", (side ? 5 : 4) + (swing > 0 ? -1 : 0), 21, 3, 1).rect("sko", (side ? 8 : 9) + (swing < 0 ? 1 : 0), 21 - (swing ? 0 : 0), 3, 1);
+      if (u.forkle && dir === 0) R.rect("forkle", 6, 15, 4, 5);
+    } else if (!side) {
+      const l = steg === 1 ? 1 : 0, r = steg === 2 ? 1 : 0;
+      R.rect("bukse", 4, 17, 3, 3 - l).rect("bukse", 9, 17, 3, 3 - r);
+      R.rect("sko", 4, 20 - l, 3, 2).rect("sko", 9, 20 - r, 3, 2);
+    } else if (swing === 0) {
+      R.rect("bukse", 6, 17, 4, 3).rect("sko", 5, 20, 5, 2);
+    } else {
+      R.rect("buksebak", 9, 17, 3, 3).rect("bukse", 4, 17, 3, 3).rect("sko", 3, 20, 4, 2).rect("sko", 9, 20, 4, 2);
+    }
+    // Kropp og armar
+    if (!side) {
+      R.rect("jakke", 4, 11, 8, lang ? 4 : 6);
+      R.rect("arm", 3, 12, 1, 4 - (swing > 0 ? 1 : 0)).rect("arm", 12, 12, 1, 4 - (swing < 0 ? 1 : 0));
+      R.set("hand", 3, 16 - (swing > 0 ? 1 : 0)).set("hand", 12, 16 - (swing < 0 ? 1 : 0));
+      if (dir === 0 && !u.krage) R.rect("skjorte", 7, 11, 2, 2);
+      if (dir === 1 && u.sekk) R.rect("sekk", 5, 12, 6, 5);
+      if (u.belte && !lang) R.rad("belte", 16, 4, 11);
+    } else {
+      if (u.sekk) R.rect("sekk", 10, 11, 3, 5);
+      R.rect("jakke", 5, 11, 6, lang ? 4 : 6);
+      R.rect("arm", 7 + swing, 12, 2, 4).set("hand", 7 + swing * 2, 16).set("hand", 8 + swing * 2, 16);
+      if (u.belte && !lang) R.rad("belte", 16, 5, 10);
+    }
+    if (u.krage) { if (!side) R.form("krage", [[10, 4, 11], [11, 3, 12], [12, 4, 11]]); else R.form("krage", [[10, 4, 10], [11, 4, 11], [12, 5, 10]]); }
+    // Hovud
+    R.ell("hud", 8, 6.5, 5, 4.6);
+    if (side) R.set("hud", 2, 7);
+    // Hår
+    if (f === "skaut") {
+      if (dir === 1) R.ell("skaut", 8, 6, 5.3, 5.1).rect("skaut", 6, 10, 4, 2);
+      else if (!side) R.form("skaut", [[1, 5, 10], [2, 4, 11], [3, 3, 12], [4, 3, 12], [5, 3, 4], [5, 11, 12], [6, 3, 3], [6, 12, 12], [7, 3, 3], [7, 12, 12], [8, 3, 3], [8, 12, 12]]);
+      else R.form("skaut", [[1, 5, 10], [2, 4, 11], [3, 3, 12], [4, 5, 12], [5, 7, 13], [6, 8, 13], [7, 9, 13], [8, 9, 13], [9, 11, 13]]);
+    } else if (f === "skalle") {
+      if (dir === 1) R.form("har", [[6, 3, 12], [7, 3, 12], [8, 4, 11]]);
+      else if (!side) R.rect("har", 3, 5, 1, 4).rect("har", 12, 5, 1, 4);
+      else R.form("har", [[5, 10, 12], [6, 9, 12], [7, 9, 12], [8, 10, 11]]);
+    } else {
+      if (dir === 1) R.ell("har", 8, 6, 5.3, 4.9).rad("har", 10, 4, 11);
+      else if (!side) { R.form("har", [[1, 5, 10], [2, 4, 11], [3, 3, 12], [4, 3, 12], [5, 3, 5], [5, 7, 8], [5, 10, 12], [6, 3, 3], [6, 12, 12]]); if (f === "langt") R.rect("har", 3, 7, 1, 5).rect("har", 12, 7, 1, 5); }
+      else { R.form("har", [[1, 5, 10], [2, 4, 11], [3, 3, 12], [4, 4, 12], [5, 7, 12], [6, 8, 12], [7, 9, 12], [8, 9, 11]]); if (f === "langt") R.rect("har", 9, 9, 3, 4); }
+    }
+    // Andlet
+    if (dir === 0) {
+      R.rect("auge", 5, 6, 1, 2).rect("auge", 10, 6, 1, 2);
+      if (u.briller) R.rad("brilleramme", 5, 5, 10).set("glas", 5, 6).set("glas", 10, 6);
+      if (u.skjegg) R.form("skjegg", [[8, 4, 11], [9, 4, 11], [10, 5, 10], [11, 6, 9]]);
+      else R.set("munn", 7, 9).set("munn", 8, 9);
+      R.set("kinn", 4, 8).set("kinn", 11, 8);
+    } else if (side) {
+      R.rect("auge", 4, 6, 1, 2);
+      if (u.briller) R.set("glas", 4, 6).set("brilleramme", 3, 5).set("brilleramme", 5, 5);
+      if (u.skjegg) R.form("skjegg", [[8, 3, 8], [9, 3, 8], [10, 4, 7], [11, 5, 7]]);
+      R.set("kinn", 5, 8);
+    }
+    // Hattar
+    if (u.hatt) R.form("hatt", [[0, 5, 10], [1, 4, 11], [2, 2, 13]]);
+    if (u.flosshatt) R.rect("hatt", 5, 0, 6, 2).rad("hattband", 2, 5, 10).rad("hatt", 3, 3, 12);
+    if (dir === 3) R.spegl();
+    const hud = u.hud || "#e8b890", jakke = u.jakke || "#3a5a8a", bukse = u.bukse || "#4a3a30";
+    const pal = {
+      hud: { farge: hud, rund: true }, hand: hud, kinn: { fast: blend(hud, "#d05060", 0.3) },
+      har: u.har || "#6a4428", skaut: u.skaut || "#8a2638",
+      jakke, arm: blend(jakke, SKUGGE, 0.14), skjorte: "#ecebf0",
+      bukse, buksebak: blend(bukse, SKUGGE, 0.35), sko: u.sko || "#2a1c1c",
+      kjole: u.kjole || "#2c4288", forkle: u.forkle || "#ecebf0", krage: "#f4f2f8", belte: "#2a1c1c",
+      skjegg: u.skjegg || "#d0d0d8", hatt: u.hatt || u.flosshatt || "#1c1c28", hattband: "#6a3a2a",
+      auge: { fast: "#140c1c" }, munn: { fast: blend(hud, "#6a2020", 0.45) }, glas: { fast: "#e8f4ff" }, brilleramme: { fast: "#3a3040" },
+      sekk: "#8a5e36", hale: hud, haletopp: u.har || "#c8a050",
+    };
+    return mal(R, pal);
+  }
+  const figurCache = new Map();
+  function figur(u) {
+    const k = JSON.stringify(u);
+    if (figurCache.has(k)) return figurCache.get(k);
+    const rammer = [0, 1, 2, 3].map(dir => [0, 1, 2].map(steg => figurRamme(u, dir, steg)));
+    const f = { rammer, w: FW, h: FH };
+    figurCache.set(k, f);
+    return f;
   }
 
   /* ---------- Fiendar ---------- */
+  // Fargane til blekket er henta frå Blekklatten.
+  const BLEKK = { farge: "#383070", rund: true }, GUL = { fast: "#f8d840" }, GULM = { fast: "#c06810" }, PUPILL = { fast: "#080010" };
+  const TENN = { fast: "#f0e8c8" }, MUNN = { fast: "#400820" }, TUNGE = { fast: "#c84850" }, GLANS = { fast: "#8878d0" };
+  function auge(R, x, y, stor) {
+    if (stor) R.rect("gul", x, y, 3, 2).rect("gulm", x, y + 2, 3, 1).rect("pupill", x + 1, y, 1, 3);
+    else R.rect("gul", x, y, 2, 1).rect("gulm", x, y + 1, 2, 1).rect("pupill", x + 1, y, 1, 2);
+  }
   const FIENDAR = {
-    blekkflekk(g) {
-      const b = "#1c1d20";
-      for (let y = 8; y < 30; y++) { const w = Math.round(22 * Math.sin(Math.PI * (y - 6) / 26)); px(g, 16 - w / 2, y, b, w, 1); }
-      px(g, 4, 26, b, 4, 3); px(g, 25, 25, b, 4, 4); px(g, 27, 12, b, 3, 3);
-      px(g, 10, 14, "#fff", 4, 5); px(g, 18, 14, "#fff", 4, 5); px(g, 12, 16, b, 2, 2); px(g, 19, 16, b, 2, 2);
-      px(g, 12, 23, "#fff", 8, 1); px(g, 13, 24, "#fff", 1, 1); px(g, 18, 24, "#fff", 1, 1);
+    blekkdrope() {
+      const R = Rutenett(20, 22);
+      R.ell("b", 10, 14, 7.5, 6.5); for (let y = 2; y < 10; y++) { const w = Math.floor((y - 2) * 0.7); R.rad("b", y, 10 - w, 10 + w); }
+      R.ell("b", 3, 20, 1.5, 1).ell("b", 17, 20, 1.2, 1);
+      auge(R, 6, 12); auge(R, 12, 12);
+      R.rad("munn", 16, 8, 11).set("tann", 9, 16).set("tann", 11, 16);
+      R.set("glans", 6, 9).set("glans", 7, 8).set("glans", 5, 11);
+      return mal(R, { b: BLEKK, gul: GUL, gulm: GULM, pupill: PUPILL, munn: MUNN, tann: TENN, glans: GLANS });
     },
-    stavefeil(g) {
-      px(g, 11, 6, "#e6c9a8", 10, 9); px(g, 10, 3, "#7a3fa0", 12, 4); px(g, 14, 0, "#7a3fa0", 4, 3); px(g, 16, 0, "#e0b43c", 2, 2);
-      px(g, 13, 9, "#1c1d20", 2, 2); px(g, 18, 9, "#1c1d20", 2, 2); px(g, 14, 13, "#8a2020", 5, 1);
-      px(g, 10, 15, "#7a3fa0", 12, 10); px(g, 11, 25, "#3a2a4a", 3, 5); px(g, 18, 25, "#3a2a4a", 3, 5);
-      px(g, 23, 12, "#f1ead6", 7, 9); px(g, 24, 13, "#8a2020", 5, 1); px(g, 24, 16, "#1c1d20", 4, 1); px(g, 24, 18, "#1c1d20", 5, 1);
-      px(g, 25, 14, "#8a2020", 1, 3);
+    blekkflekk() {
+      const R = Rutenett(36, 32);
+      R.ell("b", 18, 18, 13, 10.5);
+      for (const [x, y, dx, dy, n] of [[8, 9, -1, -1, 5], [18, 7, 0, -1, 5], [27, 9, 1, -1, 5], [31, 18, 1, 0, 3], [6, 22, -1, 0.3, 4], [26, 27, 0.6, 1, 3]]) for (let i = 0; i < n; i++) { R.set("b", Math.round(x + dx * i), Math.round(y + dy * i)); if (i < n - 2) R.set("b", Math.round(x + dx * i) + 1, Math.round(y + dy * i)); }
+      R.ell("b", 3, 8, 1.5, 1.5).ell("b", 33, 5, 1.2, 1.2).ell("b", 32, 29, 1.5, 1.2);
+      auge(R, 11, 14, true); auge(R, 21, 13, true); auge(R, 17, 10);
+      R.form("munn", [[21, 12, 24], [22, 12, 24], [23, 13, 23]]).set("tann", 13, 21).set("tann", 16, 21).set("tann", 20, 21).set("tann", 23, 21).rad("tunge", 23, 16, 20);
+      R.set("glans", 11, 10).set("glans", 12, 9).set("glans", 13, 9).set("glans", 9, 12);
+      return mal(R, { b: BLEKK, gul: GUL, gulm: GULM, pupill: PUPILL, munn: MUNN, tann: TENN, tunge: TUNGE, glans: GLANS });
     },
-    kraake(g) {
-      const s = "#1f1d24";
-      px(g, 8, 10, s, 16, 12); px(g, 6, 12, s, 4, 8); px(g, 22, 8, s, 6, 7); px(g, 28, 11, "#e0b43c", 4, 2);
-      px(g, 25, 9, "#fff", 2, 2); px(g, 26, 10, s, 1, 1);
-      px(g, 4, 14, "#2f2d36", 6, 4); px(g, 2, 16, "#2f2d36", 4, 3);
-      px(g, 12, 22, "#e0b43c", 1, 5); px(g, 17, 22, "#e0b43c", 1, 5);
-      px(g, 20, 3, "#9c3b2e", 8, 5); px(g, 19, 7, "#9c3b2e", 10, 1);          // raud embetsmannshatt
-      px(g, 9, 13, "#c9ad8e", 1, 10); px(g, 8, 12, "#f1ead6", 3, 2);           // fjørpenn
+    protokollen() {
+      const R = Rutenett(40, 36);
+      for (let y = 6; y <= 21; y++) R.rad("perm", y, y === 6 || y === 21 ? 3 : 2, y === 6 || y === 21 ? 36 : 37);
+      for (let y = 4; y <= 19; y++) { R.rad("side", y, y === 4 || y === 19 ? 5 : 4, 18); R.rad("side2", y, 21, y === 4 || y === 19 ? 34 : 35); }
+      R.rect("rygg", 19, 3, 2, 18);
+      for (let y = 6; y < 18; y += 2) { R.rad("tekst", y, 6, 7 + (y * 7) % 7); R.rad("tekst", y, 23, 26 + (y * 5) % 7); }
+      R.rect("gul", 17, 9, 6, 3).rect("gulm", 17, 12, 6, 1).rect("pupill", 19, 9, 2, 4);
+      for (const [x, n] of [[8, 9], [14, 12], [25, 10], [31, 7]]) { R.rect("b", x, 22, 2, n); R.ell("b", x + 1, 22 + n, 2, 1.5); }
+      R.ell("b", 20, 24, 5, 3);
+      return mal(R, { perm: "#62182a", side: "#e8dcc0", side2: "#dccfae", rygg: "#3a0e18", tekst: { fast: "#201848" }, gul: GUL, gulm: GULM, pupill: PUPILL, b: BLEKK });
     },
-    glose(g) {
-      const bokst = ["L", "A", "T", "I", "N"];
-      for (let i = 0; i < 5; i++) { const x = 3 + i * 5, y = 16 + Math.round(Math.sin(i) * 5); px(g, x, y, "#d9c79a", 6, 7); px(g, x + 1, y + 1, "#f1ead6", 4, 5); px(g, x + 2, y + 2, "#5a3f2a", 2, 3); }
-      px(g, 27, 12, "#d9c79a", 5, 7); px(g, 28, 14, "#1c1d20", 1, 1); px(g, 30, 14, "#1c1d20", 1, 1); px(g, 28, 17, "#8a2020", 3, 1);
-      void bokst;
+    fjorpennen() {
+      const R = Rutenett(28, 44);
+      for (let i = 0; i < 30; i++) { const cx = 18 - i * 0.28, cy = 3 + i, w = Math.max(0, Math.sin((i + 2) / 32 * Math.PI) * 6.5); R.rad("fjor", Math.round(cy), Math.round(cx - w), Math.round(cx + w * 0.8)); }
+      for (let i = 0; i < 38; i++) R.set("skaft", Math.round(18 - i * 0.28), 3 + i);
+      R.form("spiss", [[37, 6, 9], [38, 6, 9], [39, 7, 8], [40, 7, 8], [41, 7, 7]]);
+      R.ell("b", 7, 43, 2.5, 1);
+      auge(R, 11, 14, true); auge(R, 17, 15, true);
+      R.rad("munn", 21, 13, 17).set("tann", 14, 21).set("tann", 16, 21);
+      return mal(R, { fjor: { farge: "#d2d0dc", rund: true }, skaft: "#8e8ca4", spiss: "#383070", b: BLEKK, gul: GUL, gulm: GULM, pupill: PUPILL, munn: MUNN, tann: TENN });
     },
-    setjekasse(g) {
-      px(g, 4, 6, "#6b4a2a", 24, 22); px(g, 5, 7, "#8e6a40", 22, 20);
-      for (let y = 8; y < 26; y += 4) for (let x = 6; x < 26; x += 4) px(g, x, y, "#aaa7a0", 3, 3);
-      px(g, 9, 11, "#1c1d20", 4, 3); px(g, 19, 11, "#1c1d20", 4, 3); px(g, 10, 12, "#ff6040", 2, 1); px(g, 20, 12, "#ff6040", 2, 1);
-      px(g, 11, 20, "#1c1d20", 10, 2);
-      px(g, 0, 12, "#6b4a2a", 4, 10); px(g, 28, 12, "#6b4a2a", 4, 10); px(g, 7, 28, "#6b4a2a", 5, 4); px(g, 20, 28, "#6b4a2a", 5, 4);
+    stempelet() {
+      const R = Rutenett(30, 36);
+      R.ell("tre", 15, 5, 5, 4.5).rect("tre", 13, 9, 4, 8).form("tre", [[17, 6, 23], [18, 4, 25]]).rect("fot", 4, 19, 22, 9);
+      R.form("lakk", [[28, 5, 24], [29, 5, 24], [30, 6, 23], [31, 8, 11], [31, 18, 21], [32, 9, 10]]);
+      R.rect("gul", 8, 21, 4, 2).rect("gul", 18, 21, 4, 2).rect("pupill", 10, 21, 1, 2).rect("pupill", 20, 21, 1, 2).rad("bryn", 20, 7, 12).rad("bryn", 20, 17, 22);
+      R.rad("munn", 25, 10, 20).set("tann", 12, 25).set("tann", 15, 25).set("tann", 18, 25);
+      return mal(R, { tre: { farge: "#8a5e36", rund: true }, fot: { farge: "#6c4024", rund: true }, lakk: "#b03c46", gul: GUL, pupill: PUPILL, bryn: { fast: "#2e1a14" }, munn: MUNN, tann: TENN });
     },
-    skugge(g) {
-      for (let y = 2; y < 32; y++) { const w = Math.round(28 * Math.sin(Math.PI * y / 34)); px(g, 16 - w / 2, y, y % 5 === 0 ? "#2a1f3a" : "#140f1c", w, 1); }
-      px(g, 9, 11, "#b0f", 4, 3); px(g, 19, 11, "#b0f", 4, 3); px(g, 10, 12, "#fff", 2, 1); px(g, 20, 12, "#fff", 2, 1);
-      px(g, 11, 20, "#b0f", 10, 1); px(g, 10, 19, "#b0f", 1, 1); px(g, 21, 19, "#b0f", 1, 1);
-      px(g, 26, 2, "#c9ad8e", 2, 10); px(g, 25, 0, "#f1ead6", 4, 3);
+    vette() {
+      const R = Rutenett(24, 28);
+      R.form("hette", [[2, 10, 13], [3, 8, 15], [4, 7, 16], [5, 6, 17], [6, 5, 18], [7, 5, 18], [8, 4, 19], [9, 4, 19], [10, 4, 19], [11, 4, 19], [12, 4, 19]]);
+      R.ell("andlet", 12, 10, 4.5, 3.2);
+      R.form("kropp", [[13, 5, 18], [14, 4, 19], [15, 4, 19], [16, 3, 20], [17, 3, 20], [18, 3, 20], [19, 3, 20], [20, 4, 19], [21, 4, 19]]);
+      R.rect("fot", 6, 22, 3, 2).rect("fot", 15, 22, 3, 2);
+      R.rect("lys", 9, 9, 2, 2).rect("lys", 14, 9, 2, 2);
+      for (const [x, y] of [[8, 4], [13, 3], [16, 6], [6, 16], [18, 18], [10, 19]]) R.set("mose", x, y);
+      return mal(R, { hette: { farge: "#4e6a4a", rund: true }, andlet: { fast: "#0e1210" }, kropp: { farge: "#5a5a48", rund: true }, fot: "#3a3428", lys: { fast: "#7ff0e0" }, mose: { fast: "#8cc060" } });
+    },
+    irrbloss() {
+      const c = lerret(24, 28), g = c.getContext("2d");
+      const gr = g.createRadialGradient(12, 13, 1, 12, 13, 12);
+      gr.addColorStop(0, "rgba(220,255,250,1)"); gr.addColorStop(0.35, "rgba(127,240,224,.85)"); gr.addColorStop(0.7, "rgba(60,160,180,.35)"); gr.addColorStop(1, "rgba(40,80,120,0)");
+      g.fillStyle = gr; g.fillRect(0, 0, 24, 28);
+      const R = Rutenett(24, 28).ell("k", 12, 13, 4.5, 5).form("k", [[6, 11, 13], [5, 12, 12], [7, 10, 14]]).form("k", [[18, 10, 14], [19, 11, 13], [20, 12, 12], [21, 11, 11]]);
+      R.rect("a", 10, 12, 1, 2).rect("a", 14, 12, 1, 2);
+      g.drawImage(mal(R, { k: { fast: "#f0fffc" }, a: { fast: "#1f5a6a" } }, { omriss: false }), 0, 0);
+      return c;
+    },
+    haugbonden() {
+      const R = Rutenett(48, 52);
+      R.ell("kappe", 23, 26, 13, 9);
+      for (let y = 26; y < 47; y++) { const w = 13 + (y - 26) * 0.35; R.rad("kappe", y, Math.round(23 - w), Math.round(23 + w)); }
+      for (const x of [14, 22, 30]) for (let y = 30; y < 47; y++) if ((y + x) % 7 !== 0) R.set("fald", x + Math.floor((y - 30) / 8) * (x < 22 ? -1 : x > 22 ? 1 : 0), y);
+      R.form("hatt", [[2, 18, 28], [3, 16, 30], [4, 15, 31], [5, 14, 32], [6, 12, 34], [7, 10, 36]]);
+      R.ell("hud", 23, 13, 8, 6);
+      R.form("skjegg", [[15, 16, 30], [16, 15, 31], [17, 15, 31], [18, 15, 31], [19, 16, 30], [20, 16, 30], [21, 17, 29], [22, 17, 29], [23, 18, 28], [24, 18, 28], [25, 19, 27], [26, 20, 26], [27, 21, 25], [28, 22, 24], [29, 22, 24], [30, 23, 23]]);
+      R.rect("stav", 42, 4, 2, 44).ell("stav", 43, 4, 2.5, 2.5);
+      R.ell("hand", 40, 27, 3, 2.5).form("arm", [[25, 33, 38], [26, 34, 38], [27, 35, 38], [28, 35, 37]]);
+      R.rect("lys", 19, 12, 2, 2).rect("lys", 26, 12, 2, 2).rad("bryn", 11, 18, 21).rad("bryn", 11, 25, 28);
+      for (const [x, y] of [[20, 4], [26, 5], [15, 7], [31, 6], [12, 34], [33, 40], [18, 44], [28, 36]]) R.set("mose", x, y).set("mose", x + 1, y);
+      return mal(R, { hatt: { farge: "#4e6a4a", rund: true }, hud: { farge: "#8a9a86", rund: true }, skjegg: { farge: "#c8ccd4", rund: true }, kappe: { farge: "#4a4a5a", rund: true }, fald: { fast: "#2a2838" }, arm: "#44425a", hand: { farge: "#8a9a86", rund: true }, stav: "#6a4428", lys: { fast: "#7ff0e0" }, bryn: { fast: "#e8ecf0" }, mose: { fast: "#8cc060" } });
     },
   };
+  /* Handteikna fiendar: ei PNG-fil i bilete/spel/ med kvar spelpiksel som éin
+     piksel (Blekklatten er 80 × 72). Til biletet er lasta, viser spelet ein
+     reservefigur i same storleik. Fleire handteikna fiendar kan leggjast til her. */
+  const PNG = { blekklatten: { fil: "bilete/spel/blekklatten.png", w: 80, h: 72, reserve: "blekkflekk" } };
+  function fraPng(d) {
+    const c = lerret(d.w, d.h), g = c.getContext("2d");
+    g.imageSmoothingEnabled = false;
+    const r = FIENDAR[d.reserve](); g.drawImage(r, Math.round((d.w - r.width) / 2), d.h - r.height);
+    const img = new Image();
+    img.onload = () => { g.clearRect(0, 0, d.w, d.h); g.drawImage(img, 0, 0, d.w, d.h); };
+    img.src = d.fil;
+    return c;
+  }
+  const fiendeCache = new Map();
   function fiende(namn) {
-    const nokkel = "fiende:" + namn;
-    if (cache.has(nokkel)) return cache.get(nokkel);
-    const c = lerret(32), g = c.getContext("2d");
-    (FIENDAR[namn] || FIENDAR.blekkflekk)(g);
-    cache.set(nokkel, c);
+    if (fiendeCache.has(namn)) return fiendeCache.get(namn);
+    const c = PNG[namn] ? fraPng(PNG[namn]) : (FIENDAR[namn] || FIENDAR.blekkdrope)();
+    fiendeCache.set(namn, c);
     return c;
   }
 
-  /* ---------- Skreppa: ein levande ryggsekk ---------- */
-  function skreppa() {
-    const rammer = [[], [], [], []];
-    for (let dir = 0; dir < 4; dir++) for (let steg = 0; steg < 2; steg++) {
-      const c = lerret(S), g = c.getContext("2d");
-      const hopp = steg ? 1 : 0;
-      px(g, 4, 14, "rgba(0,0,0,.25)", 8, 2);
-      px(g, 3, 4 - hopp, "#7a5a3a", 10, 10); px(g, 4, 3 - hopp, "#8e6a40", 8, 2); px(g, 3, 7 - hopp, "#5f4428", 10, 1);
-      px(g, 2, 5 - hopp, "#5f4428", 1, 7); px(g, 13, 5 - hopp, "#5f4428", 1, 7);
-      if (dir !== 1) { px(g, dir === 3 ? 7 : 5, 9 - hopp, "#fff", 2, 2); px(g, dir === 2 ? 7 : 9, 9 - hopp, "#fff", 2, 2); px(g, dir === 3 ? 8 : 5, 10 - hopp, "#1c1d20", 1, 1); px(g, dir === 2 ? 7 : 10, 10 - hopp, "#1c1d20", 1, 1); }
-      px(g, 5, 14, "#5f4428", 2, 1); px(g, 9, 14, "#5f4428", 2, 1);
-      rammer[dir][steg] = c;
-    }
-    return { rammer };
-  }
-
-  return { S, flis, FAST, figur, fiende, skreppa, lerret, F };
+  return { S, FW, FH, flis, topp, FAST, figur, fiende, lerret, ramp, blend, RAMP };
 })();

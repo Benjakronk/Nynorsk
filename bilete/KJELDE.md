@@ -51,3 +51,7 @@ Lisenstekstane: <https://creativecommons.org/licenses/by/2.0/deed.no>,
 ## Ikon og logo (rota av prosjektet)
 
 favicon.svg, favicon.ico, favicon-16.png, favicon-32.png, apple-touch-icon.png, icon-192.png, icon-512.png og ivar-aasen.png er ein ikonpakke med eit stilisert portrett av Ivar Aasen, levert av kurseigaren (september 2026). favicon.svg er ein SVG-behaldar med innebygd PNG, ikkje ei vektorisert teikning.
+
+## Spelet (bilete/spel/)
+
+blekklatten.png er Blekklatten, fienden i «Blekkranet», teikna som pikselkunst og levert av kurseigaren (september 2026). Fila er skalert ned til 80 × 72 pikslar, der kvar spelpiksel er éin piksel. Resten av grafikken i spelet blir teikna i kode (js/rpg/pikslar.js).

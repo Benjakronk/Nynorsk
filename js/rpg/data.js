@@ -1,65 +1,152 @@
-/* Innhaldet i «Blekkranet», kapittel 1: Guten frå Åsen (1826–1841).
+/* Innhaldet i «Blekkranet», kapittel 1: Ørsta (1826–1831).
 
-   Fakta om livet til Ivar Aasen er henta frå modulane i kurset (Ivar Aasen og
-   landsmålet, Reisene til Ivar Aasen). Blekklatten, skreppa som snakkar og
-   fiendane er dikta.
+   Scenario og design: sjå designdokumentet «Aasen-spelet: scenario og design».
+   Ivar Aasen samlar ord, og kvart ord blir ein galdr. Lydfamilien til ordet
+   avgjer kva galdren gjer. Kanselliblekket er ei naturkraft som skriv vidare
+   av seg sjølv, og der det breier seg, blir talen til folk stiv og framand.
+
+   Årstal og fakta om Aasen er frå modulane i kurset (fødd 1813 på Åsen i
+   Ørsta, mora døydde då han var tre, faren då han var tretten, 1831
+   omgangsskulelærar). Konfirmasjonen frå 1736, haugianarane og Aarflot på
+   Ekset (død 1817) er historiske. Hendingane i spelet er dikta.
+
+   Dialektformene i ORD er vanlege variantar frå ordlista i designdokumentet.
+   Dei bør sjekkast mot Aasens ordbok og Norsk Ordbok før dei blir låste.
+   Dei danske formene har skrivemåten frå 1800-talet.
 
    Karta er skrivne som tekst. Kvart teikn er ei flis (sjå js/rpg/pikslar.js).
-   Siffer og symbol er merke: dei blir liggjande som golvflisa til kartet, og
-   posisjonen blir brukt til dører, startpunkt og personar.
+   Siffer og symbola @ % $ ! & * er merke: dei blir liggjande som golvflisa
+   til kartet, og posisjonen blir brukt til dører, startpunkt og personar.
 
-   Manus (tale, hendingar) er lister med steg som motoren køyrer i rekkjefølgje:
+   Manus er lister med steg som spelet køyrer i rekkjefølgje:
      { s: "Namn", t: "Replikk" }        replikk (s kan sløyfast for forteljar)
+                                        ⟪ord⟫ i replikken blir utheva
+     { lytt: ["stein", "stæin"] }       Ivar høyrer ei form av eit ord (id, form)
+     { tilbod: ["snjo", "snjo"] }       huldra seier eit ord: skrive ned eller berre lytte?
+     { val: "Spørsmål", alt: ["A", "B"], svar: [[…], […]] }  val med eigne steg
      { fort: ["linje", …] }             forteljing på svart skjerm
      { flagg: "x" } / { uflagg: "x" }   set eller fjern eit flagg
-     { gi: "ting", n: 2 }               gi ting
-     { pengar: 60 }                     skilling (120 skilling = 1 spesidalar)
-     { ord: ["tun", …] }                ord i notatboka
-     { evne: "vokalskifte" }            ny ordkunst
-     { parti: "skreppa" }               ny i partiet
-     { kamp: ["setjekasse"], boss: 1 }  kamp
+     { gi: "ting", n: 2 }               gi ting eller nøkkelting
+     { pengar: 60 }                     skilling
+     { parti: "huldra" }                ny i partiet
+     { kamp: ["blekkdrope"], boss: 1, rettleiing: 1 }
      { til: ["kart", "merke"] }         flytt
-     { opne: "stad" }                   opne ein stad på verdskartet
-     { verd: 1 }                        gå til verdskartet
+     { fjern: "&" }                     personen på merket går sin veg
      { dersom: fn, da: […], elles: […] }
-     { lagre: 1 }, { lækje: 1 }, { kapittelslutt: 1 } */
+     { lagre: 1 }, { lækje: 1 }, { butikk: [...] }, { kapittelslutt: 1 } */
 window.RPGData = (function () {
   "use strict";
 
+  /* ---------- Lydfamiliane ---------- */
+  // Kvar familie gir ei slags evne. «sterk» seier om ei form har lyden som gir kraft.
+  const FAMILIAR = {
+    diftong: {
+      namn: "Diftongane", evne: "Vern", rost: 3, farge: "#f8d840",
+      tekst: "Dansk har gjort ei, au og øy til enkle vokalar, mens mange bygdemål har teke vare på dei. Galdrane gir vern.",
+      hint: "Diftongen (ei, au, øy) gir kraft.",
+      sterk: f => /(ei|æi|ai|au|øy|ey|øu)/i.test(f),
+      kvifor: (f, o) => `«${f}» har ingen diftong. Der har dansk gjort han til ein enkel vokal. «${o.aasen}» held på han.`,
+    },
+    hard: {
+      namn: "Dei harde konsonantane", evne: "Åtak", rost: 2, farge: "#e86a50",
+      tekst: "Dansk har mjuka opp p, t og k etter vokal, så kake vart Kage og gate vart Gade. Formene med harde konsonantar er åtaksgaldrar.",
+      hint: "Den harde konsonanten (p, t, k) gir kraft.",
+      sterk: (f, o) => f.toLowerCase() !== o.dansk.toLowerCase(),
+      kvifor: (f, o) => `«${f}» er dansk, med mjuk konsonant. «${o.aasen}» har den harde.`,
+    },
+    sporjeord: {
+      namn: "Spørjeorda", evne: "Avsløring", rost: 2, farge: "#7fd0f0",
+      tekst: "Der dansk skriv hv, har mange bygdemål kv eller k. Spørjeorda avslører veikskapar hos fiendar og løyndomar i verda.",
+      hint: "Kv eller k, ikkje hv, gir kraft.",
+      sterk: f => !/^hv/i.test(f),
+      kvifor: (f, o) => `«${f}» har den danske hv-en. I bygdemåla heiter det mellom anna «${o.former[0]}» og «${o.former[1]}».`,
+    },
+    j: {
+      namn: "J-orda", evne: "Lindring", rost: 3, farge: "#9ff09f",
+      tekst: "Mange bygdemål har teke vare på ein j som dansk miste. Desse orda lækjer og lindrar.",
+      hint: "J-en gir kraft.",
+      sterk: f => /j/i.test(f),
+      kvifor: (f, o) => `«${f}» har mista j-en, slik dansk gjorde. «${o.aasen}» har han att.`,
+    },
+    smaaord: {
+      namn: "Småorda", evne: "Raske galdrar", rost: 1, farge: "#d8c8f8",
+      tekst: "Småorda blir brukte heile tida og har svært mange former. Dei gir billige galdrar som kan brukast ofte, utan spørsmål.",
+    },
+    nokkel: {
+      namn: "Nøkkelorda", evne: "Legender", rost: 0, farge: "#f0e8c8",
+      tekst: "Nokre ord ber sjølve temaet. Dei finst berre ved å rekonstruere rota frå mange bygder, og dei driv hovudhistoria framover.",
+    },
+  };
+
+  /* ---------- Orda (frå ordlista i designdokumentet) ---------- */
+  // verknad: kva galdren gjer i kamp. mot: fiendeslag der ordet passar ekstra godt.
+  const ORD = {
+    stein: { fam: "diftong", aasen: "stein", former: ["stein", "stæin", "sten"], norront: "steinn", dansk: "Steen", tyding: "stein, berg", verknad: { vern: 3 }, tekst: "Vern for heile partiet." },
+    heim: { fam: "diftong", aasen: "heim", former: ["heim", "heime", "hjem"], norront: "heimr", dansk: "Hjem", tyding: "heim, bustad", verknad: { vern: 3, lækje: 10 }, tekst: "Vern og litt lækjing for heile partiet." },
+    auga: { fam: "diftong", aasen: "auga", former: ["auga", "auge", "øye"], norront: "auga", dansk: "Øie", tyding: "auge", verknad: { vern: 2, avslor: "alle" }, tekst: "Vern, og auga ser veikskapane til alle fiendane." },
+    draum: { fam: "diftong", aasen: "draum", former: ["draum", "drøm"], norront: "draumr", dansk: "Drøm", tyding: "draum", verknad: { vern: 3, sov: true }, tekst: "Vern, og éin fiende kan sovne og miste ein tur." },
+    hoyra: { fam: "diftong", aasen: "høyra", former: ["høyra", "høyre", "høre"], norront: "heyra", dansk: "høre", tyding: "høyre, lytte", verknad: { vern: 4 }, tekst: "Sterkt vern for heile partiet." },
+    laus: { fam: "diftong", aasen: "laus", former: ["laus", "løs"], norront: "lauss", dansk: "løs", tyding: "laus, fri", verknad: { vern: 2, loys: true }, tekst: "Vern, og alle rettskrivne ord blir sette fri." },
+    kaka: { fam: "hard", aasen: "kaka", former: ["kaka", "kake"], norront: "kaka", dansk: "Kage", tyding: "kake, flatbrød", verknad: { skade: 16 }, tekst: "Åtak på éin fiende." },
+    gata: { fam: "hard", aasen: "gata", former: ["gata", "gate"], norront: "gata", dansk: "Gade", tyding: "gate, fegate mellom gjerde", verknad: { skade: 11, alle: true }, tekst: "Åtak som går gjennom alle fiendane." },
+    bok: { fam: "hard", aasen: "bok", former: ["bok"], norront: "bók", dansk: "Bog", tyding: "bok", verknad: { skade: 15 }, mot: ["bok"], tekst: "Åtak på éin fiende. Særleg sterkt mot protokollar." },
+    vita: { fam: "hard", aasen: "vita", former: ["vita", "vite"], norront: "vita", dansk: "vide", tyding: "vite, kjenne til", verknad: { skade: 14, gjennom: true }, tekst: "Åtak som går rett gjennom vernet til fienden." },
+    mat: { fam: "hard", aasen: "mat", former: ["mat"], norront: "matr", dansk: "Mad", tyding: "mat", verknad: { skade: 13, meto: 8 }, tekst: "Åtak, og den som syng, blir mett og får litt liv att." },
+    kvat: { fam: "sporjeord", aasen: "kvat", former: ["kva", "ka", "kå", "hva"], norront: "hvat", dansk: "hvad", tyding: "kva", verknad: { avslor: "ein" }, tekst: "Avslører éin fiende: han tek meir skade ei stund." },
+    kven: { fam: "sporjeord", aasen: "kven", former: ["kven", "kem", "kæm", "hvem"], norront: "hverr", dansk: "hvem", tyding: "kven", verknad: { avslor: "ein" }, mot: ["vette"], tekst: "Avslører éin fiende. Ein vette som blir spurd kven han er, blir forvirra." },
+    kvar: { fam: "sporjeord", aasen: "kvar", former: ["kvar", "kor", "kar", "hvor"], norront: "hvar", dansk: "hvor", tyding: "kvar, kor", verknad: { avslor: "alle" }, felt: "leit", tekst: "Avslører alle fiendane. Utanfor kamp finn han gøymde ting." },
+    ljos: { fam: "j", aasen: "ljos", former: ["ljos", "jos", "lys"], norront: "ljós", dansk: "Lys", tyding: "lys", verknad: { lækje: 16, alle: true, skadeMot: 10 }, mot: ["blekk"], felt: "lækje", tekst: "Lækjer heile partiet og brenn blekkvesen." },
+    snjo: { fam: "j", aasen: "snjo", former: ["snjo", "snjø", "snø"], norront: "snjór", dansk: "Snee", tyding: "snø", verknad: { lækje: 24, skadeMot: 22 }, mot: ["eld"], felt: "lækje", tekst: "Lækjer éin og sløkkjer irrbloss." },
+    mjolk: { fam: "j", aasen: "mjølk", former: ["mjølk", "mjelk", "mjøkk"], norront: "mjólk", dansk: "Mælk", tyding: "mjølk", verknad: { lækje: 34 }, felt: "lækje", tekst: "Lækjer éin godt." },
+    eg: { fam: "smaaord", aasen: "eg", former: ["eg", "e", "æ", "jæ", "i"], norront: "ek", dansk: "jeg", tyding: "eg", verknad: { snogg: true }, tekst: "Den som syng, får neste tur med ein gong." },
+    ikkje: { fam: "smaaord", aasen: "ikkje", former: ["ikkje", "ikke", "ittj", "itte", "inte"], norront: "ekki", dansk: "ikke", tyding: "ikkje", verknad: { stopp: true }, tekst: "Stoppar éin fiende: målaren hans går attende til null." },
+    berre: { fam: "smaaord", aasen: "berre", former: ["berre", "bære", "bare"], norront: "", dansk: "kun", tyding: "berre", verknad: { skade: 6, alle: true }, tekst: "Eit lite, billig åtak på alle." },
+    maal: { fam: "nokkel", aasen: "maal (mål)", former: ["mål"], norront: "mál", dansk: "Sprog", tyding: "språk, tale", tekst: "Eit nøkkelord. Rota kan rekonstruerast seinare i spelet." },
+    tunga: { fam: "nokkel", aasen: "tunga", former: ["tunga", "tunge"], norront: "tunga", dansk: "Tunge", tyding: "tunge, språk", tekst: "Eit nøkkelord. Rota kan rekonstruerast seinare i spelet." },
+    hugsa: { fam: "nokkel", aasen: "hugsa", former: ["hugsa", "hugse", "huske"], norront: "hugsa", dansk: "huske, erindre", tyding: "hugse, minnast", tekst: "Eit nøkkelord. Rota kan rekonstruerast seinare i spelet." },
+    minne: { fam: "nokkel", aasen: "minne", former: ["minne"], norront: "minni", dansk: "Minde", tyding: "minne", tekst: "Eit nøkkelord. Rota kan rekonstruerast seinare i spelet." },
+  };
+
   /* ---------- Utsjånad ---------- */
   const U = {
-    ivar: { hud: "#e6c7a6", har: "#5a3f2a", jakke: "#3f4a6a", bukse: "#5a4a3a", sekk: true },
-    bror: { hud: "#e2c09e", har: "#8a6a3a", jakke: "#7a5a3a", bukse: "#4a4034" },
-    syster: { hud: "#ecccae", har: "#c9a060", jakke: "#e9e4d4", kjole: "#3d6fa0" },
-    aarflot: { hud: "#e2c09e", har: "#d8d4cc", jakke: "#2f3f5f", bukse: "#2a2a30", hatt: "#1c1d20" },
+    ivar: { hud: "#e8b890", har: "#6a4428", jakke: "#3f5a7a", bukse: "#5a4a3a", sekk: true, belte: true },
+    huldra: { hud: "#f0c8a0", har: "#e8c870", frisyre: "langt", jakke: "#3a7236", kjole: "#2f6a3a", hale: true },
+    bror: { hud: "#e2b890", har: "#8a6a3a", jakke: "#7a5a3a", bukse: "#4a4034", belte: true },
+    syster: { hud: "#ecc4a4", frisyre: "skaut", skaut: "#2c4288", jakke: "#ecebf0", kjole: "#6a3a2a", forkle: "#ecebf0" },
+    granne: { hud: "#e0b890", har: "#d8d8e0", frisyre: "skalle", jakke: "#5a5060", bukse: "#3a3a44", skjegg: "#d8d8e0" },
+    budeie: { hud: "#ecc4a4", frisyre: "skaut", skaut: "#d06a64", jakke: "#ecebf0", kjole: "#3a5a8a", forkle: "#ecebf0" },
+    framande: { hud: "#e8c8b0", har: "#2a2030", jakke: "#2a2438", bukse: "#1c1824", flosshatt: "#141018", briller: true },
+    prest: { hud: "#e8c0a0", har: "#d8d8e0", frisyre: "skalle", jakke: "#1c1c28", kjole: "#1c1c28", krage: true },
+    klokkar: { hud: "#e0b890", har: "#8a6a3a", jakke: "#4a3a5a", bukse: "#2a2a30" },
+    predikant: { hud: "#dcb088", har: "#4a3a2a", jakke: "#4a4a58", bukse: "#3a3a44", hatt: "#2a2a30", skjegg: "#4a3a2a" },
+    kone: { hud: "#e0c0a8", frisyre: "skaut", skaut: "#3a3a44", jakke: "#5a3f2a", kjole: "#2a2a30" },
+    kremmar: { hud: "#e2b890", har: "#8a6a3a", jakke: "#3f7a4a", bukse: "#4a4034", hatt: "#5a3a2a" },
+    bonde: { hud: "#dcb088", har: "#6a4428", jakke: "#8a2638", bukse: "#3a3a44" },
+    gjetar: { hud: "#ecc4a4", har: "#e8c870", jakke: "#6b8f4a", bukse: "#5a4a3a" },
+    tenestejente: { hud: "#ecc4a4", frisyre: "skaut", skaut: "#ecebf0", jakke: "#2a2a30", kjole: "#2a2a30", forkle: "#ecebf0" },
+    haugbonde: { hud: "#8a9a86", har: "#c8ccd4", frisyre: "skalle", jakke: "#4a4a5a", kjole: "#4a4a5a", hatt: "#4e6a4a", skjegg: "#c8ccd4" },
+    tenar: { hud: "#e2c09e", har: "#d8d4cc", jakke: "#2f3f5f", bukse: "#2a2a30" },
     fiskar: { hud: "#d9b08e", har: "#6b4a2a", jakke: "#d9b441", bukse: "#3a3a44", hatt: "#d9b441", skjegg: "#6b4a2a" },
-    kone: { hud: "#e8c6a4", har: "#7a5a3a", jakke: "#9c3b2e", kjole: "#5a3f2a" },
-    typograf: { hud: "#e2c09e", har: "#2a2a30", jakke: "#e9e4d4", bukse: "#3a3a44" },
-    daae: { hud: "#e2c09e", har: "#9a9a9a", jakke: "#2f4f8a", bukse: "#e9e4d4", skjegg: "#9a9a9a" },
-    elev: { hud: "#ecccae", har: "#c9a060", jakke: "#6b8f4a", bukse: "#5a4a3a" },
-    elev2: { hud: "#ecccae", har: "#3a2a1a", jakke: "#e9e4d4", kjole: "#9c3b2e" },
-    tenar: { hud: "#e2c09e", har: "#6b4a2a", jakke: "#e9e4d4", kjole: "#2a2a30" },
-    neumann: { hud: "#e2c09e", har: "#e9e4d4", jakke: "#1c1d20", bukse: "#1c1d20" },
-    borgar: { hud: "#e2c09e", har: "#4a3a2a", jakke: "#6b3f6f", bukse: "#2a2a30", hatt: "#2a2a30" },
-    kremmar: { hud: "#e2c09e", har: "#8a6a3a", jakke: "#3f7a4a", bukse: "#4a4034" },
-    gamal: { hud: "#e2c09e", har: "#e9e4d4", jakke: "#5a5060", bukse: "#3a3a44", skjegg: "#e9e4d4" },
+    mor: { hud: "#e8c0a0", frisyre: "skaut", skaut: "#6a3a7a", jakke: "#8a2638", kjole: "#3a3a44" },
+    dotter: { hud: "#f0c8a8", har: "#c8a050", frisyre: "langt", jakke: "#ecebf0", kjole: "#8a2638" },
+    bestefar: { hud: "#dcb898", har: "#bcbccc", frisyre: "skalle", jakke: "#5a4a3a", bukse: "#3a3a44", skjegg: "#bcbccc" },
   };
 
   /* ---------- Karta ---------- */
   const KART = {
     "asen-stova": {
-      namn: "Stova på Åsen", golv: "P", inne: true,
+      namn: "Stova på Åsen", golv: "P", inne: true, bakgrunn: "inne",
       rader: [
         "XXXXXXXXXXXX",
-        "XfPPPBBPPbPX",
-        "XPPPPPPPPbPX",
-        "XPPkkPPP@PPX",
-        "XPzkkzPPPPKX",
+        "XfPPPBBPPbbX",
+        "XPPPPPPPPPPX",
+        "XPzkkzPP@PPX",
+        "XPPkkPPPPPKX",
         "XP%PPP1PPPPX",
         "XLPPPPPPPPPX",
         "XXXXXEXXXXXX",
       ],
-      dorer: [{ ved: [5, 7], til: ["asen", "d"] }],
+      dorer: [{ ved: [5, 7], til: ["asen", "3"] }],
       kister: [{ ved: [10, 4], ting: "flatbrod", n: 2, id: "k-stova" }],
       folk: [
         { merke: "@", u: "bror", namn: "Storebror", tale: "bror" },
@@ -67,33 +154,231 @@ window.RPGData = (function () {
       ],
     },
     asen: {
-      namn: "Åsen i Ørsta", golv: ".", stad: "aasen",
+      namn: "Åsen i Hovdebygda", golv: ".", bakgrunn: "tun",
       rader: [
-        "#########################",
-        "#....RRRRR........t.....#",
-        "#....RRRRR..............#",
-        "#....WvDvW.....RRRR..t..#",
-        "#......=.......RRRR.....#",
-        "#.\"\"...=...|||.WvWW..o..#",
-        "#......=...|YY.....=....#",
-        "#..t...=...|YY.....=....#",
-        "#......=============....#",
-        "#......=..........=.====2",
-        "#..o...=...\"\".....=.....#",
-        "#......=...\"\"..@..=..t..#",
-        "#..t...=..........=.....#",
-        "#......L....o.....=.....#",
-        "#~~~~~~~~~~~~~~~~~~~~~~~#",
-        "#########################",
+        "#############4##############",
+        "#..o.#....t..=............o#",
+        "#..#RRRRR#...=....RRRRRR...#",
+        "#...RRRRR....=.t..RRRRRR...#",
+        "#...WvDvW....=....WWvDWW...#",
+        "#.....3.t....=.......=.....#",
+        "#.....=.&....=.@.....=%....#",
+        "#.....===================..#",
+        "#..\".....\"..............=..#",
+        "#..||||.\"........RRR....=t.#",
+        "#..YYYY...\"...t..WDW....=..#",
+        "#..YYYY....\"...o........===2",
+        "#..YYYY....................#",
+        "#.L........................#",
+        "#______..o_.____....__...._#",
+        "#~~~~~~~~~~~~~~~~~~~~~~~~~~#",
+        "############################",
       ],
       dorer: [
-        { ved: [7, 3], til: ["asen-stova", "1"] },
-        { ved: [24, 9], til: ["vegen", "1"], kant: true },
+        { ved: [6, 4], til: ["asen-stova", "1"] },
+        { ved: [13, 0], til: ["utmarka", "1"], kant: true, vakt: { flagg: "skiftebrev", manus: "ikkje_enno" } },
+        { ved: [27, 11], til: ["bygda", "1"], kant: true, vakt: { flagg: "skiftebrev", manus: "skiftebrev" } },
       ],
-      folk: [{ merke: "@", u: "gamal", namn: "Granne", tale: "granne" }],
+      folk: [
+        { merke: "@", u: "granne", namn: "Granne", tale: "granne" },
+        { merke: "%", u: "budeie", namn: "Budeia", tale: "budeie" },
+        { merke: "&", u: "framande", namn: "Ein framand", tale: "framande", vis: st => !st.flagg.framande1 },
+      ],
+      inngang: [{ merke: "3", manus: "ut_forste" }],
+    },
+    utmarka: {
+      namn: "Utmarka", golv: ",", bakgrunn: "utmark",
+      fiendar: { lag: [["vette"], ["irrbloss"], ["vette", "irrbloss"], ["vette", "vette"]] },
+      rader: [
+        "################################",
+        "#,,###,,##########~~###,####o.,#",
+        "#,#,,##,#,###,,,##,~~,o,,#,##,##",
+        "#,,#,,,,,,,,,,,,,,,~~,,,,,,,####",
+        "###,,,,,,,,,,,.,,,,~~,RRRR,,####",
+        "####,,.,,,,,,,,,,,,~~,RRRR,,,###",
+        "##,#,,,hhh,,,,,,,,,~~,WWDW,,#,,#",
+        "#,,,,,,hhh,,,,,,,,,~~.......####",
+        "#,,,,,..@..,o,,,,,~~,...=.%.####",
+        "#,##,t.....,,,,,,,~~,...=...#,,#",
+        "####,,,.=,,,,,,,,,~~,,,,=,,,o#,#",
+        "###,,,,,=,,,,,,,,~~,o,,,=,,,.#,#",
+        "#,,#,,.,=========QQ======,,,####",
+        "#,##,,,,,,,,,,,=,~~,,,,,,,,,,###",
+        "#,##,,,,\",,,,,,=,~~,,,,,,,...,##",
+        "#,,,,,,,,,,,$,,=,~~,,,,,,,..!,##",
+        "##,#\",,,,,,.,,,=,~~,,,,,,,...#.#",
+        "###\",,,,,,t,,,,=\"~~,,,,,,,,,,###",
+        "##,#\",,,,.,,,,,=,,~~,,,,,,.,#,##",
+        "#,,#,,,,,,,,,,,=,,~~,,,,,,t,#,,#",
+        "##,#,,,,,,,,,,,=,,~~t,,,,,\",,#,#",
+        "###############1################",
+      ],
+      dorer: [
+        { ved: [15, 21], til: ["asen", "4"], kant: true },
+        { ved: [24, 6], laast: "Setra er stengd. Buskapen er ikkje komen til fjells enno." },
+      ],
+      kister: [{ ved: [28, 15], pengar: 48, id: "k-utmark", gøymd: true }],
+      folk: [
+        { merke: "@", u: "haugbonde", namn: "Vetten ved haugen", tale: "haugbonde", vis: st => !st.flagg.haug },
+        { merke: "%", u: "huldra", namn: "Ei kvinne ved setra", tale: "huldra", vis: st => !st.flagg.huldra_med },
+        { merke: "$", u: "gjetar", namn: "Gjetarguten", tale: "gjetar" },
+      ],
+    },
+    bygda: {
+      namn: "Hovdebygda", golv: ".", bakgrunn: "tun",
+      rader: [
+        "############################################",
+        "#.......jjjjjjjjjjjjjjj....................#",
+        "#.......j......A......j....t...............#",
+        "#.......j.x.rrrIrrr.x.jt....rrrrrrrrr......#",
+        "#....t..j...rrrIrrr...j...t.rrrrrrrrr....t.#",
+        "#....t..j.x.wVwdwVw.x.j.....wVwVdVwVw......#",
+        "#.......j......3......j.........4......tt..#",
+        "#......tj..x.x.=.x.x..j.........=..........#",
+        "#.......jjjjjjj=jjjjjjj....t....=..........#",
+        "#.............&=................=..........#",
+        "#..............=................=..........#",
+        "1==========================================2",
+        "#....=....!.........\"..............=...\"...#",
+        "#....=\"................o..*.t....@o=.......#",
+        "#..RRRRR...o.........\"t...\".......RRRRRtt..#",
+        "#..RRRRR..........o$..............RRRRR....#",
+        "#..WvDvW..........................WDvWW....#",
+        "#....5.............t..\"................t...#",
+        "#.....................||||||...............#",
+        "#.....................YYYYYY...............#",
+        "#.....................YYYYYY...............#",
+        "#............t.........t...................#",
+        "############################################",
+      ],
+      dorer: [
+        { ved: [0, 11], til: ["asen", "2"], kant: true },
+        { ved: [43, 11], til: ["vegen", "1"], kant: true },
+        { ved: [15, 5], til: ["kyrkja", "1"] },
+        { ved: [32, 5], til: ["prestegarden", "1"], krev: "prest_bed", laast: "Døra til prestegarden er stengd. Innanfor høyrer du noko som dryp." },
+        { ved: [5, 16], til: ["nedre-hovde", "1"] },
+        { ved: [35, 16], laast: "Bua til kremmaren er stengd. Han sel frå steinen utanfor." },
+      ],
+      folk: [
+        { merke: "&", u: "framande", namn: "Den framande", tale: "framande2", vis: st => st.flagg.framande1 && !st.flagg.framande2 },
+        { merke: "*", u: "kone", namn: "Gamal kone", tale: "kone" },
+        { merke: "@", u: "kremmar", namn: "Kremmaren", tale: "kremmar" },
+        { merke: "$", u: "predikant", namn: "Lekpredikanten", tale: "predikant" },
+        { merke: "!", u: "bonde", namn: "Bonde", tale: "bonde" },
+      ],
+    },
+    kyrkja: {
+      namn: "Hovdekyrkja", golv: "g", inne: true, fristad: true, bakgrunn: "kyrkje",
+      rader: [
+        "GGGGGGGGGGGGG",
+        "GgggLaaaLgggG",
+        "Gggggg%gggggG",
+        "GggggglgggggG",
+        "GeeeeeleeeeeG",
+        "Gg@ggglgggggG",
+        "GeeeeeleeeeeG",
+        "GggggglgggggG",
+        "GeeeeeleeeeeG",
+        "Gggggg1gggggG",
+        "GGGGGGEGGGGGG",
+      ],
+      dorer: [{ ved: [6, 10], til: ["bygda", "3"] }],
+      folk: [
+        { merke: "%", u: "prest", namn: "Presten", tale: "prest" },
+        { merke: "@", u: "klokkar", namn: "Klokkaren", tale: "klokkar" },
+      ],
+    },
+    prestegarden: {
+      namn: "Prestegarden", golv: "P", inne: true, bakgrunn: "inne",
+      rader: [
+        "XXXXXXXXXXXEXX",
+        "XBBBPPkkPPP2PX",
+        "XPPPPPkkPPPPPX",
+        "XPzPPPPPP@PPPX",
+        "XPPPPPPPPPPPKX",
+        "XfPPPPPPPPPPLX",
+        "XPPPPP1PPPPPPX",
+        "XXXXXXEXXXXXXX",
+      ],
+      dorer: [
+        { ved: [6, 7], til: ["bygda", "4"] },
+        { ved: [11, 0], til: ["kontoret", "1"] },
+      ],
+      kister: [{ ved: [12, 4], ting: "kaffi", n: 1, id: "k-preste" }],
+      folk: [{ merke: "@", u: "tenestejente", namn: "Tenestejenta", tale: "tenestejente" }],
+    },
+    kontoret: {
+      namn: "Kontoret i prestegarden", golv: "P", inne: true, bakgrunn: "arkiv",
+      fiendar: { alle: true, lag: [["blekkdrope", "blekkdrope"], ["blekkflekk"], ["fjorpennen"], ["blekkdrope", "fjorpennen"]] },
+      rader: [
+        "XXXXXXXXXXXXXXXXXXXEXX",
+        "XyyyyPPPyyyyPPPyyyP2PX",
+        "XPPPPPPnPPPPPPPPPPPPPX",
+        "XPPkkPPPPPPyyyyPPnPPPX",
+        "XPPkkPPnPPPPPPPPPPPPPX",
+        "XPPPPPPPPPPPPPPPPPPKPX",
+        "XyyyyPPPPyyyyPPPPPnPPX",
+        "XPPPPPPnPPPPPPPPPPPPPX",
+        "XPPnPPPPPPPPkkPPPPPPPX",
+        "XPPPPPPPPPPPkkPPPPnPPX",
+        "XyyyyPPPPyyyyPPPPPPPPX",
+        "XPPP!PPPPPPPPPPPPPPPPX",
+        "XPPPPPPPPP1PPPPPPPLPPX",
+        "XXXXXXXXXXEXXXXXXXXXXX",
+      ],
+      dorer: [
+        { ved: [10, 13], til: ["prestegarden", "2"] },
+        { ved: [19, 0], til: ["arkivet", "1"], krevOrd: "ljos", laast: "Døra ned til arkivet står open, men det er bekmørkt der nede. Blekket et opp lyset frå lampa. Du treng eit sterkare ljos." },
+      ],
+      kister: [
+        { ved: [19, 5], ting: "luktesalt", n: 1, id: "k-kontor" },
+        { ved: [4, 11], ting: "romegraut", n: 2, id: "k-kontor-gøymd", gøymd: true },
+      ],
+    },
+    arkivet: {
+      namn: "Arkivet", golv: "g", inne: true, bakgrunn: "arkiv",
+      fiendar: { alle: true, lag: [["protokollen"], ["stempelet"], ["fjorpennen", "blekkflekk"], ["blekkdrope", "protokollen"]] },
+      rader: [
+        "cccccccccccccccccccc",
+        "cyyyyyyygggyyyyyyyyc",
+        "cgggggnggg5gggnggggc",
+        "cggggggggggggggggggc",
+        "cyyyggggnggggnggyyyc",
+        "cggggggggggggggggggc",
+        "cgnggyyyyggyyyyggngc",
+        "cggggggggggggggggggc",
+        "cyyyggggLggggggyyyyc",
+        "cggggggngggggggggggc",
+        "cgg!gggggggggnggyyyc",
+        "cggggggggg1ggggggggc",
+        "ccccccccccEccccccccc",
+      ],
+      dorer: [{ ved: [10, 12], til: ["kontoret", "2"] }],
+      kister: [{ ved: [3, 10], ting: "kaffi", n: 2, id: "k-arkiv-gøymd", gøymd: true }],
+      inngang: [{ merke: "5", manus: "blekklatten" }],
+    },
+    "nedre-hovde": {
+      namn: "Stova på Nedre Hovde", golv: "P", inne: true, bakgrunn: "inne",
+      rader: [
+        "XXXXXXXXXXXX",
+        "XfPPPBPPPbbX",
+        "XPP@PPPPPPPX",
+        "XPPkkPPP%PPX",
+        "XPzkkzPPPPPX",
+        "XPPPPPPP$PPX",
+        "XPPPP1PPPPPX",
+        "XXXXXEXXXXXX",
+      ],
+      dorer: [{ ved: [5, 7], til: ["bygda", "5"] }],
+      folk: [
+        { merke: "@", u: "mor", namn: "Mora", tale: "mor" },
+        { merke: "%", u: "dotter", namn: "Dottera", tale: "dotter" },
+        { merke: "$", u: "bestefar", namn: "Bestefaren", tale: "bestefar" },
+      ],
     },
     vegen: {
-      namn: "Vegen til Ekset", golv: ",", fiendar: { sjanse: 1, lag: [["blekkflekk"], ["blekkflekk", "blekkflekk"], ["stavefeil"]] },
+      namn: "Vegen til Ekset", golv: ",", bakgrunn: "utmark",
+      fiendar: { lag: [["blekkdrope"], ["blekkdrope", "blekkdrope"], ["vette"], ["blekkflekk"]] },
       rader: [
         "############################",
         "#,,,,,,,,,,#,,,,,,,,,,,,,,,#",
@@ -113,15 +398,14 @@ window.RPGData = (function () {
         "############################",
       ],
       dorer: [
-        { ved: [0, 4], til: ["asen", "2"], kant: true },
+        { ved: [0, 4], til: ["bygda", "2"], kant: true },
         { ved: [27, 11], til: ["ekset", "1"], kant: true },
       ],
       kister: [{ ved: [25, 13], ting: "kaffi", n: 1, id: "k-vegen" }],
       folk: [{ merke: "@", u: "fiskar", namn: "Fiskar", tale: "fiskar" }],
-      inngang: [{ merke: "1", manus: "vegen_forste" }],
     },
     ekset: {
-      namn: "Ekset", golv: ".", stad: "ekset",
+      namn: "Ekset i Volda", golv: ".", bakgrunn: "tun",
       rader: [
         "##########################",
         "#......RRRRRR.......RRRR.#",
@@ -139,15 +423,15 @@ window.RPGData = (function () {
       dorer: [
         { ved: [0, 7], til: ["vegen", "2"], kant: true },
         { ved: [10, 3], til: ["ekset-stova", "1"] },
-        { ved: [22, 3], til: ["trykkeriet", "1"], krev: "trykkeri_ope", laast: "Døra til trykkeriet er stengd. Innanfor høyrer du noko som klaskar." },
+        { ved: [22, 3], laast: "Trykkjeriet til lensmann Aarflot har stått stille sidan han døydde i 1817." },
       ],
       folk: [
-        { merke: "@", u: "typograf", namn: "Typograf", tale: "typograf" },
-        { merke: "%", u: "kone", namn: "Kone frå bygda", tale: "kone" },
+        { merke: "@", u: "bonde", namn: "Husmann", tale: "husmann" },
+        { merke: "%", u: "kone", namn: "Kone frå bygda", tale: "ekset_kone" },
       ],
     },
     "ekset-stova": {
-      namn: "Boksamlinga på Ekset", golv: "P", inne: true,
+      namn: "Boksamlinga på Ekset", golv: "P", inne: true, bakgrunn: "inne",
       rader: [
         "XXXXXXXXXXXXXX",
         "XBBBBBPPBBBBBX",
@@ -159,364 +443,317 @@ window.RPGData = (function () {
         "XXXXXXXEXXXXXX",
       ],
       dorer: [{ ved: [7, 7], til: ["ekset", "d"] }],
-      folk: [{ merke: "@", u: "aarflot", namn: "Sivert Aarflot", tale: "aarflot" }],
-    },
-    trykkeriet: {
-      namn: "Trykkeriet", golv: "g", inne: true, fiendar: { sjanse: 1, alle: true, lag: [["blekkflekk", "blekkflekk"], ["stavefeil"], ["stavefeil", "blekkflekk"]] },
-      rader: [
-        "GGGGGGGGGGGGGGGGGGGG",
-        "GSSgggpgggSSgggpgggG",
-        "GgggggggggggggggggnG",
-        "GggpgggSSgggpgggg@gG",
-        "GggggggggggggggggggG",
-        "GSSgggggpggSSggggggG",
-        "GggggpggggggggpggggG",
-        "GgggggggggSSgggggggG",
-        "G1gggggggggggggggggG",
-        "GGEGGGGGGGGGGGGGGGGG",
-      ],
-      dorer: [{ ved: [2, 9], til: ["ekset", "t"] }],
-      folk: [{ merke: "@", u: "typograf", namn: "Setjekassa", usynleg: true, tale: "setjekasse", flis: "S" }],
-    },
-    solnor: {
-      namn: "Solnør i Skodje", golv: ".", stad: "solnor",
-      rader: [
-        "###########################",
-        "#..t....rrrrrrrrr.....t...#",
-        "#.......rrrrrrrrr.........#",
-        "#.......wVwVwdwVw....t....#",
-        "#............=............#",
-        "#..\"\"\"..t.....=......\"\"\"..#",
-        "#....t.......=...@........#",
-        "#..\"\"\"........=...........#",
-        "#......=================..2",
-        "#......=..........L.......#",
-        "#..o...=.....t........t...#",
-        "#......1..................#",
-        "###########################",
-      ],
-      dorer: [
-        { ved: [13, 3], til: ["solnor-stova", "1"] },
-        { ved: [26, 8], til: ["skogen", "1"], kant: true },
-        { ved: [7, 11], verd: true, kant: true },
-      ],
-      folk: [{ merke: "@", u: "elev", namn: "Guten på garden", tale: "elev" }],
-    },
-    "solnor-stova": {
-      namn: "Stova på Solnør", golv: "P", inne: true,
-      rader: [
-        "XXXXXXXXXXXXXXXX",
-        "XBBBPPfPPPPBBBBX",
-        "XPPPPPPPPPPPPPPX",
-        "XPkkPPPPPP@PPbPX",
-        "XPz$PPPPPPPPPbPX",
-        "XPPPPP%PPPPPPPPX",
-        "XLPPPPPP1PPPPPKX",
-        "XXXXXXXXEXXXXXXX",
-      ],
-      dorer: [{ ved: [8, 7], til: ["solnor", "d"] }],
-      kister: [{ ved: [14, 6], ting: "romegraut", n: 1, id: "k-solnor" }],
-      folk: [
-        { merke: "@", u: "daae", namn: "Kaptein Daae", tale: "daae" },
-        { merke: "%", u: "elev2", namn: "Dotter på garden", tale: "elev2" },
-        { merke: "$", u: "ivar", namn: "Skrivepulten", usynleg: true, tale: "pult", flis: "k" },
-      ],
-    },
-    skogen: {
-      namn: "Skogen ved Solnør", golv: ",", fiendar: { sjanse: 1, lag: [["glose"], ["stavefeil", "blekkflekk"], ["glose", "blekkflekk"]] },
-      rader: [
-        "##########################",
-        "#,,,,#,,,,,,u,,,,,#,,,,,,#",
-        "#,u,,,,,,#,,,,,,,,,,,,,u,#",
-        "#,,,,,,,,,,,,,t,,,,,,,,,,#",
-        "#,,,t,,,,,,,,,,,,,,,,#,,,#",
-        "1,,,,,,,,#,,,,,,,,,,,,,,,#",
-        "#,,,,,,,,,,,,,,u,,,,,,,,,#",
-        "#,,#,,,,,,,,,,,,,,,,t,,,,#",
-        "#,,,,,,t,,,,,,,,,,,,,,,,,#",
-        "#,,,,,,,,,,,,,,,,#,,,,@u,#",
-        "#,,,,,,,,,,,,,,,,,,,,,,,,#",
-        "##########################",
-      ],
-      dorer: [{ ved: [0, 5], til: ["solnor", "2"], kant: true }],
-      planter: true,
-      folk: [{ merke: "@", u: "gamal", namn: "Kanselli-kråka", usynleg: true, tale: "kraake", flis: "," }],
-    },
-    bergen: {
-      namn: "Bergen", golv: "=", stad: "bergen",
-      rader: [
-        "############################",
-        "#rrrrr..rrrrrr..rrrrr..rrrr#",
-        "#rrrrr..rrrrrr..rrrrr..rrrr#",
-        "#wVdVw..WvWDWv..wVwdw..WDWW#",
-        "#====================!=====#",
-        "#==@=====t======t=====L==$=#",
-        "#==========================#",
-        "#==========%===============#",
-        "#QQQQQQQQQQQQQQQQQQQQQQQQQQ#",
-        "#~~~~~~~~~~~Q~~~~~~~~~~~~~~#",
-        "#~~~~~~~~~~~Q~~~~~~~~~~~~~~#",
-        "############1###############",
-      ],
-      dorer: [
-        { ved: [11, 3], til: ["bispegarden", "1"] },
-        { ved: [12, 11], verd: true, kant: true },
-      ],
-      folk: [
-        { merke: "@", u: "borgar", namn: "Bergensar", tale: "bergensar" },
-        { merke: "%", u: "fiskar", namn: "Fiskehandlar", tale: "fiskehandlar" },
-        { merke: "$", u: "kremmar", namn: "Kremmar", tale: "kremmar" },
-      ],
-    },
-    bispegarden: {
-      namn: "Bispegarden", golv: "P", inne: true,
-      rader: [
-        "XXXXXXXXXXXXXX",
-        "XBBBBPPPPBBBBX",
-        "XPPPPPPPPPPPPX",
-        "XPPPkkk@PPPPPX",
-        "XPPPPPPPPPPP%X",
-        "XPPPPP1PPPPPPX",
-        "XXXXXXEXXXXXXX",
-      ],
-      dorer: [{ ved: [6, 6], til: ["bergen", "d"] }],
-      folk: [
-        { merke: "@", u: "neumann", namn: "Biskop Neumann", tale: "neumann" },
-        { merke: "%", u: "tenar", namn: "Tenestejente", tale: "tenestejente" },
-      ],
+      folk: [{ merke: "@", u: "tenar", namn: "Tenaren på Ekset", tale: "tenar" }],
     },
   };
-  // Merke som ikkje står i rada: «d» er ruta framfor ei dør inn frå eit anna kart, «t» framfor trykkeriet.
-  const EKSTRA_MERKE = {
-    asen: { d: [7, 4] }, ekset: { d: [10, 4], t: [22, 4] },
-    solnor: { d: [13, 4] }, bergen: { d: [11, 4] },
-  };
+  // Merke som ikkje står i karta (framfor dører som fører ut att).
+  const EKSTRA_MERKE = { ekset: { d: [10, 4] } };
 
-  /* ---------- Verdskartet ---------- */
-  const STADER = [
-    { id: "aasen", namn: "Ørsta", kart: "asen", merke: "d", tekst: "Heimbygda. Åsen og Ekset." },
-    { id: "heroy", namn: "Herøy", manus: "heroy", tekst: "Prost Thoresen, som tek imot unge som vil lære." },
-    { id: "solnor", namn: "Solnør", kart: "solnor", merke: "1", tekst: "Herregarden til kaptein Daae i Skodje." },
-    { id: "bergen", namn: "Bergen", kart: "bergen", merke: "1", tekst: "Byen med biskopen og avisa." },
-  ];
+  /* ---------- Verdskartet (frå kapittel 2) ---------- */
+  const STADER = [];
 
   /* ---------- Fiendar ---------- */
+  // slag: blekk, bok, vette, eld. Ord med «mot» same slag gjer ekstra verknad.
+  // spesial.type: «skade» (standard) eller «rettskriv» (gjer eit ord om til dansk).
   const FIENDAR = {
-    blekkflekk: { namn: "Blekkflekk", bilete: "blekkflekk", hp: 18, atk: 5, def: 1, spd: 8, xp: 6, pengar: 4, fall: [["flatbrod", 0.15]] },
-    stavefeil: { namn: "Stavefeil", bilete: "stavefeil", hp: 24, atk: 6, def: 2, spd: 11, xp: 9, pengar: 6, fall: [["kaffi", 0.1]] },
-    glose: { namn: "Latinsk gloseorm", bilete: "glose", hp: 34, atk: 8, def: 3, spd: 7, xp: 14, pengar: 9, fall: [["romegraut", 0.08]] },
-    setjekasse: { namn: "Setjekassa", bilete: "setjekasse", hp: 90, atk: 8, def: 3, spd: 7, xp: 60, pengar: 40, boss: true,
-      spesial: { kvar: 3, namn: "Blysats", faktor: 1.8, tekst: "Setjekassa kastar ein heil sats med blybokstavar!" } },
-    kraake: { namn: "Kanselli-kråka", bilete: "kraake", hp: 150, atk: 11, def: 4, spd: 12, xp: 110, pengar: 70, boss: true,
-      spesial: { kvar: 3, namn: "Kanselliskrik", faktor: 1.4, alle: true, tekst: "«Skriv dansk!», skrik kråka, og det skjer i øyra." } },
-    skugge: { namn: "Skuggen av Blekklatten", bilete: "skugge", hp: 260, atk: 15, def: 5, spd: 10, xp: 220, pengar: 0, boss: true,
-      spesial: { kvar: 3, namn: "Blekkregn", faktor: 1.3, alle: true, tekst: "Fire hundre år med kanselliblekk regnar ned over dykk." } },
+    blekkdrope: { namn: "Blekkdrope", bilete: "blekkdrope", slag: "blekk", hp: 20, atk: 5, def: 1, spd: 8, xp: 5, pengar: 4, fall: [["flatbrod", 0.2]], tekst: "Ein dråpe kanselliblekk som har rent ut av eit brev. Han vil helst inn i munnen på folk." },
+    blekkflekk: { namn: "Blekkflekk", bilete: "blekkflekk", slag: "blekk", hp: 38, atk: 7, def: 2, spd: 7, xp: 10, pengar: 8, fall: [["flatbrod", 0.3]], spesial: { kvar: 3, type: "rettskriv", tekst: "Blekkflekken sprutar kanselliskrift!" }, tekst: "Ein flekk som har vakse seg stor på ei side i kyrkjeboka. Han rettskriv galdrar til dansk." },
+    fjorpennen: { namn: "Fjørpennen", bilete: "fjorpennen", slag: "blekk", hp: 30, atk: 9, def: 1, spd: 13, xp: 11, pengar: 9, fall: [["kaffi", 0.15]], spesial: { kvar: 2, type: "rettskriv", tekst: "Fjørpennen skrapar: «Rettelse!»" }, tekst: "Ein penn som skriv av seg sjølv. Rask, og glad i å rette på andre." },
+    protokollen: { namn: "Protokollen", bilete: "protokollen", slag: "bok", hp: 64, atk: 8, def: 4, spd: 6, xp: 17, pengar: 14, fall: [["romegraut", 0.2]], spesial: { kvar: 3, alle: true, faktor: 0.8, tekst: "Protokollen les opp paragrafar for alle!" }, tekst: "Ei kyrkjebok som har fått auge. Ho les opp paragrafar til alle står stive." },
+    stempelet: { namn: "Stempelet", bilete: "stempelet", slag: "blekk", hp: 52, atk: 11, def: 5, spd: 5, xp: 15, pengar: 12, spesial: { kvar: 3, faktor: 1.6, tekst: "Stempelet slår i bordet: «Approberet!»" }, tekst: "Eit embetsstempel med raud lakk. Det slår sjeldan, men hardt." },
+    vette: { namn: "Namnlaus vette", bilete: "vette", slag: "vette", hp: 26, atk: 6, def: 2, spd: 9, xp: 7, pengar: 0, fall: [["flatbrod", 0.25]], tekst: "Ein vette som har gløymt namnet sitt. Utan namn blir han sur og redd." },
+    irrbloss: { namn: "Irrbloss", bilete: "irrbloss", slag: "eld", hp: 20, atk: 7, def: 0, spd: 15, xp: 7, pengar: 2, tekst: "Eit lite ljos som lokkar folk ut i myra. Snø og kulde sløkkjer det." },
+    haugbonden: { namn: "Haugbonden", bilete: "haugbonden", slag: "vette", hp: 130, atk: 10, def: 4, spd: 8, xp: 40, pengar: 0, spesial: { kvar: 3, alle: true, faktor: 0.9, tekst: "Haugbonden brølar: «KVEN ER EG?»" }, tekst: "Den gamle vetten i haugen. Han har budd der sidan før kyrkja vart bygd." },
+    blekklatten: { namn: "Blekklatten", bilete: "blekklatten", slag: "blekk", hp: 340, atk: 12, def: 4, spd: 9, xp: 90, pengar: 60, spesial: { kvar: 2, type: "rettskriv", veksle: { kvar: 4, alle: true, faktor: 1.1, tekst: "Blekkflaum! Blekklatten skyl over heile partiet!" }, tekst: "Blekklatten: «Alt skal skrives rigtigt!»" }, tekst: "Alt blekket frå kyrkjebøkene i Hovdebygda, samla i éin klump. Det han skriv, står." },
   };
 
   /* ---------- Partiet ---------- */
   const PARTI = {
-    ivar: { namn: "Ivar", u: "ivar", hp: 46, mp: 12, atk: 7, def: 3, spd: 9, vekst: { hp: 9, mp: 2, atk: 1.2, def: 0.8, spd: 0.3 } },
-    skreppa: { namn: "Skreppa", u: "skreppa", hp: 38, mp: 10, atk: 6, def: 4, spd: 11, vekst: { hp: 8, mp: 2, atk: 1, def: 1, spd: 0.4 }, evner: ["nistepakke", "reimeslag"] },
+    ivar: { namn: "Ivar", u: "ivar", hp: 42, rost: 14, atk: 6, def: 3, spd: 10, vekst: { hp: 7, rost: 2, atk: 1.3, def: 0.8, spd: 0.4 }, evner: [] },
+    huldra: { namn: "Huldra", u: "huldra", hp: 50, rost: 12, atk: 9, def: 4, spd: 12, vekst: { hp: 7, rost: 1.5, atk: 1.5, def: 0.8, spd: 0.4 }, evner: ["kulokk", "huldrelokk"] },
   };
-
-  /* ---------- Ordkunst ----------
-     type: skade, lækje, vern. sporsmal: kva slags nynorskspørsmål som avgjer
-     kor godt formelen verkar (sjå js/rpg/kamp.js). */
+  // Songane til huldra (ikkje ord frå ordboka)
   const EVNER = {
-    kjonnsord: { namn: "Kjønnsord", mp: 2, type: "skade", kraft: 16, sporsmal: "kjonn", mal: "ein", tekst: "Kjenn kjønnet på ordet, og ordet slår til. Svarar du rett, treffer du hardt." },
-    vokalskifte: { namn: "Vokalskifte", mp: 4, type: "skade", kraft: 30, sporsmal: "vokal", mal: "ein", tekst: "Rett form av eit sterkt verb utløyser ei kraftig trolldom." },
-    danaar: { namn: "Den gongen då", mp: 3, type: "lækje", kraft: 34, sporsmal: "danaar", mal: "venn", tekst: "Eit godt minne lækjer. Vel rett mellom då og når." },
-    andreplass: { namn: "Andreplass", mp: 3, type: "vern", kraft: 3, sporsmal: "v2", mal: "alle", tekst: "Verbalet på plass to held setninga oppe og vernar heile partiet i nokre rundar." },
-    nistepakke: { namn: "Nistepakke", mp: 3, type: "lækje", kraft: 30, mal: "venn", tekst: "Skreppa finn fram flatbrød og spekekjøt. Lækjer utan spørsmål." },
-    reimeslag: { namn: "Reimeslag", mp: 2, type: "skade", kraft: 14, mal: "ein", tekst: "Skreppa slår med skinnreimene. Treffer alltid." },
+    kulokk: { namn: "Kulokk", rost: 4, type: "lækje", mal: "alle", kraft: 16, tekst: "Ein lokk som lækjer heile partiet." },
+    huldrelokk: { namn: "Huldrelokk", rost: 3, type: "sov", mal: "ein", tekst: "Lokkar éin fiende inn i ein draum, så han mistar ein tur." },
   };
 
-  /* ---------- Ting ---------- */
+  /* ---------- Ting (pris i skilling) ---------- */
   const TING = {
-    flatbrod: { namn: "Flatbrød", tekst: "Lækjer 30 HP.", lækje: 30, pris: 20 },
-    romegraut: { namn: "Rømmegraut", tekst: "Lækjer 90 HP.", lækje: 90, pris: 60 },
-    kaffi: { namn: "Kaffi", tekst: "Gir att 10 blekk (MP).", blekk: 10, pris: 45 },
-    luktesalt: { namn: "Luktesalt", tekst: "Vekkjer ein som har falle, med halv HP.", vekk: 0.5, pris: 90 },
+    flatbrod: { namn: "Flatbrød", pris: 10, lækje: 30, tekst: "Lækjer 30 HP." },
+    romegraut: { namn: "Rømmegraut", pris: 30, lækje: 80, tekst: "Lækjer 80 HP." },
+    kaffi: { namn: "Kaffi", pris: 24, rost: 12, tekst: "Gir 12 røyst att." },
+    luktesalt: { namn: "Luktesalt", pris: 40, vekk: 0.5, tekst: "Vekkjer ein som har falle, med halv HP." },
   };
   const NOKKELTING = {
-    boka: { namn: "Lånebok frå Ekset", tekst: "Ei bok Ivar har lånt av Sivert Aarflot. Ho skal leverast attende." },
-    lanebrev: { namn: "Lånebrevet", tekst: "Frå Aarflot: Ivar kan låne bøker på Ekset så mykje han vil." },
-    plantesamling: { namn: "Plantesamlinga", tekst: "Pressa planter frå skogane rundt Solnør." },
-    grammatikk: { namn: "Den søndmørske Dialekt", tekst: "Grammatikken Ivar skreiv over sunnmørsmålet." },
-    skriftsprog: { namn: "Om vort Skriftsprog", tekst: "Planen frå 1836: eit norsk skriftspråk bygd på det dialektane har felles." },
-    stipend: { namn: "Stipendbrevet", tekst: "150 spesidalar i året frå Det Kongelige Norske Videnskabers Selskab i Trondheim." },
+    ordboka: { namn: "Ordboka", tekst: "Ei bok med skinnband frå den framande. På første sida står det: «Det som er skrive, står.»" },
+    prestenokkel: { namn: "Nøkkelen til prestegarden", tekst: "Presten gav han til Ivar, med ei åtvaring om trolldom." },
+    sagabok: { namn: "Ei gamal kongesoge", tekst: "Frå boksamlinga på Ekset. Nokre av orda liknar på dei Ivar høyrer heime. Han kan ikkje lese norrønt enno." },
   };
 
-  /* ---------- Gåver frå kurset: fullførte modular gir hjelp i spelet ---------- */
+  /* ---------- Gåver frå kurset ---------- */
   const GAAVER = [
-    { id: "kjonnsring", namn: "Kjønnsringen", modular: ["grammatikk-substantiv", "trening-substantiv"], tekst: "Kjønnsord viser berre to av dei tre artiklane." },
-    { id: "vokalstav", namn: "Vokalstaven", modular: ["grammatikk-verb", "trening-verb"], tekst: "Vokalskifte gjer 25 % meir skade." },
-    { id: "v2kompass", namn: "V2-kompasset", modular: ["omgrep-setning", "trening-setning"], tekst: "Andreplass varer to rundar lenger." },
-    { id: "tidsauga", namn: "Tidsauga", modular: ["feil-smaord", "trening-smaord"], tekst: "Du får halvparten meir tid på kvart spørsmål." },
+    { id: "tidsauga", namn: "Tidsauga", modular: ["historie-bakgrunn"], tekst: "Du får halvparten meir tid på formspørsmåla." },
     { id: "heimbygda", namn: "Heimbygda", modular: ["historie-aasen"], tekst: "Ivar får 15 ekstra HP." },
     { id: "reisestav", namn: "Reisestaven", modular: ["historie-aasen-reise"], tekst: "10 % meir røynsle etter kvar kamp." },
+    { id: "oppslagsord", namn: "Oppslagsordet", modular: ["ordbok-grunnform", "ordbok-artikkel"], tekst: "Galdrane kostar éin røyst mindre." },
+    { id: "smaaordring", namn: "Småordringen", modular: ["grammatikk-pronomen", "trening-smaord", "feil-smaord"], tekst: "Småorda kostar ingen røyst." },
+    { id: "vaktaren", namn: "Vaktaren", modular: ["feil-bokmalsord"], tekst: "Halvparten av rettskrivingane prellar av." },
+  ];
+
+  /* ---------- Kapittelplan (vist etter kapittel 1) ---------- */
+  const KAPITTEL = [
+    { nr: 1, namn: "Ørsta", tid: "1826–1831", tekst: "Ivar lærer å lytte. Dei første orda og det første blekket." },
+    { nr: 2, namn: "Solnør", tid: "1830-åra", tekst: "Huslærar i Skodje. Bøker, gamle tekstar og norrønt. Ivar lærer å rekonstruere rota." },
+    { nr: 3, namn: "Bergen", tid: "1841", tekst: "Biskop Neumann gir oppdraget, og blekket ventar i byen." },
+    { nr: 4, namn: "Reiseåra", tid: "1842–1846", tekst: "Til fots gjennom dalane. Knud Knudsen, Asbjørnsen og Moe." },
+    { nr: 5, namn: "Christiania", tid: "frå 1847", tekst: "Grammatikken og ordboka. Kven er den framande, og kva vel Ivar å ta med i norma?" },
   ];
 
   /* ---------- Manus ---------- */
-  const harOrd = n => st => st.notatboka.length >= n;
+  const harOrd = id => st => !!st.ord[id];
+  const talOrd = st => Object.keys(st.ord).length;
   const MANUS = {
     start: [
-      { fort: ["Noreg, 1826.", "I fire hundre år har landet skrive på eit anna lands språk. Blekket frå kanselliet i København har sige inn i lover, skular og kyrkjebøker.", "Folk snakkar norsk. Dei skriv dansk.", "Men blekket har vakna. Det et orda folk seier, og legg dansk i staden."] },
-      { fort: ["På garden Åsen i Ørsta bur ein gut på tretten år. Han er den yngste av ni søsken.", "Mora døydde då han var tre. I vår døydde faren.", "Guten heiter Ivar. Han les alt han kjem over."] },
+      { fort: [
+        "For lenge sidan hadde Noreg sitt eige skriftmål. Etter Svartedauden gjekk det i knas, og bitane hamna i talen til folk i bygdene.",
+        "I fleire hundre år skreiv kanselliet i København for landet. Kanselliet forsvann med 1814, men blekket slutta ikkje å skrive.",
+        "No skriv det av seg sjølv, i kyrkjebøker, tingbøker og lovtekstar. Der det breier seg, blir talen til folk stiv og framand.",
+        "Hovdebygda i Ørsta, våren 1826. Ivar Aasen er tretten år. Mor døydde då han var tre. I vinter døydde far.",
+      ] },
+      { s: "Storebror", t: "Ivar, du er vaken. Det er mykje som skal gjerast på garden no, når far er borte." },
+      { s: "Storebror", t: "Snakk med folk før du går. Du har alltid vore flink til å høyre etter." },
     ],
-    bror: st => st.flagg.boka_levert ? [{ s: "Storebror", t: "Aarflot lét deg låne fleire bøker? Du er ein rar kar, Ivar. Men far ville ha vore stolt." }]
-      : st.flagg.fekk_boka ? [{ s: "Storebror", t: "Ekset ligg aust for garden. Følg vegen langs fjorden." }]
-      : [
-        { s: "Storebror", t: "Ivar. No som far er borte, må alle ta i eit tak her på garden." },
-        { s: "Storebror", t: "Men eg veit kvar tankane dine er. Ligg ikkje boka frå Ekset der på benken?" },
-        { s: "Ivar", t: "Eg har lese henne to gonger. Ho skal attende til Aarflot." },
-        { s: "Storebror", t: "Så gå med henne, då. Men pass deg på vegen. Folk snakkar om noko svart som sig fram i graset. Dei som møter det, gløymer ord." },
-        { gi: "boka" }, { flagg: "fekk_boka" },
-        { t: "Ivar fekk «Lånebok frå Ekset»." },
-        { t: "Trykk X eller Esc for menyen. Gå til leselampar for å lagre." },
-      ],
-    syster: st => st.flagg.fekk_boka ? [
-      { s: "Syster", t: "Veit du kva oldemor kalla det vesle vindauget i taket? Ljore." },
-      { ord: ["ljore"] },
-      { t: "Ivar skreiv «ljore» i notatboka." },
-    ] : [{ s: "Syster", t: "Storebror vil snakke med deg." }],
-    granne: [
-      { s: "Granne", t: "Presten skriv «Gaard» i kyrkjeboka, men vi seier tun når vi meiner plassen mellom husa. Rart, det." },
-      { ord: ["tun"] },
-      { t: "Ivar skreiv «tun» i notatboka." },
+    bror: [{ dersom: harOrd("stein"), da: [
+      { s: "Storebror", t: "Folk seier det er blekk i kyrkjebøkene nede i bygda. Eg skjønar meg ikkje på slikt." },
+    ], elles: [
+      { s: "Storebror", t: "Den store ⟪steinen⟫ midt i åkeren må vekk før vi pløyer. Far fekk han aldri flytt." },
+      { lytt: ["stein", "stein"] },
+    ] }],
+    syster: [{ dersom: harOrd("kaka"), da: [
+      { s: "Syster", t: "Pass deg for folk som snakkar som bøker, Ivar." },
+    ], elles: [
+      { s: "Syster", t: "Ta med deg ei ⟪kake⟫ i skreppa. Du blir svolten ute på bøen." },
+      { lytt: ["kaka", "kake"] }, { gi: "flatbrod", n: 1 }, { t: "Ivar fekk eit flatbrød." },
+    ] }],
+    granne: [{ dersom: harOrd("kvat"), da: [
+      { s: "Granne", t: "Du ser på folk som om du ville skrive dei ned, gut." },
+    ], elles: [
+      { s: "Granne", t: "⟪Ka⟫ er det du glaner etter? Du ser ut som du høyrer etter noko." },
+      { lytt: ["kvat", "ka"] },
+    ] }],
+    budeie: [{ dersom: harOrd("mjolk"), da: [
+      { s: "Budeia", t: "Kyrne er urolege. Dei kjenner blekket, trur eg." },
+    ], elles: [
+      { s: "Budeia", t: "Drikk litt ⟪mjølk⟫ før du går. Ho gir kraft både til folk og fe." },
+      { lytt: ["mjolk", "mjølk"] },
+    ] }],
+    framande: [
+      { s: "Ein framand", t: "God dag, unge mann. Eg er på gjennomreise. Eg samlar på ting som elles ville gått tapt." },
+      { s: "Ein framand", t: "Sommarfuglar, til dømes. Eg fester dei med ei nål, så held dei seg vakre for alltid." },
+      { s: "Ein framand", t: "Du lyttar godt, ser eg. Då treng du denne. Ei tom bok. Skriv ned orda du høyrer, før dei flyg sin veg." },
+      { gi: "ordboka" },
+      { t: "Ivar fekk ei tom bok med skinnband. På første sida står det berre: «Det som er skrive, står.»" },
+      { t: "Ordboka ligg i menyen (X eller Esc). Der ser du orda du har høyrt, formene deira og kven som sa dei." },
+      { s: "Ein framand", t: "Vi møtest nok att. Folk som oss finn kvarandre." },
+      { flagg: "framande1" }, { fjern: "&" },
     ],
-    fiskar: st => st.flagg.fiskar ? [{ s: "Fiskar", t: "Naust, sa eg. Hugs det, gut." }] : [
-      { s: "Fiskar", t: "Du der med boka. Ein skrivar frå byen var her i går og spurde kva huset til båten heiter." },
-      { s: "Fiskar", t: "Eg sa naust. Han skreiv «Baadhus». Og så kom det ein blekkflekk krypande opp frå papiret hans!" },
-      { ord: ["naust"] }, { flagg: "fiskar" },
-      { t: "Ivar skreiv «naust» i notatboka." },
+    ikkje_enno: [{ t: "Ivar vil sjå seg om på tunet og i stova først. Kanskje nokon har noko å seie." }],
+    skiftebrev: [{ dersom: st => talOrd(st) >= 3, da: [
+      { s: "Syster", t: "Ivar! Brevet frå sorenskrivaren, skiftebrevet etter far … det rører seg!" },
+      { t: "Frå det danske brevet renn blekket ut på tunet. Det samlar seg til ein dråpe med gule auge og kryp mot Ivar." },
+      { kamp: ["blekkdrope"], rettleiing: 1 },
+      { s: "Syster", t: "Du sa eit ord, og blekket vart borte! Korleis gjorde du det?" },
+      { s: "Ivar", t: "Eg veit ikkje. Orda hadde liksom kraft i seg, når eg sa dei slik vi seier dei her." },
+      { s: "Storebror", t: "Folk seier at blekket kjem frå kyrkjebøkene. Presten har bede om hjelp. Gå ned i bygda og snakk med han. Han er i kyrkja." },
+      { flagg: "skiftebrev" }, { lagre: 1 },
+    ], elles: [
+      { t: "Ivar kjenner at han ikkje er ferdig på tunet enno. Han har berre høyrt nokre få ord." },
+      { t: "Snakk med folk. Når nokon seier eit ord på sitt eige mål, lyttar Ivar." },
+    ] }],
+    /* Hovdebygda */
+    bonde: [{ dersom: harOrd("eg"), da: [
+      { s: "Bonde", t: "Presten er ein god mann. Men når han snakkar, kjenner eg meg dum." },
+    ], elles: [
+      { s: "Bonde", t: "Jeg … altså … Presten seier vi skal tale ordentleg, som det står i bøkene." },
+      { s: "Bonde", t: "⟪E⟫ veit ikkje lenger korleis eg skal seie det. Det kjennest som om munnen min er full av blekk." },
+      { lytt: ["eg", "e"] },
+    ] }],
+    kone: [{ dersom: harOrd("draum"), da: [
+      { s: "Gamal kone", t: "Spør vetten kven han er, og gi han det rette svaret. Det er haugbonden, veit du." },
+    ], elles: [
+      { s: "Gamal kone", t: "I natt hadde eg ein ⟪draum⟫ om haugen oppe i utmarka." },
+      { lytt: ["draum", "draum"] },
+      { s: "Gamal kone", t: "Den gamle haugbonden har gløymt namnet sitt. Og når ein vette gløymer namnet sitt, blir han vond." },
+      { flagg: "hint_haugbonde" },
+    ] }],
+    kremmar: [
+      { dersom: harOrd("mat"), da: [], elles: [
+        { s: "Kremmaren", t: "Treng du ⟪mat⟫ til vegen? Eg har flatbrød, graut og kaffi frå byen." },
+        { lytt: ["mat", "mat"] },
+      ] },
+      { dersom: st => st.ord.kaka && !st.ord.kaka.former.kaka, da: [
+        { s: "Kremmaren", t: "Og ⟪kaka⟫ er fersk i dag. Kake, kaka, same kva du kallar ho." },
+        { lytt: ["kaka", "kaka"] },
+      ] },
+      { butikk: ["flatbrod", "romegraut", "kaffi", "luktesalt"] },
     ],
-    vegen_forste: st => st.flagg.vegen_sett ? [] : [
-      { flagg: "vegen_sett" },
-      { t: "Graset langs vegen er mørkt og tett. Her kan blekkflekkane lure." },
-      { t: "I kamp vel du Angrip, Ordkunst eller Ting. Ordkunst kostar blekk (MP), men verkar best: svarar du rett på nynorskspørsmålet, slår formelen til med full kraft." },
+    predikant: [{ dersom: harOrd("ljos"), da: [
+      { s: "Lekpredikanten", t: "Eg er ingen prest, berre ein bonde som talar. Men det var Hauge òg." },
+    ], elles: [
+      { s: "Lekpredikanten", t: "Høyr her, folk! Guds ord toler å bli sagt på vårt eige mål!" },
+      { s: "Lekpredikanten", t: "Johannes skriv at i opphavet var Ordet. Og på pinsedagen høyrde kvar mann bodskapen på sitt eige mål." },
+      { s: "Lekpredikanten", t: "Du der, gut. Du lyttar betre enn dei fleste. Gå med ⟪ljos⟫. Det mørke blekket toler ikkje ljoset." },
+      { lytt: ["ljos", "ljos"] },
+    ] }],
+    framande2: [
+      { s: "Den framande", t: "Sjå her. Er dei ikkje vakre? Kvar sommarfugl har si eiga nål." },
+      { s: "Den framande", t: "Kvar gong eit ord blir sagt, blir det litt annleis. Er ikkje det ei sorg? Eg vil at dei skal stå stille." },
+      { s: "Den framande", t: "Du har skrive mykje i boka di alt. Godt. Det som er skrive, står." },
+      { flagg: "framande2" }, { fjern: "&" },
     ],
-    typograf: st => st.flagg.setjekasse_slegen ? [{ s: "Typograf", t: "Pressa går att! Og bokstavane står der dei skal." }] : [
-      { s: "Typograf", t: "Hjelp! Eg sette ei side med dansk kanselliskrift i går, og i natt byrja blekket å leve." },
-      { s: "Typograf", t: "No har setjekassa vakna òg. Ho stavar feil med vilje!" },
-    ],
-    kone: [
-      { s: "Kone frå bygda", t: "Løa var full av høy i fjor. I år har ho nesten tomt. Men ordet har vi framleis." },
-      { ord: ["løe"] },
-      { t: "Ivar skreiv «løe» i notatboka." },
-    ],
-    aarflot: st => st.flagg.setjekasse_slegen ? (st.flagg.lanebrev ? [{ s: "Sivert Aarflot", t: "Les, Ivar. Les alt. Og skriv ned det du høyrer." }] : [
-      { s: "Sivert Aarflot", t: "Du slo setjekassa! Og kven er det der, ein skreppe med auge?" },
-      { s: "Skreppa", t: "Eg låg under pressa i førti år og høyrde på orda. No har eg tenkt å sjå meg om i verda." },
-      { s: "Sivert Aarflot", t: "Ta dette lånebrevet. Heretter lånar du det du vil av boksamlinga mi." },
-      { gi: "lanebrev" }, { t: "Ivar fekk «Lånebrevet»." },
-      { s: "Sivert Aarflot", t: "Og ta med deg denne grammatikken. Sterke verb skiftar vokal: drikk, drakk, drukke. Den som kan det, kan meir enn han trur." },
-      { evne: "vokalskifte" }, { t: "Ivar lærte ordkunsta «Vokalskifte»." },
-      { flagg: "lanebrev" },
-      { fort: ["Åra går. Ivar låner bøker på Ekset og les, som han seier sjølv, «med en vis Graadighed».", "1831: Atten år gamal blir han omgangsskulelærar i heimbygda. Han går frå gard til gard og lærer ungane å lese.", "Den som lærer andre, lærer sjølv. Ungane blandar stendig «då» og «når»."] },
-      { evne: "danaar" }, { t: "Ivar lærte ordkunsta «Den gongen då»." },
-      { fort: ["1833: Ivar er tjue år. Han vil lære meir enn bygda kan gi han.", "Han legg ut til prost Thoresen i Herøy."] },
-      { opne: "heroy" }, { verd: 1 },
-    ]) : st.flagg.trykkeri_ope ? [{ s: "Sivert Aarflot", t: "Trykkeriet ligg aust på tunet. Ver varsam der inne." }] : [
-      { s: "Sivert Aarflot", t: "Ivar Aasen frå Åsen. Kom du med boka?" },
-      { s: "Ivar", t: "Ho er her. Takk for lånet." },
-      { ta: "boka" }, { flagg: "boka_levert" },
-      { s: "Sivert Aarflot", t: "Du les fort. Men no har vi eit problem. Trykkeriet mitt er fullt av blekk som lever." },
-      { s: "Sivert Aarflot", t: "Det kom med ei side dansk kanselliskrift. Blekket et orda folk seier og spyttar ut stavefeil." },
-      { s: "Sivert Aarflot", t: "Du er ung og kan orda frå bygda. Vil du sjå kva du kan gjere? Her er nøkkelen." },
-      { flagg: "trykkeri_ope" }, { t: "Døra til trykkeriet er open." },
-    ],
-    setjekasse: st => st.flagg.setjekasse_slegen ? [{ t: "Setjekassa står stille. Bokstavane ligg i rette rader." }] : [
-      { s: "Setjekassa", t: "K-L-A-K-K. Eg set orda slik eg vil. «Gaard». «Baadhus». «Pige»." },
-      { s: "Ivar", t: "Folk her seier tun, naust og jente." },
-      { s: "Setjekassa", t: "Ikkje på trykk!" },
-      { kamp: ["setjekasse"], boss: 1 },
-      { flagg: "setjekasse_slegen" },
-      { t: "Bokstavane dett ut av setjekassa og legg seg i rette rader." },
-      { s: "???", t: "Pst. Her nede. Under pressa." },
-      { s: "Skreppa", t: "Eg er ei skreppe. Eg har lege her i førti år og høyrt på orda som vart sette. No vil eg ut og høyre dei orda som ikkje vart det." },
-      { parti: "skreppa" }, { t: "Skreppa vart med i partiet!" },
-      { s: "Skreppa", t: "Gå til Aarflot. Han vil takke deg." },
-    ],
-    heroy: st => st.flagg.heroy ? [{ fort: ["Prostegarden i Herøy. Prost Thoresen har bøkene sine opne for Ivar."] }, { verd: 1 }] : [
-      { fort: ["Herøy, 1833.", "Prost Thoresen tek imot unge menn som vil lære. Ivar les grammatikkar og lærer seg korleis språk er bygde."] },
-      { s: "Prost Thoresen", t: "Ei setning er som eit hus, Ivar. Verbalet er den berande bjelken, og han står på plass nummer to." },
-      { evne: "andreplass" }, { t: "Ivar lærte ordkunsta «Andreplass»." },
-      { fort: ["1835: Ivar blir huslærar hjå kaptein Daae på Solnør i Skodje.", "Der skal han vere i sju år."] },
-      { flagg: "heroy" }, { opne: "solnor" }, { verd: 1 },
-    ],
-    elev: [
-      { s: "Guten på garden", t: "Lærar Aasen! Kaptein seier du skal lære oss latin. Men eg vil heller lære kva ein kvern er på latin." },
-      { ord: ["kvern"] }, { t: "Ivar skreiv «kvern» i notatboka." },
-    ],
-    elev2: [
-      { s: "Dotter på garden", t: "Mor kallar den vesle bua der vi har maten for stabbur. Er det eit fint ord?" },
-      { s: "Ivar", t: "Eit av dei finaste." },
-      { ord: ["stabbur"] }, { t: "Ivar skreiv «stabbur» i notatboka." },
-    ],
-    daae: st => st.flagg.til_bergen ? [{ s: "Kaptein Daae", t: "Bergen ventar. Vis biskopen kva du har gjort." }]
-      : (st.flagg.planter_ferdig && st.flagg.grammatikk) ? [
-        { s: "Kaptein Daae", t: "Ein grammatikk over målet vårt, og ei plantesamling som får botanikarane til å måpe. Du er meir enn ein huslærar, Aasen." },
-        { s: "Kaptein Daae", t: "Reis til Bergen og vis det fram for biskop Neumann. Han er ein lærd mann." },
-        { fort: ["Sommaren 1841.", "Ivar legg ut mot Bergen med plantesamlinga og grammatikken i skreppa."] },
-        { flagg: "til_bergen" }, { opne: "bergen" }, { verd: 1 },
-      ] : st.flagg.daae_helst ? [
-        { s: "Kaptein Daae", t: `Planter: ${st.flagg.planter_ferdig ? "ferdig" : `${st.planter} av 5`}. Grammatikken: ${st.flagg.grammatikk ? "ferdig" : "ikkje skriven"}.` },
-        { s: "Kaptein Daae", t: "Plantene finn du i skogen aust for garden. Grammatikken skriv du ved pulten når notatboka har minst 15 ord." },
-      ] : [
-        { s: "Kaptein Daae", t: "Velkomen til Solnør, Aasen. Borna mine treng ein lærar, og du treng tid til bøkene dine." },
-        { s: "Kaptein Daae", t: "Eg har høyrt at du samlar planter òg. Skogen aust for garden er full av dei. Finn fem sjeldne, så skal vi pressa dei." },
-        { s: "Kaptein Daae", t: "Og skriv ned målet vårt. Ein grammatikk over sunnmørsmålet ville vere noko nytt." },
-        { flagg: "daae_helst" },
-        { t: "Oppdrag: Finn fem planter i skogen. Skriv grammatikken ved pulten når notatboka har minst 15 ord." },
-      ],
-    pult: st => [
-      ...(!st.flagg.skriftsprog ? [
-        { fort: ["1836. Om kvelden sit Ivar ved pulten.", "Han skriv ned ein plan: eit norsk skriftspråk, bygd ikkje på éin dialekt, men på det dialektane har felles."] },
-        { gi: "skriftsprog" }, { flagg: "skriftsprog" }, { t: "Ivar skreiv «Om vort Skriftsprog»." },
-      ] : []),
-      { dersom: st2 => st2.flagg.grammatikk, da: [{ t: "Grammatikken ligg ferdig på pulten." }], elles: [
-        { dersom: harOrd(15), da: [
-          { fort: ["Ivar legg notatboka ved sida av seg og skriv.", "Om kjønnet på orda. Om bøyinga. Om korleis folk på Sunnmøre faktisk snakkar."] },
-          { gi: "grammatikk" }, { flagg: "grammatikk" }, { t: "Ivar skreiv «Den søndmørske Dialekt»!" },
-        ], elles: [
-          { t: "Ivar har for få ord i notatboka til å skrive ein grammatikk. Han treng minst 15. Ord får han ved å snakke med folk og ved å svare rett i ordkunsta." },
-        ] },
+    /* Nedre Hovde: skammen */
+    mor: [{ dersom: st => st.flagg.skam_loyst, da: [
+      { s: "Mora", t: "Det er godt å høyre far snakke att. Takk, Ivar." },
+    ], elles: [
+      { s: "Mora", t: "Goddag. Vi … vi taler ikke saadan her i huset." },
+      { s: "Mora", t: "Presten sa at ungane må lære å tale rett. Så no talar vi rett. Alle saman." },
+    ] }],
+    dotter: [{ dersom: st => st.flagg.skam_loyst, da: [
+      { s: "Dottera", t: "Bestefar fortel om gamle dagar no. Han hugsar så mange ord!" },
+    ], elles: [
+      { s: "Dottera", t: "Mor seier vi må snakke fint, som presten. Elles blir vi til narr." },
+      { s: "Dottera", t: "Bestefar har ikkje sagt eit ord sidan hausten. Kanskje han ikkje veit korleis ein talar fint." },
+    ] }],
+    bestefar: [{ dersom: st => st.flagg.skam_loyst, da: [
+      { s: "Bestefaren", t: "Eg hadde nær gløymt korleis det kjendest å seie det rett ut." },
+    ], elles: [
+      { s: "Bestefaren", t: "…" },
+      { val: "Bestefaren ser ned i golvet. Kva seier Ivar?", alt: ["Fortel korleis de sa det i gamle dagar.", "Du bør snakke fint, du òg."], svar: [
+        [
+          { s: "Bestefaren", t: "Korleis vi sa det? Då eg var gut, sa vi at vi skulle ⟪heime⟫ før det vart mørkt." },
+          { lytt: ["heim", "heime"] },
+          { s: "Bestefaren", t: "Heim. Vi hadde ikkje skam for det. Det var berre slik det heitte." },
+          { s: "Mora", t: "Far … Du har rett. Det er ⟪ikkje⟫ noko skam i å tale som mor mi gjorde." },
+          { lytt: ["ikkje", "ikkje"] },
+          { t: "Noko løyser seg i stova. Skammen lettar som tåke. Ivar kjenner seg sterkare." },
+          { flagg: "skam_loyst" }, { gi: "romegraut", n: 2 }, { t: "Mora gav Ivar to skåler rømmegraut." },
+        ],
+        [{ s: "Bestefaren", t: "…" }, { t: "Bestefaren snur seg mot veggen. Kanskje det var feil ting å seie." }],
+      ] },
+    ] }],
+    /* Kyrkja */
+    prest: [{ dersom: st => st.flagg.latt, da: [
+      { s: "Presten", t: "Kirkebøgerne er stille igjen. De har gjort Sognet en stor Tjeneste, Ivar." },
+    ], elles: [{ dersom: st => st.flagg.prest_bed, da: [
+      { s: "Presten", t: "Gud være med Dem i Arkivet. Døren er i Kontoret, bag Tjenestepigen." },
+    ], elles: [
+      { s: "Presten", t: "Ah, De maa være Ivar fra Aasen. Jeg har hørt, at De er flink til at læse." },
+      { s: "Presten", t: "Blækket i Kirkebøgerne vil ikke holde op at skrive. Det løber ud over Siderne og ned ad Væggene i Præstegaarden." },
+      { s: "Presten", t: "Tjenestefolkene taler saa underligt stift. Jeg tør ikke gaa ned i Arkivet alene." },
+      { s: "Presten", t: "Her er Nøglen. Men sig mig, min Søn: De har vel ikke med Trolddom at gjøre?" },
+      { val: "Kva svarer Ivar?", alt: ["Det er berre ord.", "Kanskje litt."], svar: [
+        [{ s: "Presten", t: "Berre ord? Hm. Ordet er Guds Gave. Brug det vel." }],
+        [{ s: "Presten", t: "Lidt? Jeg vil ikke høre mere. Men Blækket maa bort." }],
+      ] },
+      { gi: "prestenokkel" }, { flagg: "prest_bed" }, { t: "Ivar fekk nøkkelen til prestegarden." },
+    ] }] }],
+    klokkar: [{ dersom: harOrd("bok"), da: [
+      { s: "Klokkaren", t: "Lysestaken ved altaret brenn alltid. Her inne har blekket ingen makt." },
+    ], elles: [
+      { s: "Klokkaren", t: "Sidan 1736 har alle måtta lese for presten før dei vart konfirmerte. Difor kan folk her lese, sjølv om det er på dansk." },
+      { s: "Klokkaren", t: "Ei ⟪bok⟫ er ei bok, same kva mål ho er skriven på. Det har eg alltid sagt." },
+      { lytt: ["bok", "bok"] },
+      { s: "Klokkaren", t: "Kyrkja er ein fristad. Blekket kjem ikkje inn her. Syng med oss ved lysestaken når du er trøytt." },
+    ] }],
+    tenestejente: [{ dersom: st => st.flagg.latt, da: [
+      { s: "Tenestejenta", t: "Eg kan snakke som eg vil att! Det var som å ha blekk i munnen." },
+    ], elles: [
+      { s: "Tenestejenta", t: "Hr. Pastoren er ikke hjemme. Arkivet er … eg meiner … det er noko som søl der inne." },
+      { s: "Tenestejenta", t: "Døra er bak kontoret. Pass deg for pennane. Dei rettar på alt ein seier." },
+    ] }],
+    /* Utmarka */
+    gjetar: [
+      { dersom: harOrd("kven"), da: [], elles: [
+        { s: "Gjetarguten", t: "⟪Kem⟫ er du? Eg har aldri sett deg her oppe før." },
+        { lytt: ["kven", "kem"] },
+      ] },
+      { dersom: harOrd("kvar"), da: [
+        { s: "Gjetarguten", t: "Prøv å spørje «kor» sjølv, i menyen under Galdr. Då finn du kanskje det som er gøymt." },
+      ], elles: [
+        { s: "Gjetarguten", t: "⟪Kor⟫ har sauene blitt av? Dei vil ikkje gå forbi haugen lenger." },
+        { lytt: ["kvar", "kor"] },
+        { s: "Gjetarguten", t: "Bestefar sa at den som spør «kor», finn det som er gøymt. Eg har aldri funne noko." },
       ] },
     ],
-    kraake: st => st.flagg.kraake_slegen ? [] : [
-      { s: "Kanselli-kråka", t: "KRAA! Plante? PLANTE? Det heiter Plante på dansk òg, men du uttaler det feil!" },
-      { s: "Skreppa", t: "Ho vaktar den siste planten. Og ho har embetsmannshatt." },
-      { kamp: ["kraake"], boss: 1 },
-      { flagg: "kraake_slegen" },
-      { t: "Kråka flaksar av garde med hatten på skakke." },
+    huldra: [
+      { t: "Ved setra står ei kvinne med hår som kveldssol. Bak skjørtet hennar skimtar du noko som liknar ein kuhale." },
+      { s: "Ei kvinne ved setra", t: "Du går her og lyttar. Ikkje mange gjer det lenger." },
+      { s: "Huldra", t: "Eg er huldra. Eg kan dei eldste orda, frå før nokon skreiv noko ned." },
+      { s: "Huldra", t: "Kjenner du det? Det luktar ⟪snjo⟫ i lufta, sjølv om det er vår." },
+      { tilbod: ["snjo", "snjo"] },
+      { s: "Huldra", t: "Blekket kveler alt som lever. Eg går med deg eit stykke. Men ikkje skriv ned alt eg seier." },
+      { parti: "huldra" }, { flagg: "huldra_med" }, { fjern: "%" },
     ],
-    bergensar: [{ s: "Bergensar", t: "Du er ikkje herifrå? Nei, det høyrest. Men det er fint å høyre." }, { ord: ["gut"] }, { t: "Ivar skreiv «gut» i notatboka." }],
-    fiskehandlar: [{ s: "Fiskehandlar", t: "Sei, torsk og sild! Vi seier sei, og ingen i byen skriv det." }, { ord: ["sei"] }, { t: "Ivar skreiv «sei» i notatboka." }],
-    kremmar: [{ s: "Kremmar", t: "Godt og billeg for reisande!" }, { butikk: ["flatbrod", "romegraut", "kaffi", "luktesalt"] }],
-    tenestejente: [{ s: "Tenestejente", t: "Biskopen les alt som kjem frå bygdene. Han seier det finst meir lærdom i ei løe enn i mange bøker." }],
-    neumann: st => st.flagg.stipend ? [{ s: "Biskop Neumann", t: "Gud signe reisa di, Aasen." }] : [
-      { s: "Biskop Neumann", t: "Så du er bondeguten frå Sunnmøre som har skrive ein grammatikk?" },
-      { s: "Ivar", t: "Over målet i heimbygda. Og her er plantesamlinga mi." },
-      { s: "Biskop Neumann", t: "Dette er merkeleg. Ein bonde som har lært seg latin, tysk og fransk på eiga hand, og som ser at målet hans følgjer reglar." },
-      { fort: ["Få dagar seinare står det i Bergens Stiftstidende om «denne mærkelige unge Bonde».", "Artikkelen blir lesen i Trondheim, der Frederik Moltke Bugge leier Det Kongelige Norske Videnskabers Selskab."] },
-      { s: "Biskop Neumann", t: "Eit brev frå Trondheim! Selskapet vil gi deg eit stipend på 150 spesidalar i året, så du kan reise og granske dialektane." },
-      { gi: "stipend" }, { pengar: 18000 }, { flagg: "stipend" },
-      { t: "Ivar fekk «Stipendbrevet» og 150 spesidalar." },
-      { s: "Skreppa", t: "150 spesidalar! Det er seks årsløner for ein dreng. Men Ivar, sjå ut vindauget. Himmelen over Vågen er svart." },
-      { flagg: "skugge_kjem" },
+    haugbonde: [
+      { t: "Ein gråbleik vette står framfor haugen. Mose gror på hatten hans, og auga lyser som is." },
+      { s: "Vetten", t: "KVEN … ER … EG?" },
+      { val: "Kven er vetten?", alt: ["Du er haugbonden.", "Du er nøkken.", "Du er ein tuss."], svar: [
+        [
+          { s: "Haugbonden", t: "Haugbonden … Ja. Det er meg. Eg hadde gløymt det." },
+          { s: "Haugbonden", t: "Du må ⟪høyre⟫ etter, gut. Det er heile kunsta. Eg har høyrt på folket her i tusen år." },
+          { lytt: ["hoyra", "høyre"] },
+          { s: "Haugbonden", t: "No er eg ⟪laus⟫ frå gløymska. Sauene kan gå forbi haugen att." },
+          { lytt: ["laus", "laus"] },
+          { flagg: "haug" }, { fjern: "@" },
+          { dersom: st => st.flagg.huldra_med && !st.flagg.huldra_auga, da: [
+            { s: "Huldra", t: "Du gav han namnet att. Då skal du få eit ord av meg òg. Eg ser med ⟪auga⟫ det ingen andre ser." },
+            { tilbod: ["auga", "auga"] }, { flagg: "huldra_auga" },
+          ] },
+        ],
+        [{ s: "Vetten", t: "NEI!" }, { kamp: ["haugbonden"], boss: 1 }, { s: "Haugbonden", t: "Haugbonden … Det var namnet mitt. Du må ⟪høyre⟫ betre etter, gut." }, { lytt: ["hoyra", "høyre"] }, { flagg: "haug" }, { fjern: "@" }],
+        [{ s: "Vetten", t: "NEI!" }, { kamp: ["haugbonden"], boss: 1 }, { s: "Haugbonden", t: "Haugbonden … Det var namnet mitt. Du må ⟪høyre⟫ betre etter, gut." }, { lytt: ["hoyra", "høyre"] }, { flagg: "haug" }, { fjern: "@" }],
+      ] },
     ],
-    skugge: st => (!st.flagg.skugge_kjem || st.flagg.skugge_slegen) ? [] : [
-      { s: "???", t: "Så det er du som samlar orda mine att." },
-      { s: "Skuggen av Blekklatten", t: "Eg er fire hundre år med kanselliblekk. Eg er i kvar lov og kvar kyrkjebok. Kva er du? Ein bondegut med ei skreppe." },
-      { s: "Ivar", t: "Eg er ein som lyttar." },
-      { kamp: ["skugge"], boss: 1 },
-      { flagg: "skugge_slegen" },
-      { s: "Skuggen av Blekklatten", t: "Dette var berre skuggen min. Blekklatten sjølv ligg i ei skuff i Christiania og veks for kvart ord han et." },
-      { s: "Skreppa", t: "Då får vi gå dit. Via kvar bygd i landet, ser det ut til." },
+    /* Vegen og Ekset */
+    fiskar: [{ dersom: harOrd("berre"), da: [
+      { s: "Fiskar", t: "Blekket kjem ned elva frå bygda. Det er ikkje rett." },
+    ], elles: [
+      { s: "Fiskar", t: "Det er ⟪bære⟫ blekk i garnet mitt no! Ikkje ein einaste fisk." },
+      { lytt: ["berre", "bære"] },
+    ] }],
+    husmann: [{ dersom: harOrd("gata"), da: [
+      { s: "Husmann", t: "Lensmann Aarflot trykte aviser og bøker her. No er det stilt." },
+    ], elles: [
+      { s: "Husmann", t: "Kyrne går heim langs ⟪gata⟫ mellom gjerda. Men i dag ville dei ikkje. Det er blekk på vegen." },
+      { lytt: ["gata", "gata"] },
+    ] }],
+    ekset_kone: [{ t: "Kone frå bygda: «Boksamlinga på Ekset står open for den som vil lese. Aarflot ville at bøndene skulle lære.»" }],
+    tenar: [{ dersom: harOrd("vita"), da: [
+      { s: "Tenaren på Ekset", t: "Kom att når du vil. Bøkene går ingen stad." },
+    ], elles: [
+      { s: "Tenaren på Ekset", t: "Lensmann Aarflot døydde i 1817, men bøkene hans står her enno. Folk frå heile Søre Sunnmøre har lånt av dei." },
+      { s: "Tenaren på Ekset", t: "Den som vil ⟪vite⟫ noko, må lese. Og den som les, må vite kva han les." },
+      { lytt: ["vita", "vite"] },
+      { t: "Ivar blar i ei gamal kongesoge. Mykje forstår han ikkje. Men nokre av dei gamle orda liknar på dei han høyrer heime." },
+      { gi: "sagabok" }, { t: "Ivar fekk låne ei gamal kongesoge." },
+    ] }],
+    /* Arkivet */
+    blekklatten: [{ dersom: st => st.flagg.latt, da: [], elles: [
+      { t: "Midt i arkivet ligg kyrkjeboka for Hovdebygda. Blekket renn ut av henne og samlar seg til ein stor, glinsande klump." },
+      { s: "Blekklatten", t: "Alt skal skrives ned. Alt skal skrives rigtigt. Hvad der ikke staar skrevet, har aldrig været til." },
+      { s: "Ivar", t: "Far står skriven i den boka. Men han snakka ikkje slik. Ingen her snakkar slik!" },
+      { kamp: ["blekklatten"], boss: 1 },
+      { flagg: "latt" },
+      { t: "Blekklatten renn saman til ein liten dråpe og siv ned i golvsprekkene. Kyrkjeboka er stille." },
+      { t: "På den siste sida står namnet til far, skrive med presten si hand. Ved sida av har nokon rissa inn med fin, fin skrift: «Det som er skrive, står.»" },
+      { s: "Ivar", t: "Det same som i boka mi …" },
       { kapittelslutt: 1 },
-    ],
+    ] }],
   };
 
-  return { U, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, MANUS };
+  // Første gong Ivar går ut, kjem den framande bort til han.
+  MANUS.ut_forste = [{ dersom: st => !st.flagg.framande1, da: MANUS.framande }];
+
+  return { FAMILIAR, ORD, U, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, KAPITTEL, MANUS };
 })();

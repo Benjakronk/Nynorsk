@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Blekkranet · Nynorskkurs</title>
-<meta name="description" content="Eit rollespel om Ivar Aasen: frå garden Åsen i Ørsta til stipendet i Bergen, med kampar der nynorsken er våpenet." />
+<meta name="description" content="Eit rollespel om Ivar Aasen i 16-bitsstil. Han samlar ord frå bygdemåla og bruker dei som galdrar mot kanselliblekket." />
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=aasen1" />
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
@@ -66,9 +66,9 @@
     </div>
 
     <div id="rpg-tittel" class="rpg-tittel">
-      <canvas id="rpg-tittel-latt" width="32" height="32" aria-hidden="true"></canvas>
+      <img class="tt-latt" src="bilete/spel/blekklatten.png" width="80" height="72" alt="" />
       <h1>Blekkranet</h1>
-      <p class="tt-under">Kapittel 1: Guten frå Åsen</p>
+      <p class="tt-under">Kapittel 1: Ørsta</p>
       <div id="rpg-tittel-val" class="rpg-vindauge tt-val"></div>
       <p class="tt-hjelp">Piltastar eller WASD: gå · Z, Enter eller mellomrom: snakk og vel · X eller Esc: meny og tilbake</p>
     </div>
@@ -100,19 +100,10 @@
 <script src="js/content/part4-feil.js"></script>
 <script src="js/content/part4-rettelesing.js"></script>
 <script src="js/content/part5.js"></script>
-<script src="js/content/bank.js"></script>
-<script src="js/drills.js"></script>
-<script src="js/vendor/three.min.js"></script>
-<script src="data/noreg-terreng.js"></script>
-<script src="js/kart3d.js"></script>
 <script src="js/rpg/pikslar.js"></script>
 <script src="js/rpg/data.js"></script>
 <script src="js/rpg/motor.js"></script>
 <script src="js/rpg/kamp.js"></script>
 <script src="js/rpg/spel.js"></script>
-<script>
-  // Blekklatten på tittelskjermen, teikna med same pikslar som i kampane.
-  document.getElementById("rpg-tittel-latt").getContext("2d").drawImage(Pikslar.fiende("skugge"), 0, 0);
-</script>
 </body>
 </html>

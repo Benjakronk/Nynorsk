@@ -1,15 +1,19 @@
 /* Kampane i «Blekkranet»: turbasert med ATB-målar, som i dei klassiske
    Final Fantasy-spela. Målaren til kvar figur fyller seg etter farten.
-   Når målaren til ein i partiet er full, stoppar tida (ventemodus), og
-   spelaren vel Angrip, Ordkunst, Ting eller Flykt.
+   Når målaren til ein i partiet er full, stoppar tida (ventemodus).
 
-   Ordkunsta byggjer på ordbanken i kurset (js/content/bank.js, via
-   js/drills.js). Før formelen verkar, kjem eit nynorskspørsmål. Rett svar
-   gir full kraft og fangar ordet til notatboka. Feil svar gir ein svak
-   formel. Slik er det nynorsken som vinn kampane.
+   Ivar kjempar med galdrar: orda han har samla (js/rpg/data.js, ORD).
+   Lydfamilien til ordet avgjer kva galdren gjer. Før galdren verkar, vel
+   spelaren kva form av ordet som ber krafta: forma som har teke vare på
+   lyden (diftongen, den harde konsonanten, kv-en, j-en), eller den danske.
+   Rett form gir full kraft. Småorda er raske og har ikkje spørsmål.
 
-   Kamp.start({ fiendar, boss, parti, gaaver, bakgrunn, paaOrd })
+   Blekkfiendar kan «rettskrive» eit ord til dansk. Då står ordet på dansk
+   i menyen, og galdren verkar berre om spelaren finn den rette forma att.
+
+   Kamp.start({ fiendar, boss, parti, gaaver, bakgrunn, ord, rettleiing, paaVesen })
      parti: medlemmer frå tilstanden i js/rpg/spel.js (blir endra direkte)
+     ord:   st.ord, orda Ivar har høyrt, med formene
      gir { utfall: "siger" | "tap" | "flukt", xp, pengar, fall } */
 window.Kamp = (function () {
   "use strict";
@@ -20,43 +24,38 @@ window.Kamp = (function () {
   const rnd = (a, b) => a + Math.random() * (b - a);
 
   const rot = $("rpg-kamp");
-  const g = Motor.g, L = Motor.lerret;
+  const g = Motor.g;
+  const FAM_ORDEN = ["hard", "diftong", "j", "sporjeord", "smaaord"];
 
-  /* ---------- Nynorskspørsmål ---------- */
-  const kjelder = {};
-  function kjelde(type) {
-    if (kjelder[type]) return kjelder[type];
-    let items = [];
-    if (type === "kjonn") items = Drills.build({ bank: "nouns", tasks: ["gender"] });
-    if (type === "vokal") items = Drills.build({ bank: "verbs", filter: { cls: ["sterk"] }, tasks: ["pret", "perf"] });
-    if (type === "danaar") items = Drills.build({ bank: "sentences", set: ["daNar"] });
-    if (type === "v2") items = Drills.build({ bank: "sentences", set: ["v2", "ikkjePlass"] });
-    return (kjelder[type] = { items, ko: [] });
+  /* ---------- Formspørsmålet ---------- */
+  function formval(o, fam) {
+    const sett = new Set(), alle = [];
+    for (const f of [...o.former, o.dansk]) { const k = f.toLowerCase(); if (!sett.has(k)) { sett.add(k); alle.push(f); } }
+    const sterke = alle.filter(f => fam.sterk(f, o));
+    const veike = alle.filter(f => !fam.sterk(f, o) && f !== o.dansk);
+    const val = [o.dansk, ...stokk(veike).slice(0, 1), ...stokk(sterke).slice(0, 2)];
+    return stokk(val.slice(0, 4));
   }
-  function nesteItem(type) {
-    const k = kjelde(type);
-    if (!k.ko.length) k.ko = stokk(k.items);
-    return k.ko.pop();
+  function ros(f, fam, famId) {
+    if (famId === "diftong") return `«${f}» har diftongen.`;
+    if (famId === "hard") return `«${f}» har den harde konsonanten.`;
+    if (famId === "sporjeord") return `«${f}» har ${/^kv/i.test(f) ? "kv" : "k"}, ikkje hv.`;
+    if (famId === "j") return `«${f}» har j-en.`;
+    return "Rett!";
   }
-  const OVERSKRIFT = { kjonn: "Kva kjønn har ordet?", vokal: "Kva er rett form?", danaar: "Då eller når?", v2: "Kva for ei setning er rett?" };
-  // Viser spørsmålet og gir { rett, item }.
-  function spor(type, gaaver) {
+  /* Viser spørsmålet over kampen. Gir { rett, form }. */
+  function formSpor(ordId, { rettskriven, gaaver = {}, rettleiing } = {}) {
+    const o = RPGData.ORD[ordId], famId = o.fam, fam = RPGData.FAMILIAR[famId];
     return new Promise(res => {
-      const item = nesteItem(type);
-      const p = Drills.present(item, "choice");
-      let alt = p.options || [];
-      if (type === "kjonn" && gaaver.kjonnsring) {
-        const feil = alt.filter(o => !item.accept.includes(o));
-        alt = alt.filter(o => o !== feil[Math.floor(Math.random() * feil.length)]);
-      }
-      const ms = (type === "kjonn" ? 7000 : type === "v2" ? 14000 : 10000) * (gaaver.tidsauga ? 1.5 : 1);
-      const spm = type === "kjonn" ? `<span class="sp-ord">${E((item.prompt.match(/«(.+)»/) || [])[1])}</span>`
-        : type === "vokal" ? `<span class="sp-ord">${E(item.prompt.replace(/ av «/, " av «"))}</span> <span class="sp-cue">${E(item.cue)}</span>`
-        : `<span class="sp-setning">${E(item.prompt).replace("___", "<b>___</b>")}</span>`;
+      const alt = formval(o, fam);
+      const ms = (rettskriven ? 6500 : 9500) * (gaaver.tidsauga ? 1.5 : 1);
       const el = document.createElement("div");
-      el.className = "kamp-sporsmal";
-      el.innerHTML = `<p class="sp-overskrift">${OVERSKRIFT[type]}</p><div class="sp-klokke"><span></span></div><p class="sp-tekst">${spm}</p>
-        <div class="sp-alt">${alt.map((o, i) => `<button type="button" data-i="${i}"><span class="sp-tast">${i + 1}</span>${E(o)}</button>`).join("")}</div>`;
+      el.className = "kamp-sporsmal" + (rettskriven ? " rettskriven" : "");
+      el.innerHTML = `<p class="sp-overskrift">${rettskriven ? "Ordet er rettskrive! Finn forma att" : "Kva form ber krafta?"}</p>
+        <div class="sp-klokke"><span></span></div>
+        <p class="sp-tekst"><span class="sp-ord">${E(o.aasen)}</span> <span class="sp-cue">«${E(o.tyding)}» · ${E(fam.namn)}</span></p>
+        <p class="sp-hint">${E(fam.hint)}${rettleiing ? " Den danske forma har mista lyden." : ""}</p>
+        <div class="sp-alt">${alt.map((f, i) => `<button type="button" data-i="${i}"><span class="sp-tast">${i + 1}</span>${E(f)}</button>`).join("")}</div>`;
       rot.appendChild(el);
       const kn = [...el.querySelectorAll("button")];
       let valt = 0, ferdig = false;
@@ -74,10 +73,12 @@ window.Kamp = (function () {
       const svar = i => {
         if (ferdig) return;
         ferdig = true; slepp();
-        const rett = i != null && item.accept.some(a => Drills.normalize(a) === Drills.normalize(alt[i]));
-        kn.forEach((b, j) => { b.disabled = true; if (item.accept.some(a => Drills.normalize(a) === Drills.normalize(alt[j]))) b.classList.add("rett"); else if (j === i) b.classList.add("feil"); });
-        el.insertAdjacentHTML("beforeend", `<p class="sp-svar ${rett ? "rett" : "feil"}">${rett ? "Rett!" : i == null ? `Tida gjekk ut. Rett: <b>${E(item.accept[0])}</b>` : `Rett: <b>${E(item.accept[0])}</b>`}</p>`);
-        setTimeout(() => { el.remove(); res({ rett, item }); }, rett ? 700 : 1700);
+        const form = i == null ? null : alt[i];
+        const rett = form != null && fam.sterk(form, o);
+        kn.forEach((b, j) => { b.disabled = true; if (fam.sterk(alt[j], o)) b.classList.add("rett"); else if (j === i) b.classList.add("feil"); });
+        const forklaring = rett ? ros(form, fam, famId) : form == null ? `Tida gjekk ut. «${o.aasen}» hadde bore krafta.` : fam.kvifor(form, o);
+        el.insertAdjacentHTML("beforeend", `<p class="sp-svar ${rett ? "rett" : "feil"}">${rett ? "Rett! " : ""}${E(forklaring)}</p>`);
+        setTimeout(() => { el.remove(); res({ rett, form }); }, rett ? 1100 : 2600);
       };
       kn.forEach((b, i) => b.addEventListener("click", () => svar(i)));
       const tast = e => { const n = parseInt(e.key, 10); if (n >= 1 && n <= alt.length) { e.preventDefault(); e.stopPropagation(); svar(n - 1); } };
@@ -86,28 +87,62 @@ window.Kamp = (function () {
       const slepp = () => { document.removeEventListener("keydown", tast, true); sleppLytt(); };
     });
   }
-  // Kva ordet i eit rett svar var: substantiv og sterke verb går i notatboka.
-  function ordFraItem(item) {
-    const lemma = item.key.slice(item.key.lastIndexOf(":") + 1);
-    if (item.key.startsWith("nouns:") || item.key.startsWith("verbs:")) return lemma;
-    return null;
+
+  /* ---------- Bakgrunnar i 16-bitsstil ---------- */
+  const bakCache = {};
+  function bakgrunnBilete(type) {
+    if (bakCache[type]) return bakCache[type];
+    const c = Pikslar.lerret(320, 192), b = c.getContext("2d");
+    const band = (farger, y0, y1) => { const n = farger.length, h = (y1 - y0) / n; farger.forEach((f, i) => { b.fillStyle = f; b.fillRect(0, Math.round(y0 + i * h), 320, Math.ceil(h) + 1); }); for (let i = 1; i < n; i++) { b.fillStyle = farger[i]; const y = Math.round(y0 + i * h) - 1; for (let x = i % 2; x < 320; x += 2) b.fillRect(x, y, 1, 1); } };
+    const fjell = (farge, topp, snø, basis, fro) => {
+      b.fillStyle = farge; b.beginPath(); b.moveTo(0, basis);
+      const pkt = [];
+      for (let x = 0; x <= 320; x += 4) { const h = topp + Math.sin(x / 37 + fro) * 14 + Math.sin(x / 13 + fro * 2) * 5 + Math.sin(x / 71 + fro) * 10; pkt.push([x, h]); b.lineTo(x, h); }
+      b.lineTo(320, basis); b.closePath(); b.fill();
+      if (snø) { b.fillStyle = snø; for (const [x, h] of pkt) if (h < topp - 6) b.fillRect(x, Math.round(h), 4, Math.round(topp - 6 - h) + 1); }
+    };
+    const R = Pikslar.RAMP;
+    if (type === "tun" || type === "utmark") {
+      const dag = type === "tun";
+      band(dag ? ["#5a8ad8", "#6c9ae0", "#82ace6", "#9cc0ec", "#b8d4f0"] : ["#2c2250", "#4a2e62", "#72406a", "#a8586a", "#d8806a"], 0, 70);
+      fjell(dag ? "#6a78a0" : "#3a3458", 46, dag ? "#e8ecf8" : "#b8a8c8", 90, 1);
+      fjell(dag ? "#4a5a80" : "#2a2440", 62, null, 92, 3);
+      if (dag) { b.fillStyle = R.vatn[2]; b.fillRect(0, 74, 320, 10); b.fillStyle = R.vatn[3]; for (let x = 0; x < 320; x += 9) b.fillRect(x + (x % 5), 77 + (x % 3) * 2, 5, 1); }
+      for (let x = 0; x < 320; x += 12) { const h = 10 + ((x * 7) % 9); b.fillStyle = dag ? "#1f4c38" : "#141c26"; b.beginPath(); b.moveTo(x, 90); b.lineTo(x + 6, 90 - h); b.lineTo(x + 12, 90); b.fill(); }
+      band(dag ? [R.gras[1], R.gras[2], R.gras[2], R.gras[3]] : [R.villgras[0], R.villgras[1], R.villgras[1], R.villgras[2]], 90, 192);
+      for (let i = 0; i < 90; i++) { const x = (i * 97) % 320, y = 96 + ((i * 53) % 90); b.fillStyle = dag ? R.gras[4] : R.villgras[3]; b.fillRect(x, y, 1, 2); b.fillRect(x + 1, y - 1, 1, 1); }
+    } else if (type === "arkiv") {
+      band(["#0e0a18", "#141026", "#1a1430"], 0, 96);
+      for (let x = 6; x < 320; x += 52) { b.fillStyle = "#2a1c20"; b.fillRect(x, 10, 44, 78); for (let y = 16; y < 84; y += 14) { b.fillStyle = "#140c10"; b.fillRect(x + 3, y, 38, 10); for (let k = 0; k < 9; k++) { b.fillStyle = ["#201848", "#383070", "#62182a", "#101028"][(k + y) % 4]; b.fillRect(x + 4 + k * 4, y + 1 + (k % 3 === 0 ? 1 : 0), 3, 9 - (k % 3 === 0 ? 1 : 0)); } } b.fillStyle = "#383070"; b.fillRect(x + 12, 88, 2, 6); b.fillRect(x + 30, 88, 1, 4); }
+      band(["#2a2838", "#232030", "#1c1a28", "#16141f"], 96, 192);
+      b.fillStyle = "rgba(56,48,112,.55)"; b.beginPath(); b.ellipse(90, 150, 70, 12, 0, 0, Math.PI * 2); b.fill();
+    } else {
+      for (let y = 0; y < 96; y += 8) { b.fillStyle = R.tommer[2]; b.fillRect(0, y, 320, 8); b.fillStyle = R.tommer[3]; b.fillRect(0, y, 320, 1); b.fillStyle = R.tommer[0]; b.fillRect(0, y + 7, 320, 1); }
+      band([R.plank[1], R.plank[2], R.plank[2], R.plank[1]], 96, 192);
+      for (let y = 100; y < 192; y += 8) { b.fillStyle = R.plank[0]; b.fillRect(0, y, 320, 1); }
+    }
+    return (bakCache[type] = c);
   }
 
   /* ---------- Kampen ---------- */
-  async function start({ fiendar, boss, parti, gaaver, bakgrunn, paaOrd }) {
+  async function start({ fiendar, boss, parti, gaaver = {}, bakgrunn, ord = {}, rettleiing, paaVesen }) {
     const D = RPGData;
     const fi = fiendar.map((id, i) => {
       const d = D.FIENDAR[id];
-      return { id, d, namn: d.namn + (fiendar.filter(x => x === id).length > 1 ? " " + "ABCD"[fiendar.slice(0, i + 1).filter(x => x === id).length - 1] : ""), hp: d.hp, maxhp: d.hp, atk: d.atk, def: d.def, spd: d.spd, atb: rnd(0, 40), tur: 0, blink: 0, fiende: true };
+      const nr = fiendar.filter(x => x === id).length > 1 ? " " + "ABCD"[fiendar.slice(0, i + 1).filter(x => x === id).length - 1] : "";
+      return { id, d, namn: d.namn + nr, hp: d.hp, maxhp: d.hp, atk: d.atk, def: d.def, spd: d.spd, atb: rnd(0, 40), tur: 0, blink: 0, fiende: true, avslort: 0, sov: 0 };
     });
+    fi.forEach(f => paaVesen && paaVesen(f.id, false));
     const pa = parti.map(m => Object.assign(m, { atb: rnd(20, 60), vern: 0, blink: 0, fram: 0 }));
+    const rettskrivne = new Set();
     let utfall = null, travel = false, meldingTid = 0;
     const ventar = [];
-    const tal = [];          // skadetal som flyt oppover
+    const tal = [];
 
     rot.hidden = false;
     rot.innerHTML = `
       <p class="kamp-melding" hidden></p>
+      ${rettleiing ? '<p class="kamp-hint">Vel <b>Galdr</b> og syng eit ord. Vel så forma som har teke vare på lyden.</p>' : ""}
       <div class="kamp-botn">
         <div class="kamp-vindauge kamp-fiendar"></div>
         <div class="kamp-vindauge kamp-parti"></div>
@@ -116,134 +151,199 @@ window.Kamp = (function () {
     const melding = rot.querySelector(".kamp-melding"), fiListe = rot.querySelector(".kamp-fiendar"), paListe = rot.querySelector(".kamp-parti"), meny = rot.querySelector(".kamp-meny");
     const meld = (t, ms = 1400) => { melding.textContent = t; melding.hidden = false; meldingTid = performance.now() + ms; };
 
-    // Plassering på lerretet (320 × 192), fiendar til venstre og partiet til høgre.
-    const fiPos = (i, n) => ({ x: 56 + (i % 2) * 44 - (n === 1 ? -20 : 0), y: 40 + i * (n > 2 ? 30 : 42) + (n === 1 ? 14 : 0) });
-    const paPos = i => ({ x: 236 + i * 14, y: 52 + i * 36 });
-    const bossStor = boss ? 2 : 1.5;
+    // Plassering på lerretet (320 × 192): fiendar til venstre med føtene på bakken, partiet til høgre.
+    const SLOT = { 1: [[88, 118]], 2: [[64, 106], [126, 120]], 3: [[52, 102], [104, 120], [150, 104]], 4: [[46, 100], [96, 118], [140, 100], [176, 120]] };
+    const fiPos = i => { const [x, y] = SLOT[Math.min(4, fi.length)][i]; return { x, y }; };
+    const paPos = i => ({ x: 246 + i * 16, y: 62 + i * 32 });
 
     function oppdaterLister() {
-      fiListe.innerHTML = fi.filter(f => f.hp > 0).map(f => `<p>${E(f.namn)}</p>`).join("");
-      paListe.innerHTML = pa.map((m, i) => `<div class="kp-rad${m.hp <= 0 ? " fallen" : ""}${ventar[0] === m ? " aktiv" : ""}">
+      fiListe.innerHTML = fi.filter(f => f.hp > 0).map(f => `<p>${E(f.namn)}${f.avslort > 0 ? ` <small class="avslort">${Math.round(f.hp)}/${f.maxhp}${D.ORD && f.d.slag ? " · " + E(f.d.slag) : ""}</small>` : ""}${f.sov > 0 ? ' <small class="sov">søv</small>' : ""}</p>`).join("");
+      paListe.innerHTML = pa.map(m => `<div class="kp-rad${m.hp <= 0 ? " fallen" : ""}${ventar[0] === m ? " aktiv" : ""}">
         <span class="kp-namn">${E(m.namn)}</span><span class="kp-hp">${Math.max(0, Math.round(m.hp))}<small>/${m.maxhp}</small></span>
-        <span class="kp-mp">${m.mp}<small>/${m.maxmp}</small></span><span class="kp-atb"><i style="width:${Math.min(100, m.atb)}%"></i></span></div>`).join("");
+        <span class="kp-mp">${m.rost}<small>/${m.maxrost}</small></span><span class="kp-atb"><i style="width:${Math.min(100, m.atb)}%"></i></span></div>`).join("");
     }
 
     /* Teikning */
     function teikn(no) {
-      const grad = g.createLinearGradient(0, 0, 0, 192);
-      const [a, b, c] = bakgrunn === "inne" ? ["#2a2230", "#3a3040", "#1c1820"] : bakgrunn === "by" ? ["#8fb3cf", "#c8d6dd", "#8a7a66"] : bakgrunn === "natt" ? ["#1a1430", "#2e2150", "#221a2c"] : ["#8fc0e0", "#cfe6ef", "#5d9b45"];
-      grad.addColorStop(0, a); grad.addColorStop(0.55, b); grad.addColorStop(0.56, c); grad.addColorStop(1, c);
-      g.fillStyle = grad; g.fillRect(0, 0, 320, 192);
-      if (bakgrunn !== "inne") { g.fillStyle = "rgba(255,255,255,.12)"; for (let i = 0; i < 6; i++) g.fillRect((i * 57 + no / 90) % 340 - 20, 20 + (i % 3) * 14, 26, 4); }
+      g.drawImage(bakgrunnBilete(bakgrunn), 0, 0);
+      const skjelv = f => (f.blink > no ? Math.round(Math.sin(no / 25) * 2) : 0);
       fi.forEach((f, i) => {
         if (f.hp <= 0 && f.borte) return;
-        const p = fiPos(i, fi.length), bilde = Pikslar.fiende(f.d.bilete);
-        const s = 32 * bossStor;
-        const alpha = f.hp <= 0 ? Math.max(0, 1 - (no - f.dod) / 500) : 1;
+        const p = fiPos(i), bilde = Pikslar.fiende(f.d.bilete);
+        const alpha = f.hp <= 0 ? Math.max(0, 1 - (no - f.dod) / 600) : 1;
         if (f.hp <= 0 && alpha <= 0) f.borte = true;
+        const x = Math.round(p.x - bilde.width / 2 + (f.fram > no ? 8 : 0) + skjelv(f)), y = Math.round(p.y - bilde.height + (f.id === "irrbloss" ? Math.sin(no / 300) * 3 : 0));
+        g.fillStyle = "rgba(10,5,20,.35)"; g.beginPath(); g.ellipse(p.x, p.y, bilde.width * 0.38, 4, 0, 0, Math.PI * 2); g.fill();
         g.globalAlpha = alpha;
-        if (f.blink > no && Math.floor(no / 60) % 2) g.globalAlpha = 0.25;
-        g.drawImage(bilde, Math.round(p.x - s / 2 + (f.fram > no ? 10 : 0)), Math.round(p.y - s / 2 + 16), s, s);
+        if (f.blink > no && Math.floor(no / 60) % 2) g.globalAlpha = 0.35 * alpha;
+        g.drawImage(bilde, x, y);
+        if (f.hp <= 0) { g.globalCompositeOperation = "source-atop"; g.fillStyle = `rgba(255,255,255,${0.6 * alpha})`; g.fillRect(x, y, bilde.width, bilde.height); g.globalCompositeOperation = "source-over"; }
         g.globalAlpha = 1;
+        if (f.avslort > 0 && f.hp > 0) { g.fillStyle = "#7fd0f0"; g.fillRect(x + bilde.width / 2 - 1, y - 6, 3, 3); }
       });
       pa.forEach((m, i) => {
         const p = paPos(i);
         const rammer = m.sprite.rammer[2];
-        const ramme = m.hp <= 0 ? rammer[0] : rammer[Math.floor(no / 260) % 2];
         if (m.blink > no && Math.floor(no / 60) % 2) return;
-        g.save();
-        if (m.hp <= 0) { g.translate(p.x + 16, p.y + 24); g.rotate(Math.PI / 2); g.drawImage(ramme, -16, -16, 32, 32); }
-        else g.drawImage(ramme, Math.round(p.x - (m.fram > no ? 12 : 0) - (ventar[0] === m ? 6 : 0)), p.y, 32, 32);
-        g.restore();
-        if (m.vern > 0 && m.hp > 0) { g.strokeStyle = "rgba(244,196,48,.8)"; g.lineWidth = 1; g.strokeRect(p.x - 2, p.y - 2, 36, 36); }
+        g.fillStyle = "rgba(10,5,20,.35)"; g.fillRect(p.x + 3, p.y + 22, 10, 3);
+        if (m.hp <= 0) { g.save(); g.translate(p.x + 8, p.y + 18); g.rotate(Math.PI / 2); g.drawImage(rammer[0], -12, -8); g.restore(); return; }
+        const ramme = ventar[0] === m || m.fram > no ? rammer[1 + Math.floor(no / 180) % 2] : rammer[0];
+        g.drawImage(ramme, Math.round(p.x - (m.fram > no ? 12 : 0) - (ventar[0] === m ? 6 : 0)), p.y);
+        if (m.vern > 0) { g.strokeStyle = "rgba(248,216,64,.8)"; g.lineWidth = 1; g.beginPath(); g.ellipse(p.x + 8, p.y + 13, 11, 14, 0, 0, Math.PI * 2); g.stroke(); }
       });
       for (let i = tal.length - 1; i >= 0; i--) {
-        const t = tal[i], u = (no - t.t0) / 900;
+        const t = tal[i], u = (no - t.t0) / 1000;
         if (u >= 1) { tal.splice(i, 1); continue; }
+        const hopp = u < 0.3 ? -Math.sin(u / 0.3 * Math.PI) * 8 : 0;
         g.font = "bold 10px monospace"; g.textAlign = "center";
-        g.fillStyle = "#1c1d20"; g.fillText(t.tekst, t.x + 1, t.y - u * 18 + 1);
-        g.fillStyle = t.farge; g.fillText(t.tekst, t.x, t.y - u * 18);
+        g.fillStyle = "#0a0514"; for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) g.fillText(t.tekst, t.x + dx, t.y + hopp - u * 6 + dy);
+        g.fillStyle = t.farge; g.fillText(t.tekst, t.x, t.y + hopp - u * 6);
       }
       if (melding && !melding.hidden && no > meldingTid && !travel) melding.hidden = true;
     }
     const visTal = (mål, tekst, farge) => {
       const i = mål.fiende ? fi.indexOf(mål) : pa.indexOf(mål);
-      const p = mål.fiende ? fiPos(i, fi.length) : paPos(i);
-      tal.push({ x: p.x + (mål.fiende ? 0 : 16), y: p.y + (mål.fiende ? 10 : 8), tekst: String(tekst), farge, t0: performance.now() });
+      const p = mål.fiende ? fiPos(i) : paPos(i);
+      const h = mål.fiende ? Pikslar.fiende(mål.d.bilete).height : 24;
+      tal.push({ x: p.x + (mål.fiende ? 0 : 8), y: mål.fiende ? p.y - h / 2 : p.y + 8, tekst: String(tekst), farge, t0: performance.now() });
     };
 
     /* Handlingar */
-    function skade(frå, til, faktor = 1) {
-      const vern = til.vern > 0 ? 1.6 : 1;
-      const s = Math.max(1, Math.round((frå.atk * 2 + rnd(0, frå.atk / 2)) * faktor - til.def * vern));
+    function skade(frå, til, faktor = 1, { gjennom } = {}) {
+      const vern = til.vern > 0 && !gjennom ? 1.8 : 1;
+      const avsl = til.avslort > 0 ? 1.5 : 1;
+      let s = (frå.atk * 2 + rnd(0, frå.atk / 2)) * faktor * avsl - (gjennom ? 0 : til.def * vern);
+      if (til.vern > 0 && !gjennom) s *= 0.6;
+      s = Math.max(1, Math.round(s));
       til.hp = Math.max(0, til.hp - s);
       til.blink = performance.now() + 400;
-      if (til.hp <= 0 && til.fiende) til.dod = performance.now();
+      if (til.hp <= 0 && til.fiende) { til.dod = performance.now(); paaVesen && paaVesen(til.id, true); }
       visTal(til, s, til.fiende ? "#fff" : "#ffb0a0");
       return s;
+    }
+    const lækj = (v, n) => { const før = v.hp; v.hp = Math.min(v.maxhp, v.hp + Math.round(n)); visTal(v, `+${Math.round(v.hp - før)}`, "#9ff09f"); };
+    const levandeFi = () => fi.filter(f => f.hp > 0);
+    const levandePa = () => pa.filter(m => m.hp > 0);
+    function rettskriv(f, sp) {
+      const ivar = pa.find(m => m.galdr && m.hp > 0);
+      const kand = Object.keys(ord).filter(id => { const o = D.ORD[id]; return o && o.fam !== "smaaord" && o.fam !== "nokkel" && !rettskrivne.has(id); });
+      if (!ivar || !kand.length) return false;
+      if (gaaver.vaktaren && Math.random() < 0.5) { meld("Vaktaren prellar av rettskrivinga!", 1800); return true; }
+      const id = kand[Math.floor(Math.random() * kand.length)], o = D.ORD[id];
+      rettskrivne.add(id);
+      meld(`${sp.tekst} «${o.aasen}» vart rettskrive til «${o.dansk}».`, 2400);
+      ivar.blink = performance.now() + 400;
+      return true;
     }
     async function fiendeTur(f) {
       travel = true;
       f.tur++;
-      const levande = pa.filter(m => m.hp > 0);
-      const sp = f.d.spesial;
+      if (f.avslort > 0) f.avslort--;
+      if (f.sov > 0) { f.sov--; meld(`${f.namn} drøymer og gjer ingenting.`); await vent(700); f.atb = 0; travel = false; return; }
+      const levande = levandePa();
+      let sp = f.d.spesial;
+      if (sp && sp.veksle && f.tur % sp.veksle.kvar === 0) sp = sp.veksle;
+      else if (sp && f.tur % sp.kvar !== 0) sp = null;
       f.fram = performance.now() + 300;
-      if (sp && f.tur % sp.kvar === 0) {
+      if (sp && sp.type === "rettskriv") {
+        await vent(300);
+        if (!rettskriv(f, sp)) { const mål = levande[Math.floor(Math.random() * levande.length)]; meld(`${f.namn} angrip ${mål.namn}!`); skade(f, mål); }
+        await vent(900);
+      } else if (sp) {
         meld(sp.tekst, 1800);
         await vent(700);
-        for (const m of sp.alle ? levande : [levande[Math.floor(Math.random() * levande.length)]]) skade(f, m, sp.faktor);
+        for (const m of sp.alle ? levande : [levande[Math.floor(Math.random() * levande.length)]]) skade(f, m, sp.faktor || 1);
+        await vent(650);
       } else {
         const mål = levande[Math.floor(Math.random() * levande.length)];
         meld(`${f.namn} angrip ${mål.namn}!`);
         await vent(350);
         skade(f, mål);
+        await vent(650);
       }
-      await vent(650);
       f.atb = 0;
-      pa.forEach(m => { if (m.vern > 0 && f === fi[0]) {} });
+      // Vernet varer eit visst tal på fiendeturar.
+      pa.forEach(m => { if (m.vern > 0) m.vern -= 0.5; });
       travel = false;
     }
-    async function partiHandling(m, kommando, mal, evneId, ting) {
+    const formFaktor = id => 1 + 0.12 * Math.max(0, Object.keys((ord[id] || {}).former || {}).length - 1);
+    const rostKost = (m, id) => {
+      const fam = D.ORD[id].fam;
+      if (fam === "smaaord" && gaaver.smaaordring) return 0;
+      return Math.max(1, D.FAMILIAR[fam].rost - (gaaver.oppslagsord ? 1 : 0));
+    };
+    async function galdr(m, id, mal) {
+      const o = D.ORD[id], fam = D.FAMILIAR[o.fam], v = o.verknad || {};
+      const rs = rettskrivne.has(id);
+      m.rost -= rostKost(m, id);
+      meld(`${m.namn} syng «${rs ? o.dansk : o.aasen}»`, 1600);
+      let rett = true;
+      if (fam.sterk) {
+        ({ rett } = await formSpor(id, { rettskriven: rs, gaaver, rettleiing }));
+        if (rs && !rett) { meld("Galdren fuskar. Ordet står framleis på dansk."); await vent(900); return; }
+        if (rs && rett) { rettskrivne.delete(id); visTal(m, "Fri!", "#f8d840"); }
+      }
+      const mult = formFaktor(id) * (fam.sterk ? (rett ? 1.5 : 0.45) : 1);
+      m.fram = performance.now() + 300;
+      const passar = f => o.mot && o.mot.includes(f.d.slag);
+      let tekst = rett ? `«${o.aasen}» ber krafta!` : "Galdren vart veik. Forma hadde mista lyden.";
+      if (v.skade) {
+        const mål = v.alle ? levandeFi() : [mal];
+        for (const f of mål) {
+          const bonus = passar(f) ? 1.6 : 1;
+          if (bonus > 1) tekst = `Ordet passar! «${o.aasen}» råkar ${f.namn} hardt.`;
+          skade(m, f, (v.skade + m.atk * 0.8) / (m.atk * 2.2) * mult * bonus, { gjennom: v.gjennom });
+        }
+      }
+      if (v.skadeMot) {
+        for (const f of levandeFi().filter(passar)) { skade(m, f, (v.skadeMot + m.atk * 0.5) / (m.atk * 2.2) * mult); tekst = `Ordet passar! ${f.d.slag === "blekk" ? "Ljoset brenn blekket." : "Snøen sløkkjer ljoset."}`; }
+      }
+      if (v.lækje) for (const p of v.alle ? levandePa() : [mal || m]) lækj(p, (v.lækje + m.atk) * mult);
+      if (v.meto) lækj(m, v.meto * mult);
+      if (v.vern) {
+        const rundar = rett ? v.vern : 1;
+        levandePa().forEach(p => { p.vern = Math.max(p.vern, rundar); visTal(p, "Vern", "#f8d840"); });
+      }
+      if (v.avslor) {
+        const mål = v.avslor === "alle" ? levandeFi() : [mal];
+        for (const f of mål) { f.avslort = rett ? 3 : 1; visTal(f, "Avslørt", "#7fd0f0"); }
+        if (v.avslor === "ein" && mal) tekst = `${mal.namn}: ${mal.d.tekst}`;
+        if (passar(mal || {}) && mal && mal.d.slag === "vette") { mal.sov = 1; tekst = `«${o.aasen} er du?» Vetten blir forvirra.`; }
+      }
+      if (v.sov && mal && rett) { mal.sov = 1; visTal(mal, "Zzz", "#d8c8f8"); }
+      if (v.loys && rettskrivne.size) { rettskrivne.clear(); tekst = "Alle rettskrivne ord er laus att!"; }
+      if (v.stopp && mal) { mal.atb = 0; visTal(mal, "Stopp", "#d8c8f8"); tekst = `«${o.aasen}»! ${mal.namn} stoppar opp.`; }
+      if (v.snogg) tekst = `«${o.aasen}»! ${m.namn} er klar att med ein gong.`;
+      meld(tekst, 2000);
+      await vent(800);
+      if (v.snogg) m.atb = 100 - 0.001;
+    }
+    async function partiHandling(m, kommando, mal, id, ting) {
       travel = true;
+      let snogg = false;
       if (kommando === "angrip") {
         m.fram = performance.now() + 300;
         meld(`${m.namn} angrip!`);
         await vent(300);
         skade(m, mal);
         await vent(600);
-      } else if (kommando === "ordkunst") {
-        const ev = RPGData.EVNER[evneId];
-        m.mp -= ev.mp;
-        meld(`${m.namn}: ${ev.namn}`, 1800);
-        let rett = true, item = null;
-        if (ev.sporsmal) {
-          ({ rett, item } = await spor(ev.sporsmal, gaaver));
-          if (rett && item) { const o = ordFraItem(item); if (o && paaOrd) paaOrd(o); }
-        }
+      } else if (kommando === "galdr") {
+        await galdr(m, id, mal);
+        snogg = D.ORD[id].verknad && D.ORD[id].verknad.snogg;
+      } else if (kommando === "song") {
+        const ev = D.EVNER[id];
+        m.rost -= ev.rost;
         m.fram = performance.now() + 300;
-        if (ev.type === "skade") {
-          let faktor = (ev.kraft + m.atk * 0.8) / (m.atk * 2.2);
-          if (evneId === "vokalskifte" && gaaver.vokalstav) faktor *= 1.25;
-          if (ev.sporsmal) faktor *= rett ? 1.6 : 0.35;
-          for (const f of ev.mal === "alle" ? fi.filter(f => f.hp > 0) : [mal]) skade(m, f, faktor);
-          meld(ev.sporsmal ? (rett ? `${ev.namn} treffer med full kraft!` : "Formelen fuska. Ordet slapp unna.") : `${ev.namn}!`);
-        } else if (ev.type === "lækje") {
-          const mengd = Math.round(ev.kraft * (ev.sporsmal ? (rett ? 1 : 0.4) : 1) + m.atk);
-          for (const v of ev.mal === "alle" ? pa.filter(v => v.hp > 0) : [mal]) { const før = v.hp; v.hp = Math.min(v.maxhp, v.hp + mengd); visTal(v, `+${Math.round(v.hp - før)}`, "#9ff09f"); }
-          meld(rett ? "Eit godt minne lækjer!" : "Minnet var uklart, men det hjelpte litt.");
-        } else if (ev.type === "vern") {
-          if (!ev.sporsmal || rett) {
-            const rundar = ev.kraft + (gaaver.v2kompass ? 2 : 0);
-            pa.forEach(v => { if (v.hp > 0) { v.vern = rundar; visTal(v, "Vern", "#f4c430"); } });
-            meld("Verbalet står på plass to. Partiet står støtt!");
-          } else meld("Setninga rasa. Ingen vern denne gongen.");
-        }
+        meld(`${m.namn} syng ${ev.namn}`, 1500);
+        await vent(400);
+        if (ev.type === "lækje") levandePa().forEach(p => lækj(p, ev.kraft + m.atk));
+        if (ev.type === "sov" && mal) { mal.sov = 1; visTal(mal, "Zzz", "#d8c8f8"); meld(`${mal.namn} blir lokka inn i ein draum.`); }
         await vent(700);
       } else if (kommando === "ting") {
-        const t = RPGData.TING[ting];
-        ting && (m.brukTing(ting));
-        if (t.lækje) { const før = mal.hp; mal.hp = Math.min(mal.maxhp, mal.hp + t.lækje); visTal(mal, `+${mal.hp - før}`, "#9ff09f"); }
-        if (t.blekk) { const før = mal.mp; mal.mp = Math.min(mal.maxmp, mal.mp + t.blekk); visTal(mal, `+${mal.mp - før} blekk`, "#9fd0ff"); }
+        const t = D.TING[ting];
+        m.brukTing(ting);
+        if (t.lækje) lækj(mal, t.lækje);
+        if (t.rost) { const før = mal.rost; mal.rost = Math.min(mal.maxrost, mal.rost + t.rost); visTal(mal, `+${mal.rost - før} røyst`, "#9fd0ff"); }
         if (t.vekk && mal.hp <= 0) { mal.hp = Math.round(mal.maxhp * t.vekk); visTal(mal, "Vaken!", "#9ff09f"); }
         meld(`${m.namn} brukar ${t.namn}.`);
         await vent(700);
@@ -251,9 +351,7 @@ window.Kamp = (function () {
         if (!boss && Math.random() < 0.65) { meld("Partiet kom seg unna!"); await vent(700); utfall = "flukt"; }
         else { meld(boss ? "Du kan ikkje flykte frå denne!" : "Kom ikkje unna!"); await vent(700); }
       }
-      // Vernet varer eit visst tal på tur for heile partiet.
-      if (m.vern > 0) m.vern--;
-      m.atb = 0;
+      m.atb = snogg ? 99.9 : 0;
       travel = false;
     }
 
@@ -262,10 +360,11 @@ window.Kamp = (function () {
       return new Promise(res => {
         const vis = (tittel, alt, tilbake) => new Promise(r => {
           meny.hidden = false;
-          meny.innerHTML = `<p class="km-tittel">${E(tittel)}</p>${alt.map((a, i) => `<button type="button" data-i="${i}"${a.av ? " disabled" : ""}><span>${E(a.namn)}</span>${a.info ? `<small>${E(a.info)}</small>` : ""}</button>`).join("")}`;
-          const kn = [...meny.querySelectorAll("button")];
+          meny.classList.toggle("brei", alt.length > 5);
+          meny.innerHTML = `<p class="km-tittel">${E(tittel)}</p><div class="km-alt">${alt.map((a, i) => `<button type="button" data-i="${i}"${a.av ? " disabled" : ""}${a.farge ? ` style="--fam:${a.farge}"` : ""} class="${a.klasse || ""}"><span>${E(a.namn)}</span>${a.info ? `<small>${E(a.info)}</small>` : ""}</button>`).join("")}</div><p class="km-info" hidden></p>`;
+          const kn = [...meny.querySelectorAll("button")], info = meny.querySelector(".km-info");
           let valt = Math.max(0, alt.findIndex(a => !a.av));
-          const merk = () => kn.forEach((b, i) => b.classList.toggle("peikar", i === valt));
+          const merk = () => { kn.forEach((b, i) => b.classList.toggle("peikar", i === valt)); info.hidden = !alt[valt].tekst; info.textContent = alt[valt].tekst || ""; };
           merk();
           const ferdig = i => { slepp(); r(i); };
           kn.forEach((b, i) => b.addEventListener("click", () => { if (!alt[i].av) ferdig(i); }));
@@ -275,24 +374,35 @@ window.Kamp = (function () {
             retning: d => { const n = alt.length; let v = valt; do { v = (v + (d === 1 || d === 2 ? n - 1 : 1)) % n; } while (alt[v].av && v !== valt); valt = v; merk(); },
           });
         });
-        const velMal = (type) => {
-          const liste = type === "venn" || type === "venn-fall" ? pa.filter(v => type === "venn-fall" ? true : v.hp > 0) : fi.filter(f => f.hp > 0);
-          if (type === "alle") return Promise.resolve(null);
-          return vis("Kven?", liste.map(v => ({ namn: v.namn, info: v.fiende ? "" : `${Math.round(v.hp)}/${v.maxhp}` })), true).then(i => i < 0 ? undefined : liste[i]);
+        const velMal = type => {
+          if (type === "ingen") return Promise.resolve(null);
+          const liste = type === "venn" ? pa.filter(v => v.hp > 0) : type === "venn-fall" ? pa : levandeFi();
+          return vis("Kven?", liste.map(v => ({ namn: v.namn, info: v.fiende ? (v.avslort > 0 ? `${Math.round(v.hp)}/${v.maxhp}` : "") : `${Math.round(v.hp)}/${v.maxhp}` })), true).then(i => i < 0 ? undefined : liste[i]);
         };
+        const malType = v => (v.skade && !v.alle) || v.avslor === "ein" || v.stopp || v.sov ? "fiende" : (v.lækje && !v.alle) ? "venn" : "ingen";
         (async function hovud() {
           while (true) {
-            const i = await vis(m.namn, [{ namn: "Angrip" }, { namn: "Ordkunst" }, { namn: "Ting", av: !Object.values(m.ting()).some(n => n > 0) }, { namn: "Flykt" }]);
-            if (i === 0) { const mal = await velMal("ein"); if (mal) { meny.hidden = true; return res(["angrip", mal]); } }
-            if (i === 1) {
-              const evner = m.evner;
-              const j = await vis("Ordkunst", evner.map(id => { const ev = RPGData.EVNER[id]; return { namn: ev.namn, info: `${ev.mp} blekk`, av: m.mp < ev.mp }; }), true);
-              if (j >= 0) { const ev = RPGData.EVNER[evner[j]]; const mal = ev.mal === "alle" ? null : await velMal(ev.mal === "venn" ? "venn" : "ein"); if (mal !== undefined) { meny.hidden = true; return res(["ordkunst", mal, evner[j]]); } }
+            const hovudval = m.galdr
+              ? [{ namn: "Angrip" }, { namn: "Galdr", av: !Object.keys(ord).some(id => D.ORD[id] && D.ORD[id].fam !== "nokkel" && m.rost >= rostKost(m, id)) }, { namn: "Ting", av: !Object.values(m.ting()).some(n => n > 0) }, { namn: "Flykt" }]
+              : [{ namn: "Angrip" }, { namn: "Song", av: !m.evner.some(id => m.rost >= D.EVNER[id].rost) }, { namn: "Ting", av: !Object.values(m.ting()).some(n => n > 0) }, { namn: "Flykt" }];
+            const i = await vis(m.namn, hovudval);
+            if (i === 0) { const mal = await velMal("fiende"); if (mal) { meny.hidden = true; return res(["angrip", mal]); } }
+            if (i === 1 && m.galdr) {
+              const ider = Object.keys(ord).filter(id => D.ORD[id] && D.ORD[id].fam !== "nokkel").sort((a, b) => FAM_ORDEN.indexOf(D.ORD[a].fam) - FAM_ORDEN.indexOf(D.ORD[b].fam));
+              const j = await vis("Galdr", ider.map(id => {
+                const o = D.ORD[id], rs = rettskrivne.has(id), fam = D.FAMILIAR[o.fam];
+                return { namn: rs ? o.dansk : o.aasen, info: `${fam.evne} · ${rostKost(m, id)}`, av: m.rost < rostKost(m, id), farge: fam.farge, klasse: rs ? "rettskriven" : "", tekst: rs ? `Rettskrive til dansk! Finn den rette forma for å få ordet att.` : o.tekst };
+              }), true);
+              if (j >= 0) { const id = ider[j], v = D.ORD[id].verknad || {}; const mal = await velMal(malType(v)); if (mal !== undefined) { meny.hidden = true; return res(["galdr", mal, id]); } }
+            }
+            if (i === 1 && !m.galdr) {
+              const j = await vis("Song", m.evner.map(id => { const ev = D.EVNER[id]; return { namn: ev.namn, info: `${ev.rost} røyst`, av: m.rost < ev.rost, tekst: ev.tekst }; }), true);
+              if (j >= 0) { const ev = D.EVNER[m.evner[j]]; const mal = await velMal(ev.mal === "alle" ? "ingen" : "fiende"); if (mal !== undefined) { meny.hidden = true; return res(["song", mal, m.evner[j]]); } }
             }
             if (i === 2) {
               const eigd = Object.entries(m.ting()).filter(([, n]) => n > 0);
-              const j = await vis("Ting", eigd.map(([id, n]) => ({ namn: RPGData.TING[id].namn, info: `×${n}` })), true);
-              if (j >= 0) { const id = eigd[j][0]; const mal = await velMal(RPGData.TING[id].vekk ? "venn-fall" : "venn"); if (mal !== undefined) { meny.hidden = true; return res(["ting", mal, null, id]); } }
+              const j = await vis("Ting", eigd.map(([id, n]) => ({ namn: D.TING[id].namn, info: `×${n}`, tekst: D.TING[id].tekst })), true);
+              if (j >= 0) { const id = eigd[j][0]; const mal = await velMal(D.TING[id].vekk ? "venn-fall" : "venn"); if (mal !== undefined) { meny.hidden = true; return res(["ting", mal, null, id]); } }
             }
             if (i === 3) { meny.hidden = true; return res(["flykt"]); }
           }
@@ -304,7 +414,7 @@ window.Kamp = (function () {
     oppdaterLister();
     meld(boss ? `${fi[0].namn}!` : fi.length > 1 ? "Fiendar dukkar opp!" : `${fi[0].namn} dukkar opp!`, 1500);
     let sist = performance.now(), menyOpen = false;
-    const teiknLoop = no => { if (!rot.hidden) { teikn(performance.now()); requestAnimationFrame(teiknLoop); } };
+    const teiknLoop = () => { if (!rot.hidden) { teikn(performance.now()); requestAnimationFrame(teiknLoop); } };
     requestAnimationFrame(teiknLoop);
     while (!utfall) {
       await vent(30);
@@ -312,8 +422,8 @@ window.Kamp = (function () {
       if (fi.every(f => f.hp <= 0)) { utfall = "siger"; break; }
       if (pa.every(m => m.hp <= 0)) { utfall = "tap"; break; }
       if (travel || menyOpen) continue;
-      for (const x of [...fi, ...pa]) if (x.hp > 0 && !ventar.includes(x)) x.atb = Math.min(100, x.atb + x.spd * dt * 0.0045);
-      for (const m of pa) if (m.hp > 0 && m.atb >= 100 && !ventar.includes(m)) ventar.push(m);
+      for (const x of [...fi, ...pa]) if (x.hp > 0 && !ventar.includes(x)) x.atb = Math.min(100, x.atb + x.spd * dt * 0.0045 * (rettleiing && x.fiende ? 0.6 : 1));
+      for (const m of pa) if (m.hp > 0 && m.atb >= 99.9 && !ventar.includes(m)) ventar.push(m);
       oppdaterLister();
       const klarFiende = fi.find(f => f.hp > 0 && f.atb >= 100);
       if (klarFiende) { await fiendeTur(klarFiende); oppdaterLister(); continue; }
@@ -322,17 +432,16 @@ window.Kamp = (function () {
         if (m.hp <= 0) { ventar.shift(); continue; }
         menyOpen = true;
         oppdaterLister();
-        const [k, mal, evne, ting] = await meny_(m);
+        const [k, mal, id, ting] = await meny_(m);
         menyOpen = false;
         ventar.shift();
         let malet = mal;
-        if (malet && malet.fiende && malet.hp <= 0) malet = fi.find(f => f.hp > 0);
-        if (k !== "flykt" && k !== "ting" && !malet && k !== "ordkunst") continue;
-        await partiHandling(m, k, malet, evne, ting);
+        if (malet && malet.fiende && malet.hp <= 0) malet = levandeFi()[0];
+        await partiHandling(m, k, malet, id, ting);
         oppdaterLister();
       }
     }
-    await vent(utfall === "siger" ? 700 : 300);
+    await vent(utfall === "siger" ? 800 : 300);
     const xp = utfall === "siger" ? fi.reduce((s, f) => s + f.d.xp, 0) : 0;
     const pengar = utfall === "siger" ? fi.reduce((s, f) => s + f.d.pengar, 0) : 0;
     const fall = [];
@@ -342,5 +451,5 @@ window.Kamp = (function () {
     return { utfall, xp, pengar, fall };
   }
 
-  return { start, spor };
+  return { start, formSpor, formval };
 })();
