@@ -1,4 +1,4 @@
-/* Pikselgrafikken i «Blekkranet», i 16-bitsstil: fliser, figurar og fiendar.
+/* Pikselgrafikken i «Aasen: Språkvandringa», i 16-bitsstil: fliser, figurar og fiendar.
 
    Nesten alt blir teikna i kode. Figurar og fiendar blir bygde som eit
    rutenett av «materiale» (hud, hår, jakke, blekk …). Så får kvart materiale

@@ -1,4 +1,4 @@
-/* Kampane i «Blekkranet»: turbasert med ATB-målar, som i dei klassiske
+/* Kampane i «Aasen: Språkvandringa»: turbasert med ATB-målar, som i dei klassiske
    Final Fantasy-spela. Målaren til kvar figur fyller seg etter farten.
    Når målaren til ein i partiet er full, stoppar tida (ventemodus).
 
@@ -451,5 +451,5 @@ window.Kamp = (function () {
     return { utfall, xp, pengar, fall };
   }
 
-  return { start, formSpor, formval };
+  return { start, formSpor, formval, bakgrunnBilete };
 })();

@@ -1,4 +1,4 @@
-/* «Blekkranet»: eit rollespel om Ivar Aasen (spel.html).
+/* «Aasen: Språkvandringa»: eit rollespel om Ivar Aasen (spel.html).
 
    Denne fila held saman resten: tilstanden og lagringa, tittelskjermen,
    manus (samtalar og hendingar frå js/rpg/data.js), orda Ivar samlar,
@@ -111,6 +111,7 @@
         await Motor.tale(`${D.PARTI[s.parti].namn} er med i partiet.`);
       }
       if (s.kamp) { const r = await kamp(s.kamp, !!s.boss, !!s.rettleiing); if (r === "tap") return "stopp"; }
+      if (s.stevjing) { const r = await stevjing(s.stevjing); if (r === "siger") st.flagg["stev:" + s.stevjing] = true; }
       if (s.til) Motor.last(s.til[0], s.til[1]);
       if (s.lagre) lagre();
       if (s.lækje) lækjAlle();
@@ -155,6 +156,15 @@
       for (const l of linjer) await Motor.tale(l);
     }
     Motor.pause(false);
+    return r.utfall;
+  }
+  /* ---------- Stevjing (prototype) ---------- */
+  async function stevjing(id) {
+    const forr = modus;
+    modus = "stev";
+    Motor.pause(true);
+    const r = await Stevjing.start({ id, parti: { sprite: sprite("ivar") } });
+    modus = forr === "tittel" ? "tittel" : "felt";
     return r.utfall;
   }
   async function tap() {
@@ -267,7 +277,7 @@
         const o = D.ORD[id], f = st.ord[id].former;
         return `<li><b>${E(o.aasen)}</b> <small>«${E(o.tyding)}»</small><br>
           <small>Former: ${Object.entries(f).map(([form, k]) => `<span class="ob-form">${E(form)}</span> <span class="ob-kjelde">(${E(k.kven ? k.kven + ", " : "")}${E(k.stad)})</span>`).join(" · ")}</small><br>
-          <small>Dansk: <i>${E(o.dansk)}</i> · Norrønt: ${st.kapittel >= 2 ? `<i>${E(o.norront || "–")}</i>` : "???"} · ${E(o.tekst)}</small></li>`;
+          <small>Dansk: <i>${E(o.dansk)}</i> · Norrønt: ${st.kapittel >= 2 ? `<i>${E(o.norront || "ukjent")}</i>` : "???"} · ${E(o.tekst)}</small></li>`;
       }).join("")}</ul>`;
     }
     return h;
@@ -415,7 +425,7 @@
       "Presten takka Ivar, men han spurde aldri meir om trolldom. Folk i Hovdebygda byrja å tale som før.",
       "I 1831 vart Ivar omgangsskulelærar i heimbygda. Han gjekk frå gard til gard og lærte borna å lese.",
       "Om kveldane skreiv han ned ord. Ikkje for å feste dei, men for å forstå korleis dei heng saman.",
-      "Men blekket er ikkje borte. Det skriv vidare i tusen protokollar over heile landet. Og ein stad sit ein lærd mann med ei nål og ventar.",
+      "Men blekket er ikkje borte. Det skriv vidare i tusen protokollar over heile landet. Og ein stad sit ein lærd mann med ei nål og ventar. Han vil eige orda, for den som eig orda, eig galdrane.",
       "Slutt på kapittel 1: Ørsta.",
       ...D.KAPITTEL.filter(k => k.nr > 1).map(k => `Kapittel ${k.nr}: ${k.namn} (${k.tid}). ${k.tekst} Kjem seinare.`),
     ]);
@@ -431,7 +441,7 @@
     Motor.pause(true);
     tittelEl.hidden = false;
     const s = lagra();
-    const alt = s ? [["hald", "Hald fram"], ["ny", "Ny reise"]] : [["ny", "Ny reise"]];
+    const alt = (s ? [["hald", "Hald fram"], ["ny", "Ny reise"]] : [["ny", "Ny reise"]]).concat([["stev", "Prøv stevjing (prototype)"]]);
     $("rpg-tittel-val").innerHTML = alt.map(([id, t], i) => `<button type="button" data-id="${id}" class="${i === 0 ? "peikar" : ""}">${t}</button>`).join("") +
       (s ? `<p class="tt-lagra">Lagra: kapittel ${s.kapittel}, ${E((D.KART[s.kart] || {}).namn || "")}, Ivar nivå ${s.parti[0].niva}, ${Object.keys(s.ord || {}).length} ord</p>` : "");
     const kn = [...$("rpg-tittel-val").querySelectorAll("button")];
@@ -440,6 +450,7 @@
     const vel = async i => {
       slepp();
       tittelEl.hidden = true;
+      if (alt[i][0] === "stev") { await stevjing("haugbonden"); visTittel(); return; }
       if (alt[i][0] === "hald") { st = Object.assign(ny(), s); start(true); }
       else {
         if (s && !confirm("Vil du byrje ei ny reise? Den lagra reisa blir overskriven når du lagrar neste gong.")) { visTittel(); return; }

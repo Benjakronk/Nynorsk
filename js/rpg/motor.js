@@ -1,4 +1,4 @@
-/* Feltmotoren i «Blekkranet»: kart sett ovanfrå, rørsle, dører, folk,
+/* Feltmotoren i «Aasen: Språkvandringa»: kart sett ovanfrå, rørsle, dører, folk,
    kister, møte med fiendar, samtaleboksar og forteljarskjerm.
 
    Figurane er 16 × 24 pikslar og står med føtene nedst i ruta si. Tretoppar

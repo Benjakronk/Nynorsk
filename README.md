@@ -28,7 +28,7 @@ frå Språkrådet.
 - Språksjekk i skriveoppgåvene: bokmålsvarsel bygd på ordbanken i kurset, og skrivefeil mot ei nynorsk ordliste på 412 000 former, med tyding og direktelenkje til ordbokene.no for kvart forslag
 - Reisene til Ivar Aasen (`aasen-reise.html`): modul med interaktiv forelesing på eit 3D-kart over Noreg, der eleven følgjer ein liten Aasen-figur langs ruta kapittel for kapittel, med stoppestader, datoar og oppgåver undervegs
 - Bilete og små animerte figurar i modulane: portrett, historiske bilete, kart og norsk kunst frå Wikimedia Commons (`bilete/`, lisensar i `bilete/KJELDE.md`), tidslinje, «to liner»-diagram, ordbygg, dei fire formene, setningsledd, V2-demonstrasjon, kjønnskort og ein nummerert ordbokartikkel (`js/figurar.js` og «Figurar» i `css/style.css`)
-- Spelet «Blekkranet» (`spel.html`): eit rollespel i 16-bitsstil, som dei klassiske Final Fantasy-spela, om Ivar Aasen og arbeidet med å samle eit nytt norsk skriftspråk. Kvart ord Ivar høyrer i bygdene, blir ein galdr, og lydfamilien til ordet avgjer kva galdren gjer: diftongane gir vern, dei harde konsonantane åtak, spørjeorda avsløring og j-orda lækjing. Før galdren verkar, vel spelaren forma som har teke vare på lyden, ikkje den danske. Kanselliblekket er fienden, og det kan «rettskrive» orda til dansk. Ordboka i spelet er både samlarlogg og bestiarium. Kapittel 1, «Ørsta» (1826–1831), er ferdig. Kapittel 2 til 5 er skisserte i designdokumentet. Fullførte modular i kurset gir gåver i spelet. Grafikken blir teikna i kode, bortsett frå Blekklatten (`bilete/spel/blekklatten.png`), som viser stilen
+- Spelet «Aasen: Språkvandringa» (`spel.html`): eit rollespel i 16-bitsstil, som dei klassiske Final Fantasy-spela, om Ivar Aasen og arbeidet med å samle eit nytt norsk skriftspråk. Kvart ord Ivar høyrer i bygdene, blir ein galdr, og lydfamilien til ordet avgjer kva galdren gjer: diftongane gir vern, dei harde konsonantane åtak, spørjeorda avsløring og j-orda lækjing. Før galdren verkar, vel spelaren forma som har teke vare på lyden, ikkje den danske. Kanselliblekket er fienden, og det kan «rettskrive» orda til dansk. Ordboka i spelet er både samlarlogg og bestiarium. Kapittel 1, «Ørsta» (1826–1831), er ferdig. Kapittel 2 til 5 er skisserte i designdokumentet. Fullførte modular i kurset gir gåver i spelet. Stevjing er under prøving som prototype (`js/rpg/stevjing.js`): ein vers-duell der spelaren vel ei line som svarer motstandaren, ei line som rimar, og slår takta når verset blir kvede. Han kan prøvast frå tittelskjermen og mot haugbonden i kapittel 1. Grafikken blir teikna i kode, bortsett frå Blekklatten (`bilete/spel/blekklatten.png`), som viser stilen
 - Lærarsida (`larer/`): presentasjon til tavleundervisning og lærarrettleiing til kvar modul, med talarvindauge, tavleøvingar frå ordbanken, kompetansemål frå læreplanen i norsk (NOR01-08), manus og automatisk fasit. Formatet står i `larer/README.md`, og `node tools/validate-larar.js` sjekkar innhaldet
 - Heile sida er statisk og fungerer på GitHub Pages utan byggjesteg
 
@@ -54,7 +54,7 @@ npx serve .
 ├── modul.html              Sida for kvar modul (?id=<modul-id>)
 ├── om.html                 Kort om kurset
 ├── aasen-reise.html        Reisene til Ivar Aasen: 3D-kart med forelesing
-├── spel.html               Rollespelet «Blekkranet»
+├── spel.html               Rollespelet «Aasen: Språkvandringa»
 ├── larer/                  Lærarsida: presentasjonar og rettleiingar (sjå larer/README.md)
 ├── bilete/                 Portrett og historiske bilete (kjelder i bilete/KJELDE.md)
 ├── css/style.css
@@ -63,7 +63,7 @@ npx serve .
 ├── js/
 │   ├── kart3d.js           3D-kartet: terreng, hav, kamera, ruter, figuren og scenene
 │   ├── aasen-reise.js      Sida for reisemodulen: kapittel, oppgåver og ruta på kartet
-│   ├── rpg/                Spelet: pikslar.js (16-bitsgrafikk), data.js (ord, lydfamiliar, kart, manus, fiendar), motor.js (feltet), kamp.js (ATB-kampar og galdrar), spel.js (lagring, meny og ordbok, verdskart frå kapittel 2)
+│   ├── rpg/                Spelet: pikslar.js (16-bitsgrafikk), data.js (ord, lydfamiliar, kart, manus, fiendar, stev), motor.js (feltet), kamp.js (ATB-kampar og galdrar), stevjing.js (prototype), spel.js (lagring, meny og ordbok, verdskart frå kapittel 2)
 │   ├── vendor/three.min.js three.js r147 (MIT), einaste eksterne bibliotek
 │   ├── storage.js          localStorage
 │   ├── modules.js          Modulregister (med grupper for Del 2 og 4)

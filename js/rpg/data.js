@@ -1,4 +1,4 @@
-/* Innhaldet i «Blekkranet», kapittel 1: Ørsta (1826–1831).
+/* Innhaldet i «Aasen: Språkvandringa», kapittel 1: Ørsta (1826–1831).
 
    Scenario og design: sjå designdokumentet «Aasen-spelet: scenario og design».
    Ivar Aasen samlar ord, og kvart ord blir ein galdr. Lydfamilien til ordet
@@ -9,6 +9,12 @@
    Ørsta, mora døydde då han var tre, faren då han var tretten, 1831
    omgangsskulelærar). Konfirmasjonen frå 1736, haugianarane og Aarflot på
    Ekset (død 1817) er historiske. Hendingane i spelet er dikta.
+
+   Språket i dialogen: embetsmenn og blekket talar dansk (skrivemåten frå
+   1800-talet), bygdefolk og forteljaren nynorsk. Knud Knudsen (frå kapittel 4)
+   byrjar nesten som dansk og blir meir og meir lik bokmål utover i historia.
+   Den framande (speilfiguren, utan namn enno) vil ha kontroll over språket
+   for å kontrollere magien: den som rår over orda, rår over galdrane.
 
    Dialektformene i ORD er vanlege variantar frå ordlista i designdokumentet.
    Dei bør sjekkast mot Aasens ordbok og Norsk Ordbok før dei blir låste.
@@ -30,6 +36,7 @@
      { pengar: 60 }                     skilling
      { parti: "huldra" }                ny i partiet
      { kamp: ["blekkdrope"], boss: 1, rettleiing: 1 }
+     { stevjing: "haugbonden" }           stevjing, set flagget «stev:haugbonden» ved siger
      { til: ["kart", "merke"] }         flytt
      { fjern: "&" }                     personen på merket går sin veg
      { dersom: fn, da: […], elles: […] }
@@ -510,9 +517,88 @@ window.RPGData = (function () {
     { nr: 5, namn: "Christiania", tid: "frå 1847", tekst: "Grammatikken og ordboka. Kven er den framande, og kva vel Ivar å ta med i norma?" },
   ];
 
+  /* ---------- Stevjing (prototype, sjå js/rpg/stevjing.js) ----------
+     Trykktunge ord er merkte med ^. «rim» er rimnøkkelen til sisteordet:
+     to liner rimar når nøklane er like. «dansk» er lina med den danske forma. */
+  const STEV = {
+    haugbonden: {
+      namn: "Haugbonden", bilete: "haugbonden", bakgrunn: "utmark", mot: 90, skade: 22,
+      intro: [
+        "Haugbonden rettar seg opp. «Du vil ikkje seie namnet mitt? Då skal vi kvede om det!»",
+        "I ei stevjing svarer ein kvarandre med vers. Første lina di skal svare motstandaren. Andre lina skal rime på den første. Til slutt slår du takta når verset blir kvede.",
+      ],
+      runder: [
+        {
+          hans: ["^Kven er du som ^trakkar på ^haugen min, ^gut?", "Eg ^set deg i ^haugen og ^slepp deg ikkje ^ut!"],
+          linje1: [
+            { tekst: "Eg er ^Ivar frå ^Åsen, eg ^sit på din ^stein,", rim: "ein", svar: "god" },
+            { tekst: "Jeg er ^Ivar fra ^Aasen, jeg ^sidder paa din ^Steen,", rim: "en", svar: "dansk" },
+            { tekst: "Du er ^berre ein ^gamal og ^mosegrodd ^stein,", rim: "ein", svar: "frekk" },
+          ],
+          linje2: [
+            { tekst: "og eg ^lyttar til ^orda som ^bur i kvar ^grein.", rim: "ein" },
+            { tekst: "og jeg ^lytter til ^Ordene i ^hver en ^Gren.", rim: "en", dansk: true },
+            { tekst: "og eg ^lyttar til ^folket når ^kvelden ^kjem.", rim: "em" },
+          ],
+        },
+        {
+          hans: ["Kvart ^ord du skriv ^ned, det ^stivnar og ^døyr.", "Du ^fangar det ^inn, men du ^drep det. ^Høyr!"],
+          linje1: [
+            { tekst: "Eg ^skriv ikkje ^ned for å ^stengje dei ^inne,", rim: "inne", svar: "god" },
+            { tekst: "Jeg ^skriver det ^ned, for det ^staar jo i ^Bogen,", rim: "ogen", svar: "dansk" },
+            { tekst: "Eg ^skriv det eg ^vil, og det ^bryr meg så ^lite,", rim: "ite", svar: "frekk" },
+          ],
+          linje2: [
+            { tekst: "men ^for at dei ^andre skal ^høyre og ^finne.", rim: "inne" },
+            { tekst: "men ^for at de ^andre skal ^høre og ^finde.", rim: "inde", dansk: true },
+            { tekst: "men ^for at dei ^andre skal ^lese og for^stå.", rim: "å" },
+          ],
+        },
+        {
+          hans: ["Og ^kven skal då ^hugse meg, ^gamal og ^grå,", "når ^ingen i ^bygda vil ^lytte meir ^på?"],
+          linje1: [
+            { tekst: "Du ^lever i ^songen og ^kvar einaste ^draum,", rim: "aum", svar: "god" },
+            { tekst: "Du ^lever i ^Sangen og ^hver eneste ^Drøm,", rim: "øm", svar: "dansk" },
+            { tekst: "Eg har ^viktigare ^ting enn ein ^gamal ^draum,", rim: "aum", svar: "frekk" },
+          ],
+          linje2: [
+            { tekst: "som ^renn gjennom ^bygda så ^fritt som ein ^straum.", rim: "aum" },
+            { tekst: "som ^rinder gjennem ^Bygden saa ^frit som en ^Strøm.", rim: "øm", dansk: true },
+            { tekst: "som ^renn gjennom ^bygda så ^fritt som ei ^elv.", rim: "elv" },
+          ],
+        },
+      ],
+    },
+  };
+
   /* ---------- Manus ---------- */
   const harOrd = id => st => !!st.ord[id];
   const talOrd = st => Object.keys(st.ord).length;
+  // Haugbonden får namnet sitt att (rett svar eller vunnen stevjing).
+  const HAUG_NAMN = [
+    { s: "Haugbonden", t: "Du må ⟪høyre⟫ etter, gut. Det er heile kunsta. Eg har høyrt på folket her i tusen år." },
+    { lytt: ["hoyra", "høyre"] },
+    { s: "Haugbonden", t: "No er eg ⟪laus⟫ frå gløymska. Sauene kan gå forbi haugen att." },
+    { lytt: ["laus", "laus"] },
+    { flagg: "haug" }, { fjern: "@" },
+    { dersom: st => st.flagg.huldra_med && !st.flagg.huldra_auga, da: [
+      { s: "Huldra", t: "Du gav han namnet att. Då skal du få eit ord av meg òg. Eg ser med ⟪auga⟫ det ingen andre ser." },
+      { tilbod: ["auga", "auga"] }, { flagg: "huldra_auga" },
+    ] },
+  ];
+  const HAUG_FEIL = [
+    { s: "Vetten", t: "NEI!" },
+    { stevjing: "haugbonden" },
+    { dersom: st => st.flagg["stev:haugbonden"], da: [
+      { s: "Haugbonden", t: "Haugbonden … Ja. No hugsar eg det. Ein som kveder slik, må eg gi namnet mitt." },
+      ...HAUG_NAMN,
+    ], elles: [
+      { s: "Haugbonden", t: "Ha! Kvedinga di er like tunn som blekket ditt. Då får vi slåst!" },
+      { kamp: ["haugbonden"], boss: 1 },
+      { s: "Haugbonden", t: "Haugbonden … Det var namnet mitt. Du må ⟪høyre⟫ betre etter, gut." },
+      { lytt: ["hoyra", "høyre"] }, { flagg: "haug" }, { fjern: "@" },
+    ] },
+  ];
   const MANUS = {
     start: [
       { fort: [
@@ -610,6 +696,8 @@ window.RPGData = (function () {
       { s: "Den framande", t: "Sjå her. Er dei ikkje vakre? Kvar sommarfugl har si eiga nål." },
       { s: "Den framande", t: "Kvar gong eit ord blir sagt, blir det litt annleis. Er ikkje det ei sorg? Eg vil at dei skal stå stille." },
       { s: "Den framande", t: "Du har skrive mykje i boka di alt. Godt. Det som er skrive, står." },
+      { s: "Den framande", t: "Har du merka det? Orda har kraft. Men krafta held seg berre så lenge ingen kan endre dei. Den som rår over orda, rår over galdrane." },
+      { s: "Den framande", t: "Tenk på det, Ivar. Eit mål med éi rett form for kvart ord. Då kan ingen syngje ein galdr utan lov." },
       { flagg: "framande2" }, { fjern: "&" },
     ],
     /* Nedre Hovde: skammen */
@@ -699,20 +787,9 @@ window.RPGData = (function () {
       { t: "Ein gråbleik vette står framfor haugen. Mose gror på hatten hans, og auga lyser som is." },
       { s: "Vetten", t: "KVEN … ER … EG?" },
       { val: "Kven er vetten?", alt: ["Du er haugbonden.", "Du er nøkken.", "Du er ein tuss."], svar: [
-        [
-          { s: "Haugbonden", t: "Haugbonden … Ja. Det er meg. Eg hadde gløymt det." },
-          { s: "Haugbonden", t: "Du må ⟪høyre⟫ etter, gut. Det er heile kunsta. Eg har høyrt på folket her i tusen år." },
-          { lytt: ["hoyra", "høyre"] },
-          { s: "Haugbonden", t: "No er eg ⟪laus⟫ frå gløymska. Sauene kan gå forbi haugen att." },
-          { lytt: ["laus", "laus"] },
-          { flagg: "haug" }, { fjern: "@" },
-          { dersom: st => st.flagg.huldra_med && !st.flagg.huldra_auga, da: [
-            { s: "Huldra", t: "Du gav han namnet att. Då skal du få eit ord av meg òg. Eg ser med ⟪auga⟫ det ingen andre ser." },
-            { tilbod: ["auga", "auga"] }, { flagg: "huldra_auga" },
-          ] },
-        ],
-        [{ s: "Vetten", t: "NEI!" }, { kamp: ["haugbonden"], boss: 1 }, { s: "Haugbonden", t: "Haugbonden … Det var namnet mitt. Du må ⟪høyre⟫ betre etter, gut." }, { lytt: ["hoyra", "høyre"] }, { flagg: "haug" }, { fjern: "@" }],
-        [{ s: "Vetten", t: "NEI!" }, { kamp: ["haugbonden"], boss: 1 }, { s: "Haugbonden", t: "Haugbonden … Det var namnet mitt. Du må ⟪høyre⟫ betre etter, gut." }, { lytt: ["hoyra", "høyre"] }, { flagg: "haug" }, { fjern: "@" }],
+        [{ s: "Haugbonden", t: "Haugbonden … Ja. Det er meg. Eg hadde gløymt det." }, ...HAUG_NAMN],
+        HAUG_FEIL,
+        HAUG_FEIL,
       ] },
     ],
     /* Vegen og Ekset */
@@ -755,5 +832,5 @@ window.RPGData = (function () {
   // Første gong Ivar går ut, kjem den framande bort til han.
   MANUS.ut_forste = [{ dersom: st => !st.flagg.framande1, da: MANUS.framande }];
 
-  return { FAMILIAR, ORD, U, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, KAPITTEL, MANUS };
+  return { FAMILIAR, ORD, U, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, KAPITTEL, STEV, MANUS };
 })();
