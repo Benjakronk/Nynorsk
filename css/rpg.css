@@ -166,29 +166,29 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 .sp-svar.rett { color: #9ff09f; }
 .sp-svar.feil { color: #ffb0a0; }
 
-/* Stevjing (prototype) */
-.rpg-stev { position: absolute; inset: 0; z-index: 12; pointer-events: none; }
-.rpg-stev > * { pointer-events: auto; }
-.stev-mot { position: absolute; top: 10px; left: 12px; right: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.stev-mot .kamp-vindauge { min-height: 0; display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; padding: 6px 12px; font-size: 16px; }
-.stev-malar { height: 10px; border-radius: 99px; background: #0e1540; border: 1px solid #8b93c9; overflow: hidden; }
-.stev-malar i { display: block; height: 100%; width: 100%; background: linear-gradient(90deg, #d06a64, #ffe39a); transition: width .5s; }
-.rpg-stev .kamp-melding { top: 64px; }
-.stev-vers { position: absolute; left: 12px; right: 12px; bottom: 12px; min-height: 120px; font-size: 18px; }
-.stev-runde { margin: 0 0 4px; font-size: 13px; color: #ffe39a; letter-spacing: .06em; text-transform: uppercase; }
+/* Stev */
+.stev-kveding { width: min(720px, calc(100% - 24px)); }
 .stev-hjelp { margin: 0 0 6px; font-size: 14px; color: #ffe39a; }
+.stev-liner { text-align: left; display: inline-block; }
 .stev-line { margin: 2px 0; font-family: "Source Serif Pro", Georgia, serif; font-size: 20px; }
-.stev-line.hans { font-style: italic; color: #d8dcf8; }
 .stev-tung { color: #ffe39a; font-weight: 700; }
 .stev-tung.no { color: #0a0514; background: #ffe39a; border-radius: 3px; padding: 0 2px; text-shadow: none; }
-.stev-slag { display: flex; gap: 10px; margin-top: 8px; }
-.stev-slag i { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #8b93c9; background: #0e1540; transition: transform .1s; }
+.stev-hol { border-bottom: 2px dotted currentColor; }
+.stev-hol.rett { color: #9ff09f; }
+.stev-hol.feil { color: #ff9a8a; }
+.stev-hol.tomt { color: #8b93c9; }
+.stev-slag { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 10px; }
+.stev-slag i { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #8b93c9; background: #0e1540; transition: transform .1s; }
 .stev-slag i.no { transform: scale(1.35); border-color: #ffe39a; }
 .stev-slag i.treff { background: #9ff09f; border-color: #9ff09f; }
 .stev-slag i.bom { background: #6a3040; }
-.stev-val { position: absolute; left: 12px; right: 12px; bottom: 150px; display: flex; flex-direction: column; padding: 8px 6px; }
-.stev-val[hidden] { display: none; }
-.stev-val button { font-family: "Source Serif Pro", Georgia, serif; font-size: 18px; }
+.stev-slag i.stum { border-style: dashed; opacity: .45; }
+.kp-kved { grid-column: 1 / -1; height: 4px; border-radius: 99px; background: #0e1540; overflow: hidden; margin-top: 2px; }
+.kp-kved i { display: block; height: 100%; background: linear-gradient(90deg, #6a3a7a, #d8c8f8); }
+.kp-kved.full i { background: linear-gradient(90deg, #f8d840, #fff4c0); animation: kved-full 1s ease-in-out infinite; }
+@keyframes kved-full { 50% { opacity: .55; } }
+.stev-kort { padding: 8px 12px; margin-bottom: 8px; background: rgba(255, 255, 255, .07); border-radius: 6px; }
+.stev-kort .stev-line { font-size: 17px; }
 
 /* Verdskartet */
 .rpg-verd { position: absolute; inset: 0; z-index: 20; display: grid; grid-template-columns: 1fr 300px; background: #0e0c12; }

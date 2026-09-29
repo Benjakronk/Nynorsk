@@ -125,7 +125,7 @@ window.Kamp = (function () {
   }
 
   /* ---------- Kampen ---------- */
-  async function start({ fiendar, boss, parti, gaaver = {}, bakgrunn, ord = {}, rettleiing, paaVesen }) {
+  async function start({ fiendar, boss, parti, gaaver = {}, bakgrunn, ord = {}, stev = [], startKved = 0, rettleiing, paaVesen }) {
     const D = RPGData;
     const fi = fiendar.map((id, i) => {
       const d = D.FIENDAR[id];
@@ -133,7 +133,9 @@ window.Kamp = (function () {
       return { id, d, namn: d.namn + nr, hp: d.hp, maxhp: d.hp, atk: d.atk, def: d.def, spd: d.spd, atb: rnd(0, 40), tur: 0, blink: 0, fiende: true, avslort: 0, sov: 0 };
     });
     fi.forEach(f => paaVesen && paaVesen(f.id, false));
-    const pa = parti.map(m => Object.assign(m, { atb: rnd(20, 60), vern: 0, blink: 0, fram: 0 }));
+    const pa = parti.map(m => Object.assign(m, { atb: rnd(20, 60), vern: 0, blink: 0, fram: 0, kved: m.galdr ? startKved : 0 }));
+    // Kvedemålaren til Ivar fyller seg når han tek skade eller gjer noko. Full målar = stev.
+    const kvedAuke = (m, n) => { if (m && m.galdr && m.hp > 0 && stev.length) m.kved = Math.min(100, m.kved + n); };
     const rettskrivne = new Set();
     let utfall = null, travel = false, meldingTid = 0;
     const ventar = [];
@@ -160,7 +162,7 @@ window.Kamp = (function () {
       fiListe.innerHTML = fi.filter(f => f.hp > 0).map(f => `<p>${E(f.namn)}${f.avslort > 0 ? ` <small class="avslort">${Math.round(f.hp)}/${f.maxhp}${D.ORD && f.d.slag ? " · " + E(f.d.slag) : ""}</small>` : ""}${f.sov > 0 ? ' <small class="sov">søv</small>' : ""}</p>`).join("");
       paListe.innerHTML = pa.map(m => `<div class="kp-rad${m.hp <= 0 ? " fallen" : ""}${ventar[0] === m ? " aktiv" : ""}">
         <span class="kp-namn">${E(m.namn)}</span><span class="kp-hp">${Math.max(0, Math.round(m.hp))}<small>/${m.maxhp}</small></span>
-        <span class="kp-mp">${m.rost}<small>/${m.maxrost}</small></span><span class="kp-atb"><i style="width:${Math.min(100, m.atb)}%"></i></span></div>`).join("");
+        <span class="kp-mp">${m.rost}<small>/${m.maxrost}</small></span><span class="kp-atb"><i style="width:${Math.min(100, m.atb)}%"></i></span>${m.galdr && stev.length ? `<span class="kp-kved${m.kved >= 100 ? " full" : ""}" title="Kvedemålar"><i style="width:${m.kved}%"></i></span>` : ""}</div>`).join("");
     }
 
     /* Teikning */
@@ -218,6 +220,7 @@ window.Kamp = (function () {
       til.hp = Math.max(0, til.hp - s);
       til.blink = performance.now() + 400;
       if (til.hp <= 0 && til.fiende) { til.dod = performance.now(); paaVesen && paaVesen(til.id, true); }
+      if (!til.fiende) kvedAuke(til, 12);
       visTal(til, s, til.fiende ? "#fff" : "#ffb0a0");
       return s;
     }
@@ -326,9 +329,23 @@ window.Kamp = (function () {
         meld(`${m.namn} angrip!`);
         await vent(300);
         skade(m, mal);
+        kvedAuke(m, 5);
         await vent(600);
+      } else if (kommando === "stev") {
+        const def = D.STEVGALDR[id], v = def.verknad;
+        m.kved = 0;
+        meld(`${m.namn} kveder ${def.namn}!`, 1600);
+        await vent(600);
+        const { kraft } = await Stev.kved(id, { ord, gaaver });
+        m.fram = performance.now() + 400;
+        if (v.skade) for (const f of v.alle ? levandeFi() : [mal]) skade(m, f, (v.skade * kraft + m.atk) / (m.atk * 2.2) * (v.mot && v.mot.includes(f.d.slag) ? 1.6 : 1), { gjennom: true });
+        if (v.lækjeProsent) levandePa().forEach(p => lækj(p, p.maxhp * v.lækjeProsent / 100 * kraft));
+        if (v.vern) levandePa().forEach(p => { p.vern = Math.max(p.vern, Math.max(1, Math.round(v.vern * kraft))); visTal(p, "Vern", "#f8d840"); });
+        meld(kraft >= 0.8 ? `${def.namn} fyller heile rommet!` : kraft >= 0.45 ? `${def.namn} ber godt.` : `${def.namn} vart svakt. Det manglar noko.`, 1800);
+        await vent(900);
       } else if (kommando === "galdr") {
         await galdr(m, id, mal);
+        kvedAuke(m, 8);
         snogg = D.ORD[id].verknad && D.ORD[id].verknad.snogg;
       } else if (kommando === "song") {
         const ev = D.EVNER[id];
@@ -383,9 +400,15 @@ window.Kamp = (function () {
         (async function hovud() {
           while (true) {
             const hovudval = m.galdr
-              ? [{ namn: "Angrip" }, { namn: "Galdr", av: !Object.keys(ord).some(id => D.ORD[id] && D.ORD[id].fam !== "nokkel" && m.rost >= rostKost(m, id)) }, { namn: "Ting", av: !Object.values(m.ting()).some(n => n > 0) }, { namn: "Flykt" }]
+              ? [{ namn: "Angrip" }, { namn: "Galdr", av: !Object.keys(ord).some(id => D.ORD[id] && D.ORD[id].fam !== "nokkel" && m.rost >= rostKost(m, id)) }, ...(stev.length ? [{ namn: "Stev", av: m.kved < 100, info: m.kved < 100 ? `${Math.floor(m.kved)} %` : "klar" }] : []), { namn: "Ting", av: !Object.values(m.ting()).some(n => n > 0) }, { namn: "Flykt" }]
               : [{ namn: "Angrip" }, { namn: "Song", av: !m.evner.some(id => m.rost >= D.EVNER[id].rost) }, { namn: "Ting", av: !Object.values(m.ting()).some(n => n > 0) }, { namn: "Flykt" }];
-            const i = await vis(m.namn, hovudval);
+            const ix = await vis(m.namn, hovudval);
+            const valNamn = hovudval[ix] && hovudval[ix].namn;
+            const i = { Angrip: 0, Galdr: 1, Song: 1, Ting: 2, Flykt: 3, Stev: 9 }[valNamn];
+            if (i === 9) {
+              const j = await vis("Stev", stev.map(id => { const def = D.STEVGALDR[id], s2 = Stev.status(def, ord); return { namn: def.namn, info: `${s2.fylte.length}/${Object.keys(def.hol).length} ord`, tekst: def.tekst + (s2.manglar.length ? ` Manglar ${s2.manglar.length} ord.` : "") }; }), true);
+              if (j >= 0) { meny.hidden = true; return res(["stev", null, stev[j]]); }
+            }
             if (i === 0) { const mal = await velMal("fiende"); if (mal) { meny.hidden = true; return res(["angrip", mal]); } }
             if (i === 1 && m.galdr) {
               const ider = Object.keys(ord).filter(id => D.ORD[id] && D.ORD[id].fam !== "nokkel").sort((a, b) => FAM_ORDEN.indexOf(D.ORD[a].fam) - FAM_ORDEN.indexOf(D.ORD[b].fam));

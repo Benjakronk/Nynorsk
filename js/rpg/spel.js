@@ -25,6 +25,7 @@
     vesen: {},        // { id: { sett, slegne } }
     huldra: { skrive: 0 },
     avdekt: {},       // kart der gøymde ting er funne
+    stev: [],         // stev Ivar har lært
   });
   let st = ny();
   const lagra = () => { try { return JSON.parse(localStorage.getItem(NOKKEL) || "null"); } catch (e) { return null; } };
@@ -111,7 +112,12 @@
         await Motor.tale(`${D.PARTI[s.parti].namn} er med i partiet.`);
       }
       if (s.kamp) { const r = await kamp(s.kamp, !!s.boss, !!s.rettleiing); if (r === "tap") return "stopp"; }
-      if (s.stevjing) { const r = await stevjing(s.stevjing); if (r === "siger") st.flagg["stev:" + s.stevjing] = true; }
+      if (s.stev && !st.stev.includes(s.stev)) {
+        st.stev.push(s.stev);
+        const def = D.STEVGALDR[s.stev], s2 = Stev.status(def, st.ord);
+        await Motor.tale(`Ivar lærte «${def.namn}» av ${def.kjelde}. ${s2.manglar.length ? `${s2.manglar.length} av orda i stevet manglar enno.` : "Han har alle orda som trengst."}`, "Ordboka");
+        if (st.stev.length === 1) await Motor.tale("Stev er dei sterkaste galdrane. Når kvedemålaren til Ivar er full i ein kamp, kan han kvede eit stev. Hola i stevet fyller han med ord han har funne.", "Ordboka");
+      }
       if (s.til) Motor.last(s.til[0], s.til[1]);
       if (s.lagre) lagre();
       if (s.lækje) lækjAlle();
@@ -126,7 +132,7 @@
   }
 
   /* ---------- Kamp ---------- */
-  async function kamp(lag, boss, rettleiing) {
+  async function kamp(lag, boss, rettleiing, startKved = 0) {
     modus = "kamp";
     Motor.pause(true);
     const gv = gaaver();
@@ -137,7 +143,7 @@
     });
     const bakgrunn = (Motor.kart && Motor.kart.def.bakgrunn) || "tun";
     const r = await Kamp.start({
-      fiendar: lag, boss, parti, gaaver: gv, bakgrunn, ord: st.ord, rettleiing,
+      fiendar: lag, boss, parti, gaaver: gv, bakgrunn, ord: st.ord, stev: st.stev, startKved, rettleiing,
       paaVesen: (id, slegen) => { const v = st.vesen[id] || (st.vesen[id] = { sett: 0, slegne: 0 }); if (slegen) v.slegne++; else v.sett++; },
     });
     parti.forEach(p => { p.ref.hp = Math.max(0, Math.round(p.hp)); p.ref.rost = p.rost; });
@@ -156,15 +162,6 @@
       for (const l of linjer) await Motor.tale(l);
     }
     Motor.pause(false);
-    return r.utfall;
-  }
-  /* ---------- Stevjing (prototype) ---------- */
-  async function stevjing(id) {
-    const forr = modus;
-    modus = "stev";
-    Motor.pause(true);
-    const r = await Stevjing.start({ id, parti: { sprite: sprite("ivar") } });
-    modus = forr === "tittel" ? "tittel" : "felt";
     return r.utfall;
   }
   async function tap() {
@@ -282,6 +279,17 @@
     }
     return h;
   }
+  function stevHtml() {
+    const alle = Object.keys(D.STEVGALDR);
+    let h = `<p class="mn-liten">Ivar har lært ${st.stev.length} av ${alle.length} stev. Eit stev kan kvedast i kamp når kvedemålaren er full. Hola fyller han med ord han har funne.</p>`;
+    for (const id of alle) {
+      const def = D.STEVGALDR[id];
+      if (!st.stev.includes(id)) { h += `<div class="stev-kort"><h3>???</h3></div>`; continue; }
+      const linje = l => Stev.delLine(l).map(w => w.hol ? `<b class="stev-hol ${st.ord[def.hol[w.hol].ord] ? "rett" : "tomt"}">${st.ord[def.hol[w.hol].ord] ? E(def.hol[w.hol].rett[0]) : "???"}</b>${E(w.etter)}` : E(w.tekst)).join(" ");
+      h += `<div class="stev-kort"><h3>${E(def.namn)} <small>frå ${E(def.kjelde)}</small></h3>${def.liner.map(l => `<p class="stev-line">${linje(l)}</p>`).join("")}<p class="mn-liten">${E(def.tekst)}</p></div>`;
+    }
+    return h;
+  }
   function vesenHtml() {
     const ider = Object.keys(D.FIENDAR);
     return `<p class="mn-liten">Vesen Ivar har møtt: ${Object.keys(st.vesen).length} av ${ider.length}.</p><ul class="mn-liste">${ider.map(id => {
@@ -293,7 +301,7 @@
   async function meny() {
     if (modus !== "felt") return;
     Motor.pause(true);
-    const valg = ["Status", "Galdr", "Ting", "Ordboka", "Vesen", "Nøkkelting", "Kurset", "Lukk"];
+    const valg = ["Status", "Galdr", "Stev", "Ting", "Ordboka", "Vesen", "Nøkkelting", "Kurset", "Lukk"];
     let valt = 0;
     menyEl.hidden = false;
     const innhald = () => {
@@ -303,6 +311,7 @@
       if (v === "Ting") { const t = Object.entries(st.ting).filter(([, n]) => n > 0); return (t.length ? `<ul class="mn-liste">${t.map(([id, n]) => `<li><b>${E(D.TING[id].namn)}</b> ×${n}<br><small>${E(D.TING[id].tekst)}</small></li>`).join("")}</ul>` : "<p>Skreppa er tom.</p>") + "<p class=\"mn-liten\">Trykk Z eller Enter for å bruke ein ting.</p>"; }
       if (v === "Ordboka") return st.nokkel.includes("ordboka") || ordtal() ? ordbokHtml() : "<p>Ivar har inga bok å skrive i enno.</p>";
       if (v === "Vesen") return vesenHtml();
+      if (v === "Stev") return stevHtml();
       if (v === "Nøkkelting") return st.nokkel.length ? `<ul class="mn-liste">${st.nokkel.map(id => `<li><b>${E(D.NOKKELTING[id].namn)}</b><br><small>${E(D.NOKKELTING[id].tekst)}</small></li>`).join("")}</ul>` : "<p>Ingen nøkkelting enno.</p>";
       if (v === "Kurset") { const gv = gaaver(); return `<p>Fullfører du modular i nynorskkurset, får du gåver i spelet.</p><ul class="mn-liste">${D.GAAVER.map(x => `<li class="${gv[x.id] ? "har" : ""}"><b>${gv[x.id] ? "✓" : "🔒"} ${E(x.namn)}</b><br><small>${E(x.tekst)} Modul: ${x.modular.map(id => E((Modules.get(id) || {}).title || id)).join(" eller ")}.</small></li>`).join("")}</ul>`; }
       return "";
@@ -441,7 +450,7 @@
     Motor.pause(true);
     tittelEl.hidden = false;
     const s = lagra();
-    const alt = (s ? [["hald", "Hald fram"], ["ny", "Ny reise"]] : [["ny", "Ny reise"]]).concat([["stev", "Prøv stevjing (prototype)"]]);
+    const alt = (s ? [["hald", "Hald fram"], ["ny", "Ny reise"]] : [["ny", "Ny reise"]]).concat([["stev", "Prøv stev (prototype)"]]);
     $("rpg-tittel-val").innerHTML = alt.map(([id, t], i) => `<button type="button" data-id="${id}" class="${i === 0 ? "peikar" : ""}">${t}</button>`).join("") +
       (s ? `<p class="tt-lagra">Lagra: kapittel ${s.kapittel}, ${E((D.KART[s.kart] || {}).namn || "")}, Ivar nivå ${s.parti[0].niva}, ${Object.keys(s.ord || {}).length} ord</p>` : "");
     const kn = [...$("rpg-tittel-val").querySelectorAll("button")];
@@ -450,7 +459,7 @@
     const vel = async i => {
       slepp();
       tittelEl.hidden = true;
-      if (alt[i][0] === "stev") { await stevjing("haugbonden"); visTittel(); return; }
+      if (alt[i][0] === "stev") { await provStev(); return; }
       if (alt[i][0] === "hald") { st = Object.assign(ny(), s); start(true); }
       else {
         if (s && !confirm("Vil du byrje ei ny reise? Den lagra reisa blir overskriven når du lagrar neste gong.")) { visTittel(); return; }
@@ -459,6 +468,22 @@
     };
     kn.forEach((b, i) => b.addEventListener("click", () => vel(i)));
     const slepp = Motor.lytt({ a: () => vel(valt), retning: d => { valt = (valt + (d === 1 ? kn.length - 1 : 1)) % kn.length; merk(); } });
+  }
+  // Prøvekamp for stev-prototypen: Ivar og huldra med orda frå kapittel 1 og full kvedemålar.
+  async function provStev() {
+    const ekte = st;
+    st = ny();
+    for (const [id, form] of [["stein", "stein"], ["stein", "stæin"], ["draum", "draum"], ["kaka", "kake"], ["ljos", "ljos"], ["mjolk", "mjølk"], ["kvat", "ka"]]) leggTilForm(id, form, "prøve");
+    st.stev = ["steinstevet", "tungestevet"];
+    st.parti.push({ id: "huldra", niva: 3, xp: 0, hp: null, rost: null }); st.parti[0].niva = 3;
+    st.parti.forEach(fyll);
+    Motor.settSpelar(sprite("ivar"));
+    Motor.last("utmarka", "1");
+    modus = "felt";
+    await Motor.tale("Prøvekamp: kvedemålaren til Ivar er full. Vel «Stev» i menyen hans. Steinstevet har alle orda. Tungestevet manglar to nøkkelord.");
+    await kamp(["blekkflekk", "blekkdrope", "fjorpennen"], false, false, 100);
+    st = ekte;
+    visTittel();
   }
   function start(fraLagring) {
     modus = "felt";

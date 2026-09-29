@@ -36,7 +36,7 @@
      { pengar: 60 }                     skilling
      { parti: "huldra" }                ny i partiet
      { kamp: ["blekkdrope"], boss: 1, rettleiing: 1 }
-     { stevjing: "haugbonden" }           stevjing, set flagget «stev:haugbonden» ved siger
+     { stev: "steinstevet" }              Ivar lærer eit stev
      { til: ["kart", "merke"] }         flytt
      { fjern: "&" }                     personen på merket går sin veg
      { dersom: fn, da: […], elles: […] }
@@ -517,70 +517,56 @@ window.RPGData = (function () {
     { nr: 5, namn: "Christiania", tid: "frå 1847", tekst: "Grammatikken og ordboka. Kven er den framande, og kva vel Ivar å ta med i norma?" },
   ];
 
-  /* ---------- Stevjing (prototype, sjå js/rpg/stevjing.js) ----------
-     Trykktunge ord er merkte med ^. «rim» er rimnøkkelen til sisteordet:
-     to liner rimar når nøklane er like. «dansk» er lina med den danske forma. */
-  const STEV = {
-    haugbonden: {
-      namn: "Haugbonden", bilete: "haugbonden", bakgrunn: "utmark", mot: 90, skade: 22,
-      intro: [
-        "Haugbonden rettar seg opp. «Du vil ikkje seie namnet mitt? Då skal vi kvede om det!»",
-        "I ei stevjing svarer ein kvarandre med vers. Første lina di skal svare motstandaren. Andre lina skal rime på den første. Til slutt slår du takta når verset blir kvede.",
+  /* ---------- Stev: dei sterkaste galdrane (prototype, sjå js/rpg/stev.js) ----------
+     Det finst eit fast tal stev. Ivar lærer eit stev av nokon han møter, men
+     hola i stevet må fyllast med ord han har funne sjølv. Trykktunge ord er
+     merkte med ^, hol står som [holId]. «rett» er formene som rimar.
+     Verknad: vern (rundar), lækjeProsent (av maks HP), skade (kraft), alle, mot. */
+  const STEVGALDR = {
+    steinstevet: {
+      namn: "Steinstevet", kjelde: "Haugbonden", kapittel: 1,
+      liner: [
+        "Eg ^står her i ^stormen så ^fast som ein [stein],",
+        "med ^rota i ^jorda og ^marg i kvart ^bein.",
+        "Og ^kjem det eit ^mørker, så ^ber eg ein [draum]",
+        "som ^renn gjennom ^natta så ^klår som ein ^straum.",
       ],
-      runder: [
-        {
-          hans: ["^Kven er du som ^trakkar på ^haugen min, ^gut?", "Eg ^set deg i ^haugen og ^slepp deg ikkje ^ut!"],
-          linje1: [
-            { tekst: "Eg er ^Ivar frå ^Åsen, eg ^sit på din ^stein,", rim: "ein", svar: "god" },
-            { tekst: "Jeg er ^Ivar fra ^Aasen, jeg ^sidder paa din ^Steen,", rim: "en", svar: "dansk" },
-            { tekst: "Du er ^berre ein ^gamal og ^mosegrodd ^stein,", rim: "ein", svar: "frekk" },
-          ],
-          linje2: [
-            { tekst: "og eg ^lyttar til ^orda som ^bur i kvar ^grein.", rim: "ein" },
-            { tekst: "og jeg ^lytter til ^Ordene i ^hver en ^Gren.", rim: "en", dansk: true },
-            { tekst: "og eg ^lyttar til ^folket når ^kvelden ^kjem.", rim: "em" },
-          ],
-        },
-        {
-          hans: ["Kvart ^ord du skriv ^ned, det ^stivnar og ^døyr.", "Du ^fangar det ^inn, men du ^drep det. ^Høyr!"],
-          linje1: [
-            { tekst: "Eg ^skriv ikkje ^ned for å ^stengje dei ^inne,", rim: "inne", svar: "god" },
-            { tekst: "Jeg ^skriver det ^ned, for det ^staar jo i ^Bogen,", rim: "ogen", svar: "dansk" },
-            { tekst: "Eg ^skriv det eg ^vil, og det ^bryr meg så ^lite,", rim: "ite", svar: "frekk" },
-          ],
-          linje2: [
-            { tekst: "men ^for at dei ^andre skal ^høyre og ^finne.", rim: "inne" },
-            { tekst: "men ^for at de ^andre skal ^høre og ^finde.", rim: "inde", dansk: true },
-            { tekst: "men ^for at dei ^andre skal ^lese og for^stå.", rim: "å" },
-          ],
-        },
-        {
-          hans: ["Og ^kven skal då ^hugse meg, ^gamal og ^grå,", "når ^ingen i ^bygda vil ^lytte meir ^på?"],
-          linje1: [
-            { tekst: "Du ^lever i ^songen og ^kvar einaste ^draum,", rim: "aum", svar: "god" },
-            { tekst: "Du ^lever i ^Sangen og ^hver eneste ^Drøm,", rim: "øm", svar: "dansk" },
-            { tekst: "Eg har ^viktigare ^ting enn ein ^gamal ^draum,", rim: "aum", svar: "frekk" },
-          ],
-          linje2: [
-            { tekst: "som ^renn gjennom ^bygda så ^fritt som ein ^straum.", rim: "aum" },
-            { tekst: "som ^rinder gjennem ^Bygden saa ^frit som en ^Strøm.", rim: "øm", dansk: true },
-            { tekst: "som ^renn gjennom ^bygda så ^fritt som ei ^elv.", rim: "elv" },
-          ],
-        },
+      hol: {
+        stein: { ord: "stein", rett: ["stein", "stæin"], rimPaa: "bein" },
+        draum: { ord: "draum", rett: ["draum"], rimPaa: "straum" },
+      },
+      verknad: { vern: 4, lækjeProsent: 50 },
+      tekst: "Vern i fire rundar og lækjing for heile partiet.",
+    },
+    tungestevet: {
+      namn: "Tungestevet", kjelde: "Huldra", kapittel: 2,
+      liner: [
+        "Det ^låg under ^tele, det ^låg i eit [minne],",
+        "men ^den som vil ^lytte, kan ^grave og ^finne.",
+        "Det ^bur i ei ^vogge, det ^bur på ei [tunga]",
+        "og ^vaknar når ^mødrene ^syng for dei ^unga.",
       ],
+      hol: {
+        minne: { ord: "minne", rett: ["minne"], rimPaa: "finne" },
+        tunga: { ord: "tunga", rett: ["tunga"], rimPaa: "unga" },
+      },
+      verknad: { skade: 75, alle: true, mot: ["blekk"] },
+      tekst: "Eit stort åtak på alle fiendane, sterkast mot blekk. Hola krev nøkkelord frå kapittel 2.",
     },
   };
 
   /* ---------- Manus ---------- */
   const harOrd = id => st => !!st.ord[id];
   const talOrd = st => Object.keys(st.ord).length;
-  // Haugbonden får namnet sitt att (rett svar eller vunnen stevjing).
+  // Haugbonden får namnet sitt att og lærer Ivar Steinstevet.
   const HAUG_NAMN = [
     { s: "Haugbonden", t: "Du må ⟪høyre⟫ etter, gut. Det er heile kunsta. Eg har høyrt på folket her i tusen år." },
     { lytt: ["hoyra", "høyre"] },
     { s: "Haugbonden", t: "No er eg ⟪laus⟫ frå gløymska. Sauene kan gå forbi haugen att." },
     { lytt: ["laus", "laus"] },
     { flagg: "haug" }, { fjern: "@" },
+    { s: "Haugbonden", t: "Og så skal du få eit stev. Eg har kvede det over denne haugen sidan før kyrkja vart bygd." },
+    { stev: "steinstevet" },
     { dersom: st => st.flagg.huldra_med && !st.flagg.huldra_auga, da: [
       { s: "Huldra", t: "Du gav han namnet att. Då skal du få eit ord av meg òg. Eg ser med ⟪auga⟫ det ingen andre ser." },
       { tilbod: ["auga", "auga"] }, { flagg: "huldra_auga" },
@@ -588,16 +574,11 @@ window.RPGData = (function () {
   ];
   const HAUG_FEIL = [
     { s: "Vetten", t: "NEI!" },
-    { stevjing: "haugbonden" },
-    { dersom: st => st.flagg["stev:haugbonden"], da: [
-      { s: "Haugbonden", t: "Haugbonden … Ja. No hugsar eg det. Ein som kveder slik, må eg gi namnet mitt." },
-      ...HAUG_NAMN,
-    ], elles: [
-      { s: "Haugbonden", t: "Ha! Kvedinga di er like tunn som blekket ditt. Då får vi slåst!" },
-      { kamp: ["haugbonden"], boss: 1 },
-      { s: "Haugbonden", t: "Haugbonden … Det var namnet mitt. Du må ⟪høyre⟫ betre etter, gut." },
-      { lytt: ["hoyra", "høyre"] }, { flagg: "haug" }, { fjern: "@" },
-    ] },
+    { kamp: ["haugbonden"], boss: 1 },
+    { s: "Haugbonden", t: "Haugbonden … Det var namnet mitt. Du må ⟪høyre⟫ betre etter, gut." },
+    { lytt: ["hoyra", "høyre"] }, { flagg: "haug" }, { fjern: "@" },
+    { s: "Haugbonden", t: "Du slost godt. Eit stev skal du få likevel." },
+    { stev: "steinstevet" },
   ];
   const MANUS = {
     start: [
@@ -782,6 +763,8 @@ window.RPGData = (function () {
       { tilbod: ["snjo", "snjo"] },
       { s: "Huldra", t: "Blekket kveler alt som lever. Eg går med deg eit stykke. Men ikkje skriv ned alt eg seier." },
       { parti: "huldra" }, { flagg: "huldra_med" }, { fjern: "%" },
+      { s: "Huldra", t: "Eg kan eit stev om det gamle målet. Men to av orda i det har eg gløymt. Dei ligg djupare enn det nokon i bygda kan hugse." },
+      { stev: "tungestevet" },
     ],
     haugbonde: [
       { t: "Ein gråbleik vette står framfor haugen. Mose gror på hatten hans, og auga lyser som is." },
@@ -832,5 +815,5 @@ window.RPGData = (function () {
   // Første gong Ivar går ut, kjem den framande bort til han.
   MANUS.ut_forste = [{ dersom: st => !st.flagg.framande1, da: MANUS.framande }];
 
-  return { FAMILIAR, ORD, U, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, KAPITTEL, STEV, MANUS };
+  return { FAMILIAR, ORD, U, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, KAPITTEL, STEVGALDR, MANUS };
 })();
