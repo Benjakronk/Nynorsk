@@ -198,8 +198,12 @@ window.Pikslar = (function () {
     "R": (g, t, v) => {
       const r = R_.torv; px(g, 0, 0, r[2], S, S);
       for (let y = 0; y < 13; y++) for (let x = 0; x < S; x++) { const h = hash(x + v * 16, y, 71); if (h < 0.12) px(g, x, y, r[1]); else if (h > 0.9) px(g, x, y, r[3]); else if (h > 0.87) px(g, x, y, r[4]); }
-      px(g, 0, 13, R_.stamme[3], S, 1); px(g, 0, 14, R_.stamme[1], S, 1); px(g, 0, 15, R_.stamme[0], S, 1);
     },
+    // Øvste rad av eit torvtak: mønet, med lys kant og lengre gras
+    "Rt": (g, t, v) => { FLIS.R(g, t, v); const r = R_.torv; px(g, 0, 0, r[4], S, 1); px(g, 0, 1, r[3], S, 1); for (let x = 1; x < S; x += 3) { px(g, x, 2, r[4]); px(g, x + 1, 0, r[1]); } },
+    // Nedste rad: takskjegget med never og tømmerende
+    "Rb": (g, t, v) => { FLIS.R(g, t, v); const r = R_.torv; px(g, 0, 10, r[1], S, 1); for (let x = 0; x < S; x += 2) px(g, x, 11, r[hash(x, v, 151) > 0.5 ? 1 : 0]); px(g, 0, 12, R_.stamme[4], S, 1); px(g, 0, 13, R_.stamme[3], S, 1); px(g, 0, 14, R_.stamme[1], S, 1); px(g, 0, 15, R_.stamme[0], S, 1); },
+    "Rtb": (g, t, v) => { FLIS.Rb(g, t, v); const r = R_.torv; px(g, 0, 0, r[4], S, 1); px(g, 0, 1, r[3], S, 1); },
     "r": g => {
       const r = R_.skifer; px(g, 0, 0, r[2], S, S);
       for (let y = 0; y < S; y += 4) { for (let x = (y / 4) % 2 ? 0 : 3; x < S; x += 6) { px(g, x, y, r[0], 1, 4); px(g, x + 1, y, r[3], 2, 1); } px(g, 0, y + 3, r[1], S, 1); }
@@ -270,6 +274,15 @@ window.Pikslar = (function () {
     },
     "L": (g, t) => {
       underGolv(g, t, 0);
+      if (golvNo === "." || golvNo === ",") {
+        // Ute: ei lykt på ein stolpe
+        const k = Math.floor(t / 300) % 2;
+        g.fillStyle = "rgba(248,216,64,0.22)"; g.beginPath(); g.arc(8, 4, 6 + k, 0, Math.PI * 2); g.fill();
+        const R = Rutenett(16, 16).rect("s", 7, 6, 2, 10).rect("l", 5, 1, 6, 6).rect("t", 4, 0, 8, 1);
+        g.drawImage(mal(R, { s: "#6a4428", l: { fast: "#f8d840" }, t: "#2a2838" }), 0, 0);
+        px(g, 6, 2, k ? "#fff8d0" : "#f8e890", 4, 4); px(g, 7, 2, "#3a3050", 1, 4); px(g, 5, 4, "#3a3050", 6, 1);
+        return;
+      }
       const k = Math.floor(t / 300) % 2;
       g.fillStyle = "rgba(248,216,64,0.2)"; g.beginPath(); g.arc(8, 5, 6 + k, 0, Math.PI * 2); g.fill();
       const R = Rutenett(16, 16).rect("m", 7, 6, 2, 7).form("m", [[13, 5, 10], [14, 4, 11]]).rect("l", 7, 4, 2, 2);
@@ -339,10 +352,11 @@ window.Pikslar = (function () {
 
   const FAST = new Set(["#", "t", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "X", "c", "f", "z", "G", "e", "a", "n", " "]);
   const ANIM = new Set(["~", "L", "f", "n", "y"]);
+  const VARIANT_EKSTRA = new Set(["Rt", "Rb", "Rtb"]);
   const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t"]);
   const cache = new Map();
   function flis(teikn, t = 0, x = 0, y = 0, golv = "P") {
-    const v = VARIANT.has(teikn) ? Math.floor(hash(x, y, 7) * 4) : 0;
+    const v = VARIANT.has(teikn) || VARIANT_EKSTRA.has(teikn) ? Math.floor(hash(x, y, 7) * 4) : 0;
     const gl = "LnKkzb".includes(teikn) ? golv : "";
     const nokkel = `${teikn}${gl}:${v}:${ANIM.has(teikn) ? Math.floor(t / 150) % 16 : 0}`;
     if (cache.has(nokkel)) return cache.get(nokkel);
@@ -358,6 +372,38 @@ window.Pikslar = (function () {
     const k = "topp:" + teikn;
     if (cache.has(k)) return cache.get(k);
     const c = lerret(S); c.getContext("2d").drawImage(treBilete(teikn), 0, 0);
+    cache.set(k, c);
+    return c;
+  }
+
+  /* ---------- Kantar mellom fliser ----------
+     Gras veks inn over vegen og sanda, og vatnet får strandkant med skum.
+     Motoren teiknar kantane oppå flisa, på sidene der naboen er av eit anna slag. */
+  const KLASSE = { ".": "gras", ",": "gras", '"': "gras", "o": "gras", "h": "gras", "x": "gras", "|": "gras", "j": "gras", "#": "gras", "t": "gras", "=": "veg", "_": "sand", "~": "vatn" };
+  const klasse = teikn => KLASSE[teikn] || null;
+  function kant(type, side, v) {
+    const k = `kant:${type}:${side}:${v}`;
+    if (cache.has(k)) return cache.get(k);
+    const c = lerret(S), g = c.getContext("2d");
+    // Teikn alltid som om kanten er øvst, og roter etterpå.
+    const t = lerret(S), tg = t.getContext("2d");
+    if (type === "gras") {
+      const r = R_.gras;
+      for (let x = 0; x < S; x++) {
+        const d = 1 + Math.floor(hash(x, v, 131) * 2.4) + (x % 5 === 2 ? 1 : 0);
+        px(tg, x, 0, r[2], 1, d); px(tg, x, d - 1, r[1]);
+        if (hash(x, v, 132) > 0.7) { px(tg, x, d, r[1]); px(tg, x, d - 1, r[3]); }
+        if (hash(x, v, 133) > 0.86) px(tg, x, d + 1, r[1]);
+      }
+    } else if (type === "strand") {
+      const r = R_.vatn;
+      px(tg, 0, 0, "#1a2a44", S, 1); px(tg, 0, 1, r[0], S, 1);
+      for (let x = 0; x < S; x++) {
+        if (hash(x, v, 141) > 0.35) px(tg, x, 2, r[4]);
+        if (hash(x, v, 142) > 0.75) px(tg, x, 3, r[3]);
+      }
+    }
+    g.translate(8, 8); g.rotate({ n: 0, e: Math.PI / 2, s: Math.PI, w: -Math.PI / 2 }[side]); g.drawImage(t, -8, -8);
     cache.set(k, c);
     return c;
   }
@@ -576,5 +622,5 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, FAST, figur, fiende, lerret, ramp, blend, RAMP };
+  return { S, FW, FH, flis, topp, kant, klasse, FAST, figur, fiende, lerret, ramp, blend, RAMP };
 })();

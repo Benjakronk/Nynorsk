@@ -1,6 +1,10 @@
 /* «Aasen: Språkvandringa» (spel.html): pikselskjerm med vindauge i stil med 16-bits
    Final Fantasy-spela: blå gradient, dobbel kvit og grå kant, kvit tekst. */
 
+/* Pikselskrift: Pixelify Sans (SIL Open Font License, fonts/OFL-PixelifySans.txt) */
+@font-face { font-family: "Pixelify Sans"; src: url("../fonts/pixelify-sans-latin.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+.rpg-skjerm, .rpg-skjerm * { font-family: "Pixelify Sans", "Inter", system-ui, sans-serif !important; letter-spacing: .02em; }
+
 body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 100dvh; overflow: hidden; background: #0e0c12; }
 .rpg-side .topbar { flex: none; }
 .rpg-main { flex: 1; min-height: 0; display: flex; flex-direction: column; background: #0e0c12; }
@@ -46,6 +50,13 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 }
 .rpg-tale[hidden] { display: none; }
 .rpg-tale-namn { margin: 0 0 4px; font-weight: 700; color: #ffe39a; font-size: 15px; }
+.rpg-tale-portrett { display: none; }
+.rpg-tale.med-portrett { padding-left: 150px; min-height: 140px; }
+.rpg-tale.med-portrett .rpg-tale-portrett {
+  display: block; position: absolute; left: 14px; top: 12px; width: 120px; height: 120px;
+  image-rendering: pixelated; border: 3px solid #f0f0f8; border-radius: 4px; background: #141a52;
+  box-shadow: inset 0 0 0 2px #7880a8;
+}
 .rpg-tale-namn[hidden] { display: none; }
 .rpg-tale-tekst { margin: 0; font-size: 18px; line-height: 1.45; }
 .rpg-ord { color: #ffe39a; font-weight: 700; text-decoration: underline dotted rgba(255, 227, 154, .6); text-underline-offset: 3px; }
@@ -119,7 +130,7 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 .kp-mp { color: #9fd0ff; }
 .kp-atb { height: 8px; border-radius: 99px; background: #0e1540; border: 1px solid #8b93c9; overflow: hidden; }
 .kp-atb i { display: block; height: 100%; background: linear-gradient(90deg, #f4c430, #ffe39a); }
-.kamp-meny { position: absolute; left: 12px; bottom: 124px; min-width: 230px; max-width: calc(100% - 24px); max-height: calc(100% - 150px); display: flex; flex-direction: column; padding: 8px 6px; overflow: auto; }
+.kamp-meny { position: absolute; left: 12px; bottom: 12px; min-width: 230px; max-width: calc(100% - 24px); max-height: calc(100% - 150px); display: flex; flex-direction: column; padding: 8px 6px; overflow: auto; }
 .kamp-meny[hidden] { display: none; }
 .km-alt { display: grid; }
 .kamp-meny.brei .km-alt { grid-template-columns: 1fr 1fr; column-gap: 8px; }

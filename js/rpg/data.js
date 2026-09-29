@@ -139,10 +139,15 @@ window.RPGData = (function () {
     bestefar: { hud: "#dcb898", har: "#bcbccc", frisyre: "skalle", jakke: "#5a4a3a", bukse: "#3a3a44", skjegg: "#bcbccc" },
   };
 
+  /* ---------- Portrett i samtaleboksen ----------
+     Namnet på den som talar -> fila bilete/spel/portrett/<id>.png. Portretta
+     blir laga med tools/pikselkunst (sjå STILGUIDE.md der). */
+  const PORTRETT = { "Ivar": "ivar", "Storebror": "storebror", "Syster": "syster", "Granne": "granne", "Budeia": "budeia", "Ein framand": "framande", "Den framande": "framande" };
+
   /* ---------- Karta ---------- */
   const KART = {
     "asen-stova": {
-      namn: "Stova på Åsen", golv: "P", inne: true, bakgrunn: "inne",
+      namn: "Stova på Åsen", stemning: "inne", golv: "P", inne: true, bakgrunn: "inne",
       rader: [
         "XXXXXXXXXXXX",
         "XfPPPBBPPbbX",
@@ -161,7 +166,7 @@ window.RPGData = (function () {
       ],
     },
     asen: {
-      namn: "Åsen i Hovdebygda", golv: ".", bakgrunn: "tun",
+      namn: "Åsen i Hovdebygda", stemning: "morgon", golv: ".", bakgrunn: "tun",
       rader: [
         "#############4##############",
         "#..o.#....t..=............o#",
@@ -194,7 +199,7 @@ window.RPGData = (function () {
       inngang: [{ merke: "3", manus: "ut_forste" }],
     },
     utmarka: {
-      namn: "Utmarka", golv: ",", bakgrunn: "utmark",
+      namn: "Utmarka", stemning: "kveld", golv: ",", bakgrunn: "utmark",
       fiendar: { lag: [["vette"], ["irrbloss"], ["vette", "irrbloss"], ["vette", "vette"]] },
       rader: [
         "################################",
@@ -232,7 +237,7 @@ window.RPGData = (function () {
       ],
     },
     bygda: {
-      namn: "Hovdebygda", golv: ".", bakgrunn: "tun",
+      namn: "Hovdebygda", stemning: "morgon", golv: ".", bakgrunn: "tun",
       rader: [
         "############################################",
         "#.......jjjjjjjjjjjjjjj....................#",
@@ -275,7 +280,7 @@ window.RPGData = (function () {
       ],
     },
     kyrkja: {
-      namn: "Hovdekyrkja", golv: "g", inne: true, fristad: true, bakgrunn: "kyrkje",
+      namn: "Hovdekyrkja", stemning: "inne", golv: "g", inne: true, fristad: true, bakgrunn: "kyrkje",
       rader: [
         "GGGGGGGGGGGGG",
         "GgggLaaaLgggG",
@@ -296,7 +301,7 @@ window.RPGData = (function () {
       ],
     },
     prestegarden: {
-      namn: "Prestegarden", golv: "P", inne: true, bakgrunn: "inne",
+      namn: "Prestegarden", stemning: "inne", golv: "P", inne: true, bakgrunn: "inne",
       rader: [
         "XXXXXXXXXXXEXX",
         "XBBBPPkkPPP2PX",
@@ -315,7 +320,7 @@ window.RPGData = (function () {
       folk: [{ merke: "@", u: "tenestejente", namn: "Tenestejenta", tale: "tenestejente" }],
     },
     kontoret: {
-      namn: "Kontoret i prestegarden", golv: "P", inne: true, bakgrunn: "arkiv",
+      namn: "Kontoret i prestegarden", stemning: "inne", golv: "P", inne: true, bakgrunn: "arkiv",
       fiendar: { alle: true, lag: [["blekkdrope", "blekkdrope"], ["blekkflekk"], ["fjorpennen"], ["blekkdrope", "fjorpennen"]] },
       rader: [
         "XXXXXXXXXXXXXXXXXXXEXX",
@@ -343,7 +348,7 @@ window.RPGData = (function () {
       ],
     },
     arkivet: {
-      namn: "Arkivet", golv: "g", inne: true, bakgrunn: "arkiv",
+      namn: "Arkivet", stemning: "mork", golv: "g", inne: true, bakgrunn: "arkiv",
       fiendar: { alle: true, lag: [["protokollen"], ["stempelet"], ["fjorpennen", "blekkflekk"], ["blekkdrope", "protokollen"]] },
       rader: [
         "cccccccccccccccccccc",
@@ -365,7 +370,7 @@ window.RPGData = (function () {
       inngang: [{ merke: "5", manus: "blekklatten" }],
     },
     "nedre-hovde": {
-      namn: "Stova på Nedre Hovde", golv: "P", inne: true, bakgrunn: "inne",
+      namn: "Stova på Nedre Hovde", stemning: "inne", golv: "P", inne: true, bakgrunn: "inne",
       rader: [
         "XXXXXXXXXXXX",
         "XfPPPBPPPbbX",
@@ -384,7 +389,7 @@ window.RPGData = (function () {
       ],
     },
     vegen: {
-      namn: "Vegen til Ekset", golv: ",", bakgrunn: "utmark",
+      namn: "Vegen til Ekset", stemning: "kveld", golv: ",", bakgrunn: "utmark",
       fiendar: { lag: [["blekkdrope"], ["blekkdrope", "blekkdrope"], ["vette"], ["blekkflekk"]] },
       rader: [
         "############################",
@@ -412,7 +417,7 @@ window.RPGData = (function () {
       folk: [{ merke: "@", u: "fiskar", namn: "Fiskar", tale: "fiskar" }],
     },
     ekset: {
-      namn: "Ekset i Volda", golv: ".", bakgrunn: "tun",
+      namn: "Ekset i Volda", stemning: "morgon", golv: ".", bakgrunn: "tun",
       rader: [
         "##########################",
         "#......RRRRRR.......RRRR.#",
@@ -438,7 +443,7 @@ window.RPGData = (function () {
       ],
     },
     "ekset-stova": {
-      namn: "Boksamlinga på Ekset", golv: "P", inne: true, bakgrunn: "inne",
+      namn: "Boksamlinga på Ekset", stemning: "inne", golv: "P", inne: true, bakgrunn: "inne",
       rader: [
         "XXXXXXXXXXXXXX",
         "XBBBBBPPBBBBBX",
@@ -815,5 +820,5 @@ window.RPGData = (function () {
   // Første gong Ivar går ut, kjem den framande bort til han.
   MANUS.ut_forste = [{ dersom: st => !st.flagg.framande1, da: MANUS.framande }];
 
-  return { FAMILIAR, ORD, U, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, KAPITTEL, STEVGALDR, MANUS };
+  return { FAMILIAR, ORD, U, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, KAPITTEL, STEVGALDR, PORTRETT, MANUS };
 })();

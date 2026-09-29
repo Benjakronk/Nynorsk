@@ -55,3 +55,11 @@ favicon.svg, favicon.ico, favicon-16.png, favicon-32.png, apple-touch-icon.png, 
 ## Spelet (bilete/spel/)
 
 blekklatten.png er Blekklatten, fienden i «Aasen: Språkvandringa», teikna som pikselkunst og levert av kurseigaren (september 2026). Fila er skalert ned til 80 × 72 pikslar, der kvar spelpiksel er éin piksel. Resten av grafikken i spelet blir teikna i kode (js/rpg/pikslar.js).
+
+Blekklatten er laga av Claude Opus 5.5.
+
+portrett/ivar.png, storebror.png, syster.png, granne.png, budeia.png og framande.png er portrett til samtaleboksen, laga med verktøyet i tools/pikselkunst/ (kjeldene er .pix-filer i tools/pikselkunst/kjelder/).
+
+## Skrift i spelet (fonts/)
+
+pixelify-sans-latin.woff2 er Pixelify Sans (Copyright 2021 The Pixelify Sans Project Authors), lisensiert under SIL Open Font License 1.1. Lisensteksten ligg i fonts/OFL-PixelifySans.txt.

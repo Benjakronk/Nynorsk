@@ -179,6 +179,85 @@ window.Motor = (function () {
   function fjernFolk(merke) { if (kart) kart.folk = kart.folk.filter(f => f.merke !== merke); }
 
   /* ---------- Teikning ---------- */
+  const KANTSIDER = [["n", 0, -1], ["s", 0, 1], ["w", -1, 0], ["e", 1, 0]];
+
+  /* ---------- Stemning: lys og skugge over kartet ----------
+     kart.def.stemning: «morgon» (varmt lys og skyskuggar), «kveld», «inne»
+     (mørkare rom med varme ljoskjelder), «mork» (berre ljos rundt Ivar og lampene). */
+  const morke = document.createElement("canvas"); morke.width = VW * S; morke.height = VH * S;
+  const mg = morke.getContext("2d");
+  function ljosPunkt(ctx, x, y, r, a) {
+    const gr = ctx.createRadialGradient(x, y, 0, x, y, r);
+    gr.addColorStop(0, `rgba(0,0,0,${a})`); gr.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = gr; ctx.fillRect(x - r, y - r, r * 2, r * 2);
+  }
+  function glod(x, y, r, farge, a) {
+    const gr = g.createRadialGradient(x, y, 0, x, y, r);
+    gr.addColorStop(0, `rgba(${farge},${a})`); gr.addColorStop(1, `rgba(${farge},0)`);
+    g.fillStyle = gr; g.fillRect(x - r, y - r, r * 2, r * 2);
+  }
+  function stemning(no, ox, oy) {
+    const st = kart.def.stemning;
+    if (!st) return;
+    const W = VW * S, Hh = VH * S;
+    if (st === "morgon" || st === "kveld") {
+      const gr = g.createLinearGradient(0, 0, 0, Hh);
+      if (st === "morgon") { gr.addColorStop(0, "rgba(255,222,160,0.22)"); gr.addColorStop(0.5, "rgba(255,210,150,0.06)"); gr.addColorStop(1, "rgba(60,40,110,0.14)"); }
+      else { gr.addColorStop(0, "rgba(120,60,140,0.28)"); gr.addColorStop(1, "rgba(30,20,70,0.30)"); }
+      g.fillStyle = gr; g.fillRect(0, 0, W, Hh);
+      // Skyskuggar som driv over landskapet
+      const kw = kart.w * S + 240;
+      for (let i = 0; i < 3; i++) {
+        const cx = ((no * 0.008 + i * 311) % kw) - 120 + ox * S, cy = ((i * 97 + no * 0.003) % (kart.h * S + 120)) - 60 + oy * S;
+        const gr2 = g.createRadialGradient(cx, cy, 4, cx, cy, 70);
+        gr2.addColorStop(0, "rgba(20,24,60,0.2)"); gr2.addColorStop(1, "rgba(20,24,60,0)");
+        g.fillStyle = gr2; g.fillRect(cx - 70, cy - 70, 140, 140);
+      }
+    } else {
+      const djup = st === "mork" ? 0.8 : st === "inne" ? 0.34 : 0.2;
+      mg.globalCompositeOperation = "source-over"; mg.clearRect(0, 0, W, Hh);
+      mg.fillStyle = `rgba(14,8,28,${djup})`; mg.fillRect(0, 0, W, Hh);
+      mg.globalCompositeOperation = "destination-out";
+      const ljos = [];
+      if (st === "mork") ljos.push([(spelar.fx + ox) * S + 8, (spelar.fy + oy) * S + 4, 58 + Math.sin(no / 300) * 2, 1, null]);
+      for (let y = 0; y < kart.h; y++) for (let x = 0; x < kart.w; x++) {
+        const c = kart.fliser[y][x];
+        if (c === "f" || c === "L") ljos.push([(x + ox) * S + 8, (y + oy) * S + (c === "L" ? 3 : 10), (c === "f" ? 54 : 40) + Math.sin(no / 90 + x) * 2.5, 1, c === "f" ? "255,140,50" : "255,210,110"]);
+      }
+      for (const [x, y, r, a] of ljos) ljosPunkt(mg, x, y, r, a);
+      mg.globalCompositeOperation = "source-over";
+      g.drawImage(morke, 0, 0);
+      g.globalCompositeOperation = "lighter";
+      for (const [x, y, r, , farge] of ljos) if (farge) glod(x, y, r * 0.7, farge, 0.16);
+      g.globalCompositeOperation = "source-over";
+    }
+    // Vignett
+    const v = g.createRadialGradient(W / 2, Hh / 2, Hh * 0.45, W / 2, Hh / 2, W * 0.62);
+    v.addColorStop(0, "rgba(10,5,20,0)"); v.addColorStop(1, "rgba(10,5,20,0.32)");
+    g.fillStyle = v; g.fillRect(0, 0, W, Hh);
+  }
+
+  /* Overgang inn i kamp: kvit blink, så blir biletet grovare og mørknar. */
+  function overgang() {
+    return new Promise(res => {
+      const kopi = document.createElement("canvas"); kopi.width = lerret.width; kopi.height = lerret.height;
+      kopi.getContext("2d").drawImage(lerret, 0, 0);
+      const liten = document.createElement("canvas"), lg = liten.getContext("2d");
+      const t0 = performance.now(), dur = 620;
+      const steg = () => {
+        const u = Math.min(1, (performance.now() - t0) / dur);
+        const blokk = Math.max(1, Math.round(1 + u * u * 24));
+        liten.width = Math.ceil(lerret.width / blokk); liten.height = Math.ceil(lerret.height / blokk);
+        lg.imageSmoothingEnabled = false; lg.drawImage(kopi, 0, 0, liten.width, liten.height);
+        g.imageSmoothingEnabled = false; g.drawImage(liten, 0, 0, liten.width * blokk, liten.height * blokk);
+        g.fillStyle = u < 0.12 ? `rgba(255,255,255,${0.7 - u * 5})` : `rgba(10,5,20,${Math.min(1, (u - 0.2) * 1.3)})`;
+        g.fillRect(0, 0, lerret.width, lerret.height);
+        if (u < 1) requestAnimationFrame(steg); else res();
+      };
+      requestAnimationFrame(steg);
+    });
+  }
+
   function teikn(no) {
     if (!kart) return;
     const kx = Math.max(0, Math.min(kart.w - VW, spelar.fx - (VW - 1) / 2));
@@ -192,7 +271,19 @@ window.Motor = (function () {
       // Veggar med vegg eller dør under seg er sidevegger: dei blir teikna ovanfrå.
       const under = y + 1 < kart.h ? kart.fliser[y + 1][x] : null;
       const topp = "XcG".includes(c) && (under === null || "XcGE".includes(under));
-      g.drawImage(Pikslar.flis(topp ? c + "t" : c, no, x, y, kart.def.golv), sx, sy);
+      let fk = topp ? c + "t" : c;
+      if (c === "R") { const over = y > 0 && kart.fliser[y - 1][x] === "R"; fk = !over && under !== "R" ? "Rtb" : !over ? "Rt" : under !== "R" ? "Rb" : "R"; }
+      g.drawImage(Pikslar.flis(fk, no, x, y, kart.def.golv), sx, sy);
+      // Kantar: gras over veg og sand, strand langs vatnet
+      const kl = Pikslar.klasse(c);
+      if (kl === "veg" || kl === "sand" || kl === "vatn") {
+        for (const [side, dx, dy] of KANTSIDER) {
+          const n = kart.fliser[y + dy] && kart.fliser[y + dy][x + dx];
+          if (n == null) continue;
+          const nk = Pikslar.klasse(n);
+          if (kl === "vatn" ? (n !== "~" && n !== "Q") : nk === "gras") g.drawImage(Pikslar.kant(kl === "vatn" ? "strand" : "gras", side, (x * 7 + y * 3) % 4), sx, sy);
+        }
+      }
       const k = kisteVed(x, y);
       if (k && k.gøymd) g.drawImage(Pikslar.flis("K", 0, 0, 0, kart.def.golv), sx, sy);
       if (k && krokar.opna && krokar.opna(k)) { g.fillStyle = "rgba(10,5,20,.45)"; g.fillRect(sx + 2, sy + 4, 12, 3); }
@@ -214,10 +305,17 @@ window.Motor = (function () {
       const t = Pikslar.topp(kart.fliser[y][x]);
       if (t) g.drawImage(t, Math.round((x + ox) * S), Math.round((y - 1 + oy) * S));
     }
+    stemning(no, ox, oy);
   }
 
   /* ---------- Samtalar og forteljing ---------- */
-  const boks = $("rpg-tale"), boksNamn = $("rpg-tale-namn"), boksTekst = $("rpg-tale-tekst");
+  const boks = $("rpg-tale"), boksNamn = $("rpg-tale-namn"), boksTekst = $("rpg-tale-tekst"), boksPortrett = $("rpg-tale-portrett");
+  // Portrett: bilete/spel/portrett/<id>.png, der id kjem frå RPGData.PORTRETT[namn].
+  function visPortrett(namn) {
+    const id = namn && (RPGData.PORTRETT || {})[namn];
+    boks.classList.toggle("med-portrett", !!id);
+    if (id) boksPortrett.src = `bilete/spel/portrett/${id}.png`;
+  }
   // ⟪ord⟫ blir utheva. Skrivemaskinteksten viser dei første n teikna.
   function taleHtml(tekst, n) {
     let ut = "", i = 0, inne = false;
@@ -234,6 +332,7 @@ window.Motor = (function () {
       boks.hidden = false;
       boksNamn.textContent = namn || "";
       boksNamn.hidden = !namn;
+      visPortrett(namn);
       boksTekst.textContent = "";
       const lengd = [...tekst.replace(/[⟪⟫]/g, "")].length;
       let i = 0, ferdig = false;
@@ -256,7 +355,7 @@ window.Motor = (function () {
   function val(tekst, alt, namn) {
     return new Promise(res => {
       boks.hidden = false;
-      boksNamn.textContent = namn || ""; boksNamn.hidden = !namn;
+      boksNamn.textContent = namn || ""; boksNamn.hidden = !namn; visPortrett(namn);
       boksTekst.innerHTML = `${E(tekst)}<span class="rpg-val">${alt.map((a, i) => `<button type="button" data-i="${i}">${E(a)}</button>`).join("")}</span>`;
       boks.classList.add("klar");
       let valt = 0;
@@ -304,7 +403,7 @@ window.Motor = (function () {
   window.addEventListener("resize", tilpass);
 
   return {
-    VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk,
+    VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk, overgang,
     pause(p) { pausa = p; if (p) halde.clear(); },
     get kart() { return kart; }, get spelar() { return spelar; },
     settSpelar(sprite) { spelar.sprite = sprite; },

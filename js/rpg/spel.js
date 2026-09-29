@@ -141,6 +141,7 @@
       const s = stat(m);
       return Object.assign({ ref: m, namn: D.PARTI[m.id].namn, sprite: sprite(m.id), hp: m.hp, rost: m.rost, galdr: m.id === "ivar", evner: D.PARTI[m.id].evner, ting: () => st.ting, brukTing: id => { st.ting[id]--; } }, s);
     });
+    await Motor.overgang();
     const bakgrunn = (Motor.kart && Motor.kart.def.bakgrunn) || "tun";
     const r = await Kamp.start({
       fiendar: lag, boss, parti, gaaver: gv, bakgrunn, ord: st.ord, stev: st.stev, startKved, rettleiing,

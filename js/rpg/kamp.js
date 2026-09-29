@@ -165,8 +165,63 @@ window.Kamp = (function () {
         <span class="kp-mp">${m.rost}<small>/${m.maxrost}</small></span><span class="kp-atb"><i style="width:${Math.min(100, m.atb)}%"></i></span>${m.galdr && stev.length ? `<span class="kp-kved${m.kved >= 100 ? " full" : ""}" title="Kvedemålar"><i style="width:${m.kved}%"></i></span>` : ""}</div>`).join("");
     }
 
+    /* Effektar: ord som flyg, gneistar, ringar, blekksprut, notar og skjelving.
+       Kvar effekt har ein type, ein starttid og ei varigheit. */
+    const fx = [];
+    let skjelvTil = 0, skjelvKraft = 0, blits = null;
+    const leggFx = f => { f.t0 = performance.now() + (f.forseinking || 0); f.dur = f.dur || 600; if (f.n) f.del = Array.from({ length: f.n }, (_, i) => ({ v: (i / f.n) * Math.PI * 2 + rnd(-0.3, 0.3), fart: rnd(0.5, 1) })); fx.push(f); };
+    const skjelv = (ms, kraft = 2) => { skjelvTil = performance.now() + ms; skjelvKraft = kraft; };
+    const blink = (farge, ms = 140) => { blits = { farge, t0: performance.now(), dur: ms }; };
+    const midtFi = f => { const i = fi.indexOf(f), p = fiPos(i), h = Pikslar.fiende(f.d.bilete).height; return { x: p.x, y: p.y - h / 2 }; };
+    const midtPa = m => { const p = paPos(pa.indexOf(m)); return { x: p.x + 8, y: p.y + 12 }; };
+    const midt = v => v.fiende ? midtFi(v) : midtPa(v);
+    function teiknFx(no) {
+      for (let i = fx.length - 1; i >= 0; i--) {
+        const f = fx[i], u = (no - f.t0) / f.dur;
+        if (u < 0) continue;
+        if (u >= 1) { fx.splice(i, 1); if (f.etter) f.etter(); continue; }
+        g.save();
+        if (f.type === "ordkast") {
+          const x = f.fra.x + (f.til.x - f.fra.x) * u, y = f.fra.y + (f.til.y - f.fra.y) * u - Math.sin(u * Math.PI) * 18;
+          g.font = "bold 9px 'Pixelify Sans', monospace"; g.textAlign = "center";
+          for (let k = 3; k >= 0; k--) {
+            const uu = Math.max(0, u - k * 0.06), xx = f.fra.x + (f.til.x - f.fra.x) * uu, yy = f.fra.y + (f.til.y - f.fra.y) * uu - Math.sin(uu * Math.PI) * 18;
+            g.globalAlpha = k ? 0.25 / k : 1; g.fillStyle = "#0a0514"; g.fillText(f.tekst, xx + 1, yy + 1); g.fillStyle = f.farge; g.fillText(f.tekst, xx, yy);
+          }
+          void x; void y;
+        } else if (f.type === "brest") {
+          for (const d of f.del) {
+            const r = u * f.r * d.fart, x = Math.round(f.x + Math.cos(d.v) * r), y = Math.round(f.y + Math.sin(d.v) * r + (f.tyngd ? u * u * 20 : 0));
+            g.globalAlpha = 1 - u; g.fillStyle = f.farge; g.fillRect(x, y, u < 0.5 ? 2 : 1, u < 0.5 ? 2 : 1);
+          }
+        } else if (f.type === "ring") {
+          g.globalAlpha = 1 - u; g.strokeStyle = f.farge; g.lineWidth = 2;
+          g.beginPath(); g.ellipse(f.x, f.y, f.r0 + (f.r1 - f.r0) * u, (f.r0 + (f.r1 - f.r0) * u) * (f.flat || 1), 0, 0, Math.PI * 2); g.stroke();
+        } else if (f.type === "glitter") {
+          for (const d of f.del) {
+            const x = Math.round(f.x + Math.cos(d.v) * 10 * d.fart), y = Math.round(f.y + 8 - u * 26 * d.fart + Math.sin(d.v) * 4);
+            g.globalAlpha = Math.min(1, (1 - u) * 1.5); g.fillStyle = f.farge;
+            g.fillRect(x, y - 1, 1, 3); g.fillRect(x - 1, y, 3, 1);
+          }
+        } else if (f.type === "kutt") {
+          g.globalAlpha = 1 - u; g.strokeStyle = "#ffffff"; g.lineWidth = 1;
+          for (let k = -1; k <= 1; k++) { g.beginPath(); g.moveTo(f.x - 10 + k * 4, f.y - 10); g.lineTo(f.x - 10 + k * 4 + 20 * Math.min(1, u * 3), f.y - 10 + 20 * Math.min(1, u * 3)); g.stroke(); }
+        } else if (f.type === "noter") {
+          g.font = "bold 12px 'Pixelify Sans', monospace"; g.textAlign = "center";
+          for (let k = 0; k < 7; k++) {
+            const x = 300 - ((u * 340 + k * 48) % 340), y = 40 + Math.sin(u * 8 + k) * 12 + (k % 3) * 18;
+            g.globalAlpha = Math.min(1, (1 - u) * 2); g.fillStyle = "#0a0514"; g.fillText(k % 2 ? "♪" : "♫", x + 1, y + 1); g.fillStyle = "#f8d840"; g.fillText(k % 2 ? "♪" : "♫", x, y);
+          }
+        }
+        g.restore();
+      }
+      if (blits) { const u = (no - blits.t0) / blits.dur; if (u >= 1) blits = null; else { g.fillStyle = blits.farge.replace("A", String(0.55 * (1 - u))); g.fillRect(0, 0, 320, 192); } }
+    }
+
     /* Teikning */
     function teikn(no) {
+      g.save();
+      if (skjelvTil > no) g.translate(Math.round(rnd(-skjelvKraft, skjelvKraft)), Math.round(rnd(-skjelvKraft, skjelvKraft)));
       g.drawImage(bakgrunnBilete(bakgrunn), 0, 0);
       const skjelv = f => (f.blink > no ? Math.round(Math.sin(no / 25) * 2) : 0);
       fi.forEach((f, i) => {
@@ -174,7 +229,7 @@ window.Kamp = (function () {
         const p = fiPos(i), bilde = Pikslar.fiende(f.d.bilete);
         const alpha = f.hp <= 0 ? Math.max(0, 1 - (no - f.dod) / 600) : 1;
         if (f.hp <= 0 && alpha <= 0) f.borte = true;
-        const x = Math.round(p.x - bilde.width / 2 + (f.fram > no ? 8 : 0) + skjelv(f)), y = Math.round(p.y - bilde.height + (f.id === "irrbloss" ? Math.sin(no / 300) * 3 : 0));
+        const x = Math.round(p.x - bilde.width / 2 + (f.fram > no ? 8 : 0) + skjelv(f)), y = Math.round(p.y - bilde.height + (f.id === "irrbloss" ? Math.sin(no / 300) * 3 : f.hp > 0 ? Math.sin(no / 420 + i * 1.7) * 1.2 : 0));
         g.fillStyle = "rgba(10,5,20,.35)"; g.beginPath(); g.ellipse(p.x, p.y, bilde.width * 0.38, 4, 0, 0, Math.PI * 2); g.fill();
         g.globalAlpha = alpha;
         if (f.blink > no && Math.floor(no / 60) % 2) g.globalAlpha = 0.35 * alpha;
@@ -201,6 +256,8 @@ window.Kamp = (function () {
         g.fillStyle = "#0a0514"; for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) g.fillText(t.tekst, t.x + dx, t.y + hopp - u * 6 + dy);
         g.fillStyle = t.farge; g.fillText(t.tekst, t.x, t.y + hopp - u * 6);
       }
+      teiknFx(no);
+      g.restore();
       if (melding && !melding.hidden && no > meldingTid && !travel) melding.hidden = true;
     }
     const visTal = (mål, tekst, farge) => {
@@ -221,6 +278,12 @@ window.Kamp = (function () {
       til.blink = performance.now() + 400;
       if (til.hp <= 0 && til.fiende) { til.dod = performance.now(); paaVesen && paaVesen(til.id, true); }
       if (!til.fiende) kvedAuke(til, 12);
+      const m0 = midt(til);
+      if (til.fiende) {
+        leggFx({ type: "brest", x: m0.x, y: m0.y, farge: "#ffffff", r: 14, n: 10, dur: 380 });
+        if (til.hp <= 0) leggFx({ type: "brest", x: m0.x, y: m0.y, farge: til.d.slag === "blekk" ? "#5848a0" : "#c8ccd4", r: 30, n: 22, dur: 900, tyngd: true });
+      } else leggFx({ type: "kutt", x: m0.x, y: m0.y, dur: 260 });
+      if (s >= Math.max(12, til.maxhp * 0.2)) skjelv(260, 2);
       visTal(til, s, til.fiende ? "#fff" : "#ffb0a0");
       return s;
     }
@@ -254,6 +317,7 @@ window.Kamp = (function () {
         await vent(900);
       } else if (sp) {
         meld(sp.tekst, 1800);
+        blink("rgba(88,72,160,A)", 260); skjelv(400, 3);
         await vent(700);
         for (const m of sp.alle ? levande : [levande[Math.floor(Math.random() * levande.length)]]) skade(f, m, sp.faktor || 1);
         await vent(650);
@@ -288,6 +352,17 @@ window.Kamp = (function () {
       }
       const mult = formFaktor(id) * (fam.sterk ? (rett ? 1.5 : 0.45) : 1);
       m.fram = performance.now() + 300;
+      {
+        const fra = midtPa(m), mål = mal ? midt(mal) : v.lækje || v.vern ? { x: 250, y: 90 } : { x: 90, y: 80 };
+        leggFx({ type: "ordkast", fra, til: mål, tekst: o.aasen, farge: fam.farge, dur: 460 });
+        await vent(460);
+        const ber = rett ? 1 : 0.5;
+        if (v.vern) levandePa().forEach(p => { const c = midtPa(p); leggFx({ type: "ring", x: c.x, y: c.y, r0: 4, r1: 18, flat: 1.2, farge: "#f8d840", dur: 700 }); });
+        if (v.lækje) (v.alle ? levandePa() : [mal || m]).forEach(p => { const c = midtPa(p); leggFx({ type: "glitter", x: c.x, y: c.y, farge: "#9ff09f", n: 10, dur: 900 }); });
+        if (v.avslor) (v.avslor === "alle" ? levandeFi() : [mal]).filter(Boolean).forEach(f => { const c = midtFi(f); leggFx({ type: "ring", x: c.x, y: c.y, r0: 26, r1: 4, farge: "#7fd0f0", dur: 600 }); leggFx({ type: "ring", x: c.x, y: c.y, r0: 34, r1: 8, farge: "#7fd0f0", dur: 600, forseinking: 150 }); });
+        if (o.fam === "smaaord") leggFx({ type: "brest", x: mål.x, y: mål.y, farge: "#d8c8f8", r: 18, n: 12, dur: 500 });
+        if (v.skade) leggFx({ type: "brest", x: mål.x, y: mål.y, farge: fam.farge, r: 22 * ber, n: 16, dur: 600 });
+      }
       const passar = f => o.mot && o.mot.includes(f.d.slag);
       let tekst = rett ? `«${o.aasen}» ber krafta!` : "Galdren vart veik. Forma hadde mista lyden.";
       if (v.skade) {
@@ -338,6 +413,10 @@ window.Kamp = (function () {
         await vent(600);
         const { kraft } = await Stev.kved(id, { ord, gaaver });
         m.fram = performance.now() + 400;
+        leggFx({ type: "noter", dur: 1600 }); blink("rgba(248,216,64,A)", 320);
+        leggFx({ type: "ring", x: 160, y: 90, r0: 10, r1: 150, flat: 0.5, farge: "#f8d840", dur: 900 });
+        if (v.skade) skjelv(600, 3);
+        await vent(500);
         if (v.skade) for (const f of v.alle ? levandeFi() : [mal]) skade(m, f, (v.skade * kraft + m.atk) / (m.atk * 2.2) * (v.mot && v.mot.includes(f.d.slag) ? 1.6 : 1), { gjennom: true });
         if (v.lækjeProsent) levandePa().forEach(p => lækj(p, p.maxhp * v.lækjeProsent / 100 * kraft));
         if (v.vern) levandePa().forEach(p => { p.vern = Math.max(p.vern, Math.max(1, Math.round(v.vern * kraft))); visTal(p, "Vern", "#f8d840"); });
