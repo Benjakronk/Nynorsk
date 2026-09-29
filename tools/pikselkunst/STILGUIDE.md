@@ -69,6 +69,20 @@ Alt nytt skal kunne stå ved sida av han utan å skilje seg ut.
 - Landskap: bratte fjell med snø, fjord, bjørk og gran, lys frå låg sol.
 - Vettar og troll hos Kittelsen er ein del av landskapet: mose, stein og røter.
 
+## Natur og kyrkje
+
+- Tre, steinar og haugar er figurar som står på ei grasflis, med skugge på
+  bakken, og blir sorterte etter djupn saman med personane (`natur.py`).
+- Gran: smal og spiss, greinlag som heng ned med sagtakka underkant, mørk
+  blågrøn med lyse greinspissar på venstre side.
+- Bjørk: kvit, kroklete stamme med svarte merke, lett krone av lauvklumpar
+  i dempa gulgrønt, med mørkare klumpar innst for djupn.
+- Stein: grå med tydelege flater, ei sprekk, mose og lav på toppen.
+- Gravhaug: kuvla, mørk side mot sør, gras i tuster, steinar ved foten.
+- Kyrkja er ei kvit langkyrkje etter Vartdal kyrkje: ståande panel, høge
+  rundboga vindauge, skifertak, tårn midt framme med høgt, slankt spir og kors.
+- I utmarka er vanleg gras mørkt som villgraset, så det ikkje blir lyse flekkar.
+
 ## Sjekkliste før grafikken blir teken i bruk
 
 1. `pix.py sjekk` gir ingen merknader.

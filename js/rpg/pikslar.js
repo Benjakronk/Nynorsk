@@ -128,7 +128,13 @@ window.Pikslar = (function () {
   let golvNo = "P";
   const underGolv = (g, t, v) => (FLIS[golvNo] || FLIS.P)(g, t, v);
   const FLIS = {
-    ".": (g, t, v) => gras(g, v),
+    ".": (g, t, v) => {
+      // I utmarka (golv «,») er vanleg gras mørkt som villgraset, men lågt.
+      if (golvNo !== ",") return gras(g, v);
+      const r = R_.villgras; px(g, 0, 0, r[2], S, S);
+      for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) { const h = hash(x + v * 16, y, 23); if (h < 0.08) px(g, x, y, r[1]); else if (h > 0.94) px(g, x, y, r[3]); }
+      spreidd(v, 25, 3, (x, y) => { px(g, x, y, r[1]); px(g, x, y - 1, r[3]); });
+    },
     ",": (g, t, v) => {
       const r = R_.villgras;
       px(g, 0, 0, r[1], S, S);
@@ -170,7 +176,20 @@ window.Pikslar = (function () {
     },
     "o": (g, t, v) => { gras(g, v); const R = Rutenett(16, 16).ell("s", 8, 9.5, 6.5, 5); R.rad(null, 15, 0, 15); g.drawImage(mal(R, { s: { farge: "#686680", rund: true } }), 0, 0); },
     "h": (g, t, v) => { gras(g, v); const R = Rutenett(16, 16).ell("h", 8, 9, 7.5, 6.5); g.drawImage(mal(R, { h: { farge: "#4a8a3f", rund: true } }), 0, 0); px(g, 4, 6, R_.gras[4], 2, 1); px(g, 7, 5, R_.gras[4], 3, 1); },
-    "x": (g, t, v) => { gras(g, v); const R = Rutenett(16, 16).rect("k", 7, 3, 2, 11).rect("k", 4, 6, 8, 2); g.drawImage(mal(R, { k: "#7a7888" }), 0, 0); px(g, 5, 15, "rgba(0,0,0,.25)", 7, 1); },
+    "x": (g, t, v) => {
+      // Grav: annankvar trekross og gravstein, med ein låg grashaug framfor
+      gras(g, v);
+      px(g, 4, 13, "rgba(20,24,50,.3)", 9, 2);
+      if (v % 2 === 0) {
+        const R = Rutenett(16, 16).rect("k", 7, 2, 2, 12).rect("k", 4, 5, 8, 2);
+        g.drawImage(mal(R, { k: "#7a5634" }), 0, 0);
+      } else {
+        const R = Rutenett(16, 16).ell("s", 8, 6, 4, 3.5).rect("s", 4, 6, 8, 7);
+        g.drawImage(mal(R, { s: { farge: "#7a788a", rund: true } }), 0, 0);
+        px(g, 6, 7, "#4a4858", 4, 1); px(g, 6, 9, "#4a4858", 4, 1); px(g, 5, 4, "#98b44c", 2, 1);
+      }
+      px(g, 4, 14, "#68a84a", 8, 1);
+    },
     "|": (g, t, v) => {
       gras(g, v);
       const R = Rutenett(16, 16);
@@ -179,10 +198,14 @@ window.Pikslar = (function () {
       g.drawImage(mal(R, { p: "#6a4428", s: "#8e6034" }), 0, 0);
     },
     "j": (g, t, v) => {
+      // Steingard: runde gråsteinar i to lag, mose på toppen og mørke fuger
       gras(g, v);
       const R = Rutenett(16, 16);
-      R.ell("a", 4, 10, 4, 3.5).ell("b", 11.5, 10.5, 4.2, 3.5).ell("c", 8, 6, 4, 3);
-      g.drawImage(mal(R, { a: { farge: "#7a788e", rund: true }, b: { farge: "#686680", rund: true }, c: { farge: "#8e8ca4", rund: true } }), 0, 0);
+      const steinar = [[3.5, 11, 3.6, 3.2, "a"], [10, 11.5, 4, 3, "b"], [15.5, 11, 2.6, 3, "a"], [6.5, 6.5, 3.4, 2.8, "c"], [12.5, 6.8, 3.2, 2.6, "b"], [0.5, 6.8, 2.2, 2.6, "c"]];
+      for (const [x, y, rx, ry, k] of steinar) R.ell(k, x + (v % 2) * 0.5, y, rx, ry);
+      g.drawImage(mal(R, { a: { farge: "#6a6878", rund: true }, b: { farge: "#7a788a", rund: true }, c: { farge: "#8a889c", rund: true } }), 0, 0);
+      for (const [x, y] of [[5, 4], [6, 4], [12, 4], [13, 5], [1, 5], [8, 9]]) px(g, x, y, (x + v) % 3 ? "#6e9038" : "#98b44c");
+      px(g, 9 + v % 3, 12, "#c8b050");
     },
     "Y": (g, t, v) => {
       const r = R_.korn; px(g, 0, 0, r[1], S, S);
@@ -357,12 +380,12 @@ window.Pikslar = (function () {
   const cache = new Map();
   function flis(teikn, t = 0, x = 0, y = 0, golv = "P") {
     const v = VARIANT.has(teikn) || VARIANT_EKSTRA.has(teikn) ? Math.floor(hash(x, y, 7) * 4) : 0;
-    const gl = "LnKkzb".includes(teikn) ? golv : "";
+    const gl = "LnKkzb.#toh".includes(teikn) ? golv : "";
     const nokkel = `${teikn}${gl}:${v}:${ANIM.has(teikn) ? Math.floor(t / 150) % 16 : 0}`;
     if (cache.has(nokkel)) return cache.get(nokkel);
     const c = lerret(S), g = c.getContext("2d");
     golvNo = golv;
-    if (TRE[teikn]) { gras(g, v); g.fillStyle = "rgba(20,24,50,0.3)"; g.beginPath(); g.ellipse(9, 14, 6.5, 2.5, 0, 0, Math.PI * 2); g.fill(); g.drawImage(treBilete(teikn), 0, -16); }
+    if (TRE[teikn] || teikn === "o" || teikn === "h") { golvNo = golv; FLIS["."](g, t, v); }   // sjølve treet, steinen og haugen er figurar, sjå natur()
     else (FLIS[teikn] || FLIS[" "])(g, t, v);
     cache.set(nokkel, c);
     return c;
@@ -623,16 +646,38 @@ window.Pikslar = (function () {
      Figuren stikk 4 pikslar ut på sidene og 8 opp. Til biletet er lasta, gir bygg() null,
      og kartet viser flisene under i staden. */
   const byggCache = new Map();
-  function bygg(id) {
-    if (!byggCache.has(id)) {
+  function lastBilete(sti) {
+    if (!byggCache.has(sti)) {
       const b = { img: new Image(), klar: false };
       b.img.onload = () => { b.klar = true; };
-      b.img.src = `bilete/spel/bygg/${id}.png`;
-      byggCache.set(id, b);
+      b.img.src = sti;
+      byggCache.set(sti, b);
     }
-    const b = byggCache.get(id);
+    const b = byggCache.get(sti);
     return b.klar ? b.img : null;
   }
+  const bygg = id => lastBilete(`bilete/spel/bygg/${id}.png`);
+  /* Naturelement som heile figurar (bilete/spel/natur/, laga med tools/pikselkunst/natur.py).
+     Gir { img, x, y } med plassering i pikslar relativt til flisa, eller null om det ikkje er noko å teikne.
+     Til bileta er lasta, blir dei gamle, kodeteikna trea brukte. */
+  const NATURTYPE = { "#": ["gran1", "gran2", "gran3"], "t": ["bjork1", "bjork2", "bjork3"], "o": ["stein1", "stein2", "stein3"] };
+  function natur(teikn, x, y) {
+    const typar = NATURTYPE[teikn];
+    if (!typar) return null;
+    const namn = typar[Math.floor(hash(x, y, 19) * typar.length)];
+    const img = lastBilete(`bilete/spel/natur/${namn}.png`);
+    if (img) return { img, x: 8 - Math.floor(img.width / 2), y: 16 - img.height + (teikn === "o" ? 0 : 2), skugge: teikn === "o" ? 6 : 7 };
+    if (TRE[teikn]) return { img: treBilete(teikn), x: 0, y: -16 + 0, skugge: 6 };
+    return { img: gamalStein(), x: 0, y: 0, skugge: 0 };
+  }
+  let gamalSteinC = null;
+  function gamalStein() {
+    if (gamalSteinC) return gamalSteinC;
+    gamalSteinC = lerret(16); const R = Rutenett(16, 16).ell("s", 8, 9.5, 6.5, 5); R.rad(null, 15, 0, 15);
+    gamalSteinC.getContext("2d").drawImage(mal(R, { s: { farge: "#686680", rund: true } }), 0, 0);
+    return gamalSteinC;
+  }
+  const haugBilete = () => lastBilete("bilete/spel/natur/haug.png");
   const fiendeCache = new Map();
   function fiende(namn) {
     if (fiendeCache.has(namn)) return fiendeCache.get(namn);
@@ -641,5 +686,5 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, kant, klasse, bygg, FAST, figur, fiende, lerret, ramp, blend, RAMP };
+  return { S, FW, FH, flis, topp, kant, klasse, bygg, natur, haugBilete, FAST, figur, fiende, lerret, ramp, blend, RAMP };
 })();

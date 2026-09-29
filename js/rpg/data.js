@@ -238,7 +238,7 @@ window.RPGData = (function () {
       ],
     },
     bygda: {
-      namn: "Hovdebygda", bygg: [{ id: "stove", x: 3, y: 14, h: 3 }, { id: "stove-dor1", x: 34, y: 14, h: 3 }], stemning: "morgon", golv: ".", bakgrunn: "tun",
+      namn: "Hovdebygda", bygg: [{ id: "kyrkje", x: 12, y: 3, h: 3 }, { id: "prestegard", x: 28, y: 3, h: 3 }, { id: "stove", x: 3, y: 14, h: 3 }, { id: "stove-dor1", x: 34, y: 14, h: 3 }], stemning: "morgon", golv: ".", bakgrunn: "tun",
       rader: [
         "############################################",
         "#.......jjjjjjjjjjjjjjj....................#",

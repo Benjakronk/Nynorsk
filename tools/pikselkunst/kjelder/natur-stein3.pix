@@ -1,0 +1,31 @@
+# namn: natur-stein3
+# type: fiende
+# ut: bilete/spel/natur/stein3.png
+# storleik: 18x15
+palett:
+  . = -
+  o = #0a0514    omriss
+  A = #26242e    stein djup
+  B = #44424e    stein skugge
+  C = #666472    stein
+  D = #8c8a96    stein lys
+  m = #4a6a2a    mose skugge
+  n = #6e9038    mose
+  p = #98b44c    mose lys
+  l = #c8b050    lav
+bilete:
+  ..................
+  ..................
+  .....oooooooo.....
+  ....oppppppppo....
+  ...onmnnmnnmnno...
+  ..onmnnmnnBnnmno..
+  .onmnnmnnmBnmnnmo.
+  .oDnnmDDmnnBnnmCo.
+  oDDnmDCCnnCBCmBBBo
+  .oDDCCCCCCCCBllBo.
+  .oCClCCCCCBBBBBBo.
+  ..oCCCCCBBBBBBAo..
+  ...ooBBBBBAAAoo...
+  .....oooooooo.....
+  ..................

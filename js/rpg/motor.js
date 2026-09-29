@@ -265,6 +265,7 @@ window.Motor = (function () {
     const ox = kart.w < VW ? (VW - kart.w) / 2 : -kx, oy = kart.h < VH ? (VH - kart.h) / 2 : -ky;
     g.fillStyle = "#0e0c12"; g.fillRect(0, 0, lerret.width, lerret.height);
     const x0 = Math.floor(-ox) - 1, y0 = Math.floor(-oy) - 1;
+    const naturFig = [];
     for (let y = Math.max(0, y0); y < Math.min(kart.h, y0 + VH + 2); y++) for (let x = Math.max(0, x0); x < Math.min(kart.w, x0 + VW + 2); x++) {
       const c = kart.fliser[y][x];
       const sx = Math.round((x + ox) * S), sy = Math.round((y + oy) * S);
@@ -284,6 +285,15 @@ window.Motor = (function () {
           if (kl === "vatn" ? (n !== "~" && n !== "Q") : nk === "gras") g.drawImage(Pikslar.kant(kl === "vatn" ? "strand" : "gras", side, (x * 7 + y * 3) % 4), sx, sy);
         }
       }
+      const nf = Pikslar.natur(c, x, y);
+      if (nf) {
+        if (nf.skugge) { g.fillStyle = "rgba(20,24,50,0.3)"; g.beginPath(); g.ellipse(sx + 9, sy + 14, nf.skugge, 2.5, 0, 0, Math.PI * 2); g.fill(); }
+        naturFig.push({ y: y + 0.005, x, natur: nf });
+      }
+      if (c === "h" && kart.fliser[y][x - 1] !== "h" && (y === 0 || kart.fliser[y - 1][x] !== "h")) {
+        const hb = Pikslar.haugBilete();
+        if (hb) naturFig.push({ y: y + 1.004, x, haug: hb });
+      }
       const k = kisteVed(x, y);
       if (k && k.gøymd) g.drawImage(Pikslar.flis("K", 0, 0, 0, kart.def.golv), sx, sy);
       if (k && krokar.opna && krokar.opna(k)) { g.fillStyle = "rgba(10,5,20,.45)"; g.fillRect(sx + 2, sy + 4, 12, 3); }
@@ -294,10 +304,13 @@ window.Motor = (function () {
     const steg = gaar ? GANG[Math.floor(no / 110) % 4] : 0;
     if (fylgje) figurar.push({ y: fylgje.fy, x: fylgje.fx, sp: fylgje.sprite, dir: fylgje.dir, steg });
     figurar.push({ y: spelar.fy, x: spelar.fx, sp: spelar.sprite, dir: spelar.dir, steg });
+    for (const n of naturFig) figurar.push(n);
     // Hus blir sorterte saman med figurane etter den nedste flisraden sin.
     for (const b of kart.def.bygg || []) { const img = Pikslar.bygg(b.id); if (img) figurar.push({ y: b.y + b.h - 1 + 0.01, x: b.x, bygg: img }); }
     figurar.sort((a, b) => a.y - b.y);
     for (const f of figurar) {
+      if (f.natur) { g.drawImage(f.natur.img, Math.round((f.x + ox) * S) + f.natur.x, Math.round((Math.floor(f.y) + oy) * S) + f.natur.y); continue; }
+      if (f.haug) { g.drawImage(f.haug, Math.round((f.x + ox) * S) - 1, Math.round((Math.floor(f.y) + 1 + oy) * S) - f.haug.height); continue; }
       if (f.bygg) {
         // slagskugge på bakken, mot høgre og ned (lyset kjem frå oppe til venstre)
         const bx = Math.round((f.x + ox) * S), by = Math.round((f.y + 1 + oy) * S), bw = f.bygg.width - 8;
@@ -306,11 +319,6 @@ window.Motor = (function () {
       const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S);
       g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx + 3, sy + 13, 10, 3); g.fillRect(sx + 4, sy + 12, 8, 5);
       g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy - 9);
-    }
-    // Tretoppar over figurane
-    for (let y = Math.max(0, y0); y < Math.min(kart.h, y0 + VH + 3); y++) for (let x = Math.max(0, x0); x < Math.min(kart.w, x0 + VW + 2); x++) {
-      const t = Pikslar.topp(kart.fliser[y][x]);
-      if (t) g.drawImage(t, Math.round((x + ox) * S), Math.round((y - 1 + oy) * S));
     }
     stemning(no, ox, oy);
   }
