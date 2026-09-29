@@ -362,7 +362,7 @@ window.Pikslar = (function () {
     if (cache.has(nokkel)) return cache.get(nokkel);
     const c = lerret(S), g = c.getContext("2d");
     golvNo = golv;
-    if (TRE[teikn]) { gras(g, v); g.drawImage(treBilete(teikn), 0, -16); }
+    if (TRE[teikn]) { gras(g, v); g.fillStyle = "rgba(20,24,50,0.3)"; g.beginPath(); g.ellipse(9, 14, 6.5, 2.5, 0, 0, Math.PI * 2); g.fill(); g.drawImage(treBilete(teikn), 0, -16); }
     else (FLIS[teikn] || FLIS[" "])(g, t, v);
     cache.set(nokkel, c);
     return c;
@@ -604,7 +604,12 @@ window.Pikslar = (function () {
   /* Handteikna fiendar: ei PNG-fil i bilete/spel/ med kvar spelpiksel som éin
      piksel (Blekklatten er 80 × 72). Til biletet er lasta, viser spelet ein
      reservefigur i same storleik. Fleire handteikna fiendar kan leggjast til her. */
-  const PNG = { blekklatten: { fil: "bilete/spel/blekklatten.png", w: 80, h: 72, reserve: "blekkflekk" } };
+  const PNG = {
+    blekklatten: { fil: "bilete/spel/blekklatten.png", w: 80, h: 72, reserve: "blekkflekk" },
+    // Den namnlause vetten (grå, halvt gjennomsiktig). Haugbonden er òg namnlaus når Ivar kjempar mot han.
+    vette: { fil: "bilete/spel/vette3_nameless_1x.png", w: 47, h: 68, reserve: "vette" },
+    haugbonden: { fil: "bilete/spel/vette3_nameless_1x.png", w: 47, h: 68, reserve: "haugbonden" },
+  };
   function fraPng(d) {
     const c = lerret(d.w, d.h), g = c.getContext("2d");
     g.imageSmoothingEnabled = false;
@@ -614,6 +619,20 @@ window.Pikslar = (function () {
     img.src = d.fil;
     return c;
   }
+  /* Hus som heile figurar (bilete/spel/bygg/<id>.png, laga med tools/pikselkunst/bygg.py).
+     Figuren stikk 4 pikslar ut på sidene og 8 opp. Til biletet er lasta, gir bygg() null,
+     og kartet viser flisene under i staden. */
+  const byggCache = new Map();
+  function bygg(id) {
+    if (!byggCache.has(id)) {
+      const b = { img: new Image(), klar: false };
+      b.img.onload = () => { b.klar = true; };
+      b.img.src = `bilete/spel/bygg/${id}.png`;
+      byggCache.set(id, b);
+    }
+    const b = byggCache.get(id);
+    return b.klar ? b.img : null;
+  }
   const fiendeCache = new Map();
   function fiende(namn) {
     if (fiendeCache.has(namn)) return fiendeCache.get(namn);
@@ -622,5 +641,5 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, kant, klasse, FAST, figur, fiende, lerret, ramp, blend, RAMP };
+  return { S, FW, FH, flis, topp, kant, klasse, bygg, FAST, figur, fiende, lerret, ramp, blend, RAMP };
 })();

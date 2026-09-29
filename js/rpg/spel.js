@@ -106,6 +106,7 @@
       if (s.gi) { if (D.TING[s.gi]) st.ting[s.gi] = (st.ting[s.gi] || 0) + (s.n || 1); else if (!st.nokkel.includes(s.gi)) st.nokkel.push(s.gi); }
       if (s.pengar) st.pengar += s.pengar;
       if (s.fjern) Motor.fjernFolk(s.fjern);
+      if (s.forvandling) await forvandling(s.forvandling, s.tekst);
       if (s.parti && !st.parti.some(m => m.id === s.parti)) {
         const m = { id: s.parti, niva: st.parti[0].niva, xp: 0, hp: null, rost: null };
         fyll(m); st.parti.push(m); Motor.settFylgje(sprite(s.parti));
@@ -125,6 +126,22 @@
       if (s.verd) { await verdskart(); return "stopp"; }
       if (s.kapittelslutt) { await kapittelslutt(); return "stopp"; }
     }
+  }
+  // Eit bilete glir over i eit anna, midt på skjermen (til dømes ein vette som får namnet att).
+  function forvandling([for_, etter], tekst) {
+    return new Promise(res => {
+      const el = document.createElement("div");
+      el.className = "rpg-forvandling";
+      el.innerHTML = `<div class="fv-bilete"><img class="fv-for" src="${for_}" alt=""><img class="fv-etter" src="${etter}" alt=""></div>${tekst ? `<p class="rpg-vindauge fv-tekst">${E(tekst)}</p>` : ""}`;
+      $("rpg-skjerm").appendChild(el);
+      let ferdig = false;
+      const slutt = () => { if (ferdig) return; ferdig = true; slepp(); el.classList.add("ut"); setTimeout(() => { el.remove(); res(); }, 400); };
+      const slepp = Motor.lytt({ a: () => { if (el.classList.contains("klar")) slutt(); } });
+      setTimeout(() => el.classList.add("glir"), 500);
+      setTimeout(() => el.classList.add("klar"), 2600);
+      setTimeout(slutt, 6000);
+      el.onclick = () => { if (el.classList.contains("klar")) slutt(); };
+    });
   }
   async function hending(steg) {
     Motor.pause(true);

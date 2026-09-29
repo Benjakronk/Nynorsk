@@ -37,6 +37,7 @@
      { parti: "huldra" }                ny i partiet
      { kamp: ["blekkdrope"], boss: 1, rettleiing: 1 }
      { stev: "steinstevet" }              Ivar lærer eit stev
+     { forvandling: [før, etter], tekst } eit bilete glir over i eit anna (vetten får namnet att)
      { til: ["kart", "merke"] }         flytt
      { fjern: "&" }                     personen på merket går sin veg
      { dersom: fn, da: […], elles: […] }
@@ -166,7 +167,7 @@ window.RPGData = (function () {
       ],
     },
     asen: {
-      namn: "Åsen i Hovdebygda", stemning: "morgon", golv: ".", bakgrunn: "tun",
+      namn: "Åsen i Hovdebygda", bygg: [{ id: "stove", x: 4, y: 2, h: 3 }, { id: "loe", x: 18, y: 2, h: 3 }, { id: "stabbur", x: 17, y: 9, h: 2 }], stemning: "morgon", golv: ".", bakgrunn: "tun",
       rader: [
         "#############4##############",
         "#..o.#....t..=............o#",
@@ -199,7 +200,7 @@ window.RPGData = (function () {
       inngang: [{ merke: "3", manus: "ut_forste" }],
     },
     utmarka: {
-      namn: "Utmarka", stemning: "kveld", golv: ",", bakgrunn: "utmark",
+      namn: "Utmarka", bygg: [{ id: "seter", x: 22, y: 4, h: 3 }], stemning: "kveld", golv: ",", bakgrunn: "utmark",
       fiendar: { lag: [["vette"], ["irrbloss"], ["vette", "irrbloss"], ["vette", "vette"]] },
       rader: [
         "################################",
@@ -237,7 +238,7 @@ window.RPGData = (function () {
       ],
     },
     bygda: {
-      namn: "Hovdebygda", stemning: "morgon", golv: ".", bakgrunn: "tun",
+      namn: "Hovdebygda", bygg: [{ id: "stove", x: 3, y: 14, h: 3 }, { id: "stove-dor1", x: 34, y: 14, h: 3 }], stemning: "morgon", golv: ".", bakgrunn: "tun",
       rader: [
         "############################################",
         "#.......jjjjjjjjjjjjjjj....................#",
@@ -417,7 +418,7 @@ window.RPGData = (function () {
       folk: [{ merke: "@", u: "fiskar", namn: "Fiskar", tale: "fiskar" }],
     },
     ekset: {
-      namn: "Ekset i Volda", stemning: "morgon", golv: ".", bakgrunn: "tun",
+      namn: "Ekset i Volda", bygg: [{ id: "ekset-hovud", x: 7, y: 1, h: 3 }, { id: "seter", x: 20, y: 1, h: 3 }], stemning: "morgon", golv: ".", bakgrunn: "tun",
       rader: [
         "##########################",
         "#......RRRRRR.......RRRR.#",
@@ -565,6 +566,7 @@ window.RPGData = (function () {
   const talOrd = st => Object.keys(st.ord).length;
   // Haugbonden får namnet sitt att og lærer Ivar Steinstevet.
   const HAUG_NAMN = [
+    { forvandling: ["bilete/spel/vette3_nameless_1x.png", "bilete/spel/vette3_restored_1x.png"], tekst: "Fargane kjem attende i vetten. Luva blir raud, og auga blir varme." },
     { s: "Haugbonden", t: "Du må ⟪høyre⟫ etter, gut. Det er heile kunsta. Eg har høyrt på folket her i tusen år." },
     { lytt: ["hoyra", "høyre"] },
     { s: "Haugbonden", t: "No er eg ⟪laus⟫ frå gløymska. Sauene kan gå forbi haugen att." },
@@ -580,6 +582,7 @@ window.RPGData = (function () {
   const HAUG_FEIL = [
     { s: "Vetten", t: "NEI!" },
     { kamp: ["haugbonden"], boss: 1 },
+    { forvandling: ["bilete/spel/vette3_nameless_1x.png", "bilete/spel/vette3_restored_1x.png"], tekst: "Kampen ristar gløymska av han. Fargane kjem attende, og han hugsar kven han er." },
     { s: "Haugbonden", t: "Haugbonden … Det var namnet mitt. Du må ⟪høyre⟫ betre etter, gut." },
     { lytt: ["hoyra", "høyre"] }, { flagg: "haug" }, { fjern: "@" },
     { s: "Haugbonden", t: "Du slost godt. Eit stev skal du få likevel." },

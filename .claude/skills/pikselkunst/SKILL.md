@@ -9,7 +9,9 @@ Grafikken blir laga i ein fast sløyfe: skriv kjelda, lag biletet, sjå på det,
 vurder det mot stilguiden og forbetre. Gjenta til sjekklista er oppfylt.
 
 Les først `tools/pikselkunst/STILGUIDE.md`. Målestokken er Blekklatten
-(`bilete/spel/blekklatten.png`).
+(`bilete/spel/blekklatten.png`). Referansar for norsk byggjeskikk, natur og kle
+ligg i `tools/pikselkunst/konsept/` (sjå KJELDER.md der). Sjå på dei før du
+teiknar noko nytt frå den tida.
 
 ## 1. Oppdrag
 
@@ -20,10 +22,13 @@ uttrykkje.
 ## 2. Kjelde
 
 Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
-øvst i `tools/pikselkunst/pix.py`). Tre måtar å lage henne på:
+øvst i `tools/pikselkunst/pix.py`). Fire måtar å lage henne på:
 
 - Portrett: legg personen til i `PERSONAR` i `tools/pikselkunst/portrettmal.py`
   og køyr `python tools/pikselkunst/portrettmal.py <namn>`.
+- Hus: legg huset til i `BYGG` i `tools/pikselkunst/bygg.py` (breidd, høgd, dører
+  og vindauge i fliser) og køyr `python tools/pikselkunst/bygg.py <namn>`. Huset
+  må ha same fotavtrykk og dør som i kartet, og står i `bygg` på kartet i `js/rpg/data.js`.
 - Små bilete: skriv rutenettet for hand.
 - Større bilete: eit lite Python-skript som teiknar flater med `span` og
   punkt, slik som `portrettmal.py`, og skriv `.pix`. Teikn flater for hand.

@@ -44,6 +44,31 @@ Alt nytt skal kunne stå ved sida av han utan å skilje seg ut.
 - Ansiktsuttrykket skal fortelje noko om personen.
 - Grunnforma ligg i `portrettmal.py`. Nye personar blir varierte derifrå.
 
+## Lærdommar frå Final Fantasy VI og The Minish Cap
+
+- Hus er heile figurar, ikkje gjentekne fliser. Taket dominerer (tre fjerdedelar
+  av høgda), har tjukt utheng og kastar skugge ned på veggen. Sjå `bygg.py`.
+- Ting som står på bakken (hus, tre, steinar), har slagskugge mot høgre og ned
+  og mørkt omriss. Bakken sjølv har ikkje omriss.
+- Tekstur blir laga med klyngjer i fast mønster (tuster, klumpar, stokkar),
+  ikkje med tilfeldige enkeltpikslar.
+- Lyse, varme fargar i lyset og kjølige, blågrøne i skuggen. Taket og bakken
+  skal ha ulik farge, elles glid huset inn i graset.
+- Final Fantasy VI har mørkare, tettare tekstur og portrett ved sida av teksten.
+  The Minish Cap har lysare fargar, store runde tretoppar og tydelege former.
+
+## Norsk byggjeskikk, natur og kle (sjå konsept/)
+
+- Torvtak: solbleikt olivengrønt og gult om sommaren, med tuster og blomar,
+  never under torva ved takskjegget, og vindskier som kryssar over mønet.
+- Laft: liggjande stokkar med utstikkande laftehovud på hjørna, grunnmur av
+  stein. Løa har ståande bord. Stabburet står på steinstolpar med luft under.
+- Inne: røykstove eller årestove med mørkt tømmer, open eldstad og gryte på krok.
+- Kle på Sunnmøre kring 1800: menn med raud topplue og kvit vadmålsjakke,
+  kvinner med raud trøye, mørkt skjørt og kvitt skaut.
+- Landskap: bratte fjell med snø, fjord, bjørk og gran, lys frå låg sol.
+- Vettar og troll hos Kittelsen er ein del av landskapet: mose, stein og røter.
+
 ## Sjekkliste før grafikken blir teken i bruk
 
 1. `pix.py sjekk` gir ingen merknader.

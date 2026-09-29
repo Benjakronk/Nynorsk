@@ -294,8 +294,15 @@ window.Motor = (function () {
     const steg = gaar ? GANG[Math.floor(no / 110) % 4] : 0;
     if (fylgje) figurar.push({ y: fylgje.fy, x: fylgje.fx, sp: fylgje.sprite, dir: fylgje.dir, steg });
     figurar.push({ y: spelar.fy, x: spelar.fx, sp: spelar.sprite, dir: spelar.dir, steg });
+    // Hus blir sorterte saman med figurane etter den nedste flisraden sin.
+    for (const b of kart.def.bygg || []) { const img = Pikslar.bygg(b.id); if (img) figurar.push({ y: b.y + b.h - 1 + 0.01, x: b.x, bygg: img }); }
     figurar.sort((a, b) => a.y - b.y);
     for (const f of figurar) {
+      if (f.bygg) {
+        // slagskugge på bakken, mot høgre og ned (lyset kjem frå oppe til venstre)
+        const bx = Math.round((f.x + ox) * S), by = Math.round((f.y + 1 + oy) * S), bw = f.bygg.width - 8;
+        g.fillStyle = "rgba(20,24,50,0.28)"; g.fillRect(bx + 3, by, bw, 4); g.fillRect(bx + bw, by - f.bygg.height + 14, 4, f.bygg.height - 10);
+        g.drawImage(f.bygg, Math.round((f.x + ox) * S) - 4, Math.round((f.y - (f.bygg.height - 8) / S + 1 + oy) * S) - 8 + 0); continue; }
       const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S);
       g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx + 3, sy + 13, 10, 3); g.fillRect(sx + 4, sy + 12, 8, 5);
       g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy - 9);
