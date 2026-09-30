@@ -64,7 +64,8 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   silhuetten: `krokrygg`, `stav` (`lang` eller `stokk`), `sid` (sid kjole),
   `band`, `blom`, `lue`, `strompe`, `kappe`. Kampstillingane kan sjåast med
   `skjermbilete.py namn kart=utmarka m=1 kamp=vette parti=huldra hp=ivar:5,huldra:0`.
-- Kampbakgrunnar: `python tools/pikselkunst/bakgrunn.py <namn>` skriv
+- Kampbakgrunnar: `python tools/pikselkunst/bakgrunn.py <namn>` (malarverktøya ligg i
+  `maleri.py`: støy, dithering, fjell, gras, gran, bjørk, stein) skriv
   `bilete/spel/kamp/<namn>.png` direkte (skriptet er kjelda). Namnet er
   `bakgrunn` på kartet i `js/rpg/data.js`.
 - Vatn og steingard tilpassar seg naboane og blir teikna i `js/rpg/pikslar.js`

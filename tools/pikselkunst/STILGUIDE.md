@@ -116,6 +116,8 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
 
 ## Kampbakgrunnar og stova
 
+- Kampbakgrunnar er måla med `maleri.py`: tekstur og dithering overalt, ingen flate band
+  og ingen omriss, luftperspektiv, stripete skyer med lyse kantar, relieff på fjella.
 - Kampbakgrunnar (320 × 192, `bakgrunn.py`) følgjer Final Fantasy VI:
   himmel med skyer som har lyse kantar, fjell i lag med snø, skogkant, eit
   smalt vassband, slette med tekstur og småsteinar. Bakken må byrje over

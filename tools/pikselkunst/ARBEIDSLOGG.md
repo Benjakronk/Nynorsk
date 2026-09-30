@@ -342,3 +342,30 @@ same måte, uansett kven som tek over.
   fiolett sjal med spissar over skuldrene (`sjal`), smal midje med gullbelte og eit
   stutt skjørt med gullborde, med berre bein og føter under (`kort: true`). Blomen i
   håret står der Terra har sløyfa, og kuhala heng under skjørtet.
+
+## Runde 13: måla kampbakgrunnar
+
+- **Frå brukaren:** Kampbakgrunnane var for enkle i stilen samanlikna med Final Fantasy VI.
+- **Research:** Alle 50 kampbakgrunnane frå Final Fantasy VI (Spriters Resource). Slette,
+  skog, fjell og inne forstørra og samanlikna:
+  - Måla bilete gjorde om til pikslar, 26 til 46 fargar. Tekstur og dithering overalt,
+    ingen flate band og ingen svarte omriss.
+  - Luftperspektiv: fjell langt borte er blålege og har lite kontrast, forgrunnen er mettast.
+  - Skyer i lange, stripete formasjonar med lyse kantar (fersken, turkis).
+  - Bakken har store flekkar av ljos og skugge og fin tekstur. Ting blir større nærare oss.
+  - Store former i forgrunnen (stammer med røter, bergveggar) bryt horisonten.
+  - Inne: rom med djupn, vegger med mønster og tekstur, golv i perspektiv, mørke hjørne.
+- **Gjort:**
+  - `maleri.py`: fargeskalaer, ordna dithering (Bayer 4 x 4), verdistøy og fBm, fjellrygg,
+    og malarstrøk for gran, gras, stein og bjørk.
+  - Nye hjelparar i `bakgrunn.py`: himmel med stripete skyer, fjell med relieff (lyssett
+    2D-støyflate) og snø, bakke med ljosflekkar, stamme med bork og røter, tømmervegg,
+    plankegolv i perspektiv, ljos som fell av, og mørke hjørne.
+  - Alle seks bakgrunnane er måla på nytt: tunet (Sunnmørsalpane, mørke åsar, fjord,
+    bø med steinar), utmarka (kveldshimmel, granskog i lag, tjønn, stamme i kanten),
+    vegen (gyllen kveld, åker, grusveg, skigard, bjørker), røykstova (laftevegg, grue med
+    eld, plankegolv, varmt ljos), arkivet (steinmur, protokollar, blekkpytt, lysestake)
+    og kyrkja (panel med årer, måla himmel, altartavle, ljosstrålar).
+- **Lærdom:** Skugge på fjell må kome frå ei 2D-flate (relieff), ikkje frå hellinga til
+  profilen åleine. Då blir det loddrette striper. Og: ein skripta klipp mellom to merke i
+  fila må sjekkast mot rekkjefølgja av funksjonane, elles kan han ta med seg for mykje.
