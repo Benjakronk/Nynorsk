@@ -160,9 +160,11 @@ def grue():
     for y in range(34, H - 3):
         for x in range(6, 18):
             if h(x, y, 3) > 0.25 + (H - 3 - y) / 14: L.p(x, y, "f" if h(x, y, 4) > 0.6 else "F")
-    for y in range(18, 29): L.p(12, y, "n")                             # krok
-    for y in range(29, 34):
-        for x in range(8, 16): L.p(x, y, "n" if x < 12 else "N")          # gryte
+    for y in range(24, 27): L.p(12, y, "v" if y % 2 else "X")          # kjetting frå hetta
+    for (x, y) in [(11, 27), (10, 28), (13, 27), (14, 28)]: L.p(x, y, "v")  # hank
+    for x in range(8, 16): L.p(x, 29, "X" if x < 13 else "V")           # gryta i svart jern, lys kant
+    for y, (a, b) in {30: (8, 15), 31: (8, 15), 32: (9, 14), 33: (10, 13)}.items():
+        for x in range(a, b + 1): L.p(x, y, "X" if x == a + 1 and y < 32 else "v" if x >= b - 1 else "V")
     for x in range(3, 22): L.p(x, H - 3, "x"); L.p(x, H - 2, "n")        # grueheller
     omriss(L)
     return L

@@ -172,7 +172,7 @@ window.RPGData = (function () {
         "XP((((PP@PPX",
         "XP((((PPPPKX",
         "XP%PPP1PPPPX",
-        "XLPPPPPPP(PX",
+        "XLPPP2PPP(PX",
         "XXXXXEXXXXXX",
       ],
       dorer: [{ ved: [5, 7], til: ["asen", "3"] }],
@@ -204,7 +204,7 @@ window.RPGData = (function () {
         "############################",
       ],
       dorer: [
-        { ved: [6, 4], til: ["asen-stova", "1"] },
+        { ved: [6, 4], til: ["asen-stova", "2"] },
         { ved: [13, 0], til: ["utmarka", "1"], kant: true, vakt: { flagg: "skiftebrev", manus: "ikkje_enno" } },
         { ved: [27, 11], til: ["bygda", "1"], kant: true, vakt: { flagg: "skiftebrev", manus: "skiftebrev" } },
       ],

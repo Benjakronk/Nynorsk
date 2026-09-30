@@ -911,13 +911,13 @@ window.Pikslar = (function () {
     return m.get(k);
   }
   function ild(g, x, y, w, h, t, glo, maske) {
-    const k = Math.floor(t / 90);                                     // hakkete, som pikselanimasjon
+    const k = Math.floor(t / 150);                                    // same takt som lykta, ljosa og elva
     const fyll = (px_, py_, farge) => { if (!maske || maske[(py_ - y) * w + (px_ - x)]) { g.fillStyle = farge; g.fillRect(px_, py_, 1, 1); } };
     for (let yy = y; yy < y + h; yy++) for (let xx = x; xx < x + w; xx++) fyll(xx, yy, "#140a08");
     const farge = ["#7a1a10", "#c83a18", "#f0902a", "#f8d860", "#fff4c0"];
     for (let cx = 0; cx < w; cx++) {
       const midt = 1 - Math.abs(cx - (w - 1) / 2) / (w / 2);             // høgast på midten
-      const flakk = hash(cx, k, 71) * 0.5 + Math.sin(t / 110 + cx * 1.9) * 0.18;
+      const flakk = hash(cx, k, 71) * 0.5 + Math.sin(k * 1.3 + cx * 1.9) * 0.18;
       const hh = Math.max(1, Math.round(Math.min(h, 10) * (glo ? 0.35 + flakk * 0.4 : 0.25 + midt * 0.7 + flakk * 0.4)));
       for (let dy = 0; dy < Math.min(h, hh); dy++) {
         const rel = dy / hh;                                             // 0 nede, 1 i tuppen

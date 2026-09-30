@@ -271,8 +271,7 @@
         await hending([{ t: `Ivar syng «${D.ORD[d.krevOrd].aasen}». Eit varmt ljos fyller trappa ned til arkivet, og blekket trekkjer seg unna.` }, { flagg: "opna:" + d.krevOrd }]);
       }
       if (d.verd) { await verdskart(); return; }
-      await Motor.opneDor(d);
-      Motor.last(d.til[0], d.til[1]);
+      await Motor.gjennomDor(d, () => Motor.last(d.til[0], d.til[1]));
     },
   });
 

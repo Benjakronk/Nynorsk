@@ -11,6 +11,9 @@ palett:
   N = #140a08    eldstad
   f = #f8b830    eld gul
   F = #e86a20    eld
+  v = #1a1a24    jern djup
+  V = #34343f    jern
+  X = #5a5a6a    jern lys
 bilete:
   .......okkkkkkxxxo......
   .......okkkkkkxxxo......
@@ -30,22 +33,22 @@ bilete:
   ...okkkkkkkkkkkxxxxxxo..
   ..oxxxxxxxxxxxxxxxxxxxo.
   ..onnnnnnnnnnnnnnnnnnno.
-  ..okkkkkkkkknkkxxxxxxxo.
-  ..okkkkkkkkknkkxxxxxxxo.
-  ..okkkkkkkkknkkxxxxxxxo.
-  ..okkkkkkkkknkkxxxxxxxo.
-  ..okkkkkkkkknkkxxxxxxxo.
-  ..okkkkkkkkknkkxxxxxxxo.
-  ..okkNNNNNNNnNNNNNNxxxo.
-  ..okkNNNNNNNnNNNNNNxxxo.
-  ..okkNNNNNNNnNNNNNNxxxo.
-  ..okkNNNNNNNnNNNNNNxxxo.
-  ..okkNNNNNNNnNNNNNNxxxo.
-  ..okkNNNnnnnNNNNNNNxxxo.
-  ..okkNNNnnnnNNNNNNNxxxo.
-  ..okkNNNnnnnNNNNNNNxxxo.
-  ..okkNNNnnnnNNNNNNNxxxo.
-  ..okkNNNnnnnNNNNNNNxxxo.
+  ..okkkkkkkkkkkkxxxxxxxo.
+  ..okkkkkkkkkkkkxxxxxxxo.
+  ..okkkkkkkkkkkkxxxxxxxo.
+  ..okkkkkkkkkkkkxxxxxxxo.
+  ..okkkkkkkkkkkkxxxxxxxo.
+  ..okkkkkkkkkkkkxxxxxxxo.
+  ..okkNNNNNNNXNNNNNNxxxo.
+  ..okkNNNNNNNvNNNNNNxxxo.
+  ..okkNNNNNNNXNNNNNNxxxo.
+  ..okkNNNNNNvNvNNNNNxxxo.
+  ..okkNNNNNvNNNvNNNNxxxo.
+  ..okkNNNXXXXXVVVNNNxxxo.
+  ..okkNNNVXVVVVvvNNNxxxo.
+  ..okkNNNVXVVVVvvNNNxxxo.
+  ..okkNNNNVVVVvvNNNNxxxo.
+  ..okkNNNNNVVvvNNNNNxxxo.
   ..okkNFNNfNNNNNNFNNxxxo.
   ..okkNNNfNNNFNNNNNNxxxo.
   ..okkNNNFFNNNNNNfNNxxxo.

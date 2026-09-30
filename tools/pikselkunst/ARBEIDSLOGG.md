@@ -278,13 +278,19 @@ same måte, uansett kven som tek over.
 - **Frå brukaren:** Dører skal opne seg når ein går inn, elementa skal ikkje poppe
   inn, og flammane i grua og omnen var ikkje lenger levande etter at dei vart faste bilete.
 - **Gjort:**
-  - Dører opnar seg: dørbladet sviv inn, opninga blir mørk, og Ivar går inn i mørket
-    før kartet blir bytt (`opneDor` og `DORFORM` i `js/rpg/motor.js`). Forma på døra
-    er målt i husbileta: vanleg hus, låve (dobbeldør), stabbur og kyrkje.
+  - Dører opnar seg: dørbladet sviv inn og opninga blir mørk. Så tonar skjermen raskt
+    til svart og inn att i den nye scenen (`gjennomDor` og `DORFORM` i
+    `js/rpg/motor.js`). Alle dører tonar, også inne. Forma på døra er målt i husbileta:
+    vanleg hus, låve (dobbeldør), stabbur og kyrkje. (Første versjon let Ivar gå inn og
+    bli gjennomsiktig. Det vart teke bort etter ønske frå brukaren.)
+  - Spelaren kjem alltid inn ved døra, og ser bort frå henne. Stova på Åsen fekk eit
+    eige merke ved døra, sidan merke 1 er staden der spelet byrjar.
   - Alle bilete (80) blir lasta før tittelskjermen syner (`Pikslar.forhandslast`,
     `alleBilete`), og alle lastarane brukar eitt felles lager. Ingenting poppar inn.
   - Levande eld (`ILD` og `ild` i `js/rpg/pikslar.js`): tunger som flakkar i grua og
-    glør bak luka i kakkelomnen, teikna oppå inventaret. Flammane blir berre teikna i
+    glør bak luka i kakkelomnen, teikna oppå inventaret, i same takt som lykta, ljosa
+    og elva (150 ms per bilete). Gryta i grua er teikna på nytt som svart jern i ein
+    kjetting, ikkje ei grå flate. Flammane blir berre teikna i
     mørket i eldstaden, så gryta og kroken ligg framfor.
   - `skjerm.html` tek `gaa=opp ventms=300`, så ein kan fange ei dør medan ho opnar seg.
 - **Lærdom:** Faste bilete tek livet frå ting som skal røre seg. Legg rørsla oppå som
