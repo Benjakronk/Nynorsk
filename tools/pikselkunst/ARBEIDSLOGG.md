@@ -369,3 +369,26 @@ same måte, uansett kven som tek over.
 - **Lærdom:** Skugge på fjell må kome frå ei 2D-flate (relieff), ikkje frå hellinga til
   profilen åleine. Då blir det loddrette striper. Og: ein skripta klipp mellom to merke i
   fila må sjekkast mot rekkjefølgja av funksjonane, elles kan han ta med seg for mykje.
+
+## Runde 14: Ivar som Locke
+
+- **Frå brukaren:** Gangen skulle vere like livleg som Locke sin, og Ivar opplevdest mindre
+  uttrykksfull og med mindre personlegdom enn Locke. Han trong kjensleramer.
+- **Research:** Figurarket til Locke kartlagt ramme for ramme (gange, kamp, kjensler) og
+  samanlikna med Ivar på ei side (artifact «Ivar og Locke»). Målt: Locke endrar 58 til 68
+  pikslar i overkroppen per steg mot oss, Ivar 13 til 14. Locke har 11 fargar, Ivar 25.
+- **Gjort:**
+  - Ivar har eit eige, handteikna ark (`ivar_figur.py`) i staden for malen i figur.py:
+    hovudet 11 rader og lengre bein som Locke, 18 fargar der den mørke tonen er delt
+    mellom hår, bukse og sko, ein hårvirvel som stikk opp, fjørpenn bak øyret, sekk med
+    reimar og ein hasselkjepp i åtaket.
+  - Gange som Locke: neven kjem fram framfor magen, armen bak forsvinn, beinet bak blir
+    bøygd og løfta, og overkroppen vrir seg éin piksel mot armen som svingar fram. No
+    64 til 67 pikslar i overkroppen mot oss.
+  - Kjensler (rad 6 og 7 i arket): latter, sjokk, sorg, tenkjer, ivrig og les. Eit
+    manussteg kan ha `kjensle`, og han varer til samtalen er slutt eller Ivar går.
+    Ivar blir ivrig for kvart nytt ord, er sorgtung i opninga og les i boka på slutten.
+  - `figur.py alle` hoppar over figurar med eige ark (`HANDTEIKNA`).
+- **Lærdom:** Ein hovudperson treng eige, handteikna ark. Malen gir like figurar, og
+  personlegdomen kjem frå små ting som bryt forma (virvelen, fjøra, kjeppen) og frå
+  kjensleramer.

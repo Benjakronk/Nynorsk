@@ -72,6 +72,7 @@
   }
   async function meldOrd(id, form, kva) {
     const o = D.ORD[id], fam = D.FAMILIAR[o.fam];
+    if (kva === "nytt") Motor.kjensle("ivrig");                      // Ivar blir glad for kvart nytt ord
     if (kva === "nytt") {
       const forste = ordtal() === 1;
       await Motor.tale(`Nytt ord: «${form}» (${o.aasen}). ${fam.namn} gir ${fam.evne.toLowerCase()}.`, "Ordboka");
@@ -87,6 +88,7 @@
     if (typeof steg === "function") steg = steg(st);
     for (const s of steg || []) {
       if (s.dersom) { const r = await kjoyr(s.dersom(st) ? s.da : s.elles); if (r === "stopp") return "stopp"; continue; }
+      if (s.kjensle !== undefined) Motor.kjensle(s.kjensle);
       if (s.fort) await Motor.fort(s.fort);
       else if (s.t) { await Motor.tale(s.t, s.s); sistTalar = s.s || sistTalar; }
       if (s.lytt) { const [id, form] = s.lytt; await meldOrd(id, form, leggTilForm(id, form, sistTalar)); }
@@ -145,7 +147,7 @@
   }
   async function hending(steg) {
     Motor.pause(true);
-    try { await kjoyr(steg); } finally { if (modus === "felt") Motor.pause(false); }
+    try { await kjoyr(steg); } finally { Motor.kjensle(null); if (modus === "felt") Motor.pause(false); }
   }
 
   /* ---------- Kamp ---------- */

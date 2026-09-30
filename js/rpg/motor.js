@@ -194,6 +194,7 @@ window.Motor = (function () {
       if (pausa || kart !== k0 || (krokar.modus && krokar.modus() !== "felt")) return;
     }
     if (!taSteg(t0)) return;
+    spelar.kjensle = null;                                           // ein kjensle varer til ein går
     flytt(no);
   }
   // Byrjar eit nytt steg i retninga som blir halden nede. Gir true om figuren flyttar seg.
@@ -498,7 +499,7 @@ window.Motor = (function () {
     // Følgjet går eit halvt steg forskyve, så dei to ikkje går i takt.
     const fv = spelar.u + 0.5, fsteg = spelar.flytt ? GANG[((spelar.steg + Math.floor(fv)) % 2) * 2 + (fv % 1 < 0.5 ? 0 : 1)] : 0;
     if (fylgje) figurar.push({ y: fylgje.fy, x: fylgje.fx, sp: fylgje.sprite, dir: fylgje.dir, steg: fsteg });
-    figurar.push({ y: spelar.fy, x: spelar.fx, sp: spelar.sprite, dir: spelar.dir, steg });
+    figurar.push({ y: spelar.fy, x: spelar.fx, sp: spelar.sprite, dir: spelar.dir, steg, kjensle: spelar.kjensle });
     for (const n of naturFig) figurar.push(n);
     // Hus blir sorterte saman med figurane etter den nedste flisraden sin.
     for (const b of kart.def.bygg || []) { const img = Pikslar.bygg(b.id); if (img) figurar.push({ y: b.over ? 999 : b.y + b.h - 1 + 0.01, by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id }); }
@@ -521,7 +522,8 @@ window.Motor = (function () {
         continue; }
       const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S);
       g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx + 3, sy + 13, 10, 3); g.fillRect(sx + 4, sy + 12, 8, 5);
-      g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy - 9);
+      const bilde = f.kjensle && f.sp.kjensle && f.sp.kjensle[f.kjensle] ? f.sp.kjensle[f.kjensle] : f.sp.rammer[f.dir][f.steg];
+      g.drawImage(bilde, sx, sy - 9);
     }
     // Silhuett av spelaren (eller følgjet) bak eit hus, berre der huset har «silhuett: true» i kartet
     // (til spesielle høve, til dømes ein stad der ein må gå bak noko for å finne ein ting).
@@ -646,6 +648,8 @@ window.Motor = (function () {
     pause(p) { pausa = p; if (p) halde.clear(); },
     get kart() { return kart; }, get spelar() { return spelar; },
     settSpelar(sprite) { spelar.sprite = sprite; },
+    // Kjensle for spelaren (latter, sjokk, sorg, tenkje, ivrig, les), eller null. Varer til han går.
+    kjensle(k) { spelar.kjensle = k || null; },
     settFylgje(sprite) { fylgje = sprite ? { sprite, x: spelar.x, y: spelar.y, fx: spelar.x, fy: spelar.y, dir: spelar.dir, flytt: null } : null; },
     E,
   };

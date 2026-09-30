@@ -4,7 +4,7 @@
 <!-- Brukt av skjermbilete.py: opnar spelet, går til eit kart og frys lerretet.
      Parametrar: kart, m (merke), x og y (der Ivar står), kamp (fiendar, kommaskilt),
      parti (fleire i partiet), hp (til dømes huldra:4), tale (namn:tekst),
-     gaa (opp/ned/venstre/hogre) og ventms. -->
+     gaa (opp/ned/venstre/hogre), ventms og kjensle (til dømes sjokk). -->
 <style>body{margin:0;background:#000;color:#fff;font:12px monospace} iframe{width:1100px;height:720px;border:0;display:block} #ut{white-space:pre-wrap;padding:4px}</style>
 <iframe id="f"></iframe>
 <div id="ut">køyrer …</div>
@@ -35,6 +35,7 @@ f.onload = async () => {
   for (const x of (q.get("hp") || "").split(",").filter(Boolean)) { const [id, n] = x.split(":"), m = st.parti.find(m => m.id === id); if (m) m.hp = +n; }
   if (q.get("kamp")) { M.krokar.kamp(q.get("kamp").split(",")); let n = 0; while (!synleg(".kamp-meny") && n++ < 300) await vent(50); }
   // tale=Huldra:Teksten opnar samtaleboksen med portrettet til den som talar.
+  if (q.get("kjensle")) M.kjensle(q.get("kjensle"));
   if (q.get("tale")) { const [namn, ...t] = q.get("tale").split(":"); M.tale(t.join(":") || "…", namn); await vent(2500); }
   // gaa=opp held ei piltast nede i «ventms» millisekund før biletet blir teke (til dømes for å sjå ei dør opne seg).
   if (q.get("gaa")) {

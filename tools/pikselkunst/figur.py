@@ -901,6 +901,15 @@ def les_u():
     return u
 
 
+def _ivar():
+    import ivar_figur
+    return ivar_figur.lag()
+
+
+# Figurar som har eit eige, handteikna ark (med kjensler) i staden for malen.
+HANDTEIKNA = {"ivar": _ivar}
+
+
 def kontaktark(alle, skala=4):
     namn = list(alle)
     kol = 6
@@ -908,7 +917,7 @@ def kontaktark(alle, skala=4):
     cw, ch = (W * 4 + 6) * skala, (H + 4) * skala
     ark = Image.new("RGB", (kol * cw, rader * ch), (58, 110, 60))
     for n, id_ in enumerate(namn):
-        im = bilete(alle[id_])
+        im = HANDTEIKNA[id_]() if id_ in HANDTEIKNA else bilete(alle[id_])
         for dir, steg, dx in ((0, 0, 0), (1, 0, 1), (2, 0, 2), (0, 1, 3)):
             rute = im.crop((steg * W, dir * H, steg * W + W, dir * H + H)).resize((W * skala, H * skala), Image.NEAREST)
             ark.paste(rute, ((n % kol) * cw + dx * (W + 1) * skala, (n // kol) * ch + 2 * skala), rute)
@@ -925,5 +934,7 @@ if __name__ == "__main__":
     val = list(alle) if sys.argv[1] == "alle" else sys.argv[1:]
     os.makedirs(UT, exist_ok=True)
     for id_ in val:
+        if id_ in HANDTEIKNA:                                           # hovudpersonar med eige, handteikna ark
+            HANDTEIKNA[id_]().save(os.path.join(UT, id_ + ".png")); print(id_, "(handteikna)"); continue
         bilete(alle[id_]).save(os.path.join(UT, id_ + ".png"))
         print(id_)

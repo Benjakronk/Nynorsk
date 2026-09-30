@@ -621,7 +621,7 @@ window.RPGData = (function () {
         "No skriv det av seg sjølv, i kyrkjebøker, tingbøker og lovtekstar. Der det breier seg, blir talen til folk stiv og framand.",
         "Hovdebygda i Ørsta, våren 1826. Ivar Aasen er tretten år. Mor døydde då han var tre. I vinter døydde far.",
       ] },
-      { s: "Storebror", t: "Ivar, du er vaken. Det er mykje som skal gjerast på garden no, når far er borte." },
+      { s: "Storebror", t: "Ivar, du er vaken. Det er mykje som skal gjerast på garden no, når far er borte.", kjensle: "sorg" },
       { s: "Storebror", t: "Snakk med folk før du går. Du har alltid vore flink til å høyre etter." },
     ],
     bror: [{ dersom: harOrd("stein"), da: [
@@ -664,7 +664,7 @@ window.RPGData = (function () {
       { t: "Frå det danske brevet renn blekket ut på tunet. Det samlar seg til ein dråpe med gule auge og kryp mot Ivar." },
       { kamp: ["blekkdrope"], rettleiing: 1 },
       { s: "Syster", t: "Du sa eit ord, og blekket vart borte! Korleis gjorde du det?" },
-      { s: "Ivar", t: "Eg veit ikkje. Orda hadde liksom kraft i seg, når eg sa dei slik vi seier dei her." },
+      { s: "Ivar", t: "Eg veit ikkje. Orda hadde liksom kraft i seg, når eg sa dei slik vi seier dei her.", kjensle: "tenkje" },
       { s: "Storebror", t: "Folk seier at blekket kjem frå kyrkjebøkene. Presten har bede om hjelp. Gå ned i bygda og snakk med han. Han er i kyrkja." },
       { flagg: "skiftebrev" }, { lagre: 1 },
     ], elles: [
@@ -829,18 +829,18 @@ window.RPGData = (function () {
       { s: "Tenaren på Ekset", t: "Den som vil ⟪vite⟫ noko, må lese. Og den som les, må vite kva han les." },
       { lytt: ["vita", "vite"] },
       { t: "Ivar blar i ei gamal kongesoge. Mykje forstår han ikkje. Men nokre av dei gamle orda liknar på dei han høyrer heime." },
-      { gi: "sagabok" }, { t: "Ivar fekk låne ei gamal kongesoge." },
+      { gi: "sagabok" }, { t: "Ivar fekk låne ei gamal kongesoge.", kjensle: "les" },
     ] }],
     /* Arkivet */
     blekklatten: [{ dersom: st => st.flagg.latt, da: [], elles: [
       { t: "Midt i arkivet ligg kyrkjeboka for Hovdebygda. Blekket renn ut av henne og samlar seg til ein stor, glinsande klump." },
       { s: "Blekklatten", t: "Alt skal skrives ned. Alt skal skrives rigtigt. Hvad der ikke staar skrevet, har aldrig været til." },
-      { s: "Ivar", t: "Far står skriven i den boka. Men han snakka ikkje slik. Ingen her snakkar slik!" },
+      { s: "Ivar", t: "Far står skriven i den boka. Men han snakka ikkje slik. Ingen her snakkar slik!", kjensle: "sjokk" },
       { kamp: ["blekklatten"], boss: 1 },
       { flagg: "latt" },
       { t: "Blekklatten renn saman til ein liten dråpe og siv ned i golvsprekkene. Kyrkjeboka er stille." },
       { t: "På den siste sida står namnet til far, skrive med presten si hand. Ved sida av har nokon rissa inn med fin, fin skrift: «Det som er skrive, står.»" },
-      { s: "Ivar", t: "Det same som i boka mi …" },
+      { s: "Ivar", t: "Det same som i boka mi …", kjensle: "les" },
       { kapittelslutt: 1 },
     ] }],
   };

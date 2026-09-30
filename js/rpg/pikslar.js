@@ -701,7 +701,10 @@ window.Pikslar = (function () {
     const ute = lerret(FH, 16);
     { const g = ute.getContext("2d"); g.translate(FH / 2, 8); g.rotate(Math.PI / 2); g.drawImage(rammer[2][0], -FW / 2, -FH / 2); }
     const kamp = { atak: kopi(rammer[2][1]), galdr: kopi(rammer[2][0]), skadd: kopi(rammer[2][0]), svak: kopi(rammer[2][0]), ute };
-    const f = { rammer, kamp, w: FW, h: FH };
+    // Kjensler (mot oss): berre hovudpersonar med handteikna ark har dei. Til då: ståramma.
+    const KJENSLER = ["latter", "sjokk", "sorg", "tenkje", "ivrig", "les"];
+    const kjensle = Object.fromEntries(KJENSLER.map(k => [k, kopi(rammer[0][0])]));
+    const f = { rammer, kamp, kjensle, w: FW, h: FH };
     // Handteikna ark frå tools/pikselkunst/figur.py (48 x 144): rad 0 til 3 gange (steg bortover),
     // rad 4 åtak, galdr og skadd, rad 5 svak (på kne) og slått ut (24 x 16 nedst i ruta).
     // Når det er lasta, blir det teikna inn i dei same lerreta, så alle som held på figuren får det nye.
@@ -717,6 +720,7 @@ window.Pikslar = (function () {
         if (img.height < FH * 6) return;
         teiknInn(kamp.atak, 0, FH * 4); teiknInn(kamp.galdr, FW, FH * 4); teiknInn(kamp.skadd, FW * 2, FH * 4);
         teiknInn(kamp.svak, 0, FH * 5); teiknInn(kamp.ute, FW, FH * 5 + 8);
+        if (img.height >= FH * 8) KJENSLER.forEach((k, i) => teiknInn(kjensle[k], (i % 3) * FW, FH * (6 + Math.floor(i / 3))));
       };
       if (klar(img)) bruk(); else img.addEventListener("load", bruk, { once: true });
     }
