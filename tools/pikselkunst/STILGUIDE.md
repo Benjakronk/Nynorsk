@@ -142,6 +142,9 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
   Dei ligg i rad 4 og 5 i figurarket.
 - Embetsmannsheimen (prestegarden, Ekset): mahogni, messing, kvit duk,
   kakkelomn og golvur. Bondestova: furu, grue, trefat, rosemaling.
+- Gange som i Final Fantasy VI: armane svingar i motsett takt med beina (neven fram
+  framfor hofta), foten fram blir breiare, beinet bak blir løfta. Frå sida: langt steg,
+  hælen oppe på beinet bak, og overkroppen søkk éin piksel.
 - Alle figurar blir laga med `figur.py`. Nye personar får ein oppføring i `U` i
   `js/rpg/data.js`, og deretter `python tools/pikselkunst/figur.py <id>`.
 

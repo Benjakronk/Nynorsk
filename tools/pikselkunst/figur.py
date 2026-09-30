@@ -653,6 +653,58 @@ def hovud(g, u, d, hy=0, hx=0, pose=None):
                 if g[y][x] == "m": g[y][x] = "e"
 
 
+# ---------------------------------------------------------------- gange (etter Final Fantasy VI)
+# I Final Fantasy VI arbeider heile kroppen når figuren går: armane svingar i motsett takt med
+# beina (armen fram kjem innover og ned framfor hofta, armen bak blir kortare), foten på
+# beinet fram blir breiare og går litt ut, beinet bak blir løfta. Frå sida er steget langt,
+# armen svingar godt fram eller bak, og hovud og overkropp søkk éin piksel i steget.
+
+def _set(g, i, x, tekst):
+    for k, c in enumerate(tekst):
+        if 0 <= x + k < W and c != ".": g[i][x + k] = c
+
+
+def gang_framme(rader, type_, steg):
+    """Mot oss eller bakfrå: armar og bein i stegstilling. rader er ståramma (rad 12 til 22)."""
+    g = [list(r) for r in rader]
+    Hh = 5 if type_ == "bukse" else 4                   # rada med hendene (17 eller 16)
+    for i in range(1, Hh + 1):                          # ta bort armane frå ståramma
+        for x in (2, 3, 12, 13): g[i][x] = "."
+    v_arm, h_arm = ("bak", "fram") if steg == 1 else ("fram", "bak")
+    v_bein, h_bein = ("fram", "bak") if steg == 1 else ("bak", "fram")
+    if type_ == "bukse":
+        for i in range(6, 11):
+            for x in range(2, 14): g[i][x] = "."
+        for (x, lys, tilstand) in ((4, "Bbn", v_bein), (9, "bbn", h_bein)):
+            ut = 1 if x == 9 else -1                        # foten fram går litt ut til sida
+            if tilstand == "fram":
+                for i in (6, 7, 8): _set(g, i, x, lys)
+                _set(g, 9, min(x, x + ut), "FFFf"); _set(g, 10, min(x, x + ut), "ffff")
+            else:                                           # løfta: stuttare, foten ein rad høgare
+                for i in (6, 7): _set(g, i, x, lys)
+                _set(g, 8, x, "FFf"); _set(g, 9, x, "fff")
+    # armane
+    for i in range(1, Hh - 1): _set(g, i, 2, "AA" if i < 3 else "Aa"); _set(g, i, 12, "zz" if i == 1 else "az")
+    if v_arm == "fram": _set(g, Hh - 1, 3, "Aa"); _set(g, Hh, 3, "hhh"); _set(g, Hh + 1, 3, "hhj")
+    else: _set(g, Hh - 1, 2, "hh")
+    if h_arm == "fram": _set(g, Hh - 1, 11, "az"); _set(g, Hh, 10, "hhj"); _set(g, Hh + 1, 10, "hjj")
+    else: _set(g, Hh - 1, 12, "hj")
+    return ["".join(r) for r in g]
+
+
+# Armen på sida (mot venstre) i gange. Rader før skuggesøkket.
+SIDEARM = {
+    "fram": del_(14, ".....AAa........", "....AAa.........", "...AAz..........", "..hhh...........", "..hhj..........."),
+    "bak": del_(14, ".......AAa......", "........AAa.....", ".........AAz....", "..........hhh...", "..........hhj..."),
+}
+# Bein på sida i steget (rad 19 til 22): steg 1 har det nære beinet fram, steg 2 bak.
+SIDEBEIN = {
+    1: ["....BBbbbbbn....", "...BBb...bbn....", "..BBb.....bbn...", ".FFFf......ffn.."],
+    2: ["....bbbbbBBn....", "...bbn...BBb....", "..bbn.....BBb...", ".fff......FFFb.."],
+}
+SIDESKO_KJOLE = {1: ".FFf.......ff...", 2: ".ff.......FFf..."}
+
+
 def samanset(u, dir, steg, pose=None):
     """Teiknrutenett (16 x 24) utan omriss. dir 0 ned, 1 opp, 2 venstre. pose: kampstilling eller None."""
     g = tom()
@@ -663,6 +715,9 @@ def samanset(u, dir, steg, pose=None):
     stav = u.get("stav") if not pose else None
     hy, hx = (2, -1 if d == 2 else 0) if krok else (0, 0)
     bx = 0
+    gang = steg in (1, 2) and not pose
+    by = 1 if gang and d == 2 else 0                  # skuggesøkk: overkroppen søkk i steget frå sida
+    hy += by
     if pose == "atak": hx, bx = -1, -1
     if pose == "skadd": hx, bx = 2, 1
     if pose == "svak": hy = 3
@@ -672,7 +727,15 @@ def samanset(u, dir, steg, pose=None):
         for y in range(y0 + hy, 23): g[y][x] = "N" if y in (y0 + hy, 22) or x == 14 else "C"
     kd = 2 if d == 2 else 0
     rader = kroppsrader(u, type_, d, kd, steg if not pose else (2 if pose == "atak" else 0))
-    if d == 2 and (pose or stav):
+    if gang and kd == 0:
+        rader = gang_framme(kroppsrader(u, type_, d, kd, 0) if type_ == "bukse" else rader, type_, steg)
+        legg(g, (12, fargar_rader(u, type_, rader)), 0, bx)
+    elif gang and d == 2:
+        torso = ARMLAUS[type_]
+        legg(g, (12 + by, fargar_rader(u, type_, torso)), 0, bx)
+        if type_ == "bukse": legg(g, (19, fargar_rader(u, type_, SIDEBEIN[steg], 6)), 0, bx)
+        else: legg(g, (19, fargar_rader(u, type_, rader[7:10] + [SIDESKO_KJOLE[steg]])), 0, bx)
+    elif d == 2 and (pose or stav):
         torso = ARMLAUS[type_]
         if pose == "svak":
             legg(g, (15, fargar_rader(u, type_, torso[:5])), 0, bx)
@@ -682,11 +745,12 @@ def samanset(u, dir, steg, pose=None):
             legg(g, (12, fargar_rader(u, type_, torso + rader[6:])), 0, bx)
     else:
         legg(g, (12, fargar_rader(u, type_, rader)), 0, bx)
-    if krok and d == 2: legg(g, PUKKEL)
+    if krok and d == 2: legg(g, PUKKEL, by)
     if u.get("forkle") and (type_, d) != ("bukse", 1) and ("forkle", d) in TILLEGG and pose != "svak":
-        legg(g, TILLEGG[("forkle", d)], 0, bx)
-    if u.get("sekk") and d == 2: legg(g, TILLEGG[("sekk", 2)], 3 if pose == "svak" else 0, bx)
-    if u.get("hale") and d == 2 and pose != "svak": legg(g, HALE[2], 0, bx)
+        legg(g, TILLEGG[("forkle", d)], by, bx)
+    if u.get("sekk") and d == 2: legg(g, TILLEGG[("sekk", 2)], 3 if pose == "svak" else by, bx)
+    if u.get("hale") and d == 2 and pose != "svak": legg(g, HALE[2], by, bx)
+    if gang and d == 2 and not stav: legg(g, SIDEARM["bak" if steg == 1 else "fram"], by, bx)
     hovud(g, u, d, hy, hx, pose)
     if u.get("krage"): legg(g, TILLEGG[("krage", d)], hy, hx)
     if u.get("sekk") and d in (0, 1): legg(g, TILLEGG[("sekk", d)])
@@ -695,7 +759,7 @@ def samanset(u, dir, steg, pose=None):
         y0, x = STAV[(stav, 2)]
         x += hx
         for y in range(y0 + hy, 23): g[y][x] = "N" if y in (y0 + hy, 22) else "C"
-        legg(g, ARM["stav"], 0, hx)
+        legg(g, ARM["stav"], by, hx)
     if stav and d != 2:                       # handa rundt staven
         g[16][STAV[(stav, d)][1]] = "h"
     arm = {"atak": "fram", "galdr": "opp", "skadd": "bak", "svak": "kne"}.get(pose)

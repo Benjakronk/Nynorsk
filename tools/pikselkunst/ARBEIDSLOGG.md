@@ -295,3 +295,22 @@ same måte, uansett kven som tek over.
   - `skjerm.html` tek `gaa=opp ventms=300`, så ein kan fange ei dør medan ho opnar seg.
 - **Lærdom:** Faste bilete tek livet frå ting som skal røre seg. Legg rørsla oppå som
   kode, avgrensa til dei pikslane i biletet som høyrer til elden.
+
+## Runde 11: gangen
+
+- **Frå brukaren:** Gange-animasjonen hadde mykje å gå på samanlikna med Final Fantasy VI.
+- **Research:** Gangrammene til Locke og Terra (figurarka frå runde 6), lagde ved sida av
+  Ivar og målte piksel for piksel mot ståramma:
+  - Final Fantasy VI endrar 35 til 70 pikslar i overkroppen og 34 til 57 i beina per
+    steg. Ivar endra 5 og 14. Heile kroppen arbeider, ikkje berre føtene.
+  - Mot oss: armane svingar i motsett takt med beina. Armen fram kjem innover og ned
+    framfor hofta med ein tydeleg neve, armen bak blir kortare. Foten på beinet fram blir
+    breiare og går litt ut, beinet bak blir løfta.
+  - Frå sida: langt steg med tjukke bein, foten fram strekt ut og hælen oppe på beinet
+    bak. Armen svingar godt fram eller bak. Hovud og overkropp søkk éin piksel i steget.
+  - Tre rammer per retning (stå, steg, steg), som før.
+- **Gjort:** `figur.py` byggjer gangrammene av delar: overkroppen utan armar, armar i
+  tre stillingar (ned, fram, bak) og bein i tre (stå, fram, løfta), og frå sida eit
+  skuggesøkk på éin piksel. Gjeld bukse og kjole, stav, sekk, hale og krokrygg.
+- **Lærdom:** Mål rørsla mot referansen (kor mange pikslar som endrar seg i kvar del),
+  ikkje berre sjå på ho. Det viste med ein gong at overkroppen stod stille.
