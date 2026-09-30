@@ -91,7 +91,9 @@ window.Motor = (function () {
     const folk = (def.folk || []).filter(f => merke[f.merke] && (!f.vis || f.vis(krokar.tilstand()))).map(f => {
       const [x, y] = merke[f.merke];
       if (f.flis) fliser[y][x] = f.flis;
-      return Object.assign({}, f, { x, y, dir: 0, sprite: f.usynleg ? null : Pikslar.figur(RPGData.U[f.u]) });
+      const dir = f.retning != null ? f.retning : 0;
+      return Object.assign({}, f, { x, y, fx: x, fy: y, hx: x, hy: y, dir, grunndir: dir, steg: 0, flytt: null,
+        neste: performance.now() + 800 + Math.random() * 2500, sprite: f.usynleg ? null : Pikslar.figur(RPGData.U[f.u]) });
     });
     kart = { id, def, w, h, fliser, merke, folk, kister: def.kister || [], dorer: (def.dorer || []).filter(d => d.til) };
     const [sx, sy] = merke[merkeId] || merke["1"] || [1, 1];
@@ -133,8 +135,53 @@ window.Motor = (function () {
     if (fylgje && fylgje.flytt) { fylgje.fx = fylgje.flytt.fx + (fylgje.x - fylgje.flytt.fx) * u; fylgje.fy = fylgje.flytt.fy + (fylgje.y - fylgje.flytt.fy) * u; }
     return u;
   }
+  /* ---------- Folk som lever litt ----------
+     atferd i data.js: «stille» (står i retninga si), «snu» (ser seg rundt av og til),
+     «gaa» (går litt omkring innanfor radius fliser frå staden sin). retning: 0 ned,
+     1 opp, 2 venstre, 3 høgre. Etter ein samtale går ein tilbake til vanen sin. */
+  const FOLK_FART = 260;
+  const naerDor = (x, y) => kart.dorer.some(d => Math.abs(d.ved[0] - x) + Math.abs(d.ved[1] - y) <= 1)
+    || Object.entries(kart.merke).some(([m, [mx, my]]) => /[0-9]/.test(m) && mx === x && my === y);
+  function folkKanGaa(f, x, y) {
+    if (x < 0 || y < 0 || x >= kart.w || y >= kart.h) return false;
+    const c = kart.fliser[y][x];
+    if (Pikslar.FAST.has(c) || "DdE~Q".includes(c) || erVatn(x, y)) return false;
+    if (Math.abs(x - f.hx) + Math.abs(y - f.hy) > (f.radius || 1)) return false;
+    if (spelar.x === x && spelar.y === y) return false;
+    if (spelar.flytt && Math.round(spelar.flytt.fx) === x && Math.round(spelar.flytt.fy) === y) return false;
+    if (kart.folk.some(o => o !== f && ((o.x === x && o.y === y) || (o.flytt && o.flytt.fx === x && o.flytt.fy === y)))) return false;
+    return !kisteVed(x, y) && !naerDor(x, y);
+  }
+  function oppdaterFolk(no) {
+    for (const f of kart.folk) {
+      if (!f.sprite || f.flis) continue;
+      if (f.flytt) {
+        const u = Math.min(1, (no - f.flytt.t0) / FOLK_FART); f.u = u;
+        f.fx = f.flytt.fx + (f.x - f.flytt.fx) * u; f.fy = f.flytt.fy + (f.y - f.flytt.fy) * u;
+        if (u >= 1) f.flytt = null;
+        continue;
+      }
+      if (no < f.neste) continue;
+      const atferd = f.atferd || "stille";
+      if (atferd === "stille") { f.dir = f.grunndir; f.neste = no + 1e9; continue; }
+      if (atferd === "snu") {
+        const val = f.snu || [0, 1, 2, 3];
+        f.dir = Math.random() < 0.4 ? f.grunndir : val[Math.floor(Math.random() * val.length)];
+        f.neste = no + 1800 + Math.random() * 3500;
+        continue;
+      }
+      // gaa: eit steg i ei tilfeldig retning, eller berre snu seg om det ikkje går
+      const dir = Math.floor(Math.random() * 4), nx = f.x + DX[dir], ny = f.y + DY[dir];
+      f.dir = dir;
+      if (Math.random() < 0.7 && folkKanGaa(f, nx, ny)) {
+        f.flytt = { fx: f.x, fy: f.y, t0: no }; f.x = nx; f.y = ny; f.steg++;
+        f.neste = no + FOLK_FART + 600 + Math.random() * 2600;
+      } else f.neste = no + 900 + Math.random() * 2000;
+    }
+  }
   function oppdater(no) {
     if (pausa || !kart || byter) return;
+    oppdaterFolk(no);
     let t0 = no;
     if (spelar.flytt) {
       if (flytt(no) < 1) return;
@@ -197,7 +244,7 @@ window.Motor = (function () {
   function samhandle() {
     const tx = spelar.x + DX[spelar.dir], ty = spelar.y + DY[spelar.dir];
     const f = folkVed(tx, ty);
-    if (f) { if (!f.usynleg) f.dir = [1, 0, 3, 2][spelar.dir]; if (krokar.samtale) krokar.samtale(f); return; }
+    if (f) { if (!f.usynleg) { f.dir = [1, 0, 3, 2][spelar.dir]; f.neste = performance.now() + 4000; } if (krokar.samtale) krokar.samtale(f); return; }
     const k = kisteVed(tx, ty);
     if (k && krokar.kiste) { krokar.kiste(k); return; }
     const c = kart.fliser[ty] && kart.fliser[ty][tx];
@@ -390,7 +437,8 @@ window.Motor = (function () {
     g.fillStyle = "#0e0c12"; g.fillRect(0, 0, lerret.width, lerret.height);
     const x0 = Math.floor(-ox) - 1, y0 = Math.floor(-oy) - 1;
     const naturFig = [];
-    for (let y = Math.max(0, y0); y < Math.min(kart.h, y0 + VH + 2); y++) for (let x = Math.max(0, x0); x < Math.min(kart.w, x0 + VW + 2); x++) {
+    // Rada under skjermen er med, fordi høge figurar (tre, murar) står der og stikk opp i biletet.
+    for (let y = Math.max(0, y0); y < Math.min(kart.h, y0 + VH + 5); y++) for (let x = Math.max(0, x0 - 1); x < Math.min(kart.w, x0 + VW + 3); x++) {
       const c = kart.fliser[y][x];
       const sx = Math.round((x + ox) * S), sy = Math.round((y + oy) * S);
       // Veggar med vegg eller dør under seg er sidevegger: dei blir teikna ovanfrå.
@@ -442,7 +490,8 @@ window.Motor = (function () {
       if (k && krokar.opna && krokar.opna(k)) { g.fillStyle = "rgba(10,5,20,.45)"; g.fillRect(sx + 2, sy + 4, 12, 3); }
     }
     const GANG = [1, 0, 2, 0];
-    const figurar = kart.folk.filter(f => f.sprite).map(f => ({ y: f.y, sp: f.sprite, x: f.x, dir: f.dir, steg: 0 }));
+    const figurar = kart.folk.filter(f => f.sprite).map(f => ({ y: f.fy, sp: f.sprite, x: f.fx, dir: f.dir,
+      steg: f.flytt ? GANG[(f.steg % 2) * 2 + (f.u < 0.5 ? 0 : 1)] : 0 }));
     // Gangramma følgjer steget, ikkje klokka: to rammer per flis (steg, stå), annakvar fot.
     const steg = spelar.flytt ? GANG[(spelar.steg % 2) * 2 + (spelar.u < 0.5 ? 0 : 1)] : 0;
     if (fylgje) figurar.push({ y: fylgje.fy, x: fylgje.fx, sp: fylgje.sprite, dir: fylgje.dir, steg });

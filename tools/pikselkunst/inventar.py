@@ -171,16 +171,30 @@ def grue():
 
 
 def hylle():
-    """Hylle på veggen med trefat og eit måla krus, 2 fliser breitt."""
-    W, H = 2 * 16 + 8, 20
+    """Hylle på veggen med to rosemålte trefat på høgkant og eit ølkrus med lok,
+    hyllebord på to knektar. 2 fliser breitt."""
+    W, H = 2 * 16 + 8, 22
     L = Lerret(W, H)
-    for x in range(2, W - 2): L.p(x, 14, "C"); L.p(x, 15, "A"); L.p(x, 16, "a")
-    for k, x in enumerate(range(6, W - 6, 7)):
-        for dy in range(-6, 0):
-            for dx in range(-3, 4):
-                if dx * dx / 9 + dy * dy / 36 <= 1: L.p(x + dx, 14 + dy, "C" if dx < 0 else "c")
-        L.p(x - 1, 9, "m" if k % 2 else "E")
-    for y in range(9, 14): L.p(W - 7, y, "T"); L.p(W - 6, y, "U")
+    for x in range(2, W - 2): L.p(x, 14, "C"); L.p(x, 15, "c"); L.p(x, 16, "A")          # hyllebordet
+    for (kx, retn) in [(6, 1), (W - 7, -1)]:                                             # knektar
+        for k in range(5):
+            for d in range(5 - k): L.p(kx + retn * d, 17 + k, "c" if d == 0 else "A")
+    for cx in (9, 21):                                                                   # trefat på høgkant
+        for y in range(3, 14):
+            for x in range(cx - 5, cx + 6):
+                d = ((x - cx) ** 2 + (y - 8) ** 2) ** 0.5
+                if d <= 5.4: L.p(x, y, "T" if d > 4.4 else "C" if d > 3.2 else "U")
+        for (dx, dy, c) in [(0, 0, "y"), (-1, 0, "E"), (1, 0, "E"), (0, -1, "E"), (0, 1, "E"),
+                            (-2, -2, "m"), (2, -2, "m"), (-2, 2, "m"), (2, 2, "m"), (-3, 0, "m"), (3, 0, "m")]:
+            L.p(cx + dx, 8 + dy, c)
+        L.p(cx - 3, 5, "w"); L.p(cx - 2, 4, "w")                                         # glans
+    for y in range(6, 14):                                                               # ølkrus med lok og hank
+        for x in range(28, 35): L.p(x, y, "C" if x < 30 else "c" if x < 33 else "A")
+    for x in range(28, 35): L.p(x, 7, "a"); L.p(x, 12, "a")                               # band
+    for x in range(27, 36): L.p(x, 5, "U")
+    L.p(30, 4, "U"); L.p(31, 4, "U")
+    for y in range(7, 12): L.p(36, y, "A")
+    L.p(35, 7, "A"); L.p(35, 11, "A")
     omriss(L)
     return L
 

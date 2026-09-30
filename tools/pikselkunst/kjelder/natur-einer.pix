@@ -1,0 +1,31 @@
+# namn: natur-einer
+# type: fiende
+# ut: bilete/spel/natur/einer.png
+# storleik: 18x17
+palett:
+  . = -
+  o = #0a0514    omriss
+  0 = #0c1e1c    gran djup
+  1 = #163228    gran skugge
+  2 = #1f4a38    gran
+  3 = #2e6448    gran lys
+  B = #44424e    stein skugge
+  D = #8c8a96    stein lys
+bilete:
+  ......o2o1oo......
+  .....oo33321o.....
+  ....o2332222o.....
+  ....o33222221o....
+  ....o322221111o...
+  ...o3222211112o...
+  ..o23222111D02oo..
+  .oo333D1110B3321o.
+  o23332B100032222o.
+  o3322222133222221o
+  o322221113222D111o
+  o2222111D2222B111o
+  o2221110B22211100o
+  .o11110011111100o.
+  ..o100011101000o..
+  ...ooo110000ooo...
+  ......oooooo......

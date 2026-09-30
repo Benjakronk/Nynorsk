@@ -852,7 +852,12 @@ window.Pikslar = (function () {
   /* Naturelement som heile figurar (bilete/spel/natur/, laga med tools/pikselkunst/natur.py).
      Gir { img, x, y } med plassering i pikslar relativt til flisa, eller null om det ikkje er noko å teikne.
      Til bileta er lasta, blir dei gamle, kodeteikna trea brukte. */
-  const NATURTYPE = { "#": ["gran1", "gran2", "gran3"], "t": ["bjork1", "bjork2", "bjork3"], "o": ["stein1", "stein2", "stein3"] };
+  // Variantar blir valde etter plassen. Vanlege former står fleire gonger, så dei kjem oftast.
+  const NATURTYPE = {
+    "#": ["gran1", "gran2", "gran3", "gran1", "gran2", "gran-ung"],
+    "t": ["bjork1", "bjork2", "bjork3", "bjork1", "bjork-ung", "bjork-dobbel"],
+    "o": ["stein1", "stein2", "stein3", "stein1", "heller", "roys", "einer", "einer", "bauta"],
+  };
   function natur(teikn, x, y) {
     const typar = NATURTYPE[teikn];
     if (!typar) return null;
@@ -878,7 +883,7 @@ window.Pikslar = (function () {
       for (const b of k.bygg || []) ut.push(`bilete/spel/bygg/${b.id}.png`);
       if (k.bakgrunn) ut.push(`bilete/spel/kamp/${k.bakgrunn}.png`);
     }
-    for (const namn of Object.values(NATURTYPE).flat()) ut.push(`bilete/spel/natur/${namn}.png`);
+    for (const namn of new Set(Object.values(NATURTYPE).flat())) ut.push(`bilete/spel/natur/${namn}.png`);
     ut.push("bilete/spel/natur/haug.png");
     for (const id of Object.keys(D.U)) ut.push(`bilete/spel/figurar/${id}.png`);
     for (const id of Object.values(D.PORTRETT || {})) ut.push(`bilete/spel/portrett/${id}.png`);

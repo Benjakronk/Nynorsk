@@ -193,10 +193,146 @@ def haug():
     return L
 
 
+# ---------------------------------------------------------------- variantar (runde 12)
+# Fleire former av same slag, så skogen og bøen ikkje ser kopierte ut: ung bjørk og
+# tvistamma bjørk, ung gran, flat berghelle, steinrøys, ståande stein og einerbusk.
+
+def steinklump(L, cx, cy, rx, ry, mose=False, fro=1):
+    """Ein stein med flater: lys oppe til venstre, mørk nede, flatare botn, mose på toppen."""
+    for y in range(L.h):
+        for x in range(L.w):
+            nx, ny = (x + .5 - cx) / rx, (y + .5 - cy) / ry
+            if ny > 0.55: ny = 0.55 + (ny - 0.55) * 1.8
+            if nx * nx + ny * ny > 1: continue
+            sv = -nx * 0.5 - ny * 0.85
+            c = "E" if sv > 0.62 else "D" if sv > 0.18 else "C" if sv > -0.35 else "B" if sv > -0.75 else "A"
+            if mose and c in "ED" and ny < -0.3 + math.sin(x * 1.3 + fro) * 0.25: c = "p" if ny < -0.7 else "n"
+            L.p(x, y, c)
+
+
+def bjork_ung():
+    """Ung bjørk: tynn, rett stamme og ei lita, open krone."""
+    W, H = 20, 30
+    L = Lerret(W, H)
+    for y in range(12, 29):
+        x = 10 + round(math.sin(y / 6) * 0.6)
+        L.p(x, y, "Y"); L.p(x + 1, y, "X")
+        if h(x, y, 41) > 0.75: L.p(x, y, "W")
+    for (kx, ky, r) in [(10, 9, 4.5), (6, 11, 3), (14, 11, 3.2)]:
+        klump(L, kx, ky, r, ("7", "6", "5", "5"), 4)
+    for (kx, ky, r) in [(10, 6, 3.8), (6, 8, 2.8), (14, 8, 2.9), (10, 3, 2.4)]:
+        klump(L, kx, ky, r, ("9", "8", "7", "6"), 4)
+    omriss(L)
+    return L
+
+
+def bjork_dobbel():
+    """Tvistamma bjørk: to kvite stammer frå same rot, brei krone."""
+    W, H = 36, 42
+    L = Lerret(W, H)
+    for (x0, lut, fro) in [(16, -0.18, 1), (19, 0.2, 2)]:
+        for y in range(14, 41):
+            x = round(x0 + lut * (40 - y) + math.sin(y / 4 + fro) * 0.7)
+            L.p(x, y, "Z" if fro == 1 else "Y"); L.p(x + 1, y, "X")
+            if h(x, y, fro + 40) > 0.72: L.p(x, y, "W")
+    for x in range(14, 23): L.p(x, 40, "X")
+    for (kx, ky, r) in [(12, 13, 5.5), (24, 13, 5.5), (18, 15, 4)]:
+        klump(L, kx, ky, r, ("7", "6", "5", "5"), 6)
+    for (kx, ky, r) in [(11, 8, 5), (25, 8, 5), (18, 6, 4.6), (6, 13, 3.4), (30, 13, 3.4), (14, 3, 3.2), (23, 3, 3.3)]:
+        klump(L, kx, ky, r, ("9", "8", "7", "6"), 6)
+    for i in range(8):
+        x = 6 + int(h(i, 6, 5) * 24); y = 2 + int(h(i, 6, 6) * 14)
+        if L.get(x, y) in "78": L.p(x, y, "9" if y < 9 else "6")
+    omriss(L)
+    return L
+
+
+def gran_ung():
+    """Ung gran: smal og låg, tre greinlag."""
+    W, H = 16, 28
+    L = Lerret(W, H)
+    cx = 8
+    for y in range(23, 27): L.p(cx - 1, y, "c"); L.p(cx, y, "b")
+    for i, (y0, r) in enumerate([(3, 2.5), (8, 4), (13, 5.5), (18, 6.8)]):
+        for y in range(y0, y0 + 6):
+            t = (y - y0) / 6; b = r * (0.35 + 0.65 * t)
+            for x in range(W):
+                dx = x + .5 - cx
+                if abs(dx) > b: continue
+                c = "3" if dx / max(1, b) < -0.35 else "2" if dx / max(1, b) < 0.35 else "1"
+                if t < 0.25: c = {"3": "4", "2": "3", "1": "2"}[c]
+                L.p(x, y, c)
+        for x in range(int(cx - r), int(cx + r) + 1, 2):
+            if h(x, i, 9) > 0.35: L.p(x, y0 + 6, "1" if x > cx else "2")
+    L.p(cx, 1, "3"); L.p(cx, 2, "4")
+    omriss(L)
+    return L
+
+
+def heller():
+    """Flat berghelle som stikk opp av graset, med lav."""
+    W, H = 22, 12
+    L = Lerret(W, H)
+    steinklump(L, 11, 6.5, 10, 4.2, fro=3)
+    for x in range(3, 19):                                       # flat topp
+        for y in range(3, 6):
+            if L.get(x, y) != ".": L.p(x, y, "D" if y < 5 else "C")
+    for (x, y) in [(6, 4), (7, 4), (14, 3), (15, 4)]: L.p(x, y, "l")
+    for k in range(5): L.p(9 + k, 7 + k // 3, "B")                # sprekk
+    omriss(L)
+    return L
+
+
+def roys():
+    """Steinrøys: tre steinar i ein klynge, den største bak."""
+    W, H = 22, 15
+    L = Lerret(W, H)
+    steinklump(L, 12, 6, 6.2, 4.8, mose=True, fro=2)
+    steinklump(L, 6, 9.5, 4.2, 3.4, fro=5)
+    steinklump(L, 16, 10.5, 3.6, 3, fro=7)
+    omriss(L)
+    return L
+
+
+def bauta():
+    """Ståande stein, høg og smal, med lav og mose ved foten."""
+    W, H = 14, 24
+    L = Lerret(W, H)
+    for y in range(1, 23):
+        b = 4.2 - abs(y - 12) * 0.08 - (1.5 if y < 4 else 0)
+        for x in range(W):
+            dx = (x + .5 - 7) / b
+            if abs(dx) > 1: continue
+            c = "E" if dx < -0.55 else "D" if dx < -0.1 else "C" if dx < 0.5 else "B"
+            if y > 20: c = "n" if dx < 0 else "m"
+            L.p(x, y, c)
+    for (x, y) in [(5, 7), (6, 8), (8, 13), (5, 16), (6, 16)]: L.p(x, y, "l")
+    for k in range(4): L.p(8, 5 + k * 2, "B")
+    omriss(L)
+    return L
+
+
+def einer():
+    """Einerbusk: tett, mørk blågrøn busk med stikkande kant og blå bær."""
+    W, H = 18, 17
+    L = Lerret(W, H)
+    for (kx, ky, r) in [(9, 10, 6.5), (5, 11, 4), (13, 11, 4.2), (9, 5, 4.2)]:
+        klump(L, kx, ky, r, ("3", "2", "1", "0"), 3)
+    for x in range(1, 17, 2):                                    # stikkande kant
+        for y in range(1, 16):
+            if L.get(x, y) != "." and L.get(x, y - 1) == ".":
+                L.p(x, y - 1, "2" if x < 9 else "1"); break
+    for (x, y) in [(6, 8), (11, 7), (8, 12), (13, 11)]: L.p(x, y, "B"); L.p(x, y - 1, "D")
+    omriss(L)
+    return L
+
+
 NATUR = {
-    "gran1": lambda: gran(1), "gran2": lambda: gran(2), "gran3": lambda: gran(3),
+    "gran1": lambda: gran(1), "gran2": lambda: gran(2), "gran3": lambda: gran(3), "gran-ung": gran_ung,
     "bjork1": lambda: bjork(1), "bjork2": lambda: bjork(2), "bjork3": lambda: bjork(3),
+    "bjork-ung": bjork_ung, "bjork-dobbel": bjork_dobbel,
     "stein1": lambda: stein(1), "stein2": lambda: stein(2), "stein3": lambda: stein(3),
+    "heller": heller, "roys": roys, "bauta": bauta, "einer": einer,
     "haug": haug,
 }
 

@@ -70,7 +70,8 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
 - Vatn og steingard tilpassar seg naboane og blir teikna i `js/rpg/pikslar.js`
   (`vatn`, `steingard`), ikkje som faste bilete.
 - Tre, steinar og haugar: `python tools/pikselkunst/natur.py <namn>` (sjå `NATUR`).
-  Kartteikna `#` (gran), `t` (bjørk) og `o` (stein) vel variant etter plassen.
+  Kartteikna `#` (gran), `t` (bjørk) og `o` (stein, einer) vel variant etter plassen
+  frå `NATURTYPE` i `js/rpg/pikslar.js`. Nye variantar må førast inn der.
 - Små bilete: skriv rutenettet for hand.
 - Større bilete: eit lite Python-skript som teiknar flater med `span` og
   punkt, slik som `portrett.py`, og skriv `.pix`. Teikn flater for hand.

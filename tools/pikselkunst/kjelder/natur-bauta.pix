@@ -1,0 +1,39 @@
+# namn: natur-bauta
+# type: fiende
+# ut: bilete/spel/natur/bauta.png
+# storleik: 14x24
+palett:
+  . = -
+  o = #0a0514    omriss
+  B = #44424e    stein skugge
+  C = #666472    stein
+  D = #8c8a96    stein lys
+  E = #b4b2bc    stein glans
+  m = #4a6a2a    mose skugge
+  n = #6e9038    mose
+  l = #c8b050    lav
+bilete:
+  .....oooo.....
+  ....oEDCBo....
+  ....oEDCBo....
+  ...ooEDCBoo...
+  ..oEEDDCCBBo..
+  ..oEEDDCBBBo..
+  ..oEEDDCCBBo..
+  ..oEElDCBBBo..
+  ..oEEDlCCBBo..
+  ..oEEDDCBBBo..
+  ..oEEDDCCBBo..
+  ..oEEDDCBBBo..
+  ..oEEDDCCBBo..
+  ..oEEDDClBBo..
+  ..oEEDDCCBBo..
+  ..oEEDDCCBBo..
+  ..oEEllCCBBo..
+  ..oEEDDCCBBo..
+  ..oEEDDCCBBo..
+  ..oEEDDCCBBo..
+  ..oEEDDCCBBo..
+  ...onnnmmmo...
+  ...onnnmmmo...
+  ....oooooo....

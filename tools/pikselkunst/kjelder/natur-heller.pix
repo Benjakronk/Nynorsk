@@ -1,0 +1,26 @@
+# namn: natur-heller
+# type: fiende
+# ut: bilete/spel/natur/heller.png
+# storleik: 22x12
+palett:
+  . = -
+  o = #0a0514    omriss
+  A = #26242e    stein djup
+  B = #44424e    stein skugge
+  C = #666472    stein
+  D = #8c8a96    stein lys
+  E = #b4b2bc    stein glans
+  l = #c8b050    lav
+bilete:
+  ......................
+  ........oooooo........
+  ....ooooEEEEEEoooo....
+  ..ooDDDDDDDDDDlDDDoo..
+  .oEDDDllDDDDDDDlDDDCo.
+  oEECCCCCCCCCCCCCCCCCCo
+  oDDDDDDCCCCCCCCCCCBBBo
+  oDDCCCCCCBBBCCBBBBBBBo
+  .oCCCCCCCCBBBBBBBBAAo.
+  ..ooooBBBBBBAAAAoooo..
+  ......oooooooooo......
+  ......................

@@ -314,3 +314,23 @@ same måte, uansett kven som tek over.
   skuggesøkk på éin piksel. Gjeld bukse og kjole, stav, sekk, hale og krokrygg.
 - **Lærdom:** Mål rørsla mot referansen (kor mange pikslar som endrar seg i kvar del),
   ikkje berre sjå på ho. Det viste med ein gong at overkroppen stod stille.
+
+## Runde 12: møblar, naturvariantar og folk som lever
+
+- **Frå brukaren:** Møblar som var vanskelege å tyde (langbordet, sengebenken, hylla),
+  for lite variasjon i naturen, figurar som forsvann i kanten når ein gjekk opp og ned
+  i Hovdebygda, og alle personar stod stille og såg nedover.
+- **Gjort:**
+  - Langbord sett ovanfrå på skrå (plankar på langs, trefat med graut, brød, ølbolle,
+    bein med sleid, kubbestolar med luft til bordet), sengebenk med gavlar, pute,
+    laken og raudt åklede, og hylle med rosemålte trefat på høgkant og ølkrus.
+  - Nye naturvariantar i `natur.py`: ung bjørk, tvistamma bjørk, ung gran, berghelle,
+    steinrøys, ståande stein og einerbusk. Vanlege former står fleire gonger i
+    `NATURTYPE`, så dei kjem oftast.
+  - Motoren tek med to-tre flisrader under skjermen og ei kolonne på kvar side når han
+    samlar figurar, så høge tre ikkje forsvinn i kanten.
+  - Folk har `atferd` (stille, snu, gaa), `retning` og `radius` i `data.js`. Dei som går,
+    held seg nær staden sin og går ikkje framfor dører. Etter ein samtale går ein tilbake
+    til vanen sin.
+- **Lærdom:** Eit møbel sett ovanfrå må ha ei flate med gjenstandar på, og kantar og
+  bein under. Loddrette skøytar og små mørke strekar blir lesne som skuffer og handtak.

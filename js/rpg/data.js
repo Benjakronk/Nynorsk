@@ -178,8 +178,8 @@ window.RPGData = (function () {
       dorer: [{ ved: [5, 7], til: ["asen", "3"] }],
       kister: [{ ved: [10, 4], ting: "flatbrod", n: 2, id: "k-stova" }],
       folk: [
-        { merke: "@", u: "bror", namn: "Storebror", tale: "bror" },
-        { merke: "%", u: "syster", namn: "Syster", tale: "syster" },
+        { merke: "@", u: "bror", namn: "Storebror", atferd: "snu", retning: 2, snu: [0, 2, 3], tale: "bror" },
+        { merke: "%", u: "syster", namn: "Syster", atferd: "snu", retning: 1, snu: [1, 3, 0], tale: "syster" },
       ],
     },
     asen: {
@@ -209,9 +209,9 @@ window.RPGData = (function () {
         { ved: [27, 11], til: ["bygda", "1"], kant: true, vakt: { flagg: "skiftebrev", manus: "skiftebrev" } },
       ],
       folk: [
-        { merke: "@", u: "granne", namn: "Granne", tale: "granne" },
-        { merke: "%", u: "budeie", namn: "Budeia", tale: "budeie" },
-        { merke: "&", u: "framande", namn: "Ein framand", tale: "framande", vis: st => !st.flagg.framande1 },
+        { merke: "@", u: "granne", namn: "Granne", atferd: "gaa", radius: 1, retning: 2, tale: "granne" },
+        { merke: "%", u: "budeie", namn: "Budeia", atferd: "gaa", radius: 2, retning: 3, tale: "budeie" },
+        { merke: "&", u: "framande", namn: "Ein framand", atferd: "stille", retning: 1, tale: "framande", vis: st => !st.flagg.framande1 },
       ],
       inngang: [{ merke: "3", manus: "ut_forste" }],
     },
@@ -248,9 +248,9 @@ window.RPGData = (function () {
       ],
       kister: [{ ved: [28, 15], pengar: 48, id: "k-utmark", gøymd: true }],
       folk: [
-        { merke: "@", u: "haugbonde", namn: "Vetten ved haugen", tale: "haugbonde", vis: st => !st.flagg.haug },
-        { merke: "%", u: "huldra", namn: "Ei kvinne ved setra", tale: "huldra", vis: st => !st.flagg.huldra_med },
-        { merke: "$", u: "gjetar", namn: "Gjetarguten", tale: "gjetar" },
+        { merke: "@", u: "haugbonde", namn: "Vetten ved haugen", atferd: "stille", retning: 0, tale: "haugbonde", vis: st => !st.flagg.haug },
+        { merke: "%", u: "huldra", namn: "Ei kvinne ved setra", atferd: "snu", retning: 2, snu: [0, 2], tale: "huldra", vis: st => !st.flagg.huldra_med },
+        { merke: "$", u: "gjetar", namn: "Gjetarguten", atferd: "gaa", radius: 2, retning: 3, tale: "gjetar" },
       ],
     },
     bygda: {
@@ -289,11 +289,11 @@ window.RPGData = (function () {
         { ved: [35, 13], laast: "Bakdøra til bua er stengd. Kremmaren sel frå steinen ved vegen." },
       ],
       folk: [
-        { merke: "&", u: "framande", namn: "Den framande", tale: "framande2", vis: st => st.flagg.framande1 && !st.flagg.framande2 },
-        { merke: "*", u: "kone", namn: "Gamal kone", tale: "kone" },
-        { merke: "@", u: "kremmar", namn: "Kremmaren", tale: "kremmar" },
-        { merke: "$", u: "predikant", namn: "Lekpredikanten", tale: "predikant" },
-        { merke: "!", u: "bonde", namn: "Bonde", tale: "bonde" },
+        { merke: "&", u: "framande", namn: "Den framande", atferd: "stille", retning: 1, tale: "framande2", vis: st => st.flagg.framande1 && !st.flagg.framande2 },
+        { merke: "*", u: "kone", namn: "Gamal kone", atferd: "gaa", radius: 1, retning: 2, tale: "kone" },
+        { merke: "@", u: "kremmar", namn: "Kremmaren", atferd: "stille", retning: 0, tale: "kremmar" },
+        { merke: "$", u: "predikant", namn: "Lekpredikanten", atferd: "snu", retning: 0, snu: [0, 2, 3], tale: "predikant" },
+        { merke: "!", u: "bonde", namn: "Bonde", atferd: "gaa", radius: 2, retning: 3, tale: "bonde" },
       ],
     },
     kyrkja: {
@@ -315,8 +315,8 @@ window.RPGData = (function () {
       ],
       dorer: [{ ved: [6, 10], til: ["bygda", "3"] }],
       folk: [
-        { merke: "%", u: "prest", namn: "Presten", tale: "prest" },
-        { merke: "@", u: "klokkar", namn: "Klokkaren", tale: "klokkar" },
+        { merke: "%", u: "prest", namn: "Presten", atferd: "stille", retning: 0, tale: "prest" },
+        { merke: "@", u: "klokkar", namn: "Klokkaren", atferd: "snu", retning: 3, snu: [0, 1, 3], tale: "klokkar" },
       ],
     },
     prestegarden: {
@@ -339,7 +339,7 @@ window.RPGData = (function () {
         { ved: [11, 0], til: ["kontoret", "1"] },
       ],
       kister: [{ ved: [12, 4], ting: "kaffi", n: 1, id: "k-preste" }],
-      folk: [{ merke: "@", u: "tenestejente", namn: "Tenestejenta", tale: "tenestejente" }],
+      folk: [{ merke: "@", u: "tenestejente", namn: "Tenestejenta", atferd: "gaa", radius: 1, retning: 2, tale: "tenestejente" }],
     },
     kontoret: {
       namn: "Kontoret i prestegarden", stemning: "inne", golv: "P", inne: true, bakgrunn: "arkiv",
@@ -407,9 +407,9 @@ window.RPGData = (function () {
       ],
       dorer: [{ ved: [5, 7], til: ["bygda", "5"] }],
       folk: [
-        { merke: "@", u: "mor", namn: "Mora", tale: "mor" },
-        { merke: "%", u: "dotter", namn: "Dottera", tale: "dotter" },
-        { merke: "$", u: "bestefar", namn: "Bestefaren", tale: "bestefar" },
+        { merke: "@", u: "mor", namn: "Mora", atferd: "snu", retning: 2, snu: [0, 2, 3], tale: "mor" },
+        { merke: "%", u: "dotter", namn: "Dottera", atferd: "gaa", radius: 1, retning: 0, tale: "dotter" },
+        { merke: "$", u: "bestefar", namn: "Bestefaren", atferd: "stille", retning: 2, tale: "bestefar" },
       ],
     },
     vegen: {
@@ -438,7 +438,7 @@ window.RPGData = (function () {
         { ved: [27, 11], til: ["ekset", "1"], kant: true },
       ],
       kister: [{ ved: [25, 13], ting: "kaffi", n: 1, id: "k-vegen" }],
-      folk: [{ merke: "@", u: "fiskar", namn: "Fiskar", tale: "fiskar" }],
+      folk: [{ merke: "@", u: "fiskar", namn: "Fiskar", atferd: "snu", retning: 2, snu: [0, 2], tale: "fiskar" }],
     },
     ekset: {
       namn: "Ekset i Volda", bygg: [{ id: "ekset-hovud", x: 7, y: 1, h: 3 }, { id: "seter", x: 20, y: 1, h: 3 }], stemning: "morgon", golv: ".", bakgrunn: "tun",
@@ -462,8 +462,8 @@ window.RPGData = (function () {
         { ved: [22, 3], laast: "Trykkjeriet til lensmann Aarflot har stått stille sidan han døydde i 1817." },
       ],
       folk: [
-        { merke: "@", u: "bonde", namn: "Husmann", tale: "husmann" },
-        { merke: "%", u: "kone", namn: "Kone frå bygda", tale: "ekset_kone" },
+        { merke: "@", u: "bonde", namn: "Husmann", atferd: "gaa", radius: 2, retning: 0, tale: "husmann" },
+        { merke: "%", u: "kone", namn: "Kone frå bygda", atferd: "snu", retning: 1, snu: [0, 1, 3], tale: "ekset_kone" },
       ],
     },
     "ekset-stova": {
@@ -481,7 +481,7 @@ window.RPGData = (function () {
         "XXXXXXXEXXXXXX",
       ],
       dorer: [{ ved: [7, 7], til: ["ekset", "d"] }],
-      folk: [{ merke: "@", u: "tenar", namn: "Tenaren på Ekset", tale: "tenar" }],
+      folk: [{ merke: "@", u: "tenar", namn: "Tenaren på Ekset", atferd: "stille", retning: 1, tale: "tenar" }],
     },
   };
   // Merke som ikkje står i karta (framfor dører som fører ut att).
