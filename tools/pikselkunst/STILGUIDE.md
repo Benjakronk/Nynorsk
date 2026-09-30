@@ -107,6 +107,13 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
   med raud pute, brunraud preikestol, lysekrone i messing og ljosstrålar frå
   vindauga.
 
+## Hjørne og skuggar
+
+- Steingarden har ein stolpe av store, tilhogne steinar med dekkstein i kvart hjørne
+  og der muren sluttar (porten). Stolpen er litt høgare enn muren.
+- Slagskuggen under hus og inventar er silhuetten av biletet, forskoven mot høgre og
+  ned, men berre nedst ved bakken. Høge ting (tårn, piper) kastar ikkje skugge oppover.
+
 ## Kampbakgrunnar og stova
 
 - Kampbakgrunnar (320 × 192, `bakgrunn.py`) følgjer Final Fantasy VI:

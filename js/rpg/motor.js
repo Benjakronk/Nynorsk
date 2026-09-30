@@ -305,6 +305,19 @@ window.Motor = (function () {
     });
   }
 
+  // Silhuetten av eit bilete i skuggefarge (til slagskuggen under hus og inventar).
+  const skuggar = new WeakMap();
+  function skuggeAv(img) {
+    let c = skuggar.get(img);
+    if (!c) {
+      c = document.createElement("canvas"); c.width = img.width; c.height = img.height;
+      const sg = c.getContext("2d"); sg.drawImage(img, 0, 0);
+      sg.globalCompositeOperation = "source-in"; sg.fillStyle = "rgb(20,24,50)"; sg.fillRect(0, 0, c.width, c.height);
+      skuggar.set(img, c);
+    }
+    return c;
+  }
+
   function teikn(no) {
     if (!kart) return;
     const kx = Math.max(0, Math.min(kart.w - VW, spelar.fx - (VW - 1) / 2));
@@ -380,10 +393,13 @@ window.Motor = (function () {
       if (f.haug) { g.drawImage(f.haug, Math.round((f.x + ox) * S) - 1, Math.round((Math.floor(f.y) + 1 + oy) * S) - f.haug.height); continue; }
       if (f.over) { g.drawImage(f.bygg, Math.round((f.x + ox) * S) - 4, Math.round((f.by + 1 + oy) * S) - f.bygg.height); continue; }
       if (f.bygg) {
-        // slagskugge på bakken, mot høgre og ned (lyset kjem frå oppe til venstre)
-        const bx = Math.round((f.x + ox) * S), by = Math.round((f.y + 1 + oy) * S), bw = f.bygg.width - 8;
-        g.fillStyle = "rgba(20,24,50,0.28)"; g.fillRect(bx + 3, by, bw, 4); g.fillRect(bx + bw, by - f.bygg.height + 14, 4, f.bygg.height - 10);
-        g.drawImage(f.bygg, Math.round((f.x + ox) * S) - 4, Math.round((f.y - (f.bygg.height - 8) / S + 1 + oy) * S) - 8 + 0); continue; }
+        // Slagskugge på bakken, mot høgre og ned (lyset kjem frå oppe til venstre): silhuetten
+        // til huset forskoven, men berre nedst ved bakken, så høge ting (tårnet) ikkje kastar
+        // ei stripe oppover i graset.
+        const bx = Math.round((f.x + ox) * S) - 4, by = Math.round((f.y + 1 + oy) * S);
+        g.save(); g.beginPath(); g.rect(bx, by - 22, f.bygg.width + 8, 26); g.clip();
+        g.globalAlpha = 0.28; g.drawImage(skuggeAv(f.bygg), bx + 4, by - f.bygg.height + 3); g.restore();
+        g.drawImage(f.bygg, bx, by - f.bygg.height); continue; }
       const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S);
       g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx + 3, sy + 13, 10, 3); g.fillRect(sx + 4, sy + 12, 8, 5);
       g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy - 9);

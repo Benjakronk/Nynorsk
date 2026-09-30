@@ -543,6 +543,17 @@ window.Pikslar = (function () {
       for (let i = 0; i < 3; i++) px(g, 5 + (i * 3) % 6, y0 + 3 + i * 5, i % 2 ? "#6e9038" : "#98b44c", 2, 1);
       g.fillStyle = "rgba(20,24,50,.3)"; g.fillRect(13, y0 + 2, 2, y1 - y0 - 2);
     }
+    // Hjørne og endar (ved porten): ein stolpe av store, tilhogne steinar med dekkstein og mose,
+    // litt høgare enn muren, så hjørnet og porten syner.
+    const lodd = ((maske & 1) ? 1 : 0) + ((maske & 4) ? 1 : 0), vass2 = ((maske & 2) ? 1 : 0) + ((maske & 8) ? 1 : 0);
+    if ((lodd && vass2) || lodd + vass2 <= 1) {
+      g.fillStyle = "rgba(20,24,50,.3)"; g.fillRect(14, 3, 2, 19);
+      px(g, 2, 0, "#0a0514", 12, 22);
+      murstein(g, 3, 5, 10, 8, fro + 3); murstein(g, 3, 13, 10, 8, fro + 4);
+      px(g, 2, 1, m[1], 12, 4); px(g, 3, 1, m[4], 10, 1); px(g, 3, 2, m[3], 10, 2);   // dekkstein
+      px(g, 2, 4, "#0a0514", 12, 1);
+      px(g, 4, 1, "#98b44c", 3, 1); px(g, 5, 2, "#6e9038", 2, 1); px(g, 10, 3, "#6e9038");
+    }
     cache.set(k, c);
     return c;
   }
