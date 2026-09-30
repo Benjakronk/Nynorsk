@@ -23,6 +23,7 @@ f.onload = async () => {
   for (let n = 0; n < 200 && (synleg("#rpg-tale") || synleg("#rpg-fort")); n++) { tast("keydown", "z"); await vent(30); tast("keyup", "z"); await vent(60); }
   w.RPGTest.st().flagg.framande1 = true;
   M.last("bygda", "3"); await vent(400);
+  M.kart.folk = [];                                   // folk som går omkring, kan elles stå i vegen
   Object.assign(M.spelar, { x: 2, y: 11, fx: 2, fy: 11, dir: 3, flytt: null });
   await vent(200);
   // Loggar posisjon og ramme kvar gong nettlesaren teiknar.
