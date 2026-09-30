@@ -248,14 +248,26 @@ window.Kamp = (function () {
       pa.forEach((m, i) => {
         const p = paPos(i);
         const rammer = m.sprite.rammer[2], kp = m.sprite.kamp;
-        g.fillStyle = "rgba(10,5,20,.35)"; g.fillRect(p.x + 3, p.y + 22, 10, 3);
+        // Den som har tur, står eit steg framom dei andre med ei grå pil over seg.
+        const aktiv = ventar[0] === m && m.hp > 0, fram = aktiv ? 8 : 0;
+        g.fillStyle = "rgba(10,5,20,.35)"; g.fillRect(p.x + 3 - fram, p.y + 22, 10, 3);
         // Slått ut: ligg på bakken. Treft: skadd. Handlar: åtak eller galdr. Lite liv: på kne (som i Final Fantasy VI).
         if (m.hp <= 0) { g.drawImage(kp.ute, p.x - 4, p.y + 9); return; }
         const ramme = m.blink > no ? kp.skadd
           : m.fram > no ? (m.pose === "galdr" ? kp.galdr : kp.atak)
-          : ventar[0] === m ? rammer[1 + Math.floor(no / 180) % 2]
+          : aktiv ? rammer[0]
           : m.hp < m.maxhp * 0.25 ? kp.svak : rammer[0];
-        g.drawImage(ramme, Math.round(p.x - (m.fram > no ? (m.pose === "galdr" ? 6 : 12) : 0) - (ventar[0] === m ? 6 : 0)), p.y);
+        const rx = Math.round(p.x - (m.fram > no ? (m.pose === "galdr" ? 6 : 12) : 0) - fram);
+        g.drawImage(ramme, rx, p.y);
+        if (aktiv && !(m.fram > no)) {
+          const px = rx + 8, py = p.y - 8;
+          for (const [dy, w, c] of [[0, 4, "#1a1a24"], [1, 3, "#1a1a24"], [2, 2, "#1a1a24"], [3, 1, "#1a1a24"], [4, 0, "#1a1a24"]]) {
+            g.fillStyle = c; g.fillRect(px - w - 1, py + dy, (w + 1) * 2, 1);
+          }
+          for (const [dy, w] of [[0, 3], [1, 2], [2, 1], [3, 0]]) {
+            g.fillStyle = dy === 0 ? "#e4e4ec" : "#a8a8b6"; g.fillRect(px - w, py + dy, w * 2, 1);
+          }
+        }
         if (m.vern > 0) { g.strokeStyle = "rgba(248,216,64,.8)"; g.lineWidth = 1; g.beginPath(); g.ellipse(p.x + 8, p.y + 13, 11, 14, 0, 0, Math.PI * 2); g.stroke(); }
       });
       for (let i = tal.length - 1; i >= 0; i--) {
