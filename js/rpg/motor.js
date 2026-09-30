@@ -466,14 +466,15 @@ window.Motor = (function () {
         const maske = (nb(0, -1) ? 1 : 0) | (nb(1, 0) ? 2 : 0) | (nb(0, 1) ? 4 : 0) | (nb(-1, 0) ? 8 : 0);
         naturFig.push({ y: y + 0.003, x, mur: Pikslar.steingard((x * 3 + y) % 3, maske) });
       }
-      // Kantar: gras over veg og sand
+      // Kantar: gras over veg og sand, og høgt gras (villgras) over alt anna på bakken
       const kl = Pikslar.klasse(c);
-      if (kl === "veg" || kl === "sand") {
+      if (kl === "veg" || kl === "sand" || kl === "gras") {
         for (const [side, dx, dy] of KANTSIDER) {
           const n = kart.fliser[y + dy] && kart.fliser[y + dy][x + dx];
           if (n == null) continue;
           const nk = Pikslar.klasse(n);
-          if (nk === "gras") g.drawImage(Pikslar.kant("gras", side, (x * 7 + y * 3) % 4), sx, sy);
+          if (nk === "villgras") g.drawImage(Pikslar.kant("villgras", side, (x * 7 + y * 3) % 4), sx, sy);
+          else if (nk === "gras" && kl !== "gras") g.drawImage(Pikslar.kant("gras", side, (x * 7 + y * 3) % 4), sx, sy);
         }
       }
       const nf = erVatn(x, y) ? null : Pikslar.natur(c, x, y);
@@ -494,7 +495,9 @@ window.Motor = (function () {
       steg: f.flytt ? GANG[(f.steg % 2) * 2 + (f.u < 0.5 ? 0 : 1)] : 0 }));
     // Gangramma følgjer steget, ikkje klokka: to rammer per flis (steg, stå), annakvar fot.
     const steg = spelar.flytt ? GANG[(spelar.steg % 2) * 2 + (spelar.u < 0.5 ? 0 : 1)] : 0;
-    if (fylgje) figurar.push({ y: fylgje.fy, x: fylgje.fx, sp: fylgje.sprite, dir: fylgje.dir, steg });
+    // Følgjet går eit halvt steg forskyve, så dei to ikkje går i takt.
+    const fv = spelar.u + 0.5, fsteg = spelar.flytt ? GANG[((spelar.steg + Math.floor(fv)) % 2) * 2 + (fv % 1 < 0.5 ? 0 : 1)] : 0;
+    if (fylgje) figurar.push({ y: fylgje.fy, x: fylgje.fx, sp: fylgje.sprite, dir: fylgje.dir, steg: fsteg });
     figurar.push({ y: spelar.fy, x: spelar.fx, sp: spelar.sprite, dir: spelar.dir, steg });
     for (const n of naturFig) figurar.push(n);
     // Hus blir sorterte saman med figurane etter den nedste flisraden sin.

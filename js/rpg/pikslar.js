@@ -561,7 +561,7 @@ window.Pikslar = (function () {
   /* ---------- Kantar mellom fliser ----------
      Gras veks inn over vegen og sanda, og vatnet får strandkant med skum.
      Motoren teiknar kantane oppå flisa, på sidene der naboen er av eit anna slag. */
-  const KLASSE = { ".": "gras", ",": "gras", '"': "gras", "o": "gras", "h": "gras", "x": "gras", "|": "gras", "j": "gras", "#": "gras", "t": "gras", "=": "veg", "_": "sand", "~": "vatn" };
+  const KLASSE = { ".": "gras", ",": "villgras", '"': "gras", "o": "gras", "h": "gras", "x": "gras", "|": "gras", "j": "gras", "#": "gras", "t": "gras", "=": "veg", "_": "sand", "~": "vatn" };
   const klasse = teikn => KLASSE[teikn] || null;
   function kant(type, side, v) {
     const k = `kant:${type}:${side}:${v}`;
@@ -569,7 +569,17 @@ window.Pikslar = (function () {
     const c = lerret(S), g = c.getContext("2d");
     // Teikn alltid som om kanten er øvst, og roter etterpå.
     const t = lerret(S), tg = t.getContext("2d");
-    if (type === "gras") {
+    if (type === "villgras") {
+      // Høgt gras heng ut over nabofliser i ujamne tuster, ikkje i ei rett line.
+      const r = R_.villgras;
+      for (let x = 0; x < S; x++) {
+        const tust = Math.sin((x + v * 5) * 0.9) * 1.5 + hash(x, v, 151) * 2.5;
+        const d = Math.max(1, Math.round(2 + tust));
+        px(tg, x, 0, r[1], 1, d); px(tg, x, d - 1, r[0]);
+        if (hash(x, v, 152) > 0.6) { px(tg, x, d, r[1]); px(tg, x, d - 1, r[2]); px(tg, x, d + 1, r[0]); }
+        if (hash(x, v, 153) > 0.8) px(tg, x, Math.max(0, d - 2), r[3]);
+      }
+    } else if (type === "gras") {
       const r = R_.gras;
       for (let x = 0; x < S; x++) {
         const d = 1 + Math.floor(hash(x, v, 131) * 2.4) + (x % 5 === 2 ? 1 : 0);
