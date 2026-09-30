@@ -1,43 +1,51 @@
 # namn: inne-sengebenk
 # type: bygg
 # ut: bilete/spel/bygg/inne-sengebenk.png
-# storleik: 40x26
+# storleik: 40x30
 palett:
   . = -
   o = #0a0514    omriss
+  r = #3a0e18    raud djup
   R = #6a1a2a    raud
   E = #983040    raud lys
   y = #f8d840    gull lys
   w = #f4f2f8    kvit
   W = #c8c6d4    kvit skugge
+  K = #8a88a0    kvit djup
+  T = #7a3a22    tre brunraud
+  U = #a4583a    tre lys
   a = #2e1a10    furu djup
   A = #5a3a22    furu skugge
   c = #8a5e36    furu
   C = #b08650    furu lys
 bilete:
-  ..oCo..............................oao..
-  ..oCooooooooooooooooooooooooooooooooao..
-  ..oCccccccccccccccccccccccccccccccccao..
-  ..oCccccccccccccccccccccccccccccccccao..
-  ..oCccccccccccccccccccccccccccccccccao..
-  ..oCccccccccccccccccccccccccccccccccao..
-  ..oCARwwwwwwwwwwRRRRRRERRRRRRERRRRRAao..
-  ..oCARwwwwwwwwwwRRRRRERRRRRRERRRRRRAao..
-  ..oCARwwwwwwwwwwRRRRERRRRRRERRRRRREAao..
-  ..oCAEwwwwwwwwwwRRRERRRRRRERRRRRRERAao..
-  ..oCARWWWWWWWWWWRRERRRRRRERRRRRRERRAao..
-  ..oCARRRRRERRRRRRERRRRRRERRRRRRERRRAao..
-  ..oCARRRRERRRRRRERRRRRRERRRRRRERRRRAao..
-  ..oCAyRRERRyRRRERyRRRREyRRRRRyRRRRRAao..
-  ..oCARRERRRRRRERRRRRRERRRRRRERRRRRRAao..
-  ..oCARERRRRRRERRRRRRERRRRRRERRRRRREAao..
-  ..oCAERRRRRRERRRRRRERRRRRRERRRRRRERAao..
-  ..oCARRRRRRERRRRRRERRRRRRERRRRRRERRAao..
-  ..oCARRRRRERRRRRRERRRRRRERRRRRRERRRAao..
-  ..oCAyRRRERyRRRREyRRRRRyRRRRRyERRRRAao..
-  ..oCARRRERRRRRRERRRRRRERRRRRRERRRRRAao..
-  ..oCARRERRRRRRERRRRRRERRRRRRERRRRRRAao..
-  ..oCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAao..
-  ..oCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAao..
-  ..oCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAao..
-  ...oooooooooooooooooooooooooooooooooo...
+  ...oTo..................................
+  ..oUUoo.................................
+  .oUUUUUo................................
+  .oCCccAo................................
+  .oCCccAo................................
+  .oCCccAo................................
+  .oCCccAo................................
+  .oCCccAoooooooo.........................
+  .oCCccAwwwwwwwWoooooooooooooooooo.......
+  .oCCccAwKwwwwWWwWEEEEEEEEEEEEEEEEo......
+  .oCCccAwwwwwwWWwWyyyyyyyyyyyyyyyyooooo..
+  .oCCccAwwwwwwWWwWRRRRRyRyRRRRyRyRUUUUUo.
+  .oCCccAwwwwwwWWwWRRRRyRwRyRRyRwRyCCccAo.
+  .oCCccAwwwwwwWWwWRRRyRyRyRRyRyRyRCCccAo.
+  .oCCccAWWWWWWWWwWRRyRyRyRRyRyRyRRCCccAo.
+  .oCCccAWWWWWWKWwWRyRwRyRRyRwRyRRRCCccAo.
+  .oCCccARRRRRRRRwWRRyRyRyRRyRyRyRRCCccAo.
+  .oCCccARRRRRRRRwWRRRyRyRyRRyRyRyRCCccAo.
+  .oCCccARRRRRRRRwWRRRRyRwRyRRyRwRyCCccAo.
+  .oCCccARRRRRRRRwWRRRRRyRyRRRRyRyRCCccAo.
+  .oCCccAyyyyyyyywWyyyyyyyyyyyyyyyyCCccAo.
+  .oCCccArrrrrrrrwWrrrrrrrrrrrrrrrrCCccAo.
+  .oCCccACCCCCCCCCCCCCCCCCCCCCCCCCCCCccAo.
+  .oCCccAccccccccccccccccccccccccccCCccAo.
+  .oCCccAAAAAAAAAAAAAAAAAAAAAAAAAAACCccAo.
+  .oCCccAaaaaaaaaaaaaaaaaaaaaaaaaaaCCccAo.
+  .oCCccAooooooooooooooooooooooooooCCccAo.
+  ..oaaao..........................oaaao..
+  ..oaaao..........................oaaao..
+  ...ooo............................ooo...

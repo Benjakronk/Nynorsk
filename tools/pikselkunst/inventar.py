@@ -186,48 +186,97 @@ def hylle():
 
 
 def sengebenk():
-    """Sengebenk av furu med raudt åklede og kvit pute, 2 fliser breitt."""
-    W, H = 2 * 16 + 8, 26
+    """Sengebenk sett ovanfrå på skrå: høg hovudgavl til venstre, låg fotgavl til høgre,
+    kvit pute, laken bretta ned og eit raudt, vove åklede med rutemønster (etter
+    sengebenken på Bjørnebergstølen og åklede frå Vestlandet). 2 fliser breitt."""
+    W, H = 2 * 16 + 8, 30
     L = Lerret(W, H)
-    for y in range(2, H - 1):
-        for x in range(3, W - 3): L.p(x, y, "c" if y < 6 else "A")
-    for y in range(6, H - 4):
-        for x in range(5, W - 5): L.p(x, y, "R" if (x + y) % 7 else "E")
-    for y in range(6, 11):
-        for x in range(6, 16): L.p(x, y, "w" if y < 10 else "W")
-    for x in range(5, W - 5, 6):
-        for y in range(12, H - 4):
-            if (x + y) % 6 == 0: L.p(x, y, "y")
-    for y in range(0, H - 1): L.p(3, y, "C"); L.p(W - 4, y, "a")
+    # sengeflata: raudt åklede med ruter og border
+    for y in range(9, 22):
+        for x in range(7, 33): L.p(x, y, "R")
+    for x in range(7, 33): L.p(x, 9, "E"); L.p(x, 10, "y"); L.p(x, 20, "y"); L.p(x, 21, "r")
+    for (cx, cy) in [(20, 15), (27, 15), (23, 12), (30, 12), (23, 18), (30, 18)]:     # ruter i åkledet
+        for dx, dy in [(0, -2), (-1, -1), (1, -1), (-2, 0), (2, 0), (-1, 1), (1, 1), (0, 2)]: L.p(cx + dx, cy + dy, "y")
+        L.p(cx, cy, "w")
+    # lakenet bretta ned over åkledet, og puta
+    for y in range(9, 22): L.p(15, y, "w"); L.p(16, y, "W")
+    for y in range(8, 16):
+        for x in range(7, 15): L.p(x, y, "w" if (y < 14 and x < 13) else "W")
+    for x in range(8, 14): L.p(x, 8, "w")
+    L.p(8, 9, "K"); L.p(13, 15, "K")
+    # sida framme
+    for x in range(6, 34): L.p(x, 22, "C"); L.p(x, 23, "c"); L.p(x, 24, "A"); L.p(x, 25, "a")
+    # høg hovudgavl med knott, låg fotgavl
+    for y in range(3, 27):
+        for x in range(2, 7): L.p(x, y, "C" if x < 4 else "c" if x < 6 else "A")
+    for x in range(2, 7): L.p(x, 2, "U")
+    L.p(3, 1, "U"); L.p(4, 1, "U"); L.p(4, 0, "T")
+    for y in range(12, 27):
+        for x in range(33, 38): L.p(x, y, "C" if x < 35 else "c" if x < 37 else "A")
+    for x in range(33, 38): L.p(x, 11, "U")
+    for (x0, x1) in [(3, 5), (34, 36)]:                                    # bein
+        for y in range(27, 29):
+            for x in range(x0, x1 + 1): L.p(x, y, "a")
     omriss(L)
     return L
 
 
 def langbord():
-    """Langbord av furu med benk bak og kubbestolar ved endane, 4 x 2 fliser.
-    Lys bordplate med plankar, tydeleg kant og skugge, benken bak i ein mørkare tone."""
+    """Langbord av furu sett ovanfrå på skrå, 4 x 2 fliser. Benk bak bordet, bordplate med
+    plankar på langs, trefat med graut, skeier, eit brød og ei måla ølbolle, bein med
+    sleid under, og ein kubbestol ved kvar ende."""
     W, H = 4 * 16 + 8, 2 * 16 + 8
     L = Lerret(W, H)
-    for y in range(3, 9):                                               # benken bak bordet
-        for x in range(8, W - 8): L.p(x, y, "U" if y == 3 else "T" if y < 7 else "t")
-    for y in range(10, 25):                                             # bordplata
-        for x in range(10, W - 10):
+    # benken bak bordet: sete sett ovanfrå og framkant
+    for y in range(2, 8):
+        for x in range(14, W - 14): L.p(x, y, "C" if y < 4 else "c" if y < 6 else "A")
+    # bordplata: plankar på langs, lysare øvst, skøytar som vassrette liner
+    for y in range(8, 25):
+        for x in range(11, W - 11):
             c = "C"
-            if (x - 10) % 13 == 0: c = "c"                               # plankeskøytar
-            if y == 10: c = "U"
+            if y in (13, 19): c = "c"                                   # skøytar mellom plankane
+            elif y == 8: c = "U"
+            elif (x * 7 + y * 3) % 23 == 0: c = "c"                     # årer i treet
             L.p(x, y, c)
-    for x in range(10, W - 10): L.p(x, 25, "c"); L.p(x, 26, "A"); L.p(x, 27, "a")   # kant
-    for x in (14, W - 16):                                              # bordbein med sleide
-        for y in range(28, H - 2): L.p(x, y, "A"); L.p(x + 1, y, "a")
-    for x in range(14, W - 14): L.p(x, H - 4, "A")
-    for (cx, cy) in [(5, 22), (W - 6, 22)]:                             # kubbestolar
-        for y in range(cy - 8, cy + 8):
-            for x in range(cx - 4, cx + 5): L.p(x, y, "c" if x < cx else "A")
-        for x in range(cx - 4, cx + 5): L.p(x, cy - 8, "C"); L.p(x, cy - 7, "c")
-    for (x, y) in [(24, 16), (44, 18)]:                                 # trefat med graut
-        for dx in range(-3, 4): L.p(x + dx, y, "T"); L.p(x + dx, y + 1, "t")
-        for dx in range(-2, 3): L.p(x + dx, y - 1, "w")
-    L.p(34, 14, "S"); L.p(35, 14, "s"); L.p(55, 15, "w"); L.p(56, 15, "W")
+    for x in range(11, W - 11): L.p(x, 25, "c"); L.p(x, 26, "A"); L.p(x, 27, "a")   # framkant
+    for y in range(8, 27): L.p(11, y, "U"); L.p(W - 12, y, "A")
+    # bein og sleid
+    for x0 in (14, W - 16):
+        for y in range(28, H - 1): L.p(x0, y, "c"); L.p(x0 + 1, y, "a")
+    for x in range(16, W - 16): L.p(x, H - 5, "A"); L.p(x, H - 4, "a")
+    # trefat med graut og smørauge, skeier
+    for (cx, cy) in [(22, 16), (46, 17)]:
+        for dy in range(-3, 4):
+            for dx in range(-5, 6):
+                d = dx * dx / 25 + dy * dy / 9
+                if d <= 1: L.p(cx + dx, cy + dy, "T" if d > 0.55 else "k" if dy < 1 else "x")
+        L.p(cx - 5, cy, "U"); L.p(cx + 5, cy, "t"); L.p(cx, cy - 1, "y")
+        for k in range(4): L.p(cx + 7 + k // 2, cy - 2 + k, "U")
+        L.p(cx + 7, cy - 3, "T")
+    # brød
+    for dy in range(-2, 3):
+        for dx in range(-4, 5):
+            if dx * dx / 16 + dy * dy / 4 <= 1: L.p(34 + dx, 12 + dy, "U" if dy < 0 else "T")
+    L.p(33, 11, "y"); L.p(35, 12, "t")
+    # måla ølbolle
+    for dy in range(-2, 3):
+        for dx in range(-3, 4):
+            if dx * dx / 9 + dy * dy / 4 <= 1: L.p(54 + dx, 20 + dy, "m" if dy >= 1 or abs(dx) == 3 else "A" if dy < 0 else "c")
+    L.p(52, 21, "E"); L.p(54, 22, "y"); L.p(56, 21, "E"); L.p(53, 19, "U")
+    # kubbestolar: hol stokk med rundt sete sett ovanfrå og rygg som bøyer seg rundt yttersida
+    for (cx, ut) in [(4, -1), (W - 5, 1)]:
+        for y in range(20, 34):                                         # kroppen, rund stokk
+            for dx in range(-3, 4):
+                L.p(cx + dx, y, "C" if dx < -1 else "c" if dx < 2 else "A")
+        for dx in range(-3, 4): L.p(cx + dx, 34, "a")
+        L.p(cx, 26, "a"); L.p(cx - 1, 29, "a")                         # sprekker i stokken
+        for dy in range(-2, 2):                                         # setet
+            for dx in range(-3, 4):
+                if dx * dx / 9 + dy * dy / 3 <= 1: L.p(cx + dx, 20 + dy, "U" if dy < 0 else "C")
+        for y in range(11, 20):                                         # ryggen på yttersida
+            for k in range(3): L.p(cx + ut * (3 - k), y, "C" if k == 0 else "c" if k == 1 else "A")
+            L.p(cx + ut * 1, y, "A") if y > 15 else None
+        for k in range(3): L.p(cx + ut * (3 - k), 10, "U")
     omriss(L)
     return L
 
