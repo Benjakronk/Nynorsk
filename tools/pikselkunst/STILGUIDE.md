@@ -154,8 +154,8 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
   sti automatisk når det ligg inntil ein sti.
 - Variér inngangane: somme hus har døra på baksida (bislag som stikk opp bak
   mønet), og stien kjem då ovanfrå.
-- Ein skal kunne gå bak tårn og høge ting. Det som står bak, blir vist som
-  silhuett.
+- Ein skal kunne gå bak tårn og høge ting. Figuren blir då gøymd bak huset. Ein svak
+  silhuett blir berre vist der huset har `silhuett: true` i kartet (spesielle høve).
 
 ## Sjekkliste før grafikken blir teken i bruk
 

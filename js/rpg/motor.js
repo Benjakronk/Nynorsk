@@ -523,12 +523,13 @@ window.Motor = (function () {
       g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx + 3, sy + 13, 10, 3); g.fillRect(sx + 4, sy + 12, 8, 5);
       g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy - 9);
     }
-    // Står spelaren (eller følgjet) bak eit hus eller tårn, blir han vist som ein svak silhuett over.
+    // Silhuett av spelaren (eller følgjet) bak eit hus, berre der huset har «silhuett: true» i kartet
+    // (til spesielle høve, til dømes ein stad der ein må gå bak noko for å finne ein ting).
     for (const f of figurar) {
       if (!f.sp || (f.sp !== spelar.sprite && !(fylgje && f.sp === fylgje.sprite))) continue;
       const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S) - 9;
       const bak = (kart.def.bygg || []).some(b => {
-        const img = Pikslar.bygg(b.id); if (!img || b.over || f.y >= b.y + b.h - 1) return false;
+        const img = Pikslar.bygg(b.id); if (!img || !b.silhuett || b.over || f.y >= b.y + b.h - 1) return false;
         const bx = Math.round((b.x + ox) * S) - 4, by = Math.round((b.y + b.h + oy) * S) - img.height;
         return sx + 12 > bx + 4 && sx + 4 < bx + img.width - 4 && sy + 22 > by + 4 && sy + 4 < by + img.height;
       });

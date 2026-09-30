@@ -291,7 +291,7 @@ window.RPGData = (function () {
       folk: [
         { merke: "&", u: "framande", namn: "Den framande", atferd: "stille", retning: 1, tale: "framande2", vis: st => st.flagg.framande1 && !st.flagg.framande2 },
         { merke: "*", u: "kone", namn: "Gamal kone", atferd: "gaa", radius: 1, retning: 2, tale: "kone" },
-        { merke: "@", u: "kremmar", namn: "Kremmaren", atferd: "stille", retning: 0, tale: "kremmar" },
+        { merke: "@", u: "kremmar", namn: "Kremmaren", atferd: "stille", retning: 1, tale: "kremmar" },
         { merke: "$", u: "predikant", namn: "Lekpredikanten", atferd: "snu", retning: 0, snu: [0, 2, 3], tale: "predikant" },
         { merke: "!", u: "bonde", namn: "Bonde", atferd: "gaa", radius: 2, retning: 3, tale: "bonde" },
       ],
