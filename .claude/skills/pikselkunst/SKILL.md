@@ -47,6 +47,10 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   sengebenk, langbord, rokk):
   `python tools/pikselkunst/inventar.py <namn>`. Står i `bygg` på kartet,
   `over: true` teiknar figuren over alt anna (lysekrona).
+- Figurar (16 × 24): legg personen til i `U` i `js/rpg/data.js` og køyr
+  `python tools/pikselkunst/figur.py <id>` (eller `alle`). Arket hamnar i
+  `bilete/spel/figurar/<id>.png`. `figur.py ark` lagar eit kontaktark i
+  `forhand/`. Nye frisyrar, plagg og kroppar blir teikna som delar i `figur.py`.
 - Kampbakgrunnar: `python tools/pikselkunst/bakgrunn.py <namn>` skriv
   `bilete/spel/kamp/<namn>.png` direkte (skriptet er kjelda). Namnet er
   `bakgrunn` på kartet i `js/rpg/data.js`.

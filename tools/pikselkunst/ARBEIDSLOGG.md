@@ -12,7 +12,9 @@ same måte, uansett kven som tek over.
    førre runde.
 2. **Research.**
    - Pikselgrafikk: skjermbilete frå The Minish Cap (`hent_referansar.py zelda`)
-     og Final Fantasy VI (Caves of Narshe, sjå `hent_referansar.py`). Dei er
+     og Final Fantasy VI (Caves of Narshe, sjå `hent_referansar.py`), og figurark
+     frå Spriters Resource (`spriters-resource.com`, finn `/media/assets/...` på
+     sida til kvart ark). Dei er
      verna og blir berre lagra i `forhand/referansar/`, som ikkje er i git.
    - Verkelegheita: bilete med fri lisens frå Wikimedia Commons
      (`hent_referansar.py sok` og `konsept`). Dei blir lagra i `konsept/` med
@@ -20,7 +22,7 @@ same måte, uansett kven som tek over.
    - Lag kontaktark (`hent_referansar.py ark`) og sjå på dei. Skriv ned kva
      teknikkar og former du vil bruke.
 3. **Teikn.** Bruk verktøyet som passar (sjå SKILL.md): `portrettmal.py`,
-   `bygg.py`, `inventar.py`, `natur.py`, eller fliser og figurar i
+   `bygg.py`, `inventar.py`, `natur.py`, `bakgrunn.py`, `figur.py`, eller fliser i
    `js/rpg/pikslar.js` når elementet må tilpasse seg naboane sine (vatn, murar).
 4. **Sjekk.** `pix.py sjekk` for kjeldene, `node tools/sjekk-spel.js` for
    karta, og skjermbilete i spelet. Vurder mot sjekklista i STILGUIDE.md og
@@ -124,3 +126,47 @@ same måte, uansett kven som tek over.
   Prestegarden bør sjå meir dansk og embetsmannsaktig ut enn bondestova.
 - Kampbakgrunn for vegen (bruker utmarka) og kyrkja finst ikkje.
 - Fjell (`^`) må teiknast når eit kart treng dei (kapittel 2 og vidare).
+
+## Runde 6: figurane
+
+- **Svakast:** Figurane på kartet (16 × 24) var teikna i kode, utan omriss og
+  med to tonar. Dei såg små og flate ut ved sida av husa og trea.
+- **Research:** Figurark frå Final Fantasy VI (Terra, Locke, Strago, Relm,
+  Banon og bybuarar) og The Minish Cap (Link, bybuarar, smeden) frå Spriters
+  Resource. Vi forstørra enkeltrammer og talde fargar:
+  - Hovudet er om lag halve figuren (11 til 12 av 24 rader). Kroppen er kort, med
+    bein på tre til fire rader og sko på to.
+  - Omriss nesten svart rundt heile silhuetten, men ikkje mellom flater inne i
+    figuren. Der blir mørkare tonar av same farge brukte.
+  - 11 til 14 fargar per figur, tre tonar per materiale. Håret er den største
+    fargeflata og har eit lyst band.
+  - Auga er mørke streker på to rader (Final Fantasy VI) eller 2 × 2 med ein lys
+    piksel (The Minish Cap).
+  - Tre rammer per retning i Final Fantasy VI (stå, steg, steg). Mot venstre og
+    mot høgre er det same biletet spegla.
+  - Eldre folk og kvinner skil seg ut med silhuetten: skaut, skjørt, krokrygg,
+    skjegg.
+- **Gjort:**
+  - `figur.py` set saman figurane av handteikna delar: hovud i tre retningar,
+    hår (kort, langt, skalle, skaut), hovudplagg (raud topplue, hatt,
+    flosshatt), skjegg, briller, kropp (bukse eller kjole) med tre rammer og
+    tilbehøyr (forkle, pipekrage, sekk, hale). Omrisset blir lagt rundt til slutt.
+  - Utsjånaden blir lesen frå `U` i `js/rpg/data.js`. Nye nøklar: `lue`,
+    `strompe` (knebukser med kvite strømper) og `kappe` (prestekjole).
+  - Kjole har eit liv i kjolefargen over kvit skjorte, som på bunaden.
+  - Sunnmørsdrakta frå draktbiletet i `konsept/`: bonden har raud topplue, kvit
+    vadmålsjakke og knebukser. Gjetaren har topplue, granne og bestefar knebukser.
+  - Spelet teiknar figuren i kode til arket i `bilete/spel/figurar/` er lasta, og
+    teiknar då arket inn i dei same lerreta.
+- **Lærdom:** Legg omrisset utanpå til slutt, så kan delane teiknast med berre
+  synlege fargar. Då blir dei enkle å skrive for hand og å kombinere.
+
+### Står att etter runde 6
+
+- Prestegarden, kontoret og boksamlinga på Ekset har framleis gamle møblar.
+- Kampbakgrunn for vegen og kyrkja finst ikkje.
+- Kampposar (åtak, galdr, skadd, slått ut) manglar. Figurane i kampen brukar
+  gangrammene mot venstre.
+- Eldre folk kunne hatt krokrygg og stav, og huldra ein eigen kjole og
+  tydelegare hale.
+- Fjell (`^`) må teiknast når eit kart treng dei.

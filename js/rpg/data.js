@@ -121,24 +121,28 @@ window.RPGData = (function () {
     huldra: { hud: "#f0c8a0", har: "#e8c870", frisyre: "langt", jakke: "#3a7236", kjole: "#2f6a3a", hale: true },
     bror: { hud: "#e2b890", har: "#8a6a3a", jakke: "#7a5a3a", bukse: "#4a4034", belte: true },
     syster: { hud: "#ecc4a4", frisyre: "skaut", skaut: "#2c4288", jakke: "#ecebf0", kjole: "#6a3a2a", forkle: "#ecebf0" },
-    granne: { hud: "#e0b890", har: "#d8d8e0", frisyre: "skalle", jakke: "#5a5060", bukse: "#3a3a44", skjegg: "#d8d8e0" },
+    granne: { hud: "#e0b890", har: "#d8d8e0", frisyre: "skalle", jakke: "#5a5060", bukse: "#3a3a44", skjegg: "#d8d8e0", strompe: "#e4e0d6" },
     budeie: { hud: "#ecc4a4", frisyre: "skaut", skaut: "#d06a64", jakke: "#ecebf0", kjole: "#3a5a8a", forkle: "#ecebf0" },
     framande: { hud: "#e8c8b0", har: "#2a2030", jakke: "#2a2438", bukse: "#1c1824", flosshatt: "#141018", briller: true },
-    prest: { hud: "#e8c0a0", har: "#d8d8e0", frisyre: "skalle", jakke: "#1c1c28", kjole: "#1c1c28", krage: true },
+    prest: { hud: "#e8c0a0", har: "#d8d8e0", frisyre: "skalle", jakke: "#1c1c28", kjole: "#1c1c28", krage: true, kappe: true },
     klokkar: { hud: "#e0b890", har: "#8a6a3a", jakke: "#4a3a5a", bukse: "#2a2a30" },
     predikant: { hud: "#dcb088", har: "#4a3a2a", jakke: "#4a4a58", bukse: "#3a3a44", hatt: "#2a2a30", skjegg: "#4a3a2a" },
     kone: { hud: "#e0c0a8", frisyre: "skaut", skaut: "#3a3a44", jakke: "#5a3f2a", kjole: "#2a2a30" },
     kremmar: { hud: "#e2b890", har: "#8a6a3a", jakke: "#3f7a4a", bukse: "#4a4034", hatt: "#5a3a2a" },
-    bonde: { hud: "#dcb088", har: "#6a4428", jakke: "#8a2638", bukse: "#3a3a44" },
-    gjetar: { hud: "#ecc4a4", har: "#e8c870", jakke: "#6b8f4a", bukse: "#5a4a3a" },
+    bonde: { hud: "#dcb088", har: "#6a4428", jakke: "#d8d0b8", bukse: "#3a3444", lue: "#b0282c", strompe: "#e4e0d6", belte: true },
+    gjetar: { hud: "#ecc4a4", har: "#e8c870", jakke: "#6b8f4a", bukse: "#5a4a3a", lue: "#b0282c" },
     tenestejente: { hud: "#ecc4a4", frisyre: "skaut", skaut: "#ecebf0", jakke: "#2a2a30", kjole: "#2a2a30", forkle: "#ecebf0" },
     haugbonde: { hud: "#8a9a86", har: "#c8ccd4", frisyre: "skalle", jakke: "#4a4a5a", kjole: "#4a4a5a", hatt: "#4e6a4a", skjegg: "#c8ccd4" },
     tenar: { hud: "#e2c09e", har: "#d8d4cc", jakke: "#2f3f5f", bukse: "#2a2a30" },
     fiskar: { hud: "#d9b08e", har: "#6b4a2a", jakke: "#d9b441", bukse: "#3a3a44", hatt: "#d9b441", skjegg: "#6b4a2a" },
     mor: { hud: "#e8c0a0", frisyre: "skaut", skaut: "#6a3a7a", jakke: "#8a2638", kjole: "#3a3a44" },
     dotter: { hud: "#f0c8a8", har: "#c8a050", frisyre: "langt", jakke: "#ecebf0", kjole: "#8a2638" },
-    bestefar: { hud: "#dcb898", har: "#bcbccc", frisyre: "skalle", jakke: "#5a4a3a", bukse: "#3a3a44", skjegg: "#bcbccc" },
+    bestefar: { hud: "#dcb898", har: "#bcbccc", frisyre: "skalle", jakke: "#d8d0b8", bukse: "#3a3a44", skjegg: "#bcbccc", strompe: "#e4e0d6", belte: true },
   };
+
+  // Figurane blir teikna med tools/pikselkunst/figur.py til bilete/spel/figurar/<id>.png.
+  // Spelet brukar arket når det er lasta, og teiknar figuren i kode til då.
+  for (const id in U) U[id].id = id;
 
   /* ---------- Portrett i samtaleboksen ----------
      Namnet på den som talar -> fila bilete/spel/portrett/<id>.png. Portretta

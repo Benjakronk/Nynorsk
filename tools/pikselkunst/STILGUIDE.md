@@ -108,6 +108,19 @@ Alt nytt skal kunne stå ved sida av han utan å skilje seg ut.
   kubbestolar, sengebenk med raudt åklede, hylle med trefat, rokk. Varmt ljos
   frå grua, mørke hjørne.
 
+## Figurar (16 × 24)
+
+- Hovudet er rad 0 til 12 (med omriss), kroppen rad 12 til 23. Auga er mørke
+  streker på to rader, fem pikslar frå kvarandre.
+- Omriss (`#181020`) berre rundt silhuetten. Inne skil ein flatene med
+  skuggetonen: arm mot kropp, bein mot bein, hake mot hals.
+- Tre tonar per materiale. Svarte klede får sterkare lys, elles forsvinn forma.
+- Folk frå bygda i 1820-åra: knebukser med kvite strømper, kvit eller grå
+  vadmålsjakke, raud topplue. Kvinner: skaut knytt under haka, liv over kvit
+  skjorte, skjørt og forkle. Presten: svart kjole og kvit pipekrage.
+- Alle figurar blir laga med `figur.py`. Nye personar får ein oppføring i `U` i
+  `js/rpg/data.js`, og deretter `python tools/pikselkunst/figur.py <id>`.
+
 ## Sjekkliste før grafikken blir teken i bruk
 
 1. `pix.py sjekk` gir ingen merknader.

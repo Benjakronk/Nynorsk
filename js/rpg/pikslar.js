@@ -676,6 +676,15 @@ window.Pikslar = (function () {
     if (figurCache.has(k)) return figurCache.get(k);
     const rammer = [0, 1, 2, 3].map(dir => [0, 1, 2].map(steg => figurRamme(u, dir, steg)));
     const f = { rammer, w: FW, h: FH };
+    // Handteikna ark frå tools/pikselkunst/figur.py (48 x 96: steg bortover, retning nedover).
+    // Når det er lasta, blir det teikna inn i dei same lerreta, så alle som held på figuren får det nye.
+    if (u.id && typeof Image !== "undefined") {
+      const img = new Image();
+      img.onload = () => rammer.forEach((rad, dir) => rad.forEach((c, steg) => {
+        const g = c.getContext("2d"); g.clearRect(0, 0, FW, FH); g.drawImage(img, steg * FW, dir * FH, FW, FH, 0, 0, FW, FH);
+      }));
+      img.src = `bilete/spel/figurar/${u.id}.png`;
+    }
     figurCache.set(k, f);
     return f;
   }
