@@ -145,9 +145,12 @@ window.RPGData = (function () {
   for (const id in U) U[id].id = id;
 
   /* ---------- Portrett i samtaleboksen ----------
-     Namnet på den som talar -> fila bilete/spel/portrett/<id>.png. Portretta
-     blir laga med tools/pikselkunst (sjå STILGUIDE.md der). */
-  const PORTRETT = { "Ivar": "ivar", "Storebror": "storebror", "Syster": "syster", "Granne": "granne", "Budeia": "budeia", "Ein framand": "framande", "Den framande": "framande" };
+     Namnet på den som talar -> fila bilete/spel/portrett/<id>.png (48 x 48). Portretta
+     blir teikna person for person i tools/pikselkunst/portrett.py. */
+  const PORTRETT = {
+    "Ivar": "ivar", "Storebror": "storebror", "Syster": "syster", "Granne": "granne", "Budeia": "budeia",
+    "Ein framand": "framande", "Den framande": "framande", "Huldra": "huldra", "Presten": "presten", "Haugbonden": "haugbonden",
+  };
 
   /* ---------- Karta ---------- */
   const KART = {

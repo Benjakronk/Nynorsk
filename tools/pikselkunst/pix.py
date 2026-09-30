@@ -19,7 +19,7 @@ Format for .pix:
   # namn: portrett-ivar
   # type: portrett | figur | fiende | flis
   # ut: bilete/spel/portrett/ivar.png
-  # storleik: 40x40
+  # storleik: 48x48
   palett:
     . = -            (gjennomsiktig)
     o = #0a0514      omriss
@@ -43,6 +43,7 @@ FORHAND = os.path.join(ROT, "forhand")
 # Grenser frå stilguiden (STILGUIDE.md)
 MAKS_FARGAR = {"portrett": 40, "figur": 24, "fiende": 32, "flis": 16}
 OMRISS_MAKS_LYS = 0.16          # omrisspikslar skal vere nesten svarte
+OMRISS_MAKS_LYS_PORTRETT = 0.45 # portretta har farga omriss (Fire Emblem): mørkaste tonen i materialet
 OMRISS_DEL = 0.75               # minst så stor del av kantpikslane skal vere omriss
 SAMANHENG_SKALA = {"portrett": 3, "figur": 3, "fiende": 3, "flis": 3}
 
@@ -174,7 +175,7 @@ def sjekk(sti, stille=False):
                 nb = [(x + dx, y + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))]
                 if any(0 <= a < w and 0 <= b < h and px[a, b][3] == 0 for a, b in nb):
                     kant += 1
-                    if lys(p) <= OMRISS_MAKS_LYS: omriss += 1
+                    if lys(p) <= (OMRISS_MAKS_LYS_PORTRETT if type_ == "portrett" else OMRISS_MAKS_LYS): omriss += 1
                 like = sum(1 for dx in (-1, 0, 1) for dy in (-1, 0, 1) if (dx or dy) and 0 <= x + dx < w and 0 <= y + dy < h and px[x + dx, y + dy] == p)
                 if like == 0 and lys(p) > OMRISS_MAKS_LYS: einsame += 1
         if type_ != "flis" and kant and omriss / kant < OMRISS_DEL:

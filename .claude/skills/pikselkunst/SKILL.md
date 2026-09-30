@@ -38,8 +38,11 @@ uttrykkje.
 Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
 øvst i `tools/pikselkunst/pix.py`). Fem måtar å lage henne på:
 
-- Portrett: legg personen til i `PERSONAR` i `tools/pikselkunst/portrettmal.py`
-  og køyr `python tools/pikselkunst/portrettmal.py <namn>`.
+- Portrett (48 × 48): skriv ein funksjon for personen i `tools/pikselkunst/portrett.py`
+  (eigen silhuett og eit kjenneteikn, sjå STILGUIDE.md), legg han i `PERSONAR`, og køyr
+  `python tools/pikselkunst/portrett.py <namn>` (skriv .pix og PNG). `portrett.py ark`
+  lagar kontaktark. Sjå portrettet i spelet med
+  `skjermbilete.py namn kart=utmarka m=1 "tale=Huldra:Tekst"`.
 - Hus: legg huset til i `BYGG` i `tools/pikselkunst/bygg.py` (breidd, høgd, dører
   og vindauge i fliser) og køyr `python tools/pikselkunst/bygg.py <namn>`. Huset
   må ha same fotavtrykk og dør som i kartet, og står i `bygg` på kartet i `js/rpg/data.js`.
@@ -66,7 +69,7 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   Kartteikna `#` (gran), `t` (bjørk) og `o` (stein) vel variant etter plassen.
 - Små bilete: skriv rutenettet for hand.
 - Større bilete: eit lite Python-skript som teiknar flater med `span` og
-  punkt, slik som `portrettmal.py`, og skriv `.pix`. Teikn flater for hand.
+  punkt, slik som `portrett.py`, og skriv `.pix`. Teikn flater for hand.
   Ikkje rekn ut skugge med kuleformlar: det gir blass, støyete grafikk.
 
 ## 3. Lag og sjekk

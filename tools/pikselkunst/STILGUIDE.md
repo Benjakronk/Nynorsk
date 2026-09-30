@@ -10,7 +10,7 @@ Alt nytt skal kunne stå ved sida av han utan å skilje seg ut.
 | --- | --- | --- |
 | Flis | 16 × 16 | lerretet er 320 × 192, skalert opp med heile tal |
 | Figur på kartet og i kamp | 16 × 24 | føtene nedst i ruta |
-| Portrett i samtaleboksen | 40 × 40 | tre gonger så stort (120 × 120) |
+| Portrett i samtaleboksen | 48 × 48 | tre gonger så stort (144 × 144) |
 | Vanleg fiende | 20 × 20 til 48 × 48 | i kampen, føtene på bakken |
 | Boss | opptil 96 × 80 | Blekklatten er 80 × 72 |
 
@@ -38,11 +38,19 @@ Alt nytt skal kunne stå ved sida av han utan å skilje seg ut.
 
 ## Portrett
 
-- Tre kvart mot høgre (mot teksten i samtaleboksen), hovud og skuldrer.
-- Hovudet fyller om lag tre fjerdedelar av høgda. Botnen er skoren av.
-- Auga: øvre augelok i omrissfarge, augekvitt og iris med ein lys piksel.
-- Ansiktsuttrykket skal fortelje noko om personen.
-- Grunnforma ligg i `portrettmal.py`. Nye personar blir varierte derifrå.
+Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
+
+- Kvar person har sin eigen silhuett og eit kjenneteikn. Ivar: ustyrleg mørkt hår,
+  fjørpenn bak øyret, fregner, sekkeband. Storebror: stuttklypt sandhår, skjeggstubb,
+  strå i munnen. Huldra: gullhår over kanten, blomekrans. Den framande: flosshatt,
+  briller som blenkjer. Presten: pipekrage. Haugbonden: mosehatt, lysande auge.
+  Aldri palettbyte av ei felles grunnform.
+- Tre kvart mot høgre, byste med skuldrer. Hatt og hår kan gå ut over kanten.
+- Andletsforma fortel alder og lynne: rundt barneandlet, kantete kjeve, spiss hake,
+  tunge kjakar. Auga og bryna ber personlegdomen (store, smale, milde, knipne).
+- Farga omriss (mørkaste tonen i materialet), ikkje svart. Ljos framanfrå (frå høgre),
+  skugge mot øyret og under haka. Raudme i kinna med ein mjuk tone, ikkje rosa.
+- Alle portretta blir teikna i `portrett.py`, éin funksjon per person.
 
 ## Lærdommar frå Final Fantasy VI og The Minish Cap
 

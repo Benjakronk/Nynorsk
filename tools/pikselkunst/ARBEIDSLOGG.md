@@ -21,7 +21,7 @@ same måte, uansett kven som tek over.
      opphav og lisens i `konsept/KJELDER.md`.
    - Lag kontaktark (`hent_referansar.py ark`) og sjå på dei. Skriv ned kva
      teknikkar og former du vil bruke.
-3. **Teikn.** Bruk verktøyet som passar (sjå SKILL.md): `portrettmal.py`,
+3. **Teikn.** Bruk verktøyet som passar (sjå SKILL.md): `portrett.py`,
    `bygg.py`, `inventar.py`, `natur.py`, `bakgrunn.py`, `figur.py`, eller fliser i
    `js/rpg/pikslar.js` når elementet må tilpasse seg naboane sine (vatn, murar).
 4. **Sjekk.** `pix.py sjekk` for kjeldene, `node tools/sjekk-spel.js` for
@@ -232,3 +232,34 @@ same måte, uansett kven som tek over.
     Kremmarbua (`stove-bak`) har inngangen bak, der stien frå vegen kjem.
 - **Lærdom:** Det som ligg bakom eit hus, syner høgare oppe på skjermen. Ein
   inngang på baksida blir difor vist med det som stikk opp over mønet.
+
+## Runde 9: portretta
+
+- **Svakast (frå brukaren):** Ivar var berre eit palettbyte av bror sin. Alle
+  portretta hadde same andlet frå `portrettmal.py`.
+- **Research:** Portretta i Final Fantasy VI Advance og «mugshots» frå Fire Emblem:
+  The Sacred Stones (Spriters Resource):
+  - Final Fantasy VI: tett utsnitt, andletet fyller ruta, ulike vinklar (profil,
+    blikk ned), hår og hatt går ut over kanten, sterkt ljos med mørk skuggeside.
+  - Fire Emblem: byste i tre kvart, 96 × 80 og 16 fargar. Silhuetten (hårform,
+    pannebend, bart, klede) skil personane. Farga omriss, tjukt øvre augelok, iris
+    med lys piksel, augebryn som ber lynnet.
+- **Gjort:**
+  - `portrett.py` erstattar `portrettmal.py`. Kvar person er ein eigen funksjon som
+    teiknar polygon, liner og små handteikna rutenett (auge i fleire stilar, nase).
+    Farga omriss blir lagt på til slutt.
+  - Portretta er 48 × 48 (før 40 × 40), vist tre gonger så stort, så det er plass til
+    auge og kjenneteikn.
+  - Ni portrett: Ivar, storebror, syster, grannen og budeia på nytt, og nye for
+    huldra, den framande, presten og haugbonden. Sjå STILGUIDE.md for kjenneteikna.
+  - `pix.py sjekk` godtek farga omriss på portrett.
+  - `skjerm.html` tek `tale=Namn:tekst`, så portretta kan sjåast i samtaleboksen.
+- **Lærdom:** Kjenneteikn og silhuett gjer meir for å skilje personar enn fargar.
+  Teikn andletsforma på nytt for kvar person.
+
+### Står att etter runde 9
+
+- Portrett for bestefaren, mora, klokkaren, lekpredikanten, gjetarguten og dei
+  andre som talar i kapittel 1.
+- Fleire uttrykk per person (glad, sint, redd), til dømes som eigne rammer.
+- Knud Knudsen og spegelfiguren i seinare kapittel.

@@ -99,7 +99,7 @@ npx serve .
 │   ├── lag-terreng.js      Lagar høgdekartet på nytt frå opne terrengdata
 │   ├── test-grammatikk.js  Testar grammatikkreglane mot feil og kursprosa
 │   ├── sjekk-spel.js       Sjekkar karta, manus, ord, stev og bygg i spelet
-│   └── pikselkunst/        Lagar, sjekkar og viser pikselgrafikk til spelet (pix.py, portrettmal.py, bygg.py, inventar.py, natur.py, bakgrunn.py, figur.py, hent_referansar.py, skjermbilete.py, STILGUIDE.md, ARBEIDSLOGG.md, konsept/ med referansar)
+│   └── pikselkunst/        Lagar, sjekkar og viser pikselgrafikk til spelet (pix.py, portrett.py, bygg.py, inventar.py, natur.py, bakgrunn.py, figur.py, hent_referansar.py, skjermbilete.py, STILGUIDE.md, ARBEIDSLOGG.md, konsept/ med referansar)
 └── README.md
 ```
 
