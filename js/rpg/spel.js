@@ -88,7 +88,7 @@
     if (typeof steg === "function") steg = steg(st);
     for (const s of steg || []) {
       if (s.dersom) { const r = await kjoyr(s.dersom(st) ? s.da : s.elles); if (r === "stopp") return "stopp"; continue; }
-      if (s.kjensle !== undefined) Motor.kjensle(s.kjensle);
+      if (s.kjensle !== undefined) Motor.kjensle(s.kjensle, s.s === "Huldra" && st.parti.some(m => m.id === "huldra") ? "fylgje" : "spelar");
       if (s.fort) await Motor.fort(s.fort);
       else if (s.t) { await Motor.tale(s.t, s.s); sistTalar = s.s || sistTalar; }
       if (s.lytt) { const [id, form] = s.lytt; await meldOrd(id, form, leggTilForm(id, form, sistTalar)); }
@@ -98,9 +98,10 @@
         if (i === 0) {
           const kva = leggTilForm(id, form, "Huldra");
           st.huldra.skrive++;
+          Motor.kjensle("sjokk", "fylgje");
           await Motor.tale("Huldra kveppar. «Eg kjende det. Ein liten bit av meg vart til blekk.»");
           await meldOrd(id, form, kva);
-        } else await Motor.tale("Huldra smiler. «Takk. Nokre ord skal berre seiast.»");
+        } else { Motor.kjensle("fnis", "fylgje"); await Motor.tale("Huldra smiler. «Takk. Nokre ord skal berre seiast.»"); }
       }
       if (s.val) { const i = await Motor.val(s.val, s.alt); const r = await kjoyr(s.svar[i]); if (r === "stopp") return "stopp"; }
       if (s.flagg) st.flagg[s.flagg] = true;
@@ -147,7 +148,7 @@
   }
   async function hending(steg) {
     Motor.pause(true);
-    try { await kjoyr(steg); } finally { Motor.kjensle(null); if (modus === "felt") Motor.pause(false); }
+    try { await kjoyr(steg); } finally { Motor.kjensle(null); Motor.kjensle(null, "fylgje"); if (modus === "felt") Motor.pause(false); }
   }
 
   /* ---------- Kamp ---------- */

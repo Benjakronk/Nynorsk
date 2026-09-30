@@ -118,7 +118,9 @@ window.RPGData = (function () {
   /* ---------- Utsjånad ---------- */
   const U = {
     ivar: { hud: "#e8b890", har: "#6a4428", jakke: "#3f5a7a", bukse: "#5a4a3a", sekk: true, belte: true },
-    huldra: { hud: "#f0c8a0", har: "#e8c870", frisyre: "hestehale", jakke: "#ece6d0", kjole: "#2f6a3a", kort: true, sjal: "#6a4aa8", hale: true, band: "#d8b040", blom: true },
+    huldra: { hud: "#f0c8a0", har: "#e8c870", frisyre: "hestehale", jakke: "#ece6d0", kjole: "#2f6a3a", kort: true, sjal: "#6a4aa8", hale: true, band: "#d8b040", blom: true,
+      // Eige, handteikna ark (tools/pikselkunst/huldra_figur.py) med desse kjenslene:
+      kjensler: ["fnis", "sjokk", "sorg", "tenkje", "lokk", "sky"] },
     bror: { hud: "#e2b890", har: "#8a6a3a", jakke: "#7a5a3a", bukse: "#4a4034", belte: true },
     syster: { hud: "#ecc4a4", frisyre: "skaut", skaut: "#2c4288", jakke: "#ecebf0", kjole: "#6a3a2a", forkle: "#ecebf0" },
     granne: { hud: "#e0b890", har: "#d8d8e0", frisyre: "skalle", jakke: "#5a5060", bukse: "#3a3a44", skjegg: "#d8d8e0", strompe: "#e4e0d6", stav: "lang" },
@@ -794,9 +796,9 @@ window.RPGData = (function () {
       { s: "Huldra", t: "Eg er huldra. Eg kan dei eldste orda, frå før nokon skreiv noko ned." },
       { s: "Huldra", t: "Kjenner du det? Det luktar ⟪snjo⟫ i lufta, sjølv om det er vår." },
       { tilbod: ["snjo", "snjo"] },
-      { s: "Huldra", t: "Blekket kveler alt som lever. Eg går med deg eit stykke. Men ikkje skriv ned alt eg seier." },
+      { s: "Huldra", t: "Blekket kveler alt som lever. Eg går med deg eit stykke. Men ikkje skriv ned alt eg seier.", kjensle: "sorg" },
       { parti: "huldra" }, { flagg: "huldra_med" }, { fjern: "%" },
-      { s: "Huldra", t: "Eg kan eit stev om det gamle målet. Men to av orda i det har eg gløymt. Dei ligg djupare enn det nokon i bygda kan hugse." },
+      { s: "Huldra", t: "Eg kan eit stev om det gamle målet. Men to av orda i det har eg gløymt. Dei ligg djupare enn det nokon i bygda kan hugse.", kjensle: "tenkje" },
       { stev: "tungestevet" },
     ],
     haugbonde: [

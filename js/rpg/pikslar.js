@@ -702,7 +702,7 @@ window.Pikslar = (function () {
     { const g = ute.getContext("2d"); g.translate(FH / 2, 8); g.rotate(Math.PI / 2); g.drawImage(rammer[2][0], -FW / 2, -FH / 2); }
     const kamp = { atak: kopi(rammer[2][1]), galdr: kopi(rammer[2][0]), skadd: kopi(rammer[2][0]), svak: kopi(rammer[2][0]), ute };
     // Kjensler (mot oss): berre hovudpersonar med handteikna ark har dei. Til då: ståramma.
-    const KJENSLER = ["latter", "sjokk", "sorg", "tenkje", "ivrig", "les"];
+    const KJENSLER = u.kjensler || ["latter", "sjokk", "sorg", "tenkje", "ivrig", "les"];
     const kjensle = Object.fromEntries(KJENSLER.map(k => [k, kopi(rammer[0][0])]));
     const f = { rammer, kamp, kjensle, w: FW, h: FH };
     // Handteikna ark frå tools/pikselkunst/figur.py (48 x 144): rad 0 til 3 gange (steg bortover),

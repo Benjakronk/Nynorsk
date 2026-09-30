@@ -6,7 +6,8 @@ Hovudpersonen får eige ark i staden for malen i figur.py, så han kan få meir 
 - Kjenneteikn: ein hårvirvel som stikk opp, fjørpenn bak øyret, sekk med reimar, og ein
   hasselkjepp i kampen.
 - Gange som Locke: neven kjem stort fram framfor magen, armen bak forsvinn, beinet bak
-  blir bøygd og løfta. Frå sida søkk kroppen i steget.
+  blir bøygd og løfta. Frå sida søkk kroppen i steget. Håret sprett litt (virvel og lugg)
+  i gangen opp og ned. (Skuldervriing vart prøvd, men såg ut som dans, og er teken bort.)
 - Kjensler: latter (handa bak hovudet), sjokk, sorg, tenkjer, ivrig og les i ei bok.
 
 Arket (48 x 192): rad 0 til 3 gange (ned, opp, venstre, høgre), rad 4 åtak, galdr, skadd,
@@ -15,7 +16,6 @@ rad 5 svak og slått ut (24 x 16), rad 6 latter, sjokk, sorg, rad 7 tenkjer, ivr
   python tools/pikselkunst/ivar_figur.py        skriv bilete/spel/figurar/ivar.png
 """
 import os
-from PIL import Image
 
 ROT = os.path.dirname(os.path.abspath(__file__))
 UT = os.path.join(ROT, "..", "..", "bilete", "spel", "figurar", "ivar.png")
@@ -537,62 +537,21 @@ R["les"] = [
 ]
 
 
-def omriss(g):
-    h, w = len(g), len(g[0]); ut = [list(r) for r in g]
-    for y in range(h):
-        for x in range(w):
-            if g[y][x] != ".": continue
-            if any(0 <= y + dy < h and 0 <= x + dx < w and g[y + dy][x + dx] != "." for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
-                ut[y][x] = "o"
-    return ut
+# Håret sprett litt i gangen opp og ned: virvelen og luggen flyttar seg éin piksel
+# i takt med stega, så hovudet ser levande ut sjølv om kroppen er roleg.
+def _sprett(namn, virvel, lugg):
+    g = list(R[namn]); g[1], g[2] = virvel; g[6] = lugg; R[namn] = g
+_sprett("ned1", (".....rRRr.qr....", "....rRRRRrqrr..."), "..rrqhrrhhrrqq..")
+_sprett("ned2", (".....rRRr...qr..", "....rRRRRrrrqr.."), "..rrqhhrhrrqrq..")
+_sprett("opp1", (".....rRRr.qr....", "....rRRRRrqrr..."), R["opp1"][6])
+_sprett("opp2", (".....rRRr...qr..", "....rRRRRrrrqr.."), R["opp2"][6])
 
-
-def hx(s): s = s.lstrip("#"); return tuple(int(s[i:i + 2], 16) for i in (0, 2, 4))
-
-
-def teikn(im, g, x0, y0, spegl=False):
-    for y, rad in enumerate(g):
-        for x, c in enumerate(rad):
-            if c != ".": im.putpixel((x0 + (len(rad) - 1 - x if spegl else x), y0 + y), hx(PAL[c]) + (255,))
-
-
-# Skuldervriing i steget (som Locke): overkroppen flyttar seg éin piksel mot armen som svingar fram.
-VRI = {"ned1": 1, "ned2": -1, "opp1": -1, "opp2": 1}
-
-
-def vri(g, dx):
-    ut = list(g)
-    for y in range(11, 17):
-        r = g[y]
-        ut[y] = ("." + r[:-1]) if dx > 0 else (r[1:] + ".")
-    return ut
-
-
-def ramme(namn):
-    g = R[namn]
-    if namn in VRI: g = vri(g, VRI[namn])
-    assert len(g) == H and all(len(r) == W for r in g), (namn, [len(r) for r in g])
-    return omriss(g)
+KJENSLER = ("latter", "sjokk", "sorg", "tenkje", "ivrig", "les")
 
 
 def lag():
-    im = Image.new("RGBA", (W * 3, H * 8), (0, 0, 0, 0))
-    for d, pre in enumerate(("ned", "opp", "side")):
-        for s in range(3): teikn(im, ramme(f"{pre}{s}"), s * W, d * H)
-    for s in range(3): teikn(im, ramme(f"side{s}"), s * W, 3 * H, spegl=True)
-    for n, namn in enumerate(("atak", "galdr", "skadd")): teikn(im, ramme(namn), n * W, 4 * H)
-    teikn(im, ramme("svak"), 0, 5 * H)
-    # slått ut: sida rotert
-    g = [r[:] for r in R["side0"]]
-    rot = [[g[H - 1 - x][y] for x in range(H)] for y in range(W)]
-    rot = [["." if c in "o" else c for c in r] for r in rot]
-    for y, r in enumerate(rot):
-        for x, c in enumerate(r):
-            if c == "o": rot[y][x] = "h"                                # attlatne auge
-    teikn(im, omriss(rot), W, 5 * H + 8)
-    for n, namn in enumerate(("latter", "sjokk", "sorg")): teikn(im, ramme(namn), n * W, 6 * H)
-    for n, namn in enumerate(("tenkje", "ivrig", "les")): teikn(im, ramme(namn), n * W, 7 * H)
-    return im
+    import handfigur
+    return handfigur.lag(R, PAL, KJENSLER)
 
 
 if __name__ == "__main__":

@@ -392,3 +392,14 @@ same måte, uansett kven som tek over.
 - **Lærdom:** Ein hovudperson treng eige, handteikna ark. Malen gir like figurar, og
   personlegdomen kjem frå små ting som bryt forma (virvelen, fjøra, kjeppen) og frå
   kjensleramer.
+
+### Etter runde 14: roleg overkropp, hårsprett og huldra
+
+- Skuldervriinga i gangen opp og ned såg ut som dans og er teken bort. I staden sprett
+  virvelen og luggen til Ivar éin piksel til kvar side i takt med stega.
+- Huldra har fått eige, handteikna ark (`huldra_figur.py`, felles kode i `handfigur.py`)
+  etter Terra og Celes: langt, gyllent hår med strå over heile ryggen (strå som flyttar
+  seg i stega, så håret svaiar), lokkar langs andletet, fiolett sjal, grønt liv, gullbelte,
+  stutt skjørt, berre bein og kuhale. Kjensler: fnis, sjokk, sorg, tenkjer, lokk og
+  sjenert. Namna står i `kjensler` i utsjånaden, og `kjensle` på ei replikk frå huldra
+  gjeld henne når ho følgjer Ivar.

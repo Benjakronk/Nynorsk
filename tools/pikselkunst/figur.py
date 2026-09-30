@@ -907,7 +907,12 @@ def _ivar():
 
 
 # Figurar som har eit eige, handteikna ark (med kjensler) i staden for malen.
-HANDTEIKNA = {"ivar": _ivar}
+def _huldra():
+    import huldra_figur
+    return huldra_figur.lag()
+
+
+HANDTEIKNA = {"ivar": _ivar, "huldra": _huldra}
 
 
 def kontaktark(alle, skala=4):
