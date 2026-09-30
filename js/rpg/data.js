@@ -150,6 +150,13 @@ window.RPGData = (function () {
   const PORTRETT = {
     "Ivar": "ivar", "Storebror": "storebror", "Syster": "syster", "Granne": "granne", "Budeia": "budeia",
     "Ein framand": "framande", "Den framande": "framande", "Huldra": "huldra", "Presten": "presten", "Haugbonden": "haugbonden",
+    // Småroller deler fellesansikt (som dei generiske portretta i Fire Emblem).
+    "Bonde": "bygd-mann", "Husmann": "bygd-mann", "Fiskar": "bygd-mann", "Kremmaren": "bygd-mann",
+    "Klokkaren": "bygd-mann", "Lekpredikanten": "bygd-mann",
+    "Dottera": "bygd-kvinne", "Tenestejenta": "bygd-kvinne", "Ei kvinne ved setra": "bygd-kvinne",
+    "Bestefaren": "bygd-gamal-mann", "Tenaren på Ekset": "bygd-gamal-mann",
+    "Gamal kone": "bygd-gamal-kone", "Mora": "bygd-gamal-kone",
+    "Gjetarguten": "bygd-gut",
   };
 
   /* ---------- Karta ---------- */

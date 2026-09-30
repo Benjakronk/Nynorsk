@@ -50,6 +50,9 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
   tunge kjakar. Auga og bryna ber personlegdomen (store, smale, milde, knipne).
 - Farga omriss (mørkaste tonen i materialet), ikkje svart. Ljos framanfrå (frå høgre),
   skugge mot øyret og under haka. Raudme i kinna med ein mjuk tone, ikkje rosa.
+- Berre viktige personar får eige portrett. Småroller brukar eitt av fem
+  fellesansikt (`bygd-mann`, `bygd-kvinne`, `bygd-gamal-mann`, `bygd-gamal-kone`,
+  `bygd-gut`), som er nøytrale og utan kjenneteikn.
 - Alle portretta blir teikna i `portrett.py`, éin funksjon per person.
 
 ## Lærdommar frå Final Fantasy VI og The Minish Cap

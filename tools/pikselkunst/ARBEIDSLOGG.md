@@ -259,7 +259,16 @@ same måte, uansett kven som tek over.
 
 ### Står att etter runde 9
 
-- Portrett for bestefaren, mora, klokkaren, lekpredikanten, gjetarguten og dei
-  andre som talar i kapittel 1.
+- Fellesansikt er laga (sjå under). Ein bifigur som får ei større rolle seinare,
+  bør få eige portrett.
 - Fleire uttrykk per person (glad, sint, redd), til dømes som eigne rammer.
 - Knud Knudsen og spegelfiguren i seinare kapittel.
+
+### Fellesansikt for bygdefolk
+
+- Berre viktige personar får eige portrett (partiet, motstandarane,
+  litteraturpersonar og dei som kjem att). Småroller deler fem fellesansikt, som
+  dei generiske portretta i Fire Emblem: `bygd-mann`, `bygd-kvinne`,
+  `bygd-gamal-mann`, `bygd-gamal-kone` og `bygd-gut`.
+- Dei er med vilje nøytrale: same stil, men utan kjenneteikn. Koplinga frå namnet
+  på den som talar, står i `PORTRETT` i `js/rpg/data.js`.
