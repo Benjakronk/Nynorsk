@@ -37,7 +37,7 @@ f.onload = async () => {
   // tale=Huldra:Teksten opnar samtaleboksen med portrettet til den som talar.
   if (q.get("kjensle")) M.kjensle(q.get("kjensle"));
   if (q.get("hkjensle")) M.kjensle(q.get("hkjensle"), "fylgje");
-  if (q.get("tale")) { const [namn, ...t] = q.get("tale").split(":"); M.tale(t.join(":") || "…", namn); await vent(2500); }
+  if (q.get("tale")) { const [namn, ...t] = q.get("tale").split(":"); M.tale(t.join(":") || "…", namn, q.get("kjensle")); await vent(2500); }
   // gaa=opp held ei piltast nede i «ventms» millisekund før biletet blir teke (til dømes for å sjå ei dør opne seg).
   if (q.get("gaa")) {
     const k = { opp: "ArrowUp", ned: "ArrowDown", venstre: "ArrowLeft", hogre: "ArrowRight" }[q.get("gaa")];

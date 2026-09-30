@@ -691,6 +691,8 @@ window.Pikslar = (function () {
     };
     return mal(R, pal);
   }
+  // Kjenslene alle figurar har, i fast rekkjefølgje i arket (sjå tools/pikselkunst/figur.py).
+  const STANDARDKJENSLER = ["glad", "trist", "sint", "sjokk", "tenkje", "nikk"];
   const figurCache = new Map();
   function figur(u) {
     const k = JSON.stringify(u);
@@ -702,7 +704,9 @@ window.Pikslar = (function () {
     { const g = ute.getContext("2d"); g.translate(FH / 2, 8); g.rotate(Math.PI / 2); g.drawImage(rammer[2][0], -FW / 2, -FH / 2); }
     const kamp = { atak: kopi(rammer[2][1]), galdr: kopi(rammer[2][0]), skadd: kopi(rammer[2][0]), svak: kopi(rammer[2][0]), ute };
     // Kjensler (mot oss): berre hovudpersonar med handteikna ark har dei. Til då: ståramma.
-    const KJENSLER = u.kjensler || ["latter", "sjokk", "sorg", "tenkje", "ivrig", "les"];
+    // Kjensler (mot oss): standardsettet har alle figurar (rad 6 og 7 i arket). Figurar med
+    // handteikna ark har i tillegg eigne kjensler i rad 8 (namna står i kjensler i utsjånaden).
+    const KJENSLER = [...STANDARDKJENSLER, ...(u.kjensler || [])];
     const kjensle = Object.fromEntries(KJENSLER.map(k => [k, kopi(rammer[0][0])]));
     // Sigerstilling i kampen: kjensler namngjevne i utsjånaden (til dømes ivrig), elles ingen.
     const siger = (u.siger || []).map(k => kjensle[k]).filter(Boolean);
@@ -722,7 +726,7 @@ window.Pikslar = (function () {
         if (img.height < FH * 6) return;
         teiknInn(kamp.atak, 0, FH * 4); teiknInn(kamp.galdr, FW, FH * 4); teiknInn(kamp.skadd, FW * 2, FH * 4);
         teiknInn(kamp.svak, 0, FH * 5); teiknInn(kamp.ute, FW, FH * 5 + 8);
-        if (img.height >= FH * 8) KJENSLER.forEach((k, i) => teiknInn(kjensle[k], (i % 3) * FW, FH * (6 + Math.floor(i / 3))));
+        KJENSLER.forEach((k, i) => { if (img.height >= FH * (7 + Math.floor(i / 3))) teiknInn(kjensle[k], (i % 3) * FW, FH * (6 + Math.floor(i / 3))); });
       };
       if (klar(img)) bruk(); else img.addEventListener("load", bruk, { once: true });
     }
@@ -903,6 +907,7 @@ window.Pikslar = (function () {
     ut.push("bilete/spel/natur/haug.png");
     for (const id of Object.keys(D.U)) ut.push(`bilete/spel/figurar/${id}.png`);
     for (const id of Object.values(D.PORTRETT || {})) ut.push(`bilete/spel/portrett/${id}.png`);
+    for (const [id, ks] of Object.entries(D.PORTRETT_KJENSLER || {})) for (const k of ks) ut.push(`bilete/spel/portrett/${id}-${k}.png`);
     for (const d of Object.values(PNG)) ut.push(d.fil);
     return ut;
   }
@@ -960,5 +965,5 @@ window.Pikslar = (function () {
   }
 
   return { S, FW, FH, flis, topp, kant, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
-    hent, klar, forhandslast, alleBilete, ILD, ild, ildMaske };
+    hent, klar, forhandslast, alleBilete, ILD, ild, ildMaske, STANDARDKJENSLER };
 })();

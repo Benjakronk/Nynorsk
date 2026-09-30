@@ -117,10 +117,10 @@ window.RPGData = (function () {
 
   /* ---------- Utsjånad ---------- */
   const U = {
-    ivar: { siger: ["ivrig"], hud: "#e8b890", har: "#6a4428", jakke: "#3f5a7a", bukse: "#5a4a3a", sekk: true, belte: true },
+    ivar: { kjensler: ["ivrig", "les"], siger: ["ivrig"], hud: "#e8b890", har: "#6a4428", jakke: "#3f5a7a", bukse: "#5a4a3a", sekk: true, belte: true },
     huldra: { hud: "#f0c8a0", har: "#e8c870", frisyre: "hestehale", jakke: "#ece6d0", kjole: "#2f6a3a", kort: true, sjal: "#6a4aa8", hale: true, band: "#d8b040", blom: true,
-      // Eige, handteikna ark (tools/pikselkunst/huldra_figur.py) med desse kjenslene:
-      kjensler: ["fnis", "sjokk", "sorg", "tenkje", "lokk", "sky"], siger: ["lokk", "fnis"] },
+      // Eige, handteikna ark (tools/pikselkunst/huldra_figur.py). Eigne kjensler i tillegg til standardsettet:
+      kjensler: ["lokk", "sky"], siger: ["lokk", "glad"] },
     bror: { hud: "#e2b890", har: "#8a6a3a", jakke: "#7a5a3a", bukse: "#4a4034", belte: true },
     syster: { hud: "#ecc4a4", frisyre: "skaut", skaut: "#2c4288", jakke: "#ecebf0", kjole: "#6a3a2a", forkle: "#ecebf0" },
     granne: { hud: "#e0b890", har: "#d8d8e0", frisyre: "skalle", jakke: "#5a5060", bukse: "#3a3a44", skjegg: "#d8d8e0", strompe: "#e4e0d6", stav: "lang" },
@@ -142,6 +142,11 @@ window.RPGData = (function () {
     bestefar: { hud: "#dcb898", har: "#bcbccc", frisyre: "skalle", jakke: "#d8d0b8", bukse: "#3a3a44", skjegg: "#bcbccc", strompe: "#e4e0d6", belte: true, stav: "stokk" },
   };
 
+  /* Kjensler i manus: { s: "Presten", t: "…", kjensle: "sint" } gjeld den som talar, og
+     { s: "Storebror", t: "…", kjensle: "trist", kven: "Ivar" } gjeld ein annan. Alle figurar har
+     standardsettet glad, trist, sint, sjokk, tenkje og nikk. Ivar har i tillegg ivrig og les,
+     huldra lokk og sky. Kjensla blir vist på figuren, og i portrettet om det finst ein variant
+     (PORTRETT_KJENSLER). Ho varer til samtalen er slutt eller figuren går. */
   // Figurane blir teikna med tools/pikselkunst/figur.py til bilete/spel/figurar/<id>.png.
   // Spelet brukar arket når det er lasta, og teiknar figuren i kode til då.
   for (const id in U) U[id].id = id;
@@ -160,6 +165,9 @@ window.RPGData = (function () {
     "Gamal kone": "bygd-gamal-kone", "Mora": "bygd-gamal-kone",
     "Gjetarguten": "bygd-gut",
   };
+
+  // Portrett med kjensler: bilete/spel/portrett/<id>-<kjensle>.png (laga med portrett.py).
+  const PORTRETT_KJENSLER = { ivar: ["glad", "trist", "sint", "sjokk", "tenkje", "nikk", "ivrig", "les"] };
 
   /* ---------- Karta ---------- */
   const KART = {
@@ -623,7 +631,7 @@ window.RPGData = (function () {
         "No skriv det av seg sjølv, i kyrkjebøker, tingbøker og lovtekstar. Der det breier seg, blir talen til folk stiv og framand.",
         "Hovdebygda i Ørsta, våren 1826. Ivar Aasen er tretten år. Mor døydde då han var tre. I vinter døydde far.",
       ] },
-      { s: "Storebror", t: "Ivar, du er vaken. Det er mykje som skal gjerast på garden no, når far er borte.", kjensle: "sorg" },
+      { s: "Storebror", t: "Ivar, du er vaken. Det er mykje som skal gjerast på garden no, når far er borte.", kjensle: "trist", kven: "Ivar" },
       { s: "Storebror", t: "Snakk med folk før du går. Du har alltid vore flink til å høyre etter." },
     ],
     bror: [{ dersom: harOrd("stein"), da: [
@@ -796,7 +804,7 @@ window.RPGData = (function () {
       { s: "Huldra", t: "Eg er huldra. Eg kan dei eldste orda, frå før nokon skreiv noko ned." },
       { s: "Huldra", t: "Kjenner du det? Det luktar ⟪snjo⟫ i lufta, sjølv om det er vår." },
       { tilbod: ["snjo", "snjo"] },
-      { s: "Huldra", t: "Blekket kveler alt som lever. Eg går med deg eit stykke. Men ikkje skriv ned alt eg seier.", kjensle: "sorg" },
+      { s: "Huldra", t: "Blekket kveler alt som lever. Eg går med deg eit stykke. Men ikkje skriv ned alt eg seier.", kjensle: "trist" },
       { parti: "huldra" }, { flagg: "huldra_med" }, { fjern: "%" },
       { s: "Huldra", t: "Eg kan eit stev om det gamle målet. Men to av orda i det har eg gløymt. Dei ligg djupare enn det nokon i bygda kan hugse.", kjensle: "tenkje" },
       { stev: "tungestevet" },
@@ -831,7 +839,7 @@ window.RPGData = (function () {
       { s: "Tenaren på Ekset", t: "Den som vil ⟪vite⟫ noko, må lese. Og den som les, må vite kva han les." },
       { lytt: ["vita", "vite"] },
       { t: "Ivar blar i ei gamal kongesoge. Mykje forstår han ikkje. Men nokre av dei gamle orda liknar på dei han høyrer heime." },
-      { gi: "sagabok" }, { t: "Ivar fekk låne ei gamal kongesoge.", kjensle: "les" },
+      { gi: "sagabok" }, { t: "Ivar fekk låne ei gamal kongesoge.", kjensle: "les", kven: "Ivar" },
     ] }],
     /* Arkivet */
     blekklatten: [{ dersom: st => st.flagg.latt, da: [], elles: [
@@ -850,5 +858,5 @@ window.RPGData = (function () {
   // Første gong Ivar går ut, kjem den framande bort til han.
   MANUS.ut_forste = [{ dersom: st => !st.flagg.framande1, da: MANUS.framande }];
 
-  return { FAMILIAR, ORD, U, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, KAPITTEL, STEVGALDR, PORTRETT, MANUS };
+  return { FAMILIAR, ORD, U, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, KAPITTEL, STEVGALDR, PORTRETT, PORTRETT_KJENSLER, MANUS };
 })();

@@ -413,3 +413,22 @@ same måte, uansett kven som tek over.
 - Retta: det kvite blinket når ein fiende fell, dekte heile ruta rundt fienden (eit
   grått rektangel). No blir det teikna i forma til fienden.
 - `skjerm.html` tek `vinn=1`, som vinn kampen, så sigeren kan sjåast på skjermbilete.
+
+## Runde 15: kjensler for alle, og portrett som følgjer
+
+- **Frå brukaren:** Portrettet til Ivar skulle få kjensler som følgjer rammene, og alle
+  figurar skulle ha eit standardsett med kjensler som kan brukast i skripta scener.
+- **Gjort:**
+  - Standardsettet: glad, trist, sint, sjokk, tenkje og nikk, i fast rekkjefølgje i rad 6
+    og 7 i alle figurark. `figur.py` lagar dei for alle figurane frå malen ved å endre
+    auge, bryn, munn og hender der andletet er (`kjensle()`), og ved nikk bøyer hovudet seg.
+  - Ivar og huldra har standardsettet (nye: sint og nikk) og sine eigne kjensler i rad 8
+    (Ivar: ivrig, les. Huldra: lokk, sky). Gamle namn er bytte: latter og fnis er glad,
+    sorg er trist.
+  - Manus: `kjensle` gjeld den som talar, eller den som står i `kven` (Ivar, Huldra eller
+    ein person på kartet). Kjensla varer til samtalen er slutt eller figuren går.
+  - Portrett med kjensler: `portrett.py` lagar `<namn>-<kjensle>.png` for personar i
+    `PORTRETT_KJENSLER` (no Ivar, alle åtte). Samtaleboksen viser varianten når den som
+    talar har ei kjensle, og vanleg portrett elles. Dei blir forhåndslasta.
+  - `skjerm.html` tek `kjensle` saman med `tale`, så portrett og figur kan sjåast saman.
+- **Står att:** Portrettkjensler for huldra, den framande, presten og dei andre med eige portrett.

@@ -129,6 +129,7 @@ def auge_naer(P, x, y, iris, stil="open"):
         "mild":     ["..LLLL..", ".LwhiiL.", "LwwkIiw.", "..llll.."],
         "attlatne": [".LLLLL..", "L.....L.", ".l...l.."],
         "vid":      [".LLLLLL.", "LwwhiiwL", "LwwiIIwL", ".wwwwww.", "..llll.."],
+        "ned":      ["........", ".LLLLLL.", "LLwkiiL.", "..llll.."],
     }[stil]
     P.rute(x, y, rader, f)
 
@@ -142,7 +143,7 @@ def nase(P, hud, x, y, lengd=6):
 
 
 # ---------------------------------------------------------------- personane
-def ivar(P):
+def ivar(P, k=None):
     """Ivar, 13 år: gardsgut med blikk for ord. Mørkt, ustyrleg hår med ein virvel, lang
     lugg som fell over det eine auget, fregner, merksemd i blikket (han høyrer etter),
     ein fjørpenn stukken bak øyret, blå vadmålstrøye med sekkeband over skuldra."""
@@ -171,13 +172,38 @@ def ivar(P):
     nase(P, hud, 35, 20)
     # øyre
     P.poly([(12, 19), (15, 18), (16, 22), (15, 25), (12, 24)], (hud, 2)); P.linje([(13, 20), (13, 23)], (hud, 1))
-    # auge: merksame, blikket litt opp mot høgre
-    auge_naer(P, 20, 17, "iris_br", "stor")
-    auge_far(P, 30, 18, "iris_br")
-    # augebryn: litt løfta, nysgjerrig
-    P.linje([(20, 15), (23, 14), (27, 14)], (har, 1)); P.linje([(30, 15), (33, 14)], (har, 1))
-    # munn: lukka, eit lite, spørjande drag
-    P.linje([(29, 29), (32, 28)], ("munn", 2)); P.p(33, 28, ("munn", 1))
+    # Auge, bryn og munn etter kjensla (same kjensler som figurarket hans).
+    stil = {None: "stor", "glad": "attlatne", "nikk": "attlatne", "trist": "mild", "sint": "smal",
+            "sjokk": "vid", "tenkje": "smal", "ivrig": "stor", "les": "ned"}[k]
+    auge_naer(P, 20, 17, "iris_br", stil)
+    auge_far(P, 30, 18, "iris_br", "attlatne" if stil == "attlatne" else "smal" if stil in ("smal", "ned") else "open")
+    if k == "ivrig": P.p(22, 18, ("auge", 4)); P.p(26, 19, ("auge", 4))            # glimt i auga
+    bryn = {None: ([(20, 15), (23, 14), (27, 14)], [(30, 15), (33, 14)]),
+            "glad": ([(20, 14), (23, 13), (27, 13)], [(30, 14), (33, 13)]),
+            "nikk": ([(20, 15), (23, 15), (27, 15)], [(30, 15), (33, 15)]),
+            "trist": ([(20, 15), (23, 15), (26, 13)], [(30, 13), (33, 15)]),
+            "sint": ([(20, 14), (24, 15), (27, 17)], [(30, 17), (34, 14)]),
+            "sjokk": ([(20, 13), (23, 12), (27, 12)], [(30, 12), (33, 12)]),
+            "tenkje": ([(20, 16), (27, 16)], [(30, 13), (32, 12), (34, 13)]),
+            "ivrig": ([(20, 13), (23, 12), (27, 13)], [(30, 13), (33, 12)]),
+            "les": ([(20, 15), (27, 15)], [(30, 15), (33, 15)])}[k]
+    P.linje(bryn[0], (har, 1)); P.linje(bryn[1], (har, 1))
+    if k == "sint": P.linje([(21, 15), (25, 16)], (har, 1))                        # tjukke, sinte bryn
+    if k in ("glad", "ivrig"):                                                     # ope smil med tenner
+        P.poly([(27, 28), (33, 27), (32, 31), (28, 31)], ("munn", 1)); P.linje([(28, 28), (32, 28)], ("kvit", 4))
+        P.linje([(24, 26), (27, 26)], ("kinn", 3))
+    elif k == "trist":
+        P.linje([(28, 30), (30, 29), (32, 30)], ("munn", 1)); P.p(22, 22, ("glas", 3)); P.p(22, 23, ("glas", 2))
+    elif k == "sint":
+        P.linje([(28, 30), (33, 30)], ("munn", 0))
+    elif k == "sjokk":
+        P.poly([(29, 29), (32, 29), (32, 32), (29, 32)], ("munn", 1)); P.p(30, 29, ("munn", 0))
+    elif k == "tenkje":
+        P.linje([(30, 29), (32, 29)], ("munn", 2)); P.p(33, 28, ("munn", 1))
+    elif k == "nikk":
+        P.linje([(28, 29), (30, 30), (32, 29)], ("munn", 2))
+    else:                                                                          # nøytral og les: lite, spørjande drag
+        P.linje([(29, 29), (32, 28)], ("munn", 2)); P.p(33, 28, ("munn", 1))
     # fregner
     for (x, y) in [(26, 24), (28, 25), (30, 24), (32, 25), (24, 25)]: P.p(x, y, (hud, 2))
     # håret: mørkt og ustyrleg, virvel øvst, lugg som fell ned over høgre auge
@@ -200,6 +226,23 @@ def ivar(P):
     P.linje([(12, 25), (6, 10)], ("kvit", 2))
     P.poly([(6, 10), (4, 4), (6, 1), (8, 6), (9, 14)], ("kvit", 3))
     P.linje([(6, 2), (7, 12)], ("kvit", 4)); P.linje([(5, 5), (6, 11)], ("kvit", 1))
+    # Hender og ting som høyrer til kjensla
+    if k == "tenkje":                                                              # handa under haka
+        P.poly([(27, 33), (34, 30), (37, 34), (35, 39), (29, 39)], ("hud_barn", 3))
+        P.linje([(29, 36), (35, 34)], ("hud_barn", 2)); P.linje([(35, 39), (38, 44)], ("blaa", 2))
+    if k == "ivrig":                                                               # neven i været
+        P.poly([(36, 34), (43, 32), (45, 38), (38, 40)], ("hud_barn", 3))
+        P.linje([(38, 36), (44, 35)], ("hud_barn", 2))
+        P.poly([(38, 40), (45, 38), (47, 48), (40, 48)], ("blaa", 3))
+    if k == "les":                                                                 # ei open bok nedst
+        P.poly([(10, 40), (38, 40), (40, 48), (8, 48)], ("tre", 2))
+        P.poly([(12, 41), (23, 42), (23, 48), (11, 48)], ("lin", 4)); P.poly([(25, 42), (36, 41), (37, 48), (25, 48)], ("lin", 3))
+        for y in (43, 45, 47): P.linje([(13, y), (21, y)], ("lin", 1)); P.linje([(27, y), (35, y)], ("lin", 1))
+        P.poly([(6, 42), (11, 41), (11, 48), (6, 48)], ("hud_barn", 3)); P.poly([(37, 41), (42, 42), (42, 48), (37, 48)], ("hud_barn", 3))
+
+
+# Kjensler i portretta (same namn som i figurarka). Kvar variant blir <namn>-<kjensle>.png.
+PORTRETT_KJENSLER = {"ivar": ("glad", "trist", "sint", "sjokk", "tenkje", "nikk", "ivrig", "les")}
 
 
 def storebror(P):
@@ -634,9 +677,11 @@ PERSONAR = {"ivar": ivar, "storebror": storebror, "huldra": huldra, "framande": 
 
 
 # ---------------------------------------------------------------- ut
-def lag(namn):
+def lag(namn, k=None):
     P = Portrett()
-    PERSONAR[namn](P)
+    if k: PERSONAR[namn](P, k)
+    else: PERSONAR[namn](P)
+    namn = f"{namn}-{k}" if k else namn
     P.omriss()
     brukt = sorted({c for r in P.g for c in r if c})
     TEIKN = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!$%&*+=?@^~<>"
@@ -668,6 +713,7 @@ if __name__ == "__main__":
     val = list(PERSONAR) if sys.argv[1] == "alle" else sys.argv[1:]
     import subprocess
     for n in val:
-        sti, nf = lag(n)
-        subprocess.run([sys.executable, os.path.join(ROT, "pix.py"), "lag", sti], stdout=subprocess.DEVNULL)
-        print(f"{n}: {nf} fargar")
+        for k in (None,) + PORTRETT_KJENSLER.get(n, ()):
+            sti, nf = lag(n, k)
+            subprocess.run([sys.executable, os.path.join(ROT, "pix.py"), "lag", sti], stdout=subprocess.DEVNULL)
+            print(f"{n}{'-' + k if k else ''}: {nf} fargar")

@@ -70,6 +70,11 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   sigerfeiringa i kampen. Kjensler blir viste med `kjensle` i manus og
   kan sjåast med `skjermbilete.py namn kart=asen-stova m=1 kjensle=sjokk`.
   Sigerfeiring og løn i kampscena: `skjermbilete.py namn kart=utmarka m=1 kamp=vette parti=huldra vinn=1`.
+- Kjensler: alle figurar har standardsettet glad, trist, sint, sjokk, tenkje, nikk (rad 6
+  og 7, laga av `kjensle()` i figur.py). Portrett med kjensler: gi portrettfunksjonen ein
+  parameter k, før personen inn i `PORTRETT_KJENSLER` i portrett.py og i data.js, og køyr
+  `portrett.py <namn>`. Sjå begge i spelet med
+  `skjermbilete.py namn kart=asen-stova m=1 kjensle=sjokk "tale=Ivar:Tekst"`.
 - Kampbakgrunnar: `python tools/pikselkunst/bakgrunn.py <namn>` (malarverktøya ligg i
   `maleri.py`: støy, dithering, fjell, gras, gran, bjørk, stein) skriv
   `bilete/spel/kamp/<namn>.png` direkte (skriptet er kjelda). Namnet er

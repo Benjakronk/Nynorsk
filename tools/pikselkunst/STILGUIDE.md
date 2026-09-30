@@ -54,6 +54,8 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
   fellesansikt (`bygd-mann`, `bygd-kvinne`, `bygd-gamal-mann`, `bygd-gamal-kone`,
   `bygd-gut`), som er nøytrale og utan kjenneteikn.
 - Alle portretta blir teikna i `portrett.py`, éin funksjon per person.
+- Kjensler i portrett: same namn som i figurarka (glad, trist, sint, sjokk, tenkje, nikk og
+  eigne). Endre auge, bryn og munn, og legg til ting som fortel (tåre, hand under haka, bok).
 
 ## Lærdommar frå Final Fantasy VI og The Minish Cap
 

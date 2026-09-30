@@ -868,11 +868,66 @@ def ute(u):
     return omriss(rot)
 
 
+# ---------------------------------------------------------------- standardkjensler
+# Alle figurar har same sett med kjensler, så manus kan bruke dei til å fortelje historia.
+# Rekkjefølgja er fast (rad 6 og 7 i arket). Handteikna ark har i tillegg eigne kjensler i rad 8.
+STANDARDKJENSLER = ("glad", "trist", "sint", "sjokk", "tenkje", "nikk")
+ANDLET = set("hHjkme")                          # pikslar som høyrer til andletet
+
+
+def kjensle(u, namn):
+    """Ramme mot oss med ei kjensle: endrar auge, bryn, munn og hender der andletet er
+    (auga står i kolonne 5 og 10, rad 7 og 8, munnen i rad 10, som i HOVUD)."""
+    g = samanset(u, 0, 0)
+    hy = 2 if u.get("krokrygg") else 0
+    def sett(x, y, c, berre_andlet=True):
+        y += hy
+        if 0 <= y < H and 0 <= x < W and (not berre_andlet or g[y][x] in ANDLET): g[y][x] = c
+    auge = g[7 + hy][5] == "e"                    # auga synlege (ikkje bak briller eller hatt)
+    munn = g[10 + hy][7] == "m"
+    if namn == "glad":
+        if auge:
+            for x in (5, 10): sett(x, 8, "h"); sett(x - 1, 8, "e"); sett(x + 1, 8, "e")
+        if munn: sett(6, 10, "m"); sett(9, 10, "m"); sett(7, 11, "m"); sett(8, 11, "m")
+    elif namn == "trist":
+        if auge:
+            for x in (5, 10): sett(x, 7, "h")
+            sett(11, 9, "G")                                             # ei tåre
+        if munn: sett(7, 10, "h"); sett(8, 10, "h"); sett(6, 11, "m"); sett(7, 10, "m"); sett(8, 10, "m"); sett(9, 11, "m")
+    elif namn == "sint":
+        if auge:
+            sett(4, 6, "e"); sett(5, 6, "e"); sett(6, 7, "e"); sett(11, 6, "e"); sett(10, 6, "e"); sett(9, 7, "e")
+        if munn:
+            for x in (6, 7, 8, 9): sett(x, 10, "e")
+    elif namn == "sjokk":
+        if auge:
+            for x in (5, 10): sett(x, 6, "e"); sett(x + (1 if x == 5 else -1), 7, "W"); sett(x + (1 if x == 5 else -1), 8, "e")
+        if munn: sett(7, 10, "e"); sett(8, 10, "e"); sett(7, 11, "e"); sett(8, 11, "e")
+        for (x, y) in [(1, 12), (2, 12), (1, 13), (13, 12), (14, 12), (14, 13)]: sett(x, y, "h", False)
+    elif namn == "tenkje":
+        if auge:
+            for x in (5, 10): sett(x, 8, "h"); sett(x + 1, 7, "e")
+        if munn: sett(7, 10, "h"); sett(8, 10, "m"); sett(9, 10, "m")
+        for (x, y) in [(8, 12), (9, 12), (10, 12), (9, 11)]: sett(x, y, "h", False)
+    elif namn == "nikk":                                                 # bukkar: hovudet ned, auga att
+        if auge:
+            for x in (5, 10): sett(x, 7, "h")
+        ny = [r[:] for r in g]
+        for y in range(1, 13 + hy):
+            for x in range(W):
+                over = g[y - 1][x]
+                if y <= 11 + hy: ny[y][x] = over
+                elif over != ".": ny[y][x] = over
+        ny[0] = ["."] * W
+        g = ny
+    return omriss(g)
+
+
 def bilete(u):
     """Arket: rad 0 til 3 gange (ned, opp, venstre, høgre), rad 4 kamp (åtak, galdr, skadd),
-    rad 5 svak (på kne) og slått ut (24 x 16, nedst i ruta)."""
+    rad 5 svak (på kne) og slått ut (24 x 16, nedst i ruta), rad 6 og 7 standardkjensler."""
     p = palett(u)
-    im = Image.new("RGBA", (W * 3, H * 6), (0, 0, 0, 0))
+    im = Image.new("RGBA", (W * 3, H * 8), (0, 0, 0, 0))
     def teikn(g, x0, y0):
         for y, rad in enumerate(g):
             for x, c in enumerate(rad):
@@ -885,6 +940,7 @@ def bilete(u):
     for n, pose in enumerate(("atak", "galdr", "skadd")): teikn(ramme(u, 2, 0, pose), n * W, 4 * H)
     teikn(ramme(u, 2, 0, "svak"), 0, 5 * H)
     teikn(ute(u), W, 5 * H + 8)
+    for n, namn in enumerate(STANDARDKJENSLER): teikn(kjensle(u, namn), (n % 3) * W, (6 + n // 3) * H)
     return im
 
 
@@ -936,7 +992,7 @@ if __name__ == "__main__":
         sti = os.path.join(ROT, "forhand", "figurar-ark.png")
         os.makedirs(os.path.dirname(sti), exist_ok=True)
         kontaktark(alle).save(sti); print(sti); sys.exit(0)
-    val = list(alle) if sys.argv[1] == "alle" else sys.argv[1:]
+    val = list(alle) + [k for k in HANDTEIKNA if k not in alle] if sys.argv[1] == "alle" else sys.argv[1:]
     os.makedirs(UT, exist_ok=True)
     for id_ in val:
         if id_ in HANDTEIKNA:                                           # hovudpersonar med eige, handteikna ark

@@ -6,7 +6,8 @@ arket (48 x 192) i same oppsett som figur.py, med kjensler i rad 6 og 7:
   rad 0 til 3  gange ned, opp, venstre, høgre (høgre er venstre spegla)
   rad 4        åtak, galdr, skadd
   rad 5        svak (på kne) og slått ut (24 x 16, sida rotert)
-  rad 6 og 7   seks kjensler, namna i KJENSLER-lista til figuren
+  rad 6 og 7   standardkjenslene (glad, trist, sint, sjokk, tenkje, nikk), same for alle figurar
+  rad 8        figuren sine eigne kjensler (Ivar: ivrig, les. Huldra: lokk, sky)
 
 Omrisset blir lagt rundt til slutt, så rammene blir teikna med berre synlege fargar.
 """
@@ -40,7 +41,7 @@ def lag(R, PAL, kjensler, attlatne="j"):
             for x, c in enumerate(rad):
                 if c != ".": im.putpixel((x0 + (len(rad) - 1 - x if spegl else x), y0 + y), hx(PAL[c]) + (255,))
     ramme = lambda namn: omriss(R[namn])
-    im = Image.new("RGBA", (W * 3, H * 8), (0, 0, 0, 0))
+    im = Image.new("RGBA", (W * 3, H * (6 + (len(kjensler) + 2) // 3)), (0, 0, 0, 0))
     for d, pre in enumerate(("ned", "opp", "side")):
         for s in range(3): teikn(im, ramme(f"{pre}{s}"), s * W, d * H)
     for s in range(3): teikn(im, ramme(f"side{s}"), s * W, 3 * H, spegl=True)

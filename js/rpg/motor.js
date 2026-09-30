@@ -174,7 +174,7 @@ window.Motor = (function () {
       const dir = Math.floor(Math.random() * 4), nx = f.x + DX[dir], ny = f.y + DY[dir];
       f.dir = dir;
       if (Math.random() < 0.7 && folkKanGaa(f, nx, ny)) {
-        f.flytt = { fx: f.x, fy: f.y, t0: no }; f.x = nx; f.y = ny; f.steg++;
+        f.flytt = { fx: f.x, fy: f.y, t0: no }; f.x = nx; f.y = ny; f.steg++; f.kjensle = null;
         f.neste = no + FOLK_FART + 600 + Math.random() * 2600;
       } else f.neste = no + 900 + Math.random() * 2000;
     }
@@ -194,7 +194,7 @@ window.Motor = (function () {
       if (pausa || kart !== k0 || (krokar.modus && krokar.modus() !== "felt")) return;
     }
     if (!taSteg(t0)) return;
-    spelar.kjensle = null; if (fylgje) fylgje.kjensle = null;        // ein kjensle varer til ein går
+    spelar.kjensle = null; if (fylgje) fylgje.kjensle = null;        // ei kjensle varer til ein går
     flytt(no);
   }
   // Byrjar eit nytt steg i retninga som blir halden nede. Gir true om figuren flyttar seg.
@@ -492,7 +492,7 @@ window.Motor = (function () {
       if (k && krokar.opna && krokar.opna(k)) { g.fillStyle = "rgba(10,5,20,.45)"; g.fillRect(sx + 2, sy + 4, 12, 3); }
     }
     const GANG = [1, 0, 2, 0];
-    const figurar = kart.folk.filter(f => f.sprite).map(f => ({ y: f.fy, sp: f.sprite, x: f.fx, dir: f.dir,
+    const figurar = kart.folk.filter(f => f.sprite).map(f => ({ y: f.fy, sp: f.sprite, x: f.fx, dir: f.dir, kjensle: f.kjensle,
       steg: f.flytt ? GANG[(f.steg % 2) * 2 + (f.u < 0.5 ? 0 : 1)] : 0 }));
     // Gangramma følgjer steget, ikkje klokka: to rammer per flis (steg, stå), annakvar fot.
     const steg = spelar.flytt ? GANG[(spelar.steg % 2) * 2 + (spelar.u < 0.5 ? 0 : 1)] : 0;
@@ -544,10 +544,13 @@ window.Motor = (function () {
   /* ---------- Samtalar og forteljing ---------- */
   const boks = $("rpg-tale"), boksNamn = $("rpg-tale-namn"), boksTekst = $("rpg-tale-tekst"), boksPortrett = $("rpg-tale-portrett");
   // Portrett: bilete/spel/portrett/<id>.png, der id kjem frå RPGData.PORTRETT[namn].
-  function visPortrett(namn) {
+  // Portrettet til den som talar, med kjensla om det finst eit portrett for henne (PORTRETT_KJENSLER).
+  function visPortrett(namn, kjensle) {
     const id = namn && (RPGData.PORTRETT || {})[namn];
     boks.classList.toggle("med-portrett", !!id);
-    if (id) boksPortrett.src = `bilete/spel/portrett/${id}.png`;
+    if (!id) return;
+    const har = kjensle && ((RPGData.PORTRETT_KJENSLER || {})[id] || []).includes(kjensle);
+    boksPortrett.src = `bilete/spel/portrett/${id}${har ? "-" + kjensle : ""}.png`;
   }
   // ⟪ord⟫ blir utheva. Skrivemaskinteksten viser dei første n teikna.
   function taleHtml(tekst, n) {
@@ -560,12 +563,12 @@ window.Motor = (function () {
     }
     return ut + (inne ? "</b>" : "");
   }
-  function tale(tekst, namn) {
+  function tale(tekst, namn, kjensle) {
     return new Promise(res => {
       boks.hidden = false;
       boksNamn.textContent = namn || "";
       boksNamn.hidden = !namn;
-      visPortrett(namn);
+      visPortrett(namn, kjensle);
       boksTekst.textContent = "";
       const lengd = [...tekst.replace(/[⟪⟫]/g, "")].length;
       let i = 0, ferdig = false;
@@ -648,8 +651,17 @@ window.Motor = (function () {
     pause(p) { pausa = p; if (p) halde.clear(); },
     get kart() { return kart; }, get spelar() { return spelar; },
     settSpelar(sprite) { spelar.sprite = sprite; },
-    // Kjensle for spelaren eller følgjet (namna står i utsjånaden), eller null. Varer til ein går.
-    kjensle(k, kven = "spelar") { if (kven === "fylgje") { if (fylgje) fylgje.kjensle = k || null; } else spelar.kjensle = k || null; },
+    // Kjensle (glad, trist, sint, sjokk, tenkje, nikk, eller figuren sine eigne) for «spelar»,
+    // «fylgje», namnet på ein person på kartet, eller «alle» (til å nullstille). null tek ho bort.
+    // Ho varer til figuren går, eller til samtalen er slutt.
+    kjensle(k, kven = "spelar") {
+      k = k || null;
+      if (kven === "alle") { spelar.kjensle = k; if (fylgje) fylgje.kjensle = k; if (kart) kart.folk.forEach(f => { f.kjensle = k; }); return; }
+      if (kven === "spelar") { spelar.kjensle = k; return; }
+      if (kven === "fylgje") { if (fylgje) fylgje.kjensle = k; return; }
+      const f = kart && kart.folk.find(f => f.namn === kven);
+      if (f) { f.kjensle = k; if (k) f.neste = performance.now() + 4000; }
+    },
     settFylgje(sprite) { fylgje = sprite ? { sprite, x: spelar.x, y: spelar.y, fx: spelar.x, fy: spelar.y, dir: spelar.dir, flytt: null } : null; },
     E,
   };

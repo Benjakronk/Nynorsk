@@ -26,6 +26,7 @@ PAL = {
     "W": "#f6f2e8",                                   # kvite ermar og blomeblad
     "Y": "#eac24a",                                   # gull
     "F": "#f6a2c4",                                   # blome
+    "T": "#8ac8f0",                                   # tåre
 }
 
 R = {}
@@ -517,7 +518,19 @@ def _straa(g, fro):
 
 for _n in list(R): R[_n] = _straa(R[_n], {"ned1": 1, "ned2": 3, "opp1": 1, "opp2": 3, "side1": 1, "side2": 3}.get(_n, 0))
 
-KJENSLER = ("fnis", "sjokk", "sorg", "tenkje", "lokk", "sky")
+# Nye standardkjensler: sint (hendene på hofta, bryn ned) og nikk (hovudet ned, smil).
+R["sint"] = list(R["ned0"])
+R["sint"][7] = ".rryHHhhhhhyry.."
+R["sint"][8] = ".rrhyohhhhoyry.."
+R["sint"][10] = ".rrjhhjjjhhjry.."
+R["nikk"] = list(R["sorg"])
+R["nikk"][12] = ".rr.jmhhhmj.ry.."
+R["trist"] = list(R["sorg"])
+R["trist"][11] = ".rrjhhhhhhTjry.."
+R["glad"] = R["fnis"]
+
+# Standardkjenslene (same for alle figurar) og så huldra sine eigne.
+KJENSLER = ("glad", "trist", "sint", "sjokk", "tenkje", "nikk", "lokk", "sky")
 
 
 def lag():

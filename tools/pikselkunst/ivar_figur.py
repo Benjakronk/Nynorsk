@@ -31,6 +31,7 @@ PAL = {
     "B": "#7a6450", "b": "#56443a",                   # bukse (skugge = q)
     "K": "#c89058", "k": "#8a5a30",                   # sekk og reimar, kjepp
     "g": "#e0b848",                                   # spenne
+    "T": "#8ac8f0",                                   # tåre
 }
 
 # ---------------------------------------------------------------- rammene
@@ -546,7 +547,20 @@ _sprett("ned2", (".....rRRr...qr..", "....rRRRRrrrqr.."), "..rrqhhrhrrqrq..")
 _sprett("opp1", (".....rRRr.qr....", "....rRRRRrqrr..."), R["opp1"][6])
 _sprett("opp2", (".....rRRr...qr..", "....rRRRRrrrqr.."), R["opp2"][6])
 
-KJENSLER = ("latter", "sjokk", "sorg", "tenkje", "ivrig", "les")
+# Nye standardkjensler: sint (bryna ned mot nasen, stram munn) og nikk (hovudet ned, roleg).
+R["sint"] = list(R["ned0"])
+R["sint"][7] = "..rqoHHhhhhoqq.."
+R["sint"][8] = "..qhooHhhoohhq.."
+R["sint"][10] = "...jhhoooohj...."
+R["nikk"] = list(R["sorg"])
+R["nikk"][12] = "....jjmmmmj....."
+R["trist"] = list(R["sorg"])
+R["trist"][11] = "...jjhhhhhTj...."
+R["trist"][12] = "....jmhhhmj....."
+R["glad"] = R["latter"]
+
+# Standardkjenslene (same for alle figurar) og så Ivar sine eigne.
+KJENSLER = ("glad", "trist", "sint", "sjokk", "tenkje", "nikk", "ivrig", "les")
 
 
 def lag():
