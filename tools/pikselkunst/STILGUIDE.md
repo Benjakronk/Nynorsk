@@ -9,7 +9,7 @@ Alt nytt skal kunne stå ved sida av han utan å skilje seg ut.
 | Type | Storleik (spelpikslar) | Vist i spelet |
 | --- | --- | --- |
 | Flis | 16 × 16 | lerretet er 320 × 192, skalert opp med heile tal |
-| Figur på kartet og i kamp | 16 × 24 | føtene nedst i ruta |
+| Figur på kartet og i kamp | 16 × 24 | på kartet teikna 12 pikslar over flisa, så føtene står midt i nedre halvdel (på vegen, ikkje på graskanten) |
 | Portrett i samtaleboksen | 48 × 48 | tre gonger så stort (144 × 144) |
 | Vanleg fiende | 20 × 20 til 48 × 48 | i kampen, føtene på bakken |
 | Boss | opptil 96 × 80 | Blekklatten er 80 × 72 |

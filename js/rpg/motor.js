@@ -145,6 +145,10 @@ window.Motor = (function () {
     return true;
   }
 
+  /* Figurane (16 × 24) blir teikna så mange pikslar over flisa si. Føtene står då om lag midt
+     i nedre halvdel av flisa, så ein går på vegen og ikkje langs graskanten nedst. */
+  const FOT = 12;
+
   /* ---------- Rørsle ---------- */
   const FART = 150;           // ms per flis
   // Plasserer spelaren (og følgjet) der dei skal vere no i steget.
@@ -555,15 +559,15 @@ window.Motor = (function () {
         for (const [rx, ry] of Pikslar.ROYK[f.id] || []) Pikslar.royk(g, bx + rx, by - f.bygg.height + ry, no);
         continue; }
       const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S);
-      g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx + 3, sy + 13, 10, 3); g.fillRect(sx + 4, sy + 12, 8, 5);
+      g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx + 3, sy + 10, 10, 3); g.fillRect(sx + 4, sy + 9, 8, 5);
       const bilde = f.kjensle && f.sp.kjensle && f.sp.kjensle[f.kjensle] ? f.sp.kjensle[f.kjensle] : f.sp.rammer[f.dir][f.steg];
-      g.drawImage(bilde, sx, sy - 9);
+      g.drawImage(bilde, sx, sy - FOT);
     }
     // Silhuett av spelaren (eller følgjet) bak eit hus, berre der huset har «silhuett: true» i kartet
     // (til spesielle høve, til dømes ein stad der ein må gå bak noko for å finne ein ting).
     for (const f of figurar) {
       if (!f.sp || (f.sp !== spelar.sprite && !(fylgje && f.sp === fylgje.sprite))) continue;
-      const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S) - 9;
+      const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S) - FOT;
       const bak = (kart.def.bygg || []).some(b => {
         const img = Pikslar.bygg(b.id); if (!img || !b.silhuett || b.over || f.y >= b.y + b.h - 1) return false;
         const bx = Math.round((b.x + ox) * S) - 4, by = Math.round((b.y + b.h + oy) * S) - img.height;
