@@ -90,7 +90,15 @@ window.Kamp = (function () {
 
   /* ---------- Bakgrunnar i 16-bitsstil ---------- */
   const bakCache = {};
+  /* Handteikna bakgrunnar (bilete/spel/kamp/<type>.png, laga med tools/pikselkunst/bakgrunn.py).
+     Til biletet er lasta, blir den utrekna bakgrunnen under brukt. */
+  const kampPng = {};
   function bakgrunnBilete(type) {
+    if (!kampPng[type]) { const img = new Image(); kampPng[type] = { img, klar: false }; img.onload = () => { kampPng[type].klar = true; }; img.src = `bilete/spel/kamp/${type}.png`; }
+    if (kampPng[type].klar) return kampPng[type].img;
+    return reknaBakgrunn(type);
+  }
+  function reknaBakgrunn(type) {
     if (bakCache[type]) return bakCache[type];
     const c = Pikslar.lerret(320, 192), b = c.getContext("2d");
     const band = (farger, y0, y1) => { const n = farger.length, h = (y1 - y0) / n; farger.forEach((f, i) => { b.fillStyle = f; b.fillRect(0, Math.round(y0 + i * h), 320, Math.ceil(h) + 1); }); for (let i = 1; i < n; i++) { b.fillStyle = farger[i]; const y = Math.round(y0 + i * h) - 1; for (let x = i % 2; x < 320; x += 2) b.fillRect(x, y, 1, 1); } };
@@ -156,7 +164,7 @@ window.Kamp = (function () {
     // Plassering på lerretet (320 × 192): fiendar til venstre med føtene på bakken, partiet til høgre.
     const SLOT = { 1: [[88, 118]], 2: [[64, 106], [126, 120]], 3: [[52, 102], [104, 120], [150, 104]], 4: [[46, 100], [96, 118], [140, 100], [176, 120]] };
     const fiPos = i => { const [x, y] = SLOT[Math.min(4, fi.length)][i]; return { x, y }; };
-    const paPos = i => ({ x: 246 + i * 16, y: 62 + i * 32 });
+    const paPos = i => ({ x: 246 + i * 16, y: 68 + i * 30 });
 
     function oppdaterLister() {
       fiListe.innerHTML = fi.filter(f => f.hp > 0).map(f => `<p>${E(f.namn)}${f.avslort > 0 ? ` <small class="avslort">${Math.round(f.hp)}/${f.maxhp}${D.ORD && f.d.slag ? " · " + E(f.d.slag) : ""}</small>` : ""}${f.sov > 0 ? ' <small class="sov">søv</small>' : ""}</p>`).join("");

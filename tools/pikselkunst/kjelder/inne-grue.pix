@@ -1,0 +1,58 @@
+# namn: inne-grue
+# type: bygg
+# ut: bilete/spel/bygg/inne-grue.png
+# storleik: 24x44
+palett:
+  . = -
+  o = #0a0514    omriss
+  k = #e8e4dc    kalk
+  x = #b8b4ac    kalk skugge
+  n = #6a6070    sot
+  N = #140a08    eldstad
+  f = #f8b830    eld gul
+  F = #e86a20    eld
+bilete:
+  .......okkkkkkxxxo......
+  .......okkkkkkxxxo......
+  .......okkkkkkxxxo......
+  .......okkkkkkxxxo......
+  ......okkkkkkkxxxxo.....
+  ......okkkkkkkxxxxo.....
+  ......okkkkkkkxxxxo.....
+  .....okkkkkkkkxxxxxo....
+  .....okkkkkkkkxxxxxo....
+  .....okkkkkkkkxxxxxo....
+  ....okkkkkkkkkkxxxxxo...
+  ....okkkkkkkkkkxxxxxo...
+  ....okkkkkkkkkkxxxxxo...
+  ...okkkkkkkkkkkxxxxxxo..
+  ...okkkkkkkkkkkxxxxxxo..
+  ...okkkkkkkkkkkxxxxxxo..
+  ..oxxxxxxxxxxxxxxxxxxxo.
+  ..onnnnnnnnnnnnnnnnnnno.
+  ..okkkkkkkkknkkxxxxxxxo.
+  ..okkkkkkkkknkkxxxxxxxo.
+  ..okkkkkkkkknkkxxxxxxxo.
+  ..okkkkkkkkknkkxxxxxxxo.
+  ..okkkkkkkkknkkxxxxxxxo.
+  ..okkkkkkkkknkkxxxxxxxo.
+  ..okkNNNNNNNnNNNNNNxxxo.
+  ..okkNNNNNNNnNNNNNNxxxo.
+  ..okkNNNNNNNnNNNNNNxxxo.
+  ..okkNNNNNNNnNNNNNNxxxo.
+  ..okkNNNNNNNnNNNNNNxxxo.
+  ..okkNNNnnnnNNNNNNNxxxo.
+  ..okkNNNnnnnNNNNNNNxxxo.
+  ..okkNNNnnnnNNNNNNNxxxo.
+  ..okkNNNnnnnNNNNNNNxxxo.
+  ..okkNNNnnnnNNNNNNNxxxo.
+  ..okkNFNNfNNNNNNFNNxxxo.
+  ..okkNNNfNNNFNNNNNNxxxo.
+  ..okkNNNFFNNNNNNfNNxxxo.
+  ..okkNNNfNNFNfNfffNxxxo.
+  ..okkNNfffNNFNFfNNNxxxo.
+  ..okkNfFNNNNNFfNNFNxxxo.
+  ..okkNNffNFNFFFFFFNxxxo.
+  ..oxxxxxxxxxxxxxxxxxxxo.
+  ..onnnnnnnnnnnnnnnnnnno.
+  ...ooooooooooooooooooo..

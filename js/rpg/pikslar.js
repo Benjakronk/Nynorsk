@@ -353,8 +353,9 @@ window.Pikslar = (function () {
       px(g, 1, 4, "#c8d0dc", 1, 8); px(g, 0, 13, "#4a5460", 3, 1);
     },
     // under altarringen og preikestolen: golv (figuren blir teikna oppå)
-    "+": (g, t, v) => FLIS.q(g, t, v),
-    "(": (g, t, v) => FLIS.q(g, t, v),
+    // Golv under inventar som er figurar (alterring, preikestol, grue, bord …): golvet i rommet, men fast.
+    "+": (g, t, v) => underGolv(g, t, v),
+    "(": (g, t, v) => underGolv(g, t, v),
     // Veggtoppar: sideveggene og botnveggen sett ovanfrå
     "Xt": g => { const r = R_.tommer; px(g, 0, 0, r[1], S, S); for (let x = 1; x < S; x += 5) px(g, x, 0, r[0], 1, S); px(g, 0, 0, r[2], S, 1); px(g, 2, 3, r[2], 2, 5); px(g, 12, 9, r[2], 2, 4); },
     "ct": g => { const r = R_.stein; px(g, 0, 0, r[1], S, S); for (let y = 0; y < S; y += 5) { px(g, 0, y, r[0], S, 1); px(g, (y * 3) % 11, y + 1, r[2], 4, 1); } },
@@ -398,7 +399,7 @@ window.Pikslar = (function () {
   const cache = new Map();
   function flis(teikn, t = 0, x = 0, y = 0, golv = "P") {
     const v = VARIANT.has(teikn) || VARIANT_EKSTRA.has(teikn) ? Math.floor(hash(x, y, 7) * 4) : 0;
-    const gl = "LnKkzb.#toh".includes(teikn) ? golv : "";
+    const gl = "LnKkzb.#toh+(".includes(teikn) ? golv : "";
     const nokkel = `${teikn}${gl}:${v}:${ANIM.has(teikn) ? Math.floor(t / 150) % 16 : 0}`;
     if (cache.has(nokkel)) return cache.get(nokkel);
     const c = lerret(S), g = c.getContext("2d");

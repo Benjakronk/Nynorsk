@@ -149,14 +149,16 @@ window.RPGData = (function () {
   const KART = {
     "asen-stova": {
       namn: "Stova på Åsen", stemning: "inne", golv: "P", inne: true, bakgrunn: "inne",
+      // Inventaret er figurar laga med tools/pikselkunst/inventar.py. «(» er fast golv under dei.
+      bygg: [{ id: "inne-grue", x: 1, y: 0, h: 2 }, { id: "inne-hylle", x: 5, y: 0, h: 1 }, { id: "inne-sengebenk", x: 9, y: 1, h: 1 }, { id: "inne-langbord", x: 2, y: 3, h: 2 }, { id: "inne-rokk", x: 9, y: 6, h: 1 }],
       rader: [
         "XXXXXXXXXXXX",
-        "XfPPPBBPPbbX",
+        "X(PPPPPPP((X",
         "XPPPPPPPPPPX",
-        "XPzkkzPP@PPX",
-        "XPPkkPPPPPKX",
+        "XP((((PP@PPX",
+        "XP((((PPPPKX",
         "XP%PPP1PPPPX",
-        "XLPPPPPPPPPX",
+        "XLPPPPPPP(PX",
         "XXXXXEXXXXXX",
       ],
       dorer: [{ ved: [5, 7], til: ["asen", "3"] }],
@@ -374,12 +376,13 @@ window.RPGData = (function () {
     },
     "nedre-hovde": {
       namn: "Stova på Nedre Hovde", stemning: "inne", golv: "P", inne: true, bakgrunn: "inne",
+      bygg: [{ id: "inne-grue", x: 1, y: 0, h: 2 }, { id: "inne-hylle", x: 5, y: 0, h: 1 }, { id: "inne-sengebenk", x: 9, y: 1, h: 1 }, { id: "inne-langbord", x: 2, y: 3, h: 2 }],
       rader: [
         "XXXXXXXXXXXX",
-        "XfPPPBPPPbbX",
+        "X(PPPPPPP((X",
         "XPP@PPPPPPPX",
-        "XPPkkPPP%PPX",
-        "XPzkkzPPPPPX",
+        "XP((((PP%PPX",
+        "XP((((PPPPPX",
         "XPPPPPPP$PPX",
         "XPPPP1PPPPPX",
         "XXXXXEXXXXXX",

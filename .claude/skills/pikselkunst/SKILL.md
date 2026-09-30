@@ -43,9 +43,13 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
 - Hus: legg huset til i `BYGG` i `tools/pikselkunst/bygg.py` (breidd, høgd, dører
   og vindauge i fliser) og køyr `python tools/pikselkunst/bygg.py <namn>`. Huset
   må ha same fotavtrykk og dør som i kartet, og står i `bygg` på kartet i `js/rpg/data.js`.
-- Inventar inne (altartavle, alterring, preikestol, lysekrone):
+- Inventar inne (altartavle, alterring, preikestol, lysekrone, grue, hylle,
+  sengebenk, langbord, rokk):
   `python tools/pikselkunst/inventar.py <namn>`. Står i `bygg` på kartet,
   `over: true` teiknar figuren over alt anna (lysekrona).
+- Kampbakgrunnar: `python tools/pikselkunst/bakgrunn.py <namn>` skriv
+  `bilete/spel/kamp/<namn>.png` direkte (skriptet er kjelda). Namnet er
+  `bakgrunn` på kartet i `js/rpg/data.js`.
 - Vatn og steingard tilpassar seg naboane og blir teikna i `js/rpg/pikslar.js`
   (`vatn`, `steingard`), ikkje som faste bilete.
 - Tre, steinar og haugar: `python tools/pikselkunst/natur.py <namn>` (sjå `NATUR`).

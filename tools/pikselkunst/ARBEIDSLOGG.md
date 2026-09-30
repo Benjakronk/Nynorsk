@@ -83,9 +83,44 @@ same måte, uansett kven som tek over.
 
 ### Står att etter runde 4
 
-- Fjell (`^`) og klipper er framleis fliser. Final Fantasy VI har klipper med
-  lagdelte, skuggelagde kantar.
+- Fjell (`^`) og klipper er framleis fliser.
 - Innsida av stova, prestegarden og arkivet har ikkje fått same løft som kyrkja.
+- Figurane (16 × 24) er enklare enn portretta og husa.
+- Kampbakgrunnane er rekna ut og kan få meir handteikna detalj.
+
+## Runde 5: kampbakgrunnar og stova
+
+- **Svakast:** Ei teljing av flisene i karta viste at fjell (`^`) ikkje er brukte
+  nokon stad enno, så dei vart ikkje prioriterte. Skjermbileta viste at
+  kampbakgrunnen inne berre var brune striper (han blir brukt i alle kampar
+  innandørs), at dei andre bakgrunnane var tomme, og at stova på Åsen hadde små,
+  generiske møblar.
+- **Research:** Kampbakgrunnen i Final Fantasy VI (Wikipedia): skyer med lyse
+  kantar, fjell i lag med snø, skogkant av einskilde gransilhuettar, eit smalt
+  vassband og ei slette med småsteinar, horisont ein tredjedel ned. Frå
+  Noreg: stovene frå Bjørnebergstølen og Gulsvik (Norsk Folkemuseum), rokk frå
+  Nesset prestegard, og årestovene til Tidemand og Askevold.
+- **Gjort:**
+  - Fire kampbakgrunnar med `bakgrunn.py`: tunet ved fjorden med
+    Sunnmørsalpane, utmarka i kveldsljos med granskog og tjønn, røykstova med
+    grue, trefat, rosemaling, sengebenk og rokk, og arkivet med protokollar og
+    blekk. Kampen brukar dei når dei er lasta, elles dei gamle.
+  - Fjellskugge etter fjellsida: sider som vender mot ljoset er lyse, andre
+    mørke, med snøkappe og renner. Ikkje skugge etter kolonne.
+  - Landskapet er løfta 16 pikslar, og partiet står litt lågare, så Ivar står på
+    bakken og ikkje i fjorden.
+  - Inventar i stova (`inventar.py`): kvitkalka grue med hette, eld og gryte,
+    hylle med trefat, sengebenk med raudt åklede, langbord med benk og
+    kubbestolar, og rokk. Stova på Åsen og på Nedre Hovde.
+  - Grua lyser som ein eldstad, sjølv om ho er ein figur og ikkje ei flis.
+- **Lærdom:** Tel flisene i karta før du vel kva som skal betrast. Det som
+  syner i kvar einaste kamp eller i det første rommet, er viktigast.
+
+### Står att etter runde 5
+
 - Figurane (16 × 24) er enklare enn portretta og husa. Raud topplue og kvit
   vadmålsjakke frå draktbiletet frå Sunnmøre er ikkje tekne i bruk.
-- Kampbakgrunnane er rekna ut og kan få meir handteikna detalj (fjord, bjørk).
+- Prestegarden, kontoret og boksamlinga på Ekset har framleis gamle møblar.
+  Prestegarden bør sjå meir dansk og embetsmannsaktig ut enn bondestova.
+- Kampbakgrunn for vegen (bruker utmarka) og kyrkja finst ikkje.
+- Fjell (`^`) må teiknast når eit kart treng dei (kapittel 2 og vidare).

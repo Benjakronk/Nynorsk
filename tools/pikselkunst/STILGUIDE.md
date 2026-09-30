@@ -96,6 +96,18 @@ Alt nytt skal kunne stå ved sida av han utan å skilje seg ut.
   med raud pute, brunraud preikestol, lysekrone i messing og ljosstrålar frå
   vindauga.
 
+## Kampbakgrunnar og stova
+
+- Kampbakgrunnar (320 × 192, `bakgrunn.py`) følgjer Final Fantasy VI:
+  himmel med skyer som har lyse kantar, fjell i lag med snø, skogkant, eit
+  smalt vassband, slette med tekstur og småsteinar. Bakken må byrje over
+  partiet (høgre side, y om lag 68 til 100 i lerretet).
+- Fjellskugge følgjer fjellsida (stig terrenget mot høgre, er sida lys), ikkje
+  kolonnar. Snøkappa har ujamn nedre kant.
+- Bondestova: kvitkalka grue med hette i hjørnet, langbord med benk og
+  kubbestolar, sengebenk med raudt åklede, hylle med trefat, rokk. Varmt ljos
+  frå grua, mørke hjørne.
+
 ## Sjekkliste før grafikken blir teken i bruk
 
 1. `pix.py sjekk` gir ingen merknader.

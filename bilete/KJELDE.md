@@ -60,7 +60,7 @@ Blekklatten er laga av Claude Opus 5.5.
 
 vette3_nameless_1x.png og vette3_restored_1x.png (47 × 68) er den namnlause vetten og vetten som har fått namnet att, levert av kurseigaren (september 2026). Den namnlause blir brukt i kamp mot vettane og haugbonden, og biletet glir over i den attfunne når haugbonden får namnet sitt.
 
-bygg/ er hus som heile figurar (stove, løe, stabbur, seter, kyrkje og prestegard), laga med tools/pikselkunst/bygg.py etter referansane i tools/pikselkunst/konsept/. natur/ er gran, bjørk, stein og gravhaug, laga med tools/pikselkunst/natur.py. bygg/inne-*.png er inventaret i kyrkja (altartavle, alterring, preikestol og lysekrone), laga med tools/pikselkunst/inventar.py.
+bygg/ er hus som heile figurar (stove, løe, stabbur, seter, kyrkje og prestegard), laga med tools/pikselkunst/bygg.py etter referansane i tools/pikselkunst/konsept/. natur/ er gran, bjørk, stein og gravhaug, laga med tools/pikselkunst/natur.py. bygg/inne-*.png er inventaret i kyrkja (altartavle, alterring, preikestol og lysekrone) og i stovene (grue, hylle, sengebenk, langbord og rokk), laga med tools/pikselkunst/inventar.py. kamp/ er kampbakgrunnane, laga med tools/pikselkunst/bakgrunn.py.
 
 portrett/ivar.png, storebror.png, syster.png, granne.png, budeia.png og framande.png er portrett til samtaleboksen, laga med verktøyet i tools/pikselkunst/ (kjeldene er .pix-filer i tools/pikselkunst/kjelder/).
 

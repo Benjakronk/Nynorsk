@@ -25,6 +25,10 @@ PAL = [
     ("b", "#1c2448", "bilete djup"), ("B", "#3a4a8a", "bilete blå"), ("h", "#e8c8a8", "hud"), ("H", "#b08868", "hud skugge"),
     ("t", "#4a2418", "tre djup"), ("T", "#7a3a22", "tre brunraud"), ("U", "#a4583a", "tre lys"),
     ("g", "#6a7a8a", "blågrå skugge"), ("G", "#9aaabb", "blågrå"),
+    ("k", "#e8e4dc", "kalk"), ("x", "#b8b4ac", "kalk skugge"), ("n", "#6a6070", "sot"), ("N", "#140a08", "eldstad"),
+    ("f", "#f8b830", "eld gul"), ("F", "#e86a20", "eld"),
+    ("a", "#2e1a10", "furu djup"), ("A", "#5a3a22", "furu skugge"), ("c", "#8a5e36", "furu"), ("C", "#b08650", "furu lys"),
+    ("m", "#2c4288", "rosemaling blå"),
 ]
 
 
@@ -136,7 +140,109 @@ def lysekrone():
     return L
 
 
-INVENTAR = {"altartavle": altartavle, "altarring": altarring, "preikestol": preikestol, "lysekrone": lysekrone}
+def grue():
+    """Kvitkalka grue med hette i hjørnet, eld og gryte på krok (etter Bjørnebergstølen og Askevold)."""
+    W, H = 16 + 8, 2 * 16 + 12
+    L = Lerret(W, H)
+    for y in range(0, H - 2):
+        b = 9 if y > 16 else int(4 + y * 0.32)
+        for x in range(12 - b, 12 + b + 1): L.p(x, y, "k" if x < 12 + b * 0.3 else "x")
+    for x in range(3, 22): L.p(x, 16, "x"); L.p(x, 17, "n")            # kant på hetta, sot under
+    for y in range(24, H - 3):
+        for x in range(5, 19): L.p(x, y, "N")
+    for y in range(34, H - 3):
+        for x in range(6, 18):
+            if h(x, y, 3) > 0.25 + (H - 3 - y) / 14: L.p(x, y, "f" if h(x, y, 4) > 0.6 else "F")
+    for y in range(18, 29): L.p(12, y, "n")                             # krok
+    for y in range(29, 34):
+        for x in range(8, 16): L.p(x, y, "n" if x < 12 else "N")          # gryte
+    for x in range(3, 22): L.p(x, H - 3, "x"); L.p(x, H - 2, "n")        # grueheller
+    omriss(L)
+    return L
+
+
+def hylle():
+    """Hylle på veggen med trefat og eit måla krus, 2 fliser breitt."""
+    W, H = 2 * 16 + 8, 20
+    L = Lerret(W, H)
+    for x in range(2, W - 2): L.p(x, 14, "C"); L.p(x, 15, "A"); L.p(x, 16, "a")
+    for k, x in enumerate(range(6, W - 6, 7)):
+        for dy in range(-6, 0):
+            for dx in range(-3, 4):
+                if dx * dx / 9 + dy * dy / 36 <= 1: L.p(x + dx, 14 + dy, "C" if dx < 0 else "c")
+        L.p(x - 1, 9, "m" if k % 2 else "E")
+    for y in range(9, 14): L.p(W - 7, y, "T"); L.p(W - 6, y, "U")
+    omriss(L)
+    return L
+
+
+def sengebenk():
+    """Sengebenk av furu med raudt åklede og kvit pute, 2 fliser breitt."""
+    W, H = 2 * 16 + 8, 26
+    L = Lerret(W, H)
+    for y in range(2, H - 1):
+        for x in range(3, W - 3): L.p(x, y, "c" if y < 6 else "A")
+    for y in range(6, H - 4):
+        for x in range(5, W - 5): L.p(x, y, "R" if (x + y) % 7 else "E")
+    for y in range(6, 11):
+        for x in range(6, 16): L.p(x, y, "w" if y < 10 else "W")
+    for x in range(5, W - 5, 6):
+        for y in range(12, H - 4):
+            if (x + y) % 6 == 0: L.p(x, y, "y")
+    for y in range(0, H - 1): L.p(3, y, "C"); L.p(W - 4, y, "a")
+    omriss(L)
+    return L
+
+
+def langbord():
+    """Langbord av furu med benk bak og kubbestolar ved endane, 4 x 2 fliser.
+    Lys bordplate med plankar, tydeleg kant og skugge, benken bak i ein mørkare tone."""
+    W, H = 4 * 16 + 8, 2 * 16 + 8
+    L = Lerret(W, H)
+    for y in range(3, 9):                                               # benken bak bordet
+        for x in range(8, W - 8): L.p(x, y, "U" if y == 3 else "T" if y < 7 else "t")
+    for y in range(10, 25):                                             # bordplata
+        for x in range(10, W - 10):
+            c = "C"
+            if (x - 10) % 13 == 0: c = "c"                               # plankeskøytar
+            if y == 10: c = "U"
+            L.p(x, y, c)
+    for x in range(10, W - 10): L.p(x, 25, "c"); L.p(x, 26, "A"); L.p(x, 27, "a")   # kant
+    for x in (14, W - 16):                                              # bordbein med sleide
+        for y in range(28, H - 2): L.p(x, y, "A"); L.p(x + 1, y, "a")
+    for x in range(14, W - 14): L.p(x, H - 4, "A")
+    for (cx, cy) in [(5, 22), (W - 6, 22)]:                             # kubbestolar
+        for y in range(cy - 8, cy + 8):
+            for x in range(cx - 4, cx + 5): L.p(x, y, "c" if x < cx else "A")
+        for x in range(cx - 4, cx + 5): L.p(x, cy - 8, "C"); L.p(x, cy - 7, "c")
+    for (x, y) in [(24, 16), (44, 18)]:                                 # trefat med graut
+        for dx in range(-3, 4): L.p(x + dx, y, "T"); L.p(x + dx, y + 1, "t")
+        for dx in range(-2, 3): L.p(x + dx, y - 1, "w")
+    L.p(34, 14, "S"); L.p(35, 14, "s"); L.p(55, 15, "w"); L.p(56, 15, "W")
+    omriss(L)
+    return L
+
+
+def rokk():
+    """Rokk (spinnehjul) med stort hjul og tre bein (etter rokken frå Nesset)."""
+    W, H = 16 + 8, 30
+    L = Lerret(W, H)
+    cx, cy, r = 12, 11, 8
+    for a in range(0, 360, 3):
+        L.p(cx + round(math.cos(math.radians(a)) * r), cy + round(math.sin(math.radians(a)) * r), "E")
+    for a in range(0, 360, 45):
+        for k in range(1, r): L.p(cx + round(math.cos(math.radians(a)) * k), cy + round(math.sin(math.radians(a)) * k), "U")
+    L.p(cx, cy, "Y")
+    for k in range(10): L.p(4 + k, 22, "T")                              # benk
+    for (x0, dx) in [(5, -1), (13, 1), (9, 0)]:
+        for k in range(7): L.p(x0 + (dx * k) // 3, 23 + k, "t")
+    for y in range(12, 22): L.p(5, y, "T")
+    omriss(L)
+    return L
+
+
+INVENTAR = {
+    "grue": grue, "hylle": hylle, "sengebenk": sengebenk, "langbord": langbord, "rokk": rokk,"altartavle": altartavle, "altarring": altarring, "preikestol": preikestol, "lysekrone": lysekrone}
 
 
 def pix(namn, L):
