@@ -159,6 +159,41 @@ HAR = {
             "..........rqq...",
             "..........qq...."),
     },
+    "hestehale": {   # etter Terra i Final Fantasy VI: volum, taggete lugg, lokkar langs kinna
+        0: del_(1,
+            "....rrRRRrrr....",
+            "...rRRRRRrrrq...",
+            "..rRRRrrrrrrrq..",
+            ".rRRrrrrrrrrrqq.",
+            ".rRrrRrrrRrrrqq.",
+            ".rrr.rr.rr.rrqq.",
+            ".rr..........qq.",
+            ".rr..........qq.",
+            "..r..........q..",
+            "..r..........q.."),
+        1: del_(1,
+            "....rrRRRrrr....",
+            "...rRRRRRrrrq...",
+            "..rRRRrrrrrrrq..",
+            ".rRRrrrrrrrrrqq.",
+            ".rRrrrrrrrrrrqq.",
+            ".rrrrrrrrrrrrqq.",
+            ".rrrrrrrrrrrqqq.",
+            "..rrrrrrrrrqqq..",
+            "..qrrrrrrrrqq...",
+            "...qq.rRr.qq...."),
+        2: del_(1,
+            ".....rRRRrr.....",
+            "....rRRRRrrr....",
+            "...rRRRrrrrrq...",
+            "..rRRrrrrrrrrq..",
+            "..rrrrrrrrrrrqq.",
+            "..r.rr.rrrrrrqq.",
+            "......rrrrrrqqq.",
+            ".......rrrrrqqq.",
+            ".......rrrrrqq..",
+            "........rrrqq..."),
+    },
     "skalle": {
         0: del_(2,
             "......HH........",
@@ -475,6 +510,40 @@ KROPP = {
         "...ff......FFf.."),
 }
 
+# Kort kjole (etter Terra): smal midje med belte, stutt skjørt med borde, berre bein og føter.
+KROPP[("kort", 0, 0)] = kropp(
+    "...AAAaSSaaaz...",
+    "..AAzDDSsddcaz..",
+    "..AAzDDddddcaz..",
+    "..AazPPppppzaz..",
+    "..hhDDddddddhj..",
+    "...DDddddddcc...",
+    "...DDdddddddc...",
+    "..DDddddddddcc..",
+    "..PPPppppppppp..",
+    ".....hj..hj.....",
+    ".....hh..hh.....")
+KROPP[("kort", 2, 0)] = kropp(
+    ".....AAaaaz.....",
+    "....AAaaaaaz....",
+    "....AaAAazdz....",
+    "....PpAApppp....",
+    "....DDhhjddc....",
+    "....DDdddddc....",
+    "...DDddddddcc...",
+    "...DDdddddddc...",
+    "...PPpppppppp...",
+    ".....hj.hj......",
+    "....hhh.hhh.....")
+for _s in (1, 2): KROPP[("kort", 0, _s)] = KROPP[("kort", 0, 0)]; KROPP[("kort", 2, _s)] = KROPP[("kort", 2, 0)]
+# Beina under det korte skjørtet i steget (rad 21 og 22).
+KORTBEIN = {
+    (0, 1): [".....hj..hh.....", "....hhh........."],
+    (0, 2): [".....hh..hj.....", ".........hhh...."],
+    (2, 1): ["....hj....hj....", "..hhh......hh..."],
+    (2, 2): ["....hh....hj....", "...hh.....hhh..."],
+}
+
 # Tilbehøyr som blir lagt oppå kroppen. Nøkkel: (namn, retning).
 TILLEGG = {
     ("forkle", 0): del_(15, "......PPpp......", "......PPpp......", ".....PPPppp.....", ".....PPPppp.....",
@@ -497,6 +566,20 @@ HALE = {
             "......rRq.......", "......rrq......."),
     2: del_(16, "............Tj..", ".............Tj.", ".............Tj.", ".............Tj.",
             "............rRq.", "............rqq."),
+}
+
+# Hestehalen heng ned over ryggen (bakfrå, med lyst band midt i) og bak nakken (frå sida).
+HESTEHALE = {
+    1: del_(10, ".......rRr......", "......rrRrq.....", "......rrRrq.....", "......rrRrq.....", ".......rRq......",
+            ".......rRq......", "........q......."),
+    2: del_(8, "............IrRq", "............rRRq", "............rRq.", ".............Rq.", ".............rq.",
+            "............rq..", "............q..."),
+}
+# Sjal over skuldrene med spissar, som kappa til Terra.
+SJAL = {
+    0: del_(12, ".LLLl......llli.", ".LLl........lli.", "..L..........i.."),
+    1: del_(12, ".LLLLlllllllli..", ".LLlllllllllii..", "..Llllllllllli..", "...i........i..."),
+    2: del_(12, "...LLllllli.....", "..LLl.....lli...", "..L.........i..."),
 }
 
 # Langt hår heng bak skuldrene når figuren står mot deg eller på sida.
@@ -538,7 +621,7 @@ def palett(u):
     sett("Ddc", u.get("kjole", "#2c4288"))
     sett("Ff", u.get("sko", "#3a2a24")); p["F"], p["f"] = rampe(u.get("sko", "#3a2a24"))[1:]
     lp, lm, ld = rampe(u.get("forkle", "#ecebf0")); p["P"], p["p"] = lp if sum(lm) < 600 else lm, blend(lm, KALD, 0.22)
-    plagg = u.get("lue") or u.get("hatt") or u.get("flosshatt") or u.get("skaut") or "#8a2638"
+    plagg = u.get("lue") or u.get("hatt") or u.get("flosshatt") or u.get("skaut") or u.get("sjal") or "#8a2638"
     sett("Lli", plagg)
     sett("Yyt", u.get("skjegg", "#d0d0d8"))
     sett("QEu", "#9a6a40")
@@ -580,6 +663,8 @@ def omriss(g):
 
 # Kroppen på sida utan arm, så armen kan leggjast på i ulike stillingar (stav, kamp).
 ARMLAUS = {
+    "kort": [".....AAaaaz.....", "....AAaaaaaz....", "....Aaaaazdz....", "....Pppppppp....",
+             "....DDdddddc....", "....DDdddddc...."],
     "bukse": [".....AAaaaz.....", "....AAaaaaaz....", "....Aaaaaaaz....", "....Aaaaaaaz....",
               "....xxxxxxxx....", ".....nbbbbbn...."],
     "kjole": [".....AAaaaz.....", "....AAaaaaaz....", "....Aaaaaaaz....", "....Dddddddc....",
@@ -595,6 +680,7 @@ ARM = {
 }
 # Bein når figuren sit på kne (svak i kampen).
 KNE = {
+    "kort": del_(19, "....DDdddddc....", "...DDddddddcc...", "..PPpppppppppp..", "..hhh.....hh...."),
     "bukse": del_(20, "...BBbbbbbn.....", "...Bbn..Bbbbbn..", "..FFf...nnnnnff."),
     "kjole": del_(19, "....DDdddddc....", "...DDddddddcc...", "..DDdddddddddc..", "..DDDddddddddcc."),
 }
@@ -709,7 +795,7 @@ def samanset(u, dir, steg, pose=None):
     """Teiknrutenett (16 x 24) utan omriss. dir 0 ned, 1 opp, 2 venstre. pose: kampstilling eller None."""
     g = tom()
     d = 0 if dir == 0 else 1 if dir == 1 else 2
-    type_ = "kjole" if u.get("kjole") else "bukse"
+    type_ = ("kort" if u.get("kort") else "kjole") if u.get("kjole") else "bukse"
     fris = u.get("frisyre", "kort")
     krok = u.get("krokrygg") and not pose
     stav = u.get("stav") if not pose else None
@@ -729,11 +815,13 @@ def samanset(u, dir, steg, pose=None):
     rader = kroppsrader(u, type_, d, kd, steg if not pose else (2 if pose == "atak" else 0))
     if gang and kd == 0:
         rader = gang_framme(kroppsrader(u, type_, d, kd, 0) if type_ == "bukse" else rader, type_, steg)
+        if type_ == "kort": rader = rader[:9] + KORTBEIN[(0, steg)]
         legg(g, (12, fargar_rader(u, type_, rader)), 0, bx)
     elif gang and d == 2:
         torso = ARMLAUS[type_]
         legg(g, (12 + by, fargar_rader(u, type_, torso)), 0, bx)
         if type_ == "bukse": legg(g, (19, fargar_rader(u, type_, SIDEBEIN[steg], 6)), 0, bx)
+        elif type_ == "kort": legg(g, (18, rader[6:9] + KORTBEIN[(2, steg)]), 0, bx)
         else: legg(g, (19, fargar_rader(u, type_, rader[7:10] + [SIDESKO_KJOLE[steg]])), 0, bx)
     elif d == 2 and (pose or stav):
         torso = ARMLAUS[type_]
@@ -751,7 +839,10 @@ def samanset(u, dir, steg, pose=None):
     if u.get("sekk") and d == 2: legg(g, TILLEGG[("sekk", 2)], 3 if pose == "svak" else by, bx)
     if u.get("hale") and d == 2 and pose != "svak": legg(g, HALE[2], by, bx)
     if gang and d == 2 and not stav: legg(g, SIDEARM["bak" if steg == 1 else "fram"], by, bx)
+    if u.get("sjal"): legg(g, SJAL[d], by if d == 2 else 0, bx)
     hovud(g, u, d, hy, hx, pose)
+    if fris == "hestehale" and d == 2: legg(g, HESTEHALE[2], hy, hx)
+    if fris == "hestehale" and d == 1: legg(g, HESTEHALE[1], hy, hx)
     if u.get("krage"): legg(g, TILLEGG[("krage", d)], hy, hx)
     if u.get("sekk") and d in (0, 1): legg(g, TILLEGG[("sekk", d)])
     if u.get("hale") and d == 1: legg(g, HALE[1])

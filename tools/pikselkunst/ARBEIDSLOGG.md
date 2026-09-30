@@ -334,3 +334,11 @@ same måte, uansett kven som tek over.
     til vanen sin.
 - **Lærdom:** Eit møbel sett ovanfrå må ha ei flate med gjenstandar på, og kantar og
   bein under. Loddrette skøytar og små mørke strekar blir lesne som skuffer og handtak.
+
+### Huldra etter Terra
+
+- Huldra har fått formene til Terra i Final Fantasy VI: hår med volum og taggete lugg,
+  lokkar langs kinna og ei lang hestehale med lyst band (`frisyre: "hestehale"`), eit
+  fiolett sjal med spissar over skuldrene (`sjal`), smal midje med gullbelte og eit
+  stutt skjørt med gullborde, med berre bein og føter under (`kort: true`). Blomen i
+  håret står der Terra har sløyfa, og kuhala heng under skjørtet.
