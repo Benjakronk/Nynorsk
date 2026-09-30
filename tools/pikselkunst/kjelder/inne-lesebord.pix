@@ -1,0 +1,55 @@
+# namn: inne-lesebord
+# type: bygg
+# ut: bilete/spel/bygg/inne-lesebord.png
+# storleik: 56x30
+palett:
+  . = -
+  o = #0a0514    omriss
+  R = #6a1a2a    raud
+  Y = #d0a030    gull
+  Z = #8a5a18    gull skugge
+  w = #f4f2f8    kvit
+  l = #fff4c0    ljos
+  L = #f8b830    flamme
+  b = #1c2448    bilete djup
+  B = #3a4a8a    bilete blå
+  g = #6a7a8a    blågrå skugge
+  j = #2a0e0c    mahogni djup
+  J = #5a2418    mahogni skugge
+  M = #8a3a22    mahogni
+  e = #26402f    stoff skugge
+  i = #3f6a52    stoff grønt
+  I = #72a282    stoff lys
+  p = #d8d0b8    papir
+  P = #a89e86    papir skugge
+bilete:
+  ........................................................
+  .............................................o..........
+  ..........o...............................oooiooo.......
+  .........oLo.............................obbiibeeo......
+  .........olo............................obiiiBbbeeo.....
+  .........olo............................obbBiBebbbo.....
+  .........owo............................obiiBBeebeo.....
+  ...ooooooowoooooooooooooooooooooooooooooiiiBiibebeboo...
+  ..oIIIIIIIwIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIiBBBBebebIIIo..
+  ..oIIIIIIIwIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIibBBibeebIIIo..
+  ..oiiiiiiiwiiiiiiiiiiiiiiiiiiiiiiiiiiiiiibbbBYebbeiiio..
+  ..oiiiiiiiwiiiiiiiiippppppppPpppppppiiiiiibbbYbbbiiiio..
+  ..oiiiiiiiwiiiiiiiiippggpggpPgpggpgpiiiiiiiiiYiiiiiiio..
+  ..oiiiiiiYYYiiiiiiiippppppppPpppppppiiiiiiiiiYiiiiiiio..
+  ..oiiiiiiiiiiiiiiiiippggpggpPgpggpgpiiiiiiiiiYiiiiiiio..
+  ..oiiiiiiiiiiiiiiiiippppppppPpppppppiiiiiiiiiYiiiiiiio..
+  ..oiiiiiiiiiiiiiiiiippppppppPpppppppiiiiiiZZZZZZZiiiio..
+  ..oiiiiiiiiiiiiiiiiRRRRRRRRRRRRRRRRRRiiiiiiiiiiiiiiiio..
+  ..oeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeo..
+  ..oeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeo..
+  ..oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo..
+  ..ojjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjo..
+  ...ooMJooooooooooooooooooooooooooooooooooooooooooMJoo...
+  ....oMJo........................................oMJo....
+  ....oMJo........................................oMJo....
+  ....oMJo........................................oMJo....
+  ....oMJo........................................oMJo....
+  ....oMJo........................................oMJo....
+  ....oMJo........................................oMJo....
+  .....oo..........................................oo.....

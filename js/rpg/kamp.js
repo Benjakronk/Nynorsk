@@ -248,12 +248,15 @@ window.Kamp = (function () {
       });
       pa.forEach((m, i) => {
         const p = paPos(i);
-        const rammer = m.sprite.rammer[2];
-        if (m.blink > no && Math.floor(no / 60) % 2) return;
+        const rammer = m.sprite.rammer[2], kp = m.sprite.kamp;
         g.fillStyle = "rgba(10,5,20,.35)"; g.fillRect(p.x + 3, p.y + 22, 10, 3);
-        if (m.hp <= 0) { g.save(); g.translate(p.x + 8, p.y + 18); g.rotate(Math.PI / 2); g.drawImage(rammer[0], -12, -8); g.restore(); return; }
-        const ramme = ventar[0] === m || m.fram > no ? rammer[1 + Math.floor(no / 180) % 2] : rammer[0];
-        g.drawImage(ramme, Math.round(p.x - (m.fram > no ? 12 : 0) - (ventar[0] === m ? 6 : 0)), p.y);
+        // Slått ut: ligg på bakken. Treft: skadd. Handlar: åtak eller galdr. Lite liv: på kne (som i Final Fantasy VI).
+        if (m.hp <= 0) { g.drawImage(kp.ute, p.x - 4, p.y + 9); return; }
+        const ramme = m.blink > no ? kp.skadd
+          : m.fram > no ? (m.pose === "galdr" ? kp.galdr : kp.atak)
+          : ventar[0] === m ? rammer[1 + Math.floor(no / 180) % 2]
+          : m.hp < m.maxhp * 0.25 ? kp.svak : rammer[0];
+        g.drawImage(ramme, Math.round(p.x - (m.fram > no ? (m.pose === "galdr" ? 6 : 12) : 0) - (ventar[0] === m ? 6 : 0)), p.y);
         if (m.vern > 0) { g.strokeStyle = "rgba(248,216,64,.8)"; g.lineWidth = 1; g.beginPath(); g.ellipse(p.x + 8, p.y + 13, 11, 14, 0, 0, Math.PI * 2); g.stroke(); }
       });
       for (let i = tal.length - 1; i >= 0; i--) {
@@ -359,7 +362,7 @@ window.Kamp = (function () {
         if (rs && rett) { rettskrivne.delete(id); visTal(m, "Fri!", "#f8d840"); }
       }
       const mult = formFaktor(id) * (fam.sterk ? (rett ? 1.5 : 0.45) : 1);
-      m.fram = performance.now() + 300;
+      m.fram = performance.now() + 500; m.pose = "galdr";
       {
         const fra = midtPa(m), mål = mal ? midt(mal) : v.lækje || v.vern ? { x: 250, y: 90 } : { x: 90, y: 80 };
         leggFx({ type: "ordkast", fra, til: mål, tekst: o.aasen, farge: fam.farge, dur: 460 });
@@ -408,7 +411,7 @@ window.Kamp = (function () {
       travel = true;
       let snogg = false;
       if (kommando === "angrip") {
-        m.fram = performance.now() + 300;
+        m.fram = performance.now() + 300; m.pose = "atak";
         meld(`${m.namn} angrip!`);
         await vent(300);
         skade(m, mal);
@@ -420,7 +423,7 @@ window.Kamp = (function () {
         meld(`${m.namn} kveder ${def.namn}!`, 1600);
         await vent(600);
         const { kraft } = await Stev.kved(id, { ord, gaaver });
-        m.fram = performance.now() + 400;
+        m.fram = performance.now() + 1200; m.pose = "galdr";
         leggFx({ type: "noter", dur: 1600 }); blink("rgba(248,216,64,A)", 320);
         leggFx({ type: "ring", x: 160, y: 90, r0: 10, r1: 150, flat: 0.5, farge: "#f8d840", dur: 900 });
         if (v.skade) skjelv(600, 3);
@@ -437,7 +440,7 @@ window.Kamp = (function () {
       } else if (kommando === "song") {
         const ev = D.EVNER[id];
         m.rost -= ev.rost;
-        m.fram = performance.now() + 300;
+        m.fram = performance.now() + 600; m.pose = "galdr";
         meld(`${m.namn} syng ${ev.namn}`, 1500);
         await vent(400);
         if (ev.type === "lækje") levandePa().forEach(p => lækj(p, ev.kraft + m.atk));

@@ -43,14 +43,18 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
 - Hus: legg huset til i `BYGG` i `tools/pikselkunst/bygg.py` (breidd, høgd, dører
   og vindauge i fliser) og køyr `python tools/pikselkunst/bygg.py <namn>`. Huset
   må ha same fotavtrykk og dør som i kartet, og står i `bygg` på kartet i `js/rpg/data.js`.
-- Inventar inne (altartavle, alterring, preikestol, lysekrone, grue, hylle,
-  sengebenk, langbord, rokk):
+- Inventar inne (sjå `INVENTAR` i skriptet: kyrkja, bondestova og
+  embetsmannsheimen med kakkelomn, skatoll, golvur, sofa, bokreolar …):
   `python tools/pikselkunst/inventar.py <namn>`. Står i `bygg` på kartet,
   `over: true` teiknar figuren over alt anna (lysekrona).
 - Figurar (16 × 24): legg personen til i `U` i `js/rpg/data.js` og køyr
   `python tools/pikselkunst/figur.py <id>` (eller `alle`). Arket hamnar i
   `bilete/spel/figurar/<id>.png`. `figur.py ark` lagar eit kontaktark i
   `forhand/`. Nye frisyrar, plagg og kroppar blir teikna som delar i `figur.py`.
+  Arket har gange (rad 0 til 3) og kampstillingar (rad 4 og 5). Nøklar for
+  silhuetten: `krokrygg`, `stav` (`lang` eller `stokk`), `sid` (sid kjole),
+  `band`, `blom`, `lue`, `strompe`, `kappe`. Kampstillingane kan sjåast med
+  `skjermbilete.py namn kart=utmarka m=1 kamp=vette parti=huldra hp=ivar:5,huldra:0`.
 - Kampbakgrunnar: `python tools/pikselkunst/bakgrunn.py <namn>` skriv
   `bilete/spel/kamp/<namn>.png` direkte (skriptet er kjelda). Namnet er
   `bakgrunn` på kartet i `js/rpg/data.js`.

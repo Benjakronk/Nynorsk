@@ -493,10 +493,10 @@ TILLEGG[("sekk", 1)] = del_(12, "....QQEEEEEu....", "....QEEEEEEu....", "....QEE
 
 # Hala til huldra (ho gøymer ho under skjørtet når ho står mot deg).
 HALE = {
-    1: del_(18, ".......TT.......", ".......TT.......", "........T.......", "........T.......",
-            ".......rrq......"),
-    2: del_(17, "..............T.", "..............T.", "..............T.", ".............T..",
-            "............rrq.", "............rq.."),
+    1: del_(17, "........Tj......", "........Tj......", ".......Tj.......", ".......Tj.......",
+            "......rRq.......", "......rrq......."),
+    2: del_(16, "............Tj..", ".............Tj.", ".............Tj.", ".............Tj.",
+            "............rRq.", "............rqq."),
 }
 
 # Langt hår heng bak skuldrene når figuren står mot deg eller på sida.
@@ -542,82 +542,194 @@ def palett(u):
     sett("Lli", plagg)
     sett("Yyt", u.get("skjegg", "#d0d0d8"))
     sett("QEu", "#9a6a40")
+    p["C"], p["N"] = hx("#b08850"), hx("#4a2e1c")
+    p["I"], p["J"] = hx("#f4b0c8"), hx("#f8e070")
+    if u.get("band"): p["P"], p["p"] = rampe(u["band"])[0], rampe(u["band"])[2]
     sv = u.get("strompe", "#e4e0d6")
     p["V"], p["v"] = rampe(sv)[1], rampe(sv)[2]
     return p
 
 
 # ---------------------------------------------------------------- samansetjing
-def legg(g, d, berre_tomme=False):
+def legg(g, d, dy=0, dx=0):
     rad0, rader = d
-    for dy, rad in enumerate(rader):
-        assert len(rad) == W, f"rad {rad0 + dy} har {len(rad)} teikn: {rad!r}"
-        y = rad0 + dy
-        if not 0 <= y < H: continue
+    for ry, rad in enumerate(rader):
+        assert len(rad) == W, f"rad {rad0 + ry} har {len(rad)} teikn: {rad!r}"
+        y = rad0 + ry + dy
+        if not 0 <= y < len(g): continue
         for x, c in enumerate(rad):
-            if c == "." or (berre_tomme and g[y][x] != "."): continue
-            g[y][x] = c
+            if c == "." or not 0 <= x + dx < len(g[0]): continue
+            g[y][x + dx] = c
 
 
-def ramme(u, dir, steg):
-    """Teiknrutenett (16 x 24) for retning 0 ned, 1 opp, 2 venstre, og steg 0, 1, 2."""
-    g = [["."] * W for _ in range(H)]
-    d = 0 if dir == 0 else 1 if dir == 1 else 2
-    type_ = "kjole" if u.get("kjole") else "bukse"
-    fris = u.get("frisyre", "kort")
-    if fris == "langt" and d in HAR_BAK: legg(g, HAR_BAK[d])
-    # Kroppen. Mot oss og bakfrå har same form; bakfrå utan skjorte og spenne.
-    kd = 2 if d == 2 else 0
-    k = KROPP[(type_, kd, steg)]
-    rader = k[1]
-    if d == 1: rader = [r.replace("S", "a").replace("s", "a").replace("g", "x") for r in rader]
-    if not u.get("belte"): rader = [r.replace("x", "a").replace("g", "a") for r in rader]
-    if u.get("strompe") and type_ == "bukse":   # knebukser: kvite strømper under kneet
-        rader = [r if i < 7 else r.replace("B", "V").replace("b", "V").replace("n", "v") for i, r in enumerate(rader)]
-    if u.get("kappe") and type_ == "kjole":     # prestekjole: heile kroppen i kjolefargen
-        rader = [r.replace("A", "D").replace("a", "d").replace("z", "c").replace("S", "d").replace("s", "c") for r in rader]
-    if type_ == "kjole" and kd == 0:   # liv (snøreliv) i kjolefargen over skjorta, som på bunaden
-        rader = rader[:]
-        rader[1] = rader[1][:4] + ("zDDSsddc" if d == 0 else "zDDddddc") + rader[1][12:]
-        rader[2] = rader[2][:4] + "zDDddddc" + rader[2][12:]
-    legg(g, (k[0], rader))
-    if u.get("forkle") and (type_, d) != ("bukse", 1) and ("forkle", d) in TILLEGG: legg(g, TILLEGG[("forkle", d)])
-    if u.get("sekk") and d == 2: legg(g, TILLEGG[("sekk", 2)])
-    # Hovud, hår og hovudplagg.
-    legg(g, HOVUD[d])
-    legg(g, HAR[fris][d])
-    for namn in ("lue", "hatt", "flosshatt"):
-        if u.get(namn): legg(g, PLAGG[namn][d])
-    if u.get("skjegg") and d in SKJEGG: legg(g, SKJEGG[d])
-    if u.get("briller") and d in BRILLER: legg(g, BRILLER[d])
-    if u.get("krage"): legg(g, TILLEGG[("krage", d)])
-    if u.get("sekk") and d in (0, 1): legg(g, TILLEGG[("sekk", d)])
-    if u.get("hale") and d in HALE: legg(g, HALE[d])
-    # Omriss: tomme pikslar som grensar til figuren (fire naboar).
+def tom(w=W, h=H): return [["."] * w for _ in range(h)]
+
+
+def omriss(g):
+    """Omriss: tomme pikslar som grensar til figuren (fire naboar)."""
+    h, w = len(g), len(g[0])
     ut = [rad[:] for rad in g]
-    for y in range(H):
-        for x in range(W):
+    for y in range(h):
+        for x in range(w):
             if g[y][x] != ".": continue
-            if any(0 <= y + dy < H and 0 <= x + dx < W and g[y + dy][x + dx] != "."
+            if any(0 <= y + dy < h and 0 <= x + dx < w and g[y + dy][x + dx] != "."
                    for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
                 ut[y][x] = "o"
     return ut
 
 
+# Kroppen på sida utan arm, så armen kan leggjast på i ulike stillingar (stav, kamp).
+ARMLAUS = {
+    "bukse": [".....AAaaaz.....", "....AAaaaaaz....", "....Aaaaaaaz....", "....Aaaaaaaz....",
+              "....xxxxxxxx....", ".....nbbbbbn...."],
+    "kjole": [".....AAaaaz.....", "....AAaaaaaz....", "....Aaaaaaaz....", "....Dddddddc....",
+              "....DDdddddc....", "....DDdddddc...."],
+}
+# Armar på sida (mot venstre). Radene er absolutte.
+ARM = {
+    "fram": del_(14, ".hhAAAaz........", ".hhaaaaz........"),                        # åtak: rett fram
+    "opp": del_(11, ".hh.............", ".hhA............", "..AAa...........", "...Aaz.........."),  # galdr
+    "bak": del_(12, "...........hh...", "..........Aaz...", "..........az...."),       # skadd: slengd bak
+    "kne": del_(17, ".....AAaz.......", ".....AAaz.......", "....hhj........."),       # svak: handa på kneet
+    "stav": del_(14, ".....AAaz.......", "....AAaz........", "...hhj.........."),      # held staven fram
+}
+# Bein når figuren sit på kne (svak i kampen).
+KNE = {
+    "bukse": del_(20, "...BBbbbbbn.....", "...Bbn..Bbbbbn..", "..FFf...nnnnnff."),
+    "kjole": del_(19, "....DDdddddc....", "...DDddddddcc...", "..DDdddddddddc..", "..DDDddddddddcc."),
+}
+# Krokrygg: pukkel bak skuldrene (på sida).
+PUKKEL = del_(10, "............Aa..", "...........Aaz..", "...........aaz..", "..........aaz...", "..........az....")
+# Stav og stokk: (øvste rad, kolonne). Mot oss held figuren staven i høgre hand (til venstre i biletet).
+STAV = {
+    ("lang", 0): (8, 1), ("lang", 1): (8, 14), ("lang", 2): (8, 2),
+    ("stokk", 0): (15, 1), ("stokk", 1): (15, 14), ("stokk", 2): (15, 2),
+}
+# Ein blome i håret (huldra).
+BLOM = {0: del_(4, "...IJ...........", "...I............"), 2: del_(4, "..........IJ....", "..........I....."),
+        1: del_(4, "...........JI...", "............I...")}
+
+
+def kroppsrader(u, type_, d, kd, steg):
+    rader = KROPP[(type_, kd, steg)][1]
+    if d == 1: rader = [r.replace("S", "a").replace("s", "a").replace("g", "x") for r in rader]
+    if type_ == "kjole" and kd == 0:   # liv (snøreliv) i kjolefargen over skjorta, som på bunaden
+        rader = rader[:]
+        rader[1] = rader[1][:4] + ("zDDSsddc" if d == 0 else "zDDddddc") + rader[1][12:]
+        rader[2] = rader[2][:4] + "zDDddddc" + rader[2][12:]
+    if type_ == "kjole" and u.get("sid"):   # sid kjole heilt ned, med border nedst
+        rader = rader[:]
+        rader[9] = rader[8].replace("D", "P").replace("d", "p").replace("c", "p")
+        rader[10] = rader[8]
+    return rader
+
+
+def fargar_rader(u, type_, rader, fra=0):
+    """Byter teikn i kroppsradene etter utsjånaden (belte, knebukser, prestekjole)."""
+    if not u.get("belte"): rader = [r.replace("x", "a").replace("g", "a") for r in rader]
+    if u.get("strompe") and type_ == "bukse":   # knebukser: kvite strømper under kneet
+        rader = [r if fra + i < 7 else r.replace("B", "V").replace("b", "V").replace("n", "v") for i, r in enumerate(rader)]
+    if u.get("kappe") and type_ == "kjole":     # prestekjole: heile kroppen i kjolefargen
+        rader = [r.replace("A", "D").replace("a", "d").replace("z", "c").replace("S", "d").replace("s", "c") for r in rader]
+    return rader
+
+
+def hovud(g, u, d, hy=0, hx=0, pose=None):
+    fris = u.get("frisyre", "kort")
+    legg(g, HOVUD[d], hy, hx)
+    legg(g, HAR[fris][d], hy, hx)
+    for namn in ("lue", "hatt", "flosshatt"):
+        if u.get(namn): legg(g, PLAGG[namn][d], hy, hx)
+    if u.get("blom") and d in BLOM: legg(g, BLOM[d], hy, hx)
+    if u.get("skjegg") and d in SKJEGG: legg(g, SKJEGG[d], hy, hx)
+    if u.get("briller") and d in BRILLER: legg(g, BRILLER[d], hy, hx)
+    if pose in ("skadd", "ute"):              # attlatne auge: ei vassrett strek
+        for y in range(len(g) - 1):
+            for x in range(1, len(g[0])):
+                if g[y][x] == "e" and g[y + 1][x] == "e": g[y][x] = "h"; g[y + 1][x - 1] = "e"
+    if pose == "galdr":                       # open munn, han syng
+        for y in range(len(g)):
+            for x in range(len(g[0])):
+                if g[y][x] == "m": g[y][x] = "e"
+
+
+def samanset(u, dir, steg, pose=None):
+    """Teiknrutenett (16 x 24) utan omriss. dir 0 ned, 1 opp, 2 venstre. pose: kampstilling eller None."""
+    g = tom()
+    d = 0 if dir == 0 else 1 if dir == 1 else 2
+    type_ = "kjole" if u.get("kjole") else "bukse"
+    fris = u.get("frisyre", "kort")
+    krok = u.get("krokrygg") and not pose
+    stav = u.get("stav") if not pose else None
+    hy, hx = (2, -1 if d == 2 else 0) if krok else (0, 0)
+    bx = 0
+    if pose == "atak": hx, bx = -1, -1
+    if pose == "skadd": hx, bx = 2, 1
+    if pose == "svak": hy = 3
+    if fris == "langt" and d in HAR_BAK: legg(g, HAR_BAK[d], hy, hx)
+    if stav and d != 2:                       # staven står bak handa
+        y0, x = STAV[(stav, d)]
+        for y in range(y0 + hy, 23): g[y][x] = "N" if y in (y0 + hy, 22) or x == 14 else "C"
+    kd = 2 if d == 2 else 0
+    rader = kroppsrader(u, type_, d, kd, steg if not pose else (2 if pose == "atak" else 0))
+    if d == 2 and (pose or stav):
+        torso = ARMLAUS[type_]
+        if pose == "svak":
+            legg(g, (15, fargar_rader(u, type_, torso[:5])), 0, bx)
+            k = KNE[type_]
+            legg(g, (k[0], fargar_rader(u, type_, k[1], 7 if type_ == "bukse" else 0)), 0, bx)
+        else:
+            legg(g, (12, fargar_rader(u, type_, torso + rader[6:])), 0, bx)
+    else:
+        legg(g, (12, fargar_rader(u, type_, rader)), 0, bx)
+    if krok and d == 2: legg(g, PUKKEL)
+    if u.get("forkle") and (type_, d) != ("bukse", 1) and ("forkle", d) in TILLEGG and pose != "svak":
+        legg(g, TILLEGG[("forkle", d)], 0, bx)
+    if u.get("sekk") and d == 2: legg(g, TILLEGG[("sekk", 2)], 3 if pose == "svak" else 0, bx)
+    if u.get("hale") and d == 2 and pose != "svak": legg(g, HALE[2], 0, bx)
+    hovud(g, u, d, hy, hx, pose)
+    if u.get("krage"): legg(g, TILLEGG[("krage", d)], hy, hx)
+    if u.get("sekk") and d in (0, 1): legg(g, TILLEGG[("sekk", d)])
+    if u.get("hale") and d == 1: legg(g, HALE[1])
+    if stav and d == 2:                       # staven framfor figuren, handa rundt
+        y0, x = STAV[(stav, 2)]
+        x += hx
+        for y in range(y0 + hy, 23): g[y][x] = "N" if y in (y0 + hy, 22) else "C"
+        legg(g, ARM["stav"], 0, hx)
+    if stav and d != 2:                       # handa rundt staven
+        g[16][STAV[(stav, d)][1]] = "h"
+    arm = {"atak": "fram", "galdr": "opp", "skadd": "bak", "svak": "kne"}.get(pose)
+    if arm: legg(g, ARM[arm], 0, bx)
+    return g
+
+
+def ramme(u, dir, steg, pose=None): return omriss(samanset(u, dir, steg, pose))
+
+
+def ute(u):
+    """Slått ut: figuren ligg på ryggen (sida, rotert), 24 x 16."""
+    g = samanset(u, 2, 0, "ute")
+    rot = [[g[H - 1 - x][y] for x in range(H)] for y in range(W)]   # 90 grader med klokka
+    return omriss(rot)
+
+
 def bilete(u):
+    """Arket: rad 0 til 3 gange (ned, opp, venstre, høgre), rad 4 kamp (åtak, galdr, skadd),
+    rad 5 svak (på kne) og slått ut (24 x 16, nedst i ruta)."""
     p = palett(u)
-    im = Image.new("RGBA", (W * 3, H * 4), (0, 0, 0, 0))
+    im = Image.new("RGBA", (W * 3, H * 6), (0, 0, 0, 0))
+    def teikn(g, x0, y0):
+        for y, rad in enumerate(g):
+            for x, c in enumerate(rad):
+                if c != ".": im.putpixel((x0 + x, y0 + y), p[c] + (255,))
     for dir in range(3):
-        for steg in range(3):
-            g = ramme(u, dir, steg)
-            for y in range(H):
-                for x in range(W):
-                    c = g[y][x]
-                    if c != ".": im.putpixel((steg * W + x, dir * H + y), p[c] + (255,))
-    # Høgre er venstre spegla.
-    for steg in range(3):
+        for steg in range(3): teikn(ramme(u, dir, steg), steg * W, dir * H)
+    for steg in range(3):   # høgre er venstre spegla
         rute = im.crop((steg * W, 2 * H, steg * W + W, 3 * H)).transpose(Image.FLIP_LEFT_RIGHT)
         im.paste(rute, (steg * W, 3 * H))
+    for n, pose in enumerate(("atak", "galdr", "skadd")): teikn(ramme(u, 2, 0, pose), n * W, 4 * H)
+    teikn(ramme(u, 2, 0, "svak"), 0, 5 * H)
+    teikn(ute(u), W, 5 * H + 8)
     return im
 
 

@@ -1,0 +1,56 @@
+# namn: inne-bokreol-brei
+# type: bygg
+# ut: bilete/spel/bygg/inne-bokreol-brei.png
+# storleik: 88x32
+palett:
+  . = -
+  o = #0a0514    omriss
+  R = #6a1a2a    raud
+  E = #983040    raud lys
+  y = #f8d840    gull lys
+  Y = #d0a030    gull
+  Z = #8a5a18    gull skugge
+  w = #f4f2f8    kvit
+  B = #3a4a8a    bilete blå
+  T = #7a3a22    tre brunraud
+  a = #2e1a10    furu djup
+  c = #8a5e36    furu
+  m = #2c4288    rosemaling blå
+  j = #2a0e0c    mahogni djup
+  J = #5a2418    mahogni skugge
+  M = #8a3a22    mahogni
+  O = #b8683e    mahogni lys
+  i = #3f6a52    stoff grønt
+bilete:
+  .oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo.
+  .oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo.
+  .ojjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjo.
+  ..oJJaaaaaaaaaaaaaaaaaaaaaaaaaJjaaaaaaaaaaaaaaaaaaaaaaaaaJjaaaaaaaaaaaaaaaaaaaaaaaajjo..
+  ..oJJaaaaaaaaaaaaaaaaaaaaaaaaaJjaaaaaaaaaaaaaaaaaaaaaaaaaJjaaaaaaaaaaaaaaaaaaaaaaaajjo..
+  ..oJJaaaaaaaaacccaaaaaaaaaaaaaJjwiiawcaaaaaaaaaaaaaaaaaaaJjmmwcaaawBByRRaaaaaBBaaaajjo..
+  ..oJJammmaaaaacccaaaaaaaaaaaaaJjiiiaccayJJTTTwccayRRaaaaaJjmmccaaaBBBRRRaaBBBBBaymajjo..
+  ..oJJammmawZZacccaaaaaawBBaaaaJjiiiacYaJJJTTTcccaRRRawccZJjmmcccccBBYRRRwZBBBBBammajjo..
+  ..oJJammYaZZZacccaaaaaaBBBaaaaJjiiiaccaJJJTTTccYaRRRacccZJjmmcccccBBBRRRZZBBYBBammajjo..
+  ..oJJammmaZZZacccaaaaaaBBYaaaaJjiiiaccaJJJTTTcccaRRRacccZJjmmcccccBBBRRRZYBBBBBammajjo..
+  ..oJJammmaZZZacccaaaaaaBBBaaaaJjiiiaccaJJJTTTcccaRRRacccZJjmmcccccBBBRRRZZBBBBBammajjo..
+  ..oJJammmaZZZacccaaaaaaBBBaaaaJjiiiaccaJJJTTTcccaRRRacccZJjmmcccccBBBRRRZZBBBBBammajjo..
+  ..oJJammmaZZZacccaaaaTaBBBaaaaJjiiiaccaJJJTTTcccaRRRacccZJjmmcccccBBBRRRZZBBBBBammajjo..
+  ..oJJammmaZZZacccaaTTaaBBBaaRRJjiiiaccaJJJTTTcccaRRRacccZJjmmcccccBBBRRRZZBBBBBammajjo..
+  ..oJJammmaZZZacccTTaaaaBBBRRaaJjiiiaccaJJJTTTcccaRRRacccZJjmmcccccBBBRRRZZBBBBBammajjo..
+  ..oOOOOOOOOOOOOOOOOOOOOOOOOOOOJjOOOOOOOOOOOOOOOOOOOOOOOOOJjOOOOOOOOOOOOOOOOOOOOOOOOOOo..
+  ..ojjjjjjjjjjjjjjjjjjjjjjjjjjjJjjjjjjjjjjjjjjjjjjjjjjjjjjJjjjjjjjjjjjjjjjjjjjjjjjjjjjo..
+  ..oJJaaaaaayRRRRRaaaawiiaaaaawJjaaaaaayRRaayRRaaaaaaaaaaaJjaaaaaaaaaaawEEawccawBBwajjo..
+  ..oJJaaaaaaRRRRRRaaaaiiiaaaaaEJjaaaaaaRRRymRRRawiiwBaaaaaJjymmaaaaaiiiEEEacccaBBBcajjo..
+  ..oJJawZZmmRRYRRRawBBiiiaaaaaEJjaaaaaaRRYmmRRYaiiiBBRRiiiJjmmmaaaaaiiiEEEaccYaBBBcajjo..
+  ..oJJaZZZmmRRRRRRaBBBiiiaaaaaEJjaaaaaaRRRmmRRRaiiiBBRRiiiJjmmmaaaaaiiiEEEacccaBBBcajjo..
+  ..oJJaZZYmmRRRRRRaBBBiiiaaaaaEJjaaaaaaRRRmmRRRaiiiBBRRiiYJjmmmaaaaaiiiEEEacccaBBBcajjo..
+  ..oJJaZZZmmRRRRRRaBBBiiiaaaaaEJjaaaaaaRRRmmRRRaiiiBBRRiiiJjmmmaaaaaiiiEEEacccaBBBcajjo..
+  ..oJJaZZZmmRRRRRRaBBBiiiaaaaaEJjaaaaaaRRRmmRRRaiiiBBRRiiiJjmmmaaaaaiiiEEEacccaBBBcajjo..
+  ..oJJaZZZmmRRRRRRaBBBiiiaaaaaEJjaaaaiaRRRmmRRRaiiiBBRRiiiJjmmmaaaaaiiiEEEacccaBBBcajjo..
+  ..oJJaZZZmmRRRRRRaBBBiiiaaTTaEJjaaiiaaRRRmmRRRaiiiBBRRiiiJjmmmaaccaiiiEEEacccaBBBcajjo..
+  ..oJJaZZZmmRRRRRRaBBBiiiTTaaaEJjiiaaaaRRRmmRRRaiiiBBRRiiiJjmmmccaaaiiiEEEacccaBBBcajjo..
+  ..oOOOOOOOOOOOOOOOOOOOOOOOOOOOJjOOOOOOOOOOOOOOOOOOOOOOOOOJjOOOOOOOOOOOOOOOOOOOOOOOOOOo..
+  ..ojjjjjjjjjjjjjjjjjjjjjjjjjjjJjjjjjjjjjjjjjjjjjjjjjjjjjjJjjjjjjjjjjjjjjjjjjjjjjjjjjjo..
+  ..oJJaaaaaaaaaaaaaaaaaaaaaaaaaJjaaaaaaaaaaaaaaaaaaaaaaaaaJjaaaaaaaaaaaaaaaaaaaaaaaajjo..
+  .oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo.
+  .ojjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjo.

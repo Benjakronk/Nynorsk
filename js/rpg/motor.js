@@ -243,7 +243,7 @@ window.Motor = (function () {
       const ljos = [];
       if (st === "mork") ljos.push([(spelar.fx + ox) * S + 8, (spelar.fy + oy) * S + 4, 58 + Math.sin(no / 300) * 2, 1, null]);
       // Grua er ein figur (inventar): ho gir eld-ljos på staden sin.
-      for (const b of kart.def.bygg || []) if (b.id === "inne-grue") ljos.push([(b.x + ox) * S + 8, (b.y + oy) * S + 26, 62 + Math.sin(no / 90 + b.x) * 3, 1, "255,140,50"]);
+      for (const b of kart.def.bygg || []) if (b.id === "inne-grue" || b.id === "inne-kakkelomn") ljos.push([(b.x + ox) * S + 8, (b.y + oy) * S + 26, 62 + Math.sin(no / 90 + b.x) * 3, 1, "255,140,50"]);
       for (let y = 0; y < kart.h; y++) for (let x = 0; x < kart.w; x++) {
         const c = kart.fliser[y][x];
         if (c === "f" || c === "L") ljos.push([(x + ox) * S + 8, (y + oy) * S + (c === "L" ? 3 : 10), (c === "f" ? 54 : 40) + Math.sin(no / 90 + x) * 2.5, 1, c === "f" ? "255,140,50" : "255,210,110"]);

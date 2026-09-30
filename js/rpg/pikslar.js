@@ -675,14 +675,28 @@ window.Pikslar = (function () {
     const k = JSON.stringify(u);
     if (figurCache.has(k)) return figurCache.get(k);
     const rammer = [0, 1, 2, 3].map(dir => [0, 1, 2].map(steg => figurRamme(u, dir, steg)));
-    const f = { rammer, w: FW, h: FH };
-    // Handteikna ark frå tools/pikselkunst/figur.py (48 x 96: steg bortover, retning nedover).
+    // Kampstillingar (mot venstre). Til arket er lasta: gangrammer, og liggjande for slått ut.
+    const kopi = src => { const c = lerret(FW, FH); c.getContext("2d").drawImage(src, 0, 0); return c; };
+    const ute = lerret(FH, 16);
+    { const g = ute.getContext("2d"); g.translate(FH / 2, 8); g.rotate(Math.PI / 2); g.drawImage(rammer[2][0], -FW / 2, -FH / 2); }
+    const kamp = { atak: kopi(rammer[2][1]), galdr: kopi(rammer[2][0]), skadd: kopi(rammer[2][0]), svak: kopi(rammer[2][0]), ute };
+    const f = { rammer, kamp, w: FW, h: FH };
+    // Handteikna ark frå tools/pikselkunst/figur.py (48 x 144): rad 0 til 3 gange (steg bortover),
+    // rad 4 åtak, galdr og skadd, rad 5 svak (på kne) og slått ut (24 x 16 nedst i ruta).
     // Når det er lasta, blir det teikna inn i dei same lerreta, så alle som held på figuren får det nye.
     if (u.id && typeof Image !== "undefined") {
       const img = new Image();
-      img.onload = () => rammer.forEach((rad, dir) => rad.forEach((c, steg) => {
-        const g = c.getContext("2d"); g.clearRect(0, 0, FW, FH); g.drawImage(img, steg * FW, dir * FH, FW, FH, 0, 0, FW, FH);
-      }));
+      const teiknInn = (c, sx, sy) => {
+        const g = c.getContext("2d");
+        g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, c.width, c.height);
+        g.drawImage(img, sx, sy, c.width, c.height, 0, 0, c.width, c.height);
+      };
+      img.onload = () => {
+        rammer.forEach((rad, dir) => rad.forEach((c, steg) => teiknInn(c, steg * FW, dir * FH)));
+        if (img.height < FH * 6) return;
+        teiknInn(kamp.atak, 0, FH * 4); teiknInn(kamp.galdr, FW, FH * 4); teiknInn(kamp.skadd, FW * 2, FH * 4);
+        teiknInn(kamp.svak, 0, FH * 5); teiknInn(kamp.ute, FW, FH * 5 + 8);
+      };
       img.src = `bilete/spel/figurar/${u.id}.png`;
     }
     figurCache.set(k, f);

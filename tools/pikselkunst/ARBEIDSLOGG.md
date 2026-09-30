@@ -170,3 +170,45 @@ same måte, uansett kven som tek over.
 - Eldre folk kunne hatt krokrygg og stav, og huldra ein eigen kjole og
   tydelegare hale.
 - Fjell (`^`) må teiknast når eit kart treng dei.
+
+## Runde 7: gamle folk, kampstillingar, embetsmannsheimen
+
+- **Svakast:** Alle «Står att»-punkta frå runde 6. Gamle folk såg ut som unge
+  med kvitt hår, figurane i kampen hadde ingen eigne stillingar, og
+  prestegarden hadde same fliser som bondestova.
+- **Research:** Figurarka frå runde 6. Final Fantasy VI har eigne rammer for
+  åtak, magi, treft, lite liv (på kne) og slått ut (liggjande). Gamle folk i
+  bybuararka skil seg frå kvarandre: somme er krokete, somme har stav, somme
+  begge delar.
+- **Gjort:**
+  - Nye nøklar i `U`: `krokrygg` (hovudet lågare og fram, pukkel bak) og
+    `stav` (`"lang"` stav eller `"stokk"`). Variantane er spreidde, så ikkje alle
+    gamle ser like ut: bestefaren har stokk, grannen lang stav, kona er
+    krokrygga utan stav, og haugbonden har både krokrygg og lang stav.
+  - Kampstillingar i figurarket (48 × 144): åtak (arm rett fram, steg fram),
+    galdr (arm opp, open munn), skadd (kasta bakover, attlatne auge), svak
+    (på kne når livet er under ein firedel) og slått ut (liggjande, 24 × 16).
+    Kampen vel stilling etter kva figuren gjer.
+  - Huldra har eigen sid, grøn kjole med gullborde nedst, kvite ermar, ein
+    blome i håret og ein tjukkare kuhale med dusk (synleg bakfrå og frå sida).
+  - Embetsmannsheimen (`inventar.py`): kakkelomn i støypejern som lyser,
+    skatoll, golvur, empiresofa og spisebord med kvit duk i prestegarden,
+    skrivepultar på kontoret, bokreolar, lesebord med globus og stolar på Ekset.
+  - Kampbakgrunnar: vegen til Ekset (grusveg med hjulspor, skigard, åker,
+    gardar i lia, milestein) og Hovdekyrkja (måla himmel i taket, rosemaling,
+    altartavle, alterring, blå benkar med benkedører og ljos frå vindauga).
+  - `bakgrunn.py` teiknar no 16 pikslar høgare og skjer av toppen, i staden for
+    å kopiere rader nedst. Det gav hakk i vegen.
+  - `skjerm.html` tek `parti=` og `hp=`, så kampstillingane kan sjåast på skjermbilete.
+- **Lærdom:** Variasjon mellom figurar av same slag kjem frå silhuetten
+  (krokrygg, stav), ikkje frå fargane. Og: eit møbel ved bakveggen bør ikkje vere
+  høgare enn at toppen held seg innanfor veggraden.
+
+### Står att etter runde 7
+
+- Kampstillingane for figurar som ikkje er med i partiet (vettane, haugbonden
+  som menneske) er ikkje i bruk.
+- Stillingane er berre mot venstre. Figurane på kartet har ikkje eigne rammer
+  for å snakke, sitje eller arbeide.
+- Arkivet og kontoret har framleis bokhyller som fliser (`y`, med blekk som renn).
+- Fjell (`^`) må teiknast når eit kart treng dei.

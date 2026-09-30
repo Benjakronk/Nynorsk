@@ -1,0 +1,63 @@
+# namn: inne-skrivepult
+# type: bygg
+# ut: bilete/spel/bygg/inne-skrivepult.png
+# storleik: 40x42
+palett:
+  . = -
+  o = #0a0514    omriss
+  R = #6a1a2a    raud
+  Y = #d0a030    gull
+  w = #f4f2f8    kvit
+  b = #1c2448    bilete djup
+  T = #7a3a22    tre brunraud
+  g = #6a7a8a    blågrå skugge
+  m = #2c4288    rosemaling blå
+  j = #2a0e0c    mahogni djup
+  J = #5a2418    mahogni skugge
+  M = #8a3a22    mahogni
+  O = #b8683e    mahogni lys
+  p = #d8d0b8    papir
+  P = #a89e86    papir skugge
+bilete:
+  ...opppppppppppo........................
+  ...oTTTTTTTTTTTo........................
+  ...oTTTTTTTTTTYo........................
+  ...oTTTTTTTTTTTo........................
+  ....opppppppppppo.......................
+  ....ommmmmmmmmmmo.......................
+  ....ommmmmmmmmmYo.......................
+  ....ommmmmmmmmmmo...................o...
+  ...opppppppppppo...................owo..
+  ...oRRRRRRRRRRRo..................owo...
+  ...oRRRRRRRRRRYo..................owo...
+  ...oRRRRRRRRRRRooooooooooooooooooowoo...
+  ..oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOwOOOo..
+  ..oOOOOOOOOOOOOOOOOOOOOOOOOOOOObbbbOOo..
+  ..oMMMMMMMMMMMMMMMMMMMMMMMMMMMMbbbbMMo..
+  ..oMMMMMMppppppppppPpppppppppMMbbbbMMo..
+  ..oMMMMMMppppppppppPpppppppppMMMMMMMMo..
+  ..oMMMMMMppgggpgggpPpgggpgggpMMMMMMMMo..
+  ..oMMMMMMppppppppppPpppppppppMMMMMMMMo..
+  ..oMMMMMMppggpggggpPpggpggggpMMMMMMMMo..
+  ..oMMMMMMppppppppppPpppppppppMMMMMMMMo..
+  ..oMMMMMMppgpggggppPpgpgbgbppMMMMMMMMo..
+  ..oMMMMMMppppppppppPpppppbpppMMMMMMMMo..
+  ..oMMMMMMpppggggpgpPppggggpgpMMMMMMMMo..
+  ..oMMMMMMppppppppppPpppppppppMMMMMMMMo..
+  ..oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo..
+  ..oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo..
+  ..oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo..
+  ..oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo..
+  ..ojjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjo..
+  ..oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo..
+  ..oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo..
+  ..oMMMMMMMMMMMMMMMMMYMMMMMMMMMMMMMMMMo..
+  ..oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo..
+  ..ojjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjo..
+  ...oJJooooooooooooooooooooooooooooJJo...
+  ...oJJo..........................oJJo...
+  ...oJJo..........................oJJo...
+  ...oJJo..........................oJJo...
+  ...oJJo..........................oJJo...
+  ...oJJo..........................oJJo...
+  ....oo............................oo....

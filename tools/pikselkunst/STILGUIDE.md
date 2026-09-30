@@ -118,6 +118,12 @@ Alt nytt skal kunne stå ved sida av han utan å skilje seg ut.
 - Folk frå bygda i 1820-åra: knebukser med kvite strømper, kvit eller grå
   vadmålsjakke, raud topplue. Kvinner: skaut knytt under haka, liv over kvit
   skjorte, skjørt og forkle. Presten: svart kjole og kvit pipekrage.
+- Gamle folk: variér silhuetten. Krokrygg (`krokrygg: true`), stav
+  (`stav: "lang"` eller `"stokk"`) eller begge. Ikkje gi alle gamle det same.
+- Kampstillingar (mot venstre): åtak, galdr, skadd, svak (på kne), slått ut.
+  Dei ligg i rad 4 og 5 i figurarket.
+- Embetsmannsheimen (prestegarden, Ekset): mahogni, messing, kvit duk,
+  kakkelomn og golvur. Bondestova: furu, grue, trefat, rosemaling.
 - Alle figurar blir laga med `figur.py`. Nye personar får ein oppføring i `U` i
   `js/rpg/data.js`, og deretter `python tools/pikselkunst/figur.py <id>`.
 

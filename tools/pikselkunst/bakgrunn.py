@@ -287,15 +287,152 @@ def arkiv():
     return b
 
 
-BAKGRUNNAR = {"tun": tun, "utmark": utmark, "inne": inne, "arkiv": arkiv}
+def skigard(b, x0, x1, y, hoyd, fro):
+    """Skigard: par av loddrette stolpar med skrå skier mellom, slik han står langs vegane på Vestlandet."""
+    for x in range(x0, x1, 3):                                       # skrå skier
+        for k in range(hoyd):
+            b.p(x + k // 2, y - k, "#8a6a48" if k % 4 else "#5a4230")
+            b.p(x + k // 2 + 1, y - k, "#4a3424")
+    for x in range(x0, x1, 14):                                      # stolpar med vidjebind
+        for k in range(hoyd + 3):
+            b.p(x, y - k, "#6a5038"); b.p(x + 1, y - k, "#3a2a1c")
+        b.p(x + 2, y - hoyd // 2, "#a88a60"); b.p(x + 2, y - hoyd + 2, "#a88a60")
+
+
+def veg():
+    """Vegen til Ekset i kveldsljos: grusveg som svingar inn mellom åkrar og skigard, gardar i lia, fjell bak."""
+    b = B()
+    b.band(0, 76, ["#2c3a74", "#46528e", "#7a6c9a", "#c48a86", "#eeb88a"])
+    for (cx, cy, rx, ry, fro) in [(70, 26, 48, 5, 11), (210, 16, 58, 6, 12), (300, 40, 30, 4, 13)]:
+        sky(b, cx, cy, rx, ry, ("#f8d0a0", "#b87a8a", "#6a4a78"), fro)
+    fjell(b, 80, [(30, 36, 50), (120, 50, 60), (230, 44, 60), (310, 34, 40), (160, 12, 400)],
+          ("#8a7aa8", "#665a88", "#4a4068"), sno=("#f0e0e8", "#b8a8c8"), fro=14, taggut=0.8)
+    fjell(b, 86, [(0, 20, 70), (100, 14, 60), (200, 22, 80), (320, 16, 60), (160, 14, 400)], ("#3e6450", "#325442", "#264234"), fro=15)
+    for (gx, gy) in [(92, 80), (214, 78), (228, 80)]:                # gardar i lia: torvtak og raude veggar
+        b.rad(gy - 3, gx + 1, gx + 8, "#7a8a3a"); b.rad(gy - 2, gx, gx + 9, "#98a648"); b.rad(gy - 1, gx, gx + 9, "#5a6a2a")
+        for y in range(gy, gy + 3): b.rad(y, gx + 1, gx + 8, "#8a3a2a")
+        b.p(gx + 4, gy + 1, "#f0d890")
+    slette(b, 85, H, ("#3a5a2a", "#4e7a36", "#78a04a"), 16, blomar=["#f4dc70", "#f0eef4", "#c890d0"])
+    for y in range(86, 104):                                         # åker med kornband til venstre
+        for x in range(0, 110 - (y - 86) * 2):
+            b.p(x, y, "#c8a850" if (y + x // 6) % 3 else "#a8883a")
+    # grusvegen: smal ved horisonten, brei framme, med hjulspor og grasrand i midten
+    for y in range(88, H):
+        t = (y - 88) / (H - 88)
+        cx = 150 - t * 70 + math.sin(t * 3.2) * 18
+        hw = 2 + t * 46
+        for x in range(int(cx - hw), int(cx + hw) + 1):
+            u = (x - cx) / hw
+            c = "#a88a62" if u < -0.3 else "#94784f"
+            if abs(abs(u) - 0.5) < 0.09: c = "#6e5638"                    # hjulspor
+            if abs(u) < 0.1 and t > 0.1: c = "#5e8a3a"                     # gras i midten
+            if abs(u) > 0.92: c = "#6a7a3a"                                # grøftekant
+            if h_(x, y, 17) > 0.93 and abs(u) < 0.9: c = "#c8b08a"        # småstein
+            b.p(x, y, c)
+    skigard(b, 0, 96, 104, 10, 18)
+    skigard(b, 200, 320, 98, 8, 19)
+    for x, fr in [(20, 3), (300, 4)]: bjork(b, x, 104 if x < 100 else 100, fr)
+    gran(b, 270, 100, 26, "#1f4a38", "#2e6448")
+    # milestein ved vegkanten
+    for y in range(128, 146):
+        for x in range(56, 64): b.p(x, y, "#b8b4bc" if x < 59 else "#8a8698" if x < 62 else "#5a586a")
+    for x in range(55, 65): b.p(x, 127, "#d0ccd4")
+    for y in (133, 136): b.rad(y, 58, 61, "#4a4858")
+    return b
+
+
+def kyrkje():
+    """Hovdekyrkja inne: måla himmel i taket, panelvegg med rosemaling, altartavle og vindauge med ljos."""
+    b = B()
+    for y in range(0, 16):                                           # himmelen i taket med gullstjerner
+        for x in range(W):
+            b.p(x, y, "#2a4480" if y < 14 else "#1c2a54")
+            if h_(x, y, 21) > 0.985 and y < 13: b.p(x, y, "#f8d840")
+    for bx in range(0, W, 64):                                       # bjelkar
+        for y in range(0, 16):
+            for x in range(bx, bx + 6): b.p(x, y, "#6a4428" if x < bx + 2 else "#3a2418")
+    for y in range(16, 94):                                          # panelvegg, lys blågrå
+        for x in range(W):
+            c = "#b8c4c8" if (x % 12) not in (0, 11) else "#8a98a4" if x % 12 == 0 else "#d0dadc"
+            if y > 80: c = "#7a5a3a" if y > 82 else "#5a3a22"         # brystpanel i tre
+            b.p(x, y, c)
+    for x in range(W):                                               # rosemalingsband
+        for y in range(18, 24):
+            b.p(x, y, "#6a1a2a" if y in (18, 23) else "#983040")
+        if x % 10 < 5: b.p(x, 20, "#f4dc70"); b.p(x + 1, 21, "#f4dc70")
+        if x % 10 == 7: b.p(x, 21, "#2c4288")
+    for wx in (26, 262):                                             # vindauge med småruter
+        for y in range(30, 72):
+            for x in range(wx, wx + 32):
+                ramme = (x - wx) % 8 == 0 or (y - 30) % 8 == 0 or x == wx + 31 or y == 71
+                b.p(x, y, "#f4f2e8" if ramme else ("#d8ecf8" if (x + y) % 5 else "#b8d4ec"))
+    # altartavla i midten: forgylt ramme, måla felt, krone øvst
+    cx = 160
+    for y in range(24, 78):
+        for x in range(cx - 30, cx + 31):
+            kant = abs(x - cx) > 26 or y < 28
+            c = "#d0a030" if kant else "#1c2448"
+            if not kant and 34 < y < 70 and abs(x - cx) < 20: c = "#3a4a8a" if (y + x) % 7 else "#2c3a70"
+            if not kant and 44 < y < 62 and abs(x - cx) < 5: c = "#e8c8a8" if y < 50 else "#983040"
+            if kant and (x + y) % 4 == 0: c = "#f8d840"
+            b.p(x, y, c)
+    for y in range(14, 24):
+        w = (y - 14)
+        for x in range(cx - w, cx + w + 1): b.p(x, y, "#d0a030" if (x + y) % 3 else "#f8d840")
+    for y in range(78, 94):                                          # altaret med duk og raudt forheng
+        for x in range(cx - 24, cx + 25): b.p(x, y, "#f4f2f8" if y < 82 else "#983040" if (x // 4) % 2 else "#6a1a2a")
+    for sx in (cx - 16, cx + 16):                                    # lysestakar
+        for y in range(68, 78): b.p(sx, y, "#d0a030")
+        b.p(sx, 66, "#fff4c0"); b.p(sx, 67, "#f8b830")
+    # furugolv i perspektiv mot altaret
+    for y in range(94, H):
+        t = (y - 94) / (H - 94)
+        for x in range(W):
+            lina = int((x - cx) / (1 + t * 3)) % 14 == 0
+            c = "#b08650" if (y // 6) % 2 else "#a07a48"
+            if lina: c = "#6a4a2a"
+            b.p(x, y, c)
+    for x in range(cx - 60, cx + 61):                                # alterringen i ein boge
+        y = 98 + int(((x - cx) / 60) ** 2 * 8)
+        for k in range(6): b.p(x, y + k, "#f4f2f8" if k < 2 else "#983040" if k < 4 else "#c8c6d4")
+        if (x - cx) % 8 == 0:
+            for k in range(6, 10): b.p(x, y + k, "#c8c6d4")
+    # benkar i blått til venstre framme: rygg, sete i skugge, framside og benkedør med rosemaling
+    for k in range(3):
+        y0 = 110 + k * 24; e = 66 + k * 12
+        for y in range(y0, y0 + 16):
+            for x in range(0, e):
+                if y < y0 + 4: c = "#7a9ad0" if y == y0 else "#4a6aac"
+                elif y < y0 + 8: c = "#1c2a54"
+                else: c = "#3a5a9a" if y < y0 + 15 else "#141c3a"
+                b.p(x, y, c)
+        for y in range(y0 - 4, y0 + 16):                                 # benkedøra
+            for x in range(e - 10, e):
+                top = y0 - 4 + (1 if x in (e - 10, e - 1) else 0)
+                if y < top: continue
+                c = "#6a8ac4" if x == e - 10 else "#141c3a" if x == e - 1 or y == y0 + 15 else "#2c4288"
+                b.p(x, y, c)
+            if y0 + 1 <= y <= y0 + 11: b.p(e - 6, y, "#983040" if (y - y0) % 4 else "#f4dc70"); b.p(e - 5, y, "#983040" if (y - y0) % 4 == 2 else "#2c4288")
+    # ljosstrålar frå vindauga, skrått ned mot høgre
+    for y in range(30, H):
+        for x in range(W):
+            for wx in (26, 262):
+                u = x - wx - 4 - (y - 30) * 0.7
+                if 0 < u < 24 and (u > 3 and u < 21 or (x + y) % 2):
+                    r, g, bb = b.get(x, y)
+                    b.p(x, y, (min(255, int(r * 1.07 + 6)), min(255, int(g * 1.07 + 6)), min(255, int(bb * 1.04 + 3))))
+    return b
+
+
+BAKGRUNNAR = {"tun": tun, "utmark": utmark, "inne": inne, "arkiv": arkiv, "veg": veg, "kyrkje": kyrkje}
 
 if __name__ == "__main__":
     namn = sys.argv[1:] or ["alle"]
     if namn == ["alle"]: namn = list(BAKGRUNNAR)
     os.makedirs(UT, exist_ok=True)
+    # Løft landskapet 16 pikslar, så partiet (til høgre) står på bakken og ikkje i fjorden:
+    # teikn biletet 16 pikslar høgare enn skjermen og skjer av toppen.
+    H += LOFT
     for n in namn:
         im = BAKGRUNNAR[n]().im
-        # Løft landskapet 16 pikslar, så partiet (til høgre) står på bakken og ikkje i fjorden.
-        ut = Image.new("RGB", (W, H)); ut.paste(im.crop((0, LOFT, W, H)), (0, 0))
-        ut.paste(im.crop((0, H - 2 * LOFT, W, H - LOFT)), (0, H - LOFT))
-        ut.save(os.path.join(UT, f"{n}.png")); print(f"bilete/spel/kamp/{n}.png")
+        im.crop((0, LOFT, W, H)).save(os.path.join(UT, f"{n}.png")); print(f"bilete/spel/kamp/{n}.png")

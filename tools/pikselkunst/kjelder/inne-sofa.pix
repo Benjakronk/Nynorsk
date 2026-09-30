@@ -1,0 +1,46 @@
+# namn: inne-sofa
+# type: bygg
+# ut: bilete/spel/bygg/inne-sofa.png
+# storleik: 56x30
+palett:
+  . = -
+  o = #0a0514    omriss
+  Y = #d0a030    gull
+  j = #2a0e0c    mahogni djup
+  J = #5a2418    mahogni skugge
+  M = #8a3a22    mahogni
+  O = #b8683e    mahogni lys
+  e = #26402f    stoff skugge
+  i = #3f6a52    stoff grønt
+  I = #72a282    stoff lys
+bilete:
+  ........................................................
+  .....oooooooooooooooooooooooooooooooooooooooooooooo.....
+  ....oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo....
+  ....oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo....
+  .....oIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIo.....
+  .....oeeeiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiieeo.....
+  ..ooooeeeiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiieeoooo..
+  .oOOOOOOOOiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiOOOOOOOOo.
+  .oMMMMMMMMiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiMMMMMMMMo.
+  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
+  ..oOMYYMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMYYMjo..
+  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
+  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
+  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
+  ..oOMMMMjeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeOMMMMjo..
+  ..oOMMMMjeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeOMMMMjo..
+  ..oOMMMMjIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIOMMMMjo..
+  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
+  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
+  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
+  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
+  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
+  ..oOMMMMjOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOMMMMjo..
+  ..oOMMMMjMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMOMMMMjo..
+  ...oojjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjoo...
+  .....oJJooooooooooooooooooooooooooooooooooooooooJJo.....
+  .....oJJo......................................oJJo.....
+  .....oJJo......................................oJJo.....
+  .....oJJo......................................oJJo.....
+  ......oo........................................oo......
