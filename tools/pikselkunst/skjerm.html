@@ -45,6 +45,11 @@ f.onload = async () => {
     await vent(+(q.get("ventms") || 300)); frys(); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true }));
     document.getElementById("ut").textContent = "ferdig, feil: " + JSON.stringify(feil); return;
   }
+  // vinn=1: alle fiendane fell, så ein kan sjå sigerfeiringa og løna i kampscena.
+  if (q.get("vinn")) {
+    const fi = w.KampTest.fiendar; fi.forEach((f, i) => { f.hp = i < fi.length - 1 ? 0 : 1; });
+    for (const k of ["z", "z"]) { d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true })); await vent(40); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true })); await vent(300); }
+    await vent(+(q.get("ventms") || 2400)); frys(); document.getElementById("ut").textContent = "ferdig, feil: " + JSON.stringify(feil); return; }
   await vent(900); frys();
   document.getElementById("ut").textContent = "ferdig, feil: " + JSON.stringify(feil);
 };

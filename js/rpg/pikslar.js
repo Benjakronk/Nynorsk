@@ -704,7 +704,9 @@ window.Pikslar = (function () {
     // Kjensler (mot oss): berre hovudpersonar med handteikna ark har dei. Til då: ståramma.
     const KJENSLER = u.kjensler || ["latter", "sjokk", "sorg", "tenkje", "ivrig", "les"];
     const kjensle = Object.fromEntries(KJENSLER.map(k => [k, kopi(rammer[0][0])]));
-    const f = { rammer, kamp, kjensle, w: FW, h: FH };
+    // Sigerstilling i kampen: kjensler namngjevne i utsjånaden (til dømes ivrig), elles ingen.
+    const siger = (u.siger || []).map(k => kjensle[k]).filter(Boolean);
+    const f = { rammer, kamp, kjensle, siger, w: FW, h: FH };
     // Handteikna ark frå tools/pikselkunst/figur.py (48 x 144): rad 0 til 3 gange (steg bortover),
     // rad 4 åtak, galdr og skadd, rad 5 svak (på kne) og slått ut (24 x 16 nedst i ruta).
     // Når det er lasta, blir det teikna inn i dei same lerreta, så alle som held på figuren får det nye.

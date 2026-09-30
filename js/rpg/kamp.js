@@ -21,6 +21,15 @@ window.Kamp = (function () {
   const E = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const stokk = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const vent = ms => new Promise(r => setTimeout(r, ms));
+  let siger = 0;              // tidspunktet sigerfeiringa byrja, eller 0
+  const kvitt = document.createElement("canvas");
+  function kvittLerret(bilde, styrke) {
+    kvitt.width = bilde.width; kvitt.height = bilde.height;
+    const k = kvitt.getContext("2d"); k.drawImage(bilde, 0, 0);
+    k.globalCompositeOperation = "source-atop"; k.fillStyle = `rgba(255,255,255,${styrke})`; k.fillRect(0, 0, bilde.width, bilde.height);
+    k.globalCompositeOperation = "source-over";
+    return kvitt;
+  }
   const rnd = (a, b) => a + Math.random() * (b - a);
 
   const rot = $("rpg-kamp");
@@ -132,7 +141,7 @@ window.Kamp = (function () {
   }
 
   /* ---------- Kampen ---------- */
-  async function start({ fiendar, boss, parti, gaaver = {}, bakgrunn, ord = {}, stev = [], startKved = 0, rettleiing, paaVesen }) {
+  async function start({ fiendar, boss, parti, gaaver = {}, bakgrunn, ord = {}, stev = [], startKved = 0, rettleiing, paaVesen, paaSiger }) {
     const D = RPGData;
     const fi = fiendar.map((id, i) => {
       const d = D.FIENDAR[id];
@@ -156,7 +165,8 @@ window.Kamp = (function () {
         <div class="kamp-vindauge kamp-fiendar"></div>
         <div class="kamp-vindauge kamp-parti"></div>
       </div>
-      <div class="kamp-vindauge kamp-meny" hidden></div>`;
+      <div class="kamp-vindauge kamp-meny" hidden></div>
+      <div class="kamp-vindauge kamp-siger" hidden></div>`;
     const melding = rot.querySelector(".kamp-melding"), fiListe = rot.querySelector(".kamp-fiendar"), paListe = rot.querySelector(".kamp-parti"), meny = rot.querySelector(".kamp-meny");
     const meld = (t, ms = 1400) => { melding.textContent = t; melding.hidden = false; meldingTid = performance.now() + ms; };
 
@@ -234,14 +244,17 @@ window.Kamp = (function () {
       fi.forEach((f, i) => {
         if (f.hp <= 0 && f.borte) return;
         const p = fiPos(i), bilde = Pikslar.fiende(f.d.bilete);
+        if (f.hp <= 0 && !f.dod) f.dod = no;                             // fall utan skade (til dømes i testar)
         const alpha = f.hp <= 0 ? Math.max(0, 1 - (no - f.dod) / 600) : 1;
         if (f.hp <= 0 && alpha <= 0) f.borte = true;
         const x = Math.round(p.x - bilde.width / 2 + (f.fram > no ? 8 : 0) + skjelv(f)), y = Math.round(p.y - bilde.height + (f.id === "irrbloss" ? Math.sin(no / 300) * 3 : f.hp > 0 ? Math.sin(no / 420 + i * 1.7) * 1.2 : 0));
         g.fillStyle = "rgba(10,5,20,.35)"; g.beginPath(); g.ellipse(p.x, p.y, bilde.width * 0.38, 4, 0, 0, Math.PI * 2); g.fill();
         g.globalAlpha = alpha;
         if (f.blink > no && Math.floor(no / 60) % 2) g.globalAlpha = 0.35 * alpha;
-        g.drawImage(bilde, x, y);
-        if (f.hp <= 0) { g.globalCompositeOperation = "source-atop"; g.fillStyle = `rgba(255,255,255,${0.6 * alpha})`; g.fillRect(x, y, bilde.width, bilde.height); g.globalCompositeOperation = "source-over"; }
+        if (f.hp <= 0) {
+          // Kvitt blink i forma til fienden (på eit eige lerret, så det ikkje dekkjer bakgrunnen).
+          const c = kvittLerret(bilde, 0.6 * alpha); g.drawImage(c, x, y);
+        } else g.drawImage(bilde, x, y);
         g.globalAlpha = 1;
         if (f.avslort > 0 && f.hp > 0) { g.fillStyle = "#7fd0f0"; g.fillRect(x + bilde.width / 2 - 1, y - 6, 3, 3); }
       });
@@ -253,6 +266,14 @@ window.Kamp = (function () {
         g.fillStyle = "rgba(10,5,20,.35)"; g.fillRect(p.x + 3 - fram, p.y + 22, 10, 3);
         // Slått ut: ligg på bakken. Treft: skadd. Handlar: åtak eller galdr. Lite liv: på kne (som i Final Fantasy VI).
         if (m.hp <= 0) { g.drawImage(kp.ute, p.x - 4, p.y + 9); return; }
+        if (siger) {
+          // Siger (som i Final Fantasy VI): snur seg mot oss og vekslar mellom sigerstilling og ståramme.
+          const sp = m.sprite, fase = Math.floor((no - siger) / 320 + i) % 2;
+          const sigerRammer = (sp.siger && sp.siger.length) ? sp.siger : [sp.rammer[0][1], sp.rammer[0][2]];
+          const b = fase ? sigerRammer[Math.floor((no - siger) / 640) % sigerRammer.length] : sp.rammer[0][0];
+          g.drawImage(b, p.x, p.y - (fase ? 2 : 0));
+          return;
+        }
         const ramme = m.blink > no ? kp.skadd
           : m.fram > no ? (m.pose === "galdr" ? kp.galdr : kp.atak)
           : aktiv ? rammer[0]
@@ -538,6 +559,8 @@ window.Kamp = (function () {
     oppdaterLister();
     meld(boss ? `${fi[0].namn}!` : fi.length > 1 ? "Fiendar dukkar opp!" : `${fi[0].namn} dukkar opp!`, 1500);
     let sist = performance.now(), menyOpen = false;
+    siger = 0;
+    window.KampTest = { fiendar: fi };                                // til automatiske testar (skjerm.html vinn=1)
     const teiknLoop = () => { if (!rot.hidden) { teikn(performance.now()); requestAnimationFrame(teiknLoop); } };
     requestAnimationFrame(teiknLoop);
     while (!utfall) {
@@ -570,6 +593,22 @@ window.Kamp = (function () {
     const pengar = utfall === "siger" ? fi.reduce((s, f) => s + f.d.pengar, 0) : 0;
     const fall = [];
     if (utfall === "siger") for (const f of fi) for (const [id, sj] of f.d.fall || []) if (Math.random() < sj) fall.push(id);
+    // Sigeren blir vist i kampscena: partiet feirar, og røynsle, pengar og funne ting kjem
+    // i eit vindauge, éi line om gongen (som i Final Fantasy VI).
+    if (utfall === "siger" && paaSiger) {
+      siger = performance.now();
+      melding.hidden = true;
+      const linjer = await paaSiger({ xp, pengar, fall });
+      const vin = rot.querySelector(".kamp-siger");
+      vin.hidden = false; vin.innerHTML = "";
+      for (const l of linjer) {
+        const p = document.createElement("p"); p.textContent = l; vin.appendChild(p);
+        vin.classList.add("klar");
+        await new Promise(res => { const slepp = Motor.lytt({ a: () => { slepp(); res(); } }); vin.onclick = () => { slepp(); res(); }; });
+        vin.classList.remove("klar");
+      }
+      siger = 0;
+    }
     pa.forEach(m => { m.vern = 0; m.atb = 0; });
     rot.hidden = true; rot.innerHTML = "";
     return { utfall, xp, pengar, fall };

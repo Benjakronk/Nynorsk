@@ -166,22 +166,25 @@
     const r = await Kamp.start({
       fiendar: lag, boss, parti, gaaver: gv, bakgrunn, ord: st.ord, stev: st.stev, startKved, rettleiing,
       paaVesen: (id, slegen) => { const v = st.vesen[id] || (st.vesen[id] = { sett: 0, slegne: 0 }); if (slegen) v.slegne++; else v.sett++; },
+      // Løna blir delt ut og vist i kampscena. Gir linene som skal visast.
+      paaSiger: async ({ xp: rxp, pengar, fall }) => {
+        const xp = Math.round(rxp * (gv.reisestav ? 1.1 : 1));
+        const linjer = [`Fekk ${xp} røynsle.`];
+        if (pengar) { st.pengar += pengar; linjer.push(`Fekk ${pengar} skilling.`); }
+        for (const id of fall) { st.ting[id] = (st.ting[id] || 0) + 1; linjer.push(`Fann ${D.TING[id].namn}!`); }
+        for (const m of st.parti) {
+          const p = parti.find(p => p.ref === m);
+          if (p && p.hp <= 0) continue;                                   // den som ligg, får ikkje røynsle
+          m.xp += xp;
+          while (m.xp >= xpNeste(m.niva)) { m.xp -= xpNeste(m.niva); const før = stat(m); m.niva++; const etter = stat(m); m.hp += etter.maxhp - før.maxhp; m.rost += etter.maxrost - før.maxrost; linjer.push(`${D.PARTI[m.id].namn} er no på nivå ${m.niva}!`); }
+        }
+        return linjer;
+      },
     });
     parti.forEach(p => { p.ref.hp = Math.max(0, Math.round(p.hp)); p.ref.rost = p.rost; });
     modus = "felt";
     if (r.utfall === "tap") { await tap(); return "tap"; }
-    if (r.utfall === "siger") {
-      const xp = Math.round(r.xp * (gv.reisestav ? 1.1 : 1));
-      const linjer = [`Siger! ${xp} røynsle${r.pengar ? ` og ${r.pengar} skilling` : ""}.`];
-      st.pengar += r.pengar;
-      for (const id of r.fall) { st.ting[id] = (st.ting[id] || 0) + 1; linjer.push(`Du fann ${D.TING[id].namn}.`); }
-      for (const m of st.parti) {
-        if (m.hp <= 0) m.hp = 1;          // den som fall, reiser seg med litt liv etter kampen
-        m.xp += xp;
-        while (m.xp >= xpNeste(m.niva)) { m.xp -= xpNeste(m.niva); const før = stat(m); m.niva++; const etter = stat(m); m.hp += etter.maxhp - før.maxhp; m.rost += etter.maxrost - før.maxrost; linjer.push(`${D.PARTI[m.id].namn} er no på nivå ${m.niva}!`); }
-      }
-      for (const l of linjer) await Motor.tale(l);
-    }
+    if (r.utfall === "siger") for (const m of st.parti) if (m.hp <= 0) m.hp = 1;   // den som fall, reiser seg med litt liv
     Motor.pause(false);
     return r.utfall;
   }

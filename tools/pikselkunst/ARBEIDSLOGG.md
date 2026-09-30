@@ -403,3 +403,13 @@ same måte, uansett kven som tek over.
   stutt skjørt, berre bein og kuhale. Kjensler: fnis, sjokk, sorg, tenkjer, lokk og
   sjenert. Namna står i `kjensler` i utsjånaden, og `kjensle` på ei replikk frå huldra
   gjeld henne når ho følgjer Ivar.
+
+### Siger i kampscena
+
+- Etter ein vunnen kamp blir kampscena ståande som i Final Fantasy VI: partiet snur seg
+  mot oss og feirar (Ivar lyftar neven, huldra syng kulokk og fnisar), og røynsle,
+  skilling, funne ting og nye nivå kjem i eit vindauge øvst, éi line om gongen.
+  Sigerrammene står i `siger` i utsjånaden. Den som ligg, får ikkje røynsle.
+- Retta: det kvite blinket når ein fiende fell, dekte heile ruta rundt fienden (eit
+  grått rektangel). No blir det teikna i forma til fienden.
+- `skjerm.html` tek `vinn=1`, som vinn kampen, så sigeren kan sjåast på skjermbilete.

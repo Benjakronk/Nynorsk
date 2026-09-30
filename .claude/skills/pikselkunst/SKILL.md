@@ -64,9 +64,12 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   silhuetten: `krokrygg`, `stav` (`lang` eller `stokk`), `sid` (sid kjole),
   `band`, `blom`, `lue`, `strompe`, `kappe`. Kampstillingane kan sjåast med
   `skjermbilete.py namn kart=utmarka m=1 kamp=vette parti=huldra hp=ivar:5,huldra:0`.
-- Hovudpersonar kan ha eit handteikna ark (sjå `ivar_figur.py`, førd inn i `HANDTEIKNA` i
-  figur.py) med kjensleramer i rad 6 og 7. Kjensler blir viste med `kjensle` i manus og
+- Hovudpersonar har handteikna ark (`ivar_figur.py`, `huldra_figur.py`, felles kode i
+  `handfigur.py`, førde inn i `HANDTEIKNA` i figur.py) med kjensleramer i rad 6 og 7.
+  Namna på kjenslene står i `kjensler` i utsjånaden, og `siger` vel kjensler til
+  sigerfeiringa i kampen. Kjensler blir viste med `kjensle` i manus og
   kan sjåast med `skjermbilete.py namn kart=asen-stova m=1 kjensle=sjokk`.
+  Sigerfeiring og løn i kampscena: `skjermbilete.py namn kart=utmarka m=1 kamp=vette parti=huldra vinn=1`.
 - Kampbakgrunnar: `python tools/pikselkunst/bakgrunn.py <namn>` (malarverktøya ligg i
   `maleri.py`: støy, dithering, fjell, gras, gran, bjørk, stein) skriv
   `bilete/spel/kamp/<namn>.png` direkte (skriptet er kjelda). Namnet er

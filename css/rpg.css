@@ -118,6 +118,11 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
   color: #fff; font-family: "Inter", system-ui, sans-serif; font-size: 17px; text-shadow: 1px 1px 0 #0e0c12;
 }
 .kamp-melding[hidden] { display: none; }
+/* Sigervindauget: røynsle, pengar og funne ting, éi line om gongen */
+.kamp-siger { position: absolute; top: 12px; left: 12px; right: 12px; min-height: 0; font-size: 17px; cursor: pointer; }
+.kamp-siger[hidden] { display: none; }
+.kamp-siger p { margin: 2px 0; }
+.kamp-siger.klar::after { content: "▼"; float: right; font-size: 12px; animation: blink-pil .8s steps(2) infinite; }
 .kamp-botn { position: absolute; left: 12px; right: 12px; bottom: 12px; display: grid; grid-template-columns: 1fr 1.6fr; gap: 10px; }
 .kamp-vindauge {
   background: linear-gradient(180deg, #3446a8, #1b2566); border: 3px solid #e8e8f0; border-radius: 8px;
