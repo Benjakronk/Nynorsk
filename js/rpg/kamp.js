@@ -563,6 +563,7 @@ window.Kamp = (function () {
     window.KampTest = { fiendar: fi };                                // til automatiske testar (skjerm.html vinn=1)
     const teiknLoop = () => { if (!rot.hidden) { teikn(performance.now()); requestAnimationFrame(teiknLoop); } };
     requestAnimationFrame(teiknLoop);
+    requestAnimationFrame(() => requestAnimationFrame(() => Motor.tonInn()));   // kampscena er teikna: ton inn
     while (!utfall) {
       await vent(30);
       const no = performance.now(), dt = Math.min(100, no - sist); sist = no;
@@ -610,6 +611,7 @@ window.Kamp = (function () {
       siger = 0;
     }
     pa.forEach(m => { m.vern = 0; m.atb = 0; });
+    await Motor.tonUt();                                              // ton ut før kartet kjem att
     rot.hidden = true; rot.innerHTML = "";
     return { utfall, xp, pengar, fall };
   }

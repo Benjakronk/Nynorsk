@@ -912,6 +912,25 @@ window.Pikslar = (function () {
     return ut;
   }
 
+  /* Røyk frå pipene: kvar pipe har ein opning (pikslar i husbiletet). Røyken stig, veks og
+     driv med vinden mot høgre, i same takt som elden (150 ms per bilete). */
+  const ROYK = {
+    "stove": [[28, 0]], "seter": [[28, 0]], "ekset-hovud": [[76, 0]],
+    "prestegard": [[43, 0], [107, 0]],
+  };
+  function royk(g, x, y, t) {
+    const k = Math.floor(t / 150);
+    for (let i = 0; i < 5; i++) {
+      const fase = (((k * 150) / 3200 + i / 5) % 1);
+      const f = Math.floor(fase * 20) / 20;
+      const yy = y - 2 - f * 30, xx = x + f * 10 + Math.sin(f * 7 + i) * 1.5, r = 1 + f * 2.6;
+      g.fillStyle = `rgba(214,214,224,${(0.6 * (1 - f)).toFixed(2)})`;
+      g.fillRect(Math.round(xx - r), Math.round(yy - r * 0.8), Math.round(r * 2), Math.round(r * 1.6));
+      g.fillStyle = `rgba(240,240,248,${(0.45 * (1 - f)).toFixed(2)})`;
+      g.fillRect(Math.round(xx - r), Math.round(yy - r * 0.8), Math.max(1, Math.round(r)), 1);
+    }
+  }
+
   /* Levande eld i grua og kakkelomnen (inventaret er faste bilete, flammane blir teikna her).
      Rutene er i pikslar i biletet. glo: berre glør bak ei luke. */
   const ILD = {
@@ -965,5 +984,5 @@ window.Pikslar = (function () {
   }
 
   return { S, FW, FH, flis, topp, kant, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
-    hent, klar, forhandslast, alleBilete, ILD, ild, ildMaske, STANDARDKJENSLER };
+    hent, klar, forhandslast, alleBilete, ILD, ild, ildMaske, STANDARDKJENSLER, ROYK, royk };
 })();

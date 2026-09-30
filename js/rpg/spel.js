@@ -125,7 +125,7 @@
         await Motor.tale(`Ivar lærte «${def.namn}» av ${def.kjelde}. ${s2.manglar.length ? `${s2.manglar.length} av orda i stevet manglar enno.` : "Han har alle orda som trengst."}`, "Ordboka");
         if (st.stev.length === 1) await Motor.tale("Stev er dei sterkaste galdrane. Når kvedemålaren til Ivar er full i ein kamp, kan han kvede eit stev. Hola i stevet fyller han med ord han har funne.", "Ordboka");
       }
-      if (s.til) Motor.last(s.til[0], s.til[1]);
+      if (s.til) await Motor.scene(() => Motor.last(s.til[0], s.til[1]));
       if (s.lagre) lagre();
       if (s.lækje) lækjAlle();
       if (s.butikk) await butikk(s.butikk);
@@ -164,7 +164,7 @@
       const s = stat(m);
       return Object.assign({ ref: m, namn: D.PARTI[m.id].namn, sprite: sprite(m.id), hp: m.hp, rost: m.rost, galdr: m.id === "ivar", evner: D.PARTI[m.id].evner, ting: () => st.ting, brukTing: id => { st.ting[id]--; } }, s);
     });
-    await Motor.overgang();
+    await Motor.tonUt();                                              // kampscena tonar inn når ho er klar
     const bakgrunn = (Motor.kart && Motor.kart.def.bakgrunn) || "tun";
     const r = await Kamp.start({
       fiendar: lag, boss, parti, gaaver: gv, bakgrunn, ord: st.ord, stev: st.stev, startKved, rettleiing,
@@ -186,6 +186,7 @@
     });
     parti.forEach(p => { p.ref.hp = Math.max(0, Math.round(p.hp)); p.ref.rost = p.rost; });
     modus = "felt";
+    requestAnimationFrame(() => Motor.tonInn());                      // kartet er teikna att: ton inn
     if (r.utfall === "tap") { await tap(); return "tap"; }
     if (r.utfall === "siger") for (const m of st.parti) if (m.hp <= 0) m.hp = 1;   // den som fall, reiser seg med litt liv
     Motor.pause(false);
@@ -421,7 +422,9 @@
       modus = "verd";
       Motor.pause(true);
       lagre();
+      await Motor.tonUt();
       verdEl.hidden = false;
+      setTimeout(() => Motor.tonInn(), 60);
       const klar = await initKart();
       if (klar) K.tilpass();
       const opne = D.STADER.filter(s => st.opne.includes(s.id));
@@ -444,8 +447,10 @@
           await new Promise(r => { gang = { punkt, lengd: K.ruteKurve(punkt, 1).getLength(), t0: performance.now() + 1100, dur: Math.max(1500, km / (gaaver().reisestav ? 0.12 : 0.06)), mesh: null, seg: 0, ferdig: r }; bygdFor = 0; });
         }
         st.stad = mal.id;
+        await Motor.tonUt();
         verdEl.hidden = true;
         modus = "felt";
+        requestAnimationFrame(() => Motor.tonInn());
         if (mal.kart) { Motor.last(mal.kart, mal.merke); Motor.pause(false); }
         else if (mal.manus) { await hending(D.MANUS[mal.manus]); }
         res();
@@ -485,7 +490,9 @@
     const merk = () => kn.forEach((b, i) => b.classList.toggle("peikar", i === valt));
     const vel = async i => {
       slepp();
+      await Motor.tonUt();
       tittelEl.hidden = true;
+      requestAnimationFrame(() => requestAnimationFrame(() => Motor.tonInn()));
       if (alt[i][0] === "stev") { await provStev(); return; }
       if (alt[i][0] === "hald") { st = Object.assign(ny(), s); start(true); }
       else {

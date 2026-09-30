@@ -432,3 +432,14 @@ same måte, uansett kven som tek over.
     talar har ei kjensle, og vanleg portrett elles. Dei blir forhåndslasta.
   - `skjerm.html` tek `kjensle` saman med `tale`, så portrett og figur kan sjåast saman.
 - **Står att:** Portrettkjensler for huldra, den framande, presten og dei andre med eige portrett.
+
+### Toning mellom alle scener, og piper med røyk
+
+- Rask toning til svart og tilbake er standard mellom alle scener: dører, inn i og ut av
+  kamp, tittelskjermen, verdskartet og kartbyte i manus (`Motor.scene`, `tonUt`, `tonInn`,
+  eit svart lag over heile spelet). Kampscena tonar inn først når ho er teikna, og kartet
+  tonar inn att etter sigeren. Den gamle pikseloppløysinga før kamp er teken bort.
+- Hus med grue eller omn inne har fått mura steinpipe på torvtaket (`pipe=` i
+  `stove()` i bygg.py): stova på Åsen og Nedre Hovde, setra og Ekset. Alle piper, også
+  teglpipene på prestegarden, har røyk som stig og driv med vinden (`ROYK` i pikslar.js).
+- `skjerm.html` tek `etter=1` saman med `vinn=1`, så ein ser kartet kome att etter kampen.

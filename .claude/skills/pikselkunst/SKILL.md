@@ -47,7 +47,8 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   og vindauge i fliser) og køyr `python tools/pikselkunst/bygg.py <namn>`. Huset
   må ha same fotavtrykk og dør som i kartet, og står i `bygg` på kartet i `js/rpg/data.js`.
   `bakdor=[i]` gir inngang på baksida (bislag). Då ligg døra (`D`) i kartet i
-  flisraden rett bak huset, og stien må kome ovanfrå. Ei ny dørform (breidd, høgd)
+  flisraden rett bak huset, og stien må kome ovanfrå. Hus med grue eller omn inne får
+  `pipe=<flisnummer>` (mura steinpipe) og ei røykopning i `ROYK` i `js/rpg/pikslar.js`. Ei ny dørform (breidd, høgd)
   må førast inn i `DORFORM` i `js/rpg/motor.js`, så døra opnar seg rett.
 - Nye bilete blir forhåndslasta automatisk når dei står i data.js (bygg, figurar,
   portrett, kampbakgrunnar). Andre bilete må leggjast til i `alleBilete` i `pikslar.js`.

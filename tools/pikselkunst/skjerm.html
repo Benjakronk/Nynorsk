@@ -4,7 +4,7 @@
 <!-- Brukt av skjermbilete.py: opnar spelet, går til eit kart og frys lerretet.
      Parametrar: kart, m (merke), x og y (der Ivar står), kamp (fiendar, kommaskilt),
      parti (fleire i partiet), hp (til dømes huldra:4), tale (namn:tekst),
-     gaa (opp/ned/venstre/hogre), ventms, kjensle (til dømes sjokk) og hkjensle (for følgjet). -->
+     gaa (opp/ned/venstre/hogre), ventms, kjensle (til dømes sjokk) og hkjensle (for følgjet), vinn=1 og etter=1. -->
 <style>body{margin:0;background:#000;color:#fff;font:12px monospace} iframe{width:1100px;height:720px;border:0;display:block} #ut{white-space:pre-wrap;padding:4px}</style>
 <iframe id="f"></iframe>
 <div id="ut">køyrer …</div>
@@ -49,7 +49,9 @@ f.onload = async () => {
   if (q.get("vinn")) {
     const fi = w.KampTest.fiendar; fi.forEach((f, i) => { f.hp = i < fi.length - 1 ? 0 : 1; });
     for (const k of ["z", "z"]) { d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true })); await vent(40); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true })); await vent(300); }
-    await vent(+(q.get("ventms") || 2400)); frys(); document.getElementById("ut").textContent = "ferdig, feil: " + JSON.stringify(feil); return; }
+    await vent(+(q.get("ventms") || 2400));
+    // etter=1: bla gjennom sigerlinene og sjå kartet kome att etter kampen.
+    if (q.get("etter")) for (let n = 0; n < 8; n++) { d.dispatchEvent(new w.KeyboardEvent("keydown", { key: "z", bubbles: true })); await vent(40); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: "z", bubbles: true })); await vent(350); } frys(); document.getElementById("ut").textContent = "ferdig, feil: " + JSON.stringify(feil); return; }
   await vent(900); frys();
   document.getElementById("ut").textContent = "ferdig, feil: " + JSON.stringify(feil);
 };

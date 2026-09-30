@@ -15,6 +15,8 @@
    Motor.tale(tekst, namn)    samtaleboks, gir eit løfte som blir oppfylt ved Z.
                               ⟪ord⟫ i teksten blir utheva.
    Motor.fort(linjer)         forteljing på svart skjerm
+   Motor.scene(byt)           rask toning til svart, byt() (til dømes Motor.last), og tilbake.
+                              Standard mellom alle scener. Motor.tonUt() og tonInn() kvar for seg.
    Motor.pause(true|false)    stoppar rørsla (under samtalar, menyar og kamp) */
 window.Motor = (function () {
   "use strict";
@@ -338,25 +340,7 @@ window.Motor = (function () {
   }
 
   /* Overgang inn i kamp: kvit blink, så blir biletet grovare og mørknar. */
-  function overgang() {
-    return new Promise(res => {
-      const kopi = document.createElement("canvas"); kopi.width = lerret.width; kopi.height = lerret.height;
-      kopi.getContext("2d").drawImage(lerret, 0, 0);
-      const liten = document.createElement("canvas"), lg = liten.getContext("2d");
-      const t0 = performance.now(), dur = 620;
-      const steg = () => {
-        const u = Math.min(1, (performance.now() - t0) / dur);
-        const blokk = Math.max(1, Math.round(1 + u * u * 24));
-        liten.width = Math.ceil(lerret.width / blokk); liten.height = Math.ceil(lerret.height / blokk);
-        lg.imageSmoothingEnabled = false; lg.drawImage(kopi, 0, 0, liten.width, liten.height);
-        g.imageSmoothingEnabled = false; g.drawImage(liten, 0, 0, liten.width * blokk, liten.height * blokk);
-        g.fillStyle = u < 0.12 ? `rgba(255,255,255,${0.7 - u * 5})` : `rgba(10,5,20,${Math.min(1, (u - 0.2) * 1.3)})`;
-        g.fillRect(0, 0, lerret.width, lerret.height);
-        if (u < 1) requestAnimationFrame(steg); else res();
-      };
-      requestAnimationFrame(steg);
-    });
-  }
+
 
   /* ---------- Dører som opnar seg, og toning mellom scener ----------
      Når spelaren går inn gjennom ei dør på eit hus, sviv dørbladet inn og opninga blir mørk.
@@ -368,16 +352,24 @@ window.Motor = (function () {
     stabbur: { x: 2, w: 12, h: 11, bunn: 9 },
     kyrkje: { x: 3, w: 10, h: 14, bunn: 3, dobbel: true, farge: ["#3a0e18", "#6a1a2a", "#983040"] },
   };
-  const DOR_TID = 240, TONING = 170;
-  let svart = 0, byter = false;
-  function toning(til, ms) {
-    return new Promise(res => {
-      const fra = svart, t0 = performance.now();
-      const s = () => { const u = Math.min(1, (performance.now() - t0) / ms); svart = fra + (til - fra) * u; if (u < 1) requestAnimationFrame(s); else res(); };
-      requestAnimationFrame(s);
-    });
-  }
+  const DOR_TID = 240, TONING = 180;
+  let byter = false;
   const vent = ms => new Promise(r => setTimeout(r, ms));
+  /* Toning: rask overgang til svart og tilbake er standard mellom alle scener (kart, kamp,
+     tittel, verdskart). Eit svart lag ligg over heile spelet, også kampen og vindauga. */
+  const svartEl = $("rpg-svart");
+  function toning(til, ms = TONING) {
+    svartEl.style.transition = `opacity ${ms}ms linear`;
+    svartEl.style.opacity = String(til);
+    return vent(ms + 20);
+  }
+  const tonUt = ms => toning(1, ms), tonInn = ms => toning(0, ms);
+  // Byter scene: tonar ut, køyrer byt() (som kan vere async) og tonar inn att.
+  async function scene(byt) {
+    const var_ = byter; byter = true; halde.clear();
+    await tonUt(); await byt(); await vent(40); await tonInn();
+    byter = var_;
+  }
   // Går gjennom ei dør: opnar ho om ho sit på eit hus, tonar til svart, kallar byt() (som lastar
   // det nye kartet) og tonar inn att.
   async function gjennomDor(dor, byt) {
@@ -393,11 +385,11 @@ window.Motor = (function () {
       dorAnim = { tx, ty, form: DORFORM[b.id] || DORFORM.standard, t0: performance.now() };
       await vent(DOR_TID + 60);
     }
-    await toning(1, TONING);
+    await tonUt();
     dorAnim = null;
     byt();
     await vent(40);
-    await toning(0, TONING);
+    await tonInn();
     byter = false;
   }
   function teiknDor(no, ox, oy) {
@@ -519,6 +511,7 @@ window.Motor = (function () {
         g.drawImage(f.bygg, bx, by - f.bygg.height);
         for (const r of Pikslar.ILD[f.id] || []) Pikslar.ild(g, bx + r.x, by - f.bygg.height + r.y, r.w, r.h, no, r.glo, Pikslar.ildMaske(f.bygg, r));
         if (dorAnim && f.by === dorAnim.ty) teiknDor(no, ox, oy);
+        for (const [rx, ry] of Pikslar.ROYK[f.id] || []) Pikslar.royk(g, bx + rx, by - f.bygg.height + ry, no);
         continue; }
       const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S);
       g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx + 3, sy + 13, 10, 3); g.fillRect(sx + 4, sy + 12, 8, 5);
@@ -538,7 +531,6 @@ window.Motor = (function () {
       if (bak) { g.globalAlpha = 0.4; g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy); g.globalAlpha = 1; }
     }
     stemning(no, ox, oy);
-    if (svart > 0) { g.fillStyle = `rgba(0,0,0,${svart})`; g.fillRect(0, 0, lerret.width, lerret.height); }
   }
 
   /* ---------- Samtalar og forteljing ---------- */
@@ -647,7 +639,7 @@ window.Motor = (function () {
   window.addEventListener("resize", tilpass);
 
   return {
-    VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk, overgang, gjennomDor,
+    VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk, gjennomDor, tonUt, tonInn, scene,
     pause(p) { pausa = p; if (p) halde.clear(); },
     get kart() { return kart; }, get spelar() { return spelar; },
     settSpelar(sprite) { spelar.sprite = sprite; },

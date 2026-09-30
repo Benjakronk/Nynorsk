@@ -183,7 +183,18 @@ def bislag(L, cx, y0, y1, fro):
     for y in range(y0 + 5, y1 + 1): L.p(cx, y, "4")                  # mønet på bislaget
 
 
-def stove(bf, hf, dorar, vindauge_pos, fro=1, staande=False, dobbel=False, bakdor=()):
+def steinpipe(L, px, ybot):
+    """Mura pipe av gråstein på torvtaket, med heller på toppen (hus med grue eller omn)."""
+    for y in range(1, ybot):
+        for x in range(px, px + 6):
+            rad = y // 3
+            fuge = y % 3 == 2 or (x - px + (rad % 2) * 3) % 6 == 0
+            L.p(x, y, "B" if fuge else "D" if x < px + 2 else "C")
+    L.rad(0, px - 1, px + 6, "D"); L.rad(1, px - 1, px + 6, "B")          # helle på toppen
+    L.p(px + 2, 0, "B"); L.p(px + 3, 0, "B")                                # røykopninga
+
+
+def stove(bf, hf, dorar, vindauge_pos, fro=1, staande=False, dobbel=False, bakdor=(), pipe=None):
     """Hus på bf x hf fliser. dorar og vindauge_pos er flisnummer frå venstre.
     bakdor: flisnummer for inngang på baksida (bislag som stikk opp bak mønet).
     Då blir biletet 16 pikslar høgare, og døra i kartet ligg i flisraden bak huset."""
@@ -209,6 +220,7 @@ def stove(bf, hf, dorar, vindauge_pos, fro=1, staande=False, dobbel=False, bakdo
     for i in dorar: dor(L, UT_X + i * 16 + 2 - (1 if dobbel else 0), H - 3 - 13, 13, dobbel)
     torvtak(L, 1, W - 2, 3, vegg_y0 - 6, fro)
     vindskier(L, 1, 3, vegg_y0 - 3, True); vindskier(L, W - 3, 3, vegg_y0 - 3, False)
+    if pipe is not None: steinpipe(L, UT_X + pipe * 16 + 5, 14)
     omriss(L)
     return L
 
@@ -348,12 +360,12 @@ def kvitthus(bf, hf, dorar, vindauge_pos, piper, fro=6):
 BYGG = {
     "kyrkje": kyrkje,
     "prestegard": lambda: kvitthus(9, 3, [4], [1, 3, 5, 7], [2, 6]),
-    "stove": lambda: stove(5, 3, [2], [1, 3], fro=1),
+    "stove": lambda: stove(5, 3, [2], [1, 3], fro=1, pipe=1),            # grue inne: pipe
     "stove-bak": lambda: stove(5, 3, [], [1, 3], fro=5, bakdor=[1]),     # kremmarbua: inngang bak
     "loe": lambda: stove(6, 3, [3], [], fro=2, staande=True, dobbel=True),
     "stabbur": lambda: stabbur(3),
-    "seter": lambda: stove(4, 3, [2], [], fro=7),
-    "ekset-hovud": lambda: stove(6, 3, [3], [1, 5], fro=9),
+    "seter": lambda: stove(4, 3, [2], [], fro=7, pipe=1),
+    "ekset-hovud": lambda: stove(6, 3, [3], [1, 5], fro=9, pipe=4),
 }
 
 
