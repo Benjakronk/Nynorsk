@@ -51,9 +51,10 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 .rpg-tale[hidden] { display: none; }
 .rpg-tale-namn { margin: 0 0 4px; font-weight: 700; color: #ffe39a; font-size: 15px; }
 .rpg-tale-portrett { display: none; }
-.rpg-tale.med-portrett { padding-left: 176px; min-height: 164px; }
+/* --portrett blir sett i motor.js (tilpass), så portrettet får ein heil skala i skjermpikslar. */
+.rpg-tale.med-portrett { padding-left: calc(var(--portrett, 144px) + 32px); min-height: calc(var(--portrett, 144px) + 20px); }
 .rpg-tale.med-portrett .rpg-tale-portrett {
-  display: block; position: absolute; left: 14px; top: 12px; width: 144px; height: 144px;
+  display: block; position: absolute; left: 14px; top: 12px; width: var(--portrett, 144px); height: var(--portrett, 144px);
   image-rendering: pixelated; border: 3px solid #f0f0f8; border-radius: 4px; background: #141a52;
   box-shadow: inset 0 0 0 2px #7880a8;
 }
@@ -261,6 +262,4 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
   .kamp-fiendar { display: none; }
   .kamp-meny { bottom: 110px; }
   .rpg-tale-tekst { font-size: 16px; }
-  .rpg-tale.med-portrett { padding-left: 116px; min-height: 110px; }
-  .rpg-tale.med-portrett .rpg-tale-portrett { width: 96px; height: 96px; }
 }

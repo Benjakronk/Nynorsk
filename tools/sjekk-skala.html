@@ -1,0 +1,20 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Sjekk skaleringa</title>
+<!-- Sjekkar at spelet blir skalert med heile tal: kvar spelpiksel skal bli k × k skjermpikslar.
+     Køyr med ulike vindaugsstorleikar og skalering, til dømes
+     msedge --headless --dump-dom --allow-file-access-from-files --window-size=1100,760 --force-device-scale-factor=1.25 .../sjekk-skala.html -->
+<style>body{margin:0} iframe{width:100vw;height:100vh;border:0;display:block} #ut{position:fixed;top:0;left:0;background:#fff}</style>
+<iframe id="f" src="../spel.html?test=1"></iframe>
+<div id="ut">køyrer …</div>
+<script>
+const f = document.getElementById("f");
+f.onload = () => setTimeout(() => {
+  const w = f.contentWindow, c = w.document.getElementById("rpg-lerret"), dpr = w.devicePixelRatio;
+  const k = c.getBoundingClientRect().width * dpr / c.width;   // CSS-breidda blir runda litt av, difor toleranse
+  const heilt = x => Math.abs(x - Math.round(x)) < 0.01 ? "heilt tal" : "IKKJE heilt tal";
+  const pv = parseFloat(w.getComputedStyle(w.document.getElementById("rpg-tale")).getPropertyValue("--portrett"));
+  const kp = pv * dpr / 48;
+  document.getElementById("ut").textContent = `dpr ${dpr}, spel ${k.toFixed(3)} (${heilt(k)}), portrett ${pv.toFixed(1)} px = ${kp.toFixed(3)} (${heilt(kp)})`;
+}, 800);
+</script>

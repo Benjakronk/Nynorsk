@@ -488,11 +488,19 @@ window.Motor = (function () {
   }
   requestAnimationFrame(loop);
 
+  // Skalering med heile tal: kvar spelpiksel blir k × k skjermpikslar. Halve steg (2,5) gjorde
+  // somme pikslar breiare enn andre. Vi reknar i skjermpikslar (devicePixelRatio), så det held
+  // også med skalering i Windows (125 %, 150 %) og zoom i nettlesaren.
   function tilpass() {
     const rot = $("rpg-skjerm");
-    const b = rot.clientWidth, h = rot.clientHeight;
-    const k = Math.max(1, Math.floor(Math.min(b / (VW * S), h / (VH * S)) * 2) / 2);
-    lerret.style.width = `${VW * S * k}px`; lerret.style.height = `${VH * S * k}px`;
+    const dpr = window.devicePixelRatio || 1;
+    const b = rot.clientWidth * dpr, h = rot.clientHeight * dpr;
+    const k = Math.max(1, Math.floor(Math.min(b / (VW * S), h / (VH * S))));
+    lerret.style.width = `${VW * S * k / dpr}px`; lerret.style.height = `${VH * S * k / dpr}px`;
+    // Portrettet (48 × 48): om lag 144 px (96 px på små skjermar), men med heil skala.
+    const maal = matchMedia("(pointer: coarse), (max-width: 760px)").matches ? 96 : 144;
+    const kp = Math.max(1, Math.round(maal * dpr / 48));
+    boks.style.setProperty("--portrett", `${48 * kp / dpr}px`);
   }
   window.addEventListener("resize", tilpass);
 
