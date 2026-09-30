@@ -856,13 +856,13 @@ window.Pikslar = (function () {
     return img;
   }
   const klar = img => img.complete && img.naturalWidth > 0;
+  // decode() svarar også for bilete som alt er lasta (frå hurtigminnet). Å vente på «load» her
+  // gjorde at spelet hang på «Lastar grafikk» når sida vart lasta på nytt. Maks 8 s per bilete.
   function forhandslast(stiar) {
-    return Promise.all([...new Set(stiar)].map(sti => {
-      const img = hent(sti);
-      if (klar(img)) return Promise.resolve();
-      return new Promise(res => { img.addEventListener("load", res, { once: true }); img.addEventListener("error", res, { once: true }); })
-        .then(() => (img.decode ? img.decode().catch(() => {}) : null));
-    }));
+    const ventPaa = img => img.decode ? img.decode()
+      : new Promise((res, rej) => { if (klar(img)) res(); else { img.onload = res; img.onerror = rej; } });
+    const grense = new Promise(res => setTimeout(res, 8000));
+    return Promise.all([...new Set(stiar)].map(sti => Promise.race([ventPaa(hent(sti)).catch(() => {}), grense])));
   }
   function lastBilete(sti) {
     const img = hent(sti);

@@ -527,7 +527,7 @@
     Motor.settFylgje(st.parti.some(m => m.id === "huldra") ? sprite("huldra") : null);
     st.parti.forEach(fyll);
     Motor.last(st.kart, "1");
-    if (fraLagring && st.pos) { Object.assign(Motor.spelar, { x: st.pos.x, y: st.pos.y, fx: st.pos.x, fy: st.pos.y, dir: st.pos.dir }); }
+    if (fraLagring && st.pos) Motor.plasser(st.pos.x, st.pos.y, st.pos.dir);   // huldra blir sett ned attmed Ivar
     Motor.tilpass();
     if (!fraLagring) hending(D.MANUS.start); else Motor.pause(false);
   }

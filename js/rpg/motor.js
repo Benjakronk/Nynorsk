@@ -105,12 +105,31 @@ window.Motor = (function () {
       const d = kart.dorer.find(d => Math.abs(d.ved[0] - sx) + Math.abs(d.ved[1] - sy) === 1);
       if (d) spelar.dir = d.ved[1] > sy ? 1 : d.ved[1] < sy ? 0 : d.ved[0] > sx ? 2 : 3;
     }
-    if (fylgje) { fylgje.x = sx; fylgje.y = sy; fylgje.fx = sx; fylgje.fy = sy; fylgje.spor = []; }
+    plasserFylgje();
     stegTilKamp = 12 + Math.floor(Math.random() * 14);
     $("rpg-stadnamn").textContent = def.namn;
     $("rpg-stadnamn").classList.remove("vis"); void $("rpg-stadnamn").offsetWidth; $("rpg-stadnamn").classList.add("vis");
     const inngang = (def.inngang || []).find(i => i.merke === merkeId);
     if (inngang && krokar.inngang) setTimeout(() => krokar.inngang(inngang), 50);
+  }
+
+  /* Set følgjet (huldra) ned attmed spelaren: éi flis bak han (motsett av der han ser), eller
+     til sida om det ikkje går (til dømes når døra er bak han), elles på same flis. */
+  function plasserFylgje() {
+    if (!fylgje || !kart) return;
+    const bak = [1, 0, 3, 2][spelar.dir], sider = spelar.dir < 2 ? [2, 3] : [0, 1];
+    let [fx, fy] = [spelar.x, spelar.y];
+    for (const d of [bak, ...sider]) {
+      const x = spelar.x + DX[d], y = spelar.y + DY[d];
+      if (kanGaa(x, y) && !doraVed(x, y)) { fx = x; fy = y; break; }
+    }
+    Object.assign(fylgje, { x: fx, y: fy, fx, fy, dir: spelar.dir, flytt: null, spor: [] });
+  }
+  // Set spelaren på ein stad (til dømes frå lagring) og følgjet attmed.
+  function plasser(x, y, dir) {
+    Object.assign(spelar, { x, y, fx: x, fy: y, flytt: null });
+    if (dir != null) spelar.dir = dir;
+    plasserFylgje();
   }
 
   const doraVed = (x, y) => kart.dorer.find(d => d.ved[0] === x && d.ved[1] === y);
@@ -676,7 +695,8 @@ window.Motor = (function () {
       const f = kart && kart.folk.find(f => f.namn === kven);
       if (f) { f.kjensle = k; if (k) f.neste = performance.now() + 4000; }
     },
-    settFylgje(sprite) { fylgje = sprite ? { sprite, x: spelar.x, y: spelar.y, fx: spelar.x, fy: spelar.y, dir: spelar.dir, flytt: null } : null; },
+    settFylgje(sprite) { fylgje = sprite ? { sprite, x: spelar.x, y: spelar.y, fx: spelar.x, fy: spelar.y, dir: spelar.dir, flytt: null } : null; plasserFylgje(); },
+    plasser,
     E,
   };
 })();
