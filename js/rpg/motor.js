@@ -364,6 +364,28 @@ window.Motor = (function () {
     return vent(ms + 20);
   }
   const tonUt = ms => toning(1, ms), tonInn = ms => toning(0, ms);
+  /* Pikseleffekten før kamp (som i Final Fantasy): eit kvitt blink, og biletet løyser seg opp
+     i stadig større pikslar. Etterpå tonar skjermen til svart, og kuttet til kampscena skjer
+     i svart (sjå kamp() i spel.js). */
+  function overgang() {
+    return new Promise(res => {
+      const kopi = document.createElement("canvas"); kopi.width = lerret.width; kopi.height = lerret.height;
+      kopi.getContext("2d").drawImage(lerret, 0, 0);
+      const liten = document.createElement("canvas"), lg = liten.getContext("2d");
+      const t0 = performance.now(), dur = 560;
+      const steg = () => {
+        const u = Math.min(1, (performance.now() - t0) / dur);
+        const blokk = Math.max(1, Math.round(1 + u * u * 24));
+        liten.width = Math.ceil(lerret.width / blokk); liten.height = Math.ceil(lerret.height / blokk);
+        lg.imageSmoothingEnabled = false; lg.drawImage(kopi, 0, 0, liten.width, liten.height);
+        g.imageSmoothingEnabled = false; g.drawImage(liten, 0, 0, liten.width * blokk, liten.height * blokk);
+        g.fillStyle = u < 0.12 ? `rgba(255,255,255,${0.7 - u * 5})` : `rgba(10,5,20,${Math.min(0.35, (u - 0.2) * 0.5)})`;
+        g.fillRect(0, 0, lerret.width, lerret.height);
+        if (u < 1) requestAnimationFrame(steg); else res();
+      };
+      requestAnimationFrame(steg);
+    });
+  }
   // Byter scene: tonar ut, køyrer byt() (som kan vere async) og tonar inn att.
   async function scene(byt) {
     const var_ = byter; byter = true; halde.clear();
@@ -639,7 +661,7 @@ window.Motor = (function () {
   window.addEventListener("resize", tilpass);
 
   return {
-    VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk, gjennomDor, tonUt, tonInn, scene,
+    VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk, overgang, gjennomDor, tonUt, tonInn, scene,
     pause(p) { pausa = p; if (p) halde.clear(); },
     get kart() { return kart; }, get spelar() { return spelar; },
     settSpelar(sprite) { spelar.sprite = sprite; },

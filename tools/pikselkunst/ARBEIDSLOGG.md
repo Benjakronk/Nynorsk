@@ -437,8 +437,9 @@ same måte, uansett kven som tek over.
 
 - Rask toning til svart og tilbake er standard mellom alle scener: dører, inn i og ut av
   kamp, tittelskjermen, verdskartet og kartbyte i manus (`Motor.scene`, `tonUt`, `tonInn`,
-  eit svart lag over heile spelet). Kampscena tonar inn først når ho er teikna, og kartet
-  tonar inn att etter sigeren. Den gamle pikseloppløysinga før kamp er teken bort.
+  eit svart lag over heile spelet). Inn i kamp: først pikseleffekten (kvitt blink og
+  stadig større pikslar, som i Final Fantasy), så toning til svart, og kuttet til
+  kampscena skjer i svart før ho tonar inn. Kartet tonar inn att etter sigeren.
 - Hus med grue eller omn inne har fått mura steinpipe på torvtaket (`pipe=` i
   `stove()` i bygg.py): stova på Åsen og Nedre Hovde, setra og Ekset. Alle piper, også
   teglpipene på prestegarden, har røyk som stig og driv med vinden (`ROYK` i pikslar.js).

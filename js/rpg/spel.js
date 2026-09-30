@@ -164,7 +164,9 @@
       const s = stat(m);
       return Object.assign({ ref: m, namn: D.PARTI[m.id].namn, sprite: sprite(m.id), hp: m.hp, rost: m.rost, galdr: m.id === "ivar", evner: D.PARTI[m.id].evner, ting: () => st.ting, brukTing: id => { st.ting[id]--; } }, s);
     });
-    await Motor.tonUt();                                              // kampscena tonar inn når ho er klar
+    // Inn i kampen: pikseleffekt, så toning til svart. Kampscena tonar inn når ho er teikna.
+    await Motor.overgang();
+    await Motor.tonUt();
     const bakgrunn = (Motor.kart && Motor.kart.def.bakgrunn) || "tun";
     const r = await Kamp.start({
       fiendar: lag, boss, parti, gaaver: gv, bakgrunn, ord: st.ord, stev: st.stev, startKved, rettleiing,

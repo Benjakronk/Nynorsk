@@ -33,6 +33,8 @@ f.onload = async () => {
   const st = w.RPGTest.st();
   for (const id of (q.get("parti") || "").split(",").filter(Boolean)) if (!st.parti.some(m => m.id === id)) st.parti.push({ id, niva: st.parti[0].niva, xp: 0, hp: null, rost: null });
   for (const x of (q.get("hp") || "").split(",").filter(Boolean)) { const [id, n] = x.split(":"), m = st.parti.find(m => m.id === id); if (m) m.hp = +n; }
+  // kampms=300: frys biletet så lenge etter at kampen er starta (for å sjå pikseleffekten og toninga).
+  if (q.get("kamp") && q.get("kampms")) { M.krokar.kamp(q.get("kamp").split(",")); await vent(+q.get("kampms")); frys(); document.getElementById("ut").textContent = "ferdig"; return; }
   if (q.get("kamp")) { M.krokar.kamp(q.get("kamp").split(",")); let n = 0; while (!synleg(".kamp-meny") && n++ < 300) await vent(50); }
   // tale=Huldra:Teksten opnar samtaleboksen med portrettet til den som talar.
   if (q.get("kjensle")) M.kjensle(q.get("kjensle"));
