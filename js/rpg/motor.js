@@ -180,6 +180,17 @@ window.Motor = (function () {
 
   /* ---------- Teikning ---------- */
   const KANTSIDER = [["n", 0, -1], ["s", 0, 1], ["w", -1, 0], ["e", 1, 0]];
+  const NABOBIT = [[1, 0, -1], [2, 1, 0], [4, 0, 1], [8, -1, 0], [16, 1, -1], [32, 1, 1], [64, -1, 1], [128, -1, -1]];
+  /* Vatn: «~», og skog på kanten av kartet som grensar til vatn (så trea ikkje står i vatnet). */
+  function erVatn(x, y) {
+    const r = kart.fliser[y]; if (!r) return false;
+    const c = r[x];
+    if (c === "~") return true;
+    if (c !== "#") return false;
+    const kantrute = x === 0 || y === 0 || x === kart.w - 1 || y === kart.h - 1;
+    if (!kantrute) return false;
+    return [[0, -1], [0, 1], [-1, 0], [1, 0], [-1, -1], [1, -1], [-1, 1], [1, 1]].some(([dx, dy]) => (kart.fliser[y + dy] || [])[x + dx] === "~");
+  }
 
   /* ---------- Stemning: lys og skugge over kartet ----------
      kart.def.stemning: «morgon» (varmt lys og skyskuggar), «kveld», «inne»
@@ -213,6 +224,17 @@ window.Motor = (function () {
         gr2.addColorStop(0, "rgba(20,24,60,0.2)"); gr2.addColorStop(1, "rgba(20,24,60,0)");
         g.fillStyle = gr2; g.fillRect(cx - 70, cy - 70, 140, 140);
       }
+    } else if (st === "kyrkje") {
+      // Lyst kyrkjerom: ljosstrålar skrått ned frå vindauga i veggen
+      g.globalCompositeOperation = "lighter";
+      for (let x = 0; x < kart.w; x++) for (let y = 0; y < kart.h; y++) {
+        if (kart.fliser[y][x] !== "u") continue;
+        const sx = (x + ox) * S, sy = (y + oy) * S + 10, puls = 0.08 + Math.sin(no / 1400 + x) * 0.015;
+        const gr = g.createLinearGradient(sx, sy, sx + 40, sy + 90);
+        gr.addColorStop(0, `rgba(255,236,190,${puls + 0.06})`); gr.addColorStop(1, "rgba(255,236,190,0)");
+        g.fillStyle = gr; g.beginPath(); g.moveTo(sx + 4, sy); g.lineTo(sx + 12, sy); g.lineTo(sx + 52, sy + 90); g.lineTo(sx + 30, sy + 90); g.closePath(); g.fill();
+      }
+      g.globalCompositeOperation = "source-over";
     } else {
       const djup = st === "mork" ? 0.8 : st === "inne" ? 0.34 : 0.2;
       mg.globalCompositeOperation = "source-over"; mg.clearRect(0, 0, W, Hh);
@@ -274,18 +296,37 @@ window.Motor = (function () {
       const topp = "XcG".includes(c) && (under === null || "XcGE".includes(under));
       let fk = topp ? c + "t" : c;
       if (c === "R") { const over = y > 0 && kart.fliser[y - 1][x] === "R"; fk = !over && under !== "R" ? "Rtb" : !over ? "Rt" : under !== "R" ? "Rb" : "R"; }
-      g.drawImage(Pikslar.flis(fk, no, x, y, kart.def.golv), sx, sy);
-      // Kantar: gras over veg og sand, strand langs vatnet
+      if (erVatn(x, y)) {
+        // Vatn med strandkant etter naboane (sjå Pikslar.vatn)
+        let maske = 0, bank = "gras";
+        for (const [bit, dx, dy] of NABOBIT) {
+          const n = kart.fliser[y + dy] && kart.fliser[y + dy][x + dx];
+          if (n != null && !erVatn(x + dx, y + dy) && n !== "Q") {
+            maske |= bit;
+            if (bit < 16) bank = n === "_" ? "sand" : "^ocj".includes(n) ? "stein" : bank;
+          }
+        }
+        // Straum: vatn med vatn over og under, men land på sida (bekken i utmarka)
+        const straum = !(maske & 1) && !(maske & 4) && ((maske & 2) || (maske & 8)) && kart.def.golv === ",";
+        g.drawImage(Pikslar.vatn(no, (x * 7 + y * 3) % 4, maske, bank, straum), sx, sy);
+      } else g.drawImage(Pikslar.flis(fk, no, x, y, kart.def.golv), sx, sy);
+      // Steingard: muren er ein figur som blir sortert etter djupn
+      if (c === "j") {
+        const nb = (dx, dy) => (kart.fliser[y + dy] && kart.fliser[y + dy][x + dx]) === "j";
+        const maske = (nb(0, -1) ? 1 : 0) | (nb(1, 0) ? 2 : 0) | (nb(0, 1) ? 4 : 0) | (nb(-1, 0) ? 8 : 0);
+        naturFig.push({ y: y + 0.003, x, mur: Pikslar.steingard((x * 3 + y) % 3, maske) });
+      }
+      // Kantar: gras over veg og sand
       const kl = Pikslar.klasse(c);
-      if (kl === "veg" || kl === "sand" || kl === "vatn") {
+      if (kl === "veg" || kl === "sand") {
         for (const [side, dx, dy] of KANTSIDER) {
           const n = kart.fliser[y + dy] && kart.fliser[y + dy][x + dx];
           if (n == null) continue;
           const nk = Pikslar.klasse(n);
-          if (kl === "vatn" ? (n !== "~" && n !== "Q") : nk === "gras") g.drawImage(Pikslar.kant(kl === "vatn" ? "strand" : "gras", side, (x * 7 + y * 3) % 4), sx, sy);
+          if (nk === "gras") g.drawImage(Pikslar.kant("gras", side, (x * 7 + y * 3) % 4), sx, sy);
         }
       }
-      const nf = Pikslar.natur(c, x, y);
+      const nf = erVatn(x, y) ? null : Pikslar.natur(c, x, y);
       if (nf) {
         if (nf.skugge) { g.fillStyle = "rgba(20,24,50,0.3)"; g.beginPath(); g.ellipse(sx + 9, sy + 14, nf.skugge, 2.5, 0, 0, Math.PI * 2); g.fill(); }
         naturFig.push({ y: y + 0.005, x, natur: nf });
@@ -306,11 +347,13 @@ window.Motor = (function () {
     figurar.push({ y: spelar.fy, x: spelar.fx, sp: spelar.sprite, dir: spelar.dir, steg });
     for (const n of naturFig) figurar.push(n);
     // Hus blir sorterte saman med figurane etter den nedste flisraden sin.
-    for (const b of kart.def.bygg || []) { const img = Pikslar.bygg(b.id); if (img) figurar.push({ y: b.y + b.h - 1 + 0.01, x: b.x, bygg: img }); }
+    for (const b of kart.def.bygg || []) { const img = Pikslar.bygg(b.id); if (img) figurar.push({ y: b.over ? 999 : b.y + b.h - 1 + 0.01, by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over }); }
     figurar.sort((a, b) => a.y - b.y);
     for (const f of figurar) {
+      if (f.mur) { g.drawImage(f.mur, Math.round((f.x + ox) * S), Math.round((Math.floor(f.y) + oy) * S) - 6); continue; }
       if (f.natur) { g.drawImage(f.natur.img, Math.round((f.x + ox) * S) + f.natur.x, Math.round((Math.floor(f.y) + oy) * S) + f.natur.y); continue; }
       if (f.haug) { g.drawImage(f.haug, Math.round((f.x + ox) * S) - 1, Math.round((Math.floor(f.y) + 1 + oy) * S) - f.haug.height); continue; }
+      if (f.over) { g.drawImage(f.bygg, Math.round((f.x + ox) * S) - 4, Math.round((f.by + 1 + oy) * S) - f.bygg.height); continue; }
       if (f.bygg) {
         // slagskugge på bakken, mot høgre og ned (lyset kjem frå oppe til venstre)
         const bx = Math.round((f.x + ox) * S), by = Math.round((f.y + 1 + oy) * S), bw = f.bygg.width - 8;

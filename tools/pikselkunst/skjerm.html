@@ -1,0 +1,33 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Skjermbilete av spelet</title>
+<!-- Brukt av skjermbilete.py: opnar spelet, går til eit kart og frys lerretet.
+     Parametrar: kart, m (merke), x og y (der Ivar står), kamp (fiendar, kommaskilt). -->
+<style>body{margin:0;background:#000;color:#fff;font:12px monospace} iframe{width:1100px;height:720px;border:0;display:block} #ut{white-space:pre-wrap;padding:4px}</style>
+<iframe id="f"></iframe>
+<div id="ut">køyrer …</div>
+<script>
+const q = new URLSearchParams(location.search);
+const f = document.getElementById("f");
+f.src = "../../spel.html?test=1";
+const vent = ms => new Promise(r => setTimeout(r, ms));
+const feil = [];
+f.onload = async () => {
+  const w = f.contentWindow, d = w.document, M = w.Motor;
+  w.addEventListener("error", e => feil.push(e.message + " :" + e.lineno));
+  const tast = async k => { d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true })); await vent(30); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true })); };
+  const synleg = sel => { const e = d.querySelector(sel); return e && !e.hidden; };
+  // Frys lerretet: eit bilete av det over lerretet, så det ikkje endrar seg før skjermbiletet blir teke.
+  const frys = () => { const c = d.getElementById("rpg-lerret"), img = d.createElement("img"); img.src = c.toDataURL(); img.style.cssText = `position:absolute;width:${c.style.width};height:${c.style.height};image-rendering:pixelated;z-index:9;pointer-events:none`; const r = c.getBoundingClientRect(), p = d.getElementById("rpg-skjerm").getBoundingClientRect(); img.style.left = (r.left - p.left) + "px"; img.style.top = (r.top - p.top) + "px"; d.getElementById("rpg-skjerm").appendChild(img); };
+  const blaFram = async () => { let n = 0; while (n++ < 200 && (synleg("#rpg-tale") || synleg("#rpg-fort"))) { await tast("z"); await vent(80); } };
+  await vent(500);
+  d.querySelector("#rpg-tittel-val button").click();
+  await vent(300); await blaFram();
+  w.RPGTest.st().flagg.framande1 = true;
+  M.last(q.get("kart") || "asen", q.get("m") || "1"); await vent(400); await blaFram();
+  if (q.get("x")) Object.assign(M.spelar, { x: +q.get("x"), y: +q.get("y"), fx: +q.get("x"), fy: +q.get("y"), dir: 0 });
+  if (q.get("kamp")) { M.krokar.kamp(q.get("kamp").split(",")); let n = 0; while (!synleg(".kamp-meny") && n++ < 300) await vent(50); }
+  await vent(900); frys();
+  document.getElementById("ut").textContent = "ferdig, feil: " + JSON.stringify(feil);
+};
+</script>

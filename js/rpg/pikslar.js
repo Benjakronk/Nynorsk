@@ -197,16 +197,7 @@ window.Pikslar = (function () {
       for (let i = 0; i < 3; i++) for (let k = 0; k < 16; k++) R.set("s", k, 12 - Math.floor(k * 0.4) - i * 3);
       g.drawImage(mal(R, { p: "#6a4428", s: "#8e6034" }), 0, 0);
     },
-    "j": (g, t, v) => {
-      // Steingard: runde gråsteinar i to lag, mose på toppen og mørke fuger
-      gras(g, v);
-      const R = Rutenett(16, 16);
-      const steinar = [[3.5, 11, 3.6, 3.2, "a"], [10, 11.5, 4, 3, "b"], [15.5, 11, 2.6, 3, "a"], [6.5, 6.5, 3.4, 2.8, "c"], [12.5, 6.8, 3.2, 2.6, "b"], [0.5, 6.8, 2.2, 2.6, "c"]];
-      for (const [x, y, rx, ry, k] of steinar) R.ell(k, x + (v % 2) * 0.5, y, rx, ry);
-      g.drawImage(mal(R, { a: { farge: "#6a6878", rund: true }, b: { farge: "#7a788a", rund: true }, c: { farge: "#8a889c", rund: true } }), 0, 0);
-      for (const [x, y] of [[5, 4], [6, 4], [12, 4], [13, 5], [1, 5], [8, 9]]) px(g, x, y, (x + v) % 3 ? "#6e9038" : "#98b44c");
-      px(g, 9 + v % 3, 12, "#c8b050");
-    },
+    "j": (g, t, v) => gras(g, v),   // sjølve muren er ein figur, sjå steingard()
     "Y": (g, t, v) => {
       const r = R_.korn; px(g, 0, 0, r[1], S, S);
       for (let x = 0; x < S; x += 4) for (let y = 0; y < S; y += 2) { px(g, x + 1, y, r[3], 1, 2); px(g, x + 2, y, r[2], 1, 2); if ((y + x + v) % 6 === 0) px(g, x + 1, y, r[4]); }
@@ -337,6 +328,33 @@ window.Pikslar = (function () {
       for (let x = 0; x < S; x += 2) { px(g, x, 1, "#ecebf0"); px(g, x + 1, 14, "#ecebf0"); }
     },
     " ": g => px(g, 0, 0, "#0a0514", S, S),
+    /* Kyrkja inne (etter Kvernes og Hove kyrkje) */
+    // golv av breie, lyse furuplankar
+    "q": (g, t, v) => {
+      const r = ["#7a5a3a", "#a07a52", "#c09a6a", "#d4b080", "#e4c898"];
+      px(g, 0, 0, r[2], S, S);
+      for (let x = 0; x < S; x += 8) { px(g, x, 0, r[1], 1, S); px(g, x + 1, 0, r[3], 1, S); }
+      for (let i = 0; i < 3; i++) { const x = 2 + ((i * 5 + v * 3) % 12), y = (i * 6 + v * 4) % 14; px(g, x, y, r[1], 1, 2); px(g, x + 1, y + 1, r[3]); }
+      px(g, (v * 4 + 3) % 8 + (v % 2) * 8, (v * 5) % 16, r[4], 2, 1);
+    },
+    // kvit vegg med rundboga vindauge og smårutar
+    "u": g => {
+      FLIS.G(g);
+      const R = Rutenett(16, 16).rect("k", 4, 1, 8, 10).rect("g", 5, 2, 6, 8);
+      g.drawImage(mal(R, { k: "#8a88a0", g: { fast: "#6c8ccc" } }), 0, 0);
+      px(g, 5, 2, "#d0e8ff", 2, 2); px(g, 7, 2, "#8a88a0", 1, 8); px(g, 5, 5, "#8a88a0", 6, 1); px(g, 5, 8, "#8a88a0", 6, 1);
+      px(g, 4, 1, "#ecebf0", 1, 1); px(g, 11, 1, "#ecebf0", 1, 1);
+    },
+    // benk med måla benkedør i lys blågrått
+    "e": g => {
+      FLIS.q(g, 0, 1);
+      const R = Rutenett(16, 16).rect("s", 0, 6, 16, 5).rect("r", 0, 2, 16, 4).rect("d", 0, 2, 3, 12);
+      g.drawImage(mal(R, { s: "#8a9aab", r: "#6a7a8a", d: "#9aaabb" }), 0, 0);
+      px(g, 1, 4, "#c8d0dc", 1, 8); px(g, 0, 13, "#4a5460", 3, 1);
+    },
+    // under altarringen og preikestolen: golv (figuren blir teikna oppå)
+    "+": (g, t, v) => FLIS.q(g, t, v),
+    "(": (g, t, v) => FLIS.q(g, t, v),
     // Veggtoppar: sideveggene og botnveggen sett ovanfrå
     "Xt": g => { const r = R_.tommer; px(g, 0, 0, r[1], S, S); for (let x = 1; x < S; x += 5) px(g, x, 0, r[0], 1, S); px(g, 0, 0, r[2], S, 1); px(g, 2, 3, r[2], 2, 5); px(g, 12, 9, r[2], 2, 4); },
     "ct": g => { const r = R_.stein; px(g, 0, 0, r[1], S, S); for (let y = 0; y < S; y += 5) { px(g, 0, y, r[0], S, 1); px(g, (y * 3) % 11, y + 1, r[2], 4, 1); } },
@@ -373,7 +391,7 @@ window.Pikslar = (function () {
   const treCache = {};
   const treBilete = k => treCache[k] || (treCache[k] = TRE[k]());
 
-  const FAST = new Set(["#", "t", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "X", "c", "f", "z", "G", "e", "a", "n", " "]);
+  const FAST = new Set(["+", "(", "u", "#", "t", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "X", "c", "f", "z", "G", "e", "a", "n", " "]);
   const ANIM = new Set(["~", "L", "f", "n", "y"]);
   const VARIANT_EKSTRA = new Set(["Rt", "Rb", "Rtb"]);
   const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t"]);
@@ -395,6 +413,135 @@ window.Pikslar = (function () {
     const k = "topp:" + teikn;
     if (cache.has(k)) return cache.get(k);
     const c = lerret(S); c.getContext("2d").drawImage(treBilete(teikn), 0, 0);
+    cache.set(k, c);
+    return c;
+  }
+
+  /* ---------- Vatn med strandkant ----------
+     maske: kva naboar som er land. Bit 1 N, 2 A, 4 S, 8 V, 16 NA, 32 SA, 64 SV, 128 NV.
+     bank: fargen på landet langs kanten («gras», «sand», «stein»).
+     Etter The Minish Cap og Final Fantasy VI: grunt, lysare vatn nær land, bakken
+     kastar skugge ned på vatnet i nord, skum som slår mot land, avrunda hjørne.
+     Smale bekkar (land på begge sider) får kvit straum. */
+  const BANK = {
+    gras: { topp: "#4a8a3f", lys: "#68a84a", kant: "#6a4630", djup: "#3a2418" },
+    sand: { topp: "#ceac74", lys: "#e2c890", kant: "#a0804e", djup: "#6a5030" },
+    stein: { topp: "#7a788a", lys: "#9a98aa", kant: "#4a4858", djup: "#2a2838" },
+  };
+  const bolgje = (x, fro) => Math.floor(hash(x, fro, 211) * 2.2);
+  function vatn(t, v, maske, bank, straum) {
+    const f = Math.floor(t / 180) % 8;
+    const k = `vatn:${maske}:${bank}:${v}:${f}:${straum ? 1 : 0}`;
+    if (cache.has(k)) return cache.get(k);
+    const c = lerret(S), g = c.getContext("2d");
+    const r = R_.vatn, b = BANK[bank] || BANK.gras;
+    const N = maske & 1, A = maske & 2, SO = maske & 4, V = maske & 8;
+    // Djupn: avstand til næraste land i flisa
+    for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
+      let d = 99;
+      if (N) d = Math.min(d, y); if (SO) d = Math.min(d, 15 - y); if (V) d = Math.min(d, x); if (A) d = Math.min(d, 15 - x);
+      if (maske & 16) d = Math.min(d, Math.hypot(15 - x, y) - 1); if (maske & 32) d = Math.min(d, Math.hypot(15 - x, 15 - y) - 1);
+      if (maske & 64) d = Math.min(d, Math.hypot(x, 15 - y) - 1); if (maske & 128) d = Math.min(d, Math.hypot(x, y) - 1);
+      let col = d < 4 ? r[3] : d < 6 && (x + y) % 2 === 0 ? r[3] : r[2];
+      if (d > 8 && (x * 3 + y * 5 + v) % 11 === 0) col = r[1];
+      px(g, x, y, col);
+    }
+    // Krusingar som flyttar seg
+    for (let i = 0; i < 4; i++) {
+      const y = (i * 4 + 1 + v) % S, x = (i * 7 + f * 2 + v * 5) % S;
+      px(g, x, y, r[4], 3, 1); px(g, (x + 3) % S, y + 1, r[3], 2, 1);
+    }
+    if ((f + v) % 5 === 0) px(g, (v * 7 + 4) % 14 + 1, (v * 5 + 6) % 12 + 2, "#ffffff");
+    // Bekk: kvit straum nedover, og ein stein med skum rundt
+    if (straum) {
+      for (let i = 0; i < 4; i++) {
+        const x = 2 + ((i * 4 + v * 3) % 12), y = (i * 5 + f * 3) % S;
+        px(g, x, y, "#e8f4ff", 1, 3); px(g, x, (y + 3) % S, r[4], 1, 2);
+      }
+      if (v === 2) { px(g, 7, 8, "#7a788a", 3, 2); px(g, 7, 8, "#9a98aa", 2, 1); px(g, 6, 10, "#e8f4ff", 5, 1); px(g, 10, 8, "#e8f4ff", 1, 2); }
+    }
+    if (A && V && !N && !SO) {
+      for (let i = 0; i < 5; i++) {
+        const x = 4 + ((i * 3 + v) % 8), y = (i * 5 + f * 3) % S;
+        px(g, x, y, "#e8f4ff", 1, 3); px(g, x + 1, (y + 1) % S, r[4], 1, 2);
+      }
+    }
+    // Strandkantar: landet går litt ut i vatnet med bølgjande kant
+    const skum = (x, y) => px(g, x, y, (x + y + f) % 3 !== 0 ? "#e8f4ff" : r[4]);
+    if (N) for (let x = 0; x < S; x++) {
+      const d = 1 + bolgje(x + v * 16, 1);
+      px(g, x, 0, b.topp, 1, d); px(g, x, d, b.kant); px(g, x, d + 1, b.djup);
+      px(g, x, d + 2, r[1]); px(g, x, d + 3, r[1]);                 // skugge frå bakken
+      if ((x + f) % 4 < 2) px(g, x, d + 4, r[4]);
+    }
+    if (SO) for (let x = 0; x < S; x++) {
+      const d = 1 + bolgje(x + v * 16, 2);
+      px(g, x, 16 - d, b.topp, 1, d); px(g, x, 16 - d, b.lys); skum(x, 15 - d);
+    }
+    if (V) for (let y = 0; y < S; y++) {
+      const d = 1 + bolgje(y + v * 16, 3);
+      px(g, 0, y, b.topp, d, 1); px(g, d, y, b.kant); skum(d + 1, y);
+    }
+    if (A) for (let y = 0; y < S; y++) {
+      const d = 1 + bolgje(y + v * 16, 4);
+      px(g, 16 - d, y, b.topp, d, 1); px(g, 15 - d, y, b.djup); skum(14 - d, y);
+    }
+    // Ytre hjørne: land berre på skrå
+    const hjorne = (cx, cy) => { for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) { const d = Math.hypot(x + .5 - cx, y + .5 - cy); if (d < 3.2) px(g, x, y, b.topp); else if (d < 4.2) px(g, x, y, "#e8f4ff"); } };
+    if ((maske & 16) && !N && !A) hjorne(16, 0);
+    if ((maske & 32) && !SO && !A) hjorne(16, 16);
+    if ((maske & 64) && !SO && !V) hjorne(0, 16);
+    if ((maske & 128) && !N && !V) hjorne(0, 0);
+    cache.set(k, c);
+    return c;
+  }
+
+  /* ---------- Steingard ----------
+     Tørrmur av flate, lyse gråsteinar (etter steingardane på Sunnmøre og i Løten):
+     framside med to lag steinar, toppstein med mose og lav, skugge på bakken.
+     maske: 1 N, 2 A, 4 S, 8 V er steingard. Vassrette murar viser framsida,
+     loddrette murar blir sett ovanfrå som ei smal rad toppsteinar. */
+  const MUR = ["#3a3842", "#6a6870", "#8e8c90", "#aeaca8", "#cac8c0"];
+  function murstein(g, x, y, w, h, fro) {
+    const m = MUR;
+    px(g, x, y, m[2], w, h);
+    px(g, x, y, m[3], w, 1); px(g, x, y, m[3], 1, h);
+    if (w > 3 && hash(x, y, fro) > 0.5) px(g, x + 1, y, m[4], w - 2, 1);
+    px(g, x, y + h - 1, m[1], w, 1); px(g, x + w - 1, y, m[1], 1, h);
+  }
+  function steingard(v, maske) {
+    const k = `mur:${v}:${maske}`;
+    if (cache.has(k)) return cache.get(k);
+    const c = lerret(S, 22), g = c.getContext("2d");   // 6 pikslar høgare enn flisa: muren står opp
+    const vass = (maske & 2) || (maske & 8) || !((maske & 1) || (maske & 4));
+    const m = MUR, fro = v * 7;
+    if (vass) {
+      const x0 = (maske & 8) ? 0 : 1, x1 = (maske & 2) ? 16 : 15;
+      g.fillStyle = "rgba(20,24,50,.3)"; g.fillRect(x0 + 1, 20, x1 - x0, 2);
+      px(g, x0, 7, m[0], x1 - x0, 14);                               // fuger
+      let x = x0;                                                   // nedre lag: store steinar
+      while (x < x1) { const w = Math.min(x1 - x, 4 + Math.floor(hash(x, 1, fro) * 4)); murstein(g, x, 14, w, 6, fro); x += w; }
+      x = x0 - 2;                                                   // øvre lag, forskote
+      while (x < x1) { const w = 3 + Math.floor(hash(x, 2, fro) * 4); const xs = Math.max(x0, x), we = Math.min(x1, x + w) - xs; if (we > 0) murstein(g, xs, 9, we, 5, fro + 1); x += w; }
+      // toppsteinar med mose
+      px(g, x0, 5, m[1], x1 - x0, 4);
+      x = x0;
+      while (x < x1) { const w = Math.min(x1 - x, 3 + Math.floor(hash(x, 3, fro) * 3)); px(g, x, 5, m[3], w, 3); px(g, x, 5, m[4], Math.max(1, w - 1), 1); x += w + 1; }
+      for (let i = 0; i < 4; i++) { const mx = x0 + Math.floor(hash(i, 4, fro) * (x1 - x0 - 2)); px(g, mx, 5, i % 2 ? "#6e9038" : "#98b44c", 2, 1); px(g, mx, 6, "#4a6a2a"); }
+      px(g, x0 + 3 + v, 16, "#c8b050"); px(g, x1 - 5, 11, "#c8b050");
+      if (!(maske & 8)) px(g, x0 - 1, 5, "#0a0514", 1, 16);
+      if (!(maske & 2)) px(g, x1, 5, "#0a0514", 1, 16);
+      px(g, x0, 4, "#0a0514", x1 - x0, 1); px(g, x0, 20, "#0a0514", x1 - x0, 1);
+    }
+    if ((maske & 1) || (maske & 4)) {
+      // loddrett: toppsteinar sett ovanfrå, frå topp til botn av flisa
+      const y0 = (maske & 1) ? 0 : 5, y1 = (maske & 4) ? 22 : 20;
+      px(g, 3, y0, "#0a0514", 10, y1 - y0);
+      let y = y0;
+      while (y < y1 - 1) { const h = Math.min(y1 - 1 - y, 3 + Math.floor(hash(1, y, fro) * 3)); const w = 7 + Math.floor(hash(2, y, fro) * 2); murstein(g, 4 + Math.floor((8 - w) / 2), y, w, h, fro); y += h; }
+      for (let i = 0; i < 3; i++) px(g, 5 + (i * 3) % 6, y0 + 3 + i * 5, i % 2 ? "#6e9038" : "#98b44c", 2, 1);
+      g.fillStyle = "rgba(20,24,50,.3)"; g.fillRect(13, y0 + 2, 2, y1 - y0 - 2);
+    }
     cache.set(k, c);
     return c;
   }
@@ -686,5 +833,5 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, kant, klasse, bygg, natur, haugBilete, FAST, figur, fiende, lerret, ramp, blend, RAMP };
+  return { S, FW, FH, flis, topp, kant, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP };
 })();

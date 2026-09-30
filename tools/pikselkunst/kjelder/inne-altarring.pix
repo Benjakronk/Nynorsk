@@ -1,0 +1,38 @@
+# namn: inne-altarring
+# type: bygg
+# ut: bilete/spel/bygg/inne-altarring.png
+# storleik: 88x22
+palett:
+  . = -
+  o = #0a0514    omriss
+  r = #3a0e18    raud djup
+  R = #6a1a2a    raud
+  E = #983040    raud lys
+  y = #f8d840    gull lys
+  Y = #d0a030    gull
+  w = #f4f2f8    kvit
+  W = #c8c6d4    kvit skugge
+  K = #8a88a0    kvit djup
+bilete:
+  ........................................................................................
+  ........................................................................................
+  ..oooooooooooooooooooooooooooooooooooo............oooooooooooooooooooooooooooooooooooo..
+  .oYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYo..........oYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYo.
+  .oyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyYo..........oYyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyo.
+  .oWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWYo..........oYWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWo.
+  ..oowWoowWoowWoowWoowWoowWoowWoowWoowYo..........oYowWoowWoowWoowWoowWoowWoowWoowWoooo..
+  ...owWoowWoowWoowWoowWoowWoowWoowWoowYo..........oYowWoowWoowWoowWoowWoowWoowWoowWo.....
+  ...owWoowWoowWoowWoowWoowWoowWoowWoowYo..........oYowWoowWoowWoowWoowWoowWoowWoowWo.....
+  ...oWKooWKooWKooWKooWKooWKooWKooWKooWYo..........oYoWKooWKooWKooWKooWKooWKooWKooWKo.....
+  ...owWoowWoowWoowWoowWoowWoowWoowWoowYo..........oYowWoowWoowWoowWoowWoowWoowWoowWo.....
+  ...owWoowWoowWoowWoowWoowWoowWoowWoowYo..........oYowWoowWoowWoowWoowWoowWoowWoowWo.....
+  ...owWoowWoowWoowWoowWoowWoowWoowWoowYo..........oYowWoowWoowWoowWoowWoowWoowWoowWo.....
+  ...owWoowWoowWoowWoowWoowWoowWoowWoowYo..........oYowWoowWoowWoowWoowWoowWoowWoowWo.....
+  ..oowWoowWoowWoowWoowWoowWoowWoowWoowYo..........oYowWoowWoowWoowWoowWoowWoowWoowWoooo..
+  .oWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWYo..........oYWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWo.
+  .oKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKYo..........oYKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKo.
+  ..oooooooooooooooooooooooooooooooooooo............oooooooooooooooooooooooooooooooooooo..
+  ..oEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEo..........oEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEo..
+  ..oRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRo..........oRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRo..
+  ..orrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrro..........orrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrro..
+  ...ooooooooooooooooooooooooooooooooooo............ooooooooooooooooooooooooooooooooooo...

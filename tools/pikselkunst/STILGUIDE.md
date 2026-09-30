@@ -83,6 +83,19 @@ Alt nytt skal kunne stå ved sida av han utan å skilje seg ut.
   rundboga vindauge, skifertak, tårn midt framme med høgt, slankt spir og kors.
 - I utmarka er vanleg gras mørkt som villgraset, så det ikkje blir lyse flekkar.
 
+## Vatn, murar og kyrkja inne
+
+- Vatn tilpassar seg naboane: bølgjande strandkant i fargen til landet (gras,
+  sand eller stein), skugge frå bakken på nordsida, skum mot land, avrunda
+  hjørne og lysare, grunt vatn nær land. Bekkar har kvit straum og steinar.
+- Tre står aldri i vatnet. Skog på kartkanten ved vatn blir vatn.
+- Steingard er tørrmur av lyse, flate gråsteinar i to lag, toppstein med mose
+  og lav, og murar som heng saman med naboane sine.
+- Kyrkja inne er lys: furugolv, lyseblå benker med benkedører, raud løpar,
+  altertavle i bondebarokk (raudt og gull) over kvit altarduk, kvit alterring
+  med raud pute, brunraud preikestol, lysekrone i messing og ljosstrålar frå
+  vindauga.
+
 ## Sjekkliste før grafikken blir teken i bruk
 
 1. `pix.py sjekk` gir ingen merknader.

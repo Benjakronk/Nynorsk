@@ -98,7 +98,8 @@ npx serve .
 │   ├── lag-ordbank.js      Lagar ordbanken på nytt frå Norsk ordbank
 │   ├── lag-terreng.js      Lagar høgdekartet på nytt frå opne terrengdata
 │   ├── test-grammatikk.js  Testar grammatikkreglane mot feil og kursprosa
-│   └── pikselkunst/        Lagar, sjekkar og viser pikselgrafikk til spelet (pix.py, portrettmal.py, bygg.py, natur.py, STILGUIDE.md, konsept/ med referansar)
+│   ├── sjekk-spel.js       Sjekkar karta, manus, ord, stev og bygg i spelet
+│   └── pikselkunst/        Lagar, sjekkar og viser pikselgrafikk til spelet (pix.py, portrettmal.py, bygg.py, inventar.py, natur.py, hent_referansar.py, skjermbilete.py, STILGUIDE.md, ARBEIDSLOGG.md, konsept/ med referansar)
 └── README.md
 ```
 

@@ -8,6 +8,20 @@ description: Lag, test og forbetre pikselgrafikk (portrett, figurar, fiendar, fl
 Grafikken blir laga i ein fast sløyfe: skriv kjelda, lag biletet, sjå på det,
 vurder det mot stilguiden og forbetre. Gjenta til sjekklista er oppfylt.
 
+Større løft skjer i rundar (research, finn det svakaste, teikn, sjekk,
+dokumenter). Les `tools/pikselkunst/ARBEIDSLOGG.md` først: han skildrar
+kvar runde, og «Står att» viser kvar neste runde bør starte.
+
+## 0. Research
+
+- `python tools/pikselkunst/hent_referansar.py sok "<søk>"` finn bilete på
+  Wikimedia Commons. `... konsept <fil> "File:..." "<bruk>"` lastar ned eit
+  bilete med fri lisens til `konsept/` og fører det inn i `konsept/KJELDER.md`.
+- `... zelda "TMC <namn>.png"` lastar ned skjermbilete frå The Minish Cap til
+  `forhand/referansar/` (verna, ikkje i git). Final Fantasy VI: sjå
+  `hent_referansar.py`.
+- `... ark konsept|referansar [prefiks]` lagar kontaktark å sjå på.
+
 Les først `tools/pikselkunst/STILGUIDE.md`. Målestokken er Blekklatten
 (`bilete/spel/blekklatten.png`). Referansar for norsk byggjeskikk, natur og kle
 ligg i `tools/pikselkunst/konsept/` (sjå KJELDER.md der). Sjå på dei før du
@@ -29,6 +43,11 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
 - Hus: legg huset til i `BYGG` i `tools/pikselkunst/bygg.py` (breidd, høgd, dører
   og vindauge i fliser) og køyr `python tools/pikselkunst/bygg.py <namn>`. Huset
   må ha same fotavtrykk og dør som i kartet, og står i `bygg` på kartet i `js/rpg/data.js`.
+- Inventar inne (altartavle, alterring, preikestol, lysekrone):
+  `python tools/pikselkunst/inventar.py <namn>`. Står i `bygg` på kartet,
+  `over: true` teiknar figuren over alt anna (lysekrona).
+- Vatn og steingard tilpassar seg naboane og blir teikna i `js/rpg/pikslar.js`
+  (`vatn`, `steingard`), ikkje som faste bilete.
 - Tre, steinar og haugar: `python tools/pikselkunst/natur.py <namn>` (sjå `NATUR`).
   Kartteikna `#` (gran), `t` (bjørk) og `o` (stein) vel variant etter plassen.
 - Små bilete: skriv rutenettet for hand.
@@ -64,7 +83,9 @@ rundar. Stopp når sjekklista er oppfylt, og skriv kva som eventuelt står att.
 - Portrett: fila hamnar i `bilete/spel/portrett/`, og namnet må stå i
   `PORTRETT` i `js/rpg/data.js`.
 - Fiendar: legg fila inn i `PNG` i `js/rpg/pikslar.js`.
-- Ta eit skjermbilete av spelet med grafikken i bruk (headless Edge, sjå
-  korleis testsidene fryser lerretet med `toDataURL` før biletet blir teke),
-  og sjå på det.
+- Sjekk karta: `node tools/sjekk-spel.js`.
+- Ta skjermbilete av spelet med grafikken i bruk:
+  `python tools/pikselkunst/skjermbilete.py <namn> kart=<kart> m=<merke> x=<x> y=<y>`
+  (eller `kamp=fiende1,fiende2`), og sjå på `forhand/skjerm/<namn>-spel.png`.
+- Skriv runden inn i `ARBEIDSLOGG.md`.
 - Commit både `.pix`-kjelda og PNG-fila.
