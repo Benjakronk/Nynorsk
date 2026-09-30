@@ -1,0 +1,50 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Sjekk gangen</title>
+<!-- Måler gangen på kartet: held piltasten inne og loggar kvar ramme.
+     Hakk syner som rammer der spelaren står i ro medan tasten er nede, eller der
+     gangramma fell tilbake til stå-ramma midt i ein gange.
+     Opne i ein nettlesar, eller: msedge --headless --dump-dom --allow-file-access-from-files .../sjekk-gange.html -->
+<style>body{margin:0;background:#000;color:#fff;font:12px monospace} iframe{width:1100px;height:720px;border:0} #ut{white-space:pre-wrap;padding:4px}</style>
+<iframe id="f"></iframe>
+<div id="ut">køyrer …</div>
+<script>
+const f = document.getElementById("f");
+f.src = "../spel.html?test=1";
+const vent = ms => new Promise(r => setTimeout(r, ms));
+f.onload = async () => {
+  const w = f.contentWindow, d = w.document, M = w.Motor;
+  const tast = (type, k) => d.dispatchEvent(new w.KeyboardEvent(type, { key: k, bubbles: true }));
+  const synleg = sel => { const e = d.querySelector(sel); return e && !e.hidden; };
+  await vent(500);
+  d.querySelector("#rpg-tittel-val button").click();
+  await vent(300);
+  for (let n = 0; n < 200 && (synleg("#rpg-tale") || synleg("#rpg-fort")); n++) { tast("keydown", "z"); await vent(30); tast("keyup", "z"); await vent(60); }
+  w.RPGTest.st().flagg.framande1 = true;
+  M.last("bygda", "3"); await vent(400);
+  Object.assign(M.spelar, { x: 2, y: 11, fx: 2, fy: 11, dir: 3, flytt: null });
+  await vent(200);
+  // Loggar posisjon og ramme kvar gong nettlesaren teiknar.
+  const logg = [];
+  let held = true;
+  const maal = no => { logg.push({ t: no, fx: M.spelar.fx, flytt: !!M.spelar.flytt }); if (held || M.spelar.flytt) w.requestAnimationFrame(maal); };
+  tast("keydown", "ArrowRight");
+  w.requestAnimationFrame(maal);
+  await vent(2000);
+  tast("keyup", "ArrowRight"); held = false;
+  await vent(400);
+  // Rammer der spelaren står i ro medan tasten er nede (etter første steg).
+  const start = logg.findIndex(l => l.fx > 2);
+  let stille = 0, utanSteg = 0, maks = 0;
+  for (let i = start + 1; i < logg.length; i++) {
+    const dx = logg[i].fx - logg[i - 1].fx;
+    if (logg[i].t > logg[start].t + 1900) break;
+    if (dx <= 0) stille++;
+    if (!logg[i].flytt) utanSteg++;
+    maks = Math.max(maks, dx);
+  }
+  const fliser = (logg[logg.length - 1].fx - 2).toFixed(2);
+  document.getElementById("ut").textContent =
+    `rammer: ${logg.length}, fliser gått: ${fliser}, rammer i ro: ${stille}, rammer utan steg: ${utanSteg}, største hopp: ${maks.toFixed(3)} flis`;
+};
+</script>

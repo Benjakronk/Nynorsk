@@ -28,7 +28,7 @@ window.Motor = (function () {
 
   const DX = [0, 0, -1, 1], DY = [1, -1, 0, 0];
   let kart = null;            // { id, def, w, h, fliser, merke, folk, kister, dorer }
-  let spelar = { x: 0, y: 0, dir: 0, fx: 0, fy: 0, flytt: null, steg: 0, sprite: null };
+  let spelar = { x: 0, y: 0, dir: 0, fx: 0, fy: 0, flytt: null, steg: 0, u: 0, sprite: null };
   let pausa = true, stegTilKamp = 20;
   const krokar = {};
   let fylgje = null;          // den i partiet som går etter Ivar
@@ -119,33 +119,51 @@ window.Motor = (function () {
 
   /* ---------- Rørsle ---------- */
   const FART = 150;           // ms per flis
+  // Plasserer spelaren (og følgjet) der dei skal vere no i steget.
+  function flytt(no) {
+    const u = Math.min(1, (no - spelar.flytt.t0) / FART);
+    spelar.u = u;
+    spelar.fx = spelar.flytt.fx + (spelar.x - spelar.flytt.fx) * u;
+    spelar.fy = spelar.flytt.fy + (spelar.y - spelar.flytt.fy) * u;
+    if (fylgje && fylgje.flytt) { fylgje.fx = fylgje.flytt.fx + (fylgje.x - fylgje.flytt.fx) * u; fylgje.fy = fylgje.flytt.fy + (fylgje.y - fylgje.flytt.fy) * u; }
+    return u;
+  }
   function oppdater(no) {
     if (pausa || !kart) return;
+    let t0 = no;
     if (spelar.flytt) {
-      const u = Math.min(1, (no - spelar.flytt.t0) / FART);
-      spelar.fx = spelar.flytt.fx + (spelar.x - spelar.flytt.fx) * u;
-      spelar.fy = spelar.flytt.fy + (spelar.y - spelar.flytt.fy) * u;
-      if (fylgje && fylgje.flytt) { fylgje.fx = fylgje.flytt.fx + (fylgje.x - fylgje.flytt.fx) * u; fylgje.fy = fylgje.flytt.fy + (fylgje.y - fylgje.flytt.fy) * u; }
-      if (u >= 1) { spelar.flytt = null; if (fylgje) fylgje.flytt = null; komFram(); }
-      return;
+      if (flytt(no) < 1) return;
+      // Steget er ferdig. Neste steg byrjar der dette slutta, i same biletet,
+      // så figuren ikkje står i ro eit bilete eller to på kvar flis (det gav hakk).
+      t0 = Math.max(spelar.flytt.t0 + FART, no - FART / 2);
+      spelar.flytt = null; if (fylgje) fylgje.flytt = null;
+      const k0 = kart;
+      komFram();
+      if (pausa || kart !== k0 || (krokar.modus && krokar.modus() !== "felt")) return;
     }
+    if (!taSteg(t0)) return;
+    flytt(no);
+  }
+  // Byrjar eit nytt steg i retninga som blir halden nede. Gir true om figuren flyttar seg.
+  function taSteg(no) {
     const dir = [...halde].pop();
-    if (dir == null) return;
+    if (dir == null) return false;
     spelar.dir = dir;
     const nx = spelar.x + DX[dir], ny = spelar.y + DY[dir];
     // Ut over kanten frå ei kantdør
     const her = doraVed(spelar.x, spelar.y);
-    if ((nx < 0 || ny < 0 || nx >= kart.w || ny >= kart.h) && her && her.kant) { gaaGjennom(her); return; }
+    if ((nx < 0 || ny < 0 || nx >= kart.w || ny >= kart.h) && her && her.kant) { gaaGjennom(her); return false; }
     const dor = doraVed(nx, ny);
     if (dor && !(dor.kant && dor.ved[0] === spelar.x && dor.ved[1] === spelar.y)) {
       // Kantdører: ein går inn på ruta, og vidare. Vanlege dører: ein går rett gjennom.
-      if (!dor.kant) { gaaGjennom(dor); return; }
+      if (!dor.kant) { gaaGjennom(dor); return false; }
     }
-    if (!kanGaa(nx, ny)) return;
+    if (!kanGaa(nx, ny)) return false;
     if (fylgje) { fylgje.flytt = { fx: fylgje.x, fy: fylgje.y }; fylgje.dir = retningMot(fylgje.x, fylgje.y, spelar.x, spelar.y, fylgje.dir); fylgje.x = spelar.x; fylgje.y = spelar.y; }
     spelar.flytt = { fx: spelar.x, fy: spelar.y, t0: no };
     spelar.x = nx; spelar.y = ny;
     spelar.steg++;
+    return true;
   }
   const retningMot = (x0, y0, x1, y1, d) => x1 > x0 ? 3 : x1 < x0 ? 2 : y1 > y0 ? 0 : y1 < y0 ? 1 : d;
 
@@ -348,8 +366,8 @@ window.Motor = (function () {
     }
     const GANG = [1, 0, 2, 0];
     const figurar = kart.folk.filter(f => f.sprite).map(f => ({ y: f.y, sp: f.sprite, x: f.x, dir: f.dir, steg: 0 }));
-    const gaar = !!spelar.flytt;
-    const steg = gaar ? GANG[Math.floor(no / 110) % 4] : 0;
+    // Gangramma følgjer steget, ikkje klokka: to rammer per flis (steg, stå), annakvar fot.
+    const steg = spelar.flytt ? GANG[(spelar.steg % 2) * 2 + (spelar.u < 0.5 ? 0 : 1)] : 0;
     if (fylgje) figurar.push({ y: fylgje.fy, x: fylgje.fx, sp: fylgje.sprite, dir: fylgje.dir, steg });
     figurar.push({ y: spelar.fy, x: spelar.fx, sp: spelar.sprite, dir: spelar.dir, steg });
     for (const n of naturFig) figurar.push(n);
