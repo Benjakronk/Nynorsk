@@ -212,3 +212,23 @@ same måte, uansett kven som tek over.
   for å snakke, sitje eller arbeide.
 - Arkivet og kontoret har framleis bokhyller som fliser (`y`, med blekk som renn).
 - Fjell (`^`) må teiknast når eit kart treng dei.
+
+## Runde 8: gå bak, stiar og bakdør
+
+- **Svakast (frå brukaren):** Ein kunne ikkje gå bak kyrkjetårnet, stiane til
+  dei to nedste husa i bygda enda på taket (baksida) medan døra var framme, og
+  alle hus hadde inngangen på same staden.
+- **Gjort:**
+  - Tårnet står ikkje lenger på ei fast flis, så ein kan gå bak kyrkja og tårnet.
+  - Når spelaren (eller følgjet) står bak eit hus eller tårn, blir han vist som
+    ein svak silhuett over biletet, så ein ser kvar ein er.
+  - Talmerke framfor dører som ligg inntil ein sti, blir sti. Stiane går no
+    heilt fram til dørene.
+  - Sti rundt hjørnet til døra på Nedre Hovde, og nye stiar til stabburet på
+    Åsen og setrene på Ekset og i utmarka.
+  - Bakdør: `stove(..., bakdor=[i])` i `bygg.py` teiknar eit bislag som stikk
+    bakover. I 3/4-vinkelen syner berre torvtaket, som ei takrygg opp frå mønet
+    med gavlspiss og vindskier øvst. Døra i kartet ligg i flisraden bak huset.
+    Kremmarbua (`stove-bak`) har inngangen bak, der stien frå vegen kjem.
+- **Lærdom:** Det som ligg bakom eit hus, syner høgare oppe på skjermen. Ein
+  inngang på baksida blir difor vist med det som stikk opp over mønet.

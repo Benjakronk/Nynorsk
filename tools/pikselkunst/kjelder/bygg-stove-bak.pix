@@ -1,7 +1,7 @@
-# namn: bygg-stove-dor1
+# namn: bygg-stove-bak
 # type: bygg
-# ut: bilete/spel/bygg/stove-dor1.png
-# storleik: 88x56
+# ut: bilete/spel/bygg/stove-bak.png
+# storleik: 88x72
 palett:
   . = -
   o = #0a0514    omriss
@@ -28,10 +28,25 @@ palett:
   g = #24345e    glas
   G = #5a7cbc    glas lys
   r = #c4e2ff    refleks
-  i = #2a2838    jern
 bilete:
-  oco..oeo.......................................................................oeo..oco.
-  .ocooeo.........oo..oo..oo..oo..............oo..oo..oo..............oo......oo..oeooco..
+  ...........................o.o..........................................................
+  ..........................ocoeo.........................................................
+  ...........................oco..........................................................
+  ..........................oeoco.........................................................
+  .........................oeococo........................................................
+  ........................ooee4ccoo.......................................................
+  ......................ooee44411ccoo.....................................................
+  ....................ooee334441122ccoo...................................................
+  ..................ooee4333444112222ccoo.................................................
+  .................oee34333344411212222cco................................................
+  .................onn43433444411222122NNo................................................
+  .................onn33334344411222021NNo................................................
+  .................onn33343344411122222NNo................................................
+  .................onn33433344411221222NNo................................................
+  .................onn34333344411222212NNo................................................
+  .................onn43433444411222222NNo................................................
+  oco..oeo.........onn33334344411212022NNo.......................................oeo..oco.
+  .ocooeo.........oonnoo34oo44oo1222122NNo....oo..oo..oo..............oo......oo..oeooco..
   ..oce4oooooooooo34oo34oo34oo34oooooooooooooo34oo34oo34oooooooooooooo34oooooo34ooooeco...
   ..oec44444444444444444444444444444444444444444444444444444444444444444444444444444ceoo..
   .oe43c343434343434343434343434343434343434343434343434343434343434343434343434343c34e4o.
@@ -69,20 +84,20 @@ bilete:
   .oonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnno..
   oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
   edddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbeddd
-  cdccbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaabbbbabbbabbbbbbabbabbbbbbbbbbbbbbbbbbbbbbbbbabbbbcdcc
-  ccabbbbbbbbbbbbabbbbbadccbdccbdccbabbbbbbbbabbbbbbbbbbbbbbbbbbbbabbbbbbbbbbbbbbbbbbbccab
-  bbbbbbbbbbbbbababbbbaadccbdccbdccbabbaabaababbbabbbbbaabbbabbbbbabaaaabbbababbabbbabbbbb
-  eddddddddddddcdddddddadccbdccbdccbadddddwwwwwwwwddddddccdddcddddcdddddddddddddddddddeddd
-  cdcccccccccccccccccccaaaaaaaaaaaaaacccccwrGwWggWccccccbccccccccccccccccccccccbcccccccdcc
-  ccabcccbcccccccccccbcadccbdccbdccbacccccwGGwWggwcbcccccccccccccccbcccbbcbccccccccbccccab
-  bbbbbbaabbbaaabbbbbabadccbdccbdccbabbbaawwwwWwwwbbbaababbababbbbbbabbbabbbabbbbabbabbbbb
-  edddcddddddddcddddddcadccbdccbdicbadddddwWWwWWWwdddddddddddcddddddddddddddddddddddddeddd
-  cdcccccccccccccccccbcadccbdccbdicbacccbcwggwWggwccccccccccccccccbccccccccccccccccccccdcc
-  ccabcccccccccccccccccadccbdccbdccbabccccwggwWggwccccbcbcccccccccccccccccccccccccccccccab
-  bbbbabbbbababaabbababaaaaaaaaaaaaaabbbabWWWWWWWWaabbbbbbbaabbbbbbaababbbbababbabbbabbbbb
-  edddcddcdcdddddddcdddadccbdccbdccbadddddddddddddddddcdddddddddddcdddddddddccddddddddeddd
-  cdccccccccbcbccccccccadccbdccbdccbacccccccccccccccccccccccbccccccccbcccccccccccccccbcdcc
-  ccabccbcccccccbccccccadccbdccbdccbacbcccccccccccccccccccccbccccbccccbcccccccccccccccccab
+  cdccbbbbbbbbbbbbbbbbbabbbbbbbbbabbbbbbbabbbabbbbbbabbabbbbbbbbbbbbbbbbbbbbbbbbbabbbbcdcc
+  ccabbbbbbbbbbbbabbbbbbbbbbbbbbbbbbabbbbbbbbabbbbbbbbbbbbbbbbbbbbabbbbbbbbbbbbbbbbbbbccab
+  bbbbbbbbbbbbbababbbbabbaabababbbbaabbaabaababbbabbbbbaabbbabbbbbabaaaabbbababbabbbabbbbb
+  eddddddddddddcddddddddddwwwwwwwwddddddddddcddddcddddddccwwwwwwwwcdddddddddddddddddddeddd
+  cdccccccccccccccccccccccwrGwWggWccccccccccccccccccccccbcwrGwWggWcccccccccccccbcccccccdcc
+  ccabcccbcccccccccccbccccwGGwWggwcccccccccccccccccbccccccwGGwWggwcbcccbbcbccccccccbccccab
+  bbbbbbaabbbaaabbbbbabbabwwwwWwwwaabbbbaabbbbabbbbbbaababwwwwWwwwbbabbbabbbabbbbabbabbbbb
+  edddcddddddddcddddddcdddwWWwWWWwddddddddddddddddddddddddwWWwWWWwddddddddddddddddddddeddd
+  cdcccccccccccccccccbccccwggwWggwccccccbccccbccccccccccccwggwWggwbccccccccccccccccccccdcc
+  ccabccccccccccccccccccccwggwWggwcccbccccbbccbcccccccbcbcwggwWggwccccccccccccccccccccccab
+  bbbbabbbbababaabbababbbbWWWWWWWWbbabbbabaabbbbabaabbbbbbWWWWWWWWbaababbbbababbabbbabbbbb
+  edddcddcdcdddddddcddddddddddddddddddddddddddddddddddcdddddddddddcdddddddddccddddddddeddd
+  cdccccccccbcbcccccccccccccccccccccccccccccccccccccccccccccbccccccccbcccccccccccccccbcdcc
+  ccabccbcccccccbccccccccccccbcbccccccbcccccccccccccccccccccbccccbccccbcccccccccccccccccab
   bbbbCBDCDCBDCDDBCCCDBCCCCBDDDCBCDDCBCDCCBCDDCBDCDDBCDDDBCCDDBDCCCBCCCDBDDCCBCCDCBCCDbbbb
   ooooBBCCCCBBBBBBCCCCBBBBBBCCCCBCCCCBBBBBBCCCCBBBBBBCCCCBCCCCBCCCCBBBBBBCCCCBBBBBBBBBoooo
   ...oDCDBDDCCBCCDDBDCDCBCCDCBCDCCBCCDCBCDDCBDCCCBDCDDBCDDCBDCDCBCCCCBDDCCBCDCDBDCDCBDo...

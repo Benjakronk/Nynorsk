@@ -81,6 +81,11 @@ window.Motor = (function () {
         fliser[y].push(c);
       }
     }
+    // Talmerke (framfor dører og ved kantane) som ligg inntil ein sti, blir sti, så stien går heilt fram til døra.
+    for (const [m, [x, y]] of Object.entries(merke)) {
+      if (!/[0-9]/.test(m)) continue;
+      if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => (fliser[y + dy] || [])[x + dx] === "=")) fliser[y][x] = "=";
+    }
     Object.assign(merke, (RPGData.EKSTRA_MERKE || {})[id] || {});
     const folk = (def.folk || []).filter(f => merke[f.merke] && (!f.vis || f.vis(krokar.tilstand()))).map(f => {
       const [x, y] = merke[f.merke];
@@ -364,6 +369,17 @@ window.Motor = (function () {
       const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S);
       g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx + 3, sy + 13, 10, 3); g.fillRect(sx + 4, sy + 12, 8, 5);
       g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy - 9);
+    }
+    // Står spelaren (eller følgjet) bak eit hus eller tårn, blir han vist som ein svak silhuett over.
+    for (const f of figurar) {
+      if (!f.sp || (f.sp !== spelar.sprite && !(fylgje && f.sp === fylgje.sprite))) continue;
+      const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S) - 9;
+      const bak = (kart.def.bygg || []).some(b => {
+        const img = Pikslar.bygg(b.id); if (!img || b.over || f.y >= b.y + b.h - 1) return false;
+        const bx = Math.round((b.x + ox) * S) - 4, by = Math.round((b.y + b.h + oy) * S) - img.height;
+        return sx + 12 > bx + 4 && sx + 4 < bx + img.width - 4 && sy + 22 > by + 4 && sy + 4 < by + img.height;
+      });
+      if (bak) { g.globalAlpha = 0.4; g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy); g.globalAlpha = 1; }
     }
     stemning(no, ox, oy);
   }

@@ -160,8 +160,42 @@ def omriss(L):
     L.g = ut
 
 
-def stove(bf, hf, dorar, vindauge_pos, fro=1, staande=False, dobbel=False):
-    """Hus på bf x hf fliser. dorar og vindauge_pos er flisnummer frå venstre."""
+def bislag(L, cx, y0, y1, fro):
+    """Bislag (inngangsparti) på baksida av huset. Det stikk bakover, og i 3/4-vinkelen
+    syner difor berre torvtaket: ei takrygg som går opp frå mønet til huset, med mønet mot oss.
+    Øvst ligg gavlen der bak som ein spiss (^), med vindskier i kross."""
+    hb = 10
+    for x in range(cx - hb, cx + hb + 1):
+        d = x - cx
+        top = y0 + 4 + (abs(d) + 1) // 2                             # gavlen: spiss på midten
+        for y in range(top, y1 + 1):
+            if d < 0: c = "4" if d > -3 else "3" if (x + y) % 5 else "4"
+            else: c = "1" if d < 3 else "2" if (x * 3 + y) % 7 else "1"
+            if y == top: c = "e" if d < 0 else "c"                   # vindskier langs gavlen
+            elif abs(d) >= hb - 1: c = "n" if d < 0 else "N"          # neveren under torva langs kanten
+            L.p(x, y, c)
+    for y in range(y0 + 10, y1, 5):                                  # torvklumpar
+        for x in (cx - 6, cx + 4):
+            x_ = x + int(h(x, y, fro) * 2)
+            L.p(x_, y, "4" if x < cx else "2"); L.p(x_ + 1, y + 1, "3" if x < cx else "0")
+    for k in range(4):                                               # vindskiene kryssar over spissen
+        L.p(cx - 2 + k, y0 + 4 - k, "e"); L.p(cx + 2 - k, y0 + 4 - k, "c")
+    for y in range(y0 + 5, y1 + 1): L.p(cx, y, "4")                  # mønet på bislaget
+
+
+def stove(bf, hf, dorar, vindauge_pos, fro=1, staande=False, dobbel=False, bakdor=()):
+    """Hus på bf x hf fliser. dorar og vindauge_pos er flisnummer frå venstre.
+    bakdor: flisnummer for inngang på baksida (bislag som stikk opp bak mønet).
+    Då blir biletet 16 pikslar høgare, og døra i kartet ligg i flisraden bak huset."""
+    if bakdor:
+        hus = stove(bf, hf, dorar, vindauge_pos, fro, staande, dobbel)
+        L = Lerret(hus.w, hus.h + 16)
+        for i in bakdor: bislag(L, UT_X + i * 16 + 8, 0, 22, fro)
+        omriss(L)
+        for y in range(hus.h):                                       # huset framfor bislaget
+            for x in range(hus.w):
+                if hus.g[y][x] != ".": L.p(x, y + 16, hus.g[y][x])
+        return L
     W, H = bf * 16 + UT_X * 2, hf * 16 + UT_Y
     L = Lerret(W, H)
     vegg_y0 = UT_Y + (hf - 1) * 16 - 2          # veggen er den nedste flisraden
@@ -315,7 +349,7 @@ BYGG = {
     "kyrkje": kyrkje,
     "prestegard": lambda: kvitthus(9, 3, [4], [1, 3, 5, 7], [2, 6]),
     "stove": lambda: stove(5, 3, [2], [1, 3], fro=1),
-    "stove-dor1": lambda: stove(5, 3, [1], [2], fro=5),
+    "stove-bak": lambda: stove(5, 3, [], [1, 3], fro=5, bakdor=[1]),     # kremmarbua: inngang bak
     "loe": lambda: stove(6, 3, [3], [], fro=2, staande=True, dobbel=True),
     "stabbur": lambda: stabbur(3),
     "seter": lambda: stove(4, 3, [2], [], fro=7),

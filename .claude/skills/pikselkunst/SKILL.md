@@ -43,6 +43,8 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
 - Hus: legg huset til i `BYGG` i `tools/pikselkunst/bygg.py` (breidd, høgd, dører
   og vindauge i fliser) og køyr `python tools/pikselkunst/bygg.py <namn>`. Huset
   må ha same fotavtrykk og dør som i kartet, og står i `bygg` på kartet i `js/rpg/data.js`.
+  `bakdor=[i]` gir inngang på baksida (bislag). Då ligg døra (`D`) i kartet i
+  flisraden rett bak huset, og stien må kome ovanfrå.
 - Inventar inne (sjå `INVENTAR` i skriptet: kyrkja, bondestova og
   embetsmannsheimen med kakkelomn, skatoll, golvur, sofa, bokreolar …):
   `python tools/pikselkunst/inventar.py <namn>`. Står i `bygg` på kartet,

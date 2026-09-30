@@ -127,6 +127,15 @@ Alt nytt skal kunne stå ved sida av han utan å skilje seg ut.
 - Alle figurar blir laga med `figur.py`. Nye personar får ein oppføring i `U` i
   `js/rpg/data.js`, og deretter `python tools/pikselkunst/figur.py <id>`.
 
+## Hus, dører og stiar
+
+- Alle dører skal ha sti fram til seg frå vegnettet. Talmerket framfor døra blir
+  sti automatisk når det ligg inntil ein sti.
+- Variér inngangane: somme hus har døra på baksida (bislag som stikk opp bak
+  mønet), og stien kjem då ovanfrå.
+- Ein skal kunne gå bak tårn og høge ting. Det som står bak, blir vist som
+  silhuett.
+
 ## Sjekkliste før grafikken blir teken i bruk
 
 1. `pix.py sjekk` gir ingen merknader.
