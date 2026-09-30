@@ -92,10 +92,9 @@ window.Kamp = (function () {
   const bakCache = {};
   /* Handteikna bakgrunnar (bilete/spel/kamp/<type>.png, laga med tools/pikselkunst/bakgrunn.py).
      Til biletet er lasta, blir den utrekna bakgrunnen under brukt. */
-  const kampPng = {};
   function bakgrunnBilete(type) {
-    if (!kampPng[type]) { const img = new Image(); kampPng[type] = { img, klar: false }; img.onload = () => { kampPng[type].klar = true; }; img.src = `bilete/spel/kamp/${type}.png`; }
-    if (kampPng[type].klar) return kampPng[type].img;
+    const img = Pikslar.hent(`bilete/spel/kamp/${type}.png`);
+    if (Pikslar.klar(img)) return img;
     return reknaBakgrunn(type);
   }
   function reknaBakgrunn(type) {

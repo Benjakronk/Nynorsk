@@ -16,7 +16,8 @@ f.onload = async () => {
   const w = f.contentWindow, d = w.document, M = w.Motor;
   const tast = (type, k) => d.dispatchEvent(new w.KeyboardEvent(type, { key: k, bubbles: true }));
   const synleg = sel => { const e = d.querySelector(sel); return e && !e.hidden; };
-  await vent(500);
+  // Vent til grafikken er lasta og tittelskjermen har knappar.
+  for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
   d.querySelector("#rpg-tittel-val button").click();
   await vent(300);
   for (let n = 0; n < 200 && (synleg("#rpg-tale") || synleg("#rpg-fort")); n++) { tast("keydown", "z"); await vent(30); tast("keyup", "z"); await vent(60); }

@@ -47,11 +47,15 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   og vindauge i fliser) og køyr `python tools/pikselkunst/bygg.py <namn>`. Huset
   må ha same fotavtrykk og dør som i kartet, og står i `bygg` på kartet i `js/rpg/data.js`.
   `bakdor=[i]` gir inngang på baksida (bislag). Då ligg døra (`D`) i kartet i
-  flisraden rett bak huset, og stien må kome ovanfrå.
+  flisraden rett bak huset, og stien må kome ovanfrå. Ei ny dørform (breidd, høgd)
+  må førast inn i `DORFORM` i `js/rpg/motor.js`, så døra opnar seg rett.
+- Nye bilete blir forhåndslasta automatisk når dei står i data.js (bygg, figurar,
+  portrett, kampbakgrunnar). Andre bilete må leggjast til i `alleBilete` i `pikslar.js`.
 - Inventar inne (sjå `INVENTAR` i skriptet: kyrkja, bondestova og
   embetsmannsheimen med kakkelomn, skatoll, golvur, sofa, bokreolar …):
   `python tools/pikselkunst/inventar.py <namn>`. Står i `bygg` på kartet,
-  `over: true` teiknar figuren over alt anna (lysekrona).
+  `over: true` teiknar figuren over alt anna (lysekrona). Inventar med eld får
+  flammerute i `ILD` i `js/rpg/pikslar.js` (levande eld teikna oppå biletet).
 - Figurar (16 × 24): legg personen til i `U` i `js/rpg/data.js` og køyr
   `python tools/pikselkunst/figur.py <id>` (eller `alle`). Arket hamnar i
   `bilete/spel/figurar/<id>.png`. `figur.py ark` lagar eit kontaktark i

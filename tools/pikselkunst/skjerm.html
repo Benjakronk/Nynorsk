@@ -3,7 +3,8 @@
 <title>Skjermbilete av spelet</title>
 <!-- Brukt av skjermbilete.py: opnar spelet, går til eit kart og frys lerretet.
      Parametrar: kart, m (merke), x og y (der Ivar står), kamp (fiendar, kommaskilt),
-     parti (fleire i partiet), hp (til dømes huldra:4) og tale (namn:tekst). -->
+     parti (fleire i partiet), hp (til dømes huldra:4), tale (namn:tekst),
+     gaa (opp/ned/venstre/hogre) og ventms. -->
 <style>body{margin:0;background:#000;color:#fff;font:12px monospace} iframe{width:1100px;height:720px;border:0;display:block} #ut{white-space:pre-wrap;padding:4px}</style>
 <iframe id="f"></iframe>
 <div id="ut">køyrer …</div>
@@ -21,7 +22,8 @@ f.onload = async () => {
   // Frys lerretet: eit bilete av det over lerretet, så det ikkje endrar seg før skjermbiletet blir teke.
   const frys = () => { const c = d.getElementById("rpg-lerret"), img = d.createElement("img"); img.src = c.toDataURL(); img.style.cssText = `position:absolute;width:${c.style.width};height:${c.style.height};image-rendering:pixelated;z-index:9;pointer-events:none`; const r = c.getBoundingClientRect(), p = d.getElementById("rpg-skjerm").getBoundingClientRect(); img.style.left = (r.left - p.left) + "px"; img.style.top = (r.top - p.top) + "px"; d.getElementById("rpg-skjerm").appendChild(img); };
   const blaFram = async () => { let n = 0; while (n++ < 200 && (synleg("#rpg-tale") || synleg("#rpg-fort"))) { await tast("z"); await vent(80); } };
-  await vent(500);
+  // Vent til grafikken er lasta og tittelskjermen har knappar.
+  for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
   d.querySelector("#rpg-tittel-val button").click();
   await vent(300); await blaFram();
   w.RPGTest.st().flagg.framande1 = true;
@@ -34,6 +36,13 @@ f.onload = async () => {
   if (q.get("kamp")) { M.krokar.kamp(q.get("kamp").split(",")); let n = 0; while (!synleg(".kamp-meny") && n++ < 300) await vent(50); }
   // tale=Huldra:Teksten opnar samtaleboksen med portrettet til den som talar.
   if (q.get("tale")) { const [namn, ...t] = q.get("tale").split(":"); M.tale(t.join(":") || "…", namn); await vent(2500); }
+  // gaa=opp held ei piltast nede i «ventms» millisekund før biletet blir teke (til dømes for å sjå ei dør opne seg).
+  if (q.get("gaa")) {
+    const k = { opp: "ArrowUp", ned: "ArrowDown", venstre: "ArrowLeft", hogre: "ArrowRight" }[q.get("gaa")];
+    await vent(600); d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true }));
+    await vent(+(q.get("ventms") || 300)); frys(); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true }));
+    document.getElementById("ut").textContent = "ferdig, feil: " + JSON.stringify(feil); return;
+  }
   await vent(900); frys();
   document.getElementById("ut").textContent = "ferdig, feil: " + JSON.stringify(feil);
 };

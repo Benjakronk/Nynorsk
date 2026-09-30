@@ -696,19 +696,19 @@ window.Pikslar = (function () {
     // rad 4 åtak, galdr og skadd, rad 5 svak (på kne) og slått ut (24 x 16 nedst i ruta).
     // Når det er lasta, blir det teikna inn i dei same lerreta, så alle som held på figuren får det nye.
     if (u.id && typeof Image !== "undefined") {
-      const img = new Image();
+      const img = hent(`bilete/spel/figurar/${u.id}.png`);
       const teiknInn = (c, sx, sy) => {
         const g = c.getContext("2d");
         g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, c.width, c.height);
         g.drawImage(img, sx, sy, c.width, c.height, 0, 0, c.width, c.height);
       };
-      img.onload = () => {
+      const bruk = () => {
         rammer.forEach((rad, dir) => rad.forEach((c, steg) => teiknInn(c, steg * FW, dir * FH)));
         if (img.height < FH * 6) return;
         teiknInn(kamp.atak, 0, FH * 4); teiknInn(kamp.galdr, FW, FH * 4); teiknInn(kamp.skadd, FW * 2, FH * 4);
         teiknInn(kamp.svak, 0, FH * 5); teiknInn(kamp.ute, FW, FH * 5 + 8);
       };
-      img.src = `bilete/spel/figurar/${u.id}.png`;
+      if (klar(img)) bruk(); else img.addEventListener("load", bruk, { once: true });
     }
     figurCache.set(k, f);
     return f;
@@ -819,24 +819,34 @@ window.Pikslar = (function () {
     const c = lerret(d.w, d.h), g = c.getContext("2d");
     g.imageSmoothingEnabled = false;
     const r = FIENDAR[d.reserve](); g.drawImage(r, Math.round((d.w - r.width) / 2), d.h - r.height);
-    const img = new Image();
-    img.onload = () => { g.clearRect(0, 0, d.w, d.h); g.drawImage(img, 0, 0, d.w, d.h); };
-    img.src = d.fil;
+    const img = hent(d.fil);
+    const bruk = () => { g.clearRect(0, 0, d.w, d.h); g.drawImage(img, 0, 0, d.w, d.h); };
+    if (klar(img)) bruk(); else img.addEventListener("load", bruk, { once: true });
     return c;
   }
   /* Hus som heile figurar (bilete/spel/bygg/<id>.png, laga med tools/pikselkunst/bygg.py).
      Figuren stikk 4 pikslar ut på sidene og 8 opp. Til biletet er lasta, gir bygg() null,
      og kartet viser flisene under i staden. */
-  const byggCache = new Map();
+  /* Felles biletlager. forhandslast() lastar alle bileta før spelaren ser ein scene
+     (tittelskjermen ventar på det), så ingenting poppar inn etterpå. */
+  const bilete = new Map();
+  function hent(sti) {
+    let img = bilete.get(sti);
+    if (!img) { img = new Image(); img.src = sti; bilete.set(sti, img); }
+    return img;
+  }
+  const klar = img => img.complete && img.naturalWidth > 0;
+  function forhandslast(stiar) {
+    return Promise.all([...new Set(stiar)].map(sti => {
+      const img = hent(sti);
+      if (klar(img)) return Promise.resolve();
+      return new Promise(res => { img.addEventListener("load", res, { once: true }); img.addEventListener("error", res, { once: true }); })
+        .then(() => (img.decode ? img.decode().catch(() => {}) : null));
+    }));
+  }
   function lastBilete(sti) {
-    if (!byggCache.has(sti)) {
-      const b = { img: new Image(), klar: false };
-      b.img.onload = () => { b.klar = true; };
-      b.img.src = sti;
-      byggCache.set(sti, b);
-    }
-    const b = byggCache.get(sti);
-    return b.klar ? b.img : null;
+    const img = hent(sti);
+    return klar(img) ? img : null;
   }
   const bygg = id => lastBilete(`bilete/spel/bygg/${id}.png`);
   /* Naturelement som heile figurar (bilete/spel/natur/, laga med tools/pikselkunst/natur.py).
@@ -860,6 +870,66 @@ window.Pikslar = (function () {
     return gamalSteinC;
   }
   const haugBilete = () => lastBilete("bilete/spel/natur/haug.png");
+
+  /* Alle bileta spelet brukar, til forhandslast(). D er RPGData. */
+  function alleBilete(D) {
+    const ut = [];
+    for (const k of Object.values(D.KART)) {
+      for (const b of k.bygg || []) ut.push(`bilete/spel/bygg/${b.id}.png`);
+      if (k.bakgrunn) ut.push(`bilete/spel/kamp/${k.bakgrunn}.png`);
+    }
+    for (const namn of Object.values(NATURTYPE).flat()) ut.push(`bilete/spel/natur/${namn}.png`);
+    ut.push("bilete/spel/natur/haug.png");
+    for (const id of Object.keys(D.U)) ut.push(`bilete/spel/figurar/${id}.png`);
+    for (const id of Object.values(D.PORTRETT || {})) ut.push(`bilete/spel/portrett/${id}.png`);
+    for (const d of Object.values(PNG)) ut.push(d.fil);
+    return ut;
+  }
+
+  /* Levande eld i grua og kakkelomnen (inventaret er faste bilete, flammane blir teikna her).
+     Rutene er i pikslar i biletet. glo: berre glør bak ei luke. */
+  const ILD = {
+    "inne-grue": [{ x: 5, y: 26, w: 14, h: 15 }],
+    "inne-kakkelomn": [{ x: 8, y: 31, w: 8, h: 8, glo: true }],
+  };
+  // Kva pikslar i ruta flammane kan teiknast på: berre mørket i eldstaden og den faste elden
+  // i biletet, så gryta, kroken og kanten ligg framfor flammane.
+  const ildMasker = new WeakMap();
+  function ildMaske(img, r) {
+    let m = ildMasker.get(img);
+    if (!m) { m = new Map(); ildMasker.set(img, m); }
+    const k = `${r.x},${r.y}`;
+    if (!m.has(k)) {
+      const c = lerret(img.width, img.height), cg = c.getContext("2d"); cg.drawImage(img, 0, 0);
+      const d = cg.getImageData(r.x, r.y, r.w, r.h).data, ok = [];
+      for (let i = 0; i < r.w * r.h; i++) {
+        const [R, G, B, A] = [d[i * 4], d[i * 4 + 1], d[i * 4 + 2], d[i * 4 + 3]];
+        ok.push(A > 0 && ((R < 40 && G < 30 && B < 30) || (R > 200 && G > 80 && B < 80)));
+      }
+      m.set(k, ok);
+    }
+    return m.get(k);
+  }
+  function ild(g, x, y, w, h, t, glo, maske) {
+    const k = Math.floor(t / 90);                                     // hakkete, som pikselanimasjon
+    const fyll = (px_, py_, farge) => { if (!maske || maske[(py_ - y) * w + (px_ - x)]) { g.fillStyle = farge; g.fillRect(px_, py_, 1, 1); } };
+    for (let yy = y; yy < y + h; yy++) for (let xx = x; xx < x + w; xx++) fyll(xx, yy, "#140a08");
+    const farge = ["#7a1a10", "#c83a18", "#f0902a", "#f8d860", "#fff4c0"];
+    for (let cx = 0; cx < w; cx++) {
+      const midt = 1 - Math.abs(cx - (w - 1) / 2) / (w / 2);             // høgast på midten
+      const flakk = hash(cx, k, 71) * 0.5 + Math.sin(t / 110 + cx * 1.9) * 0.18;
+      const hh = Math.max(1, Math.round(Math.min(h, 10) * (glo ? 0.35 + flakk * 0.4 : 0.25 + midt * 0.7 + flakk * 0.4)));
+      for (let dy = 0; dy < Math.min(h, hh); dy++) {
+        const rel = dy / hh;                                             // 0 nede, 1 i tuppen
+        let i = rel > 0.8 ? 0 : rel > 0.55 ? 1 : rel > 0.25 ? 2 : 3;
+        if (!glo && rel < 0.2 && midt > 0.5 && hash(cx, k, 72) > 0.4) i = 4;
+        if (glo) i = Math.min(3, i + (hash(cx, dy + k, 73) > 0.7 ? 1 : 0)) - 1;
+        fyll(x + cx, y + h - 1 - dy, farge[Math.max(0, i)]);
+      }
+    }
+    // glør nedst
+    for (let cx = 0; cx < w; cx += 2) fyll(x + cx, y + h - 1, hash(cx, k, 74) > 0.5 ? "#f8d860" : "#c83a18");
+  }
   const fiendeCache = new Map();
   function fiende(namn) {
     if (fiendeCache.has(namn)) return fiendeCache.get(namn);
@@ -868,5 +938,6 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, kant, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP };
+  return { S, FW, FH, flis, topp, kant, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
+    hent, klar, forhandslast, alleBilete, ILD, ild, ildMaske };
 })();

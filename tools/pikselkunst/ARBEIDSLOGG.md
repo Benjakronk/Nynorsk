@@ -272,3 +272,20 @@ same måte, uansett kven som tek over.
   `bygd-gamal-mann`, `bygd-gamal-kone` og `bygd-gut`.
 - Dei er med vilje nøytrale: same stil, men utan kjenneteikn. Koplinga frå namnet
   på den som talar, står i `PORTRETT` i `js/rpg/data.js`.
+
+## Runde 10: dører, levande eld og ferdig lasta grafikk
+
+- **Frå brukaren:** Dører skal opne seg når ein går inn, elementa skal ikkje poppe
+  inn, og flammane i grua og omnen var ikkje lenger levande etter at dei vart faste bilete.
+- **Gjort:**
+  - Dører opnar seg: dørbladet sviv inn, opninga blir mørk, og Ivar går inn i mørket
+    før kartet blir bytt (`opneDor` og `DORFORM` i `js/rpg/motor.js`). Forma på døra
+    er målt i husbileta: vanleg hus, låve (dobbeldør), stabbur og kyrkje.
+  - Alle bilete (80) blir lasta før tittelskjermen syner (`Pikslar.forhandslast`,
+    `alleBilete`), og alle lastarane brukar eitt felles lager. Ingenting poppar inn.
+  - Levande eld (`ILD` og `ild` i `js/rpg/pikslar.js`): tunger som flakkar i grua og
+    glør bak luka i kakkelomnen, teikna oppå inventaret. Flammane blir berre teikna i
+    mørket i eldstaden, så gryta og kroken ligg framfor.
+  - `skjerm.html` tek `gaa=opp ventms=300`, så ein kan fange ei dør medan ho opnar seg.
+- **Lærdom:** Faste bilete tek livet frå ting som skal røre seg. Legg rørsla oppå som
+  kode, avgrensa til dei pikslane i biletet som høyrer til elden.

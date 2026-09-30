@@ -30,6 +30,7 @@ window.Motor = (function () {
   let kart = null;            // { id, def, w, h, fliser, merke, folk, kister, dorer }
   let spelar = { x: 0, y: 0, dir: 0, fx: 0, fy: 0, flytt: null, steg: 0, u: 0, sprite: null };
   let pausa = true, stegTilKamp = 20;
+  let dorAnim = null;         // { tx, ty, form, t0 } medan ei dør opnar seg
   const krokar = {};
   let fylgje = null;          // den i partiet som går etter Ivar
 
@@ -129,7 +130,7 @@ window.Motor = (function () {
     return u;
   }
   function oppdater(no) {
-    if (pausa || !kart) return;
+    if (pausa || !kart || dorAnim) return;
     let t0 = no;
     if (spelar.flytt) {
       if (flytt(no) < 1) return;
@@ -305,6 +306,56 @@ window.Motor = (function () {
     });
   }
 
+  /* ---------- Dører som opnar seg ----------
+     Når spelaren går inn i eit hus, opnar døra seg (dørbladet sviv inn), og Ivar går inn i
+     den mørke opninga før kartet blir bytt. Forma på døra i kvart husbilete (pikslar i flisa):
+     x og w, høgd h og avstand til botnen. Etter bygg.py. */
+  const DORFORM = {
+    standard: { x: 2, w: 12, h: 13, bunn: 3 },
+    loe: { x: 1, w: 14, h: 13, bunn: 3, dobbel: true },
+    stabbur: { x: 2, w: 12, h: 11, bunn: 9 },
+    kyrkje: { x: 3, w: 10, h: 14, bunn: 3, dobbel: true, farge: ["#3a0e18", "#6a1a2a", "#983040"] },
+  };
+  const DOR_TID = 520;
+  function opneDor(dor) {
+    const [tx, ty] = dor.ved;
+    // Døra må sitje i den nedste flisraden til eit hus på kartet (ikkje bakdører og kantar).
+    const b = (kart.def.bygg || []).find(b => {
+      const img = Pikslar.bygg(b.id); if (!img) return false;
+      const bf = Math.round((img.width - 8) / S);
+      return tx >= b.x && tx < b.x + bf && ty === b.y + b.h - 1;
+    });
+    if (!b || spelar.x !== tx || spelar.y !== ty + 1) return Promise.resolve();
+    spelar.dir = 1;
+    dorAnim = { tx, ty, form: DORFORM[b.id] || DORFORM.standard, t0: performance.now() };
+    return new Promise(res => setTimeout(() => { res(); setTimeout(() => { dorAnim = null; }, 60); }, DOR_TID));
+  }
+  function teiknDor(no, ox, oy) {
+    const { tx, ty, form: f, t0 } = dorAnim;
+    const u = Math.min(1, (no - t0) / DOR_TID);
+    const o = Math.min(1, u / 0.45);                                   // kor ope døra er
+    const dx = Math.round((tx + ox) * S) + f.x, bunn = Math.round((ty + 1 + oy) * S) - f.bunn, dy = bunn - f.h;
+    g.fillStyle = "#140c10"; g.fillRect(dx, dy, f.w, f.h);            // mørket inne
+    g.fillStyle = "#2a1810"; g.fillRect(dx, bunn - 2, f.w, 2);         // litt varmt ljos ved dørstokken
+    const tre = f.farge || ["#26160e", "#664228", "#8a6038"];
+    const blad = (x, w, spegl) => {                                    // dørbladet, sett på skrå når det sviv inn
+      if (w <= 0) return;
+      g.fillStyle = tre[1]; g.fillRect(x, dy, w, f.h);
+      g.fillStyle = tre[2]; g.fillRect(spegl ? x + w - 1 : x, dy, 1, f.h);
+      g.fillStyle = tre[0]; g.fillRect(x, dy + 3, w, 1); g.fillRect(x, dy + f.h - 4, w, 1);
+    };
+    const opa = Math.max(1, Math.round((f.dobbel ? f.w / 2 : f.w) * (1 - o * 0.85)));
+    if (f.dobbel) { blad(dx, opa, false); blad(dx + f.w - opa, opa, true); } else blad(dx, opa, false);
+    // Ivar går inn: synleg under dørstokken og i opninga, og blir borte i mørket.
+    const p = Math.max(0, (u - 0.35) / 0.65);
+    const sx = Math.round((spelar.x + ox) * S), sy = Math.round((spelar.y - p * 0.9 + oy) * S) - 9;
+    g.save();
+    g.beginPath(); g.rect(dx, dy, f.w, f.h); g.rect(sx - 4, bunn, S + 8, S * 2); g.clip();
+    g.globalAlpha = 1 - p * 0.8;
+    g.drawImage(spelar.sprite.rammer[1][p > 0 ? [1, 0, 2, 0][Math.floor(p * 4) % 4] : 0], sx, sy);
+    g.restore();
+  }
+
   // Silhuetten av eit bilete i skuggefarge (til slagskuggen under hus og inventar).
   const skuggar = new WeakMap();
   function skuggeAv(img) {
@@ -382,10 +433,10 @@ window.Motor = (function () {
     // Gangramma følgjer steget, ikkje klokka: to rammer per flis (steg, stå), annakvar fot.
     const steg = spelar.flytt ? GANG[(spelar.steg % 2) * 2 + (spelar.u < 0.5 ? 0 : 1)] : 0;
     if (fylgje) figurar.push({ y: fylgje.fy, x: fylgje.fx, sp: fylgje.sprite, dir: fylgje.dir, steg });
-    figurar.push({ y: spelar.fy, x: spelar.fx, sp: spelar.sprite, dir: spelar.dir, steg });
+    if (!dorAnim) figurar.push({ y: spelar.fy, x: spelar.fx, sp: spelar.sprite, dir: spelar.dir, steg });
     for (const n of naturFig) figurar.push(n);
     // Hus blir sorterte saman med figurane etter den nedste flisraden sin.
-    for (const b of kart.def.bygg || []) { const img = Pikslar.bygg(b.id); if (img) figurar.push({ y: b.over ? 999 : b.y + b.h - 1 + 0.01, by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over }); }
+    for (const b of kart.def.bygg || []) { const img = Pikslar.bygg(b.id); if (img) figurar.push({ y: b.over ? 999 : b.y + b.h - 1 + 0.01, by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id }); }
     figurar.sort((a, b) => a.y - b.y);
     for (const f of figurar) {
       if (f.mur) { g.drawImage(f.mur, Math.round((f.x + ox) * S), Math.round((Math.floor(f.y) + oy) * S) - 6); continue; }
@@ -399,7 +450,9 @@ window.Motor = (function () {
         const bx = Math.round((f.x + ox) * S) - 4, by = Math.round((f.y + 1 + oy) * S);
         g.save(); g.beginPath(); g.rect(bx, by - 22, f.bygg.width + 8, 26); g.clip();
         g.globalAlpha = 0.28; g.drawImage(skuggeAv(f.bygg), bx + 4, by - f.bygg.height + 3); g.restore();
-        g.drawImage(f.bygg, bx, by - f.bygg.height); continue; }
+        g.drawImage(f.bygg, bx, by - f.bygg.height);
+        for (const r of Pikslar.ILD[f.id] || []) Pikslar.ild(g, bx + r.x, by - f.bygg.height + r.y, r.w, r.h, no, r.glo, Pikslar.ildMaske(f.bygg, r));
+        continue; }
       const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S);
       g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx + 3, sy + 13, 10, 3); g.fillRect(sx + 4, sy + 12, 8, 5);
       g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy - 9);
@@ -415,6 +468,7 @@ window.Motor = (function () {
       });
       if (bak) { g.globalAlpha = 0.4; g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy); g.globalAlpha = 1; }
     }
+    if (dorAnim) teiknDor(no, ox, oy);
     stemning(no, ox, oy);
   }
 
@@ -521,7 +575,7 @@ window.Motor = (function () {
   window.addEventListener("resize", tilpass);
 
   return {
-    VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk, overgang,
+    VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk, overgang, opneDor,
     pause(p) { pausa = p; if (p) halde.clear(); },
     get kart() { return kart; }, get spelar() { return spelar; },
     settSpelar(sprite) { spelar.sprite = sprite; },

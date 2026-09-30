@@ -271,6 +271,7 @@
         await hending([{ t: `Ivar syng «${D.ORD[d.krevOrd].aasen}». Eit varmt ljos fyller trappa ned til arkivet, og blekket trekkjer seg unna.` }, { flagg: "opna:" + d.krevOrd }]);
       }
       if (d.verd) { await verdskart(); return; }
+      await Motor.opneDor(d);
       Motor.last(d.til[0], d.til[1]);
     },
   });
@@ -514,8 +515,11 @@
     if (!fraLagring) hending(D.MANUS.start); else Motor.pause(false);
   }
 
+  // Last all grafikk (og pikselskrifta) før tittelskjermen syner, så ingenting poppar inn seinare.
   Motor.tilpass();
-  visTittel();
+  $("rpg-tittel-val").innerHTML = '<p class="tt-lagra">Lastar grafikk …</p>';
+  Promise.all([Pikslar.forhandslast(Pikslar.alleBilete(D)), document.fonts ? document.fonts.load('16px "Pixelify Sans"').catch(() => {}) : null])
+    .then(() => { Pikslar.figur(D.U.ivar); visTittel(); });
   // Til automatiske testar: les tilstanden og modusen.
   window.RPGTest = { st: () => st, modus: () => modus, lagre };
 })();
