@@ -370,6 +370,23 @@
     }
     return h;
   }
+  /* Dagboka: trådane i forteljinga (opne først) og linjene Ivar har skrive, kapittel for kapittel. */
+  function dagbokHtml() {
+    const kap = n => { const k = (D.KAPITTEL || []).find(k => k.nr === n); return k ? `Kapittel ${n}: ${k.namn}` : `Kapittel ${n}`; };
+    const tr = Object.entries(st.traadar);
+    const opne = tr.filter(([, t]) => !t.lukka), lukka = tr.filter(([, t]) => t.lukka);
+    let h = `<h3>Trådar <small>${opne.length} opne · ${lukka.length} lukka</small></h3>`;
+    h += tr.length ? `<ul class="mn-liste db-traadar">${opne.map(([, t]) => `<li class="db-open">${E(t.tekst)}</li>`).join("")}${lukka.map(([, t]) => `<li class="db-lukka">${E(t.tekst)}</li>`).join("")}</ul>`
+      : `<p class="mn-liten">Ingen spørsmål står opne enno.</p>`;
+    h += `<h3>Dagboka</h3>`;
+    if (!st.dagbok.length) return h + `<p class="mn-liten">Ivar har ikkje skrive noko enno.</p>`;
+    let sist = null;
+    for (const l of st.dagbok) {
+      if (l.kapittel !== sist) { sist = l.kapittel; h += `<p class="db-kapittel">${E(kap(l.kapittel))}</p>`; }
+      h += `<p class="db-linje">${E(l.tekst)}${l.stad ? ` <span class="db-stad">${E(l.stad)}</span>` : ""}</p>`;
+    }
+    return h;
+  }
   function vesenHtml() {
     const ider = Object.keys(D.FIENDAR);
     return `<p class="mn-liten">Vesen Ivar har møtt: ${Object.keys(st.vesen).length} av ${ider.length}.</p><ul class="mn-liste">${ider.map(id => {
@@ -381,7 +398,7 @@
   async function meny() {
     if (modus !== "felt") return;
     Motor.pause(true);
-    const valg = ["Status", "Galdr", "Stev", "Ting", "Ordboka", "Vesen", "Nøkkelting", "Kurset", "Lukk"];
+    const valg = ["Status", "Galdr", "Stev", "Ting", "Ordboka", "Dagboka", "Vesen", "Nøkkelting", "Kurset", "Lukk"];
     let valt = 0;
     menyEl.hidden = false;
     const innhald = () => {
@@ -390,6 +407,7 @@
       if (v === "Galdr") return `<p>Trykk Z eller Enter for å syngje ein galdr her ute. J-orda lækjer, og «kvar» finn gøymde ting.</p><p class="mn-liten">I kamp kan Ivar bruke alle orda. Lydfamilien avgjer kva galdren gjer:</p><ul class="mn-liste">${FAM_ORDEN.slice(0, 5).map(f => `<li style="--fam:${D.FAMILIAR[f].farge}" class="ob-fam-li"><b>${E(D.FAMILIAR[f].namn)}: ${E(D.FAMILIAR[f].evne)}</b><br><small>${E(D.FAMILIAR[f].tekst)}</small></li>`).join("")}</ul>`;
       if (v === "Ting") { const t = Object.entries(st.ting).filter(([, n]) => n > 0); return (t.length ? `<ul class="mn-liste">${t.map(([id, n]) => `<li><b>${E(D.TING[id].namn)}</b> ×${n}<br><small>${E(D.TING[id].tekst)}</small></li>`).join("")}</ul>` : "<p>Skreppa er tom.</p>") + "<p class=\"mn-liten\">Trykk Z eller Enter for å bruke ein ting.</p>"; }
       if (v === "Ordboka") return st.nokkel.includes("ordboka") || ordtal() ? ordbokHtml() : "<p>Ivar har inga bok å skrive i enno.</p>";
+      if (v === "Dagboka") return dagbokHtml();
       if (v === "Vesen") return vesenHtml();
       if (v === "Stev") return stevHtml();
       if (v === "Nøkkelting") return st.nokkel.length ? `<ul class="mn-liste">${st.nokkel.map(id => `<li><b>${E(D.NOKKELTING[id].namn)}</b><br><small>${E(D.NOKKELTING[id].tekst)}</small></li>`).join("")}</ul>` : "<p>Ingen nøkkelting enno.</p>";
