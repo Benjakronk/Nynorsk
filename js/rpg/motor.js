@@ -394,13 +394,20 @@ window.Motor = (function () {
       if (mal.mot) {
         snuMot = aktor(mal.mot);
         if (snuMot) {
-          // Den næraste ledige ruta inntil den andre (kortaste veg). Ikkje inn i ein vegg.
+          // Den næraste ledige ruta inntil den andre (kortaste veg). Ikkje inn i ein vegg, og ikkje
+          // inn på ruta til ein annan figur (Ivar, følgjet eller folk som står attmed).
+          // Er følgjet på den einaste ledige ruta, går ein dit likevel (han flyttar seg ikkje).
           let best = null;
-          for (let d = 0; d < 4; d++) {
-            const cx = snuMot.x + DX[d], cy = snuMot.y + DY[d], c = (kart.fliser[cy] || [])[cx];
-            if (c == null || Pikslar.FAST.has(c) || "DdE".includes(c) || erVatn(cx, cy) || kisteVed(cx, cy)) continue;
-            const v = vegTil(a, cx, cy);
-            if (v && (!best || v.length < best.length)) best = v;
+          const opptatt = (x, y, medFylgje) => (a !== spelar && spelar.x === x && spelar.y === y) || (medFylgje && fylgje && a !== fylgje && fylgje.x === x && fylgje.y === y)
+            || kart.folk.some(f => f !== a && f.sprite && f.x === x && f.y === y);
+          for (const medFylgje of [true, false]) {
+            for (let d = 0; d < 4; d++) {
+              const cx = snuMot.x + DX[d], cy = snuMot.y + DY[d], c = (kart.fliser[cy] || [])[cx];
+              if (c == null || Pikslar.FAST.has(c) || "DdE".includes(c) || erVatn(cx, cy) || kisteVed(cx, cy) || opptatt(cx, cy, medFylgje)) continue;
+              const v = vegTil(a, cx, cy);
+              if (v && (!best || v.length < best.length)) best = v;
+            }
+            if (best) break;
           }
           sti = best || [];
         }
@@ -451,6 +458,7 @@ window.Motor = (function () {
     const a = aktor(kven); if (!a) return;
     const m = typeof retning === "string" && !(retning in RETNINGSNAMN) ? aktor(retning) : null;
     a.dir = m ? retningMot(a.x, a.y, m.x, m.y, a.dir) : typeof retning === "string" ? RETNINGSNAMN[retning] : retning;
+    a.kjensle = null;                                                // kjensla vender mot oss: ho går bort når figuren snur seg
     if (a.grunndir != null) { a.grunndir = a.dir; a.neste = performance.now() + 3000; }
   }
   // Set ein ny person inn på kartet: { namn, u, rute: [x, y] eller merke, retning, atferd, tale }.

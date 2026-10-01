@@ -1,7 +1,7 @@
 <!doctype html>
 <meta charset="utf-8">
 <title>Sjekk scenemotoren</title>
-<!-- Køyrer scenene «heime», «framande» og «minne_far» i spelet og sjekkar at regien gjer det han
+<!-- Køyrer scenene «heime», «framande» og «minne_far» og hendingane på Åsen og i Hovdebygda, og sjekkar at regien gjer det han
      skal: figurar som går, kameraet som følgjer og kjem attende, trådar, dagbok, val og scenekart.
      Opne i ein nettlesar, eller:
      msedge --headless=new --disable-gpu --allow-file-access-from-files --virtual-time-budget=60000 --dump-dom .../sjekk-scene.html -->
@@ -334,6 +334,142 @@ f.onload = async () => {
     w.Kamp.start = kampFor;
     w.console.warn = gamalWarn;
     sjekk(!varsel.some(v => /Regi/.test(v)), `ingen åtvaringar frå regien${varsel.length ? ": " + varsel.join("; ") : ""}`);
+    // 11. Hovdebygda: den framande andre gongen, presten, skammen på Nedre Hovde og småpraten.
+    //     Val blir klikka (velj gir knappen), og den som talar, skal stå på kartet.
+    const s11 = T().st(), varsel11 = [];
+    w.console.warn = (...a) => { varsel11.push(a.join(" ")); gamalWarn.apply(w.console, a); };
+    const taleTekst = () => synleg("#rpg-tale") ? d.querySelector("#rpg-tale").textContent : "";
+    let talarBorte = [];
+    async function gjennom(ferdig, logg, velj) {
+      for (let n = 0; n < 900 && !ferdig(); n++) {
+        if (logg) logg();
+        const knappar = d.querySelectorAll("#rpg-tale button[data-i]");
+        if (knappar.length && synleg("#rpg-tale")) { await vent(250); const i = velj ? velj(taleTekst(), knappar.length) : 0; knappar[i].click(); }
+        else if (synleg("#rpg-tale") || synleg("#rpg-fort") || d.querySelector(".rpg-kort")) tast("z");
+        await vent(70);
+      }
+    }
+    // Den som talar, må finnast på kartet (namnet står først i samtaleboksen).
+    const sjekkTalar = namn => { const t = taleTekst(); for (const n of namn) if (t.startsWith(n) && !M.aktor(n) && !talarBorte.includes(n)) talarBorte.push(n); };
+    const eiRute = () => { const r = M.kart.folk.filter(f => f.sprite).map(f => f.x + "," + f.y).concat(M.spelar.x + "," + M.spelar.y); return new Set(r).size === r.length; };
+    const ferdigFelt = () => !T().iHending() && !synleg("#rpg-tale") && T().modus() === "felt" && !M.spelar.regi;
+
+    // a) Den framande ved kyrkjestien. Lekpredikanten kjem opp til vegen, og den framande går ut av biletet mot aust.
+    s11.flagg.framande1 = true; delete s11.flagg.framande2;
+    M.last("bygda", "3"); M.plasser(15, 9, 2); await vent(400);
+    talarBorte = [];
+    let predikantKom = false, framandeAust = 0, overlapp = false;
+    const framandeVar = !!M.aktor("Den framande");
+    tast("z");
+    await gjennom(() => s11.flagg.framande2 && !M.aktor("Den framande") && ferdigFelt(), () => {
+      sjekkTalar(["Den framande"]);
+      const p = M.aktor("Lekpredikanten"), fr = M.aktor("Den framande");
+      if (p && p.x === 17 && p.y === 12 && /Tenk på det/.test(taleTekst())) predikantKom = true;
+      if (fr) framandeAust = Math.max(framandeAust, fr.x);
+      if (!eiRute()) overlapp = true;
+    });
+    sjekk(framandeVar && s11.flagg.framande2 && !M.aktor("Den framande"), "den framande stod ved stien, og er borte etter scena");
+    sjekk(predikantKom, "lekpredikanten kom opp til vegen medan den framande tala");
+    sjekk(framandeAust >= 36, `den framande gjekk austover vegen ut av biletet (x ${framandeAust})`);
+    sjekk(!talarBorte.length && !overlapp, `den som talar, står på kartet, og ingen står på same rute${talarBorte.length ? " (" + talarBorte.join(", ") + ")" : ""}`);
+    sjekk(s11.dagbok.some(l => /sommarfuglane/.test(l.tekst)), "den framande står i Dagboka");
+    for (let n = 0; n < 60 && M.aktor("Lekpredikanten").regi; n++) await vent(50);
+    const pr11 = M.aktor("Lekpredikanten");
+    sjekk(pr11.x === 19 && pr11.y === 15 && kanGaa(), `lekpredikanten gjekk attende til plassen sin (${pr11.x},${pr11.y}), og Ivar kan gå`);
+    M.last("bygda", "3"); await vent(200);
+    sjekk(!M.aktor("Den framande"), "den framande er ikkje i bygda når kartet blir lasta att");
+
+    // b) Den framande hoppa over: utfallet er gjort, og han er borte.
+    delete s11.flagg.framande2; M.last("bygda", "3"); M.plasser(15, 9, 2); await vent(300);
+    tast("z");
+    for (let n = 0; n < 100 && !synleg("#rpg-tale"); n++) await vent(50);
+    await vent(200); tast("x"); await vent(150); tast("z");
+    await gjennom(() => s11.flagg.framande2 && ferdigFelt());
+    await vent(300);
+    sjekk(s11.flagg.framande2 && !M.aktor("Den framande") && !M.snogg && !M.svart && kanGaa(), "hoppa over: flagget er sett, han er borte, og Ivar kan gå");
+
+    // c) Presten kneler attmed løparen, står opp, peikar mot prestegarden og gir nøkkelen. Ivar svarer «Kanskje litt».
+    delete s11.flagg.prest_bed; delete s11.flagg.latt; s11.nokkel = s11.nokkel.filter(n => n !== "prestenokkel");
+    M.last("kyrkja", "1"); await vent(200);
+    const prest0 = M.aktor("Presten");
+    sjekk(prest0.x === 7 && prest0.y === 3 && prest0.pose === "knele" && prest0.dir === 1, `presten kneler attmed løparen og ser mot altaret (${prest0.x},${prest0.y} ${prest0.pose})`);
+    M.plasser(6, 3, 3); await vent(200);
+    talarBorte = [];
+    let peika11 = false, klokkarKom = false, snuddeBort = false;
+    tast("z");
+    await gjennom(() => s11.flagg.prest_bed && ferdigFelt(), () => {
+      sjekkTalar(["Presten", "Klokkaren"]);
+      const p = M.aktor("Presten"), k = M.aktor("Klokkaren"), t = taleTekst();
+      if (/Blækket i Kirke/.test(t) && p.pose === "peike" && p.dir === 3) peika11 = true;
+      if (/Her er Nøglen/.test(t) && k.x === 5 && k.y === 5 && k.dir === 1) klokkarKom = true;
+      if (/Lidt\?/.test(t) && p.dir === 3 && !p.kjensle) snuddeBort = true;
+    }, t => /Kva svarer/.test(t) ? 1 : 0);
+    sjekk(peika11, "presten står opp og peikar mot prestegarden");
+    sjekk(klokkarKom, "klokkaren kom bort og lydde");
+    sjekk(snuddeBort, "ved «Kanskje litt» snur presten ryggen til Ivar");
+    sjekk(s11.val.trolldom === 1 && s11.nokkel.includes("prestenokkel") && s11.flagg.prest_bed, "valet er hugsa, og Ivar fekk nøkkelen");
+    sjekk(!talarBorte.length, "den som talar, står på kartet");
+    for (let n = 0; n < 80 && M.aktor("Klokkaren").regi; n++) await vent(50);
+    const p11 = M.aktor("Presten"), k11 = M.aktor("Klokkaren");
+    sjekk(p11.pose === "knele" && p11.dir === 1 && k11.x === 2 && k11.y === 5 && kanGaa(), `presten kneler att, og klokkaren er attende på plassen sin (${k11.x},${k11.y})`);
+    // Etterpå: presten står opp, talar og kneler att.
+    let stodOpp = false;
+    M.plasser(6, 3, 3); await vent(100);
+    tast("z");
+    await gjennom(() => ferdigFelt() && stodOpp, () => {
+      const p = M.aktor("Presten");
+      if (/Gud være med Dem/.test(taleTekst()) && !p.pose && p.dir === 2) stodOpp = true;
+    });
+    await vent(200);
+    sjekk(stodOpp && M.aktor("Presten").pose === "knele", "andre gongen står presten opp mot Ivar og kneler att etterpå");
+    // Når blekket er borte, står presten innanfor altarringen.
+    s11.flagg.latt = true; M.last("kyrkja", "1"); await vent(200);
+    const p11b = M.aktor("Presten");
+    sjekk(p11b.x === 6 && p11b.y === 2 && !p11b.pose && M.kart.folk.filter(f => f.namn === "Presten").length === 1, "etter blekklatten står presten i altarringen, éin gong");
+    delete s11.flagg.latt;
+
+    // d) Skammen på Nedre Hovde. Først feil svar: bestefaren snur ryggen til.
+    delete s11.flagg.skam_loyst; delete s11.ord.heim; delete s11.ord.ikkje;
+    const graut = s11.ting.romegraut || 0;
+    M.last("nedre-hovde", "1"); M.plasser(7, 5, 3); await vent(300);
+    tast("z");
+    await gjennom(() => s11.scener.skammen && ferdigFelt(), null, () => 1);
+    sjekk(!s11.flagg.skam_loyst && M.aktor("Bestefaren").dir === 3, "feil svar: bestefaren snur seg bort frå Ivar, og skammen er ikkje løyst");
+    // Så rett svar: mora og dottera går bort til bestefaren.
+    talarBorte = []; overlapp = false;
+    let moraVed = false;
+    M.plasser(8, 6, 1); await vent(200);
+    tast("z");
+    await gjennom(() => s11.flagg.skam_loyst && ferdigFelt(), () => {
+      sjekkTalar(["Bestefaren", "Mora", "Dottera"]);
+      if (/Far … Du har rett/.test(taleTekst()) && naer(M.aktor("Mora"), M.aktor("Bestefaren"))) moraVed = true;
+      if (!eiRute()) overlapp = true;
+    }, () => 0);
+    sjekk(moraVed, "mora gjekk bort til bestefaren før ho tala");
+    sjekk(naer(M.aktor("Dottera"), M.aktor("Bestefaren")), "dottera står attmed bestefaren");
+    sjekk(s11.ord.heim && s11.ord.ikkje && (s11.ting.romegraut || 0) === graut + 2, "Ivar høyrde «heime» og «ikkje» og fekk to skåler rømmegraut");
+    sjekk(!talarBorte.length && !overlapp, "den som talar, står på kartet, og ingen står på same rute");
+    for (let n = 0; n < 80 && M.aktor("Mora").regi; n++) await vent(50);
+    sjekk(M.aktor("Mora").x === 3 && M.aktor("Mora").y === 2 && kanGaa(), "mora gjekk attende til grua, og Ivar kan gå");
+
+    // e) Småpraten: kvar replikk har ein talar på kartet, og hendinga blir ferdig. «*»: med orda Ivar har.
+    const ordFor11 = s11.ord;
+    for (const [kart, merke, manus, flagg] of [["bygda", "!", "bonde"], ["bygda", "*", "kone"], ["bygda", "@", "kremmar"], ["bygda", "$", "predikant"],
+      ["kyrkja", "@", "klokkar"], ["prestegarden", "@", "tenestejente"], ["prestegarden", "@", "tenestejente", "latt"], ["nedre-hovde", "@", "mor"], ["nedre-hovde", "%", "dotter"],
+      ["nedre-hovde", "@", "mor", "skam_loyst"], ["nedre-hovde", "$", "bestefar", "skam_loyst"], ["vegen", "@", "fiskar"], ["vegen", "@", "fiskar", "*"]]) {
+      s11.ord = flagg === "*" ? ordFor11 : {};
+      delete s11.flagg.latt; delete s11.flagg.skam_loyst; if (flagg && flagg !== "*") s11.flagg[flagg] = true;
+      M.last(kart, "1"); await vent(150);
+      const f = M.kart.folk.find(f => f.merke === merke);
+      talarBorte = [];
+      let ferdig = false;
+      T().hending(w.RPGData.MANUS[manus]).then(() => { ferdig = true; });
+      await gjennom(() => ferdig && !T().iHending(), () => sjekkTalar([f.namn]), (t, n) => n - 1);   // butikken: «Ingenting»
+      sjekk(ferdig && !talarBorte.length && kanGaa(), `${manus}${flagg ? " (" + flagg + ")" : ""}: ${f.namn} talar på kartet, og hendinga er ferdig`);
+    }
+    s11.ord = ordFor11; s11.flagg.skam_loyst = true;
+    w.console.warn = gamalWarn;
+    sjekk(!varsel11.some(v => /Regi/.test(v)), `ingen åtvaringar frå regien i Hovdebygda${varsel11.length ? ": " + varsel11.join("; ") : ""}`);
     if (gamalLagring == null) w.localStorage.removeItem(NOKKEL); else w.localStorage.setItem(NOKKEL, gamalLagring);
   } catch (e) { ut.push("FEIL " + e.stack); }
   document.getElementById("ut").textContent = ut.join("\n");

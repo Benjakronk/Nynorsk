@@ -99,6 +99,11 @@
   // Steg for regien i scener: figurar, kamera og effektar. Gir eit løfte.
   function regiSteg(s) {
     if (s.gaa) return Motor.gaa(regiNamn(s.gaa), { sti: s.sti, rute: s.rute, mot: s.mot && regiNamn(s.mot), ut: s.ut }, s.fart);
+    if (s.snu && s.fraa) {                                           // snur ryggen til nokon
+      const a = Motor.aktor(regiNamn(s.snu)), b = Motor.aktor(regiNamn(s.fraa));
+      if (a && b) Motor.snu(regiNamn(s.snu), a.x > b.x ? 3 : a.x < b.x ? 2 : a.y > b.y ? 0 : 1);
+      return null;
+    }
     if (s.snu) { Motor.snu(regiNamn(s.snu), s.mot ? regiNamn(s.mot) : s.retning); return null; }
     if (s.inn) { Motor.inn(s.inn); return null; }
     if (s.pose) { Motor.pose(s.p, regiNamn(s.pose)); return null; }
@@ -249,9 +254,10 @@
     st.scener[id] = true;
     return r;
   }
+  let hendingar = 0;                                                 // kor mange hendingar som køyrer (for testane)
   async function hending(steg) {
-    Motor.pause(true);
-    try { await kjoyr(steg); } finally { Motor.kjensle(null, "alle"); Motor.pose(null, "alle"); if (modus === "felt") Motor.pause(false); }
+    Motor.pause(true); hendingar++;
+    try { await kjoyr(steg); } finally { hendingar--; Motor.kjensle(null, "alle"); Motor.pose(null, "alle"); if (modus === "felt") Motor.pause(false); }
   }
 
   /* ---------- Kamp ---------- */
@@ -662,5 +668,5 @@
   Promise.all([Pikslar.forhandslast(Pikslar.alleBilete(D)), document.fonts ? document.fonts.load('16px "Pixelify Sans"').catch(() => {}) : null])
     .then(() => { Pikslar.figur(D.U.ivar); visTittel(); });
   // Til automatiske testar: les tilstanden og modusen.
-  window.RPGTest = { st: () => st, modus: () => modus, lagre, lagra, hending, scene: id => hending([{ scene: id }]), forScene: () => forScene };
+  window.RPGTest = { st: () => st, modus: () => modus, lagre, lagra, hending, scene: id => hending([{ scene: id }]), forScene: () => forScene, iHending: () => hendingar > 0 };
 })();

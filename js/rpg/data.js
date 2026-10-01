@@ -50,7 +50,7 @@
      { gaa: "Namn", rute: [x, y] }      gå til ei rute (eller eit merke: rute: "@")
      { gaa: "Namn", sti: "h3o2" }       gå ein fast sti (n ned, o opp, v venstre, h høgre)
                                         ut: true på eit gaa-steg: borte når han er framme (inn ei dør)
-     { snu: "Namn", retning: "opp" }    eller { snu: "Namn", mot: "Ivar" }
+     { snu: "Namn", retning: "opp" }    eller { snu: "Namn", mot: "Ivar" }, eller ryggen til: fraa: "Ivar"
      { pose: "Namn", p: "knele" }       knele, sitje, peike, liggje eller sove (p: null tek posen bort)
      { inn: { namn, u, rute, retning } } ny person på kartet
      { kamera: "Namn" | [x, y] | null } kameraet glir til nokon (og følgjer), til ei rute, eller attende
@@ -375,7 +375,9 @@ window.RPGData = (function () {
       ],
       dorer: [{ ved: [6, 10], til: ["bygda", "3"] }],
       folk: [
-        { merke: "%", u: "prest", namn: "Presten", atferd: "stille", retning: 0, tale: "prest" },
+        // Presten kneler framfor altarringen og bed til blekket er borte. Etter det står han innanfor ringen.
+        { merke: "p", u: "prest", namn: "Presten", atferd: "stille", retning: 1, pose: "knele", tale: "prest", vis: st => !st.flagg.latt },
+        { merke: "%", u: "prest", namn: "Presten", atferd: "stille", retning: 0, tale: "prest", vis: st => !!st.flagg.latt },
         { merke: "@", u: "klokkar", namn: "Klokkaren", atferd: "snu", retning: 3, snu: [0, 1, 3], tale: "klokkar" },
       ],
     },
@@ -545,7 +547,7 @@ window.RPGData = (function () {
     },
   };
   // Merke som ikkje står i karta (framfor dører som fører ut att).
-  const EKSTRA_MERKE = { ekset: { d: [10, 4] } };
+  const EKSTRA_MERKE = { ekset: { d: [10, 4] }, kyrkja: { p: [7, 3] } };     // p: der presten kneler, attmed løparen
 
   /* ---------- Verdskartet (frå kapittel 2) ---------- */
   const STADER = [];
@@ -789,6 +791,98 @@ window.RPGData = (function () {
         { dagbok: "Ved lampa i stova kom eg til å tenkje på far. Han lærte meg namna på alle plassane rundt Åsen." },
       ],
     },
+    /* Den framande i bygda, andre gongen. Han står ved kyrkjestien og viser fram sommarfuglane.
+       Lekpredikanten høyrer kva han seier, og kjem opp til vegen. Etterpå går den framande austover vegen mot Ekset,
+       og kameraet blir ståande til han er ute av biletet. */
+    framande2: {
+      namn: "Sommarfuglane", stad: "Hovdebygda", kort: false, hopp: true, med: ["Ivar", "Den framande", "Lekpredikanten", "Gamal kone"],
+      steg: [
+        { snu: "Ivar", mot: "Den framande" },
+        { s: "Den framande", t: "Sjå her. Er dei ikkje vakre? Kvar sommarfugl har si eiga nål.", kjensle: "glad" },
+        { snu: "Den framande", retning: "opp" },                       // opp mot kyrkja
+        { s: "Den framande", t: "Kvar gong eit ord blir sagt, blir det litt annleis. Er ikkje det ei sorg? Eg vil at dei skal stå stille.", kjensle: "trist" },
+        { snu: "Den framande", mot: "Ivar" },
+        { s: "Den framande", t: "Du har skrive mykje i boka di alt. Godt. Det som er skrive, står." },
+        // Lekpredikanten høyrer det og kjem opp til vegen.
+        { saman: [
+          [{ vent: 300 }, { gaa: "Lekpredikanten", rute: [17, 12] }, { snu: "Lekpredikanten", mot: "Den framande", kjensle: "sint", kven: "Lekpredikanten" }],
+          [{ s: "Den framande", t: "Har du merka det? Orda har kraft. Men krafta held seg berre så lenge ingen kan endre dei. Den som rår over orda, rår over galdrane.", kjensle: "tenkje" }],
+        ] },
+        { s: "Den framande", t: "Tenk på det, Ivar. Eit mål med éi rett form for kvart ord. Då kan ingen syngje ein galdr utan lov.", kjensle: "glad" },
+        { flagg: "framande2" },
+        { saman: [
+          [{ gaa: "Den framande", rute: [15, 11], fart: 330 }, { gaa: "Den framande", sti: "h21", fart: 220 }],
+          [{ vent: 700 }, { kamera: [24, 10], ms: 2200 }, { snu: "Gamal kone", retning: "opp", kjensle: "sjokk", kven: "Gamal kone" }],
+        ] },
+        { fjern: "Den framande" },
+        { kamera: null, ms: 900 },
+        { gaa: "Lekpredikanten", rute: "$", ikkjeVent: true },
+        { kjensle: "tenkje", kven: "Ivar" }, { vent: 600 },
+        { dagbok: "Den framande var i bygda att. Han vil at orda skal stå stille, som sommarfuglane på nålene hans." },
+      ],
+    },
+    /* Presten kneler framfor altarringen og står opp når Ivar kjem. Han peikar mot prestegarden,
+       og klokkaren kjem bort for å høyre. Når Ivar har fått nøkkelen, kneler presten att. */
+    presten: {
+      namn: "Presten", stad: "Hovdekyrkja", kort: false, hopp: true, med: ["Ivar", "Presten", "Klokkaren"],
+      steg: [
+        { pose: "Presten", p: null },
+        { snu: "Presten", mot: "Ivar" },
+        { s: "Presten", t: "Ah, De maa være Ivar fra Aasen. Jeg har hørt, at De er flink til at læse." },
+        { snu: "Presten", retning: "høgre" }, { pose: "Presten", p: "peike" },   // mot prestegarden
+        { s: "Presten", t: "Blækket i Kirkebøgerne vil ikke holde op at skrive. Det løber ud over Siderne og ned ad Væggene i Præstegaarden." },
+        { pose: "Presten", p: null }, { snu: "Presten", mot: "Ivar" },
+        { saman: [
+          [{ gaa: "Klokkaren", rute: [5, 5] }, { snu: "Klokkaren", retning: "opp" }],
+          [{ s: "Presten", t: "Tjenestefolkene taler saa underligt stift. Jeg tør ikke gaa ned i Arkivet alene.", kjensle: "trist" }],
+        ] },
+        { s: "Presten", t: "Her er Nøglen. Men sig mig, min Søn: De har vel ikke med Trolddom at gjøre?", kjensle: "tenkje" },
+        { val: "Kva svarer Ivar?", alt: ["Det er berre ord.", "Kanskje litt."], id: "trolldom", svar: [
+          [{ s: "Presten", t: "Berre ord? Hm. Ordet er Guds Gave. Brug det vel.", kjensle: "nikk" }],
+          [
+            { snu: "Presten", fraa: "Ivar", kjensle: "sjokk", kven: "Klokkaren" },
+            { s: "Presten", t: "Lidt? Jeg vil ikke høre mere. Men Blækket maa bort." },
+            { snu: "Presten", mot: "Ivar" },
+          ],
+        ] },
+        { gi: "prestenokkel" }, { flagg: "prest_bed" }, { t: "Ivar fekk nøkkelen til prestegarden." },
+        { gaa: "Klokkaren", rute: "@", ikkjeVent: true },
+        { snu: "Presten", retning: "opp" }, { pose: "Presten", p: "knele" },
+      ],
+    },
+    /* Skammen på Nedre Hovde. Bestefaren talar for første gong sidan hausten, mora går bort
+       til han, og dottera kjem etter. Feil svar: han snur ryggen til, og Ivar kan prøve att. */
+    skammen: {
+      namn: "Skammen", stad: "Stova på Nedre Hovde", kort: false, med: ["Ivar", "Bestefaren", "Mora", "Dottera"],
+      steg: [
+        { s: "Bestefaren", t: "…", kjensle: "trist" },
+        { val: "Bestefaren ser ned i golvet. Kva seier Ivar?", alt: ["Fortel korleis de sa det i gamle dagar.", "Du bør snakke fint, du òg."], svar: [
+          [
+            { s: "Bestefaren", t: "Korleis vi sa det? Då eg var gut, sa vi at vi skulle ⟪heime⟫ før det vart mørkt.", kjensle: "tenkje" },
+            { lytt: ["heim", "heime"] },
+            { snu: "Dottera", mot: "Bestefaren", kjensle: "sjokk", kven: "Dottera" },
+            { snu: "Mora", mot: "Bestefaren" },
+            { s: "Bestefaren", t: "Heim. Vi hadde ikkje skam for det. Det var berre slik det heitte.", kjensle: "nikk" },
+            { gaa: "Mora", mot: "Bestefaren" },
+            { snu: "Bestefaren", mot: "Mora" },
+            { s: "Mora", t: "Far … Du har rett. Det er ⟪ikkje⟫ noko skam i å tale som mor mi gjorde.", kjensle: "trist" },
+            { lytt: ["ikkje", "ikkje"] },
+            { gaa: "Dottera", mot: "Bestefaren", kjensle: "glad", kven: "Dottera" },
+            { blink: 1 },
+            { t: "Noko løyser seg i stova. Skammen lettar som tåke. Ivar kjenner seg sterkare.", kjensle: "glad" },
+            { flagg: "skam_loyst" },
+            { snu: "Mora", mot: "Ivar" },
+            { gi: "romegraut", n: 2 }, { t: "Mora gav Ivar to skåler rømmegraut.", kjensle: "glad", kven: "Mora" },
+            { gaa: "Mora", rute: "@", ikkjeVent: true },
+          ],
+          [
+            { s: "Bestefaren", t: "…" },
+            { snu: "Bestefaren", fraa: "Ivar" },
+            { t: "Bestefaren snur seg mot veggen. Kanskje det var feil ting å seie.", kjensle: "trist" },
+          ],
+        ] },
+      ],
+    },
   };
 
   const MANUS = {
@@ -834,106 +928,85 @@ window.RPGData = (function () {
     ] }],
     /* Hovdebygda */
     bonde: [{ dersom: harOrd("eg"), da: [
-      { s: "Bonde", t: "Presten er ein god mann. Men når han snakkar, kjenner eg meg dum." },
+      { s: "Bonde", t: "Presten er ein god mann. Men når han snakkar, kjenner eg meg dum.", kjensle: "trist" },
     ], elles: [
-      { s: "Bonde", t: "Jeg … altså … Presten seier vi skal tale ordentleg, som det står i bøkene." },
-      { s: "Bonde", t: "⟪E⟫ veit ikkje lenger korleis eg skal seie det. Det kjennest som om munnen min er full av blekk." },
+      { s: "Bonde", t: "Jeg … altså … Presten seier vi skal tale ordentleg, som det står i bøkene.", kjensle: "tenkje" },
+      { s: "Bonde", t: "⟪E⟫ veit ikkje lenger korleis eg skal seie det. Det kjennest som om munnen min er full av blekk.", kjensle: "trist" },
       { lytt: ["eg", "e"] },
     ] }],
     kone: [{ dersom: harOrd("draum"), da: [
-      { s: "Gamal kone", t: "Spør vetten kven han er, og gi han det rette svaret. Det er haugbonden, veit du." },
+      { s: "Gamal kone", t: "Spør vetten kven han er, og gi han det rette svaret. Det er haugbonden, veit du.", kjensle: "nikk" },
     ], elles: [
-      { s: "Gamal kone", t: "I natt hadde eg ein ⟪draum⟫ om haugen oppe i utmarka." },
+      { s: "Gamal kone", t: "I natt hadde eg ein ⟪draum⟫ om haugen oppe i utmarka.", kjensle: "tenkje" },
       { lytt: ["draum", "draum"] },
-      { s: "Gamal kone", t: "Den gamle haugbonden har gløymt namnet sitt. Og når ein vette gløymer namnet sitt, blir han vond." },
+      { snu: "Gamal kone", retning: "venstre" },                     // ser bort mot Åsen og utmarka
+      { s: "Gamal kone", t: "Den gamle haugbonden har gløymt namnet sitt. Og når ein vette gløymer namnet sitt, blir han vond.", kjensle: "trist" },
       { flagg: "hint_haugbonde" },
     ] }],
     kremmar: [
       { dersom: harOrd("mat"), da: [], elles: [
-        { s: "Kremmaren", t: "Treng du ⟪mat⟫ til vegen? Eg har flatbrød, graut og kaffi frå byen." },
+        { s: "Kremmaren", t: "Treng du ⟪mat⟫ til vegen? Eg har flatbrød, graut og kaffi frå byen.", kjensle: "glad" },
         { lytt: ["mat", "mat"] },
       ] },
       { dersom: st => st.ord.kaka && !st.ord.kaka.former.kaka, da: [
-        { s: "Kremmaren", t: "Og ⟪kaka⟫ er fersk i dag. Kake, kaka, same kva du kallar ho." },
+        { s: "Kremmaren", t: "Og ⟪kaka⟫ er fersk i dag. Kake, kaka, same kva du kallar ho.", kjensle: "nikk" },
         { lytt: ["kaka", "kaka"] },
       ] },
       { butikk: ["flatbrod", "romegraut", "kaffi", "luktesalt"] },
     ],
+    // Lekpredikanten talar ut mot vegen, og så til Ivar.
     predikant: [{ dersom: harOrd("ljos"), da: [
-      { s: "Lekpredikanten", t: "Eg er ingen prest, berre ein bonde som talar. Men det var Hauge òg." },
+      { s: "Lekpredikanten", t: "Eg er ingen prest, berre ein bonde som talar. Men det var Hauge òg.", kjensle: "nikk" },
     ], elles: [
+      { snu: "Lekpredikanten", retning: "opp" },
       { s: "Lekpredikanten", t: "Høyr her, folk! Guds ord toler å bli sagt på vårt eige mål!" },
-      { s: "Lekpredikanten", t: "Johannes skriv at i opphavet var Ordet. Og på pinsedagen høyrde kvar mann bodskapen på sitt eige mål." },
+      { s: "Lekpredikanten", t: "Johannes skriv at i opphavet var Ordet. Og på pinsedagen høyrde kvar mann bodskapen på sitt eige mål.", kjensle: "glad" },
+      { snu: "Lekpredikanten", mot: "Ivar" }, { pose: "Lekpredikanten", p: "peike" },
       { s: "Lekpredikanten", t: "Du der, gut. Du lyttar betre enn dei fleste. Gå med ⟪ljos⟫. Det mørke blekket toler ikkje ljoset." },
       { lytt: ["ljos", "ljos"] },
     ] }],
-    framande2: [
-      { s: "Den framande", t: "Sjå her. Er dei ikkje vakre? Kvar sommarfugl har si eiga nål." },
-      { s: "Den framande", t: "Kvar gong eit ord blir sagt, blir det litt annleis. Er ikkje det ei sorg? Eg vil at dei skal stå stille." },
-      { s: "Den framande", t: "Du har skrive mykje i boka di alt. Godt. Det som er skrive, står." },
-      { s: "Den framande", t: "Har du merka det? Orda har kraft. Men krafta held seg berre så lenge ingen kan endre dei. Den som rår over orda, rår over galdrane." },
-      { s: "Den framande", t: "Tenk på det, Ivar. Eit mål med éi rett form for kvart ord. Då kan ingen syngje ein galdr utan lov." },
-      { flagg: "framande2" }, { fjern: "&" },
-    ],
+    framande2: [{ scene: "framande2" }],
     /* Nedre Hovde: skammen */
     mor: [{ dersom: st => st.flagg.skam_loyst, da: [
-      { s: "Mora", t: "Det er godt å høyre far snakke att. Takk, Ivar." },
+      { s: "Mora", t: "Det er godt å høyre far snakke att. Takk, Ivar.", kjensle: "glad" },
     ], elles: [
-      { s: "Mora", t: "Goddag. Vi … vi taler ikke saadan her i huset." },
-      { s: "Mora", t: "Presten sa at ungane må lære å tale rett. Så no talar vi rett. Alle saman." },
+      { s: "Mora", t: "Goddag. Vi … vi taler ikke saadan her i huset.", kjensle: "sjokk" },
+      { snu: "Mora", fraa: "Ivar" },
+      { s: "Mora", t: "Presten sa at ungane må lære å tale rett. Så no talar vi rett. Alle saman.", kjensle: "trist" },
     ] }],
     dotter: [{ dersom: st => st.flagg.skam_loyst, da: [
-      { s: "Dottera", t: "Bestefar fortel om gamle dagar no. Han hugsar så mange ord!" },
+      { s: "Dottera", t: "Bestefar fortel om gamle dagar no. Han hugsar så mange ord!", kjensle: "glad" },
     ], elles: [
-      { s: "Dottera", t: "Mor seier vi må snakke fint, som presten. Elles blir vi til narr." },
-      { s: "Dottera", t: "Bestefar har ikkje sagt eit ord sidan hausten. Kanskje han ikkje veit korleis ein talar fint." },
+      { s: "Dottera", t: "Mor seier vi må snakke fint, som presten. Elles blir vi til narr.", kjensle: "trist" },
+      { snu: "Dottera", mot: "Bestefaren" },
+      { s: "Dottera", t: "Bestefar har ikkje sagt eit ord sidan hausten. Kanskje han ikkje veit korleis ein talar fint.", kjensle: "tenkje" },
     ] }],
     bestefar: [{ dersom: st => st.flagg.skam_loyst, da: [
-      { s: "Bestefaren", t: "Eg hadde nær gløymt korleis det kjendest å seie det rett ut." },
-    ], elles: [
-      { s: "Bestefaren", t: "…" },
-      { val: "Bestefaren ser ned i golvet. Kva seier Ivar?", alt: ["Fortel korleis de sa det i gamle dagar.", "Du bør snakke fint, du òg."], svar: [
-        [
-          { s: "Bestefaren", t: "Korleis vi sa det? Då eg var gut, sa vi at vi skulle ⟪heime⟫ før det vart mørkt." },
-          { lytt: ["heim", "heime"] },
-          { s: "Bestefaren", t: "Heim. Vi hadde ikkje skam for det. Det var berre slik det heitte." },
-          { s: "Mora", t: "Far … Du har rett. Det er ⟪ikkje⟫ noko skam i å tale som mor mi gjorde." },
-          { lytt: ["ikkje", "ikkje"] },
-          { t: "Noko løyser seg i stova. Skammen lettar som tåke. Ivar kjenner seg sterkare." },
-          { flagg: "skam_loyst" }, { gi: "romegraut", n: 2 }, { t: "Mora gav Ivar to skåler rømmegraut." },
-        ],
-        [{ s: "Bestefaren", t: "…" }, { t: "Bestefaren snur seg mot veggen. Kanskje det var feil ting å seie." }],
-      ] },
-    ] }],
+      { s: "Bestefaren", t: "Eg hadde nær gløymt korleis det kjendest å seie det rett ut.", kjensle: "glad" },
+    ], elles: [{ scene: "skammen" }] }],
     /* Kyrkja */
     prest: [{ dersom: st => st.flagg.latt, da: [
-      { s: "Presten", t: "Kirkebøgerne er stille igjen. De har gjort Sognet en stor Tjeneste, Ivar." },
+      { s: "Presten", t: "Kirkebøgerne er stille igjen. De har gjort Sognet en stor Tjeneste, Ivar.", kjensle: "glad" },
     ], elles: [{ dersom: st => st.flagg.prest_bed, da: [
+      // Presten står opp frå bøna, talar, og kneler att ved altarringen.
+      { pose: "Presten", p: null }, { snu: "Presten", mot: "Ivar" },
       { s: "Presten", t: "Gud være med Dem i Arkivet. Døren er i Kontoret, bag Tjenestepigen." },
-    ], elles: [
-      { s: "Presten", t: "Ah, De maa være Ivar fra Aasen. Jeg har hørt, at De er flink til at læse." },
-      { s: "Presten", t: "Blækket i Kirkebøgerne vil ikke holde op at skrive. Det løber ud over Siderne og ned ad Væggene i Præstegaarden." },
-      { s: "Presten", t: "Tjenestefolkene taler saa underligt stift. Jeg tør ikke gaa ned i Arkivet alene." },
-      { s: "Presten", t: "Her er Nøglen. Men sig mig, min Søn: De har vel ikke med Trolddom at gjøre?" },
-      { val: "Kva svarer Ivar?", alt: ["Det er berre ord.", "Kanskje litt."], svar: [
-        [{ s: "Presten", t: "Berre ord? Hm. Ordet er Guds Gave. Brug det vel." }],
-        [{ s: "Presten", t: "Lidt? Jeg vil ikke høre mere. Men Blækket maa bort." }],
-      ] },
-      { gi: "prestenokkel" }, { flagg: "prest_bed" }, { t: "Ivar fekk nøkkelen til prestegarden." },
-    ] }] }],
+      { snu: "Presten", retning: "opp" }, { pose: "Presten", p: "knele" },
+    ], elles: [{ scene: "presten" }] }] }],
     klokkar: [{ dersom: harOrd("bok"), da: [
-      { s: "Klokkaren", t: "Lysestaken ved altaret brenn alltid. Her inne har blekket ingen makt." },
+      { s: "Klokkaren", t: "Lysestaken ved altaret brenn alltid. Her inne har blekket ingen makt.", kjensle: "glad" },
     ], elles: [
       { s: "Klokkaren", t: "Sidan 1736 har alle måtta lese for presten før dei vart konfirmerte. Difor kan folk her lese, sjølv om det er på dansk." },
-      { s: "Klokkaren", t: "Ei ⟪bok⟫ er ei bok, same kva mål ho er skriven på. Det har eg alltid sagt." },
+      { s: "Klokkaren", t: "Ei ⟪bok⟫ er ei bok, same kva mål ho er skriven på. Det har eg alltid sagt.", kjensle: "nikk" },
       { lytt: ["bok", "bok"] },
-      { s: "Klokkaren", t: "Kyrkja er ein fristad. Blekket kjem ikkje inn her. Syng med oss ved lysestaken når du er trøytt." },
+      { s: "Klokkaren", t: "Kyrkja er ein fristad. Blekket kjem ikkje inn her. Syng med oss ved lysestaken når du er trøytt.", kjensle: "glad" },
     ] }],
     tenestejente: [{ dersom: st => st.flagg.latt, da: [
-      { s: "Tenestejenta", t: "Eg kan snakke som eg vil att! Det var som å ha blekk i munnen." },
+      { s: "Tenestejenta", t: "Eg kan snakke som eg vil att! Det var som å ha blekk i munnen.", kjensle: "glad" },
     ], elles: [
-      { s: "Tenestejenta", t: "Hr. Pastoren er ikke hjemme. Arkivet er … eg meiner … det er noko som søl der inne." },
-      { s: "Tenestejenta", t: "Døra er bak kontoret. Pass deg for pennane. Dei rettar på alt ein seier." },
+      { s: "Tenestejenta", t: "Hr. Pastoren er ikke hjemme. Arkivet er … eg meiner … det er noko som søl der inne.", kjensle: "sjokk" },
+      { snu: "Tenestejenta", retning: "opp" },                       // mot døra til kontoret
+      { s: "Tenestejenta", t: "Døra er bak kontoret. Pass deg for pennane. Dei rettar på alt ein seier.", kjensle: "trist" },
     ] }],
     /* Utmarka */
     gjetar: [
@@ -971,9 +1044,10 @@ window.RPGData = (function () {
     ],
     /* Vegen og Ekset */
     fiskar: [{ dersom: harOrd("berre"), da: [
-      { s: "Fiskar", t: "Blekket kjem ned elva frå bygda. Det er ikkje rett." },
+      { snu: "Fiskar", retning: "venstre" },                         // ut mot elva
+      { s: "Fiskar", t: "Blekket kjem ned elva frå bygda. Det er ikkje rett.", kjensle: "trist" },
     ], elles: [
-      { s: "Fiskar", t: "Det er ⟪bære⟫ blekk i garnet mitt no! Ikkje ein einaste fisk." },
+      { s: "Fiskar", t: "Det er ⟪bære⟫ blekk i garnet mitt no! Ikkje ein einaste fisk.", kjensle: "sint" },
       { lytt: ["berre", "bære"] },
     ] }],
     husmann: [{ dersom: harOrd("gata"), da: [

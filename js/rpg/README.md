@@ -90,12 +90,13 @@ Figurane blir nemnde med namn: «Ivar» er spelaren, «Huldra» er følgjet når
 |---|---|
 | `{ s, t, kjensle, kven }` | replikk, med kjensle på den som talar eller på `kven` |
 | `{ scene: "id" }` | spelar ei scene frå `SCENER` |
-| `{ gaa: "Namn", mot: "Ivar" }` | går bort til nokon og snur seg mot han |
+| `{ gaa: "Namn", mot: "Ivar" }` | går bort til nokon og snur seg mot han (til ei ledig rute attmed, ikkje der ein annan står) |
 | `{ gaa: "Namn", rute: [x, y] }` | går den kortaste vegen til ei rute, eller til eit merke (`rute: "@"`) |
 | `{ gaa: "Namn", sti: "h3o2" }` | går ein fast sti (n ned, o opp, v venstre, h høgre), også ut over kanten |
 | `ut: true` | på eit gaa-steg: figuren blir borte når han er framme (inn ei dør, ut over kanten). Saman med `ikkjeVent` kan spelaren gå medan han går |
 | `fart: 300` | ms per flis på eit gaa-steg |
-| `{ snu: "Namn", retning: "opp" }` | snur seg (ned, opp, venstre, høgre), eller `mot: "Namn"` |
+| `{ snu: "Namn", retning: "opp" }` | snur seg (ned, opp, venstre, høgre), eller `mot: "Namn"`. Kjensla går bort når figuren snur seg |
+| `{ snu: "Namn", fraa: "Ivar" }` | snur ryggen til nokon |
 | `{ pose: "Namn", p: "knele" }` | pose: knele, sitje, peike, liggje eller sove (sjå under). `p: null` tek han bort |
 | `{ inn: { namn, u, rute, retning, tale } }` | set ein ny person inn på kartet |
 | `{ fjern: "Namn" }` | tek ein person bort (namn eller merke) |
@@ -166,12 +167,20 @@ Alle hendingane på Åsen (stova og tunet) brukar scenemotoren:
 - Vakta ved kantane (`ikkje_enno`, og `skiftebrev` med for få ord): Ivar går eitt steg attende.
 - Småprat (storebror, granne og budeia) er manus med kjensler.
 
+### Hendingane i Hovdebygda
+Hovdebygda (bygda, kyrkja, prestegarden, Nedre Hovde og vegen) brukar òg scenemotoren:
+
+- `framande2` er ein mellomsekvens. Den framande står ved kyrkjestien og viser fram sommarfuglane, snur seg mot kyrkja og attende. Lekpredikanten høyrer det og kjem opp til vegen. Etterpå går den framande austover vegen mot Ekset, kameraet blir ståande til han er ute av biletet, og så blir han teken bort. Han står i Dagboka.
+- `presten` er ein mellomsekvens. Presten kneler attmed løparen framfor altarringen (pose i kartet, så vegen til lysestaken er open). Han står opp, peikar mot prestegarden, og klokkaren kjem bort og lyttar. Ved «Kanskje litt» snur presten ryggen til Ivar (`fraa`). Valet blir hugsa i `st.val.trolldom`. Etterpå kneler presten att, og klokkaren går attende. Når blekklatten er slegen, står presten innanfor altarringen.
+- `skammen` på Nedre Hovde: bestefaren talar, mora går bort til han, og dottera kjem etter. Ved feil svar snur han ryggen til, og Ivar kan prøve att.
+- Småprat (bonde, kone, kremmar, lekpredikant, klokkar, tenestejente, mor, dotter, fiskar) er manus med kjensler. Folk snur seg mot det dei talar om (kona mot utmarka, tenestejenta mot kontordøra, fiskaren mot elva), og lekpredikanten peikar på Ivar.
+
 Ei dør med `vakt` stoppar Ivar på ruta når vaktmanuset har gått, også når flagget vart sett. Spelaren går sjølv vidare.
 
 Etter ein kamp midt i ei hending er motoren pausa att, så ingen går omkring medan scena held fram.
 
 ### Test
-`tools/sjekk-scene.html` køyrer scenene «heime» og «framande» og eit prøvemanus. Han sjekkar at figurane går dit dei skal, at kameraet kjem attende, at val blir hugsa, og at trådar og Dagboka blir skrivne. Så hoppar han over «framande» og ei prøvescene og sjekkar at utfallet er gjort, at figurane står der dei skal, at val blir viste, og at skjermen er tona inn att. Til sist kviler Ivar ved lampa i stova og får minnet om far på scenekartet: testen sjekkar at huldra ikkje er med, at lagring i minnet lagrar stova, og at Ivar kjem attende til same rute og retning, også når ei scene med scenekart blir hoppa over. Han sjekkar at Ivar set seg og far peikar i minnet, at posane er lesne frå arket i fire retningar, at ein pose varer til figuren går eller hendinga er slutt, og at syster sit ved bordet att. Til slutt spelar han hendingane på Åsen: syster som gir niste, vakta ved kantane, og skiftebrevet med ein stubba kamp. Han sjekkar at syster kjem ut døra, at begge står attmed Ivar når blekket kjem, at den som talar, står på kartet, at dei går inn att og berre finst i stova, at Ivar kan gå vidare til bygda, og at kampen kjem også når scena blir hoppa over. `node tools/sjekk-spel.js` sjekkar at scenene viser til ting som finst.
+`tools/sjekk-scene.html` køyrer scenene «heime» og «framande» og eit prøvemanus. Han sjekkar at figurane går dit dei skal, at kameraet kjem attende, at val blir hugsa, og at trådar og Dagboka blir skrivne. Så hoppar han over «framande» og ei prøvescene og sjekkar at utfallet er gjort, at figurane står der dei skal, at val blir viste, og at skjermen er tona inn att. Til sist kviler Ivar ved lampa i stova og får minnet om far på scenekartet: testen sjekkar at huldra ikkje er med, at lagring i minnet lagrar stova, og at Ivar kjem attende til same rute og retning, også når ei scene med scenekart blir hoppa over. Han sjekkar at Ivar set seg og far peikar i minnet, at posane er lesne frå arket i fire retningar, at ein pose varer til figuren går eller hendinga er slutt, og at syster sit ved bordet att. Til slutt spelar han hendingane på Åsen: syster som gir niste, vakta ved kantane, og skiftebrevet med ein stubba kamp. Han sjekkar at syster kjem ut døra, at begge står attmed Ivar når blekket kjem, at den som talar, står på kartet, at dei går inn att og berre finst i stova, at Ivar kan gå vidare til bygda, og at kampen kjem også når scena blir hoppa over. Så spelar han hendingane i Hovdebygda: den framande (og ein gong hoppa over), presten med valet «Kanskje litt», skammen med feil og rett svar, og all småpraten. Han sjekkar at lekpredikanten kjem opp til vegen, at den framande går ut av biletet, at presten peikar, snur ryggen til og kneler att, at mora og dottera går bort til bestefaren, at ingen står på same rute, og at den som talar, står på kartet. `RPGTest.iHending()` seier om ei hending køyrer. `node tools/sjekk-spel.js` sjekkar at scenene viser til ting som finst.
 
 ### Neste steg for scenemotoren
-- Hendingane i prototypen over til scener med regi, der dei som talar, står på kartet. Åsen er ferdig.
+- Hendingane i prototypen over til scener med regi, der dei som talar, står på kartet. Åsen og Hovdebygda er ferdige.
