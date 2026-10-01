@@ -98,7 +98,7 @@
   const regiNamn = kven => kven === "Ivar" ? "spelar" : kven === "Huldra" && st.parti.some(m => m.id === "huldra") ? "fylgje" : kven;
   // Steg for regien i scener: figurar, kamera og effektar. Gir eit løfte.
   function regiSteg(s) {
-    if (s.gaa) return Motor.gaa(regiNamn(s.gaa), { sti: s.sti, rute: s.rute, mot: s.mot && regiNamn(s.mot) }, s.fart);
+    if (s.gaa) return Motor.gaa(regiNamn(s.gaa), { sti: s.sti, rute: s.rute, mot: s.mot && regiNamn(s.mot), ut: s.ut }, s.fart);
     if (s.snu) { Motor.snu(regiNamn(s.snu), s.mot ? regiNamn(s.mot) : s.retning); return null; }
     if (s.inn) { Motor.inn(s.inn); return null; }
     if (s.pose) { Motor.pose(s.p, regiNamn(s.pose)); return null; }
@@ -191,7 +191,10 @@
         fyll(m); st.parti.push(m); Motor.settFylgje(sprite(s.parti));
         await Motor.tale(`${D.PARTI[s.parti].namn} er med i partiet.`);
       }
-      if (s.kamp) { const r = await utanSnogg(() => kamp(s.kamp, !!s.boss, !!s.rettleiing)); if (r === "tap") return "stopp"; }
+      if (s.kamp) {
+        const r = await utanSnogg(() => kamp(s.kamp, !!s.boss, !!s.rettleiing)); if (r === "tap") return "stopp";
+        Motor.pause(true);                                             // hendinga held fram: ingen går omkring
+      }
       if (s.stev && !st.stev.includes(s.stev)) {
         st.stev.push(s.stev);
         const def = D.STEVGALDR[s.stev], s2 = Stev.status(def, st.ord);
@@ -378,7 +381,8 @@
       });
     },
     dor: async d => {
-      if (d.vakt && !st.flagg[d.vakt.flagg]) { await hending(D.MANUS[d.vakt.manus]); if (!st.flagg[d.vakt.flagg]) return; }
+      // Ei vakt (manus før ein får gå) stoppar Ivar på ruta. Etterpå går spelaren sjølv vidare.
+      if (d.vakt && !st.flagg[d.vakt.flagg]) { await hending(D.MANUS[d.vakt.manus]); return; }
       if (d.krevOrd && !st.flagg["opna:" + d.krevOrd]) {
         if (!st.ord[d.krevOrd]) { await hending([{ t: d.laast }]); return; }
         await hending([{ t: `Ivar syng «${D.ORD[d.krevOrd].aasen}». Eit varmt ljos fyller trappa ned til arkivet, og blekket trekkjer seg unna.` }, { flagg: "opna:" + d.krevOrd }]);

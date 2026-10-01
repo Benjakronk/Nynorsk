@@ -246,6 +246,94 @@ f.onload = async () => {
     sjekk(!M.spelar.pose && M.aktor("Syster").pose === "sitje" && !M.aktor("Knelar").pose, "etter hendinga står Ivar, og syster sit att ved bordet");
     sjekk(!feil9.length, `ingen feil når posane blir teikna${feil9.length ? ": " + feil9.join("; ") : ""}`);
     M.fjernFolk("Knelar");
+
+    // 10. Åsen: hendingane i stova og på tunet. Syster gir niste, vakta ved kanten, og den
+    //     første kampen, der syster og storebror kjem ut av stova og går inn att etterpå.
+    const s10 = T().st(), varsel = [];
+    const gamalWarn = w.console.warn; w.console.warn = (...a) => { varsel.push(a.join(" ")); gamalWarn.apply(w.console, a); };
+    const naer = (a, b) => a && b && Math.abs(a.x - b.x) + Math.abs(a.y - b.y) === 1;
+    const kanGaa = () => T().modus() === "felt" && !M.spelar.regi && !M.svart;
+    // a) Syster står opp frå bordet, gir flatbrød og set seg att.
+    delete s10.ord.kaka;
+    const brod = s10.ting.flatbrod || 0;
+    M.last("asen-stova", "1"); M.plasser(3, 5, 2); await vent(300);
+    let stod = false, saaMot = false;
+    tast("z");
+    await trykkGjennom(() => s10.scener.syster_kake && !synleg("#rpg-tale"), () => {
+      const sy = M.aktor("Syster");
+      if (sy && !sy.pose) stod = true;
+      if (sy && sy.dir === 3 && synleg("#rpg-tale") && /flatbrød/.test(d.querySelector("#rpg-tale").textContent)) saaMot = true;
+    });
+    await vent(300);
+    const sy10 = M.aktor("Syster");
+    sjekk(stod && saaMot, "syster stod opp og snudde seg mot Ivar då ho gav flatbrødet");
+    sjekk(s10.ord.kaka && (s10.ting.flatbrod || 0) === brod + 1, "Ivar høyrde «kake» og fekk eit flatbrød");
+    sjekk(sy10.x === 2 && sy10.y === 5 && sy10.pose === "sitje" && kanGaa(), `syster sit att ved bordet (${sy10.x},${sy10.y} ${sy10.pose}), og Ivar kan gå`);
+
+    // b) Vakta ved kanten mot utmarka: Ivar snur og går eitt steg attende.
+    delete s10.flagg.skiftebrev;
+    M.last("asen", "1"); M.plasser(13, 0, 1); await vent(200);
+    const dor = (x, y) => M.kart.dorer.find(o => o.ved[0] === x && o.ved[1] === y);
+    let pv = M.krokar.dor(dor(13, 0));
+    await trykkGjennom(() => !M.spelar.regi && !synleg("#rpg-tale") && T().modus() === "felt" && M.spelar.y === 1);
+    await pv;
+    sjekk(M.kart.id === "asen" && M.spelar.x === 13 && M.spelar.y === 1 && kanGaa(), `vakta mot utmarka: Ivar gjekk attende til ${M.spelar.x},${M.spelar.y}`);
+
+    // c) For få ord: Ivar går attende frå kanten mot bygda.
+    const ordFor = s10.ord; s10.ord = { stein: { former: { stein: {} } } };
+    M.plasser(27, 11, 3); await vent(200);
+    pv = M.krokar.dor(dor(27, 11));
+    await trykkGjennom(() => M.spelar.x === 26 && !M.spelar.regi && !synleg("#rpg-tale"));
+    await pv;
+    sjekk(M.kart.id === "asen" && M.spelar.x === 26 && M.spelar.y === 11 && !s10.flagg.skiftebrev, "med for få ord går Ivar attende frå kanten mot bygda");
+    s10.ord = Object.assign({ stein: { former: { stein: {} } }, kaka: { former: { kake: {} } }, mjolk: { former: { "mjølk": {} } } }, ordFor);
+
+    // d) Skiftebrevet. Kampen blir stubba (siger med ein gong); testen ser på kven som står kvar.
+    const kampFor = w.Kamp.start; let kampar = 0, vedKamp = null;
+    w.Kamp.start = async () => {
+      kampar++;
+      const sy = M.aktor("Syster"), sb = M.aktor("Storebror");
+      vedKamp = { syster: naer(sy, M.spelar), bror: !!sb && Math.abs(sb.x - M.spelar.x) <= 1 && Math.abs(sb.y - M.spelar.y) <= 1 };
+      return { utfall: "siger", xp: 0, pengar: 0, fall: [] };
+    };
+    M.plasser(27, 11, 3); await vent(200);
+    let systerVedDora = false, talarSynleg = true;
+    pv = M.krokar.dor(dor(27, 11));
+    await trykkGjennom(() => s10.flagg.skiftebrev && !synleg("#rpg-tale") && T().modus() === "felt", () => {
+      const sy = M.aktor("Syster");
+      if (sy && sy.x === 6 && sy.y === 5 && synleg("#rpg-tale") && /Ivar! Brevet/.test(d.querySelector("#rpg-tale").textContent)) systerVedDora = true;
+      const tale = synleg("#rpg-tale") ? d.querySelector("#rpg-tale").textContent : "";
+      for (const n of ["Syster", "Storebror"]) if (tale.startsWith(n) && !M.aktor(n)) talarSynleg = false;
+    });
+    await pv;
+    sjekk(systerVedDora, "syster kom ut døra på stova og ropte");
+    sjekk(kampar === 1 && vedKamp && vedKamp.syster && vedKamp.bror, `syster og storebror stod attmed Ivar då blekket kom (${JSON.stringify(vedKamp)})`);
+    sjekk(talarSynleg, "den som talar, står på kartet");
+    sjekk(s10.flagg.skiftebrev && T().lagra() && T().lagra().flagg.skiftebrev, "flagget er sett, og spelet er lagra");
+    sjekk(M.kart.id === "asen" && M.spelar.x === 27 && kanGaa(), "Ivar står att ved kanten og kan gå");
+    for (let n = 0; n < 200 && (M.aktor("Syster") || M.aktor("Storebror")); n++) await vent(50);
+    sjekk(!M.aktor("Syster") && !M.aktor("Storebror"), "syster og storebror gjekk inn i stova og er borte frå tunet");
+    M.last("asen-stova", "2"); await vent(200);
+    sjekk(M.kart.folk.filter(f => f.namn === "Syster").length === 1 && M.kart.folk.filter(f => f.namn === "Storebror").length === 1, "i stova er dei der, éin gong kvar");
+    M.last("asen", "3"); await vent(200);
+    sjekk(!M.aktor("Syster") && !M.aktor("Storebror"), "ute på tunet att er dei ikkje");
+    M.plasser(27, 11, 3); await vent(100);
+    await M.krokar.dor(dor(27, 11)); await vent(900);
+    sjekk(M.kart.id === "bygda", "etter skiftebrevet går Ivar vidare til bygda");
+
+    // e) Skiftebrevet hoppa over: kampen kjem likevel, og dei er borte frå tunet etterpå.
+    delete s10.flagg.skiftebrev; kampar = 0;
+    M.last("asen", "1"); M.plasser(27, 11, 3); await vent(200);
+    pv = M.krokar.dor(dor(27, 11));
+    for (let n = 0; n < 100 && !synleg("#rpg-tale"); n++) await vent(50);
+    tast("x"); await vent(150); tast("z");
+    await trykkGjennom(() => s10.flagg.skiftebrev && !synleg("#rpg-tale") && T().modus() === "felt");
+    await pv; await vent(200);
+    sjekk(kampar === 1 && s10.flagg.skiftebrev, "kampen vart spela sjølv om scena vart hoppa over");
+    sjekk(!M.aktor("Syster") && !M.aktor("Storebror") && kanGaa() && !M.snogg, "etter hoppet er dei inne, og Ivar kan gå");
+    w.Kamp.start = kampFor;
+    w.console.warn = gamalWarn;
+    sjekk(!varsel.some(v => /Regi/.test(v)), `ingen åtvaringar frå regien${varsel.length ? ": " + varsel.join("; ") : ""}`);
     if (gamalLagring == null) w.localStorage.removeItem(NOKKEL); else w.localStorage.setItem(NOKKEL, gamalLagring);
   } catch (e) { ut.push("FEIL " + e.stack); }
   document.getElementById("ut").textContent = ut.join("\n");

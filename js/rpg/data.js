@@ -49,6 +49,7 @@
      { gaa: "Namn", mot: "Ivar" }       gå bort til nokon og snu seg mot han
      { gaa: "Namn", rute: [x, y] }      gå til ei rute (eller eit merke: rute: "@")
      { gaa: "Namn", sti: "h3o2" }       gå ein fast sti (n ned, o opp, v venstre, h høgre)
+                                        ut: true på eit gaa-steg: borte når han er framme (inn ei dør)
      { snu: "Namn", retning: "opp" }    eller { snu: "Namn", mot: "Ivar" }
      { pose: "Namn", p: "knele" }       knele, sitje, peike, liggje eller sove (p: null tek posen bort)
      { inn: { namn, u, rute, retning } } ny person på kartet
@@ -717,6 +718,52 @@ window.RPGData = (function () {
         { dagbok: "Ein framand mann gav meg ei tom bok. «Det som er skrive, står», stod det. Eg veit ikkje kva han meinte." },
       ],
     },
+    // Syster står opp frå bordet og gir Ivar niste. Etter hendinga sit ho att.
+    syster_kake: {
+      namn: "Niste", stad: "Stova på Åsen", kort: false, med: ["Ivar", "Syster"],
+      steg: [
+        { pose: "Syster", p: null },
+        { s: "Syster", t: "Ta med deg ei ⟪kake⟫ i skreppa. Du blir svolten ute på bøen." },
+        { lytt: ["kaka", "kake"] },
+        { snu: "Syster", retning: "opp" },
+        { vent: 450 },
+        { snu: "Syster", mot: "Ivar" },
+        { gi: "flatbrod", n: 1 }, { t: "Ivar fekk eit flatbrød.", kjensle: "glad" },
+        { snu: "Syster", retning: "opp" },
+      ],
+    },
+    /* Den første kampen. Syster spring ut av stova med skiftebrevet, og storebror kjem etter.
+       Ivar står ved kanten mot bygda, langt frå stova, så kameraet følgjer syster bort til han.
+       Etterpå går dei inn att (ut: true), og Ivar kan gå vidare sjølv. Dei finst berre i stova. */
+    skiftebrev: {
+      namn: "Skiftebrevet", stad: "Åsen i Hovdebygda", tid: "same dag", kort: false, hopp: true, med: ["Ivar", "Syster", "Storebror"],
+      steg: [
+        // Døra er i veggen, og taket dekkjer ruta hennar: den som står der, er inne enno.
+        { inn: { namn: "Syster", u: "syster", rute: [6, 4], retning: "ned" } },
+        { kamera: "Syster", ms: 1200 },
+        { gaa: "Syster", sti: "n1", fart: 150 },
+        { s: "Syster", t: "Ivar! Brevet frå sorenskrivaren, skiftebrevet etter far … det rører seg!", kjensle: "sjokk" },
+        { snu: "Ivar", retning: "venstre" },
+        { saman: [
+          [{ gaa: "Syster", mot: "Ivar", fart: 150 }],
+          [{ vent: 500 }, { inn: { namn: "Storebror", u: "bror", rute: [6, 4], retning: "ned" } }, { gaa: "Storebror", rute: [26, 10], fart: 170 }],
+        ] },
+        { kamera: null, ms: 500 },
+        { snu: "Storebror", retning: "ned" },
+        { rist: 600, styrke: 2 },
+        { t: "Frå det danske brevet renn blekket ut på tunet. Det samlar seg til ein dråpe med gule auge og kryp mot Ivar.", kjensle: "sjokk" },
+        { kamp: ["blekkdrope"], rettleiing: 1 },
+        { s: "Syster", t: "Du sa eit ord, og blekket vart borte! Korleis gjorde du det?", kjensle: "glad" },
+        { s: "Ivar", t: "Eg veit ikkje. Orda hadde liksom kraft i seg, når eg sa dei slik vi seier dei her.", kjensle: "tenkje" },
+        { snu: "Storebror", mot: "Ivar" },
+        { s: "Storebror", t: "Folk seier at blekket kjem frå kyrkjebøkene. Presten har bede om hjelp. Gå ned i bygda og snakk med han. Han er i kyrkja." },
+        { flagg: "skiftebrev" },
+        { gaa: "Storebror", rute: [6, 4], ut: true, ikkjeVent: true },
+        { vent: 400 },
+        { gaa: "Syster", rute: [6, 4], ut: true, ikkjeVent: true },
+        { lagre: 1 },
+      ],
+    },
     // Eit minne om far, første gong Ivar kviler ved lampa i stova (kvile på kartet).
     minne_far: {
       namn: "Minnet om far", stad: "Bøen på Åsen", tid: "sommaren 1821", kort: false, hopp: true, med: ["Ivar", "Far"],
@@ -755,25 +802,22 @@ window.RPGData = (function () {
       { scene: "heime" },
     ],
     bror: [{ dersom: harOrd("stein"), da: [
-      { s: "Storebror", t: "Folk seier det er blekk i kyrkjebøkene nede i bygda. Eg skjønar meg ikkje på slikt." },
+      { s: "Storebror", t: "Folk seier det er blekk i kyrkjebøkene nede i bygda. Eg skjønar meg ikkje på slikt.", kjensle: "tenkje" },
     ], elles: [
       { s: "Storebror", t: "Den store ⟪steinen⟫ midt i åkeren må vekk før vi pløyer. Far fekk han aldri flytt." },
       { lytt: ["stein", "stein"] },
     ] }],
     syster: [{ dersom: harOrd("kaka"), da: [
       { s: "Syster", t: "Pass deg for folk som snakkar som bøker, Ivar." },
-    ], elles: [
-      { s: "Syster", t: "Ta med deg ei ⟪kake⟫ i skreppa. Du blir svolten ute på bøen." },
-      { lytt: ["kaka", "kake"] }, { gi: "flatbrod", n: 1 }, { t: "Ivar fekk eit flatbrød." },
-    ] }],
+    ], elles: [{ scene: "syster_kake" }] }],
     granne: [{ dersom: harOrd("kvat"), da: [
       { s: "Granne", t: "Du ser på folk som om du ville skrive dei ned, gut." },
     ], elles: [
-      { s: "Granne", t: "⟪Ka⟫ er det du glaner etter? Du ser ut som du høyrer etter noko." },
+      { s: "Granne", t: "⟪Ka⟫ er det du glaner etter? Du ser ut som du høyrer etter noko.", kjensle: "tenkje" },
       { lytt: ["kvat", "ka"] },
     ] }],
     budeie: [{ dersom: harOrd("mjolk"), da: [
-      { s: "Budeia", t: "Kyrne er urolege. Dei kjenner blekket, trur eg." },
+      { s: "Budeia", t: "Kyrne er urolege. Dei kjenner blekket, trur eg.", kjensle: "trist" },
     ], elles: [
       { s: "Budeia", t: "Drikk litt ⟪mjølk⟫ før du går. Ho gir kraft både til folk og fe." },
       { lytt: ["mjolk", "mjølk"] },
@@ -781,18 +825,12 @@ window.RPGData = (function () {
     far: [{ s: "Far", t: "Sjå utover, Ivar." }],                     // berre i minnet (scenekartet minne-far)
     // Rettleiinga står etter scena, så ho kjem sjølv om mellomsekvensen blir hoppa over.
     framande: [{ scene: "framande" }, { t: "Ordboka ligg i menyen (X eller Esc). Der ser du orda du har høyrt, formene deira og kven som sa dei." }],
-    ikkje_enno: [{ t: "Ivar vil sjå seg om på tunet og i stova først. Kanskje nokon har noko å seie." }],
-    skiftebrev: [{ dersom: st => talOrd(st) >= 3, da: [
-      { s: "Syster", t: "Ivar! Brevet frå sorenskrivaren, skiftebrevet etter far … det rører seg!" },
-      { t: "Frå det danske brevet renn blekket ut på tunet. Det samlar seg til ein dråpe med gule auge og kryp mot Ivar." },
-      { kamp: ["blekkdrope"], rettleiing: 1 },
-      { s: "Syster", t: "Du sa eit ord, og blekket vart borte! Korleis gjorde du det?" },
-      { s: "Ivar", t: "Eg veit ikkje. Orda hadde liksom kraft i seg, når eg sa dei slik vi seier dei her.", kjensle: "tenkje" },
-      { s: "Storebror", t: "Folk seier at blekket kjem frå kyrkjebøkene. Presten har bede om hjelp. Gå ned i bygda og snakk med han. Han er i kyrkja." },
-      { flagg: "skiftebrev" }, { lagre: 1 },
-    ], elles: [
+    // Vakta ved kantane: Ivar står på kantruta og snur attende eitt steg.
+    ikkje_enno: [{ t: "Ivar vil sjå seg om på tunet og i stova først. Kanskje nokon har noko å seie." }, { gaa: "Ivar", sti: "n1" }],
+    skiftebrev: [{ dersom: st => talOrd(st) >= 3, da: [{ scene: "skiftebrev" }], elles: [
       { t: "Ivar kjenner at han ikkje er ferdig på tunet enno. Han har berre høyrt nokre få ord." },
       { t: "Snakk med folk. Når nokon seier eit ord på sitt eige mål, lyttar Ivar." },
+      { gaa: "Ivar", sti: "v1" },
     ] }],
     /* Hovdebygda */
     bonde: [{ dersom: harOrd("eg"), da: [

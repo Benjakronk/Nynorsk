@@ -382,6 +382,7 @@ window.Motor = (function () {
   }
   /* Lèt ein figur gå. mal: { sti: "h3o2" } eller [retningar], { rute: [x, y] }, eller
      { mot: kven } (går bort til ruta ved sida av den andre og snur seg mot han).
+     ut: true tek figuren bort frå kartet når han er framme (inn ei dør, ut over kanten).
      fart: ms per flis. Når spelaren går, kjem følgjet etter. Løftet blir oppfylt når figuren står. */
   function gaa(kven, mal, fart) {
     const a = aktor(kven);
@@ -393,10 +394,12 @@ window.Motor = (function () {
       if (mal.mot) {
         snuMot = aktor(mal.mot);
         if (snuMot) {
-          // Den næraste ledige ruta inntil den andre (kortaste veg).
+          // Den næraste ledige ruta inntil den andre (kortaste veg). Ikkje inn i ein vegg.
           let best = null;
           for (let d = 0; d < 4; d++) {
-            const v = vegTil(a, snuMot.x + DX[d], snuMot.y + DY[d]);
+            const cx = snuMot.x + DX[d], cy = snuMot.y + DY[d], c = (kart.fliser[cy] || [])[cx];
+            if (c == null || Pikslar.FAST.has(c) || "DdE".includes(c) || erVatn(cx, cy) || kisteVed(cx, cy)) continue;
+            const v = vegTil(a, cx, cy);
             if (v && (!best || v.length < best.length)) best = v;
           }
           sti = best || [];
@@ -410,6 +413,8 @@ window.Motor = (function () {
     return new Promise(res => {
       a.regi = { sti, fart: fart || (a === spelar ? FART * 1.4 : FOLK_FART), res: () => {
         if (snuMot) a.dir = retningMot(a.x, a.y, snuMot.x, snuMot.y, a.dir);
+        // Inn døra: borte frå kartet han gjekk på (eit nytt kart har ikkje figuren).
+        if (mal.ut && kart && a !== spelar && a !== fylgje) kart.folk = kart.folk.filter(f => f !== a);
         res();
       } };
       if (a === spelar) spelar.flytt = null;

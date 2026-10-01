@@ -93,6 +93,7 @@ Figurane blir nemnde med namn: «Ivar» er spelaren, «Huldra» er følgjet når
 | `{ gaa: "Namn", mot: "Ivar" }` | går bort til nokon og snur seg mot han |
 | `{ gaa: "Namn", rute: [x, y] }` | går den kortaste vegen til ei rute, eller til eit merke (`rute: "@"`) |
 | `{ gaa: "Namn", sti: "h3o2" }` | går ein fast sti (n ned, o opp, v venstre, h høgre), også ut over kanten |
+| `ut: true` | på eit gaa-steg: figuren blir borte når han er framme (inn ei dør, ut over kanten). Saman med `ikkjeVent` kan spelaren gå medan han går |
 | `fart: 300` | ms per flis på eit gaa-steg |
 | `{ snu: "Namn", retning: "opp" }` | snur seg (ned, opp, venstre, høgre), eller `mot: "Namn"` |
 | `{ pose: "Namn", p: "knele" }` | pose: knele, sitje, peike, liggje eller sove (sjå under). `p: null` tek han bort |
@@ -156,8 +157,21 @@ Eit scenekart er eit kart som berre finst for ei scene: ein draum, eit minne, se
 
 Dømet i prototypen er `minne_far`: første gong Ivar kviler ved lampa i stova (`kvile: "minne_far"` på kartet), set han seg, og minnest far som peikar ut over bøen og lærer han namna på plassane rundt Åsen. Etterpå spør lampa om lagring som vanleg.
 
+### Hendingane på Åsen
+Alle hendingane på Åsen (stova og tunet) brukar scenemotoren:
+
+- `heime` (storebror går bort til Ivar) og `framande` (den framande gir ordboka og går opp vegen) er mellomsekvensar.
+- `syster_kake`: syster står opp frå bordet, gir Ivar flatbrød og set seg att.
+- `skiftebrev`: den første kampen. Ivar står ved kanten mot bygda. Kameraet går til stova, der syster kjem ut døra med brevet og ropar, og følgjer henne bort til Ivar. Storebror kjem etter. Biletet ristar, blekket renn ut av brevet, og kampen byrjar. Etterpå står dei attmed Ivar og talar, og så går dei inn att i stova (`ut: true`) medan spelaren kan gå. Dei er berre med i stova på kartet, så dei er aldri to stader.
+- Vakta ved kantane (`ikkje_enno`, og `skiftebrev` med for få ord): Ivar går eitt steg attende.
+- Småprat (storebror, granne og budeia) er manus med kjensler.
+
+Ei dør med `vakt` stoppar Ivar på ruta når vaktmanuset har gått, også når flagget vart sett. Spelaren går sjølv vidare.
+
+Etter ein kamp midt i ei hending er motoren pausa att, så ingen går omkring medan scena held fram.
+
 ### Test
-`tools/sjekk-scene.html` køyrer scenene «heime» og «framande» og eit prøvemanus. Han sjekkar at figurane går dit dei skal, at kameraet kjem attende, at val blir hugsa, og at trådar og Dagboka blir skrivne. Så hoppar han over «framande» og ei prøvescene og sjekkar at utfallet er gjort, at figurane står der dei skal, at val blir viste, og at skjermen er tona inn att. Til sist kviler Ivar ved lampa i stova og får minnet om far på scenekartet: testen sjekkar at huldra ikkje er med, at lagring i minnet lagrar stova, og at Ivar kjem attende til same rute og retning, også når ei scene med scenekart blir hoppa over. Han sjekkar at Ivar set seg og far peikar i minnet, at posane er lesne frå arket i fire retningar, at ein pose varer til figuren går eller hendinga er slutt, og at syster sit ved bordet att. `node tools/sjekk-spel.js` sjekkar at scenene viser til ting som finst.
+`tools/sjekk-scene.html` køyrer scenene «heime» og «framande» og eit prøvemanus. Han sjekkar at figurane går dit dei skal, at kameraet kjem attende, at val blir hugsa, og at trådar og Dagboka blir skrivne. Så hoppar han over «framande» og ei prøvescene og sjekkar at utfallet er gjort, at figurane står der dei skal, at val blir viste, og at skjermen er tona inn att. Til sist kviler Ivar ved lampa i stova og får minnet om far på scenekartet: testen sjekkar at huldra ikkje er med, at lagring i minnet lagrar stova, og at Ivar kjem attende til same rute og retning, også når ei scene med scenekart blir hoppa over. Han sjekkar at Ivar set seg og far peikar i minnet, at posane er lesne frå arket i fire retningar, at ein pose varer til figuren går eller hendinga er slutt, og at syster sit ved bordet att. Til slutt spelar han hendingane på Åsen: syster som gir niste, vakta ved kantane, og skiftebrevet med ein stubba kamp. Han sjekkar at syster kjem ut døra, at begge står attmed Ivar når blekket kjem, at den som talar, står på kartet, at dei går inn att og berre finst i stova, at Ivar kan gå vidare til bygda, og at kampen kjem også når scena blir hoppa over. `node tools/sjekk-spel.js` sjekkar at scenene viser til ting som finst.
 
 ### Neste steg for scenemotoren
-- Hendingane i prototypen over til scener med regi, der dei som talar, står på kartet.
+- Hendingane i prototypen over til scener med regi, der dei som talar, står på kartet. Åsen er ferdig.
