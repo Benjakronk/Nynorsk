@@ -26,6 +26,10 @@
     huldra: { skrive: 0 },
     avdekt: {},       // kart der gøymde ting er funne
     stev: [],         // stev Ivar har lært
+    scener: {},       // scener som er spela: { id: true }
+    val: {},          // val som skal hugsast: { id: indeks }
+    traadar: {},      // forteljartrådar: { id: { tekst, opna: kapittel, lukka } }
+    dagbok: [],       // [{ tekst, stad, kapittel }]
   });
   let st = ny();
   const lagra = () => { try { return JSON.parse(localStorage.getItem(NOKKEL) || "null"); } catch (e) { return null; } };
@@ -82,16 +86,39 @@
     }
   }
 
-  /* ---------- Manus ---------- */
+  /* ---------- Manus ----------
+     Steg-typane står i toppen av js/rpg/data.js og i js/rpg/README.md. */
   let sistTalar = "";
+  // Namnet på ein figur i manus -> namnet motoren brukar: Ivar er spelaren, huldra er
+  // følgjet når ho er med, andre er personar på kartet (namn eller merke).
+  const regiNamn = kven => kven === "Ivar" ? "spelar" : kven === "Huldra" && st.parti.some(m => m.id === "huldra") ? "fylgje" : kven;
+  // Steg for regien i scener: figurar, kamera og effektar. Gir eit løfte.
+  function regiSteg(s) {
+    if (s.gaa) return Motor.gaa(regiNamn(s.gaa), { sti: s.sti, rute: s.rute, mot: s.mot && regiNamn(s.mot) }, s.fart);
+    if (s.snu) { Motor.snu(regiNamn(s.snu), s.mot ? regiNamn(s.mot) : s.retning); return null; }
+    if (s.inn) { Motor.inn(s.inn); return null; }
+    if (s.kamera !== undefined) return Motor.kamera(s.kamera && (typeof s.kamera === "string" ? regiNamn(s.kamera) : s.kamera), s.ms);
+    if (s.vent) return new Promise(r => setTimeout(r, s.vent));
+    if (s.ton) return s.ton === "inn" ? Motor.tonInn(s.ms || 600) : Motor.tonUt(s.ms || 600, s.ton === "kvitt" ? "#fff" : null);
+    if (s.blink) return Motor.blink();
+    if (s.rist) return Motor.rist(s.rist, s.styrke);
+    return null;
+  }
   async function kjoyr(steg) {
     if (typeof steg === "function") steg = steg(st);
     for (const s of steg || []) {
       if (s.dersom) { const r = await kjoyr(s.dersom(st) ? s.da : s.elles); if (r === "stopp") return "stopp"; continue; }
-      // Kjensle: gjeld den som talar (s), eller den som står i «kven». Ivar er spelaren,
-      // huldra er følgjet når ho er med, andre er personar på kartet.
+      if (s.scene) { const r = await spelScene(s.scene); if (r === "stopp") return "stopp"; continue; }
+      // Fleire lister samstundes (to figurar som går, kamera og rørsle). Ventar på alle.
+      if (s.saman) { const r = await Promise.all(s.saman.map(kjoyr)); if (r.includes("stopp")) return "stopp"; continue; }
+      const p = regiSteg(s);
+      if (p && !s.ikkjeVent) await p;
+      if (s.kort) await Motor.kort(s.kort[0], s.kort[1]);
+      if (s.naerbilete) await Motor.naerbilete(s.naerbilete, s.tekst);
+      if (s.fjern) Motor.fjernFolk(s.fjern);
+      // Kjensle: gjeld den som talar (s), eller den som står i «kven».
       const kven = s.kven || s.s || "Ivar";
-      if (s.kjensle !== undefined) Motor.kjensle(s.kjensle, kven === "Ivar" ? "spelar" : kven === "Huldra" && st.parti.some(m => m.id === "huldra") ? "fylgje" : kven);
+      if (s.kjensle !== undefined) Motor.kjensle(s.kjensle, regiNamn(kven));
       if (s.fort) await Motor.fort(s.fort);
       else if (s.t) { await Motor.tale(s.t, s.s, s.kjensle && kven === s.s ? s.kjensle : null); sistTalar = s.s || sistTalar; }
       if (s.lytt) { const [id, form] = s.lytt; await meldOrd(id, form, leggTilForm(id, form, sistTalar)); }
@@ -106,12 +133,25 @@
           await meldOrd(id, form, kva);
         } else { Motor.kjensle("glad", "fylgje"); await Motor.tale("Huldra smiler. «Takk. Nokre ord skal berre seiast.»"); }
       }
-      if (s.val) { const i = await Motor.val(s.val, s.alt); const r = await kjoyr(s.svar[i]); if (r === "stopp") return "stopp"; }
+      if (s.val) {
+        const i = await Motor.val(s.val, s.alt);
+        if (s.id) st.val[s.id] = i;                                   // val med id blir hugsa (sjå valt())
+        const r = await kjoyr(s.svar && s.svar[i]); if (r === "stopp") return "stopp";
+      }
+      if (s.traad) {
+        if (s.lukk) { if (st.traadar[s.traad]) st.traadar[s.traad].lukka = st.kapittel; }
+        else if (!st.traadar[s.traad]) st.traadar[s.traad] = { tekst: s.tekst || s.traad, opna: st.kapittel };
+      }
+      if (s.dagbok) st.dagbok.push({ tekst: s.dagbok, stad: Motor.kart ? Motor.kart.def.namn : "", kapittel: st.kapittel });
+      if (s.partiUt) {
+        st.parti = st.parti.filter(m => m.id !== s.partiUt);
+        if (s.partiUt === "huldra") Motor.settFylgje(null);
+        if (!s.stille) await Motor.tale(`${D.PARTI[s.partiUt].namn} gjekk ut av partiet.`);
+      }
       if (s.flagg) st.flagg[s.flagg] = true;
       if (s.uflagg) delete st.flagg[s.uflagg];
       if (s.gi) { if (D.TING[s.gi]) st.ting[s.gi] = (st.ting[s.gi] || 0) + (s.n || 1); else if (!st.nokkel.includes(s.gi)) st.nokkel.push(s.gi); }
       if (s.pengar) st.pengar += s.pengar;
-      if (s.fjern) Motor.fjernFolk(s.fjern);
       if (s.forvandling) await forvandling(s.forvandling, s.tekst);
       if (s.parti && !st.parti.some(m => m.id === s.parti)) {
         const m = { id: s.parti, niva: st.parti[0].niva, xp: 0, hp: null, rost: null };
@@ -148,6 +188,16 @@
       setTimeout(slutt, 6000);
       el.onclick = () => { if (el.classList.contains("klar")) slutt(); };
     });
+  }
+  /* Ein scene frå D.SCENER: { namn, stad, tid, steg }. Stad og tid kjem som eit kort først
+     (om ikkje kort: false), og scena blir merkt som spela i st.scener. */
+  async function spelScene(id) {
+    const sc = D.SCENER[id];
+    if (!sc) { console.warn("Ukjend scene:", id); return; }
+    if (sc.stad && sc.kort !== false) await Motor.kort(sc.stad, sc.tid);
+    const r = await kjoyr(sc.steg);
+    st.scener[id] = true;
+    return r;
   }
   async function hending(steg) {
     Motor.pause(true);
@@ -538,5 +588,5 @@
   Promise.all([Pikslar.forhandslast(Pikslar.alleBilete(D)), document.fonts ? document.fonts.load('16px "Pixelify Sans"').catch(() => {}) : null])
     .then(() => { Pikslar.figur(D.U.ivar); visTittel(); });
   // Til automatiske testar: les tilstanden og modusen.
-  window.RPGTest = { st: () => st, modus: () => modus, lagre };
+  window.RPGTest = { st: () => st, modus: () => modus, lagre, hending, scene: id => hending([{ scene: id }]) };
 })();

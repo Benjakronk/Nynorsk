@@ -220,6 +220,20 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 .rpg-forvandling.glir .fv-etter { opacity: 1; filter: none; }
 .fv-tekst { margin: 0; padding: 10px 18px; max-width: 520px; text-align: center; font-size: 17px; }
 
+/* Nærbilete i ein scene (Motor.naerbilete) */
+.rpg-naer img { width: min(60%, 288px); image-rendering: pixelated; }
+
+/* Kort med stad og tid i ein scene (Motor.kort) */
+.rpg-kort {
+  position: absolute; left: 50%; top: 22%; transform: translateX(-50%); z-index: 30; pointer-events: none;
+  padding: 10px 26px 12px; text-align: center; background: rgba(14, 12, 18, .78); border-radius: 6px;
+  opacity: 0; transition: opacity .5s ease;
+}
+.rpg-kort.vis { opacity: 1; }
+.rpg-kort.ut { opacity: 0; }
+.kort-stad { margin: 0; color: #fff; font-family: "Source Serif Pro", Georgia, serif; font-size: 22px; letter-spacing: .04em; }
+.kort-tid { margin: 4px 0 0; color: #d8c8f8; font-family: "Source Serif Pro", Georgia, serif; font-size: 16px; font-style: italic; }
+
 /* Verdskartet */
 .rpg-verd { position: absolute; inset: 0; z-index: 20; display: grid; grid-template-columns: 1fr 300px; background: #0e0c12; }
 .rpg-verd[hidden] { display: none; }

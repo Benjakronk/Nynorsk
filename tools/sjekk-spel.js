@@ -44,17 +44,22 @@ function gå(steg, stad) {
     if (s.gi && !D.TING[s.gi] && !D.NOKKELTING[s.gi]) feil.push(`${stad}: gi ${s.gi}`);
     if (s.t && (s.t.match(/⟪/g) || []).length !== (s.t.match(/⟫/g) || []).length) feil.push(`${stad}: ubalanserte ⟪⟫`);
     if (s.t && /[—–]/.test(s.t.replace(/\d–\d/g, ""))) feil.push(`${stad}: tankestrek`);
-    gå(s.da, stad); gå(s.elles, stad); (s.svar || []).forEach(x => gå(x, stad));
+    if (s.scene && !D.SCENER[s.scene]) feil.push(`${stad}: ukjend scene ${s.scene}`);
+    if (s.inn && !D.U[s.inn.u]) feil.push(`${stad}: utsjånad ${s.inn.u}`);
+    if (s.sti && typeof s.sti === "string" && !/^([novh]\d*)+$/.test(s.sti)) feil.push(`${stad}: sti «${s.sti}»`);
+    if (s.dagbok && /[—–]/.test(s.dagbok)) feil.push(`${stad}: tankestrek i dagboka`);
+    gå(s.da, stad); gå(s.elles, stad); (s.svar || []).forEach(x => gå(x, stad)); (s.saman || []).forEach(x => gå(x, stad));
   }
 }
 for (const [id, m] of Object.entries(D.MANUS)) gå(m, id);
+for (const [id, sc] of Object.entries(D.SCENER)) { gå(sc.steg, "scene " + id); if (!sc.namn) feil.push(`scene ${id}: manglar namn`); }
 // Formspørsmål: kvar familie med spørsmål må ha minst éi sterk og éi veik form
 for (const [id, o] of Object.entries(D.ORD)) {
   const fam = D.FAMILIAR[o.fam];
   if (!fam) { feil.push(`ord ${id}: ukjend familie`); continue; }
   if (fam.sterk) { const alle = [...o.former, o.dansk]; if (!alle.some(f => fam.sterk(f, o))) feil.push(`ord ${id}: ingen sterk form`); if (fam.sterk(o.dansk, o)) feil.push(`ord ${id}: den danske forma «${o.dansk}» blir rekna som sterk`); }
 }
-const lytta = new Set(); (function samle(x) { if (Array.isArray(x)) x.forEach(samle); else if (x && typeof x === "object") { if (x.lytt) lytta.add(x.lytt[0]); if (x.tilbod) lytta.add(x.tilbod[0]); Object.values(x).forEach(samle); } })(D.MANUS);
+const lytta = new Set(); (function samle(x) { if (Array.isArray(x)) x.forEach(samle); else if (x && typeof x === "object") { if (x.lytt) lytta.add(x.lytt[0]); if (x.tilbod) lytta.add(x.tilbod[0]); Object.values(x).forEach(samle); } })([D.MANUS, D.SCENER]);
 console.log("Ord som kan samlast i kapittel 1:", [...lytta].join(", "));
 console.log("Ord som ikkje finst i kapittel 1:", Object.keys(D.ORD).filter(i => !lytta.has(i)).join(", "));
 console.log(feil.length ? feil.join("\n") : "Alt ser rett ut.");

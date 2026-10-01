@@ -20,7 +20,9 @@ f.onload = async () => {
   for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
   d.querySelector("#rpg-tittel-val button").click();
   await vent(300);
-  for (let n = 0; n < 200 && (synleg("#rpg-tale") || synleg("#rpg-fort")); n++) { tast("keydown", "z"); await vent(30); tast("keyup", "z"); await vent(60); }
+  // Trykk gjennom opningsscena (forteljing, kort med stad og tid, samtale) til ho er ferdig.
+  for (let n = 0; n < 400 && (!w.RPGTest.st().scener.heime || synleg("#rpg-tale") || synleg("#rpg-fort")); n++) { tast("keydown", "z"); await vent(30); tast("keyup", "z"); await vent(60); }
+  await vent(1500);
   w.RPGTest.st().flagg.framande1 = true;
   M.last("bygda", "3"); await vent(400);
   M.kart.folk = [];                                   // folk som går omkring, kan elles stå i vegen

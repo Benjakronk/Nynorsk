@@ -17,7 +17,10 @@
    Motor.fort(linjer)         forteljing på svart skjerm
    Motor.scene(byt)           rask toning til svart, byt() (til dømes Motor.last), og tilbake.
                               Standard mellom alle scener. Motor.tonUt() og tonInn() kvar for seg.
-   Motor.pause(true|false)    stoppar rørsla (under samtalar, menyar og kamp) */
+   Motor.pause(true|false)    stoppar rørsla (under samtalar, menyar og kamp)
+   Regi i skripta scener (verkar også i pause, sjå js/rpg/README.md):
+   Motor.gaa(kven, mal, fart), snu(kven, retning), inn(def), kamera(til, ms),
+   kort(stad, tid), naerbilete(src, tekst), blink(), rist(ms), tonUt(ms, farge) */
 window.Motor = (function () {
   "use strict";
   const S = Pikslar.S, VW = 20, VH = 12;
@@ -98,6 +101,7 @@ window.Motor = (function () {
         neste: performance.now() + 800 + Math.random() * 2500, sprite: f.usynleg ? null : Pikslar.figur(RPGData.U[f.u]) });
     });
     kart = { id, def, w, h, fliser, merke, folk, kister: def.kister || [], dorer: (def.dorer || []).filter(d => d.til) };
+    for (const a of regi) { a.regi.res(); a.regi = null; } regi.clear(); kam = null;      // nytt kart: regien byrjar på nytt
     const [sx, sy] = merke[merkeId] || merke["1"] || [1, 1];
     spelar.x = sx; spelar.y = sy; spelar.fx = sx; spelar.fy = sy; spelar.flytt = null;
     if (dir != null) spelar.dir = dir;
@@ -179,7 +183,7 @@ window.Motor = (function () {
   }
   function oppdaterFolk(no) {
     for (const f of kart.folk) {
-      if (!f.sprite || f.flis) continue;
+      if (!f.sprite || f.flis || f.regi) continue;
       if (f.flytt) {
         const u = Math.min(1, (no - f.flytt.t0) / FOLK_FART); f.u = u;
         f.fx = f.flytt.fx + (f.x - f.flytt.fx) * u; f.fy = f.flytt.fy + (f.y - f.flytt.fy) * u;
@@ -205,7 +209,7 @@ window.Motor = (function () {
     }
   }
   function oppdater(no) {
-    if (pausa || !kart || byter) return;
+    if (pausa || !kart || byter || spelar.regi) return;
     oppdaterFolk(no);
     let t0 = no;
     if (spelar.flytt) {
@@ -277,7 +281,182 @@ window.Motor = (function () {
     if (c === "L" && krokar.lampe) { krokar.lampe(); return; }
     if ((c === "D" || c === "d" || c === "E") && krokar.laast) { const d = (kart.def.dorer || []).find(d => d.ved[0] === tx && d.ved[1] === ty); if (!d || !d.til) krokar.laast((d && d.laast) || "Døra er stengd."); }
   }
-  function fjernFolk(merke) { if (kart) kart.folk = kart.folk.filter(f => f.merke !== merke); }
+  // Tek bort ein person på kartet, etter merket eller namnet.
+  function fjernFolk(kven) { if (kart) kart.folk = kart.folk.filter(f => f.merke !== kven && f.namn !== kven); }
+
+  /* ---------- Regi: figurar, kamera og effektar i skripta scener ----------
+     Alt her verkar også medan motoren er pausa (under samtalar og mellomsekvensar).
+     Figurane blir nemnde med «spelar», «fylgje», namnet på ein person på kartet eller merket hans. */
+  const RETNINGSNAMN = { ned: 0, opp: 1, venstre: 2, hogre: 3, "høgre": 3 };
+  const regi = new Set();     // figurar som går etter manus no
+  function aktor(kven) {
+    if (kven === "spelar") return spelar;
+    if (kven === "fylgje") return fylgje;
+    return kart && kart.folk.find(f => f.namn === kven || f.merke === kven) || null;
+  }
+  // Stien som tekst: «h3o2» er tre steg til høgre og to opp (n ned, o opp, v venstre, h høgre).
+  function lesSti(s) {
+    const ut = [];
+    for (const [, c, n] of s.matchAll(/([novh])(\d*)/g)) for (let i = 0; i < (+n || 1); i++) ut.push("novh".indexOf(c));
+    return ut;
+  }
+  // Kortaste veg frå figuren a til (tx, ty), utanom faste ting og andre figurar. Gir retningane.
+  function vegTil(a, tx, ty) {
+    const fri = (x, y) => {
+      if (x === tx && y === ty) return true;
+      if (x < 0 || y < 0 || x >= kart.w || y >= kart.h) return false;
+      const c = kart.fliser[y][x];
+      if (Pikslar.FAST.has(c) || "DdE".includes(c) || erVatn(x, y) || kisteVed(x, y)) return false;
+      if (a !== spelar && spelar.x === x && spelar.y === y) return false;
+      return !kart.folk.some(f => f !== a && f.sprite && f.x === x && f.y === y);
+    };
+    const fra = new Map([[a.x + "," + a.y, null]]), ko = [[a.x, a.y]];
+    while (ko.length) {
+      const [x, y] = ko.shift();
+      if (x === tx && y === ty) {
+        const sti = [];
+        for (let k = x + "," + y; fra.get(k); k = fra.get(k).k) sti.unshift(fra.get(k).d);
+        return sti;
+      }
+      for (let d = 0; d < 4; d++) {
+        const nx = x + DX[d], ny = y + DY[d], k = nx + "," + ny;
+        if (!fra.has(k) && fri(nx, ny)) { fra.set(k, { k: x + "," + y, d }); ko.push([nx, ny]); }
+      }
+    }
+    return null;
+  }
+  /* Lèt ein figur gå. mal: { sti: "h3o2" } eller [retningar], { rute: [x, y] }, eller
+     { mot: kven } (går bort til ruta ved sida av den andre og snur seg mot han).
+     fart: ms per flis. Når spelaren går, kjem følgjet etter. Løftet blir oppfylt når figuren står. */
+  function gaa(kven, mal, fart) {
+    const a = aktor(kven);
+    if (!a || !kart) return Promise.resolve();
+    let sti = [], snuMot = null;
+    if (mal.sti) sti = typeof mal.sti === "string" ? lesSti(mal.sti) : mal.sti.slice();
+    else {
+      let maal = mal.rute;
+      if (mal.mot) {
+        snuMot = aktor(mal.mot);
+        if (snuMot) {
+          // Den næraste ledige ruta inntil den andre (kortaste veg).
+          let best = null;
+          for (let d = 0; d < 4; d++) {
+            const v = vegTil(a, snuMot.x + DX[d], snuMot.y + DY[d]);
+            if (v && (!best || v.length < best.length)) best = v;
+          }
+          sti = best || [];
+        }
+      } else if (maal) {
+        if (typeof maal === "string") maal = kart.merke[maal];
+        sti = (maal && vegTil(a, maal[0], maal[1])) || [];
+        if (maal && !sti.length && (a.x !== maal[0] || a.y !== maal[1])) console.warn("Regi: fann ingen veg for", kven, maal);
+      }
+    }
+    return new Promise(res => {
+      a.regi = { sti, fart: fart || (a === spelar ? FART * 1.4 : FOLK_FART), res: () => {
+        if (snuMot) a.dir = retningMot(a.x, a.y, snuMot.x, snuMot.y, a.dir);
+        res();
+      } };
+      if (a === spelar) spelar.flytt = null;
+      regi.add(a);
+    });
+  }
+  function regiSteg(a, no) {
+    const r = a.regi;
+    let t0 = no;
+    if (a.flytt) {
+      const u = Math.min(1, (no - a.flytt.t0) / r.fart); a.u = u;
+      a.fx = a.flytt.fx + (a.x - a.flytt.fx) * u; a.fy = a.flytt.fy + (a.y - a.flytt.fy) * u;
+      const f = r.drag;
+      if (f) { f.fx = f.flytt.fx + (f.x - f.flytt.fx) * u; f.fy = f.flytt.fy + (f.y - f.flytt.fy) * u; }
+      if (u < 1) return;
+      t0 = Math.max(a.flytt.t0 + r.fart, no - r.fart / 2);
+      a.flytt = null; if (f) { f.flytt = null; r.drag = null; }
+    }
+    if (!r.sti.length) {
+      regi.delete(a); a.regi = null;
+      if (a.hx != null) { a.hx = a.x; a.hy = a.y; a.neste = no + 2000; }       // folk får ein ny heimstad
+      r.res(); return;
+    }
+    const d = r.sti.shift(), x0 = a.x, y0 = a.y;
+    a.dir = d; a.flytt = { fx: x0, fy: y0, t0 }; a.x += DX[d]; a.y += DY[d]; a.steg = (a.steg || 0) + 1; a.u = 0; a.kjensle = null;
+    if (a === spelar && fylgje && !fylgje.regi) {
+      fylgje.flytt = { fx: fylgje.x, fy: fylgje.y }; fylgje.dir = retningMot(fylgje.x, fylgje.y, x0, y0, fylgje.dir);
+      fylgje.x = x0; fylgje.y = y0; r.drag = fylgje;
+    }
+  }
+  function snu(kven, retning) {
+    const a = aktor(kven); if (!a) return;
+    const m = typeof retning === "string" && !(retning in RETNINGSNAMN) ? aktor(retning) : null;
+    a.dir = m ? retningMot(a.x, a.y, m.x, m.y, a.dir) : typeof retning === "string" ? RETNINGSNAMN[retning] : retning;
+    if (a.grunndir != null) { a.grunndir = a.dir; a.neste = performance.now() + 3000; }
+  }
+  // Set ein ny person inn på kartet: { namn, u, rute: [x, y] eller merke, retning, atferd, tale }.
+  function inn(def) {
+    if (!kart) return;
+    const [x, y] = typeof def.rute === "string" ? kart.merke[def.rute] : def.rute;
+    const dir = typeof def.retning === "string" ? RETNINGSNAMN[def.retning] : def.retning || 0;
+    kart.folk.push(Object.assign({ atferd: "stille" }, def, { x, y, fx: x, fy: y, hx: x, hy: y, dir, grunndir: dir, steg: 0, flytt: null,
+      neste: performance.now() + 2000, sprite: Pikslar.figur(RPGData.U[def.u]) }));
+  }
+
+  /* Kamera: til ei rute [x, y], til ein figur (som det så følgjer), eller null (tilbake til
+     spelaren). Kameraet glir dit på ms millisekund. */
+  let kam = null, sentrum = { x: 0, y: 0 };
+  function kamera(til, ms = 900) {
+    const a = typeof til === "string" ? aktor(til) : null;
+    const mal = til == null ? () => ({ x: spelar.fx, y: spelar.fy }) : a ? () => ({ x: a.fx, y: a.fy }) : () => ({ x: til[0], y: til[1] });
+    kam = { fra: { x: sentrum.x, y: sentrum.y }, t0: performance.now(), ms: Math.max(1, ms), mal, tilbake: til == null };
+    return vent(ms);
+  }
+  function kameraSentrum(no) {
+    if (!kam) return { x: spelar.fx, y: spelar.fy };
+    const u = Math.min(1, (no - kam.t0) / kam.ms), e = u < 0.5 ? 2 * u * u : 1 - (-2 * u + 2) ** 2 / 2, m = kam.mal();
+    if (u >= 1 && kam.tilbake) kam = null;
+    return { x: kam ? kam.fra.x + (m.x - kam.fra.x) * e : m.x, y: kam ? kam.fra.y + (m.y - kam.fra.y) * e : m.y };
+  }
+
+  // Ristar biletet (eit skred, ein dør som smell).
+  function rist(ms = 400, styrke = 3) {
+    return new Promise(res => {
+      const t0 = performance.now();
+      const s = () => {
+        const u = (performance.now() - t0) / ms;
+        if (u >= 1) { lerret.style.translate = ""; res(); return; }
+        const k = styrke * (1 - u);
+        lerret.style.translate = `${Math.round((Math.random() * 2 - 1) * k)}px ${Math.round((Math.random() * 2 - 1) * k)}px`;
+        requestAnimationFrame(s);
+      };
+      requestAnimationFrame(s);
+    });
+  }
+  // Kort med stad og tid over scena, som ein undertekst i film. Går bort av seg sjølv, eller ved Z.
+  function kort(stad, tid, ms = 2600) {
+    return new Promise(res => {
+      const el = document.createElement("div");
+      el.className = "rpg-kort";
+      el.innerHTML = `<p class="kort-stad">${E(stad)}</p>${tid ? `<p class="kort-tid">${E(tid)}</p>` : ""}`;
+      $("rpg-skjerm").appendChild(el);
+      let ferdig = false;
+      const slutt = () => { if (ferdig) return; ferdig = true; slepp(); clearTimeout(tm); el.classList.add("ut"); setTimeout(() => { el.remove(); res(); }, 500); };
+      const slepp = lytt({ a: slutt });
+      requestAnimationFrame(() => el.classList.add("vis"));
+      const tm = setTimeout(slutt, ms);
+    });
+  }
+  // Nærbilete: eit bilete midt på skjermen (eit segl, ei side i ei bok), med tekst under. Ventar på Z.
+  function naerbilete(src, tekst) {
+    return new Promise(res => {
+      const el = document.createElement("div");
+      el.className = "rpg-forvandling rpg-naer";
+      el.innerHTML = `<img src="${E(src)}" alt="">${tekst ? `<p class="rpg-vindauge fv-tekst">${E(tekst)}</p>` : ""}`;
+      $("rpg-skjerm").appendChild(el);
+      let ferdig = false;
+      const slutt = () => { if (ferdig) return; ferdig = true; slepp(); el.classList.add("ut"); setTimeout(() => { el.remove(); res(); }, 400); };
+      const slepp = lytt({ a: slutt });
+      el.onclick = slutt;
+    });
+  }
 
   /* ---------- Teikning ---------- */
   const KANTSIDER = [["n", 0, -1], ["s", 0, 1], ["w", -1, 0], ["e", 1, 0]];
@@ -381,12 +560,17 @@ window.Motor = (function () {
   /* Toning: rask overgang til svart og tilbake er standard mellom alle scener (kart, kamp,
      tittel, verdskart). Eit svart lag ligg over heile spelet, også kampen og vindauga. */
   const svartEl = $("rpg-svart");
-  function toning(til, ms = TONING) {
+  // farge: svart som standard, kvitt til dømes når «biletet går i kvitt» i ein mellomsekvens.
+  function toning(til, ms = TONING, farge) {
+    if (farge) svartEl.style.background = farge;
+    else if (til > 0) svartEl.style.background = "";
     svartEl.style.transition = `opacity ${ms}ms linear`;
     svartEl.style.opacity = String(til);
     return vent(ms + 20);
   }
-  const tonUt = ms => toning(1, ms), tonInn = ms => toning(0, ms);
+  const tonUt = (ms, farge) => toning(1, ms, farge), tonInn = ms => toning(0, ms);
+  // Kort kvitt blink (ein ring som brest, eit lyn).
+  async function blink(ms = 260) { await toning(0.9, ms * 0.3, "#fff"); await toning(0, ms * 0.7); }
   /* Pikseleffekten før kamp (som i Final Fantasy): eit kvitt blink, og biletet løyser seg opp
      i stadig større pikslar. Etterpå tonar skjermen til svart, og kuttet til kampscena skjer
      i svart (sjå kamp() i spel.js). */
@@ -469,8 +653,10 @@ window.Motor = (function () {
 
   function teikn(no) {
     if (!kart) return;
-    const kx = Math.max(0, Math.min(kart.w - VW, spelar.fx - (VW - 1) / 2));
-    const ky = Math.max(0, Math.min(kart.h - VH, spelar.fy - (VH - 1) / 2));
+    const sm = kameraSentrum(no);
+    const kx = Math.max(0, Math.min(kart.w - VW, sm.x - (VW - 1) / 2));
+    const ky = Math.max(0, Math.min(kart.h - VH, sm.y - (VH - 1) / 2));
+    sentrum = { x: kx + (VW - 1) / 2, y: ky + (VH - 1) / 2 };       // der kameraet faktisk står (til neste kamerarørsle)
     const ox = kart.w < VW ? (VW - kart.w) / 2 : -kx, oy = kart.h < VH ? (VH - kart.h) / 2 : -ky;
     g.fillStyle = "#0e0c12"; g.fillRect(0, 0, lerret.width, lerret.height);
     const x0 = Math.floor(-ox) - 1, y0 = Math.floor(-oy) - 1;
@@ -534,7 +720,8 @@ window.Motor = (function () {
     // Gangramma følgjer steget, ikkje klokka: to rammer per flis (steg, stå), annakvar fot.
     const steg = spelar.flytt ? GANG[(spelar.steg % 2) * 2 + (spelar.u < 0.5 ? 0 : 1)] : 0;
     // Følgjet går eit halvt steg forskyve, så dei to ikkje går i takt.
-    const fv = spelar.u + 0.5, fsteg = spelar.flytt ? GANG[((spelar.steg + Math.floor(fv)) % 2) * 2 + (fv % 1 < 0.5 ? 0 : 1)] : 0;
+    const fv = spelar.u + 0.5, fsteg = fylgje && fylgje.regi ? (fylgje.flytt ? GANG[(fylgje.steg % 2) * 2 + (fylgje.u < 0.5 ? 0 : 1)] : 0)
+      : spelar.flytt ? GANG[((spelar.steg + Math.floor(fv)) % 2) * 2 + (fv % 1 < 0.5 ? 0 : 1)] : 0;
     if (fylgje) figurar.push({ y: fylgje.fy, x: fylgje.fx, sp: fylgje.sprite, dir: fylgje.dir, steg: fsteg, kjensle: fylgje.kjensle });
     figurar.push({ y: spelar.fy, x: spelar.fx, sp: spelar.sprite, dir: spelar.dir, steg, kjensle: spelar.kjensle });
     for (const n of naturFig) figurar.push(n);
@@ -662,6 +849,7 @@ window.Motor = (function () {
   function loop(no) {
     requestAnimationFrame(loop);
     if (krokar.modus && krokar.modus() !== "felt") return;
+    for (const a of regi) regiSteg(a, performance.now());
     oppdater(performance.now());
     teikn(performance.now());
   }
@@ -685,6 +873,7 @@ window.Motor = (function () {
 
   return {
     VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk, overgang, gjennomDor, tonUt, tonInn, scene,
+    gaa, snu, inn, kamera, rist, kort, naerbilete, blink, aktor,
     pause(p) { pausa = p; if (p) halde.clear(); },
     get kart() { return kart; }, get spelar() { return spelar; },
     settSpelar(sprite) { spelar.sprite = sprite; },

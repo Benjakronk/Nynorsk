@@ -41,7 +41,24 @@
      { til: ["kart", "merke"] }         flytt
      { fjern: "&" }                     personen på merket går sin veg
      { dersom: fn, da: […], elles: […] }
-     { lagre: 1 }, { lækje: 1 }, { butikk: [...] }, { kapittelslutt: 1 } */
+     { lagre: 1 }, { lækje: 1 }, { butikk: [...] }, { kapittelslutt: 1 }
+
+   Scenemotoren (sjå js/rpg/README.md for heile lista):
+     { scene: "id" }                    spel ei scene frå SCENER (kort med stad og tid først)
+     { gaa: "Namn", mot: "Ivar" }       gå bort til nokon og snu seg mot han
+     { gaa: "Namn", rute: [x, y] }      gå til ei rute (eller eit merke: rute: "@")
+     { gaa: "Namn", sti: "h3o2" }       gå ein fast sti (n ned, o opp, v venstre, h høgre)
+     { snu: "Namn", retning: "opp" }    eller { snu: "Namn", mot: "Ivar" }
+     { inn: { namn, u, rute, retning } } ny person på kartet
+     { kamera: "Namn" | [x, y] | null } kameraet glir til nokon (og følgjer), til ei rute, eller attende
+     { saman: [[…], […]] }              fleire lister samstundes
+     { vent: ms }, { blink: 1 }, { rist: ms }, { ton: "svart" | "kvitt" | "inn" }
+     { kort: ["Stad", "tid"] }, { naerbilete: "bilete/…png", tekst }
+     { val, alt, svar, id: "x" }        valet blir hugsa i st.val.x (sjå valt())
+     { traad: "id", tekst } / { traad: "id", lukk: 1 }   opnar eller lukkar ein forteljartråd
+     { dagbok: "tekst" }                ei linje i Dagboka
+     { partiUt: "huldra" }              går ut av partiet
+     ikkjeVent: true på eit registeg lèt manus gå vidare medan det skjer */
 window.RPGData = (function () {
   "use strict";
 
@@ -623,6 +640,53 @@ window.RPGData = (function () {
     { s: "Haugbonden", t: "Du slost godt. Eit stev skal du få likevel." },
     { stev: "steinstevet" },
   ];
+  const valt = (id, i) => st => st.val[id] === i;
+
+  /* ---------- Scener ----------
+     Ei scene har same mal som manuset i designdokumentet: stad og tid (vist som kort),
+     kven som er med, og stega. Utfallet (ord, ting, trådar) står som steg i lista. */
+  const SCENER = {
+    heime: {
+      namn: "Heime", stad: "Stova på Åsen", tid: "våren 1826", med: ["Ivar", "Storebror"],
+      steg: [
+        { vent: 300 },
+        { snu: "Storebror", mot: "Ivar" },
+        { s: "Storebror", t: "Ivar, du er vaken." },
+        { gaa: "Storebror", mot: "Ivar" },
+        { snu: "Ivar", mot: "Storebror" },
+        { s: "Storebror", t: "Det er mykje som skal gjerast på garden no, når far er borte.", kjensle: "trist", kven: "Ivar" },
+        { s: "Storebror", t: "Snakk med folk før du går. Du har alltid vore flink til å høyre etter." },
+        { gaa: "Storebror", rute: "@", ikkjeVent: true },
+      ],
+    },
+    framande: {
+      namn: "Ein framand på tunet", stad: "Åsen i Hovdebygda", tid: "same morgon", kort: false, med: ["Ivar", "Ein framand"],
+      steg: [
+        { snu: "Ein framand", mot: "Ivar" },
+        { s: "Ein framand", t: "God dag, unge mann." },
+        { gaa: "Ein framand", mot: "Ivar", fart: 330 },
+        { snu: "Ivar", mot: "Ein framand" },
+        { s: "Ein framand", t: "Eg er på gjennomreise. Eg samlar på ting som elles ville gått tapt." },
+        { s: "Ein framand", t: "Sommarfuglar, til dømes. Eg fester dei med ei nål, så held dei seg vakre for alltid." },
+        { s: "Ein framand", t: "Du lyttar godt, ser eg. Då treng du denne. Ei tom bok. Skriv ned orda du høyrer, før dei flyg sin veg." },
+        { gi: "ordboka" },
+        { t: "Ivar fekk ei tom bok med skinnband. På første sida står det berre: «Det som er skrive, står.»" },
+        { t: "Ordboka ligg i menyen (X eller Esc). Der ser du orda du har høyrt, formene deira og kven som sa dei." },
+        { s: "Ein framand", t: "Vi møtest nok att. Folk som oss finn kvarandre." },
+        { flagg: "framande1" },
+        { saman: [
+          [{ gaa: "Ein framand", rute: [13, 1], fart: 300 }, { gaa: "Ein framand", sti: "o3", fart: 300 }],
+          [{ vent: 400 }, { kamera: "Ein framand", ms: 1200 }],
+        ] },
+        { fjern: "Ein framand" },
+        { kamera: null, ms: 900 },
+        { s: "Ivar", t: "Kven var det?", kjensle: "tenkje" },
+        { traad: "framande", tekst: "Kven var mannen som gav Ivar ordboka?" },
+        { dagbok: "Ein framand mann gav meg ei tom bok. «Det som er skrive, står», stod det. Eg veit ikkje kva han meinte." },
+      ],
+    },
+  };
+
   const MANUS = {
     start: [
       { fort: [
@@ -631,8 +695,7 @@ window.RPGData = (function () {
         "No skriv det av seg sjølv, i kyrkjebøker, tingbøker og lovtekstar. Der det breier seg, blir talen til folk stiv og framand.",
         "Hovdebygda i Ørsta, våren 1826. Ivar Aasen er tretten år. Mor døydde då han var tre. I vinter døydde far.",
       ] },
-      { s: "Storebror", t: "Ivar, du er vaken. Det er mykje som skal gjerast på garden no, når far er borte.", kjensle: "trist", kven: "Ivar" },
-      { s: "Storebror", t: "Snakk med folk før du går. Du har alltid vore flink til å høyre etter." },
+      { scene: "heime" },
     ],
     bror: [{ dersom: harOrd("stein"), da: [
       { s: "Storebror", t: "Folk seier det er blekk i kyrkjebøkene nede i bygda. Eg skjønar meg ikkje på slikt." },
@@ -658,16 +721,7 @@ window.RPGData = (function () {
       { s: "Budeia", t: "Drikk litt ⟪mjølk⟫ før du går. Ho gir kraft både til folk og fe." },
       { lytt: ["mjolk", "mjølk"] },
     ] }],
-    framande: [
-      { s: "Ein framand", t: "God dag, unge mann. Eg er på gjennomreise. Eg samlar på ting som elles ville gått tapt." },
-      { s: "Ein framand", t: "Sommarfuglar, til dømes. Eg fester dei med ei nål, så held dei seg vakre for alltid." },
-      { s: "Ein framand", t: "Du lyttar godt, ser eg. Då treng du denne. Ei tom bok. Skriv ned orda du høyrer, før dei flyg sin veg." },
-      { gi: "ordboka" },
-      { t: "Ivar fekk ei tom bok med skinnband. På første sida står det berre: «Det som er skrive, står.»" },
-      { t: "Ordboka ligg i menyen (X eller Esc). Der ser du orda du har høyrt, formene deira og kven som sa dei." },
-      { s: "Ein framand", t: "Vi møtest nok att. Folk som oss finn kvarandre." },
-      { flagg: "framande1" }, { fjern: "&" },
-    ],
+    framande: [{ scene: "framande" }],
     ikkje_enno: [{ t: "Ivar vil sjå seg om på tunet og i stova først. Kanskje nokon har noko å seie." }],
     skiftebrev: [{ dersom: st => talOrd(st) >= 3, da: [
       { s: "Syster", t: "Ivar! Brevet frå sorenskrivaren, skiftebrevet etter far … det rører seg!" },
@@ -858,5 +912,5 @@ window.RPGData = (function () {
   // Første gong Ivar går ut, kjem den framande bort til han.
   MANUS.ut_forste = [{ dersom: st => !st.flagg.framande1, da: MANUS.framande }];
 
-  return { FAMILIAR, ORD, U, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, KAPITTEL, STEVGALDR, PORTRETT, PORTRETT_KJENSLER, MANUS };
+  return { FAMILIAR, ORD, U, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, KAPITTEL, STEVGALDR, PORTRETT, PORTRETT_KJENSLER, SCENER, MANUS, valt };
 })();

@@ -1,0 +1,80 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Sjekk scenemotoren</title>
+<!-- Køyrer scenene «heime» og «framande» i spelet og sjekkar at regien gjer det han skal:
+     figurar som går, kameraet som følgjer og kjem attende, trådar, dagbok og val.
+     Opne i ein nettlesar, eller:
+     msedge --headless=new --disable-gpu --allow-file-access-from-files --virtual-time-budget=60000 --dump-dom .../sjekk-scene.html -->
+<style>body{margin:0;background:#000;color:#fff;font:12px monospace} iframe{width:1100px;height:720px;border:0} #ut{white-space:pre-wrap;padding:4px}</style>
+<iframe id="f"></iframe>
+<div id="ut">køyrer …</div>
+<script>
+const f = document.getElementById("f");
+f.src = "../spel.html?test=1";
+const vent = ms => new Promise(r => setTimeout(r, ms));
+const ut = [];
+const sjekk = (ok, tekst) => ut.push(`${ok ? "OK  " : "FEIL"} ${tekst}`);
+f.onload = async () => {
+  const w = f.contentWindow, d = w.document, M = w.Motor, T = () => w.RPGTest;
+  const tast = k => { d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true })); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true })); };
+  const synleg = sel => { const e = d.querySelector(sel); return e && !e.hidden; };
+  // Trykkjer Z gjennom samtalar til hendinga er ferdig. logg() blir kalla kvar runde.
+  async function trykkGjennom(ferdig, logg) {
+    for (let n = 0; n < 600 && !ferdig(); n++) {
+      if (logg) logg();
+      if (synleg("#rpg-tale") || synleg("#rpg-fort") || d.querySelector(".rpg-kort")) tast("z");
+      await vent(70);
+    }
+  }
+  try {
+    for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
+    d.querySelector("#rpg-tittel-val button").click();
+    await vent(300);
+
+    // 1. «heime»: storebror går bort til Ivar, så tilbake til plassen sin.
+    let naerIvar = false;
+    await trykkGjennom(() => T().st().scener.heime && !M.aktor("Storebror").regi, () => {
+      const b = M.aktor("Storebror"), s = M.spelar;
+      if (b && Math.abs(b.x - s.x) + Math.abs(b.y - s.y) === 1) naerIvar = true;
+    });
+    await vent(1500);
+    const b = M.aktor("Storebror");
+    sjekk(T().st().scener.heime, "scena «heime» er merkt som spela");
+    sjekk(naerIvar, "storebror gjekk bort til Ivar");
+    sjekk(b.x === 8 && b.y === 3, `storebror gjekk attende til plassen sin (står på ${b.x},${b.y})`);
+
+    // 2. «framande»: den framande går til Ivar, kameraet følgjer han ut av kartet og kjem attende.
+    M.last("asen", "3");
+    let kameraBort = false, framandeGjekk = false;
+    await trykkGjennom(() => T().st().flagg.framande1 && T().st().dagbok.length > 0, () => {
+      const fr = M.aktor("Ein framand");
+      if (fr && fr.y < 3) framandeGjekk = true;
+    });
+    await vent(1200);
+    sjekk(framandeGjekk, "den framande gjekk opp vegen");
+    sjekk(!M.aktor("Ein framand"), "den framande er borte frå kartet");
+    sjekk(T().st().nokkel.includes("ordboka"), "Ivar fekk ordboka");
+    sjekk(!!T().st().traadar.framande, "tråden «framande» er opna");
+    sjekk(T().st().dagbok.length === 1, "Dagboka har éi linje");
+    sjekk(T().modus() === "felt" && !M.spelar.regi, "spelaren kan gå att etter scena");
+
+    // 3. Val som blir hugsa, saman-steg og effektar.
+    const t0 = performance.now();
+    const p = T().hending([
+      { val: "Prøveval?", alt: ["A", "B"], id: "prove", svar: [[{ flagg: "valA" }], [{ flagg: "valB" }]] },
+      { saman: [[{ vent: 300 }], [{ vent: 300 }]] },
+      { blink: 1 }, { rist: 200 },
+      { inn: { namn: "Gjest", u: "bonde", rute: [10, 8], retning: "opp" } },
+      { gaa: "Gjest", sti: "h2" },
+      { dagbok: "Prøve." },
+    ]);
+    await vent(200); tast("ArrowDown"); await vent(50); tast("z");
+    await p;
+    const gj = M.aktor("Gjest");
+    sjekk(T().st().val.prove === 1 && T().st().flagg.valB, "valet B er hugsa i st.val");
+    sjekk(gj && gj.x === 12 && gj.y === 8, `gjesten gjekk stien h2 (står på ${gj && gj.x},${gj && gj.y})`);
+    sjekk(performance.now() - t0 > 300, "saman ventar på begge listene");
+  } catch (e) { ut.push("FEIL " + e.stack); }
+  document.getElementById("ut").textContent = ut.join("\n");
+};
+</script>
