@@ -52,7 +52,8 @@
                                         ut: true på eit gaa-steg: borte når han er framme (inn ei dør)
      { snu: "Namn", retning: "opp" }    eller { snu: "Namn", mot: "Ivar" }, eller ryggen til: fraa: "Ivar"
      { pose: "Namn", p: "knele" }       knele, sitje, peike, liggje eller sove (p: null tek posen bort)
-     { inn: { namn, u, rute, retning } } ny person på kartet
+     { inn: { namn, u, rute, retning } } ny person på kartet (vesen: "blekklatten" i staden for u: eit vesen)
+     { byt: "Namn", namn, u }           nytt namn eller ny utsjånad (vesen) på ein person på kartet
      { kamera: "Namn" | [x, y] | null } kameraet glir til nokon (og følgjer), til ei rute, eller attende
      { saman: [[…], […]] }              fleire lister samstundes
      { vent: ms }, { blink: 1 }, { rist: ms }, { ton: "svart" | "kvitt" | "inn" }
@@ -60,6 +61,7 @@
      { val, alt, svar, id: "x" }        valet blir hugsa i st.val.x (sjå valt())
      { traad: "id", tekst } / { traad: "id", lukk: 1 }   opnar eller lukkar ein forteljartråd
      { dagbok: "tekst" }                ei linje i Dagboka
+     { parti: "huldra", fra: "Huldra" } ny i partiet: følgjet står der personen stod
      { partiUt: "huldra" }              går ut av partiet
      { scenekart: "id", merke, retning, fylgje: true } / { scenekart: null }
                                         til eit kart som berre finst for scena (scene: true), og attende
@@ -157,6 +159,8 @@ window.RPGData = (function () {
     gjetar: { hud: "#ecc4a4", har: "#e8c870", jakke: "#6b8f4a", bukse: "#5a4a3a", lue: "#b0282c" },
     tenestejente: { hud: "#ecc4a4", frisyre: "skaut", skaut: "#ecebf0", jakke: "#2a2a30", kjole: "#2a2a30", forkle: "#ecebf0" },
     haugbonde: { hud: "#8a9a86", har: "#c8ccd4", frisyre: "skalle", jakke: "#4a4a5a", kjole: "#4a4a5a", hatt: "#4e6a4a", skjegg: "#c8ccd4", krokrygg: true, stav: "lang" },
+    // Haugbonden med namnet att: raud luve og varm hud, som i forvandlinga (vette3_restored).
+    haugbonde_namn: { hud: "#e0b088", har: "#a8a8b0", frisyre: "skalle", jakke: "#5c5c6a", bukse: "#6a4a30", lue: "#c0302c", skjegg: "#b8b8c0", krokrygg: true, stav: "lang" },
     tenar: { hud: "#e2c09e", har: "#d8d4cc", jakke: "#2f3f5f", bukse: "#2a2a30" },
     fiskar: { hud: "#d9b08e", har: "#6b4a2a", jakke: "#d9b441", bukse: "#3a3a44", hatt: "#d9b441", skjegg: "#6b4a2a" },
     mor: { hud: "#e8c0a0", frisyre: "skaut", skaut: "#6a3a7a", jakke: "#8a2638", kjole: "#3a3a44" },
@@ -189,7 +193,7 @@ window.RPGData = (function () {
     "Klokkaren": "bygd-mann", "Lekpredikanten": "bygd-mann",
     "Dottera": "bygd-kvinne", "Tenestejenta": "bygd-kvinne", "Ei kvinne ved setra": "bygd-kvinne",
     "Bestefaren": "bygd-gamal-mann", "Tenaren på Ekset": "bygd-gamal-mann",
-    "Gamal kone": "bygd-gamal-kone", "Mora": "bygd-gamal-kone",
+    "Gamal kone": "bygd-gamal-kone", "Mora": "bygd-gamal-kone", "Kone frå bygda": "bygd-gamal-kone",
     "Gjetarguten": "bygd-gut",
   };
 
@@ -308,7 +312,7 @@ window.RPGData = (function () {
       ],
       kister: [{ ved: [28, 15], pengar: 48, id: "k-utmark", gøymd: true }],
       folk: [
-        { merke: "@", u: "haugbonde", namn: "Vetten ved haugen", atferd: "stille", retning: 0, tale: "haugbonde", vis: st => !st.flagg.haug },
+        { merke: "@", u: "haugbonde", namn: "Vetten", atferd: "stille", retning: 0, tale: "haugbonde", vis: st => !st.flagg.haug },
         { merke: "%", u: "huldra", namn: "Ei kvinne ved setra", atferd: "snu", retning: 2, snu: [0, 2], tale: "huldra", vis: st => !st.flagg.huldra_med },
         { merke: "$", u: "gjetar", namn: "Gjetarguten", atferd: "gaa", radius: 2, retning: 3, tale: "gjetar" },
       ],
@@ -434,15 +438,17 @@ window.RPGData = (function () {
     },
     arkivet: {
       namn: "Arkivet", stemning: "mork", golv: "g", inne: true, bakgrunn: "arkiv",
+      // Kyrkjeboka ligg open på lesepulten i det innerste rommet. Opninga i hylleveggen (5) fører inn dit.
+      bygg: [{ id: "inne-lesebord", x: 9, y: 3, h: 1 }],
       fiendar: { alle: true, lag: [["protokollen"], ["stempelet"], ["fjorpennen", "blekkflekk"], ["blekkdrope", "protokollen"]] },
       rader: [
         "cccccccccccccccccccc",
         "cyyyyyyygggyyyyyyyyc",
-        "cgggggnggg5gggnggggc",
-        "cggggggggggggggggggc",
+        "cgggggngggggggnggggc",
+        "cgggggggg(((gggggggc",
         "cyyyggggnggggnggyyyc",
         "cggggggggggggggggggc",
-        "cgnggyyyyggyyyyggngc",
+        "cyyyyyyyyy5yyyyyyyyc",
         "cggggggggggggggggggc",
         "cyyyggggLggggggyyyyc",
         "cggggggngggggggggggc",
@@ -651,29 +657,40 @@ window.RPGData = (function () {
   /* ---------- Manus ---------- */
   const harOrd = id => st => !!st.ord[id];
   const talOrd = st => Object.keys(st.ord).length;
-  // Haugbonden får namnet sitt att og lærer Ivar Steinstevet.
+  /* Haugbonden (scena «haugbonde»). Vetten står framfor haugen. Med rett namn får han fargane att,
+     lærer Ivar Steinstevet og går inn i haugen att. Med feil namn blir det kamp først.
+     byt i forvandlinga gir han namnet og den nye utsjånaden medan biletet dekkjer kartet. */
+  const HAUG_FARGAR = { forvandling: ["bilete/spel/vette3_nameless_1x.png", "bilete/spel/vette3_restored_1x.png"], byt: "Haugbonden", u: "haugbonde_namn" };
+  const HAUG_UT = [
+    { snu: "Haugbonden", retning: "opp" }, { vent: 300 },
+    { gaa: "Haugbonden", rute: [8, 7], ut: true, fart: 520 },         // inn i haugen
+  ];
   const HAUG_NAMN = [
-    { forvandling: ["bilete/spel/vette3_nameless_1x.png", "bilete/spel/vette3_restored_1x.png"], tekst: "Fargane kjem attende i vetten. Luva blir raud, og auga blir varme." },
-    { s: "Haugbonden", t: "Du må ⟪høyre⟫ etter, gut. Det er heile kunsta. Eg har høyrt på folket her i tusen år." },
+    { ...HAUG_FARGAR, tekst: "Fargane kjem attende i vetten. Luva blir raud, og auga blir varme." },
+    { s: "Haugbonden", t: "Du må ⟪høyre⟫ etter, gut. Det er heile kunsta. Eg har høyrt på folket her i tusen år.", kjensle: "glad" },
     { lytt: ["hoyra", "høyre"] },
     { s: "Haugbonden", t: "No er eg ⟪laus⟫ frå gløymska. Sauene kan gå forbi haugen att." },
     { lytt: ["laus", "laus"] },
-    { flagg: "haug" }, { fjern: "@" },
-    { s: "Haugbonden", t: "Og så skal du få eit stev. Eg har kvede det over denne haugen sidan før kyrkja vart bygd." },
+    { flagg: "haug" },
+    { s: "Haugbonden", t: "Og så skal du få eit stev. Eg har kvede det over denne haugen sidan før kyrkja vart bygd.", kjensle: "nikk" },
     { stev: "steinstevet" },
     { dersom: st => st.flagg.huldra_med && !st.flagg.huldra_auga, da: [
-      { s: "Huldra", t: "Du gav han namnet att. Då skal du få eit ord av meg òg. Eg ser med ⟪auga⟫ det ingen andre ser." },
+      { snu: "Huldra", mot: "Ivar" },
+      { s: "Huldra", t: "Du gav han namnet att. Då skal du få eit ord av meg òg. Eg ser med ⟪auga⟫ det ingen andre ser.", kjensle: "lokk" },
       { tilbod: ["auga", "auga"] }, { flagg: "huldra_auga" },
     ] },
+    ...HAUG_UT,
   ];
   const HAUG_FEIL = [
-    { s: "Vetten", t: "NEI!" },
+    { s: "Vetten", t: "NEI!", kjensle: "sint" },
+    { rist: 500, styrke: 3 },
     { kamp: ["haugbonden"], boss: 1 },
-    { forvandling: ["bilete/spel/vette3_nameless_1x.png", "bilete/spel/vette3_restored_1x.png"], tekst: "Kampen ristar gløymska av han. Fargane kjem attende, og han hugsar kven han er." },
-    { s: "Haugbonden", t: "Haugbonden … Det var namnet mitt. Du må ⟪høyre⟫ betre etter, gut." },
-    { lytt: ["hoyra", "høyre"] }, { flagg: "haug" }, { fjern: "@" },
-    { s: "Haugbonden", t: "Du slost godt. Eit stev skal du få likevel." },
+    { ...HAUG_FARGAR, namn: "Haugbonden", byt: "Vetten", tekst: "Kampen ristar gløymska av han. Fargane kjem attende, og han hugsar kven han er." },
+    { s: "Haugbonden", t: "Haugbonden … Det var namnet mitt. Du må ⟪høyre⟫ betre etter, gut.", kjensle: "tenkje" },
+    { lytt: ["hoyra", "høyre"] }, { flagg: "haug" },
+    { s: "Haugbonden", t: "Du slost godt. Eit stev skal du få likevel.", kjensle: "nikk" },
     { stev: "steinstevet" },
+    ...HAUG_UT,
   ];
   const valt = (id, i) => st => st.val[id] === i;
 
@@ -883,6 +900,86 @@ window.RPGData = (function () {
         ] },
       ],
     },
+    /* Huldra ved setra. Ho står med ryggen til, så halen syner, og snur seg. Då ho seier kven ho er,
+       får ho namnet sitt (byt). Ho kjenner snøen frå fjellet bak setra og slår seg i lag med Ivar:
+       følgjet står der ho stod (parti med fra). Stevet blir vist sjølv om scena blir hoppa over. */
+    huldra: {
+      namn: "Huldra", stad: "Setra i utmarka", kort: false, hopp: true, med: ["Ivar", "Huldra"],
+      steg: [
+        { snu: "Ei kvinne ved setra", fraa: "Ivar" },
+        { t: "Ved setra står ei kvinne med hår som kveldssol. Bak skjørtet hennar skimtar du noko som liknar ein kuhale.", kjensle: "sjokk" },
+        { snu: "Ei kvinne ved setra", mot: "Ivar" },
+        { s: "Ei kvinne ved setra", t: "Du går her og lyttar. Ikkje mange gjer det lenger.", kjensle: "lokk" },
+        { byt: "Ei kvinne ved setra", namn: "Huldra" },
+        { s: "Huldra", t: "Eg er huldra. Eg kan dei eldste orda, frå før nokon skreiv noko ned.", kjensle: "glad" },
+        { snu: "Huldra", retning: "opp" },                             // mot fjellet bak setra
+        { s: "Huldra", t: "Kjenner du det? Det luktar ⟪snjo⟫ i lufta, sjølv om det er vår." },
+        { snu: "Huldra", mot: "Ivar" },
+        { tilbod: ["snjo", "snjo"] },
+        { s: "Huldra", t: "Blekket kveler alt som lever. Eg går med deg eit stykke. Men ikkje skriv ned alt eg seier.", kjensle: "trist" },
+        { parti: "huldra", fra: "Huldra" }, { flagg: "huldra_med" },
+        { s: "Huldra", t: "Eg kan eit stev om det gamle målet. Men to av orda i det har eg gløymt. Dei ligg djupare enn det nokon i bygda kan hugse.", kjensle: "tenkje" },
+        { stev: "tungestevet" },
+      ],
+    },
+    // Vetten ved haugen spør kven han er (sjå HAUG_NAMN og HAUG_FEIL over).
+    haugbonde: {
+      namn: "Haugbonden", stad: "Utmarka", kort: false, hopp: true, med: ["Ivar", "Vetten"],
+      steg: [
+        { snu: "Vetten", mot: "Ivar" },
+        { t: "Ein gråbleik vette står framfor haugen. Mose gror på hatten hans, og auga lyser som is." },
+        { rist: 400, styrke: 2 },
+        { s: "Vetten", t: "KVEN … ER … EG?", kjensle: "sint" },
+        { val: "Kven er vetten?", alt: ["Du er haugbonden.", "Du er nøkken.", "Du er ein tuss."], svar: [
+          [{ byt: "Vetten", namn: "Haugbonden" }, { s: "Haugbonden", t: "Haugbonden … Ja. Det er meg. Eg hadde gløymt det.", kjensle: "sjokk" }, ...HAUG_NAMN],
+          HAUG_FEIL,
+          HAUG_FEIL,
+        ] },
+      ],
+    },
+    /* Tenaren på Ekset står ved lesebordet mellom stolane. Han hentar ei kongesoge frå hylla,
+       så Ivar går til sides og slepper han ut. Etterpå går han attende til bordet. */
+    tenar: {
+      namn: "Boksamlinga", stad: "Boksamlinga på Ekset", kort: false, hopp: true, med: ["Ivar", "Tenaren på Ekset"],
+      steg: [
+        { snu: "Tenaren på Ekset", mot: "Ivar" },
+        { s: "Tenaren på Ekset", t: "Lensmann Aarflot døydde i 1817, men bøkene hans står her enno. Folk frå heile Søre Sunnmøre har lånt av dei." },
+        { s: "Tenaren på Ekset", t: "Den som vil ⟪vite⟫ noko, må lese. Og den som les, må vite kva han les.", kjensle: "nikk" },
+        { lytt: ["vita", "vite"] },
+        { gaa: "Ivar", rute: [5, 5] }, { snu: "Ivar", mot: "Tenaren på Ekset" },
+        { gaa: "Tenaren på Ekset", rute: [9, 2] }, { snu: "Tenaren på Ekset", retning: "opp" }, { vent: 500 },
+        { gaa: "Tenaren på Ekset", mot: "Ivar" },
+        { snu: "Ivar", mot: "Tenaren på Ekset" },
+        { t: "Ivar blar i ei gamal kongesoge. Mykje forstår han ikkje. Men nokre av dei gamle orda liknar på dei han høyrer heime.", kjensle: "les" },
+        { gi: "sagabok" }, { t: "Ivar fekk låne ei gamal kongesoge.", kjensle: "les" },
+        { gaa: "Tenaren på Ekset", rute: "@", ikkjeVent: true },
+      ],
+    },
+    /* Blekklatten. Ivar går gjennom opninga i hylleveggen. Ein dråpe renn ut av kyrkjeboka på
+       lesepulten og veks til blekklatten (eit vesen på kartet, sjå byt). Etter kampen renn han
+       saman til ein dråpe og siv ned i golvet, og Ivar går bort og les i boka.
+       Kapittelslutten står etter scena i manus, så han kjem sjølv om scena blir hoppa over. */
+    blekklatten: {
+      namn: "Blekklatten", stad: "Arkivet", kort: false, hopp: true, med: ["Ivar", "Blekklatten"],
+      steg: [
+        { snu: "Ivar", retning: "opp" },
+        { inn: { namn: "Blekklatten", vesen: "blekkdrope", rute: [10, 4] } },
+        { t: "Midt i arkivet ligg kyrkjeboka for Hovdebygda. Blekket renn ut av henne og samlar seg til ein stor, glinsande klump." },
+        { rist: 700, styrke: 3 },
+        { blink: 1, byt: "Blekklatten", vesen: "blekklatten" },
+        { s: "Blekklatten", t: "Alt skal skrives ned. Alt skal skrives rigtigt. Hvad der ikke staar skrevet, har aldrig været til." },
+        { s: "Ivar", t: "Far står skriven i den boka. Men han snakka ikkje slik. Ingen her snakkar slik!", kjensle: "sjokk" },
+        { kamp: ["blekklatten"], boss: 1 },
+        { flagg: "latt" },
+        { blink: 1, byt: "Blekklatten", vesen: "blekkdrope" }, { vent: 500 },
+        { fjern: "Blekklatten" },
+        { t: "Blekklatten renn saman til ein liten dråpe og siv ned i golvsprekkene. Kyrkjeboka er stille." },
+        { gaa: "Ivar", rute: [10, 4] }, { snu: "Ivar", retning: "opp" },
+        { t: "På den siste sida står namnet til far, skrive med presten si hand. Ved sida av har nokon rissa inn med fin, fin skrift: «Det som er skrive, står.»" },
+        { s: "Ivar", t: "Det same som i boka mi …", kjensle: "les" },
+        { dagbok: "I kyrkjeboka stod namnet til far. Ved sida av hadde nokon skrive: «Det som er skrive, står.» Same ord som i boka mi." },
+      ],
+    },
   };
 
   const MANUS = {
@@ -1011,37 +1108,21 @@ window.RPGData = (function () {
     /* Utmarka */
     gjetar: [
       { dersom: harOrd("kven"), da: [], elles: [
-        { s: "Gjetarguten", t: "⟪Kem⟫ er du? Eg har aldri sett deg her oppe før." },
+        { s: "Gjetarguten", t: "⟪Kem⟫ er du? Eg har aldri sett deg her oppe før.", kjensle: "sjokk" },
         { lytt: ["kven", "kem"] },
       ] },
       { dersom: harOrd("kvar"), da: [
-        { s: "Gjetarguten", t: "Prøv å spørje «kor» sjølv, i menyen under Galdr. Då finn du kanskje det som er gøymt." },
+        { s: "Gjetarguten", t: "Prøv å spørje «kor» sjølv, i menyen under Galdr. Då finn du kanskje det som er gøymt.", kjensle: "nikk" },
       ], elles: [
-        { s: "Gjetarguten", t: "⟪Kor⟫ har sauene blitt av? Dei vil ikkje gå forbi haugen lenger." },
+        { snu: "Gjetarguten", retning: "opp" },                       // opp mot haugen
+        { s: "Gjetarguten", t: "⟪Kor⟫ har sauene blitt av? Dei vil ikkje gå forbi haugen lenger.", kjensle: "trist" },
         { lytt: ["kvar", "kor"] },
+        { snu: "Gjetarguten", mot: "Ivar" },
         { s: "Gjetarguten", t: "Bestefar sa at den som spør «kor», finn det som er gøymt. Eg har aldri funne noko." },
       ] },
     ],
-    huldra: [
-      { t: "Ved setra står ei kvinne med hår som kveldssol. Bak skjørtet hennar skimtar du noko som liknar ein kuhale." },
-      { s: "Ei kvinne ved setra", t: "Du går her og lyttar. Ikkje mange gjer det lenger." },
-      { s: "Huldra", t: "Eg er huldra. Eg kan dei eldste orda, frå før nokon skreiv noko ned." },
-      { s: "Huldra", t: "Kjenner du det? Det luktar ⟪snjo⟫ i lufta, sjølv om det er vår." },
-      { tilbod: ["snjo", "snjo"] },
-      { s: "Huldra", t: "Blekket kveler alt som lever. Eg går med deg eit stykke. Men ikkje skriv ned alt eg seier.", kjensle: "trist" },
-      { parti: "huldra" }, { flagg: "huldra_med" }, { fjern: "%" },
-      { s: "Huldra", t: "Eg kan eit stev om det gamle målet. Men to av orda i det har eg gløymt. Dei ligg djupare enn det nokon i bygda kan hugse.", kjensle: "tenkje" },
-      { stev: "tungestevet" },
-    ],
-    haugbonde: [
-      { t: "Ein gråbleik vette står framfor haugen. Mose gror på hatten hans, og auga lyser som is." },
-      { s: "Vetten", t: "KVEN … ER … EG?" },
-      { val: "Kven er vetten?", alt: ["Du er haugbonden.", "Du er nøkken.", "Du er ein tuss."], svar: [
-        [{ s: "Haugbonden", t: "Haugbonden … Ja. Det er meg. Eg hadde gløymt det." }, ...HAUG_NAMN],
-        HAUG_FEIL,
-        HAUG_FEIL,
-      ] },
-    ],
+    huldra: [{ scene: "huldra" }],
+    haugbonde: [{ scene: "haugbonde" }],
     /* Vegen og Ekset */
     fiskar: [{ dersom: harOrd("berre"), da: [
       { snu: "Fiskar", retning: "venstre" },                         // ut mot elva
@@ -1050,34 +1131,23 @@ window.RPGData = (function () {
       { s: "Fiskar", t: "Det er ⟪bære⟫ blekk i garnet mitt no! Ikkje ein einaste fisk.", kjensle: "sint" },
       { lytt: ["berre", "bære"] },
     ] }],
+    // Husmannen snur seg mot trykkjeriet (aust for tunet), kona ved vatnet mot hovudhuset.
     husmann: [{ dersom: harOrd("gata"), da: [
-      { s: "Husmann", t: "Lensmann Aarflot trykte aviser og bøker her. No er det stilt." },
+      { snu: "Husmann", retning: "høgre" },
+      { s: "Husmann", t: "Lensmann Aarflot trykte aviser og bøker her. No er det stilt.", kjensle: "trist" },
     ], elles: [
-      { s: "Husmann", t: "Kyrne går heim langs ⟪gata⟫ mellom gjerda. Men i dag ville dei ikkje. Det er blekk på vegen." },
+      { s: "Husmann", t: "Kyrne går heim langs ⟪gata⟫ mellom gjerda. Men i dag ville dei ikkje. Det er blekk på vegen.", kjensle: "sint" },
       { lytt: ["gata", "gata"] },
     ] }],
-    ekset_kone: [{ t: "Kone frå bygda: «Boksamlinga på Ekset står open for den som vil lese. Aarflot ville at bøndene skulle lære.»" }],
+    ekset_kone: [
+      { snu: "Kone frå bygda", retning: "opp" },
+      { s: "Kone frå bygda", t: "Boksamlinga på Ekset står open for den som vil lese. Aarflot ville at bøndene skulle lære.", kjensle: "nikk" },
+    ],
     tenar: [{ dersom: harOrd("vita"), da: [
-      { s: "Tenaren på Ekset", t: "Kom att når du vil. Bøkene går ingen stad." },
-    ], elles: [
-      { s: "Tenaren på Ekset", t: "Lensmann Aarflot døydde i 1817, men bøkene hans står her enno. Folk frå heile Søre Sunnmøre har lånt av dei." },
-      { s: "Tenaren på Ekset", t: "Den som vil ⟪vite⟫ noko, må lese. Og den som les, må vite kva han les." },
-      { lytt: ["vita", "vite"] },
-      { t: "Ivar blar i ei gamal kongesoge. Mykje forstår han ikkje. Men nokre av dei gamle orda liknar på dei han høyrer heime." },
-      { gi: "sagabok" }, { t: "Ivar fekk låne ei gamal kongesoge.", kjensle: "les", kven: "Ivar" },
-    ] }],
-    /* Arkivet */
-    blekklatten: [{ dersom: st => st.flagg.latt, da: [], elles: [
-      { t: "Midt i arkivet ligg kyrkjeboka for Hovdebygda. Blekket renn ut av henne og samlar seg til ein stor, glinsande klump." },
-      { s: "Blekklatten", t: "Alt skal skrives ned. Alt skal skrives rigtigt. Hvad der ikke staar skrevet, har aldrig været til." },
-      { s: "Ivar", t: "Far står skriven i den boka. Men han snakka ikkje slik. Ingen her snakkar slik!", kjensle: "sjokk" },
-      { kamp: ["blekklatten"], boss: 1 },
-      { flagg: "latt" },
-      { t: "Blekklatten renn saman til ein liten dråpe og siv ned i golvsprekkene. Kyrkjeboka er stille." },
-      { t: "På den siste sida står namnet til far, skrive med presten si hand. Ved sida av har nokon rissa inn med fin, fin skrift: «Det som er skrive, står.»" },
-      { s: "Ivar", t: "Det same som i boka mi …", kjensle: "les" },
-      { kapittelslutt: 1 },
-    ] }],
+      { s: "Tenaren på Ekset", t: "Kom att når du vil. Bøkene går ingen stad.", kjensle: "glad" },
+    ], elles: [{ scene: "tenar" }] }],
+    /* Arkivet: kapittelslutten kjem etter scena */
+    blekklatten: [{ dersom: st => st.flagg.latt, da: [], elles: [{ scene: "blekklatten" }, { kapittelslutt: 1 }] }],
   };
 
   // Første gong Ivar går ut, kjem den framande bort til han.

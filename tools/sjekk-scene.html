@@ -1,7 +1,7 @@
 <!doctype html>
 <meta charset="utf-8">
 <title>Sjekk scenemotoren</title>
-<!-- Køyrer scenene «heime», «framande» og «minne_far» og hendingane på Åsen og i Hovdebygda, og sjekkar at regien gjer det han
+<!-- Køyrer scenene «heime», «framande» og «minne_far» og hendingane på Åsen, i Hovdebygda, i utmarka, på Ekset og i arkivet, og sjekkar at regien gjer det han
      skal: figurar som går, kameraet som følgjer og kjem attende, trådar, dagbok, val og scenekart.
      Opne i ein nettlesar, eller:
      msedge --headless=new --disable-gpu --allow-file-access-from-files --virtual-time-budget=60000 --dump-dom .../sjekk-scene.html -->
@@ -470,8 +470,177 @@ f.onload = async () => {
     s11.ord = ordFor11; s11.flagg.skam_loyst = true;
     w.console.warn = gamalWarn;
     sjekk(!varsel11.some(v => /Regi/.test(v)), `ingen åtvaringar frå regien i Hovdebygda${varsel11.length ? ": " + varsel11.join("; ") : ""}`);
+    // 12. Utmarka, Ekset og arkivet: huldra som slår seg i lag med Ivar, haugbonden (rett og feil namn),
+    //     tenaren som hentar kongesoga, småpraten og blekklatten med kapittelslutten.
+    const s12 = T().st(), varsel12 = [];
+    w.console.warn = (...a) => { varsel12.push(a.join(" ")); gamalWarn.apply(w.console, a); };
+    // Huldra talar frå kartet før ho er med, og som følgjet etterpå.
+    const paaKartet = n => n === "Huldra" && s12.parti.some(m => m.id === "huldra") ? M.aktor("fylgje") : M.aktor(n);
+    const sjekkTalar12 = namn => { const t = taleTekst(); for (const n of namn) if (t.startsWith(n) && !paaKartet(n) && !talarBorte.includes(n)) talarBorte.push(n); };
+    const utanHuldra = () => { s12.parti = s12.parti.filter(m => m.id !== "huldra"); M.settFylgje(null); delete s12.flagg.huldra_med; delete s12.ord.snjo; s12.stev = s12.stev.filter(x => x !== "tungestevet"); };
+    const lytt12 = (t, n) => /Skal Ivar skrive ned/.test(t) ? 1 : 0;              // tilbodet: berre lytt
+    const kampFor12 = w.Kamp.start; let kampar12 = 0;
+    w.Kamp.start = async () => { kampar12++; return { utfall: "siger", xp: 0, pengar: 0, fall: [] }; };
+
+    // a) Huldra ved setra: ryggen til (halen), snur seg, får namnet, ser mot fjellet og blir med.
+    utanHuldra();
+    M.last("utmarka", "1"); M.plasser(25, 8, 3); await vent(300);
+    const kvinne = M.aktor("Ei kvinne ved setra");
+    talarBorte = []; overlapp = false;
+    let ryggTil = false, motFjellet = false, huldraVed = null;
+    tast("z");
+    await gjennom(() => s12.scener.huldra && ferdigFelt(), () => {
+      sjekkTalar12(["Ei kvinne ved setra", "Huldra"]);
+      const k = M.aktor("Ei kvinne ved setra") || M.aktor("Huldra"), t = taleTekst();
+      if (/Bak skjørtet/.test(t) && k && k.dir === 3) ryggTil = true;
+      if (/luktar snjo/.test(t) && k && k.dir === 1) motFjellet = true;
+      if (/stev om det gamle/.test(t)) { const f = M.aktor("fylgje"); huldraVed = f && { x: f.x, y: f.y }; }
+      if (!eiRute()) overlapp = true;
+    }, lytt12);
+    sjekk(kvinne && ryggTil, "kvinna ved setra står med ryggen til Ivar, så halen syner");
+    sjekk(motFjellet, "huldra snur seg mot fjellet når ho kjenner snøen");
+    sjekk(!talarBorte.length && !overlapp, `den som talar, står på kartet, og ingen står på same rute${talarBorte.length ? " (" + talarBorte.join(", ") + ")" : ""}`);
+    sjekk(huldraVed && huldraVed.x === 26 && huldraVed.y === 8, `følgjet står der kvinna stod (${JSON.stringify(huldraVed)})`);
+    sjekk(s12.parti.some(m => m.id === "huldra") && s12.flagg.huldra_med && !s12.ord.snjo && s12.stev.includes("tungestevet"), "huldra er med, Ivar lytta berre til «snjo», og han lærte Tungestevet");
+    sjekk(!M.aktor("Ei kvinne ved setra") && !M.aktor("Huldra") && kanGaa(), "ho står ikkje att på kartet, og Ivar kan gå");
+    await M.gaa("spelar", { sti: "n1" });
+    sjekk(M.aktor("fylgje").x === 25 && M.aktor("fylgje").y === 8, "huldra går etter Ivar");
+    M.last("utmarka", "1"); await vent(150);
+    sjekk(!M.aktor("Ei kvinne ved setra"), "ved setra står ingen når kartet blir lasta att");
+
+    // b) Huldra hoppa over: tilbodet og stevet blir viste likevel.
+    utanHuldra();
+    M.last("utmarka", "1"); M.plasser(25, 8, 3); await vent(300);
+    tast("z");
+    for (let n = 0; n < 100 && !synleg("#rpg-tale"); n++) await vent(50);
+    await vent(200); tast("x"); await vent(150); tast("z");
+    let tilbodVist = false, stevVist = false;
+    await gjennom(() => s12.flagg.huldra_med && ferdigFelt(), () => {
+      if (/Skal Ivar skrive ned/.test(taleTekst())) tilbodVist = true;
+      if (/lærte «Tungestevet»/.test(taleTekst())) stevVist = true;
+    }, lytt12);
+    sjekk(tilbodVist && stevVist, "hoppa over: tilbodet og det nye stevet blir viste");
+    sjekk(s12.parti.some(m => m.id === "huldra") && !!M.aktor("fylgje") && !M.aktor("Huldra") && !M.snogg && kanGaa(), "hoppa over: huldra er med, og Ivar kan gå");
+
+    // c) Haugbonden, rett namn: forvandlinga gir han fargane att, huldra gir eit ord, og han går inn i haugen.
+    delete s12.flagg.haug; delete s12.flagg.huldra_auga; delete s12.ord.hoyra; delete s12.ord.laus; s12.stev = s12.stev.filter(x => x !== "steinstevet");
+    M.last("utmarka", "1"); M.plasser(8, 9, 1); await vent(300);
+    talarBorte = []; overlapp = false;
+    let farga = false, iHaugen = false;
+    tast("z");
+    await gjennom(() => s12.flagg.haug && !M.aktor("Haugbonden") && ferdigFelt(), () => {
+      sjekkTalar12(["Vetten", "Haugbonden", "Huldra"]);
+      const h = M.aktor("Haugbonden");
+      if (h && /Du må ⟪?høyre/.test(taleTekst()) && h.u === "haugbonde_namn") farga = true;
+      if (h && h.x === 8 && h.y === 7) iHaugen = true;
+      if (!eiRute()) overlapp = true;
+    }, (t, n) => lytt12(t, n));
+    sjekk(farga, "haugbonden har fått namnet og fargane att når han talar");
+    sjekk(iHaugen && !M.aktor("Haugbonden") && !M.aktor("Vetten"), "han gjekk inn i haugen og er borte");
+    sjekk(!talarBorte.length && !overlapp, `den som talar, står på kartet, og ingen står på same rute${talarBorte.length ? " (" + talarBorte.join(", ") + ")" : ""}`);
+    sjekk(s12.ord.hoyra && s12.ord.laus && s12.stev.includes("steinstevet") && s12.flagg.huldra_auga, "Ivar høyrde «høyre» og «laus», lærte Steinstevet og fekk tilbodet om «auga»");
+    sjekk(kampar12 === 0 && kanGaa(), "med rett namn blir det ingen kamp, og Ivar kan gå");
+    M.last("utmarka", "1"); await vent(150);
+    sjekk(!M.aktor("Vetten"), "vetten står ikkje framfor haugen når kartet blir lasta att");
+
+    // d) Haugbonden, feil namn: kamp først, så får han namnet att og går inn i haugen.
+    delete s12.flagg.haug; s12.stev = s12.stev.filter(x => x !== "steinstevet");
+    M.last("utmarka", "1"); M.plasser(8, 9, 1); await vent(300);
+    talarBorte = [];
+    let fargaEtterKamp = false;
+    tast("z");
+    await gjennom(() => s12.flagg.haug && !M.aktor("Haugbonden") && ferdigFelt(), () => {
+      sjekkTalar12(["Vetten", "Haugbonden", "Huldra"]);
+      const h = M.aktor("Haugbonden");
+      if (h && /Det var namnet mitt/.test(taleTekst()) && h.u === "haugbonde_namn" && kampar12 === 1) fargaEtterKamp = true;
+    }, t => /Kven er vetten/.test(t) ? 2 : 1);
+    sjekk(kampar12 === 1 && fargaEtterKamp, "feil namn: kamp, og etterpå har haugbonden namnet og fargane att");
+    sjekk(!talarBorte.length && s12.stev.includes("steinstevet") && !M.aktor("Haugbonden") && kanGaa(), "den som talar, står på kartet, Ivar lærte stevet, og haugbonden er borte");
+
+    // e) Tenaren på Ekset hentar kongesoga. Ivar går til sides så tenaren kjem ut frå bordet.
+    delete s12.ord.vita; s12.nokkel = s12.nokkel.filter(x => x !== "sagabok");
+    M.last("ekset-stova", "1"); M.plasser(6, 5, 1); await vent(300);
+    talarBorte = []; overlapp = false;
+    let vedHylla = false, gavBoka = false;
+    tast("z");
+    await gjennom(() => s12.nokkel.includes("sagabok") && ferdigFelt(), () => {
+      sjekkTalar12(["Tenaren på Ekset"]);
+      const tn = M.aktor("Tenaren på Ekset");
+      if (tn.x === 9 && tn.y === 2) vedHylla = true;
+      if (/Ivar blar i/.test(taleTekst()) && naer(tn, M.spelar)) gavBoka = true;
+      if (!eiRute()) overlapp = true;
+    });
+    sjekk(vedHylla && gavBoka, "tenaren gjekk til hylla og kom med boka til Ivar");
+    sjekk(!talarBorte.length && !overlapp && s12.ord.vita, "den som talar, står på kartet, ingen står på same rute, og Ivar høyrde «vite»");
+    for (let n = 0; n < 80 && M.aktor("Tenaren på Ekset").regi; n++) await vent(50);
+    const tn12 = M.aktor("Tenaren på Ekset");
+    sjekk(tn12.x === 6 && tn12.y === 4 && kanGaa(), `tenaren gjekk attende til bordet (${tn12.x},${tn12.y}), og Ivar kan gå`);
+
+    // f) Småpraten i utmarka og på Ekset: kvar replikk har ein talar på kartet.
+    const ordFor12 = s12.ord;
+    for (const [kart, merke, manus, flagg] of [["utmarka", "$", "gjetar"], ["utmarka", "$", "gjetar", "*"], ["ekset", "@", "husmann"], ["ekset", "@", "husmann", "*"],
+      ["ekset", "%", "ekset_kone"], ["ekset-stova", "@", "tenar", "*"]]) {
+      s12.ord = flagg === "*" ? ordFor12 : {};
+      M.last(kart, "1"); await vent(150);
+      const f = M.kart.folk.find(f => f.merke === merke);
+      talarBorte = [];
+      let ferdig = false;
+      T().hending(w.RPGData.MANUS[manus]).then(() => { ferdig = true; });
+      await gjennom(() => ferdig && !T().iHending(), () => sjekkTalar12([f.namn]));
+      sjekk(ferdig && !talarBorte.length && kanGaa(), `${manus}${flagg ? " (" + flagg + ")" : ""}: ${f.namn} talar på kartet, og hendinga er ferdig`);
+    }
+    s12.ord = ordFor12;
+    w.console.warn = gamalWarn;
+    sjekk(!varsel12.some(v => /Regi/.test(v)), `ingen åtvaringar frå regien i utmarka og på Ekset${varsel12.length ? ": " + varsel12.join("; ") : ""}`);
+
+    // g) Blekklatten. Ivar går gjennom opninga i hylleveggen (merke 5). Ein dråpe veks til blekklatten,
+    //    og etter kampen går Ivar bort og les i kyrkjeboka. Så kjem kapittelslutten og tittelskjermen.
+    w.console.warn = (...a) => { varsel12.push(a.join(" ")); gamalWarn.apply(w.console, a); };
+    delete s12.flagg.latt; s12.kapittel = 1; kampar12 = 0;
+    talarBorte = [];
+    let draape = false, stor = false, stodVedBoka = false, lasIBoka = false;
+    M.last("arkivet", "5");
+    await gjennom(() => T().modus() === "tittel", () => {
+      sjekkTalar12(["Blekklatten"]);
+      const b = M.aktor("Blekklatten"), t = taleTekst();
+      if (b && b.vesen === "blekkdrope" && /Midt i arkivet/.test(t)) draape = true;
+      if (b && b.vesen === "blekklatten" && b.x === 10 && b.y === 4 && /Alt skal skrives/.test(t)) stor = true;
+      if (/Det same som i boka/.test(t) && M.spelar.x === 10 && M.spelar.y === 4 && M.spelar.dir === 1) { stodVedBoka = true; lasIBoka = M.spelar.kjensle === "les"; }
+    });
+    sjekk(draape && stor, "ein dråpe renn ut av kyrkjeboka og veks til blekklatten framfor lesepulten");
+    sjekk(kampar12 === 1 && s12.flagg.latt, "kampen mot blekklatten vart spela, og flagget er sett");
+    sjekk(stodVedBoka && lasIBoka, "Ivar gjekk bort til kyrkjeboka og les i ho");
+    sjekk(!talarBorte.length, "den som talar, står på kartet");
+    sjekk(s12.dagbok.some(l => /namnet til far/.test(l.tekst)), "kyrkjeboka står i Dagboka");
+    sjekk(T().modus() === "tittel" && T().st().kapittel === 2 && T().lagra().flagg.latt, "kapittelslutten kom, og spelet er lagra med blekklatten slegen");
+    // Hald fram: arkivet utan blekklatten.
+    for (let n = 0; n < 60 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
+    d.querySelector("#rpg-tittel-val button").click();
+    for (let n = 0; n < 60 && T().modus() !== "felt"; n++) await vent(50);
+    await vent(400);
+    const s12b = T().st();
+    M.last("arkivet", "5"); await vent(400);
+    sjekk(!M.aktor("Blekklatten") && !T().iHending() && kanGaa(), "attende i arkivet er blekklatten borte, og ingenting skjer i opninga");
+
+    // h) Blekklatten hoppa over: kampen og kapittelslutten kjem likevel.
+    delete s12b.flagg.latt; s12b.kapittel = 1; kampar12 = 0;
+    M.last("arkivet", "5");
+    for (let n = 0; n < 100 && !synleg("#rpg-tale"); n++) await vent(50);
+    await vent(200); tast("x"); await vent(150); tast("z");
+    let fortVist = false;
+    await gjennom(() => T().modus() === "tittel", () => { if (synleg("#rpg-fort")) fortVist = true; });
+    sjekk(kampar12 === 1 && s12b.flagg.latt && fortVist && T().modus() === "tittel", "hoppa over: kampen og kapittelslutten kom likevel");
+    sjekk(!M.snogg, "snøggmodusen er slått av");
+    for (let n = 0; n < 60 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
+    d.querySelector("#rpg-tittel-val button").click();
+    for (let n = 0; n < 60 && T().modus() !== "felt"; n++) await vent(50);
+    w.Kamp.start = kampFor12;
+    w.console.warn = gamalWarn;
+    sjekk(!varsel12.some(v => /Regi/.test(v)), `ingen åtvaringar frå regien i arkivet${varsel12.length ? ": " + varsel12.join("; ") : ""}`);
     if (gamalLagring == null) w.localStorage.removeItem(NOKKEL); else w.localStorage.setItem(NOKKEL, gamalLagring);
   } catch (e) { ut.push("FEIL " + e.stack); }
   document.getElementById("ut").textContent = ut.join("\n");
+  // Spelet blir teke bort når testen er ferdig, så resten av den virtuelle tida går fort (sjå kjoyr-test.py).
+  f.remove();
 };
 </script>

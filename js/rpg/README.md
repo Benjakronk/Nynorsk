@@ -76,7 +76,7 @@ Ei scene med `hopp: true` er ein mellomsekvens. Trykkjer spelaren X eller Esc un
 - replikkar, forteljing, kort, nærbilete, vent, kamera, blink, rist og toning blir ferdige med ein gong
 - figurar som går, blir sette rett på målruta, snudde slik dei gjekk (eller mot den dei gjekk til)
 - alt utfall blir gjort: flagg, ting, ord, trådar, Dagboka, parti, folk inn og ut, flytting
-- val og kampar blir viste som vanleg (snøggmodusen er av for det steget), og tilbodet frå huldra òg
+- val og kampar blir viste som vanleg (snøggmodusen er av for det steget), og tilbodet frå huldra og eit nytt stev òg
 - når scena er slutt, tonar skjermen inn att om han stod svart
 
 Ved nei kjem replikken attende, og scena held fram. Nye vindauge ventar til spørsmålet er svara. Lyttarane for tastane ligg i ein stabel (`Motor.lytt`), så eit kort som går bort under spørsmålet, tek ikkje spørsmålet med seg.
@@ -99,6 +99,8 @@ Figurane blir nemnde med namn: «Ivar» er spelaren, «Huldra» er følgjet når
 | `{ snu: "Namn", fraa: "Ivar" }` | snur ryggen til nokon |
 | `{ pose: "Namn", p: "knele" }` | pose: knele, sitje, peike, liggje eller sove (sjå under). `p: null` tek han bort |
 | `{ inn: { namn, u, rute, retning, tale } }` | set ein ny person inn på kartet |
+| `{ inn: { namn, vesen: "blekklatten", rute } }` | set eit vesen inn på kartet: fiendebiletet frå kampen i full storleik, midt på ruta |
+| `{ byt: "Namn", namn, u }` | byter namn eller utsjånad på ein person (`vesen` for eit vesen). Kan stå saman med andre steg, til dømes ein blink eller ei forvandling |
 | `{ fjern: "Namn" }` | tek ein person bort (namn eller merke) |
 | `{ kamera: "Namn" }` | kameraet glir til ein figur og følgjer han |
 | `{ kamera: [x, y] }` | kameraet glir til ei rute |
@@ -116,6 +118,7 @@ Figurane blir nemnde med namn: «Ivar» er spelaren, «Huldra» er følgjet når
 | `{ traad: "id", tekst }` | opnar ein forteljartråd (`st.traadar`) |
 | `{ traad: "id", lukk: 1 }` | lukkar han |
 | `{ dagbok: "tekst" }` | skriv ei linje i Dagboka (`st.dagbok`) |
+| `{ parti: "huldra", fra: "Huldra" }` | ny i partiet: følgjet står der personen på kartet stod, og personen er borte |
 | `{ partiUt: "huldra", stille }` | går ut av partiet |
 | `{ scenekart: "id", merke, retning, fylgje, ms }` | tonar over til eit scenekart (sjå under) |
 | `{ scenekart: null, ms }` | tonar attende til kartet, ruta og retninga spelaren hadde før |
@@ -175,12 +178,21 @@ Hovdebygda (bygda, kyrkja, prestegarden, Nedre Hovde og vegen) brukar òg scenem
 - `skammen` på Nedre Hovde: bestefaren talar, mora går bort til han, og dottera kjem etter. Ved feil svar snur han ryggen til, og Ivar kan prøve att.
 - Småprat (bonde, kone, kremmar, lekpredikant, klokkar, tenestejente, mor, dotter, fiskar) er manus med kjensler. Folk snur seg mot det dei talar om (kona mot utmarka, tenestejenta mot kontordøra, fiskaren mot elva), og lekpredikanten peikar på Ivar.
 
+### Hendingane i utmarka, på Ekset og i arkivet
+Utmarka, Ekset (tunet og boksamlinga) og arkivet brukar òg scenemotoren:
+
+- `huldra` er ein mellomsekvens. Kvinna ved setra står med ryggen til Ivar, så halen syner, og snur seg. Når ho seier kven ho er, får ho namnet Huldra (`byt`). Ho ser opp mot fjellet når ho kjenner snøen, og slår seg i lag med Ivar med `parti` og `fra`: følgjet står der ho stod.
+- `haugbonde` er ein mellomsekvens. Vetten står framfor haugen og spør kven han er. Med rett namn får han namnet og den nye utsjånaden (`haugbonde_namn`, raud luve) i forvandlinga, gir Ivar Steinstevet, og huldra gir «auga» om ho er med. Med feil namn blir det kamp først. Til slutt går han inn i haugen (`ut: true`), så han aldri blir borte midt i ein replikk.
+- `tenar` er ein mellomsekvens. Tenaren står mellom stolane ved lesebordet. Ivar går til sides, tenaren hentar kongesoga frå hylla, gir henne til Ivar og går attende til bordet.
+- `blekklatten` er ein mellomsekvens. Ivar går gjennom opninga i hylleveggen (merke 5). Kyrkjeboka ligg open på lesepulten. Ein dråpe renn ut av henne, biletet ristar, og dråpen veks til blekklatten (eit vesen på kartet). Etter kampen renn han saman til ein dråpe og siv ned i golvet, og Ivar går bort og les i boka. Kapittelslutten står etter scena i manus, så han kjem også når scena blir hoppa over.
+- Småprat (gjetarguten, husmannen og kona på Ekset) er manus med kjensler. Gjetarguten ser opp mot haugen, husmannen mot trykkjeriet og kona mot hovudhuset.
+
 Ei dør med `vakt` stoppar Ivar på ruta når vaktmanuset har gått, også når flagget vart sett. Spelaren går sjølv vidare.
 
 Etter ein kamp midt i ei hending er motoren pausa att, så ingen går omkring medan scena held fram.
 
 ### Test
-`tools/sjekk-scene.html` køyrer scenene «heime» og «framande» og eit prøvemanus. Han sjekkar at figurane går dit dei skal, at kameraet kjem attende, at val blir hugsa, og at trådar og Dagboka blir skrivne. Så hoppar han over «framande» og ei prøvescene og sjekkar at utfallet er gjort, at figurane står der dei skal, at val blir viste, og at skjermen er tona inn att. Til sist kviler Ivar ved lampa i stova og får minnet om far på scenekartet: testen sjekkar at huldra ikkje er med, at lagring i minnet lagrar stova, og at Ivar kjem attende til same rute og retning, også når ei scene med scenekart blir hoppa over. Han sjekkar at Ivar set seg og far peikar i minnet, at posane er lesne frå arket i fire retningar, at ein pose varer til figuren går eller hendinga er slutt, og at syster sit ved bordet att. Til slutt spelar han hendingane på Åsen: syster som gir niste, vakta ved kantane, og skiftebrevet med ein stubba kamp. Han sjekkar at syster kjem ut døra, at begge står attmed Ivar når blekket kjem, at den som talar, står på kartet, at dei går inn att og berre finst i stova, at Ivar kan gå vidare til bygda, og at kampen kjem også når scena blir hoppa over. Så spelar han hendingane i Hovdebygda: den framande (og ein gong hoppa over), presten med valet «Kanskje litt», skammen med feil og rett svar, og all småpraten. Han sjekkar at lekpredikanten kjem opp til vegen, at den framande går ut av biletet, at presten peikar, snur ryggen til og kneler att, at mora og dottera går bort til bestefaren, at ingen står på same rute, og at den som talar, står på kartet. `RPGTest.iHending()` seier om ei hending køyrer. `node tools/sjekk-spel.js` sjekkar at scenene viser til ting som finst.
+`tools/sjekk-scene.html` køyrer scenene «heime» og «framande» og eit prøvemanus. Han sjekkar at figurane går dit dei skal, at kameraet kjem attende, at val blir hugsa, og at trådar og Dagboka blir skrivne. Så hoppar han over «framande» og ei prøvescene og sjekkar at utfallet er gjort, at figurane står der dei skal, at val blir viste, og at skjermen er tona inn att. Til sist kviler Ivar ved lampa i stova og får minnet om far på scenekartet: testen sjekkar at huldra ikkje er med, at lagring i minnet lagrar stova, og at Ivar kjem attende til same rute og retning, også når ei scene med scenekart blir hoppa over. Han sjekkar at Ivar set seg og far peikar i minnet, at posane er lesne frå arket i fire retningar, at ein pose varer til figuren går eller hendinga er slutt, og at syster sit ved bordet att. Til slutt spelar han hendingane på Åsen: syster som gir niste, vakta ved kantane, og skiftebrevet med ein stubba kamp. Han sjekkar at syster kjem ut døra, at begge står attmed Ivar når blekket kjem, at den som talar, står på kartet, at dei går inn att og berre finst i stova, at Ivar kan gå vidare til bygda, og at kampen kjem også når scena blir hoppa over. Så spelar han hendingane i Hovdebygda: den framande (og ein gong hoppa over), presten med valet «Kanskje litt», skammen med feil og rett svar, og all småpraten. Han sjekkar at lekpredikanten kjem opp til vegen, at den framande går ut av biletet, at presten peikar, snur ryggen til og kneler att, at mora og dottera går bort til bestefaren, at ingen står på same rute, og at den som talar, står på kartet. Til sist spelar han hendingane i utmarka, på Ekset og i arkivet: huldra (og ein gong hoppa over, med tilbodet og stevet), haugbonden med rett og feil namn, tenaren, småpraten og blekklatten med kapittelslutten (òg hoppa over). Han sjekkar at huldra snur ryggen til og blir følgjet der ho stod, at haugbonden har fargane att og går inn i haugen, at tenaren hentar boka og går attende, at dråpen veks til blekklatten, at Ivar les i kyrkjeboka, og at spelet er lagra med blekklatten slegen. Testen brukar om lag 130 sekund virtuell tid, og `kjoyr-test.py` gir han 160 sekund som standard. Eit mykje større budsjett kan gjere at Edge brukar minutt på resten etter testen. `RPGTest.iHending()` seier om ei hending køyrer. `node tools/sjekk-spel.js` sjekkar at scenene viser til ting som finst.
 
 ### Neste steg for scenemotoren
-- Hendingane i prototypen over til scener med regi, der dei som talar, står på kartet. Åsen og Hovdebygda er ferdige.
+- Hendingane i prototypen over til scener med regi, der dei som talar, står på kartet. Åsen, Hovdebygda, utmarka, Ekset og arkivet er ferdige.

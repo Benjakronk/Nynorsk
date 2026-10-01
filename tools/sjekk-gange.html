@@ -50,5 +50,6 @@ f.onload = async () => {
   const fliser = (logg[logg.length - 1].fx - 2).toFixed(2);
   document.getElementById("ut").textContent =
     `rammer: ${logg.length}, fliser gått: ${fliser}, rammer i ro: ${stille}, rammer utan steg: ${utanSteg}, største hopp: ${maks.toFixed(3)} flis`;
+  f.remove();                                                      // resten av den virtuelle tida går fort
 };
 </script>

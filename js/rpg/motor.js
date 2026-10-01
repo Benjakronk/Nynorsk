@@ -19,7 +19,7 @@
                               Standard mellom alle scener. Motor.tonUt() og tonInn() kvar for seg.
    Motor.pause(true|false)    stoppar rørsla (under samtalar, menyar og kamp)
    Regi i skripta scener (verkar også i pause, sjå js/rpg/README.md):
-   Motor.gaa(kven, mal, fart), snu(kven, retning), inn(def), kamera(til, ms),
+   Motor.gaa(kven, mal, fart), snu(kven, retning), inn(def), byt(kven, ny), kamera(til, ms),
    kort(stad, tid), naerbilete(src, tekst), blink(), rist(ms), tonUt(ms, farge)
    Motor.sporHopp()           spør om mellomsekvensen skal hoppast over, Motor.hopp() hoppar
                               (snøggmodus, Motor.snogg) */
@@ -108,7 +108,7 @@ window.Motor = (function () {
       const dir = f.retning != null ? f.retning : 0;
       // pose på personen i kartet (til dømes sitje ved bordet) er grunnposen, som han får att etter kvar hending.
       return Object.assign({}, f, { x, y, fx: x, fy: y, hx: x, hy: y, dir, grunndir: dir, steg: 0, flytt: null, grunnpose: f.pose || null,
-        neste: performance.now() + 800 + Math.random() * 2500, sprite: f.usynleg ? null : Pikslar.figur(RPGData.U[f.u]) });
+        neste: performance.now() + 800 + Math.random() * 2500, sprite: spriteAv(f) });
     });
     kart = { id, def, w, h, fliser, merke, folk, kister: def.kister || [], dorer: (def.dorer || []).filter(d => d.til) };
     for (const a of regi) { a.regi.res(); a.regi = null; } regi.clear(); kam = null;      // nytt kart: regien byrjar på nytt
@@ -128,6 +128,10 @@ window.Motor = (function () {
     const inngang = (def.inngang || []).find(i => i.merke === merkeId);
     if (inngang && krokar.inngang) setTimeout(() => krokar.inngang(inngang), 50);
   }
+
+  // Biletet til ein person: ein figur frå U, eller eit vesen (vesen: "blekklatten") som blir teikna
+  // med fiendebiletet frå kampen, i full storleik.
+  const spriteAv = f => f.usynleg ? null : f.vesen ? { vesen: Pikslar.fiende(f.vesen) } : Pikslar.figur(RPGData.U[f.u]);
 
   /* Set følgjet (huldra) ned attmed spelaren: éi flis bak han (motsett av der han ser), eller
      til sida om det ikkje går (til dømes når døra er bak han), elles på same flis. */
@@ -467,7 +471,14 @@ window.Motor = (function () {
     const [x, y] = typeof def.rute === "string" ? kart.merke[def.rute] : def.rute;
     const dir = typeof def.retning === "string" ? RETNINGSNAMN[def.retning] : def.retning || 0;
     kart.folk.push(Object.assign({ atferd: "stille" }, def, { x, y, fx: x, fy: y, hx: x, hy: y, dir, grunndir: dir, steg: 0, flytt: null,
-      neste: performance.now() + 2000, sprite: Pikslar.figur(RPGData.U[def.u]) }));
+      neste: performance.now() + 2000, sprite: spriteAv(def) }));
+  }
+  // Byter namn eller utsjånad på ein person: { namn, u } eller { vesen } (vetten som får namnet
+  // sitt att, kvinna ved setra som er huldra, blekklatten som renn saman til ein dråpe).
+  function byt(kven, ny) {
+    const a = aktor(kven); if (!a || a === spelar || a === fylgje) return;
+    if (ny.namn) a.namn = ny.namn;
+    if (ny.u || ny.vesen) { a.u = ny.u || a.u; a.vesen = ny.vesen; a.sprite = spriteAv(a); }
   }
 
   /* Kamera: til ei rute [x, y], til ein figur (som det så følgjer), eller null (tilbake til
@@ -842,6 +853,13 @@ window.Motor = (function () {
         for (const [rx, ry] of Pikslar.ROYK[f.id] || []) Pikslar.royk(g, bx + rx, by - f.bygg.height + ry, no);
         continue; }
       const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S);
+      // Eit vesen står midt på flisa med botnen på bakken, og gyng litt opp og ned.
+      if (f.sp.vesen) {
+        const c = f.sp.vesen, gy = Math.round((Math.sin(no / 420) + 1) * 0.8);
+        g.fillStyle = "rgba(10,5,20,.32)"; g.beginPath(); g.ellipse(sx + 8, sy + 13, Math.max(6, c.width * 0.42), 3 + c.width / 40, 0, 0, Math.PI * 2); g.fill();
+        g.drawImage(c, sx + 8 - Math.round(c.width / 2), sy + 15 - c.height - gy);
+        continue;
+      }
       // Ein pose (knele, sitje, peike) går framfor kjensla. Liggje og sove er ramma for slått ut (24 x 16).
       const pose = f.pose && f.sp.pose && f.sp.pose[f.pose];
       if (pose && !Array.isArray(pose)) {
@@ -1010,7 +1028,7 @@ window.Motor = (function () {
 
   return {
     VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk, overgang, gjennomDor, tonUt, tonInn, scene,
-    gaa, snu, inn, kamera, rist, kort, naerbilete, blink, aktor, vent, sporHopp, hopp,
+    gaa, snu, inn, byt, kamera, rist, kort, naerbilete, blink, aktor, vent, sporHopp, hopp,
     // Snøggmodus (sjå hopp()): spel.js slår han av under val og kampar, og når scena er slutt.
     get snogg() { return snogg; }, set snogg(v) { snogg = !!v; if (!snogg) svartEl.style.transition = ""; },
     get svart() { return +svartEl.style.opacity > 0; },
@@ -1047,7 +1065,13 @@ window.Motor = (function () {
       if (p && a.hx !== undefined) a.neste = performance.now() + 1e9;     // folk står i ro så lenge posen varer
       else if (a.hx !== undefined) a.neste = performance.now() + 2000;
     },
-    settFylgje(sprite) { fylgje = sprite ? { sprite, x: spelar.x, y: spelar.y, fx: spelar.x, fy: spelar.y, dir: spelar.dir, flytt: null } : null; plasserFylgje(); },
+    // ved: ein person på kartet som blir følgjet (huldra som slår seg i lag med Ivar). Følgjet står
+    // då der personen stod, og ser same vegen.
+    settFylgje(sprite, ved) {
+      fylgje = sprite ? { sprite, x: spelar.x, y: spelar.y, fx: spelar.x, fy: spelar.y, dir: spelar.dir, flytt: null } : null;
+      plasserFylgje();
+      if (fylgje && ved) Object.assign(fylgje, { x: ved.x, y: ved.y, fx: ved.x, fy: ved.y, dir: ved.dir, spor: [] });
+    },
     plasser,
     E,
   };

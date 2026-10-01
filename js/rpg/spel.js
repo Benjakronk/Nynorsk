@@ -98,6 +98,8 @@
   const regiNamn = kven => kven === "Ivar" ? "spelar" : kven === "Huldra" && st.parti.some(m => m.id === "huldra") ? "fylgje" : kven;
   // Steg for regien i scener: figurar, kamera og effektar. Gir eit løfte.
   function regiSteg(s) {
+    // byt kan stå saman med andre steg (ein blink, ei forvandling), så det går vidare etterpå.
+    if (s.byt) Motor.byt(regiNamn(s.byt), { namn: s.namn, u: s.u, vesen: s.vesen });
     if (s.gaa) return Motor.gaa(regiNamn(s.gaa), { sti: s.sti, rute: s.rute, mot: s.mot && regiNamn(s.mot), ut: s.ut }, s.fart);
     if (s.snu && s.fraa) {                                           // snur ryggen til nokon
       const a = Motor.aktor(regiNamn(s.snu)), b = Motor.aktor(regiNamn(s.fraa));
@@ -166,10 +168,10 @@
         if (i === 0) {
           const kva = leggTilForm(id, form, "Huldra");
           st.huldra.skrive++;
-          Motor.kjensle("sjokk", "fylgje");
+          Motor.kjensle("sjokk", regiNamn("Huldra"));                 // på kartet eller i følgjet
           await Motor.tale("Huldra kveppar. «Eg kjende det. Ein liten bit av meg vart til blekk.»");
           await meldOrd(id, form, kva);
-        } else { Motor.kjensle("glad", "fylgje"); await Motor.tale("Huldra smiler. «Takk. Nokre ord skal berre seiast.»"); }
+        } else { Motor.kjensle("glad", regiNamn("Huldra")); await Motor.tale("Huldra smiler. «Takk. Nokre ord skal berre seiast.»"); }
       });
       if (s.val) {
         const i = await Motor.val(s.val, s.alt);
@@ -192,20 +194,24 @@
       if (s.pengar) st.pengar += s.pengar;
       if (s.forvandling) await forvandling(s.forvandling, s.tekst);
       if (s.parti && !st.parti.some(m => m.id === s.parti)) {
+        // fra: personen på kartet som blir med. Følgjet står der ho stod, og ho er borte frå kartet.
+        const fra = s.fra && Motor.aktor(s.fra);
         const m = { id: s.parti, niva: st.parti[0].niva, xp: 0, hp: null, rost: null };
-        fyll(m); st.parti.push(m); Motor.settFylgje(sprite(s.parti));
+        fyll(m); st.parti.push(m); Motor.settFylgje(sprite(s.parti), fra);
+        if (fra) Motor.fjernFolk(s.fra);
         await Motor.tale(`${D.PARTI[s.parti].namn} er med i partiet.`);
       }
       if (s.kamp) {
         const r = await utanSnogg(() => kamp(s.kamp, !!s.boss, !!s.rettleiing)); if (r === "tap") return "stopp";
         Motor.pause(true);                                             // hendinga held fram: ingen går omkring
       }
-      if (s.stev && !st.stev.includes(s.stev)) {
+      // Eit nytt stev blir vist som vanleg, også når scena blir hoppa over.
+      if (s.stev && !st.stev.includes(s.stev)) await utanSnogg(async () => {
         st.stev.push(s.stev);
         const def = D.STEVGALDR[s.stev], s2 = Stev.status(def, st.ord);
         await Motor.tale(`Ivar lærte «${def.namn}» av ${def.kjelde}. ${s2.manglar.length ? `${s2.manglar.length} av orda i stevet manglar enno.` : "Han har alle orda som trengst."}`, "Ordboka");
         if (st.stev.length === 1) await Motor.tale("Stev er dei sterkaste galdrane. Når kvedemålaren til Ivar er full i ein kamp, kan han kvede eit stev. Hola i stevet fyller han med ord han har funne.", "Ordboka");
-      }
+      });
       if (s.til) await Motor.scene(() => Motor.last(s.til[0], s.til[1]));
       if (s.lagre) lagre();
       if (s.lækje) lækjAlle();

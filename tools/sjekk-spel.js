@@ -46,7 +46,8 @@ function gå(steg, stad) {
     if (s.t && (s.t.match(/⟪/g) || []).length !== (s.t.match(/⟫/g) || []).length) feil.push(`${stad}: ubalanserte ⟪⟫`);
     if (s.t && /[—–]/.test(s.t.replace(/\d–\d/g, ""))) feil.push(`${stad}: tankestrek`);
     if (s.scene && !D.SCENER[s.scene]) feil.push(`${stad}: ukjend scene ${s.scene}`);
-    if (s.inn && !D.U[s.inn.u]) feil.push(`${stad}: utsjånad ${s.inn.u}`);
+    if (s.inn && !(s.inn.vesen ? D.FIENDAR[s.inn.vesen] : D.U[s.inn.u])) feil.push(`${stad}: utsjånad ${s.inn.vesen || s.inn.u}`);
+    if (s.byt && ((s.u && !D.U[s.u]) || (s.vesen && !D.FIENDAR[s.vesen]))) feil.push(`${stad}: byt til ukjend utsjånad ${s.u || s.vesen}`);
     if (s.pose !== undefined && (typeof s.pose !== "string" || !("p" in s) || (s.p !== null && !D.POSAR.includes(s.p)))) feil.push(`${stad}: pose «${s.p}» for ${s.pose} (kjende: ${D.POSAR.join(", ")}, eller null)`);
     if (s.sti && typeof s.sti === "string" && !/^([novh]\d*)+$/.test(s.sti)) feil.push(`${stad}: sti «${s.sti}»`);
     if (s.dagbok && /[—–]/.test(s.dagbok)) feil.push(`${stad}: tankestrek i dagboka`);
