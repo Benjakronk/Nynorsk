@@ -70,6 +70,19 @@ const SCENER = {
 
 Ei scene byrjar med eit kort med stad og tid, om ikkje `kort: false` står på scena. Når ho er ferdig, står ho i `st.scener`.
 
+### Mellomsekvensar
+Ei scene med `hopp: true` er ein mellomsekvens. Trykkjer spelaren X eller Esc under scena, spør spelet «Hoppe over scena?». Ved ja køyrer resten av scena i snøggmodus (`Motor.hopp()`):
+
+- replikkar, forteljing, kort, nærbilete, vent, kamera, blink, rist og toning blir ferdige med ein gong
+- figurar som går, blir sette rett på målruta, snudde slik dei gjekk (eller mot den dei gjekk til)
+- alt utfall blir gjort: flagg, ting, ord, trådar, Dagboka, parti, folk inn og ut, flytting
+- val og kampar blir viste som vanleg (snøggmodusen er av for det steget), og tilbodet frå huldra òg
+- når scena er slutt, tonar skjermen inn att om han stod svart
+
+Ved nei kjem replikken attende, og scena held fram. Nye vindauge ventar til spørsmålet er svara. Lyttarane for tastane ligg i ein stabel (`Motor.lytt`), så eit kort som går bort under spørsmålet, tek ikkje spørsmålet med seg.
+
+Merk scener som mellomsekvensar når dei mest er regi og prat. Ei scene der spelaren skal lære noko viktig (ein ny knapp, ein ny meny), bør ikkje kunne hoppast over, eller leggje den lærdomen i eit eige steg etter scena.
+
 ### Steg
 Figurane blir nemnde med namn: «Ivar» er spelaren, «Huldra» er følgjet når ho er med, og andre er personar på kartet (namn eller merke). Alle registeg verkar medan motoren er pausa.
 
@@ -105,10 +118,9 @@ Figurane blir nemnde med namn: «Ivar» er spelaren, «Huldra» er følgjet når
 Dei eldre stega (`lytt`, `tilbod`, `fort`, `flagg`, `gi`, `kamp`, `til` og andre) står i toppen av `data.js`.
 
 ### Test
-`tools/sjekk-scene.html` køyrer scenene «heime» og «framande» og eit prøvemanus. Han sjekkar at figurane går dit dei skal, at kameraet kjem attende, at val blir hugsa, og at trådar og Dagboka blir skrivne. `node tools/sjekk-spel.js` sjekkar at scenene viser til ting som finst.
+`tools/sjekk-scene.html` køyrer scenene «heime» og «framande» og eit prøvemanus. Han sjekkar at figurane går dit dei skal, at kameraet kjem attende, at val blir hugsa, og at trådar og Dagboka blir skrivne. Så hoppar han over «framande» og ei prøvescene og sjekkar at utfallet er gjort, at figurane står der dei skal, at val blir viste, og at skjermen er tona inn att. `node tools/sjekk-spel.js` sjekkar at scenene viser til ting som finst.
 
 ### Neste steg for scenemotoren
 - Dagboka og trådane i menyen.
-- Mellomsekvensar som kan hoppast over.
 - Figurar med eigne animasjonar i scener (knele, setje seg, peike).
 - Scener på kart som berre finst for scena (snøfjellet, ein draum).

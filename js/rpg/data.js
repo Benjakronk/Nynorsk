@@ -45,6 +45,7 @@
 
    Scenemotoren (sjå js/rpg/README.md for heile lista):
      { scene: "id" }                    spel ei scene frå SCENER (kort med stad og tid først)
+                                        hopp: true på scena: ein mellomsekvens som kan hoppast over (X/Esc)
      { gaa: "Namn", mot: "Ivar" }       gå bort til nokon og snu seg mot han
      { gaa: "Namn", rute: [x, y] }      gå til ei rute (eller eit merke: rute: "@")
      { gaa: "Namn", sti: "h3o2" }       gå ein fast sti (n ned, o opp, v venstre, h høgre)
@@ -644,10 +645,11 @@ window.RPGData = (function () {
 
   /* ---------- Scener ----------
      Ei scene har same mal som manuset i designdokumentet: stad og tid (vist som kort),
-     kven som er med, og stega. Utfallet (ord, ting, trådar) står som steg i lista. */
+     kven som er med, og stega. Utfallet (ord, ting, trådar) står som steg i lista.
+     hopp: true gjer scena til ein mellomsekvens som spelaren kan hoppe over (sjå README). */
   const SCENER = {
     heime: {
-      namn: "Heime", stad: "Stova på Åsen", tid: "våren 1826", med: ["Ivar", "Storebror"],
+      namn: "Heime", stad: "Stova på Åsen", tid: "våren 1826", med: ["Ivar", "Storebror"], hopp: true,
       steg: [
         { vent: 300 },
         { snu: "Storebror", mot: "Ivar" },
@@ -660,7 +662,7 @@ window.RPGData = (function () {
       ],
     },
     framande: {
-      namn: "Ein framand på tunet", stad: "Åsen i Hovdebygda", tid: "same morgon", kort: false, med: ["Ivar", "Ein framand"],
+      namn: "Ein framand på tunet", stad: "Åsen i Hovdebygda", tid: "same morgon", kort: false, hopp: true, med: ["Ivar", "Ein framand"],
       steg: [
         { snu: "Ein framand", mot: "Ivar" },
         { s: "Ein framand", t: "God dag, unge mann." },
@@ -671,7 +673,6 @@ window.RPGData = (function () {
         { s: "Ein framand", t: "Du lyttar godt, ser eg. Då treng du denne. Ei tom bok. Skriv ned orda du høyrer, før dei flyg sin veg." },
         { gi: "ordboka" },
         { t: "Ivar fekk ei tom bok med skinnband. På første sida står det berre: «Det som er skrive, står.»" },
-        { t: "Ordboka ligg i menyen (X eller Esc). Der ser du orda du har høyrt, formene deira og kven som sa dei." },
         { s: "Ein framand", t: "Vi møtest nok att. Folk som oss finn kvarandre." },
         { flagg: "framande1" },
         { saman: [
@@ -721,7 +722,8 @@ window.RPGData = (function () {
       { s: "Budeia", t: "Drikk litt ⟪mjølk⟫ før du går. Ho gir kraft både til folk og fe." },
       { lytt: ["mjolk", "mjølk"] },
     ] }],
-    framande: [{ scene: "framande" }],
+    // Rettleiinga står etter scena, så ho kjem sjølv om mellomsekvensen blir hoppa over.
+    framande: [{ scene: "framande" }, { t: "Ordboka ligg i menyen (X eller Esc). Der ser du orda du har høyrt, formene deira og kven som sa dei." }],
     ikkje_enno: [{ t: "Ivar vil sjå seg om på tunet og i stova først. Kanskje nokon har noko å seie." }],
     skiftebrev: [{ dersom: st => talOrd(st) >= 3, da: [
       { s: "Syster", t: "Ivar! Brevet frå sorenskrivaren, skiftebrevet etter far … det rører seg!" },

@@ -98,7 +98,7 @@
     if (s.snu) { Motor.snu(regiNamn(s.snu), s.mot ? regiNamn(s.mot) : s.retning); return null; }
     if (s.inn) { Motor.inn(s.inn); return null; }
     if (s.kamera !== undefined) return Motor.kamera(s.kamera && (typeof s.kamera === "string" ? regiNamn(s.kamera) : s.kamera), s.ms);
-    if (s.vent) return new Promise(r => setTimeout(r, s.vent));
+    if (s.vent) return Motor.vent(s.vent);
     if (s.ton) return s.ton === "inn" ? Motor.tonInn(s.ms || 600) : Motor.tonUt(s.ms || 600, s.ton === "kvitt" ? "#fff" : null);
     if (s.blink) return Motor.blink();
     if (s.rist) return Motor.rist(s.rist, s.styrke);
@@ -122,7 +122,7 @@
       if (s.fort) await Motor.fort(s.fort);
       else if (s.t) { await Motor.tale(s.t, s.s, s.kjensle && kven === s.s ? s.kjensle : null); sistTalar = s.s || sistTalar; }
       if (s.lytt) { const [id, form] = s.lytt; await meldOrd(id, form, leggTilForm(id, form, sistTalar)); }
-      if (s.tilbod) {
+      if (s.tilbod) await utanSnogg(async () => {
         const [id, form] = s.tilbod;
         const i = await Motor.val(`Skal Ivar skrive ned «${form}» i ordboka?`, ["Skriv det ned", "Berre lytt"]);
         if (i === 0) {
@@ -132,7 +132,7 @@
           await Motor.tale("Huldra kveppar. «Eg kjende det. Ein liten bit av meg vart til blekk.»");
           await meldOrd(id, form, kva);
         } else { Motor.kjensle("glad", "fylgje"); await Motor.tale("Huldra smiler. «Takk. Nokre ord skal berre seiast.»"); }
-      }
+      });
       if (s.val) {
         const i = await Motor.val(s.val, s.alt);
         if (s.id) st.val[s.id] = i;                                   // val med id blir hugsa (sjå valt())
@@ -158,7 +158,7 @@
         fyll(m); st.parti.push(m); Motor.settFylgje(sprite(s.parti));
         await Motor.tale(`${D.PARTI[s.parti].namn} er med i partiet.`);
       }
-      if (s.kamp) { const r = await kamp(s.kamp, !!s.boss, !!s.rettleiing); if (r === "tap") return "stopp"; }
+      if (s.kamp) { const r = await utanSnogg(() => kamp(s.kamp, !!s.boss, !!s.rettleiing)); if (r === "tap") return "stopp"; }
       if (s.stev && !st.stev.includes(s.stev)) {
         st.stev.push(s.stev);
         const def = D.STEVGALDR[s.stev], s2 = Stev.status(def, st.ord);
@@ -190,12 +190,26 @@
     });
   }
   /* Ein scene frå D.SCENER: { namn, stad, tid, steg }. Stad og tid kjem som eit kort først
-     (om ikkje kort: false), og scena blir merkt som spela i st.scener. */
+     (om ikkje kort: false), og scena blir merkt som spela i st.scener.
+     Ei scene med hopp: true er ein mellomsekvens: B spør om ho skal hoppast over, og ved ja
+     køyrer resten i snøggmodus (sjå Motor.hopp). Utfallet blir gjort likevel, og val og kampar
+     blir viste. Når mellomsekvensen er slutt, tonar skjermen inn att om han stod svart. */
+  let hoppDjupn = 0;
+  async function utanSnogg(f) {
+    const s = Motor.snogg; Motor.snogg = false;
+    try { return await f(); } finally { if (s) Motor.snogg = true; }
+  }
   async function spelScene(id) {
     const sc = D.SCENER[id];
     if (!sc) { console.warn("Ukjend scene:", id); return; }
-    if (sc.stad && sc.kort !== false) await Motor.kort(sc.stad, sc.tid);
-    const r = await kjoyr(sc.steg);
+    if (sc.hopp) hoppDjupn++;
+    let r;
+    try {
+      if (sc.stad && sc.kort !== false) await Motor.kort(sc.stad, sc.tid);
+      r = await kjoyr(sc.steg);
+    } finally {
+      if (sc.hopp && --hoppDjupn === 0 && Motor.snogg) { Motor.snogg = false; if (Motor.svart) await Motor.tonInn(); }
+    }
     st.scener[id] = true;
     return r;
   }
@@ -310,6 +324,8 @@
     inngang: i => hending(D.MANUS[i.manus]),
     kamp: lag => kamp(lag, false),
     meny: () => meny(),
+    // B under ein mellomsekvens (scene med hopp: true): spør om scena skal hoppast over.
+    hopp: () => { if (!hoppDjupn || modus !== "felt" || Motor.snogg) return false; Motor.sporHopp(); return true; },
     kiste: k => {
       if (st.opna.includes(k.id)) return hending([{ t: "Kista er tom." }]);
       st.opna.push(k.id);
