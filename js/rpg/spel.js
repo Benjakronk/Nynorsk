@@ -33,9 +33,13 @@
   });
   let st = ny();
   const lagra = () => { try { return JSON.parse(localStorage.getItem(NOKKEL) || "null"); } catch (e) { return null; } };
+  // På eit scenekart (ein draum, eit minne) blir staden før scena lagra.
   function lagre() {
-    st.kart = Motor.kart ? Motor.kart.id : st.kart;
-    st.pos = Motor.spelar ? { x: Motor.spelar.x, y: Motor.spelar.y, dir: Motor.spelar.dir } : null;
+    if (forScene) { st.kart = forScene.kart; st.pos = { x: forScene.x, y: forScene.y, dir: forScene.dir }; }
+    else {
+      st.kart = Motor.kart ? Motor.kart.id : st.kart;
+      st.pos = Motor.spelar ? { x: Motor.spelar.x, y: Motor.spelar.y, dir: Motor.spelar.dir } : null;
+    }
     try { localStorage.setItem(NOKKEL, JSON.stringify(st)); return true; } catch (e) { return false; }
   }
 
@@ -104,6 +108,32 @@
     if (s.rist) return Motor.rist(s.rist, s.styrke);
     return null;
   }
+  /* Scenekart: kart som berre finst for ei scene (KART med scene: true), som ein draum eller
+     eit minne. forScene er kartet, ruta og retninga spelaren hadde før, og det er han lagre()
+     lagrar. Følgjet er med på scenekartet berre med fylgje: true. Attende (scenekart: null)
+     blir kartet lasta på nytt: folk står på plassane sine, og folk frå inn-steg er borte. */
+  let forScene = null;
+  const harHuldra = () => st.parti.some(m => m.id === "huldra");
+  async function scenekart(s) {
+    if (s.scenekart) {
+      const def = D.KART[s.scenekart];
+      if (!def || !def.scene) { console.warn("Ikkje eit scenekart:", s.scenekart); return; }
+      // Scenekart i scenekart: staden før den første scena er den som gjeld.
+      if (!forScene) forScene = { kart: Motor.kart.id, x: Motor.spelar.x, y: Motor.spelar.y, dir: Motor.spelar.dir };
+      await Motor.scene(() => {
+        Motor.settFylgje(s.fylgje && harHuldra() ? sprite("huldra") : null);
+        Motor.last(s.scenekart, s.merke || "1", s.retning);
+      }, s.ms);
+      return;
+    }
+    const f = forScene; if (!f) return;
+    forScene = null;
+    await Motor.scene(() => {
+      Motor.settFylgje(harHuldra() ? sprite("huldra") : null);
+      Motor.last(f.kart, null, f.dir);
+      Motor.plasser(f.x, f.y, f.dir);
+    }, s.ms);
+  }
   async function kjoyr(steg) {
     if (typeof steg === "function") steg = steg(st);
     for (const s of steg || []) {
@@ -111,6 +141,7 @@
       if (s.scene) { const r = await spelScene(s.scene); if (r === "stopp") return "stopp"; continue; }
       // Fleire lister samstundes (to figurar som går, kamera og rørsle). Ventar på alle.
       if (s.saman) { const r = await Promise.all(s.saman.map(kjoyr)); if (r.includes("stopp")) return "stopp"; continue; }
+      if (s.scenekart !== undefined) await scenekart(s);
       const p = regiSteg(s);
       if (p && !s.ikkjeVent) await p;
       if (s.kort) await Motor.kort(s.kort[0], s.kort[1]);
@@ -333,9 +364,11 @@
       const t = D.TING[k.ting] || D.NOKKELTING[k.ting];
       hending([{ gi: k.ting, n: k.n }, { t: `Ivar fann ${k.n > 1 ? k.n + " × " : ""}${t.namn}.` }]);
     },
+    // Kvile ved ei lampe. kvile: "scene" på kartet blir spela første gong partiet kviler der.
     lampe: () => {
-      const kyrkje = Motor.kart && Motor.kart.def.fristad;
-      hending([{ lækje: 1 }, { t: kyrkje ? "Kyrkjelyden syng ein salme. Songen fyller kyrkja, og partiet får att alle kreftene." : "Lyset er varmt. Partiet kviler, og alle er friske att." }]).then(async () => {
+      const def = Motor.kart && Motor.kart.def, kyrkje = def && def.fristad;
+      const kvile = def && def.kvile && !st.scener[def.kvile] ? [{ scene: def.kvile }] : [];
+      hending([{ lækje: 1 }, { t: kyrkje ? "Kyrkjelyden syng ein salme. Songen fyller kyrkja, og partiet får att alle kreftene." : "Lyset er varmt. Partiet kviler, og alle er friske att." }, ...kvile]).then(async () => {
         Motor.pause(true);
         const i = await Motor.val("Vil du lagre?", ["Lagre", "Ikkje no"]);
         if (i === 0) { lagre(); await Motor.tale("Spelet er lagra."); }
@@ -607,6 +640,7 @@
   }
   function start(fraLagring) {
     modus = "felt";
+    forScene = null;
     Motor.settSpelar(sprite("ivar"));
     Motor.settFylgje(st.parti.some(m => m.id === "huldra") ? sprite("huldra") : null);
     st.parti.forEach(fyll);
@@ -622,5 +656,5 @@
   Promise.all([Pikslar.forhandslast(Pikslar.alleBilete(D)), document.fonts ? document.fonts.load('16px "Pixelify Sans"').catch(() => {}) : null])
     .then(() => { Pikslar.figur(D.U.ivar); visTittel(); });
   // Til automatiske testar: les tilstanden og modusen.
-  window.RPGTest = { st: () => st, modus: () => modus, lagre, hending, scene: id => hending([{ scene: id }]) };
+  window.RPGTest = { st: () => st, modus: () => modus, lagre, lagra, hending, scene: id => hending([{ scene: id }]), forScene: () => forScene };
 })();

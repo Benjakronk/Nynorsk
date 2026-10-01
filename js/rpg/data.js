@@ -59,6 +59,8 @@
      { traad: "id", tekst } / { traad: "id", lukk: 1 }   opnar eller lukkar ein forteljartråd
      { dagbok: "tekst" }                ei linje i Dagboka
      { partiUt: "huldra" }              går ut av partiet
+     { scenekart: "id", merke, retning, fylgje: true } / { scenekart: null }
+                                        til eit kart som berre finst for scena (scene: true), og attende
      ikkjeVent: true på eit registeg lèt manus gå vidare medan det skjer */
 window.RPGData = (function () {
   "use strict";
@@ -176,7 +178,7 @@ window.RPGData = (function () {
     "Ivar": "ivar", "Storebror": "storebror", "Syster": "syster", "Granne": "granne", "Budeia": "budeia",
     "Ein framand": "framande", "Den framande": "framande", "Huldra": "huldra", "Presten": "presten", "Haugbonden": "haugbonden",
     // Småroller deler fellesansikt (som dei generiske portretta i Fire Emblem).
-    "Bonde": "bygd-mann", "Husmann": "bygd-mann", "Fiskar": "bygd-mann", "Kremmaren": "bygd-mann",
+    "Bonde": "bygd-mann", "Far": "bygd-mann", "Husmann": "bygd-mann", "Fiskar": "bygd-mann", "Kremmaren": "bygd-mann",
     "Klokkaren": "bygd-mann", "Lekpredikanten": "bygd-mann",
     "Dottera": "bygd-kvinne", "Tenestejenta": "bygd-kvinne", "Ei kvinne ved setra": "bygd-kvinne",
     "Bestefaren": "bygd-gamal-mann", "Tenaren på Ekset": "bygd-gamal-mann",
@@ -204,10 +206,33 @@ window.RPGData = (function () {
         "XXXXXEXXXXXX",
       ],
       dorer: [{ ved: [5, 7], til: ["asen", "3"] }],
+      kvile: "minne_far",                                              // første kvilen ved lampa
       kister: [{ ved: [10, 4], ting: "flatbrod", n: 2, id: "k-stova" }],
       folk: [
         { merke: "@", u: "bror", namn: "Storebror", atferd: "snu", retning: 2, snu: [0, 2, 3], tale: "bror" },
         { merke: "%", u: "syster", namn: "Syster", atferd: "snu", retning: 1, snu: [1, 3, 0], tale: "syster" },
+      ],
+    },
+    /* Scenekart (scene: true) finst berre for ei scene: dei er ikkje med i verda, og spelet
+       lagrar aldri at Ivar står der (sjå scenekart-steget i README). */
+    "minne-far": {
+      namn: "Bøen på Åsen", scene: true, stemning: "minne", golv: ".", bakgrunn: "tun",
+      bygg: [{ id: "loe", x: 6, y: 1, h: 3 }],
+      rader: [
+        "################",
+        "#.t...RRRRRR..t#",
+        "#.....RRRRRR...#",
+        "#..o..WWvDWW.o.#",
+        "#........=.....#",
+        "#..\"....1...\"..#",
+        "#...........t..#",
+        "#.o......@.....#",
+        "#______________#",
+        "#~~~~~~~~~~~~~~#",
+        "################",
+      ],
+      folk: [
+        { merke: "@", u: "bonde", namn: "Far", atferd: "stille", retning: 0, tale: "far" },
       ],
     },
     asen: {
@@ -686,6 +711,27 @@ window.RPGData = (function () {
         { dagbok: "Ein framand mann gav meg ei tom bok. «Det som er skrive, står», stod det. Eg veit ikkje kva han meinte." },
       ],
     },
+    // Eit minne om far, første gong Ivar kviler ved lampa i stova (kvile på kartet).
+    minne_far: {
+      namn: "Minnet om far", stad: "Bøen på Åsen", tid: "sommaren 1821", kort: false, hopp: true, med: ["Ivar", "Far"],
+      steg: [
+        { t: "Ivar set seg ved lampa. Ljoset flakkar, og auga glir att." },
+        { scenekart: "minne-far", merke: "1", retning: "ned", ms: 1400 },
+        { kort: ["Bøen på Åsen", "sommaren 1821"] },
+        { s: "Far", t: "Kom hit, Ivar. Sjå utover." },
+        { gaa: "Ivar", mot: "Far", fart: 380 },
+        { snu: "Ivar", retning: "ned" },
+        { s: "Far", t: "Neset der ute, bekken og kvar stein i åkeren. Alt har eit namn. Bestefar lærte meg dei, og no lærer eg deg dei." },
+        { s: "Ivar", t: "Kven var det som fann på namna?", kjensle: "tenkje" },
+        { snu: "Far", mot: "Ivar" },
+        { s: "Far", t: "Folk som budde her før oss. Namna står ikkje i noka bok." },
+        { s: "Far", t: "Men så lenge nokon seier dei, er dei ikkje borte.", kjensle: "glad" },
+        { vent: 800 },
+        { scenekart: null, ms: 1400 },
+        { s: "Ivar", t: "Far …", kjensle: "trist" },
+        { dagbok: "Ved lampa i stova kom eg til å tenkje på far. Han lærte meg namna på alle plassane rundt Åsen." },
+      ],
+    },
   };
 
   const MANUS = {
@@ -722,6 +768,7 @@ window.RPGData = (function () {
       { s: "Budeia", t: "Drikk litt ⟪mjølk⟫ før du går. Ho gir kraft både til folk og fe." },
       { lytt: ["mjolk", "mjølk"] },
     ] }],
+    far: [{ s: "Far", t: "Sjå utover, Ivar." }],                     // berre i minnet (scenekartet minne-far)
     // Rettleiinga står etter scena, så ho kjem sjølv om mellomsekvensen blir hoppa over.
     framande: [{ scene: "framande" }, { t: "Ordboka ligg i menyen (X eller Esc). Der ser du orda du har høyrt, formene deira og kven som sa dei." }],
     ikkje_enno: [{ t: "Ivar vil sjå seg om på tunet og i stova først. Kanskje nokon har noko å seie." }],

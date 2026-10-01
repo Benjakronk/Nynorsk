@@ -114,13 +114,33 @@ Figurane blir nemnde med namn: «Ivar» er spelaren, «Huldra» er følgjet når
 | `{ traad: "id", lukk: 1 }` | lukkar han |
 | `{ dagbok: "tekst" }` | skriv ei linje i Dagboka (`st.dagbok`) |
 | `{ partiUt: "huldra", stille }` | går ut av partiet |
+| `{ scenekart: "id", merke, retning, fylgje, ms }` | tonar over til eit scenekart (sjå under) |
+| `{ scenekart: null, ms }` | tonar attende til kartet, ruta og retninga spelaren hadde før |
 
 Dei eldre stega (`lytt`, `tilbod`, `fort`, `flagg`, `gi`, `kamp`, `til` og andre) står i toppen av `data.js`.
 
+### Scenekart
+Eit scenekart er eit kart som berre finst for ei scene: ein draum, eit minne, seinare snøfjellet i prologen. Det står i `KART` med `scene: true`, og ingen dør, `til`-steg eller stad på verdskartet fører dit (`sjekk-spel.js` passar på det).
+
+```js
+{ scenekart: "minne-far", merke: "1", retning: "ned", ms: 1400 },   // inn i minnet
+{ s: "Far", t: "…" },
+{ scenekart: null, ms: 1400 },                                     // attende
+```
+
+- `merke` er startruta (standard `"1"`), `retning` kva veg Ivar ser, og `ms` kor lenge kvar toning varer (standard rask). Lengre toningar passar til draumar og minne.
+- Følgjet (huldra) er med berre med `fylgje: true`. Attende er ho med att om ho er i partiet.
+- Staden før scena blir hugsa i spel.js. `lagre()` på eit scenekart lagrar han, ikkje scenekartet.
+- Attende blir kartet lasta på nytt: folk står på plassane sine, og folk frå `inn`-steg er borte.
+- Scena må sjølv gå attende. `sjekk-spel.js` melder frå om ei scene som går til eit scenekart og ikkje attende.
+- Stemninga `minne` gir falma, varme fargar og lyse kantar.
+- Hoppar spelaren over scena, blir begge overgangane gjorde med ein gong, og Ivar står der han stod.
+
+Dømet i prototypen er `minne_far`: første gong Ivar kviler ved lampa i stova (`kvile: "minne_far"` på kartet), minnest han far som lærte han namna på plassane rundt Åsen. Etterpå spør lampa om lagring som vanleg.
+
 ### Test
-`tools/sjekk-scene.html` køyrer scenene «heime» og «framande» og eit prøvemanus. Han sjekkar at figurane går dit dei skal, at kameraet kjem attende, at val blir hugsa, og at trådar og Dagboka blir skrivne. Så hoppar han over «framande» og ei prøvescene og sjekkar at utfallet er gjort, at figurane står der dei skal, at val blir viste, og at skjermen er tona inn att. `node tools/sjekk-spel.js` sjekkar at scenene viser til ting som finst.
+`tools/sjekk-scene.html` køyrer scenene «heime» og «framande» og eit prøvemanus. Han sjekkar at figurane går dit dei skal, at kameraet kjem attende, at val blir hugsa, og at trådar og Dagboka blir skrivne. Så hoppar han over «framande» og ei prøvescene og sjekkar at utfallet er gjort, at figurane står der dei skal, at val blir viste, og at skjermen er tona inn att. Til sist kviler Ivar ved lampa i stova og får minnet om far på scenekartet: testen sjekkar at huldra ikkje er med, at lagring i minnet lagrar stova, og at Ivar kjem attende til same rute og retning, også når ei scene med scenekart blir hoppa over. `node tools/sjekk-spel.js` sjekkar at scenene viser til ting som finst.
 
 ### Neste steg for scenemotoren
 - Dagboka og trådane i menyen.
 - Figurar med eigne animasjonar i scener (knele, setje seg, peike).
-- Scener på kart som berre finst for scena (snøfjellet, ein draum).

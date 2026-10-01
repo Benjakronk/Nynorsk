@@ -8,14 +8,14 @@
    blir skalert opp med heile tal utan utjamning. Samtalar, menyar og
    forteljing er HTML over lerretet, så teksten blir skarp.
 
-   Motor.last(kartId, merke)  lastar eit kart og set spelaren på merket
+   Motor.last(kartId, merke, retning)  lastar eit kart og set spelaren på merket
    Motor.krokar               { tilstand(), modus(), samtale(folk), kiste(k), lampe(),
                                 dor(d), laast(tekst), inngang(i), kamp(lag), meny(),
                                 opna(k), synleg(k) }
    Motor.tale(tekst, namn)    samtaleboks, gir eit løfte som blir oppfylt ved Z.
                               ⟪ord⟫ i teksten blir utheva.
    Motor.fort(linjer)         forteljing på svart skjerm
-   Motor.scene(byt)           rask toning til svart, byt() (til dømes Motor.last), og tilbake.
+   Motor.scene(byt, ms)       rask toning til svart, byt() (til dømes Motor.last), og tilbake.
                               Standard mellom alle scener. Motor.tonUt() og tonInn() kvar for seg.
    Motor.pause(true|false)    stoppar rørsla (under samtalar, menyar og kamp)
    Regi i skripta scener (verkar også i pause, sjå js/rpg/README.md):
@@ -113,6 +113,7 @@ window.Motor = (function () {
     for (const a of regi) { a.regi.res(); a.regi = null; } regi.clear(); kam = null;      // nytt kart: regien byrjar på nytt
     const [sx, sy] = merke[merkeId] || merke["1"] || [1, 1];
     spelar.x = sx; spelar.y = sy; spelar.fx = sx; spelar.fy = sy; spelar.flytt = null;
+    if (typeof dir === "string") dir = RETNINGSNAMN[dir];
     if (dir != null) spelar.dir = dir;
     else {                                                           // står ein ved ei dør, ser ein bort frå henne
       const d = kart.dorer.find(d => Math.abs(d.ved[0] - sx) + Math.abs(d.ved[1] - sy) === 1);
@@ -535,7 +536,8 @@ window.Motor = (function () {
 
   /* ---------- Stemning: lys og skugge over kartet ----------
      kart.def.stemning: «morgon» (varmt lys og skyskuggar), «kveld», «inne»
-     (mørkare rom med varme ljoskjelder), «mork» (berre ljos rundt Ivar og lampene). */
+     (mørkare rom med varme ljoskjelder), «mork» (berre ljos rundt Ivar og lampene),
+     «minne» (falma fargar, til draumar og minne på scenekart). */
   const morke = document.createElement("canvas"); morke.width = VW * S; morke.height = VH * S;
   const mg = morke.getContext("2d");
   function ljosPunkt(ctx, x, y, r, a) {
@@ -565,6 +567,15 @@ window.Motor = (function () {
         gr2.addColorStop(0, "rgba(20,24,60,0.2)"); gr2.addColorStop(1, "rgba(20,24,60,0)");
         g.fillStyle = gr2; g.fillRect(cx - 70, cy - 70, 140, 140);
       }
+    } else if (st === "minne") {
+      // Eit minne eller ein draum: falma, varme fargar og lyse kantar, som eit gammalt bilete.
+      g.globalCompositeOperation = "color";
+      g.fillStyle = "rgba(196,150,96,0.5)"; g.fillRect(0, 0, W, Hh);
+      g.globalCompositeOperation = "source-over";
+      const v = g.createRadialGradient(W / 2, Hh / 2, Hh * 0.3, W / 2, Hh / 2, W * 0.6);
+      v.addColorStop(0, "rgba(252,238,212,0)"); v.addColorStop(1, "rgba(252,238,212,0.6)");
+      g.fillStyle = v; g.fillRect(0, 0, W, Hh);
+      return;
     } else if (st === "kyrkje") {
       // Lyst kyrkjerom: ljosstrålar skrått ned frå vindauga i veggen
       g.globalCompositeOperation = "lighter";
@@ -659,9 +670,10 @@ window.Motor = (function () {
     });
   }
   // Byter scene: tonar ut, køyrer byt() (som kan vere async) og tonar inn att.
-  async function scene(byt) {
+  // ms: kor lenge kvar toning varer (standard rask, lengre inn i ein draum eller eit minne).
+  async function scene(byt, ms) {
     const var_ = byter; byter = true; halde.clear();
-    await tonUt(); await byt(); await vent(40); await tonInn();
+    await tonUt(ms); await byt(); await vent(40); await tonInn(ms);
     byter = var_;
   }
   // Går gjennom ei dør: opnar ho om ho sit på eit hus, tonar til svart, kallar byt() (som lastar

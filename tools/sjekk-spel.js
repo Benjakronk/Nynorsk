@@ -19,12 +19,13 @@ for (const [id, k] of Object.entries(D.KART)) {
     const c = k.rader[d.ved[1]] && k.rader[d.ved[1]][d.ved[0]];
     if (!d.kant && !"DdE".includes(c)) feil.push(`${id}: dør ${d.ved} står på «${c}»`);
     if (d.kant && !MERKE.test(c) && c !== "=") feil.push(`${id}: kantdør ${d.ved} står på «${c}»`);
-    if (d.til) { if (!D.KART[d.til[0]]) feil.push(`${id}: ukjent kart ${d.til[0]}`); else if (!merkeI[d.til[0]][d.til[1]]) feil.push(`${id}: merket ${d.til[1]} finst ikkje i ${d.til[0]}`); }
+    if (d.til) { if (!D.KART[d.til[0]]) feil.push(`${id}: ukjent kart ${d.til[0]}`); else if (!merkeI[d.til[0]][d.til[1]]) feil.push(`${id}: merket ${d.til[1]} finst ikkje i ${d.til[0]}`); else if (D.KART[d.til[0]].scene) feil.push(`${id}: dør til scenekartet ${d.til[0]}`); }
     if (d.vakt && !D.MANUS[d.vakt.manus]) feil.push(`${id}: vaktmanus ${d.vakt.manus} manglar`);
     if (d.krevOrd && !D.ORD[d.krevOrd]) feil.push(`${id}: krevOrd ${d.krevOrd}`);
   }
   for (const f of k.folk || []) { if (!merkeI[id][f.merke]) feil.push(`${id}: merket ${f.merke} til ${f.namn} manglar`); if (!D.MANUS[f.tale]) feil.push(`${id}: manus ${f.tale} manglar`); if (!D.U[f.u]) feil.push(`${id}: utsjånad ${f.u}`); }
   for (const i of k.inngang || []) if (!D.MANUS[i.manus]) feil.push(`${id}: inngang ${i.manus}`);
+  if (k.kvile && !D.SCENER[k.kvile]) feil.push(`${id}: kvilescena ${k.kvile} finst ikkje`);
   for (const ks of k.kister || []) { const c = k.rader[ks.ved[1]][ks.ved[0]]; if (!ks.gøymd && c !== "K") feil.push(`${id}: kiste ${ks.ved} på «${c}»`); if (ks.gøymd && !MERKE.test(c) && c !== k.golv) feil.push(`${id}: gøymd kiste på «${c}»`); if (ks.ting && !D.TING[ks.ting]) feil.push(`${id}: ting ${ks.ting}`); }
   for (const lag of (k.fiendar || {}).lag || []) for (const f of lag) if (!D.FIENDAR[f]) feil.push(`${id}: fiende ${f}`);
 }
@@ -48,11 +49,19 @@ function gå(steg, stad) {
     if (s.inn && !D.U[s.inn.u]) feil.push(`${stad}: utsjånad ${s.inn.u}`);
     if (s.sti && typeof s.sti === "string" && !/^([novh]\d*)+$/.test(s.sti)) feil.push(`${stad}: sti «${s.sti}»`);
     if (s.dagbok && /[—–]/.test(s.dagbok)) feil.push(`${stad}: tankestrek i dagboka`);
+    if (s.scenekart) { const k = D.KART[s.scenekart]; if (!k || !k.scene) feil.push(`${stad}: ${s.scenekart} er ikkje eit scenekart`); else if (!merkeI[s.scenekart][s.merke || "1"]) feil.push(`${stad}: merket ${s.merke || "1"} finst ikkje i ${s.scenekart}`); }
+    if (s.til && D.KART[s.til[0]] && D.KART[s.til[0]].scene) feil.push(`${stad}: til-steg til scenekartet ${s.til[0]} (bruk scenekart)`);
     gå(s.da, stad); gå(s.elles, stad); (s.svar || []).forEach(x => gå(x, stad)); (s.saman || []).forEach(x => gå(x, stad));
   }
 }
 for (const [id, m] of Object.entries(D.MANUS)) gå(m, id);
-for (const [id, sc] of Object.entries(D.SCENER)) { gå(sc.steg, "scene " + id); if (!sc.namn) feil.push(`scene ${id}: manglar namn`); }
+for (const [id, sc] of Object.entries(D.SCENER)) {
+  gå(sc.steg, "scene " + id); if (!sc.namn) feil.push(`scene ${id}: manglar namn`);
+  // Ei scene som går til eit scenekart, må gå attende òg.
+  const ut = []; (function samle(x) { if (Array.isArray(x)) x.forEach(samle); else if (x && typeof x === "object") { if ("scenekart" in x) ut.push(x.scenekart); Object.values(x).forEach(samle); } })(sc.steg);
+  if (ut.some(k => k) && ut[ut.length - 1] !== null) feil.push(`scene ${id}: går ikkje attende frå scenekartet`);
+}
+for (const s of D.STADER || []) if (s.kart && D.KART[s.kart] && D.KART[s.kart].scene) feil.push(`stad ${s.id}: scenekartet ${s.kart} på verdskartet`);
 // Formspørsmål: kvar familie med spørsmål må ha minst éi sterk og éi veik form
 for (const [id, o] of Object.entries(D.ORD)) {
   const fam = D.FAMILIAR[o.fam];

@@ -1,8 +1,8 @@
 <!doctype html>
 <meta charset="utf-8">
 <title>Sjekk scenemotoren</title>
-<!-- Køyrer scenene «heime» og «framande» i spelet og sjekkar at regien gjer det han skal:
-     figurar som går, kameraet som følgjer og kjem attende, trådar, dagbok og val.
+<!-- Køyrer scenene «heime», «framande» og «minne_far» i spelet og sjekkar at regien gjer det han
+     skal: figurar som går, kameraet som følgjer og kjem attende, trådar, dagbok, val og scenekart.
      Opne i ein nettlesar, eller:
      msedge --headless=new --disable-gpu --allow-file-access-from-files --virtual-time-budget=60000 --dump-dom .../sjekk-scene.html -->
 <style>body{margin:0;background:#000;color:#fff;font:12px monospace} iframe{width:1100px;height:720px;border:0} #ut{white-space:pre-wrap;padding:4px}</style>
@@ -145,6 +145,61 @@ f.onload = async () => {
     await trykkGjennom(() => T().st().flagg.neiFerdig);
     await p6;
     sjekk(!M.snogg, "snøggmodusen vart aldri slått på");
+
+    // 7. Scenekart: minnet om far første gong Ivar kviler ved lampa i stova. Huldra er med i
+    //    partiet, men ikkje i minnet. Lagring på scenekartet skal lagre staden før scena.
+    const NOKKEL = "nynorskkurs:rpg:v2", gamalLagring = w.localStorage.getItem(NOKKEL);
+    const s7 = T().st();
+    s7.parti.push({ id: "huldra", niva: 1, xp: 0, hp: null, rost: null });
+    M.settFylgje(w.Pikslar.figur(w.RPGData.U.huldra));
+    M.last("asen-stova", "1"); M.plasser(2, 6, 2);                   // framfor lampa, ser mot henne
+    await vent(200);
+    tast("z");
+    let paaMinne = false, fylgjeIMinne = false, lagraUnder = null, forUnder = null, vedFar = false;
+    await trykkGjennom(() => s7.scener.minne_far, () => {
+      if (M.kart.id !== "minne-far") return;
+      paaMinne = true;
+      if (M.aktor("fylgje")) fylgjeIMinne = true;
+      const far = M.aktor("Far"), sp = M.spelar;
+      if (far && Math.abs(far.x - sp.x) + Math.abs(far.y - sp.y) === 1) vedFar = true;
+      if (!lagraUnder) { forUnder = T().forScene(); T().lagre(); lagraUnder = T().lagra(); }
+    });
+    for (let n = 0; n < 60 && !(synleg("#rpg-tale") && /Vil du lagre/.test(d.querySelector("#rpg-tale").textContent)); n++) await vent(50);
+    sjekk(synleg("#rpg-tale") && /Vil du lagre/.test(d.querySelector("#rpg-tale").textContent), "etter minnet spør spelet om lagring som vanleg");
+    tast("ArrowDown"); await vent(50); tast("z"); await vent(300);
+    sjekk(paaMinne, "minnet vart spela på scenekartet «minne-far»");
+    sjekk(forUnder && forUnder.kart === "asen-stova" && forUnder.x === 2 && forUnder.y === 6, "staden før scena er hugsa");
+    sjekk(!fylgjeIMinne, "huldra er ikkje med i minnet");
+    sjekk(vedFar, "Ivar gjekk bort til far");
+    sjekk(lagraUnder && lagraUnder.kart === "asen-stova" && lagraUnder.pos.x === 2 && lagraUnder.pos.y === 6 && lagraUnder.pos.dir === 2,
+      `lagring i minnet lagrar stova og ruta før (${lagraUnder && lagraUnder.kart} ${lagraUnder && JSON.stringify(lagraUnder.pos)})`);
+    const sp7 = M.spelar;
+    sjekk(M.kart.id === "asen-stova" && sp7.x === 2 && sp7.y === 6 && sp7.dir === 2, `Ivar er attende ved lampa og ser same vegen (${M.kart.id} ${sp7.x},${sp7.y}, retning ${sp7.dir})`);
+    sjekk(!!M.aktor("fylgje") && !T().forScene(), "huldra er med att, og scenekartet er gløymt");
+    sjekk(s7.dagbok.some(l => /tenkje på far/.test(l.tekst)), "minnet står i Dagboka");
+    sjekk(!M.svart && T().modus() === "felt" && !M.spelar.regi, "skjermen er tona inn, og spelaren kan gå att");
+
+    // 8. Scenekart med følgjet, hoppa over: resten går snøgt, og Ivar kjem attende til same rute.
+    w.RPGData.SCENER.provekart = { namn: "Prøve", hopp: true, kort: false, steg: [
+      { scenekart: "minne-far", merke: "1", retning: "opp", fylgje: true, ms: 600 },
+      { s: "Far", t: "Er huldra med no?" },
+      { vent: 3000 }, { gaa: "Ivar", sti: "v3" },
+      { scenekart: null, ms: 1500 },
+      { flagg: "kartFerdig" },
+    ] };
+    const p8 = T().scene("provekart");
+    for (let n = 0; n < 80 && !synleg("#rpg-tale"); n++) await vent(50);
+    sjekk(M.kart.id === "minne-far" && M.spelar.dir === 1, "scenekartet er lasta, og Ivar ser opp");
+    sjekk(!!M.aktor("fylgje"), "med fylgje: true er huldra med på scenekartet");
+    tast("x"); await vent(150);
+    const t8 = performance.now();
+    tast("z");
+    await p8;
+    sjekk(performance.now() - t8 < 1500, `resten av scena gjekk snøgt (${Math.round(performance.now() - t8)} ms)`);
+    const sp8 = M.spelar;
+    sjekk(s7.flagg.kartFerdig && M.kart.id === "asen-stova" && sp8.x === 2 && sp8.y === 6 && sp8.dir === 2, `etter hoppet står Ivar ved lampa att (${M.kart.id} ${sp8.x},${sp8.y})`);
+    sjekk(!M.svart && !M.snogg && !T().forScene(), "skjermen er tona inn, og scenekartet er gløymt");
+    if (gamalLagring == null) w.localStorage.removeItem(NOKKEL); else w.localStorage.setItem(NOKKEL, gamalLagring);
   } catch (e) { ut.push("FEIL " + e.stack); }
   document.getElementById("ut").textContent = ut.join("\n");
 };
