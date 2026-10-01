@@ -95,6 +95,7 @@ Figurane blir nemnde med namn: «Ivar» er spelaren, «Huldra» er følgjet når
 | `{ gaa: "Namn", sti: "h3o2" }` | går ein fast sti (n ned, o opp, v venstre, h høgre), også ut over kanten |
 | `fart: 300` | ms per flis på eit gaa-steg |
 | `{ snu: "Namn", retning: "opp" }` | snur seg (ned, opp, venstre, høgre), eller `mot: "Namn"` |
+| `{ pose: "Namn", p: "knele" }` | pose: knele, sitje, peike, liggje eller sove (sjå under). `p: null` tek han bort |
 | `{ inn: { namn, u, rute, retning, tale } }` | set ein ny person inn på kartet |
 | `{ fjern: "Namn" }` | tek ein person bort (namn eller merke) |
 | `{ kamera: "Namn" }` | kameraet glir til ein figur og følgjer han |
@@ -119,6 +120,23 @@ Figurane blir nemnde med namn: «Ivar» er spelaren, «Huldra» er følgjet når
 
 Dei eldre stega (`lytt`, `tilbod`, `fort`, `flagg`, `gi`, `kamp`, `til` og andre) står i toppen av `data.js`.
 
+### Posar
+Figurane kan knele, sitje, peike, liggje og sove i ei scene (`D.POSAR`). Posen varer til figuren går, eller til hendinga er slutt, og han går framfor kjensla.
+
+```js
+{ snu: "Far", retning: "høgre" },
+{ pose: "Far", p: "peike" },        // far peikar utover
+{ s: "Far", t: "Neset der ute …" },
+{ pose: "Far", p: null },           // og står vanleg att
+```
+
+- Knele, sitje og peike finst i alle fire retningar, så figuren held retninga si. Snu han først (`snu`) om posen skal vise frå sida. Frå sida er knele og sitje tydelegast.
+- Liggje og sove brukar ramma for slått ut (24 x 16). Over den som søv, stig det små z.
+- Den som sit eller ligg, blir teikna over inventaret på same rad, så ein kan sitje på ein benk eller liggje i senga.
+- Folk kan ha `pose` i kartet (syster sit ved langbordet i stova). Etter ei hending får dei han att.
+- På eit nytt kart står ein. Etter eit scenekart får Ivar att posen han hadde før.
+- Rammene står i rad 9 til 12 i figurarket (ned, opp, venstre, høgre) og blir laga med `tools/pikselkunst/figur.py`, `ivar_figur.py` og `huldra_figur.py`. Sjå ARBEIDSLOGG.md, runde 16.
+
 ### Scenekart
 Eit scenekart er eit kart som berre finst for ei scene: ein draum, eit minne, seinare snøfjellet i prologen. Det står i `KART` med `scene: true`, og ingen dør, `til`-steg eller stad på verdskartet fører dit (`sjekk-spel.js` passar på det).
 
@@ -136,11 +154,10 @@ Eit scenekart er eit kart som berre finst for ei scene: ein draum, eit minne, se
 - Stemninga `minne` gir falma, varme fargar og lyse kantar.
 - Hoppar spelaren over scena, blir begge overgangane gjorde med ein gong, og Ivar står der han stod.
 
-Dømet i prototypen er `minne_far`: første gong Ivar kviler ved lampa i stova (`kvile: "minne_far"` på kartet), minnest han far som lærte han namna på plassane rundt Åsen. Etterpå spør lampa om lagring som vanleg.
+Dømet i prototypen er `minne_far`: første gong Ivar kviler ved lampa i stova (`kvile: "minne_far"` på kartet), set han seg, og minnest far som peikar ut over bøen og lærer han namna på plassane rundt Åsen. Etterpå spør lampa om lagring som vanleg.
 
 ### Test
-`tools/sjekk-scene.html` køyrer scenene «heime» og «framande» og eit prøvemanus. Han sjekkar at figurane går dit dei skal, at kameraet kjem attende, at val blir hugsa, og at trådar og Dagboka blir skrivne. Så hoppar han over «framande» og ei prøvescene og sjekkar at utfallet er gjort, at figurane står der dei skal, at val blir viste, og at skjermen er tona inn att. Til sist kviler Ivar ved lampa i stova og får minnet om far på scenekartet: testen sjekkar at huldra ikkje er med, at lagring i minnet lagrar stova, og at Ivar kjem attende til same rute og retning, også når ei scene med scenekart blir hoppa over. `node tools/sjekk-spel.js` sjekkar at scenene viser til ting som finst.
+`tools/sjekk-scene.html` køyrer scenene «heime» og «framande» og eit prøvemanus. Han sjekkar at figurane går dit dei skal, at kameraet kjem attende, at val blir hugsa, og at trådar og Dagboka blir skrivne. Så hoppar han over «framande» og ei prøvescene og sjekkar at utfallet er gjort, at figurane står der dei skal, at val blir viste, og at skjermen er tona inn att. Til sist kviler Ivar ved lampa i stova og får minnet om far på scenekartet: testen sjekkar at huldra ikkje er med, at lagring i minnet lagrar stova, og at Ivar kjem attende til same rute og retning, også når ei scene med scenekart blir hoppa over. Han sjekkar at Ivar set seg og far peikar i minnet, at posane er lesne frå arket i fire retningar, at ein pose varer til figuren går eller hendinga er slutt, og at syster sit ved bordet att. `node tools/sjekk-spel.js` sjekkar at scenene viser til ting som finst.
 
 ### Neste steg for scenemotoren
-- Dagboka og trådane i menyen.
-- Figurar med eigne animasjonar i scener (knele, setje seg, peike).
+- Hendingane i prototypen over til scener med regi, der dei som talar, står på kartet.

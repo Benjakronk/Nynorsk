@@ -106,13 +106,15 @@ window.Motor = (function () {
       const [x, y] = merke[f.merke];
       if (f.flis) fliser[y][x] = f.flis;
       const dir = f.retning != null ? f.retning : 0;
-      return Object.assign({}, f, { x, y, fx: x, fy: y, hx: x, hy: y, dir, grunndir: dir, steg: 0, flytt: null,
+      // pose på personen i kartet (til dømes sitje ved bordet) er grunnposen, som han får att etter kvar hending.
+      return Object.assign({}, f, { x, y, fx: x, fy: y, hx: x, hy: y, dir, grunndir: dir, steg: 0, flytt: null, grunnpose: f.pose || null,
         neste: performance.now() + 800 + Math.random() * 2500, sprite: f.usynleg ? null : Pikslar.figur(RPGData.U[f.u]) });
     });
     kart = { id, def, w, h, fliser, merke, folk, kister: def.kister || [], dorer: (def.dorer || []).filter(d => d.til) };
     for (const a of regi) { a.regi.res(); a.regi = null; } regi.clear(); kam = null;      // nytt kart: regien byrjar på nytt
     const [sx, sy] = merke[merkeId] || merke["1"] || [1, 1];
     spelar.x = sx; spelar.y = sy; spelar.fx = sx; spelar.fy = sy; spelar.flytt = null;
+    spelar.pose = null; if (fylgje) fylgje.pose = null;                 // på eit nytt kart står ein
     if (typeof dir === "string") dir = RETNINGSNAMN[dir];
     if (dir != null) spelar.dir = dir;
     else {                                                           // står ein ved ei dør, ser ein bort frå henne
@@ -213,7 +215,7 @@ window.Motor = (function () {
       const dir = Math.floor(Math.random() * 4), nx = f.x + DX[dir], ny = f.y + DY[dir];
       f.dir = dir;
       if (Math.random() < 0.7 && folkKanGaa(f, nx, ny)) {
-        f.flytt = { fx: f.x, fy: f.y, t0: no }; f.x = nx; f.y = ny; f.steg++; f.kjensle = null;
+        f.flytt = { fx: f.x, fy: f.y, t0: no }; f.x = nx; f.y = ny; f.steg++; f.kjensle = null; f.pose = null;
         f.neste = no + FOLK_FART + 600 + Math.random() * 2600;
       } else f.neste = no + 900 + Math.random() * 2000;
     }
@@ -233,7 +235,8 @@ window.Motor = (function () {
       if (pausa || kart !== k0 || (krokar.modus && krokar.modus() !== "felt")) return;
     }
     if (!taSteg(t0)) return;
-    spelar.kjensle = null; if (fylgje) fylgje.kjensle = null;        // ei kjensle varer til ein går
+    spelar.kjensle = null; if (fylgje) fylgje.kjensle = null;        // ei kjensle varer til ein går (posen òg)
+    spelar.pose = null; if (fylgje) fylgje.pose = null;
     flytt(no);
   }
   // Byrjar eit nytt steg i retninga som blir halden nede. Gir true om figuren flyttar seg.
@@ -410,6 +413,7 @@ window.Motor = (function () {
         res();
       } };
       if (a === spelar) spelar.flytt = null;
+      if (sti.length) a.pose = null;                                    // ein pose varer til figuren går
       regi.add(a);
       if (snogg) fullfor(a);
     });
@@ -432,10 +436,10 @@ window.Motor = (function () {
       r.res(); return;
     }
     const d = r.sti.shift(), x0 = a.x, y0 = a.y;
-    a.dir = d; a.flytt = { fx: x0, fy: y0, t0 }; a.x += DX[d]; a.y += DY[d]; a.steg = (a.steg || 0) + 1; a.u = 0; a.kjensle = null;
+    a.dir = d; a.flytt = { fx: x0, fy: y0, t0 }; a.x += DX[d]; a.y += DY[d]; a.steg = (a.steg || 0) + 1; a.u = 0; a.kjensle = null; a.pose = null;
     if (a === spelar && fylgje && !fylgje.regi) {
       fylgje.flytt = { fx: fylgje.x, fy: fylgje.y }; fylgje.dir = retningMot(fylgje.x, fylgje.y, x0, y0, fylgje.dir);
-      fylgje.x = x0; fylgje.y = y0; r.drag = fylgje;
+      fylgje.x = x0; fylgje.y = y0; r.drag = fylgje; fylgje.pose = null;
     }
   }
   function snu(kven, retning) {
@@ -792,19 +796,21 @@ window.Motor = (function () {
       if (k && krokar.opna && krokar.opna(k)) { g.fillStyle = "rgba(10,5,20,.45)"; g.fillRect(sx + 2, sy + 4, 12, 3); }
     }
     const GANG = [1, 0, 2, 0];
-    const figurar = kart.folk.filter(f => f.sprite).map(f => ({ y: f.fy, sp: f.sprite, x: f.fx, dir: f.dir, kjensle: f.kjensle,
+    const figurar = kart.folk.filter(f => f.sprite).map(f => ({ y: f.fy, sp: f.sprite, x: f.fx, dir: f.dir, kjensle: f.kjensle, pose: f.pose,
       steg: f.flytt ? GANG[(f.steg % 2) * 2 + (f.u < 0.5 ? 0 : 1)] : 0 }));
     // Gangramma følgjer steget, ikkje klokka: to rammer per flis (steg, stå), annakvar fot.
     const steg = spelar.flytt ? GANG[(spelar.steg % 2) * 2 + (spelar.u < 0.5 ? 0 : 1)] : 0;
     // Følgjet går eit halvt steg forskyve, så dei to ikkje går i takt.
     const fv = spelar.u + 0.5, fsteg = fylgje && fylgje.regi ? (fylgje.flytt ? GANG[(fylgje.steg % 2) * 2 + (fylgje.u < 0.5 ? 0 : 1)] : 0)
       : spelar.flytt ? GANG[((spelar.steg + Math.floor(fv)) % 2) * 2 + (fv % 1 < 0.5 ? 0 : 1)] : 0;
-    if (fylgje) figurar.push({ y: fylgje.fy, x: fylgje.fx, sp: fylgje.sprite, dir: fylgje.dir, steg: fsteg, kjensle: fylgje.kjensle });
-    figurar.push({ y: spelar.fy, x: spelar.fx, sp: spelar.sprite, dir: spelar.dir, steg, kjensle: spelar.kjensle });
+    if (fylgje) figurar.push({ y: fylgje.fy, x: fylgje.fx, sp: fylgje.sprite, dir: fylgje.dir, steg: fsteg, kjensle: fylgje.kjensle, pose: fylgje.pose });
+    figurar.push({ y: spelar.fy, x: spelar.fx, sp: spelar.sprite, dir: spelar.dir, steg, kjensle: spelar.kjensle, pose: spelar.pose });
     for (const n of naturFig) figurar.push(n);
     // Hus blir sorterte saman med figurane etter den nedste flisraden sin.
     for (const b of kart.def.bygg || []) { const img = Pikslar.bygg(b.id); if (img) figurar.push({ y: b.over ? 999 : b.y + b.h - 1 + 0.01, by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id }); }
-    figurar.sort((a, b) => a.y - b.y);
+    // Den som sit eller ligg, blir teikna over inventaret på same rad (benken, senga).
+    const djupn = f => f.y + (f.pose && f.pose !== "knele" && f.pose !== "peike" ? 0.02 : 0);
+    figurar.sort((a, b) => djupn(a) - djupn(b));
     for (const f of figurar) {
       if (f.mur) { g.drawImage(f.mur, Math.round((f.x + ox) * S), Math.round((Math.floor(f.y) + oy) * S) - 6); continue; }
       if (f.natur) { g.drawImage(f.natur.img, Math.round((f.x + ox) * S) + f.natur.x, Math.round((Math.floor(f.y) + oy) * S) + f.natur.y); continue; }
@@ -823,8 +829,16 @@ window.Motor = (function () {
         for (const [rx, ry] of Pikslar.ROYK[f.id] || []) Pikslar.royk(g, bx + rx, by - f.bygg.height + ry, no);
         continue; }
       const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S);
+      // Ein pose (knele, sitje, peike) går framfor kjensla. Liggje og sove er ramma for slått ut (24 x 16).
+      const pose = f.pose && f.sp.pose && f.sp.pose[f.pose];
+      if (pose && !Array.isArray(pose)) {
+        g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx - 2, sy + 10, 20, 3); g.fillRect(sx, sy + 9, 16, 5);
+        g.drawImage(pose, sx - 4, sy - FOT + 8);
+        if (f.pose === "sove") teiknZz(g, sx + 14, sy - FOT + 4, no);
+        continue;
+      }
       g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx + 3, sy + 10, 10, 3); g.fillRect(sx + 4, sy + 9, 8, 5);
-      const bilde = f.kjensle && f.sp.kjensle && f.sp.kjensle[f.kjensle] ? f.sp.kjensle[f.kjensle] : f.sp.rammer[f.dir][f.steg];
+      const bilde = pose ? pose[f.dir] : f.kjensle && f.sp.kjensle && f.sp.kjensle[f.kjensle] ? f.sp.kjensle[f.kjensle] : f.sp.rammer[f.dir][f.steg];
       g.drawImage(bilde, sx, sy - FOT);
     }
     // Silhuett av spelaren (eller følgjet) bak eit hus, berre der huset har «silhuett: true» i kartet
@@ -840,6 +854,20 @@ window.Motor = (function () {
       if (bak) { g.globalAlpha = 0.4; g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy); g.globalAlpha = 1; }
     }
     stemning(no, ox, oy);
+  }
+
+  // Den som søv: to små z som stig opp og blir borte, om att og om att (kvit med mørkt omriss).
+  const ZZ = ["####", "..#.", ".#..", "####"];
+  function teiknZz(g, x, y, no) {
+    for (let i = 0; i < 2; i++) {
+      const t = ((no / 1600) + i * 0.5) % 1, zx = Math.round(x + i * 4 + t * 3), zy = Math.round(y - t * 9);
+      g.globalAlpha = Math.min(1, (1 - t) * 2.5);
+      g.fillStyle = "#180f18";
+      ZZ.forEach((r, ry) => [...r].forEach((c, rx) => { if (c === "#") g.fillRect(zx + rx - 1, zy + ry - 1, 3, 3); }));
+      g.fillStyle = "#f4f0e8";
+      ZZ.forEach((r, ry) => [...r].forEach((c, rx) => { if (c === "#") g.fillRect(zx + rx, zy + ry, 1, 1); }));
+    }
+    g.globalAlpha = 1;
   }
 
   /* ---------- Samtalar og forteljing ---------- */
@@ -986,6 +1014,25 @@ window.Motor = (function () {
       if (kven === "fylgje") { if (fylgje) fylgje.kjensle = k; return; }
       const f = kart && kart.folk.find(f => f.namn === kven);
       if (f) { f.kjensle = k; if (k) f.neste = performance.now() + 4000; }
+    },
+    // Pose (knele, sitje, peike, liggje, sove) for «spelar», «fylgje», namnet eller merket til ein
+    // person på kartet, eller «alle» (til å nullstille). null tek han bort. Han varer til figuren går.
+    pose(p, kven = "spelar") {
+      p = p || null;
+      if (kven === "alle") {
+        spelar.pose = p; if (fylgje) fylgje.pose = p;
+        if (kart) kart.folk.forEach(f => {
+          const ny = p || f.grunnpose || null;
+          if (f.pose !== ny) f.neste = performance.now() + 2000;
+          f.pose = ny;
+        });
+        return;
+      }
+      const a = aktor(kven);
+      if (!a) return;
+      a.pose = p;
+      if (p && a.hx !== undefined) a.neste = performance.now() + 1e9;     // folk står i ro så lenge posen varer
+      else if (a.hx !== undefined) a.neste = performance.now() + 2000;
     },
     settFylgje(sprite) { fylgje = sprite ? { sprite, x: spelar.x, y: spelar.y, fx: spelar.x, fy: spelar.y, dir: spelar.dir, flytt: null } : null; plasserFylgje(); },
     plasser,

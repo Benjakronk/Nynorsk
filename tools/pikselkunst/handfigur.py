@@ -8,6 +8,8 @@ arket (48 x 192) i same oppsett som figur.py, med kjensler i rad 6 og 7:
   rad 5        svak (på kne) og slått ut (24 x 16, sida rotert)
   rad 6 og 7   standardkjenslene (glad, trist, sint, sjokk, tenkje, nikk), same for alle figurar
   rad 8        figuren sine eigne kjensler (Ivar: ivrig, les. Huldra: lokk, sky)
+  rad 9 til 12 posane knele, sitje og peike (ned, opp, venstre, høgre), same som i figur.py.
+               Rammene heiter knele_ned, sitje_opp, peike_side og så vidare.
 
 Omrisset blir lagt rundt til slutt, så rammene blir teikna med berre synlege fargar.
 """
@@ -34,6 +36,34 @@ def sjekk(R):
         assert len(g) == H and all(len(r) == W for r in g), (namn, [len(r) for r in g])
 
 
+POSAR = ("knele", "sitje", "peike")
+POSERAD = 9
+
+
+def senk(g, til, n, bein=()):
+    """Radene 0 til og med til flytte n rader ned, og bein under (fram til nest nedste rad)."""
+    ny = ["." * W] * H
+    for y in range(til + 1):
+        if y + n < H: ny[y + n] = g[y]
+    for i, r in enumerate(bein): ny[H - 1 - len(bein) + i] = r
+    return ny
+
+
+def peik_ut(g, y0, y1, arm, rad13, rad14):
+    """Framanfrå eller bakfrå: armen til høgre i biletet (kolonne 12 til 14, rad y0 til y1) blir
+    teken bort, figuren flytt éin kolonne mot venstre, og ein arm ut til sida blir teikna i rad 13 og 14
+    frå kolonne 11 (rad13 og rad14 er teikna frå kolonne 11)."""
+    g = [list(r) for r in g]
+    for y in range(y0, y1 + 1):
+        for x in (12, 13, 14):
+            if g[y][x] in arm: g[y][x] = "."
+    g = [r[1:] + ["."] for r in g]
+    for y, t in ((13, rad13), (14, rad14)):
+        for k, c in enumerate(t):
+            if c != ".": g[y][11 + k] = c
+    return ["".join(r) for r in g]
+
+
 def lag(R, PAL, kjensler, attlatne="j"):
     sjekk(R)
     def teikn(im, g, x0, y0, spegl=False):
@@ -41,7 +71,8 @@ def lag(R, PAL, kjensler, attlatne="j"):
             for x, c in enumerate(rad):
                 if c != ".": im.putpixel((x0 + (len(rad) - 1 - x if spegl else x), y0 + y), hx(PAL[c]) + (255,))
     ramme = lambda namn: omriss(R[namn])
-    im = Image.new("RGBA", (W * 3, H * (6 + (len(kjensler) + 2) // 3)), (0, 0, 0, 0))
+    posar = all(f"{p}_{d}" in R for p in POSAR for d in ("ned", "opp", "side"))
+    im = Image.new("RGBA", (W * 3, H * (POSERAD + 4 if posar else 6 + (len(kjensler) + 2) // 3)), (0, 0, 0, 0))
     for d, pre in enumerate(("ned", "opp", "side")):
         for s in range(3): teikn(im, ramme(f"{pre}{s}"), s * W, d * H)
     for s in range(3): teikn(im, ramme(f"side{s}"), s * W, 3 * H, spegl=True)
@@ -53,4 +84,8 @@ def lag(R, PAL, kjensler, attlatne="j"):
     teikn(im, omriss(rot), W, 5 * H + 8)
     for n, namn in enumerate(kjensler):
         teikn(im, ramme(namn), (n % 3) * W, (6 + n // 3) * H)
+    if posar:
+        for n, p in enumerate(POSAR):
+            for d, pre in enumerate(("ned", "opp", "side")): teikn(im, ramme(f"{p}_{pre}"), n * W, (POSERAD + d) * H)
+            teikn(im, ramme(f"{p}_side"), n * W, (POSERAD + 3) * H, spegl=True)
     return im

@@ -70,6 +70,9 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   Namna på kjenslene står i `kjensler` i utsjånaden, og `siger` vel kjensler til
   sigerfeiringa i kampen. Kjensler blir viste med `kjensle` i manus og
   kan sjåast med `skjermbilete.py namn kart=asen-stova m=1 kjensle=sjokk`.
+  Posar i scener (knele, sitje, peike) står i rad 9 til 12 for alle figurar, laga av
+  `poseramme()` i figur.py og av rammene `knele_ned`, `sitje_side` osb. i dei handteikna arka.
+  Sjå dei med `skjermbilete.py namn kart=asen-stova m=1 pose=knele`.
   Sigerfeiring og løn i kampscena: `skjermbilete.py namn kart=utmarka m=1 kamp=vette parti=huldra vinn=1`.
 - Kjensler: alle figurar har standardsettet glad, trist, sint, sjokk, tenkje, nikk (rad 6
   og 7, laga av `kjensle()` i figur.py). Portrett med kjensler: gi portrettfunksjonen ein

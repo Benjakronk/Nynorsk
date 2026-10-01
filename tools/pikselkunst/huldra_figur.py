@@ -529,6 +529,24 @@ R["trist"] = list(R["sorg"])
 R["trist"][11] = ".rrjhhhhhhTjry.."
 R["glad"] = R["fnis"]
 
+# Posar i scener (rad 9 til 12): knele, sitje og peike. Det stutte skjørtet gøymer beina når ho
+# kneler, og kneet og leggen kjem fram når ho sit. Kneling frå sida er kroppen frå «svak».
+from handfigur import senk, peik_ut
+R["knele_ned"] = senk(R["ned0"], 19, 2, [".hYYYYYYYYYYYYh."])
+R["knele_opp"] = senk(R["opp0"], 19, 2, [".hYYYYYhYYYYYYh."])
+R["knele_side"] = senk(R["side0"], 11, 3)[:15] + R["svak"][15:]
+R["sitje_ned"] = senk(R["ned0"], 19, 1, [".YYYYYYYYYYYYYY.", "...jhhj..jhhj..."])
+R["sitje_opp"] = senk(R["opp0"], 19, 1, [".YYYYYYhYYYYYYY.", "....hhjrRrhj...."])
+R["sitje_side"] = senk(R["side0"], 18, 1, [".YYYYYYYYYYd.h..", ".hhhhjj.....rRy.", "hhj..........y.."])
+R["peike_ned"] = peik_ut(R["ned0"], 14, 16, "hj", "Lhhh", "hjj")
+R["peike_opp"] = peik_ut(R["opp0"], 14, 16, "hj", "Lhhh", "hjj")
+_p = list(R["side0"])
+_p[13] = ".hhhLlGGlrQryy.."
+_p[14] = "..jjGGGGgrQyy..."
+_p[15] = "...GGGGGgyy....."
+_p[16] = "...YYYYYYYd....."
+R["peike_side"] = _p
+
 # Standardkjenslene (same for alle figurar) og så huldra sine eigne.
 KJENSLER = ("glad", "trist", "sint", "sjokk", "tenkje", "nikk", "lokk", "sky")
 

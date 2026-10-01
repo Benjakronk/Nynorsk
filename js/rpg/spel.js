@@ -101,6 +101,7 @@
     if (s.gaa) return Motor.gaa(regiNamn(s.gaa), { sti: s.sti, rute: s.rute, mot: s.mot && regiNamn(s.mot) }, s.fart);
     if (s.snu) { Motor.snu(regiNamn(s.snu), s.mot ? regiNamn(s.mot) : s.retning); return null; }
     if (s.inn) { Motor.inn(s.inn); return null; }
+    if (s.pose) { Motor.pose(s.p, regiNamn(s.pose)); return null; }
     if (s.kamera !== undefined) return Motor.kamera(s.kamera && (typeof s.kamera === "string" ? regiNamn(s.kamera) : s.kamera), s.ms);
     if (s.vent) return Motor.vent(s.vent);
     if (s.ton) return s.ton === "inn" ? Motor.tonInn(s.ms || 600) : Motor.tonUt(s.ms || 600, s.ton === "kvitt" ? "#fff" : null);
@@ -119,7 +120,7 @@
       const def = D.KART[s.scenekart];
       if (!def || !def.scene) { console.warn("Ikkje eit scenekart:", s.scenekart); return; }
       // Scenekart i scenekart: staden før den første scena er den som gjeld.
-      if (!forScene) forScene = { kart: Motor.kart.id, x: Motor.spelar.x, y: Motor.spelar.y, dir: Motor.spelar.dir };
+      if (!forScene) forScene = { kart: Motor.kart.id, x: Motor.spelar.x, y: Motor.spelar.y, dir: Motor.spelar.dir, pose: Motor.spelar.pose };
       await Motor.scene(() => {
         Motor.settFylgje(s.fylgje && harHuldra() ? sprite("huldra") : null);
         Motor.last(s.scenekart, s.merke || "1", s.retning);
@@ -132,6 +133,7 @@
       Motor.settFylgje(harHuldra() ? sprite("huldra") : null);
       Motor.last(f.kart, null, f.dir);
       Motor.plasser(f.x, f.y, f.dir);
+      Motor.pose(f.pose);                                              // sat han før scena, sit han att
     }, s.ms);
   }
   async function kjoyr(steg) {
@@ -246,7 +248,7 @@
   }
   async function hending(steg) {
     Motor.pause(true);
-    try { await kjoyr(steg); } finally { Motor.kjensle(null, "alle"); if (modus === "felt") Motor.pause(false); }
+    try { await kjoyr(steg); } finally { Motor.kjensle(null, "alle"); Motor.pose(null, "alle"); if (modus === "felt") Motor.pause(false); }
   }
 
   /* ---------- Kamp ---------- */

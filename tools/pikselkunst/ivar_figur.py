@@ -10,8 +10,8 @@ Hovudpersonen får eige ark i staden for malen i figur.py, så han kan få meir 
   i gangen opp og ned. (Skuldervriing vart prøvd, men såg ut som dans, og er teken bort.)
 - Kjensler: latter (handa bak hovudet), sjokk, sorg, tenkjer, ivrig og les i ei bok.
 
-Arket (48 x 192): rad 0 til 3 gange (ned, opp, venstre, høgre), rad 4 åtak, galdr, skadd,
-rad 5 svak og slått ut (24 x 16), rad 6 latter, sjokk, sorg, rad 7 tenkjer, ivrig, les.
+Arket (48 x 312): rad 0 til 3 gange (ned, opp, venstre, høgre), rad 4 åtak, galdr, skadd,
+rad 5 svak og slått ut (24 x 16), rad 6 til 8 kjensler, rad 9 til 12 posane (knele, sitje, peike).
 
   python tools/pikselkunst/ivar_figur.py        skriv bilete/spel/figurar/ivar.png
 """
@@ -558,6 +558,27 @@ R["trist"] = list(R["sorg"])
 R["trist"][11] = "...jjhhhhhTj...."
 R["trist"][12] = "....jmhhhmj....."
 R["glad"] = R["latter"]
+
+# Posar i scener (rad 9 til 12): knele, sitje og peike. Overkroppen søkk, og beina blir
+# teikna på nytt. Kneling frå sida er kroppen frå «svak» med hovudet oppreist.
+from handfigur import senk, peik_ut
+R["knele_ned"] = senk(R["ned0"], 17, 3, ["...BBbbbbbbqq...", "..qBBbq..bbqqq.."])
+R["knele_opp"] = senk(R["opp0"], 17, 3, ["....Bbb..bbq....", "...qqqq..qqqq..."])
+R["knele_side"] = senk(R["side0"], 11, 3) [:15] + R["svak"][15:]
+_sit = list(R["ned0"]); _sit[16] = "..Aaqqqgqqqqaz.."
+R["sitje_ned"] = senk(_sit, 16, 2, ["..AaBbbbbbbbbaz.", "..hhBBBbBBBbqhh.", "....Bbq..bbq....", "...qqqq..qqqq..."])
+_sit = list(R["opp0"]); _sit[16] = "..Aakkkkkkkkaz.."
+R["sitje_opp"] = senk(_sit, 16, 2, ["..AaBbbbbbbbbaz.", "..hhBbbbbbbbbhh.", "....Bbq..bbq....", "...qqqq..qqqq..."])
+R["sitje_side"] = senk(R["side0"], 16, 2, ["...BBBbhhjbbq...", "..BBbbbbbbbbq...", "..Bbq...........", ".qqqq..........."])
+R["peike_ned"] = peik_ut(R["ned0"], 13, 17, "Aazhj", "Aahh", "azj")
+R["peike_opp"] = peik_ut(R["opp0"], 13, 17, "Aazhj", "Aahh", "az")
+_p = list(R["side0"])
+_p[13] = ".hhhAAAaKKKKk..."
+_p[14] = "...jaaaaaKkkk..."
+_p[15] = "....AaaaaKKKk..."
+_p[16] = "....qqqqqKkk...."
+_p[17] = ".....bbbbbbq...."
+R["peike_side"] = _p
 
 # Standardkjenslene (same for alle figurar) og så Ivar sine eigne.
 KJENSLER = ("glad", "trist", "sint", "sjokk", "tenkje", "nikk", "ivrig", "les")

@@ -444,3 +444,33 @@ same måte, uansett kven som tek over.
   `stove()` i bygg.py): stova på Åsen og Nedre Hovde, setra og Ekset. Alle piper, også
   teglpipene på prestegarden, har røyk som stig og driv med vinden (`ROYK` i pikslar.js).
 - `skjerm.html` tek `etter=1` saman med `vinn=1`, så ein ser kartet kome att etter kampen.
+
+## Runde 16: posar i scener
+
+- **Frå brukaren:** Figurane skulle kunne knele, setje seg og peike i skripta scener (og gjerne
+  sove), i same stil, for alle figurane.
+- **Gjort:**
+  - Ny del av arket: rad 9 til 12 er posane knele, sitje og peike i fire retningar (ned, opp,
+    venstre, høgre, der høgre er venstre spegla). Rad 8 står tom i dei genererte arka, så posane
+    ligg på same plass som i dei handteikna. Arket er no 48 x 312 for alle figurane.
+  - `figur.py` (`poseramme()`): posane blir laga frå ståramma utan arm og stav. Overkroppen
+    søkk to eller tre rader, og beina blir teikna på nytt i fargane til figuren (knebukser får
+    strømpeleggar). Framanfrå kneler figuren med knea i golvet og sålane ut på sidene, og sit
+    med hendene på knea. Frå sida kneler han med eitt kne fram og leggen bak i golvet, og sit
+    med låret fram og leggen ned. Skjørt ligg utover golvet når ho kneler, og fell over fanget
+    når ho sit. Peike: armen strak ut i skulderhøgd (framanfrå til sida, og figuren flytt éin
+    kolonne mot venstre så handa får plass).
+  - Ivar og huldra (`ivar_figur.py`, `huldra_figur.py`, hjelparane `senk` og `peik_ut` i
+    `handfigur.py`): same posar, teikna frå rammene deira. Kneling frå sida er kroppen frå
+    «svak» med hovudet oppreist. Huldra kneler med det stutte skjørtet over beina.
+  - Liggje og sove brukar ramma for slått ut. Sove har to små z som stig opp (motor.js).
+  - Motoren: `{ pose: "Namn", p: "knele" }` i manus, `Motor.pose()`. Posen varer til figuren
+    går, eller til hendinga er slutt, og går framfor kjensla. Den som sit eller ligg, blir
+    teikna over inventaret på same rad (benken, senga). Folk kan ha `pose` i kartet: syster
+    sit ved langbordet i stova.
+- **Vurdert i spelet:** Peike og kneling frå sida er tydelege. Å sitje frå sida les godt for
+  Ivar og huldra. Framanfrå er kneling og sitjing berre to til tre pikslar lågare enn ståande,
+  og skil seg mest på beina (sålane ut mot skoa fram). Dei les best ved eit bord eller ein benk.
+  Svarte klede (presten, den framande) gøymer armen i sidekneling.
+- **Står att:** Ein eigen sitjepose på golvet (med beina i kross) og ein liggjande pose sett
+  ovanfrå i senga. Posar i kampscena er ikkje i bruk.

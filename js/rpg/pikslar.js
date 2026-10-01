@@ -693,6 +693,8 @@ window.Pikslar = (function () {
   }
   // Kjenslene alle figurar har, i fast rekkjefølgje i arket (sjå tools/pikselkunst/figur.py).
   const STANDARDKJENSLER = ["glad", "trist", "sint", "sjokk", "tenkje", "nikk"];
+  // Posane i arket: rad 9 til 12 (ned, opp, venstre, høgre), kolonnane i denne rekkjefølgja.
+  const ARKPOSAR = ["knele", "sitje", "peike"], POSERAD = 9;
   const figurCache = new Map();
   function figur(u) {
     const k = JSON.stringify(u);
@@ -703,16 +705,19 @@ window.Pikslar = (function () {
     const ute = lerret(FH, 16);
     { const g = ute.getContext("2d"); g.translate(FH / 2, 8); g.rotate(Math.PI / 2); g.drawImage(rammer[2][0], -FW / 2, -FH / 2); }
     const kamp = { atak: kopi(rammer[2][1]), galdr: kopi(rammer[2][0]), skadd: kopi(rammer[2][0]), svak: kopi(rammer[2][0]), ute };
-    // Kjensler (mot oss): berre hovudpersonar med handteikna ark har dei. Til då: ståramma.
     // Kjensler (mot oss): standardsettet har alle figurar (rad 6 og 7 i arket). Figurar med
     // handteikna ark har i tillegg eigne kjensler i rad 8 (namna står i kjensler i utsjånaden).
     const KJENSLER = [...STANDARDKJENSLER, ...(u.kjensler || [])];
     const kjensle = Object.fromEntries(KJENSLER.map(k => [k, kopi(rammer[0][0])]));
     // Sigerstilling i kampen: kjensler namngjevne i utsjånaden (til dømes ivrig), elles ingen.
     const siger = (u.siger || []).map(k => kjensle[k]).filter(Boolean);
-    const f = { rammer, kamp, kjensle, siger, w: FW, h: FH };
-    // Handteikna ark frå tools/pikselkunst/figur.py (48 x 144): rad 0 til 3 gange (steg bortover),
-    // rad 4 åtak, galdr og skadd, rad 5 svak (på kne) og slått ut (24 x 16 nedst i ruta).
+    // Posar i scener: fire retningar kvar. Til arket er lasta: ståramma. Liggje og sove er slått ut.
+    const pose = Object.fromEntries(ARKPOSAR.map(p => [p, rammer.map(rad => kopi(rad[0]))]));
+    pose.liggje = pose.sove = ute;
+    const f = { rammer, kamp, kjensle, siger, pose, w: FW, h: FH };
+    // Arket frå tools/pikselkunst/figur.py (48 x 312): rad 0 til 3 gange (steg bortover),
+    // rad 4 åtak, galdr og skadd, rad 5 svak (på kne) og slått ut (24 x 16 nedst i ruta),
+    // rad 6 til 8 kjensler, rad 9 til 12 posane.
     // Når det er lasta, blir det teikna inn i dei same lerreta, så alle som held på figuren får det nye.
     if (u.id && typeof Image !== "undefined") {
       const img = hent(`bilete/spel/figurar/${u.id}.png`);
@@ -727,6 +732,7 @@ window.Pikslar = (function () {
         teiknInn(kamp.atak, 0, FH * 4); teiknInn(kamp.galdr, FW, FH * 4); teiknInn(kamp.skadd, FW * 2, FH * 4);
         teiknInn(kamp.svak, 0, FH * 5); teiknInn(kamp.ute, FW, FH * 5 + 8);
         KJENSLER.forEach((k, i) => { if (img.height >= FH * (7 + Math.floor(i / 3))) teiknInn(kjensle[k], (i % 3) * FW, FH * (6 + Math.floor(i / 3))); });
+        if (img.height >= FH * (POSERAD + 4)) ARKPOSAR.forEach((p, i) => pose[p].forEach((c, dir) => teiknInn(c, i * FW, FH * (POSERAD + dir))));
       };
       if (klar(img)) bruk(); else img.addEventListener("load", bruk, { once: true });
     }
@@ -984,5 +990,5 @@ window.Pikslar = (function () {
   }
 
   return { S, FW, FH, flis, topp, kant, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
-    hent, klar, forhandslast, alleBilete, ILD, ild, ildMaske, STANDARDKJENSLER, ROYK, royk };
+    hent, klar, forhandslast, alleBilete, ILD, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
 })();

@@ -50,6 +50,7 @@
      { gaa: "Namn", rute: [x, y] }      gå til ei rute (eller eit merke: rute: "@")
      { gaa: "Namn", sti: "h3o2" }       gå ein fast sti (n ned, o opp, v venstre, h høgre)
      { snu: "Namn", retning: "opp" }    eller { snu: "Namn", mot: "Ivar" }
+     { pose: "Namn", p: "knele" }       knele, sitje, peike, liggje eller sove (p: null tek posen bort)
      { inn: { namn, u, rute, retning } } ny person på kartet
      { kamera: "Namn" | [x, y] | null } kameraet glir til nokon (og følgjer), til ei rute, eller attende
      { saman: [[…], […]] }              fleire lister samstundes
@@ -167,6 +168,11 @@ window.RPGData = (function () {
      standardsettet glad, trist, sint, sjokk, tenkje og nikk. Ivar har i tillegg ivrig og les,
      huldra lokk og sky. Kjensla blir vist på figuren, og i portrettet om det finst ein variant
      (PORTRETT_KJENSLER). Ho varer til samtalen er slutt eller figuren går. */
+  /* Posar i scener: { pose: "Syster", p: "knele" } set ein figur i ein pose, og p: null tek han
+     bort. Posen varer til figuren går, eller til hendinga er slutt, og han går framfor kjensla.
+     Knele, sitje og peike står i rad 9 til 12 i figurarket (ned, opp, venstre, høgre), så
+     figuren held retninga si. Liggje og sove brukar ramma for slått ut, og sove har Zz over. */
+  const POSAR = ["knele", "sitje", "peike", "liggje", "sove"];
   // Figurane blir teikna med tools/pikselkunst/figur.py til bilete/spel/figurar/<id>.png.
   // Spelet brukar arket når det er lasta, og teiknar figuren i kode til då.
   for (const id in U) U[id].id = id;
@@ -210,7 +216,7 @@ window.RPGData = (function () {
       kister: [{ ved: [10, 4], ting: "flatbrod", n: 2, id: "k-stova" }],
       folk: [
         { merke: "@", u: "bror", namn: "Storebror", atferd: "snu", retning: 2, snu: [0, 2, 3], tale: "bror" },
-        { merke: "%", u: "syster", namn: "Syster", atferd: "snu", retning: 1, snu: [1, 3, 0], tale: "syster" },
+        { merke: "%", u: "syster", namn: "Syster", atferd: "stille", retning: 1, pose: "sitje", tale: "syster" },   // sit ved langbordet
       ],
     },
     /* Scenekart (scene: true) finst berre for ei scene: dei er ikkje med i verda, og spelet
@@ -715,14 +721,18 @@ window.RPGData = (function () {
     minne_far: {
       namn: "Minnet om far", stad: "Bøen på Åsen", tid: "sommaren 1821", kort: false, hopp: true, med: ["Ivar", "Far"],
       steg: [
+        { pose: "Ivar", p: "sitje" },
         { t: "Ivar set seg ved lampa. Ljoset flakkar, og auga glir att." },
         { scenekart: "minne-far", merke: "1", retning: "ned", ms: 1400 },
         { kort: ["Bøen på Åsen", "sommaren 1821"] },
         { s: "Far", t: "Kom hit, Ivar. Sjå utover." },
         { gaa: "Ivar", mot: "Far", fart: 380 },
         { snu: "Ivar", retning: "ned" },
+        { snu: "Far", retning: "høgre" },
+        { pose: "Far", p: "peike" },
         { s: "Far", t: "Neset der ute, bekken og kvar stein i åkeren. Alt har eit namn. Bestefar lærte meg dei, og no lærer eg deg dei." },
         { s: "Ivar", t: "Kven var det som fann på namna?", kjensle: "tenkje" },
+        { pose: "Far", p: null },
         { snu: "Far", mot: "Ivar" },
         { s: "Far", t: "Folk som budde her før oss. Namna står ikkje i noka bok." },
         { s: "Far", t: "Men så lenge nokon seier dei, er dei ikkje borte.", kjensle: "glad" },
@@ -961,5 +971,5 @@ window.RPGData = (function () {
   // Første gong Ivar går ut, kjem den framande bort til han.
   MANUS.ut_forste = [{ dersom: st => !st.flagg.framande1, da: MANUS.framande }];
 
-  return { FAMILIAR, ORD, U, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, KAPITTEL, STEVGALDR, PORTRETT, PORTRETT_KJENSLER, SCENER, MANUS, valt };
+  return { FAMILIAR, ORD, U, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, KAPITTEL, STEVGALDR, PORTRETT, PORTRETT_KJENSLER, POSAR, SCENER, MANUS, valt };
 })();

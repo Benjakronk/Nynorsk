@@ -144,6 +144,10 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
   (`stav: "lang"` eller `"stokk"`) eller begge. Ikkje gi alle gamle det same.
 - Kampstillingar (mot venstre): åtak, galdr, skadd, svak (på kne), slått ut.
   Dei ligg i rad 4 og 5 i figurarket.
+- Posar i scener (rad 9 til 12, ned, opp, venstre, høgre): knele, sitje og peike. Overkroppen
+  søkk to eller tre rader, og beina fortel posen: sålane ut til sidene når ein kneler framanfrå,
+  eitt kne fram og leggen bak i golvet frå sida, låret fram og leggen ned når ein sit. Peike er
+  armen strak ut i skulderhøgd. Liggje og sove er ramma for slått ut.
 - Embetsmannsheimen (prestegarden, Ekset): mahogni, messing, kvit duk,
   kakkelomn og golvur. Bondestova: furu, grue, trefat, rosemaling.
 - Gange som i Final Fantasy VI: armane svingar i motsett takt med beina (neven fram

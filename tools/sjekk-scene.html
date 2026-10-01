@@ -155,12 +155,14 @@ f.onload = async () => {
     M.last("asen-stova", "1"); M.plasser(2, 6, 2);                   // framfor lampa, ser mot henne
     await vent(200);
     tast("z");
-    let paaMinne = false, fylgjeIMinne = false, lagraUnder = null, forUnder = null, vedFar = false;
+    let paaMinne = false, fylgjeIMinne = false, lagraUnder = null, forUnder = null, vedFar = false, satt = false, sattAtt = false, peika = false, sitIMinne = false;
     await trykkGjennom(() => s7.scener.minne_far, () => {
-      if (M.kart.id !== "minne-far") return;
+      if (M.kart.id !== "minne-far") { if (M.spelar.pose === "sitje" && M.spelar.dir === 2) { if (paaMinne) sattAtt = true; else satt = true; } return; }
       paaMinne = true;
       if (M.aktor("fylgje")) fylgjeIMinne = true;
       const far = M.aktor("Far"), sp = M.spelar;
+      if (far && far.pose === "peike" && far.dir === 3) peika = true;
+      if (sp.pose) sitIMinne = true;
       if (far && Math.abs(far.x - sp.x) + Math.abs(far.y - sp.y) === 1) vedFar = true;
       if (!lagraUnder) { forUnder = T().forScene(); T().lagre(); lagraUnder = T().lagra(); }
     });
@@ -171,6 +173,10 @@ f.onload = async () => {
     sjekk(forUnder && forUnder.kart === "asen-stova" && forUnder.x === 2 && forUnder.y === 6, "staden før scena er hugsa");
     sjekk(!fylgjeIMinne, "huldra er ikkje med i minnet");
     sjekk(vedFar, "Ivar gjekk bort til far");
+    sjekk(satt, "Ivar sette seg ved lampa (pose sitje, mot venstre)");
+    sjekk(!sitIMinne, "i minnet står Ivar (på eit nytt kart står ein)");
+    sjekk(sattAtt, "attende ved lampa sit Ivar att, slik han sat før minnet");
+    sjekk(peika, "far peika utover mot høgre");
     sjekk(lagraUnder && lagraUnder.kart === "asen-stova" && lagraUnder.pos.x === 2 && lagraUnder.pos.y === 6 && lagraUnder.pos.dir === 2,
       `lagring i minnet lagrar stova og ruta før (${lagraUnder && lagraUnder.kart} ${lagraUnder && JSON.stringify(lagraUnder.pos)})`);
     const sp7 = M.spelar;
@@ -178,6 +184,7 @@ f.onload = async () => {
     sjekk(!!M.aktor("fylgje") && !T().forScene(), "huldra er med att, og scenekartet er gløymt");
     sjekk(s7.dagbok.some(l => /tenkje på far/.test(l.tekst)), "minnet står i Dagboka");
     sjekk(!M.svart && T().modus() === "felt" && !M.spelar.regi, "skjermen er tona inn, og spelaren kan gå att");
+    sjekk(!sp7.pose, "etter hendinga står Ivar opp att");
 
     // 8. Scenekart med følgjet, hoppa over: resten går snøgt, og Ivar kjem attende til same rute.
     w.RPGData.SCENER.provekart = { namn: "Prøve", hopp: true, kort: false, steg: [
@@ -199,6 +206,46 @@ f.onload = async () => {
     const sp8 = M.spelar;
     sjekk(s7.flagg.kartFerdig && M.kart.id === "asen-stova" && sp8.x === 2 && sp8.y === 6 && sp8.dir === 2, `etter hoppet står Ivar ved lampa att (${M.kart.id} ${sp8.x},${sp8.y})`);
     sjekk(!M.svart && !M.snogg && !T().forScene(), "skjermen er tona inn, og scenekartet er gløymt");
+
+    // 9. Posar: knele, sitje, peike, liggje og sove. Posen varer til figuren går eller hendinga
+    //    er slutt, og folk med pose i kartet (syster ved bordet) får han att etterpå.
+    const feil9 = []; w.addEventListener("error", e => feil9.push(e.message));
+    const piks = c => { try { return c.getContext("2d").getImageData(0, 0, c.width, c.height).data.join(","); } catch (e) { return "utilgjengeleg"; } };
+    const tom = c => !/[1-9]/.test(piks(c).split(",").filter((_, i) => i % 4 === 3).join(""));
+    for (const id of ["bonde", "syster", "ivar", "huldra"]) {
+      const fig = w.Pikslar.figur(w.RPGData.U[id]);
+      const ok = w.Pikslar.ARKPOSAR.every(p => fig.pose[p].length === 4 &&
+        [0, 1, 2, 3].every(dir => !tom(fig.pose[p][dir]) && piks(fig.pose[p][dir]) !== piks(fig.rammer[dir][0])));
+      sjekk(ok, `${id}: knele, sitje og peike er lesne frå arket i fire retningar`);
+      sjekk(fig.pose.liggje === fig.kamp.ute && fig.pose.sove === fig.kamp.ute, `${id}: liggje og sove brukar ramma for slått ut`);
+    }
+    M.last("asen-stova", "1"); M.plasser(6, 5, 0);
+    await vent(300);
+    const syster = M.aktor("Syster");
+    sjekk(syster && syster.pose === "sitje", "syster sit ved bordet (grunnpose frå kartet)");
+    let under9 = null, etterGang = null;
+    const p9 = T().hending([
+      { inn: { namn: "Knelar", u: "bonde", rute: [8, 5], retning: "venstre" } },
+      { pose: "Knelar", p: "knele" }, { pose: "Ivar", p: "sitje" }, { pose: "Syster", p: "peike" }, { pose: "Huldra", p: "knele" },
+      { vent: 400 }, { flagg: "pose1" }, { vent: 300 },
+      { gaa: "Knelar", sti: "n1" }, { flagg: "pose2" }, { vent: 200 },
+      { pose: "Ivar", p: "sove" }, { pose: "Huldra", p: null }, { vent: 300 }, { flagg: "pose3" }, { vent: 300 },
+    ]);
+    for (let n = 0; n < 100 && !T().st().flagg.pose1; n++) await vent(30);
+    const kn = M.aktor("Knelar");
+    under9 = { knelar: kn && kn.pose, dir: kn && kn.dir, ivar: M.spelar.pose, syster: M.aktor("Syster").pose, huldra: M.aktor("fylgje") && M.aktor("fylgje").pose };
+    sjekk(under9.knelar === "knele" && under9.dir === 2, `ein ny person kneler mot venstre (${under9.knelar}, retning ${under9.dir})`);
+    sjekk(under9.ivar === "sitje" && under9.syster === "peike" && under9.huldra === "knele", `Ivar sit, syster peikar og huldra kneler (${JSON.stringify(under9)})`);
+    for (let n = 0; n < 100 && !T().st().flagg.pose2; n++) await vent(30);
+    etterGang = M.aktor("Knelar").pose;
+    sjekk(etterGang === null, "posen er borte når figuren går");
+    for (let n = 0; n < 100 && !T().st().flagg.pose3; n++) await vent(30);
+    sjekk(M.spelar.pose === "sove" && !M.aktor("fylgje").pose, "Ivar søv, og huldra står opp att (p: null)");
+    await p9;
+    await vent(100);
+    sjekk(!M.spelar.pose && M.aktor("Syster").pose === "sitje" && !M.aktor("Knelar").pose, "etter hendinga står Ivar, og syster sit att ved bordet");
+    sjekk(!feil9.length, `ingen feil når posane blir teikna${feil9.length ? ": " + feil9.join("; ") : ""}`);
+    M.fjernFolk("Knelar");
     if (gamalLagring == null) w.localStorage.removeItem(NOKKEL); else w.localStorage.setItem(NOKKEL, gamalLagring);
   } catch (e) { ut.push("FEIL " + e.stack); }
   document.getElementById("ut").textContent = ut.join("\n");

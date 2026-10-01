@@ -17,8 +17,8 @@ Det vi har lært av referansane (sjå ARBEIDSLOGG.md, runde 6):
   python tools/pikselkunst/figur.py ark           kontaktark i forhand/figurar-ark.png
   python tools/pikselkunst/figur.py ivar bonde    berre desse
 
-Arket er 48 x 96: kolonnane er rammene (stå, steg 1, steg 2), radene er
-retningane (ned, opp, venstre, høgre).
+Arket er 48 x 312: kolonnane er rammene (stå, steg 1, steg 2), rad 0 til 3 er
+retningane (ned, opp, venstre, høgre). Kamp, kjensler og posar står under (sjå bilete()).
 """
 import os, re, sys
 from PIL import Image
@@ -923,11 +923,106 @@ def kjensle(u, namn):
     return omriss(g)
 
 
+# ---------------------------------------------------------------- posar i scener
+# Knele, setje seg og peike, i fire retningar (rad 9 til 12 i arket: ned, opp, venstre,
+# høgre, kolonnane i rekkjefølgja i POSAR). Å liggje og sove er ramma for slått ut (rad 5).
+# Posane blir laga frå ståramma utan arm og stav: overkroppen søkk, og beina blir teikna på nytt.
+POSAR = ("knele", "sitje", "peike")
+POSERAD = 9
+
+# Armen på sida når figuren kneler eller sit: handa kviler på kneet framme.
+ARM_KNE = del_(17, ".....AAaz.......", ".....Aaz........", "....hhj.........")
+# Peike (mot venstre): armen strak fram i skulderhøgd, peikefingeren ytst.
+ARM_PEIKE = del_(13, ".hhhAAAaz.......", "...jaaaz........")
+
+
+def _senk(g, til, n):
+    """Ny ramme med radene 0 til og med til flytte n rader ned."""
+    ny = tom()
+    for y in range(til + 1):
+        if y + n < H: ny[y + n] = g[y][:]
+    return ny
+
+
+def _strompe(u, rad):
+    """Leggane i strømpefarge for knebukser."""
+    return rad.replace("B", "V").replace("b", "V").replace("n", "v") if u.get("strompe") else rad
+
+
+def _breiare(rad):
+    """Skjørtet éin piksel breiare til kvar side (eit fang eller eit skjørt som ligg på golvet)."""
+    r = list(rad)
+    i = next(x for x, c in enumerate(r) if c != "."); j = max(x for x, c in enumerate(r) if c != ".")
+    if i > 0: r[i - 1] = r[i]
+    if j < W - 1: r[j + 1] = r[j]
+    return "".join(r)
+
+
+def poseramme(u, d, namn):
+    """Teiknrutenett for ein pose. d 0 ned, 1 opp, 2 venstre."""
+    g = samanset(u, d, 0, "pose")
+    type_ = ("kort" if u.get("kort") else "kjole") if u.get("kjole") else "bukse"
+    kjole = type_ != "bukse"
+    rad = lambda y: "".join(g[y])
+    if d == 2:
+        if namn == "peike":
+            legg(g, ARM_PEIKE)
+            return g
+        if namn == "knele":                                    # overkroppen søkk tre rader
+            ny = _senk(g, 16 if kjole else 17, 3)
+            if kjole:                                          # skjørtet ligg utover golvet
+                fang = rad(16).replace("h", "D").replace("j", "d")
+                legg(ny, (20, [fang, "...DDdddddddcc..", "..DDDddddddddcc."]))
+            else:                                              # kneet fram, det andre kneet i golvet bak
+                legg(ny, (20, ["...BBnbbbbbn....", _strompe(u, "...Bbn...bbn...."), "..FFFf..BbbVvff."
+                               if u.get("strompe") else "..FFFf..Bbbbbff."]))
+            legg(ny, ARM_KNE)
+            return ny
+        ny = _senk(g, 16 if kjole else 17, 2)                  # sit: låret fram, leggen ned
+        if kjole: legg(ny, (19, ["..DDDDddddddc...", "..DDDDdddddc....", "..DDdc..........", ".FFf............"]))
+        else: legg(ny, (19, ["..BBBBbbbbbn....", "..Bbbbbbbbbn....", _strompe(u, "..Bbn..........."), ".FFFf..........."]))
+        legg(ny, ARM_KNE, -1)
+        return ny
+    # Framanfrå og bakfrå
+    hofte = 16 if kjole else 17
+    if namn == "peike":                                        # høgre arm (til høgre i biletet) ut til sida
+        for y in range(13, hofte + 2):
+            for x in (12, 13):
+                if g[y][x] in "Aazhj": g[y][x] = "."
+        ny = tom()
+        for y in range(H):
+            for x in range(1, W): ny[y][x - 1] = g[y][x]
+        _set(ny, 13, 11, "Aahh"); _set(ny, 14, 11, "az")
+        if d == 0: _set(ny, 14, 13, "j")
+        return ny
+    n = 3 if namn == "knele" else 2
+    ny = _senk(g, hofte, n)
+    if kjole:
+        skjort = [rad(19), rad(20), rad(21)]
+        if namn == "knele":                                    # skjørtet ligg utover golvet, ingen sko
+            legg(ny, (20, [skjort[0], skjort[1], _breiare(skjort[2])]))
+        else:                                                  # fanget breiare, skoa under
+            legg(ny, (19, [_breiare(skjort[0]), skjort[1], skjort[2], rad(22)]))
+        return ny
+    if namn == "knele":
+        # Framanfrå: knea i golvet, sålane stikk ut på kvar side. Bakfrå: leggane og skosålane.
+        bein = ["...BBbbbbbbnn...", "..fBBbn..bbnnf.."] if d == 0 else ["....Bbn..bbn....", "...fFFf..fFFf..."]
+        legg(ny, (21, bein))
+    else:
+        if d == 0:                                             # hendene på knea
+            _set(ny, 19, 2, "Aa"); _set(ny, 19, 12, "az")
+            legg(ny, (20, ["..hhBBBbBBBbhj..", _strompe(u, "....Bbn..bbn...."), "...FFFf..FFFf..."]))
+        else:
+            legg(ny, (20, ["...BBbbn.Bbbn...", _strompe(u, "...Bbn....bbn..."), "...fff....fff..."]))
+    return ny
+
+
 def bilete(u):
     """Arket: rad 0 til 3 gange (ned, opp, venstre, høgre), rad 4 kamp (åtak, galdr, skadd),
-    rad 5 svak (på kne) og slått ut (24 x 16, nedst i ruta), rad 6 og 7 standardkjensler."""
+    rad 5 svak (på kne) og slått ut (24 x 16, nedst i ruta), rad 6 og 7 standardkjensler,
+    rad 8 tom (eigne kjensler i handteikna ark), rad 9 til 12 posane (ned, opp, venstre, høgre)."""
     p = palett(u)
-    im = Image.new("RGBA", (W * 3, H * 8), (0, 0, 0, 0))
+    im = Image.new("RGBA", (W * 3, H * (POSERAD + 4)), (0, 0, 0, 0))
     def teikn(g, x0, y0):
         for y, rad in enumerate(g):
             for x, c in enumerate(rad):
@@ -941,6 +1036,11 @@ def bilete(u):
     teikn(ramme(u, 2, 0, "svak"), 0, 5 * H)
     teikn(ute(u), W, 5 * H + 8)
     for n, namn in enumerate(STANDARDKJENSLER): teikn(kjensle(u, namn), (n % 3) * W, (6 + n // 3) * H)
+    for dir in range(3):
+        for n, namn in enumerate(POSAR): teikn(omriss(poseramme(u, dir, namn)), n * W, (POSERAD + dir) * H)
+    for n in range(len(POSAR)):   # høgre er venstre spegla
+        rute = im.crop((n * W, (POSERAD + 2) * H, n * W + W, (POSERAD + 3) * H)).transpose(Image.FLIP_LEFT_RIGHT)
+        im.paste(rute, (n * W, (POSERAD + 3) * H))
     return im
 
 
