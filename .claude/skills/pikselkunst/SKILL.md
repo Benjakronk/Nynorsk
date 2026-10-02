@@ -130,6 +130,14 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   `bakgrunn` på kartet i `js/rpg/data.js`.
 - Vatn og steingard tilpassar seg naboane og blir teikna i `js/rpg/pikslar.js`
   (`vatn`, `steingard`), ikkje som faste bilete.
+- Stiar (`=`) blir teikna som i The Minish Cap (sjå `forhand/referansar/tmc-sti-naer1.png`):
+  `Pikslar.sti(felt, x, y)` gir eit lag over grasflisa, frå `stifelt()` i `motor.js`. Kanten er eit glatt
+  felt over kartpikslane (delen veg i ein kvadrat på 24 pikslar), lese med ei lita forskyving, så svingane
+  blir runde, kryssa får plassar og stien ikkje følgjer rutenettet. Ved dører, murar, bruer og kartkanten
+  ligg stien fast. Sonene frå graset og inn: lyst, kort gras, strå som lener seg inn over stien, så oker
+  med ovale søkk og lyse prikkar (`STIFARGE`, lys og mørk bakke). Grasfliser inntil ein sti får òg laget.
+  Breidd lagar ein i kartet: gjer gras om til `=` (to fliser for hovudvegar, plassar framfor dører).
+  Sjå med `skjermbilete.py namn kart=bygda m=1 x=20 y=10 stemning=ingen`.
 - Vatn (`~`) blir teikna som i Final Fantasy VI (Lete-elva, sjå `forhand/referansar/elv-ark.png`):
   `Pikslar.vatn(t, felt, x, y)` får eit vassfelt frå motoren (`vassfelt()` i `motor.js`). Strandkanten
   er eit glatt felt over kartpikslane (delen land i ein kvadrat på 32 pikslar rundt kvar piksel, med

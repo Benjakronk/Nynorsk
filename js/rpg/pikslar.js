@@ -167,10 +167,12 @@ window.Pikslar = (function () {
       }
     },
     "_": (g, t, v) => { const r = R_.sand; px(g, 0, 0, r[2], S, S); for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) { const h = hash(x + v * 16, y, 41); if (h < 0.1) px(g, x, y, r[1]); else if (h > 0.9) px(g, x, y, r[3]); } },
+    // Sti utan naboar (kartet teiknar stiar med Pikslar.sti): tråkka oker med eit søkk og ein prikk.
     "=": (g, t, v) => {
-      const r = R_.jord; px(g, 0, 0, r[2], S, S);
-      for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) { const h = hash(x + v * 16, y, 51); if (h < 0.09) px(g, x, y, r[1]); else if (h > 0.93) px(g, x, y, r[3]); }
-      spreidd(v, 52, 3, (x, y) => { px(g, x, y, R_.stein[3], 2, 1); px(g, x, y + 1, R_.stein[1], 2, 1); });
+      const p = STIFARGE[golvNo === "," ? "mork" : "lys"]; px(g, 0, 0, p.botn, S, S);
+      const x = 3 + v * 2, y = 4 + (v % 2) * 5;
+      px(g, x + 1, y, p.sokk, 4, 1); px(g, x, y + 1, p.sokk, 1, 1); px(g, x + 1, y + 1, p.sokkMork, 4, 1); px(g, x + 5, y + 1, p.sokk, 1, 1); px(g, x + 1, y + 2, p.sokkKant, 4, 1);
+      px(g, 12 - v * 2, 13 - (v % 2) * 9, p.prikk, 1, 1);
     },
     "^": (g, t, v) => {
       const r = R_.stein; px(g, 0, 0, r[1], S, S);
@@ -398,7 +400,7 @@ window.Pikslar = (function () {
   const cache = new Map();
   function flis(teikn, t = 0, x = 0, y = 0, golv = "P") {
     const v = VARIANT.has(teikn) || VARIANT_EKSTRA.has(teikn) ? Math.floor(hash(x, y, 7) * 4) : 0;
-    const gl = "LnKkzb.#toh+(".includes(teikn) ? golv : "";
+    const gl = "LnKkzb.#toh+(=".includes(teikn) ? golv : "";
     const nokkel = `${teikn}${gl}:${v}:${ANIM.has(teikn) ? Math.floor(t / 150) % 16 : 0}`;
     if (cache.has(nokkel)) return cache.get(nokkel);
     const c = lerret(S), g = c.getContext("2d");
@@ -640,14 +642,14 @@ window.Pikslar = (function () {
   }
 
   /* ---------- Kantar mellom fliser ----------
-     Gras veks inn over vegen og sanda, og vatnet får strandkant med skum.
+     Gras veks inn over sanda (stiane: sjå Pikslar.sti), og vatnet får strandkant med skum.
      Motoren teiknar kantane oppå flisa, på sidene der naboen er av eit anna slag. */
   const KLASSE = { ".": "gras", ",": "villgras", '"': "gras", "o": "gras", "h": "gras", "x": "gras", "|": "gras", "j": "gras", "#": "gras", "t": "gras", "=": "veg", "_": "sand", "~": "vatn" };
   const klasse = teikn => KLASSE[teikn] || null;
-  /* Hjørne på ein sti (veg «=»), teikna med grasflisa til naboen (teikn), så tekstur og farge
+  /* Hjørne på ei sandstripe (stiane har kanten sin i Pikslar.sti), teikna med grasflisa til naboen (teikn), så tekstur og farge
      stemmer. hj: 0 nv, 1 na, 2 sa, 3 sv (kva hjørne). ytre: gras på dei to sidene som møtest
      (ei yttersving eller ei blindgate): ei skrå grastunge over hjørnet. Elles ei innersving
-     (sti på begge sidene, gras på skrå): ein liten, rund grastue i hjørnet. */
+     (sand på begge sidene, gras på skrå): ein liten, rund grastue i hjørnet. */
   function stiHjorne(teikn, hj, ytre, v, golv) {
     const k = `stihj:${teikn}:${hj}:${ytre ? 1 : 0}:${v}`;
     if (cache.has(k)) return cache.get(k);
@@ -700,6 +702,148 @@ window.Pikslar = (function () {
     g.translate(8, 8); g.rotate({ n: 0, e: Math.PI / 2, s: Math.PI, w: -Math.PI / 2 }[side]); g.drawImage(t, -8, -8);
     cache.set(k, c);
     return c;
+  }
+
+  /* ---------- Stiar som i The Minish Cap ----------
+     Pikslar.sti(felt, tx, ty) gir eit lag med stien over grasflisa på (tx, ty), eller null.
+     felt kjem frå motoren: { id, w, h, golv, slag(tx, ty) → "veg", "gras", "villgras" eller null
+     (anna: hus, dører, vatn, sand), fast(tx, ty) → om flisa held stien på plass (dører, murar, bruer) }.
+
+     - Stien er tråkka jord i gyllen oker, i slekt med graset (låg kontrast), med mjuke, ovale søkk
+       (mørkare oker med lys nedre kant) og nokre lyse prikkar. Ingen gråstein.
+     - Kanten er eit glatt felt over kartpikslane, som strandkanten (delen veg i ein kvadrat på
+       2 * STI_R pikslar rundt pikselen), så svingane blir runde og kryssa får små plassar av seg sjølv.
+       Feltet blir lese med ei lita forskyving (låg frekvens, opptil STI_FLYT pikslar), så stien ikkje
+       følgjer rutenettet nøyaktig. Ved dører, bruer, murar og kartkanten er forskyvinga null.
+     - Kanten i soner, frå graset og inn: lysare, kort gras, så ei frynse av varme, oransjebrune strå
+       som lener seg inn over stien i ein bølgjande kant. Mot høgt gras (villgras) heng tustene inn over.
+     Laget er gjennomsiktig der graset syner. Motoren teiknar grasflisa under først. */
+  const STI_R = 12, STI_FLYT = 4;
+  const STIFARGE = {
+    // Lys bakke (gras): gyllen oker. Mørk bakke (utmarka): dempa oker som høyrer saman med villgraset.
+    lys: { botn: "#ba9c46", sokk: "#9c823c", sokkMork: "#8a7034", sokkKant: "#c8b05e", prikk: "#d8c47c",
+      straa: ["#7e5426", "#a46c2e", "#c8923e"], gras: ["#68a84a", "#80b854", "#a4c45a"] },
+    // Kvelden trekkjer mykje grønt frå, så den mørke okeren er gulare enn han ser ut utan lys.
+    mork: { botn: "#8c862e", sokk: "#78722a", sokkMork: "#686224", sokkKant: "#9e9840", prikk: "#aea850",
+      straa: ["#5e4418", "#84601c", "#a07a24"], gras: ["#4a823c", "#5e9446", "#7a9c4a"] },
+  };
+  const STIPAKKA = {};
+  for (const [k, p] of Object.entries(STIFARGE)) STIPAKKA[k] = { botn: pakk(p.botn), sokk: pakk(p.sokk), sokkMork: pakk(p.sokkMork), sokkKant: pakk(p.sokkKant),
+    prikk: pakk(p.prikk), straa: p.straa.map(pakk), gras: p.gras.map(pakk) };
+  const VG = R_.villgras.map(pakk);
+  // Kor fri stien er til å flytte seg ved flisa (0 ved dører, murar og kartkanten, 1 elles).
+  function stiFri(felt, tx, ty) {
+    let d = 9;
+    for (let ny = ty - 2; ny <= ty + 2; ny++) for (let nx = tx - 2; nx <= tx + 2; nx++) {
+      const kant = nx <= 0 || ny <= 0 || nx >= felt.w - 1 || ny >= felt.h - 1;
+      if (kant || felt.fast(nx, ny)) d = Math.min(d, Math.max(Math.abs(nx - tx), Math.abs(ny - ty)));
+    }
+    return d <= 1 ? 0 : d === 2 ? 0.5 : 1;
+  }
+  function stiFelt(felt) {
+    const k = "stifelt:" + felt.id;
+    if (cache.has(k)) return cache.get(k);
+    const kx = v => Math.max(0, Math.min(felt.w - 1, v)), ky = v => Math.max(0, Math.min(felt.h - 1, v));
+    const fri = [];
+    for (let y = 0; y < felt.h; y++) { fri.push([]); for (let x = 0; x < felt.w; x++) fri[y].push(stiFri(felt, x, y)); }
+    // Verdien til ei flis i feltet: veg 1, gras 0. Anna (hus, dører, sand) høyrer til stien når
+    // pikselen ligg på ei vegflis (så stien går heilt fram til døra), og til graset elles.
+    const verdi = (x, y, egen) => { const s = felt.slag(kx(x), ky(y)); return s === "veg" ? 1 : s === "gras" || s === "villgras" ? 0 : egen; };
+    function boks(cx, cy, egen) {
+      const R = STI_R, x0 = Math.floor((cx - R) / S), x1 = Math.floor((cx + R - 0.001) / S), y0 = Math.floor((cy - R) / S), y1 = Math.floor((cy + R - 0.001) / S);
+      let a = 0;
+      for (let ny = y0; ny <= y1; ny++) for (let nx = x0; nx <= x1; nx++) {
+        const v = verdi(nx, ny, egen); if (!v) continue;
+        const ox = Math.min(cx + R, nx * S + S) - Math.max(cx - R, nx * S), oy = Math.min(cy + R, ny * S + S) - Math.max(cy - R, ny * S);
+        a += v * ox * oy;
+      }
+      return a / (4 * R * R);
+    }
+    // Fridomen interpolert mellom flismidtane, så forskyvinga er glatt.
+    function friAt(X, Y) {
+      const fx = X / S - 0.5, fy = Y / S - 0.5, ix = Math.floor(fx), iy = Math.floor(fy), u = fx - ix, w = fy - iy;
+      const f = (x, y) => fri[ky(y)][kx(x)];
+      return (f(ix, iy) * (1 - u) + f(ix + 1, iy) * u) * (1 - w) + (f(ix, iy + 1) * (1 - u) + f(ix + 1, iy + 1) * u) * w;
+    }
+    // F: feltet ved kartpikselen (X, Y), lese med forskyving. egen: 1 på vegfliser.
+    function F(X, Y, egen) {
+      const a = STI_FLYT * friAt(X, Y);
+      const dx = a * (vstoy(X / 36, Y / 36, 401) * 2 - 1), dy = a * (vstoy(X / 36, Y / 36, 402) * 2 - 1);
+      return boks(X + 0.5 + dx, Y + 0.5 + dy, egen);
+    }
+    const ut = { F };
+    cache.set(k, ut);
+    return ut;
+  }
+  function sti(felt, tx, ty) {
+    const k = `sti:${felt.id}:${tx}:${ty}`;
+    if (cache.has(k)) return cache.get(k);
+    const SF = stiFelt(felt);
+    const egen = felt.slag(tx, ty) === "veg" ? 1 : 0;
+    const P = STIPAKKA[felt.golv === "," ? "mork" : "lys"];
+    const c = lerret(S), g = c.getContext("2d"), bilde = g.createImageData(S, S), ut = new Uint32Array(bilde.data.buffer);
+    let noko = false;
+    for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
+      const X = tx * S + x, Y = ty * S + y, i = y * S + x;
+      const f = SF.F(X, Y, egen);
+      // Terskelen varierer litt, så kanten ikkje blir ei rett line.
+      const thr = 0.5 + 0.07 * (vstoy(X / 6, Y / 6, 403) - 0.5);
+      const d = (f - thr) * 2 * STI_R;                                  // om lag avstanden til kanten i pikslar (> 0 er sti)
+      if (d < -3.5) continue;
+      // Retninga inn i stien (gradienten), og kva gras som ligg utanfor.
+      const gx = SF.F(X + 1, Y, egen) - SF.F(X - 1, Y, egen), gy = SF.F(X, Y + 1, egen) - SF.F(X, Y - 1, egen);
+      const gl = Math.hypot(gx, gy) || 1, nx = gx / gl, ny = gy / gl;
+      const vill = felt.slag(Math.floor((X - nx * 7) / S), Math.floor((Y - ny * 7) / S)) === "villgras";
+      // Koordinaten langs kanten (for strå og tuster), og kva side graset ligg på.
+      const loddrett = Math.abs(gx) > Math.abs(gy);
+      const langs = loddrett ? Y : X, side = loddrett ? (gx > 0 ? 0 : 1) : (gy > 0 ? 2 : 3);
+      let farge = 0;
+      if (vill) {
+        // Høgt gras heng inn over stien i tuster.
+        if (d < 0) continue;
+        const L = Math.max(1, Math.round(1.5 + Math.sin((langs + side * 5) * 0.9) * 1.2 + hash(langs, side, 404) * 2));
+        if (d < L) farge = d >= L - 1 ? VG[0] : hash(langs, side, 405) > 0.75 && d < 1 ? VG[3] : VG[1];
+      } else {
+        // Strå: kvart strå har rota i graset, ei lengd (1 til 4) og lener seg til éi side (eitt steg
+        // per to pikslar inn over stien). Tette grupper og glisne parti gir ein bølgjande kant.
+        const bolgje = Math.sin(langs * 0.45 + side * 2) * 0.8 + Math.sin(langs * 0.17 + side) * 0.7;
+        const di = Math.floor(d);
+        if (d < 0) {
+          // Lyst, kort gras næmast stien, og mørke røter under nokre strå.
+          if (d >= -1 && hash(langs, side, 407) > 0.7) farge = P.straa[0];
+          else farge = d >= -2 ? P.gras[1] : hash(X, Y, 408) > 0.5 ? P.gras[0] : 0;
+        } else for (let o = -2; o <= 2 && !farge; o++) {
+          const rot = langs - o;
+          if (hash(rot, side, 414) < 0.24 - bolgje * 0.15) continue;          // ingen strå her
+          const gront = hash(rot, side, 416) > 0.65;
+          const L = Math.min(gront ? 2 : 4, 1 + Math.max(0, Math.round(0.8 + bolgje + hash(rot, side, 406) * 1.5)));
+          const lean = Math.floor(hash(rot, side, 415) * 3) - 1;
+          if (di < L && o === lean * Math.floor((di + 1) / 2)) {
+            farge = gront ? (di >= L - 1 ? P.gras[2] : P.gras[1]) : di >= L - 1 ? P.straa[2] : P.straa[1];
+          }
+        }
+      }
+      if (!farge && d >= 0) {
+        // Sjølve stien: botn, mjuke, ovale søkk (mørk midte, lys nedre kant) og lyse prikkar.
+        farge = P.botn;
+        const cx = Math.floor(X / 16), cy = Math.floor(Y / 12);
+        if (hash(cx, cy, 409) < 0.45) {
+          const w = 5 + Math.floor(hash(cx, cy, 410) * 4), h = w > 6 ? 4 : 3;
+          const ox = cx * 16 + 1 + Math.floor(hash(cx, cy, 411) * (14 - w)), oy = cy * 12 + 1 + Math.floor(hash(cx, cy, 412) * (10 - h));
+          const lx = X - ox, ly = Y - oy, ex = (lx - (w - 1) / 2) / (w / 2), ey = (ly - (h - 1) / 2) / (h / 2);
+          if (lx >= 0 && ly >= 0 && lx < w && ly < h && ex * ex + ey * ey <= 1.1) {
+            const kantx = Math.abs(ex) > 0.62;
+            farge = ly === h - 1 ? P.sokkKant : ly === 0 || kantx ? P.sokk : P.sokkMork;
+          }
+        }
+        if (farge === P.botn && d >= 2 && hash(X, Y, 413) < 0.012) farge = P.prikk;
+      }
+      if (farge) { ut[i] = farge; noko = true; }
+    }
+    let svar = null;
+    if (noko) { g.putImageData(bilde, 0, 0); svar = c; }
+    cache.set(k, svar);
+    return svar;
   }
 
   /* ---------- Figurar (16 × 24) ---------- */
@@ -1105,6 +1249,6 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, kant, stiHjorne, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
+  return { S, FW, FH, flis, topp, kant, stiHjorne, sti, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
     hent, klar, forhandslast, alleBilete, ILD, SETE, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
 })();

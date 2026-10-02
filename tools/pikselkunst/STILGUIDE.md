@@ -197,6 +197,16 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
 
 ## Hus, dører og stiar
 
+- Stiar som i The Minish Cap (`Pikslar.sti`): tråkka jord i gyllen oker som høyrer saman med graset
+  (låg kontrast), aldri raudbrun og aldri med gråstein. Overflata har mjuke, ovale søkk (mørk midte,
+  lys nedre kant) og nokre få lyse prikkar. På mørk bakke (utmarka, kveld) er okeren dempa og gul nok
+  til å bli brun, ikkje raud, i kveldslyset.
+- Kanten i soner: lyst, kort gras næmast, så ei frynse av små, varme oransjebrune (og nokre gulgrøne)
+  strå som lener seg inn over stien i ein bølgjande kant. Mot høgt gras heng tustene inn over.
+- Kanten er fri: runde svingar og plassar i kryssa (aldri 90 grader), og han kan flytte seg ei halv
+  flis bort frå rutenettet, men ikkje ved dører, porter, bruer og kartkanten.
+- Hovudvegar er to fliser breie (gjennom bygda, over tunet), med små plassar framfor dører og porten.
+  Stiar i utmarka er éi flis.
 - Alle dører skal ha sti fram til seg frå vegnettet. Talmerket framfor døra blir
   sti automatisk når det ligg inntil ein sti.
 - Variér inngangane: somme hus har døra på baksida (bislag som stikk opp bak

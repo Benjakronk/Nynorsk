@@ -606,6 +606,22 @@ window.Motor = (function () {
     return kart.vassfelt;
   }
 
+  /* Stifeltet til Pikslar.sti: kva slag bakke kvar flis er (veg, gras, villgras, eller null for
+     anna), og kva som held stien på plass (dører, murar, gjerde, bruer, hus, vatn). */
+  function stifelt() {
+    if (kart.stifelt) return kart.stifelt;
+    const slag = (x, y) => {
+      const r = kart.fliser[y]; if (!r || r[x] == null || erVatn(x, y)) return null;
+      const kl = Pikslar.klasse(r[x]);
+      return kl === "veg" || kl === "gras" || kl === "villgras" ? kl : null;
+    };
+    kart.stifelt = {
+      id: kart.id, w: kart.w, h: kart.h, golv: kart.def.golv, slag,
+      fast: (x, y) => { const r = kart.fliser[y]; if (!r || r[x] == null) return true; return slag(x, y) == null || "j|x".includes(r[x]); },
+    };
+    return kart.stifelt;
+  }
+
   /* ---------- Lys: fargerekning som på Super Nintendo ----------
      Final Fantasy VI har lyset mest teikna inn i pikslane. Resten gjer maskinvara: fargerekning
      (color math) som legg til, trekkjer frå eller tek snittet av ein fast farge, med klemming
@@ -1030,16 +1046,33 @@ window.Motor = (function () {
           if (under !== "~") g.drawImage(Pikslar.flis(under, no, x, y, kart.def.golv), sx, sy);
         }
         g.drawImage(Pikslar.vatn(no, vassfelt(), x, y), sx, sy);
-      } else g.drawImage(Pikslar.flis(fk, no, x, y, kart.def.golv), sx, sy);
+      } else if (Pikslar.klasse(c) === "veg") {
+        // Sti (sjå Pikslar.sti): graset under (høgt gras om naboane mest er villgras), og stien
+        // som eit lag over med fri kant.
+        let vill = 0, lag = 0;
+        for (const [, dx, dy] of NABOBIT) { const k = Pikslar.klasse((kart.fliser[y + dy] || [])[x + dx]); if (k === "villgras") vill++; else if (k === "gras") lag++; }
+        g.drawImage(Pikslar.flis(vill > lag ? "," : ".", no, x, y, kart.def.golv), sx, sy);
+        const sl = Pikslar.sti(stifelt(), x, y);
+        if (sl) g.drawImage(sl, sx, sy);
+      } else {
+        g.drawImage(Pikslar.flis(fk, no, x, y, kart.def.golv), sx, sy);
+        // Grasflis ved ein sti: stien kan flytte seg inn på graset, og frynsa ligg her.
+        const sk = Pikslar.klasse(c);
+        if ((sk === "gras" || sk === "villgras") && NABOBIT.some(([, dx, dy]) => Pikslar.klasse((kart.fliser[y + dy] || [])[x + dx]) === "veg")) {
+          const sl = Pikslar.sti(stifelt(), x, y);
+          if (sl) g.drawImage(sl, sx, sy);
+        }
+      }
       // Steingard: muren er ein figur som blir sortert etter djupn
       if (c === "j") {
         const nb = (dx, dy) => (kart.fliser[y + dy] && kart.fliser[y + dy][x + dx]) === "j";
         const maske = (nb(0, -1) ? 1 : 0) | (nb(1, 0) ? 2 : 0) | (nb(0, 1) ? 4 : 0) | (nb(-1, 0) ? 8 : 0);
         naturFig.push({ y: y + 0.003, x, mur: Pikslar.steingard((x * 3 + y) % 3, maske) });
       }
-      // Kantar: gras over veg og sand, og høgt gras (villgras) over alt anna på bakken
+      // Kantar: gras over sand, og høgt gras (villgras) over gras og sand. Stiane har kanten sin i
+      // Pikslar.sti, med soner og frynse som i The Minish Cap.
       const kl = Pikslar.klasse(c);
-      if (kl === "veg" || kl === "sand" || kl === "gras") {
+      if (kl === "sand" || kl === "gras") {
         for (const [side, dx, dy] of KANTSIDER) {
           const n = kart.fliser[y + dy] && kart.fliser[y + dy][x + dx];
           if (n == null) continue;
@@ -1047,9 +1080,9 @@ window.Motor = (function () {
           if (nk === "villgras") g.drawImage(Pikslar.kant("villgras", side, (x * 7 + y * 3) % 4), sx, sy);
           else if (nk === "gras" && kl !== "gras") g.drawImage(Pikslar.kant("gras", side, (x * 7 + y * 3) % 4), sx, sy);
         }
-        // Svingar på stiar og endane på sandstriper: runda med gras, så dei ser naturlege ut og
-        // ikkje teikna med linjal. Ved sjøen kan det eine nabohjørnet vere vatn (enden på ei sandstripe).
-        if (kl === "veg" || kl === "sand") {
+        // Endane på sandstriper: runda med gras, så dei ser naturlege ut og ikkje teikna med linjal.
+        // Ved sjøen kan det eine nabohjørnet vere vatn (enden på ei sandstripe).
+        if (kl === "sand") {
           const nb = (dx, dy) => (kart.fliser[y + dy] || [])[x + dx];
           const grasaktig = n => n != null && (Pikslar.klasse(n) === "gras" || Pikslar.klasse(n) === "villgras");
           const same = n => n != null && Pikslar.klasse(n) === kl;

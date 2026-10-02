@@ -746,3 +746,45 @@ same måte, uansett kven som tek over.
 - **Står att:** Skrenten er låg (3 til 4 pikslar) samanlikna med dei høge berga i FF6. Banda i sjøen er
   vassrette (alle sjøane har land i nord) og følgjer ikkje ei strand som går på skrå. Overgangen mellom
   sandstrand og grasskrent skjer ved flisgrensa.
+
+## Runde 24: stiar som i The Minish Cap
+
+- **Oppdrag:** Stiane (`=`) var raudbrun jord med grå småstein, éi flis breie, med ein mørk graskant per
+  flis og runda hjørne (`stiHjorne`). Dei skal teiknast slik The Minish Cap teiknar vegar og stiar.
+- **Research:** `forhand/referansar/tmc-shf-heil.png` (South Hyrule Field), `tmc-sti-naer1.png`,
+  `tmc-sti-naer2.png` og `z-links-house.png`. Stien i Minish Cap er tråkka jord i gyllen oker som høyrer
+  saman med graset (låg kontrast), med mjuke, ovale søkk og nokre lyse prikkar. Kanten har soner: lyst,
+  kort gras næmast, og ei frynse av små, varme oransjebrune strå som lener seg inn over stien i ein
+  bølgjande kant. Hovudvegane er om lag to fliser breie, kryssa har små plassar, og kanten følgjer ikkje
+  rutenettet.
+- **Gjort:**
+  - `Pikslar.sti(felt, tx, ty)` i `pikslar.js`: stien er eit lag over grasflisa. Kanten er eit glatt felt
+    over kartpikslane, som strandkanten i runde 23: delen veg i ein kvadrat på 24 pikslar rundt pikselen
+    (`STI_R`), så svingane blir runde, indre hjørne fylte og kryssa får små plassar av seg sjølv. Feltet
+    blir lese med ei forskyving på opptil 4 pikslar (låg frekvens, `vstoy`), så stien buktar seg litt
+    bort frå rutenettet. Ved dører, murar, gjerde, bruer, hus, vatn og kartkanten er forskyvinga null
+    (`stiFri`), så stien møter døra og kantdøra rett.
+  - Sonene: lyst, kort gras (to pikslar) og mørke røter, så strå (1 til 4 pikslar) som veks inn over
+    stien og lener seg til éi side, oransjebrune og nokre gulgrøne, i tette grupper og glisne parti.
+    Mot høgt gras (villgras) heng mørke tuster inn over stien i staden.
+  - Overflata: gyllen oker (`STIFARGE.lys`), ovale søkk på 5 til 8 pikslar (mørk midte, lys nedre kant)
+    og glisne lyse prikkar. Ingen gråstein. I utmarka og på vegen (golv `,`) er okeren dempa og gulare
+    (`STIFARGE.mork`), fordi kveldslyset trekkjer mykje grønt frå: han blir brun i kveldslyset, ikkje raud.
+  - `motor.js`: `stifelt()` per kart (slag: veg, gras, villgras eller anna; fast). Vegflisa får grasflisa
+    under (høgt gras om naboane mest er villgras), og grasfliser inntil ein sti får laget òg, så stien kan
+    flytte seg inn på dei. Graskanten og `stiHjorne` gjeld no berre sand. Flisa `=` åleine er ny oker.
+  - Kart (`data.js`, berre gras gjort om til sti): to fliser brei veg gjennom Hovdebygda (rad 10) og
+    over tunet på Åsen (rad 8), plass framfor døra på stova og løa på Åsen, framfor kyrkjedøra (innanfor
+    porten) og utanfor porten, framfor prestegarden, Nedre Hovde og bua. Vegen til Ekset er to fliser brei
+    heile vegen, og på Ekset er vegen frå kanten brei og har ein plass framfor døra. Plass ved setra i
+    utmarka. Ingen merke, dører, folk, kister eller bygg er flytte.
+- **Rundar:** 1) Stråa var lange, tette strekar som såg ut som ein kam: glisnare strå som lener seg, og
+  grupper med ulik lengd. 2) Søkka var tynne strekar: ovale søkk med mørk midte og lys nedre kant.
+  3) Vegflisa i utmarka hadde lågt gras under, så rutenettet synte som lyse rektangel langs stien: høgt
+  gras under når naboane er villgras. 4) Okeren vart raud i kveldslyset: gulare, dempa oker på mørk bakke.
+- **Vurdert:** Før/etter (`forhand/skjerm/for24-*` og `e24-*`, med og utan lys): Åsen, Hovdebygda,
+  utmarka, vegen og Ekset. Stiane er gyllen oker i morgonlyset som i Minish Cap, med lys graskant og ei
+  frynse av strå, runde svingar og plassar i kryssa. Hovudvegane er breie, og kanten buktar seg litt.
+  I kveldslyset er stien brun mot det mørke graset.
+- **Står att:** Stråa følgjer retninga til kanten i fire retningar (ikkje på skrå i svingane). Søkka ligg
+  i eit fast rutenett over kartet. Stiane har ikkje skrent eller trapp der dei går ned mot vatnet.
