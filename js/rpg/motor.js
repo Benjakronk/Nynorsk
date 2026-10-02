@@ -581,6 +581,7 @@ window.Motor = (function () {
   const KANTSIDER = [["n", 0, -1], ["s", 0, 1], ["w", -1, 0], ["e", 1, 0]];
   const NABOBIT = [[1, 0, -1], [2, 1, 0], [4, 0, 1], [8, -1, 0], [16, 1, -1], [32, 1, 1], [64, -1, 1], [128, -1, -1]];
   /* Vatn: «~», og skog på kanten av kartet som grensar til vatn (så trea ikkje står i vatnet). */
+  const erVatnTeikn = c => c === "~";
   function erVatn(x, y) {
     const r = kart.fliser[y]; if (!r) return false;
     const c = r[x];
@@ -1036,15 +1037,18 @@ window.Motor = (function () {
           if (nk === "villgras") g.drawImage(Pikslar.kant("villgras", side, (x * 7 + y * 3) % 4), sx, sy);
           else if (nk === "gras" && kl !== "gras") g.drawImage(Pikslar.kant("gras", side, (x * 7 + y * 3) % 4), sx, sy);
         }
-        // Svingar på stiar: runda med gras, så stien ser tråkka ut og ikkje teikna med linjal.
-        if (kl === "veg") {
+        // Svingar på stiar og endane på sandstriper: runda med gras, så dei ser naturlege ut og
+        // ikkje teikna med linjal. Ved sjøen kan det eine nabohjørnet vere vatn (enden på ei sandstripe).
+        if (kl === "veg" || kl === "sand") {
           const nb = (dx, dy) => (kart.fliser[y + dy] || [])[x + dx];
           const grasaktig = n => n != null && (Pikslar.klasse(n) === "gras" || Pikslar.klasse(n) === "villgras");
-          const vegaktig = n => n != null && Pikslar.klasse(n) === "veg";
+          const same = n => n != null && Pikslar.klasse(n) === kl;
+          const open = n => grasaktig(n) || (kl === "sand" && n != null && erVatnTeikn(n));
           [[0, -1, -1], [1, 1, -1], [2, 1, 1], [3, -1, 1]].forEach(([hj, dx, dy]) => {
             const sida = nb(dx, 0), opp = nb(0, dy), skra = nb(dx, dy), v = (x * 5 + y * 3 + hj) % 4;
-            if (grasaktig(sida) && grasaktig(opp)) g.drawImage(Pikslar.stiHjorne(opp, hj, true, v, kart.def.golv), sx, sy);
-            else if (vegaktig(sida) && vegaktig(opp) && grasaktig(skra)) g.drawImage(Pikslar.stiHjorne(skra, hj, false, v, kart.def.golv), sx, sy);
+            if (open(sida) && open(opp) && (grasaktig(sida) || grasaktig(opp)))
+              g.drawImage(Pikslar.stiHjorne(grasaktig(opp) ? opp : sida, hj, true, v, kart.def.golv), sx, sy);
+            else if (same(sida) && same(opp) && grasaktig(skra)) g.drawImage(Pikslar.stiHjorne(skra, hj, false, v, kart.def.golv), sx, sy);
           });
         }
       }
