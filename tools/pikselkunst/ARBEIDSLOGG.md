@@ -474,3 +474,41 @@ same måte, uansett kven som tek over.
   Svarte klede (presten, den framande) gøymer armen i sidekneling.
 - **Står att:** Ein eigen sitjepose på golvet (med beina i kross) og ein liggjande pose sett
   ovanfrå i senga. Posar i kampscena er ikkje i bruk.
+
+## Runde 18: knele og sitje som syner
+
+- **Frå brukaren:** Ein som ser figuren i spelet, skal straks sjå om han står, kneler eller sit,
+  frå alle fire retningar. I runde 16 låg posane berre to til tre pikslar lågare framanfrå,
+  knele og sitje var nesten like bakfrå, og armen forsvann i sidekneling i svarte klede.
+  (Runde 17 er nærbileta, som vart laga samstundes.)
+- **Research:** Terra og Celes i Final Fantasy VI (`ff6fig-terra2.png`, `ff6fig-celes.png`):
+  knelande framanfrå søkk hovudet om lag fire rader, og silhuetten blir ein trapes som er
+  breiast nedst (knea ut, hendene på låra). Bakfrå kneler Celes med skjørtet utover som ei klokke.
+- **Gjort:**
+  - `figur.py` (`poseramme()`, `BEIN_FRAMME`, `BEIN_SIDE`, `SOKK`): framanfrå og bakfrå søkk
+    hovudet tre rader når figuren sit og fem når han kneler. Den som kneler, lener seg fram
+    (overkroppen ei rad kortare, blikket ned), med eitt kne i golvet og det andre bøygd fram
+    med handa på. Den som sit, har korte, lyse lår med hendene på knea og leggane i skugge.
+    Bakfrå: lyse lærsålar under den som kneler, smale leggar og hælar under setet til den som
+    sit, og albogane (ikkje hendene) ved sida. Skjørt: klokke utover golvet med tåa eller
+    sålane synlege når ho kneler, fang breiast og skjørtet smalare under setet når ho sit.
+    Frå sida søkk kneling fire rader (sitjing tre), og armen til kneet får ein skuggekant mot
+    kroppen (`_legg_arm`), så han syner i svarte klede.
+  - Ivar og huldra (`ivar_figur.py`, `huldra_figur.py`, ny hjelpar `set_saman` og `ned_blikk` i
+    `handfigur.py`): same mål, teikna for hand frå rammene deira.
+  - `figur.py ark` lagar no òg `forhand/figurar-posar.png`: stå, knele og sitje i tre retningar
+    for alle figurane.
+  - Rad 0 til 8 og peike er sjekka piksel for piksel mot arka før runden: like for alle 22.
+- **Rundar:** 1) Første utkast: knelinga framanfrå var eit virvar av bein, presten mista
+  pipekragen (rada med kragen vart hoppa over) og sidekneling bøygde hovudet ned i kragen.
+  2) Kragerada med, større kne, lyse lår og mørke leggar når ein sit, ingen hender bakfrå når
+  ein sit. 3) Presten bakfrå var berre hovud og krage over ein liten svart klump: skjørtet tek
+  no to rader og overkroppen fire, med lyse sålar under. 4) Kneling frå sida éi rad lågare
+  enn sitjing.
+- **Vurdert i spelet:** Presten kneler tydeleg ved altarringen (bøygd hovud, krage, svart
+  kjole med sålar under). Ivar sit og kneler tydeleg i alle retningar i stova. Syster sit ved
+  langbordet og er tre rader lågare enn når ho står, men ho er sett bakfrå framfor benken, og
+  utan noko under seg les ho mest som ein liten figur.
+- **Står att:** Ein sitjepose på golvet (beina i kross) krev ein ny kolonne i arket og endringar i
+  `POSAR` (data.js) og `ARKPOSAR` (pikslar.js). Syster kunne sitje på benken eller kubbestolen
+  (eller sjå mot sida), så setet syner. Ein liggjande pose sett ovanfrå i senga.

@@ -14,7 +14,8 @@ Det vi har lært av referansane (sjå ARBEIDSLOGG.md, runde 6):
 - Gange: tre rammer per retning (stå, steg, steg). Retning høgre er spegla.
 
   python tools/pikselkunst/figur.py alle          skriv bilete/spel/figurar/<id>.png
-  python tools/pikselkunst/figur.py ark           kontaktark i forhand/figurar-ark.png
+  python tools/pikselkunst/figur.py ark           kontaktark i forhand/figurar-ark.png og
+                                                  posane i forhand/figurar-posar.png
   python tools/pikselkunst/figur.py ivar bonde    berre desse
 
 Arket er 48 x 312: kolonnane er rammene (stå, steg 1, steg 2), rad 0 til 3 er
@@ -927,26 +928,39 @@ def kjensle(u, namn):
 # Knele, setje seg og peike, i fire retningar (rad 9 til 12 i arket: ned, opp, venstre,
 # høgre, kolonnane i rekkjefølgja i POSAR). Å liggje og sove er ramma for slått ut (rad 5).
 # Posane blir laga frå ståramma utan arm og stav: overkroppen søkk, og beina blir teikna på nytt.
+# Kvar pose skal lesast på silhuetten åleine (sjå forhand/figurar-posar.png).
 POSAR = ("knele", "sitje", "peike")
 POSERAD = 9
 
-# Armen på sida når figuren kneler eller sit: handa kviler på kneet framme.
-ARM_KNE = del_(17, ".....AAaz.......", ".....Aaz........", "....hhj.........")
 # Peike (mot venstre): armen strak fram i skulderhøgd, peikefingeren ytst.
 ARM_PEIKE = del_(13, ".hhhAAAaz.......", "...jaaaz........")
 
+# Kor mykje hovudet og overkroppen søkk (rader). Dei må skilje seg godt frå ståande på 16 x 24:
+# den som sit, er tre rader lågare, og den som kneler, fem (framanfrå og bakfrå, med bøygd hovud).
+# Frå sida søkk den som sit tre rader og den som kneler fire.
+SOKK = {"sitje": 3, "knele": 5}
 
-def _senk(g, til, n):
-    """Ny ramme med radene 0 til og med til flytte n rader ned."""
-    ny = tom()
-    for y in range(til + 1):
-        if y + n < H: ny[y + n] = g[y][:]
-    return ny
-
-
-def _strompe(u, rad):
-    """Leggane i strømpefarge for knebukser."""
-    return rad.replace("B", "V").replace("b", "V").replace("n", "v") if u.get("strompe") else rad
+# Beina framanfrå og bakfrå (rad 20 til 22) for figurar i bukse. Kneling: eitt kne i golvet og
+# det andre bøygd fram (til venstre i biletet framanfrå, med handa på kneet). Sitjing framanfrå:
+# låra blir korte og lyse (ovanfrå), knea kjem fram under hendene og leggane går i skugge ned
+# til skoa. Bakfrå: den som kneler, viser den lyse lærsålen (C, N) på foten i golvet, den som
+# sit, viser leggane og hælane under setet.
+# U, M og X er leggen (lys, mellom, skugge): strømper i knebukser, elles buksefargen.
+BEIN_FRAMME = {
+    ("knele", 0): [".BBBnbbbbbbnaz..", ".UUMX..Bbbn.hj..", ".FFFf..bnnn....."],
+    ("knele", 1): ["..hhBBbbbbbnhj..", "..UMX...Bbbn....", ".NCCN....fff...."],
+    ("sitje", 0): ["..ahhBBbBBBhjz..", "...MMXX.MMXX....", "...FFFf.FFFf...."],
+    ("sitje", 1): ["..BBBBbbbbbbnn..", "....XMX..XMX....", "....ff....ff...."],
+}
+# Armen på sida (mot venstre) når figuren kneler eller sit: handa kviler på kneet framme.
+# Rader etter at overkroppen har sokke tre rader.
+ARM_KNE = del_(16, ".....AAaz.......", ".....AAz........", "....AAz.........", "...hhj..........")
+# Beina frå sida (rad 20 til 22). Kneling: kneet fram og foten i golvet framme, det andre kneet
+# i golvet og leggen bak. Sitjing: låret vassrett fram, leggen ned og foten fram.
+BEIN_SIDE = {
+    "knele": ["...BBBbbbbbn....", "...UMX..nbbn....", "..FFFf..BbbUXff."],
+    "sitje": ["..BBBBbbbbbbn...", "..UMX...........", ".FFFf..........."],
+}
 
 
 def _breiare(rad):
@@ -958,62 +972,120 @@ def _breiare(rad):
     return "".join(r)
 
 
+def _kopi(ny, g, fra, til):
+    """Legg rad fra frå g inn i rad til i ny (berre fargar, ikkje tomme pikslar)."""
+    for x, c in enumerate(g[fra]):
+        if c != "." and 0 <= til < H: ny[til][x] = c
+
+
+def _ned_blikk(g, fra, til):
+    """Auga ser ned (bøygd hovud): øvre halvdelen av auga blir hud."""
+    for y in range(fra, til):
+        for x in range(W):
+            if g[y][x] == "e" and g[y + 1][x] == "e": g[y][x] = "h"
+
+
+def _legg_arm(g, arm):
+    """Legg armen på sida og skil han frå kroppen med ein skuggekant: pikselen bak armen (til
+    høgre) blir den mørkaste tonen. Utan dette forsvinn armen i svarte klede og i jakka."""
+    rad0, rader = arm
+    for i, r in enumerate(rader):
+        y = rad0 + i
+        xs = [x for x, c in enumerate(r) if c != "."]
+        for x in xs: g[y][x] = r[x]
+        bak = max(xs) + 1
+        if bak < W and g[y][bak] in "AaDdPp": g[y][bak] = "c" if g[y][bak] in "Dd" else "p" if g[y][bak] in "Pp" else "z"
+
+
+def _bein(u, rader):
+    """Leggen (U, M, X) i strømpefarge for knebukser, elles i buksefargen."""
+    t = {"U": "V", "M": "V", "X": "v"} if u.get("strompe") else {"U": "B", "M": "b", "X": "n"}
+    return ["".join(t.get(c, c) for c in r) for r in rader]
+
+
 def poseramme(u, d, namn):
     """Teiknrutenett for ein pose. d 0 ned, 1 opp, 2 venstre."""
     g = samanset(u, d, 0, "pose")
     type_ = ("kort" if u.get("kort") else "kjole") if u.get("kjole") else "bukse"
     kjole = type_ != "bukse"
     rad = lambda y: "".join(g[y])
+    if namn == "peike": return _peike(g, d, kjole)
+    n = SOKK[namn]
+    ny = tom()
     if d == 2:
-        if namn == "peike":
-            legg(g, ARM_PEIKE)
-            return g
-        if namn == "knele":                                    # overkroppen søkk tre rader
-            ny = _senk(g, 16 if kjole else 17, 3)
-            if kjole:                                          # skjørtet ligg utover golvet
-                fang = rad(16).replace("h", "D").replace("j", "d")
-                legg(ny, (20, [fang, "...DDdddddddcc..", "..DDDddddddddcc."]))
-            else:                                              # kneet fram, det andre kneet i golvet bak
-                legg(ny, (20, ["...BBnbbbbbn....", _strompe(u, "...Bbn...bbn...."), "..FFFf..BbbVvff."
-                               if u.get("strompe") else "..FFFf..Bbbbbff."]))
-            legg(ny, ARM_KNE)
-            return ny
-        ny = _senk(g, 16 if kjole else 17, 2)                  # sit: låret fram, leggen ned
-        if kjole: legg(ny, (19, ["..DDDDddddddc...", "..DDDDdddddc....", "..DDdc..........", ".FFf............"]))
-        else: legg(ny, (19, ["..BBBBbbbbbn....", "..Bbbbbbbbbn....", _strompe(u, "..Bbn..........."), ".FFFf..........."]))
-        legg(ny, ARM_KNE, -1)
+        # Frå sida: overkroppen søkk tre rader. Den som kneler, lener seg fram (kortare overkropp)
+        # og søkk fire rader, med blikket ned.
+        rader = {16: 12, 17: 13, 18: 15, 19: 16} if namn == "knele" else {y + 3: y for y in range(12, 17)}
+        for t, f in rader.items(): _kopi(ny, g, f, t)
+        if kjole: legg(ny, (20, _side_skjort(g, namn)))
+        else: legg(ny, (20, _bein(u, BEIN_SIDE[namn])))
+        hn = 4 if namn == "knele" else 3
+        for y in range(0, 12): _kopi(ny, g, y, y + hn)
+        if namn == "knele": _ned_blikk(ny, hn, 12 + hn)
+        _legg_arm(ny, ARM_KNE)
         return ny
-    # Framanfrå og bakfrå
-    hofte = 16 if kjole else 17
-    if namn == "peike":                                        # høgre arm (til høgre i biletet) ut til sida
-        for y in range(13, hofte + 2):
-            for x in (12, 13):
-                if g[y][x] in "Aazhj": g[y][x] = "."
-        ny = tom()
-        for y in range(H):
-            for x in range(1, W): ny[y][x - 1] = g[y][x]
-        _set(ny, 13, 11, "Aahh"); _set(ny, 14, 11, "az")
-        if d == 0: _set(ny, 14, 13, "j")
-        return ny
-    n = 3 if namn == "knele" else 2
-    ny = _senk(g, hofte, n)
-    if kjole:
-        skjort = [rad(19), rad(20), rad(21)]
-        if namn == "knele":                                    # skjørtet ligg utover golvet, ingen sko
-            legg(ny, (20, [skjort[0], skjort[1], _breiare(skjort[2])]))
-        else:                                                  # fanget breiare, skoa under
-            legg(ny, (19, [_breiare(skjort[0]), skjort[1], skjort[2], rad(22)]))
-        return ny
-    if namn == "knele":
-        # Framanfrå: knea i golvet, sålane stikk ut på kvar side. Bakfrå: leggane og skosålane.
-        bein = ["...BBbbbbbbnn...", "..fBBbn..bbnnf.."] if d == 0 else ["....Bbn..bbn....", "...fFFf..fFFf..."]
-        legg(ny, (21, bein))
-    else:
-        if d == 0:                                             # hendene på knea
-            _set(ny, 19, 2, "Aa"); _set(ny, 19, 12, "az")
-            legg(ny, (20, ["..hhBBBbBBBbhj..", _strompe(u, "....Bbn..bbn...."), "...FFFf..FFFf..."]))
+    # Framanfrå og bakfrå.
+    if namn == "sitje":
+        for y in range(0, 16): _kopi(ny, g, y, y + n)
+        if kjole:
+            fang = list(rad(17))                               # skjørtet over fanget, med armane
+            for x in (2, 3, 12, 13): fang[x] = g[15][x] if g[15][x] != "." else fang[x]
+            ny[19] = fang
+            legg(ny, (20, _framme_skjort(g, d, "sitje")))
         else:
-            legg(ny, (20, ["...BBbbn.Bbbn...", _strompe(u, "...Bbn....bbn..."), "...fff....fff..."]))
+            _kopi(ny, g, 16, 19)
+            legg(ny, (20, _bein(u, BEIN_FRAMME[("sitje", d)])))
+            if d == 1: ny[19][2], ny[19][13] = ".", "."                 # albogane, hendene er på knea
+        return ny
+    # Kneling: hovudet bøygt ned over skuldrene, overkroppen kortare (han lener seg fram).
+    if kjole:                                                  # skjørtet tek berre to rader
+        for t, f in ((17, 12), (18, 13), (19, 15), (20, 16)): _kopi(ny, g, f, t)
+        legg(ny, (21, _framme_skjort(g, d, "knele")))
+    else:
+        for t, f in ((17, 12), (18, 13), (19, 16)): _kopi(ny, g, f, t)
+        legg(ny, (20, _bein(u, BEIN_FRAMME[("knele", d)])))
+        if d == 0: ny[19][1], ny[19][2], ny[19][3] = "h", "h", "a"   # handa på kneet
+    for y in range(0, 12): _kopi(ny, g, y, y + n)
+    if d == 0: _ned_blikk(ny, n, 12 + n)
+    return ny
+
+
+def _framme_skjort(g, d, namn):
+    """Skjørtet framanfrå eller bakfrå. Den som kneler (rad 21 og 22), har skjørtet utover golvet
+    som ei klokke (breiast nedst), med tåa eller dei lyse skosålane synlege. Den som sit (rad 20
+    til 22), har fanget breiast: framanfrå med hendene på knea, bakfrå heng skjørtet smalare ned
+    over setet, med hælane under."""
+    r = lambda y: "".join(g[y])
+    if namn == "knele":
+        b, c = _breiare(_breiare(r(20))), _breiare(_breiare(r(21)))
+        c = c[:2] + "FFf" + c[5:] if d == 0 else c[:4] + "CN" + c[6:10] + "CN" + c[12:]
+        return [b, c]
+    a = list(_breiare(r(18)))
+    if d == 0:
+        a[3], a[4], a[11], a[12] = "h", "h", "h", "j"          # hendene på knea
+        return ["".join(a), r(21), "...FFf....FFf..."]
+    return ["".join(a), r(17), "....ff....ff...."]
+
+
+def _side_skjort(g, namn):
+    """Skjørtet frå sida (rad 20 til 22)."""
+    if namn == "knele": return ["...DDDDddddc....", "..DDDddddddcc...", ".FFDDdddddddccc."]
+    return ["..DDDDddddddc...", "..DDDdddddc.....", ".FFf............"]
+
+
+def _peike(g, d, kjole):
+    if d == 2:
+        legg(g, ARM_PEIKE)
+        return g
+    hofte = 16 if kjole else 17                                # høgre arm (til høgre i biletet) ut til sida
+    for y in range(13, hofte + 2):
+        for x in (12, 13):
+            if g[y][x] in "Aazhj": g[y][x] = "."
+    ny = tom()
+    for y in range(H):
+        for x in range(1, W): ny[y][x - 1] = g[y][x]
+    _set(ny, 13, 11, "Aahh"); _set(ny, 14, 11, "az")
+    if d == 0: _set(ny, 14, 13, "j")
     return ny
 
 
@@ -1085,13 +1157,30 @@ def kontaktark(alle, skala=4):
     return ark
 
 
+def posark(alle, skala=3):
+    """Kontaktark for posane: for kvar figur stå, knele og sitje mot oss, bakfrå og frå sida,
+    så ein ser om posane skil seg frå ståande (forhand/figurar-posar.png)."""
+    namn = list(alle) + [k for k in HANDTEIKNA if k not in alle]
+    kol = [(d, r, k) for d in range(3) for (r, k) in ((d, 0), (POSERAD + d, 0), (POSERAD + d, 1))]
+    cw, ch = (len(kol) * (W + 1) + 4) * skala, (H + 2) * skala
+    ark = Image.new("RGB", (2 * cw, ((len(namn) + 1) // 2) * ch), (176, 140, 96))
+    for n, id_ in enumerate(namn):
+        im = HANDTEIKNA[id_]() if id_ in HANDTEIKNA else bilete(alle[id_])
+        for i, (d, rad, k) in enumerate(kol):
+            rute = im.crop((k * W, rad * H, k * W + W, rad * H + H)).resize((W * skala, H * skala), Image.NEAREST)
+            ark.paste(rute, ((n % 2) * cw + (i * (W + 1) + (i // 3) * 2) * skala, (n // 2) * ch + skala), rute)
+    return ark
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2: print(__doc__); sys.exit(0)
     alle = les_u()
     if sys.argv[1] == "ark":
         sti = os.path.join(ROT, "forhand", "figurar-ark.png")
         os.makedirs(os.path.dirname(sti), exist_ok=True)
-        kontaktark(alle).save(sti); print(sti); sys.exit(0)
+        kontaktark(alle).save(sti); print(sti)
+        sti = os.path.join(ROT, "forhand", "figurar-posar.png")
+        posark(alle).save(sti); print(sti); sys.exit(0)
     val = list(alle) + [k for k in HANDTEIKNA if k not in alle] if sys.argv[1] == "alle" else sys.argv[1:]
     os.makedirs(UT, exist_ok=True)
     for id_ in val:

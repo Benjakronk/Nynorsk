@@ -529,15 +529,22 @@ R["trist"] = list(R["sorg"])
 R["trist"][11] = ".rrjhhhhhhTjry.."
 R["glad"] = R["fnis"]
 
-# Posar i scener (rad 9 til 12): knele, sitje og peike. Det stutte skjørtet gøymer beina når ho
-# kneler, og kneet og leggen kjem fram når ho sit. Kneling frå sida er kroppen frå «svak».
-from handfigur import senk, peik_ut
-R["knele_ned"] = senk(R["ned0"], 19, 2, [".hYYYYYYYYYYYYh."])
-R["knele_opp"] = senk(R["opp0"], 19, 2, [".hYYYYYhYYYYYYh."])
-R["knele_side"] = senk(R["side0"], 11, 3)[:15] + R["svak"][15:]
-R["sitje_ned"] = senk(R["ned0"], 19, 1, [".YYYYYYYYYYYYYY.", "...jhhj..jhhj..."])
-R["sitje_opp"] = senk(R["opp0"], 19, 1, [".YYYYYYhYYYYYYY.", "....hhjrRrhj...."])
-R["sitje_side"] = senk(R["side0"], 18, 1, [".YYYYYYYYYYd.h..", ".hhhhjj.....rRy.", "hhj..........y.."])
+# Posar i scener (rad 9 til 12): knele, sitje og peike, same mål som i figur.py. Framanfrå og
+# bakfrå søkk ho tre rader når ho sit og fem når ho kneler (bøygd hovud, kortare overkropp).
+# Det stutte skjørtet breier seg ut når ho kneler, med kneet og leggen under. Når ho sit, kviler
+# hendene på knea. Kneling frå sida er kroppen frå «svak» med hovudet éi rad lågare og blikket ned.
+from handfigur import senk, peik_ut, set_saman, ned_blikk
+R["knele_ned"] = ned_blikk(set_saman(R["ned0"], 5, 11, {17: 12, 18: 13, 19: 16, 20: 19,
+    21: ".YYYYYYYYYYYYYY.", 22: ".hhj.....jhhj..."}), 13)
+R["knele_opp"] = set_saman(R["opp0"], 5, 11, {17: 12, 18: 13, 19: 16, 20: 19,
+    21: ".YYYYYYhYYYYYYY.", 22: "..hhj...jhhrRr.."})
+R["knele_side"] = ned_blikk(senk(R["side0"], 11, 4)[:16] + R["svak"][16:], 12)
+R["sitje_ned"] = set_saman(R["ned0"], 3, 15, {19: "..hhYYYYYYYYhh..", 20: "..ghhGgggggghjd.",
+    21: ".YYYYYYYYYYYYYY.", 22: "...jhhj..jhhj..."})
+R["sitje_opp"] = set_saman(R["opp0"], 3, 15, {19: "...YyrRrRrQyY...", 20: "..gGGGgggggggdd.",
+    21: ".YYYYYYhYYYYYYY.", 22: "....hj.rRr.hj..."})
+R["sitje_side"] = set_saman(R["side0"], 3, 14, {18: "...jYYYYYYd.....", 19: "..gGGGGggggd....",
+    20: ".hYYYYYYYYYd.h..", 21: ".hj.........rRy.", 22: "hhj..........y.."})
 R["peike_ned"] = peik_ut(R["ned0"], 14, 16, "hj", "Lhhh", "hjj")
 R["peike_opp"] = peik_ut(R["opp0"], 14, 16, "hj", "Lhhh", "hjj")
 _p = list(R["side0"])

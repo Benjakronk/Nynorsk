@@ -49,6 +49,21 @@ def senk(g, til, n, bein=()):
     return ny
 
 
+def set_saman(g, sokk, til, rader):
+    """Ny poseramme: radene 1 til og med til i g flytte sokk rader ned, og så rader (mål: kjelde)
+    der kjelda er eit radnummer i g eller ei teikna rad. Slik kan overkroppen bli kortare (somme
+    rader blir hoppa over) når figuren kneler og lener seg fram."""
+    ny = ["." * W] * H
+    for y in range(1, til + 1): ny[y + sokk] = g[y]
+    for y, k in rader.items(): ny[y] = g[k] if isinstance(k, int) else k
+    return ny
+
+
+def ned_blikk(g, y, auge="o", hud="h"):
+    """Auga ser ned (bøygd hovud): auga i rad y blir hud, så berre den nedre delen står att."""
+    g = list(g); g[y] = g[y].replace(auge, hud); return g
+
+
 def peik_ut(g, y0, y1, arm, rad13, rad14):
     """Framanfrå eller bakfrå: armen til høgre i biletet (kolonne 12 til 14, rad y0 til y1) blir
     teken bort, figuren flytt éin kolonne mot venstre, og ein arm ut til sida blir teikna i rad 13 og 14

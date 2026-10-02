@@ -559,17 +559,23 @@ R["trist"][11] = "...jjhhhhhTj...."
 R["trist"][12] = "....jmhhhmj....."
 R["glad"] = R["latter"]
 
-# Posar i scener (rad 9 til 12): knele, sitje og peike. Overkroppen søkk, og beina blir
-# teikna på nytt. Kneling frå sida er kroppen frå «svak» med hovudet oppreist.
-from handfigur import senk, peik_ut
-R["knele_ned"] = senk(R["ned0"], 17, 3, ["...BBbbbbbbqq...", "..qBBbq..bbqqq.."])
-R["knele_opp"] = senk(R["opp0"], 17, 3, ["....Bbb..bbq....", "...qqqq..qqqq..."])
-R["knele_side"] = senk(R["side0"], 11, 3) [:15] + R["svak"][15:]
-_sit = list(R["ned0"]); _sit[16] = "..Aaqqqgqqqqaz.."
-R["sitje_ned"] = senk(_sit, 16, 2, ["..AaBbbbbbbbbaz.", "..hhBBBbBBBbqhh.", "....Bbq..bbq....", "...qqqq..qqqq..."])
-_sit = list(R["opp0"]); _sit[16] = "..Aakkkkkkkkaz.."
-R["sitje_opp"] = senk(_sit, 16, 2, ["..AaBbbbbbbbbaz.", "..hhBbbbbbbbbhh.", "....Bbq..bbq....", "...qqqq..qqqq..."])
-R["sitje_side"] = senk(R["side0"], 16, 2, ["...BBBbhhjbbq...", "..BBbbbbbbbbq...", "..Bbq...........", ".qqqq..........."])
+# Posar i scener (rad 9 til 12): knele, sitje og peike, same mål som i figur.py. Framanfrå og
+# bakfrå søkk den som sit tre rader, og den som kneler fem, med bøygd hovud og kortare overkropp.
+# Kneling: eitt kne i golvet og det andre bøygd fram med handa på. Sitjing: korte, lyse lår
+# med hendene på knea, leggane i skugge under. Bakfrå: sålen i golvet eller leggane under setet.
+# Frå sida er kneling kroppen frå «svak» med hovudet éi rad lågare og blikket ned.
+from handfigur import senk, peik_ut, set_saman, ned_blikk
+R["knele_ned"] = ned_blikk(set_saman(R["ned0"], 5, 11, {17: 12, 18: 13, 19: ".hhaqqqgqqqqaz..",
+    20: ".BBBqbbbbbbqaz..", 21: ".BBbq..Bbbq.hj..", 22: ".qqqq..bqqq....."}), 13)
+R["knele_opp"] = set_saman(R["opp0"], 5, 11, {17: 12, 18: 13, 19: 15, 20: "..hhBBbbbbbbqhh.",
+    21: "..Bbq...Bbbq....", 22: ".kKKk....qqq...."})
+R["knele_side"] = ned_blikk(senk(R["side0"], 11, 4)[:16] + R["svak"][16:], 12)
+R["sitje_ned"] = set_saman(R["ned0"], 3, 15, {19: "..Aaqqqgqqqqaz..", 20: "..ahhBBbBBBhjz..",
+    21: "...bbqq.bbqq....", 22: "...qqqq.qqqq...."})
+R["sitje_opp"] = set_saman(R["opp0"], 3, 15, {19: "...akkkkkkkkz...", 20: "..BBBBbbbbbbqq..",
+    21: "....qbq..qbq....", 22: "....qq....qq...."})
+R["sitje_side"] = set_saman(R["side0"], 3, 14, {18: "....AAAazKKKk...", 19: "...hhjqqqKkk....",
+    20: "..BBBBbbbbbbq...", 21: "..Bbq...........", 22: ".qqqq..........."})
 R["peike_ned"] = peik_ut(R["ned0"], 13, 17, "Aazhj", "Aahh", "azj")
 R["peike_opp"] = peik_ut(R["opp0"], 13, 17, "Aazhj", "Aahh", "az")
 _p = list(R["side0"])

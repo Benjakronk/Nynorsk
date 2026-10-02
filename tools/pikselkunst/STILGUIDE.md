@@ -144,10 +144,17 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
   (`stav: "lang"` eller `"stokk"`) eller begge. Ikkje gi alle gamle det same.
 - Kampstillingar (mot venstre): åtak, galdr, skadd, svak (på kne), slått ut.
   Dei ligg i rad 4 og 5 i figurarket.
-- Posar i scener (rad 9 til 12, ned, opp, venstre, høgre): knele, sitje og peike. Overkroppen
-  søkk to eller tre rader, og beina fortel posen: sålane ut til sidene når ein kneler framanfrå,
-  eitt kne fram og leggen bak i golvet frå sida, låret fram og leggen ned når ein sit. Peike er
-  armen strak ut i skulderhøgd. Liggje og sove er ramma for slått ut.
+- Posar i scener (rad 9 til 12, ned, opp, venstre, høgre): knele, sitje og peike. Ein pose må
+  lesast på silhuetten åleine, også bakfrå. Framanfrå og bakfrå søkk hovudet tre rader når
+  figuren sit og fem når han kneler (frå sida tre og fire). Den som kneler, lener seg fram:
+  overkroppen blir ei rad kortare, blikket går ned, og silhuetten blir breiast nedst (eitt kne
+  i golvet, det andre bøygd fram med handa på, skjørtet utover golvet som ei klokke). Den som
+  sit, har korte, lyse lår (toppen av låret fangar lyset ovanfrå), hendene på knea og leggane
+  i skugge under. Bakfrå: lyse lærsålar under den som kneler, og smale leggar og hælar under
+  setet til den som sit. Armen på sida får ein skuggekant mot kroppen (mørkaste tonen) og den
+  lysaste tonen framme, elles forsvinn han i svarte klede. Peike er armen strak ut i
+  skulderhøgd. Liggje og sove er ramma for slått ut. Sjå alle med `figur.py ark`
+  (`forhand/figurar-posar.png`).
 - Embetsmannsheimen (prestegarden, Ekset): mahogni, messing, kvit duk,
   kakkelomn og golvur. Bondestova: furu, grue, trefat, rosemaling.
 - Gange som i Final Fantasy VI: armane svingar i motsett takt med beina (neven fram
