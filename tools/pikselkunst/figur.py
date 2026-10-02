@@ -32,7 +32,8 @@ W, H = 16, 24
 
 # ---------------------------------------------------------------- delane
 # Teikn: tre tonar per materiale (lys / mellom / skugge).
-#   hud H h j, kinn k, munn m, auge e      hår R r q
+#   hud H h j, kinn k, munn m              hår R r q
+#   auge (som i Final Fantasy VI): vippeline e, augekvite W, iris K
 #   jakke A a z, skjorte S s              bukse B b n, strømper V v, sko F f
 #   kjole D d c, forkle P p               hovudplagg L l i (lue, skaut, hatt)
 #   skjegg Y y t, belte x, spenne g       sekk Q E u, krage W w, glas G
@@ -48,9 +49,9 @@ HOVUD = {
         "..hhhhhhhhhhhh..",
         "..hhhhhhhhhhhh..",
         "..hhhhhhhhhhhh..",
-        "..hHHhhhhhhhhj..",
-        "..hHHehhhhehhj..",
-        "..hHHehhhhehhj..",
+        "..hHeehhhheehj..",
+        "..hHWKhhhhKWhj..",
+        "..hHHKhhhhKhhj..",
         "..hHkhhhhhhkhj..",
         "...hhhhmmhhhj...",
         "....jhhhhhhj...."),
@@ -72,9 +73,9 @@ HOVUD = {
         "...hhhhhhhhhh...",
         "..hhhhhhhhhhhh..",
         "..hhhhhhhhhhhh..",
-        "..hHHhhhhhhhhh..",
-        ".hHHehhhhhhhhh..",
-        ".hHHehhhjhhhhh..",
+        "..hHeehhhhhhhh..",
+        ".hHHKWhhhhhhhh..",
+        ".hHHKhhhjhhhhh..",
         "..hHhhhhjhhhhh..",
         "..hkhhhhhhhhh...",
         "...mhhhhhjj....."),
@@ -607,7 +608,7 @@ def rampe(base):
 
 
 def palett(u):
-    p = {"o": OMRISS, "e": (26, 16, 32), "G": (220, 240, 255), "x": (58, 36, 24), "g": (216, 176, 64),
+    p = {"o": OMRISS, "e": (26, 16, 32), "K": hx(u.get("auge", "#2c3462")), "G": (220, 240, 255), "x": (58, 36, 24), "g": (216, 176, 64),
          "S": (236, 232, 220), "s": (176, 168, 160), "W": (248, 248, 244), "w": (184, 184, 196)}
     def sett(teikn, farge):
         for t, c in zip(teikn, rampe(farge)): p[t] = c
@@ -721,6 +722,26 @@ def fargar_rader(u, type_, rader, fra=0):
     return rader
 
 
+def auge_ruter(g):
+    """Auga i ramma: (x, y) for den øvre irispikselen (K med K under), og x for kvita ved sida."""
+    ut = []
+    for y in range(len(g) - 1):
+        for x in range(W):
+            if g[y][x] == "K" and g[y + 1][x] == "K":
+                kv = next((x + dx for dx in (-1, 1) if 0 <= x + dx < W and g[y][x + dx] == "W"), None)
+                ut.append((x, y, kv))
+    return ut
+
+
+def lukk_auge(g):
+    """Attlatne auge: vippa, kvita og irisen blir hud, og ei vassrett strek står i den nedre raden."""
+    for x, y, kv in auge_ruter(g):
+        for xx in (x, kv):
+            if xx is None: continue
+            if g[y - 1][xx] == "e": g[y - 1][xx] = "h"
+            g[y][xx] = "h"; g[y + 1][xx] = "e"
+
+
 def hovud(g, u, d, hy=0, hx=0, pose=None):
     fris = u.get("frisyre", "kort")
     legg(g, HOVUD[d], hy, hx)
@@ -729,11 +750,12 @@ def hovud(g, u, d, hy=0, hx=0, pose=None):
         if u.get(namn): legg(g, PLAGG[namn][d], hy, hx)
     if u.get("blom") and d in BLOM: legg(g, BLOM[d], hy, hx)
     if u.get("skjegg") and d in SKJEGG: legg(g, SKJEGG[d], hy, hx)
-    if u.get("briller") and d in BRILLER: legg(g, BRILLER[d], hy, hx)
-    if pose in ("skadd", "ute"):              # attlatne auge: ei vassrett strek
-        for y in range(len(g) - 1):
-            for x in range(1, len(g[0])):
-                if g[y][x] == "e" and g[y + 1][x] == "e": g[y][x] = "h"; g[y + 1][x - 1] = "e"
+    if u.get("briller") and d in BRILLER:
+        legg(g, BRILLER[d], hy, hx)
+        for y in range(6 + hy, 9 + hy):
+            for x in range(W):
+                if g[y][x] in "We": g[y][x] = "h"
+    if pose in ("skadd", "ute"): lukk_auge(g)  # attlatne auge: ei vassrett strek
     if pose == "galdr":                       # open munn, han syng
         for y in range(len(g)):
             for x in range(len(g[0])):
@@ -873,26 +895,33 @@ def ute(u):
 # Alle figurar har same sett med kjensler, så manus kan bruke dei til å fortelje historia.
 # Rekkjefølgja er fast (rad 6 og 7 i arket). Handteikna ark har i tillegg eigne kjensler i rad 8.
 STANDARDKJENSLER = ("glad", "trist", "sint", "sjokk", "tenkje", "nikk")
-ANDLET = set("hHjkme")                          # pikslar som høyrer til andletet
+ANDLET = set("hHjkmeWK")                        # pikslar som høyrer til andletet
 
 
 def kjensle(u, namn):
     """Ramme mot oss med ei kjensle: endrar auge, bryn, munn og hender der andletet er
-    (auga står i kolonne 5 og 10, rad 7 og 8, munnen i rad 10, som i HOVUD)."""
+    (auga står i kolonne 4 og 5 og 10 og 11: vippeline i rad 6, kvit og iris i rad 7, iris i
+    rad 8, munnen i rad 10, som i HOVUD)."""
     g = samanset(u, 0, 0)
     hy = 2 if u.get("krokrygg") else 0
     def sett(x, y, c, berre_andlet=True):
         y += hy
         if 0 <= y < H and 0 <= x < W and (not berre_andlet or g[y][x] in ANDLET): g[y][x] = c
-    auge = g[7 + hy][5] == "e"                    # auga synlege (ikkje bak briller eller hatt)
+    auge = g[8 + hy][5] == "K"                    # auga synlege (ikkje bak briller eller hatt)
+    def tom():                                    # tek bort auga (vippe, kvite, iris), så dei kan teiknast på nytt
+        for x in (4, 5, 10, 11):
+            for y in (6, 7, 8): sett(x, y, "h")
     munn = g[10 + hy][7] == "m"
-    if namn == "glad":
+    if namn == "glad":                                                   # smilande auge: ^ ^
         if auge:
-            for x in (5, 10): sett(x, 8, "h"); sett(x - 1, 8, "e"); sett(x + 1, 8, "e")
+            tom()
+            for x in (5, 10): sett(x, 7, "e"); sett(x - 1, 8, "e"); sett(x + 1, 8, "e")
         if munn: sett(6, 10, "m"); sett(9, 10, "m"); sett(7, 11, "m"); sett(8, 11, "m")
-    elif namn == "trist":
+    elif namn == "trist":                                                # augneloka nede: vippe og iris, inga kvite
         if auge:
-            for x in (5, 10): sett(x, 7, "h")
+            tom()
+            for x in (4, 5, 10, 11): sett(x, 7, "e")
+            for x in (5, 10): sett(x, 8, "K")
             sett(11, 9, "G")                                             # ei tåre
         if munn: sett(7, 10, "h"); sett(8, 10, "h"); sett(6, 11, "m"); sett(7, 10, "m"); sett(8, 10, "m"); sett(9, 11, "m")
     elif namn == "sint":
@@ -900,19 +929,24 @@ def kjensle(u, namn):
             sett(4, 6, "e"); sett(5, 6, "e"); sett(6, 7, "e"); sett(11, 6, "e"); sett(10, 6, "e"); sett(9, 7, "e")
         if munn:
             for x in (6, 7, 8, 9): sett(x, 10, "e")
-    elif namn == "sjokk":
+    elif namn == "sjokk":                                                # store, kvite auge med små pupillar
         if auge:
-            for x in (5, 10): sett(x, 6, "e"); sett(x + (1 if x == 5 else -1), 7, "W"); sett(x + (1 if x == 5 else -1), 8, "e")
+            tom()
+            for x in (4, 5, 10, 11): sett(x, 6, "e"); sett(x, 7, "W")
+            sett(4, 8, "W"); sett(5, 8, "K"); sett(10, 8, "K"); sett(11, 8, "W")
         if munn: sett(7, 10, "e"); sett(8, 10, "e"); sett(7, 11, "e"); sett(8, 11, "e")
         for (x, y) in [(1, 12), (2, 12), (1, 13), (13, 12), (14, 12), (14, 13)]: sett(x, y, "h", False)
-    elif namn == "tenkje":
+    elif namn == "tenkje":                                               # ser opp og til sides
         if auge:
-            for x in (5, 10): sett(x, 8, "h"); sett(x + 1, 7, "e")
+            tom()
+            for x in (5, 6, 10, 11): sett(x, 6, "e")
+            sett(5, 7, "W"); sett(6, 7, "K"); sett(10, 7, "W"); sett(11, 7, "K")
         if munn: sett(7, 10, "h"); sett(8, 10, "m"); sett(9, 10, "m")
         for (x, y) in [(8, 12), (9, 12), (10, 12), (9, 11)]: sett(x, y, "h", False)
     elif namn == "nikk":                                                 # bukkar: hovudet ned, auga att
         if auge:
-            for x in (5, 10): sett(x, 7, "h")
+            tom()
+            for x in (4, 5, 10, 11): sett(x, 8, "e")
         ny = [r[:] for r in g]
         for y in range(1, 13 + hy):
             for x in range(W):
@@ -979,10 +1013,12 @@ def _kopi(ny, g, fra, til):
 
 
 def _ned_blikk(g, fra, til):
-    """Auga ser ned (bøygd hovud): øvre halvdelen av auga blir hud."""
-    for y in range(fra, til):
-        for x in range(W):
-            if g[y][x] == "e" and g[y + 1][x] == "e": g[y][x] = "h"
+    """Auga ser ned (bøygd hovud): den øvre raden (kvita og irisen) blir hud, vippa og irisen
+    under står att."""
+    for x, y, kv in auge_ruter(g):
+        if fra <= y < til:
+            g[y][x] = "h"
+            if kv is not None: g[y][kv] = "h"
 
 
 def _legg_arm(g, arm):
