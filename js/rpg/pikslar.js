@@ -468,32 +468,53 @@ window.Pikslar = (function () {
         px(g, x, y, "#e8f4ff", 1, 3); px(g, x + 1, (y + 1) % S, r[4], 1, 2);
       }
     }
-    // Strandkantar: landet går litt ut i vatnet med bølgjande kant
+    // Strandkantar: landet går litt ut i vatnet med bølgjande kant. Sjølve landet blir gjennomsiktig
+    // (land()), og motoren teiknar bakken frå nabofllisa under, så graset og sanden held fram.
+    const land = (x, y, w = 1, h = 1) => g.clearRect(x, y, w, h);
     const skum = (x, y) => px(g, x, y, (x + y + f) % 3 !== 0 ? "#e8f4ff" : r[4]);
     if (N) for (let x = 0; x < S; x++) {
       const d = 1 + bolgje(x + v * 16, 1);
-      px(g, x, 0, b.topp, 1, d); px(g, x, d, b.kant); px(g, x, d + 1, b.djup);
+      land(x, 0, 1, d); px(g, x, d, b.kant); px(g, x, d + 1, b.djup);
       px(g, x, d + 2, r[1]); px(g, x, d + 3, r[1]);                 // skugge frå bakken
       if ((x + f) % 4 < 2) px(g, x, d + 4, r[4]);
     }
     if (SO) for (let x = 0; x < S; x++) {
       const d = 1 + bolgje(x + v * 16, 2);
-      px(g, x, 16 - d, b.topp, 1, d); px(g, x, 16 - d, b.lys); skum(x, 15 - d);
+      land(x, 16 - d, 1, d); px(g, x, 16 - d, b.lys); skum(x, 15 - d);
     }
     if (V) for (let y = 0; y < S; y++) {
       const d = 1 + bolgje(y + v * 16, 3);
-      px(g, 0, y, b.topp, d, 1); px(g, d, y, b.kant); skum(d + 1, y);
+      land(0, y, d, 1); px(g, d, y, b.kant); skum(d + 1, y);
     }
     if (A) for (let y = 0; y < S; y++) {
       const d = 1 + bolgje(y + v * 16, 4);
-      px(g, 16 - d, y, b.topp, d, 1); px(g, 15 - d, y, b.djup); skum(14 - d, y);
+      land(16 - d, y, d, 1); px(g, 15 - d, y, b.djup); skum(14 - d, y);
     }
-    // Ytre hjørne: land berre på skrå
-    const hjorne = (cx, cy) => { for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) { const d = Math.hypot(x + .5 - cx, y + .5 - cy); if (d < 3.2) px(g, x, y, b.topp); else if (d < 4.2) px(g, x, y, "#e8f4ff"); } };
-    if ((maske & 16) && !N && !A) hjorne(16, 0);
-    if ((maske & 32) && !SO && !A) hjorne(16, 16);
-    if ((maske & 64) && !SO && !V) hjorne(0, 16);
-    if ((maske & 128) && !N && !V) hjorne(0, 0);
+    // Hjørne utan rette vinklar (der bekken svingar eller flyttar seg ei rute til sides):
+    // Indre hjørne (land på to sider som møtest): landet fyller ein trekant over heile flisa, så
+    // strandkanten går på skrå frå hjørne til hjørne. Eit steg i bekken blir då ein skrå kant på
+    // 45 grader i staden for to 90-graders kantar. Ytre hjørne (land berre på skrå): ein liten,
+    // rund landtunge tek bort spissen der to skrå kantar møtest.
+    const fyll = (x, y, d) => {                                        // d: kor langt inne på land (< 0 i vatnet)
+      if (d < -1) return;
+      if (d >= 1) land(x, y);
+      else px(g, x, y, d < 0 ? (x + y + f) % 3 !== 0 ? "#e8f4ff" : r[4] : b.kant);
+    };
+    const indre = (hx, hy) => {                                        // hx, hy: 0 eller 1 (kva hjørne)
+      for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
+        const lx = hx ? 15 - x : x, ly = hy ? 15 - y : y;           // avstand frå hjørnet
+        fyll(x, y, 14 - lx - ly + bolgje(lx - ly + 20 + v * 16, 5) * 0.7);
+      }
+    };
+    const ytre = (cx, cy) => { for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) fyll(x, y, 3 - Math.hypot(x + .5 - cx, y + .5 - cy)); };
+    if (N && V) indre(0, 0);
+    if (N && A) indre(1, 0);
+    if (SO && A) indre(1, 1);
+    if (SO && V) indre(0, 1);
+    if ((maske & 16) && !N && !A) ytre(16, 0);
+    if ((maske & 32) && !SO && !A) ytre(16, 16);
+    if ((maske & 64) && !SO && !V) ytre(0, 16);
+    if ((maske & 128) && !N && !V) ytre(0, 0);
     cache.set(k, c);
     return c;
   }
@@ -564,6 +585,27 @@ window.Pikslar = (function () {
      Motoren teiknar kantane oppå flisa, på sidene der naboen er av eit anna slag. */
   const KLASSE = { ".": "gras", ",": "villgras", '"': "gras", "o": "gras", "h": "gras", "x": "gras", "|": "gras", "j": "gras", "#": "gras", "t": "gras", "=": "veg", "_": "sand", "~": "vatn" };
   const klasse = teikn => KLASSE[teikn] || null;
+  /* Hjørne på ein sti (veg «=»), teikna med grasflisa til naboen (teikn), så tekstur og farge
+     stemmer. hj: 0 nv, 1 na, 2 sa, 3 sv (kva hjørne). ytre: gras på dei to sidene som møtest
+     (ei yttersving eller ei blindgate): ei skrå grastunge over hjørnet. Elles ei innersving
+     (sti på begge sidene, gras på skrå): ein liten, rund grastue i hjørnet. */
+  function stiHjorne(teikn, hj, ytre, v, golv) {
+    const k = `stihj:${teikn}:${hj}:${ytre ? 1 : 0}:${v}`;
+    if (cache.has(k)) return cache.get(k);
+    const c = lerret(S), g = c.getContext("2d");
+    g.drawImage(flis(teikn, 0, v, v * 3, golv), 0, 0);
+    const mork = R_[teikn === "," ? "villgras" : "gras"][1];
+    for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
+      const lx = hj === 1 || hj === 2 ? 15 - x : x, ly = hj >= 2 ? 15 - y : y;
+      const ujamt = hash(lx - ly + 40, v, 171) * 2.2;
+      const d = ytre ? 8 + ujamt - lx - ly : 3.6 + ujamt * 0.6 - Math.hypot(lx, ly);   // > 0 er gras
+      if (d < 0) g.clearRect(x, y, 1, 1);
+      else if (d < 1) px(g, x, y, mork);                               // mørk kant mot stien, som langs sidene
+    }
+    cache.set(k, c);
+    return c;
+  }
+
   function kant(type, side, v) {
     const k = `kant:${type}:${side}:${v}`;
     if (cache.has(k)) return cache.get(k);
@@ -1004,6 +1046,6 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, kant, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
+  return { S, FW, FH, flis, topp, kant, stiHjorne, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
     hent, klar, forhandslast, alleBilete, ILD, SETE, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
 })();

@@ -1009,6 +1009,15 @@ window.Motor = (function () {
         }
         // Straum: vatn med vatn over og under, men land på sida (bekken i utmarka)
         const straum = !(maske & 1) && !(maske & 4) && ((maske & 2) || (maske & 8)) && kart.def.golv === ",";
+        // Bakken under strandkanten: den første naboen som er bakke (gras, sand, veg), elles golvet.
+        if (maske) {
+          let under = kart.def.golv;
+          for (const [, dx, dy] of KANTSIDER) {
+            const n = kart.fliser[y + dy] && kart.fliser[y + dy][x + dx];
+            if (n && Pikslar.klasse(n) && Pikslar.klasse(n) !== "vatn") { under = n; break; }
+          }
+          if (under !== "~") g.drawImage(Pikslar.flis(under, no, x, y, kart.def.golv), sx, sy);
+        }
         g.drawImage(Pikslar.vatn(no, (x * 7 + y * 3) % 4, maske, bank, straum), sx, sy);
       } else g.drawImage(Pikslar.flis(fk, no, x, y, kart.def.golv), sx, sy);
       // Steingard: muren er ein figur som blir sortert etter djupn
@@ -1026,6 +1035,17 @@ window.Motor = (function () {
           const nk = Pikslar.klasse(n);
           if (nk === "villgras") g.drawImage(Pikslar.kant("villgras", side, (x * 7 + y * 3) % 4), sx, sy);
           else if (nk === "gras" && kl !== "gras") g.drawImage(Pikslar.kant("gras", side, (x * 7 + y * 3) % 4), sx, sy);
+        }
+        // Svingar på stiar: runda med gras, så stien ser tråkka ut og ikkje teikna med linjal.
+        if (kl === "veg") {
+          const nb = (dx, dy) => (kart.fliser[y + dy] || [])[x + dx];
+          const grasaktig = n => n != null && (Pikslar.klasse(n) === "gras" || Pikslar.klasse(n) === "villgras");
+          const vegaktig = n => n != null && Pikslar.klasse(n) === "veg";
+          [[0, -1, -1], [1, 1, -1], [2, 1, 1], [3, -1, 1]].forEach(([hj, dx, dy]) => {
+            const sida = nb(dx, 0), opp = nb(0, dy), skra = nb(dx, dy), v = (x * 5 + y * 3 + hj) % 4;
+            if (grasaktig(sida) && grasaktig(opp)) g.drawImage(Pikslar.stiHjorne(opp, hj, true, v, kart.def.golv), sx, sy);
+            else if (vegaktig(sida) && vegaktig(opp) && grasaktig(skra)) g.drawImage(Pikslar.stiHjorne(skra, hj, false, v, kart.def.golv), sx, sy);
+          });
         }
       }
       const nf = erVatn(x, y) ? null : Pikslar.natur(c, x, y);
