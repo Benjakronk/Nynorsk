@@ -1039,13 +1039,19 @@ window.Pikslar = (function () {
      fell bort mot dalen. Sett ovanfrå syner ikkje lia som går ned bak kanten, berre graskanten mot
      utsikta: ei ujamn line 4 til 7 pikslar ned i flisa med lyst gras i kanten (ljoset kjem ovanfrå)
      og nokre strå som stikk opp mot himmelen. Over lina er flisa open (.ope), og bakgrunnen syner.
-     base er flisa slik ho elles ville vore (gras, eller sti med gras under). */
-  function nordkant(base, felt, tx) {
+     base er flisa slik ho elles ville vore (gras, eller sti med gras under). Er det luft ved sida
+     (der kanten fell eit steg ned mot sidene), bøyer kanten ned i ein rund boge mot den sida. */
+  function nordkant(base, felt, tx, ty = 0) {
     const c = lerret(S), g = c.getContext("2d"); g.drawImage(base, 0, 0);
     const bilde = g.getImageData(0, 0, S, S), p = new Uint32Array(bilde.data.buffer), ope = new Uint8Array(S * S);
     const GR = R_.gras.map(pk);
+    const vLuft = felt.c(tx - 1, ty) === "-" && tx > 0, hLuft = felt.c(tx + 1, ty) === "-" && tx < felt.w - 1;
     for (let x = 0; x < S; x++) {
-      const X = tx * S + x, e = 4 + Math.floor(vstoy(X / 6, 0.5, 541) * 3.99);
+      const X = tx * S + x;
+      let e = 4 + Math.floor(vstoy(X / 6, ty + 0.5, 541) * 3.99);
+      if (vLuft) e += Math.round(Math.max(0, 10 - x) ** 2 / 9);
+      if (hLuft) e += Math.round(Math.max(0, x - 5) ** 2 / 9);
+      e = Math.min(14, e);
       const straa = hash(X, 0, 542) > 0.76 ? 1 + Math.floor(hash(X, 0, 543) * 2.99) : 0;
       for (let y = 0; y < e; y++) {
         const i = y * S + x;

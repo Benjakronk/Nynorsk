@@ -507,16 +507,22 @@ window.Motor = (function () {
      mjuk glidning: med glidning mot noko som går, flytta biletet seg ujamt. Farten blir rekna
      slik at kameraet er framme på ms (minst 1 piksel per tikk). Går målet, flyttar kameraet seg
      med målet i tillegg, så det fangar det og så går i takt. kam.px er øvre venstre hjørne i pikslar. */
-  /* Utsikt (kart.def.kameraNed = { fra, til }): når målet er nedanfor rad fra, ser kameraet lenger
-     ned, ei halv rad per rad målet går ned, opptil (til - fra) / 2 rader. Då får utsikta under stupet
-     meir plass. Halv fart gir heile pikslar: spelaren går 2 pikslar per tikk, kameraet 3. */
-  /* Utsikt over kanten øvst (kart.def.kameraOpp = { fra, til }): når målet er ovanfor rad fra, ser
-     kameraet lenger opp, ei halv rad per rad, opptil (fra - til) / 2 rader over kartet. Der er det
-     luft: bakgrunnslaga syner (himmel, fjell og dal), og rad 0 er kanten der bakken fell bort. */
-  const utsiktNed = y => { const k = kart.def.kameraNed; return k ? Math.max(0, Math.min(k.til - k.fra, y - k.fra)) / 2 : 0; };
-  const utsiktOpp = y => { const k = kart.def.kameraOpp; return k ? Math.max(0, Math.min(k.fra - k.til, k.fra - y)) / 2 : 0; };
+  /* Utsikt (kart.def.kameraNed = { fra, til, rader }): når målet går frå rad fra ned til rad til, ser
+     kameraet jamt lenger ned, til rader rader (standard (til - fra) / 2) under målet ved rad til. På
+     Åsen glir kameraet 3 rader ned når Ivar går dei to siste radene mot stupet, så han står øvst på
+     skjermen og lia som stuper ned mot dalen får plass under. Farten går opp i heile pikslar når
+     rader / (til - fra) er eit halvt tal: spelaren går 2 pikslar per tikk, kameraet 2 + 2 * 1,5 = 5.
+     kart.def.kameraOpp = { fra, til, rader } er det same oppover (fra er då under til): kameraet ser
+     opp over kanten øvst, der det er luft over kartet og utsikta syner (sjå nordkant). */
+  const forskuv = (k, y) => {
+    if (!k) return 0;
+    const lengd = Math.abs(k.til - k.fra), rader = k.rader != null ? k.rader : lengd / 2;
+    return Math.max(0, Math.min(1, (k.til > k.fra ? y - k.fra : k.fra - y) / lengd)) * rader;
+  };
+  const utsiktNed = y => forskuv(kart.def.kameraNed, y);
+  const utsiktOpp = y => forskuv(kart.def.kameraOpp, y);
   const kameraMaal = m => {                                            // øvre venstre hjørne for eit sentrum, innanfor kartet
-    const k = kart.def.kameraOpp, opp = k ? (k.fra - k.til) / 2 : 0;    // kor mange rader kameraet kan sjå over kartet
+    const k = kart.def.kameraOpp, opp = k ? (k.rader != null ? k.rader : (k.fra - k.til) / 2) : 0;    // kor mange rader kameraet kan sjå over kartet
     return {
       x: kart.w < VW ? 0 : Math.round(Math.max(0, Math.min(kart.w - VW, m.x - (VW - 1) / 2)) * S),
       y: kart.h < VH ? 0 : Math.round(Math.max(-opp, Math.min(kart.h - VH, m.y + utsiktNed(m.y) - utsiktOpp(m.y) - (VH - 1) / 2)) * S),
@@ -644,18 +650,21 @@ window.Motor = (function () {
     return kart.terrengfelt;
   }
 
-  // Flisa i rad 0 på eit kart med kameraOpp: bakken (gras, eller sti med graset under) med kanten
-  // der bakken fell bort oppå. Éin gong per kolonne (flisene i kanten er ikkje animerte).
-  function nordkant(x, fk) {
-    const k = kart.nordkantar || (kart.nordkantar = []);
-    if (k[x]) return k[x];
-    const c = kart.fliser[0][x], base = document.createElement("canvas"); base.width = base.height = S;
+  // Ei kantflis: «N», eller rad 0 på eit kart med kameraOpp. Bakken (gras, eller sti med graset under)
+  // med kanten der bakken fell bort oppå (Pikslar.nordkant). Éin gong per flis (ikkje animerte).
+  const erKant = (c, y) => c === "N" || (y === 0 && !!kart.def.kameraOpp && c !== LUFT);
+  function nordkant(x, y, fk) {
+    const k = kart.nordkantar || (kart.nordkantar = new Map()), nk = x + "," + y;
+    if (k.has(nk)) return k.get(nk);
+    const c = kart.fliser[y][x], base = document.createElement("canvas"); base.width = base.height = S;
     const bg = base.getContext("2d");
     if (Pikslar.klasse(c) === "veg") {
-      bg.drawImage(Pikslar.flis(".", 0, x, 0, kart.def.golv), 0, 0);
-      const sl = Pikslar.sti(stifelt(), x, 0); if (sl) bg.drawImage(sl, 0, 0);
-    } else bg.drawImage(Pikslar.flis(c === "N" ? "." : fk, 0, x, 0, kart.def.golv), 0, 0);
-    return (k[x] = Pikslar.nordkant(base, terrengfelt(), x));
+      bg.drawImage(Pikslar.flis(".", 0, x, y, kart.def.golv), 0, 0);
+      const sl = Pikslar.sti(stifelt(), x, y); if (sl) bg.drawImage(sl, 0, 0);
+    } else bg.drawImage(Pikslar.flis(c === "N" ? "." : fk, 0, x, y, kart.def.golv), 0, 0);
+    const kf = Pikslar.nordkant(base, terrengfelt(), x, y);
+    k.set(nk, kf);
+    return kf;
   }
 
   /* ---------- Parallakse: bakgrunnslag og forgrunn ----------
@@ -1146,9 +1155,9 @@ window.Motor = (function () {
       const topp = "XcG".includes(c) && (under === null || "XcGE".includes(under));
       let fk = topp ? c + "t" : c;
       if (c === "R") { const over = y > 0 && kart.fliser[y - 1][x] === "R"; fk = !over && under !== "R" ? "Rtb" : !over ? "Rt" : under !== "R" ? "Rb" : "R"; }
-      if (y === 0 && kart.def.kameraOpp) {
+      if (erKant(c, y)) {
         // Kanten øvst: bakken fell bort, og utsikta syner over graskanten (Pikslar.nordkant).
-        const kf = nordkant(x, fk); g.drawImage(kf, sx, sy); luftRute(sx, sy, kf.ope);
+        const kf = nordkant(x, y, fk); g.drawImage(kf, sx, sy); luftRute(sx, sy, kf.ope);
       } else if (erVatn(x, y)) {
         // Vatn med fritt teikna strandkant og skrent (sjå Pikslar.vatn). Landet i flisa er
         // gjennomsiktig, så bakken frå naboflisa blir teikna under først.
