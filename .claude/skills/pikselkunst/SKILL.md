@@ -190,6 +190,9 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   skriv `kjelder/fiende-rotte*.pix`, så `pix.py lag`. Fiendar som PNG står i `PNG` i `pikslar.js`, og eit
   bilete berre til kartet (`vesen` i ei scene) kan stå der utan å vere i `FIENDAR`. Sjå med
   `skjermbilete.py namn kart=asen-stabbur m=1 kamp=rotte,rotte,rotte` og `kamp=rottemor,rotte`.
+  Kartrotta har eit gangark (`rotte-kart-gang.png`: står og to steg i fire retningar, som figurane).
+  Vesen med gangark står i `GANGARK` i `pikslar.js` (`vesenGang`), og motoren vel ramme etter retning og steg.
+  Svermen på fem: `kamp=svermrotte,svermrotte,svermrotte,svermrotte,svermrotte`.
 - Tre, steinar og haugar: `python tools/pikselkunst/natur.py <namn>` (sjå `NATUR`).
   Frittståande tre og steinar: kartteikna `i` (gran), `F` (furu), `t` (bjørk) og `o` (stein, einer)
   vel variant etter plassen frå `NATURTYPE` i `js/rpg/pikslar.js`. Nye variantar må førast inn der.
