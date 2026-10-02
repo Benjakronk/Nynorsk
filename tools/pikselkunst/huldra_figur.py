@@ -7,6 +7,9 @@
 - Kamp: ho slær med strak arm fram, og i galdr breier ho ut armane og syng.
 - Kjensler: fnis (handa for munnen), sjokk, sorg, tenkjer (finger mot leppa), lokk (hendene
   rundt munnen, kulokk) og sjenert (raudme, blikket til sida).
+- Auge som i FF6 (Terra, Celes), same oppbygging som hjå Ivar: framanfrå 2 x 2 pikslar under
+  ei mørk vippeline, øvst augekvite ytst og grøn iris inst, under berre irisen. Frå sida irisen
+  framme og kvita bak. Lukka auge (fnis, sorg, lokk, skadd) er strekar som før.
 
   python tools/pikselkunst/huldra_figur.py      skriv bilete/spel/figurar/huldra.png
 """
@@ -529,16 +532,49 @@ R["trist"] = list(R["sorg"])
 R["trist"][11] = ".rrjhhhhhhTjry.."
 R["glad"] = R["fnis"]
 
+from handfigur import senk, peik_ut, set_saman, ned_blikk
+
+# Auge som i FF6. Rammene er teikna med ein mørk og ein grøn piksel per auge (1 x 2). Her blir dei
+# bytte med auge på 2 x 2 under ei vippeline. Radene blir funne etter innhald, så det verkar også
+# når hovudet søkk ei rad (gangen frå sida) eller figuren er flytt (peike).
+def ff6_auge(g):
+    g = list(g)
+    for y in range(1, len(g) - 1):
+        if "hHohhhhohr" in g[y] and "hHEhhhhEhr" in g[y + 1]:              # framanfrå
+            g[y - 1] = g[y - 1].replace("hHHhhhhhhr", "hoohhhhoor")
+            g[y] = g[y].replace("hHohhhhohr", "hWEhhhhEWr")
+        elif "hHohhr" in g[y] and "hHEhh" in g[y + 1]:                        # frå sida
+            g[y - 1] = g[y - 1].replace("hHHhr", "hHoor")
+            g[y] = g[y].replace("hHohhr", "hHEWhr")
+    return g
+for _k in ("ned0", "ned1", "ned2", "side0", "side1", "side2", "atak", "galdr"):
+    R[_k] = ff6_auge(R[_k])
+# Sjokk: store, kvite auge med små pupillar.
+R["sjokk"][7] = ".rrhoohhhhoory.."
+R["sjokk"][8] = ".rrhWWhhhhWWry.."
+R["sjokk"][9] = ".rrhWEhhhhEWry.."
+# Tenkjer: auga høgare (ho ser opp).
+R["tenkje"][7] = ".rrhoohhhhoory.."
+R["tenkje"][8] = ".rrhWEhhhhEWry.."
+# Sjenert: blikket til sida (iris mot venstre i biletet).
+R["sky"][7] = ".rrhoohhhoohry.."
+R["sky"][8] = ".rrhEWhhhEWhry.."
+R["sky"][9] = ".rrhEHhhhEhhry.."
+# Sint: brynet går ned mot nasen, kvita under.
+R["sint"][9] = ".rrhWEhhhhEWry.."
+
+# Ser ned (bøygd hovud): den øvre augeraden blir hud, vippa og irisen under står att.
+def blikk_ned(g, y): return ned_blikk(ned_blikk(g, y, "W"), y, "E")
+
 # Posar i scener (rad 9 til 12): knele, sitje og peike, same mål som i figur.py. Framanfrå og
 # bakfrå søkk ho tre rader når ho sit og fem når ho kneler (bøygd hovud, kortare overkropp).
 # Det stutte skjørtet breier seg ut når ho kneler, med kneet og leggen under. Når ho sit, kviler
 # hendene på knea. Kneling frå sida er kroppen frå «svak» med hovudet éi rad lågare og blikket ned.
-from handfigur import senk, peik_ut, set_saman, ned_blikk
-R["knele_ned"] = ned_blikk(set_saman(R["ned0"], 5, 11, {17: 12, 18: 13, 19: 16, 20: 19,
+R["knele_ned"] = blikk_ned(set_saman(R["ned0"], 5, 11, {17: 12, 18: 13, 19: 16, 20: 19,
     21: ".YYYYYYYYYYYYYY.", 22: ".hhj.....jhhj..."}), 13)
 R["knele_opp"] = set_saman(R["opp0"], 5, 11, {17: 12, 18: 13, 19: 16, 20: 19,
     21: ".YYYYYYhYYYYYYY.", 22: "..hhj...jhhrRr.."})
-R["knele_side"] = ned_blikk(senk(R["side0"], 11, 4)[:16] + R["svak"][16:], 12)
+R["knele_side"] = blikk_ned(senk(R["side0"], 11, 4)[:16] + R["svak"][16:], 12)
 R["sitje_ned"] = set_saman(R["ned0"], 3, 15, {19: "..hhYYYYYYYYhh..", 20: "..ghhGgggggghjd.",
     21: ".YYYYYYYYYYYYYY.", 22: "...jhhj..jhhj..."})
 R["sitje_opp"] = set_saman(R["opp0"], 3, 15, {19: "...YyrRrRrQyY...", 20: "..gGGGgggggggdd.",

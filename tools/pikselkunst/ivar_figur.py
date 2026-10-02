@@ -9,6 +9,9 @@ Hovudpersonen får eige ark i staden for malen i figur.py, så han kan få meir 
   blir bøygd og løfta. Frå sida søkk kroppen i steget. Håret sprett litt (virvel og lugg)
   i gangen opp og ned. (Skuldervriing vart prøvd, men såg ut som dans, og er teken bort.)
 - Kjensler: latter (handa bak hovudet), sjokk, sorg, tenkjer, ivrig og les i ei bok.
+- Auge som i FF6 (Locke, Terra, Celes): framanfrå 2 x 2 pikslar under ei mørk vippeline, øvst
+  augekvite ytst og iris inst, under berre irisen. Frå sida irisen framme og kvita bak.
+  Lukka og nedslegne auge (latter, sorg, les, skadd) er strekar som før.
 
 Arket (48 x 312): rad 0 til 3 gange (ned, opp, venstre, høgre), rad 4 åtak, galdr, skadd,
 rad 5 svak og slått ut (24 x 16), rad 6 til 8 kjensler, rad 9 til 12 posane (knele, sitje, peike).
@@ -22,7 +25,8 @@ UT = os.path.join(ROT, "..", "..", "bilete", "spel", "figurar", "ivar.png")
 W, H = 16, 24
 
 PAL = {
-    "o": "#180f18",                                   # omriss, auge
+    "o": "#180f18",                                   # omriss, vippeline
+    "I": "#26306c",                                   # iris (mørk blå, som hjå Celes i FF6)
     "R": "#a8763e", "r": "#6e4526", "q": "#3a2218",    # hår (den mørke er delt med bukse og sko)
     "H": "#f8d0a8", "h": "#e6a878", "j": "#b06a4a",    # hud
     "m": "#a04838",                                   # munn
@@ -559,17 +563,53 @@ R["trist"][11] = "...jjhhhhhTj...."
 R["trist"][12] = "....jmhhhmj....."
 R["glad"] = R["latter"]
 
+from handfigur import senk, peik_ut, set_saman, ned_blikk
+
+# Auge som i FF6. Rammene er teikna med eitt mørkt strek per auge (1 x 2). Her blir dei bytte
+# med auge på 2 x 2 under ei vippeline, der andletet er det vanlege (gange, kamp, ivrig). Radene
+# blir funne etter innhald, så det verkar også når hovudet søkk ei rad eller figuren er flytt.
+def ff6_auge(g):
+    g = list(g)
+    for y in range(1, len(g) - 1):
+        if "qhHoHhhhohhq" in g[y] and "hHoHhhhohj" in g[y + 1]:            # framanfrå
+            g[y - 1] = g[y - 1].replace("rqhHHhhhhhqq", "rqooHhhhooqq")
+            g[y] = g[y].replace("qhHoHhhhohhq", "qhWIHhhhIWhq")
+            g[y + 1] = g[y + 1].replace("hHoHhhhohj", "hHIHhhhIhj")
+        elif "hHohhhhj" in g[y] and "hohhhjj" in g[y + 1]:                   # frå sida
+            g[y - 1] = g[y - 1].replace("hHHhhrr", "hHoohrr")
+            g[y] = g[y].replace("hHohhhhj", "hHIWhhhj")
+            g[y + 1] = g[y + 1].replace("hohhhjj", "hIhhhjj")
+    return g
+for _k in ("ned0", "ned1", "ned2", "side0", "side1", "side2", "atak", "ivrig"):
+    R[_k] = ff6_auge(R[_k])
+# Galdr: handa ligg framfor kinnet, så auget er teikna for hand.
+R["galdr"][8] = ".hHoohrrjrrrqq.."
+R["galdr"][9] = "hh.IWhhhjrrrq..."
+R["galdr"][10] = "hhHIhhhjjrrqq..."
+# Tenkje: blikket til sides (iris mot høgre i biletet).
+R["tenkje"][7] = "..rqhoohhhooqq.."
+R["tenkje"][8] = "..qhHWIhhhWIhq.."
+R["tenkje"][9] = "...hHHIhhhhIj..."
+# Sint: skrå bryn (vippelina går ned mot nasen), og smale auge under.
+R["sint"][9] = "...hWIHhhhIWj..."
+# Sjokk: store, kvite auge med små pupillar.
+R["sjokk"][7] = "..rqooHhhhooqq.."
+R["sjokk"][8] = "..qhWWHhhhWWhq.."
+R["sjokk"][9] = "...hWIHhhhIWj..."
+
+# Ser ned (bøygd hovud): den øvre augeraden (kvita og irisen) blir hud, vippa og irisen under står att.
+def blikk_ned(g, y): return ned_blikk(ned_blikk(g, y, "W"), y, "I")
+
 # Posar i scener (rad 9 til 12): knele, sitje og peike, same mål som i figur.py. Framanfrå og
 # bakfrå søkk den som sit tre rader, og den som kneler fem, med bøygd hovud og kortare overkropp.
 # Kneling: eitt kne i golvet og det andre bøygd fram med handa på. Sitjing: korte, lyse lår
 # med hendene på knea, leggane i skugge under. Bakfrå: sålen i golvet eller leggane under setet.
 # Frå sida er kneling kroppen frå «svak» med hovudet éi rad lågare og blikket ned.
-from handfigur import senk, peik_ut, set_saman, ned_blikk
-R["knele_ned"] = ned_blikk(set_saman(R["ned0"], 5, 11, {17: 12, 18: 13, 19: ".hhaqqqgqqqqaz..",
+R["knele_ned"] = blikk_ned(set_saman(R["ned0"], 5, 11, {17: 12, 18: 13, 19: ".hhaqqqgqqqqaz..",
     20: ".BBBqbbbbbbqaz..", 21: ".BBbq..Bbbq.hj..", 22: ".qqqq..bqqq....."}), 13)
 R["knele_opp"] = set_saman(R["opp0"], 5, 11, {17: 12, 18: 13, 19: 15, 20: "..hhBBbbbbbbqhh.",
     21: "..Bbq...Bbbq....", 22: ".kKKk....qqq...."})
-R["knele_side"] = ned_blikk(senk(R["side0"], 11, 4)[:16] + R["svak"][16:], 12)
+R["knele_side"] = blikk_ned(senk(R["side0"], 11, 4)[:16] + R["svak"][16:], 12)
 R["sitje_ned"] = set_saman(R["ned0"], 3, 15, {19: "..Aaqqqgqqqqaz..", 20: "..ahhBBbBBBhjz..",
     21: "...bbqq.bbqq....", 22: "...qqqq.qqqq...."})
 R["sitje_opp"] = set_saman(R["opp0"], 3, 15, {19: "...akkkkkkkkz...", 20: "..BBBBbbbbbbqq..",
