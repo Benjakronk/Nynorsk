@@ -1206,6 +1206,19 @@ same måte, uansett kven som tek over.
 - **Står att:** Rotta på kartet er mørk i stabburlyset. `pix.py sjekk` meiner rottemora er lysare nede
   til høgre (flatbrødet); det er medvite. Kampbakgrunnen er stova (`inne`); ein eigen stabburbakgrunn
   ville passe betre.
+- **Tillegg (dei to punkta som stod att):**
+  - Kartrotta (`rotte-kart`, `-v`) er ein tone lysare enn kamprotta, med ei kald, lys kantlinje langs
+    ryggen og hovudet (dagslyset frå glugga), eit raudt auge som blenkjer, lys snute og ein lys, naken
+    hale med ringar. Ho syner no godt i skuggen ved flatbrødbenken i stemninga `stabbur`.
+  - Ny kampbakgrunn `stabbur` i `bakgrunn.py`: mørkt, kaldt tømmer utan eldstad, takbjelke med
+    spekeskinker og pølser i snorer, tre kornbingar med loka oppe (korn, mjøl, korn), ein benk med
+    tynne flatbrødleivar i stablar, to tønner med vidjegjordar, breie golvplankar med slagskugge langs
+    veggen, og ein skrå stråle frå glugga med støv som fell ned i ein lys flekk på golvet der fiendane
+    står. `asen-stabbur` har `bakgrunn: "stabbur"` (biletet blir forhåndslasta frå kartet).
+  - Vurdert: `forhand/skjerm/r36b-rotte-spel.png` og `r36b-mor-spel.png` (rottemora og to rotter):
+    rottene står i lysflekken og skil seg godt frå golvet, og strålen går bak dei. Scena i stabburet:
+    kartrotta ved benken syner tydeleg.
+  - Står att: kartrotta har ingen gangrammer (ho glir).
 
 ## Runde 37: hylle og ujamn kant nedst, dalsida som glir over i kart, skyer og elv som rører seg
 

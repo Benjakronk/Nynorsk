@@ -540,7 +540,119 @@ def arkiv():
     return b
 
 
-BAKGRUNNAR = {"tun": tun, "utmark": utmark, "inne": inne, "arkiv": arkiv, "veg": veg, "kyrkje": kyrkje}
+def stabbur():
+    """Stabburet på Åsen inne: mørkt, kaldt tømmer og ingen eldstad. Takbjelke med spekemat som
+    heng i snorer, kornbingar med loka oppe og korn i romma, tønner med gjordar av vidje, ein
+    kagge og flatbrød i stablar på ein benk, breie golvplankar. Det einaste lyset er dagslys frå
+    glugga: ein skrå stråle med støv som fell ned på golvet (flekken der fiendane står)."""
+    b = B()
+    tre = M.rampe("#0c0a0e", "#1e1618", "#32241e", "#4a3426", "#634632", "#7e5c40")
+    tommervegg(b, 0, W, 0, 102, tre, 141, stokk=9)
+    # takbjelke på tvers med ei stong under, og spekemat som heng i snorer
+    for y in range(16, 28):
+        for x in range(W):
+            v = 0.62 - (y - 16) / 12 * 0.55 + (M.fbm(x / 9, y / 2, 142) - 0.5) * 0.25
+            b.p(x, y, M.tone(tre, v, x, y))
+    for x in range(W): b.p(x, 28, "#0c0a0e")
+    kjot = M.rampe("#2a0a10", "#4e141c", "#7a2228", "#a43a34", "#c8604a")
+    fett = M.rampe("#7a6a5a", "#b8a890", "#e8dcc4")
+    for i, (cx, lengd, w) in enumerate([(92, 30, 9), (118, 22, 4), (132, 26, 4), (150, 34, 10), (176, 20, 4), (190, 28, 8)]):
+        top = 30 + (i % 2) * 2
+        for y in range(28, top): b.p(cx, y, "#c8b490" if y % 2 else "#8a7a60")      # snora
+        for y in range(top, top + lengd):
+            t = (y - top) / lengd
+            hw = w * (math.sin(min(1, t * 1.25) * math.pi * 0.9) * 0.8 + 0.25) if w > 5 else w * 0.6
+            for x in range(int(cx - hw), int(cx + hw) + 1):
+                v = 0.75 - (x - cx + hw) / (2 * hw + 1) * 0.6 + (M.fbm(x / 2, y / 3, 143 + i) - 0.5) * 0.3
+                c = M.tone(kjot, v, x, y)
+                if w > 5 and x <= cx - hw + 1: c = M.tone(fett, 0.4 + v * 0.5, x, y)    # svor og feitt i kanten
+                if w <= 5 and (y - top) % 6 == 5: c = "#1a0a0c"                           # pølsebind
+                b.p(x, y, c)
+            if w <= 5: b.p(int(cx - hw) + 1, y, M.tone(kjot, 0.95, x, y))
+    # glugga høgt oppe på veggen: dagslys gjennom sprinklar
+    for y in range(36, 52):
+        for x in range(214, 234):
+            kant = x in (214, 233) or y in (36, 51)
+            sprinkel = (x - 214) % 5 == 0
+            b.p(x, y, "#1a1210" if kant else "#5a4434" if sprinkel else M.tone(M.rampe("#a8bccc", "#d8e4ea", "#f4f6f2"), 0.4 + (51 - y) / 30, x, y))
+    # kornbingar mot bakveggen til venstre: rom med korn og mjøl, loka står opp
+    for bx, innhald in [(6, "korn"), (52, "mjol"), (98, "korn")]:
+        for y in range(54, 102):
+            for x in range(bx, bx + 44):
+                plank = (y - 54) // 8
+                v = 0.5 + (M.h(plank, bx, 144) - 0.5) * 0.25 + (M.fbm(x / 10, y / 1.5, 145) - 0.5) * 0.35
+                if (y - 54) % 8 == 7 or x in (bx, bx + 43): v = 0.05
+                if x < bx + 3: v += 0.2
+                b.p(x, y, M.tone(tre, v, x, y))
+        for y in range(34, 54):                                              # loket står opp
+            for x in range(bx + 2, bx + 42):
+                v = 0.42 + (M.fbm(x / 8, y / 1.5, 146) - 0.5) * 0.3 - (y - 34) / 20 * 0.15
+                if (x - bx) % 13 == 0: v = 0.08
+                b.p(x, y, M.tone(tre, v, x, y))
+        r = M.rampe("#5a4418", "#8a6a28", "#b89440", "#dcbc68") if innhald == "korn" else M.rampe("#8a8478", "#b8b2a4", "#dcd8cc", "#f2f0e8")
+        for y in range(54, 60):                                              # korn eller mjøl i romet
+            for x in range(bx + 2, bx + 42):
+                kuv = 3 * math.sin((x - bx) / 40 * math.pi)
+                if y >= 58 - kuv: b.p(x, y, M.tone(r, 0.35 + (M.fbm(x / 2, y, 147) - 0.5) * 0.6 + (59 - y) * 0.06, x, y))
+    # benk med flatbrød i stablar, og ein kagge på bukk
+    for y in range(80, 84):
+        for x in range(150, 206): b.p(x, y, M.tone(tre, 0.7 if y == 80 else 0.35, x, y))
+    for lx in (154, 200):
+        for y in range(84, 102): b.p(lx, y, "#1e1618"); b.p(lx + 1, y, "#32241e")
+    brod = M.rampe("#5a3a18", "#8a6030", "#b88a4a", "#dcb878", "#f0dca8")
+    for sx, n in [(162, 6), (180, 9), (196, 4)]:                          # tynne leivar, kantane ujamne
+        for k in range(n):
+            y = 79 - k
+            hw = 9 + int(M.h(k, sx, 152) * 3)
+            for x in range(sx - hw, sx + hw + 1):
+                v = (0.75 if k % 2 else 0.45) - (x - sx) / hw * 0.3 + (M.h(x, y, 148) - 0.5) * 0.15
+                if k == n - 1: v = 0.9 - (x - sx) / hw * 0.2
+                b.p(x, y, M.tone(brod, v, x, y))
+            b.p(sx + hw, y, M.tone(brod, 0.05, sx, y))
+    # tønner med gjordar av vidje til høgre
+    for cx, top in [(258, 58), (292, 62)]:
+        for y in range(top, 102):
+            t = (y - top) / (102 - top)
+            hw = 15 + math.sin(t * math.pi) * 3
+            for x in range(int(cx - hw), int(cx + hw) + 1):
+                u = (x - cx) / hw
+                v = 0.6 - u * 0.45 - abs(u) ** 3 * 0.3 + (M.fbm(x / 2, y / 9, 149) - 0.5) * 0.2
+                if int((u + 1) * 5) != int((u + 1.04) * 5): v = 0.08               # stavar
+                c = M.tone(tre, v, x, y)
+                if (y - top) % 14 in (3, 4): c = M.tone(M.rampe("#2a2410", "#4a4220", "#6e6434"), 0.6 - u * 0.5, x, y)
+                b.p(x, y, c)
+        for x in range(int(cx - 15), int(cx + 16)):                          # lok
+            b.p(x, top, M.tone(tre, 0.75, x, top)); b.p(x, top + 1, M.tone(tre, 0.55, x, top))
+    golv = M.rampe("#0e0a0c", "#20160f", "#342418", "#4a3422", "#624630", "#7c5c40")
+    plankegolv(b, 102, 160, 30, golv, 150, breidd=0.22)
+    for x in range(W): b.p(x, 102, "#0c0a0e"); b.p(x, 103, "#1e1618")
+    for x0, x1 in [(6, 140), (150, 206), (240, 310)]:                       # slagskugge langs veggen
+        for y in range(104, 110):
+            for x in range(x0, x1):
+                if (110 - y) / 6 * 0.7 > M.terskel(x, y): b.p(x, y, M.blend(b.get(x, y), "#06040a", 0.55))
+    # strålen frå glugga: skrå, breiar seg ut, med støv, og ein lys flekk på golvet
+    for y in range(52, H):
+        t = (y - 52) / (150 - 52)
+        if t > 1.05: break
+        x0 = 214 + (96 - 214) * t; x1 = 234 + (176 - 234) * t
+        for x in range(int(x0), int(x1) + 1):
+            kant = min(x - x0, x1 - x) / max(1, (x1 - x0) / 2)
+            a = (0.75 - t * 0.3) * min(1, kant * 2.5)
+            if a > M.terskel(x, y): b.p(x, y, M.blend(b.get(x, y), "#e8e4cc", 0.2 + 0.14 * (kant > 0.45) + 0.08 * (kant > 0.75)))
+    for i in range(45):                                                   # støv som sviv i strålen
+        t = M.h(i, 1, 151); y = int(52 + t * 96)
+        x = int(214 + (96 - 214) * t + 4 + M.h(i, 2, 151) * (12 + (176 - 96 - 20) * t))
+        b.p(x, y, "#fff6dc" if i % 3 else "#d8d0b4")
+        if i % 4 == 0: b.p(x + 1, y, "#fff6dc"); b.p(x, y + 1, "#d8d0b4")
+    for y in range(136, 166):                                             # flekken på golvet
+        for x in range(70, 210):
+            d = ((x - 138) / 64) ** 2 + ((y - 150) / 12) ** 2
+            if d < 1 and (1 - d) * 1.4 > M.terskel(x, y) * 0.9: b.p(x, y, M.blend(b.get(x, y), "#f0e4c0", 0.32 if d < 0.45 else 0.18))
+    morke(b, 1.0, "#06040a")
+    return b
+
+
+BAKGRUNNAR = {"tun": tun, "utmark": utmark, "inne": inne, "arkiv": arkiv, "veg": veg, "kyrkje": kyrkje, "stabbur": stabbur}
 
 if __name__ == "__main__":
     namn = sys.argv[1:] or ["alle"]

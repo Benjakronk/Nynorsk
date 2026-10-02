@@ -324,21 +324,24 @@ def rotte_kart(spegl=False):
     (eller spegla mot venstre)."""
     W, H = 24, 14
     L = Lerret(W, H)
-    hale(L, [(5, 9), (3, 10), (1, 9), (1, 7), (2, 5)], 1)
+    for i, (x, y) in enumerate([(5, 9), (4, 10), (3, 10), (2, 10), (1, 9), (1, 8), (1, 7), (2, 6), (2, 5)]):
+        L.p(x, y, "c" if i % 3 == 2 else "d")             # lys, naken hale med ringar
     spenn = {3: (8, 12), 4: (6, 14), 5: (5, 17), 6: (4, 19), 7: (4, 21), 8: (4, 20), 9: (5, 18), 10: (6, 16)}
     m = {(x, y) for y, (x0, x1) in spenn.items() for x in range(x0, x1 + 1)}
     inn = lambda x, y: (x, y) in m
+    # Stabburet er mørkt: kartrotta er ein tone lysare enn kamprotta, med ei lys kantlinje langs
+    # ryggen og hovudet (mot lyset frå glugga) og eit auge som blenkjer.
     for (x, y) in m:
-        c = "2"
-        if not inn(x + 1, y + 2): c = "1"
-        if not inn(x, y + 1): c = "0"
-        if not inn(x - 1, y - 1) or not inn(x - 2, y): c = "3"
-        if not inn(x, y - 1) and 8 <= x <= 13: c = "4"
+        c = "3"
+        if not inn(x + 1, y + 2): c = "2"
+        if not inn(x, y + 1): c = "1"
+        if not inn(x - 1, y - 1) or not inn(x - 2, y): c = "4"
+        if not inn(x, y - 1) and x >= 6: c = "s"          # kaldt dagslys i kanten
         L.p(x, y, c)
-    for x in range(17, 21): L.p(x, 8, "5")
-    for x in range(18, 21): L.p(x, 7, "6")
-    L.tekst(14, 3, ["1c", "1dc"], {})                   # øyret
-    L.tekst(16, 5, ["00", "rR"], {})                    # sint bryn og raudt auge
+    for x in range(17, 21): L.p(x, 8, "6")
+    for x in range(18, 21): L.p(x, 7, "4")
+    L.tekst(14, 3, ["1d", "1dc"], {})                   # øyret
+    L.tekst(16, 5, ["00", "Rw"], {})                    # sint bryn og raudt auge som blenkjer
     L.p(21, 7, "c"); L.p(22, 7, "d")                    # nasa
     L.p(19, 9, "T"); L.p(19, 10, "T")                   # tanna
     for x in (7, 8, 14, 15): L.p(x, 11, "c")            # føtene
