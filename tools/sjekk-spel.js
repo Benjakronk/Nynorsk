@@ -47,11 +47,20 @@ for (const [id, st] of Object.entries(D.STEMNINGAR || {})) {
   if (st.glod) for (const l of ["bak", "fig"]) { if (!Array.isArray(st.glod[l]) || st.glod[l].length !== 3) feil.push(`${stad}: glod.${l} må ha tre nivå`); else st.glod[l].forEach((op, i) => sjekkOp(op, `${stad} glod.${l}[${i}]`)); }
   if ((st.kjelder || st.ivar || st.straalar) && !st.glod) feil.push(`${stad}: kjelder, ivar og straalar treng glod`);
   if (st.syklus && !(Array.isArray(st.syklus) && st.syklus.every(v => er3(v, -31, 31)))) feil.push(`${stad}: syklus må vere ei liste med [r, g, b]`);
-  if (st.ivar && !(Array.isArray(st.ivar) && st.ivar.length === 3 && st.ivar[0] > st.ivar[1] && st.ivar[1] > st.ivar[2])) feil.push(`${stad}: ivar må vere tre radiar, størst først`);
+  if (st.ivar !== undefined && st.ivar !== true) feil.push(`${stad}: ivar må vere true (glødforma ivar i LYSKJELDER)`);
   if (st.skugge) for (const l of ["bak", "fig"]) if (st.skugge[l]) sjekkOp(st.skugge[l], `${stad} skugge.${l}`);
   if (st.sepia !== undefined && !(st.sepia >= 0 && st.sepia <= 1)) feil.push(`${stad}: sepia må vere frå 0 til 1`);
 }
-for (const [id, k] of Object.entries(D.LYSKJELDER || {})) if (!(Array.isArray(k.r) && k.r.length === 3 && k.r[0] > k.r[1] && k.r[1] > k.r[2] && k.fy > 0 && k.fy <= 1)) feil.push(`lyskjelde ${id}: r må vere tre radiar, størst først, og fy frå 0 til 1`);
+// Glødformene (glod.py): biletet må finnast, breidda må gå opp i rammene, og rekkja må peike på rammer som finst.
+for (const id of ["grue", "kakkelomn", "peis", "lys", "lykt", "krone", "ivar", "sky"]) if (!(D.LYSKJELDER || {})[id]) feil.push(`LYSKJELDER manglar glødforma ${id} (sjå lyskjelder() i motor.js)`);
+for (const [id, k] of Object.entries(D.LYSKJELDER || {})) {
+  const fil = require("path").join(__dirname, "..", "bilete", "spel", "lys", id + ".png");
+  if (!(Number.isInteger(k.rammer) && k.rammer >= 1)) feil.push(`lyskjelde ${id}: rammer må vere eit heilt tal, 1 eller meir`);
+  if (!(Array.isArray(k.rekkje) && k.rekkje.length && k.rekkje.every(r => Number.isInteger(r) && r >= 0 && r < k.rammer))) feil.push(`lyskjelde ${id}: rekkje må vere ei liste med rammer frå 0 til ${k.rammer - 1}`);
+  if (!require("fs").existsSync(fil)) { feil.push(`lyskjelde ${id}: bilete/spel/lys/${id}.png finst ikkje (køyr tools/pikselkunst/glod.py ${id})`); continue; }
+  const w = require("fs").readFileSync(fil).readUInt32BE(16);                       // breidda står i IHDR
+  if (w % k.rammer) feil.push(`lyskjelde ${id}: breidda ${w} går ikkje opp i ${k.rammer} rammer`);
+}
 for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR || {})[k.stemning]) feil.push(`${id}: ukjend stemning «${k.stemning}» (sjå STEMNINGAR)`);
 // Hus og inventar som figurar: bildefila må finnast
 const fs_ = require("fs"), sti_ = require("path");

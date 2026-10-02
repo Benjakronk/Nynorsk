@@ -653,3 +653,49 @@ same måte, uansett kven som tek over.
 - **Står att:** Glødformene er rekna ellipsar, ikkje teikna for hand per kjelde. Elden i grua
   flimrar i pikslane, men gløden byter berre fargar (ikkje form). Kontoret har berre eitt ljos og
   ser nesten ut som før. Kampscena har framleis sine eigne blink.
+
+## Runde 22: handteikna glød rundt kvar lyskjelde
+
+- **Oppdrag:** Gløden rundt lyskjeldene var utrekna ellipsar i tre nivå med ein dithera kant, og
+  flimmeret var berre fargar på rundgang. Som i Final Fantasy VI skal gløden vere malt for hand og
+  høyre til kjelda, og forma skal flimre med elden.
+- **Research:** `ff6bak-inne.png`, `ff6bak-by.png` og `z-ff6-strand-by.png`: lys og skugge i FF6 er
+  hardkanta flater i to til tre tonar med ein smal, ujamn dither-overgang, og lampa ved døra kastar
+  ein boge av lys opp på veggen. Golvet blir sett på skrå, så pølar er låge og breie.
+- **Gjort:**
+  - `tools/pikselkunst/glod.py`: éin funksjon per glødform, teikna rad for rad (`rader`, `profil`)
+    med handplasserte dither-pikslar (`prikk`), og med parameteren `r` for flimmerramma. Skriv
+    `kjelder/lys-<namn>.pix` (type `glod`) og `bilete/spel/lys/<namn>.png`, og `forhand/lys-ark.png`.
+    Formene: `grue` (3 rammer: låg, brei pøl på hellene, kvitkalken, bogen opp på bakveggen til høgre
+    for hetta og sideveggen), `kakkelomn` (3: glo i døra, glorie rundt omnen, vifte ut over golvet),
+    `peis` (3: lys opp på muren ved sida og ei låg vifte), `lys` (2: smal og høg over flammen, liten
+    pøl ved foten), `lykt` (2: rund glorie, midje langs stolpen, pøl og ein sterk flekk på bakken
+    under), `krone` (2: små gloriar ved dei fire ljosa og ein pøl på golvet), `ivar` (2: ljoset Ivar
+    ber i arkivet) og `sky` (skyskuggen). Fargen i biletet er trinnet (raudkanalen), og ein magenta
+    piksel er ankeret.
+  - `motor.js`: `glodform()` les biletet éin gong, finn ankeret og gjer kvar ramme om til strekar
+    (rad, x frå, x til, nivå), og `stemple()` legg dei inn i lysnivåa som før. `glodRamme()` vel ramma
+    etter `rekkje` i `LYSKJELDER` (150 ms per steg), forskoven per kjelde så dei ikkje flimrar i takt.
+    Ellipsane (`glodForm`) og dei tre skyellipsane er fjerna. Fargerundgangen er behalden.
+  - `LYSKJELDER` i `data.js` har `rammer` og `rekkje`, `ivar: true` i stemninga `mork`. Peisen
+    (`f`) har eiga form og ankeret nedst i eldopninga. Grua og omnen har ankeret nedst midt i elden.
+  - Nytt: flisa `T` (lykt på stolpe utan kvileplass) i utmarka ved setra og to på vegen til Ekset,
+    så kveldskarta har lykter. Ein peis i kontoret. Kyrkja har `kjelder: true` (lysekrona og
+    altarljoset).
+  - Bileta er forhåndslasta (`alleBilete`), og `sjekk-spel.js` sjekkar at kvar glødform finst,
+    at breidda går opp i rammene og at rekkja peikar på rammer som finst.
+  - `skjerm.html` spelar opningsscena ferdig før kartet blir lasta (elles låg samtalen over
+    biletet, og scena heldt fram på feil kart med feil i teikninga).
+- **Rundar:** 1) Gløden var for lita og svak samanlikna med ellipsane: grua og kakkelomnen vart
+  større, og trinna i `inne` litt sterkare. 2) Lykta ute gav gulgrønt lys på graset: trinna i
+  `kveld` tek no snittet mot ein oransje farge, så lyset blir varmt. 3) Gloriane på lysekrona låg
+  over ljosa som rosa dottar: flytte ned på flammane og gjort mindre.
+- **Vurdert:** Før/etter for asen-stova, prestegarden, kontoret, nedre-hovde, ekset-stova, arkivet,
+  kyrkja, utmarka og vegen (`forhand/skjerm/for22-*` og `e22-*`). Grua kastar bogen opp på veggen og
+  ein trappa pøl over golvet, ljosa har smal, høg glød, kakkelomnen ei vifte, lykta ein glorie og ein
+  pøl, lysekrona ein pøl på golvet. Ljoset rundt Ivar i arkivet er ein rund flekk i tre trinn med
+  dithera kantar.
+- **Yting:** Målt i Edge utan skjerm i verkeleg tid (median av 60 bilete): 0,7 til 1,2 ms med lesinga
+  av lerretet og 0,4 til 0,6 ms for sjølve rekninga, same som før (runde 21).
+- **Står att:** Grua er teikna for hjørnet til venstre (asen-stova og nedre-hovde). Ei grue på ein
+  annan stad treng ei eiga form (spegla). Gløden blir ikkje skugga av møblar.

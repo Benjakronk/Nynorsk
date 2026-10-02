@@ -127,6 +127,14 @@ window.Pikslar = (function () {
   }
   let golvNo = "P";
   const underGolv = (g, t, v) => (FLIS[golvNo] || FLIS.P)(g, t, v);
+  // Lykt på ein stolpe (flisa L ute og T). Gløden rundt lykta er lys i motoren: den handteikna
+  // glødforma lykt (bilete/spel/lys/lykt.png) med fargerekning, sjå lys() i motor.js.
+  function lyktPaaStolpe(g, t) {
+    const k = Math.floor(t / 300) % 2;
+    const R = Rutenett(16, 16).rect("s", 7, 6, 2, 10).rect("l", 5, 1, 6, 6).rect("t", 4, 0, 8, 1);
+    g.drawImage(mal(R, { s: "#6a4428", l: { fast: "#f8d840" }, t: "#2a2838" }), 0, 0);
+    px(g, 6, 2, k ? "#fff8d0" : "#f8e890", 4, 4); px(g, 7, 2, "#3a3050", 1, 4); px(g, 5, 4, "#3a3050", 6, 1);
+  }
   const FLIS = {
     ".": (g, t, v) => {
       // I utmarka (golv «,») er vanleg gras mørkt som villgraset, men lågt.
@@ -288,20 +296,14 @@ window.Pikslar = (function () {
     },
     "L": (g, t) => {
       underGolv(g, t, 0);
-      if (golvNo === "." || golvNo === ",") {
-        // Ute: ei lykt på ein stolpe
-        const k = Math.floor(t / 300) % 2;
-        // Gløden rundt lykta er lys i motoren (glødformer med fargerekning, sjå lys() i motor.js).
-        const R = Rutenett(16, 16).rect("s", 7, 6, 2, 10).rect("l", 5, 1, 6, 6).rect("t", 4, 0, 8, 1);
-        g.drawImage(mal(R, { s: "#6a4428", l: { fast: "#f8d840" }, t: "#2a2838" }), 0, 0);
-        px(g, 6, 2, k ? "#fff8d0" : "#f8e890", 4, 4); px(g, 7, 2, "#3a3050", 1, 4); px(g, 5, 4, "#3a3050", 6, 1);
-        return;
-      }
+      if (golvNo === "." || golvNo === ",") { lyktPaaStolpe(g, t); return; }      // ute: ei lykt på ein stolpe
       const k = Math.floor(t / 300) % 2;
       const R = Rutenett(16, 16).rect("m", 7, 6, 2, 7).form("m", [[13, 5, 10], [14, 4, 11]]).rect("l", 7, 4, 2, 2);
       g.drawImage(mal(R, { m: "#c08018", l: "#f2ead0" }), 0, 0);
       px(g, 7, 1 + k, "#f8d840", 2, 3 - k); px(g, 8, k, "#fff8d0", 1, 2);
     },
+    // Lykt på ein stolpe ute, som L, men ingen stad å kvile (pynt og lys på kvelden).
+    "T": (g, t) => { underGolv(g, t, 0); lyktPaaStolpe(g, t); },
     "E": g => { px(g, 0, 0, "#140c10", S, S); px(g, 0, 0, R_.tommer[1], 2, S); px(g, 14, 0, R_.tommer[1], 2, S); px(g, 2, 13, R_.plank[3], 12, 1); px(g, 2, 14, R_.plank[2], 12, 2); },
     "n": (g, t, v) => {
       underGolv(g, t, v);
@@ -391,8 +393,8 @@ window.Pikslar = (function () {
   const treCache = {};
   const treBilete = k => treCache[k] || (treCache[k] = TRE[k]());
 
-  const FAST = new Set(["+", "(", "u", "#", "t", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "X", "c", "f", "z", "G", "e", "a", "n", " "]);
-  const ANIM = new Set(["~", "L", "f", "n", "y"]);
+  const FAST = new Set(["+", "(", "u", "#", "t", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " "]);
+  const ANIM = new Set(["~", "L", "T", "f", "n", "y"]);
   const VARIANT_EKSTRA = new Set(["Rt", "Rb", "Rtb"]);
   const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t"]);
   const cache = new Map();
@@ -917,6 +919,7 @@ window.Pikslar = (function () {
     for (const [id, ks] of Object.entries(D.PORTRETT_KJENSLER || {})) for (const k of ks) ut.push(`bilete/spel/portrett/${id}-${k}.png`);
     for (const d of Object.values(PNG)) ut.push(d.fil);
     for (const n of NAERBILETE) ut.push(`bilete/spel/naer/${n}.png`);
+    for (const n of Object.keys(D.LYSKJELDER || {})) ut.push(`bilete/spel/lys/${n}.png`);   // glødformene til lyset (glod.py)
     return ut;
   }
 

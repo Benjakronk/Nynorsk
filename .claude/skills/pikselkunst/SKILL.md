@@ -57,6 +57,25 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   `python tools/pikselkunst/inventar.py <namn>`. Står i `bygg` på kartet,
   `over: true` teiknar figuren over alt anna (lysekrona). Inventar med eld får
   flammerute i `ILD` i `js/rpg/pikslar.js` (levande eld teikna oppå biletet).
+- Glød rundt ei lyskjelde (eld, ljos, lykt, krone): ei handteikna glødform i
+  `tools/pikselkunst/glod.py`, éin funksjon per kjelde med parameteren `r` (flimmerramma).
+  Slik lagar du glød for ei ny lyskjelde:
+  1. Finn ankeret: der lyset kjem frå, i pikslar på skjermen (nedst midt i elden for inventar
+     med `ILD`, midt i biletet elles, eller ein fast stad i flisa). Koordinatane i skriptet er
+     relative til ankeret (x mot høgre, y nedover).
+  2. Teikn forma i to eller tre trinn (1 ytst, 3 kjernen) med `G.rader` (rad for rad, til dømes
+     for ei grue i eit hjørne), `G.profil` (symmetrisk, halvbreidda per rad) og `G.prikk`
+     (handplasserte dither-pikslar i kanten, glisne og ujamne, ikkje eit sjakkbrett). Tenk på kva
+     lyset treffer: golvet sett på skrå (lågt og breitt), veggen ved sida, bakken under ei lykt.
+  3. Teikn to eller tre rammer der forma endrar seg litt (eld meir enn ljos og lykter), og før
+     funksjonen inn i `FORMER` med talet på rammer.
+  4. `python tools/pikselkunst/glod.py <namn>` skriv `kjelder/lys-<namn>.pix` og
+     `bilete/spel/lys/<namn>.png`, og `forhand/lys-ark.png` viser alle rammene.
+  5. Før kjelda inn i `LYSKJELDER` i `data.js` (`rammer` og `rekkje`, rekkjefølgja i
+     flimmeret med 150 ms per steg) og i `lyskjelder()` i `motor.js` (kva bygg eller flis som
+     lyser, og kvar ankeret er). Biletet blir forhåndslasta av seg sjølv.
+  6. Sjå forma i spelet (`skjermbilete.py`), i alle stemningane ho kan lyse i. Fargane til
+     trinna står i `glod` i `STEMNINGAR`.
 - Møblere med bord, benk og stol (bondestova). Kvart møbel er eit eige bilete, så eit rom kan
   setjast saman på fleire måtar. `x`, `y` er øvre venstre flis, `h` talet på flisrader, og breidda
   er (biletbreidd - 8) / 16 fliser. Alle rutene møbelet dekkjer, skal vere `(` (fast golv) i `rader`.

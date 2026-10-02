@@ -128,7 +128,7 @@ Lyset etterliknar Super Nintendo og Final Fantasy VI. Det meste av lyset er teik
   - `mork`: nesten mørkt (arkivet), med ein lyssirkel rundt Ivar og rundt lampene.
   - `kyrkje`: lyst, med lysstrålar frå vindauga som eit gjennomsiktig lag i trinn (kjernen tek snittet mot kvitt).
   - `minne`: falma fargar mot brunt (palettendring) og lyse band øvst og nedst, i trinn.
-- **Lyskjelder** (`LYSKJELDER` i `data.js`): grua og kakkelomnen (der elden i `Pikslar.ILD` er), ljos og lykter (`L`), peis (`f`) og lysekrona. Kvar har ei glødform i tre nivå med ein dithera kant, hardkanta som om ho var teikna for hand. Fargane i gløden går på rundgang med 150 ms per steg, i same takt som elden.
+- **Lyskjelder** (`LYSKJELDER` i `data.js`): grua og kakkelomnen (der elden i `Pikslar.ILD` er), ljos (`L` inne), lykter (`L` ute, og `T`, som er ei lykt utan kvileplass), peis (`f`) og lysekrona. Kvar type har si eiga handteikna glødform i `bilete/spel/lys/<namn>.png` (laga med `tools/pikselkunst/glod.py`): fargen i biletet er trinnet (1 til 3), og den magenta pikselen er ankeret der kjelda er. Motoren gjer kvar ramme om til strekar éin gong og stemplar dei inn i lysnivåa. Formene har to eller tre flimmerbilete som blir bytte i same takt som elden (150 ms, rekkjefølgja står i `rekkje`), og fargane i gløden går òg på rundgang. Ljoset rundt Ivar i arkivet (`ivar: true`) og skyskuggane (`sky`) er glødformer på same måten.
 - **Scenesteg:** `tone`, `blink` med `rgb` og `spot` (sjå tabellen over). `ton` til svart og kvitt går i 16 trinn.
 
 ### Posar

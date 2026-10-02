@@ -26,7 +26,9 @@ f.onload = async () => {
   // Vent til grafikken er lasta og tittelskjermen har knappar.
   for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
   d.querySelector("#rpg-tittel-val button").click();
-  await vent(300); await blaFram();
+  // Opningsscena (Storebror i stova) blir spela ferdig før vi går til kartet, elles kjem samtalen
+  // hans over biletet, og scena held fram på eit kart der han ikkje finst.
+  await vent(300); for (let n = 0; n < 60; n++) { await blaFram(); await vent(100); }
   w.RPGTest.st().flagg.framande1 = true;
   M.last(q.get("kart") || "asen", q.get("m") || "1"); await vent(400); await blaFram();
   if (q.get("x")) Object.assign(M.spelar, { x: +q.get("x"), y: +q.get("y"), fx: +q.get("x"), fy: +q.get("y"), dir: 0 });

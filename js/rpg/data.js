@@ -219,9 +219,11 @@ window.RPGData = (function () {
        medan figurane held fargane.
      hdma: [[rad, [r, g, b]], …]  ein farge som blir lagd til bakgrunnen og endrar seg nedover
        skjermen i trinn på 8 rader (som HDMA), ikkje som mjuk gradient.
-     glod: { bak: [op1, op2, op3], fig: [...] }  inni glødformene rundt lyskjeldene (nivå 1 ytst).
+     glod: { bak: [op1, op2, op3], fig: [...] }  inni glødformene rundt lyskjeldene (nivå 1 ytst,
+       sjå LYSKJELDER).
      syklus: [[r, g, b], …]  palettanimasjon: gløden går på rundgang, 150 ms per steg (som elden).
-     kjelder: true: grue, kakkelomn, lys og lykter lyser (LYSKJELDER). ivar: lys rundt Ivar.
+     kjelder: true: grua, kakkelomnen, peisen, lysekrona, ljos og lykter lyser (LYSKJELDER).
+     ivar: true: ljoset Ivar ber, lyser rundt han (glødforma ivar).
      skyer: tal på skyskuggar som driv over kartet, skugge: { bak, fig } inni dei.
      straalar: lysstrålar frå vindauga (u), med glod-nivåa.
      sepia: 0..1  fargane blir falma mot brunt (palettendring, som i minne). */
@@ -238,27 +240,27 @@ window.RPGData = (function () {
       hdma: [[0, [1, -6, 2]], [192, [-2, -8, 0]]],
       skyer: 2, skugge: { bak: { p: [-2, -2, -1] }, fig: { p: [-1, -1, 0] } },
       kjelder: true,
-      glod: { bak: [{ p: [-1, -4, -3] }, { p: [2, 0, -3] }, { p: [5, 3, -2] }], fig: [{ p: [0, -2, -1] }, { p: [3, 1, -1] }, { p: [5, 3, -1] }] },
+      glod: { bak: [{ p: [1, -2, -3], snitt: [16, 10, 6] }, { p: [4, 1, -3], snitt: [24, 15, 6] }, { p: [6, 4, -2], snitt: [31, 22, 9] }], fig: [{ p: [2, 0, -2] }, { p: [5, 2, -2] }, { p: [7, 4, -1] }] },
       syklus: [[0, 0, 0], [1, 1, 0], [0, 0, 0], [1, 0, 0]],
     },
     // Stova: rommet i skugge, varmt eldlys rundt grua, omnen og ljosa.
     inne: {
       bak: { p: [-5, -6, -4] }, fig: { p: [-3, -4, -3] },
       kjelder: true,
-      glod: { bak: [{ p: [-2, -4, -4] }, { p: [1, -1, -3] }, { p: [4, 2, -2] }], fig: [{ p: [-1, -2, -3] }, { p: [2, 0, -2] }, { p: [4, 2, -1] }] },
+      glod: { bak: [{ p: [-1, -3, -4] }, { p: [2, 0, -3] }, { p: [5, 3, -2] }], fig: [{ p: [0, -1, -3] }, { p: [2, 1, -2] }, { p: [4, 3, -1] }] },
       syklus: [[0, 0, 0], [1, 1, 0], [0, 0, 0], [1, 0, 0], [2, 1, 0], [1, 0, 0]],
     },
     // Mørkt: berre lyset rundt Ivar og lampene. Figurane blir mindre mørke enn rommet.
     mork: {
       bak: { p: [-12, -12, -6], lys: 6 }, fig: { p: [-8, -8, -4], lys: 9 },
-      kjelder: true, ivar: [58, 44, 28],
+      kjelder: true, ivar: true,
       glod: { bak: [{ p: [-8, -8, -6], lys: 11 }, { p: [-2, -2, -3] }, { p: [1, 0, -2] }], fig: [{ p: [-5, -5, -3], lys: 12 }, { p: [-1, -2, -1] }, { p: [1, 0, -1] }] },
       syklus: [[0, 0, 0], [1, 1, 0], [0, 0, 0], [1, 0, 0]],
     },
     // Lyst kyrkjerom med lysstrålar frå vindauga (gjennomsiktig lag, lagt til og halvert).
     kyrkje: {
       bak: { p: [1, 1, 0] }, fig: { p: [1, 1, 0] },
-      straalar: true,
+      straalar: true, kjelder: true,
       glod: { bak: [{ p: [3, 3, 1] }, { p: [5, 5, 2] }, { p: [3, 3, 1], snitt: [31, 30, 24] }], fig: [{ p: [3, 3, 1] }, { p: [4, 4, 2] }, { p: [6, 6, 3] }] },
     },
     // Minne og draum: falma fargar og lyse kantar øvst og nedst, i trinn.
@@ -267,14 +269,22 @@ window.RPGData = (function () {
       hdma: [[0, [12, 11, 8]], [28, [0, 0, 0]], [164, [0, 0, 0]], [192, [12, 11, 8]]],
     },
   };
-  /* Lyskjeldene og glødformene deira: radius i pikslar for nivå 1, 2 og 3 (ytst først), og fy:
-     kor flat forma er (golvet sett på skrå). Formene har ein dithera kant (eitt pikselband). */
+  /* Glødformene: handteikna bilete i bilete/spel/lys/<namn>.png, laga med tools/pikselkunst/glod.py.
+     Fargen i biletet er trinnet i gløden (1 ytst, 3 kjernen), og den magenta pikselen er ankeret
+     (der lyskjelda er). rammer: talet på flimmerbilete side om side. rekkje: kva ramme som blir
+     vist i kvart steg på 150 ms (same takt som elden). Eld flimrar mest, ljos og lykter lite.
+     Kven som lyser kvar, står i lyskjelder() i motor.js: grua og kakkelomnen (inventar med eld),
+     lysekrona, peisen (flisa f), ljos (L inne) og lykter (L ute og T). sky er skuggen av ei sky
+     (stemningar med skyer), og ivar er ljoset Ivar ber (ivar: true). */
   const LYSKJELDER = {
-    grue: { r: [52, 38, 22], fy: 0.7 },
-    kakkelomn: { r: [42, 28, 16], fy: 0.72 },
-    lys: { r: [24, 15, 8], fy: 0.8 },
-    lykt: { r: [34, 22, 12], fy: 0.8 },
-    krone: { r: [44, 30, 16], fy: 0.8 },
+    grue: { rammer: 3, rekkje: [0, 1, 2, 1, 0, 2, 1, 2, 0, 1] },
+    kakkelomn: { rammer: 3, rekkje: [0, 0, 1, 2, 2, 1, 0, 2] },
+    peis: { rammer: 3, rekkje: [0, 1, 2, 0, 2, 1, 1, 0, 2] },
+    lys: { rammer: 2, rekkje: [0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0] },
+    lykt: { rammer: 2, rekkje: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1] },
+    krone: { rammer: 2, rekkje: [0, 0, 1, 0, 0, 0, 0, 1, 1, 0] },
+    ivar: { rammer: 2, rekkje: [0, 0, 0, 1, 0, 0, 1, 0] },
+    sky: { rammer: 1, rekkje: [0] },
   };
 
   /* ---------- Karta ---------- */
@@ -370,7 +380,7 @@ window.RPGData = (function () {
         "###,,,,,,,,,,,.,,,,~~,RRRR,,####",
         "####,,.,,,,,,,,,,,,~~,RRRR,,,###",
         "##,#,,,hhh,,,,,,,,,~~,WWDW,,#,,#",
-        "#,,,,,,hhh,,,,,,,,,~~...=...####",
+        "#,,,,,,hhh,,,,,,,,,~~...=T..####",
         "#,,,,,..@..,o,,,,,~~,...=.%.####",
         "#,##,t.....,,,,,,,~~,...=...#,,#",
         "####,,,.=,,,,,,,,,~~,,,,=,,,o#,#",
@@ -493,7 +503,7 @@ window.RPGData = (function () {
       fiendar: { alle: true, lag: [["blekkdrope", "blekkdrope"], ["blekkflekk"], ["fjorpennen"], ["blekkdrope", "fjorpennen"]] },
       rader: [
         "XXXXXXXXXXXXXXXXXXXEXX",
-        "XyyyyPPPyyyyPPPyyyP2PX",
+        "XyyyyPPPyyyyPfPyyyP2PX",
         "XPPPPPPnPPPPPPPPPPPPPX",
         "XPP((PPPPPPyyyyPPnPPPX",
         "XPP((PPnPPPPPPPPPPPPPX",
@@ -574,8 +584,8 @@ window.RPGData = (function () {
         "#,,,,,,,,,,,,,,=,,,,,t,,,,,#",
         "#,,,,,o,,,,,,,,=,,,,,,,,,,,#",
         "#,,,,,,,,,,,,,,=======,,,,,#",
-        "#,,,,,,,,t,,,,,,,,,,,=,,,,,#",
-        "#QQQQ,,,,,,,,,,,,,,,,======2",
+        "#,,,,,,,,t,,,,,,,,,,,=,,,,T#",
+        "#QQQQ,,T,,,,,,,,,,,,,======2",
         "#~~~QQ@,,,,,,,t,,,,,,,,,,,,#",
         "#~~~~~~~,,,,,,,,,,,,,,,,,K,#",
         "#~~~~~~~~~~~~~~~~~~~~~~~~~~#",

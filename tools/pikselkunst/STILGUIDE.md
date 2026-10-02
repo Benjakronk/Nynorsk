@@ -109,6 +109,23 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
   med raud pute, brunraud preikestol, lysekrone i messing og ljosstrålar frå
   vindauga.
 
+## Lys og glød (sjå glod.py)
+
+- Lyset over eit kart er fargerekning som på Super Nintendo (`lys()` i `motor.js`): ein fast
+  farge lagd til, trekt frå eller halvert per trinn. Ingen mjuke gradientar og ingen vignett.
+- Gløden rundt kvar lyskjelde er ei handteikna form, som i Final Fantasy VI, og ho høyrer til
+  kjelda: eldlys frå grua ligg lågt og breitt over golvet framfor og kastar ein boge av lys opp
+  på veggen ved sida, eit stearinlys har ein smal og høg glød over flammen og ein liten pøl ved
+  foten, ei lykt har ein rund glorie, ei smal midje langs stolpen og ein flat pøl på bakken under
+  seg, lysekrona har små gloriar ved ljosa og ein pøl på golvet under, kakkelomnen og peisen
+  kastar ei vifte ut over golvet frå eldopninga.
+- To til tre trinn med harde kantar. Overgangen får nokre handplasserte dither-pikslar (glisne,
+  helst i hjørna av trappesteget i kanten), ikkje eit utrekna mønster rundt heile forma.
+- Kantane er trappesteg med jamn rytme (1, 1, 2, 3 … pikslar), slik som ein sirkel i pikselkunst.
+- Elden flimrar: to eller tre rammer der forma endrar seg litt (pølen veks og krympar, bogen på
+  veggen pustar), i takt med flammene (150 ms). Ljos og lykter flimrar mindre.
+- Ute om kvelden blir lyset varmt med snitt mot ein oransje farge, elles blir gras gulgrønt.
+
 ## Hjørne og skuggar
 
 - Steingarden har ein stolpe av store, tilhogne steinar med dekkstein i kvart hjørne

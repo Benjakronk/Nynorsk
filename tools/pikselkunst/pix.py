@@ -17,7 +17,7 @@ Førehandsvisingane hamnar i tools/pikselkunst/forhand/ (ikkje i git):
 
 Format for .pix:
   # namn: portrett-ivar
-  # type: portrett | figur | fiende | flis | naer
+  # type: portrett | figur | fiende | flis | naer | glod (glødform til lyset, sjå glod.py)
   # ut: bilete/spel/portrett/ivar.png
   # storleik: 48x48
   palett:
@@ -41,7 +41,7 @@ PROSJEKT = os.path.abspath(os.path.join(ROT, "..", ".."))
 FORHAND = os.path.join(ROT, "forhand")
 
 # Grenser frå stilguiden (STILGUIDE.md)
-MAKS_FARGAR = {"portrett": 40, "figur": 24, "fiende": 32, "flis": 16, "naer": 40}
+MAKS_FARGAR = {"portrett": 40, "figur": 24, "fiende": 32, "flis": 16, "naer": 40, "glod": 4}
 OMRISS_MAKS_LYS = 0.16          # omrisspikslar skal vere nesten svarte
 OMRISS_MAKS_LYS_PORTRETT = 0.45 # portretta har farga omriss (Fire Emblem): mørkaste tonen i materialet
 OMRISS_DEL = 0.75               # minst så stor del av kantpikslane skal vere omriss
@@ -121,6 +121,8 @@ def bakgrunn(type_, w, h):
             for x in range(w):
                 t = min(1, (((x - w / 2) / (w / 2)) ** 2 + ((y - h * 0.45) / (h / 2)) ** 2) ** 0.5)
                 d.point((x, y), fill=(int(40 - 30 * t), int(30 - 25 * t), int(80 - 60 * t), 255))
+    elif type_ == "glod":              # glødform: mørkt golv i ei stove
+        d.rectangle([0, 0, w, h], fill=(30, 20, 16, 255))
     elif type_ == "fiende":            # kampbakgrunn i utmarka: kveldshimmel og gras
         for y in range(h):
             t = y / max(1, h - 1)
@@ -170,6 +172,7 @@ def sjekk(sti, stille=False):
     if len(fargar) > MAKS_FARGAR.get(type_, 32):
         merknader.append(f"{len(fargar)} fargar (maks {MAKS_FARGAR.get(type_, 32)} for {type_})")
     for r in rammer:
+        if type_ == "glod": break                  # glødformer: fargane er trinn, ikkje grafikk (sjå glod.py)
         px = r.load(); w, h = r.size
         kant = omriss = einsame = fylt = 0
         for y in range(h):

@@ -599,8 +599,9 @@ window.Motor = (function () {
      Bakgrunnen og figurane har kvar sine innstillingar (som $51 og $53 i FF6), så ei maske held
      styr på figurpikslane (folk og vesen) i same teikneorden: hus, tre og møblar som står framfor
      ein figur, viskar ut maska der dei dekkjer.
-     Innstillingane står i RPGData.STEMNINGAR (kart.def.stemning). Lyskjeldene får hardkanta
-     glødformer i tre nivå (lysNiva), og fargane i gløden går på rundgang (palettanimasjon).
+     Innstillingane står i RPGData.STEMNINGAR (kart.def.stemning). Lyskjeldene får handteikna,
+     hardkanta glødformer i tre nivå (lysNiva, bileta i bilete/spel/lys/) som flimrar i same takt
+     som elden, og fargane i gløden går på rundgang (palettanimasjon).
      Ingen mjuke gradientar: ein fargeovergang nedover skjermen (hdma) går i trinn på 8 rader. */
   const LW = VW * S, LH = VH * S;
   const lysNiva = new Uint8Array(LW * LH);         // 0 grunn, 1 til 3 glød, 4 skyskugge
@@ -660,33 +661,42 @@ window.Motor = (function () {
     return a[1].map((v, i) => Math.round(v + (b[1][i] - v) * u));
   }
   const sum3 = (...v) => [v.reduce((s, x) => s + x[0], 0), v.reduce((s, x) => s + x[1], 0), v.reduce((s, x) => s + x[2], 0)];
-  // Glødformer: ellipsar i tre nivå med ein dithera kant (sjakkbrett) utanfor kvart nivå.
-  const stempel = new Map();
-  function glodForm(r, fy) {
-    const k = r.join(",") + "|" + fy;
-    let s = stempel.get(k);
-    if (s) return s;
-    const R = r[0] + 2, w = R * 2 + 1, d = new Uint8Array(w * w);
-    for (let dy = -R; dy <= R; dy++) for (let dx = -R; dx <= R; dx++) {
-      let lv = 0;
-      r.forEach((rx, j) => {
-        const ry = rx * fy, e = (dx * dx) / (rx * rx) + (dy * dy) / (ry * ry);
-        const kant = ((rx + 1.6) / rx) ** 2;
-        if (e <= 1 || (e <= kant && ((dx + dy) & 1) === 0)) lv = Math.max(lv, j + 1);
-      });
-      d[(dy + R) * w + dx + R] = lv;
+  /* Glødformer: handteikna bilete (bilete/spel/lys/<namn>.png, laga med tools/pikselkunst/glod.py).
+     Raudkanalen fortel trinnet (om lag 96, 176 og 248 for nivå 1, 2 og 3), og den magenta pikselen
+     i første ramma er ankeret. Kvar ramme blir gjord om éin gong til strekar (rad, x frå, x til,
+     nivå) relativt til ankeret, så stemplinga hoppar over det tomme rundt forma. */
+  const glodformer = new Map();
+  function glodform(namn) {
+    let f = glodformer.get(namn);
+    if (f) return f;
+    const k = (RPGData.LYSKJELDER || {})[namn], img = k && Pikslar.hent(`bilete/spel/lys/${namn}.png`);
+    if (!img || !Pikslar.klar(img)) return null;                     // ikkje lasta enno: prøv att neste bilete
+    const w = img.naturalWidth, h = img.naturalHeight, rw = Math.floor(w / k.rammer);
+    const c = document.createElement("canvas"); c.width = w; c.height = h;
+    const cg = c.getContext("2d", { willReadFrequently: true }); cg.drawImage(img, 0, 0);
+    const d = cg.getImageData(0, 0, w, h).data;
+    const niva = (x, y) => { const i = (y * w + x) * 4; return d[i + 3] < 128 ? 0 : Math.min(3, Math.max(1, ((d[i] + 42) / 85) | 0)); };
+    let ax = 0, ay = 0;
+    for (let y = 0; y < h; y++) for (let x = 0; x < rw; x++) { const i = (y * w + x) * 4; if (d[i] > 240 && d[i + 1] < 16 && d[i + 2] > 240 && d[i + 3] > 128) { ax = x; ay = y; } }
+    const rammer = [];
+    for (let r = 0; r < k.rammer; r++) {
+      const runs = [];
+      for (let y = 0; y < h; y++) for (let x = 0; x < rw;) {
+        const v = niva(r * rw + x, y);
+        let e = x + 1;
+        while (e < rw && niva(r * rw + e, y) === v) e++;
+        if (v) runs.push(y - ay, x - ax, e - ax, v);
+        x = e;
+      }
+      rammer.push({ runs: Int16Array.from(runs) });
     }
-    // Som strekar (dy, dx frå, dx til, nivå), så stemplinga hoppar over det tomme rundt forma.
-    const runs = [];
-    for (let dy = -R; dy <= R; dy++) for (let dx = -R; dx <= R;) {
-      const v = d[(dy + R) * w + dx + R];
-      let e = dx + 1;
-      while (e <= R && d[(dy + R) * w + e + R] === v) e++;
-      if (v) runs.push(dy, dx, e, v);
-      dx = e;
-    }
-    s = { runs: Int16Array.from(runs) }; stempel.set(k, s);
-    return s;
+    f = { rammer, rekkje: k.rekkje || [0] }; glodformer.set(namn, f);
+    return f;
+  }
+  // Ramma no for ei glødform. fase skil kjeldene frå kvarandre, så dei ikkje flimrar i takt.
+  function glodRamme(f, no, fase) {
+    const r = f.rekkje[(Math.floor(no / 150) + fase) % f.rekkje.length];
+    return f.rammer[r] || f.rammer[0];
   }
   // Stemplar ei form inn i lysnivåa. fast: alle pikslane i forma får dette nivået (skyskugge),
   // men berre der det ikkje lyser frå før. Elles vinn det høgaste nivået, og lys vinn over skugge.
@@ -702,8 +712,6 @@ window.Motor = (function () {
       }
     }
   }
-  // Skyskuggar: hardkanta former (tre ellipsar) som driv sakte over kartet, heile pikslar.
-  const SKY = [[0, 0, 40, 0.45], [-28, 6, 26, 0.5], [30, 4, 28, 0.5]].map(([x, y, r, fy]) => ({ x, y, f: glodForm([r], fy) }));
   // Lysstrålar frå eit vindauge: eit parallellogram skrått ned mot høgre (eitt steg per to rader),
   // i trinn: kjerne og kant, sterkast øvst, med ein dithera kant.
   function straale(sx, sy) {
@@ -719,21 +727,22 @@ window.Motor = (function () {
       }
     }
   }
-  // Lyskjeldene på kartet: [x, y, type] i skjermpikslar (typane står i RPGData.LYSKJELDER).
+  // Lyskjeldene på kartet: [x, y, type, fase], x og y i skjermpikslar (typane står i RPGData.LYSKJELDER).
   function lyskjelder(ox, oy) {
     const ut = [];
     for (const b of kart.def.bygg || []) {
       const type = b.id === "inne-grue" ? "grue" : b.id === "inne-kakkelomn" ? "kakkelomn" : b.id === "inne-lysekrone" ? "krone" : null;
       const img = type && Pikslar.bygg(b.id); if (!img) continue;
       const bx = Math.round((b.x + ox) * S) - 4, by = Math.round((b.y + b.h + oy) * S) - img.height;
-      const r = (Pikslar.ILD[b.id] || [])[0];                         // elden i grua og omnen
-      ut.push(r ? [bx + r.x + r.w / 2, by + r.y + r.h + 8, type] : [bx + img.width / 2, by + img.height / 2, type]);
+      const r = (Pikslar.ILD[b.id] || [])[0];                         // elden i grua og omnen: ankeret er nedst midt i elden
+      ut.push(r ? [bx + r.x + (r.w >> 1), by + r.y + r.h, type, b.x * 3 + b.y] : [bx + (img.width >> 1), by + (img.height >> 1), type, b.x * 3 + b.y]);
     }
     const ute = kart.def.golv === "." || kart.def.golv === ",";
     for (let y = 0; y < kart.h; y++) for (let x = 0; x < kart.w; x++) {
-      const c = kart.fliser[y][x];
-      if (c === "f") ut.push([(x + ox) * S + 8, (y + oy) * S + 12, "grue"]);
-      else if (c === "L") ut.push([(x + ox) * S + 8, (y + oy) * S + (ute ? 4 : 3), ute ? "lykt" : "lys"]);
+      const c = kart.fliser[y][x], fase = x * 3 + y * 5;
+      if (c === "f") ut.push([(x + ox) * S + 8, (y + oy) * S + 14, "peis", fase]);
+      else if (c === "L") ut.push([(x + ox) * S + 8, (y + oy) * S + (ute ? 4 : 3), ute ? "lykt" : "lys", fase]);
+      else if (c === "T") ut.push([(x + ox) * S + 8, (y + oy) * S + 4, "lykt", fase]);
     }
     return ut;
   }
@@ -755,16 +764,18 @@ window.Motor = (function () {
     if (!kart.def.stemning && !effekt.tone.bak && !effekt.tone.fig && !effekt.blink && !sp) return;
     // Lysnivå: skyskuggar, så glød og strålar.
     lysNiva.fill(0);
-    if (st.skyer) {
+    const sky = st.skyer && glodform("sky");
+    if (sky) {
       const kw = kart.w * S + 240, kh = kart.h * S + 120;
       for (let i = 0; i < st.skyer; i++) {
         const cx = Math.round(((no * 0.008 + i * 311) % kw) - 120 + ox * S), cy = Math.round(((i * 97 + no * 0.003) % kh) - 60 + oy * S);
-        for (const s of SKY) stemple(s.f, cx + s.x, cy + s.y, 4);
+        stemple(sky.rammer[0], cx, cy, 4);
       }
     }
     if (st.glod) {
-      if (st.kjelder) for (const [x, y, type] of lyskjelder(ox, oy)) { const k = (RPGData.LYSKJELDER || {})[type]; if (k) stemple(glodForm(k.r, k.fy), x, y); }
-      if (st.ivar) stemple(glodForm(st.ivar, 0.9), (spelar.fx + ox) * S + 8, (spelar.fy + oy) * S + 2);
+      if (st.kjelder) for (const [x, y, type, fase] of lyskjelder(ox, oy)) { const f = glodform(type); if (f) stemple(glodRamme(f, no, fase), x, y); }
+      const iv = st.ivar && glodform("ivar");
+      if (iv) stemple(glodRamme(iv, no, 0), (spelar.fx + ox) * S + 8, (spelar.fy + oy) * S + 2);
       if (st.straalar) for (let y = 0; y < kart.h; y++) for (let x = 0; x < kart.w; x++) if (kart.fliser[y][x] === "u") straale(Math.round((x + ox) * S) + 4, Math.round((y + oy) * S) + 11);
     }
     // Operasjonane for kvart nivå (0 grunn, 1 til 3 glød, 4 skugge), for bakgrunn og figurar.
