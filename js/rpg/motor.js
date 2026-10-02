@@ -58,11 +58,13 @@ window.Motor = (function () {
 
   /* ---------- Tastatur og berøring ---------- */
   const halde = new Set();
+  const trykt = {};           // når kvar retning sist vart trykt ned (for å snu seg på flisa)
+  const trykk = d => { if (!halde.has(d)) trykt[d] = performance.now(); halde.add(d); };
   const RETNING = { ArrowDown: 0, s: 0, S: 0, ArrowUp: 1, w: 1, W: 1, ArrowLeft: 2, a: 2, A: 2, ArrowRight: 3, d: 3, D: 3 };
   let paaTrykk = null;        // éin lyttar for Z/Enter/mellomrom (samtale, meny, kamp)
   document.addEventListener("keydown", e => {
     if (e.target.closest && e.target.closest("input, textarea")) return;
-    if (e.key in RETNING) { halde.add(RETNING[e.key]); if (!pausa || paaTrykk) e.preventDefault(); if (paaTrykk && paaTrykk.retning) paaTrykk.retning(RETNING[e.key]); }
+    if (e.key in RETNING) { trykk(RETNING[e.key]); if (!pausa || paaTrykk) e.preventDefault(); if (paaTrykk && paaTrykk.retning) paaTrykk.retning(RETNING[e.key]); }
     else if (["z", "Z", "Enter", " "].includes(e.key)) { e.preventDefault(); springTast = true; if (e.repeat) return; trykkA(); }
     else if (["x", "X", "Escape", "Backspace"].includes(e.key)) { if (e.repeat) return; trykkB(e); }
   });
@@ -85,7 +87,7 @@ window.Motor = (function () {
     const ned = e => {
       e.preventDefault();
       if (v === "a") { springTast = true; trykkA(); } else if (v === "b") trykkB();
-      else { halde.add(+v); if (paaTrykk && paaTrykk.retning) paaTrykk.retning(+v); }
+      else { trykk(+v); if (paaTrykk && paaTrykk.retning) paaTrykk.retning(+v); }
     };
     const opp = () => { if (v === "a") springTast = false; else if (v !== "b") halde.delete(+v); };
     b.addEventListener("pointerdown", ned);
@@ -275,15 +277,22 @@ window.Motor = (function () {
       komFram();
       if (pausa || kart !== k0 || (krokar.modus && krokar.modus() !== "felt")) return;
     }
-    if (!taSteg(t0)) return;
+    if (!taSteg(t0, t0 !== no)) return;
     spelar.kjensle = null; if (fylgje) fylgje.kjensle = null;        // ei kjensle varer til ein går (posen òg)
     spelar.pose = null; if (fylgje) fylgje.pose = null;
     flytt(no);
   }
-  // Byrjar eit nytt steg i retninga som blir halden nede. Gir true om figuren flyttar seg.
-  function taSteg(no) {
+  /* Byrjar eit nytt steg i retninga som blir halden nede. Gir true om figuren flyttar seg.
+     Står spelaren i ro og ein trykkjer kort på ei anna retning enn den han ser, snur han seg
+     berre på flisa. Held ein tasten lenger enn SNU_TID, går han. Midt i gangen (vidare) snur
+     og går han med ein gong. */
+  const SNU_TID = 6 * TIKK;
+  function taSteg(no, vidare) {
     const dir = [...halde].pop();
-    if (dir == null) return false;
+    if (dir == null) { spelar.snudd = false; return false; }
+    if (!vidare && dir !== spelar.dir) { spelar.dir = dir; spelar.snudd = true; return false; }
+    if (!vidare && spelar.snudd && performance.now() - (trykt[dir] || 0) < SNU_TID) return false;
+    spelar.snudd = false;
     spelar.dir = dir;
     const nx = spelar.x + DX[dir], ny = spelar.y + DY[dir];
     // Ut over kanten frå ei kantdør
