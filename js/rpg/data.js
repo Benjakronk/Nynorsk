@@ -740,10 +740,11 @@ window.RPGData = (function () {
     syster_kake: {
       namn: "Niste", stad: "Stova på Åsen", kort: false, med: ["Ivar", "Syster"],
       steg: [
-        { pose: "Syster", p: null },
+        // Ho blir sitjande på kubbestolen (ståande på stolruta ville ho kome bak bordet).
+        { snu: "Syster", mot: "Ivar" },
         { s: "Syster", t: "Ta med deg ei ⟪kake⟫ i skreppa. Du blir svolten ute på bøen." },
         { lytt: ["kaka", "kake"] },
-        { snu: "Syster", retning: "opp" },
+        { snu: "Syster", retning: "hogre" },                            // tek flatbrødet frå bordet
         { vent: 450 },
         { snu: "Syster", mot: "Ivar" },
         { gi: "flatbrod", n: 1 }, { t: "Ivar fekk eit flatbrød.", kjensle: "glad" },
