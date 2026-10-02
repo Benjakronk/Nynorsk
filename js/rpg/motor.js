@@ -195,6 +195,7 @@ window.Motor = (function () {
     if (Math.abs(x - f.hx) + Math.abs(y - f.hy) > (f.radius || 1)) return false;
     if (spelar.x === x && spelar.y === y) return false;
     if (spelar.flytt && Math.round(spelar.flytt.fx) === x && Math.round(spelar.flytt.fy) === y) return false;
+    if (fylgje && ((fylgje.x === x && fylgje.y === y) || (fylgje.flytt && Math.round(fylgje.flytt.fx) === x && Math.round(fylgje.flytt.fy) === y))) return false;
     if (kart.folk.some(o => o !== f && ((o.x === x && o.y === y) || (o.flytt && o.flytt.fx === x && o.flytt.fy === y)))) return false;
     return !kisteVed(x, y) && !naerDor(x, y);
   }
@@ -339,7 +340,12 @@ window.Motor = (function () {
   function fullfor(a) {
     const r = a.regi; if (!r) return;
     let fx = null, fy = null;                                        // ruta følgjet skal stå på
-    for (const d of r.sti) { fx = a.x; fy = a.y; a.dir = d; a.x += DX[d]; a.y += DY[d]; a.steg = (a.steg || 0) + 1; }
+    let sti = r.sti;
+    if (sti.some((d, i) => { let x = a.x, y = a.y; for (let j = 0; j <= i; j++) { x += DX[sti[j]]; y += DY[sti[j]]; } return opptatt(a, x, y); })) sti = vegTil(a, r.maal[0], r.maal[1]) || sti;
+    for (const d of sti) {
+      if (opptatt(a, a.x + DX[d], a.y + DY[d])) break;                // aldri inn på ruta til ein annan
+      fx = a.x; fy = a.y; a.dir = d; a.x += DX[d]; a.y += DY[d]; a.steg = (a.steg || 0) + 1;
+    }
     r.sti = [];
     a.fx = a.x; a.fy = a.y; a.flytt = null; a.u = 0;
     const f = r.drag || (a === spelar && fylgje && !fylgje.regi && fx != null ? fylgje : null);
@@ -360,6 +366,15 @@ window.Motor = (function () {
     for (const [, c, n] of s.matchAll(/([novh])(\d*)/g)) for (let i = 0; i < (+n || 1); i++) ut.push("novh".indexOf(c));
     return ut;
   }
+  /* Står ein annan figur på ruta, eller er han på veg inn på eller ut av henne? Spelaren og
+     følgjet byter plass når spelaren går, så følgjet stengjer ikkje for spelaren. Med viker: true
+     tel ikkje følgjet når ho står i ro, for ho går til sides for den som kjem (sjå regiSteg). */
+  function opptatt(a, x, y, viker) {
+    const her = o => o && o !== a && ((o.x === x && o.y === y) || (o.flytt && Math.round(o.flytt.fx) === x && Math.round(o.flytt.fy) === y));
+    if (her(spelar)) return true;
+    if (a !== spelar && her(fylgje) && !(viker && !fylgje.regi && !fylgje.flytt)) return true;
+    return kart.folk.some(f => f.sprite && her(f));
+  }
   // Kortaste veg frå figuren a til (tx, ty), utanom faste ting og andre figurar. Gir retningane.
   function vegTil(a, tx, ty) {
     const fri = (x, y) => {
@@ -367,8 +382,7 @@ window.Motor = (function () {
       if (x < 0 || y < 0 || x >= kart.w || y >= kart.h) return false;
       const c = kart.fliser[y][x];
       if (Pikslar.FAST.has(c) || "DdE".includes(c) || erVatn(x, y) || kisteVed(x, y)) return false;
-      if (a !== spelar && spelar.x === x && spelar.y === y) return false;
-      return !kart.folk.some(f => f !== a && f.sprite && f.x === x && f.y === y);
+      return !opptatt(a, x, y, true);
     };
     const fra = new Map([[a.x + "," + a.y, null]]), ko = [[a.x, a.y]];
     while (ko.length) {
@@ -422,8 +436,10 @@ window.Motor = (function () {
         if (maal && !sti.length && (a.x !== maal[0] || a.y !== maal[1])) console.warn("Regi: fann ingen veg for", kven, maal);
       }
     }
+    let mx = a.x, my = a.y;
+    for (const d of sti) { mx += DX[d]; my += DY[d]; }
     return new Promise(res => {
-      a.regi = { sti, fart: fart || (a === spelar ? FART * 1.4 : FOLK_FART), res: () => {
+      a.regi = { sti, maal: [mx, my], fart: fart || (a === spelar ? FART * 1.4 : FOLK_FART), res: () => {
         if (snuMot) a.dir = retningMot(a.x, a.y, snuMot.x, snuMot.y, a.dir);
         // Inn døra: borte frå kartet han gjekk på (eit nytt kart har ikkje figuren).
         if (mal.ut && kart && a !== spelar && a !== fylgje) kart.folk = kart.folk.filter(f => f !== a);
@@ -452,6 +468,28 @@ window.Motor = (function () {
       if (a.hx != null) { a.hx = a.x; a.hy = a.y; a.neste = no + 2000; }       // folk får ein ny heimstad
       r.res(); return;
     }
+    // Står nokon i vegen, går figuren rundt (ny veg til målet), eller ventar litt. Han går aldri
+    // inn på ruta til ein annan. Er det framleis stengt etter ei stund, stoppar han der han er.
+    const nx = a.x + DX[r.sti[0]], ny = a.y + DY[r.sti[0]];
+    if (opptatt(a, nx, ny)) {
+      // Står følgjet i vegen, går ho eitt steg til sides (ikkje inn i stien til den som kjem).
+      if (fylgje && a !== spelar && !fylgje.regi && !fylgje.flytt && fylgje.x === nx && fylgje.y === ny) {
+        let px = a.x, py = a.y; const stien = new Set();
+        for (const d of r.sti) { px += DX[d]; py += DY[d]; stien.add(px + "," + py); }
+        const til = [0, 1, 2, 3].map(d => [d, nx + DX[d], ny + DY[d]]).find(([, x, y]) => !stien.has(x + "," + y) && !(x === a.x && y === a.y)
+          && kanGaa(x, y) && !doraVed(x, y) && !opptatt(fylgje, x, y));
+        if (til) { gaa("fylgje", { sti: [til[0]] }); return; }
+      }
+      if (!r.stengd) r.stengd = no;
+      if (!r.leita || no - r.leita > 250) {
+        r.leita = no;
+        const v = vegTil(a, r.maal[0], r.maal[1]);
+        if (v && v.length && !opptatt(a, a.x + DX[v[0]], a.y + DY[v[0]])) { r.sti = v; r.stengd = 0; }
+      }
+      if (r.stengd && no - r.stengd > 1500) { console.warn("Regi: vegen er stengd for", a.namn || "spelaren", r.maal); r.sti = []; }
+      if (r.stengd) { a.dir = r.sti.length ? r.sti[0] : a.dir; return; }
+    }
+    r.stengd = 0;
     const d = r.sti.shift(), x0 = a.x, y0 = a.y;
     a.dir = d; a.flytt = { fx: x0, fy: y0, t0 }; a.x += DX[d]; a.y += DY[d]; a.steg = (a.steg || 0) + 1; a.u = 0; a.kjensle = null; a.pose = null;
     if (a === spelar && fylgje && !fylgje.regi) {

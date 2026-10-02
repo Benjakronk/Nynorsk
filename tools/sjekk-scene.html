@@ -667,6 +667,48 @@ f.onload = async () => {
     sjekk(M.kameraBorte, "kameraet står ved ruta scena sende det til");
     await ytre; await vent(800);
     sjekk(!M.kameraBorte && kanGaa(), "etter hendinga er kameraet attende hos Ivar, og han kan gå");
+
+    // 14. Ingen står på same rute som ein annan: figurar i scener går rundt den som står i vegen,
+    //     og folk som går omkring, går ikkje inn på ruta til følgjet.
+    M.last("asen", "1"); await vent(300);
+    M.kart.folk = [];
+    M.plasser(4, 13, 0);
+    M.settFylgje(w.Pikslar.figur(w.RPGData.U.huldra));
+    const fy14 = M.aktor("fylgje");
+    const ruter14 = () => [M.spelar, fy14, ...M.kart.folk].filter(Boolean).map(a => a.x + "," + a.y);
+    let overlapp14 = 0;
+    const tel14 = () => { const r = ruter14(); if (new Set(r).size < r.length) overlapp14++; };
+    // a) Ein fast sti rett gjennom ein som står: figuren går rundt og kjem fram.
+    const p14 = T().hending([
+      { inn: { namn: "Gjest A", u: "bonde", rute: [10, 12], retning: "hogre" } },
+      { inn: { namn: "Hindring", u: "granne", rute: [13, 12], retning: "ned" } },
+      { gaa: "Gjest A", sti: "h6" },
+    ]);
+    for (let n = 0; n < 80 && T().iHending(); n++) { tel14(); await vent(40); }
+    await p14;
+    const ga = M.aktor("Gjest A");
+    sjekk(ga.x === 16 && ga.y === 12, `figuren gjekk rundt den som stod i vegen og kom fram (står på ${ga.x},${ga.y})`);
+    // b) Følgjet står i stien: figuren går rundt følgjet òg.
+    Object.assign(fy14, { x: 13, y: 13, fx: 13, fy: 13, flytt: null });
+    const p14b = T().hending([{ inn: { namn: "Gjest B", u: "bonde", rute: [10, 13], retning: "hogre" } }, { gaa: "Gjest B", sti: "h5" }]);
+    for (let n = 0; n < 80 && T().iHending(); n++) { tel14(); await vent(40); }
+    await p14b;
+    const gb = M.aktor("Gjest B");
+    sjekk(gb.x === 15 && gb.y === 13, `figuren gjekk rundt følgjet (står på ${gb.x},${gb.y})`);
+    sjekk(overlapp14 === 0, `ingen figurar stod på same rute i scenene (${overlapp14} bilete med overlapp14)`);
+    // c) Ein som går omkring, med følgjet som einaste ledige naborute: han går ikkje dit.
+    M.kart.folk = [];
+    M.plasser(4, 13, 0);
+    Object.assign(fy14, { x: 19, y: 12, fx: 19, fy: 12, flytt: null });
+    M.inn({ namn: "Vandrar", u: "bonde", rute: [18, 12], atferd: "gaa", radius: 1 });
+    M.inn({ namn: "Stengsel 1", u: "granne", rute: [17, 12] });
+    M.inn({ namn: "Stengsel 2", u: "granne", rute: [18, 11] });
+    M.inn({ namn: "Stengsel 3", u: "granne", rute: [18, 13] });
+    M.pause(false);
+    overlapp14 = 0;
+    for (let n = 0; n < 300; n++) { tel14(); await vent(50); }
+    sjekk(overlapp14 === 0 && M.aktor("Vandrar").x === 18 && M.aktor("Vandrar").y === 12, `den som går omkring, gjekk ikkje inn på ruta til følgjet (${overlapp14} bilete med overlapp14)`);
+    M.settFylgje(null);
     if (gamalLagring == null) w.localStorage.removeItem(NOKKEL); else w.localStorage.setItem(NOKKEL, gamalLagring);
   } catch (e) { ut.push("FEIL " + e.stack); }
   document.getElementById("ut").textContent = ut.join("\n");
