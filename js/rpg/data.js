@@ -560,22 +560,31 @@ window.RPGData = (function () {
     },
     kyrkja: {
       namn: "Hovdekyrkja", stemning: "kyrkje", golv: "q", inne: true, fristad: true, bakgrunn: "kyrkje",
-      // Inventaret (altartavle, alterring, preikestol, lysekrone) er figurar laga med tools/pikselkunst/inventar.py.
-      bygg: [{ id: "inne-altartavle", x: 5, y: 0, h: 2 }, { id: "inne-altarring", x: 4, y: 2, h: 1 }, { id: "inne-preikestol", x: 1, y: 3, h: 1 }, { id: "inne-lysekrone", x: 6, y: 5, h: 1, over: true }],
+      // Inventaret er figurar laga med tools/pikselkunst/inventar.py: bakveggen i koret (to fliser høg,
+      // med himling, draperi, kalkmåleri og blyglas over «u», der lysstrålane startar), altartavla i
+      // bondebarokk, alterringen, preikestolen med himling, døypefonten, lukka benker med benkedører
+      // mot midtgangen og lysekrona.
+      bygg: [{ id: "inne-korvegg", x: 1, y: 0, h: 2 }, { id: "inne-altartavle", x: 5, y: 0, h: 3 }, { id: "inne-altarring", x: 4, y: 3, h: 1 },
+        { id: "inne-preikestol", x: 1, y: 4, h: 1 }, { id: "inne-dopefont", x: 11, y: 4, h: 1 },
+        { id: "inne-kyrkjebenk-h", x: 1, y: 5, h: 1 }, { id: "inne-kyrkjebenk-v", x: 7, y: 5, h: 1 },
+        { id: "inne-kyrkjebenk-h", x: 1, y: 7, h: 1 }, { id: "inne-kyrkjebenk-v", x: 7, y: 7, h: 1 },
+        { id: "inne-kyrkjebenk-h", x: 1, y: 9, h: 1 }, { id: "inne-kyrkjebenk-v", x: 7, y: 9, h: 1 },
+        { id: "inne-lysekrone", x: 6, y: 6, h: 1, over: true }],
       rader: [
+        "GGGGGGGGGGGGG",
         "GGuGGGGGGGuGG",
         "GqqqLaaaqqqqG",
         "Gqqq++%++qqqG",
-        "G(qqqqlqqqqqG",
-        "GeeeeeleeeeeG",
+        "G(qqqqlqqqq(G",
+        "G(((((l(((((G",
         "Gq@qqqlqqqqqG",
-        "GeeeeeleeeeeG",
+        "G(((((l(((((G",
         "GqqqqqlqqqqqG",
-        "GeeeeeleeeeeG",
+        "G(((((l(((((G",
         "Gqqqqq1qqqqqG",
         "GGGGGGEGGGGGG",
       ],
-      dorer: [{ ved: [6, 10], til: ["bygda", "3"] }],
+      dorer: [{ ved: [6, 11], til: ["bygda", "3"] }],
       folk: [
         // Presten kneler framfor altarringen og bed til blekket er borte. Etter det står han innanfor ringen.
         { merke: "p", u: "prest", namn: "Presten", atferd: "stille", retning: 1, pose: "knele", tale: "prest", vis: st => !st.flagg.latt },
@@ -751,7 +760,7 @@ window.RPGData = (function () {
     },
   };
   // Merke som ikkje står i karta (framfor dører som fører ut att).
-  const EKSTRA_MERKE = { ekset: { d: [10, 4] }, kyrkja: { p: [7, 3] }, asen: { 1: [13, 7] } };   // asen 1: midt på tunet (testar og skjermbilete)     // p: der presten kneler, attmed løparen
+  const EKSTRA_MERKE = { ekset: { d: [10, 4] }, kyrkja: { p: [7, 4] }, asen: { 1: [13, 7] } };   // asen 1: midt på tunet (testar og skjermbilete)     // p: der presten kneler, attmed løparen
 
   /* ---------- Verdskartet (frå kapittel 2) ---------- */
   const STADER = [];
@@ -1067,7 +1076,7 @@ window.RPGData = (function () {
         { s: "Presten", t: "Blækket i Kirkebøgerne vil ikke holde op at skrive. Det løber ud over Siderne og ned ad Væggene i Præstegaarden." },
         { pose: "Presten", p: null }, { snu: "Presten", mot: "Ivar" },
         { saman: [
-          [{ gaa: "Klokkaren", rute: [5, 5] }, { snu: "Klokkaren", retning: "opp" }],
+          [{ gaa: "Klokkaren", rute: [5, 6] }, { snu: "Klokkaren", retning: "opp" }],
           [{ s: "Presten", t: "Tjenestefolkene taler saa underligt stift. Jeg tør ikke gaa ned i Arkivet alene.", kjensle: "trist" }],
         ] },
         { s: "Presten", t: "Her er Nøglen. Men sig mig, min Søn: De har vel ikke med Trolddom at gjøre?", kjensle: "tenkje" },

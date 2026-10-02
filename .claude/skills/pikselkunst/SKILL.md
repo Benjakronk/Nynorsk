@@ -64,6 +64,10 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   `bilete` (eit inventarbilete i staden for kistefliser, til dømes `inne-skrin`), `vis` (finst berre
   når vilkåret held) og `manus` (blir spela når ho blir opna). Sjå med
   `skjermbilete.py namn kart=asen-stabbur m=1` og `kart=asen-stova m=1 flagg=skiftebrev x=9 y=4`.
+- Kyrkja (runde 30): `korvegg` (bakveggen, 11 × 2, rad 0 og 1, vindauga over `u`), `altartavle`
+  (3 × 3), `altarring`, `preikestol`, `dopefont`, `kyrkjebenk-h` og `-v` (5 × 1, benkedøra mot
+  midtgangen til høgre eller venstre) og `lysekrone`. Små motiv blir teikna med `_stempel` (strengar).
+  Sjå med `skjermbilete.py namn kart=kyrkja m=1` og `m=p flagg=latt` (presten i altarringen).
 - Glød rundt ei lyskjelde (eld, ljos, lykt, krone): ei handteikna glødform i
   `tools/pikselkunst/glod.py`, éin funksjon per kjelde med parameteren `r` (flimmerramma).
   Slik lagar du glød for ei ny lyskjelde:

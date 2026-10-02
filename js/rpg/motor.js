@@ -1288,9 +1288,11 @@ window.Motor = (function () {
       if (f.bygg) {
         // Slagskugge på bakken, mot høgre og ned (lyset kjem frå oppe til venstre): silhuetten
         // til huset forskoven, men berre nedst ved bakken, så høge ting (tårnet) ikkje kastar
-        // ei stripe oppover i graset.
+        // ei stripe oppover i graset. Inne fell skuggen berre på golvet, ikkje på sideveggene.
         const bx = Math.round((f.x + ox) * S) - 4, by = Math.round((f.y + 1 + oy) * S);
-        g.save(); g.beginPath(); g.rect(bx, by - 22, f.bygg.width + 8, 26); g.clip();
+        const sx0 = kart.def.inne ? Math.max(bx, Math.round((1 + ox) * S)) : bx;
+        const sx1 = kart.def.inne ? Math.min(bx + f.bygg.width + 8, Math.round((kart.w - 1 + ox) * S)) : bx + f.bygg.width + 8;
+        g.save(); g.beginPath(); g.rect(sx0, by - 22, sx1 - sx0, 26); g.clip();
         g.globalAlpha = 0.28; g.drawImage(skuggeAv(f.bygg), bx + 4, by - f.bygg.height + 3); g.restore();
         g.drawImage(f.bygg, bx, by - f.bygg.height); maske(f.bygg, bx, by - f.bygg.height, true);
         for (const r of Pikslar.ILD[f.id] || []) Pikslar.ild(g, bx + r.x, by - f.bygg.height + r.y, r.w, r.h, no, r.glo, Pikslar.ildMaske(f.bygg, r));

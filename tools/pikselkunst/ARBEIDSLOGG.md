@@ -1008,3 +1008,45 @@ same måte, uansett kven som tek over.
   søkket med stien), høgre (Hovdebygda med kyrkja), tunet, bøen og ved stupet og neset med kameraet
   nede. Toppen les som ein topp, og lia under stupet les som eit landskap som stuper ned mot dalen.
 - **Står att:** Bergveggene i lia har jamne, loddrette striper. Dalen nedst i lia er mest dis.
+
+## Runde 30: kyrkja inne får eit løft
+
+- **Frå brukaren:** Kan interiøret i kyrkja få eit grafisk løft?
+- **Svakast (skjermbilete `forhand/skjerm/kyrkje-for*`):** Bakveggen var ei kvit stripe på éi flis med
+  to små, blå vindauge heilt øvst, så rommet såg ut som ei open eske. Benkene var flisa `e`, grå
+  rekkverk utan benkedører. Preikestolen var ein brun kopp på ein stav utan himling, altartavla lita og
+  enkel, og det var ingen døypefont.
+- **Research:** Dale kyrkje i Luster (kalkmåleri og altartavle i bondebarokk) og Nordfjordeid kyrkje
+  (benkedører med rosemåling, måla himling, preikestol med himling), nye i `konsept/`. Kvernes, Hove
+  og Fåberg frå før. Biblioteket i The Minish Cap: bakveggen er to til tre fliser høg med mykje
+  detalj, sideveggene sett ovanfrå.
+- **Gjort:**
+  - `inventar.py`: `korvegg` (11 × 2 fliser): blå himling med gullstjerner, gesims, raudt draperi med
+    gulldusk, kvitkalka mur med to skriftfelt og ein vase med tulipanar (kalkmåleri), to rundboga
+    vindauge med blyglas og eit marmorert brystpanel. `altartavle` (3 × 3) er teikna på nytt: to
+    etasjar, vridde gullsøyler, krusifiks med Maria og Johannes, akantusvenger, solkrone øvst, og
+    altaret med kniplingsduk, antependium og to lysestakar. `preikestol` med himling (krone, gesims,
+    lambrekin), ryggbrett, preikestolklede og bibel på pute. `kyrkjebenk-h` og `-v` (5 × 1): lukka
+    benker sett bakfrå med fyllingar, ein raud strek under handlista, ei salmebok og benkedøra mot
+    midtgangen med utskoren topp og rose. `dopefont`: døypefont av kleberstein med dåpsfat av messing.
+    Nytt verktøy `_stempel` for små handteikna motiv (vase, venger, figurar).
+  - Kartet `kyrkja` har fått ei rad til øvst (12 rader, fyller skjermen): bakveggen er to fliser høg,
+    og vindauga (`u`) står i den nedste rada, så lysstrålane startar ved blyglaset. Benkene er bilete
+    på `(`, døypefonten står på (11,4). Alt er flytt éi rad ned: presten kneler på (7,4) (merket `p`),
+    står i ringen på (6,3) etter blekklatten, klokkaren står på (2,6) og går til (5,6) i scena
+    `presten`, døra er (6,11). Testane i `sjekk-scene.html` er oppdaterte.
+  - `motor.js`: inne fell slagskuggen under inventar berre på golvet mellom sideveggene (benkene og
+    bakveggen kasta skugge inn på den høgre sideveggen).
+- **Rundar:** 1) Maria og Johannes på altartavla såg ut som to flasker: no figurar med slør og hår.
+  Lysestakane stod inntil søylene og vart kvite stolpar: flytte inn framfor predellaen. Søylene var
+  einsame pikslar: spiralband på to pikslar. 2) Blyglaset var eit sjakkbrett: større ruter. Døypefonten
+  var ein pokal: breiare kum, kort fot. Benkene var monotone: raud strek under lista. 3) Skuggen frå
+  benkene og bakveggen låg på sideveggen: klipt mot golvet.
+- **Vurdert:** `forhand/skjerm/kyrkje-e2`, `kyrkje-e2-ingen` og `kyrkje-e3` (presten i ringen og
+  samtale). Koret les som eit kor: høg, måla bakvegg med vindauge som strålane kjem frå, altartavla
+  over altaret, preikestolen med himling til venstre og døypefonten til høgre. Benkedørene står
+  parvis langs løparen.
+- **Står att:** Sideveggene (`Gt`) er framleis kvite blokker sett ovanfrå. Koret har same furugolv som
+  skipet (ingen steinheller eller korstrinn; kvileplassen `L` teiknar golvet til kartet under seg).
+  Ingen galleri eller klokkarstol. Altarljosa har ingen glød (berre `L` og lysekrona). Flisa `e`
+  (gamle benker) er ikkje lenger i bruk.

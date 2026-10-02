@@ -118,6 +118,11 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
   altertavle i bondebarokk (raudt og gull) over kvit altarduk, kvit alterring
   med raud pute, brunraud preikestol, lysekrone i messing og ljosstrålar frå
   vindauga.
+- Koret (runde 30): bakveggen er to fliser høg (`korvegg`) med blå himling og gullstjerner, raudt
+  draperi under gesimsen, kalkmåleri (skriftfelt, vase med tulipanar) på kvitkalken, rundboga vindauge
+  med blyglas og marmorert brystpanel. Altartavla i to etasjar med vridde gullsøyler og akantusvenger,
+  preikestolen har himling, døypefonten er av grågrøn kleberstein. Benkene er lukka, sett bakfrå, med
+  ei måla benkedør med rose mot midtgangen.
 
 ## Lys og glød (sjå glod.py)
 
