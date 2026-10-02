@@ -733,6 +733,8 @@ window.Pikslar = (function () {
   const VG = R_.villgras.map(pakk);
   // Overflata på stien: den gamle raudbrune jorda med prikkar og små gråsteinar (som «=» før runde 24).
   const JORD = R_.jord.map(pakk), STEIN = R_.stein.map(pakk);
+  // Mellomtonar i jorda: tråkka lysare (midt mellom jord 2 og 3) og litt mørkare (midt mellom 1 og 2).
+  const JORDLYS = pakk("#987049"), JORDMORK = pakk("#7a5338");
   // Kor fri stien er til å flytte seg ved flisa (0 ved dører, murar og kartkanten, 1 elles).
   function stiFri(felt, tx, ty) {
     let d = 9;
@@ -826,13 +828,24 @@ window.Pikslar = (function () {
         }
       }
       if (!farge && d >= 0) {
-        // Sjølve stien: raudbrun jord med mørke og lyse prikkar, og nokre små gråsteinar (2 x 1, med
-        // skugge under) per rute på 16 x 16 pikslar.
+        // Sjølve stien: den gamle raudbrune jorda, men nedtråkka: større, mjuke flekker der jorda er
+        // tråkka lysare eller ligg litt mørkare, mjuke, ovale søkk (mørk midte, lys nedre kant) som
+        // i Minish Cap, glisne prikkar, og berre ein og annan liten gråstein.
+        const flekk = vstoy(X / 9, Y / 7, 417);
+        farge = flekk > 0.66 ? JORDLYS : flekk < 0.3 ? JORDMORK : JORD[2];
         const h = hash(X, Y, 51);
-        farge = h < 0.09 ? JORD[1] : h > 0.93 ? JORD[3] : JORD[2];
-        const cx = Math.floor(X / S), cy = Math.floor(Y / S), cv = cx * 7 + cy * 3;
-        for (let n = 0; n < 3; n++) {
-          const sx = cx * S + Math.floor(hash(n, cv, 52) * (S - 1)), sy = cy * S + Math.floor(hash(n, cv + 17, 55) * (S - 1));
+        if (h < 0.04) farge = JORD[1]; else if (h > 0.975) farge = JORD[3];
+        const cx = Math.floor(X / 16), cy = Math.floor(Y / 12);
+        if (hash(cx, cy, 409) < 0.4) {
+          const w = 5 + Math.floor(hash(cx, cy, 410) * 4), hh = w > 6 ? 4 : 3;
+          const ox = cx * 16 + 1 + Math.floor(hash(cx, cy, 411) * (14 - w)), oy = cy * 12 + 1 + Math.floor(hash(cx, cy, 412) * (10 - hh));
+          const lx = X - ox, ly = Y - oy, ex = (lx - (w - 1) / 2) / (w / 2), ey = (ly - (hh - 1) / 2) / (hh / 2);
+          if (lx >= 0 && ly >= 0 && lx < w && ly < hh && ex * ex + ey * ey <= 1.1)
+            farge = ly === hh - 1 ? JORDLYS : ly === 0 || Math.abs(ex) > 0.62 ? JORDMORK : JORD[1];
+        }
+        const sx_ = Math.floor(X / S), sy_ = Math.floor(Y / S), cv = sx_ * 7 + sy_ * 3;
+        if (hash(sx_, sy_, 53) < 0.45) {                                   // ein liten gråstein i under halvparten av rutene
+          const sx = sx_ * S + Math.floor(hash(0, cv, 52) * (S - 1)), sy = sy_ * S + Math.floor(hash(0, cv + 17, 55) * (S - 1));
           if (X >= sx && X <= sx + 1 && (Y === sy || Y === sy + 1) && d >= 1) farge = Y === sy ? STEIN[3] : STEIN[1];
         }
       }
