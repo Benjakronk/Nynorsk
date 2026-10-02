@@ -22,7 +22,8 @@
    Motor.gaa(kven, mal, fart), snu(kven, retning), inn(def), byt(kven, ny), kamera(til, ms),
    kort(stad, tid), naerbilete(src, tekst), blink(), rist(ms), tonUt(ms, farge)
    Motor.sporHopp()           spør om mellomsekvensen skal hoppast over, Motor.hopp() hoppar
-                              (snøggmodus, Motor.snogg) */
+                              (snøggmodus, Motor.snogg). Motor.venteleg(f): f blir kalla ved hopp,
+                              så eit vindauge som ventar, kan gå bort med ein gong */
 window.Motor = (function () {
   "use strict";
   const S = Pikslar.S, VW = 20, VH = 12;
@@ -1028,7 +1029,9 @@ window.Motor = (function () {
 
   return {
     VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk, overgang, gjennomDor, tonUt, tonInn, scene,
-    gaa, snu, inn, byt, kamera, rist, kort, naerbilete, blink, aktor, vent, sporHopp, hopp,
+    gaa, snu, inn, byt, kamera, rist, kort, naerbilete, blink, aktor, vent, sporHopp, hopp, venteleg,
+    // Kameraet står ved noko anna enn spelaren (ei scene let det stå).
+    get kameraBorte() { return !!kam && !kam.tilbake; },
     // Snøggmodus (sjå hopp()): spel.js slår han av under val og kampar, og når scena er slutt.
     get snogg() { return snogg; }, set snogg(v) { snogg = !!v; if (!snogg) svartEl.style.transition = ""; },
     get svart() { return +svartEl.style.opacity > 0; },

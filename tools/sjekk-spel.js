@@ -63,6 +63,41 @@ for (const [id, sc] of Object.entries(D.SCENER)) {
   const ut = []; (function samle(x) { if (Array.isArray(x)) x.forEach(samle); else if (x && typeof x === "object") { if ("scenekart" in x) ut.push(x.scenekart); Object.values(x).forEach(samle); } })(sc.steg);
   if (ut.some(k => k) && ut[ut.length - 1] !== null) feil.push(`scene ${id}: går ikkje attende frå scenekartet`);
 }
+/* Namn i regien: den som talar, går, snur seg, får pose eller kamera, må finnast på kartet der
+   manuset blir spela (folk i kartet, merke, folk frå inn-steg, nye namn frå byt), elles gir
+   motoren null, og steget blir stilt hoppa over. Manus blir knytte til karta gjennom folk (tale),
+   inngang, vakt og kvile, og scener gjennom manusa som spelar dei. Scenekart i manuset er med. */
+const karteFor = {};                                                  // manus- eller scene-id -> Set med kart
+const knyt = (nokkel, kart) => (karteFor[nokkel] || (karteFor[nokkel] = new Set())).add(kart);
+for (const [id, k] of Object.entries(D.KART)) {
+  for (const f of k.folk || []) knyt("m:" + f.tale, id);
+  for (const i of k.inngang || []) knyt("m:" + i.manus, id);
+  for (const d of k.dorer || []) if (d.vakt) knyt("m:" + d.vakt.manus, id);
+  if (k.kvile) knyt("s:" + k.kvile, id);
+}
+knyt("m:start", "asen-stova");                                         // ei ny reise byrjar i stova
+const alleSteg = x => { const ut = []; (function samle(x) { if (Array.isArray(x)) x.forEach(samle); else if (x && typeof x === "object") { ut.push(x); Object.values(x).forEach(samle); } })(x); return ut; };
+// Scener får karta til manuset som spelar dei.
+for (let n = 0; n < 4; n++) for (const [id, m] of Object.entries(D.MANUS)) for (const s of alleSteg(m)) if (s.scene) for (const k of karteFor["m:" + id] || []) knyt("s:" + s.scene, k);
+function sjekkNamn(nokkel, steg, stad) {
+  const kart = karteFor[nokkel];
+  if (!kart) return;
+  const st = alleSteg(steg);
+  const namn = new Set(["Ivar", "Huldra"]);
+  for (const s of st) { if (s.inn) namn.add(s.inn.namn); if (s.byt && s.namn) namn.add(s.namn); if (s.scenekart) for (const f of D.KART[s.scenekart].folk || []) namn.add(f.namn); }
+  for (const k of kart) {
+    const lov = new Set([...namn, ...(D.KART[k].folk || []).map(f => f.namn), ...Object.keys(merkeI[k])]);
+    for (const s of st) for (const f of ["s", "gaa", "snu", "pose", "byt", "fjern", "kven", "fraa", "fra", "mot"]) {
+      const v = s[f];
+      if (typeof v === "string" && !(f === "mot" && "s" in s) && !lov.has(v) && !(f === "fra" && !s.parti)) feil.push(`${stad} på ${k}: «${v}» (${f}) finst ikkje på kartet`);
+    }
+    for (const s of st) if (typeof s.kamera === "string" && !lov.has(s.kamera)) feil.push(`${stad} på ${k}: kamera mot «${s.kamera}» som ikkje finst`);
+  }
+}
+for (const [id, m] of Object.entries(D.MANUS)) sjekkNamn("m:" + id, m, id);
+for (const [id, sc] of Object.entries(D.SCENER)) sjekkNamn("s:" + id, sc.steg, "scene " + id);
+const utanKart = Object.keys(D.SCENER).filter(id => !karteFor["s:" + id]);
+if (utanKart.length) feil.push(`scener som ingen stad spelar: ${utanKart.join(", ")}`);
 for (const s of D.STADER || []) if (s.kart && D.KART[s.kart] && D.KART[s.kart].scene) feil.push(`stad ${s.id}: scenekartet ${s.kart} på verdskartet`);
 // Formspørsmål: kvar familie med spørsmål må ha minst éi sterk og éi veik form
 for (const [id, o] of Object.entries(D.ORD)) {

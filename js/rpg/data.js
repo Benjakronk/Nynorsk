@@ -675,7 +675,8 @@ window.RPGData = (function () {
     { s: "Haugbonden", t: "Og så skal du få eit stev. Eg har kvede det over denne haugen sidan før kyrkja vart bygd.", kjensle: "nikk" },
     { stev: "steinstevet" },
     { dersom: st => st.flagg.huldra_med && !st.flagg.huldra_auga, da: [
-      { snu: "Huldra", mot: "Ivar" },
+      // Huldra går fram frå bak Ivar og stiller seg attmed haugbonden, så alle tre syner.
+      { gaa: "Huldra", mot: "Haugbonden" }, { snu: "Huldra", mot: "Ivar" },
       { s: "Huldra", t: "Du gav han namnet att. Då skal du få eit ord av meg òg. Eg ser med ⟪auga⟫ det ingen andre ser.", kjensle: "lokk" },
       { tilbod: ["auga", "auga"] }, { flagg: "huldra_auga" },
     ] },
@@ -753,6 +754,8 @@ window.RPGData = (function () {
     },
     /* Den første kampen. Syster spring ut av stova med skiftebrevet, og storebror kjem etter.
        Ivar står ved kanten mot bygda, langt frå stova, så kameraet følgjer syster bort til han.
+       Han snur og går eitt steg attende, så dei tre står saman på vegen og ikkje i skogkanten.
+       Blekket renn ut av brevet og blir ein dråpe på tunet (eit vesen) som kryp bort til Ivar.
        Etterpå går dei inn att (ut: true), og Ivar kan gå vidare sjølv. Dei finst berre i stova. */
     skiftebrev: {
       namn: "Skiftebrevet", stad: "Åsen i Hovdebygda", tid: "same dag", kort: false, hopp: true, med: ["Ivar", "Syster", "Storebror"],
@@ -762,19 +765,20 @@ window.RPGData = (function () {
         { kamera: "Syster", ms: 1200 },
         { gaa: "Syster", sti: "n1", fart: 150 },
         { s: "Syster", t: "Ivar! Brevet frå sorenskrivaren, skiftebrevet etter far … det rører seg!", kjensle: "sjokk" },
-        { snu: "Ivar", retning: "venstre" },
         { saman: [
-          [{ gaa: "Syster", mot: "Ivar", fart: 150 }],
-          [{ vent: 500 }, { inn: { namn: "Storebror", u: "bror", rute: [6, 4], retning: "ned" } }, { gaa: "Storebror", rute: [26, 10], fart: 170 }],
+          [{ gaa: "Syster", rute: [25, 11], fart: 150 }, { snu: "Syster", mot: "Ivar" }],
+          [{ vent: 500 }, { inn: { namn: "Storebror", u: "bror", rute: [6, 4], retning: "ned" } }, { gaa: "Storebror", rute: [25, 10], fart: 170 }, { snu: "Storebror", mot: "Ivar" }],
+          [{ vent: 700 }, { snu: "Ivar", retning: "venstre" }, { vent: 300 }, { gaa: "Ivar", sti: "v1" }],
         ] },
         { kamera: null, ms: 500 },
-        { snu: "Storebror", retning: "ned" },
         { rist: 600, styrke: 2 },
+        { inn: { namn: "Blekkdropen", vesen: "blekkdrope", rute: [25, 12] } },
         { t: "Frå det danske brevet renn blekket ut på tunet. Det samlar seg til ein dråpe med gule auge og kryp mot Ivar.", kjensle: "sjokk" },
+        { gaa: "Blekkdropen", mot: "Ivar", fart: 600 },
         { kamp: ["blekkdrope"], rettleiing: 1 },
+        { fjern: "Blekkdropen" },
         { s: "Syster", t: "Du sa eit ord, og blekket vart borte! Korleis gjorde du det?", kjensle: "glad" },
         { s: "Ivar", t: "Eg veit ikkje. Orda hadde liksom kraft i seg, når eg sa dei slik vi seier dei her.", kjensle: "tenkje" },
-        { snu: "Storebror", mot: "Ivar" },
         { s: "Storebror", t: "Folk seier at blekket kjem frå kyrkjebøkene. Presten har bede om hjelp. Gå ned i bygda og snakk med han. Han er i kyrkja." },
         { flagg: "skiftebrev" },
         { gaa: "Storebror", rute: [6, 4], ut: true, ikkjeVent: true },

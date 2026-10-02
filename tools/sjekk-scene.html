@@ -293,7 +293,8 @@ f.onload = async () => {
     w.Kamp.start = async () => {
       kampar++;
       const sy = M.aktor("Syster"), sb = M.aktor("Storebror");
-      vedKamp = { syster: naer(sy, M.spelar), bror: !!sb && Math.abs(sb.x - M.spelar.x) <= 1 && Math.abs(sb.y - M.spelar.y) <= 1 };
+      const dr = M.aktor("Blekkdropen");
+      vedKamp = { syster: naer(sy, M.spelar), bror: !!sb && Math.abs(sb.x - M.spelar.x) <= 1 && Math.abs(sb.y - M.spelar.y) <= 1, drope: naer(dr, M.spelar) };
       return { utfall: "siger", xp: 0, pengar: 0, fall: [] };
     };
     M.plasser(27, 11, 3); await vent(200);
@@ -308,9 +309,10 @@ f.onload = async () => {
     await pv;
     sjekk(systerVedDora, "syster kom ut døra på stova og ropte");
     sjekk(kampar === 1 && vedKamp && vedKamp.syster && vedKamp.bror, `syster og storebror stod attmed Ivar då blekket kom (${JSON.stringify(vedKamp)})`);
+    sjekk(vedKamp && vedKamp.drope && !M.aktor("Blekkdropen"), "blekkdropen kraup bort til Ivar før kampen og er borte etterpå");
     sjekk(talarSynleg, "den som talar, står på kartet");
     sjekk(s10.flagg.skiftebrev && T().lagra() && T().lagra().flagg.skiftebrev, "flagget er sett, og spelet er lagra");
-    sjekk(M.kart.id === "asen" && M.spelar.x === 27 && kanGaa(), "Ivar står att ved kanten og kan gå");
+    sjekk(M.kart.id === "asen" && M.spelar.x === 26 && M.spelar.y === 11 && kanGaa(), `Ivar gjekk eitt steg attende frå kanten og kan gå (${M.spelar.x},${M.spelar.y})`);
     for (let n = 0; n < 200 && (M.aktor("Syster") || M.aktor("Storebror")); n++) await vent(50);
     sjekk(!M.aktor("Syster") && !M.aktor("Storebror"), "syster og storebror gjekk inn i stova og er borte frå tunet");
     M.last("asen-stova", "2"); await vent(200);
@@ -514,28 +516,31 @@ f.onload = async () => {
     tast("z");
     for (let n = 0; n < 100 && !synleg("#rpg-tale"); n++) await vent(50);
     await vent(200); tast("x"); await vent(150); tast("z");
-    let tilbodVist = false, stevVist = false;
+    let tilbodVist = false, stevVist = false, partiVist = false;
     await gjennom(() => s12.flagg.huldra_med && ferdigFelt(), () => {
       if (/Skal Ivar skrive ned/.test(taleTekst())) tilbodVist = true;
+      if (/Huldra er med i partiet/.test(taleTekst())) partiVist = true;
       if (/lærte «Tungestevet»/.test(taleTekst())) stevVist = true;
     }, lytt12);
-    sjekk(tilbodVist && stevVist, "hoppa over: tilbodet og det nye stevet blir viste");
+    sjekk(tilbodVist && stevVist && partiVist, "hoppa over: tilbodet, meldinga om partiet og det nye stevet blir viste");
     sjekk(s12.parti.some(m => m.id === "huldra") && !!M.aktor("fylgje") && !M.aktor("Huldra") && !M.snogg && kanGaa(), "hoppa over: huldra er med, og Ivar kan gå");
 
     // c) Haugbonden, rett namn: forvandlinga gir han fargane att, huldra gir eit ord, og han går inn i haugen.
     delete s12.flagg.haug; delete s12.flagg.huldra_auga; delete s12.ord.hoyra; delete s12.ord.laus; s12.stev = s12.stev.filter(x => x !== "steinstevet");
     M.last("utmarka", "1"); M.plasser(8, 9, 1); await vent(300);
     talarBorte = []; overlapp = false;
-    let farga = false, iHaugen = false;
+    let farga = false, iHaugen = false, huldraFram = false;
     tast("z");
     await gjennom(() => s12.flagg.haug && !M.aktor("Haugbonden") && ferdigFelt(), () => {
       sjekkTalar12(["Vetten", "Haugbonden", "Huldra"]);
       const h = M.aktor("Haugbonden");
       if (h && /Du må ⟪?høyre/.test(taleTekst()) && h.u === "haugbonde_namn") farga = true;
       if (h && h.x === 8 && h.y === 7) iHaugen = true;
+      if (h && /Eg ser med/.test(taleTekst()) && naer(M.aktor("fylgje"), h)) huldraFram = true;
       if (!eiRute()) overlapp = true;
     }, (t, n) => lytt12(t, n));
     sjekk(farga, "haugbonden har fått namnet og fargane att når han talar");
+    sjekk(huldraFram, "huldra gjekk fram og stod attmed haugbonden då ho tala");
     sjekk(iHaugen && !M.aktor("Haugbonden") && !M.aktor("Vetten"), "han gjekk inn i haugen og er borte");
     sjekk(!talarBorte.length && !overlapp, `den som talar, står på kartet, og ingen står på same rute${talarBorte.length ? " (" + talarBorte.join(", ") + ")" : ""}`);
     sjekk(s12.ord.hoyra && s12.ord.laus && s12.stev.includes("steinstevet") && s12.flagg.huldra_auga, "Ivar høyrde «høyre» og «laus», lærte Steinstevet og fekk tilbodet om «auga»");
@@ -556,6 +561,19 @@ f.onload = async () => {
     }, t => /Kven er vetten/.test(t) ? 2 : 1);
     sjekk(kampar12 === 1 && fargaEtterKamp, "feil namn: kamp, og etterpå har haugbonden namnet og fargane att");
     sjekk(!talarBorte.length && s12.stev.includes("steinstevet") && !M.aktor("Haugbonden") && kanGaa(), "den som talar, står på kartet, Ivar lærte stevet, og haugbonden er borte");
+
+    // d2) Haugbonden hoppa over: forvandlinga blir ikkje vist, men han får namnet, og stevet blir vist.
+    delete s12.flagg.haug; s12.stev = s12.stev.filter(x => x !== "steinstevet");
+    M.last("utmarka", "1"); M.plasser(8, 9, 1); await vent(300);
+    tast("z");
+    for (let n = 0; n < 100 && !synleg("#rpg-tale"); n++) await vent(50);
+    await vent(200); tast("x"); await vent(150); tast("z");
+    let fvVist = false, stevVist12 = false;
+    await gjennom(() => s12.flagg.haug && !M.aktor("Haugbonden") && ferdigFelt(), () => {
+      if (d.querySelector(".rpg-forvandling:not(.rpg-naer)")) fvVist = true;
+      if (/lærte «Steinstevet»/.test(taleTekst())) stevVist12 = true;
+    }, lytt12);
+    sjekk(!fvVist && stevVist12 && s12.flagg.haug && !M.aktor("Haugbonden") && !M.snogg && kanGaa(), "hoppa over: forvandlinga blir ikkje vist, stevet blir vist, og haugbonden er borte");
 
     // e) Tenaren på Ekset hentar kongesoga. Ivar går til sides så tenaren kjem ut frå bordet.
     delete s12.ord.vita; s12.nokkel = s12.nokkel.filter(x => x !== "sagabok");
@@ -637,6 +655,18 @@ f.onload = async () => {
     w.Kamp.start = kampFor12;
     w.console.warn = gamalWarn;
     sjekk(!varsel12.some(v => /Regi/.test(v)), `ingen åtvaringar frå regien i arkivet${varsel12.length ? ": " + varsel12.join("; ") : ""}`);
+    // 13. Ei hending som sluttar medan ei anna køyrer (eit tap som byrjar ei ny reise), lèt ikkje
+    //     spelaren gå. Når den siste er slutt, kjem kameraet attende til Ivar om ei scena let det stå.
+    M.last("asen", "1"); await vent(300);
+    const ytre = T().hending([{ kamera: [2, 2], ms: 100 }, { vent: 900 }]);
+    await T().hending([{ vent: 100 }]);
+    const x13 = M.spelar.x;
+    d.dispatchEvent(new w.KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true })); await vent(400);
+    d.dispatchEvent(new w.KeyboardEvent("keyup", { key: "ArrowRight", bubbles: true }));
+    sjekk(M.spelar.x === x13 && T().iHending(), "Ivar står i ro så lenge den ytre hendinga køyrer");
+    sjekk(M.kameraBorte, "kameraet står ved ruta scena sende det til");
+    await ytre; await vent(800);
+    sjekk(!M.kameraBorte && kanGaa(), "etter hendinga er kameraet attende hos Ivar, og han kan gå");
     if (gamalLagring == null) w.localStorage.removeItem(NOKKEL); else w.localStorage.setItem(NOKKEL, gamalLagring);
   } catch (e) { ut.push("FEIL " + e.stack); }
   document.getElementById("ut").textContent = ut.join("\n");

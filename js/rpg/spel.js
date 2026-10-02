@@ -186,7 +186,7 @@
       if (s.partiUt) {
         st.parti = st.parti.filter(m => m.id !== s.partiUt);
         if (s.partiUt === "huldra") Motor.settFylgje(null);
-        if (!s.stille) await Motor.tale(`${D.PARTI[s.partiUt].namn} gjekk ut av partiet.`);
+        if (!s.stille) await utanSnogg(() => Motor.tale(`${D.PARTI[s.partiUt].namn} gjekk ut av partiet.`));
       }
       if (s.flagg) st.flagg[s.flagg] = true;
       if (s.uflagg) delete st.flagg[s.uflagg];
@@ -199,7 +199,8 @@
         const m = { id: s.parti, niva: st.parti[0].niva, xp: 0, hp: null, rost: null };
         fyll(m); st.parti.push(m); Motor.settFylgje(sprite(s.parti), fra);
         if (fra) Motor.fjernFolk(s.fra);
-        await Motor.tale(`${D.PARTI[s.parti].namn} er med i partiet.`);
+        // Meldinga kjem også når scena blir hoppa over: spelaren må vite kven som er med.
+        await utanSnogg(() => Motor.tale(`${D.PARTI[s.parti].namn} er med i partiet.`));
       }
       if (s.kamp) {
         const r = await utanSnogg(() => kamp(s.kamp, !!s.boss, !!s.rettleiing)); if (r === "tap") return "stopp";
@@ -221,15 +222,18 @@
     }
   }
   // Eit bilete glir over i eit anna, midt på skjermen (til dømes ein vette som får namnet att).
+  // Når scena blir hoppa over, blir biletet ikkje vist, eller det går bort med ein gong.
   function forvandling([for_, etter], tekst) {
+    if (Motor.snogg) return Promise.resolve();
     return new Promise(res => {
       const el = document.createElement("div");
       el.className = "rpg-forvandling";
       el.innerHTML = `<div class="fv-bilete"><img class="fv-for" src="${for_}" alt=""><img class="fv-etter" src="${etter}" alt=""></div>${tekst ? `<p class="rpg-vindauge fv-tekst">${E(tekst)}</p>` : ""}`;
       $("rpg-skjerm").appendChild(el);
       let ferdig = false;
-      const slutt = () => { if (ferdig) return; ferdig = true; slepp(); el.classList.add("ut"); setTimeout(() => { el.remove(); res(); }, 400); };
+      const slutt = () => { if (ferdig) return; ferdig = true; slepp(); ut(); el.classList.add("ut"); setTimeout(() => { el.remove(); res(); }, 400); };
       const slepp = Motor.lytt({ a: () => { if (el.classList.contains("klar")) slutt(); } });
+      const ut = Motor.venteleg(() => { if (ferdig) return; ferdig = true; slepp(); ut(); el.remove(); res(); });
       setTimeout(() => el.classList.add("glir"), 500);
       setTimeout(() => el.classList.add("klar"), 2600);
       setTimeout(slutt, 6000);
@@ -261,9 +265,18 @@
     return r;
   }
   let hendingar = 0;                                                 // kor mange hendingar som køyrer (for testane)
+  /* Når den siste hendinga er slutt, går kjensler og posar bort, kameraet kjem attende til Ivar
+     om ei scene let det stå, og spelaren kan gå. Har eit tap starta ei ny hending (ei ny reise
+     med «heime»), får ho halde fram i fred. */
   async function hending(steg) {
     Motor.pause(true); hendingar++;
-    try { await kjoyr(steg); } finally { hendingar--; Motor.kjensle(null, "alle"); Motor.pose(null, "alle"); if (modus === "felt") Motor.pause(false); }
+    try { await kjoyr(steg); } finally {
+      if (--hendingar === 0) {
+        Motor.kjensle(null, "alle"); Motor.pose(null, "alle");
+        if (Motor.kameraBorte) Motor.kamera(null, 600);
+        if (modus === "felt") Motor.pause(false);
+      }
+    }
   }
 
   /* ---------- Kamp ---------- */
