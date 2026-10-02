@@ -319,12 +319,14 @@ def rottemor():
     return L
 
 
-def rotte_kart(spegl=False):
+def rotte_kart(spegl=False, steg=0):
     """Lita rotte til kartet (vesen i scena): på fire føter med rund rygg, vend mot høgre
-    (eller spegla mot venstre)."""
+    (eller spegla mot venstre). steg: 0 står, 1 og 2 er gangrammene (annakvart beinpar fram)."""
     W, H = 24, 14
     L = Lerret(W, H)
-    for i, (x, y) in enumerate([(5, 9), (4, 10), (3, 10), (2, 10), (1, 9), (1, 8), (1, 7), (2, 6), (2, 5)]):
+    hale = [(5, 9), (4, 10), (3, 10), (2, 10), (1, 9), (1, 8), (1, 7), (2, 6), (2, 5)]
+    if steg: hale = [(5, 9), (4, 10), (3, 10), (2, 10), (1, 10), (0, 9), (0, 8), (1, 7), (1, 6)] if steg == 1 else [(5, 9), (4, 10), (3, 10), (2, 9), (1, 9), (1, 8), (2, 7), (2, 6), (3, 5)]
+    for i, (x, y) in enumerate(hale):
         L.p(x, y, "c" if i % 3 == 2 else "d")             # lys, naken hale med ringar
     spenn = {3: (8, 12), 4: (6, 14), 5: (5, 17), 6: (4, 19), 7: (4, 21), 8: (4, 20), 9: (5, 18), 10: (6, 16)}
     m = {(x, y) for y, (x0, x1) in spenn.items() for x in range(x0, x1 + 1)}
@@ -344,14 +346,71 @@ def rotte_kart(spegl=False):
     L.tekst(16, 5, ["00", "Rw"], {})                    # sint bryn og raudt auge som blenkjer
     L.p(21, 7, "c"); L.p(22, 7, "d")                    # nasa
     L.p(19, 9, "T"); L.p(19, 10, "T")                   # tanna
-    for x in (7, 8, 14, 15): L.p(x, 11, "c")            # føtene
+    fotar = {0: (7, 8, 14, 15), 1: (5, 6, 16, 17), 2: (9, 10, 12, 13)}[steg]
+    for x in fotar: L.p(x, 11, "c")                     # føtene: bak og fram, eller i steg
     for x in (8, 10, 12): L.p(x - 1, 2, "1")            # bust
     omriss(L)
     if spegl: L.g = [r[::-1] for r in L.g]
     return L
 
 
-ROTTER = {"rotte": rotte, "rottemor": rottemor, "rotte-kart": rotte_kart, "rotte-kart-v": lambda: rotte_kart(True)}
+def rotte_kart_fram(bak=False, steg=0):
+    """Kartrotta sett framanfrå (ned) eller bakfrå (opp), 24 x 14 som sidebileta."""
+    W, H = 24, 14
+    L = Lerret(W, H)
+    if bak:
+        m = maske(W, H, [(12, 7, 5.5, 4.2), (12, 3.5, 3.6, 2.8)])
+    else:
+        m = maske(W, H, [(12, 9.5, 5.2, 3.0), (12, 6.5, 4.6, 3.8)])
+    inn = lambda x, y: (x, y) in m
+    for (x, y) in m:
+        c = "3"
+        if not inn(x + 1, y + 2): c = "2"
+        if not inn(x, y + 1): c = "1"
+        if not inn(x - 1, y - 1) or not inn(x - 2, y): c = "4"
+        if not inn(x, y - 1): c = "s"
+        L.p(x, y, c)
+    if bak:
+        L.tekst(7, 0, ["11", "1d"], {}); L.tekst(15, 0, ["11", "d1"], {})       # øyra bakfrå
+        for x in (10, 12, 14): L.p(x, 1 if x == 12 else 2, "1")                  # bust
+        hale = [(12, 11), (12, 12), (12, 13)] + ([(13, 13), (14, 13)] if steg != 2 else [(11, 13), (10, 13)])
+        for i, (x, y) in enumerate(hale): L.p(x, y, "c" if i % 3 == 2 else "d")
+        fot = {0: (9, 15), 1: (9, 15), 2: (9, 15)}[steg]
+        for i, x in enumerate(fot):
+            y = 11 - (1 if (steg == 1 and i == 0) or (steg == 2 and i == 1) else 0)
+            L.p(x, y, "c"); L.p(x + 1 if i == 0 else x - 1, y, "c")
+    else:
+        L.tekst(6, 1, ["11 ", "1dc", "1cb"], {}); L.tekst(15, 1, [" 11", "cd1", "bc1"], {})   # øyra
+        L.tekst(9, 5, ["00  00", "rR  Rr"], {})                                 # sinte bryn og auge
+        L.rad(8, 11, 13, "6"); L.rad(9, 10, 14, "6")                            # snuten
+        L.p(12, 9, "c"); L.p(12, 8, "d")                                         # nasa
+        L.p(12, 10, "T"); L.p(12, 11, "T")                                       # tennene
+        for x, y in [(8, 8), (7, 9), (16, 8), (17, 9)]: L.p(x, y, "s")          # skjeggstrå
+        for i, x in enumerate((8, 15)):
+            y = 12 - (1 if (steg == 1 and i == 0) or (steg == 2 and i == 1) else 0)
+            L.p(x, y, "c"); L.p(x + 1, y, "d")
+        hale = [(17, 11), (18, 12), (19, 12), (20, 11)] if steg != 2 else [(17, 11), (18, 12), (19, 12), (20, 12)]
+        for i, (x, y) in enumerate(hale): L.p(x, y, "c" if i % 3 == 2 else "d")
+    omriss(L)
+    return L
+
+
+def rotte_kart_ark():
+    """Gangarket til kartrotta: tre kolonnar (står, steg 1, steg 2) og fire rader i same rekkjefølgje
+    som figurane (ned, opp, venstre, høgre), 24 x 16 per rute med føtene nedst."""
+    W, H = 24, 16
+    A = Lerret(W * 3, H * 4)
+    for rad, lag in enumerate([lambda k: rotte_kart_fram(False, k), lambda k: rotte_kart_fram(True, k),
+                              lambda k: rotte_kart(True, k), lambda k: rotte_kart(False, k)]):
+        for k in range(3):
+            L = lag(k); dy = H - L.h - (1 if k == 1 else 0)      # steg 1 lyftar kroppen ein piksel
+            for y in range(L.h):
+                for x in range(L.w):
+                    if L.g[y][x] != ".": A.p(k * W + x, rad * H + dy + y, L.g[y][x])
+    return A
+
+
+ROTTER = {"rotte-kart-gang": rotte_kart_ark, "rotte": rotte, "rottemor": rottemor, "rotte-kart": rotte_kart, "rotte-kart-v": lambda: rotte_kart(True)}
 
 
 def pix(namn, L):

@@ -329,6 +329,23 @@ f.onload = async () => {
     for (let n = 0; n < 60 && M.kart.id !== "asen-stabbur"; n++) await vent(50);
     await vent(600);
     sjekk(M.kart.id === "asen-stabbur" && !T().iHending() && kanGaa(), "andre gongen går Ivar rett inn, utan scene");
+    // Rottesvermen: etter den første kampen er rotta tilbake på kartet (med gangark). Når Ivar talar
+    // til henne, kjem fire til, og det blir éin kamp mot fem smårotter. Etterpå er dei borte for godt.
+    {
+      const rotta = M.aktor("Rotta"), gang = rotta && rotta.sprite && rotta.sprite.gang;
+      sjekk(!!rotta && !!gang && gang.length === 4 && gang.every(r => r.length === 3), "etter den første kampen spring rotta omkring i stabburet, med gangrammer i fire retningar");
+      stabbur.fiendar.vis = () => false;
+      const kampFor2 = w.Kamp.start; let svermkampar = [], paaKartet = 0;
+      w.Kamp.start = async o => { svermkampar.push(o.fiendar.join(",")); paaKartet = ["Rotta", "Rotte 2", "Rotte 3", "Rotte 4", "Rotte 5"].filter(n => M.aktor(n)).length; return { utfall: "siger", xp: 0, pengar: 0, fall: [] }; };
+      const pv = M.krokar.samtale(rotta);
+      await trykkGjennom(() => s10.scener.rottesverm && !T().iHending() && !synleg("#rpg-tale"));
+      await pv; await vent(300);
+      sjekk(svermkampar.join(";") === "svermrotte,svermrotte,svermrotte,svermrotte,svermrotte" && paaKartet === 5, `rottesvermen: fem rotter på kartet og éin kamp mot fem smårotter (${svermkampar.join(";")}, ${paaKartet} på kartet)`);
+      sjekk(!["Rotta", "Rotte 2", "Rotte 3", "Rotte 4", "Rotte 5"].some(n => M.aktor(n)) && kanGaa() && s10.dagbok.some(l => /sverm/.test(l.tekst)), "etter svermen er rottene borte, Dagboka har ei linje, og Ivar kan gå");
+      M.last("asen-stabbur", "1"); await vent(600);
+      sjekk(!M.aktor("Rotta") && svermkampar.length === 1 && !T().iHending(), "neste gong er det inga rotte på kartet, og svermen kjem ikkje att");
+      w.Kamp.start = kampFor2; stabbur.fiendar.vis = visFor;
+    }
     M.last("asen", "3"); await vent(200);
     M.plasser(27, 11, 3); await vent(100);
     await M.krokar.dor(dor(27, 11)); await vent(900);

@@ -341,7 +341,7 @@ window.RPGData = (function () {
       rader: [
         "XXXXXXXXXX",
         "X(((OOOO(X",
-        "XOOOOOOOOX",
+        "XOOOOO@OOX",
         "X((O4O((OX",
         "XOO2O3OOOX",
         "XKOO1OOO(X",
@@ -353,6 +353,9 @@ window.RPGData = (function () {
       inngang: [{ merke: "1", manus: "inn_stabbur" }, { merke: "2", manus: "rotta" }, { merke: "3", manus: "rotta" }, { merke: "4", manus: "rotta" }],
       fiendar: { alle: true, vis: st => !!st.scener.rotta, lag: [["rotte"], ["rotte", "rotte"], ["rotte", "rotte", "rotte"], ["rottemor"]] },
       kister: [{ ved: [1, 5], ting: "romegraut", n: 2, pengar: 20, id: "k-stabbur" }],
+      // Etter den første rottekampen er rotta tilbake og spring omkring ved spekematen. Når Ivar
+      // går bort til henne (Z), spelar «rottesverm»: ho kallar på fire til, og det blir kamp mot fem.
+      folk: [{ merke: "@", vesen: "rotte-kart", namn: "Rotta", atferd: "gaa", radius: 1, retning: 2, tale: "rottesverm", vis: st => !!st.scener.rotta && !st.scener.rottesverm }],
     },
     /* Scenekart (scene: true) finst berre for ei scene: dei er ikkje med i verda, og spelet
        lagrar aldri at Ivar står der (sjå scenekart-steget i README). */
@@ -802,6 +805,8 @@ window.RPGData = (function () {
     irrbloss: { namn: "Irrbloss", bilete: "irrbloss", slag: "eld", hp: 20, atk: 7, def: 0, spd: 15, xp: 7, pengar: 2, tekst: "Eit lite ljos som lokkar folk ut i myra. Snø og kulde sløkkjer det." },
     haugbonden: { namn: "Haugbonden", bilete: "haugbonden", slag: "vette", hp: 130, atk: 10, def: 4, spd: 8, xp: 40, pengar: 0, spesial: { kvar: 3, alle: true, faktor: 0.9, tekst: "Haugbonden brølar: «KVEN ER EG?»" }, tekst: "Den gamle vetten i haugen. Han har budd der sidan før kyrkja vart bygd." },
     rotte: { namn: "Låverotte", bilete: "rotte", slag: "dyr", hp: 18, atk: 5, def: 1, spd: 13, xp: 4, pengar: 1, fall: [["flatbrod", 0.3]], spesial: { kvar: 3, type: "stel", ting: "flatbrod", lækje: 10, faktor: 1.3, tekst: "Rotta nappar eit flatbrød frå sekken og knaskar det i seg!", tom: "Rotta finn ingen mat i sekken og bit i leggen i staden!" }, tekst: "Ei feit, grå låverotte med gule tenner og raude auge. Ho et alt ho finn, og helst flatbrød." },
+    // Rottesvermen (scena «rottesverm»): fem om gongen, så kvar av dei er veik og treg.
+    svermrotte: { namn: "Smårotte", bilete: "rotte", slag: "dyr", hp: 9, atk: 2, def: 0, spd: 9, xp: 3, pengar: 1, fall: [["flatbrod", 0.15]], tekst: "Ei mager ungrotte frå reiret under stabburet. Åleine er ho ikkje farleg, men ho kjem aldri åleine." },
     rottemor: { namn: "Rottemora", bilete: "rottemor", slag: "dyr", hp: 52, atk: 8, def: 2, spd: 9, xp: 15, pengar: 5, fall: [["flatbrod", 0.6], ["romegraut", 0.15]], spesial: { kvar: 3, faktor: 1.5, tekst: "Rottemora kvesser tennene og bit hardt!", veksle: { kvar: 4, type: "stel", ting: "flatbrod", lækje: 20, faktor: 1.2, tekst: "Rottemora rappar eit flatbrød frå sekken og gomlar det i seg!", tom: "Rottemora rotar i sekken, finn ingenting og bit sint!" } }, tekst: "Den gamle rotta under stabburet, grå i snuten og med eit rive øyre. Ho held alltid fast på eit flatbrød." },
     blekklatten: { namn: "Blekklatten", bilete: "blekklatten", slag: "blekk", hp: 340, atk: 12, def: 4, spd: 9, xp: 90, pengar: 60, spesial: { kvar: 2, type: "rettskriv", veksle: { kvar: 4, alle: true, faktor: 1.1, tekst: "Blekkflaum! Blekklatten skyl over heile partiet!" }, tekst: "Blekklatten: «Alt skal skrives rigtigt!»" }, tekst: "Alt blekket frå kyrkjebøkene i Hovdebygda, samla i éin klump. Det han skriv, står." },
   };
@@ -1049,7 +1054,7 @@ window.RPGData = (function () {
         { rist: 300, styrke: 1 },
         { t: "Ei feit låverotte spring over golvet, rett bort til flatbrødstabelen, og bit seg fast i ein leiv. Det knasar." },
         { s: "Ivar", t: "Slepp! Det er flatbrødet vi skal leve av fram til slåtten!", kjensle: "sint" },
-        { byt: "Rotta", vesen: "rotte-kart-v" },
+        { snu: "Rotta", mot: "Ivar" },
         { t: "Rotta snur seg med flatbrødet i kjeften. Ho piper sint og viser dei gule tennene." },
         { gaa: "Rotta", mot: "Ivar", fart: 160 },
         { kamp: ["rotte"] },
@@ -1057,6 +1062,30 @@ window.RPGData = (function () {
         { t: "Rotta slepper flatbrødet og pilar ned gjennom eit hol i golvet bak sekkene." },
         { s: "Ivar", t: "Der det er éi rotte, er det fleire. Far sette alltid ut feller om hausten. I år var det ingen som gjorde det.", kjensle: "trist" },
         { dagbok: "Ei rotte hadde gnege seg inn i stabburet og ville ha flatbrødet vårt. Eg jaga henne, men der det er éi, er det fleire." },
+      ],
+    },
+    // Rottesvermen: rotta er tilbake (folk på kartet etter den første kampen). Når Ivar går bort
+    // til henne, piper ho, og fire til kjem frå hola i hjørna. Kamp mot fem smårotter.
+    rottesverm: {
+      namn: "Rottesvermen", stad: "Stabburet på Åsen", kort: false, med: ["Ivar", "Rotta"],
+      steg: [
+        { s: "Ivar", t: "Du att! No skal du ut av stabburet vårt!", kjensle: "sint" },
+        { snu: "Rotta", mot: "Ivar" },
+        { t: "Rotta reiser seg på bakbeina og piper, høgt og skjerande." },
+        { rist: 400, styrke: 1 },
+        { t: "Det svarar frå alle kantar. Frå hola langs veggene pilar fleire rotter fram." },
+        { saman: [
+          [{ inn: { namn: "Rotte 2", vesen: "rotte-kart", rute: [1, 2] } }, { gaa: "Rotte 2", sti: "h1", fart: 130 }, { snu: "Rotte 2", mot: "Ivar" }],
+          [{ vent: 150 }, { inn: { namn: "Rotte 3", vesen: "rotte-kart", rute: [1, 4] } }, { gaa: "Rotte 3", sti: "h1", fart: 130 }, { snu: "Rotte 3", mot: "Ivar" }],
+          [{ vent: 300 }, { inn: { namn: "Rotte 4", vesen: "rotte-kart", rute: [3, 5] } }, { gaa: "Rotte 4", sti: "o1", fart: 130 }, { snu: "Rotte 4", mot: "Ivar" }],
+          [{ vent: 450 }, { inn: { namn: "Rotte 5", vesen: "rotte-kart", rute: [7, 5] } }, { gaa: "Rotte 5", sti: "v1", fart: 130 }, { snu: "Rotte 5", mot: "Ivar" }],
+        ] },
+        { s: "Ivar", t: "Fem stykke! Det er eit heilt reir under golvet!", kjensle: "sjokk" },
+        { kamp: ["svermrotte", "svermrotte", "svermrotte", "svermrotte", "svermrotte"] },
+        { fjern: "Rotte 2" }, { fjern: "Rotte 3" }, { fjern: "Rotte 4" }, { fjern: "Rotte 5" }, { fjern: "Rotta" },
+        { t: "Rottene spreier seg i alle retningar og blir borte ned gjennom hola i golvet. Det blir stille i stabburet." },
+        { s: "Ivar", t: "Eg må tette hola før vinteren. Elles et dei opp alt saman.", kjensle: "tenkje" },
+        { dagbok: "Ein heil sverm rotter budde under stabburet. Eg jaga dei, men hola i golvet må tettast." },
       ],
     },
     // Eit minne om far, første gong Ivar kviler ved lampa i stova (kvile på kartet).
@@ -1310,6 +1339,7 @@ window.RPGData = (function () {
     ],
     inn_stabbur: [{ dersom: st => !st.scener.stabburet, da: [{ scene: "stabburet" }], elles: [{ dersom: st => !st.scener.rotta, da: [{ scene: "rotta" }] }] }],
     rotta: [{ dersom: st => st.scener.stabburet && !st.scener.rotta, da: [{ scene: "rotta" }] }],
+    rottesverm: [{ scene: "rottesverm" }],
     framande: [{ scene: "framande" }, { t: "Ordboka ligg i menyen (X eller Esc). Der ser du orda du har høyrt, formene deira og kven som sa dei." }],
     // Vakta ved kantane: Ivar står på kantruta og snur attende eitt steg.
     ikkje_enno: [{ t: "Ivar vil sjå seg om på tunet og i stova først. Kanskje nokon har noko å seie." }, { gaa: "Ivar", sti: "n1" }],

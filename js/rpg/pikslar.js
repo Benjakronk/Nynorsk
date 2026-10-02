@@ -1414,6 +1414,25 @@ window.Pikslar = (function () {
     "rotte-kart": { fil: "bilete/spel/rotte-kart.png", w: 24, h: 14 },
     "rotte-kart-v": { fil: "bilete/spel/rotte-kart-v.png", w: 24, h: 14 },
   };
+  /* Gangark for vesen som går på kartet (tools/pikselkunst/rotte.py): tre kolonnar (står, steg 1,
+     steg 2) og fire rader (ned, opp, venstre, høgre), som figurane. vesenGang(namn) gir
+     rammer[retning][steg] eller null for vesen utan gangark (dei glir og gyng). */
+  const GANGARK = {
+    "rotte-kart": { fil: "bilete/spel/rotte-kart-gang.png", w: 24, h: 16 },
+    "rotte-kart-v": { fil: "bilete/spel/rotte-kart-gang.png", w: 24, h: 16 },
+  };
+  const gangCache = new Map();
+  function vesenGang(namn) {
+    const d = GANGARK[namn];
+    if (!d) return null;
+    if (gangCache.has(d.fil)) return gangCache.get(d.fil);
+    const rammer = [0, 1, 2, 3].map(() => [0, 1, 2].map(() => lerret(d.w, d.h)));
+    const img = hent(d.fil);
+    const bruk = () => rammer.forEach((r, dir) => r.forEach((c, k) => { const g = c.getContext("2d"); g.imageSmoothingEnabled = false; g.clearRect(0, 0, d.w, d.h); g.drawImage(img, k * d.w, dir * d.h, d.w, d.h, 0, 0, d.w, d.h); }));
+    if (klar(img)) bruk(); else img.addEventListener("load", bruk, { once: true });
+    gangCache.set(d.fil, rammer);
+    return rammer;
+  }
   function fraPng(d) {
     const c = lerret(d.w, d.h), g = c.getContext("2d");
     g.imageSmoothingEnabled = false;
@@ -1591,6 +1610,7 @@ window.Pikslar = (function () {
     for (const id of Object.values(D.PORTRETT || {})) ut.push(`bilete/spel/portrett/${id}.png`);
     for (const [id, ks] of Object.entries(D.PORTRETT_KJENSLER || {})) for (const k of ks) ut.push(`bilete/spel/portrett/${id}-${k}.png`);
     for (const d of Object.values(PNG)) ut.push(d.fil);
+    for (const d of Object.values(GANGARK)) ut.push(d.fil);
     for (const n of NAERBILETE) ut.push(`bilete/spel/naer/${n}.png`);
     for (const n of Object.keys(D.LYSKJELDER || {})) ut.push(`bilete/spel/lys/${n}.png`);   // glødformene til lyset (glod.py)
     // Bakgrunnslaga og forgrunnen (parallakse, laga med tools/pikselkunst/utsikt.py)
@@ -1679,6 +1699,6 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, nordkant, klasse, bygg, natur, haugBilete, KANTTYPE, kantflis, kantfigurar, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
+  return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, nordkant, klasse, bygg, natur, haugBilete, KANTTYPE, kantflis, kantfigurar, vatn, steingard, FAST, figur, fiende, vesenGang, lerret, ramp, blend, RAMP,
     hent, klar, forhandslast, alleBilete, ILD, SETE, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
 })();

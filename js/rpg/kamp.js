@@ -145,7 +145,7 @@ window.Kamp = (function () {
     const D = RPGData;
     const fi = fiendar.map((id, i) => {
       const d = D.FIENDAR[id];
-      const nr = fiendar.filter(x => x === id).length > 1 ? " " + "ABCD"[fiendar.slice(0, i + 1).filter(x => x === id).length - 1] : "";
+      const nr = fiendar.filter(x => x === id).length > 1 ? " " + "ABCDE"[fiendar.slice(0, i + 1).filter(x => x === id).length - 1] : "";
       return { id, d, namn: d.namn + nr, hp: d.hp, maxhp: d.hp, atk: d.atk, def: d.def, spd: d.spd, atb: rnd(0, 40), tur: 0, blink: 0, fiende: true, avslort: 0, sov: 0 };
     });
     fi.forEach(f => paaVesen && paaVesen(f.id, false));
@@ -171,8 +171,10 @@ window.Kamp = (function () {
     const meld = (t, ms = 1400) => { melding.textContent = t; melding.hidden = false; meldingTid = performance.now() + ms; };
 
     // Plassering på lerretet (320 × 192): fiendar til venstre med føtene på bakken, partiet til høgre.
-    const SLOT = { 1: [[88, 118]], 2: [[64, 106], [126, 120]], 3: [[52, 102], [104, 120], [150, 104]], 4: [[46, 100], [96, 118], [140, 100], [176, 120]] };
-    const fiPos = i => { const [x, y] = SLOT[Math.min(4, fi.length)][i]; return { x, y }; };
+    const SLOT = { 1: [[88, 118]], 2: [[64, 106], [126, 120]], 3: [[52, 102], [104, 120], [150, 104]], 4: [[46, 100], [96, 118], [140, 100], [176, 120]],
+      // Fem (rottesvermen): tre bak og to framme i luka mellom dei, så alle syner. Dei bakre blir teikna først.
+      5: [[38, 94], [94, 94], [150, 94], [64, 132], [122, 132]] };
+    const fiPos = i => { const [x, y] = SLOT[Math.min(5, fi.length)][i]; return { x, y }; };
     const paPos = i => ({ x: 246 + i * 16, y: 68 + i * 30 });
 
     function oppdaterLister() {

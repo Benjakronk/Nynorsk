@@ -1246,3 +1246,27 @@ same måte, uansett kven som tek over.
   (kameraet glir ned når Ivar går ned på den nedste hylleflisa) og `r37-rorsle.png` (fire bilete med
   1,4 sekund mellom: skya driv mot høgre, elva renn).
 - **Står att:** Sidene av hylla mot stupet på platået er rette, loddrette kantar.
+
+## Runde 39: rotta går, og ein sverm på fem rotter
+
+- **Oppdrag:** Brukaren: gangrammer for rotta på kartet, og eit møte med ein sverm på fem rotter etter
+  den første kampen.
+- **Gjort:**
+  - `rotte.py`: `rotte-kart-gang` (72 × 64): tre rammer (står, steg 1, steg 2) i fire retningar som
+    figurane (ned, opp, venstre, høgre), 24 × 16 per rute. Frå sida går annakvart beinpar fram og halen
+    sviv, framanfrå og bakfrå går labbane opp og ned, og steg 1 lyftar kroppen ein piksel. Den lyse
+    pelsen og kantlyset frå runde 36 er med. Framanfrå: store øyre, raude auge, snute og tenner;
+    bakfrå: rygg, øyre og halen.
+  - `pikslar.js`: `GANGARK` og `vesenGang(namn)` (rammer[retning][steg], forhåndslasta).
+    `motor.js`: eit vesen med gangark blir teikna med ramma for retninga og steget, utan gynging.
+    I scena `rotta` snur rotta seg med `snu` (ikkje `byt`).
+  - Rottesvermen: etter scena `rotta` står rotta som folk på kartet (`vesen`, `atferd: "gaa"`,
+    `vis`) og spring omkring ved spekematen. Når Ivar talar til henne, spelar `rottesverm`: ho piper,
+    fire til kjem fram frå hola langs veggene, og det blir kamp mot fem `svermrotte` (Smårotte: 9 HP,
+    atk 2, def 0, spd 9, xp 3; ho gjer 1 til 2 i skade på Ivar på nivå 1, så svermen er overkomeleg
+    åleine). Etterpå er rottene borte for godt.
+  - `kamp.js`: plass til fem fiendar (tre bak, to framme i luka mellom dei) og namna A til E.
+- **Vurdert:** `sverm-kamp`: fem smårotter på stabburbakgrunnen, alle lesbare, og lista A til E får
+  plass. Gangrammene i scena (tolv bilete med 45 ms mellom): rotta spring mot høgre og så ned, og ramma
+  skiftar med steget. Scena med svermen: fire rotter står rundt i rommet og ser mot Ivar.
+- **Står att:** Rammene framanfrå og bakfrå er enkle; ei rotte sett ovanfrå ville lese betre.
