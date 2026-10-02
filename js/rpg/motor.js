@@ -63,11 +63,14 @@ window.Motor = (function () {
   document.addEventListener("keydown", e => {
     if (e.target.closest && e.target.closest("input, textarea")) return;
     if (e.key in RETNING) { halde.add(RETNING[e.key]); if (!pausa || paaTrykk) e.preventDefault(); if (paaTrykk && paaTrykk.retning) paaTrykk.retning(RETNING[e.key]); }
-    else if (["z", "Z", "Enter", " "].includes(e.key)) { e.preventDefault(); if (e.repeat) return; trykkA(); }
+    else if (["z", "Z", "Enter", " "].includes(e.key)) { e.preventDefault(); springTast = true; if (e.repeat) return; trykkA(); }
     else if (["x", "X", "Escape", "Backspace"].includes(e.key)) { if (e.repeat) return; trykkB(e); }
   });
-  document.addEventListener("keyup", e => { if (e.key in RETNING) halde.delete(RETNING[e.key]); });
-  window.addEventListener("blur", () => halde.clear());
+  document.addEventListener("keyup", e => {
+    if (e.key in RETNING) halde.delete(RETNING[e.key]);
+    if (["z", "Z", "Enter", " "].includes(e.key)) springTast = false;
+  });
+  window.addEventListener("blur", () => { halde.clear(); springTast = false; });
   function trykkA() {
     if (paaTrykk && paaTrykk.a) { paaTrykk.a(); return; }
     if (!pausa && !spelar.flytt) samhandle();
@@ -81,10 +84,10 @@ window.Motor = (function () {
     const v = b.dataset.pad;
     const ned = e => {
       e.preventDefault();
-      if (v === "a") trykkA(); else if (v === "b") trykkB();
+      if (v === "a") { springTast = true; trykkA(); } else if (v === "b") trykkB();
       else { halde.add(+v); if (paaTrykk && paaTrykk.retning) paaTrykk.retning(+v); }
     };
-    const opp = () => { if (v !== "a" && v !== "b") halde.delete(+v); };
+    const opp = () => { if (v === "a") springTast = false; else if (v !== "b") halde.delete(+v); };
     b.addEventListener("pointerdown", ned);
     b.addEventListener("pointerup", opp); b.addEventListener("pointerleave", opp); b.addEventListener("pointercancel", opp);
   });
@@ -198,10 +201,14 @@ window.Motor = (function () {
   const tikkFart = ms => [4, 8, 16, 32, 64].reduce((b, t) => Math.abs(Math.log(t * TIKK / ms)) < Math.abs(Math.log(b * TIKK / ms)) ? t : b) * TIKK;
   // Kor langt (0 til 1) eit steg som byrja t0 og varer fart ms, er kome no, i heile tikk.
   const stegDel = (no, t0, fart) => Math.min(1, Math.max(0, tikk(no) - tikk(t0)) / tikk(fart));   // same tikk-rutenett som kameraet
-  const FART = 8 * TIKK;      // spelaren: 8 tikk per flis (133 ms, 2 pikslar per tikk)
+  /* Spelaren går 12 tikk per flis (200 ms, 1, 1 og 2 pikslar per tikk på rundgang), og spring
+     8 tikk per flis (133 ms, 2 pikslar per tikk) så lenge Z, Enter, mellomrom eller A er halden
+     nede. Farten blir vald når eit steg byrjar, så skiftet mellom gange og sprang er reint. */
+  const GA_FART = 12 * TIKK, SPRING_FART = 8 * TIKK;
+  let springTast = false;
   // Plasserer spelaren (og følgjet) der dei skal vere no i steget.
   function flytt(no) {
-    const u = stegDel(no, spelar.flytt.t0, FART);
+    const u = stegDel(no, spelar.flytt.t0, spelar.flytt.fart);
     spelar.u = u;
     spelar.fx = spelar.flytt.fx + (spelar.x - spelar.flytt.fx) * u;
     spelar.fy = spelar.flytt.fy + (spelar.y - spelar.flytt.fy) * u;
@@ -261,7 +268,7 @@ window.Motor = (function () {
       if (flytt(no) < 1) return;
       // Steget er ferdig. Neste steg byrjar der dette slutta, i same biletet,
       // så figuren ikkje står i ro eit bilete eller to på kvar flis (det gav hakk).
-      t0 = Math.max(spelar.flytt.t0 + FART, no - FART / 2);
+      t0 = Math.max(spelar.flytt.t0 + spelar.flytt.fart, no - spelar.flytt.fart / 2);
       spelar.flytt = null; if (fylgje) fylgje.flytt = null;
       const k0 = kart;
       komFram();
@@ -288,7 +295,7 @@ window.Motor = (function () {
     }
     if (!kanGaa(nx, ny)) return false;
     if (fylgje) { fylgje.flytt = { fx: fylgje.x, fy: fylgje.y }; fylgje.dir = retningMot(fylgje.x, fylgje.y, spelar.x, spelar.y, fylgje.dir); fylgje.x = spelar.x; fylgje.y = spelar.y; }
-    spelar.flytt = { fx: spelar.x, fy: spelar.y, t0: no };
+    spelar.flytt = { fx: spelar.x, fy: spelar.y, t0: no, fart: springTast ? SPRING_FART : GA_FART };
     spelar.x = nx; spelar.y = ny;
     spelar.steg++;
     return true;

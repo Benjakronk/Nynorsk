@@ -39,10 +39,12 @@ f.onload = async () => {
     if (t !== sistTikk) { sistTikk = t; logg.push({ t: no, tikk: t, fx: M.spelar.fx, flytt: !!M.spelar.flytt }); }
     if (held || M.spelar.flytt) w.requestAnimationFrame(maal);
   };
+  // Ivar spring (Z halden nede): 8 tikk per flis, 2 pikslar per tikk. Utan Z går han 12 tikk per flis.
+  tast("keydown", "z");
   tast("keydown", "ArrowRight");
   w.requestAnimationFrame(maal);
   await vent(2000);
-  tast("keyup", "ArrowRight"); held = false;
+  tast("keyup", "ArrowRight"); tast("keyup", "z"); held = false;
   await vent(400);
   // Rammer der spelaren står i ro medan tasten er nede (etter første steg), og avviket frå jamn
   // fart: posisjonen skal gå 2 pikslar per tikk (8 tikk per flis). Måleren og spelet går i kvar sin
