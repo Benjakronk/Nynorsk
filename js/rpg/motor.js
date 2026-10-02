@@ -796,6 +796,7 @@ window.Motor = (function () {
     }
     const GANG = [1, 0, 2, 0];
     const figurar = kart.folk.filter(f => f.sprite).map(f => ({ y: f.fy, sp: f.sprite, x: f.fx, dir: f.dir, kjensle: f.kjensle, pose: f.pose,
+      sete: f.pose === "sitje" && f.sete,
       steg: f.flytt ? GANG[(f.steg % 2) * 2 + (f.u < 0.5 ? 0 : 1)] : 0 }));
     // Gangramma følgjer steget, ikkje klokka: to rammer per flis (steg, stå), annakvar fot.
     const steg = spelar.flytt ? GANG[(spelar.steg % 2) * 2 + (spelar.u < 0.5 ? 0 : 1)] : 0;
@@ -827,7 +828,9 @@ window.Motor = (function () {
         if (dorAnim && f.by === dorAnim.ty) teiknDor(no, ox, oy);
         for (const [rx, ry] of Pikslar.ROYK[f.id] || []) Pikslar.royk(g, bx + rx, by - f.bygg.height + ry, no);
         continue; }
-      const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S);
+      // sete: [dx, dy] i pikslar for den som sit på ein stol eller benk som er del av eit inventar
+      // (kubbestolen ved enden av langbordet). Stolen har sin eigen skugge.
+      const sx = Math.round((f.x + ox) * S) + (f.sete ? f.sete[0] : 0), sy = Math.round((f.y + oy) * S) + (f.sete ? f.sete[1] : 0);
       // Eit vesen står midt på flisa med botnen på bakken, og gyng litt opp og ned.
       if (f.sp.vesen) {
         const c = f.sp.vesen, gy = Math.round((Math.sin(no / 420) + 1) * 0.8);
@@ -843,7 +846,7 @@ window.Motor = (function () {
         if (f.pose === "sove") teiknZz(g, sx + 14, sy - FOT + 4, no);
         continue;
       }
-      g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx + 3, sy + 10, 10, 3); g.fillRect(sx + 4, sy + 9, 8, 5);
+      if (!f.sete) { g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx + 3, sy + 10, 10, 3); g.fillRect(sx + 4, sy + 9, 8, 5); }
       const bilde = pose ? pose[f.dir] : f.kjensle && f.sp.kjensle && f.sp.kjensle[f.kjensle] ? f.sp.kjensle[f.kjensle] : f.sp.rammer[f.dir][f.steg];
       g.drawImage(bilde, sx, sy - FOT);
     }

@@ -193,22 +193,22 @@ f.onload = async () => {
     const gamalWarn = w.console.warn; w.console.warn = (...a) => { varsel.push(a.join(" ")); gamalWarn.apply(w.console, a); };
     const naer = (a, b) => a && b && Math.abs(a.x - b.x) + Math.abs(a.y - b.y) === 1;
     const kanGaa = () => T().modus() === "felt" && !M.spelar.regi && !M.svart;
-    // a) Syster står opp frå bordet, gir flatbrød og set seg att.
+    // a) Syster står opp frå kubbestolen ved bordet, gir flatbrød og set seg att, sett frå sida.
     delete s10.ord.kaka;
     const brod = s10.ting.flatbrod || 0;
-    M.last("asen-stova", "1"); M.plasser(3, 5, 2); await vent(300);
+    M.last("asen-stova", "1"); M.plasser(2, 5, 1); await vent(300);
     let stod = false, saaMot = false;
     tast("z");
     await trykkGjennom(() => s10.scener.syster_kake && !synleg("#rpg-tale"), () => {
       const sy = M.aktor("Syster");
       if (sy && !sy.pose) stod = true;
-      if (sy && sy.dir === 3 && synleg("#rpg-tale") && /flatbrød/.test(d.querySelector("#rpg-tale").textContent)) saaMot = true;
+      if (sy && sy.dir === 0 && synleg("#rpg-tale") && /flatbrød/.test(d.querySelector("#rpg-tale").textContent)) saaMot = true;
     });
     await vent(300);
     const sy10 = M.aktor("Syster");
     sjekk(stod && saaMot, "syster stod opp og snudde seg mot Ivar då ho gav flatbrødet");
     sjekk(s10.ord.kaka && (s10.ting.flatbrod || 0) === brod + 1, "Ivar høyrde «kake» og fekk eit flatbrød");
-    sjekk(sy10.x === 2 && sy10.y === 5 && sy10.pose === "sitje" && kanGaa(), `syster sit att ved bordet (${sy10.x},${sy10.y} ${sy10.pose}), og Ivar kan gå`);
+    sjekk(sy10.x === 2 && sy10.y === 4 && sy10.pose === "sitje" && sy10.dir === 3 && kanGaa(), `syster sit att på kubbestolen og ser mot bordet (${sy10.x},${sy10.y} ${sy10.pose} retning ${sy10.dir}), og Ivar kan gå`);
 
     // b) Vakta ved kanten mot utmarka: Ivar snur og går eitt steg attende.
     delete s10.flagg.skiftebrev;
