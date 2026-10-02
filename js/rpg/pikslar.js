@@ -731,6 +731,8 @@ window.Pikslar = (function () {
   for (const [k, p] of Object.entries(STIFARGE)) STIPAKKA[k] = { botn: pakk(p.botn), sokk: pakk(p.sokk), sokkMork: pakk(p.sokkMork), sokkKant: pakk(p.sokkKant),
     prikk: pakk(p.prikk), straa: p.straa.map(pakk), gras: p.gras.map(pakk) };
   const VG = R_.villgras.map(pakk);
+  // Overflata på stien: den gamle raudbrune jorda med prikkar og små gråsteinar (som «=» før runde 24).
+  const JORD = R_.jord.map(pakk), STEIN = R_.stein.map(pakk);
   // Kor fri stien er til å flytte seg ved flisa (0 ved dører, murar og kartkanten, 1 elles).
   function stiFri(felt, tx, ty) {
     let d = 9;
@@ -824,19 +826,15 @@ window.Pikslar = (function () {
         }
       }
       if (!farge && d >= 0) {
-        // Sjølve stien: botn, mjuke, ovale søkk (mørk midte, lys nedre kant) og lyse prikkar.
-        farge = P.botn;
-        const cx = Math.floor(X / 16), cy = Math.floor(Y / 12);
-        if (hash(cx, cy, 409) < 0.45) {
-          const w = 5 + Math.floor(hash(cx, cy, 410) * 4), h = w > 6 ? 4 : 3;
-          const ox = cx * 16 + 1 + Math.floor(hash(cx, cy, 411) * (14 - w)), oy = cy * 12 + 1 + Math.floor(hash(cx, cy, 412) * (10 - h));
-          const lx = X - ox, ly = Y - oy, ex = (lx - (w - 1) / 2) / (w / 2), ey = (ly - (h - 1) / 2) / (h / 2);
-          if (lx >= 0 && ly >= 0 && lx < w && ly < h && ex * ex + ey * ey <= 1.1) {
-            const kantx = Math.abs(ex) > 0.62;
-            farge = ly === h - 1 ? P.sokkKant : ly === 0 || kantx ? P.sokk : P.sokkMork;
-          }
+        // Sjølve stien: raudbrun jord med mørke og lyse prikkar, og nokre små gråsteinar (2 x 1, med
+        // skugge under) per rute på 16 x 16 pikslar.
+        const h = hash(X, Y, 51);
+        farge = h < 0.09 ? JORD[1] : h > 0.93 ? JORD[3] : JORD[2];
+        const cx = Math.floor(X / S), cy = Math.floor(Y / S), cv = cx * 7 + cy * 3;
+        for (let n = 0; n < 3; n++) {
+          const sx = cx * S + Math.floor(hash(n, cv, 52) * (S - 1)), sy = cy * S + Math.floor(hash(n, cv + 17, 55) * (S - 1));
+          if (X >= sx && X <= sx + 1 && (Y === sy || Y === sy + 1) && d >= 1) farge = Y === sy ? STEIN[3] : STEIN[1];
         }
-        if (farge === P.botn && d >= 2 && hash(X, Y, 413) < 0.012) farge = P.prikk;
       }
       if (farge) { ut[i] = farge; noko = true; }
     }
