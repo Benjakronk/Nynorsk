@@ -13,9 +13,10 @@ borte.
             til høgre Hovdebygda med teigar, gardar, Hovdekyrkja, elva og vegen.
   naer      trekronene i lia rett under kanten øvst (faktor 0,6): mørke granar og bjørker som
             stikk opp over graskanten og søkk bak han når kameraet går ned.
-  li        lia under stupet, eit fast lag (faktor 1): bergveggen held fram med hyller med gras, kratt og
-            bjørk, ein ny bergvegg og bratt skog som blir mindre og disigare nedover og går
-            over i dis nedst. Standard nedst (variant «fast»).
+  li        lia og dalen under stupet, sett rett ovanfrå som eit kart frå lufta, eit fast lag
+            (faktor 1): ur og knausar, skog som trekroner, dalbotnen med teigar, steingardar og
+            skigardar, elva, vegen, gardane som tak og kyrkja med tårnet, og skyer under oss.
+            Standard nedst (variant «fast»).
   li-kort, dal-under   varianten «dal»: lia sluttar i ei tregrense, og under stig dalbotnen med
             Hovdebygda fram nedanfrå (faktor [1, 1,8]) når kameraet glir ned ved stupet.
   greiner, greiner-h   bjørkegreiner som heng ned i øvre hjørne (forgrunn, faktor 1,3)
@@ -170,218 +171,182 @@ def fjell():
     return L_.im
 
 
-# ---------------------------------------------------------------- lia under stupet
-LI_W, LI_H = 448, 148                # like breitt som kartet: laget står fast (faktor 1)
+# ---------------------------------------------------------------- lia og dalen under stupet, sett ovanfrå
+LI_W, LI_H = 448, 180                # like breitt som kartet: laget står fast (faktor 1); kartrad 15 og ned
 BERG = ["#1c1a2c", "#2e2a3a", "#48434a", "#645e5e", "#827a74", "#a0978a", "#bdb4a4"]   # som BERG i pikslar.js
 
 
-def berg(L_, x, y, skala, s, dis):
-    """Ein piksel bergvegg som stupet (Narshe): store knausar med lys side mot venstre og djupe renner.
-    skala < 1 gjer formene mindre (lenger borte). dis: kor mykje mot disfargen."""
-    kn = lambda X, Y: 0.62 * M.stoy(X / (15 * skala) + Y / (70 * skala), 0.5, s) + 0.38 * M.stoy(X / (5.5 * skala) + Y / (40 * skala), Y / (30 * skala), s + 1)
-    d = kn(x, y); helling = kn(x + 1.5, y) - kn(x - 1.5, y)
-    l = 0.5 + helling * 5.5 / skala ** 0.5 + (d - 0.5) * 1.1
-    if M.h(x // 2, y // 3, s + 2) > 0.87: l += 0.15
-    v = max(0, min(6, int(l * 6 + (M.terskel(x, y) - 0.5) * 0.7)))
-    if d < 0.3: v = min(v, 1)
-    L_.p(x, y, M.blend(BERG[v], DIS, math.floor(dis * 6 + M.terskel(x + 1, y)) / 6))
-
-
-def li(kort=False):
-    """Lia som stuper ned under stupet, eit fast lag som følgjer kartet (faktor 1): bergveggen held
-    fram til den første hylla med gras, kratt og bjørk, ein ny, lågare bergvegg, så bratt skog som
-    blir mindre og disigare nedover og går over i dis. Alt lenger nede er lenger borte: mindre former
-    og meir dis (luftperspektiv). kort: skogen sluttar i ein ujamn tregrense med luft under, så
-    dalen (dal-under, varianten «dal») kan stige fram der."""
-    L_ = L(LI_W, LI_H)
-    gras = M.rampe("#2c4a30", "#3a5e36", "#4e7840", "#68904c", "#88a85a")
-    kratt = M.rampe("#162a1e", "#203824", "#2e4a2c", "#3e5e34", "#56743e")
-    h1 = lambda x: 46 + 4 * math.sin(x / 37) + (M.fbm(x / 14, 1, 401, 3) - 0.5) * 8      # første hylla, langt nede
-    h2 = lambda x: 78 + 3 * math.sin(x / 29 + 1) + (M.fbm(x / 11, 2, 402, 3) - 0.5) * 6  # andre hylla
-    skog = lambda x: 94 + 2 * math.sin(x / 23) + (M.fbm(x / 8, 3, 403, 3) - 0.5) * 6      # skogen i lia
-    dal = lambda x: sk_kant(x) if kort else 999                                         # kort: tregrensa nedst
-    hylle = lambda x, k: 4 + int(M.fbm(x / 9, k, 404, 2) * 4)
-    sk_kant = lambda x: skog(x) + 8 + (M.fbm(x / 4, 6, 406, 3) - 0.5) * 8
-    for x in range(LI_W):
-        a, b, sk, dl = h1(x), h2(x), skog(x), dal(x)
-        for y in range(LI_H):
-            if y < a: berg(L_, x, y, 1.0, 411, 0.1 + y / 220)                          # stupet held fram
-            elif y < a + hylle(x, 1):                                                   # hylla med gras
-                k = y - a
-                L_.p(x, y, M.blend(gras[4] if k == 0 else gras[3] if k == 1 else gras[2] if k < hylle(x, 1) - 1 else gras[0], DIS, 0.2))
-            elif y < b: berg(L_, x, y, 0.75, 421, 0.28 + (y - a) / 160)                 # ny bergvegg, mindre
-            elif y < b + hylle(x, 2) - 1:
-                k = y - b
-                L_.p(x, y, M.blend(gras[4] if k == 0 else gras[2] if k < 3 else gras[0], DIS, 0.32))
-            elif y < sk: berg(L_, x, y, 0.55, 431, 0.42)
-            elif y < dl:                                                                # bratt skog
-                # Skogen blir disigare nedover og går over i disen nedst (ingen flat dalbotn som
-                # ville gli feil med parallaksen).
-                v = 0.42 + (M.fbm(x / 2.2, y / 1.8, 441, 2) - 0.5) * 1.0 - (y - sk) / 120
-                t = 0.3 + (y - sk) / (110 if kort else 52) + (M.fbm(x / 18, y / 6, 442, 3) - 0.5) * 0.3
-                L_.p(x, y, M.blend(M.tone(kratt, v, x, y), DIS, min(1, math.floor(t * 6 + M.terskel(x, y)) / 6)))
-    # Kratt, einer og bjørk på hyllene: mørke klumpar med lys topp mot venstre, ei kvit stamme.
-    for i in range(150):
-        x = M.h(i, 1, 461) * LI_W
-        hy = h1(x) if i < 90 else h2(x)
-        sk = 1.0 if i < 90 else 0.7
-        r = (1.5 + M.h(i, 2, 461) * 2.2) * sk
-        if M.h(i, 3, 461) > 0.82:                                                       # ei lita bjørk
-            for k in range(int(5 * sk)): L_.p(x, hy + 1 - k, "#cfccc4" if k % 3 else "#3a3640")
-            krone(L_, x, hy - 5 * sk, r, M.rampe("#2e4a2c", "#46683a", "#6a8e48", "#8eac5a"), 470 + i)
+def ovanfra(W, H, s=0):
+    """Landskapet under stupet sett rett ovanfrå, som eit kart frå lufta (landskapet under pyramiden i
+    A Link to the Past, verdskartet i FF6): ur og knausar ved foten av stupet, skog som trekroner
+    sett ovanfrå (runde klumpar med lys side oppe til venstre og skugge nede til høgre), og dalbotnen
+    med teigar som fargefelt med steingardar og skigardar som liner, elva som eit band, vegen som ei
+    line, gardane som små torvtak og Hovdekyrkja med tårnet. Alt ligg langt nede: dempa, disig, og
+    nokre skyer driv mellom oss og dalen med skuggen sin på bakken under.
+    Gir lerretet og funksjonane for kantane (ur, skog, dal) så variantane kan klippe."""
+    L_ = L(W, H)
+    ur = lambda x: 26 + 3 * math.sin(x / 23) + (M.fbm(x / 7, 1, 701, 3) - 0.5) * 8        # ura ved foten slutt
+    skog = lambda x: 70 + 8 * math.sin(x / 61 + 1) + (M.fbm(x / 9, 2, 702, 3) - 0.5) * 14  # skogen slutt, dalen byrjar
+    elv = lambda x: 132 + 9 * math.sin(x / 70 + 0.4) + 4 * math.sin(x / 23)
+    veg = lambda x: 104 + 4 * math.sin(x / 90 + 2) + 1.5 * math.sin(x / 31)
+    eng = M.rampe("#5a8448", "#68924e", "#78a058", "#8aae62")
+    gras = M.rampe("#3e5e36", "#4a6e3c", "#5c8044")
+    # Botn: ur, skogbotn (skugge mellom kronene) og eng.
+    for x in range(W):
+        u, sk = ur(x), skog(x)
+        for y in range(H):
+            if y < u:
+                v = 0.45 + (M.fbm(x / 3, y / 3, 703, 2) - 0.5) * 0.9
+                L_.p(x, y, M.tone(M.rampe(BERG[2], BERG[3], BERG[4], BERG[5]), v, x, y))
+            elif y < sk: L_.p(x, y, "#1a2c20")
+            else:
+                v = 0.5 + (M.fbm(x / 30, y / 18, 704, 3) - 0.5) * 0.6 + (M.fbm(x / 3, y / 3, 705, 2) - 0.5) * 0.15
+                L_.p(x, y, M.tone(eng, v, x, y))
+    # Knausar i ura og i skogen: flate berg med lys kant oppe til venstre og mørk nede til høgre.
+    for i in range(26):
+        cx = M.h(i, 1, 706) * W; cy = 10 + M.h(i, 2, 706) * 46; rx = 3 + M.h(i, 3, 706) * 6; ry = rx * 0.7
+        for yy in range(int(cy - ry) - 1, int(cy + ry) + 2):
+            for xx in range(int(cx - rx) - 1, int(cx + rx) + 2):
+                dx, dy = (xx + 0.5 - cx) / rx, (yy + 0.5 - cy) / ry
+                n = dx * dx + dy * dy + (M.h(xx, yy, 707) - 0.5) * 0.3
+                if n > 1: continue
+                L_.p(xx, yy, BERG[5] if dx + dy < -0.9 else BERG[2] if dx + dy > 0.8 else BERG[4] if n < 0.5 else BERG[3])
+    # Teigar: fargefelt med steingard (grå line) eller skigard (brun, prikka line) rundt.
+    teig = ["#8eb064", "#a8b468", "#c8bc72", "#7a9a52", "#9c8458", "#b4c07a"]
+    for i in range(90):
+        cx = M.h(i, 1, 708) * W; cy = 76 + M.h(i, 2, 708) * (H - 80)
+        if cy < skog(cx) + 4: continue
+        w = 12 + int(M.h(i, 3, 708) * 20); hh = 8 + int(M.h(i, 4, 708) * 12); sk = (M.h(i, 5, 708) - 0.5) * 0.4
+        f = teig[int(M.h(i, 6, 708) * len(teig))]; skigard = M.h(i, 7, 708) > 0.6
+        for yy in range(hh):
+            for xx in range(w):
+                X, Y = int(cx + xx + yy * sk), int(cy + yy)
+                if Y < skog(X) + 2 or abs(Y - elv(X)) < 5 or abs(Y - veg(X)) < 2: continue
+                if xx == 0 or yy == 0 or xx == w - 1 or yy == hh - 1:
+                    if skigard: L_.p(X, Y, "#7a5a3a" if (X + Y) % 3 else "#5a4028")
+                    else: L_.p(X, Y, "#9a9a8c" if M.h(X, Y, 709) > 0.3 else "#6e6e66")
+                    continue
+                stripe = (yy % 3 == 0) if f in ("#9c8458", "#c8bc72") else False      # plogfurer og kornrader
+                L_.p(X, Y, M.blend(f, "#000000", 0.08) if stripe else f)
+    # Vegen: ei lys line med mørk kant, og ei bru over elva.
+    for x in range(W):
+        y = round(veg(x))
+        if y < skog(x) + 2: continue
+        L_.p(x, y, "#d2c496"); L_.p(x, y + 1, "#a89a72")
+    # Elva: eit band sett ovanfrå, med mørk bredd, lyse straumband og grusører.
+    vass = M.rampe("#4a6a76", "#5e808c", "#7a9ca6", "#a8c4cc")
+    for x in range(W):
+        yc = elv(x); b = 2.6 + 0.8 * math.sin(x / 19)
+        for y in range(int(yc - b) - 2, int(yc + b) + 3):
+            d = (y + 0.5 - yc) / b
+            if abs(d) > 1.5: continue
+            if abs(d) > 1.0: L_.p(x, y, "#3a5a40" if d < 0 else "#2e4a38"); continue
+            v = 0.45 + (M.fbm(x / 5, y / 1.5, 710, 2) - 0.5) * 0.8 - d * 0.1
+            L_.p(x, y, M.tone(vass, v, x, y))
+        if M.h(x // 9, 0, 711) > 0.8 and abs(x % 9 - 4) < 3: L_.p(x, int(yc + b * 0.6), "#c8bc98")   # grusører
+    bx = 236
+    for k in range(-4, 5): L_.p(bx, int(elv(bx)) + k, "#b0a07a"); L_.p(bx + 1, int(elv(bx)) + k, "#8a7a5a")
+    # Tre langs elva og i teigkantane: små kroner sett ovanfrå.
+    tre = ["#1e3424", "#2e4a2e", "#46683a", "#62844a"]
+    def krone_ovanfra(cx, cy, r, f=tre):
+        for yy in range(int(cy - r) - 1, int(cy + r) + 2):
+            for xx in range(int(cx - r) - 1, int(cx + r) + 2):
+                dx, dy = (xx + 0.5 - cx) / r, (yy + 0.5 - cy) / r
+                n = dx * dx + dy * dy
+                kant = 1 + (M.h(xx, yy, 712) - 0.5) * 0.45                    # takka kant (stjerneforma)
+                if n > kant: continue
+                L_.p(xx, yy, f[3] if dx + dy < -0.7 and n > 0.2 else f[2] if dx + dy < 0.1 else f[1] if n < 0.75 else f[0])
+        for k in range(2): L_.p(cx + r + k * 0.5, cy + r * 0.6 + k, "#16261c")      # skugge nede til høgre
+    for i in range(160):
+        x = M.h(i, 1, 713) * W
+        y = elv(x) + (-6 if M.h(i, 2, 713) < 0.5 else 6) if i < 90 else 76 + M.h(i, 3, 713) * (H - 76)
+        if y < skog(x) + 3: continue
+        krone_ovanfra(x, y, 1.6 + M.h(i, 4, 713) * 1.4)
+    # Gardane: små torvtak (med møne) og tunet rundt, kyrkja med tårnet og kyrkjegardsmuren.
+    def tak(x, y, w, h, f=("#4e5a30", "#6a7838", "#8a9648")):
+        for yy in range(h):
+            for xx in range(w):
+                L_.p(x + xx, y + yy, f[2] if yy == h // 2 else f[1] if yy < h // 2 else f[0])
+        for yy in range(h): L_.p(x + w, y + yy + 1, "#2a3424")                          # skugge
+        for xx in range(w): L_.p(x + xx + 1, y + h, "#2a3424")
+    for i, (gx, gy) in enumerate([(30, 92), (78, 112), (126, 90), (168, 118), (290, 96), (330, 116), (376, 92), (420, 112), (60, 150), (360, 152)]):
+        if gy < skog(gx) + 4: continue
+        for yy in range(-2, 10):
+            for xx in range(-3, 16):
+                if M.h(gx + xx, gy + yy, 714) > 0.3: L_.p(gx + xx, gy + yy, "#b8ae84")
+        tak(gx, gy, 6, 4); tak(gx + 8, gy + 1, 7, 5, ("#5a5040", "#7a6a50", "#9a8a68")); tak(gx + 2, gy + 6, 3, 2)
+    kx, ky = 222, 96
+    for yy in range(-6, 12):
+        for xx in range(-6, 22):
+            if (xx in (-6, 21) or yy in (-6, 11)) and M.h(kx + xx, ky + yy, 715) > 0.2: L_.p(kx + xx, ky + yy, "#a4a49a")
+            elif -6 < xx < 21 and -6 < yy < 11: L_.p(kx + xx, ky + yy, "#7a9c5a")
+    for (gx, gy) in [(-2, 8), (4, 8), (10, 8), (16, 8), (-2, -3), (16, -3)]:             # gravsteinar
+        L_.p(kx + gx, ky + gy, "#c8c8c0")
+    tak(kx, ky, 12, 5, ("#3e4658", "#566078", "#7a86a0"))                                 # skiferak på skipet
+    for yy in range(4):
+        for xx in range(4): L_.p(kx - 4 + xx, ky + 1 + yy, "#eef0ea" if xx < 2 else "#c8ccc8")   # tårnet
+    L_.p(kx - 3, ky + 2, "#3e4658"); L_.p(kx - 2, ky + 2, "#566078")                       # spiret som ein prikk
+    for k in range(3): L_.p(kx, ky + 5 + k, "#2a3424")
+    # Skogen: tette trekroner sett ovanfrå, større og mørkare (gran) med lysare bjørker innimellom.
+    for i in range(1400):
+        x = M.h(i, 1, 716) * (W + 8) - 4; y = ur(x) - 2 + M.h(i, 2, 716) * (skog(x) - ur(x) + 4)
+        if M.h(i, 3, 716) < 0.25:
+            krone_ovanfra(x, y, 2.4 + M.h(i, 4, 716) * 1.4, ["#2a3e28", "#3e5a32", "#5a7a40", "#7a9a52"])   # bjørk
         else:
-            krone(L_, x, hy + 1 - r * 0.5, r, kratt, 470 + i)
-    # Trekroner i skogen: større øvst (nærast), mindre og disigare nedover.
-    for i in range(240):
-        x = M.h(i, 1, 481) * (LI_W + 8) - 4
-        sk_ = skog(x)
-        t = M.h(i, 2, 481) ** 1.3
-        y = sk_ + 2 + t * 20
-        r = 2.6 - t * 1.6
-        c = M.rampe("#1a3022", "#26402a", "#365434", "#4a6a3e", "#64844a")
-        if M.h(i, 3, 481) < 0.45:
-            M.gran(L_, int(x), y + r, r * 3, c, fro=i)
-        else:
-            krone(L_, x, y, r, c, 490 + i)
-    # Kronene nedover får same dis som skogen under, så dei ikkje flyt i disen.
-    for x in range(LI_W):
-        sk_ = skog(x)
-        for y in range(int(sk_) + 4, LI_H):
-            if y > dal(x): L_.tom(x, y); continue
-            if L_.get(x, y): L_.dis(x, y, min(0.9, math.floor(((y - sk_) / (100 if kort else 48)) * 6 + M.terskel(x, y)) / 6))
-    # Djupn som i Octopath Traveler: det som er langt nede, er uskarpt (pikslane dobla, 2 × 2), og
-    # svake lysstrålar fell skrått ned gjennom disen over skogen.
-    for x in range(LI_W):
-        sk_ = skog(x)
-        for y in range(int(sk_) + 8, LI_H):
-            c = L_.get(x & ~1, y & ~1)
-            if c and L_.get(x, y): L_.p(x, y, c)
-            if L_.get(x, y) and (x + y * 0.7) % 64 < 15 and M.terskel(x, y) < 0.6:
-                L_.p(x, y, M.blend(L_.get(x, y), "#e4e2d4", 0.18))
-    # Skuggen under overhenget nedst i stupet: lia rett under ligg i skugge (to stup høge ved neset).
-    for x in range(LI_W):
+            krone_ovanfra(x, y, 2.8 + M.h(i, 4, 716) * 1.8, ["#14241a", "#1c3222", "#2a4428", "#3c5a32"])   # gran
+    # Skyer som driv mellom oss og dalen: kvite flak med skuggen sin på bakken nede til høgre.
+    for k, (cx, cy, r) in enumerate([(90, 64, 14), (300, 140, 18), (410, 50, 10)]):
+        def inni(xx, yy): return ((xx - cx) / r) ** 2 + ((yy - cy) / (r * 0.55)) ** 2 + (M.fbm(xx / 5, yy / 4, 717 + k, 3) - 0.5) * 1.4 < 1
+        for yy in range(int(cy - r), int(cy + r)):
+            for xx in range(int(cx - r * 1.4), int(cx + r * 1.4)):
+                if inni(xx - 7, yy - 9) and not inni(xx, yy) and L_.get(xx, yy): L_.p(xx, yy, M.blend(L_.get(xx, yy), "#1a2430", 0.32))
+        for yy in range(int(cy - r), int(cy + r)):
+            for xx in range(int(cx - r * 1.4), int(cx + r * 1.4)):
+                if inni(xx, yy):
+                    lys = inni(xx + 1, yy + 1) and not inni(xx - 1, yy - 1)
+                    L_.p(xx, yy, "#f4f6f6" if lys else "#dce2e6" if inni(xx - 1, yy - 1) and inni(xx + 1, yy + 1) else "#c4ccd4")
+    # Langt nede: dempa og disig (meir nedover), og svake lysstrålar på skrå.
+    for y in range(H):
+        for x in range(W):
+            c = L_.get(x, y)
+            if not c: continue
+            if c in ((244, 246, 246), (220, 226, 230), (196, 204, 212)): continue    # skyene er nær oss
+            t = 0.26 + y / H * 0.22
+            if (x + y * 0.7) % 70 < 16: t -= 0.08
+            L_.dis(x, y, math.floor(t * 6 + M.terskel(x, y)) / 6)
+    # Skuggen under overhenget nedst i stupet (kartrad 16; under neset rad 17, smalare nedover).
+    for x in range(W):
         for y in range(16, 24):
             c = L_.get(x, y)
             if c and M.terskel(x, y) < (24 - y) / 8: L_.p(x, y, M.blend(c, "#1c1a2c", 0.55))
-    # Under neset: skuggen smalnar av nedover (rund, ikkje ein firkant).
     for y in range(32, 40):
         inn = int((y - 32) * 1.6)
         for x in range(21 * 16 + inn, 24 * 16 - inn):
             c = L_.get(x, y)
             if c and M.terskel(x, y) < (40 - y) / 8: L_.p(x, y, M.blend(c, "#1c1a2c", 0.55))
+    return L_, ur, skog
+
+
+def li():
+    """Lia og dalen under stupet, sett ovanfrå, som eit fast lag (faktor 1): ura og skogen ved foten av
+    stupet, så dalbotnen med Hovdebygda langt nede."""
+    return ovanfra(LI_W, LI_H)[0].im
+
+
+def li_kort():
+    """Varianten «dal»: berre ura og skogen; under skogkanten er det ope, og dalen (dal-under) stig fram."""
+    L_, ur, skog = ovanfra(LI_W, LI_H)
+    for x in range(LI_W):
+        for y in range(int(skog(x)) + 3, LI_H): L_.tom(x, y)
     return L_.im
 
 
-def li_kort(): return li(kort=True)
-
-
-# ---------------------------------------------------------------- dalen under lia (varianten «dal»)
-DU_W, DU_H = 448, 100
-
-def du_kant(x): return 999
-def du_elv(x): return 50 + 4 * math.sin(x / 41 + 0.6) + 2 * math.sin(x / 15 + 2)
-def du_veg(x): return 33 + 2.5 * math.sin(x / 57 + 1.3) + 1.2 * math.sin(x / 19)
-
+DU_W, DU_H = 448, 120
 
 def dal_under():
-    """Variant «dal» nedst: dalbotnen med Hovdebygda langt nede, sett ovanfrå (kyrkja, gardane,
-    teigar, elva og vegen), i dis øvst der han kjem fram under skogkanten. Laget glir raskare enn
-    kartet (faktor over 1), så dalen stig fram nedanfrå når kameraet glir ned ved stupet."""
-    L_ = L(DU_W, DU_H)
-    eng = M.rampe("#4e7a4a", "#5e8a50", "#6e9a58", "#80a862", "#94b670")
-    for y in range(DU_H):
-        for x in range(DU_W):
-            if y > du_kant(x): continue
-            v = 0.5 + (M.fbm(x / 26, y / 9, 211, 4) - 0.5) * 0.7 + (M.fbm(x / 3, y / 2, 212, 2) - 0.5) * 0.18
-            L_.p(x, y, M.tone(eng, v, x, y))
-    # Åkerteigar: skeive firkantar i grønt og gult, med steingard (grå prikkar) imellom.
-    teig = [M.rampe("#86aa5c", "#9cba6a"), M.rampe("#b4b066", "#c8c47a"), M.rampe("#6e9850", "#7ea85a"),
-            M.rampe("#a2b870", "#b4c680"), M.rampe("#9a8a5a", "#ae9e6c")]
-    for i in range(80):
-        cx = 20 + M.h(i, 1, 221) * 410; cy = 20 + M.h(i, 2, 221) * 38
-        if cy > du_kant(cx) - 6: continue
-        w = 10 + int(M.h(i, 3, 221) * 16); hh = 4 + int(M.h(i, 4, 221) * 5); sk = (M.h(i, 5, 221) - 0.5) * 0.5
-        r = teig[int(M.h(i, 6, 221) * len(teig))]
-        for yy in range(hh):
-            for xx in range(w):
-                X, Y = int(cx + xx + yy * sk * 2), int(cy + yy)
-                if abs(Y - du_elv(X)) < 3 or abs(Y - du_veg(X)) < 2: continue
-                if xx == 0 or yy == hh - 1:
-                    if M.h(X, Y, 222) > 0.4: L_.p(X, Y, "#8a8c7c")      # steingard
-                    continue
-                L_.p(X, Y, M.tone(r, 0.5 + (M.h(X // 2, Y, 223) - 0.5) * 0.6 + (0.3 if yy % 2 else 0), X, Y))
-    # Vegen langs dalen, lys grus med mørk kant.
-    for x in range(DU_W):
-        y = du_veg(x); yi = int(round(y))
-        if yi > du_kant(x) - 2: continue
-        L_.p(x, yi, "#cabc8e"); L_.p(x, yi + 1, "#a89a72")
-        if M.h(x, 0, 231) > 0.7: L_.p(x, yi - 1, "#b0a47c")
-    # Elva: buktar seg gjennom dalen, mørk kant mot land, lyse band i straumen.
-    vass = M.rampe("#4c6a74", "#62828c", "#7c9ca6", "#a4c0c8", "#c8dce0")
-    for x in range(DU_W):
-        yc = du_elv(x); b = 1.8 + 0.6 * math.sin(x / 23)
-        for y in range(int(yc - b) - 1, int(yc + b) + 2):
-            if y > du_kant(x) - 1: continue
-            d = (y + 0.5 - yc) / b
-            if abs(d) > 1.25: continue
-            if abs(d) > 0.9: L_.p(x, y, "#3e5a5a" if d > 0 else "#5a7a64"); continue
-            v = 0.45 + (M.fbm(x / 6, y / 1.2, 241, 2) - 0.5) * 0.6 - d * 0.15
-            L_.p(x, y, M.tone(vass, v, x, y))
-    # Ei bru over elva der vegen går over.
-    for k in range(-3, 4):
-        x = 128; L_.p(x, int(du_elv(x)) + k, "#9a8a6a"); L_.p(x + 1, int(du_elv(x)) + k, "#7a6a50")
-    # Tre langs elva og i kantane av teigane (older og bjørk).
-    tre = M.rampe("#2e4a36", "#3e5e40", "#527448", "#6a8a52", "#86a060")
-    for i in range(130):
-        x = M.h(i, 1, 251) * DU_W
-        if i < 70: y = du_elv(x) + (-4 if M.h(i, 2, 251) < 0.5 else 4.5)
-        else: y = 20 + M.h(i, 3, 251) * 40
-        if y > du_kant(x) - 3 or abs(y - du_veg(x)) < 2: continue
-        krone(L_, x, y, 1.3 + M.h(i, 4, 251) * 1.2, tre, 252 + i)
-    # Gardane: stove med torvtak, løe, eit stabbur, og tunet rundt (lys grus).
-    torv = ("#4e5a30", "#6a7838", "#8a9648")
-    gardar = [(52, 24), (92, 22), (150, 25), (176, 42), (246, 24), (274, 42), (318, 28), (112, 42), (226, 46), (340, 40), (26, 38), (384, 26), (420, 44)]
-    for i, (gx, gy) in enumerate(gardar):
-        if gy > du_kant(gx) - 8: continue
-        for yy in range(-1, 7):
-            for xx in range(-2, 16):
-                if M.h(gx + xx, gy + yy, 261) > 0.25: L_.p(gx + xx, gy + yy, M.blend(L_.get(gx + xx, gy + yy) or (120, 150, 90), "#b8ae84", 0.45))
-        hus(L_, gx, gy, 6, torv, ("#5a3a2c", "#7a4e38"))
-        hus(L_, gx + 8, gy - 1, 7, torv, ("#6a5a48", "#8a7a62"), takh=3)
-        if i % 2 == 0: hus(L_, gx + 3, gy + 6, 3, torv, ("#5a3a2c", "#7a4e38"), takh=1, veggh=2)
-    # Hovdekyrkja på ein liten haug midt i dalen, med kyrkjegardsmur rundt.
-    kx, ky = 200, 27
-    for yy in range(-14, 10):
-        for xx in range(-8, 20):
-            X, Y = kx + xx, ky + yy
-            if (xx in (-8, 19) or yy in (-6, 9)) and -6 <= yy <= 9 and M.h(X, Y, 271) > 0.3: L_.p(X, Y, "#9a9c90")
-    kyrkje(L_, kx, ky)
-    # Skogen nedst i åsen vår, øvst i biletet: kroner som stig opp av disen ved foten av stupet.
-    skog = M.rampe("#283e34", "#344e3e", "#46644a", "#5c7c54", "#7a965e")
-    gran = M.rampe("#1e3230", "#28403a", "#345046", "#466452")
-    for i in range(120):
-        x = M.h(i, 1, 281) * (DU_W + 10) - 5; y = 3 + M.h(i, 2, 281) ** 0.8 * 15
-        if M.h(i, 3, 281) < 0.35:
-            M.gran(L_, int(x), y + 3, 5 + M.h(i, 4, 281) * 4, gran, fro=i)
-        else:
-            krone(L_, x, y, 2 + M.h(i, 5, 281) * 2.2, skog, 282 + i)
-    # Luftperspektiv: alt litt mot disen, mykje øvst (disen ved foten av stupet) og nedst.
-    for y in range(DU_H):
-        for x in range(DU_W):
-            if not L_.get(x, y): continue
-            t = 0.3
-            if y < 18: t += (18 - y) / 18 * 0.6
-            if y > 48: t += (y - 48) / 40 * 0.62                             # langt nede: meir dis
-            t = min(0.95, t)
-            steg = math.floor(t * 6 + M.terskel(x, y)) / 6               # i trinn, med dither
-            L_.dis(x, y, steg)
-    # Disen øvst: tett slør av skystriper, tynnar ut nedover.
-    for y in range(0, 11):
-        for x in range(DU_W):
-            d = M.fbm(x / 30 + y / 12, y / 3, 295, 3)
-            if d > 0.42 + y * 0.035 and M.terskel(x, y) < 0.9: L_.p(x, y, M.blend(DIS, "#ffffff", 0.18 if d > 0.6 else 0.08))
-            elif y < 3: L_.p(x, y, DIS)
-    return L_.im
+    """Varianten «dal»: dalbotnen sett ovanfrå (same landskapet som li, frå skogkanten og ned)."""
+    L_ = ovanfra(DU_W, DU_H + 70)[0]
+    return L_.im.crop((0, 70, DU_W, DU_H + 70))
 
 
 # ---------------------------------------------------------------- utsikta frå toppen

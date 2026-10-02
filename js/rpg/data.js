@@ -389,7 +389,7 @@ window.RPGData = (function () {
          himmelen (nesten stillståande), fjella, Hovdebygda med kyrkja til høgre og lia opp mot
          utmarka og setra til venstre, og nærast trekronene i lia under kanten, som glir fort og
          søkk bak kanten. Kameraet kan sjå seks rader over kartet (kameraOpp). Nedst: når Ivar står på
-         den nedste flisa før stupet, glir kameraet roleg 3 rader ned (kameraNed), så han står øvst på skjermen og lia som
+         den nedste flisa før stupet, glir kameraet roleg 4 rader ned (kameraNed), så han står øvst på skjermen og lia som
          stuper ned med berghyller, kratt og skog syner under, som eit fast lag (li, faktor 1).
          ved er øvre venstre flis til kameraet når laget står på x, y. */
       luftfarge: "#a6b4bc",
@@ -407,7 +407,7 @@ window.RPGData = (function () {
       variant: "fast",                                                 // utsikta nedst: «fast» eller «dal» (sjå parallakse)
       stupFast: true,                                                  // stupet endar i eit overheng, og lia under er eit fast lag
       kameraOpp: { fra: 12, til: 0, rader: 6 },                        // øvst ser kameraet opptil seks rader over kanten
-      kameraNed: { fra: 13, rader: 3, fart: 1 },                       // på den nedste flisa glir kameraet roleg ned, så Ivar står øvst
+      kameraNed: { fra: 13, rader: 4, fart: 1 },                       // på den nedste flisa glir kameraet roleg ned, så Ivar står øvst
       // Forgrunnen: bjørkegreiner i øvre hjørne ved skogen, høgt gras i nedre hjørne ved stupet.
       forgrunn: [
         { bilete: "greiner", faktor: 1.3, ved: [0, -6], x: -6, y: -4 },
@@ -438,6 +438,8 @@ window.RPGData = (function () {
         "MMMMMMMMMMMMMMMMMMMMM.\".MMMM",
         "MMMMMMMMMMMMMMMMMMMMMMMMMMMM",
         "---------------------MMM----",
+        "----------------------------",
+        "----------------------------",
         "----------------------------",
         "----------------------------",
         "----------------------------",

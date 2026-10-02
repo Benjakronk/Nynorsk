@@ -250,11 +250,14 @@ landskap langt nede som flyttar seg saktare enn kartet.
   venstre (skog nedst, fjellbeite med stein, ein bekk og setra langt oppe) og Hovdebygda til høgre, med
   ein skogkledd rygg på skrå mellom dei. Kanten er graset som sluttar i ei ujamn, lys line med strå mot
   himmelen; lia bak syner ikkje.
-- Under stupet nedst: lia stuper vidare som eit fast lag som følgjer kartet (`li`, faktor 1), så klippene
-  heng fast i terrenget: berget held fram (same knausar og renner)
-  eit godt stykke før den første hylla, så med lyst gras i kanten og kratt, einer og små bjørker, ein ny, mindre og disigare bergvegg,
-  bratt skog med kroner som blir mindre nedover og går over i dis. Ingen flat dalbotn (han glei feil med
-  parallaksen, sidan ei flate langt borte skulle gått mykje saktare enn lia), og ingen fjell der.
+- Under stupet nedst ser ein rett ned (som landskapet under pyramiden i A Link to the Past og
+  verdskartet i FF6), eit fast lag som følgjer kartet (`li`, faktor 1): ur og flate knausar med lys kant
+  oppe til venstre ved foten av stupet, skog som trekroner sett ovanfrå (runde, takka klumpar med lys
+  side oppe til venstre og skugge nede til høgre, bjørk lysare enn gran), dalbotnen med teigar som
+  fargefelt (furer og kornrader som striper) med steingardar (grå line) og skigardar (brun, prikka
+  line), elva som eit band med mørk bredd og grusører, vegen som ei lys line, gardane som små torvtak
+  med møne og tun, og kyrkja som skifertak med kvitt tårn og muren rundt. Alt er dempa og disig (langt
+  nede), og nokre kvite skyer driv mellom oss og dalen med skuggen sin på bakken nede til høgre.
 - Utsikta (`tools/pikselkunst/utsikt.py`): luftperspektiv måla inn. Dalen er lysare og
   blåare enn kartet, små gardar (torvtak, raud eller grå vegg),
   Hovdekyrkja kvit med skifertak og spir, teigar i grønt og gult med steingardar, elva og vegen.

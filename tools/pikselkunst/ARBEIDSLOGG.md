@@ -1121,3 +1121,24 @@ same måte, uansett kven som tek over.
   den nedste flisa: kameraet står i ro til han er framme, og glir så roleg ned), `r33c-nes-naer.png`
   (neset: rund graskant, steinar, røter, overheng) og `r33-gras.png` (rammene i graset).
 - **Står att:** Overhenget under neset er framleis eit tydeleg mørkt band.
+
+## Runde 34: dalen under Åsen sett rett ovanfrå
+
+- **Oppdrag:** Brukaren: dalen under Åsen må sjåast meir rett ovanfrå for å verke overtydande.
+- **Research:** Landskapet under pyramiden i A Link to the Past og verdskartet i FF6 viser landskap langt
+  nede som eit kart: tre som runde klumpar med lys og skugge, åkrar som fargefelt, elvar som band og hus
+  som tak.
+- **Gjort:**
+  - `utsikt.py`: `ovanfra()` teiknar lia og dalen rett ovanfrå: ur og flate knausar ved foten av stupet,
+    tett skog som trekroner (gran mørk, bjørk lysare, takka kant, skugge nede til høgre), dalbotnen med
+    teigar (furer og kornrader som striper) med steingardar og skigardar som liner, elva med bredd og
+    grusører, vegen med bru, gardane som torvtak med tun, Hovdekyrkja som skifertak med kvitt tårn,
+    muren og gravsteinar, og tre skyer under oss med skugge på bakken. Dempa og disig, svake lysstrålar,
+    og skuggen under overhenget nedst i stupet. `li` (448 × 180), `li-kort` (berre ura og skogen) og
+    `dal-under` (dalbotnen) kjem frå same teikninga.
+  - `data.js`: kameraet glir 4 rader ned (var 3), så meir av dalen syner, og kartet har ni rader luft
+    nedst (var sju), så neset òg får plass. Ingenting anna er flytt.
+- **Vurdert:** `forhand/skjerm/r34-li.png` (laget) og `r34-serie.png` (300, 700 og 1200 ms etter at Ivar
+  går ned på den nedste flisa, og neset): rett under stupet ura og skogen, så dalen med teigar, vegen,
+  kyrkja og elva langt nede, og skyer mellom.
+- **Står att:** Teigane er rette firkantar; dei kunne følgt terrenget og elva meir.
