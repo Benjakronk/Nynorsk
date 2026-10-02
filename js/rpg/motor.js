@@ -752,8 +752,10 @@ window.Motor = (function () {
   function teikn(no) {
     if (!kart) return;
     const sm = kameraSentrum(no);
-    const kx = Math.max(0, Math.min(kart.w - VW, sm.x - (VW - 1) / 2));
-    const ky = Math.max(0, Math.min(kart.h - VH, sm.y - (VH - 1) / 2));
+    // Kameraet står alltid på heile pikslar (som på SNES). Med brøkdelar blir fliser og figurar
+    // runda kvar for seg, og figurane ristar éin piksel mot bakken når kameraet glir.
+    const kx = Math.round(Math.max(0, Math.min(kart.w - VW, sm.x - (VW - 1) / 2)) * S) / S;
+    const ky = Math.round(Math.max(0, Math.min(kart.h - VH, sm.y - (VH - 1) / 2)) * S) / S;
     sentrum = { x: kx + (VW - 1) / 2, y: ky + (VH - 1) / 2 };       // der kameraet faktisk står (til neste kamerarørsle)
     const ox = kart.w < VW ? (VW - kart.w) / 2 : -kx, oy = kart.h < VH ? (VH - kart.h) / 2 : -ky;
     g.fillStyle = "#0e0c12"; g.fillRect(0, 0, lerret.width, lerret.height);
@@ -1015,6 +1017,7 @@ window.Motor = (function () {
     gaa, snu, inn, byt, kamera, rist, kort, naerbilete, blink, aktor, vent,
     // Kameraet står ved noko anna enn spelaren (ei scene let det stå).
     get kameraBorte() { return !!kam && !kam.tilbake; },
+    get kameraSentrum() { return { x: sentrum.x, y: sentrum.y }; },   // der kameraet står (for testane)
     get svart() { return +svartEl.style.opacity > 0; },
     pause(p) { pausa = p; if (p) halde.clear(); },
     get kart() { return kart; }, get spelar() { return spelar; },
