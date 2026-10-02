@@ -581,3 +581,26 @@ same måte, uansett kven som tek over.
   Ryggen rundt sida på `kubbestol-venstre` og `-hogre` ligg bak den som sit, også den delen som
   eigentleg er nærast kameraet. Prestegarden og kontoret har stolane inne i biletet til
   spisebordet og skrivepulten, og er ikkje møblerte om.
+
+## Runde 20: auge som i Final Fantasy VI
+
+- **Oppdrag:** Auga i Final Fantasy VI (Locke, Terra, Celes) brukar fleire pikslar enn vårt eine
+  mørke strek per auge, og gir figurane meir uttrykk. Alle figurane (Ivar, huldra og NPC-ane)
+  skal få same oppbygging.
+- **Research:** Celes framanfrå (z-celes2.png, 10 px per piksel): ei mørk vippeline over kvart
+  auge, så ei rad med augekvite ytst og mørk blå iris inst, og under berre irisen. Frå sida er
+  irisen framme og kvita bak. Lukka auge er strekar.
+- **Gjort:**
+  - Ivar (`ivar_figur.py`) og huldra (`huldra_figur.py`): `ff6_auge()` byter augeradene etter
+    innhald i gange, kamp og galdr, så posane (som blir avleidde etterpå) får dei same auga.
+    Iris `I` mørk blå hjå Ivar, `E` grøn hjå huldra. Sjokk med store kvite auge og små
+    pupillar, sint med skrå bryn, tenkje og sjenert ser til sides eller opp. Når dei kneler,
+    ser dei ned (`blikk_ned`): kvita og den øvre irisen blir hud.
+  - NPC-ane (`figur.py`): auga ligg i `HOVUD` (vippeline `e`, kvite `W`, iris `K` med fargen
+    `auge` i utsjånaden, standard mørk blå). Kjenslene teiknar auga på nytt (glad ^ ^, trist
+    med augneloka nede, sjokk, tenkje, nikk). Attlatne auge og blikket ned finn auga etter
+    innhald (`auge_ruter`, `lukk_auge`). Under briller blir kvita og vippa hud.
+- **Vurdert:** Forstørra utsnitt av åtte NPC-ar, Ivar og huldra framanfrå, frå sida, i alle
+  kjensler og posar. Auga les godt hjå skalla, skjeggete, skaut, lue og briller. Der luggen
+  dekkjer vippelina, glir ho over i håret, slik som hjå Locke.
+- **Står att:** Portretta (48 x 48) er ikkje endra. Vippelina gjer bryna tunge frå sida.
