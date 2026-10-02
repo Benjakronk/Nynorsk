@@ -31,25 +31,36 @@ f.onload = async () => {
   // Loggar posisjon og ramme kvar gong nettlesaren teiknar.
   const logg = [];
   let held = true;
-  const maal = no => { logg.push({ t: no, fx: M.spelar.fx, flytt: !!M.spelar.flytt }); if (held || M.spelar.flytt) w.requestAnimationFrame(maal); };
+  // Rørsla går i tikk på 1/60 sekund (sjå TIKK i motor.js). Bilete i same tikk som det førre
+  // (testen teiknar kvart 16. ms) blir ikkje loggførte, så dei ikkje blir talde som stillstand.
+  let sistTikk = null;
+  const maal = no => {
+    const t = Math.round(w.performance.now() / (1000 / 60));
+    if (t !== sistTikk) { sistTikk = t; logg.push({ t: no, tikk: t, fx: M.spelar.fx, flytt: !!M.spelar.flytt }); }
+    if (held || M.spelar.flytt) w.requestAnimationFrame(maal);
+  };
   tast("keydown", "ArrowRight");
   w.requestAnimationFrame(maal);
   await vent(2000);
   tast("keyup", "ArrowRight"); held = false;
   await vent(400);
-  // Rammer der spelaren står i ro medan tasten er nede (etter første steg).
+  // Rammer der spelaren står i ro medan tasten er nede (etter første steg), og avviket frå jamn
+  // fart: posisjonen skal gå 2 pikslar per tikk (8 tikk per flis). Måleren og spelet går i kvar sin
+  // tidtakar, så ei forseinking på éin tikk (2 pikslar) er venta. Hakk gjer avviket større.
   const start = logg.findIndex(l => l.fx > 2);
-  let stille = 0, utanSteg = 0, maks = 0;
+  let stille = 0, utanSteg = 0, maks = 0, avMin = Infinity, avMax = -Infinity;
   for (let i = start + 1; i < logg.length; i++) {
     const dx = logg[i].fx - logg[i - 1].fx;
     if (logg[i].t > logg[start].t + 1900) break;
     if (dx <= 0) stille++;
+    const av = Math.round(logg[i].fx * 16) - Math.round(logg[start].fx * 16) - 2 * (logg[i].tikk - logg[start].tikk);
+    avMin = Math.min(avMin, av); avMax = Math.max(avMax, av);
     if (!logg[i].flytt) utanSteg++;
     maks = Math.max(maks, dx);
   }
   const fliser = (logg[logg.length - 1].fx - 2).toFixed(2);
   document.getElementById("ut").textContent =
-    `rammer: ${logg.length}, fliser gått: ${fliser}, rammer i ro: ${stille}, rammer utan steg: ${utanSteg}, største hopp: ${maks.toFixed(3)} flis`;
+    `rammer: ${logg.length}, fliser gått: ${fliser}, rammer i ro: ${stille}, rammer utan steg: ${utanSteg}, største hopp: ${maks.toFixed(3)} flis, avvik frå jamn fart: ${avMax - avMin} pikslar`;
   f.remove();                                                      // resten av den virtuelle tida går fort
 };
 </script>

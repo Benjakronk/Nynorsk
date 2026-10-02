@@ -187,10 +187,20 @@ window.Motor = (function () {
   const FOT = 12;
 
   /* ---------- Rørsle ---------- */
-  const FART = 150;           // ms per flis
+  /* Rørsle i tikk som på SNES: 60 tikk i sekundet, og alle fartar er eit heilt tal tikk per
+     flis (8 tikk = 2 pikslar per tikk, 16 tikk = 1 piksel per tikk). Då flyttar figurane og
+     kameraet seg like mange pikslar i kvart bilete, og gangen blir jamn. Med ms og ein fart
+     som ikkje går opp i bileta, flytta somme bilete seg éin piksel og andre ingen (hakk). */
+  const TIKK = 1000 / 60;
+  const tikk = ms => Math.round(ms / TIKK);
+  // Ein fart i ms per flis blir runda til næraste av 4, 8, 16, 32 eller 64 tikk.
+  const tikkFart = ms => [4, 8, 16, 32, 64].reduce((b, t) => Math.abs(Math.log(t * TIKK / ms)) < Math.abs(Math.log(b * TIKK / ms)) ? t : b) * TIKK;
+  // Kor langt (0 til 1) eit steg som byrja t0 og varer fart ms, er kome no, i heile tikk.
+  const stegDel = (no, t0, fart) => Math.min(1, Math.max(0, tikk(no) - tikk(t0)) / tikk(fart));   // same tikk-rutenett som kameraet
+  const FART = 8 * TIKK;      // spelaren: 8 tikk per flis (133 ms, 2 pikslar per tikk)
   // Plasserer spelaren (og følgjet) der dei skal vere no i steget.
   function flytt(no) {
-    const u = Math.min(1, (no - spelar.flytt.t0) / FART);
+    const u = stegDel(no, spelar.flytt.t0, FART);
     spelar.u = u;
     spelar.fx = spelar.flytt.fx + (spelar.x - spelar.flytt.fx) * u;
     spelar.fy = spelar.flytt.fy + (spelar.y - spelar.flytt.fy) * u;
@@ -201,7 +211,7 @@ window.Motor = (function () {
      atferd i data.js: «stille» (står i retninga si), «snu» (ser seg rundt av og til),
      «gaa» (går litt omkring innanfor radius fliser frå staden sin). retning: 0 ned,
      1 opp, 2 venstre, 3 høgre. Etter ein samtale går ein tilbake til vanen sin. */
-  const FOLK_FART = 260;
+  const FOLK_FART = 16 * TIKK;  // folk: 16 tikk per flis (267 ms, 1 piksel per tikk)
   const naerDor = (x, y) => kart.dorer.some(d => Math.abs(d.ved[0] - x) + Math.abs(d.ved[1] - y) <= 1)
     || Object.entries(kart.merke).some(([m, [mx, my]]) => /[0-9]/.test(m) && mx === x && my === y);
   function folkKanGaa(f, x, y) {
@@ -219,7 +229,7 @@ window.Motor = (function () {
     for (const f of kart.folk) {
       if (!f.sprite || f.flis || f.regi) continue;
       if (f.flytt) {
-        const u = Math.min(1, (no - f.flytt.t0) / FOLK_FART); f.u = u;
+        const u = stegDel(no, f.flytt.t0, FOLK_FART); f.u = u;
         f.fx = f.flytt.fx + (f.x - f.flytt.fx) * u; f.fy = f.flytt.fy + (f.y - f.flytt.fy) * u;
         if (u >= 1) f.flytt = null;
         continue;
@@ -409,7 +419,7 @@ window.Motor = (function () {
     let mx = a.x, my = a.y;
     for (const d of sti) { mx += DX[d]; my += DY[d]; }
     return new Promise(res => {
-      a.regi = { sti, maal: [mx, my], fart: fart || (a === spelar ? FART * 1.4 : FOLK_FART), res: () => {
+      a.regi = { sti, maal: [mx, my], fart: fart ? tikkFart(fart) : FOLK_FART, res: () => {
         if (snuMot) a.dir = retningMot(a.x, a.y, snuMot.x, snuMot.y, a.dir);
         // Inn døra: borte frå kartet han gjekk på (eit nytt kart har ikkje figuren).
         if (mal.ut && kart && a !== spelar && a !== fylgje) kart.folk = kart.folk.filter(f => f !== a);
@@ -424,7 +434,7 @@ window.Motor = (function () {
     const r = a.regi;
     let t0 = no;
     if (a.flytt) {
-      const u = Math.min(1, (no - a.flytt.t0) / r.fart); a.u = u;
+      const u = stegDel(no, a.flytt.t0, r.fart); a.u = u;
       a.fx = a.flytt.fx + (a.x - a.flytt.fx) * u; a.fy = a.flytt.fy + (a.y - a.flytt.fy) * u;
       const f = r.drag;
       if (f) { f.fx = f.flytt.fx + (f.x - f.flytt.fx) * u; f.fy = f.flytt.fy + (f.y - f.flytt.fy) * u; }
@@ -492,17 +502,37 @@ window.Motor = (function () {
   /* Kamera: til ei rute [x, y], til ein figur (som det så følgjer), eller null (tilbake til
      spelaren). Kameraet glir dit på ms millisekund. */
   let kam = null, sentrum = { x: 0, y: 0 };
+  /* Kameraet fylgjer etter med fast fart i heile pikslar per tikk, som i FF6, og ikkje med ei
+     mjuk glidning: med glidning mot noko som går, flytta biletet seg ujamt. Farten blir rekna
+     slik at kameraet er framme på ms (minst 1 piksel per tikk). Går målet, flyttar kameraet seg
+     med målet i tillegg, så det fangar det og så går i takt. kam.px er øvre venstre hjørne i pikslar. */
+  const kameraMaal = m => ({                                           // øvre venstre hjørne for eit sentrum, innanfor kartet
+    x: kart.w < VW ? 0 : Math.round(Math.max(0, Math.min(kart.w - VW, m.x - (VW - 1) / 2)) * S),
+    y: kart.h < VH ? 0 : Math.round(Math.max(0, Math.min(kart.h - VH, m.y - (VH - 1) / 2)) * S),
+  });
   function kamera(til, ms = 900) {
     const a = typeof til === "string" ? aktor(til) : null;
     const mal = til == null ? () => ({ x: spelar.fx, y: spelar.fy }) : a ? () => ({ x: a.fx, y: a.fy }) : () => ({ x: til[0], y: til[1] });
-    kam = { fra: { x: sentrum.x, y: sentrum.y }, t0: performance.now(), ms: Math.max(1, ms), mal, tilbake: til == null };
+    const px = kameraMaal(sentrum), m = kameraMaal(mal()), n = Math.max(1, tikk(ms));
+    kam = { px, mal, sistMaal: m, tikk: tikk(performance.now()), tilbake: til == null,
+      fart: { x: Math.max(1, Math.ceil(Math.abs(m.x - px.x) / n)), y: Math.max(1, Math.ceil(Math.abs(m.y - px.y) / n)) } };
     return vent(ms);
   }
   function kameraSentrum(no) {
     if (!kam) return { x: spelar.fx, y: spelar.fy };
-    const u = Math.min(1, (no - kam.t0) / kam.ms), e = u < 0.5 ? 2 * u * u : 1 - (-2 * u + 2) ** 2 / 2, m = kam.mal();
-    if (u >= 1 && kam.tilbake) kam = null;
-    return { x: kam ? kam.fra.x + (m.x - kam.fra.x) * e : m.x, y: kam ? kam.fra.y + (m.y - kam.fra.y) * e : m.y };
+    const t = tikk(no), n = t - kam.tikk;
+    if (n > 0) {
+      kam.tikk = t;
+      const m = kameraMaal(kam.mal());
+      for (const k of ["x", "y"]) {
+        kam.px[k] += m[k] - kam.sistMaal[k];                           // med målet når det går
+        const att = m[k] - kam.px[k];
+        kam.px[k] += Math.sign(att) * Math.min(Math.abs(att), kam.fart[k] * n);
+      }
+      kam.sistMaal = m;
+      if (kam.tilbake && kam.px.x === m.x && kam.px.y === m.y) { kam = null; return { x: spelar.fx, y: spelar.fy }; }
+    }
+    return { x: kam.px.x / S + (VW - 1) / 2, y: kam.px.y / S + (VH - 1) / 2 };
   }
 
   // Ristar biletet (eit skred, ein dør som smell).
