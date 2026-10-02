@@ -149,6 +149,23 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   gir straum og stryk (loddrette striper og skumkant nedst). Mjuke landfliser ved vatnet (bakke, ikkje
   ved bruendar) får òg eit vasslag, så vatnet rundar av spissen på ytre hjørne. Sjå med
   `skjermbilete.py namn kart=utmarka m=1 x=17 y=9 stemning=ingen` (`stemning=ingen` tek bort kveldslyset).
+- Høgd og djupn (Åsen, etter klippene over Narshe i FF6 og toppen av pyramiden i A Link to the Past,
+  sjå `forhand/referansar/narshe-ark.png`): terrassefliser og bakgrunnslag med parallakse.
+  - Kartteikn: `s` skrent (bakkekant mellom to nivå, `Pikslar.skrent`, slagskuggen held fram på flisa
+    under med `Pikslar.underSkrent`), `/` rampe (stien gjennom skrenten med trinn, `Pikslar.rampe`),
+    `M` stup (bergveggen nedst, `Pikslar.stup`, løyser seg opp i dis i den nedste rada) og `-` luft
+    (ingen bakke, ikkje gangbar, bakgrunnen syner). Under stup er det stup eller luft. Skrenten flatar
+    ut der han møter open mark eller ei rampe, så ein rampe er ein kleiv i bakkekanten.
+  - Bakgrunnslaga og forgrunnen: `python tools/pikselkunst/utsikt.py` (skriptet er kjelda) skriv
+    `bilete/spel/parallakse/<namn>.png` (dal, fjell, greiner, gras) og `forhand/utsikt-ark.png`. På
+    kartet: `parallakse: [{ bilete, faktor, ved: [kx, ky], x, y }]` (det fjernaste først, faktor under 1),
+    `forgrunn: [...]` (faktor over 1), `luftfarge` og `kameraNed: { fra, til }` (kameraet ser lenger ned
+    ved stupet). x og y er staden på skjermen når kameraet står med øvre venstre flis på ved. Bileta blir
+    forhåndslasta av seg sjølv. `sjekk-spel.js` sjekkar at det bakaste laget dekkjer lufta.
+  - Luftperspektiv blir måla inn: lysare, kaldare, færre fargar og meir dis jo lenger borte. I lyset er
+    bakgrunnen nivå 5 (`fjern` i stemninga, ingen skyskugge).
+  - Sjå med `skjermbilete.py namn kart=asen m=1 x=12 y=13` (ved stupet), `x=22 y=14` (neset),
+    `x=13 y=2` (skogen og skrenten øvst), og `kart=minne-far m=1` (same utsikt i minnet).
 - Tre, steinar og haugar: `python tools/pikselkunst/natur.py <namn>` (sjå `NATUR`).
   Kartteikna `#` (gran), `t` (bjørk) og `o` (stein, einer) vel variant etter plassen
   frå `NATURTYPE` i `js/rpg/pikslar.js`. Nye variantar må førast inn der.

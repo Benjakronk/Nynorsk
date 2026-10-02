@@ -214,6 +214,31 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
 - Ein skal kunne gå bak tårn og høge ting. Figuren blir då gøymd bak huset. Ein svak
   silhuett blir berre vist der huset har `silhuett: true` i kartet (spesielle høve).
 
+## Høgd og djupn: terrassar, stup og utsikt (Åsen)
+
+Etter klippene over Narshe i Final Fantasy VI (`forhand/referansar/narshe-ark.png`) og toppen av
+pyramiden i A Link to the Past: høgd blir lesen av bakkekantar mellom nivå, ein høg bergvegg og eit
+landskap langt nede som flyttar seg saktare enn kartet.
+
+- Skrent (`s`) mellom to nivå: graskledd skråning sett framanfrå. Nivået over endar i ein lys graskant
+  (somme pikslar lysast), så bøyer graset over, og skråninga er villgras i skugge (vender bort frå
+  ljoset), mørkare nedover, med strå, flekker av open jord (mørk skugge øvst under graset, lys kant til
+  venstre) og nokre bergnabbar (lys flate oppe til venstre). Mørk fot, og ei slagskugge på 2 til 3
+  pikslar på graset under. Skrenten flatar ut (lågare og lågare) der han møter open mark eller ei rampe.
+- Rampe (`/`): stien går rett ned gjennom ein kleiv i skrenten, med trinn (mørk line, lys kant under)
+  kvar fjerde rad. Rampene ligg der stiane alt gjekk, så scenene finn vegen.
+- Stup (`M`): store, runde knausar som lener seg litt, med lys side mot venstre og djupe, blåsvarte
+  renner (som Narshe), småbrot i blokker på 2 × 3 pikslar, ein lys kant øvst under graset. Nedover blir
+  berget disigare i trinn (blanda mot disfargen `#a6b4bc`), og i den nedste rada løyser det seg opp i
+  dis med dither, så bakgrunnen syner gjennom. Eit nes som stikk ut, kastar skugge på berget til høgre.
+- Utsikta (`tools/pikselkunst/utsikt.py`): luftperspektiv måla inn. Dalen (faktor 0,3) er lysare og
+  blåare enn kartet, med dis øvst ved foten av stupet, små gardar (torvtak, raud eller grå vegg),
+  Hovdekyrkja kvit med skifertak og spir, teigar i grønt og gult med steingardar, elva og vegen.
+  Fjella (faktor 0,12) er endå disigare: alpine toppar med lys flanke til venstre for ryggen og skugge
+  til høgre, snø øvst. Ingen svarte omriss i bakgrunnen.
+- Forgrunnen (faktor 1,3): nesten silhuettar i mørkt grøn (nær kameraet, i skugge), berre i hjørna,
+  og berre når kameraet står ved kanten av kartet. Aldri midt i biletet.
+
 ## Sjekkliste før grafikken blir teken i bruk
 
 1. `pix.py sjekk` gir ingen merknader.

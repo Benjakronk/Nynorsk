@@ -575,7 +575,9 @@ f.onload = async () => {
     await p14;
     const ga = M.aktor("Gjest A");
     sjekk(ga.x === 16 && ga.y === 12, `figuren gjekk rundt den som stod i vegen og kom fram (står på ${ga.x},${ga.y})`);
-    // b) Følgjet står i stien: figuren går rundt følgjet òg.
+    // b) Følgjet står i stien: figuren går rundt følgjet òg. Rad 13 er kanten av stupet (under er
+    //    berg), så følgjet kan berre vike opp: hindringa frå a) går bort først.
+    M.fjernFolk("Hindring");
     Object.assign(fy14, { x: 13, y: 13, fx: 13, fy: 13, flytt: null });
     const p14b = T().hending([{ inn: { namn: "Gjest B", u: "bonde", rute: [10, 13], retning: "hogre" } }, { gaa: "Gjest B", sti: "h5" }]);
     for (let n = 0; n < 80 && T().iHending(); n++) { tel14(); await vent(40); }

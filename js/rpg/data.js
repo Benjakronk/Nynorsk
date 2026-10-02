@@ -319,6 +319,13 @@ window.RPGData = (function () {
     "minne-far": {
       namn: "Bøen på Åsen", scene: true, stemning: "minne", golv: ".", bakgrunn: "tun",
       bygg: [{ id: "loe", x: 6, y: 1, h: 3 }],
+      // Bøen nedst på Åsen, med stupet og utsikta over dalen (same bakgrunnslag som på Åsen).
+      // Kartet er smalare enn skjermen og står midt på (ox = 2), derfor ved: [-2, 1].
+      luftfarge: "#a6b4bc",
+      parallakse: [
+        { bilete: "fjell", faktor: 0.12, ved: [-2, 1], x: 0, y: 118 },
+        { bilete: "dal", faktor: 0.3, ved: [-2, 1], x: -20, y: 128 },
+      ],
       rader: [
         "################",
         "#.t...RRRRRR..t#",
@@ -327,10 +334,12 @@ window.RPGData = (function () {
         "#........=.....#",
         "#..\"....1...\"..#",
         "#...........t..#",
-        "#.o......@.....#",
-        "#______________#",
-        "#~~~~~~~~~~~~~~#",
-        "################",
+        "#.o......@...t.#",
+        "MMMMMMMMMMMMMMMM",
+        "MMMMMMMMMMMMMMMM",
+        "----------------",
+        "----------------",
+        "----------------",
       ],
       folk: [
         { merke: "@", u: "bonde", namn: "Far", atferd: "stille", retning: 0, tale: "far" },
@@ -338,9 +347,29 @@ window.RPGData = (function () {
     },
     asen: {
       namn: "Åsen i Hovdebygda", bygg: [{ id: "stove", x: 4, y: 2, h: 3 }, { id: "loe", x: 18, y: 2, h: 3 }, { id: "stabbur", x: 17, y: 9, h: 2 }], stemning: "morgon", golv: ".", bakgrunn: "tun",
+      /* Utsikta langt nede (sjå «Parallakse» i motor.js, bileta er laga med tools/pikselkunst/utsikt.py):
+         fjella og himmelen lengst bak, dalen med Hovdekyrkja og gardane nærare. Dei er forankra så
+         dalen byrjar ved foten av stupet når kameraet står nedst (ved: øvre venstre flis). */
+      luftfarge: "#a6b4bc",
+      parallakse: [
+        { bilete: "fjell", faktor: 0.12, ved: [0, 9], x: 0, y: 88 },
+        { bilete: "dal", faktor: 0.3, ved: [0, 9], x: 0, y: 98 },
+      ],
+      kameraNed: { fra: 9, til: 13 },                                  // ved stupet ser kameraet to rader lenger ned
+      // Forgrunnen: bjørkegreiner i øvre hjørne ved skogen, høgt gras i nedre hjørne ved stupet.
+      forgrunn: [
+        { bilete: "greiner", faktor: 1.3, ved: [0, 0], x: -6, y: -4 },
+        { bilete: "greiner-h", faktor: 1.3, ved: [8, 0], x: 210, y: -4 },
+        { bilete: "gras", faktor: 1.3, ved: [0, 9], x: -8, y: 160 },
+        { bilete: "gras-h", faktor: 1.3, ved: [8, 9], x: 236, y: 160 },
+      ],
+      /* Åsen i tre nivå: skogen øvst (rad 0) over ein skrent («s»), tunet på midten, og bøen med
+         åkeren og stabburet under ein skrent til. Rampene («/») er stiane som går ned gjennom
+         skrentane. Nedst fell åsen bratt ned (stupet, «M»), og under er det luft («-»): der syner
+         utsikta over Hovdebygda langt nede (parallakse). Neset ved x 21 til 23 stikk ut over stupet. */
       rader: [
-        "#############4##############",
-        "#..o.#....t..=............o#",
+        "##t##########4#####t######t#",
+        "#ssssssssssss/sssssssssssss#",
         "#..#RRRRR#...=....RRRRRR...#",
         "#...RRRRR....=.t..RRRRRR...#",
         "#...WvDvW....=....WWvDWW...#",
@@ -348,14 +377,18 @@ window.RPGData = (function () {
         "#....===&...===@....==%....#",
         "#.....===================..#",
         "#..\"..===================..#",
-        "#..||||.\"........RRR....=t.#",
-        "#..YYYY...\"...t..WDW....=..#",
+        "#sssssss/ssssssssRRRssss/ss#",
+        "#..YYYY.=.\"...t..WDW....=..#",
         "#..YYYY....\"...o..=========2",
         "#..YYYY....................#",
-        "#.L........................#",
-        "#______..o_.____....__...._#",
-        "#~~~~~~~~~~~~~~~~~~~~~~~~~~#",
-        "############################",
+        "#.L.....t..........\".....t.#",
+        "MMMMMMMMMMMMMMMMMMMMM.\".MMMM",
+        "MMMMMMMMMMMMMMMMMMMMMMMMMMMM",
+        "---------------------MMM----",
+        "----------------------------",
+        "----------------------------",
+        "----------------------------",
+        "----------------------------",
       ],
       dorer: [
         { ved: [6, 4], til: ["asen-stova", "2"] },
@@ -645,7 +678,7 @@ window.RPGData = (function () {
     },
   };
   // Merke som ikkje står i karta (framfor dører som fører ut att).
-  const EKSTRA_MERKE = { ekset: { d: [10, 4] }, kyrkja: { p: [7, 3] } };     // p: der presten kneler, attmed løparen
+  const EKSTRA_MERKE = { ekset: { d: [10, 4] }, kyrkja: { p: [7, 3] }, asen: { 1: [13, 7] } };   // asen 1: midt på tunet (testar og skjermbilete)     // p: der presten kneler, attmed løparen
 
   /* ---------- Verdskartet (frå kapittel 2) ---------- */
   const STADER = [];

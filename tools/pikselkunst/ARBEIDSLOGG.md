@@ -788,3 +788,60 @@ same måte, uansett kven som tek over.
   I kveldslyset er stien brun mot det mørke graset.
 - **Står att:** Stråa følgjer retninga til kanten i fire retningar (ikkje på skrå i svingane). Søkka ligg
   i eit fast rutenett over kartet. Stiane har ikkje skrent eller trapp der dei går ned mot vatnet.
+
+## Runde 25: Åsen som ein ås, med stup og utsikt
+
+- **Oppdrag:** Kartet `asen` var flatt: tunet, bøen og ein sjø nedst. Det skal sjå ut som ein ås med
+  høgd, som klippene over Narshe i prologen til Final Fantasy VI (høg bergvegg, figurane på ei hylle) og
+  toppen av pyramiden i A Link to the Past (plattforma på kartlaget, landskapet langt nede som eit eige
+  lag med parallakse). Utsikta er dalen med Hovdebygda og fjella rundt.
+- **Research:** `forhand/referansar/narshe/ff6-0008.png` til `ff6-0014.png` og `narshe-ark.png`: berget i
+  Narshe er store, runde knausar med lys venstre side og djupe, blåsvarte renner, småbrot i blokker, og
+  fem til seks varme grå tonar. `konsept/hovdebygda.jpg` (Ørsta og Hovdebygda ovanfrå): dalbotnen med
+  teigar, gardar og elva, skog i liene og fjell i dis bak.
+- **Gjort (motoren):**
+  - Parallakse (`motor.js`): `parallakse` og `forgrunn` på kartet, `[{ bilete, faktor, ved, x, y }]`.
+    Posisjonen er `x - (kamera - ved) * faktor`, runda til heile pikslar for seg; kameraet står på heile
+    pikslar, så laga flyttar seg monotont og ristar ikkje. Bakgrunnen blir teikna først (berre innanfor
+    kartet), forgrunnen etter figurane og før lyset. `luftfarge` fyller under.
+  - Luftfliser (`-`): ingen bakke, ikkje gangbare. Pikslane der bakgrunnen syner (luft, og dei opne
+    pikslane nedst i stupet), blir nivå 5 i lyset: stemninga sin `fjern` (eller `bak`) og hdma, men ingen
+    skyskugge og ingen glød. Luftperspektivet er måla inn i bileta.
+  - `kameraNed: { fra, til }`: ved stupet ser kameraet ei halv rad lenger ned per rad (2 rader på Åsen),
+    så utsikta får 80 pikslar. Spelaren går 2 pikslar per tikk og kameraet 3: framleis heile pikslar.
+    `kameraPx()` gir øvre venstre hjørne i pikslar, og `kamera()` byrjar der kameraet faktisk står.
+  - Terreng (`pikslar.js`): `Pikslar.skrent` (bakkekant), `underSkrent` (slagskuggen på flisa under),
+    `rampe` (stien med trinn) og `stup` (bergveggen med dis og opne pikslar), alle over kartpikslane så
+    kantane held fram frå flis til flis. `s`, `M` og `-` er faste, `/` er veg.
+  - `sjekk-spel.js`: stup har stup eller luft under seg, luft har luft under, ramper ligg i ein skrent,
+    bileta finst, faktoren er rett, og det bakaste laget dekkjer lufta for alle kameraposisjonar.
+- **Gjort (kartet og bileta):**
+  - Åsen i tre nivå: skogen øvst (rad 0) over ein skrent (rad 1) med rampe ved kantdøra mot utmarka
+    (13,1); tunet på midten (rad 2 til 8); ein skrent (rad 9) med ramper ved x 8 og x 24, og bøen med
+    åkeren og stabburet under (rad 10 til 13). Nedst stupet (rad 14 og 15) og luft (rad 16 til 20), eit
+    nes ved x 21 til 23 som stikk ut over stupet. Kartet er 21 rader (var 17); breidda, merka, dørene,
+    folka og bygga står der dei stod. Gjerdet over åkeren og sjøen er borte.
+  - `tools/pikselkunst/utsikt.py` (kjelda) skriv `bilete/spel/parallakse/`: `dal` (dalbotnen med
+    Hovdekyrkja, elva, vegen, teigar med steingardar, gardar med torvtak, skogen nedst i åsen i dis øvst
+    og skogen på andre sida nedst), `fjell` (alpine toppar på sidene og ei fjern rekkje i midten, himmel
+    i dis), `greiner` og `gras` (forgrunn, med spegla `-h`). Bileta blir forhåndslasta.
+  - Minnet om far (`minne-far`): sjøen er bytt ut med same stupet og utsikta, i sepia.
+  - Flytt: ingenting i scenene. `EKSTRA_MERKE` gir `asen` merket 1 midt på tunet (13,7), for testar og
+    skjermbilete (før landa dei på (1,1), som no er skrent). Testen der følgjet står i vegen
+    (`sjekk-scene.html`, del 14 b) tek bort hindringa frå del a først, fordi følgjet ikkje lenger kan vike
+    ned (rad 14 er stup); han sjekkar det same som før.
+- **Rundar:** 1) Stupet var ein låg vegg av like søyler og hyller, og såg ut som ein steinmur: store
+  knausar og renner som i Narshe, færre hyller. 2) Skrentane var ein band av grå stein og såg ut som
+  steingardar: graskledd skråning med jord og nokre nabbar. 3) Fjella låg bak dalen og synte berre som
+  snøflekker: toppane lenger ned, så dei står under skogkanten, og flankar med lys og skugge per rygg.
+  Skystripene såg ut som strekar og er tekne bort. 4) Utsikta var berre 56 pikslar høg: `kameraNed`.
+  5) Greinene var spreidde blad (støy): hengande kvistar med samla lauvklasar.
+- **Vurdert:** Skjermbilete (`forhand/skjerm/r25*`, `r25-oversyn.png`): oppe ved skogen, på tunet, ved
+  åkeren, ved stupet, på neset og ved kantdøra mot bygda, med og utan morgonlys, og scenene `framande`
+  og `skiftebrev` (`tools/bilete-spel.py`). Åsen les som ein ås: tunet ligg på ei hylle mellom to
+  bakkekantar, bergveggen fell ned i dis, og dalen med kyrkja, gardane og elva ligg langt nede og glir
+  saktare forbi enn kartet, med fjella endå saktare.
+- **Står att:** Skrenten øvst er berre éi rad, og mykje av han ligg bak taka. Rampene er rette (ikkje
+  på skrå); ein skrå sti ville krevje rørsle på skrå eller fleire rader. Fjella er små (20 til 30 pikslar
+  nedst i utsikta). Bekken eller dammen på tunet er ikkje laga. Sidene av neset er teikna med ei
+  lys og ei mørk line, ikkje som eigne sideflater.
