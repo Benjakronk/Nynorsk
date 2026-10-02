@@ -288,9 +288,56 @@ def sky(r):
     return G
 
 
+# ---------------------------------------------------------------- dagslys i stabburet
+def glugge(r):
+    """Dagslys gjennom glugga i bakveggen på stabburet (inne-glugge, 24 x 16). Ankeret er midt i
+    biletet; opninga er x -2 til 6, y -4 til 3. Sola står oppe til venstre, så strålen går skrått
+    ned mot høgre gjennom lufta (svak, med ein smal kjerne) og blir ein lys flekk på golvet, som
+    eit parallellogram litt større enn glugga. Rammene skil seg berre i nokre få støvkorn i strålen."""
+    G = Glod()
+    G.rader(3, [(y, -2, 6) for y in range(-4, 4)])                     # sjølve opninga
+    for y in range(4, 22):                                             # strålen gjennom lufta
+        s = (y - 4) // 2
+        G.rader(1, [(y, -2 + s, 6 + s)])
+        G.rader(2, [(y, 0 + s, 4 + s)])
+    for y in range(20, 40):                                            # flekken på golvet
+        s = (y - 4) // 2
+        inn = 0 if y in (20, 39) else 1 if y in (21, 38) else 2
+        G.rader(1, [(y, -5 + s + (1 if inn == 0 else 0), 9 + s - (1 if inn == 0 else 0))])
+        if inn: G.rader(2, [(y, -4 + s, 8 + s)])
+        if inn == 2: G.rader(3, [(y, -2 + s, 6 + s)])
+    # dither i kanten av flekken, helst i hjørna, og ein glorie rundt opninga på veggen
+    G.prikk(1, [(-3, 19), (0, 18), (13, 41), (17, 40), (-1, 21), (21, 37), (4, 40)])
+    G.prikk(1, [(-3, -5), (7, -5), (-4, -2), (8, 1), (-3, 4), (8, -3)])
+    G.prikk(2, [(-1, 23), (16, 37), (1, 24), (19, 35)])
+    # støv som sviv i strålen
+    G.prikk(3, [(3, 8), (6, 13), (5, 17)] if r == 0 else [(2, 10), (7, 12), (8, 18)])
+    return G
+
+
+def dor(r):
+    """Dagslys inn gjennom døra på stabburet (flisa E på eit kart med dagslys i stemninga). Ankeret
+    er midt i døropninga (x -6 til 5, y -8 til 4). Opninga lyser sjølv, og lyset fell inn over
+    golvet framfor som ei vifte som blir breiare og svakare innover, med ein liten knekk mot høgre
+    (sola oppe til venstre)."""
+    G = Glod()
+    G.rader(3, [(y, -6, 5) for y in range(-8, 5)])                     # opninga
+    for i, y in enumerate(range(-9, -42, -1)):
+        s = i // 6                                                     # vifta går litt mot høgre innover
+        b1, b2, b3 = 8 + i * 2 // 5, 7 + i // 3, 6 + i // 4
+        if i < 33: G.rader(1, [(y, -b1 + s, b1 - 1 + s)])
+        if i < 26: G.rader(2, [(y, -b2 + s, b2 - 1 + s)])
+        if i < 17: G.rader(3, [(y, -b3 + s, b3 - 1 + s)])
+    G.prikk(1, [(-19, -36), (23, -38), (-14, -42), (2, -42), (14, -42), (-20, -30), (25, -33)])
+    G.prikk(2, [(-14, -33), (17, -33), (-8, -35), (10, -35)])
+    G.prikk(3, [(-10, -26), (12, -26), (-4, -27), (6, -27)])
+    return G
+
+
 # Rammer per glødform (sjå LYSKJELDER i js/rpg/data.js for rekkjefølgja i flimmeret).
 FORMER = {"grue": (grue, 3), "kakkelomn": (kakkelomn, 3), "peis": (peis, 3), "lys": (lys, 2),
-          "lykt": (lykt, 2), "krone": (krone, 2), "ivar": (ivar, 2), "sky": (sky, 1)}
+          "lykt": (lykt, 2), "krone": (krone, 2), "ivar": (ivar, 2), "sky": (sky, 1),
+          "glugge": (glugge, 2), "dor": (dor, 1)}
 
 
 def rammer(namn):

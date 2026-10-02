@@ -26,7 +26,7 @@ for (const [id, k] of Object.entries(D.KART)) {
   for (const f of k.folk || []) { if (!merkeI[id][f.merke]) feil.push(`${id}: merket ${f.merke} til ${f.namn} manglar`); if (!D.MANUS[f.tale]) feil.push(`${id}: manus ${f.tale} manglar`); if (!D.U[f.u]) feil.push(`${id}: utsjånad ${f.u}`); }
   for (const i of k.inngang || []) if (!D.MANUS[i.manus]) feil.push(`${id}: inngang ${i.manus}`);
   if (k.kvile && !D.SCENER[k.kvile]) feil.push(`${id}: kvilescena ${k.kvile} finst ikkje`);
-  for (const ks of k.kister || []) { const c = k.rader[ks.ved[1]][ks.ved[0]]; if (!ks.gøymd && c !== "K") feil.push(`${id}: kiste ${ks.ved} på «${c}»`); if (ks.gøymd && !MERKE.test(c) && c !== k.golv) feil.push(`${id}: gøymd kiste på «${c}»`); if (ks.ting && !D.TING[ks.ting]) feil.push(`${id}: ting ${ks.ting}`); }
+  for (const ks of k.kister || []) { const c = k.rader[ks.ved[1]][ks.ved[0]]; if (!ks.gøymd && !ks.vis && c !== "K") feil.push(`${id}: kiste ${ks.ved} på «${c}»`); if ((ks.gøymd || ks.vis) && !MERKE.test(c) && c !== k.golv) feil.push(`${id}: gøymd kiste eller kiste med vis på «${c}»`); if (ks.ting && !D.TING[ks.ting] && !D.NOKKELTING[ks.ting]) feil.push(`${id}: ting ${ks.ting}`); if (ks.manus && !D.MANUS[ks.manus]) feil.push(`${id}: kistemanus ${ks.manus} manglar`); if (ks.vis && typeof ks.vis !== "function") feil.push(`${id}: vis på kista ${ks.id} må vere ein funksjon`); if (ks.bilete && !require("fs").existsSync(require("path").join(__dirname, "..", "bilete", "spel", "bygg", ks.bilete + ".png"))) feil.push(`${id}: kistebiletet ${ks.bilete} finst ikkje`); }
   for (const lag of (k.fiendar || {}).lag || []) for (const f of lag) if (!D.FIENDAR[f]) feil.push(`${id}: fiende ${f}`);
 }
 /* Stemningar og lys (sjå «Lys» i js/rpg/README.md): kvart kart må ha ei stemning som finst, og
@@ -41,10 +41,11 @@ function sjekkOp(op, stad) {
 }
 for (const [id, st] of Object.entries(D.STEMNINGAR || {})) {
   const stad = `stemning ${id}`;
-  for (const k of Object.keys(st)) if (!["bak", "fig", "fjern", "hdma", "glod", "syklus", "kjelder", "ivar", "skyer", "skugge", "straalar", "sepia"].includes(k)) feil.push(`${stad}: ukjend nøkkel «${k}»`);
+  for (const k of Object.keys(st)) if (!["bak", "fig", "fjern", "hdma", "glod", "syklus", "kjelder", "ivar", "skyer", "skugge", "straalar", "sepia", "dagslys"].includes(k)) feil.push(`${stad}: ukjend nøkkel «${k}»`);
   if (st.bak) sjekkOp(st.bak, stad + " bak"); if (st.fig) sjekkOp(st.fig, stad + " fig"); if (st.fjern) sjekkOp(st.fjern, stad + " fjern");
   if (st.hdma && !(Array.isArray(st.hdma) && st.hdma.every((h, i) => Number.isInteger(h[0]) && h[0] >= 0 && h[0] <= 192 && er3(h[1], -31, 31) && (i === 0 || h[0] >= st.hdma[i - 1][0])))) feil.push(`${stad}: hdma må vere [[rad, [r, g, b]], …] med stigande rader frå 0 til 192`);
   if (st.glod) for (const l of ["bak", "fig"]) { if (!Array.isArray(st.glod[l]) || st.glod[l].length !== 3) feil.push(`${stad}: glod.${l} må ha tre nivå`); else st.glod[l].forEach((op, i) => sjekkOp(op, `${stad} glod.${l}[${i}]`)); }
+  if (st.dagslys && !(st.kjelder && D.LYSKJELDER && D.LYSKJELDER.dor && D.LYSKJELDER.glugge)) feil.push(`${stad}: dagslys treng kjelder og glødformene dor og glugge`);
   if ((st.kjelder || st.ivar || st.straalar) && !st.glod) feil.push(`${stad}: kjelder, ivar og straalar treng glod`);
   if (st.syklus && !(Array.isArray(st.syklus) && st.syklus.every(v => er3(v, -31, 31)))) feil.push(`${stad}: syklus må vere ei liste med [r, g, b]`);
   if (st.ivar !== undefined && st.ivar !== true) feil.push(`${stad}: ivar må vere true (glødforma ivar i LYSKJELDER)`);
@@ -177,13 +178,14 @@ for (const [id, sc] of Object.entries(D.SCENER)) {
 /* Namn i regien: den som talar, går, snur seg, får pose eller kamera, må finnast på kartet der
    manuset blir spela (folk i kartet, merke, folk frå inn-steg, nye namn frå byt), elles gir
    motoren null, og steget blir stilt hoppa over. Manus blir knytte til karta gjennom folk (tale),
-   inngang, vakt og kvile, og scener gjennom manusa som spelar dei. Scenekart i manuset er med. */
+   inngang, vakt, kister og kvile, og scener gjennom manusa som spelar dei. Scenekart i manuset er med. */
 const karteFor = {};                                                  // manus- eller scene-id -> Set med kart
 const knyt = (nokkel, kart) => (karteFor[nokkel] || (karteFor[nokkel] = new Set())).add(kart);
 for (const [id, k] of Object.entries(D.KART)) {
   for (const f of k.folk || []) knyt("m:" + f.tale, id);
   for (const i of k.inngang || []) knyt("m:" + i.manus, id);
   for (const d of k.dorer || []) if (d.vakt) knyt("m:" + d.vakt.manus, id);
+  for (const ks of k.kister || []) if (ks.manus) knyt("m:" + ks.manus, id);
   if (k.kvile) knyt("s:" + k.kvile, id);
 }
 knyt("m:start", "asen-stova");                                         // ei ny reise byrjar i stova

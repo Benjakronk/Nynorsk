@@ -57,6 +57,13 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   `python tools/pikselkunst/inventar.py <namn>`. Står i `bygg` på kartet,
   `over: true` teiknar figuren over alt anna (lysekrona). Inventar med eld får
   flammerute i `ILD` i `js/rpg/pikslar.js` (levande eld teikna oppå biletet).
+  Stabburet (runde 28): `kornbinge` (3 × 1), `tonne`, `kagge`, `sekker`, `stige` (1 × 1, går opp
+  til ei luke i taket), `flatbrodstabel` (2 × 1), og på veggen (rad 0) `spekemat` (3 × 1) og
+  `glugge` (1 × 1, lyskjelda `glugge`). Ting som heng på bakveggen, står i rad 0 med `h: 1`, så dei
+  ligg under figurane i rad 1. Golvet er breie plankar (flisa `O`, `golv: "O"`). Ei kiste kan ha
+  `bilete` (eit inventarbilete i staden for kistefliser, til dømes `inne-skrin`), `vis` (finst berre
+  når vilkåret held) og `manus` (blir spela når ho blir opna). Sjå med
+  `skjermbilete.py namn kart=asen-stabbur m=1` og `kart=asen-stova m=1 flagg=skiftebrev x=9 y=4`.
 - Glød rundt ei lyskjelde (eld, ljos, lykt, krone): ei handteikna glødform i
   `tools/pikselkunst/glod.py`, éin funksjon per kjelde med parameteren `r` (flimmerramma).
   Slik lagar du glød for ei ny lyskjelde:

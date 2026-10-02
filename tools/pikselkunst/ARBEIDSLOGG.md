@@ -916,3 +916,53 @@ same måte, uansett kven som tek over.
 - **Står att:** Skrentane er éi rad høge, så lia er låg. Det er ikkje noko vad eller steinrekkje (berre
   klopp). Den høge, smale steinen (`o`-varianten på 22,14) står litt einsleg i graset. Lia vest for
   tjernet kan ein sjå, men ikkje gå til.
+
+## Runde 28: stabburet inne og nøkkelen etter far
+
+- **Frå brukaren:** Eit interiør til stabburet på Åsen, og ein nøkkel ein kan finne i stova etter
+  den første kampen.
+- **Gjort (teikninga):**
+  - `inventar.py`: `kornbinge` (3 × 1, tre rom med stolpar, loka står opp mot veggen, korn og mjøl
+    med ei trøskjeppe), `tonne` (gjordar av vidje, lok og stein oppå), `kagge` (liggjande på to
+    krakkar, tapp i botnen), `flatbrodstabel` (tre stablar på ein låg benk), `spekemat` (fenalår og
+    pølser på ei stong, eit band med urter), `stige` (opp til ei mørk luke med ein sekk på loftet),
+    `glugge` (opning med dagslys, jernstenger og lem), `sekker` (to mjølsekker av lerret) og `skrin`
+    (skrinet etter far i stova: mørk bjørk, jernbeslag, rosemålt lok og papir).
+  - Ny golvflis `O` (`pikslar.js`): breie plankar, to per flis, med skøytar og spikarhovud.
+  - `glod.py`: dagslys som glødformer, `glugge` (strålen skrått ned mot høgre og ein lys flekk på
+    golvet, to rammer der nokre støvkorn flyttar seg) og `dor` (døropninga og ei vifte av lys inn
+    over golvet).
+  - `naerbilete.py`: `stabburnokkel`, den store nøkkelen av smidd jern med lærband i ringen, på eit
+    bretta linklede med ei gulna kvittering.
+- **Gjort (spelet):**
+  - Stemninga `stabbur` (`data.js`): djup skugge, `dagslys` gir glødformene `dor` (på `E`) og `glugge`
+    (på `inne-glugge`) i `lyskjelder()` i `motor.js`. Kjernen tek snittet mot kvitt.
+  - Kartet `asen-stabbur` (10 × 7): kornbingane, glugga og spekematen mot bakveggen, stigen i hjørnet,
+    tønne og kagge til venstre, flatbrød til høgre, sekker ved døra og ei kiste med rømmegraut og 20
+    skilling. Døra (4,6) fører ut til merke 5 framfor stabburet på Åsen.
+  - Døra på stabburet (18,10) er låst (`krev: "stabburnokkel"`, «Stabburet er låst. Far hadde
+    nøkkelen …»). Første gong med nøkkelen går låsen opp (`vakt`, manus `opne_stabbur`).
+  - Skrinet etter far står ved senga i stova (9,2) berre etter skiftebrevet: nye felt på kister,
+    `vis` (vilkår), `bilete` (inventarbilete) og `manus` (`fars_skrin`: nærbiletet, nøkkeltinga
+    `stabburnokkel` og flagget). Storebror nemner skrinet til Ivar har nøkkelen. Tom kiste: `tom`.
+  - Scena `stabburet` første gong inne: Ivar går inn, lukta og lyset, og minnet om far. Dagboka.
+  - Testar: `sjekk-scene.html` (låst før, ingen skrin før skiftebrevet, nøkkelen etter, tomt skrin,
+    låsen, scena éin gong, ut att og inn att), `sjekk-spel.js` (kister med `vis`, `bilete`, `manus`,
+    nøkkelting i kister, `dagslys`). `kjoyr-test.py` gir no 190 sekund virtuell tid.
+    `skjerm.html` tek `flagg=` (kommaskilt).
+- **Rundar:** 1) Kagga var teikna med botnen mot oss og såg ut som ein gris med tryne og bein: no
+  liggjande frå sida med stavar på langs og to krakkar. Flatbrødstablane flaut saman til ein kake:
+  smalare stablar med luft mellom og flatare toppar. Kornbinga hadde ein sekk over kanten som såg ut
+  som ein kvit lapp, og kornet var berre ei stripe: djupare toppflate og ein haug med lys og skugge.
+  Sekkene var så kvite at dei lyste i mørket: dempa lerret. 2) Lyset frå døra var ei smal stripe:
+  breiare og lengre vifte. Kagga stod oppå tønna og vart eit tårn: no ved sida av. Golvet hadde dei
+  smale plankane frå stova: eiga flis med breie plankar. 3) Skrinet var først kistefliser (to like,
+  blå kister i stova): eige bilete. Den mørke kanten rundt jernet på nøkkelen mangla, og lærbandet
+  var ein eigen ring: no ein sløyfe gjennom ringen.
+- **Vurdert:** Skjermbilete `forhand/skjerm/r28-stabbur`, `stabbur`, `stova-skrin`,
+  `asen-stabbur-laast`, `asen-stabbur-opnar` og `forhand/naer-stabburnokkel-8x.png`. Stabburet les
+  som ei matbu: kornbingane og spekematen mot veggen, strålen frå glugga som ein lys flekk på golvet,
+  og dagslyset frå døra. Skrinet i stova skil seg frå den blå kista. Døra opnar seg på Åsen.
+- **Står att:** Spekematen og stigeluka heng over bakveggen i mørkret (taket), utan eigen takbjelke.
+  Loftet er berre pynt. Rosemålinga på loket til skrinet er knapt synleg i 1:1. Ivar ser fram (ikkje
+  mot kista) i kjensla «tenkje».

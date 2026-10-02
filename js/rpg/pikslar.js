@@ -240,6 +240,17 @@ window.Pikslar = (function () {
     },
     /* Inne */
     "P": (g, t, v) => { const r = R_.plank; px(g, 0, 0, r[2], S, S); for (let y = 0; y < S; y += 4) { px(g, 0, y, r[3], S, 1); px(g, 0, y + 3, r[0], S, 1); px(g, ((y * 5 + v * 3) % 12) + 2, y + 1, r[1], 1, 2); } },
+    // Breie golvplankar (stabburet): to plankar per flis, mørk fuge, skøytar med spikarhovud og
+    // korte årer. Varianten flyttar skøytane og årene, så golvet ikkje blir eit rutenett.
+    "O": (g, t, v) => {
+      const r = R_.plank; px(g, 0, 0, r[2], S, S);
+      for (let y = 0; y < S; y += 8) {
+        const k = (v + y / 8) % 4;
+        px(g, 0, y, r[3], S, 1); px(g, 0, y + 7, r[0], S, 1);
+        px(g, (k * 5 + 2) % 12, y + 3, r[1], 4, 1); px(g, (k * 3 + 7) % 11 + 2, y + 5, r[1], 3, 1);
+        if (k === 1 || k === 3) { const sx = k === 1 ? 5 : 12; px(g, sx, y + 1, r[0], 1, 6); px(g, sx + 1, y + 1, r[3], 1, 6); px(g, sx - 2, y + 3, r[0], 1, 1); px(g, sx + 3, y + 4, r[0], 1, 1); }
+      }
+    },
     "X": g => { const r = R_.tommer; for (let y = 0; y < 12; y += 4) { px(g, 0, y, r[2], S, 1); px(g, 0, y + 1, r[1], S, 2); px(g, 0, y + 3, r[0], S, 1); } px(g, 0, 12, R_.plank[4], S, 1); px(g, 0, 13, R_.plank[2], S, 2); px(g, 0, 15, R_.plank[0], S, 1); },
     "c": g => { const r = R_.stein; px(g, 0, 0, r[2], S, S); for (let y = 0; y < S; y += 4) { for (let x = (y / 4) % 2 ? 0 : 4; x < S; x += 8) { px(g, x, y, r[0], 1, 4); px(g, x + 1, y, r[3], 5, 1); } px(g, 0, y + 3, r[1], S, 1); } },
     "g": (g, t, v) => { const r = ["#6a6474", "#8a8494", "#a8a2b0", "#c2bcc8", "#dcd8e0"]; px(g, 0, 0, r[2], S, S); for (let y = 0; y < S; y += 8) for (let x = (y / 8) % 2 ? -4 : 0; x < S; x += 8) { px(g, x, y, r[3], 7, 1); px(g, x, y + 7, r[0], 8, 1); px(g, x + 7, y, r[1], 1, 8); } if (v % 3 === 0) px(g, 5, 11, r[1], 2, 1); },
@@ -390,7 +401,7 @@ window.Pikslar = (function () {
   const FAST = new Set(["+", "(", "u", "#", "t", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " ", "s", "M", "-", "N"]);
   const ANIM = new Set(["~", "L", "T", "f", "n", "y"]);
   const VARIANT_EKSTRA = new Set(["Rt", "Rb", "Rtb"]);
-  const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t"]);
+  const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "O", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t"]);
   const cache = new Map();
   function flis(teikn, t = 0, x = 0, y = 0, golv = "P") {
     const v = VARIANT.has(teikn) || VARIANT_EKSTRA.has(teikn) ? Math.floor(hash(x, y, 7) * 4) : 0;
@@ -1417,11 +1428,12 @@ window.Pikslar = (function () {
 
   /* Alle bileta spelet brukar, til forhandslast(). D er RPGData. */
   // Nærbilete i scenene (Motor.naerbilete), laga med tools/pikselkunst/naerbilete.py
-  const NAERBILETE = ["skiftebrev", "kyrkjebok-blekk", "kyrkjebok"];
+  const NAERBILETE = ["skiftebrev", "kyrkjebok-blekk", "kyrkjebok", "stabburnokkel"];
   function alleBilete(D) {
     const ut = [];
     for (const k of Object.values(D.KART)) {
       for (const b of k.bygg || []) ut.push(`bilete/spel/bygg/${b.id}.png`);
+      for (const ks of k.kister || []) if (ks.bilete) ut.push(`bilete/spel/bygg/${ks.bilete}.png`);
       if (k.bakgrunn) ut.push(`bilete/spel/kamp/${k.bakgrunn}.png`);
     }
     for (const namn of new Set(Object.values(NATURTYPE).flat())) ut.push(`bilete/spel/natur/${namn}.png`);

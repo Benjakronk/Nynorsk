@@ -198,6 +198,7 @@ f.onload = async () => {
     const s10 = T().st(), varsel = [];
     const gamalWarn = w.console.warn; w.console.warn = (...a) => { varsel.push(a.join(" ")); gamalWarn.apply(w.console, a); };
     const naer = (a, b) => a && b && Math.abs(a.x - b.x) + Math.abs(a.y - b.y) === 1;
+    const taleNo = () => synleg("#rpg-tale") ? d.querySelector("#rpg-tale").textContent : "";
     const kanGaa = () => T().modus() === "felt" && !M.spelar.regi && !M.svart;
     // a) Syster blir sitjande på kubbestolen ved bordet, snur seg mot Ivar og gir flatbrød.
     delete s10.ord.kaka;
@@ -234,6 +235,18 @@ f.onload = async () => {
     sjekk(M.kart.id === "asen" && M.spelar.x === 26 && M.spelar.y === 11 && !s10.flagg.skiftebrev, "med for få ord går Ivar attende frå kanten mot bygda");
     s10.ord = Object.assign({ stein: { former: { stein: {} } }, kaka: { former: { kake: {} } }, mjolk: { former: { "mjølk": {} } } }, ordFor);
 
+    // Stabburet før skiftebrevet: skrinet etter far står ikkje i stova, og døra er låst.
+    const haldTast = async (k, ms) => { d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true })); await vent(ms); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true })); };
+    M.last("asen-stova", "1"); M.plasser(9, 3, 1); await vent(300);
+    const skrin = M.kart.kister.find(k => k.id === "k-skrin");
+    tast("z"); await vent(400);
+    sjekk(skrin && !skrin.vis(s10) && !synleg("#rpg-tale") && !s10.nokkel.includes("stabburnokkel"), "før skiftebrevet står skrinet etter far ikkje i stova, og nøkkelen er ikkje å finne");
+    M.last("asen", "5"); M.plasser(18, 11, 1); await vent(300);
+    let laastTekst = "";
+    await haldTast("ArrowUp", 250);
+    await trykkGjennom(() => laastTekst && !synleg("#rpg-tale") && !T().iHending(), () => { if (synleg("#rpg-tale") && /låst/.test(taleNo())) laastTekst = taleNo().trim(); });
+    sjekk(/Stabburet er låst/.test(laastTekst) && M.kart.id === "asen" && M.spelar.x === 18 && M.spelar.y === 11, `stabburet er låst utan nøkkelen («${laastTekst.slice(0, 40)}»)`);
+
     // d) Skiftebrevet. Kampen blir stubba (siger med ein gong); testen ser på kven som står kvar.
     const kampFor = w.Kamp.start; let kampar = 0, vedKamp = null;
     w.Kamp.start = async () => {
@@ -265,6 +278,38 @@ f.onload = async () => {
     sjekk(M.kart.folk.filter(f => f.namn === "Syster").length === 1 && M.kart.folk.filter(f => f.namn === "Storebror").length === 1, "i stova er dei der, éin gong kvar");
     M.last("asen", "3"); await vent(200);
     sjekk(!M.aktor("Syster") && !M.aktor("Storebror"), "ute på tunet att er dei ikkje");
+
+    // e) Stabburet etter skiftebrevet: skrinet etter far står ved senga, og nøkkelen ligg i det.
+    //    Døra går opp (låsen første gong), inne spelar «stabburet» éin gong, og døra fører ut att.
+    M.last("asen-stova", "1"); M.plasser(9, 3, 1); await vent(300);
+    let saaNokkel = false;
+    tast("z");
+    await trykkGjennom(() => s10.flagg.stabburnokkel && !T().iHending() && !synleg("#rpg-tale"), () => { const i = d.querySelector(".rpg-naer img"); if (i && /stabburnokkel/.test(i.src)) saaNokkel = true; });
+    sjekk(s10.nokkel.includes("stabburnokkel") && s10.flagg.stabburnokkel, "etter skiftebrevet finn Ivar stabburnøkkelen i skrinet etter far");
+    sjekk(saaNokkel, "nærbiletet av nøkkelen vart vist");
+    let tomt = false;
+    tast("z"); await vent(200);
+    await trykkGjennom(() => !synleg("#rpg-tale") && !T().iHending(), () => { if (/tomt/.test(taleNo())) tomt = true; });
+    sjekk(tomt && s10.nokkel.filter(n => n === "stabburnokkel").length === 1, "skrinet er tomt andre gongen");
+    M.last("asen", "5"); M.plasser(18, 11, 1); await vent(300);
+    await haldTast("ArrowUp", 250);
+    await trykkGjennom(() => s10.flagg.stabbur_opna && !synleg("#rpg-tale") && !T().iHending());
+    sjekk(s10.flagg.stabbur_opna && M.kart.id === "asen", "med nøkkelen låser Ivar opp stabburet");
+    await haldTast("ArrowUp", 250);
+    for (let n = 0; n < 60 && M.kart.id !== "asen-stabbur"; n++) await vent(50);
+    await trykkGjennom(() => s10.scener.stabburet && !T().iHending() && !synleg("#rpg-tale"));
+    await vent(300);
+    sjekk(M.kart.id === "asen-stabbur" && s10.scener.stabburet && s10.dagbok.some(l => /stabburet/.test(l.tekst)), "døra går opp, og første gong inne spelar scena «stabburet»");
+    M.plasser(4, 5, 0); await vent(200);
+    await haldTast("ArrowDown", 250);
+    for (let n = 0; n < 60 && M.kart.id !== "asen"; n++) await vent(50);
+    await vent(400);
+    sjekk(M.kart.id === "asen" && M.spelar.x === 18 && M.spelar.y === 11, `døra i stabburet fører ut att framfor stabburet (${M.kart.id} ${M.spelar.x},${M.spelar.y})`);
+    await haldTast("ArrowUp", 250);
+    for (let n = 0; n < 60 && M.kart.id !== "asen-stabbur"; n++) await vent(50);
+    await vent(600);
+    sjekk(M.kart.id === "asen-stabbur" && !T().iHending() && kanGaa(), "andre gongen går Ivar rett inn, utan scene");
+    M.last("asen", "3"); await vent(200);
     M.plasser(27, 11, 3); await vent(100);
     await M.krokar.dor(dor(27, 11)); await vent(900);
     sjekk(M.kart.id === "bygda", "etter skiftebrevet går Ivar vidare til bygda");

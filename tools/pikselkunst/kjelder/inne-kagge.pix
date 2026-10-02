@@ -1,0 +1,40 @@
+# namn: inne-kagge
+# type: bygg
+# ut: bilete/spel/bygg/inne-kagge.png
+# storleik: 24x24
+palett:
+  . = -
+  o = #0a0514    omriss
+  t = #4a2418    tre djup
+  T = #7a3a22    tre brunraud
+  U = #a4583a    tre lys
+  a = #2e1a10    furu djup
+  A = #5a3a22    furu skugge
+  c = #8a5e36    furu
+  C = #b08650    furu lys
+  q = #d6b070    furu lysast
+bilete:
+  ........................
+  ........................
+  ......oooooooooooo......
+  ...oooqUtqqqqqqqUtooo...
+  ..oCAqqUtqqqqqqqUtqqAo..
+  ..oCAqCUtCCCCCCCUtqqAo..
+  ..oCAAAUtAAAAAAAUtAAAo..
+  ..oCACCUtCCCCCCCUtCCAo..
+  ..oCAccTtcccccccTtccAo..
+  .oocAccTtcccccccTtccAo..
+  oTUcAAATtAAAAAAATtAAAo..
+  ottcAccTtcccccccTtccAo..
+  .oocAAcTtcccccccTtAAAo..
+  ..ocAAATtAAAAAAATtAAAo..
+  ..ocAaattaaaaaaattaaAo..
+  ..ocAaattaaaaaaattaaAo..
+  ...oooattaaaaaaattooo...
+  ....oCCcccooooCCccco....
+  ....oAAAAAo..oAAAAAo....
+  ....ocaocao..ocaocao....
+  ....ocaocao..ocaocao....
+  ....ocaocao..ocaocao....
+  ....ocaocao..ocaocao....
+  .....oo.oo....oo.oo.....

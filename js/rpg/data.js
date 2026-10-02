@@ -250,6 +250,14 @@ window.RPGData = (function () {
       glod: { bak: [{ p: [-1, -3, -4] }, { p: [2, 0, -3] }, { p: [5, 3, -2] }], fig: [{ p: [0, -1, -3] }, { p: [2, 1, -2] }, { p: [4, 3, -1] }] },
       syklus: [[0, 0, 0], [1, 1, 0], [0, 0, 0], [1, 0, 0], [2, 1, 0], [1, 0, 0]],
     },
+    // Stabburet: ingen eldstad, rommet i djup skugge. Dagslyset kjem inn gjennom døra og glugga
+    // (dagslys: glødformene dor og glugge, sjå lyskjelder() i motor.js), kaldt og kvitt. Kjernen
+    // tek snittet mot kvitt, så døropninga og flekken på golvet blir lyse.
+    stabbur: {
+      bak: { p: [-9, -9, -6] }, fig: { p: [-6, -6, -4] },
+      kjelder: true, dagslys: true,
+      glod: { bak: [{ p: [-5, -5, -3] }, { p: [-1, -1, 0] }, { p: [2, 2, 2], snitt: [30, 29, 25] }], fig: [{ p: [-3, -3, -2] }, { p: [0, 0, 0] }, { p: [3, 3, 2] }] },
+    },
     // Mørkt: berre lyset rundt Ivar og lampene. Figurane blir mindre mørke enn rommet.
     mork: {
       bak: { p: [-12, -12, -6], lys: 6 }, fig: { p: [-8, -8, -4], lys: 9 },
@@ -271,7 +279,8 @@ window.RPGData = (function () {
   };
   /* Glødformene: handteikna bilete i bilete/spel/lys/<namn>.png, laga med tools/pikselkunst/glod.py.
      Fargen i biletet er trinnet i gløden (1 ytst, 3 kjernen), og den magenta pikselen er ankeret
-     (der lyskjelda er). rammer: talet på flimmerbilete side om side. rekkje: kva ramme som blir
+     (der lyskjelda er). Dagslyset i stabburet (glugge og dor) er glødformer på same måten.
+     rammer: talet på flimmerbilete side om side. rekkje: kva ramme som blir
      vist i kvart steg på 150 ms (same takt som elden). Eld flimrar mest, ljos og lykter lite.
      Kven som lyser kvar, står i lyskjelder() i motor.js: grua og kakkelomnen (inventar med eld),
      lysekrona, peisen (flisa f), ljos (L inne) og lykter (L ute og T). sky er skuggen av ei sky
@@ -285,6 +294,8 @@ window.RPGData = (function () {
     krone: { rammer: 2, rekkje: [0, 0, 1, 0, 0, 0, 0, 1, 1, 0] },
     ivar: { rammer: 2, rekkje: [0, 0, 0, 1, 0, 0, 1, 0] },
     sky: { rammer: 1, rekkje: [0] },
+    glugge: { rammer: 2, rekkje: [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1] },   // dagslys gjennom glugga, støv som sviv
+    dor: { rammer: 1, rekkje: [0] },                                     // dagslys inn gjennom døra
   };
 
   /* ---------- Karta ---------- */
@@ -308,11 +319,37 @@ window.RPGData = (function () {
       ],
       dorer: [{ ved: [5, 7], til: ["asen", "3"] }],
       kvile: "minne_far",                                              // første kvilen ved lampa
-      kister: [{ ved: [10, 4], ting: "flatbrod", n: 2, id: "k-stova" }],
+      kister: [{ ved: [10, 4], ting: "flatbrod", n: 2, id: "k-stova" },
+        // Skrinet etter far står framme ved senga etter skiftebrevet (syster henta brevet der).
+        // Stabburnøkkelen ligg i det. vis: kista finst berre når vilkåret held; manus: opninga;
+        // bilete: eit eige inventarbilete i staden for kistefliser.
+        { ved: [9, 2], id: "k-skrin", bilete: "inne-skrin", vis: st => !!st.flagg.skiftebrev, manus: "fars_skrin", tom: "Skrinet etter far er tomt no. Berre papira hans ligg att." }],
       folk: [
         { merke: "@", u: "bror", namn: "Storebror", atferd: "snu", retning: 2, snu: [0, 2, 3], tale: "bror" },
         { merke: "%", u: "syster", namn: "Syster", atferd: "stille", pose: "sitje", flis: "(", tale: "syster" },   // sit på kubbestolen ved enden av langbordet og ser mot bordet
       ],
+    },
+    /* Stabburet på Åsen: matbua, låst til Ivar har nøkkelen etter far. Tømmer, breie golvplankar,
+       kornbingar mot bakveggen, spekemat under taket, stigen opp til loftet, tønner, kagge,
+       mjølsekker og flatbrød i stablar. Ingen eldstad: dagslyset kjem gjennom døra og glugga. */
+    "asen-stabbur": {
+      namn: "Stabburet på Åsen", stemning: "stabbur", golv: "O", inne: true, bakgrunn: "inne",
+      bygg: [{ id: "inne-glugge", x: 4, y: 0, h: 1 }, { id: "inne-spekemat", x: 5, y: 0, h: 1 },
+        { id: "inne-kornbinge", x: 1, y: 1, h: 1 }, { id: "inne-stige", x: 8, y: 1, h: 1 },
+        { id: "inne-tonne", x: 1, y: 3, h: 1 }, { id: "inne-kagge", x: 2, y: 3, h: 1 },
+        { id: "inne-flatbrodstabel", x: 7, y: 3, h: 1 }, { id: "inne-sekker", x: 8, y: 5, h: 1 }],
+      rader: [
+        "XXXXXXXXXX",
+        "X(((OOOO(X",
+        "XOOOOOOOOX",
+        "X((OOO((OX",
+        "XOOOOOOOOX",
+        "XKOO1OOO(X",
+        "XXXXEXXXXX",
+      ],
+      dorer: [{ ved: [4, 6], til: ["asen", "5"] }],
+      inngang: [{ merke: "1", manus: "inn_stabbur" }],
+      kister: [{ ved: [1, 5], ting: "romegraut", n: 2, pengar: 20, id: "k-stabbur" }],
     },
     /* Scenekart (scene: true) finst berre for ei scene: dei er ikkje med i verda, og spelet
        lagrar aldri at Ivar står der (sjå scenekart-steget i README). */
@@ -383,7 +420,7 @@ window.RPGData = (function () {
         "#..\"..===================..#",
         "#sssssss/ssssssssRRRssss/ss#",
         "#..YYYY.=.\"...t..WDW....=..#",
-        "#..YYYY....\"...o..=========2",
+        "#..YYYY....\"...o..5========2",
         "#..YYYY....................#",
         "#.L.....t..........\".....t.#",
         "MMMMMMMMMMMMMMMMMMMMM.\".MMMM",
@@ -396,6 +433,9 @@ window.RPGData = (function () {
       ],
       dorer: [
         { ved: [6, 4], til: ["asen-stova", "2"] },
+        // Stabburet er låst til Ivar har funne nøkkelen etter far (i skrinet i stova, etter skiftebrevet).
+        { ved: [18, 10], til: ["asen-stabbur", "1"], krev: "stabburnokkel", laast: "Stabburet er låst. Far hadde nøkkelen, og sidan han døydde i vinter, har ingen visst kvar han er.",
+          vakt: { flagg: "stabbur_opna", manus: "opne_stabbur" } },
         { ved: [13, 0], til: ["utmarka", "1"], kant: true, vakt: { flagg: "skiftebrev", manus: "ikkje_enno" } },
         { ved: [27, 11], til: ["bygda", "1"], kant: true, vakt: { flagg: "skiftebrev", manus: "skiftebrev" } },
       ],
@@ -747,6 +787,7 @@ window.RPGData = (function () {
   const NOKKELTING = {
     ordboka: { namn: "Ordboka", tekst: "Ei bok med skinnband frå den framande. På første sida står det: «Det som er skrive, står.»" },
     prestenokkel: { namn: "Nøkkelen til prestegarden", tekst: "Presten gav han til Ivar, med ei åtvaring om trolldom." },
+    stabburnokkel: { namn: "Stabburnøkkelen", tekst: "Ein stor nøkkel av smidd jern med eit lærband i ringen. Far bar han i beltet, og han låser opp stabburet på Åsen." },
     sagabok: { namn: "Ei gamal kongesoge", tekst: "Frå boksamlinga på Ekset. Nokre av orda liknar på dei Ivar høyrer heime. Han kan ikkje lese norrønt enno." },
   };
 
@@ -939,6 +980,19 @@ window.RPGData = (function () {
         { vent: 400 },
         { gaa: "Syster", rute: [6, 4], ut: true, ikkjeVent: true },
         { lagre: 1 },
+      ],
+    },
+    // Første gong Ivar går inn i stabburet: lukta, lyset frå glugga og eit minne om far.
+    stabburet: {
+      namn: "Stabburet", stad: "Stabburet på Åsen", kort: false, med: ["Ivar"],
+      steg: [
+        { gaa: "Ivar", sti: "o1" },
+        { t: "Det luktar mjøl, tjære og spekekjøt. Dagslyset fell inn gjennom glugga og ligg som ein lys flekk på golvplankane." },
+        { s: "Ivar", t: "Far kalla stabburet matkista på garden. Alt vi skal leve av fram til slåtten, ligg her.", kjensle: "trist" },
+        { snu: "Ivar", retning: "venstre" },
+        { vent: 300 },
+        { s: "Ivar", t: "Kista i hjørnet var alltid låst for oss ungane. Kanskje far gøymde noko der.", kjensle: "tenkje" },
+        { dagbok: "Eg låste opp stabburet med nøkkelen etter far. Det luktar som før, då han levde." },
       ],
     },
     // Eit minne om far, første gong Ivar kviler ved lampa i stova (kvile på kartet).
@@ -1154,12 +1208,14 @@ window.RPGData = (function () {
       ] },
       { scene: "heime" },
     ],
-    bror: [{ dersom: harOrd("stein"), da: [
+    bror: [{ dersom: st => st.flagg.skiftebrev && !st.flagg.stabburnokkel, da: [
+      { s: "Storebror", t: "Syster fann skiftebrevet i skrinet etter far, ved senga. Nøkkelen til stabburet må liggje der òg. Han slapp han aldri frå seg.", kjensle: "tenkje" },
+    ], elles: [{ dersom: harOrd("stein"), da: [
       { s: "Storebror", t: "Folk seier det er blekk i kyrkjebøkene nede i bygda. Eg skjønar meg ikkje på slikt.", kjensle: "tenkje" },
     ], elles: [
       { s: "Storebror", t: "Den store ⟪steinen⟫ midt i åkeren må vekk før vi pløyer. Far fekk han aldri flytt." },
       { lytt: ["stein", "stein"] },
-    ] }],
+    ] }] }],
     syster: [{ dersom: harOrd("kaka"), da: [
       { s: "Syster", t: "Pass deg for folk som snakkar som bøker, Ivar." },
     ], elles: [{ scene: "syster_kake" }] }],
@@ -1176,6 +1232,19 @@ window.RPGData = (function () {
       { lytt: ["mjolk", "mjølk"] },
     ] }],
     far: [{ s: "Far", t: "Sjå utover, Ivar." }],                     // berre i minnet (scenekartet minne-far)
+    // Stabburet: skrinet etter far i stova (etter skiftebrevet), låsen og den første gongen inne.
+    fars_skrin: [
+      { t: "Skrinet etter far står ope ved senga. Det var her syster fann skiftebrevet." },
+      { naerbilete: "bilete/spel/naer/stabburnokkel.png", tekst: "Under ei gulna kvittering ligg ein stor nøkkel av smidd jern, med eit lærband i ringen." },
+      { gi: "stabburnokkel" }, { flagg: "stabburnokkel" },
+      { t: "Ivar fann Stabburnøkkelen." },
+      { s: "Ivar", t: "Far bar han alltid i beltet. No kan eg låse opp stabburet.", kjensle: "trist" },
+    ],
+    opne_stabbur: [
+      { t: "Ivar vrir den store nøkkelen om. Låsen er stiv etter vinteren, men så gir han etter med eit klikk." },
+      { flagg: "stabbur_opna" },
+    ],
+    inn_stabbur: [{ dersom: st => !st.scener.stabburet, da: [{ scene: "stabburet" }] }],
     framande: [{ scene: "framande" }, { t: "Ordboka ligg i menyen (X eller Esc). Der ser du orda du har høyrt, formene deira og kven som sa dei." }],
     // Vakta ved kantane: Ivar står på kantruta og snur attende eitt steg.
     ikkje_enno: [{ t: "Ivar vil sjå seg om på tunet og i stova først. Kanskje nokon har noko å seie." }, { gaa: "Ivar", sti: "n1" }],

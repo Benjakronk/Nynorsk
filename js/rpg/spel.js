@@ -371,8 +371,10 @@
     kamp: lag => kamp(lag, false),
     meny: () => meny(),
     kiste: k => {
-      if (st.opna.includes(k.id)) return hending([{ t: "Kista er tom." }]);
+      if (st.opna.includes(k.id)) return hending([{ t: k.tom || "Kista er tom." }]);
       st.opna.push(k.id);
+      // Ei kiste med manus (til dømes skrinet etter far) spelar manuset i staden for å gi noko sjølv.
+      if (k.manus) return hending(D.MANUS[k.manus]);
       // Ei kiste kan ha pengar, ein ting eller begge.
       const steg = [], fann = [];
       if (k.pengar) { steg.push({ pengar: k.pengar }); fann.push(`${k.pengar} skilling`); }

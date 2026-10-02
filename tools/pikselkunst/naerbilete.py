@@ -5,6 +5,8 @@
   kyrkjebok-blekk   kyrkjeboka i arkivet: blekket renn ut av sida.
   kyrkjebok         same sida etter kampen: blekket er borte frå sida, berre namnet til
                     far står att, og ved sida av ei fin, lilla line («Det som er skrive, står.»).
+  stabburnokkel     den store stabburnøkkelen etter far, smidd jern med lærband i ringen,
+                    på eit bretta linklede i skrinet hans, med ein gulna kvittering.
 
   python tools/pikselkunst/naerbilete.py alle        skriv kjelder/naer-<namn>.pix og lagar PNG
   python tools/pikselkunst/naerbilete.py skiftebrev  berre dette
@@ -24,6 +26,9 @@ RAMPER = {
     "lakk":  ["#2a0610", "#5e1020", "#962430", "#c84040", "#ec7a62"],
     "laer":  ["#1e0e0a", "#3e1e14", "#62321e", "#8a4c2a", "#b07040"],
     "omriss": ["#0a0514"],
+    "lin":   ["#3e3440", "#7a6e70", "#b4a894", "#d8ceb6", "#f0e8d4"],
+    "jern":  ["#141018", "#2c2834", "#4a4656", "#6e6a7c", "#9a96a8", "#c8c4d4"],
+    "rust":  ["#5a2a14", "#8a4a20"],
 }
 
 
@@ -298,11 +303,88 @@ def kyrkjebok(B, blekk=True):
         skrift(B, 74, 87, 38, 11, ("blekk", 5)); skrift(B, 82, 87, 45, 4, ("blekk", 5))
 
 
+# ---------------------------------------------------------------- stabburnøkkelen
+def stabburnokkel(B):
+    """Stabburnøkkelen etter far: smidd jern, ring med lærband, kraftig skaft og eit skjegg med
+    hakk, på eit bretta linklede. Lys oppe til venstre, slagskugge mot høgre og ned på kledet."""
+    lin = lambda t: ("lin", t)
+    jern = lambda t: ("jern", t)
+    # Ein gulna kvittering som stikk fram under kledet oppe til høgre
+    B.rect(60, 4, 28, 18, ("papir", 3))
+    B.rad(4, 60, 87, ("papir", 4)); B.rect(86, 5, 2, 17, ("papir", 2))
+    skrift(B, 63, 84, 9, 21, ("blekk", 2)); skrift(B, 63, 80, 13, 5, ("blekk", 2))
+    # Linkledet, bretta: ein bretten på tvers og ein på langs, lys oppe til venstre
+    x0, x1, y0, y1 = 6, 89, 15, 64
+    B.rect(x0, y0, x1 - x0 + 1, y1 - y0 + 1, lin(3))
+    for y in range(y0, y0 + 14): B.rad(y, x0, x0 + 40 - 2 * (y - y0), lin(4))
+    B.rect(x1 - 1, y0 + 1, 2, y1 - y0, lin(2)); B.rad(y1, x0 + 1, x1, lin(2))
+    for x in (47,):
+        for y in range(y0 + 1, y1): B.p(x, y, lin(2)); B.p(x + 1, y, lin(4))
+    B.rad(29, x0, x1 - 2, lin(2)); B.rad(30, x0, x1 - 2, lin(4))
+    for i in range(6):                                              # bretta hjørne nede til venstre
+        for x in range(x0, x0 + 6 - i): B.p(x, y1 - i, None)
+        B.p(x0 + 6 - i, y1 - i, lin(1))
+    # Nøkkelen: ringen (bogen), skaftet og skjegget. Teikna først som maske for slagskuggen.
+    deler = []
+    def ring(cx, cy, rx, ry, rxi, ryi):
+        for y in range(int(cy - ry) - 1, int(cy + ry) + 2):
+            for x in range(int(cx - rx) - 1, int(cx + rx) + 2):
+                if ((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2 <= 1 and ((x - cx) / rxi) ** 2 + ((y - cy) / ryi) ** 2 > 1:
+                    deler.append((x, y, "ring"))
+    ring(22, 40, 11, 10, 6, 5.5)
+    rs = {(x, y) for x, y, _ in deler}                             # ingen einsame tuppar på ringen
+    deler = [d for d in deler if sum((d[0] + dx, d[1] + dy) in rs for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))) >= 2]
+    for x in range(32, 76):
+        for y in range(38, 43): deler.append((x, y, "skaft"))
+    for x in (34, 35, 36, 66, 67):                                  # kragar på skaftet
+        for y in range(37, 44): deler.append((x, y, "skaft"))
+    for x in range(62, 75):                                         # skjegget med hakk
+        for y in range(43, 55):
+            if (x in (65, 66) and y > 47) or (x in (70, 71) and y > 50) or (y > 51 and x == 62): continue
+            deler.append((x, y, "skjegg"))
+    sett = {(x, y) for x, y, _ in deler}
+    for x, y, _ in deler:                                           # slagskugge på kledet
+        if (x + 2, y + 3) not in sett and B.get(x + 2, y + 3) and B.get(x + 2, y + 3)[0] == "lin":
+            B.p(x + 2, y + 3, lin(1) if B.get(x + 2, y + 3)[1] <= 2 else lin(2))
+    for x, y, del_ in deler:
+        opp, ned = (x, y - 1) not in sett, (x, y + 1) not in sett
+        vens, hog = (x - 1, y) not in sett, (x + 1, y) not in sett
+        if del_ == "ring":
+            ang = (x - 22) * -0.7 + (y - 40) * -1      # lys oppe til venstre på ringen
+            c = 5 if ang > 9 else 4 if ang > 3 else 3 if ang > -4 else 2 if ang > -9 else 1
+            if not opp and not vens and (x, y) not in ((22, 30),) and c == 5: c = 4
+        else:
+            c = 4 if opp else 1 if ned else 3 if del_ == "skaft" else 2
+            if vens and del_ == "skjegg": c = 3
+            if hog and not opp: c = 1
+            if del_ == "skaft" and y == 39 and x % 7 == 0: c = 5      # glans langs skaftet
+        B.p(x, y, jern(c))
+    for x in range(40, 62, 1): B.p(x, 39, jern(4))                  # glansstripa på skaftet
+    for (x, y) in ((44, 41), (45, 41), (58, 40), (68, 47), (69, 48), (16, 45), (17, 46), (27, 33)):
+        B.p(x, y, ("rust", 1 if (x + y) % 2 else 0))
+    # Mørk kant rundt jernet (ikkje svart: den mørkaste jerntonen), så nøkkelen skil seg frå kledet
+    for x, y, _ in deler:
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            if (x + dx, y + dy) not in sett and B.get(x + dx, y + dy) and B.get(x + dx, y + dy)[0] in ("lin", "papir"):
+                B.p(x + dx, y + dy, jern(0))
+    # Lærbandet gjennom ringen: ei sløyfe opp til venstre, lys på den øvre, venstre delen
+    for y in range(13, 41):
+        for x in range(7, 32):
+            r = ((x - 19) / 9) ** 2 + ((y - 27) / 11) ** 2
+            if (x, y) in sett or not B.get(x, y): continue
+            if 0.6 < r <= 1:
+                ang = (x - 19) * 0.8 + (y - 27)
+                B.p(x, y, ("laer", 4 if ang < -7 else 3 if ang < 3 else 2))
+            elif 0.48 < r <= 0.6 or 1 < r <= 1.2:
+                B.p(x, y, ("laer", 0))
+
+
 # ---------------------------------------------------------------- skriv
 BILETE = {
     "skiftebrev": lambda B: skiftebrev(B, True),
     "kyrkjebok-blekk": lambda B: kyrkjebok(B, True),
     "kyrkjebok": lambda B: kyrkjebok(B, False),
+    "stabburnokkel": stabburnokkel,
 }
 
 

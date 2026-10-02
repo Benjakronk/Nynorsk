@@ -170,7 +170,8 @@ window.Motor = (function () {
   }
 
   const doraVed = (x, y) => kart.dorer.find(d => d.ved[0] === x && d.ved[1] === y);
-  const kisteSynleg = k => !k.gøymd || (krokar.synleg && krokar.synleg(k));
+  // Ei gøymd kiste syner når ho er avdekt; ei kiste med vis berre når vilkåret held (til dømes etter eit flagg).
+  const kisteSynleg = k => (!k.gøymd || (krokar.synleg && krokar.synleg(k))) && (!k.vis || !!k.vis(krokar.tilstand()));
   const kisteVed = (x, y) => kart.kister.find(k => k.ved[0] === x && k.ved[1] === y && kisteSynleg(k));
   const folkVed = (x, y) => kart.folk.find(f => f.x === x && f.y === y);
   function kanGaa(x, y) {
@@ -855,18 +856,21 @@ window.Motor = (function () {
   function lyskjelder(ox, oy) {
     const ut = [];
     for (const b of kart.def.bygg || []) {
-      const type = b.id === "inne-grue" ? "grue" : b.id === "inne-kakkelomn" ? "kakkelomn" : b.id === "inne-lysekrone" ? "krone" : null;
+      const type = b.id === "inne-grue" ? "grue" : b.id === "inne-kakkelomn" ? "kakkelomn" : b.id === "inne-lysekrone" ? "krone" : b.id === "inne-glugge" ? "glugge" : null;
       const img = type && Pikslar.bygg(b.id); if (!img) continue;
       const bx = Math.round((b.x + ox) * S) - 4, by = Math.round((b.y + b.h + oy) * S) - img.height;
       const r = (Pikslar.ILD[b.id] || [])[0];                         // elden i grua og omnen: ankeret er nedst midt i elden
       ut.push(r ? [bx + r.x + (r.w >> 1), by + r.y + r.h, type, b.x * 3 + b.y] : [bx + (img.width >> 1), by + (img.height >> 1), type, b.x * 3 + b.y]);
     }
     const ute = kart.def.golv === "." || kart.def.golv === ",";
+    // Dagslys (stabburet): lyset fell inn gjennom døropninga (E) og over golvet framfor.
+    const dagslys = ((RPGData.STEMNINGAR || {})[kart.def.stemning] || {}).dagslys;
     for (let y = 0; y < kart.h; y++) for (let x = 0; x < kart.w; x++) {
       const c = kart.fliser[y][x], fase = x * 3 + y * 5;
       if (c === "f") ut.push([(x + ox) * S + 8, (y + oy) * S + 14, "peis", fase]);
       else if (c === "L") ut.push([(x + ox) * S + 8, (y + oy) * S + (ute ? 4 : 3), ute ? "lykt" : "lys", fase]);
       else if (c === "T") ut.push([(x + ox) * S + 8, (y + oy) * S + 4, "lykt", fase]);
+      else if (c === "E" && dagslys) ut.push([(x + ox) * S + 8, (y + oy) * S + 8, "dor", fase]);
     }
     return ut;
   }
@@ -1240,8 +1244,11 @@ window.Motor = (function () {
         if (hb) naturFig.push({ y: y + 1.004, x, haug: hb });
       }
       const k = kisteVed(x, y);
-      if (k && k.gøymd) g.drawImage(Pikslar.flis("K", 0, 0, 0, kart.def.golv), sx, sy);
-      if (k && krokar.opna && krokar.opna(k)) { g.fillStyle = "rgba(10,5,20,.45)"; g.fillRect(sx + 2, sy + 4, 12, 3); }
+      // Ei kiste med bilete (skrinet etter far) er eit eige inventarbilete, ståande nedst i flisa.
+      const kb = k && k.bilete && Pikslar.bygg(k.bilete);
+      if (kb) g.drawImage(kb, sx - 4, sy + S - kb.height);
+      else if (k && (k.gøymd || k.vis)) g.drawImage(Pikslar.flis("K", 0, 0, 0, kart.def.golv), sx, sy);
+      if (k && !kb && krokar.opna && krokar.opna(k)) { g.fillStyle = "rgba(10,5,20,.45)"; g.fillRect(sx + 2, sy + 4, 12, 3); }
     }
     const GANG = [1, 0, 2, 0];
     const figurar = kart.folk.filter(f => f.sprite).map(f => ({ y: f.fy, sp: f.sprite, x: f.fx, dir: f.dir, kjensle: f.kjensle, pose: f.pose,
