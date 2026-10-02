@@ -1074,6 +1074,13 @@ window.Pikslar = (function () {
   // Djupna i berget (1 ute på ein knaus, 0 inne i ei renne) ved kartpikselen X, Yr pikslar ned i stupet.
   // Store, runde knausar som lener seg litt, med mindre søyler oppå.
   const knaus = (X, Yr) => 0.62 * vstoy(X / 15 + Yr / 70, 0.5, 531) + 0.38 * vstoy(X / 5.5 + Yr / 40, Yr / 30, 532);
+  /* Stupet («M»). Kanten øvst er ujamn over flisgrensene (som berga i FF6 og Minish Cap): graset går
+     ned i tunger og viker (2 til 8 pikslar), og der stupet møter bakke ved sida (eit nes), rundar
+     graset hjørnet inn i flisa, så det ikkje blir eit firkanta hakk. Under graset heng strå og tuster
+     over kanten, så kjem eit band av mørk jord med røter, og her og der ein stein som stikk opp i
+     graskanten. Står neset framfor eit høgare stup (kantV, kantH), held det bakre berget fram inn i
+     hjørnet av neset i ein boge. Nedst: med felt.stupFast (lia under er eit fast lag) endar berget i
+     eit mørkt overheng med ujamn kant, og lia held fram under; elles løyser det seg opp i dis. */
   function stup(felt, tx, ty) {
     const k = `stup:${felt.id}:${tx}:${ty}`;
     if (cache.has(k)) return cache.get(k);
@@ -1083,45 +1090,74 @@ window.Pikslar = (function () {
     const c = lerret(S), g = c.getContext("2d"), bilde = g.createImageData(S, S), ut = new Uint32Array(bilde.data.buffer);
     const ope = new Uint8Array(S * S);
     const gras = grasData(tx, t0 - 1, felt.golv);
+    const GR = R_.gras.map(pk), J = {};
+    for (const n in JORDKANT) J[n] = pk(JORDKANT[n]);
     // Fargane med dis: tonen blanda mot DIS i sju steg (ein palett, ikkje mjuk overgang).
     const farge = (hex, steg) => pk(blend(hex, DIS, steg / 7 * 0.92));
-    // Eit nes framfor (nabokolonna til venstre byrjar lenger nede, eller er bakke): skugge på berget
-    // bak, mot høgre. Sjølve neset får lys kant mot venstre og mørk mot høgre.
     const vT = stupTopp(felt, tx - 1, ty), hT = stupTopp(felt, tx + 1, ty);
     const vNes = vT === null ? tx > 0 && opning(felt.c(tx - 1, ty)) : vT > t0;
     const kantV = vT !== null && vT < t0, kantH = hT !== null && hT < t0;
+    // Bakke ved sida av den øvste stupflisa: graset rundar hjørnet inn i flisa.
+    const bakkeV = tx > 0 && opning(felt.c(tx - 1, t0)), bakkeH = tx < felt.w - 1 && opning(felt.c(tx + 1, t0));
+    const boge = (d, R, Hh) => d >= R ? 0 : Math.round(Hh * Math.sqrt(1 - (d / R) * (d / R)));
+    // Berget (søyler og knausar) for kartpikselen X, Yr pikslar ned frå toppen t0 av stupet.
+    function berg(X, Yr, lepp, steg, x) {
+      const kk = Yr - lepp;
+      const d = knaus(X, Yr), helling = knaus(X + 1.5, Yr) - knaus(X - 1.5, Yr);
+      let l = 0.5 + helling * 5.5 + (d - 0.5) * 1.1 + (kk < 8 ? 0.1 : 0);
+      const bx = Math.floor((X + (Math.floor(Yr / 3) & 1)) / 2), by = Math.floor(Yr / 3), hb = hash(bx, by, 533);
+      if (hb > 0.86) l += 0.16; else if (hb < 0.12) l -= 0.18;
+      let v = Math.floor(l * 6 + (bayer4(X, Yr) - 0.5) * 0.7);
+      if (d < 0.32) v = Math.min(v, 1);
+      if (d < 0.26) v = 0;
+      if (x != null) { if (kantV && x === 0) v = 6; if (kantH && x === S - 1) v = 0; if (vNes && x < 6 - (Yr & 1)) v -= 2; }
+      v = Math.max(0, Math.min(6, v));
+      const gr = kk > 4 && v >= 4 && helling < -0.02 && hash(Math.floor(X / 2), Math.floor(Yr / 2), 534) > 0.9;
+      return gr ? farge(R_.gras[1], steg) : farge(BERG[v], steg);
+    }
     for (let x = 0; x < S; x++) {
       const X = tx * S + x;
-      const lepp = 1 + Math.floor(vstoy(X / 7, t0 * 5, 521) * 3.99);
-      const bunn = nedst ? H - (1 + Math.floor(vstoy(X / 8, t0 * 5 + 1, 525) * 7)) : H + 99;
-      const heng = 1 + (hash(X, t0, 527) > 0.55 ? 1 : 0);
+      // Ujamn kant: store tunger og små hakk, og bogen inn i hjørnet ved bakke på sida.
+      let lepp = 2 + Math.floor(vstoy(X / 9, t0 * 5, 521) * 4.99) + Math.floor(vstoy(X / 3, t0 * 5 + 2, 535) * 2.5);
+      if (bakkeV) lepp = Math.max(lepp, boge(x + 0.5, 10, 14));
+      if (bakkeH) lepp = Math.max(lepp, boge(S - x - 0.5, 10, 14));
+      const stein = vstoy(X / 4, t0 * 3 + 7, 536) > 0.74;                 // ein stein i graskanten
+      const heng = 1 + (hash(X, t0, 527) > 0.55 ? 1 : 0) + (hash(X, t0, 537) > 0.82 ? 2 : 0);
+      const jord = 1 + (hash(X, t0, 538) > 0.5 ? 1 : 0) + (vstoy(X / 5, t0, 539) > 0.6 ? 1 : 0);
+      const rot = hash(X, t0, 540) > 0.86;
+      const bunn = nedst && !felt.stupFast ? H - (1 + Math.floor(vstoy(X / 8, t0 * 5 + 1, 525) * 7)) : H + 99;
+      const over = nedst && felt.stupFast ? H - (2 + Math.floor(vstoy(X / 5, t0 * 5 + 3, 541) * 4)) : H + 99;   // overhenget nedst
+      // Neset framfor eit høgare stup: det bakre berget held fram inn i hjørnet i ein boge.
+      const bakV = kantV ? boge(x + 0.5, 8, 18) : 0, bakH = kantH ? boge(S - x - 0.5, 8, 18) : 0;
       for (let y = 0; y < S; y++) {
         const i = y * S + x, Yr = idx * S + y;
+        if (Yr < Math.max(bakV, bakH)) {
+          const tb = kantV && bakV >= bakH ? vT : hT;
+          ut[i] = berg(X, (ty - tb) * S + y, 2, Math.min(7, Math.floor(((ty - tb) * S + y) / 40 * 3)), null);
+          continue;
+        }
+        if (stein && Yr >= lepp - 3 && Yr < lepp + 1) {                    // steinen stikk opp i graset
+          const sx = (X % 5), top = Yr === lepp - 3;
+          ut[i] = top ? pk(BERG[6]) : sx === 4 || Yr === lepp ? pk(BERG[2]) : pk(BERG[sx < 2 ? 5 : 4]);
+          continue;
+        }
         if (Yr < lepp) { ut[i] = gras[i]; continue; }
         const kk = Yr - lepp;
-        // Dis: meir nedover, og mykje i den nedste kanten før berget løyser seg opp.
-        let q = Math.pow(kk / Math.max(1, H - lepp), 1.5) * 0.5;
+        let q = Math.pow(kk / Math.max(1, H - lepp), 1.5) * 0.45;
         if (Yr > bunn - 9) q += (Yr - (bunn - 9)) / 9 * 0.4;
         if (Yr >= bunn || (Yr >= bunn - 5 && bayer4(X, Yr) < (Yr - (bunn - 5) + 1) / 6)) { ope[i] = 1; continue; }
         const steg = Math.min(7, Math.floor(q * 7 + bayer4(X + 1, Yr)));
-        if (kk < heng) { ut[i] = farge(R_.gras[0], steg); continue; }     // mørk lepp av gras over kanten
-        // Knausane: lyset frå venstre treffer sida som vender mot venstre, rennene er djupe skuggar.
-        const d = knaus(X, Yr), helling = knaus(X + 1.5, Yr) - knaus(X - 1.5, Yr);
-        let l = 0.5 + helling * 5.5 + (d - 0.5) * 1.1 + (kk < 6 ? 0.12 : 0);
-        // Småbrot: korte, lyse flak og mørke sprekker i blokker på 2 × 3 pikslar.
-        const bx = Math.floor((X + (Math.floor(Yr / 3) & 1)) / 2), by = Math.floor(Yr / 3), hb = hash(bx, by, 533);
-        if (hb > 0.86) l += 0.16; else if (hb < 0.12) l -= 0.18;
-        let v = Math.floor(l * 6 + (bayer4(X, Yr) - 0.5) * 0.7);
-        if (d < 0.32) v = Math.min(v, 1);                                   // renne: djup skugge
-        if (d < 0.26) v = 0;
-        if (kk === heng && v > 1) v = Math.max(v, 5);                       // lys kant øvst på berget
-        if (kantV && x === 0) v = 6;
-        if (kantH && x === S - 1) v = 0;
-        if (vNes && x < 6 - (Yr & 1)) v -= 2;
-        v = Math.max(0, Math.min(6, v));
-        // Litt gras og lyng på knausane (lyse, flate parti).
-        const gr = kk > heng + 1 && v >= 4 && helling < -0.02 && hash(Math.floor(X / 2), Math.floor(Yr / 2), 534) > 0.9;
-        ut[i] = gr ? farge(R_.gras[1], steg) : farge(BERG[v], steg);
+        if (kk < heng) { ut[i] = kk === heng - 1 && heng > 2 ? GR[1] : kk === 0 ? GR[2] : GR[0]; continue; }   // gras som heng over kanten
+        if (kk < heng + jord) { ut[i] = rot && kk === heng + jord - 1 ? J.hoy : kk === heng ? J.mork : J.lag; continue; }   // jord med røter
+        if (rot && kk < heng + jord + 3) { ut[i] = J.mid; continue; }       // rota heng ned over berget
+        // Nedste hjørna på eit nes er runde: lia bak syner gjennom (ikkje eit firkanta hakk).
+        if (nedst && felt.stupFast) {
+          const r = 9, dy = Yr - (H - r);
+          const lv = kantV || felt.c(tx - 1, ty) === "-", lh = kantH || felt.c(tx + 1, ty) === "-";
+          if (dy > 0 && ((lv && x < r && (r - x - 0.5) ** 2 + dy * dy > r * r) || (lh && x >= S - r && (x + 0.5 - (S - r)) ** 2 + dy * dy > r * r))) { ope[i] = 1; continue; }
+        }
+        if (Yr >= over) { ut[i] = Yr === over ? pk(BERG[1]) : (X + Yr) & 1 ? pk(BERG[0]) : pk(BERG[1]); continue; }   // overhenget
+        ut[i] = berg(X, Yr, lepp + heng + jord, steg, x);
       }
     }
     g.putImageData(bilde, 0, 0);

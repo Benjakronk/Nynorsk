@@ -174,8 +174,9 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
     lag med faktor 1, li-kort og dal-under for varianten «dal», greiner, gras) og
     `forhand/utsikt-ark.png`. På
     kartet: `parallakse: [{ bilete, faktor, ved: [kx, ky], x, y }]` (det fjernaste først, faktor under 1),
-    `forgrunn: [...]` (faktor over 1), `luftfarge`, `kameraNed: { fra, til, rader }` (kameraet
-    glir ned ved stupet, så figuren står øvst) og `kameraOpp` (ser over kanten øvst; laga der har `opp: true`). x og y er staden på skjermen når kameraet står med øvre venstre flis på ved. Bileta blir
+    `forgrunn: [...]` (faktor over 1), `luftfarge`, `kameraNed: { fra, rader, fart }` (kameraet
+    glir roleg ned når figuren står på den nedste flisa, så han står øvst), `stupFast` (stupet endar i
+    eit overheng over eit fast lag), animerte lag med `rammer`, `rekkje` og `takt` (graset som vaiar) og `kameraOpp` (ser over kanten øvst; laga der har `opp: true`). x og y er staden på skjermen når kameraet står med øvre venstre flis på ved. Bileta blir
     forhåndslasta av seg sjølv. `sjekk-spel.js` sjekkar at det bakaste laget dekkjer lufta.
   - Luftperspektiv blir måla inn: lysare, kaldare, færre fargar og meir dis jo lenger borte. I lyset er
     bakgrunnen nivå 5 (`fjern` i stemninga, ingen skyskugge).

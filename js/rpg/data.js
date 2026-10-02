@@ -362,6 +362,7 @@ window.RPGData = (function () {
       parallakse: [
         { bilete: "li", faktor: 1, ved: [-2, 1], x: -20, y: 128 },
       ],
+      stupFast: true,
       rader: [
         "################",
         "#.t...RRRRRR..t#",
@@ -387,8 +388,8 @@ window.RPGData = (function () {
          Øvst (opp: true), over kanten der toppen av åsen sluttar, fire lag med kvar sin fart:
          himmelen (nesten stillståande), fjella, Hovdebygda med kyrkja til høgre og lia opp mot
          utmarka og setra til venstre, og nærast trekronene i lia under kanten, som glir fort og
-         søkk bak kanten. Kameraet kan sjå seks rader over kartet (kameraOpp). Nedst: når Ivar går mot
-         stupet, glir kameraet 3 rader ned (kameraNed), så han står øvst på skjermen og lia som
+         søkk bak kanten. Kameraet kan sjå seks rader over kartet (kameraOpp). Nedst: når Ivar står på
+         den nedste flisa før stupet, glir kameraet roleg 3 rader ned (kameraNed), så han står øvst på skjermen og lia som
          stuper ned med berghyller, kratt og skog syner under, som eit fast lag (li, faktor 1).
          ved er øvre venstre flis til kameraet når laget står på x, y. */
       luftfarge: "#a6b4bc",
@@ -404,14 +405,15 @@ window.RPGData = (function () {
         { bilete: "li-kort", faktor: 1, ved: [0, 12], x: 0, y: 48, variant: "dal" },
       ],
       variant: "fast",                                                 // utsikta nedst: «fast» eller «dal» (sjå parallakse)
+      stupFast: true,                                                  // stupet endar i eit overheng, og lia under er eit fast lag
       kameraOpp: { fra: 12, til: 0, rader: 6 },                        // øvst ser kameraet opptil seks rader over kanten
-      kameraNed: { fra: 11, til: 13, rader: 3 },                       // ved stupet glir kameraet ned, så Ivar står øvst
+      kameraNed: { fra: 13, rader: 3, fart: 1 },                       // på den nedste flisa glir kameraet roleg ned, så Ivar står øvst
       // Forgrunnen: bjørkegreiner i øvre hjørne ved skogen, høgt gras i nedre hjørne ved stupet.
       forgrunn: [
         { bilete: "greiner", faktor: 1.3, ved: [0, -6], x: -6, y: -4 },
         { bilete: "greiner-h", faktor: 1.3, ved: [8, -6], x: 210, y: -4 },
-        { bilete: "gras", faktor: 1.3, ved: [0, 11.5], x: -8, y: 142 },
-        { bilete: "gras-h", faktor: 1.3, ved: [8, 11.5], x: 236, y: 142 },
+        { bilete: "gras", faktor: 1.3, ved: [0, 11.5], x: -8, y: 142, rammer: 3, rekkje: [0, 1, 2, 1], takt: 40 },
+        { bilete: "gras-h", faktor: 1.3, ved: [8, 11.5], x: 236, y: 142, rammer: 3, rekkje: [0, 1, 2, 1], takt: 40 },   // graset vaiar i vinden
       ],
       /* Åsen: toppen er lengst oppe på midten (to kollar med skrent «s» under seg, rad 0 og 1), og
          kanten der bakken fell bort («N») går eit steg ned mot sidene, der det er luft («-») i rad 0.

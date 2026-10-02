@@ -249,6 +249,26 @@ def li(kort=False):
         for y in range(int(sk_) + 4, LI_H):
             if y > dal(x): L_.tom(x, y); continue
             if L_.get(x, y): L_.dis(x, y, min(0.9, math.floor(((y - sk_) / (100 if kort else 48)) * 6 + M.terskel(x, y)) / 6))
+    # Djupn som i Octopath Traveler: det som er langt nede, er uskarpt (pikslane dobla, 2 × 2), og
+    # svake lysstrålar fell skrått ned gjennom disen over skogen.
+    for x in range(LI_W):
+        sk_ = skog(x)
+        for y in range(int(sk_) + 8, LI_H):
+            c = L_.get(x & ~1, y & ~1)
+            if c and L_.get(x, y): L_.p(x, y, c)
+            if L_.get(x, y) and (x + y * 0.7) % 64 < 15 and M.terskel(x, y) < 0.6:
+                L_.p(x, y, M.blend(L_.get(x, y), "#e4e2d4", 0.18))
+    # Skuggen under overhenget nedst i stupet: lia rett under ligg i skugge (to stup høge ved neset).
+    for x in range(LI_W):
+        for y in range(16, 24):
+            c = L_.get(x, y)
+            if c and M.terskel(x, y) < (24 - y) / 8: L_.p(x, y, M.blend(c, "#1c1a2c", 0.55))
+    # Under neset: skuggen smalnar av nedover (rund, ikkje ein firkant).
+    for y in range(32, 40):
+        inn = int((y - 32) * 1.6)
+        for x in range(21 * 16 + inn, 24 * 16 - inn):
+            c = L_.get(x, y)
+            if c and M.terskel(x, y) < (40 - y) / 8: L_.p(x, y, M.blend(c, "#1c1a2c", 0.55))
     return L_.im
 
 
@@ -504,9 +524,20 @@ def greiner():
     return L_.im
 
 
+GRAS_RAMMER = 3
+
 def gras():
-    """Høgt gras og ein grastuve i nedre hjørne: mørke strå framfor utsikta, ein tett botn."""
+    """Høgt gras og ein grastuve i nedre hjørne: mørke strå framfor utsikta, ein tett botn. Tre rammer
+    side om side der stråa vaiar i vinden: toppane går 0, 1 og 2 pikslar til sides (dei lange mest),
+    rota står fast. Motoren viser dei i rekkja 0, 1, 2, 1 i roleg takt (rammer, rekkje, takt i data.js)."""
     w, h = 92, 64
+    ark = L(w * GRAS_RAMMER, h)
+    for f in range(GRAS_RAMMER):
+        ark.im.alpha_composite(gras_ramme(w, h, f), (f * w, 0))
+    return ark.im
+
+
+def gras_ramme(w, h, vind):
     L_ = L(w, h)
     r = M.rampe("#0c160e", "#142216", "#1c301c", "#284222", "#38562a", "#4e6a30")
     def botn(x): return 30 + (x / w) ** 1.6 * 26 + math.sin(x / 7) * 2
@@ -519,7 +550,7 @@ def gras():
         lut = (M.h(i, 3, 412) - 0.4) * 0.6
         for k in range(int(lengd)):
             t = k / lengd
-            x = x0 + lut * k * t * 1.4; y = y0 - k
+            x = x0 + lut * k * t * 1.4 + round(vind * t * t * (0.6 + lengd / 40)); y = y0 - k
             L_.p(x, y, M.tone(r, 0.25 + t * 0.6 + M.h(i, 4, 412) * 0.2, int(x), int(y)))
             if t < 0.4: L_.p(x + 1, y, r[1])
     return L_.im
@@ -534,7 +565,10 @@ if __name__ == "__main__":
         im = BILETE[n]()
         im.save(os.path.join(UT, f"{n}.png")); print(f"bilete/spel/parallakse/{n}.png")
         if n in ("greiner", "gras"):
-            im.transpose(Image.FLIP_LEFT_RIGHT).save(os.path.join(UT, f"{n}-h.png")); print(f"bilete/spel/parallakse/{n}-h.png")
+            # Spegla, ramme for ramme (så rammene står i same rekkjefølgje).
+            r = GRAS_RAMMER if n == "gras" else 1; fw = im.width // r; sp = Image.new("RGBA", im.size, (0, 0, 0, 0))
+            for f in range(r): sp.paste(im.crop((f * fw, 0, (f + 1) * fw, im.height)).transpose(Image.FLIP_LEFT_RIGHT), (f * fw, 0))
+            sp.save(os.path.join(UT, f"{n}-h.png")); print(f"bilete/spel/parallakse/{n}-h.png")
     # Kontaktark i 3x: utsikta øvst (fjella og dalen sett utover) og lia under stupet.
     ark = Image.new("RGBA", (980, 940), (14, 12, 18, 255))
     fj = Image.open(os.path.join(UT, "fjell.png")); dn = Image.open(os.path.join(UT, "dal-nord.png")); li_ = Image.open(os.path.join(UT, "li.png"))

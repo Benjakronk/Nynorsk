@@ -132,6 +132,7 @@ window.Motor = (function () {
     for (const f of folk) if (f.grunnpose === "sitje" && f.retning == null) { const st = seteVed(f.x, f.y); if (st && st.s.retning != null) f.dir = f.grunndir = st.s.retning; }
     for (const a of regi) { a.regi.res(); a.regi = null; } regi.clear(); kam = null;      // nytt kart: regien byrjar på nytt
     nullstillLys();                                                  // toning og spotlight varer til neste kart
+    nedPx = 0;                                                       // utsikta nedst byrjar oppe
     const [sx, sy] = merke[merkeId] || merke["1"] || [1, 1];
     spelar.x = sx; spelar.y = sy; spelar.fx = sx; spelar.fy = sy; spelar.flytt = null;
     spelar.pose = null; if (fylgje) fylgje.pose = null;                 // på eit nytt kart står ein
@@ -510,41 +511,55 @@ window.Motor = (function () {
   /* Kamera: til ei rute [x, y], til ein figur (som det så følgjer), eller null (tilbake til
      spelaren). Kameraet glir dit på ms millisekund. */
   let kam = null, sentrum = { x: 0, y: 0 }, kameraNo = { x: 0, y: 0 };   // kameraNo: øvre venstre hjørne i pikslar no
+  let kameraGrunn = { x: 0, y: 0 };                                    // same, utan utsikta nedst (nedPx)
   /* Kameraet fylgjer etter med fast fart i heile pikslar per tikk, som i FF6, og ikkje med ei
      mjuk glidning: med glidning mot noko som går, flytta biletet seg ujamt. Farten blir rekna
      slik at kameraet er framme på ms (minst 1 piksel per tikk). Går målet, flyttar kameraet seg
      med målet i tillegg, så det fangar det og så går i takt. kam.px er øvre venstre hjørne i pikslar. */
-  /* Utsikt (kart.def.kameraNed = { fra, til, rader }): når målet går frå rad fra ned til rad til, ser
-     kameraet jamt lenger ned, til rader rader (standard (til - fra) / 2) under målet ved rad til. På
-     Åsen glir kameraet 3 rader ned når Ivar går dei to siste radene mot stupet, så han står øvst på
-     skjermen og lia som stuper ned mot dalen får plass under. Farten går opp i heile pikslar når
-     rader / (til - fra) er eit halvt tal: spelaren går 2 pikslar per tikk, kameraet 2 + 2 * 1,5 = 5.
-     kart.def.kameraOpp = { fra, til, rader } er det same oppover (fra er då under til): kameraet ser
-     opp over kanten øvst, der det er luft over kartet og utsikta syner (sjå nordkant). */
+  /* Utsikt nedst (kart.def.kameraNed = { fra, rader, fart }): først når målet står på rad fra eller
+     lenger nede (den nedste flisa før stupet), glir kameraet rader rader ned, og attende når målet går
+     opp att. Glidinga går for seg sjølv i tikk-takt, fart pikslar per tikk (standard 1), så ho er
+     roleg og i heile pikslar (nedPx). På Åsen står Ivar då øvst på skjermen, og lia syner under.
+     Utsikt øvst (kart.def.kameraOpp = { fra, til, rader }): når målet er ovanfor rad fra, ser kameraet
+     jamt lenger opp, til rader rader over kartet ved rad til, der det er luft og utsikta syner (sjå
+     nordkant). Farten går opp i heile pikslar når rader / (fra - til) er eit halvt tal. */
+  let nedPx = 0, nedTikk = 0;
+  function oppdaterNed(no, malY) {
+    const k = kart.def.kameraNed, t = tikk(no), n = Math.max(0, t - nedTikk);
+    nedTikk = t;
+    if (!k) { nedPx = 0; return; }
+    const maal = malY >= k.fra - 0.001 ? Math.round(k.rader * S) : 0, fart = Math.max(1, k.fart || 1);
+    nedPx += Math.sign(maal - nedPx) * Math.min(Math.abs(maal - nedPx), fart * Math.min(n, 8));
+  }
   const forskuv = (k, y) => {
     if (!k) return 0;
     const lengd = Math.abs(k.til - k.fra), rader = k.rader != null ? k.rader : lengd / 2;
     return Math.max(0, Math.min(1, (k.til > k.fra ? y - k.fra : k.fra - y) / lengd)) * rader;
   };
-  const utsiktNed = y => forskuv(kart.def.kameraNed, y);
   const utsiktOpp = y => forskuv(kart.def.kameraOpp, y);
   const kameraMaal = m => {                                            // øvre venstre hjørne for eit sentrum, innanfor kartet
     const k = kart.def.kameraOpp, opp = k ? (k.rader != null ? k.rader : (k.fra - k.til) / 2) : 0;    // kor mange rader kameraet kan sjå over kartet
     return {
       x: kart.w < VW ? 0 : Math.round(Math.max(0, Math.min(kart.w - VW, m.x - (VW - 1) / 2)) * S),
-      y: kart.h < VH ? 0 : Math.round(Math.max(-opp, Math.min(kart.h - VH, m.y + utsiktNed(m.y) - utsiktOpp(m.y) - (VH - 1) / 2)) * S),
+      y: kart.h < VH ? 0 : Math.round(Math.max(-opp, Math.min(kart.h - VH, m.y - utsiktOpp(m.y) - (VH - 1) / 2)) * S),
     };
   };
   function kamera(til, ms = 900) {
     const a = typeof til === "string" ? aktor(til) : null;
     const mal = til == null ? () => ({ x: spelar.fx, y: spelar.fy }) : a ? () => ({ x: a.fx, y: a.fy }) : () => ({ x: til[0], y: til[1] });
-    const px = { x: kameraNo.x, y: kameraNo.y }, m = kameraMaal(mal()), n = Math.max(1, tikk(ms));
+    const px = { x: kameraGrunn.x, y: kameraGrunn.y }, m = kameraMaal(mal()), n = Math.max(1, tikk(ms));
     kam = { px, mal, sistMaal: m, tikk: tikk(performance.now()), tilbake: til == null,
       fart: { x: Math.max(1, Math.ceil(Math.abs(m.x - px.x) / n)), y: Math.max(1, Math.ceil(Math.abs(m.y - px.y) / n)) } };
     return vent(ms);
   }
-  // Øvre venstre hjørne til kameraet no, i heile pikslar.
+  // Øvre venstre hjørne til kameraet no, i heile pikslar, med utsikta nedst (nedPx) lagd til.
   function kameraPx(no) {
+    const g = kameraGrunnPx(no);
+    kameraGrunn = g;
+    oppdaterNed(no, kam ? kam.mal().y : spelar.fy);
+    return { x: g.x, y: kart.h < VH ? g.y : Math.min((kart.h - VH) * S, g.y + nedPx) };
+  }
+  function kameraGrunnPx(no) {
     if (!kam) return kameraMaal({ x: spelar.fx, y: spelar.fy });
     const t = tikk(no), n = t - kam.tikk;
     if (n > 0) {
@@ -653,7 +668,7 @@ window.Motor = (function () {
   function terrengfelt() {
     if (kart.terrengfelt) return kart.terrengfelt;
     const kx = v => Math.max(0, Math.min(kart.w - 1, v)), ky = v => Math.max(0, Math.min(kart.h - 1, v));
-    kart.terrengfelt = { id: kart.id, w: kart.w, h: kart.h, golv: kart.def.golv, c: (x, y) => kart.fliser[ky(y)][kx(x)] };
+    kart.terrengfelt = { id: kart.id, w: kart.w, h: kart.h, golv: kart.def.golv, stupFast: !!kart.def.stupFast, c: (x, y) => kart.fliser[ky(y)][kx(x)] };
     return kart.terrengfelt;
   }
 
@@ -694,13 +709,31 @@ window.Motor = (function () {
     const f = Array.isArray(l.faktor) ? l.faktor : [l.faktor, l.faktor], ved = l.ved || [0, 0];
     return [Math.round(l.x - (camX - ved[0] * S) * f[0]), Math.round(l.y - (camY - ved[1] * S) * f[1])];
   }
-  function teiknLag(lag, camX, camY, forgrunn) {
+  /* Eit lag kan vere animert: rammer: n (rammene side om side i biletet), rekkje: [ramme, …] og takt:
+     tikk per steg (graset i forgrunnen vaiar i vinden). Kvar ramme blir klipt ut éin gong. */
+  const rammeLerret = new WeakMap();
+  function lagRamme(img, l, no) {
+    if (!l.rammer || l.rammer < 2) return img;
+    let rs = rammeLerret.get(img);
+    if (!rs) {
+      const fw = Math.floor(img.naturalWidth / l.rammer); rs = [];
+      for (let r = 0; r < l.rammer; r++) {
+        const c = document.createElement("canvas"); c.width = fw; c.height = img.naturalHeight;
+        c.getContext("2d").drawImage(img, r * fw, 0, fw, img.naturalHeight, 0, 0, fw, img.naturalHeight); rs.push(c);
+      }
+      rammeLerret.set(img, rs);
+    }
+    const rekkje = l.rekkje || rs.map((_, i) => i);
+    return rs[rekkje[Math.floor(tikk(no) / (l.takt || 30)) % rekkje.length]] || rs[0];
+  }
+  function teiknLag(lag, camX, camY, forgrunn, no) {
     for (const l of lag || []) {
       if (l.variant && l.variant !== (kart.def.variant || "fast")) continue;   // berre laga i varianten kartet har valt
-      const img = parallaksebilete(l.bilete);
-      if (!Pikslar.klar(img)) continue;
+      const kjelde = parallaksebilete(l.bilete);
+      if (!Pikslar.klar(kjelde)) continue;
+      const img = lagRamme(kjelde, l, no), iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
       const [x, y] = lagPos(l, camX, camY);
-      if (x >= LW || y >= LH || x + img.naturalWidth <= 0 || y + img.naturalHeight <= 0) continue;
+      if (x >= LW || y >= LH || x + iw <= 0 || y + ih <= 0) continue;
       g.drawImage(img, x, y);
       if (forgrunn) { maske(img, x, y, true); luftUt(img, x, y); }
     }
@@ -725,13 +758,13 @@ window.Motor = (function () {
     if (!harLuft) return;
     let a = alfar.get(img);
     if (!a) {
-      const c = document.createElement("canvas"); c.width = img.naturalWidth; c.height = img.naturalHeight;
+      const c = document.createElement("canvas"); c.width = img.naturalWidth || img.width; c.height = img.naturalHeight || img.height;
       const cg = c.getContext("2d", { willReadFrequently: true }); cg.drawImage(img, 0, 0);
       const d = cg.getImageData(0, 0, c.width, c.height).data; a = new Uint8Array(c.width * c.height);
       for (let i = 0; i < a.length; i++) a[i] = d[i * 4 + 3] > 0 ? 1 : 0;
       alfar.set(img, a);
     }
-    const w = img.naturalWidth, h = img.naturalHeight;
+    const w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
     for (let y = Math.max(0, -y0); y < h && y0 + y < LH; y++) for (let x = Math.max(0, -x0); x < w && x0 + x < LW; x++)
       if (a[y * w + x]) luftMaske[(y0 + y) * LW + x0 + x] = 0;
   }
@@ -1144,7 +1177,7 @@ window.Motor = (function () {
       const y0k = kart.def.kameraOpp ? 0 : Math.round(oy * S), y1k = Math.round((oy + kart.h) * S);
       g.save(); g.beginPath(); g.rect(Math.round(ox * S), y0k, kart.w * S, y1k - y0k); g.clip();
       if (kart.def.luftfarge) { g.fillStyle = kart.def.luftfarge; g.fillRect(0, 0, LW, LH); }
-      teiknLag(kart.def.parallakse, camX, camY, false);
+      teiknLag(kart.def.parallakse, camX, camY, false, no);
       g.restore();
       if (kart.def.kameraOpp && oy > 0) {                                  // lufta over kartet
         harLuft = true; luftMaske.fill(1, 0, Math.min(LH, Math.round(oy * S)) * LW);
@@ -1343,7 +1376,7 @@ window.Motor = (function () {
       if (bak) { g.globalAlpha = 0.4; g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy); g.globalAlpha = 1; }
     }
     // Forgrunnen (greiner, høgt gras) over alt anna, raskare enn kartet.
-    if (kart.def.forgrunn) teiknLag(kart.def.forgrunn, camX, camY, true);
+    if (kart.def.forgrunn) teiknLag(kart.def.forgrunn, camX, camY, true, no);
     lys(no, ox, oy);
   }
 

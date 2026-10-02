@@ -260,6 +260,15 @@ landskap langt nede som flyttar seg saktare enn kartet.
   Hovdekyrkja kvit med skifertak og spir, teigar i grønt og gult med steingardar, elva og vegen.
   Fjella (faktor 0,12) er endå disigare: alpine toppar med lys flanke til venstre for ryggen og skugge
   til høgre, snø øvst. Ingen svarte omriss i bakgrunnen.
+- Kanten på stupet er ujamn over flisgrensene (FF6, Minish Cap): graset går ned i tunger og viker (2 til
+  8 pikslar), strå og tuster heng over kanten, så eit band av mørk jord med røter som heng ned, og her og
+  der ein stein som stikk opp i graskanten. Der stupet møter bakke ved sida (eit nes), rundar graset
+  hjørnet inn i flisa, og det bakre berget held fram inn i hjørnet av neset i ein boge; dei nedste
+  hjørna på neset er runde. Aldri eit firkanta hakk.
+- Med eit fast lag under (lia) endar stupet i eit mørkt overheng med ujamn kant, og lia rett under
+  ligg i skugge, så det les som same berget som held fram, ikkje to bilete som møtest.
+- Djupn nedover (etter Octopath Traveler): det som er langt nede, er uskarpt (pikslane dobla), disig
+  og lysare, og svake lysstrålar fell skrått ned gjennom disen.
 - Forgrunnen (faktor 1,3): nesten silhuettar i mørkt grøn (nær kameraet, i skugge), berre i hjørna,
   og berre når kameraet står ved kanten av kartet. Aldri midt i biletet.
 

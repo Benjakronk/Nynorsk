@@ -1092,3 +1092,32 @@ same måte, uansett kven som tek over.
 - **Vurdert:** Seriar medan kameraet glir ned (Ivar på rad 10 til 13 og på neset):
   `forhand/skjerm/r32-serie-fast.png` og `r32-serie-dal.png`.
 - **Står att:** Ein lengre dal-variant ville krevje fleire rader med luft under kartet.
+
+## Runde 33: kanten på stupet, overgangen til lia, roleg kamera og gras i vinden
+
+- **Oppdrag:** Brukaren: kameraet skal gli ned først når Ivar står på den nedste flisa, og saktare;
+  firkanta hakk der to fliser i kanten stikk lenger ned; overgangen frå den første klippeflisa til lia
+  fungerer ikkje; overgangen mellom graset og klippekanten er unaturleg og for jamn; graset i
+  forgrunnen kunne vaie i vinden.
+- **Research:** Final Fantasy VI (Narshe-klippene) og The Minish Cap skjuler flisrutenettet med kantar
+  som går over flisgrensene: graset ligg i tunger over klippekanten, overheng med skugge under, kratt,
+  røter og steinar i kanten, og runde hjørne på nes og hyller. Octopath Traveler (HD-2D) gir djupn med
+  djupnuskarpheit (det fjerne er uskarpt), volumetrisk tåke som fargar det fjerne blåare og lysare,
+  lysstrålar og lag som overlappar (kjelde: Wikipedia om HD-2D og Octopath Traveler, og omtalar av
+  tilt-shift og fog i HD-2D).
+- **Gjort:**
+  - `kameraNed: { fra: 13, rader: 3, fart: 1 }`: kameraet glir ned berre når Ivar står på den nedste
+    flisa (rad 13, eller neset), 1 piksel per tikk (0,8 sekund), og attende når han går opp. Glidinga går
+    for seg sjølv i tikk-takt (`nedPx`), så ho er uavhengig av gang og sprang.
+  - `Pikslar.stup`: ujamn kant (2 til 8 pikslar), strå som heng over, jord med røter, steinar i
+    graskanten, rund graskant inn i hjørnet ved eit nes, det bakre berget i ein boge inn i neset, og
+    runde nedre hjørne på neset. Med `stupFast` (Åsen og minnet) løyser ikkje berget seg opp i dis
+    lenger, men endar i eit mørkt overheng med ujamn kant.
+  - `li`: skugge under overhenget (smalare under neset), og djupn som i Octopath: skogen langt nede er
+    uskarp (pikslane dobla 2 × 2), disig, og svake lysstrålar fell skrått ned gjennom disen.
+  - Graset i forgrunnen vaiar: tre rammer der toppane går 0, 1 og 2 pikslar til sides, i rekkja
+    0, 1, 2, 1 med 40 tikk per steg (`rammer`, `rekkje`, `takt` på laget, `lagRamme` i `motor.js`).
+- **Vurdert:** `forhand/skjerm/r33-serie-glid.png` (150, 400, 700 og 1100 ms etter at Ivar går ned på
+  den nedste flisa: kameraet står i ro til han er framme, og glir så roleg ned), `r33c-nes-naer.png`
+  (neset: rund graskant, steinar, røter, overheng) og `r33-gras.png` (rammene i graset).
+- **Står att:** Overhenget under neset er framleis eit tydeleg mørkt band.
