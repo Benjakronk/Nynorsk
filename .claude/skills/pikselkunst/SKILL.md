@@ -184,6 +184,10 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
     `x=3 y=2`, `x=10 y=2` og `x=24 y=2` (toppen: utmarka til venstre, Hovdebygda til høgre), og
     `kart=minne-far m=1` (same lia under stupet i minnet). `variant=dal` viser varianten der dalen
     stig fram under lia (lag med `variant` blir berre teikna når kartet har den varianten).
+- Rottene i stabburet (fiendar i kampen og ei lita rotte til kartet): `python tools/pikselkunst/rotte.py alle`
+  skriv `kjelder/fiende-rotte*.pix`, så `pix.py lag`. Fiendar som PNG står i `PNG` i `pikslar.js`, og eit
+  bilete berre til kartet (`vesen` i ei scene) kan stå der utan å vere i `FIENDAR`. Sjå med
+  `skjermbilete.py namn kart=asen-stabbur m=1 kamp=rotte,rotte,rotte` og `kamp=rottemor,rotte`.
 - Tre, steinar og haugar: `python tools/pikselkunst/natur.py <namn>` (sjå `NATUR`).
   Frittståande tre og steinar: kartteikna `i` (gran), `F` (furu), `t` (bjørk) og `o` (stein, einer)
   vel variant etter plassen frå `NATURTYPE` i `js/rpg/pikslar.js`. Nye variantar må førast inn der.

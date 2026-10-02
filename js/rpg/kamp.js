@@ -358,6 +358,21 @@ window.Kamp = (function () {
         await vent(300);
         if (!rettskriv(f, sp)) { const mål = levande[Math.floor(Math.random() * levande.length)]; meld(`${f.namn} angrip ${mål.namn}!`); skade(f, mål); }
         await vent(900);
+      } else if (sp && sp.type === "stel") {
+        // Stel mat frå sekken (rottene): ein ting forsvinn, og fienden et han og får att HP.
+        // Er sekken tom, bit han i staden.
+        await vent(300);
+        const sekk = pa.find(m => m.ting), lager = sekk && sekk.ting();
+        if (lager && lager[sp.ting] > 0) {
+          lager[sp.ting]--;
+          meld(sp.tekst, 2000);
+          lækj(f, sp.lækje || 10);
+        } else {
+          const mål = levande[Math.floor(Math.random() * levande.length)];
+          meld(sp.tom || `${f.namn} angrip ${mål.namn}!`, 1600);
+          skade(f, mål, sp.faktor || 1);
+        }
+        await vent(900);
       } else if (sp) {
         meld(sp.tekst, 1800);
         blink("rgba(88,72,160,A)", 260); skjelv(400, 3);

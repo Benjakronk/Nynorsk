@@ -300,6 +300,26 @@ f.onload = async () => {
     await trykkGjennom(() => s10.scener.stabburet && !T().iHending() && !synleg("#rpg-tale"));
     await vent(300);
     sjekk(M.kart.id === "asen-stabbur" && s10.scener.stabburet && s10.dagbok.some(l => /stabburet/.test(l.tekst)), "døra går opp, og første gong inne spelar scena «stabburet»");
+    // Rotta: det første steget etter «stabburet» (mot kista) set i gang scena med rotta, med kamp.
+    // Dei tilfeldige rottemøta blir slegne av under testen, så berre kampen i scena blir talt.
+    const stabbur = w.RPGData.KART["asen-stabbur"], visFor = stabbur.fiendar.vis;
+    sjekk(!visFor(s10), "før rotta er det ingen rottemøte i stabburet");
+    stabbur.fiendar.vis = () => false;
+    const kampRotte = w.Kamp.start; let rottekampar = [], rottaVed = false;
+    w.Kamp.start = async o => { rottekampar.push(o.fiendar.join(",")); rottaVed = naer(M.aktor("Rotta"), M.spelar); return { utfall: "siger", xp: 0, pengar: 0, fall: [] }; };
+    sjekk(!M.aktor("Rotta") && M.spelar.x === 4 && M.spelar.y === 4, `etter «stabburet» står Ivar på 4,4 og ingen rotte er der (${M.spelar.x},${M.spelar.y})`);
+    let rottaSaaFlatbrod = false;
+    await haldTast("ArrowLeft", 250);
+    await trykkGjennom(() => s10.scener.rotta && !T().iHending() && !synleg("#rpg-tale"), () => { const r = M.aktor("Rotta"); if (r && r.x === 7 && r.y === 4) rottaSaaFlatbrod = true; });
+    await vent(300);
+    sjekk(s10.scener.rotta && rottekampar.join(";") === "rotte", `første steget mot kista: scena «rotta» og éin kamp mot rotta (${rottekampar.join(";")})`);
+    sjekk(rottaSaaFlatbrod && rottaVed, "rotta sprang bort til flatbrødet og kom så bort til Ivar før kampen");
+    sjekk(!M.aktor("Rotta") && s10.dagbok.some(l => /rotte/.test(l.tekst)) && kanGaa(), "etter kampen er rotta borte, Dagboka har ei linje, og Ivar kan gå");
+    sjekk(visFor(s10), "etter scena er det rottemøte i stabburet");
+    M.plasser(4, 4, 3); await vent(200);
+    await haldTast("ArrowRight", 250); await vent(600);
+    sjekk(rottekampar.length === 1 && !T().iHending() && kanGaa(), "rotta kjem ikkje att når Ivar går over merka ein gong til");
+    w.Kamp.start = kampRotte; stabbur.fiendar.vis = visFor;
     M.plasser(4, 5, 0); await vent(200);
     await haldTast("ArrowDown", 250);
     for (let n = 0; n < 60 && M.kart.id !== "asen"; n++) await vent(50);

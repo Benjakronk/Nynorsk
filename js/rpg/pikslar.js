@@ -1407,11 +1407,17 @@ window.Pikslar = (function () {
     // Den namnlause vetten (grå, halvt gjennomsiktig). Haugbonden er òg namnlaus når Ivar kjempar mot han.
     vette: { fil: "bilete/spel/vette3_nameless_1x.png", w: 47, h: 68, reserve: "vette" },
     haugbonden: { fil: "bilete/spel/vette3_nameless_1x.png", w: 47, h: 68, reserve: "haugbonden" },
+    // Rottene i stabburet (tools/pikselkunst/rotte.py): låverotta og rottemora i kampen, og ei lita
+    // rotte til kartet (vesen i scena «rotta»), vend mot høgre eller venstre. Utan reservefigur.
+    rotte: { fil: "bilete/spel/rotte.png", w: 48, h: 40 },
+    rottemor: { fil: "bilete/spel/rottemor.png", w: 64, h: 52 },
+    "rotte-kart": { fil: "bilete/spel/rotte-kart.png", w: 24, h: 14 },
+    "rotte-kart-v": { fil: "bilete/spel/rotte-kart-v.png", w: 24, h: 14 },
   };
   function fraPng(d) {
     const c = lerret(d.w, d.h), g = c.getContext("2d");
     g.imageSmoothingEnabled = false;
-    const r = FIENDAR[d.reserve](); g.drawImage(r, Math.round((d.w - r.width) / 2), d.h - r.height);
+    if (d.reserve) { const r = FIENDAR[d.reserve](); g.drawImage(r, Math.round((d.w - r.width) / 2), d.h - r.height); }
     const img = hent(d.fil);
     const bruk = () => { g.clearRect(0, 0, d.w, d.h); g.drawImage(img, 0, 0, d.w, d.h); };
     if (klar(img)) bruk(); else img.addEventListener("load", bruk, { once: true });

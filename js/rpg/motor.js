@@ -316,7 +316,8 @@ window.Motor = (function () {
     }
     const f = kart.def.fiendar;
     const c = kart.fliser[spelar.y][spelar.x];
-    if (f && !kart.def.fristad && (f.alle || c === ",") && krokar.kamp) {
+    // fiendar.vis (valfri): møta finst berre når vilkåret held (rottene i stabburet etter scena «rotta»).
+    if (f && !kart.def.fristad && (f.alle || c === ",") && (!f.vis || f.vis(krokar.tilstand())) && krokar.kamp) {
       if (--stegTilKamp <= 0) {
         stegTilKamp = 14 + Math.floor(Math.random() * 14);
         const lag = f.lag[Math.floor(Math.random() * f.lag.length)];

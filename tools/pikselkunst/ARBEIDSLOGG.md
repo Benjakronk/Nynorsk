@@ -1180,3 +1180,29 @@ same måte, uansett kven som tek over.
   rekkje like graner).
 - **Står att:** Fleire kanttypar (lauvskog, berg, myr). Tørrgrana er tynn og blir borte mot graset.
   Furukrona kunne hatt fleire, mindre puter og meir lys i toppen.
+
+## Runde 36: rottene i stabburet
+
+- **Oppdrag:** Brukaren: ein rotte-fiende som Ivar møter i stabburet. Fiende i kampen (same storleik og
+  stil som dei andre), ei lita rotte på kartet til scena, og møtet i stabburet.
+- **Research:** Wererat i Final Fantasy VI står halvt oppreist med labbane framme; låverotter er
+  grå-brune med naken, ringa hale, rosa øyre og føter og gule gnagartenner.
+- **Gjort:**
+  - `rotte.py` (skriptet er kjelda, skriv `kjelder/fiende-*.pix`): `rotte` (48 × 40) halvt reist på
+    bakbeina, vend mot partiet, med krokrygg og bust som reiser seg over silhuetten, lang naken hale i
+    ein S-boge, stort rosa øyre, raudt auge under eit sint bryn, glis og to store gule tenner (farleg,
+    men litt komisk). `rottemor` (64 × 52): feitare, grå snute, rive øyre, tre rifter over skulderen,
+    og ho gneg på eit flatbrødstykke ho held i labbane. `rotte-kart` og `rotte-kart-v` (24 × 14): lita
+    rotte på fire føter til kartet, mot høgre og venstre. Skuggen er cel-flater frå silhuetten (lys
+    langs kanten oppe til venstre, skugge nede til høgre) og lyse hårstrok i lyset. Pelsen er kjøleg
+    grå-brun, så rotta skil seg frå golvplankane.
+  - `pikslar.js`: dei fire bileta i `PNG` (utan reservefigur, `reserve` er no valfri).
+  - `data.js`: `rotte` (Låverotte, slag «dyr», 18 HP) og `rottemor` (52 HP) i `FIENDAR`. Ny spesial
+    `type: "stel"` i `kamp.js`: fienden et eit flatbrød frå sekken og får att HP, eller bit om sekken er
+    tom. Scena `rotta`, og `fiendar.vis` på stabburet (tilfeldige rottemøte først etter scena, `motor.js`).
+- **Vurdert:** `forhand/skjerm/rotte-kamp-spel.png`, `rotte-flokk-spel.png` (tre rotter) og
+  `rottemor-kamp-spel.png` (rottemora og ei rotte) på kampbakgrunnen `inne`, og scena i stabburet
+  (rotta ved flatbrødbenken, og etter at ho har snudd seg mot Ivar).
+- **Står att:** Rotta på kartet er mørk i stabburlyset. `pix.py sjekk` meiner rottemora er lysare nede
+  til høgre (flatbrødet); det er medvite. Kampbakgrunnen er stova (`inne`); ein eigen stabburbakgrunn
+  ville passe betre.

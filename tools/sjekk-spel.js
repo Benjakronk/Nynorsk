@@ -28,6 +28,7 @@ for (const [id, k] of Object.entries(D.KART)) {
   if (k.kvile && !D.SCENER[k.kvile]) feil.push(`${id}: kvilescena ${k.kvile} finst ikkje`);
   for (const ks of k.kister || []) { const c = k.rader[ks.ved[1]][ks.ved[0]]; if (!ks.gøymd && !ks.vis && c !== "K") feil.push(`${id}: kiste ${ks.ved} på «${c}»`); if ((ks.gøymd || ks.vis) && !MERKE.test(c) && c !== k.golv) feil.push(`${id}: gøymd kiste eller kiste med vis på «${c}»`); if (ks.ting && !D.TING[ks.ting] && !D.NOKKELTING[ks.ting]) feil.push(`${id}: ting ${ks.ting}`); if (ks.manus && !D.MANUS[ks.manus]) feil.push(`${id}: kistemanus ${ks.manus} manglar`); if (ks.vis && typeof ks.vis !== "function") feil.push(`${id}: vis på kista ${ks.id} må vere ein funksjon`); if (ks.bilete && !require("fs").existsSync(require("path").join(__dirname, "..", "bilete", "spel", "bygg", ks.bilete + ".png"))) feil.push(`${id}: kistebiletet ${ks.bilete} finst ikkje`); }
   for (const lag of (k.fiendar || {}).lag || []) for (const f of lag) if (!D.FIENDAR[f]) feil.push(`${id}: fiende ${f}`);
+  if (k.fiendar && k.fiendar.vis && typeof k.fiendar.vis !== "function") feil.push(`${id}: fiendar.vis må vere ein funksjon`);
 }
 /* Stemningar og lys (sjå «Lys» i js/rpg/README.md): kvart kart må ha ei stemning som finst, og
    fargane er 5 bit per kanal (heile tal, -31..31 for p, 0..31 for snitt, lys 0..15). */
@@ -177,6 +178,9 @@ for (const [id, k] of Object.entries(D.KART)) for (const b of k.bygg || []) {
   if (!fs_.existsSync(f)) feil.push(`${id}: bygg ${b.id} manglar bilete (${f})`);
   if (typeof b.h !== "number") feil.push(`${id}: bygg ${b.id} manglar h`);
 }
+// Eit vesen på kartet er ein fiende i FIENDAR, eller eit handteikna bilete berre til kartet
+// (bilete/spel/<namn>.png, til dømes den vesle rotta i stabburet).
+const vesen = v => !!D.FIENDAR[v] || require("fs").existsSync(require("path").join(__dirname, "..", "bilete", "spel", v + ".png"));
 // Manus: lytt, tilbod, kamp, gi
 function gå(steg, stad) {
   if (!Array.isArray(steg)) return;
@@ -187,8 +191,8 @@ function gå(steg, stad) {
     if (s.t && (s.t.match(/⟪/g) || []).length !== (s.t.match(/⟫/g) || []).length) feil.push(`${stad}: ubalanserte ⟪⟫`);
     if (s.t && /[—–]/.test(s.t.replace(/\d–\d/g, ""))) feil.push(`${stad}: tankestrek`);
     if (s.scene && !D.SCENER[s.scene]) feil.push(`${stad}: ukjend scene ${s.scene}`);
-    if (s.inn && !(s.inn.vesen ? D.FIENDAR[s.inn.vesen] : D.U[s.inn.u])) feil.push(`${stad}: utsjånad ${s.inn.vesen || s.inn.u}`);
-    if (s.byt && ((s.u && !D.U[s.u]) || (s.vesen && !D.FIENDAR[s.vesen]))) feil.push(`${stad}: byt til ukjend utsjånad ${s.u || s.vesen}`);
+    if (s.inn && !(s.inn.vesen ? vesen(s.inn.vesen) : D.U[s.inn.u])) feil.push(`${stad}: utsjånad ${s.inn.vesen || s.inn.u}`);
+    if (s.byt && ((s.u && !D.U[s.u]) || (s.vesen && !vesen(s.vesen)))) feil.push(`${stad}: byt til ukjend utsjånad ${s.u || s.vesen}`);
     if (s.pose !== undefined && (typeof s.pose !== "string" || !("p" in s) || (s.p !== null && !D.POSAR.includes(s.p)))) feil.push(`${stad}: pose «${s.p}» for ${s.pose} (kjende: ${D.POSAR.join(", ")}, eller null)`);
     if (s.sti && typeof s.sti === "string" && !/^([novh]\d*)+$/.test(s.sti)) feil.push(`${stad}: sti «${s.sti}»`);
     if (s.dagbok && /[—–]/.test(s.dagbok)) feil.push(`${stad}: tankestrek i dagboka`);

@@ -1,0 +1,35 @@
+# namn: fiende-rotte-kart-v
+# type: fiende
+# ut: bilete/spel/rotte-kart-v.png
+# storleik: 24x14
+palett:
+  . = -
+  o = #0a0514    omriss
+  0 = #160f22    pels djup
+  1 = #352b40    pels skugge
+  2 = #5a4e58    pels
+  3 = #857470    pels lys
+  4 = #bcaa9c    pels glans
+  5 = #6c6470    buk skugge
+  6 = #9a8e8c    buk
+  b = #94485a    hud skugge
+  c = #c87480    hud
+  d = #eaa8a8    hud lys
+  r = #7a0c1c    auge mørk
+  R = #e8283a    auge
+  T = #f0dc98    tann
+bilete:
+  ........................
+  ............o.o.o.......
+  ........oo.o1o1o1o......
+  .......oc1o44444oo......
+  ......ocd142222333o..o..
+  ....oo0022222222233oobo.
+  .ooo32Rr222222222233oco.
+  odc66622222222222233obdo
+  .oo55551222222222233oobo
+  ...oT00111111111133ooobo
+  ...oToo00000000033ocbco.
+  ....o..occooooocco.ooo..
+  ........oo.....oo.......
+  ........................

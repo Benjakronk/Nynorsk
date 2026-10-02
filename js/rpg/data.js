@@ -342,13 +342,16 @@ window.RPGData = (function () {
         "XXXXXXXXXX",
         "X(((OOOO(X",
         "XOOOOOOOOX",
-        "X((OOO((OX",
-        "XOOOOOOOOX",
+        "X((O4O((OX",
+        "XOO2O3OOOX",
         "XKOO1OOO(X",
         "XXXXEXXXXX",
       ],
       dorer: [{ ved: [4, 6], til: ["asen", "5"] }],
-      inngang: [{ merke: "1", manus: "inn_stabbur" }],
+      // Merka 2, 3 og 4 ligg rundt ruta der Ivar står etter scena «stabburet»: det første steget han
+      // tek (mot kista, flatbrødet eller døra), set i gang scena med rotta. Etterpå er det rotter her.
+      inngang: [{ merke: "1", manus: "inn_stabbur" }, { merke: "2", manus: "rotta" }, { merke: "3", manus: "rotta" }, { merke: "4", manus: "rotta" }],
+      fiendar: { alle: true, vis: st => !!st.scener.rotta, lag: [["rotte"], ["rotte", "rotte"], ["rotte", "rotte", "rotte"], ["rottemor"]] },
       kister: [{ ved: [1, 5], ting: "romegraut", n: 2, pengar: 20, id: "k-stabbur" }],
     },
     /* Scenekart (scene: true) finst berre for ei scene: dei er ikkje med i verda, og spelet
@@ -778,8 +781,9 @@ window.RPGData = (function () {
   const STADER = [];
 
   /* ---------- Fiendar ---------- */
-  // slag: blekk, bok, vette, eld. Ord med «mot» same slag gjer ekstra verknad.
-  // spesial.type: «skade» (standard) eller «rettskriv» (gjer eit ord om til dansk).
+  // slag: blekk, bok, vette, eld, dyr. Ord med «mot» same slag gjer ekstra verknad.
+  // spesial.type: «skade» (standard), «rettskriv» (gjer eit ord om til dansk) eller «stel»
+  // (et ein ting frå sekken, til dømes flatbrød, og får att «lækje» HP; er han tom, bit fienden).
   const FIENDAR = {
     blekkdrope: { namn: "Blekkdrope", bilete: "blekkdrope", slag: "blekk", hp: 20, atk: 5, def: 1, spd: 8, xp: 5, pengar: 4, fall: [["flatbrod", 0.2]], tekst: "Ein dråpe kanselliblekk som har rent ut av eit brev. Han vil helst inn i munnen på folk." },
     blekkflekk: { namn: "Blekkflekk", bilete: "blekkflekk", slag: "blekk", hp: 38, atk: 7, def: 2, spd: 7, xp: 10, pengar: 8, fall: [["flatbrod", 0.3]], spesial: { kvar: 3, type: "rettskriv", tekst: "Blekkflekken sprutar kanselliskrift!" }, tekst: "Ein flekk som har vakse seg stor på ei side i kyrkjeboka. Han rettskriv galdrar til dansk." },
@@ -789,6 +793,8 @@ window.RPGData = (function () {
     vette: { namn: "Namnlaus vette", bilete: "vette", slag: "vette", hp: 26, atk: 6, def: 2, spd: 9, xp: 7, pengar: 0, fall: [["flatbrod", 0.25]], tekst: "Ein vette som har gløymt namnet sitt. Utan namn blir han sur og redd." },
     irrbloss: { namn: "Irrbloss", bilete: "irrbloss", slag: "eld", hp: 20, atk: 7, def: 0, spd: 15, xp: 7, pengar: 2, tekst: "Eit lite ljos som lokkar folk ut i myra. Snø og kulde sløkkjer det." },
     haugbonden: { namn: "Haugbonden", bilete: "haugbonden", slag: "vette", hp: 130, atk: 10, def: 4, spd: 8, xp: 40, pengar: 0, spesial: { kvar: 3, alle: true, faktor: 0.9, tekst: "Haugbonden brølar: «KVEN ER EG?»" }, tekst: "Den gamle vetten i haugen. Han har budd der sidan før kyrkja vart bygd." },
+    rotte: { namn: "Låverotte", bilete: "rotte", slag: "dyr", hp: 18, atk: 5, def: 1, spd: 13, xp: 4, pengar: 1, fall: [["flatbrod", 0.3]], spesial: { kvar: 3, type: "stel", ting: "flatbrod", lækje: 10, faktor: 1.3, tekst: "Rotta nappar eit flatbrød frå sekken og knaskar det i seg!", tom: "Rotta finn ingen mat i sekken og bit i leggen i staden!" }, tekst: "Ei feit, grå låverotte med gule tenner og raude auge. Ho et alt ho finn, og helst flatbrød." },
+    rottemor: { namn: "Rottemora", bilete: "rottemor", slag: "dyr", hp: 52, atk: 8, def: 2, spd: 9, xp: 15, pengar: 5, fall: [["flatbrod", 0.6], ["romegraut", 0.15]], spesial: { kvar: 3, faktor: 1.5, tekst: "Rottemora kvesser tennene og bit hardt!", veksle: { kvar: 4, type: "stel", ting: "flatbrod", lækje: 20, faktor: 1.2, tekst: "Rottemora rappar eit flatbrød frå sekken og gomlar det i seg!", tom: "Rottemora rotar i sekken, finn ingenting og bit sint!" } }, tekst: "Den gamle rotta under stabburet, grå i snuten og med eit rive øyre. Ho held alltid fast på eit flatbrød." },
     blekklatten: { namn: "Blekklatten", bilete: "blekklatten", slag: "blekk", hp: 340, atk: 12, def: 4, spd: 9, xp: 90, pengar: 60, spesial: { kvar: 2, type: "rettskriv", veksle: { kvar: 4, alle: true, faktor: 1.1, tekst: "Blekkflaum! Blekklatten skyl over heile partiet!" }, tekst: "Blekklatten: «Alt skal skrives rigtigt!»" }, tekst: "Alt blekket frå kyrkjebøkene i Hovdebygda, samla i éin klump. Det han skriv, står." },
   };
 
@@ -1019,6 +1025,30 @@ window.RPGData = (function () {
         { vent: 300 },
         { s: "Ivar", t: "Kista i hjørnet var alltid låst for oss ungane. Kanskje far gøymde noko der.", kjensle: "tenkje" },
         { dagbok: "Eg låste opp stabburet med nøkkelen etter far. Det luktar som før, då han levde." },
+      ],
+    },
+    // Rotta i stabburet: det første steget Ivar tek etter scena «stabburet» (merke 2, 3, 4 og 1).
+    // Ho spring fram frå kornbingane til flatbrødet, snur seg og kjem mot Ivar. Så kamp.
+    rotta: {
+      namn: "Rotta", stad: "Stabburet på Åsen", kort: false, med: ["Ivar", "Rotta"],
+      steg: [
+        { t: "Bak kornbingane raslar det. Klør skrapar mot plankane, og noko piper." },
+        { snu: "Ivar", retning: "opp" },
+        { s: "Ivar", t: "Kven er der?", kjensle: "sjokk" },
+        { inn: { namn: "Rotta", vesen: "rotte-kart", rute: [1, 2] } },
+        { gaa: "Rotta", rute: [7, 4], fart: 110 },
+        { snu: "Ivar", mot: "Rotta" },
+        { rist: 300, styrke: 1 },
+        { t: "Ei feit låverotte spring over golvet, rett bort til flatbrødstabelen, og bit seg fast i ein leiv. Det knasar." },
+        { s: "Ivar", t: "Slepp! Det er flatbrødet vi skal leve av fram til slåtten!", kjensle: "sint" },
+        { byt: "Rotta", vesen: "rotte-kart-v" },
+        { t: "Rotta snur seg med flatbrødet i kjeften. Ho piper sint og viser dei gule tennene." },
+        { gaa: "Rotta", mot: "Ivar", fart: 160 },
+        { kamp: ["rotte"] },
+        { fjern: "Rotta" },
+        { t: "Rotta slepper flatbrødet og pilar ned gjennom eit hol i golvet bak sekkene." },
+        { s: "Ivar", t: "Der det er éi rotte, er det fleire. Far sette alltid ut feller om hausten. I år var det ingen som gjorde det.", kjensle: "trist" },
+        { dagbok: "Ei rotte hadde gnege seg inn i stabburet og ville ha flatbrødet vårt. Eg jaga henne, men der det er éi, er det fleire." },
       ],
     },
     // Eit minne om far, første gong Ivar kviler ved lampa i stova (kvile på kartet).
@@ -1270,7 +1300,8 @@ window.RPGData = (function () {
       { t: "Ivar vrir den store nøkkelen om. Låsen er stiv etter vinteren, men så gir han etter med eit klikk." },
       { flagg: "stabbur_opna" },
     ],
-    inn_stabbur: [{ dersom: st => !st.scener.stabburet, da: [{ scene: "stabburet" }] }],
+    inn_stabbur: [{ dersom: st => !st.scener.stabburet, da: [{ scene: "stabburet" }], elles: [{ dersom: st => !st.scener.rotta, da: [{ scene: "rotta" }] }] }],
+    rotta: [{ dersom: st => st.scener.stabburet && !st.scener.rotta, da: [{ scene: "rotta" }] }],
     framande: [{ scene: "framande" }, { t: "Ordboka ligg i menyen (X eller Esc). Der ser du orda du har høyrt, formene deira og kven som sa dei." }],
     // Vakta ved kantane: Ivar står på kantruta og snur attende eitt steg.
     ikkje_enno: [{ t: "Ivar vil sjå seg om på tunet og i stova først. Kanskje nokon har noko å seie." }, { gaa: "Ivar", sti: "n1" }],
