@@ -226,21 +226,77 @@ def stove(bf, hf, dorar, vindauge_pos, fro=1, staande=False, dobbel=False, bakdo
 
 
 def stabbur(fro=3):
-    """Stabbur på 3 x 2 fliser, på steinstolpar."""
-    bf, hf = 3, 2
-    W, H = bf * 16 + UT_X * 2, hf * 16 + UT_Y
+    """Stabbur på 3 x 2 fliser, med gavlen mot oss, slik stabbura står på Sunnmøre: høgt på
+    stolpar med flate stabbursteinar (så mus og fukt ikkje kjem inn), ei frittståande trapp opp
+    til døra, eit nedre rom av laft og ein oppstugu som stikk ut over det nedre, ein bratt gavl
+    av ståande bord med vindskier som kryssar over mønet, og torvtaket som går bakover frå
+    gavlen. Døra står i midtre flis med botnen 9 pikslar over biletkanten (sjå DORFORM.stabbur)."""
+    bf = 3
+    W, H = bf * 16 + UT_X * 2, 72
     L = Lerret(W, H)
-    vegg_y0 = UT_Y + 6
-    # steinstolpar og mørk luft under
-    L.rect(UT_X + 2, H - 7, bf * 16 - 4, 5, "A")
-    for x in (UT_X + 3, UT_X + bf * 16 - 11):
-        L.rect(x, H - 8, 8, 8, "C"); L.rad(H - 8, x, x + 7, "D"); L.rad(H - 1, x, x + 7, "B"); L.p(x + 7, H - 5, "B")
-    laft(L, UT_X, UT_X + bf * 16 - 1, vegg_y0, H - 9, fro)
-    for x in range(UT_X, UT_X + bf * 16):
-        for y in range(vegg_y0, vegg_y0 + 2): L.p(x, y, {"e": "c", "d": "b", "c": "b", "b": "a", "a": "a"}.get(L.get(x, y), L.get(x, y)))
-    dor(L, UT_X + 16 + 2, H - 9 - 11, 11)
-    torvtak(L, 1, W - 2, 2, vegg_y0 - 6, fro)
-    vindskier(L, 1, 2, vegg_y0 - 3, True); vindskier(L, W - 3, 2, vegg_y0 - 3, False)
+    x0, x1 = UT_X, UT_X + bf * 16 - 1                                  # det nedre rommet
+    golv = H - 9                                                       # golvet i stabburet (botnen av døra)
+    # Stolpar på stabbursteinar, med mørk luft under huset
+    L.rect(x0 + 2, golv, x1 - x0 - 3, 6, "a")
+    for sx in (x0 + 2, x0 + 22, x1 - 5):
+        L.rect(sx, golv, 4, 5, "c"); L.p(sx, golv, "d"); L.rad(golv + 4, sx, sx + 3, "b")
+        L.rect(sx - 1, golv + 5, 6, 2, "C"); L.rad(golv + 5, sx - 1, sx + 4, "D"); L.rad(golv + 7, sx - 1, sx + 4, "B")   # stabbursteinen
+        L.rect(sx, golv + 8, 4, 1, "C")
+    # Frittståande trapp opp til døra (ho rører ikkje huset, så musene ikkje kjem opp)
+    for k, ty in enumerate((golv + 2, golv + 5, golv + 8)):
+        L.rad(ty, x0 + 17 - k, x0 + 30 + k, "e"); L.rad(ty + 1, x0 + 17 - k, x0 + 30 + k, "c"); L.rad(ty + 2, x0 + 17 - k, x0 + 30 + k, "b")
+    # Det nedre rommet: laft, med døra midt på
+    nedre_y0 = golv - 13
+    laft(L, x0, x1, nedre_y0, golv - 1, fro)
+    dor(L, x0 + 16 + 2, golv - 11, 11)
+    # Skugge under oppstugua på det nedre rommet
+    L.rad(nedre_y0, x0, x1, "a"); L.rad(nedre_y0 + 1, x0, x1, "b")
+    # Oppstugua stikk 2 pikslar ut på kvar side, med ei lita glugge
+    o0, o1 = x0 - 3, x1 + 3
+    ovre_y0 = nedre_y0 - 12
+    laft(L, o0, o1, ovre_y0, nedre_y0 - 1, fro + 2)
+    L.rad(nedre_y0 - 1, o0, o1, "a")                                   # botnstokken som ber utkragninga
+    for x in range(o0, x0): L.p(x, nedre_y0, "a"); L.p(x, nedre_y0 - 1, "a")
+    for x in range(x1 + 1, o1 + 1): L.p(x, nedre_y0, "a"); L.p(x, nedre_y0 - 1, "a")
+    for (gx, gy) in ((x0 + 21, ovre_y0 + 3),):
+        L.rect(gx - 1, gy - 1, 8, 6, "a"); L.rect(gx, gy, 6, 4, "A"); L.rad(gy, gx, gx + 5, "B")
+    # Gavlen: ståande bord i ein bratt trekant
+    topp = ovre_y0 - 18
+    cx = (o0 + o1) // 2
+    for y in range(topp, ovre_y0):
+        t = (y - topp) / (ovre_y0 - topp)
+        hb = int(t * (o1 - o0) / 2) + 1
+        for x in range(cx - hb, cx + hb + 1):
+            k = (x - cx) % 4
+            L.p(x, y, "d" if k == 0 else "c" if k < 3 else "b")
+    L.rad(ovre_y0 - 1, o0, o1, "a")
+    # Torvtaket går bakover frå gavlen. Sett ovanfrå og framanfrå ligg den bakre gavlkanten DJUP
+    # pikslar høgare enn den framre, og takflatene mellom dei er torv: ei tjukk, lys leppe langs
+    # den framre kanten, mørkare bakover, og eit lyst møne som går rett innover frå toppen.
+    DJUP = 14
+    halv = (o1 - o0) / 2 + 3
+    def rake(x): return topp + abs(x - cx) * (ovre_y0 - topp) / halv
+    for x in range(o0 - 3, o1 + 4):
+        r0 = rake(x)
+        for y in range(int(r0 - DJUP), int(r0)):
+            if y < 0 or L.get(x, y) != ".": continue
+            d = r0 - y                                                  # kor langt bak den framre kanten
+            band = "3" if d < 3 else "2" if d < 8 else "1"
+            if band == "2" and h(x, y, fro + 9) < 0.12: band = "3"
+            if band == "1" and h(x, y, fro + 11) < 0.15: band = "2"
+            L.p(x, y, band)
+        L.p(x, int(r0 - DJUP), "0")                                     # den bakre kanten
+    for y in range(topp - DJUP, topp):                                   # mønet: lyst band rett innover
+        for x in (cx - 1, cx, cx + 1):
+            if 0 <= y: L.p(x, y, "4" if x == cx else "3")
+    # Vindskier langs gavlen, kryssa over mønet
+    for x in range(o0 - 2, o1 + 3):
+        dxs = abs(x - cx)
+        rake = int(round(topp + dxs * (ovre_y0 - topp) / ((o1 - o0) / 2)))
+        if topp - 1 <= rake <= ovre_y0 + 1:
+            L.p(x, rake - 1, "e"); L.p(x, rake, "d"); L.p(x, rake + 1, "b")
+    for k in range(5):
+        L.p(cx - 2 + k, topp - 3 - k, "e"); L.p(cx + 2 - k, topp - 3 - k, "d")
     omriss(L)
     return L
 
