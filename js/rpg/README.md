@@ -202,6 +202,7 @@ Utmarka, Ekset (tunet og boksamlinga) og arkivet brukar òg scenemotoren:
 - `tenar`: Tenaren står mellom stolane ved lesebordet. Ivar går til sides, tenaren hentar kongesoga frå hylla, gir henne til Ivar og går attende til bordet.
 - `blekklatten`: Ivar går gjennom opninga i hylleveggen (merke 5). Kyrkjeboka ligg open på lesepulten. Ein dråpe renn ut av henne, biletet ristar, og dråpen veks til blekklatten (eit vesen på kartet). Etter kampen renn han saman til ein dråpe og siv ned i golvet, og Ivar går bort og les i boka.
 - Småprat (gjetarguten, husmannen og kona på Ekset) er manus med kjensler. Gjetarguten ser opp mot haugen, husmannen mot trykkjeriet og kona mot hovudhuset.
+- Over utmarka ligg lia (rad 0 til 12): setervegen går aust for setra opp ei rampe (27,12) til ei hylle, og over ein skrent til (rampe ved 24,5) ligg tjernet der bekken spring ut. Bekken fell over begge skrentane. Kista ytst på hylla (14,11) ser ein frå setervegen, men ein må opp rampa og over kloppa (rad 9) for å nå ho. Ho har pengar og ein ting (ei kiste kan ha begge). `nyeRader` på kartet flyttar staden i ei eldre lagring like mange rader ned.
 
 Ei dør med `vakt` stoppar Ivar på ruta når vaktmanuset har gått, også når flagget vart sett. Spelaren går sjølv vidare.
 

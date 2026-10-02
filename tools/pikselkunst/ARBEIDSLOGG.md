@@ -875,3 +875,44 @@ same måte, uansett kven som tek over.
   og utsikta glir saktare enn kartet. Nedst fell stupet ned i dis over dalbotnen.
 - **Står att:** Fjella øvst er éi rekkje med lik snø; nærare, mørkare fjell syner berre i kantane.
   Kanten i rad 0 er ei line rett over kartet (ingen nes eller viker over fleire rader).
+
+## Runde 27: lia over utmarka, med tjern, fossar og ei kiste på hylla
+
+- **Oppdrag:** Brukaren: utmarka (32 × 22 fliser) skal vere større, med ei skattekiste ein kan finne
+  litt høgare opp. Bekken skal halde fram oppover til der han spring ut, og ein skal gå oppover i lia
+  med skrentar og ramper som på Åsen. Ikkje rotete: det skal vere lett å sjå kvar ein kan gå.
+- **Gjort (kartet):**
+  - 13 nye rader øvst (kartet er 32 × 35). Tre nivå: den gamle utmarka nedst (rad 13 til 34), ei hylle
+    i lia over ein skrent (rad 12, rampe ved setervegen på 27,12) og tjernet øvst over ein skrent til
+    (rad 5, rampe på 24,5). Skogbandet som stengde utmarka i nord (gamal rad 0 og 1) er opna til gras
+    med nokre bjørker og graner.
+  - Bekken spring ut av tjernet (rad 1 til 3), fell over begge skrentane og renn rett ned i den gamle
+    bekken (x 18 og 19). Stryk på fossane (`17,4 18,4 17,5 18,5` og `18,11 19,11 18,12 19,12`) og under
+    brua som før (`17,26 18,26`). Stryket der bekken kom ut av skogen er borte, for no held bekken fram.
+  - Setervegen går frå vegen under setra (rad 22), opp aust for setra mellom huset og skogkanten (x 27),
+    opp rampa til hylla, og vidare nord til tjernet (ein liten plass ved ein stein). Ein sideveg går vest
+    over ei klopp (`Q`, rad 9) til kista.
+  - Kista (`k-utmark-hylla`, 14,11) står ytst på hylla vest for bekken: 60 skilling og eitt luktesalt.
+    Ein ser ho frå setervegen og frå graset under skrenten, men må opp rampa og over kloppa. `spel.js`:
+    ei kiste kan no ha både pengar og ein ting («Ivar fann 60 skilling og Luktesalt.»).
+  - Lia vest for tjernet kan ikkje nåast og har meir skog, så ho les som skogkant.
+- **Flytt (13 rader ned):** kantdøra (15,34), den låste setra (24,19), setra i `bygg` (y 17), den gøymde
+  kista (28,28), stryket under brua, `HAUG_UT` (haugbonden går inn i haugen på 8,20) og testane i
+  `sjekk-scene.html` (huldra: `plasser(25, 21, 3)`, følgjet på 26,21 og 25,21; haugbonden:
+  `plasser(8, 22, 1)` to gonger og haugen på 8,20). Folk står på merke og flytte seg sjølv. Merke 1 er
+  framleis kantdøra nedst, så døra frå Åsen fører same staden. `nyeRader: { n: 13, fraH: 22 }` på kartet:
+  ei lagring frå før (utan høgd, eller med 22 rader) blir flytt 13 rader ned når ho blir lasta, og
+  `lagre()` skriv no høgda på kartet i `st.pos.h`. `sjekk-gange.html` brukar ikkje utmarka.
+- **Rundar:** 1) Setervegen gjekk først langs bekken vest for setra (x 21): landkanten i vassflisa vart
+  ei flat olivenstripe mellom vatnet og stien, og stien låg klemd mellom bekken og veggen. Han går no
+  aust for setra. 2) Fossen over den nedre skrenten slutta i skum, og bekken byrja att eit stykke til
+  høgre, fordi bekken tok to steg til sides på tre rader (vassfeltet kneip av hjørna): bekken over hylla
+  er flytt éi rute aust, så han går rett ned frå fossen. 3) Bjørker rett under ein skrent dekte kanten
+  med krona: flytte ei rad ned.
+- **Vurdert:** Skjermbilete (`forhand/skjerm/r27e-*`, med og utan kveldslys, og `r27for-*` frå før):
+  tjernet med fossen, hylla med kloppa og kista, setervegen med rampa, graset under skrenten og
+  overgangen til setra. Skrentane les som bakkekantar med jord og stein, rampene har trinn, og bekken
+  er éin samanhengande straum frå tjernet til brua. Kista syner godt mot graset ytst på hylla.
+- **Står att:** Skrentane er éi rad høge, så lia er låg. Det er ikkje noko vad eller steinrekkje (berre
+  klopp). Den høge, smale steinen (`o`-varianten på 22,14) står litt einsleg i graset. Lia vest for
+  tjernet kan ein sjå, men ikkje gå til.

@@ -40,6 +40,7 @@
       st.kart = Motor.kart ? Motor.kart.id : st.kart;
       st.pos = Motor.spelar ? { x: Motor.spelar.x, y: Motor.spelar.y, dir: Motor.spelar.dir } : null;
     }
+    if (st.pos && D.KART[st.kart]) st.pos.h = D.KART[st.kart].rader.length;   // høgda på kartet (sjå nyeRader)
     try { localStorage.setItem(NOKKEL, JSON.stringify(st)); return true; } catch (e) { return false; }
   }
 
@@ -372,9 +373,11 @@
     kiste: k => {
       if (st.opna.includes(k.id)) return hending([{ t: "Kista er tom." }]);
       st.opna.push(k.id);
-      if (k.pengar) return hending([{ pengar: k.pengar }, { t: `Ivar fann ${k.pengar} skilling.` }]);
-      const t = D.TING[k.ting] || D.NOKKELTING[k.ting];
-      hending([{ gi: k.ting, n: k.n }, { t: `Ivar fann ${k.n > 1 ? k.n + " × " : ""}${t.namn}.` }]);
+      // Ei kiste kan ha pengar, ein ting eller begge.
+      const steg = [], fann = [];
+      if (k.pengar) { steg.push({ pengar: k.pengar }); fann.push(`${k.pengar} skilling`); }
+      if (k.ting) { const t = D.TING[k.ting] || D.NOKKELTING[k.ting]; steg.push({ gi: k.ting, n: k.n }); fann.push(`${k.n > 1 ? k.n + " × " : ""}${t.namn}`); }
+      return hending([...steg, { t: `Ivar fann ${fann.join(" og ")}.` }]);
     },
     // Kvile ved ei lampe. kvile: "scene" på kartet blir spela første gong partiet kviler der.
     lampe: () => {
@@ -666,6 +669,9 @@
     Motor.settFylgje(st.parti.some(m => m.id === "huldra") ? sprite("huldra") : null);
     st.parti.forEach(fyll);
     Motor.last(st.kart, "1");
+    // Eit kart som har fått nye rader øvst sidan spelet vart lagra: flytt staden like mange rader ned.
+    const nye = D.KART[st.kart] && D.KART[st.kart].nyeRader;
+    if (fraLagring && st.pos && nye && (st.pos.h || nye.fraH) === nye.fraH) { st.pos.y += nye.n; st.pos.h = D.KART[st.kart].rader.length; }
     if (fraLagring && st.pos) Motor.plasser(st.pos.x, st.pos.y, st.pos.dir);   // huldra blir sett ned attmed Ivar
     Motor.tilpass();
     if (!fraLagring) hending(D.MANUS.start); else Motor.pause(false);

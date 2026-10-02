@@ -148,7 +148,7 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   nedover i ein bekk, rolege band mot land i sjøen. På kartet: `vatn: { bekk: true, stryk: ["x,y"] }`
   gir straum og stryk (loddrette striper og skumkant nedst). Mjuke landfliser ved vatnet (bakke, ikkje
   ved bruendar) får òg eit vasslag, så vatnet rundar av spissen på ytre hjørne. Sjå med
-  `skjermbilete.py namn kart=utmarka m=1 x=17 y=9 stemning=ingen` (`stemning=ingen` tek bort kveldslyset).
+  `skjermbilete.py namn kart=utmarka m=1 x=17 y=22 stemning=ingen` (`stemning=ingen` tek bort kveldslyset), og fossane over skrentane i lia med `x=24 y=9`.
 - Høgd og djupn (Åsen, etter klippene over Narshe i FF6 og toppen av pyramiden i A Link to the Past,
   sjå `forhand/referansar/narshe-ark.png`): terrassefliser og bakgrunnslag med parallakse.
   - Kartteikn: `s` skrent (bakkekant mellom to nivå, `Pikslar.skrent`, slagskuggen held fram på flisa

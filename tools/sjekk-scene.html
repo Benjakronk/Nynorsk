@@ -413,7 +413,7 @@ f.onload = async () => {
 
     // a) Huldra ved setra: ryggen til (halen), snur seg, får namnet, ser mot fjellet og blir med.
     utanHuldra();
-    M.last("utmarka", "1"); M.plasser(25, 8, 3); await vent(300);
+    M.last("utmarka", "1"); M.plasser(25, 21, 3); await vent(300);
     const kvinne = M.aktor("Ei kvinne ved setra");
     talarBorte = []; overlapp = false;
     let ryggTil = false, motFjellet = false, huldraVed = null;
@@ -429,17 +429,17 @@ f.onload = async () => {
     sjekk(kvinne && ryggTil, "kvinna ved setra står med ryggen til Ivar, så halen syner");
     sjekk(motFjellet, "huldra snur seg mot fjellet når ho kjenner snøen");
     sjekk(!talarBorte.length && !overlapp, `den som talar, står på kartet, og ingen står på same rute${talarBorte.length ? " (" + talarBorte.join(", ") + ")" : ""}`);
-    sjekk(huldraVed && huldraVed.x === 26 && huldraVed.y === 8, `følgjet står der kvinna stod (${JSON.stringify(huldraVed)})`);
+    sjekk(huldraVed && huldraVed.x === 26 && huldraVed.y === 21, `følgjet står der kvinna stod (${JSON.stringify(huldraVed)})`);
     sjekk(s12.parti.some(m => m.id === "huldra") && s12.flagg.huldra_med && !s12.ord.snjo && s12.stev.includes("tungestevet"), "huldra er med, Ivar lytta berre til «snjo», og han lærte Tungestevet");
     sjekk(!M.aktor("Ei kvinne ved setra") && !M.aktor("Huldra") && kanGaa(), "ho står ikkje att på kartet, og Ivar kan gå");
     await M.gaa("spelar", { sti: "n1" });
-    sjekk(M.aktor("fylgje").x === 25 && M.aktor("fylgje").y === 8, "huldra går etter Ivar");
+    sjekk(M.aktor("fylgje").x === 25 && M.aktor("fylgje").y === 21, "huldra går etter Ivar");
     M.last("utmarka", "1"); await vent(150);
     sjekk(!M.aktor("Ei kvinne ved setra"), "ved setra står ingen når kartet blir lasta att");
 
     // c) Haugbonden, rett namn: forvandlinga gir han fargane att, huldra gir eit ord, og han går inn i haugen.
     delete s12.flagg.haug; delete s12.flagg.huldra_auga; delete s12.ord.hoyra; delete s12.ord.laus; s12.stev = s12.stev.filter(x => x !== "steinstevet");
-    M.last("utmarka", "1"); M.plasser(8, 9, 1); await vent(300);
+    M.last("utmarka", "1"); M.plasser(8, 22, 1); await vent(300);
     talarBorte = []; overlapp = false;
     let farga = false, iHaugen = false, huldraFram = false;
     tast("z");
@@ -447,7 +447,7 @@ f.onload = async () => {
       sjekkTalar12(["Vetten", "Haugbonden", "Huldra"]);
       const h = M.aktor("Haugbonden");
       if (h && /Du må ⟪?høyre/.test(taleTekst()) && h.u === "haugbonde_namn") farga = true;
-      if (h && h.x === 8 && h.y === 7) iHaugen = true;
+      if (h && h.x === 8 && h.y === 20) iHaugen = true;
       if (h && /Eg ser med/.test(taleTekst()) && naer(M.aktor("fylgje"), h)) huldraFram = true;
       if (!eiRute()) overlapp = true;
     }, (t, n) => lytt12(t, n));
@@ -462,7 +462,7 @@ f.onload = async () => {
 
     // d) Haugbonden, feil namn: kamp først, så får han namnet att og går inn i haugen.
     delete s12.flagg.haug; s12.stev = s12.stev.filter(x => x !== "steinstevet");
-    M.last("utmarka", "1"); M.plasser(8, 9, 1); await vent(300);
+    M.last("utmarka", "1"); M.plasser(8, 22, 1); await vent(300);
     talarBorte = [];
     let fargaEtterKamp = false;
     tast("z");

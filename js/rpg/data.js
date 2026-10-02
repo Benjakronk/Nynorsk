@@ -407,21 +407,41 @@ window.RPGData = (function () {
       inngang: [{ merke: "3", manus: "ut_forste" }],
     },
     utmarka: {
-      namn: "Utmarka", bygg: [{ id: "seter", x: 22, y: 4, h: 3 }], stemning: "kveld", golv: ",", bakgrunn: "utmark",
-      // Bekken renn nedover med straum, og har stryk der han kjem ned frå skogen og under brua.
-      vatn: { bekk: true, stryk: ["18,0", "19,0", "18,1", "19,1", "17,13", "18,13"] },
+      namn: "Utmarka", bygg: [{ id: "seter", x: 22, y: 17, h: 3 }], stemning: "kveld", golv: ",", bakgrunn: "utmark",
+      // Bekken renn nedover med straum. Han spring ut av tjernet øvst, fell over dei to skrentane (stryk)
+      // og har stryk under brua.
+      vatn: { bekk: true, stryk: ["17,4", "18,4", "17,5", "18,5", "18,11", "19,11", "18,12", "19,12", "17,26", "18,26"] },
       fiendar: { lag: [["vette"], ["irrbloss"], ["vette", "irrbloss"], ["vette", "vette"]] },
+      // Lia over utmarka (rad 0 til 12) kom til i runde 27. Ei lagring frå før (22 rader) blir flytt 13 rader ned.
+      nyeRader: { n: 13, fraH: 22 },
+      /* Nedst (rad 13 til 34) er den gamle utmarka med setra, haugen og brua. Over ein skrent (rad 12,
+         rampe ved setervegen på x 27) ligg ei hylle i lia, og over ein skrent til (rad 5, rampe på x 24)
+         tjernet der bekken spring ut. Bekken fell over begge skrentane. Kista står ytst på hylla vest for
+         bekken (14,11): ein ser ho frå setervegen, men må opp rampa og over kloppa (rad 9) for å nå ho. */
       rader: [
         "################################",
-        "#,,###,,##########~~###,####o.,#",
-        "#,#,,##,#,###,,,##,~~,o,,#,##,##",
-        "#,,#,,,,,,,,,,,,,,,~~,,,,,,,####",
-        "###,,,,,,,,,,,.,,,,~~,RRRR,,####",
-        "####,,.,,,,,,,,,,,,~~,RRRR,,,###",
-        "##,#,,,hhh,,,,,,,,,~~,WWDW,,#,,#",
-        "#,,,,,,hhh,,,,,,,,,~~..==T..####",
-        "#,,,,,..@..,o,,,,,~~,...=.%.####",
-        "#,##,t.....,,,,,,,~~,...=...#,,#",
+        "######t####,,~~~~~,,####t#######",
+        "#####t##,##,~~~~~~~,,,o,,,######",
+        "####,#,t,,o,,~~~~~~,,,,==t######",
+        "###,,,,,,t,,,,,,,~~,,,,,=,,,####",
+        "##sssssssssssssss~~sssss/sss####",
+        "##,,,,,,,,,,,,,,,~~,,,,,=,,,,###",
+        "#,,,,,t,,,,o,,,,,~~~,,,,=,,,t,##",
+        "#,,t,,,,,,,,,,,,,,~~,,,,=,,,,,##",
+        "##,,,,,,,,,,,,====QQ=====,,,,,##",
+        "#,,,,t,,,,,,,,=,,,~~,,,,====,t,#",
+        "#,,o,,,,,,,,,,K,,,~~,,,,,,,=,,,#",
+        "#sssssssssssssssss~~sssssss/sss#",
+        "##,,,,,,,,,,,,,,,,~~,,,,,,,=,,##",
+        "#,,t,#,,,,,,,,,,,,~~,,o,,#,=,,,#",
+        "#,#,,,,,,,,,,,t,,,,~~,,t,#,=#,##",
+        "#,,#,,,,,,,,,,,,,,,~~,,,,,,=####",
+        "###,,,,,,,,,,,.,,,,~~,RRRR,=####",
+        "####,,.,,,,,,,,,,,,~~,RRRR,=,###",
+        "##,#,,,hhh,,,,,,,,,~~,WWDW,=#,,#",
+        "#,,,,,,hhh,,,,,,,,,~~..==T.=####",
+        "#,,,,,..@..,o,,,,,~~,...=.%=####",
+        "#,##,t.....,,,,,,,~~,...====#,,#",
         "####,,,.=,,,,,,,,,~~,,,,=,,,o#,#",
         "###,,,,,=,,,,,,,,~~,o,,,=,,,.#,#",
         "#,,#,,.,=========QQ======,,,####",
@@ -436,10 +456,14 @@ window.RPGData = (function () {
         "###############1################",
       ],
       dorer: [
-        { ved: [15, 21], til: ["asen", "4"], kant: true },
-        { ved: [24, 6], laast: "Setra er stengd. Buskapen er ikkje komen til fjells enno." },
+        { ved: [15, 34], til: ["asen", "4"], kant: true },
+        { ved: [24, 19], laast: "Setra er stengd. Buskapen er ikkje komen til fjells enno." },
       ],
-      kister: [{ ved: [28, 15], pengar: 48, id: "k-utmark", gøymd: true }],
+      kister: [
+        { ved: [28, 28], pengar: 48, id: "k-utmark", gøymd: true },
+        // Kista på hylla over skrenten: ein ser ho frå setervegen, men må opp rampa og over kloppa.
+        { ved: [14, 11], pengar: 60, ting: "luktesalt", n: 1, id: "k-utmark-hylla" },
+      ],
       folk: [
         { merke: "@", u: "haugbonde", namn: "Vetten", atferd: "stille", retning: 0, tale: "haugbonde", vis: st => !st.flagg.haug },
         { merke: "%", u: "huldra", namn: "Ei kvinne ved setra", atferd: "snu", retning: 2, snu: [0, 2], tale: "huldra", vis: st => !st.flagg.huldra_med },
@@ -792,7 +816,7 @@ window.RPGData = (function () {
   const HAUG_FARGAR = { forvandling: ["bilete/spel/vette3_nameless_1x.png", "bilete/spel/vette3_restored_1x.png"], byt: "Haugbonden", u: "haugbonde_namn" };
   const HAUG_UT = [
     { snu: "Haugbonden", retning: "opp" }, { vent: 300 },
-    { gaa: "Haugbonden", rute: [8, 7], ut: true, fart: 520 },         // inn i haugen
+    { gaa: "Haugbonden", rute: [8, 20], ut: true, fart: 520 },         // inn i haugen
   ];
   const HAUG_NAMN = [
     { ...HAUG_FARGAR, tekst: "Fargane kjem attende i vetten. Luva blir raud, og auga blir varme." },
