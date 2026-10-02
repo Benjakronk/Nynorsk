@@ -393,7 +393,7 @@ window.Pikslar = (function () {
   const treCache = {};
   const treBilete = k => treCache[k] || (treCache[k] = TRE[k]());
 
-  const FAST = new Set(["+", "(", "u", "#", "t", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " "]);
+  const FAST = new Set(["+", "(", "u", "#", "t", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " ", "s", "M", "-"]);
   const ANIM = new Set(["~", "L", "T", "f", "n", "y"]);
   const VARIANT_EKSTRA = new Set(["Rt", "Rb", "Rtb"]);
   const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t"]);
@@ -644,7 +644,7 @@ window.Pikslar = (function () {
   /* ---------- Kantar mellom fliser ----------
      Gras veks inn over sanda (stiane: sjå Pikslar.sti), og vatnet får strandkant med skum.
      Motoren teiknar kantane oppå flisa, på sidene der naboen er av eit anna slag. */
-  const KLASSE = { ".": "gras", ",": "villgras", '"': "gras", "o": "gras", "h": "gras", "x": "gras", "|": "gras", "j": "gras", "#": "gras", "t": "gras", "=": "veg", "_": "sand", "~": "vatn" };
+  const KLASSE = { ".": "gras", ",": "villgras", '"': "gras", "o": "gras", "h": "gras", "x": "gras", "|": "gras", "j": "gras", "#": "gras", "t": "gras", "=": "veg", "/": "veg", "_": "sand", "~": "vatn" };
   const klasse = teikn => KLASSE[teikn] || null;
   /* Hjørne på ei sandstripe (stiane har kanten sin i Pikslar.sti), teikna med grasflisa til naboen (teikn), så tekstur og farge
      stemmer. hj: 0 nv, 1 na, 2 sa, 3 sv (kva hjørne). ytre: gras på dei to sidene som møtest
@@ -855,6 +855,203 @@ window.Pikslar = (function () {
     if (noko) { g.putImageData(bilde, 0, 0); svar = c; }
     cache.set(k, svar);
     return svar;
+  }
+
+  /* ---------- Terreng: skrentar, ramper og stupet (Åsen) ----------
+     Åsen er delt i nivå (terrassar) med synlege bakkekantar, og fell bratt ned mot utsikta nedst.
+     Alle tre blir teikna over kartpikslane (X, Y), så kanten held fram frå flis til flis.
+     felt kjem frå motoren: { id, w, h, golv, c(tx, ty) → teiknet på flisa (kanten forlengd) }.
+
+     - Skrent («s»): bakkekanten mellom to nivå, sett framanfrå. Graset på nivået over endar i ein
+       lys kant og ein mørk lepp av gras, så kjem ei framside av jord (lys øvst, mørk nedst, som
+       skrentane ved vatnet) med bergnabbar og grastuster, og ei skuggestripe på graset under.
+       Der skrenten møter bakke ein kan gå på (ei rampe eller open mark), flatar han ut.
+     - Rampe («/»): stien som går ned gjennom skrenten, med trinn i den tråkka jorda.
+     - Stup («M»): bergveggen nedst, etter klippene over Narshe i Final Fantasy VI: loddrette søyler
+       med lys venstre side og mørke sprekker, hyller med gras, store knausar og søkk. Nedover blir
+       berget disigare (luftperspektiv), og nedst løyser det seg opp i dis, så bakgrunnslaga
+       (dalen langt nede) syner gjennom. Lerretet har .ope (1 der pikselen er open) eller null. */
+  const TER = new Set(["s", "M", "-"]);
+  const BERG = ["#1c1a2c", "#2e2a3a", "#48434a", "#645e5e", "#827a74", "#a0978a", "#bdb4a4"];   // grå gneis, skuggar mot djup blå (Narshe)
+  const DIS = "#a6b4bc";
+  const JORDKANT = { lys: "#a87c52", hoy: "#8a6040", mid: "#6a4630", lag: "#4a3020", mork: "#3a2418" };
+  const bayer4 = (x, y) => ([0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5][(y & 3) * 4 + (x & 3)] + 0.5) / 16;
+  const smooth = t => t <= 0 ? 0 : t >= 1 ? 1 : t * t * (3 - 2 * t);
+  // Bakke ein kan gå på (eller ei rampe): her flatar skrenten ut.
+  const opning = c => c === "/" || (!FAST.has(c) && !TER.has(c));
+  // Pikslane i grasflisa (til graset over kanten på stupet).
+  function grasData(tx, ty, golv) {
+    const k = `grasdata:${golv}:${Math.floor(hash(tx, ty, 7) * 4)}`;
+    if (cache.has(k)) return cache.get(k);
+    const d = flis(".", 0, tx, ty, golv).getContext("2d").getImageData(0, 0, S, S).data;
+    const ut = new Uint32Array(d.buffer.slice(0));
+    cache.set(k, ut);
+    return ut;
+  }
+  const PK = {};
+  const pk = h => PK[h] || (PK[h] = pakk(h));
+  // Kolonna x (kan vere -1 eller 16) i skrenten på (tx, ty): toppen av framsida, foten, kor heil
+  // skrenten er (fak: 1 full, 0 flat der han møter open mark) og kor langt graset heng over.
+  const SKRENT_TAPER = 11;
+  function skrentKol(felt, tx, ty, x) {
+    const X = tx * S + x;
+    const vOpen = opning(felt.c(tx - 1, ty)), hOpen = opning(felt.c(tx + 1, ty));
+    const lepp = 1 + Math.floor(vstoy(X / 5, ty * 3, 501) * 2.99), fot = 14 + (vstoy(X / 6, ty * 3 + 1, 502) > 0.5 ? 1 : 0);
+    const d = Math.min(vOpen ? x + 0.5 : 99, hOpen ? 15.5 - x : 99);
+    const fak = d >= SKRENT_TAPER ? 1 : smooth(d / SKRENT_TAPER);
+    return { topp: Math.round(fot - (fot - lepp) * fak), fot, fak, heng: 1 + (hash(X, ty, 503) > 0.6 ? 1 : 0) + (hash(X, ty, 504) > 0.86 ? 1 : 0) };
+  }
+  // Slagskuggen frå skrenten på graset under (lyset kjem ovanfrå): d pikslar under foten.
+  function skrentSkugge(X, d, fak, GR) {
+    if (fak < 0.25) return 0;
+    if (d === 0) return GR[0];
+    if (d === 1 && fak > 0.45) return GR[1];
+    if (d === 2 && fak > 0.7 && (X & 1)) return GR[1];
+    return 0;
+  }
+  function skrent(felt, tx, ty) {
+    const k = `skrent:${felt.id}:${tx}:${ty}`;
+    if (cache.has(k)) return cache.get(k);
+    const c = lerret(S), g = c.getContext("2d"), bilde = g.createImageData(S, S), ut = new Uint32Array(bilde.data.buffer);
+    const GR = R_.gras.map(pk), V = R_.villgras.map(pk), B = BERG.map(pk), J = {};
+    for (const n in JORDKANT) J[n] = pk(JORDKANT[n]);
+    const K = []; for (let x = -1; x <= S; x++) K[x + 1] = skrentKol(felt, tx, ty, x);
+    // Graskledd skråning: der graset har glidd ut, syner jorda (jord), og her og der ein bergnabb (stein).
+    const inni = (x, y, fra) => { const q = K[x + 1]; return q && q.fak > 0.55 && y - q.topp >= q.heng + fra && y < q.fot - 1; };
+    const stein = (x, y) => inni(x, y, 2) && vstoy((tx * S + x) / 5, (ty * S + y) / 4, 505) > 0.7;
+    const jord = (x, y) => inni(x, y, 1) && !stein(x, y) && vstoy((tx * S + x) / 6, (ty * S + y) / 3.5, 513) > 0.62;
+    for (let x = 0; x < S; x++) {
+      const X = tx * S + x, q = K[x + 1], hh = q.fot - q.topp;
+      const straa = hash(X, ty, 514);                                   // grasstrå nedover skråninga
+      for (let y = 0; y < S; y++) {
+        const i = y * S + x;
+        if (y === q.topp - 1 && hh >= 3 && hash(X, ty, 509) > 0.4) { ut[i] = hash(X, ty, 515) > 0.7 ? GR[4] : GR[3]; continue; }   // lys kant der nivået over endar
+        if (y < q.topp) continue;
+        if (y >= q.fot) { const f = skrentSkugge(X, y - q.fot, q.fak, GR); if (f) ut[i] = f; continue; }
+        const kk = y - q.topp, rel = kk / Math.max(1, hh);
+        if (kk < Math.min(q.heng, hh)) { ut[i] = kk === 0 ? GR[3] : GR[2]; continue; }             // graskanten bøyer over
+        if (stein(x, y)) {
+          // Bergnabb: lys flate oppe til venstre, skugge nede til høgre.
+          const lyst = !stein(x - 1, y) || !stein(x, y - 1), mork = !stein(x + 1, y) || !stein(x, y + 1);
+          ut[i] = lyst && !mork ? B[5] : lyst ? B[4] : mork ? B[1] : B[3];
+          continue;
+        }
+        if (jord(x, y)) {
+          // Open jord: mørk skugge under graset som heng over, lys kant til venstre.
+          ut[i] = !jord(x, y - 1) ? J.mork : !jord(x - 1, y) ? J.lys : rel < 0.55 ? J.hoy : J.mid;
+          continue;
+        }
+        // Graset i skråninga: i skugge (vender bort frå ljoset), mørkare nedover, med strå.
+        let f = rel < 0.35 ? V[3] : rel < 0.7 ? V[2] : V[1];
+        if (straa > 0.55 && kk >= q.heng + 1 && kk < q.heng + 1 + Math.floor(straa * 5)) f = rel < 0.5 ? V[4] : V[3];
+        else if (straa < 0.18 && rel > 0.3) f = V[1];
+        if (y === q.fot - 1) f = V[0];
+        ut[i] = f;
+      }
+    }
+    g.putImageData(bilde, 0, 0);
+    cache.set(k, c);
+    return c;
+  }
+  // Slagskuggen frå ein skrent som held fram ned på flisa under (tx, ty), eller null.
+  function underSkrent(felt, tx, ty) {
+    const k = `underskrent:${felt.id}:${tx}:${ty}`;
+    if (cache.has(k)) return cache.get(k);
+    const GR = R_.gras.map(pk);
+    const c = lerret(S), g = c.getContext("2d"), bilde = g.createImageData(S, S), ut = new Uint32Array(bilde.data.buffer);
+    let noko = false;
+    for (let x = 0; x < S; x++) {
+      const q = skrentKol(felt, tx, ty - 1, x);
+      for (let y = 0; y < 3; y++) { const f = skrentSkugge(tx * S + x, S + y - q.fot, q.fak, GR); if (f && S + y - q.fot >= 0) { ut[y * S + x] = f; noko = true; } }
+    }
+    let svar = null;
+    if (noko) { g.putImageData(bilde, 0, 0); svar = c; }
+    cache.set(k, svar);
+    return svar;
+  }
+  // Rampa: stien gjennom skrenten (Pikslar.sti) med trinn av tråkka jord, eitt per fire rader.
+  function rampe(stifelt, felt, tx, ty) {
+    const k = `rampe:${felt.id}:${tx}:${ty}`;
+    if (cache.has(k)) return cache.get(k);
+    const lag = sti(stifelt, tx, ty);
+    let c = null;
+    if (lag) {
+      c = lerret(S); const g = c.getContext("2d"); g.drawImage(lag, 0, 0);
+      const bilde = g.getImageData(0, 0, S, S), p = new Uint32Array(bilde.data.buffer);
+      // Stiflata er raudbrun jord (sjå sti()): pikslar der raudt er klart sterkare enn grønt. Trinnet er
+      // ei mørk line med lys kant under, berre på jorda (ikkje på graset og strå i kanten).
+      const veg = v => (v >>> 24) > 0 && (v & 255) > ((v >> 8) & 255) + 18 && (v & 255) > 90;
+      for (const y0 of [2, 6, 10]) for (let x = 0; x < S; x++) {
+        if (veg(p[y0 * S + x]) && veg(p[(y0 + 1) * S + x])) { p[y0 * S + x] = JORD[1]; p[(y0 + 1) * S + x] = JORD[3]; }
+      }
+      g.putImageData(bilde, 0, 0);
+    }
+    cache.set(k, c);
+    return c;
+  }
+  // Øvste rada i stupet som ruta (tx, ty) ligg i, eller null om ruta ikkje er stup.
+  function stupTopp(felt, tx, ty) {
+    if (tx < 0 || tx >= felt.w || felt.c(tx, ty) !== "M") return null;
+    let t0 = ty; while (t0 > 0 && felt.c(tx, t0 - 1) === "M") t0--;
+    return t0;
+  }
+  // Djupna i berget (1 ute på ein knaus, 0 inne i ei renne) ved kartpikselen X, Yr pikslar ned i stupet.
+  // Store, runde knausar som lener seg litt, med mindre søyler oppå.
+  const knaus = (X, Yr) => 0.62 * vstoy(X / 15 + Yr / 70, 0.5, 531) + 0.38 * vstoy(X / 5.5 + Yr / 40, Yr / 30, 532);
+  function stup(felt, tx, ty) {
+    const k = `stup:${felt.id}:${tx}:${ty}`;
+    if (cache.has(k)) return cache.get(k);
+    const t0 = stupTopp(felt, tx, ty);
+    let t1 = ty; while (t1 < felt.h - 1 && felt.c(tx, t1 + 1) === "M") t1++;
+    const H = (t1 - t0 + 1) * S, idx = ty - t0, nedst = felt.c(tx, t1 + 1) === "-" || t1 === felt.h - 1;
+    const c = lerret(S), g = c.getContext("2d"), bilde = g.createImageData(S, S), ut = new Uint32Array(bilde.data.buffer);
+    const ope = new Uint8Array(S * S);
+    const gras = grasData(tx, t0 - 1, felt.golv);
+    // Fargane med dis: tonen blanda mot DIS i sju steg (ein palett, ikkje mjuk overgang).
+    const farge = (hex, steg) => pk(blend(hex, DIS, steg / 7 * 0.92));
+    // Eit nes framfor (nabokolonna til venstre byrjar lenger nede, eller er bakke): skugge på berget
+    // bak, mot høgre. Sjølve neset får lys kant mot venstre og mørk mot høgre.
+    const vT = stupTopp(felt, tx - 1, ty), hT = stupTopp(felt, tx + 1, ty);
+    const vNes = vT === null ? tx > 0 && opning(felt.c(tx - 1, ty)) : vT > t0;
+    const kantV = vT !== null && vT < t0, kantH = hT !== null && hT < t0;
+    for (let x = 0; x < S; x++) {
+      const X = tx * S + x;
+      const lepp = 1 + Math.floor(vstoy(X / 7, t0 * 5, 521) * 3.99);
+      const bunn = nedst ? H - (1 + Math.floor(vstoy(X / 8, t0 * 5 + 1, 525) * 7)) : H + 99;
+      const heng = 1 + (hash(X, t0, 527) > 0.55 ? 1 : 0);
+      for (let y = 0; y < S; y++) {
+        const i = y * S + x, Yr = idx * S + y;
+        if (Yr < lepp) { ut[i] = gras[i]; continue; }
+        const kk = Yr - lepp;
+        // Dis: meir nedover, og mykje i den nedste kanten før berget løyser seg opp.
+        let q = Math.pow(kk / Math.max(1, H - lepp), 1.5) * 0.5;
+        if (Yr > bunn - 9) q += (Yr - (bunn - 9)) / 9 * 0.4;
+        if (Yr >= bunn || (Yr >= bunn - 5 && bayer4(X, Yr) < (Yr - (bunn - 5) + 1) / 6)) { ope[i] = 1; continue; }
+        const steg = Math.min(7, Math.floor(q * 7 + bayer4(X + 1, Yr)));
+        if (kk < heng) { ut[i] = farge(R_.gras[0], steg); continue; }     // mørk lepp av gras over kanten
+        // Knausane: lyset frå venstre treffer sida som vender mot venstre, rennene er djupe skuggar.
+        const d = knaus(X, Yr), helling = knaus(X + 1.5, Yr) - knaus(X - 1.5, Yr);
+        let l = 0.5 + helling * 5.5 + (d - 0.5) * 1.1 + (kk < 6 ? 0.12 : 0);
+        // Småbrot: korte, lyse flak og mørke sprekker i blokker på 2 × 3 pikslar.
+        const bx = Math.floor((X + (Math.floor(Yr / 3) & 1)) / 2), by = Math.floor(Yr / 3), hb = hash(bx, by, 533);
+        if (hb > 0.86) l += 0.16; else if (hb < 0.12) l -= 0.18;
+        let v = Math.floor(l * 6 + (bayer4(X, Yr) - 0.5) * 0.7);
+        if (d < 0.32) v = Math.min(v, 1);                                   // renne: djup skugge
+        if (d < 0.26) v = 0;
+        if (kk === heng && v > 1) v = Math.max(v, 5);                       // lys kant øvst på berget
+        if (kantV && x === 0) v = 6;
+        if (kantH && x === S - 1) v = 0;
+        if (vNes && x < 6 - (Yr & 1)) v -= 2;
+        v = Math.max(0, Math.min(6, v));
+        // Litt gras og lyng på knausane (lyse, flate parti).
+        const gr = kk > heng + 1 && v >= 4 && helling < -0.02 && hash(Math.floor(X / 2), Math.floor(Yr / 2), 534) > 0.9;
+        ut[i] = gr ? farge(R_.gras[1], steg) : farge(BERG[v], steg);
+      }
+    }
+    g.putImageData(bilde, 0, 0);
+    c.ope = ope.some(v => v) ? ope : null;
+    cache.set(k, c);
+    return c;
   }
 
   /* ---------- Figurar (16 × 24) ---------- */
@@ -1176,6 +1373,8 @@ window.Pikslar = (function () {
     for (const d of Object.values(PNG)) ut.push(d.fil);
     for (const n of NAERBILETE) ut.push(`bilete/spel/naer/${n}.png`);
     for (const n of Object.keys(D.LYSKJELDER || {})) ut.push(`bilete/spel/lys/${n}.png`);   // glødformene til lyset (glod.py)
+    // Bakgrunnslaga og forgrunnen (parallakse, laga med tools/pikselkunst/utsikt.py)
+    for (const k of Object.values(D.KART)) for (const l of [...(k.parallakse || []), ...(k.forgrunn || [])]) ut.push(`bilete/spel/parallakse/${l.bilete}.png`);
     return ut;
   }
 
@@ -1260,6 +1459,6 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, kant, stiHjorne, sti, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
+  return { S, FW, FH, flis, topp, kant, stiHjorne, sti, skrent, underSkrent, rampe, stup, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
     hent, klar, forhandslast, alleBilete, ILD, SETE, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
 })();

@@ -24,7 +24,7 @@
    tone(lag, rgb, ms), spot(kven, r, ms) (lyset: sjå «Lys» under) */
 window.Motor = (function () {
   "use strict";
-  const S = Pikslar.S, VW = 20, VH = 12;
+  const S = Pikslar.S, VW = 20, VH = 12, LW = VW * S, LH = VH * S;
   const $ = id => document.getElementById(id);
   const E = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
@@ -113,7 +113,7 @@ window.Motor = (function () {
     // Talmerke (framfor dører og ved kantane) som ligg inntil ein sti, blir sti, så stien går heilt fram til døra.
     for (const [m, [x, y]] of Object.entries(merke)) {
       if (!/[0-9]/.test(m)) continue;
-      if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => (fliser[y + dy] || [])[x + dx] === "=")) fliser[y][x] = "=";
+      if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => "=/".includes((fliser[y + dy] || [])[x + dx] || "x"))) fliser[y][x] = "=";
     }
     Object.assign(merke, (RPGData.EKSTRA_MERKE || {})[id] || {});
     const folk = (def.folk || []).filter(f => merke[f.merke] && (!f.vis || f.vis(krokar.tilstand()))).map(f => {
@@ -501,25 +501,30 @@ window.Motor = (function () {
 
   /* Kamera: til ei rute [x, y], til ein figur (som det så følgjer), eller null (tilbake til
      spelaren). Kameraet glir dit på ms millisekund. */
-  let kam = null, sentrum = { x: 0, y: 0 };
+  let kam = null, sentrum = { x: 0, y: 0 }, kameraNo = { x: 0, y: 0 };   // kameraNo: øvre venstre hjørne i pikslar no
   /* Kameraet fylgjer etter med fast fart i heile pikslar per tikk, som i FF6, og ikkje med ei
      mjuk glidning: med glidning mot noko som går, flytta biletet seg ujamt. Farten blir rekna
      slik at kameraet er framme på ms (minst 1 piksel per tikk). Går målet, flyttar kameraet seg
      med målet i tillegg, så det fangar det og så går i takt. kam.px er øvre venstre hjørne i pikslar. */
+  /* Utsikt (kart.def.kameraNed = { fra, til }): når målet er nedanfor rad fra, ser kameraet lenger
+     ned, ei halv rad per rad målet går ned, opptil (til - fra) / 2 rader. Då får utsikta under stupet
+     meir plass. Halv fart gir heile pikslar: spelaren går 2 pikslar per tikk, kameraet 3. */
+  const utsiktNed = y => { const k = kart.def.kameraNed; return k ? Math.max(0, Math.min(k.til - k.fra, y - k.fra)) / 2 : 0; };
   const kameraMaal = m => ({                                           // øvre venstre hjørne for eit sentrum, innanfor kartet
     x: kart.w < VW ? 0 : Math.round(Math.max(0, Math.min(kart.w - VW, m.x - (VW - 1) / 2)) * S),
-    y: kart.h < VH ? 0 : Math.round(Math.max(0, Math.min(kart.h - VH, m.y - (VH - 1) / 2)) * S),
+    y: kart.h < VH ? 0 : Math.round(Math.max(0, Math.min(kart.h - VH, m.y + utsiktNed(m.y) - (VH - 1) / 2)) * S),
   });
   function kamera(til, ms = 900) {
     const a = typeof til === "string" ? aktor(til) : null;
     const mal = til == null ? () => ({ x: spelar.fx, y: spelar.fy }) : a ? () => ({ x: a.fx, y: a.fy }) : () => ({ x: til[0], y: til[1] });
-    const px = kameraMaal(sentrum), m = kameraMaal(mal()), n = Math.max(1, tikk(ms));
+    const px = { x: kameraNo.x, y: kameraNo.y }, m = kameraMaal(mal()), n = Math.max(1, tikk(ms));
     kam = { px, mal, sistMaal: m, tikk: tikk(performance.now()), tilbake: til == null,
       fart: { x: Math.max(1, Math.ceil(Math.abs(m.x - px.x) / n)), y: Math.max(1, Math.ceil(Math.abs(m.y - px.y) / n)) } };
     return vent(ms);
   }
-  function kameraSentrum(no) {
-    if (!kam) return { x: spelar.fx, y: spelar.fy };
+  // Øvre venstre hjørne til kameraet no, i heile pikslar.
+  function kameraPx(no) {
+    if (!kam) return kameraMaal({ x: spelar.fx, y: spelar.fy });
     const t = tikk(no), n = t - kam.tikk;
     if (n > 0) {
       kam.tikk = t;
@@ -530,9 +535,9 @@ window.Motor = (function () {
         kam.px[k] += Math.sign(att) * Math.min(Math.abs(att), kam.fart[k] * n);
       }
       kam.sistMaal = m;
-      if (kam.tilbake && kam.px.x === m.x && kam.px.y === m.y) { kam = null; return { x: spelar.fx, y: spelar.fy }; }
+      if (kam.tilbake && kam.px.x === m.x && kam.px.y === m.y) { kam = null; return kameraMaal({ x: spelar.fx, y: spelar.fy }); }
     }
-    return { x: kam.px.x / S + (VW - 1) / 2, y: kam.px.y / S + (VH - 1) / 2 };
+    return { x: kam.px.x, y: kam.px.y };
   }
 
   // Ristar biletet (eit skred, ein dør som smell).
@@ -622,6 +627,74 @@ window.Motor = (function () {
     return kart.stifelt;
   }
 
+  /* Terrengfeltet til Pikslar.skrent, Pikslar.stup og Pikslar.rampe: teiknet på kvar flis (utanfor
+     kartet blir kanten forlengd), så skrentar og stup kan sjå på naboane sine. */
+  function terrengfelt() {
+    if (kart.terrengfelt) return kart.terrengfelt;
+    const kx = v => Math.max(0, Math.min(kart.w - 1, v)), ky = v => Math.max(0, Math.min(kart.h - 1, v));
+    kart.terrengfelt = { id: kart.id, w: kart.w, h: kart.h, golv: kart.def.golv, c: (x, y) => kart.fliser[ky(y)][kx(x)] };
+    return kart.terrengfelt;
+  }
+
+  /* ---------- Parallakse: bakgrunnslag og forgrunn ----------
+     Som på Super Nintendo (toppen av pyramiden i A Link to the Past, klippene over Narshe i FF6):
+     landskapet langt nede er eigne lag som flyttar seg saktare enn kartet (faktor under 1), og
+     forgrunnen (greiner, høgt gras) flyttar seg raskare (faktor over 1). Laga står i kart.def:
+       parallakse: [{ bilete, faktor, ved: [kx, ky], x, y }, …]   bak kartet, det fjernaste først
+       forgrunn:   [{ bilete, faktor, ved: [kx, ky], x, y }, …]   over alt anna
+     bilete er namnet på fila i bilete/spel/parallakse/. x og y er der øvre venstre hjørne står på
+     skjermen (i pikslar) når kameraet står med øvre venstre flis på ved. faktor er eit tal eller
+     [fx, fy]. Kameraet står på heile pikslar, og laget blir runda til heile pikslar for seg:
+     posisjonen er ein monoton funksjon av kameraet, så ingenting ristar fram og attende.
+     Bakgrunnen syner gjennom luftfliser («-»: ikkje gangbare, ingen bakke) og der stupet («M»)
+     løyser seg opp i dis nedst. luftfarge fyller skjermen under laga. */
+  const LUFT = "-";
+  const parallaksebilete = namn => Pikslar.hent(`bilete/spel/parallakse/${namn}.png`);
+  function lagPos(l, camX, camY) {
+    const f = Array.isArray(l.faktor) ? l.faktor : [l.faktor, l.faktor], ved = l.ved || [0, 0];
+    return [Math.round(l.x - (camX - ved[0] * S) * f[0]), Math.round(l.y - (camY - ved[1] * S) * f[1])];
+  }
+  function teiknLag(lag, camX, camY, forgrunn) {
+    for (const l of lag || []) {
+      const img = parallaksebilete(l.bilete);
+      if (!Pikslar.klar(img)) continue;
+      const [x, y] = lagPos(l, camX, camY);
+      if (x >= LW || y >= LH || x + img.naturalWidth <= 0 || y + img.naturalHeight <= 0) continue;
+      g.drawImage(img, x, y);
+      if (forgrunn) { maske(img, x, y, true); luftUt(img, x, y); }
+    }
+  }
+  // Luftmaska: pikslane der bakgrunnen syner (luftfliser og opne pikslar i stupet). Lyset reknar
+  // dei med nivå 5 (fjernt: ingen skyskuggar og ingen glød, sjå lys()).
+  const luftMaske = new Uint8Array(LW * LH);
+  let harLuft = false;
+  function luftRute(sx, sy, ope) {
+    harLuft = true;
+    for (let y = 0; y < S; y++) {
+      const yy = sy + y; if (yy < 0 || yy >= LH) continue;
+      for (let x = 0; x < S; x++) {
+        const xx = sx + x; if (xx < 0 || xx >= LW) continue;
+        if (!ope || ope[y * S + x]) luftMaske[yy * LW + xx] = 1;
+      }
+    }
+  }
+  // Eit forgrunnselement som dekkjer lufta, høyrer til forgrunnen (alfa frå biletet, éin gong).
+  const alfar = new WeakMap();
+  function luftUt(img, x0, y0) {
+    if (!harLuft) return;
+    let a = alfar.get(img);
+    if (!a) {
+      const c = document.createElement("canvas"); c.width = img.naturalWidth; c.height = img.naturalHeight;
+      const cg = c.getContext("2d", { willReadFrequently: true }); cg.drawImage(img, 0, 0);
+      const d = cg.getImageData(0, 0, c.width, c.height).data; a = new Uint8Array(c.width * c.height);
+      for (let i = 0; i < a.length; i++) a[i] = d[i * 4 + 3] > 0 ? 1 : 0;
+      alfar.set(img, a);
+    }
+    const w = img.naturalWidth, h = img.naturalHeight;
+    for (let y = Math.max(0, -y0); y < h && y0 + y < LH; y++) for (let x = Math.max(0, -x0); x < w && x0 + x < LW; x++)
+      if (a[y * w + x]) luftMaske[(y0 + y) * LW + x0 + x] = 0;
+  }
+
   /* ---------- Lys: fargerekning som på Super Nintendo ----------
      Final Fantasy VI har lyset mest teikna inn i pikslane. Resten gjer maskinvara: fargerekning
      (color math) som legg til, trekkjer frå eller tek snittet av ein fast farge, med klemming
@@ -634,8 +707,7 @@ window.Motor = (function () {
      hardkanta glødformer i tre nivå (lysNiva, bileta i bilete/spel/lys/) som flimrar i same takt
      som elden, og fargane i gløden går på rundgang (palettanimasjon).
      Ingen mjuke gradientar: ein fargeovergang nedover skjermen (hdma) går i trinn på 8 rader. */
-  const LW = VW * S, LH = VH * S;
-  const lysNiva = new Uint8Array(LW * LH);         // 0 grunn, 1 til 3 glød, 4 skyskugge
+  const lysNiva = new Uint8Array(LW * LH);         // 0 grunn, 1 til 3 glød, 4 skyskugge, 5 fjernt (bakgrunnslaga)
   const figLerret = document.createElement("canvas"); figLerret.width = LW; figLerret.height = LH;
   const fg = figLerret.getContext("2d", { willReadFrequently: true });
   let figMaske = false;                            // er maska i bruk i dette biletet
@@ -809,13 +881,16 @@ window.Motor = (function () {
       if (iv) stemple(glodRamme(iv, no, 0), (spelar.fx + ox) * S + 8, (spelar.fy + oy) * S + 2);
       if (st.straalar) for (let y = 0; y < kart.h; y++) for (let x = 0; x < kart.w; x++) if (kart.fliser[y][x] === "u") straale(Math.round((x + ox) * S) + 4, Math.round((y + oy) * S) + 11);
     }
-    // Operasjonane for kvart nivå (0 grunn, 1 til 3 glød, 4 skugge), for bakgrunn og figurar.
+    // Bakgrunnslaga (dalen og fjella langt nede) får nivå 5: ingen skyskugge eller glød der,
+    // berre fjern-operasjonen til stemninga (eller bak) og hdma.
+    if (harLuft) for (let i = 0; i < luftMaske.length; i++) if (luftMaske[i]) lysNiva[i] = 5;
+    // Operasjonane for kvart nivå (0 grunn, 1 til 3 glød, 4 skugge, 5 fjernt), for bakgrunn og figurar.
     const syk = st.syklus ? Math.floor(no / 150) : 0;
-    const opNiva = (l, n) => n === 4 ? (st.skugge || {})[l] || st[l] || {} : n > 0 && st.glod ? st.glod[l][n - 1] : st[l] || {};
+    const opNiva = (l, n) => n === 5 ? st.fjern || st[l] || {} : n === 4 ? (st.skugge || {})[l] || st[l] || {} : n > 0 && st.glod ? st.glod[l][n - 1] : st[l] || {};
     const lag = (l, n, y, tone) => {
       const op = opNiva(l, n);
       const sy = n > 0 && n < 4 && st.syklus ? st.syklus[(syk + n) % st.syklus.length] : null3;
-      const h = l === "bak" && (n === 0 || n === 4) ? hdma(st.hdma, y) : null3;
+      const h = l === "bak" && (n === 0 || n >= 4) ? hdma(st.hdma, y) : null3;
       return lut(sum3(op.p || null3, h, sy, tone, bl), op.snitt, op.lys == null ? 15 : op.lys);
     };
     // Figurmaska: berre rektangelet rundt figurane blir lese.
@@ -827,7 +902,7 @@ window.Motor = (function () {
     const sa = Math.round((st.sepia || 0) * 256), sb = 256 - sa;
     const lb = [], lf = [];
     for (let y = 0; y < LH; y++) {
-      if ((y & 7) === 0) for (let n = 0; n < 5; n++) { lb[n] = lag("bak", n, y, tb); lf[n] = fm ? lag("fig", n, y, tf) : lb[n]; }
+      if ((y & 7) === 0) for (let n = 0; n < 6; n++) { lb[n] = lag("bak", n, y, tb); lf[n] = fm ? lag("fig", n, y, tf) : lb[n]; }
       const mrad = fm !== null && y >= fy0 && y < fy1 ? (y - fy0) * fw - fx0 : null;   // maskeindeks for x i rada
       // Spotlight: utanfor sirkelen er det svart, i eit band på tre pikslar rundt kanten annakvar piksel.
       let ia = 0, ib = LW, ua = 0, ub = LW;
@@ -1006,23 +1081,36 @@ window.Motor = (function () {
 
   function teikn(no) {
     if (!kart) return;
-    const sm = kameraSentrum(no);
     // Kameraet står alltid på heile pikslar (som på SNES). Med brøkdelar blir fliser og figurar
     // runda kvar for seg, og figurane ristar éin piksel mot bakken når kameraet glir.
-    const kx = Math.round(Math.max(0, Math.min(kart.w - VW, sm.x - (VW - 1) / 2)) * S) / S;
-    const ky = Math.round(Math.max(0, Math.min(kart.h - VH, sm.y - (VH - 1) / 2)) * S) / S;
-    sentrum = { x: kx + (VW - 1) / 2, y: ky + (VH - 1) / 2 };       // der kameraet faktisk står (til neste kamerarørsle)
+    kameraNo = kameraPx(no);
+    const kx = kameraNo.x / S, ky = kameraNo.y / S;
+    sentrum = { x: kx + (VW - 1) / 2, y: ky + (VH - 1) / 2 };       // der kameraet faktisk står (for testane)
     const ox = kart.w < VW ? (VW - kart.w) / 2 : -kx, oy = kart.h < VH ? (VH - kart.h) / 2 : -ky;
     g.fillStyle = "#0e0c12"; g.fillRect(0, 0, lerret.width, lerret.height);
     // Figurmaska til lyset (sjå lys()): berre når kartet har ei stemning eller ei toning av figurane.
     figMaske = !!((RPGData.STEMNINGAR || {})[kart.def.stemning] || effekt.tone.fig || effekt.tone.bak);
     if (figMaske) nyMaske();
+    // Bakgrunnslaga (parallakse): det fjernaste først. Kameraet i heile pikslar.
+    const camX = Math.round(-ox * S), camY = Math.round(-oy * S);
+    if (harLuft) { luftMaske.fill(0); harLuft = false; }
+    if (kart.def.parallakse) {
+      // Berre innanfor kartet: eit lite kart (minnet) har mørkt rundt seg, ikkje utsikt.
+      g.save(); g.beginPath(); g.rect(Math.round(ox * S), Math.round(oy * S), kart.w * S, kart.h * S); g.clip();
+      if (kart.def.luftfarge) { g.fillStyle = kart.def.luftfarge; g.fillRect(0, 0, LW, LH); }
+      teiknLag(kart.def.parallakse, camX, camY, false);
+      g.restore();
+    }
     const x0 = Math.floor(-ox) - 1, y0 = Math.floor(-oy) - 1;
     const naturFig = [];
     // Rada under skjermen er med, fordi høge figurar (tre, murar) står der og stikk opp i biletet.
     for (let y = Math.max(0, y0); y < Math.min(kart.h, y0 + VH + 5); y++) for (let x = Math.max(0, x0 - 1); x < Math.min(kart.w, x0 + VW + 3); x++) {
       const c = kart.fliser[y][x];
       const sx = Math.round((x + ox) * S), sy = Math.round((y + oy) * S);
+      // Luft: ingen bakke, bakgrunnslaga syner gjennom.
+      if (c === LUFT) { luftRute(sx, sy, null); continue; }
+      // Stupet: bergveggen som fell ned mot utsikta, og løyser seg opp i dis nedst (Pikslar.stup).
+      if (c === "M") { const st = Pikslar.stup(terrengfelt(), x, y); g.drawImage(st, sx, sy); if (st.ope) luftRute(sx, sy, st.ope); continue; }
       // Veggar med vegg eller dør under seg er sidevegger: dei blir teikna ovanfrå.
       const under = y + 1 < kart.h ? kart.fliser[y + 1][x] : null;
       const topp = "XcG".includes(c) && (under === null || "XcGE".includes(under));
@@ -1052,8 +1140,13 @@ window.Motor = (function () {
         let vill = 0, lag = 0;
         for (const [, dx, dy] of NABOBIT) { const k = Pikslar.klasse((kart.fliser[y + dy] || [])[x + dx]); if (k === "villgras") vill++; else if (k === "gras") lag++; }
         g.drawImage(Pikslar.flis(vill > lag ? "," : ".", no, x, y, kart.def.golv), sx, sy);
-        const sl = Pikslar.sti(stifelt(), x, y);
+        // Rampa («/») er stien som går ned gjennom ein skrent, med trinn i den tråkka jorda.
+        const sl = c === "/" ? Pikslar.rampe(stifelt(), terrengfelt(), x, y) : Pikslar.sti(stifelt(), x, y);
         if (sl) g.drawImage(sl, sx, sy);
+      } else if (c === "s") {
+        // Skrent mellom to nivå (terrassar): graset over og under, bakkekanten oppå (Pikslar.skrent).
+        g.drawImage(Pikslar.flis(".", no, x, y, kart.def.golv), sx, sy);
+        g.drawImage(Pikslar.skrent(terrengfelt(), x, y), sx, sy);
       } else {
         g.drawImage(Pikslar.flis(fk, no, x, y, kart.def.golv), sx, sy);
         // Grasflis ved ein sti: stien kan flytte seg inn på graset, og frynsa ligg her.
@@ -1063,6 +1156,8 @@ window.Motor = (function () {
           if (sl) g.drawImage(sl, sx, sy);
         }
       }
+      // Under ein skrent: slagskuggen frå bakkekanten held fram på denne flisa.
+      if (y > 0 && c !== "s" && kart.fliser[y - 1][x] === "s") { const us = Pikslar.underSkrent(terrengfelt(), x, y); if (us) g.drawImage(us, sx, sy); }
       // Steingard: muren er ein figur som blir sortert etter djupn
       if (c === "j") {
         const nb = (dx, dy) => (kart.fliser[y + dy] && kart.fliser[y + dy][x + dx]) === "j";
@@ -1184,6 +1279,8 @@ window.Motor = (function () {
       });
       if (bak) { g.globalAlpha = 0.4; g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy); g.globalAlpha = 1; }
     }
+    // Forgrunnen (greiner, høgt gras) over alt anna, raskare enn kartet.
+    if (kart.def.forgrunn) teiknLag(kart.def.forgrunn, camX, camY, true);
     lys(no, ox, oy);
   }
 

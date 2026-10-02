@@ -41,8 +41,8 @@ function sjekkOp(op, stad) {
 }
 for (const [id, st] of Object.entries(D.STEMNINGAR || {})) {
   const stad = `stemning ${id}`;
-  for (const k of Object.keys(st)) if (!["bak", "fig", "hdma", "glod", "syklus", "kjelder", "ivar", "skyer", "skugge", "straalar", "sepia"].includes(k)) feil.push(`${stad}: ukjend nøkkel «${k}»`);
-  if (st.bak) sjekkOp(st.bak, stad + " bak"); if (st.fig) sjekkOp(st.fig, stad + " fig");
+  for (const k of Object.keys(st)) if (!["bak", "fig", "fjern", "hdma", "glod", "syklus", "kjelder", "ivar", "skyer", "skugge", "straalar", "sepia"].includes(k)) feil.push(`${stad}: ukjend nøkkel «${k}»`);
+  if (st.bak) sjekkOp(st.bak, stad + " bak"); if (st.fig) sjekkOp(st.fig, stad + " fig"); if (st.fjern) sjekkOp(st.fjern, stad + " fjern");
   if (st.hdma && !(Array.isArray(st.hdma) && st.hdma.every((h, i) => Number.isInteger(h[0]) && h[0] >= 0 && h[0] <= 192 && er3(h[1], -31, 31) && (i === 0 || h[0] >= st.hdma[i - 1][0])))) feil.push(`${stad}: hdma må vere [[rad, [r, g, b]], …] med stigande rader frå 0 til 192`);
   if (st.glod) for (const l of ["bak", "fig"]) { if (!Array.isArray(st.glod[l]) || st.glod[l].length !== 3) feil.push(`${stad}: glod.${l} må ha tre nivå`); else st.glod[l].forEach((op, i) => sjekkOp(op, `${stad} glod.${l}[${i}]`)); }
   if ((st.kjelder || st.ivar || st.straalar) && !st.glod) feil.push(`${stad}: kjelder, ivar og straalar treng glod`);
@@ -71,6 +71,49 @@ for (const [id, k] of Object.entries(D.KART)) if (k.vatn) {
   if ("bekk" in k.vatn && typeof k.vatn.bekk !== "boolean") feil.push(`${id}: vatn.bekk skal vere true eller false`);
 }
 for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR || {})[k.stemning]) feil.push(`${id}: ukjend stemning «${k.stemning}» (sjå STEMNINGAR)`);
+/* Terreng og parallakse (sjå «Parallakse» i motor.js): luft («-») berre med bakgrunnslag, under eit
+   stup («M») er det meir stup eller luft, ramper («/») ligg i ein skrent med bakke over og under,
+   bileta finst, faktoren er under 1 bak kartet og over 1 i forgrunnen, og det bakaste laget dekkjer
+   heile skjermen der lufta kan synast, for alle kameraposisjonar. */
+{
+  const fsP = require("fs"), stiP = require("path");
+  const pngStorleik = f => { const b = fsP.readFileSync(f); return { w: b.readUInt32BE(16), h: b.readUInt32BE(20) }; };
+  const VW = 20, VH = 12, S = 16;
+  for (const [id, k] of Object.entries(D.KART)) {
+    const R = k.rader, h = R.length, w = R[0].length, c = (x, y) => (R[y] || "")[x];
+    if (R.some(r => r.includes("-")) && !(k.parallakse || []).length) feil.push(`${id}: luftfliser («-») utan parallakse`);
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      if (c(x, y) === "M" && y < h - 1 && !"M-".includes(c(x, y + 1))) feil.push(`${id}: under stupet på ${x},${y} er «${c(x, y + 1)}» (skal vere stup eller luft)`);
+      if (c(x, y) === "-" && y < h - 1 && c(x, y + 1) !== "-") feil.push(`${id}: under lufta på ${x},${y} er «${c(x, y + 1)}»`);
+      if (c(x, y) === "/") {
+        if (!"s/".includes(c(x - 1, y) || "s") || !"s/".includes(c(x + 1, y) || "s")) feil.push(`${id}: rampa på ${x},${y} ligg ikkje i ein skrent`);
+        for (const dy of [-1, 1]) { const n = c(x, y + dy); if (n && /[sM\-#tRWv|]/.test(n)) feil.push(`${id}: rampa på ${x},${y} har «${n}» ${dy < 0 ? "over" : "under"} seg`); }
+      }
+    }
+    if (k.kameraNed && !(Number.isFinite(k.kameraNed.fra) && Number.isFinite(k.kameraNed.til) && k.kameraNed.til > k.kameraNed.fra)) feil.push(`${id}: kameraNed treng fra < til`);
+    const lag = [["parallakse", k.parallakse], ["forgrunn", k.forgrunn]];
+    for (const [namn, liste] of lag) (liste || []).forEach((l, i) => {
+      const stad = `${id} ${namn}[${i}]`, f = stiP.join(__dirname, "..", "bilete", "spel", "parallakse", l.bilete + ".png");
+      if (!fsP.existsSync(f)) { feil.push(`${stad}: bilete/spel/parallakse/${l.bilete}.png finst ikkje (køyr tools/pikselkunst/utsikt.py)`); return; }
+      const fk = Array.isArray(l.faktor) ? l.faktor : [l.faktor, l.faktor];
+      if (!fk.every(v => typeof v === "number" && (namn === "parallakse" ? v >= 0 && v < 1 : v > 1))) feil.push(`${stad}: faktor ${l.faktor} (bak kartet 0 til 1, i forgrunnen over 1)`);
+      if (!Number.isFinite(l.x) || !Number.isFinite(l.y) || (l.ved && !(Array.isArray(l.ved) && l.ved.length === 2))) feil.push(`${stad}: treng x, y og ved: [kx, ky]`);
+      if (namn !== "parallakse" || i !== 0) return;
+      // Det bakaste laget: dekkjer det skjermen frå toppen av stupet og ned, der lufta kan syne?
+      const { w: bw, h: bh } = pngStorleik(f), ved = l.ved || [0, 0];
+      let luftRad = R.findIndex(r => r.includes("-"));
+      for (let x = 0; x < w; x++) for (let y = 0; y < h; y++) if (c(x, y) === "M" && c(x, y + 1) === "-") luftRad = Math.min(luftRad, y);   // nedste stupflis løyser seg opp
+      if (luftRad < 0) return;
+      for (let ky = 0; ky <= Math.max(0, h - VH) * S; ky++) {
+        const topp = luftRad * S - ky; if (topp >= VH * S) continue;
+        for (const kx of [0, Math.max(0, w - VW) * S]) {
+          const sx = Math.round(l.x - (kx - ved[0] * S) * fk[0]), sy = Math.round(l.y - (ky - ved[1] * S) * fk[1]);
+          if (sx > 0 || sx + bw < VW * S || sy > Math.max(0, topp) || sy + bh < VH * S) { feil.push(`${stad}: dekkjer ikkje lufta med kameraet på ${kx},${ky} (biletet står på ${sx},${sy}, ${bw} × ${bh})`); return; }
+        }
+      }
+    });
+  }
+}
 // Hus og inventar som figurar: bildefila må finnast
 const fs_ = require("fs"), sti_ = require("path");
 for (const [id, k] of Object.entries(D.KART)) for (const b of k.bygg || []) {
