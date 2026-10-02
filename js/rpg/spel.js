@@ -162,7 +162,7 @@
       if (s.fort) await Motor.fort(s.fort);
       else if (s.t) { await Motor.tale(s.t, s.s, s.kjensle && kven === s.s ? s.kjensle : null); sistTalar = s.s || sistTalar; }
       if (s.lytt) { const [id, form] = s.lytt; await meldOrd(id, form, leggTilForm(id, form, sistTalar)); }
-      if (s.tilbod) await utanSnogg(async () => {
+      if (s.tilbod) {
         const [id, form] = s.tilbod;
         const i = await Motor.val(`Skal Ivar skrive ned «${form}» i ordboka?`, ["Skriv det ned", "Berre lytt"]);
         if (i === 0) {
@@ -172,7 +172,7 @@
           await Motor.tale("Huldra kveppar. «Eg kjende det. Ein liten bit av meg vart til blekk.»");
           await meldOrd(id, form, kva);
         } else { Motor.kjensle("glad", regiNamn("Huldra")); await Motor.tale("Huldra smiler. «Takk. Nokre ord skal berre seiast.»"); }
-      });
+      }
       if (s.val) {
         const i = await Motor.val(s.val, s.alt);
         if (s.id) st.val[s.id] = i;                                   // val med id blir hugsa (sjå valt())
@@ -186,7 +186,7 @@
       if (s.partiUt) {
         st.parti = st.parti.filter(m => m.id !== s.partiUt);
         if (s.partiUt === "huldra") Motor.settFylgje(null);
-        if (!s.stille) await utanSnogg(() => Motor.tale(`${D.PARTI[s.partiUt].namn} gjekk ut av partiet.`));
+        if (!s.stille) await Motor.tale(`${D.PARTI[s.partiUt].namn} gjekk ut av partiet.`);
       }
       if (s.flagg) st.flagg[s.flagg] = true;
       if (s.uflagg) delete st.flagg[s.uflagg];
@@ -199,20 +199,18 @@
         const m = { id: s.parti, niva: st.parti[0].niva, xp: 0, hp: null, rost: null };
         fyll(m); st.parti.push(m); Motor.settFylgje(sprite(s.parti), fra);
         if (fra) Motor.fjernFolk(s.fra);
-        // Meldinga kjem også når scena blir hoppa over: spelaren må vite kven som er med.
-        await utanSnogg(() => Motor.tale(`${D.PARTI[s.parti].namn} er med i partiet.`));
+        await Motor.tale(`${D.PARTI[s.parti].namn} er med i partiet.`);
       }
       if (s.kamp) {
-        const r = await utanSnogg(() => kamp(s.kamp, !!s.boss, !!s.rettleiing)); if (r === "tap") return "stopp";
+        const r = await kamp(s.kamp, !!s.boss, !!s.rettleiing); if (r === "tap") return "stopp";
         Motor.pause(true);                                             // hendinga held fram: ingen går omkring
       }
-      // Eit nytt stev blir vist som vanleg, også når scena blir hoppa over.
-      if (s.stev && !st.stev.includes(s.stev)) await utanSnogg(async () => {
+      if (s.stev && !st.stev.includes(s.stev)) {
         st.stev.push(s.stev);
         const def = D.STEVGALDR[s.stev], s2 = Stev.status(def, st.ord);
         await Motor.tale(`Ivar lærte «${def.namn}» av ${def.kjelde}. ${s2.manglar.length ? `${s2.manglar.length} av orda i stevet manglar enno.` : "Han har alle orda som trengst."}`, "Ordboka");
         if (st.stev.length === 1) await Motor.tale("Stev er dei sterkaste galdrane. Når kvedemålaren til Ivar er full i ein kamp, kan han kvede eit stev. Hola i stevet fyller han med ord han har funne.", "Ordboka");
-      });
+      }
       if (s.til) await Motor.scene(() => Motor.last(s.til[0], s.til[1]));
       if (s.lagre) lagre();
       if (s.lækje) lækjAlle();
@@ -222,18 +220,15 @@
     }
   }
   // Eit bilete glir over i eit anna, midt på skjermen (til dømes ein vette som får namnet att).
-  // Når scena blir hoppa over, blir biletet ikkje vist, eller det går bort med ein gong.
   function forvandling([for_, etter], tekst) {
-    if (Motor.snogg) return Promise.resolve();
     return new Promise(res => {
       const el = document.createElement("div");
       el.className = "rpg-forvandling";
       el.innerHTML = `<div class="fv-bilete"><img class="fv-for" src="${for_}" alt=""><img class="fv-etter" src="${etter}" alt=""></div>${tekst ? `<p class="rpg-vindauge fv-tekst">${E(tekst)}</p>` : ""}`;
       $("rpg-skjerm").appendChild(el);
       let ferdig = false;
-      const slutt = () => { if (ferdig) return; ferdig = true; slepp(); ut(); el.classList.add("ut"); setTimeout(() => { el.remove(); res(); }, 400); };
+      const slutt = () => { if (ferdig) return; ferdig = true; slepp(); el.classList.add("ut"); setTimeout(() => { el.remove(); res(); }, 400); };
       const slepp = Motor.lytt({ a: () => { if (el.classList.contains("klar")) slutt(); } });
-      const ut = Motor.venteleg(() => { if (ferdig) return; ferdig = true; slepp(); ut(); el.remove(); res(); });
       setTimeout(() => el.classList.add("glir"), 500);
       setTimeout(() => el.classList.add("klar"), 2600);
       setTimeout(slutt, 6000);
@@ -241,26 +236,12 @@
     });
   }
   /* Ein scene frå D.SCENER: { namn, stad, tid, steg }. Stad og tid kjem som eit kort først
-     (om ikkje kort: false), og scena blir merkt som spela i st.scener.
-     Ei scene med hopp: true er ein mellomsekvens: B spør om ho skal hoppast over, og ved ja
-     køyrer resten i snøggmodus (sjå Motor.hopp). Utfallet blir gjort likevel, og val og kampar
-     blir viste. Når mellomsekvensen er slutt, tonar skjermen inn att om han stod svart. */
-  let hoppDjupn = 0;
-  async function utanSnogg(f) {
-    const s = Motor.snogg; Motor.snogg = false;
-    try { return await f(); } finally { if (s) Motor.snogg = true; }
-  }
+     (om ikkje kort: false), og scena blir merkt som spela i st.scener. */
   async function spelScene(id) {
     const sc = D.SCENER[id];
     if (!sc) { console.warn("Ukjend scene:", id); return; }
-    if (sc.hopp) hoppDjupn++;
-    let r;
-    try {
-      if (sc.stad && sc.kort !== false) await Motor.kort(sc.stad, sc.tid);
-      r = await kjoyr(sc.steg);
-    } finally {
-      if (sc.hopp && --hoppDjupn === 0 && Motor.snogg) { Motor.snogg = false; if (Motor.svart) await Motor.tonInn(); }
-    }
+    if (sc.stad && sc.kort !== false) await Motor.kort(sc.stad, sc.tid);
+    const r = await kjoyr(sc.steg);
     st.scener[id] = true;
     return r;
   }
@@ -385,8 +366,6 @@
     inngang: i => hending(D.MANUS[i.manus]),
     kamp: lag => kamp(lag, false),
     meny: () => meny(),
-    // B under ein mellomsekvens (scene med hopp: true): spør om scena skal hoppast over.
-    hopp: () => { if (!hoppDjupn || modus !== "felt" || Motor.snogg) return false; Motor.sporHopp(); return true; },
     kiste: k => {
       if (st.opna.includes(k.id)) return hending([{ t: "Kista er tom." }]);
       st.opna.push(k.id);

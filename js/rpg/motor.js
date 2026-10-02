@@ -20,10 +20,7 @@
    Motor.pause(true|false)    stoppar rørsla (under samtalar, menyar og kamp)
    Regi i skripta scener (verkar også i pause, sjå js/rpg/README.md):
    Motor.gaa(kven, mal, fart), snu(kven, retning), inn(def), byt(kven, ny), kamera(til, ms),
-   kort(stad, tid), naerbilete(src, tekst), blink(), rist(ms), tonUt(ms, farge)
-   Motor.sporHopp()           spør om mellomsekvensen skal hoppast over, Motor.hopp() hoppar
-                              (snøggmodus, Motor.snogg). Motor.venteleg(f): f blir kalla ved hopp,
-                              så eit vindauge som ventar, kan gå bort med ein gong */
+   kort(stad, tid), naerbilete(src, tekst), blink(), rist(ms), tonUt(ms, farge) */
 window.Motor = (function () {
   "use strict";
   const S = Pikslar.S, VW = 20, VH = 12;
@@ -60,7 +57,6 @@ window.Motor = (function () {
   }
   function trykkB(e) {
     if (paaTrykk && paaTrykk.b) { if (e) e.preventDefault(); paaTrykk.b(); return; }
-    if (pausa && krokar.hopp) { if (krokar.hopp() && e) e.preventDefault(); return; }   // B under ein mellomsekvens
     if (!pausa && !spelar.flytt && krokar.meny) { if (e) e.preventDefault(); krokar.meny(); }
   }
   // Styrekrossen på skjermen (mobil og nettbrett)
@@ -304,57 +300,11 @@ window.Motor = (function () {
   function fjernFolk(kven) { if (kart) kart.folk = kart.folk.filter(f => f.merke !== kven && f.namn !== kven); }
 
   /* ---------- Regi: figurar, kamera og effektar i skripta scener ----------
-     Alt her verkar også medan motoren er pausa (under samtalar og mellomsekvensar).
+     Alt her verkar også medan motoren er pausa (under samtalar og scener).
      Figurane blir nemnde med «spelar», «fylgje», namnet på ein person på kartet eller merket hans. */
   const RETNINGSNAMN = { ned: 0, opp: 1, venstre: 2, hogre: 3, "høgre": 3 };
   const regi = new Set();     // figurar som går etter manus no
 
-  /* Snøggmodus: ein mellomsekvens som blir hoppa over, køyrer resten av stega med ein gong.
-     Replikkar, kort, nærbilete, vent, kamera, blink, rist og toning blir ferdige straks, og
-     figurar som går, blir sette rett på målruta. Val blir framleis viste. Det som ventar når
-     spelaren hoppar, står i «avbryt» og blir gjort ferdig av hopp(). */
-  let snogg = false, spor = null;
-  const avbryt = new Set();
-  const venteleg = f => { avbryt.add(f); return () => avbryt.delete(f); };
-  // Nye vindauge ventar til spørsmålet om å hoppe er svara, så dei ikkje legg seg oppå det.
-  const etterSpor = () => spor || Promise.resolve();
-  function hopp() {
-    snogg = true;
-    [...avbryt].forEach(f => f());
-    for (const a of [...regi]) fullfor(a);
-    if (kam) kam.t0 = -1e9;
-    svartEl.style.transition = "none";
-  }
-  // Spør om scena skal hoppast over. Gir true om svaret er ja.
-  async function sporHopp() {
-    if (spor || snogg) return false;
-    const t = aktivTale, p = valBoks("Hoppe over scena?", ["Ja", "Nei"]);
-    spor = p;
-    const i = await p;
-    spor = null;
-    if (i === 0) { hopp(); return true; }
-    if (t && aktivTale === t) t.vis();                               // samtalen kjem attende
-    return false;
-  }
-  // Figuren går resten av stien sin med ein gong og står på målruta, snudd slik han gjekk.
-  function fullfor(a) {
-    const r = a.regi; if (!r) return;
-    let fx = null, fy = null;                                        // ruta følgjet skal stå på
-    let sti = r.sti;
-    if (sti.some((d, i) => { let x = a.x, y = a.y; for (let j = 0; j <= i; j++) { x += DX[sti[j]]; y += DY[sti[j]]; } return opptatt(a, x, y); })) sti = vegTil(a, r.maal[0], r.maal[1]) || sti;
-    for (const d of sti) {
-      if (opptatt(a, a.x + DX[d], a.y + DY[d])) break;                // aldri inn på ruta til ein annan
-      fx = a.x; fy = a.y; a.dir = d; a.x += DX[d]; a.y += DY[d]; a.steg = (a.steg || 0) + 1;
-    }
-    r.sti = [];
-    a.fx = a.x; a.fy = a.y; a.flytt = null; a.u = 0;
-    const f = r.drag || (a === spelar && fylgje && !fylgje.regi && fx != null ? fylgje : null);
-    if (f) {
-      if (fx != null) { f.x = fx; f.y = fy; }
-      f.fx = f.x; f.fy = f.y; f.flytt = null; f.dir = retningMot(f.x, f.y, a.x, a.y, f.dir); r.drag = null;
-    }
-    regiSteg(a, performance.now());                                  // tom sti: figuren er framme
-  }
   function aktor(kven) {
     if (kven === "spelar") return spelar;
     if (kven === "fylgje") return fylgje;
@@ -448,7 +398,6 @@ window.Motor = (function () {
       if (a === spelar) spelar.flytt = null;
       if (sti.length) a.pose = null;                                    // ein pose varer til figuren går
       regi.add(a);
-      if (snogg) fullfor(a);
     });
   }
   function regiSteg(a, no) {
@@ -526,7 +475,7 @@ window.Motor = (function () {
   function kamera(til, ms = 900) {
     const a = typeof til === "string" ? aktor(til) : null;
     const mal = til == null ? () => ({ x: spelar.fx, y: spelar.fy }) : a ? () => ({ x: a.fx, y: a.fy }) : () => ({ x: til[0], y: til[1] });
-    kam = { fra: { x: sentrum.x, y: sentrum.y }, t0: snogg ? -1e9 : performance.now(), ms: Math.max(1, ms), mal, tilbake: til == null };
+    kam = { fra: { x: sentrum.x, y: sentrum.y }, t0: performance.now(), ms: Math.max(1, ms), mal, tilbake: til == null };
     return vent(ms);
   }
   function kameraSentrum(no) {
@@ -538,14 +487,11 @@ window.Motor = (function () {
 
   // Ristar biletet (eit skred, ein dør som smell).
   function rist(ms = 400, styrke = 3) {
-    if (snogg) return Promise.resolve();
     return new Promise(res => {
       const t0 = performance.now();
-      let slutt = false;
-      const ut = venteleg(() => { slutt = true; });
       const s = () => {
-        const u = slutt ? 1 : (performance.now() - t0) / ms;
-        if (u >= 1) { ut(); lerret.style.translate = ""; res(); return; }
+        const u = (performance.now() - t0) / ms;
+        if (u >= 1) { lerret.style.translate = ""; res(); return; }
         const k = styrke * (1 - u);
         lerret.style.translate = `${Math.round((Math.random() * 2 - 1) * k)}px ${Math.round((Math.random() * 2 - 1) * k)}px`;
         requestAnimationFrame(s);
@@ -554,35 +500,29 @@ window.Motor = (function () {
     });
   }
   // Kort med stad og tid over scena, som ein undertekst i film. Går bort av seg sjølv, eller ved Z.
-  async function kort(stad, tid, ms = 2600) {
-    await etterSpor();
-    if (snogg) return;
+  function kort(stad, tid, ms = 2600) {
     return new Promise(res => {
       const el = document.createElement("div");
       el.className = "rpg-kort";
       el.innerHTML = `<p class="kort-stad">${E(stad)}</p>${tid ? `<p class="kort-tid">${E(tid)}</p>` : ""}`;
       $("rpg-skjerm").appendChild(el);
       let ferdig = false;
-      const slutt = () => { if (ferdig) return; ferdig = true; slepp(); ut(); clearTimeout(tm); el.classList.add("ut"); setTimeout(() => { el.remove(); res(); }, 500); };
+      const slutt = () => { if (ferdig) return; ferdig = true; slepp(); clearTimeout(tm); el.classList.add("ut"); setTimeout(() => { el.remove(); res(); }, 500); };
       const slepp = lytt({ a: slutt });
-      const ut = venteleg(() => { ferdig = true; slepp(); ut(); clearTimeout(tm); el.remove(); res(); });
       requestAnimationFrame(() => el.classList.add("vis"));
       const tm = setTimeout(slutt, ms);
     });
   }
   // Nærbilete: eit bilete midt på skjermen (eit segl, ei side i ei bok), med tekst under. Ventar på Z.
-  async function naerbilete(src, tekst) {
-    await etterSpor();
-    if (snogg) return;
+  function naerbilete(src, tekst) {
     return new Promise(res => {
       const el = document.createElement("div");
       el.className = "rpg-forvandling rpg-naer";
       el.innerHTML = `<img src="${E(src)}" alt="">${tekst ? `<p class="rpg-vindauge fv-tekst">${E(tekst)}</p>` : ""}`;
       $("rpg-skjerm").appendChild(el);
       let ferdig = false;
-      const slutt = () => { if (ferdig) return; ferdig = true; slepp(); ut(); el.classList.add("ut"); setTimeout(() => { el.remove(); res(); }, 400); };
+      const slutt = () => { if (ferdig) return; ferdig = true; slepp(); el.classList.add("ut"); setTimeout(() => { el.remove(); res(); }, 400); };
       const slepp = lytt({ a: slutt });
-      const ut = venteleg(() => { ferdig = true; slepp(); ut(); el.remove(); res(); });
       el.onclick = slutt;
     });
   }
@@ -695,16 +635,12 @@ window.Motor = (function () {
   };
   const DOR_TID = 240, TONING = 180;
   let byter = false;
-  // Vent: blir ferdig med ein gong i snøggmodus, eller når scena blir hoppa over.
-  const vent = ms => snogg ? Promise.resolve() : new Promise(r => {
-    const t = setTimeout(() => { ut(); r(); }, ms), ut = venteleg(() => { clearTimeout(t); ut(); r(); });
-  });
+  const vent = ms => new Promise(r => setTimeout(r, ms));
   /* Toning: rask overgang til svart og tilbake er standard mellom alle scener (kart, kamp,
      tittel, verdskart). Eit svart lag ligg over heile spelet, også kampen og vindauga. */
   const svartEl = $("rpg-svart");
   // farge: svart som standard, kvitt til dømes når «biletet går i kvitt» i ein mellomsekvens.
   function toning(til, ms = TONING, farge) {
-    if (snogg) ms = 0;
     if (farge) svartEl.style.background = farge;
     else if (til > 0) svartEl.style.background = "";
     svartEl.style.transition = `opacity ${ms}ms linear`;
@@ -713,7 +649,7 @@ window.Motor = (function () {
   }
   const tonUt = (ms, farge) => toning(1, ms, farge), tonInn = ms => toning(0, ms);
   // Kort kvitt blink (ein ring som brest, eit lyn).
-  async function blink(ms = 260) { if (snogg) return; await toning(0.9, ms * 0.3, "#fff"); await toning(0, ms * 0.7); }
+  async function blink(ms = 260) { await toning(0.9, ms * 0.3, "#fff"); await toning(0, ms * 0.7); }
   /* Pikseleffekten før kamp (som i Final Fantasy): eit kvitt blink, og biletet løyser seg opp
      i stadig større pikslar. Etterpå tonar skjermen til svart, og kuttet til kampscena skjer
      i svart (sjå kamp() i spel.js). */
@@ -962,11 +898,7 @@ window.Motor = (function () {
     }
     return ut + (inne ? "</b>" : "");
   }
-  // Samtalen som står i boksen no. vis() teiknar han att etter spørsmålet om å hoppe over.
-  let aktivTale = null;
-  async function tale(tekst, namn, kjensle) {
-    await etterSpor();
-    if (snogg) return;
+  function tale(tekst, namn, kjensle) {
     return new Promise(res => {
       const lengd = [...tekst.replace(/[⟪⟫]/g, "")].length;
       let i = 0, ferdig = false, skriv = null;
@@ -979,31 +911,23 @@ window.Motor = (function () {
         boks.classList.toggle("klar", ferdig);
         boks.onclick = () => paaTrykk && paaTrykk.a && paaTrykk.a();
       };
-      const meg = { vis };
-      aktivTale = meg;
       vis();
       skriv = setInterval(() => {
-        if (spor) return;                                            // skrivinga ventar under spørsmålet
         i += 2;
         boksTekst.innerHTML = taleHtml(tekst, i);
         if (i >= lengd) { clearInterval(skriv); ferdig = true; boks.classList.add("klar"); }
       }, 16);
-      const slutt = () => { clearInterval(skriv); slepp(); ut(); if (aktivTale === meg) aktivTale = null; boks.hidden = true; res(); };
+      const slutt = () => { clearInterval(skriv); slepp(); boks.hidden = true; res(); };
       const slepp = lytt({
         a: () => {
           if (!ferdig) { clearInterval(skriv); boksTekst.innerHTML = taleHtml(tekst, Infinity); ferdig = true; boks.classList.add("klar"); return; }
           slutt();
         },
       });
-      const ut = venteleg(slutt);
     });
   }
-  // Val mellom alternativ i samtaleboksen. Gir indeksen. Val blir viste også i snøggmodus.
-  async function val(tekst, alt, namn) {
-    await etterSpor();
-    return valBoks(tekst, alt, namn);
-  }
-  function valBoks(tekst, alt, namn) {
+  // Val mellom alternativ i samtaleboksen. Gir indeksen.
+  function val(tekst, alt, namn) {
     return new Promise(res => {
       boks.hidden = false;
       boksNamn.textContent = namn || ""; boksNamn.hidden = !namn; visPortrett(namn);
@@ -1020,20 +944,17 @@ window.Motor = (function () {
     });
   }
   const fortEl = $("rpg-fort");
-  async function fort(linjer) {
-    await etterSpor();
-    if (snogg) return;
+  function fort(linjer) {
     return new Promise(res => {
       fortEl.hidden = false; fortEl.innerHTML = "";
       let i = 0;
       const neste = () => {
-        if (i >= linjer.length) { slepp(); ut(); fortEl.classList.add("ut"); setTimeout(() => { fortEl.hidden = true; fortEl.classList.remove("ut"); res(); }, 350); return; }
+        if (i >= linjer.length) { slepp(); fortEl.classList.add("ut"); setTimeout(() => { fortEl.hidden = true; fortEl.classList.remove("ut"); res(); }, 350); return; }
         const p = document.createElement("p");
         p.textContent = linjer[i++];
         fortEl.appendChild(p);
       };
       const slepp = lytt({ a: neste });
-      const ut = venteleg(() => { i = linjer.length; neste(); });
       fortEl.onclick = () => neste();
       neste();
     });
@@ -1067,11 +988,9 @@ window.Motor = (function () {
 
   return {
     VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk, overgang, gjennomDor, tonUt, tonInn, scene,
-    gaa, snu, inn, byt, kamera, rist, kort, naerbilete, blink, aktor, vent, sporHopp, hopp, venteleg,
+    gaa, snu, inn, byt, kamera, rist, kort, naerbilete, blink, aktor, vent,
     // Kameraet står ved noko anna enn spelaren (ei scene let det stå).
     get kameraBorte() { return !!kam && !kam.tilbake; },
-    // Snøggmodus (sjå hopp()): spel.js slår han av under val og kampar, og når scena er slutt.
-    get snogg() { return snogg; }, set snogg(v) { snogg = !!v; if (!snogg) svartEl.style.transition = ""; },
     get svart() { return +svartEl.style.opacity > 0; },
     pause(p) { pausa = p; if (p) halde.clear(); },
     get kart() { return kart; }, get spelar() { return spelar; },

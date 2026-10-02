@@ -23,7 +23,7 @@ f.onload = async () => {
   async function trykkGjennom(ferdig, logg) {
     for (let n = 0; n < 600 && !ferdig(); n++) {
       if (logg) logg();
-      if (synleg("#rpg-tale") || synleg("#rpg-fort") || d.querySelector(".rpg-kort")) tast("z");
+      if (synleg("#rpg-tale") || synleg("#rpg-fort") || d.querySelector(".rpg-kort, .rpg-naer")) tast("z");
       await vent(70);
     }
   }
@@ -47,7 +47,7 @@ f.onload = async () => {
     // 2. «framande»: den framande går til Ivar, kameraet følgjer han ut av kartet og kjem attende.
     M.last("asen", "3");
     let kameraBort = false, framandeGjekk = false;
-    await trykkGjennom(() => T().st().flagg.framande1 && T().st().dagbok.length > 0, () => {
+    await trykkGjennom(() => T().st().flagg.framande1 && T().st().dagbok.length > 0 && !T().iHending(), () => {
       const fr = M.aktor("Ein framand");
       if (fr && fr.y < 3) framandeGjekk = true;
     });
@@ -76,75 +76,19 @@ f.onload = async () => {
     sjekk(gj && gj.x === 12 && gj.y === 8, `gjesten gjekk stien h2 (står på ${gj && gj.x},${gj && gj.y})`);
     sjekk(performance.now() - t0 > 300, "saman ventar på begge listene");
 
-    // 4. «framande» blir hoppa over: B ved første replikk, ja. Utfallet skal vere gjort likevel.
+    // 4. Scener kan ikkje hoppast over: B under «framande» gjer ingenting, og scena går som vanleg.
     const s4 = T().st();
     delete s4.flagg.framande1; delete s4.traadar.framande; s4.dagbok = []; s4.nokkel = s4.nokkel.filter(n => n !== "ordboka");
     M.fjernFolk("Gjest");
     M.last("asen", "3");
     for (let n = 0; n < 100 && !synleg("#rpg-tale"); n++) await vent(50);
     tast("x"); await vent(150);
-    sjekk(synleg("#rpg-tale") && /Hoppe over scena/.test(d.querySelector("#rpg-tale").textContent), "B spør om scena skal hoppast over");
-    const t4 = performance.now();
-    tast("z");
-    for (let n = 0; n < 60 && !(s4.flagg.framande1 && s4.dagbok.length && !M.snogg); n++) await vent(50);
-    sjekk(performance.now() - t4 < 1500, `resten av scena gjekk snøgt (${Math.round(performance.now() - t4)} ms)`);
+    const tekst4 = synleg("#rpg-tale") ? d.querySelector("#rpg-tale").textContent : "";
+    sjekk(/Ein framand/.test(tekst4) && !/Hoppe over/.test(tekst4) && d.querySelector("#rpg-meny").hidden, `B under ei scene gjer ingenting (ingen spørsmål, ingen meny): «${tekst4.slice(0, 60)}»`);
+    await trykkGjennom(() => s4.flagg.framande1 && !T().iHending());
     await vent(300);
-    sjekk(s4.flagg.framande1 && s4.nokkel.includes("ordboka") && s4.traadar.framande && s4.dagbok.length === 1, "flagg, ordboka, tråden og Dagboka er likevel gjort");
-    sjekk(!M.aktor("Ein framand"), "den framande er borte frå kartet");
-    sjekk(s4.scener.framande && !M.snogg, "scena er ferdig og snøggmodusen er slått av");
-    sjekk(synleg("#rpg-tale") && /Ordboka ligg i menyen/.test(d.querySelector("#rpg-tale").textContent), "rettleiinga etter scena blir vist likevel");
-    await trykkGjennom(() => !synleg("#rpg-tale"));
-    await vent(200);
+    sjekk(s4.flagg.framande1 && s4.nokkel.includes("ordboka") && s4.traadar.framande && s4.dagbok.length === 1 && !M.aktor("Ein framand"), "scena gjekk til endes som vanleg");
     sjekk(T().modus() === "felt" && !M.spelar.regi, "spelaren kan gå att etter scena");
-
-    // 5. Ein mellomsekvens med gange, kamera, toning og val. Valet blir vist sjølv om scena blir hoppa over.
-    w.RPGData.SCENER.provehopp = { namn: "Prøve", hopp: true, kort: false, steg: [
-      { inn: { namn: "Hoppar", u: "bonde", rute: [10, 8], retning: "opp" } },
-      { s: "Hoppar", t: "No går eg ein runde." },
-      { gaa: "Hoppar", sti: "h2n1", fart: 500 },
-      { kamera: "Hoppar", ms: 2000 },
-      { ton: "svart", ms: 1000 }, { vent: 3000 }, { rist: 1000 }, { blink: 1 },
-      { kort: ["Prøve", "no"] }, { naerbilete: "bilete/finst-ikkje.png", tekst: "Hoppa over." },
-      { val: "Kva vel du?", alt: ["A", "B"], id: "hoppval", svar: [[{ flagg: "hoppA" }], [{ flagg: "hoppB" }, { s: "Hoppar", t: "B, altså." }]] },
-      { gaa: "Hoppar", mot: "Ivar" },
-      { flagg: "hoppa" }, { traad: "hopp", tekst: "Prøvetråd" }, { dagbok: "Hoppa over." },
-      { kamera: null },
-    ] };
-    const p5 = T().scene("provehopp");
-    for (let n = 0; n < 60 && !synleg("#rpg-tale"); n++) await vent(50);
-    tast("x"); await vent(150); tast("z");
-    let valSett = false;
-    for (let n = 0; n < 60 && !valSett; n++) { await vent(50); valSett = synleg("#rpg-tale") && /Kva vel du/.test(d.querySelector("#rpg-tale").textContent); }
-    sjekk(valSett, "valet blir vist i snøggmodus");
-    const h = M.aktor("Hoppar");
-    sjekk(h && h.x === 12 && h.y === 9 && h.dir === 0, `figuren står på målruta og ser ned (${h && h.x},${h && h.y}, retning ${h && h.dir})`);
-    tast("ArrowDown"); await vent(50); tast("z");
-    await p5;
-    await vent(100);
-    const s5 = T().st(), sp = M.spelar;
-    sjekk(s5.val.hoppval === 1 && s5.flagg.hoppB && s5.flagg.hoppa, "valet er hugsa og flagga er sette");
-    sjekk(s5.traadar.hopp && s5.dagbok.some(l => l.tekst === "Hoppa over."), "tråden og Dagboka er skrivne");
-    sjekk(Math.abs(h.x - sp.x) + Math.abs(h.y - sp.y) === 1, `figuren gjekk bort til Ivar (${h.x},${h.y})`);
-    const mot = h.x < sp.x ? 3 : h.x > sp.x ? 2 : h.y < sp.y ? 0 : 1;
-    sjekk(h.dir === mot, "figuren ser mot Ivar");
-    sjekk(!M.svart && !M.snogg, "skjermen er tona inn att, og snøggmodusen er slått av");
-    sjekk(!d.querySelector(".rpg-kort") && !d.querySelector(".rpg-naer"), "kortet og nærbiletet er borte");
-
-    // 6. Nei: samtalen kjem attende, og scena held fram som før.
-    w.RPGData.SCENER.provenei = { namn: "Prøve", hopp: true, kort: false, steg: [
-      { s: "Hoppar", t: "Første replikk." }, { s: "Hoppar", t: "Andre replikk." }, { flagg: "neiFerdig" },
-    ] };
-    const p6 = T().scene("provenei");
-    for (let n = 0; n < 60 && !synleg("#rpg-tale"); n++) await vent(50);
-    await vent(300);
-    tast("x"); await vent(150); tast("ArrowDown"); await vent(50); tast("z"); await vent(150);
-    const tekst6 = synleg("#rpg-tale") ? d.querySelector("#rpg-tale").textContent : "";
-    sjekk(/Første replikk/.test(tekst6) && !/Hoppe over/.test(tekst6), "ved nei kjem replikken attende");
-    tast("z"); await vent(150);
-    sjekk(synleg("#rpg-tale") && /Andre replikk/.test(d.querySelector("#rpg-tale").textContent), "scena held fram med neste replikk");
-    await trykkGjennom(() => T().st().flagg.neiFerdig);
-    await p6;
-    sjekk(!M.snogg, "snøggmodusen vart aldri slått på");
 
     // 7. Scenekart: minnet om far første gong Ivar kviler ved lampa i stova. Huldra er med i
     //    partiet, men ikkje i minnet. Lagring på scenekartet skal lagre staden før scena.
@@ -186,26 +130,22 @@ f.onload = async () => {
     sjekk(!M.svart && T().modus() === "felt" && !M.spelar.regi, "skjermen er tona inn, og spelaren kan gå att");
     sjekk(!sp7.pose, "etter hendinga står Ivar opp att");
 
-    // 8. Scenekart med følgjet, hoppa over: resten går snøgt, og Ivar kjem attende til same rute.
-    w.RPGData.SCENER.provekart = { namn: "Prøve", hopp: true, kort: false, steg: [
-      { scenekart: "minne-far", merke: "1", retning: "opp", fylgje: true, ms: 600 },
+    // 8. Scenekart med følgjet: Ivar kjem attende til same rute etterpå.
+    w.RPGData.SCENER.provekart = { namn: "Prøve", kort: false, steg: [
+      { scenekart: "minne-far", merke: "1", retning: "opp", fylgje: true, ms: 300 },
       { s: "Far", t: "Er huldra med no?" },
-      { vent: 3000 }, { gaa: "Ivar", sti: "v3" },
-      { scenekart: null, ms: 1500 },
+      { scenekart: null, ms: 300 },
       { flagg: "kartFerdig" },
     ] };
     const p8 = T().scene("provekart");
     for (let n = 0; n < 80 && !synleg("#rpg-tale"); n++) await vent(50);
     sjekk(M.kart.id === "minne-far" && M.spelar.dir === 1, "scenekartet er lasta, og Ivar ser opp");
     sjekk(!!M.aktor("fylgje"), "med fylgje: true er huldra med på scenekartet");
-    tast("x"); await vent(150);
-    const t8 = performance.now();
-    tast("z");
+    await trykkGjennom(() => s7.flagg.kartFerdig);
     await p8;
-    sjekk(performance.now() - t8 < 1500, `resten av scena gjekk snøgt (${Math.round(performance.now() - t8)} ms)`);
     const sp8 = M.spelar;
-    sjekk(s7.flagg.kartFerdig && M.kart.id === "asen-stova" && sp8.x === 2 && sp8.y === 6 && sp8.dir === 2, `etter hoppet står Ivar ved lampa att (${M.kart.id} ${sp8.x},${sp8.y})`);
-    sjekk(!M.svart && !M.snogg && !T().forScene(), "skjermen er tona inn, og scenekartet er gløymt");
+    sjekk(M.kart.id === "asen-stova" && sp8.x === 2 && sp8.y === 6 && sp8.dir === 2, `etter scena står Ivar ved lampa att (${M.kart.id} ${sp8.x},${sp8.y})`);
+    sjekk(!M.svart && !T().forScene(), "skjermen er tona inn, og scenekartet er gløymt");
 
     // 9. Posar: knele, sitje, peike, liggje og sove. Posen varer til figuren går eller hendinga
     //    er slutt, og folk med pose i kartet (syster ved bordet) får han att etterpå.
@@ -323,16 +263,6 @@ f.onload = async () => {
     await M.krokar.dor(dor(27, 11)); await vent(900);
     sjekk(M.kart.id === "bygda", "etter skiftebrevet går Ivar vidare til bygda");
 
-    // e) Skiftebrevet hoppa over: kampen kjem likevel, og dei er borte frå tunet etterpå.
-    delete s10.flagg.skiftebrev; kampar = 0;
-    M.last("asen", "1"); M.plasser(27, 11, 3); await vent(200);
-    pv = M.krokar.dor(dor(27, 11));
-    for (let n = 0; n < 100 && !synleg("#rpg-tale"); n++) await vent(50);
-    tast("x"); await vent(150); tast("z");
-    await trykkGjennom(() => s10.flagg.skiftebrev && !synleg("#rpg-tale") && T().modus() === "felt");
-    await pv; await vent(200);
-    sjekk(kampar === 1 && s10.flagg.skiftebrev, "kampen vart spela sjølv om scena vart hoppa over");
-    sjekk(!M.aktor("Syster") && !M.aktor("Storebror") && kanGaa() && !M.snogg, "etter hoppet er dei inne, og Ivar kan gå");
     w.Kamp.start = kampFor;
     w.console.warn = gamalWarn;
     sjekk(!varsel.some(v => /Regi/.test(v)), `ingen åtvaringar frå regien${varsel.length ? ": " + varsel.join("; ") : ""}`);
@@ -347,7 +277,7 @@ f.onload = async () => {
         if (logg) logg();
         const knappar = d.querySelectorAll("#rpg-tale button[data-i]");
         if (knappar.length && synleg("#rpg-tale")) { await vent(250); const i = velj ? velj(taleTekst(), knappar.length) : 0; knappar[i].click(); }
-        else if (synleg("#rpg-tale") || synleg("#rpg-fort") || d.querySelector(".rpg-kort")) tast("z");
+        else if (synleg("#rpg-tale") || synleg("#rpg-fort") || d.querySelector(".rpg-kort, .rpg-naer")) tast("z");
         await vent(70);
       }
     }
@@ -380,15 +310,6 @@ f.onload = async () => {
     sjekk(pr11.x === 19 && pr11.y === 15 && kanGaa(), `lekpredikanten gjekk attende til plassen sin (${pr11.x},${pr11.y}), og Ivar kan gå`);
     M.last("bygda", "3"); await vent(200);
     sjekk(!M.aktor("Den framande"), "den framande er ikkje i bygda når kartet blir lasta att");
-
-    // b) Den framande hoppa over: utfallet er gjort, og han er borte.
-    delete s11.flagg.framande2; M.last("bygda", "3"); M.plasser(15, 9, 2); await vent(300);
-    tast("z");
-    for (let n = 0; n < 100 && !synleg("#rpg-tale"); n++) await vent(50);
-    await vent(200); tast("x"); await vent(150); tast("z");
-    await gjennom(() => s11.flagg.framande2 && ferdigFelt());
-    await vent(300);
-    sjekk(s11.flagg.framande2 && !M.aktor("Den framande") && !M.snogg && !M.svart && kanGaa(), "hoppa over: flagget er sett, han er borte, og Ivar kan gå");
 
     // c) Presten kneler attmed løparen, står opp, peikar mot prestegarden og gir nøkkelen. Ivar svarer «Kanskje litt».
     delete s11.flagg.prest_bed; delete s11.flagg.latt; s11.nokkel = s11.nokkel.filter(n => n !== "prestenokkel");
@@ -510,21 +431,6 @@ f.onload = async () => {
     M.last("utmarka", "1"); await vent(150);
     sjekk(!M.aktor("Ei kvinne ved setra"), "ved setra står ingen når kartet blir lasta att");
 
-    // b) Huldra hoppa over: tilbodet og stevet blir viste likevel.
-    utanHuldra();
-    M.last("utmarka", "1"); M.plasser(25, 8, 3); await vent(300);
-    tast("z");
-    for (let n = 0; n < 100 && !synleg("#rpg-tale"); n++) await vent(50);
-    await vent(200); tast("x"); await vent(150); tast("z");
-    let tilbodVist = false, stevVist = false, partiVist = false;
-    await gjennom(() => s12.flagg.huldra_med && ferdigFelt(), () => {
-      if (/Skal Ivar skrive ned/.test(taleTekst())) tilbodVist = true;
-      if (/Huldra er med i partiet/.test(taleTekst())) partiVist = true;
-      if (/lærte «Tungestevet»/.test(taleTekst())) stevVist = true;
-    }, lytt12);
-    sjekk(tilbodVist && stevVist && partiVist, "hoppa over: tilbodet, meldinga om partiet og det nye stevet blir viste");
-    sjekk(s12.parti.some(m => m.id === "huldra") && !!M.aktor("fylgje") && !M.aktor("Huldra") && !M.snogg && kanGaa(), "hoppa over: huldra er med, og Ivar kan gå");
-
     // c) Haugbonden, rett namn: forvandlinga gir han fargane att, huldra gir eit ord, og han går inn i haugen.
     delete s12.flagg.haug; delete s12.flagg.huldra_auga; delete s12.ord.hoyra; delete s12.ord.laus; s12.stev = s12.stev.filter(x => x !== "steinstevet");
     M.last("utmarka", "1"); M.plasser(8, 9, 1); await vent(300);
@@ -561,19 +467,6 @@ f.onload = async () => {
     }, t => /Kven er vetten/.test(t) ? 2 : 1);
     sjekk(kampar12 === 1 && fargaEtterKamp, "feil namn: kamp, og etterpå har haugbonden namnet og fargane att");
     sjekk(!talarBorte.length && s12.stev.includes("steinstevet") && !M.aktor("Haugbonden") && kanGaa(), "den som talar, står på kartet, Ivar lærte stevet, og haugbonden er borte");
-
-    // d2) Haugbonden hoppa over: forvandlinga blir ikkje vist, men han får namnet, og stevet blir vist.
-    delete s12.flagg.haug; s12.stev = s12.stev.filter(x => x !== "steinstevet");
-    M.last("utmarka", "1"); M.plasser(8, 9, 1); await vent(300);
-    tast("z");
-    for (let n = 0; n < 100 && !synleg("#rpg-tale"); n++) await vent(50);
-    await vent(200); tast("x"); await vent(150); tast("z");
-    let fvVist = false, stevVist12 = false;
-    await gjennom(() => s12.flagg.haug && !M.aktor("Haugbonden") && ferdigFelt(), () => {
-      if (d.querySelector(".rpg-forvandling:not(.rpg-naer)")) fvVist = true;
-      if (/lærte «Steinstevet»/.test(taleTekst())) stevVist12 = true;
-    }, lytt12);
-    sjekk(!fvVist && stevVist12 && s12.flagg.haug && !M.aktor("Haugbonden") && !M.snogg && kanGaa(), "hoppa over: forvandlinga blir ikkje vist, stevet blir vist, og haugbonden er borte");
 
     // e) Tenaren på Ekset hentar kongesoga. Ivar går til sides så tenaren kjem ut frå bordet.
     delete s12.ord.vita; s12.nokkel = s12.nokkel.filter(x => x !== "sagabok");
@@ -640,18 +533,6 @@ f.onload = async () => {
     M.last("arkivet", "5"); await vent(400);
     sjekk(!M.aktor("Blekklatten") && !T().iHending() && kanGaa(), "attende i arkivet er blekklatten borte, og ingenting skjer i opninga");
 
-    // h) Blekklatten hoppa over: kampen og kapittelslutten kjem likevel.
-    delete s12b.flagg.latt; s12b.kapittel = 1; kampar12 = 0;
-    M.last("arkivet", "5");
-    for (let n = 0; n < 100 && !synleg("#rpg-tale"); n++) await vent(50);
-    await vent(200); tast("x"); await vent(150); tast("z");
-    let fortVist = false;
-    await gjennom(() => T().modus() === "tittel", () => { if (synleg("#rpg-fort")) fortVist = true; });
-    sjekk(kampar12 === 1 && s12b.flagg.latt && fortVist && T().modus() === "tittel", "hoppa over: kampen og kapittelslutten kom likevel");
-    sjekk(!M.snogg, "snøggmodusen er slått av");
-    for (let n = 0; n < 60 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
-    d.querySelector("#rpg-tittel-val button").click();
-    for (let n = 0; n < 60 && T().modus() !== "felt"; n++) await vent(50);
     w.Kamp.start = kampFor12;
     w.console.warn = gamalWarn;
     sjekk(!varsel12.some(v => /Regi/.test(v)), `ingen åtvaringar frå regien i arkivet${varsel12.length ? ": " + varsel12.join("; ") : ""}`);
