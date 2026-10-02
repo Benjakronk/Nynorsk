@@ -234,7 +234,7 @@ def stabbur(fro=3):
     bf = 3
     W, H = bf * 16 + UT_X * 2, 72
     L = Lerret(W, H)
-    x0, x1 = UT_X, UT_X + bf * 16 - 1                                  # det nedre rommet
+    x0, x1 = UT_X + 3, UT_X + bf * 16 - 4                              # det nedre rommet (smalare enn oppstugua)
     golv = H - 9                                                       # golvet i stabburet (botnen av døra)
     # Stolpar på stabbursteinar, med mørk luft under huset
     L.rect(x0 + 2, golv, x1 - x0 - 3, 6, "a")
@@ -244,21 +244,23 @@ def stabbur(fro=3):
         L.rect(sx, golv + 8, 4, 1, "C")
     # Frittståande trapp opp til døra (ho rører ikkje huset, så musene ikkje kjem opp)
     for k, ty in enumerate((golv + 2, golv + 5, golv + 8)):
-        L.rad(ty, x0 + 17 - k, x0 + 30 + k, "e"); L.rad(ty + 1, x0 + 17 - k, x0 + 30 + k, "c"); L.rad(ty + 2, x0 + 17 - k, x0 + 30 + k, "b")
+        L.rad(ty, UT_X + 17 - k, UT_X + 30 + k, "e"); L.rad(ty + 1, UT_X + 17 - k, UT_X + 30 + k, "c"); L.rad(ty + 2, UT_X + 17 - k, UT_X + 30 + k, "b")
     # Det nedre rommet: laft, med døra midt på
     nedre_y0 = golv - 13
     laft(L, x0, x1, nedre_y0, golv - 1, fro)
-    dor(L, x0 + 16 + 2, golv - 11, 11)
+    dor(L, UT_X + 16 + 2, golv - 11, 11)                                # døra står fast i midtre flis (DORFORM.stabbur)
+    laftehovud(L, x0, x1, nedre_y0, golv - 1)
     # Skugge under oppstugua på det nedre rommet
     L.rad(nedre_y0, x0, x1, "a"); L.rad(nedre_y0 + 1, x0, x1, "b")
-    # Oppstugua stikk 2 pikslar ut på kvar side, med ei lita glugge
-    o0, o1 = x0 - 3, x1 + 3
+    # Oppstugua stikk 4 pikslar ut over det nedre rommet på kvar side, med ei lita glugge
+    o0, o1 = x0 - 4, x1 + 4
     ovre_y0 = nedre_y0 - 12
     laft(L, o0, o1, ovre_y0, nedre_y0 - 1, fro + 2)
     L.rad(nedre_y0 - 1, o0, o1, "a")                                   # botnstokken som ber utkragninga
     for x in range(o0, x0): L.p(x, nedre_y0, "a"); L.p(x, nedre_y0 - 1, "a")
     for x in range(x1 + 1, o1 + 1): L.p(x, nedre_y0, "a"); L.p(x, nedre_y0 - 1, "a")
-    for (gx, gy) in ((x0 + 21, ovre_y0 + 3),):
+    laftehovud(L, o0, o1, ovre_y0, nedre_y0 - 2)
+    for (gx, gy) in ((UT_X + 21, ovre_y0 + 3),):
         L.rect(gx - 1, gy - 1, 8, 6, "a"); L.rect(gx, gy, 6, 4, "A"); L.rad(gy, gx, gx + 5, "B")
     # Gavlen: ståande bord i ein bratt trekant
     topp = ovre_y0 - 18
@@ -285,7 +287,9 @@ def stabbur(fro=3):
             if band == "2" and h(x, y, fro + 9) < 0.12: band = "3"
             if band == "1" and h(x, y, fro + 11) < 0.15: band = "2"
             L.p(x, y, band)
-        L.p(x, int(r0 - DJUP), "0")                                     # den bakre kanten
+        bak = int(r0 - DJUP) - (1 if h(x, 7, fro) < 0.3 else 0)          # den bakre kanten, ujamn
+        L.p(x, bak, "0")
+        if h(x, 8, fro) < 0.25 and bak > 0: L.p(x, bak - 1, "1")         # tuster som stikk opp bak
     for y in range(topp - DJUP, topp):                                   # mønet: lyst band rett innover
         for x in (cx - 1, cx, cx + 1):
             if 0 <= y: L.p(x, y, "4" if x == cx else "3")
@@ -297,8 +301,28 @@ def stabbur(fro=3):
             L.p(x, rake - 1, "e"); L.p(x, rake, "d"); L.p(x, rake + 1, "b")
     for k in range(5):
         L.p(cx - 2 + k, topp - 3 - k, "e"); L.p(cx + 2 - k, topp - 3 - k, "d")
+    # Grastuster heng ut over vindskiene og bryt den reine takkanten, tettast nedover mot takfoten
+    for x in range(o0 - 3, o1 + 4):
+        if abs(x - cx) < 3: continue
+        r0 = int(round(topp + abs(x - cx) * (ovre_y0 - topp) / ((o1 - o0) / 2)))
+        nedover = abs(x - cx) / ((o1 - o0) / 2)
+        if h(x, 9, fro) < 0.25 + nedover * 0.3:
+            lengd = 1 + int(h(x, 10, fro) * (2 + nedover * 2))
+            for k in range(lengd): L.p(x, r0 - 1 + k, "3" if k == 0 else "2" if k < lengd - 1 else "1")
+    for (x, d) in ((o0 - 3, 1), (o0 - 2, 1), (o1 + 3, -1), (o1 + 2, -1)):     # torv som heng ned ved takfoten
+        for k in range(3): L.p(x, ovre_y0 + k, "2" if k < 2 else "1")
     omriss(L)
     return L
+
+
+def laftehovud(L, x0, x1, y0, y1):
+    """Stokkendar som stikk 2 pikslar ut på hjørna av ein laftevegg, éin per stokk (4 pikslar)."""
+    for y in range(y0, y1 + 1):
+        k = (y - y0) % 4
+        if k == 3: continue
+        c = "d" if k == 0 else "c" if k == 1 else "b"
+        L.p(x0 - 1, y, c); L.p(x0 - 2, y, "b" if k else "c")
+        L.p(x1 + 1, y, c); L.p(x1 + 2, y, "a" if k else "b")
 
 
 def panel(L, x0, x1, y0, y1):
