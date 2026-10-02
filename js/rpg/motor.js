@@ -1164,6 +1164,12 @@ window.Motor = (function () {
         const maske = (nb(0, -1) ? 1 : 0) | (nb(1, 0) ? 2 : 0) | (nb(0, 1) ? 4 : 0) | (nb(-1, 0) ? 8 : 0);
         naturFig.push({ y: y + 0.003, x, mur: Pikslar.steingard((x * 3 + y) % 3, maske) });
       }
+      // Skigard: ein figur som står opp over flisa, så ein kan gå bak han.
+      if (c === "|") {
+        const nb = (dx, dy) => (kart.fliser[y + dy] && kart.fliser[y + dy][x + dx]) === "|";
+        const maske = (nb(0, -1) ? 1 : 0) | (nb(1, 0) ? 2 : 0) | (nb(0, 1) ? 4 : 0) | (nb(-1, 0) ? 8 : 0);
+        naturFig.push({ y: y + 0.003, x, mur: Pikslar.skigard(0, maske), loft: Pikslar.SKIGARD_LOFT });
+      }
       // Kantar: gras over sand, og høgt gras (villgras) over gras og sand. Stiane har kanten sin i
       // Pikslar.sti, med soner og frynse som i The Minish Cap.
       const kl = Pikslar.klasse(c);
@@ -1230,7 +1236,7 @@ window.Motor = (function () {
     const djupn = f => (f.sete ? f.sete.b.y + f.sete.b.h - 1 : f.y) + (f.pose && f.pose !== "knele" && f.pose !== "peike" ? 0.02 : 0);
     figurar.sort((a, b) => djupn(a) - djupn(b));
     for (const f of figurar) {
-      if (f.mur) { const mx = Math.round((f.x + ox) * S), my = Math.round((Math.floor(f.y) + oy) * S) - 6; g.drawImage(f.mur, mx, my); maske(f.mur, mx, my, true); continue; }
+      if (f.mur) { const mx = Math.round((f.x + ox) * S), my = Math.round((Math.floor(f.y) + oy) * S) - (f.loft || 6); g.drawImage(f.mur, mx, my); maske(f.mur, mx, my, true); continue; }
       if (f.natur) { const nx = Math.round((f.x + ox) * S) + f.natur.x, ny = Math.round((Math.floor(f.y) + oy) * S) + f.natur.y; g.drawImage(f.natur.img, nx, ny); maske(f.natur.img, nx, ny, true); continue; }
       if (f.haug) { const hx = Math.round((f.x + ox) * S) - 1, hy = Math.round((Math.floor(f.y) + 1 + oy) * S) - f.haug.height; g.drawImage(f.haug, hx, hy); maske(f.haug, hx, hy, true); continue; }
       if (f.over) { const ux = Math.round((f.x + ox) * S) - 4, uy = Math.round((f.by + 1 + oy) * S) - f.bygg.height; g.drawImage(f.bygg, ux, uy); maske(f.bygg, ux, uy, true); continue; }

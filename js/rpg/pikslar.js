@@ -198,13 +198,7 @@ window.Pikslar = (function () {
       }
       px(g, 4, 14, "#68a84a", 8, 1);
     },
-    "|": (g, t, v) => {
-      gras(g, v);
-      const R = Rutenett(16, 16);
-      for (const x of [2, 13]) R.rect("p", x, 3, 1, 12);
-      for (let i = 0; i < 3; i++) for (let k = 0; k < 16; k++) R.set("s", k, 12 - Math.floor(k * 0.4) - i * 3);
-      g.drawImage(mal(R, { p: "#6a4428", s: "#8e6034" }), 0, 0);
-    },
+    "|": (g, t, v) => gras(g, v),   // sjølve skigarden er ein figur, sjå skigard()
     "j": (g, t, v) => gras(g, v),   // sjølve muren er ein figur, sjå steingard()
     "Y": (g, t, v) => {
       const r = R_.korn; px(g, 0, 0, r[1], S, S);
@@ -593,6 +587,47 @@ window.Pikslar = (function () {
     if (w > 3 && hash(x, y, fro) > 0.5) px(g, x + 1, y, m[4], w - 2, 1);
     px(g, x, y + h - 1, m[1], w, 1); px(g, x + w - 1, y, m[1], 1, h);
   }
+  /* ---------- Skigard ----------
+     Skigard av gråna tre, slik han står langs vegar og åkrar på Vestlandet: par av loddrette
+     stolpar med vidjeband, og skier som ligg på skrå mellom dei. Han er ein figur (som steingarden),
+     14 pikslar høgare enn flisa og sortert etter djupn, så ein kan gå bak han og bli dekt nedst.
+     Skiene går i eit mønster som går opp i 16 pikslar, så garden held fram utan skøyt frå flis til
+     flis. Utan nabo til venstre eller høgre sluttar skiene ved stolpane. maske som hjå steingard. */
+  const SKIGARD_LOFT = 14;
+  function skigard(v, maske) {
+    const k = `skigard:${v}:${maske}`;
+    if (cache.has(k)) return cache.get(k);
+    const H = S + SKIGARD_LOFT, c = lerret(S, H), g = c.getContext("2d");
+    const TRE = ["#3a2a1e", "#5e4a38", "#86705a", "#ad977a"], BAND = "#2a2018";
+    const botn = SKIGARD_LOFT + 11;                                    // der stolpane står i bakken
+    const V = maske & 8, A = maske & 2;
+    g.fillStyle = "rgba(20,24,50,.3)"; g.fillRect(V ? 0 : 4, botn + 1, (A ? 16 : 12) - (V ? 0 : 4), 2);   // skugge på bakken
+    // Eit par tynne staurar: den venstre bak skiene, den høgre framfor (skiene ligg mellom dei).
+    const staur = sx => { px(g, sx, 4, TRE[2], 1, botn - 4); px(g, sx + 1, 4, TRE[0], 1, botn - 4); px(g, sx, 3, TRE[3], 2, 1); };
+    staur(5);
+    // Skiene: tette, breie og på skrå opp mot høgre (lys overside, mellomtone, mørk underside).
+    for (let x = 0; x < S; x++) {
+      if ((!V && x < 5) || (!A && x > 10)) continue;
+      for (const o of [0, 5, 10]) {                                     // tre skier per 16 pikslar, med luft mellom
+        const t = (x - o + 16 + v) % 16, y = botn - 3 - t;
+        if (y < 5 || y > botn - 2) continue;
+        px(g, x, y, TRE[3]); px(g, x, y + 1, TRE[2]); px(g, x, y + 2, TRE[0]);
+      }
+    }
+    staur(9);
+    for (const by of [8, 15]) { px(g, 5, by, BAND, 6, 1); px(g, 5, by + 1, TRE[0], 6, 1); }   // vidjeband rundt paret
+    // Omriss: mørk kant rundt alt som er teikna, så garden les mot graset
+    const d = g.getImageData(0, 0, S, H), a = i => d.data[i * 4 + 3] > 0;
+    const kant = [];
+    for (let y = 0; y < H; y++) for (let x = 0; x < S; x++) {
+      if (a(y * S + x)) continue;
+      if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => { const nx = x + dx, ny = y + dy; return nx >= 0 && ny >= 0 && nx < S && ny < H && a(ny * S + nx) && ny < botn + 1; })) kant.push([x, y]);
+    }
+    for (const [x, y] of kant) px(g, x, y, "#1e1610");
+    cache.set(k, c);
+    return c;
+  }
+
   function steingard(v, maske) {
     const k = `mur:${v}:${maske}`;
     if (cache.has(k)) return cache.get(k);
@@ -1459,6 +1494,6 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, kant, stiHjorne, sti, skrent, underSkrent, rampe, stup, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
+  return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
     hent, klar, forhandslast, alleBilete, ILD, SETE, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
 })();
