@@ -6,13 +6,16 @@ bratt ned (stupet), og under stuper lia vidare ned mot dalen, med hyller og skog
 js/rpg/motor.js), og dei er måla med luftperspektiv: lysare, kaldare og med færre fargar jo lenger
 borte.
 
-  fjell     himmelen og Sunnmørsalpane over kanten øvst (faktor 0,12): skyer med lys kant,
-            ei fjern, disig fjellrekkje med snø og nærare fjell på sidene.
+  himmel    himmelen øvst (faktor 0,04): blå, lysare mot horisonten, skyer med lys kant.
+  fjell     Sunnmørsalpane (faktor 0,1): ei fjern, svært disig fjellrekkje med snø og nærare
+            fjell på sidene, gjennomsiktig over toppane.
   dal-nord  utsikta frå kanten øvst (faktor 0,3): til venstre lia opp mot utmarka med setra,
             til høgre Hovdebygda med teigar, gardar, Hovdekyrkja, elva og vegen.
+  naer      trekronene i lia rett under kanten øvst (faktor 0,6): mørke granar og bjørker som
+            stikk opp over graskanten og søkk bak han når kameraet går ned.
   li        lia under stupet (faktor 0,5): bergveggen held fram med hyller med gras, kratt og
-            bjørk, ein ny bergvegg, bratt skog som blir mindre og disigare nedover, og dalen
-            langt nede i dis nedst.
+            bjørk, ein ny bergvegg og bratt skog som blir mindre og disigare nedover og går
+            over i dis nedst (ingen flat dalbotn: han ville gli feil med parallaksen).
   greiner, greiner-h   bjørkegreiner som heng ned i øvre hjørne (forgrunn, faktor 1,3)
   gras, gras-h         høgt gras og ein tuve i nedre hjørne, framfor utsikta (forgrunn, faktor 1,3)
 
@@ -128,37 +131,45 @@ def fjellrekkje(L_, topp, stein, sno, s, dis, snodjup=(6, 10)):
             L_.dis(x, y, math.floor((dis + min(0.25, djup / 140)) * 5 + M.terskel(x, y)) / 5)
 
 
-def fjell():
-    """Himmelen og fjella over kanten øvst, sett utover som i Narshe-bileta: blå himmel med lange,
-    flate skyer som har lys kant, ei fjern og disig fjellrekkje med snø, og nærare fjell på sidene."""
-    L_ = L(FJ_W, FJ_H)
-    himl = M.rampe("#6e8cb4", "#829ec2", "#98b0ce", "#aec2d8", "#c4d2e0")
-    for y in range(FJ_H):
-        for x in range(FJ_W):
-            L_.p(x, y, M.tone(himl, 0.05 + y / 70 * 0.9, x, y))
+HI_W, HI_H = 332, 104
+
+def himmel():
+    """Himmelen øvst (faktor 0,04, nesten stillståande): blå, lysare og kaldare ned mot horisonten,
+    med lange, flate skyer som har lys kant mot ljoset."""
+    L_ = L(HI_W, HI_H)
+    himl = M.rampe("#6a88b2", "#7e9ac0", "#94accc", "#aabed8", "#c2d0e0", "#d2dce6")
+    for y in range(HI_H):
+        for x in range(HI_W):
+            L_.p(x, y, M.tone(himl, 0.04 + y / 84 * 0.95, x, y))
     sky = M.rampe("#8ea2c0", "#b2c0d6", "#d4dce8", "#eef2f6", "#fffaf0")
-    for y in range(4, 44):
-        for x in range(FJ_W):
+    for y in range(4, 50):
+        for x in range(HI_W):
             d = M.fbm(x / 70 + y / 40, y / 6, 361, 5)
-            grense = 0.56 + 0.05 * math.sin(x / 50) - (y - 4) / 40 * 0.04
+            grense = 0.56 + 0.05 * math.sin(x / 50) - (y - 4) / 46 * 0.04
             if d < grense: continue
             lys = d - M.fbm((x + 3) / 70 + (y + 2) / 40, (y + 2) / 6, 361, 5)   # lys kant opp mot venstre
-            L_.p(x, y, M.tone(sky, 0.3 + (d - grense) * 2.4 + lys * 5, x, y))
+            # skyene lenger nede (nærare horisonten) er lenger borte: lysare og flatare
+            L_.p(x, y, M.blend(M.tone(sky, 0.3 + (d - grense) * 2.4 + lys * 5, x, y), "#d2dce6", min(0.6, y / 80)))
+    return L_.im
+
+
+def fjell():
+    """Fjella over kanten øvst (faktor 0,1), utan himmel (gjennomsiktig over toppane): ei fjern,
+    svært disig fjellrekkje med snø, og nærare, mørkare fjell på sidene."""
+    L_ = L(FJ_W, FJ_H)
     stein = M.rampe("#3a4660", "#4e5a76", "#66728e", "#828ea8", "#a2acc2")
     sno = M.rampe("#a0aec4", "#c0cada", "#dee5ef", "#f8fafc")
-    # Den fjerne rekkja: spisse, disige toppar med snø.
-    fjellrekkje(L_, lambda x: 60 - M.rygg(x / 30, 371) * 22 - M.rygg(x / 11, 372) * 5, stein, sno, 373, 0.3, (3, 5))
-    # Nærare fjell på sidene, mørkare og med mindre dis.
+    fjellrekkje(L_, lambda x: 60 - M.rygg(x / 30, 371) * 22 - M.rygg(x / 11, 372) * 5, stein, sno, 373, 0.42, (3, 5))
     def naer(x):
         v, h = ss((120 - x) / 120), ss((x - 220) / 124)
         if v + h < 0.05: return 999
         return 96 - (v * 34 + h * 36) - M.rygg(x / 16, 374) * 10 * (v + h) - M.rygg(x / 6, 375) * 3
-    fjellrekkje(L_, naer, M.rampe("#2e3a4e", "#3e4c62", "#526078", "#6a7890", "#8894a8"), sno, 376, 0.22, (4, 6))
+    fjellrekkje(L_, naer, M.rampe("#2e3a4e", "#3e4c62", "#526078", "#6a7890", "#8894a8"), sno, 376, 0.28, (4, 6))
     return L_.im
 
 
 # ---------------------------------------------------------------- lia under stupet
-LI_W, LI_H = 388, 144
+LI_W, LI_H = 388, 156
 BERG = ["#1c1a2c", "#2e2a3a", "#48434a", "#645e5e", "#827a74", "#a0978a", "#bdb4a4"]   # som BERG i pikslar.js
 
 
@@ -181,26 +192,29 @@ def li():
     L_ = L(LI_W, LI_H)
     gras = M.rampe("#2c4a30", "#3a5e36", "#4e7840", "#68904c", "#88a85a")
     kratt = M.rampe("#162a1e", "#203824", "#2e4a2c", "#3e5e34", "#56743e")
-    h1 = lambda x: 22 + 3 * math.sin(x / 37) + (M.fbm(x / 14, 1, 401, 3) - 0.5) * 8      # første hylla
-    h2 = lambda x: 48 + 3 * math.sin(x / 29 + 1) + (M.fbm(x / 11, 2, 402, 3) - 0.5) * 6  # andre hylla
-    skog = lambda x: 64 + 2 * math.sin(x / 23) + (M.fbm(x / 8, 3, 403, 3) - 0.5) * 6      # skogen i lia
-    dal = lambda x: 96 + 2 * math.sin(x / 41) + (M.fbm(x / 6, 5, 405, 3) - 0.5) * 8          # dalbotnen
+    h1 = lambda x: 46 + 4 * math.sin(x / 37) + (M.fbm(x / 14, 1, 401, 3) - 0.5) * 8      # første hylla, langt nede
+    h2 = lambda x: 78 + 3 * math.sin(x / 29 + 1) + (M.fbm(x / 11, 2, 402, 3) - 0.5) * 6  # andre hylla
+    skog = lambda x: 94 + 2 * math.sin(x / 23) + (M.fbm(x / 8, 3, 403, 3) - 0.5) * 6      # skogen i lia
+    dal = lambda x: 999                                                                 # ingen dalbotn: skogen går over i dis
     hylle = lambda x, k: 4 + int(M.fbm(x / 9, k, 404, 2) * 4)
     for x in range(LI_W):
         a, b, sk, dl = h1(x), h2(x), skog(x), dal(x)
         for y in range(LI_H):
-            if y < a: berg(L_, x, y, 1.0, 411, 0.12 + y / 140)                          # stupet held fram
+            if y < a: berg(L_, x, y, 1.0, 411, 0.1 + y / 220)                          # stupet held fram
             elif y < a + hylle(x, 1):                                                   # hylla med gras
                 k = y - a
                 L_.p(x, y, M.blend(gras[4] if k == 0 else gras[3] if k == 1 else gras[2] if k < hylle(x, 1) - 1 else gras[0], DIS, 0.2))
-            elif y < b: berg(L_, x, y, 0.75, 421, 0.25 + (y - a) / 160)                 # ny bergvegg, mindre
+            elif y < b: berg(L_, x, y, 0.75, 421, 0.28 + (y - a) / 160)                 # ny bergvegg, mindre
             elif y < b + hylle(x, 2) - 1:
                 k = y - b
                 L_.p(x, y, M.blend(gras[4] if k == 0 else gras[2] if k < 3 else gras[0], DIS, 0.32))
-            elif y < sk: berg(L_, x, y, 0.55, 431, 0.38)
+            elif y < sk: berg(L_, x, y, 0.55, 431, 0.42)
             elif y < dl:                                                                # bratt skog
+                # Skogen blir disigare nedover og går over i disen nedst (ingen flat dalbotn som
+                # ville gli feil med parallaksen).
                 v = 0.42 + (M.fbm(x / 2.2, y / 1.8, 441, 2) - 0.5) * 1.0 - (y - sk) / 120
-                L_.p(x, y, M.blend(M.tone(kratt, v, x, y), DIS, math.floor((0.22 + (y - sk) / 110) * 6 + M.terskel(x, y)) / 6))
+                t = 0.3 + (y - sk) / 52 + (M.fbm(x / 18, y / 6, 442, 3) - 0.5) * 0.3
+                L_.p(x, y, M.blend(M.tone(kratt, v, x, y), DIS, min(1, math.floor(t * 6 + M.terskel(x, y)) / 6)))
             else:                                                                       # dalen langt nede
                 eng = M.rampe("#5e8a50", "#6e9a58", "#80a862", "#9ab874")
                 v = 0.5 + (M.fbm(x / 20, y / 3, 451, 3) - 0.5) * 0.9
@@ -225,13 +239,18 @@ def li():
         x = M.h(i, 1, 481) * (LI_W + 8) - 4
         sk_ = skog(x)
         t = M.h(i, 2, 481) ** 1.3
-        y = sk_ + 2 + t * (dal(x) - sk_ - 4)
+        y = sk_ + 2 + t * 20
         r = 2.6 - t * 1.6
         c = M.rampe("#1a3022", "#26402a", "#365434", "#4a6a3e", "#64844a")
         if M.h(i, 3, 481) < 0.45:
             M.gran(L_, int(x), y + r, r * 3, c, fro=i)
         else:
             krone(L_, x, y, r, c, 490 + i)
+    # Kronene nedover får same dis som skogen under, så dei ikkje flyt i disen.
+    for x in range(LI_W):
+        sk_ = skog(x)
+        for y in range(int(sk_) + 4, LI_H):
+            if L_.get(x, y): L_.dis(x, y, min(0.9, math.floor(((y - sk_) / 48) * 6 + M.terskel(x, y)) / 6))
     return L_.im
 
 
@@ -309,10 +328,34 @@ def dal_nord():
     for y in range(DN_H):
         for x in range(DN_W):
             if not L_.get(x, y): continue
-            t = min(0.9, 0.62 - y / DN_H * 0.4)
+            t = min(0.9, 0.74 - y / DN_H * 0.5)
             L_.dis(x, y, math.floor(t * 6 + M.terskel(x, y)) / 6)
     return L_.im
 
+
+
+# ---------------------------------------------------------------- trekronene under kanten øvst
+NA_W, NA_H = 400, 64
+
+def naer():
+    """Trekronene i lia rett under kanten øvst (faktor 0,6): granar og bjørker som står lenger nede
+    og stikk opp over graskanten. Dei er nær, så mørke, metta og nesten utan dis, og dei glir fort
+    forbi og søkk bak kanten når kameraet går ned: det gir høgda."""
+    L_ = L(NA_W, NA_H)
+    gran = M.rampe("#14241c", "#1c3024", "#28402c", "#365236", "#4a6a40")
+    lauv = M.rampe("#1e3422", "#2a4628", "#3c5e32", "#56783e", "#74924c")
+    topp = lambda x: 16 + 7 * math.sin(x / 31) + (M.fbm(x / 9, 1, 601, 3) - 0.5) * 10
+    for x in range(NA_W):                                              # tett skog under kronene
+        for y in range(int(topp(x)) + 10, NA_H):
+            L_.p(x, y, M.tone(gran, 0.3 + (M.fbm(x / 3, y / 2.5, 602, 2) - 0.5) * 0.7, x, y))
+    for i in range(70):
+        x = M.h(i, 1, 603) * (NA_W + 20) - 10; y = topp(x) + M.h(i, 2, 603) * 12
+        if M.h(i, 3, 603) < 0.6: M.gran(L_, int(x), y + 22, 18 + M.h(i, 4, 603) * 10, gran, fro=i)
+        else: krone(L_, x, y + 6, 5 + M.h(i, 5, 603) * 3, lauv, 604 + i)
+    for y in range(NA_H):
+        for x in range(NA_W):
+            if L_.get(x, y): L_.dis(x, y, 0.08)
+    return L_.im
 
 
 # ---------------------------------------------------------------- forgrunnen
@@ -372,7 +415,7 @@ def gras():
     return L_.im
 
 
-BILETE = {"li": li, "dal-nord": dal_nord, "fjell": fjell, "greiner": greiner, "gras": gras}
+BILETE = {"li": li, "himmel": himmel, "fjell": fjell, "dal-nord": dal_nord, "naer": naer, "greiner": greiner, "gras": gras}
 
 if __name__ == "__main__":
     namn = sys.argv[1:] or list(BILETE)
@@ -385,7 +428,9 @@ if __name__ == "__main__":
     # Kontaktark i 3x: utsikta øvst (fjella og dalen sett utover) og lia under stupet.
     ark = Image.new("RGBA", (980, 940), (14, 12, 18, 255))
     fj = Image.open(os.path.join(UT, "fjell.png")); dn = Image.open(os.path.join(UT, "dal-nord.png")); li_ = Image.open(os.path.join(UT, "li.png"))
-    opp = Image.new("RGBA", (320, 110), (166, 180, 188, 255)); opp.alpha_composite(fj.crop((0, 0, 320, 110)), (0, 0)); opp.alpha_composite(dn.crop((0, 0, 320, DN_H)), (0, 26))
+    hi = Image.open(os.path.join(UT, "himmel.png")); na = Image.open(os.path.join(UT, "naer.png"))
+    opp = Image.new("RGBA", (320, 110), (166, 180, 188, 255)); opp.alpha_composite(hi.crop((0, 0, 320, HI_H)), (0, 0))
+    opp.alpha_composite(fj.crop((0, 0, 320, 110)), (0, 4)); opp.alpha_composite(dn.crop((0, 0, 320, DN_H)), (0, 36)); opp.alpha_composite(na.crop((0, 0, 320, NA_H)), (0, 78))
     ark.alpha_composite(opp.resize((960, 330), Image.NEAREST), (10, 10))
     ark.alpha_composite(li_.crop((0, 0, 320, 140)).resize((960, 420), Image.NEAREST), (10, 350))
     x = 10

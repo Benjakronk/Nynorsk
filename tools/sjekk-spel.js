@@ -105,7 +105,7 @@ for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR |
       if (opp.every(l => fsP.existsSync(fil(l)))) {
         let kantRad = 0; R.forEach((r, y) => { if (y < 4 && r.includes("N")) kantRad = y; });   // den lågaste kanten øvst
         const [forst, sist] = [opp[0], opp[opp.length - 1]], df = pngStorleik(fil(forst)), ds = pngStorleik(fil(sist));
-        stopp: for (let ky = -(k.kameraOpp.fra - k.kameraOpp.til) / 2 * S; ky < 0; ky++) for (const kx of [0, Math.max(0, w - VW) * S]) {
+        stopp: for (let ky = -(k.kameraOpp.rader != null ? k.kameraOpp.rader : (k.kameraOpp.fra - k.kameraOpp.til) / 2) * S; ky < 0; ky++) for (const kx of [0, Math.max(0, w - VW) * S]) {
           const [fx, fy] = lagPos(forst, kx, ky), [sx, sy] = lagPos(sist, kx, ky);
           if (fx > 0 || fx + df.w < VW * S || (fy > 0 && !k.luftfarge)) { feil.push(`${id}: ${forst.bilete} dekkjer ikkje himmelen med kameraet på ${kx},${ky}`); break stopp; }
           if (sy + ds.h < kantRad * S + S - ky || sx > 0 || sx + ds.w < VW * S) { feil.push(`${id}: ${sist.bilete} når ikkje ned til kanten med kameraet på ${kx},${ky}`); break stopp; }

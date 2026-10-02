@@ -1050,3 +1050,24 @@ same måte, uansett kven som tek over.
   skipet (ingen steinheller eller korstrinn; kvileplassen `L` teiknar golvet til kartet under seg).
   Ingen galleri eller klokkarstol. Altarljosa har ingen glød (berre `L` og lysekrona). Flisa `e`
   (gamle benker) er ikkje lenger i bruk.
+
+## Runde 31: høgare stup før første hylla, lia utan dalbotn, og meir djupn øvst
+
+- **Oppdrag:** Brukaren: det første klippenivået nedst skal gå lenger ned, parallaksen fungerte ikkje
+  med dalbotnen, og toppen av Åsen skal ha endå meir djupn.
+- **Gjort:**
+  - `li` (`utsikt.py`): den første bergveggen går dobbelt så langt ned (første hylla ved y 46, var 22),
+    den andre hylla og skogen ligg lenger nede. Den flate dalbotnen er borte: ei flate langt borte
+    skulle ha glidd mykje saktare enn lia, så ho glei feil. No blir skogen disigare nedover og går over
+    i dis (kronene får same dis som skogen under, så dei ikkje flyt).
+  - Øvst er det fire lag med kvar sin fart: `himmel` (ny, 0,04: blå, lysare mot horisonten, skyer som
+    blir flatare og lysare lenger nede), `fjell` (0,1, no utan himmel og med meir dis), `dal-nord`
+    (0,3, sterkare luftperspektiv: meir dis øvst) og `naer` (ny, 0,6: mørke granar og bjørker i lia
+    under kanten som stikk opp over graskanten og søkk bak han når kameraet går ned).
+  - `kameraOpp: { fra: 12, til: 0, rader: 6 }`: kameraet ser seks rader over kartet (var fem), og
+    glir ei halv rad per rad (3 pikslar per tikk). `sjekk-spel.js` brukar `rader`.
+  - Ingen merke, dører, folk eller scener er flytte.
+- **Vurdert:** `forhand/skjerm/r31-oversyn.png` og `r31q-topp`: øvst stikk trekronene opp over kanten,
+  bak dei ligg den disige lia og bygda, fjella og himmelen, og laga glir med ulik fart. Nedst er
+  stupet høgt før den første hylla, og lia går over i dis.
+- **Står att:** Disen nedst i lia er ei jamn, lys flate.

@@ -384,24 +384,27 @@ window.RPGData = (function () {
     asen: {
       namn: "Åsen i Hovdebygda", bygg: [{ id: "stove", x: 4, y: 2, h: 3 }, { id: "loe", x: 18, y: 2, h: 3 }, { id: "stabbur", x: 17, y: 9, h: 2 }], stemning: "morgon", golv: ".", bakgrunn: "tun",
       /* Utsikta (sjå «Parallakse» i motor.js, bileta er laga med tools/pikselkunst/utsikt.py).
-         Øvst (opp: true), over kanten der toppen av åsen sluttar: himmelen og fjella lengst bak,
-         og nærast kanten Hovdebygda med kyrkja til høgre og lia opp mot utmarka og setra til
-         venstre. Kameraet kan sjå fem rader over kartet (kameraOpp). Nedst: når Ivar går mot
+         Øvst (opp: true), over kanten der toppen av åsen sluttar, fire lag med kvar sin fart:
+         himmelen (nesten stillståande), fjella, Hovdebygda med kyrkja til høgre og lia opp mot
+         utmarka og setra til venstre, og nærast trekronene i lia under kanten, som glir fort og
+         søkk bak kanten. Kameraet kan sjå seks rader over kartet (kameraOpp). Nedst: når Ivar går mot
          stupet, glir kameraet 3 rader ned (kameraNed), så han står øvst på skjermen og lia som
          stuper ned med berghyller, kratt og skog, og dalen langt nede i dis, syner under (li).
          ved er øvre venstre flis til kameraet når laget står på x, y. */
       luftfarge: "#a6b4bc",
       parallakse: [
-        { bilete: "fjell", faktor: 0.12, ved: [0, -5], x: 0, y: -6, opp: true },
-        { bilete: "dal-nord", faktor: 0.3, ved: [0, -5], x: 0, y: 20, opp: true },
+        { bilete: "himmel", faktor: 0.04, ved: [0, -6], x: 0, y: 0, opp: true },
+        { bilete: "fjell", faktor: 0.1, ved: [0, -6], x: 0, y: 6, opp: true },
+        { bilete: "dal-nord", faktor: 0.3, ved: [0, -6], x: 0, y: 36, opp: true },
+        { bilete: "naer", faktor: 0.6, ved: [0, -6], x: 0, y: 66, opp: true },
         { bilete: "li", faktor: 0.5, ved: [0, 12], x: 0, y: 48 },
       ],
-      kameraOpp: { fra: 10, til: 0 },                                  // øvst ser kameraet opptil fem rader over kanten
+      kameraOpp: { fra: 12, til: 0, rader: 6 },                        // øvst ser kameraet opptil seks rader over kanten
       kameraNed: { fra: 11, til: 13, rader: 3 },                       // ved stupet glir kameraet ned, så Ivar står øvst
       // Forgrunnen: bjørkegreiner i øvre hjørne ved skogen, høgt gras i nedre hjørne ved stupet.
       forgrunn: [
-        { bilete: "greiner", faktor: 1.3, ved: [0, -5], x: -6, y: -4 },
-        { bilete: "greiner-h", faktor: 1.3, ved: [8, -5], x: 210, y: -4 },
+        { bilete: "greiner", faktor: 1.3, ved: [0, -6], x: -6, y: -4 },
+        { bilete: "greiner-h", faktor: 1.3, ved: [8, -6], x: 210, y: -4 },
         { bilete: "gras", faktor: 1.3, ved: [0, 11.5], x: -8, y: 142 },
         { bilete: "gras-h", faktor: 1.3, ved: [8, 11.5], x: 236, y: 142 },
       ],

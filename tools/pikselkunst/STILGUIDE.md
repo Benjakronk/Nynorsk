@@ -242,15 +242,18 @@ landskap langt nede som flyttar seg saktare enn kartet.
   dis med dither, så bakgrunnen syner gjennom. Eit nes som stikk ut, kastar skugge på berget til høgre.
 - Toppen av åsen er lengst oppe på midten (to kollar med skrent under seg), og kanten (`N`) fell eit
   steg ned mot sidene, der han bøyer rundt ned mot lufta. Stien til utmarka går i søkket mellom kollane.
+- Djupn øvst kjem av fleire lag med ulik fart og sterkt luftperspektiv: himmelen står nesten still,
+  fjella er svært disige, dalen og lia disige og kalde, og trekronene rett under kanten er mørke og
+  metta og glir fort (faktor 0,6), så dei søkk bak kanten når kameraet går ned.
 - Utsikta ligg øvst, over kanten: som i Narshe-bileta himmel øvst (blå, lysare nedover, lange skyer
   med lys kant), fjella under (disige, alpine toppar med snø) og nærast kanten lia opp mot utmarka til
   venstre (skog nedst, fjellbeite med stein, ein bekk og setra langt oppe) og Hovdebygda til høgre, med
   ein skogkledd rygg på skrå mellom dei. Kanten er graset som sluttar i ei ujamn, lys line med strå mot
   himmelen; lia bak syner ikkje.
-- Under stupet nedst: lia stuper vidare (`li`, faktor 0,5): berget held fram (same knausar og renner),
-  hyller med lyst gras i kanten og kratt, einer og små bjørker, ein ny, mindre og disigare bergvegg,
-  bratt skog med kroner som blir mindre nedover, og dalen langt nede i dis. Ingen flat dalbotn rett
-  under stupet, og ingen fjell der (dei ville stå feil veg).
+- Under stupet nedst: lia stuper vidare (`li`, faktor 0,5): berget held fram (same knausar og renner)
+  eit godt stykke før den første hylla, så med lyst gras i kanten og kratt, einer og små bjørker, ein ny, mindre og disigare bergvegg,
+  bratt skog med kroner som blir mindre nedover og går over i dis. Ingen flat dalbotn (han glei feil med
+  parallaksen, sidan ei flate langt borte skulle gått mykje saktare enn lia), og ingen fjell der.
 - Utsikta (`tools/pikselkunst/utsikt.py`): luftperspektiv måla inn. Dalen er lysare og
   blåare enn kartet, små gardar (torvtak, raud eller grå vegg),
   Hovdekyrkja kvit med skifertak og spir, teigar i grønt og gult med steingardar, elva og vegen.
