@@ -6,7 +6,7 @@
 .rpg-skjerm, .rpg-skjerm * { font-family: "Pixelify Sans", "Inter", system-ui, sans-serif !important; letter-spacing: .02em; }
 
 body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 100dvh; overflow: hidden; background: #0e0c12; }
-.rpg-side .topbar { flex: none; }
+/* Spelet fyller heile vindauget, utan toppfeltet frå kurssida (til kurssida går ein frå menyen). */
 .rpg-main { flex: 1; min-height: 0; display: flex; flex-direction: column; background: #0e0c12; }
 
 .rpg-skjerm { position: relative; flex: 1; min-height: 0; display: grid; place-items: center; overflow: hidden; }

@@ -457,7 +457,7 @@
   async function meny() {
     if (modus !== "felt") return;
     Motor.pause(true);
-    const valg = ["Status", "Galdr", "Stev", "Ting", "Ordboka", "Dagboka", "Vesen", "Nøkkelting", "Kurset", "Lukk"];
+    const valg = ["Status", "Galdr", "Stev", "Ting", "Ordboka", "Dagboka", "Vesen", "Nøkkelting", "Kurset", "Til kurssida", "Lukk"];
     let valt = 0;
     menyEl.hidden = false;
     const innhald = () => {
@@ -467,6 +467,7 @@
       if (v === "Ting") { const t = Object.entries(st.ting).filter(([, n]) => n > 0); return (t.length ? `<ul class="mn-liste">${t.map(([id, n]) => `<li><b>${E(D.TING[id].namn)}</b> ×${n}<br><small>${E(D.TING[id].tekst)}</small></li>`).join("")}</ul>` : "<p>Skreppa er tom.</p>") + "<p class=\"mn-liten\">Trykk Z eller Enter for å bruke ein ting.</p>"; }
       if (v === "Ordboka") return st.nokkel.includes("ordboka") || ordtal() ? ordbokHtml() : "<p>Ivar har inga bok å skrive i enno.</p>";
       if (v === "Dagboka") return dagbokHtml();
+      if (v === "Til kurssida") return `<p>Trykk Z eller Enter for å gå attende til kurssida.</p><p class="mn-liten">Det du ikkje har lagra, går tapt. Du kan lagre ved ei lampe.</p>`;
       if (v === "Vesen") return vesenHtml();
       if (v === "Stev") return stevHtml();
       if (v === "Nøkkelting") return st.nokkel.length ? `<ul class="mn-liste">${st.nokkel.map(id => `<li><b>${E(D.NOKKELTING[id].namn)}</b><br><small>${E(D.NOKKELTING[id].tekst)}</small></li>`).join("")}</ul>` : "<p>Ingen nøkkelting enno.</p>";
@@ -482,6 +483,12 @@
     const handling = async () => {
       const v = valg[valt];
       if (v === "Lukk") return lukk();
+      if (v === "Til kurssida") {
+        menyEl.hidden = true; slepp();
+        const i = await Motor.val("Gå attende til kurssida? Det du ikkje har lagra, går tapt.", ["Gå til kurssida", "Bli i spelet"]);
+        if (i === 0) { await Motor.tonUt(); location.href = "index.html"; return; }
+        menyEl.hidden = false; slepp = Motor.lytt(lyttar); teikn(); return;
+      }
       if (v === "Galdr" || v === "Ting") { menyEl.hidden = true; slepp(); await (v === "Galdr" ? feltGaldr() : feltTing()); menyEl.hidden = false; slepp = Motor.lytt(lyttar); teikn(); }
     };
     const lyttar = { a: handling, b: lukk, retning: d => { if (d === 1) valt = (valt + valg.length - 1) % valg.length; if (d === 0) valt = (valt + 1) % valg.length; if (d === 2 || d === 3) { const h = menyEl.querySelector(".mn-hogre"); if (h) h.scrollTop += d === 3 ? 80 : -80; return; } teikn(); } };
@@ -611,7 +618,7 @@
     Motor.pause(true);
     tittelEl.hidden = false;
     const s = lagra();
-    const alt = (s ? [["hald", "Hald fram"], ["ny", "Ny reise"]] : [["ny", "Ny reise"]]).concat([["stev", "Prøv stev (prototype)"]]);
+    const alt = (s ? [["hald", "Hald fram"], ["ny", "Ny reise"]] : [["ny", "Ny reise"]]).concat([["stev", "Prøv stev (prototype)"], ["kurs", "Til kurssida"]]);
     $("rpg-tittel-val").innerHTML = alt.map(([id, t], i) => `<button type="button" data-id="${id}" class="${i === 0 ? "peikar" : ""}">${t}</button>`).join("") +
       (s ? `<p class="tt-lagra">Lagra: kapittel ${s.kapittel}, ${E((D.KART[s.kart] || {}).namn || "")}, Ivar nivå ${s.parti[0].niva}, ${Object.keys(s.ord || {}).length} ord</p>` : "");
     const kn = [...$("rpg-tittel-val").querySelectorAll("button")];
@@ -620,6 +627,7 @@
     const vel = async i => {
       slepp();
       await Motor.tonUt();
+      if (alt[i][0] === "kurs") { location.href = "index.html"; return; }
       tittelEl.hidden = true;
       requestAnimationFrame(() => requestAnimationFrame(() => Motor.tonInn()));
       if (alt[i][0] === "stev") { await provStev(); return; }
