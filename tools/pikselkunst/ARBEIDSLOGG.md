@@ -1206,3 +1206,30 @@ same måte, uansett kven som tek over.
 - **Står att:** Rotta på kartet er mørk i stabburlyset. `pix.py sjekk` meiner rottemora er lysare nede
   til høgre (flatbrødet); det er medvite. Kampbakgrunnen er stova (`inne`); ein eigen stabburbakgrunn
   ville passe betre.
+
+## Runde 37: hylle og ujamn kant nedst, dalsida som glir over i kart, skyer og elv som rører seg
+
+- **Oppdrag:** Brukaren: den første klippeveggen éi flis lenger; øvst i dalbiletet dalside som glir over
+  i perspektivet ovanfrå; kanten meir ujamn i kartet sjølv; ei hylle eitt nivå under platået som ein kan
+  gå ned på før det stuper. Og: skyene i dalen skal drive sakte, og elva bør vere animert.
+- **Gjort:**
+  - Kartet (rad 13 til 27): platået stikk ut i neset (x 21 til 23) og går inn i ei vik (x 25 til 27,
+    kanten i rad 12), og under midten (x 4 til 17) går ein skrent med rampe på (11,14) ned til ei hylle
+    (rad 15 og 16, med bjørker og ein stein) før det stuper. Stupet er tre rader høgt overalt (var to).
+    28 rader i alt. Ingen merke, dører, folk eller scener er flytte; rutene testane brukar på rad 11 til
+    13 er gangbare som før.
+  - `kameraNed: { kant: true, rader: 4, fart: 1 }`: kameraet glir ned når Ivar står på ei flis med stup
+    rett under seg (platået, neset, vika eller hylla), og attende når han går vekk frå kanten.
+  - `li` (448 × 212): øvst dalsida skrått framanfrå (tre bergveggar med grashyller som blir lågare og
+    breiare nedover, kratt og bjørker på hyllene, skog der granane går frå spisse silhuettar til runde
+    kroner sett ovanfrå), så dalbiletet ovanfrå frå y 84, der dei nedste kronene overlappar. Skuggen
+    under overhenget følgjer kvar lufta byrjar i kvar kolonne (`LUFTRAD`).
+  - Skyene er eit eige lag (`skyer`, med halvgjennomsiktig skugge på bakken) som driv éin piksel per 12
+    tikk og går rundt (`drift` i `motor.js`: to kopiar side om side). Elva er eit eige lag (`elv`, fire
+    rammer, 10 tikk per steg): lyse band og glimt flyt nedover på ei bølgje på 16 pikslar, berre der elva
+    syner (ikkje under tre), med same dis som dalen. Rammene blir klipte ut éin gong.
+  - Graset i forgrunnen står lenger nede (kameraet går lenger ned no).
+- **Vurdert:** `forhand/skjerm/r37-kantar.png` (platået, neset, vika, hylla), `r37-serie-glid.png`
+  (kameraet glir ned når Ivar går ned på den nedste hylleflisa) og `r37-rorsle.png` (fire bilete med
+  1,4 sekund mellom: skya driv mot høgre, elva renn).
+- **Står att:** Sidene av hylla mot stupet på platået er rette, loddrette kantar.

@@ -256,6 +256,14 @@ landskap langt nede som flyttar seg saktare enn kartet.
   venstre (skog nedst, fjellbeite med stein, ein bekk og setra langt oppe) og Hovdebygda til høgre, med
   ein skogkledd rygg på skrå mellom dei. Kanten er graset som sluttar i ei ujamn, lys line med strå mot
   himmelen; lia bak syner ikkje.
+- Kanten nedst går ut og inn i kartet sjølv (nes, viker), og ei hylle eitt nivå under platået (skrent
+  med rampe) gjer at det søkk litt før det stuper.
+- Øvst i biletet under stupet ser ein ned langs dalsida, skrått framanfrå: bergveggar med grashyller som
+  blir lågare og breiare nedover, og skog der granane først står opp som spisse silhuettar og så blir
+  runde kroner sett ovanfrå. Dei nedste kronene overlappar dalbiletet, så perspektivet glir frå dalside
+  til kart utan skøyt.
+- Skyene under oss driv sakte (eit eige lag), og elva i dalen renn: lyse band og glimt flyt nedover på
+  ei bølgje som går opp i fire rammer.
 - Under stupet nedst ser ein rett ned (som landskapet under pyramiden i A Link to the Past og
   verdskartet i FF6), eit fast lag som følgjer kartet (`li`, faktor 1): ur og flate knausar med lys kant
   oppe til venstre ved foten av stupet, skog som trekroner sett ovanfrå (runde, takka klumpar med lys

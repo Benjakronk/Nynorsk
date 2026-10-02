@@ -16,7 +16,10 @@ borte.
   li        lia og dalen under stupet, sett rett ovanfrå som eit kart frå lufta, eit fast lag
             (faktor 1): ur og knausar, skog som trekroner, dalbotnen med teigar, steingardar og
             skigardar, elva, vegen, gardane som tak og kyrkja med tårnet, og skyer under oss.
-            Standard nedst (variant «fast»).
+            Standard nedst (variant «fast»). Øvst ser ein ned langs dalsida (bergveggar,
+            hyller og skog skrått framanfrå), som glir over i dalen rett ovanfrå lenger ned.
+  elv       elva i dalen som animert lag (4 rammer): lyse band og glimt som flyt nedover.
+  skyer     skyene under oss med skuggen på bakken, eit lag som driv sakte bortover.
   li-kort, dal-under   varianten «dal»: lia sluttar i ei tregrense, og under stig dalbotnen med
             Hovdebygda fram nedanfrå (faktor [1, 1,8]) når kameraet glir ned ved stupet.
   greiner, greiner-h   bjørkegreiner som heng ned i øvre hjørne (forgrunn, faktor 1,3)
@@ -172,7 +175,7 @@ def fjell():
 
 
 # ---------------------------------------------------------------- lia og dalen under stupet, sett ovanfrå
-LI_W, LI_H = 448, 180                # like breitt som kartet: laget står fast (faktor 1); kartrad 15 og ned
+LI_W, LI_H = 448, 212                # like breitt som kartet: laget står fast (faktor 1); kartrad 15 til 27
 BERG = ["#1c1a2c", "#2e2a3a", "#48434a", "#645e5e", "#827a74", "#a0978a", "#bdb4a4"]   # som BERG i pikslar.js
 
 
@@ -235,6 +238,7 @@ def ovanfra(W, H, s=0):
         L_.p(x, y, "#d2c496"); L_.p(x, y + 1, "#a89a72")
     # Elva: eit band sett ovanfrå, med mørk bredd, lyse straumband og grusører.
     vass = M.rampe("#4a6a76", "#5e808c", "#7a9ca6", "#a8c4cc")
+    straum = {}                                                                          # (x, y) -> d, for elva sine rammer
     for x in range(W):
         yc = elv(x); b = 2.6 + 0.8 * math.sin(x / 19)
         for y in range(int(yc - b) - 2, int(yc + b) + 3):
@@ -242,7 +246,7 @@ def ovanfra(W, H, s=0):
             if abs(d) > 1.5: continue
             if abs(d) > 1.0: L_.p(x, y, "#3a5a40" if d < 0 else "#2e4a38"); continue
             v = 0.45 + (M.fbm(x / 5, y / 1.5, 710, 2) - 0.5) * 0.8 - d * 0.1
-            L_.p(x, y, M.tone(vass, v, x, y))
+            L_.p(x, y, M.tone(vass, v, x, y)); straum[(x, y)] = (d, L_.get(x, y))
         if M.h(x // 9, 0, 711) > 0.8 and abs(x % 9 - 4) < 3: L_.p(x, int(yc + b * 0.6), "#c8bc98")   # grusører
     bx = 236
     for k in range(-4, 5): L_.p(bx, int(elv(bx)) + k, "#b0a07a"); L_.p(bx + 1, int(elv(bx)) + k, "#8a7a5a")
@@ -294,50 +298,153 @@ def ovanfra(W, H, s=0):
             krone_ovanfra(x, y, 2.4 + M.h(i, 4, 716) * 1.4, ["#2a3e28", "#3e5a32", "#5a7a40", "#7a9a52"])   # bjørk
         else:
             krone_ovanfra(x, y, 2.8 + M.h(i, 4, 716) * 1.8, ["#14241a", "#1c3222", "#2a4428", "#3c5a32"])   # gran
-    # Skyer som driv mellom oss og dalen: kvite flak med skuggen sin på bakken nede til høgre.
-    for k, (cx, cy, r) in enumerate([(90, 64, 14), (300, 140, 18), (410, 50, 10)]):
-        def inni(xx, yy): return ((xx - cx) / r) ** 2 + ((yy - cy) / (r * 0.55)) ** 2 + (M.fbm(xx / 5, yy / 4, 717 + k, 3) - 0.5) * 1.4 < 1
-        for yy in range(int(cy - r), int(cy + r)):
-            for xx in range(int(cx - r * 1.4), int(cx + r * 1.4)):
-                if inni(xx - 7, yy - 9) and not inni(xx, yy) and L_.get(xx, yy): L_.p(xx, yy, M.blend(L_.get(xx, yy), "#1a2430", 0.32))
-        for yy in range(int(cy - r), int(cy + r)):
-            for xx in range(int(cx - r * 1.4), int(cx + r * 1.4)):
-                if inni(xx, yy):
-                    lys = inni(xx + 1, yy + 1) and not inni(xx - 1, yy - 1)
-                    L_.p(xx, yy, "#f4f6f6" if lys else "#dce2e6" if inni(xx - 1, yy - 1) and inni(xx + 1, yy + 1) else "#c4ccd4")
     # Langt nede: dempa og disig (meir nedover), og svake lysstrålar på skrå.
     for y in range(H):
         for x in range(W):
             c = L_.get(x, y)
             if not c: continue
-            if c in ((244, 246, 246), (220, 226, 230), (196, 204, 212)): continue    # skyene er nær oss
             t = 0.26 + y / H * 0.22
             if (x + y * 0.7) % 70 < 16: t -= 0.08
+            if (x, y) in straum and straum[(x, y)][1] == c: straum[(x, y)] = (straum[(x, y)][0], t)   # framleis vatn (ikkje dekt av tre)
+            elif (x, y) in straum: del straum[(x, y)]
             L_.dis(x, y, math.floor(t * 6 + M.terskel(x, y)) / 6)
-    # Skuggen under overhenget nedst i stupet (kartrad 16; under neset rad 17, smalare nedover).
-    for x in range(W):
-        for y in range(16, 24):
-            c = L_.get(x, y)
-            if c and M.terskel(x, y) < (24 - y) / 8: L_.p(x, y, M.blend(c, "#1c1a2c", 0.55))
-    for y in range(32, 40):
-        inn = int((y - 32) * 1.6)
-        for x in range(21 * 16 + inn, 24 * 16 - inn):
-            c = L_.get(x, y)
-            if c and M.terskel(x, y) < (40 - y) / 8: L_.p(x, y, M.blend(c, "#1c1a2c", 0.55))
+    L_.straum = {k: v for k, v in straum.items() if isinstance(v[1], float)}
     return L_, ur, skog
 
 
+# Kvar lufta byrjar under stupet, per flis-kolonne (kartrad), så skuggen under overhenget kjem rett.
+# Må stemme med rader i kartet asen i js/rpg/data.js: platået (17), hylla (20), neset (18), vika (16).
+LUFTRAD = [17] * 4 + [20] * 14 + [17] * 3 + [18] * 3 + [17] + [16] * 3
+LI_TOPP = 15                          # biletet byrjar ved kartrad 15
+
+
+def berg(L_, x, y, skala, s, dis):
+    """Ein piksel bergvegg sett framanfrå (Narshe): store knausar med lys side mot venstre og djupe
+    renner. skala < 1 gjer formene mindre (lenger borte). dis: kor mykje mot disfargen."""
+    kn = lambda X, Y: 0.62 * M.stoy(X / (15 * skala) + Y / (70 * skala), 0.5, s) + 0.38 * M.stoy(X / (5.5 * skala) + Y / (40 * skala), Y / (30 * skala), s + 1)
+    d = kn(x, y); helling = kn(x + 1.5, y) - kn(x - 1.5, y)
+    l = 0.5 + helling * 5.5 / skala ** 0.5 + (d - 0.5) * 1.1
+    if M.h(x // 2, y // 3, s + 2) > 0.87: l += 0.15
+    v = max(0, min(6, int(l * 6 + (M.terskel(x, y) - 0.5) * 0.7)))
+    if d < 0.3: v = min(v, 1)
+    L_.p(x, y, M.blend(BERG[v], DIS, math.floor(dis * 6 + M.terskel(x + 1, y)) / 6))
+
+
 def li():
-    """Lia og dalen under stupet, sett ovanfrå, som eit fast lag (faktor 1): ura og skogen ved foten av
-    stupet, så dalbotnen med Hovdebygda langt nede."""
-    return ovanfra(LI_W, LI_H)[0].im
+    """Lia og dalen under stupet, eit fast lag (faktor 1). Øvst ser ein ned langs dalsida, skrått
+    framanfrå: bergveggar med grashyller, ur og bratt skog der trea står opp (granar som spisse
+    silhuettar). Nedover blir veggane lågare og hyllene breiare, trea blir runde kroner sett ovanfrå,
+    og til slutt ser ein dalbotnen rett ovanfrå som eit kart (ovanfra): perspektivet glir frå dalside
+    til kart utan skøyt. Skuggen under overhenget nedst i stupet ligg der lufta byrjar (LUFTRAD)."""
+    W, H = LI_W, LI_H
+    L_ = L(W, H)
+    # Dalbotnen rett ovanfrå: frå skogen og ned, limt inn frå y 84 (der skogen alt er sett ovanfrå).
+    dal = ovanfra(W, H - OV + 64)[0].im.crop((0, 64, W, H - OV + 64))
+    L_.im.alpha_composite(dal, (0, OV)); L_.px = L_.im.load()
+    gras = M.rampe("#2c4a30", "#3a5e36", "#4e7840", "#68904c", "#88a85a")
+    kratt = M.rampe("#162a1e", "#203824", "#2e4a2c", "#3e5e34", "#56743e")
+    # Hyllene i dalsida: veggane blir lågare og hyllene breiare nedover (perspektivet flatar ut).
+    hyller = [(lambda x: 30 + 3 * math.sin(x / 37) + (M.fbm(x / 14, 1, 801, 3) - 0.5) * 8, 5, 1.0, 0.1),
+              (lambda x: 50 + 2 * math.sin(x / 29 + 1) + (M.fbm(x / 11, 2, 802, 3) - 0.5) * 6, 7, 0.75, 0.2),
+              (lambda x: 64 + 2 * math.sin(x / 23) + (M.fbm(x / 9, 3, 803, 3) - 0.5) * 6, 9, 0.55, 0.28)]
+    skogtopp = lambda x: hyller[2][0](x) + 6
+    for x in range(W):
+        y = 0
+        for k, (hy, tj, skala, dis) in enumerate(hyller):
+            h0 = hy(x)
+            while y < h0: berg(L_, x, y, skala, 811 + k * 10, dis + y / 400); y += 1      # bergveggen
+            while y < h0 + tj + int(M.fbm(x / 9, k, 804, 2) * 4):                          # hylla, sett meir ovanfrå
+                kk = y - h0
+                L_.p(x, y, M.blend(gras[4] if kk == 0 else gras[3] if kk < 2 else gras[2] if M.h(x, y, 805) > 0.3 else gras[1], DIS, dis + 0.1))
+                y += 1
+        while y < OV + 6:                                                                   # skogbotn i lia
+            L_.p(x, y, M.blend(M.tone(kratt, 0.3 + (M.fbm(x / 3, y / 2, 806, 2) - 0.5) * 0.8, x, y), DIS, 0.3)); y += 1
+    # Kratt og små bjørker på hyllene (sett skrått: står opp frå hylla).
+    for i in range(220):
+        x = M.h(i, 1, 807) * W; k = i % 3; hy, tj, skala, dis = hyller[k]
+        y = hy(x) + 1 + M.h(i, 2, 807) * tj
+        r = (1.4 + M.h(i, 3, 807) * 2) * skala
+        if M.h(i, 4, 807) > 0.85:
+            for kk in range(int(5 * skala)): L_.p(x, y - kk, "#cfccc4" if kk % 3 else "#3a3640")
+            krone(L_, x, y - 5 * skala, r, M.rampe("#2e4a2c", "#46683a", "#6a8e48", "#8eac5a"), 820 + i)
+        else: krone(L_, x, y - r * 0.4, r, kratt, 820 + i)
+    # Skogen i lia: øvst granar som står opp (spisse silhuettar), nedover fleire runde kroner sett
+    # ovanfrå, og dei nedste overlappar dalbiletet, så overgangen blir mjuk.
+    gran = M.rampe("#14241a", "#1c3222", "#28422c", "#385636", "#4e6e40")
+    for i in range(700):
+        x = M.h(i, 1, 830) * (W + 8) - 4; t = M.h(i, 2, 830)
+        y = skogtopp(x) + t * (OV + 14 - skogtopp(x))
+        ovanfraa = M.h(i, 3, 830) < t * 1.2                                                # meir ovanfrå jo lenger ned
+        if ovanfraa:
+            r = 2.6 - t * 0.6
+            for yy in range(int(y - r) - 1, int(y + r) + 2):
+                for xx in range(int(x - r) - 1, int(x + r) + 2):
+                    dx, dy = (xx + 0.5 - x) / r, (yy + 0.5 - y) / r; n = dx * dx + dy * dy
+                    if n > 1 + (M.h(xx, yy, 831) - 0.5) * 0.45: continue
+                    L_.p(xx, yy, gran[3] if dx + dy < -0.7 and n > 0.2 else gran[2] if dx + dy < 0.1 else gran[1] if n < 0.75 else gran[0])
+        else:
+            M.gran(L_, int(x), y + 3, 7 + (1 - t) * 6, gran, fro=i)
+    # Dis: lia øvst er nærast (litt dis), nedover meir, så ho møter disen i dalbiletet.
+    for y in range(OV + 14):
+        for x in range(W):
+            if L_.get(x, y): L_.dis(x, y, math.floor(min(0.3, y / 300) * 6 + M.terskel(x, y)) / 6)
+    # Skuggen under overhenget nedst i stupet, der lufta byrjar i kvar kolonne.
+    for x in range(W):
+        y0 = (LUFTRAD[min(len(LUFTRAD) - 1, x // 16)] - LI_TOPP) * 16
+        for y in range(y0, y0 + 8):
+            c = L_.get(x, y)
+            if c and M.terskel(x, y) < (y0 + 8 - y) / 8: L_.p(x, y, M.blend(c, "#1c1a2c", 0.55))
+    return L_.im
+
+
+OV = 84                               # dalbiletet ovanfrå byrjar her i li (sjå li)
+
+
+def elv_rammer():
+    """Elva i dalbiletet som eit animert lag over li (fire rammer side om side): lyse band og glimt
+    som flyt nedover elva (mot høgre), fire pikslar per ramme på ein bølgje på 16, så rundgangen går
+    opp utan skøyt. Berre pikslane der elva syner i li (ikkje under tre), med same dis som li."""
+    dal = ovanfra(LI_W, LI_H - OV + 64)[0]
+    vass = M.rampe("#4a6a76", "#5e808c", "#7a9ca6", "#a8c4cc")
+    n = 4
+    ark = Image.new("RGBA", (LI_W * n, LI_H), (0, 0, 0, 0)); px = ark.load()
+    for f in range(n):
+        for (x, yo), (d, t) in dal.straum.items():
+            y = yo - 64 + OV
+            if not (0 <= y < LI_H): continue
+            u = (x - f * 4 + round(2 * math.sin(yo / 2 + x / 13))) % 16
+            v = 0.42 - d * 0.12 + (0.32 if u < 3 else 0.14 if u < 5 else 0)
+            c = M.tone(vass, v, x, y)
+            if u == 8 and abs(d) < 0.35 and M.h(x // 16, 0, 741) > 0.4: c = M.hx("#d8e6ea")      # glimt
+            c = M.blend(c, DIS, math.floor(t * 6 + M.terskel(x, y)) / 6)
+            px[f * LI_W + x, y] = (c[0], c[1], c[2], 255)
+    return ark
+
+
+def skyer():
+    """Skyene under oss som eit eige lag (driv sakte bortover, sjå drift i data.js): kvite flak med lys
+    kant oppe til venstre, og skuggen sin på bakken nede til høgre (halvgjennomsiktig). Dei ligg
+    innanfor biletet, så laget kan gå rundt utan skøyt."""
+    L_ = L(LI_W, LI_H)
+    for k, (cx, cy, r) in enumerate([(70, OV + 44, 14), (250, OV + 92, 18), (380, OV + 30, 10)]):
+        def inni(xx, yy): return ((xx - cx) / r) ** 2 + ((yy - cy) / (r * 0.55)) ** 2 + (M.fbm(xx / 5, yy / 4, 717 + k, 3) - 0.5) * 1.4 < 1
+        for yy in range(int(cy - r), int(cy + r) + 12):
+            for xx in range(int(cx - r * 1.4), int(cx + r * 1.4) + 10):
+                if inni(xx - 7, yy - 9) and not inni(xx, yy) and M.terskel(xx, yy) < 0.75:
+                    L_.im.putpixel((xx % LI_W, yy), (26, 36, 48, 84))                         # skuggen på bakken
+        for yy in range(int(cy - r), int(cy + r)):
+            for xx in range(int(cx - r * 1.4), int(cx + r * 1.4)):
+                if inni(xx, yy):
+                    lys = inni(xx + 1, yy + 1) and not inni(xx - 1, yy - 1)
+                    L_.p(xx % LI_W, yy, "#f4f6f6" if lys else "#dce2e6" if inni(xx - 1, yy - 1) and inni(xx + 1, yy + 1) else "#c4ccd4")
+    return L_.im
 
 
 def li_kort():
-    """Varianten «dal»: berre ura og skogen; under skogkanten er det ope, og dalen (dal-under) stig fram."""
-    L_, ur, skog = ovanfra(LI_W, LI_H)
+    """Varianten «dal»: berre dalsida øvst (hyllene og skogen); under er det ope, og dalen stig fram."""
+    im = li(); L_ = L(LI_W, LI_H); L_.im.alpha_composite(im); L_.px = L_.im.load()
     for x in range(LI_W):
-        for y in range(int(skog(x)) + 3, LI_H): L_.tom(x, y)
+        for y in range(84 + int(M.fbm(x / 6, 1, 840, 2) * 8), LI_H): L_.tom(x, y)
     return L_.im
 
 
@@ -521,7 +628,7 @@ def gras_ramme(w, h, vind):
     return L_.im
 
 
-BILETE = {"li": li, "li-kort": li_kort, "dal-under": dal_under, "himmel": himmel, "fjell": fjell, "dal-nord": dal_nord, "naer": naer, "greiner": greiner, "gras": gras}
+BILETE = {"li": li, "elv": elv_rammer, "skyer": skyer, "li-kort": li_kort, "dal-under": dal_under, "himmel": himmel, "fjell": fjell, "dal-nord": dal_nord, "naer": naer, "greiner": greiner, "gras": gras}
 
 if __name__ == "__main__":
     namn = sys.argv[1:] or list(BILETE)

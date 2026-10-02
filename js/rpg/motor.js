@@ -517,19 +517,20 @@ window.Motor = (function () {
      mjuk glidning: med glidning mot noko som går, flytta biletet seg ujamt. Farten blir rekna
      slik at kameraet er framme på ms (minst 1 piksel per tikk). Går målet, flyttar kameraet seg
      med målet i tillegg, så det fangar det og så går i takt. kam.px er øvre venstre hjørne i pikslar. */
-  /* Utsikt nedst (kart.def.kameraNed = { fra, rader, fart }): først når målet står på rad fra eller
-     lenger nede (den nedste flisa før stupet), glir kameraet rader rader ned, og attende når målet går
-     opp att. Glidinga går for seg sjølv i tikk-takt, fart pikslar per tikk (standard 1), så ho er
+  /* Utsikt nedst (kart.def.kameraNed = { fra, rader, fart } eller { kant: true, rader, fart }): først
+     når målet står på rad fra eller lenger nede, eller (kant) på ei flis med stup («M») rett under seg,
+     glir kameraet rader rader ned, og attende når målet går vekk frå kanten. Glidinga går for seg sjølv i tikk-takt, fart pikslar per tikk (standard 1), så ho er
      roleg og i heile pikslar (nedPx). På Åsen står Ivar då øvst på skjermen, og lia syner under.
      Utsikt øvst (kart.def.kameraOpp = { fra, til, rader }): når målet er ovanfor rad fra, ser kameraet
      jamt lenger opp, til rader rader over kartet ved rad til, der det er luft og utsikta syner (sjå
      nordkant). Farten går opp i heile pikslar når rader / (fra - til) er eit halvt tal. */
   let nedPx = 0, nedTikk = 0;
-  function oppdaterNed(no, malY) {
+  function oppdaterNed(no, malX, malY) {
     const k = kart.def.kameraNed, t = tikk(no), n = Math.max(0, t - nedTikk);
     nedTikk = t;
     if (!k) { nedPx = 0; return; }
-    const maal = malY >= k.fra - 0.001 ? Math.round(k.rader * S) : 0, fart = Math.max(1, k.fart || 1);
+    const ved = k.kant ? ((kart.fliser[Math.round(malY) + 1] || [])[Math.round(malX)] === "M" && Math.abs(malY - Math.round(malY)) < 0.01) : malY >= k.fra - 0.001;
+    const maal = ved ? Math.round(k.rader * S) : 0, fart = Math.max(1, k.fart || 1);
     nedPx += Math.sign(maal - nedPx) * Math.min(Math.abs(maal - nedPx), fart * Math.min(n, 8));
   }
   const forskuv = (k, y) => {
@@ -557,7 +558,8 @@ window.Motor = (function () {
   function kameraPx(no) {
     const g = kameraGrunnPx(no);
     kameraGrunn = g;
-    oppdaterNed(no, kam ? kam.mal().y : spelar.fy);
+    const mal = kam ? kam.mal() : { x: spelar.fx, y: spelar.fy };
+    oppdaterNed(no, mal.x, mal.y);
     return { x: g.x, y: kart.h < VH ? g.y : Math.min((kart.h - VH) * S, g.y + nedPx) };
   }
   function kameraGrunnPx(no) {
@@ -719,7 +721,8 @@ window.Motor = (function () {
      skjermen (i pikslar) når kameraet står med øvre venstre flis på ved. faktor er eit tal eller
      [fx, fy]. Kameraet står på heile pikslar, og laget blir runda til heile pikslar for seg:
      posisjonen er ein monoton funksjon av kameraet, så ingenting ristar fram og attende.
-     Eit lag med faktor 1 står fast i terrenget (lia under stupet på Åsen). Eit lag med variant: "namn"
+     Eit lag med faktor 1 står fast i terrenget (lia under stupet på Åsen). drift: n lèt laget gli
+     éin piksel mot høgre per n tikk og gå rundt (skyene under Åsen), teikna to gonger side om side. Eit lag med variant: "namn"
      blir berre teikna når kartet har variant: "namn" (standard «fast»), så ein kan prøve ulike utsikter.
      Bakgrunnen syner gjennom luftfliser («-»: ikkje gangbare, ingen bakke) og der stupet («M»)
      løyser seg opp i dis nedst. luftfarge fyller skjermen under laga. */
@@ -752,7 +755,13 @@ window.Motor = (function () {
       const kjelde = parallaksebilete(l.bilete);
       if (!Pikslar.klar(kjelde)) continue;
       const img = lagRamme(kjelde, l, no), iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
-      const [x, y] = lagPos(l, camX, camY);
+      const [x0, y] = lagPos(l, camX, camY);
+      if (l.drift) {                                                     // driv rundt: to kopiar side om side
+        const x = x0 + Math.floor(tikk(no) / l.drift) % iw;
+        g.drawImage(img, x, y); g.drawImage(img, x - iw, y);
+        continue;
+      }
+      const x = x0;
       if (x >= LW || y >= LH || x + iw <= 0 || y + ih <= 0) continue;
       g.drawImage(img, x, y);
       if (forgrunn) { maske(img, x, y, true); luftUt(img, x, y); }

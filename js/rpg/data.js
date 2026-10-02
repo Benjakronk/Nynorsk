@@ -405,20 +405,26 @@ window.RPGData = (function () {
         // Variant «dal»: lia sluttar i ei tregrense, og dalen stig fram nedanfrå (raskare enn kartet).
         { bilete: "dal-under", faktor: [1, 1.8], ved: [0, 10.5], x: 0, y: 150, variant: "dal" },
         { bilete: "li", faktor: 1, ved: [0, 12], x: 0, y: 48, variant: "fast" },
+        // Elva renn (fire rammer på rundgang), og skyene under oss driv sakte bortover (1 piksel per 12 tikk).
+        { bilete: "elv", faktor: 1, ved: [0, 12], x: 0, y: 48, variant: "fast", rammer: 4, rekkje: [0, 1, 2, 3], takt: 10 },
+        { bilete: "skyer", faktor: 1, ved: [0, 12], x: 0, y: 48, variant: "fast", drift: 12 },
         { bilete: "li-kort", faktor: 1, ved: [0, 12], x: 0, y: 48, variant: "dal" },
       ],
       variant: "fast",                                                 // utsikta nedst: «fast» eller «dal» (sjå parallakse)
       stupFast: true,                                                  // stupet endar i eit overheng, og lia under er eit fast lag
       kameraOpp: { fra: 12, til: 0, rader: 6 },                        // øvst ser kameraet opptil seks rader over kanten
-      kameraNed: { fra: 13, rader: 4, fart: 1 },                       // på den nedste flisa glir kameraet roleg ned, så Ivar står øvst
+      kameraNed: { kant: true, rader: 4, fart: 1 },                    // på flisa rett over stupet glir kameraet roleg ned, så Ivar står øvst
       // Forgrunnen: bjørkegreiner i øvre hjørne ved skogen, høgt gras i nedre hjørne ved stupet.
       forgrunn: [
         { bilete: "greiner", faktor: 1.3, ved: [0, -6], x: -6, y: -4 },
         { bilete: "greiner-h", faktor: 1.3, ved: [8, -6], x: 210, y: -4 },
-        { bilete: "gras", faktor: 1.3, ved: [0, 11.5], x: -8, y: 142, rammer: 3, rekkje: [0, 1, 2, 1], takt: 40 },
-        { bilete: "gras-h", faktor: 1.3, ved: [8, 11.5], x: 236, y: 142, rammer: 3, rekkje: [0, 1, 2, 1], takt: 40 },   // graset vaiar i vinden
+        { bilete: "gras", faktor: 1.3, ved: [0, 13.5], x: -8, y: 156, rammer: 3, rekkje: [0, 1, 2, 1], takt: 40 },
+        { bilete: "gras-h", faktor: 1.3, ved: [8, 13.5], x: 236, y: 156, rammer: 3, rekkje: [0, 1, 2, 1], takt: 40 },   // graset vaiar i vinden
       ],
-      /* Åsen: toppen er lengst oppe på midten (to kollar med skrent «s» under seg, rad 0 og 1), og
+      /* Nedst er kanten ujamn: platået stikk ut i eit nes (x 21 til 23) og går inn i ei vik (x 25 til 27),
+         og under midten (x 4 til 17) går ein skrent med rampe (11,14) ned til ei hylle eitt nivå lenger
+         nede (rad 15 og 16) før det stuper. Stupet er tre rader høgt, og lufta under har lia og dalen.
+         Åsen: toppen er lengst oppe på midten (to kollar med skrent «s» under seg, rad 0 og 1), og
          kanten der bakken fell bort («N») går eit steg ned mot sidene, der det er luft («-») i rad 0.
          Stien til kantdøra mot utmarka går i søkket mellom kollane (rampa «/» på (10,1)), litt til
          venstre. Tunet ligg under, og bøen med åkeren og stabburet under ein skrent til. Nedst fell
@@ -437,11 +443,13 @@ window.RPGData = (function () {
         "##.YYYY.=.\"...t..WDW....=..#",
         "#..YYYY....\"...o..5========2",
         "##.YYYY....................#",
-        "#.L.....t..........\".....t.#",
-        "MMMMMMMMMMMMMMMMMMMMM.\".MMMM",
-        "MMMMMMMMMMMMMMMMMMMMMMMMMMMM",
-        "---------------------MMM----",
-        "----------------------------",
+        "#.L.....t..........\".....MMM",
+        "MMMMsssssss/ssssssMMM.\".MMMM",
+        "MMMM....\"...o.....MMMMMMMMMM",
+        "MMMMt....\"......t.MMMMMMM---",
+        "----MMMMMMMMMMMMMM---MMM----",
+        "----MMMMMMMMMMMMMM----------",
+        "----MMMMMMMMMMMMMM----------",
         "----------------------------",
         "----------------------------",
         "----------------------------",
