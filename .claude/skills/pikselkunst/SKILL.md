@@ -155,12 +155,14 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
     under med `Pikslar.underSkrent`), `/` rampe (stien gjennom skrenten med trinn, `Pikslar.rampe`),
     `M` stup (bergveggen nedst, `Pikslar.stup`, løyser seg opp i dis i den nedste rada) og `-` luft
     (ingen bakke, ikkje gangbar, bakgrunnen syner). Under stup er det stup eller luft. Skrenten flatar
-    ut der han møter open mark eller ei rampe, så ein rampe er ein kleiv i bakkekanten.
+    ut der han møter open mark eller ei rampe, så ein rampe er ein kleiv i bakkekanten. `N` er kanten
+    øvst der bakken fell bort (`Pikslar.nordkant`, berre i rad 0 på kart med `kameraOpp`).
   - Bakgrunnslaga og forgrunnen: `python tools/pikselkunst/utsikt.py` (skriptet er kjelda) skriv
-    `bilete/spel/parallakse/<namn>.png` (dal, fjell, greiner, gras) og `forhand/utsikt-ark.png`. På
+    `bilete/spel/parallakse/<namn>.png` (fjell og dal-nord øvst, dal under stupet, greiner, gras) og
+    `forhand/utsikt-ark.png`. På
     kartet: `parallakse: [{ bilete, faktor, ved: [kx, ky], x, y }]` (det fjernaste først, faktor under 1),
-    `forgrunn: [...]` (faktor over 1), `luftfarge` og `kameraNed: { fra, til }` (kameraet ser lenger ned
-    ved stupet). x og y er staden på skjermen når kameraet står med øvre venstre flis på ved. Bileta blir
+    `forgrunn: [...]` (faktor over 1), `luftfarge`, `kameraNed: { fra, til }` (kameraet ser lenger ned
+    ved stupet) og `kameraOpp` (ser over kanten øvst; laga der har `opp: true`). x og y er staden på skjermen når kameraet står med øvre venstre flis på ved. Bileta blir
     forhåndslasta av seg sjølv. `sjekk-spel.js` sjekkar at det bakaste laget dekkjer lufta.
   - Luftperspektiv blir måla inn: lysare, kaldare, færre fargar og meir dis jo lenger borte. I lyset er
     bakgrunnen nivå 5 (`fjern` i stemninga, ingen skyskugge).

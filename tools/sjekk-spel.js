@@ -83,6 +83,7 @@ for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR |
     const R = k.rader, h = R.length, w = R[0].length, c = (x, y) => (R[y] || "")[x];
     if (R.some(r => r.includes("-")) && !(k.parallakse || []).length) feil.push(`${id}: luftfliser («-») utan parallakse`);
     for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      if (c(x, y) === "N" && !(y === 0 && k.kameraOpp)) feil.push(`${id}: kanten «N» på ${x},${y} høyrer til rad 0 på eit kart med kameraOpp`);
       if (c(x, y) === "M" && y < h - 1 && !"M-".includes(c(x, y + 1))) feil.push(`${id}: under stupet på ${x},${y} er «${c(x, y + 1)}» (skal vere stup eller luft)`);
       if (c(x, y) === "-" && y < h - 1 && c(x, y + 1) !== "-") feil.push(`${id}: under lufta på ${x},${y} er «${c(x, y + 1)}»`);
       if (c(x, y) === "/") {
@@ -91,6 +92,24 @@ for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR |
       }
     }
     if (k.kameraNed && !(Number.isFinite(k.kameraNed.fra) && Number.isFinite(k.kameraNed.til) && k.kameraNed.til > k.kameraNed.fra)) feil.push(`${id}: kameraNed treng fra < til`);
+    if (k.kameraOpp && !(Number.isFinite(k.kameraOpp.fra) && Number.isFinite(k.kameraOpp.til) && k.kameraOpp.fra > k.kameraOpp.til && k.kameraOpp.til >= 0)) feil.push(`${id}: kameraOpp treng fra > til >= 0`);
+    // Utsikta øvst: det første opp-laget dekkjer skjermen frå toppen, og det siste når ned under
+    // graskanten i rad 0, for alle kameraposisjonar der lufta over kartet syner.
+    const opp = (k.parallakse || []).filter(l => l.opp);
+    if (k.kameraOpp && !opp.length) feil.push(`${id}: kameraOpp utan bakgrunnslag med opp: true`);
+    if (k.kameraOpp && opp.length) {
+      const lagPos = (l, kx, ky) => { const fk = Array.isArray(l.faktor) ? l.faktor : [l.faktor, l.faktor], ved = l.ved || [0, 0];
+        return [Math.round(l.x - (kx - ved[0] * S) * fk[0]), Math.round(l.y - (ky - ved[1] * S) * fk[1])]; };
+      const fil = l => stiP.join(__dirname, "..", "bilete", "spel", "parallakse", l.bilete + ".png");
+      if (opp.every(l => fsP.existsSync(fil(l)))) {
+        const [forst, sist] = [opp[0], opp[opp.length - 1]], df = pngStorleik(fil(forst)), ds = pngStorleik(fil(sist));
+        stopp: for (let ky = -(k.kameraOpp.fra - k.kameraOpp.til) / 2 * S; ky < 0; ky++) for (const kx of [0, Math.max(0, w - VW) * S]) {
+          const [fx, fy] = lagPos(forst, kx, ky), [sx, sy] = lagPos(sist, kx, ky);
+          if (fx > 0 || fx + df.w < VW * S || (fy > 0 && !k.luftfarge)) { feil.push(`${id}: ${forst.bilete} dekkjer ikkje himmelen med kameraet på ${kx},${ky}`); break stopp; }
+          if (sy + ds.h < S - ky || sx > 0 || sx + ds.w < VW * S) { feil.push(`${id}: ${sist.bilete} når ikkje ned til kanten med kameraet på ${kx},${ky}`); break stopp; }
+        }
+      }
+    }
     const lag = [["parallakse", k.parallakse], ["forgrunn", k.forgrunn]];
     for (const [namn, liste] of lag) (liste || []).forEach((l, i) => {
       const stad = `${id} ${namn}[${i}]`, f = stiP.join(__dirname, "..", "bilete", "spel", "parallakse", l.bilete + ".png");
@@ -98,7 +117,7 @@ for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR |
       const fk = Array.isArray(l.faktor) ? l.faktor : [l.faktor, l.faktor];
       if (!fk.every(v => typeof v === "number" && (namn === "parallakse" ? v >= 0 && v < 1 : v > 1))) feil.push(`${stad}: faktor ${l.faktor} (bak kartet 0 til 1, i forgrunnen over 1)`);
       if (!Number.isFinite(l.x) || !Number.isFinite(l.y) || (l.ved && !(Array.isArray(l.ved) && l.ved.length === 2))) feil.push(`${stad}: treng x, y og ved: [kx, ky]`);
-      if (namn !== "parallakse" || i !== 0) return;
+      if (namn !== "parallakse" || l.opp || (liste.findIndex(m => !m.opp) !== i)) return;   // det bakaste laget under kartet
       // Det bakaste laget: dekkjer det skjermen frå toppen av stupet og ned, der lufta kan syne?
       const { w: bw, h: bh } = pngStorleik(f), ved = l.ved || [0, 0];
       let luftRad = R.findIndex(r => r.includes("-"));

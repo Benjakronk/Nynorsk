@@ -1,15 +1,18 @@
 """Utsikta frå Åsen: bakgrunnslag med parallakse og forgrunnselement (bilete/spel/parallakse/).
 
-Åsen fell bratt ned nedst på kartet (stupet), og under ligg Hovdebygda langt nede, som landskapet
-under toppen av pyramiden i A Link to the Past. Laga flyttar seg saktare enn kartet (sjå
-«Parallakse» i js/rpg/motor.js), og dei er måla med luftperspektiv: lysare, kaldare og med færre
-fargar jo lenger borte.
+Øvst på kartet sluttar toppen av åsen, og ein ser utover som i Narshe-bileta i Final Fantasy VI:
+himmel øvst, fjella under og dalen med Hovdebygda nedst, nærast kanten. Nedst på kartet fell åsen
+bratt ned (stupet), og under ligg dalbotnen langt nede i dis, sett ovanfrå som landskapet under
+toppen av pyramiden i A Link to the Past. Laga flyttar seg saktare enn kartet (sjå «Parallakse» i
+js/rpg/motor.js), og dei er måla med luftperspektiv: lysare, kaldare og med færre fargar jo lenger
+borte.
 
-  dal       dalbotnen med Hovdekyrkja, gardane, åkrane, elva og vegen (faktor 0,3). Øvst er
-            skogen nedst i åsen vår i dis, nedst skogen på andre sida av dalen, og på sidene
-            stig fjellsidene, så laget er ope der (fjella syner gjennom).
-  fjell     Sunnmørsalpane rundt dalen og himmelen over dei (faktor 0,12): store fjell med snø
-            på sidene og ei fjern fjellrekkje nedst, i dis.
+  fjell     himmelen og Sunnmørsalpane over kanten øvst (faktor 0,12): skyer med lys kant,
+            ei fjern, disig fjellrekkje med snø og nærare fjell på sidene.
+  dal-nord  dalen sett utover frå kanten øvst (faktor 0,3): skogen på andre sida, teigar,
+            gardar, Hovdekyrkja, elva og vegen, og skogen i lia vår nedst.
+  dal       dalbotnen langt nede under stupet, sett ovanfrå (faktor 0,3): kyrkja, gardane,
+            åkrane, elva og vegen, med dis øvst ved foten av stupet og meir dis nedover.
   greiner, greiner-h   bjørkegreiner som heng ned i øvre hjørne (forgrunn, faktor 1,3)
   gras, gras-h         høgt gras og ein tuve i nedre hjørne, framfor utsikta (forgrunn, faktor 1,3)
 
@@ -53,12 +56,11 @@ def ss(t): t = max(0.0, min(1.0, t)); return t * t * (3 - 2 * t)
 
 
 # ---------------------------------------------------------------- dalen
-DAL_W, DAL_H = 368, 92
+DAL_W, DAL_H = 368, 100
 
 def dalkant(x):
-    """Nedre kanten av dalbotnen: skogen på andre sida. Han stig mot sidene, der fjella står."""
-    v = ss((70 - x) / 70) ** 1.2 * 36 + ss((x - 290) / 78) ** 1.2 * 38
-    return 64 - v + (M.fbm(x / 9, 3, 201, 3) - 0.5) * 5
+    """Dalbotnen under stupet fyller heile biletet (ingen fjell under): ingen nedre kant."""
+    return 999
 
 
 def elv_y(x): return 50 + 4 * math.sin(x / 41 + 0.6) + 2 * math.sin(x / 15 + 2)
@@ -186,24 +188,13 @@ def dal():
             M.gran(L_, int(x), y + 3, 5 + M.h(i, 4, 281) * 4, gran, fro=i)
         else:
             krone(L_, x, y, 2 + M.h(i, 5, 281) * 2.2, skog, 282 + i)
-    # Skogen på andre sida av dalen, nedst: tett, mørk og i dis, med ujamn tregrense nedover.
-    for x in range(DAL_W):
-        e = dalkant(x)
-        for y in range(int(e) - 7, int(e) + 9):
-            d = y - (e - 7)
-            if d < 0: continue
-            if M.fbm(x / 3, y / 2.5, 291, 2) < 0.28 + d * 0.05: continue
-            if y > e + 6 + (M.h(x, 0, 292) - 0.5) * 4: continue
-            v = 0.45 + (M.fbm(x / 2.5, y / 2, 293, 2) - 0.5) * 0.9 - d * 0.03
-            L_.p(x, y, M.tone(skog, v, x, y))
     # Luftperspektiv: alt litt mot disen, mykje øvst (disen ved foten av stupet) og nedst.
     for y in range(DAL_H):
         for x in range(DAL_W):
             if not L_.get(x, y): continue
-            t = 0.26
-            if y < 18: t += (18 - y) / 18 * 0.62
-            e = dalkant(x)
-            if y > e - 10: t += max(0, (y - (e - 10))) / 18 * 0.25
+            t = 0.3
+            if y < 18: t += (18 - y) / 18 * 0.6
+            if y > 48: t += (y - 48) / 40 * 0.62                             # langt nede: meir dis
             t = min(0.95, t)
             steg = math.floor(t * 6 + M.terskel(x, y)) / 6               # i trinn, med dither
             L_.dis(x, y, steg)
@@ -217,7 +208,7 @@ def dal():
 
 
 # ---------------------------------------------------------------- fjella og himmelen
-FJ_W, FJ_H = 344, 106
+FJ_W, FJ_H = 344, 112
 
 def fjellrekkje(L_, topp, stein, sno, s, dis, snodjup=(6, 10)):
     """Alpine toppar som i pikselkunst: kvar topp har ein rygg (ei line som går ned frå toppen og
@@ -247,24 +238,92 @@ def fjellrekkje(L_, topp, stein, sno, s, dis, snodjup=(6, 10)):
 
 
 def fjell():
-    """Sunnmørsalpane rundt dalen: store fjell med snø på sidene og ei fjern, disig fjellrekkje i
-    midten, under skogen på andre sida av dalen. Himmelen er lys og disig."""
+    """Himmelen og fjella over kanten øvst, sett utover som i Narshe-bileta: blå himmel med lange,
+    flate skyer som har lys kant, ei fjern og disig fjellrekkje med snø, og nærare fjell på sidene."""
     L_ = L(FJ_W, FJ_H)
-    himl = M.rampe("#94aac2", "#a6b8cc", "#b8c8d6", "#cad6e0", "#d8e0e6")
+    himl = M.rampe("#6e8cb4", "#829ec2", "#98b0ce", "#aec2d8", "#c4d2e0")
     for y in range(FJ_H):
         for x in range(FJ_W):
-            L_.p(x, y, M.tone(himl, 0.15 + y / 90 * 0.9, x, y))
-    stein = M.rampe("#36405a", "#4a5672", "#64708c", "#808ca6", "#a0aac0")
-    sno = M.rampe("#9eabc2", "#bcc7d8", "#dbe3ee", "#f6f8fb")
-    side = lambda x: (ss((100 - x) / 100), ss((x - 244) / 100))
-    # Den fjerne rekkja i midten: spisse toppar rett under skogkanten på andre sida av dalen.
-    fjellrekkje(L_, lambda x: 92 - M.rygg(x / 26, 351) * 18 - M.rygg(x / 9, 352) * 3, stein, sno, 353, 0.45, (3, 6))
-    # Dei store fjella på sidene, nærare (mindre dis), med toppane høgt oppe.
-    def stor(x):
-        v, h = side(x)
-        if v + h < 0.03: return 999
-        return 106 - (v * 58 + h * 56) - M.rygg(x / 14, 354) * 14 * (v + h) ** 0.5 - M.rygg(x / 6, 355) * 3
-    fjellrekkje(L_, stor, stein, sno, 356, 0.18, (6, 10))
+            L_.p(x, y, M.tone(himl, 0.05 + y / 70 * 0.9, x, y))
+    sky = M.rampe("#8ea2c0", "#b2c0d6", "#d4dce8", "#eef2f6", "#fffaf0")
+    for y in range(4, 44):
+        for x in range(FJ_W):
+            d = M.fbm(x / 70 + y / 40, y / 6, 361, 5)
+            grense = 0.56 + 0.05 * math.sin(x / 50) - (y - 4) / 40 * 0.04
+            if d < grense: continue
+            lys = d - M.fbm((x + 3) / 70 + (y + 2) / 40, (y + 2) / 6, 361, 5)   # lys kant opp mot venstre
+            L_.p(x, y, M.tone(sky, 0.3 + (d - grense) * 2.4 + lys * 5, x, y))
+    stein = M.rampe("#3a4660", "#4e5a76", "#66728e", "#828ea8", "#a2acc2")
+    sno = M.rampe("#a0aec4", "#c0cada", "#dee5ef", "#f8fafc")
+    # Den fjerne rekkja: spisse, disige toppar med snø.
+    fjellrekkje(L_, lambda x: 60 - M.rygg(x / 30, 371) * 22 - M.rygg(x / 11, 372) * 5, stein, sno, 373, 0.3, (3, 5))
+    # Nærare fjell på sidene, mørkare og med mindre dis.
+    def naer(x):
+        v, h = ss((120 - x) / 120), ss((x - 220) / 124)
+        if v + h < 0.05: return 999
+        return 96 - (v * 34 + h * 36) - M.rygg(x / 16, 374) * 10 * (v + h) - M.rygg(x / 6, 375) * 3
+    fjellrekkje(L_, naer, M.rampe("#2e3a4e", "#3e4c62", "#526078", "#6a7890", "#8894a8"), sno, 376, 0.22, (4, 6))
+    return L_.im
+
+
+# ---------------------------------------------------------------- dalen sett utover frå kanten øvst
+DN_W, DN_H = 368, 58
+
+def dal_nord():
+    """Dalen sett utover frå toppen av åsen, nær horisonten: band som blir smalare jo lenger borte
+    (øvst). Skogen på andre sida øvst, så teigar, gardar, kyrkja, vegen og elva, og nedst trekronene
+    i lia vår som fell bort under kanten."""
+    L_ = L(DN_W, DN_H)
+    topp = lambda x: 3 + M.fbm(x / 8, 1, 381, 3) * 6
+    skog = M.rampe("#26382e", "#30463a", "#3e5846", "#526c50", "#6c8458")
+    eng = M.rampe("#4e7a4a", "#5e8a50", "#6e9a58", "#80a862", "#94b670")
+    for x in range(DN_W):
+        for y in range(int(topp(x)), DN_H):
+            if y < 13:                                                       # skogen på andre sida
+                v = 0.4 + (M.fbm(x / 2.5, y / 2, 382, 2) - 0.5) * 0.9
+                L_.p(x, y, M.tone(skog, v, x, y))
+            else:
+                v = 0.5 + (M.fbm(x / 26, y / 4, 383, 4) - 0.5) * 0.7 + (M.fbm(x / 3, y, 384, 2) - 0.5) * 0.15
+                L_.p(x, y, M.tone(eng, v, x, y))
+    # Teigar: smale band øvst (langt borte), breiare nedover, i grønt og gult med steingard.
+    teig = [M.rampe("#86aa5c", "#9cba6a"), M.rampe("#b4b066", "#c8c47a"), M.rampe("#6e9850", "#7ea85a"),
+            M.rampe("#a2b870", "#b4c680"), M.rampe("#9a8a5a", "#ae9e6c")]
+    elv = lambda x: 33 + 1.5 * math.sin(x / 37 + 1) + math.sin(x / 13)
+    veg = lambda x: 22 + math.sin(x / 45) * 1.2
+    for i in range(70):
+        cy = 13 + M.h(i, 2, 385) * 26; hh = 2 + int((cy - 13) / 26 * 3)
+        cx = M.h(i, 1, 385) * DN_W; w = 12 + int(M.h(i, 3, 385) * 22)
+        r = teig[int(M.h(i, 6, 385) * len(teig))]
+        for yy in range(hh):
+            for xx in range(w):
+                X, Y = int(cx + xx), int(cy + yy)
+                if abs(Y - elv(X)) < 2 or abs(Y - veg(X)) < 1.5: continue
+                if xx == 0 or xx == w - 1: L_.p(X, Y, "#8a8c7c"); continue
+                L_.p(X, Y, M.tone(r, 0.5 + (M.h(X // 2, Y, 386) - 0.5) * 0.5, X, Y))
+    for x in range(DN_W):
+        L_.p(x, round(veg(x)), "#cabc8e")
+        y = elv(x)
+        L_.p(x, int(y) - 1, "#5a7a64"); L_.p(x, int(y), M.tone(M.rampe("#7c9ca6", "#a4c0c8", "#c8dce0"), M.fbm(x / 5, 1, 387, 2), x, 0)); L_.p(x, int(y) + 1, "#3e5a5a")
+    tre = M.rampe("#2e4a36", "#3e5e40", "#527448", "#6a8a52", "#86a060")
+    for i in range(70):
+        x = M.h(i, 1, 388) * DN_W; y = elv(x) - 2 if i < 35 else 15 + M.h(i, 2, 388) * 22
+        krone(L_, x, y, 1.0 + M.h(i, 3, 388) * (0.6 + (y - 13) / 30), tre, 389 + i)
+    torv = ("#4e5a30", "#6a7838", "#8a9648")
+    for i, (gx, gy) in enumerate([(30, 17), (84, 25), (126, 16), (168, 28), (240, 18), (282, 27), (330, 19), (60, 30)]):
+        hus(L_, gx, gy, 5, torv, ("#5a3a2c", "#7a4e38"), takh=1, veggh=2)
+        hus(L_, gx + 7, gy - 1, 6, torv, ("#6a5a48", "#8a7a62"), takh=2, veggh=2)
+    kyrkje(L_, 200, 20)
+    # Lia vår nedst: store trekroner som fell bort under kanten.
+    for i in range(80):
+        x = M.h(i, 1, 391) * (DN_W + 10) - 5; y = 46 + M.h(i, 2, 391) * 12
+        if M.h(i, 3, 391) < 0.4: M.gran(L_, int(x), y + 5, 9 + M.h(i, 4, 391) * 5, M.rampe("#1c2c28", "#263a32", "#32483c", "#405a46"), fro=i)
+        else: krone(L_, x, y, 3 + M.h(i, 5, 391) * 2.5, skog, 392 + i)
+    # Luftperspektiv: mykje dis øvst (langt borte), mindre nedover.
+    for y in range(DN_H):
+        for x in range(DN_W):
+            if not L_.get(x, y): continue
+            t = min(0.9, 0.62 - y / DN_H * 0.42)
+            L_.dis(x, y, math.floor(t * 6 + M.terskel(x, y)) / 6)
     return L_.im
 
 
@@ -325,7 +384,7 @@ def gras():
     return L_.im
 
 
-BILETE = {"dal": dal, "fjell": fjell, "greiner": greiner, "gras": gras}
+BILETE = {"dal": dal, "dal-nord": dal_nord, "fjell": fjell, "greiner": greiner, "gras": gras}
 
 if __name__ == "__main__":
     namn = sys.argv[1:] or list(BILETE)
@@ -335,13 +394,13 @@ if __name__ == "__main__":
         im.save(os.path.join(UT, f"{n}.png")); print(f"bilete/spel/parallakse/{n}.png")
         if n in ("greiner", "gras"):
             im.transpose(Image.FLIP_LEFT_RIGHT).save(os.path.join(UT, f"{n}-h.png")); print(f"bilete/spel/parallakse/{n}-h.png")
-    # Kontaktark: alle laga i 3x, med dalen over fjella slik dei ligg i spelet.
-    filer = ["fjell", "dal", "greiner", "gras"]
-    ark = Image.new("RGBA", (FJ_W * 3 + 20, 600), (14, 12, 18, 255))
-    fj = Image.open(os.path.join(UT, "fjell.png")); da = Image.open(os.path.join(UT, "dal.png"))
-    sam = Image.new("RGBA", (DAL_W, 110), (166, 180, 188, 255)); sam.alpha_composite(fj.crop((0, 0, min(FJ_W, DAL_W), 100)), (0, 4)); sam.alpha_composite(da, (0, 0))
-    ark.alpha_composite(sam.crop((0, 0, 320, 110)).resize((960, 330), Image.NEAREST), (10, 10))
+    # Kontaktark i 3x: utsikta øvst (fjella og dalen sett utover) og dalbotnen under stupet.
+    ark = Image.new("RGBA", (980, 840), (14, 12, 18, 255))
+    fj = Image.open(os.path.join(UT, "fjell.png")); dn = Image.open(os.path.join(UT, "dal-nord.png")); da = Image.open(os.path.join(UT, "dal.png"))
+    opp = Image.new("RGBA", (320, 100), (166, 180, 188, 255)); opp.alpha_composite(fj.crop((0, 0, 320, 100)), (0, -6 + 6)); opp.alpha_composite(dn.crop((0, 0, 320, DN_H)), (0, 56))
+    ark.alpha_composite(opp.resize((960, 300), Image.NEAREST), (10, 10))
+    ark.alpha_composite(da.crop((0, 0, 320, 80)).resize((960, 240), Image.NEAREST), (10, 320))
     x = 10
     for n in ("greiner", "gras"):
-        im = Image.open(os.path.join(UT, f"{n}.png")); ark.alpha_composite(im.resize((im.width * 2, im.height * 2), Image.NEAREST), (x, 350)); x += im.width * 2 + 20
+        im = Image.open(os.path.join(UT, f"{n}.png")); ark.alpha_composite(im.resize((im.width * 2, im.height * 2), Image.NEAREST), (x, 580)); x += im.width * 2 + 20
     ark.save(os.path.join(ROT, "forhand", "utsikt-ark.png")); print("forhand/utsikt-ark.png")

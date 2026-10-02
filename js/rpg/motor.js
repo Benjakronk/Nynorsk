@@ -509,11 +509,18 @@ window.Motor = (function () {
   /* Utsikt (kart.def.kameraNed = { fra, til }): når målet er nedanfor rad fra, ser kameraet lenger
      ned, ei halv rad per rad målet går ned, opptil (til - fra) / 2 rader. Då får utsikta under stupet
      meir plass. Halv fart gir heile pikslar: spelaren går 2 pikslar per tikk, kameraet 3. */
+  /* Utsikt over kanten øvst (kart.def.kameraOpp = { fra, til }): når målet er ovanfor rad fra, ser
+     kameraet lenger opp, ei halv rad per rad, opptil (fra - til) / 2 rader over kartet. Der er det
+     luft: bakgrunnslaga syner (himmel, fjell og dal), og rad 0 er kanten der bakken fell bort. */
   const utsiktNed = y => { const k = kart.def.kameraNed; return k ? Math.max(0, Math.min(k.til - k.fra, y - k.fra)) / 2 : 0; };
-  const kameraMaal = m => ({                                           // øvre venstre hjørne for eit sentrum, innanfor kartet
-    x: kart.w < VW ? 0 : Math.round(Math.max(0, Math.min(kart.w - VW, m.x - (VW - 1) / 2)) * S),
-    y: kart.h < VH ? 0 : Math.round(Math.max(0, Math.min(kart.h - VH, m.y + utsiktNed(m.y) - (VH - 1) / 2)) * S),
-  });
+  const utsiktOpp = y => { const k = kart.def.kameraOpp; return k ? Math.max(0, Math.min(k.fra - k.til, k.fra - y)) / 2 : 0; };
+  const kameraMaal = m => {                                            // øvre venstre hjørne for eit sentrum, innanfor kartet
+    const k = kart.def.kameraOpp, opp = k ? (k.fra - k.til) / 2 : 0;    // kor mange rader kameraet kan sjå over kartet
+    return {
+      x: kart.w < VW ? 0 : Math.round(Math.max(0, Math.min(kart.w - VW, m.x - (VW - 1) / 2)) * S),
+      y: kart.h < VH ? 0 : Math.round(Math.max(-opp, Math.min(kart.h - VH, m.y + utsiktNed(m.y) - utsiktOpp(m.y) - (VH - 1) / 2)) * S),
+    };
+  };
   function kamera(til, ms = 900) {
     const a = typeof til === "string" ? aktor(til) : null;
     const mal = til == null ? () => ({ x: spelar.fx, y: spelar.fy }) : a ? () => ({ x: a.fx, y: a.fy }) : () => ({ x: til[0], y: til[1] });
@@ -634,6 +641,20 @@ window.Motor = (function () {
     const kx = v => Math.max(0, Math.min(kart.w - 1, v)), ky = v => Math.max(0, Math.min(kart.h - 1, v));
     kart.terrengfelt = { id: kart.id, w: kart.w, h: kart.h, golv: kart.def.golv, c: (x, y) => kart.fliser[ky(y)][kx(x)] };
     return kart.terrengfelt;
+  }
+
+  // Flisa i rad 0 på eit kart med kameraOpp: bakken (gras, eller sti med graset under) med kanten
+  // der bakken fell bort oppå. Éin gong per kolonne (flisene i kanten er ikkje animerte).
+  function nordkant(x, fk) {
+    const k = kart.nordkantar || (kart.nordkantar = []);
+    if (k[x]) return k[x];
+    const c = kart.fliser[0][x], base = document.createElement("canvas"); base.width = base.height = S;
+    const bg = base.getContext("2d");
+    if (Pikslar.klasse(c) === "veg") {
+      bg.drawImage(Pikslar.flis(".", 0, x, 0, kart.def.golv), 0, 0);
+      const sl = Pikslar.sti(stifelt(), x, 0); if (sl) bg.drawImage(sl, 0, 0);
+    } else bg.drawImage(Pikslar.flis(c === "N" ? "." : fk, 0, x, 0, kart.def.golv), 0, 0);
+    return (k[x] = Pikslar.nordkant(base, terrengfelt(), x));
   }
 
   /* ---------- Parallakse: bakgrunnslag og forgrunn ----------
@@ -1096,10 +1117,15 @@ window.Motor = (function () {
     if (harLuft) { luftMaske.fill(0); harLuft = false; }
     if (kart.def.parallakse) {
       // Berre innanfor kartet: eit lite kart (minnet) har mørkt rundt seg, ikkje utsikt.
-      g.save(); g.beginPath(); g.rect(Math.round(ox * S), Math.round(oy * S), kart.w * S, kart.h * S); g.clip();
+      // Med kameraOpp er det luft over kartet òg (utsikta over kanten øvst).
+      const y0k = kart.def.kameraOpp ? 0 : Math.round(oy * S), y1k = Math.round((oy + kart.h) * S);
+      g.save(); g.beginPath(); g.rect(Math.round(ox * S), y0k, kart.w * S, y1k - y0k); g.clip();
       if (kart.def.luftfarge) { g.fillStyle = kart.def.luftfarge; g.fillRect(0, 0, LW, LH); }
       teiknLag(kart.def.parallakse, camX, camY, false);
       g.restore();
+      if (kart.def.kameraOpp && oy > 0) {                                  // lufta over kartet
+        harLuft = true; luftMaske.fill(1, 0, Math.min(LH, Math.round(oy * S)) * LW);
+      }
     }
     const x0 = Math.floor(-ox) - 1, y0 = Math.floor(-oy) - 1;
     const naturFig = [];
@@ -1116,7 +1142,10 @@ window.Motor = (function () {
       const topp = "XcG".includes(c) && (under === null || "XcGE".includes(under));
       let fk = topp ? c + "t" : c;
       if (c === "R") { const over = y > 0 && kart.fliser[y - 1][x] === "R"; fk = !over && under !== "R" ? "Rtb" : !over ? "Rt" : under !== "R" ? "Rb" : "R"; }
-      if (erVatn(x, y)) {
+      if (y === 0 && kart.def.kameraOpp) {
+        // Kanten øvst: bakken fell bort, og utsikta syner over graskanten (Pikslar.nordkant).
+        const kf = nordkant(x, fk); g.drawImage(kf, sx, sy); luftRute(sx, sy, kf.ope);
+      } else if (erVatn(x, y)) {
         // Vatn med fritt teikna strandkant og skrent (sjå Pikslar.vatn). Landet i flisa er
         // gjennomsiktig, så bakken frå naboflisa blir teikna under først.
         let maske = 0;

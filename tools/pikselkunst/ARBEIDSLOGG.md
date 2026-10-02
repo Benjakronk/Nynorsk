@@ -845,3 +845,33 @@ same måte, uansett kven som tek over.
   på skrå); ein skrå sti ville krevje rørsle på skrå eller fleire rader. Fjella er små (20 til 30 pikslar
   nedst i utsikta). Bekken eller dammen på tunet er ikkje laga. Sidene av neset er teikna med ei
   lys og ei mørk line, ikkje som eigne sideflater.
+
+## Runde 26: utsikta øvst på Åsen
+
+- **Oppdrag:** Brukaren: klippekanten nedst er grei, men sjølve utsikta bør liggje øvst på kartet. Fjella
+  under stupet låg feil veg (kvite, skrå band under dalen).
+- **Gjort:**
+  - `kameraOpp: { fra, til }` (`motor.js`): når målet er ovanfor rad `fra`, ser kameraet ei halv rad
+    lenger opp per rad, opptil `(fra - til) / 2` rader over kartet (fem på Åsen). Over kartet er det luft
+    (bakgrunnen syner, nivå 5 i lyset). Koordinatane i kartet er dei same, ingen rader er lagde til øvst.
+  - Kanten øvst: rad 0 er toppen av åsen. `N` (og alle flisene i rad 0 på eit kart med `kameraOpp`) blir
+    teikna med `Pikslar.nordkant`: ei ujamn graskant 4 til 7 pikslar ned i flisa, lyst gras i kanten og
+    nokre strå mot himmelen; over er flisa open. Sett ovanfrå syner ikkje lia bak kanten, berre graset
+    som sluttar mot utsikta.
+  - Kartet: rad 0 er `#NNNNtNNN#t##4##t#NNNtNNNNN#`: graskant med ei bjørk på kvar side, og skog rundt
+    stien til kantdøra mot utmarka (13,0) på ein liten kolle. Rad 1 er gras, med skrent og rampe (13,1)
+    berre under kollen. Merke, dører, folk, bygg og scener er uendra.
+  - Laga øvst har `opp: true` og er forankra med kameraet fem rader over kartet: `fjell` (himmel med
+    lange skyer med lys kant, ei fjern, disig fjellrekkje med snø, nærare fjell på sidene, faktor 0,12)
+    og `dal-nord` (dalen sett utover: skogen på andre sida, teigar som blir smalare lenger borte, gardar,
+    Hovdekyrkja, vegen og elva, faktor 0,3), som i Narshe-bileta: himmel øvst, fjell, dalen nedst
+    nærast kanten.
+  - Nedst under stupet: berre `dal` (dalbotnen ovanfrå), utan fjell, og disen aukar nedover til
+    luftfargen. Minnet om far har same ordning nedst.
+  - `sjekk-spel.js`: `N` berre i rad 0 med `kameraOpp`, og opp-laga dekkjer himmelen og når ned under
+    kanten for alle kameraposisjonar. Det bakaste laget under kartet er det første utan `opp`.
+- **Vurdert:** Skjermbilete frå toppen (`r26k-topp`), tunet (`r26k-tun`), stupet (`r26k-nede`) og minnet
+  (`r26-minne`). Øvst ser ein over graskanten og skogkollen ut over dalen med kyrkja, fjella og himmelen,
+  og utsikta glir saktare enn kartet. Nedst fell stupet ned i dis over dalbotnen.
+- **Står att:** Fjella øvst er éi rekkje med lik snø; nærare, mørkare fjell syner berre i kantane.
+  Kanten i rad 0 er ei line rett over kartet (ingen nes eller viker over fleire rader).

@@ -231,6 +231,12 @@ landskap langt nede som flyttar seg saktare enn kartet.
   renner (som Narshe), småbrot i blokker på 2 × 3 pikslar, ein lys kant øvst under graset. Nedover blir
   berget disigare i trinn (blanda mot disfargen `#a6b4bc`), og i den nedste rada løyser det seg opp i
   dis med dither, så bakgrunnen syner gjennom. Eit nes som stikk ut, kastar skugge på berget til høgre.
+- Utsikta ligg øvst, over kanten der toppen av åsen sluttar (`N`): som i Narshe-bileta himmel øvst
+  (blå, lysare nedover, lange skyer med lys kant), fjella under (disige, alpine toppar med snø) og dalen
+  sett utover nedst, nærast kanten, med band som blir smalare og disigare lenger borte. Kanten er
+  graset som sluttar i ei ujamn, lys line med strå mot himmelen; lia bak syner ikkje.
+- Under stupet nedst: berre dalbotnen langt nede, sett ovanfrå, som går over i dis. Ingen fjell der
+  (dei ville stå feil veg).
 - Utsikta (`tools/pikselkunst/utsikt.py`): luftperspektiv måla inn. Dalen (faktor 0,3) er lysare og
   blåare enn kartet, med dis øvst ved foten av stupet, små gardar (torvtak, raud eller grå vegg),
   Hovdekyrkja kvit med skifertak og spir, teigar i grønt og gult med steingardar, elva og vegen.

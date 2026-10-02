@@ -387,7 +387,7 @@ window.Pikslar = (function () {
   const treCache = {};
   const treBilete = k => treCache[k] || (treCache[k] = TRE[k]());
 
-  const FAST = new Set(["+", "(", "u", "#", "t", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " ", "s", "M", "-"]);
+  const FAST = new Set(["+", "(", "u", "#", "t", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " ", "s", "M", "-", "N"]);
   const ANIM = new Set(["~", "L", "T", "f", "n", "y"]);
   const VARIANT_EKSTRA = new Set(["Rt", "Rb", "Rtb"]);
   const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t"]);
@@ -906,7 +906,7 @@ window.Pikslar = (function () {
        med lys venstre side og mørke sprekker, hyller med gras, store knausar og søkk. Nedover blir
        berget disigare (luftperspektiv), og nedst løyser det seg opp i dis, så bakgrunnslaga
        (dalen langt nede) syner gjennom. Lerretet har .ope (1 der pikselen er open) eller null. */
-  const TER = new Set(["s", "M", "-"]);
+  const TER = new Set(["s", "M", "-", "N"]);
   const BERG = ["#1c1a2c", "#2e2a3a", "#48434a", "#645e5e", "#827a74", "#a0978a", "#bdb4a4"];   // grå gneis, skuggar mot djup blå (Narshe)
   const DIS = "#a6b4bc";
   const JORDKANT = { lys: "#a87c52", hoy: "#8a6040", mid: "#6a4630", lag: "#4a3020", mork: "#3a2418" };
@@ -1022,6 +1022,30 @@ window.Pikslar = (function () {
       g.putImageData(bilde, 0, 0);
     }
     cache.set(k, c);
+    return c;
+  }
+  /* Kanten øvst («N», og alle flisene i rad 0 på eit kart med kameraOpp): toppen av åsen, der bakken
+     fell bort mot dalen. Sett ovanfrå syner ikkje lia som går ned bak kanten, berre graskanten mot
+     utsikta: ei ujamn line 4 til 7 pikslar ned i flisa med lyst gras i kanten (ljoset kjem ovanfrå)
+     og nokre strå som stikk opp mot himmelen. Over lina er flisa open (.ope), og bakgrunnen syner.
+     base er flisa slik ho elles ville vore (gras, eller sti med gras under). */
+  function nordkant(base, felt, tx) {
+    const c = lerret(S), g = c.getContext("2d"); g.drawImage(base, 0, 0);
+    const bilde = g.getImageData(0, 0, S, S), p = new Uint32Array(bilde.data.buffer), ope = new Uint8Array(S * S);
+    const GR = R_.gras.map(pk);
+    for (let x = 0; x < S; x++) {
+      const X = tx * S + x, e = 4 + Math.floor(vstoy(X / 6, 0.5, 541) * 3.99);
+      const straa = hash(X, 0, 542) > 0.76 ? 1 + Math.floor(hash(X, 0, 543) * 2.99) : 0;
+      for (let y = 0; y < e; y++) {
+        const i = y * S + x;
+        if (y >= e - straa) p[i] = y === e - straa ? GR[3] : GR[2];
+        else { p[i] = 0; ope[i] = 1; }
+      }
+      p[e * S + x] = hash(X, 0, 544) > 0.6 ? GR[4] : GR[3];
+      if (hash(X, 0, 545) > 0.5) p[(e + 1) * S + x] = GR[3];
+    }
+    g.putImageData(bilde, 0, 0);
+    c.ope = ope;
     return c;
   }
   // Øvste rada i stupet som ruta (tx, ty) ligg i, eller null om ruta ikkje er stup.
@@ -1494,6 +1518,6 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
+  return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, nordkant, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
     hent, klar, forhandslast, alleBilete, ILD, SETE, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
 })();
