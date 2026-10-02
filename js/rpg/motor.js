@@ -134,7 +134,7 @@ window.Motor = (function () {
     for (const f of folk) if (f.grunnpose === "sitje" && f.retning == null) { const st = seteVed(f.x, f.y); if (st && st.s.retning != null) f.dir = f.grunndir = st.s.retning; }
     for (const a of regi) { a.regi.res(); a.regi = null; } regi.clear(); kam = null;      // nytt kart: regien byrjar på nytt
     nullstillLys();                                                  // toning og spotlight varer til neste kart
-    nedPx = 0;                                                       // utsikta nedst byrjar oppe
+    nedPx = 0; oppPx = 0;                                            // utsikta byrjar der kameraet står
     const [sx, sy] = merke[merkeId] || merke["1"] || [1, 1];
     spelar.x = sx; spelar.y = sy; spelar.fx = sx; spelar.fy = sy; spelar.flytt = null;
     spelar.pose = null; if (fylgje) fylgje.pose = null;                 // på eit nytt kart står ein
@@ -533,12 +533,21 @@ window.Motor = (function () {
      Utsikt øvst (kart.def.kameraOpp = { fra, til, rader }): når målet er ovanfor rad fra, ser kameraet
      jamt lenger opp, til rader rader over kartet ved rad til, der det er luft og utsikta syner (sjå
      nordkant). Farten går opp i heile pikslar når rader / (fra - til) er eit halvt tal. */
-  let nedPx = 0, nedTikk = 0;
+  let nedPx = 0, nedTikk = 0, oppPx = 0;
+  /* kameraOpp med fart ({ fra, rader, fart }): når målet er på rad fra eller høgare oppe, glir
+     kameraet roleg opp over kanten, fart pikslar per tikk, og laga i utsikta stig fram over
+     horisonten etter kvart (dei fjerne flyttar seg minst). Utan fart ser kameraet jamt lenger opp
+     etter kor høgt målet er (sjå forskuv). */
   function oppdaterNed(no, malX, malY) {
     const k = kart.def.kameraNed, t = tikk(no), n = Math.max(0, t - nedTikk);
     nedTikk = t;
+    const ko = kart.def.kameraOpp;
+    if (ko && ko.fart) {
+      const maalO = malY <= ko.fra + 0.001 ? Math.round(ko.rader * S) : 0;
+      oppPx += Math.sign(maalO - oppPx) * Math.min(Math.abs(maalO - oppPx), ko.fart * Math.min(n, 8));
+    } else oppPx = 0;
     if (!k) { nedPx = 0; return; }
-    const ved = k.kant ? ((kart.fliser[Math.round(malY) + 1] || [])[Math.round(malX)] === "M" && Math.abs(malY - Math.round(malY)) < 0.01) : malY >= k.fra - 0.001;
+    const ved = k.kant ? ("MU".includes((kart.fliser[Math.round(malY) + 1] || [])[Math.round(malX)] || "x") && Math.abs(malY - Math.round(malY)) < 0.01) : malY >= k.fra - 0.001;
     const maal = ved ? Math.round(k.rader * S) : 0, fart = Math.max(1, k.fart || 1);
     nedPx += Math.sign(maal - nedPx) * Math.min(Math.abs(maal - nedPx), fart * Math.min(n, 8));
   }
@@ -547,7 +556,7 @@ window.Motor = (function () {
     const lengd = Math.abs(k.til - k.fra), rader = k.rader != null ? k.rader : lengd / 2;
     return Math.max(0, Math.min(1, (k.til > k.fra ? y - k.fra : k.fra - y) / lengd)) * rader;
   };
-  const utsiktOpp = y => forskuv(kart.def.kameraOpp, y);
+  const utsiktOpp = y => kart.def.kameraOpp && kart.def.kameraOpp.fart ? 0 : forskuv(kart.def.kameraOpp, y);
   const kameraMaal = m => {                                            // øvre venstre hjørne for eit sentrum, innanfor kartet
     const k = kart.def.kameraOpp, opp = k ? (k.rader != null ? k.rader : (k.fra - k.til) / 2) : 0;    // kor mange rader kameraet kan sjå over kartet
     return {
@@ -569,7 +578,8 @@ window.Motor = (function () {
     kameraGrunn = g;
     const mal = kam ? kam.mal() : { x: spelar.fx, y: spelar.fy };
     oppdaterNed(no, mal.x, mal.y);
-    return { x: g.x, y: kart.h < VH ? g.y : Math.min((kart.h - VH) * S, g.y + nedPx) };
+    const ko = kart.def.kameraOpp, opp = ko ? (ko.rader != null ? ko.rader : (ko.fra - ko.til) / 2) * S : 0;
+    return { x: g.x, y: kart.h < VH ? g.y : Math.max(-opp, Math.min((kart.h - VH) * S, g.y + nedPx - oppPx)) };
   }
   function kameraGrunnPx(no) {
     if (!kam) return kameraMaal({ x: spelar.fx, y: spelar.fy });
@@ -1230,7 +1240,7 @@ window.Motor = (function () {
       // Luft: ingen bakke, bakgrunnslaga syner gjennom.
       if (c === LUFT) { luftRute(sx, sy, null); continue; }
       // Stupet: bergveggen som fell ned mot utsikta, og løyser seg opp i dis nedst (Pikslar.stup).
-      if (c === "M") { const st = Pikslar.stup(terrengfelt(), x, y); g.drawImage(st, sx, sy); if (st.ope) luftRute(sx, sy, st.ope); continue; }
+      if (c === "M" || c === "U") { const st = Pikslar.stup(terrengfelt(), x, y); g.drawImage(st, sx, sy); if (st.ope) luftRute(sx, sy, st.ope); continue; }
       // Veggar med vegg eller dør under seg er sidevegger: dei blir teikna ovanfrå.
       const under = y + 1 < kart.h ? kart.fliser[y + 1][x] : null;
       const topp = "XcG".includes(c) && (under === null || "XcGE".includes(under));

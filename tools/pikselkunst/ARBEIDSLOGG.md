@@ -1247,6 +1247,37 @@ same måte, uansett kven som tek over.
   1,4 sekund mellom: skya driv mot høgre, elva renn).
 - **Står att:** Sidene av hylla mot stupet på platået er rette, loddrette kantar.
 
+## Runde 38: overheng, skrå sider på hylla, ur under veggane, og ei roligare utsikt øvst
+
+- **Oppdrag:** Brukaren: det som stikk lengst ut nedst, skal ikkje ha to heile flisar bergvegg under,
+  men sjå ut som eit overheng; sidene på hylla skal ikkje vere loddrette; overgangen frå bergveggane
+  til dalsida skal vere naturleg. Øvst: det mørkegrøne fjellet på det tredje laget steig bratt og stupte
+  rett ned, og kameraet og parallaksen skal vere saktare, så landskapet opnar seg som utsikt.
+- **Research:** Klippene over Narshe (FF6) og Minish Cap viser overheng som ei tynn kant med skugge
+  under og veggen trekt inn, og skrå, ujamne sider der bergvegg møter lågare mark; foten av ein vegg
+  går over i ur og kratt. Octopath og FF6 lèt utsikta frå ein topp stige fram roleg, med dei fjerne
+  laga nesten stille.
+- **Gjort:**
+  - Nytt kartteikn `U` (overheng): under neset (rad 15) og hylla (rad 17). `Pikslar.stup` reknar toppen
+    av slike stup éi rad opp (bakken over), så berget bak held fram i same høgd som stupet ved sida, og
+    teiknar ei tynn kant (gras, torv, jord med røter, ei berglist, mørk underside), ei skuggestripe og
+    berget bak i skugge. Mot lufta på sida smalnar berget under av på skrå. Neset og hylla har no éi
+    rad overheng og éi rad vegg (var tre heile rader).
+  - Sidene på hylla: stupveggen frå platået går ned på skrå mot hylla, breiare nedst, med kant etter
+    ljoset.
+  - Botnen av alle stupveggar over lia er ujamn og open (2 til 9 pikslar), og `li` har ei ur av stein i
+    same fargar under veggbotnen, med kratt og einer, skugge og litt dis, som glir ned i dalsida.
+    `LUFTRAD` følgjer dei nye radene.
+  - `dal-nord`: omrisset er samanhengande (lia mot utmarka, ein rund kolle og skogen på andre sida;
+    det høgaste vinn), så det er ikkje lenger eit fjell som stuper loddrett ned. Dei andre laga er sjekka.
+  - `kameraOpp: { fra: 4, rader: 6, fart: 1 }`: kameraet glir roleg opp (1 piksel per tikk) når Ivar er
+    på rad 4 eller høgare, i staden for å følgje kvar rad. Faktorane er lågare: fjell 0,08, dal-nord
+    0,22, naer 0,45, så laga stig sakte fram over horisonten.
+- **Vurdert:** `forhand/skjerm/r38-nede.png` og `r38-naer.png` (neset med overheng, hylla med kameraet
+  nede og oppe, vestkanten), `r38-side.png` (dei skrå sidene på hylla) og `r38-serie-opp.png` (200, 900,
+  1600 og 2600 ms medan Ivar går opp mot toppen: utsikta opnar seg roleg).
+- **Står att:** Fjella øvst er éi rekkje med lik snø.
+
 ## Runde 39: rotta går, og ein sverm på fem rotter
 
 - **Oppdrag:** Brukaren: gangrammer for rotta på kartet, og eit møte med ein sverm på fem rotter etter

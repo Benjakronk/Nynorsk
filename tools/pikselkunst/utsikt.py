@@ -314,7 +314,7 @@ def ovanfra(W, H, s=0):
 
 # Kvar lufta byrjar under stupet, per flis-kolonne (kartrad), så skuggen under overhenget kjem rett.
 # Må stemme med rader i kartet asen i js/rpg/data.js: platået (17), hylla (20), neset (18), vika (16).
-LUFTRAD = [17] * 4 + [20] * 14 + [17] * 3 + [18] * 3 + [17] + [16] * 3
+LUFTRAD = [17] * 4 + [19] * 14 + [17] * 3 + [17] * 3 + [17] + [16] * 3   # hylla og neset har overheng (rad 17 og 15)
 LI_TOPP = 15                          # biletet byrjar ved kartrad 15
 
 
@@ -388,12 +388,27 @@ def li():
     for y in range(OV + 14):
         for x in range(W):
             if L_.get(x, y): L_.dis(x, y, math.floor(min(0.3, y / 300) * 6 + M.terskel(x, y)) / 6)
-    # Skuggen under overhenget nedst i stupet, der lufta byrjar i kvar kolonne.
+    # Foten av bergveggen der lufta byrjar i kvar kolonne: berget har ein ujamn, open botn (sjå
+    # Pikslar.stup), og her held det fram i ei ur av stein i same fargar som botnen av veggen, med
+    # kratt og einer, i skuggen under overhenget og litt dis. Ura går 10 pikslar opp bak veggbotnen
+    # og ujamt ned i lia, så veggen og dalsida møtest utan skøyt.
+    stein = M.rampe(BERG[1], BERG[2], BERG[3], BERG[4], BERG[5])
+    kratt = M.rampe("#14261a", "#1e3622", "#2c4a2a", "#3e5e34")
+    y0s = [(LUFTRAD[min(len(LUFTRAD) - 1, x // 16)] - LI_TOPP) * 16 for x in range(W)]
     for x in range(W):
-        y0 = (LUFTRAD[min(len(LUFTRAD) - 1, x // 16)] - LI_TOPP) * 16
-        for y in range(y0, y0 + 8):
-            c = L_.get(x, y)
-            if c and M.terskel(x, y) < (y0 + 8 - y) / 8: L_.p(x, y, M.blend(c, "#1c1a2c", 0.55))
+        y0 = y0s[x]
+        # mjuk overgang mellom kolonnar med ulik høgd: botnen av ura glir over 8 pikslar
+        nabo = [y0s[min(W - 1, max(0, x + d))] for d in (-8, 8)]
+        top = y0 - 10
+        bunn = int(max([y0] + nabo) + 6 + M.fbm(x / 7, y0, 851, 3) * 12)
+        for y in range(max(0, top), min(H, bunn)):
+            k = (y - top) / max(1, bunn - top)
+            bx, by = (x + (y // 2 & 1)) // 2, y // 2
+            v = 0.62 - k * 0.3 + (M.h(bx, by, 852) - 0.5) * 0.5
+            c = M.tone(stein, v, x, y)
+            if k > 0.45 and M.fbm(x / 3, y / 2.5, 853, 2) > 0.62: c = M.tone(kratt, 0.3 + (1 - k) * 0.6, x, y)   # kratt og einer
+            if y - top < 8 and M.terskel(x, y) < (8 - (y - top)) / 8: c = M.blend(c, "#1c1a2c", 0.5)          # skuggen under overhenget
+            L_.p(x, y, M.blend(c, DIS, 0.12 + k * 0.1))
     return L_.im
 
 
@@ -466,8 +481,13 @@ def dal_nord():
     L_ = L(DN_W, DN_H)
     skille = 176
     def topp(x):                                                         # silhuetten mot fjella og himmelen
-        if x < skille: return 46 - (skille - x) / skille * 40 + (M.fbm(x / 10, 1, 501, 3) - 0.5) * 6
-        return 40 + (M.fbm(x / 8, 1, 381, 3) - 0.5) * 6 - max(0, 14 - (x - skille)) * 0.8
+        # Samanhengande: lia mot utmarka stig mot venstre, ein rund, skogkledd kolle står mellom lia og
+        # dalen, og skogen på andre sida av dalen ligg lågt til høgre. Det høgaste av dei tre vinn,
+        # så omrisset heng saman utan loddrette stup.
+        lia = 46 - (skille - x) / skille * 40 if x < skille else 46 + (x - skille) * 0.5
+        kolle = 31 + ((x - 196) / 24) ** 2 * 7
+        dal = 40
+        return min(lia, kolle, dal) + (M.fbm(x / 8, 1, 381, 3) - 0.5) * 5
     skog = M.rampe("#22362c", "#2c4436", "#3a5642", "#4e6a4c", "#688254")
     beite = M.rampe("#5a7448", "#6a8450", "#7e9658", "#98aa66", "#b4bc7a")
     eng = M.rampe("#4e7a4a", "#5e8a50", "#6e9a58", "#80a862", "#94b670")

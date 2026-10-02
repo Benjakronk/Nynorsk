@@ -394,16 +394,16 @@ window.RPGData = (function () {
          Øvst (opp: true), over kanten der toppen av åsen sluttar, fire lag med kvar sin fart:
          himmelen (nesten stillståande), fjella, Hovdebygda med kyrkja til høgre og lia opp mot
          utmarka og setra til venstre, og nærast trekronene i lia under kanten, som glir fort og
-         søkk bak kanten. Kameraet kan sjå seks rader over kartet (kameraOpp). Nedst: når Ivar står på
+         søkk bak kanten. Kameraet glir roleg seks rader opp når Ivar er øvst (kameraOpp). Nedst: når Ivar står på
          den nedste flisa før stupet, glir kameraet roleg 4 rader ned (kameraNed), så han står øvst på skjermen og lia som
          stuper ned med berghyller, kratt og skog syner under, som eit fast lag (li, faktor 1).
          ved er øvre venstre flis til kameraet når laget står på x, y. */
       luftfarge: "#a6b4bc",
       parallakse: [
         { bilete: "himmel", faktor: 0.04, ved: [0, -6], x: 0, y: 0, opp: true },
-        { bilete: "fjell", faktor: 0.1, ved: [0, -6], x: 0, y: 6, opp: true },
-        { bilete: "dal-nord", faktor: 0.3, ved: [0, -6], x: 0, y: 36, opp: true },
-        { bilete: "naer", faktor: 0.6, ved: [0, -6], x: 0, y: 66, opp: true },
+        { bilete: "fjell", faktor: 0.08, ved: [0, -6], x: 0, y: 6, opp: true },
+        { bilete: "dal-nord", faktor: 0.22, ved: [0, -6], x: 0, y: 36, opp: true },
+        { bilete: "naer", faktor: 0.45, ved: [0, -6], x: 0, y: 66, opp: true },
         // Nedst under stupet, variant «fast» (standard): lia som eit fast lag som følgjer kartet.
         // Variant «dal»: lia sluttar i ei tregrense, og dalen stig fram nedanfrå (raskare enn kartet).
         { bilete: "dal-under", faktor: [1, 1.8], ved: [0, 10.5], x: 0, y: 150, variant: "dal" },
@@ -415,7 +415,7 @@ window.RPGData = (function () {
       ],
       variant: "fast",                                                 // utsikta nedst: «fast» eller «dal» (sjå parallakse)
       stupFast: true,                                                  // stupet endar i eit overheng, og lia under er eit fast lag
-      kameraOpp: { fra: 12, til: 0, rader: 6 },                        // øvst ser kameraet opptil seks rader over kanten
+      kameraOpp: { fra: 4, rader: 6, fart: 1 },                         // øvst glir kameraet roleg seks rader opp over kanten
       kameraNed: { kant: true, rader: 4, fart: 1 },                    // på flisa rett over stupet glir kameraet roleg ned, så Ivar står øvst
       // Forgrunnen: bjørkegreiner i øvre hjørne ved skogen, høgt gras i nedre hjørne ved stupet.
       forgrunn: [
@@ -426,7 +426,8 @@ window.RPGData = (function () {
       ],
       /* Nedst er kanten ujamn: platået stikk ut i eit nes (x 21 til 23) og går inn i ei vik (x 25 til 27),
          og under midten (x 4 til 17) går ein skrent med rampe (11,14) ned til ei hylle eitt nivå lenger
-         nede (rad 15 og 16) før det stuper. Stupet er tre rader høgt, og lufta under har lia og dalen.
+         nede (rad 15 og 16) før det stuper. Under neset og hylla er det overheng («U»): ei tynn kant
+         med skugge under og berget trekt inn bak. Stupet frå platået er tre rader høgt, og lufta under har lia og dalen.
          Åsen: toppen er lengst oppe på midten (to kollar med skrent «s» under seg, rad 0 og 1), og
          kanten der bakken fell bort («N») går eit steg ned mot sidene, der det er luft («-») i rad 0.
          Stien til kantdøra mot utmarka går i søkket mellom kollane (rampa «/» på (10,1)), litt til
@@ -448,11 +449,11 @@ window.RPGData = (function () {
         "##.YYYY....................#",
         "#.L.....t..........\".....MMM",
         "MMMMsssssss/ssssssMMM.\".MMMM",
-        "MMMM....\"...o.....MMMMMMMMMM",
+        "MMMM....\"...o.....MMMUUUMMMM",
         "MMMMt....\"......t.MMMMMMM---",
-        "----MMMMMMMMMMMMMM---MMM----",
+        "----UUUUUUUUUUUUUU----------",
         "----MMMMMMMMMMMMMM----------",
-        "----MMMMMMMMMMMMMM----------",
+        "----------------------------",
         "----------------------------",
         "----------------------------",
         "----------------------------",

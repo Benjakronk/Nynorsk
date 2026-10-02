@@ -248,6 +248,9 @@ landskap langt nede som flyttar seg saktare enn kartet.
   dis med dither, så bakgrunnen syner gjennom. Eit nes som stikk ut, kastar skugge på berget til høgre.
 - Toppen av åsen er lengst oppe på midten (to kollar med skrent under seg), og kanten (`N`) fell eit
   steg ned mot sidene, der han bøyer rundt ned mot lufta. Stien til utmarka går i søkket mellom kollane.
+- Utsikta øvst opnar seg roleg: kameraet glir opp når ein er nær toppen, og dei fjerne laga flyttar seg
+  minst (fjell 0,08, dal 0,22, trekroner 0,45), så landskapet stig fram over horisonten. Omrissa i laga
+  heng saman (ingen loddrette stup der to former møtest).
 - Djupn øvst kjem av fleire lag med ulik fart og sterkt luftperspektiv: himmelen står nesten still,
   fjella er svært disige, dalen og lia disige og kalde, og trekronene rett under kanten er mørke og
   metta og glir fort (faktor 0,6), så dei søkk bak kanten når kameraet går ned.
@@ -282,8 +285,14 @@ landskap langt nede som flyttar seg saktare enn kartet.
   der ein stein som stikk opp i graskanten. Der stupet møter bakke ved sida (eit nes), rundar graset
   hjørnet inn i flisa, og det bakre berget held fram inn i hjørnet av neset i ein boge; dei nedste
   hjørna på neset er runde. Aldri eit firkanta hakk.
-- Med eit fast lag under (lia) endar stupet i eit mørkt overheng med ujamn kant, og lia rett under
-  ligg i skugge, så det les som same berget som held fram, ikkje to bilete som møtest.
+- Der bakken stikk lengst ut (neset, hylla), står det ikkje heile flisar med bergvegg under: overhenget
+  (`U`) er ei tynn kant av torv, jord og ei berglist med mørk underside, ei skuggestripe, og berget bak
+  trekt inn (same høgd som stupet ved sida). Mot lufta på sida smalnar berget under av på skrå.
+- Sidene på hylla mot stupet frå platået er skrå og ujamne: veggen er breiare nedst, med mørk kant
+  der han vender mot høgre og lys der han vender mot venstre.
+- Botnen av bergveggane er ujamn og open (2 til 9 pikslar), og under held det fram i ei ur av stein i
+  same fargar, med kratt og einer, skugge frå overhenget og litt dis, som glir ned i lia. Veggen og
+  dalsida møtest utan skøyt.
 - Djupn nedover (etter Octopath Traveler): det som er langt nede, er uskarpt (pikslane dobla), disig
   og lysare, og svake lysstrålar fell skrått ned gjennom disen.
 - Forgrunnen (faktor 1,3): nesten silhuettar i mørkt grøn (nær kameraet, i skugge), berre i hjørna,
