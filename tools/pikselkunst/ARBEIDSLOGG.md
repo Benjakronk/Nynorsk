@@ -973,3 +973,38 @@ same måte, uansett kven som tek over.
   ein rund stokk tvers over rommet øvst på bakveggen, med mørke takplankar bak.
 - `inne-spekemat` er no 2 fliser høg og heng i hyssingar frå bjelken, ned i rommet.
 - Luka i `inne-stige` er flytt ned, så ho er skoren inn i taket ved bjelken.
+
+## Runde 29: toppen av Åsen, og lia som stuper ned under stupet
+
+- **Oppdrag:** Brukaren: dalbotnen under stupet fungerte ikkje; heller klipper og hyller, og når ein
+  står ved kanten, skal kameraet gli lenger ned så Ivar står øvst og biletet viser landskapet som
+  stuper ned mot dalen. Toppen skal vere lengre på midten, som ein topp, med stien til utmarka litt til
+  venstre i eit søkk. Hovdebygda skal liggje til høgre øvst, utsikt mot utmarka til venstre.
+- **Gjort:**
+  - Toppen: rad 0 og 1 er `----N#tN##4#NoNtN#NNNNNN----` og `NNNN.sssss/sssssss......NNNN`. To kollar
+    med skog og ein stein på toppen står over skrentar, og kanten (`N`) fell eit steg ned mot sidene,
+    der rad 0 er luft. `Pikslar.nordkant` gjeld no alle `N`-fliser (med luft over) og bøyer kanten i ein
+    rund boge ned mot sida der det er luft. Stien til utmarka går i søkket mellom kollane: kantdøra er
+    flytt frå (13,0) til (10,0), med rampa på (10,1) og stien over (10,2) til (13,2).
+  - Utsikta øvst (`utsikt.py`): `dal-nord` har lia opp mot utmarka til venstre (skog nedst, fjellbeite
+    med stein, ein bekk og setra langt oppe) og Hovdebygda til høgre (kyrkja ved x 278), med ein
+    skogkledd rygg på skrå mellom dei. `fjell` og himmelen er som før.
+  - Nedst: det flate dal-laget er teke bort (`dal.png` sletta). Det nye laget `li` (faktor 0,5) viser
+    lia som stuper ned: berget held fram, to hyller med gras, kratt, einer og bjørk, ein ny, mindre
+    bergvegg, bratt skog som blir mindre og disigare nedover, og dalen langt nede i dis. `kameraNed`
+    har fått `rader`: frå rad 11 til 13 glir kameraet 3 rader ned (5 pikslar per tikk når Ivar går 2),
+    så han står øvst på skjermen og lia har over 100 pikslar under stupet. Kartet er 24 rader høgt
+    (luft nedst lagd til), ingen koordinatar er flytte der. Minnet om far har same lia under stupet.
+  - `sjekk-spel.js`: `N` må ha luft over seg (eller stå i rad 0), luft over kanten er lov, lufta nedst
+    blir skild frå lufta øvst, og `dal-nord` må nå ned under den lågaste kanten.
+- **Flytt:** kantdøra mot utmarka og merket 4 frå (13,0) til (10,0); den framande går til (10,1) og ut
+  nordover (`framande` i `data.js`); testen for vakta mot utmarka (`sjekk-scene.html`, del 10 b) brukar
+  (10,0) og (10,1). Utmarka sin kantdør (15,34) går framleis til merket 4.
+- **Rundar:** 1) Ivar stod så høgt at hovudet var utanfor skjermen (4,5 rader): 3 rader. 2) Grastuva i
+  hjørnet vart ein stor, mørk klump på neset: ho står lenger ned. 3) Skiljet mellom lia og dalen øvst
+  var ei loddrett line: ein rygg på skrå. 4) Skogen og dalen i lia var for disige og grå, og skystripene
+  såg ut som prikkete strekar: mindre dis, ingen striper.
+- **Vurdert:** `forhand/skjerm/r29-oversyn.png`: toppen til venstre (lia og setra), midten (kollane og
+  søkket med stien), høgre (Hovdebygda med kyrkja), tunet, bøen og ved stupet og neset med kameraet
+  nede. Toppen les som ein topp, og lia under stupet les som eit landskap som stuper ned mot dalen.
+- **Står att:** Bergveggene i lia har jamne, loddrette striper. Dalen nedst i lia er mest dis.

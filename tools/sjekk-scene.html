@@ -217,14 +217,14 @@ f.onload = async () => {
     sjekk(s10.ord.kaka && (s10.ting.flatbrod || 0) === brod + 1, "Ivar høyrde «kake» og fekk eit flatbrød");
     sjekk(sy10.x === 2 && sy10.y === 3 && sy10.pose === "sitje" && sy10.dir === 3 && kanGaa(), `syster sit att på kubbestolen og ser mot bordet (${sy10.x},${sy10.y} ${sy10.pose} retning ${sy10.dir}), og Ivar kan gå`);
 
-    // b) Vakta ved kanten mot utmarka: Ivar snur og går eitt steg attende.
+    // b) Vakta ved kanten mot utmarka (stien i søkket mellom kollane, (10,0)): Ivar snur og går eitt steg attende.
     delete s10.flagg.skiftebrev;
-    M.last("asen", "1"); M.plasser(13, 0, 1); await vent(200);
+    M.last("asen", "1"); M.plasser(10, 0, 1); await vent(200);
     const dor = (x, y) => M.kart.dorer.find(o => o.ved[0] === x && o.ved[1] === y);
-    let pv = M.krokar.dor(dor(13, 0));
+    let pv = M.krokar.dor(dor(10, 0));
     await trykkGjennom(() => !M.spelar.regi && !synleg("#rpg-tale") && T().modus() === "felt" && M.spelar.y === 1);
     await pv;
-    sjekk(M.kart.id === "asen" && M.spelar.x === 13 && M.spelar.y === 1 && kanGaa(), `vakta mot utmarka: Ivar gjekk attende til ${M.spelar.x},${M.spelar.y}`);
+    sjekk(M.kart.id === "asen" && M.spelar.x === 10 && M.spelar.y === 1 && kanGaa(), `vakta mot utmarka: Ivar gjekk attende til ${M.spelar.x},${M.spelar.y}`);
 
     // c) For få ord: Ivar går attende frå kanten mot bygda.
     const ordFor = s10.ord; s10.ord = { stein: { former: { stein: {} } } };

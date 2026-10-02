@@ -163,18 +163,20 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
     `M` stup (bergveggen nedst, `Pikslar.stup`, løyser seg opp i dis i den nedste rada) og `-` luft
     (ingen bakke, ikkje gangbar, bakgrunnen syner). Under stup er det stup eller luft. Skrenten flatar
     ut der han møter open mark eller ei rampe, så ein rampe er ein kleiv i bakkekanten. `N` er kanten
-    øvst der bakken fell bort (`Pikslar.nordkant`, berre i rad 0 på kart med `kameraOpp`).
+    øvst der bakken fell bort (`Pikslar.nordkant`, i rad 0 eller under luft på kart med `kameraOpp`;
+    kanten bøyer ned mot sida der det er luft, så toppen kan vere høgast på midten).
   - Bakgrunnslaga og forgrunnen: `python tools/pikselkunst/utsikt.py` (skriptet er kjelda) skriv
-    `bilete/spel/parallakse/<namn>.png` (fjell og dal-nord øvst, dal under stupet, greiner, gras) og
+    `bilete/spel/parallakse/<namn>.png` (fjell og dal-nord øvst, li under stupet, greiner, gras) og
     `forhand/utsikt-ark.png`. På
     kartet: `parallakse: [{ bilete, faktor, ved: [kx, ky], x, y }]` (det fjernaste først, faktor under 1),
-    `forgrunn: [...]` (faktor over 1), `luftfarge`, `kameraNed: { fra, til }` (kameraet ser lenger ned
-    ved stupet) og `kameraOpp` (ser over kanten øvst; laga der har `opp: true`). x og y er staden på skjermen når kameraet står med øvre venstre flis på ved. Bileta blir
+    `forgrunn: [...]` (faktor over 1), `luftfarge`, `kameraNed: { fra, til, rader }` (kameraet
+    glir ned ved stupet, så figuren står øvst) og `kameraOpp` (ser over kanten øvst; laga der har `opp: true`). x og y er staden på skjermen når kameraet står med øvre venstre flis på ved. Bileta blir
     forhåndslasta av seg sjølv. `sjekk-spel.js` sjekkar at det bakaste laget dekkjer lufta.
   - Luftperspektiv blir måla inn: lysare, kaldare, færre fargar og meir dis jo lenger borte. I lyset er
     bakgrunnen nivå 5 (`fjern` i stemninga, ingen skyskugge).
   - Sjå med `skjermbilete.py namn kart=asen m=1 x=12 y=13` (ved stupet), `x=22 y=14` (neset),
-    `x=13 y=2` (skogen og skrenten øvst), og `kart=minne-far m=1` (same utsikt i minnet).
+    `x=3 y=2`, `x=10 y=2` og `x=24 y=2` (toppen: utmarka til venstre, Hovdebygda til høgre), og
+    `kart=minne-far m=1` (same lia under stupet i minnet).
 - Tre, steinar og haugar: `python tools/pikselkunst/natur.py <namn>` (sjå `NATUR`).
   Kartteikna `#` (gran), `t` (bjørk) og `o` (stein, einer) vel variant etter plassen
   frå `NATURTYPE` i `js/rpg/pikslar.js`. Nye variantar må førast inn der.

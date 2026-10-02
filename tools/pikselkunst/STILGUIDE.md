@@ -235,14 +235,19 @@ landskap langt nede som flyttar seg saktare enn kartet.
   renner (som Narshe), småbrot i blokker på 2 × 3 pikslar, ein lys kant øvst under graset. Nedover blir
   berget disigare i trinn (blanda mot disfargen `#a6b4bc`), og i den nedste rada løyser det seg opp i
   dis med dither, så bakgrunnen syner gjennom. Eit nes som stikk ut, kastar skugge på berget til høgre.
-- Utsikta ligg øvst, over kanten der toppen av åsen sluttar (`N`): som i Narshe-bileta himmel øvst
-  (blå, lysare nedover, lange skyer med lys kant), fjella under (disige, alpine toppar med snø) og dalen
-  sett utover nedst, nærast kanten, med band som blir smalare og disigare lenger borte. Kanten er
-  graset som sluttar i ei ujamn, lys line med strå mot himmelen; lia bak syner ikkje.
-- Under stupet nedst: berre dalbotnen langt nede, sett ovanfrå, som går over i dis. Ingen fjell der
-  (dei ville stå feil veg).
-- Utsikta (`tools/pikselkunst/utsikt.py`): luftperspektiv måla inn. Dalen (faktor 0,3) er lysare og
-  blåare enn kartet, med dis øvst ved foten av stupet, små gardar (torvtak, raud eller grå vegg),
+- Toppen av åsen er lengst oppe på midten (to kollar med skrent under seg), og kanten (`N`) fell eit
+  steg ned mot sidene, der han bøyer rundt ned mot lufta. Stien til utmarka går i søkket mellom kollane.
+- Utsikta ligg øvst, over kanten: som i Narshe-bileta himmel øvst (blå, lysare nedover, lange skyer
+  med lys kant), fjella under (disige, alpine toppar med snø) og nærast kanten lia opp mot utmarka til
+  venstre (skog nedst, fjellbeite med stein, ein bekk og setra langt oppe) og Hovdebygda til høgre, med
+  ein skogkledd rygg på skrå mellom dei. Kanten er graset som sluttar i ei ujamn, lys line med strå mot
+  himmelen; lia bak syner ikkje.
+- Under stupet nedst: lia stuper vidare (`li`, faktor 0,5): berget held fram (same knausar og renner),
+  hyller med lyst gras i kanten og kratt, einer og små bjørker, ein ny, mindre og disigare bergvegg,
+  bratt skog med kroner som blir mindre nedover, og dalen langt nede i dis. Ingen flat dalbotn rett
+  under stupet, og ingen fjell der (dei ville stå feil veg).
+- Utsikta (`tools/pikselkunst/utsikt.py`): luftperspektiv måla inn. Dalen er lysare og
+  blåare enn kartet, små gardar (torvtak, raud eller grå vegg),
   Hovdekyrkja kvit med skifertak og spir, teigar i grønt og gult med steingardar, elva og vegen.
   Fjella (faktor 0,12) er endå disigare: alpine toppar med lys flanke til venstre for ryggen og skugge
   til høgre, snø øvst. Ingen svarte omriss i bakgrunnen.

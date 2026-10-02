@@ -360,7 +360,7 @@ window.RPGData = (function () {
       // Kartet er smalare enn skjermen og står midt på (ox = 2), derfor ved: [-2, 1].
       luftfarge: "#a6b4bc",
       parallakse: [
-        { bilete: "dal", faktor: 0.3, ved: [-2, 1], x: -20, y: 128 },
+        { bilete: "li", faktor: 0.5, ved: [-2, 1], x: -20, y: 128 },
       ],
       rader: [
         "################",
@@ -384,34 +384,36 @@ window.RPGData = (function () {
     asen: {
       namn: "Åsen i Hovdebygda", bygg: [{ id: "stove", x: 4, y: 2, h: 3 }, { id: "loe", x: 18, y: 2, h: 3 }, { id: "stabbur", x: 17, y: 9, h: 2 }], stemning: "morgon", golv: ".", bakgrunn: "tun",
       /* Utsikta (sjå «Parallakse» i motor.js, bileta er laga med tools/pikselkunst/utsikt.py).
-         Øvst (opp: true): over kanten der toppen av åsen sluttar ser ein utover som i Narshe:
-         himmelen og fjella lengst bak, dalen med Hovdekyrkja nærast kanten. Kameraet kan sjå fem
-         rader over kartet (kameraOpp). Nedst: under stupet berre dalbotnen langt nede, i dis.
+         Øvst (opp: true), over kanten der toppen av åsen sluttar: himmelen og fjella lengst bak,
+         og nærast kanten Hovdebygda med kyrkja til høgre og lia opp mot utmarka og setra til
+         venstre. Kameraet kan sjå fem rader over kartet (kameraOpp). Nedst: når Ivar går mot
+         stupet, glir kameraet 3 rader ned (kameraNed), så han står øvst på skjermen og lia som
+         stuper ned med berghyller, kratt og skog, og dalen langt nede i dis, syner under (li).
          ved er øvre venstre flis til kameraet når laget står på x, y. */
       luftfarge: "#a6b4bc",
       parallakse: [
         { bilete: "fjell", faktor: 0.12, ved: [0, -5], x: 0, y: -6, opp: true },
-        { bilete: "dal-nord", faktor: 0.3, ved: [0, -5], x: 0, y: 50, opp: true },
-        { bilete: "dal", faktor: 0.3, ved: [0, 9], x: 0, y: 96 },
+        { bilete: "dal-nord", faktor: 0.3, ved: [0, -5], x: 0, y: 20, opp: true },
+        { bilete: "li", faktor: 0.5, ved: [0, 12], x: 0, y: 48 },
       ],
       kameraOpp: { fra: 10, til: 0 },                                  // øvst ser kameraet opptil fem rader over kanten
-      kameraNed: { fra: 9, til: 13 },                                  // ved stupet ser kameraet to rader lenger ned
+      kameraNed: { fra: 11, til: 13, rader: 3 },                       // ved stupet glir kameraet ned, så Ivar står øvst
       // Forgrunnen: bjørkegreiner i øvre hjørne ved skogen, høgt gras i nedre hjørne ved stupet.
       forgrunn: [
         { bilete: "greiner", faktor: 1.3, ved: [0, -5], x: -6, y: -4 },
         { bilete: "greiner-h", faktor: 1.3, ved: [8, -5], x: 210, y: -4 },
-        { bilete: "gras", faktor: 1.3, ved: [0, 9], x: -8, y: 160 },
-        { bilete: "gras-h", faktor: 1.3, ved: [8, 9], x: 236, y: 160 },
+        { bilete: "gras", faktor: 1.3, ved: [0, 11.5], x: -8, y: 142 },
+        { bilete: "gras-h", faktor: 1.3, ved: [8, 11.5], x: 236, y: 142 },
       ],
-      /* Åsen: øvst (rad 0) er toppen av åsen, der bakken fell bort («N», graskanten) og ein ser
-         utover dalen; skogen står rundt stien opp til kantdøra mot utmarka, på ein liten kolle med
-         ein skrent («s») og ei rampe («/»). Tunet ligg under, og bøen med åkeren og stabburet under
-         ein skrent til. Nedst fell åsen bratt ned (stupet, «M»), og under er det luft («-») med
-         dalbotnen langt nede. Neset ved x 21 til 23 stikk ut over stupet. */
+      /* Åsen: toppen er lengst oppe på midten (to kollar med skrent «s» under seg, rad 0 og 1), og
+         kanten der bakken fell bort («N») går eit steg ned mot sidene, der det er luft («-») i rad 0.
+         Stien til kantdøra mot utmarka går i søkket mellom kollane (rampa «/» på (10,1)), litt til
+         venstre. Tunet ligg under, og bøen med åkeren og stabburet under ein skrent til. Nedst fell
+         åsen bratt ned (stupet, «M»), og under er det luft («-»). Neset ved x 21 til 23 stikk ut. */
       rader: [
-        "#NNNNtNNN#t##4##t#NNNtNNNNN#",
-        "#.o......ssss/ssss.........#",
-        "#..#RRRRR#...=....RRRRRR...#",
+        "----N#tN##4#NoNtN#NNNNNN----",
+        "NNNN.sssss/sssssss......NNNN",
+        "#..#RRRRR#====....RRRRRR...#",
         "#...RRRRR....=.t..RRRRRR...#",
         "#...WvDvW....=....WWvDWW...#",
         "#....=3=t....=......===....#",
@@ -430,13 +432,16 @@ window.RPGData = (function () {
         "----------------------------",
         "----------------------------",
         "----------------------------",
+        "----------------------------",
+        "----------------------------",
+        "----------------------------",
       ],
       dorer: [
         { ved: [6, 4], til: ["asen-stova", "2"] },
         // Stabburet er låst til Ivar har funne nøkkelen etter far (i skrinet i stova, etter skiftebrevet).
         { ved: [18, 10], til: ["asen-stabbur", "1"], krev: "stabburnokkel", laast: "Stabburet er låst. Far hadde nøkkelen, og sidan han døydde i vinter, har ingen visst kvar han er.",
           vakt: { flagg: "stabbur_opna", manus: "opne_stabbur" } },
-        { ved: [13, 0], til: ["utmarka", "1"], kant: true, vakt: { flagg: "skiftebrev", manus: "ikkje_enno" } },
+        { ved: [10, 0], til: ["utmarka", "1"], kant: true, vakt: { flagg: "skiftebrev", manus: "ikkje_enno" } },
         { ved: [27, 11], til: ["bygda", "1"], kant: true, vakt: { flagg: "skiftebrev", manus: "skiftebrev" } },
       ],
       folk: [
@@ -921,7 +926,7 @@ window.RPGData = (function () {
         { s: "Ein framand", t: "Vi møtest nok att. Folk som oss finn kvarandre." },
         { flagg: "framande1" },
         { saman: [
-          [{ gaa: "Ein framand", rute: [13, 1], fart: 300 }, { gaa: "Ein framand", sti: "o3", fart: 300 }],
+          [{ gaa: "Ein framand", rute: [10, 1], fart: 300 }, { gaa: "Ein framand", sti: "o3", fart: 300 }],
           [{ vent: 400 }, { kamera: "Ein framand", ms: 1200 }],
         ] },
         { fjern: "Ein framand" },
