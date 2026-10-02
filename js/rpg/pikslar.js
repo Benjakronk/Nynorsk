@@ -159,14 +159,12 @@ window.Pikslar = (function () {
       spreidd(v, 31, 4, (x, y, h) => { const [a, b, c] = blom[Math.floor(h * 4)]; x = Math.min(13, Math.max(1, x)); y = Math.min(12, Math.max(1, y)); px(g, x - 1, y, a); px(g, x + 1, y, a); px(g, x, y - 1, a); px(g, x, y + 1, b); px(g, x, y, c); px(g, x, y + 2, R_.gras[1]); });
     },
     "~": (g, t, v) => {
-      const r = R_.vatn, f = Math.floor(t / 250) % 8;
-      px(g, 0, 0, r[2], S, S);
-      for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) if ((x + y * 3) % 7 === 0 && y % 4 === 1) px(g, x, y, r[1]);
-      for (let k = 0; k < 3; k++) {
-        const y = 2 + k * 5, x = (k * 6 + f * 2 + v * 3) % S;
-        px(g, x, y, r[3], 4, 1); px(g, (x + 1) % S, y - 1, r[4], 2, 1); px(g, (x + 4) % S, y + 1, r[1], 3, 1);
+      // Vatn utan naboar (kartet teiknar vatn med Pikslar.vatn): rolege band i dei fire vasstonane.
+      const r = VATN.tone, f = Math.floor(t / 250) % 16;
+      for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
+        const s = (y + f + Math.round(1.5 * Math.sin(x * Math.PI / 8))) % 16, d = (x + y) & 1;
+        px(g, x, y, r[s === 0 || s === 6 ? (d ? 2 : 1) : s <= 2 || s === 5 ? 2 : s <= 4 ? 3 : s === 10 || s === 14 ? (d ? 0 : 1) : s >= 11 && s <= 13 ? 0 : 1]);
       }
-      if ((f + v) % 4 === 0) px(g, (v * 5 + 3) % S, (v * 7 + 9) % S, "#ffffff");
     },
     "_": (g, t, v) => { const r = R_.sand; px(g, 0, 0, r[2], S, S); for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) { const h = hash(x + v * 16, y, 41); if (h < 0.1) px(g, x, y, r[1]); else if (h > 0.9) px(g, x, y, r[3]); } },
     "=": (g, t, v) => {
@@ -419,102 +417,163 @@ window.Pikslar = (function () {
     return c;
   }
 
-  /* ---------- Vatn med strandkant ----------
-     maske: kva naboar som er land. Bit 1 N, 2 A, 4 S, 8 V, 16 NA, 32 SA, 64 SV, 128 NV.
-     bank: fargen på landet langs kanten («gras», «sand», «stein»).
-     Etter The Minish Cap og Final Fantasy VI: grunt, lysare vatn nær land, bakken
-     kastar skugge ned på vatnet i nord, skum som slår mot land, avrunda hjørne.
-     Smale bekkar (land på begge sider) får kvit straum. */
-  const BANK = {
-    gras: { topp: "#4a8a3f", lys: "#68a84a", kant: "#6a4630", djup: "#3a2418" },
-    sand: { topp: "#ceac74", lys: "#e2c890", kant: "#a0804e", djup: "#6a5030" },
-    stein: { topp: "#7a788a", lys: "#9a98aa", kant: "#4a4858", djup: "#2a2838" },
+  /* ---------- Vatn som i Final Fantasy VI (Lete-elva) ----------
+     Pikslar.vatn(t, felt, tx, ty) teiknar vassflisa på (tx, ty). felt kjem frå motoren:
+     { id, w, h, golv, bekk, stryk (Set med "x,y"), land(tx, ty) → teiknet på landet, eller null for vatn }.
+
+     - Vatnet ligg lågare enn landet. Under landet i nord syner skrenten (jord eller berg, 3 til 4
+       pikslar) med ein mørk grastopp over, så ei lys skumline der skrenten møter vatnet og ei
+       mørk skuggestripe i vatnet under. Landet i vest kastar skugge mot aust, landet i aust har
+       ei lys side. Sandstrand har ingen skrent, berre våt sand og skum.
+     - Strandkanten er fritt teikna i heile kartet: eit glatt felt over kartkoordinatane (kor mykje
+       land det er innanfor ein kvadrat på 2R pikslar, slik at indre hjørne fyllest og ytre hjørne
+       blir runde, aldri 90 grader) med ein deterministisk støy som gir nes og viker. Same felt i
+       naboflisene, så kanten held fram samanhengande frå flis til flis.
+     - Fire dempa, grå-turkise tonar. Breie, lysare band på tvers av straumen (vinklar i bekken,
+       rolege band langs land i sjøen) går på rundgang i tikk-takt, som palettanimasjon på SNES.
+     - Stryk (felt.stryk): loddrette, lyse striper med dither som renn fort, og ein vassrett
+       skumkant nedst der stryket sluttar.
+     Det faste (land, skrent, skum, skugge) blir rekna éin gong per flis; berre vassfargane blir
+     fylte inn per fase (16 fasar), og kvar fase blir lagra i cachen. */
+  const VATN = {
+    tone: ["#2a4248", "#30494f", "#4a6a6c", "#6c8c88"],   // botn, grunn, band, bandkjerne (som FF6: dei to mørke nesten like)
+    skugge: "#1e3036", skum: "#c4d2ca", skumLys: "#e6eee6",
   };
-  const bolgje = (x, fro) => Math.floor(hash(x, fro, 211) * 2.2);
-  function vatn(t, v, maske, bank, straum) {
-    const f = Math.floor(t / 180) % 8;
-    const k = `vatn:${maske}:${bank}:${v}:${f}:${straum ? 1 : 0}`;
+  // Skrenten per slag land: lepp (grastoppen), framside (rad 1 til 4), sider (skugge, lys).
+  const SKRENT = {
+    jord: { fram: ["#3a2418", "#8a6040", "#6a4630", "#4a3020"], lys: "#a87c52", sprekk: "#3a2418", vest: ["#2e1c14", "#4a3020", "#5a3c28"], aust: ["#a87c52", "#8a6040", "#6a4630"] },
+    berg: { fram: ["#2a2838", "#8e8ca4", "#686680", "#44425a"], lys: "#bcbccc", sprekk: "#2a2838", vest: ["#1e1c2a", "#2a2838", "#44425a"], aust: ["#8e8ca4", "#686680", "#44425a"] },
+  };
+  const VASS_R = 16, TIKK_MS = 1000 / 60;
+  const vfarge = hx;
+  const pakk = h => { const [r, g, b] = vfarge(h); return ((255 << 24) | (b << 16) | (g << 8) | r) >>> 0; };   // little endian RGBA
+  const VT = VATN.tone.map(pakk), V_SKUGGE = pakk(VATN.skugge), V_SKUM = pakk(VATN.skum), V_SKUML = pakk(VATN.skumLys);
+  // Glatt verdistøy over kartpikslar (0 til 1), deterministisk.
+  function vstoy(x, y, s) {
+    const ix = Math.floor(x), iy = Math.floor(y), fx = x - ix, fy = y - iy;
+    const u = fx * fx * (3 - 2 * fx), v = fy * fy * (3 - 2 * fy);
+    const a = hash(ix, iy, s), b = hash(ix + 1, iy, s), c = hash(ix, iy + 1, s), d = hash(ix + 1, iy + 1, s);
+    return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+  }
+  const bankAv = c => c === "_" ? "sand" : "^ocj".includes(c) ? "berg" : "jord";
+  // Landet ved ein kartpiksel (X, Y). Feltet avgjer både i vassfliser og i mjuke landfliser (bakke
+  // utan bru ved sida, felt.mjuk), så vatnet kan ete seg inn i spissen på eit ytre hjørne.
+  // Andre landfliser (hus, murar, bruendar) er alltid land.
+  function vassLand(felt, X, Y) {
+    const tx = Math.floor(X / S), ty = Math.floor(Y / S);
+    const kl = v => Math.max(0, Math.min(felt.w - 1, v)), kh = v => Math.max(0, Math.min(felt.h - 1, v));
+    const lt = (x, y) => felt.land(kl(x), kh(y));
+    const her = lt(tx, ty);
+    if (her != null && !felt.mjuk(kl(tx), kh(ty))) return her;
+    // Del av kvadratet rundt pikselen som er land (fliser er heile kvadrat, så overlappen er enkel).
+    const cx = X + 0.5, cy = Y + 0.5, R = VASS_R;
+    let areal = 0, naer = null, best = 1e9;
+    for (let ny = ty - 1; ny <= ty + 1; ny++) for (let nx = tx - 1; nx <= tx + 1; nx++) {
+      const c = lt(nx, ny); if (c == null) continue;
+      const ox = Math.max(0, Math.min(cx + R, nx * S + S) - Math.max(cx - R, nx * S));
+      const oy = Math.max(0, Math.min(cy + R, ny * S + S) - Math.max(cy - R, ny * S));
+      areal += ox * oy;
+      const dx = Math.max(nx * S - cx, 0, cx - nx * S - S), dy = Math.max(ny * S - cy, 0, cy - ny * S - S), d = dx * dx + dy * dy;
+      if (d < best) { best = d; naer = c; }
+    }
+    if (!areal) return null;
+    if (her != null) naer = her;
+    // Terskelen varierer med støyen: låg terskel skyt landet ut i eit nes, høg gir ei vik.
+    // Bekken får mindre nes enn sjøen, så han ikkje blir kvelt.
+    const n = Math.max(0, Math.min(1, (0.7 * vstoy(X / 20, Y / 20, 301) + 0.3 * vstoy(X / 7, Y / 7, 302) - 0.2) / 0.6));
+    return areal / (4 * R * R) > 0.46 - n * (felt.bekk ? 0.22 : 0.36) ? naer : null;
+  }
+  // Det faste i flisa: { f, k } per piksel. k = -1: fast farge f (0 er gjennomsiktig land).
+  // k >= 0: vatn med bandkoordinaten k (0 til 1023), eller VKODE_STRYK.
+  const VKODE_STRYK = 4096;
+  function vassGrunn(felt, tx, ty) {
+    const k = `vg:${felt.id}:${tx}:${ty}`;
     if (cache.has(k)) return cache.get(k);
-    const c = lerret(S), g = c.getContext("2d");
-    const r = R_.vatn, b = BANK[bank] || BANK.gras;
-    const N = maske & 1, A = maske & 2, SO = maske & 4, V = maske & 8;
-    // Djupn: avstand til næraste land i flisa
+    const ut = { f: new Uint32Array(S * S), k: new Int16Array(S * S).fill(-1) };
+    const L = new Map(), land = (X, Y) => { const kk = X + "," + Y; if (!L.has(kk)) L.set(kk, vassLand(felt, X, Y)); return L.get(kk); };
+    const lepp = felt.golv === "," ? "#1d3f28" : "#27502d";
+    const stryk = felt.stryk.has(tx + "," + ty), strykUnder = felt.stryk.has(tx + "," + (ty + 1)), strykOver = felt.stryk.has(tx + "," + (ty - 1));
     for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
-      let d = 99;
-      if (N) d = Math.min(d, y); if (SO) d = Math.min(d, 15 - y); if (V) d = Math.min(d, x); if (A) d = Math.min(d, 15 - x);
-      if (maske & 16) d = Math.min(d, Math.hypot(15 - x, y) - 1); if (maske & 32) d = Math.min(d, Math.hypot(15 - x, 15 - y) - 1);
-      if (maske & 64) d = Math.min(d, Math.hypot(x, 15 - y) - 1); if (maske & 128) d = Math.min(d, Math.hypot(x, y) - 1);
-      let col = d < 4 ? r[3] : d < 6 && (x + y) % 2 === 0 ? r[3] : r[2];
-      if (d > 8 && (x * 3 + y * 5 + v) % 11 === 0) col = r[1];
-      px(g, x, y, col);
-    }
-    // Krusingar som flyttar seg
-    for (let i = 0; i < 4; i++) {
-      const y = (i * 4 + 1 + v) % S, x = (i * 7 + f * 2 + v * 5) % S;
-      px(g, x, y, r[4], 3, 1); px(g, (x + 3) % S, y + 1, r[3], 2, 1);
-    }
-    if ((f + v) % 5 === 0) px(g, (v * 7 + 4) % 14 + 1, (v * 5 + 6) % 12 + 2, "#ffffff");
-    // Bekk: kvit straum nedover, og ein stein med skum rundt
-    if (straum) {
-      for (let i = 0; i < 4; i++) {
-        const x = 2 + ((i * 4 + v * 3) % 12), y = (i * 5 + f * 3) % S;
-        px(g, x, y, "#e8f4ff", 1, 3); px(g, x, (y + 3) % S, r[4], 1, 2);
+      const X = tx * S + x, Y = ty * S + y, i = y * S + x;
+      const h = hash(X, Y, 311);
+      const her = land(X, Y);
+      if (her != null) {
+        // Landet: gjennomsiktig (motoren teiknar bakken under). Kanten mot vatnet får lepp eller våt sand.
+        const under = land(X, Y + 1) == null;
+        if (bankAv(her) === "sand") ut.f[i] = under || land(X, Y - 1) == null || land(X - 1, Y) == null || land(X + 1, Y) == null ? pakk("#b08c5c") : 0;
+        else ut.f[i] = under ? pakk(lepp) : 0;
+        continue;
       }
-      if (v === 2) { px(g, 7, 8, "#7a788a", 3, 2); px(g, 7, 8, "#9a98aa", 2, 1); px(g, 6, 10, "#e8f4ff", 5, 1); px(g, 10, 8, "#e8f4ff", 1, 2); }
-    }
-    if (A && V && !N && !SO) {
-      for (let i = 0; i < 5; i++) {
-        const x = 4 + ((i * 3 + v) % 8), y = (i * 5 + f * 3) % S;
-        px(g, x, y, "#e8f4ff", 1, 3); px(g, x + 1, (y + 1) % S, r[4], 1, 2);
+      // Skrenten under landet i nord: k pikslar under kanten.
+      let k = 0, over = null;
+      for (let j = 1; j <= 7; j++) { const c = land(X, Y - j); if (c != null) { k = j; over = c; break; } }
+      const hoh = 3 + (vstoy(X / 5, 7, 303) > 0.5 ? 1 : 0);           // høgda på skrenten, 3 eller 4
+      const bankN = over != null ? bankAv(over) : null;
+      if (k && bankN !== "sand" && k <= hoh) {
+        const sk = SKRENT[bankN];
+        let f = sk.fram[k === 1 ? 0 : k === hoh ? 3 : k === 2 ? 1 : 2];
+        if (k === 2 && hash(X, 0, 312) > 0.55) f = sk.lys;                  // lyse klumpar øvst
+        if (k > 1 && k < hoh && hash(Math.floor(X / 2), 1, 313) > 0.78) f = sk.sprekk;   // loddrette sprekker
+        ut.f[i] = pakk(f); continue;
       }
-    }
-    // Strandkantar: landet går litt ut i vatnet med bølgjande kant. Sjølve landet blir gjennomsiktig
-    // (land()), og motoren teiknar bakken frå nabofllisa under, så graset og sanden held fram.
-    const land = (x, y, w = 1, h = 1) => g.clearRect(x, y, w, h);
-    const skum = (x, y) => px(g, x, y, (x + y + f) % 3 !== 0 ? "#e8f4ff" : r[4]);
-    if (N) for (let x = 0; x < S; x++) {
-      const d = 1 + bolgje(x + v * 16, 1);
-      land(x, 0, 1, d); px(g, x, d, b.kant); px(g, x, d + 1, b.djup);
-      px(g, x, d + 2, r[1]); px(g, x, d + 3, r[1]);                 // skugge frå bakken
-      if ((x + f) % 4 < 2) px(g, x, d + 4, r[4]);
-    }
-    if (SO) for (let x = 0; x < S; x++) {
-      const d = 1 + bolgje(x + v * 16, 2);
-      land(x, 16 - d, 1, d); px(g, x, 16 - d, b.lys); skum(x, 15 - d);
-    }
-    if (V) for (let y = 0; y < S; y++) {
-      const d = 1 + bolgje(y + v * 16, 3);
-      land(0, y, d, 1); px(g, d, y, b.kant); skum(d + 1, y);
-    }
-    if (A) for (let y = 0; y < S; y++) {
-      const d = 1 + bolgje(y + v * 16, 4);
-      land(16 - d, y, d, 1); px(g, 15 - d, y, b.djup); skum(14 - d, y);
-    }
-    // Hjørne utan rette vinklar (der bekken svingar eller flyttar seg ei rute til sides):
-    // Indre hjørne (land på to sider som møtest): landet fyller ein trekant over heile flisa, så
-    // strandkanten går på skrå frå hjørne til hjørne. Eit steg i bekken blir då ein skrå kant på
-    // 45 grader i staden for to 90-graders kantar. Ytre hjørne (land berre på skrå): ein liten,
-    // rund landtunge tek bort spissen der to skrå kantar møtest.
-    const fyll = (x, y, d) => {                                        // d: kor langt inne på land (< 0 i vatnet)
-      if (d < -1) return;
-      if (d >= 1) land(x, y);
-      else px(g, x, y, d < 0 ? (x + y + f) % 3 !== 0 ? "#e8f4ff" : r[4] : b.kant);
-    };
-    const indre = (hx, hy) => {                                        // hx, hy: 0 eller 1 (kva hjørne)
-      for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
-        const lx = hx ? 15 - x : x, ly = hy ? 15 - y : y;           // avstand frå hjørnet
-        fyll(x, y, 14 - lx - ly + bolgje(lx - ly + 20 + v * 16, 5) * 0.7);
+      const kk = bankN === "sand" ? k : k - hoh;                            // pikslar under foten av skrenten
+      // Sidene: land i vest (skuggesida av skrenten) og i aust (lyssida).
+      let kv = 0, ka = 0, cv = null, ca = null;
+      for (let j = 1; j <= 6; j++) { const c = land(X - j, Y); if (c != null) { kv = j; cv = c; break; } }
+      for (let j = 1; j <= 4; j++) { const c = land(X + j, Y); if (c != null) { ka = j; ca = c; break; } }
+      if (kv && kv <= 3 && bankAv(cv) !== "sand") { ut.f[i] = pakk(kv > 1 && hash(X - kv, Math.floor(Y / 3), 314) > 0.75 ? SKRENT[bankAv(cv)].vest[0] : SKRENT[bankAv(cv)].vest[kv - 1]); continue; }
+      if (ka && ka <= 3 && bankAv(ca) !== "sand") { ut.f[i] = pakk(ka > 1 && hash(X + ka, Math.floor(Y / 3), 315) > 0.75 ? SKRENT[bankAv(ca)].aust[2] : SKRENT[bankAv(ca)].aust[ka - 1]); continue; }
+      // Skum der skrenten eller stranda møter vatnet.
+      const sorLand = land(X, Y + 1) != null;
+      const kvS = cv && bankAv(cv) === "sand" ? kv : kv - 3, kaS = ca && bankAv(ca) === "sand" ? ka : ka - 3;
+      if ((k && kk === 1) || sorLand) { ut.f[i] = h > 0.2 ? V_SKUM : V_SKUML; continue; }
+      if (((kv && kvS === 1) || (ka && kaS === 1)) && hash(X, Math.floor(Y / 2), 316) > 0.25) { ut.f[i] = V_SKUM; continue; }
+      if ((k && kk === 2 && h > 0.55) || (kv && kvS === 2 && h > 0.7) || (land(X, Y + 2) != null && h > 0.6)) { ut.f[i] = V_SKUM; continue; }
+      // Skuggestripa under skrenten og austover frå landet i vest (lyset kjem frå oppe til venstre).
+      if ((k && bankN !== "sand" && kk >= 2 && kk <= 3) || (kv && bankAv(cv) !== "sand" && kvS >= 2 && kvS <= 3)) {
+        ut.f[i] = (kk === 3 || kvS === 3) && (X + Y) % 2 ? VT[0] : V_SKUGGE; continue;
       }
-    };
-    const ytre = (cx, cy) => { for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) fyll(x, y, 3 - Math.hypot(x + .5 - cx, y + .5 - cy)); };
-    if (N && V) indre(0, 0);
-    if (N && A) indre(1, 0);
-    if (SO && A) indre(1, 1);
-    if (SO && V) indre(0, 1);
-    if ((maske & 16) && !N && !A) ytre(16, 0);
-    if ((maske & 32) && !SO && !A) ytre(16, 16);
-    if ((maske & 64) && !SO && !V) ytre(0, 16);
-    if ((maske & 128) && !N && !V) ytre(0, 0);
+      // Stryk: skumkant nedst der stryket sluttar, og sprut øvst i flisa under.
+      if (stryk && !strykUnder && y >= 13) { ut.f[i] = y >= 14 ? (h > 0.25 ? V_SKUM : V_SKUML) : ((X + Y) % 2 ? V_SKUM : VT[3]); continue; }
+      if (!stryk && strykOver && y <= 2) { if (y === 0 || (y === 1 && (X + Y) % 2) || (y === 2 && h > 0.8)) { ut.f[i] = V_SKUM; continue; } }
+      if (stryk) { ut.k[i] = VKODE_STRYK; continue; }
+      // Bandkoordinaten: vinklar på tvers av bekken, rolege bølgjer langs land i sjøen.
+      let u;
+      if (felt.bekk) u = Y - Math.floor(Math.abs((X % 32) / 16 - 1) * 5) - Math.round(vstoy(X / 9, Y / 9, 304) * 3);
+      else u = Y + Math.round(1.5 * Math.sin(X * Math.PI / 24 + Y * 0.07) + (vstoy(X / 16, Y / 10, 305) - 0.5) * 4);
+      ut.k[i] = ((u % 1024) + 1024) % 1024;
+    }
+    ut.tom = ut.k.every(v => v < 0) && ut.f.every(v => v === 0);
+    cache.set(k, ut);
+    return ut;
+  }
+  // Fargen i bandet: s er plassen i bandet (0 til 15), d sjakkbrettet til dither i kantane.
+  // Profilen (som i FF6: mørkt mest, lyse band om lag ein tredel): dither inn, band, kjerne,
+  // band, dither ut, grunn, dither, botn, dither, grunn.
+  const BAND = [[2, 1], [2, 2], [3, 3], [3, 2], [2, 2], [2, 1], [1, 1], [1, 1], [1, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 1], [1, 1], [1, 1]];
+  const bandFarge = (s, d) => VT[BAND[s][d]];
+  function vatn(t, felt, tx, ty) {
+    const fase = felt.bekk ? Math.floor(t / (4 * TIKK_MS)) % 16 : Math.floor(t / (10 * TIKK_MS)) % 16;
+    const k = `vatn:${felt.id}:${tx}:${ty}:${fase}`;
+    if (cache.has(k)) return cache.get(k);
+    const grunn = vassGrunn(felt, tx, ty);
+    if (grunn.tom) { cache.set(k, null); return null; }            // landflis utan vatn i: ingenting å teikne
+    const c = lerret(S), g = c.getContext("2d");
+    const bilete = g.createImageData(S, S), p = new Uint32Array(bilete.data.buffer);
+    for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
+      const i = y * S + x, kode = grunn.k[i], X = tx * S + x, Y = ty * S + y, d = (X + Y) & 1;
+      if (kode < 0) { p[i] = grunn.f[i]; continue; }
+      if (kode === VKODE_STRYK) {
+        // Loddrette striper som renn fort nedover (to pikslar per fase), med dither mellom.
+        const kol = hash(X, 0, 321);
+        if (kol < 0.5) { const s = ((Y + Math.floor(kol * 64) - 2 * fase) % 8 + 8) % 8; p[i] = s < 2 ? V_SKUM : s < 4 ? VT[3] : s < 5 && d ? VT[3] : VT[2]; }
+        else p[i] = d ^ (fase & 1) ? VT[2] : VT[1];
+        continue;
+      }
+      const s = felt.bekk ? (((kode - fase) % 16) + 16) % 16 : (((kode + fase) % 16) + 16) % 16;
+      p[i] = bandFarge(s, d);
+    }
+    g.putImageData(bilete, 0, 0);
     cache.set(k, c);
     return c;
   }

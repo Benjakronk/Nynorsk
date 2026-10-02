@@ -98,9 +98,19 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
 
 ## Vatn, murar og kyrkja inne
 
-- Vatn tilpassar seg naboane: bølgjande strandkant i fargen til landet (gras,
-  sand eller stein), skugge frå bakken på nordsida, skum mot land, avrunda
-  hjørne og lysare, grunt vatn nær land. Bekkar har kvit straum og steinar.
+- Vatn som i Final Fantasy VI (Lete-elva): vatnet ligg lågare enn landet. Under landet i
+  nord syner ein skrent på 3 til 4 pikslar (jord under gras, berg ved stein) med ein mørk
+  grastopp over, så ei lys skumline der skrenten møter vatnet og ei mørk skuggestripe i
+  vatnet under. Landet i vest har ei mørk side og kastar skugge austover, landet i aust ei
+  lys side. Sandstrand har ingen skrent, berre våt sand og skum.
+- Strandkanten er fritt teikna og held fram over flisgrensene: nes og viker, aldri ein
+  rett vinkel (indre hjørne blir fylte, ytre hjørne runda av, også inn i landflisa).
+- Vatnet er dempa grå-turkis i fire tonar, der dei to mørke nesten er like og dei lyse
+  banda er om lag ein tredel av flata. Banda går på tvers av straumen: vinklar som
+  flyt nedover i bekken, rolege band som rullar inn mot land i sjøen. Ingen glitter og
+  ingen små krusingar.
+- Stryk og små fall: loddrette, lyse striper med dither som renn fort, og ei vassrett
+  skumkant nedst der stryket sluttar.
 - Tre står aldri i vatnet. Skog på kartkanten ved vatn blir vatn.
 - Steingard er tørrmur av lyse, flate gråsteinar i to lag, toppstein med mose
   og lav, og murar som heng saman med naboane sine.

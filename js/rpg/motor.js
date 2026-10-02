@@ -589,7 +589,21 @@ window.Motor = (function () {
     if (c !== "#") return false;
     const kantrute = x === 0 || y === 0 || x === kart.w - 1 || y === kart.h - 1;
     if (!kantrute) return false;
+    if ((kart.fliser[y - 1] || [])[x] === "Q") return true;           // under enden av ei brygge
     return [[0, -1], [0, 1], [-1, 0], [1, 0], [-1, -1], [1, -1], [-1, 1], [1, 1]].some(([dx, dy]) => (kart.fliser[y + dy] || [])[x + dx] === "~");
+  }
+  /* Vassfeltet til Pikslar.vatn: kva som er land (brua «Q» er vatn under), om vatnet er ein bekk
+     med straum (kart.def.vatn.bekk) og kvar det er stryk (kart.def.vatn.stryk, «x,y»). */
+  function vassfelt() {
+    if (kart.vassfelt) return kart.vassfelt;
+    const v = kart.def.vatn || {};
+    kart.vassfelt = {
+      id: kart.id, w: kart.w, h: kart.h, golv: kart.def.golv, bekk: !!v.bekk, stryk: new Set(v.stryk || []),
+      land: (x, y) => { const c = kart.fliser[y][x]; return c === "Q" || erVatn(x, y) ? null : c; },
+      // Mjuk bakke: vatnet kan runde av hjørna. Ikkje ved brua, så vegen møter brua med heile hjørne.
+      mjuk: (x, y) => !!Pikslar.klasse(kart.fliser[y][x]) && !KANTSIDER.some(([, dx, dy]) => (kart.fliser[y + dy] || [])[x + dx] === "Q"),
+    };
+    return kart.vassfelt;
   }
 
   /* ---------- Lys: fargerekning som på Super Nintendo ----------
@@ -999,17 +1013,13 @@ window.Motor = (function () {
       let fk = topp ? c + "t" : c;
       if (c === "R") { const over = y > 0 && kart.fliser[y - 1][x] === "R"; fk = !over && under !== "R" ? "Rtb" : !over ? "Rt" : under !== "R" ? "Rb" : "R"; }
       if (erVatn(x, y)) {
-        // Vatn med strandkant etter naboane (sjå Pikslar.vatn)
-        let maske = 0, bank = "gras";
+        // Vatn med fritt teikna strandkant og skrent (sjå Pikslar.vatn). Landet i flisa er
+        // gjennomsiktig, så bakken frå naboflisa blir teikna under først.
+        let maske = 0;
         for (const [bit, dx, dy] of NABOBIT) {
           const n = kart.fliser[y + dy] && kart.fliser[y + dy][x + dx];
-          if (n != null && !erVatn(x + dx, y + dy) && n !== "Q") {
-            maske |= bit;
-            if (bit < 16) bank = n === "_" ? "sand" : "^ocj".includes(n) ? "stein" : bank;
-          }
+          if (n != null && !erVatn(x + dx, y + dy) && n !== "Q") maske |= bit;
         }
-        // Straum: vatn med vatn over og under, men land på sida (bekken i utmarka)
-        const straum = !(maske & 1) && !(maske & 4) && ((maske & 2) || (maske & 8)) && kart.def.golv === ",";
         // Bakken under strandkanten: den første naboen som er bakke (gras, sand, veg), elles golvet.
         if (maske) {
           let under = kart.def.golv;
@@ -1019,7 +1029,7 @@ window.Motor = (function () {
           }
           if (under !== "~") g.drawImage(Pikslar.flis(under, no, x, y, kart.def.golv), sx, sy);
         }
-        g.drawImage(Pikslar.vatn(no, (x * 7 + y * 3) % 4, maske, bank, straum), sx, sy);
+        g.drawImage(Pikslar.vatn(no, vassfelt(), x, y), sx, sy);
       } else g.drawImage(Pikslar.flis(fk, no, x, y, kart.def.golv), sx, sy);
       // Steingard: muren er ein figur som blir sortert etter djupn
       if (c === "j") {
@@ -1051,6 +1061,11 @@ window.Motor = (function () {
             else if (same(sida) && same(opp) && grasaktig(skra)) g.drawImage(Pikslar.stiHjorne(skra, hj, false, v, kart.def.golv), sx, sy);
           });
         }
+      }
+      // Landflis ved vatnet: vatnet rundar av spissen på ytre hjørne (sjå Pikslar.vatn).
+      if (!erVatn(x, y) && vassfelt().mjuk(x, y) && NABOBIT.some(([, dx, dy]) => kart.fliser[y + dy] && kart.fliser[y + dy][x + dx] != null && erVatn(x + dx, y + dy))) {
+        const vb = Pikslar.vatn(no, vassfelt(), x, y);
+        if (vb) g.drawImage(vb, sx, sy);
       }
       const nf = erVatn(x, y) ? null : Pikslar.natur(c, x, y);
       if (nf) {

@@ -371,6 +371,8 @@ window.RPGData = (function () {
     },
     utmarka: {
       namn: "Utmarka", bygg: [{ id: "seter", x: 22, y: 4, h: 3 }], stemning: "kveld", golv: ",", bakgrunn: "utmark",
+      // Bekken renn nedover med straum, og har stryk der han kjem ned frå skogen og under brua.
+      vatn: { bekk: true, stryk: ["18,0", "19,0", "18,1", "19,1", "17,13", "18,13"] },
       fiendar: { lag: [["vette"], ["irrbloss"], ["vette", "irrbloss"], ["vette", "vette"]] },
       rader: [
         "################################",

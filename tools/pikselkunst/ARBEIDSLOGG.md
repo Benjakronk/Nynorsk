@@ -699,3 +699,50 @@ same måte, uansett kven som tek over.
   av lerretet og 0,4 til 0,6 ms for sjølve rekninga, same som før (runde 21).
 - **Står att:** Grua er teikna for hjørnet til venstre (asen-stova og nedre-hovde). Ei grue på ein
   annan stad treng ei eiga form (spegla). Gløden blir ikkje skugga av møblar.
+
+## Runde 23: vatn som i Final Fantasy VI
+
+- **Oppdrag:** Bekken i utmarka, sjøen på Åsen og alt anna vatn var metta blått med små krusingar og
+  glitter, og strandkanten var ei lita bølgje per flis. Vatnet skal teiknast slik Final Fantasy VI
+  teiknar Lete-elva: lågare enn landet, med skrent, fritt teikna strandkant og breie band som flyt.
+- **Research:** `forhand/referansar/elv/ff6-0122.png` til `ff6-0134.png` (flåteturen), `elv-ark.png` og
+  `elv-naer.png`. Vatnet i FF6 har fire grå tonar (`#404848 #485050 #606860 #808880`): dei to mørke er
+  nesten like, og dei lyse banda er vinklar på tvers av straumen, om lag ein tredel av flata, med
+  dithera kantar. Breidda er ein skrent av lyst berg under ein grastopp, med ei lys skumline nedst og
+  mørkare vatn under. Strandkanten buktar seg fritt over flisgrensene. Stryk er loddrette, lyse
+  striper med ein vassrett skumkant nedst.
+- **Gjort:**
+  - `Pikslar.vatn(t, felt, x, y)` i `pikslar.js` er skriven om. Strandkanten er eit felt over
+    kartpikslane: kor stor del av ein kvadrat på 32 pikslar rundt pikselen som er land, mot ein
+    terskel med glatt verdistøy (`vstoy`). Indre hjørne blir fylte og ytre hjørne runda av, utan
+    eigne reglar for hjørne, og naboflisene reknar same feltet, så kanten held fram. Bekken får
+    mindre nes enn sjøen.
+  - Vatnet ligg lågare: skrent på 3 eller 4 pikslar under landet i nord (jord under gras, berg ved
+    stein og steingard) med mørk lepp av gras over, lyse klumpar og sprekker; tre pikslar side i vest
+    (skugge) og aust (lys); skumline der skrenten møter vatnet og skuggestripe (2 pikslar og ei dithera
+    rad) under. Sand har våt sand og skum, ingen skrent.
+  - Fire dempa, grå-turkise tonar (`VATN`) og ein bandprofil på 16 pikslar (`BAND`). Bekken har vinklar
+    som flyt nedover (eitt steg per 4 tikk), sjøen rolege band som rullar inn mot land (per 10 tikk).
+    Krusingane, glitteret og steinen i bekken er fjerna.
+  - Stryk: `vatn: { bekk: true, stryk: [...] }` på kartet. I utmarka der bekken kjem ned frå skogen
+    (rad 0 og 1) og under brua (rad 13). Loddrette striper som renn to pikslar per fase, dither, og
+    skumkant nedst med sprut øvst i flisa under.
+  - Yting: det faste i kvar flis (land, skrent, skum, skugge, bandkoordinat) blir rekna éin gong
+    (`vassGrunn`), og kvar av dei 16 fasane blir fylt med éin `putImageData` og lagra i cachen.
+  - `motor.js`: `vassfelt()` per kart (kva som er land, brua er vatn under, `mjuk` bakke). Mjuke
+    landfliser ved vatnet får eit vasslag, så vatnet et seg inn i spissen på ytre hjørne (ikkje ved
+    bruendane). Skog på kartkanten under enden av ei brygge blir vatn (grana under brygga på Ekset).
+  - `skjerm.html`: `stemning=ingen` tek bort lyset, så fargane kan sjåast utan kveldslys.
+    `sjekk-spel.js` sjekkar at stryka ligg på vatn.
+- **Rundar:** 1) Sidene av bekken var éin lys piksel og såg ut som eit omriss: tre pikslar skrent
+  med sprekker, og glisnare skum på sidene. Neset var for lite til å syne: større kvadrat (R 16) og
+  sterkare støy. 2) Banda var for breie og lyse, så vatnet såg lyst ut med mørke vinklar: lyse band
+  om lag ein tredel, og dei to mørke tonane nesten like, som i FF6. 3) Spissen på landflisa ved eit
+  steg i bekken vart ståande som ein rett vinkel: vasslag på mjuke landfliser.
+- **Vurdert:** Før/etter (`forhand/skjerm/for23-*` og `e23-*`): bekken i utmarka (y 9 og y 3), sjøen på
+  Åsen, vegen, Ekset og minnet om far. Bekken buktar seg mellom jordskrentar med skumline, banda flyt
+  nedover, stryket under brua og ved skogen har kvite striper og skumkant. Sjøen har sandstrand med
+  våt kant, jordskrent under graset og bergskrent ved steinen. Lyset (kveld, sepia) legg seg oppå som før.
+- **Står att:** Skrenten er låg (3 til 4 pikslar) samanlikna med dei høge berga i FF6. Banda i sjøen er
+  vassrette (alle sjøane har land i nord) og følgjer ikkje ei strand som går på skrå. Overgangen mellom
+  sandstrand og grasskrent skjer ved flisgrensa.

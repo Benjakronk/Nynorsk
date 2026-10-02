@@ -61,6 +61,15 @@ for (const [id, k] of Object.entries(D.LYSKJELDER || {})) {
   const w = require("fs").readFileSync(fil).readUInt32BE(16);                       // breidda står i IHDR
   if (w % k.rammer) feil.push(`lyskjelde ${id}: breidda ${w} går ikkje opp i ${k.rammer} rammer`);
 }
+// Vatn: stryk må liggje på vatn («~», eller skog på kartkanten ved vatn), og bekk er sann eller usann.
+for (const [id, k] of Object.entries(D.KART)) if (k.vatn) {
+  for (const p of k.vatn.stryk || []) {
+    const [x, y] = String(p).split(",").map(Number), c = (k.rader[y] || "")[x];
+    const kant = x === 0 || y === 0 || y === k.rader.length - 1 || x === k.rader[0].length - 1;
+    if (!(c === "~" || (c === "#" && kant))) feil.push(`${id}: stryk på ${p} ligg ikkje på vatn («${c}»)`);
+  }
+  if ("bekk" in k.vatn && typeof k.vatn.bekk !== "boolean") feil.push(`${id}: vatn.bekk skal vere true eller false`);
+}
 for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR || {})[k.stemning]) feil.push(`${id}: ukjend stemning «${k.stemning}» (sjå STEMNINGAR)`);
 // Hus og inventar som figurar: bildefila må finnast
 const fs_ = require("fs"), sti_ = require("path");

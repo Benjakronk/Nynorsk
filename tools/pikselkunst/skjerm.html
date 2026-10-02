@@ -30,6 +30,8 @@ f.onload = async () => {
   // hans over biletet, og scena held fram på eit kart der han ikkje finst.
   await vent(300); for (let n = 0; n < 60; n++) { await blaFram(); await vent(100); }
   w.RPGTest.st().flagg.framande1 = true;
+  // stemning=ingen (eller eit anna namn) byter lyset på kartet, til dømes for å sjå fargane utan kveldslys.
+  if (q.get("stemning")) w.RPGData.KART[q.get("kart") || "asen"].stemning = q.get("stemning") === "ingen" ? undefined : q.get("stemning");
   M.last(q.get("kart") || "asen", q.get("m") || "1"); await vent(400); await blaFram();
   if (q.get("x")) Object.assign(M.spelar, { x: +q.get("x"), y: +q.get("y"), fx: +q.get("x"), fy: +q.get("y"), dir: 0 });
   // parti=huldra legg til medlemer, hp=huldra:4 set livet (til dømes for å sjå «svak» og «slått ut» i kampen).

@@ -130,6 +130,17 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   `bakgrunn` på kartet i `js/rpg/data.js`.
 - Vatn og steingard tilpassar seg naboane og blir teikna i `js/rpg/pikslar.js`
   (`vatn`, `steingard`), ikkje som faste bilete.
+- Vatn (`~`) blir teikna som i Final Fantasy VI (Lete-elva, sjå `forhand/referansar/elv-ark.png`):
+  `Pikslar.vatn(t, felt, x, y)` får eit vassfelt frå motoren (`vassfelt()` i `motor.js`). Strandkanten
+  er eit glatt felt over kartpikslane (delen land i ein kvadrat på 32 pikslar rundt kvar piksel, med
+  støy i terskelen), så nes og viker held fram over flisgrensene, og hjørna blir runde av seg sjølv.
+  Vatnet ligg lågare enn landet: skrent på 3 til 4 pikslar (jord, eller berg ved stein) under landet i
+  nord, smalare sider i vest (skugge) og aust (lys), skumline og skuggestripe. Sand har ingen skrent.
+  Fire dempa, grå-turkise tonar (`VATN` i pikslar.js) i band som går på rundgang i tikk-takt: vinklar
+  nedover i ein bekk, rolege band mot land i sjøen. På kartet: `vatn: { bekk: true, stryk: ["x,y"] }`
+  gir straum og stryk (loddrette striper og skumkant nedst). Mjuke landfliser ved vatnet (bakke, ikkje
+  ved bruendar) får òg eit vasslag, så vatnet rundar av spissen på ytre hjørne. Sjå med
+  `skjermbilete.py namn kart=utmarka m=1 x=17 y=9 stemning=ingen` (`stemning=ingen` tek bort kveldslyset).
 - Tre, steinar og haugar: `python tools/pikselkunst/natur.py <namn>` (sjå `NATUR`).
   Kartteikna `#` (gran), `t` (bjørk) og `o` (stein, einer) vel variant etter plassen
   frå `NATURTYPE` i `js/rpg/pikslar.js`. Nye variantar må førast inn der.
