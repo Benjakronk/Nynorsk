@@ -250,7 +250,8 @@ landskap langt nede som flyttar seg saktare enn kartet.
   venstre (skog nedst, fjellbeite med stein, ein bekk og setra langt oppe) og Hovdebygda til høgre, med
   ein skogkledd rygg på skrå mellom dei. Kanten er graset som sluttar i ei ujamn, lys line med strå mot
   himmelen; lia bak syner ikkje.
-- Under stupet nedst: lia stuper vidare (`li`, faktor 0,5): berget held fram (same knausar og renner)
+- Under stupet nedst: lia stuper vidare som eit fast lag som følgjer kartet (`li`, faktor 1), så klippene
+  heng fast i terrenget: berget held fram (same knausar og renner)
   eit godt stykke før den første hylla, så med lyst gras i kanten og kratt, einer og små bjørker, ein ny, mindre og disigare bergvegg,
   bratt skog med kroner som blir mindre nedover og går over i dis. Ingen flat dalbotn (han glei feil med
   parallaksen, sidan ei flate langt borte skulle gått mykje saktare enn lia), og ingen fjell der.

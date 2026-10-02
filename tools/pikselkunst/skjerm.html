@@ -33,6 +33,8 @@ f.onload = async () => {
   // flagg=skiftebrev,stabburnokkel set flagg før kartet blir lasta (til dømes skrinet etter far i stova).
   for (const fl of (q.get("flagg") || "").split(",").filter(Boolean)) w.RPGTest.st().flagg[fl] = true;
   // stemning=ingen (eller eit anna namn) byter lyset på kartet, til dømes for å sjå fargane utan kveldslys.
+  // variant=dal (eller eit anna namn) vel kva utsikt kartet har nedst (sjå variant i data.js).
+  if (q.get("variant")) w.RPGData.KART[q.get("kart") || "asen"].variant = q.get("variant");
   if (q.get("stemning")) w.RPGData.KART[q.get("kart") || "asen"].stemning = q.get("stemning") === "ingen" ? undefined : q.get("stemning");
   M.last(q.get("kart") || "asen", q.get("m") || "1"); await vent(400); await blaFram();
   if (q.get("x")) Object.assign(M.spelar, { x: +q.get("x"), y: +q.get("y"), fx: +q.get("x"), fy: +q.get("y"), dir: 0 });

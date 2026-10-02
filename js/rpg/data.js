@@ -360,7 +360,7 @@ window.RPGData = (function () {
       // Kartet er smalare enn skjermen og står midt på (ox = 2), derfor ved: [-2, 1].
       luftfarge: "#a6b4bc",
       parallakse: [
-        { bilete: "li", faktor: 0.5, ved: [-2, 1], x: -20, y: 128 },
+        { bilete: "li", faktor: 1, ved: [-2, 1], x: -20, y: 128 },
       ],
       rader: [
         "################",
@@ -389,7 +389,7 @@ window.RPGData = (function () {
          utmarka og setra til venstre, og nærast trekronene i lia under kanten, som glir fort og
          søkk bak kanten. Kameraet kan sjå seks rader over kartet (kameraOpp). Nedst: når Ivar går mot
          stupet, glir kameraet 3 rader ned (kameraNed), så han står øvst på skjermen og lia som
-         stuper ned med berghyller, kratt og skog, og dalen langt nede i dis, syner under (li).
+         stuper ned med berghyller, kratt og skog syner under, som eit fast lag (li, faktor 1).
          ved er øvre venstre flis til kameraet når laget står på x, y. */
       luftfarge: "#a6b4bc",
       parallakse: [
@@ -397,8 +397,13 @@ window.RPGData = (function () {
         { bilete: "fjell", faktor: 0.1, ved: [0, -6], x: 0, y: 6, opp: true },
         { bilete: "dal-nord", faktor: 0.3, ved: [0, -6], x: 0, y: 36, opp: true },
         { bilete: "naer", faktor: 0.6, ved: [0, -6], x: 0, y: 66, opp: true },
-        { bilete: "li", faktor: 0.5, ved: [0, 12], x: 0, y: 48 },
+        // Nedst under stupet, variant «fast» (standard): lia som eit fast lag som følgjer kartet.
+        // Variant «dal»: lia sluttar i ei tregrense, og dalen stig fram nedanfrå (raskare enn kartet).
+        { bilete: "dal-under", faktor: [1, 1.8], ved: [0, 10.5], x: 0, y: 150, variant: "dal" },
+        { bilete: "li", faktor: 1, ved: [0, 12], x: 0, y: 48, variant: "fast" },
+        { bilete: "li-kort", faktor: 1, ved: [0, 12], x: 0, y: 48, variant: "dal" },
       ],
+      variant: "fast",                                                 // utsikta nedst: «fast» eller «dal» (sjå parallakse)
       kameraOpp: { fra: 12, til: 0, rader: 6 },                        // øvst ser kameraet opptil seks rader over kanten
       kameraNed: { fra: 11, til: 13, rader: 3 },                       // ved stupet glir kameraet ned, så Ivar står øvst
       // Forgrunnen: bjørkegreiner i øvre hjørne ved skogen, høgt gras i nedre hjørne ved stupet.

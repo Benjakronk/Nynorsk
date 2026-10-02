@@ -1071,3 +1071,24 @@ same måte, uansett kven som tek over.
   bak dei ligg den disige lia og bygda, fjella og himmelen, og laga glir med ulik fart. Nedst er
   stupet høgt før den første hylla, og lia går over i dis.
 - **Står att:** Disen nedst i lia er ei jamn, lys flate.
+
+## Runde 32: lia under stupet som fast lag, og dalen som stig fram (variant)
+
+- **Oppdrag:** Brukaren: parallaksen nedst på Åsen fungerer dårleg; heller eit fast lag med
+  pikselkunst, eller prøve å la dalen scrolle inn frå den andre sida.
+- **Gjort:**
+  - `li` er no eit fast lag (faktor 1, 448 pikslar breitt som kartet): bergveggen, hyllene og skogen
+    som går over i dis heng fast i terrenget og glir ikkje mot kartet. `kameraNed` er som før.
+  - Variantar: eit lag kan ha `variant: "namn"` og blir berre teikna når kartet har same `variant`
+    (standard «fast»). Varianten «dal» har `li-kort` (lia sluttar under den andre hylla) og `dal-under`
+    (dalbotnen med Hovdekyrkja og gardane frå runde 26, 448 breitt) med faktor `[1, 1.8]`: han står fast
+    sidelengs, men stig fram nedanfrå, raskare enn kartet, når kameraet glir ned ved stupet.
+    `skjerm.html` har `variant=dal`. `sjekk-spel.js` godtek faktor opp til 2 bak kartet og sjekkar
+    dekninga for laga i varianten kartet brukar.
+  - Minnet om far har lia som fast lag.
+  - Standard er «fast»: biletet står stødig og heng saman med stupet, utan noko som glir feil. Dalen
+    i «dal» syner berre i ei smal stripe nedst (20 til 50 pikslar) og stig fort, så det ser ut som ho
+    kjem mot ein.
+- **Vurdert:** Seriar medan kameraet glir ned (Ivar på rad 10 til 13 og på neset):
+  `forhand/skjerm/r32-serie-fast.png` og `r32-serie-dal.png`.
+- **Står att:** Ein lengre dal-variant ville krevje fleire rader med luft under kartet.

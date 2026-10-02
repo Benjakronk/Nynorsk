@@ -117,9 +117,11 @@ for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR |
       const stad = `${id} ${namn}[${i}]`, f = stiP.join(__dirname, "..", "bilete", "spel", "parallakse", l.bilete + ".png");
       if (!fsP.existsSync(f)) { feil.push(`${stad}: bilete/spel/parallakse/${l.bilete}.png finst ikkje (køyr tools/pikselkunst/utsikt.py)`); return; }
       const fk = Array.isArray(l.faktor) ? l.faktor : [l.faktor, l.faktor];
-      if (!fk.every(v => typeof v === "number" && (namn === "parallakse" ? v >= 0 && v < 1 : v > 1))) feil.push(`${stad}: faktor ${l.faktor} (bak kartet 0 til 1, i forgrunnen over 1)`);
+      if (!fk.every(v => typeof v === "number" && (namn === "parallakse" ? v >= 0 && v <= 2 : v > 1))) feil.push(`${stad}: faktor ${l.faktor} (bak kartet 0 til 2, 1 er fast, i forgrunnen over 1)`);
+      if (l.variant && !(liste || []).some(m => m !== l && m.variant === (k.variant || "fast")) && l.variant !== (k.variant || "fast")) feil.push(`${stad}: varianten ${l.variant}, men kartet har ingen lag i varianten ${k.variant || "fast"}`);
       if (!Number.isFinite(l.x) || !Number.isFinite(l.y) || (l.ved && !(Array.isArray(l.ved) && l.ved.length === 2))) feil.push(`${stad}: treng x, y og ved: [kx, ky]`);
-      if (namn !== "parallakse" || l.opp || (liste.findIndex(m => !m.opp) !== i)) return;   // det bakaste laget under kartet
+      const iBruk = m => !m.opp && (!m.variant || m.variant === (k.variant || "fast"));   // laga under kartet i varianten kartet brukar
+      if (namn !== "parallakse" || !iBruk(l) || liste.findIndex(iBruk) !== i) return;   // det bakaste laget under kartet
       // Det bakaste laget: dekkjer det skjermen frå toppen av stupet og ned, der lufta kan syne?
       const { w: bw, h: bh } = pngStorleik(f), ved = l.ved || [0, 0];
       let luftRad = R.findIndex((r, y) => y > 0 && r.includes("-") && [...r].some((ch, x) => ch === "-" && "M-".includes(c(x, y - 1)) && !R.slice(0, y).every(rr => rr[x] === "-")));   // lufta nedst, ikkje den øvst

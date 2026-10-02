@@ -677,6 +677,8 @@ window.Motor = (function () {
      skjermen (i pikslar) når kameraet står med øvre venstre flis på ved. faktor er eit tal eller
      [fx, fy]. Kameraet står på heile pikslar, og laget blir runda til heile pikslar for seg:
      posisjonen er ein monoton funksjon av kameraet, så ingenting ristar fram og attende.
+     Eit lag med faktor 1 står fast i terrenget (lia under stupet på Åsen). Eit lag med variant: "namn"
+     blir berre teikna når kartet har variant: "namn" (standard «fast»), så ein kan prøve ulike utsikter.
      Bakgrunnen syner gjennom luftfliser («-»: ikkje gangbare, ingen bakke) og der stupet («M»)
      løyser seg opp i dis nedst. luftfarge fyller skjermen under laga. */
   const LUFT = "-";
@@ -687,6 +689,7 @@ window.Motor = (function () {
   }
   function teiknLag(lag, camX, camY, forgrunn) {
     for (const l of lag || []) {
+      if (l.variant && l.variant !== (kart.def.variant || "fast")) continue;   // berre laga i varianten kartet har valt
       const img = parallaksebilete(l.bilete);
       if (!Pikslar.klar(img)) continue;
       const [x, y] = lagPos(l, camX, camY);

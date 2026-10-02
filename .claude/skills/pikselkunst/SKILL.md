@@ -170,8 +170,8 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
     øvst der bakken fell bort (`Pikslar.nordkant`, i rad 0 eller under luft på kart med `kameraOpp`;
     kanten bøyer ned mot sida der det er luft, så toppen kan vere høgast på midten).
   - Bakgrunnslaga og forgrunnen: `python tools/pikselkunst/utsikt.py` (skriptet er kjelda) skriv
-    `bilete/spel/parallakse/<namn>.png` (himmel, fjell, dal-nord og naer øvst, li under stupet,
-    greiner, gras) og
+    `bilete/spel/parallakse/<namn>.png` (himmel, fjell, dal-nord og naer øvst, li under stupet som fast
+    lag med faktor 1, li-kort og dal-under for varianten «dal», greiner, gras) og
     `forhand/utsikt-ark.png`. På
     kartet: `parallakse: [{ bilete, faktor, ved: [kx, ky], x, y }]` (det fjernaste først, faktor under 1),
     `forgrunn: [...]` (faktor over 1), `luftfarge`, `kameraNed: { fra, til, rader }` (kameraet
@@ -181,7 +181,8 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
     bakgrunnen nivå 5 (`fjern` i stemninga, ingen skyskugge).
   - Sjå med `skjermbilete.py namn kart=asen m=1 x=12 y=13` (ved stupet), `x=22 y=14` (neset),
     `x=3 y=2`, `x=10 y=2` og `x=24 y=2` (toppen: utmarka til venstre, Hovdebygda til høgre), og
-    `kart=minne-far m=1` (same lia under stupet i minnet).
+    `kart=minne-far m=1` (same lia under stupet i minnet). `variant=dal` viser varianten der dalen
+    stig fram under lia (lag med `variant` blir berre teikna når kartet har den varianten).
 - Tre, steinar og haugar: `python tools/pikselkunst/natur.py <namn>` (sjå `NATUR`).
   Kartteikna `#` (gran), `t` (bjørk) og `o` (stein, einer) vel variant etter plassen
   frå `NATURTYPE` i `js/rpg/pikslar.js`. Nye variantar må førast inn der.
