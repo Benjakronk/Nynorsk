@@ -204,13 +204,16 @@ window.RPGData = (function () {
     "asen-stova": {
       namn: "Stova på Åsen", stemning: "inne", golv: "P", inne: true, bakgrunn: "inne",
       // Inventaret er figurar laga med tools/pikselkunst/inventar.py. «(» er fast golv under dei.
-      bygg: [{ id: "inne-grue", x: 1, y: 0, h: 2 }, { id: "inne-hylle", x: 5, y: 0, h: 1 }, { id: "inne-sengebenk", x: 9, y: 1, h: 1 }, { id: "inne-langbord", x: 2, y: 3, h: 2 }, { id: "inne-rokk", x: 9, y: 6, h: 1 }],
+      // Langbordet med ein benk framfor og ein kubbestol ved kvar ende (stolen ser mot bordet).
+      bygg: [{ id: "inne-grue", x: 1, y: 0, h: 2 }, { id: "inne-hylle", x: 5, y: 0, h: 1 }, { id: "inne-sengebenk", x: 9, y: 1, h: 1 },
+        { id: "inne-langbord", x: 3, y: 2, h: 2 }, { id: "inne-benk", x: 3, y: 4, h: 1 },
+        { id: "inne-kubbestol-hogre", x: 2, y: 3, h: 1 }, { id: "inne-kubbestol-venstre", x: 7, y: 3, h: 1 }, { id: "inne-rokk", x: 9, y: 6, h: 1 }],
       rader: [
         "XXXXXXXXXXXX",
         "X(PPPPPPP((X",
-        "XPPPPPPPPPPX",
-        "XP((((PP@PPX",
-        "XP%(((PPPPKX",
+        "XPP((((P@PPX",
+        "XP%(((((PPPX",
+        "XPP((((PPPKX",
         "XPPPPP1PPPPX",
         "XLPPP2PPP(PX",
         "XXXXXEXXXXXX",
@@ -220,7 +223,7 @@ window.RPGData = (function () {
       kister: [{ ved: [10, 4], ting: "flatbrod", n: 2, id: "k-stova" }],
       folk: [
         { merke: "@", u: "bror", namn: "Storebror", atferd: "snu", retning: 2, snu: [0, 2, 3], tale: "bror" },
-        { merke: "%", u: "syster", namn: "Syster", atferd: "stille", retning: 3, pose: "sitje", sete: [-6, -2], flis: "(", tale: "syster" },   // sit på kubbestolen ved enden av langbordet
+        { merke: "%", u: "syster", namn: "Syster", atferd: "stille", pose: "sitje", flis: "(", tale: "syster" },   // sit på kubbestolen ved enden av langbordet og ser mot bordet
       ],
     },
     /* Scenekart (scene: true) finst berre for ei scene: dei er ikkje med i verda, og spelet
@@ -736,7 +739,7 @@ window.RPGData = (function () {
         { dagbok: "Ein framand mann gav meg ei tom bok. «Det som er skrive, står», stod det. Eg veit ikkje kva han meinte." },
       ],
     },
-    // Syster står opp frå bordet og gir Ivar niste. Etter hendinga sit ho att.
+    // Syster sit på kubbestolen ved bordet, snur seg mot Ivar og gir han niste.
     syster_kake: {
       namn: "Niste", stad: "Stova på Åsen", kort: false, med: ["Ivar", "Syster"],
       steg: [

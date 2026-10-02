@@ -543,3 +543,41 @@ same måte, uansett kven som tek over.
 - **Står att:** Ein sitjepose på golvet (beina i kross) krev ein ny kolonne i arket og endringar i
   `POSAR` (data.js) og `ARKPOSAR` (pikslar.js). Syster kunne sitje på benken eller kubbestolen
   (eller sjå mot sida), så setet syner. Ein liggjande pose sett ovanfrå i senga.
+
+## Runde 19: bord, benk og kubbestol som eigne bilete
+
+- **Frå brukaren:** Bordet og stolane skal vere eigne bilete i fleire retningar, så eit rom kan
+  møblerast på fleire måtar. Den som sit, skal sjå ut til å sitje på stolen, og ryggen på ein
+  stol sett bakfrå skal dekkje nedre del av figuren. Syster skal sitje på ein kubbestol ved
+  bordet, sett frå sida, og vere synleg når Ivar talar med henne.
+- **Gjort:**
+  - `inventar.py`: `langbord` (4 x 2, liggjande) og `langbord-staande` (2 x 4) utan stolar, med
+    trefat og graut, flatbrød i stabel, brød, kniv og ølbolle, kvar med ein smal skugge på plata.
+    Plata ligg 14 pikslar over golvet (`BORD_HOGD`) og dekkjer heile fotavtrykket.
+    `benk`, `benk-kort` (4 og 2 fliser) og `benk-staande`, `benk-staande-kort`. `kubbestol-ned`,
+    `-opp`, `-venstre`, `-hogre` (1 x 1): ein hol stokk med rundt sete og rygg rundt sidene, laga
+    som små kubar (Z, djupn, X) som blir teikna bakfrå og fram med fast tone per flate.
+    Ny farge `q` (furu lysast) til toppflatene.
+  - Motoren: `SETE` i `pikslar.js` (hogd, retning, fram). Den som sit på ei rute eit sete dekkjer,
+    blir lyft opp på setet (`SITJE_DY` i `motor.js` legg til tre pikslar framanfrå, så beina heng
+    framfor setet), mistar skuggen på golvet og blir sortert etter den nedste rada til setet.
+    `fram: true` teiknar stolen over den som sit. Ein stol med retning snur den som set seg.
+    `sete: [dx, dy]` på folk er fjerna.
+  - `asen-stova`: langbordet på rad 2 og 3, benk framfor, kubbestol ved kvar ende. Syster sit på
+    stolen til venstre (2, 3) og ser mot bordet, storebror står på (8, 2). Testen i
+    `sjekk-scene.html` set Ivar på (2, 4).
+  - Ekset, prestegarden og kontoret er ikkje møblerte om. `inne-stol` (Ekset) vart prøvd som sete
+    sett bakfrå, men den høge ryggen gøymde heile den som sit, så han står ikkje i `SETE`.
+- **Rundar:** 1) Ryggen på kubbestolen var ti pikslar høg og gøymde alt under halsen bakfrå; no
+  sju. Framanfrå sat figuren på bakre halvdel av setet; han blir no teikna tre pikslar lenger
+  ned. 2) Stolen var bleik som ein sekk og hadde to sprekker som såg ut som auge; mørkare
+  tonar per flate og ingen sprekker. 3) Årer i bordplata og benken var einsame pikslar; no
+  korte strekar. Syster sat inntil grua; stolane flytte ei rad ned.
+- **Vurdert i spelet:** Stova ser ryddig ut: bordet med ting, benken framfor og stolane ved
+  endane. Syster sit tydeleg på stolen, og når Ivar står under henne, syner hovudet og
+  overkroppen hennar over han. Alle fire retningar på kubbestolen og benkene les godt
+  (demo med folk på alle seta, ikkje i spelet).
+- **Står att:** Ein benk bak bordet blir gøymd av bordet (rett, men då syner berre den som sit).
+  Ryggen rundt sida på `kubbestol-venstre` og `-hogre` ligg bak den som sit, også den delen som
+  eigentleg er nærast kameraet. Prestegarden og kontoret har stolane inne i biletet til
+  spisebordet og skrivepulten, og er ikkje møblerte om.

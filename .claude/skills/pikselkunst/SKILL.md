@@ -57,6 +57,31 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   `python tools/pikselkunst/inventar.py <namn>`. Står i `bygg` på kartet,
   `over: true` teiknar figuren over alt anna (lysekrona). Inventar med eld får
   flammerute i `ILD` i `js/rpg/pikslar.js` (levande eld teikna oppå biletet).
+- Møblere med bord, benk og stol (bondestova). Kvart møbel er eit eige bilete, så eit rom kan
+  setjast saman på fleire måtar. `x`, `y` er øvre venstre flis, `h` talet på flisrader, og breidda
+  er (biletbreidd - 8) / 16 fliser. Alle rutene møbelet dekkjer, skal vere `(` (fast golv) i `rader`.
+
+  | Bilete (`bilete/spel/bygg/`) | Fliser (b × h) | Merknad |
+  | --- | --- | --- |
+  | `inne-langbord` | 4 × 2 | liggjande, utan stolar |
+  | `inne-langbord-staande` | 2 × 4 | ståande (på langs nedover) |
+  | `inne-benk`, `inne-benk-kort` | 4 × 1, 2 × 1 | liggjande benk utan rygg |
+  | `inne-benk-staande`, `inne-benk-staande-kort` | 1 × 4, 1 × 2 | ståande benk |
+  | `inne-kubbestol-ned`, `-opp`, `-venstre`, `-hogre` | 1 × 1 | retninga den som sit, ser; ryggen er bak |
+
+  Bordplata ligg 14 pikslar over golvet og dekkjer heile fotavtrykket, så bordet går 14 pikslar opp
+  i flisrada bak. Ein benk bak bordet blir difor gøymd av bordet (berre den som sit der, syner, frå
+  livet og opp). Ein benk framfor bordet, kubbestolar ved endane (stolen ser mot bordet) og ståande
+  benker langs sida av eit ståande bord syner godt. Døme: `asen-stova` i data.js.
+
+  Sitjande: ein person med `pose: "sitje"` på ei rute som eit sete dekkjer (`SETE` i
+  `js/rpg/pikslar.js`), blir lyft opp på setet og teikna utan skugge på golvet, utan
+  pikselforskyvingar i kartet. Ein stol med `retning` snur den som set seg (og folk i kartet utan
+  `retning`) same vegen. Den som sit, blir sortert etter den nedste flisrada til setet, så han
+  sit oppå ein ståande benk. `fram: true` (stolen sett bakfrå, `inne-kubbestol-opp`)
+  teiknar stolen over den som sit, så ryggen dekkjer nedre del av han. Nye stolar og benker
+  må førast inn i `SETE` med `hogd` (setehøgd i pikslar, 5 for bondemøblane). `inne-stol` på Ekset
+  står ikkje der: ryggen er så høg at han ville gøyme heile den som sit.
 - Figurar (16 × 24): legg personen til i `U` i `js/rpg/data.js` og køyr
   `python tools/pikselkunst/figur.py <id>` (eller `alle`). Arket hamnar i
   `bilete/spel/figurar/<id>.png`. `figur.py ark` lagar eit kontaktark i

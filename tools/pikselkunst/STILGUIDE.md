@@ -129,6 +129,11 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
 - Bondestova: kvitkalka grue med hette i hjørnet, langbord med benk og
   kubbestolar, sengebenk med raudt åklede, hylle med trefat, rokk. Varmt ljos
   frå grua, mørke hjørne.
+- Bord, benk og stol er eigne bilete (sjå SKILL.md). Setet er 5 pikslar over golvet og bordplata
+  14, og plata dekkjer heile fotavtrykket. Kubbestolen er ein hol stokk med rundt sete og rygg
+  som bøyer seg rundt sidene, teikna med fast tone per flate: toppen lysast, flata mot venstre
+  lys, mot oss mellomtone, mot høgre skugge. Ting på bordet har ein smal skugge mot høgre og ned.
+  Årer i treet er korte strekar på langs av plankane, aldri einsame pikslar.
 
 ## Figurar (16 × 24)
 

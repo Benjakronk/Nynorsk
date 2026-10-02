@@ -946,6 +946,16 @@ window.Pikslar = (function () {
     "inne-grue": [{ x: 5, y: 26, w: 14, h: 15 }],
     "inne-kakkelomn": [{ x: 8, y: 31, w: 8, h: 8, glo: true }],
   };
+  /* Sete: inventar ein kan sitje på (inventar.py). Den som sit (pose «sitje») på ei rute som setet
+     dekkjer, blir lyft hogd pikslar opp på setet, utan skugge på golvet, og teikna over setet.
+     retning: den vegen den som sit, ser (0 ned, 1 opp, 2 venstre, 3 høgre); han snur seg dit når
+     han set seg. Benker har inga retning. fram: ryggen er nærast kameraet (stolen sett bakfrå),
+     så stolen blir teikna over den som sit og dekkjer nedre del av han. */
+  const SETE = {
+    "inne-kubbestol-ned": { hogd: 5, retning: 0 }, "inne-kubbestol-opp": { hogd: 5, retning: 1, fram: true },
+    "inne-kubbestol-venstre": { hogd: 5, retning: 2 }, "inne-kubbestol-hogre": { hogd: 5, retning: 3 },
+    "inne-benk": { hogd: 5 }, "inne-benk-kort": { hogd: 5 }, "inne-benk-staande": { hogd: 5 }, "inne-benk-staande-kort": { hogd: 5 },
+  };
   // Kva pikslar i ruta flammane kan teiknast på: berre mørket i eldstaden og den faste elden
   // i biletet, så gryta, kroken og kanten ligg framfor flammane.
   const ildMasker = new WeakMap();
@@ -993,5 +1003,5 @@ window.Pikslar = (function () {
   }
 
   return { S, FW, FH, flis, topp, kant, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
-    hent, klar, forhandslast, alleBilete, ILD, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
+    hent, klar, forhandslast, alleBilete, ILD, SETE, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
 })();

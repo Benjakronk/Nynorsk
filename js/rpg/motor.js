@@ -33,6 +33,22 @@ window.Motor = (function () {
 
   const DX = [0, 0, -1, 1], DY = [1, -1, 0, 0];
   let kart = null;            // { id, def, w, h, fliser, merke, folk, kister, dorer }
+
+  // Setet (stol eller benk med oppføring i Pikslar.SETE) som dekkjer ruta (x, y), eller null.
+  // Breidda til inventaret er (biletbreidd - 8) / 16 fliser, høgda er h i kartet.
+  function seteVed(x, y) {
+    if (!kart) return null;
+    x = Math.round(x); y = Math.round(y);
+    for (const b of kart.def.bygg || []) {
+      const s = Pikslar.SETE && Pikslar.SETE[b.id]; if (!s) continue;
+      const img = Pikslar.bygg(b.id), w = img ? Math.max(1, Math.round((img.width - 8) / 16)) : 1;
+      if (x >= b.x && x < b.x + w && y >= b.y && y < b.y + b.h) return { b, s };
+    }
+    return null;
+  }
+  // Kor mykje lenger ned den som sit, blir teikna, etter retninga han ser (ned, opp, venstre,
+  // høgre): framanfrå heng beina ned framfor setet, bakfrå sit han lenger inn mot ryggen.
+  const SITJE_DY = [3, -1, 0, 0];
   let spelar = { x: 0, y: 0, dir: 0, fx: 0, fy: 0, flytt: null, steg: 0, u: 0, sprite: null };
   let pausa = true, stegTilKamp = 20;
   let dorAnim = null;         // { tx, ty, form, t0 } medan ei dør opnar seg
@@ -108,6 +124,8 @@ window.Motor = (function () {
         neste: performance.now() + 800 + Math.random() * 2500, sprite: spriteAv(f) });
     });
     kart = { id, def, w, h, fliser, merke, folk, kister: def.kister || [], dorer: (def.dorer || []).filter(d => d.til) };
+    // Den som sit på ein stol utan retning i kartet, ser same vegen som stolen.
+    for (const f of folk) if (f.grunnpose === "sitje" && f.retning == null) { const st = seteVed(f.x, f.y); if (st && st.s.retning != null) f.dir = f.grunndir = st.s.retning; }
     for (const a of regi) { a.regi.res(); a.regi = null; } regi.clear(); kam = null;      // nytt kart: regien byrjar på nytt
     const [sx, sy] = merke[merkeId] || merke["1"] || [1, 1];
     spelar.x = sx; spelar.y = sy; spelar.fx = sx; spelar.fy = sy; spelar.flytt = null;
@@ -796,7 +814,6 @@ window.Motor = (function () {
     }
     const GANG = [1, 0, 2, 0];
     const figurar = kart.folk.filter(f => f.sprite).map(f => ({ y: f.fy, sp: f.sprite, x: f.fx, dir: f.dir, kjensle: f.kjensle, pose: f.pose,
-      sete: f.pose === "sitje" && f.sete,
       steg: f.flytt ? GANG[(f.steg % 2) * 2 + (f.u < 0.5 ? 0 : 1)] : 0 }));
     // Gangramma følgjer steget, ikkje klokka: to rammer per flis (steg, stå), annakvar fot.
     const steg = spelar.flytt ? GANG[(spelar.steg % 2) * 2 + (spelar.u < 0.5 ? 0 : 1)] : 0;
@@ -805,11 +822,16 @@ window.Motor = (function () {
       : spelar.flytt ? GANG[((spelar.steg + Math.floor(fv)) % 2) * 2 + (fv % 1 < 0.5 ? 0 : 1)] : 0;
     if (fylgje) figurar.push({ y: fylgje.fy, x: fylgje.fx, sp: fylgje.sprite, dir: fylgje.dir, steg: fsteg, kjensle: fylgje.kjensle, pose: fylgje.pose });
     figurar.push({ y: spelar.fy, x: spelar.fx, sp: spelar.sprite, dir: spelar.dir, steg, kjensle: spelar.kjensle, pose: spelar.pose });
+    // Den som sit på ein stol eller benk (Pikslar.SETE), sit på setet: sjå sete i løkka under.
+    for (const f of figurar) if (f.pose === "sitje" && f.y === Math.round(f.y) && f.x === Math.round(f.x)) f.sete = seteVed(f.x, f.y);
     for (const n of naturFig) figurar.push(n);
     // Hus blir sorterte saman med figurane etter den nedste flisraden sin.
-    for (const b of kart.def.bygg || []) { const img = Pikslar.bygg(b.id); if (img) figurar.push({ y: b.over ? 999 : b.y + b.h - 1 + 0.01, by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id }); }
-    // Den som sit eller ligg, blir teikna over inventaret på same rad (benken, senga).
-    const djupn = f => f.y + (f.pose && f.pose !== "knele" && f.pose !== "peike" ? 0.02 : 0);
+    // Eit sete med ryggen mot kameraet (fram) kjem etter den som sit på det.
+    for (const b of kart.def.bygg || []) { const img = Pikslar.bygg(b.id), fram = Pikslar.SETE && Pikslar.SETE[b.id] && Pikslar.SETE[b.id].fram;
+      if (img) figurar.push({ y: b.over ? 999 : b.y + b.h - 1 + (fram ? 0.03 : 0.01), by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id }); }
+    // Den som sit eller ligg, blir teikna over inventaret på same rad (benken, senga). Den som sit
+    // på eit sete, blir sortert etter den nedste rada til setet (ein ståande benk er fleire fliser).
+    const djupn = f => (f.sete ? f.sete.b.y + f.sete.b.h - 1 : f.y) + (f.pose && f.pose !== "knele" && f.pose !== "peike" ? 0.02 : 0);
     figurar.sort((a, b) => djupn(a) - djupn(b));
     for (const f of figurar) {
       if (f.mur) { g.drawImage(f.mur, Math.round((f.x + ox) * S), Math.round((Math.floor(f.y) + oy) * S) - 6); continue; }
@@ -828,9 +850,8 @@ window.Motor = (function () {
         if (dorAnim && f.by === dorAnim.ty) teiknDor(no, ox, oy);
         for (const [rx, ry] of Pikslar.ROYK[f.id] || []) Pikslar.royk(g, bx + rx, by - f.bygg.height + ry, no);
         continue; }
-      // sete: [dx, dy] i pikslar for den som sit på ein stol eller benk som er del av eit inventar
-      // (kubbestolen ved enden av langbordet). Stolen har sin eigen skugge.
-      const sx = Math.round((f.x + ox) * S) + (f.sete ? f.sete[0] : 0), sy = Math.round((f.y + oy) * S) + (f.sete ? f.sete[1] : 0);
+      // Den som sit på eit sete, blir lyft opp på det (hogd), og setet har sin eigen skugge.
+      const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S) + (f.sete ? SITJE_DY[f.dir] - f.sete.s.hogd : 0);
       // Eit vesen står midt på flisa med botnen på bakken, og gyng litt opp og ned.
       if (f.sp.vesen) {
         const c = f.sp.vesen, gy = Math.round((Math.sin(no / 420) + 1) * 0.8);
@@ -1025,6 +1046,7 @@ window.Motor = (function () {
       const a = aktor(kven);
       if (!a) return;
       a.pose = p;
+      if (p === "sitje") { const st = seteVed(a.x, a.y); if (st && st.s.retning != null) a.dir = st.s.retning; }   // set seg rett på stolen
       if (p && a.hx !== undefined) a.neste = performance.now() + 1e9;     // folk står i ro så lenge posen varer
       else if (a.hx !== undefined) a.neste = performance.now() + 2000;
     },

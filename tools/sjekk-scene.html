@@ -42,7 +42,8 @@ f.onload = async () => {
     const b = M.aktor("Storebror");
     sjekk(T().st().scener.heime, "scena «heime» er merkt som spela");
     sjekk(naerIvar, "storebror gjekk bort til Ivar");
-    sjekk(b.x === 8 && b.y === 3, `storebror gjekk attende til plassen sin (står på ${b.x},${b.y})`);
+    const [bx, by] = M.kart.merke["@"];
+    sjekk(b.x === bx && b.y === by, `storebror gjekk attende til plassen sin (står på ${b.x},${b.y}, plassen er ${bx},${by})`);
 
     // 2. «framande»: den framande går til Ivar, kameraet følgjer han ut av kartet og kjem attende.
     M.last("asen", "3");
@@ -196,7 +197,7 @@ f.onload = async () => {
     // a) Syster blir sitjande på kubbestolen ved bordet, snur seg mot Ivar og gir flatbrød.
     delete s10.ord.kaka;
     const brod = s10.ting.flatbrod || 0;
-    M.last("asen-stova", "1"); M.plasser(2, 5, 1); await vent(300);
+    M.last("asen-stova", "1"); M.plasser(2, 4, 1); await vent(300);
     let stod = false, saaMot = false;
     tast("z");
     await trykkGjennom(() => s10.scener.syster_kake && !synleg("#rpg-tale"), () => {
@@ -208,7 +209,7 @@ f.onload = async () => {
     const sy10 = M.aktor("Syster");
     sjekk(!stod && saaMot, "syster vart sitjande og snudde seg mot Ivar då ho gav flatbrødet (ståande kjem ho bak bordet)");
     sjekk(s10.ord.kaka && (s10.ting.flatbrod || 0) === brod + 1, "Ivar høyrde «kake» og fekk eit flatbrød");
-    sjekk(sy10.x === 2 && sy10.y === 4 && sy10.pose === "sitje" && sy10.dir === 3 && kanGaa(), `syster sit att på kubbestolen og ser mot bordet (${sy10.x},${sy10.y} ${sy10.pose} retning ${sy10.dir}), og Ivar kan gå`);
+    sjekk(sy10.x === 2 && sy10.y === 3 && sy10.pose === "sitje" && sy10.dir === 3 && kanGaa(), `syster sit att på kubbestolen og ser mot bordet (${sy10.x},${sy10.y} ${sy10.pose} retning ${sy10.dir}), og Ivar kan gå`);
 
     // b) Vakta ved kanten mot utmarka: Ivar snur og går eitt steg attende.
     delete s10.flagg.skiftebrev;
