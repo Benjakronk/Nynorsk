@@ -17,7 +17,7 @@ Førehandsvisingane hamnar i tools/pikselkunst/forhand/ (ikkje i git):
 
 Format for .pix:
   # namn: portrett-ivar
-  # type: portrett | figur | fiende | flis
+  # type: portrett | figur | fiende | flis | naer
   # ut: bilete/spel/portrett/ivar.png
   # storleik: 48x48
   palett:
@@ -41,7 +41,7 @@ PROSJEKT = os.path.abspath(os.path.join(ROT, "..", ".."))
 FORHAND = os.path.join(ROT, "forhand")
 
 # Grenser frå stilguiden (STILGUIDE.md)
-MAKS_FARGAR = {"portrett": 40, "figur": 24, "fiende": 32, "flis": 16}
+MAKS_FARGAR = {"portrett": 40, "figur": 24, "fiende": 32, "flis": 16, "naer": 40}
 OMRISS_MAKS_LYS = 0.16          # omrisspikslar skal vere nesten svarte
 OMRISS_MAKS_LYS_PORTRETT = 0.45 # portretta har farga omriss (Fire Emblem): mørkaste tonen i materialet
 OMRISS_DEL = 0.75               # minst så stor del av kantpikslane skal vere omriss
@@ -116,6 +116,11 @@ def bakgrunn(type_, w, h):
         for y in range(h):
             t = y / max(1, h - 1)
             d.line([(0, y), (w, y)], fill=(int(58 - 38 * t), int(76 - 50 * t), int(176 - 94 * t), 255))
+    elif type_ == "naer":              # nærbilete i ein scene: mørk fiolett glorie (.rpg-forvandling)
+        for y in range(h):
+            for x in range(w):
+                t = min(1, (((x - w / 2) / (w / 2)) ** 2 + ((y - h * 0.45) / (h / 2)) ** 2) ** 0.5)
+                d.point((x, y), fill=(int(40 - 30 * t), int(30 - 25 * t), int(80 - 60 * t), 255))
     elif type_ == "fiende":            # kampbakgrunn i utmarka: kveldshimmel og gras
         for y in range(h):
             t = y / max(1, h - 1)

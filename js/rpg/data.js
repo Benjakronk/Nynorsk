@@ -45,7 +45,6 @@
 
    Scenemotoren (sjå js/rpg/README.md for heile lista):
      { scene: "id" }                    spel ei scene frå SCENER (kort med stad og tid først)
-                                        hopp: true på scena: ein mellomsekvens som kan hoppast over (X/Esc)
      { gaa: "Namn", mot: "Ivar" }       gå bort til nokon og snu seg mot han
      { gaa: "Namn", rute: [x, y] }      gå til ei rute (eller eit merke: rute: "@")
      { gaa: "Namn", sti: "h3o2" }       gå ein fast sti (n ned, o opp, v venstre, h høgre)
@@ -211,8 +210,8 @@ window.RPGData = (function () {
         "X(PPPPPPP((X",
         "XPPPPPPPPPPX",
         "XP((((PP@PPX",
-        "XP((((PPPPKX",
-        "XP%PPP1PPPPX",
+        "XP%(((PPPPKX",
+        "XPPPPP1PPPPX",
         "XLPPP2PPP(PX",
         "XXXXXEXXXXXX",
       ],
@@ -221,7 +220,7 @@ window.RPGData = (function () {
       kister: [{ ved: [10, 4], ting: "flatbrod", n: 2, id: "k-stova" }],
       folk: [
         { merke: "@", u: "bror", namn: "Storebror", atferd: "snu", retning: 2, snu: [0, 2, 3], tale: "bror" },
-        { merke: "%", u: "syster", namn: "Syster", atferd: "stille", retning: 1, pose: "sitje", tale: "syster" },   // sit ved langbordet
+        { merke: "%", u: "syster", namn: "Syster", atferd: "stille", retning: 3, pose: "sitje", sete: [-6, -2], flis: "(", tale: "syster" },   // sit på kubbestolen ved enden av langbordet
       ],
     },
     /* Scenekart (scene: true) finst berre for ei scene: dei er ikkje med i verda, og spelet
@@ -697,11 +696,10 @@ window.RPGData = (function () {
 
   /* ---------- Scener ----------
      Ei scene har same mal som manuset i designdokumentet: stad og tid (vist som kort),
-     kven som er med, og stega. Utfallet (ord, ting, trådar) står som steg i lista.
-     hopp: true gjer scena til ein mellomsekvens som spelaren kan hoppe over (sjå README). */
+     kven som er med, og stega. Utfallet (ord, ting, trådar) står som steg i lista. */
   const SCENER = {
     heime: {
-      namn: "Heime", stad: "Stova på Åsen", tid: "våren 1826", med: ["Ivar", "Storebror"], hopp: true,
+      namn: "Heime", stad: "Stova på Åsen", tid: "våren 1826", med: ["Ivar", "Storebror"],
       steg: [
         { vent: 300 },
         { snu: "Storebror", mot: "Ivar" },
@@ -714,7 +712,7 @@ window.RPGData = (function () {
       ],
     },
     framande: {
-      namn: "Ein framand på tunet", stad: "Åsen i Hovdebygda", tid: "same morgon", kort: false, hopp: true, med: ["Ivar", "Ein framand"],
+      namn: "Ein framand på tunet", stad: "Åsen i Hovdebygda", tid: "same morgon", kort: false, med: ["Ivar", "Ein framand"],
       steg: [
         { snu: "Ein framand", mot: "Ivar" },
         { s: "Ein framand", t: "God dag, unge mann." },
@@ -749,7 +747,7 @@ window.RPGData = (function () {
         { vent: 450 },
         { snu: "Syster", mot: "Ivar" },
         { gi: "flatbrod", n: 1 }, { t: "Ivar fekk eit flatbrød.", kjensle: "glad" },
-        { snu: "Syster", retning: "opp" },
+        { snu: "Syster", retning: "hogre" },                            // mot bordet att, og så set ho seg
       ],
     },
     /* Den første kampen. Syster spring ut av stova med skiftebrevet, og storebror kjem etter.
@@ -758,7 +756,7 @@ window.RPGData = (function () {
        Blekket renn ut av brevet og blir ein dråpe på tunet (eit vesen) som kryp bort til Ivar.
        Etterpå går dei inn att (ut: true), og Ivar kan gå vidare sjølv. Dei finst berre i stova. */
     skiftebrev: {
-      namn: "Skiftebrevet", stad: "Åsen i Hovdebygda", tid: "same dag", kort: false, hopp: true, med: ["Ivar", "Syster", "Storebror"],
+      namn: "Skiftebrevet", stad: "Åsen i Hovdebygda", tid: "same dag", kort: false, med: ["Ivar", "Syster", "Storebror"],
       steg: [
         // Døra er i veggen, og taket dekkjer ruta hennar: den som står der, er inne enno.
         { inn: { namn: "Syster", u: "syster", rute: [6, 4], retning: "ned" } },
@@ -772,6 +770,7 @@ window.RPGData = (function () {
         ] },
         { kamera: null, ms: 500 },
         { rist: 600, styrke: 2 },
+        { naerbilete: "bilete/spel/naer/skiftebrev.png", tekst: "«Skifte-Brev», frå sorenskrivaren i Ørsta, 1826. Kanselliblekket renn ut av bokstavane." },
         { inn: { namn: "Blekkdropen", vesen: "blekkdrope", rute: [25, 12] } },
         { t: "Frå det danske brevet renn blekket ut på tunet. Det samlar seg til ein dråpe med gule auge og kryp mot Ivar.", kjensle: "sjokk" },
         { gaa: "Blekkdropen", mot: "Ivar", fart: 600 },
@@ -789,7 +788,7 @@ window.RPGData = (function () {
     },
     // Eit minne om far, første gong Ivar kviler ved lampa i stova (kvile på kartet).
     minne_far: {
-      namn: "Minnet om far", stad: "Bøen på Åsen", tid: "sommaren 1821", kort: false, hopp: true, med: ["Ivar", "Far"],
+      namn: "Minnet om far", stad: "Bøen på Åsen", tid: "sommaren 1821", kort: false, med: ["Ivar", "Far"],
       steg: [
         { pose: "Ivar", p: "sitje" },
         { t: "Ivar set seg ved lampa. Ljoset flakkar, og auga glir att." },
@@ -816,7 +815,7 @@ window.RPGData = (function () {
        Lekpredikanten høyrer kva han seier, og kjem opp til vegen. Etterpå går den framande austover vegen mot Ekset,
        og kameraet blir ståande til han er ute av biletet. */
     framande2: {
-      namn: "Sommarfuglane", stad: "Hovdebygda", kort: false, hopp: true, med: ["Ivar", "Den framande", "Lekpredikanten", "Gamal kone"],
+      namn: "Sommarfuglane", stad: "Hovdebygda", kort: false, med: ["Ivar", "Den framande", "Lekpredikanten", "Gamal kone"],
       steg: [
         { snu: "Ivar", mot: "Den framande" },
         { s: "Den framande", t: "Sjå her. Er dei ikkje vakre? Kvar sommarfugl har si eiga nål.", kjensle: "glad" },
@@ -845,7 +844,7 @@ window.RPGData = (function () {
     /* Presten kneler framfor altarringen og står opp når Ivar kjem. Han peikar mot prestegarden,
        og klokkaren kjem bort for å høyre. Når Ivar har fått nøkkelen, kneler presten att. */
     presten: {
-      namn: "Presten", stad: "Hovdekyrkja", kort: false, hopp: true, med: ["Ivar", "Presten", "Klokkaren"],
+      namn: "Presten", stad: "Hovdekyrkja", kort: false, med: ["Ivar", "Presten", "Klokkaren"],
       steg: [
         { pose: "Presten", p: null },
         { snu: "Presten", mot: "Ivar" },
@@ -906,9 +905,9 @@ window.RPGData = (function () {
     },
     /* Huldra ved setra. Ho står med ryggen til, så halen syner, og snur seg. Då ho seier kven ho er,
        får ho namnet sitt (byt). Ho kjenner snøen frå fjellet bak setra og slår seg i lag med Ivar:
-       følgjet står der ho stod (parti med fra). Stevet blir vist sjølv om scena blir hoppa over. */
+       følgjet står der ho stod (parti med fra). */
     huldra: {
-      namn: "Huldra", stad: "Setra i utmarka", kort: false, hopp: true, med: ["Ivar", "Huldra"],
+      namn: "Huldra", stad: "Setra i utmarka", kort: false, med: ["Ivar", "Huldra"],
       steg: [
         { snu: "Ei kvinne ved setra", fraa: "Ivar" },
         { t: "Ved setra står ei kvinne med hår som kveldssol. Bak skjørtet hennar skimtar du noko som liknar ein kuhale.", kjensle: "sjokk" },
@@ -928,7 +927,7 @@ window.RPGData = (function () {
     },
     // Vetten ved haugen spør kven han er (sjå HAUG_NAMN og HAUG_FEIL over).
     haugbonde: {
-      namn: "Haugbonden", stad: "Utmarka", kort: false, hopp: true, med: ["Ivar", "Vetten"],
+      namn: "Haugbonden", stad: "Utmarka", kort: false, med: ["Ivar", "Vetten"],
       steg: [
         { snu: "Vetten", mot: "Ivar" },
         { t: "Ein gråbleik vette står framfor haugen. Mose gror på hatten hans, og auga lyser som is." },
@@ -944,7 +943,7 @@ window.RPGData = (function () {
     /* Tenaren på Ekset står ved lesebordet mellom stolane. Han hentar ei kongesoge frå hylla,
        så Ivar går til sides og slepper han ut. Etterpå går han attende til bordet. */
     tenar: {
-      namn: "Boksamlinga", stad: "Boksamlinga på Ekset", kort: false, hopp: true, med: ["Ivar", "Tenaren på Ekset"],
+      namn: "Boksamlinga", stad: "Boksamlinga på Ekset", kort: false, med: ["Ivar", "Tenaren på Ekset"],
       steg: [
         { snu: "Tenaren på Ekset", mot: "Ivar" },
         { s: "Tenaren på Ekset", t: "Lensmann Aarflot døydde i 1817, men bøkene hans står her enno. Folk frå heile Søre Sunnmøre har lånt av dei." },
@@ -961,12 +960,12 @@ window.RPGData = (function () {
     },
     /* Blekklatten. Ivar går gjennom opninga i hylleveggen. Ein dråpe renn ut av kyrkjeboka på
        lesepulten og veks til blekklatten (eit vesen på kartet, sjå byt). Etter kampen renn han
-       saman til ein dråpe og siv ned i golvet, og Ivar går bort og les i boka.
-       Kapittelslutten står etter scena i manus, så han kjem sjølv om scena blir hoppa over. */
+       saman til ein dråpe og siv ned i golvet, og Ivar går bort og les i boka. */
     blekklatten: {
-      namn: "Blekklatten", stad: "Arkivet", kort: false, hopp: true, med: ["Ivar", "Blekklatten"],
+      namn: "Blekklatten", stad: "Arkivet", kort: false, med: ["Ivar", "Blekklatten"],
       steg: [
         { snu: "Ivar", retning: "opp" },
+        { naerbilete: "bilete/spel/naer/kyrkjebok-blekk.png" },
         { inn: { namn: "Blekklatten", vesen: "blekkdrope", rute: [10, 4] } },
         { t: "Midt i arkivet ligg kyrkjeboka for Hovdebygda. Blekket renn ut av henne og samlar seg til ein stor, glinsande klump." },
         { rist: 700, styrke: 3 },
@@ -979,6 +978,7 @@ window.RPGData = (function () {
         { fjern: "Blekklatten" },
         { t: "Blekklatten renn saman til ein liten dråpe og siv ned i golvsprekkene. Kyrkjeboka er stille." },
         { gaa: "Ivar", rute: [10, 4] }, { snu: "Ivar", retning: "opp" },
+        { naerbilete: "bilete/spel/naer/kyrkjebok.png" },
         { t: "På den siste sida står namnet til far, skrive med presten si hand. Ved sida av har nokon rissa inn med fin, fin skrift: «Det som er skrive, står.»" },
         { s: "Ivar", t: "Det same som i boka mi …", kjensle: "les" },
         { dagbok: "I kyrkjeboka stod namnet til far. Ved sida av hadde nokon skrive: «Det som er skrive, står.» Same ord som i boka mi." },
@@ -1018,7 +1018,6 @@ window.RPGData = (function () {
       { lytt: ["mjolk", "mjølk"] },
     ] }],
     far: [{ s: "Far", t: "Sjå utover, Ivar." }],                     // berre i minnet (scenekartet minne-far)
-    // Rettleiinga står etter scena, så ho kjem sjølv om mellomsekvensen blir hoppa over.
     framande: [{ scene: "framande" }, { t: "Ordboka ligg i menyen (X eller Esc). Der ser du orda du har høyrt, formene deira og kven som sa dei." }],
     // Vakta ved kantane: Ivar står på kantruta og snur attende eitt steg.
     ikkje_enno: [{ t: "Ivar vil sjå seg om på tunet og i stova først. Kanskje nokon har noko å seie." }, { gaa: "Ivar", sti: "n1" }],

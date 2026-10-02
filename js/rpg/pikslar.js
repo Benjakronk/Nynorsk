@@ -903,6 +903,8 @@ window.Pikslar = (function () {
   const haugBilete = () => lastBilete("bilete/spel/natur/haug.png");
 
   /* Alle bileta spelet brukar, til forhandslast(). D er RPGData. */
+  // Nærbilete i scenene (Motor.naerbilete), laga med tools/pikselkunst/naerbilete.py
+  const NAERBILETE = ["skiftebrev", "kyrkjebok-blekk", "kyrkjebok"];
   function alleBilete(D) {
     const ut = [];
     for (const k of Object.values(D.KART)) {
@@ -915,6 +917,7 @@ window.Pikslar = (function () {
     for (const id of Object.values(D.PORTRETT || {})) ut.push(`bilete/spel/portrett/${id}.png`);
     for (const [id, ks] of Object.entries(D.PORTRETT_KJENSLER || {})) for (const k of ks) ut.push(`bilete/spel/portrett/${id}-${k}.png`);
     for (const d of Object.values(PNG)) ut.push(d.fil);
+    for (const n of NAERBILETE) ut.push(`bilete/spel/naer/${n}.png`);
     return ut;
   }
 

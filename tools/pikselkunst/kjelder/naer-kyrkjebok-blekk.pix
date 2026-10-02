@@ -1,0 +1,96 @@
+# namn: naer-kyrkjebok-blekk
+# type: naer
+# ut: bilete/spel/naer/kyrkjebok-blekk.png
+# storleik: 96x72
+# laga med tools/pikselkunst/naerbilete.py
+palett:
+  . = -
+  a = #c06810    auge 0
+  b = #f8d840    auge 1
+  c = #080010    blekk 0
+  d = #101028    blekk 1
+  e = #201848    blekk 2
+  f = #383070    blekk 3
+  g = #5848a0    blekk 4
+  h = #8878d0    blekk 5
+  i = #3e1e14    laer 1
+  j = #62321e    laer 2
+  k = #8a4c2a    laer 3
+  l = #0a0514    omriss 0
+  m = #8c6e48    papir 1
+  n = #bea06c    papir 2
+  o = #dcc89a    papir 3
+  p = #f2e6c2    papir 4
+bilete:
+  ................................................................................................
+  ................................................................................................
+  ................................................................................................
+  ................................................................................................
+  ......llllllllllllllllllllllllllllll.............lllllllllllllllllllllllllllllllllllllllll......
+  .....lpppppppppppppppppppppppppooooollllll..lllllpppppppppppppppooooooooooooooooooooooooool.....
+  .....lppppppppppppppppppppppppoooooooooooollnnnmmnnppppppppppppooooooooooooooooooooooooonnl.....
+  .....lpppppppppppppppppppppppooooooooooooooonnnmmnnpppppppppppoooooooooooooooooooooooooonnl.....
+  ...llmppppppppppppppdpppppppoooooooooooooooonnnmmnnppppppppppdoooooooooooooooooooooooooonnmll...
+  ..lkkmppppppnppdpdpdpdpdpppooonooooooooooooonnnmmnnppppnppdpdodooodododooonooooooooooooonnmkkl..
+  ..lkjmppppppnpdddpdpdpdpppoooonooooooooooooonnnmmnnppppnpdddddooodododoooonooooooooooooonnmiil..
+  ..lkjmppppppnppppppppppppooooonooooooooooooonnnmmnnppppnppoooooooooooooooonooooooooooooonnmiil..
+  ..lkjmpnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnmmnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnmiil..
+  ..lkjmppppppnppppppppppooooooonooooooooooooonnnmmnnppppnoooooooooooooooooonooooooooooooonnmiil..
+  ..lkjmppppppnpppppppppoooooooonooooooooooooonnnmmnnppppnooooooooooooooooodnooooooooooooonnmiil..
+  ..lkjmppppppnppppppppooodooooonoodooooodoooonnnmmnnpppodooooooodooodooooddnooooooooooooonnmiil..
+  ..lkjmpppdpdnppdpdpdododoooodododooodododooonnnmmnnpdodnoodododododoooeododooododododoeonnmiil..
+  ..lkjmppdddpnpdpdpdddddoooododndooodododoooonnnmmnndddonododddodddoooeeeodnoododododoeeennmiil..
+  ..lkjmppppppnpppppoooooooooooonooooooooooooonnnmmnnoooonooooooooooodooeooonoooooooooooeonnmiil..
+  ..lkjmppppppnppppooooooooooooonooooooooooooonnnmmnnoooonoooooooododoooeooonoooooooooooeonnmiil..
+  ..lkjmppppppdpppdooooooooooooonooooodooooooonnnmmnnoodonooooooodoooooofeoonoooooooooooeonnmiil..
+  ..lkjmpppdpdnppdodododooodododnoododododoooonnnmmnnoeodnoodododeooododfeodndoooedododoeonnmiil..
+  ..lkjmoododonododddodooodddodonodddddodooooonnnmmnneeeonododddeeeododofedoddooeeedododeonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnoeoonoooooooeoooooofeoonooooeooooooeonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnoeoonooooooofeooooofeoonooooeodooooeonnmiil..
+  ..lkjmoooooonoooooooooooododoonooooodooooooonnnmmnnofeonooooooofedoooofedonoooofdooooeoodnmiil..
+  ..lkjmooododnoodododoooododooondododododoooonnnmmnnofednoodododfeoooodeeodnoodofedoooeodnnmiil..
+  ..lkjmoodddonodododooooddddooodododododooooonnnmmnndfeonodododofeooodegeeonodddfeooodedonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnofeonooooooofeoooooeeoonoooofeoooeooonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnofeonooooooofeooooooooonoooofeoooeooonnmiil..
+  ..lkjmoooooonooooooooooooooooododoooooodoooonnnmmnnofeonoooooooeeooooododonoooofeooofeoonnmiil..
+  ..lkjmooododnoodododooododododndoooodododooonnnmmnnoeednoododoegeeooodododndooofedofedodnnmiil..
+  ..lkjmoododonodododooodododododdooodododoooonnnmmnnegeenodododoeeooododododooodfeodfeodonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnoeeonoooooooooooooooooonooooeeoofeooonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnoooonoooooooooooooooooonoooegeeofeooonnmiil..
+  ..lkjmoooooonooooooooooooooooonoooooodoooooonnnmmnnoooonodddoooooooooooooonooooeeoofeooonnmiil..
+  ..lkjmooododnoodododododoooodododododooooooonnnmmnnodoonoodooooooooooooooonoooooooofeooonnmiil..
+  ..lkjmoododonododddddoddooododddddodoooooooonnnmmnndddonoodoododooddododoonoooooooofeooonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnodoonoodoodododododdooonoooooooofeooonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnodoonoodoodododododoooonoooooooofeooonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooodooonnnmmnnodoonodddoodoooddodoooonoooooooofeooonnmiil..
+  ..lkjmooododnoododododooodododnoododododoooonnnmmnnoooonoooooooooooooooooonoooooooofeooonnmiil..
+  ..lkjmoododonodododddooodododonododododooooonnnmmnnoooonooodoooooooooooooonoooooooofeooonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnoooonooodoooooooooooooonoooooooofeooonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnoooonooodoodooddoooddoodooddoooofeooonnmiil..
+  ..lkjmoooooonooodoooooooooooodnooooooooooooonnnmmnnoooonooododododododooodddododooofeooonnmiil..
+  ..lkjmooododnoodododoooodododonodododooooooonnnmmnnoooonododododododooododnoododooofeooonnmiil..
+  ..lkjmoodddonodododoooodododoondddodoooooooonnnmmnnoooonoodooodoodododdoooddododooofeooonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnoooonoooooooooooooooooonooooooofeoooonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnoooonoooooooooooooooooonooooooofeoooonnmiil..
+  ..lkjmoooooonooooooooooooooodonooooooodooooonnnmmnnoooonoodoodooddoooddooonooooooofeoooonnmiil..
+  ..lkjmooododnoodododododooododndodooodododoonnnmmnnoooonoddododooododooooonooooooofeoooonnmiil..
+  ..lkjmoododonododddododooodododddooodododooonnnmmnnoooonoodoodooodooddoooonooooooofeoooonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnoooonoododododooododooonooooooofeoooonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnoooonoodoodoodddoodoooonooooooofeoooonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnoooonoooooooooooooooooonooooooofeoooonnmiil..
+  ..lkjmoooooonooooooooooooooooonooooooooooooonnnmmnnoooonoooooooooooooooooonooooooofeoooonnmiil..
+  ..lkjmoooooooooooooooooooooooooooooooooooooonnnmmnnooooooooooooooooooooooooooooooofeoooonnmiil..
+  ..lkjmoooooooooooooooooooooooooooooooooooooonnnmmnnoooooooooooooooooooooooeeefeeeeeeoooonnmiil..
+  ..lkjmnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnjjjjnnnnnnnnnnnnnnnnnnnnnfffffffffffffeennnnmiil..
+  ..lkjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmjjjjmmmmmmmmmmmmmmmmmmmfghhggggfffffffffeemmmiil..
+  ..lkjmnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnjjjjnnnnnnnnnnnnnnnnnnfggggggggffffffffffeenmiil..
+  ..lkjjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmjjjjmmmmmmmmmmmmmmmmmffggggggggfffffffffffeejiil..
+  ..liiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiifffffggbcbfffbcbfffffeeiiil..
+  ..liiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiefffffffbcbfffbcbfffffeeeiil..
+  ...lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllleffffffacafffacaffffeeelll...
+  ............................................................leeeeeleefffffffffffffffffeeeel.....
+  ...........................................................leeeeeeeleeefffffcccccfffeeeeel......
+  ............................................................leeeeel.leeeeeeeefeeeeeeeeeel.......
+  .............................................................lllll...lleddddddddddddddll........
+  .......................................................................llleeeeeeeeelll..........
+  ..........................................................................lllllllll.............

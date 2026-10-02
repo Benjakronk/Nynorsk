@@ -475,6 +475,37 @@ same måte, uansett kven som tek over.
 - **Står att:** Ein eigen sitjepose på golvet (med beina i kross) og ein liggjande pose sett
   ovanfrå i senga. Posar i kampscena er ikkje i bruk.
 
+## Runde 17: nærbilete av skiftebrevet og kyrkjeboka
+
+- **Oppdrag:** To nærbilete (96 x 72, vist tre gonger så stort med `Motor.naerbilete`) til
+  augneblinkane der blekket kjem ut: det danske skiftebrevet etter far (sorenskrivaren i Ørsta,
+  1826) og kyrkjeboka i arkivet, med namnet til far.
+- **Gjort:**
+  - Nytt skript `naerbilete.py` (kjelda, skriv `kjelder/naer-<namn>.pix`), ny type `naer` i
+    `pix.py` (maks 40 fargar, samanhengsbilete på den mørke, fiolette glorien frå scena).
+  - `skiftebrev`: gulna papir bretta i tre, med lys oppe til venstre og eit bretta hjørne,
+    overskrifta «Skifte-Brev» i gotisk kanselliskrift, skråskrift av minimar, underskrift
+    med krusedull og raudt lakksegl med band. Blekket smeltar ut av bokstavane, renn ned i
+    buktande straumar (nokre endar i ein dråpe) og samlar seg under kanten til ein dråpe med
+    gule auge, i same fargar som blekkdropen og Blekklatten.
+  - `kyrkjebok-blekk` og `kyrkjebok`: oppslått kyrkjebok i skinnband, linjal med kolonnar,
+    postar i skråskrift, og nedst på høgresida «† Ivar Jonsen 1826» med liten, lesbar skrift.
+    Med blekk renn postane ut og ned i ein dråpe ved bladkanten. Etter kampen er postane over
+    namnet bleikna (blekket har rent ut av dei), namnet står att, og ved sida av står ei
+    fin, lilla line (glansfargen til blekket): «Det som er skrive, står.»
+  - Brukt i scenene: skiftebrevet etter ristinga, før blekkdropen kjem inn på tunet. I
+    arkivet kjem nærbiletet med blekk før dråpen, og det reine før Ivar les namnet. Dei to
+    forteljarlinene om boka står att etter bileta (testane i sjekk-scene.html les dei).
+    Forhåndslasta i `alleBilete` (`NAERBILETE` i pikslar.js).
+- **Rundar:** 1) straumane var rette, tynne strekar og skrifta tunge klossar som lika arabisk
+  skrift; namnet gjekk ut over sida. 2) Skråskrift, buktande straumar med dråpe, namnet på to
+  liner. 3) Kjelda til straumane vart ein tverrstrek som såg ut som nagler og kors (uheldig i
+  ei kyrkjebok); no er det berre ein liten våt klatt på grunnlina. Krona i seglet såg ut som
+  eit hus og vart ei stjerne.
+- **Vurdert i spelet:** Begge les godt midt på skjermen over teksten. Namnet og årstalet er
+  lesbare, den fine lilla skrifta er berre ein antydning.
+- **Står att:** Ein animert variant (blekket som renn) og nærbilete til andre scener.
+
 ## Runde 18: knele og sitje som syner
 
 - **Frå brukaren:** Ein som ser figuren i spelet, skal straks sjå om han står, kneler eller sit,
