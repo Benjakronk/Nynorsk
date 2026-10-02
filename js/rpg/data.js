@@ -334,7 +334,7 @@ window.RPGData = (function () {
        mjølsekker og flatbrød i stablar. Ingen eldstad: dagslyset kjem gjennom døra og glugga. */
     "asen-stabbur": {
       namn: "Stabburet på Åsen", stemning: "stabbur", golv: "O", inne: true, bakgrunn: "inne",
-      bygg: [{ id: "inne-glugge", x: 4, y: 0, h: 1 }, { id: "inne-spekemat", x: 5, y: 0, h: 1 },
+      bygg: [{ id: "inne-takbjelke", x: 0, y: 0, h: 1 }, { id: "inne-glugge", x: 4, y: 0, h: 1 }, { id: "inne-spekemat", x: 5, y: 0, h: 2 },
         { id: "inne-kornbinge", x: 1, y: 1, h: 1 }, { id: "inne-stige", x: 8, y: 1, h: 1 },
         { id: "inne-tonne", x: 1, y: 3, h: 1 }, { id: "inne-kagge", x: 2, y: 3, h: 1 },
         { id: "inne-flatbrodstabel", x: 7, y: 3, h: 1 }, { id: "inne-sekker", x: 8, y: 5, h: 1 }],

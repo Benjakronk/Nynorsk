@@ -966,3 +966,10 @@ same måte, uansett kven som tek over.
 - **Står att:** Spekematen og stigeluka heng over bakveggen i mørkret (taket), utan eigen takbjelke.
   Loftet er berre pynt. Rosemålinga på loket til skrinet er knapt synleg i 1:1. Ivar ser fram (ikkje
   mot kista) i kjensla «tenkje».
+
+### Tillegg til runde 28: takbjelke i stabburet
+
+- Spekematen og stigeluka hang i mørket over bakveggen. Ny `inne-takbjelke` (10 fliser, rad 0):
+  ein rund stokk tvers over rommet øvst på bakveggen, med mørke takplankar bak.
+- `inne-spekemat` er no 2 fliser høg og heng i hyssingar frå bjelken, ned i rommet.
+- Luka i `inne-stige` er flytt ned, så ho er skoren inn i taket ved bjelken.

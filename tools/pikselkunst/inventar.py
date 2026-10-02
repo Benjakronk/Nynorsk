@@ -629,22 +629,21 @@ def _polse(L, x, y0, lengd, boge):
 
 
 def spekemat():
-    """Ei stong under taket langs veggen med spekemat: to fenalår, pølser i boge og eit band med
-    tørka urter. Heng på veggen (står i rad 0), 3 fliser breitt."""
-    W, H = 3 * 16 + 8, 30
+    """Spekemat som heng i hyssingar frå takbjelken: to fenalår, pølser i boge og eit band med
+    tørka urter. 3 fliser breitt og 2 høgt (står med botnen i rad 1, bjelken ligg øvst i rad 0),
+    så maten heng ned i rommet og ikkje i lufta over veggen."""
+    W, H = 3 * 16 + 8, 46
     L = Lerret(W, H)
-    for x in range(1, W - 1): L.p(x, 2, "C"); L.p(x, 3, "c"); L.p(x, 4, "A")         # stonga
-    for kx in (4, W - 6):                                                            # knaggar i veggen
-        for y in range(0, 7): L.p(kx, y, "c"); L.p(kx + 1, y, "A")
-    for (x, y0) in ((12, 5), (21, 5), (30, 5), (41, 5)):                              # hyssingar
-        for y in range(y0, y0 + 3): L.p(x, y, "p")
-    _skinke(L, 12, 8, 24)
-    _polse(L, 20, 8, 12, 2); _polse(L, 23, 7, 10, -1)
-    _polse(L, 29, 8, 14, 1)
-    _skinke(L, 41, 8, 22)
-    for (x, y) in ((33, 5), (34, 5)):                                                # eit band med urter
-        for k in range(10): L.p(x + (k % 3 == 0), y + k, "i" if x == 33 else "e")
-    L.p(33, 15, "I"); L.p(35, 14, "e")
+    for (x, y0) in ((12, 16), (21, 16), (24, 16), (30, 16), (41, 16)):               # hyssingar frå bjelken
+        for y in range(y0, y0 + 5): L.p(x, y, "p")
+        L.p(x, y0, "P")                                                               # knuten rundt bjelken
+    _skinke(L, 12, 21, 37)
+    _polse(L, 20, 21, 12, 2); _polse(L, 23, 20, 10, -1)
+    _polse(L, 29, 21, 14, 1)
+    _skinke(L, 41, 21, 35)
+    for (x, y) in ((33, 17), (34, 17)):                                              # eit band med urter
+        for k in range(11): L.p(x + (k % 3 == 0), y + k, "i" if x == 33 else "e")
+    L.p(33, 28, "I"); L.p(35, 27, "e")
     omriss(L)
     return L
 
@@ -654,20 +653,38 @@ def stige():
     Står mot bakveggen, 1 flis breitt, og går ut over veggen og taket."""
     W, H = 16 + 8, 54
     L = Lerret(W, H)
-    # luka: kanten av loftsgolvet (plankar sett nedanfrå) med mørkt rom over
-    for y in range(0, 9):
+    # luka: skoren inn i taket ved takbjelken (bjelken ligg 20 til 26 pikslar ned i biletet), med
+    # kanten av loftsgolvet (plankar sett nedanfrå) rundt og mørkt rom over
+    for y in range(12, 21):
         for x in range(2, W - 2): L.p(x, y, "N")
-    for x in range(0, W): L.p(x, 9, "c"); L.p(x, 10, "A"); L.p(x, 11, "a")
+    for x in range(0, W): L.p(x, 21, "c"); L.p(x, 22, "A"); L.p(x, 23, "a")
     for x in (0, 1, W - 2, W - 1):
-        for y in range(0, 9): L.p(x, y, "A" if x < 2 else "a")
-    for (x, y) in ((5, 6), (6, 6), (7, 5), (8, 5), (9, 6)): L.p(x, y, "P")           # ein sekk oppe på loftet
-    L.p(6, 5, "p"); L.p(7, 4, "p")
+        for y in range(12, 21): L.p(x, y, "A" if x < 2 else "a")
+    for x in range(0, W): L.p(x, 12, "C")                                            # kanten på luka mot taket
+    for (x, y) in ((5, 18), (6, 18), (7, 17), (8, 17), (9, 18)): L.p(x, y, "P")      # ein sekk oppe på loftet
+    L.p(6, 17, "p"); L.p(7, 16, "p")
     # vangane og trinna
-    for y in range(3, H - 1):
+    for y in range(15, H - 1):
         L.p(6, y, "C"); L.p(7, y, "c"); L.p(16, y, "c"); L.p(17, y, "A")
-    for ty in range(7, H - 3, 6):
+    for ty in range(19, H - 3, 6):
         for x in range(8, 16): L.p(x, ty, "q" if x < 12 else "C"); L.p(x, ty + 1, "A")
     for x in (6, 7, 16, 17): L.p(x, H - 1, "a")
+    omriss(L)
+    return L
+
+
+def takbjelke():
+    """Takbjelke tvers over stabburet øvst på bakveggen, med taket (mørke plankar sett nedanfrå)
+    bak. Spekematen heng i han, og luka til loftet er skoren inn ved han. 10 fliser breitt (heile
+    rommet med veggane), står i rad 0 og går 12 pikslar opp over veggen."""
+    W, H = 10 * 16 + 8, 16 + 12
+    L = Lerret(W, H)
+    for y in range(0, 10):                                                           # taket: mørke plankar
+        for x in range(4, W - 4): L.p(x, y, "a" if (x - 4) % 12 == 0 else "N")
+    for x in range(4, W - 4):                                                        # bjelken: rund stokk
+        L.p(x, 10, "C"); L.p(x, 11, "c"); L.p(x, 12, "c"); L.p(x, 13, "c"); L.p(x, 14, "A"); L.p(x, 15, "A"); L.p(x, 16, "a")
+        if (x * 7) % 23 == 0: L.p(x, 12, "A"); L.p(x + 1, 13, "A")                  # kvistar
+        if (x * 5) % 31 == 0: L.p(x, 11, "q")
     omriss(L)
     return L
 
@@ -1008,7 +1025,7 @@ INVENTAR = {
     "kubbestol-ned": lambda: kubbestol("ned"), "kubbestol-opp": lambda: kubbestol("opp"),
     "kubbestol-venstre": lambda: kubbestol("venstre"), "kubbestol-hogre": lambda: kubbestol("hogre"),
     "kornbinge": kornbinge, "tonne": tonne, "kagge": kagge, "flatbrodstabel": flatbrodstabel, "spekemat": spekemat,
-    "stige": stige, "glugge": glugge, "sekker": sekker, "skrin": skrin,
+    "stige": stige, "glugge": glugge, "takbjelke": takbjelke, "sekker": sekker, "skrin": skrin,
     "rokk": rokk, "altartavle": altartavle, "altarring": altarring, "preikestol": preikestol, "lysekrone": lysekrone}
 
 
