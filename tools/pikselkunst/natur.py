@@ -1,4 +1,4 @@
-"""Naturelement som heile figurar: gran, bjørk, stein og gravhaug.
+"""Naturelement som heile figurar: gran, furu, bjørk, stein og gravhaug.
 
 Teknikken er henta frå The Minish Cap (store kroner bygde av runde lauvklumpar
 med lys kant oppe til venstre, steinar med tydelege flater og sprekker),
@@ -27,6 +27,12 @@ PAL = [
     ("A", "#26242e", "stein djup"), ("B", "#44424e", "stein skugge"), ("C", "#666472", "stein"), ("D", "#8c8a96", "stein lys"), ("E", "#b4b2bc", "stein glans"),
     ("m", "#4a6a2a", "mose skugge"), ("n", "#6e9038", "mose"), ("p", "#98b44c", "mose lys"), ("l", "#c8b050", "lav"),
     ("q", "#16301f", "villgras djup"), ("r", "#1d3f28", "villgras skugge"), ("s", "#285632", "villgras"), ("u", "#3a7236", "villgras lys"), ("v", "#548f42", "villgras glans"),
+    ("N", "#08141a", "gran djupast"),
+    ("d", "#2a1410", "furu stamme djup"), ("e", "#6a2e1c", "furu stamme"), ("f", "#a8502c", "furu flass"), ("i", "#d8884a", "furu flass lys"),
+    ("k", "#64544a", "furu bork"), ("j", "#948070", "furu bork lys"),
+    ("w", "#14281e", "furu nål djup"), ("x", "#264630", "furu nål skugge"), ("y", "#3e6a3a", "furu nål"), ("z", "#6c9450", "furu nål lys"),
+    ("K", "#3c3634", "tørrgran skugge"), ("L", "#6e645c", "tørrgran"), ("M", "#9c9288", "tørrgran lys"),
+    ("P", "#a4ac88", "skjegglav"), ("R", "#6c7660", "skjegglav skugge"), ("Q", "#7a4a2a", "brune nåler"), ("S", "#4a2c1c", "brune nåler skugge"),
     ("g", "#35683a", "gras skugge"), ("G", "#4a8a3f", "gras"), ("H", "#68a84a", "gras lys"), ("J", "#92c65e", "gras glans"),
 ]
 
@@ -62,40 +68,6 @@ def klump(L, cx, cy, r, tonar, fro):
         if v > -0.6: return mork
         return djup
     L.disk(cx, cy, r, f)
-
-
-def gran(v):
-    W, H = 22, 40
-    L = Lerret(W, H)
-    cx = 11 + (v - 1) * 0.5
-    # stamme
-    for y in range(33, 39):
-        for x in range(int(cx) - 1, int(cx) + 2): L.p(x, y, "c" if x < cx else "b")
-    L.p(int(cx) + 1, 38, "a")
-    # greinlag ovanfrå og ned: kvart lag breiare, med sagtakka underkant
-    lag = [(2, 2.5), (6, 4), (10, 5.5), (14, 6.8), (19, 8.2), (24, 9.5), (29, 10.6)]
-    if v == 2: lag = [(y + 5, r * 0.92) for (y, r) in lag[1:]]
-    if v == 3: lag = [(y + 3, r * 1.02) for (y, r) in lag[:1]] + [(y + 1, r) for (y, r) in lag[1:]]
-    for i, (y0, r) in enumerate(lag):
-        hoyd = 7 if i else 5
-        for y in range(y0, y0 + hoyd):
-            t = (y - y0) / hoyd
-            b = r * (0.35 + 0.65 * t)
-            for x in range(W):
-                dx = x + .5 - cx
-                if abs(dx) > b: continue
-                side = dx / max(1, b)
-                c = "3" if side < -0.35 else "2" if side < 0.35 else "1"
-                if t < 0.25: c = {"3": "4", "2": "3", "1": "2"}[c]
-                if t > 0.8: c = {"4": "3", "3": "2", "2": "1", "1": "0"}[c]
-                L.p(x, y, c)
-        # sagtakk: greinspissar som heng ned under laget
-        for x in range(int(cx - r), int(cx + r) + 1, 2):
-            if h(x, i, v) > 0.35: L.p(x, y0 + hoyd, "1" if x > cx else "2")
-        L.p(int(cx - r * 0.55), y0 + 2, "4"); L.p(int(cx - r * 0.3), y0 + 1, "4")
-    L.p(int(cx), lag[0][0] - 2, "3"); L.p(int(cx), lag[0][0] - 1, "4")
-    omriss(L)
-    return L
 
 
 def bjork(v):
@@ -247,28 +219,6 @@ def bjork_dobbel():
     return L
 
 
-def gran_ung():
-    """Ung gran: smal og låg, tre greinlag."""
-    W, H = 16, 28
-    L = Lerret(W, H)
-    cx = 8
-    for y in range(23, 27): L.p(cx - 1, y, "c"); L.p(cx, y, "b")
-    for i, (y0, r) in enumerate([(3, 2.5), (8, 4), (13, 5.5), (18, 6.8)]):
-        for y in range(y0, y0 + 6):
-            t = (y - y0) / 6; b = r * (0.35 + 0.65 * t)
-            for x in range(W):
-                dx = x + .5 - cx
-                if abs(dx) > b: continue
-                c = "3" if dx / max(1, b) < -0.35 else "2" if dx / max(1, b) < 0.35 else "1"
-                if t < 0.25: c = {"3": "4", "2": "3", "1": "2"}[c]
-                L.p(x, y, c)
-        for x in range(int(cx - r), int(cx + r) + 1, 2):
-            if h(x, i, 9) > 0.35: L.p(x, y0 + 6, "1" if x > cx else "2")
-    L.p(cx, 1, "3"); L.p(cx, 2, "4")
-    omriss(L)
-    return L
-
-
 def heller():
     """Flat berghelle som stikk opp av graset, med lav."""
     W, H = 22, 12
@@ -327,8 +277,252 @@ def einer():
     return L
 
 
+# ---------------------------------------------------------------- gran og furu (runde 34)
+# Granene er bygde av greinlag som heng ned som paraplyar: lys overside mot venstre, mørk
+# underside, greinspissar som heng ned i sagtakk, og lyse nålestrøk som fortel kvar greinene
+# går. Gamle graner har fleire lag som heng meir, unge er låge og tette. Same funksjon gir
+# dei mørke granene innst i skogkanten (tone=-1) og dei lyse framme (tone=1).
+
+def _tone(c, steg):
+    """Flytt ein grantone opp eller ned i skalaen (0 djup til 4 glans, N under 0)."""
+    skala = "N01234"
+    i = max(0, min(len(skala) - 1, skala.index(c) + steg))
+    return skala[i]
+
+
+def granfigur(W, H, hogd, r, nlag, heng=1.0, fro=1, tone=0, skeiv=0.0, stamme=4, glis=0.0, smal=1.0):
+    """Ei gran på eit lerret W x H. Bakken er rad H-2, toppen hogd pikslar over.
+    r: halve breidda nedst, nlag: talet på greinlag, heng: kor mykje greinene heng,
+    skeiv: kor mange pikslar toppen lener seg (positiv mot høgre), stamme: synleg stamme,
+    glis: del av greinlaga som manglar bitar (gamle, vêrbitne graner), smal: smalare topp."""
+    L = Lerret(W, H)
+    botn = H - 2
+    topp = botn - hogd
+    kb = botn - stamme                                    # nedste kanten av krona
+    cx0 = W / 2
+
+    def midt(y):                                          # stammen kan lene seg litt mot toppen
+        t = (kb - y) / max(1, kb - topp)
+        return cx0 + skeiv * t * t
+
+    # stamme med rotfot
+    for y in range(kb - 6, botn + 1):
+        x = midt(y)
+        for dx, c in ((-1, "c"), (0, "b"), (1, "a")):
+            L.p(int(x) + dx, y, c)
+    L.p(int(cx0) - 2, botn, "b"); L.p(int(cx0) + 2, botn, "a")
+    # greinlaga: startrad for kvart lag, tettare mot toppen
+    start = [topp + (kb - topp) * ((i / nlag) ** 1.1) for i in range(nlag)]
+    lag = []
+    for i, y0 in enumerate(start):
+        y1 = (start[i + 1] if i + 1 < nlag else kb) + 2 + (1 if i > nlag // 2 else 0)
+        rb = r * (((y1 - topp) / (kb - topp)) ** (0.95 * smal)) * (0.9 + 0.2 * h(i, fro, 1))
+        lag.append((y0, y1, rb, i))
+    SKALA = "01234"
+    def lysne(c, n): return SKALA[max(0, min(4, SKALA.index(c) + n))]
+    # Kvart lag er eit skjørt: smalt oppe under laget over, breitt nedst, med ytste greinene som
+    # heng ned. Teikna nedanfrå og opp, så skjørtet over heng over toppen av laget under.
+    for (y0, y1, rb, i) in reversed(lag):
+        T = max(2.0, y1 - y0)
+        dropn = heng * (1 + rb / 8)
+        cxy = midt(y0)
+        for side in (-1, 1):
+            # ujamne lag: kvar side har si eiga lengd, og gamle graner har nokre korte greiner
+            rs = rb * (0.86 + 0.28 * h(i, side + 5, fro))
+            if glis and h(i, side, fro + 11) < glis: rs *= 0.7
+            for y in range(int(y0), int(y1 + dropn) + 2):
+                v = max(0.0, (y - y0) / T)
+                for x in range(W):
+                    dx = x + .5 - cxy
+                    if dx * side < 0 and abs(dx) > 0.6: continue
+                    a = abs(dx) / max(1, rs)
+                    if a > 1 or a > 0.22 + 0.78 * (v ** 1.3): continue
+                    yb = y1 + dropn * (a ** 1.5)                    # undersida bøyer ned mot spissane
+                    if y > yb: continue
+                    d = yb - y - (0.9 if (x + i) % 3 == 0 else 0)     # ujamne grenser mellom tonane
+                    s_ = dx / max(1, rs)
+                    if d < 1: c = "1" if s_ < -0.3 else "0"
+                    elif d < 2.2: c = "2" if s_ < -0.25 else "1"
+                    else: c = "4" if (s_ < -0.5 and d > 3) else "3" if s_ < -0.1 else "2" if s_ < 0.45 else "1"
+                    L.p(x, y, c)
+        # nålestrøk: små lyse tustar langs oversida på venstre side
+        for k in range(2, int(rb) - 1, 3):
+            if h(k, i, fro + 13) < 0.5: continue
+            a = k / max(1, rb)
+            x = int(cxy - k)
+            yb = y1 + dropn * (a ** 1.5)
+            y = int(yb - 3)
+            if L.get(x, y) in "23": L.p(x, y, "4"); L.p(x - 1, y + 1, "3")
+        # spissane nedst heng som små dråpar i sagtakk, over laget under eller ut i lufta
+        for k in range(int(-rb) + 1, int(rb)):
+            if abs(k) < 1.5 or (k + i) % 2 or h(k, i, fro + 3) < 0.3: continue
+            a = abs(k) / max(1, rb)
+            x = int(cxy + k)
+            yb = int(y1 + dropn * (a ** 1.5))
+            if L.get(x, yb) not in "01234": continue
+            lang = 2 if h(k, i, fro + 4) > 0.7 and a > 0.4 else 1
+            for j in range(1, lang + 1): L.p(x, yb + j, "0" if k > 0 or j > 1 else "1")
+    # toppskotet
+    tx = int(midt(topp))
+    L.p(tx, topp - 1, "4"); L.p(tx, topp, "3")
+    if tone:
+        for y in range(H):
+            for x in range(W):
+                c = L.g[y][x]
+                if c in "01234": L.g[y][x] = _tone(c, tone)
+    omriss(L)
+    return L
+
+
+def torrgran(fro=1):
+    """Tørrgran: grå, naken stamme med tynne greinstumpar som heng ned, litt raudbrune nåler
+    att øvst og skjegglav som heng. Kvistane blir teikna etter omrisset, så dei blir tynne."""
+    W, H = 22, 46
+    L = Lerret(W, H)
+    botn = H - 2; topp = 3; cx = 11
+    stamme = []
+    for y in range(topp, botn + 1):
+        x = cx + (1 if y < 12 and fro == 2 else 0)
+        stamme.append((x, y))
+        if y < topp + 4: L.p(x, y, "L"); continue
+        L.p(x - 1, y, "M"); L.p(x, y, "L"); L.p(x + 1 if y > topp + 10 else x, y, "K")
+    L.p(cx - 2, botn, "L"); L.p(cx + 2, botn, "K")
+    # brune nåler att i toppen
+    for (x, y, c) in [(cx - 1, 6, "Q"), (cx + 1, 7, "S"), (cx - 2, 9, "Q"), (cx + 2, 10, "S"), (cx - 1, 10, "Q")]: L.p(x, y, c)
+    omriss(L)
+    kvist = []
+    for i, y in enumerate(range(topp + 5, botn - 6, 3)):
+        lengd = min(8, 2 + (y - topp) // 5) - (2 if h(i, fro, 2) > 0.65 else 0)
+        for side in (-1, 1):
+            if h(i, side, fro) < 0.2: continue
+            x0 = cx + side * 2
+            for k in range(lengd):
+                kvist.append((x0 + side * k, y + (k * k) // 10 + (1 if k > 2 else 0), "K"))
+            if lengd > 3 and h(i, side, fro + 4) > 0.5:          # skjegglav som heng under greina
+                x = x0 + side * (lengd - 2); yy = y + ((lengd - 2) ** 2) // 10 + 2
+                kvist += [(x, yy, "P"), (x, yy + 1, "P"), (x, yy + 2, "R"), (x - side, yy, "R")]
+    for (x, y, c) in kvist:
+        if L.get(x, y) == ".": L.p(x, y, c)
+    return L
+
+
+def furu(W, H, hogd, lean, kroner, fro=1, ung=False, gamal=False):
+    """Furu: høg, raudbrun stamme med flass, grå og sprukken nedst, og ei flat, ujamn krone
+    høgt oppe av flate nåleputer på greiner som går ut frå stammen.
+    kroner: liste med (dy frå toppen, dx frå stammen, rx, ry) for nåleputene."""
+    L = Lerret(W, H)
+    botn = H - 2; topp = botn - hogd; cx0 = W // 2 - int(lean * 0.5)
+
+    def midt(y):
+        t = (botn - y) / max(1, hogd)
+        return cx0 + lean * (t ** 1.4) + math.sin(t * 5 + fro) * 0.6
+
+    tjukk = 3 if gamal else 2
+    # greinene først (under putene)
+    for (dy, dx, rx, ry) in kroner:
+        y = topp + dy; sx = midt(y + ry + 2)
+        ex = sx + dx
+        steg = max(1, int(abs(dx)))
+        for k in range(steg + 1):
+            x = sx + dx * k / steg; yy = y + ry + 2 - (k / steg) * (ry + 1) * 0.8
+            L.p(int(x), int(yy), "e"); L.p(int(x), int(yy) + 1, "d")
+    # stammen
+    flassgrense = topp + (hogd * (0.6 if not ung else 0.8))
+    for y in range(topp + 2, botn + 1):
+        x = midt(y)
+        b = tjukk + (1 if y > botn - 3 else 0)
+        for k in range(b):
+            if y < flassgrense:                                   # raudt flass oppe
+                c = "i" if k == 0 else "f" if k < b - 1 else "e"
+                if k == 0 and h(int(x), y, fro) > 0.7: c = "f"
+            else:                                                 # grå, sprukken bork nedst
+                c = "j" if k == 0 else "k" if k < b - 1 else "d"
+                if (y + k * 2 + fro) % 5 == 0: c = "d"
+            L.p(int(x) - b // 2 + k, y, c)
+        if flassgrense - 4 < y < flassgrense and h(y, fro, 3) > 0.5: L.p(int(x) - b // 2, y, "f")
+    L.p(int(midt(botn)) - tjukk // 2 - 1, botn, "k"); L.p(int(midt(botn)) + tjukk - tjukk // 2, botn, "d")
+    # nåleputene: flate, ujamne, lys overside, mørk underside med tustar som heng
+    # dei nedste putene først, så dei øvste ligg oppå (ein ser krona litt ovanfrå)
+    for j, (dy, dx, rx, ry) in sorted(enumerate(kroner), key=lambda e: -e[1][0]):
+        y = topp + dy; x0 = midt(y + ry + 2) + dx
+        for yy in range(int(y - ry - 1), int(y + ry + 2)):
+            for xx in range(int(x0 - rx - 1), int(x0 + rx + 2)):
+                nx = (xx + .5 - x0) / rx; ny = (yy + .5 - y) / ry
+                # ujamn kant: tustar langs kanten
+                kant = 1 + 0.18 * math.sin(xx * 1.7 + j * 3 + fro) + 0.12 * math.sin(xx * 3.1 + fro)
+                if ny < 0: kant += 0.1 * math.sin(xx * 2.3 + j)
+                if nx * nx + ny * ny > kant: continue
+                v = -nx * 0.45 - ny * 0.9
+                c = "z" if v > 0.62 else "y" if v > 0.05 else "x" if v > -0.55 else "w"
+                L.p(xx, yy, c)
+        # tustar under puta som heng ned, og lyse tustar oppå
+        for k in range(int(-rx) + 1, int(rx), 2):
+            if h(k, j, fro + 2) < 0.45: continue
+            xx = int(x0 + k)
+            for yy in range(int(y + ry + 2), int(y - 1), -1):
+                if L.get(xx, yy) in "wxyz":
+                    L.p(xx, yy + 1, "w"); break
+        for k in range(int(-rx) + 2, int(rx) - 1, 3):
+            xx = int(x0 + k + h(k, j, fro) * 1.5)
+            for yy in range(int(y - ry - 2), int(y + 1)):
+                if L.get(xx, yy) in "xy": L.p(xx, yy, "z" if k < rx * 0.3 else "y"); L.p(xx + 1, yy + 1, "x"); break
+    omriss(L)
+    # nokre tørre kvistar på stammen under krona, tynne (etter omrisset)
+    for i in range(3 if not ung else 1):
+        y = int(flassgrense + 2 + i * 6)
+        if y >= botn - 4: break
+        side = 1 if h(i, fro, 6) > 0.5 else -1
+        x = int(midt(y)) + (tjukk if side > 0 else -2)
+        for k in range(3 + (i == 0)):
+            if L.get(x + side * k, y - k // 2) == ".": L.p(x + side * k, y - k // 2, "K")
+    return L
+
+
+def furu1():
+    """Gammal furu, skeiv mot høgre, med ei flat, ujamn krone i tre etasjar."""
+    return furu(32, 58, 54, 4, [(3, -1, 7, 2.6), (6, 6, 6, 2.4), (9, -6, 5.5, 2.4), (12, 2, 7, 2.8), (16, -4, 5, 2.2), (19, 6, 4.5, 2)], fro=1)
+
+
+def furu2():
+    """Furu som lener seg mot venstre, med ei brei, flat krone og ein lang grein mot høgre."""
+    return furu(34, 54, 50, -5, [(3, 1, 8, 2.8), (7, -6, 6, 2.6), (9, 8, 5.5, 2.2), (12, 0, 6.5, 2.6), (16, -7, 4.5, 2)], fro=2)
+
+
+def furu_ung():
+    """Ung furu: lågare, rett, rundare krone som går lenger ned på stammen."""
+    return furu(24, 38, 34, 1, [(3, 0, 5, 2.6), (7, -3, 5, 2.6), (8, 3, 5, 2.6), (12, 0, 6, 2.6), (16, -2, 5, 2.2), (17, 4, 3.5, 2)], fro=3, ung=True)
+
+
+def furu_gamal():
+    """Gammal, høg furu med tjukk stamme og ei vid, flat krone heilt oppe (som ei paraply)."""
+    return furu(38, 64, 60, 2, [(3, 0, 10, 3), (5, -9, 6, 2.4), (6, 9, 6.5, 2.4), (9, 2, 8, 2.6), (12, -6, 5, 2.2), (13, 8, 4.5, 2)], fro=4, gamal=True)
+
+
+def granar():
+    """Variantane av grana. Frittståande (kartteiknet i) og i skogkanten (#)."""
+    return {
+        # vanlege, middels store graner
+        "gran1": lambda: granfigur(24, 44, 40, 10.5, 8, heng=1.0, fro=1),
+        "gran2": lambda: granfigur(22, 40, 36, 9.5, 7, heng=0.8, fro=2, skeiv=0.8),
+        "gran3": lambda: granfigur(26, 46, 42, 11.5, 8, heng=1.2, fro=3, skeiv=-0.8),
+        # smal og høg (står tett i skogen)
+        "gran-smal": lambda: granfigur(18, 46, 42, 7.5, 9, heng=0.9, fro=4, smal=0.8),
+        # gammal, høg gran med lange, hengjande greiner og glisne lag
+        "gran-gamal": lambda: granfigur(30, 56, 52, 13.5, 10, heng=1.9, fro=5, glis=0.22, stamme=3),
+        # ung og liten
+        "gran-ung": lambda: granfigur(18, 30, 26, 7.5, 5, heng=0.5, fro=6, stamme=3),
+        "gran-liten": lambda: granfigur(14, 20, 16, 5, 4, heng=0.3, fro=7, stamme=2),
+        # mørke graner innst i skogen og lyse graner framme i kanten
+        "gran-mork1": lambda: granfigur(24, 44, 40, 10.5, 8, heng=1.0, fro=8, tone=-1),
+        "gran-mork2": lambda: granfigur(20, 46, 42, 8.5, 9, heng=1.0, fro=9, tone=-1, smal=0.85),
+        "gran-lys": lambda: granfigur(22, 40, 36, 9.5, 7, heng=0.9, fro=10, tone=1),
+        "torrgran": lambda: torrgran(1),
+    }
+
+
 NATUR = {
-    "gran1": lambda: gran(1), "gran2": lambda: gran(2), "gran3": lambda: gran(3), "gran-ung": gran_ung,
+    **{k: v for k, v in granar().items()},
+    "furu1": furu1, "furu2": furu2, "furu-ung": furu_ung, "furu-gamal": furu_gamal,
     "bjork1": lambda: bjork(1), "bjork2": lambda: bjork(2), "bjork3": lambda: bjork(3),
     "bjork-ung": bjork_ung, "bjork-dobbel": bjork_dobbel,
     "stein1": lambda: stein(1), "stein2": lambda: stein(2), "stein3": lambda: stein(3),

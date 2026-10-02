@@ -633,6 +633,25 @@ window.Motor = (function () {
     if ((kart.fliser[y - 1] || [])[x] === "Q") return true;           // under enden av ei brygge
     return [[0, -1], [0, 1], [-1, 0], [1, 0], [-1, -1], [1, -1], [-1, 1], [1, 1]].some(([dx, dy]) => (kart.fliser[y + dy] || [])[x + dx] === "~");
   }
+  /* Skogkanten («#»): kva sider som har open mark (bit 1 nord, 2 aust, 4 sør, 8 vest). opne er all
+     bakke (gras, sti, sand), gras berre gras, der trea kan stå ute og små tre kan stå framfor kanten,
+     og vatn sidene mot vatn (der går graset inn i skogbotnen, men trea står ikkje ut). */
+  function skogkant(x, y) {
+    const k = x + "," + y;
+    if (!kart.skogkant) kart.skogkant = {};
+    if (kart.skogkant[k]) return kart.skogkant[k];
+    let opne = 0, gras = 0, vatn = 0, ute = 0;
+    for (const [bit, dx, dy] of [[1, 0, -1], [2, 1, 0], [4, 0, 1], [8, -1, 0]]) {
+      const n = (kart.fliser[y + dy] || [])[x + dx];
+      if (n == null) ute |= bit;
+      if (n != null && erVatn(x + dx, y + dy)) { vatn |= bit; continue; }
+      if (n == null || n === "#") continue;
+      const kl = Pikslar.klasse(n);
+      if (kl === "gras" || kl === "villgras" || kl === "veg" || kl === "sand") opne |= bit;
+      if ((kl === "gras" || kl === "villgras") && !Pikslar.FAST.has(n)) gras |= bit;
+    }
+    return (kart.skogkant[k] = { opne, gras, vatn, ute });
+  }
   /* Vassfeltet til Pikslar.vatn: kva som er land (brua «Q» er vatn under), om vatnet er ein bekk
      med straum (kart.def.vatn.bekk) og kvar det er stryk (kart.def.vatn.stryk, «x,y»). */
   function vassfelt() {
@@ -1214,7 +1233,7 @@ window.Motor = (function () {
           let under = kart.def.golv;
           for (const [, dx, dy] of KANTSIDER) {
             const n = kart.fliser[y + dy] && kart.fliser[y + dy][x + dx];
-            if (n && Pikslar.klasse(n) && Pikslar.klasse(n) !== "vatn") { under = n; break; }
+            if (n && Pikslar.klasse(n) && Pikslar.klasse(n) !== "vatn") { under = n === "#" ? kart.def.golv : n; break; }   // under skogkanten: graset, ikkje skogbotnen
           }
           if (under !== "~") g.drawImage(Pikslar.flis(under, no, x, y, kart.def.golv), sx, sy);
         }
@@ -1233,7 +1252,9 @@ window.Motor = (function () {
         g.drawImage(Pikslar.flis(".", no, x, y, kart.def.golv), sx, sy);
         g.drawImage(Pikslar.skrent(terrengfelt(), x, y), sx, sy);
       } else {
-        g.drawImage(Pikslar.flis(fk, no, x, y, kart.def.golv), sx, sy);
+        // Skogkanten («#»): skogbotn, med graset frå naboflisa som går ujamt inn (Pikslar.kantflis).
+        if (c === "#") g.drawImage(Pikslar.kantflis(kart.def.kant || "granskog", skogkant(x, y).opne | skogkant(x, y).vatn, x, y, kart.def.golv, no), sx, sy);
+        else g.drawImage(Pikslar.flis(fk, no, x, y, kart.def.golv), sx, sy);
         // Grasflis ved ein sti: stien kan flytte seg inn på graset, og frynsa ligg her.
         const sk = Pikslar.klasse(c);
         if ((sk === "gras" || sk === "villgras") && NABOBIT.some(([, dx, dy]) => Pikslar.klasse((kart.fliser[y + dy] || [])[x + dx]) === "veg")) {
@@ -1291,6 +1312,14 @@ window.Motor = (function () {
         if (nf.skugge) { g.fillStyle = "rgba(20,24,50,0.3)"; g.beginPath(); g.ellipse(sx + 9, sy + 14, nf.skugge, 2.5, 0, 0, Math.PI * 2); g.fill(); }
         naturFig.push({ y: y + 0.005, x, natur: nf });
       }
+      // Skogkanten: fleire tre per flis, ulikt langt ute mot open mark (sjå Pikslar.kantfigurar).
+      if (c === "#" && !erVatn(x, y)) {
+        const sk = skogkant(x, y);
+        for (const f of Pikslar.kantfigurar(kart.def.kant || "granskog", x, y, sk.opne, sk.gras, sk.ute)) {
+          if (f.skugge) { g.fillStyle = "rgba(20,24,50,0.3)"; g.beginPath(); g.ellipse(sx + 9 + f.sx, sy + 14 + f.sy, f.skugge, 2.5, 0, 0, Math.PI * 2); g.fill(); }
+          naturFig.push({ y: y + 0.005 + f.dz, rad: y, x, natur: f });
+        }
+      }
       if (c === "h" && kart.fliser[y][x - 1] !== "h" && (y === 0 || kart.fliser[y - 1][x] !== "h")) {
         const hb = Pikslar.haugBilete();
         if (hb) naturFig.push({ y: y + 1.004, x, haug: hb });
@@ -1325,7 +1354,7 @@ window.Motor = (function () {
     figurar.sort((a, b) => djupn(a) - djupn(b));
     for (const f of figurar) {
       if (f.mur) { const mx = Math.round((f.x + ox) * S), my = Math.round((Math.floor(f.y) + oy) * S) - (f.loft || 6); g.drawImage(f.mur, mx, my); maske(f.mur, mx, my, true); continue; }
-      if (f.natur) { const nx = Math.round((f.x + ox) * S) + f.natur.x, ny = Math.round((Math.floor(f.y) + oy) * S) + f.natur.y; g.drawImage(f.natur.img, nx, ny); maske(f.natur.img, nx, ny, true); continue; }
+      if (f.natur) { const nx = Math.round((f.x + ox) * S) + f.natur.x, ny = Math.round(((f.rad ?? Math.floor(f.y)) + oy) * S) + f.natur.y; g.drawImage(f.natur.img, nx, ny); maske(f.natur.img, nx, ny, true); continue; }
       if (f.haug) { const hx = Math.round((f.x + ox) * S) - 1, hy = Math.round((Math.floor(f.y) + 1 + oy) * S) - f.haug.height; g.drawImage(f.haug, hx, hy); maske(f.haug, hx, hy, true); continue; }
       if (f.over) { const ux = Math.round((f.x + ox) * S) - 4, uy = Math.round((f.by + 1 + oy) * S) - f.bygg.height; g.drawImage(f.bygg, ux, uy); maske(f.bygg, ux, uy, true); continue; }
       if (f.bygg) {

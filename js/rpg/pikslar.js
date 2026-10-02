@@ -398,19 +398,20 @@ window.Pikslar = (function () {
   const treCache = {};
   const treBilete = k => treCache[k] || (treCache[k] = TRE[k]());
 
-  const FAST = new Set(["+", "(", "u", "#", "t", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " ", "s", "M", "-", "N"]);
+  const FAST = new Set(["+", "(", "u", "#", "t", "i", "F", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " ", "s", "M", "-", "N"]);
   const ANIM = new Set(["~", "L", "T", "f", "n", "y"]);
   const VARIANT_EKSTRA = new Set(["Rt", "Rb", "Rtb"]);
-  const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "O", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t"]);
+  const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "O", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t", "i", "F"]);
   const cache = new Map();
   function flis(teikn, t = 0, x = 0, y = 0, golv = "P") {
     const v = VARIANT.has(teikn) || VARIANT_EKSTRA.has(teikn) ? Math.floor(hash(x, y, 7) * 4) : 0;
-    const gl = "LnKkzb.#toh+(=".includes(teikn) ? golv : "";
+    const gl = "LnKkzb.#tiFoh+(=".includes(teikn) ? golv : "";
     const nokkel = `${teikn}${gl}:${v}:${ANIM.has(teikn) ? Math.floor(t / 150) % 16 : 0}`;
     if (cache.has(nokkel)) return cache.get(nokkel);
     const c = lerret(S), g = c.getContext("2d");
     golvNo = golv;
-    if (TRE[teikn] || teikn === "o" || teikn === "h") { golvNo = golv; FLIS["."](g, t, v); }   // sjølve treet, steinen og haugen er figurar, sjå natur()
+    if (teikn === "#") skogbotn(g, v);                                     // skogkanten: botnen under trea, sjå kantflis()
+    else if (TRE[teikn] || NATURTYPE[teikn] || teikn === "h") { golvNo = golv; FLIS["."](g, t, v); }   // sjølve treet, steinen og haugen er figurar, sjå natur()
     else (FLIS[teikn] || FLIS[" "])(g, t, v);
     cache.set(nokkel, c);
     return c;
@@ -690,7 +691,7 @@ window.Pikslar = (function () {
   /* ---------- Kantar mellom fliser ----------
      Gras veks inn over sanda (stiane: sjå Pikslar.sti), og vatnet får strandkant med skum.
      Motoren teiknar kantane oppå flisa, på sidene der naboen er av eit anna slag. */
-  const KLASSE = { ".": "gras", ",": "villgras", '"': "gras", "o": "gras", "h": "gras", "x": "gras", "|": "gras", "j": "gras", "#": "gras", "t": "gras", "=": "veg", "/": "veg", "_": "sand", "~": "vatn" };
+  const KLASSE = { ".": "gras", ",": "villgras", '"': "gras", "o": "gras", "h": "gras", "x": "gras", "|": "gras", "j": "gras", "#": "gras", "t": "gras", "i": "gras", "F": "gras", "=": "veg", "/": "veg", "_": "sand", "~": "vatn" };
   const klasse = teikn => KLASSE[teikn] || null;
   /* Hjørne på ei sandstripe (stiane har kanten sin i Pikslar.sti), teikna med grasflisa til naboen (teikn), så tekstur og farge
      stemmer. hj: 0 nv, 1 na, 2 sa, 3 sv (kva hjørne). ytre: gras på dei to sidene som møtest
@@ -1445,8 +1446,10 @@ window.Pikslar = (function () {
      Gir { img, x, y } med plassering i pikslar relativt til flisa, eller null om det ikkje er noko å teikne.
      Til bileta er lasta, blir dei gamle, kodeteikna trea brukte. */
   // Variantar blir valde etter plassen. Vanlege former står fleire gonger, så dei kjem oftast.
+  // «#» er skogkanten (sjå KANTTYPE under), «i» ei frittståande gran og «F» ei furu.
   const NATURTYPE = {
-    "#": ["gran1", "gran2", "gran3", "gran1", "gran2", "gran-ung"],
+    "i": ["gran1", "gran2", "gran3", "gran1", "gran2", "gran-smal", "gran-gamal", "gran-ung", "gran-lys"],
+    "F": ["furu1", "furu2", "furu-ung", "furu-gamal", "furu1", "furu2"],
     "t": ["bjork1", "bjork2", "bjork3", "bjork1", "bjork-ung", "bjork-dobbel"],
     "o": ["stein1", "stein2", "stein3", "stein1", "heller", "roys", "einer", "einer", "bauta"],
   };
@@ -1456,7 +1459,7 @@ window.Pikslar = (function () {
     const namn = typar[Math.floor(hash(x, y, 19) * typar.length)];
     const img = lastBilete(`bilete/spel/natur/${namn}.png`);
     if (img) return { img, x: 8 - Math.floor(img.width / 2), y: 16 - img.height + (teikn === "o" ? 0 : 2), skugge: teikn === "o" ? 6 : 7 };
-    if (TRE[teikn]) return { img: treBilete(teikn), x: 0, y: -16 + 0, skugge: 6 };
+    if (TRE[teikn] || teikn === "i" || teikn === "F") return { img: treBilete(TRE[teikn] ? teikn : "#"), x: 0, y: -16 + 0, skugge: 6 };
     return { img: gamalStein(), x: 0, y: 0, skugge: 0 };
   }
   let gamalSteinC = null;
@@ -1467,6 +1470,103 @@ window.Pikslar = (function () {
     return gamalSteinC;
   }
   const haugBilete = () => lastBilete("bilete/spel/natur/haug.png");
+
+  /* ---------- Kartkantar ----------
+     Skogen langs kanten av kartet («#») er ugjennomtrengjeleg og blir teikna etter kanttypen til
+     kartet (kart.kant, standard «granskog»). Ein kanttype seier:
+       botn      fargane til bakken under trea (skogbotnen), sjå skogbotn()
+       framme    trea i den fremste rekkja (flisa har open mark ved sida av seg)
+       inne      dei mørke trea innst (flisa har berre skog rundt seg), og trea bak dei fremste
+       nede      trea i kanten nedst på kartet (open mark nord for flisa): her står trea framfor skogen,
+                 så høge stammer (furu, tørrgran) ville sett ut som stolpar
+       smaa      små tre som står eit stykke ute på bakken framfor kanten (nedst berre dei som òg er i nede)
+       sjanse    { bak, smaa }: kor ofte eit fremste tre har eit mørkt tre bak seg og eit lite framfor
+       forskyv   [min, maks]: kor mange pikslar dei fremste trea står ut mot open mark
+     Kanten blir ujamn av seg sjølv: trea står ulikt langt ute, nokre har eit lite tre framfor seg
+     og andre eit mørkt bak seg, og graset går ujamt inn i skogbotnen (kantflis). Ein ny kanttype
+     (til dømes «lauvskog» eller «berg») er ein ny post her med eigne bilete frå natur.py. */
+  const KANTTYPE = {
+    granskog: {
+      botn: { grunn: "#18261e", mork: "#101a16", lys: "#22342a", nal: "#3a2c1e", mose: "#2a4630" },
+      framme: ["gran1", "gran2", "gran3", "gran1", "gran2", "gran3", "gran-smal", "gran-smal", "gran-lys", "gran-lys", "gran-gamal", "gran-mork1",
+        "gran1", "gran2", "gran-smal", "gran-lys", "gran3", "gran-gamal", "gran2", "gran1", "furu1", "torrgran", "gran-mork1", "gran-smal"],
+      inne: ["gran-mork1", "gran-mork2", "gran-mork1", "gran-mork2", "gran-smal", "gran3"],
+      nede: ["gran1", "gran2", "gran3", "gran-smal", "gran-lys", "gran-gamal", "gran-mork1", "gran1", "gran2", "gran-smal", "gran-ung", "gran-liten"],
+      smaa: ["gran-ung", "gran-liten", "gran-ung", "furu-ung"],
+      sjanse: { bak: 0.55, smaa: 0.3 },
+      forskyv: [0, 7],
+    },
+  };
+  const kanttype = namn => KANTTYPE[namn] || KANTTYPE.granskog;
+  const naturBilete = namn => lastBilete(`bilete/spel/natur/${namn}.png`);
+  // Skogbotnen: mørk mose og barnåler i klyngjer, under og mellom trea.
+  let kantNo = "granskog";
+  function skogbotn(g, v) {
+    const b = kanttype(kantNo).botn;
+    px(g, 0, 0, b.grunn, S, S);
+    spreidd(v, 41, 5, (x, y) => { px(g, x, y, b.mork, 3, 2); px(g, x + 1, y + 2, b.mork); });
+    spreidd(v, 43, 4, (x, y) => { px(g, x, y, b.nal, 2, 1); px(g, x + 1, y + 1, b.nal); });
+    spreidd(v, 47, 3, (x, y) => { px(g, x, y, b.mose, 2, 1); px(g, x, y - 1, b.lys); });
+  }
+  /* Flisa under skogkanten: skogbotn, men der kanten har open mark ved sida av seg (opne: bit 1 nord,
+     2 aust, 4 sør, 8 vest), går graset frå naboflisa ujamt inn, så kanten ikkje følgjer rutenettet. */
+  function kantflis(type, opne, x, y, golv, t = 0) {
+    const v = Math.floor(hash(x, y, 7) * 4), k = `kant:${type}:${opne}:${golv}:${x},${y}`;
+    if (cache.has(k)) return cache.get(k);
+    kantNo = type;
+    const c = lerret(S), g = c.getContext("2d");
+    skogbotn(g, v);
+    if (opne) {
+      golvNo = golv;
+      const gr = lerret(S); FLIS["."](gr.getContext("2d"), t, v);
+      const gd = gr.getContext("2d").getImageData(0, 0, S, S).data, ut = g.getImageData(0, 0, S, S), d = ut.data;
+      // kor langt graset går inn frå ei open side, glatt langs kanten (held fram over flisgrensene)
+      const inn = (bit, p, q) => 3 + 4 * vstoy(p / 5, q * 13 + bit, 9) + 1.5 * hash(p, q + bit, 51);
+      for (let yy = 0; yy < S; yy++) for (let xx = 0; xx < S; xx++) {
+        const gx = x * S + xx, gy = y * S + yy;
+        const dist = Math.min(
+          opne & 1 ? yy - inn(1, gx, y) : 99, opne & 4 ? (S - 1 - yy) - inn(4, gx, y) : 99,
+          opne & 8 ? xx - inn(8, gy, x) : 99, opne & 2 ? (S - 1 - xx) - inn(2, gy, x) : 99);
+        if (!(dist < 0 || (dist < 1 && (xx + yy) % 2 === 0))) continue;
+        const i = (yy * S + xx) * 4;
+        d[i] = gd[i]; d[i + 1] = gd[i + 1]; d[i + 2] = gd[i + 2];
+      }
+      g.putImageData(ut, 0, 0);
+    }
+    cache.set(k, c);
+    return c;
+  }
+  /* Trea i ei kantflis: liste med { img, x, y, skugge, dz } (pikslar relativt til flisa, dz er tillegg
+     til djupna). opne som i kantflis, smaa: bitane der naboflisa er gras, så eit lite tre kan stå der,
+     ute: sidene der kartet sluttar (trea bak blir ikkje skuva ut over kanten av eit lite kart). */
+  function kantfigurar(type, x, y, opne, smaa = 0, ute = 0) {
+    const kt = kanttype(type), ut = [];
+    const vel = (liste, s) => liste[Math.floor(hash(x, y, s) * liste.length)];
+    const j = (s, a) => Math.round((hash(x, y, s) * 2 - 1) * a);
+    const legg = (namn, ox, oy, dz, skugge = 7) => {
+      const img = naturBilete(namn);
+      if (img) ut.push({ img, x: 8 - Math.floor(img.width / 2) + ox, y: 18 - img.height + oy, skugge, dz, sx: ox, sy: oy });
+    };
+    // retninga mot open mark (summen av dei opne sidene)
+    const rx = (opne & 2 ? 1 : 0) - (opne & 8 ? 1 : 0), ry = (opne & 4 ? 1 : 0) - (opne & 1 ? 1 : 0);
+    if (!opne) {
+      legg(vel(kt.inne, 61), j(62, 4), j(63, 3), 0, 0);
+    } else {
+      const [f0, f1] = kt.forskyv;
+      let ut1 = f0 + Math.floor(hash(x, y, 64) * (f1 - f0 + 1));
+      if (!(smaa & opne)) ut1 = Math.min(ut1, 2);                         // ikkje ut over stien
+      // eit mørkt tre bak, trekt tilbake frå kanten
+      if (hash(x, y, 65) < kt.sjanse.bak) legg(vel(kt.inne, 66), ((rx > 0 && ute & 8) || (rx < 0 && ute & 2) ? 0 : -rx * (6 + j(67, 2))) + (ry ? j(68, 7) : 0), (ry < 0 ? 0 : -ry * 5 - 5) + j(69, 2), -0.3, 0);
+      legg(vel(ry < 0 && kt.nede ? kt.nede : kt.framme, 70), rx * ut1 + (rx ? 0 : j(71, 4)), ry * Math.min(ut1, 4) + (ry ? 0 : j(72, 3)), 0);
+      // eit lite tre som står ute på graset framfor kanten
+      if ((smaa & opne) && hash(x, y, 73) < kt.sjanse.smaa) {
+        const sx = smaa & 2 ? 1 : smaa & 8 ? -1 : 0, sy = sx ? 0 : smaa & 4 ? 1 : smaa & 1 ? -1 : 0;
+        legg(vel(sy < 0 && kt.nede ? kt.smaa.filter(n => kt.nede.includes(n)) : kt.smaa, 74), sx * (10 + j(75, 2)) + (sx ? 0 : j(76, 5)), sy * 6 + (sy ? 0 : 1 + j(77, 2)), 0.002 + (sy > 0 ? 1 : 0), 5);
+      }
+    }
+    if (!ut.length) ut.push({ img: treBilete("#"), x: 0, y: -16, skugge: 6, dz: 0, sx: 0, sy: 0 });
+    return ut;
+  }
 
   /* Alle bileta spelet brukar, til forhandslast(). D er RPGData. */
   // Nærbilete i scenene (Motor.naerbilete), laga med tools/pikselkunst/naerbilete.py
@@ -1479,6 +1579,7 @@ window.Pikslar = (function () {
       if (k.bakgrunn) ut.push(`bilete/spel/kamp/${k.bakgrunn}.png`);
     }
     for (const namn of new Set(Object.values(NATURTYPE).flat())) ut.push(`bilete/spel/natur/${namn}.png`);
+    for (const kt of Object.values(KANTTYPE)) for (const namn of new Set([...kt.framme, ...kt.inne, ...kt.smaa, ...(kt.nede || [])])) ut.push(`bilete/spel/natur/${namn}.png`);
     ut.push("bilete/spel/natur/haug.png");
     for (const id of Object.keys(D.U)) ut.push(`bilete/spel/figurar/${id}.png`);
     for (const id of Object.values(D.PORTRETT || {})) ut.push(`bilete/spel/portrett/${id}.png`);
@@ -1572,6 +1673,6 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, nordkant, klasse, bygg, natur, haugBilete, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
+  return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, nordkant, klasse, bygg, natur, haugBilete, KANTTYPE, kantflis, kantfigurar, vatn, steingard, FAST, figur, fiende, lerret, ramp, blend, RAMP,
     hent, klar, forhandslast, alleBilete, ILD, SETE, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
 })();

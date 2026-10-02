@@ -1142,3 +1142,41 @@ same måte, uansett kven som tek over.
   går ned på den nedste flisa, og neset): rett under stupet ura og skogen, så dalen med teigar, vegen,
   kyrkja og elva langt nede, og skyer mellom.
 - **Står att:** Teigane er rette firkantar; dei kunne følgt terrenget og elva meir.
+
+## Runde 35: gran og furu, og ein ujamn granskogkant
+
+- **Oppdrag:** Brukaren: gran og furu som eigne objekt, meir detaljerte graner og fleire variantar i
+  skogkanten, og ein kant som ikkje er loddrett på venstre og høgre side. Seinare skal det kome fleire
+  kartkanttypar; i prototypen held granskog.
+- **Research:** Skogkantane i The Minish Cap (`tmc-south-hyrule-field.png`): trekronene overlappar kvarandre
+  og blir ein samanhengande masse med ujamn kant, og enkelttre står litt ute framfor. Gran og furu frå
+  `konsept/gran-keila.jpg` og `hertervig-skog.jpg`: grana med hengjande greinlag, furua med raudt flass
+  oppe, grå bork nedst og flat krone.
+- **Gjort:**
+  - `natur.py`: `granfigur()` byggjer grana av greinlag som skjørt (smalt oppe, breitt nedst), med
+    undersida som bøyer ned mot spissane, sagtakk, ujamne tonegrenser og lyse nålestrøk på venstre side.
+    Variantar: `gran1` til `gran3`, `gran-smal`, `gran-gamal` (høg, glisne lag som heng), `gran-ung`,
+    `gran-liten`, `gran-lys` (framme i kanten) og `gran-mork1`/`gran-mork2` (innst). `furu()` teiknar
+    furua: skeiv stamme, raudt flass oppe og grå, sprukken bork nedst, greiner ut til flate nåleputer
+    med tustar, og tynne tørre kvistar. Variantar: `furu1`, `furu2`, `furu-ung`, `furu-gamal`. `torrgran`:
+    grå, naken stamme med hengjande kvistar, brune nåler øvst og skjegglav.
+  - Nye kartteikn: `i` (frittståande gran) og `F` (furu), med variantar i `NATURTYPE`, faste og med gras
+    under. `#` er no berre skogkanten.
+  - Kartkantar: `kant: "granskog"` på kartet (standard), typane står i `KANTTYPE` i `pikslar.js`.
+    `skogkant()` i `motor.js` finn opne sider (bakke, gras, vatn og kartkanten), `Pikslar.kantfigurar` set
+    det fremste treet 0 til 7 pikslar ute mot open mark, eit mørkt tre bak (trekt tilbake), og av og til
+    eit lite tre ute på graset. Nedst på kartet berre graner (`nede`), så høge furustammer ikkje står som
+    stolpar framfor skogen. `Pikslar.kantflis` gir mørk skogbotn med graset som går ujamt inn frå opne
+    sider og frå vatn (glatt felt over kartpikslane). Under strandkanten ved skog er det gras, ikkje skogbotn.
+  - Karta: skogen går 1 til 3 fliser inn somme stader på venstre og høgre side i Åsen, utmarka, Hovdebygda,
+    vegen og Ekset, og nokre `i` og `F` står i utmarka, på vegen, i bygda, i Ekset og på Åsen.
+    Einskildgraner inne på kartet (`#` midt i utmarka) er no `i` og `F`.
+  - `sjekk-spel.js`: alle dører, talmerke, kister og folk må kunne nåast frå den første døra (fast grunn
+    frå `FAST` i `pikslar.js`), og kanttypen må finnast i `KANTTYPE`.
+- **Vurdert:** `forhand/skjerm/r35-vegen.png` (høgre kant: kanten går inn og ut, mørk skog innst, lyse
+  graner framme), `r35-bygda.png` (kanten nedst: graner i ulik høgd, ingen rekkje), `r4-asen-topp.png`
+  (graner mot himmelen øvst), `r5-utmark-nede.png`, `r6-ekset` (graset ved vatnet) og `r8-minne.png`
+  (trea går ikkje ut over kanten av det vesle kartet). Før: `for-vegen.png` og `for-utmark.png` (ei loddrett
+  rekkje like graner).
+- **Står att:** Fleire kanttypar (lauvskog, berg, myr). Tørrgrana er tynn og blir borte mot graset.
+  Furukrona kunne hatt fleire, mindre puter og meir lys i toppen.

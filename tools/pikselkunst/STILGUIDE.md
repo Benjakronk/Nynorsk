@@ -86,8 +86,14 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
 
 - Tre, steinar og haugar er figurar som står på ei grasflis, med skugge på
   bakken, og blir sorterte etter djupn saman med personane (`natur.py`).
-- Gran: smal og spiss, greinlag som heng ned med sagtakka underkant, mørk
-  blågrøn med lyse greinspissar på venstre side.
+- Gran: smal og spiss, greinlag som heng ned som skjørt med sagtakka underkant og
+  spissar som heng ned ytst, mørk blågrøn, lys overside mot venstre og mørk underside.
+  Gamle graner er høge med glisne lag som heng meir, unge er låge og tette.
+- Furu: høg, raudbrun stamme med oransje flass oppe og grå, sprukken bork nedst, ofte
+  skeiv, og ei flat, ujamn krone av nåleputer høgt oppe (lys overside, tustar under).
+- Skogkanten langs kartkanten er tett og mørk innst, med lysare tre framme som står ulikt
+  langt ute, nokre små tre ute på graset og ei og anna furu eller tørrgran. Aldri ei rett
+  rekkje: kanten går inn og ut, og graset går ujamt inn i den mørke skogbotnen.
 - Bjørk: kvit, kroklete stamme med svarte merke, lett krone av lauvklumpar
   i dempa gulgrønt, med mørkare klumpar innst for djupn.
 - Stein: grå med tydelege flater, ei sprekk, mose og lav på toppen.

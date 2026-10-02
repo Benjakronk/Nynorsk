@@ -185,8 +185,25 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
     `kart=minne-far m=1` (same lia under stupet i minnet). `variant=dal` viser varianten der dalen
     stig fram under lia (lag med `variant` blir berre teikna når kartet har den varianten).
 - Tre, steinar og haugar: `python tools/pikselkunst/natur.py <namn>` (sjå `NATUR`).
-  Kartteikna `#` (gran), `t` (bjørk) og `o` (stein, einer) vel variant etter plassen
-  frå `NATURTYPE` i `js/rpg/pikslar.js`. Nye variantar må førast inn der.
+  Frittståande tre og steinar: kartteikna `i` (gran), `F` (furu), `t` (bjørk) og `o` (stein, einer)
+  vel variant etter plassen frå `NATURTYPE` i `js/rpg/pikslar.js`. Nye variantar må førast inn der.
+  Granene kjem frå `granfigur()` (greinlag som skjørt med hengjande spissar, `tone=-1` gir dei mørke
+  innst i skogen, `tone=1` dei lyse framme), furuene frå `furu()` (raudt flass oppe, grå bork nedst,
+  flate nåleputer høgt oppe). Variantar: `gran1` til `gran3`, `gran-smal`, `gran-gamal`, `gran-ung`,
+  `gran-liten`, `gran-lys`, `gran-mork1`, `gran-mork2`, `torrgran`, `furu1`, `furu2`, `furu-ung`,
+  `furu-gamal`. Sjå trea saman med `skjermbilete.py namn kart=vegen m=1 x=24 y=6 stemning=ingen`.
+- Kartkanten (`#`, ugjennomtrengjeleg skog langs kanten av kartet) blir teikna etter kanttypen til
+  kartet: `kant: "granskog"` på kartet i `data.js` (standard, og einaste typen enno). Typane står i
+  `KANTTYPE` i `js/rpg/pikslar.js`: `botn` (fargane i skogbotnen), `framme` (trea i fremste rekkja),
+  `inne` (dei mørke trea innst og bak), `nede` (kanten nedst, utan høge stammer), `smaa` (små tre ute
+  på graset framfor kanten), `sjanse` og `forskyv`. Motoren (`skogkant()` i `motor.js`) finn kva sider
+  av flisa som har open mark, og `Pikslar.kantfigurar` set eitt til tre tre per flis: det fremste står
+  0 til 7 pikslar ute mot open mark, nokre har eit mørkt tre bak seg og eit lite framfor seg på graset.
+  `Pikslar.kantflis` teiknar skogbotnen, med graset frå naboflisa som går ujamt inn (glatt felt over
+  kartpikslane, så kanten ikkje følgjer rutenettet). Ein ny kanttype (lauvskog, berg, myr) er ein ny
+  post i `KANTTYPE` med eigne bilete frå `natur.py`, og `kant: "<namn>"` på kartet. Gjer kanten ujamn i
+  kartet òg: la `#` gå 1 til 3 fliser inn somme stader, men aldri framfor dører, stiar eller merke
+  (`node tools/sjekk-spel.js` sjekkar at alle dører, kister og folk kan nåast).
 - Små bilete: skriv rutenettet for hand.
 - Større bilete: eit lite Python-skript som teiknar flater med `span` og
   punkt, slik som `portrett.py`, og skriv `.pix`. Teikn flater for hand.

@@ -89,7 +89,7 @@ for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR |
       if (c(x, y) === "-" && y < h - 1 && !(c(x, y + 1) === "-" || (k.kameraOpp && c(x, y + 1) === "N" && R.slice(0, y + 1).every(r => r[x] === "-")))) feil.push(`${id}: under lufta på ${x},${y} er «${c(x, y + 1)}»`);
       if (c(x, y) === "/") {
         if (!"s/".includes(c(x - 1, y) || "s") || !"s/".includes(c(x + 1, y) || "s")) feil.push(`${id}: rampa på ${x},${y} ligg ikkje i ein skrent`);
-        for (const dy of [-1, 1]) { const n = c(x, y + dy); if (n && /[sM\-#tRWv|]/.test(n)) feil.push(`${id}: rampa på ${x},${y} har «${n}» ${dy < 0 ? "over" : "under"} seg`); }
+        for (const dy of [-1, 1]) { const n = c(x, y + dy); if (n && /[sM\-#tiFRWv|]/.test(n)) feil.push(`${id}: rampa på ${x},${y} har «${n}» ${dy < 0 ? "over" : "under"} seg`); }
       }
     }
     if (k.kameraNed && !(Number.isFinite(k.kameraNed.fra) && k.kameraNed.rader > 0 && (k.kameraNed.fart == null || Number.isInteger(k.kameraNed.fart)))) feil.push(`${id}: kameraNed treng fra, rader over 0 og fart i heile pikslar per tikk`);
@@ -135,6 +135,39 @@ for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR |
         }
       }
     });
+  }
+}
+/* Skogkanten og trea («#», «i», «F») må ikkje stengje vegen: frå den første døra eller det første
+   talmerket skal ein nå alle dører, talmerke, kister og folk (kister og folk frå ei rute ved sida av).
+   Fast grunn står i FAST i js/rpg/pikslar.js. */
+{
+  const kjelde = require("fs").readFileSync(require("path").join(__dirname, "..", "js", "rpg", "pikslar.js"), "utf8");
+  const FAST = new Set(JSON.parse(kjelde.match(/const FAST = new Set\((\[[^\]]*\])\)/)[1]));
+  // Kanttypen (kant på kartet) må finnast i KANTTYPE i pikslar.js.
+  const kanttypar = [...kjelde.match(/const KANTTYPE = \{([\s\S]*?)\n  \};/)[1].matchAll(/\n    (\w+): \{/g)].map(m => m[1]);
+  for (const [id, k] of Object.entries(D.KART)) if (k.kant && !kanttypar.includes(k.kant)) feil.push(`${id}: ukjend kanttype «${k.kant}» (kjende: ${kanttypar.join(", ")})`);
+  for (const [id, k] of Object.entries(D.KART)) {
+    if (k.scene || k.inne) continue;
+    const R = k.rader, h = R.length, w = R[0].length, m = merkeI[id];
+    const dor = (x, y) => (k.dorer || []).some(d => d.ved[0] === x && d.ved[1] === y);
+    const fast = (x, y) => { const c = (R[y] || "")[x]; if (c == null) return true; if ("DdE".includes(c)) return !dor(x, y); return FAST.has(c) && !/[0-9@%$!&*]/.test(c); };
+    const mal = [...(k.dorer || []).map(d => [d.ved, false]), ...Object.entries(m).filter(([c]) => /[0-9]/.test(c)).map(([, p]) => [p, false]),
+      ...(k.kister || []).map(ks => [ks.ved, true]), ...(k.folk || []).map(f => [m[f.merke], true])].filter(([p]) => p);
+    if (!mal.length) continue;
+    const start = mal.find(([, ved]) => !ved)?.[0] || mal[0][0], sett = new Set([start + ""]), ko = [start];
+    const kisteVed = (x, y) => (k.kister || []).some(ks => ks.ved[0] === x && ks.ved[1] === y);
+    while (ko.length) {
+      const [x, y] = ko.shift();
+      for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+        const nx = x + dx, ny = y + dy, n = nx + "," + ny;
+        if (nx < 0 || ny < 0 || nx >= w || ny >= h || sett.has(n) || fast(nx, ny) || kisteVed(nx, ny)) continue;
+        sett.add(n); ko.push([nx, ny]);
+      }
+    }
+    for (const [[x, y], ved] of mal) {
+      const ok = ved ? [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => sett.has((x + dx) + "," + (y + dy))) : sett.has(x + "," + y);
+      if (!ok) feil.push(`${id}: ${x},${y} kan ikkje nåast frå ${start} (stengjer skogkanten eller eit tre vegen?)`);
+    }
   }
 }
 // Hus og inventar som figurar: bildefila må finnast
