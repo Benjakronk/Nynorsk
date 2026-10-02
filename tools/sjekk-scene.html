@@ -66,6 +66,8 @@ f.onload = async () => {
       { val: "Prøveval?", alt: ["A", "B"], id: "prove", svar: [[{ flagg: "valA" }], [{ flagg: "valB" }]] },
       { saman: [[{ vent: 300 }], [{ vent: 300 }]] },
       { blink: 1 }, { rist: 200 },
+      { tone: "bakgrunn", rgb: [-8, -8, -2], ms: 150 }, { tone: "figurar", rgb: [4, 0, 0], ms: 100 }, { blink: 1, rgb: [31, 0, 0], ms: 120 },
+      { spot: "Ivar", r: 30, ms: 150 }, { spot: null, ms: 100 }, { tone: "alle", rgb: null, ms: 100 },
       { inn: { namn: "Gjest", u: "bonde", rute: [10, 8], retning: "opp" } },
       { gaa: "Gjest", sti: "h2" },
       { dagbok: "Prøve." },
@@ -76,6 +78,9 @@ f.onload = async () => {
     sjekk(T().st().val.prove === 1 && T().st().flagg.valB, "valet B er hugsa i st.val");
     sjekk(gj && gj.x === 12 && gj.y === 8, `gjesten gjekk stien h2 (står på ${gj && gj.x},${gj && gj.y})`);
     sjekk(performance.now() - t0 > 300, "saman ventar på begge listene");
+    await vent(100);
+    const ef = M.lysEffekt;
+    sjekk(!ef.spot && !ef.blink && ef.tone.bak && ef.tone.bak.til.join() === "0,0,0" && ef.tone.fig.til.join() === "0,0,0", "toninga og spotlighten er attende");
 
     // 4. Scener kan ikkje hoppast over: B under «framande» gjer ingenting, og scena går som vanleg.
     const s4 = T().st();

@@ -291,14 +291,13 @@ window.Pikslar = (function () {
       if (golvNo === "." || golvNo === ",") {
         // Ute: ei lykt på ein stolpe
         const k = Math.floor(t / 300) % 2;
-        g.fillStyle = "rgba(248,216,64,0.22)"; g.beginPath(); g.arc(8, 4, 6 + k, 0, Math.PI * 2); g.fill();
+        // Gløden rundt lykta er lys i motoren (glødformer med fargerekning, sjå lys() i motor.js).
         const R = Rutenett(16, 16).rect("s", 7, 6, 2, 10).rect("l", 5, 1, 6, 6).rect("t", 4, 0, 8, 1);
         g.drawImage(mal(R, { s: "#6a4428", l: { fast: "#f8d840" }, t: "#2a2838" }), 0, 0);
         px(g, 6, 2, k ? "#fff8d0" : "#f8e890", 4, 4); px(g, 7, 2, "#3a3050", 1, 4); px(g, 5, 4, "#3a3050", 6, 1);
         return;
       }
       const k = Math.floor(t / 300) % 2;
-      g.fillStyle = "rgba(248,216,64,0.2)"; g.beginPath(); g.arc(8, 5, 6 + k, 0, Math.PI * 2); g.fill();
       const R = Rutenett(16, 16).rect("m", 7, 6, 2, 7).form("m", [[13, 5, 10], [14, 4, 11]]).rect("l", 7, 4, 2, 2);
       g.drawImage(mal(R, { m: "#c08018", l: "#f2ead0" }), 0, 0);
       px(g, 7, 1 + k, "#f8d840", 2, 3 - k); px(g, 8, k, "#fff8d0", 1, 2);

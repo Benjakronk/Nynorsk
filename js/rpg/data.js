@@ -55,7 +55,15 @@
      { byt: "Namn", namn, u }           nytt namn eller ny utsjånad (vesen) på ein person på kartet
      { kamera: "Namn" | [x, y] | null } kameraet glir til nokon (og følgjer), til ei rute, eller attende
      { saman: [[…], […]] }              fleire lister samstundes
-     { vent: ms }, { blink: 1 }, { rist: ms }, { ton: "svart" | "kvitt" | "inn" }
+     { vent: ms }, { blink: 1 }, { rist: ms }, { ton: "svart" | "kvitt" | "inn" }  (toning i 16 trinn)
+     { blink: 1, rgb: [31, 0, 0], ms }  blink i ein farge (r, g, b frå 0 til 31), som $55 i FF6
+     { tone: "alle" | "bakgrunn" | "figurar", rgb: [-8, -8, 0], ms }
+                                        tonar skjermen, berre bakgrunnen eller berre figurane gradvis
+                                        mot ein fast farge (lagd til eller trekt frå, -31 til 31), i
+                                        heile steg som $50, $51 og $53. rgb: null tonar attende.
+     { spot: "Ivar" | [x, y], r: 40, ms } / { spot: null, ms }
+                                        skarp lyssirkel (radius r i pikslar), svart utanfor ($63)
+                                        Toning og spotlight varer til neste kart.
      { kort: ["Stad", "tid"] }, { naerbilete: "bilete/…png", tekst }
      { val, alt, svar, id: "x" }        valet blir hugsa i st.val.x (sjå valt())
      { traad: "id", tekst } / { traad: "id", lukk: 1 }   opnar eller lukkar ein forteljartråd
@@ -198,6 +206,76 @@ window.RPGData = (function () {
 
   // Portrett med kjensler: bilete/spel/portrett/<id>-<kjensle>.png (laga med portrett.py).
   const PORTRETT_KJENSLER = { ivar: ["glad", "trist", "sint", "sjokk", "tenkje", "nikk", "ivrig", "les"] };
+
+  /* ---------- Stemningar: lyset over karta ----------
+     Som på Super Nintendo (Final Fantasy VI): etter at kartet er teikna, blir kvar piksel
+     rekna om med fargerekning (color math), og fargane er 15 bit (0 til 31 per kanal).
+     Sjå «Lys» i js/rpg/README.md. Kvart kart vel ei stemning med stemning: "namn".
+     Ein operasjon (op):
+       p: [r, g, b]       fast farge lagd til (positive tal) eller trekt frå (negative), klemt til 0..31
+       snitt: [r, g, b]   snittet av pikselen og ein fast farge (halvering), etter p
+       lys: 0..15         lysstyrke (15 er full, som INIDISP)
+     bak: op for bakgrunnen, fig: op for figurane (folk og vesen), så bakgrunnen kan bli mørk
+       medan figurane held fargane.
+     hdma: [[rad, [r, g, b]], …]  ein farge som blir lagd til bakgrunnen og endrar seg nedover
+       skjermen i trinn på 8 rader (som HDMA), ikkje som mjuk gradient.
+     glod: { bak: [op1, op2, op3], fig: [...] }  inni glødformene rundt lyskjeldene (nivå 1 ytst).
+     syklus: [[r, g, b], …]  palettanimasjon: gløden går på rundgang, 150 ms per steg (som elden).
+     kjelder: true: grue, kakkelomn, lys og lykter lyser (LYSKJELDER). ivar: lys rundt Ivar.
+     skyer: tal på skyskuggar som driv over kartet, skugge: { bak, fig } inni dei.
+     straalar: lysstrålar frå vindauga (u), med glod-nivåa.
+     sepia: 0..1  fargane blir falma mot brunt (palettendring, som i minne). */
+  const STEMNINGAR = {
+    // Varmt morgonlys ovanfrå: varmast øvst, skyskuggar som driv.
+    morgon: {
+      bak: {}, fig: { p: [2, 1, -1] },
+      hdma: [[0, [4, 3, 0]], [96, [2, 1, -1]], [192, [0, 0, -1]]],
+      skyer: 3, skugge: { bak: { p: [-4, -4, -1] }, fig: { p: [-3, -3, -1] } },
+    },
+    // Fiolett kveld: fast farge trekt frå bakgrunnen, litt mindre frå figurane. Lyktene lyser.
+    kveld: {
+      bak: {}, fig: { p: [0, -3, 2] },
+      hdma: [[0, [1, -6, 2]], [192, [-2, -8, 0]]],
+      skyer: 2, skugge: { bak: { p: [-2, -2, -1] }, fig: { p: [-1, -1, 0] } },
+      kjelder: true,
+      glod: { bak: [{ p: [-1, -4, -3] }, { p: [2, 0, -3] }, { p: [5, 3, -2] }], fig: [{ p: [0, -2, -1] }, { p: [3, 1, -1] }, { p: [5, 3, -1] }] },
+      syklus: [[0, 0, 0], [1, 1, 0], [0, 0, 0], [1, 0, 0]],
+    },
+    // Stova: rommet i skugge, varmt eldlys rundt grua, omnen og ljosa.
+    inne: {
+      bak: { p: [-5, -6, -4] }, fig: { p: [-3, -4, -3] },
+      kjelder: true,
+      glod: { bak: [{ p: [-2, -4, -4] }, { p: [1, -1, -3] }, { p: [4, 2, -2] }], fig: [{ p: [-1, -2, -3] }, { p: [2, 0, -2] }, { p: [4, 2, -1] }] },
+      syklus: [[0, 0, 0], [1, 1, 0], [0, 0, 0], [1, 0, 0], [2, 1, 0], [1, 0, 0]],
+    },
+    // Mørkt: berre lyset rundt Ivar og lampene. Figurane blir mindre mørke enn rommet.
+    mork: {
+      bak: { p: [-12, -12, -6], lys: 6 }, fig: { p: [-8, -8, -4], lys: 9 },
+      kjelder: true, ivar: [58, 44, 28],
+      glod: { bak: [{ p: [-8, -8, -6], lys: 11 }, { p: [-2, -2, -3] }, { p: [1, 0, -2] }], fig: [{ p: [-5, -5, -3], lys: 12 }, { p: [-1, -2, -1] }, { p: [1, 0, -1] }] },
+      syklus: [[0, 0, 0], [1, 1, 0], [0, 0, 0], [1, 0, 0]],
+    },
+    // Lyst kyrkjerom med lysstrålar frå vindauga (gjennomsiktig lag, lagt til og halvert).
+    kyrkje: {
+      bak: { p: [1, 1, 0] }, fig: { p: [1, 1, 0] },
+      straalar: true,
+      glod: { bak: [{ p: [3, 3, 1] }, { p: [5, 5, 2] }, { p: [3, 3, 1], snitt: [31, 30, 24] }], fig: [{ p: [3, 3, 1] }, { p: [4, 4, 2] }, { p: [6, 6, 3] }] },
+    },
+    // Minne og draum: falma fargar og lyse kantar øvst og nedst, i trinn.
+    minne: {
+      sepia: 0.8, bak: { p: [2, 1, -1] }, fig: { p: [3, 2, 0] },
+      hdma: [[0, [12, 11, 8]], [28, [0, 0, 0]], [164, [0, 0, 0]], [192, [12, 11, 8]]],
+    },
+  };
+  /* Lyskjeldene og glødformene deira: radius i pikslar for nivå 1, 2 og 3 (ytst først), og fy:
+     kor flat forma er (golvet sett på skrå). Formene har ein dithera kant (eitt pikselband). */
+  const LYSKJELDER = {
+    grue: { r: [52, 38, 22], fy: 0.7 },
+    kakkelomn: { r: [42, 28, 16], fy: 0.72 },
+    lys: { r: [24, 15, 8], fy: 0.8 },
+    lykt: { r: [34, 22, 12], fy: 0.8 },
+    krone: { r: [44, 30, 16], fy: 0.8 },
+  };
 
   /* ---------- Karta ---------- */
   const KART = {
@@ -972,19 +1050,22 @@ window.RPGData = (function () {
         { naerbilete: "bilete/spel/naer/kyrkjebok-blekk.png" },
         { inn: { namn: "Blekklatten", vesen: "blekkdrope", rute: [10, 4] } },
         { t: "Midt i arkivet ligg kyrkjeboka for Hovdebygda. Blekket renn ut av henne og samlar seg til ein stor, glinsande klump." },
+        { tone: "bakgrunn", rgb: [-5, -6, -1], ms: 700 },               // rommet mørknar, figurane held fargane
         { rist: 700, styrke: 3 },
-        { blink: 1, byt: "Blekklatten", vesen: "blekklatten" },
+        { blink: 1, rgb: [14, 8, 26], byt: "Blekklatten", vesen: "blekklatten" },
         { s: "Blekklatten", t: "Alt skal skrives ned. Alt skal skrives rigtigt. Hvad der ikke staar skrevet, har aldrig været til." },
         { s: "Ivar", t: "Far står skriven i den boka. Men han snakka ikkje slik. Ingen her snakkar slik!", kjensle: "sjokk" },
         { kamp: ["blekklatten"], boss: 1 },
         { flagg: "latt" },
         { blink: 1, byt: "Blekklatten", vesen: "blekkdrope" }, { vent: 500 },
-        { fjern: "Blekklatten" },
+        { fjern: "Blekklatten" }, { tone: "alle", rgb: null, ms: 600 },
         { t: "Blekklatten renn saman til ein liten dråpe og siv ned i golvsprekkene. Kyrkjeboka er stille." },
         { gaa: "Ivar", rute: [10, 4] }, { snu: "Ivar", retning: "opp" },
+        { spot: "Ivar", r: 34, ms: 600 },                                // berre Ivar og boka i lyset
         { naerbilete: "bilete/spel/naer/kyrkjebok.png" },
         { t: "På den siste sida står namnet til far, skrive med presten si hand. Ved sida av har nokon rissa inn med fin, fin skrift: «Det som er skrive, står.»" },
         { s: "Ivar", t: "Det same som i boka mi …", kjensle: "les" },
+        { spot: null, ms: 600 },
         { dagbok: "I kyrkjeboka stod namnet til far. Ved sida av hadde nokon skrive: «Det som er skrive, står.» Same ord som i boka mi." },
       ],
     },
@@ -1160,5 +1241,5 @@ window.RPGData = (function () {
   // Første gong Ivar går ut, kjem den framande bort til han.
   MANUS.ut_forste = [{ dersom: st => !st.flagg.framande1, da: MANUS.framande }];
 
-  return { FAMILIAR, ORD, U, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, KAPITTEL, STEVGALDR, PORTRETT, PORTRETT_KJENSLER, POSAR, SCENER, MANUS, valt };
+  return { FAMILIAR, ORD, U, STEMNINGAR, LYSKJELDER, KART, EKSTRA_MERKE, STADER, FIENDAR, PARTI, EVNER, TING, NOKKELTING, GAAVER, KAPITTEL, STEVGALDR, PORTRETT, PORTRETT_KJENSLER, POSAR, SCENER, MANUS, valt };
 })();

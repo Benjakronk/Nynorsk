@@ -29,6 +29,30 @@ for (const [id, k] of Object.entries(D.KART)) {
   for (const ks of k.kister || []) { const c = k.rader[ks.ved[1]][ks.ved[0]]; if (!ks.gøymd && c !== "K") feil.push(`${id}: kiste ${ks.ved} på «${c}»`); if (ks.gøymd && !MERKE.test(c) && c !== k.golv) feil.push(`${id}: gøymd kiste på «${c}»`); if (ks.ting && !D.TING[ks.ting]) feil.push(`${id}: ting ${ks.ting}`); }
   for (const lag of (k.fiendar || {}).lag || []) for (const f of lag) if (!D.FIENDAR[f]) feil.push(`${id}: fiende ${f}`);
 }
+/* Stemningar og lys (sjå «Lys» i js/rpg/README.md): kvart kart må ha ei stemning som finst, og
+   fargane er 5 bit per kanal (heile tal, -31..31 for p, 0..31 for snitt, lys 0..15). */
+const er3 = (v, min, max) => Array.isArray(v) && v.length === 3 && v.every(x => Number.isInteger(x) && x >= min && x <= max);
+function sjekkOp(op, stad) {
+  if (!op || typeof op !== "object") { feil.push(`${stad}: manglar operasjon`); return; }
+  for (const k of Object.keys(op)) if (!["p", "snitt", "lys"].includes(k)) feil.push(`${stad}: ukjend nøkkel «${k}»`);
+  if (op.p !== undefined && !er3(op.p, -31, 31)) feil.push(`${stad}: p må vere [r, g, b] med heile tal frå -31 til 31`);
+  if (op.snitt !== undefined && !er3(op.snitt, 0, 31)) feil.push(`${stad}: snitt må vere [r, g, b] med heile tal frå 0 til 31`);
+  if (op.lys !== undefined && !(Number.isInteger(op.lys) && op.lys >= 0 && op.lys <= 15)) feil.push(`${stad}: lys må vere eit heilt tal frå 0 til 15`);
+}
+for (const [id, st] of Object.entries(D.STEMNINGAR || {})) {
+  const stad = `stemning ${id}`;
+  for (const k of Object.keys(st)) if (!["bak", "fig", "hdma", "glod", "syklus", "kjelder", "ivar", "skyer", "skugge", "straalar", "sepia"].includes(k)) feil.push(`${stad}: ukjend nøkkel «${k}»`);
+  if (st.bak) sjekkOp(st.bak, stad + " bak"); if (st.fig) sjekkOp(st.fig, stad + " fig");
+  if (st.hdma && !(Array.isArray(st.hdma) && st.hdma.every((h, i) => Number.isInteger(h[0]) && h[0] >= 0 && h[0] <= 192 && er3(h[1], -31, 31) && (i === 0 || h[0] >= st.hdma[i - 1][0])))) feil.push(`${stad}: hdma må vere [[rad, [r, g, b]], …] med stigande rader frå 0 til 192`);
+  if (st.glod) for (const l of ["bak", "fig"]) { if (!Array.isArray(st.glod[l]) || st.glod[l].length !== 3) feil.push(`${stad}: glod.${l} må ha tre nivå`); else st.glod[l].forEach((op, i) => sjekkOp(op, `${stad} glod.${l}[${i}]`)); }
+  if ((st.kjelder || st.ivar || st.straalar) && !st.glod) feil.push(`${stad}: kjelder, ivar og straalar treng glod`);
+  if (st.syklus && !(Array.isArray(st.syklus) && st.syklus.every(v => er3(v, -31, 31)))) feil.push(`${stad}: syklus må vere ei liste med [r, g, b]`);
+  if (st.ivar && !(Array.isArray(st.ivar) && st.ivar.length === 3 && st.ivar[0] > st.ivar[1] && st.ivar[1] > st.ivar[2])) feil.push(`${stad}: ivar må vere tre radiar, størst først`);
+  if (st.skugge) for (const l of ["bak", "fig"]) if (st.skugge[l]) sjekkOp(st.skugge[l], `${stad} skugge.${l}`);
+  if (st.sepia !== undefined && !(st.sepia >= 0 && st.sepia <= 1)) feil.push(`${stad}: sepia må vere frå 0 til 1`);
+}
+for (const [id, k] of Object.entries(D.LYSKJELDER || {})) if (!(Array.isArray(k.r) && k.r.length === 3 && k.r[0] > k.r[1] && k.r[1] > k.r[2] && k.fy > 0 && k.fy <= 1)) feil.push(`lyskjelde ${id}: r må vere tre radiar, størst først, og fy frå 0 til 1`);
+for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR || {})[k.stemning]) feil.push(`${id}: ukjend stemning «${k.stemning}» (sjå STEMNINGAR)`);
 // Hus og inventar som figurar: bildefila må finnast
 const fs_ = require("fs"), sti_ = require("path");
 for (const [id, k] of Object.entries(D.KART)) for (const b of k.bygg || []) {
@@ -52,6 +76,13 @@ function gå(steg, stad) {
     if (s.sti && typeof s.sti === "string" && !/^([novh]\d*)+$/.test(s.sti)) feil.push(`${stad}: sti «${s.sti}»`);
     if (s.dagbok && /[—–]/.test(s.dagbok)) feil.push(`${stad}: tankestrek i dagboka`);
     if (s.scenekart) { const k = D.KART[s.scenekart]; if (!k || !k.scene) feil.push(`${stad}: ${s.scenekart} er ikkje eit scenekart`); else if (!merkeI[s.scenekart][s.merke || "1"]) feil.push(`${stad}: merket ${s.merke || "1"} finst ikkje i ${s.scenekart}`); }
+    // Lyset: tone, blink i ein farge og spotlight (namnet blir sjekka i sjekkNamn).
+    if (s.tone !== undefined && !["alle", "bakgrunn", "figurar"].includes(s.tone)) feil.push(`${stad}: tone «${s.tone}» (alle, bakgrunn eller figurar)`);
+    if (s.tone !== undefined && s.rgb !== null && !er3(s.rgb, -31, 31)) feil.push(`${stad}: tone treng rgb: [r, g, b] med heile tal frå -31 til 31 (eller null)`);
+    if (s.blink && s.rgb !== undefined && !er3(s.rgb, 0, 31)) feil.push(`${stad}: blink med rgb: [r, g, b] frå 0 til 31`);
+    if (s.spot !== undefined && s.spot !== null && typeof s.spot !== "string" && !(Array.isArray(s.spot) && s.spot.length === 2)) feil.push(`${stad}: spot må vere eit namn, ei rute [x, y] eller null`);
+    if (s.spot && s.r !== undefined && !(s.r > 0 && s.r <= 400)) feil.push(`${stad}: spot med radius r ${s.r}`);
+    if ("rgb" in s && s.tone === undefined && !s.blink) feil.push(`${stad}: rgb utan tone eller blink`);
     if (s.til && D.KART[s.til[0]] && D.KART[s.til[0]].scene) feil.push(`${stad}: til-steg til scenekartet ${s.til[0]} (bruk scenekart)`);
     gå(s.da, stad); gå(s.elles, stad); (s.svar || []).forEach(x => gå(x, stad)); (s.saman || []).forEach(x => gå(x, stad));
   }
@@ -87,7 +118,7 @@ function sjekkNamn(nokkel, steg, stad) {
   for (const s of st) { if (s.inn) namn.add(s.inn.namn); if (s.byt && s.namn) namn.add(s.namn); if (s.scenekart) for (const f of D.KART[s.scenekart].folk || []) namn.add(f.namn); }
   for (const k of kart) {
     const lov = new Set([...namn, ...(D.KART[k].folk || []).map(f => f.namn), ...Object.keys(merkeI[k])]);
-    for (const s of st) for (const f of ["s", "gaa", "snu", "pose", "byt", "fjern", "kven", "fraa", "fra", "mot"]) {
+    for (const s of st) for (const f of ["s", "gaa", "snu", "pose", "byt", "fjern", "kven", "fraa", "fra", "mot", "spot"]) {
       const v = s[f];
       if (typeof v === "string" && !(f === "mot" && "s" in s) && !lov.has(v) && !(f === "fra" && !s.parti)) feil.push(`${stad} på ${k}: «${v}» (${f}) finst ikkje på kartet`);
     }

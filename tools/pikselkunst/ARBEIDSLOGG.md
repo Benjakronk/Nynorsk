@@ -604,3 +604,52 @@ same måte, uansett kven som tek over.
   kjensler og posar. Auga les godt hjå skalla, skjeggete, skaut, lue og briller. Der luggen
   dekkjer vippelina, glir ho over i håret, slik som hjå Locke.
 - **Står att:** Portretta (48 x 48) er ikkje endra. Vippelina gjer bryna tunge frå sida.
+
+## Runde 21: lyset som i Final Fantasy VI
+
+- **Oppdrag:** Lyset skal likne Final Fantasy VI. Stemningane var mjuke canvas-gradientar (vignett,
+  gradientar over heile kartet, mjuke radielle lyshol i eit mørkt lag), og ingenting av det kunne
+  Super Nintendo gjere.
+- **Research:** ff6hacking.com (hendingskommandoar), SNESdev wiki og nesdoug om color math. I FF6 er
+  lyset mest teikna inn i pikslane. Maskinvara legg til, trekkjer frå eller tek snittet av ein fast
+  farge (COLDATA) med klemming per kanal, i 15-bit fargar. HDMA endrar fargen linje for linje, i
+  trinn. Fakler og vatn er palettanimasjon. $50/$51/$53 tonar heile skjermen, bakgrunnen eller
+  figurane kvar for seg, $55 blinkar i ein farge, $63 er ein spotlight med skarp kant.
+  Referansane `ff6bak-by.png` (tåka over byen: gjennomsiktige, hardkanta former) og
+  `z-ff6-strand-by.png` (lyset teikna i flisene).
+- **Gjort:**
+  - `lys()` i `motor.js`: etter at kartet er teikna, éin `getImageData`, fargerekning per piksel med
+    oppslagstabellar per band på 8 rader (`Uint32Array`), éin `putImageData`. 5 bit per kanal.
+    Pikslar utanfor kartet blir ikkje rekna om (backdrop).
+  - Figurmaske: folk og vesen blir teikna på eit eige lerret i same rekkjefølgje, og hus, tre, murar
+    og møblar framfor viskar ut maska. Berre rektangelet rundt figurane blir lese. Bakgrunn og
+    figurar har kvar sine innstillingar.
+  - `STEMNINGAR` og `LYSKJELDER` i `data.js`: ein tabell med `bak`, `fig` (p, snitt, lys), `hdma`,
+    `glod` (tre nivå), `syklus`, `skyer`/`skugge`, `kjelder`, `ivar`, `straalar` og `sepia`.
+    Vignetten og alle gradientane er borte. Den mjuke gløden rundt lykta i flisa `L` er fjerna.
+  - Glødformer: ellipsar i tre nivå med ein dithera kant på éin piksel (stempel som strekar), rundt
+    grua og kakkelomnen (der elden i `Pikslar.ILD` er), ljos, lykter og peis. Fargane går på
+    rundgang i same takt som elden (150 ms).
+  - Kyrkja: lysstrålar frå vindauga som parallellogram skrått ned (eitt steg per to rader), i tre
+    trinn, med snitt mot kvitt i kjernen. Arkivet: lyssirkel rundt Ivar og lampa, resten nesten mørkt.
+  - Scenesteg: `tone` (alle, bakgrunn, figurar, i heile steg), `blink` med `rgb`, `spot` (skarp
+    sirkel, svart utanfor, dithera band på tre pikslar). `ton` til svart og kvitt går i 16 trinn
+    (`steps(16)`). Blekklatten-scena brukar dei: rommet mørknar medan blekklatten held fargane,
+    fiolett blink, og spotlight på Ivar når han les i kyrkjeboka.
+  - Sjekkar i `sjekk-spel.js` for stemningane, lyskjeldene og dei nye stega, og ein test i
+    `sjekk-scene.html` for at toning og spotlight går attende.
+- **Rundar:** 1) Gløden lyste opp det svarte utanfor stova: backdrop blir ikkje rekna om. 2) Lysekrona
+    og altarljosa i kyrkja gav kvite skiver på golvet: kyrkja har ingen lyskjelder, berre strålar.
+    Ljoset var for stort (r 30 til 24), og gløden frå grua låg oppe på veggen: midten flytt ned
+    framfor grua. 3) Arkivet var for lyst og kaldt: grunnen mørkare (lys 6), varmare midt i
+    lyset. 4) Kvelden var marineblå: mindre raudt trekt frå, litt blått lagt til, så han blir fiolett.
+    Skyskuggane i kvelden var svarte flekkar (skugge og hdma blir lagde saman): svakare skugge.
+- **Vurdert:** Før/etter for alle tretten karta (`forhand/skjerm/ark-for-*.png` og `ark-e-*.png`).
+  Morgonen er varm med skyskuggar som tåka i FF6, kvelden fiolett, stovene lune med eldlys,
+  arkivet mørkt, kyrkja lys med strålar, minnet falma. Toning av bakgrunnen held figurane
+  fargesterke, som i FF6.
+- **Yting:** Edge utan skjerm (programvareteikning): om lag 0,4 til 0,7 ms for sjølve rekninga, og
+  0,7 til 1,4 ms median med lesinga av lerretet (som òg tvingar fram teikninga av kartet).
+- **Står att:** Glødformene er rekna ellipsar, ikkje teikna for hand per kjelde. Elden i grua
+  flimrar i pikslane, men gløden byter berre fargar (ikkje form). Kontoret har berre eitt ljos og
+  ser nesten ut som før. Kampscena har framleis sine eigne blink.

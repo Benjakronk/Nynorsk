@@ -20,14 +20,15 @@
    Motor.pause(true|false)    stoppar rørsla (under samtalar, menyar og kamp)
    Regi i skripta scener (verkar også i pause, sjå js/rpg/README.md):
    Motor.gaa(kven, mal, fart), snu(kven, retning), inn(def), byt(kven, ny), kamera(til, ms),
-   kort(stad, tid), naerbilete(src, tekst), blink(), rist(ms), tonUt(ms, farge) */
+   kort(stad, tid), naerbilete(src, tekst), blink(ms, rgb), rist(ms), tonUt(ms, farge),
+   tone(lag, rgb, ms), spot(kven, r, ms) (lyset: sjå «Lys» under) */
 window.Motor = (function () {
   "use strict";
   const S = Pikslar.S, VW = 20, VH = 12;
   const $ = id => document.getElementById(id);
   const E = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-  const lerret = $("rpg-lerret"), g = lerret.getContext("2d");
+  const lerret = $("rpg-lerret"), g = lerret.getContext("2d", { willReadFrequently: true });   // lyset les pikslane kvart bilete
   lerret.width = VW * S; lerret.height = VH * S;
   g.imageSmoothingEnabled = false;
 
@@ -127,6 +128,7 @@ window.Motor = (function () {
     // Den som sit på ein stol utan retning i kartet, ser same vegen som stolen.
     for (const f of folk) if (f.grunnpose === "sitje" && f.retning == null) { const st = seteVed(f.x, f.y); if (st && st.s.retning != null) f.dir = f.grunndir = st.s.retning; }
     for (const a of regi) { a.regi.res(); a.regi = null; } regi.clear(); kam = null;      // nytt kart: regien byrjar på nytt
+    nullstillLys();                                                  // toning og spotlight varer til neste kart
     const [sx, sy] = merke[merkeId] || merke["1"] || [1, 1];
     spelar.x = sx; spelar.y = sy; spelar.fx = sx; spelar.fy = sy; spelar.flytt = null;
     spelar.pose = null; if (fylgje) fylgje.pose = null;                 // på eit nytt kart står ein
@@ -559,84 +561,264 @@ window.Motor = (function () {
     return [[0, -1], [0, 1], [-1, 0], [1, 0], [-1, -1], [1, -1], [-1, 1], [1, 1]].some(([dx, dy]) => (kart.fliser[y + dy] || [])[x + dx] === "~");
   }
 
-  /* ---------- Stemning: lys og skugge over kartet ----------
-     kart.def.stemning: «morgon» (varmt lys og skyskuggar), «kveld», «inne»
-     (mørkare rom med varme ljoskjelder), «mork» (berre ljos rundt Ivar og lampene),
-     «minne» (falma fargar, til draumar og minne på scenekart). */
-  const morke = document.createElement("canvas"); morke.width = VW * S; morke.height = VH * S;
-  const mg = morke.getContext("2d");
-  function ljosPunkt(ctx, x, y, r, a) {
-    const gr = ctx.createRadialGradient(x, y, 0, x, y, r);
-    gr.addColorStop(0, `rgba(0,0,0,${a})`); gr.addColorStop(1, "rgba(0,0,0,0)");
-    ctx.fillStyle = gr; ctx.fillRect(x - r, y - r, r * 2, r * 2);
+  /* ---------- Lys: fargerekning som på Super Nintendo ----------
+     Final Fantasy VI har lyset mest teikna inn i pikslane. Resten gjer maskinvara: fargerekning
+     (color math) som legg til, trekkjer frå eller tek snittet av ein fast farge, med klemming
+     per kanal, og 15-bit fargar (5 bit per kanal). Her blir det gjort etter at kartet er teikna:
+     éin getImageData, ei rekning per piksel med oppslagstabellar (Uint32Array), éin putImageData.
+     Bakgrunnen og figurane har kvar sine innstillingar (som $51 og $53 i FF6), så ei maske held
+     styr på figurpikslane (folk og vesen) i same teikneorden: hus, tre og møblar som står framfor
+     ein figur, viskar ut maska der dei dekkjer.
+     Innstillingane står i RPGData.STEMNINGAR (kart.def.stemning). Lyskjeldene får hardkanta
+     glødformer i tre nivå (lysNiva), og fargane i gløden går på rundgang (palettanimasjon).
+     Ingen mjuke gradientar: ein fargeovergang nedover skjermen (hdma) går i trinn på 8 rader. */
+  const LW = VW * S, LH = VH * S;
+  const lysNiva = new Uint8Array(LW * LH);         // 0 grunn, 1 til 3 glød, 4 skyskugge
+  const figLerret = document.createElement("canvas"); figLerret.width = LW; figLerret.height = LH;
+  const fg = figLerret.getContext("2d", { willReadFrequently: true });
+  let figMaske = false;                            // er maska i bruk i dette biletet
+  const figBoks = [0, 0, 0, 0];                    // rektangelet rundt figurane (berre det blir lese)
+  function nyMaske() {
+    fg.globalCompositeOperation = "source-over"; fg.clearRect(0, 0, LW, LH);
+    figBoks[0] = LW; figBoks[1] = LH; figBoks[2] = figBoks[3] = 0;
   }
-  function glod(x, y, r, farge, a) {
-    const gr = g.createRadialGradient(x, y, 0, x, y, r);
-    gr.addColorStop(0, `rgba(${farge},${a})`); gr.addColorStop(1, `rgba(${farge},0)`);
-    g.fillStyle = gr; g.fillRect(x - r, y - r, r * 2, r * 2);
+  // Figurmaska: teikn (figur) eller visk ut (noko som dekkjer) i same rekkjefølgje som på lerretet.
+  function maske(img, x, y, dekkjer) {
+    if (!figMaske) return;
+    if (!dekkjer) {
+      figBoks[0] = Math.max(0, Math.min(figBoks[0], x)); figBoks[1] = Math.max(0, Math.min(figBoks[1], y));
+      figBoks[2] = Math.min(LW, Math.max(figBoks[2], x + img.width)); figBoks[3] = Math.min(LH, Math.max(figBoks[3], y + img.height));
+    } else if (x >= figBoks[2] || y >= figBoks[3] || x + img.width <= figBoks[0] || y + img.height <= figBoks[1]) return;
+    fg.globalCompositeOperation = dekkjer ? "destination-out" : "source-over";
+    fg.drawImage(img, x, y);
   }
-  function stemning(no, ox, oy) {
-    const st = kart.def.stemning;
-    if (!st) return;
-    const W = VW * S, Hh = VH * S;
-    if (st === "morgon" || st === "kveld") {
-      const gr = g.createLinearGradient(0, 0, 0, Hh);
-      if (st === "morgon") { gr.addColorStop(0, "rgba(255,222,160,0.22)"); gr.addColorStop(0.5, "rgba(255,210,150,0.06)"); gr.addColorStop(1, "rgba(60,40,110,0.14)"); }
-      else { gr.addColorStop(0, "rgba(120,60,140,0.28)"); gr.addColorStop(1, "rgba(30,20,70,0.30)"); }
-      g.fillStyle = gr; g.fillRect(0, 0, W, Hh);
-      // Skyskuggar som driv over landskapet
-      const kw = kart.w * S + 240;
-      for (let i = 0; i < 3; i++) {
-        const cx = ((no * 0.008 + i * 311) % kw) - 120 + ox * S, cy = ((i * 97 + no * 0.003) % (kart.h * S + 120)) - 60 + oy * S;
-        const gr2 = g.createRadialGradient(cx, cy, 4, cx, cy, 70);
-        gr2.addColorStop(0, "rgba(20,24,60,0.2)"); gr2.addColorStop(1, "rgba(20,24,60,0)");
-        g.fillStyle = gr2; g.fillRect(cx - 70, cy - 70, 140, 140);
-      }
-    } else if (st === "minne") {
-      // Eit minne eller ein draum: falma, varme fargar og lyse kantar, som eit gammalt bilete.
-      g.globalCompositeOperation = "color";
-      g.fillStyle = "rgba(196,150,96,0.5)"; g.fillRect(0, 0, W, Hh);
-      g.globalCompositeOperation = "source-over";
-      const v = g.createRadialGradient(W / 2, Hh / 2, Hh * 0.3, W / 2, Hh / 2, W * 0.6);
-      v.addColorStop(0, "rgba(252,238,212,0)"); v.addColorStop(1, "rgba(252,238,212,0.6)");
-      g.fillStyle = v; g.fillRect(0, 0, W, Hh);
-      return;
-    } else if (st === "kyrkje") {
-      // Lyst kyrkjerom: ljosstrålar skrått ned frå vindauga i veggen
-      g.globalCompositeOperation = "lighter";
-      for (let x = 0; x < kart.w; x++) for (let y = 0; y < kart.h; y++) {
-        if (kart.fliser[y][x] !== "u") continue;
-        const sx = (x + ox) * S, sy = (y + oy) * S + 10, puls = 0.08 + Math.sin(no / 1400 + x) * 0.015;
-        const gr = g.createLinearGradient(sx, sy, sx + 40, sy + 90);
-        gr.addColorStop(0, `rgba(255,236,190,${puls + 0.06})`); gr.addColorStop(1, "rgba(255,236,190,0)");
-        g.fillStyle = gr; g.beginPath(); g.moveTo(sx + 4, sy); g.lineTo(sx + 12, sy); g.lineTo(sx + 52, sy + 90); g.lineTo(sx + 30, sy + 90); g.closePath(); g.fill();
-      }
-      g.globalCompositeOperation = "source-over";
-    } else {
-      const djup = st === "mork" ? 0.8 : st === "inne" ? 0.34 : 0.2;
-      mg.globalCompositeOperation = "source-over"; mg.clearRect(0, 0, W, Hh);
-      mg.fillStyle = `rgba(14,8,28,${djup})`; mg.fillRect(0, 0, W, Hh);
-      mg.globalCompositeOperation = "destination-out";
-      const ljos = [];
-      if (st === "mork") ljos.push([(spelar.fx + ox) * S + 8, (spelar.fy + oy) * S + 4, 58 + Math.sin(no / 300) * 2, 1, null]);
-      // Grua er ein figur (inventar): ho gir eld-ljos på staden sin.
-      for (const b of kart.def.bygg || []) if (b.id === "inne-grue" || b.id === "inne-kakkelomn") ljos.push([(b.x + ox) * S + 8, (b.y + oy) * S + 26, 62 + Math.sin(no / 90 + b.x) * 3, 1, "255,140,50"]);
-      for (let y = 0; y < kart.h; y++) for (let x = 0; x < kart.w; x++) {
-        const c = kart.fliser[y][x];
-        if (c === "f" || c === "L") ljos.push([(x + ox) * S + 8, (y + oy) * S + (c === "L" ? 3 : 10), (c === "f" ? 54 : 40) + Math.sin(no / 90 + x) * 2.5, 1, c === "f" ? "255,140,50" : "255,210,110"]);
-      }
-      for (const [x, y, r, a] of ljos) ljosPunkt(mg, x, y, r, a);
-      mg.globalCompositeOperation = "source-over";
-      g.drawImage(morke, 0, 0);
-      g.globalCompositeOperation = "lighter";
-      for (const [x, y, r, , farge] of ljos) if (farge) glod(x, y, r * 0.7, farge, 0.16);
-      g.globalCompositeOperation = "source-over";
+  // Scenestega: toning av bakgrunn og figurar ($50, $51, $53), blink ($55) og spotlight ($63).
+  const effekt = { tone: { bak: null, fig: null }, blink: null, spot: null };
+  const null3 = [0, 0, 0];
+  function framdrift(e, no) { return Math.max(0, Math.min(1, (no - e.t0) / e.ms)); }
+  // Toninga no: heile steg (1/31 av ein kanal) frå fra til til, kumulativt som $50.
+  function toneNo(e, no) {
+    if (!e) return null3;
+    const u = framdrift(e, no);
+    return e.fra.map((v, i) => Math.round(v + (e.til[i] - v) * u));
+  }
+  // Ein oppslagstabell (3 × 256) for ein operasjon: 8 bit inn, 5 bit rekning, 8 bit ut.
+  const lutar = new Map();
+  function lut(p, snitt, lys) {
+    const k = p.join(",") + "|" + (snitt ? snitt.join(",") : "") + "|" + lys;
+    let t = lutar.get(k);
+    if (t) return t;
+    if (lutar.size > 600) lutar.clear();
+    t = new Uint8Array(768);
+    for (let ch = 0; ch < 3; ch++) for (let v = 0; v < 256; v++) {
+      let c = (v >> 3) + p[ch];
+      c = c < 0 ? 0 : c > 31 ? 31 : c;
+      if (snitt) c = (c + snitt[ch]) >> 1;
+      c = (c * lys / 15) | 0;
+      t[ch * 256 + v] = (c << 3) | (c >> 2);
     }
-    // Vignett
-    const v = g.createRadialGradient(W / 2, Hh / 2, Hh * 0.45, W / 2, Hh / 2, W * 0.62);
-    v.addColorStop(0, "rgba(10,5,20,0)"); v.addColorStop(1, "rgba(10,5,20,0.32)");
-    g.fillStyle = v; g.fillRect(0, 0, W, Hh);
+    lutar.set(k, t);
+    return t;
   }
+  // Fargen frå hdma-stoppa for rada y, rekna for midten av kvart band på 8 rader og runda.
+  function hdma(stopp, y) {
+    if (!stopp) return null3;
+    const yc = (y & ~7) + 4;
+    let a = stopp[0], b = stopp[stopp.length - 1];
+    for (let i = 0; i < stopp.length - 1; i++) if (yc >= stopp[i][0] && yc <= stopp[i + 1][0]) { a = stopp[i]; b = stopp[i + 1]; break; }
+    const u = b[0] === a[0] ? 0 : Math.max(0, Math.min(1, (yc - a[0]) / (b[0] - a[0])));
+    return a[1].map((v, i) => Math.round(v + (b[1][i] - v) * u));
+  }
+  const sum3 = (...v) => [v.reduce((s, x) => s + x[0], 0), v.reduce((s, x) => s + x[1], 0), v.reduce((s, x) => s + x[2], 0)];
+  // Glødformer: ellipsar i tre nivå med ein dithera kant (sjakkbrett) utanfor kvart nivå.
+  const stempel = new Map();
+  function glodForm(r, fy) {
+    const k = r.join(",") + "|" + fy;
+    let s = stempel.get(k);
+    if (s) return s;
+    const R = r[0] + 2, w = R * 2 + 1, d = new Uint8Array(w * w);
+    for (let dy = -R; dy <= R; dy++) for (let dx = -R; dx <= R; dx++) {
+      let lv = 0;
+      r.forEach((rx, j) => {
+        const ry = rx * fy, e = (dx * dx) / (rx * rx) + (dy * dy) / (ry * ry);
+        const kant = ((rx + 1.6) / rx) ** 2;
+        if (e <= 1 || (e <= kant && ((dx + dy) & 1) === 0)) lv = Math.max(lv, j + 1);
+      });
+      d[(dy + R) * w + dx + R] = lv;
+    }
+    // Som strekar (dy, dx frå, dx til, nivå), så stemplinga hoppar over det tomme rundt forma.
+    const runs = [];
+    for (let dy = -R; dy <= R; dy++) for (let dx = -R; dx <= R;) {
+      const v = d[(dy + R) * w + dx + R];
+      let e = dx + 1;
+      while (e <= R && d[(dy + R) * w + e + R] === v) e++;
+      if (v) runs.push(dy, dx, e, v);
+      dx = e;
+    }
+    s = { runs: Int16Array.from(runs) }; stempel.set(k, s);
+    return s;
+  }
+  // Stemplar ei form inn i lysnivåa. fast: alle pikslane i forma får dette nivået (skyskugge),
+  // men berre der det ikkje lyser frå før. Elles vinn det høgaste nivået, og lys vinn over skugge.
+  function stemple(form, cx, cy, fast) {
+    cx = Math.round(cx); cy = Math.round(cy);
+    const r = form.runs;
+    for (let j = 0; j < r.length; j += 4) {
+      const y = cy + r[j]; if (y < 0 || y >= LH) continue;
+      const v = fast != null ? fast : r[j + 3], x0 = Math.max(0, cx + r[j + 1]), x1 = Math.min(LW, cx + r[j + 2]);
+      for (let i = y * LW + x0, slutt = y * LW + x1; i < slutt; i++) {
+        const n = lysNiva[i];
+        if (fast != null ? n === 0 : n === 4 || v > n) lysNiva[i] = v;
+      }
+    }
+  }
+  // Skyskuggar: hardkanta former (tre ellipsar) som driv sakte over kartet, heile pikslar.
+  const SKY = [[0, 0, 40, 0.45], [-28, 6, 26, 0.5], [30, 4, 28, 0.5]].map(([x, y, r, fy]) => ({ x, y, f: glodForm([r], fy) }));
+  // Lysstrålar frå eit vindauge: eit parallellogram skrått ned mot høgre (eitt steg per to rader),
+  // i trinn: kjerne og kant, sterkast øvst, med ein dithera kant.
+  function straale(sx, sy) {
+    for (let dy = 0; dy < 104; dy++) {
+      const y = sy + dy; if (y < 0 || y >= LH) continue;
+      const xl = sx + (dy >> 1), sterk = dy < 36 ? 3 : dy < 70 ? 2 : 1;
+      for (let dx = -1; dx < 11; dx++) {
+        const x = xl + dx; if (x < 0 || x >= LW) continue;
+        let lv = dx >= 2 && dx < 8 ? sterk : sterk - 1;
+        if (dx < 0 || dx >= 10) lv = (x + y) & 1 ? 0 : Math.max(0, sterk - 1);
+        const i = y * LW + x;
+        if (lv > lysNiva[i]) lysNiva[i] = lv;
+      }
+    }
+  }
+  // Lyskjeldene på kartet: [x, y, type] i skjermpikslar (typane står i RPGData.LYSKJELDER).
+  function lyskjelder(ox, oy) {
+    const ut = [];
+    for (const b of kart.def.bygg || []) {
+      const type = b.id === "inne-grue" ? "grue" : b.id === "inne-kakkelomn" ? "kakkelomn" : b.id === "inne-lysekrone" ? "krone" : null;
+      const img = type && Pikslar.bygg(b.id); if (!img) continue;
+      const bx = Math.round((b.x + ox) * S) - 4, by = Math.round((b.y + b.h + oy) * S) - img.height;
+      const r = (Pikslar.ILD[b.id] || [])[0];                         // elden i grua og omnen
+      ut.push(r ? [bx + r.x + r.w / 2, by + r.y + r.h + 8, type] : [bx + img.width / 2, by + img.height / 2, type]);
+    }
+    const ute = kart.def.golv === "." || kart.def.golv === ",";
+    for (let y = 0; y < kart.h; y++) for (let x = 0; x < kart.w; x++) {
+      const c = kart.fliser[y][x];
+      if (c === "f") ut.push([(x + ox) * S + 8, (y + oy) * S + 12, "grue"]);
+      else if (c === "L") ut.push([(x + ox) * S + 8, (y + oy) * S + (ute ? 4 : 3), ute ? "lykt" : "lys"]);
+    }
+    return ut;
+  }
+  const BAKGRUNN = 0xff120c0e;                    // #0e0c12, fargen utanfor kartet (teikn())
+  // Tida lyset brukte i siste bilete (for testane): alt, og berre lesinga av lerretet. Lesinga
+  // tvingar nettlesaren til å teikne ferdig biletet, så ho inneheld òg teikninga av kartet.
+  let lysMs = 0, lesMs = 0;
+  function lys(no, ox, oy) {
+    const t0 = performance.now();
+    const st = (RPGData.STEMNINGAR || {})[kart.def.stemning] || {};
+    const tb = toneNo(effekt.tone.bak, no), tf = toneNo(effekt.tone.fig, no);
+    let bl = null3;
+    if (effekt.blink) {
+      const u = framdrift(effekt.blink, no);
+      if (u >= 1) effekt.blink = null;
+      else { const tr = Math.ceil((1 - u) * 8) / 8; bl = effekt.blink.farge.map(v => Math.round(v * tr)); }   // åtte steg ned
+    }
+    const sp = spotNo(no, ox, oy);
+    if (!kart.def.stemning && !effekt.tone.bak && !effekt.tone.fig && !effekt.blink && !sp) return;
+    // Lysnivå: skyskuggar, så glød og strålar.
+    lysNiva.fill(0);
+    if (st.skyer) {
+      const kw = kart.w * S + 240, kh = kart.h * S + 120;
+      for (let i = 0; i < st.skyer; i++) {
+        const cx = Math.round(((no * 0.008 + i * 311) % kw) - 120 + ox * S), cy = Math.round(((i * 97 + no * 0.003) % kh) - 60 + oy * S);
+        for (const s of SKY) stemple(s.f, cx + s.x, cy + s.y, 4);
+      }
+    }
+    if (st.glod) {
+      if (st.kjelder) for (const [x, y, type] of lyskjelder(ox, oy)) { const k = (RPGData.LYSKJELDER || {})[type]; if (k) stemple(glodForm(k.r, k.fy), x, y); }
+      if (st.ivar) stemple(glodForm(st.ivar, 0.9), (spelar.fx + ox) * S + 8, (spelar.fy + oy) * S + 2);
+      if (st.straalar) for (let y = 0; y < kart.h; y++) for (let x = 0; x < kart.w; x++) if (kart.fliser[y][x] === "u") straale(Math.round((x + ox) * S) + 4, Math.round((y + oy) * S) + 11);
+    }
+    // Operasjonane for kvart nivå (0 grunn, 1 til 3 glød, 4 skugge), for bakgrunn og figurar.
+    const syk = st.syklus ? Math.floor(no / 150) : 0;
+    const opNiva = (l, n) => n === 4 ? (st.skugge || {})[l] || st[l] || {} : n > 0 && st.glod ? st.glod[l][n - 1] : st[l] || {};
+    const lag = (l, n, y, tone) => {
+      const op = opNiva(l, n);
+      const sy = n > 0 && n < 4 && st.syklus ? st.syklus[(syk + n) % st.syklus.length] : null3;
+      const h = l === "bak" && (n === 0 || n === 4) ? hdma(st.hdma, y) : null3;
+      return lut(sum3(op.p || null3, h, sy, tone, bl), op.snitt, op.lys == null ? 15 : op.lys);
+    };
+    // Figurmaska: berre rektangelet rundt figurane blir lese.
+    const [fx0, fy0, fx1, fy1] = figBoks, fw = fx1 - fx0;
+    const fm = figMaske && fw > 0 && fy1 > fy0 ? fg.getImageData(fx0, fy0, fw, fy1 - fy0).data : null;
+    const tl = performance.now();
+    const bilde = g.getImageData(0, 0, LW, LH), px = new Uint32Array(bilde.data.buffer);
+    lesMs = performance.now() - tl;
+    const sa = Math.round((st.sepia || 0) * 256), sb = 256 - sa;
+    const lb = [], lf = [];
+    for (let y = 0; y < LH; y++) {
+      if ((y & 7) === 0) for (let n = 0; n < 5; n++) { lb[n] = lag("bak", n, y, tb); lf[n] = fm ? lag("fig", n, y, tf) : lb[n]; }
+      const mrad = fm !== null && y >= fy0 && y < fy1 ? (y - fy0) * fw - fx0 : null;   // maskeindeks for x i rada
+      // Spotlight: utanfor sirkelen er det svart, i eit band på tre pikslar rundt kanten annakvar piksel.
+      let ia = 0, ib = LW, ua = 0, ub = LW;
+      if (sp) {
+        const dy = y - sp.y, inn = sp.r * sp.r - dy * dy, ut_ = (sp.r + 3) * (sp.r + 3) - dy * dy;
+        const hi = inn >= 0 ? Math.floor(Math.sqrt(inn)) : -1, ho = ut_ >= 0 ? Math.floor(Math.sqrt(ut_)) : -1;
+        ia = sp.x - hi; ib = sp.x + hi + 1; ua = sp.x - ho; ub = sp.x + ho + 1;
+        if (hi < 0) ia = ib = 0;
+        if (ho < 0) ua = ub = 0;
+      }
+      const rad = y * LW;
+      for (let x = 0; x < LW; x++) {
+        const i = rad + x;
+        if (sp && (x < ia || x >= ib) && (x < ua || x >= ub || ((x + y) & 1))) { px[i] = 0xff000000; continue; }
+        const c = px[i];
+        if (c === BAKGRUNN) continue;                // utanfor kartet: ingen fargerekning (som backdrop på SNES)
+        let r = c & 255, gg = (c >> 8) & 255, b = (c >> 16) & 255;
+        if (sa) {                                   // falma mot brunt: lysverdien i ein varm tone
+          const l = (r * 77 + gg * 150 + b * 29) >> 8;
+          r = (r * sb + Math.min(255, l * 1.08 + 10) * sa) >> 8; gg = (gg * sb + l * 0.94 * sa) >> 8; b = (b * sb + l * 0.74 * sa) >> 8;
+        }
+        const t = mrad !== null && x >= fx0 && x < fx1 && fm[(mrad + x) * 4 + 3] > 127 ? lf[lysNiva[i]] : lb[lysNiva[i]];
+        px[i] = 0xff000000 | t[r] | (t[256 + gg] << 8) | (t[512 + b] << 16);
+      }
+    }
+    g.putImageData(bilde, 0, 0);
+    lysMs = performance.now() - t0;
+  }
+  // Spotlighten no: midten i skjermpikslar og radien (glir mot målet i heile pikslar).
+  function spotNo(no, ox, oy) {
+    const s = effekt.spot;
+    if (!s) return null;
+    const u = framdrift(s, no), r = Math.round(s.fra + (s.til - s.fra) * u);
+    if (u >= 1 && s.slutt) { effekt.spot = null; return null; }
+    let x, y;
+    if (Array.isArray(s.kven)) { x = (s.kven[0] + ox) * S + 8; y = (s.kven[1] + oy) * S + 2; }
+    else { const a = aktor(s.kven); if (!a) return null; x = (a.fx + ox) * S + 8; y = (a.fy + oy) * S + 2; }
+    return { x: Math.round(x), y: Math.round(y), r };
+  }
+  /* Scenesteg for lyset. Alle gir eit løfte som blir oppfylt når toninga er ferdig.
+     tone(lag, rgb, ms): bakgrunnen («bakgrunn»), figurane («figurar») eller begge («alle») blir
+       gradvis tona mot ein fast farge [r, g, b] (-31..31 per kanal, lagt til eller trekt frå),
+       i heile steg, som $50, $51 og $53 i FF6. rgb null tonar attende. Varer til neste kart.
+     blinkFarge(rgb, ms): eit blink i ein farge som går ned i åtte steg ($55).
+     spot(kven, r, ms): ein skarp lyssirkel rundt nokon (eller ei rute [x, y]) med radius r i
+       pikslar, svart utanfor og eit dithera band i kanten ($63). kven null: sirkelen veks ut og
+       blir borte. */
+  function tone(lagNamn, rgb, ms = 1000) {
+    const no = performance.now(), til = rgb || null3;
+    for (const l of lagNamn === "alle" ? ["bak", "fig"] : [lagNamn === "figurar" ? "fig" : "bak"]) {
+      effekt.tone[l] = { fra: toneNo(effekt.tone[l], no), til: til.slice(), t0: no, ms: Math.max(1, ms) };
+    }
+    return vent(ms);
+  }
+  function blinkFarge(rgb, ms = 300) { effekt.blink = { farge: rgb || [31, 31, 31], t0: performance.now(), ms }; return vent(ms); }
+  function spot(kven, r = 40, ms = 800) {
+    const no = performance.now(), gml = effekt.spot;
+    const fraR = gml ? Math.round(gml.fra + (gml.til - gml.fra) * framdrift(gml, no)) : LW;
+    if (kven == null) { if (gml) effekt.spot = Object.assign({}, gml, { fra: fraR, til: LW, t0: no, ms: Math.max(1, ms), slutt: true }); return vent(ms); }
+    effekt.spot = { kven, fra: fraR, til: r, t0: no, ms: Math.max(1, ms) };
+    return vent(ms);
+  }
+  function nullstillLys() { effekt.tone.bak = effekt.tone.fig = null; effekt.blink = null; effekt.spot = null; }
 
   /* Overgang inn i kamp: kvit blink, så blir biletet grovare og mørknar. */
 
@@ -661,13 +843,14 @@ window.Motor = (function () {
   function toning(til, ms = TONING, farge) {
     if (farge) svartEl.style.background = farge;
     else if (til > 0) svartEl.style.background = "";
-    svartEl.style.transition = `opacity ${ms}ms linear`;
+    // I 16 trinn, som lysstyrka på Super Nintendo (INIDISP), ikkje mjuk opasitet.
+    svartEl.style.transition = `opacity ${ms}ms steps(16, end)`;
     svartEl.style.opacity = String(til);
     return vent(ms + 20);
   }
   const tonUt = (ms, farge) => toning(1, ms, farge), tonInn = ms => toning(0, ms);
-  // Kort kvitt blink (ein ring som brest, eit lyn).
-  async function blink(ms = 260) { await toning(0.9, ms * 0.3, "#fff"); await toning(0, ms * 0.7); }
+  // Kort blink (ein ring som brest, eit lyn): kvitt, eller i fargen rgb ([r, g, b], 0..31), som $55.
+  function blink(ms = 260, rgb) { return blinkFarge(rgb, ms); }
   /* Pikseleffekten før kamp (som i Final Fantasy): eit kvitt blink, og biletet løyser seg opp
      i stadig større pikslar. Etterpå tonar skjermen til svart, og kuttet til kampscena skjer
      i svart (sjå kamp() i spel.js). */
@@ -759,6 +942,9 @@ window.Motor = (function () {
     sentrum = { x: kx + (VW - 1) / 2, y: ky + (VH - 1) / 2 };       // der kameraet faktisk står (til neste kamerarørsle)
     const ox = kart.w < VW ? (VW - kart.w) / 2 : -kx, oy = kart.h < VH ? (VH - kart.h) / 2 : -ky;
     g.fillStyle = "#0e0c12"; g.fillRect(0, 0, lerret.width, lerret.height);
+    // Figurmaska til lyset (sjå lys()): berre når kartet har ei stemning eller ei toning av figurane.
+    figMaske = !!((RPGData.STEMNINGAR || {})[kart.def.stemning] || effekt.tone.fig || effekt.tone.bak);
+    if (figMaske) nyMaske();
     const x0 = Math.floor(-ox) - 1, y0 = Math.floor(-oy) - 1;
     const naturFig = [];
     // Rada under skjermen er med, fordi høge figurar (tre, murar) står der og stikk opp i biletet.
@@ -836,10 +1022,10 @@ window.Motor = (function () {
     const djupn = f => (f.sete ? f.sete.b.y + f.sete.b.h - 1 : f.y) + (f.pose && f.pose !== "knele" && f.pose !== "peike" ? 0.02 : 0);
     figurar.sort((a, b) => djupn(a) - djupn(b));
     for (const f of figurar) {
-      if (f.mur) { g.drawImage(f.mur, Math.round((f.x + ox) * S), Math.round((Math.floor(f.y) + oy) * S) - 6); continue; }
-      if (f.natur) { g.drawImage(f.natur.img, Math.round((f.x + ox) * S) + f.natur.x, Math.round((Math.floor(f.y) + oy) * S) + f.natur.y); continue; }
-      if (f.haug) { g.drawImage(f.haug, Math.round((f.x + ox) * S) - 1, Math.round((Math.floor(f.y) + 1 + oy) * S) - f.haug.height); continue; }
-      if (f.over) { g.drawImage(f.bygg, Math.round((f.x + ox) * S) - 4, Math.round((f.by + 1 + oy) * S) - f.bygg.height); continue; }
+      if (f.mur) { const mx = Math.round((f.x + ox) * S), my = Math.round((Math.floor(f.y) + oy) * S) - 6; g.drawImage(f.mur, mx, my); maske(f.mur, mx, my, true); continue; }
+      if (f.natur) { const nx = Math.round((f.x + ox) * S) + f.natur.x, ny = Math.round((Math.floor(f.y) + oy) * S) + f.natur.y; g.drawImage(f.natur.img, nx, ny); maske(f.natur.img, nx, ny, true); continue; }
+      if (f.haug) { const hx = Math.round((f.x + ox) * S) - 1, hy = Math.round((Math.floor(f.y) + 1 + oy) * S) - f.haug.height; g.drawImage(f.haug, hx, hy); maske(f.haug, hx, hy, true); continue; }
+      if (f.over) { const ux = Math.round((f.x + ox) * S) - 4, uy = Math.round((f.by + 1 + oy) * S) - f.bygg.height; g.drawImage(f.bygg, ux, uy); maske(f.bygg, ux, uy, true); continue; }
       if (f.bygg) {
         // Slagskugge på bakken, mot høgre og ned (lyset kjem frå oppe til venstre): silhuetten
         // til huset forskoven, men berre nedst ved bakken, så høge ting (tårnet) ikkje kastar
@@ -847,7 +1033,7 @@ window.Motor = (function () {
         const bx = Math.round((f.x + ox) * S) - 4, by = Math.round((f.y + 1 + oy) * S);
         g.save(); g.beginPath(); g.rect(bx, by - 22, f.bygg.width + 8, 26); g.clip();
         g.globalAlpha = 0.28; g.drawImage(skuggeAv(f.bygg), bx + 4, by - f.bygg.height + 3); g.restore();
-        g.drawImage(f.bygg, bx, by - f.bygg.height);
+        g.drawImage(f.bygg, bx, by - f.bygg.height); maske(f.bygg, bx, by - f.bygg.height, true);
         for (const r of Pikslar.ILD[f.id] || []) Pikslar.ild(g, bx + r.x, by - f.bygg.height + r.y, r.w, r.h, no, r.glo, Pikslar.ildMaske(f.bygg, r));
         if (dorAnim && f.by === dorAnim.ty) teiknDor(no, ox, oy);
         for (const [rx, ry] of Pikslar.ROYK[f.id] || []) Pikslar.royk(g, bx + rx, by - f.bygg.height + ry, no);
@@ -858,20 +1044,20 @@ window.Motor = (function () {
       if (f.sp.vesen) {
         const c = f.sp.vesen, gy = Math.round((Math.sin(no / 420) + 1) * 0.8);
         g.fillStyle = "rgba(10,5,20,.32)"; g.beginPath(); g.ellipse(sx + 8, sy + 13, Math.max(6, c.width * 0.42), 3 + c.width / 40, 0, 0, Math.PI * 2); g.fill();
-        g.drawImage(c, sx + 8 - Math.round(c.width / 2), sy + 15 - c.height - gy);
+        g.drawImage(c, sx + 8 - Math.round(c.width / 2), sy + 15 - c.height - gy); maske(c, sx + 8 - Math.round(c.width / 2), sy + 15 - c.height - gy);
         continue;
       }
       // Ein pose (knele, sitje, peike) går framfor kjensla. Liggje og sove er ramma for slått ut (24 x 16).
       const pose = f.pose && f.sp.pose && f.sp.pose[f.pose];
       if (pose && !Array.isArray(pose)) {
         g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx - 2, sy + 10, 20, 3); g.fillRect(sx, sy + 9, 16, 5);
-        g.drawImage(pose, sx - 4, sy - FOT + 8);
+        g.drawImage(pose, sx - 4, sy - FOT + 8); maske(pose, sx - 4, sy - FOT + 8);
         if (f.pose === "sove") teiknZz(g, sx + 14, sy - FOT + 4, no);
         continue;
       }
       if (!f.sete) { g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx + 3, sy + 10, 10, 3); g.fillRect(sx + 4, sy + 9, 8, 5); }
       const bilde = pose ? pose[f.dir] : f.kjensle && f.sp.kjensle && f.sp.kjensle[f.kjensle] ? f.sp.kjensle[f.kjensle] : f.sp.rammer[f.dir][f.steg];
-      g.drawImage(bilde, sx, sy - FOT);
+      g.drawImage(bilde, sx, sy - FOT); maske(bilde, sx, sy - FOT);
     }
     // Silhuett av spelaren (eller følgjet) bak eit hus, berre der huset har «silhuett: true» i kartet
     // (til spesielle høve, til dømes ein stad der ein må gå bak noko for å finne ein ting).
@@ -885,7 +1071,7 @@ window.Motor = (function () {
       });
       if (bak) { g.globalAlpha = 0.4; g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy); g.globalAlpha = 1; }
     }
-    stemning(no, ox, oy);
+    lys(no, ox, oy);
   }
 
   // Den som søv: to små z som stig opp og blir borte, om att og om att (kvit med mørkt omriss).
@@ -1014,7 +1200,9 @@ window.Motor = (function () {
 
   return {
     VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk, overgang, gjennomDor, tonUt, tonInn, scene,
-    gaa, snu, inn, byt, kamera, rist, kort, naerbilete, blink, aktor, vent,
+    gaa, snu, inn, byt, kamera, rist, kort, naerbilete, blink, tone, spot, aktor, vent,
+    get lysMs() { return lysMs; }, get lysLesMs() { return lesMs; },  // tida lyset brukte i siste bilete
+    get lysEffekt() { return effekt; },                               // toning, blink og spotlight (for testane)
     // Kameraet står ved noko anna enn spelaren (ei scene let det stå).
     get kameraBorte() { return !!kam && !kam.tilbake; },
     get kameraSentrum() { return { x: sentrum.x, y: sentrum.y }; },   // der kameraet står (for testane)

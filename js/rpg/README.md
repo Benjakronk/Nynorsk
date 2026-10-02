@@ -5,7 +5,7 @@ Denne mappa held rollespelet i `spel.html`. Alt arbeidet til no er **prototypear
 | Fil | Innhald |
 |---|---|
 | `data.js` | ord, figurar, kart, fiendar, scener og manus |
-| `motor.js` | feltmotoren: kart, rørsle, folk, dører, samtalar, toning og regi |
+| `motor.js` | feltmotoren: kart, rørsle, folk, dører, samtalar, lys, toning og regi |
 | `spel.js` | tilstand og lagring, manuskøyring, meny, kamp-oppstart, verdskart |
 | `kamp.js` | kampsystemet |
 | `stev.js` | stev (prøve) |
@@ -101,9 +101,11 @@ Figurane blir nemnde med namn: «Ivar» er spelaren, «Huldra» er følgjet når
 | `{ vent: ms }` | pause |
 | `{ kort: ["Stad", "tid"] }` | kort med stad og tid |
 | `{ naerbilete: "bilete/….png", tekst }` | nærbilete midt på skjermen, ventar på Z |
-| `{ blink: 1 }` | kort kvitt blink |
+| `{ blink: 1 }` | kort kvitt blink. Med `rgb: [r, g, b]` (0 til 31) blinkar skjermen i ein farge ($55 i FF6), og `ms` er lengda. Blinket går ned i åtte steg |
+| `{ tone: "bakgrunn", rgb: [-8, -8, 0], ms }` | tonar bakgrunnen (`"bakgrunn"`), berre figurane (`"figurar"`) eller heile biletet (`"alle"`) gradvis mot ein fast farge som blir lagd til eller trekt frå (-31 til 31 per kanal), i heile steg som $50, $51 og $53 i FF6. `rgb: null` tonar attende. Varer til neste kart |
+| `{ spot: "Ivar", r: 40, ms }` | spotlight ($63): ein skarp lyssirkel med radius `r` pikslar rundt ein figur eller ei rute (`[x, y]`), svart utanfor og eit dithera band på tre pikslar i kanten. Radien glir frå det han var. `{ spot: null, ms }` lèt sirkelen vekse ut og bli borte |
 | `{ rist: ms, styrke }` | ristar biletet |
-| `{ ton: "svart" }`, `{ ton: "kvitt" }`, `{ ton: "inn" }` | tonar ut til svart eller kvitt, eller inn att (`ms`) |
+| `{ ton: "svart" }`, `{ ton: "kvitt" }`, `{ ton: "inn" }` | tonar ut til svart eller kvitt, eller inn att (`ms`), i 16 lysstyrketrinn som på Super Nintendo |
 | `{ val, alt, svar, id }` | val. Med `id` blir valet hugsa i `st.val[id]`, og `RPGData.valt(id, i)` kan brukast i `dersom` |
 | `{ traad: "id", tekst }` | opnar ein forteljartråd (`st.traadar`) |
 | `{ traad: "id", lukk: 1 }` | lukkar han |
@@ -114,6 +116,20 @@ Figurane blir nemnde med namn: «Ivar» er spelaren, «Huldra» er følgjet når
 | `{ scenekart: null, ms }` | tonar attende til kartet, ruta og retninga spelaren hadde før |
 
 Dei eldre stega (`lytt`, `tilbod`, `fort`, `flagg`, `gi`, `kamp`, `til` og andre) står i toppen av `data.js`.
+
+### Lys
+Lyset etterliknar Super Nintendo og Final Fantasy VI. Det meste av lyset er teikna inn i pikslane (lys frå oppe til venstre, eld og glød malt for hand). Resten er fargerekning (color math) som maskinvara gjorde: etter at kartet er teikna, reknar `lys()` i `motor.js` om kvar piksel med ein fast farge som blir lagd til eller trekt frå med klemming per kanal, eventuelt halvert (snitt), og fargane blir kvantiserte til 5 bit per kanal (15-bit fargar). Det skjer med éin `getImageData`, oppslagstabellar per rad (`Uint32Array`) og éin `putImageData`, om lag 1 ms per bilete. Pikslar utanfor kartet blir ikkje rekna om (som backdrop på SNES).
+
+- **Bakgrunn og figurar kvar for seg.** Ei maske teiknar figurane (folk og vesen) i same rekkjefølgje som lerretet, og hus, tre og møblar som står framfor ein figur, viskar ut maska der dei dekkjer. Så kan bakgrunnen bli mørk medan figurane held fargane, som $51 og $53.
+- **Stemningar** står i `STEMNINGAR` i `data.js`, og kvart kart vel ei med `stemning`. Ein ny stemning er ei ny oppføring i tabellen (sjå kommentaren der): `bak` og `fig` (fast farge `p`, `snitt`, lysstyrke `lys`), `hdma` (ein farge som endrar seg nedover skjermen i trinn på 8 rader, som HDMA), `glod` (tre nivå inni glødformene), `syklus` (palettanimasjon), `skyer` og `skugge`, `kjelder`, `ivar`, `straalar` og `sepia`. Ingen vignett og ingen mjuke gradientar.
+  - `morgon`: varmt lys, varmast øvst (hdma), og hardkanta skyskuggar som driv.
+  - `kveld`: fiolett. Ein fast farge blir trekt frå bakgrunnen (meir nedst), litt mindre frå figurane. Lyktene lyser.
+  - `inne`: rommet i skugge, varmt eldlys rundt grua, omnen og ljosa.
+  - `mork`: nesten mørkt (arkivet), med ein lyssirkel rundt Ivar og rundt lampene.
+  - `kyrkje`: lyst, med lysstrålar frå vindauga som eit gjennomsiktig lag i trinn (kjernen tek snittet mot kvitt).
+  - `minne`: falma fargar mot brunt (palettendring) og lyse band øvst og nedst, i trinn.
+- **Lyskjelder** (`LYSKJELDER` i `data.js`): grua og kakkelomnen (der elden i `Pikslar.ILD` er), ljos og lykter (`L`), peis (`f`) og lysekrona. Kvar har ei glødform i tre nivå med ein dithera kant, hardkanta som om ho var teikna for hand. Fargane i gløden går på rundgang med 150 ms per steg, i same takt som elden.
+- **Scenesteg:** `tone`, `blink` med `rgb` og `spot` (sjå tabellen over). `ton` til svart og kvitt går i 16 trinn.
 
 ### Posar
 Figurane kan knele, sitje, peike, liggje og sove i ei scene (`D.POSAR`). Posen varer til figuren går, eller til hendinga er slutt, og han går framfor kjensla.

@@ -112,7 +112,10 @@
     if (s.kamera !== undefined) return Motor.kamera(s.kamera && (typeof s.kamera === "string" ? regiNamn(s.kamera) : s.kamera), s.ms);
     if (s.vent) return Motor.vent(s.vent);
     if (s.ton) return s.ton === "inn" ? Motor.tonInn(s.ms || 600) : Motor.tonUt(s.ms || 600, s.ton === "kvitt" ? "#fff" : null);
-    if (s.blink) return Motor.blink();
+    if (s.blink) return Motor.blink(s.ms, s.rgb);
+    // Lyset (sjå «Lys» i js/rpg/README.md): toning av bakgrunn eller figurar, og spotlight.
+    if (s.tone) return Motor.tone(s.tone, s.rgb, s.ms);
+    if (s.spot !== undefined) return Motor.spot(s.spot && (typeof s.spot === "string" ? regiNamn(s.spot) : s.spot), s.r, s.ms);
     if (s.rist) return Motor.rist(s.rist, s.styrke);
     return null;
   }
