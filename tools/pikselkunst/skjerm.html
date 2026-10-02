@@ -34,6 +34,8 @@ f.onload = async () => {
   for (const fl of (q.get("flagg") || "").split(",").filter(Boolean)) w.RPGTest.st().flagg[fl] = true;
   // stemning=ingen (eller eit anna namn) byter lyset på kartet, til dømes for å sjå fargane utan kveldslys.
   // variant=dal (eller eit anna namn) vel kva utsikt kartet har nedst (sjå variant i data.js).
+  // skra=a|b|c vel korleis skråkanten under eit overheng møter berget bak (sjå skra i data.js).
+  if (q.get("skra")) w.RPGData.KART[q.get("kart") || "asen"].skra = q.get("skra");
   if (q.get("variant")) w.RPGData.KART[q.get("kart") || "asen"].variant = q.get("variant");
   if (q.get("stemning")) w.RPGData.KART[q.get("kart") || "asen"].stemning = q.get("stemning") === "ingen" ? undefined : q.get("stemning");
   M.last(q.get("kart") || "asen", q.get("m") || "1"); await vent(400); await blaFram();

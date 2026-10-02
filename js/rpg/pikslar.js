@@ -1125,8 +1125,16 @@ window.Pikslar = (function () {
       const gr = kk > 4 && v >= 4 && helling < -0.02 && hash(Math.floor(X / 2), Math.floor(Yr / 2), 534) > 0.9;
       return gr ? farge(R_.gras[1], steg) : farge(BERG[v], steg);
     }
+    // Overhenget som ein spiss: graset heng lengst ned midt på (spissen), og berget under finst berre
+    // mot endane (der hylla eller neset heng fast); under spissen er det luft rett ned.
+    let ua = tx, ub = tx;
+    if (virt) { const ru = t0 + 1; while (ua > 0 && felt.c(ua - 1, ru) === "U") ua--; while (ub < felt.w - 1 && felt.c(ub + 1, ru) === "U") ub++; }
+    const midt = (ua + ub + 1) * S / 2, halv = Math.max(8, (ub - ua + 1) * S / 2);
+    const skraVariant = felt.skra || "a";
     for (let x = 0; x < S; x++) {
       const X = tx * S + x;
+      const r = Math.min(1, Math.abs(X + 0.5 - midt) / halv);             // 0 i spissen, 1 ved endane
+      const tunge = Math.round(2 + Math.pow(1 - r, 1.6) * 10 + (vstoy(X / 4, t0, 548) - 0.5) * 2);
       let lepp = 2 + Math.floor(vstoy(X / 9, t0 * 5, 521) * 4.99) + Math.floor(vstoy(X / 3, t0 * 5 + 2, 535) * 2.5);
       if (bakkeV) lepp = Math.max(lepp, boge(x + 0.5, 10, 14));
       if (bakkeH) lepp = Math.max(lepp, boge(S - x - 0.5, 10, 14));
@@ -1139,7 +1147,8 @@ window.Pikslar = (function () {
       // Nedst over lia: ujamn botn (2 til 9 pikslar opp), med ei mørk underside rett over.
       const botn = nedst && felt.stupFast ? H - (2 + Math.floor(vstoy(X / 6, t0 * 5 + 3, 541) * 5) + Math.floor(hash(X >> 1, t0, 542) * 3)) : H + 99;
       // Overhenget: tynn kant av torv og berg, ujamn underside.
-      const kant = 4 + Math.floor(vstoy(X / 5, t0 * 7, 543) * 4) + (hash(X, t0, 544) > 0.8 ? 1 : 0);
+      const kant = virt ? tunge + 4 : 4 + Math.floor(vstoy(X / 5, t0 * 7, 543) * 4) + (hash(X, t0, 544) > 0.8 ? 1 : 0);
+      const veggBotn = virt ? Math.min(botn, S + kant + Math.round(Math.pow(r, 1.4) * (H - S - kant)) + Math.round((vstoy(X / 5, t0, 549) - 0.5) * 4)) : H + 99;
       const bakV = kantV ? boge(x + 0.5, 8, 18) : 0, bakH = kantH ? boge(S - x - 0.5, 8, 18) : 0;
       for (let y = 0; y < S; y++) {
         const i = y * S + x, Yr = idx * S + y;
@@ -1162,11 +1171,25 @@ window.Pikslar = (function () {
           ut[i] = berg(X, (ty - tb) * S + y, 2, Math.min(7, Math.floor(((ty - tb) * S + y) / 40 * 3)), null);
           continue;
         }
+        if (erV && y < tunge && virt) { ut[i] = y === tunge - 1 ? GR[1] : gras[i]; continue; }   // graset heng ned i ein spiss
         if (erV && y < kant) {
           // Overhenget sett framanfrå: gras som heng, torv og jord, ei tynn berglist, mørk underside.
-          ut[i] = y === 0 ? GR[1] : y === 1 && hash(X, ty, 547) > 0.4 ? GR[0] : y < kant - 3 ? (rot && y === kant - 4 ? J.hoy : J.lag)
-            : y < kant - 1 ? pk(BERG[y === kant - 3 ? 5 : 4]) : pk(BERG[1]);
+          const ky = virt ? y - tunge : y, kn = virt ? 4 : kant;
+          ut[i] = ky === 0 ? GR[0] : ky < kn - 2 ? (rot && ky === kn - 3 ? J.hoy : J.lag) : ky < kn - 1 ? pk(BERG[4]) : pk(BERG[1]);
           continue;
+        }
+        // Under spissen: luft. Skråkanten der berget sluttar, i ein av tre variantar (felt.skra):
+        // a: berget bak ligg lenger inn i djup skugge før det sluttar, b: ein lys rygg som går over i ur,
+        // c: berre ei mørk underside, og dalen syner rett under.
+        if (virt && Yr >= veggBotn) {
+          const d = Yr - veggBotn;
+          if (skraVariant === "a" && d < 7) { ut[i] = d < 2 || ((X + Yr) & 1) ? pk(BERG[0]) : berg(X, Yr, S, 2, null, 1.2); continue; }
+          if (skraVariant === "b") {
+            if (d === 0) { ut[i] = pk(BERG[5]); continue; }
+            if (d < 9 && hash(X >> 1, Yr >> 1, 550) > d / 9) { const v = hash(X, Yr, 551); ut[i] = farge(BERG[v > 0.7 ? 4 : v > 0.35 ? 3 : 2], 2); continue; }
+          }
+          if (skraVariant === "c" && d === 0) { ut[i] = pk(BERG[0]); continue; }
+          ope[i] = 1; continue;
         }
         if (stein && !virt && Yr >= lepp - 3 && Yr < lepp + 1) {
           const sx = (X % 5), top = Yr === lepp - 3;

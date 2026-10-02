@@ -709,7 +709,7 @@ window.Motor = (function () {
   function terrengfelt() {
     if (kart.terrengfelt) return kart.terrengfelt;
     const kx = v => Math.max(0, Math.min(kart.w - 1, v)), ky = v => Math.max(0, Math.min(kart.h - 1, v));
-    kart.terrengfelt = { id: kart.id, w: kart.w, h: kart.h, golv: kart.def.golv, stupFast: !!kart.def.stupFast, c: (x, y) => kart.fliser[ky(y)][kx(x)] };
+    kart.terrengfelt = { id: kart.id, w: kart.w, h: kart.h, golv: kart.def.golv, stupFast: !!kart.def.stupFast, skra: kart.def.skra, c: (x, y) => kart.fliser[ky(y)][kx(x)] };
     return kart.terrengfelt;
   }
 

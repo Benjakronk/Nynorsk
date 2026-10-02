@@ -1301,3 +1301,25 @@ same måte, uansett kven som tek over.
   plass. Gangrammene i scena (tolv bilete med 45 ms mellom): rotta spring mot høgre og så ned, og ramma
   skiftar med steget. Scena med svermen: fire rotter står rundt i rommet og ser mot Ivar.
 - **Står att:** Rammene framanfrå og bakfrå er enkle; ei rotte sett ovanfrå ville lese betre.
+
+## Runde 40: spiss overheng, og tre variantar av skråkanten
+
+- **Oppdrag:** Brukaren: hylla som stikk ut over dalen skal få ei spissare form, der spissen lengst ned
+  nesten berre har graskanten som heng over, med luft rett under. Overgangen mellom skråkanten og det som
+  ligg bak og under (berget bak, ura, dalsida) stemmer ikkje heilt.
+- **Gjort:**
+  - `Pikslar.stup`: overhenget («U») under neset og hylla er ein spiss. Graset heng lengst ned midt på
+    (opptil 12 pikslar) og blir kortare mot endane, med ei tynn kant av torv og ei berglist under.
+    Berget under finst berre mot endane, der hylla eller neset heng fast; under spissen er det luft
+    rett ned, og botnen av berget går på skrå opp mot spissen (skråkanten).
+  - Tre variantar av skråkanten (`skra` på kartet, `skra=a|b|c` i `skjerm.html`): a) berget bak ligg
+    lenger inn i djup skugge langs kanten, b) ein lys rygg langs kanten som går over i stein og ur
+    utan skilje, c) berre ei mørk underside, og dalen syner rett under. Samanlikningsark med etikettar:
+    `tools/pikselkunst/forhand/skjerm/r39-skrakant-samanlikning.png` (hylla til venstre, neset til
+    høgre, same utsnitt).
+  - Valt: b (`skra: "b"` på Åsen). Ryggen og steinane har fargane til ura øvst i lia, så overhenget,
+    berget og dalsida heng saman utan skilje, og spissen står fritt.
+- **Vurdert:** Samanlikningsarket; i a skil skuggen laga tydeleg, men ser ut som eit hol, i c heng
+  berget i lufta med ein hard kant.
+- **Står att:** Hylla er så brei at spissen blir ein slak boge; ein smalare hylle i kartet ville gi ein
+  spissare form.

@@ -415,6 +415,10 @@ window.RPGData = (function () {
       ],
       variant: "fast",                                                 // utsikta nedst: «fast» eller «dal» (sjå parallakse)
       stupFast: true,                                                  // stupet endar i eit overheng, og lia under er eit fast lag
+      // Overhenget under neset og hylla er ein spiss (graset heng lengst ned midt på, luft under), og
+      // skråkanten der berget under sluttar, er ein lys rygg som går over i ura (skra: "a" skugge,
+      // "b" rygg, "c" fri; sjå Pikslar.stup og forhand/skjerm/r39-skrakant-samanlikning.png).
+      skra: "b",
       kameraOpp: { fra: 4, rader: 6, fart: 1 },                         // øvst glir kameraet roleg seks rader opp over kanten
       kameraNed: { kant: true, rader: 4, fart: 1 },                    // på flisa rett over stupet glir kameraet roleg ned, så Ivar står øvst
       // Forgrunnen: bjørkegreiner i øvre hjørne ved skogen, høgt gras i nedre hjørne ved stupet.
