@@ -1395,3 +1395,17 @@ same måte, uansett kven som tek over.
 - **Vurdert:** Før og etter: `forhand/skjerm/r44-for-etter.png` (neset og ytst på hylla), og
   `r44-nabb.png` (nabbane åleine).
 - **Står att:** Blokkradene ligg framleis litt for jamt over kvarandre.
+
+## Runde 45: sprekker, lav og fargevariasjon på nabbane
+
+- **Oppdrag:** Brukaren: legg til sprekker, lav og litt fargevariasjon på forsida av blokkene.
+- **Gjort:** `nabb_ramme` i `utsikt.py`: kvar blokk får ein tone (nøytral, varm brungrå eller kald blågrå)
+  og ein svak lysovergang nedover framsida i tre flate band. Etter at blokkene er teikna, får kvar blokk
+  to til tre sprekker som går på skrå og byter retning, nokre med ei grein, teikna som ei mørk line med
+  ei lys kant til høgre (veggen i sprekka som vender mot ljoset), og lav langs sprekkene. Små klynger av
+  lav (gulgrøn, grågrøn og ein og annan rustoransje) ligg nær toppkanten, og éi sprekk har ei mørk
+  vassstripe nedover. Ingen dither. Kantbandet øvst er som før.
+- **Vurdert:** `forhand/skjerm/r45-for-etter.png` (same utsnitt som r44: neset og ytst på hylla) og
+  `r45-nabb.png` (nabbane åleine). I spelet syner berre toppen av nabbane, så det er dei øvste sprekkene
+  og lavflekkene som syner.
+- **Står att:** Ingenting nytt.

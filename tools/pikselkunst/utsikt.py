@@ -680,8 +680,17 @@ def nabb_ramme(vind, bjork, s, speil=False):
             u += bw
         rader.append((y, y + hr, blokker)); y += hr; k += 1
     mose = M.rampe("#2c4228", "#3e5a32", "#56763e")
+    # Fargevariasjon: somme blokker litt varmare (brungrå), andre litt kaldare (blågrå), og ein svak
+    # lysovergang nedover framsida (to flate band, ikkje dither).
+    TONAR = {"nøytral": ("#544a56", "#4c4350", "#433b48"), "varm": ("#5a4c48", "#52453f", "#483c38"), "kald": ("#4c4c5c", "#454454", "#3c3c4c")}
+    framside = {}                                                         # (x, y) -> blokk, for sprekker og lav etterpå
+    blokkinfo = []
     for (r0, r1, blokker) in rader:
         for (b0_, b1_, offv, offh) in blokker:
+            bid = len(blokkinfo)
+            tv = M.h(b0_, r0, s + 30)
+            tone_ = TONAR["varm"] if tv < 0.33 else TONAR["kald"] if tv > 0.7 else TONAR["nøytral"]
+            blokkinfo.append((r0, r1, b0_, b1_, (offv + offh) // 2))
             for yy in range(r0, r1):
                 # ujamne fuger: kanten flyttar seg litt nedover blokka
                 b0 = b0_ + round(math.sin(yy / 7 + b0_) * 1.4 + (M.stoy(yy / 5, b0_, s + 28) - 0.5) * 2)
@@ -707,10 +716,53 @@ def nabb_ramme(vind, bjork, s, speil=False):
                     elif dv < 3: c = F["lysKant"]                                         # skråkanten mot ljoset
                     elif dh < 2: c = F["mork"]                                            # sida bort frå ljoset
                     elif yy > r1 - 3: c = F["botn"]
-                    else: c = F["front2"] if M.h((x + 3 * k) // 7, yy // 9, s + 23) > 0.72 else F["front"]
+                    else:
+                        rel = (yy - r0) / max(1, r1 - r0)
+                        c = tone_[0] if rel < 0.3 else tone_[1] if rel < 0.75 else tone_[2]
+                        framside[(x, yy)] = bid
                     if iu < 2: c = F["lysKant"] if speil else F["skugge"]                 # yttersida av nabben
                     if 1 <= dy < 5 and M.h(x // 2, yy, s + 24) > 0.78: c = M.tone(mose, M.h(x, yy, s + 25), x, yy)   # mose på hyllene
                     L_.p(x, yy, c)
+            pass
+    # Sprekker: få per blokk, på skrå og med greiner, mørk line med lys kant mot ljoset (til høgre for
+    # sprekka, der veggen i sprekka vender mot venstre). Ei mørk vassstripe renn ned frå éi sprekk.
+    sprekkFarge, lysKant, vatnFarge = "#1e1826", "#6e6268", "#3a3240"
+    vatn_brukt = False
+    lav = ["#9aa456", "#7e8c72", "#b0683a"]
+    for bid, (r0, r1, b0_, b1_, off) in enumerate(blokkinfo):
+        fr = [p for p, b in framside.items() if b == bid]
+        if len(fr) < 40: continue
+        xs = [p[0] for p in fr]; x0, x1 = min(xs), max(xs)
+        for n in range(2 + int(M.h(bid, 1, s + 31) * 2)):
+            x = x0 + 4 + int(M.h(bid, n, s + 32) * max(1, x1 - x0 - 8)); yy = r0 + off + 5 + int(M.h(bid, n, s + 47) * 8)
+            retning = -1 if M.h(bid, n, s + 33) < 0.5 else 1
+            lengd = 8 + int(M.h(bid, n, s + 34) * 18)
+            for steg in range(lengd):
+                if (x, yy) in framside and framside[(x, yy)] == bid:
+                    L_.p(x, yy, sprekkFarge)
+                    if (x + 1, yy) in framside: L_.p(x + 1, yy, lysKant)
+                    if M.h(x, yy, s + 35) > 0.82 and (x - 1, yy) in framside: L_.p(x - 1, yy, M.hx(lav[int(M.h(x, yy, s + 36) * 2.2)]))   # lav langs sprekka
+                if steg == lengd // 2 and M.h(bid, n, s + 37) > 0.5:   # ei grein
+                    gx, gy = x, yy
+                    for g2 in range(6):
+                        gx -= retning; gy += 1
+                        if (gx, gy) in framside: L_.p(gx, gy, sprekkFarge)
+                yy += 1
+                if M.h(x, yy, s + 38) < 0.45: x += retning
+                if M.h(x, yy, s + 39) < 0.12: retning = -retning
+            if not vatn_brukt and M.h(bid, n, s + 40) > 0.5:          # vassstripe ned frå sprekka
+                vatn_brukt = True
+                for vy in range(yy, r1 - 2):
+                    for vx in (x, x + 1):
+                        if (vx, vy) in framside and M.h(vx, vy, s + 41) > 0.15: L_.p(vx, vy, vatnFarge)
+        # Lav i små klynger nær toppkanten av blokka
+        for n in range(2 + int(M.h(bid, 5, s + 42) * 3)):
+            cx = x0 + int(M.h(bid, n, s + 43) * (x1 - x0)); cy = r0 + off + 5 + int(M.h(bid, n, s + 44) * 4)
+            f = lav[0] if M.h(bid, n, s + 45) < 0.5 else lav[1] if M.h(bid, n, s + 45) < 0.88 else lav[2]
+            for dx, dy in [(0, 0), (1, 0), (0, 1), (-1, 1), (1, 1), (2, 1)]:
+                if M.h(cx + dx, cy + dy, s + 46) > 0.25 and (cx + dx, cy + dy) in framside: L_.p(cx + dx, cy + dy, f)
+    for (r0, r1, blokker) in rader:
+        for (b0_, b1_, offv, offh) in blokker:
             # lyng på toppflata av nokre blokker
             if M.h(b0_, r0, s + 26) > 0.55:
                 u = b0_ + (b1_ - b0_) // 2; yy = max(r0, int(topp(max(0, u)))) + (offv + offh) // 2 + 1
