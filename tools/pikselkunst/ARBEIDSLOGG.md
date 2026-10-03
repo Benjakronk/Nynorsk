@@ -1610,3 +1610,36 @@ same måte, uansett kven som tek over.
   `k52-trapp-heil.png`, `k52-galleri-heil.png` og `k52-tarn-heil.png`.
 - **Står att:** Galleriet og tårnet har ingen folk eller hendingar. Utsynet frå galleriet er eit fast
   bilete (lysekronene i det rører seg ikkje). Tårnet har ingen trapp vidare opp eller tau Ivar kan dra i.
+
+## Runde 54: galleriet ser ned i djupet, klokketårnet får golv og ei stor klokke, og Ivar går opp på preikestolen
+
+- **Frå brukaren:** Ein runde på galleriet og tårnet, og Ivar skal kunne gå opp på preikestolen.
+- **Før:** `forhand/skjerm/k53-for-galleri.png` og `k53-for-tarn.png`. Utsynet frå galleriet var i same
+  målestokk som galleriet, så skipet såg ut til å halde fram. Tårnet var ein brun plankevegg med ei lita
+  klokke, og golv og vegg flaut saman.
+- **Galleriet:**
+  - Utsynet er laga på nytt (`utsyn_galleri.py`): skipet utan lys, utan det som heng høgt og utan folk
+    (nye parametrar `utanOver` og `utanFolk` i oversikt.html), i halv storleik, mørkt, kaldt og dempa,
+    rett ovanfrå, med hovud i benkene og lysekronene sett ovanfrå, og mørke veggar ned i djupet på
+    sidene. Det ligg flatt med låg parallakse (faktor 0,75), djupare enn galleriet.
+  - Brystninga er kraftig og mørk: tjukk handlist, dreia balustrar med glipe der djupet syner, stolpar.
+  - Benkene står i trinn (`galleritrinn`), og eit lite orgel (`orgel`, positiv med tinnpiper) står
+    framme til høgre. Organisten (ny figur `organist`) sit ved det og har to replikkar.
+- **Klokketårnet:** lyse golvplankar sett ovanfrå mot mørkt laft, og laftet berre som bakvegg
+  (`tarnvegg`, med lydlukene) og smale kantar. Klokka er mykje større (5 x 2 fliser) i ein solid
+  klokkestol av grove bjelkar, sett skrått ovanfrå. Tauet heng ned til golvet (vesenet `klokketau`, med
+  raudt og kvitt handgrep). Lyset frå lydlukene fell på golvet, og ny `stov` i stemninga lèt støv søkke
+  i strålane (motor.js). Ei due og fuglelort på bjelken (`tarnbjelke-due`), og ein stige vidare opp.
+  Z mot tauet: klokka slår to gonger med `rist` og «DONG», og Ivar seier noko. Kan gjentakast.
+- **Preikestolen:** ny `hogd` på kartet (`hogdVed()` i motor.js): (3,16) midt i trappa 27 pikslar,
+  (2,16) øvst 48, (1,16) i korga 58, og høgda glir jamt mellom rutene. Preikestolen er delt i to lag
+  (`preikestol-bak` med ryggbrett og lydhimling bak Ivar, `preikestol` med korga, bibelen og trappa
+  framfor), så han står i korga med brystninga framfor seg. Rutene rundt (rad 15 og 17) er faste, så
+  ein berre kjem opp og ned trappa. Z mot bibelen (ein usynleg person): val mellom ei lita preike om
+  ordet «bok» (bonden seier amen, kona ler, klokkaren skjenner) og å sjå utover benkene.
+- **Testar:** `sjekk-kyrkjegang.html` går opp trappa til preikestolen, preikar, og drar to gonger i
+  klokketauet.
+- **Vurdert:** `k53-galleri-heil.png`, `k53-tarn-heil.png`, `k53-trapp-heil.png` (Ivar midt i trappa)
+  og `k53-stol-heil.png` (Ivar i preikestolen).
+- **Står att:** Ivar står litt til venstre i korga (korga står mellom to ruter). Utsynet frå galleriet er
+  framleis eit fast bilete med måla hovud. Klokka svingar ikkje når ho slår, og spelet har ingen lyd.

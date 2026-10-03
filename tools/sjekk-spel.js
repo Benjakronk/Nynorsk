@@ -42,7 +42,7 @@ function sjekkOp(op, stad) {
 }
 for (const [id, st] of Object.entries(D.STEMNINGAR || {})) {
   const stad = `stemning ${id}`;
-  for (const k of Object.keys(st)) if (!["bak", "fig", "fjern", "hdma", "glod", "syklus", "kjelder", "ivar", "skyer", "skugge", "straalar", "sepia", "dagslys"].includes(k)) feil.push(`${stad}: ukjend nøkkel «${k}»`);
+  for (const k of Object.keys(st)) if (!["bak", "fig", "fjern", "hdma", "glod", "syklus", "kjelder", "ivar", "skyer", "skugge", "straalar", "stov", "sepia", "dagslys"].includes(k)) feil.push(`${stad}: ukjend nøkkel «${k}»`);
   if (st.bak) sjekkOp(st.bak, stad + " bak"); if (st.fig) sjekkOp(st.fig, stad + " fig"); if (st.fjern) sjekkOp(st.fjern, stad + " fjern");
   if (st.hdma && !(Array.isArray(st.hdma) && st.hdma.every((h, i) => Number.isInteger(h[0]) && h[0] >= 0 && h[0] <= 192 && er3(h[1], -31, 31) && (i === 0 || h[0] >= st.hdma[i - 1][0])))) feil.push(`${stad}: hdma må vere [[rad, [r, g, b]], …] med stigande rader frå 0 til 192`);
   if (st.glod) for (const l of ["bak", "fig"]) { if (!Array.isArray(st.glod[l]) || st.glod[l].length !== 3) feil.push(`${stad}: glod.${l} må ha tre nivå`); else st.glod[l].forEach((op, i) => sjekkOp(op, `${stad} glod.${l}[${i}]`)); }

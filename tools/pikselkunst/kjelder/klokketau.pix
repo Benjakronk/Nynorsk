@@ -1,0 +1,55 @@
+# namn: klokketau
+# type: fiende
+# ut: bilete/spel/klokketau.png
+# storleik: 8x40
+# Tauet til kyrkjeklokka i tårnet: eit vesen på kartet (kyrkje-tarn), så Ivar kan dra i det.
+palett:
+  . = -
+  o = #0a0514
+  D = #d8c078
+  d = #a88a48
+  R = #983040
+  r = #6a1a2a
+  w = #f4f2f8
+  W = #c8c6d4
+bilete:
+  ..oddo..
+  ..oDdo..
+  ..oDdo..
+  ..oddo..
+  ..oDdo..
+  ..oDdo..
+  ..oddo..
+  ..oDdo..
+  ..oDdo..
+  ..oddo..
+  ..oDdo..
+  ..oDdo..
+  ..oddo..
+  ..oDdo..
+  ..oDdo..
+  ..oddo..
+  ..oDdo..
+  ..oDdo..
+  ..oddo..
+  ..oDdo..
+  ..oDdo..
+  ..oddo..
+  ..oDdo..
+  ..oDdo..
+  .owwwWo.
+  .owwwWo.
+  .oRRRro.
+  .oRRRro.
+  .owwwWo.
+  .owwwWo.
+  .oRRRro.
+  .oRRRro.
+  .owwwWo.
+  ..oDdo..
+  ..oDdo..
+  ..oDdo..
+  ..oDdo..
+  ..oDdo..
+  ..odo...
+  ...o....

@@ -1533,6 +1533,8 @@ window.Pikslar = (function () {
     rottemor: { fil: "bilete/spel/rottemor.png", w: 64, h: 52 },
     "rotte-kart": { fil: "bilete/spel/rotte-kart.png", w: 24, h: 14 },
     "rotte-kart-v": { fil: "bilete/spel/rotte-kart-v.png", w: 24, h: 14 },
+    // Tauet til kyrkjeklokka i tårnet (kjelder/klokketau.pix): eit vesen på kartet, så Ivar kan dra i det.
+    klokketau: { fil: "bilete/spel/klokketau.png", w: 8, h: 40 },
   };
   /* Gangark for vesen som går på kartet (tools/pikselkunst/rotte.py): tre kolonnar (står, steg 1,
      steg 2) og fire rader (ned, opp, venstre, høgre), som figurane. vesenGang(namn) gir

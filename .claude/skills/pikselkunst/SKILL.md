@@ -74,8 +74,11 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   `kyrkjebenk-h2` til `-h4` og `-v2` til `-v4` (namneplate, hatt, sjal, stokk, slitasje), `epitaf-v`
   og `-h` (på sideveggene), `gravhelle1` til `3`, `trapp` (desse og utsynet ligg flatt: `flat: true`),
   `fattigblokk`, `jernomn` (ILD), og til galleriet og tårnet `galleribrystning`, `kyrkjeklokke`,
-  `tarnbjelke` og `lydluke`. Utsynet ned i skipet (`inne-skip-utsyn.png`) er ein bit av
-  `oversikt.py namn kart=kyrkja skala=1 stemning=ingen` (rad 45 til 49, mørkna med dis). Høge
+  `tarnbjelke` (og `-due`), `tarnvegg`, `orgel`, `galleritrinn` og `preikestol-bak` (laget bak den
+  som står i korga). Utsynet ned i skipet (`inne-skip-utsyn.png`) lagar `utsyn_galleri.py` av
+  `oversikt.py k53-utan kart=kyrkja skala=1 stemning=ingen utanOver=1 utanFolk=1` (halv storleik,
+  mørkt og dempa, med hovud og lysekroner sett ovanfrå). Klokketauet er vesenet `klokketau`
+  (`kjelder/klokketau.pix`, i `PNG` i pikslar.js). Høge
   sidevindauge er to fliser: `Ø`/`Ö` (venstre, strålar) og `ø`/`ö` (høgre). Korgolvet er `Þ` (fast:
   `þ`). Stemninga `kyrkjerom` og glødforma `altar` (glod.py) gjer rommet mørkt og altaret lyst. Små motiv
   blir teikna med `_stempel` (strengar). Sjå med `skjermbilete.py namn kart=kyrkja m=1 x=10 y=9`

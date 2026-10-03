@@ -55,6 +55,37 @@ f.onload = async () => {
   await gaaTil("kyrkje-galleri", "2", "ArrowDown", "kyrkje-tarn", 6, 10);
   await gaaTil("kyrkje-tarn", "1", "ArrowDown", "kyrkje-galleri", 19, 10);
   await gaaTil("kyrkje-galleri", "1", "ArrowDown", "kyrkja", 8, 55);
+  // Preikestolen: frå golvet (4,16) tre steg mot venstre opp trappa til korga (1,16), og Ivar blir lyft.
+  M.last("kyrkja", "1"); await vent(300);
+  M.plasser(4, 16, 2); await vent(300);
+  tast("keydown", "ArrowLeft");
+  { let n = 0; while (n++ < 200 && M.spelar.x !== 1) await vent(20); }
+  tast("keyup", "ArrowLeft"); await vent(500);
+  const iStolen = M.spelar.x === 1 && M.spelar.y === 16 && (w.RPGData.KART.kyrkja.hogd || {})["1,16"] > 40;
+  if (!iStolen) ok = false;
+  ut.push(`${iStolen ? "OK" : "FEIL"}: Ivar gjekk opp trappa til preikestolen (${M.spelar.x},${M.spelar.y})`);
+  // Z mot bibelen i preikestolen, og mot klokketauet i tårnet: hendinga går, og teksten kjem.
+  const tekst = () => [...d.querySelectorAll("#rpg-tale, #rpg-fort")].filter(e => !e.hidden).map(e => e.textContent).join(" ");
+  const trykkGjennom = async (finn) => {
+    let sett = false;
+    for (let n = 0; n < 120; n++) {
+      if (finn.test(tekst())) sett = true;
+      tast("keydown", "z"); await vent(40); tast("keyup", "z"); await vent(160);
+      if (n > 3 && !w.RPGTest.iHending() && !synleg("#rpg-tale") && !synleg("#rpg-fort")) break;
+    }
+    return sett;
+  };
+  M.spelar.dir = 1; await vent(100);
+  const preika = await trykkGjennom(/kyrkjelyd|benkene/);
+  if (!preika) ok = false;
+  ut.push(`${preika ? "OK" : "FEIL"}: Z mot bibelen i preikestolen gir ei lita preike`);
+  M.last("kyrkje-tarn", "1"); await vent(300); M.plasser(8, 8, 1); await vent(300);
+  const dong = await trykkGjennom(/DONG/);
+  if (!dong) ok = false;
+  ut.push(`${dong ? "OK" : "FEIL"}: Ivar dreg i klokketauet, og klokka slår (DONG)`);
+  const dong2 = await trykkGjennom(/DONG/);
+  if (!dong2) ok = false;
+  ut.push(`${dong2 ? "OK" : "FEIL"}: klokka kan slå ein gong til`);
   ut.push(ok ? "Alt ser rett ut." : "Noko er feil.");
   document.getElementById("ut").textContent = ut.join("\n");
   f.remove();

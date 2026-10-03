@@ -952,7 +952,9 @@ window.Motor = (function () {
   }
   // Lysstrålar frå eit vindauge: eit parallellogram skrått ned mot høgre (eitt steg per to rader),
   // i trinn: kjerne og kant, sterkast øvst, med ein dithera kant.
-  function straale(sx, sy) {
+  // Støv i strålane (stov i stemninga): einskilde pikslar i kjernen lyser sterkt og søkk sakte nedover.
+  function straale(sx, sy, no = 0, stov = false) {
+    const fall = Math.floor(no / 160);
     for (let dy = 0; dy < 104; dy++) {
       const y = sy + dy; if (y < 0 || y >= LH) continue;
       const xl = sx + (dy >> 1), sterk = dy < 36 ? 3 : dy < 70 ? 2 : 1;
@@ -960,6 +962,7 @@ window.Motor = (function () {
         const x = xl + dx; if (x < 0 || x >= LW) continue;
         let lv = dx >= 2 && dx < 8 ? sterk : sterk - 1;
         if (dx < 0 || dx >= 10) lv = (x + y) & 1 ? 0 : Math.max(0, sterk - 1);
+        else if (stov && dy > 8 && dx >= 1 && dx < 9 && (((dx * 13 + (dy - fall) * 7) % 61) + 61) % 61 === 0) lv = 3;
         const i = y * LW + x;
         if (lv > lysNiva[i]) lysNiva[i] = lv;
       }
@@ -970,6 +973,15 @@ window.Motor = (function () {
      og flyttar seg difor raskare enn kartet når kameraet går (parallakse). Det står på plassen sin i
      kartet når midten av fotavtrykket er midt på skjermen, og blir skuva utover mot kantane elles.
      Posisjonen er runda til heile pikslar og monoton i kameraet, så ingenting ristar. */
+  /* Høgd på ruter (kart.def.hogd: { "x,y": pikslar }): den som står der, blir teikna så mange pikslar
+     høgare, til dømes trappa opp til preikestolen og korga der (inventaret framfor blir teikna etter
+     og dekkjer føtene). Mellom rutene glir høgda jamt, så ein går opp trinn for trinn. */
+  function hogdVed(x, y) {
+    const H = kart.def.hogd; if (!H) return 0;
+    const x0 = Math.floor(x), y0 = Math.floor(y), tx = x - x0, ty = y - y0, h = (a, b) => H[a + "," + b] || 0;
+    const ovre = h(x0, y0) * (1 - tx) + h(x0 + 1, y0) * tx, nedre = h(x0, y0 + 1) * (1 - tx) + h(x0 + 1, y0 + 1) * tx;
+    return Math.round(ovre * (1 - ty) + nedre * ty);
+  }
   function byggPos(b, img, ox, oy) {
     const x = Math.round((b.x + ox) * S) - 4, y = Math.round((b.y + b.h + oy) * S) - img.height;
     if (!b.faktor) return [x, y];
@@ -1065,8 +1077,8 @@ window.Motor = (function () {
       // Strålane startar ved blyglaset: i bakveggen (u) og ved innsida av vindauga i venstre sidevegg (Ø).
       if (st.straalar) for (let y = 0; y < kart.h; y++) for (let x = 0; x < kart.w; x++) {
         const c = kart.fliser[y][x];
-        if (c === "u") straale(Math.round((x + ox) * S) + 4, Math.round((y + oy) * S) + 11);
-        else if (c === "Ø" || c === "Ö") straale(Math.round((x + 1 + ox) * S) - 3, Math.round((y + oy) * S) + (c === "Ø" ? 3 : 0));
+        if (c === "u") straale(Math.round((x + ox) * S) + 4, Math.round((y + oy) * S) + 11, no, st.stov);
+        else if (c === "Ø" || c === "Ö") straale(Math.round((x + 1 + ox) * S) - 3, Math.round((y + oy) * S) + (c === "Ø" ? 3 : 0), no, st.stov);
       }
     }
     // Bakgrunnslaga (dalen og fjella langt nede) får nivå 5: ingen skyskugge eller glød der,
@@ -1470,7 +1482,7 @@ window.Motor = (function () {
         for (const [rx, ry] of Pikslar.ROYK[f.id] || []) Pikslar.royk(g, bx + rx, by - f.bygg.height + ry, no);
         continue; }
       // Den som sit på eit sete, blir lyft opp på det (hogd), og setet har sin eigen skugge.
-      const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S) + (f.sete ? SITJE_DY[f.dir] - f.sete.s.hogd : 0);
+      const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S) + (f.sete ? SITJE_DY[f.dir] - f.sete.s.hogd : 0) - hogdVed(f.x, f.y);
       // Eit vesen står midt på flisa med botnen på bakken, og gyng litt opp og ned.
       if (f.sp.vesen) {
         // Med gangark: ramma for retninga og steget (gangrammene lyftar seg sjølv, så ingen gynging).
