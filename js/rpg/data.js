@@ -1151,7 +1151,8 @@ window.RPGData = (function () {
         { s: "Ein framand", t: "Vi møtest nok att. Folk som oss finn kvarandre." },
         { flagg: "framande1" },
         { saman: [
-          [{ gaa: "Ein framand", rute: [10, 1], fart: 300 }, { gaa: "Ein framand", sti: "o3", fart: 300 }],
+          // Han går ut der stien til utmarka går ned i søkket (kantdøra på 10,0), ikkje opp i lufta over kartet.
+          [{ gaa: "Ein framand", rute: [10, 0], fart: 300, ut: true }],
           [{ vent: 400 }, { kamera: "Ein framand", ms: 1200 }],
         ] },
         { fjern: "Ein framand" },
