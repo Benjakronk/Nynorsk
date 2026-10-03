@@ -547,7 +547,9 @@ window.Motor = (function () {
       oppPx += Math.sign(maalO - oppPx) * Math.min(Math.abs(maalO - oppPx), ko.fart * Math.min(n, 8));
     } else oppPx = 0;
     if (!k) { nedPx = 0; return; }
-    const ved = k.kant ? ("MU".includes((kart.fliser[Math.round(malY) + 1] || [])[Math.round(malX)] || "x") && Math.abs(malY - Math.round(malY)) < 0.01) : malY >= k.fra - 0.001;
+    // ruter: ["x,y", …] er utløysarrutene (neset og spissen av hylla på Åsen): berre der glir kameraet ned.
+    const ved = k.ruter ? k.ruter.includes(Math.round(malX) + "," + Math.round(malY)) && Math.abs(malY - Math.round(malY)) < 0.01 && Math.abs(malX - Math.round(malX)) < 0.01
+      : k.kant ? ("MU".includes((kart.fliser[Math.round(malY) + 1] || [])[Math.round(malX)] || "x") && Math.abs(malY - Math.round(malY)) < 0.01) : malY >= k.fra - 0.001;
     const maal = ved ? Math.round(k.rader * S) : 0, fart = Math.max(1, k.fart || 1);
     nedPx += Math.sign(maal - nedPx) * Math.min(Math.abs(maal - nedPx), fart * Math.min(n, 8));
   }
@@ -716,6 +718,8 @@ window.Motor = (function () {
   // Ei kantflis: «N», eller rad 0 på eit kart med kameraOpp. Bakken (gras, eller sti med graset under)
   // med kanten der bakken fell bort oppå (Pikslar.nordkant). Éin gong per flis (ikkje animerte).
   const erKant = (c, y) => c === "N" || (y === 0 && !!kart.def.kameraOpp && c !== LUFT);
+  // Bakke ein kan gå på, med luft ved sida (spissen av hylla over dalen): Pikslar.sidekant.
+  const erSidekant = (c, x, y) => y > 0 && c !== LUFT && !Pikslar.FAST.has(c) && !!Pikslar.klasse(c) && ((kart.fliser[y][x - 1]) === LUFT || kart.fliser[y][x + 1] === LUFT);
   function nordkant(x, y, fk) {
     const k = kart.nordkantar || (kart.nordkantar = new Map()), nk = x + "," + y;
     if (k.has(nk)) return k.get(nk);
@@ -725,7 +729,7 @@ window.Motor = (function () {
       bg.drawImage(Pikslar.flis(".", 0, x, y, kart.def.golv), 0, 0);
       const sl = Pikslar.sti(stifelt(), x, y); if (sl) bg.drawImage(sl, 0, 0);
     } else bg.drawImage(Pikslar.flis(c === "N" ? "." : fk, 0, x, y, kart.def.golv), 0, 0);
-    const kf = Pikslar.nordkant(base, terrengfelt(), x, y);
+    const kf = erKant(c, y) ? Pikslar.nordkant(base, terrengfelt(), x, y) : Pikslar.sidekant(base, terrengfelt(), x, y);
     k.set(nk, kf);
     return kf;
   }
@@ -1246,7 +1250,7 @@ window.Motor = (function () {
       const topp = "XcG".includes(c) && (under === null || "XcGE".includes(under));
       let fk = topp ? c + "t" : c;
       if (c === "R") { const over = y > 0 && kart.fliser[y - 1][x] === "R"; fk = !over && under !== "R" ? "Rtb" : !over ? "Rt" : under !== "R" ? "Rb" : "R"; }
-      if (erKant(c, y)) {
+      if (erKant(c, y) || erSidekant(c, x, y)) {
         // Kanten øvst: bakken fell bort, og utsikta syner over graskanten (Pikslar.nordkant).
         const kf = nordkant(x, y, fk); g.drawImage(kf, sx, sy); luftRute(sx, sy, kf.ope);
       } else if (erVatn(x, y)) {

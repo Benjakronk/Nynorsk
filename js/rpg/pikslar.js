@@ -1066,6 +1066,29 @@ window.Pikslar = (function () {
     c.ope = ope;
     return c;
   }
+  /* Bakke med luft ved sida (spissen av hylla som stikk ut over dalen): kanten mot lufta er ujamn,
+     det nedste hjørnet er rundt, og langs kanten syner ei smal stripe jord under graset. Utanfor er
+     flisa open (.ope), og dalen syner. base er flisa slik ho elles ville vore. */
+  function sidekant(base, felt, tx, ty) {
+    const c = lerret(S), g = c.getContext("2d"); g.drawImage(base, 0, 0);
+    const bilde = g.getImageData(0, 0, S, S), p = new Uint32Array(bilde.data.buffer), ope = new Uint8Array(S * S);
+    const GR = R_.gras.map(pk), lag = pk(JORDKANT.lag), mork = pk(JORDKANT.mork);
+    const vL = tx > 0 && felt.c(tx - 1, ty) === "-", hL = tx < felt.w - 1 && felt.c(tx + 1, ty) === "-";
+    for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
+      const i = y * S + x;
+      for (const [luft, d] of [[vL, x], [hL, S - 1 - x]]) {
+        if (!luft) continue;
+        let kutt = 1 + Math.floor(vstoy(ty * S + y, tx * 3 + (d === x ? 0 : 1), 555) * 3);   // ujamn kant, 1 til 3 pikslar
+        if (y > 6) kutt = Math.max(kutt, Math.round(9 - Math.sqrt(Math.max(0, 81 - (y - 6) * (y - 6)))));   // rundt nedste hjørne
+        if (d < kutt) { p[i] = 0; ope[i] = 1; }
+        else if (d === kutt) p[i] = mork;
+        else if (d === kutt + 1) p[i] = hash(tx * S + x, ty * S + y, 556) > 0.5 ? lag : GR[0];
+      }
+    }
+    g.putImageData(bilde, 0, 0);
+    c.ope = ope;
+    return c;
+  }
   // Øvste rada i stupet som ruta (tx, ty) ligg i, eller null om ruta ikkje er stup («M» eller
   // overheng «U»). Byrjar stupet med eit overheng, ligg toppen rada over (bakken som stikk ut): då
   // held berget bak fram i same høgd som berget ved sida.
@@ -1134,7 +1157,8 @@ window.Pikslar = (function () {
     for (let x = 0; x < S; x++) {
       const X = tx * S + x;
       const r = Math.min(1, Math.abs(X + 0.5 - midt) / halv);             // 0 i spissen, 1 ved endane
-      const tunge = Math.round(2 + Math.pow(1 - r, 1.6) * 10 + (vstoy(X / 4, t0, 548) - 0.5) * 2);
+      // Graset heng over kanten i ein rund boge (buktar seg ut), lengst midt på.
+      const tunge = Math.round(2 + Math.sqrt(Math.max(0, 1 - r * r)) * 7 + (vstoy(X / 4, t0, 548) - 0.5) * 2);
       let lepp = 2 + Math.floor(vstoy(X / 9, t0 * 5, 521) * 4.99) + Math.floor(vstoy(X / 3, t0 * 5 + 2, 535) * 2.5);
       if (bakkeV) lepp = Math.max(lepp, boge(x + 0.5, 10, 14));
       if (bakkeH) lepp = Math.max(lepp, boge(S - x - 0.5, 10, 14));
@@ -1148,7 +1172,8 @@ window.Pikslar = (function () {
       const botn = nedst && felt.stupFast ? H - (2 + Math.floor(vstoy(X / 6, t0 * 5 + 3, 541) * 5) + Math.floor(hash(X >> 1, t0, 542) * 3)) : H + 99;
       // Overhenget: tynn kant av torv og berg, ujamn underside.
       const kant = virt ? tunge + 4 : 4 + Math.floor(vstoy(X / 5, t0 * 7, 543) * 4) + (hash(X, t0, 544) > 0.8 ? 1 : 0);
-      const veggBotn = virt ? Math.min(botn, S + kant + Math.round(Math.pow(r, 1.4) * (H - S - kant)) + Math.round((vstoy(X / 5, t0, 549) - 0.5) * 4)) : H + 99;
+      // Berget under er lite: det veks berre mot endane, og i ein rund boge (ikkje store blokker).
+      const veggBotn = virt ? Math.min(botn, S + kant + Math.round(Math.pow(r, 2.2) * (H - S - kant) * 0.7) + Math.round((vstoy(X / 5, t0, 549) - 0.5) * 4)) : H + 99;
       const bakV = kantV ? boge(x + 0.5, 8, 18) : 0, bakH = kantH ? boge(S - x - 0.5, 8, 18) : 0;
       for (let y = 0; y < S; y++) {
         const i = y * S + x, Yr = idx * S + y;
@@ -1753,6 +1778,6 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, nordkant, klasse, bygg, natur, haugBilete, KANTTYPE, kantflis, kantfigurar, vatn, steingard, FAST, figur, fiende, vesenGang, lerret, ramp, blend, RAMP,
+  return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, nordkant, sidekant, klasse, bygg, natur, haugBilete, KANTTYPE, kantflis, kantfigurar, vatn, steingard, FAST, figur, fiende, vesenGang, lerret, ramp, blend, RAMP,
     hent, klar, forhandslast, alleBilete, ILD, SETE, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
 })();

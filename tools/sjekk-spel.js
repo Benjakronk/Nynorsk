@@ -94,7 +94,8 @@ for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR |
         for (const dy of [-1, 1]) { const n = c(x, y + dy); if (n && /[sM\-#tiFRWv|]/.test(n)) feil.push(`${id}: rampa på ${x},${y} har «${n}» ${dy < 0 ? "over" : "under"} seg`); }
       }
     }
-    if (k.kameraNed && !((Number.isFinite(k.kameraNed.fra) || k.kameraNed.kant === true) && k.kameraNed.rader > 0 && (k.kameraNed.fart == null || Number.isInteger(k.kameraNed.fart)))) feil.push(`${id}: kameraNed treng fra, rader over 0 og fart i heile pikslar per tikk`);
+    if (k.kameraNed && k.kameraNed.ruter) for (const r of k.kameraNed.ruter) { const [x, y] = String(r).split(",").map(Number); if (!c(x, y) || /[MU\-s#]/.test(c(x, y))) feil.push(`${id}: kameraNed-ruta ${r} er ikkje bakke ein kan stå på`); }
+    if (k.kameraNed && !((Number.isFinite(k.kameraNed.fra) || k.kameraNed.kant === true || Array.isArray(k.kameraNed.ruter)) && k.kameraNed.rader > 0 && (k.kameraNed.fart == null || Number.isInteger(k.kameraNed.fart)))) feil.push(`${id}: kameraNed treng fra, rader over 0 og fart i heile pikslar per tikk`);
     if (k.kameraOpp && !(Number.isFinite(k.kameraOpp.fra) && (k.kameraOpp.fart ? k.kameraOpp.rader > 0 : Number.isFinite(k.kameraOpp.til) && k.kameraOpp.fra > k.kameraOpp.til && k.kameraOpp.til >= 0))) feil.push(`${id}: kameraOpp treng fra > til >= 0, eller fra, rader og fart`);
     // Utsikta øvst: det første opp-laget dekkjer skjermen frå toppen, og det siste når ned under
     // graskanten i rad 0, for alle kameraposisjonar der lufta over kartet syner.

@@ -175,7 +175,7 @@ def fjell():
 
 
 # ---------------------------------------------------------------- lia og dalen under stupet, sett ovanfrå
-LI_W, LI_H = 448, 212                # like breitt som kartet: laget står fast (faktor 1); kartrad 15 til 27
+LI_W, LI_H = 448, 244                # like breitt som kartet: laget står fast (faktor 1); kartrad 15 til 29
 BERG = ["#1c1a2c", "#2e2a3a", "#48434a", "#645e5e", "#827a74", "#a0978a", "#bdb4a4"]   # som BERG i pikslar.js
 
 
@@ -314,7 +314,7 @@ def ovanfra(W, H, s=0):
 
 # Kvar lufta byrjar under stupet, per flis-kolonne (kartrad), så skuggen under overhenget kjem rett.
 # Må stemme med rader i kartet asen i js/rpg/data.js: platået (17), hylla (20), neset (18), vika (16).
-LUFTRAD = [17] * 4 + [19] * 14 + [17] * 3 + [17] * 3 + [17] + [16] * 3   # hylla og neset har overheng (rad 17 og 15)
+LUFTRAD = [17] * 4 + [19] * 9 + [20] * 2 + [21, 22, 21] + [17] * 3 + [17] * 3 + [17] + [16] * 3   # hylla smalnar av til spissen (16,19)
 LI_TOPP = 15                          # biletet byrjar ved kartrad 15
 
 

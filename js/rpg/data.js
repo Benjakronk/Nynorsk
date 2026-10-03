@@ -420,7 +420,8 @@ window.RPGData = (function () {
       // "b" rygg, "c" fri; sjå Pikslar.stup og forhand/skjerm/r39-skrakant-samanlikning.png).
       skra: "b",
       kameraOpp: { fra: 4, rader: 6, fart: 1 },                         // øvst glir kameraet roleg seks rader opp over kanten
-      kameraNed: { kant: true, rader: 4, fart: 1 },                    // på flisa rett over stupet glir kameraet roleg ned, så Ivar står øvst
+      // Utløysarrutene: på neset og ytst på hylla glir kameraet roleg ned, så Ivar står øvst.
+      kameraNed: { ruter: ["21,14", "22,14", "23,14", "15,18", "16,19", "17,18"], rader: 4, fart: 1 },
       // Forgrunnen: bjørkegreiner i øvre hjørne ved skogen, høgt gras i nedre hjørne ved stupet.
       forgrunn: [
         { bilete: "greiner", faktor: 1.3, ved: [0, -6], x: -6, y: -4 },
@@ -430,7 +431,8 @@ window.RPGData = (function () {
       ],
       /* Nedst er kanten ujamn: platået stikk ut i eit nes (x 21 til 23) og går inn i ei vik (x 25 til 27),
          og under midten (x 4 til 17) går ein skrent med rampe (11,14) ned til ei hylle eitt nivå lenger
-         nede (rad 15 og 16) før det stuper. Under neset og hylla er det overheng («U»): ei tynn kant
+         nede (rad 15 og 16) før det stuper. Høgre side av hylla stikk djupare ned og smalnar av til éi
+         flis ytst (16,19), med luft på sidene. Under neset og hylla er det overheng («U»): ei tynn kant
          med skugge under og berget trekt inn bak. Stupet frå platået er tre rader høgt, og lufta under har lia og dalen.
          Åsen: toppen er lengst oppe på midten (to kollar med skrent «s» under seg, rad 0 og 1), og
          kanten der bakken fell bort («N») går eit steg ned mot sidene, der det er luft («-») i rad 0.
@@ -455,9 +457,11 @@ window.RPGData = (function () {
         "MMMMsssssss/ssssssMMM.\".MMMM",
         "MMMM....\"...o.....MMMUUUMMMM",
         "MMMMt....\"......t.MMMMMMM---",
-        "----UUUUUUUUUUUUUU----------",
-        "----MMMMMMMMMMMMMM----------",
-        "----------------------------",
+        "----UUUUUUUUU.....----------",
+        "----MMMMMMMMMUU.\".----------",
+        "-------------MMU.U----------",
+        "---------------MUM----------",
+        "----------------M-----------",
         "----------------------------",
         "----------------------------",
         "----------------------------",

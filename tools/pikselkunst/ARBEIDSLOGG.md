@@ -1323,3 +1323,27 @@ same måte, uansett kven som tek over.
   berget i lufta med ein hard kant.
 - **Står att:** Hylla er så brei at spissen blir ein slak boge; ein smalare hylle i kartet ville gi ein
   spissare form.
+
+## Runde 41: rundt nes, ei hylle som smalnar av til éi flis, og kamera berre ytst
+
+- **Oppdrag:** Brukaren: neset skal bli meir buet att, hylla skal utvidast så høgre side stikk djupare
+  ned til éi gangbar flis ytst, og kameraet skal berre gli ned på neset og ytst på hylla.
+- **Gjort:**
+  - `Pikslar.stup`: graset over overhenget heng i ein rund boge (lengst midt på, buktar seg ut), og
+    berget under veks berre mot endane, lågt og rundt, så neset ikkje lenger har ein V og store, mørke
+    blokker på sidene. Skråkanten er framleis variant b (lys rygg over i ura).
+  - Kartet (rad 17 til 21): hylla held fram under høgre del og smalnar av, fem flisar på rad 17
+    (x 13 til 17), tre på rad 18 (x 15 til 17) og éi ytst på (16,19). Under kvar ytste rute er det
+    overheng («U») og éi rad berg, så luft. Kartet er 30 rader høgt (luft nedst lagd til); ingen merke,
+    dører, folk, scener eller testruter er flytte, og nyeRader gjeld ikkje (radene er lagde til nedst).
+  - `Pikslar.sidekant`: bakke med luft ved sida (dei ytste flisene på hylla) får ein ujamn kant, rundt
+    nedste hjørne og ei smal stripe jord, og er open utanfor, så dalen syner.
+  - `kameraNed.ruter`: ei liste med utløysarruter på kartet (neset 21,14 til 23,14, og 15,18, 16,19 og
+    17,18 ytst på hylla). Berre der glir kameraet ned; langs resten av kanten står det stille.
+    `sjekk-spel.js` sjekkar at utløysarrutene er bakke.
+  - `utsikt.py`: `LUFTRAD` følgjer dei nye radene, og `li` er 244 pikslar høgt.
+- **Vurdert:** `forhand/skjerm/r41-oversyn.png` (neset og spissen, med kameraet oppe og nede) og
+  `r41-naer.png` (nærbilete av neset og spissen). Spissen heng som ei grastunge ut over dalen, med luft
+  på sidene og under, og neset har ein rund kant.
+- **Står att:** Hylla smalnar av i trinn (fem, tre, éi flis); sidekantane rundar trinna, men omrisset er
+  framleis litt trappeforma.
