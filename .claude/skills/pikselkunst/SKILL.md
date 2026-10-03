@@ -60,10 +60,14 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   Stabburet (runde 28): `kornbinge` (3 × 1), `tonne`, `kagge`, `sekker`, `stige` (1 × 1, går opp
   til ei luke i taket), `flatbrodstabel` (2 × 1), og på veggen (rad 0) `spekemat` (3 × 1) og
   `glugge` (1 × 1, lyskjelda `glugge`). Ting som heng på bakveggen, står i rad 0 med `h: 1`, så dei
-  ligg under figurane i rad 1. Golvet er breie plankar (flisa `O`, `golv: "O"`). Ei kiste kan ha
-  `bilete` (eit inventarbilete i staden for kistefliser, til dømes `inne-skrin`), `vis` (finst berre
+  ligg under figurane i rad 1. Golvet er breie plankar (flisa `O`, `golv: "O"`). Kistene på karta
+  (flisa `K`, og gøymde kister) er inventarbileta `kiste` og `kiste-open` (runde 59, `_kasse()` i
+  inventar.py: loket er ei stor toppflate, den opne kista har loket slått opp bakover og syner
+  innsida ovanfrå). Motoren vel biletet etter om kista er opna, og sorterer det saman med figurane.
+  Ei kiste kan ha `bilete` (eit eige inventarbilete, til dømes `inne-skrin`), `vis` (finst berre
   når vilkåret held) og `manus` (blir spela når ho blir opna). Sjå med
-  `skjermbilete.py namn kart=asen-stabbur m=1` og `kart=asen-stova m=1 flagg=skiftebrev x=9 y=4`.
+  `skjermbilete.py namn kart=asen-stabbur m=1` og `kart=asen-stova m=1 flagg=skiftebrev x=9 y=4`,
+  og opne kister med `opna=k-stova,k-skrin`.
 - Kyrkja (runde 52, 21 × 61 fliser, 50 fliser frå døra til altarringen): `korvegg` (bakveggen, 11 × 5,
   vindauga over `u` i rad 4), `altartavle` (5 × 7: bondebarokk med nattverden, krossfestinga og
   oppstoda, og altaret), `altarring` (7 × 3), `skipvegg-v` og `-h` (austveggen i skipet ved korbogen,
@@ -122,10 +126,12 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   | `inne-benk-staande`, `inne-benk-staande-kort` | 1 × 4, 1 × 2 | ståande benk |
   | `inne-kubbestol-ned`, `-opp`, `-venstre`, `-hogre` | 1 × 1 | retninga den som sit, ser; ryggen er bak |
 
-  Bordplata ligg 14 pikslar over golvet og dekkjer heile fotavtrykket, så bordet går 14 pikslar opp
-  i flisrada bak. Ein benk bak bordet blir difor gøymd av bordet (berre den som sit der, syner, frå
-  livet og opp). Ein benk framfor bordet, kubbestolar ved endane (stolen ser mot bordet) og ståande
-  benker langs sida av eit ståande bord syner godt. Døme: `asen-stova` i data.js.
+  Møblane følgjer «Standardperspektiv for objekt» i STILGUIDE.md (runde 59): bordplata er ei stor
+  toppflate (26 pikslar for to fliser djupn) med kort framkant og korte bein, ligg 9 pikslar over
+  golvet (`BORD_HOGD`) og går 3 pikslar opp i flisrada bak. Benken har 10 pikslar toppflate og 5
+  pikslar framkant og bein, kubbestolen eit breitt, ovalt sete. Ein benk framfor bordet,
+  kubbestolar ved endane (stolen ser mot bordet) og ståande benker langs sida av eit ståande bord
+  syner godt. Døme: `asen-stova` i data.js.
 
   Sitjande: ein person med `pose: "sitje"` på ei rute som eit sete dekkjer (`SETE` i
   `js/rpg/pikslar.js`), blir lyft opp på setet og teikna utan skugge på golvet, utan

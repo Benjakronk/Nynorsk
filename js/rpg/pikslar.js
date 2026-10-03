@@ -271,14 +271,9 @@ window.Pikslar = (function () {
       const f = Math.floor(t / 300) % 4;
       px(g, 4 + v % 5, 5, b[3], 1, 3 + f); px(g, 11, 10, b[2], 1, 2 + (f + 2) % 4);
     },
-    "K": g => {
-      underGolv(g, 0, 0);
-      const R = Rutenett(16, 16).rect("l", 1, 3, 14, 4).rect("k", 1, 7, 14, 7).rect("m", 7, 6, 2, 3);
-      g.drawImage(mal(R, { l: "#2c4288", k: "#2c4288", m: "#c08018" }), 0, 0);
-      for (const [x, y] of [[3, 10], [5, 9], [10, 9], [12, 10], [8, 11]]) px(g, x, y, "#d06a64");
-      for (const [x, y] of [[4, 11], [11, 11]]) px(g, x, y, "#f8d840");
-      px(g, 2, 4, "#6c8ccc", 12, 1);
-    },
+    // Kista sjølv er eit inventarbilete (inne-kiste og inne-kiste-open frå inventar.py) som motoren
+    // teiknar oppå golvet og sorterer saman med figurane (sjå kisteVed i motor.js).
+    "K": g => underGolv(g, 0, 0),
     "k": g => {
       underGolv(g, 0, 1);
       const R = Rutenett(16, 16).rect("t", 1, 3, 14, 8).rect("b", 2, 11, 2, 4).rect("b", 12, 11, 2, 4);
@@ -1758,7 +1753,7 @@ window.Pikslar = (function () {
     const ut = [];
     for (const k of Object.values(D.KART)) {
       for (const b of k.bygg || []) ut.push(`bilete/spel/bygg/${b.id}.png`);
-      for (const ks of k.kister || []) if (ks.bilete) ut.push(`bilete/spel/bygg/${ks.bilete}.png`);
+      for (const ks of k.kister || []) ut.push(`bilete/spel/bygg/${ks.bilete || "inne-kiste"}.png`, "bilete/spel/bygg/inne-kiste-open.png");
       if (k.bakgrunn) ut.push(`bilete/spel/kamp/${k.bakgrunn}.png`);
     }
     for (const namn of new Set(Object.values(NATURTYPE).flat())) ut.push(`bilete/spel/natur/${namn}.png`);

@@ -5,6 +5,9 @@
 palett:
   . = -
   o = #0a0514    omriss
+  t = #4a2418    tre djup
+  T = #7a3a22    tre brunraud
+  U = #a4583a    tre lys
   k = #e8e4dc    kalk
   x = #b8b4ac    kalk skugge
   n = #6a6070    sot
@@ -14,6 +17,7 @@ palett:
   v = #1a1a24    jern djup
   V = #34343f    jern
   X = #5a5a6a    jern lys
+  8 = #d8d4c8    kalk lys skugge
 bilete:
   .......okkkkkkxxxo......
   .......okkkkkkxxxo......
@@ -30,11 +34,11 @@ bilete:
   ....okkkkkkkkkkxxxxxo...
   ...okkkkkkkkkkkxxxxxxo..
   ...okkkkkkkkkkkxxxxxxo..
-  ...okkkkkkkkkkkxxxxxxo..
-  ..oxxxxxxxxxxxxxxxxxxxo.
-  ..onnnnnnnnnnnnnnnnnnno.
-  ..okkkkkkkkkkkkxxxxxxxo.
-  ..okkkkkkkkkkkkxxxxxxxo.
+  ..o8kkkkkkkkkkkxxxxxx8o.
+  ..ox8888kkkkkkkxx8888xo.
+  ..onxxxx888888888xxxxno.
+  ..oknnnnxxxxxxxxxnnnnxo.
+  ..okkkkknnnnnnnnnxxxxxo.
   ..okkkkkkkkkkkkxxxxxxxo.
   ..okkkkkkkkkkkkxxxxxxxo.
   ..okkkkkkkkkkkkxxxxxxxo.
@@ -53,9 +57,9 @@ bilete:
   ..okkNNNfNNNFNNNNNNxxxo.
   ..okkNNNFFNNNNNNfNNxxxo.
   ..okkNNNfNNFNfNfffNxxxo.
-  ..okkNNfffNNFNFfNNNxxxo.
-  ..okkNfFNNNNNFfNNFNxxxo.
-  ..okkNNffNFNFFFFFFNxxxo.
+  ..okkNNfTUTNFtTUNNNxxxo.
+  ..okknnnnnnnnnnnnnnxxxo.
+  ..okknnxnnxnnnnxnnnxxxo.
+  ..ok888888888888888888o.
   ..oxxxxxxxxxxxxxxxxxxxo.
-  ..onnnnnnnnnnnnnnnnnnno.
   ...ooooooooooooooooooo..

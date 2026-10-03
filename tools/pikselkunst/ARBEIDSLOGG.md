@@ -1704,11 +1704,9 @@ same måte, uansett kven som tek over.
   flyg, og at ho er attende når Ivar kjem inn att. Nye parametrar i skjerm.html: `vesen=namn:bilete`.
 - **Etter:** `k55-klokke-rammer.png` (fem av rammene, med dua på veg ut), `k55-due-heil.png`,
   `k55-lopar-heil.png`, `k55-benk-heil.png`, `k55-font-heil.png` og `k55-galleri-heil.png`.
-- **Står att (for låg vinkel etter den nye regelen, ikkje teikna om enno):**
-  - Stova på Åsen: benken og kubbestolane (framsida like høg som setet er djupt), sengebenken, kista og
-    skrinet (framsida dominerer), rokken (heilt frå sida).
+- **Står att (for låg vinkel etter den nye regelen, ikkje teikna om enno; stova og kistene er gjorde i
+  runde 59):**
   - Stabburet: kornbingane, tønna og kaggen (frå sida), sekkene.
-  - Kister på karta (flisa `K`).
   - Prestegarden og boksamlinga på Ekset: skatollet, sofaen, spisebordet, stolane og lesebordet bør
     sjåast over.
   - Ute: skigarden og steingarden (sett nesten frå sida).
@@ -1788,3 +1786,49 @@ same måte, uansett kven som tek over.
 - **Etter:** `k57-etter-bakkona-heil.png`, `k57-etter-benk-heil.png` (Ivar attmed bonden),
   `k57-etter-trapp-heil.png`, `k57-etter-stol-heil.png`, og `k57-stol-rad.png` (Ivar på kvart trinn opp).
 - **Står att:** Trinna blir mørke i det mørke kyrkjerommet. Den som sit, syner berre hovudet.
+
+## Runde 59: stova på Åsen og kistene i standardperspektivet
+
+- **Frå brukaren:** Teikn om stova og kistene etter det nye perspektivet (objekta skal sjåast frå ein
+  høgare vinkel, som i FF6, sjå «Standardperspektiv for objekt» i STILGUIDE.md og runde 56).
+- **Før:** `forhand/skjerm/r59-for-stova-spel.png`, `r59-for-sitje-spel.png` (Ivar på benken),
+  `r59-for-kister-spel.png` (den opne kista var berre ei mørk stripe over loket) og `r59-for-vegen-spel.png`.
+- **Stova** (`inventar.py`, alle med same fotavtrykk som før, så kartet og kollisjonen er uendra):
+  - Langbordet (og det ståande): plata er 26 pikslar toppflate for to fliser djupn, framkanten 3 og beina
+    5 (før 31 og 14). `BORD_HOGD` er 9, og bordet går 3 pikslar opp i rada bak i staden for 14. Fata,
+    flatbrødet og ølbollen er breie ovalar sett ovanfrå.
+  - Benken: 10 pikslar toppflate (før 7), framkant 2 og bein 3, til saman setehøgda 5. Gjeld òg
+    `benk-kort` (organisten på galleriet). Dei ståande benkene (korstolane i kyrkja) er urørde.
+  - Kubbestolane (alle fire retningar): setet er ein breiare oval (djupna trykt saman med 0,42 i staden
+    for 0,6), ryggen er lågare, og setet har lys framkant og årringar.
+  - Sengebenken: større sengeflate, sengestokken framme med smal toppflate og kort framside, og gavlane
+    med lys toppkant på langs og kort, mørk endeved. Fotgavlen er låg.
+  - Rokken: benken sett ovanfrå med korte bein og trøde, hjulet som ein stor, litt brei oval med dreidde
+    eiker, rokkehovudet med spole og garn til venstre.
+  - Grua: kanten på hetta er boga, golvet i eldstaden (oske og vedskier) og gruehellene er toppflater.
+    Elden står der han stod (`ILD` er uendra).
+  - Hylla: hyllebordet syner toppflata, og ølkruset har ovalt lok sett ovanfrå.
+  - Skrinet etter far: eit breiare skrin med loket slått opp bakover (rosemålt innside), papira sett
+    ovanfrå og kort framside.
+- **Kistene** (alle kister på karta, inne og ute, òg gøymde): `inne-kiste` og `inne-kiste-open`, laga av
+  `_kasse()` i inventar.py (same funksjon som skrinet). Loket er ei stor, blåmåla toppflate (10 pikslar)
+  med rose og to jernband, framsida er 4 pikslar med gyllen lås. Den opne kista har loket slått opp
+  bakover (raud innside med rose) og syner innsida ovanfrå: kant rundt, innvegg bak i skugge, ein lys
+  sidevegg og botnen. Ny farge `Q` (lys rosemaling blå) i paletten.
+  - Motoren (`kisteVed` i motor.js) teiknar biletet for alle synlege kister, vel det opne når kista er
+    opna, og sorterer det saman med figurane (så loket dekkjer føtene til den som står bak), med
+    slagskugge som under inventaret. Flisa `K` er berre golv no, og den mørke stripa over opna kister er
+    borte. Bileta blir forhåndslasta (`alleBilete` i pikslar.js).
+  - skjerm.html har fått `opna=k-stova,k-skrin` (kister som er opna).
+- **Sitjinga:** Setehøgda er 5 som før, så `SETE` er uendra. Syster sit rett på kubbestolen ved bordet,
+  Ivar sit rett på benken og på kubbestolen ved den andre enden, og kvilen ved lampa (på golvet) er som før.
+- **Testar:** `sjekk-spel.js` (alt rett), `sjekk-scene.html` (164 OK, 0 FEIL), `sjekk-gange.html` og
+  `sjekk-kyrkjegang.html` (alt rett).
+- **Etter:** `r59-etter-stova-spel.png`, `r59-etter-sitje-spel.png`, `r59-etter-kister-spel.png`,
+  `r59-vegen-spel.png` og `r59-vegen2-spel.png` (ute, open og lukka), `r59-stabbur-spel.png`,
+  `r59-etter-hovde-spel.png` (Nedre Hovde med same bord, grue og seng), og samanlikningane
+  `r59-samanlikning-stova.png`, `r59-samanlikning-sitje.png` og `r59-samanlikning-kister.png`.
+- **Står att (for låg vinkel):** stabburet (kornbingane, tønna, kaggen, sekkene), skatollet, sofaen,
+  spisebordet, stolane og lesebordet på Ekset og i prestegarden, skigarden og steingarden ute, og i
+  kyrkja korstolane (dei ståande benkene), fattigblokka, jernomnen, orgelet og brystninga på galleriet.
+  Kubbestolen sett frå sida (`-venstre`, `-hogre`) er framleis litt klumpete.

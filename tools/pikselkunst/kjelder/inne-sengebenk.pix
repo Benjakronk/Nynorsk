@@ -18,34 +18,35 @@ palett:
   A = #5a3a22    furu skugge
   c = #8a5e36    furu
   C = #b08650    furu lys
+  q = #d6b070    furu lysast
 bilete:
   ...oTo..................................
-  ..oUUoo.................................
-  .oUUUUUo................................
-  .oCCccAo................................
-  .oCCccAo................................
-  .oCCccAo................................
-  .oCCccAo................................
-  .oCCccAoooooooo.........................
-  .oCCccAwwwwwwwWoooooooooooooooooo.......
-  .oCCccAwKwwwwWWwWEEEEEEEEEEEEEEEEo......
-  .oCCccAwwwwwwWWwWyyyyyyyyyyyyyyyyooooo..
-  .oCCccAwwwwwwWWwWRRRRRyRyRRRRyRyRUUUUUo.
-  .oCCccAwwwwwwWWwWRRRRyRwRyRRyRwRyCCccAo.
-  .oCCccAwwwwwwWWwWRRRyRyRyRRyRyRyRCCccAo.
-  .oCCccAWWWWWWWWwWRRyRyRyRRyRyRyRRCCccAo.
-  .oCCccAWWWWWWKWwWRyRwRyRRyRwRyRRRCCccAo.
-  .oCCccARRRRRRRRwWRRyRyRyRRyRyRyRRCCccAo.
-  .oCCccARRRRRRRRwWRRRyRyRyRRyRyRyRCCccAo.
-  .oCCccARRRRRRRRwWRRRRyRwRyRRyRwRyCCccAo.
-  .oCCccARRRRRRRRwWRRRRRyRyRRRRyRyRCCccAo.
-  .oCCccAyyyyyyyywWyyyyyyyyyyyyyyyyCCccAo.
-  .oCCccArrrrrrrrwWrrrrrrrrrrrrrrrrCCccAo.
-  .oCCccACCCCCCCCCCCCCCCCCCCCCCCCCCCCccAo.
-  .oCCccAccccccccccccccccccccccccccCCccAo.
-  .oCCccAAAAAAAAAAAAAAAAAAAAAAAAAAACCccAo.
-  .oCCccAaaaaaaaaaaaaaaaaaaaaaaaaaaCCccAo.
-  .oCCccAooooooooooooooooooooooooooCCccAo.
-  ..oaaao..........................oaaao..
+  ..oTTTo.................................
+  .oqUUUco................................
+  .oqCCCcoooooooooooooooooooooooooo.......
+  .oqCCCccccccccccccccccccccccccccco......
+  .oqCCCcAAAAAAAAAAAAAAAAAAAAAAAAAAo......
+  .oqCCCcwwwwwwwWwWEEEEEEEEEEEEEEEEo......
+  .oqCCCcwKwwwwWWwWyyyyyyyyyyyyyyyyooooo..
+  .oqCCCcwwwwwwWWwWRRRRRRyRRRRRRyRRqUUUco.
+  .oqCCCcwwwwwwWWwWRRRRRyRyRRRRyRyRqCCCco.
+  .oqCCCcwwwWWwWWwWRRRRyRwRyRRyRwRyqCCCco.
+  .oqCCCcwwwwwwWWwWRRRyRyRyRRyRyRyRqCCCco.
+  .oqCCCcwwwwwwWWwWRRyRyRyRRyRyRyRRqCCCco.
+  .oqCCCcWWWWWWWWwWRyRwRyRRyRwRyRRRqCCCco.
+  .oqCCCcWWWWWWKWwWRRyRyRyRRyRyRyRRqCCCco.
+  .oqCCCcRRRRRRRRwWRRRyRyRyRRyRyRyRqCCCco.
+  .oqCCCcRRRRRRRRwWRRRRyRwRyRRyRwRyqCCCco.
+  .oqCCCcRRRRRRRRwWRRRRRyRyRRRRyRyRqCCCco.
+  .oUUUUURRRRRRRRwWRRRRRRyRRRRRRyRRqCCCco.
+  .ocAAAayyyyyyyywWyyyyyyyyyyyyyyyyqCCCco.
+  .ocAAAaEEEEEEEEwWEEEEEEEEEEEEEEEEqCCCco.
+  .ocAaAaororororwWororororororororqCCCco.
+  .ocAAAaqqqqqqqqqqqqqqqqqqqqqqqqqqUUUUUo.
+  .ocAaAaCCCCCCCCCCCCCCCCCCCCCCCCCCcAAAao.
+  .ocAAAacccccccccccccccccccccccccccAAAao.
+  .ocAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAcAAAao.
+  .ocAAAaoooooooooooooooooooooooooocAAAao.
   ..oaaao..........................oaaao..
   ...ooo............................ooo...
+  ........................................

@@ -1435,11 +1435,11 @@ window.Motor = (function () {
         if (hb) naturFig.push({ y: y + 1.004, x, haug: hb });
       }
       const k = kisteVed(x, y);
-      // Ei kiste med bilete (skrinet etter far) er eit eige inventarbilete, ståande nedst i flisa.
-      const kb = k && k.bilete && Pikslar.bygg(k.bilete);
-      if (kb) g.drawImage(kb, sx - 4, sy + S - kb.height);
-      else if (k && (k.gøymd || k.vis)) g.drawImage(Pikslar.flis("K", 0, 0, 0, kart.def.golv), sx, sy);
-      if (k && !kb && krokar.opna && krokar.opna(k)) { g.fillStyle = "rgba(10,5,20,.45)"; g.fillRect(sx + 2, sy + 4, 12, 3); }
+      // Kista er eit inventarbilete (inventar.py: inne-kiste, og inne-kiste-open når ho er opna), eller
+      // eit eige bilete (bilete: skrinet etter far). Ho står nedst i flisa og blir sortert saman med
+      // figurane, så loket dekkjer føtene til den som står bak. slag: slagskugge som under inventaret.
+      const kb = k && Pikslar.bygg(k.bilete || (krokar.opna && krokar.opna(k) ? "inne-kiste-open" : "inne-kiste"));
+      if (kb) naturFig.push({ y: y + 0.004, x, natur: { img: kb, x: -4, y: S - kb.height, slag: true } });
     }
     const GANG = [1, 0, 2, 0];
     const figurar = kart.folk.filter(f => f.sprite).map(f => ({ y: f.fy, sp: f.sprite, x: f.fx, dir: f.dir, kjensle: f.kjensle, pose: f.pose,
@@ -1465,7 +1465,9 @@ window.Motor = (function () {
     figurar.sort((a, b) => djupn(a) - djupn(b));
     for (const f of figurar) {
       if (f.mur) { const mx = Math.round((f.x + ox) * S), my = Math.round((Math.floor(f.y) + oy) * S) - (f.loft || 6); g.drawImage(f.mur, mx, my); maske(f.mur, mx, my, true); continue; }
-      if (f.natur) { const nx = Math.round((f.x + ox) * S) + f.natur.x, ny = Math.round(((f.rad ?? Math.floor(f.y)) + oy) * S) + f.natur.y; g.drawImage(f.natur.img, nx, ny); maske(f.natur.img, nx, ny, true); continue; }
+      if (f.natur) { const nx = Math.round((f.x + ox) * S) + f.natur.x, ny = Math.round(((f.rad ?? Math.floor(f.y)) + oy) * S) + f.natur.y;
+        if (f.natur.slag) { g.save(); g.globalAlpha = 0.28; g.drawImage(skuggeAv(f.natur.img), nx + 4, ny + 3); g.restore(); }
+        g.drawImage(f.natur.img, nx, ny); maske(f.natur.img, nx, ny, true); continue; }
       if (f.haug) { const hx = Math.round((f.x + ox) * S) - 1, hy = Math.round((Math.floor(f.y) + 1 + oy) * S) - f.haug.height; g.drawImage(f.haug, hx, hy); maske(f.haug, hx, hy, true); continue; }
       if (f.over) {
         const [ux, uy, mx, my] = byggPos(f.b, f.bygg, ox, oy);
