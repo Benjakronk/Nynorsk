@@ -209,6 +209,10 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   på graset framfor kanten), `sjanse` og `forskyv`. Motoren (`skogkant()` i `motor.js`) finn kva sider
   av flisa som har open mark, og `Pikslar.kantfigurar` set eitt til tre tre per flis: det fremste står
   0 til 7 pikslar ute mot open mark, nokre har eit mørkt tre bak seg og eit lite framfor seg på graset.
+  Kor langt ute følgjer glatt støy langs kanten, så kanten bukter seg over fleire fliser; ytst på kartet
+  står det alltid eit tre bak, så skogbotnen ikkje syner som eit hol. Trea lener seg berre langt ut
+  mot gras der ingenting står: ei lykt, ein grav eller ei kiste (`Pikslar.STAAR`) på naboflisa eller
+  flisa under henne stengjer den sida. Mot luft eller bakkekant (`-`, `N`) står dei låge trea frå `nede`.
   `Pikslar.kantflis` teiknar skogbotnen, med graset frå naboflisa som går ujamt inn (glatt felt over
   kartpikslane, så kanten ikkje følgjer rutenettet). Ein ny kanttype (lauvskog, berg, myr) er ein ny
   post i `KANTTYPE` med eigne bilete frå `natur.py`, og `kant: "<namn>"` på kartet. Gjer kanten ujamn i

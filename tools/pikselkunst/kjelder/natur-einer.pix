@@ -5,38 +5,36 @@
 palett:
   . = -
   o = #0a0514    omriss
-  0 = #0c1e1c    gran djup
-  1 = #163228    gran skugge
-  2 = #1f4a38    gran
-  3 = #2e6448    gran lys
-  4 = #4a8058    gran glans
   a = #2a1810    stamme djup
   b = #4a2c1c    stamme
-  N = #08141a    gran djupast
-  T = #262c52    einerbær
-  U = #7e8cba    einerbær dogg
-  h = #0e2420    einer hole
-  F = #6aa66c    einer glans
+  T = #2a3264    einerbær
+  U = #94a4d8    einerbær dogg
+  h = #163430    einer hole
+  F = #a0d098    einer glans
+  I = #1a3632    einer djup
+  O = #2a5848    einer skugge
+  V = #408266    einer
+  t = #66aa80    einer lys
 bilete:
   ....................
   ...........o.oo.....
-  .........oo2oF3oo...
-  ......ooo3FFF3322o..
-  .....oFF3F433321o...
-  ....oF43F433211o....
-  ..ooF433F23221o.....
-  .o33F33221221oooo...
-  .oF331121o21U2233o..
-  oF3344Uh3442TTh311o.
-  o33442TT24h22331100o
-  .o1122314322131100N2
-  ..o22234321133300N2o
-  .o441333h100001NNoo.
-  o44200h011U3h11110o.
-  o422331111TT001000bo
-  o222311110300N0000bo
-  o2111001000hN000Nbo.
-  .o00000000NNN00NNao.
-  ..oooo000NNN0NNNoo..
-  ......oo00oooooo....
+  .........ooVoFVoo...
+  ......oootFFFVVVVo..
+  .....oFFtFtVVVVOo...
+  ....oFtVVtVVVOOo....
+  ..ooFtVVtVVVVOo.....
+  .ottFVVttOVVOUooo...
+  .oFFtOVtOoVOtTVVVo..
+  oFVVVtUhttttVVhVOOo.
+  oFVVOtTtVthVVOOOOOOo
+  .oOOtVtOVtVVOOOOOOIV
+  ..otVVOVOVOOOOIOOIVo
+  .otVOOOIhOIIIIOTIoo.
+  otttTIhIOOUOhOOOOOo.
+  ottVVOOOOOTOOOOOOObo
+  otVVOOOOOOOOOIOOOObo
+  oVOOOIIOOOOhIOOOIbo.
+  .oIIIIIOOOIIIOOIIao.
+  ..ooooIIIIIIIIIIoo..
+  ......ooIIoooooo....
   ........oo..........

@@ -33,7 +33,8 @@ PAL = [
     ("w", "#14281e", "furu nål djup"), ("x", "#264630", "furu nål skugge"), ("y", "#3e6a3a", "furu nål"), ("z", "#6c9450", "furu nål lys"),
     ("K", "#3c3634", "tørrgran skugge"), ("L", "#6e645c", "tørrgran"), ("M", "#9c9288", "tørrgran lys"),
     ("P", "#a4ac88", "skjegglav"), ("R", "#6c7660", "skjegglav skugge"), ("Q", "#7a4a2a", "brune nåler"), ("S", "#4a2c1c", "brune nåler skugge"),
-    ("T", "#262c52", "einerbær"), ("U", "#7e8cba", "einerbær dogg"), ("h", "#0e2420", "einer hole"), ("F", "#6aa66c", "einer glans"),
+    ("T", "#2a3264", "einerbær"), ("U", "#94a4d8", "einerbær dogg"), ("h", "#163430", "einer hole"), ("F", "#a0d098", "einer glans"),
+    ("I", "#1a3632", "einer djup"), ("O", "#2a5848", "einer skugge"), ("V", "#408266", "einer"), ("t", "#66aa80", "einer lys"),
     ("g", "#35683a", "gras skugge"), ("G", "#4a8a3f", "gras"), ("H", "#68a84a", "gras lys"), ("J", "#92c65e", "gras glans"),
 ]
 
@@ -273,25 +274,25 @@ def einer():
     # Klasane frå bak (nede til høgre, mørke) til fram (oppe til venstre, lyse), så dei lyse ligg oppå.
     klasar = [(14, 16, 4.0, 0), (9, 16, 4.6, 0), (16, 11, 2.6, 0), (4, 16, 3.0, 1), (12, 11, 3.4, 1),
               (6, 12, 3.2, 1), (11, 6, 2.8, 2), (7, 7, 2.6, 2), (14, 4, 2.0, 2), (3, 10, 1.8, 2)]
-    tonar = [("2", "1", "0", "N"), ("3", "2", "1", "0"), ("4", "3", "2", "1")]
+    # Eigen blågrøn fargetrapp (I djup, O skugge, V, t lys, F glans), like lys som bjørkekrona.
+    tonar = [("V", "O", "O", "I"), ("t", "V", "O", "I"), ("t", "V", "V", "O")]
+    # Kvar klase blir ferdig skuggelagd før den neste (framfor) blir lagd oppå: ein smal sigd av lys
+    # oppe til venstre (dei framme lysast) og mørk skugge i botnen, så kanten mellom klasane syner.
     for i, (kx, ky, r, t) in enumerate(klasar):
         klump(L, kx, ky, r, tonar[t], i)
-    # Lyse toppar: ein smal sigd av lys oppe til venstre på kvar klase (dei framme lysast), og mørk
-    # skugge i botnen av kvar klase der han går inn under den neste.
-    for i, (kx, ky, r, t) in enumerate(klasar):
         for y in range(int(ky - r) - 1, int(ky + r) + 2):
             for x in range(int(kx - r) - 1, int(kx + r) + 2):
                 nx, ny = (x + .5 - kx) / r, (y + .5 - ky) / r; d = math.hypot(nx, ny)
-                if 0.5 < d <= 1.0 and nx + ny < -0.7 and L.get(x, y) != ".": L.p(x, y, "F" if t == 2 and d > 0.75 else "4" if t >= 1 else "3")
-                elif 0.6 < d <= 1.0 and ny > 0.55 and t > 0 and L.get(x, y) != ".": L.p(x, y, "1" if t == 2 else "0")
+                if 0.45 < d <= 1.0 and nx + ny < -0.55 and L.get(x, y) != ".": L.p(x, y, "F" if t == 2 and d > 0.7 else "t" if t >= 1 else "V")
+                elif 0.68 < d <= 1.0 and ny > 0.5 and L.get(x, y) != ".": L.p(x, y, "O" if t == 2 else "I")
     # Holer inni mellom klasane (mørkast), der klasane møtest.
     for (x, y) in [(8, 13), (12, 14), (10, 10), (6, 14), (14, 9), (11, 17), (7, 9)]:
         if L.get(x, y) != ".": L.p(x, y, "h")
     # Nålestrøk: korte, skrå strekar i lysare tone på sida mot ljoset.
     for k in range(12):
         x, y = int(2 + h(k, 1, 91) * 12), int(3 + h(k, 2, 91) * 10)
-        if L.get(x, y) in "123" and L.get(x + 1, y - 1) in "0123":
-            c = {"1": "2", "2": "3", "3": "4"}[L.get(x, y)]
+        if L.get(x, y) in "OVt" and L.get(x + 1, y - 1) in "IOVt":
+            c = {"O": "V", "V": "t", "t": "F"}[L.get(x, y)]
             L.p(x, y, c); L.p(x + 1, y - 1, c)
     # Stikkande nåletuster langs kanten: lyse oppe til venstre, mørke nede til høgre.
     for x in range(W):
@@ -299,14 +300,15 @@ def einer():
             if L.get(x, y) == "." and h(x, y, 92) > 0.72 and y < 14:
                 nb = [L.get(x + dx, y + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))]
                 if any(c not in ".o" for c in nb) and y < 19:
-                    L.p(x, y, "3" if (x < 10 and y < 12) else "2" if y < 14 else "1")
-    # Blåsvarte bær med lys dogg.
-    for (x, y) in [(6, 10), (12, 9), (10, 15)]:
-        L.p(x, y, "T"); L.p(x + 1, y, "T"); L.p(x, y - 1, "U")
+                    L.p(x, y, "t" if (x < 10 and y < 12) else "V" if y < 14 else "O")
+    # Blåsvarte bær med lys dogg: einskilde bær spreidde, ikkje par (to og to ser ut som auge).
+    for (x, y, d) in [(6, 10, 1), (13, 8, 1), (10, 15, 1), (15, 13, 0), (4, 14, 0)]:
+        L.p(x, y, "T")
+        if d: L.p(x, y - 1, "U")
     # Ein tørr kvist som stikk ut til høgre, og kontaktlina mot bakken.
     for k in range(4): L.p(17 + (k > 1), 18 - k, "b" if k else "a")
     for x in range(3, 18):
-        if L.get(x, 20) != "." or L.get(x, 19) != ".": L.p(x, 20, "0" if L.get(x, 20) != "." else L.get(x, 20))
+        if L.get(x, 20) != "." or L.get(x, 19) != ".": L.p(x, 20, "I" if L.get(x, 20) != "." else L.get(x, 20))
     omriss(L)
     return L
 

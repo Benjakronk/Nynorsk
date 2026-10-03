@@ -400,6 +400,9 @@ window.Pikslar = (function () {
 
   const FAST = new Set(["+", "(", "u", "#", "t", "i", "F", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " ", "s", "M", "-", "N", "U", "Z"]);
   const ANIM = new Set(["~", "L", "T", "f", "n", "y"]);
+  // Fliser med noko som står oppreist og blir teikna i bakken (lykter, grav, kister, inventar):
+  // skogkanten lener ikkje tre ut over dei (sjå skogkant i motor.js og kantfigurar).
+  const STAAR = new Set(["L", "T", "x", "K", "k", "z", "b", "n"]);
   const VARIANT_EKSTRA = new Set(["Rt", "Rb", "Rtb"]);
   const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "O", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t", "i", "F"]);
   const cache = new Map();
@@ -1645,8 +1648,12 @@ window.Pikslar = (function () {
   }
   /* Trea i ei kantflis: liste med { img, x, y, skugge, dz } (pikslar relativt til flisa, dz er tillegg
      til djupna). opne som i kantflis, smaa: bitane der naboflisa er gras, så eit lite tre kan stå der,
-     ute: sidene der kartet sluttar (trea bak blir ikkje skuva ut over kanten av eit lite kart). */
-  function kantfigurar(type, x, y, opne, smaa = 0, ute = 0) {
+     ute: sidene der kartet sluttar (trea bak blir ikkje skuva ut over kanten av eit lite kart),
+     himmel: sidene med luft eller ein bakkekant («-», «N») ved sida av seg. Mot himmelen står dei
+     låge trea frå nede, så høge, nakne stammer (furu, tørrgran) ikkje står som stolpar mot lufta.
+     Eit tre lener seg berre langt ut mot ei side der smaa har biten, så det ikkje dekkjer stien eller
+     noko som står på naboflisa (motoren tek bort biten ved lykter og anna som står oppreist, STAAR). */
+  function kantfigurar(type, x, y, opne, smaa = 0, ute = 0, himmel = 0) {
     const kt = kanttype(type), ut = [];
     const vel = (liste, s) => liste[Math.floor(hash(x, y, s) * liste.length)];
     const j = (s, a) => Math.round((hash(x, y, s) * 2 - 1) * a);
@@ -1660,11 +1667,18 @@ window.Pikslar = (function () {
       legg(vel(kt.inne, 61), j(62, 4), j(63, 3), 0, 0);
     } else {
       const [f0, f1] = kt.forskyv;
-      let ut1 = f0 + Math.floor(hash(x, y, 64) * (f1 - f0 + 1));
-      if (!(smaa & opne)) ut1 = Math.min(ut1, 2);                         // ikkje ut over stien
-      // eit mørkt tre bak, trekt tilbake frå kanten
-      if (hash(x, y, 65) < kt.sjanse.bak) legg(vel(kt.inne, 66), ((rx > 0 && ute & 8) || (rx < 0 && ute & 2) ? 0 : -rx * (6 + j(67, 2))) + (ry ? j(68, 7) : 0), (ry < 0 ? 0 : -ry * 5 - 5) + j(69, 2), -0.3, 0);
-      legg(vel(ry < 0 && kt.nede ? kt.nede : kt.framme, 70), rx * ut1 + (rx ? 0 : j(71, 4)), ry * Math.min(ut1, 4) + (ry ? 0 : j(72, 3)), 0);
+      // Kor langt ut: mest glatt støy langs kanten, så nabotrea lener seg om lag like langt og kanten
+      // bukter seg inn og ut over fleire fliser (ikkje ei rett line med tilfeldig tagg).
+      const langs = rx ? y : x;
+      const ut1 = Math.min(f1, f0 + Math.floor((0.65 * vstoy(langs / 2.5, rx ? x : y, 64) + 0.35 * hash(x, y, 64)) * (f1 - f0 + 1)));
+      // ikkje ut over stien eller oppå noko som står på naboflisa (berre der smaa har biten)
+      const utx = smaa & (rx > 0 ? 2 : 8) ? ut1 : Math.min(ut1, 2);
+      const uty = Math.min(smaa & (ry > 0 ? 4 : 1) ? ut1 : 2, 4);
+      // eit mørkt tre bak, trekt tilbake frå kanten. Ytst på kartet (kartet sluttar bak flisa) står det
+      // alltid eit, elles syner skogbotnen som eit mørkt hol bak eit tre som lener seg langt ut.
+      const bakUte = ute & ((rx > 0 ? 8 : rx < 0 ? 2 : 0) | (ry > 0 ? 1 : ry < 0 ? 4 : 0));
+      if (hash(x, y, 65) < kt.sjanse.bak || bakUte) legg(vel(kt.inne, 66), ((rx > 0 && ute & 8) || (rx < 0 && ute & 2) ? 0 : -rx * (6 + j(67, 2))) + (ry ? j(68, 7) : 0), (ry < 0 ? 0 : -ry * 5 - 5) + j(69, 2), -0.3, 0);
+      legg(vel((ry < 0 || himmel & 1) && kt.nede ? kt.nede : kt.framme, 70), rx * utx + (rx ? 0 : j(71, 4)), ry * uty + (ry ? 0 : j(72, 3)), 0);
       // eit lite tre som står ute på graset framfor kanten
       if ((smaa & opne) && hash(x, y, 73) < kt.sjanse.smaa) {
         const sx = smaa & 2 ? 1 : smaa & 8 ? -1 : 0, sy = sx ? 0 : smaa & 4 ? 1 : smaa & 1 ? -1 : 0;
@@ -1781,6 +1795,6 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, nordkant, sidekant, klasse, bygg, natur, haugBilete, KANTTYPE, kantflis, kantfigurar, vatn, steingard, FAST, figur, fiende, vesenGang, lerret, ramp, blend, RAMP,
+  return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, nordkant, sidekant, klasse, bygg, natur, haugBilete, KANTTYPE, kantflis, kantfigurar, STAAR, vatn, steingard, FAST, figur, fiende, vesenGang, lerret, ramp, blend, RAMP,
     hent, klar, forhandslast, alleBilete, ILD, SETE, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
 })();

@@ -1424,3 +1424,30 @@ same måte, uansett kven som tek over.
 - **Vurdert:** `forhand/skjerm/r46-for-etter.png` (ved stabburet, før og etter) og `r46-einer.png`
   (busken åleine, gammal og ny).
 - **Står att:** Busken er framleis mørk i morgonlyset; han kunne fått litt meir kontrast mot graset.
+
+## Runde 47: lysare einer, skogkanten og lykta nedst til venstre på Åsen
+
+- **Oppdrag:** Brukaren: gje einerbusken lysare fargar og omrissline, sjå på skogstripa i kartkanten,
+  og lykta nedst til venstre på Åsen blir dekt av eit kanttre.
+- **Einer:** Eiga blågrøn fargetrapp i `natur.py` (I djup, O skugge, V, t lys, F glans, h hole), om lag
+  like lys som bjørkekrona, i staden for dei nesten svarte grantonane. Det mørkaste er no lysare enn
+  omrisset, så den mørke omrisslina syner rundt heile busken. Kvar klase blir skuggelagd ferdig før den
+  neste blir lagd oppå, så kanten mellom klasane syner. Bæra er einskilde og spreidde (par såg ut som
+  auge); kvisten står att. `pix.py sjekk`: 11 fargar, åtvarar om 6 % einsame pikslar (nålestrøk og bær,
+  med vilje).
+- **Skogkanten:** Fann (1) høge, nakne stammer (furu, tørrgran) i fremste rekkja øvst mot lufta, som
+  stod som stolpar mot himmelen, (2) at kanten langs sidene var ei nesten rett loddrett line, sidan
+  kvart tre lente seg tilfeldig ut og naboane jamna det ut, og (3) at tre kunne lene seg ut over ting
+  som står på naboflisa. Retta: `skogkant()` gir no `himmel` (luft eller bakkekant ved sida), og då står
+  dei låge trea frå `nede`; kor langt ute følgjer glatt støy langs kanten (bukter over fleire fliser);
+  ytst på kartet står det alltid eit mørkt tre bak, så skogbotnen ikkje syner som eit hol bak eit tre
+  som lener seg langt ut.
+- **Lykta:** Det vesle treet på graset framfor (1,12) stod med foten oppå lykta på (2,13), og det
+  fremste treet lente seg 7 pikslar ut mot henne. Generell løysing: `Pikslar.STAAR` (lykter, grav,
+  kister, inventar i bakken) og i `skogkant()` er ei side ikkje «gras» om det står noko slikt på
+  naboflisa eller flisa under henne. Utlegget er no avgrensa for kvar retning (`utx`, `uty`), ikkje
+  berre når ingen side har gras. Andre kart: berre `vegen` har ei lykt (26,10) nær kanten; ho var
+  fri før og er det framleis.
+- **Vurdert:** `forhand/skjerm/r47-einer-for-etter.png`, `r47-lykt-for-etter.png`,
+  `r47-skogkant-for-etter.png` (venstre og høgre side), og `r47-for-vegen-spel.png` / `r47-etter-vegen-spel.png`.
+- **Står att:** Den frittståande furua (`F` på 1,8) står tett inn i kanten og blandar seg med granene.

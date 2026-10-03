@@ -664,17 +664,21 @@ window.Motor = (function () {
     const k = x + "," + y;
     if (!kart.skogkant) kart.skogkant = {};
     if (kart.skogkant[k]) return kart.skogkant[k];
-    let opne = 0, gras = 0, vatn = 0, ute = 0;
+    let opne = 0, gras = 0, vatn = 0, ute = 0, himmel = 0;
     for (const [bit, dx, dy] of [[1, 0, -1], [2, 1, 0], [4, 0, 1], [8, -1, 0]]) {
       const n = (kart.fliser[y + dy] || [])[x + dx];
       if (n == null) ute |= bit;
+      if (n === "-" || n === "N") himmel |= bit;
       if (n != null && erVatn(x + dx, y + dy)) { vatn |= bit; continue; }
       if (n == null || n === "#") continue;
       const kl = Pikslar.klasse(n);
       if (kl === "gras" || kl === "villgras" || kl === "veg" || kl === "sand") opne |= bit;
-      if ((kl === "gras" || kl === "villgras") && !Pikslar.FAST.has(n)) gras |= bit;
+      // Gras der eit tre kan lene seg ut eller stå: ikkje om det står noko oppreist (ei lykt, ein grav)
+      // på naboflisa eller på flisa under henne, for treet står med foten nedst på naboflisa.
+      const under = (kart.fliser[y + dy + 1] || [])[x + dx];
+      if ((kl === "gras" || kl === "villgras") && !Pikslar.FAST.has(n) && !(Pikslar.STAAR && Pikslar.STAAR.has(under))) gras |= bit;
     }
-    return (kart.skogkant[k] = { opne, gras, vatn, ute });
+    return (kart.skogkant[k] = { opne, gras, vatn, ute, himmel });
   }
   /* Vassfeltet til Pikslar.vatn: kva som er land (brua «Q» er vatn under), om vatnet er ein bekk
      med straum (kart.def.vatn.bekk) og kvar det er stryk (kart.def.vatn.stryk, «x,y»). */
@@ -1348,7 +1352,7 @@ window.Motor = (function () {
       // Skogkanten: fleire tre per flis, ulikt langt ute mot open mark (sjå Pikslar.kantfigurar).
       if (c === "#" && !erVatn(x, y)) {
         const sk = skogkant(x, y);
-        for (const f of Pikslar.kantfigurar(kart.def.kant || "granskog", x, y, sk.opne, sk.gras, sk.ute)) {
+        for (const f of Pikslar.kantfigurar(kart.def.kant || "granskog", x, y, sk.opne, sk.gras, sk.ute, sk.himmel)) {
           if (f.skugge) { g.fillStyle = "rgba(20,24,50,0.3)"; g.beginPath(); g.ellipse(sx + 9 + f.sx, sy + 14 + f.sy, f.skugge, 2.5, 0, 0, Math.PI * 2); g.fill(); }
           naturFig.push({ y: y + 0.005 + f.dz, rad: y, x, natur: f });
         }
