@@ -1832,3 +1832,18 @@ same måte, uansett kven som tek over.
   spisebordet, stolane og lesebordet på Ekset og i prestegarden, skigarden og steingarden ute, og i
   kyrkja korstolane (dei ståande benkene), fattigblokka, jernomnen, orgelet og brystninga på galleriet.
   Kubbestolen sett frå sida (`-venstre`, `-hogre`) er framleis litt klumpete.
+
+## Runde 59: preikestolen med lange korgveggar, kjegle under og repos frå trappa
+
+- **Frå brukaren:** Overgangen frå trappa til preikestolen var dårleg, korgveggane skal vere lange som i
+  originalen, så søyla blir lågare, og botnen skal sjå ut som søyla står bak og støttar midt under.
+- **Før:** `forhand/skjerm/k58-for-rad.png` (preikestolen utan Ivar, Ivar på dei to øvste trinna og i korga).
+- **Runde 1:** framsida av korga er 24 pikslar lang som i originalen (list midt på, evangelistar øvst og
+  fyllingar nedst). Under er ein kjegle som smalnar inn mot søyla, mest i skugge, med ein gyllen dropp, og
+  søyla kjem ut under kjeglen, øvst i skugge, og er mykje kortare. Øvst i trappa er ein repos i same høgd
+  som korggolvet, som går inn under kanten, med ein dørstolpe i korgkanten, og handlista byrjar ved
+  korgkanten. Fem trinn ned. `hogd`: (4,16) 19, (3,16) 37, reposen 56, korga 56, så Ivar ikkje hoppar.
+- **Runde 2:** på reposen stod Ivar halvt bak korga: skuva 6 pikslar mot høgre (`[56, 6]`), så han står
+  på reposen ved døra og går rett inn i korga (`[56, 5]`).
+- **Etter:** `k58-rad.png` (utan Ivar, på trinn 3, på reposen og i korga) og `k58-naer.png` (reposen nært).
+- **Står att:** Reposen og trinna blir mørke i det mørke rommet.

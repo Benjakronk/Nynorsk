@@ -723,12 +723,13 @@ window.RPGData = (function () {
       // Ei lagring frå den vesle kyrkja (12 rader) har ein stad som ikkje finst lenger: Ivar startar
       // framfor altarringen (merke 2 er ikkje i kartet, sjå EKSTRA_MERKE), der lysestakane er.
       nyttOppsett: { fraH: 12, merke: "2" },
-      // Trappa opp til preikestolen: (4,16) nedst, (3,16) midt i trappa, (2,16) øvst, (1,16) i korga (pikslar opp, og
+      // Trappa opp til preikestolen: (4,16) nedst, (3,16) midt i trappa, (2,16) på reposen i same høgd som
+      // korggolvet, (1,16) i korga (pikslar opp, og
       // 5 pikslar mot høgre så Ivar står midt i korga; sjå hogdVed() i motor.js). Rutene rundt (rad 15 og
       // 17, og ved den nedste trappeflisa) er faste, så ein berre kjem opp og ned trappa.
       // I benkeradene (rada rett bak ein benk) står ein 5 pikslar lågare, så setet og ryggen framfor
       // dekkjer føtene, men hovudet syner over den som sit rett framfor.
-      hogd: Object.assign({ "4,16": 17, "3,16": 35, "2,16": [53, 2], "1,16": [56, 5] },
+      hogd: Object.assign({ "4,16": 19, "3,16": 37, "2,16": [56, 6], "1,16": [56, 5] },
         Object.fromEntries([17, 19, 21, 23, 25, 30, 32, 34, 36, 38, 43, 45, 47, 49, 51].flatMap(y =>
           [2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17, 18].map(x => [x + "," + y, -5])))),
       dorer: [{ ved: [10, 60], til: ["bygda", "3"] }, { ved: [8, 54], til: ["kyrkje-galleri", "1"] }],
