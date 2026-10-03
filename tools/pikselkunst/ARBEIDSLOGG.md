@@ -1882,3 +1882,25 @@ same måte, uansett kven som tek over.
   grannen, budeia og dei fem fellesansikta (`bygd-mann`, `bygd-kvinne`, `bygd-gamal-mann`,
   `bygd-gamal-kone`, `bygd-gut`). Huldra kan få litt meir form i håret over issen, og haka til Ivar er
   litt brei.
+
+## Runde 61: kista, open og lukka frå same vinkel
+
+- **Frå koordinatoren:** Den opne kista frå runde 59 var høg og smal og minte om eit skap eller ei
+  biletramme, fordi det oppslegne loket gjorde ho høgare enn den lukka.
+- **Research:** FF6-tilesetet «Town Interior» frå Spriters Resource (`forhand/referansar/ff6tile-541477.png`,
+  utsnitt `z-ff6-kister2.png`): den opne kista er like høg som den lukka, loket står opp bak som ei
+  stripe på 3 til 4 pikslar, og innsida er ein mørk brunn med jernkant. Ekte kister frå 1700- og
+  1800-talet (`konsept/kiste-folkemuseum-1897.jpg`, `kiste-folkemuseum-1930.jpg`, `kiste-rosemalt-nb.jpg`,
+  ført inn i KJELDER.md): buelok, breie jernband over loket og ned framsida, kista om lag dobbelt så
+  brei som djup, og innsida av loket er kvit furu med svarte hengsle.
+- **Rundar:**
+  1. Den opne kista er like høg som den lukka: loket er ei forkorta stripe på 3 pikslar (kvit furu med
+     hengsle), innsida ein mørk brunn med kant rundt.
+  2. Begge var nesten kvadratiske og las som skap: kista er no heile flisa brei (14 pikslar kasse) og
+     lokflata 8 pikslar djup, så ho er brei og låg. Innveggen bak er 2 rader.
+  3. Buelok: lys rygg i dei to bakre radene av loket og mørkare kant framme der loket bøyer ned.
+     Jernbanda på loket er mørke (dei forsvann mot det blå).
+- **Etter:** `forhand/skjerm/r60-samanlikning-kister.png` (frå venstre: lukka og open frå runde 59, lukka og
+  open no, og open ute ved vegen), `r60-kister-spel.png`, `r60-kister-open-spel.png`, `r60-vegen-spel.png`.
+- **Står att:** stabburet, kubbestolen frå sida, Ekset og prestegarden, kyrkja og skigarden og
+  steingarden ute (rekkjefølgja i dei neste rundane).

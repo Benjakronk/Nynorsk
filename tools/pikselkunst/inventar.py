@@ -601,47 +601,6 @@ def preikestol(lag="fram"):
             for y in range(ty + 11, yb + 1):
                 T.p(x, y, "t" if y == yb else "A" if x >= tx + 8 else "T" if (y - ty) % 9 else "c")
         T.p(tx, ty, "U")
-    for tx, ty in trinn[1:]:                                                   # stolpar på framkanten
-        for y in range(ty + 2, ty + 9): L.p(tx + 8, y, "t" if y > ty + 2 else "Y")
-    for x in range(cx + 12, 80):                                               # handlista, frå korgkanten
-        y = yk + 1 + round((x - cx - 12) * 50 / 47)
-        if y < yb - 6: L.p(x, y, "y"); L.p(x, y + 1, "Z")
-    for y in range(H - 18, yb + 1): L.p(76, y, "U"); L.p(77, y, "t")           # stolpen nedst
-    # søyla: kjem ut under botnen av korga og står midt under, øvst i skugge, med fot
-    for y in range(yu + 8, yb - 3):
-        sk = y < yu + 13
-        L.p(cx - 2, y, "T" if sk else "U"); L.p(cx - 1, y, "t" if sk else "T"); L.p(cx, y, "t" if sk else "T"); L.p(cx + 1, y, "a" if sk else "t")
-    for y in (H - 24,):
-        for x in range(cx - 3, cx + 3): L.p(x, y, "Y" if x < cx + 1 else "Z")
-    oval(cx, yb - 2, 6, 2.5, lambda x, y, d: L.p(x, y, "U" if y < yb - 2 else "T"))
-    # botnen av korga: ein kjegle som smalnar inn mot søyla, sett skrått ovanfrå, mest i skugge,
-    # med ein gyllen dropp der søyla tek imot
-    for j, y in enumerate(range(yu + 1, yu + 9)):
-        b = 13 - round(j * 1.3)
-        for x in range(cx - b, cx + b): L.p(x, y, "T" if x < cx - b + 3 and j < 3 else "t" if x < cx + b - 2 else "a")
-    for x in range(cx - 13, cx + 13): L.p(x, yu + 1, "A")
-    L.p(cx - 1, yu + 9, "Y"); L.p(cx, yu + 9, "Z")
-    # framsida av korga: lang som i originalen, tre flater, evangelistar i bogefelt, preikestolkledet,
-    # og ei lita dør inn frå reposen til høgre
-    for y in range(yk, yu):
-        for x in range(cx - 13, cx + 13): L.p(x, y, "U" if x < cx - 8 else "T" if x < cx + 8 else "t")
-    for x in range(cx - 13, cx + 13): L.p(x, yu - 1, "Y"); L.p(x, yu, "Z")
-    for x in range(cx - 13, cx + 13): L.p(x, yu - 9, "Y")                    # list midt på
-    for fx in (cx - 7, cx + 3):
-        for y in range(yk + 4, yu - 11):
-            for x in range(fx, fx + 4): L.p(x, y, "B" if y < yk + 8 else "b")
-        for y in range(yk + 4, yu - 11): L.p(fx - 1, y, "Y"); L.p(fx + 4, y, "Z")
-        _stempel(L, fx + 1, yk + 7, [".h", "EE", "ER", "Rr", "Rr"])
-        for y in range(yu - 7, yu - 2):                                         # fyllingar nedst
-            for x in range(fx, fx + 4): L.p(x, y, "U" if fx < cx else "T")
-    for y in range(yk + 4, yu - 2): L.p(cx - 12, y, "E"); L.p(cx + 11, y, "r")
-    for x in range(cx - 1, cx + 1):
-        for y in range(yk + 2, yk + 14): L.p(x, y, "E" if x < cx else "R")
-    for x in range(cx - 2, cx + 2): L.p(x, yk + 14, "Y" if x % 2 else "Z")
-    L.p(cx - 1, yk + 6, "Y"); L.p(cx, yk + 6, "Y"); L.p(cx - 1, yk + 5, "Y"); L.p(cx - 1, yk + 7, "Y")
-    for y in range(yk - 2, yk + 6): L.p(cx + 12, y, "y" if y < yk else "Z")     # dørstolpe mot reposen
-    # korga sett ovanfrå: gyllen kant og golvet inni (bak) og den fremre kanten (fram)
-    oval(cx, yk, 13, 5.5, lambda x, y, d: L.p(x, y, ("Y" if y < yk else "y") if d > 0.62 else "a" if y < yk - 1 else "A"))
     # ryggbrettet langs veggen, med ei due i eit felt
     for y in range(H - 88, yk - 4):
         for x in range(cx - 4, cx + 4): L.p(x, y, "T" if x > cx - 4 else "U")
@@ -1792,9 +1751,11 @@ def _kasse(L, x0, x1, y0, djup, front, lokh, open_, F, rose, inni=None):
             for x in range(lx0, lx1 + 1): L.p(x, y, F["top"])
         for x in range(lx0, lx1 + 1): L.p(x, yt0, F["topbak"]); L.p(x, yt1, F["toplys"])
         for y in range(yt0, yt1 + 1): L.p(lx0, y, F["toplys"]); L.p(lx1, y, F["topbak"])
+        if F.get("bue"):                                                        # buelok: lys rygg bak, bøyer ned framme
+            for x in range(lx0 + 1, lx1): L.p(x, yt0 + 1, F["bue"]); L.p(x, yt0 + 2, F["bue"]); L.p(x, yt1, F["topbak"])
         if rose: _stempel(L, (x0 + x1 + 1) // 2 - len(rose[0]) // 2, yt0 + (djup - len(rose)) // 2, rose)
         for bx in band:                                                         # jernband over loket
-            for y in range(yt0, yt1 + 1): L.p(bx, y, "X" if (y - yt0) % 4 else "s")
+            for y in range(yt0, yt1 + 1): L.p(bx, y, "V" if (y - yt0) % 3 else "X")
         for x in range(lx0, lx1 + 1): L.p(x, yt1 + 1, F["front"])                # kanten på loket
         L.p(lx0, yt1 + 1, F["frontlys"]); L.p(lx1, yt1 + 1, F["mork"])
         for bx in band: L.p(bx, yt1 + 1, "V")
@@ -1809,15 +1770,17 @@ def _kasse(L, x0, x1, y0, djup, front, lokh, open_, F, rose, inni=None):
                 L.p(x, y, (F["toplys"] if x == lx0 or y == y0 else F["mork"]) if kant else F["lokinne"])
         for x in range(lx0 + 1, lx1): L.p(x, ylok1, F["lokkant"])
         for y in range(y0 + 1, ylok1 + 1): L.p(lx0 + 1, y, F["lokkant"]); L.p(lx1 - 1, y, F["lokkant"])
+        for bx in band:                                                         # hengslene: jernbanda på innsida av loket
+            for y in range(y0 + 1, ylok1 + 1): L.p(bx, y, "V")
         if F.get("lokrose"): _stempel(L, (x0 + x1 + 1) // 2 - len(F["lokrose"][0]) // 2, y0 + 1 + (lokh - 2 - len(F["lokrose"])) // 2, F["lokrose"])
         yb = ylok1 + 1                                                          # kanten bak
         yfr = yb + djup - 1                                                     # kanten framme
         for x in range(x0, x1 + 1): L.p(x, yb, F["top"]); L.p(x, yfr, F["toplys"])
         for y in range(yb, yfr + 1): L.p(x0, y, F["toplys"]); L.p(x1, y, F["topbak"])
         for y in range(yb + 1, yfr):                                            # innsida
-            iy = y - yb - 1                                                     # innveggen bak (3 rader), så botnen
+            iy = y - yb - 1                                                     # innveggen bak (2 rader), så botnen
             for x in range(x0 + 1, x1):
-                L.p(x, y, (F["innmork"] if iy == 0 else F["innvegg"]) if iy < 3 else F["botnskugge"] if iy == 3 or x < x0 + 3 else F["botn"])
+                L.p(x, y, (F["innmork"] if iy == 0 else F["innvegg"]) if iy < 2 else F["botnskugge"] if iy == 2 or x < x0 + 3 else F["botn"])
             L.p(x0 + 1, y, F["innmork"]); L.p(x1 - 1, y, F["innlys"])          # sideveggene: venstre i skugge, høgre i lys
         if inni: inni(L, x0 + 2, x1 - 2, yb + 2, yfr - 1)
         for bx in band: L.p(bx, yb, "X"); L.p(bx, yfr, "X")
@@ -1842,9 +1805,9 @@ KISTE_ROSE = [".I..I.",
               ".EEEE.",
               "i.ii.i"]
 KISTE_F = {"top": "Q", "topbak": "z", "toplys": "G", "front": "m", "frontlys": "z", "mork": "b",
-           "skugge": "u", "sokkel": "t", "band": (8, 15),
-           "lokinne": "R", "lokkant": "E", "lokrose": ["iEyyEi"],
-           "innvegg": "A", "innmork": "a", "innlys": "c", "botn": "c", "botnskugge": "A",
+           "skugge": "u", "sokkel": "t", "band": (8, 15), "bue": "G",
+           "lokinne": "C", "lokkant": "c",
+           "innvegg": "a", "innmork": "a", "innlys": "c", "botn": "A", "botnskugge": "a",
            "laas": [(-1, 0, "Y"), (0, 0, "Y"), (1, 0, "Y"), (2, 0, "Z"), (-1, 1, "Y"), (0, 1, "v"), (1, 1, "v"), (2, 1, "Z"),
                     (-1, 2, "Z"), (0, 2, "Y"), (1, 2, "Z"), (2, 2, "Z")],
            "prikk": [(-4, 1, "E"), (-3, 2, "y"), (-4, 3, "E"), (5, 1, "E"), (4, 2, "y"), (5, 3, "E")]}
@@ -1852,14 +1815,15 @@ KISTE_F = {"top": "Q", "topbak": "z", "toplys": "G", "front": "m", "frontlys": "
 
 def kiste(open_=False):
     """Kista på karta (flisa K): ei blåmåla kiste med rosemaling og jernband, i standardperspektivet
-    (STILGUIDE.md, som i FF6): loket er ei stor toppflate (10 pikslar) med ei rose og to jernband,
-    framsida er kort (4 pikslar) med lås. Den opne kista har loket slått opp bakover (raud innside med
-    rosemaling) og syner innsida ovanfrå: kant rundt, innvegg i skugge og ein tom botn.
+    (STILGUIDE.md, som i FF6): buelok (etter kistene på Norsk Folkemuseum, sjå konsept/) som ei stor
+    toppflate (8 pikslar, heile flisa brei, så kista er brei og låg) med lys rygg bak, ei rose og to
+    jernband, framsida er kort (4 pikslar) med lås. Den opne kista er like høg som den lukka (som i FF6): loket står opp bak som ei kort, forkorta
+    stripe (3 pikslar, kvit furu med hengsle), og innsida er ein mørk brunn med kant rundt.
     1 flis, står nedst i flisa (sjå kisteVed i motor.js)."""
-    W, H = 16 + 8, 19 + (2 if open_ else 0)
+    W, H = 16 + 8, 17
     L = Lerret(W, H)
-    if open_: _kasse(L, 6, 17, 1, 10, 4, 4, True, KISTE_F, None)
-    else: _kasse(L, 6, 17, 1, 10, 4, 0, False, KISTE_F, KISTE_ROSE)
+    if open_: _kasse(L, 5, 18, 1, 7, 4, 3, True, KISTE_F, None)            # same kant framme som den lukka
+    else: _kasse(L, 5, 18, 1, 8, 4, 0, False, KISTE_F, KISTE_ROSE)
     omriss(L)
     return L
 
