@@ -69,10 +69,9 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   oppstoda, og altaret), `altarring` (7 × 3), `skipvegg-v` og `-h` (austveggen i skipet ved korbogen,
   4 × 5, salmetavla til høgre), `korskilje` (11 × 1), `preikestol` (3 × 2, med trapp), `dopefont`
   (2 × 1), `kyrkjebenk-h` og `-v` (8 × 1, benkedøra mot midtgangen), og høgt oppe (`over: true` med
-  `faktor` og `tak`, parallakse og kjetting): `lysekrone` (3 × 1), `kyrkjeskip` (3 × 1) og `galleri`
-  (21 × 3). Ljosa står i `LJOS` og kjettingfestet i `KJEDE` i `pikslar.js`. Runde 53: benkevariantar
-  `kyrkjebenk-h2` til `-h4` og `-v2` til `-v4` (namneplate, hatt, sjal, stokk, slitasje), `epitaf-v`
-  og `-h` (på sideveggene), `gravhelle1` til `3`, `trapp` (desse og utsynet ligg flatt: `flat: true`),
+  `faktor` og `tak`, parallakse og kjetting): `lysekrone` (3 × 1, kransane sett ovanfrå) og `kyrkjeskip` (3 × 1). Ljosa står i `LJOS` og kjettingfestet i `KJEDE` i `pikslar.js`. Runde 53: benkevariantar
+  `kyrkjebenk-h2` til `-h5` og `-v2` til `-v5` (namneplate, hatt, sjal, stokk, slitasje, mange salmebøker), `epitaf-v`
+  og `-h` (på sideveggene), `trapp` (ho og utsynet ligg flatt: `flat: true`),
   `fattigblokk`, `jernomn` (ILD), og til galleriet og tårnet `galleribrystning`, `kyrkjeklokke`,
   `tarnbjelke` (og `-due`), `tarnvegg`, `orgel`, `galleritrinn` og `preikestol-bak` (laget bak den
   som står i korga). Utsynet ned i skipet (`inne-skip-utsyn.png`) lagar `utsyn_galleri.py` av

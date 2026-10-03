@@ -102,13 +102,13 @@ def lykt(r):
 
 # ---------------------------------------------------------------- lysekrone
 def krone(r):
-    """Den store lysekrona i kyrkja (inne-lysekrone, 56 x 54, heng høgt med parallakse). Ankeret
+    """Den store lysekrona i kyrkja (inne-lysekrone, 56 x 48, heng høgt med parallakse, sett ovanfrå). Ankeret
     er midt i messingkula (Pikslar.LJOS). Små, sterke gloriar rundt dei fjorten ljosa (plassane
     kjem frå KRONE_LJOS i inventar.py) og eit svakt skin rundt heile krona. Pølen på golvet er ei
     eiga form (kronegolv), fordi han ligg fast på golvet medan krona flyttar seg med parallaksen."""
     from inventar import lysekrone, KRONE_LJOS, KRONE_KJEDE
     lysekrone()
-    ax, ay = 27, KRONE_KJEDE + 36
+    ax, ay = 27, KRONE_KJEDE + 28
     G = Glod()
     # skinet rundt krona: ein flat oval kring kransane
     G.profil(1, -22, [6, 12, 16, 19, 21, 23, 24, 25, 26, 26, 27, 27, 27, 27, 26, 26, 25, 24, 22, 20, 18, 15, 12, 9, 5])

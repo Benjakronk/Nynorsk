@@ -1713,3 +1713,37 @@ same måte, uansett kven som tek over.
     sjåast over.
   - Ute: skigarden og steingarden (sett nesten frå sida).
   - I kyrkja: korstolane (bondebenkene), fattigblokka, jernomnen, orgelet og brystninga på galleriet.
+
+## Runde 57: kolven heng etter, ingen galleri over skipet, kroner og preikestol ovanfrå, skøytte plankar
+
+- **Frå brukaren:** Kolven skal røre seg rett, galleriet («koret») over dei bakste radene kan fjernast,
+  lysekronene og preikestolen skal få nytt perspektiv, Ivar skal gå annleis mellom benkeradene, færre sjal
+  og hattar og fleire salmebøker, plankane i golvet skal vere skøytte, og gravhellene passar ikkje i ei
+  luthersk bygdekyrkje. Døypefonten er urørd.
+- **Før:** `forhand/skjerm/k56-for-kolv.png`, `k56-for-bak-heil.png` (med galleriet), `k56-for-benk.png`,
+  `k56-for-stol.png` og `k56-for-golv.png`.
+- **Kolven** (`klokke.py`): ein eigen del som heng frå krona. I rammene på vegen heng han rett ned i
+  verda og heng difor etter klokka (kula syner under munnen mot den sida klokka kjem frå). På
+  ytterpunkta har han slege mot kanten (42 grader inne i klokka), og der kjem «DONG».
+- **Galleriet** er teke bort som lag over skipet. Rad 52 har fått ei benkerad til, så den bakste delen
+  ser naturleg ut. Trappa i våpenhuset og kartet `kyrkje-galleri` er der framleis. Biletet `galleri` er
+  sletta.
+- **Lysekronene:** kransane er tydelege ovalar sett ovanfrå (ry 6 og 10), stamma kort, ljosa korte med
+  dryppskål, kula midt under den nedste kransen. Parallakse, kjetting og glød (ankeret flytt) er som før.
+- **Ivar mellom benkeradene:** senka 12 pikslar i staden for 16, så han står på setet med heile
+  overkroppen synleg, og ryggen framfor dekkjer berre føtene. Det glir jamt inn frå midtgangen.
+- **Ting i benkene:** ny variant `kyrkjebenk-h5`/`-v5` med fem salmebøker, og fleire bøker i dei andre.
+  Hatt og sjal står no berre i benkene der folk sit (sjal ved konene, hatt ved mennene) og eitt gløymt
+  sjal. Variantane er sette rad for rad i data.js.
+- **Preikestolen** i standardperspektivet: lydhimlingen som ein stor raud oval med gylne ribber og krone,
+  korga som ein open oval med kant og golv, kort framside med evangelistane, breie trinn i trappa.
+  Grensa mellom laget bak og framfor går midt i korga, og Ivar står midt i ho (hogd 56, dx 5).
+- **Golvet:** furuplankane i skipet (og galleriet og tårnet) har endeskøytar på ulik stad frå rute til
+  rute (variantane til flisa `q`), så kvar planke er 2 til 4 fliser lang. Eikeplankane i koret har
+  skøyt på om lag kvar fjerde flis.
+- **Gravhellene** er tekne bort frå golvet og biletet sletta. Epitafia og minnetavlene på veggene minner
+  om dei døde. Den gamle mannen talar no om minnetavla.
+- **Etter:** `k56-kolv-rammer.png` (fem av rammene i spelet), `k56-bak-heil.png`, `k56-benk-heil.png`
+  (lysekroner og Ivar mellom benkeradene), `k56-stol-heil.png`, `k56-kor-heil.png` og golvet i alle.
+- **Står att:** Kula til kolven er lita og syner dårleg på ytterpunkta. Lista over andre objekt med for låg
+  vinkel frå runde 56 gjeld framleis.

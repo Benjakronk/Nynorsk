@@ -36,8 +36,18 @@ def i_kvile(x, y):
             if j in (6, 21) and -b + 1 <= x < b - 1: return "9"                  # band i relieff
             t = (x + b) / (2 * b)
             return "Y" if t < 0.12 else "Z" if t < 0.6 else "9" if t < 0.92 else "v"
-    if len(PROF) + 26 <= y < len(PROF) + 30 and -1 <= x < 1: return "V" if x < 0 else "v"   # kolven
     return None
+
+
+KOLV_PIVOT, KOLV_LENGD, KOLV_KANT = 27, 36, 42       # kolven: festet inne i krona, lengda og vinkelen mot kanten
+
+
+def kolv_vinkel(vinkel):
+    """Kolven heng fritt som ein pendel og heng etter: i rammene på vegen heng han rett ned (i verda),
+    og på ytterpunkta har han slege mot kanten på den låge sida av klokka (slaget, DONG). Vinkelen er
+    relativ til klokka (0 er midt i klokka)."""
+    if abs(vinkel) >= max(abs(v) for v in VINKLAR): return -math.copysign(KOLV_KANT, vinkel)
+    return -vinkel
 
 
 def ramme(vinkel):
@@ -50,6 +60,17 @@ def ramme(vinkel):
             uy = -dx * math.sin(a) + dy * math.cos(a)
             c = i_kvile(math.floor(ux), uy + AKSEL)
             if c: L.p(x, y, c)
+    # kolven: stonga syner berre under klokka (bak), kula alltid
+    k = math.radians(kolv_vinkel(vinkel))
+    def til_bilete(lx, ly):
+        return (round(CX + lx * math.cos(a) - (ly - AKSEL) * math.sin(a) - 0.5),
+                round(AKSEL + lx * math.sin(a) + (ly - AKSEL) * math.cos(a) - 0.5))
+    for t in range(0, KOLV_LENGD):
+        bx, by = til_bilete(t * math.sin(k), KOLV_PIVOT + t * math.cos(k))
+        if L.get(bx, by) == ".": L.p(bx, by, "V")
+    bx, by = til_bilete(KOLV_LENGD * math.sin(k), KOLV_PIVOT + KOLV_LENGD * math.cos(k))
+    for (dx, dy, c) in [(-1, -1, "X"), (0, -1, "V"), (1, -1, "v"), (-1, 0, "V"), (0, 0, "V"), (1, 0, "v"), (0, 1, "v")]:
+        L.p(bx + dx, by + dy, c)
     for (x, y) in [(-9, 40), (-8, 41), (4, 36), (10, 52), (-14, 50)]:      # irr, roterte med klokka
         rx = round(CX + x * math.cos(a) - (y - AKSEL) * math.sin(a)); ry = round(AKSEL + x * math.sin(a) + (y - AKSEL) * math.cos(a))
         if L.get(rx, ry) not in ".": L.p(rx, ry, "i")

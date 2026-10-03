@@ -342,6 +342,9 @@ window.Pikslar = (function () {
       for (let x = 0; x < S; x += 8) { px(g, x, 0, r[1], 1, S); px(g, x + 1, 0, r[3], 1, S); }
       for (let i = 0; i < 3; i++) { const x = 2 + ((i * 5 + v * 3) % 12), y = (i * 6 + v * 4) % 14; px(g, x, y, r[1], 1, 2); px(g, x + 1, y + 1, r[3]); }
       px(g, (v * 4 + 3) % 8 + (v % 2) * 8, (v * 5) % 16, r[4], 2, 1);
+      // Plankane er skøytte: endane ligg på ulik stad frå rad til rad (variantane), så kvar planke blir
+      // 2 til 4 fliser lang (3 til 6 meter), ikkje éin planke gjennom heile kyrkja.
+      for (const [x, y] of [[[0, 4]], [[8, 10]], [], [[0, 13]]][v]) { px(g, x + 1, y, r[0], 7, 1); px(g, x + 1, y + 1, r[3], 7, 1); }
     },
     // kvit vegg med rundboga vindauge og smårutar
     "u": g => {
@@ -399,8 +402,8 @@ window.Pikslar = (function () {
     for (let b = 0; b < 2; b++) {
       const y0 = b * 8;
       px(g, 0, y0, r[2], S, 8); px(g, 0, y0, r[3], S, 1); px(g, 0, y0 + 7, r[0], S, 1);
-      const skot = (5 + b * 7 + v * 5) % 16;                          // endeskøyten (lange plankar: berre på kvar andre flis)
-      if ((v + b) % 2 === 0) { px(g, skot, y0 + 1, r[0], 1, 6); px(g, (skot + 1) % S, y0 + 1, r[4], 1, 6); }
+      const skot = (5 + b * 7 + v * 5) % 16;                          // endeskøyten (lange plankar: på kvar fjerde flis eller så)
+      if ((v + b * 2) % 4 === 0) { px(g, skot, y0 + 1, r[0], 1, 6); px(g, (skot + 1) % S, y0 + 1, r[4], 1, 6); }
       for (let i = 0; i < 3; i++) { const x = (skot + 3 + i * 4 + b * 2) % 16; px(g, x, y0 + 3 + (i % 2), r[1], 2, 1); }
       px(g, (skot + 9) % 16, y0 + 2, r[4], 2, 1);
     }
@@ -453,7 +456,7 @@ window.Pikslar = (function () {
   // Fliser med noko som står oppreist og blir teikna i bakken (lykter, grav, kister, inventar):
   // skogkanten lener ikkje tre ut over dei (sjå skogkant i motor.js og kantfigurar).
   const STAAR = new Set(["L", "T", "x", "K", "k", "z", "b", "n"]);
-  const VARIANT_EKSTRA = new Set(["Rt", "Rb", "Rtb", "Þ", "þ"]);
+  const VARIANT_EKSTRA = new Set(["Rt", "Rb", "Rtb", "Þ", "þ", "q"]);
   const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "O", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t", "i", "F"]);
   const cache = new Map();
   function flis(teikn, t = 0, x = 0, y = 0, golv = "P") {
@@ -1798,7 +1801,7 @@ window.Pikslar = (function () {
      frå ei høg lysekrone fell på golvet der ho heng, ikkje der ho syner på skjermen). Sjå
      KRONE_LJOS og ALTAR_LJOS i tools/pikselkunst/inventar.py. */
   const LJOS = {
-    "inne-lysekrone": [{ type: "krone", x: 27, y: 40, golv: true }],
+    "inne-lysekrone": [{ type: "krone", x: 27, y: 32, golv: true }],
     // Altartavla: den store, roleg gløden «altar» over tavla og altaret (det lysaste i kyrkja), og ljosa.
     "inne-altartavle": [{ type: "altar", x: 44, y: 70 }, { type: "lys", x: 23, y: 73 }, { type: "lys", x: 63, y: 73 }],
   };
