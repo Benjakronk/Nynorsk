@@ -316,7 +316,10 @@ def ovanfra(W, H, s=0):
 
 # Kvar lufta byrjar under stupet, per flis-kolonne (kartrad), så skuggen under overhenget kjem rett.
 # Må stemme med rader i kartet asen i js/rpg/data.js: platået (17), hylla (20), neset (18), vika (16).
-LUFTRAD = [17] * 4 + [19] * 9 + [20] * 2 + [21, 22, 21] + [17] * 3 + [17] * 3 + [17] + [16] * 3   # hylla smalnar av til spissen (16,19)
+LUFTRAD = [17] * 4 + [19] * 9 + [20] * 2 + [20, 21, 20] + [17] * 3 + [17] * 3 + [17] + [16] * 3   # hylla smalnar av til spissen (16,19)
+# Under spissen ytst på hylla er det inga ur: berget trekkjer seg inn under overhenget og endar i ei smal
+# rot (sjå rot i li), så dalen og vegen syner under. Kolonnane (kartflis x) der rota står i staden for ura:
+ROT_X = (15, 16, 17)
 LI_TOPP = 15                          # biletet byrjar ved kartrad 15
 
 
@@ -397,8 +400,10 @@ def li():
     stein = M.rampe(BERG[1], BERG[2], BERG[3], BERG[4], BERG[5])
     kratt = M.rampe("#14261a", "#1e3622", "#2c4a2a", "#3e5e34")
     y0s = [(LUFTRAD[min(len(LUFTRAD) - 1, x // 16)] - LI_TOPP) * 16 for x in range(W)]
+    rotA, rotB = ROT_X[0] * 16, (ROT_X[-1] + 1) * 16
     for x in range(W):
         y0 = y0s[x]
+        if rotA - 2 <= x < rotB + 2: continue                                              # rota under spissen (under)
         # mjuk overgang mellom kolonnar med ulik høgd: botnen av ura glir over 8 pikslar
         nabo = [y0s[min(W - 1, max(0, x + d))] for d in (-8, 8)]
         top = y0 - 10
@@ -411,7 +416,27 @@ def li():
             if k > 0.45 and M.fbm(x / 3, y / 2.5, 853, 2) > 0.62: c = M.tone(kratt, 0.3 + (1 - k) * 0.6, x, y)   # kratt og einer
             if y - top < 8 and M.terskel(x, y) < (8 - (y - top)) / 8: c = M.blend(c, "#1c1a2c", 0.5)          # skuggen under overhenget
             L_.p(x, y, M.blend(c, DIS, 0.12 + k * 0.1))
+    rot(L_, ROT_X[1] * 16 + 8, (LUFTRAD[ROT_X[1]] - LI_TOPP) * 16 - 12, stein)
     return L_.im
+
+
+def rot(L_, cx, y0, stein):
+    """Berget under spissen ytst på hylla: under overhenget trekkjer det seg inn på skrå, smalare jo
+    lenger ned, til ei smal rot som forsvinn i dis godt over dalbotnen. Øvst ligg det i djup skugge
+    under graset, sida mot venstre får litt lys, sida mot høgre er mørk."""
+    hogd, hw0 = 30, 13
+    for y in range(y0 - 6, y0 + hogd):
+        t = max(0, (y - y0 + 6) / (hogd + 6))                                       # 0 øvst, 1 nedst
+        hw = hw0 * (1 - t) ** 1.2 + 0.5 + (M.fbm(y / 4, 1, 861, 2) - 0.5) * 3
+        if hw < 1: break
+        xc = cx + t * 3
+        for x in range(int(xc - hw), int(xc + hw) + 1):
+            u = (x + 0.5 - (xc - hw)) / (2 * hw)                                   # 0 venstre, 1 høgre
+            v = 0.3 + (0.25 if u < 0.25 else -0.2 if u > 0.72 else 0) + (M.h(x // 2, y // 2, 862) - 0.5) * 0.3
+            if y < y0 + 8 - (u < 0.25) * 3: v = 0.06 + (M.h(x, y, 863) - 0.5) * 0.1     # skuggen under overhenget
+            c = M.tone(stein, max(0.02, min(0.98, v)), x, y)
+            dis = math.floor((0.08 + t * t * 0.6) * 6 + M.terskel(x, y)) / 6            # forsvinn i dis nedover
+            L_.p(x, y, M.blend(c, DIS, dis))
 
 
 OV = 84                               # dalbiletet ovanfrå byrjar her i li (sjå li)
@@ -670,7 +695,7 @@ def lavflekk(L_, cx, cy, r, slag, s, lov):
 
 
 def nabb_ramme(vind, bjork, s, speil=False, w=NABB_W, h=NABB_H, topp=None, inner=None, ytre=None, y0=34,
-               radh=(40, 30, 48, 36, 56, 64), bw=(30, 34), nsprekk=4, lavar=("gul", "graa", "gul", "rust", "graa", "gul"),
+               radh=(84, 30, 48, 36, 56, 64), bw=(30, 34), nsprekk=4, lavar=("gul", "graa", "gul", "graa", "graa", "gul"),
                toppdjup=5, sider=(3, 2), lys=None, grasdjup=2, heng=0):
     """Ein bergnabb nær kameraet som kjem inn frå sida av biletet, bygd av steinblokker med klare flater
     (same stil som klippeveggene i kartet, litt mørkare og meir metta så nabben ligg framfor): lyse

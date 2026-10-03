@@ -1489,3 +1489,19 @@ same måte, uansett kven som tek over.
 - **Sidenabbane:** 20 pikslar høgare (`y` 98 og 100), så sprekkene og laven syner både ytst på hylla
   og på neset.
 - **Vurdert:** `forhand/skjerm/r49-for-etter.png` (same utsnitt som r48: ytst på hylla og neset).
+
+## Runde 50: berget under spissen ytst på hylla trekkjer seg inn
+
+- **Oppdrag:** Brukaren: under den T-forma grastunga ytst på hylla hang ei brei, grå steinmasse rett
+  ned til vegen og såg ut som eit ras. Berget skal skråne inn under graset.
+- **Funne:** Massen var stupveggen under spissen («M» på 15,20, 17,20 og 16,21) og ura i `li` under
+  han, som gjekk 6 til 18 pikslar ned i lia og vart breiare ut til sidene.
+- **Gjort:** Kartet: dei tre «M» under spissen er luft, så tunga endar i overhenga («U» på 15,19, 17,19
+  og 16,20) med mørk underside og ope under. `LUFTRAD` følgjer med ([20, 21, 20] under spissen). I
+  `li` er det inga ur under spissen (`ROT_X`); i staden teiknar `rot()` berget som trekkjer seg inn
+  under overhenget: djup skugge øvst, smalare nedover, litt lys på sida mot venstre og mørk mot høgre,
+  og det forsvinn i dis til ei smal rot godt over dalbotnen. Vegen og dalen syner fritt rundt og under.
+- **Småting:** Sidenabbane har høgare første blokkrad (84), så toppen av neste rad (den lyse stripa)
+  ikkje lenger syner nedst i biletet ytst på hylla eller på neset. Ingen rustlav att.
+- **Vurdert:** `forhand/skjerm/r50-for-etter.png`: ytst på hylla med kameraet oppe, ytst på hylla med
+  kameraet glidd ned, og neset.
