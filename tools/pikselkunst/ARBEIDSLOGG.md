@@ -1409,3 +1409,18 @@ same måte, uansett kven som tek over.
   `r45-nabb.png` (nabbane åleine). I spelet syner berre toppen av nabbane, så det er dei øvste sprekkene
   og lavflekkene som syner.
 - **Står att:** Ingenting nytt.
+
+## Runde 46: einerbusken ved stabburet
+
+- **Oppdrag:** Brukaren: busken ved sida av stabburet treng eit løft. Det er `einer` (kartteiknet `o` på
+  15,11 vel einer etter plassen i `NATURTYPE`).
+- **Gjort:** `einer()` i `natur.py` er teikna om (20 × 22, var 18 × 17): ti nåleklasar lagde frå bak (nede
+  til høgre, mørke) til fram (oppe til venstre, lyse), så omrisset er ujamt med to toppar og breiast
+  nede. Kvar klase har ein smal sigd av lys oppe til venstre (ny glanstone) og skugge nede, det er mørke
+  holer inni mellom klasane, korte nålestrøk på lyssida, stikkande tuster i overkanten, tre klasar av
+  blåsvarte bær med lys dogg, ein tørr kvist som stikk ut til høgre, og ei mørk kontaktline mot bakken
+  (i tillegg til slagskuggen motoren teiknar). `pix.py sjekk`: ser bra ut, 13 fargar. Variantvalet i
+  `NATURTYPE` er uendra, så andre `o` på kartet er framleis steinar, heller, røys og bauta.
+- **Vurdert:** `forhand/skjerm/r46-for-etter.png` (ved stabburet, før og etter) og `r46-einer.png`
+  (busken åleine, gammal og ny).
+- **Står att:** Busken er framleis mørk i morgonlyset; han kunne fått litt meir kontrast mot graset.

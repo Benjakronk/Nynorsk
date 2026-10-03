@@ -1,7 +1,7 @@
 # namn: natur-einer
 # type: fiende
 # ut: bilete/spel/natur/einer.png
-# storleik: 18x17
+# storleik: 20x22
 palett:
   . = -
   o = #0a0514    omriss
@@ -9,23 +9,34 @@ palett:
   1 = #163228    gran skugge
   2 = #1f4a38    gran
   3 = #2e6448    gran lys
-  B = #44424e    stein skugge
-  D = #8c8a96    stein lys
+  4 = #4a8058    gran glans
+  a = #2a1810    stamme djup
+  b = #4a2c1c    stamme
+  N = #08141a    gran djupast
+  T = #262c52    einerbær
+  U = #7e8cba    einerbær dogg
+  h = #0e2420    einer hole
+  F = #6aa66c    einer glans
 bilete:
-  ......o2o1oo......
-  .....oo33321o.....
-  ....o2332222o.....
-  ....o33222221o....
-  ....o322221111o...
-  ...o3222211112o...
-  ..o23222111D02oo..
-  .oo333D1110B3321o.
-  o23332B100032222o.
-  o3322222133222221o
-  o322221113222D111o
-  o2222111D2222B111o
-  o2221110B22211100o
-  .o11110011111100o.
-  ..o100011101000o..
-  ...ooo110000ooo...
-  ......oooooo......
+  ....................
+  ...........o.oo.....
+  .........oo2oF3oo...
+  ......ooo3FFF3322o..
+  .....oFF3F433321o...
+  ....oF43F433211o....
+  ..ooF433F23221o.....
+  .o33F33221221oooo...
+  .oF331121o21U2233o..
+  oF3344Uh3442TTh311o.
+  o33442TT24h22331100o
+  .o1122314322131100N2
+  ..o22234321133300N2o
+  .o441333h100001NNoo.
+  o44200h011U3h11110o.
+  o422331111TT001000bo
+  o222311110300N0000bo
+  o2111001000hN000Nbo.
+  .o00000000NNN00NNao.
+  ..oooo000NNN0NNNoo..
+  ......oo00oooooo....
+  ........oo..........
