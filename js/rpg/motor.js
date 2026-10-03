@@ -154,7 +154,8 @@ window.Motor = (function () {
 
   // Biletet til ein person: ein figur frå U, eller eit vesen (vesen: "blekklatten") som blir teikna
   // med fiendebiletet frå kampen, i full storleik. Eit vesen med gangark (kartrotta) får gangrammer.
-  const spriteAv = f => f.usynleg ? null : f.vesen ? { vesen: Pikslar.fiende(f.vesen), gang: Pikslar.vesenGang(f.vesen) } : Pikslar.figur(RPGData.U[f.u]);
+  // opp: innstillingar for vesenet (stille: ikkje gyng, skugge: false utan skugge på golvet; sjå PNG i pikslar.js).
+  const spriteAv = f => f.usynleg ? null : f.vesen ? { vesen: Pikslar.fiende(f.vesen), gang: Pikslar.vesenGang(f.vesen), opp: Pikslar.vesenOpp(f.vesen) } : Pikslar.figur(RPGData.U[f.u]);
 
   /* Set følgjet (huldra) ned attmed spelaren: éi flis bak han (motsett av der han ser), eller
      til sida om det ikkje går (til dømes når døra er bak han), elles på same flis. */
@@ -1490,8 +1491,8 @@ window.Motor = (function () {
       // Eit vesen står midt på flisa med botnen på bakken, og gyng litt opp og ned.
       if (f.sp.vesen) {
         // Med gangark: ramma for retninga og steget (gangrammene lyftar seg sjølv, så ingen gynging).
-        const c = f.sp.gang ? f.sp.gang[f.dir][f.steg] : f.sp.vesen, gy = f.sp.gang ? 0 : Math.round((Math.sin(no / 420) + 1) * 0.8);
-        g.fillStyle = "rgba(10,5,20,.32)"; g.beginPath(); g.ellipse(sx + 8, sy + 13, Math.max(6, c.width * 0.42), 3 + c.width / 40, 0, 0, Math.PI * 2); g.fill();
+        const o = f.sp.opp || {}, c = f.sp.gang ? f.sp.gang[f.dir][f.steg] : f.sp.vesen, gy = f.sp.gang || o.stille ? 0 : Math.round((Math.sin(no / 420) + 1) * 0.8);
+        if (o.skugge !== false) { g.fillStyle = "rgba(10,5,20,.32)"; g.beginPath(); g.ellipse(sx + 8, sy + 13, Math.max(6, (o.skuggeB || c.width) * 0.42), 3 + (o.skuggeB || c.width) / 40, 0, 0, Math.PI * 2); g.fill(); }
         g.drawImage(c, sx + 8 - Math.round(c.width / 2), sy + 15 - c.height - gy); maske(c, sx + 8 - Math.round(c.width / 2), sy + 15 - c.height - gy);
         continue;
       }

@@ -328,11 +328,11 @@ window.Pikslar = (function () {
       g.drawImage(mal(R, { d: "#8a2638", k: "#ecebf0", l: "#f2ead0" }), 0, 0);
       px(g, 7, 7, "#e8b830", 2, 6); px(g, 5, 9, "#e8b830", 6, 2);
     },
-    "l": g => {
-      const r = R_.raud; px(g, 0, 0, r[2], S, S); px(g, 0, 0, r[1], S, 1); px(g, 0, 15, r[1], S, 1);
-      for (let y = 3; y < 14; y += 5) for (let x = 2; x < 15; x += 4) { px(g, x, y, "#e8b830", 2, 1); px(g, x - 1, y + 1, "#2c4288", 1, 1); px(g, x + 2, y + 1, "#2c4288", 1, 1); }
-      for (let x = 0; x < S; x += 2) { px(g, x, 1, "#ecebf0"); px(g, x + 1, 14, "#ecebf0"); }
-    },
+    // Løparen i kyrkja: «l» er midten. I skipet er han nesten tre fliser brei (40 pikslar):
+    // «Ł» og «ł» er venstre og høgre kant (golv, så ein kvit og gyllen bord, så teppet).
+    "l": (g, t, v) => lopar(g, v, 0),
+    "Ł": (g, t, v) => lopar(g, v, -1),
+    "ł": (g, t, v) => lopar(g, v, 1),
     " ": g => px(g, 0, 0, "#0a0514", S, S),
     /* Kyrkja inne (etter Kvernes og Hove kyrkje) */
     // golv av breie, lyse furuplankar
@@ -379,6 +379,21 @@ window.Pikslar = (function () {
     "Þ": (g, t, v) => korgolv(g, v),
     "þ": (g, t, v) => korgolv(g, v),
   };
+  function lopar(g, v, kant) {
+    const r = R_.raud;
+    const x0 = kant < 0 ? 4 : 0, x1 = kant > 0 ? 12 : 16;                // teppet går frå x0 til x1
+    if (kant) underGolv(g, 0, v);
+    px(g, x0, 0, r[2], x1 - x0, S);
+    for (let y = 0; y < S; y++) for (let x = x0; x < x1; x++)            // rutemønster av mørke ruter
+      if ((x + y) % 8 === 0 || (x - y + 16) % 8 === 0) px(g, x, y, r[1]);
+    if (!kant) { px(g, 7, 7, "#e8b830", 2, 2); px(g, 7, 6, "#e8b830", 2, 1); px(g, 6, 7, "#c08018", 1, 2); px(g, 9, 7, "#c08018", 1, 2); }
+    if (kant) {                                                          // borden: gull, kvite prikkar, mørk kant
+      const b = kant < 0 ? x0 : x1 - 3;
+      px(g, b, 0, "#c08018", 3, S); px(g, kant < 0 ? b : b + 2, 0, r[0], 1, S);
+      for (let y = 0; y < S; y += 3) px(g, b + 1, y, "#ecebf0");
+      px(g, kant < 0 ? x0 + 6 : x1 - 9, 6, "#2c4288", 2, 3);               // blå blom i kanten
+    }
+  }
   function korgolv(g, v) {
     const r = ["#2e1a10", "#4a2c1a", "#5e3a22", "#74492a", "#8a5a34"];
     for (let b = 0; b < 2; b++) {
@@ -1536,8 +1551,12 @@ window.Pikslar = (function () {
     // Tauet til kyrkjeklokka i tårnet (kjelder/klokketau.pix): eit vesen på kartet, så Ivar kan dra i det.
     klokketau: { fil: "bilete/spel/klokketau.png", w: 8, h: 40 },
     "klokketau-dradd": { fil: "bilete/spel/klokketau-dradd.png", w: 8, h: 40 },
-    // Kyrkjeklokka (tools/pikselkunst/klokke.py): heng i klokkestolen og svingar (gangarket under).
-    klokke: { fil: "bilete/spel/klokke.png", w: 72, h: 103 },
+    // Kyrkjeklokka (tools/pikselkunst/klokke.py): ni rammer, klokke-0 fullt utslag mot høgre, klokke-4
+    // kvile, klokke-8 fullt utslag mot venstre. Heng stille (ingen gynging), med fast skugge.
+    ...Object.fromEntries([0, 1, 2, 3, 4, 5, 6, 7, 8].map(i => [`klokke-${i}`, { fil: `bilete/spel/klokke-${i}.png`, w: 72, h: 103, stille: true, skuggeB: 48 }])),
+    // Dua i tårnet (klokke.py): sit på klokkestolen, og flyg ut gjennom lydluka når klokka slår.
+    // Biletet er stort og for det meste tomt, så dua kan fly over heile tårnet utan å flytte vesenet.
+    ...Object.fromEntries(["due", ...[1, 2, 3, 4, 5, 6, 7].map(i => `due-fly-${i}`)].map(n => [n, { fil: `bilete/spel/${n}.png`, w: 176, h: 112, stille: true, skugge: false }])),
   };
   /* Gangark for vesen som går på kartet (tools/pikselkunst/rotte.py): tre kolonnar (står, steg 1,
      steg 2) og fire rader (ned, opp, venstre, høgre), som figurane. vesenGang(namn) gir
@@ -1545,8 +1564,6 @@ window.Pikslar = (function () {
   const GANGARK = {
     "rotte-kart": { fil: "bilete/spel/rotte-kart-gang.png", w: 24, h: 16 },
     "rotte-kart-v": { fil: "bilete/spel/rotte-kart-gang.png", w: 24, h: 16 },
-    // Klokka: retninga vel utslaget (ned: kvile, opp: lite mot høgre, venstre og høgre: fullt utslag).
-    klokke: { fil: "bilete/spel/klokke-gang.png", w: 72, h: 103 },
   };
   const gangCache = new Map();
   function vesenGang(namn) {
@@ -1846,6 +1863,7 @@ window.Pikslar = (function () {
     for (let cx = 0; cx < w; cx += 2) fyll(x + cx, y + h - 1, hash(cx, k, 74) > 0.5 ? "#f8d860" : "#c83a18");
   }
   const fiendeCache = new Map();
+  const vesenOpp = namn => PNG[namn] || {};
   function fiende(namn) {
     if (fiendeCache.has(namn)) return fiendeCache.get(namn);
     const c = PNG[namn] ? fraPng(PNG[namn]) : (FIENDAR[namn] || FIENDAR.blekkdrope)();
@@ -1853,6 +1871,6 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, nordkant, sidekant, klasse, bygg, natur, haugBilete, KANTTYPE, kantflis, kantfigurar, STAAR, vatn, steingard, FAST, figur, fiende, vesenGang, lerret, ramp, blend, RAMP,
+  return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, nordkant, sidekant, klasse, bygg, natur, haugBilete, KANTTYPE, kantflis, kantfigurar, STAAR, vatn, steingard, FAST, figur, fiende, vesenGang, vesenOpp, lerret, ramp, blend, RAMP,
     hent, klar, forhandslast, alleBilete, ILD, LJOS, KJEDE, SETE, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
 })();

@@ -1,6 +1,6 @@
-# namn: klokke
+# namn: klokke-4
 # type: fiende
-# ut: bilete/spel/klokke.png
+# ut: bilete/spel/klokke-4.png
 # storleik: 72x103
 # Laga av tools/pikselkunst/klokke.py. Endre skriptet, ikkje denne fila.
 palett:

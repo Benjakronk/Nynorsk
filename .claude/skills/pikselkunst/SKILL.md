@@ -78,10 +78,12 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   som står i korga). Utsynet ned i skipet (`inne-skip-utsyn.png`) lagar `utsyn_galleri.py` av
   `oversikt.py k53-utan kart=kyrkja skala=1 stemning=ingen utanOver=1 utanFolk=1` (halv storleik,
   mørkt og dempa, med hovud og lysekroner sett ovanfrå). Klokketauet er vesenet `klokketau`
-  (`kjelder/klokketau.pix` og `klokketau-dradd.pix`, i `PNG` i pikslar.js). Klokka er eit vesen med
-  gangark frå `klokke.py` (rotert rundt akselen: kvile, lite utslag, fullt utslag til kvar side), og
-  klokkestolen er `klokkestol`. Sjå rammene med `skjermbilete.py namn kart=kyrkje-tarn m=1 snu=Klokka:3`
-  (ny parameter `snu=namn:retning` i skjerm.html). Kyrkjebenkene er sju fliser lange (midtgangen er tre breie). Høge
+  (`kjelder/klokketau.pix` og `klokketau-dradd.pix`, i `PNG` i pikslar.js). Klokka (ni rammer,
+  `klokke-0` til `klokke-8`, rotert rundt akselen) og dua (`due`, `due-fly-1` til `-7`) lagar `klokke.py`;
+  klokkestolen er `klokkestol`. Sjå rammene med `skjermbilete.py namn kart=kyrkje-tarn m=1
+  vesen=Klokka:klokke-0,Dua:due-fly-3` (parametrane `vesen=namn:bilete` og `snu=namn:retning` i skjerm.html).
+  Kyrkjebenkene er sju fliser lange med setet som eige flatt bilete (`kyrkjebenk-sete`), etter
+  «Standardperspektiv for objekt» i STILGUIDE.md, som gjeld alle nye objekt. Høge
   sidevindauge er to fliser: `Ø`/`Ö` (venstre, strålar) og `ø`/`ö` (høgre). Korgolvet er `Þ` (fast:
   `þ`). Stemninga `kyrkjerom` og glødforma `altar` (glod.py) gjer rommet mørkt og altaret lyst. Små motiv
   blir teikna med `_stempel` (strengar). Sjå med `skjermbilete.py namn kart=kyrkja m=1 x=10 y=9`

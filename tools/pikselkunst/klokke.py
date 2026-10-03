@@ -1,14 +1,13 @@
 """Kyrkjeklokka i tårnet som eit vesen som kan svinge (kartet kyrkje-tarn).
 
-  python tools/pikselkunst/klokke.py      skriv kjelder/klokke.pix og kjelder/klokke-gang.pix (og PNG)
+  python tools/pikselkunst/klokke.py      skriv kjelder/klokke-0.pix til klokke-8.pix, due.pix og
+                                          due-fly-1.pix til due-fly-7.pix (og PNG)
 
 Klokka med åket og krona er teikna for kvar vinkel rundt akselen i åket: kvar pikselen i ramma blir
 rekna attende til klokka i kvile (rotasjon), og fargen kjem frå profilen der, så lyset følgjer klokka.
-Gangarket har same oppsett som for vesen som går (GANGARK i pikslar.js): fire rader, tre like kolonnar.
-Rad 0 («ned») er kvile, rad 1 («opp») eit lite utslag mot høgre, rad 2 («venstre») fullt utslag mot
-venstre og rad 3 («høgre») fullt utslag mot høgre. Manuset klokketau snur vesenet (snu) for å velje
-ramme. Ramma er 72 x 103: botnen står på golvet i ruta (6,6), og klokka heng i same høgd som i
-klokkestolen (inne-klokkestol).
+Ni rammer, fem grader frå kvarandre: klokke-0 er fullt utslag mot høgre (botnen mot høgre), klokke-4
+kvile og klokke-8 fullt utslag mot venstre. Manuset klokketau byter ramme (byt) for å svinge mjukt.
+Ramma er 72 x 103: botnen står på golvet i ruta (6,6), og klokka heng i same høgd som i klokkestolen.
 """
 import os, sys, math, subprocess
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +19,7 @@ W, H = 72, 103
 CX, AKSEL = 34, 18                                       # midtlina og akselen (vinklane går rundt han)
 PROF = [8, 10, 11, 12, 12, 13, 13, 13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 16, 16, 16, 17, 17, 18,
         18, 19, 20, 21, 22, 23, 24, 24, 23]
-VINKLAR = [0, -8, 20, -20]                               # grader (positiv: botnen mot venstre), rad 0 til 3
+VINKLAR = [(i - 4) * 5 for i in range(9)]               # grader (positiv: botnen mot venstre), klokke-0 til klokke-8
 
 
 def i_kvile(x, y):
@@ -69,10 +68,28 @@ def pix(namn, rader, ut):
     subprocess.run([sys.executable, os.path.join(ROT, "pix.py"), "lag", sti], check=True)
 
 
+# Dua i tårnet: eit stort, tomt bilete (176 x 112, vesenet står på ruta (7,6)) med dua på ulike stader,
+# så ho kan fly over tårnet ved å byte bilete (byt) utan at vesenet flyttar seg. Ho sit på toppbjelken
+# i klokkestolen og flyg ut gjennom den venstre lydluka (vend mot venstre, vengene opp og ned).
+DUE_SIT = ["...KK...", "..KwKo..", ".KWWWK..", "KWWWWWK.", "KWWKWWWK", ".KWWWWK.", "..KhKh.."]
+DUE_OPP = ["W.......W..", "WW.....WW..", ".WW...WW...", "..WKKWW....", "oKWWWWWKK..", ".hKWWWK....", "..KKKK....."]
+DUE_NED = ["..KKKK.....", "oKWWWWWKK..", ".hWWWWWW...", ".WW...WW...", "WW.....WW.."]
+DUE_BANE = [(86, 12, DUE_SIT), (84, 5, DUE_OPP), (74, 0, DUE_NED), (60, 2, DUE_OPP), (46, 8, DUE_NED),
+            (32, 13, DUE_OPP), (20, 19, DUE_NED), (10, 23, DUE_OPP)]
+
+
+def due(i):
+    from inventar import _stempel
+    L = Lerret(176, 112)
+    x, y, figur = DUE_BANE[i]
+    _stempel(L, x, y, figur)
+    omriss(L)
+    return L
+
+
 if __name__ == "__main__":
-    rammer = [ramme(v) for v in VINKLAR]
-    pix("klokke", rammer[0].g, "bilete/spel/klokke.png")
-    ark = []
-    for r in rammer:
-        for y in range(H): ark.append([c for _ in range(3) for c in r.g[y]])
-    pix("klokke-gang", ark, "bilete/spel/klokke-gang.png")
+    for i, v in enumerate(VINKLAR):
+        pix(f"klokke-{i}", ramme(v).g, f"bilete/spel/klokke-{i}.png")
+    for i in range(len(DUE_BANE)):
+        namn = "due" if i == 0 else f"due-fly-{i}"
+        pix(namn, due(i).g, f"bilete/spel/{namn}.png")

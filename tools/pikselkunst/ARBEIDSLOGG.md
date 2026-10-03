@@ -1668,3 +1668,48 @@ same måte, uansett kven som tek over.
 - **Etter:** `k54-klokke-rammer.png` (fire rammer i spelet), `k54-klokke-heil.png`, `k54-stol-heil.png`,
   `k54-midtgang-heil.png` og `k54-benk-heil.png`.
 - **Står att:** Klokka svingar i fire faste rammer (ingen mellomrammer). Ingen lyd.
+
+## Runde 56: mjuk klokke, dua som flyg, brei løpar og eit høgare standardperspektiv
+
+- **Frå brukaren:** Fleire mellomrammer i klokka, dua skal fly når Ivar ringjer, løparen nesten tre fliser
+  brei, og objekta skal sjåast frå ein høgare vinkel, meir som i FF6 og The Minish Cap.
+- **Før:** `forhand/skjerm/k55-for-klokke-rammer.png`, `k55-for-benk.png`, `k55-for-font-heil.png` og
+  `k55-for-lopar.png`.
+- **Research:** borda i Figaro (`forhand/referansar/ff6-0055.png`) og senga i Narshe (`ff6-0031.png`) målt i
+  spelpikslar: bordet har 13 pikslar toppflate, 5 framside og 4 bein, senga om lag 3/4 toppflate. Skrive
+  ned som «Standardperspektiv for objekt» i STILGUIDE.md: 9 til 13 pikslar toppflate og 4 til 6
+  framside per flis djupn, runde opningar som ein brei oval, rekkverk med brei handlist og korte
+  balustrar.
+- **Klokka:** ni rammer (`klokke-0` til `klokke-8`, fem grader frå kvarandre, frå `klokke.py`) i staden
+  for fire. Manuset byter ramme med 45 til 85 ms mellom (`sving()` i data.js), slaga kjem på
+  ytterpunkta, og svinginga døyr ut. Vesen kan no ha `stille: true` (ingen gynging), `skugge: false` og
+  ein fast skuggebreidd (`skuggeB`) i `PNG` (`vesenOpp()` i pikslar.js).
+- **Dua:** eit eige vesen (`due`, ruta 7,6) som sit på toppbjelken i klokkestolen. Biletet er stort og
+  tomt, så sju flygerammer (`due-fly-1` til `-7`, vengene opp og ned) fører dua ut gjennom den venstre
+  lydluka utan at vesenet flyttar seg. Ho flyg samstundes med det første slaget (`saman`) og er borte
+  til Ivar kjem inn i tårnet att. Bjelken med dua er erstatta av den vanlege bjelken.
+- **Løparen:** 40 pikslar brei i skipet: `Ł` og `ł` er kantane (golv, gyllen bord med kvite prikkar,
+  blå blom), `l` midten med rutemønster og ein gul rute. Smal gjennom korskiljet, døropninga og
+  våpenhuset. Utsynet frå galleriet er laga på nytt, så løparen er brei der òg.
+- **Standardperspektivet i kyrkja:**
+  - Kyrkjebenkene (alle variantane, òg på galleriet) er teikna om: setet er ei stor toppflate i eit eige,
+    flatt lag (`kyrkjebenk-sete`) under figurane, og laget framfor har handlista som toppflate (4
+    pikslar) og ei kort bakside (5 pikslar) med fyllingar, døra med toppkant, bøker, hatt og sjal sett
+    ovanfrå. Figurane i benkerada er senka 16 pikslar, så ryggen framfor dekkjer beina. Kyrkjefolket
+    sit framleis rett.
+  - Døypefonten: kanten og dåpsfatet er ein stor oval sett ovanfrå, kort side på kummen, sokkel med
+    toppflater.
+  - Korskiljet og altarringen: breiare handlist og kortare balustrar.
+- **Testar:** `sjekk-kyrkjegang.html` sjekkar at klokka går gjennom ytterrammene og endar i kvile, at dua
+  flyg, og at ho er attende når Ivar kjem inn att. Nye parametrar i skjerm.html: `vesen=namn:bilete`.
+- **Etter:** `k55-klokke-rammer.png` (fem av rammene, med dua på veg ut), `k55-due-heil.png`,
+  `k55-lopar-heil.png`, `k55-benk-heil.png`, `k55-font-heil.png` og `k55-galleri-heil.png`.
+- **Står att (for låg vinkel etter den nye regelen, ikkje teikna om enno):**
+  - Stova på Åsen: benken og kubbestolane (framsida like høg som setet er djupt), sengebenken, kista og
+    skrinet (framsida dominerer), rokken (heilt frå sida).
+  - Stabburet: kornbingane, tønna og kaggen (frå sida), sekkene.
+  - Kister på karta (flisa `K`).
+  - Prestegarden og boksamlinga på Ekset: skatollet, sofaen, spisebordet, stolane og lesebordet bør
+    sjåast over.
+  - Ute: skigarden og steingarden (sett nesten frå sida).
+  - I kyrkja: korstolane (bondebenkene), fattigblokka, jernomnen, orgelet og brystninga på galleriet.

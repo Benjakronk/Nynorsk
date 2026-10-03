@@ -643,7 +643,9 @@ window.RPGData = (function () {
         // Benkene i fire variantar, så ingen rad er lik naboen.
         ...[18, 20, 22, 24, 26, 31, 33, 35, 37, 39, 44, 46, 48, 50].flatMap((y, i) => [
           { id: "inne-kyrkjebenk-h" + ["", "2", "3", "", "4", "2", "3"][i % 7], x: 2, y, h: 1 },
-          { id: "inne-kyrkjebenk-v" + ["3", "", "4", "2", "", "3", "2"][i % 7], x: 12, y, h: 1 }]),
+          { id: "inne-kyrkjebenk-v" + ["3", "", "4", "2", "", "3", "2"][i % 7], x: 12, y, h: 1 },
+          // Setet ligg flatt under figurane, ryggen framfor (standardperspektivet, sjå STILGUIDE.md).
+          { id: "inne-kyrkjebenk-sete", x: 2, y, h: 1, flat: true }, { id: "inne-kyrkjebenk-sete", x: 12, y, h: 1, flat: true }]),
         // Epitafium på sideveggene, gravheller i tverrgangane, jernomnen og fattigblokka.
         ...[19, 33, 45].map(y => ({ id: "inne-epitaf-v", x: 0, y, h: 1 })), ...[26, 39].map(y => ({ id: "inne-epitaf-h", x: 20, y, h: 1 })),
         { id: "inne-gravhelle1", x: 4, y: 28, h: 1, flat: true }, { id: "inne-gravhelle3", x: 15, y: 29, h: 1, flat: true },
@@ -673,46 +675,46 @@ window.RPGData = (function () {
         "GGGGGþÞÞÞÞlÞÞÞÞþGGGGG",
         "GGGGGÞÞÞÞÞlÞÞÞÞÞGGGGG",
         "GGGGG+++++l+++++GGGGG",
-        "GqqqqqLqqqlqqqLqqqqqG",
-        "Ø(((qqqqqqlqqqqqq((qø",
-        "Öqqqqqqqqqlqqqqqqqqqö",
-        "G(((qqqqqqlqqqqqqqqqG",
-        "Gq(((((((qlq(((((((qG",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "Gq((($(((qlq(((((((qG",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "Øq(((((((qlq(((((((qø",
-        "Öqqqqqqqqqlqqqqqqqqqö",
-        "Gq(((((((qlq(((!(((qG",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "Gq(((((((qlq(((((((qG",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "Øqqqqqqqqqlqqqqqqqqqø",
-        "Öqqqqqqqqqlqqqqqqqqqö",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "Gq(((((((qlq(((((((qG",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "Gq(&(((((qlq(((((((qG",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "Øq(((((((qlq(((((((qø",
-        "Öqqqqqqqqqlqqqqqqqqqö",
-        "Gq(((((((qlq(*(((((qG",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "Gq(((((((qlq(((((((qG",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "Øqqqqqqqqqlqqqqqqqqqø",
-        "Öqqqqqqqqqlqqqqqqqqqö",
-        "Gqqqqqqqqqlqqqqqqqq(G",
-        "Gq(((((((qlq(((((((qG",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "Gq(((((((qlq(((((((qG",
-        "Øqqqqqqqqqlqqqqqqqqqø",
-        "Öq(((((((qlq(((((((qö",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "Gq(((((((qlq(((((((qG",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "GqqqqqqqqqlqqqqqqqqqG",
+        "GqqqqqLqqŁlłqqLqqqqqG",
+        "Ø(((qqqqqŁlłqqqqq((qø",
+        "ÖqqqqqqqqŁlłqqqqqqqqö",
+        "G(((qqqqqŁlłqqqqqqqqG",
+        "Gq(((((((Łlł(((((((qG",
+        "GqqqqqqqqŁlłqqqqqqqqG",
+        "Gq((($(((Łlł(((((((qG",
+        "GqqqqqqqqŁlłqqqqqqqqG",
+        "Øq(((((((Łlł(((((((qø",
+        "ÖqqqqqqqqŁlłqqqqqqqqö",
+        "Gq(((((((Łlł(((!(((qG",
+        "GqqqqqqqqŁlłqqqqqqqqG",
+        "Gq(((((((Łlł(((((((qG",
+        "GqqqqqqqqŁlłqqqqqqqqG",
+        "ØqqqqqqqqŁlłqqqqqqqqø",
+        "ÖqqqqqqqqŁlłqqqqqqqqö",
+        "GqqqqqqqqŁlłqqqqqqqqG",
+        "Gq(((((((Łlł(((((((qG",
+        "GqqqqqqqqŁlłqqqqqqqqG",
+        "Gq(&(((((Łlł(((((((qG",
+        "GqqqqqqqqŁlłqqqqqqqqG",
+        "Øq(((((((Łlł(((((((qø",
+        "ÖqqqqqqqqŁlłqqqqqqqqö",
+        "Gq(((((((Łlł(*(((((qG",
+        "GqqqqqqqqŁlłqqqqqqqqG",
+        "Gq(((((((Łlł(((((((qG",
+        "GqqqqqqqqŁlłqqqqqqqqG",
+        "ØqqqqqqqqŁlłqqqqqqqqø",
+        "ÖqqqqqqqqŁlłqqqqqqqqö",
+        "GqqqqqqqqŁlłqqqqqqq(G",
+        "Gq(((((((Łlł(((((((qG",
+        "GqqqqqqqqŁlłqqqqqqqqG",
+        "Gq(((((((Łlł(((((((qG",
+        "ØqqqqqqqqŁlłqqqqqqqqø",
+        "Öq(((((((Łlł(((((((qö",
+        "GqqqqqqqqŁlłqqqqqqqqG",
+        "Gq(((((((Łlł(((((((qG",
+        "GqqqqqqqqŁlłqqqqqqqqG",
+        "GqqqqqqqqŁlłqqqqqqqqG",
+        "GqqqqqqqqŁlłqqqqqqqqG",
         "GGGGGGGGEGlGGGGGGGGGG",
         "       G3qlqqG       ",
         "       Øqqlq(G       ",
@@ -727,10 +729,10 @@ window.RPGData = (function () {
       // Trappa opp til preikestolen: (3,16) midt i trappa, (2,16) øvst, (1,16) i korga (pikslar opp, og
       // 5 pikslar mot høgre så Ivar står midt i korga; sjå hogdVed() i motor.js). Rutene rundt (rad 15 og
       // 17) er faste, så ein berre kjem opp og ned trappa. Mellom benkeradene (rada rett bak ein benk)
-      // står ein 9 pikslar lågare, nede i benkeradene, så benken framfor dekkjer den nedre delen.
+      // står ein 16 pikslar lågare, nede i benkerada framfor setet, så ryggen framfor dekkjer den nedre delen.
       hogd: Object.assign({ "3,16": 27, "2,16": [48, 2], "1,16": [61, 5] },
         Object.fromEntries([17, 19, 21, 23, 25, 30, 32, 34, 36, 38, 43, 45, 47, 49].flatMap(y =>
-          [2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17, 18].map(x => [x + "," + y, -9])))),
+          [2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17, 18].map(x => [x + "," + y, -16])))),
       dorer: [{ ved: [10, 60], til: ["bygda", "3"] }, { ved: [8, 54], til: ["kyrkje-galleri", "1"] }],
       folk: [
         // Presten kneler framfor altarringen og bed til blekket er borte. Etter det står han innanfor ringen.
@@ -757,7 +759,8 @@ window.RPGData = (function () {
       bygg: [{ id: "inne-skip-utsyn", x: 0, y: 0, h: 5, flat: true, faktor: 0.75 },
         ...[7, 9].map(y => ({ id: "inne-galleritrinn", x: 1, y, h: 1, flat: true })),
         { id: "inne-galleribrystning", x: 0, y: 5, h: 1 }, { id: "inne-orgel", x: 15, y: 6, h: 1 }, { id: "inne-benk-kort", x: 15, y: 7, h: 1 },
-        { id: "inne-kyrkjebenk-h3", x: 2, y: 7, h: 1 }, { id: "inne-kyrkjebenk-h", x: 2, y: 9, h: 1 }, { id: "inne-kyrkjebenk-v4", x: 12, y: 9, h: 1 }],
+        { id: "inne-kyrkjebenk-h3", x: 2, y: 7, h: 1 }, { id: "inne-kyrkjebenk-h", x: 2, y: 9, h: 1 }, { id: "inne-kyrkjebenk-v4", x: 12, y: 9, h: 1 },
+        ...[[2, 7], [2, 9], [12, 9]].map(([x, y]) => ({ id: "inne-kyrkjebenk-sete", x, y, h: 1, flat: true }))],
       rader: [
         "                     ",
         "                     ",
@@ -783,7 +786,7 @@ window.RPGData = (function () {
       namn: "Klokketårnet", stemning: "kyrkjerom", golv: "q", inne: true, fristad: true, bakgrunn: "kyrkje",
       bygg: [{ id: "inne-tarnvegg", x: 1, y: 0, h: 3 }, { id: "inne-stige", x: 10, y: 3, h: 1 },
         { id: "inne-klokkestol", x: 4, y: 5, h: 2 },
-        { id: "inne-tarnbjelke-due", x: 0, y: 3, h: 1, over: true, faktor: 1.3 }, { id: "inne-tarnbjelke", x: 0, y: 9, h: 1, over: true, faktor: 1.3 }],
+        { id: "inne-tarnbjelke", x: 0, y: 3, h: 1, over: true, faktor: 1.3 }, { id: "inne-tarnbjelke", x: 0, y: 9, h: 1, over: true, faktor: 1.3 }],
       rader: [
         "XXXXXXXXXXXXX",
         "XXXXXXXXXXXXX",
@@ -791,7 +794,7 @@ window.RPGData = (function () {
         "Xqqqqqqqqq(qX",
         "XqqqqqqqqqqqX",
         "Xqqq(((((qqqX",
-        "Xqqq((%((qqqX",
+        "Xqqq((%!(qqqX",
         "Xqqqqqqq$qqqX",
         "XqqqqqqqqqqqX",
         "XqqqqqqqqqqqX",
@@ -800,8 +803,10 @@ window.RPGData = (function () {
       ],
       dorer: [{ ved: [6, 11], til: ["kyrkje-galleri", "2"] }],
       folk: [{ merke: "$", vesen: "klokketau", namn: "Klokketauet", atferd: "stille", tale: "klokketau" },
-        // Klokka sjølv er eit vesen med gangark (klokke.py): retninga vel utslaget når ho svingar.
-        { merke: "%", vesen: "klokke", namn: "Klokka", atferd: "stille", retning: 0, flis: "(", tale: "klokka" }],
+        // Klokka sjølv er eit vesen (klokke.py) med ni rammer som manuset byter mellom når ho svingar.
+        { merke: "%", vesen: "klokke-4", namn: "Klokka", atferd: "stille", flis: "(", tale: "klokka" },
+        // Dua sit på toppbjelken i klokkestolen (vesen med eit stort, tomt bilete, sjå klokke.py).
+        { merke: "!", vesen: "due", namn: "Dua", atferd: "stille", flis: "(", tale: "dua" }],
     },
     prestegarden: {
       namn: "Prestegarden", stemning: "inne", golv: "P", inne: true, bakgrunn: "inne",
@@ -1644,19 +1649,25 @@ window.RPGData = (function () {
       { s: "Organisten", t: "Orgelet kom hit med båt frå Bergen. Det pip litt i dei høge tonane, men folk syng betre med det.", kjensle: "glad" },
       { s: "Organisten", t: "Vil du opp i tårnet, er døra der bak. Men ikkje dra i klokketauet, for då kjem heile bygda springande.", kjensle: "tenkje" },
     ],
-    /* Klokketauet i tårnet: tauet rykkjer, klokka svingar ut mot høgre og slår (DONG og rist på
-       ytterpunktet), svingar over til venstre og slår att, og så døyr svinginga ut. Retninga til
-       vesenet Klokka vel ramma i gangarket (klokke.py). Kan gjentakast. */
-    klokketau: [
-      { byt: "Klokketauet", vesen: "klokketau-dradd" }, { snu: "Klokka", retning: "opp" }, { vent: 160 },
-      { snu: "Klokka", retning: "høgre" }, { byt: "Klokketauet", vesen: "klokketau" }, { rist: 600, styrke: 3 }, { t: "DONG …" },
-      { snu: "Klokka", retning: "opp" }, { vent: 120 }, { snu: "Klokka", retning: "ned" }, { vent: 120 },
-      { byt: "Klokketauet", vesen: "klokketau-dradd" }, { snu: "Klokka", retning: "venstre" }, { byt: "Klokketauet", vesen: "klokketau" },
-      { rist: 450, styrke: 2 }, { t: "DONG …" },
-      { snu: "Klokka", retning: "ned" }, { vent: 160 }, { snu: "Klokka", retning: "opp" }, { vent: 200 }, { snu: "Klokka", retning: "ned" },
-      { s: "Ivar", t: "No høyrer dei det heilt nede i Hovdebygda.", kjensle: "glad" },
-    ],
+    /* Klokketauet i tårnet: tauet rykkjer, klokka svingar mjukt gjennom ni rammer (klokke-0 til
+       klokke-8, klokke.py) ut mot høgre og slår (DONG og rist på ytterpunktet), medan dua skvett opp og
+       flyg ut gjennom lydluka, så over til venstre og slår att, og svinginga døyr ut til kvile. Dua kjem
+       att neste gong Ivar kjem inn i tårnet. Kan gjentakast. */
+    klokketau: (() => {
+      const k = i => ({ byt: "Klokka", vesen: "klokke-" + i });
+      const sving = (fra, til, ms) => { const ut = [], d = til > fra ? 1 : -1; for (let i = fra + d; d > 0 ? i <= til : i >= til; i += d) ut.push(k(i), { vent: ms }); return ut; };
+      const dua = [1, 2, 3, 4, 5, 6, 7].flatMap(i => [{ byt: "Dua", vesen: "due-fly-" + i }, { vent: 90 }]).concat([{ fjern: "Dua" }]);
+      return [
+        { byt: "Klokketauet", vesen: "klokketau-dradd" }, ...sving(4, 0, 45), { byt: "Klokketauet", vesen: "klokketau" },
+        { saman: [[{ rist: 600, styrke: 3 }, { t: "DONG …" }], dua] },
+        { byt: "Klokketauet", vesen: "klokketau-dradd" }, ...sving(0, 8, 50), { byt: "Klokketauet", vesen: "klokketau" },
+        { rist: 450, styrke: 2 }, { t: "DONG …" },
+        ...sving(8, 1, 55), ...sving(1, 6, 60), ...sving(6, 3, 70), ...sving(3, 4, 85),
+        { s: "Ivar", t: "No høyrer dei det heilt nede i Hovdebygda.", kjensle: "glad" },
+      ];
+    })(),
     klokka: [{ t: "Klokka er tung og kald, og det luktar bronse og duemøk. Tauet heng til høgre for henne." }],
+    dua: [{ t: "Dua kurrar og ser på Ivar med eitt auga. Ho ser ikkje ut til å vere redd." }],
     tenestejente: [{ dersom: st => st.flagg.latt, da: [
       { s: "Tenestejenta", t: "Eg kan snakke som eg vil att! Det var som å ha blekk i munnen.", kjensle: "glad" },
     ], elles: [

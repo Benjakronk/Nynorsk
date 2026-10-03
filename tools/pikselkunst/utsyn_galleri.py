@@ -4,17 +4,17 @@ Skipet ligg djupt under galleriet, så det blir teikna mindre (halv storleik), m
 færre fargar, rett ovanfrå: toppen av benkeradene, løparen, hovud i benkene og lysekronene sett
 ovanfrå under brystninga. På sidene er veggene ned i djupet mørke.
 
-  python tools/pikselkunst/oversikt.py k53-utan kart=kyrkja skala=1 stemning=ingen utanOver=1 utanFolk=1
+  python tools/pikselkunst/oversikt.py k55-utan kart=kyrkja skala=1 stemning=ingen utanOver=1 utanFolk=1
   python tools/pikselkunst/utsyn_galleri.py
 
-Det første steget lagar forhand/skjerm/k53-utan.png (heile kyrkja utan lys, utan det som heng høgt og
+Det første steget lagar forhand/skjerm/k55-utan.png (heile kyrkja utan lys, utan det som heng høgt og
 utan folk). Skriptet tek rad 41 til 50, skalerer til halv storleik og målar hovud og kroner oppå.
 """
 import os
 from PIL import Image
 
 ROT = os.path.dirname(os.path.abspath(__file__))
-KJELDE = os.path.join(ROT, "forhand", "skjerm", "k53-utan.png")
+KJELDE = os.path.join(ROT, "forhand", "skjerm", "k55-utan.png")
 UT = os.path.join(ROT, "..", "..", "bilete", "spel", "bygg", "inne-skip-utsyn.png")
 W, H = 21 * 16 + 8, 80
 

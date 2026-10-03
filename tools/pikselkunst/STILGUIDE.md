@@ -70,6 +70,31 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
 - Final Fantasy VI har mørkare, tettare tekstur og portrett ved sida av teksten.
   The Minish Cap har lysare fargar, store runde tretoppar og tydelege former.
 
+## Standardperspektiv for objekt (runde 56)
+
+Objekt (møblar, kister, benker, fontar, tønner, gjerde) blir sett frå ein høg vinkel, som i Final
+Fantasy VI og The Minish Cap: toppflatene er store og tydelege, og framsidene er korte og forkorta.
+Målt i FF6 (`forhand/referansar/ff6-0055.png`, borda i Figaro, og `ff6-0031.png`, senga i Narshe),
+i spelpikslar:
+
+| Objekt i FF6 | Toppflate | Framside | Bein eller sokkel |
+| --- | --- | --- | --- |
+| Bord, 3 fliser breitt | 13 | 5 (skuffer) | 4 |
+| Seng | om lag 3/4 av høgda (madrassen) | 4 (fotbrett) | 0 |
+
+- **Regelen:** for eit objekt med djupn éi flis (16 pikslar) skal toppflata vere 9 til 13 pikslar og
+  framsida 4 til 6 pikslar, altså om lag 2 til 2,5 gonger så mykje toppflate som framside. Bein og
+  sokkel er korte (2 til 4 pikslar). Ein høg ting (skap, preikestol, altartavle, klokkestol) kan ha
+  lang framside, men toppflata syner òg der.
+- **Runde ting** (fat, font, tønne, brønn): opninga eller toppen er ein brei oval som er 2/5 til 1/2 så
+  høg som han er brei, og sida under er kort.
+- **Rekkverk og balustradar:** handlista er ei brei toppflate (4 til 5 pikslar), balustrane korte (5 til
+  6 pikslar).
+- **Benker der folk sit eller går imellom:** del biletet i eit flatt lag under figurane (setet,
+  `flat: true`) og eit lag framfor (toppflata og den korte baksida på ryggen), og senk figurane i
+  benkerada med `hogd`, så ryggen framfor dekkjer den nedre delen. Sjå kyrkjebenkene i `inventar.py`.
+- Gjeld nye objekt frå no av. Eldre objekt med for låg vinkel står i ARBEIDSLOGG.md (runde 56).
+
 ## Norsk byggjeskikk, natur og kle (sjå konsept/)
 
 - Torvtak: solbleikt olivengrønt og gult om sommaren, med tuster og blomar,
