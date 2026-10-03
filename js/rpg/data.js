@@ -360,7 +360,7 @@ window.RPGData = (function () {
         "XXXXXXXXXX",
         "X(((OOOO(X",
         "XOOOOO@OOX",
-        "X((O4O((OX",
+        "X((O4O(((X",
         "XOO2O3OOOX",
         "XKOO1OOO(X",
         "XXXXEXXXXX",
@@ -725,11 +725,9 @@ window.RPGData = (function () {
       nyttOppsett: { fraH: 12, merke: "2" },
       // Trappa opp til preikestolen: (3,16) midt i trappa, (2,16) øvst, (1,16) i korga (pikslar opp, og
       // 5 pikslar mot høgre så Ivar står midt i korga; sjå hogdVed() i motor.js). Rutene rundt (rad 15 og
-      // 17) er faste, så ein berre kjem opp og ned trappa. Mellom benkeradene (rada rett bak ein benk)
-      // står ein 12 pikslar lågare, på setet i benkerada, så heile overkroppen syner og ryggen framfor dekkjer beina litt.
-      hogd: Object.assign({ "3,16": 30, "2,16": [54, 2], "1,16": [56, 5] },
-        Object.fromEntries([17, 19, 21, 23, 25, 30, 32, 34, 36, 38, 43, 45, 47, 49, 51].flatMap(y =>
-          [2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17, 18].map(x => [x + "," + y, -12])))),
+      // 17) er faste, så ein berre kjem opp og ned trappa. Mellom benkeradene står ein på golvet som elles
+      // (med benkene sett ovanfrå sokk Ivar elles bak dei som sit der).
+      hogd: { "3,16": 30, "2,16": [54, 2], "1,16": [56, 5] },
       dorer: [{ ved: [10, 60], til: ["bygda", "3"] }, { ved: [8, 54], til: ["kyrkje-galleri", "1"] }],
       folk: [
         // Presten kneler framfor altarringen og bed til blekket er borte. Etter det står han innanfor ringen.
