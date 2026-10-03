@@ -23,7 +23,9 @@ borte.
   li-kort, dal-under   varianten «dal»: lia sluttar i ei tregrense, og under stig dalbotnen med
             Hovdebygda fram nedanfrå (faktor [1, 1,8]) når kameraet glir ned ved stupet.
   greiner, greiner-h   bjørkegreiner som heng ned i øvre hjørne (forgrunn, faktor 1,3)
-  gras, gras-h         høgt gras og ein tuve i nedre hjørne, framfor utsikta (forgrunn, faktor 1,3)
+  nabb, nabb-h         bergnabbar med gras, lyng og ei lita bjørk som kjem inn frå sidene framfor
+                       utsikta (forgrunn); berget går langt ned, så dei aldri heng i lufta.
+  fuglar               tre fuglar som svevar langt nede over dalen (to rammer, driv sakte).
 
   python tools/pikselkunst/utsikt.py            skriv alle, og forhand/utsikt-ark.png
   python tools/pikselkunst/utsikt.py li         berre lia under stupet
@@ -648,7 +650,84 @@ def gras_ramme(w, h, vind):
     return L_.im
 
 
-BILETE = {"li": li, "elv": elv_rammer, "skyer": skyer, "li-kort": li_kort, "dal-under": dal_under, "himmel": himmel, "fjell": fjell, "dal-nord": dal_nord, "naer": naer, "greiner": greiner, "gras": gras}
+
+NABB_W, NABB_H = 92, 272
+
+def nabb_ramme(vind, bjork, s):
+    """Ein bergnabb nær kameraet som kjem inn frå sida av biletet: mørk, skugga berg (lys kant oppe til
+    venstre, mørk kant mot høgre), med jord, gras og lyng på toppen. Berget går langt ned, så nabben
+    aldri heng i lufta: der toppen syner, når berget heilt ned til kanten av biletet. vind flyttar
+    toppane av stråa (og kruna på bjørka) 0, 1 eller 2 pikslar."""
+    w, h = NABB_W, NABB_H
+    L_ = L(w, h)
+    topp = lambda x: 40 + ((x - 24) / 44) ** 2 * 18 + (M.fbm(x / 6, 1, s, 3) - 0.5) * 8
+    hogre = lambda y: 58 + 8 * math.sin(y / 34 + s) + (M.fbm(y / 9, 2, s + 1, 3) - 0.5) * 10 + min(18, y / 10)
+    berg = M.rampe("#0e0c16", "#1a1722", "#2a2632", "#3c3742", "#56505a")
+    for y in range(h):
+        hx = hogre(y)
+        for x in range(w):
+            t = topp(x)
+            if y < t or x > hx: continue
+            kant_opp = y - t < 2; kant_h = hx - x < 2
+            v = 0.3 + (M.fbm(x / 7 + y / 30, y / 12, s + 2, 3) - 0.5) * 0.5 + (0.35 if kant_opp else 0) - (0.3 if kant_h else 0)
+            if M.h(x // 2, y // 3, s + 3) > 0.9: v -= 0.25                                     # sprekker
+            L_.p(x, y, M.tone(berg, v, x, y))
+    gras = M.rampe("#0e1a10", "#16261a", "#203622", "#2e4a2a", "#40602f", "#567436")
+    for x in range(w):                                                    # jord og gras som ligg på toppen
+        t = int(topp(x))
+        if x > hogre(t) + 2: continue
+        for k in range(4): L_.p(x, t - 1 + k, M.tone(gras, 0.25 + (2 - k) * 0.12, x, t + k) if k < 2 else "#2a1c16")
+    for i in range(46):                                                   # strå som vaiar
+        x0 = M.h(i, 1, s + 4) * (hogre(40) - 4); y0 = topp(x0)
+        lengd = 6 + M.h(i, 2, s + 4) * 14
+        lut = (M.h(i, 3, s + 4) - 0.4) * 0.6
+        for k in range(int(lengd)):
+            t = k / lengd
+            x = x0 + lut * k * t + round(vind * t * t * (0.6 + lengd / 30)); y = y0 - k
+            L_.p(x, y, M.tone(gras, 0.3 + t * 0.6, int(x), int(y)))
+    for i in range(14):                                                   # lyng
+        x = M.h(i, 1, s + 5) * (hogre(40) - 6); y = topp(x) - 1 - M.h(i, 2, s + 5) * 3
+        L_.p(x, y, "#7a4a6e"); L_.p(x + 1, y, "#9a5c86"); L_.p(x, y - 1, "#5a3a54")
+    if bjork:                                                             # ei lita bjørk som lener seg ut over stupet
+        bx, by = 30, int(topp(30))
+        for k in range(30):
+            x = bx + k * 0.45 + (vind * (k / 30) ** 2 if k > 18 else 0); y = by - k
+            L_.p(x, y, "#c8c4bc" if k % 5 else "#2a2630"); L_.p(x + 1, y, "#8a8690")
+        krone(L_, bx + 15 + vind, by - 32, 8, M.rampe("#16261a", "#22381f", "#324e2a", "#466636", "#5e7c40"), s + 6)
+        krone(L_, bx + 22 + vind, by - 27, 6, M.rampe("#16261a", "#22381f", "#324e2a", "#466636"), s + 7)
+    return L_.im
+
+
+def nabb():
+    """Bergnabben til venstre, med ei lita bjørk (tre rammer der graset og kruna vaiar)."""
+    ark = L(NABB_W * GRAS_RAMMER, NABB_H)
+    for f in range(GRAS_RAMMER): ark.im.alpha_composite(nabb_ramme(f, True, 621), (f * NABB_W, 0))
+    return ark.im
+
+
+def nabb_h():
+    """Bergnabben til høgre: berre gras, lyng og stein, spegla så han kjem inn frå høgre side."""
+    ark = L(NABB_W * GRAS_RAMMER, NABB_H)
+    for f in range(GRAS_RAMMER):
+        ark.im.alpha_composite(nabb_ramme(f, False, 641).transpose(Image.FLIP_LEFT_RIGHT), (f * NABB_W, 0))
+    return ark.im
+
+
+def fuglar():
+    """Tre fuglar som svevar langt nede over dalen (eit lag over lia: to rammer med venger opp og ned,
+    og laget driv sakte bortover). Små, mørke og litt disige."""
+    ark = Image.new("RGBA", (LI_W * 2, LI_H), (0, 0, 0, 0)); px = ark.load()
+    c = M.blend("#2e3640", DIS, 0.25)
+    for f in range(2):
+        for (x, y) in [(118, 168), (127, 174), (306, 140)]:
+            vy = -1 if f == 0 else 1
+            for dx, dy in [(-2, vy), (-1, 0), (0, 0), (1, 0), (2, vy)]:
+                px[f * LI_W + x + dx, y + dy] = (c[0], c[1], c[2], 255)
+    return ark
+
+
+
+BILETE = {"li": li, "elv": elv_rammer, "skyer": skyer, "fuglar": fuglar, "nabb": nabb, "nabb-h": nabb_h, "li-kort": li_kort, "dal-under": dal_under, "himmel": himmel, "fjell": fjell, "dal-nord": dal_nord, "naer": naer, "greiner": greiner}
 
 if __name__ == "__main__":
     namn = sys.argv[1:] or list(BILETE)
@@ -670,6 +749,6 @@ if __name__ == "__main__":
     ark.alpha_composite(opp.resize((960, 330), Image.NEAREST), (10, 10))
     ark.alpha_composite(li_.crop((0, 0, 320, 140)).resize((960, 420), Image.NEAREST), (10, 350))
     x = 10
-    for n in ("greiner", "gras"):
+    for n in ("greiner", "nabb"):
         im = Image.open(os.path.join(UT, f"{n}.png")); ark.alpha_composite(im.resize((im.width * 2, im.height * 2), Image.NEAREST), (x, 780)); x += im.width * 2 + 20
     ark.save(os.path.join(ROT, "forhand", "utsikt-ark.png")); print("forhand/utsikt-ark.png")

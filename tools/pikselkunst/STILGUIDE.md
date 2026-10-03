@@ -295,6 +295,10 @@ landskap langt nede som flyttar seg saktare enn kartet.
   dalsida møtest utan skøyt.
 - Djupn nedover (etter Octopath Traveler): det som er langt nede, er uskarpt (pikslane dobla), disig
   og lysare, og svake lysstrålar fell skrått ned gjennom disen.
+- Forgrunnen over stupet står alltid på noko: bergnabbar som kjem inn frå sida av biletet, med gras, lyng
+  og ei lita bjørk på toppen, og berg som går så langt ned at det når kanten av biletet i alle
+  kameraposisjonar. Aldri gras som heng fritt i lufta.
+- Langt nede over dalen svevar nokre små, mørke fuglar (to rammer, driv sakte), sparsamt.
 - Forgrunnen (faktor 1,3): nesten silhuettar i mørkt grøn (nær kameraet, i skugge), berre i hjørna,
   og berre når kameraet står ved kanten av kartet. Aldri midt i biletet.
 

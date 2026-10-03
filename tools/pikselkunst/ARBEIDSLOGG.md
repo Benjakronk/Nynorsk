@@ -1347,3 +1347,19 @@ same måte, uansett kven som tek over.
   på sidene og under, og neset har ein rund kant.
 - **Står att:** Hylla smalnar av i trinn (fem, tre, éi flis); sidekantane rundar trinna, men omrisset er
   framleis litt trappeforma.
+
+## Runde 42: forgrunnen står på noko, og fleire element over stupet
+
+- **Oppdrag:** Brukaren: fleire forgrunnselement, og graset i forgrunnen hang i lause lufta når ein stod
+  ytst på hylla.
+- **Gjort:**
+  - Graset i forgrunnen (`gras`, `gras-h`) er bytt ut med to bergnabbar (`nabb`, `nabb-h`, laga i
+    `utsikt.py`): mørkt, skugga berg som kjem inn frå sida, med jord, gras som vaiar (tre rammer), lyng og
+    ei lita bjørk som lener seg ut på den venstre. Berget er 272 pikslar høgt, så der toppen syner, når
+    berget ned til kanten av biletet: nabben står alltid på noko. Den venstre syner ytst på hylla, den
+    høgre på neset (og som ein mørk pilar i høgre kant ytst på hylla); oppe på tunet er dei ute av biletet.
+  - `fuglar`: tre små fuglar som svevar langt nede over dalen (to rammer med venger opp og ned, driv
+    éin piksel per 6 tikk), som eit lag over lia.
+- **Vurdert:** `forhand/skjerm/r42-oversyn.png`: øvst (toppen), ved kanten på platået, på neset og ytst på
+  hylla (med kameraet glidd ned). Nabbane rammar inn utsikta i hjørna og dekkjer ikkje Ivar eller spissen.
+- **Står att:** Ytst på hylla er den høgre nabben ein høg, mørk pilar langs høgre kant.

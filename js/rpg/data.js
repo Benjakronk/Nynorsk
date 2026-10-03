@@ -411,6 +411,8 @@ window.RPGData = (function () {
         // Elva renn (fire rammer på rundgang), og skyene under oss driv sakte bortover (1 piksel per 12 tikk).
         { bilete: "elv", faktor: 1, ved: [0, 12], x: 0, y: 48, variant: "fast", rammer: 4, rekkje: [0, 1, 2, 3], takt: 10 },
         { bilete: "skyer", faktor: 1, ved: [0, 12], x: 0, y: 48, variant: "fast", drift: 12 },
+        // Tre fuglar som svevar langt nede over dalen: vengene opp og ned, og dei driv bortover.
+        { bilete: "fuglar", faktor: 1, ved: [0, 12], x: 0, y: 48, variant: "fast", rammer: 2, rekkje: [0, 1], takt: 18, drift: 6 },
         { bilete: "li-kort", faktor: 1, ved: [0, 12], x: 0, y: 48, variant: "dal" },
       ],
       variant: "fast",                                                 // utsikta nedst: «fast» eller «dal» (sjå parallakse)
@@ -422,12 +424,14 @@ window.RPGData = (function () {
       kameraOpp: { fra: 4, rader: 6, fart: 1 },                         // øvst glir kameraet roleg seks rader opp over kanten
       // Utløysarrutene: på neset og ytst på hylla glir kameraet roleg ned, så Ivar står øvst.
       kameraNed: { ruter: ["21,14", "22,14", "23,14", "15,18", "16,19", "17,18"], rader: 4, fart: 1 },
-      // Forgrunnen: bjørkegreiner i øvre hjørne ved skogen, høgt gras i nedre hjørne ved stupet.
+      // Forgrunnen: bjørkegreiner i øvre hjørne ved skogen, bergnabbar framfor utsikta nedst.
       forgrunn: [
         { bilete: "greiner", faktor: 1.3, ved: [0, -6], x: -6, y: -4 },
         { bilete: "greiner-h", faktor: 1.3, ved: [8, -6], x: 210, y: -4 },
-        { bilete: "gras", faktor: 1.3, ved: [0, 13.5], x: -8, y: 156, rammer: 3, rekkje: [0, 1, 2, 1], takt: 40 },
-        { bilete: "gras-h", faktor: 1.3, ved: [8, 13.5], x: 236, y: 156, rammer: 3, rekkje: [0, 1, 2, 1], takt: 40 },   // graset vaiar i vinden
+        // Bergnabbar framfor utsikta, med gras og lyng som vaiar (og ei lita bjørk til venstre). Berget går
+        // langt ned, så dei står på noko i alle kameraposisjonar: venstre syner ytst på hylla, høgre på neset.
+        { bilete: "nabb", faktor: 1.25, ved: [6.5, 17.5], x: -18, y: 118, rammer: 3, rekkje: [0, 1, 2, 1], takt: 40 },
+        { bilete: "nabb-h", faktor: 1.25, ved: [8, 12.5], x: 246, y: 120, rammer: 3, rekkje: [0, 1, 2, 1], takt: 46 },
       ],
       /* Nedst er kanten ujamn: platået stikk ut i eit nes (x 21 til 23) og går inn i ei vik (x 25 til 27),
          og under midten (x 4 til 17) går ein skrent med rampe (11,14) ned til ei hylle eitt nivå lenger
