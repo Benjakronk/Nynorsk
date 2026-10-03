@@ -541,6 +541,9 @@ window.Motor = (function () {
   function oppdaterNed(no, malX, malY) {
     const k = kart.def.kameraNed, t = tikk(no), n = Math.max(0, t - nedTikk);
     nedTikk = t;
+    // Scenekameraet overstyrer: medan ei hending køyrer (pausa) eller kameraet går etter regi (kam),
+    // står utsikta i ro der ho er, og kameraet() tek ho med seg inn i kam.px (sjå kamera).
+    if (pausa || kam) return;
     const ko = kart.def.kameraOpp;
     if (ko && ko.fart) {
       const maalO = malY <= ko.fra + 0.001 ? Math.round(ko.rader * S) : 0;
@@ -569,7 +572,9 @@ window.Motor = (function () {
   function kamera(til, ms = 900) {
     const a = typeof til === "string" ? aktor(til) : null;
     const mal = til == null ? () => ({ x: spelar.fx, y: spelar.fy }) : a ? () => ({ x: a.fx, y: a.fy }) : () => ({ x: til[0], y: til[1] });
-    const px = { x: kameraGrunn.x, y: kameraGrunn.y }, m = kameraMaal(mal()), n = Math.max(1, tikk(ms));
+    // Kameraet byrjar der biletet står no, med utsikta (nedPx, oppPx) teken med, og så styrer scena åleine.
+    const px = { x: kameraGrunn.x, y: kameraNo.y }, m = kameraMaal(mal()), n = Math.max(1, tikk(ms));
+    nedPx = 0; oppPx = 0;
     kam = { px, mal, sistMaal: m, tikk: tikk(performance.now()), tilbake: til == null,
       fart: { x: Math.max(1, Math.ceil(Math.abs(m.x - px.x) / n)), y: Math.max(1, Math.ceil(Math.abs(m.y - px.y) / n)) } };
     return vent(ms);
