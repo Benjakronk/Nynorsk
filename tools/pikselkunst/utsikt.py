@@ -654,66 +654,88 @@ def gras_ramme(w, h, vind):
 NABB_W, NABB_H = 92, 272
 
 def nabb_ramme(vind, bjork, s, speil=False):
-    """Ein bergnabb nær kameraet som kjem inn frå sida av biletet. Berget har form og tekstur: kantlys på
-    toppen og på sida som vender mot ljoset (oppe til venstre), lag og hyller med lys overkant og skugge
-    under, sprekker med mose, lav og lyng, og mellomtonar, men er mørkare enn midtplanet så det ligg
-    framfor. Jord, gras og lyng på toppen. Berget går langt ned, så nabben aldri heng i lufta: der toppen
-    syner, når berget ned til kanten av biletet. vind flyttar toppane av stråa (og kruna på bjørka)
-    0, 1 eller 2 pikslar. speil: nabben kjem inn frå høgre (forma spegla, ljoset framleis frå venstre)."""
+    """Ein bergnabb nær kameraet som kjem inn frå sida av biletet, bygd av steinblokker med klare flater
+    (same stil som klippeveggene i kartet, litt mørkare og meir metta så nabben ligg framfor): lyse
+    toppflater, ei lys skråkant på sida mot ljoset (venstre), rolege mellomtonar på framsidene, og mørk
+    skugge berre i fugene og under blokker som stikk ut. Lyng, gras og mose på hyllene, og jord og gras
+    på toppen. Berget går langt ned, så nabben aldri heng i lufta. vind flyttar toppane av stråa (og
+    kruna på bjørka) 0, 1 eller 2 pikslar. speil: nabben kjem inn frå høgre (ljoset framleis frå venstre)."""
     w, h = NABB_W, NABB_H
     L_ = L(w, h)
     sx = (lambda u: w - 1 - u) if speil else (lambda u: u)                   # frå lokal u (0 ved biletkanten) til x
-    topp = lambda u: 40 + ((u - 24) / 44) ** 2 * 18 + (M.fbm(u / 6, 1, s, 3) - 0.5) * 8
-    inner = lambda y: 58 + 8 * math.sin(y / 34 + s) + (M.fbm(y / 9, 2, s + 1, 3) - 0.5) * 10 + min(18, y / 10)
-    berg = M.rampe("#15131c", "#221f2a", "#322e3a", "#46414c", "#5e5862", "#7a7276", "#968c88")
-    mose, lav = M.rampe("#2a3a26", "#3c5232", "#56703e"), M.rampe("#7a8060", "#a0a47a")
-    for y in range(h):
-        iu = inner(y)
-        for u in range(w):
-            t = topp(u)
-            if y < t or u > iu: continue
-            x = sx(u)
-            ned = y - t
-            v = 0.4 + (M.fbm(u / 7 + y / 30, y / 12, s + 2, 3) - 0.5) * 0.42 + (M.fbm(u / 18, y / 40, s + 14, 2) - 0.5) * 0.3
-            lagy = (y + int(M.fbm(u / 14, y / 40, s + 8, 2) * 14)) % 19              # lag og hyller i berget, ujamne
-            heil = M.fbm(u / 9, y / 19, s + 15, 2) > 0.4
-            if lagy == 0 and heil: v += 0.32
-            elif lagy == 1 and heil: v -= 0.24
-            if ned < 3: v += 0.5 - ned * 0.12                                     # kantlys på toppen
-            inn = iu - u
-            if speil and inn < 3: v += 0.4                                        # sida mot ljoset (venstre)
-            elif not speil and inn < 2: v -= 0.22                                 # sida bort frå ljoset
-            v -= min(0.15, y / 900)
-            spr = M.h(u // 2, y // 4, s + 3) > 0.9
-            if spr: v -= 0.28
-            c = M.tone(berg, v, x, y)
-            if lagy == 18 and heil and M.h(u // 2, y // 19, s + 9) > 0.45: c = M.tone(mose, 0.3 + M.h(u, y, s + 10), x, y)   # mose på hylla
-            elif spr and M.h(u, y, s + 11) > 0.6: c = M.tone(mose, 0.2, x, y)
-            elif lagy in (2, 3, 4) and M.h(u, y, s + 12) > 0.93: c = M.tone(lav, M.h(u, y, s + 13), x, y)   # lav
-            L_.p(x, y, c)
+    topp = lambda u: 40 + ((u - 24) / 44) ** 2 * 18 + (M.fbm(u / 6, 1, s, 3) - 0.5) * 6
+    inner = lambda y: 58 + 8 * math.sin(y / 34 + s) + (M.fbm(y / 9, 2, s + 1, 3) - 0.5) * 6 + min(18, y / 10)
+    F = {"skugge": "#17131f", "fuge": "#221c2a", "front": "#4c4350", "front2": "#433b48", "botn": "#3a3240",
+         "topp": "#8a7c74", "toppLys": "#a6968a", "lysKant": "#6e6266", "mork": "#352e3a"}
+    # Blokkene: rader med ulik høgd, og i kvar rad blokker med ulik breidd. Toppen av kvar blokk ligg litt
+    # ulikt, så somme stikk ut over den under (skugge under).
+    rader, y = [], 34
+    k = 0
+    while y < h:
+        hr = [40, 30, 48, 36, 56, 64][min(k, 5)] + int(M.h(k, 1, s + 20) * 10)
+        blokker, u = [], -int(M.h(k, 9, s + 20) * 20)                        # forskoven rad for rad, så fugene ikkje står i liner
+        while u < w:
+            bw = 30 + int(M.h(k, len(blokker), s + 21) * 34)
+            blokker.append((u, u + bw, int(M.h(k, len(blokker), s + 22) * 7), int(M.h(k, len(blokker), s + 27) * 7)))   # venstre, høgre, topp v/h
+            u += bw
+        rader.append((y, y + hr, blokker)); y += hr; k += 1
+    mose = M.rampe("#2c4228", "#3e5a32", "#56763e")
+    for (r0, r1, blokker) in rader:
+        for (b0_, b1_, offv, offh) in blokker:
+            for yy in range(r0, r1):
+                # ujamne fuger: kanten flyttar seg litt nedover blokka
+                b0 = b0_ + round(math.sin(yy / 7 + b0_) * 1.4 + (M.stoy(yy / 5, b0_, s + 28) - 0.5) * 2)
+                b1 = b1_ + round(math.sin(yy / 7 + b1_) * 1.4 + (M.stoy(yy / 5, b1_, s + 28) - 0.5) * 2)
+                for u in range(max(0, b0), min(w, b1)):
+                    t = topp(u)
+                    if yy < t or u > inner(yy): continue
+                    x = sx(u)
+                    # venstre/høgre kant i skjermretning (ljoset kjem frå venstre)
+                    xa, xb = (sx(b0), sx(b1 - 1)) if not speil else (sx(b1 - 1), sx(b0))
+                    dv, dh = x - xa, xb - x
+                    fr = (u - b0) / max(1, b1 - b0)
+                    off = round(offv + (offh - offv) * fr + (M.stoy(u / 4, r0, s + 29) - 0.5) * 2)   # skrå, ujamn topp
+                    # runde hjørne oppe på blokka
+                    hj = min(u - b0, b1 - 1 - u)
+                    if hj < 3: off += 3 - hj
+                    dy = yy - max(r0, int(t)) - off
+                    iu = inner(yy) - u
+                    if dy < 0: c = F["skugge"]                                            # under blokka over
+                    elif dv < 1 or dh < 1: c = F["fuge"]                                  # fuga mellom blokkene
+                    elif dy < 1: c = F["toppLys"]
+                    elif dy < 5: c = F["topp"]                                            # toppflata
+                    elif dv < 3: c = F["lysKant"]                                         # skråkanten mot ljoset
+                    elif dh < 2: c = F["mork"]                                            # sida bort frå ljoset
+                    elif yy > r1 - 3: c = F["botn"]
+                    else: c = F["front2"] if M.h((x + 3 * k) // 7, yy // 9, s + 23) > 0.72 else F["front"]
+                    if iu < 2: c = F["lysKant"] if speil else F["skugge"]                 # yttersida av nabben
+                    if 1 <= dy < 5 and M.h(x // 2, yy, s + 24) > 0.78: c = M.tone(mose, M.h(x, yy, s + 25), x, yy)   # mose på hyllene
+                    L_.p(x, yy, c)
+            # lyng på toppflata av nokre blokker
+            if M.h(b0_, r0, s + 26) > 0.55:
+                u = b0_ + (b1_ - b0_) // 2; yy = max(r0, int(topp(max(0, u)))) + (offv + offh) // 2 + 1
+                if 0 <= u < w and u <= inner(yy): x = sx(u); L_.p(x, yy, "#8a5278"); L_.p(x + 1, yy, "#a86a92"); L_.p(x, yy - 1, "#5e3c58")
     gras = M.rampe("#14221a", "#1e3222", "#2a4428", "#3a5a30", "#4e7038", "#66883e")
     for u in range(w):                                                    # jord og gras som ligg på toppen
         t = int(topp(u))
         if u > inner(t) + 2: continue
-        for k in range(4): L_.p(sx(u), t - 1 + k, M.tone(gras, 0.3 + (2 - k) * 0.14, u, t + k) if k < 2 else "#3a2a20")
+        for kk in range(4): L_.p(sx(u), t - 1 + kk, M.tone(gras, 0.34 + (2 - kk) * 0.14, u, t + kk) if kk < 2 else "#3a2a20")
     for i in range(46):                                                   # strå som vaiar
         u0 = M.h(i, 1, s + 4) * (inner(40) - 4); y0 = topp(u0)
         lengd = 6 + M.h(i, 2, s + 4) * 14
         lut = (M.h(i, 3, s + 4) - 0.4) * 0.6
-        for k in range(int(lengd)):
-            t = k / lengd
-            x = sx(u0 + lut * k * t) + round(vind * t * t * (0.6 + lengd / 30)); y = y0 - k
-            L_.p(x, y, M.tone(gras, 0.32 + t * 0.62, int(x), int(y)))
-    for i in range(18):                                                   # lyng på toppen og i sprekkene
-        u = M.h(i, 1, s + 5) * (inner(40) - 6); y = topp(u) - 1 - M.h(i, 2, s + 5) * 3
-        if i > 11: y = topp(u) + 10 + M.h(i, 3, s + 5) * 60
-        x = sx(u)
-        L_.p(x, y, "#8a5278"); L_.p(x + 1, y, "#a86a92"); L_.p(x, y - 1, "#5e3c58")
+        for kk in range(int(lengd)):
+            t = kk / lengd
+            x = sx(u0 + lut * kk * t) + round(vind * t * t * (0.6 + lengd / 30)); yy = y0 - kk
+            L_.p(x, yy, M.tone(gras, 0.34 + t * 0.62, int(x), int(yy)))
+    for i in range(10):                                                   # lyng på toppen
+        u = M.h(i, 1, s + 5) * (inner(40) - 6); yy = topp(u) - 1 - M.h(i, 2, s + 5) * 3
+        x = sx(u); L_.p(x, yy, "#8a5278"); L_.p(x + 1, yy, "#a86a92"); L_.p(x, yy - 1, "#5e3c58")
     if bjork:                                                             # ei lita bjørk som lener seg ut over stupet
         bu, by = 30, int(topp(30))
-        for k in range(30):
-            x = sx(bu + k * 0.45) + (vind * (k / 30) ** 2 if k > 18 else 0); y = by - k
-            L_.p(x, y, "#d8d4cc" if k % 5 else "#2a2630"); L_.p(x + (-1 if speil else 1), y, "#9a96a0")
+        for kk in range(30):
+            x = sx(bu + kk * 0.45) + (vind * (kk / 30) ** 2 if kk > 18 else 0); yy = by - kk
+            L_.p(x, yy, "#d8d4cc" if kk % 5 else "#2a2630"); L_.p(x + (-1 if speil else 1), yy, "#9a96a0")
         krone(L_, sx(bu + 15) + vind, by - 32, 8, M.rampe("#1a2c1e", "#283e24", "#3a5630", "#4e6e3a", "#688a44"), s + 6)
         krone(L_, sx(bu + 22) + vind, by - 27, 6, M.rampe("#1a2c1e", "#283e24", "#3a5630", "#4e6e3a"), s + 7)
     return L_.im

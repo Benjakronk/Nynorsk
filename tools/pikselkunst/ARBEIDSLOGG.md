@@ -1381,3 +1381,17 @@ same måte, uansett kven som tek over.
 - **Vurdert:** `forhand/skjerm/r43-oversyn.png` (neset med nabben, ytst på hylla utan søyle, det spisse
   framspringet og hylla) og `r43-naer.png` (nærbilete av framspringet og nabben).
 - **Står att:** Nabbane er framleis enkle former; dei kunne fått fleire steinblokker.
+
+## Runde 44: bergnabbane bygde av steinblokker
+
+- **Oppdrag:** Brukaren: gjer nabbane tydelegare med lysare flater og steinblokker. Den høgre nabben var
+  mest ei mørk, rutete flate, og kantlyset berre ei tynn stripe.
+- **Gjort:** `nabb_ramme` i `utsikt.py` byggjer nabben av rader med store steinblokker (30 til 64 pikslar
+  breie, 30 til 70 høge), forskovne rad for rad. Kvar blokk har ei lys toppflate (med ei lysare øvste
+  line), ei lys skråkant på sida mot ljoset, ei roleg mellomtone på framsida (to tonar, nesten ikkje
+  dither), mørk side bort frå ljoset, og mørk skugge berre i fugene og under blokker som stikk ut. Toppen
+  av kvar blokk er skrå og ujamn, hjørna er runde, og fugene vrir seg litt. Mose og lyng på toppflatene,
+  gras og bjørka som før.
+- **Vurdert:** Før og etter: `forhand/skjerm/r44-for-etter.png` (neset og ytst på hylla), og
+  `r44-nabb.png` (nabbane åleine).
+- **Står att:** Blokkradene ligg framleis litt for jamt over kvarandre.

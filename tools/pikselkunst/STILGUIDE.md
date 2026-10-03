@@ -295,8 +295,10 @@ landskap langt nede som flyttar seg saktare enn kartet.
   dalsida møtest utan skøyt.
 - Djupn nedover (etter Octopath Traveler): det som er langt nede, er uskarpt (pikslane dobla), disig
   og lysare, og svake lysstrålar fell skrått ned gjennom disen.
-- Bergnabbane i forgrunnen har form: kantlys på toppen og på sida mot ljoset, ujamne lag og hyller med lys
-  overkant, sprekker med mose, lav og lyng, og mellomtonar, men er mørkare enn midtplanet.
+- Bergnabbane i forgrunnen er bygde av få, store steinblokker med klare flater: lyse toppflater, ei lys
+  skråkant på sida mot ljoset, rolege mellomtonar på framsidene og mørk skugge berre i fugene og under
+  blokker som stikk ut. Lite dither. Mose og lyng på toppflatene. Litt mørkare og meir metta enn
+  klippeveggene i kartet, så dei ligg framfor.
 - Forgrunnen over stupet står alltid på noko: bergnabbar som kjem inn frå sida av biletet, med gras, lyng
   og ei lita bjørk på toppen, og berg som går så langt ned at det når kanten av biletet i alle
   kameraposisjonar. Aldri gras som heng fritt i lufta.
