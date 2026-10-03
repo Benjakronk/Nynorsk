@@ -64,10 +64,18 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   `bilete` (eit inventarbilete i staden for kistefliser, til dømes `inne-skrin`), `vis` (finst berre
   når vilkåret held) og `manus` (blir spela når ho blir opna). Sjå med
   `skjermbilete.py namn kart=asen-stabbur m=1` og `kart=asen-stova m=1 flagg=skiftebrev x=9 y=4`.
-- Kyrkja (runde 30): `korvegg` (bakveggen, 11 × 2, rad 0 og 1, vindauga over `u`), `altartavle`
-  (3 × 3), `altarring`, `preikestol`, `dopefont`, `kyrkjebenk-h` og `-v` (5 × 1, benkedøra mot
-  midtgangen til høgre eller venstre) og `lysekrone`. Små motiv blir teikna med `_stempel` (strengar).
-  Sjå med `skjermbilete.py namn kart=kyrkja m=1` og `m=p flagg=latt` (presten i altarringen).
+- Kyrkja (runde 52, 21 × 61 fliser, 50 fliser frå døra til altarringen): `korvegg` (bakveggen, 11 × 5,
+  vindauga over `u` i rad 4), `altartavle` (5 × 7: bondebarokk med nattverden, krossfestinga og
+  oppstoda, og altaret), `altarring` (7 × 3), `skipvegg-v` og `-h` (austveggen i skipet ved korbogen,
+  4 × 5, salmetavla til høgre), `korskilje` (11 × 1), `preikestol` (3 × 2, med trapp), `dopefont`
+  (2 × 1), `kyrkjebenk-h` og `-v` (8 × 1, benkedøra mot midtgangen), og høgt oppe (`over: true` med
+  `faktor` og `tak`, parallakse og kjetting): `lysekrone` (3 × 1), `kyrkjeskip` (3 × 1) og `galleri`
+  (21 × 3). Ljosa står i `LJOS` og kjettingfestet i `KJEDE` i `pikslar.js`. Flisene `Ø` og `ø` er
+  vindauge i venstre og høgre sidevegg (strålar frå `Ø`), `Æ` og `æ` ei gravhelle i golvet. Små motiv
+  blir teikna med `_stempel` (strengar). Sjå med `skjermbilete.py namn kart=kyrkja m=1 x=10 y=9`
+  (koret), `x=6 y=5` (altartavla heilt), `flagg=latt` (presten i altarringen), og heile kyrkja med
+  `python tools/pikselkunst/oversikt.py namn kart=kyrkja` (alle skjermane sette saman). Gangtida:
+  `python tools/kjoyr-test.py tools/sjekk-kyrkjegang.html 60000`.
 - Glød rundt ei lyskjelde (eld, ljos, lykt, krone): ei handteikna glødform i
   `tools/pikselkunst/glod.py`, éin funksjon per kjelde med parameteren `r` (flimmerramma).
   Slik lagar du glød for ei ny lyskjelde:

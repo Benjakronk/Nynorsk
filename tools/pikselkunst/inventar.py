@@ -46,43 +46,125 @@ PAL = [
     ("3", "#4a5868", "benk djup"), ("4", "#c4d0dc", "benk lys"),
     ("5", "#4e5648", "kleber skugge"), ("6", "#7a8070", "kleber"), ("7", "#a6ac98", "kleber lys"),
     ("8", "#d8d4c8", "kalk lys skugge"),
+    ("9", "#4e300c", "messing djup"),
 ]
 
 
 def altarring():
-    """Alterring framfor altaret: kvite balustrar, gylt handlist og raud knefallspute, 5 fliser breitt."""
-    W, H = 5 * 16 + 8, 22
+    """Alterring rundt altaret, 7 fliser brei og 3 rader djup (framsida i den nedste rada, sidene
+    går to rader bakover): dreia, kvitmåla balustrar med gyllen handlist, hjørnestolpar med
+    knappar, raud knefallspute langs framsida og sidene, og opning midt framme (der presten står).
+    Etter Grytten og Hove (konsept/)."""
+    W, H = 7 * 16 + 8, 64
     L = Lerret(W, H)
-    for x in range(2, W - 2):
-        L.p(x, 3, "Y"); L.p(x, 4, "y")                                # handlist
-        L.p(x, 5, "W")
-    for x in range(4, W - 4, 4):                                     # balustrar
-        for y in range(6, 15): L.p(x, y, "w"); L.p(x + 1, y, "W")
-        L.p(x, 9, "W"); L.p(x + 1, 9, "K")
-    for x in range(2, W - 2): L.p(x, 15, "W"); L.p(x, 16, "K")
-    for x in range(3, W - 3):                                        # knefallspute
-        L.p(x, 18, "E"); L.p(x, 19, "R"); L.p(x, 20, "r")
-    # opning i midten til presten
-    for y in range(3, 21):
-        for x in range(W // 2 - 6, W // 2 + 6): L.p(x, y, ".")
-    for y in range(3, 17): L.p(W // 2 - 7, y, "Y"); L.p(W // 2 + 6, y, "Y")
+    cx = W // 2
+    yf = H - 7                                     # golvlina til framsida
+    yt = yf - 14                                   # handlista framme
+    ys = 22                                        # der sidene sluttar bak
+    # sidene (sett ovanfrå og bakfrå): ei smal list med balustrar under, og pute på utsida
+    for sx, ut in ((8, -1), (W - 12, 1)):
+        for y in range(ys, yt):
+            L.p(sx, y, "y" if ut < 0 else "Y"); L.p(sx + 1, y, "Y"); L.p(sx + 2, y, "Z")
+            L.p(sx + 3, y, "W" if y % 3 else "K")
+            px = sx - 3 if ut < 0 else sx + 4
+            for k in range(3): L.p(px + k, y + 10, "E" if k == 0 else "R" if k == 1 else "r")
+        for x in range(sx - 1, sx + 4): L.p(x, ys - 1, "y"); L.p(x, ys - 2, "Y")
+    # framsida: handlist, balustrar, sokkel og pute
+    def framrail(xa, xb):
+        for x in range(xa, xb + 1):
+            L.p(x, yt, "y"); L.p(x, yt + 1, "Y"); L.p(x, yt + 2, "Z")
+            L.p(x, yf - 1, "W"); L.p(x, yf, "K")
+        for x in range(xa + 2, xb - 1, 4):                                # dreia balustrar
+            for y in range(yt + 3, yf - 1):
+                b = 1 if y in (yt + 3, yt + 7, yf - 3) else 0
+                L.p(x, y, "w"); L.p(x + 1, y, "W")
+                if b: L.p(x - 1, y, "w"); L.p(x + 2, y, "K")
+            L.p(x, yt + 9, "W"); L.p(x + 1, yt + 9, "K")
+        for x in range(xa + 1, xb):                                       # knefallsputa
+            L.p(x, yf + 2, "E"); L.p(x, yf + 3, "R"); L.p(x, yf + 4, "R"); L.p(x, yf + 5, "r")
+        L.p(xa + 1, yf + 2, "R"); L.p(xb - 1, yf + 2, "r")
+    framrail(6, cx - 9)
+    framrail(cx + 8, W - 7)
+    # stolpar: i hjørna og ved opninga, med knapp av gull
+    for px in (7, cx - 10, cx + 8, W - 10):
+        for y in range(yt - 3, yf + 1):
+            L.p(px, y, "w"); L.p(px + 1, y, "W"); L.p(px + 2, y, "K")
+        L.p(px, yt - 5, "y"); L.p(px + 1, yt - 5, "Y"); L.p(px + 1, yt - 6, "Y"); L.p(px, yt - 4, "Y"); L.p(px + 1, yt - 4, "Z"); L.p(px + 2, yt - 4, "Z")
     omriss(L)
     return L
 
 
+KRONE_KJEDE = 4            # stubben av kjettingen i biletet; resten opp til taket teiknar motoren (kjede() i motor.js)
+KRONE_LJOS = []            # ankera til ljosa (x, y i biletet), fylt av lysekrone() (sjå LJOS i pikslar.js)
+
+
 def lysekrone():
-    """Lysekrone i messing med levande ljos. Heng over midtgangen."""
-    W, H = 16 + 8, 24
+    """Lysekrone i messing (etter krona i koret i Kvernes og i Grytten, sjå konsept/), sett litt
+    ovanfrå: to kransar med S-forma armar (seks oppe, åtte nede) som ligg i ellipsar, ljos i
+    lysepipar med dryppskåler, ein dreia stamme med knappar, ei stor kule med blank refleks og ein
+    dropp nedst. Ørn på toppen og ein stubb av kjettingen (motoren teiknar resten opp til taket). 3 fliser brei. Heng høgt
+    (over: true, faktor over 1 i kartet: parallakse)."""
+    W, C = 3 * 16 + 8, KRONE_KJEDE
+    H = C + 50
     L = Lerret(W, H)
-    cx = W // 2
-    for y in range(0, 8): L.p(cx, y, "Z")                               # kjetting
-    for y in range(8, 18): L.p(cx, y, "Y"); L.p(cx + 1, y, "Z")
-    L.p(cx, 18, "y"); L.p(cx + 1, 18, "Y"); L.p(cx, 19, "Z")
-    for (dx, y) in [(-9, 14), (-5, 12), (5, 12), (9, 14)]:              # armar
-        for k in range(abs(dx)):
-            xx = cx + (k if dx > 0 else -k); L.p(xx, y + (1 if k > abs(dx) // 2 else 0), "Y")
-        xx = cx + dx
-        L.p(xx, y - 1, "Y"); L.p(xx, y - 2, "w"); L.p(xx, y - 3, "w"); L.p(xx, y - 4, "L"); L.p(xx, y - 5, "l")
+    cx = W // 2                                                          # stamma står på cx - 1 og cx
+    for y in range(0, C):                                                 # kjettingen: ledd på tvers og på langs
+        if y % 4 < 2: L.p(cx - 1, y, "Z"); L.p(cx, y, "9")
+        else: L.p(cx - 1, y, "Y") if y % 4 == 2 else L.p(cx, y, "Z")
+    y0 = C
+    # ørna øvst: venger ut, hovud mot venstre
+    _stempel(L, cx - 5, y0, ["...yY.....", "Yy.YZ..yZ.", ".YyYYZyZ..", "..YYYZZ...", "...YZ9....", "...Y9....."])
+    KRONE_LJOS.clear()
+
+    def arm(vinkel, yk, rx, ry, fram):
+        ex, ey = cx - 0.5 + rx * math.cos(vinkel), yk + ry * math.sin(vinkel)
+        n = int(abs(ex - cx) * 1.4) + 2
+        for i in range(n + 1):
+            t = i / n
+            x = round(cx - 0.5 + (ex - cx + 0.5) * t)
+            y = round(yk + 1 + (ey - yk - 1) * t + 2.4 * math.sin(math.pi * t) - 1.5 * t * t)
+            L.p(x, y, "y" if fram and x < cx else "Y"); L.p(x, y + 1, "Z" if fram else "9")
+        x, y = round(ex), round(ey - 2)
+        for dx in (-2, -1, 0, 1):                                          # dryppskåla
+            L.p(x + dx, y, "y" if dx < 0 else "Y"); L.p(x + dx, y + 1, "Z")
+        L.p(x - 1, y - 1, "Y"); L.p(x, y - 1, "Z")                           # lysepipa
+        for k in range(2, 6):                                             # ljoset
+            L.p(x - 1, y - k, "w"); L.p(x, y - k, "W")
+        L.p(x - 1, y - 6, "l"); L.p(x - 1, y - 7, "L"); L.p(x - 1, y - 8, "F")   # flammen
+        KRONE_LJOS.append((x - 1, y - 7))
+
+    def krans(yk, n, rx, ry, fase, fram):
+        for k in range(n):
+            v = 2 * math.pi * (k + fase) / n
+            if (math.sin(v) > 0.05) == fram: arm(v, yk, rx, ry, fram)
+
+    def stamme(y_a, y_b):
+        for y in range(y_a, y_b):
+            b = profil.get(y - y0, 1)
+            for x in range(cx - b - 1, cx + b + 1):
+                L.p(x, y, "y" if x == cx - b - 1 and b > 1 else "Y" if x < cx else "Z" if x < cx + b else "9")
+
+    # knappar og krager på den dreia stamma (halvbreidd utanom dei to midtpikslane)
+    profil = {7: 2, 8: 2, 13: 2, 14: 3, 15: 3, 16: 2, 21: 2, 22: 1, 25: 2, 26: 3, 27: 3, 28: 2}
+    # dei bakre armane, så stamma, så dei fremre
+    krans(y0 + 14, 6, 11, 3, 0.5, False)
+    krans(y0 + 26, 8, 21, 5, 0.5, False)
+    stamme(y0 + 6, y0 + 31)
+    krans(y0 + 14, 6, 11, 3, 0.5, True)
+    # kula: blank messing, lys oppe til venstre, mørk refleks nedst og eit glimt
+    kx, ky, r = cx - 0.5, y0 + 36.5, 5.6
+    for y in range(int(ky - r) - 1, int(ky + r) + 2):
+        for x in range(int(kx - r) - 1, int(kx + r) + 2):
+            d = ((x - kx) ** 2 + (y - ky) ** 2) ** 0.5
+            if d > r: continue
+            lx, ly = (x - kx) / r, (y - ky) / r
+            c = "y" if lx + ly < -0.75 else "Y" if lx + ly < 0.3 else "Z" if lx + ly < 0.95 else "9"
+            if ly > 0.6 and abs(lx) < 0.45: c = "Z"                            # refleks frå golvet
+            L.p(x, y, c)
+    L.p(cx - 3, y0 + 33, "l"); L.p(cx - 3, y0 + 34, "y")
+    krans(y0 + 26, 8, 21, 5, 0.5, True)
+    # droppen under kula
+    _stempel(L, cx - 2, y0 + 42, [".YZ.", ".YZ.", ".Y9.", "..Z.", "..9."])
     omriss(L)
     return L
 
@@ -155,210 +237,422 @@ VENGE = [
 
 
 def korvegg():
-    """Bakveggen i koret, to fliser høg og 11 fliser brei (mellom sideveggene): blåmåla himling
-    med gullstjerner, gesims, ein måla draperi-frise, kvitkalka mur med kalkmåleri (vase med
-    tulipanar, skriftfelt), to rundboga vindauge med blyglas og eit marmorert brystpanel nedst.
-    Vindauga står over flisene «u» i kartet, der lysstrålane startar."""
-    W, H = 11 * 16 + 8, 32
+    """Bakveggen i koret, fem fliser høg og 11 fliser brei (mellom sideveggene): blåmåla himling
+    med gullstjerner, gesims, ein måla draperi-frise, kvitkalka mur med kalkmåleri (rankeverk,
+    vase med tulipanar, medaljongar og skriftfelt), to høge rundboga vindauge med blyglas og eit
+    marmorert brystpanel nedst. Vindauga står over flisene «u» i kartet (rad 4), der lysstrålane
+    startar. Altartavla står midt på veggen og dekkjer midten."""
+    W, H = 11 * 16 + 8, 5 * 16
     L = Lerret(W, H)
     x0, x1 = 4, W - 5
     for y in range(H):
         for x in range(x0, x1 + 1): L.p(x, y, "k")
     # himlingen: blå med gullstjerner, mørkast inst
     for x in range(x0, x1 + 1):
-        L.p(x, 0, "u"); L.p(x, 1, "z"); L.p(x, 2, "z")
-    for i, x in enumerate(range(x0 + 6, x1 - 2, 11)): L.p(x, 1 + i % 2, "y"); L.p(x + 1, 1 + i % 2, "Y")
+        L.p(x, 0, "u"); L.p(x, 1, "z"); L.p(x, 2, "z"); L.p(x, 3, "z")
+    for i, x in enumerate(range(x0 + 6, x1 - 2, 11)): L.p(x, 1 + i % 3, "y"); L.p(x + 1, 1 + i % 3, "Y")
     # gesimsen: okerlist, raudt band med gullprikkar, mørk underkant
     for x in range(x0, x1 + 1):
-        L.p(x, 3, "D"); L.p(x, 4, "R"); L.p(x, 5, "r")
-        if (x - x0) % 8 in (3, 4): L.p(x, 4, "Y")
+        L.p(x, 4, "D"); L.p(x, 5, "R"); L.p(x, 6, "r")
+        if (x - x0) % 8 in (3, 4): L.p(x, 5, "Y")
     # draperiet: raude svaiar som heng frå gesimsen, med dusk av gull der dei er festa
     for x in range(x0, x1 + 1):
         k = (x - x0) % 12
-        d = 1 + round(3 * math.sin(math.pi * k / 12))
-        for y in range(6, 6 + d): L.p(x, y, "E" if y == 6 else "R")
-        L.p(x, 6 + d, "r")
-        L.p(x, 7 + d, "8")                                                 # skugge på kalken
+        d = 1 + round(4 * math.sin(math.pi * k / 12))
+        for y in range(7, 7 + d): L.p(x, y, "E" if y == 7 else "R")
+        L.p(x, 7 + d, "r")
+        L.p(x, 8 + d, "8")                                                 # skugge på kalken
         if k == 0:
-            L.p(x, 6, "Y"); L.p(x, 7, "Y"); L.p(x, 8, "Z"); L.p(x + 1, 7, "Z")
+            L.p(x, 7, "Y"); L.p(x, 8, "Y"); L.p(x, 9, "Z"); L.p(x + 1, 8, "Z"); L.p(x, 10, "Y"); L.p(x, 11, "Z")
+    # rankeverk: ei måla ranke i brunraudt og grønt langs veggen under draperiet
+    for x in range(x0 + 2, x1 - 1):
+        y = 16 + round(1.5 * math.sin(x / 3.2))
+        L.p(x, y, "T")
+        if x % 7 == 0: L.p(x, y - 1, "i"); L.p(x + 1, y - 2, "i")
+        if x % 7 == 3: L.p(x, y + 1, "i"); L.p(x + 1, y + 2, "e")
+        if x % 14 == 10: L.p(x, y - 2, "E"); L.p(x + 1, y - 2, "E"); L.p(x, y - 3, "R")
     # brystpanelet: oker handlist, marmorerte felt i blågrått mellom brunraude stolpar
     for x in range(x0, x1 + 1):
-        L.p(x, 24, "x"); L.p(x, 25, "D"); L.p(x, 26, "d")
-        for y in range(27, 31): L.p(x, y, "G")
-        L.p(x, 27, "g"); L.p(x, 31, "a")
+        L.p(x, 64, "x"); L.p(x, 65, "D"); L.p(x, 66, "d")
+        for y in range(67, H - 1): L.p(x, y, "G")
+        L.p(x, 67, "g"); L.p(x, H - 1, "a")
         k = (x - x0) % 16
         if k in (0, 1):
-            for y in range(27, 31): L.p(x, y, "T" if k == 0 else "t")
+            for y in range(67, H - 1): L.p(x, y, "T" if k == 0 else "t")
         elif k == 2:
-            for y in range(27, 31): L.p(x, y, "g")
+            for y in range(67, H - 1): L.p(x, y, "g")
     for i, xf in enumerate(range(x0 + 2, x1 - 12, 16)):                  # årer i marmoren
         a = int(h(i, 1, 61) * 6)
-        for k in range(4): L.p(xf + 3 + a + k, 28 + (k // 2), "W")
-        L.p(xf + 9 + a // 2, 29, "g"); L.p(xf + 10 + a // 2, 29, "g")
-    # vindauga: djup smyg i muren, rundboge, blyglas i små ruter, sprosse og karm
+        for k in range(4): L.p(xf + 3 + a + k, 70 + (k // 2), "W")
+        L.p(xf + 9 + a // 2, 73, "g"); L.p(xf + 10 + a // 2, 73, "g")
+    # vindauga: djup smyg i muren, rundboge, blyglas i små ruter, sprossar og karm
+    yt, yb = 20, 63
     for wx in (20, 148):
-        for y in range(7, 25):
+        for y in range(yt, yb + 1):
             for x in range(wx + 1, wx + 13):
-                if y == 7 and not 5 <= x - wx <= 8: continue
-                if y == 8 and not 3 <= x - wx <= 10: continue
+                if y == yt and not 5 <= x - wx <= 8: continue
+                if y == yt + 1 and not 3 <= x - wx <= 10: continue
                 L.p(x, y, "x" if x - wx <= 2 else "8" if x - wx >= 11 else "K")
-        for x in range(wx + 1, wx + 13): L.p(x, 24, "W"); L.p(x, 25, "D")    # benken i vindauget
-        for y in range(9, 23):
+        for x in range(wx + 1, wx + 13): L.p(x, yb, "W"); L.p(x, yb + 1, "D")    # benken i vindauget
+        for y in range(yt + 2, yb - 1):
             for x in range(wx + 3, wx + 11):
-                if y == 9 and not 5 <= x - wx <= 8: continue
-                if y == 10 and not 4 <= x - wx <= 9: continue
+                if y == yt + 2 and not 5 <= x - wx <= 8: continue
+                if y == yt + 3 and not 4 <= x - wx <= 9: continue
                 bly = (x + y) % 6 == 0 or (x - y) % 6 == 0
-                L.p(x, y, "0" if bly else "2" if (y < 14 and x - wx < 7) else "1")
-        for x in range(wx + 3, wx + 11): L.p(x, 16, "V")                    # sprossa
-        L.p(wx + 6, 9, "V"); L.p(wx + 7, 9, "V")
-        for y in range(10, 23): L.p(wx + 2 if y > 10 else wx + 3, y, "K")
-        for y in range(10, 23): L.p(wx + 11 if y > 10 else wx + 10, y, "W")
-        for x in range(wx + 3, wx + 11): L.p(x, 23, "W")
+                L.p(x, y, "0" if bly else "2" if (y < yt + 14 and x - wx < 7) else "1")
+        for ys in (36, 50):
+            for x in range(wx + 3, wx + 11): L.p(x, ys, "V")                  # sprossane
+        L.p(wx + 6, yt + 2, "V"); L.p(wx + 7, yt + 2, "V")
+        for y in range(yt + 3, yb - 1): L.p(wx + 2 if y > yt + 3 else wx + 3, y, "K")
+        for y in range(yt + 3, yb - 1): L.p(wx + 11 if y > yt + 3 else wx + 10, y, "W")
+        for x in range(wx + 3, wx + 11): L.p(x, yb - 1, "W")
+        # medaljong med ei sol over vindauget
+        _stempel(L, wx + 3, yt - 3 - 6, ["..ZZZZ..", ".ZyYYYZ.", "ZyYYYYZZ", ".ZYYYZZ.", "..ZZZZ.."])
     # skriftfelt (måla innskrift i ei ramme med krøll øvst) mellom vindauga og altartavla
-    for fx in (38, 124):
-        for y in range(12, 22):
-            for x in range(fx, fx + 20):
-                L.p(x, y, "Z" if y in (12, 21) or x in (fx, fx + 19) else "p")
-        for x in range(fx + 1, fx + 19): L.p(x, 13, "8")
-        for j, y in enumerate((15, 17, 19)):
-            x = fx + 3
-            while x < fx + 17:
-                n = 2 + int(h(x, y, 62 + fx) * 4)
-                for k in range(min(n, fx + 17 - x)): L.p(x + k, y, "n")
+    for fx in (35, 137):
+        for y in range(28, 42):
+            for x in range(fx, fx + 12):
+                L.p(x, y, "Z" if y in (28, 41) or x in (fx, fx + 11) else "p")
+        for x in range(fx + 1, fx + 11): L.p(x, 29, "8")
+        for y in (31, 33, 35, 37, 39):
+            x = fx + 2
+            while x < fx + 10:
+                n = 1 + int(h(x, y, 62 + fx) * 3)
+                for k in range(min(n, fx + 10 - x)): L.p(x + k, y, "n")
                 x += n + 1
-        for x in range(fx + 7, fx + 13): L.p(x, 11, "Y")
-        L.p(fx + 9, 10, "Y"); L.p(fx + 10, 10, "Z")
-        L.p(fx + 5, 11, "Z"); L.p(fx + 14, 11, "Z")
-    _stempel(L, 166, 12, VASE)
+        for x in range(fx + 3, fx + 9): L.p(x, 27, "Y")
+        L.p(fx + 5, 26, "Y"); L.p(fx + 6, 26, "Z")
+    # vasar med tulipanar ytst ved sideveggene
+    _stempel(L, x0 + 2, 46, VASE)
+    _stempel(L, x1 - 10, 46, VASE, spegl=True)
     omriss(L)
     return L
 
 
+ALTAR_LJOS = []            # ankera til altarljosa (x, y i biletet), fylt av altartavle() (sjå LJOS i pikslar.js)
+
+# Figurar i nisjane på altartavla (5 x 13): Moses med lovtavlene og Johannes døyparen med staven,
+# som i Fåberg og Kvernes. Profetane står på kvar side av krossen i mange bygdetavler.
+MOSES = [
+    ".WW..",
+    "WhHW.",
+    "WWWWW",
+    "RWhRR",
+    "pPRRr",
+    "pPRRr",
+    "pPERr",
+    "RERRr",
+    "RERRr",
+    "RERRr",
+    "RERRr",
+    ".ERr.",
+    ".hH..",
+]
+DOYPAREN = [
+    "..T.Y",
+    ".TTTY",
+    ".hHTY",
+    "AhHAY",
+    "AAcAY",
+    "AcAaY",
+    "hAcAZ",
+    "AcAaZ",
+    "AcAaZ",
+    ".cAa.",
+    ".cAa.",
+    ".hH..",
+    ".hH..",
+]
+# Akantusvengen i bondebarokk (venstre; den høgre er spegla): forgylt bladverk som krøllar seg i
+# store volutter, med raude og grøne innslag som i Kvernes.
+AKANTUS = [
+    "..........YYy.",
+    "........YYyyZ.",
+    "......YYyyZZ..",
+    ".....YyyZZ....",
+    "....YyyZ..EE..",
+    "...YyyZ..EEER.",
+    "...YyZ..EERRr.",
+    "..YyyZ..ERRr..",
+    "..YyZ.YYy.Rr..",
+    ".YyyZYyyyZ....",
+    ".YyZ.YyZyyZ...",
+    ".YyZ.YyZ.yZ...",
+    ".YyyZ.ZyyyZ...",
+    "..YyZ..ZZZ.II.",
+    "..YyyZ....IiI.",
+    "...YyyZ..IIie.",
+    "...ZYyyZIIie..",
+    "....ZYyyyYie..",
+    ".....ZZYyyyZ..",
+    "....EE..ZYyyZ.",
+    "...EERE...YyZ.",
+    "...ERRr...YyZ.",
+    "..YyRr...YyyZ.",
+    "..YyyZ..YyyZ..",
+    "...ZYyyyyyZ...",
+    "....ZZZZZZ....",
+    ".......Yy.....",
+    "........YyZ...",
+    ".........YZ...",
+    "..........Z...",
+]
+# Vengene i øvste etasjen, mindre.
+AKANTUS_SMAA = [
+    ".......YYy",
+    ".....YYyyZ",
+    "....YyyZZ.",
+    "...YyyZ.EE",
+    "...YyZ.EER",
+    "..YyyZ.ERr",
+    "..YyZYyy..",
+    ".YyyZYyZyZ",
+    ".YyZ.ZyyZ.",
+    ".YyZ...II.",
+    "..YyZ.IiI.",
+    "..ZYyZIie.",
+    "...ZYyyyZ.",
+    "....ZZZYy.",
+    ".......ZY.",
+]
+
+
 def altartavle():
-    """Altartavle i bondebarokk over altaret, 3 fliser breitt og 3 høgt (dei to radene med
-    bakvegg og altarrada): to etasjar med vridde gullsøyler, krusifiks med Maria og Johannes,
-    akantusvenger på sidene og ei solkrone øvst, og altaret med kvit duk, raudt antependium og
-    to lysestakar. Etter Dale i Luster og altertavla i Fåberg (konsept/)."""
-    W, H = 3 * 16 + 8, 48
+    """Altartavla og altaret i koret, 5 fliser breitt og 7 fliser høgt (fem rader bakvegg og to
+    rader golv). Bondebarokk som i Fåberg (to etasjar, marmorerte felt, vridde søyler, akantusvenger,
+    ein figur med sigersfane øvst) og Kvernes (store fargerike akantusvolutter), med måla bilete som i
+    bygdetavlene på Vestlandet kring 1700 til 1840: nattverden i predellaen, krossfestinga i
+    hovudfeltet og oppstoda i øvste etasjen. Moses og Johannes døyparen i nisjane. På altaret:
+    kvit kniplingsduk, raudt alterklede med gullkross, to messingstakar med ljos, eit krusifiks og
+    ein bibel."""
+    W, H = 5 * 16 + 8, 7 * 16
     L = Lerret(W, H)
-    cx = W // 2
-    # toppstykket: raudt felt med gullsol, krøllar på sidene og ein spir øvst
-    for y in range(1, 7):
-        for x in range(cx - 8, cx + 8): L.p(x, y, "R")
-    for x in range(cx - 8, cx + 8): L.p(x, 1, "Y")
-    for y in range(1, 7): L.p(cx - 9, y, "Y"); L.p(cx + 8, y, "Z")
-    for (x, y) in [(cx - 1, 3), (cx, 3), (cx - 1, 4), (cx, 4)]: L.p(x, y, "y")
-    for (x, y) in [(cx - 3, 3), (cx + 2, 4), (cx - 2, 5), (cx + 1, 2), (cx - 2, 2), (cx + 1, 5)]: L.p(x, y, "Y")
-    L.p(cx - 1, 0, "y"); L.p(cx, 0, "Y")
-    _stempel(L, cx - 15, 2, ["..YY..", ".Yy...", "YyZ...", "Z.YyZ."])
-    _stempel(L, cx + 9, 2, ["..YY..", ".Yy...", "YyZ...", "Z.YyZ."], spegl=True)
-    # gesimsen mellom etasjane
-    for x in range(cx - 19, cx + 19): L.p(x, 7, "y"); L.p(x, 8, "Z")
-    # hovudfeltet: krusifiks mot mørk himmel, Golgata nedst
-    for y in range(9, 28):
-        for x in range(cx - 14, cx + 14):
-            L.p(x, y, "b" if y < 13 else "B" if y < 23 else "e")
-    for x in range(cx - 14, cx + 14): L.p(x, 22, "i") if (x * 3) % 7 < 3 else None
-    for y in range(9, 28): L.p(cx - 15, y, "Y"); L.p(cx + 14, y, "Z")
-    for y in range(11, 27): L.p(cx - 1, y, "T"); L.p(cx, y, "t")          # krossen
-    for x in range(cx - 7, cx + 7): L.p(x, 14, "T"); L.p(x, 15, "t")
-    L.p(cx - 2, 11, "w"); L.p(cx + 1, 11, "W")                              # tavla over hovudet
-    L.p(cx - 1, 13, "h"); L.p(cx, 13, "H")                                  # hovudet med glorie
-    L.p(cx - 2, 12, "y"); L.p(cx + 1, 12, "Y"); L.p(cx - 2, 13, "Y"); L.p(cx + 1, 13, "Y")
-    for x in range(cx - 6, cx + 6): L.p(x, 14, "h" if x < cx else "H")      # armane
-    for y in range(15, 20): L.p(cx - 1, y, "h"); L.p(cx, y, "H")            # kroppen
-    L.p(cx - 2, 15, "h"); L.p(cx + 1, 15, "H")
-    L.p(cx - 1, 19, "w"); L.p(cx, 19, "W"); L.p(cx - 2, 19, "w"); L.p(cx + 1, 19, "W")
-    for y in range(20, 23): L.p(cx - 1, y, "h"); L.p(cx, y, "H")
-    _stempel(L, cx - 11, 19, MARIA)                                         # Maria og Johannes
-    _stempel(L, cx + 6, 19, JOHANNES, spegl=True)
-    # vridde søyler med kapitel og base
-    for sx in (cx - 18, cx + 15):
-        for y in range(10, 27):
-            for k in range(3): L.p(sx + k, y, "yYZ"[((y + k) // 2) % 3] if k < 2 else "Z")
-        for x in range(sx - 1, sx + 4): L.p(x, 9, "y"); L.p(x, 27, "Y"); L.p(x, 28, "Z")
-    _stempel(L, 0, 9, VENGE)
-    _stempel(L, W - 9, 9, VENGE, spegl=True)
-    # predellaen: raud med innskrift i gull
-    for y in range(29, 34):
-        for x in range(cx - 17, cx + 17): L.p(x, y, "Y" if y == 29 else "r" if y == 33 else "R")
-    for x in range(cx - 13, cx + 13):
-        if (x * 5) % 9 > 2: L.p(x, 31, "Y")
-    # altaret: kvit duk med kniplingskant over raudt antependium med gullkross
-    for x in range(8, W - 8):
-        L.p(x, 34, "w"); L.p(x, 35, "w"); L.p(x, 36, "W")
-        for y in range(37, 40): L.p(x, y, "w" if x < W - 10 else "W")
-        if x % 2: L.p(x, 40, "W")
-        for y in range(40 if x % 2 == 0 else 41, 47): L.p(x, y, "E" if x < 11 else "r" if x > W - 12 else "R")
-        L.p(x, 47, "r")
-    for x in range(10, W - 10): L.p(x, 46, "Y") if x % 4 == 0 else None
-    for y in range(41, 46): L.p(cx - 1, y, "y"); L.p(cx, y, "Y")
-    for x in range(cx - 3, cx + 3): L.p(x, 42, "y" if x < cx else "Y")
-    # lysestakane på altaret
-    for sx in (17, W - 19):
-        for y in range(30, 34): L.p(sx, y, "y"); L.p(sx + 1, y, "Z")
-        L.p(sx - 1, 30, "Y"); L.p(sx + 2, 30, "Z"); L.p(sx - 1, 33, "Y"); L.p(sx + 2, 33, "Z")
-        for y in range(27, 30): L.p(sx, y, "w"); L.p(sx + 1, y, "W")
-        L.p(sx, 26, "l"); L.p(sx, 25, "L"); L.p(sx + 1, 26, "L")
+    cx = W // 2                                    # midtlinja går mellom cx - 1 og cx
+
+    def ramme(x0, y0, x1, y1):                     # forgylt ramme med lys oppe til venstre
+        for x in range(x0, x1 + 1): L.p(x, y0, "y"); L.p(x, y1, "Z")
+        for y in range(y0, y1 + 1): L.p(x0, y, "y"); L.p(x1, y, "Z")
+        for x in range(x0 + 1, x1): L.p(x, y0 + 1, "Y"); L.p(x, y1 - 1, "Y")
+        for y in range(y0 + 1, y1): L.p(x0 + 1, y, "Y"); L.p(x1 - 1, y, "Y")
+
+    def marmor(x0, y0, x1, y1, s):                 # marmorert felt i blågrått med årer
+        for y in range(y0, y1 + 1):
+            for x in range(x0, x1 + 1): L.p(x, y, "G")
+        for i in range(max(1, (x1 - x0) // 5)):
+            ax, ay = x0 + 1 + int(h(i, s, 71) * (x1 - x0 - 2)), y0 + int(h(i, s, 72) * (y1 - y0 + 1))
+            L.p(ax, ay, "g"); L.p(ax + 1, ay, "g"); L.p(ax + 1, min(y1, ay + 1), "W")
+
+    def soyle(sx, y0, y1):                         # vriden søyle (3 px) med kapitel og base
+        for y in range(y0, y1 + 1):
+            for k in range(3):
+                L.p(sx + k, y, ("yYZ"[((y + k) // 2) % 3]) if k < 2 else "Z")
+        for x in range(sx - 1, sx + 4): L.p(x, y0 - 1, "y"); L.p(x, y1 + 1, "Y"); L.p(x, y1 + 2, "Z")
+        for x in range(sx - 1, sx + 4): L.p(x, y0 - 2, "Y" if x < sx + 2 else "Z")
+
+    # --- øvst: figuren med sigersfanen og ei skjel av akantus ---
+    _stempel(L, cx - 3, 0, ["..R...", "..RE..", "..Rww.", "..YhH.", "..wwW.", ".YwWW.", "..wW..", "..ZZ.."])
+    for j, b in enumerate([3, 6, 8, 10, 11, 12, 12]):                  # skjela: vifte av gull
+        y = 8 + j
+        for x in range(cx - b, cx + b):
+            c = "y" if (x - cx) % 3 == 0 else "Y"
+            if x < cx - b + 1: c = "Y"
+            if x >= cx + b - 1 or (j == 6 and x % 2): c = "Z"
+            L.p(x, y, c)
+    for x in range(cx - 2, cx + 2): L.p(x, 14, "R"); L.p(x, 13, "E" if x < cx else "R")
+    # --- øvste etasjen: oppstoda i forgylt ramme, små søyler og venger ---
+    for x in range(cx - 14, cx + 14): L.p(x, 15, "y"); L.p(x, 16, "Y"); L.p(x, 17, "Z")    # gesims
+    marmor(cx - 13, 18, cx + 12, 40, 1)
+    ramme(cx - 8, 18, cx + 7, 40)
+    for y in range(20, 39):                                                 # biletet: mørk himmel, lys bak Kristus
+        for x in range(cx - 6, cx + 6):
+            d = abs(x - cx + 0.5) + abs(y - 26) * 0.6
+            L.p(x, y, "l" if d < 2.5 else "y" if d < 4.5 else "D" if d < 6.5 else "B" if y < 34 else "b")
+    for x in range(cx - 6, cx + 6): L.p(x, 36, "x"); L.p(x, 37, "K"); L.p(x, 38, "n")       # grava
+    L.p(cx - 5, 35, "e"); L.p(cx + 4, 35, "e"); L.p(cx - 4, 35, "i")
+    _stempel(L, cx - 3, 21, ["..hH..", "..WW..", ".hwwW.", "h.wwW.", "..wWW.", "..wWW.", "..wW..", ".wwWW.", ".hH..."])
+    for y in range(19, 30): L.p(cx + 3, y, "Z")                            # fanestonga og fanen
+    _stempel(L, cx + 4, 19, ["RE.", "RRE", "Rw.", "R.."])
+    soyle(cx - 12, 20, 38)
+    soyle(cx + 9, 20, 38)
+    _stempel(L, cx - 24, 22, AKANTUS_SMAA)
+    _stempel(L, cx + 14, 22, AKANTUS_SMAA, spegl=True)
+    # --- gesimsen mellom etasjane, med innskrift ---
+    for x in range(cx - 30, cx + 30):
+        L.p(x, 41, "y"); L.p(x, 42, "Y"); L.p(x, 43, "R"); L.p(x, 44, "r"); L.p(x, 45, "Z")
+        if cx - 22 < x < cx + 22 and (x * 7) % 5 > 1: L.p(x, 43, "y")
+    L.p(cx - 31, 42, "Y"); L.p(cx + 30, 42, "Z")
+    # --- hovudetasjen: krossfestinga, nisjar med profetane, vridde søyler, store akantusvenger ---
+    marmor(cx - 29, 46, cx + 28, 74, 2)
+    ramme(cx - 13, 46, cx + 12, 75)
+    for y in range(48, 74):
+        for x in range(cx - 11, cx + 11):
+            L.p(x, y, "b" if y < 54 else "B" if y < 62 else "D" if y < 65 else "e")
+    for x in range(cx - 11, cx + 11):
+        if (x * 5 + 3) % 7 < 3: L.p(x, 62, "d")                            # lyst band ved horisonten
+        if (x * 3) % 5 < 2: L.p(x, 65, "i")
+    L.p(cx - 9, 49, "D"); L.p(cx + 7, 51, "D")                              # mørk himmel med glimt
+    for y in range(50, 72): L.p(cx - 1, y, "T"); L.p(cx, y, "t")             # krossen
+    for x in range(cx - 8, cx + 8): L.p(x, 53, "T"); L.p(x, 54, "t")
+    L.p(cx - 2, 50, "w"); L.p(cx - 1, 50, "w"); L.p(cx, 50, "W"); L.p(cx + 1, 50, "W")   # tavla INRI
+    for (x, y) in [(cx - 2, 51), (cx + 1, 51), (cx - 2, 52), (cx + 1, 52)]: L.p(x, y, "y")  # glorien
+    L.p(cx - 1, 51, "h"); L.p(cx, 51, "H"); L.p(cx - 1, 52, "H"); L.p(cx, 52, "H")         # hovudet, bøygd
+    for x in range(cx - 7, cx + 7): L.p(x, 53, "h" if x < cx else "H")         # armane
+    L.p(cx - 7, 54, "h"); L.p(cx + 6, 54, "H")
+    for y in range(54, 60): L.p(cx - 1, y, "h"); L.p(cx, y, "H")              # kroppen
+    L.p(cx - 2, 54, "h"); L.p(cx + 1, 54, "H"); L.p(cx - 2, 55, "h"); L.p(cx + 1, 55, "H")
+    for x in range(cx - 2, cx + 2): L.p(x, 58, "w" if x < cx else "W"); L.p(x, 59, "w" if x < cx else "W")
+    for y in range(60, 64): L.p(cx - 1, y, "h"); L.p(cx, y, "H")
+    _stempel(L, cx - 9, 61, MARIA)                                          # Maria og Johannes ved krossen
+    _stempel(L, cx + 4, 61, JOHANNES, spegl=True)
+    _stempel(L, cx - 3, 69, [".EEh.", "ERRRr"])                             # Maria Magdalena kneler ved foten
+    # nisjane: skugge inst, figurane, og eit skjel øvst
+    for nx in (cx - 24, cx + 16):
+        for y in range(50, 72):
+            for x in range(nx, nx + 8): L.p(x, y, "g" if y < 53 else "3")
+        for x in range(nx, nx + 8): L.p(x, 50, "Y" if x % 2 else "Z"); L.p(x, 72, "Y"); L.p(x, 73, "Z")
+        L.p(nx + 3, 51, "y"); L.p(nx + 4, 51, "Y")
+    _stempel(L, cx - 22, 58, MOSES)
+    _stempel(L, cx + 18, 58, DOYPAREN)
+    for sx in (cx - 28, cx - 16, cx + 13, cx + 25): soyle(sx, 49, 72)
+    _stempel(L, 0, 46, AKANTUS)
+    _stempel(L, W - 14, 46, AKANTUS, spegl=True)
+    # --- predellaen: nattverden ---
+    for x in range(cx - 27, cx + 27):
+        L.p(x, 76, "y"); L.p(x, 77, "Z")
+        for y in range(78, 85): L.p(x, y, "R")
+        L.p(x, 85, "r")
+    ramme(cx - 21, 77, cx + 20, 85)
+    for y in range(79, 84):
+        for x in range(cx - 19, cx + 19): L.p(x, y, "b")
+    for i, x in enumerate(range(cx - 19, cx + 18, 3)):                      # dei tolv og Kristus ved bordet
+        mid = abs(x - (cx - 1)) <= 1
+        L.p(x, 79, "y" if mid else ("T" if i % 3 == 0 else "A" if i % 3 == 1 else "K"))
+        L.p(x, 80, "h"); L.p(x + 1, 80, "H")
+        L.p(x, 81, ("R" if mid else "B" if i % 2 else "E")); L.p(x + 1, 81, "r" if mid else "b" if i % 2 else "R")
+        if mid: L.p(x - 1, 79, "y"); L.p(x + 1, 79, "y")
+    for x in range(cx - 19, cx + 19): L.p(x, 82, "w"); L.p(x, 83, "W")        # bordet med duk
+    L.p(cx - 8, 82, "Y"); L.p(cx + 6, 82, "Y"); L.p(cx - 1, 82, "y")          # kalk og brød
+    # --- altaret: kvit kniplingsduk over raudt alterklede, sett litt ovanfrå ---
+    ax0, ax1 = 20, W - 21
+    for y in range(87, 94):                                                  # bordplata med duken
+        for x in range(ax0, ax1 + 1): L.p(x, y, "W" if y in (87, 93) or x > ax1 - 2 else "w")
+    for x in range(ax0 + 3, ax1 - 2, 6): L.p(x, 90, "W"); L.p(x + 1, 90, "W")      # mønster i duken
+    for x in range(ax0, ax1 + 1):
+        L.p(x, 94, "W" if x % 4 else "K")                                    # kniplingskanten
+        L.p(x, 95, "w" if x % 2 else "K"); L.p(x, 96, "W" if (x + 1) % 4 else "K")
+        for y in range(97, H - 1):
+            L.p(x, y, "E" if x < ax0 + 3 else "r" if x > ax1 - 3 else "R")
+        L.p(x, H - 1, "r")
+    for x in range(ax0 + 2, ax1 - 1):
+        if x % 3 == 0: L.p(x, H - 3, "Y")                                    # gullfrynser nedst
+    for y in range(99, 108): L.p(cx - 1, y, "y"); L.p(cx, y, "Y")             # gullkrossen
+    for x in range(cx - 4, cx + 4): L.p(x, 102, "y" if x < cx else "Y")
+    _stempel(L, ax0 + 6, 101, [".E.", "EyE", ".i."])                          # rosar på alterkledet
+    _stempel(L, ax1 - 8, 101, [".E.", "EyE", ".i."])
+    # på altaret: krusifiks, bibel og to høge messingstakar med ljos
+    _stempel(L, cx - 3, 76, ["..yZ..", "..YZ..", "yYhHYZ", "..hH..", "..YZ..", "..YZ..", "..YZ..", ".yYZZ.", "yYYZZZ", ".ZZZZ."])
+    _stempel(L, cx - 13, 88, ["rRRRRr", "rppppr", "rRRRRr"])
+    ALTAR_LJOS.clear()
+    for sx in (ax0 + 3, ax1 - 4):
+        for y in range(80, 90): L.p(sx, y, "y"); L.p(sx + 1, y, "Z")
+        for x in range(sx - 1, sx + 3): L.p(x, 80, "Y"); L.p(x, 84, "Y")
+        L.p(sx - 1, 84, "y"); L.p(sx + 2, 84, "Z")
+        for x in range(sx - 2, sx + 4): L.p(x, 90, "Y" if x < sx + 1 else "Z"); L.p(x, 91, "Z")
+        for y in range(75, 80): L.p(sx, y, "w"); L.p(sx + 1, y, "W")        # korte ljos, så profetane i nisjane syner
+        L.p(sx, 74, "l"); L.p(sx, 73, "L"); L.p(sx, 72, "F"); L.p(sx + 1, 74, "L")
+        ALTAR_LJOS.append((sx, 73))
     omriss(L)
     return L
 
 
 def preikestol():
-    """Preikestol i bondebarokk på ei søyle, med himling over (lydhimmelen): krone av gull,
-    raud gesims og ein lambrekin med dusk. Korga er åttekanta med måla speil, bibelen ligg på ei
-    raud pute, og preikestolkledet heng over kanten. Står ved sideveggen og er 1 flis breitt."""
-    W, H = 16 + 8, 64
+    """Preikestol i bondebarokk (etter Lygra, Kvernes og Nordfjordeid, sjå konsept/): korga står
+    høgt på ei dreia søyle, er sett saman av tre flater med måla evangelistar i bogefelt, og har
+    preikestolklede med kross og frynser. Bibelen ligg på ei raud pute. Over: ryggbrett og
+    lydhimling med krone, raud gesims og lambrekin med dusk. Trappa går ned mot høgre langs
+    veggen. 3 fliser brei og 2 rader djup (korga på dei to første flisene, trappa ned på den
+    tredje), om lag 100 pikslar høg."""
+    W, H = 3 * 16 + 8, 104
     L = Lerret(W, H)
-    cx = W // 2
-    # himlingen
-    L.p(cx - 1, 0, "y"); L.p(cx, 0, "Y")
-    for x in range(cx - 2, cx + 2): L.p(x, 1, "Y")
-    for x in (6, 7, 11, 12, 16, 17): L.p(x, 2, "Y" if x % 2 == 0 else "y")
-    for x in range(4, 20): L.p(x, 3, "Y" if x < 14 else "Z")
-    for x in range(3, 21): L.p(x, 4, "y"); L.p(x, 5, "R" if (x - 3) % 5 else "Y"); L.p(x, 6, "r")
-    for x in range(4, 20):
-        L.p(x, 7, "R"); L.p(x, 8, "R" if (x - 4) % 3 != 2 else "r")
-        if (x - 4) % 3 == 0: L.p(x, 9, "R"); L.p(x, 10, "Y")
-    L.p(3, 5, "E")
-    # ryggbrettet langs veggen
-    for y in range(9, 22): L.p(4, y, "U"); L.p(5, y, "T"); L.p(6, y, "t")
-    # korga: tre flater av åttekanten, lys mot venstre
-    for y in range(20, 37):
-        for x in range(5, 20):
-            L.p(x, y, "U" if x < 9 else "T" if x < 16 else "t")
-    for x in range(4, 21): L.p(x, 19, "y"); L.p(x, 20, "Y"); L.p(x, 36, "Y"); L.p(x, 37, "Z")
-    for (x, y0, y1, c) in ((6, 23, 34, "E"), (7, 23, 34, "R"), (17, 23, 34, "r"), (18, 23, 34, "R")):
-        for y in range(y0, y1): L.p(x, y, c)
-    for x in (6, 7, 17, 18): L.p(x, 22, "Y"); L.p(x, 34, "Z")
-    # bibelen på ei raud pute
-    for x in range(8, 16): L.p(x, 18, "E" if x < 12 else "R")
-    for x in range(9, 15): L.p(x, 16, "w" if x < 12 else "W"); L.p(x, 17, "r")
-    L.p(12, 16, "r")
-    # preikestolkledet over framsida, med kross og frynser av gull
-    for y in range(21, 31):
-        for x in range(9, 16): L.p(x, y, "E" if x == 9 else "R")
-    for x in range(9, 16): L.p(x, 31, "Y" if x % 2 else "Z")
-    for y in range(23, 29): L.p(12, y, "Y")
-    for x in range(11, 14): L.p(x, 25, "Y")
-    # konsollen som smalnar ned mot søyla, med ein dropp av gull
-    for j, y in enumerate(range(38, 45)):
-        b = 7 - j
-        for x in range(cx - b, cx + b): L.p(x, y, "U" if x < cx - b + 2 else "t" if x >= cx + b - 2 else "T")
-    L.p(cx - 1, 45, "Y"); L.p(cx, 45, "Z"); L.p(cx - 1, 46, "Z")
+    cx = 17                                         # midt i korga og søyla
+    yb = H - 2                                      # golvet under søyla
+    # trappa: seks trinn ned mot høgre. Sida mot oss er eit fylt, panelt vangestykke under trinna,
+    # med balustrar og handlist over.
+    trinn = [(30, H - 52), (34, H - 45), (38, H - 38), (42, H - 31), (46, H - 24), (50, H - 17)]
+    for i, (tx, ty) in enumerate(trinn):
+        for x in range(tx - 4, tx + 4):
+            L.p(x, ty, "C"); L.p(x, ty + 1, "U")                               # trinnet og framkanten
+            for y in range(ty + 2, yb + 1):
+                L.p(x, y, "t" if y == yb else "A" if x == tx + 3 else "T" if (y - ty) % 7 else "c")
+        L.p(tx - 4, ty + 2, "a")
+    for i, (tx, ty) in enumerate(trinn):                                       # balustrar og handlist
+        for y in range(ty - 11, ty): L.p(tx - 1, y, "U"); L.p(tx, y, "t")
+    for x in range(27, 53):
+        y = H - 64 + round((x - 27) * 7 / 4)
+        L.p(x, y, "y"); L.p(x, y + 1, "Z")
+    for y in range(H - 30, yb + 1): L.p(52, y, "U"); L.p(53, y, "t")           # stolpen nedst
+    L.p(52, H - 31, "y"); L.p(53, H - 31, "Y")
     # søyla og foten
-    for y in range(45, 61): L.p(cx - 2, y, "U"); L.p(cx - 1, y, "T"); L.p(cx, y, "T"); L.p(cx + 1, y, "t")
-    for x in range(cx - 2, cx + 2): L.p(x, 50, "Y")
-    for x in range(cx - 5, cx + 5): L.p(x, 61, "U" if x < cx - 2 else "T"); L.p(x, 62, "T" if x < cx + 2 else "t"); L.p(x, 63, "t")
+    for y in range(H - 42, yb - 3):
+        L.p(cx - 2, y, "U"); L.p(cx - 1, y, "T"); L.p(cx, y, "T"); L.p(cx + 1, y, "t")
+    for y in (H - 34, H - 20):
+        for x in range(cx - 3, cx + 3): L.p(x, y, "Y" if x < cx + 1 else "Z")
+    for x in range(cx - 6, cx + 6):
+        L.p(x, yb - 3, "U" if x < cx - 2 else "T"); L.p(x, yb - 2, "T" if x < cx + 3 else "t"); L.p(x, yb - 1, "t"); L.p(x, yb, "a")
+    # konsollen som smalnar ned mot søyla, med ein dropp av gull
+    for j, y in enumerate(range(H - 48, H - 41)):
+        b = 10 - j
+        for x in range(cx - b, cx + b): L.p(x, y, "U" if x < cx - b + 2 else "t" if x >= cx + b - 2 else "T")
+    L.p(cx - 1, H - 41, "Y"); L.p(cx, H - 41, "Z")
+    # ryggbrettet langs veggen, med ei due i eit felt
+    for y in range(H - 92, H - 70):
+        for x in range(cx - 4, cx + 4): L.p(x, y, "T" if x > cx - 4 else "U")
+        L.p(cx - 5, y, "y"); L.p(cx + 4, y, "Z")
+    _stempel(L, cx - 3, H - 86, ["..w...", ".wwW..", "wwwWWw", "..wW..", "..W..."])
+    # lydhimlingen: krone, gesims, lambrekin med dusk
+    for x in range(cx - 1, cx + 1): L.p(x, H - 104, "y")
+    for x in range(cx - 3, cx + 3): L.p(x, H - 103, "Y")
+    for x in range(cx - 9, cx + 9, 3): L.p(x, H - 102, "y"); L.p(x + 1, H - 102, "Y")
+    for x in range(cx - 13, cx + 13):
+        L.p(x, H - 101, "Y" if x < cx + 4 else "Z"); L.p(x, H - 100, "y"); L.p(x, H - 99, "R" if (x - cx) % 5 else "Y")
+        L.p(x, H - 98, "r"); L.p(x, H - 97, "R"); L.p(x, H - 96, "R" if (x - cx) % 4 != 2 else "r")
+        if (x - cx) % 4 == 0: L.p(x, H - 95, "R"); L.p(x, H - 94, "Y"); L.p(x, H - 93, "Z")
+    L.p(cx - 14, H - 99, "E"); L.p(cx + 13, H - 99, "r")
+    # korga: tre flater av åttekanten (lys mot venstre), med evangelistar i bogefelt
+    yk0, yk1 = H - 72, H - 48
+    for y in range(yk0, yk1):
+        for x in range(cx - 13, cx + 13):
+            L.p(x, y, "U" if x < cx - 8 else "T" if x < cx + 8 else "t")
+    for x in range(cx - 14, cx + 14):
+        L.p(x, yk0 - 2, "y"); L.p(x, yk0 - 1, "Y"); L.p(x, yk0, "Z")
+        L.p(x, yk1, "Y"); L.p(x, yk1 + 1, "Z")
+    for fx, lys in ((cx - 12, 1), (cx + 9, 0)):                                # sideflatene: eitt felt kvar
+        for y in range(yk0 + 4, yk1 - 3):
+            for x in range(fx, fx + 3): L.p(x, y, "E" if lys else "r")
+        L.p(fx + 1, yk0 + 3, "Y")
+    for fx in (cx - 7, cx + 2):                                                # framsida: to evangelistar
+        for y in range(yk0 + 4, yk1 - 3):
+            for x in range(fx, fx + 5): L.p(x, y, "B" if y < yk0 + 9 else "b")
+        L.p(fx + 1, yk0 + 3, "Y"); L.p(fx + 2, yk0 + 3, "Y"); L.p(fx + 3, yk0 + 3, "Y")
+        for y in range(yk0 + 4, yk1 - 3): L.p(fx - 1, y, "Y"); L.p(fx + 5, y, "Z")
+        _stempel(L, fx + 1, yk0 + 7, [".hH", "EER", "ERR", "ERp", "RRr", "RRr"])
+    for x in range(cx - 1, cx + 1):                                            # preikestolkledet
+        for y in range(yk0 - 1, yk0 + 15): L.p(x, y, "E" if x < cx else "R")
+    for x in range(cx - 2, cx + 2): L.p(x, yk0 + 15, "Y" if x % 2 else "Z")
+    L.p(cx - 1, yk0 + 5, "Y"); L.p(cx, yk0 + 5, "Y"); L.p(cx - 1, yk0 + 4, "Y"); L.p(cx - 1, yk0 + 6, "Y")
+    # bibelen på ei raud pute
+    for x in range(cx - 5, cx + 4): L.p(x, yk0 - 3, "E" if x < cx else "R")
+    for x in range(cx - 4, cx + 3): L.p(x, yk0 - 5, "w" if x < cx else "W"); L.p(x, yk0 - 4, "r")
+    L.p(cx, yk0 - 5, "r")
     omriss(L)
     return L
 
 
-def kyrkjebenk(dor):
-    """Lukka kyrkjebenk sett bakfrå, 5 fliser lang: ryggen med fyllingar i lyst blågrått, ei salmebok
+def kyrkjebenk(dor, n=8):
+    """Lukka kyrkjebenk sett bakfrå, n fliser lang (8 i den store kyrkja): ryggen med fyllingar i lyst blågrått, ei salmebok
     på handlista og benkedøra ved midtgangen (dor="h": døra til høgre, "v": til venstre), med
     utskoren topp og ei rosemålt rose. Går 4 pikslar opp over flisa."""
-    W, H = 5 * 16 + 8, 20
+    W, H = n * 16 + 8, 20
     L = Lerret(W, H)
     x0, x1 = 4, W - 5
     for x in range(x0, x1 + 1):
@@ -377,9 +671,9 @@ def kyrkjebenk(dor):
             for y in range(12, 18): L.p(x, y, "4")
     for y in range(12, 18): L.p(x1, y, "4")
     # salmebok på handlista
-    bx = x0 + 22 if dor == "h" else x1 - 30
-    for x in range(bx, bx + 4): L.p(x, 6, "r"); L.p(x, 7, "R")
-    L.p(bx, 6, "p"); L.p(bx + 3, 7, "r")
+    for bx in ((x0 + 22, x0 + 70) if dor == "h" else (x1 - 30, x1 - 78)):
+        for x in range(bx, bx + 4): L.p(x, 6, "r"); L.p(x, 7, "R")
+        L.p(bx, 6, "p"); L.p(bx + 3, 7, "r")
     # benkedøra med utskoren topp og rose
     dx = x1 - 5 if dor == "h" else x0
     topp = ["..zz..", ".zzzz.", "zzzzzz"]
@@ -395,29 +689,212 @@ def kyrkjebenk(dor):
 
 
 def dopefont():
-    """Døypefont av kleberstein (mellomalderen, som i mange bygdekyrkjer) med dåpsfat av messing:
-    brei, rund kum med ei rekkje bogar i relieff, kort og tjukk fot og ein brei sokkel. 1 flis,
-    går 6 pikslar opp over flisa."""
-    W, H = 16 + 8, 22
+    """Døypefont av kleberstein (mellomalderen, som i mange bygdekyrkjer) med dåpsfat og dåpskanne
+    av messing: brei, rund kum med bogar i relieff, kort og tjukk fot, og ein sokkel i to trinn.
+    2 fliser brei, 1 rad djup, går om lag 20 pikslar opp over flisa."""
+    W, H = 2 * 16 + 8, 36
     L = Lerret(W, H)
-    # kanten på kummen sett ovanfrå, med dåpsfatet inni
-    for x in range(7, 17): L.p(x, 2, "7")
-    for y in range(3, 7):
-        for x in range(5, 19): L.p(x, y, "7" if x < 7 or y == 3 else "6" if x > 16 else "Y")
-    for x in range(7, 17): L.p(x, 3, "6"); L.p(x, 4, "Z")
-    for x in range(8, 12): L.p(x, 5, "y")
-    for x in range(5, 19): L.p(x, 7, "7" if x < 12 else "6")
+    cx = W // 2
+    # sokkelen i to trinn
+    for y in range(H - 6, H - 1):
+        for x in range(4, W - 4): L.p(x, y, "7" if y == H - 6 else "5" if y == H - 2 or x > W - 7 else "6")
+    for y in range(H - 10, H - 6):
+        for x in range(8, W - 8): L.p(x, y, "7" if y == H - 10 else "5" if x > W - 11 else "6")
+    # foten
+    for y in range(H - 18, H - 10):
+        for x in range(cx - 5, cx + 5): L.p(x, y, "7" if x < cx - 2 else "5" if x > cx + 1 else "6")
+    for x in range(cx - 6, cx + 6): L.p(x, H - 14, "5" if x > cx + 2 else "7")
     # kummen: rund nedover, bogar i relieff
-    for j, y in enumerate(range(8, 13)):
-        b = [7, 7, 6, 5, 4][j]
-        for x in range(12 - b, 12 + b): L.p(x, y, "7" if x < 12 - b + 2 else "5" if x >= 12 + b - 2 else "6")
-    for x in range(7, 17, 3): L.p(x, 9, "5"); L.p(x + 1, 9, "5"); L.p(x, 10, "5")
-    # foten og sokkelen
-    for y in range(13, 16):
-        for x in range(9, 15): L.p(x, y, "7" if x < 11 else "5" if x > 12 else "6")
-    for x in range(8, 16): L.p(x, 16, "7" if x < 11 else "6")
-    for y in range(17, 20):
-        for x in range(6, 18): L.p(x, y, "7" if y == 17 and x < 13 else "5" if x > 14 or y == 19 else "6")
+    for j, y in enumerate(range(H - 29, H - 18)):
+        b = [14, 14, 14, 13, 13, 12, 11, 10, 9, 7, 6][j]
+        for x in range(cx - b, cx + b): L.p(x, y, "7" if x < cx - b + 3 else "5" if x >= cx + b - 3 else "6")
+    for x in range(cx - 11, cx + 11, 4):
+        L.p(x, H - 26, "5"); L.p(x + 1, H - 27, "5"); L.p(x + 2, H - 26, "5")
+        L.p(x, H - 25, "5"); L.p(x + 2, H - 25, "5"); L.p(x, H - 24, "5"); L.p(x + 2, H - 24, "5")
+    # kanten sett ovanfrå, med dåpsfatet inni
+    for y in range(H - 35, H - 29):
+        b = [9, 12, 14, 14, 13, 11][y - (H - 35)]
+        for x in range(cx - b, cx + b): L.p(x, y, "7" if y < H - 33 or x < cx - b + 2 else "6")
+    for y in range(H - 33, H - 30):
+        b = [9, 10, 8][y - (H - 33)]
+        for x in range(cx - b, cx + b): L.p(x, y, "Y" if x < cx else "Z")
+    for x in range(cx - 7, cx - 1): L.p(x, H - 32, "y")
+    L.p(cx + 2, H - 31, "Z"); L.p(cx + 3, H - 31, "Z")
+    for x in range(cx - 14, cx + 14): L.p(x, H - 29, "7" if x < cx else "5")
+    # dåpskanna står på sokkelen til høgre
+    _stempel(L, W - 11, H - 17, ["..yZ...", ".YYZ.Z.", "YyYZZ.Z", "YyYZZZ.", ".YYZZ..", ".YYZZ..", "..YZ...", ".YYZZ..", "......."])
+    omriss(L)
+    return L
+
+
+def skipvegg(side):
+    """Austveggen i skipet på kvar side av korbogen, 4 fliser brei og 5 høg (same høgd som
+    bakveggen i koret): himling, gesims og draperi som i koret, kvitkalka mur og marmorert
+    brystpanel, og ein marmorert pilaster med kapitel og byrjinga på korbogen mot koret. Til
+    høgre (side="h") heng salmetavla med nummer i ei utskoren ramme. Til venstre står
+    preikestolen framfor veggen."""
+    W, H = 4 * 16 + 8, 5 * 16
+    L = Lerret(W, H)
+    x0, x1 = 4, W - 5
+    pil = (x1 - 9, x1) if side == "v" else (x0, x0 + 9)                     # pilasteren ved korbogen
+    for y in range(H):
+        for x in range(x0, x1 + 1): L.p(x, y, "k")
+    for x in range(x0, x1 + 1):
+        L.p(x, 0, "u"); L.p(x, 1, "z"); L.p(x, 2, "z"); L.p(x, 3, "z")
+        L.p(x, 4, "D"); L.p(x, 5, "R"); L.p(x, 6, "r")
+        if (x - x0) % 8 in (3, 4): L.p(x, 5, "Y")
+        k = (x - x0 + (4 if side == "h" else 0)) % 12
+        d = 1 + round(4 * math.sin(math.pi * k / 12))
+        for y in range(7, 7 + d): L.p(x, y, "E" if y == 7 else "R")
+        L.p(x, 7 + d, "r"); L.p(x, 8 + d, "8")
+        if k == 0: L.p(x, 7, "Y"); L.p(x, 8, "Y"); L.p(x, 9, "Z"); L.p(x, 10, "Y"); L.p(x, 11, "Z")
+    for i, x in enumerate(range(x0 + 3, x1 - 2, 11)): L.p(x, 1 + i % 3, "y"); L.p(x + 1, 1 + i % 3, "Y")
+    # brystpanelet
+    for x in range(x0, x1 + 1):
+        L.p(x, 64, "x"); L.p(x, 65, "D"); L.p(x, 66, "d")
+        for y in range(67, H - 1): L.p(x, y, "G")
+        L.p(x, 67, "g"); L.p(x, H - 1, "a")
+        k = (x - x0) % 16
+        if k in (0, 1):
+            for y in range(67, H - 1): L.p(x, y, "T" if k == 0 else "t")
+    for xf in range(x0 + 4, x1 - 6, 16): L.p(xf + 2, 71, "W"); L.p(xf + 3, 71, "W"); L.p(xf + 4, 72, "W"); L.p(xf + 7, 74, "g")
+    # pilasteren: marmorert, med kapitel øvst og base, og korbogen som byrjar å svinge innover
+    a, b = pil
+    for y in range(12, H):
+        for x in range(a, b + 1):
+            c = "W" if x == a else "K" if x == b else "G"
+            if (y * 3 + x) % 11 == 0 and a < x < b: c = "g"
+            L.p(x, y, c)
+    for x in range(a - 1, b + 2):
+        L.p(x, 12, "y"); L.p(x, 13, "Y"); L.p(x, 14, "Z"); L.p(x, H - 6, "Y"); L.p(x, H - 5, "Z")
+    for j in range(8):                                                       # bogen: raudt band med gull
+        bx = (b + 1 + j) if side == "v" else (a - 1 - j)
+        for y in range(4, 12 - j // 2):
+            if 0 <= bx < W: L.p(bx, y, "R" if y > 5 else "Y")
+    if side == "h":
+        # salmetavla: svart tavle med kvite nummer i ei utskoren, forgylt ramme
+        tx, ty = 16, 24
+        _stempel(L, tx + 6, ty - 5, ["...YY...", "..YyyZ..", ".YyZZyZ.", "YZ....ZY"])
+        for y in range(ty, ty + 30):
+            for x in range(tx, tx + 20): L.p(x, y, "Y" if x == tx or y == ty else "Z" if x == tx + 19 or y == ty + 29 else "v")
+        for j in range(4):
+            y = ty + 3 + j * 7
+            for k, x in enumerate(range(tx + 4, tx + 16, 4)):
+                n = int(h(j, k, 91) * 10)
+                rader = [["ww", "w.", "ww", ".w", "ww"], ["w.", "w.", "w.", "w.", "w."], ["ww", ".w", "ww", "w.", "ww"]][n % 3]
+                _stempel(L, x, y, rader)
+        _stempel(L, tx + 7, ty + 30, ["YyZZ", ".YZ."])
+    omriss(L)
+    return L
+def korskilje():
+    """Korskiljet under korbogen: ein låg balustrade i blågrønt (som benkene i Grytten) med gyllen
+    handlist og opning midt i (der løparen går inn i koret), 11 fliser brei."""
+    W, H = 11 * 16 + 8, 26
+    L = Lerret(W, H)
+    yf = H - 3
+    yt = yf - 14
+    o0, o1 = 4 + 5 * 16 - 1, 4 + 6 * 16                                       # opninga (flisa midt i)
+    for xa, xb in ((4, o0 - 2), (o1 + 2, W - 5)):
+        for x in range(xa, xb + 1):
+            L.p(x, yt, "y"); L.p(x, yt + 1, "Y"); L.p(x, yt + 2, "Z")
+            L.p(x, yf - 1, "G"); L.p(x, yf, "3")
+        for x in range(xa + 2, xb - 1, 4):
+            for y in range(yt + 3, yf - 1):
+                L.p(x, y, "4"); L.p(x + 1, y, "G")
+                if y in (yt + 3, yt + 7, yf - 3): L.p(x - 1, y, "4"); L.p(x + 2, y, "g")
+    for px in (4, o0 - 3, o1 + 1, W - 7):                                     # stolpar med knapp
+        for y in range(yt - 3, yf + 1): L.p(px, y, "4"); L.p(px + 1, y, "G"); L.p(px + 2, y, "g")
+        L.p(px, yt - 5, "y"); L.p(px + 1, yt - 5, "Y"); L.p(px, yt - 4, "Y"); L.p(px + 1, yt - 4, "Z"); L.p(px + 2, yt - 4, "Z")
+    omriss(L)
+    return L
+
+
+def kyrkjeskip():
+    """Kyrkjeskip (votivskip) som heng i taket, slik mange kystkyrkjer på Vestlandet har: ein
+    fullriggar med svart skrog, gul stripe med kanonportar, tre master med rær og opprulla segl,
+    vimplar og ein stubb av kjettingen (motoren teiknar resten opp til taket). 3 fliser breitt. Heng høgt (over: true, faktor over
+    1 i kartet: parallakse)."""
+    W, C = 3 * 16 + 8, 4                                                 # kjettingstubben (resten: kjede() i motor.js)
+    H = C + 44
+    L = Lerret(W, H)
+    for y in range(0, C + 2): L.p(27, y, "Z"); L.p(28, y, "9")              # kjettingen til stormasta
+    y0 = C
+    # skroget: svart, gul stripe med portar, kobbar nedst; baugen til venstre
+    for x in range(5, 52):
+        t = (x - 5) / 46
+        top = y0 + 30 - round(3 * (1 - t) ** 3) - round(2 * t ** 4)           # spring: høgare i endane
+        bot = y0 + 38 - round(4 * abs(t - 0.55) ** 2 * 4)
+        for y in range(top, bot + 1):
+            c = "v" if y < top + 2 else "D" if y == top + 2 else "v" if y < bot - 1 else "U"
+            if y == top + 2 and x % 4 == 0: c = "V"
+            L.p(x, y, c)
+        L.p(x, top, "X")
+    for x in range(2, 9): L.p(x, y0 + 28 + (x - 2) // 3, "T")               # baugspydet
+    _stempel(L, 48, y0 + 24, ["YT..", "TTT.", "TvT.", "vvv."])               # akterkastellet
+    # master, rær og opprulla segl
+    for mx, topp in ((17, y0 + 6), (28, y0 + 2), (39, y0 + 8)):
+        for y in range(topp, y0 + 30): L.p(mx, y, "T")
+        for j, (ry, b) in enumerate(((topp + 4, 4), (topp + 10, 6), (topp + 17, 7))):
+            for x in range(mx - b, mx + b + 1): L.p(x, ry, "t"); L.p(x, ry - 1, "w" if x < mx else "W")
+        L.p(mx, topp - 1, "R"); L.p(mx + 1, topp - 1, "E"); L.p(mx + 2, topp, "R")   # vimpel
+    # rigg: stag frå baugen og akter, og vant ned til relinga
+    for x in range(4, 17): L.p(x, y0 + 28 - round((x - 4) * 21 / 13), "K")
+    for x in range(40, 50): L.p(x, y0 + 9 + round((x - 40) * 16 / 10), "K")
+    omriss(L)
+    return L
+
+
+def galleri():
+    """Galleriet (pulpituret) over den bakre delen av skipet, frå vegg til vegg (21 fliser), som i
+    Grytten og Nordfjordeid (konsept/). Kameraet ser det ovanfrå og bakfrå: øvst den blågrøne
+    brystninga med gyllen handlist og fyllingar, så golvet på galleriet med to rader små benker sett
+    bakfrå (som benkene i skipet), og nedst kanten mot bakveggen. Heng høgt (over: true, faktor over
+    1 i kartet: parallakse), så ein går under det inn i kyrkja."""
+    W, H = 21 * 16 + 8, 60
+    L = Lerret(W, H)
+    x0, x1 = 4, W - 5
+    # golvet på galleriet: breie furuplankar på langs, mørkare inst mot bakveggen
+    for y in range(12, H):
+        for x in range(x0, x1 + 1):
+            c = "C" if (x - x0) % 12 not in (0, 11) else "c"
+            if y > H - 6: c = "A" if (x - x0) % 12 else "a"
+            L.p(x, y, c)
+    for i, x in enumerate(range(x0 + 5, x1, 23)): L.p(x, 20 + (i * 7) % 30, "q"); L.p(x + 1, 20 + (i * 7) % 30, "q")
+    for x in range(x0, x1 + 1): L.p(x, H - 1, "a")
+    # to rader benker sett bakfrå, med opning i midten der trappa kjem opp
+    def benkerad(yb):
+        for xa, xb in ((x0 + 2, x0 + 150), (x1 - 150, x1 - 2)):
+            for x in range(xa, xb + 1):
+                L.p(x, yb, "g"); L.p(x, yb + 1, "4"); L.p(x, yb + 2, "G")
+                for y in range(yb + 3, yb + 9): L.p(x, y, "G")
+                L.p(x, yb + 3, "R"); L.p(x, yb + 9, "3")
+                k = (x - xa) % 16
+                if k == 0:
+                    for y in range(yb + 4, yb + 9): L.p(x, y, "4")
+                elif k == 1:
+                    for y in range(yb + 4, yb + 9): L.p(x, y, "g")
+            for y in range(yb, yb + 10): L.p(xa, y, "4"); L.p(xb, y, "g")
+    benkerad(22)
+    benkerad(40)
+    # trappeopninga midt bak: mørk, med rekkverk
+    for y in range(36, H - 1):
+        for x in range(W // 2 - 10, W // 2 + 10): L.p(x, y, "a" if y > 38 else "A")
+    for x in range(W // 2 - 11, W // 2 + 11): L.p(x, 35, "y"); L.p(x, 36, "Z")
+    for y in range(35, H - 1): L.p(W // 2 - 11, y, "Y"); L.p(W // 2 + 10, y, "Z")
+    # brystninga øvst: handlista, fyllingar i blågrønt (baksida), stolpar
+    for x in range(x0, x1 + 1):
+        L.p(x, 0, "y"); L.p(x, 1, "Y"); L.p(x, 2, "Z")
+        for y in range(3, 11): L.p(x, y, "G")
+        L.p(x, 3, "g"); L.p(x, 11, "3")
+        k = (x - x0) % 24
+        if k in (0, 1):
+            for y in range(3, 11): L.p(x, y, "4" if k == 0 else "g")
+        elif 4 <= k <= 20:
+            if k in (4, 20):
+                for y in range(5, 10): L.p(x, y, "g" if k == 4 else "4")
+            elif 5 < k < 20: L.p(x, 5, "g"); L.p(x, 9, "4")
+    for i, x in enumerate(range(x0 + 12, x1 - 6, 24)):                       # rosemåla roser i fyllingane
+        _stempel(L, x - 1, 6, [".E.", "EyE", ".i."])
     omriss(L)
     return L
 
@@ -1299,7 +1776,8 @@ INVENTAR = {
     "kornbinge": kornbinge, "tonne": tonne, "kagge": kagge, "flatbrodstabel": flatbrodstabel, "spekemat": spekemat,
     "stige": stige, "glugge": glugge, "takbjelke": takbjelke, "sekker": sekker, "skrin": skrin,
     "rokk": rokk, "korvegg": korvegg, "kyrkjebenk-h": lambda: kyrkjebenk("h"), "kyrkjebenk-v": lambda: kyrkjebenk("v"),
-    "dopefont": dopefont, "altartavle": altartavle, "altarring": altarring, "preikestol": preikestol, "lysekrone": lysekrone}
+    "dopefont": dopefont, "altartavle": altartavle, "altarring": altarring, "preikestol": preikestol, "lysekrone": lysekrone,
+    "skipvegg-v": lambda: skipvegg("v"), "skipvegg-h": lambda: skipvegg("h"), "korskilje": korskilje, "kyrkjeskip": kyrkjeskip, "galleri": galleri}
 
 
 def pix(namn, L):

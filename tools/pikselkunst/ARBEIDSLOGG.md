@@ -1520,3 +1520,53 @@ same måte, uansett kven som tek over.
   å ramme inn utsikta ytst på hylla, og meir av dalen syner. `nabb-m` er flatare og står litt lågare.
   Parallaksfaktorane er uendra (1.25, [2, 1] og 1.15), sidan nabbane no står i same perspektiv som dalen.
 - **Vurdert:** `forhand/skjerm/r51-for-etter.png` (ytst på hylla og neset med kameraet glidd ned).
+
+## Runde 52: ei stor langkyrkje med parallakse på lysekronene
+
+- **Frå brukaren:** Kyrkja skal vidareutviklast: parallakse på lysekrona, lang nok til at det tek tid å gå
+  frå døra opp til altaret (først fem sekund, så 50 fliser), større kart så altaret, lysekrona og
+  inventaret kan bli større, og altartavla inspirert av ekte altartavler.
+- **Research:** Kvernes stavkyrkje (altartavla frå 1695 i bondebarokk med store fargerike akantusvolutter,
+  korskiljet og lysekrona i koret, altaret med kniplingsduk og messingstakar) og Grytten kyrkje i Romsdal
+  (1829, kyrkjerom frå tida: blågrøne lukka benker, raud løpar, alterring med dreia balustrar og ei
+  stor lysekrone), nye i `konsept/`. Fåberg (to etasjar, marmorerte felt, vridde søyler, figur med
+  sigersfane øvst), Hove, Dale i Luster, Lygra og Nordfjordeid frå før.
+- **Kartet:** 21 × 61 fliser. Frå døra: våpenhuset (rad 55 til 59), skipet (rad 14 til 53) med galleri over
+  dei bakste radene, tre benkeblokker (5, 5 og 4 rader) og to tverrgangar med gravheller i golvet, framme
+  preikestolen med trapp og døypefonten, korskiljet under korbogen (rad 13), og koret (11 fliser breitt)
+  med korstolar, lysestakar, altarring, altar og altartavle. Frå merke 1 (10,59) til framfor
+  altarringen (10,9) er det 50 fliser: 10,0 sekund å gå og 6,7 sekund å springe, målt i spelet med den
+  nye testen `tools/sjekk-kyrkjegang.html`.
+- **Inventar (`inventar.py`):** `korvegg` 11 × 5 med høge vindauge, rankeverk, medaljongar og vasar.
+  `altartavle` 5 × 7: nattverden i predellaen, krossfestinga med Maria, Johannes og Maria Magdalena i
+  hovudfeltet, Moses og Johannes døyparen i nisjar mellom vridde søyler, akantusvenger, oppstoda i
+  øvste etasjen, skjel og Kristus med sigersfane øvst; altaret med kniplingsduk, raudt alterklede med
+  gullkross og rosar, krusifiks, bibel og to messingstakar (korte ljos, så profetane syner). `altarring`
+  7 × 3 med sider. `skipvegg-v` og `-h` (austveggen ved korbogen med pilaster, salmetavla til høgre).
+  `korskilje` (blågrøn balustrade). `preikestol` 3 × 2 med lydhimling, evangelistar og trapp.
+  `dopefont` 2 × 1 med dåpskanne. `kyrkjebenk-h` og `-v` er 8 fliser lange. Nye ting som heng høgt:
+  `lysekrone` (to kransar med 14 ljos, kule og ørn), `kyrkjeskip` (votivskip) og `galleri` (21 × 3).
+  Nye fliser i `pikslar.js`: `Ø`/`ø` (vindauge i sideveggene, sett ovanfrå) og `Æ`/`æ` (gravhelle).
+- **Parallakse for inventar (`motor.js`):** `bygg` med `over: true` kan ha `faktor` (over 1). `byggPos()`
+  skuvar biletet utover frå midten av skjermen, så det flyttar seg raskare enn golvet. `tak` teiknar
+  kjettingen opp til taket (`kjede()`, festet i `Pikslar.KJEDE`): taket har større faktor, så
+  kjettingen blir lengre øvst på skjermen og kortare nedst. Gløden følgjer krona (`Pikslar.LJOS`), men
+  lyspølen på golvet (`kronegolv`, ny i `glod.py`) ligg fast der krona heng. `silhuett: true` viser
+  Ivar gjennom galleriet. Lysstrålar kjem òg frå `Ø`. Veggar over sidevindauge og tomrom (` `) blir
+  teikna som toppar.
+- **Rundar:** 1) Eit triumfkrusifiks i ein kjetting midt over korbogen og kroner over midtgangen la
+  kjettingen rett over Ivar: krusifikset er teke bort, og kronene heng i par over benkeblokkene. 2) Faste
+  kjettingar på 120 og 230 pikslar ende midt i lufta når krona var under skjermen: no teiknar motoren
+  kjettingen til eit takpunkt med eigen faktor. 3) Kjettingen halla sidelengs og såg ut som han var
+  festa i veggen: berre loddrett no. 4) Glorien frå altarljosa vaska ut profetane i nisjane: kortare ljos.
+  5) Skipet var monotont: galleri over inngangen, kyrkjeskip og gravheller i tverrgangane.
+- **Scener og lagring:** Presten kneler på (11,9) (merke `p`), står i ringopninga (10,8) etter
+  blekklatten, klokkaren står i koret på (6,11) og går til (9,11) i `presten`. Testane i
+  `sjekk-scene.html` er oppdaterte (164 OK). `nyttOppsett: { fraH: 12, merke: "2" }`: ei lagring frå
+  den vesle kyrkja startar framfor altarringen (spel.js).
+- **Nytt verktøy:** `oversikt.py` (og `oversikt.html`) set saman alle skjermane på eit kart til eitt bilete.
+- **Vurdert:** `forhand/skjerm/kyrkje-oversikt-to.png` (heile kyrkja i to kolonnar), `k51-alter-heil.png`
+  og `k51-alter-naer.png` (koret og altartavla), `k51-fram`, `k51-skip2`, `k51-under` og `k51-dor`.
+- **Står att:** Benkeblokkene er like; folk på benkene eller salmebøker ville gje liv. Sidevindauga er små
+  sett ovanfrå. Koret har same furugolv som skipet. Oversiktsbiletet har små sprang i skøytane der
+  ting med parallakse står ulikt i kvar skjerm.

@@ -960,11 +960,56 @@ window.Motor = (function () {
       }
     }
   }
+  /* Øvre venstre hjørne for inventar på skjermen (pikslar). Inventar som heng høgt (over: true, til
+     dømes lysekrona) kan ha faktor (tal eller [fx, fy]) over 1: det heng nærare kameraet enn golvet
+     og flyttar seg difor raskare enn kartet når kameraet går (parallakse). Det står på plassen sin i
+     kartet når midten av fotavtrykket er midt på skjermen, og blir skuva utover mot kantane elles.
+     Posisjonen er runda til heile pikslar og monoton i kameraet, så ingenting ristar. */
+  function byggPos(b, img, ox, oy) {
+    const x = Math.round((b.x + ox) * S) - 4, y = Math.round((b.y + b.h + oy) * S) - img.height;
+    if (!b.faktor) return [x, y];
+    const f = Array.isArray(b.faktor) ? b.faktor : [b.faktor, b.faktor];
+    const mx = (b.x + (img.width - 8) / S / 2 + ox) * S - LW / 2, my = (b.y + b.h - 0.5 + oy) * S - LH / 2;
+    return [x + Math.round(mx * (f[0] - 1)), y + Math.round(my * (f[1] - 1)), mx, my];
+  }
+  /* Kjettingen opp til taket for inventar som heng (Pikslar.KJEDE: festet i biletet, og tak: faktoren
+     for taket i kartet, større enn faktor). Taket er høgare enn krona og flyttar seg difor endå
+     raskare (berre loddrett: loddrette ting står loddrett i 3/4-vinkelen, som veggane): kjettingen
+     går frå festet til eit punkt KJEDE_LENGD pikslar over, flytta med takfaktoren, så han blir
+     lengre øvst på skjermen og kortare nedst, som i perspektiv. Øvst er ein liten takrosett. */
+  const KJEDE_LENGD = 56;
+  function kjede(b, img, ux, uy, mx, my, ox, oy) {
+    const fest = Pikslar.KJEDE && Pikslar.KJEDE[b.id]; if (!fest || !b.tak) return;
+    const fy = Array.isArray(b.faktor) ? b.faktor[1] : b.faktor || 1;
+    const ax = ux + fest[0], ay = uy + fest[1], bx = ax;
+    const by = ay - KJEDE_LENGD + Math.round(my * (b.tak - fy));
+    const n = ay - by; if (n <= 0 || by >= LH || ay < 0) return;
+    for (let i = 0; i <= n; i++) {
+      const y = ay - i; if (y >= LH) continue; if (y < 0) break;
+      const x = ax;
+      g.fillStyle = "#0a0514"; g.fillRect(x - 1, y, 4, 1);                   // to pikslar med omriss, som stubben i biletet
+      g.fillStyle = i % 4 < 2 ? "#8a5a18" : "#d0a030"; g.fillRect(x, y, 1, 1);
+      g.fillStyle = i % 4 < 2 ? "#4e300c" : "#8a5a18"; g.fillRect(x + 1, y, 1, 1);
+    }
+    g.fillStyle = "#0a0514"; g.fillRect(bx - 3, by - 2, 7, 3);                 // takrosetten
+    g.fillStyle = "#8a5a18"; g.fillRect(bx - 2, by - 1, 5, 1); g.fillStyle = "#d0a030"; g.fillRect(bx - 2, by - 1, 2, 1);
+  }
   // Lyskjeldene på kartet: [x, y, type, fase], x og y i skjermpikslar (typane står i RPGData.LYSKJELDER).
   function lyskjelder(ox, oy) {
     const ut = [];
     for (const b of kart.def.bygg || []) {
-      const type = b.id === "inne-grue" ? "grue" : b.id === "inne-kakkelomn" ? "kakkelomn" : b.id === "inne-lysekrone" ? "krone" : b.id === "inne-glugge" ? "glugge" : null;
+      // Ljos på inventar (Pikslar.LJOS): lysekrona og altarljosa. Ankeret følgjer parallaksen.
+      const ljos = Pikslar.LJOS && Pikslar.LJOS[b.id];
+      if (ljos) {
+        const img = Pikslar.bygg(b.id); if (!img) continue;
+        const [bx, by] = byggPos(b, img, ox, oy);
+        for (const [i, l] of ljos.entries()) {
+          ut.push([bx + l.x, by + l.y, l.type, b.x * 3 + b.y + i * 5]);
+          if (l.golv) ut.push([Math.round((b.x + (img.width - 8) / S / 2 + ox) * S), Math.round((b.y + b.h + oy) * S) + 8, "kronegolv", b.x * 3 + b.y]);
+        }
+        continue;
+      }
+      const type = b.id === "inne-grue" ? "grue" : b.id === "inne-kakkelomn" ? "kakkelomn" : b.id === "inne-glugge" ? "glugge" : null;
       const img = type && Pikslar.bygg(b.id); if (!img) continue;
       const bx = Math.round((b.x + ox) * S) - 4, by = Math.round((b.y + b.h + oy) * S) - img.height;
       const r = (Pikslar.ILD[b.id] || [])[0];                         // elden i grua og omnen: ankeret er nedst midt i elden
@@ -1012,7 +1057,12 @@ window.Motor = (function () {
       if (st.kjelder) for (const [x, y, type, fase] of lyskjelder(ox, oy)) { const f = glodform(type); if (f) stemple(glodRamme(f, no, fase), x, y); }
       const iv = st.ivar && glodform("ivar");
       if (iv) stemple(glodRamme(iv, no, 0), (spelar.fx + ox) * S + 8, (spelar.fy + oy) * S + 2);
-      if (st.straalar) for (let y = 0; y < kart.h; y++) for (let x = 0; x < kart.w; x++) if (kart.fliser[y][x] === "u") straale(Math.round((x + ox) * S) + 4, Math.round((y + oy) * S) + 11);
+      // Strålane startar ved blyglaset: i bakveggen (u) og ved innsida av vindauga i venstre sidevegg (Ø).
+      if (st.straalar) for (let y = 0; y < kart.h; y++) for (let x = 0; x < kart.w; x++) {
+        const c = kart.fliser[y][x];
+        if (c === "u") straale(Math.round((x + ox) * S) + 4, Math.round((y + oy) * S) + 11);
+        else if (c === "Ø") straale(Math.round((x + 1 + ox) * S) - 3, Math.round((y + oy) * S) + 3);
+      }
     }
     // Bakgrunnslaga (dalen og fjella langt nede) får nivå 5: ingen skyskugge eller glød der,
     // berre fjern-operasjonen til stemninga (eller bak) og hdma.
@@ -1251,7 +1301,7 @@ window.Motor = (function () {
       if (c === "M" || c === "U" || c === "Z") { const st = Pikslar.stup(terrengfelt(), x, y); g.drawImage(st, sx, sy); if (st.ope) luftRute(sx, sy, st.ope); continue; }
       // Veggar med vegg eller dør under seg er sidevegger: dei blir teikna ovanfrå.
       const under = y + 1 < kart.h ? kart.fliser[y + 1][x] : null;
-      const topp = "XcG".includes(c) && (under === null || "XcGE".includes(under));
+      const topp = "XcG".includes(c) && (under === null || "XcGEØø ".includes(under));   // òg over sidevindauge og tomrom (« ») utanfor huset
       let fk = topp ? c + "t" : c;
       if (c === "R") { const over = y > 0 && kart.fliser[y - 1][x] === "R"; fk = !over && under !== "R" ? "Rtb" : !over ? "Rt" : under !== "R" ? "Rb" : "R"; }
       if (erKant(c, y) || erSidekant(c, x, y)) {
@@ -1384,7 +1434,7 @@ window.Motor = (function () {
     // Hus blir sorterte saman med figurane etter den nedste flisraden sin.
     // Eit sete med ryggen mot kameraet (fram) kjem etter den som sit på det.
     for (const b of kart.def.bygg || []) { const img = Pikslar.bygg(b.id), fram = Pikslar.SETE && Pikslar.SETE[b.id] && Pikslar.SETE[b.id].fram;
-      if (img) figurar.push({ y: b.over ? 999 : b.y + b.h - 1 + (fram ? 0.03 : 0.01), by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id }); }
+      if (img) figurar.push({ y: b.over ? 999 + b.y / 1000 : b.y + b.h - 1 + (fram ? 0.03 : 0.01), by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id, b }); }
     // Den som sit eller ligg, blir teikna over inventaret på same rad (benken, senga). Den som sit
     // på eit sete, blir sortert etter den nedste rada til setet (ein ståande benk er fleire fliser).
     const djupn = f => (f.sete ? f.sete.b.y + f.sete.b.h - 1 : f.y) + (f.pose && f.pose !== "knele" && f.pose !== "peike" ? 0.02 : 0);
@@ -1393,7 +1443,11 @@ window.Motor = (function () {
       if (f.mur) { const mx = Math.round((f.x + ox) * S), my = Math.round((Math.floor(f.y) + oy) * S) - (f.loft || 6); g.drawImage(f.mur, mx, my); maske(f.mur, mx, my, true); continue; }
       if (f.natur) { const nx = Math.round((f.x + ox) * S) + f.natur.x, ny = Math.round(((f.rad ?? Math.floor(f.y)) + oy) * S) + f.natur.y; g.drawImage(f.natur.img, nx, ny); maske(f.natur.img, nx, ny, true); continue; }
       if (f.haug) { const hx = Math.round((f.x + ox) * S) - 1, hy = Math.round((Math.floor(f.y) + 1 + oy) * S) - f.haug.height; g.drawImage(f.haug, hx, hy); maske(f.haug, hx, hy, true); continue; }
-      if (f.over) { const ux = Math.round((f.x + ox) * S) - 4, uy = Math.round((f.by + 1 + oy) * S) - f.bygg.height; g.drawImage(f.bygg, ux, uy); maske(f.bygg, ux, uy, true); continue; }
+      if (f.over) {
+        const [ux, uy, mx, my] = byggPos(f.b, f.bygg, ox, oy);
+        if (f.b.tak) kjede(f.b, f.bygg, ux, uy, mx || 0, my || 0, ox, oy);
+        g.drawImage(f.bygg, ux, uy); maske(f.bygg, ux, uy, true); continue;
+      }
       if (f.bygg) {
         // Slagskugge på bakken, mot høgre og ned (lyset kjem frå oppe til venstre): silhuetten
         // til huset forskoven, men berre nedst ved bakken, så høge ting (tårnet) ikkje kastar
@@ -1436,8 +1490,9 @@ window.Motor = (function () {
       if (!f.sp || (f.sp !== spelar.sprite && !(fylgje && f.sp === fylgje.sprite))) continue;
       const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S) - FOT;
       const bak = (kart.def.bygg || []).some(b => {
-        const img = Pikslar.bygg(b.id); if (!img || !b.silhuett || b.over || f.y >= b.y + b.h - 1) return false;
-        const bx = Math.round((b.x + ox) * S) - 4, by = Math.round((b.y + b.h + oy) * S) - img.height;
+        // Inventar som heng over alt (over: true, til dømes galleriet i kyrkja) dekkjer òg den som står framfor.
+        const img = Pikslar.bygg(b.id); if (!img || !b.silhuett || (!b.over && f.y >= b.y + b.h - 1)) return false;
+        const [bx, by] = byggPos(b, img, ox, oy);
         return sx + 12 > bx + 4 && sx + 4 < bx + img.width - 4 && sy + 22 > by + 4 && sy + 4 < by + img.height;
       });
       if (bak) { g.globalAlpha = 0.4; g.drawImage(f.sp.rammer[f.dir][f.steg], sx, sy); g.globalAlpha = 1; }

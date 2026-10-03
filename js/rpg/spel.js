@@ -670,7 +670,12 @@
     Motor.settSpelar(sprite("ivar"));
     Motor.settFylgje(st.parti.some(m => m.id === "huldra") ? sprite("huldra") : null);
     st.parti.forEach(fyll);
-    Motor.last(st.kart, "1");
+    // Eit kart som er bygd om (nyttOppsett: { fraH, merke }): ei lagring med ei anna høgd (fraH når
+    // lagringa ikkje har høgda) har ein stad som ikkje finst lenger, så Ivar startar på merket.
+    const nytt = D.KART[st.kart] && D.KART[st.kart].nyttOppsett;
+    const ombygd = fraLagring && st.pos && nytt && (st.pos.h || nytt.fraH) !== D.KART[st.kart].rader.length;
+    Motor.last(st.kart, ombygd ? nytt.merke || "1" : "1");
+    if (ombygd) st.pos = null;
     // Eit kart som har fått nye rader øvst sidan spelet vart lagra: flytt staden like mange rader ned.
     const nye = D.KART[st.kart] && D.KART[st.kart].nyeRader;
     if (fraLagring && st.pos && nye && (st.pos.h || nye.fraH) === nye.fraH) { st.pos.y += nye.n; st.pos.h = D.KART[st.kart].rader.length; }

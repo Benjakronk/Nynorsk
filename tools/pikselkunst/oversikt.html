@@ -1,0 +1,44 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Oversikt over eit kart</title>
+<!-- Brukt av oversikt.py: opnar spelet, går til eit kart og flyttar kameraet skjerm for skjerm over
+     heile kartet, og set bileta saman til eitt stort bilete (PNG som data-URL i <div id="ut">).
+     Ivar er usynleg. Ting med parallakse (lysekroner) står der dei står når kameraet er over dei,
+     så dei kan hoppe litt i skøytane mellom bileta.
+     Parametrar: kart, m (merke), flagg (kommaskilt). -->
+<style>body{margin:0;background:#000;color:#fff;font:12px monospace} iframe{width:1100px;height:720px;border:0;display:block} #ut{white-space:pre-wrap;padding:4px;word-break:break-all}</style>
+<iframe id="f"></iframe>
+<div id="ut">køyrer …</div>
+<script>
+const q = new URLSearchParams(location.search);
+const f = document.getElementById("f");
+f.src = "../../spel.html?test=1";
+const vent = ms => new Promise(r => setTimeout(r, ms));
+f.onload = async () => {
+  const w = f.contentWindow, d = w.document, M = w.Motor;
+  const tast = async k => { d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true })); await vent(30); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true })); };
+  const synleg = sel => { const e = d.querySelector(sel); return e && !e.hidden; };
+  for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
+  d.querySelector("#rpg-tittel-val button").click();
+  await vent(300);
+  for (let n = 0; n < 60; n++) { let k = 0; while (k++ < 200 && (synleg("#rpg-tale") || synleg("#rpg-fort"))) { await tast("z"); await vent(80); } await vent(100); }
+  for (const fl of (q.get("flagg") || "").split(",").filter(Boolean)) w.RPGTest.st().flagg[fl] = true;
+  M.last(q.get("kart") || "asen", q.get("m") || "1"); await vent(400);
+  M.pause(true);
+  // Ivar usynleg: tomme rammer.
+  const tom = d.createElement("canvas"); tom.width = 16; tom.height = 24;
+  M.spelar.sprite = { rammer: [0, 1, 2, 3].map(() => [tom, tom, tom]) };
+  const c = d.getElementById("rpg-lerret"), S = 16, VW = c.width / S, VH = c.height / S;
+  const kw = M.kart.w, kh = M.kart.h;
+  const ut = document.createElement("canvas"); ut.width = Math.max(kw, VW) * S; ut.height = Math.max(kh, VH) * S;
+  const ug = ut.getContext("2d");
+  const toppar = (n, v) => { const t = []; for (let i = 0; i < n; i += v) t.push(Math.min(i, Math.max(0, n - v))); return [...new Set(t)]; };
+  for (const ty of toppar(kh, VH)) for (const tx of toppar(kw, VW)) {
+    const x = tx + (VW - 1) / 2, y = ty + (VH - 1) / 2;
+    Object.assign(M.spelar, { x: Math.round(x), y: Math.round(y), fx: x, fy: y, flytt: null });
+    await vent(250);
+    ug.drawImage(c, kw < VW ? 0 : tx * S, kh < VH ? 0 : ty * S);
+  }
+  document.getElementById("ut").textContent = ut.toDataURL("image/png");
+};
+</script>

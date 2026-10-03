@@ -1,0 +1,48 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Sjekk gangen i kyrkja</title>
+<!-- Måler kor lang tid Ivar brukar frå døra i kyrkja (merke 1) opp til altarringen (rad 9):
+     først gåande (pil opp), så springande (Z og pil opp). Målet er 50 fliser: 10 sekund å gå
+     (12 tikk per flis) og om lag 6,7 sekund å springe (8 tikk per flis).
+     Køyr: python tools/kjoyr-test.py tools/sjekk-kyrkjegang.html 60000 -->
+<style>body{margin:0;background:#000;color:#fff;font:12px monospace} iframe{width:1100px;height:720px;border:0} #ut{white-space:pre-wrap;padding:4px}</style>
+<iframe id="f"></iframe>
+<div id="ut">køyrer …</div>
+<script>
+const f = document.getElementById("f");
+f.src = "../spel.html?test=1";
+const vent = ms => new Promise(r => setTimeout(r, ms));
+f.onload = async () => {
+  const w = f.contentWindow, d = w.document, M = w.Motor;
+  const tast = (type, k) => d.dispatchEvent(new w.KeyboardEvent(type, { key: k, bubbles: true }));
+  const synleg = sel => { const e = d.querySelector(sel); return e && !e.hidden; };
+  for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
+  d.querySelector("#rpg-tittel-val button").click();
+  await vent(300);
+  for (let n = 0; n < 400 && (!w.RPGTest.st().scener.heime || synleg("#rpg-tale") || synleg("#rpg-fort")); n++) { tast("keydown", "z"); await vent(30); tast("keyup", "z"); await vent(60); }
+  await vent(1000);
+  const ut = [];
+  let ok = true;
+  const D = w.RPGData.KART.kyrkja, dor = D.rader.findIndex(r => r.includes("1"));
+  ut.push(`fliser frå merke 1 (rad ${dor}) til framfor altarringen (rad 9): ${dor - 9}`);
+  if (dor - 9 !== 50) { ok = false; ut.push("FEIL: avstanden skal vere 50 fliser"); }
+  for (const [namn, springe, maal] of [["gå", false, 10], ["springe", true, 50 * 8 / 60]]) {
+    M.last("kyrkja", "1"); await vent(400);
+    M.spelar.dir = 1;                                   // ser opp, så det første steget ikkje er ei snuing
+    const t0 = w.performance.now();
+    if (springe) tast("keydown", "z");
+    tast("keydown", "ArrowUp");
+    let t1 = null;
+    for (let n = 0; n < 2000 && t1 === null; n++) { await vent(10); if (M.spelar.fy <= 9) t1 = w.performance.now(); }
+    tast("keyup", "ArrowUp"); if (springe) tast("keyup", "z");
+    const s = t1 === null ? null : (t1 - t0) / 1000;
+    const rett = s !== null && Math.abs(s - maal) < 0.35;
+    if (!rett) ok = false;
+    ut.push(`${rett ? "OK" : "FEIL"}: å ${namn} frå døra til altarringen tok ${s === null ? "for lang tid (stoppa på " + M.spelar.x + "," + M.spelar.y + ")" : s.toFixed(2) + " s"} (venta ${maal.toFixed(2)} s)`);
+    await vent(300);
+  }
+  ut.push(ok ? "Alt ser rett ut." : "Noko er feil.");
+  document.getElementById("ut").textContent = ut.join("\n");
+  f.remove();
+};
+</script>

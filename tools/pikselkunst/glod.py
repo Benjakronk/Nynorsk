@@ -102,26 +102,40 @@ def lykt(r):
 
 # ---------------------------------------------------------------- lysekrone
 def krone(r):
-    """Lysekrona i kyrkja (inne-lysekrone, 24 x 24). Ankeret er midt i biletet. Små, sterke
-    gloriar rundt dei fire ljosa, og ein flat pøl på golvet under krona."""
+    """Den store lysekrona i kyrkja (inne-lysekrone, 56 x 54, heng høgt med parallakse). Ankeret
+    er midt i messingkula (Pikslar.LJOS). Små, sterke gloriar rundt dei fjorten ljosa (plassane
+    kjem frå KRONE_LJOS i inventar.py) og eit svakt skin rundt heile krona. Pølen på golvet er ei
+    eiga form (kronegolv), fordi han ligg fast på golvet medan krona flyttar seg med parallaksen."""
+    from inventar import lysekrone, KRONE_LJOS, KRONE_KJEDE
+    lysekrone()
+    ax, ay = 27, KRONE_KJEDE + 36
     G = Glod()
-    # Pølen på golvet: lågt og breitt, litt under midten av krona.
-    G.profil(1, -6, [10, 16, 21, 25, 28, 30, 32, 33, 34, 35, 35, 36, 36, 36, 36, 35, 35, 34, 32,
-                     30, 28, 25, 21, 16, 10])
-    G.profil(2, -1, [8, 14, 17, 20, 22, 23, 24, 24, 24, 24, 23, 22, 20, 17, 13, 7])
-    # Små gloriar rundt flammane på ljosa (x -9 og -5, spegla). Flammen er på rad f.
-    for x, f in ((-9, -3), (-5, -5)):
-        G.rader(1, [(f - 4, x, x), (f - 3, x - 1, x + 1), (f - 2, x - 2, x + 2), (f - 1, x - 2, x + 2),
-                    (f, x - 2, x + 2), (f + 1, x - 1, x + 1)])
-        G.rader(2, [(f - 2, x, x), (f - 1, x - 1, x + 1), (f, x - 1, x + 1)] if r == 0 else [(f - 1, x, x), (f, x - 1, x + 1)])
-        G.rader(3, [(f - 1, x, x), (f, x, x)] if r == 0 else [(f, x, x)])
-    G.prikk(1, [(-34, -2), (-37, 4), (-38, 7), (-36, 12), (-31, 16), (-20, 18), (-8, 19), (-1, 19)], speil=True)
-    G.prikk(2, [(-25, 4), (-26, 7), (-24, 11), (-18, 14), (-9, 16)] if r == 0
-            else [(-25, 5), (-26, 8), (-25, 11), (-19, 14), (-10, 16)], speil=True)
-    # Spegl gloriane over på høgre side.
-    for (x, y), v in list(G.g.items()):
-        if x < 0: G.sett(-x, y, v)
+    # skinet rundt krona: ein flat oval kring kransane
+    G.profil(1, -22, [6, 12, 16, 19, 21, 23, 24, 25, 26, 26, 27, 27, 27, 27, 26, 26, 25, 24, 22, 20, 18, 15, 12, 9, 5])
+    for i, (x, y) in enumerate(KRONE_LJOS):
+        x, y = x - ax, y - ay
+        G.rader(1, [(y - 4, x, x), (y - 3, x - 1, x + 1), (y - 2, x - 2, x + 2), (y - 1, x - 3, x + 3),
+                    (y, x - 3, x + 3), (y + 1, x - 2, x + 2), (y + 2, x - 1, x + 1)])
+        flimmer = (i + r) % 3 == 0
+        G.rader(2, [(y - 2, x, x), (y - 1, x - 1, x + 1), (y, x - 2, x + 2), (y + 1, x - 1, x + 1)] if not flimmer
+                else [(y - 1, x, x), (y, x - 1, x + 1), (y + 1, x, x)])
+        G.rader(3, [(y - 1, x, x), (y, x, x)] if not flimmer else [(y, x, x)])
+    G.prikk(1, [(-28, -10), (-29, -6), (-29, -1), (-28, 3), (-24, 7), (-19, 9)] if r == 0
+            else [(-28, -9), (-29, -5), (-29, 0), (-27, 4), (-23, 8), (-18, 9)], speil=True)
     G.sett(0, 0, 2)
+    return G
+
+
+def kronegolv(r):
+    """Lyspølen på golvet under lysekrona (ankeret er golvet midt under krona). Lågt og breitt,
+    golvet sett på skrå, med handplasserte dither-pikslar i kanten. Ligg fast i kartet."""
+    G = Glod()
+    G.profil(1, -14, [12, 21, 27, 32, 35, 38, 40, 41, 42, 43, 43, 44, 44, 44, 44, 43, 43, 42, 41, 40, 38, 35, 32, 27, 21, 12])
+    G.profil(2, -8, [10, 17, 21, 24, 26, 27, 28, 28, 28, 27, 26, 24, 21, 17, 10])
+    G.prikk(1, [(-46, -3), (-47, 1), (-46, 5), (-40, 11), (-30, 13), (-16, 14), (-3, 15)] if r == 0
+            else [(-46, -2), (-47, 2), (-45, 6), (-39, 12), (-29, 14), (-15, 15), (-2, 15)], speil=True)
+    G.prikk(2, [(-30, -2), (-31, 1), (-29, 4), (-22, 8), (-12, 10)] if r == 0
+            else [(-30, -1), (-31, 2), (-28, 5), (-21, 8), (-11, 10)], speil=True)
     return G
 
 
@@ -336,7 +350,7 @@ def dor(r):
 
 # Rammer per glødform (sjå LYSKJELDER i js/rpg/data.js for rekkjefølgja i flimmeret).
 FORMER = {"grue": (grue, 3), "kakkelomn": (kakkelomn, 3), "peis": (peis, 3), "lys": (lys, 2),
-          "lykt": (lykt, 2), "krone": (krone, 2), "ivar": (ivar, 2), "sky": (sky, 1),
+          "lykt": (lykt, 2), "krone": (krone, 2), "kronegolv": (kronegolv, 2), "ivar": (ivar, 2), "sky": (sky, 1),
           "glugge": (glugge, 2), "dor": (dor, 1)}
 
 

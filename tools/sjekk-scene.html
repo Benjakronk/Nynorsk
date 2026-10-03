@@ -403,8 +403,8 @@ f.onload = async () => {
     delete s11.flagg.prest_bed; delete s11.flagg.latt; s11.nokkel = s11.nokkel.filter(n => n !== "prestenokkel");
     M.last("kyrkja", "1"); await vent(200);
     const prest0 = M.aktor("Presten");
-    sjekk(prest0.x === 7 && prest0.y === 4 && prest0.pose === "knele" && prest0.dir === 1, `presten kneler attmed løparen og ser mot altaret (${prest0.x},${prest0.y} ${prest0.pose})`);
-    M.plasser(6, 4, 3); await vent(200);
+    sjekk(prest0.x === 11 && prest0.y === 9 && prest0.pose === "knele" && prest0.dir === 1, `presten kneler attmed løparen og ser mot altaret (${prest0.x},${prest0.y} ${prest0.pose})`);
+    M.plasser(10, 9, 3); await vent(200);
     talarBorte = [];
     let peika11 = false, klokkarKom = false, snuddeBort = false;
     tast("z");
@@ -412,7 +412,7 @@ f.onload = async () => {
       sjekkTalar(["Presten", "Klokkaren"]);
       const p = M.aktor("Presten"), k = M.aktor("Klokkaren"), t = taleTekst();
       if (/Blækket i Kirke/.test(t) && p.pose === "peike" && p.dir === 3) peika11 = true;
-      if (/Her er Nøglen/.test(t) && k.x === 5 && k.y === 6 && k.dir === 1) klokkarKom = true;
+      if (/Her er Nøglen/.test(t) && k.x === 9 && k.y === 11 && k.dir === 1) klokkarKom = true;
       if (/Lidt\?/.test(t) && p.dir === 3 && !p.kjensle) snuddeBort = true;
     }, t => /Kva svarer/.test(t) ? 1 : 0);
     sjekk(peika11, "presten står opp og peikar mot prestegarden");
@@ -422,10 +422,10 @@ f.onload = async () => {
     sjekk(!talarBorte.length, "den som talar, står på kartet");
     for (let n = 0; n < 80 && M.aktor("Klokkaren").regi; n++) await vent(50);
     const p11 = M.aktor("Presten"), k11 = M.aktor("Klokkaren");
-    sjekk(p11.pose === "knele" && p11.dir === 1 && k11.x === 2 && k11.y === 6 && kanGaa(), `presten kneler att, og klokkaren er attende på plassen sin (${k11.x},${k11.y})`);
+    sjekk(p11.pose === "knele" && p11.dir === 1 && k11.x === 6 && k11.y === 11 && kanGaa(), `presten kneler att, og klokkaren er attende på plassen sin (${k11.x},${k11.y})`);
     // Etterpå: presten står opp, talar og kneler att.
     let stodOpp = false;
-    M.plasser(6, 4, 3); await vent(100);
+    M.plasser(10, 9, 3); await vent(100);
     tast("z");
     await gjennom(() => ferdigFelt() && stodOpp, () => {
       const p = M.aktor("Presten");
@@ -436,7 +436,7 @@ f.onload = async () => {
     // Når blekket er borte, står presten innanfor altarringen.
     s11.flagg.latt = true; M.last("kyrkja", "1"); await vent(200);
     const p11b = M.aktor("Presten");
-    sjekk(p11b.x === 6 && p11b.y === 3 && !p11b.pose && M.kart.folk.filter(f => f.namn === "Presten").length === 1, "etter blekklatten står presten i altarringen, éin gong");
+    sjekk(p11b.x === 10 && p11b.y === 8 && !p11b.pose && M.kart.folk.filter(f => f.namn === "Presten").length === 1, "etter blekklatten står presten i altarringen, éin gong");
     delete s11.flagg.latt;
 
     // d) Skammen på Nedre Hovde. Først feil svar: bestefaren snur ryggen til.
