@@ -1473,3 +1473,19 @@ same måte, uansett kven som tek over.
   (hylla utan kameraglid): dei nye nabbane syner ikkje der.
 - **Står att:** I utsnittet ytst på hylla syner berre dei øvste 20 til 30 pikslane av nabbane, så
   berre den øvste sprekka og laven der syner i spelet.
+
+## Runde 49: midtnabbane står nær kameraet, og sidenabbane høgare opp
+
+- **Oppdrag:** Midtnabbane såg ut som mørke kuplar som låg oppå dalbotnen, med ei lys stripe under den
+  midtre og ein rustoransje lavflekk som likna eit lite dyr. Sprekkene i sidenabbane synte nesten ikkje.
+- **Midtnabbane:** `nabb_ramme` har fått `toppdjup`, `sider`, `lys`, `grasdjup` og `heng`. `nabb-m` og
+  `nabb-m2` er no breie steinar med flat topp og tjukk graskappe med ujamn kant, lyng og grastuster
+  som heng ned over kanten, lysare og djupare toppflate (`MIDT_LYS`), ei brei lys side mot venstre og
+  ei mørk side mot høgre. Sidene vert breiare ned mot biletkanten, og dei står høgare i biletet, så dei
+  les som berg nær kameraet framfor og under dalen. Dei dekkjer ikkje Ivar, spissen eller elva, og det
+  er ei glipe mellom dei der dalen syner.
+- **Stripa og laven:** Éi høg blokkrad (ingen lys toppflate frå rad to tvers over biletet). Ingen
+  rustlav på dei små nabbane, berre gulgrøn og grågrøn. Laven kan no liggje på toppflatene òg.
+- **Sidenabbane:** 20 pikslar høgare (`y` 98 og 100), så sprekkene og laven syner både ytst på hylla
+  og på neset.
+- **Vurdert:** `forhand/skjerm/r49-for-etter.png` (same utsnitt som r48: ytst på hylla og neset).
