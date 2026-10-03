@@ -295,13 +295,12 @@ landskap langt nede som flyttar seg saktare enn kartet.
   dalsida møtest utan skøyt.
 - Djupn nedover (etter Octopath Traveler): det som er langt nede, er uskarpt (pikslane dobla), disig
   og lysare, og svake lysstrålar fell skrått ned gjennom disen.
-- Bergnabbane i forgrunnen er bygde av få, store steinblokker med klare flater: lyse toppflater, ei lys
-  skråkant på sida mot ljoset, rolege mellomtonar på framsidene og mørk skugge berre i fugene og under
-  blokker som stikk ut. Lite dither. Mose og lyng på toppflatene.
-  Framsidene har nokre få sprekker på skrå med greiner (mørk line, lys kant mot ljoset), små klynger av lav
-  (gulgrøn, grågrøn, litt rustoransje) nær toppkantar og sprekker, ei vassstripe, og litt fargevariasjon:
-  somme blokker varmare (brungrå), andre kaldare (blågrå), med to flate band lysare øvst. Litt mørkare og meir metta enn
-  klippeveggene i kartet, så dei ligg framfor.
+- Bergnabbane i forgrunnen er sett skrått ovanfrå, same perspektiv som kartet og dalen (Minish Cap,
+  FF6): toppflata er den største flata, med rolege steinflater (flate tonar, lite dither), grasmatter
+  mest langs kanten øvst, lyng i klyngjer, lav i nokre få flekker (gulgrøn og grågrøn, ikkje oransje på
+  små nabbar, det les som eit dyr) og nokre lange sprekker (mørk kjerne, lys kant mot ljoset). Kanten
+  mot dalen har ei lys rand og gras som heng litt over. Sidene er berre eit smalt band i skugge (lys mot
+  venstre, mørk mot høgre). Ingen høge, loddrette framsider, og graset stikk ikkje rett opp i silhuett.
 - Forgrunnen over stupet står alltid på noko: bergnabbar som kjem inn frå sida av biletet, med gras, lyng
   og ei lita bjørk på toppen, og berg som går så langt ned at det når kanten av biletet i alle
   kameraposisjonar. Aldri gras som heng fritt i lufta.

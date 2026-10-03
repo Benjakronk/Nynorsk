@@ -432,10 +432,9 @@ window.RPGData = (function () {
         // langt ned, så dei står på noko i alle kameraposisjonar: venstre syner ytst på hylla, høgre på neset.
         { bilete: "nabb", faktor: 1.25, ved: [6.5, 17.5], x: -18, y: 98, rammer: 3, rekkje: [0, 1, 2, 1], takt: 40 },
         { bilete: "nabb-h", faktor: [2, 1], ved: [8, 12.5], x: 250, y: 100, rammer: 3, rekkje: [0, 1, 2, 1], takt: 46 },
-        // Ytst på hylla: to låge nabbar midt nede som rammar inn utsikta (lågare og mindre enn sidenabbane,
-        // og litt ulik fart for djupn). Dei står berre i biletet når kameraet har glidd ned ytst på hylla.
-        { bilete: "nabb-m", faktor: 1.15, ved: [6.25, 19], x: 30, y: 112, rammer: 3, rekkje: [0, 1, 2, 1], takt: 52 },
-        { bilete: "nabb-m2", faktor: 1.1, ved: [6.25, 19], x: 197, y: 118, rammer: 3, rekkje: [0, 1, 2, 1], takt: 44 },
+        // Ytst på hylla: ein låg, flat nabb midt nede (sett skrått ovanfrå som dalen) som rammar inn utsikta.
+        // Han står berre i biletet når kameraet har glidd ned ytst på hylla.
+        { bilete: "nabb-m", faktor: 1.15, ved: [6.25, 19], x: 40, y: 120, rammer: 3, rekkje: [0, 1, 2, 1], takt: 52 },
       ],
       /* Nedst er kanten ujamn: platået stikk ut i eit nes (x 21 til 23) og går inn i ei vik (x 25 til 27),
          og under midten (x 4 til 17) går ein skrent med rampe (11,14) ned til ei hylle eitt nivå lenger

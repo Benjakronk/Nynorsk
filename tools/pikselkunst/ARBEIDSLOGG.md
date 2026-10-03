@@ -1505,3 +1505,18 @@ same måte, uansett kven som tek over.
   ikkje lenger syner nedst i biletet ytst på hylla eller på neset. Ingen rustlav att.
 - **Vurdert:** `forhand/skjerm/r50-for-etter.png`: ytst på hylla med kameraet oppe, ytst på hylla med
   kameraet glidd ned, og neset.
+
+## Runde 51: nabbane sett skrått ovanfrå
+
+- **Oppdrag:** Brukaren: forgrunnsnabbane ved dalen må sjåast skrått ovanfrå, elles øydelegg dei
+  perspektivet ned i dalen. Dei var teikna nesten rett framanfrå med høge, loddrette framsider.
+- **Gjort:** Ny `nabb_ovanfra()` i `utsikt.py` erstattar `nabb_ramme()`. Toppflata er den største flata:
+  rolege steinflater i flate tonar (utan dithering), grasmatter mest langs toppkanten og i nokre store
+  flekker (mørk kant der graset ligg oppå steinen), lyng i klyngjer, lav i få flekker og lange sprekker
+  sett ovanfrå, høgt nok til å syne i spelet. Kanten mot dalen har ei lys rand og korte grastuster som
+  heng over han. Sidene er eit smalt band i skugge (lys mot venstre, mørk mot høgre). Venstre nabb har
+  ein liten busk sett ovanfrå i staden for bjørka som stod opp.
+- **Færre element:** `nabb-m2` er teken bort. Med nabbane sett ovanfrå er éin låg nabb midt nede nok til
+  å ramme inn utsikta ytst på hylla, og meir av dalen syner. `nabb-m` er flatare og står litt lågare.
+  Parallaksfaktorane er uendra (1.25, [2, 1] og 1.15), sidan nabbane no står i same perspektiv som dalen.
+- **Vurdert:** `forhand/skjerm/r51-for-etter.png` (ytst på hylla og neset med kameraet glidd ned).
