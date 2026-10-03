@@ -81,8 +81,9 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   `klokke-0` til `klokke-8`, rotert rundt akselen) og dua (`due`, `due-fly-1` til `-7`) lagar `klokke.py`;
   klokkestolen er `klokkestol`. Sjå rammene med `skjermbilete.py namn kart=kyrkje-tarn m=1
   vesen=Klokka:klokke-0,Dua:due-fly-3` (parametrane `vesen=namn:bilete` og `snu=namn:retning` i skjerm.html).
-  Kyrkjebenkene er sju fliser lange med setet som eige flatt bilete (`kyrkjebenk-sete`), etter
-  «Standardperspektiv for objekt» i STILGUIDE.md, som gjeld alle nye objekt. Høge
+  Kyrkjebenkene er sju fliser lange med høg rygg og golvet som eige flatt bilete (`kyrkjebenk-golv`,
+  unntaket for benker i «Standardperspektiv for objekt» i STILGUIDE.md, som elles gjeld alle nye objekt).
+  Preikestolen er tre lag: `preikestol-bak`, `preikestol-trapp` (flat) og `preikestol`. Høge
   sidevindauge er to fliser: `Ø`/`Ö` (venstre, strålar) og `ø`/`ö` (høgre). Korgolvet er `Þ` (fast:
   `þ`). Stemninga `kyrkjerom` og glødforma `altar` (glod.py) gjer rommet mørkt og altaret lyst. Små motiv
   blir teikna med `_stempel` (strengar). Sjå med `skjermbilete.py namn kart=kyrkja m=1 x=10 y=9`

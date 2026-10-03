@@ -639,14 +639,14 @@ window.RPGData = (function () {
         { id: "inne-benk-staande-kort", x: 5, y: 10, h: 2 }, { id: "inne-benk-staande-kort", x: 15, y: 10, h: 2 },
         { id: "inne-skipvegg-v", x: 1, y: 9, h: 5 }, { id: "inne-skipvegg-h", x: 16, y: 9, h: 5 }, { id: "inne-korskilje", x: 5, y: 13, h: 1 },
         // Preikestolen i to lag: ryggbrettet og lydhimlingen bak den som står i korga, korga og trappa framfor.
-        { id: "inne-preikestol-bak", x: 1, y: 14, h: 2 }, { id: "inne-preikestol", x: 1, y: 15, h: 2 }, { id: "inne-dopefont", x: 17, y: 15, h: 1 },
+        { id: "inne-preikestol-bak", x: 1, y: 14, h: 2 }, { id: "inne-preikestol-trapp", x: 1, y: 15, h: 2, flat: true }, { id: "inne-preikestol", x: 1, y: 15, h: 2 }, { id: "inne-dopefont", x: 17, y: 15, h: 1 },
         // Benkene: salmebøker i dei fleste (variant "" og 5), hatt (2) og sjal (3) berre ved folka som
         // sit der og eitt gløymt sjal, slitte benker med stokk (4). Setet ligg flatt under figurane,
         // ryggen framfor (standardperspektivet, sjå STILGUIDE.md).
         ...[[18, "5", ""], [20, "3", "5"], [22, "", "4"], [24, "4", "2"], [26, "5", ""], [31, "", "5"], [33, "2", ""],
           [35, "5", "4"], [37, "", "3"], [39, "4", "5"], [44, "5", ""], [46, "", "3"], [48, "5", "5"], [50, "4", ""], [52, "", "5"]]
           .flatMap(([y, v, h]) => [{ id: "inne-kyrkjebenk-h" + v, x: 2, y, h: 1 }, { id: "inne-kyrkjebenk-v" + h, x: 12, y, h: 1 },
-            { id: "inne-kyrkjebenk-sete", x: 2, y, h: 1, flat: true }, { id: "inne-kyrkjebenk-sete", x: 12, y, h: 1, flat: true }]),
+            { id: "inne-kyrkjebenk-golv", x: 2, y: y - 1, h: 2, flat: true }, { id: "inne-kyrkjebenk-golv", x: 12, y: y - 1, h: 2, flat: true }]),
         // Epitafium og minnetavler på sideveggene (det typiske i ei luthersk bygdekyrkje), jernomnen og fattigblokka.
         ...[19, 33, 45].map(y => ({ id: "inne-epitaf-v", x: 0, y, h: 1 })), ...[26, 39].map(y => ({ id: "inne-epitaf-h", x: 20, y, h: 1 })),
         { id: "inne-jernomn", x: 19, y: 43, h: 1 }, { id: "inne-fattigblokk", x: 12, y: 58, h: 1 },
@@ -673,9 +673,9 @@ window.RPGData = (function () {
         "GGGGGÞÞÞÞÞlÞÞÞÞÞGGGGG",
         "GGGGG+++++l+++++GGGGG",
         "GqqqqqLqqŁlłqqLqqqqqG",
-        "Ø(((qqqqqŁlłqqqqq((qø",
+        "Ø((((qqqqŁlłqqqqq((qø",
         "ÖqqqqqqqqŁlłqqqqqqqqö",
-        "G(((qqqqqŁlłqqqqqqqqG",
+        "G((((qqqqŁlłqqqqqqqqG",
         "Gq(((((((Łlł(((((((qG",
         "GqqqqqqqqŁlłqqqqqqqqG",
         "Gq((($(((Łlł(((((((qG",
@@ -723,11 +723,14 @@ window.RPGData = (function () {
       // Ei lagring frå den vesle kyrkja (12 rader) har ein stad som ikkje finst lenger: Ivar startar
       // framfor altarringen (merke 2 er ikkje i kartet, sjå EKSTRA_MERKE), der lysestakane er.
       nyttOppsett: { fraH: 12, merke: "2" },
-      // Trappa opp til preikestolen: (3,16) midt i trappa, (2,16) øvst, (1,16) i korga (pikslar opp, og
+      // Trappa opp til preikestolen: (4,16) nedst, (3,16) midt i trappa, (2,16) øvst, (1,16) i korga (pikslar opp, og
       // 5 pikslar mot høgre så Ivar står midt i korga; sjå hogdVed() i motor.js). Rutene rundt (rad 15 og
-      // 17) er faste, så ein berre kjem opp og ned trappa. Mellom benkeradene står ein på golvet som elles
-      // (med benkene sett ovanfrå sokk Ivar elles bak dei som sit der).
-      hogd: { "3,16": 30, "2,16": [54, 2], "1,16": [56, 5] },
+      // 17, og ved den nedste trappeflisa) er faste, så ein berre kjem opp og ned trappa.
+      // I benkeradene (rada rett bak ein benk) står ein 5 pikslar lågare, så setet og ryggen framfor
+      // dekkjer føtene, men hovudet syner over den som sit rett framfor.
+      hogd: Object.assign({ "4,16": 17, "3,16": 35, "2,16": [53, 2], "1,16": [56, 5] },
+        Object.fromEntries([17, 19, 21, 23, 25, 30, 32, 34, 36, 38, 43, 45, 47, 49, 51].flatMap(y =>
+          [2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17, 18].map(x => [x + "," + y, -5])))),
       dorer: [{ ved: [10, 60], til: ["bygda", "3"] }, { ved: [8, 54], til: ["kyrkje-galleri", "1"] }],
       folk: [
         // Presten kneler framfor altarringen og bed til blekket er borte. Etter det står han innanfor ringen.
@@ -755,7 +758,7 @@ window.RPGData = (function () {
         ...[7, 9].map(y => ({ id: "inne-galleritrinn", x: 1, y, h: 1, flat: true })),
         { id: "inne-galleribrystning", x: 0, y: 5, h: 1 }, { id: "inne-orgel", x: 15, y: 6, h: 1 }, { id: "inne-benk-kort", x: 15, y: 7, h: 1 },
         { id: "inne-kyrkjebenk-h5", x: 2, y: 7, h: 1 }, { id: "inne-kyrkjebenk-h", x: 2, y: 9, h: 1 }, { id: "inne-kyrkjebenk-v4", x: 12, y: 9, h: 1 },
-        ...[[2, 7], [2, 9], [12, 9]].map(([x, y]) => ({ id: "inne-kyrkjebenk-sete", x, y, h: 1, flat: true }))],
+        ...[[2, 7], [2, 9], [12, 9]].map(([x, y]) => ({ id: "inne-kyrkjebenk-golv", x, y: y - 1, h: 2, flat: true }))],
       rader: [
         "                     ",
         "                     ",

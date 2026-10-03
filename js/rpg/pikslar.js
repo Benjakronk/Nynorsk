@@ -1825,7 +1825,7 @@ window.Pikslar = (function () {
     "inne-kubbestol-venstre": { hogd: 5, retning: 2 }, "inne-kubbestol-hogre": { hogd: 5, retning: 3 },
     "inne-benk": { hogd: 5 }, "inne-benk-kort": { hogd: 5 }, "inne-benk-staande": { hogd: 5 }, "inne-benk-staande-kort": { hogd: 5 },
     // Kyrkjebenkene er sette bakfrå: den som sit, ser fram mot altaret, og ryggen dekkjer nedre del av han.
-    ...Object.fromEntries(["", "2", "3", "4"].flatMap(v => ["h", "v"].map(d => [`inne-kyrkjebenk-${d}${v}`, { hogd: 6, retning: 1, fram: true }]))),
+    ...Object.fromEntries(["", "2", "3", "4", "5"].flatMap(v => ["h", "v"].map(d => [`inne-kyrkjebenk-${d}${v}`, { hogd: 2, retning: 1, fram: true }]))),
   };
   // Kva pikslar i ruta flammane kan teiknast på: berre mørket i eldstaden og den faste elden
   // i biletet, så gryta, kroken og kanten ligg framfor flammane.

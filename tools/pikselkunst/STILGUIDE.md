@@ -90,9 +90,13 @@ i spelpikslar:
   høg som han er brei, og sida under er kort.
 - **Rekkverk og balustradar:** handlista er ei brei toppflate (4 til 5 pikslar), balustrane korte (5 til
   6 pikslar).
-- **Benker der folk sit eller går imellom:** del biletet i eit flatt lag under figurane (setet,
-  `flat: true`) og eit lag framfor (toppflata og den korte baksida på ryggen), og senk figurane i
-  benkerada med `hogd`, så ryggen framfor dekkjer den nedre delen. Sjå kyrkjebenkene i `inventar.py`.
+- **Unntak: benker med rygg** (kyrkjebenkene, runde 58) har høg rygg sett bakfrå (13 pikslar), så
+  dei passar med folka som sit i dei. Golvet i benken ligg som eit flatt lag (`flat: true`) over heile
+  benkerada, så radene står tett utan golv imellom. Den som går i benkerada, er senka litt med `hogd`
+  (5 pikslar), så setet og ryggen framfor dekkjer føtene, og dei som sit, er lyfte lite (`SETE` hogd 2),
+  så hovudet til den som står bak, syner over dei.
+- **Trapper ein går i** (trappa til preikestolen): trinna er eit flatt lag under figuren, med brei, lys
+  tråflate og kort, mørk framside, og rekkverket er laget framfor. `hogd` følgjer trinnet under føtene.
 - Gjeld nye objekt frå no av. Eldre objekt med for låg vinkel står i ARBEIDSLOGG.md (runde 56).
 
 ## Norsk byggjeskikk, natur og kle (sjå konsept/)

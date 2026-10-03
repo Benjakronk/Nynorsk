@@ -1761,3 +1761,30 @@ same måte, uansett kven som tek over.
   (23,14): den venstre når venstre skjermkant, den høgre når høgre skjermkant der han syner, og
   midtnabben står fritt med sider som skrånar ut nedst, som før.
 - **Vurdert:** `forhand/skjerm/r58-oversikt.png` (alle seks posisjonane).
+
+## Runde 58: tette benkerader med høg rygg, og preikestolen med kuppel og trinn
+
+- **Frå brukaren:** Kyrkjebenkene skal tilbake til den høgare ryggen som passa med folka som sit, stå tett
+  utan golv imellom men så ein kan gå der; preikestolen treng eit tak med form og trinn Ivar går på.
+- **Før:** `forhand/skjerm/k57-for-bakkona-heil.png` (Ivar rett bak kona på 5,20), `k57-for-benk-heil.png`,
+  `k57-for-trapp-heil.png` og `k57-for-stol-heil.png`.
+- **Benkene:** ryggen frå før runde 56 er attende (13 pikslar, seteripe bak handlista, dør med rose),
+  med salmebøkene, hatt og sjal ved folka, og variant 5 med fem bøker. Nytt flatt lag `kyrkjebenk-golv`
+  (to rader høgt: golvet inne i benken med fotfjøl og blågrå sidebord) fyller heile benkerada, så radene
+  står tett. Den som går i benkerada, er senka 5 pikslar (setet og ryggen framfor dekkjer føtene), og
+  dei som sit, er lyfte 2 pikslar (`SETE`), så hovudet til den som står rett bak, syner over dei.
+  Prøvd og forkasta: 8 pikslar og teikning etter den som sit (då forsvann kona bak Ivar, og med
+  vanleg rekkjefølgje forsvann Ivar bak kona). STILGUIDE.md: benker er eit unntak med høgare rygg.
+- **Preikestolen, tre rundar:**
+  1. Lydhimlingen fekk volum: ein kvelva kuppel (lys oppe til venstre, mørk nede til høgre), gylne
+     ribber, gesims, raud lambrekin med bogar og gylne duskar, krone med kross og kule, og skugge på
+     ryggbrettet. Trinna fekk lys tråflate og mørk framside. Men Ivar stod bak trappa: trinna låg i
+     laget framfor.
+  2. Trinna er eit eige flatt lag (`preikestol-trapp`), rekkverket ligg framfor. Ivar står no oppå
+     trinnet. Handlista gjekk gjennom andletet hans og vart flytt lågare; gullkant på lambrekinen.
+  3. Trappa er lenger og slakare: seks trinn med brei tråflate (8 x 10 pikslar) og 3 pikslar framside,
+     ut på den fjerde flisa. Preikestolen er 5 fliser brei. `hogd` følgjer trinnet under føtene:
+     (4,16) 17, (3,16) 35, (2,16) 53, korga 56. Flisene ved den nedste trappeflisa er faste.
+- **Etter:** `k57-etter-bakkona-heil.png`, `k57-etter-benk-heil.png` (Ivar attmed bonden),
+  `k57-etter-trapp-heil.png`, `k57-etter-stol-heil.png`, og `k57-stol-rad.png` (Ivar på kvart trinn opp).
+- **Står att:** Trinna blir mørke i det mørke kyrkjerommet. Den som sit, syner berre hovudet.
