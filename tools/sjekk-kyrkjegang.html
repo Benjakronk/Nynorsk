@@ -41,6 +41,20 @@ f.onload = async () => {
     ut.push(`${rett ? "OK" : "FEIL"}: å ${namn} frå døra til altarringen tok ${s === null ? "for lang tid (stoppa på " + M.spelar.x + "," + M.spelar.y + ")" : s.toFixed(2) + " s"} (venta ${maal.toFixed(2)} s)`);
     await vent(300);
   }
+  // Trappa: frå våpenhuset opp på galleriet, vidare opp i tårnet, og ned att same vegen.
+  const gaaTil = async (kart, merke, tast_, maal, x, y) => {
+    M.last(kart, merke); await vent(400);
+    tast("keydown", tast_);
+    let n = 0; while (n++ < 300 && M.kart.id !== maal) await vent(20);
+    tast("keyup", tast_); await vent(700);
+    const rett = M.kart.id === maal && (x == null || (M.spelar.x === x && M.spelar.y === y));
+    if (!rett) ok = false;
+    ut.push(`${rett ? "OK" : "FEIL"}: frå ${kart} (${merke}) til ${M.kart.id} (${M.spelar.x},${M.spelar.y})`);
+  };
+  await gaaTil("kyrkja", "3", "ArrowUp", "kyrkje-galleri", 10, 10);
+  await gaaTil("kyrkje-galleri", "2", "ArrowDown", "kyrkje-tarn", 6, 10);
+  await gaaTil("kyrkje-tarn", "1", "ArrowDown", "kyrkje-galleri", 19, 10);
+  await gaaTil("kyrkje-galleri", "1", "ArrowDown", "kyrkja", 8, 55);
   ut.push(ok ? "Alt ser rett ut." : "Noko er feil.");
   document.getElementById("ut").textContent = ut.join("\n");
   f.remove();

@@ -1570,3 +1570,43 @@ same måte, uansett kven som tek over.
 - **Står att:** Benkeblokkene er like; folk på benkene eller salmebøker ville gje liv. Sidevindauga er små
   sett ovanfrå. Koret har same furugolv som skipet. Oversiktsbiletet har små sprang i skøytane der
   ting med parallakse står ulikt i kvar skjerm.
+
+## Runde 53: ei mørk kyrkje med liv i skipet, eige korgolv, og trappa opp til galleriet og tårnet
+
+- **Frå brukaren:** Meir variasjon i midtdelen, eige golv i koret, eit mørkare kyrkjerom. Og ei trapp opp
+  til galleriet («koret» over dei bakste benkene) og klokketårnet.
+- **Før:** `forhand/skjerm/k52-for-oversikt-to.png` og `k52-for-kor-heil.png`.
+- **Mørkt rom:** ny stemning `kyrkjerom` (bakgrunnen -9/-9/-5, figurane -4/-4/-2, strålar og
+  lyskjelder). Som i dei mørke interiøra i FF6 kjem lyset berre frå kjeldene: strålane frå vindauga
+  (kjernen tek snittet mot kvitt), den nye glødforma `altar` (glod.py) over heile altartavla og altaret,
+  så dei er det lysaste i kyrkja, altarljosa, lysekronene med lyspølane, lysestakane og jernomnen.
+  Figurane er lysare enn rommet og lesbare.
+- **Korgolvet:** breie, mørke eikeplankar på tvers (`Þ`, fast `þ`, med variantar så skøytane ikkje står i
+  rutenett) mot dei lyse furuplankane på langs i skipet. Lysestakane (kvileplassen) står no framfor
+  korskiljet, og merka `%` og `@` i koret ligg i `EKSTRA_MERKE`, så golvet under dei er korgolv.
+- **Variasjon i skipet:**
+  - Benkene i fire variantar (`kyrkjebenk-h2` til `-h4`, `-v2` til `-v4`): namneplate på døra
+    (gardsbenk), éi til tre salmebøker, svart hatt, raudt sjal over ryggen, stokk, slitt handlist og
+    flekkar i målinga, ulik farge på rosa. Ingen rad er lik naboen.
+  - Fire kyrkjefolk sit i benkene (nye figurar `kyrkjekone`, `kyrkjemann`, `kyrkjegamal`, sett
+    bakfrå): `pose: "sitje"` og `flis: "("`, og benkene står i `SETE` med `fram: true`, så ryggen
+    dekkjer nedre del av dei. Dei har eigne småreplikkar og fellesportrett, og står ikkje i midtgangen.
+  - Epitafium på sideveggene (`epitaf-v` og `-h`, sett skrått), høge vindauge på to fliser
+    (`Ø`/`Ö` og `ø`/`ö`, strålar frå begge halvdelane), tre ulike gravheller i tverrgangane (`flat: true`:
+    ny i motor.js, bygget ligg på golvet under figurane utan slagskugge), jernomn med glo i den andre
+    tverrgangen og fattigblokk ved inngangen. Ein jernomn i ei bygdekyrkje kring 1830 er tidleg, men
+    mange kyrkjer fekk omn utover 1800-talet.
+- **Trappa, galleriet og tårnet:** trappa (`trapp`, flat) går frå våpenhuset opp til ei opning i veggen
+  (`E` på 8,54) til kartet `kyrkje-galleri`: brystninga framme med utsyn ned i skipet
+  (`inne-skip-utsyn.png`, rad 45 til 49 i kyrkja utan lys frå `oversikt.py ... stemning=ingen`, mørkna
+  med dis i tre trinn), to rader benker og vindauge. Døra bak til høgre fører til `kyrkje-tarn`:
+  laftevegger, to lydluker med lamellar der lyset fell inn, klokka i klokkestolen med tau ned til golvet,
+  og to grove bjelkar høgt oppe (`over`, faktor 1,3). `sjekk-kyrkjegang.html` går opp og ned att.
+- **Rundar:** 1) Jernomnen fekk glødforma til kakkelomnen og vart kvitvaska: no den vesle `lys`. 2)
+  Sitjande folk synte berre hovudet: setehøgd 6. 3) Korgolvet låg i rutenett som murstein: lange
+  plankar med skøyt berre på kvar andre flis. 4) Døropninga i bakveggen hamna på feil flis og stengde
+  midtgangen: retta, og gangtida er målt på nytt. 5) Den øvste bjelken i tårnet låg over lydlukene.
+- **Vurdert:** `k52-etter-oversikt-to.png`, `k52-etter-kor-heil.png`, `k52-folk-heil.png`,
+  `k52-trapp-heil.png`, `k52-galleri-heil.png` og `k52-tarn-heil.png`.
+- **Står att:** Galleriet og tårnet har ingen folk eller hendingar. Utsynet frå galleriet er eit fast
+  bilete (lysekronene i det rører seg ikkje). Tårnet har ingen trapp vidare opp eller tau Ivar kan dra i.

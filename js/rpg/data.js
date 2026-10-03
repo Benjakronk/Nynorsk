@@ -173,6 +173,10 @@ window.RPGData = (function () {
     mor: { hud: "#e8c0a0", frisyre: "skaut", skaut: "#6a3a7a", jakke: "#8a2638", kjole: "#3a3a44" },
     dotter: { hud: "#f0c8a8", har: "#c8a050", frisyre: "langt", jakke: "#ecebf0", kjole: "#8a2638" },
     bestefar: { hud: "#dcb898", har: "#bcbccc", frisyre: "skalle", jakke: "#d8d0b8", bukse: "#3a3a44", skjegg: "#bcbccc", strompe: "#e4e0d6", belte: true, stav: "stokk" },
+    // Kyrkjefolk som sit i benkene (sett bakfrå): kvitt skaut og mørk kyrkjestakk, svart sundagsjakke, og ein gamal mann.
+    kyrkjekone: { hud: "#e4c4a8", frisyre: "skaut", skaut: "#e4e0d6", jakke: "#2c3448", kjole: "#1c1c28" },
+    kyrkjemann: { hud: "#dcb088", har: "#8a6a3a", jakke: "#26262e", bukse: "#3a3444", strompe: "#e4e0d6" },
+    kyrkjegamal: { hud: "#dcb898", har: "#d8d8e0", frisyre: "skalle", jakke: "#5a4030", bukse: "#3a3a44", skjegg: "#d8d8e0", strompe: "#e4e0d6", krokrygg: true },
   };
 
   /* Kjensler i manus: { s: "Presten", t: "…", kjensle: "sint" } gjeld den som talar, og
@@ -202,6 +206,7 @@ window.RPGData = (function () {
     "Bestefaren": "bygd-gamal-mann", "Tenaren på Ekset": "bygd-gamal-mann",
     "Gamal kone": "bygd-gamal-kone", "Mora": "bygd-gamal-kone", "Kone frå bygda": "bygd-gamal-kone",
     "Gjetarguten": "bygd-gut",
+    "Ei kone i benken": "bygd-kvinne", "Ei ung kone": "bygd-kvinne", "Ein bonde i benken": "bygd-mann", "Ein gamal mann": "bygd-gamal-mann",
   };
 
   // Portrett med kjensler: bilete/spel/portrett/<id>-<kjensle>.png (laga med portrett.py).
@@ -271,6 +276,16 @@ window.RPGData = (function () {
       straalar: true, kjelder: true,
       glod: { bak: [{ p: [3, 3, 1] }, { p: [5, 5, 2] }, { p: [3, 3, 1], snitt: [31, 30, 24] }], fig: [{ p: [3, 3, 1] }, { p: [4, 4, 2] }, { p: [6, 6, 3] }] },
     },
+    /* Den store kyrkja: eit mørkt, kjølig rom (som dei mørke interiøra i FF6, der berre lyskjeldene
+       er lyse). Lyset kjem frå vindauga (strålane, kjernen tek snittet mot kvitt), altartavla (den
+       store gløden altar), altarljosa, lysekronene og jernomnen. Figurane blir mindre mørke enn
+       rommet, så dei er lesbare i skuggen. */
+    kyrkjerom: {
+      bak: { p: [-9, -9, -5] }, fig: { p: [-4, -4, -2] },
+      straalar: true, kjelder: true,
+      glod: { bak: [{ p: [-4, -4, -3] }, { p: [1, 1, -1] }, { p: [3, 3, 1], snitt: [31, 30, 24] }], fig: [{ p: [-2, -2, -1] }, { p: [1, 1, 0] }, { p: [4, 4, 2] }] },
+      syklus: [[0, 0, 0], [1, 1, 0], [0, 0, 0], [1, 0, 0]],
+    },
     // Minne og draum: falma fargar og lyse kantar øvst og nedst, i trinn.
     minne: {
       sepia: 0.8, bak: { p: [2, 1, -1] }, fig: { p: [3, 2, 0] },
@@ -293,6 +308,7 @@ window.RPGData = (function () {
     lykt: { rammer: 2, rekkje: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1] },
     krone: { rammer: 2, rekkje: [0, 0, 1, 0, 0, 0, 0, 1, 1, 0] },
     kronegolv: { rammer: 2, rekkje: [0, 0, 0, 1, 0, 0, 0, 0, 1, 0] },   // pølen på golvet under lysekrona (fast, utan parallakse)
+    altar: { rammer: 2, rekkje: [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0] },   // altartavla og altaret (roleg)
     ivar: { rammer: 2, rekkje: [0, 0, 0, 1, 0, 0, 1, 0] },
     sky: { rammer: 1, rekkje: [0] },
     glugge: { rammer: 2, rekkje: [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1] },   // dagslys gjennom glugga, støv som sviv
@@ -603,23 +619,36 @@ window.RPGData = (function () {
       ],
     },
     kyrkja: {
-      namn: "Hovdekyrkja", stemning: "kyrkje", golv: "q", inne: true, fristad: true, bakgrunn: "kyrkje",
-      /* Ei stor langkyrkje (runde 52): 50 fliser frå døra (merke 1) til altarringen, 10 sekund å gå
-         og om lag 6,7 sekund å springe (sjå tools/sjekk-kyrkjegang.html). Frå døra og opp: våpenhuset
-         (rad 55 til 59) med benker langs veggene, skipet (rad 14 til 53) med galleriet over dei bakste
-         radene, tre benkeblokker og to tverrgangar med gravheller i golvet (Æ æ), framme preikestolen med trapp (venstre) og døypefonten (høgre), korskiljet under
-         korbogen (rad 13), og koret (smalare, rad 0 til 12) med korstolar, altarringen, altaret og
-         altartavla. Vindauge i sideveggene (Ø i venstre vegg kastar lysstrålar over golvet, ø i
-         høgre vegg) og i bakveggen i koret (u). Lysekronene og kyrkjeskipet heng høgt (over: true)
-         og har parallakse (faktor over 1): dei flyttar seg raskare enn golvet når kameraet går, og
-         lyspølen frå krona ligg fast på golvet under.
+      namn: "Hovdekyrkja", stemning: "kyrkjerom", golv: "q", inne: true, fristad: true, bakgrunn: "kyrkje",
+      /* Ei stor langkyrkje (runde 52 og 53): 50 fliser frå døra (merke 1) til altarringen, 10 sekund
+         å gå og om lag 6,7 sekund å springe (sjå tools/sjekk-kyrkjegang.html). Frå døra og opp:
+         våpenhuset (rad 55 til 59) med benker langs veggene og fattigblokka, skipet (rad 14 til 53)
+         med galleriet over dei bakste radene, tre benkeblokker (fire variantar av benkene: namneplater,
+         salmebøker, hatt, sjal, slitasje) med kyrkjefolk som sit, to tverrgangar med gravheller i
+         golvet (flat: true) og jernomnen, epitafium på sideveggene, framme lysestakane, preikestolen
+         med trapp (venstre) og døypefonten (høgre), korskiljet under korbogen (rad 13), og koret
+         (smalare, rad 0 til 12) med eige golv av mørke eikeplankar på tvers (Þ, fast þ), korstolar,
+         altarringen, altaret og altartavla. Høge vindauge i sideveggene (Ø og Ö: øvre og nedre halvdel
+         i venstre vegg, med lysstrålar over golvet; ø og ö i høgre vegg) og i bakveggen i koret (u).
+         Lysekronene og kyrkjeskipet heng høgt (over: true) og har parallakse (faktor over 1): dei
+         flyttar seg raskare enn golvet når kameraet går, og lyspølen frå krona ligg fast på golvet.
+         Stemninga kyrkjerom gjer rommet mørkt, så altartavla, ljosa og vindauga lyser.
          Inventaret er figurar laga med tools/pikselkunst/inventar.py. */
       bygg: [{ id: "inne-korvegg", x: 5, y: 0, h: 5 }, { id: "inne-altartavle", x: 8, y: 0, h: 7 }, { id: "inne-altarring", x: 7, y: 6, h: 3 },
         { id: "inne-benk-staande-kort", x: 5, y: 10, h: 2 }, { id: "inne-benk-staande-kort", x: 15, y: 10, h: 2 },
         { id: "inne-skipvegg-v", x: 1, y: 9, h: 5 }, { id: "inne-skipvegg-h", x: 16, y: 9, h: 5 }, { id: "inne-korskilje", x: 5, y: 13, h: 1 },
         { id: "inne-preikestol", x: 1, y: 15, h: 2 }, { id: "inne-dopefont", x: 17, y: 15, h: 1 },
-        ...[18, 20, 22, 24, 26, 31, 33, 35, 37, 39, 44, 46, 48, 50].flatMap(y => [{ id: "inne-kyrkjebenk-h", x: 2, y, h: 1 }, { id: "inne-kyrkjebenk-v", x: 11, y, h: 1 }]),
-        { id: "inne-benk-staande-kort", x: 8, y: 56, h: 2 }, { id: "inne-benk-staande-kort", x: 12, y: 56, h: 2 },
+        // Benkene i fire variantar, så ingen rad er lik naboen.
+        ...[18, 20, 22, 24, 26, 31, 33, 35, 37, 39, 44, 46, 48, 50].flatMap((y, i) => [
+          { id: "inne-kyrkjebenk-h" + ["", "2", "3", "", "4", "2", "3"][i % 7], x: 2, y, h: 1 },
+          { id: "inne-kyrkjebenk-v" + ["3", "", "4", "2", "", "3", "2"][i % 7], x: 11, y, h: 1 }]),
+        // Epitafium på sideveggene, gravheller i tverrgangane, jernomnen og fattigblokka.
+        ...[19, 33, 45].map(y => ({ id: "inne-epitaf-v", x: 0, y, h: 1 })), ...[26, 39].map(y => ({ id: "inne-epitaf-h", x: 20, y, h: 1 })),
+        { id: "inne-gravhelle1", x: 4, y: 28, h: 1, flat: true }, { id: "inne-gravhelle3", x: 15, y: 29, h: 1, flat: true },
+        { id: "inne-gravhelle2", x: 14, y: 41, h: 1, flat: true }, { id: "inne-gravhelle1", x: 5, y: 42, h: 1, flat: true },
+        { id: "inne-jernomn", x: 19, y: 43, h: 1 }, { id: "inne-fattigblokk", x: 12, y: 58, h: 1 },
+        // Trappa i våpenhuset opp til galleriet (døra «E» i veggen over), og benken på andre sida.
+        { id: "inne-trapp", x: 8, y: 55, h: 3, flat: true }, { id: "inne-benk-staande-kort", x: 12, y: 56, h: 2 },
         // Galleriet over den bakre delen av skipet: ein går under det inn i kyrkja (silhuett: Ivar syner gjennom).
         { id: "inne-galleri", x: 0, y: 51, h: 3, over: true, faktor: 1.15, silhuett: true },
         // Høgt oppe: lysekroner i par over benkeblokkene (ikkje over midtgangen, så kjettingen ikkje
@@ -633,73 +662,127 @@ window.RPGData = (function () {
         "    GGGGGGGGGGGGG    ",
         "    GGGGGGGGGGGGG    ",
         "    GGuGGGGGGGuGG    ",
-        "    Gqqqq+++qqqqG    ",
-        "    Gqq+q+++q+qqG    ",
-        "    Øqq+qqqqq+qqø    ",
-        "    GqL+++%+++LqG    ",
-        "GGGGGqqqqqlqqqqqGGGGG",
-        "GGGGG(qqqqlqqqq(GGGGG",
-        "GGGGG(@qqqlqqqq(GGGGG",
-        "GGGGGqqqqqlqqqqqGGGGG",
+        "    GÞÞÞÞþþþÞÞÞÞG    ",
+        "    ØÞÞþÞþþþÞþÞÞø    ",
+        "    ÖÞÞþÞÞÞÞÞþÞÞö    ",
+        "    GÞÞþþþÞþþþÞÞG    ",
+        "GGGGGÞÞÞÞÞlÞÞÞÞÞGGGGG",
+        "GGGGGþÞÞÞÞlÞÞÞÞþGGGGG",
+        "GGGGGþÞÞÞÞlÞÞÞÞþGGGGG",
+        "GGGGGÞÞÞÞÞlÞÞÞÞÞGGGGG",
         "GGGGG+++++l+++++GGGGG",
-        "GqqqqqqqqqlqqqqqqqqqG",
+        "GqqqqqLqqqlqqqLqqqqqG",
         "Ø((qqqqqqqlqqqqqq((qø",
-        "G(((qqqqqqlqqqqqqqqqG",
+        "Ö(((qqqqqqlqqqqqqqqqö",
         "GqqqqqqqqqlqqqqqqqqqG",
         "Gq((((((((l((((((((qG",
         "GqqqqqqqqqlqqqqqqqqqG",
-        "Gq((((((((l((((((((qG",
+        "Gq((($((((l((((((((qG",
         "GqqqqqqqqqlqqqqqqqqqG",
         "Øq((((((((l((((((((qø",
+        "Öqqqqqqqqqlqqqqqqqqqö",
+        "Gq((((((((l((((!(((qG",
         "GqqqqqqqqqlqqqqqqqqqG",
         "Gq((((((((l((((((((qG",
         "GqqqqqqqqqlqqqqqqqqqG",
-        "Gq((((((((l((((((((qG",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "GqqqÆæqqqqlqqqqqÆæqqG",
         "Øqqqqqqqqqlqqqqqqqqqø",
+        "Öqqqqqqqqqlqqqqqqqqqö",
         "GqqqqqqqqqlqqqqqqqqqG",
         "Gq((((((((l((((((((qG",
         "GqqqqqqqqqlqqqqqqqqqG",
-        "Gq((((((((l((((((((qG",
+        "Gq(&((((((l((((((((qG",
         "GqqqqqqqqqlqqqqqqqqqG",
         "Øq((((((((l((((((((qø",
+        "Öqqqqqqqqqlqqqqqqqqqö",
+        "Gq((((((((l((*(((((qG",
         "GqqqqqqqqqlqqqqqqqqqG",
         "Gq((((((((l((((((((qG",
         "GqqqqqqqqqlqqqqqqqqqG",
-        "Gq((((((((l((((((((qG",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "GqqqÆæqqqqlqqqqqÆæqqG",
         "Øqqqqqqqqqlqqqqqqqqqø",
-        "GqqqqqqqqqlqqqqqqqqqG",
+        "Öqqqqqqqqqlqqqqqqqqqö",
+        "Gqqqqqqqqqlqqqqqqqq(G",
         "Gq((((((((l((((((((qG",
         "GqqqqqqqqqlqqqqqqqqqG",
         "Gq((((((((l((((((((qG",
-        "GqqqqqqqqqlqqqqqqqqqG",
-        "Øq((((((((l((((((((qø",
+        "Øqqqqqqqqqlqqqqqqqqqø",
+        "Öq((((((((l((((((((qö",
         "GqqqqqqqqqlqqqqqqqqqG",
         "Gq((((((((l((((((((qG",
         "GqqqqqqqqqlqqqqqqqqqG",
         "GqqqqqqqqqlqqqqqqqqqG",
         "GqqqqqqqqqlqqqqqqqqqG",
-        "GGGGGGGGGGlGGGGGGGGGG",
-        "       GqqlqqG       ",
-        "       G(qlq(G       ",
-        "       Ø(qlq(G       ",
-        "       GqqlqqG       ",
+        "GGGGGGGGEGlGGGGGGGGGG",
+        "       G3qlqqG       ",
+        "       Øqqlq(G       ",
+        "       Öqqlq(G       ",
+        "       Gqqlq(G       ",
         "       Gqq1qqG       ",
         "       GGGEGGG       ",
       ],
       // Ei lagring frå den vesle kyrkja (12 rader) har ein stad som ikkje finst lenger: Ivar startar
       // framfor altarringen (merke 2 er ikkje i kartet, sjå EKSTRA_MERKE), der lysestakane er.
       nyttOppsett: { fraH: 12, merke: "2" },
-      dorer: [{ ved: [10, 60], til: ["bygda", "3"] }],
+      dorer: [{ ved: [10, 60], til: ["bygda", "3"] }, { ved: [8, 54], til: ["kyrkje-galleri", "1"] }],
       folk: [
         // Presten kneler framfor altarringen og bed til blekket er borte. Etter det står han innanfor ringen.
         { merke: "p", u: "prest", namn: "Presten", atferd: "stille", retning: 1, pose: "knele", tale: "prest", vis: st => !st.flagg.latt },
         { merke: "%", u: "prest", namn: "Presten", atferd: "stille", retning: 0, tale: "prest", vis: st => !!st.flagg.latt },
         { merke: "@", u: "klokkar", namn: "Klokkaren", atferd: "snu", retning: 3, snu: [0, 1, 3], tale: "klokkar" },
+        // Kyrkjefolk som sit i benkene (sett bakfrå, ikkje i midtgangen). flis: ruta under er benk.
+        { merke: "$", u: "kyrkjekone", namn: "Ei kone i benken", atferd: "stille", pose: "sitje", flis: "(", tale: "kyrkjekone" },
+        { merke: "!", u: "kyrkjemann", namn: "Ein bonde i benken", atferd: "stille", pose: "sitje", flis: "(", tale: "kyrkjemann" },
+        { merke: "&", u: "kyrkjegamal", namn: "Ein gamal mann", atferd: "stille", pose: "sitje", flis: "(", tale: "kyrkjegamal" },
+        { merke: "*", u: "kyrkjekone", namn: "Ei ung kone", atferd: "stille", pose: "sitje", flis: "(", tale: "kyrkjekone2" },
       ],
+    },
+    /* Galleriet i kyrkja (runde 53): trappa frå våpenhuset kjem opp gjennom opninga midt bak.
+       Framme er brystninga, og over ho ser ein ned i skipet (inne-skip-utsyn: rad 45 til 49 i
+       kyrkja utan lys, med dis, laga med oversikt.py stemning=ingen). To rader benker, vindauge i
+       sideveggene, og døra bak til høgre fører opp i tårnet. */
+    "kyrkje-galleri": {
+      namn: "Galleriet", stemning: "kyrkjerom", golv: "q", inne: true, fristad: true, bakgrunn: "kyrkje",
+      bygg: [{ id: "inne-skip-utsyn", x: 0, y: 0, h: 5, flat: true }, { id: "inne-galleribrystning", x: 0, y: 5, h: 1 },
+        ...[7, 9].flatMap(y => [{ id: "inne-kyrkjebenk-h" + (y === 7 ? "3" : ""), x: 2, y, h: 1 }, { id: "inne-kyrkjebenk-v" + (y === 7 ? "" : "4"), x: 11, y, h: 1 }])],
+      rader: [
+        "                     ",
+        "                     ",
+        "                     ",
+        "                     ",
+        "                     ",
+        "G+++++++++++++++++++G",
+        "ØqqqqqqqqqqqqqqqqqqqG",
+        "Öq((((((((q((((((((qG",
+        "GqqqqqqqqqqqqqqqqqqqG",
+        "Gq((((((((q((((((((qG",
+        "Gqqqqqqqqq1qqqqqqqq2G",
+        "GGGGGGGGGGEGGGGGGGGEG",
+      ],
+      dorer: [{ ved: [10, 11], til: ["kyrkja", "3"] }, { ved: [19, 11], til: ["kyrkje-tarn", "1"] }],
+      folk: [],
+    },
+    /* Klokketårnet (runde 53): laftevegger, lydluker med lamellar der lyset fell inn (u), klokka i
+       klokkestolen med tauet ned til golvet, og grove bjelkar høgt oppe med parallakse. */
+    "kyrkje-tarn": {
+      namn: "Klokketårnet", stemning: "kyrkjerom", golv: "O", inne: true, fristad: true, bakgrunn: "kyrkje",
+      bygg: [{ id: "inne-lydluke", x: 3, y: 0, h: 2 }, { id: "inne-lydluke", x: 9, y: 0, h: 2 },
+        { id: "inne-kyrkjeklokke", x: 5, y: 5, h: 2 },
+        ...[3, 8].map(y => ({ id: "inne-tarnbjelke", x: 0, y, h: 1, over: true, faktor: 1.3 }))],
+      rader: [
+        "XXXXXXXXXXXXX",
+        "XXXuXXXXXuXXX",
+        "XOOOOOOOOOOOX",
+        "XOOOOOOOOOOOX",
+        "XOOOOOOOOOOOX",
+        "XOOOO(((OOOOX",
+        "XOOOO(((OOOOX",
+        "XOOOOOOOOOOOX",
+        "XOOOOOOOOOOOX",
+        "XOOOOOOOOOOOX",
+        "XOOOOO1OOOOOX",
+        "XXXXXXEXXXXXX",
+      ],
+      dorer: [{ ved: [6, 11], til: ["kyrkje-galleri", "2"] }],
+      folk: [],
     },
     prestegarden: {
       namn: "Prestegarden", stemning: "inne", golv: "P", inne: true, bakgrunn: "inne",
@@ -869,7 +952,7 @@ window.RPGData = (function () {
     },
   };
   // Merke som ikkje står i karta (framfor dører som fører ut att).
-  const EKSTRA_MERKE = { ekset: { d: [10, 4] }, kyrkja: { p: [11, 9], 2: [10, 9] }, asen: { 1: [13, 7] } };   // asen 1: midt på tunet (testar og skjermbilete)     // kyrkja p: der presten kneler, attmed løparen; 2: framfor altarringen (gamle lagringar)
+  const EKSTRA_MERKE = { ekset: { d: [10, 4] }, kyrkja: { p: [11, 9], 2: [10, 9], "%": [10, 8], "@": [6, 11] }, asen: { 1: [13, 7] } };   // asen 1: midt på tunet (testar og skjermbilete)     // kyrkja p: der presten kneler, attmed løparen; 2: framfor altarringen (gamle lagringar); % og @ ligg her, så korgolvet ikkje blir furugolv under dei
 
   /* ---------- Verdskartet (frå kapittel 2) ---------- */
   const STADER = [];
@@ -1505,6 +1588,25 @@ window.RPGData = (function () {
       { s: "Klokkaren", t: "Ei ⟪bok⟫ er ei bok, same kva mål ho er skriven på. Det har eg alltid sagt.", kjensle: "nikk" },
       { lytt: ["bok", "bok"] },
       { s: "Klokkaren", t: "Kyrkja er ein fristad. Blekket kjem ikkje inn her. Syng med oss ved lysestaken når du er trøytt.", kjensle: "glad" },
+    ] }],
+    // Kyrkjefolket i benkene: korte, stille ord, og annleis når blekket er borte.
+    kyrkjekone: [{ dersom: st => st.flagg.latt, da: [
+      { s: "Ei kone i benken", t: "Salmane går lett att. Eg trudde orda hadde frose fast i boka for godt.", kjensle: "glad" },
+    ], elles: [
+      { s: "Ei kone i benken", t: "Sss … Presten bed framme ved altaret. Vi sit her og ventar til blekket gir seg.", kjensle: "trist" },
+    ] }],
+    kyrkjemann: [{ dersom: st => st.flagg.latt, da: [
+      { s: "Ein bonde i benken", t: "Denne benken har stått på garden vår i hundre år. No kan ein sitje i fred att.", kjensle: "nikk" },
+    ], elles: [
+      { s: "Ein bonde i benken", t: "Namnet på døra er garden min. Far sat her, og farfar før han.", kjensle: "tenkje" },
+    ] }],
+    kyrkjegamal: [
+      { s: "Ein gamal mann", t: "Hella der borte i tverrgangen ligg over ein prest frå gamle dagar. Det står at alt skrive skal stå.", kjensle: "tenkje" },
+    ],
+    kyrkjekone2: [{ dersom: st => st.flagg.latt, da: [
+      { s: "Ei ung kone", t: "No er det varmt i omnen og lyst i kyrkja. Takk, Ivar.", kjensle: "glad" },
+    ], elles: [
+      { s: "Ei ung kone", t: "Det er så mørkt her inne. Berre ljosa ved altaret held motet oppe.", kjensle: "trist" },
     ] }],
     tenestejente: [{ dersom: st => st.flagg.latt, da: [
       { s: "Tenestejenta", t: "Eg kan snakke som eg vil att! Det var som å ha blekk i munnen.", kjensle: "glad" },

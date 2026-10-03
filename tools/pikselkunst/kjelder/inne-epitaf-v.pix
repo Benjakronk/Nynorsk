@@ -1,0 +1,65 @@
+# namn: inne-epitaf-v
+# type: bygg
+# ut: bilete/spel/bygg/inne-epitaf-v.png
+# storleik: 24x44
+palett:
+  . = -
+  o = #0a0514    omriss
+  y = #f8d840    gull lys
+  Y = #d0a030    gull
+  Z = #8a5a18    gull skugge
+  w = #f4f2f8    kvit
+  W = #c8c6d4    kvit skugge
+  b = #1c2448    bilete djup
+  B = #3a4a8a    bilete blå
+  h = #e8c8a8    hud
+  H = #b08868    hud skugge
+  e = #26402f    stoff skugge
+  v = #1a1a24    jern djup
+  p = #d8d0b8    papir
+  P = #a89e86    papir skugge
+bilete:
+  ........................
+  ........................
+  .................oo.....
+  ................oYYo....
+  ...............oYyyZo...
+  ..............oYyZoyZo..
+  ..............oYyooYyZo.
+  ...............oZYyyZo..
+  ................ooZZo...
+  ................oooooo..
+  ...............oYYYYYYo.
+  ...............oybbbbZo.
+  ...............oybbbbZo.
+  ...............oybbbbZo.
+  ...............oybbbbZo.
+  ...............oybhHbZo.
+  ...............oyBwWBZo.
+  ...............oyBvvBZo.
+  ...............oyBvvBZo.
+  ...............oyBvvBZo.
+  ...............oyBvvBZo.
+  ...............oyBvvBZo.
+  ...............oyBvvBZo.
+  ...............oyBvvBZo.
+  ...............oyBBBBZo.
+  ...............oyBBBBZo.
+  ...............oyeeeeZo.
+  ...............oyeeeeZo.
+  ...............oyepPeZo.
+  ...............oyeeeeZo.
+  ...............oyepPeZo.
+  ...............oyeeeeZo.
+  ...............oyeeeeZo.
+  ...............oYYYYYYo.
+  ................oYyZoo..
+  .................oYZo...
+  .................oZo....
+  .................oyo....
+  ..................o.....
+  ........................
+  ........................
+  ........................
+  ........................
+  ........................

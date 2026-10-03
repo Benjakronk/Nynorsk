@@ -648,10 +648,13 @@ def preikestol():
     return L
 
 
-def kyrkjebenk(dor, n=8):
-    """Lukka kyrkjebenk sett bakfrå, n fliser lang (8 i den store kyrkja): ryggen med fyllingar i lyst blågrått, ei salmebok
-    på handlista og benkedøra ved midtgangen (dor="h": døra til høgre, "v": til venstre), med
-    utskoren topp og ei rosemålt rose. Går 4 pikslar opp over flisa."""
+def kyrkjebenk(dor, n=8, variant=0):
+    """Lukka kyrkjebenk sett bakfrå, n fliser lang (8 i den store kyrkja): ryggen med fyllingar i lyst
+    blågrått, handlista og benkedøra ved midtgangen (dor="h": døra til høgre, "v": til venstre), med
+    utskoren topp og ei rosemålt rose. Går 4 pikslar opp over flisa. Fire variantar, så radene ikkje
+    blir like: 0 to salmebøker; 1 namneplate på døra (gardsbenk), ein svart hatt og éi bok; 2 eit sjal
+    over ryggen og slitt måling; 3 namneplate, tre bøker og ein stokk som står inntil. Rosa på døra har
+    ulik farge."""
     W, H = n * 16 + 8, 20
     L = Lerret(W, H)
     x0, x1 = 4, W - 5
@@ -670,10 +673,32 @@ def kyrkjebenk(dor, n=8):
         if k == 15:
             for y in range(12, 18): L.p(x, y, "4")
     for y in range(12, 18): L.p(x1, y, "4")
-    # salmebok på handlista
-    for bx in ((x0 + 22, x0 + 70) if dor == "h" else (x1 - 30, x1 - 78)):
+    inn = (lambda a: x0 + a) if dor == "h" else (lambda a: x1 - a)             # avstand frå veggenden
+    # slitasje: handlista slitt ned til treet der folk tek tak, flekkar i målinga på fyllingane
+    if variant in (2, 3):
+        for a in (10, 11, 12, 40, 41, 74, 75, 76, 77, 100, 101):
+            if x0 <= inn(a) <= x1: L.p(inn(a), 7, "C")
+        for i, a in enumerate((20, 52, 87)):
+            x = inn(a); L.p(x, 13 + i % 3, "W"); L.p(x + 1, 13 + i % 3, "W"); L.p(x + 1, 14 + i % 3, "g")
+    # salmebøker på handlista
+    boker = {0: (22, 70), 1: (50,), 2: (34,), 3: (14, 46, 90)}[variant]
+    for a in boker:
+        bx = inn(a) if dor == "h" else inn(a) - 3
         for x in range(bx, bx + 4): L.p(x, 6, "r"); L.p(x, 7, "R")
         L.p(bx, 6, "p"); L.p(bx + 3, 7, "r")
+    if variant == 1:                                                          # svart hatt på handlista
+        hx = inn(84) if dor == "h" else inn(84) - 7
+        _stempel(L, hx, 2, ["..vvvv..", "..vVVv..", "..vvvv..", "vvvvvvvv", ".vvvvvv."])
+    if variant == 2:                                                          # sjal over ryggen
+        sx = inn(60) if dor == "h" else inn(60) - 12
+        for j, y in enumerate(range(5, 16)):
+            for x in range(sx + (j // 3), sx + 12 - (j // 3)):
+                L.p(x, y, "E" if (x + y) % 4 == 0 else "R" if y < 9 else "r" if (x - sx) % 3 == 0 else "R")
+        for x in range(sx + 3, sx + 9, 2): L.p(x, 16, "Y")                    # frynser
+    if variant == 3:                                                          # stokk som står inntil
+        sx = inn(30)
+        for y in range(1, 19): L.p(sx, y, "T" if y > 1 else "A")
+        L.p(sx + (1 if dor == "h" else -1), 1, "A")
     # benkedøra med utskoren topp og rose
     dx = x1 - 5 if dor == "h" else x0
     topp = ["..zz..", ".zzzz.", "zzzzzz"]
@@ -682,8 +707,12 @@ def kyrkjebenk(dor, n=8):
         for x in range(dx, dx + 6):
             L.p(x, y, "z" if 0 < x - dx < 5 else "B" if (x - dx == 0) == (dor == "v") else "u")
     for x in range(dx, dx + 6): L.p(x, 19, "u")
-    _stempel(L, dx + 1, 10, [".EE.", "EwwE", ".RR.", ".Ii."])
+    rose = {0: ".EE.", 1: ".DD.", 2: ".ww.", 3: ".EE."}[variant]
+    _stempel(L, dx + 1, 12 if variant in (1, 3) else 10, [rose, rose[0] + "ww" + rose[3] if variant != 2 else "EwwE", ".RR.", ".Ii."])
     for x in range(dx + 1, dx + 5): L.p(x, 7, "Y"); L.p(x, 16, "Y")
+    if variant in (1, 3):                                                     # namneplata til garden
+        for x in range(dx + 1, dx + 5): L.p(x, 9, "p"); L.p(x, 10, "P")
+        L.p(dx + 2, 9, "n"); L.p(dx + 3, 10, "n")
     omriss(L)
     return L
 
@@ -895,6 +924,213 @@ def galleri():
             elif 5 < k < 20: L.p(x, 5, "g"); L.p(x, 9, "4")
     for i, x in enumerate(range(x0 + 12, x1 - 6, 24)):                       # rosemåla roser i fyllingane
         _stempel(L, x - 1, 6, [".E.", "EyE", ".i."])
+    omriss(L)
+    return L
+
+
+def gravhelle(variant):
+    """Gravheller i golvet i skipet (flate, flat: true i kartet, så ein går oppå dei), etter gamle
+    kyrkjer der prestar og storbønder vart gravlagde under golvet:
+    1: grå helle (2 x 1) med kross og innskrift. 2: mørk skiferhelle (2 x 1) med hovudskalle,
+    timeglas og innhoggen kant (memento mori, 1700-talet). 3: lita, slitt helle (1 x 1) over eit barn,
+    med ei rose."""
+    n = 1 if variant == 3 else 2
+    W, H = n * 16 + 8, 16
+    L = Lerret(W, H)
+    x0, x1, y0, y1 = 5, W - 6, 2, 14
+    st = {1: ("7", "6", "5"), 2: ("6", "5", "v"), 3: ("7", "6", "5")}[variant]
+    for y in range(y0, y1 + 1):
+        for x in range(x0, x1 + 1): L.p(x, y, st[1])
+    for x in range(x0, x1 + 1): L.p(x, y0, st[0]); L.p(x, y1, st[2])
+    for y in range(y0, y1 + 1): L.p(x0, y, st[0]); L.p(x1, y, st[2])
+    if variant == 1:
+        for y in range(y0 + 2, y1 - 1): L.p(x0 + 2, y, st[2]); L.p(x1 - 2, y, st[0])
+        for x in range(x0 + 2, x1 - 1): L.p(x, y0 + 2, st[2]); L.p(x, y1 - 2, st[0])
+        for y in range(y0 + 3, y1 - 2): L.p(x0 + 6, y, st[2])                  # krossen
+        for x in range(x0 + 4, x0 + 9): L.p(x, y0 + 5, st[2])
+        for j, y in enumerate((y0 + 4, y0 + 6, y0 + 8)):                       # innskrifta
+            for x in range(x0 + 11, x1 - 3):
+                if (x * 3 + j) % 4: L.p(x, y, st[2])
+    elif variant == 2:
+        for x in range(x0 + 2, x1 - 1, 2): L.p(x, y0 + 1, st[0]); L.p(x, y1 - 1, st[0])   # kanten
+        _stempel(L, x0 + 3, y0 + 3, [".777.", "75757", ".777.", "7.7.7", ".7.7."])         # hovudskallen
+        _stempel(L, x1 - 8, y0 + 3, ["666", ".6.", "666"])                                 # timeglaset
+        for y in range(y0 + 3, y1 - 2): L.p(x0 + 13, y, st[2]); L.p(x0 + 18, y, st[2])
+    else:
+        for x in range(x0 + 2, x1 - 1): L.p(x, y1 - 2, st[2])
+        _stempel(L, x0 + 4, y0 + 3, [".E.", "ERE", ".i.", ".i."])                          # rosa
+        L.p(x0 + 2, y0 + 7, st[0]); L.p(x1 - 3, y0 + 4, st[2])                             # slitt
+    omriss(L)
+    return L
+
+
+def fattigblokk():
+    """Fattigblokka ved inngangen: ein tjukk, raudmåla stokk med jernband, lås og ei sprekk øvst til
+    myntane, som i våpenhusa i mange bygdekyrkjer. 1 flis."""
+    W, H = 16 + 8, 30
+    L = Lerret(W, H)
+    for y in range(4, H - 1):
+        for x in range(7, 17): L.p(x, y, "E" if x < 9 else "R" if x < 14 else "r")
+    for x in range(7, 17): L.p(x, 3, "R"); L.p(x, 2, "E" if x < 12 else "R")          # toppen
+    L.p(10, 2, "v"); L.p(11, 2, "v"); L.p(12, 2, "v")                                  # sprekka
+    for y in (6, 14, 22):                                                              # jernband
+        for x in range(7, 17): L.p(x, y, "X" if x < 10 else "V")
+    _stempel(L, 10, 9, ["vVv", "vXv", ".v."])                                           # låsen
+    for x in range(5, 19): L.p(x, H - 1, "t"); L.p(x, H - 2, "T" if x < 15 else "t")    # foten
+    omriss(L)
+    return L
+
+
+def jernomn():
+    """Jernomn (omnen kom inn i mange bygdekyrkjer på 1800-talet): støypejern på fire bein, med
+    relieff på sida, ei luke med glo bak (ILD i pikslar.js) og omnsrøyr opp og inn i veggen til
+    høgre. Står ved høgre sidevegg. 1 flis."""
+    W, H = 16 + 8, 52
+    L = Lerret(W, H)
+    for y in range(26, 46):
+        for x in range(5, 18): L.p(x, y, "X" if x < 7 else "V" if x < 15 else "v")
+    for x in range(4, 19): L.p(x, 25, "X"); L.p(x, 24, "V")                           # topplata
+    for x in range(4, 19): L.p(x, 46, "V")
+    for bx in (5, 16):                                                                 # beina
+        for y in range(47, 51): L.p(bx, y, "v"); L.p(bx + 1, y, "V")
+    _stempel(L, 7, 28, ["X.X.X", ".XvX.", "X.X.X"])                                    # relieff
+    for y in range(36, 42):                                                            # luka
+        for x in range(8, 15): L.p(x, y, "v")
+    for x in range(8, 15): L.p(x, 35, "X"); L.p(x, 42, "X")
+    L.p(14, 38, "X")
+    for y in range(4, 24): L.p(10, y, "V"); L.p(11, y, "V"); L.p(12, y, "v"); L.p(9, y, "X")   # røyret
+    for y in (10, 18):
+        for x in range(9, 13): L.p(x, y, "X")
+    for x in range(9, W): L.p(x, 2, "X"); L.p(x, 3, "V"); L.p(x, 4, "v")              # bogen inn i veggen
+    omriss(L)
+    return L
+
+
+def epitaf(side):
+    """Eit epitafium (minnetavle over ein prest eller ein storbonde) som heng på sideveggen i skipet,
+    sett skrått frå rommet: eit smalt, høgt måla felt i forgylt ramme med akantus øvst og ein
+    hengjande dropp nedst. side="v" heng på venstre vegg, "h" på høgre. 1 flis (over veggflisa)."""
+    W, H = 16 + 8, 44
+    L = Lerret(W, H)
+    x0 = 16 if side == "v" else 2                                                       # innsida av veggen
+    w = 6
+    for y in range(10, 34):
+        for x in range(x0, x0 + w):
+            k = x - x0 if side == "v" else w - 1 - (x - x0)
+            c = "y" if k == 0 else "Z" if k == w - 1 else "b" if y < 16 else "B" if y < 26 else "e"
+            if y in (10, 33): c = "Y"
+            L.p(x, y, c)
+    m = x0 + 2
+    L.p(m, 15, "h"); L.p(m + 1, 15, "H"); L.p(m, 16, "w"); L.p(m + 1, 16, "W")         # ein prest med krage
+    for y in range(17, 24): L.p(m, y, "v"); L.p(m + 1, y, "v")
+    for y in (28, 30): L.p(m, y, "p"); L.p(m + 1, y, "P")                               # innskrift
+    _stempel(L, x0 - 1, 3, ["..YY....", ".YyyZ...", "YyZ.yZ..", "Yy..YyZ.", ".ZYyyZ..", "...ZZ..."], spegl=(side == "h"))
+    _stempel(L, x0 + 1, 34, ["YyZ.", ".YZ.", ".Z..", ".y.."], spegl=(side == "h"))
+    omriss(L)
+    return L
+
+
+def trapp():
+    """Trappa i våpenhuset opp til galleriet, sett ovanfrå (flat: true, ein går oppå ho): fire trinn
+    i furu som stig mot nord (lysare jo høgare), mørk skugge under kvar trinnkant, og handlista langs
+    veggen til venstre. 1 flis brei, 3 rader lang."""
+    W, H = 16 + 8, 48
+    L = Lerret(W, H)
+    farge = ["A", "c", "C", "q"]
+    for i in range(6):                                                     # seks trinn, øvst lysast
+        y0 = 2 + i * 8
+        c = farge[min(3, 3 - i * 3 // 5)]
+        for y in range(y0, y0 + 8):
+            for x in range(5, 20): L.p(x, y, c)
+        for x in range(5, 20): L.p(x, y0, "q" if i < 3 else "C"); L.p(x, y0 + 7, "a")
+    for y in range(2, H - 1): L.p(4, y, "U"); L.p(3, y, "t")               # handlista mot veggen
+    for y in range(2, H - 1, 8): L.p(4, y, "y")
+    omriss(L)
+    return L
+
+
+def galleribrystning():
+    """Brystninga på galleriet sett frå galleriet (bakfrå): handlista, fyllingane i blågrønt og
+    stolpane, 21 fliser. Står framfor utsynet ned i skipet (kartet kyrkje-galleri)."""
+    W, H = 21 * 16 + 8, 20
+    L = Lerret(W, H)
+    x0, x1 = 4, W - 5
+    for x in range(x0, x1 + 1):
+        L.p(x, 4, "y"); L.p(x, 5, "Y"); L.p(x, 6, "Z")
+        for y in range(7, 19): L.p(x, y, "G")
+        L.p(x, 7, "g"); L.p(x, 19, "3")
+        k = (x - x0) % 24
+        if k in (0, 1):
+            for y in range(7, 19): L.p(x, y, "4" if k == 0 else "g")
+        elif k in (4, 20):
+            for y in range(9, 17): L.p(x, y, "g" if k == 4 else "4")
+        elif 4 < k < 20: L.p(x, 9, "g"); L.p(x, 16, "4")
+    for x in range(x0, x1 + 1, 24):                                        # stolpar med knapp
+        L.p(x, 2, "Y"); L.p(x + 1, 2, "Z"); L.p(x, 3, "y"); L.p(x + 1, 3, "Y")
+    omriss(L)
+    return L
+
+
+def kyrkjeklokke():
+    """Kyrkjeklokka i klokkestolen i tårnet: ein tung bronseklokke (mørk grønbrun med lys kant) på
+    eit åk av eik med jernbeslag, i ein stol av grove stolpar og skråband, og tauet som heng ned frå
+    hjulet til golvet. 3 fliser brei, 2 rader djup, om lag 70 pikslar høg."""
+    W, H = 3 * 16 + 8, 72
+    L = Lerret(W, H)
+    cx = W // 2
+    for sx in (5, W - 8):                                                  # stolpane
+        for y in range(4, H - 2):
+            L.p(sx, y, "c"); L.p(sx + 1, y, "A"); L.p(sx + 2, y, "a")
+    for x in range(3, W - 3):                                              # bjelken øvst og sviller nedst
+        for y in (2, 3, 4): L.p(x, y, "C" if y == 2 else "c" if y == 3 else "A")
+        L.p(x, H - 3, "c"); L.p(x, H - 2, "A"); L.p(x, H - 1, "a")
+    for i in range(14):                                                    # skråband
+        L.p(8 + i, H - 4 - i, "A"); L.p(W - 9 - i, H - 4 - i, "A")
+    for y in range(5, 9):                                                  # åket med jernbeslag
+        for x in range(cx - 9, cx + 9): L.p(x, y, "c" if y < 7 else "A")
+    for x in range(cx - 9, cx + 9, 6): L.p(x, 5, "V"); L.p(x, 6, "V"); L.p(x, 7, "X")
+    # klokka: bronse, lys mot venstre, kant (slagringen) nedst
+    for j, y in enumerate(range(9, 31)):
+        b = [4, 5, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 10, 10, 11, 12, 13, 13, 12][j]
+        for x in range(cx - b, cx + b):
+            t = (x - (cx - b)) / (2 * b)
+            L.p(x, y, "I" if t < 0.2 else "i" if t < 0.55 else "e" if t < 0.85 else "n")
+    for x in range(cx - 13, cx + 13): L.p(x, 30, "D" if x < cx else "d")
+    for x in range(cx - 7, cx + 7): L.p(x, 13, "e")
+    for x in range(cx - 9, cx + 9): L.p(x, 24, "e")
+    L.p(cx - 1, 31, "V"); L.p(cx, 31, "V"); L.p(cx - 1, 32, "X")                # kolven
+    # hjulet og tauet ned til golvet
+    for y in range(10, 14): L.p(W - 12, y, "c")
+    for y in range(8, H - 4): L.p(W - 11, y, "D" if y % 3 else "d")
+    _stempel(L, W - 13, H - 7, [".DD.", "DddD", ".dd."])
+    omriss(L)
+    return L
+
+
+def tarnbjelke():
+    """Ein grov bjelke tvers over tårnrommet, høgt oppe (over: true, faktor over 1 i kartet:
+    parallakse), med ein kloss og nokre spikarhovud. 13 fliser lang."""
+    W, H = 13 * 16 + 8, 14
+    L = Lerret(W, H)
+    for x in range(4, W - 4):
+        for y in range(3, 11):
+            L.p(x, y, "C" if y == 3 else "c" if y < 7 else "A" if y < 10 else "a")
+        if (x * 7) % 23 == 0: L.p(x, 5, "A"); L.p(x + 1, 6, "A")
+    for x in range(4, W - 4, 40): L.p(x + 3, 4, "X"); L.p(x + 3, 8, "V")
+    omriss(L)
+    return L
+
+
+def lydluke():
+    """Lydluke i tårnveggen: ei opning i laftet med skrå lamellar, så lyden og lyset slepp ut og inn,
+    og himmel i glipene. Står over ei «u»-flis (rad 1), der lysstrålane startar. 1 flis brei, 2 høg."""
+    W, H = 16 + 8, 32
+    L = Lerret(W, H)
+    for y in range(4, 28):
+        for x in range(5, 19): L.p(x, y, "A" if x in (5, 18) or y in (4, 27) else "2")
+    for y in range(7, 26, 3):                                              # lamellane
+        for x in range(6, 18): L.p(x, y, "c"); L.p(x, y + 1, "a")
+    for x in range(5, 19): L.p(x, 3, "C")
     omriss(L)
     return L
 
@@ -1776,8 +2012,12 @@ INVENTAR = {
     "kornbinge": kornbinge, "tonne": tonne, "kagge": kagge, "flatbrodstabel": flatbrodstabel, "spekemat": spekemat,
     "stige": stige, "glugge": glugge, "takbjelke": takbjelke, "sekker": sekker, "skrin": skrin,
     "rokk": rokk, "korvegg": korvegg, "kyrkjebenk-h": lambda: kyrkjebenk("h"), "kyrkjebenk-v": lambda: kyrkjebenk("v"),
+    **{f"kyrkjebenk-{d}{v}": (lambda d=d, v=v: kyrkjebenk(d, variant=v - 1)) for d in "hv" for v in (2, 3, 4)},
     "dopefont": dopefont, "altartavle": altartavle, "altarring": altarring, "preikestol": preikestol, "lysekrone": lysekrone,
-    "skipvegg-v": lambda: skipvegg("v"), "skipvegg-h": lambda: skipvegg("h"), "korskilje": korskilje, "kyrkjeskip": kyrkjeskip, "galleri": galleri}
+    "skipvegg-v": lambda: skipvegg("v"), "skipvegg-h": lambda: skipvegg("h"), "korskilje": korskilje, "kyrkjeskip": kyrkjeskip, "galleri": galleri,
+    **{f"gravhelle{v}": (lambda v=v: gravhelle(v)) for v in (1, 2, 3)}, "fattigblokk": fattigblokk, "jernomn": jernomn,
+    "epitaf-v": lambda: epitaf("v"), "epitaf-h": lambda: epitaf("h"),
+    "trapp": trapp, "galleribrystning": galleribrystning, "kyrkjeklokke": kyrkjeklokke, "tarnbjelke": tarnbjelke, "lydluke": lydluke}
 
 
 def pix(namn, L):

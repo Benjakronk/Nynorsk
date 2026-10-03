@@ -1009,7 +1009,7 @@ window.Motor = (function () {
         }
         continue;
       }
-      const type = b.id === "inne-grue" ? "grue" : b.id === "inne-kakkelomn" ? "kakkelomn" : b.id === "inne-glugge" ? "glugge" : null;
+      const type = b.id === "inne-grue" ? "grue" : b.id === "inne-kakkelomn" ? "kakkelomn" : b.id === "inne-jernomn" ? "lys" : b.id === "inne-glugge" ? "glugge" : null;
       const img = type && Pikslar.bygg(b.id); if (!img) continue;
       const bx = Math.round((b.x + ox) * S) - 4, by = Math.round((b.y + b.h + oy) * S) - img.height;
       const r = (Pikslar.ILD[b.id] || [])[0];                         // elden i grua og omnen: ankeret er nedst midt i elden
@@ -1061,7 +1061,7 @@ window.Motor = (function () {
       if (st.straalar) for (let y = 0; y < kart.h; y++) for (let x = 0; x < kart.w; x++) {
         const c = kart.fliser[y][x];
         if (c === "u") straale(Math.round((x + ox) * S) + 4, Math.round((y + oy) * S) + 11);
-        else if (c === "Ø") straale(Math.round((x + 1 + ox) * S) - 3, Math.round((y + oy) * S) + 3);
+        else if (c === "Ø" || c === "Ö") straale(Math.round((x + 1 + ox) * S) - 3, Math.round((y + oy) * S) + (c === "Ø" ? 3 : 0));
       }
     }
     // Bakgrunnslaga (dalen og fjella langt nede) får nivå 5: ingen skyskugge eller glød der,
@@ -1301,7 +1301,7 @@ window.Motor = (function () {
       if (c === "M" || c === "U" || c === "Z") { const st = Pikslar.stup(terrengfelt(), x, y); g.drawImage(st, sx, sy); if (st.ope) luftRute(sx, sy, st.ope); continue; }
       // Veggar med vegg eller dør under seg er sidevegger: dei blir teikna ovanfrå.
       const under = y + 1 < kart.h ? kart.fliser[y + 1][x] : null;
-      const topp = "XcG".includes(c) && (under === null || "XcGEØø ".includes(under));   // òg over sidevindauge og tomrom (« ») utanfor huset
+      const topp = "XcG".includes(c) && (under === null || "XcGEØøÖö ".includes(under));   // òg over sidevindauge og tomrom (« ») utanfor huset
       let fk = topp ? c + "t" : c;
       if (c === "R") { const over = y > 0 && kart.fliser[y - 1][x] === "R"; fk = !over && under !== "R" ? "Rtb" : !over ? "Rt" : under !== "R" ? "Rb" : "R"; }
       if (erKant(c, y) || erSidekant(c, x, y)) {
@@ -1434,7 +1434,8 @@ window.Motor = (function () {
     // Hus blir sorterte saman med figurane etter den nedste flisraden sin.
     // Eit sete med ryggen mot kameraet (fram) kjem etter den som sit på det.
     for (const b of kart.def.bygg || []) { const img = Pikslar.bygg(b.id), fram = Pikslar.SETE && Pikslar.SETE[b.id] && Pikslar.SETE[b.id].fram;
-      if (img) figurar.push({ y: b.over ? 999 + b.y / 1000 : b.y + b.h - 1 + (fram ? 0.03 : 0.01), by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id, b }); }
+      // flat: true (gravheller, golvteppe) ligg på golvet og blir teikna før alle figurane, utan slagskugge.
+      if (img) figurar.push({ y: b.over ? 999 + b.y / 1000 : b.flat ? -1 : b.y + b.h - 1 + (fram ? 0.03 : 0.01), by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id, b }); }
     // Den som sit eller ligg, blir teikna over inventaret på same rad (benken, senga). Den som sit
     // på eit sete, blir sortert etter den nedste rada til setet (ein ståande benk er fleire fliser).
     const djupn = f => (f.sete ? f.sete.b.y + f.sete.b.h - 1 : f.y) + (f.pose && f.pose !== "knele" && f.pose !== "peike" ? 0.02 : 0);
@@ -1448,6 +1449,7 @@ window.Motor = (function () {
         if (f.b.tak) kjede(f.b, f.bygg, ux, uy, mx || 0, my || 0, ox, oy);
         g.drawImage(f.bygg, ux, uy); maske(f.bygg, ux, uy, true); continue;
       }
+      if (f.bygg && f.b && f.b.flat) { const [fx, fy] = byggPos(f.b, f.bygg, ox, oy); g.drawImage(f.bygg, fx, fy); continue; }
       if (f.bygg) {
         // Slagskugge på bakken, mot høgre og ned (lyset kjem frå oppe til venstre): silhuetten
         // til huset forskoven, men berre nedst ved bakken, så høge ting (tårnet) ikkje kastar

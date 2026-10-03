@@ -70,10 +70,17 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   4 × 5, salmetavla til høgre), `korskilje` (11 × 1), `preikestol` (3 × 2, med trapp), `dopefont`
   (2 × 1), `kyrkjebenk-h` og `-v` (8 × 1, benkedøra mot midtgangen), og høgt oppe (`over: true` med
   `faktor` og `tak`, parallakse og kjetting): `lysekrone` (3 × 1), `kyrkjeskip` (3 × 1) og `galleri`
-  (21 × 3). Ljosa står i `LJOS` og kjettingfestet i `KJEDE` i `pikslar.js`. Flisene `Ø` og `ø` er
-  vindauge i venstre og høgre sidevegg (strålar frå `Ø`), `Æ` og `æ` ei gravhelle i golvet. Små motiv
+  (21 × 3). Ljosa står i `LJOS` og kjettingfestet i `KJEDE` i `pikslar.js`. Runde 53: benkevariantar
+  `kyrkjebenk-h2` til `-h4` og `-v2` til `-v4` (namneplate, hatt, sjal, stokk, slitasje), `epitaf-v`
+  og `-h` (på sideveggene), `gravhelle1` til `3`, `trapp` (desse og utsynet ligg flatt: `flat: true`),
+  `fattigblokk`, `jernomn` (ILD), og til galleriet og tårnet `galleribrystning`, `kyrkjeklokke`,
+  `tarnbjelke` og `lydluke`. Utsynet ned i skipet (`inne-skip-utsyn.png`) er ein bit av
+  `oversikt.py namn kart=kyrkja skala=1 stemning=ingen` (rad 45 til 49, mørkna med dis). Høge
+  sidevindauge er to fliser: `Ø`/`Ö` (venstre, strålar) og `ø`/`ö` (høgre). Korgolvet er `Þ` (fast:
+  `þ`). Stemninga `kyrkjerom` og glødforma `altar` (glod.py) gjer rommet mørkt og altaret lyst. Små motiv
   blir teikna med `_stempel` (strengar). Sjå med `skjermbilete.py namn kart=kyrkja m=1 x=10 y=9`
-  (koret), `x=6 y=5` (altartavla heilt), `flagg=latt` (presten i altarringen), og heile kyrkja med
+  (koret), `x=6 y=5` (altartavla heilt), `flagg=latt` (presten i altarringen), `m=3` (trappa),
+  `kart=kyrkje-galleri m=1` og `kart=kyrkje-tarn m=1`, og heile kyrkja med
   `python tools/pikselkunst/oversikt.py namn kart=kyrkja` (alle skjermane sette saman). Gangtida:
   `python tools/kjoyr-test.py tools/sjekk-kyrkjegang.html 60000`.
 - Glød rundt ei lyskjelde (eld, ljos, lykt, krone): ei handteikna glødform i

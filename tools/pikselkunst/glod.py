@@ -126,6 +126,23 @@ def krone(r):
     return G
 
 
+def altar(r):
+    """Altaret og altartavla (inne-altartavle, 88 x 112): ein brei, roleg glød over heile tavla og
+    altaret, så dei er det lysaste i den mørke kyrkja (stemninga kyrkjerom). Ankeret er midt i
+    hovudfeltet (44, 70 i biletet). Trinn 1 dekkjer tavla med vengene, altaret og golvet framfor,
+    trinn 2 hovudetasjen, predellaen og altarduken. Ljosa har eigne gloriar (lys)."""
+    G = Glod()
+    b1 = [14, 20, 25, 29, 32, 35, 37, 39, 40, 41, 42, 43, 44, 44, 45, 45, 45, 45, 46, 46]
+    G.profil(1, -68, b1 + [46] * 80 + [45, 44, 43, 41, 39, 36, 33, 29, 25, 20, 14])
+    b2 = [10, 16, 20, 23, 25, 27, 28, 29, 30, 30, 31, 31, 31]
+    G.profil(2, -44, b2 + [31] * 40 + [30, 29, 28, 27, 25, 23, 20, 17, 13, 8])
+    G.prikk(1, [(-48, -20), (-48, 0), (-48, 20), (-47, 32), (-30, 38), (-10, 39)] if r == 0
+            else [(-48, -18), (-48, 2), (-48, 22), (-47, 30), (-29, 39), (-9, 39)], speil=True)
+    G.prikk(2, [(-33, -10), (-33, 8), (-32, 26), (-22, 30)] if r == 0 else [(-33, -8), (-33, 10), (-32, 24), (-21, 30)], speil=True)
+    G.sett(0, 0, 2)
+    return G
+
+
 def kronegolv(r):
     """Lyspølen på golvet under lysekrona (ankeret er golvet midt under krona). Lågt og breitt,
     golvet sett på skrå, med handplasserte dither-pikslar i kanten. Ligg fast i kartet."""
@@ -350,7 +367,7 @@ def dor(r):
 
 # Rammer per glødform (sjå LYSKJELDER i js/rpg/data.js for rekkjefølgja i flimmeret).
 FORMER = {"grue": (grue, 3), "kakkelomn": (kakkelomn, 3), "peis": (peis, 3), "lys": (lys, 2),
-          "lykt": (lykt, 2), "krone": (krone, 2), "kronegolv": (kronegolv, 2), "ivar": (ivar, 2), "sky": (sky, 1),
+          "lykt": (lykt, 2), "krone": (krone, 2), "kronegolv": (kronegolv, 2), "altar": (altar, 2), "ivar": (ivar, 2), "sky": (sky, 1),
           "glugge": (glugge, 2), "dor": (dor, 1)}
 
 

@@ -366,38 +366,41 @@ window.Pikslar = (function () {
     "Xt": g => { const r = R_.tommer; px(g, 0, 0, r[1], S, S); for (let x = 1; x < S; x += 5) px(g, x, 0, r[0], 1, S); px(g, 0, 0, r[2], S, 1); px(g, 2, 3, r[2], 2, 5); px(g, 12, 9, r[2], 2, 4); },
     "ct": g => { const r = R_.stein; px(g, 0, 0, r[1], S, S); for (let y = 0; y < S; y += 5) { px(g, 0, y, r[0], S, 1); px(g, (y * 3) % 11, y + 1, r[2], 4, 1); } },
     "Gt": g => { const r = R_.kvit; px(g, 0, 0, r[2], S, S); px(g, 0, 0, r[3], S, 2); px(g, 0, 14, r[1], S, 2); },
-    // Vindauge i sideveggen i kyrkja, sett ovanfrå: smygen (lys øvst, skugge nedst) går skrått inn
-    // i muren frå innsida, og blyglaset er ei smal stripe ytst. «Ø» i venstre vegg (lyset fell inn
-    // og strålane går skrått over golvet, sjå lys() i motor.js), «ø» i høgre vegg (skuggesida).
-    // Gravhelle i golvet (to fliser: «Æ» venstre med kross, «æ» høgre med innskrift), som i gamle
-    // kyrkjer der prestar og storbønder vart gravlagde under golvet. Ein kan gå over ho.
-    "Æ": (g, t, v) => gravhelle(g, t, v, false),
-    "æ": (g, t, v) => gravhelle(g, t, v, true),
-    "Ø": g => sidevindauge(g, false),
-    "ø": g => sidevindauge(g, true),
+    // Høge vindauge i sideveggene i kyrkja, sett ovanfrå, to fliser høge: «Ø» er den øvre halvdelen
+    // (rundboge øvst) og «Ö» den nedre (karmen nedst) i venstre vegg, «ø» og «ö» i høgre vegg. Smygen
+    // går skrått inn i muren frå innsida, og blyglaset er ei stripe ytst med ein losholt mellom
+    // halvdelane. Lyset fell inn frå venstre: strålane frå «Ø» og «Ö» går skrått over golvet (lys()).
+    "Ø": g => sidevindauge(g, false, true),
+    "Ö": g => sidevindauge(g, false, false),
+    "ø": g => sidevindauge(g, true, true),
+    "ö": g => sidevindauge(g, true, false),
+    // Golvet i koret: breie, mørke eikeplankar lagde på tvers (skipet har lyse furuplankar på langs),
+    // så overgangen ved korskiljet syner. «þ» er same golvet under inventar (fast).
+    "Þ": (g, t, v) => korgolv(g, v),
+    "þ": (g, t, v) => korgolv(g, v),
   };
-  function gravhelle(g, t, v, hogre) {
-    underGolv(g, t, v);
-    const st = ["#4e5648", "#7a8070", "#a6ac98", "#5e6658"];
-    const x0 = hogre ? 0 : 2, x1 = hogre ? 13 : 15;
-    px(g, x0, 2, "#0a0514", x1 - x0 + 1, 13);                         // fuga rundt hella
-    px(g, x0 + (hogre ? 0 : 1), 3, st[1], x1 - x0 - 0, 11);
-    px(g, x0 + (hogre ? 0 : 1), 3, st[2], x1 - x0 - 0, 1); px(g, x0 + (hogre ? 0 : 1), 13, st[0], x1 - x0, 1);
-    if (!hogre) px(g, 3, 3, st[2], 1, 11); else px(g, 12, 3, st[0], 1, 11);
-    // innhogd ramme
-    px(g, hogre ? 0 : 5, 5, st[3], hogre ? 11 : 11, 1); px(g, hogre ? 0 : 5, 11, st[2], hogre ? 11 : 11, 1);
-    if (!hogre) { px(g, 5, 5, st[3], 1, 7); px(g, 9, 6, st[0], 1, 5); px(g, 7, 7, st[0], 5, 1); px(g, 10, 6, st[2], 1, 5); }
-    else { px(g, 10, 5, st[2], 1, 7); for (const y of [7, 9]) for (let x = 1; x < 9; x += 3) px(g, x, y, st[0], 2, 1); }
+  function korgolv(g, v) {
+    const r = ["#2e1a10", "#4a2c1a", "#5e3a22", "#74492a", "#8a5a34"];
+    for (let b = 0; b < 2; b++) {
+      const y0 = b * 8;
+      px(g, 0, y0, r[2], S, 8); px(g, 0, y0, r[3], S, 1); px(g, 0, y0 + 7, r[0], S, 1);
+      const skot = (5 + b * 7 + v * 5) % 16;                          // endeskøyten (lange plankar: berre på kvar andre flis)
+      if ((v + b) % 2 === 0) { px(g, skot, y0 + 1, r[0], 1, 6); px(g, (skot + 1) % S, y0 + 1, r[4], 1, 6); }
+      for (let i = 0; i < 3; i++) { const x = (skot + 3 + i * 4 + b * 2) % 16; px(g, x, y0 + 3 + (i % 2), r[1], 2, 1); }
+      px(g, (skot + 9) % 16, y0 + 2, r[4], 2, 1);
+    }
   }
-  function sidevindauge(g, hogre) {
+  function sidevindauge(g, hogre, ovre) {
     FLIS.Gt(g);
     const p = (x, y, f, w = 1, h = 1) => px(g, hogre ? 16 - x - w : x, y, f, w, h);
     for (let x = 5; x < S; x++) {                                    // smygen, breiare innover
-      const d = Math.floor((x - 5) / 3), y0 = 3 - d, y1 = 13 + d;
-      p(x, y0, "#f4f2f8", 1, 2); p(x, y0 + 2, "#d8d4c8", 1, y1 - y0 - 3); p(x, y1 - 1, "#b8b4ac", 1, 2);
+      const d = Math.floor((x - 5) / 3), y0 = ovre ? 3 - d : 0, y1 = ovre ? 16 : 13 + d;
+      p(x, y0, ovre ? "#f4f2f8" : "#d8d4c8", 1, ovre ? 2 : 1); p(x, y0 + (ovre ? 2 : 1), "#d8d4c8", 1, y1 - y0 - (ovre ? 2 : 3)); if (!ovre) p(x, y1 - 1, "#b8b4ac", 1, 2);
     }
-    p(3, 3, "#8a88a0", 1, 11);                                       // karmen og blyglaset
-    p(4, 3, "#8eaaa2", 2, 11); p(4, 3, "#c4dcd0", 1, 4); p(4, 8, "#5e7672", 2, 1); p(5, 11, "#5e7672", 1, 2);
+    const g0 = ovre ? 3 : 0, g1 = ovre ? 16 : 13;                   // karmen og blyglaset
+    p(3, g0, "#8a88a0", 1, g1 - g0); p(4, g0, "#a8c8bc", 2, g1 - g0);
+    if (ovre) { p(4, 3, "#e0f0e8", 1, 6); p(5, 4, "#c4dcd0", 1, 3); p(4, 10, "#5e7672", 2, 1); }
+    else { p(3, 0, "#5e5a70", 3, 1); p(4, 6, "#5e7672", 2, 1); p(4, 2, "#c4dcd0", 1, 3); p(3, 13, "#d8d4c8", 4, 1); }
   }
   function vindauge(g, ramme) {
     const R = Rutenett(16, 16).rect("r", 3, 3, 10, 9).rect("g", 4, 4, 8, 7);
@@ -430,12 +433,12 @@ window.Pikslar = (function () {
   const treCache = {};
   const treBilete = k => treCache[k] || (treCache[k] = TRE[k]());
 
-  const FAST = new Set(["+", "(", "u", "#", "t", "i", "F", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " ", "s", "M", "-", "N", "U", "Z", "Ø", "ø"]);
+  const FAST = new Set(["+", "(", "u", "#", "t", "i", "F", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " ", "s", "M", "-", "N", "U", "Z", "Ø", "ø", "Ö", "ö", "þ"]);
   const ANIM = new Set(["~", "L", "T", "f", "n", "y"]);
   // Fliser med noko som står oppreist og blir teikna i bakken (lykter, grav, kister, inventar):
   // skogkanten lener ikkje tre ut over dei (sjå skogkant i motor.js og kantfigurar).
   const STAAR = new Set(["L", "T", "x", "K", "k", "z", "b", "n"]);
-  const VARIANT_EKSTRA = new Set(["Rt", "Rb", "Rtb"]);
+  const VARIANT_EKSTRA = new Set(["Rt", "Rb", "Rtb", "Þ", "þ"]);
   const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "O", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t", "i", "F"]);
   const cache = new Map();
   function flis(teikn, t = 0, x = 0, y = 0, golv = "P") {
@@ -1772,7 +1775,8 @@ window.Pikslar = (function () {
      KRONE_LJOS og ALTAR_LJOS i tools/pikselkunst/inventar.py. */
   const LJOS = {
     "inne-lysekrone": [{ type: "krone", x: 27, y: 40, golv: true }],
-    "inne-altartavle": [{ type: "lys", x: 23, y: 73 }, { type: "lys", x: 63, y: 73 }],
+    // Altartavla: den store, roleg gløden «altar» over tavla og altaret (det lysaste i kyrkja), og ljosa.
+    "inne-altartavle": [{ type: "altar", x: 44, y: 70 }, { type: "lys", x: 23, y: 73 }, { type: "lys", x: 63, y: 73 }],
   };
   // Inventar som heng i ein kjetting frå taket: festet øvst i biletet (x, y). Motoren teiknar
   // kjettingen opp til taket når bygget har tak (takfaktoren) i kartet, sjå kjede() i motor.js.
@@ -1782,6 +1786,7 @@ window.Pikslar = (function () {
   const ILD = {
     "inne-grue": [{ x: 5, y: 26, w: 14, h: 15 }],
     "inne-kakkelomn": [{ x: 8, y: 31, w: 8, h: 8, glo: true }],
+    "inne-jernomn": [{ x: 8, y: 36, w: 7, h: 6, glo: true }],
   };
   /* Sete: inventar ein kan sitje på (inventar.py). Den som sit (pose «sitje») på ei rute som setet
      dekkjer, blir lyft hogd pikslar opp på setet, utan skugge på golvet, og teikna over setet.
@@ -1792,6 +1797,8 @@ window.Pikslar = (function () {
     "inne-kubbestol-ned": { hogd: 5, retning: 0 }, "inne-kubbestol-opp": { hogd: 5, retning: 1, fram: true },
     "inne-kubbestol-venstre": { hogd: 5, retning: 2 }, "inne-kubbestol-hogre": { hogd: 5, retning: 3 },
     "inne-benk": { hogd: 5 }, "inne-benk-kort": { hogd: 5 }, "inne-benk-staande": { hogd: 5 }, "inne-benk-staande-kort": { hogd: 5 },
+    // Kyrkjebenkene er sette bakfrå: den som sit, ser fram mot altaret, og ryggen dekkjer nedre del av han.
+    ...Object.fromEntries(["", "2", "3", "4"].flatMap(v => ["h", "v"].map(d => [`inne-kyrkjebenk-${d}${v}`, { hogd: 6, retning: 1, fram: true }]))),
   };
   // Kva pikslar i ruta flammane kan teiknast på: berre mørket i eldstaden og den faste elden
   // i biletet, så gryta, kroken og kanten ligg framfor flammane.
