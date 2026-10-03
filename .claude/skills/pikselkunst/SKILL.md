@@ -174,7 +174,7 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   - Bakgrunnslaga og forgrunnen: `python tools/pikselkunst/utsikt.py` (skriptet er kjelda) skriv
     `bilete/spel/parallakse/<namn>.png` (himmel, fjell, dal-nord og naer øvst, li (dalsida som glir over i dalen sett ovanfrå), elv
     (4 rammer) og skyer (drift) under stupet som fast
-    lag med faktor 1, li-kort og dal-under for varianten «dal», greiner, nabb og nabb-h (bergnabbar i forgrunnen), fuglar) og
+    lag med faktor 1, li-kort og dal-under for varianten «dal», greiner, nabb og nabb-h (bergnabbar i forgrunnen), nabb-m og nabb-m2 (låge nabbar midt nede ytst på hylla), fuglar) og
     `forhand/utsikt-ark.png`. På
     kartet: `parallakse: [{ bilete, faktor, ved: [kx, ky], x, y }]` (det fjernaste først, faktor under 1),
     `forgrunn: [...]` (faktor over 1), `luftfarge`, `kameraNed: { fra, rader, fart }` (kameraet

@@ -653,37 +653,58 @@ def gras_ramme(w, h, vind):
 
 NABB_W, NABB_H = 92, 272
 
-def nabb_ramme(vind, bjork, s, speil=False):
+# Lav i flekker: (mørk kant, mellomtone, lys midte). Gulgrøn kartlav, grågrøn skorpelav og rustlav.
+LAV = {"gul": ("#7e8a3e", "#a2ac4e", "#c6ca72"), "graa": ("#66746a", "#8a9a86", "#acbaa6"), "rust": ("#8a4a2a", "#b4683a", "#d68e52")}
+
+
+def lavflekk(L_, cx, cy, r, slag, s, lov):
+    """Ein lavflekk: ujamn kant (støy på radien), mørkare ytst og lysare midte. lov(x, y) seier kvar
+    lav kan vekse (på berget, ikkje i fugene)."""
+    mork, mid, lys = LAV[slag]
+    for y in range(int(cy - r) - 2, int(cy + r) + 3):
+        for x in range(int(cx - r * 1.4) - 2, int(cx + r * 1.4) + 3):
+            dx, dy = (x + .5 - cx) / (r * 1.35), (y + .5 - cy) / r
+            d = math.hypot(dx, dy) - (M.h(x, y, s) - 0.5) * 0.45
+            if d > 1 or not lov(x, y): continue
+            L_.p(x, y, lys if d < 0.38 else mid if d < 0.78 else mork)
+
+
+def nabb_ramme(vind, bjork, s, speil=False, w=NABB_W, h=NABB_H, topp=None, inner=None, ytre=None, y0=34,
+               radh=(40, 30, 48, 36, 56, 64), bw=(30, 34), nsprekk=4, lavar=("gul", "graa", "gul", "rust", "graa", "gul")):
     """Ein bergnabb nær kameraet som kjem inn frå sida av biletet, bygd av steinblokker med klare flater
     (same stil som klippeveggene i kartet, litt mørkare og meir metta så nabben ligg framfor): lyse
     toppflater, ei lys skråkant på sida mot ljoset (venstre), rolege mellomtonar på framsidene, og mørk
     skugge berre i fugene og under blokker som stikk ut. Lyng, gras og mose på hyllene, og jord og gras
     på toppen. Berget går langt ned, så nabben aldri heng i lufta. vind flyttar toppane av stråa (og
-    kruna på bjørka) 0, 1 eller 2 pikslar. speil: nabben kjem inn frå høgre (ljoset framleis frå venstre)."""
-    w, h = NABB_W, NABB_H
+    kruna på bjørka) 0, 1 eller 2 pikslar. speil: nabben kjem inn frå høgre (ljoset framleis frå venstre).
+    topp, inner og ytre gir forma (toppkanten, yttersida og venstre sida i lokal u); utan ytre går nabben
+    heilt ut til biletkanten. radh og bw er høgda på blokkradene og breidda på blokkene (min, tillegg).
+    nsprekk: kor mange sprekker (dei største blokkene øvst får dei), lavar: lavflekkane, i rekkjefølgje."""
     L_ = L(w, h)
     sx = (lambda u: w - 1 - u) if speil else (lambda u: u)                   # frå lokal u (0 ved biletkanten) til x
-    topp = lambda u: 40 + ((u - 24) / 44) ** 2 * 18 + (M.fbm(u / 6, 1, s, 3) - 0.5) * 6
-    inner = lambda y: 58 + 8 * math.sin(y / 34 + s) + (M.fbm(y / 9, 2, s + 1, 3) - 0.5) * 6 + min(18, y / 10)
+    topp = topp or (lambda u: 40 + ((u - 24) / 44) ** 2 * 18 + (M.fbm(u / 6, 1, s, 3) - 0.5) * 6)
+    inner = inner or (lambda y: 58 + 8 * math.sin(y / 34 + s) + (M.fbm(y / 9, 2, s + 1, 3) - 0.5) * 6 + min(18, y / 10))
+    ytre = ytre or (lambda y: -99)
     F = {"skugge": "#17131f", "fuge": "#221c2a", "front": "#4c4350", "front2": "#433b48", "botn": "#3a3240",
          "topp": "#8a7c74", "toppLys": "#a6968a", "lysKant": "#6e6266", "mork": "#352e3a"}
     # Blokkene: rader med ulik høgd, og i kvar rad blokker med ulik breidd. Toppen av kvar blokk ligg litt
     # ulikt, så somme stikk ut over den under (skugge under).
-    rader, y = [], 34
+    rader, y = [], y0
     k = 0
     while y < h:
-        hr = [40, 30, 48, 36, 56, 64][min(k, 5)] + int(M.h(k, 1, s + 20) * 10)
+        hr = radh[min(k, len(radh) - 1)] + int(M.h(k, 1, s + 20) * 10)
         blokker, u = [], -int(M.h(k, 9, s + 20) * 20)                        # forskoven rad for rad, så fugene ikkje står i liner
         while u < w:
-            bw = 30 + int(M.h(k, len(blokker), s + 21) * 34)
-            blokker.append((u, u + bw, int(M.h(k, len(blokker), s + 22) * 7), int(M.h(k, len(blokker), s + 27) * 7)))   # venstre, høgre, topp v/h
-            u += bw
+            bw_ = bw[0] + int(M.h(k, len(blokker), s + 21) * bw[1])
+            blokker.append((u, u + bw_, int(M.h(k, len(blokker), s + 22) * 7), int(M.h(k, len(blokker), s + 27) * 7)))   # venstre, høgre, topp v/h
+            u += bw_
         rader.append((y, y + hr, blokker)); y += hr; k += 1
     mose = M.rampe("#2c4228", "#3e5a32", "#56763e")
     # Fargevariasjon: somme blokker litt varmare (brungrå), andre litt kaldare (blågrå), og ein svak
     # lysovergang nedover framsida (to flate band, ikkje dither).
     TONAR = {"nøytral": ("#544a56", "#4c4350", "#433b48"), "varm": ("#5a4c48", "#52453f", "#483c38"), "kald": ("#4c4c5c", "#454454", "#3c3c4c")}
     framside = {}                                                         # (x, y) -> blokk, for sprekker og lav etterpå
+    blokk = {}                                                            # (x, y) -> blokk, heile blokka med toppflata (ikkje fugene)
     blokkinfo = []
     for (r0, r1, blokker) in rader:
         for (b0_, b1_, offv, offh) in blokker:
@@ -697,7 +718,7 @@ def nabb_ramme(vind, bjork, s, speil=False):
                 b1 = b1_ + round(math.sin(yy / 7 + b1_) * 1.4 + (M.stoy(yy / 5, b1_, s + 28) - 0.5) * 2)
                 for u in range(max(0, b0), min(w, b1)):
                     t = topp(u)
-                    if yy < t or u > inner(yy): continue
+                    if yy < t or u > inner(yy) or u < ytre(yy): continue
                     x = sx(u)
                     # venstre/høgre kant i skjermretning (ljoset kjem frå venstre)
                     xa, xb = (sx(b0), sx(b1 - 1)) if not speil else (sx(b1 - 1), sx(b0))
@@ -720,68 +741,86 @@ def nabb_ramme(vind, bjork, s, speil=False):
                         rel = (yy - r0) / max(1, r1 - r0)
                         c = tone_[0] if rel < 0.3 else tone_[1] if rel < 0.75 else tone_[2]
                         framside[(x, yy)] = bid
+                    if dy >= 0 and not (dv < 1 or dh < 1) and iu >= 2: blokk[(x, yy)] = bid
                     if iu < 2: c = F["lysKant"] if speil else F["skugge"]                 # yttersida av nabben
-                    if 1 <= dy < 5 and M.h(x // 2, yy, s + 24) > 0.78: c = M.tone(mose, M.h(x, yy, s + 25), x, yy)   # mose på hyllene
+                    if u - ytre(yy) < 2 and dy >= 0: c = F["lysKant"]                     # venstre sida, mot ljoset
+                    if 1 <= dy < 5 and M.h(x // 2, yy, s + 24) > 0.88: c = M.tone(mose, M.h(x, yy, s + 25), x, yy)   # mose på hyllene
                     L_.p(x, yy, c)
-            pass
-    # Sprekker: få per blokk, på skrå og med greiner, mørk line med lys kant mot ljoset (til høgre for
-    # sprekka, der veggen i sprekka vender mot venstre). Ei mørk vassstripe renn ned frå éi sprekk.
-    sprekkFarge, lysKant, vatnFarge = "#1e1826", "#6e6268", "#3a3240"
+    # Sprekker: få og tydelege, på dei største blokkene øvst (der dei syner i spelet). Kvar er ei kløyft
+    # med mørk kjerne to pikslar brei (ein nedst), ein lys kant til høgre (veggen i sprekka vender mot
+    # ljoset), og ein mørk skuggekile øvst der sprekka opnar seg. Ei mørk vassstripe renn ned frå éi.
+    kjerne, kile, lysKant, vatnFarge = "#130f19", "#241d2c", "#8e8288", "#3a3240"
     vatn_brukt = False
-    lav = ["#9aa456", "#7e8c72", "#b0683a"]
+    kandidatar = []
     for bid, (r0, r1, b0_, b1_, off) in enumerate(blokkinfo):
         fr = [p for p, b in framside.items() if b == bid]
+        if len(fr) < 60: continue
+        kandidatar.append((r0 + M.h(bid, 3, s + 31) * 30 - len(fr) / 40, bid, fr))
+    kandidatar.sort()
+    sprekker = []
+    for _, bid, fr in kandidatar[:nsprekk]:
+        r0, r1, b0_, b1_, off = blokkinfo[bid]
+        ys = [p[1] for p in fr]; ytop = min(ys)
+        rad0 = [p[0] for p in fr if p[1] <= ytop + 2]
+        x = rad0[len(rad0) // 3 + int(M.h(bid, 2, s + 32) * len(rad0) / 3)]
+        # Sprekka startar i toppkanten av blokka (eit hakk i kanten), så ho syner sjølv når berre toppen
+        # av nabben er i biletet.
+        yy = min([p[1] for p in blokk if p[0] == x and blokk[p] == bid] or [ytop])
+        retning = -1 if M.h(bid, 1, s + 33) < 0.5 else 1
+        lengd = min(r1 - yy - 3, 16 + int(M.h(bid, 1, s + 34) * 14))
+        sprekker.append((x, yy))
+        for steg in range(lengd):
+            bk = 3 if steg < 3 else 2 if steg < lengd * 0.7 else 1               # kjernen smalnar nedover
+            kw = max(0, 4 - steg)                                                 # skuggekilen øvst
+            berg = lambda p: blokk.get(p) == bid
+            for dx in range(-kw, 0):
+                if berg((x + dx, yy)): L_.p(x + dx, yy, kile)
+            for dx in range(bk):
+                if berg((x + dx, yy)): L_.p(x + dx, yy, kjerne)
+            if berg((x + bk, yy)): L_.p(x + bk, yy, lysKant)
+            yy += 1
+            if M.h(x, yy, s + 38) < 0.35: x += retning
+            if M.h(x, yy, s + 39) < 0.1: retning = -retning
+        if not vatn_brukt and M.h(bid, 0, s + 40) > 0.4:                       # vassstripe ned frå sprekka
+            vatn_brukt = True
+            for vy in range(yy, r1 - 2):
+                for vx in (x, x + 1):
+                    if (vx, vy) in framside and M.h(vx, vy, s + 41) > 0.15: L_.p(vx, vy, vatnFarge)
+    # Lav: nokre få større flekker (4 til 8 pikslar) langs toppkanten av blokkene øvst og ved sprekkene.
+    stader = [(x - 4, y + 3) for (x, y) in sprekker]
+    for bid, (r0, r1, b0_, b1_, off) in sorted(enumerate(blokkinfo), key=lambda e: e[1][0] + M.h(e[0], 7, s + 43) * 20):
+        fr = [p for p, b in framside.items() if b == bid]
         if len(fr) < 40: continue
-        xs = [p[0] for p in fr]; x0, x1 = min(xs), max(xs)
-        for n in range(2 + int(M.h(bid, 1, s + 31) * 2)):
-            x = x0 + 4 + int(M.h(bid, n, s + 32) * max(1, x1 - x0 - 8)); yy = r0 + off + 5 + int(M.h(bid, n, s + 47) * 8)
-            retning = -1 if M.h(bid, n, s + 33) < 0.5 else 1
-            lengd = 8 + int(M.h(bid, n, s + 34) * 18)
-            for steg in range(lengd):
-                if (x, yy) in framside and framside[(x, yy)] == bid:
-                    L_.p(x, yy, sprekkFarge)
-                    if (x + 1, yy) in framside: L_.p(x + 1, yy, lysKant)
-                    if M.h(x, yy, s + 35) > 0.82 and (x - 1, yy) in framside: L_.p(x - 1, yy, M.hx(lav[int(M.h(x, yy, s + 36) * 2.2)]))   # lav langs sprekka
-                if steg == lengd // 2 and M.h(bid, n, s + 37) > 0.5:   # ei grein
-                    gx, gy = x, yy
-                    for g2 in range(6):
-                        gx -= retning; gy += 1
-                        if (gx, gy) in framside: L_.p(gx, gy, sprekkFarge)
-                yy += 1
-                if M.h(x, yy, s + 38) < 0.45: x += retning
-                if M.h(x, yy, s + 39) < 0.12: retning = -retning
-            if not vatn_brukt and M.h(bid, n, s + 40) > 0.5:          # vassstripe ned frå sprekka
-                vatn_brukt = True
-                for vy in range(yy, r1 - 2):
-                    for vx in (x, x + 1):
-                        if (vx, vy) in framside and M.h(vx, vy, s + 41) > 0.15: L_.p(vx, vy, vatnFarge)
-        # Lav i små klynger nær toppkanten av blokka
-        for n in range(2 + int(M.h(bid, 5, s + 42) * 3)):
-            cx = x0 + int(M.h(bid, n, s + 43) * (x1 - x0)); cy = r0 + off + 5 + int(M.h(bid, n, s + 44) * 4)
-            f = lav[0] if M.h(bid, n, s + 45) < 0.5 else lav[1] if M.h(bid, n, s + 45) < 0.88 else lav[2]
-            for dx, dy in [(0, 0), (1, 0), (0, 1), (-1, 1), (1, 1), (2, 1)]:
-                if M.h(cx + dx, cy + dy, s + 46) > 0.25 and (cx + dx, cy + dy) in framside: L_.p(cx + dx, cy + dy, f)
+        ytop = min(p[1] for p in fr); rad0 = [p[0] for p in fr if p[1] <= ytop + 1]
+        stader.append((rad0[int(M.h(bid, 8, s + 44) * len(rad0))], ytop + 2))
+    for n, slag in enumerate(lavar):
+        if n >= len(stader): break
+        cx, cy = stader[n]
+        lavflekk(L_, cx, cy, 2.6 + M.h(n, 1, s + 45) * 1.2, slag, s + 46 + n, lambda x, y: (x, y) in framside)
     for (r0, r1, blokker) in rader:
         for (b0_, b1_, offv, offh) in blokker:
             # lyng på toppflata av nokre blokker
             if M.h(b0_, r0, s + 26) > 0.55:
                 u = b0_ + (b1_ - b0_) // 2; yy = max(r0, int(topp(max(0, u)))) + (offv + offh) // 2 + 1
-                if 0 <= u < w and u <= inner(yy): x = sx(u); L_.p(x, yy, "#8a5278"); L_.p(x + 1, yy, "#a86a92"); L_.p(x, yy - 1, "#5e3c58")
+                if 0 <= u < w and ytre(yy) <= u <= inner(yy): x = sx(u); L_.p(x, yy, "#8a5278"); L_.p(x + 1, yy, "#a86a92"); L_.p(x, yy - 1, "#5e3c58")
     gras = M.rampe("#14221a", "#1e3222", "#2a4428", "#3a5a30", "#4e7038", "#66883e")
+    tu = []                                                               # u der toppen er
     for u in range(w):                                                    # jord og gras som ligg på toppen
         t = int(topp(u))
-        if u > inner(t) + 2: continue
+        if u > inner(t) + 2 or u < ytre(t) - 2: continue
+        tu.append(u)
         for kk in range(4): L_.p(sx(u), t - 1 + kk, M.tone(gras, 0.34 + (2 - kk) * 0.14, u, t + kk) if kk < 2 else "#3a2a20")
-    for i in range(46):                                                   # strå som vaiar
-        u0 = M.h(i, 1, s + 4) * (inner(40) - 4); y0 = topp(u0)
-        lengd = 6 + M.h(i, 2, s + 4) * 14
+    tu = [u for u in tu if 2 < u - ytre(topp(u)) and inner(topp(u)) - u > 3] or tu
+    for i in range(len(tu) // 2):                                         # strå som vaiar
+        u0 = tu[int(M.h(i, 1, s + 4) * len(tu))]; y0_ = topp(u0)
+        lengd = 6 + M.h(i, 2, s + 4) * 14 * min(1, h / 200 + 0.3)
         lut = (M.h(i, 3, s + 4) - 0.4) * 0.6
         for kk in range(int(lengd)):
             t = kk / lengd
-            x = sx(u0 + lut * kk * t) + round(vind * t * t * (0.6 + lengd / 30)); yy = y0 - kk
+            x = sx(u0 + lut * kk * t) + round(vind * t * t * (0.6 + lengd / 30)); yy = y0_ - kk
             L_.p(x, yy, M.tone(gras, 0.34 + t * 0.62, int(x), int(yy)))
-    for i in range(10):                                                   # lyng på toppen
-        u = M.h(i, 1, s + 5) * (inner(40) - 6); yy = topp(u) - 1 - M.h(i, 2, s + 5) * 3
+    for i in range(max(2, len(tu) // 8)):                                 # lyng på toppen
+        u = tu[int(M.h(i, 1, s + 5) * len(tu))]; yy = topp(u) - 1 - M.h(i, 2, s + 5) * 3
         x = sx(u); L_.p(x, yy, "#8a5278"); L_.p(x + 1, yy, "#a86a92"); L_.p(x, yy - 1, "#5e3c58")
     if bjork:                                                             # ei lita bjørk som lener seg ut over stupet
         bu, by = 30, int(topp(30))
@@ -807,6 +846,41 @@ def nabb_h():
     return ark.im
 
 
+# Dei låge nabbane midt nede (ytst på hylla): ein låg, brei bergrygg og ein mindre stein litt til høgre.
+# Sidene skrånar ut til botnen av biletet, så dei står på noko sjølv om berre toppen syner.
+NABBM_W, NABBM_H = 150, 120
+NABBM2_W, NABBM2_H = 100, 100
+
+
+def nabb_m():
+    """Låg bergrygg midt nede: brei og flat, lågare enn sidenabbane."""
+    w, h, s = NABBM_W, NABBM_H, 661
+    # Ein rund skulder som vert breiare nedover og når biletkanten først nedst (under skjermkanten).
+    hw = lambda y: 16 + 58 * (max(0, y - 10) / (h - 10)) ** 0.55
+    topp = lambda u: 12 + ((u - 72) / 44) ** 2 * 8 + (M.fbm(u / 6, 1, s, 3) - 0.5) * 5
+    ytre = lambda y: 72 - hw(y) * 1.05 + (M.fbm(y / 7, 3, s, 2) - 0.5) * 4
+    inner = lambda y: 72 + hw(y) + (M.fbm(y / 7, 2, s, 2) - 0.5) * 4
+    ark = L(w * GRAS_RAMMER, h)
+    for f in range(GRAS_RAMMER):
+        ark.im.alpha_composite(nabb_ramme(f, False, s, w=w, h=h, topp=topp, inner=inner, ytre=ytre, y0=8,
+                                          radh=(26, 34, 44), bw=(34, 36), nsprekk=2, lavar=("gul", "graa", "rust")), (f * w, 0))
+    return ark.im
+
+
+def nabb_m2():
+    """Mindre stein litt til høgre, med ein rund topp."""
+    w, h, s = NABBM2_W, NABBM2_H, 671
+    hw = lambda y: 11 + 38 * (max(0, y - 10) / (h - 10)) ** 0.55
+    topp = lambda u: 12 + ((u - 48) / 30) ** 2 * 8 + (M.fbm(u / 5, 1, s, 3) - 0.5) * 4
+    ytre = lambda y: 48 - hw(y) + (M.fbm(y / 7, 3, s, 2) - 0.5) * 3
+    inner = lambda y: 48 + hw(y) + (M.fbm(y / 7, 2, s, 2) - 0.5) * 3
+    ark = L(w * GRAS_RAMMER, h)
+    for f in range(GRAS_RAMMER):
+        ark.im.alpha_composite(nabb_ramme(f, False, s, w=w, h=h, topp=topp, inner=inner, ytre=ytre, y0=8,
+                                          radh=(22, 30, 40), bw=(28, 30), nsprekk=1, lavar=("graa", "gul")), (f * w, 0))
+    return ark.im
+
+
 def fuglar():
     """Tre fuglar som svevar langt nede over dalen (eit lag over lia: to rammer med venger opp og ned,
     og laget driv sakte bortover). Små, mørke og litt disige."""
@@ -821,7 +895,7 @@ def fuglar():
 
 
 
-BILETE = {"li": li, "elv": elv_rammer, "skyer": skyer, "fuglar": fuglar, "nabb": nabb, "nabb-h": nabb_h, "li-kort": li_kort, "dal-under": dal_under, "himmel": himmel, "fjell": fjell, "dal-nord": dal_nord, "naer": naer, "greiner": greiner}
+BILETE = {"li": li, "elv": elv_rammer, "skyer": skyer, "fuglar": fuglar, "nabb": nabb, "nabb-h": nabb_h, "nabb-m": nabb_m, "nabb-m2": nabb_m2, "li-kort": li_kort, "dal-under": dal_under, "himmel": himmel, "fjell": fjell, "dal-nord": dal_nord, "naer": naer, "greiner": greiner}
 
 if __name__ == "__main__":
     namn = sys.argv[1:] or list(BILETE)

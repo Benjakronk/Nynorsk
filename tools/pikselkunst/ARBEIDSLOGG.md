@@ -1451,3 +1451,25 @@ same måte, uansett kven som tek over.
 - **Vurdert:** `forhand/skjerm/r47-einer-for-etter.png`, `r47-lykt-for-etter.png`,
   `r47-skogkant-for-etter.png` (venstre og høgre side), og `r47-for-vegen-spel.png` / `r47-etter-vegen-spel.png`.
 - **Står att:** Den frittståande furua (`F` på 1,8) står tett inn i kanten og blandar seg med granene.
+
+## Runde 48: tydelegare sprekker, samla lav og fleire nabbar mot midten
+
+- **Oppdrag:** Brukaren: gjer sprekkene i nabbane tydelegare, samle laven, og gjerne fleire nabbar mot
+  midten av biletet når ein står ytst på hylla.
+- **Sprekker:** Færre og tydelegare (`nsprekk` per nabb, dei største blokkene øvst får dei). Kvar startar
+  i toppkanten av blokka, så ho syner sjølv når berre toppen av nabben er i biletet: mørk kjerne tre
+  pikslar brei øvst, to nedover og éin nedst, lys kant til høgre (veggen i sprekka vender mot ljoset)
+  og ein mørk skuggekile øvst der sprekka opnar seg.
+- **Lav:** `lavflekk()` teiknar nokre få flekker på 4 til 8 pikslar med ujamn kant og lysare midte:
+  gulgrøn, grågrøn og éin rustoransje, langs toppkanten av blokkene og ved sprekkene. Færre mosepunkt
+  på hyllene, så flekkene ikkje druknar i småprikkar.
+- **Nye nabbar:** `nabb_ramme` tek no form (topp, inner, ytre), blokkstorleik og tal på sprekker, og
+  gir `nabb-m` (låg, brei bergrygg) og `nabb-m2` (mindre stein). Sidene vert breiare nedover og når
+  biletkanten først under skjermkanten, så dei står på noko. I `data.js` står dei i forgrunnen med
+  `ved: [6.25, 19]` (kameraet ytst på hylla), faktor 1.15 og 1.1 for djupn. Dei rammar inn utsikta
+  midt nede utan å dekkje Ivar, spissen eller elva, og er ute av biletet på neset og elles på hylla.
+- **Vurdert:** `forhand/skjerm/r48-for-etter.png` (ytst på hylla og neset, før og etter) og
+  `r48-nabb.png` (dei gamle sidenabbane, så dei nye fire). Sjekka òg `r48-etter-midt-spel.png`
+  (hylla utan kameraglid): dei nye nabbane syner ikkje der.
+- **Står att:** I utsnittet ytst på hylla syner berre dei øvste 20 til 30 pikslane av nabbane, så
+  berre den øvste sprekka og laven der syner i spelet.
