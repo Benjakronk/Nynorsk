@@ -1847,3 +1847,38 @@ same måte, uansett kven som tek over.
   på reposen ved døra og går rett inn i korga (`[56, 5]`).
 - **Etter:** `k58-rad.png` (utan Ivar, på trinn 3, på reposen og i korga) og `k58-naer.png` (reposen nært).
 - **Står att:** Reposen og trinna blir mørke i det mørke rommet.
+
+## Runde 60: portretta i FF6-stil (pilot: Huldra og Ivar)
+
+- **Frå brukaren:** Portretta skal vere meir detaljerte og naturlege, med detaljnivå og skugge som i
+  Final Fantasy VI. Huldra skal vere vakker og gåtefull. Pilot med Huldra og Ivar før resten.
+- **Research:** `forhand/referansar/ff6a-portrett.png` (Terra, Locke, Edgar, Celes, Relm), målt piksel for
+  piksel (`forhand/ff6a-rad0.png`, `ff6a-rad1.png`): 15 fargar per portrett, mørkegrått omriss, fire til
+  fem tonar i huda og håret, hår i klumpar med mørk kant og glansstriper, auge med vippeline, iris og éin
+  kvit piksel, nesten inga nase, lepper som ein liten farga flekk, inga dithering i andletet. Sjå
+  «Portrett i FF6-stil» i STILGUIDE.md.
+- **Gjort:**
+  - Nye verktøy i `portrett.py`: `lokk()` og `harflak()` (hår i lokkar med skuggekant, lysside og glans),
+    andletsprofil rad for rad (`kantar`), `selout()` (lyssida et omrisset), `rydd()`, `ellipse()`, og
+    `P.bak` (eigen bakgrunn under omrisset).
+  - **Huldra:** langt, bylgja gullhår i lokkar, krans av kvitveis, blåklokker og bjørkelauv, bleik hud med
+    kjølig skjær, lysande grøne auge under tunge augelok som ser forbi oss, eit lite smil, grøn kjole med
+    kvit særk og fiolett sjal, ein dusk av kuhalen bak skuldra nede til venstre, og bak henne skogen i
+    dis (granar som silhuettar, dis lågt over bakken, tre irrlys). Kjensler: glad, trist, sint, sjokk,
+    tenkje (fingeren mot leppa), nikk, lokk og sky (same namn som figurarket). Ført inn i
+    `PORTRETT_KJENSLER` i portrett.py og data.js.
+  - **Ivar:** mørkebrunt, ustyrleg hår med virvel, tjafsar og lugg, synleg øyre med fjørpennen bak,
+    runde kinn med fregner og raudme, store brune auge, blå vadmålstrøye med ståkrage, linskjorte og
+    sekkeband av lêr. Alle åtte kjenslene (glad, trist, sint, sjokk, tenkje, nikk, ivrig, les).
+- **Rundar:** (1) håret var éi flate med spreidde glansflekkar: bygd om til flak av smale lokkar teikna
+  frå skuggesida. (2) Håret bak var ein flat, brun vegg (skuggeforskyvinga åt opp kantane): no same
+  tonar, men færre lyse pikslar. (3) Andletet var for breitt og grått: profilen handplassert rad for rad,
+  kjølegare, men reinare hudtonar. (4) Kinn og nasetipp flaut saman til ein kvit flekk i spelstorleik:
+  berre nasetippen har den lysaste tonen. (5) Munnen låg på profilkanten: flytt inn eitt steg.
+- **Etter:** `forhand/r59-samanlikning.png` (før og etter med kjensler), `forhand/r59-mot-ff6.png` (ved
+  sida av Terra og Relm), og i spelet `forhand/skjerm/r59-huldra-spel.png`, `r59-huldra-lokk-spel.png`,
+  `r59-ivar-spel.png` og `r59-ivar-sjokk-spel.png`.
+- **Står att:** Dei andre portretta i same stil: storebror, den framande, presten, haugbonden, syster,
+  grannen, budeia og dei fem fellesansikta (`bygd-mann`, `bygd-kvinne`, `bygd-gamal-mann`,
+  `bygd-gamal-kone`, `bygd-gut`). Huldra kan få litt meir form i håret over issen, og haka til Ivar er
+  litt brei.

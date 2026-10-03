@@ -1,0 +1,95 @@
+# namn: portrett-huldra-lokk
+# type: portrett
+# ut: bilete/spel/portrett/huldra-lokk.png
+# storleik: 48x48
+# laga med tools/pikselkunst/portrett.py
+palett:
+  . = -
+  a = #dde2ea    augekvit 3
+  b = #ffffff    augekvit 4
+  c = #0a1018    dis 0
+  d = #121c26    dis 1
+  e = #1c2c34    dis 2
+  f = #2a4044    dis 3
+  g = #3e5a58    dis 4
+  h = #5e7c74    dis 5
+  i = #3a2418    har_hu 0
+  j = #9a6c34    har_hu 1
+  k = #c4943e    har_hu 2
+  l = #e4be62    har_hu 3
+  m = #f6dc90    har_hu 4
+  n = #fff4c8    har_hu 5
+  o = #40283a    hud_hu 0
+  p = #86606e    hud_hu 1
+  q = #c49ca0    hud_hu 2
+  r = #ead4cc    hud_hu 3
+  s = #f8ece4    hud_hu 4
+  t = #fffcf6    hud_hu 5
+  u = #0a1e1e    iris_hu 0
+  v = #1c4a40    iris_hu 1
+  w = #2e8a6e    iris_hu 2
+  x = #6ad6a6    iris_hu 3
+  y = #c8fae0    iris_hu 4
+  z = #101c16    kjole 0
+  A = #36543e    kjole 2
+  B = #527a56    kjole 3
+  C = #7ea27a    kjole 4
+  D = #4a56b0    klokke 2
+  E = #7a8ae0    klokke 3
+  F = #8a4656    lepe_hu 1
+  G = #b86a78    lepe_hu 2
+  H = #d8949a    lepe_hu 3
+  I = #dcd6d2    lin 3
+  J = #f6f2ea    lin 4
+  K = #1e1438    sjal 0
+  L = #5e4a9a    sjal 2
+  M = #8a78c8    sjal 3
+bilete:
+  cccddddddddddddddidiilliiiiiiiddddddddddddddddcc
+  cccdddddddddddddilimmlmllkkkkkidddddidedddddddcc
+  cccddddddddddddddillljjjjllllliddddiliedddddddcc
+  cccddddddddddeddijlljmmmkkkkklkiiiilieeeddddddcc
+  cccddddddddddeiijjjnlBCBkmIJCBjkkllideeeddddddcc
+  ccccddddddddeijjjjnnmmBBBnJmJBBklIJkieeeddddddcc
+  cccdddddddddeijjBCBmkkEDnnmJkjkkkJmJkieeddddddcc
+  ccccddddddddiijkkBBBkkDDnmmkkjkmjBJBlliedddddccc
+  ccccdddidiiijjjjIJkkkkmmmkkkrrkmrjBBBklieeedddcc
+  ccccddilijjjjjjjJmJkkkmkjkkrrskmrjjmmkklieeeeecc
+  ccccdddiljjkBCBjkJkkkkkkkklrrrjkssjkklEDlieeeccc
+  ccccddijjlkkkBBBkjkjkkkkkkrrrrrksssjklDDklieeccc
+  ccccddijjjlkkjjjkjkjkkklkrrrrrrjrssjkljjkkieeecc
+  cccccijjjkkkkEDkkjkjkkkrrrrrrrrrrrjrkljjkkieeccc
+  ccccdijjjkkjjDDkkjkjkkkrrrrrrrrrrjrrjljjkkieeccc
+  ccccijjjkkjkjjjkkkkkkkkrrrrrrrrrrrrrjlrjkkieeccc
+  ccccijjkkjkkjjjkkkkkkkkjjjjjjjrrrrrrrrrjkkieeccc
+  cccijjjkkkkjjjjkjkjkkkkqqqqqqrrrrrrrrrsjkkieeccc
+  cccijjkkkkkkjjjkjkjkkkkqrrrrrrrrrrrrqrsjkmmieccc
+  cccijkkjkkjkjjkkjkjkkkkiiiiiirrrriiiirsjknmicccc
+  ccijjkkjkkjkjjkkkkjkkkkiiiiiirrrriwuvrsjknmieccc
+  ccijjkkjkmkjjjkkkkkkkkkwuvairrssssxyrrsjkklieccc
+  ccijjkkkkkkjjjkkkkkkkklxybpprrssssssrrrskkkicccc
+  ccijjkkkkjkjjjkjkkkkkkqqrrrrrrrsssssrqrskkkicccc
+  ccijjkjkkjkjjjkjkjkkmmqqqrrrrrrssssrrqrtrkkieccc
+  ccijjkjkkkkjjjkjkjkknnqqqrrrrrrrrrrrrrqrkkkicccc
+  ccijjkjkkkkjjjkjkjkknmqqqrrrrHHHHrrrrpqjkkkiyccc
+  ccijjkjkjkkjjjjjjjjkklqqqrrrrrrFrrrrrrrjkkkicccc
+  ccijjkjkjkkjjjjjjkjkklqqqrrrrrrrFrrrrrrjkkkicccc
+  ccijjkjkkkkkjjjkjkjkkklqqrrrrrrrrFFFrrijkkkicccc
+  ccijjkkkjkkkjjjkjkjkkklqqrrrrrrrrrGrrrijkkkicccc
+  ccijjkjkjkkkjjjkjkjkkklqqqrrrrrrrrrsrpeijkkliccc
+  cijjjkjkjkkkjjjkjkjkkklqqqrrrrrrrrrssrpijkkliccc
+  cijjjkjkjkkkjjjkjkjkkkloqqqqrrrrrrrrrpeijjkklicc
+  cijjjkjkjkkkjjjkjkjkkkloqppqqqrqqqqrpeeijjkklicc
+  cijjjkjjjkkkjjjkjkjkkkloqqprrrqqrrpoeeeijjjkklic
+  ijjjjkjjjkkkjjjkjkjkkkloqqqrrrpoooeeeeeijjjkklic
+  ijjjjkjjjkkkjjjkjkjkkkkoqqqqrrpeeffeeeeijjjkkkig
+  ijjjjkkjjkkkjjjkjkjkkkkoqqqqrrpgefeeeeeijjjkkkig
+  ijjjjkkjjkkkjjjkjkjkkkkoqqqqrrpozKKKKKKijjjkkigg
+  ijjjjkkjjkkkjjjkjkjkkkkrrrrrrrrrAMMMMMMMijjkkigg
+  ijmmkkkkjjkkjjjkjkjkkkkrrrrrrrrrrAMMMMMMMjjkiggg
+  immkkkkkkjLLjjjkjkjkkkkqrrrrrrssrAMMMMMMMMMkihhg
+  ikkkjkkkkLLLjjjkjkkkkkkqqrrrrsrrAIAMMMMMMMMMKhhh
+  ikmjkkkkLLLLjjkkjkkkkkrrrrrrrrAIIIIMMMMMMMMMMKhh
+  jjkjkkKLLLLLjjkkkkjkkBIIArrAIIIBIBAAMMMMMMMMMMKh
+  jklkkkKLLLLLjjkkkkAAAIIBIBIBIBIAAAAAMMMMMMMMMMKh
+  kkikkKLLLLLLLLkkAAAAAAABBBBBBBAAAAAAAMMMMMMMMMMK

@@ -211,7 +211,8 @@ window.RPGData = (function () {
   };
 
   // Portrett med kjensler: bilete/spel/portrett/<id>-<kjensle>.png (laga med portrett.py).
-  const PORTRETT_KJENSLER = { ivar: ["glad", "trist", "sint", "sjokk", "tenkje", "nikk", "ivrig", "les"] };
+  const PORTRETT_KJENSLER = { ivar: ["glad", "trist", "sint", "sjokk", "tenkje", "nikk", "ivrig", "les"],
+    huldra: ["glad", "trist", "sint", "sjokk", "tenkje", "nikk", "lokk", "sky"] };
 
   /* ---------- Stemningar: lyset over karta ----------
      Som på Super Nintendo (Final Fantasy VI): etter at kartet er teikna, blir kvar piksel

@@ -1,0 +1,92 @@
+# namn: portrett-huldra-sky
+# type: portrett
+# ut: bilete/spel/portrett/huldra-sky.png
+# storleik: 48x48
+# laga med tools/pikselkunst/portrett.py
+palett:
+  . = -
+  a = #dde2ea    augekvit 3
+  b = #0a1018    dis 0
+  c = #121c26    dis 1
+  d = #1c2c34    dis 2
+  e = #2a4044    dis 3
+  f = #3e5a58    dis 4
+  g = #5e7c74    dis 5
+  h = #3a2418    har_hu 0
+  i = #9a6c34    har_hu 1
+  j = #c4943e    har_hu 2
+  k = #e4be62    har_hu 3
+  l = #f6dc90    har_hu 4
+  m = #fff4c8    har_hu 5
+  n = #40283a    hud_hu 0
+  o = #86606e    hud_hu 1
+  p = #c49ca0    hud_hu 2
+  q = #ead4cc    hud_hu 3
+  r = #f8ece4    hud_hu 4
+  s = #fffcf6    hud_hu 5
+  t = #1c4a40    iris_hu 1
+  u = #2e8a6e    iris_hu 2
+  v = #c8fae0    iris_hu 4
+  w = #101c16    kjole 0
+  x = #36543e    kjole 2
+  y = #527a56    kjole 3
+  z = #7ea27a    kjole 4
+  A = #4a56b0    klokke 2
+  B = #7a8ae0    klokke 3
+  C = #8a4656    lepe_hu 1
+  D = #b86a78    lepe_hu 2
+  E = #d8949a    lepe_hu 3
+  F = #dcd6d2    lin 3
+  G = #f6f2ea    lin 4
+  H = #1e1438    sjal 0
+  I = #5e4a9a    sjal 2
+  J = #8a78c8    sjal 3
+bilete:
+  bbbcccccccccccccchchhkkhhhhhhhccccccccccccccccbb
+  bbbccccccccccccchkhllklkkjjjjjhccccchcdcccccccbb
+  bbbcccccccccccccchkkkiiiikkkkkhcccchkhdcccccccbb
+  bbbccccccccccdcchikkillljjjjjkjhhhhkhdddccccccbb
+  bbbccccccccccdhhiiimkyzyjlFGzyijjkkhcdddccccccbb
+  bbbbccccccccdhiiiimmllyyymGlGyyjkFGjhdddccccccbb
+  bbbcccccccccdhiiyzyljjBAmmlGjijjjGlGjhddccccccbb
+  bbbbcccccccchhijjyyyjjAAmlljjijliyGykkhdcccccbbb
+  bbbbccchchhhiiiiFGjjjjllljjjqqjlqiyyyjkhdddcccbb
+  bbbbcchkhiiiiiiiGlGjjjljijjqqrjlqiilljjkhdddddbb
+  bbbbccchkiijyzyijGjjjjjjjjkqqqijrrijjkBAkhdddbbb
+  bbbbcchiikjjjyyyjijijjjjjjqqqqqjrrrijkAAjkhddbbb
+  bbbbcchiiikjjiiijijijjjkjqqqqqqiqrrijkiijjhdddbb
+  bbbbbhiiijjjjBAjjijijjjqqqqqqqqqqqqqjkiijjhddbbb
+  bbbbchiiijjiiAAjjijijjjqqqiiiiqqqiiiikiijjhddbbb
+  bbbbhiiijjijiiijjjjjjjjqiiqqqqqqqqqqikqijjhddbbb
+  bbbbhiijjijjiiijjjjjjjjiqqqqqqqqqqqqqqqijjhddbbb
+  bbbhiiijjjjiiiijijijjjjppppppqqqqqqqqqrijjhddbbb
+  bbbhiijjjjjjiiijijijjjjpqqqqqqqqqqqqpqrijllhdbbb
+  bbbhijjijjijiijjijijjjjhhhhhhqqqqqhhhqrijmlhbbbb
+  bbhiijjijjijiijjjjijjjjhhhhhhqqqqhhhtqrijmlhdbbb
+  bbhiijjijljiiijjjjjjjjjpatuvqqrrrrauvqrijjkhdbbb
+  bbhiijjjjjjiiijjjjjjjjkpqooqqqrrrrrrqqqrjjjhbbbb
+  bbhiijjjjijiiijijjjjjjppqqqqqqqrrrrrqpqrjjjhbbbb
+  bbhiijijjijiiijijijjllpppqqqqqqrrrrqqpqsqjjhdbbb
+  bbhiijijjjjiiijijijjmmppDDqqqEEEEEqqqqpqjjjhbbbb
+  bbhiijijjjjiiijijijjmlpppqqqqEEEEqqqqopijjjhvbbb
+  bbhiijijijjiiiiiiiijjkpppqqqqqqqqqqqqqqijjjhbbbb
+  bbhiijijijjiiiiiijijjkpppqqqqqqqCqqqqqqijjjhbbbb
+  bbhiijijjjjjiiijijijjjkppqqqqqqqqCCCqqhijjjhbbbb
+  bbhiijjjijjjiiijijijjjkppqqqqqqqqDDqqqhijjjhbbbb
+  bbhiijijijjjiiijijijjjkpppqqqqqqqqqrqodhijjkhbbb
+  bhiiijijijjjiiijijijjjkpppqqqqqqqqqrrqohijjkhbbb
+  bhiiijijijjjiiijijijjjknppppqqqqqqqqqodhiijjkhbb
+  bhiiijijijjjiiijijijjjknpoopppqppppqoddhiijjkhbb
+  bhiiijiiijjjiiijijijjjknppoqqqppqqondddhiiijjkhb
+  hiiiijiiijjjiiijijijjjknpppqqqonnndddddhiiijjkhb
+  hiiiijiiijjjiiijijijjjjnppppqqoddeeddddhiiijjjhf
+  hiiiijjiijjjiiijijijjjjnppppqqofdedddddhiiijjjhf
+  hiiiijjiijjjiiijijijjjjnppppqqonwHHHHHHhiiijjhff
+  hiiiijjiijjjiiijijijjjjqqqqqqqqqxJJJJJJJhiijjhff
+  hilljjjjiijjiiijijijjjjqqqqqqqqqqxJJJJJJJiijhfff
+  hlljjjjjjiIIiiijijijjjjpqqqqqqrrqxJJJJJJJJJjhggf
+  hjjjijjjjIIIiiijijjjjjjppqqqqrqqxFxJJJJJJJJJHggg
+  hjlijjjjIIIIiijjijjjjjqqqqqqqqxFFFFJJJJJJJJJJHgg
+  iijijjHIIIIIiijjjjijjyFFxqqxFFFyFyxxJJJJJJJJJJHg
+  ijkjjjHIIIIIiijjjjxxxFFyFyFyFyFxxxxxJJJJJJJJJJHg
+  jjhjjHIIIIIIIIjjxxxxxxxyyyyyyyxxxxxxxJJJJJJJJJJH

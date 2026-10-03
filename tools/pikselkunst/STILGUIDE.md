@@ -57,6 +57,42 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
 - Kjensler i portrett: same namn som i figurarka (glad, trist, sint, sjokk, tenkje, nikk og
   eigne). Endre auge, bryn og munn, og legg til ting som fortel (tåre, hand under haka, bok).
 
+## Portrett i FF6-stil (runde 60)
+
+Målt i portretta frå Final Fantasy VI Advance (`forhand/referansar/ff6a-portrett.png`: Terra, Locke,
+Edgar, Celes, Relm). Huldra og Ivar er teikna etter dette; dei andre portretta står att.
+
+- **Storleik og utsnitt:** FF6 har om lag 32 × 40 (34 × 34 synleg i arket), tett utsnitt der hovudet
+  fyller nesten heile ruta og skuldrene berre så vidt kjem med. Vi held på 48 × 48 (vist 144 × 144),
+  men brukar plassen til fleire tonar og finare auge, ikkje til å vise meir av kroppen: hovudet er om
+  lag 28 pikslar høgt (panne til hake), skuldrene er dei nedste 8 til 10 radene, og håret går ut over
+  kanten.
+- **Fargar:** FF6 har 15 fargar per portrett (16 med gjennomsiktig). Vi tillèt 40, fordelt slik:
+  hud 6 (tonen 0 er omrisset), hår 6, iris 4 til 5, augekvite 3, lepper 3, klede 3 til 4 per plagg.
+- **Hud:** fire til seks tonar i store, rolege flater: lys plan mot ljoset (panne, kinnbein, naserygg,
+  hake), grunntone, skuggeside mot øyret og under kjeven, og éin piksel med den lysaste tonen på
+  nasetippen. Ikkje fleire «glanspunkt» på kinnet: i spelstorleik flyt dei saman til ein kvit flekk.
+  Raudme er éi smal stripe i ein dempa raudtone, ikkje rosa.
+- **Profilen** blir handplassert rad for rad (`kantar` i portrett.py): panne, eit lite hakk ved
+  augeholet, naseryggen, nasetippen som stikk 1 til 2 pikslar ut, leppene og haka. Nasa er nesten
+  ikkje teikna inne i andletet: ein lys rygg, ein skuggepiksel på sida og eit nasebor.
+- **Hår i lokkar med glans:** håret er klumpar på 3 til 5 pikslar, kvar med mørk kant mot naboen,
+  grunntone og lys side mot ljoset. Glansen ligg som korte striper langs lyssida, samla i ein ring
+  over issen og på bylgjene, ikkje som spreidde prikkar. Tuppane er ujamne, og nokre lause strå bryt
+  silhuetten. I koden: `lokk()` (éi lokk langs ei midtline) og `harflak()` (eit flak av lokkar mellom
+  to kantliner, teikna frå skuggesida mot lyssida, så den mørke kanten på kvar lokk ligg over lyssida
+  på den førre). Håret bak hovudet har færre lyse pikslar (`lys=0.55`) og les difor som lenger bak.
+- **Auge:** tjukk vippeline (to rader ved den ytre kroken), augekvite i to tonar (skugge under loket),
+  iris 3 × 3 i tre tonar med mørk pupill øvst og lysare nedst, og éin kvit glanspiksel. Det fjerne
+  auget er 4 pikslar breitt. Augelokfaldet er ei line i skuggetonen over auget. Bryna er tynne liner i
+  den mørke hårtonen.
+- **Lys:** framanfrå og ovanfrå (frå høgre, mot teksten). Lyssida et omrisset litt: der huda er lys
+  inntil kanten, blir omrisset den nest mørkaste tonen (`selout()`).
+- **Omriss:** farga (den mørkaste tonen i materialet), aldri svart. FF6 brukar mørkegrått.
+- **Dithering:** ikkje i andletet. Berre i bakgrunn og dis, og då sparsamt.
+- **Bakgrunn:** vanlegvis gjennomsiktig (samtaleboksen syner bak). Overnaturlege vesen kan få ein
+  eigen stemningsbakgrunn inne i ruta (`P.bak`, under omrisset), som skogen i dis bak Huldra.
+
 ## Lærdommar frå Final Fantasy VI og The Minish Cap
 
 - Hus er heile figurar, ikkje gjentekne fliser. Taket dominerer (tre fjerdedelar
