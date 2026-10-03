@@ -1747,3 +1747,17 @@ same måte, uansett kven som tek over.
   (lysekroner og Ivar mellom benkeradene), `k56-stol-heil.png`, `k56-kor-heil.png` og golvet i alle.
 - **Står att:** Kula til kolven er lita og syner dårleg på ytterpunkta. Lista over andre objekt med for låg
   vinkel frå runde 56 gjeld framleis.
+
+## Runde 58: den venstre nabben når alltid ut til skjermkanten
+
+- **Oppdrag:** Brukaren: når Ivar står på den venstre flisa i spissen av hylla (15,18), sluttar den
+  venstre nabben før skjermkanten, så det blir ei loddrett stripe med luft.
+- **Funne:** Med faktor 1.25 skuvar parallaksen nabben om lag 25 pikslar mot høgre når kameraet står ei
+  flis lenger til venstre, og venstre kanten av biletet (x -18) kom inn på skjermen.
+- **Gjort:** Sidenabbane er 40 pikslar breiare ut mot biletkanten (`NABB_W` 132, forma flytt like
+  mykje), og den venstre står på x -58, så han når skjermkanten med god margin. Den høgre veks ut mot
+  høgre, så x er uendra.
+- **Sjekka:** Alle utløysarrutene på hylla (15,18), (16,19), (17,18) og på neset (21,14), (22,14),
+  (23,14): den venstre når venstre skjermkant, den høgre når høgre skjermkant der han syner, og
+  midtnabben står fritt med sider som skrånar ut nedst, som før.
+- **Vurdert:** `forhand/skjerm/r58-oversikt.png` (alle seks posisjonane).

@@ -676,7 +676,9 @@ def gras_ramme(w, h, vind):
 
 
 
-NABB_W, NABB_H = 92, 272
+# Sidenabbane er 40 pikslar breiare ut mot biletkanten enn det som syner når kameraet står midt på,
+# så dei når heilt ut til skjermkanten i alle kameraposisjonar (parallaksen skuvar dei inn).
+NABB_W, NABB_H = 132, 272
 
 # Lav i flekker: (mørk kant, mellomtone, lys midte). Gulgrøn kartlav, grågrøn skorpelav og rustlav.
 LAV = {"gul": ("#7e8a3e", "#a2ac4e", "#c6ca72"), "graa": ("#66746a", "#8a9a86", "#acbaa6"), "rust": ("#8a4a2a", "#b4683a", "#d68e52")}
@@ -792,7 +794,7 @@ def nabb_ovanfra(vind, s, w, h, ovre, hogre, venstre=None, speil=False, nsprekk=
         if k == "gras" and M.h(x, y, s + 21) > 0.93:
             for kk in range(3): L_.p(x - kk + (vind if kk == 2 else 0) // 2, y - kk, M.tone(GRAS, 0.6 + kk * 0.12, x, y))
     if busk:                                                              # ein liten busk sett ovanfrå
-        bu = 30; by = int(ovre(bu)) + 14
+        bu = 70; by = int(ovre(bu)) + 14
         krone(L_, sx(bu) + vind // 2, by, 7, M.rampe("#1a2c1e", "#283e24", "#3a5630", "#4e6e3a", "#688a44"), s + 6)
         krone(L_, sx(bu + 8) + vind // 2, by + 3, 5, M.rampe("#1a2c1e", "#283e24", "#3a5630", "#4e6e3a"), s + 7)
     return L_.im
@@ -801,8 +803,8 @@ def nabb_ovanfra(vind, s, w, h, ovre, hogre, venstre=None, speil=False, nsprekk=
 def nabb():
     """Bergnabben til venstre, sett skrått ovanfrå, med ein liten busk (tre rammer der graset vaiar)."""
     w, h, s = NABB_W, NABB_H, 621
-    ovre = lambda u: 44 + ((u - 20) / 50) ** 2 * 16 + (M.fbm(u / 6, 1, s, 3) - 0.5) * 6
-    hogre = lambda y: 60 + 8 * math.sin(y / 34 + s) + (M.fbm(y / 9, 2, s + 1, 3) - 0.5) * 6 + min(18, y / 10)
+    ovre = lambda u: 44 + ((u - 60) / 50) ** 2 * 16 + (M.fbm(u / 6, 1, s, 3) - 0.5) * 6
+    hogre = lambda y: 100 + 8 * math.sin(y / 34 + s) + (M.fbm(y / 9, 2, s + 1, 3) - 0.5) * 6 + min(18, y / 10)
     ark = L(w * GRAS_RAMMER, h)
     for f in range(GRAS_RAMMER): ark.im.alpha_composite(nabb_ovanfra(f, s, w, h, ovre, hogre, nsprekk=2, lavar=("gul", "graa", "gul"), busk=True), (f * w, 0))
     return ark.im
@@ -811,8 +813,8 @@ def nabb():
 def nabb_h():
     """Bergnabben til høgre, sett skrått ovanfrå, inn frå høgre side."""
     w, h, s = NABB_W, NABB_H, 641
-    ovre = lambda u: 44 + ((u - 20) / 50) ** 2 * 16 + (M.fbm(u / 6, 1, s, 3) - 0.5) * 6
-    hogre = lambda y: 60 + 8 * math.sin(y / 34 + s) + (M.fbm(y / 9, 2, s + 1, 3) - 0.5) * 6 + min(18, y / 10)
+    ovre = lambda u: 44 + ((u - 60) / 50) ** 2 * 16 + (M.fbm(u / 6, 1, s, 3) - 0.5) * 6
+    hogre = lambda y: 100 + 8 * math.sin(y / 34 + s) + (M.fbm(y / 9, 2, s + 1, 3) - 0.5) * 6 + min(18, y / 10)
     ark = L(w * GRAS_RAMMER, h)
     for f in range(GRAS_RAMMER): ark.im.alpha_composite(nabb_ovanfra(f, s, w, h, ovre, hogre, speil=True, nsprekk=2, lavar=("graa", "gul", "graa")), (f * w, 0))
     return ark.im

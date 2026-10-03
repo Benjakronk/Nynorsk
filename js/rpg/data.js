@@ -448,7 +448,7 @@ window.RPGData = (function () {
         { bilete: "greiner-h", faktor: 1.3, ved: [8, -6], x: 210, y: -4 },
         // Bergnabbar framfor utsikta, med gras og lyng som vaiar (og ei lita bjørk til venstre). Berget går
         // langt ned, så dei står på noko i alle kameraposisjonar: venstre syner ytst på hylla, høgre på neset.
-        { bilete: "nabb", faktor: 1.25, ved: [6.5, 17.5], x: -18, y: 98, rammer: 3, rekkje: [0, 1, 2, 1], takt: 40 },
+        { bilete: "nabb", faktor: 1.25, ved: [6.5, 17.5], x: -58, y: 98, rammer: 3, rekkje: [0, 1, 2, 1], takt: 40 },
         { bilete: "nabb-h", faktor: [2, 1], ved: [8, 12.5], x: 250, y: 100, rammer: 3, rekkje: [0, 1, 2, 1], takt: 46 },
         // Ytst på hylla: ein låg, flat nabb midt nede (sett skrått ovanfrå som dalen) som rammar inn utsikta.
         // Han står berre i biletet når kameraet har glidd ned ytst på hylla.
