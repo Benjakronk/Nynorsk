@@ -552,7 +552,8 @@ window.Motor = (function () {
     } else oppPx = 0;
     if (!k) { nedPx = 0; return; }
     // ruter: ["x,y", …] er utløysarrutene (neset og spissen av hylla på Åsen): berre der glir kameraet ned.
-    const ved = k.ruter ? k.ruter.includes(Math.round(malX) + "," + Math.round(malY)) && Math.abs(malY - Math.round(malY)) < 0.01 && Math.abs(malX - Math.round(malX)) < 0.01
+    // Mellom to ruter gjeld begge: går ein frå ei utløysarrute til ei anna (langs neset), blir kameraet nede.
+    const ved = k.ruter ? [Math.floor(malX + 0.01), Math.ceil(malX - 0.01)].every(x => [Math.floor(malY + 0.01), Math.ceil(malY - 0.01)].every(y => k.ruter.includes(x + "," + y)))
       : k.kant ? ("MUZ".includes((kart.fliser[Math.round(malY) + 1] || [])[Math.round(malX)] || "x") && Math.abs(malY - Math.round(malY)) < 0.01) : malY >= k.fra - 0.001;
     const maal = ved ? Math.round(k.rader * S) : 0, fart = Math.max(1, k.fart || 1);
     nedPx += Math.sign(maal - nedPx) * Math.min(Math.abs(maal - nedPx), fart * Math.min(n, 8));
