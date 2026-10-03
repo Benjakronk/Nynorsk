@@ -61,15 +61,15 @@ f.onload = async () => {
   tast("keydown", "ArrowLeft");
   { let n = 0; while (n++ < 200 && M.spelar.x !== 1) await vent(20); }
   tast("keyup", "ArrowLeft"); await vent(500);
-  const iStolen = M.spelar.x === 1 && M.spelar.y === 16 && (w.RPGData.KART.kyrkja.hogd || {})["1,16"] > 40;
+  const iStolen = M.spelar.x === 1 && M.spelar.y === 16 && [].concat((w.RPGData.KART.kyrkja.hogd || {})["1,16"])[0] > 40;
   if (!iStolen) ok = false;
   ut.push(`${iStolen ? "OK" : "FEIL"}: Ivar gjekk opp trappa til preikestolen (${M.spelar.x},${M.spelar.y})`);
   // Z mot bibelen i preikestolen, og mot klokketauet i tårnet: hendinga går, og teksten kjem.
   const tekst = () => [...d.querySelectorAll("#rpg-tale, #rpg-fort")].filter(e => !e.hidden).map(e => e.textContent).join(" ");
-  const trykkGjennom = async (finn) => {
+  const trykkGjennom = async (finn, kvar) => {
     let sett = false;
     for (let n = 0; n < 120; n++) {
-      if (finn.test(tekst())) sett = true;
+      if (finn.test(tekst())) { sett = true; if (kvar) kvar(); }
       tast("keydown", "z"); await vent(40); tast("keyup", "z"); await vent(160);
       if (n > 3 && !w.RPGTest.iHending() && !synleg("#rpg-tale") && !synleg("#rpg-fort")) break;
     }
@@ -80,9 +80,11 @@ f.onload = async () => {
   if (!preika) ok = false;
   ut.push(`${preika ? "OK" : "FEIL"}: Z mot bibelen i preikestolen gir ei lita preike`);
   M.last("kyrkje-tarn", "1"); await vent(300); M.plasser(8, 8, 1); await vent(300);
-  const dong = await trykkGjennom(/DONG/);
-  if (!dong) ok = false;
-  ut.push(`${dong ? "OK" : "FEIL"}: Ivar dreg i klokketauet, og klokka slår (DONG)`);
+  const utslag = new Set();
+  const dong = await trykkGjennom(/DONG/, () => utslag.add(M.aktor("Klokka").dir));
+  const svinga = utslag.has(2) && utslag.has(3) && M.aktor("Klokka").dir === 0;
+  if (!dong || !svinga) ok = false;
+  ut.push(`${dong && svinga ? "OK" : "FEIL"}: Ivar dreg i klokketauet, klokka svingar ut til begge sider og slår (DONG), og heng stille etterpå`);
   const dong2 = await trykkGjennom(/DONG/);
   if (!dong2) ok = false;
   ut.push(`${dong2 ? "OK" : "FEIL"}: klokka kan slå ein gong til`);

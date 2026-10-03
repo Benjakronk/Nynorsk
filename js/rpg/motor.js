@@ -566,7 +566,8 @@ window.Motor = (function () {
     const k = kart.def.kameraOpp, opp = k ? (k.rader != null ? k.rader : (k.fra - k.til) / 2) : 0;    // kor mange rader kameraet kan sjå over kartet
     return {
       x: kart.w < VW ? 0 : Math.round(Math.max(0, Math.min(kart.w - VW, m.x - (VW - 1) / 2)) * S),
-      y: kart.h < VH ? 0 : Math.round(Math.max(-opp, Math.min(kart.h - VH, m.y - utsiktOpp(m.y) - (VH - 1) / 2)) * S),
+      // hogd over 0: kameraet følgjer figuren der han syner (oppe i preikestolen), ikkje ruta han står på.
+      y: kart.h < VH ? 0 : Math.round(Math.max(-opp, Math.min(kart.h - VH, m.y - Math.max(0, hogdVed(m.x, m.y)) / S - utsiktOpp(m.y) - (VH - 1) / 2)) * S),
     };
   };
   function kamera(til, ms = 900) {
@@ -976,9 +977,12 @@ window.Motor = (function () {
   /* Høgd på ruter (kart.def.hogd: { "x,y": pikslar }): den som står der, blir teikna så mange pikslar
      høgare, til dømes trappa opp til preikestolen og korga der (inventaret framfor blir teikna etter
      og dekkjer føtene). Mellom rutene glir høgda jamt, så ein går opp trinn for trinn. */
-  function hogdVed(x, y) {
-    const H = kart.def.hogd; if (!H) return 0;
-    const x0 = Math.floor(x), y0 = Math.floor(y), tx = x - x0, ty = y - y0, h = (a, b) => H[a + "," + b] || 0;
+  // Ein verdi kan vere eit tal (pikslar opp, negativ: ned) eller [opp, dx] med ei forskyving sidelengs
+  // (Ivar står midt i korga på preikestolen, som står mellom to ruter).
+  function hogdVed(x, y, del = 0) {
+    const H = kart && kart.def.hogd; if (!H) return 0;
+    const x0 = Math.floor(x), y0 = Math.floor(y), tx = x - x0, ty = y - y0;
+    const h = (a, b) => { const v = H[a + "," + b]; return v == null ? 0 : typeof v === "number" ? (del ? 0 : v) : v[del] || 0; };
     const ovre = h(x0, y0) * (1 - tx) + h(x0 + 1, y0) * tx, nedre = h(x0, y0 + 1) * (1 - tx) + h(x0 + 1, y0 + 1) * tx;
     return Math.round(ovre * (1 - ty) + nedre * ty);
   }
@@ -1482,7 +1486,7 @@ window.Motor = (function () {
         for (const [rx, ry] of Pikslar.ROYK[f.id] || []) Pikslar.royk(g, bx + rx, by - f.bygg.height + ry, no);
         continue; }
       // Den som sit på eit sete, blir lyft opp på det (hogd), og setet har sin eigen skugge.
-      const sx = Math.round((f.x + ox) * S), sy = Math.round((f.y + oy) * S) + (f.sete ? SITJE_DY[f.dir] - f.sete.s.hogd : 0) - hogdVed(f.x, f.y);
+      const sx = Math.round((f.x + ox) * S) + hogdVed(f.x, f.y, 1), sy = Math.round((f.y + oy) * S) + (f.sete ? SITJE_DY[f.dir] - f.sete.s.hogd : 0) - hogdVed(f.x, f.y);
       // Eit vesen står midt på flisa med botnen på bakken, og gyng litt opp og ned.
       if (f.sp.vesen) {
         // Med gangark: ramma for retninga og steget (gangrammene lyftar seg sjølv, så ingen gynging).

@@ -1643,3 +1643,28 @@ same måte, uansett kven som tek over.
   og `k53-stol-heil.png` (Ivar i preikestolen).
 - **Står att:** Ivar står litt til venstre i korga (korga står mellom to ruter). Utsynet frå galleriet er
   framleis eit fast bilete med måla hovud. Klokka svingar ikkje når ho slår, og spelet har ingen lyd.
+
+## Runde 55: klokka svingar, Ivar midt i preikestolen, brei midtgang og benker som dekkjer
+
+- **Frå brukaren:** La klokka svinge når ho slår, sentrer Ivar i preikestolen, midtgangen tre fliser
+  brei, og kyrkjebenkene skal skjule Ivar delvis når han går mellom dei.
+- **Før:** `forhand/skjerm/k54-for-klokke.png`, `k54-for-stol-heil.png` og `k54-for-benk-heil.png`
+  (midtgangen éi flis, Ivar mellom benkene heilt synleg).
+- **Klokka:** klokkestolen (`klokkestol`) og klokka er skilde. Klokka med åket er eit vesen med gangark
+  frå det nye `klokke.py`: kvar ramme er klokka rotert rundt akselen (kvar piksel rekna attende til
+  klokka i kvile, så lyset følgjer med), 0, 8 og 20 grader. Retninga vel ramma (ned kvile, opp lite
+  utslag, venstre og høgre fullt utslag). Manuset `klokketau` snur klokka: tauet rykkjer
+  (`klokketau-dradd`), klokka svingar ut til høgre og slår (rist og «DONG»), over til venstre og slår
+  att, og svinginga døyr ut til kvile. Ny parameter `snu=namn:retning` i skjerm.html.
+- **Preikestolen:** `hogd` kan vere `[opp, dx]`: korga gir 61 pikslar opp og 5 mot høgre, så Ivar står
+  midt i korga og syner frå brystet og opp. Kameraet følgjer figuren der han syner (positiv hogd), så
+  heile preikestolen med lydhimlingen er med. Mot venstre kan ikkje kameraet gå lenger enn kartkanten.
+- **Midtgangen:** tre fliser brei (x 9 til 11) med løparen midt i. Benkene er sju fliser lange (x 2 til 8 og
+  12 til 18), også på galleriet. Kyrkjefolket sit framleis i benkene, og 50 fliser frå døra er uendra.
+- **Benkene dekkjer:** negative verdiar i `hogd` senkar figuren. Rada rett bak kvar benk (der beina står
+  når ein går mellom benkeradene) gir -9 pikslar, så benken framfor dekkjer den nedre delen av den som
+  går der. Det glir jamt når ein går inn frå midtgangen. Dei som sit, var alt rette (`fram: true`).
+- **Testar:** `sjekk-kyrkjegang.html` sjekkar òg at klokka svingar til begge sider og heng stille etterpå.
+- **Etter:** `k54-klokke-rammer.png` (fire rammer i spelet), `k54-klokke-heil.png`, `k54-stol-heil.png`,
+  `k54-midtgang-heil.png` og `k54-benk-heil.png`.
+- **Står att:** Klokka svingar i fire faste rammer (ingen mellomrammer). Ingen lyd.

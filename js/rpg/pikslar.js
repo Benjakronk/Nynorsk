@@ -1535,6 +1535,9 @@ window.Pikslar = (function () {
     "rotte-kart-v": { fil: "bilete/spel/rotte-kart-v.png", w: 24, h: 14 },
     // Tauet til kyrkjeklokka i tårnet (kjelder/klokketau.pix): eit vesen på kartet, så Ivar kan dra i det.
     klokketau: { fil: "bilete/spel/klokketau.png", w: 8, h: 40 },
+    "klokketau-dradd": { fil: "bilete/spel/klokketau-dradd.png", w: 8, h: 40 },
+    // Kyrkjeklokka (tools/pikselkunst/klokke.py): heng i klokkestolen og svingar (gangarket under).
+    klokke: { fil: "bilete/spel/klokke.png", w: 72, h: 103 },
   };
   /* Gangark for vesen som går på kartet (tools/pikselkunst/rotte.py): tre kolonnar (står, steg 1,
      steg 2) og fire rader (ned, opp, venstre, høgre), som figurane. vesenGang(namn) gir
@@ -1542,6 +1545,8 @@ window.Pikslar = (function () {
   const GANGARK = {
     "rotte-kart": { fil: "bilete/spel/rotte-kart-gang.png", w: 24, h: 16 },
     "rotte-kart-v": { fil: "bilete/spel/rotte-kart-gang.png", w: 24, h: 16 },
+    // Klokka: retninga vel utslaget (ned: kvile, opp: lite mot høgre, venstre og høgre: fullt utslag).
+    klokke: { fil: "bilete/spel/klokke-gang.png", w: 72, h: 103 },
   };
   const gangCache = new Map();
   function vesenGang(namn) {

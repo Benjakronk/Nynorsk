@@ -659,8 +659,8 @@ def preikestol(lag="fram"):
     omriss(L)
     return L
 
-def kyrkjebenk(dor, n=8, variant=0):
-    """Lukka kyrkjebenk sett bakfrå, n fliser lang (8 i den store kyrkja): ryggen med fyllingar i lyst
+def kyrkjebenk(dor, n=7, variant=0):
+    """Lukka kyrkjebenk sett bakfrå, n fliser lang (7 i den store kyrkja): ryggen med fyllingar i lyst
     blågrått, handlista og benkedøra ved midtgangen (dor="h": døra til høgre, "v": til venstre), med
     utskoren topp og ei rosemålt rose. Går 4 pikslar opp over flisa. Fire variantar, så radene ikkje
     blir like: 0 to salmebøker; 1 namneplate på døra (gardsbenk), ein svart hatt og éi bok; 2 eit sjal
@@ -1074,11 +1074,11 @@ def lydluke():
     return L
 
 
-def kyrkjeklokke():
-    """Kyrkjeklokka i klokkestolen i tårnet, sett skrått ovanfrå: ein stor bronseklokke (mørk bronse
-    med lys kant mot venstre og flekkar av irr) med krona og åket øvst, hengd i ein solid klokkestol av
-    grove bjelkar (stolpar, toppbjelke, knebandsbjelkar og sviller med toppflate), hjulet til høgre og
-    tauet som går ned mot golvet (tauenden er vesenet klokketau). 5 fliser brei, 2 rader djup."""
+def klokkestol():
+    """Klokkestolen i tårnet, sett skrått ovanfrå: ein solid stol av grove bjelkar (stolpar, toppbjelke,
+    knebandsbjelkar og sviller med toppflate), hjulet til høgre og tauet som går ned mot golvet
+    (tauenden er vesenet klokketau). Sjølve klokka med åket er vesenet klokke (klokke.py), så ho kan
+    svinge når Ivar dreg i tauet. 5 fliser brei, 2 rader djup."""
     W, H = 5 * 16 + 8, 104
     L = Lerret(W, H)
     cx = 42
@@ -1097,24 +1097,7 @@ def kyrkjeklokke():
             L.p(sx, y, "A"); L.p(sx + 1, y, "a"); L.p(sx + 2, y, "a")
     # toppbjelken med toppflate
     bjelke(3, 6, W - 4, 15)
-    # åket, krona og klokka
-    for y in range(16, 22):
-        for x in range(cx - 12, cx + 12): L.p(x, y, "c" if y < 19 else "A")
-    for x in range(cx - 12, cx + 12, 6): L.p(x, 17, "V"); L.p(x, 18, "V"); L.p(x, 20, "X")
-    for y in range(22, 26):                                                # krona (opphenget)
-        for x in range(cx - 5, cx + 5): L.p(x, y, "Z" if x < cx else "9")
-    prof = [8, 10, 11, 12, 12, 13, 13, 13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 16, 16, 16, 17, 17, 18,
-            18, 19, 20, 21, 22, 23, 24, 24, 23]
-    for j, b in enumerate(prof):
-        y = 26 + j
-        for x in range(cx - b, cx + b):
-            t = (x - (cx - b)) / (2 * b)
-            L.p(x, y, "Y" if t < 0.12 else "Z" if t < 0.6 else "9" if t < 0.92 else "v")
-    for x in range(cx - 24, cx + 24): L.p(x, 26 + len(prof) - 1, "y" if x < cx - 6 else "Y" if x < cx + 10 else "Z")   # slagringen
-    for y in (32, 47):
-        for x in range(cx - prof[y - 26] + 1, cx + prof[y - 26] - 1): L.p(x, y, "9")          # band i relieff
-    for (x, y) in [(cx - 9, 40), (cx - 8, 41), (cx + 4, 36), (cx + 10, 52), (cx - 14, 50), (cx - 13, 50)]: L.p(x, y, "i")   # irr
-    for y in range(26 + len(prof), 26 + len(prof) + 4): L.p(cx - 1, y, "V"); L.p(cx, y, "v")   # kolven
+    # (klokka sjølv med åket er eit eige vesen som kan svinge: klokke.py)
     # framre stolpar med knebandsbjelkar opp til toppbjelken
     for sx in (4, W - 10):
         for y in range(6, H - 3):
@@ -2117,7 +2100,7 @@ INVENTAR = {
     "skipvegg-v": lambda: skipvegg("v"), "skipvegg-h": lambda: skipvegg("h"), "korskilje": korskilje, "kyrkjeskip": kyrkjeskip, "galleri": galleri,
     **{f"gravhelle{v}": (lambda v=v: gravhelle(v)) for v in (1, 2, 3)}, "fattigblokk": fattigblokk, "jernomn": jernomn,
     "epitaf-v": lambda: epitaf("v"), "epitaf-h": lambda: epitaf("h"),
-    "trapp": trapp, "galleribrystning": galleribrystning, "kyrkjeklokke": kyrkjeklokke, "tarnbjelke": tarnbjelke, "lydluke": lydluke,
+    "trapp": trapp, "galleribrystning": galleribrystning, "klokkestol": klokkestol, "tarnbjelke": tarnbjelke, "lydluke": lydluke,
     "tarnbjelke-due": lambda: tarnbjelke(True), "tarnvegg": tarnvegg, "galleritrinn": galleritrinn, "orgel": orgel}
 
 
