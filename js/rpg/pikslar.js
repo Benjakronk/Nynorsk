@@ -398,7 +398,7 @@ window.Pikslar = (function () {
   const treCache = {};
   const treBilete = k => treCache[k] || (treCache[k] = TRE[k]());
 
-  const FAST = new Set(["+", "(", "u", "#", "t", "i", "F", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " ", "s", "M", "-", "N", "U"]);
+  const FAST = new Set(["+", "(", "u", "#", "t", "i", "F", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " ", "s", "M", "-", "N", "U", "Z"]);
   const ANIM = new Set(["~", "L", "T", "f", "n", "y"]);
   const VARIANT_EKSTRA = new Set(["Rt", "Rb", "Rtb"]);
   const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "O", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t", "i", "F"]);
@@ -918,7 +918,7 @@ window.Pikslar = (function () {
        med lys venstre side og mørke sprekker, hyller med gras, store knausar og søkk. Nedover blir
        berget disigare (luftperspektiv), og nedst løyser det seg opp i dis, så bakgrunnslaga
        (dalen langt nede) syner gjennom. Lerretet har .ope (1 der pikselen er open) eller null. */
-  const TER = new Set(["s", "M", "-", "N", "U"]);
+  const TER = new Set(["s", "M", "-", "N", "U", "Z"]);
   const BERG = ["#1c1a2c", "#2e2a3a", "#48434a", "#645e5e", "#827a74", "#a0978a", "#bdb4a4"];   // grå gneis, skuggar mot djup blå (Narshe)
   const DIS = "#a6b4bc";
   const JORDKANT = { lys: "#a87c52", hoy: "#8a6040", mid: "#6a4630", lag: "#4a3020", mork: "#3a2418" };
@@ -1092,11 +1092,11 @@ window.Pikslar = (function () {
   // Øvste rada i stupet som ruta (tx, ty) ligg i, eller null om ruta ikkje er stup («M» eller
   // overheng «U»). Byrjar stupet med eit overheng, ligg toppen rada over (bakken som stikk ut): då
   // held berget bak fram i same høgd som berget ved sida.
-  const erStup = c => c === "M" || c === "U";
+  const erStup = c => c === "M" || c === "U" || c === "Z";   // Z: overheng med spiss form (kantvariant)
   function stupTopp(felt, tx, ty) {
     if (tx < 0 || tx >= felt.w || !erStup(felt.c(tx, ty))) return null;
     let t0 = ty; while (t0 > 0 && erStup(felt.c(tx, t0 - 1))) t0--;
-    return felt.c(tx, t0) === "U" ? t0 - 1 : t0;
+    return felt.c(tx, t0) === "U" || felt.c(tx, t0) === "Z" ? t0 - 1 : t0;
   }
   // Djupna i berget (1 ute på ein knaus, 0 inne i ei renne) ved kartpikselen X, Yr pikslar ned i stupet.
   // Store, runde knausar som lener seg litt, med mindre søyler oppå.
@@ -1118,7 +1118,7 @@ window.Pikslar = (function () {
     const t0 = stupTopp(felt, tx, ty), virt = !erStup(felt.c(tx, t0));   // virt: toppen er bakken over eit overheng
     let t1 = ty; while (t1 < felt.h - 1 && erStup(felt.c(tx, t1 + 1))) t1++;
     const H = (t1 - t0 + 1) * S, idx = ty - t0, nedst = felt.c(tx, t1 + 1) === "-" || t1 === felt.h - 1;
-    const erV = felt.c(tx, ty) === "U";
+    const erV = felt.c(tx, ty) === "U" || felt.c(tx, ty) === "Z";
     const c = lerret(S), g = c.getContext("2d"), bilde = g.createImageData(S, S), ut = new Uint32Array(bilde.data.buffer);
     const ope = new Uint8Array(S * S);
     const gras = grasData(tx, t0 - 1, felt.golv);
@@ -1151,14 +1151,17 @@ window.Pikslar = (function () {
     // Overhenget som ein spiss: graset heng lengst ned midt på (spissen), og berget under finst berre
     // mot endane (der hylla eller neset heng fast); under spissen er det luft rett ned.
     let ua = tx, ub = tx;
-    if (virt) { const ru = t0 + 1; while (ua > 0 && felt.c(ua - 1, ru) === "U") ua--; while (ub < felt.w - 1 && felt.c(ub + 1, ru) === "U") ub++; }
+    // «U» er rund (graset buktar seg ut), «Z» er spiss (graset heng i ein V mot spissen, luft rett under).
+    const ovTeikn = virt ? felt.c(tx, t0 + 1) : "U", spiss = ovTeikn === "Z";
+    if (virt) { const ru = t0 + 1; while (ua > 0 && felt.c(ua - 1, ru) === ovTeikn) ua--; while (ub < felt.w - 1 && felt.c(ub + 1, ru) === ovTeikn) ub++; }
     const midt = (ua + ub + 1) * S / 2, halv = Math.max(8, (ub - ua + 1) * S / 2);
     const skraVariant = felt.skra || "a";
     for (let x = 0; x < S; x++) {
       const X = tx * S + x;
       const r = Math.min(1, Math.abs(X + 0.5 - midt) / halv);             // 0 i spissen, 1 ved endane
       // Graset heng over kanten i ein rund boge (buktar seg ut), lengst midt på.
-      const tunge = Math.round(2 + Math.sqrt(Math.max(0, 1 - r * r)) * 7 + (vstoy(X / 4, t0, 548) - 0.5) * 2);
+      const tunge = spiss ? Math.round(2 + Math.pow(1 - r, 1.6) * 10 + (vstoy(X / 4, t0, 548) - 0.5) * 2)
+        : Math.round(2 + Math.sqrt(Math.max(0, 1 - r * r)) * 7 + (vstoy(X / 4, t0, 548) - 0.5) * 2);
       let lepp = 2 + Math.floor(vstoy(X / 9, t0 * 5, 521) * 4.99) + Math.floor(vstoy(X / 3, t0 * 5 + 2, 535) * 2.5);
       if (bakkeV) lepp = Math.max(lepp, boge(x + 0.5, 10, 14));
       if (bakkeH) lepp = Math.max(lepp, boge(S - x - 0.5, 10, 14));
@@ -1173,7 +1176,7 @@ window.Pikslar = (function () {
       // Overhenget: tynn kant av torv og berg, ujamn underside.
       const kant = virt ? tunge + 4 : 4 + Math.floor(vstoy(X / 5, t0 * 7, 543) * 4) + (hash(X, t0, 544) > 0.8 ? 1 : 0);
       // Berget under er lite: det veks berre mot endane, og i ein rund boge (ikkje store blokker).
-      const veggBotn = virt ? Math.min(botn, S + kant + Math.round(Math.pow(r, 2.2) * (H - S - kant) * 0.7) + Math.round((vstoy(X / 5, t0, 549) - 0.5) * 4)) : H + 99;
+      const veggBotn = virt ? Math.min(botn, S + kant + Math.round(spiss ? Math.pow(r, 1.4) * (H - S - kant) : Math.pow(r, 2.2) * (H - S - kant) * 0.7) + Math.round((vstoy(X / 5, t0, 549) - 0.5) * 4)) : H + 99;
       const bakV = kantV ? boge(x + 0.5, 8, 18) : 0, bakH = kantH ? boge(S - x - 0.5, 8, 18) : 0;
       for (let y = 0; y < S; y++) {
         const i = y * S + x, Yr = idx * S + y;

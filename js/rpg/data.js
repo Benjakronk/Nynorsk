@@ -431,12 +431,13 @@ window.RPGData = (function () {
         // Bergnabbar framfor utsikta, med gras og lyng som vaiar (og ei lita bjørk til venstre). Berget går
         // langt ned, så dei står på noko i alle kameraposisjonar: venstre syner ytst på hylla, høgre på neset.
         { bilete: "nabb", faktor: 1.25, ved: [6.5, 17.5], x: -18, y: 118, rammer: 3, rekkje: [0, 1, 2, 1], takt: 40 },
-        { bilete: "nabb-h", faktor: 1.25, ved: [8, 12.5], x: 246, y: 120, rammer: 3, rekkje: [0, 1, 2, 1], takt: 46 },
+        { bilete: "nabb-h", faktor: [2, 1], ved: [8, 12.5], x: 250, y: 120, rammer: 3, rekkje: [0, 1, 2, 1], takt: 46 },
       ],
       /* Nedst er kanten ujamn: platået stikk ut i eit nes (x 21 til 23) og går inn i ei vik (x 25 til 27),
          og under midten (x 4 til 17) går ein skrent med rampe (11,14) ned til ei hylle eitt nivå lenger
          nede (rad 15 og 16) før det stuper. Høgre side av hylla stikk djupare ned og smalnar av til éi
-         flis ytst (16,19), med luft på sidene. Under neset og hylla er det overheng («U»): ei tynn kant
+         flis ytst (16,19), med luft på sidene. Vest på platået stikk eit lite, spisst framspring ut
+         (1,14 og 2,14) med overhenget «Z» (spiss kantvariant) under. Under neset og hylla er det overheng («U»): ei tynn kant
          med skugge under og berget trekt inn bak. Stupet frå platået er tre rader høgt, og lufta under har lia og dalen.
          Åsen: toppen er lengst oppe på midten (to kollar med skrent «s» under seg, rad 0 og 1), og
          kanten der bakken fell bort («N») går eit steg ned mot sidene, der det er luft («-») i rad 0.
@@ -458,8 +459,8 @@ window.RPGData = (function () {
         "#..YYYY....\"...o..5========2",
         "##.YYYY....................#",
         "#.L.....t..........\".....MMM",
-        "MMMMsssssss/ssssssMMM.\".MMMM",
-        "MMMM....\"...o.....MMMUUUMMMM",
+        "M..Msssssss/ssssssMMM.\".MMMM",
+        "MZZM....\"...o.....MMMUUUMMMM",
         "MMMMt....\"......t.MMMMMMM---",
         "----UUUUUUUUU.....----------",
         "----MMMMMMMMMUU.\".----------",

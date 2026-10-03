@@ -1363,3 +1363,21 @@ same måte, uansett kven som tek over.
 - **Vurdert:** `forhand/skjerm/r42-oversyn.png`: øvst (toppen), ved kanten på platået, på neset og ytst på
   hylla (med kameraet glidd ned). Nabbane rammar inn utsikta i hjørna og dekkjer ikkje Ivar eller spissen.
 - **Står att:** Ytst på hylla er den høgre nabben ein høg, mørk pilar langs høgre kant.
+
+## Runde 43: lys og tekstur på nabbane, ingen søyle til høgre, og spiss kantvariant
+
+- **Oppdrag:** Brukaren: meir lys og tekstur på nabbane, fjern søyla til høgre, og la den spisse forma
+  neset hadde i runde 40 bli ein kantvariant for variasjon ved andre klipper og fjellhyller.
+- **Gjort:**
+  - `nabb_ramme` i `utsikt.py`: kantlys på toppen og på sida mot ljoset (den høgre nabben er teikna
+    spegla, men med ljoset framleis frå venstre), ujamne lag og hyller med lys overkant og skugge under,
+    sprekker, mose på hyllene, lav og lyng, og mellomtonar; framleis mørkare enn midtplanet.
+  - Den høgre nabben har faktor `[2, 1]`: på neset står han nede i hjørnet, men ytst på hylla er han ute
+    av biletet, så den mørke søyla langs høgre kant er borte. Ingen andre kameraposisjonar får han.
+  - Nytt kartteikn `Z`: overheng med spiss form (graset heng i ein V mot spissen, luft rett under, berg
+    mot endane), medan `U` er rund. `Pikslar.stup` vel forma etter teiknet i overhengsrada. Brukt i eit
+    lite framspring vest på platået (bakke på 1,14 og 2,14, `Z` under); neset er framleis rundt.
+    `sjekk-spel.js` sjekkar `Z` som `U`, og forgrunnslag kan ha faktor 1 i éi retning.
+- **Vurdert:** `forhand/skjerm/r43-oversyn.png` (neset med nabben, ytst på hylla utan søyle, det spisse
+  framspringet og hylla) og `r43-naer.png` (nærbilete av framspringet og nabben).
+- **Står att:** Nabbane er framleis enkle former; dei kunne fått fleire steinblokker.

@@ -167,7 +167,8 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
     `M` stup (bergveggen nedst, `Pikslar.stup`, løyser seg opp i dis i den nedste rada) og `-` luft
     (ingen bakke, ikkje gangbar, bakgrunnen syner). Under stup er det stup eller luft. Skrenten flatar
     ut der han møter open mark eller ei rampe, så ein rampe er ein kleiv i bakkekanten. `U` er overheng under bakke som
-    stikk ut (tynn kant, skugge, berget trekt inn bak). `N` er kanten
+    stikk ut (rund grasboge, tynn kant, skugge, berget trekt inn bak), og `Z` same med spiss form
+    (V mot spissen, luft rett under): kantvariant for variasjon ved andre klipper og fjellhyller. `N` er kanten
     øvst der bakken fell bort (`Pikslar.nordkant`, i rad 0 eller under luft på kart med `kameraOpp`;
     kanten bøyer ned mot sida der det er luft, så toppen kan vere høgast på midten).
   - Bakgrunnslaga og forgrunnen: `python tools/pikselkunst/utsikt.py` (skriptet er kjelda) skriv

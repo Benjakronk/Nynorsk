@@ -86,7 +86,7 @@ for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR |
     if (R.some(r => r.includes("-")) && !(k.parallakse || []).length) feil.push(`${id}: luftfliser («-») utan parallakse`);
     for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
       if (c(x, y) === "N" && !(k.kameraOpp && (y === 0 || c(x, y - 1) === "-"))) feil.push(`${id}: kanten «N» på ${x},${y} skal ha luft over seg (eller stå i rad 0) på eit kart med kameraOpp`);
-      if (c(x, y) === "U" && (y === 0 || !"M-".includes(c(x, y + 1)) || /[MU\-s#]/.test(c(x, y - 1)))) feil.push(`${id}: overhenget «U» på ${x},${y} skal ha bakke over seg og stup eller luft under`);
+      if ("UZ".includes(c(x, y)) && (y === 0 || !"M-".includes(c(x, y + 1)) || /[MUZ\-s#]/.test(c(x, y - 1)))) feil.push(`${id}: overhenget «${c(x, y)}» på ${x},${y} skal ha bakke over seg og stup eller luft under`);
       if (c(x, y) === "M" && y < h - 1 && !"M-".includes(c(x, y + 1))) feil.push(`${id}: under stupet på ${x},${y} er «${c(x, y + 1)}» (skal vere stup eller luft)`);
       if (c(x, y) === "-" && y < h - 1 && !(c(x, y + 1) === "-" || (k.kameraOpp && c(x, y + 1) === "N" && R.slice(0, y + 1).every(r => r[x] === "-")))) feil.push(`${id}: under lufta på ${x},${y} er «${c(x, y + 1)}»`);
       if (c(x, y) === "/") {
@@ -120,7 +120,7 @@ for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR |
       const stad = `${id} ${namn}[${i}]`, f = stiP.join(__dirname, "..", "bilete", "spel", "parallakse", l.bilete + ".png");
       if (!fsP.existsSync(f)) { feil.push(`${stad}: bilete/spel/parallakse/${l.bilete}.png finst ikkje (køyr tools/pikselkunst/utsikt.py)`); return; }
       const fk = Array.isArray(l.faktor) ? l.faktor : [l.faktor, l.faktor];
-      if (!fk.every(v => typeof v === "number" && (namn === "parallakse" ? v >= 0 && v <= 2 : v > 1))) feil.push(`${stad}: faktor ${l.faktor} (bak kartet 0 til 2, 1 er fast, i forgrunnen over 1)`);
+      if (!fk.every(v => typeof v === "number" && (namn === "parallakse" ? v >= 0 && v <= 2 : v >= 1)) || (namn === "forgrunn" && !fk.some(v => v > 1))) feil.push(`${stad}: faktor ${l.faktor} (bak kartet 0 til 2, 1 er fast, i forgrunnen over 1)`);
       if (l.variant && !(liste || []).some(m => m !== l && m.variant === (k.variant || "fast")) && l.variant !== (k.variant || "fast")) feil.push(`${stad}: varianten ${l.variant}, men kartet har ingen lag i varianten ${k.variant || "fast"}`);
       if (!Number.isFinite(l.x) || !Number.isFinite(l.y) || (l.ved && !(Array.isArray(l.ved) && l.ved.length === 2))) feil.push(`${stad}: treng x, y og ved: [kx, ky]`);
       const iBruk = m => !m.opp && (!m.variant || m.variant === (k.variant || "fast"));   // laga under kartet i varianten kartet brukar
@@ -128,7 +128,7 @@ for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR |
       // Det bakaste laget: dekkjer det skjermen frå toppen av stupet og ned, der lufta kan syne?
       const { w: bw, h: bh } = pngStorleik(f), ved = l.ved || [0, 0];
       let luftRad = R.findIndex((r, y) => y > 0 && r.includes("-") && [...r].some((ch, x) => ch === "-" && "M-".includes(c(x, y - 1)) && !R.slice(0, y).every(rr => rr[x] === "-")));   // lufta nedst, ikkje den øvst
-      for (let x = 0; x < w; x++) for (let y = 0; y < h; y++) if ("MU".includes(c(x, y)) && c(x, y + 1) === "-") luftRad = Math.min(luftRad, y);   // nedste stupflis løyser seg opp
+      for (let x = 0; x < w; x++) for (let y = 0; y < h; y++) if ("MUZ".includes(c(x, y)) && c(x, y + 1) === "-") luftRad = Math.min(luftRad, y);   // nedste stupflis løyser seg opp
       if (luftRad < 0) return;
       for (let ky = 0; ky <= Math.max(0, h - VH) * S; ky++) {
         const topp = luftRad * S - ky; if (topp >= VH * S) continue;

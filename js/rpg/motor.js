@@ -549,7 +549,7 @@ window.Motor = (function () {
     if (!k) { nedPx = 0; return; }
     // ruter: ["x,y", …] er utløysarrutene (neset og spissen av hylla på Åsen): berre der glir kameraet ned.
     const ved = k.ruter ? k.ruter.includes(Math.round(malX) + "," + Math.round(malY)) && Math.abs(malY - Math.round(malY)) < 0.01 && Math.abs(malX - Math.round(malX)) < 0.01
-      : k.kant ? ("MU".includes((kart.fliser[Math.round(malY) + 1] || [])[Math.round(malX)] || "x") && Math.abs(malY - Math.round(malY)) < 0.01) : malY >= k.fra - 0.001;
+      : k.kant ? ("MUZ".includes((kart.fliser[Math.round(malY) + 1] || [])[Math.round(malX)] || "x") && Math.abs(malY - Math.round(malY)) < 0.01) : malY >= k.fra - 0.001;
     const maal = ved ? Math.round(k.rader * S) : 0, fart = Math.max(1, k.fart || 1);
     nedPx += Math.sign(maal - nedPx) * Math.min(Math.abs(maal - nedPx), fart * Math.min(n, 8));
   }
@@ -1244,7 +1244,7 @@ window.Motor = (function () {
       // Luft: ingen bakke, bakgrunnslaga syner gjennom.
       if (c === LUFT) { luftRute(sx, sy, null); continue; }
       // Stupet: bergveggen som fell ned mot utsikta, og løyser seg opp i dis nedst (Pikslar.stup).
-      if (c === "M" || c === "U") { const st = Pikslar.stup(terrengfelt(), x, y); g.drawImage(st, sx, sy); if (st.ope) luftRute(sx, sy, st.ope); continue; }
+      if (c === "M" || c === "U" || c === "Z") { const st = Pikslar.stup(terrengfelt(), x, y); g.drawImage(st, sx, sy); if (st.ope) luftRute(sx, sy, st.ope); continue; }
       // Veggar med vegg eller dør under seg er sidevegger: dei blir teikna ovanfrå.
       const under = y + 1 < kart.h ? kart.fliser[y + 1][x] : null;
       const topp = "XcG".includes(c) && (under === null || "XcGE".includes(under));
