@@ -2180,3 +2180,12 @@ same måte, uansett kven som tek over.
   midja, og foten har ei toppflate. 2 pikslar lågare.
 - **Rundar:** (1) teikna om etter referansane. (2) Sett i spelet med glød og lys.
 - **Før og etter:** `forhand/skjerm/pr2-samanlikning-omn-ur.png`.
+
+## Runde 77: kubbestolen med meir karakter
+
+- **Gjort:** stokken er større (radius 8), ryggen og armlena er i eitt (armlena låge og flate, ryggen stig
+  bak), utsida har loddrette fibrar og ei innskoren karveskurdrand, og setet har to årringar, marg og ei
+  tørkesprekk. Dei tre flatene (sete, side, rygg) er som før. Setehøgda og `SETE` er uendra: syster og
+  Ivar sit rett.
+- **Rundar:** (1) armlene og ryggprofil. (2) Fibrar, karveskurd og årringar.
+- **Før og etter:** `forhand/skjerm/pr2-samanlikning-kubbestol.png`.

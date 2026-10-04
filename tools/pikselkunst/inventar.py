@@ -1466,18 +1466,21 @@ def kubbestol(retning):
     og bøyer seg rundt sidene. retning er den vegen den som sit, ser (ned, opp, venstre, høgre), så
     ryggen står på motsett side. 1 x 1 flis, setet er SETE_HOGD pikslar over golvet, midt på
     golvpunktet til figuren (rad H-5). Teikna med fast tone per flate (cel-skugge): toppen lysast,
-    flata mot venstre lys, mot oss mellomtone, mot høgre skugge."""
-    W, H = 16 + 8, 26
+    flata mot venstre lys, mot oss mellomtone, mot høgre skugge. Runde 77: ein ekte uthola stokk med
+    rygg og armlene i eitt (armlena er flate og låge, ryggen stig bak), loddrette fibrar i veden,
+    ei innskoren karveskurdrand rundt stokken og årringar med marg på setet."""
+    W, H = 16 + 8, 27
     L = Lerret(W, H)
     cx, base, K = 12, H - 5, 0.42                          # K: kor mykje djupna blir trykt saman
-    R, RI = 7.5, 5.5                                       # radius på stokken og inni ryggen
+    R, RI = 8, 6                                           # radius på stokken og inni ryggen
     bx, bd = RETNINGAR[retning]                            # ryggen står mot (bx, bd) frå midten
 
     def rygg(X, D):
         r = math.hypot(X, D)
         if r > R or r < RI: return 0
         d = (X * bx + D * bd) / r
-        return 0 if d < -0.2 else round(2 + 4 * max(0, d))  # høgast midt bak, lågare ut mot sidene
+        if d < -0.3: return 0                              # opent framme
+        return round(3 + 4 * max(0, (d - 0.25) / 0.75))     # armlena låge og flate, ryggen stig bak
 
     def fast(X, D, Z):
         r = math.hypot(X, D)
@@ -1503,10 +1506,17 @@ def kubbestol(retning):
             else:                                           # utsida av stokken: eitt steg mørkare enn toppflatene
                 lys = -nx * 0.8 + nd * 0.4
                 c = "c" if lys > 0.3 else "A" if lys > -0.5 else "a"
+                if Z == 2: c = "C" if (X + 9) % 3 == 0 and lys > -0.5 else "a"   # karveskurdranda rundt stokken
+                elif (X + 9) % 3 == 1 and c in "cA" and Z != 1: c = "A" if c == "c" else "a"   # loddrette fibrar
         L.p(px, py, c)
-    for a in range(0, 360, 20):                             # årringar på setet: ein brei oval ring midt på
-        x, y = cx + round(math.cos(math.radians(a)) * 2.6), base - SETE_HOGD + 1 + round(math.sin(math.radians(a)) * 2.6 * K)
-        if L.get(x, y) == "C": L.p(x, y, "c")
+    ys = base - SETE_HOGD + 1                               # årringar på setet med marg midt i
+    for rr in (2.2, 4.4):
+        for a in range(0, 360, 12):
+            x, y = cx + round(math.cos(math.radians(a)) * rr), ys + round(math.sin(math.radians(a)) * rr * K)
+            if L.get(x, y) == "C": L.p(x, y, "c")
+    if L.get(cx, ys) in "Cc": L.p(cx, ys, "A")
+    for (x, y) in ((cx + 3, ys - 1), (cx + 4, ys)):          # ei tørkesprekk i setet
+        if L.get(x, y) in "Cc": L.p(x, y, "A")
     omriss(L)
     return L
 
