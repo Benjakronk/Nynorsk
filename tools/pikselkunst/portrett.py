@@ -339,35 +339,34 @@ def ivar(P, k=None):
     lokk(P, "laer", [(9, 39), (14, 42), (21, 46), (25, 48)], [2, 2, 2, 2])           # sekkebandet
     P.linje([(10, 38), (25, 47)], ("laer", 3)); P.p(16, 43, ("gull", 3)); P.p(17, 43, ("laer", 3))
     # ---- hals
-    P.poly([(21, 28), (29, 30), (29, 37), (21, 37)], (hud, 2))
-    P.poly([(26, 31), (29, 30), (29, 36), (27, 36)], (hud, 3))
-    P.poly([(21, 29), (29, 32), (29, 34), (22, 32)], (hud, 1))
-    # ---- andletet: rundt barneandlet, runde kinn og ei lita, oppstoppa nase
+    P.poly([(22, 28), (29, 30), (28.5, 37), (22, 37)], (hud, 2))
+    P.poly([(26, 31), (29, 30), (28.5, 36), (27, 36)], (hud, 3))
+    P.poly([(22, 29), (29, 32), (29, 34), (23, 32)], (hud, 1))
+    # ---- andletet: rundt barneandlet, runde kinn, smal hake og ei lita, oppstoppa nase. Ljoset kjem
+    # frå høgre: ei stor lys flate framme, ei smal mellomtone og ei jamn skuggeside mot øyret.
     kantar = {8: (22, 31), 9: (20, 33), 10: (19, 34), 11: (18, 35), 12: (18, 36), 13: (18, 36), 14: (18, 37),
               15: (18, 37), 16: (18, 37), 17: (18, 37), 18: (18, 37), 19: (18, 36), 20: (18, 37), 21: (18, 37),
               22: (18, 38), 23: (18, 38), 24: (18, 39), 25: (18, 38), 26: (19, 37), 27: (19, 37), 28: (20, 37),
-              29: (20, 36), 30: (21, 36), 31: (22, 35), 32: (24, 34), 33: (26, 32), 34: (28, 30)}
+              29: (21, 36), 30: (22, 36), 31: (23, 35), 32: (25, 34), 33: (27, 33), 34: (29, 31)}
     for y, (xa, xb) in kantar.items():
+        g = 21 + (y - 8) // 6                                                    # grensa til skuggesida
         for x in range(xa, xb + 1):
-            t = 3
-            if x <= 20 + (y - 10) // 6: t = 2                                     # sida mot øyret
-            if y >= 29 and x < 22 + (y - 28) * 2: t = 2                            # under kjeven
+            t = 2 if x <= g else 3 if x <= g + 2 else 4
+            if y >= 29 and x < 24 + (y - 29) * 2: t = 2                            # under kjeven
+            elif y >= 28 and x < 26 + (y - 28) * 2: t = min(t, 3)
             P.p(x, y, (hud, t))
-    P.poly([(27, 9), (33, 10), (35, 13), (30, 12)], (hud, 4))                     # panna
-    P.poly([(30, 21), (34, 21), (35.5, 23), (33, 24.5), (30, 23.5)], (hud, 4))     # det runde kinnet
-    P.linje([(37, 18), (37, 21)], (hud, 4)); P.linje([(38, 22), (38, 23)], (hud, 4)); P.p(38, 24, (hud, 5))
-    P.linje([(35, 18), (35, 19)], (hud, 2))
-    P.p(36, 23, (hud, 2)); P.p(37, 25, (hud, 1)); P.p(36, 25, (hud, 2))               # nasa
-    P.linje([(33, 31), (34, 31)], (hud, 4)); P.linje([(28, 33), (31, 33)], (hud, 2))
-    P.poly([(28, 25), (33, 25), (32, 27), (29, 27)], ("kinn_iv", 2))                # raudme
-    if k in ("glad", "ivrig", "sint"): P.linje([(29, 24), (32, 24)], ("kinn_iv", 2))
-    for (x, y) in [(26, 24), (28, 23), (25, 26), (35, 25), (34, 26)]:              # fregner
-        P.p(x, y, (hud, 2))
+    P.linje([(35, 18), (35, 19)], (hud, 3))                                      # augeholet ved nasen
+    P.linje([(36, 22), (36, 24)], (hud, 3)); P.p(37, 25, (hud, 2)); P.p(36, 26, (hud, 3))   # nasa
+    P.linje([(28, 33), (31, 33)], (hud, 2))
+    P.linje([(29, 25), (32, 25)], ("kinn_iv", 2))                                 # raudme
+    if k in ("glad", "ivrig", "sint"): P.linje([(30, 24), (32, 24)], ("kinn_iv", 2))
+    for (x, y) in [(27, 23), (29, 22), (26, 25), (34, 24), (33, 26)]:              # fregner
+        P.p(x, y, (hud, 3))
     # ---- auga og bryna etter kjensla
     f = {"L": (har, 0), "l": (hud, 1), "w": ("augekvit", 3), "v": ("augekvit", 2), "p": (iris, 0),
          "i": (iris, 1), "m": (iris, 2), "g": (iris, 3), "G": (iris, 4), "h": ("augekvit", 4)}
     naer, fjern = IVAR_AUGE[k]
-    if k not in ("glad", "nikk", "les"): P.linje([(21, 16), (27, 16)], (hud, 2))
+    if k not in ("glad", "nikk", "les"): P.linje([(21, 16), (27, 16)], (hud, 3))
     rute_k(P, 20, 17, naer, f); rute_k(P, 32, 18, fjern, f)
     bn, bf = IVAR_BRYN[k]
     P.linje(bn, (har, 1)); P.linje(bf, (har, 1))
@@ -485,40 +484,40 @@ def gran_siluett(P, cx, topp, botn, brei, c):
             if 0 <= x < W: P.bak[y][x] = c
 
 
-# Auga til Huldra etter kjensla: det nære (8 x 5, øvre venstre hjørne 20, 18) og det fjerne
-# (4 x 4 ved 33, 18). L vippeline, l nedre augelok, w/v augekvite (lys/skugge under loket),
-# p pupill, i/m/g/G iris frå mørk til lysande, h glans.
+# Auga til Huldra etter kjensla (tre kvart framanfrå, begge auga synlege): det nære (7 x 5,
+# øvre venstre hjørne 19, 19) og det fjerne (5 x 4 ved 29, 19). L vippeline, l nedre augelok,
+# w/v augekvite (lys/skugge under loket), p pupill, i/m/g/G iris frå mørk til lysande, h glans.
 HULDRA_AUGE = {
-    None:     (["  LLLLLL", " LLvipiL", "L wwmhm ", "   wgGg ", "    ll  "],
-               [" LLL", "Lvip", " wgG", "  l "]),
-    "glad":   (["        ", "  LLLLLL", " LLvmhmL", "L  lgGl ", "        "],
-               ["    ", " LLL", "Lvmh", " lgl"]),
-    "trist":  (["        ", "  LLLLLL", " LLLvimL", "L wwmGm ", "    ll  "],
-               ["    ", " LLL", "LLim", " wgG"]),
-    "sint":   (["   LLLLL", " LLLLLLL", "LL wGpGL", "   wgGg ", "    ll  "],
-               ["  LL", "LLLL", "LvGp", " wg "]),
-    "sjokk":  ([" LLLLLL ", "LwwmimwL", " wwmpmw ", " wwgGhw ", "  llll  "],
-               ["LLLL", "Lmim", "wmpG", " gG "]),
-    "tenkje": (["  LLLLLL", " LLwmpmL", "L wwgGh ", "   wwww ", "    ll  "],
-               [" LLL", "Lwmp", " wgh", "  l "]),
-    "nikk":   (["        ", "        ", "  LLLLLL", " L    L ", "L       "],
-               ["    ", "    ", "LLLL", "L  L"]),
-    "lokk":   (["        ", "  LLLLLL", " LLLLLLL", "LwmpiwL ", "  gGhll "],
-               ["    ", "LLLL", "Lmpi", " gG "]),
-    "sky":    (["        ", "  LLLLLL", " LLLLLLL", "L  wimG ", "    ll  "],
-               ["    ", " LLL", "LLLi", " wmG"]),
+    None:     ([" LLLLL ", "LLvipiL", " wwmGh ", "  wgGg ", "   ll  "],
+               [" LLLL", "Lvipi", " wmGh", "  gGl"]),
+    "glad":   (["       ", " LLLLL ", "LLvmhmL", "  lgGl ", "       "],
+               ["     ", " LLLL", "Lvmhm", " lgGl"]),
+    "trist":  (["       ", " LLLLL ", "LLLLLLL", " wwmGm ", "   ll  "],
+               ["     ", " LLLL", "LLLLL", " wmGm"]),
+    "sint":   (["L      ", "LLLLLLL", " LwGpGL", "  wgGg ", "   ll  "],
+               ["    L", "LLLLL", "LGpGL", " wgG "]),
+    "sjokk":  ([" LLLLL ", "LwwiiwL", " wwpGw ", " wwgGw ", "  lll  "],
+               ["LLLLL", "Lwiiw", "wwpGw", " lll "]),
+    "tenkje": ([" LLLLL ", "LLvwpiL", " wwwgG ", "  wwww ", "   ll  "],
+               [" LLLL", "Lvwpi", " wwgG", "  ll "]),
+    "nikk":   (["       ", "       ", " LLLLL ", "L     L", "       "],
+               ["     ", "     ", "LLLLL", "L   L"]),
+    "lokk":   (["       ", " LLLLL ", "LLLLLLL", "LwpiGw ", "  gGl  "],
+               ["     ", " LLLL", "LLLLL", "LpiGw", " gG  "]),
+    "sky":    (["       ", " LLLLL ", "LLLLLLL", "  wmGm ", "   ll  "],
+               ["     ", " LLLL", "LLLLL", " wmGm"]),
 }
 # Bryna: (nært, fjernt) som punktliner.
 HULDRA_BRYN = {
-    None:     ([(22, 15), (24, 14), (27, 14), (29, 15)], [(33, 15), (35, 14), (37, 15)]),
-    "glad":   ([(22, 15), (24, 13), (27, 13), (29, 14)], [(33, 14), (35, 13), (37, 14)]),
-    "trist":  ([(22, 16), (25, 15), (27, 14), (29, 13)], [(33, 13), (35, 14), (37, 15)]),
-    "sint":   ([(22, 14), (25, 15), (28, 16), (29, 17)], [(33, 17), (35, 15), (37, 14)]),
-    "sjokk":  ([(22, 14), (24, 12), (27, 12), (29, 13)], [(33, 13), (35, 12), (37, 13)]),
-    "tenkje": ([(22, 16), (25, 16), (29, 15)], [(33, 14), (35, 12), (37, 13)]),
-    "nikk":   ([(22, 16), (24, 15), (27, 15), (29, 16)], [(33, 16), (35, 15), (37, 16)]),
-    "lokk":   ([(22, 16), (25, 16), (29, 16)], [(33, 14), (35, 12), (37, 13)]),
-    "sky":    ([(22, 16), (25, 15), (27, 14), (29, 14)], [(33, 14), (35, 14), (37, 15)]),
+    None:     ([(19, 16), (21, 15), (24, 15), (25, 16)], [(29, 16), (31, 15), (33, 15), (34, 16)]),
+    "glad":   ([(19, 15), (21, 14), (24, 14), (25, 15)], [(29, 15), (31, 14), (33, 14), (34, 15)]),
+    "trist":  ([(19, 16), (22, 15), (25, 14)], [(29, 14), (32, 15), (34, 16)]),
+    "sint":   ([(19, 14), (22, 15), (25, 17)], [(29, 17), (32, 15), (34, 14)]),
+    "sjokk":  ([(19, 14), (21, 13), (24, 13), (25, 14)], [(29, 14), (31, 13), (33, 13), (34, 14)]),
+    "tenkje": ([(19, 16), (25, 16)], [(29, 14), (31, 13), (34, 14)]),
+    "nikk":   ([(19, 17), (21, 16), (24, 16), (25, 17)], [(29, 17), (31, 16), (33, 16), (34, 17)]),
+    "lokk":   ([(19, 17), (25, 16)], [(29, 15), (31, 13), (34, 14)]),
+    "sky":    ([(19, 16), (22, 15), (25, 15)], [(29, 15), (32, 15), (34, 16)]),
 }
 
 
@@ -558,9 +557,9 @@ def huldra(P, k=None):
     lokk(P, har, [(1, 48), (2, 44), (4, 42), (6, 43)], [0.9, 1.4, 1.5, 0.5], (0.4, 0.8))
     P.p(0, 46, (har, 1)); P.p(1, 45, (har, 1))
     # ---- kropp: hals, bringe, særk, kjole og sjal
-    P.poly([(24, 31), (30, 33), (30.5, 42), (23.5, 42)], (hud, 2))
-    P.poly([(24, 32), (31, 35), (31, 37.5), (25, 35)], (hud, 1))                 # skuggen under kjeven
-    P.poly([(27, 33), (30, 33), (30.5, 41), (28, 41)], (hud, 3))
+    P.poly([(23.5, 30), (30.5, 30), (31, 42), (23, 42)], (hud, 3))
+    P.poly([(23.5, 30), (26, 30), (25.5, 42), (23, 42)], (hud, 2))              # halsen i skugge mot venstre
+    P.poly([(22, 31), (31, 32), (31, 35), (24, 34)], (hud, 2))                   # skuggen under kjeven
     P.poly([(6, 48), (9, 43), (16, 40), (22, 40), (31, 40), (38, 40), (44, 44), (47, 48)], ("kjole", 2))
     P.poly([(20, 40), (32, 40), (33, 43), (26, 46), (19, 43)], (hud, 3))         # bringa
     P.poly([(20, 40), (23, 40), (24, 44), (19, 43)], (hud, 2))
@@ -570,62 +569,59 @@ def huldra(P, k=None):
     P.poly([(24, 47), (29, 47), (30, 48), (23, 48)], ("kjole", 3))
     P.poly([(6, 48), (9, 43), (16, 40), (20, 41), (17, 45), (15, 48)], ("sjal", 2))   # sjalet over skuldrene
     P.poly([(33, 40), (39, 40), (45, 44), (47, 48), (37, 48), (35, 44)], ("sjal", 3))
-    # ---- andletet: smalt, mjukt, spiss hake. Rad for rad (venstre og høgre kant), så profilen
-    # (panne, augehole, naseryggen, nasetippen, leppene og haka) blir handplassert.
-    kantar = {7: (22, 31), 8: (20, 33), 9: (19, 34), 10: (18, 35), 11: (18, 36), 12: (18, 36), 13: (17, 37),
-              14: (17, 37), 15: (17, 38), 16: (17, 38), 17: (17, 38), 18: (17, 38), 19: (17, 37), 20: (17, 38),
-              21: (17, 38), 22: (18, 39), 23: (18, 39), 24: (18, 40), 25: (18, 39), 26: (18, 38), 27: (19, 38),
-              28: (19, 38), 29: (20, 37), 30: (20, 37), 31: (21, 36), 32: (22, 37), 33: (24, 36), 34: (27, 35),
-              35: (30, 33)}
+    # ---- andletet: tre kvart framanfrå, mjuk kjeve og smal hake. Rad for rad (venstre og høgre
+    # kant). Ljoset kjem frå høgre: ei stor lys flate, ei smal mellomtone og ei jamn skuggeside.
+    kantar = {7: (22, 31), 8: (20, 33), 9: (19, 34), 10: (18, 34), 11: (18, 35), 12: (17, 35), 13: (17, 35),
+              14: (17, 35), 15: (17, 35), 16: (17, 35), 17: (17, 35), 18: (17, 35), 19: (17, 35), 20: (17, 35),
+              21: (17, 35), 22: (17, 35), 23: (17, 35), 24: (18, 35), 25: (18, 35), 26: (18, 34), 27: (19, 34),
+              28: (19, 34), 29: (20, 33), 30: (20, 33), 31: (21, 33), 32: (22, 32), 33: (23, 32), 34: (25, 31),
+              35: (27, 30)}
     for y, (xa, xb) in kantar.items():
         for x in range(xa, xb + 1):
-            t = 3
-            if x <= 22 + (y - 10) // 7 and y >= 9: t = 2                       # sida mot øyret
-            if y >= 31 and x < 22 + (y - 30) * 2: t = 2                          # under kjeven
+            grense = xa + 2 + (1 if 20 <= y <= 30 else 0)                       # skuggesida mot venstre
+            t = 2 if x < grense else 3 if x < grense + 2 else 4
+            if y >= 32 and x < 26 + (y - 32): t = 2                                # under kjeven
+            elif y >= 31 and x < 27 + (y - 31): t = min(t, 3)
             P.p(x, y, (hud, t))
-    P.poly([(29, 9), (34, 10), (35.5, 13), (31, 12)], (hud, 4))                 # panna
-    P.poly([(30, 21), (35, 21), (36.5, 23), (35, 25), (31, 24.5)], (hud, 4))     # kinnbeinet
-    P.linje([(38, 17), (38, 21)], (hud, 4)); P.linje([(39, 22), (39, 23)], (hud, 4)); P.p(39, 24, (hud, 5))   # naseryggen
-    P.linje([(36, 18), (36, 19)], (hud, 2))                                      # augeholet ved nasen
-    P.linje([(37, 23), (37, 24)], (hud, 2)); P.p(38, 25, (hud, 2)); P.p(37, 26, (hud, 1)); P.p(38, 26, (hud, 2))   # nasa
-    P.linje([(35, 32), (36, 32)], (hud, 4)); P.p(35, 31, (hud, 4))              # haka
-    P.linje([(31, 34), (34, 34)], (hud, 2))
-    raud = {"glad": 3, "sky": 2}.get(k)
-    P.poly([(29, 26), (33, 26), (32, 27), (30, 27)], ("lepe_hu", 3))               # raudme
-    if raud: P.poly([(24, 25), (26, 25), (26, 26), (24, 26)], ("lepe_hu", 2)); P.linje([(29, 25), (33, 25)], ("lepe_hu", 3))
-    if k not in ("nikk", "glad"): P.linje([(23, 17), (28, 17)], (hud, 2))         # augelokfald
+    # nasa: lys rygg (grunntonen) med skuggesida til venstre og ein liten skugge under
+    P.linje([(27, 22), (27, 26)], (hud, 3)); P.p(28, 27, (hud, 2)); P.linje([(27, 28), (29, 28)], (hud, 3))
+    P.linje([(28, 34), (30, 34)], (hud, 3))                                       # skugge under haka
+    if k in ("glad", "sky"):                                                      # raudme
+        P.linje([(20, 26), (22, 26)], ("lepe_hu", 3)); P.linje([(31, 26), (33, 26)], ("lepe_hu", 3))
+    if k not in ("nikk", "glad"):                                                 # augelokfaldet
+        P.linje([(20, 18), (24, 18)], (hud, 3)); P.linje([(30, 18), (33, 18)], (hud, 3))
     # ---- auga og bryna etter kjensla
-    f = {"L": (har, 0), "l": (hud, 1), "w": ("augekvit", 3), "v": ("augekvit", 2), "p": (iris, 0),
+    f = {"L": (har, 0), "l": (hud, 2), "w": ("augekvit", 3), "v": ("augekvit", 2), "p": (iris, 0),
          "i": (iris, 1), "m": (iris, 2), "g": (iris, 3), "G": (iris, 4), "h": ("augekvit", 4)}
     naer, fjern = HULDRA_AUGE[k]
-    rute_k(P, 21, 18, naer, f); rute_k(P, 33, 18, fjern, f)
+    rute_k(P, 19, 19, naer, f); rute_k(P, 29, 19, fjern, f)
     bn, bf = HULDRA_BRYN[k]
     P.linje(bn, (har, 1)); P.linje(bf, (har, 1))
-    if k == "trist": P.p(27, 23, ("augekvit", 4)); P.p(27, 24, ("iris_hu", 3))    # ei tåre
-    # ---- munnen
+    if k == "trist": P.p(24, 24, ("augekvit", 4)); P.p(24, 25, ("iris_hu", 3))    # ei tåre
+    # ---- munnen: litt fyldige lepper i ein dempa rosetone, inne i andletet
     L1, L2, L0 = ("lepe_hu", 1), ("lepe_hu", 2), ("lepe_hu", 0)
     if k in (None, "nikk", "sky"):                                                # lite, gåtefullt smil
-        P.linje([(33, 29), (35, 29)], L1); P.p(32, 28, L1); P.linje([(33, 30), (34, 30)], L2)
+        P.linje([(26, 30), (30, 30)], L1); P.p(31, 29, L1); P.linje([(27, 31), (29, 31)], L2)
     elif k == "glad":
-        P.p(31, 28, L1); P.linje([(32, 29), (35, 29)], L1); P.p(36, 28, L1); P.linje([(33, 30), (34, 30)], L2)
+        P.p(25, 29, L1); P.linje([(26, 30), (30, 30)], L1); P.p(31, 29, L1); P.linje([(27, 31), (29, 31)], L2)
     elif k == "lokk":                                                             # skeivt, lurt smil
-        P.p(31, 27, L1); P.p(32, 28, L1); P.linje([(33, 29), (35, 29)], L1); P.p(34, 30, L2)
+        P.linje([(26, 30), (30, 30)], L1); P.p(31, 29, L1); P.p(32, 28, L1); P.linje([(27, 31), (28, 31)], L2)
     elif k == "trist":
-        P.p(32, 30, L1); P.linje([(33, 29), (34, 29)], L1); P.p(35, 30, L1)
+        P.p(25, 31, L1); P.linje([(26, 30), (30, 30)], L1); P.p(31, 31, L1); P.linje([(27, 31), (29, 31)], L2)
     elif k == "sint":
-        P.linje([(32, 29), (35, 29)], L0); P.p(36, 30, L1)
+        P.linje([(26, 30), (30, 30)], L0); P.p(25, 31, L1); P.p(31, 31, L1)
     elif k == "sjokk":
-        P.linje([(33, 29), (34, 29)], L1); P.linje([(33, 30), (34, 30)], L0); P.linje([(33, 31), (34, 31)], L2)
+        P.linje([(27, 30), (29, 30)], L1); P.linje([(27, 31), (29, 31)], L0); P.linje([(27, 32), (29, 32)], L2)
     elif k == "tenkje":
-        P.linje([(33, 29), (34, 29)], L1); P.p(34, 30, L2)
+        P.linje([(27, 30), (29, 30)], L1); P.linje([(28, 31), (29, 31)], L2)
     # ---- håret framme
-    harflak(P, har, [(29, 2), (21, 2), (15, 6), (13, 15), (13, 25), (14, 34), (13, 42), (12, 48)],
-            [(31, 6), (26, 8), (23, 12), (21, 18), (21, 26), (22, 34), (21, 42), (20, 48)], 4, 2.4,
+    harflak(P, har, [(29, 2), (20, 2), (13, 6), (10, 15), (10, 25), (11, 34), (10, 42), (9, 48)],
+            [(31, 6), (25, 7), (20, 10), (17, 16), (16, 24), (17, 32), (18, 40), (17, 48)], 4, 2.4,
             [(0.07, 0.2), (0.52, 0.6)], bolgje=(0.9, 13, 2.0), lys=0.45)
-    harflak(P, har, [(30, 4), (34, 5), (37, 9), (39, 15)], [(31, 6), (34, 8), (36, 12), (37, 16)], 2, 1.8, (0.2, 0.55),
+    harflak(P, har, [(30, 4), (35, 5), (38, 10), (39, 18)], [(31, 6), (34, 8), (36, 12), (37, 18)], 2, 1.8, (0.2, 0.55),
             bolgje=(0.3, 8, 0))
-    lokk(P, har, [(29, 5), (26, 9), (24, 13)], [1.5, 1.4, 0.5], (0.1, 0.5))           # lause lokkar i panna
-    lokk(P, har, [(31, 6), (31, 10), (32, 13)], [1.2, 1, 0.4], (0.1, 0.5))
+    lokk(P, har, [(29, 5), (25, 8), (22, 12)], [1.5, 1.4, 0.5], (0.1, 0.5))           # lause lokkar i panna
+    lokk(P, har, [(31, 6), (33, 9), (34, 12)], [1.2, 1, 0.4], (0.1, 0.5))
     for pts in [[(20, 4), (17, 1)], [(33, 5), (36, 2)], [(10, 12), (7, 9)]]:          # lause hårstrå
         P.linje(pts, (har, 3))
     # ---- kransen: kvitveis, blåklokker og bjørkelauv over hovudet
@@ -639,11 +635,11 @@ def huldra(P, k=None):
         P.p(x, y, ("klokke", 3)); P.p(x + 1, y, ("klokke", 2)); P.p(x, y + 1, ("klokke", 2)); P.p(x + 1, y + 1, ("klokke", 2))
     # ---- handa til kjensla
     if k == "tenkje":                                                             # fingeren mot leppa
-        P.poly([(37, 48), (38, 42), (41, 38.5), (45, 40), (44, 48)], ("lin", 3))      # kvitt erme
-        P.linje([(38, 42), (41, 39)], ("lin", 4)); P.linje([(41, 39), (44, 41)], ("lin", 4))
-        P.poly([(34, 33), (37, 32), (40, 35), (41, 39), (38, 40.5), (35, 38), (33.5, 35)], (hud, 3))
-        P.linje([(35, 31), (35, 33)], (hud, 3)); P.p(35, 30, (hud, 4))              # peikefingeren
-        P.linje([(35, 36), (39, 36)], (hud, 2)); P.linje([(36, 33), (38, 34)], (hud, 4))
+        P.poly([(33, 48), (34, 42), (37, 38.5), (41, 40), (40, 48)], ("lin", 3))      # kvitt erme
+        P.linje([(34, 42), (37, 39)], ("lin", 4)); P.linje([(37, 39), (40, 41)], ("lin", 4))
+        P.poly([(29, 34), (32, 33), (35, 35.5), (36, 39), (33, 40.5), (30, 38), (28.5, 36)], (hud, 4))
+        P.linje([(30, 31), (30, 33)], (hud, 4))                                  # peikefingeren mot leppa
+        P.linje([(30, 36), (34, 36)], (hud, 3)); P.linje([(29, 34), (29, 36)], (hud, 3))
 
 
 def framande(P):

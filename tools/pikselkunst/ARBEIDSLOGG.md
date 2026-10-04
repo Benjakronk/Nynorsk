@@ -1904,3 +1904,28 @@ same måte, uansett kven som tek over.
   open no, og open ute ved vegen), `r60-kister-spel.png`, `r60-kister-open-spel.png`, `r60-vegen-spel.png`.
 - **Står att:** stabburet, kubbestolen frå sida, Ekset og prestegarden, kyrkja og skigarden og
   steingarden ute (rekkjefølgja i dei neste rundane).
+
+## Runde 63: andleta til Huldra og Ivar (portrett, runde 2)
+
+- **Frå brukaren og koordinatoren:** Hår, krans og bakgrunn frå runde 60 var eit løft, men andleta var ikkje
+  på FF6-nivå: lyse, flekkete felt på kinn og nase, Huldra stiv i nesten-profil med munnen ute ved kanten,
+  og Ivar med ein lys flekk ved nasa og litt brei hake. Brukaren opna for større portrett om det trengst.
+- **Gjort:**
+  - **Rolige hudflater:** tre til fire tonar i store flater (lys flate mot ljoset frå høgre, mellomtone på 2
+    pikslar, jamn skuggeside mot øyret og under kjeven). Alle glanspunkt og små lyse felt på kinn og nase er
+    borte. Nasa er ein lys rygg med mellomtone på skuggesida, nasebor og ein liten skugge under.
+  - **Huldra** er snudd til tre kvart framanfrå som Terra og Celes: begge auga synlege (7 og 5 pikslar
+    breie), halvt senka augelok og blikket litt forbi oss, lysande grøne auge med glans, mjuk kjevelinje,
+    smal hake, litt fyldige lepper i dempa rosa midt i andletet. Hår, krans, kjole, kuhalen og skogen i dis
+    er som før, men håret framme rammar no inn andletet utan å dekkje det nære auget.
+  - **Ivar:** den lyse flekken ved nasa er borte, haka er smalare (to pikslar på kvar side nedst), halsen
+    smalare, og fregnene er i mellomtonen.
+  - Alle kjenslene til begge er teikna om (auga, bryna og munnen til Huldra er nye rutenett).
+- **Storleik:** vurdert, men vi held på 48 × 48. Det som mangla, var rolige flater og ein betre vinkel,
+  ikkje fleire pikslar (FF6 klarer seg med 32 × 40). Større portrett ville òg krevje endringar i
+  samtaleboksen og ei mellomløysing for dei tolv portretta som ikkje er teikna om.
+- **Etter:** `forhand/portrett2-samanlikning.png` (runde 60 og no, med alle kjenslene),
+  `forhand/portrett2-mot-ff6.png` (ved sida av Terra, Celes og Relm), og i spelet
+  `forhand/skjerm/portrett2-taleboks.png` (fire samtaleboksar) med `portrett2-huldra-spel.png`,
+  `portrett2-huldra-lokk-spel.png`, `portrett2-ivar-spel.png` og `portrett2-ivar-glad-spel.png`.
+- **Står att:** dei andre portretta. Skuggegrensa hos Ivar går i små trapper nedover kinnet.

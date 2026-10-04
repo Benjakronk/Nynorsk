@@ -63,19 +63,26 @@ Målt i portretta frå Final Fantasy VI Advance (`forhand/referansar/ff6a-portre
 Edgar, Celes, Relm). Huldra og Ivar er teikna etter dette; dei andre portretta står att.
 
 - **Storleik og utsnitt:** FF6 har om lag 32 × 40 (34 × 34 synleg i arket), tett utsnitt der hovudet
-  fyller nesten heile ruta og skuldrene berre så vidt kjem med. Vi held på 48 × 48 (vist 144 × 144),
+  fyller nesten heile ruta og skuldrene berre så vidt kjem med. Vi held på 48 × 48 (vist 144 × 144;
+  vurdert på nytt i runde 63: rolege flater, ikkje fleire pikslar, var det som mangla),
   men brukar plassen til fleire tonar og finare auge, ikkje til å vise meir av kroppen: hovudet er om
   lag 28 pikslar høgt (panne til hake), skuldrene er dei nedste 8 til 10 radene, og håret går ut over
   kanten.
 - **Fargar:** FF6 har 15 fargar per portrett (16 med gjennomsiktig). Vi tillèt 40, fordelt slik:
   hud 6 (tonen 0 er omrisset), hår 6, iris 4 til 5, augekvite 3, lepper 3, klede 3 til 4 per plagg.
-- **Hud:** fire til seks tonar i store, rolege flater: lys plan mot ljoset (panne, kinnbein, naserygg,
-  hake), grunntone, skuggeside mot øyret og under kjeven, og éin piksel med den lysaste tonen på
-  nasetippen. Ikkje fleire «glanspunkt» på kinnet: i spelstorleik flyt dei saman til ein kvit flekk.
-  Raudme er éi smal stripe i ein dempa raudtone, ikkje rosa.
-- **Profilen** blir handplassert rad for rad (`kantar` i portrett.py): panne, eit lite hakk ved
-  augeholet, naseryggen, nasetippen som stikk 1 til 2 pikslar ut, leppene og haka. Nasa er nesten
-  ikkje teikna inne i andletet: ein lys rygg, ein skuggepiksel på sida og eit nasebor.
+- **Hud (runde 63):** tre til fire tonar i store, samanhengande flater, som i FF6: ei stor lys flate mot
+  ljoset (frå høgre), ei smal mellomtone på 2 pikslar, og ei jamn skuggeside mot øyret og under kjeven.
+  Ingen glanspunkt, lyse flekker eller små felt på kinn og nase: i spelstorleik bryt dei opp andletet.
+  Fregner og raudme er i ein tone like ved huda (fregner i mellomtonen, raudme som éi stripe på 3
+  pikslar).
+- **Nasa** blir berre antyda: ryggen er den lyse grunnflata, med mellomtonen på skuggesida, eit nasebor
+  og ein liten skugge under. I nesten-profil (Ivar) stikk tippen 1 piksel ut over profilen.
+- **Vinkel:** tre kvart framanfrå (som Terra og Celes) når begge auga skal tale, som hos Huldra: det nære
+  auget 7 pikslar breitt, det fjerne 5, nasa mellom dei og munnen inne i andletet, ikkje på kanten.
+  Nesten-profil (Ivar) passar for ivrige personar som ser fram mot teksten. Andletet og profilen blir
+  handplasserte rad for rad (`kantar` i portrett.py).
+- **Munn:** leppene i ein dempa rosetone, overleppa som ei line i den mørke tonen, underleppa 2 til 3
+  pikslar i ein lysare tone. Kjensla blir lesen av munnvikane.
 - **Hår i lokkar med glans:** håret er klumpar på 3 til 5 pikslar, kvar med mørk kant mot naboen,
   grunntone og lys side mot ljoset. Glansen ligg som korte striper langs lyssida, samla i ein ring
   over issen og på bylgjene, ikkje som spreidde prikkar. Tuppane er ujamne, og nokre lause strå bryt
@@ -84,7 +91,7 @@ Edgar, Celes, Relm). Huldra og Ivar er teikna etter dette; dei andre portretta s
   på den førre). Håret bak hovudet har færre lyse pikslar (`lys=0.55`) og les difor som lenger bak.
 - **Auge:** tjukk vippeline (to rader ved den ytre kroken), augekvite i to tonar (skugge under loket),
   iris 3 × 3 i tre tonar med mørk pupill øvst og lysare nedst, og éin kvit glanspiksel. Det fjerne
-  auget er 4 pikslar breitt. Augelokfaldet er ei line i skuggetonen over auget. Bryna er tynne liner i
+  auget er 4 til 5 pikslar breitt. Augelokfaldet er ei line i skuggetonen over auget. Bryna er tynne liner i
   den mørke hårtonen.
 - **Lys:** framanfrå og ovanfrå (frå høgre, mot teksten). Lyssida et omrisset litt: der huda er lys
   inntil kanten, blir omrisset den nest mørkaste tonen (`selout()`).
