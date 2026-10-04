@@ -83,6 +83,17 @@ Edgar, Celes, Relm). Huldra og Ivar er teikna etter dette; dei andre portretta s
   handplasserte rad for rad (`kantar` i portrett.py).
 - **Munn:** leppene i ein dempa rosetone, overleppa som ei line i den mørke tonen, underleppa 2 til 3
   pikslar i ein lysare tone. Kjensla blir lesen av munnvikane.
+- **Uttrykk med få pikslar (runde 69):** som i FF6 ber bryna, augeloka og munnvikane kjensla. Ved trist,
+  sint og tenkje blir bryna to pikslar tjukke i den indre halvdelen, og dei hallar tydeleg (trist: indre
+  ende opp, sint: indre ende ned, tenkje: det eine brynet høgt). Munnvikane flyttar seg ein til to
+  pikslar (ned ved trist, samanbitne lepper ved sint, munnen trekt til sida ved tenkje). Sjekk alltid i
+  spelstorleik.
+- **Andletsform i tre kvart:** kjeven er ei jamn, skrå line frå øyret ned til ei smal hake, og
+  skuggesida følgjer kjeven (ikkje ei loddrett grense). Øyret sit bak kjeven, i høgd med auga og nasa,
+  4 til 5 pikslar breitt, og ikkje så langt fram at det rører det nære auget. Kinnet bular berre litt
+  ut, med mellomtonen langs kanten.
+- **Håret bak hovudet** syner ved halsen og langs kinna, eitt steg mørkare enn håret framme
+  (`skugge=1, botn=0`), så andletet ligg framfor ei mørk hårramme og ikkje rett mot bakgrunnen.
 - **Hår i lokkar med glans:** håret er klumpar på 3 til 5 pikslar, kvar med mørk kant mot naboen,
   grunntone og lys side mot ljoset. Glansen ligg som korte striper langs lyssida, samla i ein ring
   over issen og på bylgjene, ikkje som spreidde prikkar. Tuppane er ujamne, og nokre lause strå bryt

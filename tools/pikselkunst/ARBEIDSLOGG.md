@@ -2044,3 +2044,29 @@ same måte, uansett kven som tek over.
   (`[-8, 5]`, lag 15.5: framfor karmen, bak framsida). `sjekk-kyrkjegang.html` går heile vegen og preikar.
 - **Etter:** `k60-rad.png` (ved døra i koret, skjult i gangen, i opninga, nede i korga) og
   `k60-opning-naer.png` (Ivar i døropninga under lydhimlingen).
+
+## Runde 69: Huldra og Ivar, portrett runde 3 (bakhår, andletsform, fjørpenn og tydelegare kjensler)
+
+- **Frå brukaren:** «Det begynner virkelig å komme seg», men FF6 får fram meir uttrykk med mindre plass.
+  Håret til Huldra mangla ved halsen og langs kinnet (det som heng bak, mørkare). Andletsforma til Ivar var
+  rar, med ein klump på venstre side, og fjørpennen skal sitje oppå øyret, ikkje bak. Koordinatoren: Huldra
+  var nesten kvit og flat, med nasa som ein lang strek, og halsen såg lang ut.
+- **Gjort:**
+  - **Huldra:** to flak med hår rett bak hovudet, eitt steg mørkare (`skugge=1`, ny parameter `botn=0` i
+    `lokk` og `harflak` som lèt kantane bli den djupaste tonen), som syner ved halsen og langs kinna på
+    begge sider. Halsen er smalare, og særk, kjole og sjal går to rader høgare. Andletet har mellomtone
+    langs kinnet (breiare der kinnet bular) og under kjeven. Nasa er ein kort lys rygg på to pikslar med
+    ein liten skugge og eit nasebor.
+  - **Ivar:** ny silhuett: kjeven er ei jamn skrå line frå øyret ned til ei smalare hake, og skuggesida
+    følgjer kjeven (før var grensa loddrett i trapper og kinnet stod ut som ein klump). Øyret er flytt
+    bakover og ned til der kjeven møter hovudet. Fjørpennen ligg oppå øyret og er stukken inn i håret.
+  - **Kjensler:** tjukke og tydeleg skrå bryn ved trist, sint og tenkje, munnvikar som flyttar seg (ned ved
+    trist, samanbitne lepper ved sint, munnen trekt til sida ved tenkje), ei lengre tåre hos Huldra. Alle
+    kjenslene til begge er laga på nytt.
+- **Rundar:** (1) bakhåret til Huldra synte ikkje til venstre (dekt av håret framme og halsen): halsen
+  smalare og håret framme flytt ut. (2) Pennen til Ivar gjekk inn i det nære auget: øyret flytt to pikslar
+  bakover.
+- **Etter:** `forhand/portrett3-samanlikning.png` (runde 63 og no, alle kjenslene), `forhand/portrett3-mot-ff6.png`
+  (ved sida av Terra, Locke, Relm og Setzer; Celes er bøygd framover i referansen og eignar seg ikkje), og
+  i spelet `forhand/skjerm/portrett3-taleboks.png` (Huldra nøytral og trist, Ivar tenkje og sint).
+- **Står att:** dei andre portretta. Øyret til Ivar kunne hatt eit tydelegare skilje mot kinnet.
