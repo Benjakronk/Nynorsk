@@ -622,13 +622,13 @@ window.RPGData = (function () {
     },
     kyrkja: {
       namn: "Hovdekyrkja", stemning: "kyrkjerom", golv: "q", inne: true, fristad: true, bakgrunn: "kyrkje",
-      /* Ei stor langkyrkje (runde 52 og 53): 50 fliser frå døra (merke 1) til altarringen, 10 sekund
-         å gå og om lag 6,7 sekund å springe (sjå tools/sjekk-kyrkjegang.html). Frå døra og opp:
-         våpenhuset (rad 55 til 59) med benker langs veggene og fattigblokka, skipet (rad 14 til 53)
-         med tre benkeblokker (variantar av benkene: mest salmebøker, hatt og sjal ved folka, namneplater,
-         slitasje) med kyrkjefolk som sit, to tverrgangar, jernomnen, epitafium og minnetavler på
-         sideveggene (trappa i våpenhuset fører opp til galleriet, eit eige kart), framme lysestakane, preikestolen
-         med trapp (venstre) og døypefonten (høgre), korskiljet under korbogen (rad 13), og koret
+      /* Ei langkyrkje (runde 52 til 60): 33 fliser frå døra (merke 1) til altarringen, 6,6 sekund å
+         gå og 4,4 sekund å springe (sjå tools/sjekk-kyrkjegang.html). Frå døra og opp: våpenhuset
+         (rad 38 til 42) med benk, fattigblokk og trappa opp til galleriet (eit eige kart), skipet
+         (rad 14 til 36) med to benkeblokker (variantar av benkene: mest salmebøker, hatt og sjal ved
+         folka, namneplater, slitasje) med kyrkjefolk som sit, ein tverrgang med jernomnen, epitafium
+         og minnetavler på sideveggene, framme lysestakane, preikestolen på veggen (venstre, inngang
+         gjennom veggen frå koret) og døypefonten (høgre), korskiljet under korbogen (rad 13), og koret
          (smalare, rad 0 til 12) med eige golv av mørke eikeplankar på tvers (Þ, fast þ), korstolar,
          altarringen, altaret og altartavla. Høge vindauge i sideveggene (Ø og Ö: øvre og nedre halvdel
          i venstre vegg, med lysstrålar over golvet; ø og ö i høgre vegg) og i bakveggen i koret (u).
@@ -640,24 +640,23 @@ window.RPGData = (function () {
         { id: "inne-benk-staande-kort", x: 5, y: 10, h: 2 }, { id: "inne-benk-staande-kort", x: 15, y: 10, h: 2 },
         { id: "inne-skipvegg-v", x: 1, y: 9, h: 5 }, { id: "inne-skipvegg-h", x: 16, y: 9, h: 5 }, { id: "inne-korskilje", x: 5, y: 13, h: 1 },
         // Preikestolen i to lag: ryggbrettet og lydhimlingen bak den som står i korga, korga og trappa framfor.
-        { id: "inne-preikestol-bak", x: 1, y: 14, h: 2 }, { id: "inne-preikestol-trapp", x: 1, y: 15, h: 2, flat: true }, { id: "inne-preikestol", x: 1, y: 15, h: 2 }, { id: "inne-dopefont", x: 17, y: 15, h: 1 },
+        { id: "inne-preikestol-bak", x: 1, y: 14, h: 2 }, { id: "inne-preikestol", x: 1, y: 15, h: 2 }, { id: "inne-preikestol-himling", x: 1, y: 15, h: 2, over: true }, { id: "inne-dopefont", x: 17, y: 15, h: 1 },
         // Benkene: salmebøker i dei fleste (variant "" og 5), hatt (2) og sjal (3) berre ved folka som
         // sit der og eitt gløymt sjal, slitte benker med stokk (4). Setet ligg flatt under figurane,
         // ryggen framfor (standardperspektivet, sjå STILGUIDE.md).
-        ...[[18, "5", ""], [20, "3", "5"], [22, "", "4"], [24, "4", "2"], [26, "5", ""], [31, "", "5"], [33, "2", ""],
-          [35, "5", "4"], [37, "", "3"], [39, "4", "5"], [44, "5", ""], [46, "", "3"], [48, "5", "5"], [50, "4", ""], [52, "", "5"]]
+        ...[[18, "5", ""], [20, "3", "5"], [22, "", "4"], [24, "4", "2"], [29, "5", "3"], [31, "", "5"], [33, "2", "4"], [35, "5", "3"]]
           .flatMap(([y, v, h]) => [{ id: "inne-kyrkjebenk-h" + v, x: 2, y, h: 1 }, { id: "inne-kyrkjebenk-v" + h, x: 12, y, h: 1 },
             { id: "inne-kyrkjebenk-golv", x: 2, y: y - 1, h: 2, flat: true }, { id: "inne-kyrkjebenk-golv", x: 12, y: y - 1, h: 2, flat: true }]),
         // Epitafium og minnetavler på sideveggene (det typiske i ei luthersk bygdekyrkje), jernomnen og fattigblokka.
-        ...[19, 33, 45].map(y => ({ id: "inne-epitaf-v", x: 0, y, h: 1 })), ...[26, 39].map(y => ({ id: "inne-epitaf-h", x: 20, y, h: 1 })),
-        { id: "inne-jernomn", x: 19, y: 43, h: 1 }, { id: "inne-fattigblokk", x: 12, y: 58, h: 1 },
+        ...[19, 32].map(y => ({ id: "inne-epitaf-v", x: 0, y, h: 1 })), ...[25].map(y => ({ id: "inne-epitaf-h", x: 20, y, h: 1 })),
+        { id: "inne-jernomn", x: 19, y: 27, h: 1 }, { id: "inne-fattigblokk", x: 12, y: 41, h: 1 },
         // Trappa i våpenhuset opp til galleriet (døra «E» i veggen over), og benken på andre sida.
-        { id: "inne-trapp", x: 8, y: 55, h: 3, flat: true }, { id: "inne-benk-staande-kort", x: 12, y: 56, h: 2 },
+        { id: "inne-trapp", x: 8, y: 38, h: 3, flat: true }, { id: "inne-benk-staande-kort", x: 12, y: 39, h: 2 },
         // Høgt oppe: lysekroner i par over benkeblokkene (ikkje over midtgangen, så kjettingen ikkje
-        // går over den som går der), og eit kyrkjeskip over den første tverrgangen.
+        // går over den som går der), og eit kyrkjeskip over tverrgangen.
         // tak: faktoren for taket, der kjettingen er festa (kjede() i motor.js).
-        ...[21, 34, 47].flatMap(y => [4, 14].map(x => ({ id: "inne-lysekrone", x, y, h: 1, over: true, faktor: 1.2, tak: 1.5 }))),
-        { id: "inne-kyrkjeskip", x: 13, y: 29, h: 1, over: true, faktor: 1.25, tak: 1.5 }],
+        ...[21, 32].flatMap(y => [4, 14].map(x => ({ id: "inne-lysekrone", x, y, h: 1, over: true, faktor: 1.2, tak: 1.5 }))),
+        { id: "inne-kyrkjeskip", x: 13, y: 26, h: 1, over: true, faktor: 1.25, tak: 1.5 }],
       rader: [
         "    GGGGGGGGGGGGG    ",
         "    GGGGGGGGGGGGG    ",
@@ -671,12 +670,12 @@ window.RPGData = (function () {
         "GGGGGÞÞÞÞÞlÞÞÞÞÞGGGGG",
         "GGGGGþÞÞÞÞlÞÞÞÞþGGGGG",
         "GGGGGþÞÞÞÞlÞÞÞÞþGGGGG",
-        "GGGGGÞÞÞÞÞlÞÞÞÞÞGGGGG",
+        "GĜĜĜĜÞÞÞÞÞlÞÞÞÞÞGGGGG",
         "GGGGG+++++l+++++GGGGG",
         "GqqqqqLqqŁlłqqLqqqqqG",
-        "Ø((((qqqqŁlłqqqqq((qø",
-        "ÖqqqqqqqqŁlłqqqqqqqqö",
-        "G((((qqqqŁlłqqqqqqqqG",
+        "Ø(qqqqqqqŁlłqqqqq((qø",
+        "Ö(qqqqqqqŁlłqqqqqqqqö",
+        "GqqqqqqqqŁlłqqqqqqqqG",
         "Gq(((((((Łlł(((((((qG",
         "GqqqqqqqqŁlłqqqqqqqqG",
         "Gq((($(((Łlł(((((((qG",
@@ -685,33 +684,16 @@ window.RPGData = (function () {
         "ÖqqqqqqqqŁlłqqqqqqqqö",
         "Gq(((((((Łlł(((!(((qG",
         "GqqqqqqqqŁlłqqqqqqqqG",
-        "Gq(((((((Łlł(((((((qG",
         "GqqqqqqqqŁlłqqqqqqqqG",
-        "ØqqqqqqqqŁlłqqqqqqqqø",
-        "ÖqqqqqqqqŁlłqqqqqqqqö",
-        "GqqqqqqqqŁlłqqqqqqqqG",
-        "Gq(((((((Łlł(((((((qG",
-        "GqqqqqqqqŁlłqqqqqqqqG",
-        "Gq(&(((((Łlł(((((((qG",
-        "GqqqqqqqqŁlłqqqqqqqqG",
-        "Øq(((((((Łlł(((((((qø",
-        "ÖqqqqqqqqŁlłqqqqqqqqö",
-        "Gq(((((((Łlł(*(((((qG",
-        "GqqqqqqqqŁlłqqqqqqqqG",
-        "Gq(((((((Łlł(((((((qG",
-        "GqqqqqqqqŁlłqqqqqqqqG",
-        "ØqqqqqqqqŁlłqqqqqqqqø",
-        "ÖqqqqqqqqŁlłqqqqqqqqö",
         "GqqqqqqqqŁlłqqqqqqq(G",
-        "Gq(((((((Łlł(((((((qG",
-        "GqqqqqqqqŁlłqqqqqqqqG",
-        "Gq(((((((Łlł(((((((qG",
         "ØqqqqqqqqŁlłqqqqqqqqø",
         "Öq(((((((Łlł(((((((qö",
         "GqqqqqqqqŁlłqqqqqqqqG",
         "Gq(((((((Łlł(((((((qG",
         "GqqqqqqqqŁlłqqqqqqqqG",
-        "Gq(((((((Łlł(((((((qG",
+        "Gq(&(((((Łlł(((((((qG",
+        "ØqqqqqqqqŁlłqqqqqqqqø",
+        "Öq(((((((Łlł(*(((((qö",
         "GqqqqqqqqŁlłqqqqqqqqG",
         "GGGGGGGGEGlGGGGGGGGGG",
         "       G3qlqqG       ",
@@ -721,19 +703,23 @@ window.RPGData = (function () {
         "       Gqq1qqG       ",
         "       GGGEGGG       ",
       ],
-      // Ei lagring frå den vesle kyrkja (12 rader) har ein stad som ikkje finst lenger: Ivar startar
-      // framfor altarringen (merke 2 er ikkje i kartet, sjå EKSTRA_MERKE), der lysestakane er.
+      // Ei lagring frå ei eldre kyrkje (12 rader, eller den lange med 61 rader) har ein stad som ikkje
+      // finst lenger: Ivar startar framfor altarringen (merke 2, sjå EKSTRA_MERKE).
       nyttOppsett: { fraH: 12, merke: "2" },
-      // Trappa opp til preikestolen: (4,16) nedst, (3,16) midt i trappa, (2,16) på reposen i same høgd som
-      // korggolvet, (1,16) i korga (pikslar opp, og
-      // 5 pikslar mot høgre så Ivar står midt i korga; sjå hogdVed() i motor.js). Rutene rundt (rad 15 og
-      // 17, og ved den nedste trappeflisa) er faste, så ein berre kjem opp og ned trappa.
+      /* Preikestolen heng på veggen utan trapp i skipet. Ein går frå koret inn i veggen på venstre side
+         (5,12 til 4,12), gjennom ein gang inni muren (flisa Ĝ, skjult: figuren blir ikkje teikna, men
+         kameraet følgjer han) og ut i korga (1,12): hogd -8 og 5 pikslar mot høgre, så han står midt i
+         korga, og lag 15.5, så han blir teikna etter veggen og laget bak og før framsida. Lydhimlingen
+         ligg over alt (over: true) og rammar inn hovudet. Bibelen (usynleg person) ligg på 1,13.
+         Søyla står på 1,15 og 1,16 (faste ruter). */
+      skjult: ["4,12", "3,12", "2,12"],
+      lag: { "1,12": 15.5 },
       // I benkeradene (rada rett bak ein benk) står ein 5 pikslar lågare, så setet og ryggen framfor
       // dekkjer føtene, men hovudet syner over den som sit rett framfor.
-      hogd: Object.assign({ "4,16": 19, "3,16": 37, "2,16": [56, 6], "1,16": [56, 5] },
-        Object.fromEntries([17, 19, 21, 23, 25, 30, 32, 34, 36, 38, 43, 45, 47, 49, 51].flatMap(y =>
+      hogd: Object.assign({ "1,12": [-8, 5] },
+        Object.fromEntries([17, 19, 21, 23, 28, 30, 32, 34].flatMap(y =>
           [2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17, 18].map(x => [x + "," + y, -5])))),
-      dorer: [{ ved: [10, 60], til: ["bygda", "3"] }, { ved: [8, 54], til: ["kyrkje-galleri", "1"] }],
+      dorer: [{ ved: [10, 43], til: ["bygda", "3"] }, { ved: [8, 37], til: ["kyrkje-galleri", "1"] }],
       folk: [
         // Presten kneler framfor altarringen og bed til blekket er borte. Etter det står han innanfor ringen.
         { merke: "p", u: "prest", namn: "Presten", atferd: "stille", retning: 1, pose: "knele", tale: "prest", vis: st => !st.flagg.latt },
@@ -976,7 +962,7 @@ window.RPGData = (function () {
     },
   };
   // Merke som ikkje står i karta (framfor dører som fører ut att).
-  const EKSTRA_MERKE = { ekset: { d: [10, 4] }, kyrkja: { p: [11, 9], 2: [10, 9], "%": [10, 8], "@": [6, 11], b: [1, 15] }, asen: { 1: [13, 7] } };   // asen 1: midt på tunet (testar og skjermbilete)     // kyrkja p: der presten kneler, attmed løparen; 2: framfor altarringen (gamle lagringar); % og @ ligg her, så korgolvet ikkje blir furugolv under dei
+  const EKSTRA_MERKE = { ekset: { d: [10, 4] }, kyrkja: { p: [11, 9], 2: [10, 9], "%": [10, 8], "@": [6, 11], b: [1, 13] }, asen: { 1: [13, 7] } };   // asen 1: midt på tunet (testar og skjermbilete)     // kyrkja p: der presten kneler, attmed løparen; 2: framfor altarringen (gamle lagringar); % og @ ligg her, så korgolvet ikkje blir furugolv under dei
 
   /* ---------- Verdskartet (frå kapittel 2) ---------- */
   const STADER = [];

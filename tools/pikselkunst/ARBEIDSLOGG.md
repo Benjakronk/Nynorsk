@@ -1929,3 +1929,28 @@ same måte, uansett kven som tek over.
   `forhand/skjerm/portrett2-taleboks.png` (fire samtaleboksar) med `portrett2-huldra-spel.png`,
   `portrett2-huldra-lokk-spel.png`, `portrett2-ivar-spel.png` og `portrett2-ivar-glad-spel.png`.
 - **Står att:** dei andre portretta. Skuggegrensa hos Ivar går i små trapper nedover kinnet.
+
+## Runde 64: preikestolen på veggen med gang inni muren, og ei kortare kyrkje
+
+- **Frå brukaren:** Hovudet til Ivar skal ikkje liggje over lydhimlingen, trappa skal bort, og preikestolen skal
+  sitje på veggen med inngang gjennom veggen frå koret. Og kyrkja var for stor med 50 fliser.
+- **Før:** `forhand/skjerm/k59-for-stol-heil.png` og `k58-rad.png` (trappa).
+- **Preikestolen på veggen:** trappa og reposen er borte, og golvet er vanleg att (søyla står på 1,15 og
+  1,16). Preikestolen har tre lag: `preikestol-bak` (ei boga, mørk opning i veggen med karm og
+  sluttstein, og den bakre halvdelen av korga), `preikestol` (framsida, bibelen, kjeglen og søyla) og
+  `preikestol-himling` (lydhimlingen, `over: true`), så himlingen rammar inn hovudet til Ivar i staden
+  for å bli dekt av det.
+- **Gang inni muren (generelt):** ny flis `Ĝ` (ser ut som muren ovanfrå, men ein kan gå der), ny
+  eigenskap `skjult: ["x,y", …]` på kartet (figurane der blir ikkje teikna, kameraet følgjer likevel) og
+  `lag: { "x,y": djupn }` (plassen i teikneorden for den som står der). I kyrkja: døra i pilasteren ved
+  korbogen (5,12 til 4,12), gangen 4,12 til 2,12 (skjult), og korga på 1,12 med `hogd [-8, 5]` og lag
+  15.5 (etter veggen og laget bak, før framsida). Bibelen (usynleg person) ligg på 1,13: snu ned og Z.
+- **Kortare kyrkje:** 33 fliser frå døra til altarringen (6,6 sekund å gå, 4,4 å springe), 44 rader.
+  Den bakste benkeblokka og den andre tverrgangen er bort: no to blokker med fire benkerader kvar og éin
+  tverrgang med jernomnen. Folk, lysekroner (rad 21 og 32), kyrkjeskipet, vindauge, epitafium, hogd i
+  benkeradene, våpenhuset med galleritrappa (dør 8,37), utgangsdøra (10,43) og utsynet frå galleriet
+  (`utsyn_galleri.py`, rad 26 til 35) er flytte med. `nyttOppsett` sender lagringar frå den lange kyrkja
+  til merke 2. `sjekk-kyrkjegang.html` testar 33 fliser og den nye vegen til preikestolen.
+- **Etter:** `k59-rad.png` (preikestolen utan Ivar, Ivar ved døra i koret, skjult i gangen med kameraet,
+  i korga under lydhimlingen), `k59-oversikt-to.png` (heile den kortare kyrkja) og `k59-galleri-heil.png`.
+- **Står att:** Opninga bak korga syner lite, sidan korga og himlingen dekkjer det meste av henne.

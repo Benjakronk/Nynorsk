@@ -4,24 +4,24 @@ Skipet ligg djupt under galleriet, så det blir teikna mindre (halv storleik), m
 færre fargar, rett ovanfrå: toppen av benkeradene, løparen, hovud i benkene og lysekronene sett
 ovanfrå under brystninga. På sidene er veggene ned i djupet mørke.
 
-  python tools/pikselkunst/oversikt.py k55-utan kart=kyrkja skala=1 stemning=ingen utanOver=1 utanFolk=1
+  python tools/pikselkunst/oversikt.py k59-utan kart=kyrkja skala=1 stemning=ingen utanOver=1 utanFolk=1
   python tools/pikselkunst/utsyn_galleri.py
 
-Det første steget lagar forhand/skjerm/k55-utan.png (heile kyrkja utan lys, utan det som heng høgt og
-utan folk). Skriptet tek rad 41 til 50, skalerer til halv storleik og målar hovud og kroner oppå.
+Det første steget lagar forhand/skjerm/k59-utan.png (heile kyrkja utan lys, utan det som heng høgt og
+utan folk). Skriptet tek rad 26 til 35 (den bakre benkeblokka), skalerer til halv storleik og målar hovud og kroner oppå.
 """
 import os
 from PIL import Image
 
 ROT = os.path.dirname(os.path.abspath(__file__))
-KJELDE = os.path.join(ROT, "forhand", "skjerm", "k55-utan.png")
+KJELDE = os.path.join(ROT, "forhand", "skjerm", "k59-utan.png")
 UT = os.path.join(ROT, "..", "..", "bilete", "spel", "bygg", "inne-skip-utsyn.png")
 W, H = 21 * 16 + 8, 80
 
 
 def lag():
     full = Image.open(KJELDE).convert("RGB")
-    skip = full.crop((0, 41 * 16, 21 * 16, 51 * 16)).reduce(2)            # 168 x 80, rett ovanfrå og langt nede
+    skip = full.crop((0, 26 * 16, 21 * 16, 36 * 16)).reduce(2)            # 168 x 80, rett ovanfrå og langt nede
     skip = skip.quantize(colors=20).convert("RGB")                        # færre fargar, skarpe kantar att
     px = skip.load()
     for y in range(skip.height):                                         # mørkare og kaldare, mest lengst borte
@@ -45,9 +45,9 @@ def lag():
                         (ox + 30, 35, (150, 148, 140)), (ox + 112, 35, (72, 56, 40)), (ox + 136, 35, (150, 148, 140)),
                         (ox + 20, 51, (72, 56, 40)), (ox + 128, 51, (40, 28, 22)), (ox + 44, 67, (150, 148, 140)), (ox + 108, 67, (40, 28, 22))]:
         p(bx, by, c); p(bx + 1, by, c); p(bx, by + 1, tuple(v // 2 for v in c)); p(bx + 1, by + 1, tuple(v // 2 for v in c))
-    # lysekronene sett ovanfrå (rad 47 i kyrkja): ein ring med ljos og ei kule i midten
+    # lysekronene sett ovanfrå (rad 32 i kyrkja): ein ring med ljos og ei kule i midten
     for cx in (ox + 44, ox + 124):
-        cy = (47 - 41) * 8 + 2
+        cy = (32 - 26) * 8 + 2
         for i in range(10):
             import math
             a = 2 * math.pi * i / 10

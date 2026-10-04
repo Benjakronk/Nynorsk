@@ -364,6 +364,9 @@ window.Pikslar = (function () {
     "Xt": g => { const r = R_.tommer; px(g, 0, 0, r[1], S, S); for (let x = 1; x < S; x += 5) px(g, x, 0, r[0], 1, S); px(g, 0, 0, r[2], S, 1); px(g, 2, 3, r[2], 2, 5); px(g, 12, 9, r[2], 2, 4); },
     "ct": g => { const r = R_.stein; px(g, 0, 0, r[1], S, S); for (let y = 0; y < S; y += 5) { px(g, 0, y, r[0], S, 1); px(g, (y * 3) % 11, y + 1, r[2], 4, 1); } },
     "Gt": g => { const r = R_.kvit; px(g, 0, 0, r[2], S, S); px(g, 0, 0, r[3], S, 2); px(g, 0, 14, r[1], S, 2); },
+    // Ein gang inni muren (kyrkja: frå koret til preikestolen): ser ut som muren ovanfrå, men ein kan gå
+    // der. Den som går der, blir ikkje teikna når ruta står i kart.def.skjult (sjå motor.js).
+    "Ĝ": g => FLIS.Gt(g),
     // Høge vindauge i sideveggene i kyrkja, sett ovanfrå, to fliser høge: «Ø» er den øvre halvdelen
     // (rundboge øvst) og «Ö» den nedre (karmen nedst) i venstre vegg, «ø» og «ö» i høgre vegg. Smygen
     // går skrått inn i muren frå innsida, og blyglaset er ei stripe ytst med ein losholt mellom

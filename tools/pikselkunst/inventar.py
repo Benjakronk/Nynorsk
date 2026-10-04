@@ -571,114 +571,94 @@ def altartavle():
 
 def preikestol(lag="fram"):
     """Preikestol i bondebarokk (etter Lygra, Kvernes og Nordfjordeid, sjå konsept/) i
-    standardperspektivet (STILGUIDE.md): sett ovanfrå, så lydhimlingen er ein stor oval med gylne
-    ribber og krone, korga ein open oval med kant og golv, og framsida kort, med måla evangelistar i
-    bogefelt og preikestolklede. Bibelen ligg på ei raud pute på kanten. Trappa går ned mot høgre
-    med breie trinn. 3 fliser brei og 2 rader djup. Ivar kan stå i korga (hogd i kartet), så biletet
-    er delt i to lag med grensa midt i korga: lag="bak" (lydhimlingen, ryggbrettet og den bakre
-    halvdelen av korga, éi rad høgare i kartet og difor 16 pikslar lågare bilete) og lag="fram" (den
-    fremre kanten, framsida, bibelen, søyla og rekkverket). Trinna i trappa er eit eige, flatt lag
-    (lag="trapp", flat: true i kartet), så Ivar står oppå trinnet han er på og rekkverket er framfor."""
-    W, H = 5 * 16 + 8, 104                          # 5 fliser: trappa går ut på den fjerde
+    standardperspektivet (STILGUIDE.md), hengd på venstre vegg ved korbogen utan trapp i skipet: ein
+    går inn i veggen frå koret og kjem ut gjennom ei boga opning bak korga. Lydhimlingen er ein
+    kvelva kuppel med ribber, gesims, lambrekin og duskar, korga ein open oval med lang framside
+    (evangelistar, preikestolklede), og under er ein kjegle og ei kort søyle til golvet. Bibelen ligg
+    på ei raud pute på kanten. 3 fliser brei. Tre lag, så den som står i korga, kjem rett:
+      lag="bak":     opninga i veggen og den bakre halvdelen av korga (éi rad høgare i kartet og
+                     difor 16 pikslar lågare bilete), bak figuren
+      lag="fram":    den fremre kanten, framsida, bibelen, kjeglen og søyla, framfor figuren
+      lag="himling": lydhimlingen, over alt (over: true), så han rammar inn hovudet."""
+    W, H = 3 * 16 + 8, 104
     L = Lerret(W, H)
+    S_ = Lerret(W, H)                               # lydhimlingen for seg
     cx = 17
     yb = H - 2
-    def oval(ox, oy, rx, ry, fn):
+    def oval(M, ox, oy, rx, ry, fn):
         for y in range(int(oy - ry) - 1, int(oy + ry) + 2):
             for x in range(int(ox - rx) - 1, int(ox + rx) + 2):
                 d = ((x + 0.5 - ox) / rx) ** 2 + ((y + 0.5 - oy) / ry) ** 2
                 if d <= 1: fn(x, y, d)
     yk = H - 70                                     # midt i korga (kanten er ein oval rundt denne lina)
     yu = H - 46                                     # nedre kant på framsida av korga
-    # trappa: ein repos i same høgd som korggolvet, så fem trinn ned mot høgre, sett skrått ovanfrå:
-    # brei, lys tråflate (8 pikslar høg, 10 brei), kort, mørk framside (3) og vangen under
-    trinn = [(26, H - 63)] + [(34 + 8 * i, H - 54 + round(9.5 * i)) for i in range(5)]
-    T = Lerret(W, H)                                # trinna og vangen: eit flatt lag under den som går i trappa
-    for i, (tx, ty) in enumerate(trinn):
-        for x in range(tx - (4 if i == 0 else 0), tx + 10):                     # reposen går inn under kanten
-            for y in range(ty, ty + 8): T.p(x, y, "p" if y == ty else "q" if x < tx + 7 else "C")   # tråflata
-            for y in range(ty + 8, ty + 11): T.p(x, y, "A" if y < ty + 10 else "a")              # framsida
-            for y in range(ty + 11, yb + 1):
-                T.p(x, y, "t" if y == yb else "A" if x >= tx + 8 else "T" if (y - ty) % 9 else "c")
-        T.p(tx, ty, "U")
-    for tx, ty in trinn[1:]:                                                   # stolpar på framkanten
-        for y in range(ty + 2, ty + 9): L.p(tx + 8, y, "t" if y > ty + 2 else "Y")
-    for x in range(cx + 12, 80):                                               # handlista, frå korgkanten
-        y = yk + 1 + round((x - cx - 12) * 50 / 47)
-        if y < yb - 6: L.p(x, y, "y"); L.p(x, y + 1, "Z")
-    for y in range(H - 18, yb + 1): L.p(76, y, "U"); L.p(77, y, "t")           # stolpen nedst
+    # opninga i veggen bak korga: mørk, boga, med karm og ein gyllen sluttstein
+    for y in range(H - 92, yk + 1):
+        for x in range(cx - 8, cx + 8):
+            dx = abs(x + 0.5 - cx)
+            if y < H - 86 and ((y - (H - 86)) ** 2 / 36 + dx ** 2 / 64) > 1: continue
+            L.p(x, y, "U" if dx > 6.5 and x < cx else "t" if dx > 6.5 else "N" if y > H - 84 else "a")
+    _stempel(L, cx - 1, H - 93, ["yZ", "YZ"])
     # søyla: kjem ut under botnen av korga og står midt under, øvst i skugge, med fot
     for y in range(yu + 8, yb - 3):
         sk = y < yu + 13
         L.p(cx - 2, y, "T" if sk else "U"); L.p(cx - 1, y, "t" if sk else "T"); L.p(cx, y, "t" if sk else "T"); L.p(cx + 1, y, "a" if sk else "t")
-    for y in (H - 24,):
-        for x in range(cx - 3, cx + 3): L.p(x, y, "Y" if x < cx + 1 else "Z")
-    oval(cx, yb - 2, 6, 2.5, lambda x, y, d: L.p(x, y, "U" if y < yb - 2 else "T"))
-    # botnen av korga: ein kjegle som smalnar inn mot søyla, sett skrått ovanfrå, mest i skugge,
-    # med ein gyllen dropp der søyla tek imot
+    for x in range(cx - 3, cx + 3): L.p(x, H - 24, "Y" if x < cx + 1 else "Z")
+    oval(L, cx, yb - 2, 6, 2.5, lambda x, y, d: L.p(x, y, "U" if y < yb - 2 else "T"))
+    # botnen av korga: ein kjegle som smalnar inn mot søyla, mest i skugge, med ein gyllen dropp
     for j, y in enumerate(range(yu + 1, yu + 9)):
         b = 13 - round(j * 1.3)
         for x in range(cx - b, cx + b): L.p(x, y, "T" if x < cx - b + 3 and j < 3 else "t" if x < cx + b - 2 else "a")
     for x in range(cx - 13, cx + 13): L.p(x, yu + 1, "A")
     L.p(cx - 1, yu + 9, "Y"); L.p(cx, yu + 9, "Z")
-    # framsida av korga: lang som i originalen, tre flater, evangelistar i bogefelt, preikestolkledet,
-    # og ei lita dør inn frå reposen til høgre
+    # framsida av korga: lang, tre flater, evangelistar i bogefelt, fyllingar nedst, preikestolkledet
     for y in range(yk, yu):
         for x in range(cx - 13, cx + 13): L.p(x, y, "U" if x < cx - 8 else "T" if x < cx + 8 else "t")
-    for x in range(cx - 13, cx + 13): L.p(x, yu - 1, "Y"); L.p(x, yu, "Z")
-    for x in range(cx - 13, cx + 13): L.p(x, yu - 9, "Y")                    # list midt på
+    for x in range(cx - 13, cx + 13): L.p(x, yu - 1, "Y"); L.p(x, yu, "Z"); L.p(x, yu - 9, "Y")
     for fx in (cx - 7, cx + 3):
         for y in range(yk + 4, yu - 11):
             for x in range(fx, fx + 4): L.p(x, y, "B" if y < yk + 8 else "b")
         for y in range(yk + 4, yu - 11): L.p(fx - 1, y, "Y"); L.p(fx + 4, y, "Z")
         _stempel(L, fx + 1, yk + 7, [".h", "EE", "ER", "Rr", "Rr"])
-        for y in range(yu - 7, yu - 2):                                         # fyllingar nedst
+        for y in range(yu - 7, yu - 2):
             for x in range(fx, fx + 4): L.p(x, y, "U" if fx < cx else "T")
     for y in range(yk + 4, yu - 2): L.p(cx - 12, y, "E"); L.p(cx + 11, y, "r")
     for x in range(cx - 1, cx + 1):
         for y in range(yk + 2, yk + 14): L.p(x, y, "E" if x < cx else "R")
     for x in range(cx - 2, cx + 2): L.p(x, yk + 14, "Y" if x % 2 else "Z")
     L.p(cx - 1, yk + 6, "Y"); L.p(cx, yk + 6, "Y"); L.p(cx - 1, yk + 5, "Y"); L.p(cx - 1, yk + 7, "Y")
-    for y in range(yk - 2, yk + 6): L.p(cx + 12, y, "y" if y < yk else "Z")     # dørstolpe mot reposen
     # korga sett ovanfrå: gyllen kant og golvet inni (bak) og den fremre kanten (fram)
-    oval(cx, yk, 13, 5.5, lambda x, y, d: L.p(x, y, ("Y" if y < yk else "y") if d > 0.62 else "a" if y < yk - 1 else "A"))
-    # ryggbrettet langs veggen, med ei due i eit felt
-    for y in range(H - 88, yk - 4):
-        for x in range(cx - 4, cx + 4): L.p(x, y, "T" if x > cx - 4 else "U")
-        L.p(cx - 5, y, "y"); L.p(cx + 4, y, "Z")
-    _stempel(L, cx - 3, H - 85, ["..w...", ".wwW..", "wwwWWw", "..wW.."])
-    # lydhimlingen: ein kvelva kuppel sett ovanfrå med volum (lys oppe til venstre, mørk nede til
-    # høgre), gylne ribber, krone med kule på toppen, gyllen gesims langs kanten, raud lambrekin med
-    # bogar og gylne duskar under, og skugge på ryggbrettet under himlingen
-    oc, oy = cx, H - 96
-    for y in range(oy + 8, oy + 14):
-        for x in range(cx - 4, cx + 4): L.p(x, y, "a" if y < oy + 11 else "t")
-    def kuppel(x, y, d):
-        lx, ly = (x + 0.5 - oc) / 15, (y + 0.5 - oy) / 7.5
-        lys = -lx * 0.7 - ly * 0.8 + (1 - d) * 1.0                               # høgast og lysast oppe til venstre
-        c = "E" if lys > 0.9 else "R" if lys > 0.0 else "r" if lys > -0.7 else "J"
-        if (x - oc) % 5 == 0 and 0.12 < d < 0.9: c = "y" if lys > 0.6 else "Y" if lys > -0.2 else "Z"   # ribber
-        L.p(x, y, c)
-    oval(oc, oy, 15, 7.5, kuppel)
-    for (x, y) in [(oc - 7, oy - 4), (oc - 6, oy - 4), (oc - 7, oy - 3)]: L.p(x, y, "O")                 # glans
-    lagt = {}
-    for x in range(oc - 15, oc + 16):                                          # nedre kant på ovalen
-        for y in range(oy + 7, oy - 8, -1):
-            if L.get(x, y) not in ".": lagt[x] = y; break
-    for x, yl in lagt.items():
-        L.p(x, yl + 1, "y"); L.p(x, yl + 2, "Y" if x < oc + 6 else "Z")        # gesimsen
-        boge = 1 + round(math.sin(math.pi * ((x - oc) % 6) / 6))
-        for k in range(boge + 1): L.p(x, yl + 3 + k, "r" if k < boge else "Y")   # lambrekin med bogar og gullkant
-        if (x - oc) % 6 == 0: L.p(x, yl + 4 + boge, "y"); L.p(x, yl + 5 + boge, "Y"); L.p(x, yl + 6 + boge, "Z")   # duskar
-    _stempel(L, oc - 2, oy - 9, ["..y..", ".yYZ.", "..Z..", ".yYZ.", "yYYZZ", ".YZZ."])   # krona: kross og kule
+    oval(L, cx, yk, 13, 5.5, lambda x, y, d: L.p(x, y, ("Y" if y < yk else "y") if d > 0.62 else "a" if y < yk - 1 else "A"))
     # bibelen på ei raud pute på den fremre kanten
     for x in range(cx - 5, cx + 4): L.p(x, yk + 4, "E" if x < cx else "R")
     for x in range(cx - 4, cx + 3): L.p(x, yk + 2, "w" if x < cx else "W"); L.p(x, yk + 3, "r")
     L.p(cx, yk + 2, "r")
+    # lydhimlingen: kvelva kuppel med volum (lys oppe til venstre), gylne ribber, krone, gesims,
+    # raud lambrekin med bogar og duskar. Han ligg høgt over korga, så hovudet til den som står der,
+    # syner under han.
+    oc, oy = cx, H - 98
+    def kuppel(x, y, d):
+        lx, ly = (x + 0.5 - oc) / 15, (y + 0.5 - oy) / 6.5
+        lys = -lx * 0.7 - ly * 0.8 + (1 - d) * 1.0
+        c = "E" if lys > 0.9 else "R" if lys > 0.0 else "r" if lys > -0.7 else "J"
+        if (x - oc) % 5 == 0 and 0.12 < d < 0.9: c = "y" if lys > 0.6 else "Y" if lys > -0.2 else "Z"
+        S_.p(x, y, c)
+    oval(S_, oc, oy, 15, 6.5, kuppel)
+    for (x, y) in [(oc - 7, oy - 3), (oc - 6, oy - 3), (oc - 7, oy - 2)]: S_.p(x, y, "O")
+    lagt = {}
+    for x in range(oc - 15, oc + 16):
+        for y in range(oy + 7, oy - 8, -1):
+            if S_.get(x, y) not in ".": lagt[x] = y; break
+    for x, yl in lagt.items():
+        S_.p(x, yl + 1, "y"); S_.p(x, yl + 2, "Y" if x < oc + 6 else "Z")
+        boge = 1 + round(math.sin(math.pi * ((x - oc) % 6) / 6))
+        for k in range(boge + 1): S_.p(x, yl + 3 + k, "r" if k < boge else "Y")
+        if (x - oc) % 6 == 0: S_.p(x, yl + 4 + boge, "y"); S_.p(x, yl + 5 + boge, "Y"); S_.p(x, yl + 6 + boge, "Z")
+    _stempel(S_, oc - 2, oy - 6, [".yYZ.", "..Z..", "yYYZZ", ".YZZ."])
+    if lag == "himling":
+        omriss(S_)
+        return S_
     grense = yk                                     # over og på denne lina: laget bak
-    if lag == "trapp":
-        omriss(T)
-        return T
     if lag == "bak":
         B = Lerret(W, H - 16)
         for y in range(0, grense + 1):
@@ -853,6 +833,11 @@ def skipvegg(side):
             L.p(x, y, c)
     for x in range(a - 1, b + 2):
         L.p(x, 12, "y"); L.p(x, 13, "Y"); L.p(x, 14, "Z"); L.p(x, H - 6, "Y"); L.p(x, H - 5, "Z")
+    if side == "v":                                                          # døra inn til preikestolen i pilasteren
+        for y in range(46, H - 6):
+            for x in range(a + 1, b):
+                L.p(x, y, "Y" if y == 46 or x in (a + 1, b - 1) else "N" if y > 49 else "a")
+        L.p((a + b) // 2, 45, "y")
     for j in range(8):                                                       # bogen: raudt band med gull
         bx = (b + 1 + j) if side == "v" else (a - 1 - j)
         for y in range(4, 12 - j // 2):
@@ -2185,7 +2170,7 @@ INVENTAR = {
     "kiste": kiste, "kiste-open": lambda: kiste(True),
     "rokk": rokk, "korvegg": korvegg, "kyrkjebenk-h": lambda: kyrkjebenk("h"), "kyrkjebenk-v": lambda: kyrkjebenk("v"), "kyrkjebenk-golv": kyrkjebenk_golv,
     **{f"kyrkjebenk-{d}{v}": (lambda d=d, v=v: kyrkjebenk(d, variant=v - 1)) for d in "hv" for v in (2, 3, 4, 5)},
-    "dopefont": dopefont, "altartavle": altartavle, "altarring": altarring, "preikestol": preikestol, "preikestol-bak": lambda: preikestol("bak"), "preikestol-trapp": lambda: preikestol("trapp"), "lysekrone": lysekrone,
+    "dopefont": dopefont, "altartavle": altartavle, "altarring": altarring, "preikestol": preikestol, "preikestol-bak": lambda: preikestol("bak"), "preikestol-himling": lambda: preikestol("himling"), "lysekrone": lysekrone,
     "skipvegg-v": lambda: skipvegg("v"), "skipvegg-h": lambda: skipvegg("h"), "korskilje": korskilje, "kyrkjeskip": kyrkjeskip,
     "fattigblokk": fattigblokk, "jernomn": jernomn,
     "epitaf-v": lambda: epitaf("v"), "epitaf-h": lambda: epitaf("h"),

@@ -1324,7 +1324,7 @@ window.Motor = (function () {
       if (c === "M" || c === "U" || c === "Z") { const st = Pikslar.stup(terrengfelt(), x, y); g.drawImage(st, sx, sy); if (st.ope) luftRute(sx, sy, st.ope); continue; }
       // Veggar med vegg eller dør under seg er sidevegger: dei blir teikna ovanfrå.
       const under = y + 1 < kart.h ? kart.fliser[y + 1][x] : null;
-      const topp = "XcG".includes(c) && (under === null || "XcGEØøÖö ".includes(under));   // òg over sidevindauge og tomrom (« ») utanfor huset
+      const topp = "XcG".includes(c) && (under === null || "XcGEØøÖöĜ ".includes(under));   // òg over sidevindauge og tomrom (« ») utanfor huset
       let fk = topp ? c + "t" : c;
       if (c === "R") { const over = y > 0 && kart.fliser[y - 1][x] === "R"; fk = !over && under !== "R" ? "Rtb" : !over ? "Rt" : under !== "R" ? "Rb" : "R"; }
       if (erKant(c, y) || erSidekant(c, x, y)) {
@@ -1461,7 +1461,10 @@ window.Motor = (function () {
       if (img) figurar.push({ y: b.over ? 999 + b.y / 1000 : b.flat ? -1 : b.y + b.h - 1 + (fram ? 0.03 : 0.01), by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id, b }); }
     // Den som sit eller ligg, blir teikna over inventaret på same rad (benken, senga). Den som sit
     // på eit sete, blir sortert etter den nedste rada til setet (ein ståande benk er fleire fliser).
-    const djupn = f => (f.sete ? f.sete.b.y + f.sete.b.h - 1 : f.y) + (f.pose && f.pose !== "knele" && f.pose !== "peike" ? 0.02 : 0);
+    // kart.def.lag: { "x,y": djupn } gir den som står på ruta ein annan plass i teikneorden (til dømes i
+    // korga på preikestolen: etter veggen og laget bak, før framsida).
+    const lagVed = f => f.sp && kart.def.lag && kart.def.lag[Math.round(f.x) + "," + Math.round(f.y)];
+    const djupn = f => lagVed(f) || (f.sete ? f.sete.b.y + f.sete.b.h - 1 : f.y) + (f.pose && f.pose !== "knele" && f.pose !== "peike" ? 0.02 : 0);
     figurar.sort((a, b) => djupn(a) - djupn(b));
     for (const f of figurar) {
       if (f.mur) { const mx = Math.round((f.x + ox) * S), my = Math.round((Math.floor(f.y) + oy) * S) - (f.loft || 6); g.drawImage(f.mur, mx, my); maske(f.mur, mx, my, true); continue; }
@@ -1489,6 +1492,9 @@ window.Motor = (function () {
         if (dorAnim && f.by === dorAnim.ty) teiknDor(no, ox, oy);
         for (const [rx, ry] of Pikslar.ROYK[f.id] || []) Pikslar.royk(g, bx + rx, by - f.bygg.height + ry, no);
         continue; }
+      // Gang inni ein vegg (kart.def.skjult: ["x,y", …], flisa «Ĝ»): den som er der, blir ikkje teikna
+      // (kameraet følgjer han likevel), og kjem til syne att når han er ute av gangen.
+      if (f.sp && kart.def.skjult && kart.def.skjult.includes(Math.round(f.x) + "," + Math.round(f.y))) continue;
       // Den som sit på eit sete, blir lyft opp på det (hogd), og setet har sin eigen skugge.
       const sx = Math.round((f.x + ox) * S) + hogdVed(f.x, f.y, 1), sy = Math.round((f.y + oy) * S) + (f.sete ? SITJE_DY[f.dir] - f.sete.s.hogd : 0) - hogdVed(f.x, f.y);
       // Eit vesen står midt på flisa med botnen på bakken, og gyng litt opp og ned.
