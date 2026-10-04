@@ -71,6 +71,34 @@ f.onload = async () => {
   const iStolen = iOpninga && M.spelar.x === 1 && M.spelar.y === 12;
   if (!iStolen) ok = false;
   ut.push(`${iStolen ? "OK" : "FEIL"}: Ivar gjekk inn i veggen frå koret, skjult gjennom gangen, inn i døropninga og ned i preikestolen (${M.spelar.x},${M.spelar.y})`);
+  // Midt i steget inn i døra (x 4,5): muren dekkjer den delen av Ivar som er over gangen, resten syner.
+  // Pikslane til Ivar blir talde ved å samanlikne lerretet med eit der ruta han står på òg er skjult
+  // (då er han heilt borte), både midt i steget og når han står heilt ute på (5,11). Berre pikslar som
+  // er like i dei to skjulte bileta tel. Tida og tilfeldige tal står stille medan bileta blir tekne, så
+  // lys, støv og folk ikkje endrar seg.
+  {
+    const lerret = d.getElementById("rpg-lerret"), cx = lerret.getContext("2d");
+    const bilete = async () => { await vent(120); return cx.getImageData(0, 0, lerret.width, lerret.height).data; };
+    const ulik = (p, q, i) => Math.abs(p[i] - q[i]) + Math.abs(p[i + 1] - q[i + 1]) + Math.abs(p[i + 2] - q[i + 2]) > 12;
+    const gml = D.skjult;
+    const synlege = async x => {
+      Object.assign(M.spelar, { x, y: 11, fx: x, fy: 11, dir: 2 }); await vent(600);
+      const ekteNo = w.performance.now, ekteTilf = w.Math.random, fast = ekteNo.call(w.performance);
+      w.performance.now = () => fast; w.Math.random = () => 0.5;
+      D.skjult = gml.concat(["5,11"]); const b1 = await bilete();
+      D.skjult = gml; const a = await bilete();
+      D.skjult = gml.concat(["5,11"]); const b2 = await bilete();
+      D.skjult = gml; w.performance.now = ekteNo; w.Math.random = ekteTilf;
+      let n = 0;
+      for (let i = 0; i < a.length; i += 4) if (!ulik(b1, b2, i) && ulik(a, b1, i)) n++;
+      return n;
+    };
+    const heil = await synlege(5), del = await synlege(4.5);
+    const delvis = heil > 40 && del > heil * 0.15 && del < heil * 0.85;
+    if (!delvis) ok = false;
+    ut.push(`${delvis ? "OK" : "FEIL"}: midt i steget inn i døra syner ${del} av ${heil} pikslar av Ivar (resten er bak muren)`);
+    M.plasser(1, 12, 0); await vent(300);
+  }
   // Z mot bibelen i preikestolen, og mot klokketauet i tårnet: hendinga går, og teksten kjem.
   const tekst = () => [...d.querySelectorAll("#rpg-tale, #rpg-fort")].filter(e => !e.hidden).map(e => e.textContent).join(" ");
   const trykkGjennom = async (finn, kvar) => {

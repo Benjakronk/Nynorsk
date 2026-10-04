@@ -1477,7 +1477,9 @@ window.Motor = (function () {
     const lagVed = f => f.sp && kart.def.lag && kart.def.lag[Math.round(f.x) + "," + Math.round(f.y)];
     const djupn = f => lagVed(f) || (f.sete ? f.sete.b.y + f.sete.b.h - 1 : f.y) + (f.pose && f.pose !== "knele" && f.pose !== "peike" ? 0.02 : 0);
     figurar.sort((a, b) => djupn(a) - djupn(b));
+    let klipt = false;                                   // klippet for ein figur i ein gang i muren (sjå under)
     for (const f of figurar) {
+      if (klipt) { g.restore(); if (figMaske) fg.restore(); klipt = false; }
       if (f.mur) { const mx = Math.round((f.x + ox) * S), my = Math.round((Math.floor(f.y) + oy) * S) - (f.loft || 6); g.drawImage(f.mur, mx, my); maske(f.mur, mx, my, true); continue; }
       if (f.natur) { const nx = Math.round((f.x + ox) * S) + f.natur.x, ny = Math.round(((f.rad ?? Math.floor(f.y)) + oy) * S) + f.natur.y;
         if (f.natur.slag) { g.save(); g.globalAlpha = 0.28; g.drawImage(skuggeAv(f.natur.img), nx + 4, ny + 3); g.restore(); }
@@ -1503,11 +1505,20 @@ window.Motor = (function () {
         if (dorAnim && f.by === dorAnim.ty) teiknDor(no, ox, oy);
         for (const [rx, ry] of Pikslar.ROYK[f.id] || []) Pikslar.royk(g, bx + rx, by - f.bygg.height + ry, no);
         continue; }
-      // Gang inni ein vegg (kart.def.skjult: ["x,y", …], flisa «Ĝ»): den som er der, blir ikkje teikna
-      // (kameraet følgjer han likevel), og kjem til syne att når han er ute av gangen.
-      // Heilt skjult så lenge nokon del av figuren er i gangen (òg midt i steget ut), så han ikkje syner
-      // halvvegs over muren.
-      if (f.sp && kart.def.skjult && [Math.floor(f.x), Math.ceil(f.x)].some(gx => [Math.floor(f.y), Math.ceil(f.y)].some(gy => kart.def.skjult.includes(gx + "," + gy)))) continue;
+      // Gang inni ein vegg (kart.def.skjult: ["x,y", …], flisa «Ĝ»): muren dekkjer figuren der. Den delen
+      // av figuren som er over ei skjult rute (og opp over ho, der hovudet er), blir klipt bort, resten
+      // blir teikna som vanleg. Slik glir han inn i muren og ut att, som bak noko som overlappar han,
+      // utan å syne over den kvite veggen. Kameraet følgjer han likevel.
+      const gang = f.sp && kart.def.skjult ? [Math.floor(f.x), Math.ceil(f.x)].flatMap(gx => [...new Set([Math.floor(f.y), Math.ceil(f.y)])].map(gy => [gx, gy])).filter(([gx, gy], i, a) => kart.def.skjult.includes(gx + "," + gy) && a.findIndex(([x2, y2]) => x2 === gx && y2 === gy) === i) : [];
+      if (gang.length) {
+        const kdx = hogdVed(f.x, f.y, 1);                // klippet følgjer figuren når han er flytt sidelengs (hogd)
+        for (const c of figMaske ? [g, fg] : [g]) {
+          c.save(); c.beginPath(); c.rect(0, 0, LW, LH);
+          for (const [gx, gy] of gang) { const x0 = Math.round((gx + ox) * S) + kdx, y1 = Math.round((gy + 1 + oy) * S); c.rect(x0, y1 - 3 * S, Math.round((gx + 1 + ox) * S) + kdx - x0, 3 * S); }
+          c.clip("evenodd");
+        }
+        klipt = true;
+      }
       // Den som sit på eit sete, blir lyft opp på det (hogd), og setet har sin eigen skugge.
       const sx = Math.round((f.x + ox) * S) + hogdVed(f.x, f.y, 1), sy = Math.round((f.y + oy) * S) + (f.sete ? SITJE_DY[f.dir] - f.sete.s.hogd : 0) - hogdVed(f.x, f.y);
       // Eit vesen står midt på flisa med botnen på bakken, og gyng litt opp og ned.
@@ -1530,6 +1541,7 @@ window.Motor = (function () {
       const bilde = pose ? pose[f.dir] : f.kjensle && f.sp.kjensle && f.sp.kjensle[f.kjensle] ? f.sp.kjensle[f.kjensle] : f.sp.rammer[f.dir][f.steg];
       g.drawImage(bilde, sx, sy - FOT); maske(bilde, sx, sy - FOT);
     }
+    if (klipt) { g.restore(); if (figMaske) fg.restore(); }
     // Silhuett av spelaren (eller følgjet) bak eit hus, berre der huset har «silhuett: true» i kartet
     // (til spesielle høve, til dømes ein stad der ein må gå bak noko for å finne ein ting).
     for (const f of figurar) {

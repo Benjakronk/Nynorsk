@@ -2221,3 +2221,18 @@ same måte, uansett kven som tek over.
   firkant: avrunda.
 - **Etter:** `forhand/portrett5-ivar.png` (referansane, runde 73 og no, med alle kjenslene) og
   `forhand/skjerm/portrett5-taleboks.png` (nøytral, trist og glad i spelet).
+
+## Runde 80: Ivar glir inn i muren til preikestolen
+
+- **Frå brukaren:** Ivar vart borte med eitt når han gjekk frå koret mot preikestolen. Han skulle gå
+  vanleg og gli inn i veggen, som bak noko som overlappar han.
+- **Før:** etter runde 74 vart heile figuren skjult så snart nokon del av han var over ei rute i `skjult`.
+- **No:** `skjult` tyder «muren dekkjer figuren her». motor.js klipper bort den delen av figuren som er
+  over ei skjult rute (og tre fliser opp, så hovudet òg er med), og teiknar resten som vanleg. Klippet
+  følgjer sideforskyvinga frå `hogd` og gjeld òg lysmaska. Frå koret glir han gradvis inn bak muren og
+  pilasteren. I den andre enden glir han ut av gangen og inn bak karmen, utan silhuett over den kvite
+  veggen. Klippet kjem berre an på kvar han er, så det er likt begge vegar.
+- **Test:** sjekk-kyrkjegang tel pikslane til Ivar midt i steget inn i døra (x 4,5) mot når han står
+  heilt ute (5,11), med tida og tilfeldige tal frosne. Han skal vere delvis synleg (102 av 249 pikslar no).
+- **Etter:** `forhand/skjerm/k62-rad.png` (x 4,7, 4,4, 2,5, 1,6, 1,2 og 1) og `forhand/skjerm/k62-naer.png`
+  (forstørra: opninga ved 1,6, 1,2 og 1, og koret ved 4,7 og 4,4).
