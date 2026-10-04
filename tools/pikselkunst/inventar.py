@@ -1164,9 +1164,19 @@ def grue():
     golvet i eldstaden syner som toppflater."""
     W, H = 16 + 8, 2 * 16 + 12
     L = Lerret(W, H)
-    for y in range(0, H - 2):
-        b = 9 if y > 16 else int(4 + y * 0.32)
-        for x in range(12 - b, 12 + b + 1): L.p(x, y, "k" if x < 12 + b * 0.3 else "x")
+    for y in range(4, H - 2):                                               # pipa, hetta og muren under
+        b = 9 if y > 16 else 4 if y < 8 else round(4.5 + (y - 8) * 0.55)    # pipestubben, så hetta som vidar seg ut
+        for x in range(12 - b, 12 + b + 1):
+            if y < 8: c = "k" if x < 11 else "8" if x < 14 else "x"         # pipa: loddrett, mørkare
+            elif y <= 16: c = "k" if x < 12 + b * 0.35 else "8" if x < 12 + b * 0.7 else "x"   # hetta skrånar opp: lys flate
+            else: c = "k" if x < 12 + b * 0.3 else "x"
+            L.p(x, y, c)
+    for x in range(8, 17): L.p(x, 7, "8")                                   # skuggekant der pipa går over i hetta
+    for y in range(0, 5):                                                   # toppen av pipa sett ovanfrå: brei kant og opning
+        for x in range(7, 18):
+            if (y in (0, 4)) and x in (7, 17): continue
+            L.p(x, y, "8" if y == 0 else "x" if y == 4 else "k" if y == 3 or x in (7, 8, 16, 17) else "N")
+    L.p(9, 1, "n"); L.p(15, 2, "n"); L.p(17, 2, "8"); L.p(17, 3, "x")
     for x in range(3, 22):                                                  # kanten på hetta: boge, sot under
         yk = 16 + round(2 * (1 - ((x - 12) / 9.5) ** 2))
         L.p(x, yk - 1, "8"); L.p(x, yk, "x"); L.p(x, yk + 1, "n")

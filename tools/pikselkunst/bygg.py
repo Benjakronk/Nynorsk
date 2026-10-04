@@ -184,14 +184,27 @@ def bislag(L, cx, y0, y1, fro):
 
 
 def steinpipe(L, px, ybot):
-    """Mura pipe av gråstein på torvtaket, med heller på toppen (hus med grue eller omn)."""
-    for y in range(1, ybot):
+    """Mura pipe av gråstein på torvtaket (hus med grue eller omn), i standardperspektivet (runde 66):
+    toppen er ei brei flate av heller sett ovanfrå med den mørke røykopninga i midten, framsida er kort
+    (6 pikslar steinlag), og torva legg seg rundt foten. ybot er der foten står i taket."""
+    ytopp = ybot - 13
+    for y in range(ytopp + 4, ybot - 3):                                     # framsida: steinlag
         for x in range(px, px + 6):
-            rad = y // 3
-            fuge = y % 3 == 2 or (x - px + (rad % 2) * 3) % 6 == 0
+            rad = (y - ytopp) // 3
+            fuge = (y - ytopp) % 3 == 0 or (x - px + (rad % 2) * 3) % 6 == 0
             L.p(x, y, "B" if fuge else "D" if x < px + 2 else "C")
-    L.rad(0, px - 1, px + 6, "D"); L.rad(1, px - 1, px + 6, "B")          # helle på toppen
-    L.p(px + 2, 0, "B"); L.p(px + 3, 0, "B")                                # røykopninga
+        L.p(px + 5, y, "B")
+    for y in range(ytopp, ytopp + 4):                                        # toppen sett ovanfrå
+        for x in range(px - 1, px + 7):
+            kant = y in (ytopp, ytopp + 3) or x in (px - 1, px, px + 5, px + 6)
+            L.p(x, y, ("C" if y == ytopp else "D") if kant else "A")
+    L.p(px + 6, ytopp + 1, "C"); L.p(px + 6, ytopp + 2, "C"); L.p(px - 1, ytopp, "."); L.p(px + 6, ytopp, ".")
+    L.rad(ytopp + 4, px - 1, px + 6, "B")                                    # skugge under hellekanten
+    L.rad(ytopp - 1, px, px + 5, "1")                                        # mørk kant mot taket bak
+    for y in range(ytopp + 1, ybot - 3): L.p(px - 2 if y < ytopp + 4 else px - 1, y, "1"); L.p(px + 7 if y < ytopp + 4 else px + 6, y, "1")
+    for i, x in enumerate(range(px - 2, px + 8)):                           # torva rundt foten
+        for y in range(ybot - 3 - (1 if i % 3 == 1 else 0), ybot - 1): L.p(x, y, "4" if y == ybot - 3 - (1 if i % 3 == 1 else 0) else "2")
+        L.p(x, ybot - 1, "1")                                                # skugge der torva møter steinen
 
 
 def stove(bf, hf, dorar, vindauge_pos, fro=1, staande=False, dobbel=False, bakdor=(), pipe=None):
@@ -220,7 +233,7 @@ def stove(bf, hf, dorar, vindauge_pos, fro=1, staande=False, dobbel=False, bakdo
     for i in dorar: dor(L, UT_X + i * 16 + 2 - (1 if dobbel else 0), H - 3 - 13, 13, dobbel)
     torvtak(L, 1, W - 2, 3, vegg_y0 - 6, fro)
     vindskier(L, 1, 3, vegg_y0 - 3, True); vindskier(L, W - 3, 3, vegg_y0 - 3, False)
-    if pipe is not None: steinpipe(L, UT_X + pipe * 16 + 5, 14)
+    if pipe is not None: steinpipe(L, UT_X + pipe * 16 + 5, 18)             # står litt nede på taket, torva rundt
     omriss(L)
     return L
 
@@ -428,11 +441,13 @@ def kvitthus(bf, hf, dorar, vindauge_pos, piper, fro=6):
         dor(L, UT_X + i * 16 + 2, H - 3 - 13, 13)
         L.rad(H - 3 - 16, UT_X + i * 16, UT_X + i * 16 + 15, "U"); L.rad(H - 3 - 15, UT_X + i * 16, UT_X + i * 16 + 15, "S")
     skifertak(L, 1, W - 2, 3, vegg_y0 - 3, fro)
-    for i in piper:
+    for i in piper:                                     # teglpiper: toppen sett ovanfrå med opning, kort framside
         px = UT_X + i * 16 + 5
-        for y in range(0, 9):
-            for x in range(px, px + 5): L.p(x, y, "I" if x < px + 2 else "H")
-        L.rad(0, px - 1, px + 5, "T")
+        for y in range(3, 9):
+            for x in range(px, px + 5): L.p(x, y, "T" if (y - 3) % 2 == 1 and (x + y) % 4 == 0 else "I" if x < px + 2 else "H")
+        for y in range(0, 3):
+            for x in range(px - 1, px + 6): L.p(x, y, "S" if 0 < y < 2 and px < x < px + 4 else "I" if y < 2 and x < px + 1 else "T" if y == 2 else "H")
+        L.p(px - 1, 0, "."); L.p(px + 5, 0, ".")
     omriss(L)
     return L
 

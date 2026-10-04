@@ -1786,8 +1786,8 @@ window.Pikslar = (function () {
   /* Røyk frå pipene: kvar pipe har ein opning (pikslar i husbiletet). Røyken stig, veks og
      driv med vinden mot høgre, i same takt som elden (150 ms per bilete). */
   const ROYK = {
-    "stove": [[28, 0]], "seter": [[28, 0]], "ekset-hovud": [[76, 0]],
-    "prestegard": [[43, 0], [107, 0]],
+    "stove": [[28, 7]], "seter": [[28, 7]], "ekset-hovud": [[76, 7]],      // opninga sett ovanfrå (runde 66)
+    "prestegard": [[43, 2], [107, 2]],
   };
   function royk(g, x, y, t) {
     const k = Math.floor(t / 150);

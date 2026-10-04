@@ -2009,3 +2009,21 @@ same måte, uansett kven som tek over.
 - **Vurdert:** `forhand/skjerm/r66-for-etter.png` (Åsen, utmarka ved brua, utmarka 22,14) og
   `r66-bauta.png` (gammal og ny bauta).
 - **Står att:** `pix.py sjekk` åtvarar om 8 % einsame pikslar (runer, lav og lyng).
+
+## Runde 67: pipene i standardperspektivet
+
+- **Frå brukaren:** Pipene må òg få rett perspektiv.
+- **Før:** pipa over grua var eit høgt, kvitt tårn sett rett framanfrå, og steinpipene på torvtaka var ei
+  stripe stein frå mønet og ned med ei tynn helle øvst. Teglpipene på prestegarden likeins.
+- **Grua** (`inventar.py`, òg i Nedre Hovde): pipa er ein kort stubbe med toppen sett ovanfrå (brei kant
+  og mørk opning), og hetta under vidar seg ut som ei skrå, lys flate. Elden står der han stod.
+- **Steinpipene** (`steinpipe()` i bygg.py: stova, setra og Ekset): toppen er ei brei flate av heller med
+  den mørke røykopninga, framsida er 6 pikslar steinlag, pipa står litt nede på taket med ein krans av
+  torv rundt foten og ein mørk kant mot taket. **Teglpipene** på prestegarden har òg toppen med opning
+  sett ovanfrå og kort framside.
+- **Røyken:** `ROYK` i pikslar.js er flytt ned til opningane (`[28, 7]` på torvtaka, `[43, 2]` og
+  `[107, 2]` på prestegarden), så røyken kjem ut av opninga.
+- **Rundar:** (1) toppen sett ovanfrå på alle pipene. (2) Steinpipa stod oppe ved mønet utan å feste
+  seg: flytt ned på taket med torvkrans og mørk kant. Pipetoppen på grua fekk brei kant.
+- **Før og etter:** `forhand/skjerm/pr-samanlikning-pipe-ute.png` (Åsen), `pr-for-bygda-spel.png` og
+  `pr-bygda-spel.png` (prestegarden), `pr-samanlikning-grue.png` (grua).
