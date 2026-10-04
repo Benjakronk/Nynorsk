@@ -1,7 +1,7 @@
 # namn: inne-kornbinge
 # type: bygg
 # ut: bilete/spel/bygg/inne-kornbinge.png
-# storleik: 56x38
+# storleik: 56x31
 palett:
   . = -
   o = #0a0514    omriss
@@ -21,40 +21,33 @@ palett:
   D = #d8c078    stripe
   X = #5a5a6a    jern lys
 bilete:
+  .....oooooooooooooooo...............ooooooooooooooo.....
   ....oqqqqqqqqqqqqqqqqo.............oqqqqqqqqqqqqqqqo....
   ....oCCcccccccccccccAo.............oCCccccccccccccAo....
-  ....oCCcccccccccccccAo.............oCCccccccccccccAo....
-  ....oCCcccccccccccccAo.............oCCccccccccccccAo....
   ....oCCccAAAAAccccccAo.............oCCccAAAAAcccccAo....
-  ....oCCcccccccccccccAo.............oCCccccccccccccAo....
-  ....oCCXcccccccccccXAo.............oCCXccccccccccXAo....
-  ....oCCcccccccccccccAo.............oCCccccccccccccAo....
-  ...ooaaaaaaaaaaaaaaaaoooooooooooooooaaaaaaaaaaaaaaaoo...
-  ..oqcAaaaaaaaaaaaaaacAqqqqqqqqqqqqqcAaaaaaaaaaaTaaqcAo..
-  ..oCcAAAAAAAAAAAAAAAcACCCCCCCCCCCCCcAAAAAAAAAAUAAACcAo..
-  ..oCcAdddDDDDdddddddcACCCCcccccCCCCcAkkkwwwkkUkkkkCcAo..
-  ..oCcAdDDDDDDdddddddcAccccccccccccccAkwwwTUUTkkkkkCcAo..
-  ..oCcAdDDZdDddddddddcACCCCCCCCCCCCCcAkwwwwttkkkkkkCcAo..
-  ..oCcAddDDZdZddZddddcACCCCCCCCCCCCCcAkkwwwkkkkkkkkCcAo..
-  ..oCcAdddddddZZZZZZZcACCCCCCCCCCCCCcAkkkkkkkxxxxxxCcAo..
+  ...ooCCXcccccccccccXAoooooooooooooooCCXccccccccccXAoo...
+  ..oCCaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCCaaaaaaaaaaaaaaaCCo..
+  ..oqCcaaaaaaaaaaaaaaCcCCCCCCCCCCCCCCcaaaaaaaaaaaaaqCco..
+  ..oqCcAAAAAAAAAAAAAACcCCCCCCCCCCCCCCcAAAAAAAAAAAAAqCco..
+  ..oqCcddddddddddddddCcCCCCCCCCCCCCCCckkkkkkkkkkkkkqCco..
+  ..oqCcddddDDDdddddddCccccccccccccccCckkkkwwkkkkTkkqCco..
+  ..oqCcddDDDZddddddddCcCCCCCCCCCCCCCCckkwwwwkkkUkkkqCco..
+  ..oqCcdDDZdDDdddddddCcCCCCcccccCCCCCckwwwwwkkUkkkkqCco..
+  ..oqCcdDDDDDddddddddCcCCCCCCCCCCCCCCckwwwTUUTkkkkkqCco..
+  ..oqCcddDDDZZdddddddCccccccccccccccCckkwwtttkkkkkkqCco..
+  ..oqCcddddZddZdZddddCcCCCCCCCXXCCCCCckkkkkkkkkkkkkqCco..
+  ..oqCcdddddZZZZZZZZZCcCCCCCCCCCCCCCCckkkkkxxxxxxxxqCco..
   ..oqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqo..
   ..oCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCo..
-  ..oCcAcccccccccccccCcAAAAAccccccccCcAcccccccccccccCcAo..
-  ..oCcAccAAcccccccccCcAccccccccccccCcAcccccAAAAAcccCcAo..
+  ..oCcAccAAcccccccccCcAAAAAccccccccCcAcccccccccccccCcAo..
   ..oCcAcccccccccccccCcAccccccccccccCcAcccccccccccccCcAo..
-  ..oCcAAAAAAAAAAAAAACcAAAAAAAAAAAAACcAAAAAAAAAAAAAACcAo..
-  ..oCcACCCCCCCCCCCCCCcACCCCCCCCCCCCCcACCCCCCCCCCCCCCcAo..
-  ..oCcAcccccccccccccCcAAAccccccccccCcAcccccccccccccCcAo..
-  ..oCcAcccccccccccccCcAccccccccccccCcAccccAAAAAcAAcCcAo..
-  ..oCcAcccccccccccAACcAccccccccccccCcAcccccccccccccCcAo..
+  ..oCcAcccccccccccccCcAcccccAAcAAAcCcAcccccccccccccCcAo..
   ..oCcAAAAAAAAAAAAAACcAAAAAAAAAAAAACcAAAAAAAAAAAAAACcAo..
   ..oCcACCCCCCCCCCCCCCcACCCCCCCCCCCCCcACCCCCCCCCCCCCCcAo..
   ..oCcAcccccccccccccCcAcccccAAcccccCcAcccccccccccccCcAo..
-  ..oCcAcccccccccccccCcAccccccccccccCcAcccccccccccccCcAo..
-  ..oCcAAAAccccccccccCcAccccccccccccCcAAAcccccccccccCcAo..
+  ..oCcAAAAccccccccccCcAccccccccccccCcAcccccccccccccCcAo..
+  ..oCcAcccccccccccccCcAcccAAcccccccCcAcccccccccccccCcAo..
   ..oCcAAAAAAAAAAAAAACcAAAAAAAAAAAAACcAAAAAAAAAAAAAACcAo..
-  ..oCcACCCCCCCCCCCCCCcACCCCCCCCCCCCCcACCCCCCCCCCCCCCcAo..
-  ..oCcAcccccccccccccCcAccccccccccccCcAcccccccccccccCcAo..
   ..oaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaao..
   ..ocAaoooooooooooooooooooooooooooooooooooooooooooocAao..
   ..ocAao..........................................ocAao..

@@ -1,10 +1,11 @@
 # namn: inne-kagge
 # type: bygg
 # ut: bilete/spel/bygg/inne-kagge.png
-# storleik: 24x24
+# storleik: 24x21
 palett:
   . = -
   o = #0a0514    omriss
+  Z = #8a5a18    gull skugge
   t = #4a2418    tre djup
   T = #7a3a22    tre brunraud
   U = #a4583a    tre lys
@@ -13,28 +14,27 @@ palett:
   c = #8a5e36    furu
   C = #b08650    furu lys
   q = #d6b070    furu lysast
+  d = #a88a48    stripe skugge
+  D = #d8c078    stripe
 bilete:
   ........................
-  ........................
   ......oooooooooooo......
-  ...oooqUtqqqqqqqUtooo...
-  ..oCAqqUtqqqqqqqUtqqAo..
-  ..oCAqCUtCCCCCCCUtqqAo..
-  ..oCAAAUtAAAAAAAUtAAAo..
-  ..oCACCUtCCCCCCCUtCCAo..
-  ..oCAccTtcccccccTtccAo..
-  .oocAccTtcccccccTtccAo..
-  oTUcAAATtAAAAAAATtAAAo..
-  ottcAccTtcccccccTtccAo..
-  .oocAAcTtcccccccTtAAAo..
-  ..ocAAATtAAAAAAATtAAAo..
-  ..ocAaattaaaaaaattaaAo..
-  ..ocAaattaaaaaaattaaAo..
-  ...oooattaaaaaaattooo...
-  ....oCCcccooooCCccco....
+  ...oooDdqqqqqqqqDdooo...
+  ..oCAqDdqqqqqqqqDdqqAo..
+  ..oCAqDdcccTtcccDdqqAo..
+  ..oCACDdCCTaatCCDdCCAo..
+  ..oCACDdCCCCCCCCDdCCAo..
+  ..ocAcDdccccccccDdccAo..
+  ..ocAcDdccccccccDdccAo..
+  .oocAcDdccccccccDdccAo..
+  oTUcAADdAAAAAAAADdAAAo..
+  ottcAAZZAAAAAAAAZZAAAo..
+  .oocAaZZAAAAAAAAZZaaAo..
+  ..ocAaZZaaaaaaaaZZaaAo..
+  ...oooZZaaaaaaaaZZooo...
+  ....oqqCCCooooqqCCCo....
+  ....occccco..occccco....
   ....oAAAAAo..oAAAAAo....
-  ....ocaocao..ocaocao....
-  ....ocaocao..ocaocao....
   ....ocaocao..ocaocao....
   ....ocaocao..ocaocao....
   .....oo.oo....oo.oo.....

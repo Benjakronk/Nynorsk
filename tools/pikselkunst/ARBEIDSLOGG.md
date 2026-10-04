@@ -1905,6 +1905,25 @@ same måte, uansett kven som tek over.
 - **Står att:** stabburet, kubbestolen frå sida, Ekset og prestegarden, kyrkja og skigarden og
   steingarden ute (rekkjefølgja i dei neste rundane).
 
+## Runde 62: stabburet i standardperspektivet (kornbingane, tønna, kaggen og sekkene)
+
+- **Research:** FF6-tilesetet «Town Interior» (`forhand/referansar/z-ff6-kister2.png`): tønna er ein stor,
+  open oval øvst (om lag halve høgda) og ei kort side. Ekte ting: stabburet inne
+  (`konsept/stabbur-inne.jpg`: bingar med lok, ein stamp der to stavar stikk opp som øyre) og kaggen på
+  Norsk Folkemuseum (`konsept/kagge-folkemuseum.jpg`: breie gjordar av vidje, sponshol oppå).
+- **Kornbingane:** toppflata er 12 pikslar (før 8) med kornet og mjølet sett ovanfrå, skiljeveggene er
+  lyse lister, framsida 11 pikslar (før 18), og loka som står opp mot veggen er forkorta. Det midtre,
+  lukka romet har lok av plankar på langs og eit handtak.
+- **Tønna:** toppen er ein brei oval (stavkanten rundt loket, med stein), sida er kort, og gjordane og
+  botnen bogar nedover på midten, slik ein sirkel ser ut ovanfrå. To stavar stikk opp som øyre.
+- **Kaggen:** den øvre halvdelen av sylinderen er ei lys flate med sponshol, gjordane er breie og lyse
+  (vidje), og bukken er to låge krakkar med toppflate.
+- **Sekkene:** låge og runde, med lyse skuldrer rundt knuten sett ovanfrå og runda botn.
+- **Rundar:** (1) alle fire teikna om. (2) Gjordane på tønna forsvann mot stavane: no vidjefarga som på
+  kaggen. Loka på bingane er kortare.
+- **Før og etter:** `forhand/skjerm/r62-for-stabbur-spel.png` og `r62-etter-stabbur-spel.png`.
+- **Står att:** flatbrødbenken i stabburet har framleis litt høge bein.
+
 ## Runde 63: andleta til Huldra og Ivar (portrett, runde 2)
 
 - **Frå brukaren og koordinatoren:** Hår, krans og bakgrunn frå runde 60 var eit løft, men andleta var ikkje
