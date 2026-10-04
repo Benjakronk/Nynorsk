@@ -1505,7 +1505,9 @@ window.Motor = (function () {
         continue; }
       // Gang inni ein vegg (kart.def.skjult: ["x,y", …], flisa «Ĝ»): den som er der, blir ikkje teikna
       // (kameraet følgjer han likevel), og kjem til syne att når han er ute av gangen.
-      if (f.sp && kart.def.skjult && kart.def.skjult.includes(Math.round(f.x) + "," + Math.round(f.y))) continue;
+      // Heilt skjult så lenge nokon del av figuren er i gangen (òg midt i steget ut), så han ikkje syner
+      // halvvegs over muren.
+      if (f.sp && kart.def.skjult && [Math.floor(f.x), Math.ceil(f.x)].some(gx => [Math.floor(f.y), Math.ceil(f.y)].some(gy => kart.def.skjult.includes(gx + "," + gy)))) continue;
       // Den som sit på eit sete, blir lyft opp på det (hogd), og setet har sin eigen skugge.
       const sx = Math.round((f.x + ox) * S) + hogdVed(f.x, f.y, 1), sy = Math.round((f.y + oy) * S) + (f.sete ? SITJE_DY[f.dir] - f.sete.s.hogd : 0) - hogdVed(f.x, f.y);
       // Eit vesen står midt på flisa med botnen på bakken, og gyng litt opp og ned.

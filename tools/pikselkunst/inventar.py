@@ -646,7 +646,7 @@ def preikestol(lag="fram"):
     # lydhimlingen: kvelva kuppel med volum (lys oppe til venstre), gylne ribber, krone, gesims,
     # raud lambrekin med bogar og duskar. Han ligg høgt over korga, så hovudet til den som står der,
     # syner under han.
-    oc, oy = cx, H - 111
+    oc, oy = cx, H - 96                             # låg nok til å dekkje andletet i døropninga og toppen av hovudet i korga
     def kuppel(x, y, d):
         lx, ly = (x + 0.5 - oc) / 15, (y + 0.5 - oy) / 6.5
         lys = -lx * 0.7 - ly * 0.8 + (1 - d) * 1.0

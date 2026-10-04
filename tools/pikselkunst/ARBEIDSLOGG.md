@@ -2148,3 +2148,14 @@ same måte, uansett kven som tek over.
   no med alle kjenslene) og `forhand/skjerm/portrett4-taleboks.png` (nøytral, trist og ivrig i spelet).
 - **Står att:** dei andre portretta. Den nøytrale Ivar ser litt tungsindig ut (dei tunge augeloka frå
   Aasen); ivrig og glad viser den ivrige guten.
+
+## Runde 74: ingen silhuett i muren, og lågare lydhimling over preikestolen
+
+- **Frå brukaren:** Midt i steget inn og ut av døropninga synte Ivar som ein silhuett over den kvite muren, og
+  lydhimlingen skulle vere lågare, så andletet først kjem fram i korga.
+- **Silhuetten:** ein figur var skjult berre når den næraste ruta var i `skjult`, så midt i steget mellom
+  gangen (2,11) og opninga (1,11) vart han teikna halvt ute over muren. No er han skjult så lenge nokon
+  av rutene han overlappar, er i gangen (motor.js), både inn og ut.
+- **Lydhimlingen:** 15 pikslar lågare. Han dekkjer hovudet og andletet når Ivar står i døropninga, og
+  overlappar toppen av hovudet når han står i korga.
+- **Etter:** `forhand/skjerm/k61-rad.png` (midt i steget, nesten framme, i opninga, halvvegs ned, i korga).
