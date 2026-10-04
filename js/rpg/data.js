@@ -283,7 +283,7 @@ window.RPGData = (function () {
        store gløden altar), altarljosa, lysekronene og jernomnen. Figurane blir mindre mørke enn
        rommet, så dei er lesbare i skuggen. */
     kyrkjerom: {
-      bak: { p: [-9, -9, -5] }, fig: { p: [-4, -4, -2] },
+      bak: { p: [-6, -6, -3] }, fig: { p: [-3, -3, -1] },
       straalar: true, stov: true, kjelder: true,   // stov: støv som søkk i lysstrålane
       glod: { bak: [{ p: [-4, -4, -3] }, { p: [1, 1, -1] }, { p: [3, 3, 1], snitt: [31, 30, 24] }], fig: [{ p: [-2, -2, -1] }, { p: [1, 1, 0] }, { p: [4, 4, 2] }] },
       syklus: [[0, 0, 0], [1, 1, 0], [0, 0, 0], [1, 0, 0]],
