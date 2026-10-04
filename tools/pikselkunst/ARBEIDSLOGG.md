@@ -1973,3 +1973,16 @@ same måte, uansett kven som tek over.
 - **Etter:** `k59-rad.png` (preikestolen utan Ivar, Ivar ved døra i koret, skjult i gangen med kameraet,
   i korga under lydhimlingen), `k59-oversikt-to.png` (heile den kortare kyrkja) og `k59-galleri-heil.png`.
 - **Står att:** Opninga bak korga syner lite, sidan korga og himlingen dekkjer det meste av henne.
+
+## Runde 65: kubbestolen sett frå sida
+
+- **Svakast:** `kubbestol-venstre` og `-hogre` var klumpete: setet, utsida av stokken og ryggen hadde dei
+  same tonane, så berre ei lys line skilde setet frå sida.
+- **Research:** FF6-møblane (`forhand/referansar/ff6tile-541477.png`): toppflatene er lysast, sidene eitt
+  steg mørkare, og innsida av ein rygg er mørk mot setet.
+- **Gjort:** Utsida av stokken er eitt steg mørkare enn toppflatene (c, A, a i staden for C, c, A), og
+  innsida av ryggen er mørk (A, a, lys c berre der ho vender mot ljoset). Setet er ein lys oval med lys
+  framkant og årringar, så det skil seg frå sida og ryggen. Gjeld alle fire retningane.
+- **Rundar:** (1) mørkare innside av ryggen: framleis same tone på setet og sida. (2) mørkare utside: no
+  er setet, sida og ryggen tre tydelege flater.
+- **Før og etter:** `forhand/skjerm/r64-samanlikning-stol.png` (før, etter, og Ivar på stolen).

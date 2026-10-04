@@ -1461,9 +1461,12 @@ def kubbestol(retning):
                 if c == "C" and D > 0 and r > R - 1.3: c = "q"  # framkanten av setet fangar lyset
         else:
             nx, nd = X / r, D / r
-            if r < (R + RI) / 2: nx, nd = -nx, -nd          # innsida av ryggen
-            lys = -nx * 0.8 + nd * 0.4
-            c = "C" if lys > 0.55 else "c" if lys > 0 else "A" if lys > -0.6 else "a"
+            if r < (R + RI) / 2:                            # innsida av ryggen: mørkare enn setet, så ryggen skil seg ut
+                lys = nx * 0.8 - nd * 0.2
+                c = "c" if lys > 0.5 else "A" if lys > -0.2 else "a"
+            else:                                           # utsida av stokken: eitt steg mørkare enn toppflatene
+                lys = -nx * 0.8 + nd * 0.4
+                c = "c" if lys > 0.3 else "A" if lys > -0.5 else "a"
         L.p(px, py, c)
     for a in range(0, 360, 20):                             # årringar på setet: ein brei oval ring midt på
         x, y = cx + round(math.cos(math.radians(a)) * 2.6), base - SETE_HOGD + 1 + round(math.sin(math.radians(a)) * 2.6 * K)
