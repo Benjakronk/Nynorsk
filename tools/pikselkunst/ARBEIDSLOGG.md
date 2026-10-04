@@ -2159,3 +2159,12 @@ same måte, uansett kven som tek over.
 - **Lydhimlingen:** 15 pikslar lågare. Han dekkjer hovudet og andletet når Ivar står i døropninga, og
   overlappar toppen av hovudet når han står i korga.
 - **Etter:** `forhand/skjerm/k61-rad.png` (midt i steget, nesten framme, i opninga, halvvegs ned, i korga).
+
+## Runde 75: flatbrødbenken i stabburet
+
+- **Gjort:** plata er ei stor toppflate av to grove plankar (12 pikslar), framkanten 2 og beina 3 (før 6).
+  Plata er mørkare enn flatbrødet, så stablane les. Dei tre stablane står på ulik djupn med toppleiven
+  sett ovanfrå og ei kort side av leivar. Fotavtrykket (7,3) og (8,3) er uendra.
+- **Rundar:** (1) ny plate og stablar, men stablane flaut i hop med plata. (2) Mørkare plate og høgare
+  stablar.
+- **Før og etter:** `forhand/skjerm/pr2-samanlikning-flatbrod.png`.

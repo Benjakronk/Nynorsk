@@ -1701,17 +1701,25 @@ def _stabel(L, cx, ybotn, n):
 
 
 def flatbrodstabel():
-    """Låg lagerbenk med tre stablar flatbrød i ulik høgd, med luft mellom. 2 fliser breitt."""
+    """Låg lagerbenk med tre stablar flatbrød i ulik høgd, med luft mellom. 2 fliser breitt.
+    Standardperspektivet (runde 75): plata er ei stor toppflate av to breie plankar (12 pikslar),
+    framkanten 2 og beina 3, og stablane står på ulik djupn på plata med den runde toppleiven sett
+    ovanfrå og ei kort side av leivar."""
     W, H = 2 * 16 + 8, 30
     L = Lerret(W, H)
-    for y in range(17, 21):                                                          # benkeplata
-        for x in range(2, W - 2): L.p(x, y, "q" if y == 17 else "C" if y < 19 else "c")
-    for x in range(2, W - 2): L.p(x, 21, "A"); L.p(x, 22, "a")
-    for xb in (4, W - 7):
-        for y in range(23, H - 1): L.p(xb, y, "c"); L.p(xb + 1, y, "A"); L.p(xb + 2, y, "a")
-    _stabel(L, 9, 18, 8); _stabel(L, 31, 18, 5); _stabel(L, 20, 19, 12)
-    for (x0, x1) in ((15, 15), (26, 26)):                                            # skugge på plata mellom stablane
-        for x in range(x0, x1 + 1): L.p(x, 18, "c")
+    for y in range(10, 22):                                                          # benkeplata: stor toppflate, mørk og grov
+        for x in range(2, W - 2): L.p(x, y, "A" if y == 10 or y == 16 else "C" if y == 21 else "c")
+    for i in range(6):                                                               # årer i plankane
+        ax, ay = 5 + int(h(i, 1, 61) * 28), 12 + int(h(i, 2, 61) * 8)
+        if ay != 16:
+            for k in range(3 + i % 3): L.p(ax + k, ay, "A")
+    for y in range(10, 22): L.p(2, y, "C"); L.p(W - 3, y, "a")
+    for x in range(2, W - 2): L.p(x, 22, "A"); L.p(x, 23, "a")                      # framkanten
+    for xb in (4, W - 7):                                                            # korte bein
+        for y in range(24, 27): L.p(xb, y, "c"); L.p(xb + 1, y, "A"); L.p(xb + 2, y, "a")
+    for (cx, yb, n) in ((29, 14, 4), (10, 17, 5), (21, 20, 7)):                      # stablane, den bakaste først
+        for x in range(cx - 5, cx + 7): L.p(x, yb + 1, "a")                          # skugge på plata
+        _stabel(L, cx, yb, n)
     omriss(L)
     return L
 
