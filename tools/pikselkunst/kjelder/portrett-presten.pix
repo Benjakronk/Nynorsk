@@ -5,79 +5,79 @@
 # laga med tools/pikselkunst/portrett.py
 palett:
   . = -
-  a = #0c0810    auge 0
-  b = #2a2030    auge 1
-  c = #f2f0f4    auge 3
-  d = #ffffff    auge 4
-  e = #302a3e    har_kvit 0
-  f = #5e5870    har_kvit 1
-  g = #9a96aa    har_kvit 2
-  h = #cac8d6    har_kvit 3
-  i = #f2f0f8    har_kvit 4
-  j = #462430    hud_gml 0
-  k = #80505a    hud_gml 1
-  l = #b27c72    hud_gml 2
-  m = #d8a68e    hud_gml 3
-  n = #f0cab0    hud_gml 4
-  o = #1e3058    iris_b 1
-  p = #3a5a96    iris_b 2
-  q = #6a90cc    iris_b 3
-  r = #6a6478    kvit 0
-  s = #9a96a8    kvit 1
-  t = #c8c6d2    kvit 2
-  u = #e6e4ec    kvit 3
-  v = #fcfcff    kvit 4
-  w = #3a1418    munn 0
+  a = #dde2ea    augekvit 3
+  b = #ffffff    augekvit 4
+  c = #302a3e    har_kv6 0
+  d = #5e5870    har_kv6 1
+  e = #9a96aa    har_kv6 2
+  f = #cac8d6    har_kv6 3
+  g = #ecebf2    har_kv6 4
+  h = #462430    hud_gm6 0
+  i = #86565a    hud_gm6 1
+  j = #b88478    hud_gm6 2
+  k = #dcac94    hud_gm6 3
+  l = #f0ccb4    hud_gm6 4
+  m = #fce8d8    hud_gm6 5
+  n = #1e3058    iris_b 1
+  o = #4a4e5e    kalk 0
+  p = #7a8090    kalk 1
+  q = #b4b8c4    kalk 2
+  r = #d2d4da    kalk 3
+  s = #f4f2e8    kalk 4
+  t = #6a6478    kvit 0
+  u = #c8c6d2    kvit 2
+  v = #e6e4ec    kvit 3
+  w = #fcfcff    kvit 4
   x = #6a2a2c    munn 1
   y = #06040a    svart 0
-  z = #201a2c    svart 2
-  A = #342c44    svart 3
+  z = #120e1a    svart 1
+  A = #201a2c    svart 2
 bilete:
-  ................................................
-  ................................................
-  .....................e...jjj....................
-  ..................eeeiejjmmmjjj.................
-  ................eeiiimmmmmmmmmmjj...............
-  ...............eiiiimmmmmmmmmmnmmj..............
-  ..............ehhhhmmmmmmmmmmmnnnmj.............
-  .............ehhhhmmmmmmmmmmmmmnnnmj............
-  ............ehhhhhmmmmmmmmmmmmmnnnmmj...........
-  ............ehhihhmmmmmmmmmmmmmmnnnmj...........
-  ...........ehghihmmmmmmmmmmmmmmmmmnmmj..........
-  ..........ehhghihmmmmmmmmmmmmmmmmmmmmj..........
-  ..........ehhghihmmmmmmmmmmmmmmmmmmmmj..........
-  ..........ehhghimmmmmmmmmmmmmmmmmmmmmj..........
-  ..........ehhghimmmmmmhhhhmmmmmmmmmmmj..........
-  ..........ehhgihmmmmffffhhhhmmmmmhhhmj..........
-  ..........ehghihmmmmhhhhffffmmmhhhmmmj..........
-  ..........ehghihmmmmmmmmmmmmmmmmmmmmnj..........
-  ..........ehghihmmmmmaaaaaaaammmaaaanj..........
-  ..........ehghihlmmmmmacdooammmmadoanj..........
-  ..........ehghihlmmmmmmcpqcmmmmmmpomnmj.........
-  ..........ehghhhlmmmmmmmbbmmmmmmmmmmnmj.........
-  ..........ehghhlllmmmlllmmmmmmmmmmmmnmj.........
-  ...........ehhhlllmmmmmmllmmmmmmmmmmnmj.........
-  ...........ehhhlllmmmmmmmmmmmmmmmmlmmmj.........
-  ............ehjlllmmmmmmmmmmmmmmmmmkkkj.........
-  .............ejllllmmmmmmmmmmmmkmmmmjj..........
-  ...............jlllmmmlmmmmmmmkmmmmmj...........
-  ................jllmmmmlmmmmmmkmmmmmj...........
-  ................jlllmmmlmmmmmkmmmmmmj...........
-  .................jllmmmmlmmmmkmmmmmj............
-  ...............rrrjllmmmmmmmmxxxxxxw............
-  ..............ruuuuullmmmmmmxmkmmuxw............
-  ............rruuuuuulllmmmmmmmmmuuurr...........
-  ...........ruuuuuuuuuuulmmmmmmmuuuuuur..........
-  ..........ruuuuuuuuuuuuuuuuuuuuuuuuuuur.........
-  .........ruuuuuuuuuuuuuuuuuuuuuuuuuuuuur........
-  ........ruuuuuuuuuuuvuuvuuvuuvuuvuuuuuuur.......
-  ........ruuvuuvuuvusvusvusvusvusvuuvuuvur.......
-  ........rusvusvusvusvusvusvusvusvusvusvur.......
-  .......ruusuvsvusuvsvusuvsvusuvsuvsuvsuvur......
-  ....yyyzuuttvusvsuvusvsuvusvsuvusvsuvuttur......
-  ...yzzzzzuusttttusvusvusvusvusvusvttttsuAAyyy...
-  ..yzzzzzzzzuuusutttusvusvusvusttttusuuAAAAAAAy..
-  .yzzzzzzzzzzzuuuuuuttttsuuttttuuuuuAAAAAAAAAAAy.
-  yzzzzzzzzzzzzAAAAAAuuuutttuuuAAAAAAAAAAAAAAAAAAy
-  yzzzzzzzzzzzzzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAy
-  zzzzzzzzzzzzzzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+  qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+  qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+  qqqqqqqqqqqqqqqqqqccqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+  qqqqqqqqqqqqqccccceecqqqqqqqqqqqccqqqqsssrssqrrq
+  qqqqqqqqqqqqcffffdffechhhhhhhhhcefcqqssssrsssrqr
+  qqqqqqqqqqqcffeggeggeejkklmmmlldeffcsssssrssssrr
+  qqqqqqqqqqcddegggggeekkllllmmmmddegcsssssrssssrq
+  qqqqqqqqqqcddeeegeedkkllllllmmmmdeggcssssrssssqr
+  qqqqqqqqqcdddedegdjkklllllllllmmmdeggcsssrssssrr
+  qqqqqqqqqcddeeeeefkklllllllllllllldegfcssrssssrq
+  qqqqqqqqcdddedeeejkklllllllllllllldeefcssrssssqr
+  qqqqqqqqcdddeeeeejkklkkkkkkkkkklllldefcssrssssrr
+  qqqqqqqqcdddedeefjkkllllllllllllllldefcssrssssrq
+  qqqqqqqqcdddedeefjkkllkkkkkkkkllllllefcssrssssqr
+  qqqqqqqqcdddedeefjkklllllllllllllllldcsssrssssrr
+  qqqqqqqqcdddedeefjkklllfflllefflllllirrrrrrrrrrq
+  qqqqqqqqcdddedeefjkkeffellllleefflllissssrssssqr
+  qqqqqqqqcddeeeeefjeffellllllllleefflissssrssssrr
+  qqqqqqqqcddeeedejjkkllllllllllllllllissssrssssrq
+  qqqqqqqqqcdedechjjkcccccclklccccclllissssrssssqr
+  qqqqqqqqqhlkjejhjjjcaanbclklaanbclllissssrssssrr
+  qqqqqqqqqhljijjhjjjkjjjjllklljjjllllissssrssssrq
+  qqqqqqqqqhkjijjhjjjkklllllklllllllllissssrssssqr
+  qqqqqqqqqhkjjijhjjjkklllllklllllllllissssrssssrr
+  qqqqqqqqqhkkjjjhjjjkklllllklllllllllissssrssssrq
+  qqqqqqqqqqhkkjjhjjjkklllllklllllllllissssrssssqr
+  qqqqqqqqqqqhkkjhjjjkklllllklmlllllllissssrssssrr
+  qqqqqqqqqqqqhkihjjjkklllllklmlllllllirqrrrrrqrrq
+  qqqqqqqqqqqqqhqhjjjkkllllllkmllllllliqrrqrrqrrqr
+  qqqqqqqqqqqqqqqhjjjkklllklljllkkllllirrqrrqrrqrr
+  qqqqqqqqqqqqqqqhjjjkkllkllllkklkllllirqrrqrrqrrq
+  qqqqqqqqqqqqqqqqhjjkkllkllllllllkllirqrrqrrqrrqr
+  qqqqqqqqqqqqqqqqqhjjkkklxxxxxxllklliqrrqrrqrrqrr
+  qqqqqqqqqqqqqqqqqqhjjkkxllllllxllliqqqqqqqqqqqqq
+  qqqqqqqqqqqqqqtttttvvjjkkkkllllllittqqqqqqqqqqqq
+  opppppppopppttvvvvvvvvvkkkkkkkkvvvvvttppoppppppp
+  opppppppopttvvvvvvvvwvuvwvuvwvuvvvvvvvttoppppppp
+  opppppppotvvvvuvwvuvwvuvwvuvwvuvwvuvwvvvtppppppp
+  opppppppotuvwvuvwvuvwvuvwvuvwvuvwvuvwvuvwtpppppp
+  oppppppytvuvwvuvwvuvwvuvwvuvwvuvwvuvwvuvwtpppppp
+  opppyyyzzvuvwvuvwvuvwvuvwvuvwvuvwvuvwvuvwtpppppp
+  oppyzzzzzzuvwvuvwvuvwvuvwvuvwvuvwvuvwvuvwAyyyppp
+  opyzzzzzzzuuuvuvwvuvwvuvwvuvwvuvwvuvwvuuwAAAAypp
+  oyzzzzzzzzzzvuuuuvuvwvuvwvuvwvuvwvuuuuAAAAAAAAyp
+  yzzzzzzzzzzzzAvvvuuuwvuvwvuvwvuuuuvvAAAAAAAAAAAy
+  yzzzzzzzzzzzzzAAAAAvuuuuvvvuuuuAAAAAAAAAAAAAAAAy
+  zzzzzzzzzzzzzzAAAAAAAAAAuuuAAAAAAAAAAAAAAAAAAAAA

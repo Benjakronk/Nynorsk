@@ -2260,3 +2260,23 @@ same måte, uansett kven som tek over.
   grimase: no eit ope smil med to tenner og glugg.
 - **Etter:** `forhand/portrett6-ivar.png` (Ivar runde 79 og no, alle kjenslene), `forhand/portrett7-familie.png`
   (før og etter) og `forhand/skjerm/portrett7-taleboks.png` (storebror, syster med kjensla glad, og Ivar).
+
+## Runde 82: bygda i FF6-stil (presten, den framande, grannen og budeia)
+
+- **Gjort:** eitt portrett kvar, i same stil som Huldra og Ivar (rolige hudflater, tre kvart framanfrå,
+  ljoset frå høgre, hår i lokkar, farga omriss) og med eigen bakgrunn:
+  - **Presten:** verdig og uroleg. Høg, blank panne, kvitt hår strøke bakover på sidene, buskute bryn med
+    den indre enden løfta, rynker i panna, djupe furer, smal munn, stor pipekrage over den svarte kjolen.
+    Bak: kvitkalka kyrkjevegg med rundboga vindauge og brystpanel.
+  - **Den framande:** høfleg og litt uhyggeleg. Flosshatt som går ut av ruta, det nære brilleglaset blenkjer
+    kvitt og gøymer auget, kaldt, smalt auge bak det fjerne, innsokne kinn, kantete hake, tynt smil som
+    berre går opp i den eine munnviken. Bak: kaldt mørker med ei blank stripe som i ein spegel og kald
+    dis bak hatten.
+  - **Grannen:** godlynt. Skalla med kvit hårkrans, tjukt kvitt skjegg og bart, knipne, smilande auge
+    med smilerynker, raud nase, kritpipe med røyk. Bak: tunet om kvelden, varm himmel over eit torvtak.
+  - **Budeia:** blid og sterk. Raudt skaut knytt i nakken, lys flette over skuldra, breitt smil med
+    tenner, raude kinn, blått liv. Bak: setra med blå himmel, fjell med snø og grøn bakke.
+- **Rundar:** (1) skjegget til grannen var gråstripete: breiare lokkar med meir lys. (2) Flosshatten
+  forsvann mot den mørke bakgrunnen: kald dis bak hatten og lysare kant på pipa.
+- **Sjekka:** `kjensle` i manus på presten og budeia viser det vanlege portrettet.
+- **Etter:** `forhand/portrett8-bygda.png` (før og etter) og `forhand/skjerm/portrett8-taleboks.png`.
