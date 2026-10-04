@@ -2280,3 +2280,21 @@ same måte, uansett kven som tek over.
   forsvann mot den mørke bakgrunnen: kald dis bak hatten og lysare kant på pipa.
 - **Sjekka:** `kjensle` i manus på presten og budeia viser det vanlege portrettet.
 - **Etter:** `forhand/portrett8-bygda.png` (før og etter) og `forhand/skjerm/portrett8-taleboks.png`.
+
+## Runde 83: haugbonden og dei fem fellesansikta i FF6-stil
+
+- **Haugbonden:** gamal og jordnær. Grågrøn hud, stor mosegrodd hatt med vid brem som kastar skugge over
+  auga, bleike, lysande auge i skuggen, ei svær nase (skuggeside, rygg og nasebor), rynker og eit langt,
+  kvitt skjegg med røter og lav. Bak: inne i haugen, mørk jord med røter og nokre lysande mosedottar.
+- **Fellesansikta** (`bygd-mann`, `bygd-kvinne`, `bygd-gamal-mann`, `bygd-gamal-kone`, `bygd-gut`): same stil
+  som dei andre, men nøytrale og utan kjenneteikn som stel merksemd. Same bakgrunn for alle: ein roleg
+  himmel over grøne bakkar. Bygdemannen har stutt skjegg langs kjeven, kvinna mørkt skaut, den gamle mannen
+  tunt kvitt hår og skjeggstubb, kona svart skaut og kvitt sjal, guten lyst, stritt hår og lue på snei.
+- **Rundar:** (1) skjegget til bygdemannen var teikna som lokkar på tvers av andletet: no ei rolig flate
+  langs kjeven og haka. Skyene stakk fram i hol i håret: berre ved kantane. (2) Nasa til haugbonden
+  forsvann i den lyse huda: skuggeside og nasebor.
+- **Sjekka:** `kjensle=sjokk` på Dottera (fellesansiktet `bygd-kvinne`) viser det vanlege portrettet utan
+  feil. Kjensla til figuren på kartet er uendra (`kjensle` på figuren i motor.js).
+- **Etter:** `forhand/portrett9-haug-felles.png` (før og etter) og `forhand/skjerm/portrett9-taleboks.png`
+  (haugbonden, Dottera med kjensla sjokk, Bestefaren og Gjetarguten).
+- **Står att:** ingen portrett står att i den gamle stilen.
