@@ -2236,3 +2236,27 @@ same måte, uansett kven som tek over.
   heilt ute (5,11), med tida og tilfeldige tal frosne. Han skal vere delvis synleg (102 av 249 pikslar no).
 - **Etter:** `forhand/skjerm/k62-rad.png` (x 4,7, 4,4, 2,5, 1,6, 1,2 og 1) og `forhand/skjerm/k62-naer.png`
   (forstørra: opninga ved 1,6, 1,2 og 1, og koret ved 4,7 og 4,4).
+
+## Runde 81: haka og nasa til Ivar, og familien (storebror og syster) i FF6-stil
+
+- **Frå brukaren:** Ivar ser ut til å mangle hake, og nasa peikar feil veg. Mange av uttrykka er betre no.
+  Det er nok med eitt portrett for alle andre enn hovudpersonane; figurane på kartet viser kjenslene.
+- **Ivar:** haka er brei og firkanta og stikk litt fram (ei rad lenger ned), med lys på hakespissen, ei grop
+  under underleppa og ein skugge under haka som skil henne frå halsen. Kjeven er i skugge på skuggesida.
+  Nasa peikar no same veg som andletet (mot høgre): skuggesida går frå mellom auga ned og litt mot høgre
+  til tippen, ein kort lys rygg ligg til høgre for henne, og naseboret og skuggen ligg under tippen. Alle
+  åtte kjenslene er laga på nytt.
+- **Regel:** berre Ivar og Huldra har kjensleportrett (STILGUIDE.md og SKILL.md). Ingen andre stod i
+  `PORTRETT_KJENSLER`, så motoren viser alt det vanlege portrettet når manus set `kjensle` på dei (sjekka
+  med syster og `kjensle=glad`).
+- **Nye byggjeklossar i portrett.py:** `andlet()`, `nase34()`, `oyre()`, `hals()`, `bak_fyll()`, `bak_poly()`
+  og `bak_p()`, og selektivt omriss for alle personar med `P.hud`.
+- **Storebror:** breitt, kantete andlet med skjeggstubb som ei rolig, mørkare flate langs kjeven, trøytte
+  og alvorlege auge under tunge, rette bryn, stuttklypt sandhår med rett lugg, strå i munnviken, open
+  linskjorte og brun vest. Bak: ståande bord i løa med lys gjennom ei glipe og høy på golvet.
+- **Syster:** rundt barneandlet, store, glade auge, raude kinn, blått skaut med kvite prikkar knytt under
+  haka og brune hårlokkar framom, breitt smil med glugg. Bak: tømmerveggen i stova i varmt lys.
+- **Rundar:** (1) skjeggstubben var ein firkanta maske: følgjer no kjeven. (2) Munnen til syster las som ein
+  grimase: no eit ope smil med to tenner og glugg.
+- **Etter:** `forhand/portrett6-ivar.png` (Ivar runde 79 og no, alle kjenslene), `forhand/portrett7-familie.png`
+  (før og etter) og `forhand/skjerm/portrett7-taleboks.png` (storebror, syster med kjensla glad, og Ivar).

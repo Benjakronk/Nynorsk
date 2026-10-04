@@ -76,6 +76,14 @@ RAMPER = {
     "munn_iv":  ["#3a1016", "#7a3236", "#b05a54"],
     "trøye":    ["#0e1428", "#1e2c50", "#2e4678", "#4a68a4", "#7090cc"],
     "laer":     ["#1e0e06", "#40220e", "#6a3e1c", "#94622e"],
+    # Runde 81: dei andre portretta i FF6-stil (seks tonar i huda, tonen 0 er omrisset)
+    "hud_br6":  ["#4a2224", "#8a4a3a", "#b8724e", "#dc9c74", "#f0c49c", "#fce0c4"],
+    "hud_ba6":  ["#522430", "#9a5448", "#d08a6c", "#f2b494", "#fcd8bc", "#fff0e2"],
+    "har_br6":  ["#34200e", "#664424", "#976c3a", "#c29854", "#e4c47c", "#f8e4a8"],
+    "har_sy6":  ["#241210", "#4a2a1c", "#74462a", "#9c6a3e", "#c49058", "#e0b07c"],
+    "stubb":    ["#3a2420", "#7a5040", "#a87a5c", "#cc9e7e"],
+    "lade":     ["#120a06", "#24160c", "#342212", "#5a3c1e", "#c89a52"],
+    "stove":    ["#140c08", "#24160e", "#382416", "#4e3420", "#6a4a2c"],
     "dis":      ["#0a1018", "#121c26", "#1c2c34", "#2a4044", "#3e5a58", "#5e7c74"],
 }
 
@@ -283,6 +291,72 @@ def rute_k(P, x0, y0, rader, farge):
     P.rute(x0, y0, [r.replace(" ", ".") for r in rader], farge)
 
 
+# ---------------------------------------------------------------- felles delar i FF6-stil (runde 81)
+# Andlet i tre kvart framanfrå med ljoset frå høgre, som Huldra og Ivar: ei stor lys flate, ei smal
+# mellomtone og ei jamn skuggeside som følgjer kjeven. Hudrampene har seks tonar (0 er omrisset).
+def andlet(P, hud, kantar, kinn=(21, 31), haka=None):
+    """Fyller andletet rad for rad (kantar: y -> (venstre, høgre)). kinn: radene der kinnet bular
+    ut (breiare skuggeside). haka: (x0, x1, y) for lys på hakespissen."""
+    for y, (xa, xb) in kantar.items():
+        k = 1 if kinn[0] <= y <= kinn[1] else 0
+        for x in range(xa, xb + 1):
+            t = 2 if x < xa + 2 + k else 3 if x < xa + 4 + k else 4
+            if y >= kinn[1] and x < xa + 4 + (y - kinn[1]) // 2: t = min(t, 3)   # under kinnbeinet
+            P.p(x, y, (hud, t))
+    y1 = max(kantar)
+    for x in range(kantar[y1][0], kantar[y1][1] + 1): P.p(x, y1, (hud, 3))     # undersida av haka
+    if haka: P.linje([(haka[0], haka[2]), (haka[1], haka[2])], (hud, 5))
+
+
+def nase34(P, hud, x, y0, y1):
+    """Nase i tre kvart framanfrå som peikar mot høgre: skuggesida til venstre frå mellom auga ned
+    til tippen, kort lys rygg, nasebor og skugge under."""
+    P.linje([(x, y0), (x, y1 - 3), (x + 1, y1 - 1)], (hud, 3))
+    P.linje([(x + 2, y1 - 3), (x + 2, y1 - 1)], (hud, 5))
+    P.p(x + 1, y1, (hud, 2)); P.linje([(x + 2, y1 + 1), (x + 3, y1 + 1)], (hud, 3)); P.p(x + 4, y1, (hud, 3))
+
+
+def oyre(P, hud, x, y):
+    """Øyret til venstre for andletet (5 x 9): lys kant, indre form og skugge."""
+    P.rute(x, y, [" RRr ", "Rriii", "Ridii", "ridii", "riidi", "rriii", " rrii", "  rri", "   r "],
+           {"R": (hud, 4), "r": (hud, 3), "i": (hud, 2), "d": (hud, 1)})
+
+
+def hals(P, hud, x0, x1, y0, y1=42):
+    """Halsen i skugge under haka, lysare stripe mot høgre."""
+    P.poly([(x0, y0), (x1, y0), (x1, y1), (x0, y1)], (hud, 2))
+    P.poly([(x1 - 3, y0 + 3), (x1, y0 + 3), (x1, y1), (x1 - 2.5, y1)], (hud, 3))
+    P.poly([(x0, y0 + 1), (x1, y0 + 2.5), (x1, y0 + 4.5), (x0, y0 + 3.5)], (hud, 1))
+
+
+AUGE_F = lambda har, hud, iris: {"L": (har, 0), "l": (hud, 2), "w": ("augekvit", 3), "v": ("augekvit", 2),
+                                 "p": (iris, 0), "i": (iris, 1), "m": (iris, 2), "g": (iris, 3),
+                                 "G": (iris, 4), "h": ("augekvit", 4)}
+
+
+def bak_fyll(P, mat, rader):
+    """Bakgrunn i band: rader er ei liste (y_til, tone); kvart band går til og med y_til."""
+    P.bak = [[None] * W for _ in range(H)]
+    y0 = 0
+    for yt, t in rader:
+        for y in range(y0, min(H, yt + 1)):
+            for x in range(W): P.bak[y][x] = (mat, t)
+        y0 = yt + 1
+
+
+def bak_p(P, x, y, c):
+    if 0 <= x < W and 0 <= y < H: P.bak[y][x] = c
+
+
+def bak_poly(P, pts, c):
+    """Polygon i bakgrunnslaget."""
+    lag = P.g; P.g = P.bak; P.poly(pts, c); P.g = lag
+
+
+def bak_linje(P, pts, c):
+    lag = P.g; P.g = P.bak; P.linje(pts, c); P.g = lag
+
+
 # ---------------------------------------------------------------- personane
 # Auga til Ivar etter kjensla: det nære (6 x 4 ved 19, 20) og det fjerne (5 x 4 ved 28, 20).
 # Små, djupt liggjande auge under tunge augelok, som hos Ivar Aasen på fotografia.
@@ -343,7 +417,7 @@ def ivar(P, k=None):
     # ---- halsen, i skugge under haka
     P.poly([(20, 33), (31, 33), (31, 41), (20, 41)], (hud, 2))
     P.poly([(28, 37), (31, 37), (31, 41), (28.5, 41)], (hud, 3))
-    P.poly([(20, 34), (31, 36), (31, 38.5), (20, 37)], (hud, 1))                   # skuggen under kjeven
+    P.poly([(20, 34), (24, 36), (32, 38), (32, 40), (20, 38)], (hud, 1))           # skuggen under kjeven og haka
     # ---- øyret: forma, med lys kant, indre form og skugge, bak kjeven i høgd med auga og nasa
     P.rute(10, 20, [" RRr ",
                     "Rriii",
@@ -361,23 +435,25 @@ def ivar(P, k=None):
               16: (16, 35), 17: (16, 35), 18: (16, 35), 19: (16, 35), 20: (15, 36), 21: (15, 36), 22: (15, 36),
               23: (15, 36), 24: (15, 36), 25: (15, 36), 26: (15, 36), 27: (15, 36), 28: (15, 36), 29: (15, 36),
               30: (15, 36), 31: (15, 36), 32: (16, 35), 33: (17, 35), 34: (18, 34), 35: (19, 34), 36: (21, 33),
-              37: (23, 32)}
+              37: (22, 33), 38: (24, 32)}
     for y, (xa, xb) in kantar.items():
         for x in range(xa, xb + 1):
             kinn = 1 if 21 <= y <= 31 else 0
             t = 2 if x < xa + 3 + kinn else 3 if x < xa + 5 + kinn else 4
             if 27 <= y <= 34 and x < xa + 5 + (y - 27) // 2: t = min(t, 3)       # under kinnbeinet
-            if y >= 35: t = min(t, 3)                                            # under kjeven
-            if y >= 35 and x < 25: t = 2
+            if y >= 35 and x < 24: t = 2                                          # kjeven på skuggesida
+            elif y == 38: t = 3                                                   # undersida av haka
             P.p(x, y, (hud, t))
+    # haka: brei og firkanta, stikk litt fram, med lys på hakespissen og ei grop under underleppa
+    P.poly([(28, 35), (31, 35), (31.5, 37), (28.5, 37)], (hud, 5)); P.linje([(26, 34), (29, 34)], (hud, 3))
     P.poly([(28, 10.5), (31, 10.5), (33, 12), (33.5, 14), (29, 14.5), (27.5, 12.5)], (hud, 5))   # lys på panna
     P.poly([(30, 23), (34, 23), (34.5, 25), (31, 25)], (hud, 5))                  # lys på kinnbeinet
     P.linje([(18, 19), (25, 19)], (hud, 3)); P.linje([(27, 19), (34, 19)], (hud, 3))   # skugge under bryna
     P.linje([(18, 20), (18, 22)], (hud, 3))                                       # augeholet ytst
-    # nasa: lang, rett og brei. Lys rygg, mellomtone på skuggesida, breie nasebor og skugge under
-    P.linje([(25, 20), (25, 28)], (hud, 3)); P.p(25, 29, (hud, 2)); P.p(29, 29, (hud, 3))
-    P.linje([(26, 30), (28, 30)], (hud, 3)); P.p(26, 29, (hud, 2))
-    P.linje([(25, 34), (29, 34)], (hud, 3))                                       # skugge under underleppa
+    # nasa: lang, rett og brei, og peikar same veg som andletet (mot høgre). Ryggen går frå mellom auga
+    # ned og litt mot høgre til tippen; skuggesida ligg til venstre, nasebor og skugge under tippen.
+    P.linje([(26, 21), (26, 25), (27, 28)], (hud, 3)); P.linje([(28, 25), (28, 27)], (hud, 5))
+    P.p(27, 29, (hud, 2)); P.linje([(28, 30), (29, 30)], (hud, 3)); P.p(30, 29, (hud, 3))
     if k in ("glad", "ivrig", "sint"):                                            # raudme
         P.linje([(20, 28), (22, 28)], ("kinn_iv", 2)); P.linje([(31, 27), (33, 27)], ("kinn_iv", 2))
     for (x, y) in [(22, 27), (23, 25), (31, 28), (33, 26)]:                       # fregner
@@ -451,45 +527,65 @@ PORTRETT_KJENSLER = {"ivar": ("glad", "trist", "sint", "sjokk", "tenkje", "nikk"
 
 
 def storebror(P):
-    """Storebror, om lag 20: har teke over garden etter far. Breitt, kantete andlet, sterk
-    kjeve med skjeggstubb, stuttklypt sandfarga hår, trøytte og alvorlege auge under tunge
-    bryn, open linskjorte med oppbretta ermar og brun vest. Står rakare, hovudet litt ned."""
-    hud, har, kle = "hud_bror", "har_bror", "brun"
-    P.poly([(0, 48), (2, 40), (10, 35), (22, 34), (34, 35), (44, 39), (48, 44), (48, 48)], ("lin", 3))
-    P.poly([(0, 48), (2, 40), (10, 35), (13, 36), (9, 48)], ("lin", 2))
-    P.poly([(3, 48), (5, 41), (12, 37), (17, 39), (16, 48)], (kle, 3))                  # vest
-    P.poly([(31, 38), (38, 37), (45, 42), (46, 48), (33, 48)], (kle, 3))
-    P.poly([(31, 38), (34, 38), (35, 48), (33, 48)], (kle, 4))
-    P.poly([(18, 36), (29, 36), (27, 44), (23, 46), (19, 43)], (hud, 2))                # open skjorte, bringe
-    P.linje([(17, 36), (23, 46), (29, 36)], ("lin", 1))
-    # tjukk hals
-    P.poly([(15, 26), (28, 27), (29, 37), (16, 37)], (hud, 2))
-    P.poly([(23, 28), (28, 27), (29, 36), (25, 36)], (hud, 3))
-    # breitt, kantete andlet
-    P.poly([(11, 11), (15, 6), (24, 4), (33, 6), (36, 11), (37, 17), (36, 20), (38, 24), (36, 25),
-            (36, 28), (35, 31), (32, 33), (26, 34), (19, 32), (14, 27), (11, 21), (10, 15)], (hud, 3))
-    P.poly([(10, 15), (15, 15), (17, 22), (19, 32), (14, 27), (11, 21)], (hud, 2))
-    P.poly([(19, 32), (26, 34), (32, 33), (35, 31), (33, 29), (29, 31), (24, 31), (20, 29)], (hud, 2))  # skjeggstubb
-    for (x, y) in [(22, 30), (25, 32), (28, 31), (31, 32), (33, 30), (27, 33), (23, 32)]: P.p(x, y, (hud, 1))
-    P.poly([(29, 23), (32, 22), (33, 24), (30, 25)], (hud, 4))
-    nase(P, hud, 36, 19, 6)
-    P.poly([(11, 18), (14, 17), (15, 21), (14, 24), (11, 23)], (hud, 2)); P.linje([(12, 19), (12, 22)], (hud, 1))
-    # auge: smale, trøytte, under tunge bryn
-    auge_naer(P, 21, 18, "iris_b", "smal")
-    auge_far(P, 32, 18, "iris_b")
-    P.poly([(20, 16), (24, 15), (28, 16), (28, 17), (20, 17)], (har, 1))              # tunge, rette bryn
-    P.poly([(31, 16), (35, 15), (35, 16), (31, 17)], (har, 1))
-    P.linje([(22, 21), (26, 22)], (hud, 2))                                           # poser under auga
-    # munn: rett og alvorleg
-    P.linje([(28, 28), (33, 28)], ("munn", 1)); P.p(34, 29, ("munn", 1))
-    # stuttklypt hår: tett til hovudet, rett lugg
-    P.poly([(10, 14), (11, 7), (17, 2), (26, 1), (34, 3), (38, 8), (38, 13), (35, 12), (32, 10),
-            (27, 11), (20, 11), (15, 13), (13, 18), (11, 20)], (har, 2))
-    P.poly([(14, 5), (22, 2), (30, 3), (24, 6), (17, 8)], (har, 3))
-    P.poly([(19, 3), (26, 2), (22, 4)], (har, 4))
-    for x in range(15, 36, 3): P.linje([(x, 10), (x + 1, 7)], (har, 1))
-    # eit strå frå låven i munnviken
-    P.linje([(33, 28), (41, 25)], ("gull", 3)); P.p(42, 24, ("gull", 4))
+    """Storebror, om lag 20: har teke over garden etter far. Breitt, kantete andlet med sterk
+    kjeve og skjeggstubb, stuttklypt sandfarga hår, trøytte og alvorlege auge under tunge, rette
+    bryn, eit strå frå løa i munnviken, open linskjorte og brun vest. Bak: veggen i løa, mørke
+    ståande bord med ein lysstripe gjennom ei glipe."""
+    hud, har, iris = "hud_br6", "har_br6", "iris_b"
+    P.hud = hud
+    # ---- bakgrunnen: ståande bord i løa
+    bak_fyll(P, "lade", [(47, 1)])
+    for x in range(W):
+        for y in range(H):
+            if x % 7 == 0: bak_p(P, x, y, ("lade", 0))
+            elif x % 7 in (1, 2): bak_p(P, x, y, ("lade", 2))
+    for y in range(H): bak_p(P, 43, y, ("lade", 4)); bak_p(P, 44, y, ("lade", 3))   # lys gjennom glipa
+    for y in range(38, H):                                                     # høy på golvet
+        for x in range(W):
+            if y > 41 + 2 * math.sin(x / 3.0): bak_p(P, x, y, ("gull", 1 if (x + y) % 5 else 2))
+    # ---- skjorta og vesten
+    P.poly([(0, 48), (2, 42), (10, 38), (22, 36), (30, 36), (38, 38), (46, 42), (48, 48)], ("lin", 3))
+    P.poly([(0, 48), (2, 42), (10, 38), (13, 39), (9, 48)], ("lin", 2))
+    P.poly([(21, 37), (30, 37), (28, 43), (25.5, 45), (23, 43)], (hud, 3))       # open skjorte, bringe
+    P.poly([(21, 37), (23.5, 37), (24.5, 44), (23, 43)], (hud, 2))
+    P.linje([(20, 37), (25, 45), (31, 37)], ("lin", 2))
+    P.poly([(2, 48), (4, 42), (11, 39), (16, 40), (18, 48)], ("brun", 2))       # vesten
+    P.poly([(32, 40), (38, 39), (45, 43), (47, 48), (33, 48)], ("brun", 3))
+    P.linje([(33, 40), (34, 48)], ("brun", 4)); P.linje([(16, 41), (17, 48)], ("brun", 1))
+    # ---- hals, øyre og andlet: breitt og kantete
+    hals(P, hud, 20, 31, 33)
+    oyre(P, hud, 10, 20)
+    kantar = {9: (20, 31), 10: (18, 33), 11: (17, 34), 12: (16, 35), 13: (16, 35), 14: (16, 35), 15: (16, 35),
+              16: (16, 35), 17: (16, 35), 18: (16, 35), 19: (16, 35), 20: (15, 36), 21: (15, 36), 22: (15, 36),
+              23: (15, 36), 24: (15, 36), 25: (15, 36), 26: (15, 36), 27: (15, 36), 28: (15, 36), 29: (15, 36),
+              30: (15, 36), 31: (15, 36), 32: (15, 36), 33: (16, 35), 34: (17, 35), 35: (18, 34), 36: (20, 33),
+              37: (22, 32)}
+    andlet(P, hud, kantar, kinn=(21, 31))
+    P.poly([(28, 11), (32, 11), (33.5, 14), (29, 14)], (hud, 5))                 # lys på panna
+    P.poly([(30, 23), (34, 23), (34.5, 25), (31, 25)], (hud, 5))                 # og kinnbeinet
+    # skjeggstubb: kjeven og haka i ein mørkare, gråare tone (rolig flate, ikkje prikkar)
+    for y in range(30, 38):
+        for x in range(15, 37):
+            c = P.get(x, y)
+            if c and c[0] == hud and (y >= 34 or (y >= 31 and (x < 18 + (y - 31) or x > 34 - (y - 31)))):
+                P.p(x, y, ("stubb", 2 if c[1] <= 2 else 3))
+    P.linje([(18, 19), (25, 19)], (hud, 3)); P.linje([(27, 19), (34, 19)], (hud, 3))
+    f = AUGE_F(har, hud, iris)
+    rute_k(P, 19, 21, ["LLLLLL", "LwwihL", " llll "], f)                          # trøytte, smale auge
+    rute_k(P, 28, 21, ["LLLLL", "wwihL", " lll "], f)
+    P.poly([(18, 17), (25, 17), (25, 18.5), (18, 19)], (har, 1))                 # tunge, rette bryn
+    P.poly([(28, 17), (34, 17.5), (34, 18.5), (28, 18.5)], (har, 1))
+    P.linje([(20, 24), (23, 24)], (hud, 3))                                      # poser under auga
+    nase34(P, hud, 26, 21, 29)
+    P.linje([(24, 32), (30, 32)], ("munn_iv", 1)); P.linje([(25, 33), (28, 33)], ("munn_iv", 2))
+    P.linje([(30, 32), (38, 29)], ("gull", 3)); P.p(39, 28, ("gull", 4))         # strået
+    # ---- stuttklypt, sandfarga hår med rett lugg
+    harflak(P, har, [(19, 2), (12, 5), (9, 11), (9, 16), (11, 20)],
+            [(22, 4), (18, 7), (16, 11), (16, 15), (16, 19)], 3, 2.2, (0.15, 0.3), bolgje=(0.3, 9, 0.0))
+    harflak(P, har, [(20, 2), (28, 1), (35, 3), (38, 8), (38, 13)],
+            [(21, 5), (27, 6), (32, 8), (35, 11), (36, 15)], 3, 2.2, (0.12, 0.35), bolgje=(0.3, 8, 1.0), ytre_mork=False)
+    for x0 in (18, 21, 24, 27, 30, 33):                                          # rett, kort lugg
+        lokk(P, har, [(x0 + 1, 5), (x0, 8), (x0, 10)], [1.4, 1.4, 0.4], (0.0, 0.3))
 
 
 def gran_siluett(P, cx, topp, botn, brei, c):
@@ -789,34 +885,56 @@ def haugbonden(P):
 
 
 def syster(P):
-    """Syster, om lag ti år: rundt andlet, store auge, raude kinn, blått skaut knytt under haka
-    med brune hårlokkar framom, og eit breitt smil med glugg i tanngarden."""
-    hud, har = "hud_barn", "har_syst"
-    P.poly([(8, 48), (11, 42), (18, 39), (30, 39), (37, 42), (40, 48)], ("raud", 3))
-    P.poly([(8, 48), (11, 42), (16, 40), (15, 48)], ("raud", 2))
-    P.poly([(17, 39), (31, 39), (29, 44), (19, 44)], ("lin", 4))
-    for y in range(40, 48, 2): P.p(23, y, ("raud", 1)); P.p(25, y + 1, ("raud", 1))   # snøring
-    P.poly([(19, 32), (28, 33), (28, 39), (20, 39)], (hud, 2))
-    # rundt andlet
-    P.poly([(14, 15), (18, 10), (26, 9), (33, 11), (36, 16), (36, 21), (37, 25), (36, 26), (36, 28),
-            (34, 32), (29, 35), (23, 35), (18, 32), (15, 27), (13, 21)], (hud, 3))
-    P.poly([(13, 21), (16, 20), (18, 27), (23, 35), (18, 32), (15, 27)], (hud, 2))
-    P.poly([(27, 27), (30, 26), (31, 27), (28, 28)], ("kinn", 3))                  # raude kinn
-    nase(P, hud, 36, 22, 4)
-    auge_naer(P, 20, 19, "iris_br", "stor")
-    auge_far(P, 30, 20, "iris_br")
-    P.linje([(21, 17), (25, 16)], (har, 2)); P.linje([(30, 18), (33, 17)], (har, 2))
-    # ope smil med glugg
-    P.poly([(28, 30), (34, 29), (33, 32), (29, 32)], ("munn", 1))
-    P.linje([(29, 30), (33, 30)], ("kvit", 4)); P.p(31, 30, ("munn", 1))
-    # skautet: knytt under haka, hårlokkar i panna
-    P.poly([(10, 22), (11, 12), (16, 6), (25, 4), (33, 6), (38, 11), (39, 18), (37, 20), (35, 14),
-            (29, 12), (22, 12), (16, 15), (14, 24), (15, 32), (12, 32)], ("skaut_b", 3))
-    P.poly([(10, 22), (11, 12), (16, 6), (14, 14), (13, 26), (12, 32)], ("skaut_b", 2))
-    P.poly([(16, 7), (24, 5), (30, 6), (24, 8)], ("skaut_b", 4))
-    for (x, y) in [(18, 8), (26, 7), (32, 9), (13, 18), (22, 10)]: P.p(x, y, ("kvit", 4))   # kvite prikkar
-    P.poly([(16, 15), (22, 12), (29, 12), (33, 15), (28, 14), (22, 15), (18, 18)], (har, 3))
-    P.poly([(24, 35), (30, 35), (28, 39), (26, 40)], ("skaut_b", 3))                # knuten
+    """Syster, om lag ti år: rundt andlet, store auge, raude kinn, blått skaut med kvite prikkar
+    knytt under haka, brune hårlokkar framom, og eit breitt smil med glugg i tanngarden. Raudt liv
+    over kvit skjorte. Bak: tømmerveggen i stova i varmt lys frå grua."""
+    hud, har, iris = "hud_ba6", "har_sy6", "iris_br"
+    P.hud = hud
+    bak_fyll(P, "stove", [(47, 2)])
+    for y in range(H):
+        for x in range(W):
+            if y % 7 == 0: bak_p(P, x, y, ("stove", 0))                        # liggjande tømmer
+            elif y % 7 == 1: bak_p(P, x, y, ("stove", 3))
+            elif y % 7 == 6: bak_p(P, x, y, ("stove", 1))
+    for y in range(H):                                                          # varmt lys frå grua til høgre
+        for x in range(36, W):
+            c = P.bak[y][x]
+            if c[1] in (2, 3) and (x - 36) + abs(y - 30) // 2 > 3: bak_p(P, x, y, ("stove", min(4, c[1] + 1)))
+    # ---- livet og skjorta
+    P.poly([(7, 48), (10, 43), (17, 40), (31, 40), (38, 43), (41, 48)], ("raud", 3))
+    P.poly([(7, 48), (10, 43), (15, 41), (14, 48)], ("raud", 2))
+    P.poly([(17, 40), (31, 40), (29, 44), (19, 44)], ("lin", 4))
+    for y in range(41, 48, 2): P.p(23, y, ("raud", 1)); P.p(25, y + 1, ("raud", 1))   # snøring
+    hals(P, hud, 21, 29, 33, 41)
+    # ---- skautet bak hovudet (andletet blir teikna oppå)
+    P.poly([(9, 30), (10, 16), (15, 8), (24, 5), (33, 7), (38, 13), (40, 22), (38, 31), (35, 36), (14, 36)], ("skaut_b", 3))
+    P.poly([(9, 30), (10, 16), (15, 8), (17, 9), (13, 18), (13, 32), (14, 36)], ("skaut_b", 2))
+    P.poly([(30, 7), (35, 9), (38, 14), (35, 12)], ("skaut_b", 4))
+    # ---- andletet: rundt barneandlet
+    kantar = {13: (21, 30), 14: (19, 32), 15: (18, 33), 16: (17, 34), 17: (16, 35), 18: (16, 35), 19: (16, 35),
+              20: (16, 35), 21: (16, 35), 22: (16, 35), 23: (16, 35), 24: (16, 35), 25: (16, 35), 26: (16, 35),
+              27: (16, 35), 28: (16, 35), 29: (16, 35), 30: (17, 34), 31: (17, 34), 32: (18, 33), 33: (19, 32),
+              34: (21, 31), 35: (23, 29)}
+    andlet(P, hud, kantar, kinn=(22, 31))
+    P.poly([(29, 23), (33, 23), (33.5, 25), (30, 25)], (hud, 5))
+    P.linje([(19, 28), (21, 28)], ("kinn", 3)); P.linje([(30, 28), (32, 28)], ("kinn", 3))   # raude kinn
+    f = AUGE_F(har, hud, iris)
+    rute_k(P, 19, 22, [" LLLL ", "LwihwL", "LwmpwL", "  ll  "], f)                # store, glade auge
+    rute_k(P, 28, 22, ["LLLL ", "wihwL", "wmpwL", " ll  "], f)
+    P.linje([(19, 20), (21, 18), (24, 19)], (har, 1)); P.linje([(28, 19), (31, 18), (33, 20)], (har, 1))
+    nase34(P, hud, 26, 24, 29)
+    P.p(23, 31, ("munn_iv", 1)); P.p(31, 31, ("munn_iv", 1))                    # breitt, ope smil med glugg
+    P.linje([(24, 32), (30, 32)], ("munn_iv", 0)); P.p(26, 32, ("lin", 4)); P.p(28, 32, ("lin", 4))
+    P.linje([(25, 33), (29, 33)], ("munn_iv", 2))
+    # ---- brune hårlokkar under skautet, og kanten på skautet over panna
+    P.poly([(16, 17), (19, 14), (24, 13), (30, 13), (34, 15), (35, 18), (32, 16), (27, 15), (21, 16), (18, 19)], (har, 3))
+    P.linje([(19, 16), (23, 14)], (har, 4)); P.linje([(28, 15), (32, 16)], (har, 2))
+    P.poly([(16, 16), (17, 21), (16, 26), (15, 22)], (har, 2))                  # lokk framom øyret
+    P.poly([(15, 14), (19, 10), (27, 9), (34, 11), (37, 15), (35, 15), (30, 12), (22, 12), (17, 16)], ("skaut_b", 4))
+    for (x, y) in [(18, 8), (26, 7), (32, 9), (12, 20), (22, 10), (37, 20), (11, 27)]:   # kvite prikkar
+        P.p(x, y, ("kvit", 4))
+    # ---- knuten under haka
+    P.poly([(24, 35), (30, 35), (29, 39), (26, 40)], ("skaut_b", 3))
     P.poly([(26, 38), (22, 43), (25, 42)], ("skaut_b", 2)); P.poly([(28, 38), (31, 43), (29, 42)], ("skaut_b", 4))
 
 
@@ -1015,6 +1133,7 @@ def lag(namn, k=None):
     namn = f"{namn}-{k}" if k else namn
     P.omriss()
     if namn.split("-")[0] in ("huldra", "ivar"): selout(P, "hud_hu" if namn.startswith("huldra") else "hud_iv")
+    elif getattr(P, "hud", None): selout(P, P.hud)
     if getattr(P, "bak", None):                                     # bakgrunnen under omrisset (Huldra)
         for y in range(H):
             for x in range(W):

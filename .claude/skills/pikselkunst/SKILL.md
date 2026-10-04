@@ -41,7 +41,9 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
 - Portrett (48 × 48): skriv ein funksjon for personen i `tools/pikselkunst/portrett.py`
   (eigen silhuett og eit kjenneteikn, sjå STILGUIDE.md), legg han i `PERSONAR`, og køyr
   `python tools/pikselkunst/portrett.py <namn>` (skriv .pix og PNG). `portrett.py ark`
-  lagar kontaktark. Sjå portrettet i spelet med
+  lagar kontaktark. Byggjeklossar i FF6-stil (sjå «Portrett i FF6-stil» i STILGUIDE.md):
+  `andlet()` (hudflatene rad for rad), `nase34()`, `oyre()`, `hals()`, `lokk()` og `harflak()`
+  (hår), og `bak_fyll()`, `bak_poly()` og `bak_p()` (bakgrunnen inne i ruta). Sjå portrettet i spelet med
   `skjermbilete.py namn kart=utmarka m=1 "tale=Huldra:Tekst"`.
 - Hus: legg huset til i `BYGG` i `tools/pikselkunst/bygg.py` (breidd, høgd, dører
   og vindauge i fliser) og køyr `python tools/pikselkunst/bygg.py <namn>`. Huset
@@ -160,7 +162,9 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   og alle figurane sine posar saman i `forhand/figurar-posar.png` (`figur.py ark`).
   Sigerfeiring og løn i kampscena: `skjermbilete.py namn kart=utmarka m=1 kamp=vette parti=huldra vinn=1`.
 - Kjensler: alle figurar har standardsettet glad, trist, sint, sjokk, tenkje, nikk (rad 6
-  og 7, laga av `kjensle()` i figur.py). Portrett med kjensler: gi portrettfunksjonen ein
+  og 7, laga av `kjensle()` i figur.py). Berre hovudpersonane (Ivar og Huldra) har
+  kjensleportrett; dei andre har eitt portrett, og figuren på kartet viser kjensla.
+  Portrett med kjensler: gi portrettfunksjonen ein
   parameter k, før personen inn i `PORTRETT_KJENSLER` i portrett.py og i data.js, og køyr
   `portrett.py <namn>`. Sjå begge i spelet med
   `skjermbilete.py namn kart=asen-stova m=1 kjensle=sjokk "tale=Ivar:Tekst"`.

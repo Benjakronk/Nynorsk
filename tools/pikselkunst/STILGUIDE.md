@@ -58,6 +58,11 @@ Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
 - Alle portretta blir teikna i `portrett.py`, éin funksjon per person.
 - Kjensler i portrett: same namn som i figurarka (glad, trist, sint, sjokk, tenkje, nikk og
   eigne). Endre auge, bryn og munn, og legg til ting som fortel (tåre, hand under haka, bok).
+- **Berre hovudpersonane (Ivar og Huldra) har kjensleportrett (runde 81).** Alle andre har eitt
+  portrett med eit uttrykk som passar rolla, og figuren på kartet viser kjensla (kjensleramene i
+  figurarket). Ein `kjensle` i manus på ein av dei andre viser det vanlege portrettet.
+- Kvart portrett har ein eigen bakgrunn inne i ruta (`P.bak`) som passar personen: løa bak storebror,
+  tømmerveggen i stova bak syster, skogen i dis bak Huldra (Ivar er gjennomsiktig).
 
 ## Portrett i FF6-stil (runde 60)
 
