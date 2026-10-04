@@ -11,7 +11,7 @@
    Motor.last(kartId, merke, retning)  lastar eit kart og set spelaren på merket
    Motor.krokar               { tilstand(), modus(), samtale(folk), kiste(k), lampe(),
                                 dor(d), laast(tekst), inngang(i), kamp(lag), meny(),
-                                opna(k), synleg(k) }
+                                opna(k), synleg(k), undersok(naturting) }
    Motor.tale(tekst, namn)    samtaleboks, gir eit løfte som blir oppfylt ved Z.
                               ⟪ord⟫ i teksten blir utheva.
    Motor.fort(linjer)         forteljing på svart skjerm
@@ -180,6 +180,8 @@ window.Motor = (function () {
   // Ei gøymd kiste syner når ho er avdekt; ei kiste med vis berre når vilkåret held (til dømes etter eit flagg).
   const kisteSynleg = k => (!k.gøymd || (krokar.synleg && krokar.synleg(k))) && (!k.vis || !!k.vis(krokar.tilstand()));
   const kisteVed = (x, y) => kart.kister.find(k => k.ved[0] === x && k.ved[1] === y && kisteSynleg(k));
+  // Naturting sett ut med vilje (kart.naturting: { ved, bilete, manus }), til dømes ein bauta på ei «o»-rute.
+  const naturtingVed = (x, y) => (kart.def.naturting || []).find(n => n.ved[0] === x && n.ved[1] === y);
   const folkVed = (x, y) => kart.folk.find(f => f.x === x && f.y === y);
   function kanGaa(x, y) {
     if (x < 0 || y < 0 || x >= kart.w || y >= kart.h) return false;
@@ -342,6 +344,8 @@ window.Motor = (function () {
     if (f) { if (!f.usynleg) { f.dir = [1, 0, 3, 2][spelar.dir]; f.neste = performance.now() + 4000; } if (krokar.samtale) krokar.samtale(f); return; }
     const k = kisteVed(tx, ty);
     if (k && krokar.kiste) { krokar.kiste(k); return; }
+    const nt = naturtingVed(tx, ty);
+    if (nt && nt.manus && krokar.undersok) { krokar.undersok(nt); return; }
     const c = kart.fliser[ty] && kart.fliser[ty][tx];
     if (c === "L" && krokar.lampe) { krokar.lampe(); return; }
     if ((c === "D" || c === "d" || c === "E") && krokar.laast) { const d = (kart.def.dorer || []).find(d => d.ved[0] === tx && d.ved[1] === ty); if (!d || !d.til) krokar.laast((d && d.laast) || "Døra er stengd."); }
@@ -1417,7 +1421,8 @@ window.Motor = (function () {
         const vb = Pikslar.vatn(no, vassfelt(), x, y);
         if (vb) g.drawImage(vb, sx, sy);
       }
-      const nf = erVatn(x, y) ? null : Pikslar.natur(c, x, y);
+      const nt = naturtingVed(x, y);
+      const nf = erVatn(x, y) ? null : nt ? Pikslar.naturting(nt.bilete) : Pikslar.natur(c, x, y);
       if (nf) {
         if (nf.skugge) { g.fillStyle = "rgba(20,24,50,0.3)"; g.beginPath(); g.ellipse(sx + 9, sy + 14, nf.skugge, 2.5, 0, 0, Math.PI * 2); g.fill(); }
         naturFig.push({ y: y + 0.005, x, natur: nf });

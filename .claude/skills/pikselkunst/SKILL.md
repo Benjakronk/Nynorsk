@@ -226,6 +226,8 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
 - Tre, steinar og haugar: `python tools/pikselkunst/natur.py <namn>` (sjå `NATUR`).
   Frittståande tre og steinar: kartteikna `i` (gran), `F` (furu), `t` (bjørk) og `o` (stein, einer)
   vel variant etter plassen frå `NATURTYPE` i `js/rpg/pikslar.js`. Nye variantar må førast inn der.
+  Ting som skal stå ein bestemt stad (bautaen), er ikkje i `NATURTYPE`, men i `naturting` på kartet
+  (`{ ved, bilete, manus }` på ei «o»-rute); dei kan undersøkjast med Z.
   Granene kjem frå `granfigur()` (greinlag som skjørt med hengjande spissar, `tone=-1` gir dei mørke
   innst i skogen, `tone=1` dei lyse framme), furuene frå `furu()` (raudt flass oppe, grå bork nedst,
   flate nåleputer høgt oppe). Variantar: `gran1` til `gran3`, `gran-smal`, `gran-gamal`, `gran-ung`,

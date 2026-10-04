@@ -1621,7 +1621,9 @@ window.Pikslar = (function () {
     "i": ["gran1", "gran2", "gran3", "gran1", "gran2", "gran-smal", "gran-gamal", "gran-ung", "gran-lys"],
     "F": ["furu1", "furu2", "furu-ung", "furu-gamal", "furu1", "furu2"],
     "t": ["bjork1", "bjork2", "bjork3", "bjork1", "bjork-ung", "bjork-dobbel"],
-    "o": ["stein1", "stein2", "stein3", "stein1", "heller", "roys", "einer", "einer", "bauta"],
+    // Bautaen er ikkje lenger ein tilfeldig variant: han blir sett ut med vilje (naturting på kartet).
+    // Lista er like lang som før, så dei andre steinane på karta ikkje byter utsjånad.
+    "o": ["stein1", "stein2", "stein3", "stein1", "heller", "roys", "einer", "einer", "stein2"],
   };
   function natur(teikn, x, y) {
     const typar = NATURTYPE[teikn];
@@ -1640,6 +1642,12 @@ window.Pikslar = (function () {
     return gamalSteinC;
   }
   const haugBilete = () => lastBilete("bilete/spel/natur/haug.png");
+  /* Ein naturting sett ut med vilje (kart.naturting, til dømes ein bauta): biletet frå natur.py står
+     med botnen nedst på flisa, med skugge, i staden for den tilfeldige steinen på «o»-ruta. */
+  function naturting(namn) {
+    const img = lastBilete(`bilete/spel/natur/${namn}.png`);
+    return img ? { img, x: 8 - Math.floor(img.width / 2), y: 16 - img.height, skugge: 7 } : null;
+  }
 
   /* ---------- Kartkantar ----------
      Skogen langs kanten av kartet («#») er ugjennomtrengjeleg og blir teikna etter kanttypen til
@@ -1760,6 +1768,7 @@ window.Pikslar = (function () {
       if (k.bakgrunn) ut.push(`bilete/spel/kamp/${k.bakgrunn}.png`);
     }
     for (const namn of new Set(Object.values(NATURTYPE).flat())) ut.push(`bilete/spel/natur/${namn}.png`);
+    for (const k of Object.values(D.KART)) for (const n of k.naturting || []) ut.push(`bilete/spel/natur/${n.bilete}.png`);
     for (const kt of Object.values(KANTTYPE)) for (const namn of new Set([...kt.framme, ...kt.inne, ...kt.smaa, ...(kt.nede || [])])) ut.push(`bilete/spel/natur/${namn}.png`);
     ut.push("bilete/spel/natur/haug.png");
     for (const id of Object.keys(D.U)) ut.push(`bilete/spel/figurar/${id}.png`);
@@ -1872,6 +1881,6 @@ window.Pikslar = (function () {
     return c;
   }
 
-  return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, nordkant, sidekant, klasse, bygg, natur, haugBilete, KANTTYPE, kantflis, kantfigurar, STAAR, vatn, steingard, FAST, figur, fiende, vesenGang, vesenOpp, lerret, ramp, blend, RAMP,
+  return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, nordkant, sidekant, klasse, bygg, natur, naturting, haugBilete, KANTTYPE, kantflis, kantfigurar, STAAR, vatn, steingard, FAST, figur, fiende, vesenGang, vesenOpp, lerret, ramp, blend, RAMP,
     hent, klar, forhandslast, alleBilete, ILD, LJOS, KJEDE, SETE, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
 })();

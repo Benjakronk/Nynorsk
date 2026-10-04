@@ -36,6 +36,7 @@ PAL = [
     ("T", "#2a3264", "einerbær"), ("U", "#94a4d8", "einerbær dogg"), ("h", "#163430", "einer hole"), ("F", "#a0d098", "einer glans"),
     ("I", "#1a3632", "einer djup"), ("O", "#2a5848", "einer skugge"), ("V", "#408266", "einer"), ("t", "#66aa80", "einer lys"),
     ("g", "#35683a", "gras skugge"), ("G", "#4a8a3f", "gras"), ("H", "#68a84a", "gras lys"), ("J", "#92c65e", "gras glans"),
+    ("+", "#a86a92", "lyng"), ("*", "#5e3c58", "lyng skugge"), ("~", "#8a9a86", "lav grågrøn"), ("^", "#d0d290", "lav lys"),
 ]
 
 
@@ -247,19 +248,70 @@ def roys():
 
 
 def bauta():
-    """Ståande stein, høg og smal, med lav og mose ved foten."""
-    W, H = 14, 24
+    """Bautastein (sjå konsept/bautastein-hedlehaugen.jpg og bautastein-naustdal.jpg): høg, smal og litt
+    skeiv, breiast nede og smalare mot ein ujamn, skrå topp, over to fliser i høgda. Standardperspektivet:
+    toppflata syner ovanfrå som ein lys flekk, framsida er den store flata, sida mot høgre eit smalt
+    mørkt band. Lys frå venstre. Lav i nokre flekker (gul og grågrøn med lys midte), mose nedst, svake
+    runer (hakk) midt på framsida, og gras og lyng rundt foten."""
+    W, H = 16, 36
     L = Lerret(W, H)
-    for y in range(1, 23):
-        b = 4.2 - abs(y - 12) * 0.08 - (1.5 if y < 4 else 0)
+    botn = 31
+    cx = lambda y: 7.0 + (botn - y) / (botn - 3) * 2.4                        # toppen lener seg mot høgre
+    hw = lambda y: 3.4 + 2.4 * ((y - 3) / (botn - 3)) ** 0.9
+    # Ujamne sider: kvar side har sine eigne bulkar (glatta over tre rader), og eit hakk til høgre.
+    bulk = lambda y, s_: (h(0, y // 3, s_) * (3 - y % 3) + h(0, y // 3 + 1, s_) * (y % 3)) / 3 - 0.5
+    xl = lambda y: cx(y) - hw(y) - bulk(y, 401) * 1.4
+    xr = lambda y: cx(y) + hw(y) + bulk(y, 407) * 1.4 - (1.2 if 15 <= y <= 18 else 0)
+    # Skrå, ujamn topp: høgast oppe til venstre (eit brot), lågare mot høgre.
+    ytopp = lambda x: 3 + max(0, x - 7.5) * 1.1 + max(0, 5.5 - x) * 1.4 + (h(x, 0, 408) > 0.6)
+    toppen = {}
+    for y in range(3, botn + 1):
         for x in range(W):
-            dx = (x + .5 - 7) / b
-            if abs(dx) > 1: continue
-            c = "E" if dx < -0.55 else "D" if dx < -0.1 else "C" if dx < 0.5 else "B"
-            if y > 20: c = "n" if dx < 0 else "m"
+            a_, b_ = xl(y), xr(y)
+            u = (x + .5 - a_) / (b_ - a_)
+            if u < 0 or u > 1 or y < ytopp(x): continue
+            if x not in toppen: toppen[x] = y
+            dt = y - toppen[x]
+            if dt < 2 and y < 14: c = "E" if u < 0.6 else "D"                  # toppflata, sett ovanfrå
+            elif u < 0.2: c = "D"                                              # sida mot ljoset
+            elif u > 0.86: c = "A" if u > 0.95 else "B"                        # sida bort frå ljoset
+            elif u < 0.38: c = "D" if h(x // 2, y // 6, 403) > 0.25 else "C"      # framsida: lysare mot venstre
+            elif u > 0.7: c = "B" if h(x, y // 6, 402) > 0.55 else "C"
+            else: c = "C"
             L.p(x, y, c)
-    for (x, y) in [(5, 7), (6, 8), (8, 13), (5, 16), (6, 16)]: L.p(x, y, "l")
-    for k in range(4): L.p(8, 5 + k * 2, "B")
+    # Skuggelina under toppflata (kanten der toppen møter framsida).
+    for x, y0 in toppen.items():
+        if y0 < 10 and L.get(x, y0 + 2) in "CD": L.p(x, y0 + 2, "B" if L.get(x, y0 + 2) == "C" else "C")
+    # Svake runer: korte hakk midt på framsida (mørk line, lys kant til høgre).
+    for k, (dy, form) in enumerate([(12, "|<"), (16, "|>"), (20, "|<"), (24, "|")]):
+        x = round(cx(dy))
+        for i in range(3):
+            if L.get(x, dy + i) in "CD": L.p(x, dy + i, "A" if i == 1 else "B")
+            if L.get(x + 1, dy + i) in "CD": L.p(x + 1, dy + i, "D")
+        if "<" in form and L.get(x - 1, dy) in "CD": L.p(x - 1, dy, "B")
+        if ">" in form and L.get(x + 1, dy + 1) in "CDB": L.p(x + 1, dy + 1, "B")
+    # Lav i flekker: gulgrøn og grågrøn med lys midte.
+    for (lx, ly, slag) in [(5, 10, "l"), (11, 13, "~"), (4, 19, "~"), (10, 27, "l")]:
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1, 2):
+                if (dx in (-1, 2) and dy != 0) or h(lx + dx, ly + dy, 404) < 0.2: continue
+                if L.get(lx + dx, ly + dy) in "ABCDE": L.p(lx + dx, ly + dy, slag)
+        if L.get(lx, ly) != ".": L.p(lx, ly, "^")
+    # Mose nedst på steinen, mest på framsida.
+    for y in range(24, botn + 1):
+        for x in range(W):
+            if L.get(x, y) in "BCD" and h(x, y, 405) < (y - 24) / 9:
+                L.p(x, y, "p" if L.get(x, y) == "D" else "n" if L.get(x, y) == "C" else "m")
+    # Gras og lyng rundt foten: ein tuve som dekkjer botnen, strå som stikk opp, og nokre lyngkvistar.
+    for x in range(1, W - 1):
+        top = botn - 1 + int(h(x, 1, 406) * 2.5) - (1 if 4 < x < 12 else 0)
+        for y in range(top, botn + 3):
+            c = "J" if y == top and h(x, 2, 406) > 0.6 else "H" if y < top + 2 else "G" if y < botn + 2 else "g"
+            L.p(x, y, c)
+        if h(x, 3, 406) > 0.55:
+            for k in range(1 + int(h(x, 4, 406) * 3)): L.p(x + (k > 1) * (1 if x > 8 else -1), top - 1 - k, "H" if k < 2 else "J")
+    for (x, y) in [(2, botn), (3, botn - 1), (12, botn + 1), (13, botn), (7, botn + 2)]:
+        L.p(x, y, "+"); L.p(x, y + 1, "*")
     omriss(L)
     return L
 

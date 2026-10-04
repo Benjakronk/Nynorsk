@@ -440,6 +440,8 @@ window.RPGData = (function () {
       // skråkanten der berget under sluttar, er ein lys rygg som går over i ura (skra: "a" skugge,
       // "b" rygg, "c" fri; sjå Pikslar.stup og forhand/skjerm/r39-skrakant-samanlikning.png).
       skra: "b",
+      // Naturting sett ut med vilje (på ei «o»-rute: fast og med skugge), som Ivar kan undersøkje.
+      naturting: [{ ved: [12, 15], bilete: "bauta", manus: "bauta_hylla" }],
       kameraOpp: { fra: 4, rader: 6, fart: 1 },                         // øvst glir kameraet roleg seks rader opp over kanten
       // Utløysarrutene: på neset og ytst på hylla glir kameraet roleg ned, så Ivar står øvst.
       kameraNed: { ruter: ["21,14", "22,14", "23,14", "15,18", "16,19", "17,18"], rader: 4, fart: 1 },
@@ -521,6 +523,8 @@ window.RPGData = (function () {
       fiendar: { lag: [["vette"], ["irrbloss"], ["vette", "irrbloss"], ["vette", "vette"]] },
       // Lia over utmarka (rad 0 til 12) kom til i runde 27. Ei lagring frå før (22 rader) blir flytt 13 rader ned.
       nyeRader: { n: 13, fraH: 22 },
+      // Ein bauta ved den gamle ferdselsvegen, rett over brua (sjå naturting på asen).
+      naturting: [{ ved: [20, 24], bilete: "bauta", manus: "bauta_vegen" }],
       /* Nedst (rad 13 til 34) er den gamle utmarka med setra, haugen og brua. Over ein skrent (rad 12,
          rampe ved setervegen på x 27) ligg ei hylle i lia, og over ein skrent til (rad 5, rampe på x 24)
          tjernet der bekken spring ut. Bekken fell over begge skrentane. Kista står ytst på hylla vest for
@@ -1519,6 +1523,16 @@ window.RPGData = (function () {
     rottesverm: [{ scene: "rottesverm" }],
     framande: [{ scene: "framande" }, { t: "Ordboka ligg i menyen (X eller Esc). Der ser du orda du har høyrt, formene deira og kven som sa dei." }],
     // Vakta ved kantane: Ivar står på kantruta og snur attende eitt steg.
+    // Bautasteinane (naturting på asen og utmarka).
+    bauta_hylla: [
+      { t: "Ein gammal bautastein står ytst på hylla og lener seg ut mot dalen. Lav har grodd over det meste av han." },
+      { t: "Midt på steinen er det hogge nokre strekar. Det kan vere runer, men dei er nesten utviska." },
+      { s: "Ivar", t: "Far sa at steinen stod her før garden. Kva som står på han, visste ikkje han heller." },
+    ],
+    bauta_vegen: [
+      { t: "Ein bautastein står ved den gamle vegen over brua. Mose veks opp frå foten, og graset står høgt rundt han." },
+      { s: "Ivar", t: "Nokon reiste han for å hugse noko. No er orda borte, og berre steinen står att." },
+    ],
     ikkje_enno: [{ t: "Ivar vil sjå seg om på tunet og i stova først. Kanskje nokon har noko å seie." }, { gaa: "Ivar", sti: "n1" }],
     skiftebrev: [{ dersom: st => talOrd(st) >= 3, da: [{ scene: "skiftebrev" }], elles: [
       { t: "Ivar kjenner at han ikkje er ferdig på tunet enno. Han har berre høyrt nokre få ord." },

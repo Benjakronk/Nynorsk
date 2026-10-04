@@ -1986,3 +1986,26 @@ same måte, uansett kven som tek over.
 - **Rundar:** (1) mørkare innside av ryggen: framleis same tone på setet og sida. (2) mørkare utside: no
   er setet, sida og ryggen tre tydelege flater.
 - **Før og etter:** `forhand/skjerm/r64-samanlikning-stol.png` (før, etter, og Ivar på stolen).
+
+## Runde 66: bautasteinen sett ut med vilje og teikna om
+
+- **Oppdrag:** Brukaren spurde kva «steinsøyla» til høgre for den første brua i utmarka er. Det var
+  `bauta`, ein av variantane for «o» i `NATURTYPE`, vald etter plassen, og biletet (7 × 16) var ein grå
+  stav. Bautaen skal ut av dei tilfeldige variantane, setjast ut med vilje og teiknast om.
+- **Ut av variantane:** `"bauta"` i `NATURTYPE.o` er bytt med `"stein2"`. Lista er like lang, så berre
+  dei tre rutene som hadde bauta (utmarka 20,24 og 22,14, Åsen 12,15) endrar seg.
+- **Sett ut med vilje:** Ny liste `naturting: [{ ved, bilete, manus }]` på kartet. Ein naturting står
+  på ei «o»-rute (fast og med skugge), biletet kjem i staden for den tilfeldige steinen
+  (`Pikslar.naturting`), og Ivar undersøkjer han med Z (`krokar.undersok` i `spel.js`). `sjekk-spel`
+  sjekkar at ruta er «o», at biletet finst og at manuset er gyldig. To bautaer: på hylla på Åsen (12,15,
+  `bauta_hylla`) og ved den gamle vegen rett over brua i utmarka (20,24, `bauta_vegen`). Ingen nye flagg
+  eller ord. (22,14) i utmarka er no ein stein.
+- **Teikna om:** `bauta()` i `natur.py` (16 × 36, over to fliser) etter `konsept/bautastein-hedlehaugen.jpg`
+  og `bautastein-naustdal.jpg`: høg og litt skeiv (toppen lener seg mot høgre), ujamne sider med eit hakk,
+  skrå topp med toppflata ovanfrå som ein lys flekk, lys side mot venstre og smalt mørkt band mot høgre,
+  svake runer midt på framsida, lav i fire flekker (gul og grågrøn med lys midte), mose nedst, og gras og
+  lyng rundt foten. Fire nye fargar i paletten (lyng, lyng skugge, grågrøn lav, lys lav). Tre rundar:
+  først ein glatt, rund «finger», så skeiv topp og ujamne sider, så rolegare framside og tydelegare runer.
+- **Vurdert:** `forhand/skjerm/r66-for-etter.png` (Åsen, utmarka ved brua, utmarka 22,14) og
+  `r66-bauta.png` (gammal og ny bauta).
+- **Står att:** `pix.py sjekk` åtvarar om 8 % einsame pikslar (runer, lav og lyng).

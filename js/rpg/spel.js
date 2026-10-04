@@ -367,6 +367,8 @@
     synleg: () => !!(Motor.kart && st.avdekt[Motor.kart.id]),
     samtale: f => { const m = D.MANUS[f.tale]; if (m) hending(m); },
     laast: t => hending([{ t }]),
+    // Ein naturting sett ut med vilje (til dømes ein bauta): manuset hans når Ivar undersøkjer han.
+    undersok: n => hending(D.MANUS[n.manus]),
     inngang: i => hending(D.MANUS[i.manus]),
     kamp: lag => kamp(lag, false),
     meny: () => meny(),

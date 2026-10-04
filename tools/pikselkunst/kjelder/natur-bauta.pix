@@ -1,39 +1,61 @@
 # namn: natur-bauta
 # type: fiende
 # ut: bilete/spel/natur/bauta.png
-# storleik: 14x24
+# storleik: 16x36
 palett:
   . = -
   o = #0a0514    omriss
+  A = #26242e    stein djup
   B = #44424e    stein skugge
   C = #666472    stein
   D = #8c8a96    stein lys
   E = #b4b2bc    stein glans
   m = #4a6a2a    mose skugge
   n = #6e9038    mose
+  p = #98b44c    mose lys
   l = #c8b050    lav
+  g = #35683a    gras skugge
+  G = #4a8a3f    gras
+  H = #68a84a    gras lys
+  J = #92c65e    gras glans
+  + = #a86a92    lyng
+  * = #5e3c58    lyng skugge
+  ~ = #8a9a86    lav grågrøn
+  ^ = #d0d290    lav lys
 bilete:
-  .....oooo.....
-  ....oEDCBo....
-  ....oEDCBo....
-  ...ooEDCBoo...
-  ..oEEDDCCBBo..
-  ..oEEDDCBBBo..
-  ..oEEDDCCBBo..
-  ..oEElDCBBBo..
-  ..oEEDlCCBBo..
-  ..oEEDDCBBBo..
-  ..oEEDDCCBBo..
-  ..oEEDDCBBBo..
-  ..oEEDDCCBBo..
-  ..oEEDDClBBo..
-  ..oEEDDCCBBo..
-  ..oEEDDCCBBo..
-  ..oEEllCCBBo..
-  ..oEEDDCCBBo..
-  ..oEEDDCCBBo..
-  ..oEEDDCCBBo..
-  ..oEEDDCCBBo..
-  ...onnnmmmo...
-  ...onnnmmmo...
-  ....oooooo....
+  ................
+  ................
+  ......oo........
+  .....oEEo.......
+  .....oEEEo......
+  .....oCCEo......
+  .....oDDBEo.....
+  ....oEDDCEDo....
+  ....oEDDCBDDo...
+  ...oEllDCCBDDo..
+  ....o^lDCCBBDo..
+  ....ollDCCBCBo..
+  ....oDDDBBD~~o..
+  ....oDDDCA~^~o..
+  ....oDDDCBD~~o..
+  ...oDDDCCCBAo...
+  ...oDDDCBDBBo...
+  ...oDDDCABBBo...
+  ...o~~DCBDBBo...
+  ...o^~~CCCBBBo..
+  ..oD~DDBBDBBBo..
+  ..oDDDDCADBBBo..
+  ..oDDDDCBDBBAo..
+  ..oDDDDCCCBBAo..
+  ..oDDDCCBDBBAo..
+  .oDDDDCCADmBAo..
+  .oDpDpCCBDlmAo..
+  .oDDDDnCnl^llo..
+  ooDppDCCCClHmo..
+  JoHpDpHHnnHHBHo.
+  oHH+JCHHHJJHHHo.
+  oH+*HHHGHHHHH+Jo
+  oJ*HGHGGGGGG+*Ho
+  oHgHggg+gggg*ggo
+  .oooooo*ooooooo.
+  .......o........
