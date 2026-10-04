@@ -930,16 +930,20 @@ def kyrkjeskip():
 
 def fattigblokk():
     """Fattigblokka ved inngangen: ein tjukk, raudmåla stokk med jernband, lås og ei sprekk øvst til
-    myntane, som i våpenhusa i mange bygdekyrkjer. 1 flis."""
+    myntane, som i våpenhusa i mange bygdekyrkjer. 1 flis. Standardperspektivet (runde 71): toppen er
+    ei toppflate (5 pikslar) med jernbeslag og myntsprekka sett ovanfrå."""
     W, H = 16 + 8, 30
     L = Lerret(W, H)
-    for y in range(4, H - 1):
+    for y in range(7, H - 1):
         for x in range(7, 17): L.p(x, y, "E" if x < 9 else "R" if x < 14 else "r")
-    for x in range(7, 17): L.p(x, 3, "R"); L.p(x, 2, "E" if x < 12 else "R")          # toppen
-    L.p(10, 2, "v"); L.p(11, 2, "v"); L.p(12, 2, "v")                                  # sprekka
-    for y in (6, 14, 22):                                                              # jernband
+    for y in range(2, 7):                                                              # toppen sett ovanfrå
+        for x in range(7, 17): L.p(x, y, "E" if y < 6 else "R")
+    for x in range(7, 17): L.p(x, 4, "X" if x < 12 else "V")                          # jernband over toppen
+    for y in range(2, 7): L.p(11, y, "X"); L.p(12, y, "V")
+    L.p(9, 3, "v"); L.p(10, 3, "v"); L.p(9, 5, "a"); L.p(14, 5, "v"); L.p(15, 5, "v")   # myntsprekka og naglar
+    for y in (9, 16, 23):                                                              # jernband
         for x in range(7, 17): L.p(x, y, "X" if x < 10 else "V")
-    _stempel(L, 10, 9, ["vVv", "vXv", ".v."])                                           # låsen
+    _stempel(L, 10, 11, ["vVv", "vXv", ".v."])                                         # låsen
     for x in range(5, 19): L.p(x, H - 1, "t"); L.p(x, H - 2, "T" if x < 15 else "t")    # foten
     omriss(L)
     return L
@@ -953,7 +957,10 @@ def jernomn():
     L = Lerret(W, H)
     for y in range(26, 46):
         for x in range(5, 18): L.p(x, y, "X" if x < 7 else "V" if x < 15 else "v")
-    for x in range(4, 19): L.p(x, 25, "X"); L.p(x, 24, "V")                           # topplata
+    for y in range(21, 26):                                                            # topplata sett ovanfrå (runde 71)
+        for x in range(4, 19): L.p(x, y, "X" if y < 25 and x < 15 else "V")
+    for (x, y) in ((7, 22), (8, 22), (9, 22), (6, 23), (10, 23), (7, 24), (8, 24), (9, 24)): L.p(x, y, "v")   # kokeringen
+    for x in range(4, 19): L.p(x, 26, "v")
     for x in range(4, 19): L.p(x, 46, "V")
     for bx in (5, 16):                                                                 # beina
         for y in range(47, 51): L.p(bx, y, "v"); L.p(bx + 1, y, "V")
@@ -962,7 +969,7 @@ def jernomn():
         for x in range(8, 15): L.p(x, y, "v")
     for x in range(8, 15): L.p(x, 35, "X"); L.p(x, 42, "X")
     L.p(14, 38, "X")
-    for y in range(4, 24): L.p(10, y, "V"); L.p(11, y, "V"); L.p(12, y, "v"); L.p(9, y, "X")   # røyret
+    for y in range(4, 21): L.p(10, y, "V"); L.p(11, y, "V"); L.p(12, y, "v"); L.p(9, y, "X")   # røyret
     for y in (10, 18):
         for x in range(9, 13): L.p(x, y, "X")
     for x in range(9, W): L.p(x, 2, "X"); L.p(x, 3, "V"); L.p(x, 4, "v")              # bogen inn i veggen
@@ -1120,22 +1127,24 @@ def tarnbjelke(due=False):
 def galleribrystning():
     """Brystninga på galleriet sett frå galleriet (bakfrå), kraftig og mørk i forgrunnen: tjukk
     handlist av mørk eik med lys kant, dreia balustrar med glipe imellom (utsynet ned i skipet syner
-    gjennom), stolpar med knapp og ein tung sokkel. 21 fliser."""
-    W, H = 21 * 16 + 8, 30
+    gjennom), stolpar med knapp og ein tung sokkel. 21 fliser. Standardperspektivet (runde 71): handlista
+    er ei brei toppflate (4 pikslar), balustrane er korte (6 pikslar), og knappane på stolpane er sette
+    ovanfrå."""
+    W, H = 21 * 16 + 8, 23
     L = Lerret(W, H)
     x0, x1 = 4, W - 5
     for x in range(x0, x1 + 1):
-        L.p(x, 4, "O"); L.p(x, 5, "M"); L.p(x, 6, "M"); L.p(x, 7, "J"); L.p(x, 8, "j")   # handlista
-        for y in range(H - 5, H): L.p(x, y, "J" if y < H - 3 else "j")                 # sokkelen
-        L.p(x, H - 6, "M")
-    for x in range(x0 + 3, x1 - 2, 6):                                     # dreia balustrar
-        for y in range(9, H - 6):
-            b = 2 if y in (11, 12, H - 9, H - 8) else 1 if y in (10, 13, 18, H - 10) else 0
+        L.p(x, 4, "O"); L.p(x, 5, "O"); L.p(x, 6, "M"); L.p(x, 7, "M"); L.p(x, 8, "J"); L.p(x, 9, "j")   # handlista
+        for y in range(H - 5, H): L.p(x, y, "M" if y == H - 5 else "J" if y < H - 2 else "j")   # sokkelen: toppkant og kort framside
+    for x in range(x0 + 3, x1 - 2, 6):                                     # dreia balustrar, korte
+        for y in range(10, H - 5):
+            b = 1 if y in (11, H - 7) else 0
             for k in range(-b, 3 + b): L.p(x + k, y, "O" if k <= 0 else "M" if k == 1 else "J")
-    for x in range(x0, x1 + 1, 48):                                        # stolpar med knapp
-        for y in range(1, H):
+    for x in range(x0, x1 + 1, 48):                                        # stolpar med knapp sett ovanfrå
+        for y in range(4, H):
             for k in range(5): L.p(x + k, y, "O" if k == 0 else "M" if k < 3 else "J" if k < 4 else "j")
-        L.p(x + 1, 0, "O"); L.p(x + 2, 0, "M"); L.p(x + 3, 0, "J")
+        for (dx, dy, c) in ((1, 1, "O"), (2, 1, "O"), (3, 1, "M"), (0, 2, "O"), (1, 2, "O"), (2, 2, "M"), (3, 2, "M"), (4, 2, "J"),
+                            (1, 3, "M"), (2, 3, "J"), (3, 3, "j")): L.p(x + dx, dy, c)
     omriss(L)
     return L
 
@@ -1159,7 +1168,10 @@ def orgel():
     for y in range(22, H - 1):                                             # kassa
         for x in range(6, 50): L.p(x, y, "U" if x < 9 else "T" if x < 46 else "t")
     for x in range(5, 51): L.p(x, 21, "Y"); L.p(x, H - 1, "t"); L.p(x, 36, "Y")
-    for x in range(10, 46): L.p(x, 38, "w" if x % 3 else "v"); L.p(x, 39, "W")   # klaviaturet
+    for x in range(8, 48): L.p(x, 36, "Y"); L.p(x, 37, "t")                 # klaviaturet sett ovanfrå (runde 71)
+    for y in range(38, 43):
+        for x in range(9, 47): L.p(x, y, ("w" if x % 2 else "W") if y > 39 or x % 4 in (1, 2) else "v")
+    for x in range(8, 48): L.p(x, 43, "T"); L.p(x, 44, "t")
     _stempel(L, 22, 33, ["pppppppppppp", "pPPPPpPPPPPp"])                    # noteboka
     for i, x in enumerate(range(10, 46, 3)):                               # pipene
         top = 6 + abs(i - 6) * 2
@@ -1424,10 +1436,11 @@ def benk(n=4):
 
 
 def benk_staande(n=4):
-    """Ståande benk (på langs nedover), n fliser lang. Same planke, sett frå enden."""
+    """Ståande benk (på langs nedover), n fliser lang. Same planke, sett frå enden. Planken er 10
+    pikslar brei sett ovanfrå (runde 71, som den liggjande benken), enden kort."""
     W, H = 16 + 8, n * 16 + 4
     L = Lerret(W, H)
-    x0, x1 = 8, 15
+    x0, x1 = 7, 16
     ybak, yfram = 1, H - 10                                        # setet: golv 2 til n*16-3, lyft 5
     for y in range(ybak, yfram + 1):
         for x in range(x0, x1 + 1):

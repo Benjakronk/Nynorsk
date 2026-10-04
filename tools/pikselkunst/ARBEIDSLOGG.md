@@ -2090,3 +2090,19 @@ same måte, uansett kven som tek over.
 - **Før og etter:** `forhand/skjerm/pr-samanlikning-preste.png` og `pr-samanlikning-ekset.png`.
 - **Står att:** jernomnen (`kakkelomn`) og golvuret i prestegarden er høge og sett framanfrå (høge ting
   kan ha lang framside, men toppflata kunne synt betre).
+
+## Runde 71: korstolane, fattigblokka, jernomnen, orgelet og brystninga i kyrkja
+
+- **Research:** «Standardperspektiv for objekt» i STILGUIDE.md (rekkverk: handlist 4 til 5 pikslar, korte
+  balustrar på 5 til 6) og galleribileta frå runde 53 og 55. FF6-tilesetet for omnar og kister.
+- **Brystninga på galleriet:** handlista er ei brei toppflate (4 pikslar), balustrane 6 pikslar (før 15),
+  sokkelen har toppkant, og knappane på stolpane er sette ovanfrå. Biletet er 7 pikslar lågare.
+- **Orgelet:** klaviaturet er ei toppflate med kvite og svarte tangentar sett ovanfrå og ein list framme.
+- **Jernomnen:** topplata er ei toppflate (5 pikslar) med kokering. Luka med gloa er der ho var (`ILD`).
+- **Fattigblokka:** toppen er ei toppflate med jernband i kross, myntsprekk og naglar.
+- **Korstolane** (`benk-staande`, `-kort`): planken er 10 pikslar brei sett ovanfrå, som den liggjande
+  benken. Setehøgda er uendra.
+- **Rundar:** (1) alle fem. (2) Sett i spelet: organisten dekkjer klaviaturet, men orgelet og brystninga
+  les no som sett ovanfrå.
+- **Før og etter:** `forhand/skjerm/pr-samanlikning-galleri.png` (galleriet), `pr-for-omn-spel.png` og
+  `pr-omn-spel.png`, `pr-for-blokk-spel.png` og `pr-blokk-spel.png`.
