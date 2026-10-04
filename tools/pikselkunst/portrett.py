@@ -1129,6 +1129,8 @@ def bygd_mann(P):
             if c and c[0] == hud and (y >= 32 or x < 18 + (y - 25) // 3 or x > 34 - (y - 25) // 3 or (y == 29 and 23 <= x <= 30)):
                 P.p(x, y, (har, 1 if c[1] <= 2 else 2 if c[1] == 3 else 3))
     P.linje([(24, 31), (29, 31)], ("munn", 1))
+    # Grunnflate under lokkane, så himmelen ikkje syner gjennom sveisen over panna
+    P.poly([(11, 15), (12, 7), (18, 3), (28, 2), (36, 5), (38, 11), (31, 9), (22, 9), (16, 11)], (har, 2))
     harflak(P, har, [(19, 3), (12, 6), (9, 12), (9, 17), (11, 21)], [(22, 6), (18, 8), (16, 12), (16, 16), (16, 19)],
             3, 2.2, (0.15, 0.3), bolgje=(0.4, 9, 0.0))
     harflak(P, har, [(20, 3), (28, 2), (35, 4), (38, 9), (38, 14)], [(21, 7), (27, 8), (32, 10), (35, 12), (36, 16)],
