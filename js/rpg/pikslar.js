@@ -659,29 +659,32 @@ window.Pikslar = (function () {
      14 pikslar høgare enn flisa og sortert etter djupn, så ein kan gå bak han og bli dekt nedst.
      Skiene går i eit mønster som går opp i 16 pikslar, så garden held fram utan skøyt frå flis til
      flis. Utan nabo til venstre eller høgre sluttar skiene ved stolpane. maske som hjå steingard. */
-  const SKIGARD_LOFT = 14;
+  // Standardperspektivet (runde 72): garden er lågare (10 pikslar over flisa i staden for 14), skiene
+  // ligg slakare, og staurane har toppen sett ovanfrå. Han dekkjer
+  // framleis føtene og beina til den som går bak han.
+  const SKIGARD_LOFT = 10;
   function skigard(v, maske) {
     const k = `skigard:${v}:${maske}`;
     if (cache.has(k)) return cache.get(k);
     const H = S + SKIGARD_LOFT, c = lerret(S, H), g = c.getContext("2d");
-    const TRE = ["#3a2a1e", "#5e4a38", "#86705a", "#ad977a"], BAND = "#2a2018";
+    const TRE = ["#3a2a1e", "#5e4a38", "#86705a", "#ad977a", "#c8b494"], BAND = "#2a2018";
     const botn = SKIGARD_LOFT + 11;                                    // der stolpane står i bakken
     const V = maske & 8, A = maske & 2;
-    g.fillStyle = "rgba(20,24,50,.3)"; g.fillRect(V ? 0 : 4, botn + 1, (A ? 16 : 12) - (V ? 0 : 4), 2);   // skugge på bakken
+    g.fillStyle = "rgba(20,24,50,.3)"; g.fillRect(V ? 0 : 4, botn, (A ? 16 : 12) - (V ? 0 : 4), 3);   // skugge på bakken
     // Eit par tynne staurar: den venstre bak skiene, den høgre framfor (skiene ligg mellom dei).
-    const staur = sx => { px(g, sx, 4, TRE[2], 1, botn - 4); px(g, sx + 1, 4, TRE[0], 1, botn - 4); px(g, sx, 3, TRE[3], 2, 1); };
+    const staur = sx => { px(g, sx, 3, TRE[2], 1, botn - 3); px(g, sx + 1, 3, TRE[0], 1, botn - 3); px(g, sx, 2, TRE[4], 2, 1); px(g, sx, 1, TRE[3], 2, 1); };
     staur(5);
-    // Skiene: tette, breie og på skrå opp mot høgre (lys overside, mellomtone, mørk underside).
+    // Skiene: breie og på skrå opp mot høgre, slakare enn før; den lyse oversida er to pikslar brei.
     for (let x = 0; x < S; x++) {
       if ((!V && x < 5) || (!A && x > 10)) continue;
       for (const o of [0, 5, 10]) {                                     // tre skier per 16 pikslar, med luft mellom
-        const t = (x - o + 16 + v) % 16, y = botn - 3 - t;
-        if (y < 5 || y > botn - 2) continue;
+        const t = (x - o + 16 + v) % 16, y = botn - 3 - Math.round(t * 0.75);
+        if (y < 4 || y > botn - 2) continue;
         px(g, x, y, TRE[3]); px(g, x, y + 1, TRE[2]); px(g, x, y + 2, TRE[0]);
       }
     }
     staur(9);
-    for (const by of [8, 15]) { px(g, 5, by, BAND, 6, 1); px(g, 5, by + 1, TRE[0], 6, 1); }   // vidjeband rundt paret
+    for (const by of [6, 12]) { px(g, 5, by, BAND, 6, 1); px(g, 5, by + 1, TRE[0], 6, 1); }   // vidjeband rundt paret
     // Omriss: mørk kant rundt alt som er teikna, så garden les mot graset
     const d = g.getImageData(0, 0, S, H), a = i => d.data[i * 4 + 3] > 0;
     const kant = [];
@@ -702,25 +705,33 @@ window.Pikslar = (function () {
     const m = MUR, fro = v * 7;
     if (vass) {
       const x0 = (maske & 8) ? 0 : 1, x1 = (maske & 2) ? 16 : 15;
+      // Standardperspektivet (runde 72): toppen av muren er ei brei flate av toppsteinar med mose sett
+      // ovanfrå (8 pikslar, to rader), framsida er kortare (to lag, 9 pikslar).
       g.fillStyle = "rgba(20,24,50,.3)"; g.fillRect(x0 + 1, 20, x1 - x0, 2);
-      px(g, x0, 7, m[0], x1 - x0, 14);                               // fuger
+      px(g, x0, 3, m[0], x1 - x0, 17);                              // fuger
       let x = x0;                                                   // nedre lag: store steinar
-      while (x < x1) { const w = Math.min(x1 - x, 4 + Math.floor(hash(x, 1, fro) * 4)); murstein(g, x, 14, w, 6, fro); x += w; }
+      while (x < x1) { const w = Math.min(x1 - x, 4 + Math.floor(hash(x, 1, fro) * 4)); murstein(g, x, 15, w, 5, fro); x += w; }
       x = x0 - 2;                                                   // øvre lag, forskote
-      while (x < x1) { const w = 3 + Math.floor(hash(x, 2, fro) * 4); const xs = Math.max(x0, x), we = Math.min(x1, x + w) - xs; if (we > 0) murstein(g, xs, 9, we, 5, fro + 1); x += w; }
-      // toppsteinar med mose
-      px(g, x0, 5, m[1], x1 - x0, 4);
-      x = x0;
-      while (x < x1) { const w = Math.min(x1 - x, 3 + Math.floor(hash(x, 3, fro) * 3)); px(g, x, 5, m[3], w, 3); px(g, x, 5, m[4], Math.max(1, w - 1), 1); x += w + 1; }
-      for (let i = 0; i < 4; i++) { const mx = x0 + Math.floor(hash(i, 4, fro) * (x1 - x0 - 2)); px(g, mx, 5, i % 2 ? "#6e9038" : "#98b44c", 2, 1); px(g, mx, 6, "#4a6a2a"); }
-      px(g, x0 + 3 + v, 16, "#c8b050"); px(g, x1 - 5, 11, "#c8b050");
-      if (!(maske & 8)) px(g, x0 - 1, 5, "#0a0514", 1, 16);
-      if (!(maske & 2)) px(g, x1, 5, "#0a0514", 1, 16);
-      px(g, x0, 4, "#0a0514", x1 - x0, 1); px(g, x0, 20, "#0a0514", x1 - x0, 1);
+      while (x < x1) { const w = 3 + Math.floor(hash(x, 2, fro) * 4); const xs = Math.max(x0, x), we = Math.min(x1, x + w) - xs; if (we > 0) murstein(g, xs, 11, we, 4, fro + 1); x += w; }
+      // toppsteinar sett ovanfrå: to rader, lyse oppe, mørk kant framme, mose i fugene
+      for (const [ry, rh, sk] of [[3, 4, 3], [7, 4, 5]]) {
+        x = x0 - (sk % 3);
+        while (x < x1) {
+          const w = 3 + Math.floor(hash(x, ry, fro) * 3), xs = Math.max(x0, x), we = Math.min(x1, x + w) - xs;
+          if (we > 0) { px(g, xs, ry, m[3], we, rh - 1); px(g, xs, ry, m[4], Math.max(1, we - 1), 1); px(g, xs, ry + rh - 1, m[1], we, 1); px(g, xs + we - 1, ry, m[2], 1, rh - 1); }
+          x += w + (hash(x, ry + 1, fro) > 0.6 ? 1 : 0);
+        }
+      }
+      px(g, x0, 10, m[1], x1 - x0, 1);                              // framkanten av toppen
+      for (let i = 0; i < 5; i++) { const mx = x0 + Math.floor(hash(i, 4, fro) * (x1 - x0 - 2)), my = 3 + Math.floor(hash(i, 5, fro) * 6); px(g, mx, my, i % 2 ? "#6e9038" : "#98b44c", 2, 1); px(g, mx + 1, my + 1, "#4a6a2a"); }
+      px(g, x0 + 3 + v, 17, "#c8b050"); px(g, x1 - 5, 12, "#c8b050");
+      if (!(maske & 8)) px(g, x0 - 1, 3, "#0a0514", 1, 18);
+      if (!(maske & 2)) px(g, x1, 3, "#0a0514", 1, 18);
+      px(g, x0, 2, "#0a0514", x1 - x0, 1); px(g, x0, 20, "#0a0514", x1 - x0, 1);
     }
     if ((maske & 1) || (maske & 4)) {
       // loddrett: toppsteinar sett ovanfrå, frå topp til botn av flisa
-      const y0 = (maske & 1) ? 0 : 5, y1 = (maske & 4) ? 22 : 20;
+      const y0 = (maske & 1) ? 0 : 3, y1 = (maske & 4) ? 22 : 20;
       px(g, 3, y0, "#0a0514", 10, y1 - y0);
       let y = y0;
       while (y < y1 - 1) { const h = Math.min(y1 - 1 - y, 3 + Math.floor(hash(1, y, fro) * 3)); const w = 7 + Math.floor(hash(2, y, fro) * 2); murstein(g, 4 + Math.floor((8 - w) / 2), y, w, h, fro); y += h; }
@@ -733,10 +744,10 @@ window.Pikslar = (function () {
     if ((lodd && vass2) || lodd + vass2 <= 1) {
       g.fillStyle = "rgba(20,24,50,.3)"; g.fillRect(14, 3, 2, 19);
       px(g, 2, 0, "#0a0514", 12, 22);
-      murstein(g, 3, 5, 10, 8, fro + 3); murstein(g, 3, 13, 10, 8, fro + 4);
-      px(g, 2, 1, m[1], 12, 4); px(g, 3, 1, m[4], 10, 1); px(g, 3, 2, m[3], 10, 2);   // dekkstein
-      px(g, 2, 4, "#0a0514", 12, 1);
-      px(g, 4, 1, "#98b44c", 3, 1); px(g, 5, 2, "#6e9038", 2, 1); px(g, 10, 3, "#6e9038");
+      murstein(g, 3, 9, 10, 6, fro + 3); murstein(g, 3, 15, 10, 6, fro + 4);
+      px(g, 2, 1, m[1], 12, 7); px(g, 3, 1, m[4], 10, 1); px(g, 3, 2, m[3], 10, 5); px(g, 12, 2, m[2], 1, 5);   // dekkstein: stor toppflate
+      px(g, 2, 8, "#0a0514", 12, 1);
+      px(g, 4, 2, "#98b44c", 3, 1); px(g, 5, 3, "#6e9038", 2, 1); px(g, 10, 5, "#6e9038"); px(g, 7, 6, "#98b44c", 2, 1);
     }
     cache.set(k, c);
     return c;

@@ -2106,3 +2106,18 @@ same måte, uansett kven som tek over.
   les no som sett ovanfrå.
 - **Før og etter:** `forhand/skjerm/pr-samanlikning-galleri.png` (galleriet), `pr-for-omn-spel.png` og
   `pr-omn-spel.png`, `pr-for-blokk-spel.png` og `pr-blokk-spel.png`.
+
+## Runde 72: skigarden og steingarden ute
+
+- **Research:** skigarden på Norsk Folkemuseum (`konsept/skigard-nfm.jpg`, ført inn i KJELDER.md): skiene
+  ligg slakt mellom staurpar som stikk godt opp over dei. Steingardane i `konsept/steingard-*.jpg`: flate
+  toppsteinar med mose. Rekkverksregelen i STILGUIDE.md (brei topp, kort side).
+- **Steingarden** (`steingard()` i pikslar.js): toppen er to rader toppsteinar sett ovanfrå med mose i
+  fugene (8 pikslar), framsida to lag (9 pikslar, før 14). Hjørnestolpane har ein stor dekkstein sett
+  ovanfrå. Garden tilpassar seg naboane som før (maske), og dei loddrette stykka byrjar på same høgd.
+- **Skigarden** (`skigard()`): `SKIGARD_LOFT` 10 i staden for 14, skiene ligg slakare, og staurane har
+  toppen sett ovanfrå og stikk opp over skiene som på biletet. Den som går bak garden, blir framleis
+  dekt frå beina og ned (sjå `pr-samanlikning-skigard.png`).
+- **Rundar:** (1) begge teikna om. (2) Skiene vart for bleike med den lysaste tonen øvst: tilbake til dei
+  gråna tonane, berre slakare.
+- **Før og etter:** `forhand/skjerm/pr-samanlikning-mur.png` og `pr-samanlikning-skigard.png`.
