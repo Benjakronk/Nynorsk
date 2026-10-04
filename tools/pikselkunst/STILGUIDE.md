@@ -40,8 +40,10 @@ Alt nytt skal kunne stå ved sida av han utan å skilje seg ut.
 
 Etter Final Fantasy VI (Advance) og Fire Emblem på GBA:
 
-- Kvar person har sin eigen silhuett og eit kjenneteikn. Ivar: ustyrleg mørkt hår,
-  fjørpenn bak øyret, fregner, sekkeband. Storebror: stuttklypt sandhår, skjeggstubb,
+- Kvar person har sin eigen silhuett og eit kjenneteikn. Ivar: andletet til ein ung Ivar Aasen
+  (sjå fotografia i konsept/: langt, breitt og rektangulært andlet, høg panne, brei, kantete kjeve og
+  hake, lang og brei nase, lang overleppe, brei og rett munn, små, djupe auge under tunge augelok,
+  store øyre), ustyrleg mørkt hår, fjørpenn oppå øyret, fregner, sekkeband. Storebror: stuttklypt sandhår, skjeggstubb,
   strå i munnen. Huldra: gullhår over kanten, blomekrans. Den framande: flosshatt,
   briller som blenkjer. Presten: pipekrage. Haugbonden: mosehatt, lysande auge.
   Aldri palettbyte av ei felles grunnform.

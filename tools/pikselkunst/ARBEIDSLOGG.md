@@ -2121,3 +2121,30 @@ same måte, uansett kven som tek over.
 - **Rundar:** (1) begge teikna om. (2) Skiene vart for bleike med den lysaste tonen øvst: tilbake til dei
   gråna tonane, berre slakare.
 - **Før og etter:** `forhand/skjerm/pr-samanlikning-mur.png` og `pr-samanlikning-skigard.png`.
+
+## Runde 73: Ivar teikna om etter fotografia av Ivar Aasen (portrett runde 4)
+
+- **Frå brukaren:** Andletet til Ivar vart altfor spisst, utveksten på høgre side var der framleis, og den
+  triste munnen var dårlegare enn før. Fjørpennen gjekk over panna. Teikn han om etter bilete av den ekte
+  Ivar Aasen, som ein ung versjon av det andletet.
+- **Research:** fem bilete frå Wikimedia Commons, førde inn i `konsept/KJELDER.md`: fotografia frå 1871,
+  1881 og 1884 (Carl Christian Wischmann, CC BY-SA 3.0), eit fotografi utan årstal (public domain) og bysta
+  i bronse frå 1896 (public domain). Kjenneteikn: langt, breitt og rektangulært andlet; svært høg panne;
+  breie, flate kinnbein; brei, kantete kjeve og ei brei, firkanta hake; lang, rett og brei nase med breie
+  nasebor; lang overleppe; brei, rett og smal munn med munnvikane litt ned; små, djupt liggjande auge under
+  tunge augelok og rette bryn som går litt ned ytst (eit alvorleg, litt tungsindig blikk); store øyre.
+  Hårfestet er høgt (skalla som gamal) med håret strøke bakover og kransskjegg.
+- **Gjort:** Ivar, om lag 19 år, er teikna på nytt i tre kvart framanfrå (som Huldra), så profilen med
+  nasetippen ikkje lenger stikk ut på høgre side. Andletet er langt og rektangulært med brei kjeve og
+  kantete hake, djupe augehole, lang, brei nase (lys rygg, mellomtone på skuggesida, breie nasebor), lang
+  overleppe og brei, rett munn. Ung hud, fyldigare kinn, fregner og ustyrleg, mørkebrunt hår med sideskil
+  og høg panne. Det store øyret sit til venstre for andletet, med eit mørkt skilje mot kinnet.
+  Fjørpennen ligg oppå øyret, stukken inn mellom øyret og håret, og peikar bakover og opp. Alle åtte
+  kjenslene er nye; den triste munnen er ein kort boge med munnvikane ned, som i runde 60.
+- **Rundar:** (1) øyret forsvann i kinnet og under håret: eige skilje og håret bak sluttar over øyret.
+  (2) Ved tenkje vart brynet, augeholet og augeloket ein svart blokk: berre det fjerne brynet løftar seg.
+  Handa under haka fekk kant og fingrar.
+- **Etter:** `forhand/portrett4-ivar-aasen.png` (referansebileta ved sida av den nye Ivar, og runde 69 og
+  no med alle kjenslene) og `forhand/skjerm/portrett4-taleboks.png` (nøytral, trist og ivrig i spelet).
+- **Står att:** dei andre portretta. Den nøytrale Ivar ser litt tungsindig ut (dei tunge augeloka frå
+  Aasen); ivrig og glad viser den ivrige guten.
