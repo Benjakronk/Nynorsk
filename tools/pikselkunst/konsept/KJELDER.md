@@ -69,3 +69,5 @@ Lærdommane frå dei står i STILGUIDE.md.
 | [ivar-aasen-1884.jpg](ivar-aasen-1884.jpg) | Ivar Aasen 1884: andletsform til portrettet av unge Ivar | [Carl Christian Wischmann](https://commons.wikimedia.org/wiki/File:Ivar_Aasen,_1884_IAAM-F-00003.jpg) | CC BY-SA 3.0 |
 | [ivar-aasen-finne-1896.png](ivar-aasen-finne-1896.png) | Byste av Ivar Aasen i bronse (1896): andletsform og kjeve | [Augusta Finne](https://commons.wikimedia.org/wiki/File:Augusta_Finne_Ivar_Aasen_1896.png) | Public domain |
 | [ivar-aasen.jpg](ivar-aasen.jpg) | Ivar Aasen: andletsform til portrettet av unge Ivar | [](https://commons.wikimedia.org/wiki/File:Ivar_Aasen.jpg) | Public domain |
+| [kakkelomn-ardrebo.jpg](kakkelomn-ardrebo.jpg) | Kakkelomn med glaserte fliser, gesims og krone (runde 74) | [Bene Riobó](https://commons.wikimedia.org/wiki/File:Kakelugn_en_Ardrebo.jpg) | CC BY-SA 4.0 |
+| [golvur-mora-1834.jpg](golvur-mora-1834.jpg) | Golvur (Mora-ur) frå 1834: urskive, kasse og krone (runde 74) | [G N Frykman at English Wikipedia](https://commons.wikimedia.org/wiki/File:Mora_Clock_1834.jpg) | Public domain |

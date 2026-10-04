@@ -1979,23 +1979,31 @@ def panel(L, x0, y0, x1, y1, fyll="M", lys="O", mork="j"):
 
 
 def kakkelomn():
-    """Etasjeomn i støypejern på bein, med relieff, glør i ei luke og røyrpipe opp i veggen."""
-    W, H = 16 + 8, 2 * 16 + 16
+    """Kakkelomn av kvite, glaserte fliser (etter kakkelomnen i konsept/kakkelomn-ardrebo.jpg), i
+    standardperspektivet (runde 76): ein brei nedre del med ildluke og glør (ILD i pikslar.js), ei
+    hylle med toppflate, eit smalare tårn med spjeldknapp, ein gesims og ei krone der toppflatene er
+    sette ovanfrå. Flisene har fuger, og sida mot høgre ligg i skugge. 1 flis brei, 2 djup."""
+    W, H = 16 + 8, 2 * 16 + 12
     L = Lerret(W, H)
-    for y in range(0, 12): L.p(10, y, "V"); L.p(11, y, "X"); L.p(12, y, "V"); L.p(13, y, "v")     # røyr
-    for x in range(5, 19): L.p(x, 12, "X"); L.p(x, 13, "V")                                           # krone
-    for y in range(14, 26):                                                                           # øvre etasje
-        for x in range(6, 18): L.p(x, y, "X" if x == 6 else "v" if x == 17 else "V")
-    panel(L, 8, 16, 15, 23, "V", "X", "v")
-    for x in range(4, 20): L.p(x, 26, "X"); L.p(x, 27, "v")                                           # hylle mellom
-    for y in range(28, H - 4):                                                                        # nedre etasje
-        for x in range(5, 19): L.p(x, y, "X" if x == 5 else "v" if x == 18 else "V")
-    for y in range(31, 39):                                                                           # luke med glør
-        for x in range(8, 16): L.p(x, y, "N" if y < 33 else "F" if (x + y) % 3 else "f")
-    for x in range(8, 16): L.p(x, 30, "X"); L.p(x, 39, "v")
-    for x in range(4, 20): L.p(x, H - 4, "X")
-    for x in (6, 17):                                                                                 # bein
-        for y in range(H - 3, H): L.p(x, y, "V")
+    def fliser(x0, x1, y0, y1, fuge=4):
+        for y in range(y0, y1 + 1):
+            for x in range(x0, x1 + 1):
+                skugge = x >= x1 - 2
+                f = (y - y0) % fuge == fuge - 1 or (x - x0) % fuge == fuge - 1
+                L.p(x, y, ("x" if skugge else "8") if f else ("8" if skugge else "w" if (x - x0) % fuge == 0 and (y - y0) % fuge == 0 else "k"))
+    # krona: toppflata sett ovanfrå og ein kort, utskoren kant
+    for x in range(7, 17): L.p(x, 0, "8"); L.p(x, 1, "w"); L.p(x, 2, "k"); L.p(x, 3, "x" if x % 2 else "8")
+    # gesimsen: brei toppflate (2 rader) og profil
+    for x in range(4, 20): L.p(x, 4, "w"); L.p(x, 5, "k"); L.p(x, 6, "8"); L.p(x, 7, "x")
+    fliser(6, 17, 8, 18)                                                                              # tårnet
+    for (x, y, c) in ((11, 11, "Y"), (12, 11, "Y"), (11, 12, "Z"), (12, 12, "Z")): L.p(x, y, c)       # spjeldknapp av messing
+    for x in range(3, 21): L.p(x, 19, "w"); L.p(x, 20, "k"); L.p(x, 21, "x")                         # hylla: toppflate
+    fliser(4, 19, 22, 39)                                                                             # nedre del
+    for y in range(27, 35):                                                                           # ildluka med glør
+        for x in range(8, 16): L.p(x, y, "N" if y < 30 else "F" if (x + y) % 3 else "f")
+    for x in range(7, 17): L.p(x, 26, "V"); L.p(x, 35, "v")
+    for y in range(26, 36): L.p(7, y, "X"); L.p(16, y, "v")
+    for x in range(3, 21): L.p(x, 40, "x"); L.p(x, 41, "n"); L.p(x, 42, "n")                         # sokkel
     omriss(L)
     return L
 
@@ -2034,25 +2042,34 @@ def skatoll():
 
 
 def golvur():
-    """Golvur med rund urskive, messingpendel bak glas og krone, i mahogni."""
-    W, H = 16 + 8, 2 * 16 + 8
+    """Golvur med rund urskive, messingpendel bak glas og krone, i mahogni, i standardperspektivet
+    (runde 76, forma etter Mora-uret frå 1834 i konsept/golvur-mora-1834.jpg): krona og toppen av
+    hovudet er sette ovanfrå, kassa smalnar inn mot midja og vidar seg ut att mot foten, og foten har
+    ei toppflate. Litt lågare enn før."""
+    W, H = 16 + 8, 2 * 16 + 6
     L = Lerret(W, H)
-    for x in range(8, 16): L.p(x, 0, "Y")
-    for x in range(5, 19): L.p(x, 1, "O"); L.p(x, 2, "J")
-    for y in range(3, 17):                                                                            # hovudet med urskiva
-        for x in range(4, 20): L.p(x, y, "M" if x > 5 else "O")
-    for y in range(4, 16):
+    for (x, y, c) in ((10, 0, "Y"), (11, 0, "y"), (12, 0, "Y"), (13, 0, "Z"), (9, 1, "Y"), (10, 1, "y"), (11, 1, "Y"), (12, 1, "Y"), (13, 1, "Y"), (14, 1, "Z")):
+        L.p(x, y, c)                                                                                  # krona sett ovanfrå
+    for x in range(5, 19): L.p(x, 2, "O"); L.p(x, 3, "O"); L.p(x, 4, "M"); L.p(x, 5, "j")          # toppen av hovudet: toppflate
+    for y in range(6, 16):                                                                            # hovudet med urskiva
+        for x in range(4, 20): L.p(x, y, "O" if x < 6 else "j" if x > 17 else "M")
+    for y in range(6, 16):
         for x in range(6, 18):
-            if (x - 11.5) ** 2 + (y - 9.5) ** 2 <= 30: L.p(x, y, "w" if (x - 11.5) ** 2 + (y - 9.5) ** 2 < 20 else "Y")
-    for (x, y) in [(11, 6), (11, 7), (11, 8), (11, 9), (12, 9), (13, 9), (14, 10)]: L.p(x, y, "b")      # visarar
-    for y in range(17, H - 6):                                                                        # kassa
-        for x in range(7, 17): L.p(x, y, "O" if x == 7 else "j" if x == 16 else "M")
-    panel(L, 9, 19, 14, 31, "N", "J", "j")
-    for y in range(20, 27): L.p(11, y, "Y")
-    for y in range(26, 30):
-        for x in range(10, 14): L.p(x, y, "y" if x < 12 else "Y")
-    for y in range(H - 6, H):                                                                         # fot
-        for x in range(5, 19): L.p(x, y, "O" if y == H - 6 else "M" if x < 17 else "j")
+            d = (x - 11.5) ** 2 + (y - 10.5) ** 2
+            if d <= 26: L.p(x, y, "w" if d < 17 else "Y")
+    for (x, y) in [(11, 7), (11, 8), (11, 9), (11, 10), (12, 10), (13, 10), (14, 11)]: L.p(x, y, "b")  # visarar
+    for (x, y) in [(11, 6), (16, 10), (11, 15), (7, 10)]: L.p(x, y, "Z")                             # timemerke
+    for y in range(16, H - 6):                                                                        # kassa: smal midje
+        b = 5 - (1 if 19 < y < 28 else 0)
+        for x in range(12 - b, 12 + b): L.p(x, y, "O" if x == 12 - b else "j" if x == 11 + b else "M")
+    panel(L, 10, 19, 14, 29, "N", "J", "j")
+    for y in range(20, 26): L.p(12, y, "Y")
+    for y in range(25, 29):
+        for x in range(11, 14): L.p(x, y, "y" if x < 12 else "Y")
+    for x in range(5, 19): L.p(x, H - 6, "O"); L.p(x, H - 5, "O")                                   # foten: toppflate
+    for y in range(H - 4, H - 1):
+        for x in range(5, 19): L.p(x, y, "M" if x < 17 else "j")
+    for x in (5, 6, 17, 18): L.p(x, H - 1, "j")
     omriss(L)
     return L
 

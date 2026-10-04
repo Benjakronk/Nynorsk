@@ -2168,3 +2168,15 @@ same måte, uansett kven som tek over.
 - **Rundar:** (1) ny plate og stablar, men stablane flaut i hop med plata. (2) Mørkare plate og høgare
   stablar.
 - **Før og etter:** `forhand/skjerm/pr2-samanlikning-flatbrod.png`.
+
+## Runde 76: kakkelomnen og golvuret i prestegarden
+
+- **Research:** kakkelomn med glaserte fliser, gesims og krone (`konsept/kakkelomn-ardrebo.jpg`) og
+  Mora-uret frå 1834 (`konsept/golvur-mora-1834.jpg`), førde inn i KJELDER.md.
+- **Kakkelomnen:** no ein kvit kakkelomn av fliser med fuger (før ein etasjeomn i jern): brei nedre del
+  med ildluke og glør, ei hylle med toppflate, eit smalare tårn med spjeldknapp, gesims og krone med
+  toppflatene sett ovanfrå. Biletet er 4 pikslar lågare, og `ILD` er flytt med luka (`y: 27`).
+- **Golvuret:** krona og toppen av hovudet sett ovanfrå, urskive med timemerke, kassa smalnar inn mot
+  midja, og foten har ei toppflate. 2 pikslar lågare.
+- **Rundar:** (1) teikna om etter referansane. (2) Sett i spelet med glød og lys.
+- **Før og etter:** `forhand/skjerm/pr2-samanlikning-omn-ur.png`.
