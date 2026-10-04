@@ -2189,3 +2189,25 @@ same måte, uansett kven som tek over.
   Ivar sit rett.
 - **Rundar:** (1) armlene og ryggprofil. (2) Fibrar, karveskurd og årringar.
 - **Før og etter:** `forhand/skjerm/pr2-samanlikning-kubbestol.png`.
+
+## Runde 79: Ivar breiare og med meir form (portrett runde 5)
+
+- **Frå brukaren:** Andletet til Ivar må bli litt breiare og mindre flatt. Koordinatoren: andletet var eit
+  flatt, lyst rektangel, øyret ei stor, flat blokk, og fjørpennen kom ut øvst frå håret. Den triste munnen
+  skulle haldast.
+- **Gjort:**
+  - **Breiare:** andletet er eitt til to pikslar breiare, mest over kinnbeina og kjeven (15 til 36 i
+    staden for 18 til 35), framleis langt og med høg panne og brei, kantete hake.
+  - **Form:** breiare skuggeside og mellomtone langs kinnbeinet (og ned under det mot kjeven), skugge under
+    bryna og ytst ved augeholet, lys flate på panna og kinnbeinet på lyssida (den lysaste hudtonen, rolige
+    former), skugge under nasa og underleppa. Halsen ligg i skugge under haka, med ei mørk stripe under
+    kjeven.
+  - **Øyret** er handteikna (5 × 9): lys kant øvst, indre form og skugge, festa bak kjeven.
+  - **Fjørpennen** sit over øyret, er stukken inn i håret på sida (ei hårlokk dekkjer rota), og peikar
+    bakover og opp bort frå andletet.
+  - **Nøytral:** opnare augelok, bryna litt løfta og eit lite smil i den eine munnviken. Den triste munnen
+    er uendra. Alle åtte kjenslene er laga på nytt.
+- **Rundar:** (1) øyret låg for det meste under kinnet: flytt eitt steg ut. (2) Lyset på panna var ein
+  firkant: avrunda.
+- **Etter:** `forhand/portrett5-ivar.png` (referansane, runde 73 og no, med alle kjenslene) og
+  `forhand/skjerm/portrett5-taleboks.png` (nøytral, trist og glad i spelet).
