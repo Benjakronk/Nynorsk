@@ -2070,3 +2070,23 @@ same måte, uansett kven som tek over.
   (ved sida av Terra, Locke, Relm og Setzer; Celes er bøygd framover i referansen og eignar seg ikkje), og
   i spelet `forhand/skjerm/portrett3-taleboks.png` (Huldra nøytral og trist, Ivar tenkje og sint).
 - **Står att:** dei andre portretta. Øyret til Ivar kunne hatt eit tydelegare skilje mot kinnet.
+
+## Runde 70: prestegarden og boksamlinga på Ekset i standardperspektivet
+
+- **Research:** FF6-borda (13 pikslar toppflate, 5 framside, 4 bein per flis) og stolane i
+  `forhand/referansar/ff6tile-541477.png`. Ekte møblar frå tida: skatollet i `konsept/skatoll-1700.jpg`,
+  sofaen frå 1815 til 1825 i `konsept/sofa-biedermeier.jpg` (rullearmlene med rosett, lang sete) og
+  prestestova kring 1835 i `konsept/stove-prest-1835.jpg` (ført inn i KJELDER.md).
+- **Skatollet:** krona har toppflate med ein messingknapp, skråklaffen er ei stor, lys flate som vender
+  opp med papir, blekkhus og fjørpenn sett ovanfrå, og skuffene er lågare.
+- **Sofaen:** setet er ei stor toppflate, ryggen er låg med topplista ovanfrå, armlena er rullar med lys
+  overside og rosett framme, og føtene er korte.
+- **Spisebordet:** duken er 25 pikslar toppflate med tallerkar og koppar som breie ovalar, blondekanten
+  heng kort ned, beina er korte, og stolryggane bak er låge.
+- **Lesebordet:** duken er 13 pikslar toppflate, framkanten 3 og beina korte. **Stolane:** kortare rygg med
+  topplista ovanfrå og setet på sidene.
+- **Rundar:** (1) alle fem teikna om. (2) Stripene på sofasetet vart eit rutemønster: no smale, lyse
+  stripar med jamn avstand.
+- **Før og etter:** `forhand/skjerm/pr-samanlikning-preste.png` og `pr-samanlikning-ekset.png`.
+- **Står att:** jernomnen (`kakkelomn`) og golvuret i prestegarden er høge og sett framanfrå (høge ting
+  kan ha lang framside, men toppflata kunne synt betre).

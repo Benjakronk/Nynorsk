@@ -5,7 +5,9 @@
 palett:
   . = -
   o = #0a0514    omriss
+  y = #f8d840    gull lys
   Y = #d0a030    gull
+  Z = #8a5a18    gull skugge
   j = #2a0e0c    mahogni djup
   J = #5a2418    mahogni skugge
   M = #8a3a22    mahogni
@@ -15,32 +17,32 @@ palett:
   I = #72a282    stoff lys
 bilete:
   ........................................................
-  .....oooooooooooooooooooooooooooooooooooooooooooooo.....
-  ....oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo....
-  ....oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo....
-  .....oIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIo.....
-  .....oeeeiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiieeo.....
-  ..ooooeeeiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiieeoooo..
-  .oOOOOOOOOiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiOOOOOOOOo.
-  .oMMMMMMMMiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiMMMMMMMMo.
-  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
-  ..oOMYYMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMYYMjo..
-  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
-  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
-  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
-  ..oOMMMMjeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeOMMMMjo..
-  ..oOMMMMjeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeOMMMMjo..
-  ..oOMMMMjIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIOMMMMjo..
-  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
-  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
-  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
-  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
-  ..oOMMMMjiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOMMMMjo..
-  ..oOMMMMjOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOMMMMjo..
+  ........................................................
+  ......oooooooooooooooooooooooooooooooooooooooooooo......
+  .....oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo.....
+  .....oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo.....
+  ...ooojjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjooo...
+  ..oJJJJJJeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeJJJJJJo..
+  ..oOOOMMMiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOOOMMMo..
+  ..oOOOMMMiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOOOMMMo..
+  ..oOOOMMMiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOOOMMMo..
+  ..oOOOMMMiiieeeiiieeeiiieeeiiieeeiiieeeiiieeeiiOOOMMMo..
+  ..oOOOMMMeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeOOOMMMo..
+  ..oOOOMMMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIOOOMMMo..
+  ..oOOOMMMiiiIiiiIiiiIiiiIiiiIiiiIiiiIiiiIiiiIiiOOOMMMo..
+  ..oOOOMMMiiiIiiiIiiiIiiiIiiiIiiiIiiiIiiiIiiiIiiOOOMMMo..
+  ..oOOOMMMiiiIiiiIiiiIiiiIiiiIiiiIiiiIiiiIiiiIiiOOOMMMo..
+  ..oOOOMMMiiieiiiIiiiIeiiIiiiIieiIiiiIiieIiiiIiiOOOMMMo..
+  ..oOOOMMMiiieiiiIiiiIeiiIiiiIieiIiiiIiieIiiiIiiOOOMMMo..
+  ..oOOOMMMiiiIiiiIiiiIiiiIiiiIiiiIiiiIiiiIiiiIiiOOOMMMo..
+  ..oOOOMMMiiiIiiiIiiiIiiiIiiiIiiiIiiiIiiiIiiiIiiOOOMMMo..
+  ..oOOYYOjiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiOOYYOjo..
+  ..oOYZyYjeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeOYZyYjo..
+  ..oOMYYMjOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOMYYMjo..
   ..oOMMMMjMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMOMMMMjo..
-  ...oojjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjoo...
-  .....oJJooooooooooooooooooooooooooooooooooooooooJJo.....
-  .....oJJo......................................oJJo.....
+  ..oOMMMMjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjOMMMMjo..
+  ...oooJJooooooooooooooooooooooooooooooooooooooooJJooo...
   .....oJJo......................................oJJo.....
   .....oJJo......................................oJJo.....
   ......oo........................................oo......
+  ........................................................
