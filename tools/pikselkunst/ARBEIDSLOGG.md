@@ -2190,6 +2190,16 @@ same måte, uansett kven som tek over.
 - **Rundar:** (1) armlene og ryggprofil. (2) Fibrar, karveskurd og årringar.
 - **Før og etter:** `forhand/skjerm/pr2-samanlikning-kubbestol.png`.
 
+## Runde 78: toppsteinane i steingarden
+
+- **Gjort:** toppsteinane er ujamne: 3 til 7 pikslar breie, nokre store over heile toppen og nokre små i
+  to lag, nokre runde og nokre kantete, lagde på skeive, med fuger av jord, mose og gras og strå over
+  kanten. Muren har seks variantar som skiftar langs rada (før var alle flisene i ei rad like, så
+  mønsteret gjentok seg kvar 16. piksel). Naboane (maske) er som før.
+- **Rundar:** (1) ujamne steinar, men for mykje mose og same mønster i kvar flis. (2) Mindre mose, større
+  steinar og variantar etter x i `motor.js`.
+- **Før og etter:** `forhand/skjerm/pr2-samanlikning-mur.png` (øvst før, nedst etter).
+
 ## Runde 79: Ivar breiare og med meir form (portrett runde 5)
 
 - **Frå brukaren:** Andletet til Ivar må bli litt breiare og mindre flatt. Koordinatoren: andletet var eit

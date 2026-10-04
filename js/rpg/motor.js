@@ -1387,7 +1387,7 @@ window.Motor = (function () {
       if (c === "j") {
         const nb = (dx, dy) => (kart.fliser[y + dy] && kart.fliser[y + dy][x + dx]) === "j";
         const maske = (nb(0, -1) ? 1 : 0) | (nb(1, 0) ? 2 : 0) | (nb(0, 1) ? 4 : 0) | (nb(-1, 0) ? 8 : 0);
-        naturFig.push({ y: y + 0.003, x, mur: Pikslar.steingard((x * 3 + y) % 3, maske) });
+        naturFig.push({ y: y + 0.003, x, mur: Pikslar.steingard((x * 5 + y * 3) % 6, maske) });   // seks variantar, ulike langs rada
       }
       // Skigard: ein figur som står opp over flisa, så ein kan gå bak han.
       if (c === "|") {

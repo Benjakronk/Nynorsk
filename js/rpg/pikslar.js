@@ -713,17 +713,34 @@ window.Pikslar = (function () {
       while (x < x1) { const w = Math.min(x1 - x, 4 + Math.floor(hash(x, 1, fro) * 4)); murstein(g, x, 15, w, 5, fro); x += w; }
       x = x0 - 2;                                                   // øvre lag, forskote
       while (x < x1) { const w = 3 + Math.floor(hash(x, 2, fro) * 4); const xs = Math.max(x0, x), we = Math.min(x1, x + w) - xs; if (we > 0) murstein(g, xs, 11, we, 4, fro + 1); x += w; }
-      // toppsteinar sett ovanfrå: to rader, lyse oppe, mørk kant framme, mose i fugene
-      for (const [ry, rh, sk] of [[3, 4, 3], [7, 4, 5]]) {
-        x = x0 - (sk % 3);
-        while (x < x1) {
-          const w = 3 + Math.floor(hash(x, ry, fro) * 3), xs = Math.max(x0, x), we = Math.min(x1, x + w) - xs;
-          if (we > 0) { px(g, xs, ry, m[3], we, rh - 1); px(g, xs, ry, m[4], Math.max(1, we - 1), 1); px(g, xs, ry + rh - 1, m[1], we, 1); px(g, xs + we - 1, ry, m[2], 1, rh - 1); }
-          x += w + (hash(x, ry + 1, fro) > 0.6 ? 1 : 0);
-        }
+      // Toppsteinar sett ovanfrå (runde 78): ujamne steinar i ulik storleik og form, nokre kantete og
+      // nokre runde, lagde på skeive med ujamne fuger, og mose og gras i mellomromma.
+      const MOSE = ["#4a6a2a", "#6e9038", "#98b44c"];
+      for (let yy = 3; yy < 11; yy++) for (let xx = x0; xx < x1; xx++) {                 // fugene: jord, mose og gras
+        const hm = hash(xx, yy, fro + 11);
+        px(g, xx, yy, hm > 0.72 ? MOSE[Math.floor(hm * 7) % 3] : m[0]);
       }
+      let sy = 0;
+      for (x = x0 - Math.floor(hash(v, 9, fro) * 3); x < x1;) {
+        const hw = hash(x, 21, fro), w = 3 + Math.floor(hw * 5);                          // 3 til 7 pikslar brei
+        const stor = hash(x, 22, fro) > 0.4;                                               // ein stor stein over heile toppen, eller to små
+        const lag = stor ? [[3 + Math.floor(hash(x, 23, fro) * 2), 6 + Math.floor(hash(x, 24, fro) * 2)]]
+          : [[3 + Math.floor(hash(x, 25, fro) * 2), 3], [7 + Math.floor(hash(x, 26, fro) * 1.5), 3]];
+        for (const [ty, th] of lag) {
+          const rund = hash(x, ty, fro + 3) > 0.45, tone = hash(x, ty, fro + 4) > 0.7 ? 2 : 3;
+          const xs = Math.max(x0, x), xe = Math.min(x1, x + w);
+          for (let yy = ty; yy < Math.min(11, ty + th); yy++) for (let xx = xs; xx < xe; xx++) {
+            const hjorne = (xx === x || xx === x + w - 1) && (yy === ty || yy === ty + th - 1);
+            if (rund && hjorne && w > 2) continue;                                       // runde steinar: kantane rundar av
+            const c = yy === ty ? m[4] : yy === ty + th - 1 ? m[1] : xx === x + w - 1 ? m[2] : m[tone];
+            px(g, xx, yy, c);
+          }
+          if (w > 3 && hash(x, ty, fro + 5) > 0.6) px(g, x + 1 + Math.floor(w / 2), ty + 1, MOSE[1]);   // lav og mose på steinen
+        }
+        x += w + (hash(x, 27, fro) > 0.5 ? 1 : 0); sy++;
+      }
+      for (let i = 0; i < 3; i++) { const gx = x0 + 1 + Math.floor(hash(i, 28, fro) * (x1 - x0 - 3)); px(g, gx, 2, MOSE[2]); px(g, gx + 1, 1, MOSE[1]); }   // grasstrå over kanten
       px(g, x0, 10, m[1], x1 - x0, 1);                              // framkanten av toppen
-      for (let i = 0; i < 5; i++) { const mx = x0 + Math.floor(hash(i, 4, fro) * (x1 - x0 - 2)), my = 3 + Math.floor(hash(i, 5, fro) * 6); px(g, mx, my, i % 2 ? "#6e9038" : "#98b44c", 2, 1); px(g, mx + 1, my + 1, "#4a6a2a"); }
       px(g, x0 + 3 + v, 17, "#c8b050"); px(g, x1 - 5, 12, "#c8b050");
       if (!(maske & 8)) px(g, x0 - 1, 3, "#0a0514", 1, 18);
       if (!(maske & 2)) px(g, x1, 3, "#0a0514", 1, 18);
