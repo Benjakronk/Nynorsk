@@ -7,6 +7,11 @@ også når Edge heng: då blir heile prosesstreet til denne Edge-en stoppa førs
 Edge-vindauge, så nettlesaren til brukaren får vere i fred). Restar eldre enn ein time
 (aasen-edge-* og HeadlessEdge* frå før) blir rydda ved oppstart.
 
+Edge pakkar òg ut ei innebygd utviding (om lag 380 MB) i ei scoped_dir*-mappe i Temp kvar gong han
+startar, utanfor profilen. Desse vart òg liggjande: 158 av dei, 60 GB, etter to dagar. No får Edge
+TEMP og TMP inne i profilmappa, så dei blir sletta saman med henne. Gamle scoped_dir* med
+CRX_INSTALL (slike som Edge lagar her) eldre enn ein time blir rydda ved oppstart.
+
   from edge import kjoyr
   ut = kjoyr(["--dump-dom", url], timeout=300)        # gir stdout (bytes), eller None ved tidsavbrot
 """
@@ -33,6 +38,13 @@ def rydd_gamle(timar=1):
             if os.path.getmtime(m) < grense: shutil.rmtree(m, ignore_errors=True)
         except OSError:
             pass
+    # Utpakka utvidingar frå Edge-køyringar (scoped_dir*\CRX_INSTALL). Mapper i bruk er låste.
+    for m in glob.glob(os.path.join(TEMP, "scoped_dir*")):
+        try:
+            if os.path.isdir(os.path.join(m, "CRX_INSTALL")) and os.path.getmtime(m) < grense:
+                shutil.rmtree(m, ignore_errors=True)
+        except OSError:
+            pass
 
 
 def kjoyr(args, timeout=300):
@@ -40,8 +52,10 @@ def kjoyr(args, timeout=300):
     etterpå. Gir stdout som bytes, eller None om Edge ikkje vart ferdig innan timeout sekund."""
     rydd_gamle()
     profil = tempfile.mkdtemp(prefix="aasen-edge-")
+    tmp = os.path.join(profil, "tmp"); os.makedirs(tmp)
+    env = dict(os.environ, TEMP=tmp, TMP=tmp)            # scoped_dir* hamnar i profilen og blir sletta med henne
     p = subprocess.Popen([EDGE, *GRUNN, f"--user-data-dir={profil}", *args],
-                         stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+                         stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, env=env)
     try:
         ut, _ = p.communicate(timeout=timeout)
         return ut
