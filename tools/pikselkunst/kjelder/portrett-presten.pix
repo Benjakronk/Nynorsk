@@ -18,66 +18,70 @@ palett:
   k = #dcac94    hud_gm6 3
   l = #f0ccb4    hud_gm6 4
   m = #fce8d8    hud_gm6 5
-  n = #1e3058    iris_b 1
-  o = #4a4e5e    kalk 0
-  p = #7a8090    kalk 1
-  q = #b4b8c4    kalk 2
-  r = #d2d4da    kalk 3
-  s = #f4f2e8    kalk 4
-  t = #6a6478    kvit 0
-  u = #c8c6d2    kvit 2
-  v = #e6e4ec    kvit 3
-  w = #fcfcff    kvit 4
-  x = #6a2a2c    munn 1
-  y = #06040a    svart 0
-  z = #120e1a    svart 1
-  A = #201a2c    svart 2
+  n = #10182e    iris_b 0
+  o = #1e3058    iris_b 1
+  p = #3a5a96    iris_b 2
+  q = #6a90cc    iris_b 3
+  r = #a8c8f0    iris_b 4
+  s = #4a4e5e    kalk 0
+  t = #7a8090    kalk 1
+  u = #b4b8c4    kalk 2
+  v = #d2d4da    kalk 3
+  w = #f4f2e8    kalk 4
+  x = #6a6478    kvit 0
+  y = #c8c6d2    kvit 2
+  z = #e6e4ec    kvit 3
+  A = #fcfcff    kvit 4
+  B = #6a2a2c    munn 1
+  C = #06040a    svart 0
+  D = #120e1a    svart 1
+  E = #201a2c    svart 2
 bilete:
-  qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
-  qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
-  qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
-  qqqqqqqqqqqqqqqqqqccqqqqqqqqqqqqqqqqqqqqqqqqqqqq
-  qqqqqqqqqqqqqccccceecqqqqqqqqqqqccqqqqsssrssqrrq
-  qqqqqqqqqqqqcffffdffechhhhhhhhhcefcqqssssrsssrqr
-  qqqqqqqqqqqcffeggeggeejkklmmmlldeffcsssssrssssrr
-  qqqqqqqqqqcddegggggeekkllllmmmmddegcsssssrssssrq
-  qqqqqqqqqqcddeeegeedkkllllllmmmmdeggcssssrssssqr
-  qqqqqqqqqcdddedegdjkklllllllllmmmdeggcsssrssssrr
-  qqqqqqqqqcddeeeeefkklllllllllllllldegfcssrssssrq
-  qqqqqqqqcdddedeeejkklllllllllllllldeefcssrssssqr
-  qqqqqqqqcdddeeeeejkklkkkkkkkkkklllldefcssrssssrr
-  qqqqqqqqcdddedeefjkkllllllllllllllldefcssrssssrq
-  qqqqqqqqcdddedeefjkkllkkkkkkkkllllllefcssrssssqr
-  qqqqqqqqcdddedeefjkklllllllllllllllldcsssrssssrr
-  qqqqqqqqcdddedeefjkklllfflllefflllllirrrrrrrrrrq
-  qqqqqqqqcdddedeefjkkeffellllleefflllissssrssssqr
-  qqqqqqqqcddeeeeefjeffellllllllleefflissssrssssrr
-  qqqqqqqqcddeeedejjkkllllllllllllllllissssrssssrq
-  qqqqqqqqqcdedechjjkcccccclklccccclllissssrssssqr
-  qqqqqqqqqhlkjejhjjjcaanbclklaanbclllissssrssssrr
-  qqqqqqqqqhljijjhjjjkjjjjllklljjjllllissssrssssrq
-  qqqqqqqqqhkjijjhjjjkklllllklllllllllissssrssssqr
-  qqqqqqqqqhkjjijhjjjkklllllklllllllllissssrssssrr
-  qqqqqqqqqhkkjjjhjjjkklllllklllllllllissssrssssrq
-  qqqqqqqqqqhkkjjhjjjkklllllklllllllllissssrssssqr
-  qqqqqqqqqqqhkkjhjjjkklllllklmlllllllissssrssssrr
-  qqqqqqqqqqqqhkihjjjkklllllklmlllllllirqrrrrrqrrq
-  qqqqqqqqqqqqqhqhjjjkkllllllkmllllllliqrrqrrqrrqr
-  qqqqqqqqqqqqqqqhjjjkklllklljllkkllllirrqrrqrrqrr
-  qqqqqqqqqqqqqqqhjjjkkllkllllkklkllllirqrrqrrqrrq
-  qqqqqqqqqqqqqqqqhjjkkllkllllllllkllirqrrqrrqrrqr
-  qqqqqqqqqqqqqqqqqhjjkkklxxxxxxllklliqrrqrrqrrqrr
-  qqqqqqqqqqqqqqqqqqhjjkkxllllllxllliqqqqqqqqqqqqq
-  qqqqqqqqqqqqqqtttttvvjjkkkkllllllittqqqqqqqqqqqq
-  opppppppopppttvvvvvvvvvkkkkkkkkvvvvvttppoppppppp
-  opppppppopttvvvvvvvvwvuvwvuvwvuvvvvvvvttoppppppp
-  opppppppotvvvvuvwvuvwvuvwvuvwvuvwvuvwvvvtppppppp
-  opppppppotuvwvuvwvuvwvuvwvuvwvuvwvuvwvuvwtpppppp
-  oppppppytvuvwvuvwvuvwvuvwvuvwvuvwvuvwvuvwtpppppp
-  opppyyyzzvuvwvuvwvuvwvuvwvuvwvuvwvuvwvuvwtpppppp
-  oppyzzzzzzuvwvuvwvuvwvuvwvuvwvuvwvuvwvuvwAyyyppp
-  opyzzzzzzzuuuvuvwvuvwvuvwvuvwvuvwvuvwvuuwAAAAypp
-  oyzzzzzzzzzzvuuuuvuvwvuvwvuvwvuvwvuuuuAAAAAAAAyp
-  yzzzzzzzzzzzzAvvvuuuwvuvwvuvwvuuuuvvAAAAAAAAAAAy
-  yzzzzzzzzzzzzzAAAAAvuuuuvvvuuuuAAAAAAAAAAAAAAAAy
-  zzzzzzzzzzzzzzAAAAAAAAAAuuuAAAAAAAAAAAAAAAAAAAAA
+  uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+  uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+  uuuuuuuuuuuuuuuuuuuuhhhhhhhhhhhhuuuuuuuuuuuuuuuu
+  uuuuuuuuuuuuuuuuuuchjjkklllllllliuuuuuuuuuuuuuuu
+  uuuuuuuuuuuuuccccceejkklllmmmlllliuuuuwwwvwwuvvu
+  uuuuuuuuuuuucffffdffeklllllmmmmlefcuuwwwwvwwwvuv
+  uuuuuuuuuuucffeggeggeelllllmmmmdeffcwwwwwvwwwwvv
+  uuuuuuuuuucddegggggeekllllllmmmddegcwwwwwvwwwwvu
+  uuuuuuuuuucddeeegeedklllllllllmmdeggcwwwwvwwwwuv
+  uuuuuuuuucdddedegdjkklllllllllllldeggcwwwvwwwwvv
+  uuuuuuuuucddeeeeefjkkkkkkkkkkkkllldegfcwwvwwwwvu
+  uuuuuuuucdddedeeejjkkllllllllllllldeefcwwvwwwwuv
+  uuuuuuuucdddeeeeejjkklkkkkkkkkklllldefcwwvwwwwvv
+  uuuuuuuucdddedeefjjkklllllllllllllldefcwwvwwwwvu
+  uuuuuuuucdddedeefjjkklllllkllllllllcefcwwvwwwwuv
+  uuuuuuuucdddedeefjjkklllelklellllllcdcwwwvwwwwvv
+  uuuuuuuucdddedeefjjkkllffekeeffllllicvvvvvvvvvvu
+  uuuuuuuucdddedeefjjkkffellllleefflliwwwwwvwwwwuv
+  uuuuuuuucddeeeeefjeffeelllllllleeffcwwwwwvwwwwvv
+  uuuuuuuucddeeedehjeeklllllllllllllecwwwwwvwwwwvu
+  uuuuuuuuucdedelkijjkkcccllklccclllliwwwwwvwwwwuv
+  uuuuuuuuuuchlejjjjjcconbclklonbcclliwwwwwvwwwwvv
+  uuuuuuuuuuuhljijjjcaaprqalklprqaclliwwwwwvwwwwvu
+  uuuuuuuuuuuhkjijjjjkjjjjllklljjjllliwwwwwvwwwwuv
+  uuuuuuuuuuuhkjjijjjjkkllllklllllllliwwwwwvwwwwvv
+  uuuuuuuuuuuhkkjjjjjjkkllllklllllllliwwwwwvwwwwvu
+  uuuuuuuuuuuuhkkjjjjjkkllllklllllllliwwwwwvwwwwuv
+  uuuuuuuuuuuuuhkkjjjjkkllllklmlllllliwwwwwvwwwwvv
+  uuuuuuuuuuuuuuhkihjjjkklllklmllllllivvuvvvvvuvvu
+  uuuuuuuuuuuuuuuhuhjjjkkllllkmlllllivvuvvuvvuvvuv
+  uuuuuuuuuuuuuuuuuhjjjkklklljllkkllivuvvuvvuvvuvv
+  uuuuuuuuuuuuuuuuuuhjjjkkklllkklklliuvvuvvuvvuvvu
+  uuuuuuuuuuuuuuuuuuuhjjkkkllllllkliuvvuvvuvvuvvuv
+  uuuuuuuuuuuuuuuuuuuuhjjkBBBBBBlklivvuvvuvvuvvuvv
+  uuuuuuuuuuuuuuuuuuuxhjjBkkllllBlliuuuuuuuuuuuuuu
+  uuuuuuuuuuuuuuxxxxxzzzjjkkkkllllixxxuuuuuuuuuuuu
+  stttttttstttxxzzzzzzzzzjjkkkklllzzzzxxttsttttttt
+  stttttttstxxzzzzzzzzAzyzkkkkkkkzzzzzzzxxsttttttt
+  stttttttsxzzzzyzAzyzAzyzAzyzAzyzAzyzAzzzxttttttt
+  stttttttsxyzAzyzAzyzAzyzAzyzAzyzAzyzAzyzAxtttttt
+  sttttttCxzyzAzyzAzyzAzyzAzyzAzyzAzyzAzyzAxtttttt
+  stttCCCDDzyzAzyzAzyzAzyzAzyzAzyzAzyzAzyzAxtttttt
+  sttCDDDDDDyzAzyzAzyzAzyzAzyzAzyzAzyzAzyzAECCCttt
+  stCDDDDDDDyyyzyzAzyzAzyzAzyzAzyzAzyzAzyyAEEEECtt
+  sCDDDDDDDDDDzyyyyzyzAzyzAzyzAzyzAzyyyyEEEEEEEECt
+  CDDDDDDDDDDDDEzzzyyyAzyzAzyzAzyyyyzzEEEEEEEEEEEC
+  CDDDDDDDDDDDDDEEEEEzyyyyzzzyyyyEEEEEEEEEEEEEEEEC
+  DDDDDDDDDDDDDDEEEEEEEEEEyyyEEEEEEEEEEEEEEEEEEEEE

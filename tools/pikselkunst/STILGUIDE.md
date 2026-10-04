@@ -118,6 +118,36 @@ Edgar, Celes, Relm). Huldra og Ivar er teikna etter dette; dei andre portretta s
 - **Bakgrunn:** vanlegvis gjennomsiktig (samtaleboksen syner bak). Overnaturlege vesen kan få ein
   eigen stemningsbakgrunn inne i ruta (`P.bak`, under omrisset), som skogen i dis bak Huldra.
 
+### Variasjon i hovudform og auge (runde 84)
+
+FF6 skil Terra, Locke, Edgar, Sabin, Strago og Relm like mykje på andletsforma og auga som på håret:
+Relm har eit rundt barneandlet med store, runde auge og mykje glans, Cyan og Strago lange, magre andlet
+med djupe auge og rynker, Sabin ein brei, kantete kjeve. Hos oss gjeld dette:
+
+- **Ingen deler omriss.** Kvar person får si eiga andletsform frå `kant()` i portrett.py: breidd (`xl`, `xr`),
+  lengd (`y0`, `y1`), kor rund issen er (`krune`), kor langt nede kjeven byrjar (`kjeve`), kjeveforma
+  (`kantete`, `rund`, `oval`, `spiss`), haka (`hake`), kinn som bular ut (`kinn_ut`) eller er innsokne
+  (`kinn_inn`), og `ujamn` for knudrete former. Forma skal passe alder og rolle:
+  - kantete kjeve og brei hake: storebror, bygdemannen
+  - rundt med kort hake og runde kinn: syster, guten (mindre enn dei vaksne), budeia (breiare), grannen og kona
+  - langt og smalt med høg panne: presten, den gamle mannen (innsokne kinn)
+  - tynt og innsokke med spiss hake: den framande
+  - breitt og knudrete: haugbonden
+- **Samanlikn silhuettane:** teikn berre hudpikslane i éin farge for alle personane side om side. Om to
+  silhuettar er like, er forma ikkje skild nok, same kor ulikt håret er.
+- **Vakne auge.** Irisen skal syne i minst to rader, med glanspiksel (`h`), og loket skal ikkje skjere
+  irisen på midten. Halvlukka, tunge lok berre når personen skal sjå trøytt, kald eller lur ut (den
+  framande). Rolege, alvorlege auge (storebror) får eit rett lok, men heile irisen.
+- **Alder i auga:** unge får store, runde auge med mykje kvitt og glans (syster, guten). Gamle får
+  posar under auget og smilerynker eller kråkefot ved den ytre kroken (`r` i augerutene, huda tone 3),
+  ikkje tunge lok. Glade auge: det nedre loket bular opp (`l` på sidene av irisen i den nedste rada).
+- **Karakter i auga og bryna:** bekymra (presten) har den indre enden av bryna løfta og loket hallande ned
+  mot den ytre kroken, kalde (den framande) eit smalt auge med bleik, isblå iris og rett, lågt bryn.
+  Varier blikkretninga òg: mot teksten, opp (guten), litt ned (bygdekvinna, kona).
+- **Hol i håret:** `python tools/pikselkunst/portrett.py hol` finn bakgrunn som syner gjennom hår eller
+  hovudplagg (lukka hol og smale hakk). Når andletet blir smalare eller kjeven kortare, må håret i
+  nakken eller halsen fylle opp bak kjeven (budeia og den framande). Opningar som skal vere der, står i `HOL_LOV`.
+
 ## Lærdommar frå Final Fantasy VI og The Minish Cap
 
 - Hus er heile figurar, ikkje gjentekne fliser. Taket dominerer (tre fjerdedelar

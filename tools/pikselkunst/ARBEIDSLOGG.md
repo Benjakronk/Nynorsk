@@ -2298,3 +2298,53 @@ same måte, uansett kven som tek over.
 - **Etter:** `forhand/portrett9-haug-felles.png` (før og etter) og `forhand/skjerm/portrett9-taleboks.png`
   (haugbonden, Dottera med kjensla sjokk, Bestefaren og Gjetarguten).
 - **Står att:** ingen portrett står att i den gamle stilen.
+
+## Runde 84: eigne hovudformer og vakne auge i alle portretta
+
+- **Frå brukaren:** auga til mange av portretta ser trøytte ut og er like på tvers, og hovudforma er den same
+  for alle.
+- **Funne:** ti av dei tolv andleta (alle utanom Ivar og Huldra) hadde om lag same omriss (x 16 til 35,
+  `KANT_VAKSEN` for alle fellesansikta), og nesten alle hadde same auge: eitt rett lok over éi rad med
+  kvitt og iris (`LLLLLL / LwwihL / llll`), som les som halvlukka.
+- **Nytt i portrett.py:** `kant()` lagar andletsomrisset av nokre mål (breidd, lengd, `krune`, `kjeve`,
+  `form` kantete, rund, oval eller spiss, `hake`, `kinn_ut`, `kinn_inn`, `ujamn`), og `auge()` teiknar
+  handteikna augeruter og bryn. `AUGE_F` har fått `r`, `k` og `d` (hudtonar til posar, rynker og augehol).
+  Ny iris `iris_is` (kald, isblå). `portrett.py hol` finn hol og smale hakk der bakgrunnen syner gjennom
+  hår eller hovudplagg (`hol()` og `hakk()`, unntak i `HOL_LOV`); han finn òg holet i sveisen til
+  bygdemannen frå før runde 83 vart retta.
+- **Per person:**
+  - **Storebror:** breiare og kantete (kjeven held breidda langt ned og knekkjer inn mot ei brei hake),
+    skjeggstubben følgjer den nye kjeven. Rolege, alvorlege auge med rett lok, men heile irisen og glans;
+    posane under auga er borte.
+  - **Syster:** rundare, med kort hake og runde kinn. Store, runde auge med glans, og det nedre loket bular
+    opp av smilet.
+  - **Presten:** langt og smalt, panna går heilt opp til rad 3. Vide, bekymra auge: loket hallar ned mot
+    den ytre kroken, blikket litt opp, posar under, og ei bekymringsfure mellom dei løfta bryna.
+  - **Den framande:** tynt og langt med innsokne kinn og spiss hake, nakkehår bak den smale kjeven. Det
+    fjerne auget er smalt med bleik, isblå iris.
+  - **Grannen:** rundt og fyldig (stor, rund skalle, kjakar som bular ut). Opne, vennlege auge med smilerynker
+    i staden for dei lukka strekane.
+  - **Budeia:** breitt og sunt med runde, raude kinn. Glade, opne auge med heil iris. Hår i nakken fyller
+    opninga bak kjeven.
+  - **Haugbonden:** breiare og knudrete (kinnbein og kjakar som knortar), runde, lysande auge med posar, og ei
+    svær, knollete nase med mørk kant som heng ned over barten.
+  - **Bygdemannen:** firkanta. Opne auge som ser mot teksten, bryn med ein liten boge.
+  - **Bygdekvinna:** ovalt. Milde mandelauge med ein vippesvung, blikket litt ned.
+  - **Den gamle mannen:** langt og magert med innsokne kinn. Djuptliggjande, tolmodige auge med skugge over
+    og posar under, men opne og med glans.
+  - **Den gamle kona:** rundt med breie kinn. Milde, smilande auge med posar og kråkefot, og eit mildt smil.
+  - **Guten:** lite og rundt (smalare enn dei vaksne). Store auge som ser opp mot høgre.
+  - **Ivar og Huldra:** urørde. Auga til Ivar er små og djuptliggjande etter fotografia av Aasen, men irisen
+    syner i to rader med glans, så han ser ikkje trøytt ut i spelstorleik.
+- **Rundar:** (1) dei nye formene og auga. Kinna til den framande var to loddrette striper: no éi skrå line
+  under kinnbeinet. Nasa til haugbonden forsvann i huda: knoll med mørk kant, og nasa teikna etter skjegget.
+  Det nedre loket til syster las som posar: éi rad kortare. (2) Guten var like stor som dei vaksne: smalare.
+  `hol` fann opningar bak kjeven til budeia og den framande: fylt med hår i nakken.
+- **Sjekka:** `portrett.py hol` (ingen hol), `pix.py sjekk` (27 til 40 fargar), `node tools/sjekk-spel.js` og
+  `sjekk-scene.html` grøne.
+- **Etter:** `forhand/portrett10-for-etter-a.png` og `-b.png` (før og etter), `forhand/portrett10-alle.png` og
+  `portrett10-alle-1x.png` (alle side om side), `forhand/portrett10-silhuett-for.png` og `-etter.png`
+  (hudsilhuettane) og `forhand/skjerm/portrett10-taleboks.png` (tolv taleboksar i spelet). Arka blir laga av
+  `forhand/ark84.py`.
+- **Står att:** storebror og bygdemannen er begge breie og kantete med brunt hår; dei skil seg mest på
+  skjegget og fargane. Fellesansikta deler framleis bakgrunn (med vilje).

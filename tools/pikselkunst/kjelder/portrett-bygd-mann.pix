@@ -28,10 +28,13 @@ palett:
   u = #dc9c74    hud_br6 3
   v = #f0c49c    hud_br6 4
   w = #fce0c4    hud_br6 5
-  x = #2e1a12    iris_br 1
-  y = #4a4452    lin 0
-  z = #dcd6d2    lin 3
-  A = #6a2a2c    munn 1
+  x = #140a08    iris_br 0
+  y = #2e1a12    iris_br 1
+  z = #5a3620    iris_br 2
+  A = #8a5c34    iris_br 3
+  B = #b8864e    iris_br 4
+  C = #dcd6d2    lin 3
+  D = #6a2a2c    munn 1
 bilete:
   oooooooooooooooooooooooooiiiiioooooooooooooooooo
   oooooooooooooooooooiiiiiimmmmliiiioooooooooooooo
@@ -42,39 +45,39 @@ bilete:
   oooooooooijjjkmlkmmkkkkkmmmklllllklllliooooooooo
   oooooooooijjjkkkkkkkkjjjjjjkkkklllkllliooooooooo
   ooooooqqijjjkkjkkkjkkkkkkkkjjjkkkllkllliooqqqqqq
-  qqqqqqooijjjkkkkkkkkkirrrrrrijjjkkllllliqqoooooo
-  oooooooijjjkkjkkklirrttuuvvvvvvjjkklllkioooooooo
-  pppppppijjjkkkkkkirttuuvvvvvvvvvjjkklllipppppppp
-  pppppppijjjkkjkklrttuuvvvvvvvvvvvjjklllipppppppp
-  pppppppijjjkkkkklttuuvvvvvvvvvvvvvjkllippppppppp
-  pppppppijjjkkkkkltuuvvvvvvvvvvvvvvvjkkippppppppp
-  pppppppijjjkkkkkltuuvvvvvvvvvvvvvvvvkkippppppppp
-  pppppppijjjkkkkkltuuvvvvvvvvvvvvvvvvsipppppppppp
-  pppppppijjjkkkkkltuuvjjjjvvvjjjjvvvvsppppppppppp
-  ppppppppijjkjkjkttujjvvvvvvvvvvvjjvvsppppppppppp
-  pppppppppijjjkirttuuvvvvvvvvvvvvvvvvsppppppppppp
-  ppppppppprvutjtrtttiiiiiivvviiiiivvvsppppppppppp
-  ppppppppprvtsttrtttiaaxbivuvaaxbivvvsppppppppppp
-  ppppppppprutsttrtttuttttvvuvvtttvvvvsppppppppppp
-  pppppppppruttstrtttuuvvvvvuvvvvvvvvvsppppppppppp
-  pppppppppruutttrtttuuvvvvvuvvvvvvvvvsppppppppppp
-  ppppppppppruuttijjtuuvvvvvuvwvvvvvvlippppppppppp
-  pppppppppppruutijjtuuvvvvvuvwvvvvvvlippppppppppp
-  pppppppppppprusijjtuuvvvvvvuwvvvvvvlippppppppppp
-  ppppppppppppprpijjjuuvvvvvvtvvuvvvllippppppppppp
-  pppppppppppppppijjjuuvvlllllkklvvvllippppppppppp
-  ppppppppppppphhhijjuuvvvvvvvvvvvvvlihhhhpppppppp
-  pppppppppphhhhhhhijjuuuvAAAAAAvvvllihhhhhhhppppp
-  hhhhhhhhhhhhhgggggijjkkklllllllllliggggghhhhhhhh
-  hhhhhhhhhhgggggggggiijjkkkklllllliggggggggghhhhh
-  ggggggggggggggggggggijjkkkkkkkkiiggggggggggggggg
-  ggggggggggggggggggggijjjjjjkkkiggggggggggggggggg
-  gggggggggggggccccccyzttttttuuusccccggggggggggggg
-  gggggggggggccdeeeeeezzzzzzzzzzeeeeeccggggggggggg
-  ggggggggcccdddeeeeeeezzzzzzzzeeeeeffecccgggggggg
-  ggggggccddddddeeeeeeezzzzzzzzeeeeeeffffeccgggggg
-  gggggcddddddddeeeeeeezzzzzzzzeeeeeefffffffcggggg
-  ggggcdddddddddeeeeeeeezzzzzzeeeeeeeefffffffcgggg
+  qqqqqqooijjjkkkkkkkkkuvvvvvvvjjjkkllllliqqoooooo
+  oooooooijjjkkjkkkluuvvvvvvvvvvvjjkklllkioooooooo
+  pppppppijjjkkkkkkuuvvvvvvvvvvvvvjjkklllipppppppp
+  pppppppijjjkkjkkluuvvvvvvvvvvvvvvjjklllipppppppp
+  pppppppijjjkkkkkluuvvvvvvvvvvvvvvvjkllippppppppp
+  pppppppijjjkkkkkluuvvvvvvvvvvvvvvvvjkkippppppppp
+  pppppppijjjkkkkkluuvvvvvvvvvvvvvvvvvkkippppppppp
+  pppppppijjjkkkkkluuvvjjvvvvvvvjjjvvvvspppppppppp
+  pppppppijjjkkkkkluujjjjjjvvvjjjjvjjvvspppppppppp
+  ppppppppijjkjkjktujvvvvjjvvvjjvvvvvvvspppppppppp
+  pppppppppijjjkrttuuvvvvvvvvvvvvvvvvvvspppppppppp
+  ppppppppprvutjttttiiiiiivvvviiiivvvvvspppppppppp
+  ppppppppprvtstttttiaayxbivuvayxbivvvvspppppppppp
+  ppppppppprutstttttuaazBAvvuvazBAvvvvvspppppppppp
+  pppppppppruttsttttuuvtttvvuvvttvvvvvvspppppppppp
+  pppppppppruuttttttuuvvvvvvuvvvvvvvvvvspppppppppp
+  ppppppppppruuttjjtuuvvvvvvuvwvvvvvvllipppppppppp
+  pppppppppppruutjjtuuvvvvvvuvwvvvvvvllipppppppppp
+  ppppppppppppruijjtuuvvvvvvvuwvvvvvvllipppppppppp
+  ppppppppppppprijjjuuvvvvvvvtvvuvvvlllipppppppppp
+  ppppppppppppppijjjuuvvvvvvvvuuvvvvlllipppppppppp
+  ppppppppppppphijjkuvvvvllllllllvvvlllihhpppppppp
+  pppppppppphhhhijjkkuvvvvvvvvvvvvvllllihhhhhppppp
+  hhhhhhhhhhhhhggijjkkuvvvDDDDDDvvlllliggghhhhhhhh
+  hhhhhhhhhhggggggijjkkkkllllllllllllligggggghhhhh
+  gggggggggggggggggijjkkkkllllllllllligggggggggggg
+  ggggggggggggggggggijjkkkkklllllllliggggggggggggg
+  gggggggggggggccccccrtkkkkkkkkkkkkicggggggggggggg
+  gggggggggggccdeeeeeeCCCCCCCCCCeeeeeccggggggggggg
+  ggggggggcccdddeeeeeeeCCCCCCCCeeeeeffecccgggggggg
+  ggggggccddddddeeeeeeeCCCCCCCCeeeeeeffffeccgggggg
+  gggggcddddddddeeeeeeeCCCCCCCCeeeeeefffffffcggggg
+  ggggcdddddddddeeeeeeeeCCCCCCeeeeeeeefffffffcgggg
   gggcdddddddddddeeeeeeeeeeeeeeeeeeeeeefffffffcggg
   gggcdddddddddddeeeeeeeeeeeeeeeeeeeeeefffffffcggg
   ggcddddddddddddeeeeeeeeeeeeeeeeeeeeeeefffffffcgg
