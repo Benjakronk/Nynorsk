@@ -2027,3 +2027,20 @@ same måte, uansett kven som tek over.
   seg: flytt ned på taket med torvkrans og mørk kant. Pipetoppen på grua fekk brei kant.
 - **Før og etter:** `forhand/skjerm/pr-samanlikning-pipe-ute.png` (Åsen), `pr-for-bygda-spel.png` og
   `pr-bygda-spel.png` (prestegarden), `pr-samanlikning-grue.png` (grua).
+
+## Runde 68: døropning med karm til preikestolen, og strålar berre over golvet
+
+- **Frå brukaren:** Ivar skal ikkje berre dukke opp midt i korga: døropninga skal vere ei ramme han går bak
+  til han står i opninga, og så eitt steg ned i korga. Og ein lysstråle med støv gjekk ut i det svarte
+  utanfor kyrkjeveggen.
+- **Strålane:** `straale()` i motor.js tek ein `inne`-test, og `golvVed` klipper strålane og støvet til
+  fliser som er golv i kartet (ikkje murar, vindauge, dører, tomrom eller luft). Gjeld alle rom med strålar.
+  Før og etter: `forhand/skjerm/k60-straale-for-etter.png`; koret, galleriet og tårnet i `k60-andre.png`.
+- **Døropninga:** preikestolen har eit fjerde lag, `preikestol-karm` (karmen, bogen, sluttsteinen og
+  terskelen), og opninga er høgare (biletet 120 pikslar, lydhimlingen høgare opp). Bygg kan no ha
+  `lag: n` (fast plass i teikneorden; botnrada styrer framleis plasseringa). Gangen går langs rad 11:
+  døra i pilasteren (5,11 til 4,11, korstolane er flytte éi rad opp), skjult 4,11 til 2,11, døropninga
+  1,11 (`hogd [-9, 5]`, lag 15.2: bak karmen, så karmen dekkjer han når han går inn) og korga 1,12
+  (`[-8, 5]`, lag 15.5: framfor karmen, bak framsida). `sjekk-kyrkjegang.html` går heile vegen og preikar.
+- **Etter:** `k60-rad.png` (ved døra i koret, skjult i gangen, i opninga, nede i korga) og
+  `k60-opning-naer.png` (Ivar i døropninga under lydhimlingen).

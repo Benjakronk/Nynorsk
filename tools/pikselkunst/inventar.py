@@ -579,10 +579,13 @@ def preikestol(lag="fram"):
       lag="bak":     opninga i veggen og den bakre halvdelen av korga (éi rad høgare i kartet og
                      difor 16 pikslar lågare bilete), bak figuren
       lag="fram":    den fremre kanten, framsida, bibelen, kjeglen og søyla, framfor figuren
+      lag="karm":    karmen og bogen rundt døropninga (lag 15.3 i kartet): framfor den som står i
+                     opninga, bak den som står i korga
       lag="himling": lydhimlingen, over alt (over: true), så han rammar inn hovudet."""
-    W, H = 3 * 16 + 8, 104
+    W, H = 3 * 16 + 8, 120
     L = Lerret(W, H)
     S_ = Lerret(W, H)                               # lydhimlingen for seg
+    K = Lerret(W, H)                                # karmen rundt opninga for seg (lag="karm")
     cx = 17
     yb = H - 2
     def oval(M, ox, oy, rx, ry, fn):
@@ -592,13 +595,20 @@ def preikestol(lag="fram"):
                 if d <= 1: fn(x, y, d)
     yk = H - 70                                     # midt i korga (kanten er ein oval rundt denne lina)
     yu = H - 46                                     # nedre kant på framsida av korga
-    # opninga i veggen bak korga: mørk, boga, med karm og ein gyllen sluttstein
-    for y in range(H - 92, yk + 1):
-        for x in range(cx - 8, cx + 8):
+    # døropninga i veggen bak korga: mørk og boga (bak figuren), med karm og boge i eit eige lag
+    # (framfor den som står i opninga, bak den som står i korga) og ein gyllen sluttstein
+    for y in range(H - 102, yk + 1):
+        for x in range(cx - 10, cx + 10):
             dx = abs(x + 0.5 - cx)
-            if y < H - 86 and ((y - (H - 86)) ** 2 / 36 + dx ** 2 / 64) > 1: continue
-            L.p(x, y, "U" if dx > 6.5 and x < cx else "t" if dx > 6.5 else "N" if y > H - 84 else "a")
-    _stempel(L, cx - 1, H - 93, ["yZ", "YZ"])
+            if y < H - 94 and ((y - (H - 94)) ** 2 / 64 + dx ** 2 / 100) > 1: continue
+            if dx > 8:                                                          # karmen
+                K.p(x, y, "U" if x < cx else "t")
+            elif y < H - 94 and ((y - (H - 94)) ** 2 / 36 + dx ** 2 / 64) > 1:   # bogen
+                K.p(x, y, "U" if x < cx else "T")
+            else:
+                L.p(x, y, "N" if y > H - 96 else "a")
+    _stempel(K, cx - 1, H - 103, ["yZ", "YZ"])
+    for x in range(cx - 10, cx + 10): K.p(x, yk - 4, "Y" if x < cx else "Z")   # terskelen
     # søyla: kjem ut under botnen av korga og står midt under, øvst i skugge, med fot
     for y in range(yu + 8, yb - 3):
         sk = y < yu + 13
@@ -636,7 +646,7 @@ def preikestol(lag="fram"):
     # lydhimlingen: kvelva kuppel med volum (lys oppe til venstre), gylne ribber, krone, gesims,
     # raud lambrekin med bogar og duskar. Han ligg høgt over korga, så hovudet til den som står der,
     # syner under han.
-    oc, oy = cx, H - 98
+    oc, oy = cx, H - 111
     def kuppel(x, y, d):
         lx, ly = (x + 0.5 - oc) / 15, (y + 0.5 - oy) / 6.5
         lys = -lx * 0.7 - ly * 0.8 + (1 - d) * 1.0
@@ -658,6 +668,9 @@ def preikestol(lag="fram"):
     if lag == "himling":
         omriss(S_)
         return S_
+    if lag == "karm":
+        omriss(K)
+        return K
     grense = yk                                     # over og på denne lina: laget bak
     if lag == "bak":
         B = Lerret(W, H - 16)
@@ -834,10 +847,10 @@ def skipvegg(side):
     for x in range(a - 1, b + 2):
         L.p(x, 12, "y"); L.p(x, 13, "Y"); L.p(x, 14, "Z"); L.p(x, H - 6, "Y"); L.p(x, H - 5, "Z")
     if side == "v":                                                          # døra inn til preikestolen i pilasteren
-        for y in range(46, H - 6):
+        for y in range(30, 48):                                              # rad 11 i kartet
             for x in range(a + 1, b):
-                L.p(x, y, "Y" if y == 46 or x in (a + 1, b - 1) else "N" if y > 49 else "a")
-        L.p((a + b) // 2, 45, "y")
+                L.p(x, y, "Y" if y == 30 or x in (a + 1, b - 1) else "N" if y > 33 else "a")
+        L.p((a + b) // 2, 29, "y")
     for j in range(8):                                                       # bogen: raudt band med gull
         bx = (b + 1 + j) if side == "v" else (a - 1 - j)
         for y in range(4, 12 - j // 2):
@@ -2202,7 +2215,7 @@ INVENTAR = {
     "kiste": kiste, "kiste-open": lambda: kiste(True),
     "rokk": rokk, "korvegg": korvegg, "kyrkjebenk-h": lambda: kyrkjebenk("h"), "kyrkjebenk-v": lambda: kyrkjebenk("v"), "kyrkjebenk-golv": kyrkjebenk_golv,
     **{f"kyrkjebenk-{d}{v}": (lambda d=d, v=v: kyrkjebenk(d, variant=v - 1)) for d in "hv" for v in (2, 3, 4, 5)},
-    "dopefont": dopefont, "altartavle": altartavle, "altarring": altarring, "preikestol": preikestol, "preikestol-bak": lambda: preikestol("bak"), "preikestol-himling": lambda: preikestol("himling"), "lysekrone": lysekrone,
+    "dopefont": dopefont, "altartavle": altartavle, "altarring": altarring, "preikestol": preikestol, "preikestol-bak": lambda: preikestol("bak"), "preikestol-himling": lambda: preikestol("himling"), "preikestol-karm": lambda: preikestol("karm"), "lysekrone": lysekrone,
     "skipvegg-v": lambda: skipvegg("v"), "skipvegg-h": lambda: skipvegg("h"), "korskilje": korskilje, "kyrkjeskip": kyrkjeskip,
     "fattigblokk": fattigblokk, "jernomn": jernomn,
     "epitaf-v": lambda: epitaf("v"), "epitaf-h": lambda: epitaf("h"),

@@ -960,13 +960,15 @@ window.Motor = (function () {
   // Lysstrålar frå eit vindauge: eit parallellogram skrått ned mot høgre (eitt steg per to rader),
   // i trinn: kjerne og kant, sterkast øvst, med ein dithera kant.
   // Støv i strålane (stov i stemninga): einskilde pikslar i kjernen lyser sterkt og søkk sakte nedover.
-  function straale(sx, sy, no = 0, stov = false) {
+  // inne(x, y): om skjermpikselen ligg over golvet i rommet; strålen blir klipt utanfor (veggar, tomrom).
+  function straale(sx, sy, no = 0, stov = false, inne = null) {
     const fall = Math.floor(no / 160);
     for (let dy = 0; dy < 104; dy++) {
       const y = sy + dy; if (y < 0 || y >= LH) continue;
       const xl = sx + (dy >> 1), sterk = dy < 36 ? 3 : dy < 70 ? 2 : 1;
       for (let dx = -1; dx < 11; dx++) {
         const x = xl + dx; if (x < 0 || x >= LW) continue;
+        if (inne && !inne(x, y)) continue;
         let lv = dx >= 2 && dx < 8 ? sterk : sterk - 1;
         if (dx < 0 || dx >= 10) lv = (x + y) & 1 ? 0 : Math.max(0, sterk - 1);
         else if (stov && dy > 8 && dx >= 1 && dx < 9 && (((dx * 13 + (dy - fall) * 7) % 61) + 61) % 61 === 0) lv = 3;
@@ -1085,10 +1087,13 @@ window.Motor = (function () {
       const iv = st.ivar && glodform("ivar");
       if (iv) stemple(glodRamme(iv, no, 0), (spelar.fx + ox) * S + 8, (spelar.fy + oy) * S + 2);
       // Strålane startar ved blyglaset: i bakveggen (u) og ved innsida av vindauga i venstre sidevegg (Ø).
+      // Strålane og støvet blir berre teikna over golvet i rommet, ikkje over veggar, vindauge eller
+      // tomrommet utanfor huset (fliser som ikkje er golv).
+      const golvVed = (px, py) => { const c = (kart.fliser[Math.floor(py / S - oy)] || [])[Math.floor(px / S - ox)]; return c != null && !" GXcĜØøÖöuE-#".includes(c); };
       if (st.straalar) for (let y = 0; y < kart.h; y++) for (let x = 0; x < kart.w; x++) {
         const c = kart.fliser[y][x];
-        if (c === "u") straale(Math.round((x + ox) * S) + 4, Math.round((y + oy) * S) + 11, no, st.stov);
-        else if (c === "Ø" || c === "Ö") straale(Math.round((x + 1 + ox) * S) - 3, Math.round((y + oy) * S) + (c === "Ø" ? 3 : 0), no, st.stov);
+        if (c === "u") straale(Math.round((x + ox) * S) + 4, Math.round((y + oy) * S) + 11, no, st.stov, golvVed);
+        else if (c === "Ø" || c === "Ö") straale(Math.round((x + 1 + ox) * S) - 3, Math.round((y + oy) * S) + (c === "Ø" ? 3 : 0), no, st.stov, golvVed);
       }
     }
     // Bakgrunnslaga (dalen og fjella langt nede) får nivå 5: ingen skyskugge eller glød der,
@@ -1463,7 +1468,8 @@ window.Motor = (function () {
     // Eit sete med ryggen mot kameraet (fram) kjem etter den som sit på det.
     for (const b of kart.def.bygg || []) { const img = Pikslar.bygg(b.id), fram = Pikslar.SETE && Pikslar.SETE[b.id] && Pikslar.SETE[b.id].fram;
       // flat: true (gravheller, golvteppe) ligg på golvet og blir teikna før alle figurane, utan slagskugge.
-      if (img) figurar.push({ y: b.over ? 999 + b.y / 1000 : b.flat ? -1 : b.y + b.h - 1 + (fram ? 0.03 : 0.01), by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id, b }); }
+      // lag: n på eit bygg gir det ein fast plass i teikneorden (karmen rundt opninga bak preikestolen).
+      if (img) figurar.push({ y: b.over ? 999 + b.y / 1000 : b.flat ? -1 : b.lag != null ? b.lag : b.y + b.h - 1 + (fram ? 0.03 : 0.01), by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id, b }); }
     // Den som sit eller ligg, blir teikna over inventaret på same rad (benken, senga). Den som sit
     // på eit sete, blir sortert etter den nedste rada til setet (ein ståande benk er fleire fliser).
     // kart.def.lag: { "x,y": djupn } gir den som står på ruta ein annan plass i teikneorden (til dømes i
@@ -1487,7 +1493,7 @@ window.Motor = (function () {
         // Slagskugge på bakken, mot høgre og ned (lyset kjem frå oppe til venstre): silhuetten
         // til huset forskoven, men berre nedst ved bakken, så høge ting (tårnet) ikkje kastar
         // ei stripe oppover i graset. Inne fell skuggen berre på golvet, ikkje på sideveggene.
-        const bx = Math.round((f.x + ox) * S) - 4, by = Math.round((f.y + 1 + oy) * S);
+        const bx = Math.round((f.x + ox) * S) - 4, by = Math.round((f.by + 1 + oy) * S);   // botnrada (ikkje sorteringa, som kan vere lag)
         const sx0 = kart.def.inne ? Math.max(bx, Math.round((1 + ox) * S)) : bx;
         const sx1 = kart.def.inne ? Math.min(bx + f.bygg.width + 8, Math.round((kart.w - 1 + ox) * S)) : bx + f.bygg.width + 8;
         g.save(); g.beginPath(); g.rect(sx0, by - 22, sx1 - sx0, 26); g.clip();

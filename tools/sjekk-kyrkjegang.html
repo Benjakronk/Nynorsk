@@ -55,17 +55,22 @@ f.onload = async () => {
   await gaaTil("kyrkje-galleri", "2", "ArrowDown", "kyrkje-tarn", 6, 10);
   await gaaTil("kyrkje-tarn", "1", "ArrowDown", "kyrkje-galleri", 19, 10);
   await gaaTil("kyrkje-galleri", "1", "ArrowDown", "kyrkja", 8, 38);
-  // Preikestolen: frå koret (5,12) mot venstre inn i veggen, gjennom gangen (skjult) og ut i korga (1,12).
+  // Preikestolen: frå koret (5,11) mot venstre inn i veggen, gjennom gangen (skjult), inn i døropninga
+  // bak preikestolen (1,11) og eitt steg ned i korga (1,12).
   M.last("kyrkja", "1"); await vent(300);
-  M.plasser(5, 12, 2); await vent(300);
+  M.plasser(5, 11, 2); await vent(300);
   const skjult = w.RPGData.KART.kyrkja.skjult || [];
   let varSkjult = false;
   tast("keydown", "ArrowLeft");
   { let n = 0; while (n++ < 300 && M.spelar.x !== 1) { await vent(20); if (skjult.includes(M.spelar.x + "," + M.spelar.y)) varSkjult = true; } }
   tast("keyup", "ArrowLeft"); await vent(500);
-  const iStolen = M.spelar.x === 1 && M.spelar.y === 12 && varSkjult && !skjult.includes("1,12");
+  const iOpninga = M.spelar.x === 1 && M.spelar.y === 11 && varSkjult && !skjult.includes("1,11");
+  tast("keydown", "ArrowDown");
+  { let n = 0; while (n++ < 100 && M.spelar.y !== 12) await vent(20); }
+  tast("keyup", "ArrowDown"); await vent(500);
+  const iStolen = iOpninga && M.spelar.x === 1 && M.spelar.y === 12;
   if (!iStolen) ok = false;
-  ut.push(`${iStolen ? "OK" : "FEIL"}: Ivar gjekk inn i veggen frå koret, skjult gjennom gangen og ut i preikestolen (${M.spelar.x},${M.spelar.y})`);
+  ut.push(`${iStolen ? "OK" : "FEIL"}: Ivar gjekk inn i veggen frå koret, skjult gjennom gangen, inn i døropninga og ned i preikestolen (${M.spelar.x},${M.spelar.y})`);
   // Z mot bibelen i preikestolen, og mot klokketauet i tårnet: hendinga går, og teksten kjem.
   const tekst = () => [...d.querySelectorAll("#rpg-tale, #rpg-fort")].filter(e => !e.hidden).map(e => e.textContent).join(" ");
   const trykkGjennom = async (finn, kvar) => {

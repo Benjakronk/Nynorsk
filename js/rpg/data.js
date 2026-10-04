@@ -641,10 +641,10 @@ window.RPGData = (function () {
          Stemninga kyrkjerom gjer rommet mørkt, så altartavla, ljosa og vindauga lyser.
          Inventaret er figurar laga med tools/pikselkunst/inventar.py. */
       bygg: [{ id: "inne-korvegg", x: 5, y: 0, h: 5 }, { id: "inne-altartavle", x: 8, y: 0, h: 7 }, { id: "inne-altarring", x: 7, y: 6, h: 3 },
-        { id: "inne-benk-staande-kort", x: 5, y: 10, h: 2 }, { id: "inne-benk-staande-kort", x: 15, y: 10, h: 2 },
+        { id: "inne-benk-staande-kort", x: 5, y: 9, h: 2 }, { id: "inne-benk-staande-kort", x: 15, y: 9, h: 2 },
         { id: "inne-skipvegg-v", x: 1, y: 9, h: 5 }, { id: "inne-skipvegg-h", x: 16, y: 9, h: 5 }, { id: "inne-korskilje", x: 5, y: 13, h: 1 },
         // Preikestolen i to lag: ryggbrettet og lydhimlingen bak den som står i korga, korga og trappa framfor.
-        { id: "inne-preikestol-bak", x: 1, y: 14, h: 2 }, { id: "inne-preikestol", x: 1, y: 15, h: 2 }, { id: "inne-preikestol-himling", x: 1, y: 15, h: 2, over: true }, { id: "inne-dopefont", x: 17, y: 15, h: 1 },
+        { id: "inne-preikestol-bak", x: 1, y: 14, h: 2 }, { id: "inne-preikestol-karm", x: 1, y: 15, h: 2, lag: 15.3 }, { id: "inne-preikestol", x: 1, y: 15, h: 2 }, { id: "inne-preikestol-himling", x: 1, y: 15, h: 2, over: true }, { id: "inne-dopefont", x: 17, y: 15, h: 1 },
         // Benkene: salmebøker i dei fleste (variant "" og 5), hatt (2) og sjal (3) berre ved folka som
         // sit der og eitt gløymt sjal, slitte benker med stokk (4). Setet ligg flatt under figurane,
         // ryggen framfor (standardperspektivet, sjå STILGUIDE.md).
@@ -671,10 +671,10 @@ window.RPGData = (function () {
         "    ØÞÞþÞþþþÞþÞÞø    ",
         "    ÖÞÞþÞÞÞÞÞþÞÞö    ",
         "    GÞÞþþþÞþþþÞÞG    ",
-        "GGGGGÞÞÞÞÞlÞÞÞÞÞGGGGG",
         "GGGGGþÞÞÞÞlÞÞÞÞþGGGGG",
         "GGGGGþÞÞÞÞlÞÞÞÞþGGGGG",
         "GĜĜĜĜÞÞÞÞÞlÞÞÞÞÞGGGGG",
+        "GĜGGGÞÞÞÞÞlÞÞÞÞÞGGGGG",
         "GGGGG+++++l+++++GGGGG",
         "GqqqqqLqqŁlłqqLqqqqqG",
         "Ø(qqqqqqqŁlłqqqqq((qø",
@@ -711,16 +711,17 @@ window.RPGData = (function () {
       // finst lenger: Ivar startar framfor altarringen (merke 2, sjå EKSTRA_MERKE).
       nyttOppsett: { fraH: 12, merke: "2" },
       /* Preikestolen heng på veggen utan trapp i skipet. Ein går frå koret inn i veggen på venstre side
-         (5,12 til 4,12), gjennom ein gang inni muren (flisa Ĝ, skjult: figuren blir ikkje teikna, men
-         kameraet følgjer han) og ut i korga (1,12): hogd -8 og 5 pikslar mot høgre, så han står midt i
-         korga, og lag 15.5, så han blir teikna etter veggen og laget bak og før framsida. Lydhimlingen
-         ligg over alt (over: true) og rammar inn hovudet. Bibelen (usynleg person) ligg på 1,13.
-         Søyla står på 1,15 og 1,16 (faste ruter). */
-      skjult: ["4,12", "3,12", "2,12"],
-      lag: { "1,12": 15.5 },
+         (5,11 til 4,11), gjennom ein gang inni muren (flisa Ĝ, skjult: figuren blir ikkje teikna, men
+         kameraet følgjer han), inn bak karmen til døropninga (1,11: lag 15.2, mellom opninga og karmen)
+         og eitt steg ned i korga (1,12: lag 15.5, etter karmen og før framsida). hogd: 5 pikslar mot
+         høgre, så han står midt i opninga og korga, og -9 og -8 opp, så korggolvet ligg lågare enn
+         terskelen. Lydhimlingen ligg over alt (over: true) og rammar inn hovudet. Bibelen (usynleg
+         person) ligg på 1,13: snu ned og Z. Søyla står på 1,15 og 1,16 (faste ruter). */
+      skjult: ["4,11", "3,11", "2,11"],
+      lag: { "1,11": 15.2, "1,12": 15.5 },
       // I benkeradene (rada rett bak ein benk) står ein 5 pikslar lågare, så setet og ryggen framfor
       // dekkjer føtene, men hovudet syner over den som sit rett framfor.
-      hogd: Object.assign({ "1,12": [-8, 5] },
+      hogd: Object.assign({ "1,11": [-9, 5], "1,12": [-8, 5] },
         Object.fromEntries([17, 19, 21, 23, 28, 30, 32, 34].flatMap(y =>
           [2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17, 18].map(x => [x + "," + y, -5])))),
       dorer: [{ ved: [10, 43], til: ["bygda", "3"] }, { ved: [8, 37], til: ["kyrkje-galleri", "1"] }],
