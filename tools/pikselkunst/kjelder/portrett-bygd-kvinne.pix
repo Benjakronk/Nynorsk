@@ -25,11 +25,11 @@ palett:
   r = #efb088    hud_iv 3
   s = #fbd4b0    hud_iv 4
   t = #fff0dc    hud_iv 5
-  u = #10182e    iris_b 0
-  v = #1e3058    iris_b 1
-  w = #3a5a96    iris_b 2
-  x = #6a90cc    iris_b 3
-  y = #a8c8f0    iris_b 4
+  u = #141a0e    iris_hg 0
+  v = #34401e    iris_hg 1
+  w = #5e7038    iris_hg 2
+  x = #8ea05a    iris_hg 3
+  y = #c4d08e    iris_hg 4
   z = #4a4452    lin 0
   A = #dcd6d2    lin 3
   B = #a04a48    munn 2

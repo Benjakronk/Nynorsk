@@ -96,6 +96,12 @@ RAMPER = {
     "hud_ve6":  ["#18241e", "#34483e", "#587462", "#809c84", "#a8c0a4", "#cce0c4"],
     "haug":     ["#080604", "#16120c", "#241c12", "#3e2e1a", "#6a8a48"],
     "iris_is":  ["#101a26", "#2a4458", "#6a9ab4", "#a8d4e8", "#e4f6ff"],   # runde 84: kaldt, isblått (den framande)
+    # Runde 85: eigne augefargar, så irisen ikkje er den same lyseblå hos alle
+    "iris_gr":  ["#14161c", "#383e46", "#646e78", "#96a2aa", "#ccd6dc"],   # grå (storebror)
+    "iris_bg":  ["#121824", "#2a3c56", "#4e6c90", "#7c9cc0", "#b8cce2"],   # blågrå (presten)
+    "iris_pg":  ["#1c1e24", "#50565e", "#80888e", "#adb5ba", "#dce2e6"],   # bleik grå (den gamle mannen)
+    "iris_hz":  ["#1a0e06", "#4a2a10", "#7a5020", "#a8803c", "#d4b070"],   # hasselbrun (grannen)
+    "iris_hg":  ["#141a0e", "#34401e", "#5e7038", "#8ea05a", "#c4d08e"],   # olivengrøn (bygdekvinna)
     "dis":      ["#0a1018", "#121c26", "#1c2c34", "#2a4044", "#3e5a58", "#5e7c74"],
 }
 
@@ -594,7 +600,7 @@ def storebror(P):
     kjeve og skjeggstubb, stuttklypt sandfarga hår, rolege og alvorlege (men vakne) auge under
     tunge, rette bryn, eit strå frå løa i munnviken, open linskjorte og brun vest. Bak: veggen i løa, mørke
     ståande bord med ein lysstripe gjennom ei glipe."""
-    hud, har, iris = "hud_br6", "har_br6", "iris_b"
+    hud, har, iris = "hud_br6", "har_br6", "iris_gr"
     P.hud = hud
     # ---- bakgrunnen: ståande bord i løa
     bak_fyll(P, "lade", [(47, 1)])
@@ -887,7 +893,7 @@ def presten(P):
     hår strøke bakover på sidene, buskute kvite bryn med den indre enden løfta, rynker i panna,
     lang, rett nase, smal munn med djupe furer, og ein stor, kvit pipekrage over den svarte
     prestekjolen. Bak: den kvitkalka kyrkjeveggen med eit rundboga vindauge i lyset."""
-    hud, har, iris = "hud_gm6", "har_kv6", "iris_b"
+    hud, har, iris = "hud_gm6", "har_kv6", "iris_bg"
     P.hud = hud
     bak_fyll(P, "kalk", [(35, 2), (47, 1)])
     for y in range(36, H):
@@ -994,7 +1000,7 @@ def syster(P):
     """Syster, om lag ti år: rundt andlet, store auge, raude kinn, blått skaut med kvite prikkar
     knytt under haka, brune hårlokkar framom, og eit breitt smil med glugg i tanngarden. Raudt liv
     over kvit skjorte. Bak: tømmerveggen i stova i varmt lys frå grua."""
-    hud, har, iris = "hud_ba6", "har_sy6", "iris_br"
+    hud, har, iris = "hud_ba6", "har_sy6", "iris_iv"   # brune auge som Ivar (sysken)
     P.hud = hud
     bak_fyll(P, "stove", [(47, 2)])
     for y in range(H):
@@ -1044,7 +1050,7 @@ def granne(P):
     """Grannen: gamal og godlynt. Skalla med kvit hårkrans, tjukt kvitt skjegg og bart, rundt og fyldig
     andlet, opne, vennlege auge med smilerynker, raud nase, og ei kritpipe i munnviken med røyk som stig opp. Grå vadmålstrøye.
     Bak: tunet om kvelden, varm himmel over eit torvtak."""
-    hud, har, iris = "hud_gm6", "har_kv6", "iris_b"
+    hud, har, iris = "hud_gm6", "har_kv6", "iris_hz"
     P.hud = hud
     bak_fyll(P, "kveld", [(8, 1), (16, 2), (24, 3), (47, 4)])
     for x in range(W):                                                          # torvtaket
@@ -1089,7 +1095,7 @@ def budeia(P):
     """Budeia: sterk og blid, om lag atten. Raudt skaut knytt i nakken, lys flette over skuldra,
     breitt smil med tenner, raude kinn, oppbretta ermar og blått liv over kvit skjorte. Bak: setra
     med blå himmel, fjell med snø og grøn bakke."""
-    hud, har, iris = "hud_iv", "har_hu", "iris_b"
+    hud, har, iris = "hud_iv", "har_hu", "iris_g"
     P.hud = hud
     bak_fyll(P, "himmel", [(6, 1), (14, 2), (47, 3)])
     for x in range(W):                                                          # fjell og bakke
@@ -1182,7 +1188,7 @@ def bygd_mann(P):
 
 def bygd_kvinne(P):
     """Vaksen bygdekvinne: mørkt skaut knytt under haka, brunt hår i panna, raudt liv. Mild."""
-    hud, har, iris = "hud_iv", "har_sy6", "iris_b"
+    hud, har, iris = "hud_iv", "har_sy6", "iris_hg"
     P.hud = hud; bak_bygd(P)
     P.poly([(6, 48), (9, 41), (17, 37), (31, 37), (39, 41), (42, 48)], ("lin", 3))
     P.poly([(14, 40), (20, 41), (22, 48), (13, 48)], ("raud", 2)); P.poly([(28, 41), (34, 40), (35, 48), (26, 48)], ("raud", 3))
@@ -1206,7 +1212,7 @@ def bygd_kvinne(P):
 
 def bygd_gamal_mann(P):
     """Gamal bygdemann: tunt kvitt hår, skjeggstubb, rynker, brun trøye. Tolmodig."""
-    hud, har, iris = "hud_gm6", "har_kv6", "iris_b"
+    hud, har, iris = "hud_gm6", "har_kv6", "iris_pg"
     P.hud = hud; bak_bygd(P)
     P.poly([(3, 48), (6, 41), (15, 37), (33, 37), (42, 41), (45, 48)], ("brun", 3))
     P.poly([(3, 48), (6, 41), (15, 37), (16, 48)], ("brun", 2)); P.poly([(33, 38), (42, 41), (45, 48), (39, 48)], ("brun", 4))

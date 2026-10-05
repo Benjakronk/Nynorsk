@@ -27,11 +27,11 @@ palett:
   t = #dcac94    hud_gm6 3
   u = #f0ccb4    hud_gm6 4
   v = #fce8d8    hud_gm6 5
-  w = #10182e    iris_b 0
-  x = #1e3058    iris_b 1
-  y = #3a5a96    iris_b 2
-  z = #6a90cc    iris_b 3
-  A = #a8c8f0    iris_b 4
+  w = #1c1e24    iris_pg 0
+  x = #50565e    iris_pg 1
+  y = #80888e    iris_pg 2
+  z = #adb5ba    iris_pg 3
+  A = #dce2e6    iris_pg 4
   B = #6a2a2c    munn 1
   C = #3a2420    stubb 0
   D = #a87a5c    stubb 2

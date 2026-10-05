@@ -2348,3 +2348,19 @@ same måte, uansett kven som tek over.
   `forhand/ark84.py`.
 - **Står att:** storebror og bygdemannen er begge breie og kantete med brunt hår; dei skil seg mest på
   skjegget og fargane. Fellesansikta deler framleis bakgrunn (med vilje).
+
+## Runde 85: eigne augefargar
+
+- **Frå brukaren:** gi personane ulike augefargar. Nesten alle hadde den same lyseblå irisen (`iris_b`), så dei
+  såg like ut på tvers av galleriet.
+- **Nye irisrampar** (fem tonar som før: pupill, mørk, mellom, lys og lysast; glansen er augekvite):
+  `iris_gr` (grå), `iris_bg` (blågrå), `iris_pg` (bleik grå), `iris_hz` (hasselbrun) og `iris_hg` (olivengrøn).
+- **Per person:** storebror grå, syster brun som Ivar (`iris_iv`, sysken), presten blågrå, den framande framleis
+  isblå, grannen hasselbrun, budeia grøn (`iris_g`), haugbonden framleis lysande, bygdemannen brun, bygdekvinna
+  olivengrøn, den gamle mannen bleik grå, den gamle kona brun og guten blå. Ivar og Huldra er urørde.
+- **Runde:** (1) bygdekvinna (grågrøn) og budeia (grøn) vart for like, og presten (blågrå) låg for nær storebror
+  (grå): bygdekvinna fekk ein varmare olivengrøn, presten ein blåare tone.
+- **Sjekka:** `pix.py sjekk` (storebror framleis 40 fargar, dei andre 27 til 39), `portrett.py hol` (ingen hol),
+  `node tools/sjekk-spel.js` og `sjekk-scene.html` grøne.
+- **Etter:** `forhand/portrett11-for-etter-a.png` og `-b.png` (før og etter), `forhand/portrett11-alle.png` (alle
+  side om side) og `forhand/auge11.png` (berre auga, alle fjorten på rad).

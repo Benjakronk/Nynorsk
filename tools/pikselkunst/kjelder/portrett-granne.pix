@@ -24,11 +24,11 @@ palett:
   q = #dcac94    hud_gm6 3
   r = #f0ccb4    hud_gm6 4
   s = #fce8d8    hud_gm6 5
-  t = #10182e    iris_b 0
-  u = #1e3058    iris_b 1
-  v = #3a5a96    iris_b 2
-  w = #6a90cc    iris_b 3
-  x = #a8c8f0    iris_b 4
+  t = #1a0e06    iris_hz 0
+  u = #4a2a10    iris_hz 1
+  v = #7a5020    iris_hz 2
+  w = #a8803c    iris_hz 3
+  x = #d4b070    iris_hz 4
   y = #e08a7e    kinn 2
   z = #1a1020    kveld 0
   A = #3a2040    kveld 1

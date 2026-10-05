@@ -18,11 +18,11 @@ palett:
   k = #f2b494    hud_ba6 3
   l = #fcd8bc    hud_ba6 4
   m = #fff0e2    hud_ba6 5
-  n = #140a08    iris_br 0
-  o = #2e1a12    iris_br 1
-  p = #5a3620    iris_br 2
-  q = #8a5c34    iris_br 3
-  r = #b8864e    iris_br 4
+  n = #140806    iris_iv 0
+  o = #3a1e10    iris_iv 1
+  p = #6a3e1c    iris_iv 2
+  q = #a06a30    iris_iv 3
+  r = #dca664    iris_iv 4
   s = #f2a896    kinn 3
   t = #fcfcff    kvit 4
   u = #4a4452    lin 0

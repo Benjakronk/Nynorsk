@@ -144,6 +144,9 @@ med djupe auge og rynker, Sabin ein brei, kantete kjeve. Hos oss gjeld dette:
 - **Karakter i auga og bryna:** bekymra (presten) har den indre enden av bryna løfta og loket hallande ned
   mot den ytre kroken, kalde (den framande) eit smalt auge med bleik, isblå iris og rett, lågt bryn.
   Varier blikkretninga òg: mot teksten, opp (guten), litt ned (bygdekvinna, kona).
+- **Augefarge (runde 85):** varier irisfargen over heile galleriet, truverdig for Vestlandet: blå, grå,
+  blågrå, bleik grå hos gamle, brun, hasselbrun og grøn. Sysken kan dele farge (syster har `iris_iv` som
+  Ivar). Overnaturlege vesen og kalde figurar kan skilje seg ut (haugbonden lyser, den framande er isblå).
 - **Hol i håret:** `python tools/pikselkunst/portrett.py hol` finn bakgrunn som syner gjennom hår eller
   hovudplagg (lukka hol og smale hakk). Når andletet blir smalare eller kjeven kortare, må håret i
   nakken eller halsen fylle opp bak kjeven (budeia og den framande). Opningar som skal vere der, står i `HOL_LOV`.
