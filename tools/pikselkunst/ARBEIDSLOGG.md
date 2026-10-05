@@ -2410,3 +2410,31 @@ same måte, uansett kven som tek over.
   `forhand/eldstad-8x.png` (alle rammene).
 - **Står att:** bålet er lite i 1:1; ein trefot med gryte kunne vore ein eigen,
   større variant (2 × 1 fliser). Røyken frå `royk()` blir brunleg i gløden om kvelden.
+
+## Runde 87: bålet med gryte, og sitjeplassar ein kan gå på
+
+- **Frå brukaren:** bålet har passe storleik, og den brune røyken i kveldslyset er ikkje noko problem. Ein større
+  variant med gryte er fin. Stolar, benker og slikt bør ein kunne gå på, så ein kan «setje seg».
+- **Bålet med gryte (`ÅÅ`, to fliser):** `baal-gryte`, `baal-gryte-ild` og `baal-gryte-fram` i `eldstad.py`. Ringen er
+  den same, gjord 14 pikslar breiare (`_brei()`), med to kubbekryss. Trefoten er tre bjørkestenger (`_stong()`:
+  lys never, mørk skuggeside, svarte merke), utan omriss, så han står tynt: den bakre stonga står bak
+  flammane, dei to framme går ut til kanten av ringen, så elden syner godt mellom dei. Gryta heng høgt i ein
+  kjetting og ein bøyle, med ein lys kant rundt opninga og glør under. Flammane er to av dei handteikna
+  flammene side om side (ulik ramme), slått saman. `damp()` (kvite dottar frå gryta), gnistar og røyk i
+  `eldstad()`. Glødforma `baalstor` er `baal` dregen ut 8 pikslar til kvar side. Han står på setervollen i
+  utmarka (22 og 23,21), der det vesle bålet stod; det vesle bålet står att ved sjøen på vegen.
+- **Rundar på bålet:** (1) ringen var for smal for to fliser og gryta hang så lågt at flammane forsvann bak
+  henne: ringen vart 4 pikslar breiare, gryta 2 pikslar høgare, og føtene står ytst. (2) Om dagen gjorde
+  morgongløden (trinn 2 og 3) steinane nesten kvite: trinna er svakare no. Dampen vart sterkare.
+- **Sitjeplassar:** `kanSitjeInn()`, `kanReiseSeg()`, `setSeg()` og `fylgjeEtter()` i motor.js, bygd på `SETE`,
+  `seteVed()` og `SITJE_DY`. Spelaren går inn på eit sete og set seg (retninga til setet), og reiser seg når
+  han går. Ikkje inn eller ut over ryggen, langs benken frå sete til sete, opptatt der folk sit. Den som sit,
+  snur seg ikkje på setet. Følgjet ventar når spelaren går langs ein benk og går rundt med regi etterpå.
+  Nye sete: `inne-sofa` og `inne-stol` (`retning: 0`), og stokken ved bålet (naturting med
+  `sete: { hogd: 4, retning, rygg: false }`).
+- **Sjekka:** `sjekk-scene.html` bolk 8c (benken og kubbestolen i stova, kyrkjebenken, stokken; over ryggen,
+  opptatte plassar og følgjet), `node tools/sjekk-spel.js`, `sjekk-gange.html` og `sjekk-kyrkjegang.html`.
+- **Bilete:** `forhand/eldstad-gryte-6x.png` (rammene på mørkt og lyst gras), `forhand/skjerm/r87-a-kveld-naer.png`,
+  `r87-a-dag-naer.png` (runde 1), `r87-b-dag-naer.png` (runde 2), `r87-sit-alle.png` og `r87-sit-kyrkja-spel.png`.
+- **Står att:** Ivar i kyrkjebenken syner berre med håret over ryggen (som kyrkjefolket); går han langs ein
+  benk, står han på golvet bak ryggen til han stoppar og set seg.

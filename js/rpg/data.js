@@ -243,7 +243,8 @@ window.RPGData = (function () {
       // Lyktene lyser svakt òg om dagen (runde 86): ein varm glorie og pøl, som om kvelden men dempa.
       // Trinn 1 tek med det varme HDMA-lyset øvst, så gløden aldri blir mørkare enn graset rundt.
       kjelder: true,
-      glod: { bak: [{ p: [4, 3, -1] }, { p: [5, 4, -1] }, { p: [7, 5, -1] }], fig: [{ p: [2, 1, -1] }, { p: [3, 2, -1] }, { p: [4, 3, 0] }] },
+      // Trinn 2 og 3 er svake (runde 87), så steinane i bålringen ikkje blir bleike om dagen.
+      glod: { bak: [{ p: [4, 3, -1] }, { p: [5, 3, -1] }, { p: [6, 4, -1] }], fig: [{ p: [2, 1, -1] }, { p: [3, 2, -1] }, { p: [4, 3, 0] }] },
       syklus: [[0, 0, 0], [1, 1, 0], [0, 0, 0], [0, 0, 0]],
     },
     // Fiolett kveld: fast farge trekt frå bakgrunnen, litt mindre frå figurane. Lyktene lyser.
@@ -315,6 +316,7 @@ window.RPGData = (function () {
     lykt: { rammer: 2, rekkje: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1] },
     lyktgolv: { rammer: 2, rekkje: [0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0] },        // den same lykta på golvet (L inne)
     baal: { rammer: 3, rekkje: [0, 1, 0, 2, 1, 1, 0, 2, 2, 0, 1, 0, 2] },          // bålplassen (å): flakkar meir enn lykta
+    baalstor: { rammer: 3, rekkje: [0, 1, 0, 2, 1, 1, 0, 2, 2, 0, 1, 0, 2] },      // bålplassen med gryte (ÅÅ, to fliser)
     krone: { rammer: 2, rekkje: [0, 0, 1, 0, 0, 0, 0, 1, 1, 0] },
     kronegolv: { rammer: 2, rekkje: [0, 0, 0, 1, 0, 0, 0, 0, 1, 0] },   // pølen på golvet under lysekrona (fast, utan parallakse)
     altar: { rammer: 2, rekkje: [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0] },   // altartavla og altaret (roleg)
@@ -531,8 +533,9 @@ window.RPGData = (function () {
       // Lia over utmarka (rad 0 til 12) kom til i runde 27. Ei lagring frå før (22 rader) blir flytt 13 rader ned.
       nyeRader: { n: 13, fraH: 22 },
       // Ein bauta ved den gamle ferdselsvegen, rett over brua (sjå naturting på asen).
-      // Bålplassen på setervollen (å, runde 86) er lagringsstaden i utmarka, med ein stokk å sitje på.
-      naturting: [{ ved: [20, 24], bilete: "bauta", manus: "bauta_vegen" }, { ved: [21, 21], bilete: "sitjestokk" }],
+      // Bålplassen med gryte på setervollen (ÅÅ, runde 87) er lagringsstaden i utmarka, med ein stokk
+      // å sitje på (sete: Ivar kan gå inn på stokken og set seg med andletet mot elden).
+      naturting: [{ ved: [20, 24], bilete: "bauta", manus: "bauta_vegen" }, { ved: [21, 21], bilete: "sitjestokk", sete: { hogd: 4, retning: 3, rygg: false } }],
       /* Nedst (rad 13 til 34) er den gamle utmarka med setra, haugen og brua. Over ein skrent (rad 12,
          rampe ved setervegen på x 27) ligg ei hylle i lia, og over ein skrent til (rad 5, rampe på x 24)
          tjernet der bekken spring ut. Bekken fell over begge skrentane. Kista står ytst på hylla vest for
@@ -559,7 +562,7 @@ window.RPGData = (function () {
         "####,,.,,,,,,,,,,,,~~,RRRR,=,###",
         "##,#,,,hhh,,,,,,,,,~~,WWDW,=#,,#",
         "#,,,,,,hhh,,,,,,,,,~~..==..=####",
-        "#,,,,,..@..,o,,,,,~~,oå.=.%=####",
+        "#,,,,,..@..,o,,,,,~~,oÅÅ=.%=####",
         "#,##,t.....,,,,,,,~~,...====#,,#",
         "####,,,.=,,,,,,,,,~~,,,,=,,,o#,#",
         "###,F,,,=,,,,,,,,~~,o,,,=,,,.#,#",
@@ -929,7 +932,7 @@ window.RPGData = (function () {
       ],
       kister: [{ ved: [25, 13], ting: "kaffi", n: 1, id: "k-vegen" }],
       // Bålplassen ved sjøen (å, runde 86) er lagringsstaden på vegen, med ein stokk å sitje på.
-      naturting: [{ ved: [8, 11], bilete: "sitjestokk" }],
+      naturting: [{ ved: [8, 11], bilete: "sitjestokk", sete: { hogd: 4, retning: 2, rygg: false } }],
       folk: [{ merke: "@", u: "fiskar", namn: "Fiskar", atferd: "snu", retning: 2, snu: [0, 2], tale: "fiskar" }],
     },
     ekset: {

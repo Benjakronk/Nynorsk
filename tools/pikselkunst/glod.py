@@ -151,6 +151,17 @@ def baal(r):
     return G
 
 
+def baalstor(r):
+    """Bålplassen med gryte (ÅÅ, runde 87), to fliser brei. Same forma som baal, men dregen ut
+    8 pikslar til kvar side frå midten, så pølen og glorien dekkjer heile ringen."""
+    B, G = baal(r), Glod()
+    for (x, y), v in B.g.items():
+        if x == 0:
+            for dx in range(-8, 9): G.sett(dx, y, v)
+        else: G.sett(x + (8 if x > 0 else -8), y, v)
+    return G
+
+
 # ---------------------------------------------------------------- lysekrone
 def krone(r):
     """Den store lysekrona i kyrkja (inne-lysekrone, 56 x 48, heng høgt med parallakse, sett ovanfrå). Ankeret
@@ -418,7 +429,7 @@ def dor(r):
 
 # Rammer per glødform (sjå LYSKJELDER i js/rpg/data.js for rekkjefølgja i flimmeret).
 FORMER = {"grue": (grue, 3), "kakkelomn": (kakkelomn, 3), "peis": (peis, 3), "lys": (lys, 2),
-          "lykt": (lykt, 2), "lyktgolv": (lyktgolv, 2), "baal": (baal, 3), "krone": (krone, 2), "kronegolv": (kronegolv, 2), "altar": (altar, 2), "ivar": (ivar, 2), "sky": (sky, 1),
+          "lykt": (lykt, 2), "lyktgolv": (lyktgolv, 2), "baal": (baal, 3), "baalstor": (baalstor, 3), "krone": (krone, 2), "kronegolv": (kronegolv, 2), "altar": (altar, 2), "ivar": (ivar, 2), "sky": (sky, 1),
           "glugge": (glugge, 2), "dor": (dor, 1)}
 
 

@@ -291,6 +291,7 @@ window.Pikslar = (function () {
     "L": (g, t) => underGolv(g, t, 0),
     "T": (g, t) => underGolv(g, t, 0),
     "å": (g, t, v) => FLIS["."](g, t, v),
+    "Å": (g, t, v) => FLIS["."](g, t, v),                              // bålplassen med gryte (to fliser, ÅÅ)
     "E": g => { px(g, 0, 0, "#140c10", S, S); px(g, 0, 0, R_.tommer[1], 2, S); px(g, 14, 0, R_.tommer[1], 2, S); px(g, 2, 13, R_.plank[3], 12, 1); px(g, 2, 14, R_.plank[2], 12, 2); },
     "n": (g, t, v) => {
       underGolv(g, t, v);
@@ -436,17 +437,17 @@ window.Pikslar = (function () {
   const treCache = {};
   const treBilete = k => treCache[k] || (treCache[k] = TRE[k]());
 
-  const FAST = new Set(["+", "(", "u", "#", "t", "i", "F", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " ", "s", "M", "-", "N", "U", "Z", "Ø", "ø", "Ö", "ö", "þ", "å"]);
+  const FAST = new Set(["+", "(", "u", "#", "t", "i", "F", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " ", "s", "M", "-", "N", "U", "Z", "Ø", "ø", "Ö", "ö", "þ", "å", "Å"]);
   const ANIM = new Set(["~", "f", "n", "y"]);
   // Fliser med noko som står oppreist og blir teikna i bakken (lykter, grav, kister, inventar):
   // skogkanten lener ikkje tre ut over dei (sjå skogkant i motor.js og kantfigurar).
-  const STAAR = new Set(["L", "T", "å", "x", "K", "k", "z", "b", "n"]);
+  const STAAR = new Set(["L", "T", "å", "Å", "x", "K", "k", "z", "b", "n"]);
   const VARIANT_EKSTRA = new Set(["Rt", "Rb", "Rtb", "Þ", "þ", "q"]);
   const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "O", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t", "i", "F"]);
   const cache = new Map();
   function flis(teikn, t = 0, x = 0, y = 0, golv = "P") {
     const v = VARIANT.has(teikn) || VARIANT_EKSTRA.has(teikn) ? Math.floor(hash(x, y, 7) * 4) : 0;
-    const gl = "LTånKkzb.#tiFoh+(=".includes(teikn) ? golv : "";
+    const gl = "LTåÅnKkzb.#tiFoh+(=".includes(teikn) ? golv : "";
     const nokkel = `${teikn}${gl}:${v}:${ANIM.has(teikn) ? Math.floor(t / 150) % 16 : 0}`;
     if (cache.has(nokkel)) return cache.get(nokkel);
     const c = lerret(S), g = c.getContext("2d");
@@ -760,7 +761,7 @@ window.Pikslar = (function () {
   /* ---------- Kantar mellom fliser ----------
      Gras veks inn over sanda (stiane: sjå Pikslar.sti), og vatnet får strandkant med skum.
      Motoren teiknar kantane oppå flisa, på sidene der naboen er av eit anna slag. */
-  const KLASSE = { ".": "gras", ",": "villgras", '"': "gras", "o": "gras", "h": "gras", "x": "gras", "|": "gras", "j": "gras", "#": "gras", "t": "gras", "i": "gras", "F": "gras", "å": "gras", "=": "veg", "/": "veg", "_": "sand", "~": "vatn" };
+  const KLASSE = { ".": "gras", ",": "villgras", '"': "gras", "o": "gras", "h": "gras", "x": "gras", "|": "gras", "j": "gras", "#": "gras", "t": "gras", "i": "gras", "F": "gras", "å": "gras", "Å": "gras", "=": "veg", "/": "veg", "_": "sand", "~": "vatn" };
   const klasse = teikn => KLASSE[teikn] || null;
   /* Hjørne på ei sandstripe (stiane har kanten sin i Pikslar.sti), teikna med grasflisa til naboen (teikn), så tekstur og farge
      stemmer. hj: 0 nv, 1 na, 2 sa, 3 sv (kva hjørne). ytre: gras på dei to sidene som møtest
@@ -1640,8 +1641,10 @@ window.Pikslar = (function () {
     // Lista er like lang som før, så dei andre steinane på karta ikkje byter utsjånad.
     "o": ["stein1", "stein2", "stein3", "stein1", "heller", "roys", "einer", "einer", "stein2"],
   };
-  function natur(teikn, x, y, golv, t = 0) {
-    if (teikn === "L" || teikn === "T" || teikn === "å") return eldstad(teikn, golv, t, x * 3 + y * 5);
+  // venstre: flisa til venstre (bålet med gryte, ÅÅ, blir teikna éin gong, på den venstre flisa).
+  function natur(teikn, x, y, golv, t = 0, venstre) {
+    if (teikn === "Å" && venstre === "Å") return null;
+    if (teikn === "L" || teikn === "T" || teikn === "å" || teikn === "Å") return eldstad(teikn, golv, t, x * 3 + y * 5);
     const typar = NATURTYPE[teikn];
     if (!typar) return null;
     const namn = typar[Math.floor(hash(x, y, 19) * typar.length)];
@@ -1682,9 +1685,23 @@ window.Pikslar = (function () {
     return r[i % n];
   }
   const LYKT_REKKJE = [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1], BAAL_REKKJE = [0, 1, 2, 3, 1, 0, 2, 3, 2, 1, 3, 0];
-  const ELDSTAD = ["lykt", "lykt-golv", "baal", "baal-ild", "baal-fram", "sitjestokk"];
+  const ELDSTAD = ["lykt", "lykt-golv", "baal", "baal-ild", "baal-fram", "sitjestokk", "baal-gryte", "baal-gryte-ild", "baal-gryte-fram"];
   function eldstad(teikn, golv, t, fase) {
     const k = Math.floor(t / 150) + fase;
+    // Bålplassen med gryte (ÅÅ, runde 87): to fliser, trefot og gryte. Lerretet er 36 breitt, og
+    // flisparet byrjar i kolonne 2. Damp stig frå gryta, røyk frå elden ved sida av.
+    if (teikn === "Å") {
+      const [botn, ild, fram] = ["baal-gryte", "baal-gryte-ild", "baal-gryte-fram"].map(n => lastBilete(`bilete/spel/natur/${n}.png`));
+      if (!botn || !ild || !fram) return null;
+      return { img: botn, x: -2, y: 16 - botn.height, skugge: 0, etter: (g, x, y) => {
+        g.drawImage(ramme(ild, 4, BAAL_REKKJE[k % BAAL_REKKJE.length]), x, y);
+        g.drawImage(fram, x, y);
+        gnistar(g, x + 12, y + 26, t + fase * 97);
+        gnistar(g, x + 24, y + 26, t + fase * 61 + 700);
+        damp(g, x + 18, y + 13, t + fase * 53);
+        royk(g, x + 26, y + 18, t + fase * 131);
+      } };
+    }
     if (teikn === "å") {
       const [botn, ild, fram] = ["baal", "baal-ild", "baal-fram"].map(n => lastBilete(`bilete/spel/natur/${n}.png`));
       if (!botn || !ild || !fram) return null;
@@ -1700,6 +1717,16 @@ window.Pikslar = (function () {
     if (!img) return null;
     const r = ramme(img, 2, LYKT_REKKJE[k % LYKT_REKKJE.length]);
     return { img: r, x: 8 - (r.width >> 1), y: 16 - r.height, skugge: ute ? 4 : 0 };
+  }
+  // Damp frå gryta: små, kvite dottar som stig rett opp, blir breiare og blir borte (rolegare enn røyken).
+  function damp(g, x, y, t) {
+    t = Math.floor(t / 100) * 100;
+    for (let i = 0; i < 4; i++) {
+      const u = (t / 2600 + i / 4) % 1, r = 1 + Math.floor(u * 3);
+      const dx = Math.round(Math.sin(u * 6 + i * 2) * 2 + (i - 1.5) * 1.5), dy = Math.round(u * 18);
+      g.fillStyle = `rgba(244,244,240,${(0.8 * (1 - u)).toFixed(2)})`;
+      g.fillRect(x + dx - r, y - dy - 1, r * 2, Math.max(1, r));
+    }
   }
   // Gnistar frå bålet: små glør som stig, driv litt og sloknar. Somme rundar kjem ingen gnist.
   function gnistar(g, x, y, t) {
@@ -1895,6 +1922,8 @@ window.Pikslar = (function () {
     "inne-kubbestol-ned": { hogd: 5, retning: 0 }, "inne-kubbestol-opp": { hogd: 5, retning: 1, fram: true },
     "inne-kubbestol-venstre": { hogd: 5, retning: 2 }, "inne-kubbestol-hogre": { hogd: 5, retning: 3 },
     "inne-benk": { hogd: 5 }, "inne-benk-kort": { hogd: 5 }, "inne-benk-staande": { hogd: 5 }, "inne-benk-staande-kort": { hogd: 5 },
+    // Sofaen i prestegarden og stolane i boksamlinga på Ekset (runde 87): ryggen er bak, ein ser ned.
+    "inne-sofa": { hogd: 6, retning: 0 }, "inne-stol": { hogd: 5, retning: 0 },
     // Kyrkjebenkene er sette bakfrå: den som sit, ser fram mot altaret, og ryggen dekkjer nedre del av han.
     ...Object.fromEntries(["", "2", "3", "4", "5"].flatMap(v => ["h", "v"].map(d => [`inne-kyrkjebenk-${d}${v}`, { hogd: 2, retning: 1, fram: true }]))),
   };

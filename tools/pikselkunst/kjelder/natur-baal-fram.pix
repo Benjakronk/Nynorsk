@@ -2,7 +2,7 @@
 # type: fiende
 # ut: bilete/spel/natur/baal-fram.png
 # storleik: 20x20
-# framsida av bålet: steinane framme, trefoten og gryta
+# framsida av bålet: steinane framme og kaffikjelen
 # Laga av tools/pikselkunst/eldstad.py. Endre skriptet, ikkje denne fila.
 palett:
   . = -

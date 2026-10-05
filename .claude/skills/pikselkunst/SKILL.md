@@ -124,7 +124,10 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   foten av flammane. Gnistar og røyk teiknar `eldstad()` i pikslar.js, og gløden er `baal` i glod.py.
   Eit nytt bål er `å` i kartet (gjerne med `{ ved, bilete: "sitjestokk" }` i `naturting` på ei
   `o`-rute attmed). Sjå med `skjermbilete.py namn kart=utmarka m=1 x=23 y=21` (kveld) og
-  `stemning=morgon` (dag), og vegen med `kart=vegen m=1 x=8 y=11`.
+  `stemning=morgon` (dag), og vegen med `kart=vegen m=1 x=8 y=11`. Den store varianten med trefot
+  og gryte (runde 87) er `baal-gryte`, `baal-gryte-ild` og `baal-gryte-fram` (flisene `ÅÅ`, to fliser,
+  glødforma `baalstor`, damp med `damp()`); `forhand/eldstad-gryte-6x.png` viser rammene på mørkt og
+  lyst gras. Trefoten er bjørkestenger utan omriss (lys never, mørk skuggeside), så han står tynt.
 - Møblere med bord, benk og stol (bondestova). Kvart møbel er eit eige bilete, så eit rom kan
   setjast saman på fleire måtar. `x`, `y` er øvre venstre flis, `h` talet på flisrader, og breidda
   er (biletbreidd - 8) / 16 fliser. Alle rutene møbelet dekkjer, skal vere `(` (fast golv) i `rader`.
@@ -151,7 +154,10 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   sit oppå ein ståande benk. `fram: true` (stolen sett bakfrå, `inne-kubbestol-opp`)
   teiknar stolen over den som sit, så ryggen dekkjer nedre del av han. Nye stolar og benker
   må førast inn i `SETE` med `hogd` (setehøgd i pikslar, 5 for bondemøblane). `inne-stol` på Ekset
-  står ikkje der: ryggen er så høg at han ville gøyme heile den som sit.
+  og `inne-sofa` i prestegarden står der med `retning: 0` (runde 87): ryggen er bak den som sit.
+  Alt i `SETE` er òg ein sitjeplass spelaren kan gå inn på (sjå «Sitjeplassar» i js/rpg/README.md):
+  ein stol med `retning` kan ein ikkje gå inn i eller ut av bakfrå, så teikn ryggen på rett side.
+  Ein naturting kan òg vere eit sete: `sete: { hogd, retning, rygg: false }` (stokken ved bålet).
 - Figurar (16 × 24): legg personen til i `U` i `js/rpg/data.js` og køyr
   `python tools/pikselkunst/figur.py <id>` (eller `alle`). Arket hamnar i
   `bilete/spel/figurar/<id>.png`. `figur.py ark` lagar eit kontaktark i

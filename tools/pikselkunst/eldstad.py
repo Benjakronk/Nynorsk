@@ -249,6 +249,85 @@ def baal_ild():
     return ut
 
 
+# ------------------------------------------------------------------ bålplassen med gryte (2 x 1)
+# Den store varianten (flisene ÅÅ, runde 87): ein breiare steinring over to fliser, ein trefot av
+# bjørkestenger og ei svart gryte som heng i ein kjetting over elden, med damp. Lerretet er 36 x 36:
+# paret av fliser ligg i kolonne 2 til 33 og rad 20 til 35. Stengene er lyse (never med mørk
+# skuggeside) og utan omriss, så dei står tynt og ikkje blir ein svart klump; den bakre stonga står
+# bak flammane, dei to framme står ute ved sidene, så elden syner godt mellom dei. Gryta heng høgt,
+# så flammane syner under og ved sidene av henne.
+GW, GH, GX, GY = 36, 36, 2, 20
+
+
+def _brei(rader):
+    """Gjer ringen 14 pikslar breiare: midtpartiet (steinane bak og framme) blir gjenteke."""
+    return [r[:10] + r[3:17] + r[10:] for r in rader]
+
+
+def _stong(L, a, b, lys="x", mork="z", merke="X"):
+    """Ei stong frå a til b (i flispar-koordinatar): lys venstreside, mørk høgreside, merke i neveren."""
+    (x0, y0), (x1, y1) = a, b
+    n = max(abs(y1 - y0), abs(x1 - x0))
+    for i in range(n + 1):
+        x = round(x0 + (x1 - x0) * i / n); y = round(y0 + (y1 - y0) * i / n)
+        L.p(GX + x, GY + y, merke if i % 5 == 3 else lys); L.p(GX + x + 1, GY + y, mork)
+
+
+GRYTE = [
+    "  oooooooo  ",
+    " oMMMMMMMMo ",
+    "oMLssssssLMo",
+    "oLMMMMMMMMLo",
+    "oLKKKKKKKKKo",
+    "oMLKKKKKKKKo",
+    " oLKKKKKKKo ",
+    "  orRRRrro  ",
+    "   oooooo   ",
+]
+BOYLE = [(10, -8), (10, -9), (11, -10), (12, -11), (13, -12), (14, -12), (15, -13), (16, -13), (17, -13), (18, -12),
+         (19, -12), (20, -11), (21, -10), (22, -9), (22, -8)]
+
+
+def gryte_botn():
+    L = Lerret(GW, GH)
+    L.stempel(GX - 1, GY + 4, _brei(RING_BAK))
+    L.stempel(GX + 9, GY + 8, VED)
+    L.stempel(GX + 14, GY + 8, ["  he   dx", "  ec  cX ", "   e  h  "])
+    omriss(L)
+    _stong(L, (16, -16), (18, 4))                                    # den bakre stonga, bak elden
+    return L
+
+
+def gryte_fram():
+    L = Lerret(GW, GH)
+    L.stempel(GX - 1, GY + 11, _brei(RING_FRAM))
+    L.stempel(GX + 10, GY - 9, GRYTE)
+    omriss(L)
+    _stong(L, (16, -16), (0, 13))                                    # framme til venstre
+    _stong(L, (16, -16), (31, 13), lys="X", mork="z")                # framme til høgre (i skugge)
+    for x, y in BOYLE: L.p(GX + x, GY + y, "3")                     # bøylen
+    for y in range(-15, -13): L.p(GX + 16, GY + y, "3" if y % 2 else "2")   # kjettingen
+    L.stempel(GX + 15, GY - 18, ["e  e", " ee ", "o22o"])               # surringa i toppen, endane stikk opp
+    return L
+
+
+def gryte_ild():
+    """Flammane under gryta: to av dei handteikna flammene side om side (ulik ramme), slått saman
+    så den lysaste fargen vinn. Fire rammer."""
+    rang = {"R": 1, "f": 2, "F": 3, "W": 4}
+    ut = []
+    for i in range(4):
+        L = Lerret(GW, GH)
+        for r, dx in ((ILD[i], 0), (ILD[(i + 2) % 4], 5)):
+            for y, rad in enumerate(r):
+                for x, c in enumerate(rad):
+                    if c == " ": continue
+                    px, py = GX + 9 + dx, GY - 2 + y
+                    if rang[c] > rang.get(L.g[py][px + x], 0): L.g[py][px + x] = c
+        ut.append(L.tekst())
+    return ut
+
+
 def sitjestokk():
     """Ein tømmerstokk å sitje på ved bålet: lagd på langs, toppflata lys, enden med årringar mot
     venstre (lyset), litt mose og ein kvistkul."""
@@ -284,8 +363,11 @@ def alle():
         "lykt-golv": (lykt_golv(), 12, 14, "lykta på golvet (L inne), to rammer"),
         "baal": ([b.tekst()], BW, BH, "bålplassen (å): ringen, oska og veden"),
         "baal-ild": (baal_ild(), BW, BH, "flammane i bålet, fire rammer side om side"),
-        "baal-fram": ([f.tekst()], BW, BH, "framsida av bålet: steinane framme, trefoten og gryta"),
+        "baal-fram": ([f.tekst()], BW, BH, "framsida av bålet: steinane framme og kaffikjelen"),
         "sitjestokk": ([s.tekst()], s.w, s.h, "stokken å sitje på ved bålet (naturting)"),
+        "baal-gryte": ([gryte_botn().tekst()], GW, GH, "bålplassen med gryte (ÅÅ): ringen, oska, veden og den bakre stonga"),
+        "baal-gryte-ild": (gryte_ild(), GW, GH, "flammane under gryta, fire rammer side om side"),
+        "baal-gryte-fram": ([gryte_fram().tekst()], GW, GH, "framsida: steinane framme, trefoten, kjettingen og gryta"),
     }
 
 
@@ -323,6 +405,17 @@ def vis():
     ut.alpha_composite(bilete(a["lykt-golv"][0][0]), (x, BH + 4 - 14))
     ut = ut.resize((ut.width * 8, ut.height * 8), Image.NEAREST)
     sti = os.path.join(ROT, "forhand", "eldstad-8x.png"); ut.save(sti); print(sti)
+    # Bålet med gryte: dei fire rammene på mørkt villgras (kveld) og på lyst gras (dag).
+    ut = Image.new("RGBA", (GW * 4, GH * 2), (0, 0, 0, 255))
+    for rad, (g1, g2) in enumerate((((40, 63, 40), (29, 63, 40)), ((74, 138, 63), (104, 168, 74)))):
+        for x in range(GW * 4):
+            for y in range(GH):
+                ut.putpixel((x, rad * GH + y), (g2 if (x * 7 + y * 13) % 11 == 0 else g1) + (255,))
+        for i in range(4):
+            for namn, r in (("baal-gryte", 0), ("baal-gryte-ild", i), ("baal-gryte-fram", 0)):
+                ut.alpha_composite(bilete(a[namn][0][r]), (i * GW, rad * GH))
+    ut = ut.resize((ut.width * 6, ut.height * 6), Image.NEAREST)
+    sti = os.path.join(ROT, "forhand", "eldstad-gryte-6x.png"); ut.save(sti); print(sti)
 
 
 if __name__ == "__main__":

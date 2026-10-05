@@ -158,8 +158,8 @@ for (const [id, k] of Object.entries(D.KART)) if (k.stemning && !(D.STEMNINGAR |
     const fast = (x, y) => { const c = (R[y] || "")[x]; if (c == null) return true; if ("DdE".includes(c)) return !dor(x, y); return FAST.has(c) && !/[0-9@%$!&*]/.test(c); };
     const mal = [...(k.dorer || []).map(d => [d.ved, false]), ...Object.entries(m).filter(([c]) => /[0-9]/.test(c)).map(([, p]) => [p, false]),
       ...(k.kister || []).map(ks => [ks.ved, true]), ...(k.folk || []).map(f => [m[f.merke], true]),
-      // Lagringsstadene (lykta L og bålplassen å) må nåast frå ei rute ved sida av.
-      ...R.flatMap((r, y) => [...r].map((c, x) => c === "L" || c === "å" ? [[x, y], true] : null).filter(Boolean))].filter(([p]) => p);
+      // Lagringsstadene (lykta L og bålplassane å og ÅÅ) må nåast frå ei rute ved sida av.
+      ...R.flatMap((r, y) => [...r].map((c, x) => "LåÅ".includes(c) ? [[x, y], true] : null).filter(Boolean))].filter(([p]) => p);
     if (!mal.length) continue;
     const start = mal.find(([, ved]) => !ved)?.[0] || mal[0][0], sett = new Set([start + ""]), ko = [start];
     const kisteVed = (x, y) => (k.kister || []).some(ks => ks.ved[0] === x && ks.ved[1] === y);

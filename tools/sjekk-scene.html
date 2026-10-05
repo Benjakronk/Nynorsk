@@ -153,14 +153,15 @@ f.onload = async () => {
     sjekk(M.kart.id === "asen-stova" && sp8.x === 2 && sp8.y === 6 && sp8.dir === 2, `etter scena står Ivar ved lampa att (${M.kart.id} ${sp8.x},${sp8.y})`);
     sjekk(!M.svart && !T().forScene(), "skjermen er tona inn, og scenekartet er gløymt");
 
-    // 8b. Bålplassen (flisa å, runde 86): Ivar set seg ved bålet i utmarka, partiet kviler, og
-    //     spelet spør om lagring. Lagringa held kartet og ruta ved bålet.
+    // 8b. Bålplassen med gryte (flisene ÅÅ, runde 87): Ivar set seg ved bålet i utmarka, partiet
+    //     kviler, og spelet spør om lagring. Lagringa held kartet og ruta ved bålet.
     {
-      const R8 = w.RPGData.KART.utmarka.rader, by = R8.findIndex(r => r.includes("å")), bx = R8[by].indexOf("å");
+      const R8 = w.RPGData.KART.utmarka.rader, by = R8.findIndex(r => r.includes("Å")), bx = R8[by].lastIndexOf("Å");
       M.last("utmarka", "1"); M.plasser(bx + 1, by, 2);                  // til høgre for bålet, ser mot det
       await vent(300);
-      const nf = w.Pikslar.natur("å", bx, by, ",", 0);
+      const nf = w.Pikslar.natur("å", bx, by, ",", 0), nfs = w.Pikslar.natur("Å", bx - 1, by, ",", 0, ","), nfh = w.Pikslar.natur("Å", bx, by, ",", 0, "Å");
       sjekk(nf && typeof nf.etter === "function" && w.RPGData.LYSKJELDER.baal, "bålet er ein figur med levande eld og eiga glødform");
+      sjekk(nfs && typeof nfs.etter === "function" && !nfh && w.RPGData.LYSKJELDER.baalstor, "bålet med gryte blir teikna éin gong over to fliser, med eiga glødform");
       T().st().parti[0].hp = 1;
       tast("z");
       let satt = false, tekst = false;
@@ -180,6 +181,67 @@ f.onload = async () => {
       sjekk(l8 && l8.kart === "utmarka" && l8.pos.x === bx + 1 && l8.pos.y === by, `lagringa ved bålet held kartet og ruta (${l8 && l8.kart} ${l8 && JSON.stringify(l8.pos)})`);
       await trykkGjennom(() => T().modus() === "felt" && !synleg("#rpg-tale") && !T().iHending());
       sjekk(!M.spelar.pose && !M.spelar.regi, "etter kvilen står Ivar opp att og kan gå");
+    }
+
+    // 8c. Sitjeplassar (runde 87): Ivar går inn på ein benk, ein stol, ein kyrkjebenk og stokken
+    //     ved bålet og set seg, går langs benken, reiser seg når han går, kan ikkje gå over ryggen,
+    //     og plassane der folk sit, er faste. Følgjet går aldri inn på eit sete.
+    {
+      const tastNed = k => d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true }));
+      const tastOpp = k => d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true }));
+      // Eitt steg: held tasten til Ivar byrjar å gå (eller ikkje kjem nokon stad), og vent til han står.
+      async function steg(k) {
+        const x0 = M.spelar.x, y0 = M.spelar.y;
+        tastNed(k);
+        for (let n = 0; n < 30 && M.spelar.x === x0 && M.spelar.y === y0; n++) await vent(20);
+        tastOpp(k);
+        for (let n = 0; n < 40 && M.spelar.flytt; n++) await vent(20);
+        await vent(80);
+      }
+      const sp = () => M.spelar, paa = (x, y) => sp().x === x && sp().y === y;
+      const seteRuter = new Set(["3,4", "4,4", "5,4", "6,4", "2,3", "7,3"]);
+      let fylgjePaaSete = false;
+      const vakt = setInterval(() => { const f = M.aktor("fylgje"); if (f && seteRuter.has(f.x + "," + f.y) && M.kart.id === "asen-stova") fylgjePaaSete = true; }, 30);
+      M.last("asen-stova", "1"); M.plasser(4, 5, 1); await vent(250);
+      await steg("ArrowUp");
+      sjekk(paa(4, 4) && sp().pose === "sitje", `Ivar går inn på benken under bordet og set seg (${sp().x},${sp().y} ${sp().pose})`);
+      await steg("ArrowLeft");
+      sjekk(paa(3, 4) && sp().pose === "sitje", "Ivar går langs benken og set seg på neste sete");
+      await steg("ArrowDown");
+      sjekk(paa(3, 5) && !sp().pose, "Ivar reiser seg når han går ut av benken");
+      M.plasser(7, 4, 1); await vent(150);
+      await steg("ArrowUp");
+      sjekk(paa(7, 3) && sp().pose === "sitje" && sp().dir === 2, `på kubbestolen set Ivar seg og ser mot bordet (${sp().x},${sp().y} retning ${sp().dir})`);
+      await steg("ArrowRight");
+      sjekk(paa(7, 3) && sp().pose === "sitje" && sp().dir === 2, "Ivar går ikkje ut over ryggen på stolen, og blir sitjande");
+      await steg("ArrowDown");
+      sjekk(paa(7, 4) && !sp().pose, "frå stolen går Ivar ut til sida og står opp");
+      M.plasser(2, 4, 1); await vent(150);
+      await steg("ArrowUp");
+      sjekk(paa(2, 4), "kubbestolen der syster sit, er opptatt");
+      clearInterval(vakt);
+      sjekk(!fylgjePaaSete, "følgjet gjekk aldri inn på eit sete");
+      // Kyrkjebenkene står med ryggen mot kameraet: inn framfrå (ovanfrå) og frå sidene, ikkje bakfrå.
+      M.last("kyrkja", "1"); M.plasser(4, 17, 0); await vent(250);
+      await steg("ArrowDown");
+      sjekk(paa(4, 18) && sp().pose === "sitje" && sp().dir === 1, `Ivar set seg i kyrkjebenken og ser mot altaret (${sp().x},${sp().y} retning ${sp().dir})`);
+      await steg("ArrowDown");
+      sjekk(paa(4, 18) && sp().pose === "sitje", "Ivar går ikkje bakover over ryggen på kyrkjebenken");
+      await steg("ArrowUp");
+      sjekk(paa(4, 17) && !sp().pose, "Ivar går ut av kyrkjebenken framover og står");
+      M.plasser(3, 21, 1); await vent(150);
+      await steg("ArrowUp");
+      sjekk(paa(3, 21), "Ivar kjem ikkje inn i benken bakfrå (ryggen er i vegen)");
+      M.plasser(4, 19, 0); await vent(150);
+      await steg("ArrowDown"); await steg("ArrowRight");
+      sjekk(paa(4, 20), "plassen der kona sit i benken, er opptatt");
+      // Stokken ved bålet (naturting med sete, utan rygg): Ivar set seg med andletet mot elden.
+      const R9 = w.RPGData.KART.utmarka.rader, sy9 = R9.findIndex(r => r.includes("Å")), sx9 = R9[sy9].indexOf("Å") - 1;
+      M.last("utmarka", "1"); M.plasser(sx9, sy9 - 1, 0); await vent(250);
+      await steg("ArrowDown");
+      sjekk(paa(sx9, sy9) && sp().pose === "sitje" && sp().dir === 3, `Ivar set seg på stokken ved bålet, mot elden (${sp().x},${sp().y} retning ${sp().dir})`);
+      await steg("ArrowUp");
+      sjekk(paa(sx9, sy9 - 1) && !sp().pose, "frå stokken går Ivar vidare og står");
     }
 
     // 9. Posar: knele, sitje, peike, liggje og sove. Posen varer til figuren går eller hendinga

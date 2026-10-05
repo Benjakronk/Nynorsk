@@ -45,7 +45,30 @@ window.Motor = (function () {
       const img = Pikslar.bygg(b.id), w = img ? Math.max(1, Math.round((img.width - 8) / 16)) : 1;
       if (x >= b.x && x < b.x + w && y >= b.y && y < b.y + b.h) return { b, s };
     }
-    return null;
+    // Ein naturting med sete (stokken ved bålet): { ved, bilete, sete: { hogd, retning } }.
+    const n = (kart.def.naturting || []).find(n => n.sete && n.ved[0] === x && n.ved[1] === y);
+    return n ? { b: { x, y, h: 1, naturting: n }, s: n.sete } : null;
+  }
+  /* Sitjeplassar (runde 87): spelaren kan gå inn på ei rute som eit sete dekkjer, og set seg der.
+     Ikkje om nokon sit der (folk eller følgjet), og ikkje over ryggen: eit sete med retning (den
+     vegen den som sit, ser) kan ein ikkje gå inn i eller ut av bakfrå. Langs ein benk går ein frå
+     sete til sete. Folk og følgjet går aldri inn på sete (dei er faste for alle andre). */
+  const MOTSETT = [1, 0, 3, 2];
+  function kanSitjeInn(x, y, dir) {
+    if (x < 0 || y < 0 || x >= kart.w || y >= kart.h) return false;
+    const st = seteVed(x, y);
+    if (!st || folkVed(x, y) || kisteVed(x, y)) return false;
+    if (fylgje && fylgje.x === x && fylgje.y === y) return false;
+    const her = seteVed(spelar.x, spelar.y);
+    if (her && her.b === st.b) return true;                          // langs benken
+    return st.s.retning == null || st.s.rygg === false || dir !== st.s.retning;   // ikkje inn bakfrå (rygg: false, stokken, har ingen rygg)
+  }
+  // Kan spelaren gå ut av setet han står eller sit på, i retninga dir (ikkje over ryggen)?
+  function kanReiseSeg(dir) {
+    const her = seteVed(spelar.x, spelar.y);
+    if (!her || her.s.retning == null || her.s.rygg === false || dir !== MOTSETT[her.s.retning]) return true;
+    const nx = spelar.x + DX[dir], ny = spelar.y + DY[dir], dit = seteVed(nx, ny);
+    return !!dit && dit.b === her.b;
   }
   // Kor mykje lenger ned den som sit, blir teikna, etter retninga han ser (ned, opp, venstre,
   // høgre): framanfrå heng beina ned framfor setet, bakfrå sit han lenger inn mot ryggen.
@@ -173,6 +196,7 @@ window.Motor = (function () {
   function plasser(x, y, dir) {
     Object.assign(spelar, { x, y, fx: x, fy: y, flytt: null });
     if (dir != null) spelar.dir = dir;
+    setSeg();                                                        // på eit sete (frå lagring): han sit
     plasserFylgje();
   }
 
@@ -293,9 +317,13 @@ window.Motor = (function () {
   function taSteg(no, vidare) {
     const dir = [...halde].pop();
     if (dir == null) { spelar.snudd = false; return false; }
-    if (!vidare && dir !== spelar.dir) { spelar.dir = dir; spelar.snudd = true; return false; }
-    if (!vidare && spelar.snudd && performance.now() - (trykt[dir] || 0) < SNU_TID) return false;
+    // Den som sit, snur seg ikkje på setet: eit trykk er eit forsøk på å gå, og går det ikkje
+    // (bakover over ryggen, inn i bordet), blir han sitjande og ser same vegen som setet.
+    const sit = spelar.pose === "sitje" && seteVed(spelar.x, spelar.y);
+    if (!sit && !vidare && dir !== spelar.dir) { spelar.dir = dir; spelar.snudd = true; return false; }
+    if (!sit && !vidare && spelar.snudd && performance.now() - (trykt[dir] || 0) < SNU_TID) return false;
     spelar.snudd = false;
+    const dirFor = spelar.dir;
     spelar.dir = dir;
     const nx = spelar.x + DX[dir], ny = spelar.y + DY[dir];
     // Ut over kanten frå ei kantdør
@@ -306,20 +334,41 @@ window.Motor = (function () {
       // Kantdører: ein går inn på ruta, og vidare. Vanlege dører: ein går rett gjennom.
       if (!dor.kant) { gaaGjennom(dor); return false; }
     }
-    if (!kanGaa(nx, ny)) return false;
-    if (fylgje) { fylgje.flytt = { fx: fylgje.x, fy: fylgje.y }; fylgje.dir = retningMot(fylgje.x, fylgje.y, spelar.x, spelar.y, fylgje.dir); fylgje.x = spelar.x; fylgje.y = spelar.y; }
+    if (!kanReiseSeg(dir) || (!kanGaa(nx, ny) && !kanSitjeInn(nx, ny, dir))) {
+      if (sit) spelar.dir = sit.s.retning != null ? sit.s.retning : dirFor;
+      return false;
+    }
+    fylgjeEtter();
     spelar.flytt = { fx: spelar.x, fy: spelar.y, t0: no, fart: springTast ? SPRING_FART : GA_FART };
     spelar.x = nx; spelar.y = ny;
     spelar.steg++;
     return true;
   }
   const retningMot = (x0, y0, x1, y1, d) => x1 > x0 ? 3 : x1 < x0 ? 2 : y1 > y0 ? 0 : y1 < y0 ? 1 : d;
+  /* Følgjet går til ruta spelaren går frå, men aldri inn på eit sete: går spelaren langs ein benk,
+     ventar ho. Er ho meir enn eitt steg frå ruta (spelaren gjekk ut av benken ein annan stad), går
+     ho dit med regi, kortaste vegen rundt møblane. */
+  function fylgjeEtter() {
+    if (!fylgje || fylgje.regi) return;
+    const x = spelar.x, y = spelar.y;
+    if (!kanGaa(x, y) && seteVed(x, y)) return;
+    if (Math.abs(fylgje.x - x) + Math.abs(fylgje.y - y) > 1) { gaa("fylgje", { rute: [x, y] }, GA_FART); return; }
+    fylgje.flytt = { fx: fylgje.x, fy: fylgje.y }; fylgje.dir = retningMot(fylgje.x, fylgje.y, x, y, fylgje.dir); fylgje.x = x; fylgje.y = y;
+  }
 
   function gaaGjennom(dor) {
     if (dor.krev && !krokar.tilstand().flagg[dor.krev]) { if (krokar.laast) krokar.laast(dor.laast || "Døra er stengd."); return; }
     if (krokar.dor) krokar.dor(dor);
   }
+  // Spelaren set seg når han står på eit sete (og ser same vegen som setet, om det har ei retning).
+  function setSeg() {
+    const st = seteVed(spelar.x, spelar.y);
+    if (!st) return false;
+    spelar.pose = "sitje"; if (st.s.retning != null) spelar.dir = st.s.retning;
+    return true;
+  }
   function komFram() {
+    if (setSeg()) return;
     const dor = doraVed(spelar.x, spelar.y);
     if (dor && dor.kant) { gaaGjennom(dor); return; }
     for (const [m, [x, y]] of Object.entries(kart.merke)) {
@@ -347,7 +396,7 @@ window.Motor = (function () {
     const nt = naturtingVed(tx, ty);
     if (nt && nt.manus && krokar.undersok) { krokar.undersok(nt); return; }
     const c = kart.fliser[ty] && kart.fliser[ty][tx];
-    if ((c === "L" || c === "å") && krokar.lampe) { krokar.lampe(c === "å" ? "baal" : "lykt"); return; }   // lagringsstadene
+    if ((c === "L" || c === "å" || c === "Å") && krokar.lampe) { krokar.lampe(c === "L" ? "lykt" : "baal"); return; }   // lagringsstadene
     if ((c === "D" || c === "d" || c === "E") && krokar.laast) { const d = (kart.def.dorer || []).find(d => d.ved[0] === tx && d.ved[1] === ty); if (!d || !d.til) krokar.laast((d && d.laast) || "Døra er stengd."); }
   }
   // Tek bort ein person på kartet, etter merket eller namnet.
@@ -1052,6 +1101,7 @@ window.Motor = (function () {
       if (c === "f") ut.push([(x + ox) * S + 8, (y + oy) * S + 14, "peis", fase]);
       else if (c === "L") ut.push([(x + ox) * S + 8, (y + oy) * S + (ute ? 1 : 10), ute ? "lykt" : "lyktgolv", fase]);
       else if (c === "å") ut.push([(x + ox) * S + 8, (y + oy) * S + 9, "baal", fase]);
+      else if (c === "Å" && kart.fliser[y][x - 1] !== "Å") ut.push([(x + ox) * S + 16, (y + oy) * S + 9, "baalstor", fase]);   // midt mellom dei to flisene
       else if (c === "T") ut.push([(x + ox) * S + 8, (y + oy) * S + 1, "lykt", fase]);   // ankeret midt i glaset
       else if (c === "E" && dagslys) ut.push([(x + ox) * S + 8, (y + oy) * S + 8, "dor", fase]);
     }
@@ -1428,7 +1478,7 @@ window.Motor = (function () {
         if (vb) g.drawImage(vb, sx, sy);
       }
       const nt = naturtingVed(x, y);
-      const nf = erVatn(x, y) ? null : nt ? Pikslar.naturting(nt.bilete) : Pikslar.natur(c, x, y, kart.def.golv, no);
+      const nf = erVatn(x, y) ? null : nt ? Pikslar.naturting(nt.bilete) : Pikslar.natur(c, x, y, kart.def.golv, no, kart.fliser[y][x - 1]);
       if (nf) {
         if (nf.skugge) { g.fillStyle = "rgba(20,24,50,0.3)"; g.beginPath(); g.ellipse(sx + 9, sy + 14, nf.skugge, 2.5, 0, 0, Math.PI * 2); g.fill(); }
         naturFig.push({ y: y + 0.005, x, natur: nf });
@@ -1716,6 +1766,7 @@ window.Motor = (function () {
       p = p || null;
       if (kven === "alle") {
         spelar.pose = p; if (fylgje) fylgje.pose = p;
+        if (!p && kart && !spelar.flytt) setSeg();                      // på eit sete blir spelaren sitjande
         if (kart) kart.folk.forEach(f => {
           const ny = p || f.grunnpose || null;
           if (f.pose !== ny) f.neste = performance.now() + 2000;
