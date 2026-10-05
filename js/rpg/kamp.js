@@ -34,6 +34,32 @@ window.Kamp = (function () {
 
   const rot = $("rpg-kamp");
   const g = Motor.g;
+  // Tekst på lerretet i Spelskrift: 16 px er éin skriftpiksel per spelpiksel, og teksten står på
+  // heile pikslar. Han blir teikna éin gong på eit eige lerret, der kvar piksel blir heilt dekt
+  // eller heilt open (som filteret #skarp i spel.html), så kantane ikkje blir utglatta.
+  // omriss: [farge, [[dx, dy], …]].
+  const tekstLager = new Map();
+  function tekstBilete(tekst, farge) {
+    const nokkel = tekst + "|" + farge;
+    if (tekstLager.has(nokkel)) return tekstLager.get(nokkel);
+    const c = document.createElement("canvas"), x = c.getContext("2d");
+    x.font = '16px "Spelskrift", monospace';
+    c.width = Math.max(1, Math.ceil(x.measureText(tekst).width) + 2); c.height = 18;
+    x.font = '16px "Spelskrift", monospace'; x.textBaseline = "alphabetic"; x.fillStyle = farge;
+    x.fillText(tekst, 0, 13);
+    const d = x.getImageData(0, 0, c.width, c.height);
+    for (let i = 3; i < d.data.length; i += 4) d.data[i] = d.data[i] >= 128 ? 255 : 0;
+    x.putImageData(d, 0, 0);
+    if (tekstLager.size > 200) tekstLager.clear();
+    if (!document.fonts || document.fonts.check('16px "Spelskrift"')) tekstLager.set(nokkel, c);   // ikkje hugs reserveskrifta
+    return c;
+  }
+  function pikselTekst(tekst, x, y, farge, omriss) {
+    const b = tekstBilete(tekst, farge), x0 = Math.round(x - (b.width - 2) / 2), y0 = Math.round(y) - 13;
+    if (omriss) { const s = tekstBilete(tekst, omriss[0]); for (const [dx, dy] of omriss[1]) g.drawImage(s, x0 + dx, y0 + dy); }
+    g.drawImage(b, x0, y0);
+  }
+  const SKUGGE = ["#0a0514", [[1, 1]]], OMRISS = ["#0a0514", [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1]]];
   const FAM_ORDEN = ["hard", "diftong", "j", "sporjeord", "smaaord"];
 
   /* ---------- Formspørsmålet ---------- */
@@ -168,7 +194,7 @@ window.Kamp = (function () {
       <div class="kamp-vindauge kamp-meny" hidden></div>
       <div class="kamp-vindauge kamp-siger" hidden></div>`;
     const melding = rot.querySelector(".kamp-melding"), fiListe = rot.querySelector(".kamp-fiendar"), paListe = rot.querySelector(".kamp-parti"), meny = rot.querySelector(".kamp-meny");
-    const meld = (t, ms = 1400) => { melding.textContent = t; melding.hidden = false; meldingTid = performance.now() + ms; };
+    const meld = (t, ms = 1400) => { melding.innerHTML = `<span>${E(t)}</span>`; melding.hidden = false; meldingTid = performance.now() + ms; };
 
     // Plassering på lerretet (320 × 192): fiendar til venstre med føtene på bakken, partiet til høgre.
     const SLOT = { 1: [[88, 118]], 2: [[64, 106], [126, 120]], 3: [[52, 102], [104, 120], [150, 104]], 4: [[46, 100], [96, 118], [140, 100], [176, 120]],
@@ -202,10 +228,9 @@ window.Kamp = (function () {
         g.save();
         if (f.type === "ordkast") {
           const x = f.fra.x + (f.til.x - f.fra.x) * u, y = f.fra.y + (f.til.y - f.fra.y) * u - Math.sin(u * Math.PI) * 18;
-          g.font = "bold 9px 'Pixelify Sans', monospace"; g.textAlign = "center";
           for (let k = 3; k >= 0; k--) {
             const uu = Math.max(0, u - k * 0.06), xx = f.fra.x + (f.til.x - f.fra.x) * uu, yy = f.fra.y + (f.til.y - f.fra.y) * uu - Math.sin(uu * Math.PI) * 18;
-            g.globalAlpha = k ? 0.25 / k : 1; g.fillStyle = "#0a0514"; g.fillText(f.tekst, xx + 1, yy + 1); g.fillStyle = f.farge; g.fillText(f.tekst, xx, yy);
+            g.globalAlpha = k ? 0.25 / k : 1; pikselTekst(f.tekst, xx, yy, f.farge, SKUGGE);
           }
           void x; void y;
         } else if (f.type === "brest") {
@@ -226,10 +251,9 @@ window.Kamp = (function () {
           g.globalAlpha = 1 - u; g.strokeStyle = "#ffffff"; g.lineWidth = 1;
           for (let k = -1; k <= 1; k++) { g.beginPath(); g.moveTo(f.x - 10 + k * 4, f.y - 10); g.lineTo(f.x - 10 + k * 4 + 20 * Math.min(1, u * 3), f.y - 10 + 20 * Math.min(1, u * 3)); g.stroke(); }
         } else if (f.type === "noter") {
-          g.font = "bold 12px 'Pixelify Sans', monospace"; g.textAlign = "center";
           for (let k = 0; k < 7; k++) {
             const x = 300 - ((u * 340 + k * 48) % 340), y = 40 + Math.sin(u * 8 + k) * 12 + (k % 3) * 18;
-            g.globalAlpha = Math.min(1, (1 - u) * 2); g.fillStyle = "#0a0514"; g.fillText(k % 2 ? "♪" : "♫", x + 1, y + 1); g.fillStyle = "#f8d840"; g.fillText(k % 2 ? "♪" : "♫", x, y);
+            g.globalAlpha = Math.min(1, (1 - u) * 2); pikselTekst(k % 2 ? "♪" : "♫", x, y, "#f8d840", SKUGGE);
           }
         }
         g.restore();
@@ -297,9 +321,7 @@ window.Kamp = (function () {
         const t = tal[i], u = (no - t.t0) / 1000;
         if (u >= 1) { tal.splice(i, 1); continue; }
         const hopp = u < 0.3 ? -Math.sin(u / 0.3 * Math.PI) * 8 : 0;
-        g.font = "bold 10px monospace"; g.textAlign = "center";
-        g.fillStyle = "#0a0514"; for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) g.fillText(t.tekst, t.x + dx, t.y + hopp - u * 6 + dy);
-        g.fillStyle = t.farge; g.fillText(t.tekst, t.x, t.y + hopp - u * 6);
+        pikselTekst(t.tekst, t.x, t.y + hopp - u * 6, t.farge, OMRISS);
       }
       teiknFx(no);
       g.restore();

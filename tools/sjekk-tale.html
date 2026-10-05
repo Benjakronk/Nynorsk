@@ -1,0 +1,98 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Sjekk samtaleboksen</title>
+<!-- Sjekkar samtaleboksen (Motor.tale):
+     1. Boksen har same stad og storleik frå første til siste bokstav, og kvar bokstav står på
+        same stad når han blir skriven som når heile sida er ferdig (lina blir broten likt).
+     2. Ein lang replikk blir delt i sider på høgst fire liner, og alle teikna kjem med.
+     3. Spelskrift og Runeskrift er lasta, og runer (⟦…⟧) og norrønt (⟨…⟩) får klassane sine.
+     4. Alle replikkane i manus: kor mange liner dei treng, og kor mange som må delast i sider.
+     Køyr: python tools/kjoyr-test.py tools/sjekk-tale.html 60000 -->
+<style>body{margin:0;background:#000;color:#fff;font:12px monospace} iframe{width:1100px;height:720px;border:0} #ut{white-space:pre-wrap;padding:4px}</style>
+<iframe id="f"></iframe>
+<div id="ut">køyrer …</div>
+<script>
+const f = document.getElementById("f");
+f.src = "../spel.html?test=1";
+const vent = ms => new Promise(r => setTimeout(r, ms));
+f.onload = async () => {
+  const w = f.contentWindow, d = w.document, M = w.Motor, ut = [], feil = [];
+  w.addEventListener("error", e => feil.push(e.message));
+  const tast = async k => { d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true })); await vent(20); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true })); await vent(20); };
+  const synleg = sel => { const e = d.querySelector(sel); return e && !e.hidden; };
+  for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
+  d.querySelector("#rpg-tittel-val button").click();
+  await vent(300);
+  for (let n = 0; n < 400 && (!w.RPGTest.st().scener.heime || synleg("#rpg-tale") || synleg("#rpg-fort")); n++) { await tast("z"); await vent(40); }
+  await vent(800);
+  M.pause(true);
+  const boks = d.getElementById("rpg-tale"), tekst = d.getElementById("rpg-tale-tekst");
+  const fp = w.getComputedStyle(d.getElementById("rpg-skjerm")).getPropertyValue("--fp").trim();
+  ut.push(`Skriftpikselen --fp: ${fp} (skrifta ${w.getComputedStyle(tekst).fontSize}, linene ${w.getComputedStyle(tekst).lineHeight})`);
+
+  // 1 og 2: ein lang replikk med portrett, ord, norrønt og runer
+  const lang = "Far sa at steinen stod her før garden. På han står det ⟦ᚱᛅᛁᛋᛏᛁ᛫ᛋᛏᛅᛁᚾ᛫ᚦᛅᚾᛋᛁ⟧, og den gamle sa: ⟨Þat skal æ uppi meðan ǫld lifir.⟩ " +
+    "Kva som står på han, visste ikkje han heller. Eg må ⟪høyre⟫ etter, slik haugbonden sa, og skrive ned kvart ord eg finn i dalen, " +
+    "frå Ørsta til Volda og over fjellet. Kanskje finn eg ein dag ut kva steinen seier, og kven som reiste han.";
+  const rette = [...lang.replace(/[⟪⟫⟨⟩⟦⟧]/g, "")].length;
+  async function prov(t, namn) {
+    const p = M.tale(t, namn);
+    let rect0 = null, flytt = 0, hopp = 0, sider = 0, teikn = 0, rune = 0, nor = 0, ord = 0, maksLiner = 0;
+    let ferdig = false; p.then(() => { ferdig = true; });
+    for (let side = 0; side < 20 && !ferdig; side++) {
+      const forst = new Map();                       // indeks -> stad då teiknet vart synleg
+      for (let n = 0; n < 400; n++) {
+        await vent(8);
+        const r = boks.getBoundingClientRect();
+        const rr = [r.left, r.top, r.width, r.height].join(",");
+        if (!rect0) rect0 = rr; else if (rr !== rect0) flytt++;
+        [...tekst.children].forEach((s, i) => { if (!s.classList.contains("u") && !s.classList.contains("s") && !forst.has(i)) forst.set(i, s.offsetLeft + "," + s.offsetTop); });
+        if (boks.classList.contains("klar")) break;
+      }
+      const synlege = [...tekst.children].map((s, i) => [s, i]).filter(([s]) => !s.classList.contains("u") && !s.classList.contains("s"));
+      for (const [s, i] of synlege) if (forst.get(i) !== s.offsetLeft + "," + s.offsetTop) hopp++;
+      const linjer = new Set(synlege.map(([s]) => s.offsetTop)).size;
+      maksLiner = Math.max(maksLiner, linjer);
+      teikn += synlege.length; sider++;
+      rune += synlege.filter(([s]) => s.classList.contains("r")).length;
+      nor += synlege.filter(([s]) => s.classList.contains("n")).length;
+      ord += synlege.filter(([s]) => s.classList.contains("o")).length;
+      const r = boks.getBoundingClientRect(); if ([r.left, r.top, r.width, r.height].join(",") !== rect0) flytt++;
+      await tast("z"); await vent(30);
+    }
+    return { rect0, flytt, hopp, sider, teikn, rune, nor, ord, maksLiner };
+  }
+  const a = await prov(lang, "Ivar");
+  ut.push(`Lang replikk med portrett: ${a.sider} sider, høgst ${a.maksLiner} liner per side, ${a.teikn} av ${rette} teikn, boksen ${a.rect0}`);
+  ut.push(`  boksen endra seg ${a.flytt} gonger, ${a.hopp} teikn flytta seg etter at dei vart skrivne; runer ${a.rune}, norrønt ${a.nor}, ord ${a.ord}`);
+  const lasta = d.fonts.check('16px "Spelskrift"') && d.fonts.check('16px "Runeskrift"', "ᚱ");
+  ut.unshift(`Skrifter lasta: Spelskrift og Runeskrift ${lasta}`);
+  const b = await prov(lang, null);
+  ut.push(`Same utan portrett: ${b.sider} sider, høgst ${b.maksLiner} liner, ${b.teikn} teikn, boksen endra seg ${b.flytt} gonger, ${b.hopp} teikn flytta seg`);
+  const ok1 = a.flytt === 0 && a.hopp === 0 && b.flytt === 0 && b.hopp === 0;
+  const ok2 = a.teikn === rette && b.teikn === rette && a.maksLiner <= 4 && b.maksLiner <= 4 && a.sider >= 2;
+  const ok3 = a.rune === [..."ᚱᛅᛁᛋᛏᛁ᛫ᛋᛏᛅᛁᚾ᛫ᚦᛅᚾᛋᛁ"].length && a.nor > 20 && a.ord === 5;
+  // Same storleik som ein kort replikk (boksen er fast, ikkje etter teksten)
+  const c = await prov("Ja.", "Ivar");
+  const ok4 = c.rect0 === a.rect0;
+  ut.push(`Kort replikk («Ja.»): boksen ${c.rect0}, ${ok4 ? "same storleik som den lange" : "ANNA STORLEIK"}`);
+
+  // 4: alle replikkane i manus
+  const repl = [];
+  const gaa = (x, s) => { if (Array.isArray(x)) x.forEach(y => gaa(y)); else if (x && typeof x === "object") { if (typeof x.t === "string") repl.push([x.t, x.s]); for (const v of Object.values(x)) if (v && typeof v === "object") gaa(v); } };
+  gaa(w.RPGData.MANUS); gaa(w.RPGData.SCENER);
+  let fleire = [], maks = 0;
+  for (const [t, s] of repl) {
+    const p = M.tale(t, s); await vent(20);
+    const liner = new Set([...tekst.children].map(x => x.offsetTop)).size;
+    maks = Math.max(maks, liner); if (liner > 4) fleire.push(`${s || "forteljar"}: ${t.slice(0, 40)}… (${liner} liner)`);
+    let done = false; p.then(() => { done = true; });
+    for (let n = 0; n < 10 && !done; n++) { await tast("z"); await vent(10); }
+  }
+  ut.push(`Replikkar i manus: ${repl.length}, flest liner ${maks}, ${fleire.length} må delast i fleire sider${fleire.length ? ":\n  " + fleire.join("\n  ") : ""}`);
+  if (feil.length) ut.push("Feil i spelet: " + feil.join(" | "));
+  const ok = ok1 && ok2 && ok3 && ok4 && lasta && !feil.length;
+  ut.push(ok ? "OK: samtaleboksen held storleiken, og teksten står stille medan han blir skriven" : `FEIL (fast boks og tekst ${ok1}, sider ${ok2}, merke ${ok3}, same storleik ${ok4})`);
+  document.getElementById("ut").textContent = ut.join("\n");
+};
+</script>

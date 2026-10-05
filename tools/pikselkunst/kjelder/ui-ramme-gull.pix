@@ -1,0 +1,21 @@
+# namn: ui-ramme-gull
+# type: ui
+# ut: bilete/spel/ui/ramme-gull.png
+# storleik: 9x9
+# Same ramme i gull (spørsmålet i kampen). Sjå ui-ramme.pix.
+palett:
+  . = -
+  K = #0a0514
+  W = #fff4c0
+  G = #e0b040
+  S = #4a2f20
+bilete:
+  ..KKKKK..
+  .KWWWWWK.
+  KWGGGGGWK
+  KWGSSSGWK
+  KWGS.SGWK
+  KWGSSSGWK
+  KWGGGGGWK
+  .KWWWWWK.
+  ..KKKKK..

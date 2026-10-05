@@ -1,0 +1,22 @@
+# namn: ui-ramme
+# type: ui
+# ut: bilete/spel/ui/ramme.png
+# storleik: 9x9
+# Ramma rundt alle vindauge (border-image i css/rpg.css, slice 4): mørk ytterkant,
+# kvit og grå list, og ei mørkeblå line inst mot den blå gradienten. Hjørna er runda av.
+palett:
+  . = -
+  K = #0a0514
+  W = #f4f4fc
+  G = #a8b0d8
+  S = #1c2260
+bilete:
+  ..KKKKK..
+  .KWWWWWK.
+  KWGGGGGWK
+  KWGSSSGWK
+  KWGS.SGWK
+  KWGSSSGWK
+  KWGGGGGWK
+  .KWWWWWK.
+  ..KKKKK..

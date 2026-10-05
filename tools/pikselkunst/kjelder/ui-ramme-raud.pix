@@ -1,0 +1,21 @@
+# namn: ui-ramme-raud
+# type: ui
+# ut: bilete/spel/ui/ramme-raud.png
+# storleik: 9x9
+# Same ramme i raud (spørsmålet i kampen). Sjå ui-ramme.pix.
+palett:
+  . = -
+  K = #0a0514
+  W = #ffe0d8
+  G = #e07060
+  S = #4a1420
+bilete:
+  ..KKKKK..
+  .KWWWWWK.
+  KWGGGGGWK
+  KWGSSSGWK
+  KWGS.SGWK
+  KWGSSSGWK
+  KWGGGGGWK
+  .KWWWWWK.
+  ..KKKKK..

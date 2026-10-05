@@ -26,7 +26,9 @@
 
    Manus er lister med steg som spelet køyrer i rekkjefølgje:
      { s: "Namn", t: "Replikk" }        replikk (s kan sløyfast for forteljar)
-                                        ⟪ord⟫ i replikken blir utheva
+                                        ⟪ord⟫ i replikken blir utheva, ⟨…⟩ er norrøn tale
+                                        og ⟦ᚱᚢᚾᛅᛦ⟧ runer (Runeskrift); norront: true
+                                        gjer heile replikken norrøn (sjå README.md)
      { lytt: ["stein", "stæin"] }       Ivar høyrer ei form av eit ord (id, form)
      { tilbod: ["snjo", "snjo"] }       huldra seier eit ord: skrive ned eller berre lytte?
      { val: "Spørsmål", alt: ["A", "B"], svar: [[…], […]] }  val med eigne steg
@@ -1540,7 +1542,7 @@ window.RPGData = (function () {
     // Bautasteinane (naturting på asen og utmarka).
     bauta_hylla: [
       { t: "Ein gammal bautastein står ytst på hylla og lener seg ut mot dalen. Lav har grodd over det meste av han." },
-      { t: "Midt på steinen er det hogge nokre strekar. Det kan vere runer, men dei er nesten utviska." },
+      { t: "Midt på steinen er det hogge nokre strekar: ⟦ᚱ ᛁᛋᛏ᛫ᛋᛏ ᛁᚾ⟧. Det kan vere runer, men dei er nesten utviska." },
       { s: "Ivar", t: "Far sa at steinen stod her før garden. Kva som står på han, visste ikkje han heller." },
     ],
     bauta_vegen: [

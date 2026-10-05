@@ -164,7 +164,7 @@
       const kven = s.kven || s.s || "Ivar";
       if (s.kjensle !== undefined) Motor.kjensle(s.kjensle, regiNamn(kven));
       if (s.fort) await Motor.fort(s.fort);
-      else if (s.t) { await Motor.tale(s.t, s.s, s.kjensle && kven === s.s ? s.kjensle : null); sistTalar = s.s || sistTalar; }
+      else if (s.t) { await Motor.tale(s.t, s.s, s.kjensle && kven === s.s ? s.kjensle : null, { norront: s.norront }); sistTalar = s.s || sistTalar; }
       if (s.lytt) { const [id, form] = s.lytt; await meldOrd(id, form, leggTilForm(id, form, sistTalar)); }
       if (s.tilbod) {
         const [id, form] = s.tilbod;
@@ -228,7 +228,7 @@
     return new Promise(res => {
       const el = document.createElement("div");
       el.className = "rpg-forvandling";
-      el.innerHTML = `<div class="fv-bilete"><img class="fv-for" src="${for_}" alt=""><img class="fv-etter" src="${etter}" alt=""></div>${tekst ? `<p class="rpg-vindauge fv-tekst">${E(tekst)}</p>` : ""}`;
+      el.innerHTML = `<div class="fv-bilete"><img class="fv-for" src="${for_}" alt=""><img class="fv-etter" src="${etter}" alt=""></div>${tekst ? `<p class="rpg-vindauge fv-tekst"><span>${E(tekst)}</span></p>` : ""}`;
       $("rpg-skjerm").appendChild(el);
       let ferdig = false;
       const slutt = () => { if (ferdig) return; ferdig = true; slepp(); el.classList.add("ut"); setTimeout(() => { el.remove(); res(); }, 400); };

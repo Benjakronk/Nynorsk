@@ -22,6 +22,18 @@
 <body class="rpg-side">
 
 <main class="rpg-main">
+  <!-- Skarpe skriftpikslar (sjå css/rpg.css): alfa blir 0 eller 1, og skuggen blir lagd under. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="skarp" x="-5%" y="-5%" width="115%" height="130%" color-interpolation-filters="sRGB">
+      <feComponentTransfer in="SourceGraphic" result="t">
+        <feFuncA type="discrete" tableValues="0 .05 .1 .15 .2 .25 0 0 0 0 1 1 1 1 1 1 1 1 1 1" />
+      </feComponentTransfer>
+      <feFlood flood-color="#0e0c12" />
+      <feComposite in2="t" operator="in" />
+      <feOffset id="skarp-skugge" dx="2" dy="2" result="s" />
+      <feMerge><feMergeNode in="s" /><feMergeNode in="t" /></feMerge>
+    </filter>
+  </svg>
   <section id="rpg-skjerm" class="rpg-skjerm" aria-label="Spelet Aasen: Språkvandringa">
     <canvas id="rpg-lerret" class="rpg-lerret"></canvas>
     <p id="rpg-stadnamn" class="rpg-stadnamn"></p>

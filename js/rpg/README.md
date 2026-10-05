@@ -245,3 +245,35 @@ Alle hendingane i prototypen brukar no scenemotoren, og dei som talar, står på
 - Ei scene som må halde på folk frå `inn`-steg etter eit scenekart, treng at motoren hugsar folka på kartet før scena.
 - Følgjet går attende til plassen bak Ivar først når han går. Eit steg som set følgjet attende (`{ gaa: "Huldra", bak: true }` eller liknande) ville gjere det reinare etter scener der huldra har gått fram.
 - Kampane er stubba i sjekk-scene.html. Ein test som køyrer den ekte rettleiingskampen inne i skiftebrevet, manglar.
+
+## Skrift, vindauge og tekst i manus
+
+### Skriftene
+Spelet har to eigne pikselskrifter, teikna for hand glyf for glyf til dette spelet (Claude Opus 5.5, 2026). Dei er ikkje kopierte frå andre skrifter. Pixelify Sans (OFL) ligg att berre som reserve for teikn som manglar.
+
+| Skrift | Kjelde | Innhald |
+|---|---|---|
+| Spelskrift | `tools/skrift/spelskrift.txt` | latinske bokstavar, tal og teiknsetjing, Æ Ø Å, « » „ " – … ⟪ ⟫, dei norrøne Þ Ð Ǫ Œ Ę Ǽ Ǿ (store og små) og vokalar med akutt, ♪ ♫ ▼ ✓ |
+| Runeskrift | `tools/skrift/runeskrift.txt` | runeblokka U+16A0 til U+16FF: den eldre futharken, den yngre (langkvist og stuttkvist), punkterte runer og skiljeteikna ᛫ ᛬ ᛭ |
+
+Kjeldene er rutenett per glyf (`#` er ein piksel, formatet står øvst i fila). Store bokstavar er 9 pikslar høge, små 6, med 3 pikslar under grunnlina og plass til aksentar over. Samansette glyfar (`glyf á = a + akutt`) set merket over basen. Kerning står nedst i spelskrift.txt (`kern T @smaa -1`).
+
+`python tools/skrift/bygg.py` byggjer `fonts/spelskrift.woff2` og `fonts/runeskrift.woff2` (og `.ttf`) med fontTools (`pip install fonttools brotli`). Kvar piksel blir eit kvadrat på 128 einingar (16 pikslar per em), og omrisset blir spora rundt flatene. Skripta lagar òg prøveark: `tools/skrift/provark-spelskrift.png` (alle glyfane) og `provark-spelskrift-tekst.png` (prøvetekst sett med sjølve fila), og det same for runeskrift.
+
+### Skarpe pikslar
+Alt i vindauga blir målt i skriftpikslar: `--fp` er éin piksel i skrifta, eit heilt tal skjermpikslar (om lag 2 CSS-pikslar, eller 2/3 av spelpikselen på store skjermar). Skrifta er `16 × --fp` og linene `15 × --fp`. `Motor.tilpass` (tilpassUI) set `--fp`, portrettskalaen `--kp`, staden til lerretet (`--lx`, `--ly`, `--lb`, `--lh`) og samtaleboksen (`--tale-x/y/b/h`), alt på heile skjermpikslar. Midtstilte vindauge blir flytta til næraste heile piksel (`snapp`). Windows glattar ut tekstkantar sjølv når glyfane står rett, så tekstelementa har filteret `#skarp` (i spel.html): kvar piksel blir heilt dekt eller open, og skuggen blir lagd éin skriftpiksel nede til høgre. Tekst på lerretet (skadetal, ord som blir kasta) blir teikna med Spelskrift i 16 px på eit eige lerret og gjord skarp på same vis (`pikselTekst` i kamp.js).
+
+Vindauga har pikselramma `bilete/spel/ui/ramme.png` (border-image, kjelde `tools/pikselkunst/kjelder/ui-ramme.pix`, i gull og raudt for spørsmålet i kampen), og peikarhanda `bilete/spel/ui/peikar.png` (`ui-peikar.pix`).
+
+### Samtaleboksen
+Boksen har fast storleik: namnelina og fire tekstliner (eller portrettet, om det er høgare), og står nedst på lerretet. Heile replikken blir lagd ut med kvart teikn i eit span frå starten, og teikna som ikkje er skrivne enno, er usynlege. Difor blir lina broten på same stad frå første til siste bokstav, og boksen endrar seg ikkje. Ein replikk som treng meir enn fire liner, blir delt i sider (▼ og Z for neste side). `python tools/kjoyr-test.py tools/sjekk-tale.html 90000` sjekkar dette og tel liner i alle replikkane i manus.
+
+### Norrønt og runer i manus
+| Skriv | Blir |
+|---|---|
+| `⟪ord⟫` | ord Ivar lærer, i gull |
+| `⟨Þat skal æ uppi⟩` | norrøn tale inne i ein replikk (eigen farge) |
+| `{ s: "Vetten", t: "…", norront: true }` | heile replikken er norrøn tale |
+| `⟦ᚱᛅᛁᛋᛏᛁ᛫ᛋᛏᛅᛁᚾ⟧` | runer i Runeskrift (raud oker, slik runesteinane var måla) |
+
+Dei norrøne bokstavane (þ ð ǫ œ ę á é í ó ú ý ǽ ǿ) finst i Spelskrift og kan skrivast rett i teksten. Runer utan `⟦ ⟧` blir òg viste med Runeskrift, men utan fargen. Merka verkar i replikkar, val, forteljing (`fort`), nærbilete og kort. Døme: bautaen på hylla (`bauta_hylla`) viser dei utviska runene.

@@ -1,0 +1,25 @@
+# namn: ui-peikar
+# type: ui
+# ut: bilete/spel/ui/peikar.png
+# storleik: 16x11
+# Peikarhanda i menyane (som hansken i Final Fantasy VI): kvit hanske med mansjett,
+# peikefingeren mot høgre. Lyset kjem ovanfrå til venstre.
+palett:
+  . = -
+  o = #0a0514
+  w = #f8f8fc
+  g = #c4c8e0
+  s = #7c84b0
+  m = #a8acd0
+bilete:
+  ....oooo........
+  ...owwwwooooooo.
+  .ooowwwwwwwwwwwo
+  omowwwwwwgggggso
+  omowwwwwwoooooo.
+  omowwwwwwwwwo...
+  omowwwwwwgggo...
+  omowwwwwwwwo....
+  .ooswwwwgggo....
+  ...ossssooo.....
+  ....oooo........

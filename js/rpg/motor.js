@@ -13,7 +13,7 @@
                                 dor(d), laast(tekst), inngang(i), kamp(lag), meny(),
                                 opna(k), synleg(k), undersok(naturting) }
    Motor.tale(tekst, namn)    samtaleboks, gir eit løfte som blir oppfylt ved Z.
-                              ⟪ord⟫ i teksten blir utheva.
+                              ⟪ord⟫ blir utheva, ⟨…⟩ er norrønt og ⟦…⟧ runer.
    Motor.fort(linjer)         forteljing på svart skjerm
    Motor.scene(byt, ms)       rask toning til svart, byt() (til dømes Motor.last), og tilbake.
                               Standard mellom alle scener. Motor.tonUt() og tonInn() kvar for seg.
@@ -680,7 +680,7 @@ window.Motor = (function () {
     return new Promise(res => {
       const el = document.createElement("div");
       el.className = "rpg-kort";
-      el.innerHTML = `<p class="kort-stad">${E(stad)}</p>${tid ? `<p class="kort-tid">${E(tid)}</p>` : ""}`;
+      el.innerHTML = `<p class="kort-stad">${merkHtml(stad)}</p>${tid ? `<p class="kort-tid">${merkHtml(tid)}</p>` : ""}`;
       $("rpg-skjerm").appendChild(el);
       let ferdig = false;
       const slutt = () => { if (ferdig) return; ferdig = true; slepp(); clearTimeout(tm); el.classList.add("ut"); setTimeout(() => { el.remove(); res(); }, 500); };
@@ -694,7 +694,7 @@ window.Motor = (function () {
     return new Promise(res => {
       const el = document.createElement("div");
       el.className = "rpg-forvandling rpg-naer";
-      el.innerHTML = `<img src="${E(src)}" alt="">${tekst ? `<p class="rpg-vindauge fv-tekst">${E(tekst)}</p>` : ""}`;
+      el.innerHTML = `<img src="${E(src)}" alt="">${tekst ? `<p class="rpg-vindauge fv-tekst"><span>${merkHtml(tekst)}</span></p>` : ""}`;
       $("rpg-skjerm").appendChild(el);
       let ferdig = false;
       const slutt = () => { if (ferdig) return; ferdig = true; slepp(); el.classList.add("ut"); setTimeout(() => { el.remove(); res(); }, 400); };
@@ -1638,41 +1638,77 @@ window.Motor = (function () {
     const har = kjensle && ((RPGData.PORTRETT_KJENSLER || {})[id] || []).includes(kjensle);
     boksPortrett.src = `bilete/spel/portrett/${id}${har ? "-" + kjensle : ""}.png`;
   }
-  // ⟪ord⟫ blir utheva. Skrivemaskinteksten viser dei første n teikna.
-  function taleHtml(tekst, n) {
-    let ut = "", i = 0, inne = false;
-    for (const ch of tekst) {
-      if (ch === "⟪") { inne = true; ut += '<b class="rpg-ord">'; continue; }
-      if (ch === "⟫") { inne = false; ut += "</b>"; continue; }
-      if (i++ >= n) break;
-      ut += E(ch);
+  /* Merke i teksten (sjå README.md, «Skrift og tekst i manus»):
+       ⟪ord⟫      ord Ivar lærer (gull)
+       ⟨tekst⟩    norrøn tale (eigen farge; dei norrøne bokstavane er i Spelskrift)
+       ⟦ᚱᚢᚾᛅᛦ⟧    runer i Runeskrift (raud oker)
+     teiknAv() deler teksten i teikn med klassane o, n og r. */
+  const MERKE = { "⟪": "o", "⟨": "n", "⟦": "r" }, MERKE_SLUTT = { "⟫": "o", "⟩": "n", "⟧": "r" };
+  function teiknAv(tekst, grunn) {
+    const ut = [], open = new Set(grunn ? [grunn] : []);
+    for (const c of tekst) {
+      if (MERKE[c]) { open.add(MERKE[c]); continue; }
+      if (MERKE_SLUTT[c]) { open.delete(MERKE_SLUTT[c]); continue; }
+      ut.push({ c, k: [...open].join(" ") });
     }
-    return ut + (inne ? "</b>" : "");
+    return ut;
   }
-  function tale(tekst, namn, kjensle) {
+  // Tekst med merke som HTML (val, forteljing, nærbilete): rpg-ord, rpg-nor og rpg-run.
+  const MERKE_KLASSE = { o: "rpg-ord", n: "rpg-nor", r: "rpg-run" };
+  function merkHtml(tekst) {
+    return teiknAv(String(tekst)).reduce((ut, t, i, a) => {
+      const k = t.k && t.k.split(" ").map(x => MERKE_KLASSE[x]).join(" ");
+      const forrige = i && a[i - 1].k;
+      if (t.k !== forrige && forrige) ut += "</span>";
+      if (t.k !== forrige && t.k) ut += `<span class="${k}">`;
+      ut += E(t.c);
+      if (i === a.length - 1 && t.k) ut += "</span>";
+      return ut;
+    }, "");
+  }
+  // Samtaleboksen har plass til TALE_LINER liner (Motor.tilpass gir han fast høgd). Heile replikken
+  // blir lagd ut med kvart teikn i eit span, usynleg (.u) til skrivemaskina kjem dit, så ingen
+  // ord hoppar til neste line undervegs. Ein replikk med fleire liner blir delt i sider.
+  const TALE_LINER = 4;
+  function sidestart(sp) {
+    const linjer = []; let forrige = -Infinity;
+    sp.forEach((s, j) => { if (s.offsetTop > forrige + 2) { linjer.push(j); forrige = s.offsetTop; } });
+    const ut = [];
+    for (let l = 0; l < linjer.length; l += TALE_LINER) ut.push(linjer[l]);
+    return ut.length ? ut : [0];
+  }
+  // opt.norront: heile replikken er norrøn tale (sjå norront: true i manus).
+  function tale(tekst, namn, kjensle, opt = {}) {
     return new Promise(res => {
-      const lengd = [...tekst.replace(/[⟪⟫]/g, "")].length;
-      let i = 0, ferdig = false, skriv = null;
-      const vis = () => {
-        boks.hidden = false;
+      let sp = [], start = [0], side = 0, i = 0, slutt = 0, ferdig = false, skriv = null, slepp = null;
+      const ferdigSide = () => { clearInterval(skriv); for (; i < slutt; i++) sp[i].classList.remove("u"); ferdig = true; boks.classList.add("klar"); };
+      const visSide = () => {
+        i = start[side]; slutt = side + 1 < start.length ? start[side + 1] : sp.length;
+        for (let j = 0; j < i; j++) sp[j].classList.add("s");
+        ferdig = false; boks.classList.remove("klar");
+        clearInterval(skriv);
+        skriv = setInterval(() => { const til = Math.min(slutt, i + 2); for (; i < til; i++) sp[i].classList.remove("u"); if (i >= slutt) ferdigSide(); }, 16);
+      };
+      const opne = () => {
+        boks.hidden = false; boks.classList.remove("med-val", "klar");
         boksNamn.textContent = namn || "";
         boksNamn.hidden = !namn;
         visPortrett(namn, kjensle);
-        boksTekst.innerHTML = taleHtml(tekst, ferdig ? Infinity : i);
-        boks.classList.toggle("klar", ferdig);
+        boksTekst.innerHTML = teiknAv(String(tekst), opt.norront ? "n" : "").map(t => `<span class="u${t.k ? " " + t.k : ""}">${E(t.c)}</span>`).join("");
+        sp = [...boksTekst.children];
+        start = sidestart(sp);
         boks.onclick = () => paaTrykk && paaTrykk.a && paaTrykk.a();
+        visSide();
       };
-      vis();
-      skriv = setInterval(() => {
-        i += 2;
-        boksTekst.innerHTML = taleHtml(tekst, i);
-        if (i >= lengd) { clearInterval(skriv); ferdig = true; boks.classList.add("klar"); }
-      }, 16);
-      const slutt = () => { clearInterval(skriv); slepp(); boks.hidden = true; res(); };
-      const slepp = lytt({
+      // Skrifta må vere lasta før lina blir broten (elles blir sidene rekna med ei anna skrift).
+      const klar = document.fonts && document.fonts.load ? document.fonts.load('16px "Spelskrift"').catch(() => {}) : Promise.resolve();
+      klar.then(opne);
+      slepp = lytt({
         a: () => {
-          if (!ferdig) { clearInterval(skriv); boksTekst.innerHTML = taleHtml(tekst, Infinity); ferdig = true; boks.classList.add("klar"); return; }
-          slutt();
+          if (!sp.length) return;
+          if (!ferdig) return ferdigSide();
+          if (side + 1 < start.length) { side++; visSide(); return; }
+          clearInterval(skriv); slepp(); boks.hidden = true; res();
         },
       });
     });
@@ -1680,15 +1716,16 @@ window.Motor = (function () {
   // Val mellom alternativ i samtaleboksen. Gir indeksen.
   function val(tekst, alt, namn) {
     return new Promise(res => {
-      boks.hidden = false;
+      boks.hidden = false; boks.classList.add("med-val");
       boksNamn.textContent = namn || ""; boksNamn.hidden = !namn; visPortrett(namn);
-      boksTekst.innerHTML = `${E(tekst)}<span class="rpg-val">${alt.map((a, i) => `<button type="button" data-i="${i}">${E(a)}</button>`).join("")}</span>`;
+      boksTekst.innerHTML = `${merkHtml(tekst)}<span class="rpg-val">${alt.map((a, i) => `<button type="button" data-i="${i}">${merkHtml(a)}</button>`).join("")}</span>`;
       boks.classList.add("klar");
       let valt = 0;
       const kn = [...boksTekst.querySelectorAll("button")];
       const merk = () => kn.forEach((b, i) => b.classList.toggle("peikar", i === valt));
       merk();
-      const ferdig = i => { slepp(); boks.hidden = true; boks.onclick = null; res(i); };
+      let svart = false;                                   // eit val blir berre svara éin gong
+      const ferdig = i => { if (svart) return; svart = true; slepp(); boks.hidden = true; boks.classList.remove("med-val"); boksTekst.innerHTML = ""; boks.onclick = null; res(i); };
       kn.forEach((b, i) => b.addEventListener("click", e => { e.stopPropagation(); ferdig(i); }));
       const slepp = lytt({ a: () => ferdig(valt), b: () => ferdig(alt.length - 1), retning: d => { if (d === 1 || d === 2) valt = (valt + alt.length - 1) % alt.length; if (d === 0 || d === 3) valt = (valt + 1) % alt.length; merk(); } });
       boks.onclick = null;
@@ -1702,7 +1739,7 @@ window.Motor = (function () {
       const neste = () => {
         if (i >= linjer.length) { slepp(); fortEl.classList.add("ut"); setTimeout(() => { fortEl.hidden = true; fortEl.classList.remove("ut"); res(); }, 350); return; }
         const p = document.createElement("p");
-        p.textContent = linjer[i++];
+        p.innerHTML = merkHtml(linjer[i++]);
         fortEl.appendChild(p);
       };
       const slepp = lytt({ a: neste });
@@ -1730,11 +1767,50 @@ window.Motor = (function () {
     const b = rot.clientWidth * dpr, h = rot.clientHeight * dpr;
     const k = Math.max(1, Math.floor(Math.min(b / (VW * S), h / (VH * S))));
     lerret.style.width = `${VW * S * k / dpr}px`; lerret.style.height = `${VH * S * k / dpr}px`;
-    // Portrettet (48 × 48): om lag 144 px (96 px på små skjermar), men med heil skala.
-    const maal = matchMedia("(pointer: coarse), (max-width: 760px)").matches ? 96 : 144;
-    const kp = Math.max(1, Math.round(maal * dpr / 48));
-    boks.style.setProperty("--portrett", `${48 * kp / dpr}px`);
+    tilpassUI(k, dpr);
   }
+  /* Skrift og vindauge (css/rpg.css): --fp er éin piksel i Spelskrift, eit heilt tal skjermpikslar
+     (om lag 2 CSS-pikslar, eller 2/3 av spelpikselen på store skjermar), og --kp éin piksel i
+     portrettet. Vindauga får stad og storleik i heile skjermpikslar, så kantane blir skarpe:
+     menyen og kampen dekkjer lerretet (--lx, --ly, --lb, --lh), og samtaleboksen står nedst på
+     lerretet med fast storleik (namnelina og TALE_LINER liner, eller portrettet). */
+  function tilpassUI(k, dpr) {
+    const rot = $("rpg-skjerm"), smal = matchMedia("(pointer: coarse), (max-width: 760px)").matches;
+    const n = Math.max(1, Math.round((smal ? 1.6 : 2) * dpr), Math.round(k * 2 / 3));
+    const kp = smal ? n : n + Math.floor(n / 2);
+    const r = lerret.getBoundingClientRect(), rr = rot.getBoundingClientRect();
+    const lx = Math.round((r.left - rr.left) * dpr), ly = Math.round((r.top - rr.top) * dpr);
+    const lb = Math.round(r.width * dpr), lh = Math.round(r.height * dpr), m = 4 * n;
+    const innhald = Math.max(15 * n * (TALE_LINER + 1), 48 * kp);
+    const th = 16 * n + innhald, tb = Math.min(lb - 2 * m, 48 * kp + 330 * n);
+    const tx = lx + Math.round((lb - tb) / 2), ty = ly + lh - m - th;
+    const px = v => `${v / dpr}px`, s = rot.style;
+    s.setProperty("--fp", px(n)); s.setProperty("--kp", px(kp)); s.setProperty("--np", px(kp));
+    s.setProperty("--lx", px(lx)); s.setProperty("--ly", px(ly)); s.setProperty("--lb", px(lb)); s.setProperty("--lh", px(lh));
+    s.setProperty("--tale-x", px(tx)); s.setProperty("--tale-y", px(ty)); s.setProperty("--tale-b", px(tb)); s.setProperty("--tale-h", px(th));
+    s.setProperty("--tale-botn", px(Math.round(rr.height * dpr) - ty - th));
+    const skugge = document.getElementById("skarp-skugge");       // skuggen i filteret #skarp: éin skriftpiksel
+    if (skugge) { skugge.setAttribute("dx", n / dpr); skugge.setAttribute("dy", n / dpr); }
+    snappAlle();
+  }
+  // Vindauge som blir midtstilte (translate(-50%), flex, fr i grid), kan hamne på ein halv
+  // skjermpiksel, og då blir teksten uskarp. snapp() flyttar dei til næraste heile skjermpiksel.
+  // Dei blir sjekka når dei kjem til, endrar storleik eller noko anna i skjermen endrar seg.
+  const SNAPP = ".kamp-sporsmal, .kamp-melding, .kamp-hint, .kamp-vindauge, .rpg-stadnamn, .rpg-kort, .fv-tekst, .rpg-naer img, .rpg-fort p, .rpg-tittel > *, .rpg-verd-panel";
+  function snapp(el) {
+    const dpr = window.devicePixelRatio || 1;
+    el.style.translate = "";
+    const r = el.getBoundingClientRect();
+    const dx = Math.round(r.left * dpr) / dpr - r.left, dy = Math.round(r.top * dpr) / dpr - r.top;
+    if (Math.abs(dx) > 0.001 || Math.abs(dy) > 0.001) el.style.translate = `${dx}px ${dy}px`;
+  }
+  let snappVentar = false;
+  function snappAlle() {
+    if (snappVentar) return;
+    snappVentar = true;
+    requestAnimationFrame(() => { snappVentar = false; document.querySelectorAll(SNAPP).forEach(el => { if (!el.hidden) snapp(el); }); });
+  }
+  if (window.MutationObserver) new MutationObserver(snappAlle).observe($("rpg-skjerm"), { childList: true, subtree: true, attributes: true, attributeFilter: ["hidden", "class"] });
   window.addEventListener("resize", tilpass);
 
   return {
