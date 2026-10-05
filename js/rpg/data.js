@@ -334,13 +334,13 @@ window.RPGData = (function () {
       namn: "Stova på Åsen", stemning: "inne", golv: "P", inne: true, bakgrunn: "inne",
       // Inventaret er figurar laga med tools/pikselkunst/inventar.py. «(» er fast golv under dei.
       // Langbordet med ein benk framfor og ein kubbestol ved kvar ende (stolen ser mot bordet).
-      bygg: [{ id: "inne-grue", x: 1, y: 0, h: 2 }, { id: "inne-hylle", x: 5, y: 0, h: 1 }, { id: "inne-sengebenk", x: 9, y: 1, h: 1 },
+      bygg: [{ id: "inne-grue", x: 1, y: 0, h: 2 }, { id: "inne-hylle", x: 5, y: 0, h: 1 }, { id: "inne-seng", x: 10, y: 1, h: 2 },   // senga står på langs inn frå veggen, som i FF6 (runde 89)
         { id: "inne-langbord", x: 3, y: 2, h: 2 }, { id: "inne-benk", x: 3, y: 4, h: 1 },
         { id: "inne-kubbestol-hogre", x: 2, y: 3, h: 1 }, { id: "inne-kubbestol-venstre", x: 7, y: 3, h: 1 }, { id: "inne-rokk", x: 9, y: 6, h: 1 }],
       rader: [
         "XXXXXXXXXXXX",
-        "X(PPPPPPP((X",
-        "XPP((((P@PPX",
+        "X(PPPPPPPP(X",
+        "XPP((((P@P(X",
         "XP%(((((PPPX",
         "XPP((((PPPKX",
         "XPPPPP1PPPPX",
@@ -889,11 +889,11 @@ window.RPGData = (function () {
     },
     "nedre-hovde": {
       namn: "Stova på Nedre Hovde", stemning: "inne", golv: "P", inne: true, bakgrunn: "inne",
-      bygg: [{ id: "inne-grue", x: 1, y: 0, h: 2 }, { id: "inne-hylle", x: 5, y: 0, h: 1 }, { id: "inne-sengebenk", x: 9, y: 1, h: 1 }, { id: "inne-langbord", x: 2, y: 3, h: 2 }],
+      bygg: [{ id: "inne-grue", x: 1, y: 0, h: 2 }, { id: "inne-hylle", x: 5, y: 0, h: 1 }, { id: "inne-seng", x: 10, y: 1, h: 2 }, { id: "inne-langbord", x: 2, y: 3, h: 2 }],
       rader: [
         "XXXXXXXXXXXX",
-        "X(PPPPPPP((X",
-        "XPP@PPPPPPPX",
+        "X(PPPPPPPP(X",
+        "XPP@PPPPPP(X",
         "XP((((PP%PPX",
         "XP((((PPPPPX",
         "XPPPPPPP$PPX",

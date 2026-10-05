@@ -1184,42 +1184,58 @@ def orgel():
 
 
 def grue():
-    """Kvitkalka grue med hette i hjørnet, eld og gryte på krok (etter Bjørnebergstølen og Askevold).
-    Standardperspektivet: kanten på hetta er boga (ho er rund sett ovanfrå), og grueheller og
-    golvet i eldstaden syner som toppflater."""
+    """Mura og kvitkalka grue i hjørnet med kappe og pipe, eld og gryte på krok (runde 89, etter
+    gruene frå Gulsvik og Bjørnebergstølen på Norsk Folkemuseum, sjå konsept/grue-gulsvik.jpg).
+    Pipa er firkanta og smalnar litt av oppover, med murfuger gjennom kalken og toppen sett ovanfrå
+    (kant og opning). Kappa over gruemunnen stikk fram som ein kant med skrå toppflate og sot under.
+    Gruemunnen har to murpilarar, eldstaden og ei låg, mura gruehelle framfor (toppflate og kort kant).
+    Flammane (ILD i pikslar.js) og gløden står der dei stod."""
     W, H = 16 + 8, 2 * 16 + 12
     L = Lerret(W, H)
-    for y in range(4, H - 2):                                               # pipa, hetta og muren under
-        b = 9 if y > 16 else 4 if y < 8 else round(4.5 + (y - 8) * 0.55)    # pipestubben, så hetta som vidar seg ut
-        for x in range(12 - b, 12 + b + 1):
-            if y < 8: c = "k" if x < 11 else "8" if x < 14 else "x"         # pipa: loddrett, mørkare
-            elif y <= 16: c = "k" if x < 12 + b * 0.35 else "8" if x < 12 + b * 0.7 else "x"   # hetta skrånar opp: lys flate
-            else: c = "k" if x < 12 + b * 0.3 else "x"
-            L.p(x, y, c)
-    for x in range(8, 17): L.p(x, 7, "8")                                   # skuggekant der pipa går over i hetta
-    for y in range(0, 5):                                                   # toppen av pipa sett ovanfrå: brei kant og opning
-        for x in range(7, 18):
-            if (y in (0, 4)) and x in (7, 17): continue
-            L.p(x, y, "8" if y == 0 else "x" if y == 4 else "k" if y == 3 or x in (7, 8, 16, 17) else "N")
-    L.p(9, 1, "n"); L.p(15, 2, "n"); L.p(17, 2, "8"); L.p(17, 3, "x")
-    for x in range(3, 22):                                                  # kanten på hetta: boge, sot under
-        yk = 16 + round(2 * (1 - ((x - 12) / 9.5) ** 2))
-        L.p(x, yk - 1, "8"); L.p(x, yk, "x"); L.p(x, yk + 1, "n")
-    for y in range(24, H - 3):
-        for x in range(5, 19): L.p(x, y, "N")
+    # Pipa (rad 4 til 13): brei og firkanta, smalnar litt av oppover, lys framside og mørkare side.
+    for y in range(4, 14):
+        a, b = (7, 16) if y < 9 else (6, 17)
+        for x in range(a, b + 1): L.p(x, y, "x" if x >= b - 1 else "k")
+    for y, xs in ((6, (8, 9, 10, 13, 14)), (8, (11, 12, 15)), (10, (7, 8, 9, 13, 14)), (12, (10, 11, 12, 15))):
+        for x in xs: L.p(x, y, "8")                                         # murfuger gjennom kalken
+    for (x, y) in ((11, 7), (14, 9), (9, 11), (13, 13), (8, 5), (12, 5)): L.p(x, y, "8")   # loddrette fuger
+    for y in range(0, 4):                                                   # toppen sett ovanfrå: kant og opning
+        for x in range(6, 18):
+            if y == 0 and x in (6, 17): continue
+            L.p(x, y, "k" if y == 0 or x in (6, 7, 16, 17) else "N")
+    L.p(9, 1, "n"); L.p(14, 2, "n"); L.p(16, 1, "8"); L.p(17, 2, "x"); L.p(17, 3, "x")
+    for x in range(6, 18): L.p(x, 4, "8" if x < 16 else "x")                 # kanten under toppen
+    # Kappa (rad 14 til 19): ein kort, skrå toppflate ut til full breidd, ein tydeleg kant som stikk
+    # fram, og ei treplanke (hylle) langs framkanten med ein trebolle; sot under.
+    for y in range(14, 16):
+        a, b = 6 - (y - 13) * 3, 17 + (y - 13) * 3
+        for x in range(max(1, a), min(22, b) + 1): L.p(x, y, "x" if x >= min(22, b) - 1 else "8" if (x * 3 + y) % 9 == 0 else "k")
+    for x in range(1, 23): L.p(x, 16, "k" if x < 21 else "8"); L.p(x, 17, "8" if x < 21 else "x")
+    for x in range(1, 23): L.p(x, 17, "q" if x < 21 else "C"); L.p(x, 18, "C" if x < 21 else "c"); L.p(x, 19, "A" if x < 21 else "a")   # hylla: toppflate og framkant
+    for x in range(2, 22): L.p(x, 20, "a")                                  # skugge under hylla
+    for (x, y, c) in ((14, 15, "t"), (15, 15, "U"), (16, 15, "U"), (17, 15, "U"), (18, 15, "t"), (14, 16, "T"), (15, 16, "U"),
+                      (16, 16, "T"), (17, 16, "T"), (18, 16, "t"), (15, 17, "t"), (16, 17, "t"), (17, 17, "t")):
+        L.p(x, y, c)                                                        # trebolle på hylla
+    for (x, y, c) in ((4, 14, "M"), (5, 14, "M"), (4, 15, "O"), (5, 15, "M"), (6, 15, "J"), (4, 16, "O"), (5, 16, "M"), (6, 16, "J"), (3, 15, "J")):
+        L.p(x, y, c)                                                        # ei kopparkanne
+    # Gruemunnen (rad 20 til 40): murpilarar og eldstaden.
+    for y in range(21, H - 3):
+        for x in range(2, 22):
+            L.p(x, y, "k" if x < 4 else "8" if x == 4 else "x" if x > 19 else "N")
+    for y in (25, 30, 35): L.p(3, y, "8"); L.p(20, y, "n")                  # fuger i pilarane
+    for x in range(5, 19): L.p(x, 21, "n"); L.p(x, 22, "n" if x % 3 else "N")   # sot øvst i gruemunnen
     for y in range(34, H - 3):
         for x in range(6, 18):
             if h(x, y, 3) > 0.25 + (H - 3 - y) / 14: L.p(x, y, "f" if h(x, y, 4) > 0.6 else "F")
     for x in range(5, 19): L.p(x, H - 5, "n"); L.p(x, H - 4, "n")            # golvet i eldstaden: oske
     for x in (7, 10, 15): L.p(x, H - 4, "x")
     for (x, c) in ((8, "T"), (9, "U"), (10, "T"), (13, "t"), (14, "T"), (15, "U")): L.p(x, H - 6, c)   # vedskier
-    for y in range(24, 27): L.p(12, y, "v" if y % 2 else "X")          # kjetting frå hetta
+    for y in range(21, 27): L.p(12, y, "v" if y % 2 else "X")              # kjetting frå kappa
     for (x, y) in [(11, 27), (10, 28), (13, 27), (14, 28)]: L.p(x, y, "v")  # hank
     for x in range(8, 16): L.p(x, 29, "X" if x < 13 else "V")           # gryta i svart jern, lys kant
     for y, (a, b) in {30: (8, 15), 31: (8, 15), 32: (9, 14), 33: (10, 13)}.items():
         for x in range(a, b + 1): L.p(x, y, "X" if x == a + 1 and y < 32 else "v" if x >= b - 1 else "V")
-    for x in range(3, 22): L.p(x, H - 3, "8"); L.p(x, H - 2, "x")         # grueheller: toppflate og kort kant
-    L.p(3, H - 3, "k")
+    for x in range(1, 23): L.p(x, H - 3, "k" if x < 20 else "8"); L.p(x, H - 2, "x")   # gruehella: toppflate og kort kant
     omriss(L)
     return L
 
@@ -1294,6 +1310,52 @@ def sengebenk():
     L.p(4, 21, "a"); L.p(4, 23, "a")                                        # skurd i endeveden
     for (x0, x1) in [(3, 5), (34, 36)]:                                     # bein
         for x in range(x0, x1 + 1): L.p(x, 27, "a")
+    omriss(L)
+    return L
+
+
+def seng():
+    """Seng som i Final Fantasy VI (runde 89, sjå forhand/referansar/ff6-0241.png): ståande på langs
+    inn frå bakveggen, 1 x 2 fliser, med høg hovudgavl bak, puta øvst, lakenet bretta ned og eit
+    raudt, vove åklede med rutemønster over resten (same tøy som sengebenken), sengestokkar på sidene
+    og ein låg fotgavl framme. Den som ligg i senga, har hovudet på puta (hovud i SENG i pikslar.js),
+    og åkledet blir teikna over kroppen (dyne). Standardperspektivet: gavlane syner toppkanten
+    ovanfrå og ei kort framside."""
+    W, H = 16 + 8, 2 * 16 + 8
+    L = Lerret(W, H)
+    # Hovudgavlen (rad 0 til 11): stolpar med knott, toppkant sett ovanfrå og ei framside med skurd.
+    for y in range(2, 12):
+        for x in range(1, 23):
+            L.p(x, y, "U" if y in (2, 3) else "T" if x < 20 else "t")
+    for x in range(2, 22): L.p(x, 2, "q" if x < 20 else "U")
+    for (x0, x1) in ((1, 3), (20, 22)):                                     # stolpane går høgare, med knott
+        for y in range(0, 12):
+            for x in range(x0, x1 + 1): L.p(x, y, "U" if y < 2 else "T" if x < x1 else "t")
+        L.p(x0 + 1, 0, "q")
+    for (x, y) in ((8, 6), (9, 5), (10, 6), (13, 6), (14, 5), (15, 6), (11, 8), (12, 8)): L.p(x, y, "U")   # skurd i gavlen
+    for x in range(4, 20): L.p(x, 11, "a")                                  # skugge under gavlen
+    # Sengestokkane på sidene (rad 12 til 34): toppflate lys til venstre, mørk til høgre.
+    for y in range(12, 35):
+        for x in (1, 2, 3): L.p(x, y, "q" if x == 1 else "C" if x == 2 else "c")
+        for x in (20, 21, 22): L.p(x, y, "c" if x == 20 else "A" if x == 21 else "a")
+    # Puta (rad 12 til 18), lakenet bretta ned (rad 19 og 20) og åkledet (rad 21 til 32).
+    for y in range(12, 19):
+        for x in range(4, 20): L.p(x, y, "W" if (y == 18 or x >= 17) else "w")
+    L.p(4, 12, "W"); L.p(19, 12, "K"); L.p(19, 18, "K"); L.p(4, 18, "K")
+    for x in range(4, 20): L.p(x, 19, "w"); L.p(x, 20, "W")
+    for y in range(21, 33):
+        for x in range(4, 20): L.p(x, y, "R")
+    for x in range(4, 20): L.p(x, 21, "E"); L.p(x, 22, "y"); L.p(x, 31, "y"); L.p(x, 32, "E")
+    for (cx, cy) in [(8, 26), (15, 26)]:                                    # ruter i åkledet
+        for dx, dy in [(0, -2), (-1, -1), (1, -1), (-2, 0), (2, 0), (-1, 1), (1, 1), (0, 2)]: L.p(cx + dx, cy + dy, "y")
+        L.p(cx, cy, "w")
+    for y in range(23, 31, 2): L.p(4, y, "r"); L.p(19, y, "r")              # åkledet heng over stokkane
+    # Fotgavlen (rad 33 til 37): låg, toppkant ovanfrå og kort framside.
+    for y in range(33, 38):
+        for x in range(1, 23): L.p(x, y, ("q" if x < 20 else "U") if y == 33 else "C" if y == 34 and x < 20 else "c" if x < 20 else "A")
+    for x in range(1, 23): L.p(x, 37, "a")
+    for (x0, x1) in ((1, 3), (20, 22)):                                     # bein
+        for x in range(x0, x1 + 1): L.p(x, 38, "a")
     omriss(L)
     return L
 
@@ -2278,7 +2340,7 @@ def stol():
 INVENTAR = {
     "kakkelomn": kakkelomn, "skatoll": skatoll, "golvur": golvur, "sofa": sofa, "spisebord": spisebord,
     "skrivepult": skrivepult, "bokreol": bokreol, "bokreol-brei": bokreol_brei, "lesebord": lesebord, "stol": stol,
-    "grue": grue, "hylle": hylle, "sengebenk": sengebenk, "langbord": langbord, "langbord-staande": langbord_staande,
+    "grue": grue, "hylle": hylle, "sengebenk": sengebenk, "seng": seng, "langbord": langbord, "langbord-staande": langbord_staande,
     "benk": benk, "benk-kort": lambda: benk(2), "benk-staande": benk_staande, "benk-staande-kort": lambda: benk_staande(2),
     "kubbestol-ned": lambda: kubbestol("ned"), "kubbestol-opp": lambda: kubbestol("opp"),
     "kubbestol-venstre": lambda: kubbestol("venstre"), "kubbestol-hogre": lambda: kubbestol("hogre"),

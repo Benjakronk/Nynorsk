@@ -1653,13 +1653,13 @@ window.Motor = (function () {
       const sx = Math.round((f.x + ox) * S) + hogdVed(f.x, f.y, 1), sy = Math.round((f.y + oy) * S) + (f.sete ? SITJE_DY[f.dir] - f.sete.s.hogd : 0) - hogdVed(f.x, f.y);
       // I senga (runde 88): liggjeramma spegla, så hovudet ligg på puta, og dyna (den delen av
       // sengebiletet) teikna over kroppen, så berre hovudet stikk ut. Søv han, stig det z.
-      if (f.seng && f.sp.pose && f.sp.pose.liggje) {
-        const img = Pikslar.bygg(f.seng.b.id), r = spegla(f.sp.pose.liggje), s = f.seng.s;
+      if (f.seng && f.sp.rammer) {
+        const img = Pikslar.bygg(f.seng.b.id), r = sovehovud(f.sp), s = f.seng.s;
         if (img) {
           const [bx, by] = byggPos(f.seng.b, img, ox, oy), [hx, hy] = s.hovud;
           g.drawImage(r, bx + hx, by + hy); maske(r, bx + hx, by + hy);
           for (const [dx, dy, dw, dh] of s.dyne) g.drawImage(img, dx, dy, dw, dh, bx + dx, by + dy, dw, dh);
-          if (f.pose === "sove") teiknZz(g, bx + hx + 10, by + hy - 2, no);
+          if (f.pose === "sove") teiknZz(g, bx + hx + 12, by + hy - 1, no);
           continue;
         }
       }
@@ -1704,11 +1704,37 @@ window.Motor = (function () {
 
   // Den som søv: to små z som stig opp og blir borte, om att og om att (kvit med mørkt omriss).
   const ZZ = ["####", "..#.", ".#..", "####"];
-  // Ei ramme spegla vassrett (liggjeramma i senga: hovudet mot puta til venstre).
-  const speglaCache = new WeakMap();
-  function spegla(c) {
-    if (!speglaCache.has(c)) { const s = document.createElement("canvas"); s.width = c.width; s.height = c.height; const sg = s.getContext("2d"); sg.scale(-1, 1); sg.drawImage(c, -c.width, 0); speglaCache.set(c, s); }
-    return speglaCache.get(c);
+  /* Den sovande ramma i senga (runde 89, som i FF6): hovudet frå ramma der figuren står og ser ned
+     (rad 0 til 10), med lukka auge. Rada med augekvitt blir hud (augeloket), og irisen i rada under
+     blir ein mørk strek (augevippene på det lukka auget). Laga éin gong per figur. */
+  const sovCache = new WeakMap();
+  function sovehovud(sp) {
+    if (sovCache.has(sp)) return sovCache.get(sp);
+    const kj = sp.rammer[0][0], c = document.createElement("canvas"); c.width = 16; c.height = 11;
+    const cg = c.getContext("2d"); cg.drawImage(kj, 0, 0);
+    const d = cg.getImageData(0, 0, 16, 11), p = d.data, ix = (x, y) => (y * 16 + x) * 4;
+    const rgb = (x, y) => [p[ix(x, y)], p[ix(x, y) + 1], p[ix(x, y) + 2], p[ix(x, y) + 3]];
+    const kvit = ([r, g, b, a]) => a && r > 215 && g > 215 && b > 200 && Math.max(r, g, b) - Math.min(r, g, b) < 40;
+    const hud = ([r, g, b, a]) => a && r > 180 && r > g && g > b && r - b > 40;
+    const set = (x, y, [r, g, b]) => { p[ix(x, y)] = r; p[ix(x, y) + 1] = g; p[ix(x, y) + 2] = b; };
+    let mork = [255, 255, 255];                                         // den mørkaste fargen i hovudet utanom omrisset
+    for (let y = 0; y < 11; y++) for (let x = 0; x < 16; x++) { const q = rgb(x, y); if (q[3] && q[0] + q[1] + q[2] > 80 && q[0] + q[1] + q[2] < mork[0] + mork[1] + mork[2]) mork = q; }
+    for (let y = 4; y < 10; y++) {
+      const kvitt = [...Array(16).keys()].filter(x => kvit(rgb(x, y)));
+      if (!kvitt.length) continue;
+      const hudar = [...Array(16).keys()].map(x => rgb(x, y)).filter(hud);
+      const hf = hudar[Math.floor(hudar.length / 2)] || [230, 168, 120];
+      const iris = new Set();
+      for (const x of kvitt) for (const nx of [x - 1, x + 1]) { const q = rgb(nx, y); if (q[3] && !kvit(q) && !hud(q) && q[0] + q[1] + q[2] > 60) iris.add(q.slice(0, 3).join()); }
+      // Auget (kvitt og iris i rada) blir hud, og under det blir augeloket ein strek like brei som auget.
+      const auge = [...Array(16).keys()].filter(x => { const q = rgb(x, y); return kvit(q) || iris.has(q.slice(0, 3).join()); });
+      for (let x = 0; x < 16; x++) { const q = rgb(x, y + 1); if (iris.has(q.slice(0, 3).join())) set(x, y + 1, hf); }
+      for (const x of auge) { set(x, y, hf); set(x, y + 1, mork); }
+      break;
+    }
+    cg.putImageData(d, 0, 0);
+    sovCache.set(sp, c);
+    return c;
   }
   function teiknZz(g, x, y, no) {
     for (let i = 0; i < 2; i++) {

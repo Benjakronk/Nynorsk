@@ -1927,11 +1927,12 @@ window.Pikslar = (function () {
     // Kyrkjebenkene er sette bakfrå: den som sit, ser fram mot altaret, og ryggen dekkjer nedre del av han.
     ...Object.fromEntries(["", "2", "3", "4", "5"].flatMap(v => ["h", "v"].map(d => [`inne-kyrkjebenk-${d}${v}`, { hogd: 2, retning: 1, fram: true }]))),
   };
-  /* Senger ein kan leggje seg i (runde 88): den som ligg, blir teikna med liggjeramma spegla (hovudet
-     til venstre) med øvre venstre hjørne i hovud ([x, y] i sengebiletet), og dyna (rektanglar [x, y, b, h] i
-     sengebiletet) blir teikna oppå, så berre hovudet stikk ut på puta. */
+  /* Senger ein kan leggje seg i (runde 88 og 89, som i FF6): den som ligg, har hovudet på puta, sett
+     framanfrå og ovanfrå med lukka auge (sovehovud() i motor.js, frå figurarket), med øvre venstre
+     hjørne i hovud ([x, y] i sengebiletet). Dyna (rektanglar [x, y, b, h] i sengebiletet: lakenet
+     og åkledet) blir teikna oppå, så ho ligg opp til haka. */
   const SENG = {
-    "inne-sengebenk": { hovud: [3, 4], dyne: [[15, 3, 19, 19], [7, 15, 8, 7], [0, 0, 7, 28]] },   // dyna, åkleet under puta og sengegavlen
+    "inne-seng": { hovud: [4, 9], dyne: [[4, 20, 16, 13]] },
   };
   // Kva pikslar i ruta flammane kan teiknast på: berre mørket i eldstaden og den faste elden
   // i biletet, så gryta, kroken og kanten ligg framfor flammane.

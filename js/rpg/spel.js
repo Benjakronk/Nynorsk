@@ -386,7 +386,9 @@
     // Kvile ved ei lykt eller eit bål (type «lykt» eller «baal»). kvile: "scene" på kartet blir
     // spela første gong partiet kviler der. Ved bålet set Ivar seg ned.
     // Ivar har lagt seg under dyna (Motor.setSeg i senga): han kviler, men det er ingen lagring her.
-    seng: () => hending([{ lækje: 1 }, { t: "Ivar kryp under dyna og søv ei lita stund. Alle er friske att." }]),
+    // Som på eit vertshus i FF6: ei kort stund, så tonar skjermen til svart og inn att, og så teksten.
+    seng: () => hending([{ vent: 700 }, { ton: "ut", ms: 900 }, { lækje: 1 }, { vent: 900 }, { ton: "inn", ms: 900 },
+      { t: "Ivar kraup under dyna og sov ei god stund. Alle er friske att." }]),
     lampe: (type = "lykt") => {
       const def = Motor.kart && Motor.kart.def, kyrkje = def && def.fristad, baal = type === "baal";
       const kvile = def && def.kvile && !st.scener[def.kvile] ? [{ scene: def.kvile }] : [];

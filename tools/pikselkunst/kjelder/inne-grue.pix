@@ -14,52 +14,60 @@ palett:
   N = #140a08    eldstad
   f = #f8b830    eld gul
   F = #e86a20    eld
+  a = #2e1a10    furu djup
+  A = #5a3a22    furu skugge
+  c = #8a5e36    furu
+  C = #b08650    furu lys
+  q = #d6b070    furu lysast
+  J = #5a2418    mahogni skugge
+  M = #8a3a22    mahogni
+  O = #b8683e    mahogni lys
   v = #1a1a24    jern djup
   V = #34343f    jern
   X = #5a5a6a    jern lys
   8 = #d8d4c8    kalk lys skugge
 bilete:
-  .......o888888888o......
-  ......okknNNNNNNkko.....
-  ......okkNNNNNNnk8o.....
-  ......okkkkkkkkkkxo.....
-  .......oxxxxxxxxxo......
-  .......okkk888xxxo......
-  .......okkk888xxxo......
-  .......o888888888o......
-  .......okkkkkk8xxo......
-  ......okkkkkkk88xxo.....
-  .....okkkkkkkkk88xxo....
-  .....okkkkkkkkk88xxo....
-  ....okkkkkkkkkk88xxxo...
-  ....okkkkkkkkkk88xxxo...
-  ...okkkkkkkkkkk888xxxo..
-  ..o8kkkkkkkkkkk888xxx8o.
-  ..ox8888kkkkkkkk88888xo.
-  ..onxxxx888888888xxxxno.
-  ..oknnnnxxxxxxxxxnnnnxo.
-  ..okkkkknnnnnnnnnxxxxxo.
-  ..okkkkkkkkkkkkxxxxxxxo.
-  ..okkkkkkkkkkkkxxxxxxxo.
-  ..okkkkkkkkkkkkxxxxxxxo.
-  ..okkkkkkkkkkkkxxxxxxxo.
-  ..okkNNNNNNNXNNNNNNxxxo.
-  ..okkNNNNNNNvNNNNNNxxxo.
-  ..okkNNNNNNNXNNNNNNxxxo.
-  ..okkNNNNNNvNvNNNNNxxxo.
-  ..okkNNNNNvNNNvNNNNxxxo.
-  ..okkNNNXXXXXVVVNNNxxxo.
-  ..okkNNNVXVVVVvvNNNxxxo.
-  ..okkNNNVXVVVVvvNNNxxxo.
-  ..okkNNNNVVVVvvNNNNxxxo.
-  ..okkNNNNNVVvvNNNNNxxxo.
-  ..okkNFNNfNNNNNNFNNxxxo.
-  ..okkNNNfNNNFNNNNNNxxxo.
-  ..okkNNNFFNNNNNNfNNxxxo.
-  ..okkNNNfNNFNfNfffNxxxo.
-  ..okkNNfTUTNFtTUNNNxxxo.
-  ..okknnnnnnnnnnnnnnxxxo.
-  ..okknnxnnxnnnnxnnnxxxo.
-  ..ok888888888888888888o.
-  ..oxxxxxxxxxxxxxxxxxxxo.
-  ...ooooooooooooooooooo..
+  ......okkkkkkkkkko......
+  .....okkNnNNNNNN8ko.....
+  .....okkNNNNNNnNkxo.....
+  .....okkNNNNNNNNkxo.....
+  .....o8888888888xxo.....
+  ......ok8kkk8kkxxo......
+  ......ok888kk88xxo......
+  ......okkkk8kkkxxo......
+  ......okkkk88kk8xo......
+  .....okkkkkkkk8kxxo.....
+  .....ok888kkk88kxxo.....
+  .....okkk8kkkkkkxxo.....
+  .....okkkk888kk8xxo.....
+  ...oookkkkkkk8kkxxooo...
+  .ookMMkkkkkkkkkkkkkxxoo.
+  o8kJOMJ8kk8kk8tUUUt8kxxo
+  okkkOMJkkkkkkkTUTTtkk88o
+  oqqqqqqqqqqqqqqtttqqqCCo
+  oCCCCCCCCCCCCCCCCCCCCcco
+  oAAAAAAAAAAAAAAAAAAAAaao
+  .oaaaaaaaaaaaaaaaaaaaao.
+  .okk8nnnnnnnvnnnnnnNxxo.
+  .okk8nNnnNnnXnnNnnNNxxo.
+  .okk8NNNNNNNvNNNNNNNxxo.
+  .okk8NNNNNNNXNNNNNNNxxo.
+  .ok88NNNNNNNvNNNNNNNnxo.
+  .okk8NNNNNNNXNNNNNNNxxo.
+  .okk8NNNNNNvNvNNNNNNxxo.
+  .okk8NNNNNvNNNvNNNNNxxo.
+  .okk8NNNXXXXXVVVNNNNxxo.
+  .ok88NNNVXVVVVvvNNNNnxo.
+  .okk8NNNVXVVVVvvNNNNxxo.
+  .okk8NNNNVVVVvvNNNNNxxo.
+  .okk8NNNNNVVvvNNNNNNxxo.
+  .okk8NFNNfNNNNNNFNNNxxo.
+  .ok88NNNfNNNFNNNNNNNnxo.
+  .okk8NNNFFNNNNNNfNNNxxo.
+  .okk8NNNfNNFNfNfffNNxxo.
+  .okk8NNfTUTNFtTUNNNNxxo.
+  .okk8nnnnnnnnnnnnnnNxxo.
+  .okk8nnxnnxnnnnxnnnNxxo.
+  okkkkkkkkkkkkkkkkkkk888o
+  oxxxxxxxxxxxxxxxxxxxxxxo
+  .oooooooooooooooooooooo.

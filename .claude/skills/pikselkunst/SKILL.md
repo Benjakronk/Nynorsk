@@ -159,9 +159,14 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   ein stol med `retning` kan ein ikkje gå inn i eller ut av bakfrå, så teikn ryggen på rett side.
   Ein naturting kan òg vere eit sete: `sete: { hogd, retning, rygg: false }` (stokken ved bålet).
   Ein benk utan `retning` får retninga på tvers av benken (mot bordet), så teikn benken slik at det
-  passar. Senger står i `SENG` (runde 88): `hovud` er der liggjeramma (spegla) blir lagd i
-  sengebiletet, og `dyne` er rektanglane av sengebiletet som blir teikna over kroppen (dyna, åkleet
-  under puta og sengegavlen). Sjå med `skjermbilete.py namn kart=asen-stova m=1 x=10 y=1 pose=sove`.
+  passar. Senger står i `SENG` (runde 88 og 89): senga `inne-seng` (inventar.py `seng`) står på
+  langs inn frå veggen som i FF6 (`forhand/referansar/ff6-0241.png`). `hovud` er der det sovande
+  hovudet (16 x 11, ramma der figuren ser ned, med lukka auge, `sovehovud()` i motor.js) blir lagt i
+  sengebiletet, og `dyne` er rektanglane av sengebiletet som blir teikna over kroppen (lakenet og
+  åkledet, opp til haka). Sjå med `skjermbilete.py namn kart=asen-stova m=1 x=10 y=1 pose=sove`.
+- Grua i bondestova (runde 89, `inventar.py grue`): mura og kalka, med firkanta pipe som smalnar
+  litt av (toppen sett ovanfrå), ei kappe med skrå toppflate, ei hylle med trebolle og kopparkanne,
+  og gruemunnen mellom to pilarar. Etter `konsept/grue-gulsvik.jpg`. `ILD` og gløden står der dei stod.
 - Figurar (16 × 24): legg personen til i `U` i `js/rpg/data.js` og køyr
   `python tools/pikselkunst/figur.py <id>` (eller `alle`). Arket hamnar i
   `bilete/spel/figurar/<id>.png`. `figur.py ark` lagar eit kontaktark i

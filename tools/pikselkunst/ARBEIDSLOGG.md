@@ -2470,3 +2470,32 @@ same måte, uansett kven som tek over.
   senga) og `r88-ligg-for-naer.png` (liggjeramma før, på golvet).
 - **Står att:** liggjeramma er ramma for slått ut med opne auge; ei eiga søveramme med lukka auge ville
   passe betre i senga.
+
+## Runde 89: senga som i FF6, og grua med pipe og kappe
+
+- **Frå brukaren:** sjå korleis FF6 løyser senger. Pipa over grua kan fungere, men gjer henne gjerne betre.
+- **FF6:** `forhand/referansar/ff6-0241.png` (Kohlingen: ein mann ligg i senga), `ff6-0031.png` og `ff6-0313.png`
+  (senga i Narshe), `ff6-0145.png` (senga i Figaro-huset) og `ff6-0175.png` (Doma). Sengene står på langs inn
+  frå bakveggen, med høg hovudgavl, puta øvst, dyna som ei stor, lys flate og ein låg fotgavl med emblem.
+  Den som ligg, syner berre hovudet på puta, sett framanfrå og ovanfrå, og dyna ligg opp til haka. På
+  vertshus tonar skjermen til svart (med musikk) og inn att om morgonen. Samanstilt i `forhand/ff6-seng-naer.png`.
+- **Senga:** ny `inne-seng` (inventar.py `seng`, 1 x 2 fliser, 24 x 40): hovudgavl med stolpar, knottar og
+  skurd, puta, lakenet bretta ned, det raude åkledet med rutemønster frå sengebenken, sengestokkar og ein
+  låg fotgavl. Ho erstattar sengebenken i stova på Åsen og på Nedre Hovde (10,1 til 10,2). Skrinet etter far
+  står attmed senga som før. `sovehovud()` i motor.js lagar det sovande hovudet av ramma der figuren ser ned
+  (fungerer for alle i partiet): augekvitt og iris blir hud, og augeloket blir ein strek under.
+  `krokar.seng` tonar til svart og inn att før teksten, som på eit vertshus i FF6.
+- **Rundar på senga:** (1) dyna dekte munnen og nasa: dyna byrjar ein rad lenger ned, så heile andletet
+  syner på puta. (2) Irisen vart ein mørk prikk under auget, så han såg vaken ut: no er auget hud og
+  augeloket ein strek like brei som auget.
+- **Grua:** etter `konsept/grue-gulsvik.jpg` (Norsk Folkemuseum, CC BY 3.0) og `grue-bjorneberg.jpg`. Pipa er
+  firkanta og smalnar litt av, med murfuger i kalken og toppen sett ovanfrå (kant og opning). Kappa har ei
+  kort, skrå toppflate og ein kant som stikk fram, med ei treplanke (hylle) der ein trebolle og ei
+  kopparkanne står, og sot under. Gruemunnen står mellom to murpilarar, og gruehella er låg og mura.
+  `ILD` (rute 5,26 til 18,40) og gløden er uendra. Same grua på Nedre Hovde.
+- **Rundar på grua:** (1) den første utgåva hadde smal pipe og skuldrer, og liknar ei flaske: pipa vart
+  breiare og kappa kortare med ein tydeleg kant. (2) Hylla synte lite i spelet: lysare toppflate, mørkare
+  framkant og to ting på hylla.
+- **Sjekka:** alle fem testane grøne (sjekk-scene: senga med toning, flytting og opp att).
+- **Før og etter:** `forhand/skjerm/r89-for-etter-seng.png`, `r89-for-etter-stova.png`, `r89-for-etter-nedrehovde.png`,
+  og grua nært i `forhand/r89-grue-8x.png`.

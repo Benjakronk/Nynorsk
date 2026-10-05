@@ -240,20 +240,21 @@ f.onload = async () => {
       sjekk(paa(2, 4), "kubbestolen der syster sit, er opptatt");
       // c) Senga: Ivar legg seg under dyna og kviler, ligg når han flyttar seg i senga, og står opp.
       T().st().parti[0].hp = 1;
-      M.plasser(10, 2, 1); await vent(150);
+      M.plasser(10, 3, 1); await vent(150);
       await steg("ArrowUp");
-      let dynaTekst = false;
-      for (let n = 0; n < 60 && !(dynaTekst && !T().iHending()); n++) {
+      let dynaTekst = false, svart = false;
+      for (let n = 0; n < 90 && !(dynaTekst && !T().iHending()); n++) {
+        if (M.svart) svart = true;
         if (synleg("#rpg-tale") && /under dyna/.test(d.querySelector("#rpg-tale").textContent)) { dynaTekst = true; tast("z"); }
         await vent(60);
       }
       const v1 = M.spelarVis();
-      sjekk(paa(10, 1) && sp().pose === "sove" && v1.seng && dynaTekst && T().st().parti[0].hp !== 1,
-        `Ivar legg seg under dyna i senga, søv og kviler (${sp().x},${sp().y} ${sp().pose})`);
-      await steg("ArrowLeft"); await steg("ArrowUp");
-      sjekk(paa(9, 1) && M.spelarVis().seng, "i senga ligg han under dyna når han flyttar seg, og ein tast mot veggen gjer ingenting");
-      await steg("ArrowRight"); await steg("ArrowDown");
-      sjekk(paa(10, 2) && !sp().pose && !M.spelarVis().seng, "ein tast ut av senga, og Ivar står opp");
+      sjekk(paa(10, 2) && sp().pose === "sove" && v1.seng && dynaTekst && svart && T().st().parti[0].hp !== 1,
+        `Ivar legg seg under dyna i senga, skjermen tonar til svart og inn att, og han har kvilt (${sp().x},${sp().y} ${sp().pose})`);
+      await steg("ArrowUp"); await steg("ArrowRight");
+      sjekk(paa(10, 1) && M.spelarVis().seng, "i senga ligg han under dyna når han flyttar seg, og ein tast mot veggen gjer ingenting");
+      await steg("ArrowDown"); await steg("ArrowDown");
+      sjekk(paa(10, 3) && !sp().pose && !M.spelarVis().seng, "ein tast ut av senga, og Ivar står opp");
       // d) Kyrkjebenken: ryggen mot kameraet. Inn framfrå (ovanfrå), glir langs benken, ikkje over
       //    ryggen, ut framover eller ut til sida frå enden.
       M.last("kyrkja", "1"); M.plasser(4, 17, 0); await vent(250);
