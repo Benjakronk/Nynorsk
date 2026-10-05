@@ -2534,3 +2534,15 @@ same måte, uansett kven som tek over.
   inntil bakveggen ved hovudgavlen på senga, synleg og lett å nå med Z frå (9,2) eller (8,1). sjekk-scene
   er oppdatert (skrinet før og etter skiftebrevet). Før og etter: `forhand/skjerm/r90b-for-etter-alle.png`
   (alle innekarta), `r90b-etter-stova-naer.png`.
+
+## Runde 91: pipa firkanta opp til takbjelken
+
+- **Frå brukaren:** gjer pipa firkanta opp til takbjelken. Med den høge bakveggen (runde 90) slutta pipetoppen
+  midt på veggen som ein kvit klump.
+- **Grua** (`inventar.py grue`): biletet er 4 pikslar høgare (24 x 48), så pipa når takbjelken 16 pikslar over
+  rad 0. Pipa er firkanta med rette, loddrette sider frå kappa og heilt opp, kalka mur med liggjande fuger
+  og forskovne loddrette fuger, lys side mot venstre og mørk side til høgre, og takbjelken går over toppen,
+  så pipa går gjennom taket. Den frittståande toppen med opning er borte. `ILD` er flytt 4 pikslar ned
+  (y 30); gløden, gryta og elden står der dei stod. Inne er det ingen røyk frå pipa. Same grua på Nedre Hovde.
+- **Sjekka:** alle fem testane grøne. Før og etter: `forhand/skjerm/r91-for-etter-grue.png` (stova før og
+  etter, Nedre Hovde før og etter), og `forhand/r91-grue-8x.png`.

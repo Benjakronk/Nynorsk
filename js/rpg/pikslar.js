@@ -1909,7 +1909,7 @@ window.Pikslar = (function () {
   /* Levande eld i grua og kakkelomnen (inventaret er faste bilete, flammane blir teikna her).
      Rutene er i pikslar i biletet. glo: berre glør bak ei luke. */
   const ILD = {
-    "inne-grue": [{ x: 5, y: 26, w: 14, h: 15 }],
+    "inne-grue": [{ x: 5, y: 30, w: 14, h: 15 }],                          // runde 90: biletet er 4 pikslar høgare (pipa til takbjelken)
     "inne-kakkelomn": [{ x: 8, y: 27, w: 8, h: 8, glo: true }],          // ildluka i kakkelomnen (runde 76)
     "inne-jernomn": [{ x: 8, y: 36, w: 7, h: 6, glo: true }],
   };

@@ -1186,25 +1186,13 @@ def orgel():
 def grue():
     """Mura og kvitkalka grue i hjørnet med kappe og pipe, eld og gryte på krok (runde 89, etter
     gruene frå Gulsvik og Bjørnebergstølen på Norsk Folkemuseum, sjå konsept/grue-gulsvik.jpg).
-    Pipa er firkanta og smalnar litt av oppover, med murfuger gjennom kalken og toppen sett ovanfrå
-    (kant og opning). Kappa over gruemunnen stikk fram som ein kant med skrå toppflate og sot under.
+    Pipa (runde 90) er firkanta med rette, loddrette sider, kalka mur med fuger, lys side mot venstre
+    og mørk side til høgre, og går heilt opp til takbjelken øvst på den høge bakveggen (motor.js,
+    bakveggOver): bjelken går over pipa, så ho går gjennom taket. Kappa over gruemunnen stikk fram som ein kant med skrå toppflate og sot under.
     Gruemunnen har to murpilarar, eldstaden og ei låg, mura gruehelle framfor (toppflate og kort kant).
     Flammane (ILD i pikslar.js) og gløden står der dei stod."""
     W, H = 16 + 8, 2 * 16 + 12
     L = Lerret(W, H)
-    # Pipa (rad 4 til 13): brei og firkanta, smalnar litt av oppover, lys framside og mørkare side.
-    for y in range(4, 14):
-        a, b = (7, 16) if y < 9 else (6, 17)
-        for x in range(a, b + 1): L.p(x, y, "x" if x >= b - 1 else "k")
-    for y, xs in ((6, (8, 9, 10, 13, 14)), (8, (11, 12, 15)), (10, (7, 8, 9, 13, 14)), (12, (10, 11, 12, 15))):
-        for x in xs: L.p(x, y, "8")                                         # murfuger gjennom kalken
-    for (x, y) in ((11, 7), (14, 9), (9, 11), (13, 13), (8, 5), (12, 5)): L.p(x, y, "8")   # loddrette fuger
-    for y in range(0, 4):                                                   # toppen sett ovanfrå: kant og opning
-        for x in range(6, 18):
-            if y == 0 and x in (6, 17): continue
-            L.p(x, y, "k" if y == 0 or x in (6, 7, 16, 17) else "N")
-    L.p(9, 1, "n"); L.p(14, 2, "n"); L.p(16, 1, "8"); L.p(17, 2, "x"); L.p(17, 3, "x")
-    for x in range(6, 18): L.p(x, 4, "8" if x < 16 else "x")                 # kanten under toppen
     # Kappa (rad 14 til 19): ein kort, skrå toppflate ut til full breidd, ein tydeleg kant som stikk
     # fram, og ei treplanke (hylle) langs framkanten med ein trebolle; sot under.
     for y in range(14, 16):
@@ -1236,8 +1224,19 @@ def grue():
     for y, (a, b) in {30: (8, 15), 31: (8, 15), 32: (9, 14), 33: (10, 13)}.items():
         for x in range(a, b + 1): L.p(x, y, "X" if x == a + 1 and y < 32 else "v" if x >= b - 1 else "V")
     for x in range(1, 23): L.p(x, H - 3, "k" if x < 20 else "8"); L.p(x, H - 2, "x")   # gruehella: toppflate og kort kant
-    omriss(L)
-    return L
+    # Pipa (runde 90): heile bilete blir 4 pikslar høgare, så pipa når takbjelken (16 pikslar over rad 0).
+    P = Lerret(W, H + 4)
+    for y in range(H):
+        for x in range(W):
+            if L.g[y][x] != ".": P.p(x, y + 4, L.g[y][x])
+    for y in range(3, 18):                                                  # pipa: rette, loddrette sider
+        for x in range(6, 18): P.p(x, y, "x" if x >= 16 else "8" if x == 15 else "k")
+    for y in range(4, 18, 3):                                               # liggjande fuger, forskove annakvar rad
+        for x in range(6, 16): P.p(x, y, "8")
+        for x in ((9, 13) if (y // 3) % 2 else (7, 11)): P.p(x, y + 1, "8"); P.p(x, y + 2, "8") if y + 2 < 17 else None
+    for x in range(4, 20): P.p(x, 0, "N"); P.p(x, 1, "N"); P.p(x, 2, "a")   # takbjelken går over pipa
+    omriss(P)
+    return P
 
 
 def hylle():

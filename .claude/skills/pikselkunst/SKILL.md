@@ -164,8 +164,8 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   hovudet (16 x 11, ramma der figuren ser ned, med lukka auge, `sovehovud()` i motor.js) blir lagt i
   sengebiletet, og `dyne` er rektanglane av sengebiletet som blir teikna over kroppen (lakenet og
   åkledet, opp til haka). Sjå med `skjermbilete.py namn kart=asen-stova m=1 x=10 y=1 pose=sove`.
-- Grua i bondestova (runde 89, `inventar.py grue`): mura og kalka, med firkanta pipe som smalnar
-  litt av (toppen sett ovanfrå), ei kappe med skrå toppflate, ei hylle med trebolle og kopparkanne,
+- Grua i bondestova (runde 89 og 91, `inventar.py grue`): mura og kalka, med firkanta pipe med
+  loddrette sider heilt opp til takbjelken på den høge bakveggen (24 x 48), ei kappe med skrå toppflate, ei hylle med trebolle og kopparkanne,
   og gruemunnen mellom to pilarar. Etter `konsept/grue-gulsvik.jpg`. `ILD` og gløden står der dei stod.
 - Figurar (16 × 24): legg personen til i `U` i `js/rpg/data.js` og køyr
   `python tools/pikselkunst/figur.py <id>` (eller `alle`). Arket hamnar i
