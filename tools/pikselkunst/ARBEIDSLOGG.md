@@ -2499,3 +2499,28 @@ same måte, uansett kven som tek over.
 - **Sjekka:** alle fem testane grøne (sjekk-scene: senga med toning, flytting og opp att).
 - **Før og etter:** `forhand/skjerm/r89-for-etter-seng.png`, `r89-for-etter-stova.png`, `r89-for-etter-nedrehovde.png`,
   og grua nært i `forhand/r89-grue-8x.png`.
+
+## Runde 90: møblar i scenemotoren, og Ivar vaknar i senga
+
+- **Frå brukaren:** møblar bør vere ein del av scenemotoren, så Ivar til dømes kan vakne i opningsscena.
+- **Nye scenesteg** (spel.js `regiSteg`, motor.js `brukMoebel` og `reis`):
+  `{ sitje: "Namn", sete: [x, y], gaaDit: true }`, `{ liggje: "Namn", seng: [x, y], gaaDit, sove: false }` og
+  `{ reis: "Namn" }`. Med `gaaDit` går figuren til ei ledig rute attmed (ikkje bak ryggen) og inn som
+  spelaren gjer, og set seg halvvegs i det siste steget (`setjeTil`); `reis` går eitt steg ut og reiser han
+  halvvegs (`reisFra`). Det verkar for Ivar, følgjet, folk og figurar frå `inn`.
+- **Éin mekanisme:** `setjeSeg(a, inn, ligg)` set alle figurar ned på eit sete (retninga frå setet) eller i ei
+  seng, og blir brukt av spelaren som går inn, av scenestega, av `pose: "sitje"` i manus og når ei hending
+  er slutt (folk og Ivar på eit sete eller i ei seng blir sitjande eller liggjande). `figurVis(a)` teiknar
+  alle figurar (folk, følgjet, Ivar i scener) med sete og seng; `spelarVis()` brukar han i scener.
+  Vaken i senga (`pose: "liggje"`) har opne auge.
+- **Opningsscena:** `start` legg Ivar i senga og gjer biletet svart; `heime` tonar inn, Ivar søv, vaknar,
+  storebror seier «Ivar, du er vaken», og Ivar står opp før storebror kjem bort til han.
+- **Fiksa undervegs:** `plasserFylgje()` stoppar følgjet om ho gjekk etter med regi (den gamle stien kunne
+  føre henne inn på eit sete). I ei scene blir ikkje følgjet dradd inn på eit sete eller i ei seng.
+- **Testar:** `sjekk-scene.html` bolk 1 (Ivar søv, er vaken ved replikken og står opp før storebror kjem)
+  og bolk 8d (storebror set seg og reiser seg, legg seg og står opp, ein figur frå inn set seg, Ivar set seg
+  og legg seg; vakt: ingen står på eit sete eller i ei seng). `sjekk-spel.js` kjenner stega og sjekkar at
+  ruta er eit sete eller ei seng. `kjoyr-test.py` gir sjekk-scene 220 sekund (testen brukar om lag 190).
+  `skjerm.html`: `opning=ms` (og `sidan=n`) tek skjermbilete av opningsscena, og ventar elles til ho er ferdig.
+- **Bilete:** `forhand/skjerm/r90-heime-alle.png` (søv, søv, vaken ved replikken, oppe ved storebror) og
+  `r90-heime-1.png` til `-4.png`.

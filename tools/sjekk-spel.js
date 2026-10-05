@@ -238,6 +238,18 @@ knyt("m:start", "asen-stova");                                         // ei ny 
 const alleSteg = x => { const ut = []; (function samle(x) { if (Array.isArray(x)) x.forEach(samle); else if (x && typeof x === "object") { ut.push(x); Object.values(x).forEach(samle); } })(x); return ut; };
 // Scener får karta til manuset som spelar dei.
 for (let n = 0; n < 4; n++) for (const [id, m] of Object.entries(D.MANUS)) for (const s of alleSteg(m)) if (s.scene) for (const k of karteFor["m:" + id] || []) knyt("s:" + s.scene, k);
+// Kva bygg som er sete og senger (SETE og SENG i pikslar.js), og breidda til eit bygg i fliser (frå PNG-fila).
+const pikslarKjelde = require("fs").readFileSync(require("path").join(__dirname, "..", "js", "rpg", "pikslar.js"), "utf8");
+const moeblar = { SETE: new Set(), SENG: new Set() };
+for (const krav of ["SETE", "SENG"]) {
+  const fra = pikslarKjelde.indexOf(`const ${krav} = {`), blokk = pikslarKjelde.slice(fra, pikslarKjelde.indexOf("\n  };", fra));
+  for (const m of blokk.matchAll(/"(inne-[a-z0-9-]+)"/g)) moeblar[krav].add(m[1]);
+  for (const m of blokk.matchAll(/inne-kyrkjebenk-\$\{d\}\$\{v\}/g)) for (const d of ["h", "v"]) for (const v of ["", "2", "3", "4", "5"]) moeblar[krav].add(`inne-kyrkjebenk-${d}${v}`);
+}
+function byggBreidd(id) {
+  const b = require("fs").readFileSync(require("path").join(__dirname, "..", "bilete", "spel", "bygg", id + ".png"));
+  return Math.max(1, Math.round((b.readUInt32BE(16) - 8) / 16));
+}
 function sjekkNamn(nokkel, steg, stad) {
   const kart = karteFor[nokkel];
   if (!kart) return;
@@ -246,11 +258,21 @@ function sjekkNamn(nokkel, steg, stad) {
   for (const s of st) { if (s.inn) namn.add(s.inn.namn); if (s.byt && s.namn) namn.add(s.namn); if (s.scenekart) for (const f of D.KART[s.scenekart].folk || []) namn.add(f.namn); }
   for (const k of kart) {
     const lov = new Set([...namn, ...(D.KART[k].folk || []).map(f => f.namn), ...Object.keys(merkeI[k])]);
-    for (const s of st) for (const f of ["s", "gaa", "snu", "pose", "byt", "fjern", "kven", "fraa", "fra", "mot", "spot"]) {
+    for (const s of st) for (const f of ["s", "gaa", "snu", "pose", "byt", "fjern", "kven", "fraa", "fra", "mot", "spot", "sitje", "liggje", "reis"]) {
       const v = s[f];
       if (typeof v === "string" && !(f === "mot" && "s" in s) && !lov.has(v) && !(f === "fra" && !s.parti)) feil.push(`${stad} på ${k}: «${v}» (${f}) finst ikkje på kartet`);
     }
     for (const s of st) if (typeof s.kamera === "string" && !lov.has(s.kamera)) feil.push(`${stad} på ${k}: kamera mot «${s.kamera}» som ikkje finst`);
+    // Møblar (sitje, liggje): ruta må vere eit sete (bygg i SETE eller naturting med sete) eller ei seng (bygg i SENG).
+    for (const s of st) for (const [f, kva, krav] of [["sitje", "sete", "SETE"], ["liggje", "seng", "SENG"]]) {
+      if (!(f in s)) continue;
+      const r = typeof s[kva] === "string" ? merkeI[k][s[kva]] : s[kva];
+      if (!Array.isArray(r)) { feil.push(`${stad} på ${k}: ${f} utan ${kva}`); continue; }
+      const [x, y] = r, kjende = moeblar[krav];
+      const ok = (D.KART[k].bygg || []).some(b => kjende.has(b.id) && x >= b.x && x < b.x + byggBreidd(b.id) && y >= b.y && y < b.y + b.h)
+        || (krav === "SETE" && (D.KART[k].naturting || []).some(n => n.sete && n.ved[0] === x && n.ved[1] === y));
+      if (!ok) feil.push(`${stad} på ${k}: ${f} på ${x},${y}, men der er ikkje noko ${kva}`);
+    }
   }
 }
 for (const [id, m] of Object.entries(D.MANUS)) sjekkNamn("m:" + id, m, id);

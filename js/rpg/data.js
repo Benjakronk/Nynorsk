@@ -47,6 +47,9 @@
 
    Scenemotoren (sjå js/rpg/README.md for heile lista):
      { scene: "id" }                    spel ei scene frå SCENER (kort med stad og tid først)
+     { sitje: "Ivar", sete: [x, y], gaaDit: true }   set seg på eit sete (gaaDit: går dit først)
+     { liggje: "Ivar", seng: [x, y], sove: false }    legg seg i senga (sove: false: vaken)
+     { reis: "Ivar" }                   reiser seg frå setet eller står opp av senga
      { gaa: "Namn", mot: "Ivar" }       gå bort til nokon og snu seg mot han
      { gaa: "Namn", rute: [x, y] }      gå til ei rute (eller eit merke: rute: "@")
      { gaa: "Namn", sti: "h3o2" }       gå ein fast sti (n ned, o opp, v venstre, h høgre)
@@ -1136,10 +1139,16 @@ window.RPGData = (function () {
   const SCENER = {
     heime: {
       namn: "Heime", stad: "Stova på Åsen", tid: "våren 1826", med: ["Ivar", "Storebror"],
+      // Ivar søv i senga i stova (runde 90). Biletet tonar inn, han vaknar, og står opp før han snur seg.
       steg: [
-        { vent: 300 },
+        { liggje: "Ivar", seng: [10, 1] },
+        { ton: "inn", ms: 1400 },
+        { vent: 1200 },
+        { liggje: "Ivar", seng: [10, 1], sove: false },                  // han vaknar og ligg med opne auge
+        { vent: 700 },
         { snu: "Storebror", mot: "Ivar" },
         { s: "Storebror", t: "Ivar, du er vaken." },
+        { reis: "Ivar" },
         { gaa: "Storebror", mot: "Ivar" },
         { snu: "Ivar", mot: "Storebror" },
         { s: "Storebror", t: "Det er mykje som skal gjerast på garden no, når far er borte.", kjensle: "trist", kven: "Ivar" },
@@ -1490,6 +1499,7 @@ window.RPGData = (function () {
 
   const MANUS = {
     start: [
+      { liggje: "Ivar", seng: [10, 1] }, { ton: "ut", ms: 1 },          // Ivar søv i senga, og biletet er svart til «heime» tonar inn
       { fort: [
         "For lenge sidan hadde Noreg sitt eige skriftmål. Etter Svartedauden gjekk det i knas, og bitane hamna i talen til folk i bygdene.",
         "I fleire hundre år skreiv kanselliet i København for landet. Kanselliet forsvann med 1814, men blekket slutta ikkje å skrive.",

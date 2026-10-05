@@ -101,6 +101,10 @@
   function regiSteg(s) {
     // byt kan stå saman med andre steg (ein blink, ei forvandling), så det går vidare etterpå.
     if (s.byt) Motor.byt(regiNamn(s.byt), { namn: s.namn, u: s.u, vesen: s.vesen });
+    // Møblar (runde 90): set seg på eit sete, legg seg i ei seng (sove: false: vaken), reis seg.
+    if (s.sitje) return Motor.brukMoebel(regiNamn(s.sitje), s.sete, s.gaaDit, "sitje");
+    if (s.liggje) return Motor.brukMoebel(regiNamn(s.liggje), s.seng, s.gaaDit, s.sove === false ? "liggje" : "sove");
+    if (s.reis) return Motor.reis(regiNamn(s.reis));
     if (s.gaa) return Motor.gaa(regiNamn(s.gaa), { sti: s.sti, rute: s.rute, mot: s.mot && regiNamn(s.mot), ut: s.ut }, s.fart);
     if (s.snu && s.fraa) {                                           // snur ryggen til nokon
       const a = Motor.aktor(regiNamn(s.snu)), b = Motor.aktor(regiNamn(s.fraa));

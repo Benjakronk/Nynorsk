@@ -32,12 +32,18 @@ f.onload = async () => {
     d.querySelector("#rpg-tittel-val button").click();
     await vent(300);
 
-    // 1. «heime»: storebror går bort til Ivar, så tilbake til plassen sin.
-    let naerIvar = false;
+    // 1. «heime»: Ivar søv i senga, vaknar og står opp før storebror kjem bort til han (runde 90);
+    //    storebror går bort til Ivar, så tilbake til plassen sin.
+    let naerIvar = false, sovIseng = false, vaknaFor = false, opp = false, stodISeng = false;
     await trykkGjennom(() => T().st().scener.heime && !M.aktor("Storebror").regi, () => {
-      const b = M.aktor("Storebror"), s = M.spelar;
-      if (b && Math.abs(b.x - s.x) + Math.abs(b.y - s.y) === 1) naerIvar = true;
+      const b = M.aktor("Storebror"), s = M.spelar, v = M.spelarVis();
+      if (s.pose === "sove" && v.seng) sovIseng = true;
+      if (/du er vaken/.test(synleg("#rpg-tale") ? d.querySelector("#rpg-tale").textContent : "") && s.pose === "liggje" && v.seng) vaknaFor = true;
+      if (M.sengVed(Math.round(v.x), Math.round(v.y)) && !v.seng) stodISeng = true;
+      if (b && Math.abs(b.x - s.x) + Math.abs(b.y - s.y) === 1) { naerIvar = true; if (!M.sengVed(s.x, s.y) && !s.pose) opp = true; }
     });
+    sjekk(sovIseng && vaknaFor, "i «heime» søv Ivar i senga, og han er vaken når storebror seier «Ivar, du er vaken»");
+    sjekk(opp && !stodISeng, "Ivar står opp av senga før storebror kjem bort til han, og står aldri i senga");
     await vent(1500);
     const b = M.aktor("Storebror");
     sjekk(T().st().scener.heime, "scena «heime» er merkt som spela");
@@ -309,6 +315,42 @@ f.onload = async () => {
       sjekk(!bakRyggen.length, `Ivar står aldri på ei seterute utan å sitje (bak ryggen)${bakRyggen.length ? ": " + bakRyggen.slice(0, 4).join("; ") : ""}`);
       sjekk(!feilRetning.length, `retninga han sit i, er aldri feil${feilRetning.length ? ": " + feilRetning.slice(0, 4).join("; ") : ""}`);
       sjekk(!fylgjePaaSete, `følgjet gjekk aldri inn på eit sete eller i senga${fylgjePaaSete ? ": " + fylgjePaaSete : ""}`);
+    }
+
+    // 8d. Scenesteg for møblar (runde 90): sitje, liggje og reis for folk, figurar frå inn og Ivar.
+    {
+      M.last("asen-stova", "1"); await vent(250);
+      let staarPaa = [];
+      const vakt8 = setInterval(() => {
+        for (const a of [M.spelar, ...M.kart.folk]) {
+          const v = M.figurVis(a), rx = Math.round(v.x), ry = Math.round(v.y);
+          if ((M.seteVed(rx, ry) && v.pose !== "sitje") || (M.sengVed(rx, ry) && v.pose !== "sove" && v.pose !== "liggje"))
+            if (!(a === M.spelar && !a.regi)) staarPaa.push(`${a.namn || "Ivar"} ${v.x.toFixed(2)},${v.y.toFixed(2)} ${v.pose}`);
+        }
+      }, 15);
+      const sb = () => M.aktor("Storebror");
+      await T().hending([{ sitje: "Storebror", sete: [7, 3], gaaDit: true }]);
+      sjekk(sb().x === 7 && sb().y === 3 && sb().pose === "sitje" && sb().dir === 2, `storebror går til kubbestolen og set seg mot bordet (${sb().x},${sb().y} ${sb().pose} ${sb().dir})`);
+      await vent(400);
+      sjekk(sb().pose === "sitje", "etter hendinga blir storebror sitjande");
+      await T().hending([{ reis: "Storebror" }]);
+      sjekk(!sb().pose && !M.seteVed(sb().x, sb().y), `storebror reiser seg og går ut av stolen (${sb().x},${sb().y})`);
+      await T().hending([{ liggje: "Storebror", seng: [10, 1], gaaDit: true }]);
+      sjekk(M.sengVed(sb().x, sb().y) && sb().pose === "sove" && M.figurVis(sb()).seng, `storebror går til senga og legg seg under dyna (${sb().x},${sb().y} ${sb().pose})`);
+      await T().hending([{ reis: "Storebror" }]);
+      sjekk(!sb().pose && !M.sengVed(sb().x, sb().y), "storebror står opp av senga");
+      await T().hending([{ inn: { namn: "Gjest", u: "bonde", rute: [5, 6], retning: "opp" } }, { sitje: "Gjest", sete: [5, 4], gaaDit: true }]);
+      const gj = M.aktor("Gjest");
+      sjekk(gj && gj.x === 5 && gj.y === 4 && gj.pose === "sitje" && gj.dir === 1, "ein figur frå inn går til benken og set seg mot bordet");
+      await T().hending([{ sitje: "Ivar", sete: [4, 4], gaaDit: true }]);
+      sjekk(M.spelar.x === 4 && M.spelar.y === 4 && M.spelar.pose === "sitje" && M.spelar.dir === 1, "Ivar set seg på benken i ei scene (gaaDit)");
+      await T().hending([{ reis: "Ivar" }, { liggje: "Ivar", seng: [10, 2] }, { liggje: "Ivar", seng: [10, 2], sove: false }]);
+      sjekk(M.spelar.pose === "liggje" && M.spelarVis().seng, "Ivar legg seg i senga utan å gå (og vaknar)");
+      await T().hending([{ reis: "Ivar" }]);
+      sjekk(!M.spelar.pose && !M.sengVed(M.spelar.x, M.spelar.y), "Ivar står opp av senga i ei scene");
+      clearInterval(vakt8);
+      sjekk(!staarPaa.length, `ingen står på eit sete eller i ei seng i scenestega${staarPaa.length ? ": " + staarPaa.slice(0, 4).join("; ") : ""}`);
+      M.fjernFolk("Gjest");
     }
 
     // 9. Posar: knele, sitje, peike, liggje og sove. Posen varer til figuren går eller hendinga

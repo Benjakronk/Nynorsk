@@ -1,17 +1,17 @@
 """Køyrer ei testside i tools/ (sjekk-scene.html, sjekk-gange.html) i Microsoft Edge utan skjerm
 og skriv ut resultatet frå <div id="ut">.
 
-Bruk: python tools/kjoyr-test.py tools/sjekk-scene.html [virtuell tid i ms, standard 190000]
+Bruk: python tools/kjoyr-test.py tools/sjekk-scene.html [virtuell tid i ms, standard 220000]
 
 Tidsavgrensinga i kommandolinja (timeout) er ikkje tilgjengeleg i Git Bash her, så skriptet
-avbryt sjølv etter 300 sekund. sjekk-scene.html brukar om lag 155 sekund virtuell tid. Edge brukar
+avbryt sjølv etter 300 sekund. sjekk-scene.html brukar om lag 190 sekund virtuell tid (runde 90). Edge brukar
 heile budsjettet, og resten etter testen kan gå seint, så budsjettet bør ikkje vere mykje større."""
 import os, sys, re
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from edge import kjoyr                                 # eiga profilmappe per køyring, sletta etterpå
 
 side = os.path.abspath(sys.argv[1])
-budsjett = sys.argv[2] if len(sys.argv) > 2 else "190000"
+budsjett = sys.argv[2] if len(sys.argv) > 2 else "220000"
 url = "file:///" + side.replace("\\", "/")
 # Edge heng av og til når den virtuelle tida går ut (tilfeldig, uavhengig av testen). Då blir
 # prosessen stoppa etter 300 sekund, og testen køyrd på nytt, opptil tre gonger.

@@ -213,6 +213,8 @@ window.Motor = (function () {
      til sida om det ikkje går (til dømes når døra er bak han), elles på same flis. */
   function plasserFylgje() {
     if (!fylgje || !kart) return;
+    // Går følgjet etter med regi (fylgjeEtter), er den gamle stien ugyldig no: stopp han.
+    if (fylgje.regi) { const r = fylgje.regi; regi.delete(fylgje); fylgje.regi = null; r.res(); }
     const bak = [1, 0, 3, 2][spelar.dir], sider = spelar.dir < 2 ? [2, 3] : [0, 1];
     let [fx, fy] = [spelar.x, spelar.y];
     let funne = false;
@@ -418,19 +420,89 @@ window.Motor = (function () {
   /* Spelaren set seg når han står på eit sete, i retninga til setet (seteRetning; inn er retninga han
      gjekk inn med). Utan inn (glid langs benken, etter ei hending, frå lagringa) held han retninga si
      om ho passar setet. I senga legg han seg under dyna og søv. */
-  function setSeg(inn) {
-    if (sengVed(spelar.x, spelar.y)) { spelar.pose = "sove"; spelar.dir = 0; return "seng"; }
-    const st = seteVed(spelar.x, spelar.y);
+  /* Ein figur (spelaren, følgjet, folk) set seg på setet eller legg seg i senga han står på. Same
+     mekanisme for spelaren som går inn på eit sete, for scenesteg (sitje, liggje) og for pose: "sitje"
+     i kartet og i manus. Retninga kjem frå setet; i senga ligg ein med andletet opp (retning 0).
+     ligg: posen i senga ("sove" eller "liggje"). */
+  function setjeSeg(a, inn, ligg = "sove") {
+    if (sengVed(a.x, a.y)) { a.pose = ligg; a.dir = 0; return "seng"; }
+    const st = seteVed(a.x, a.y);
     if (!st) return false;
-    spelar.pose = "sitje";
-    const ligg = byggBreidd(st.b) >= st.b.h, passar = st.s.retning != null ? spelar.dir === st.s.retning : (ligg ? spelar.dir < 2 : spelar.dir >= 2);
-    if (inn != null || !passar) spelar.dir = seteRetning(st, spelar.x, spelar.y, inn);
+    a.pose = "sitje";
+    const liggjande = byggBreidd(st.b) >= st.b.h, passar = st.s.retning != null ? a.dir === st.s.retning : (liggjande ? a.dir < 2 : a.dir >= 2);
+    if (inn != null || !passar) a.dir = seteRetning(st, a.x, a.y, inn);
     return "sete";
+  }
+  const setSeg = inn => setjeSeg(spelar, inn);
+  /* Scenesteg: figuren kven set seg på setet eller legg seg i senga på ruta [x, y] (pose «sitje»,
+     «sove» eller «liggje»). Med gaaDit går han dit først: til ei ledig rute attmed (ikkje bak ryggen),
+     og så inn som spelaren gjer; elles står han der med ein gong. Han set seg halvvegs i det siste
+     steget (setjeTil), så han aldri står på setet. */
+  async function brukMoebel(kven, rute, gaaDit, pose) {
+    const a = aktor(kven); if (!a || !kart) return;
+    const [x, y] = typeof rute === "string" ? kart.merke[rute] || [] : rute || [];
+    const st = seteVed(x, y), sg = sengVed(x, y), b = (st || sg || {}).b;
+    if (!b) { console.warn("Regi: ingen sete eller seng på", rute); return; }
+    const del = (sx, sy) => ((seteVed(sx, sy) || sengVed(sx, sy) || {}).b === b);
+    let inn = null;
+    if (gaaDit && !(a.x === x && a.y === y)) {
+      let best = null;
+      for (let d = 0; d < 4; d++) {
+        const ex = x - DX[d], ey = y - DY[d];                          // står på (ex, ey) og går inn i retning d
+        if (st && st.s.retning != null && st.s.rygg !== false && d === st.s.retning) continue;
+        if (del(ex, ey)) continue;
+        const her = ex === a.x && ey === a.y;
+        if (!her && (!kanGaa(ex, ey) || opptatt(a, ex, ey))) continue;
+        const v = her ? [] : vegTil(a, ex, ey);
+        if (v && (!best || v.length < best.length)) best = [...v, d];
+      }
+      if (best) {
+        if (best.length > 1) await gaa(kven, { sti: best.slice(0, -1) });
+        inn = best[best.length - 1];
+        const mal = { x, y, pose: st ? "sitje" : pose, dir: st ? seteRetning(st, x, y, inn) : 0 };
+        a.setjeTil = mal;
+        await gaa(kven, { sti: [inn] });
+        a.setjeTil = null;
+      }
+    }
+    if (a.x !== x || a.y !== y) Object.assign(a, { x, y, fx: x, fy: y, flytt: null });
+    setjeSeg(a, inn, st ? "sitje" : pose);
+    if (a.hx !== undefined) { a.hx = x; a.hy = y; a.neste = performance.now() + 1e9; }   // folk blir sitjande eller liggjande
+    if (a === spelar && fylgje && fylgje.x === x && fylgje.y === y) plasserFylgje();
+  }
+  /* Scenesteg: figuren kven reiser seg frå setet eller står opp av senga og går eitt steg ut: framover
+     (retninga til setet), elles til sidene, ut av senga helst nedover. Han reiser seg halvvegs i steget. */
+  async function reis(kven) {
+    const a = aktor(kven); if (!a || !kart) return;
+    const st = seteVed(a.x, a.y), sg = sengVed(a.x, a.y), b = (st || sg || {}).b;
+    if (!b) { a.pose = null; return; }
+    const fram = st && st.s.retning != null ? st.s.retning : st ? a.dir : 0;
+    const rekkje = [fram, ...[2, 3, 0, 1].filter(d => d !== fram)].filter(d => !(st && st.s.retning != null && st.s.rygg !== false && d === MOTSETT[st.s.retning]));
+    const d = rekkje.find(d => { const nx = a.x + DX[d], ny = a.y + DY[d]; const n = seteVed(nx, ny) || sengVed(nx, ny);
+      return !(n && n.b === b) && kanGaa(nx, ny) && !opptatt(a, nx, ny) && !doraVed(nx, ny); });
+    if (d == null) { console.warn("Regi: ingen veg ut av", b.id, "for", kven); a.pose = null; return; }
+    a.reisFra = { x: a.x, y: a.y, pose: a.pose, dir: a.dir };
+    await gaa(kven, { sti: [d] });
+    a.reisFra = null; a.pose = null;
+    if (a.hx !== undefined) { a.hx = a.x; a.hy = a.y; a.neste = performance.now() + 2000; }
+  }
+  /* Korleis ein figur blir teikna: på eit sete sit han (sete), i ei seng ligg han under dyna (seng).
+     I steget inn på eller ut av eit sete eller ei seng i ei scene (setjeTil, reisFra) blir han
+     teikna sitjande eller liggjande den halvdelen av steget som er nærast setet. */
+  function figurVis(a) {
+    const v = { x: a.fx, y: a.fy, dir: a.dir, pose: a.pose, sete: null, seng: null }, u = a.u || 0;
+    if (a.flytt && a.setjeTil && u >= 0.5) Object.assign(v, a.setjeTil);
+    else if (a.reisFra && (!a.flytt || u <= 0.5)) Object.assign(v, a.reisFra);
+    else if (a.flytt) return v;
+    if (v.pose === "sitje") v.sete = seteVed(v.x, v.y);
+    else if (v.pose === "sove" || v.pose === "liggje") v.seng = sengVed(v.x, v.y);
+    return v;
   }
   /* Korleis spelaren blir teikna no (figurane i teikn()). På eit sete sit han, og langs benken glir
      han sitjande. I eit steg inn på eit sete set han seg halvvegs, og i eit steg ut reiser han seg
      halvvegs, så han aldri står på golvet bak ryggen. I senga ligg han under dyna (seng). */
   function spelarVis() {
+    if (spelar.regi || spelar.setjeTil || spelar.reisFra) return figurVis(spelar);   // i ei scene: som alle figurar
     const v = { x: spelar.fx, y: spelar.fy, dir: spelar.dir, pose: spelar.pose, sete: null, seng: null };
     const f = spelar.flytt, u = spelar.u, til = f && seteVed(spelar.x, spelar.y), tilSeng = f && sengVed(spelar.x, spelar.y);
     if (f && f.glid) { if (til) Object.assign(v, { pose: "sitje", sete: til }); else if (tilSeng) v.seng = tilSeng; }
@@ -621,7 +693,7 @@ window.Motor = (function () {
     r.stengd = 0;
     const d = r.sti.shift(), x0 = a.x, y0 = a.y;
     a.dir = d; a.flytt = { fx: x0, fy: y0, t0 }; a.x += DX[d]; a.y += DY[d]; a.steg = (a.steg || 0) + 1; a.u = 0; a.kjensle = null; a.pose = null;
-    if (a === spelar && fylgje && !fylgje.regi) {
+    if (a === spelar && fylgje && !fylgje.regi && !((seteVed(x0, y0) || sengVed(x0, y0)) && !kanGaa(x0, y0))) {   // ikkje inn på eit sete eller i ei seng
       fylgje.flytt = { fx: fylgje.x, fy: fylgje.y }; fylgje.dir = retningMot(fylgje.x, fylgje.y, x0, y0, fylgje.dir);
       fylgje.x = x0; fylgje.y = y0; r.drag = fylgje; fylgje.pose = null;
     }
@@ -1580,14 +1652,14 @@ window.Motor = (function () {
       if (kb) naturFig.push({ y: y + 0.004, x, natur: { img: kb, x: -4, y: S - kb.height, slag: true } });
     }
     const GANG = [1, 0, 2, 0];
-    const figurar = kart.folk.filter(f => f.sprite).map(f => ({ y: f.fy, sp: f.sprite, x: f.fx, dir: f.dir, kjensle: f.kjensle, pose: f.pose,
-      steg: f.flytt ? GANG[(f.steg % 2) * 2 + (f.u < 0.5 ? 0 : 1)] : 0 }));
+    const figurar = kart.folk.filter(f => f.sprite).map(f => Object.assign({ sp: f.sprite, kjensle: f.kjensle,
+      steg: f.flytt ? GANG[(f.steg % 2) * 2 + (f.u < 0.5 ? 0 : 1)] : 0 }, figurVis(f)));
     // Gangramma følgjer steget, ikkje klokka: to rammer per flis (steg, stå), annakvar fot.
     const steg = spelar.flytt ? GANG[(spelar.steg % 2) * 2 + (spelar.u < 0.5 ? 0 : 1)] : 0;
     // Følgjet går eit halvt steg forskyve, så dei to ikkje går i takt.
     const fv = spelar.u + 0.5, fsteg = fylgje && fylgje.regi ? (fylgje.flytt ? GANG[(fylgje.steg % 2) * 2 + (fylgje.u < 0.5 ? 0 : 1)] : 0)
       : spelar.flytt ? GANG[((spelar.steg + Math.floor(fv)) % 2) * 2 + (fv % 1 < 0.5 ? 0 : 1)] : 0;
-    if (fylgje) figurar.push({ y: fylgje.fy, x: fylgje.fx, sp: fylgje.sprite, dir: fylgje.dir, steg: fsteg, kjensle: fylgje.kjensle, pose: fylgje.pose });
+    if (fylgje) figurar.push(Object.assign({ sp: fylgje.sprite, steg: fsteg, kjensle: fylgje.kjensle }, figurVis(fylgje)));
     figurar.push(Object.assign({ sp: spelar.sprite, steg, kjensle: spelar.kjensle }, spelarVis()));
     // Den som sit på ein stol eller benk (Pikslar.SETE), sit på setet: sjå sete i løkka under.
     for (const f of figurar) if (f.pose === "sitje" && !f.sete && f.y === Math.round(f.y) && f.x === Math.round(f.x)) f.sete = seteVed(f.x, f.y);
@@ -1654,7 +1726,7 @@ window.Motor = (function () {
       // I senga (runde 88): liggjeramma spegla, så hovudet ligg på puta, og dyna (den delen av
       // sengebiletet) teikna over kroppen, så berre hovudet stikk ut. Søv han, stig det z.
       if (f.seng && f.sp.rammer) {
-        const img = Pikslar.bygg(f.seng.b.id), r = sovehovud(f.sp), s = f.seng.s;
+        const img = Pikslar.bygg(f.seng.b.id), r = sovehovud(f.sp, f.pose === "liggje"), s = f.seng.s;   // liggje: vaken, med opne auge
         if (img) {
           const [bx, by] = byggPos(f.seng.b, img, ox, oy), [hx, hy] = s.hovud;
           g.drawImage(r, bx + hx, by + hy); maske(r, bx + hx, by + hy);
@@ -1708,10 +1780,13 @@ window.Motor = (function () {
      (rad 0 til 10), med lukka auge. Rada med augekvitt blir hud (augeloket), og irisen i rada under
      blir ein mørk strek (augevippene på det lukka auget). Laga éin gong per figur. */
   const sovCache = new WeakMap();
-  function sovehovud(sp) {
-    if (sovCache.has(sp)) return sovCache.get(sp);
+  const vakenCache = new WeakMap();
+  function sovehovud(sp, vaken) {
+    const cache = vaken ? vakenCache : sovCache;
+    if (cache.has(sp)) return cache.get(sp);
     const kj = sp.rammer[0][0], c = document.createElement("canvas"); c.width = 16; c.height = 11;
     const cg = c.getContext("2d"); cg.drawImage(kj, 0, 0);
+    if (vaken) { vakenCache.set(sp, c); return c; }                     // vaken i senga: opne auge
     const d = cg.getImageData(0, 0, 16, 11), p = d.data, ix = (x, y) => (y * 16 + x) * 4;
     const rgb = (x, y) => [p[ix(x, y)], p[ix(x, y) + 1], p[ix(x, y) + 2], p[ix(x, y) + 3]];
     const kvit = ([r, g, b, a]) => a && r > 215 && g > 215 && b > 200 && Math.max(r, g, b) - Math.min(r, g, b) < 40;
@@ -1936,10 +2011,10 @@ window.Motor = (function () {
 
   return {
     VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk, overgang, gjennomDor, tonUt, tonInn, scene,
-    gaa, snu, inn, byt, kamera, rist, kort, naerbilete, blink, tone, spot, aktor, vent,
+    gaa, snu, inn, byt, brukMoebel, reis, kamera, rist, kort, naerbilete, blink, tone, spot, aktor, vent,
     get lysMs() { return lysMs; }, get lysLesMs() { return lesMs; },  // tida lyset brukte i siste bilete
     get lysEffekt() { return effekt; },                               // toning, blink og spotlight (for testane)
-    spelarVis, seteVed, sengVed,                                      // korleis spelaren blir teikna, sete og senger (for testane)
+    spelarVis, figurVis, seteVed, sengVed,                                    // korleis spelaren blir teikna, sete og senger (for testane)
     // Retningane spelaren kan reise seg og gå ut av setet eller senga han er på (for testane).
     utvegar: () => [0, 1, 2, 3].filter(d => { const nx = spelar.x + DX[d], ny = spelar.y + DY[d], st = seteVed(spelar.x, spelar.y), sg = sengVed(spelar.x, spelar.y);
       if ((st && (seteVed(nx, ny) || {}).b === st.b) || (sg && (sengVed(nx, ny) || {}).b === sg.b)) return false;
@@ -1967,10 +2042,12 @@ window.Motor = (function () {
     pose(p, kven = "spelar") {
       p = p || null;
       if (kven === "alle") {
+        const forPose = spelar.pose;
         spelar.pose = p; if (fylgje) fylgje.pose = p;
-        if (!p && kart && !spelar.flytt) setSeg();                      // på eit sete blir spelaren sitjande
+        if (!p && kart && !spelar.flytt) setjeSeg(spelar, null, forPose === "liggje" ? "liggje" : "sove");   // på eit sete blir spelaren sitjande, i senga liggjande
         if (kart) kart.folk.forEach(f => {
-          const ny = p || f.grunnpose || null;
+          // Folk som sit på eit sete eller ligg i ei seng (scenesteg sitje, liggje), blir der.
+          const ny = p || f.grunnpose || (seteVed(f.x, f.y) && Pikslar.FAST.has(kart.fliser[f.y][f.x]) ? "sitje" : sengVed(f.x, f.y) && Pikslar.FAST.has(kart.fliser[f.y][f.x]) ? (f.pose === "liggje" ? "liggje" : "sove") : null);
           if (f.pose !== ny) f.neste = performance.now() + 2000;
           f.pose = ny;
         });
@@ -1978,8 +2055,8 @@ window.Motor = (function () {
       }
       const a = aktor(kven);
       if (!a) return;
+      if ((p === "sitje" || p === "sove" || p === "liggje") && (seteVed(a.x, a.y) || sengVed(a.x, a.y))) setjeSeg(a, null, p === "liggje" ? "liggje" : "sove");   // set seg rett på stolen, legg seg i senga
       a.pose = p;
-      if (p === "sitje") { const st = seteVed(a.x, a.y); if (st && st.s.retning != null) a.dir = st.s.retning; }   // set seg rett på stolen
       if (p && a.hx !== undefined) a.neste = performance.now() + 1e9;     // folk står i ro så lenge posen varer
       else if (a.hx !== undefined) a.neste = performance.now() + 2000;
     },

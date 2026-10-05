@@ -28,7 +28,22 @@ f.onload = async () => {
   d.querySelector("#rpg-tittel-val button").click();
   // Opningsscena (Storebror i stova) blir spela ferdig før vi går til kartet, elles kjem samtalen
   // hans over biletet, og scena held fram på eit kart der han ikkje finst.
-  await vent(300); for (let n = 0; n < 60; n++) { await blaFram(); await vent(100); }
+  // opning=ms (runde 90): skjermbilete av opningsscena sjølv, ms etter at forteljinga og kortet er borte
+  // (Ivar søv i senga, tonar inn, vaknar). sidan=n trykkjer gjennom dei n første replikkane i scena òg.
+  if (q.get("opning")) {
+    await vent(300);
+    for (let n = 0; n < 300 && !(w.RPGTest.iHending() && !synleg("#rpg-fort") && !d.querySelector(".rpg-kort") && w.Motor.spelar.pose); n++) {
+      if (synleg("#rpg-fort") || d.querySelector(".rpg-kort")) await tast("z");
+      await vent(80);
+    }
+    for (let i = 0; i < +(q.get("sidan") || 0); i++) { for (let n = 0; n < 100 && !synleg("#rpg-tale"); n++) await vent(50); await vent(600); await tast("z"); await vent(300); }
+    await vent(+q.get("opning")); frys();
+    // Scena går vidare til skjermbiletet blir teke: er det ingen replikk no, skal ingen kome på biletet.
+    if (!synleg("#rpg-tale")) { const st = d.createElement("style"); st.textContent = "#rpg-tale{visibility:hidden!important}"; d.head.appendChild(st); }
+    document.getElementById("ut").textContent = "ferdig, feil: " + JSON.stringify(feil); return;
+  }
+  // Ventar til «heime» er ferdig (ho tonar inn og Ivar vaknar i senga først, runde 90).
+  await vent(300); for (let n = 0; n < 150 && !(w.RPGTest.st().scener.heime && !w.RPGTest.iHending()); n++) { await blaFram(); await vent(100); }
   w.RPGTest.st().flagg.framande1 = true;
   // flagg=skiftebrev,stabburnokkel set flagg før kartet blir lasta (til dømes skrinet etter far i stova).
   for (const fl of (q.get("flagg") || "").split(",").filter(Boolean)) w.RPGTest.st().flagg[fl] = true;
