@@ -356,7 +356,8 @@ window.RPGData = (function () {
         // Skrinet etter far står framme ved senga etter skiftebrevet (syster henta brevet der).
         // Stabburnøkkelen ligg i det. vis: kista finst berre når vilkåret held; manus: opninga;
         // bilete: eit eige inventarbilete i staden for kistefliser.
-        { ved: [9, 2], id: "k-skrin", bilete: "inne-skrin", vis: st => !!st.flagg.skiftebrev, manus: "fars_skrin", tom: "Skrinet etter far er tomt no. Berre papira hans ligg att." }],
+        // Runde 90: inntil bakveggen ved hovudgavlen på senga (på golvet ved sida av), synleg og lett å nå.
+        { ved: [9, 1], id: "k-skrin", bilete: "inne-skrin", vis: st => !!st.flagg.skiftebrev, manus: "fars_skrin", tom: "Skrinet etter far er tomt no. Berre papira hans ligg att." }],
       folk: [
         { merke: "@", u: "bror", namn: "Storebror", atferd: "snu", retning: 2, snu: [0, 2, 3], tale: "bror" },
         { merke: "%", u: "syster", namn: "Syster", atferd: "stille", pose: "sitje", flis: "(", tale: "syster" },   // sit på kubbestolen ved enden av langbordet og ser mot bordet

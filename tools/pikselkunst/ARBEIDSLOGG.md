@@ -2524,3 +2524,13 @@ same måte, uansett kven som tek over.
   `skjerm.html`: `opning=ms` (og `sidan=n`) tek skjermbilete av opningsscena, og ventar elles til ho er ferdig.
 - **Bilete:** `forhand/skjerm/r90-heime-alle.png` (søv, søv, vaken ved replikken, oppe ved storebror) og
   `r90-heime-1.png` til `-4.png`.
+- **Tillegg (møblar over veggen og skrinet):** brukaren såg at store møblar inntil veggane gjekk opp over
+  veggkanten (senga, grua med pipa, hylla, skatollet). Bakveggen inne var berre éi flis høg, og over han var
+  tomrommet. Generell løysing: `bakveggOver()` teiknar éi flis vegg til over rad 0 (tømmer, mur, og vegg over
+  dører i bakveggen) med ei mørk takbjelke øvst, og `sideveggOver()` teiknar sideveggane og veggen nedst
+  (sett ovanfrå) att over møblane, så dei 4 pikslane eit møbel går ut på kvar side, ikkje dekkjer veggen.
+  Gjeld alle innekart med `X`- eller `c`-veggar (stova, Nedre Hovde, stabburet, prestegarden, kontoret,
+  arkivet og boksamlinga); kyrkja har sine eigne veggar. Skrinet etter far er flytt frå (9,2) til (9,1):
+  inntil bakveggen ved hovudgavlen på senga, synleg og lett å nå med Z frå (9,2) eller (8,1). sjekk-scene
+  er oppdatert (skrinet før og etter skiftebrevet). Før og etter: `forhand/skjerm/r90b-for-etter-alle.png`
+  (alle innekarta), `r90b-etter-stova-naer.png`.

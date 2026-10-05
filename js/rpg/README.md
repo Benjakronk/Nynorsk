@@ -120,6 +120,9 @@ Figurane blir nemnde med namn: «Ivar» er spelaren, «Huldra» er følgjet når
 
 Dei eldre stega (`lytt`, `tilbod`, `fort`, `flagg`, `gi`, `kamp`, `til` og andre) står i toppen av `data.js`.
 
+### Veggane inne
+I innekarta med tømmer- eller murveggar (`X`, `c`) er bakveggen to fliser høg: over rad 0 teiknar motoren éi flis vegg til, med ei mørk takbjelke øvst (`bakveggOver()` i motor.js), så store møblar inntil bakveggen (grua med pipa, senga, hylla, skatollet, golvuret, bokreolane) står framfor veggen og ikkje stikk opp over han. Sideveggane og veggen nedst (sett ovanfrå) blir teikna att over møblane (`sideveggOver()`), så eit møbel inntil sideveggen ikkje dekkjer han. Kyrkja har sine eigne veggar (`G` og inventar) og er ikkje med.
+
 ### Lys
 Lyset etterliknar Super Nintendo og Final Fantasy VI. Det meste av lyset er teikna inn i pikslane (lys frå oppe til venstre, eld og glød malt for hand). Resten er fargerekning (color math) som maskinvara gjorde: etter at kartet er teikna, reknar `lys()` i `motor.js` om kvar piksel med ein fast farge som blir lagd til eller trekt frå med klemming per kanal, eventuelt halvert (snitt), og fargane blir kvantiserte til 5 bit per kanal (15-bit fargar). Det skjer med éin `getImageData`, oppslagstabellar per rad (`Uint32Array`) og éin `putImageData`, om lag 1 ms per bilete. Pikslar utanfor kartet blir ikkje rekna om (som backdrop på SNES).
 

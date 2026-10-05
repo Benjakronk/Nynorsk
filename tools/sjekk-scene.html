@@ -437,7 +437,7 @@ f.onload = async () => {
 
     // Stabburet før skiftebrevet: skrinet etter far står ikkje i stova, og døra er låst.
     const haldTast = async (k, ms) => { d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true })); await vent(ms); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true })); };
-    M.last("asen-stova", "1"); M.plasser(9, 3, 1); await vent(300);
+    M.last("asen-stova", "1"); M.plasser(9, 2, 1); await vent(300);              // skrinet står ved hovudgavlen (9,1)
     const skrin = M.kart.kister.find(k => k.id === "k-skrin");
     tast("z"); await vent(400);
     sjekk(skrin && !skrin.vis(s10) && !synleg("#rpg-tale") && !s10.nokkel.includes("stabburnokkel"), "før skiftebrevet står skrinet etter far ikkje i stova, og nøkkelen er ikkje å finne");
@@ -481,7 +481,7 @@ f.onload = async () => {
 
     // e) Stabburet etter skiftebrevet: skrinet etter far står ved senga, og nøkkelen ligg i det.
     //    Døra går opp (låsen første gong), inne spelar «stabburet» éin gong, og døra fører ut att.
-    M.last("asen-stova", "1"); M.plasser(9, 3, 1); await vent(300);
+    M.last("asen-stova", "1"); M.plasser(9, 2, 1); await vent(300);              // skrinet står ved hovudgavlen (9,1)
     let saaNokkel = false;
     tast("z");
     await trykkGjennom(() => s10.flagg.stabburnokkel && !T().iHending() && !synleg("#rpg-tale"), () => { const i = d.querySelector(".rpg-naer img"); if (i && /stabburnokkel/.test(i.src)) saaNokkel = true; });

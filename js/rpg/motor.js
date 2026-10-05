@@ -1651,6 +1651,7 @@ window.Motor = (function () {
       const kb = k && Pikslar.bygg(k.bilete || (krokar.opna && krokar.opna(k) ? "inne-kiste-open" : "inne-kiste"));
       if (kb) naturFig.push({ y: y + 0.004, x, natur: { img: kb, x: -4, y: S - kb.height, slag: true } });
     }
+    if (kart.def.inne) bakveggOver(ox, oy, no);
     const GANG = [1, 0, 2, 0];
     const figurar = kart.folk.filter(f => f.sprite).map(f => Object.assign({ sp: f.sprite, kjensle: f.kjensle,
       steg: f.flytt ? GANG[(f.steg % 2) * 2 + (f.u < 0.5 ? 0 : 1)] : 0 }, figurVis(f)));
@@ -1756,6 +1757,7 @@ window.Motor = (function () {
       g.drawImage(bilde, sx, sy - FOT); maske(bilde, sx, sy - FOT);
     }
     if (klipt) { g.restore(); if (figMaske) fg.restore(); }
+    if (kart.def.inne) sideveggOver(ox, oy, no);
     // Silhuett av spelaren (eller følgjet) bak eit hus, berre der huset har «silhuett: true» i kartet
     // (til spesielle høve, til dømes ein stad der ein må gå bak noko for å finne ein ting).
     for (const f of figurar) {
@@ -1776,6 +1778,35 @@ window.Motor = (function () {
 
   // Den som søv: to små z som stig opp og blir borte, om att og om att (kvit med mørkt omriss).
   const ZZ = ["####", "..#.", ".#..", "####"];
+  /* Veggane i innekarta (runde 90). Bakveggen er to fliser høg: over rad 0 blir veggen teikna éi flis
+     til (same tømmer eller mur, og vegg over ei dør i bakveggen), med ei mørk takbjelke øvst. Store
+     møblar inntil bakveggen (grua med pipa, senga, hylla, skatollet og golvuret) står då framfor veggen
+     og går opp mot han, ikkje over han ut i tomrommet. Sideveggane og veggen nedst (sett ovanfrå) blir
+     teikna att over møblane, så eit møbel inntil sideveggen ikkje dekkjer han. Gjeld kart med inne og
+     veggar av tømmer (X) eller mur (c); kyrkja har sine eigne veggar (G og inventar). */
+  const VEGG = "Xc";
+  const veggTopp = (x, y) => {
+    const c = kart.fliser[y][x], under = y + 1 < kart.h ? kart.fliser[y + 1][x] : null;
+    return VEGG.includes(c) && (under === null || "XcGEØøÖöĜ ".includes(under));
+  };
+  function bakveggOver(ox, oy, no) {
+    if (![...kart.fliser[0]].some((c, x) => VEGG.includes(c) && !veggTopp(x, 0))) return;   // ingen bakvegg (tårnet)
+    const sy = Math.round((oy - 1) * S);
+    for (let x = 0; x < kart.w; x++) {
+      const c = kart.fliser[0][x];
+      if (!VEGG.includes(c) && c !== "E") continue;
+      const sx = Math.round((x + ox) * S), fk = c === "E" ? "X" : veggTopp(x, 0) ? c + "t" : c;
+      g.drawImage(Pikslar.flis(fk, no, x, -1, kart.def.golv), sx, sy);
+      if (fk === "X" || fk === "c") { g.fillStyle = "#140c10"; g.fillRect(sx, sy, S, 2); g.fillStyle = "#2a1a1c"; g.fillRect(sx, sy + 2, S, 1); }   // takbjelka
+    }
+  }
+  function sideveggOver(ox, oy, no) {
+    const x0 = Math.max(0, Math.floor(-ox) - 1), y0 = Math.max(0, Math.floor(-oy) - 1);
+    for (let y = y0; y < Math.min(kart.h, y0 + VH + 3); y++) for (let x = x0; x < Math.min(kart.w, x0 + VW + 3); x++) {
+      if (!veggTopp(x, y)) continue;
+      g.drawImage(Pikslar.flis(kart.fliser[y][x] + "t", no, x, y, kart.def.golv), Math.round((x + ox) * S), Math.round((y + oy) * S));
+    }
+  }
   /* Den sovande ramma i senga (runde 89, som i FF6): hovudet frå ramma der figuren står og ser ned
      (rad 0 til 10), med lukka auge. Rada med augekvitt blir hud (augeloket), og irisen i rada under
      blir ein mørk strek (augevippene på det lukka auget). Laga éin gong per figur. */
