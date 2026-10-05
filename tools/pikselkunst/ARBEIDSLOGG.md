@@ -2576,3 +2576,15 @@ same måte, uansett kven som tek over.
 - **Skrinet:** flytt til (8,1), inntil bakveggen med ei tom rute mellom seg og senga.
 - **Bilete:** `forhand/skjerm/r92-for-etter-alle.png` (alle innekarta før og etter), `r92-for-etter-seng.png`
   (Ivar ved sida av senga før og etter), `r92-stokk-for-naer.png` og `r92-stokk-naer.png`.
+
+## Runde 93: smalare seng
+
+- **Frå brukaren:** senga bør vere smalare, så ho held seg innanfor flisene ho står på.
+- **Senga** (`inventar.py seng`): heile senga, med hovudgavl, stolpar, knottar, sengestokkar og fotgavl, ligg no i
+  kolonne 4 til 19 (16 pikslar, med omrisset). Stolpane og stokkane er éin piksel breie, og madrassen,
+  puta og åkledet er 12 pikslar. `SENG`: dyna er madrassen (6, 20, 12 x 13), og det sovande hovudet blir
+  klipt til madrassen (`klipp: [2, 12]`, kolonne 2 til 13 av hovudet), så håret ikkje går ut over stokkane.
+- **Mot veggen:** `byggDx()` skuvar no berre så mykje som biletet faktisk går ut over fotavtrykket
+  (`synlegeKolonnar()`), så den smale senga står på flisa si inntil sideveggen. Gjeld stova og Nedre Hovde.
+- **Sjekka:** alle fem testane grøne. Før og etter: `forhand/skjerm/r93-for-etter-seng.png` (Ivar i senga før og
+  etter, Ivar ved sida av senga før og etter, og Nedre Hovde).

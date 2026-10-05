@@ -1317,58 +1317,41 @@ def seng():
     """Seng som i Final Fantasy VI (runde 89, sjå forhand/referansar/ff6-0241.png): ståande på langs
     inn frå bakveggen, 1 x 2 fliser, med høg hovudgavl bak, puta øvst, lakenet bretta ned og eit
     raudt, vove åklede med rutemønster over resten (same tøy som sengebenken), sengestokkar på sidene
-    og ein låg fotgavl framme. Den som ligg i senga, har hovudet på puta (hovud i SENG i pikslar.js),
-    og åkledet blir teikna over kroppen (dyne). Standardperspektivet: gavlane syner toppkanten
-    ovanfrå og ei kort framside."""
+    og ein låg fotgavl framme. Runde 93: heile senga held seg innanfor flisa (kolonne 4 til 19 med
+    omrisset): stolpar og stokkar éin piksel breie, madrassen 12 pikslar. Den som ligg i senga, har
+    hovudet på puta (hovud i SENG i pikslar.js), og åkledet blir teikna over kroppen (dyne)."""
     W, H = 16 + 8, 2 * 16 + 8
     L = Lerret(W, H)
     # Hovudgavlen (rad 0 til 11): stolpar med knott, toppkant sett ovanfrå og ei framside med skurd.
     for y in range(2, 12):
-        for x in range(1, 23):
-            L.p(x, y, "U" if y in (2, 3) else "T" if x < 20 else "t")
-    for x in range(2, 22): L.p(x, 2, "q" if x < 20 else "U")
-    for (x0, x1) in ((1, 3), (20, 22)):                                     # stolpane går høgare, med knott
-        for y in range(0, 12):
-            for x in range(x0, x1 + 1): L.p(x, y, "U" if y < 2 else "T" if x < x1 else "t")
-        L.p(x0 + 1, 0, "q")
+        for x in range(5, 19): L.p(x, y, "U" if y in (2, 3) else "T" if x < 17 else "t")
+    for x in range(6, 18): L.p(x, 2, "q" if x < 17 else "U")
+    for x0 in (5, 18):                                                      # stolpane går høgare, med knott
+        for y in range(0, 12): L.p(x0, y, "U" if y < 2 else "T" if x0 == 5 else "t")
+        L.p(x0, 0, "q")
     for (x, y) in ((8, 6), (9, 5), (10, 6), (13, 6), (14, 5), (15, 6), (11, 8), (12, 8)): L.p(x, y, "U")   # skurd i gavlen
-    for x in range(4, 20): L.p(x, 11, "a")                                  # skugge under gavlen
-    # Sengestokkane på sidene (rad 12 til 34): toppflate lys til venstre, mørk til høgre.
-    for y in range(12, 35):
-        for x in (1, 2, 3): L.p(x, y, "q" if x == 1 else "C" if x == 2 else "c")
-        for x in (20, 21, 22): L.p(x, y, "c" if x == 20 else "A" if x == 21 else "a")
+    for x in range(6, 18): L.p(x, 11, "a")                                  # skugge under gavlen
+    # Sengestokkane på sidene (rad 12 til 34): éin piksel, lys til venstre, mørk til høgre.
+    for y in range(12, 35): L.p(5, y, "C"); L.p(18, y, "a")
     # Puta (rad 12 til 18), lakenet bretta ned (rad 19 og 20) og åkledet (rad 21 til 32).
     for y in range(12, 19):
-        for x in range(4, 20): L.p(x, y, "W" if (y == 18 or x >= 17) else "w")
-    L.p(4, 12, "W"); L.p(19, 12, "K"); L.p(19, 18, "K"); L.p(4, 18, "K")
-    for x in range(4, 20): L.p(x, 19, "w"); L.p(x, 20, "W")
+        for x in range(6, 18): L.p(x, y, "W" if (y == 18 or x >= 16) else "w")
+    L.p(6, 12, "W"); L.p(17, 12, "K"); L.p(17, 18, "K"); L.p(6, 18, "K")
+    for x in range(6, 18): L.p(x, 19, "w"); L.p(x, 20, "W")
     for y in range(21, 33):
-        for x in range(4, 20): L.p(x, y, "R")
-    for x in range(4, 20): L.p(x, 21, "E"); L.p(x, 22, "y"); L.p(x, 31, "y"); L.p(x, 32, "E")
-    for (cx, cy) in [(8, 26), (15, 26)]:                                    # ruter i åkledet
+        for x in range(6, 18): L.p(x, y, "R")
+    for x in range(6, 18): L.p(x, 21, "E"); L.p(x, 22, "y"); L.p(x, 31, "y"); L.p(x, 32, "E")
+    for (cx, cy) in [(9, 26), (14, 26)]:                                    # ruter i åkledet
         for dx, dy in [(0, -2), (-1, -1), (1, -1), (-2, 0), (2, 0), (-1, 1), (1, 1), (0, 2)]: L.p(cx + dx, cy + dy, "y")
         L.p(cx, cy, "w")
-    for y in range(23, 31, 2): L.p(4, y, "r"); L.p(19, y, "r")              # åkledet heng over stokkane
+    for y in range(23, 31, 2): L.p(6, y, "r"); L.p(17, y, "r")              # åkledet heng over stokkane
     # Fotgavlen (rad 33 til 37): låg, toppkant ovanfrå og kort framside.
     for y in range(33, 38):
-        for x in range(1, 23): L.p(x, y, ("q" if x < 20 else "U") if y == 33 else "C" if y == 34 and x < 20 else "c" if x < 20 else "A")
-    for x in range(1, 23): L.p(x, 37, "a")
-    for (x0, x1) in ((1, 3), (20, 22)):                                     # bein
-        for x in range(x0, x1 + 1): L.p(x, 38, "a")
+        for x in range(5, 19): L.p(x, y, ("q" if x < 17 else "U") if y == 33 else "C" if y == 34 and x < 17 else "c" if x < 17 else "A")
+    for x in range(5, 19): L.p(x, 37, "a")
+    for x in (5, 6, 17, 18): L.p(x, 38, "a")                                # bein
     omriss(L)
     return L
-
-
-# Møblar til bondestova som kan setjast saman på fleire måtar: langbord, benk og kubbestol.
-
-# Felles mål (sjå SKILL.md): Setet på benken og kubbestolen er SETE_HOGD pikslar over golvet, og
-# den som sit, blir lyft like mykje (SETE i js/rpg/pikslar.js). Bordplata ligg BORD_HOGD pikslar
-# over golvet, og i standardperspektivet (runde 59) er ho ei stor toppflate (13 pikslar per flis
-# djupn) med kort framkant og korte bein, så bordkanten bak går BORD_HOGD - 6 pikslar opp i
-# flisraden bak bordet.
-SETE_HOGD = 5
-BORD_HOGD = 9
-
 
 def _bordplate(L, x0, x1, y0, y1, langs):
     """Bordplate av furu med plankar på langs (langs="x": vassrette skøytar, "y": loddrette)."""

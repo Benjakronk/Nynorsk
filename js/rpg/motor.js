@@ -1213,7 +1213,22 @@ window.Motor = (function () {
     const w = byggBreidd(b), vegg = (x, y) => "XcG".includes((kart.fliser[y] || [])[x] || "");
     let v = false, h = false;
     for (let y = b.y; y < b.y + b.h; y++) { if (vegg(b.x - 1, y)) v = true; if (vegg(b.x + w, y)) h = true; }
-    return v && !h ? 4 : h && !v ? -4 : 0;
+    if (v === h) return 0;
+    // Berre så mykje som biletet faktisk går ut over fotavtrykket (ei smal seng held seg inne og står der ho står).
+    const [x0, x1] = synlegeKolonnar(Pikslar.bygg(b.id));
+    return v ? Math.max(0, 4 - x0) : -Math.max(0, x1 - (4 + w * S - 1));
+  }
+  const kolonneCache = new WeakMap();
+  function synlegeKolonnar(img) {
+    if (!img) return [4, 4];
+    if (!kolonneCache.has(img)) {
+      const c = document.createElement("canvas"); c.width = img.width; c.height = img.height;
+      const cg = c.getContext("2d"); cg.drawImage(img, 0, 0); const d = cg.getImageData(0, 0, img.width, img.height).data;
+      let x0 = img.width, x1 = -1;
+      for (let y = 0; y < img.height; y++) for (let x = 0; x < img.width; x++) if (d[(y * img.width + x) * 4 + 3]) { if (x < x0) x0 = x; if (x > x1) x1 = x; }
+      kolonneCache.set(img, [x0, x1]);
+    }
+    return kolonneCache.get(img);
   }
   function byggPos(b, img, ox, oy) {
     const x = Math.round((b.x + ox) * S) - 4 + byggDx(b), y = Math.round((b.y + b.h + oy) * S) - img.height + (b.dy || 0);
@@ -1764,7 +1779,8 @@ window.Motor = (function () {
         const img = Pikslar.bygg(f.seng.b.id), r = sovehovud(f.sp, f.pose === "liggje"), s = f.seng.s;   // liggje: vaken, med opne auge
         if (img) {
           const [bx, by] = byggPos(f.seng.b, img, ox, oy), [hx, hy] = s.hovud;
-          g.drawImage(r, bx + hx, by + hy); maske(r, bx + hx, by + hy);
+          const [k0, kb] = s.klipp || [0, r.width];                      // klipp: berre kolonnane k0 til k0 + kb av hovudet
+          g.drawImage(r, k0, 0, kb, r.height, bx + hx, by + hy, kb, r.height); maske(r, bx + hx - k0, by + hy);
           for (const [dx, dy, dw, dh] of s.dyne) g.drawImage(img, dx, dy, dw, dh, bx + dx, by + dy, dw, dh);
           if (f.pose === "sove") teiknZz(g, bx + hx + 12, by + hy - 1, no);
           continue;

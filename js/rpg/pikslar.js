@@ -1938,7 +1938,7 @@ window.Pikslar = (function () {
      hjørne i hovud ([x, y] i sengebiletet). Dyna (rektanglar [x, y, b, h] i sengebiletet: lakenet
      og åkledet) blir teikna oppå, så ho ligg opp til haka. */
   const SENG = {
-    "inne-seng": { hovud: [4, 9], dyne: [[4, 20, 16, 13]] },
+    "inne-seng": { hovud: [6, 9], klipp: [2, 12], dyne: [[6, 20, 12, 13]] },   // runde 93: smal seng, hovudet klipt til madrassen (kolonne 2 til 13)
   };
   // Kva pikslar i ruta flammane kan teiknast på: berre mørket i eldstaden og den faste elden
   // i biletet, så gryta, kroken og kanten ligg framfor flammane.
