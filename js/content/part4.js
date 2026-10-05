@@ -109,7 +109,7 @@ Modules.register({
     {
       type: "exercise",
       exerciseType: "fillIn",
-      question: "Byt ut dei understreka orda. Skriv berre det nye ordet:",
+      question: "Byt ut orda i hermeteikn. Skriv berre det nye ordet:",
       items: [
         { prompt: "«hvor» bur du? → ___", accept: ["kvar", "Kvar"] },
         { prompt: "Eg «vet» det. → ___", accept: ["veit"] },

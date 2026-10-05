@@ -1614,7 +1614,7 @@ Modules.register({
       id: "set17",
       type: "exercise",
       exerciseType: "matching",
-      question: "Para saman setningsleddet med det utheva dømet. Alle døma er henta frå setninga «I går gav Kari guten ei bok på skulen» og «Kari er glad».",
+      question: "Para saman setningsleddet med dømet. Alle døma er henta frå setninga «I går gav Kari guten ei bok på skulen» og «Kari er glad».",
       pairs: [
         ["Subjekt", "Kari i «Kari gav guten ei bok»"],
         ["Verbal", "gav i «Kari gav guten ei bok»"],

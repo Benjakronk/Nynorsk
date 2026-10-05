@@ -429,6 +429,16 @@ button.ghost:hover { background: var(--bg); }
   font-weight: 600;
   margin: 0 0 12px;
 }
+/* Spørsmålet og nynorskorda er alt halvfeite, så utheva ord treng meir enn feit skrift */
+.exercise .question strong,
+.section em.nn strong,
+.section em.nn b {
+  font-weight: 800;
+  color: var(--warm);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
 .exercise .hint {
   font-size: 14px;
   color: var(--ink-faint);
@@ -935,6 +945,7 @@ button.ghost:hover { background: var(--bg); }
     break-inside: avoid;
   }
   .section em.nn { color: #000; font-weight: 700; }
+  .exercise .question strong, .section em.nn strong, .section em.nn b { color: #000; }
   .section em.bm { color: #444; font-style: italic; }
   /* Hide interactive answer-machinery */
   .btn, .btn-row, .feedback, .ex-tag, .hint { display: none !important; }
