@@ -229,7 +229,7 @@ window.RPGData = (function () {
      glod: { bak: [op1, op2, op3], fig: [...] }  inni glødformene rundt lyskjeldene (nivå 1 ytst,
        sjå LYSKJELDER).
      syklus: [[r, g, b], …]  palettanimasjon: gløden går på rundgang, 150 ms per steg (som elden).
-     kjelder: true: grua, kakkelomnen, peisen, lysekrona, ljos og lykter lyser (LYSKJELDER).
+     kjelder: true: grua, kakkelomnen, peisen, lysekrona, ljos, lykter og bål lyser (LYSKJELDER).
      ivar: true: ljoset Ivar ber, lyser rundt han (glødforma ivar).
      skyer: tal på skyskuggar som driv over kartet, skugge: { bak, fig } inni dei.
      straalar: lysstrålar frå vindauga (u, Ø og Ö), med glod-nivåa. stov: true: støv som søkk i strålane.
@@ -240,6 +240,11 @@ window.RPGData = (function () {
       bak: {}, fig: { p: [2, 1, -1] },
       hdma: [[0, [4, 3, 0]], [96, [2, 1, -1]], [192, [0, 0, -1]]],
       skyer: 3, skugge: { bak: { p: [-4, -4, -1] }, fig: { p: [-3, -3, -1] } },
+      // Lyktene lyser svakt òg om dagen (runde 86): ein varm glorie og pøl, som om kvelden men dempa.
+      // Trinn 1 tek med det varme HDMA-lyset øvst, så gløden aldri blir mørkare enn graset rundt.
+      kjelder: true,
+      glod: { bak: [{ p: [4, 3, -1] }, { p: [5, 4, -1] }, { p: [7, 5, -1] }], fig: [{ p: [2, 1, -1] }, { p: [3, 2, -1] }, { p: [4, 3, 0] }] },
+      syklus: [[0, 0, 0], [1, 1, 0], [0, 0, 0], [0, 0, 0]],
     },
     // Fiolett kveld: fast farge trekt frå bakgrunnen, litt mindre frå figurane. Lyktene lyser.
     kveld: {
@@ -300,7 +305,7 @@ window.RPGData = (function () {
      rammer: talet på flimmerbilete side om side. rekkje: kva ramme som blir
      vist i kvart steg på 150 ms (same takt som elden). Eld flimrar mest, ljos og lykter lite.
      Kven som lyser kvar, står i lyskjelder() i motor.js: grua og kakkelomnen (inventar med eld),
-     lysekrona, peisen (flisa f), ljos (L inne) og lykter (L ute og T). sky er skuggen av ei sky
+     lysekrona, peisen (flisa f), lykter (L ute og T: lykt, L inne: lyktgolv) og bålplassen (å: baal). sky er skuggen av ei sky
      (stemningar med skyer), og ivar er ljoset Ivar ber (ivar: true). */
   const LYSKJELDER = {
     grue: { rammer: 3, rekkje: [0, 1, 2, 1, 0, 2, 1, 2, 0, 1] },
@@ -308,6 +313,8 @@ window.RPGData = (function () {
     peis: { rammer: 3, rekkje: [0, 1, 2, 0, 2, 1, 1, 0, 2] },
     lys: { rammer: 2, rekkje: [0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0] },
     lykt: { rammer: 2, rekkje: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1] },
+    lyktgolv: { rammer: 2, rekkje: [0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0] },        // den same lykta på golvet (L inne)
+    baal: { rammer: 3, rekkje: [0, 1, 0, 2, 1, 1, 0, 2, 2, 0, 1, 0, 2] },          // bålplassen (å): flakkar meir enn lykta
     krone: { rammer: 2, rekkje: [0, 0, 1, 0, 0, 0, 0, 1, 1, 0] },
     kronegolv: { rammer: 2, rekkje: [0, 0, 0, 1, 0, 0, 0, 0, 1, 0] },   // pølen på golvet under lysekrona (fast, utan parallakse)
     altar: { rammer: 2, rekkje: [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0] },   // altartavla og altaret (roleg)
@@ -524,7 +531,8 @@ window.RPGData = (function () {
       // Lia over utmarka (rad 0 til 12) kom til i runde 27. Ei lagring frå før (22 rader) blir flytt 13 rader ned.
       nyeRader: { n: 13, fraH: 22 },
       // Ein bauta ved den gamle ferdselsvegen, rett over brua (sjå naturting på asen).
-      naturting: [{ ved: [20, 24], bilete: "bauta", manus: "bauta_vegen" }],
+      // Bålplassen på setervollen (å, runde 86) er lagringsstaden i utmarka, med ein stokk å sitje på.
+      naturting: [{ ved: [20, 24], bilete: "bauta", manus: "bauta_vegen" }, { ved: [21, 21], bilete: "sitjestokk" }],
       /* Nedst (rad 13 til 34) er den gamle utmarka med setra, haugen og brua. Over ein skrent (rad 12,
          rampe ved setervegen på x 27) ligg ei hylle i lia, og over ein skrent til (rad 5, rampe på x 24)
          tjernet der bekken spring ut. Bekken fell over begge skrentane. Kista står ytst på hylla vest for
@@ -550,8 +558,8 @@ window.RPGData = (function () {
         "###,,,,,,,,,,,.,,,,~~,RRRR,=####",
         "####,,.,,,,,,,,,,,,~~,RRRR,=,###",
         "##,#,,,hhh,,,,,,,,,~~,WWDW,=#,,#",
-        "#,,,,,,hhh,,,,,,,,,~~..==T.=####",
-        "#,,,,,..@..,o,,,,,~~,...=.%=####",
+        "#,,,,,,hhh,,,,,,,,,~~..==..=####",
+        "#,,,,,..@..,o,,,,,~~,oå.=.%=####",
         "#,##,t.....,,,,,,,~~,...====#,,#",
         "####,,,.=,,,,,,,,,~~,,,,=,,,o#,#",
         "###,F,,,=,,,,,,,,~~,o,,,=,,,.#,#",
@@ -909,7 +917,7 @@ window.RPGData = (function () {
         "###,,,o,,,,,,,,==,,,,,,,i,,#",
         "##,,i,,,,,,,,,,=======,,,,,#",
         "#,,,,,,,,t,,,,,========,,,T#",
-        "#QQQQ,,T,,,,,,,,,,,,,======2",
+        "#QQQQ,,åo,,,,,,,,,,,,======2",
         "#~~~QQ@,,,,,,,t,,,,,,======#",
         "#~~~~~~~,,,,F,,,,,,,,,,,,K,#",
         "#~~~~~~~~~~~~~~~~~~~~~~~~~~#",
@@ -920,6 +928,8 @@ window.RPGData = (function () {
         { ved: [27, 11], til: ["ekset", "1"], kant: true },
       ],
       kister: [{ ved: [25, 13], ting: "kaffi", n: 1, id: "k-vegen" }],
+      // Bålplassen ved sjøen (å, runde 86) er lagringsstaden på vegen, med ein stokk å sitje på.
+      naturting: [{ ved: [8, 11], bilete: "sitjestokk" }],
       folk: [{ merke: "@", u: "fiskar", namn: "Fiskar", atferd: "snu", retning: 2, snu: [0, 2], tale: "fiskar" }],
     },
     ekset: {

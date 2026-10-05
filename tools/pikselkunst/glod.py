@@ -100,6 +100,57 @@ def lykt(r):
     return G
 
 
+# ---------------------------------------------------------------- lykt på golvet
+def lyktgolv(r):
+    """Den same lykta ståande på golvet (flisa L inne, runde 86). Ankeret er midt i glaset, og golvet
+    under foten er 5 pikslar under. Rund glorie rundt lykta og ein brei, låg pøl over golvet, med ein
+    sterk flekk ved foten."""
+    G = Glod()
+    G.profil(1, -13, [3, 6, 8, 9, 10, 11, 11, 12, 12, 12, 12, 12, 13, 15, 18, 20, 22, 23, 24, 24, 23, 22, 19, 15, 9])
+    G.profil(2, -9, [3, 5, 7, 8, 8, 9, 9, 9, 9, 10, 12, 14, 15, 16, 16, 15, 13, 10, 5])
+    G.profil(3, -5, [2, 4, 5, 5, 5, 5, 5, 5, 4, 3] if r == 0 else [1, 3, 4, 5, 5, 5, 5, 4, 4, 2])
+    G.profil(3, 5, [6, 9, 9, 7, 4] if r == 0 else [5, 8, 9, 8, 4])            # golvet ved foten
+    G.prikk(1, [(-4, -14), (-11, -9), (-13, -4), (-14, 1), (-17, 3), (-22, 5), (-25, 7), (-26, 9), (-24, 11), (-19, 12),
+                (-12, 13), (-5, 13)], speil=True)
+    G.prikk(2, [(-9, -7), (-11, -2), (-14, 2), (-17, 4), (-18, 7), (-14, 10), (-8, 11)] if r == 0 else
+            [(-9, -6), (-11, -1), (-14, 1), (-17, 5), (-18, 8), (-13, 10), (-7, 11)], speil=True)
+    G.prikk(3, [(-7, -3), (-6, 2), (-10, 6), (-8, 9)] if r == 0 else [(-6, -4), (-7, 1), (-10, 7), (-7, 9)], speil=True)
+    return G
+
+
+# ---------------------------------------------------------------- bålplassen
+def baal(r):
+    """Bålplassen (flisa å, runde 86). Ankeret er nedst midt i elden, og ringen ligg rundt han på
+    flat mark. Ein stor, låg pøl av lys over bakken rundt ringen (bålet lyser meir enn lykta), ein
+    glorie oppover rundt flammane og røyken, og eit tydeleg flakk: pølen veks og krympar mellom dei
+    tre rammene, og kjernen sleikjer opp ulikt høgt."""
+    G = Glod()
+    d = [0, 2, -1][r]
+    G.profil(1, -24, [2, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 21, 24, 27, 30])
+    G.profil(1, -6, [b + d for b in [32, 34, 36, 37, 38, 38, 38, 38, 37, 36, 35, 33, 31, 28, 25, 21, 16, 10]])
+    # Trinn 2: rundt flammane og over heile ringen. Trinn 3 (kjernen) berre i flammane og rett
+    # framfor dei, så steinane i ringen held fargane sine.
+    midt2 = [2, 4, 5, 6, 7, 8, 9, 10, 12, 14, 17, 20, 22, 24, 25, 26, 26, 26, 25, 24, 22, 20, 17, 13, 8]
+    midt3 = [1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 4, 2]
+    if r == 0: G.profil(2, -15, midt2); G.profil(3, -10, midt3)
+    if r == 1:                                    # elden blussar opp: høgare kjerne, større pøl
+        G.profil(2, -17, [2, 3, 4, 5, 6, 7, 7, 8, 9, 10, 12, 14, 17, 20, 23, 25, 27, 28, 28, 28, 27, 26, 24, 21, 18, 14, 9])
+        G.profil(3, -12, [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 5, 4, 2])
+    if r == 2: G.profil(2, -14, midt2[1:]); G.profil(3, -9, midt3[1:])   # elden søkk litt saman
+    # Dither for hand i kanten av pølen og glorien, ulik i kvar ramme.
+    G.prikk(1, [(-3, -25), (-10, -21), (-15, -15), (-21, -10), (-29, -7), (-36, -4), (-40, 0), (-41, 4), (-40, 8),
+                (-37, 11), (-31, 14), (-24, 16), (-15, 17), (-6, 17)] if r != 1 else
+            [(-4, -25), (-11, -20), (-16, -14), (-22, -9), (-31, -7), (-38, -3), (-42, 1), (-43, 5), (-42, 9),
+             (-39, 12), (-33, 15), (-25, 17), (-16, 18), (-7, 18)], speil=True)
+    G.prikk(2, [(-9, -10), (-15, -5), (-22, -2), (-28, 1), (-29, 5), (-27, 8), (-22, 10), (-14, 12)] if r == 0 else
+            [(-8, -13), (-16, -6), (-24, -2), (-30, 2), (-31, 6), (-29, 9), (-23, 11), (-15, 13)] if r == 1 else
+            [(-9, -9), (-14, -4), (-21, -1), (-27, 2), (-28, 5), (-25, 8), (-20, 10), (-12, 11)], speil=True)
+    G.prikk(3, [(-4, -7), (-6, -1), (-7, 1), (-4, 4)] if r == 0 else
+            [(-3, -11), (-5, -5), (-8, 0), (-5, 4)] if r == 1 else
+            [(-4, -6), (-6, 0), (-3, 3)], speil=True)
+    return G
+
+
 # ---------------------------------------------------------------- lysekrone
 def krone(r):
     """Den store lysekrona i kyrkja (inne-lysekrone, 56 x 48, heng høgt med parallakse, sett ovanfrå). Ankeret
@@ -367,7 +418,7 @@ def dor(r):
 
 # Rammer per glødform (sjå LYSKJELDER i js/rpg/data.js for rekkjefølgja i flimmeret).
 FORMER = {"grue": (grue, 3), "kakkelomn": (kakkelomn, 3), "peis": (peis, 3), "lys": (lys, 2),
-          "lykt": (lykt, 2), "krone": (krone, 2), "kronegolv": (kronegolv, 2), "altar": (altar, 2), "ivar": (ivar, 2), "sky": (sky, 1),
+          "lykt": (lykt, 2), "lyktgolv": (lyktgolv, 2), "baal": (baal, 3), "krone": (krone, 2), "kronegolv": (kronegolv, 2), "altar": (altar, 2), "ivar": (ivar, 2), "sky": (sky, 1),
           "glugge": (glugge, 2), "dor": (dor, 1)}
 
 

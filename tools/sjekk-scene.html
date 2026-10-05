@@ -153,6 +153,35 @@ f.onload = async () => {
     sjekk(M.kart.id === "asen-stova" && sp8.x === 2 && sp8.y === 6 && sp8.dir === 2, `etter scena står Ivar ved lampa att (${M.kart.id} ${sp8.x},${sp8.y})`);
     sjekk(!M.svart && !T().forScene(), "skjermen er tona inn, og scenekartet er gløymt");
 
+    // 8b. Bålplassen (flisa å, runde 86): Ivar set seg ved bålet i utmarka, partiet kviler, og
+    //     spelet spør om lagring. Lagringa held kartet og ruta ved bålet.
+    {
+      const R8 = w.RPGData.KART.utmarka.rader, by = R8.findIndex(r => r.includes("å")), bx = R8[by].indexOf("å");
+      M.last("utmarka", "1"); M.plasser(bx + 1, by, 2);                  // til høgre for bålet, ser mot det
+      await vent(300);
+      const nf = w.Pikslar.natur("å", bx, by, ",", 0);
+      sjekk(nf && typeof nf.etter === "function" && w.RPGData.LYSKJELDER.baal, "bålet er ein figur med levande eld og eiga glødform");
+      T().st().parti[0].hp = 1;
+      tast("z");
+      let satt = false, tekst = false;
+      const tale = () => synleg("#rpg-tale") ? d.querySelector("#rpg-tale").textContent : "";
+      for (let n = 0; n < 120 && !/Vil du lagre/.test(tale()); n++) {
+        if (M.spelar.pose === "sitje") satt = true;
+        if (/set seg ved bålet/.test(tale())) { tekst = true; tast("z"); }
+        await vent(60);
+      }
+      sjekk(tekst, "teksten fortel at Ivar set seg ved bålet");
+      sjekk(satt, "Ivar sit ved bålet medan partiet kviler");
+      sjekk(T().st().parti[0].hp !== 1, "partiet er friskt att etter kvilen ved bålet");
+      sjekk(/Vil du lagre/.test(tale()), "ved bålet spør spelet om lagring");
+      tast("z");                                                          // «Lagre»
+      for (let n = 0; n < 40 && !/Spelet er lagra/.test(tale()); n++) await vent(50);
+      const l8 = T().lagra();
+      sjekk(l8 && l8.kart === "utmarka" && l8.pos.x === bx + 1 && l8.pos.y === by, `lagringa ved bålet held kartet og ruta (${l8 && l8.kart} ${l8 && JSON.stringify(l8.pos)})`);
+      await trykkGjennom(() => T().modus() === "felt" && !synleg("#rpg-tale") && !T().iHending());
+      sjekk(!M.spelar.pose && !M.spelar.regi, "etter kvilen står Ivar opp att og kan gå");
+    }
+
     // 9. Posar: knele, sitje, peike, liggje og sove. Posen varer til figuren går eller hendinga
     //    er slutt, og folk med pose i kartet (syster ved bordet) får han att etterpå.
     const feil9 = []; w.addEventListener("error", e => feil9.push(e.message));

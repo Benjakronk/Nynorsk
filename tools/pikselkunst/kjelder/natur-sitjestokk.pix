@@ -1,0 +1,29 @@
+# namn: natur-sitjestokk
+# type: fiende
+# ut: bilete/spel/natur/sitjestokk.png
+# storleik: 20x10
+# stokken å sitje på ved bålet (naturting)
+# Laga av tools/pikselkunst/eldstad.py. Endre skriptet, ikkje denne fila.
+palett:
+  . = -
+  o = #0a0514    omriss
+  a = #2a1810    tre djup
+  b = #4a2c1c    tre skugge
+  c = #6a4428    tre
+  d = #8a5a34    tre lys
+  e = #c08a52    endeved
+  h = #e2b47a    endeved lys
+  G = #9c968e    aske lys
+  m = #4a6a2a    mose skugge
+  n = #6e9038    mose
+bilete:
+  ....................
+  ....oo..............
+  ...ohhooooooooooo...
+  ..oheehdddddcddddo..
+  .oheGeedddddddcmno..
+  .oheeheccdcccccmcbo.
+  .oehhecbbbbcbbbbbbo.
+  ..oeeoabbbabbbbabo..
+  ...oo.oooooooooooo..
+  ....................

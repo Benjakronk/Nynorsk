@@ -1,0 +1,47 @@
+# namn: natur-baal
+# type: fiende
+# ut: bilete/spel/natur/baal.png
+# storleik: 20x20
+# bålplassen (å): ringen, oska og veden
+# Laga av tools/pikselkunst/eldstad.py. Endre skriptet, ikkje denne fila.
+palett:
+  . = -
+  o = #0a0514    omriss
+  c = #6a4428    tre
+  d = #8a5a34    tre lys
+  e = #c08a52    endeved
+  h = #e2b47a    endeved lys
+  A = #26242e    stein djup
+  B = #44424e    stein skugge
+  C = #666472    stein
+  D = #8c8a96    stein lys
+  E = #b4b2bc    stein glans
+  s = #18121a    sot
+  S = #38323a    aske mørk
+  g = #68626a    aske
+  G = #9c968e    aske lys
+  r = #7a1a10    glo mørk
+  R = #c83a18    glo
+  x = #dcd6cc    never
+  X = #a09a94    never skugge
+bilete:
+  ....................
+  ....................
+  ....................
+  ....................
+  ....................
+  ....................
+  ....................
+  ........oooooo......
+  ....ooooEEDAEDooo...
+  ...oEEDAEDDCADDEAo..
+  ..oEDDCADDCBADDDCEo.
+  .oEDCBBBBBBBBBBBDCEo
+  .oDCBGheSsssSdxGBDCo
+  .oCBggSecRRrcXggBCBo
+  .oBAGgSSessshSSgGBAo
+  ..ooooooooooooooooo.
+  ....................
+  ....................
+  ....................
+  ....................

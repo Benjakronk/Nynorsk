@@ -1,0 +1,46 @@
+# namn: natur-lykt-golv
+# type: fiende
+# ut: bilete/spel/natur/lykt-golv.png
+# storleik: 12x14
+# lykta på golvet (L inne), to rammer
+# Laga av tools/pikselkunst/eldstad.py. Endre skriptet, ikkje denne fila.
+palett:
+  . = -
+  o = #0a0514    omriss
+  1 = #262236    jern djup
+  2 = #463f5e    jern
+  3 = #756d8e    jern lys
+  4 = #aaa2c2    jern glans
+  u = #e88a28    glas kant
+  y = #f8d840    glas
+  Y = #fff8d0    glas kjerne
+bilete:
+  .....oo.....
+  ....o43o....
+  ...o4432o...
+  ..o443322o..
+  .o12222221o.
+  .o1yy2yyu1o.
+  .o1yY2Yyu1o.
+  .o12222221o.
+  .o1YY2YYu1o.
+  .o1yY2Yyu1o.
+  .o1uu2uuu1o.
+  .o13332221o.
+  .o1oooooo1o.
+  .oo......oo.
+bilete ramme2:
+  .....oo.....
+  ....o43o....
+  ...o4432o...
+  ..o443322o..
+  .o12222221o.
+  .o1yy2yyu1o.
+  .o1yy2Yyu1o.
+  .o12222221o.
+  .o1yY2YYu1o.
+  .o1yy2yyu1o.
+  .o1uu2uuu1o.
+  .o13332221o.
+  .o1oooooo1o.
+  .oo......oo.

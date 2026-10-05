@@ -2364,3 +2364,49 @@ same måte, uansett kven som tek over.
   `node tools/sjekk-spel.js` og `sjekk-scene.html` grøne.
 - **Etter:** `forhand/portrett11-for-etter-a.png` og `-b.png` (før og etter), `forhand/portrett11-alle.png` (alle
   side om side) og `forhand/auge11.png` (berre auga, alle fjorten på rad).
+
+## Runde 86: éi felles lykt og bålplassen som lagringsstad
+
+- **Frå brukaren:** lykta i utmarka er finare enn dei andre, så alle lykter kan sjå slik ut. I utmarka og
+  fleire andre stader passar ein bålplass betre som lagringsstad.
+- **Slik var det:** kvilen og lagringa er `krokar.lampe()` (Z mot flisa `L`, motor.js) og `lampe` i spel.js
+  (lækjer, spør «Vil du lagre?»). Lykta ute (`L` ute og `T`) var éi kodeteikna lykt på stolpe
+  (`lyktPaaStolpe`), inne var `L` eit stearinljos i messingstake (glødforma `lys`). Lykta i utmarka (`T` ved
+  setra) såg finare ut berre fordi kartet har kveldslys (`kjelder`) med glødforma `lykt`: same biletet stod
+  utan glød i morgonlyset på Åsen og Ekset. Ho var ikkje eingong ein lagringsstad (`T`).
+- **Lykta:** éi felles lykt i `eldstad.py` (ny), etter forma i utmarka: jernkappe med toppflata sett ovanfrå
+  (lys mot venstre), takskjegg, glas med jernkrysset (sterkast lys nedst ved veken, oransje kant mot
+  høgre), botnplate, stolpe med lys venstreside og ein steinfot. To rammer der veken flakkar. Ute står ho
+  på stolpen (`lykt`, 12 × 23, no ein figur som blir sortert med folka), inne står den same lykta på golvet
+  (`lykt-golv`, ny glødform `lyktgolv`: glorie og ein brei, låg pøl over golvplankane). Ankeret til gløden
+  ute er flytt midt i glaset (y + 1). Morgonlyset har fått `kjelder` med ein dempa glød, så lyktene lyser
+  svakt om dagen òg.
+- **Bålplassen:** ny flis `å` (fast, i `STAAR` og `KLASSE` som gras). Tre lag i `eldstad.py`: `baal` (steinringen
+  sett skrått ovanfrå: dei bakre steinane med toppflate og sida mot elden, smale steinar på sidene, oske
+  og sot inni, to kubbar i kross), `baal-ild` (fire handteikna flammerammer, 9 × 13) og `baal-fram`
+  (steinane framme med store toppflater og kort framside, og ein liten kaffikjel i kopar). `eldstad()`
+  i pikslar.js gir naturfiguren, og den nye kroken `etter()` på naturfigurar (motor.js) teiknar flammane,
+  framsida, gnistar (`gnistar()`) og røyk (`royk()`) oppå. Glødforma `baal` (3 rammer) har ein stor, låg
+  pøl som veks og krympar og ein glorie rundt flammane. `sitjestokk` er ein naturting ved sida av bålet.
+- **Funksjon:** `krokar.lampe(type)` med `lykt` eller `baal`. Ved bålet set Ivar seg (`pose: sitje`), og
+  teksten er «Ivar set seg ved bålet. Elden knitrar og varmar, og partiet kviler. Alle er friske att.»
+  Hjelpetekstane seier «ved ei lykt eller eit bål».
+- **Kvar:** bål på setervollen i utmarka (22,21, stokk på 21,21; lykta ved seterdøra er borte) og ved sjøen
+  på vegen til Ekset (7,11, stokk på 8,11; var lykta `T`). Lykt (lagring) i stova og på tunet på Åsen, i
+  kyrkja (to), i prestegarden, kontoret, arkivet, og på tunet og i boksamlinga på Ekset. Lykta `T` ved
+  vegen inn til Ekset (26,10) står att som pynt.
+- **Rundar:** (1) trefot med hengjande gryte: for mykje på éi flis, omrisset rundt dei tynne stengene
+  gjorde alt til ein svart klump, og gryta dekte elden. Bytt til ein liten kaffikjel på steinen til høgre.
+  (2) Ringen rekna ut av ellipsar vart ujamn og dekte oska; teikna for hand i rader i staden.
+  (3) Kjernen i gløden (trinn 3) gjorde ringen til ein flat, sandgul flekk om kvelden; kjernen ligg no
+  berre i flammane. (4) Høgare flammar (13 rader), endeveden på stokken fylt, jordringen fjerna (han
+  låg under steinane og synte berre som prikkar).
+- **Sjekka:** `node tools/sjekk-spel.js` (sjekkar no at alle lykter og bål kan nåast), `sjekk-scene.html`
+  (171 OK, ny bolk 8b: Ivar set seg ved bålet i utmarka, partiet blir friskt, lagringa held kartet og
+  ruta), `sjekk-gange.html` og `sjekk-kyrkjegang.html` grøne. `pix.py sjekk`: `baal` har 17 einsame
+  pikslar (fugene mellom steinane og endeveden, med vilje), `baal-ild` har ikkje omriss (flammar).
+- **Før og etter:** `forhand/skjerm/r86-for-etter-utmarka.png`, `-asen.png`, `-stova.png` og `-vegen.png`;
+  bålet nært om kvelden `r86-d-utmarka-naer.png` og om dagen `r86-e-utmarka-dag-naer.png`;
+  `forhand/eldstad-8x.png` (alle rammene).
+- **Står att:** bålet er lite i 1:1; ein trefot med gryte kunne vore ein eigen,
+  større variant (2 × 1 fliser). Røyken frå `royk()` blir brunleg i gløden om kvelden.

@@ -116,6 +116,15 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
      lyser, og kvar ankeret er). Biletet blir forhåndslasta av seg sjølv.
   6. Sjå forma i spelet (`skjermbilete.py`), i alle stemningane ho kan lyse i. Fargane til
      trinna står i `glod` i `STEMNINGAR`.
+- Lagringsstadene (runde 86): `python tools/pikselkunst/eldstad.py alle` lagar lykta (`lykt`, på
+  stolpe, flisene `L` ute og `T`; `lykt-golv`, `L` inne), bålplassen (`baal`, `baal-ild` med fire
+  flammerammer og `baal-fram`, flisa `å`) og `sitjestokk` (naturting ved bålet), og
+  `forhand/eldstad-8x.png` (alle rammene saman). Bålet er tre lag: botnen (steinringen sett skrått
+  ovanfrå, oske og ved), flammane og framsida (steinane framme og kaffikjelen), så framsida dekkjer
+  foten av flammane. Gnistar og røyk teiknar `eldstad()` i pikslar.js, og gløden er `baal` i glod.py.
+  Eit nytt bål er `å` i kartet (gjerne med `{ ved, bilete: "sitjestokk" }` i `naturting` på ei
+  `o`-rute attmed). Sjå med `skjermbilete.py namn kart=utmarka m=1 x=23 y=21` (kveld) og
+  `stemning=morgon` (dag), og vegen med `kart=vegen m=1 x=8 y=11`.
 - Møblere med bord, benk og stol (bondestova). Kvart møbel er eit eige bilete, så eit rom kan
   setjast saman på fleire måtar. `x`, `y` er øvre venstre flis, `h` talet på flisrader, og breidda
   er (biletbreidd - 8) / 16 fliser. Alle rutene møbelet dekkjer, skal vere `(` (fast golv) i `rader`.

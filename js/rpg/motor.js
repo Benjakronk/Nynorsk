@@ -347,7 +347,7 @@ window.Motor = (function () {
     const nt = naturtingVed(tx, ty);
     if (nt && nt.manus && krokar.undersok) { krokar.undersok(nt); return; }
     const c = kart.fliser[ty] && kart.fliser[ty][tx];
-    if (c === "L" && krokar.lampe) { krokar.lampe(); return; }
+    if ((c === "L" || c === "å") && krokar.lampe) { krokar.lampe(c === "å" ? "baal" : "lykt"); return; }   // lagringsstadene
     if ((c === "D" || c === "d" || c === "E") && krokar.laast) { const d = (kart.def.dorer || []).find(d => d.ved[0] === tx && d.ved[1] === ty); if (!d || !d.til) krokar.laast((d && d.laast) || "Døra er stengd."); }
   }
   // Tek bort ein person på kartet, etter merket eller namnet.
@@ -1050,8 +1050,9 @@ window.Motor = (function () {
     for (let y = 0; y < kart.h; y++) for (let x = 0; x < kart.w; x++) {
       const c = kart.fliser[y][x], fase = x * 3 + y * 5;
       if (c === "f") ut.push([(x + ox) * S + 8, (y + oy) * S + 14, "peis", fase]);
-      else if (c === "L") ut.push([(x + ox) * S + 8, (y + oy) * S + (ute ? 4 : 3), ute ? "lykt" : "lys", fase]);
-      else if (c === "T") ut.push([(x + ox) * S + 8, (y + oy) * S + 4, "lykt", fase]);
+      else if (c === "L") ut.push([(x + ox) * S + 8, (y + oy) * S + (ute ? 1 : 10), ute ? "lykt" : "lyktgolv", fase]);
+      else if (c === "å") ut.push([(x + ox) * S + 8, (y + oy) * S + 9, "baal", fase]);
+      else if (c === "T") ut.push([(x + ox) * S + 8, (y + oy) * S + 1, "lykt", fase]);   // ankeret midt i glaset
       else if (c === "E" && dagslys) ut.push([(x + ox) * S + 8, (y + oy) * S + 8, "dor", fase]);
     }
     return ut;
@@ -1427,7 +1428,7 @@ window.Motor = (function () {
         if (vb) g.drawImage(vb, sx, sy);
       }
       const nt = naturtingVed(x, y);
-      const nf = erVatn(x, y) ? null : nt ? Pikslar.naturting(nt.bilete) : Pikslar.natur(c, x, y);
+      const nf = erVatn(x, y) ? null : nt ? Pikslar.naturting(nt.bilete) : Pikslar.natur(c, x, y, kart.def.golv, no);
       if (nf) {
         if (nf.skugge) { g.fillStyle = "rgba(20,24,50,0.3)"; g.beginPath(); g.ellipse(sx + 9, sy + 14, nf.skugge, 2.5, 0, 0, Math.PI * 2); g.fill(); }
         naturFig.push({ y: y + 0.005, x, natur: nf });
@@ -1483,7 +1484,9 @@ window.Motor = (function () {
       if (f.mur) { const mx = Math.round((f.x + ox) * S), my = Math.round((Math.floor(f.y) + oy) * S) - (f.loft || 6); g.drawImage(f.mur, mx, my); maske(f.mur, mx, my, true); continue; }
       if (f.natur) { const nx = Math.round((f.x + ox) * S) + f.natur.x, ny = Math.round(((f.rad ?? Math.floor(f.y)) + oy) * S) + f.natur.y;
         if (f.natur.slag) { g.save(); g.globalAlpha = 0.28; g.drawImage(skuggeAv(f.natur.img), nx + 4, ny + 3); g.restore(); }
-        g.drawImage(f.natur.img, nx, ny); maske(f.natur.img, nx, ny, true); continue; }
+        g.drawImage(f.natur.img, nx, ny); maske(f.natur.img, nx, ny, true);
+        if (f.natur.etter) f.natur.etter(g, nx, ny);                   // det som lever oppå (flammane i bålet)
+        continue; }
       if (f.haug) { const hx = Math.round((f.x + ox) * S) - 1, hy = Math.round((Math.floor(f.y) + 1 + oy) * S) - f.haug.height; g.drawImage(f.haug, hx, hy); maske(f.haug, hx, hy, true); continue; }
       if (f.over) {
         const [ux, uy, mx, my] = byggPos(f.b, f.bygg, ox, oy);

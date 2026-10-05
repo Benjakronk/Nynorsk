@@ -1,0 +1,71 @@
+# namn: natur-lykt
+# type: fiende
+# ut: bilete/spel/natur/lykt.png
+# storleik: 12x23
+# lykta på stolpen (L ute og T), to rammer: veken flakkar
+# Laga av tools/pikselkunst/eldstad.py. Endre skriptet, ikkje denne fila.
+palett:
+  . = -
+  o = #0a0514    omriss
+  1 = #262236    jern djup
+  2 = #463f5e    jern
+  3 = #756d8e    jern lys
+  4 = #aaa2c2    jern glans
+  u = #e88a28    glas kant
+  y = #f8d840    glas
+  Y = #fff8d0    glas kjerne
+  b = #4a2c1c    tre skugge
+  c = #6a4428    tre
+  d = #8a5a34    tre lys
+  B = #44424e    stein skugge
+  C = #666472    stein
+  D = #8c8a96    stein lys
+  E = #b4b2bc    stein glans
+bilete:
+  .....oo.....
+  ....o43o....
+  ...o4432o...
+  ..o443322o..
+  .o12222221o.
+  .o1yy2yyu1o.
+  .o1yY2Yyu1o.
+  .o12222221o.
+  .o1YY2YYu1o.
+  .o1yY2Yyu1o.
+  .o1uu2uuu1o.
+  .o13332221o.
+  ..oo1dc1oo..
+  ....odbo....
+  ....odbo....
+  ....odbo....
+  ....odbo....
+  ....odbo....
+  ....odbo....
+  ...odDdbo...
+  ..oEDDdCBo..
+  .oEDDCCBBBo.
+  ..oooooooo..
+bilete ramme2:
+  .....oo.....
+  ....o43o....
+  ...o4432o...
+  ..o443322o..
+  .o12222221o.
+  .o1yy2yyu1o.
+  .o1yy2Yyu1o.
+  .o12222221o.
+  .o1yY2YYu1o.
+  .o1yy2yyu1o.
+  .o1uu2uuu1o.
+  .o13332221o.
+  ..oo1dc1oo..
+  ....odbo....
+  ....odbo....
+  ....odbo....
+  ....odbo....
+  ....odbo....
+  ....odbo....
+  ...odDdbo...
+  ..oEDDdCBo..
+  .oEDDCCBBBo.
+  ..oooooooo..

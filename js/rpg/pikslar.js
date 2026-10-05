@@ -127,14 +127,6 @@ window.Pikslar = (function () {
   }
   let golvNo = "P";
   const underGolv = (g, t, v) => (FLIS[golvNo] || FLIS.P)(g, t, v);
-  // Lykt på ein stolpe (flisa L ute og T). Gløden rundt lykta er lys i motoren: den handteikna
-  // glødforma lykt (bilete/spel/lys/lykt.png) med fargerekning, sjå lys() i motor.js.
-  function lyktPaaStolpe(g, t) {
-    const k = Math.floor(t / 300) % 2;
-    const R = Rutenett(16, 16).rect("s", 7, 6, 2, 10).rect("l", 5, 1, 6, 6).rect("t", 4, 0, 8, 1);
-    g.drawImage(mal(R, { s: "#6a4428", l: { fast: "#f8d840" }, t: "#2a2838" }), 0, 0);
-    px(g, 6, 2, k ? "#fff8d0" : "#f8e890", 4, 4); px(g, 7, 2, "#3a3050", 1, 4); px(g, 5, 4, "#3a3050", 6, 1);
-  }
   const FLIS = {
     ".": (g, t, v) => {
       // I utmarka (golv «,») er vanleg gras mørkt som villgraset, men lågt.
@@ -294,16 +286,11 @@ window.Pikslar = (function () {
       px(g, 5, 12, "#8a2638", 6, 3); px(g, 6, 9 + k % 2, "#e86a20", 4, 5 - k % 2); px(g, 7, 7 + k, "#f8b830", 2, 6 - k); px(g, 7, 12, "#f8f0a0", 2, 2);
       px(g, 3, 15, "#4a2c1c", 10, 1);
     },
-    "L": (g, t) => {
-      underGolv(g, t, 0);
-      if (golvNo === "." || golvNo === ",") { lyktPaaStolpe(g, t); return; }      // ute: ei lykt på ein stolpe
-      const k = Math.floor(t / 300) % 2;
-      const R = Rutenett(16, 16).rect("m", 7, 6, 2, 7).form("m", [[13, 5, 10], [14, 4, 11]]).rect("l", 7, 4, 2, 2);
-      g.drawImage(mal(R, { m: "#c08018", l: "#f2ead0" }), 0, 0);
-      px(g, 7, 1 + k, "#f8d840", 2, 3 - k); px(g, 8, k, "#fff8d0", 1, 2);
-    },
-    // Lykt på ein stolpe ute, som L, men ingen stad å kvile (pynt og lys på kvelden).
-    "T": (g, t) => { underGolv(g, t, 0); lyktPaaStolpe(g, t); },
+    // Lykta (L: kvile og lagring, T: berre lys) og bålplassen (å: kvile og lagring) er figurar
+    // (eldstad() under natur()). Flisa er berre bakken under, og bålet står på låg, tråkka mark.
+    "L": (g, t) => underGolv(g, t, 0),
+    "T": (g, t) => underGolv(g, t, 0),
+    "å": (g, t, v) => FLIS["."](g, t, v),
     "E": g => { px(g, 0, 0, "#140c10", S, S); px(g, 0, 0, R_.tommer[1], 2, S); px(g, 14, 0, R_.tommer[1], 2, S); px(g, 2, 13, R_.plank[3], 12, 1); px(g, 2, 14, R_.plank[2], 12, 2); },
     "n": (g, t, v) => {
       underGolv(g, t, v);
@@ -449,17 +436,17 @@ window.Pikslar = (function () {
   const treCache = {};
   const treBilete = k => treCache[k] || (treCache[k] = TRE[k]());
 
-  const FAST = new Set(["+", "(", "u", "#", "t", "i", "F", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " ", "s", "M", "-", "N", "U", "Z", "Ø", "ø", "Ö", "ö", "þ"]);
-  const ANIM = new Set(["~", "L", "T", "f", "n", "y"]);
+  const FAST = new Set(["+", "(", "u", "#", "t", "i", "F", "~", "^", "o", "|", "j", "h", "x", "W", "v", "w", "V", "R", "r", "I", "A", "B", "y", "K", "k", "b", "L", "T", "X", "c", "f", "z", "G", "e", "a", "n", " ", "s", "M", "-", "N", "U", "Z", "Ø", "ø", "Ö", "ö", "þ", "å"]);
+  const ANIM = new Set(["~", "f", "n", "y"]);
   // Fliser med noko som står oppreist og blir teikna i bakken (lykter, grav, kister, inventar):
   // skogkanten lener ikkje tre ut over dei (sjå skogkant i motor.js og kantfigurar).
-  const STAAR = new Set(["L", "T", "x", "K", "k", "z", "b", "n"]);
+  const STAAR = new Set(["L", "T", "å", "x", "K", "k", "z", "b", "n"]);
   const VARIANT_EKSTRA = new Set(["Rt", "Rb", "Rtb", "Þ", "þ", "q"]);
   const VARIANT = new Set([".", ",", "~", "=", "_", "R", "P", "O", "g", "B", "y", '"', "o", "|", "j", "h", "x", "#", "t", "i", "F"]);
   const cache = new Map();
   function flis(teikn, t = 0, x = 0, y = 0, golv = "P") {
     const v = VARIANT.has(teikn) || VARIANT_EKSTRA.has(teikn) ? Math.floor(hash(x, y, 7) * 4) : 0;
-    const gl = "LnKkzb.#tiFoh+(=".includes(teikn) ? golv : "";
+    const gl = "LTånKkzb.#tiFoh+(=".includes(teikn) ? golv : "";
     const nokkel = `${teikn}${gl}:${v}:${ANIM.has(teikn) ? Math.floor(t / 150) % 16 : 0}`;
     if (cache.has(nokkel)) return cache.get(nokkel);
     const c = lerret(S), g = c.getContext("2d");
@@ -773,7 +760,7 @@ window.Pikslar = (function () {
   /* ---------- Kantar mellom fliser ----------
      Gras veks inn over sanda (stiane: sjå Pikslar.sti), og vatnet får strandkant med skum.
      Motoren teiknar kantane oppå flisa, på sidene der naboen er av eit anna slag. */
-  const KLASSE = { ".": "gras", ",": "villgras", '"': "gras", "o": "gras", "h": "gras", "x": "gras", "|": "gras", "j": "gras", "#": "gras", "t": "gras", "i": "gras", "F": "gras", "=": "veg", "/": "veg", "_": "sand", "~": "vatn" };
+  const KLASSE = { ".": "gras", ",": "villgras", '"': "gras", "o": "gras", "h": "gras", "x": "gras", "|": "gras", "j": "gras", "#": "gras", "t": "gras", "i": "gras", "F": "gras", "å": "gras", "=": "veg", "/": "veg", "_": "sand", "~": "vatn" };
   const klasse = teikn => KLASSE[teikn] || null;
   /* Hjørne på ei sandstripe (stiane har kanten sin i Pikslar.sti), teikna med grasflisa til naboen (teikn), så tekstur og farge
      stemmer. hj: 0 nv, 1 na, 2 sa, 3 sv (kva hjørne). ytre: gras på dei to sidene som møtest
@@ -1653,7 +1640,8 @@ window.Pikslar = (function () {
     // Lista er like lang som før, så dei andre steinane på karta ikkje byter utsjånad.
     "o": ["stein1", "stein2", "stein3", "stein1", "heller", "roys", "einer", "einer", "stein2"],
   };
-  function natur(teikn, x, y) {
+  function natur(teikn, x, y, golv, t = 0) {
+    if (teikn === "L" || teikn === "T" || teikn === "å") return eldstad(teikn, golv, t, x * 3 + y * 5);
     const typar = NATURTYPE[teikn];
     if (!typar) return null;
     const namn = typar[Math.floor(hash(x, y, 19) * typar.length)];
@@ -1675,6 +1663,54 @@ window.Pikslar = (function () {
   function naturting(namn) {
     const img = lastBilete(`bilete/spel/natur/${namn}.png`);
     return img ? { img, x: 8 - Math.floor(img.width / 2), y: 16 - img.height, skugge: 7 } : null;
+  }
+
+  /* Lagringsstadene (runde 86, tools/pikselkunst/eldstad.py): lykta og bålplassen. L ute og T er
+     lykta på stolpen, L inne den same lykta på golvet, og å er bålplassen. Alle er figurar som står
+     nedst på flisa og blir sorterte saman med folka. Glaset i lykta flakkar (to rammer). Bålet er tre
+     lag: botnen (ringen, oska og veden), flammane (fire rammer) og framsida (steinane framme og
+     kaffikjelen), og etter() teiknar flammane, framsida, gnistane og røyken oppå botnen. Gløden er
+     lys i motoren (glødformene lykt, lyktgolv og baal, sjå lyskjelder() i motor.js). */
+  const rammeCache = new WeakMap();
+  function ramme(img, n, i) {
+    let r = rammeCache.get(img);
+    if (!r) {
+      const w = img.width / n; r = [];
+      for (let k = 0; k < n; k++) { const c = lerret(w, img.height); c.getContext("2d").drawImage(img, -k * w, 0); r.push(c); }
+      rammeCache.set(img, r);
+    }
+    return r[i % n];
+  }
+  const LYKT_REKKJE = [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1], BAAL_REKKJE = [0, 1, 2, 3, 1, 0, 2, 3, 2, 1, 3, 0];
+  const ELDSTAD = ["lykt", "lykt-golv", "baal", "baal-ild", "baal-fram", "sitjestokk"];
+  function eldstad(teikn, golv, t, fase) {
+    const k = Math.floor(t / 150) + fase;
+    if (teikn === "å") {
+      const [botn, ild, fram] = ["baal", "baal-ild", "baal-fram"].map(n => lastBilete(`bilete/spel/natur/${n}.png`));
+      if (!botn || !ild || !fram) return null;
+      return { img: botn, x: -2, y: 16 - botn.height, skugge: 0, etter: (g, x, y) => {
+        g.drawImage(ramme(ild, 4, BAAL_REKKJE[k % BAAL_REKKJE.length]), x, y);
+        g.drawImage(fram, x, y);
+        gnistar(g, x + 10, y + 9, t + fase * 97);
+        royk(g, x + 10, y + 3, t + fase * 131);
+      } };
+    }
+    const ute = teikn === "T" || golv === "." || golv === ",";
+    const img = lastBilete(`bilete/spel/natur/${ute ? "lykt" : "lykt-golv"}.png`);
+    if (!img) return null;
+    const r = ramme(img, 2, LYKT_REKKJE[k % LYKT_REKKJE.length]);
+    return { img: r, x: 8 - (r.width >> 1), y: 16 - r.height, skugge: ute ? 4 : 0 };
+  }
+  // Gnistar frå bålet: små glør som stig, driv litt og sloknar. Somme rundar kjem ingen gnist.
+  function gnistar(g, x, y, t) {
+    const F = ["#fff4c0", "#f8d860", "#f0902a", "#c83a18"];
+    t = Math.floor(t / 75) * 75;
+    for (let i = 0; i < 4; i++) {
+      const tid = t / 1600 + i * 0.27 + hash(i, 3, 81) * 0.4, runde = Math.floor(tid), u = tid - runde;
+      if (hash(i, runde, 82) < 0.4) continue;
+      const sx = Math.round(x + (hash(i, runde, 83) - 0.5) * 6 + Math.sin(u * 5 + i) * 1.5 + u * 3), sy = Math.round(y - u * 24);
+      g.fillStyle = F[Math.min(3, Math.floor(u * 4))]; g.fillRect(sx, sy, 1, 1);
+    }
   }
 
   /* ---------- Kartkantar ----------
@@ -1798,7 +1834,7 @@ window.Pikslar = (function () {
     for (const namn of new Set(Object.values(NATURTYPE).flat())) ut.push(`bilete/spel/natur/${namn}.png`);
     for (const k of Object.values(D.KART)) for (const n of k.naturting || []) ut.push(`bilete/spel/natur/${n.bilete}.png`);
     for (const kt of Object.values(KANTTYPE)) for (const namn of new Set([...kt.framme, ...kt.inne, ...kt.smaa, ...(kt.nede || [])])) ut.push(`bilete/spel/natur/${namn}.png`);
-    ut.push("bilete/spel/natur/haug.png");
+    ut.push("bilete/spel/natur/haug.png", ...ELDSTAD.map(n => `bilete/spel/natur/${n}.png`));   // lykta og bålet
     for (const id of Object.keys(D.U)) ut.push(`bilete/spel/figurar/${id}.png`);
     for (const id of Object.values(D.PORTRETT || {})) ut.push(`bilete/spel/portrett/${id}.png`);
     for (const [id, ks] of Object.entries(D.PORTRETT_KJENSLER || {})) for (const k of ks) ut.push(`bilete/spel/portrett/${id}-${k}.png`);

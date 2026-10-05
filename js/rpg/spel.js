@@ -332,7 +332,7 @@
     const i = await Motor.val(`Kva ord vil Ivar syngje? Røyst: ${ivar.rost}`, [...ider.map(id => `${D.ORD[id].aasen} (${kost(id)})`), "Ingen"]);
     if (i >= ider.length) return;
     const id = ider[i], o = D.ORD[id];
-    if (ivar.rost < kost(id)) { await Motor.tale("Ivar har ikkje nok røyst att. Kvil ved ei lampe eller drikk kaffi."); return; }
+    if (ivar.rost < kost(id)) { await Motor.tale("Ivar har ikkje nok røyst att. Kvil ved ei lykt eller eit bål, eller drikk kaffi."); return; }
     ivar.rost -= kost(id);
     if (o.felt === "leit") {
       const gøymde = (Motor.kart.def.kister || []).filter(k => k.gøymd);
@@ -383,11 +383,15 @@
       if (k.ting) { const t = D.TING[k.ting] || D.NOKKELTING[k.ting]; steg.push({ gi: k.ting, n: k.n }); fann.push(`${k.n > 1 ? k.n + " × " : ""}${t.namn}`); }
       return hending([...steg, { t: `Ivar fann ${fann.join(" og ")}.` }]);
     },
-    // Kvile ved ei lampe. kvile: "scene" på kartet blir spela første gong partiet kviler der.
-    lampe: () => {
-      const def = Motor.kart && Motor.kart.def, kyrkje = def && def.fristad;
+    // Kvile ved ei lykt eller eit bål (type «lykt» eller «baal»). kvile: "scene" på kartet blir
+    // spela første gong partiet kviler der. Ved bålet set Ivar seg ned.
+    lampe: (type = "lykt") => {
+      const def = Motor.kart && Motor.kart.def, kyrkje = def && def.fristad, baal = type === "baal";
       const kvile = def && def.kvile && !st.scener[def.kvile] ? [{ scene: def.kvile }] : [];
-      hending([{ lækje: 1 }, { t: kyrkje ? "Kyrkjelyden syng ein salme. Songen fyller kyrkja, og partiet får att alle kreftene." : "Lyset er varmt. Partiet kviler, og alle er friske att." }, ...kvile]).then(async () => {
+      const tekst = kyrkje ? "Kyrkjelyden syng ein salme. Songen fyller kyrkja, og partiet får att alle kreftene."
+        : baal ? "Ivar set seg ved bålet. Elden knitrar og varmar, og partiet kviler. Alle er friske att."
+        : "Lyset er varmt. Partiet kviler, og alle er friske att.";
+      hending([...(baal ? [{ pose: "Ivar", p: "sitje" }] : []), { lækje: 1 }, { t: tekst }, ...kvile]).then(async () => {
         Motor.pause(true);
         const i = await Motor.val("Vil du lagre?", ["Lagre", "Ikkje no"]);
         if (i === 0) { lagre(); await Motor.tale("Spelet er lagra."); }
@@ -477,7 +481,7 @@
       if (v === "Ting") { const t = Object.entries(st.ting).filter(([, n]) => n > 0); return (t.length ? `<ul class="mn-liste">${t.map(([id, n]) => `<li><b>${E(D.TING[id].namn)}</b> ×${n}<br><small>${E(D.TING[id].tekst)}</small></li>`).join("")}</ul>` : "<p>Skreppa er tom.</p>") + "<p class=\"mn-liten\">Trykk Z eller Enter for å bruke ein ting.</p>"; }
       if (v === "Ordboka") return st.nokkel.includes("ordboka") || ordtal() ? ordbokHtml() : "<p>Ivar har inga bok å skrive i enno.</p>";
       if (v === "Dagboka") return dagbokHtml();
-      if (v === "Til kurssida") return `<p>Trykk Z eller Enter for å gå attende til kurssida.</p><p class="mn-liten">Det du ikkje har lagra, går tapt. Du kan lagre ved ei lampe.</p>`;
+      if (v === "Til kurssida") return `<p>Trykk Z eller Enter for å gå attende til kurssida.</p><p class="mn-liten">Det du ikkje har lagra, går tapt. Du kan lagre ved ei lykt eller eit bål.</p>`;
       if (v === "Vesen") return vesenHtml();
       if (v === "Stev") return stevHtml();
       if (v === "Nøkkelting") return st.nokkel.length ? `<ul class="mn-liste">${st.nokkel.map(id => `<li><b>${E(D.NOKKELTING[id].namn)}</b><br><small>${E(D.NOKKELTING[id].tekst)}</small></li>`).join("")}</ul>` : "<p>Ingen nøkkelting enno.</p>";

@@ -262,7 +262,9 @@ i spelpikslar:
   på veggen ved sida, eit stearinlys har ein smal og høg glød over flammen og ein liten pøl ved
   foten, ei lykt har ein rund glorie, ei smal midje langs stolpen og ein flat pøl på bakken under
   seg, lysekrona har små gloriar ved ljosa og ein pøl på golvet under, kakkelomnen og peisen
-  kastar ei vifte ut over golvet frå eldopninga.
+  kastar ei vifte ut over golvet frå eldopninga. Bålet har ein stor, låg pøl over bakken rundt
+  ringen og ein glorie oppover rundt flammane, men kjernen ligg berre i flammane, så steinane i
+  ringen held fargane sine (runde 86).
 - To til tre trinn med harde kantar. Overgangen får nokre handplasserte dither-pikslar (glisne,
   helst i hjørna av trappesteget i kanten), ikkje eit utrekna mønster rundt heile forma.
 - Kantane er trappesteg med jamn rytme (1, 1, 2, 3 … pikslar), slik som ein sirkel i pikselkunst.
