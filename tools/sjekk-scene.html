@@ -183,65 +183,131 @@ f.onload = async () => {
       sjekk(!M.spelar.pose && !M.spelar.regi, "etter kvilen står Ivar opp att og kan gå");
     }
 
-    // 8c. Sitjeplassar (runde 87): Ivar går inn på ein benk, ein stol, ein kyrkjebenk og stokken
-    //     ved bålet og set seg, går langs benken, reiser seg når han går, kan ikkje gå over ryggen,
-    //     og plassane der folk sit, er faste. Følgjet går aldri inn på eit sete.
+    // 8c. Sitjeplassar og senga (runde 87 og 88). Ivar går inn på eit sete og set seg i retninga til
+    //     setet, glir sitjande langs benken, snur seg ikkje når han ikkje kan gå, reiser seg når han går
+    //     ut (framover, eller til sida frå enden), står aldri på ei seterute utan å sitje (bak ryggen),
+    //     og kjem seg ut frå alle seta på alle karta. Plassane der folk sit, er faste, og følgjet går
+    //     aldri inn på eit sete eller i senga. I senga legg han seg under dyna.
     {
       const tastNed = k => d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true }));
       const tastOpp = k => d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true }));
+      const sp = () => M.spelar, paa = (x, y) => sp().x === x && sp().y === y;
+      // Vakta: kvar 15. ms. Står figuren (slik han blir teikna) på ei seterute, skal han sitje, i
+      // retninga som er venta der (forventa), og følgjet er aldri på eit sete eller i senga.
+      let bakRyggen = [], feilRetning = [], fylgjePaaSete = false, forventa = null;
+      const vakt = setInterval(() => {
+        const v = M.spelarVis(), rx = Math.round(v.x), ry = Math.round(v.y);
+        if (M.seteVed(rx, ry) && v.pose !== "sitje") bakRyggen.push(`${M.kart.id} ${v.x.toFixed(2)},${v.y.toFixed(2)} ${v.pose}`);
+        if (v.pose === "sitje" && forventa != null && v.dir !== forventa) feilRetning.push(`${M.kart.id} ${rx},${ry} retning ${v.dir}`);
+        const f = M.aktor("fylgje");
+        if (f && !fylgjePaaSete && (M.seteVed(f.x, f.y) || M.sengVed(f.x, f.y))) fylgjePaaSete = `${M.kart.id} ${f.x},${f.y} (Ivar ${sp().x},${sp().y})`;
+      }, 15);
       // Eitt steg: held tasten til Ivar byrjar å gå (eller ikkje kjem nokon stad), og vent til han står.
       async function steg(k) {
-        const x0 = M.spelar.x, y0 = M.spelar.y;
+        const x0 = sp().x, y0 = sp().y;
         tastNed(k);
-        for (let n = 0; n < 30 && M.spelar.x === x0 && M.spelar.y === y0; n++) await vent(20);
+        for (let n = 0; n < 25 && sp().x === x0 && sp().y === y0; n++) await vent(20);
         tastOpp(k);
-        for (let n = 0; n < 40 && M.spelar.flytt; n++) await vent(20);
-        await vent(80);
+        for (let n = 0; n < 40 && sp().flytt; n++) await vent(20);
+        await vent(60);
       }
-      const sp = () => M.spelar, paa = (x, y) => sp().x === x && sp().y === y;
-      const seteRuter = new Set(["3,4", "4,4", "5,4", "6,4", "2,3", "7,3"]);
-      let fylgjePaaSete = false;
-      const vakt = setInterval(() => { const f = M.aktor("fylgje"); if (f && seteRuter.has(f.x + "," + f.y) && M.kart.id === "asen-stova") fylgjePaaSete = true; }, 30);
+      const sitPaa = (x, y, dir) => paa(x, y) && sp().pose === "sitje" && (dir == null || sp().dir === dir);
+      // a) Benken under bordet i stova: inn nedanfrå, sit mot bordet, glir langs benken heile vegen.
       M.last("asen-stova", "1"); M.plasser(4, 5, 1); await vent(250);
+      forventa = 1;
       await steg("ArrowUp");
-      sjekk(paa(4, 4) && sp().pose === "sitje", `Ivar går inn på benken under bordet og set seg (${sp().x},${sp().y} ${sp().pose})`);
-      await steg("ArrowLeft");
-      sjekk(paa(3, 4) && sp().pose === "sitje", "Ivar går langs benken og set seg på neste sete");
+      sjekk(sitPaa(4, 4, 1), `Ivar går inn på benken og set seg mot bordet (${sp().x},${sp().y} ${sp().pose} retning ${sp().dir})`);
+      const langs = [];
+      for (const [k, x] of [["ArrowLeft", 3], ["ArrowRight", 4], ["ArrowRight", 5], ["ArrowRight", 6]]) { await steg(k); langs.push(sitPaa(x, 4, 1)); }
+      sjekk(langs.every(Boolean), `Ivar glir sitjande langs benken og sit mot bordet på kvart sete (${langs})`);
+      await steg("ArrowUp"); await steg("ArrowLeft");
+      sjekk(sitPaa(5, 4, 1), "mot bordet går det ikkje: han blir sitjande og snur seg ikkje; langs benken glir han vidare");
       await steg("ArrowDown");
-      sjekk(paa(3, 5) && !sp().pose, "Ivar reiser seg når han går ut av benken");
+      forventa = null;
+      sjekk(paa(5, 5) && !sp().pose, "Ivar reiser seg og går ut framover (nedover, bort frå bordet)");
+      // b) Kubbestolen: inn frå sida, sit mot bordet, ikkje ut over ryggen, ut til sida.
       M.plasser(7, 4, 1); await vent(150);
+      forventa = 2;
       await steg("ArrowUp");
-      sjekk(paa(7, 3) && sp().pose === "sitje" && sp().dir === 2, `på kubbestolen set Ivar seg og ser mot bordet (${sp().x},${sp().y} retning ${sp().dir})`);
-      await steg("ArrowRight");
-      sjekk(paa(7, 3) && sp().pose === "sitje" && sp().dir === 2, "Ivar går ikkje ut over ryggen på stolen, og blir sitjande");
+      sjekk(sitPaa(7, 3, 2), `på kubbestolen set Ivar seg og ser mot bordet (${sp().x},${sp().y} retning ${sp().dir})`);
+      await steg("ArrowRight"); await steg("ArrowLeft");
+      sjekk(sitPaa(7, 3, 2), "Ivar går ikkje ut over ryggen eller inn i bordet, og snur seg ikkje: han blir sitjande");
       await steg("ArrowDown");
+      forventa = null;
       sjekk(paa(7, 4) && !sp().pose, "frå stolen går Ivar ut til sida og står opp");
       M.plasser(2, 4, 1); await vent(150);
       await steg("ArrowUp");
       sjekk(paa(2, 4), "kubbestolen der syster sit, er opptatt");
-      clearInterval(vakt);
-      sjekk(!fylgjePaaSete, "følgjet gjekk aldri inn på eit sete");
-      // Kyrkjebenkene står med ryggen mot kameraet: inn framfrå (ovanfrå) og frå sidene, ikkje bakfrå.
-      M.last("kyrkja", "1"); M.plasser(4, 17, 0); await vent(250);
-      await steg("ArrowDown");
-      sjekk(paa(4, 18) && sp().pose === "sitje" && sp().dir === 1, `Ivar set seg i kyrkjebenken og ser mot altaret (${sp().x},${sp().y} retning ${sp().dir})`);
-      await steg("ArrowDown");
-      sjekk(paa(4, 18) && sp().pose === "sitje", "Ivar går ikkje bakover over ryggen på kyrkjebenken");
+      // c) Senga: Ivar legg seg under dyna og kviler, ligg når han flyttar seg i senga, og står opp.
+      T().st().parti[0].hp = 1;
+      M.plasser(10, 2, 1); await vent(150);
       await steg("ArrowUp");
-      sjekk(paa(4, 17) && !sp().pose, "Ivar går ut av kyrkjebenken framover og står");
+      let dynaTekst = false;
+      for (let n = 0; n < 60 && !(dynaTekst && !T().iHending()); n++) {
+        if (synleg("#rpg-tale") && /under dyna/.test(d.querySelector("#rpg-tale").textContent)) { dynaTekst = true; tast("z"); }
+        await vent(60);
+      }
+      const v1 = M.spelarVis();
+      sjekk(paa(10, 1) && sp().pose === "sove" && v1.seng && dynaTekst && T().st().parti[0].hp !== 1,
+        `Ivar legg seg under dyna i senga, søv og kviler (${sp().x},${sp().y} ${sp().pose})`);
+      await steg("ArrowLeft"); await steg("ArrowUp");
+      sjekk(paa(9, 1) && M.spelarVis().seng, "i senga ligg han under dyna når han flyttar seg, og ein tast mot veggen gjer ingenting");
+      await steg("ArrowRight"); await steg("ArrowDown");
+      sjekk(paa(10, 2) && !sp().pose && !M.spelarVis().seng, "ein tast ut av senga, og Ivar står opp");
+      // d) Kyrkjebenken: ryggen mot kameraet. Inn framfrå (ovanfrå), glir langs benken, ikkje over
+      //    ryggen, ut framover eller ut til sida frå enden.
+      M.last("kyrkja", "1"); M.plasser(4, 17, 0); await vent(250);
+      forventa = 1;
+      await steg("ArrowDown");
+      sjekk(sitPaa(4, 18, 1), `Ivar set seg i kyrkjebenken og ser mot altaret (${sp().x},${sp().y} retning ${sp().dir})`);
+      await steg("ArrowDown");
+      sjekk(sitPaa(4, 18, 1), "Ivar går ikkje bakover over ryggen på kyrkjebenken, og snur seg ikkje");
+      const kb = [];
+      for (const [k, x] of [["ArrowLeft", 3], ["ArrowLeft", 2], ["ArrowRight", 3], ["ArrowRight", 4], ["ArrowRight", 5], ["ArrowRight", 6], ["ArrowRight", 7], ["ArrowRight", 8]]) { await steg(k); kb.push(sitPaa(x, 18, 1)); }
+      sjekk(kb.every(Boolean), `Ivar glir sitjande langs kyrkjebenken frå ende til ende (${kb})`);
+      await steg("ArrowRight");
+      sjekk(paa(9, 18) && !sp().pose, "frå enden av benken går Ivar ut til sida i midtgangen");
+      await steg("ArrowLeft");
+      sjekk(sitPaa(8, 18, 1), "frå midtgangen går han inn att i benken og set seg mot altaret");
+      await steg("ArrowUp");
+      forventa = null;
+      sjekk(paa(8, 17) && !sp().pose, "Ivar går ut av kyrkjebenken framover og står");
       M.plasser(3, 21, 1); await vent(150);
       await steg("ArrowUp");
       sjekk(paa(3, 21), "Ivar kjem ikkje inn i benken bakfrå (ryggen er i vegen)");
       M.plasser(4, 19, 0); await vent(150);
       await steg("ArrowDown"); await steg("ArrowRight");
-      sjekk(paa(4, 20), "plassen der kona sit i benken, er opptatt");
-      // Stokken ved bålet (naturting med sete, utan rygg): Ivar set seg med andletet mot elden.
+      sjekk(sitPaa(4, 20, 1), "plassen der kona sit i benken, er opptatt, og Ivar blir sitjande");
+      // e) Stokken ved bålet (utan rygg): Ivar set seg med andletet mot elden.
       const R9 = w.RPGData.KART.utmarka.rader, sy9 = R9.findIndex(r => r.includes("Å")), sx9 = R9[sy9].indexOf("Å") - 1;
       M.last("utmarka", "1"); M.plasser(sx9, sy9 - 1, 0); await vent(250);
+      forventa = 3;
       await steg("ArrowDown");
-      sjekk(paa(sx9, sy9) && sp().pose === "sitje" && sp().dir === 3, `Ivar set seg på stokken ved bålet, mot elden (${sp().x},${sp().y} retning ${sp().dir})`);
+      sjekk(sitPaa(sx9, sy9, 3), `Ivar set seg på stokken ved bålet, mot elden (${sp().x},${sp().y} retning ${sp().dir})`);
       await steg("ArrowUp");
+      forventa = null;
       sjekk(paa(sx9, sy9 - 1) && !sp().pose, "frå stokken går Ivar vidare og står");
+      // f) Ut frå alle seta: på kvar ledige seterute på alle karta finst det ein veg ut (framover eller
+      //    til sida), og Ivar sit i retninga til setet.
+      const utan = [], rar = [];
+      for (const id of Object.keys(w.RPGData.KART)) {
+        const k = w.RPGData.KART[id];
+        if (k.scene || (!(k.bygg || []).some(b => w.Pikslar.SETE[b.id]) && !(k.naturting || []).some(n => n.sete))) continue;
+        M.last(id, "1"); await vent(120);
+        for (let y = 0; y < M.kart.h; y++) for (let x = 0; x < M.kart.w; x++) {
+          const st = M.seteVed(x, y);
+          if (!st || M.kart.folk.some(f => f.x === x && f.y === y)) continue;
+          M.plasser(x, y);
+          if (!M.utvegar().length) utan.push(`${id} ${x},${y}`);
+          if (sp().pose !== "sitje" || (st.s.retning != null && sp().dir !== st.s.retning)) rar.push(`${id} ${x},${y} ${sp().pose} ${sp().dir}`);
+        }
+      }
+      sjekk(!utan.length, `Ivar kjem seg ut frå alle seta på alle karta${utan.length ? ": " + utan.join("; ") : ""}`);
+      sjekk(!rar.length, `på alle seta sit Ivar i retninga til setet${rar.length ? ": " + rar.slice(0, 5).join("; ") : ""}`);
+      clearInterval(vakt);
+      sjekk(!bakRyggen.length, `Ivar står aldri på ei seterute utan å sitje (bak ryggen)${bakRyggen.length ? ": " + bakRyggen.slice(0, 4).join("; ") : ""}`);
+      sjekk(!feilRetning.length, `retninga han sit i, er aldri feil${feilRetning.length ? ": " + feilRetning.slice(0, 4).join("; ") : ""}`);
+      sjekk(!fylgjePaaSete, `følgjet gjekk aldri inn på eit sete eller i senga${fylgjePaaSete ? ": " + fylgjePaaSete : ""}`);
     }
 
     // 9. Posar: knele, sitje, peike, liggje og sove. Posen varer til figuren går eller hendinga

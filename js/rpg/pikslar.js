@@ -1927,6 +1927,12 @@ window.Pikslar = (function () {
     // Kyrkjebenkene er sette bakfrå: den som sit, ser fram mot altaret, og ryggen dekkjer nedre del av han.
     ...Object.fromEntries(["", "2", "3", "4", "5"].flatMap(v => ["h", "v"].map(d => [`inne-kyrkjebenk-${d}${v}`, { hogd: 2, retning: 1, fram: true }]))),
   };
+  /* Senger ein kan leggje seg i (runde 88): den som ligg, blir teikna med liggjeramma spegla (hovudet
+     til venstre) med øvre venstre hjørne i hovud ([x, y] i sengebiletet), og dyna (rektanglar [x, y, b, h] i
+     sengebiletet) blir teikna oppå, så berre hovudet stikk ut på puta. */
+  const SENG = {
+    "inne-sengebenk": { hovud: [3, 4], dyne: [[15, 3, 19, 19], [7, 15, 8, 7], [0, 0, 7, 28]] },   // dyna, åkleet under puta og sengegavlen
+  };
   // Kva pikslar i ruta flammane kan teiknast på: berre mørket i eldstaden og den faste elden
   // i biletet, så gryta, kroken og kanten ligg framfor flammane.
   const ildMasker = new WeakMap();
@@ -1975,5 +1981,5 @@ window.Pikslar = (function () {
   }
 
   return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, nordkant, sidekant, klasse, bygg, natur, naturting, haugBilete, KANTTYPE, kantflis, kantfigurar, STAAR, vatn, steingard, FAST, figur, fiende, vesenGang, vesenOpp, lerret, ramp, blend, RAMP,
-    hent, klar, forhandslast, alleBilete, ILD, LJOS, KJEDE, SETE, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
+    hent, klar, forhandslast, alleBilete, ILD, LJOS, KJEDE, SETE, SENG, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
 })();

@@ -2438,3 +2438,35 @@ same måte, uansett kven som tek over.
   `r87-a-dag-naer.png` (runde 1), `r87-b-dag-naer.png` (runde 2), `r87-sit-alle.png` og `r87-sit-kyrkja-spel.png`.
 - **Står att:** Ivar i kyrkjebenken syner berre med håret over ryggen (som kyrkjefolket); går han langs ein
   benk, står han på golvet bak ryggen til han stoppar og set seg.
+
+## Runde 88: benkene på nytt, og Ivar legg seg i senga
+
+- **Frå brukaren:** når Ivar flyttar seg på benkene, kan han ende med å sitje i ei rar retning, han hamnar
+  bak benken når han går, og han kan ikkje snu seg på benken når han har hamna feil. Han bør òg kunne
+  leggje seg under dyna i senga.
+- **Kvifor:** retninga kom frå siste tasten (`spelar.dir = dir` før steget), så ein benk utan rygg fekk
+  retninga han gjekk langs benken med. Langs benken gjekk han som vanleg, ståande på golvet, og på ein
+  kyrkjebenk dekte ryggen han. Og den som sat, kunne ikkje snu seg med vilje (men snudde seg av tastar).
+- **Ny modell (motor.js):** retninga kjem frå setet (`seteRetning()`): eit sete med retning, eller på
+  tvers av ein benk utan rygg, mot eit møbel inntil (bordet, orgelet), bort frå veggen, elles dit han
+  kom frå. Langs ein benk glir han sitjande (`flytt.glid`, teikna med sitjeposen og setehøgda heile
+  vegen). Ein tast dit han ikkje kan gå, gjer ingenting. Han reiser seg når han går ut, framover eller
+  ut til sida frå enden. `spelarVis()` set han ned halvvegs i steget inn og reiser han halvvegs i steget
+  ut, så han aldri står på ei seterute. `plasserFylgje()` set følgjet på næraste ledige rute når det ikkje
+  er plass attmed setet.
+- **Senga:** `Pikslar.SENG` (`inne-sengebenk`: `hovud` og `dyne`). Liggjeramma blir spegla (hovudet mot
+  puta), og dyna, åkleet under puta og sengegavlen blir teikna oppå, så berre andletet syner på puta.
+  Han søv (`pose: "sove"`, z), kviler (`krokar.seng`, ingen lagring), kan flytte seg liggjande i senga og
+  står opp med ein tast ut. Rundar: (1) hovudet stakk opp over puta og ein arm syntest under: ramma flytt
+  ned og åkleet under puta teikna over. (2) Andletet var gøymt under dyna og håret gjekk over gavlen:
+  ramma flytt mot venstre og gavlen teikna over.
+- **Testar (sjekk-scene.html, bolk 8c):** langs benken i stova og kyrkjebenken frå ende til ende (sit rett
+  på kvart sete), ingen snu og ikkje over ryggen, ut til sida frå enden og inn att frå midtgangen, opptatte
+  plassar, senga (legg seg, kviler, flyttar seg, står opp), stokken, ein veg ut frå alle seta på alle
+  karta, og ei vakt kvart 15. ms: aldri ståande på ei seterute, aldri feil retning, følgjet aldri på eit
+  sete eller i senga.
+- **Bilete:** `forhand/skjerm/r88-benk-alle.png` (Ivar på kvart sete langs benken i stova),
+  `r88-kyrkjebenk-spel.png`, `r88-galleri-spel.png`, `r88-kubbestol-spel.png`, `r88-seng-naer.png` (i
+  senga) og `r88-ligg-for-naer.png` (liggjeramma før, på golvet).
+- **Står att:** liggjeramma er ramma for slått ut med opne auge; ei eiga søveramme med lukka auge ville
+  passe betre i senga.

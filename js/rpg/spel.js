@@ -385,6 +385,8 @@
     },
     // Kvile ved ei lykt eller eit bål (type «lykt» eller «baal»). kvile: "scene" på kartet blir
     // spela første gong partiet kviler der. Ved bålet set Ivar seg ned.
+    // Ivar har lagt seg under dyna (Motor.setSeg i senga): han kviler, men det er ingen lagring her.
+    seng: () => hending([{ lækje: 1 }, { t: "Ivar kryp under dyna og søv ei lita stund. Alle er friske att." }]),
     lampe: (type = "lykt") => {
       const def = Motor.kart && Motor.kart.def, kyrkje = def && def.fristad, baal = type === "baal";
       const kvile = def && def.kvile && !st.scener[def.kvile] ? [{ scene: def.kvile }] : [];
