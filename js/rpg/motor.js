@@ -1782,7 +1782,8 @@ window.Motor = (function () {
           const [k0, kb] = s.klipp || [0, r.width];                      // klipp: berre kolonnane k0 til k0 + kb av hovudet
           g.drawImage(r, k0, 0, kb, r.height, bx + hx, by + hy, kb, r.height); maske(r, bx + hx - k0, by + hy);
           for (const [dx, dy, dw, dh] of s.dyne) g.drawImage(img, dx, dy, dw, dh, bx + dx, by + dy, dw, dh);
-          if (f.pose === "sove") teiknZz(g, bx + hx + 12, by + hy - 1, no);
+          // Over hovudet, ikkje til sides: sideveggen blir teikna over møblane og ville skjult z-ane.
+          if (f.pose === "sove") teiknZz(g, bx + hx + 3, by + hy - 6, no);
           continue;
         }
       }
