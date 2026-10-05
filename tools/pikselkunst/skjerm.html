@@ -68,6 +68,9 @@ f.onload = async () => {
   if (q.get("kjensle")) M.kjensle(q.get("kjensle"));
   if (q.get("hkjensle")) M.kjensle(q.get("hkjensle"), "fylgje");
   if (q.get("pose")) { M.pose(q.get("pose")); if (q.get("retning")) M.spelar.dir = +q.get("retning"); }
+  // glid=h eller glid=v (runde 92): Ivar glir sitjande langs benken frå ruta til venstre (h) eller høgre (v),
+  // tidleg i steget, så ramma for å flytte seg sidelengs syner (saman med pose=sitje).
+  if (q.get("glid")) { const s = M.spelar, fra = s.x + (q.get("glid") === "v" ? 1 : -1); Object.assign(s, { flytt: { fx: fra, fy: s.y, t0: w.performance.now(), fart: 1e9, glid: true }, u: 0, fx: fra + (s.x - fra) * 0.15 }); }
   // snu=Klokka:3 snur ein person eller eit vesen på kartet (0 ned, 1 opp, 2 venstre, 3 høgre), til dømes for å sjå ei ramme i eit gangark.
   // vesen=Klokka:klokke-0,Dua:due-fly-3 byter biletet til vesen på kartet (til dømes ei ramme i ei sving).
   for (const x of (q.get("vesen") || "").split(",").filter(Boolean)) { const [namn, v] = x.split(":"); M.byt(namn, { vesen: v }); }

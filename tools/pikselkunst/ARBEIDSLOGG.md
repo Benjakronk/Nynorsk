@@ -2546,3 +2546,33 @@ same måte, uansett kven som tek over.
   (y 30); gløden, gryta og elden står der dei stod. Inne er det ingen røyk frå pipa. Same grua på Nedre Hovde.
 - **Sjekka:** alle fem testane grøne. Før og etter: `forhand/skjerm/r91-for-etter-grue.png` (stova før og
   etter, Nedre Hovde før og etter), og `forhand/r91-grue-8x.png`.
+
+## Runde 92: dybda ved møblane, senga og grua mot veggen, mjuke overgangar, sidelengs på benken
+
+- **Frå brukaren:** Ivar hamna bak senga når han stod ved sida av ho. Grua og senga gjekk inn i veggen, og senga
+  stod for langt ut frå veggen. Overgangen til å sitje og liggje var hakkete. Ivar trong rammer for å flytte
+  seg sidelengs på benken. Han sat høgt over stokken ved bålet, Huldra hamna langt unna og oppførte seg rart
+  når han sat, og skrinet overlappa senga.
+- **Dybda:** store møblar inne blir delte i ei stripe per flisrad, sortert etter rada si, så berre den delen
+  som er lenger nede enn føtene til figuren, dekkjer han (senga, grua, skatollet, golvuret, bokreolane).
+- **Mot veggen:** inventar inntil ein sidevegg blir skuva 4 pikslar inn i rommet (`byggDx()`), så det står mot
+  veggen og ikkje inne i han (grua, senga, skatollet, bokreolane). Senga har `dy: -7`: hovudgavlen står no heilt
+  inntil bakveggen, der veggen møter golvet, som møblane i FF6 (ff6-0241, ff6-0031).
+- **Overgangane:** han går heilt inn på ruta i vanleg takt, byter til sitjeposen i éi ramme, og høgda glir på
+  tre tikk; ut att reiser han seg i éi ramme og høgda glir ned på fem tikk medan han går. Halvvegs-snappinga
+  (runde 88) er borte, òg i scenestega. Målt per bilete i sjekk-scene (bolk 8e): posisjonen og høgda hoppar
+  aldri meir enn 3 pikslar per tikk inn på og ut av benken, kubbestolen, kyrkjebenken, stokken og senga.
+  Runde 1: ut av setet hoppa høgda 4 til 6 pikslar på eitt tikk, så ho glir no ned att òg.
+- **Sidelengs på benken:** `skuv()` i handfigur.py lagar fire rammer av sitjeramma (lyft med hendene ned mot
+  setet, hovudet og brystet lener i fartsretninga, beina heng etter; mot høgre og mot venstre), for Ivar,
+  Huldra og alle figurane frå malen (figur.py). Arka er no 112 breie; dei gamle rutene er uendra.
+  Motoren vel ramma etter kor langt glidinga er kome (`figurVis`). Ark: `forhand/r92-skuv-8x.png`, i spelet:
+  `forhand/skjerm/r92-glid-naer.png` (mot venstre, sitjande, mot høgre).
+- **Stokken:** setehøgda er `hogd: -2` (var 4), så han sit på stokken med beina framfor. Begge båla.
+- **Huldra:** `fylgjeEtter()` sende henne før med regi til ruta Ivar gjekk ut frå benken, og stien vart gammal
+  medan han gjekk vidare, så ho hamna langt unna. No tek ho ruta han gjekk frå når ho står inntil, elles
+  eitt steg mot næraste ledige rute inntil han, aldri meir enn éi rute per steg og aldri inn på eit sete.
+  Test (bolk 8f): ho er aldri meir enn 2 ruter unna og hoppar aldri meir enn éi rute.
+- **Skrinet:** flytt til (8,1), inntil bakveggen med ei tom rute mellom seg og senga.
+- **Bilete:** `forhand/skjerm/r92-for-etter-alle.png` (alle innekarta før og etter), `r92-for-etter-seng.png`
+  (Ivar ved sida av senga før og etter), `r92-stokk-for-naer.png` og `r92-stokk-naer.png`.

@@ -39,7 +39,7 @@ f.onload = async () => {
       const b = M.aktor("Storebror"), s = M.spelar, v = M.spelarVis();
       if (s.pose === "sove" && v.seng) sovIseng = true;
       if (/du er vaken/.test(synleg("#rpg-tale") ? d.querySelector("#rpg-tale").textContent : "") && s.pose === "liggje" && v.seng) vaknaFor = true;
-      if (M.sengVed(Math.round(v.x), Math.round(v.y)) && !v.seng) stodISeng = true;
+      if (!s.flytt && M.sengVed(Math.round(v.x), Math.round(v.y)) && !v.seng) stodISeng = true;
       if (b && Math.abs(b.x - s.x) + Math.abs(b.y - s.y) === 1) { naerIvar = true; if (!M.sengVed(s.x, s.y) && !s.pose) opp = true; }
     });
     sjekk(sovIseng && vaknaFor, "i «heime» søv Ivar i senga, og han er vaken når storebror seier «Ivar, du er vaken»");
@@ -203,7 +203,7 @@ f.onload = async () => {
       let bakRyggen = [], feilRetning = [], fylgjePaaSete = false, forventa = null;
       const vakt = setInterval(() => {
         const v = M.spelarVis(), rx = Math.round(v.x), ry = Math.round(v.y);
-        if (M.seteVed(rx, ry) && v.pose !== "sitje") bakRyggen.push(`${M.kart.id} ${v.x.toFixed(2)},${v.y.toFixed(2)} ${v.pose}`);
+        if (!M.spelar.flytt && M.seteVed(rx, ry) && v.pose !== "sitje") bakRyggen.push(`${M.kart.id} ${v.x.toFixed(2)},${v.y.toFixed(2)} ${v.pose}`);
         if (v.pose === "sitje" && forventa != null && v.dir !== forventa) feilRetning.push(`${M.kart.id} ${rx},${ry} retning ${v.dir}`);
         const f = M.aktor("fylgje");
         if (f && !fylgjePaaSete && (M.seteVed(f.x, f.y) || M.sengVed(f.x, f.y))) fylgjePaaSete = `${M.kart.id} ${f.x},${f.y} (Ivar ${sp().x},${sp().y})`;
@@ -324,7 +324,7 @@ f.onload = async () => {
       const vakt8 = setInterval(() => {
         for (const a of [M.spelar, ...M.kart.folk]) {
           const v = M.figurVis(a), rx = Math.round(v.x), ry = Math.round(v.y);
-          if ((M.seteVed(rx, ry) && v.pose !== "sitje") || (M.sengVed(rx, ry) && v.pose !== "sove" && v.pose !== "liggje"))
+          if (!a.flytt && !a.regi && ((M.seteVed(rx, ry) && v.pose !== "sitje") || (M.sengVed(rx, ry) && v.pose !== "sove" && v.pose !== "liggje")))
             if (!(a === M.spelar && !a.regi)) staarPaa.push(`${a.namn || "Ivar"} ${v.x.toFixed(2)},${v.y.toFixed(2)} ${v.pose}`);
         }
       }, 15);
@@ -351,6 +351,84 @@ f.onload = async () => {
       clearInterval(vakt8);
       sjekk(!staarPaa.length, `ingen står på eit sete eller i ei seng i scenestega${staarPaa.length ? ": " + staarPaa.slice(0, 4).join("; ") : ""}`);
       M.fjernFolk("Gjest");
+    }
+
+    // 8e. Mjuke overgangar (runde 92): ein logg per bilete (som i sjekk-gange) av kvar føtene til Ivar blir
+    //     teikna (x og py, med setehøgda), inn på og ut av benken, kubbestolen, kyrkjebenken, stokken og
+    //     senga, og langs benken. Posisjonen og høgda skal ikkje hoppe meir enn 3 pikslar per tikk, og
+    //     langs benken skal rammene for å flytte seg sidelengs syne.
+    {
+      const tN = k => d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true }));
+      const tO = k => d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true }));
+      async function steg8(k) {
+        const x0 = M.spelar.x, y0 = M.spelar.y; tN(k);
+        for (let n = 0; n < 25 && M.spelar.x === x0 && M.spelar.y === y0; n++) await vent(20);
+        tO(k); for (let n = 0; n < 40 && M.spelar.flytt; n++) await vent(20); await vent(120);
+      }
+      const hopp = [], skuv = new Set();
+      async function logg(kart, x, y, dir, tastar, namn) {
+        M.last(kart, "1"); M.plasser(x, y, dir); await vent(250);
+        let forr = null, aktiv = true;
+        const maal = () => {
+          const v = M.spelarVis(), t = w.performance.now(), px = Math.round(v.x * 16);
+          if (v.skuv) skuv.add(v.skuv);
+          if (forr) { const tikk = Math.max(1, Math.round((t - forr.t) / (1000 / 60))), dy = Math.abs(v.py - forr.py) / tikk, dx = Math.abs(px - forr.px) / tikk;
+            if (dy > 3 || dx > 3) hopp.push(`${namn}: ${forr.px},${forr.py} til ${px},${v.py} på ${tikk} tikk`); }
+          forr = { t, py: v.py, px };
+          if (aktiv) w.requestAnimationFrame(maal);
+        };
+        w.requestAnimationFrame(maal);
+        for (const k of tastar) await steg8(k);
+        await vent(150); aktiv = false; await vent(50);
+        while (T().iHending() || synleg("#rpg-tale")) { tast("z"); await vent(120); }
+      }
+      await logg("asen-stova", 4, 5, 1, ["ArrowUp", "ArrowLeft", "ArrowRight", "ArrowRight", "ArrowDown"], "benken i stova");
+      await logg("asen-stova", 7, 4, 1, ["ArrowUp", "ArrowDown"], "kubbestolen");
+      await logg("kyrkja", 4, 17, 0, ["ArrowDown", "ArrowRight", "ArrowRight", "ArrowUp"], "kyrkjebenken");
+      const R8 = w.RPGData.KART.utmarka.rader, sy8 = R8.findIndex(r => r.includes("Å")), sx8 = R8[sy8].indexOf("Å") - 1;
+      await logg("utmarka", sx8, sy8 - 1, 0, ["ArrowDown", "ArrowUp"], "stokken");
+      await logg("asen-stova", 10, 3, 1, ["ArrowUp", "ArrowDown"], "senga");
+      sjekk(!hopp.length, `inn på og ut av seta og senga, og langs benken, hoppar ikkje posisjonen eller høgda meir enn 3 pikslar per tikk${hopp.length ? ": " + hopp.slice(0, 4).join("; ") : ""}`);
+      sjekk(["skuvh1", "skuvh2", "skuvv1", "skuvv2"].every(k => skuv.has(k)), `langs benken syner rammene for å flytte seg sidelengs, begge vegar (${[...skuv].join(", ")})`);
+      const iv = w.Pikslar.figur(w.RPGData.U.ivar);
+      sjekk(iv.skuv && ["skuvh1", "skuvh2", "skuvv1", "skuvv2"].every(k => iv.pose[k] && iv.pose[k].length === 4), "Ivar har rammene for å flytte seg sidelengs i fire retningar i arket");
+    }
+
+    // 8f. Huldra i følgjet når Ivar set seg (runde 92): ho er aldri meir enn 2 ruter unna Ivar, og ho flyttar
+    //     seg aldri meir enn éi rute per steg, inn på og langs benken i stova, kyrkjebenken og stokken.
+    {
+      M.settFylgje(w.Pikslar.figur(w.RPGData.U.huldra));
+      const tN = k => d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true }));
+      const tO = k => d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true }));
+      async function steg9(k) {
+        const x0 = M.spelar.x, y0 = M.spelar.y; tN(k);
+        for (let n = 0; n < 25 && M.spelar.x === x0 && M.spelar.y === y0; n++) await vent(20);
+        tO(k); for (let n = 0; n < 40 && M.spelar.flytt; n++) await vent(20); await vent(100);
+      }
+      const langt = [], hopp = [];
+      async function prov(kart, x, y, dir, tastar, namn) {
+        M.last(kart, "1"); M.plasser(x, y, dir); await vent(250);
+        let forr = null, aktiv = true;
+        const vakt = () => {
+          const f = M.aktor("fylgje"), s = M.spelar;
+          if (f) {
+            const avst = Math.abs(f.x - s.x) + Math.abs(f.y - s.y);
+            if (avst > 2) langt.push(`${namn}: Huldra ${f.x},${f.y}, Ivar ${s.x},${s.y}`);
+            if (forr && Math.abs(f.x - forr.x) + Math.abs(f.y - forr.y) > 1) hopp.push(`${namn}: ${forr.x},${forr.y} til ${f.x},${f.y}`);
+            forr = { x: f.x, y: f.y };
+          }
+          if (aktiv) w.requestAnimationFrame(vakt);
+        };
+        w.requestAnimationFrame(vakt);
+        for (const k of tastar) await steg9(k);
+        aktiv = false; await vent(50);
+      }
+      await prov("asen-stova", 4, 5, 1, ["ArrowUp", "ArrowLeft", "ArrowRight", "ArrowRight", "ArrowDown", "ArrowDown"], "benken i stova");
+      await prov("kyrkja", 4, 17, 0, ["ArrowDown", "ArrowRight", "ArrowRight", "ArrowRight", "ArrowRight", "ArrowUp", "ArrowUp"], "kyrkjebenken");
+      const R9 = w.RPGData.KART.utmarka.rader, sy9 = R9.findIndex(r => r.includes("Å")), sx9 = R9[sy9].indexOf("Å") - 1;
+      await prov("utmarka", sx9, sy9 - 1, 0, ["ArrowDown", "ArrowUp", "ArrowUp"], "stokken");
+      sjekk(!langt.length, `Huldra er aldri meir enn 2 ruter unna Ivar når han set seg og reiser seg${langt.length ? ": " + langt.slice(0, 3).join("; ") : ""}`);
+      sjekk(!hopp.length, `Huldra flyttar seg aldri meir enn éi rute per steg${hopp.length ? ": " + hopp.slice(0, 3).join("; ") : ""}`);
     }
 
     // 9. Posar: knele, sitje, peike, liggje og sove. Posen varer til figuren går eller hendinga
@@ -437,7 +515,7 @@ f.onload = async () => {
 
     // Stabburet før skiftebrevet: skrinet etter far står ikkje i stova, og døra er låst.
     const haldTast = async (k, ms) => { d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true })); await vent(ms); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true })); };
-    M.last("asen-stova", "1"); M.plasser(9, 2, 1); await vent(300);              // skrinet står ved hovudgavlen (9,1)
+    M.last("asen-stova", "1"); M.plasser(7, 1, 3); await vent(300);              // skrinet står inntil bakveggen (8,1)
     const skrin = M.kart.kister.find(k => k.id === "k-skrin");
     tast("z"); await vent(400);
     sjekk(skrin && !skrin.vis(s10) && !synleg("#rpg-tale") && !s10.nokkel.includes("stabburnokkel"), "før skiftebrevet står skrinet etter far ikkje i stova, og nøkkelen er ikkje å finne");
@@ -481,7 +559,7 @@ f.onload = async () => {
 
     // e) Stabburet etter skiftebrevet: skrinet etter far står ved senga, og nøkkelen ligg i det.
     //    Døra går opp (låsen første gong), inne spelar «stabburet» éin gong, og døra fører ut att.
-    M.last("asen-stova", "1"); M.plasser(9, 2, 1); await vent(300);              // skrinet står ved hovudgavlen (9,1)
+    M.last("asen-stova", "1"); M.plasser(7, 1, 3); await vent(300);              // skrinet står inntil bakveggen (8,1)
     let saaNokkel = false;
     tast("z");
     await trykkGjennom(() => s10.flagg.stabburnokkel && !T().iHending() && !synleg("#rpg-tale"), () => { const i = d.querySelector(".rpg-naer img"); if (i && /stabburnokkel/.test(i.src)) saaNokkel = true; });

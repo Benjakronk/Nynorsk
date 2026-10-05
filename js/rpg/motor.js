@@ -366,14 +366,15 @@ window.Motor = (function () {
       const same = (sete && (seteVed(nx, ny) || {}).b === sete.b) || (seng && (sengVed(nx, ny) || {}).b === seng.b);
       if (same) {
         if (!ledig(nx, ny)) return false;
-        fylgjeEtter();
+        fylgjeEtter(nx, ny);
         spelar.flytt = { fx: spelar.x, fy: spelar.y, t0: no, fart: GA_FART, glid: true, dir: spelar.dir };
         spelar.x = nx; spelar.y = ny;
         return true;
       }
       if (!kanReiseSeg(dir) || (!kanGaa(nx, ny) && !kanSitjeInn(nx, ny, dir))) return false;
       const sitDir = spelar.dir;
-      spelar.dir = dir; fylgjeEtter();
+      spelar.reisLyft = figurVis(spelar).lyft; spelar.reisT = performance.now();   // høgda glir ned att (figurVis)
+      spelar.dir = dir; fylgjeEtter(nx, ny);
       spelar.flytt = { fx: spelar.x, fy: spelar.y, t0: no, fart: GA_FART, reis: seng ? "seng" : "sete", sitDir, dir };
       spelar.x = nx; spelar.y = ny; spelar.steg++;
       return true;
@@ -392,8 +393,8 @@ window.Motor = (function () {
       if (!dor.kant) { gaaGjennom(dor); return false; }
     }
     if (!kanGaa(nx, ny) && !kanSitjeInn(nx, ny, dir) && !kanLeggjeSeg(nx, ny)) return false;
-    fylgjeEtter();
-    // Inn på eit sete: retninga han skal sitje i, er kjend alt no (teikninga set han ned halvvegs).
+    fylgjeEtter(nx, ny);
+    // Inn på eit sete: retninga han skal sitje i, er kjend alt no.
     const inn = seteVed(nx, ny);
     spelar.flytt = { fx: spelar.x, fy: spelar.y, t0: no, fart: springTast ? SPRING_FART : GA_FART, dir,
       sitDir: inn ? seteRetning(inn, nx, ny, dir) : null };
@@ -402,15 +403,26 @@ window.Motor = (function () {
     return true;
   }
   const retningMot = (x0, y0, x1, y1, d) => x1 > x0 ? 3 : x1 < x0 ? 2 : y1 > y0 ? 0 : y1 < y0 ? 1 : d;
-  /* Følgjet går til ruta spelaren går frå, men aldri inn på eit sete: går spelaren langs ein benk,
-     ventar ho. Er ho meir enn eitt steg frå ruta (spelaren gjekk ut av benken ein annan stad), går
-     ho dit med regi, kortaste vegen rundt møblane. */
-  function fylgjeEtter() {
+  /* Følgjet (runde 92): når spelaren går frå (spelar.x, spelar.y) til (tx, ty), tek følgjet ruta han gjekk
+     frå om ho står inntil ho (vanleg følgje). Gjekk han frå eit sete eller ei seng (langs benken, ut av
+     benken), går ho aldri dit: står ho alt inntil målet hans, blir ho ståande, elles tek ho eitt steg på
+     kortaste vegen mot den næraste ledige ruta inntil målet. Ho flyttar seg aldri meir enn éi rute per
+     steg, og aldri inn på eit sete eller i ei seng. */
+  function fylgjeEtter(tx, ty) {
     if (!fylgje || fylgje.regi) return;
-    const x = spelar.x, y = spelar.y;
-    if (!kanGaa(x, y) && (seteVed(x, y) || sengVed(x, y))) return;
-    if (Math.abs(fylgje.x - x) + Math.abs(fylgje.y - y) > 1) { gaa("fylgje", { rute: [x, y] }, GA_FART); return; }
-    fylgje.flytt = { fx: fylgje.x, fy: fylgje.y }; fylgje.dir = retningMot(fylgje.x, fylgje.y, x, y, fylgje.dir); fylgje.x = x; fylgje.y = y;
+    const fx = spelar.x, fy = spelar.y, avst = (x, y) => Math.abs(fylgje.x - x) + Math.abs(fylgje.y - y);
+    const steg = (x, y) => { fylgje.flytt = { fx: fylgje.x, fy: fylgje.y }; fylgje.dir = retningMot(fylgje.x, fylgje.y, x, y, fylgje.dir); fylgje.x = x; fylgje.y = y; };
+    if (kanGaa(fx, fy) && !doraVed(fx, fy) && avst(fx, fy) === 1) { steg(fx, fy); return; }
+    if (fylgje.x === fx && fylgje.y === fy) { if (kanGaa(fx, fy)) return; }   // står på ruta hans (ved start): blir der
+    if (avst(tx, ty) === 1 && kanGaa(fylgje.x, fylgje.y)) return;
+    let best = null;
+    for (let d = 0; d < 4; d++) {
+      const x = tx + DX[d], y = ty + DY[d];
+      if ((x === fylgje.x && y === fylgje.y) || !kanGaa(x, y) || doraVed(x, y) || (x === fx && y === fy)) continue;
+      const v = vegTil(fylgje, x, y);
+      if (v && v.length && (!best || v.length < best.length)) best = v;
+    }
+    if (best) steg(fylgje.x + DX[best[0]], fylgje.y + DY[best[0]]);
   }
 
   function gaaGjennom(dor) {
@@ -428,6 +440,7 @@ window.Motor = (function () {
     if (sengVed(a.x, a.y)) { a.pose = ligg; a.dir = 0; return "seng"; }
     const st = seteVed(a.x, a.y);
     if (!st) return false;
+    if (a.pose !== "sitje") a.sitT = performance.now();               // høgda glir opp på setet (figurVis)
     a.pose = "sitje";
     const liggjande = byggBreidd(st.b) >= st.b.h, passar = st.s.retning != null ? a.dir === st.s.retning : (liggjande ? a.dir < 2 : a.dir >= 2);
     if (inn != null || !passar) a.dir = seteRetning(st, a.x, a.y, inn);
@@ -436,8 +449,8 @@ window.Motor = (function () {
   const setSeg = inn => setjeSeg(spelar, inn);
   /* Scenesteg: figuren kven set seg på setet eller legg seg i senga på ruta [x, y] (pose «sitje»,
      «sove» eller «liggje»). Med gaaDit går han dit først: til ei ledig rute attmed (ikkje bak ryggen),
-     og så inn som spelaren gjer; elles står han der med ein gong. Han set seg halvvegs i det siste
-     steget (setjeTil), så han aldri står på setet. */
+     og så inn som spelaren gjer; elles står han der med ein gong. Han går heilt inn og set seg i éi
+     ramme, og høgda glir opp på setet (figurVis). */
   async function brukMoebel(kven, rute, gaaDit, pose) {
     const a = aktor(kven); if (!a || !kart) return;
     const [x, y] = typeof rute === "string" ? kart.merke[rute] || [] : rute || [];
@@ -459,10 +472,7 @@ window.Motor = (function () {
       if (best) {
         if (best.length > 1) await gaa(kven, { sti: best.slice(0, -1) });
         inn = best[best.length - 1];
-        const mal = { x, y, pose: st ? "sitje" : pose, dir: st ? seteRetning(st, x, y, inn) : 0 };
-        a.setjeTil = mal;
         await gaa(kven, { sti: [inn] });
-        a.setjeTil = null;
       }
     }
     if (a.x !== x || a.y !== y) Object.assign(a, { x, y, fx: x, fy: y, flytt: null });
@@ -471,7 +481,7 @@ window.Motor = (function () {
     if (a === spelar && fylgje && fylgje.x === x && fylgje.y === y) plasserFylgje();
   }
   /* Scenesteg: figuren kven reiser seg frå setet eller står opp av senga og går eitt steg ut: framover
-     (retninga til setet), elles til sidene, ut av senga helst nedover. Han reiser seg halvvegs i steget. */
+     (retninga til setet), elles til sidene, ut av senga helst nedover. Han reiser seg i éi ramme. */
   async function reis(kven) {
     const a = aktor(kven); if (!a || !kart) return;
     const st = seteVed(a.x, a.y), sg = sengVed(a.x, a.y), b = (st || sg || {}).b;
@@ -481,39 +491,41 @@ window.Motor = (function () {
     const d = rekkje.find(d => { const nx = a.x + DX[d], ny = a.y + DY[d]; const n = seteVed(nx, ny) || sengVed(nx, ny);
       return !(n && n.b === b) && kanGaa(nx, ny) && !opptatt(a, nx, ny) && !doraVed(nx, ny); });
     if (d == null) { console.warn("Regi: ingen veg ut av", b.id, "for", kven); a.pose = null; return; }
-    a.reisFra = { x: a.x, y: a.y, pose: a.pose, dir: a.dir };
-    await gaa(kven, { sti: [d] });
-    a.reisFra = null; a.pose = null;
+    a.reisLyft = figurVis(a).lyft; a.reisT = performance.now();       // høgda glir ned att (figurVis)
+    await gaa(kven, { sti: [d] });                                    // gaa tek posen bort: han reiser seg i éi ramme
+    a.pose = null;
     if (a.hx !== undefined) { a.hx = a.x; a.hy = a.y; a.neste = performance.now() + 2000; }
   }
-  /* Korleis ein figur blir teikna: på eit sete sit han (sete), i ei seng ligg han under dyna (seng).
-     I steget inn på eller ut av eit sete eller ei seng i ei scene (setjeTil, reisFra) blir han
-     teikna sitjande eller liggjande den halvdelen av steget som er nærast setet. */
+  /* Korleis ein figur blir teikna (runde 92): på eit sete sit han, i ei seng ligg han under dyna. Han
+     går heilt inn på ruta i vanleg gangtakt og byter så til sitjeposen i éi ramme, og høgda (lyft:
+     setehøgda og SITJE_DY) glir på tre tikk (sitT). Ut att reiser han seg i éi ramme og går ut. Langs ein
+     benk glir spelaren sitjande (flytt.glid) med rammene for å flytte seg sidelengs (skuvh1, skuvh2 mot
+     høgre, skuvv1, skuvv2 mot venstre). py er biletrada til føtene (for testane). */
   function figurVis(a) {
-    const v = { x: a.fx, y: a.fy, dir: a.dir, pose: a.pose, sete: null, seng: null }, u = a.u || 0;
-    if (a.flytt && a.setjeTil && u >= 0.5) Object.assign(v, a.setjeTil);
-    else if (a.reisFra && (!a.flytt || u <= 0.5)) Object.assign(v, a.reisFra);
-    else if (a.flytt) return v;
-    if (v.pose === "sitje") v.sete = seteVed(v.x, v.y);
-    else if (v.pose === "sove" || v.pose === "liggje") v.seng = sengVed(v.x, v.y);
+    const v = { x: a.fx, y: a.fy, dir: a.dir, pose: a.pose, sete: null, seng: null, lyft: 0 };
+    const f = a.flytt;
+    if (f && f.glid) {
+      const st = seteVed(a.x, a.y), u = a.u || 0;
+      if (st) {
+        Object.assign(v, { pose: "sitje", sete: st });
+        const mot = a.x - f.fx, fase = u < 0.4 ? 1 : u < 0.8 ? 2 : 0;
+        if (fase) v.skuv = (mot < 0 && a.dir < 2 ? "skuvv" : "skuvh") + fase;
+      } else v.seng = sengVed(a.x, a.y);
+    } else if (!f) {
+      if (v.pose === "sitje") v.sete = seteVed(v.x, v.y);
+      else if (v.pose === "sove" || v.pose === "liggje") v.seng = sengVed(v.x, v.y);
+    }
+    if (v.sete) {
+      const k = a.sitT ? Math.min(1, Math.max(0, (performance.now() - a.sitT) / (3 * TIKK))) : 1;
+      v.lyft = Math.round((SITJE_DY[v.dir] - v.sete.s.hogd) * k);
+    } else if (a.reisT && a.reisLyft && v.pose !== "sitje") {         // reist seg: høgda glir ned att på fem tikk (han går samstundes)
+      const k = Math.min(1, (performance.now() - a.reisT) / (5 * TIKK));
+      if (k < 1) v.lyft = Math.round(a.reisLyft * (1 - k));
+    }
+    v.py = Math.round(v.y * S) + v.lyft - hogdVed(v.x, v.y);
     return v;
   }
-  /* Korleis spelaren blir teikna no (figurane i teikn()). På eit sete sit han, og langs benken glir
-     han sitjande. I eit steg inn på eit sete set han seg halvvegs, og i eit steg ut reiser han seg
-     halvvegs, så han aldri står på golvet bak ryggen. I senga ligg han under dyna (seng). */
-  function spelarVis() {
-    if (spelar.regi || spelar.setjeTil || spelar.reisFra) return figurVis(spelar);   // i ei scene: som alle figurar
-    const v = { x: spelar.fx, y: spelar.fy, dir: spelar.dir, pose: spelar.pose, sete: null, seng: null };
-    const f = spelar.flytt, u = spelar.u, til = f && seteVed(spelar.x, spelar.y), tilSeng = f && sengVed(spelar.x, spelar.y);
-    if (f && f.glid) { if (til) Object.assign(v, { pose: "sitje", sete: til }); else if (tilSeng) v.seng = tilSeng; }
-    else if (f && u >= 0.5 && til && f.sitDir != null) Object.assign(v, { x: spelar.x, y: spelar.y, pose: "sitje", dir: f.sitDir, sete: til });
-    else if (f && u >= 0.5 && tilSeng) Object.assign(v, { x: spelar.x, y: spelar.y, pose: "liggje", seng: tilSeng });
-    else if (f && u <= 0.5 && f.reis === "sete") Object.assign(v, { x: f.fx, y: f.fy, pose: "sitje", dir: f.sitDir, sete: seteVed(f.fx, f.fy) });
-    else if (f && u <= 0.5 && f.reis === "seng") Object.assign(v, { x: f.fx, y: f.fy, pose: "sove", seng: sengVed(f.fx, f.fy) });
-    else if (!f && (spelar.pose === "sove" || spelar.pose === "liggje")) v.seng = sengVed(spelar.x, spelar.y);
-    else if (!f && spelar.pose === "sitje") v.sete = seteVed(spelar.x, spelar.y);
-    return v;
-  }
+  const spelarVis = () => figurVis(spelar);
   function komFram(glid, inn) {
     const sett = setSeg(glid ? null : inn);
     if (sett === "seng" && !glid && krokar.seng) krokar.seng();        // kvile under dyna (spel.js)
@@ -1192,8 +1204,19 @@ window.Motor = (function () {
     const ovre = h(x0, y0) * (1 - tx) + h(x0 + 1, y0) * tx, nedre = h(x0, y0 + 1) * (1 - tx) + h(x0 + 1, y0 + 1) * tx;
     return Math.round(ovre * (1 - ty) + nedre * ty);
   }
+  /* Inventar inntil ein sidevegg inne (runde 92): biletet er 8 pikslar breiare enn fotavtrykket, så
+     det går 4 pikslar ut på kvar side. Står det inntil sideveggen, blir det skuva 4 pikslar inn i rommet,
+     så det står mot veggen og ikkje inne i han. dy på bygget i kartet flyttar biletet opp eller ned
+     (senga med hovudgavlen heilt inntil bakveggen). */
+  function byggDx(b) {
+    if (!kart.def.inne || b.over || b.flat || b.faktor) return 0;
+    const w = byggBreidd(b), vegg = (x, y) => "XcG".includes((kart.fliser[y] || [])[x] || "");
+    let v = false, h = false;
+    for (let y = b.y; y < b.y + b.h; y++) { if (vegg(b.x - 1, y)) v = true; if (vegg(b.x + w, y)) h = true; }
+    return v && !h ? 4 : h && !v ? -4 : 0;
+  }
   function byggPos(b, img, ox, oy) {
-    const x = Math.round((b.x + ox) * S) - 4, y = Math.round((b.y + b.h + oy) * S) - img.height;
+    const x = Math.round((b.x + ox) * S) - 4 + byggDx(b), y = Math.round((b.y + b.h + oy) * S) - img.height + (b.dy || 0);
     if (!b.faktor) return [x, y];
     const f = Array.isArray(b.faktor) ? b.faktor : [b.faktor, b.faktor];
     const mx = (b.x + (img.width - 8) / S / 2 + ox) * S - LW / 2, my = (b.y + b.h - 0.5 + oy) * S - LH / 2;
@@ -1238,7 +1261,7 @@ window.Motor = (function () {
       }
       const type = b.id === "inne-grue" ? "grue" : b.id === "inne-kakkelomn" ? "kakkelomn" : b.id === "inne-jernomn" ? "lys" : b.id === "inne-glugge" ? "glugge" : null;
       const img = type && Pikslar.bygg(b.id); if (!img) continue;
-      const bx = Math.round((b.x + ox) * S) - 4, by = Math.round((b.y + b.h + oy) * S) - img.height;
+      const [bx, by] = byggPos(b, img, ox, oy);
       const r = (Pikslar.ILD[b.id] || [])[0];                         // elden i grua og omnen: ankeret er nedst midt i elden
       ut.push(r ? [bx + r.x + (r.w >> 1), by + r.y + r.h, type, b.x * 3 + b.y] : [bx + (img.width >> 1), by + (img.height >> 1), type, b.x * 3 + b.y]);
     }
@@ -1670,7 +1693,13 @@ window.Motor = (function () {
     for (const b of kart.def.bygg || []) { const img = Pikslar.bygg(b.id), fram = Pikslar.SETE && Pikslar.SETE[b.id] && Pikslar.SETE[b.id].fram;
       // flat: true (gravheller, golvteppe) ligg på golvet og blir teikna før alle figurane, utan slagskugge.
       // lag: n på eit bygg gir det ein fast plass i teikneorden (karmen rundt opninga bak preikestolen).
-      if (img) figurar.push({ y: b.over ? 999 + b.y / 1000 : b.flat ? -1 : b.lag != null ? b.lag : b.y + b.h - 1 + (fram ? 0.03 : 0.01), by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id, b }); }
+      if (!img) continue;
+      /* Store møblar inne (runde 92) blir delte i ei stripe per flisrad, kvar sortert etter rada si, så
+         ein figur som står attmed møbelet, blir dekt berre av den delen som er lenger nede enn føtene
+         hans (Ivar ved sida av senga). Den øvste stripa tek med alt over møbelet (pipa, gavlen). */
+      const del = kart.def.inne && !b.over && !b.flat && b.lag == null && !b.faktor && !(Pikslar.SETE && Pikslar.SETE[b.id]);
+      if (del) { for (let r = b.y; r < b.y + b.h; r++) figurar.push({ y: r - 0.05, by: b.y + b.h - 1, x: b.x, bygg: img, id: b.id, b, stripe: [r === b.y ? null : r, r === b.y + b.h - 1 ? null : r + 1], botn: r === b.y + b.h - 1 }); continue; }
+      figurar.push({ y: b.over ? 999 + b.y / 1000 : b.flat ? -1 : b.lag != null ? b.lag : b.y + b.h - 1 + (fram ? 0.03 : 0.01), by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id, b, botn: true }); }
     // Den som sit eller ligg, blir teikna over inventaret på same rad (benken, senga). Den som sit
     // på eit sete, blir sortert etter den nedste rada til setet (ein ståande benk er fleire fliser).
     // kart.def.lag: { "x,y": djupn } gir den som står på ruta ein annan plass i teikneorden (til dømes i
@@ -1698,12 +1727,17 @@ window.Motor = (function () {
         // Slagskugge på bakken, mot høgre og ned (lyset kjem frå oppe til venstre): silhuetten
         // til huset forskoven, men berre nedst ved bakken, så høge ting (tårnet) ikkje kastar
         // ei stripe oppover i graset. Inne fell skuggen berre på golvet, ikkje på sideveggene.
-        const bx = Math.round((f.x + ox) * S) - 4, by = Math.round((f.by + 1 + oy) * S);   // botnrada (ikkje sorteringa, som kan vere lag)
+        const bx = Math.round((f.x + ox) * S) - 4 + byggDx(f.b), by = Math.round((f.by + 1 + oy) * S) + (f.b.dy || 0);   // botnrada (ikkje sorteringa, som kan vere lag)
         const sx0 = kart.def.inne ? Math.max(bx, Math.round((1 + ox) * S)) : bx;
         const sx1 = kart.def.inne ? Math.min(bx + f.bygg.width + 8, Math.round((kart.w - 1 + ox) * S)) : bx + f.bygg.width + 8;
-        g.save(); g.beginPath(); g.rect(sx0, by - 22, sx1 - sx0, 26); g.clip();
-        g.globalAlpha = 0.28; g.drawImage(skuggeAv(f.bygg), bx + 4, by - f.bygg.height + 3); g.restore();
+        if (f.botn) { g.save(); g.beginPath(); g.rect(sx0, by - 22, sx1 - sx0, 26); g.clip();
+          g.globalAlpha = 0.28; g.drawImage(skuggeAv(f.bygg), bx + 4, by - f.bygg.height + 3); g.restore(); }
+        // Ei stripe av eit stort møbel: berre biletradene som høyrer til flisrada (stripe [frå, til], null: ope).
+        const klipp = f.stripe && (c => { c.save(); c.beginPath(); const y0 = f.stripe[0] == null ? -1e4 : Math.round((f.stripe[0] + oy) * S), y1 = f.stripe[1] == null ? 1e4 : Math.round((f.stripe[1] + oy) * S); c.rect(-1e4, y0, 2e4, y1 - y0); c.clip(); });
+        if (klipp) { klipp(g); if (figMaske) klipp(fg); }
         g.drawImage(f.bygg, bx, by - f.bygg.height); maske(f.bygg, bx, by - f.bygg.height, true);
+        if (klipp) { g.restore(); if (figMaske) fg.restore(); }
+        if (!f.botn) continue;
         for (const r of Pikslar.ILD[f.id] || []) Pikslar.ild(g, bx + r.x, by - f.bygg.height + r.y, r.w, r.h, no, r.glo, Pikslar.ildMaske(f.bygg, r));
         if (dorAnim && f.by === dorAnim.ty) teiknDor(no, ox, oy);
         for (const [rx, ry] of Pikslar.ROYK[f.id] || []) Pikslar.royk(g, bx + rx, by - f.bygg.height + ry, no);
@@ -1723,7 +1757,7 @@ window.Motor = (function () {
         klipt = true;
       }
       // Den som sit på eit sete, blir lyft opp på det (hogd), og setet har sin eigen skugge.
-      const sx = Math.round((f.x + ox) * S) + hogdVed(f.x, f.y, 1), sy = Math.round((f.y + oy) * S) + (f.sete ? SITJE_DY[f.dir] - f.sete.s.hogd : 0) - hogdVed(f.x, f.y);
+      const sx = Math.round((f.x + ox) * S) + hogdVed(f.x, f.y, 1), sy = Math.round((f.y + oy) * S) + (f.lyft != null ? f.lyft : f.sete ? SITJE_DY[f.dir] - f.sete.s.hogd : 0) - hogdVed(f.x, f.y);
       // I senga (runde 88): liggjeramma spegla, så hovudet ligg på puta, og dyna (den delen av
       // sengebiletet) teikna over kroppen, så berre hovudet stikk ut. Søv han, stig det z.
       if (f.seng && f.sp.rammer) {
@@ -1745,7 +1779,7 @@ window.Motor = (function () {
         continue;
       }
       // Ein pose (knele, sitje, peike) går framfor kjensla. Liggje og sove er ramma for slått ut (24 x 16).
-      const pose = f.pose && f.sp.pose && f.sp.pose[f.pose];
+      const pose = f.pose && f.sp.pose && f.sp.pose[f.skuv && f.sp.skuv ? f.skuv : f.pose];   // skuv: sidelengs på benken
       if (pose && !Array.isArray(pose)) {
         g.fillStyle = "rgba(10,5,20,.28)"; g.fillRect(sx - 2, sy + 10, 20, 3); g.fillRect(sx, sy + 9, 16, 5);
         g.drawImage(pose, sx - 4, sy - FOT + 8); maske(pose, sx - 4, sy - FOT + 8);

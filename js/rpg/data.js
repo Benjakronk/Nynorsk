@@ -337,7 +337,7 @@ window.RPGData = (function () {
       namn: "Stova på Åsen", stemning: "inne", golv: "P", inne: true, bakgrunn: "inne",
       // Inventaret er figurar laga med tools/pikselkunst/inventar.py. «(» er fast golv under dei.
       // Langbordet med ein benk framfor og ein kubbestol ved kvar ende (stolen ser mot bordet).
-      bygg: [{ id: "inne-grue", x: 1, y: 0, h: 2 }, { id: "inne-hylle", x: 5, y: 0, h: 1 }, { id: "inne-seng", x: 10, y: 1, h: 2 },   // senga står på langs inn frå veggen, som i FF6 (runde 89)
+      bygg: [{ id: "inne-grue", x: 1, y: 0, h: 2 }, { id: "inne-hylle", x: 5, y: 0, h: 1 }, { id: "inne-seng", x: 10, y: 1, h: 2, dy: -7 },   // senga står på langs inn frå veggen, som i FF6 (runde 89); dy: hovudgavlen heilt inntil bakveggen (runde 92)
         { id: "inne-langbord", x: 3, y: 2, h: 2 }, { id: "inne-benk", x: 3, y: 4, h: 1 },
         { id: "inne-kubbestol-hogre", x: 2, y: 3, h: 1 }, { id: "inne-kubbestol-venstre", x: 7, y: 3, h: 1 }, { id: "inne-rokk", x: 9, y: 6, h: 1 }],
       rader: [
@@ -356,8 +356,8 @@ window.RPGData = (function () {
         // Skrinet etter far står framme ved senga etter skiftebrevet (syster henta brevet der).
         // Stabburnøkkelen ligg i det. vis: kista finst berre når vilkåret held; manus: opninga;
         // bilete: eit eige inventarbilete i staden for kistefliser.
-        // Runde 90: inntil bakveggen ved hovudgavlen på senga (på golvet ved sida av), synleg og lett å nå.
-        { ved: [9, 1], id: "k-skrin", bilete: "inne-skrin", vis: st => !!st.flagg.skiftebrev, manus: "fars_skrin", tom: "Skrinet etter far er tomt no. Berre papira hans ligg att." }],
+        // Runde 92: inntil bakveggen, med ei tom rute mellom skrinet og senga (senga går ut over rute 9).
+        { ved: [8, 1], id: "k-skrin", bilete: "inne-skrin", vis: st => !!st.flagg.skiftebrev, manus: "fars_skrin", tom: "Skrinet etter far er tomt no. Berre papira hans ligg att." }],
       folk: [
         { merke: "@", u: "bror", namn: "Storebror", atferd: "snu", retning: 2, snu: [0, 2, 3], tale: "bror" },
         { merke: "%", u: "syster", namn: "Syster", atferd: "stille", pose: "sitje", flis: "(", tale: "syster" },   // sit på kubbestolen ved enden av langbordet og ser mot bordet
@@ -541,7 +541,7 @@ window.RPGData = (function () {
       // Ein bauta ved den gamle ferdselsvegen, rett over brua (sjå naturting på asen).
       // Bålplassen med gryte på setervollen (ÅÅ, runde 87) er lagringsstaden i utmarka, med ein stokk
       // å sitje på (sete: Ivar kan gå inn på stokken og set seg med andletet mot elden).
-      naturting: [{ ved: [20, 24], bilete: "bauta", manus: "bauta_vegen" }, { ved: [21, 21], bilete: "sitjestokk", sete: { hogd: 4, retning: 3, rygg: false } }],
+      naturting: [{ ved: [20, 24], bilete: "bauta", manus: "bauta_vegen" }, { ved: [21, 21], bilete: "sitjestokk", sete: { hogd: -2, retning: 3, rygg: false } }],
       /* Nedst (rad 13 til 34) er den gamle utmarka med setra, haugen og brua. Over ein skrent (rad 12,
          rampe ved setervegen på x 27) ligg ei hylle i lia, og over ein skrent til (rad 5, rampe på x 24)
          tjernet der bekken spring ut. Bekken fell over begge skrentane. Kista står ytst på hylla vest for
@@ -893,7 +893,7 @@ window.RPGData = (function () {
     },
     "nedre-hovde": {
       namn: "Stova på Nedre Hovde", stemning: "inne", golv: "P", inne: true, bakgrunn: "inne",
-      bygg: [{ id: "inne-grue", x: 1, y: 0, h: 2 }, { id: "inne-hylle", x: 5, y: 0, h: 1 }, { id: "inne-seng", x: 10, y: 1, h: 2 }, { id: "inne-langbord", x: 2, y: 3, h: 2 }],
+      bygg: [{ id: "inne-grue", x: 1, y: 0, h: 2 }, { id: "inne-hylle", x: 5, y: 0, h: 1 }, { id: "inne-seng", x: 10, y: 1, h: 2, dy: -7 }, { id: "inne-langbord", x: 2, y: 3, h: 2 }],
       rader: [
         "XXXXXXXXXXXX",
         "X(PPPPPPPP(X",
@@ -938,7 +938,7 @@ window.RPGData = (function () {
       ],
       kister: [{ ved: [25, 13], ting: "kaffi", n: 1, id: "k-vegen" }],
       // Bålplassen ved sjøen (å, runde 86) er lagringsstaden på vegen, med ein stokk å sitje på.
-      naturting: [{ ved: [8, 11], bilete: "sitjestokk", sete: { hogd: 4, retning: 2, rygg: false } }],
+      naturting: [{ ved: [8, 11], bilete: "sitjestokk", sete: { hogd: -2, retning: 2, rygg: false } }],
       folk: [{ merke: "@", u: "fiskar", namn: "Fiskar", atferd: "snu", retning: 2, snu: [0, 2], tale: "fiskar" }],
     },
     ekset: {

@@ -184,6 +184,12 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   `poseramme()` i figur.py og av rammene `knele_ned`, `sitje_side` osb. i dei handteikna arka.
   Sjå dei med `skjermbilete.py namn kart=asen-stova m=1 pose=knele retning=1` (retning 0 til 3),
   og alle figurane sine posar saman i `forhand/figurar-posar.png` (`figur.py ark`).
+  Etter posane (kolonne 3 til 6, arket er 112 breitt) står fire rammer for å flytte seg sidelengs på
+  ein benk (runde 92): `skuvh1`, `skuvh2` (mot høgre) og `skuvv1`, `skuvv2` (mot venstre). `skuv()` i
+  handfigur.py lagar dei av sitjeramma for alle figurar (handteikna og frå malen): lyft éi rad med
+  hendene ned mot setet, hovudet og brystet lener i fartsretninga, beina heng etter. Frå sida lyftar
+  rammene seg berre. Sjå med `skjermbilete.py namn kart=asen-stova m=1 x=5 y=4 pose=sitje retning=1 glid=h`
+  (`glid=v` mot venstre).
   Sigerfeiring og løn i kampscena: `skjermbilete.py namn kart=utmarka m=1 kamp=vette parti=huldra vinn=1`.
 - Kjensler: alle figurar har standardsettet glad, trist, sint, sjokk, tenkje, nikk (rad 6
   og 7, laga av `kjensle()` i figur.py). Berre hovudpersonane (Ivar og Huldra) har

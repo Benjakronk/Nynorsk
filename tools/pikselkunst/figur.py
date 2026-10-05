@@ -1130,7 +1130,8 @@ def bilete(u):
     rad 5 svak (på kne) og slått ut (24 x 16, nedst i ruta), rad 6 og 7 standardkjensler,
     rad 8 tom (eigne kjensler i handteikna ark), rad 9 til 12 posane (ned, opp, venstre, høgre)."""
     p = palett(u)
-    im = Image.new("RGBA", (W * 3, H * (POSERAD + 4)), (0, 0, 0, 0))
+    from handfigur import SKUV, skuv                                     # sidelengs på benken (runde 92)
+    im = Image.new("RGBA", (W * (3 + len(SKUV)), H * (POSERAD + 4)), (0, 0, 0, 0))
     def teikn(g, x0, y0):
         for y, rad in enumerate(g):
             for x, c in enumerate(rad):
@@ -1146,7 +1147,9 @@ def bilete(u):
     for n, namn in enumerate(STANDARDKJENSLER): teikn(kjensle(u, namn), (n % 3) * W, (6 + n // 3) * H)
     for dir in range(3):
         for n, namn in enumerate(POSAR): teikn(omriss(poseramme(u, dir, namn)), n * W, (POSERAD + dir) * H)
-    for n in range(len(POSAR)):   # høgre er venstre spegla
+    for n, (namn, fase, mot) in enumerate(SKUV):                         # rammene etter sitjeramma
+        for dir in range(3): teikn(omriss(skuv(poseramme(u, dir, "sitje"), fase, mot if dir < 2 else 0)), (3 + n) * W, (POSERAD + dir) * H)
+    for n in range(len(POSAR) + len(SKUV)):   # høgre er venstre spegla
         rute = im.crop((n * W, (POSERAD + 2) * H, n * W + W, (POSERAD + 3) * H)).transpose(Image.FLIP_LEFT_RIGHT)
         im.paste(rute, (n * W, (POSERAD + 3) * H))
     return im

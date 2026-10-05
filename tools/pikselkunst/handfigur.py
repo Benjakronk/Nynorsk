@@ -79,6 +79,41 @@ def peik_ut(g, y0, y1, arm, rad13, rad14):
     return ["".join(r) for r in g]
 
 
+# Sidelengs på benken (runde 92): fire rammer etter sitjeramma, i kolonne 3 til 6 i posradene:
+# skuvh1, skuvh2 (mot høgre i biletet) og skuvv1, skuvv2 (mot venstre). Frå sida (rad 11 og 12)
+# glir ein langs ein ståande benk, og rammene lyftar seg berre.
+SKUV = (("skuvh1", 1, 1), ("skuvh2", 2, 1), ("skuvv1", 1, -1), ("skuvv2", 2, -1))
+
+
+def skuv(g, fase, mot, hud="h"):
+    """Ei ramme der figuren flyttar seg sidelengs medan han sit (g er sitjeramma, utan omriss).
+    Fase 1: han lyftar seg éi rad frå setet og støttar seg på hendene ved sida av låra, overkroppen
+    lener seg éi kolonne i fartsretninga og beina heng éi kolonne etter. Fase 2: nede på setet att,
+    overkroppen framleis lent, beina har teke att. mot: 1 mot høgre, -1 mot venstre, 0 berre lyft."""
+    g = [list(r) for r in g]
+    h, w = len(g), len(g[0])
+    def flytt(r, dx):
+        if dx > 0: return ["."] * dx + r[:-dx]
+        if dx < 0: return r[-dx:] + ["."] * -dx
+        return r
+    ny = [["."] * w for _ in range(h)]
+    lyft = 1 if fase == 1 else 0
+    for y in range(h):
+        lene = (2 * mot if y <= 9 else mot) if fase == 1 else mot             # hovudet lener lengst
+        r = flytt(g[y], lene) if y <= 14 else flytt(g[y], -mot) if (y >= 19 and fase == 1) else g[y]
+        ty = y - lyft if y < 19 else y
+        for x, c in enumerate(r):
+            if c != "." and 0 <= ty < h: ny[ty][x] = c
+    if lyft:
+        for x, c in enumerate(g[18]):                                   # ingen glipe mellom kropp og lår
+            if c != "." and ny[18][x] == ".": ny[18][x] = c
+        xs = [x for x, c in enumerate(ny[17]) if c != "."]
+        if xs:                                                          # hendene ned mot setet
+            for x in (xs[0] - 1, xs[-1] + 1):
+                if 0 <= x < w: ny[17][x] = hud; ny[18][x] = hud
+    return ny
+
+
 def lag(R, PAL, kjensler, attlatne="j"):
     sjekk(R)
     def teikn(im, g, x0, y0, spegl=False):
@@ -87,7 +122,7 @@ def lag(R, PAL, kjensler, attlatne="j"):
                 if c != ".": im.putpixel((x0 + (len(rad) - 1 - x if spegl else x), y0 + y), hx(PAL[c]) + (255,))
     ramme = lambda namn: omriss(R[namn])
     posar = all(f"{p}_{d}" in R for p in POSAR for d in ("ned", "opp", "side"))
-    im = Image.new("RGBA", (W * 3, H * (POSERAD + 4 if posar else 6 + (len(kjensler) + 2) // 3)), (0, 0, 0, 0))
+    im = Image.new("RGBA", (W * (3 + len(SKUV) if posar else 3), H * (POSERAD + 4 if posar else 6 + (len(kjensler) + 2) // 3)), (0, 0, 0, 0))
     for d, pre in enumerate(("ned", "opp", "side")):
         for s in range(3): teikn(im, ramme(f"{pre}{s}"), s * W, d * H)
     for s in range(3): teikn(im, ramme(f"side{s}"), s * W, 3 * H, spegl=True)
@@ -103,4 +138,8 @@ def lag(R, PAL, kjensler, attlatne="j"):
         for n, p in enumerate(POSAR):
             for d, pre in enumerate(("ned", "opp", "side")): teikn(im, ramme(f"{p}_{pre}"), n * W, (POSERAD + d) * H)
             teikn(im, ramme(f"{p}_side"), n * W, (POSERAD + 3) * H, spegl=True)
+        for n, (namn, fase, mot) in enumerate(SKUV):                   # sidelengs på benken (runde 92)
+            for d, pre in enumerate(("ned", "opp", "side")):
+                teikn(im, omriss(skuv(R[f"sitje_{pre}"], fase, mot if d < 2 else 0)), (3 + n) * W, (POSERAD + d) * H)
+            teikn(im, omriss(skuv(R["sitje_side"], fase, 0)), (3 + n) * W, (POSERAD + 3) * H, spegl=True)
     return im

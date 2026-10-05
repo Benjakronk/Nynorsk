@@ -1414,6 +1414,7 @@ window.Pikslar = (function () {
   const STANDARDKJENSLER = ["glad", "trist", "sint", "sjokk", "tenkje", "nikk"];
   // Posane i arket: rad 9 til 12 (ned, opp, venstre, høgre), kolonnane i denne rekkjefølgja.
   const ARKPOSAR = ["knele", "sitje", "peike"], POSERAD = 9;
+  const SKUVPOSAR = ["skuvh1", "skuvh2", "skuvv1", "skuvv2"];          // sidelengs på benken (handfigur.py, runde 92)
   const figurCache = new Map();
   function figur(u) {
     const k = JSON.stringify(u);
@@ -1452,6 +1453,11 @@ window.Pikslar = (function () {
         teiknInn(kamp.svak, 0, FH * 5); teiknInn(kamp.ute, FW, FH * 5 + 8);
         KJENSLER.forEach((k, i) => { if (img.height >= FH * (7 + Math.floor(i / 3))) teiknInn(kjensle[k], (i % 3) * FW, FH * (6 + Math.floor(i / 3))); });
         if (img.height >= FH * (POSERAD + 4)) ARKPOSAR.forEach((p, i) => pose[p].forEach((c, dir) => teiknInn(c, i * FW, FH * (POSERAD + dir))));
+        // Sidelengs på benken (runde 92): fire rammer etter posane, når arket har dei (112 breitt).
+        if (img.height >= FH * (POSERAD + 4) && img.width >= FW * (ARKPOSAR.length + SKUVPOSAR.length)) {
+          SKUVPOSAR.forEach((p, i) => { pose[p] = [0, 1, 2, 3].map(dir => { const c = lerret(FW, FH); teiknInn(c, (ARKPOSAR.length + i) * FW, FH * (POSERAD + dir)); return c; }); });
+          f.skuv = true;
+        }
       };
       if (klar(img)) bruk(); else img.addEventListener("load", bruk, { once: true });
     }
