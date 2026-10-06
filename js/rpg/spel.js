@@ -419,6 +419,8 @@
       if (d.verd) { await verdskart(); return; }
       await Motor.gjennomDor(d, () => Motor.last(d.til[0], d.til[1]));
     },
+    // Kan døra opnast med eit kort trykk (runde 97)? Ikkje når ei vakt eller eit ord stoppar Ivar først.
+    kanOpne: d => !(d.vakt && !st.flagg[d.vakt.flagg]) && !(d.krevOrd && !st.flagg["opna:" + d.krevOrd]) && !d.verd,
   });
 
   /* ---------- Menyen ---------- */

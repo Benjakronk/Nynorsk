@@ -2669,3 +2669,21 @@ same måte, uansett kven som tek over.
   (syster kjem ut døra og går inn att, ni bilete). Før: `r96-for-*.png`.
 - **Står att:** dørbladet i den opne ramma er smalt (tre pikslar) og syner lite på små dører. Ivar er høgare enn
   døropninga, så hovudet hans går over karmen når han står i ho (som i spelet før).
+
+## Runde 97: eit kort trykk opnar døra
+
+- **Frå brukaren:** dørene skal kunne opnast utan at Ivar går gjennom, om ein berre trykkjer kort i den retninga.
+- **No:** `taSteg()` i motor.js byggjer på skiljet mellom kort trykk og å halde inne (`SNU_TID`, 6 tikk). Står Ivar
+  framfor ei lukka dør han kan opne, og trykkjer mot ho, snur han seg og døra opnar seg med ein gong, utan at han
+  går. Held han tasten inne lenger enn 100 ms, går han gjennom; trykkjer han ein gong til, går han gjennom med ein
+  gong. Midt i gangen (`vidare`) går han rett gjennom som før. Låste dører (`krev`, `vakt`, `krevOrd`, utan `til`)
+  gir teksten sin med ein gong (`kanOpne`, med `krokar.kanOpne` i spel.js).
+- **Når ho lukkar seg:** døra står open så lenge Ivar står framfor og ser mot ho, og lukkar seg 300 ms etter at han
+  går bort eller snur seg (`spelar.dorVent` i `brukDorer`). Ingen tidsgrense: ei dør som smell att medan han står og
+  ser på ho, ville kjennast som at spelet tok kontrollen frå han, og ei dør han har gått frå, lukkar seg uansett.
+- **Haldt inne frå start:** døra opnar seg straks, og han går etter 100 ms (same ventetid som når han snur seg på
+  flisa). Eit kort trykk og å halde inne kan ikkje skiljast før tasten har vore nede ei stund, og ventetida syner
+  den opne døra før han går inn, som i FF6. sjekk-gange er uendra.
+- **Testar:** sjekk-scene bolk 15 d2: kort trykk (60 ms) snur Ivar og opnar døra utan å byte kart, døra står open
+  medan han ser mot ho og lukkar seg når han går bort, eit nytt trykk går gjennom, å halde inne går gjennom, og eit
+  kort trykk mot den låste døra til prestegarden gir teksten.

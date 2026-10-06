@@ -181,7 +181,7 @@ window.Motor = (function () {
         neste: performance.now() + 800 + Math.random() * 2500, sprite: spriteAv(f) });
     });
     kart = { id, def, w, h, fliser, merke, folk, kister: def.kister || [], dorer: (def.dorer || []).filter(d => d.til) };
-    opneDorer = new Map();                                           // nytt kart: alle dører er lukka
+    opneDorer = new Map(); spelar.dorVent = null;                    // nytt kart: alle dører er lukka
     // Den som sit på ein stol utan retning i kartet, ser same vegen som stolen.
     for (const f of folk) if (f.grunnpose === "sitje" && f.retning == null) { const st = seteVed(f.x, f.y); if (st && st.s.retning != null) f.dir = f.grunndir = st.s.retning; }
     for (const a of regi) { a.regi.res(); a.regi = null; } regi.clear(); kam = null;      // nytt kart: regien byrjar på nytt
@@ -263,9 +263,18 @@ window.Motor = (function () {
     const o = opneDorer.get(x + "," + y);
     return !!o && (o.fast || o.til > performance.now());
   }
+  // Kan spelaren opne døra no? Ikkje når ho er låst (krev), eller ei vakt eller eit ord (spel.js) stoppar han.
+  const kanOpne = d => !(d.krev && !krokar.tilstand().flagg[d.krev]) && (!krokar.kanOpne || krokar.kanOpne(d));
   // Ein figur som går inn på eller ut av ei dørrute, held døra open.
   function brukDorer() {
     if (!kart.def.dorer) return;
+    // Opna med eit kort trykk: open så lenge Ivar står framfor og ser mot døra (eller går inn i ho), og
+    // lukkar seg DOR_LUKK etter at han har gått bort eller snudd seg.
+    const v = spelar.dorVent;
+    if (v) {
+      const [tx, ty] = v.ved, framfor = !spelar.flytt && spelar.x + DX[spelar.dir] === tx && spelar.y + DY[spelar.dir] === ty;
+      if (!framfor && !(spelar.x === tx && spelar.y === ty)) { spelar.dorVent = null; opneDorer.set(tx + "," + ty, { til: performance.now() + DOR_LUKK, fast: false }); }
+    }
     for (const a of [spelar, fylgje, ...kart.folk]) {
       if (!a || !a.flytt || (a !== spelar && a !== fylgje && !a.sprite)) continue;
       for (const [x, y] of [[a.x, a.y], [Math.round(a.flytt.fx), Math.round(a.flytt.fy)]]) if (dorDef(x, y)) opneDor(x, y);
@@ -442,6 +451,18 @@ window.Motor = (function () {
       spelar.flytt = { fx: spelar.x, fy: spelar.y, t0: no, fart: GA_FART, reis: seng ? "seng" : "sete", sitDir, dir };
       spelar.x = nx; spelar.y = ny; spelar.steg++;
       return true;
+    }
+    /* Eit kort trykk mot ei lukka dør (runde 97) opnar henne utan at Ivar går gjennom: han snur seg mot
+       døra, ho opnar seg med ein gong, og står open så lenge han står framfor og ser mot henne (sjå
+       brukDorer). Held han tasten lenger enn SNU_TID, eller trykkjer han ein gong til, går han gjennom.
+       Midt i gangen (vidare) går han rett gjennom, og låste dører gir teksten sin som før. */
+    if (!vidare) {
+      const tx = spelar.x + DX[dir], ty = spelar.y + DY[dir], d = doraVed(tx, ty);
+      if (d && !d.kant && !dorOpen(tx, ty) && kanOpne(d)) {
+        spelar.dir = dir; spelar.snudd = true; spelar.dorVent = d;
+        opneDor(tx, ty, DOR_LUKK, true);
+        return false;
+      }
     }
     if (!vidare && dir !== spelar.dir) { spelar.dir = dir; spelar.snudd = true; return false; }
     if (!vidare && spelar.snudd && performance.now() - (trykt[dir] || 0) < SNU_TID) return false;

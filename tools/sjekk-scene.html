@@ -1062,6 +1062,32 @@ f.onload = async () => {
       const fast = M.dorOpen(6, 4);
       await T().hending([{ dor: [6, 4], open: false }]);
       sjekk(fast && !M.dorOpen(6, 4), "scenesteget { dor, open: true } held døra open, og open: false lukkar ho");
+      // d2) Kort trykk (runde 97): opnar døra utan at Ivar går gjennom. Ho står open medan han står
+      //     framfor og ser mot henne, og lukkar seg når han går bort. Held han tasten inne, går han gjennom.
+      M.last("asen", "3"); M.plasser(6, 5, 2); await vent(300);
+      await haldTast("ArrowUp", 60); await vent(440);   // eit kort trykk: kortare enn SNU_TID (100 ms)
+      sjekk(M.kart.id === "asen" && M.spelar.x === 6 && M.spelar.y === 5 && M.spelar.dir === 1 && M.dorOpen(6, 4), `eit kort trykk mot døra snur Ivar og opnar ho utan å byte kart (${M.kart.id} ${M.spelar.x},${M.spelar.y})`);
+      await vent(1500);
+      const openFramfor = M.dorOpen(6, 4);
+      await haldTast("ArrowRight", 150); await vent(700);
+      sjekk(openFramfor && M.spelar.x === 7 && !M.dorOpen(6, 4), "døra står open medan han ser mot henne, og lukkar seg når han går bort");
+      M.plasser(6, 5, 1); await vent(200);
+      await haldTast("ArrowUp", 60); await vent(300); await haldTast("ArrowUp", 60);
+      for (let n = 0; n < 60 && M.kart.id === "asen"; n++) await vent(30);
+      sjekk(M.kart.id === "asen-stova", "eit trykk til mot den opne døra går gjennom");
+      for (let n = 0; n < 60 && M.svart; n++) await vent(20);
+      M.last("asen", "3"); M.plasser(6, 5, 1); await vent(200);
+      await haldTast("ArrowUp", 300);
+      for (let n = 0; n < 60 && M.kart.id === "asen"; n++) await vent(30);
+      sjekk(M.kart.id === "asen-stova", "held han tasten inne, går han rett gjennom døra");
+      for (let n = 0; n < 60 && M.svart; n++) await vent(20);
+      const bed2 = T().st().flagg.prest_bed; delete T().st().flagg.prest_bed;
+      M.last("bygda", "4"); M.plasser(32, 6, 1); await vent(300);
+      let laastKort = "";
+      await haldTast("ArrowUp", 60);
+      await trykkGjennom(() => laastKort && !synleg("#rpg-tale") && !T().iHending(), () => { if (/stengd/.test(taleNo())) laastKort = taleNo(); });
+      sjekk(!M.dorOpen(32, 5) && /stengd/.test(laastKort), "eit kort trykk mot ei låst dør gir teksten, og døra opnar seg ikkje");
+      if (bed2 !== undefined) T().st().flagg.prest_bed = bed2;
       // e) Trapp i opninga: døra til galleritrappa viser trinn opp, døra ned frå galleriet trinn ned.
       sjekk(w.RPGData.KART.kyrkja.dorer.find(o => o.ved[0] === 8 && o.ved[1] === 37).trapp === "opp" && w.RPGData.KART["kyrkje-galleri"].dorer.find(o => o.ved[0] === 10).trapp === "ned", "døra til galleritrappa har trapp opp, og døra ned frå galleriet trapp ned");
       // f) Trappa over fleire fliser (galleritrappa, 8,38 til 8,40): ein kjem ikkje inn på ho frå sida,
