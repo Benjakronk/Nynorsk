@@ -2687,3 +2687,43 @@ same måte, uansett kven som tek over.
 - **Testar:** sjekk-scene bolk 15 d2: kort trykk (60 ms) snur Ivar og opnar døra utan å byte kart, døra står open
   medan han ser mot ho og lukkar seg når han går bort, eit nytt trykk går gjennom, å halde inne går gjennom, og eit
   kort trykk mot den låste døra til prestegarden gir teksten.
+
+## Runde 98: kyrkjegrimen, løyndomskampen i klokketårnet
+
+- **Frå brukaren:** ringjer ein sju gonger i kyrkjeklokka, skal det skje noko, til dømes ein bosskamp.
+- **Utløysaren:** sju drag i klokketauet i eitt og same besøket i tårnet (`{ tel: "klokkedrag", ved: 7 }` i manuset
+  `klokketau`, nytt steg `tel` i spel.js: ein teljar på `Motor.kart`, som byrjar på null kvar gong kartet blir lasta).
+  Sju på rad er ei handling med vilje, og ein som ringjer litt kvar gong han er innom, snublar ikkje over det. Seks drag
+  gjer ingenting.
+- **Scena `kyrkjegrimen`:** klokka svingar og slår ein åttande gong av seg sjølv medan tauet heng stille (rist, «DONG»),
+  dua kjem flaksande i panikk og flyg ut, lyset blir kaldt og mørkt (`tone` på bakgrunnen og figurane), det luktar
+  mold, og grimen trengjer seg opp mellom golvplankane (vesen i full storleik på 3,7, over samtaleboksen). Replikkane:
+  «⟨Hverr hringir klukkunni?⟩ Sju slag utan lik og utan brudlaup. Kven vekkjer meg?», «Dei grov meg ned levande under
+  koret då kyrkja vart reist. Sidan har eg vakta roa i huset.» og «Den som ringjer for ingen, skal ikkje ha røyst.
+  ⟨Þegi þú!⟩». Etter sigeren (`kyrkjegrimen-roleg`): «Du har mæle, gut …», ordet ⟨heilagr⟩, som Ivar høyrer som
+  «heilag» (`lytt`), og «Ring når nokon blir fødd, gift eller gravlagd. Elles skal klokka få kvile.» Så søkk han ned
+  att, Dagboka får ei line, og flagget `kyrkjegrimen` gjer at det berre skjer éin gong.
+- **Kampen:** `kyrkjegrimen` i FIENDAR: 170 HP, åtak 8, forsvar 3, fart 9, slag `vette`, 45 røynsle og eit luktesalt.
+  Kvar tredje tur Klokkedrønn (heile partiet, faktor 0,8, bronseblink: `blink` på spesialen), kvar fjerde tur ny
+  spesialtype `stum` i kamp.js: Ivar mistar røysta, og neste tur er Galdr og Stev gråa ut med «stum». Kamp-steget kan
+  ha eigen bakgrunn (`bakgrunn: "klokketarn"`). Det nye ordet `heilag` (diftong, «heilag», «heilage», dansk «hellig»)
+  gir vern og lækjing for heile partiet.
+- **Grafikk:** `grim.py` (ny, byggjer på `rotte.py`) skriv `fiende-kyrkjegrimen.pix` (80 × 68, 26 fargar) og
+  `-roleg.pix`. Runde for runde: (1) flatt, lågt lam med ringhorn som såg ut som ein monokkel og polkaprikkar i ulla;
+  (2) tyngre kropp, men ulla vart murstein og hovudet ein grå sokk; (3) og (4) hovudet i trekvart med to glødande auge
+  og horna som spiralar (`horn()`: tjukk arm som krøllar seg innover, rifler og lys ytterkant); (5) ulla som krøllete
+  klumpar med eigen cel-skugge (`ull()`), mørkt andlet med lys naserygg; (6) kraftigare formskugge, skuldrene høgare
+  enn bakparten, ragg langs ryggen, kaldare kantlys, og krølltoppane som par så `pix.py sjekk` ikkje melder støy.
+  Moldhaugen under føtene har to beinstumpar. Kampbakgrunnen `klokketarn` i bakgrunn.py: mørk laftevegg, to lydluker
+  med spiler og kaldt lys, klokkestolen og bronseklokka (dempa, kaldt kantlys, mjuk sveif ut mot munnen), tauet,
+  slitne golvplankar, kalde strålar med sot og ein lys flekk der fienden står.
+- **Verktøy:** skjerm.html har fått `bakgrunn=` og `scene=` med `replikk=` (spel ei scene og frys ved replikk nr. n,
+  kampar blir vunne med ein gong).
+- **Testar:** sjekk-kyrkjegang: fire drag, ut og tre til gjer ingenting; seks drag gjer ingenting; det sjuande gir
+  scena og kampen (stubba) med bakgrunnen frå tårnet; grimen talar med norrøn tale; etter sigeren flagget, ordet,
+  Dagboka og vanleg lys; sju nye drag gir ingen ny kamp. Pausane går fortare og replikkane blir noterte, så heile testen
+  held seg innanfor 60 sekund virtuell tid.
+- **Bilete:** `forhand/r98-kyrkjegrimen-8x.png` (sint og roleg), `forhand/skjerm/r98-grim-kamp-spel.png` (kampen),
+  `r98-grim-inn-spel.png` (grimen kjem), `r98-grim-etter-spel.png` (roleg, ordet ⟨heilagr⟩) og `r98-tarn-for-spel.png`.
+- **Står att:** grimen har ingen eigen animasjon på kartet (han dukkar opp med eit blink, ikkje steg for steg opp av
+  golvet), og ulla kunne hatt lengre, tydelegare lokkar i skuggesida.

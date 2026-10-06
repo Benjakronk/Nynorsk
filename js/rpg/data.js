@@ -37,7 +37,8 @@
      { gi: "ting", n: 2 }               gi ting eller nøkkelting
      { pengar: 60 }                     skilling
      { parti: "huldra" }                ny i partiet
-     { kamp: ["blekkdrope"], boss: 1, rettleiing: 1 }
+     { kamp: ["blekkdrope"], boss: 1, rettleiing: 1 }   (bakgrunn: "klokketarn" gir ein annan kampbakgrunn)
+     { tel: "id", ved: 7, da: […], elles: […] }   teljar for eitt besøk på kartet (klokketauet)
      { stev: "steinstevet" }              Ivar lærer eit stev
      { forvandling: [før, etter], tekst } eit bilete glir over i eit anna (vetten får namnet att)
      { til: ["kart", "merke"] }         flytt
@@ -130,6 +131,8 @@ window.RPGData = (function () {
     auga: { fam: "diftong", aasen: "auga", former: ["auga", "auge", "øye"], norront: "auga", dansk: "Øie", tyding: "auge", verknad: { vern: 2, avslor: "alle" }, tekst: "Vern, og auga ser veikskapane til alle fiendane." },
     draum: { fam: "diftong", aasen: "draum", former: ["draum", "drøm"], norront: "draumr", dansk: "Drøm", tyding: "draum", verknad: { vern: 3, sov: true }, tekst: "Vern, og éin fiende kan sovne og miste ein tur." },
     hoyra: { fam: "diftong", aasen: "høyra", former: ["høyra", "høyre", "høre"], norront: "heyra", dansk: "høre", tyding: "høyre, lytte", verknad: { vern: 4 }, tekst: "Sterkt vern for heile partiet." },
+    // Kyrkjegrimen gir ordet etter løyndomskampen i klokketårnet (scena «kyrkjegrimen»).
+    heilag: { fam: "diftong", aasen: "heilag", former: ["heilag", "heilage", "hellig"], norront: "heilagr", dansk: "hellig", tyding: "heilag, vigd", verknad: { vern: 2, lækje: 14, alle: true }, tekst: "Vern og lækjing for heile partiet." },
     laus: { fam: "diftong", aasen: "laus", former: ["laus", "løs"], norront: "lauss", dansk: "løs", tyding: "laus, fri", verknad: { vern: 2, loys: true }, tekst: "Vern, og alle rettskrivne ord blir sette fri." },
     kaka: { fam: "hard", aasen: "kaka", former: ["kaka", "kake"], norront: "kaka", dansk: "Kage", tyding: "kake, flatbrød", verknad: { skade: 16 }, tekst: "Åtak på éin fiende." },
     gata: { fam: "hard", aasen: "gata", former: ["gata", "gate"], norront: "gata", dansk: "Gade", tyding: "gate, fegate mellom gjerde", verknad: { skade: 11, alle: true }, tekst: "Åtak som går gjennom alle fiendane." },
@@ -1013,6 +1016,10 @@ window.RPGData = (function () {
     // Rottesvermen (scena «rottesverm»): fem om gongen, så kvar av dei er veik og treg.
     svermrotte: { namn: "Smårotte", bilete: "rotte", slag: "dyr", hp: 9, atk: 2, def: 0, spd: 9, xp: 3, pengar: 1, fall: [["flatbrod", 0.15]], tekst: "Ei mager ungrotte frå reiret under stabburet. Åleine er ho ikkje farleg, men ho kjem aldri åleine." },
     rottemor: { namn: "Rottemora", bilete: "rottemor", slag: "dyr", hp: 52, atk: 8, def: 2, spd: 9, xp: 15, pengar: 5, fall: [["flatbrod", 0.6], ["romegraut", 0.15]], spesial: { kvar: 3, faktor: 1.5, tekst: "Rottemora kvesser tennene og bit hardt!", veksle: { kvar: 4, type: "stel", ting: "flatbrod", lækje: 20, faktor: 1.2, tekst: "Rottemora rappar eit flatbrød frå sekken og gomlar det i seg!", tom: "Rottemora rotar i sekken, finn ingenting og bit sint!" } }, tekst: "Den gamle rotta under stabburet, grå i snuten og med eit rive øyre. Ho held alltid fast på eit flatbrød." },
+    // Løyndomskampen i klokketårnet (sju drag i klokketauet, scena «kyrkjegrimen»). Klokkedrønn råkar
+    // heile partiet kvar tredje tur, og kvar fjerde tek han røysta frå Ivar (stum: ingen galdr eller
+    // stev neste tur). Han er ein vette, så «kven» gjer han forvirra.
+    kyrkjegrimen: { namn: "Kyrkjegrimen", bilete: "kyrkjegrimen", slag: "vette", hp: 170, atk: 8, def: 3, spd: 9, xp: 45, pengar: 0, fall: [["luktesalt", 1]], spesial: { kvar: 3, alle: true, faktor: 0.8, blink: "rgba(200,150,60,A)", tekst: "Klokkedrønn! Malmen syng i ulla hans, og heile tårnet skjelv!", veksle: { kvar: 4, type: "stum", tekst: "«Teg!» Kyrkjegrimen breker, og Ivar mistar røysta." } }, tekst: "Lammet som vart grave ned levande under koret då kyrkja vart bygd. Han vaktar roa i kyrkja." },
     blekklatten: { namn: "Blekklatten", bilete: "blekklatten", slag: "blekk", hp: 340, atk: 12, def: 4, spd: 9, xp: 90, pengar: 60, spesial: { kvar: 2, type: "rettskriv", veksle: { kvar: 4, alle: true, faktor: 1.1, tekst: "Blekkflaum! Blekklatten skyl over heile partiet!" }, tekst: "Blekklatten: «Alt skal skrives rigtigt!»" }, tekst: "Alt blekket frå kyrkjebøkene i Hovdebygda, samla i éin klump. Det han skriv, står." },
   };
 
@@ -1501,6 +1508,53 @@ window.RPGData = (function () {
         { dagbok: "I kyrkjeboka stod namnet til far. Ved sida av hadde nokon skrive: «Det som er skrive, står.» Same ord som i boka mi." },
       ],
     },
+    /* Kyrkjegrimen (løyndomskampen i klokketårnet). Det sjuande draget i klokketauet i eitt og same
+       besøket i tårnet (teljaren «klokkedrag» i manuset klokketau): klokka slår ein åttande gong av
+       seg sjølv medan tauet heng stille, dua flaksar ut i panikk, lyset blir kaldt og mørkt, og
+       vetten under koret, eit svart lam som vart grave ned levande då kyrkja vart bygd, trengjer seg
+       opp mellom golvplankane. Etter kampen roar han seg, gir Ivar ordet «heilag» og søkk ned att.
+       Flagget «kyrkjegrimen» gjer at det skjer berre éin gong; klokka kan ringjast som før etterpå. */
+    kyrkjegrimen: {
+      namn: "Kyrkjegrimen", stad: "Klokketårnet", kort: false, med: ["Ivar", "Kyrkjegrimen"],
+      steg: (() => {
+        const k = i => ({ byt: "Klokka", vesen: "klokke-" + i });
+        const sving = (fra, til, ms) => { const ut = [], d = til > fra ? 1 : -1; for (let i = fra + d; d > 0 ? i <= til : i >= til; i += d) ut.push(k(i), { vent: ms }); return ut; };
+        // Dua kjem flaksande attende i panikk, kastar seg fram og attende og flyg ut gjennom lydluka.
+        const panikk = [{ fjern: "Dua" }, { inn: { namn: "Dua", vesen: "due-fly-2", rute: "!" } },
+          ...[3, 2, 3, 1, 3, 2, 4, 5, 6, 7].flatMap(i => [{ byt: "Dua", vesen: "due-fly-" + i }, { vent: 70 }]), { fjern: "Dua" }];
+        return [
+          { vent: 500 },
+          ...sving(4, 0, 75),                                           // tauet heng stille: ingen dreg
+          { saman: [[{ rist: 900, styrke: 4 }, { t: "DONG …" }], panikk] },
+          ...sving(0, 8, 60), { rist: 500, styrke: 3 }, ...sving(8, 4, 90),
+          { t: "Klokka slo ein åttande gong. Ingen drog i tauet." },
+          { saman: [[{ tone: "bakgrunn", rgb: [-11, -9, -2], ms: 1400 }], [{ tone: "figurar", rgb: [-4, -3, 1], ms: 1400 }]] },
+          { snu: "Ivar", retning: "ned" },
+          { t: "Det luktar mold. Golvplankane knirkar, og noko svart trengjer seg opp mellom dei." },
+          { rist: 700, styrke: 2 },
+          { blink: 1, rgb: [8, 2, 12], ms: 500, ikkjeVent: true }, { inn: { namn: "Kyrkjegrimen", vesen: "kyrkjegrimen", rute: [3, 7] } }, { vent: 500 },
+          { snu: "Ivar", mot: "Kyrkjegrimen" },
+          { s: "Kyrkjegrimen", t: "⟨Hverr hringir klukkunni?⟩ Sju slag utan lik og utan brudlaup. Kven vekkjer meg?" },
+          { s: "Ivar", t: "Eit svart lam med auge som glør … Kyrkjegrimen! Far sa du berre var ei skrøne.", kjensle: "sjokk" },
+          { s: "Kyrkjegrimen", t: "Dei grov meg ned levande under koret då kyrkja vart reist. Sidan har eg vakta roa i huset." },
+          { s: "Kyrkjegrimen", t: "Den som ringjer for ingen, skal ikkje ha røyst. ⟨Þegi þú!⟩" },
+          { kamp: ["kyrkjegrimen"], boss: 1, bakgrunn: "klokketarn" },
+          { flagg: "kyrkjegrimen" },
+          { byt: "Kyrkjegrimen", vesen: "kyrkjegrimen-roleg" },
+          { saman: [[{ tone: "bakgrunn", rgb: [-5, -4, -1], ms: 900 }], [{ tone: "figurar", rgb: null, ms: 900 }]] },
+          { snu: "Ivar", mot: "Kyrkjegrimen" },
+          { s: "Kyrkjegrimen", t: "Du har mæle, gut. Det er lenge sidan nokon ringde så hardt for å bli høyrd." },
+          { s: "Kyrkjegrimen", t: "Då dei la grunnsteinane over meg, song presten eitt ord. Det har eg gøymt sidan: ⟨heilagr⟩. Ta det med deg." },
+          { lytt: ["heilag", "heilag"] },
+          { s: "Kyrkjegrimen", t: "Ring når nokon blir fødd, gift eller gravlagd. Elles skal klokka få kvile." },
+          { s: "Ivar", t: "Eg skal hugse det.", kjensle: "nikk" },
+          { blink: 1, rgb: [4, 2, 8], ms: 400 }, { fjern: "Kyrkjegrimen" },
+          { tone: "bakgrunn", rgb: null, ms: 900 },
+          { t: "Kyrkjegrimen søkk ned mellom golvplankane. Berre litt mold og sot ligg att." },
+          { dagbok: "Eg ringde sju gonger i kyrkjeklokka, og kyrkjegrimen kom opp frå under koret. Han lærte meg eit gamalt ord: «heilag»." },
+        ];
+      })(),
+    },
   };
 
   const MANUS = {
@@ -1690,13 +1744,17 @@ window.RPGData = (function () {
       const k = i => ({ byt: "Klokka", vesen: "klokke-" + i });
       const sving = (fra, til, ms) => { const ut = [], d = til > fra ? 1 : -1; for (let i = fra + d; d > 0 ? i <= til : i >= til; i += d) ut.push(k(i), { vent: ms }); return ut; };
       const dua = [1, 2, 3, 4, 5, 6, 7].flatMap(i => [{ byt: "Dua", vesen: "due-fly-" + i }, { vent: 90 }]).concat([{ fjern: "Dua" }]);
+      const ivar = { s: "Ivar", t: "No høyrer dei det heilt nede i Hovdebygda.", kjensle: "glad" };
       return [
         { byt: "Klokketauet", vesen: "klokketau-dradd" }, ...sving(4, 0, 45), { byt: "Klokketauet", vesen: "klokketau" },
         { saman: [[{ rist: 600, styrke: 3 }, { t: "DONG …" }], dua] },
         { byt: "Klokketauet", vesen: "klokketau-dradd" }, ...sving(0, 8, 50), { byt: "Klokketauet", vesen: "klokketau" },
         { rist: 450, styrke: 2 }, { t: "DONG …" },
         ...sving(8, 1, 55), ...sving(1, 6, 60), ...sving(6, 3, 70), ...sving(3, 4, 85),
-        { s: "Ivar", t: "No høyrer dei det heilt nede i Hovdebygda.", kjensle: "glad" },
+        // Det sjuande draget i same besøket i tårnet vekkjer kyrkjegrimen (éin gong, sjå scena).
+        // Sju drag på rad er ei handling med vilje: ein som ringjer litt kvar gong han er innom, skal ikkje
+        // snuble over det. Teljaren byrjar på null kvar gong Ivar kjem inn i tårnet (tel i spel.js).
+        { dersom: st => st.flagg.kyrkjegrimen, da: [ivar], elles: [{ tel: "klokkedrag", ved: 7, da: [{ scene: "kyrkjegrimen" }], elles: [ivar] }] },
       ];
     })(),
     klokka: [{ t: "Klokka er tung og kald, og det luktar bronse og duemøk. Tauet heng til høgre for henne." }],

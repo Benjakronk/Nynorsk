@@ -1605,6 +1605,10 @@ window.Pikslar = (function () {
     rottemor: { fil: "bilete/spel/rottemor.png", w: 64, h: 52 },
     "rotte-kart": { fil: "bilete/spel/rotte-kart.png", w: 24, h: 14 },
     "rotte-kart-v": { fil: "bilete/spel/rotte-kart-v.png", w: 24, h: 14 },
+    // Kyrkjegrimen (tools/pikselkunst/grim.py): løyndomskampen i klokketårnet, og same biletet på
+    // kartet i scena. «-roleg» er han etter kampen, med slokna auge og attlaten munn.
+    kyrkjegrimen: { fil: "bilete/spel/kyrkjegrimen.png", w: 80, h: 68 },
+    "kyrkjegrimen-roleg": { fil: "bilete/spel/kyrkjegrimen-roleg.png", w: 80, h: 68 },
     // Tauet til kyrkjeklokka i tårnet (kjelder/klokketau.pix): eit vesen på kartet, så Ivar kan dra i det.
     klokketau: { fil: "bilete/spel/klokketau.png", w: 8, h: 40 },
     "klokketau-dradd": { fil: "bilete/spel/klokketau-dradd.png", w: 8, h: 40 },
@@ -1901,6 +1905,7 @@ window.Pikslar = (function () {
       for (const ks of k.kister || []) ut.push(`bilete/spel/bygg/${ks.bilete || "inne-kiste"}.png`, "bilete/spel/bygg/inne-kiste-open.png");
       if (k.bakgrunn) ut.push(`bilete/spel/kamp/${k.bakgrunn}.png`);
     }
+    ut.push("bilete/spel/kamp/klokketarn.png");                     // eigen bakgrunn i kamp-steget (kyrkjegrimen)
     for (const namn of new Set(Object.values(NATURTYPE).flat())) ut.push(`bilete/spel/natur/${namn}.png`);
     for (const k of Object.values(D.KART)) for (const n of k.naturting || []) ut.push(`bilete/spel/natur/${n.bilete}.png`);
     for (const kt of Object.values(KANTTYPE)) for (const namn of new Set([...kt.framme, ...kt.inne, ...kt.smaa, ...(kt.nede || [])])) ut.push(`bilete/spel/natur/${namn}.png`);

@@ -652,7 +652,96 @@ def stabbur():
     return b
 
 
-BAKGRUNNAR = {"tun": tun, "utmark": utmark, "inne": inne, "arkiv": arkiv, "veg": veg, "kyrkje": kyrkje, "stabbur": stabbur}
+def klokketarn():
+    """Klokketårnet i Hovdekyrkja (løyndomskampen mot kyrkjegrimen): mørk laftevegg, to lydluker
+    med skrå spiler der kaldt, grått dagslys sivar inn, den store bronseklokka i ein grov klokkestol
+    med tauet hengjande ned, breie golvplankar og kalde lysstrålar med sot i. Kaldt og mørkt:
+    kampen skjer etter at lyset i tårnet har vorte kaldt (scena «kyrkjegrimen»)."""
+    b = B()
+    tre = M.rampe("#08070c", "#141220", "#221e2c", "#332c38", "#463c46", "#5c4e54")
+    tommervegg(b, 0, W, 0, 102, tre, 161, stokk=10)
+    # lydlukene: opningar i veggen med skrå spiler, kaldt lys mellom dei
+    himmel = M.rampe("#5c6a80", "#8494aa", "#aab8c8", "#d0dae2")
+    for lx in (22, 250):
+        for y in range(30, 76):
+            for x in range(lx, lx + 48):
+                kant = x in (lx, lx + 1, lx + 46, lx + 47) or y in (30, 31, 74, 75)
+                spile = (y - 32) % 7
+                if kant: c = M.tone(tre, 0.12 if x > lx + 40 or y > 72 else 0.55, x, y)
+                elif spile <= 3: c = M.tone(tre, 0.62 - spile * 0.12 + (M.fbm(x / 6, y, 162) - 0.5) * 0.2, x, y)
+                elif spile == 4: c = M.tone(tre, 0.05, x, y)
+                else: c = M.tone(himmel, 0.35 + (75 - y) / 70 + (spile - 5) * 0.2, x, y)
+                b.p(x, y, c)
+    # klokkestolen: to grove stolpar, ein tverrbjelke og skråband
+    stol = M.rampe("#0c0a10", "#1e1818", "#30261e", "#463626", "#5e4a32", "#7a6040")
+    def bjelke(x0, x1, y0, y1, loddrett):
+        for y in range(y0, y1):
+            for x in range(x0, x1):
+                u = (x - x0) / max(1, x1 - x0 - 1) if loddrett else (y - y0) / max(1, y1 - y0 - 1)
+                v = 0.78 - u * 0.62 + (M.fbm(x / (2 if loddrett else 11), y / (11 if loddrett else 2), 163) - 0.5) * 0.3
+                b.p(x, y, M.tone(stol, v, x, y))
+    for sx in (92, 216):
+        bjelke(sx, sx + 12, 0, 104, True)
+    bjelke(80, 240, 10, 22, False)
+    for i in range(24):                                                   # skråband i hjørna
+        for d in range(5):
+            b.p(104 + i, 22 + i + d, M.tone(stol, 0.55 - d * 0.1, 104 + i, 22 + i))
+            b.p(215 - i, 22 + i + d, M.tone(stol, 0.35 - d * 0.06, 215 - i, 22 + i))
+    # klokka: bronse, lys frå venstre, mørk inni munnen, med åk og kolv
+    bronse = M.rampe("#120a06", "#2a1c0e", "#463016", "#644822", "#846232", "#a8844a", "#c8a870")
+    bjelke(142, 178, 22, 30, False)                                       # åket
+    for y in range(30, 86):
+        t = (y - 30) / 56
+        # klokkeprofilen: rund skulder, nesten rett liv, og ein mjuk, brei sveif ut mot munnen
+        hw = 13 + 5 * math.sqrt(min(1, t / 0.12)) + 4 * t + 15 * max(0, t - 0.6) ** 2 / 0.16
+        for x in range(int(160 - hw), int(160 + hw) + 1):
+            u = (x - 160) / hw
+            v = 0.5 - u * 0.4 - abs(u) ** 4 * 0.25 + (0.14 if -0.6 < u < -0.38 else 0) - t * 0.1
+            if y in (40, 41, 74, 75): v -= 0.22                          # list rundt klokka
+            if y >= 82: v = 0.26 - u * 0.2
+            c = M.tone(bronse, v, x, y)
+            if u < -0.86 and y < 82: c = M.blend(c, "#8a96aa", 0.35)       # kaldt kantlys frå lydluka
+            b.p(x, y, c)
+    for y in range(86, 89):                                               # munnen: mørk inni
+        hw = 31 - (y - 86) * 3
+        for x in range(160 - hw, 160 + hw + 1):
+            b.p(x, y, M.tone(bronse, 0.03, x, y))
+    for y in range(84, 96):                                               # kolven heng ned i munnen
+        for x in range(156, 165):
+            if (x - 160) ** 2 / 10 + (y - 92) ** 2 / 9 < 1 or (x in (159, 160) and y < 90):
+                b.p(x, y, M.tone(bronse, 0.42 - (x - 156) * 0.05, x, y))
+    # tauet ned frå åket, langs høgre side
+    for y in range(26, 104):
+        x = 186 + round(math.sin(y / 40) * 1.5)
+        b.p(x, y, "#9a8a6a" if (y // 2) % 2 else "#6a5c44"); b.p(x + 1, y, "#4a3e30")
+    # golvet: breie, slitne plankar
+    golv = M.rampe("#0a0810", "#18141a", "#262024", "#383030", "#4c4240", "#62564e")
+    plankegolv(b, 102, 160, 30, golv, 164, breidd=0.24)
+    for x in range(W): b.p(x, 102, "#08070c"); b.p(x, 103, "#141220")
+    # kalde lysstrålar frå lydlukene ned på golvet, med sot som sviv i dei
+    for lx, dx in ((22, 1), (250, -1)):
+        for y in range(76, H):
+            t = (y - 76) / 90
+            if t > 1: break
+            x0 = lx + 4 + dx * t * 70; x1 = lx + 44 + dx * t * 80
+            x0, x1 = min(x0, x1), max(x0, x1)
+            for x in range(int(x0), int(x1) + 1):
+                kant = min(x - x0, x1 - x) / max(1, (x1 - x0) / 2)
+                a = (0.6 - t * 0.4) * min(1, kant * 2.2)
+                if a > M.terskel(x, y): b.p(x, y, M.blend(b.get(x, y), "#b8c8d8", 0.16 + 0.1 * (kant > 0.5)))
+    for y in range(120, 150):                                             # flekken der fiendane står
+        for x in range(20, 170):
+            d = ((x - 92) / 72) ** 2 + ((y - 134) / 13) ** 2
+            if d < 1 and (1 - d) * 1.4 > M.terskel(x, y) * 0.9: b.p(x, y, M.blend(b.get(x, y), "#aab8cc", 0.22 if d < 0.45 else 0.12))
+    for i in range(50):
+        x = int(M.h(i, 1, 165) * W); y = int(20 + M.h(i, 2, 165) * 150)
+        b.p(x, y, "#5c5468" if i % 3 else "#3a3446")
+        if i % 4 == 0: b.p(x + 1, y - 1, "#3a3446")
+    morke(b, 1.2, "#04030a")
+    return b
+
+
+BAKGRUNNAR = {"tun": tun, "utmark": utmark, "inne": inne, "arkiv": arkiv, "veg": veg, "kyrkje": kyrkje, "stabbur": stabbur, "klokketarn": klokketarn}
 
 if __name__ == "__main__":
     namn = sys.argv[1:] or ["alle"]

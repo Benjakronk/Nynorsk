@@ -161,6 +161,13 @@
     for (const s of steg || []) {
       if (s.dersom) { const r = await kjoyr(s.dersom(st) ? s.da : s.elles); if (r === "stopp") return "stopp"; continue; }
       if (s.scene) { const r = await spelScene(s.scene); if (r === "stopp") return "stopp"; continue; }
+      // Teljar for eitt besøk på kartet (nullstilt når kartet blir lasta): { tel: "id", ved: 7, da, elles }
+      // køyrer «da» når teljaren når «ved», elles «elles». Brukt av klokketauet i tårnet.
+      if (s.tel) {
+        const k = Motor.kart, tal = k ? (k.tal = k.tal || {}) : {};
+        const n = tal[s.tel] = (tal[s.tel] || 0) + 1;
+        const r = await kjoyr(n === s.ved ? s.da : s.elles); if (r === "stopp") return "stopp"; continue;
+      }
       // Fleire lister samstundes (to figurar som går, kamera og rørsle). Ventar på alle.
       if (s.saman) { const r = await Promise.all(s.saman.map(kjoyr)); if (r.includes("stopp")) return "stopp"; continue; }
       if (s.scenekart !== undefined) await scenekart(s);
@@ -215,7 +222,7 @@
         await Motor.tale(`${D.PARTI[s.parti].namn} er med i partiet.`);
       }
       if (s.kamp) {
-        const r = await kamp(s.kamp, !!s.boss, !!s.rettleiing); if (r === "tap") return "stopp";
+        const r = await kamp(s.kamp, !!s.boss, !!s.rettleiing, 0, s.bakgrunn); if (r === "tap") return "stopp";
         Motor.pause(true);                                             // hendinga held fram: ingen går omkring
       }
       if (s.stev && !st.stev.includes(s.stev)) {
@@ -273,7 +280,7 @@
   }
 
   /* ---------- Kamp ---------- */
-  async function kamp(lag, boss, rettleiing, startKved = 0) {
+  async function kamp(lag, boss, rettleiing, startKved = 0, eigenBakgrunn = null) {
     modus = "kamp";
     Motor.pause(true);
     const gv = gaaver();
@@ -285,7 +292,7 @@
     // Inn i kampen: pikseleffekt, så toning til svart. Kampscena tonar inn når ho er teikna.
     await Motor.overgang();
     await Motor.tonUt();
-    const bakgrunn = (Motor.kart && Motor.kart.def.bakgrunn) || "tun";
+    const bakgrunn = eigenBakgrunn || (Motor.kart && Motor.kart.def.bakgrunn) || "tun";   // kamp-steget kan ha eigen bakgrunn
     const r = await Kamp.start({
       fiendar: lag, boss, parti, gaaver: gv, bakgrunn, ord: st.ord, stev: st.stev, startKved, rettleiing,
       paaVesen: (id, slegen) => { const v = st.vesen[id] || (st.vesen[id] = { sett: 0, slegne: 0 }); if (slegen) v.slegne++; else v.sett++; },

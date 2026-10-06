@@ -396,9 +396,20 @@ window.Kamp = (function () {
           skade(f, mål, sp.faktor || 1);
         }
         await vent(900);
+      } else if (sp && sp.type === "stum") {
+        // Tek røysta frå Ivar (kyrkjegrimen): neste tur kan han verken syngje galdrar eller kvede.
+        await vent(300);
+        const ivar = levande.find(m => m.galdr);
+        if (ivar) {
+          ivar.stum = 1;
+          meld(sp.tekst, 2200);
+          blink(sp.blink || "rgba(24,20,40,A)", 320);
+          ivar.blink = performance.now() + 400; visTal(ivar, "Stum", "#b8b0d0");
+        } else { const mål = levande[Math.floor(Math.random() * levande.length)]; meld(`${f.namn} angrip ${mål.namn}!`); skade(f, mål); }
+        await vent(900);
       } else if (sp) {
         meld(sp.tekst, 1800);
-        blink("rgba(88,72,160,A)", 260); skjelv(400, 3);
+        blink(sp.blink || "rgba(88,72,160,A)", 260); skjelv(400, 3);
         await vent(700);
         for (const m of sp.alle ? levande : [levande[Math.floor(Math.random() * levande.length)]]) skade(f, m, sp.faktor || 1);
         await vent(650);
@@ -529,6 +540,7 @@ window.Kamp = (function () {
         else { meld(boss ? "Du kan ikkje flykte frå denne!" : "Kom ikkje unna!"); await vent(700); }
       }
       m.atb = snogg ? 99.9 : 0;
+      if (m.stum > 0) m.stum--;                                       // røysta kjem att etter éin tur
       travel = false;
     }
 
@@ -558,7 +570,7 @@ window.Kamp = (function () {
         (async function hovud() {
           while (true) {
             const hovudval = m.galdr
-              ? [{ namn: "Angrip" }, { namn: "Galdr", av: !Object.keys(ord).some(id => D.ORD[id] && D.ORD[id].fam !== "nokkel" && m.rost >= rostKost(m, id)) }, ...(stev.length ? [{ namn: "Stev", av: m.kved < 100, info: m.kved < 100 ? `${Math.floor(m.kved)} %` : "klar" }] : []), { namn: "Ting", av: !Object.values(m.ting()).some(n => n > 0) }, { namn: "Flykt" }]
+              ? [{ namn: "Angrip" }, { namn: "Galdr", av: m.stum > 0 || !Object.keys(ord).some(id => D.ORD[id] && D.ORD[id].fam !== "nokkel" && m.rost >= rostKost(m, id)), info: m.stum > 0 ? "stum" : "" }, ...(stev.length ? [{ namn: "Stev", av: m.kved < 100 || m.stum > 0, info: m.stum > 0 ? "stum" : m.kved < 100 ? `${Math.floor(m.kved)} %` : "klar" }] : []), { namn: "Ting", av: !Object.values(m.ting()).some(n => n > 0) }, { namn: "Flykt" }]
               : [{ namn: "Angrip" }, { namn: "Song", av: !m.evner.some(id => m.rost >= D.EVNER[id].rost) }, { namn: "Ting", av: !Object.values(m.ting()).some(n => n > 0) }, { namn: "Flykt" }];
             const ix = await vis(m.namn, hovudval);
             const valNamn = hovudval[ix] && hovudval[ix].namn;

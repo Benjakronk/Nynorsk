@@ -3,7 +3,8 @@
 <title>Sjekk gangen i kyrkja</title>
 <!-- Måler kor lang tid Ivar brukar frå døra i kyrkja (merke 1) opp til altarringen (rad 9):
      først gåande (pil opp), så springande (Z og pil opp). Målet er 33 fliser: 6,6 sekund å gå
-     (12 tikk per flis) og om lag 6,7 sekund å springe (8 tikk per flis).
+     (12 tikk per flis) og om lag 6,7 sekund å springe (8 tikk per flis). Til slutt: trappa, preikestolen,
+     klokketauet og kyrkjegrimen (sju drag i eitt besøk i tårnet, runde 98).
      Køyr: python tools/kjoyr-test.py tools/sjekk-kyrkjegang.html 60000 -->
 <style>body{margin:0;background:#000;color:#fff;font:12px monospace} iframe{width:1100px;height:720px;border:0} #ut{white-space:pre-wrap;padding:4px}</style>
 <iframe id="f"></iframe>
@@ -130,6 +131,61 @@ f.onload = async () => {
   const att = !!M.aktor("Dua");
   if (!att) ok = false;
   ut.push(`${att ? "OK" : "FEIL"}: dua er attende når Ivar kjem inn i tårnet att`);
+  // Kyrkjegrimen: sju drag i klokketauet i eitt besøk i tårnet vekkjer han, éin gong. Kampen er stubba
+  // (siger med ein gong). Så testen held seg innanfor tidsbudsjettet, går pausane og ristinga i regien
+  // tjue gonger fortare (toninga, blinket og ristinga ti), og replikkane blir berre noterte (kven som talar og teksten), utan samtaleboks.
+  // Eit drag er å trykkje Z mot tauet og vente til hendinga er slutt.
+  {
+    const tGrim = w.performance.now();
+    const st = w.RPGTest.st(), venteFor = M.vent, ristFor = M.rist, taleFor = M.tale, toneFor = M.tone, blinkFor = M.blink, kampFor = w.Kamp.start;
+    M.vent = ms => venteFor(Math.max(1, ms / 20)); M.rist = (ms, s) => ristFor(Math.max(1, ms / 10), s);
+    M.tone = (l, rgb, ms) => toneFor(l, rgb, Math.max(1, (ms || 1000) / 10)); M.blink = (ms, rgb) => blinkFor(Math.max(1, (ms || 300) / 10), rgb);
+    const replikkar = [];
+    M.tale = async (t, namn) => { replikkar.push({ namn: namn || "", t: String(t) }); };
+    const kampar = [];
+    let grimPaaKartet = false, bakgrunn = null;
+    w.Kamp.start = async o => { kampar.push(o.fiendar.join(",")); bakgrunn = o.bakgrunn; grimPaaKartet = !!M.aktor("Kyrkjegrimen"); return { utfall: "siger", xp: 0, pengar: 0, fall: [] }; };
+    const inn = async () => { M.last("kyrkje-tarn", "1"); await vent(200); M.plasser(8, 8, 1); await vent(100); };
+    const drag = async () => {
+      M.spelar.dir = 1; await vent(10);
+      tast("keydown", "z"); await vent(20); tast("keyup", "z");
+      for (let n = 0; n < 900 && (n < 4 || w.RPGTest.iHending()); n++) await vent(15);
+      await vent(20);
+    };
+    // Fire drag, ut og inn att, og tre til: teljaren gjeld eitt besøk, så sju til saman gjer ingenting.
+    await inn(); for (let i = 0; i < 4; i++) await drag();
+    await inn(); for (let i = 0; i < 3; i++) await drag();
+    const dong = replikkar.filter(r => /DONG/.test(r.t)).length;
+    const fordelt = kampar.length === 0 && !st.flagg.kyrkjegrimen && dong === 14;
+    if (!fordelt) ok = false;
+    ut.push(`${fordelt ? "OK" : "FEIL"}: fire drag, ut av tårnet og tre til gjer ingenting (teljaren gjeld eitt besøk, ${dong} DONG)`);
+    await inn(); for (let i = 0; i < 6; i++) await drag();
+    const seks = kampar.length === 0 && !M.aktor("Kyrkjegrimen") && !st.flagg.kyrkjegrimen && M.aktor("Klokka").vesen === "klokke-4";
+    if (!seks) ok = false;
+    ut.push(`${seks ? "OK" : "FEIL"}: seks drag i klokketauet gjer ikkje noko særskilt`);
+    const dagbokFor = st.dagbok.length, fraNo = replikkar.length;
+    await drag();
+    const sjuande = kampar.length === 1 && kampar[0] === "kyrkjegrimen" && grimPaaKartet && bakgrunn === "klokketarn";
+    if (!sjuande) ok = false;
+    ut.push(`${sjuande ? "OK" : "FEIL"}: det sjuande draget vekkjer kyrkjegrimen på kartet, og kampen mot han byrjar i klokketårnet (${kampar.join(";")}, bakgrunn ${bakgrunn})`);
+    const scena = replikkar.slice(fraNo), grim = scena.filter(r => r.namn === "Kyrkjegrimen");
+    const attande = scena.filter(r => /DONG/.test(r.t)).length === 3 && scena.some(r => /åttande/.test(r.t));
+    const replikk = attande && grim.length >= 5 && grim.some(r => /⟨[^⟩]+⟩/.test(r.t));
+    if (!replikk) ok = false;
+    ut.push(`${replikk ? "OK" : "FEIL"}: klokka slår ein åttande gong av seg sjølv, og kyrkjegrimen talar ${grim.length} gonger, med norrøn tale`);
+    const lon = !!st.flagg.kyrkjegrimen && !!st.ord.heilag && st.dagbok.length === dagbokFor + 1 && /kyrkjegrimen/.test(st.dagbok[st.dagbok.length - 1].tekst) && !M.aktor("Kyrkjegrimen");
+    if (!lon) ok = false;
+    ut.push(`${lon ? "OK" : "FEIL"}: etter sigeren er flagget sett, Ivar har ordet «heilag», Dagboka har ei ny line, og grimen er borte`);
+    const lyset = (M.lysEffekt.tone.bak || {}).til ? M.lysEffekt.tone.bak.til.every(v => v === 0) && M.lysEffekt.tone.fig.til.every(v => v === 0) : true;
+    if (!lyset) ok = false;
+    ut.push(`${lyset ? "OK" : "FEIL"}: lyset i tårnet er vanleg att`);
+    await inn(); for (let i = 0; i < 7; i++) await drag();
+    const berreEin = kampar.length === 1 && !M.aktor("Kyrkjegrimen") && M.aktor("Klokka").vesen === "klokke-4";
+    if (!berreEin) ok = false;
+    ut.push(`${berreEin ? "OK" : "FEIL"}: etter sigeren kan klokka ringjast som før, og grimen kjem ikkje att (${kampar.length} kamp)`);
+    M.vent = venteFor; M.rist = ristFor; M.tale = taleFor; M.tone = toneFor; M.blink = blinkFor; w.Kamp.start = kampFor;
+    ut.push(`(kyrkjegrimen: ${((w.performance.now() - tGrim) / 1000).toFixed(1)} s, heile testen: ${(w.performance.now() / 1000).toFixed(1)} s)`);
+  }
   ut.push(ok ? "Alt ser rett ut." : "Noko er feil.");
   document.getElementById("ut").textContent = ut.join("\n");
   f.remove();

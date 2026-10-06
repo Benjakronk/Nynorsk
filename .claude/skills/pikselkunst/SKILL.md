@@ -263,6 +263,12 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   Kartrotta har eit gangark (`rotte-kart-gang.png`: står og to steg i fire retningar, som figurane).
   Vesen med gangark står i `GANGARK` i `pikslar.js` (`vesenGang`), og motoren vel ramme etter retning og steg.
   Svermen på fem: `kamp=svermrotte,svermrotte,svermrotte,svermrotte,svermrotte`.
+- Kyrkjegrimen (runde 98, bossen i klokketårnet): `python tools/pikselkunst/grim.py alle` skriv
+  `kjelder/fiende-kyrkjegrimen.pix` og `-roleg.pix` (same biletet etter kampen, med slokna auge), så `pix.py lag`.
+  Ulla er krøllete klumpar med eigen cel-skugge (`ull()`), horna spiralar (`horn()`). Kampbakgrunnen er
+  `bakgrunn.py klokketarn`. Sjå med `skjermbilete.py namn kart=kyrkje-tarn m=1 bakgrunn=klokketarn kamp=kyrkjegrimen`,
+  og scena med `skjermbilete.py namn kart=kyrkje-tarn m=1 x=8 y=8 scene=kyrkjegrimen replikk=3` (kampen blir
+  vunnen med ein gong, så `replikk=8` viser grimen roleg etterpå).
 - Tre, steinar og haugar: `python tools/pikselkunst/natur.py <namn>` (sjå `NATUR`).
   Frittståande tre og steinar: kartteikna `i` (gran), `F` (furu), `t` (bjørk) og `o` (stein, einer)
   vel variant etter plassen frå `NATURTYPE` i `js/rpg/pikslar.js`. Nye variantar må førast inn der.

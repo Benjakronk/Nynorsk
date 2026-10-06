@@ -5,7 +5,8 @@
      Parametrar: kart, m (merke), x og y (der Ivar står), kamp (fiendar, kommaskilt),
      parti (fleire i partiet), hp (til dømes huldra:4), tale (namn:tekst),
      gaa (opp/ned/venstre/hogre), ventms, kjensle (til dømes sjokk) og hkjensle (for følgjet), pose (til dømes knele),
-     retning (0 til 3, saman med pose), vinn=1, etter=1, flagg og opna (opna kister, kommaskilt). -->
+     retning (0 til 3, saman med pose), vinn=1, etter=1, flagg og opna (opna kister, kommaskilt),
+     bakgrunn (kampbakgrunnen), scene og replikk (spel ei scene og frys ved replikk nr. n). -->
 <style>body{margin:0;background:#000;color:#fff;font:12px monospace} iframe{width:1100px;height:720px;border:0;display:block} #ut{white-space:pre-wrap;padding:4px}</style>
 <iframe id="f"></iframe>
 <div id="ut">køyrer …</div>
@@ -55,12 +56,30 @@ f.onload = async () => {
   if (q.get("skra")) w.RPGData.KART[q.get("kart") || "asen"].skra = q.get("skra");
   if (q.get("variant")) w.RPGData.KART[q.get("kart") || "asen"].variant = q.get("variant");
   if (q.get("stemning")) w.RPGData.KART[q.get("kart") || "asen"].stemning = q.get("stemning") === "ingen" ? undefined : q.get("stemning");
+  // bakgrunn=klokketarn vel kampbakgrunnen (som kamp-steget med eigen bakgrunn i ei scene).
+  if (q.get("bakgrunn")) w.RPGData.KART[q.get("kart") || "asen"].bakgrunn = q.get("bakgrunn");
   M.last(q.get("kart") || "asen", q.get("m") || "1"); await vent(400); await blaFram();
   if (q.get("x")) Object.assign(M.spelar, { x: +q.get("x"), y: +q.get("y"), fx: +q.get("x"), fy: +q.get("y"), dir: 0 });
   // parti=huldra legg til medlemer, hp=huldra:4 set livet (til dømes for å sjå «svak» og «slått ut» i kampen).
   const st = w.RPGTest.st();
   for (const id of (q.get("parti") || "").split(",").filter(Boolean)) if (!st.parti.some(m => m.id === id)) st.parti.push({ id, niva: st.parti[0].niva, xp: 0, hp: null, rost: null });
   for (const x of (q.get("hp") || "").split(",").filter(Boolean)) { const [id, n] = x.split(":"), m = st.parti.find(m => m.id === id); if (m) m.hp = +n; }
+  // scene=kyrkjegrimen&replikk=3: spelar ei scene og frys biletet ved replikk nr. 3 (talt frå 0). Kampar i
+  // scena blir vunne med ein gong (stubba), så ein kan sjå det som skjer etterpå.
+  if (q.get("scene")) {
+    w.Kamp.start = async () => ({ utfall: "siger", xp: 0, pengar: 0, fall: [] });
+    w.RPGTest.scene(q.get("scene"));
+    for (let i = 0; i <= +(q.get("replikk") || 0); i++) {
+      let n = 0; while (n++ < 400 && !(synleg("#rpg-tale") || synleg("#rpg-fort"))) await vent(50);
+      if (i === +(q.get("replikk") || 0)) { await vent(2500); break; }       // den siste: ferdigskriven
+      // Z skriv ferdig replikken eller går vidare: står same teksten der etterpå, trykk ein gong til.
+      await vent(400);
+      const tekst = () => d.getElementById("rpg-tale").textContent + d.getElementById("rpg-fort").textContent;
+      const for_ = tekst(); await tast("z"); await vent(200);
+      if (synleg("#rpg-tale") && tekst() === for_) { await tast("z"); await vent(200); }
+    }
+    frys(); document.getElementById("ut").textContent = "ferdig, feil: " + JSON.stringify(feil); return;
+  }
   // kampms=300: frys biletet så lenge etter at kampen er starta (for å sjå pikseleffekten og toninga).
   if (q.get("kamp") && q.get("kampms")) { M.krokar.kamp(q.get("kamp").split(",")); await vent(+q.get("kampms")); frys(); document.getElementById("ut").textContent = "ferdig"; return; }
   if (q.get("kamp")) { M.krokar.kamp(q.get("kamp").split(",")); let n = 0; while (!synleg(".kamp-meny") && n++ < 300) await vent(50); }
