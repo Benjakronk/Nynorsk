@@ -2073,22 +2073,70 @@ window.Motor = (function () {
       });
     });
   }
-  // Val mellom alternativ i samtaleboksen. Gir indeksen.
+  /* Rulleliste i eit vindauge med fast storleik (kampmenyen, val i samtaleboksen, menyen):
+     rader × kolonner ruter, uansett kor mange alternativ det er. Berre ruta som syner, blir
+     teikna, så lista er like rask med 100 ord. ▲ og ▼ syner når det er meir over eller under.
+     Opp og ned går rad for rad og rullar ved kanten (frå første til siste og omvendt); venstre og
+     høgre går mellom kolonnane, eller ei side om gongen når lista har éi kolonne.
+     alt: [{ namn (HTML), info, av, farge, klasse }]. opt.merk(i) blir kalla når peikaren flyttar seg,
+     opt.tilbake lèt B gi -1, opt.b gir indeksen B skal velje. Gir indeksen som vart vald. */
+  function liste(el, alt, opt = {}) {
+    const { rader = 4, kolonner = 1, tilbake = false, merk: paaMerk = null } = opt;
+    return new Promise(res => {
+      const n = alt.length;
+      if (!n) { res(-1); return; }
+      let valt = Math.min(Math.max(0, opt.start || 0), n - 1), topp = 0, svart = false;
+      const radtal = Math.ceil(n / kolonner), radAv = i => Math.floor(i / kolonner);
+      el.classList.add("rulleliste");
+      el.style.setProperty("--rader", rader); el.style.setProperty("--kolonner", kolonner);
+      el.innerHTML = '<div class="rl-ruter"></div><span class="rl-opp" hidden>▲</span><span class="rl-ned" hidden>▼</span>';
+      const [ruter, opp, ned] = el.children;
+      const teikn = () => {
+        const r = radAv(valt);
+        if (r < topp) topp = r;
+        if (r >= topp + rader) topp = r - rader + 1;
+        let h = "";
+        for (let i = topp * kolonner; i < Math.min(n, (topp + rader) * kolonner); i++) {
+          const a = alt[i], kl = [a.klasse, i === valt ? "peikar" : ""].filter(Boolean).join(" ");
+          h += `<button type="button" data-i="${i}"${kl ? ` class="${kl}"` : ""}${a.av ? " disabled" : ""}${a.farge ? ` style="--fam:${a.farge}"` : ""}><span>${a.namn}</span>${a.info ? `<small>${a.info}</small>` : ""}</button>`;
+        }
+        ruter.innerHTML = h;
+        opp.hidden = topp === 0; ned.hidden = topp + rader >= radtal;
+        if (paaMerk) paaMerk(valt);
+      };
+      const flytt = d => {
+        if (d === 1) valt = valt - kolonner < 0 ? n - 1 : valt - kolonner;
+        else if (d === 0) valt = valt + kolonner <= n - 1 ? valt + kolonner : radAv(valt) === radtal - 1 ? 0 : n - 1;
+        else if (kolonner > 1) valt = d === 2 ? Math.max(0, valt - 1) : Math.min(n - 1, valt + 1);
+        else valt = d === 2 ? Math.max(0, valt - rader) : Math.min(n - 1, valt + rader);
+        teikn();
+      };
+      const ferdig = i => { if (svart) return; svart = true; slepp(); res(i); };
+      ruter.addEventListener("click", e => {
+        const b = e.target.closest("button"); if (!b) return;
+        e.stopPropagation();
+        const i = +b.dataset.i;
+        if (i === valt || opt.klikkVel) { if (!alt[i].av) ferdig(i); } else { valt = i; teikn(); }
+      });
+      el.onwheel = e => { e.preventDefault(); if (e.deltaY) flytt(e.deltaY > 0 ? 0 : 1); };
+      const slepp = lytt({
+        a: () => { if (!alt[valt].av) ferdig(valt); },
+        b: () => { if (opt.b != null) ferdig(opt.b); else if (tilbake) ferdig(-1); },
+        retning: flytt,
+      });
+      teikn();
+    });
+  }
+  // Val mellom alternativ i samtaleboksen (høgst fem rader, resten rullar). Gir indeksen.
   function val(tekst, alt, namn) {
     return new Promise(res => {
       boks.hidden = false; boks.classList.add("med-val");
       boksNamn.textContent = namn || ""; boksNamn.hidden = !namn; visPortrett(namn);
-      boksTekst.innerHTML = `${merkHtml(tekst)}<span class="rpg-val">${alt.map((a, i) => `<button type="button" data-i="${i}">${merkHtml(a)}</button>`).join("")}</span>`;
+      boksTekst.innerHTML = `${merkHtml(tekst)}<span class="rpg-val"></span>`;
       boks.classList.add("klar");
-      let valt = 0;
-      const kn = [...boksTekst.querySelectorAll("button")];
-      const merk = () => kn.forEach((b, i) => b.classList.toggle("peikar", i === valt));
-      merk();
-      let svart = false;                                   // eit val blir berre svara éin gong
-      const ferdig = i => { if (svart) return; svart = true; slepp(); boks.hidden = true; boks.classList.remove("med-val"); boksTekst.innerHTML = ""; boks.onclick = null; res(i); };
-      kn.forEach((b, i) => b.addEventListener("click", e => { e.stopPropagation(); ferdig(i); }));
-      const slepp = lytt({ a: () => ferdig(valt), b: () => ferdig(alt.length - 1), retning: d => { if (d === 1 || d === 2) valt = (valt + alt.length - 1) % alt.length; if (d === 0 || d === 3) valt = (valt + 1) % alt.length; merk(); } });
       boks.onclick = null;
+      liste(boksTekst.querySelector(".rpg-val"), alt.map(a => ({ namn: merkHtml(a) })), { rader: Math.min(5, alt.length), b: alt.length - 1, klikkVel: true })
+        .then(i => { boks.hidden = true; boks.classList.remove("med-val"); boksTekst.innerHTML = ""; res(i); });
     });
   }
   const fortEl = $("rpg-fort");
@@ -2174,7 +2222,7 @@ window.Motor = (function () {
   window.addEventListener("resize", tilpass);
 
   return {
-    VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk, overgang, gjennomDor, tonUt, tonInn, scene,
+    VW, VH, lerret, g, krokar, last, tale, val, liste, fort, lytt, tilpass, fjernFolk, overgang, gjennomDor, tonUt, tonInn, scene,
     dorSteg, dorOpen, byggBilete,                                     // dørene (runde 96)
     gaa, snu, inn, byt, brukMoebel, reis, kamera, rist, kort, naerbilete, blink, tone, spot, aktor, vent,
     get lysMs() { return lysMs; }, get lysLesMs() { return lesMs; },  // tida lyset brukte i siste bilete

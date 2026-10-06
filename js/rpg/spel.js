@@ -502,7 +502,10 @@
       return "";
     };
     const teikn = () => {
-      menyEl.innerHTML = `<div class="mn-venstre">${valg.map((v, i) => `<button type="button" class="${i === valt ? "peikar" : ""}" data-i="${i}">${v}</button>`).join("")}</div><div class="mn-hogre">${innhald()}</div>`;
+      menyEl.innerHTML = `<div class="mn-venstre">${valg.map((v, i) => `<button type="button" class="${i === valt ? "peikar" : ""}" data-i="${i}">${v}</button>`).join("")}</div><div class="mn-hogre">${innhald()}</div><span class="mn-opp" hidden>▲</span><span class="mn-ned" hidden>▼</span>`;
+      // Lange lister (Ordboka, Ting, Galdr, Stev): fast vindauge som blar ei side med venstre og høgre, med ▲ og ▼.
+      const h = menyEl.querySelector(".mn-hogre"), piler = () => { menyEl.querySelector(".mn-opp").hidden = h.scrollTop <= 0; menyEl.querySelector(".mn-ned").hidden = h.scrollTop + h.clientHeight >= h.scrollHeight - 1; };
+      h.onscroll = piler; piler();
       menyEl.querySelectorAll("[data-i]").forEach(b => b.addEventListener("click", () => { if (valt === +b.dataset.i) handling(); else { valt = +b.dataset.i; teikn(); } }));
     };
     let slepp = null;
@@ -518,7 +521,7 @@
       }
       if (v === "Galdr" || v === "Ting") { menyEl.hidden = true; slepp(); await (v === "Galdr" ? feltGaldr() : feltTing()); menyEl.hidden = false; slepp = Motor.lytt(lyttar); teikn(); }
     };
-    const lyttar = { a: handling, b: lukk, retning: d => { if (d === 1) valt = (valt + valg.length - 1) % valg.length; if (d === 0) valt = (valt + 1) % valg.length; if (d === 2 || d === 3) { const h = menyEl.querySelector(".mn-hogre"); if (h) h.scrollTop += d === 3 ? 80 : -80; return; } teikn(); } };
+    const lyttar = { a: handling, b: lukk, retning: d => { if (d === 1) valt = (valt + valg.length - 1) % valg.length; if (d === 0) valt = (valt + 1) % valg.length; if (d === 2 || d === 3) { const h = menyEl.querySelector(".mn-hogre"); if (h) h.scrollTop += (d === 3 ? 1 : -1) * Math.max(40, h.clientHeight - 40); return; } teikn(); } };
     slepp = Motor.lytt(lyttar);
     teikn();
   }

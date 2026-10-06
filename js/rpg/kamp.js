@@ -536,22 +536,20 @@ window.Kamp = (function () {
     /* Kommandomenyen */
     function meny_(m) {
       return new Promise(res => {
-        const vis = (tittel, alt, tilbake) => new Promise(r => {
+        /* Vindauga har fast storleik (som i Final Fantasy VI): kommandoane og «Kven?» i eit
+           smalt vindauge med fem rader, lister (Galdr, Song, Ting, Stev) i eit breitt vindauge med
+           to kolonner og fire rader som rullar, og ei fast line med skildringa av det som er valt. */
+        const vis = (tittel, alt, tilbake, liste = false) => {
           meny.hidden = false;
-          meny.classList.toggle("brei", alt.length > 5);
-          meny.innerHTML = `<p class="km-tittel">${E(tittel)}</p><div class="km-alt">${alt.map((a, i) => `<button type="button" data-i="${i}"${a.av ? " disabled" : ""}${a.farge ? ` style="--fam:${a.farge}"` : ""} class="${a.klasse || ""}"><span>${E(a.namn)}</span>${a.info ? `<small>${E(a.info)}</small>` : ""}</button>`).join("")}</div><p class="km-info" hidden></p>`;
-          const kn = [...meny.querySelectorAll("button")], info = meny.querySelector(".km-info");
-          let valt = Math.max(0, alt.findIndex(a => !a.av));
-          const merk = () => { kn.forEach((b, i) => b.classList.toggle("peikar", i === valt)); info.hidden = !alt[valt].tekst; info.textContent = alt[valt].tekst || ""; };
-          merk();
-          const ferdig = i => { slepp(); r(i); };
-          kn.forEach((b, i) => b.addEventListener("click", () => { if (!alt[i].av) ferdig(i); }));
-          const slepp = Motor.lytt({
-            a: () => { if (!alt[valt].av) ferdig(valt); },
-            b: () => { if (tilbake) ferdig(-1); },
-            retning: d => { const n = alt.length; let v = valt; do { v = (v + (d === 1 || d === 2 ? n - 1 : 1)) % n; } while (alt[v].av && v !== valt); valt = v; merk(); },
+          meny.classList.toggle("brei", liste);
+          meny.innerHTML = `<p class="km-tittel">${E(tittel)}</p><div class="km-alt"></div>${liste ? '<p class="km-info"><span></span></p>' : ""}`;
+          const info = meny.querySelector(".km-info span");
+          return Motor.liste(meny.querySelector(".km-alt"), alt.map(a => Object.assign({}, a, { namn: E(a.namn), info: a.info ? E(a.info) : "" })), {
+            rader: liste ? 4 : 5, kolonner: liste ? 2 : 1, tilbake, klikkVel: true,
+            start: Math.max(0, alt.findIndex(a => !a.av)),
+            merk: i => { if (info) info.textContent = alt[i].tekst || " "; },
           });
-        });
+        };
         const velMal = type => {
           if (type === "ingen") return Promise.resolve(null);
           const liste = type === "venn" ? pa.filter(v => v.hp > 0) : type === "venn-fall" ? pa : levandeFi();
@@ -567,7 +565,7 @@ window.Kamp = (function () {
             const valNamn = hovudval[ix] && hovudval[ix].namn;
             const i = { Angrip: 0, Galdr: 1, Song: 1, Ting: 2, Flykt: 3, Stev: 9 }[valNamn];
             if (i === 9) {
-              const j = await vis("Stev", stev.map(id => { const def = D.STEVGALDR[id], s2 = Stev.status(def, ord); return { namn: def.namn, info: `${s2.fylte.length}/${Object.keys(def.hol).length} ord`, tekst: def.tekst + (s2.manglar.length ? ` Manglar ${s2.manglar.length} ord.` : "") }; }), true);
+              const j = await vis("Stev", stev.map(id => { const def = D.STEVGALDR[id], s2 = Stev.status(def, ord); return { namn: def.namn, info: `${s2.fylte.length}/${Object.keys(def.hol).length} ord`, tekst: def.tekst + (s2.manglar.length ? ` Manglar ${s2.manglar.length} ord.` : "") }; }), true, true);
               if (j >= 0) { meny.hidden = true; return res(["stev", null, stev[j]]); }
             }
             if (i === 0) { const mal = await velMal("fiende"); if (mal) { meny.hidden = true; return res(["angrip", mal]); } }
@@ -576,16 +574,16 @@ window.Kamp = (function () {
               const j = await vis("Galdr", ider.map(id => {
                 const o = D.ORD[id], rs = rettskrivne.has(id), fam = D.FAMILIAR[o.fam];
                 return { namn: rs ? o.dansk : o.aasen, info: `${fam.evne} · ${rostKost(m, id)}`, av: m.rost < rostKost(m, id), farge: fam.farge, klasse: rs ? "rettskriven" : "", tekst: rs ? `Rettskrive til dansk! Finn den rette forma for å få ordet att.` : o.tekst };
-              }), true);
+              }), true, true);
               if (j >= 0) { const id = ider[j], v = D.ORD[id].verknad || {}; const mal = await velMal(malType(v)); if (mal !== undefined) { meny.hidden = true; return res(["galdr", mal, id]); } }
             }
             if (i === 1 && !m.galdr) {
-              const j = await vis("Song", m.evner.map(id => { const ev = D.EVNER[id]; return { namn: ev.namn, info: `${ev.rost} røyst`, av: m.rost < ev.rost, tekst: ev.tekst }; }), true);
+              const j = await vis("Song", m.evner.map(id => { const ev = D.EVNER[id]; return { namn: ev.namn, info: `${ev.rost} røyst`, av: m.rost < ev.rost, tekst: ev.tekst }; }), true, true);
               if (j >= 0) { const ev = D.EVNER[m.evner[j]]; const mal = await velMal(ev.mal === "alle" ? "ingen" : "fiende"); if (mal !== undefined) { meny.hidden = true; return res(["song", mal, m.evner[j]]); } }
             }
             if (i === 2) {
               const eigd = Object.entries(m.ting()).filter(([, n]) => n > 0);
-              const j = await vis("Ting", eigd.map(([id, n]) => ({ namn: D.TING[id].namn, info: `×${n}`, tekst: D.TING[id].tekst })), true);
+              const j = await vis("Ting", eigd.map(([id, n]) => ({ namn: D.TING[id].namn, info: `×${n}`, tekst: D.TING[id].tekst })), true, true);
               if (j >= 0) { const id = eigd[j][0]; const mal = await velMal(D.TING[id].vekk ? "venn-fall" : "venn"); if (mal !== undefined) { meny.hidden = true; return res(["ting", mal, null, id]); } }
             }
             if (i === 3) { meny.hidden = true; return res(["flykt"]); }
@@ -641,8 +639,10 @@ window.Kamp = (function () {
       const linjer = await paaSiger({ xp, pengar, fall });
       const vin = rot.querySelector(".kamp-siger");
       vin.hidden = false; vin.innerHTML = "";
+      // Fast vindauge med to liner: ei ny line for kvar Z, og den eldste går ut øvst.
       for (const l of linjer) {
         const p = document.createElement("p"); p.textContent = l; vin.appendChild(p);
+        while (vin.children.length > 2) vin.firstChild.remove();
         vin.classList.add("klar");
         await new Promise(res => { const slepp = Motor.lytt({ a: () => { slepp(); res(); } }); vin.onclick = () => { slepp(); res(); }; });
         vin.classList.remove("klar");

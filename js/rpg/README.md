@@ -292,6 +292,11 @@ Vindauga har pikselramma `bilete/spel/ui/ramme.png` (border-image, kjelde `tools
 ### Samtaleboksen
 Boksen har fast storleik: namnelina og fire tekstliner (eller portrettet, om det er høgare), og står nedst på lerretet. Heile replikken blir lagd ut med kvart teikn i eit span frå starten, og teikna som ikkje er skrivne enno, er usynlege. Difor blir lina broten på same stad frå første til siste bokstav, og boksen endrar seg ikkje. Ein replikk som treng meir enn fire liner, blir delt i sider (▼ og Z for neste side). `python tools/kjoyr-test.py tools/sjekk-tale.html 90000` sjekkar dette og tel liner i alle replikkane i manus.
 
+### Vindauga i kampen og lister
+Alle vindauga i kampen har fast storleik, som i FF6: meldinga øvst er éi line over heile breidda, fiendane og partiet har plass til fem og fire, kommandoane og «Kven?» står i eit smalt vindauge med fem rader, og listene (Galdr, Song, Ting, Stev) i eit breitt vindauge med to kolonner og fire rader og skildringa av det som er valt på éi fast line. Sigeren viser to liner om gongen: kvar Z gir ei ny line, og den eldste går ut øvst.
+
+Listene er `Motor.liste(el, alt, { rader, kolonner })`: berre ruta som syner, blir teikna, så lista er like rask med 100 ord. Peikaren rullar lista ved kanten, ▲ og ▼ syner når det er meir over eller under, opp frå første rad går til siste ord, og ned frå siste rad til første. Val i samtaleboksen (`Motor.val`) brukar same lista med høgst fem rader. Menyen (Ordboka, Ting, Galdr, Stev) blar ei side om gongen med venstre og høgre, med ▲ og ▼. `python tools/kjoyr-test.py tools/sjekk-kamp-ui.html 90000` gir Ivar 100 ord og sjekkar at peikaren når første og siste ord, og at ingen vindauge i kampen endrar storleik, heller ikkje i ein siger med 18 liner.
+
 ### Norrønt og runer i manus
 | Skriv | Blir |
 |---|---|

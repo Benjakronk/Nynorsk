@@ -1,0 +1,105 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Sjekk vindauga i kampen</title>
+<!-- Sjekkar at vindauga i kampen har fast storleik (som i FF6):
+     1. Ivar får 100 ord. Galdr-lista har fast storleik og like mange ruter som med få ord, og
+        peikaren kan gå frå første til siste ord og attende (▲ og ▼ syner rett), raskt.
+     2. Kommandovindauget, ting-lista, fiendane, partiet og meldinga øvst endrar ikkje storleik.
+     3. Sigeren med mange liner (røynsle, ting, nytt nivå): vindauget øvst held storleiken og
+        viser høgst to liner om gongen.
+     Køyr: python tools/kjoyr-test.py tools/sjekk-kamp-ui.html 90000 -->
+<style>body{margin:0;background:#000;color:#fff;font:12px monospace} iframe{width:1100px;height:720px;border:0} #ut{white-space:pre-wrap;padding:4px}</style>
+<iframe id="f"></iframe>
+<div id="ut">køyrer …</div>
+<script>
+const f = document.getElementById("f");
+f.src = "../spel.html?test=1";
+const vent = ms => new Promise(r => setTimeout(r, ms));
+f.onload = async () => {
+  const w = f.contentWindow, d = w.document, M = w.Motor, ut = [], feil = [];
+  let alleOk = true;
+  const sjekk = (ok, tekst) => { ut.push((ok ? "OK   " : "FEIL ") + tekst); if (!ok) alleOk = false; };
+  w.addEventListener("error", e => feil.push(e.message));
+  const tast = async (k, ms = 20) => { d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true })); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true })); await vent(ms); };
+  const synleg = sel => { const e = d.querySelector(sel); return e && !e.hidden; };
+  const rect = sel => { const e = d.querySelector(sel); if (!e || e.hidden) return null; const r = e.getBoundingClientRect(); return [r.left, r.top, r.width, r.height].map(Math.round).join(","); };
+  for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
+  d.querySelector("#rpg-tittel-val button").click();
+  await vent(300);
+  for (let n = 0; n < 400 && (!w.RPGTest.st().scener.heime || synleg("#rpg-tale") || synleg("#rpg-fort")); n++) { await tast("z", 60); }
+  await vent(500);
+
+  // Ivar får 100 ord: dei ekte og kopiar med nye namn.
+  const O = w.RPGData.ORD, ekte = Object.keys(O).filter(id => O[id].fam !== "nokkel");
+  for (let i = 0; O && Object.keys(O).filter(id => O[id].fam !== "nokkel").length < 100; i++) { const k = ekte[i % ekte.length]; O["prov" + i] = Object.assign({}, O[k], { aasen: O[k].aasen + (i + 1) }); }
+  const st = w.RPGTest.st();
+  st.flagg.framande1 = true;
+  for (const id of Object.keys(O)) if (O[id].fam !== "nokkel") st.ord[id] = { former: { [O[id].aasen]: { stad: "Åsen", kven: "Mor" } } };
+  st.ting = { kaffi: 3, flatbrod: 2, romegraut: 1 };
+  const ordtal = Object.keys(st.ord).length;
+  M.last("utmarka", "1"); await vent(500);
+  for (let n = 0; n < 20 && synleg("#rpg-tale"); n++) await tast("z", 80);
+
+  // Storleikane blir målte heile tida kampen varer.
+  const mal = {};
+  const maal = () => { for (const s of [".kamp-melding", ".kamp-fiendar", ".kamp-parti", ".kamp-meny:not(.brei)", ".kamp-meny.brei", ".kamp-siger"]) { const r = rect(s); if (r) (mal[s] = mal[s] || new Set()).add(r); } };
+  const malar = setInterval(maal, 25);
+  M.krokar.kamp(["vette", "vette", "vette"]);
+  for (let n = 0; n < 300 && !synleg(".kamp-meny"); n++) await vent(50);
+  // Frys kampen medan menyen er open (ATB står still), så fiendane ikkje avbryt testen.
+  const kommando = rect(".kamp-meny");
+
+  // 1. Galdr-lista med 100 ord
+  await tast("ArrowDown"); await tast("z", 200);
+  const peikar = () => { const b = d.querySelector(".kamp-meny .peikar"); return b ? +b.dataset.i : -1; };
+  const brei = synleg(".kamp-meny.brei"), ruter = d.querySelectorAll(".kamp-meny .rl-ruter button").length;
+  sjekk(brei && ruter === 8, `Galdr-lista er eit breitt vindauge med 2 × 4 ruter (${ruter} knappar teikna for ${ordtal} ord)`);
+  const listeRect = rect(".kamp-meny");
+  sjekk(peikar() === 0 && !synleg(".kamp-meny .rl-opp") && synleg(".kamp-meny .rl-ned"), "peikaren står på første ord, ▼ syner og ▲ ikkje");
+  let t0 = performance.now(), steg = 0;
+  while (peikar() < ordtal - 2 && steg < 200) { await tast("ArrowDown", 0); steg++; }   // til siste rad (to kolonner)
+  if (peikar() < ordtal - 1) { await tast("ArrowRight", 0); steg++; }
+  const msNed = (performance.now() - t0) / Math.max(1, steg);
+  sjekk(peikar() === ordtal - 1, `peikaren kom til siste ord (${peikar() + 1} av ${ordtal}) på ${steg} trykk (ned og høgre), ${msNed.toFixed(1)} ms per trykk`);
+  sjekk(synleg(".kamp-meny .rl-opp") && !synleg(".kamp-meny .rl-ned"), "nedst: ▲ syner og ▼ ikkje");
+  steg = 0;
+  while (peikar() > 1 && steg < 200) { await tast("ArrowUp", 0); steg++; }   // til første rad
+  if (peikar() === 1) { await tast("ArrowLeft", 0); steg++; }
+  sjekk(peikar() === 0, `peikaren kom attende til første ord på ${steg} trykk (opp og venstre)`);
+  await tast("ArrowUp"); sjekk(peikar() === ordtal - 1, "opp frå første ord går til siste");
+  await tast("ArrowDown"); sjekk(peikar() === 0, "ned frå siste rad går til første ord");
+  await tast("ArrowRight"); sjekk(peikar() === 1, "høgre går til neste kolonne");
+  sjekk(rect(".kamp-meny") === listeRect && d.querySelectorAll(".kamp-meny .rl-ruter button").length <= 8, "vindauget har same storleik heile vegen");
+  const tekst = d.querySelector(".km-info").textContent;
+  sjekk(tekst.trim().length > 0, `skildringa av ordet står på den faste lina («${tekst}»)`);
+
+  // 2. Tilbake til kommandoane, så ting-lista
+  await tast("x", 150);
+  sjekk(rect(".kamp-meny") === kommando, "kommandovindauget har same storleik etter lista");
+  for (let n = 0; n < 6 && !/Ting/.test((d.querySelector(".kamp-meny .peikar") || {}).textContent || ""); n++) await tast("ArrowDown");
+  await tast("z", 200);
+  sjekk(rect(".kamp-meny") === listeRect, `ting-lista har same storleik som Galdr-lista (${d.querySelectorAll(".kamp-meny .rl-ruter button").length} ting)`);
+  await tast("x", 150);
+
+  // 3. Siger med mange liner: alle fiendane fell på første slag, og dei slepper mange ting.
+  w.KampTest.fiendar.forEach((fi, i) => { fi.hp = i < 2 ? 0 : 1; fi.d = Object.assign({}, fi.d, { fall: [["flatbrod", 1], ["kaffi", 1], ["romegraut", 1]] }); });
+  st.parti[0].xp = 999;
+  for (let n = 0; n < 6 && !/Angrip/.test((d.querySelector(".kamp-meny .peikar") || {}).textContent || ""); n++) await tast("ArrowUp");
+  await tast("z", 200); await tast("z", 200);
+  for (let n = 0; n < 200 && !synleg(".kamp-siger"); n++) await vent(50);
+  await vent(1500);
+  const siger = rect(".kamp-siger"); let liner = 0, maksLiner = 0, sigerLik = true;
+  for (let n = 0; n < 30 && synleg(".kamp-siger"); n++) {
+    liner++; maksLiner = Math.max(maksLiner, d.querySelectorAll(".kamp-siger p").length);
+    if (rect(".kamp-siger") !== siger) sigerLik = false;
+    await tast("z", 120);
+  }
+  clearInterval(malar);
+  sjekk(liner >= 8 && sigerLik && maksLiner <= 2, `sigeren: ${liner} liner, vindauget held storleiken (${siger}), høgst ${maksLiner} liner om gongen`);
+  for (const [s, set] of Object.entries(mal)) sjekk(set.size === 1, `${s} har same storleik heile kampen (${[...set].join(" | ")})`);
+  if (feil.length) sjekk(false, "feil i spelet: " + feil.join(" | "));
+  ut.push(alleOk ? "Alt ser rett ut." : "Noko er feil.");
+  document.getElementById("ut").textContent = ut.join("\n");
+  f.remove();
+};
+</script>
