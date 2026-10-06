@@ -997,6 +997,90 @@ f.onload = async () => {
     for (let n = 0; n < 300; n++) { tel14(); await vent(50); }
     sjekk(overlapp14 === 0 && M.aktor("Vandrar").x === 18 && M.aktor("Vandrar").y === 12, `den som går omkring, gjekk ikkje inn på ruta til følgjet (${overlapp14} bilete med overlapp14)`);
     M.settFylgje(null);
+
+    // 15. Dørene som i FF6 (runde 96): to rammer, lukka og open, utan mellomrammer.
+    {
+      const bilete = id => (M.byggBilete(w.RPGData.KART[M.kart.id].bygg.find(b => b.id === id)) || {}).src || "";
+      // a) Ivar går mot døra på stova: ho er lukka, opnar seg med ein gong, han går inn i opninga, og
+      //    så kjem stova. Der står døra han kom ut av, open eit augneblink, og lukkar seg.
+      M.last("asen", "3"); M.plasser(6, 5, 1); M.pause(false); await vent(300);
+      const lukkaFor = !M.dorOpen(6, 4) && /bygg\/stove\.png/.test(bilete("stove"));
+      let opnaVed = null, iOpninga = false, rammer = new Set();
+      const t15 = performance.now();
+      d.dispatchEvent(new w.KeyboardEvent("keydown", { key: "ArrowUp", bubbles: true }));
+      for (let n = 0; n < 200 && M.kart.id === "asen"; n++) {
+        if (M.dorOpen(6, 4) && opnaVed == null) opnaVed = performance.now() - t15;
+        if (M.kart.id === "asen") rammer.add(bilete("stove").replace(/.*\//, ""));
+        if (M.spelar.x === 6 && M.spelar.y === 4 && M.dorOpen(6, 4)) iOpninga = true;
+        await vent(16);
+      }
+      d.dispatchEvent(new w.KeyboardEvent("keyup", { key: "ArrowUp", bubbles: true }));
+      sjekk(lukkaFor, "døra på stova er lukka før Ivar går mot henne");
+      sjekk(opnaVed != null && opnaVed < 100 && [...rammer].every(r => r === "stove.png" || r === "stove-open.png"), `ho opnar seg med ein gong (${Math.round(opnaVed)} ms), berre med dei to rammene (${[...rammer].join(", ")})`);
+      sjekk(iOpninga, "Ivar gjekk inn i opninga medan døra stod open");
+      for (let n = 0; n < 60 && (M.svart || M.kart.id !== "asen-stova"); n++) await vent(20);
+      const utOpen = M.kart.id === "asen-stova" && M.dorOpen(5, 7);
+      await vent(1000);
+      sjekk(M.kart.id === "asen-stova" && utOpen && !M.dorOpen(5, 7), `i stova står døra Ivar kom ut av, open eit augneblink og lukkar seg (${M.kart.id}, open ${utOpen})`);
+      // b) Ei låst dør (krev) og ei dør utan til opnar seg ikkje, og teksten kjem som før.
+      const st15 = T().st(), prestBed = st15.flagg.prest_bed; delete st15.flagg.prest_bed;
+      M.last("bygda", "4"); M.plasser(32, 6, 1); await vent(300);
+      let laastOpen = false, laastTekst15 = "";
+      await haldTast("ArrowUp", 250);
+      await trykkGjennom(() => laastTekst15 && !synleg("#rpg-tale") && !T().iHending(), () => { if (M.dorOpen(32, 5)) laastOpen = true; if (/stengd/.test(taleNo())) laastTekst15 = taleNo(); });
+      sjekk(!laastOpen && M.kart.id === "bygda" && M.spelar.x === 32 && M.spelar.y === 6 && /prestegarden er stengd/.test(laastTekst15), "den låste døra til prestegarden opnar seg ikkje, og teksten kjem");
+      if (prestBed !== undefined) st15.flagg.prest_bed = prestBed;
+      M.last("ekset", "1"); M.plasser(22, 4, 1); await vent(300);
+      await haldTast("ArrowUp", 300); await vent(400);
+      sjekk(!M.dorOpen(22, 3) && M.spelar.x === 22 && M.spelar.y === 4 && /seter\.png/.test(bilete("seter")), "døra til trykkjeriet (utan til) opnar seg ikkje");
+      // c) Ein figur i ei scene kjem ut døra på stova (inn på døra) og går inn att (ut: true): døra opnar
+      //    seg når han går, han er ikkje synleg bak den lukka døra, og ho lukkar seg bak han.
+      M.last("asen", "3"); M.plasser(9, 7, 1); await vent(300);
+      let opnaUt = false, opnaInn = false;
+      const logg15 = () => {
+        const p = M.aktor("Prøvar");
+        if (p && p.flytt && Math.round(p.flytt.fx) === 6 && Math.round(p.flytt.fy) === 4 && M.dorOpen(6, 4)) opnaUt = true;
+        if (p && p.x === 6 && p.y === 4 && p.flytt && M.dorOpen(6, 4)) opnaInn = true;
+      };
+      const ph = T().hending([
+        { inn: { namn: "Prøvar", u: "bonde", rute: [6, 4], retning: "ned" } }, { vent: 300 },
+        { gaa: "Prøvar", sti: "n2" }, { vent: 900 },
+      ]);
+      const lukkaMedInne = (await vent(150), !M.dorOpen(6, 4));
+      while (T().iHending()) { logg15(); await vent(16); }
+      await ph;
+      const lukkaEtterUt = !M.dorOpen(6, 4);
+      const ph2 = T().hending([{ gaa: "Prøvar", rute: [6, 4], ut: true }]);
+      while (T().iHending()) { logg15(); await vent(16); }
+      await ph2;
+      const borte = !M.aktor("Prøvar"), openRettEtter = M.dorOpen(6, 4);
+      await vent(600);
+      sjekk(lukkaMedInne && opnaUt && lukkaEtterUt, "figuren kjem ut døra: ho er lukka medan han står inne, opnar seg når han går ut, og lukkar seg bak han");
+      sjekk(opnaInn && borte && openRettEtter && !M.dorOpen(6, 4), "figuren går inn døra: ho opnar seg, han går inn og er borte, og døra lukkar seg etter eit augneblink");
+      // d) Scenesteget { dor, open }: open held ho open, open: false lukkar ho.
+      await T().hending([{ dor: [6, 4], open: true }, { vent: 800 }]);
+      const fast = M.dorOpen(6, 4);
+      await T().hending([{ dor: [6, 4], open: false }]);
+      sjekk(fast && !M.dorOpen(6, 4), "scenesteget { dor, open: true } held døra open, og open: false lukkar ho");
+      // e) Trapp i opninga: døra til galleritrappa viser trinn opp, døra ned frå galleriet trinn ned.
+      sjekk(w.RPGData.KART.kyrkja.dorer.find(o => o.ved[0] === 8 && o.ved[1] === 37).trapp === "opp" && w.RPGData.KART["kyrkje-galleri"].dorer.find(o => o.ved[0] === 10).trapp === "ned", "døra til galleritrappa har trapp opp, og døra ned frå galleriet trapp ned");
+      // f) Trappa over fleire fliser (galleritrappa, 8,38 til 8,40): ein kjem ikkje inn på ho frå sida,
+      //    ikkje ut av ho til sida, men går opp frå botnen eitt trinn om gongen.
+      M.last("kyrkja", "1"); await vent(200);
+      const fraSida = [];
+      for (const y of [38, 39, 40]) { M.plasser(9, y, 2); await vent(100); await haldTast("ArrowLeft", 300); await vent(300); fraSida.push(M.spelar.x === 9 && M.spelar.y === y); }
+      M.plasser(8, 39, 0); await vent(100); await haldTast("ArrowRight", 300); await vent(300);
+      const utSida = M.spelar.x === 8 && M.spelar.y === 39;
+      M.plasser(8, 41, 1); await vent(100);
+      const trinn = [];
+      d.dispatchEvent(new w.KeyboardEvent("keydown", { key: "ArrowUp", bubbles: true }));
+      for (let n = 0; n < 60 && M.kart.id === "kyrkja"; n++) { const y = M.spelar.y; if (trinn[trinn.length - 1] !== y) trinn.push(y); await vent(16); }
+      d.dispatchEvent(new w.KeyboardEvent("keyup", { key: "ArrowUp", bubbles: true }));
+      for (let n = 0; n < 60 && M.kart.id !== "kyrkje-galleri"; n++) await vent(30);
+      sjekk(fraSida.every(Boolean) && utSida, `Ivar kjem ikkje inn på galleritrappa frå sida eller ut av ho til sida (${fraSida.join(",")}, ${utSida})`);
+      sjekk(trinn.slice(0, 4).join(",") === "41,40,39,38" && M.kart.id === "kyrkje-galleri", `frå botnen går han opp trappa eitt trinn om gongen og kjem til galleriet (${trinn.join(",")}, ${M.kart.id})`);
+      await vent(800);
+    }
     if (gamalLagring == null) w.localStorage.removeItem(NOKKEL); else w.localStorage.setItem(NOKKEL, gamalLagring);
   } catch (e) { ut.push("FEIL " + e.stack); }
   document.getElementById("ut").textContent = ut.join("\n");

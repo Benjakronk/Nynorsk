@@ -2629,3 +2629,43 @@ same måte, uansett kven som tek over.
   fann vakta feilen ved benkene i koret. `kjoyr-test.py` gir sjekk-scene 260 sekund (testen brukar om lag 220).
 - **Bilete:** `forhand/skjerm/r95-inn-ut-rekke.png` (steget inn ovanfrå på benken i koret, 40, 100, 160 og 240 ms,
   og steget ut att).
+
+## Runde 96: dører som i FF6, trappevariantar av døropningane, og trapper ein ikkje kan hoppe opp på
+
+- **Frå brukaren:** dørene skal opnast som i FF6: går Ivar mot ei lukka dør som kan opnast, opnar ho seg, utan
+  animasjon, berre ei ramme for lukka og ei for open dør. Figurar i scener skal opne døra når dei går gjennom, og
+  ho skal lukke seg bak dei. Tillegg: trappa i kyrkja kunne ein gå inn på frå sida og kome nesten heilt opp på eitt
+  steg, og dører til ein annan etasje bør vise ei trapp opp eller ned i opninga.
+- **To rammer:** den gamle opningsanimasjonen (`dorAnim`, `teiknDor`, `DORFORM` og `DOR_TID` i motor.js) er borte.
+  `DORFORM` trengst ikkje lenger, sidan den opne ramma er eit heilt bilete. bygg.py `dor(..., ope=True)` teiknar den
+  opne døra (mørkt inne, svakt lys ved dørstokken, dørbladet slått innover på kant i karmen, to blad på dobbeldører),
+  og `BYGG` har `stove-open`, `loe-open`, `stabbur-open`, `seter-open`, `ekset-hovud-open`, `prestegard-open` og
+  `kyrkje-open` (raude dobbeldører). Dei lukka bileta er uendra (sjekka mot kjeldene). Inventar: `skipvegg-v` har no
+  ei lukka furudør i pilasteren, og `skipvegg-v-open` er den gamle mørke opninga med bladet slått inn. Inne er flisa
+  `E` ei lukka plankedør, `E:open` den gamle opninga med bladet, og `E:opp`/`E:ned` har trinn i mørket.
+  `stove-bak` (bakdøra til bua) har inga synleg dør og er alltid låst, så ho fekk inga open ramme.
+- **Motoren:** `opneDor`, `lukkDor`, `dorOpen` og `brukDorer` (ei dør står open så lenge nokon går inn på eller ut
+  av ruta, og lukkar seg 300 ms etter), `byggBilete` (byter til `<id>-open`), `dorFlis` og `inneBakDor` (ein figur
+  som står i ro på ei lukka dørrute, er inne og blir ikkje teikna). `gjennomDor()` opnar døra med ein gong, lèt Ivar
+  gå eitt steg inn i opninga og tonar så over. Døra han kjem ut av, står open eit augneblink og lukkar seg: i FF6
+  står ein i opninga med døra open når ein kjem ut, og ho går att når ein går av ruta. Låste dører (`krev`, `vakt`,
+  `krevOrd`, utan `til`) opnar seg ikkje.
+- **Scener:** syster og storebror i «skiftebrev» (inn på døra, ut og inn att med `ut: true`) og andre figurar som går
+  gjennom ei dør, opnar ho av seg sjølv. Nytt scenesteg `{ dor: [x, y], open: true | false }`. I data.js: `open:
+  true` (stabburet inne, med dagslyset, og trappa ned til arkivet står alltid opne), `trapp: "opp" | "ned"` (dørene
+  til galleritrappa, galleriet, tårnet og arkivet) og `gang: true` (døra i pilasteren, 4,11). Luka i stabburet er
+  ein del av stigebiletet og ikkje ei dør, så ho fekk ingen variant.
+- **Trapper:** `trapper: { "x,y": "loddrett" | "vassrett" }` på kartet (`trappStengd()` i motor.js): ein går berre inn
+  på og ut av trappa frå botnen og toppen, eitt trinn per steg. Gjeld spelaren, følgjet, folk og regien. Galleritrappa
+  (8,38 til 8,40) er den einaste trappa over fleire fliser; rampene ute har fast skrent på sidene.
+- **Testar:** sjekk-scene bolk 15: døra på stova er lukka, opnar seg med ein gong med berre dei to rammene, Ivar går
+  inn i opninga og kjem til stova, der døra står open eit augneblink og lukkar seg; den låste døra til prestegarden og
+  trykkjeriet opnar seg ikkje; ein figur kjem ut døra og går inn att, og døra opnar og lukkar seg; `{ dor, open }`;
+  trappa kan ikkje gåast inn på eller ut av frå sida, og frå botnen går Ivar 41, 40, 39, 38 og opp til galleriet.
+  sjekk-spel.js sjekkar `trapp`, `open`, `gang`, `trapper` og dørsteget.
+- **Bilete:** `forhand/r96-dorer-8x.png` og `r96-pilaster-8x.png` (lukka og open, 6x),
+  `forhand/skjerm/r96-dorer.png` (dørene ute og inne, lukka og opne, Ivar i opninga), `r96-inne-dorer.png` (flisene
+  `E`, `E:open`, `E:opp`, `E:ned` i 8x og i spelet), `r96-trapp-dorer.png` (trappeopningane) og `r96-npc-dor.png`
+  (syster kjem ut døra og går inn att, ni bilete). Før: `r96-for-*.png`.
+- **Står att:** dørbladet i den opne ramma er smalt (tre pikslar) og syner lite på små dører. Ivar er høgare enn
+  døropninga, så hovudet hans går over karmen når han står i ho (som i spelet før).

@@ -1,0 +1,96 @@
+# namn: bygg-stabbur-open
+# type: bygg
+# ut: bilete/spel/bygg/stabbur-open.png
+# storleik: 56x72
+palett:
+  . = -
+  o = #0a0514    omriss
+  0 = #262c16    torv djup
+  1 = #434e24    torv skugge
+  2 = #6a7a34    torv
+  3 = #98a648    torv lys
+  4 = #ccc46c    torv glans, solbleikt
+  a = #26160e    tømmer djup
+  b = #44281a    tømmer skugge
+  c = #664228    tømmer
+  d = #8a6038    tømmer lys
+  e = #b08650    tømmer glans
+  A = #1e1a26    stein djup
+  B = #3e3c4c    stein skugge
+  C = #646274    stein
+  D = #8e8ca0    stein lys
+  m = #140c10    mørkt inne (open dør)
+  l = #2a1810    golvet inne, i døropninga
+bilete:
+  ........................................................
+  ........................................................
+  ........................................................
+  ...........................o............................
+  ..........................o1o...........................
+  ........................ooo0o.o.........................
+  .......................o11343o0o........................
+  .....................oo00034301o.o......................
+  ....................o1o112343110o0o.....................
+  ...................o00011134311101o.....................
+  ..................oo121211343211110oo...................
+  ...............o.o0011211134322111100o.o................
+  ..............o0o021111111343111111110o1o...............
+  ..............o1011111111d343e2111111100o..o............
+  ............oo011111111122d4e222121111110oo1o...........
+  .........ooo001111111112223d3232111111111000o...........
+  ........o10021111211122222e4d2222311112111210o..........
+  .......o00112111112122222e343d2222211121111110oo........
+  .....oo01111212111222222223432222222212111111101ooo.....
+  ...oo0011111112112233222333e33322322221211121110011o....
+  ..o0121111111212222222233eedee332322223212111111100o....
+  .oo201111112212232222333eddbdd3333222222211121111110o.o.
+  o1011121111122222222333edbbdbbde333222322221121111120o1o
+  001211121113222222333eedbcbdccbd33333223222211111121100o
+  22211211122223233333eddbccbdccbb21e333222222231111111120
+  212111212222332333oedbbdccbdccbd1bdeo3332222223111211111
+  11111222222222333eedbcbdccbdccbdccbdee333222222321111111
+  111113222222333o3ddbccbdccbdccbdccbbdd3o3332222223111111
+  21122222222333oedbbdccbdccbdccbdccbdbb2eo333222222221121
+  112332222333o3edbcbdccbdccbdccbdccbdcc1de3o3332222222111
+  22222222333o3ddbccbdccbdccbdccbdccbdccbbddeo333222322221
+  222222333o3e1bbdccbdccbdccbdccbdccbdccbdbbd33o3332322222
+  22222333oe2dbcbdccbdccbdccbdccbdccbdccbdccb21eo333222232
+  222333oo3d1bccbdccbdccbdccbdccbdccbdccbdccb2bd3oo3332222
+  22333o3e1bbdccbdccbdccbdccbdccbdccbdccbdccb1cb233o333232
+  333oo32dbcbdccbdccbdccbdccbdccbdccbdccbdccbdcc122eoo3333
+  33ooe11bccbdccbdccbdccbdccbdccbdccbdccbdccbdccb12d3oo333
+  oo33dbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1bd3eoo3
+  22d2bdddddddddddddddddddddddddddddddddddcddddddddcb2d322
+  22b1cccccccccccccccccbcccccccccbcccccccbcccbccccccb2b222
+  11bccccccccccccbccccccccaaaaaaaaccbccccccccbccccccc1c111
+  2bbabbbbbbbbbababbbbabbaaBBBBBBabaabbaabaababbbabbbbbbb2
+  1cdddddddddddcddddddddddaAAAAAAaddddddddddcddddcddddddb2
+  dbccccccccccccccccccccccaAAAAAAacccccccccccccccccccccca1
+  cbbccccbcccccccccccbccccaAAAAAAacccccccccccccccccbcccbaa
+  bbbbbbaabbbaaabbbbbabbabaaaaaaaaaabbbbaabbbbabbbbbbaabbb
+  dcddcddddddddcddddddcddddddddcddddddddddddddddddddddddbd
+  dbcccccccccccccccccbccccbcccccccccccccbccccbccccccccccac
+  cbbccccccccccccccccccccccccccccccccbccccbbccbcccccccbbaa
+  bbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb
+  oooaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaooo
+  ..ocdbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcacco..
+  ..occbbccccccccccccccadcmmmmmmmmmmabcccccbcccccccbaabo..
+  ..obbbbbbbabbbbbbaabbadcbmmmmmmmmmabababbbbbbabaabbbbo..
+  ..oedcddcddddddddddddadcbmmmmmmmmmacddddddddddddddbddo..
+  ..ocdbcccccccccccbcccaaaammmmmmmmmaccccccccccccbccacco..
+  ..occbbccccccccccccccadcbmmmmmmmmmaccccccccccccccbaabo..
+  ..obbbbbbbbabbbbaabbbadcbmmmmmmmmmabbabbbbbabbbbbbbbbo..
+  ..oedcddddddddddddddcadcbmmmmmmmmmadddddddddddddddbddo..
+  ..ocdbcccccccccbcccccaaaammmmmmmmmacccccccccccccccacco..
+  ..occbbcbccccccccccccadcbmmmmmmmmmaccccccccccccccbaabo..
+  ..obbbbabaabaabbbbaabadcblllllllllabaabababbbbbabbbbbo..
+  ..oedcdddddddddddddddadclllllllllladcdddddcdddddddbddo..
+  ..ocdccoodcccaaaaaaaaaaaaaaaadcccaaaaaaaaaadcccoocdcco..
+  ..occabooccccaaaaaaaaaaaaaaaaccccaaaaaaaaaaccccooccabo..
+  ..obbbbooccccaaaaaaaaeeeeeeeeeeeeeeaaaaaaaaccccoobbbbo..
+  ...oooo.occccaaaaaaaaccccccccccccccaaaaaaaacccco.oooo...
+  ........obbbbaaaaaaaabbbbbbbbbbbbbbaaaaaaaabbbbo........
+  .......oDDDDDDaaaaaaeeeeeeeeeeeeeeeeaaaaaaDDDDDDo.......
+  .......oCCCCCCooooooccccccccccccccccooooooCCCCCCo.......
+  .......oBBBBBBo....obbbbbbbbbbbbbbbbo....oBBBBBBo.......
+  ........oCCCCo....oeeeeeeeeeeeeeeeeeeo....oCCCCo........

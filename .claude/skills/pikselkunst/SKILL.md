@@ -50,8 +50,14 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   må ha same fotavtrykk og dør som i kartet, og står i `bygg` på kartet i `js/rpg/data.js`.
   `bakdor=[i]` gir inngang på baksida (bislag). Då ligg døra (`D`) i kartet i
   flisraden rett bak huset, og stien må kome ovanfrå. Hus med grue eller omn inne får
-  `pipe=<flisnummer>` (mura steinpipe) og ei røykopning i `ROYK` i `js/rpg/pikslar.js`. Ei ny dørform (breidd, høgd)
-  må førast inn i `DORFORM` i `js/rpg/motor.js`, så døra opnar seg rett.
+  `pipe=<flisnummer>` (mura steinpipe) og ei røykopning i `ROYK` i `js/rpg/pikslar.js`.
+  Dørene har to rammer som i FF6 (runde 96), lukka og open, utan animasjon: eit hus med dør treng
+  òg «<namn>-open» i `BYGG` (same funksjonen med `ope=True`: `dor()` teiknar mørkt inne, svakt lys
+  ved dørstokken og dørbladet slått innover på kant i karmen), og namnet i `OPEN_BYGG` i
+  `js/rpg/pikslar.js`. Same for inventar med ei dør (`inne-skipvegg-v-open`, døra i pilasteren).
+  Dørene inne er flisene `E` (lukka), `E:open`, og `E:opp`/`E:ned` med trinn i opninga (`trapp` på
+  døra i data.js). Sjå dei med `python tools/bilete-spel.py namn skript.js` og
+  `Motor.dorSteg([x, y], true)` (held døra open), som i `forhand/skjerm/r96-dorer.png`.
 - Nye bilete blir forhåndslasta automatisk når dei står i data.js (bygg, figurar,
   portrett, kampbakgrunnar). Andre bilete må leggjast til i `alleBilete` i `pikslar.js`.
 - Inventar inne (sjå `INVENTAR` i skriptet: kyrkja, bondestova og

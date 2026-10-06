@@ -806,7 +806,7 @@ def dopefont():
     return L
 
 
-def skipvegg(side):
+def skipvegg(side, ope=False):
     """Austveggen i skipet på kvar side av korbogen, 4 fliser brei og 5 høg (same høgd som
     bakveggen i koret): himling, gesims og draperi som i koret, kvitkalka mur og marmorert
     brystpanel, og ein marmorert pilaster med kapitel og byrjinga på korbogen mot koret. Til
@@ -850,6 +850,15 @@ def skipvegg(side):
         for y in range(30, 48):                                              # rad 11 i kartet
             for x in range(a + 1, b):
                 L.p(x, y, "Y" if y == 30 or x in (a + 1, b - 1) else "N" if y > 33 else "a")
+        if ope:                                                              # open (runde 96): dørbladet slått inn mot venstre
+            for y in range(31, 48): L.p(a + 2, y, "C"); L.p(a + 3, y, "A" if 31 < y < 47 else "N")
+            L.p(a + 2, 35, "a"); L.p(a + 2, 43, "a"); L.p(a + 3, 35, "a"); L.p(a + 3, 43, "a")
+        else:                                                                # lukka: furudør med to bord, gyrdlar og handtak
+            for y in range(31, 48):
+                for x in range(a + 2, b - 1):
+                    L.p(x, y, "C" if x == a + 2 else "A" if x == (a + b) // 2 else "c")
+            for x in range(a + 2, b - 1): L.p(x, 35, "a"); L.p(x, 43, "a"); L.p(x, 47, "a")
+            L.p(b - 3, 39, "Y"); L.p(b - 3, 40, "Z")
         L.p((a + b) // 2, 29, "y")
     for j in range(8):                                                       # bogen: raudt band med gull
         bx = (b + 1 + j) if side == "v" else (a - 1 - j)
@@ -2332,7 +2341,7 @@ INVENTAR = {
     "rokk": rokk, "korvegg": korvegg, "kyrkjebenk-h": lambda: kyrkjebenk("h"), "kyrkjebenk-v": lambda: kyrkjebenk("v"), "kyrkjebenk-golv": kyrkjebenk_golv,
     **{f"kyrkjebenk-{d}{v}": (lambda d=d, v=v: kyrkjebenk(d, variant=v - 1)) for d in "hv" for v in (2, 3, 4, 5)},
     "dopefont": dopefont, "altartavle": altartavle, "altarring": altarring, "preikestol": preikestol, "preikestol-bak": lambda: preikestol("bak"), "preikestol-himling": lambda: preikestol("himling"), "preikestol-karm": lambda: preikestol("karm"), "lysekrone": lysekrone,
-    "skipvegg-v": lambda: skipvegg("v"), "skipvegg-h": lambda: skipvegg("h"), "korskilje": korskilje, "kyrkjeskip": kyrkjeskip,
+    "skipvegg-v": lambda: skipvegg("v"), "skipvegg-v-open": lambda: skipvegg("v", ope=True), "skipvegg-h": lambda: skipvegg("h"), "korskilje": korskilje, "kyrkjeskip": kyrkjeskip,
     "fattigblokk": fattigblokk, "jernomn": jernomn,
     "epitaf-v": lambda: epitaf("v"), "epitaf-h": lambda: epitaf("h"),
     "trapp": trapp, "galleribrystning": galleribrystning, "klokkestol": klokkestol, "tarnbjelke": tarnbjelke, "lydluke": lydluke,

@@ -17,12 +17,21 @@ for (const [id, k] of Object.entries(D.KART)) {
 for (const [id, k] of Object.entries(D.KART)) {
   for (const d of k.dorer || []) {
     const c = k.rader[d.ved[1]] && k.rader[d.ved[1]][d.ved[0]];
-    if (!d.kant && !"DdE".includes(c)) feil.push(`${id}: dør ${d.ved} står på «${c}»`);
+    if (!d.kant && !d.gang && !"DdE".includes(c)) feil.push(`${id}: dør ${d.ved} står på «${c}»`);
+    // Dørene som i FF6 (runde 96): trapp ("opp" eller "ned") viser trinn i den opne døra inne (flisa E),
+    // open: true står alltid open, og gang: true er ei dør på same kartet (utan til), på ei rute ein kan gå på.
+    if (d.trapp !== undefined && !(["opp", "ned"].includes(d.trapp) && c === "E")) feil.push(`${id}: trapp på døra ${d.ved} må vere "opp" eller "ned", på ei E-flis`);
+    if (d.open !== undefined && d.open !== true) feil.push(`${id}: open på døra ${d.ved} må vere true`);
+    if (d.gang && (d.til || d.kant || "DdE".includes(c) || !c)) feil.push(`${id}: gangdøra ${d.ved} skal stå på ei rute ein går på, utan til og kant`);
     if (d.kant && !MERKE.test(c) && c !== "=") feil.push(`${id}: kantdør ${d.ved} står på «${c}»`);
     if (d.til) { if (!D.KART[d.til[0]]) feil.push(`${id}: ukjent kart ${d.til[0]}`); else if (!merkeI[d.til[0]][d.til[1]]) feil.push(`${id}: merket ${d.til[1]} finst ikkje i ${d.til[0]}`); else if (D.KART[d.til[0]].scene) feil.push(`${id}: dør til scenekartet ${d.til[0]}`); }
     if (d.vakt && !D.MANUS[d.vakt.manus]) feil.push(`${id}: vaktmanus ${d.vakt.manus} manglar`);
     if (d.krevOrd && !D.ORD[d.krevOrd]) feil.push(`${id}: krevOrd ${d.krevOrd}`);
   }
+  // Trapper (runde 96): { "x,y": "loddrett" | "vassrett" }, på ruter ein kan gå på.
+  for (const [r, v] of Object.entries(k.trapper || {})) { const [x, y] = r.split(",").map(Number), c = (k.rader[y] || "")[x];
+    if (!["loddrett", "vassrett"].includes(v)) feil.push(`${id}: trappa ${r} må vere "loddrett" eller "vassrett"`);
+    if (c == null || "DdE#".includes(c)) feil.push(`${id}: trappa ${r} står på «${c}»`); }
   for (const f of k.folk || []) { if (!merkeI[id][f.merke]) feil.push(`${id}: merket ${f.merke} til ${f.namn} manglar`); if (!D.MANUS[f.tale]) feil.push(`${id}: manus ${f.tale} manglar`); if (f.vesen ? !(D.FIENDAR[f.vesen] || require("fs").existsSync(require("path").join(__dirname, "..", "bilete", "spel", f.vesen + ".png"))) : !D.U[f.u]) feil.push(`${id}: utsjånad ${f.vesen || f.u}`); }
   for (const i of k.inngang || []) if (!D.MANUS[i.manus]) feil.push(`${id}: inngang ${i.manus}`);
   if (k.kvile && !D.SCENER[k.kvile]) feil.push(`${id}: kvilescena ${k.kvile} finst ikkje`);
@@ -263,6 +272,12 @@ function sjekkNamn(nokkel, steg, stad) {
       if (typeof v === "string" && !(f === "mot" && "s" in s) && !lov.has(v) && !(f === "fra" && !s.parti)) feil.push(`${stad} på ${k}: «${v}» (${f}) finst ikkje på kartet`);
     }
     for (const s of st) if (typeof s.kamera === "string" && !lov.has(s.kamera)) feil.push(`${stad} på ${k}: kamera mot «${s.kamera}» som ikkje finst`);
+    // Dørsteget { dor: [x, y] eller merke, open: true | false }: ruta må vere ei dør på kartet (ikkje ei kantdør).
+    for (const s of st) if ("dor" in s) {
+      const r = typeof s.dor === "string" ? merkeI[k][s.dor] : s.dor;
+      if (!Array.isArray(r) || !(D.KART[k].dorer || []).some(d => !d.kant && d.ved[0] === r[0] && d.ved[1] === r[1])) feil.push(`${stad} på ${k}: dor ${JSON.stringify(s.dor)} er inga dør på kartet`);
+      if (s.open !== undefined && typeof s.open !== "boolean") feil.push(`${stad} på ${k}: open på dørsteget må vere true eller false`);
+    }
     // Møblar (sitje, liggje): ruta må vere eit sete (bygg i SETE eller naturting med sete) eller ei seng (bygg i SENG).
     for (const s of st) for (const [f, kva, krav] of [["sitje", "sete", "SETE"], ["liggje", "seng", "SENG"]]) {
       if (!(f in s)) continue;

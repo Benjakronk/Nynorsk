@@ -381,7 +381,8 @@ window.RPGData = (function () {
         "XKOO1OOO(X",
         "XXXXEXXXXX",
       ],
-      dorer: [{ ved: [4, 6], til: ["asen", "5"] }],
+      // open: true: døra står open (runde 96), så dagslyset fell inn (dagslys i stemninga).
+      dorer: [{ ved: [4, 6], til: ["asen", "5"], open: true }],
       // Merka 2, 3 og 4 ligg rundt ruta der Ivar står etter scena «stabburet»: det første steget han
       // tek (mot kista, flatbrødet eller døra), set i gang scena med rotta. Etterpå er det rotter her.
       inngang: [{ merke: "1", manus: "inn_stabbur" }, { merke: "2", manus: "rotta" }, { merke: "3", manus: "rotta" }, { merke: "4", manus: "rotta" }],
@@ -741,7 +742,11 @@ window.RPGData = (function () {
       hogd: Object.assign({ "1,11": [-9, 5], "1,12": [-8, 5] },
         Object.fromEntries([17, 19, 21, 23, 28, 30, 32, 34].flatMap(y =>
           [2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17, 18].map(x => [x + "," + y, -5])))),
-      dorer: [{ ved: [10, 43], til: ["bygda", "3"] }, { ved: [8, 37], til: ["kyrkje-galleri", "1"] }],
+      // trapp: den opne døra viser trinn opp eller ned i mørket (runde 96). gang: døra i pilasteren inn til
+      // gangen i muren og preikestolen, på same kartet (ho opnar seg når nokon går gjennom, inventar-biletet skipvegg-v-open).
+      dorer: [{ ved: [10, 43], til: ["bygda", "3"] }, { ved: [8, 37], til: ["kyrkje-galleri", "1"], trapp: "opp" }, { ved: [4, 11], gang: true }],
+      // Galleritrappa (inne-trapp, 8,38 til 8,40) går ein berre opp og ned: frå botnen (8,41) og toppen (døra), ikkje inn frå sida.
+      trapper: { "8,38": "loddrett", "8,39": "loddrett", "8,40": "loddrett" },
       folk: [
         // Presten kneler framfor altarringen og bed til blekket er borte. Etter det står han innanfor ringen.
         { merke: "p", u: "prest", namn: "Presten", atferd: "stille", retning: 1, pose: "knele", tale: "prest", vis: st => !st.flagg.latt },
@@ -783,7 +788,7 @@ window.RPGData = (function () {
         "Gqqqqqqqqq1qqqqqqqq2G",
         "GGGGGGGGGGEGGGGGGGGEG",
       ],
-      dorer: [{ ved: [10, 11], til: ["kyrkja", "3"] }, { ved: [19, 11], til: ["kyrkje-tarn", "1"] }],
+      dorer: [{ ved: [10, 11], til: ["kyrkja", "3"], trapp: "ned" }, { ved: [19, 11], til: ["kyrkje-tarn", "1"], trapp: "opp" }],
       folk: [{ merke: "$", u: "organist", namn: "Organisten", atferd: "stille", retning: 1, pose: "sitje", flis: "(", tale: "organist" }],
     },
     /* Klokketårnet (runde 53 og 54): golvplankar sett ovanfrå og laftet berre som bakvegg (tarnvegg)
@@ -809,7 +814,7 @@ window.RPGData = (function () {
         "Xqqqqq1qqqqqX",
         "XXXXXXEXXXXXX",
       ],
-      dorer: [{ ved: [6, 11], til: ["kyrkje-galleri", "2"] }],
+      dorer: [{ ved: [6, 11], til: ["kyrkje-galleri", "2"], trapp: "ned" }],
       folk: [{ merke: "$", vesen: "klokketau", namn: "Klokketauet", atferd: "stille", tale: "klokketau" },
         // Klokka sjølv er eit vesen (klokke.py) med ni rammer som manuset byter mellom når ho svingar.
         { merke: "%", vesen: "klokke-4", namn: "Klokka", atferd: "stille", flis: "(", tale: "klokka" },
@@ -860,7 +865,7 @@ window.RPGData = (function () {
       ],
       dorer: [
         { ved: [10, 13], til: ["prestegarden", "2"] },
-        { ved: [19, 0], til: ["arkivet", "1"], krevOrd: "ljos", laast: "Døra ned til arkivet står open, men det er bekmørkt der nede. Blekket et opp lyset frå lampa. Du treng eit sterkare ljos." },
+        { ved: [19, 0], til: ["arkivet", "1"], open: true, trapp: "ned", krevOrd: "ljos", laast: "Døra ned til arkivet står open, men det er bekmørkt der nede. Blekket et opp lyset frå lampa. Du treng eit sterkare ljos." },
       ],
       kister: [
         { ved: [19, 5], ting: "luktesalt", n: 1, id: "k-kontor" },
@@ -887,7 +892,7 @@ window.RPGData = (function () {
         "cggggggggg1ggggggggc",
         "ccccccccccEccccccccc",
       ],
-      dorer: [{ ved: [10, 12], til: ["kontoret", "2"] }],
+      dorer: [{ ved: [10, 12], til: ["kontoret", "2"], trapp: "opp" }],
       kister: [{ ved: [3, 10], ting: "kaffi", n: 2, id: "k-arkiv-gøymd", gøymd: true }],
       inngang: [{ merke: "5", manus: "blekklatten" }],
     },

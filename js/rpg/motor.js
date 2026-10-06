@@ -104,7 +104,6 @@ window.Motor = (function () {
   const SITJE_DY = [3, -1, 0, 0];
   let spelar = { x: 0, y: 0, dir: 0, fx: 0, fy: 0, flytt: null, steg: 0, u: 0, sprite: null };
   let pausa = true, stegTilKamp = 20;
-  let dorAnim = null;         // { tx, ty, form, t0 } medan ei dør opnar seg
   const krokar = {};
   let fylgje = null;          // den i partiet som går etter Ivar
 
@@ -182,6 +181,7 @@ window.Motor = (function () {
         neste: performance.now() + 800 + Math.random() * 2500, sprite: spriteAv(f) });
     });
     kart = { id, def, w, h, fliser, merke, folk, kister: def.kister || [], dorer: (def.dorer || []).filter(d => d.til) };
+    opneDorer = new Map();                                           // nytt kart: alle dører er lukka
     // Den som sit på ein stol utan retning i kartet, ser same vegen som stolen.
     for (const f of folk) if (f.grunnpose === "sitje" && f.retning == null) { const st = seteVed(f.x, f.y); if (st && st.s.retning != null) f.dir = f.grunndir = st.s.retning; }
     for (const a of regi) { a.regi.res(); a.regi = null; } regi.clear(); kam = null;      // nytt kart: regien byrjar på nytt
@@ -240,12 +240,75 @@ window.Motor = (function () {
   }
 
   const doraVed = (x, y) => kart.dorer.find(d => d.ved[0] === x && d.ved[1] === y);
+  /* ---------- Dører som i Final Fantasy VI (runde 96) ----------
+     Kvar dør har to rammer: lukka og open, utan animasjon mellom dei. Ei dør (alle i kart.def.dorer
+     utanom kantdører) står open så lenge ein figur går inn på eller ut av ruta hennar, og lukkar seg
+     DOR_LUKK ms etter det siste steget (brukDorer i teikn). opneDor() opnar ho òg utan nokon som går
+     (døra spelaren kom ut av, scenesteget { dor }), og fast held ho open til lukkDor(). open: true på
+     døra i data.js: ho står alltid open (stabburet, med dagslyset, og trappa ned til arkivet).
+     Biletet: flisa «E» er lukka, «E:open», «E:opp» og «E:ned» opne (trapp: "opp" | "ned" på døra), og
+     eit hus eller inventar i OPEN_BYGG (pikslar.js) byter til «<id>-open» når ei dør i fotavtrykket er open. */
+  const DOR_LUKK = 300, DOR_UT = 350;
+  let opneDorer = new Map();                                         // "x,y" → { til: tid, fast }
+  const dorDef = (x, y) => kart && (kart.def.dorer || []).find(d => !d.kant && d.ved[0] === x && d.ved[1] === y);
+  function opneDor(x, y, ms = DOR_LUKK, fast = false) {
+    const k = x + "," + y, o = opneDorer.get(k);
+    opneDorer.set(k, { til: Math.max(o ? o.til : 0, performance.now() + ms), fast: fast || !!(o && o.fast) });
+  }
+  // Lukkar døra (scenesteget { dor, open: false }); går nokon i opninga, held dei ho open til dei er gått.
+  function lukkDor(x, y) { opneDorer.delete(x + "," + y); }
+  function dorOpen(x, y) {
+    const d = dorDef(x, y); if (!d) return false;
+    if (d.open) return true;
+    const o = opneDorer.get(x + "," + y);
+    return !!o && (o.fast || o.til > performance.now());
+  }
+  // Ein figur som går inn på eller ut av ei dørrute, held døra open.
+  function brukDorer() {
+    if (!kart.def.dorer) return;
+    for (const a of [spelar, fylgje, ...kart.folk]) {
+      if (!a || !a.flytt || (a !== spelar && a !== fylgje && !a.sprite)) continue;
+      for (const [x, y] of [[a.x, a.y], [Math.round(a.flytt.fx), Math.round(a.flytt.fy)]]) if (dorDef(x, y)) opneDor(x, y);
+    }
+  }
+  // Scenesteget { dor: [x, y] eller merke, open }: true held døra open, false lukkar ho, utan opnar ho
+  // seg eit augneblink (DOR_UT) og lukkar seg att.
+  function dorSteg(rute, open) {
+    const [x, y] = typeof rute === "string" ? (kart.merke[rute] || []) : rute;
+    if (!dorDef(x, y)) { console.warn("Regi: inga dør på", rute); return; }
+    if (open === false) lukkDor(x, y); else opneDor(x, y, DOR_UT, open === true);
+  }
+  // Flisa for ei dør inne: lukka eller open, med trapp i opninga om døra fører opp eller ned.
+  const dorFlis = (x, y) => dorOpen(x, y) ? "E:" + (dorDef(x, y).trapp || "open") : "E";
+  // Biletet til eit bygg: den opne ramma når ei dør i fotavtrykket er open.
+  function byggBilete(b) {
+    const img = Pikslar.bygg(b.id);
+    if (!img || !Pikslar.OPEN_BYGG || !Pikslar.OPEN_BYGG.has(b.id)) return img;
+    const bf = Math.round((img.width - 8) / S);
+    const open = (kart.def.dorer || []).some(d => !d.kant && d.ved[0] >= b.x && d.ved[0] < b.x + bf && d.ved[1] >= b.y && d.ved[1] < b.y + b.h && dorOpen(d.ved[0], d.ved[1]));
+    return (open && Pikslar.bygg(b.id + "-open")) || img;
+  }
+  // Står (ikkje går) ein figur på ei lukka dørrute, er han inne enno og blir ikkje teikna.
+  const inneBakDor = a => !a.flytt && dorDef(a.x, a.y) && !dorOpen(a.x, a.y);
+  // Ein figur i opninga til ei open dør på eit hus (flisa D eller d) blir teikna framfor huset.
+  const iDorOpning = f => f.sp && opneDorer.size > 0 && [Math.floor(f.y), Math.ceil(f.y)].some(y => { const x = Math.round(f.x), c = (kart.fliser[y] || [])[x];
+    return (c === "D" || c === "d") && dorOpen(x, y); });
   // Ei gøymd kiste syner når ho er avdekt; ei kiste med vis berre når vilkåret held (til dømes etter eit flagg).
   const kisteSynleg = k => (!k.gøymd || (krokar.synleg && krokar.synleg(k))) && (!k.vis || !!k.vis(krokar.tilstand()));
   const kisteVed = (x, y) => kart.kister.find(k => k.ved[0] === x && k.ved[1] === y && kisteSynleg(k));
   // Naturting sett ut med vilje (kart.naturting: { ved, bilete, manus }), til dømes ein bauta på ei «o»-rute.
   const naturtingVed = (x, y) => (kart.def.naturting || []).find(n => n.ved[0] === x && n.ved[1] === y);
   const folkVed = (x, y) => kart.folk.find(f => f.x === x && f.y === y);
+  /* Trapper over fleire fliser (runde 96): kart.def.trapper = { "x,y": "loddrett" | "vassrett" } seier kva
+     retning ei trapperute kan gåast i. Sidene er faste: ein går berre inn på og ut av trappa i retninga
+     hennar (frå botnen og toppen), så ingen kan «hoppe» opp på eit trinn midt i trappa frå sida.
+     Gjeld spelaren, følgjet, folk og regien (vegTil). */
+  function trappStengd(x0, y0, x1, y1) {
+    const t = kart.def.trapper; if (!t) return false;
+    const vassrett = y0 === y1 && x0 !== x1;
+    const stengd = r => r && (r === "loddrett" ? vassrett : !vassrett);
+    return stengd(t[x0 + "," + y0]) || stengd(t[x1 + "," + y1]);
+  }
   function kanGaa(x, y) {
     if (x < 0 || y < 0 || x >= kart.w || y >= kart.h) return false;
     const c = kart.fliser[y][x];
@@ -296,6 +359,7 @@ window.Motor = (function () {
     const c = kart.fliser[y][x];
     if (Pikslar.FAST.has(c) || "DdE~Q".includes(c) || erVatn(x, y)) return false;
     if (Math.abs(x - f.hx) + Math.abs(y - f.hy) > (f.radius || 1)) return false;
+    if (trappStengd(f.x, f.y, x, y)) return false;
     if (spelar.x === x && spelar.y === y) return false;
     if (spelar.flytt && Math.round(spelar.flytt.fx) === x && Math.round(spelar.flytt.fy) === y) return false;
     if (fylgje && ((fylgje.x === x && fylgje.y === y) || (fylgje.flytt && Math.round(fylgje.flytt.fx) === x && Math.round(fylgje.flytt.fy) === y))) return false;
@@ -392,6 +456,7 @@ window.Motor = (function () {
       // Kantdører: ein går inn på ruta, og vidare. Vanlege dører: ein går rett gjennom.
       if (!dor.kant) { gaaGjennom(dor); return false; }
     }
+    if (trappStengd(spelar.x, spelar.y, nx, ny)) return false;          // ikkje inn på eller ut av ei trapp frå sida
     if (!kanGaa(nx, ny) && !kanSitjeInn(nx, ny, dir) && !kanLeggjeSeg(nx, ny)) return false;
     fylgjeEtter(nx, ny);
     // Inn på eit sete: retninga han skal sitje i, er kjend alt no.
@@ -412,7 +477,7 @@ window.Motor = (function () {
     if (!fylgje || fylgje.regi) return;
     const fx = spelar.x, fy = spelar.y, avst = (x, y) => Math.abs(fylgje.x - x) + Math.abs(fylgje.y - y);
     const steg = (x, y) => { fylgje.flytt = { fx: fylgje.x, fy: fylgje.y }; fylgje.dir = retningMot(fylgje.x, fylgje.y, x, y, fylgje.dir); fylgje.x = x; fylgje.y = y; };
-    if (kanGaa(fx, fy) && !doraVed(fx, fy) && avst(fx, fy) === 1) { steg(fx, fy); return; }
+    if (kanGaa(fx, fy) && !doraVed(fx, fy) && avst(fx, fy) === 1 && !trappStengd(fylgje.x, fylgje.y, fx, fy)) { steg(fx, fy); return; }
     if (fylgje.x === fx && fylgje.y === fy) { if (kanGaa(fx, fy)) return; }   // står på ruta hans (ved start): blir der
     if (avst(tx, ty) === 1 && kanGaa(fylgje.x, fylgje.y)) return;
     let best = null;
@@ -611,7 +676,7 @@ window.Motor = (function () {
       }
       for (let d = 0; d < 4; d++) {
         const nx = x + DX[d], ny = y + DY[d], k = nx + "," + ny;
-        if (!fra.has(k) && fri(nx, ny)) { fra.set(k, { k: x + "," + y, d }); ko.push([nx, ny]); }
+        if (!fra.has(k) && fri(nx, ny) && !trappStengd(x, y, nx, ny)) { fra.set(k, { k: x + "," + y, d }); ko.push([nx, ny]); }
       }
     }
     return null;
@@ -1427,17 +1492,10 @@ window.Motor = (function () {
   /* Overgang inn i kamp: kvit blink, så blir biletet grovare og mørknar. */
 
 
-  /* ---------- Dører som opnar seg, og toning mellom scener ----------
-     Når spelaren går inn gjennom ei dør på eit hus, sviv dørbladet inn og opninga blir mørk.
-     Så tonar skjermen raskt til svart, det nye kartet blir lasta, og skjermen tonar inn att.
-     Forma på døra i kvart husbilete (pikslar i flisa): x og w, høgd h og avstand til botnen. */
-  const DORFORM = {
-    standard: { x: 2, w: 12, h: 13, bunn: 3 },
-    loe: { x: 1, w: 14, h: 13, bunn: 3, dobbel: true },
-    stabbur: { x: 2, w: 12, h: 11, bunn: 9 },
-    kyrkje: { x: 3, w: 10, h: 14, bunn: 3, dobbel: true, farge: ["#3a0e18", "#6a1a2a", "#983040"] },
-  };
-  const DOR_TID = 240, TONING = 180;
+  /* ---------- Gjennom dører, og toning mellom scener ----------
+     Når spelaren går mot ei dør, byter ho til den opne ramma (sjå opneDor), og han går inn i opninga.
+     Så tonar skjermen raskt til svart, det nye kartet blir lasta, og skjermen tonar inn att. */
+  const TONING = 180;
   let byter = false;
   const vent = ms => new Promise(r => setTimeout(r, ms));
   /* Toning: rask overgang til svart og tilbake er standard mellom alle scener (kart, kamp,
@@ -1484,43 +1542,29 @@ window.Motor = (function () {
     await tonUt(ms); await byt(); await vent(40); await tonInn(ms);
     byter = var_;
   }
-  // Går gjennom ei dør: opnar ho om ho sit på eit hus, tonar til svart, kallar byt() (som lastar
-  // det nye kartet) og tonar inn att.
+  /* Går gjennom ei dør (som i FF6): står spelaren inntil, opnar døra seg med ein gong (den opne
+     ramma, ingen mellomrammer), og han går eitt steg inn i opninga. Så tonar skjermen til svart,
+     byt() lastar det nye kartet, og skjermen tonar inn att. Døra han kjem ut av på det nye kartet,
+     står open eit augneblink og lukkar seg (DOR_UT), som når ein går ut av eit hus i FF6. */
   async function gjennomDor(dor, byt) {
     byter = true; halde.clear();
     const [tx, ty] = dor.ved;
-    const b = (kart.def.bygg || []).find(b => {
-      const img = Pikslar.bygg(b.id); if (!img) return false;
-      const bf = Math.round((img.width - 8) / S);
-      return tx >= b.x && tx < b.x + bf && ty === b.y + b.h - 1;
-    });
-    if (b && spelar.x === tx && spelar.y === ty + 1) {
-      spelar.dir = 1;
-      dorAnim = { tx, ty, form: DORFORM[b.id] || DORFORM.standard, t0: performance.now() };
-      await vent(DOR_TID + 60);
+    if (!dor.kant && Math.abs(spelar.x - tx) + Math.abs(spelar.y - ty) === 1) {
+      spelar.dir = retningMot(spelar.x, spelar.y, tx, ty, spelar.dir);
+      spelar.pose = null; spelar.kjensle = null;
+      opneDor(tx, ty);
+      spelar.flytt = { fx: spelar.x, fy: spelar.y, t0: performance.now(), fart: GA_FART, dir: spelar.dir, dor: true };
+      spelar.x = tx; spelar.y = ty; spelar.steg++;
+      while (flytt(performance.now()) < 1) await vent(TIKK);
+      spelar.flytt = null;
     }
     await tonUt();
-    dorAnim = null;
     byt();
+    const ut = kart && (kart.def.dorer || []).find(d => !d.kant && Math.abs(d.ved[0] - spelar.x) + Math.abs(d.ved[1] - spelar.y) === 1);
+    if (ut) opneDor(ut.ved[0], ut.ved[1], 40 + TONING + DOR_UT);
     await vent(40);
     await tonInn();
     byter = false;
-  }
-  function teiknDor(no, ox, oy) {
-    const { tx, ty, form: f, t0 } = dorAnim;
-    const o = Math.min(1, (no - t0) / DOR_TID);                        // kor ope døra er
-    const dx = Math.round((tx + ox) * S) + f.x, bunn = Math.round((ty + 1 + oy) * S) - f.bunn, dy = bunn - f.h;
-    g.fillStyle = "#140c10"; g.fillRect(dx, dy, f.w, f.h);            // mørket inne
-    g.fillStyle = "#2a1810"; g.fillRect(dx, bunn - 2, f.w, 2);         // litt varmt ljos ved dørstokken
-    const tre = f.farge || ["#26160e", "#664228", "#8a6038"];
-    const blad = (x, w, spegl) => {                                    // dørbladet, sett på skrå når det sviv inn
-      if (w <= 0) return;
-      g.fillStyle = tre[1]; g.fillRect(x, dy, w, f.h);
-      g.fillStyle = tre[2]; g.fillRect(spegl ? x + w - 1 : x, dy, 1, f.h);
-      g.fillStyle = tre[0]; g.fillRect(x, dy + 3, w, 1); g.fillRect(x, dy + f.h - 4, w, 1);
-    };
-    const opa = Math.max(1, Math.round((f.dobbel ? f.w / 2 : f.w) * (1 - o * 0.85)));
-    if (f.dobbel) { blad(dx, opa, false); blad(dx + f.w - opa, opa, true); } else blad(dx, opa, false);
   }
 
   // Silhuetten av eit bilete i skuggefarge (til slagskuggen under hus og inventar).
@@ -1538,6 +1582,7 @@ window.Motor = (function () {
 
   function teikn(no) {
     if (!kart) return;
+    brukDorer();                                                     // dører som nokon går gjennom, står opne
     // Kameraet står alltid på heile pikslar (som på SNES). Med brøkdelar blir fliser og figurar
     // runda kvar for seg, og figurane ristar éin piksel mot bakken når kameraet glir.
     kameraNo = kameraPx(no);
@@ -1576,7 +1621,7 @@ window.Motor = (function () {
       // Veggar med vegg eller dør under seg er sidevegger: dei blir teikna ovanfrå.
       const under = y + 1 < kart.h ? kart.fliser[y + 1][x] : null;
       const topp = "XcG".includes(c) && (under === null || "XcGEØøÖöĜ ".includes(under));   // òg over sidevindauge og tomrom (« ») utanfor huset
-      let fk = topp ? c + "t" : c;
+      let fk = topp ? c + "t" : c === "E" ? dorFlis(x, y) : c;
       if (c === "R") { const over = y > 0 && kart.fliser[y - 1][x] === "R"; fk = !over && under !== "R" ? "Rtb" : !over ? "Rt" : under !== "R" ? "Rb" : "R"; }
       if (erKant(c, y) || erSidekant(c, x, y)) {
         // Kanten øvst: bakken fell bort, og utsikta syner over graskanten (Pikslar.nordkant).
@@ -1695,7 +1740,7 @@ window.Motor = (function () {
     }
     if (kart.def.inne) bakveggOver(ox, oy, no);
     const GANG = [1, 0, 2, 0];
-    const figurar = kart.folk.filter(f => f.sprite).map(f => Object.assign({ sp: f.sprite, kjensle: f.kjensle,
+    const figurar = kart.folk.filter(f => f.sprite && !inneBakDor(f)).map(f => Object.assign({ sp: f.sprite, kjensle: f.kjensle,
       steg: f.flytt ? GANG[(f.steg % 2) * 2 + (f.u < 0.5 ? 0 : 1)] : 0 }, figurVis(f)));
     // Gangramma følgjer steget, ikkje klokka: to rammer per flis (steg, stå), annakvar fot.
     const steg = spelar.flytt ? GANG[(spelar.steg % 2) * 2 + (spelar.u < 0.5 ? 0 : 1)] : 0;
@@ -1709,7 +1754,7 @@ window.Motor = (function () {
     for (const n of naturFig) figurar.push(n);
     // Hus blir sorterte saman med figurane etter den nedste flisraden sin.
     // Eit sete med ryggen mot kameraet (fram) kjem etter den som sit på det.
-    for (const b of kart.def.bygg || []) { const img = Pikslar.bygg(b.id), fram = Pikslar.SETE && Pikslar.SETE[b.id] && Pikslar.SETE[b.id].fram;
+    for (const b of kart.def.bygg || []) { const img = byggBilete(b), fram = Pikslar.SETE && Pikslar.SETE[b.id] && Pikslar.SETE[b.id].fram;
       // flat: true (gravheller, golvteppe) ligg på golvet og blir teikna før alle figurane, utan slagskugge.
       // lag: n på eit bygg gir det ein fast plass i teikneorden (karmen rundt opninga bak preikestolen).
       if (!img) continue;
@@ -1728,7 +1773,9 @@ window.Motor = (function () {
     // foran (runde 95): i steget inn på eller ut av eit sete (ikkje med ryggen mot kameraet) blir figuren
     // sortert som den som sit der, så setet aldri dekkjer han medan han går inn eller ut.
     const djupn = f => lagVed(f) || (f.foran ? f.foran.b.y + f.foran.b.h - 1 + 0.02 : (f.sete ? f.sete.b.y + f.sete.b.h - 1 : f.seng ? f.seng.b.y + f.seng.b.h - 1 : f.y) + (f.pose && f.pose !== "knele" && f.pose !== "peike" ? 0.02 : 0));
-    figurar.sort((a, b) => djupn(a) - djupn(b));
+    // I opninga til ei open husdør står figuren framfor huset (huset er sortert 0.01 etter rada si).
+    for (const f of figurar) f.dj = djupn(f) + (iDorOpning(f) ? 0.02 : 0);
+    figurar.sort((a, b) => a.dj - b.dj);
     // For testane: inventar som blir teikna etter spelaren og ligg over han (spelarDekt).
     const spf = figurar.find(f => f.sp === spelar.sprite);
     spelarDekt = spf ? figurar.filter(f => f.bygg && !f.over && !f.b.flat && djupn(f) > djupn(spf) && Pikslar.SETE && Pikslar.SETE[f.id] && (() => {
@@ -1769,7 +1816,6 @@ window.Motor = (function () {
         if (klipp) { g.restore(); if (figMaske) fg.restore(); }
         if (!f.botn) continue;
         for (const r of Pikslar.ILD[f.id] || []) Pikslar.ild(g, bx + r.x, by - f.bygg.height + r.y, r.w, r.h, no, r.glo, Pikslar.ildMaske(f.bygg, r));
-        if (dorAnim && f.by === dorAnim.ty) teiknDor(no, ox, oy);
         for (const [rx, ry] of Pikslar.ROYK[f.id] || []) Pikslar.royk(g, bx + rx, by - f.bygg.height + ry, no);
         continue; }
       // Gang inni ein vegg (kart.def.skjult: ["x,y", …], flisa «Ĝ»): muren dekkjer figuren der. Den delen
@@ -2108,6 +2154,7 @@ window.Motor = (function () {
 
   return {
     VW, VH, lerret, g, krokar, last, tale, val, fort, lytt, tilpass, fjernFolk, overgang, gjennomDor, tonUt, tonInn, scene,
+    dorSteg, dorOpen, byggBilete,                                     // dørene (runde 96)
     gaa, snu, inn, byt, brukMoebel, reis, kamera, rist, kort, naerbilete, blink, tone, spot, aktor, vent,
     get lysMs() { return lysMs; }, get lysLesMs() { return lesMs; },  // tida lyset brukte i siste bilete
     get lysEffekt() { return effekt; },                               // toning, blink og spotlight (for testane)

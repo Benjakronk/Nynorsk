@@ -105,6 +105,9 @@
     if (s.sitje) return Motor.brukMoebel(regiNamn(s.sitje), s.sete, s.gaaDit, "sitje");
     if (s.liggje) return Motor.brukMoebel(regiNamn(s.liggje), s.seng, s.gaaDit, s.sove === false ? "liggje" : "sove");
     if (s.reis) return Motor.reis(regiNamn(s.reis));
+    // Dører (runde 96): { dor: [x, y], open: true } held døra open, open: false lukkar ho, utan open
+    // opnar ho seg og lukkar seg att etter eit augneblink. Går ein figur gjennom ei dør, skjer det av seg sjølv.
+    if (s.dor) { Motor.dorSteg(s.dor, s.open); return null; }
     if (s.gaa) return Motor.gaa(regiNamn(s.gaa), { sti: s.sti, rute: s.rute, mot: s.mot && regiNamn(s.mot), ut: s.ut }, s.fart);
     if (s.snu && s.fraa) {                                           // snur ryggen til nokon
       const a = Motor.aktor(regiNamn(s.snu)), b = Motor.aktor(regiNamn(s.fraa));

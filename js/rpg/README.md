@@ -83,7 +83,8 @@ Figurane blir nemnde med namn: «Ivar» er spelaren, «Huldra» er følgjet når
 | `{ gaa: "Namn", mot: "Ivar" }` | går bort til nokon og snur seg mot han (til ei ledig rute attmed, ikkje der ein annan står) |
 | `{ gaa: "Namn", rute: [x, y] }` | går den kortaste vegen til ei rute, eller til eit merke (`rute: "@"`) |
 | `{ gaa: "Namn", sti: "h3o2" }` | går ein fast sti (n ned, o opp, v venstre, h høgre), også ut over kanten |
-| `ut: true` | på eit gaa-steg: figuren blir borte når han er framme (inn ei dør, ut over kanten). Saman med `ikkjeVent` kan spelaren gå medan han går |
+| `ut: true` | på eit gaa-steg: figuren blir borte når han er framme (inn ei dør, ut over kanten). Saman med `ikkjeVent` kan spelaren gå medan han går. Går han inn ei dør, opnar ho seg når han kjem til henne og lukkar seg bak han (sjå «Dører») |
+| `{ dor: [x, y], open: true }` | held døra open (eller eit merke i staden for `[x, y]`). `open: false` lukkar ho, og utan `open` opnar ho seg eit augneblink og lukkar seg att. Trengst sjeldan: ein figur som går gjennom ei dør, opnar ho av seg sjølv |
 | `fart: 300` | ms per flis på eit gaa-steg |
 | `{ snu: "Namn", retning: "opp" }` | snur seg (ned, opp, venstre, høgre), eller `mot: "Namn"`. Kjensla går bort når figuren snur seg |
 | `{ snu: "Namn", fraa: "Ivar" }` | snur ryggen til nokon |
@@ -119,6 +120,18 @@ Figurane blir nemnde med namn: «Ivar» er spelaren, «Huldra» er følgjet når
 | `{ scenekart: null, ms }` | tonar attende til kartet, ruta og retninga spelaren hadde før |
 
 Dei eldre stega (`lytt`, `tilbod`, `fort`, `flagg`, `gi`, `kamp`, `til` og andre) står i toppen av `data.js`.
+
+### Dører
+Dørene opnar seg som i Final Fantasy VI (runde 96): kvar dør har to rammer, lukka og open, og ingen animasjon mellom dei.
+
+- **Spelaren:** går Ivar mot ei lukka dør han kan gå gjennom, byter ho med ein gong til den opne ramma, han går eitt steg inn i opninga, og skjermen tonar over til det nye kartet (`gjennomDor()` i motor.js). Der står døra han kom ut av, open eit augneblink (`DOR_UT`, 350 ms etter toninga) og lukkar seg. I FF6 står ein i døropninga med døra open når ein kjem ut, og ho smell att når ein går av ruta. Ivar startar éi rute framfor døra, så døra er open medan biletet tonar inn og lukkar seg rett etter, som om han nett har gått ut.
+- **Låste dører:** `krev` (utan flagget), `krevOrd` (før ordet er sunge), `vakt` og dører utan `til` opnar seg ikkje. Teksten eller vaktmanuset kjem som før, og Ivar blir ståande.
+- **Figurar i scener:** ei dør (alle i `dorer` utanom kantdører) står open så lenge ein figur går inn på eller ut av ruta hennar, og lukkar seg `DOR_LUKK` (300 ms) etter det siste steget (`brukDorer()`). Ein figur som står i ro på ei lukka dørrute, er inne enno og blir ikkje teikna (syster før ho kjem ut i «skiftebrev»). Så `{ inn: { rute: [6, 4] } }` på døra og eit `gaa`-steg ut gjer at døra opnar seg, figuren kjem ut, og døra lukkar seg; `gaa` med `rute` på døra og `ut: true` gjer at døra opnar seg, figuren går inn og blir borte, og døra lukkar seg etter eit augneblink. Scenesteget `{ dor, open }` finst for scener som treng meir.
+- **Bileta:** eit hus eller inventar i `OPEN_BYGG` (pikslar.js) har ei open ramme `<id>-open` (bygg.py og inventar.py med `ope=True`), og motoren byter til ho når ei dør i fotavtrykket er open (`byggBilete()`). Ein figur i opninga til ei open husdør (flisa `D` eller `d`) blir teikna framfor huset. Dørene inne er flisa `E` (lukka) og `E:open`, `E:opp` og `E:ned` (opne).
+- **I data.js:** `open: true` på døra: ho står alltid open (stabburet inne, så dagslyset fell inn, og trappa ned til arkivet). `trapp: "opp"` eller `"ned"`: den opne døra viser trinn som går opp eller ned i mørket (galleritrappa, galleriet, tårnet, arkivet). `gang: true`: ei dør på same kartet, utan `til` (døra i pilasteren inn til preikestolen, 4,11).
+
+### Trapper
+`trapper: { "x,y": "loddrett" | "vassrett" }` på kartet seier kva retning ei trapperute kan gåast i (`trappStengd()` i motor.js). Sidene er faste: ein går berre inn på og ut av trappa frå botnen og toppen, eitt trinn per steg, og ingen kan gå inn på eit trinn midt i trappa frå sida. Gjeld spelaren, følgjet, folk som går omkring og regien. Galleritrappa i våpenhuset (8,38 til 8,40) er `loddrett`. Rampene ute (`/`) har skrent (`s`, fast) på sidene og treng det ikkje.
 
 ### Veggane inne
 I innekarta med tømmer- eller murveggar (`X`, `c`) er bakveggen to fliser høg: over rad 0 teiknar motoren éi flis vegg til, med ei mørk takbjelke øvst (`bakveggOver()` i motor.js), så store møblar inntil bakveggen (grua med pipa, senga, hylla, skatollet, golvuret, bokreolane) står framfor veggen og ikkje stikk opp over han. Sideveggane og veggen nedst (sett ovanfrå) blir teikna att over møblane (`sideveggOver()`), så eit møbel inntil sideveggen ikkje dekkjer han. Kyrkja har sine eigne veggar (`G` og inventar) og er ikkje med. Store møblar inne (alt som ikkje er sete, flatt, høgt oppe eller har lag) blir delte i ei stripe per flisrad, kvar sortert etter rada si (runde 92), så ein figur ved sida av senga eller grua blir dekt berre av den delen som er lenger nede enn føtene hans. Inventar inntil ein sidevegg blir skuva 4 pikslar inn i rommet (`byggDx()`), så det står mot veggen og ikkje inne i han, og `dy` på eit bygg i kartet flyttar biletet opp eller ned (senga har `dy: -7`, så hovudgavlen står heilt inntil bakveggen).

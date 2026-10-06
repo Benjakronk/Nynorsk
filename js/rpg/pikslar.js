@@ -292,7 +292,41 @@ window.Pikslar = (function () {
     "T": (g, t) => underGolv(g, t, 0),
     "å": (g, t, v) => FLIS["."](g, t, v),
     "Å": (g, t, v) => FLIS["."](g, t, v),                              // bålplassen med gryte (to fliser, ÅÅ)
-    "E": g => { px(g, 0, 0, "#140c10", S, S); px(g, 0, 0, R_.tommer[1], 2, S); px(g, 14, 0, R_.tommer[1], 2, S); px(g, 2, 13, R_.plank[3], 12, 1); px(g, 2, 14, R_.plank[2], 12, 2); },
+    /* Døra inne (runde 96, som i FF6): to rammer, lukka («E») og open («E:open»), og opne variantar med
+       trapp i opninga («E:opp» og «E:ned», dører til ein annan etasje, `trapp` på døra i data.js).
+       Motoren vel ramma (opneDorer i motor.js). Karmen og dørstokken er like i alle. */
+    "E": g => {
+      const r = R_.tommer;
+      FLIS["E:open"](g);
+      px(g, 2, 0, r[2], 12, 13);                                          // dørbladet: ståande bord
+      for (const x of [5, 8, 11]) px(g, x, 0, r[1], 1, 13);
+      px(g, 2, 0, r[3], 1, 13); px(g, 2, 3, r[0], 12, 1); px(g, 2, 10, r[0], 12, 1);   // lys kant og to gyrdlar
+      px(g, 11, 6, "#e8b830", 1, 2);                                      // handtaket
+    },
+    "E:open": g => {
+      px(g, 0, 0, "#140c10", S, S); px(g, 0, 0, R_.tommer[1], 2, S); px(g, 14, 0, R_.tommer[1], 2, S);
+      px(g, 2, 13, R_.plank[3], 12, 1); px(g, 2, 14, R_.plank[2], 12, 2);
+      px(g, 2, 11, "#2a1810", 12, 2);                                     // golvet inne lyser svakt ved dørstokken
+      const r = R_.tommer;                                                // bladet slått innover mot hengslet til venstre
+      px(g, 2, 0, r[3], 1, 13); px(g, 3, 0, r[2], 1, 13); px(g, 4, 1, r[1], 1, 11);
+      px(g, 2, 3, r[0], 3, 1); px(g, 2, 10, r[0], 3, 1);
+    },
+    // Trapp opp i mørket: framsidene av trinna stablar seg tettare og blir mørkare innover.
+    "E:opp": g => {
+      FLIS["E:open"](g);
+      const r = R_.plank;                                                 // [y for trinnflata, tone på flata, tone på framsida]
+      for (const [y, a, b] of [[10, 3, 2], [7, 2, 1], [4, 1, 0], [1, 0, null]]) {
+        px(g, 5, y, r[a], 9, 1);
+        if (b != null) px(g, 5, y + 1, r[b], 9, 2); else px(g, 5, y + 1, "#2a1810", 9, 1);
+      }
+    },
+    // Trapp ned: berre kantane av trinna syner, smalare og mørkare jo djupare dei ligg.
+    "E:ned": g => {
+      FLIS["E:open"](g);
+      const r = R_.plank;
+      px(g, 5, 11, r[3], 9, 1); px(g, 5, 12, r[1], 9, 1);                 // det øvste trinnet, i høgd med golvet
+      px(g, 6, 8, r[2], 7, 1); px(g, 7, 5, r[1], 6, 1); px(g, 8, 2, r[0], 4, 1);
+    },
     "n": (g, t, v) => {
       underGolv(g, t, v);
       const f = Math.floor(t / 400) % 4;
@@ -1634,6 +1668,9 @@ window.Pikslar = (function () {
     return klar(img) ? img : null;
   }
   const bygg = id => lastBilete(`bilete/spel/bygg/${id}.png`);
+  /* Bygg med ei dør som kan opnast (runde 96): «<id>-open» er same biletet med døra open (bygg.py og
+     inventar.py). Motoren byter til det når døra er open, utan mellomrammer, som i FF6. */
+  const OPEN_BYGG = new Set(["stove", "loe", "stabbur", "seter", "ekset-hovud", "prestegard", "kyrkje", "inne-skipvegg-v"]);
   /* Naturelement som heile figurar (bilete/spel/natur/, laga med tools/pikselkunst/natur.py).
      Gir { img, x, y } med plassering i pikslar relativt til flisa, eller null om det ikkje er noko å teikne.
      Til bileta er lasta, blir dei gamle, kodeteikna trea brukte. */
@@ -1860,7 +1897,7 @@ window.Pikslar = (function () {
   function alleBilete(D) {
     const ut = [];
     for (const k of Object.values(D.KART)) {
-      for (const b of k.bygg || []) ut.push(`bilete/spel/bygg/${b.id}.png`);
+      for (const b of k.bygg || []) { ut.push(`bilete/spel/bygg/${b.id}.png`); if (OPEN_BYGG.has(b.id)) ut.push(`bilete/spel/bygg/${b.id}-open.png`); }
       for (const ks of k.kister || []) ut.push(`bilete/spel/bygg/${ks.bilete || "inne-kiste"}.png`, "bilete/spel/bygg/inne-kiste-open.png");
       if (k.bakgrunn) ut.push(`bilete/spel/kamp/${k.bakgrunn}.png`);
     }
@@ -1988,5 +2025,5 @@ window.Pikslar = (function () {
   }
 
   return { S, FW, FH, flis, topp, kant, skigard, SKIGARD_LOFT, stiHjorne, sti, skrent, underSkrent, rampe, stup, nordkant, sidekant, klasse, bygg, natur, naturting, haugBilete, KANTTYPE, kantflis, kantfigurar, STAAR, vatn, steingard, FAST, figur, fiende, vesenGang, vesenOpp, lerret, ramp, blend, RAMP,
-    hent, klar, forhandslast, alleBilete, ILD, LJOS, KJEDE, SETE, SENG, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
+    hent, klar, forhandslast, alleBilete, OPEN_BYGG, ILD, LJOS, KJEDE, SETE, SENG, ild, ildMaske, STANDARDKJENSLER, ARKPOSAR, ROYK, royk };
 })();

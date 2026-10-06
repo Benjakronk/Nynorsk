@@ -36,6 +36,7 @@ PAL = [
     ("Y", "#f8d840", "gull"), ("Z", "#b07818", "gull skugge"),
     ("R", "#3a0e18", "dør raud djup"), ("E", "#6a1a2a", "dør raud"), ("F", "#983040", "dør raud lys"),
     ("H", "#7a3226", "tegl"), ("I", "#a8503a", "tegl lys"),
+    ("m", "#140c10", "mørkt inne (open dør)"), ("l", "#2a1810", "golvet inne, i døropninga"),
 ]
 
 
@@ -131,9 +132,23 @@ def vindauge(L, x, y):
     for yy in range(y + 1, y + 7): L.p(x + 3, yy, "w"); L.p(x + 4, yy, "W")
 
 
-def dor(L, x, y, h_, dobbel=False):
+def dor(L, x, y, h_, dobbel=False, ope=False):
+    """Døra i veggen. ope=True: den opne ramma (runde 96, som i FF6 er det berre to rammer, lukka og
+    open): mørkt inne, golvet inne lyser svakt ved dørstokken, og dørbladet er slått innover mot
+    hengslet til venstre (to blad ved ei dobbeldør), sett nesten på kant i karmen."""
     b = 12 if not dobbel else 14
     L.rect(x - 1, y - 1, b + 2, h_ + 1, "a")
+    if ope:
+        L.rect(x, y, b, h_, "m"); L.rect(x, y + h_ - 2, b, 2, "l")
+        def blad(x0, spegl):                                         # dørbladet slått inn, sett på kant
+            for k, c in enumerate("bcd" if spegl else "dcb"):
+                xx = x0 + k
+                far = (k == 2) if not spegl else (k == 0)                # den fjerne kanten er kortare (djupn)
+                for yy in range(y + (1 if far else 0), y + h_ - (1 if far else 0)): L.p(xx, yy, c)
+                L.p(xx, y + 3, "a"); L.p(xx, y + h_ - 4, "a")
+        blad(x, False)
+        if dobbel: blad(x + b - 3, True)
+        return
     for xx in range(x, x + b):
         k = (xx - x) % 4
         for yy in range(y, y + h_): L.p(xx, yy, "d" if k == 0 else "c" if k < 3 else "b")
@@ -207,7 +222,7 @@ def steinpipe(L, px, ybot):
         L.p(x, ybot - 1, "1")                                                # skugge der torva møter steinen
 
 
-def stove(bf, hf, dorar, vindauge_pos, fro=1, staande=False, dobbel=False, bakdor=(), pipe=None):
+def stove(bf, hf, dorar, vindauge_pos, fro=1, staande=False, dobbel=False, bakdor=(), pipe=None, ope=False):
     """Hus på bf x hf fliser. dorar og vindauge_pos er flisnummer frå venstre.
     bakdor: flisnummer for inngang på baksida (bislag som stikk opp bak mønet).
     Då blir biletet 16 pikslar høgare, og døra i kartet ligg i flisraden bak huset."""
@@ -230,7 +245,7 @@ def stove(bf, hf, dorar, vindauge_pos, fro=1, staande=False, dobbel=False, bakdo
         for y in range(vegg_y0, vegg_y0 + 3):
             L.p(x, y, {"e": "c", "d": "b", "c": "b", "b": "a", "a": "a"}.get(L.get(x, y), L.get(x, y)))
     for i in vindauge_pos: vindauge(L, UT_X + i * 16 + 4, vegg_y0 + 4)
-    for i in dorar: dor(L, UT_X + i * 16 + 2 - (1 if dobbel else 0), H - 3 - 13, 13, dobbel)
+    for i in dorar: dor(L, UT_X + i * 16 + 2 - (1 if dobbel else 0), H - 3 - 13, 13, dobbel, ope)
     torvtak(L, 1, W - 2, 3, vegg_y0 - 6, fro)
     vindskier(L, 1, 3, vegg_y0 - 3, True); vindskier(L, W - 3, 3, vegg_y0 - 3, False)
     if pipe is not None: steinpipe(L, UT_X + pipe * 16 + 5, 18)             # står litt nede på taket, torva rundt
@@ -238,12 +253,12 @@ def stove(bf, hf, dorar, vindauge_pos, fro=1, staande=False, dobbel=False, bakdo
     return L
 
 
-def stabbur(fro=3):
+def stabbur(fro=3, ope=False):
     """Stabbur på 3 x 2 fliser, med gavlen mot oss, slik stabbura står på Sunnmøre: høgt på
     stolpar med flate stabbursteinar (så mus og fukt ikkje kjem inn), ei frittståande trapp opp
     til døra, eit nedre rom av laft og ein oppstugu som stikk ut over det nedre, ein bratt gavl
     av ståande bord med vindskier som kryssar over mønet, og torvtaket som går bakover frå
-    gavlen. Døra står i midtre flis med botnen 9 pikslar over biletkanten (sjå DORFORM.stabbur)."""
+    gavlen. Døra står i midtre flis med botnen 9 pikslar over biletkanten."""
     bf = 3
     W, H = bf * 16 + UT_X * 2, 72
     L = Lerret(W, H)
@@ -261,7 +276,7 @@ def stabbur(fro=3):
     # Det nedre rommet: laft, med døra midt på
     nedre_y0 = golv - 13
     laft(L, x0, x1, nedre_y0, golv - 1, fro)
-    dor(L, UT_X + 16 + 2, golv - 11, 11)                                # døra står fast i midtre flis (DORFORM.stabbur)
+    dor(L, UT_X + 16 + 2, golv - 11, 11, ope=ope)                       # døra står fast i midtre flis
     laftehovud(L, x0, x1, nedre_y0, golv - 1)
     # Skugge under oppstugua på det nedre rommet
     L.rad(nedre_y0, x0, x1, "a"); L.rad(nedre_y0 + 1, x0, x1, "b")
@@ -376,7 +391,7 @@ def rundvindauge(L, x, y, b, hoyd):
     L.p(x + 1, y + 1, "G"); L.p(x + 1, y + 2, "r"); L.rad(y + hoyd, x - 1, x + b, "L")
 
 
-def kyrkje():
+def kyrkje(ope=False):
     """Kvit langkyrkje (etter Vartdal kyrkje), 7 x 3 fliser, tårn midt framme med spir og kors."""
     bf, hf, ekstra = 7, 3, 44
     W, H = bf * 16 + UT_X * 2, hf * 16 + UT_Y + ekstra
@@ -421,13 +436,18 @@ def kyrkje():
     for y in range(dy, dy + 14):
         for x in range(dx, dx + 10): L.p(x, y, "F" if (x - dx) % 5 == 0 else "E")
         L.p(dx + 5, y, "R")
+        if ope:                                                        # open: mørkt inne, dei to blada slått innover
+            for x in range(dx + 2, dx + 8): L.p(x, y, "l" if y >= dy + 12 else "m")
+            L.p(dx, y, "F"); L.p(dx + 1, y, "E"); L.p(dx + 8, y, "E"); L.p(dx + 9, y, "R")
+            if y in (dy, dy + 13): L.p(dx + 1, y, "m" if y == dy else "l"); L.p(dx + 8, y, "m" if y == dy else "l")   # den fjerne kanten er kortare
     L.rad(dy - 1, dx + 1, dx + 8, "K"); L.p(dx, dy, "M"); L.p(dx + 9, dy, "M")
-    L.p(dx + 3, dy + 7, "Y"); L.p(dx + 7, dy + 7, "Y")
+    if not ope: L.p(dx + 3, dy + 7, "Y"); L.p(dx + 7, dy + 7, "Y")
+    else: L.p(dx + 1, dy + 7, "Y"); L.p(dx + 8, dy + 7, "Y")             # handtaka på blada, inne i karmen
     omriss(L)
     return L
 
 
-def kvitthus(bf, hf, dorar, vindauge_pos, piper, fro=6):
+def kvitthus(bf, hf, dorar, vindauge_pos, piper, fro=6, ope=False):
     """Kvitt hus med skifertak (prestegard), dør med lite tak over, og piper av tegl."""
     W, H = bf * 16 + UT_X * 2, hf * 16 + UT_Y
     L = Lerret(W, H)
@@ -438,7 +458,7 @@ def kvitthus(bf, hf, dorar, vindauge_pos, piper, fro=6):
         for y in range(vegg_y0, vegg_y0 + 3): L.p(x, y, {"Q": "M", "P": "M", "M": "L", "L": "K"}.get(L.get(x, y), L.get(x, y)))
     for i in vindauge_pos: vindauge(L, UT_X + i * 16 + 4, vegg_y0 + 5); vindauge(L, UT_X + i * 16 + 4, vegg_y0 + 5)
     for i in dorar:
-        dor(L, UT_X + i * 16 + 2, H - 3 - 13, 13)
+        dor(L, UT_X + i * 16 + 2, H - 3 - 13, 13, ope=ope)
         L.rad(H - 3 - 16, UT_X + i * 16, UT_X + i * 16 + 15, "U"); L.rad(H - 3 - 15, UT_X + i * 16, UT_X + i * 16 + 15, "S")
     skifertak(L, 1, W - 2, 3, vegg_y0 - 3, fro)
     for i in piper:                                     # teglpiper: toppen sett ovanfrå med opning, kort framside
@@ -462,6 +482,17 @@ BYGG = {
     "seter": lambda: stove(4, 3, [2], [], fro=7, pipe=1),
     "ekset-hovud": lambda: stove(6, 3, [3], [1, 5], fro=9, pipe=4),
 }
+# Den opne ramma til kvar dør (runde 96): same huset med døra open. Motoren byter til «<namn>-open»
+# når nokon går gjennom døra (opneDorer i motor.js), utan mellomrammer, som i Final Fantasy VI.
+BYGG.update({
+    "kyrkje-open": lambda: kyrkje(ope=True),
+    "prestegard-open": lambda: kvitthus(9, 3, [4], [1, 3, 5, 7], [2, 6], ope=True),
+    "stove-open": lambda: stove(5, 3, [2], [1, 3], fro=1, pipe=1, ope=True),
+    "loe-open": lambda: stove(6, 3, [3], [], fro=2, staande=True, dobbel=True, ope=True),
+    "stabbur-open": lambda: stabbur(3, ope=True),
+    "seter-open": lambda: stove(4, 3, [2], [], fro=7, pipe=1, ope=True),
+    "ekset-hovud-open": lambda: stove(6, 3, [3], [1, 5], fro=9, pipe=4, ope=True),
+})
 
 
 def pix(namn, L):
