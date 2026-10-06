@@ -574,11 +574,8 @@ def ivar(P, k=None):
                    ([(18, 4), (13, 1), (10, 1)], 1.4), ([(36, 6), (40, 4)], 1.2)]:              # tjafsar som står ut
         lokk(P, har, pts, [w, w * 0.8, 0.3][:len(pts)] if len(pts) == 3 else [w, 0.3], (0.0, 0.4))
     # ---- hender og ting som høyrer til kjensla
-    if k == "tenkje":                                                             # handa under haka
-        P.poly([(30, 41), (35, 39), (41, 48), (33, 48)], ("trøye", 3)); P.linje([(31, 42), (34, 48)], ("trøye", 1))
-        P.poly([(24, 36), (31, 34.5), (34, 37), (33, 41), (26, 41.5)], (hud, 4))
-        P.linje([(26, 38), (32, 37)], (hud, 3)); P.linje([(26, 40), (32, 39)], (hud, 3))
-        P.linje([(24, 36), (26, 41)], (hud, 2))
+    # tenkje (runde 94): inga hand under haka lenger (ho las som fleire lag dobbelthake). Kjensla ligg i det
+    # løfta brynet, blikket opp og munnen trekt til sida, og haka er den same som i dei andre kjenslene.
     if k == "ivrig":                                                              # neven i været
         P.poly([(37, 33), (43, 31), (45, 37), (39, 39)], (hud, 4))
         P.linje([(38, 35), (44, 34)], (hud, 3)); P.linje([(38, 37), (39, 38)], (hud, 3))
@@ -922,7 +919,7 @@ def presten(P):
     P.linje([(26, 14), (26, 16)], (hud, 3))                                      # bekymringsfura mellom bryna
     P.linje([(24, 30), (23, 34)], (hud, 3)); P.linje([(31, 30), (31, 33)], (hud, 3))   # djupe furer
     # bekymra auge: vide opne, loket hallar ned mot den ytre kroken, blikket litt opp, poser under
-    auge(P, har, hud, iris, ["   LLL ", " LLiphL", "LwwmGgw", " rllll "], ["LLL  ", "iphLL", "mGgwL", " lll "],
+    auge(P, har, hud, iris, ["   LLL ", " LLiphL", "LwwmGgw", " rllll "], ["LLL  ", "wiphL", "wmGgL", " lll "],
          18, 20, 28, 20)
     P.poly([(18, 18.5), (22, 17.5), (25, 15), (25.5, 16.5), (22, 19), (18, 20)], (har, 2))   # buskute bryn, den indre enden løfta
     P.poly([(28, 15), (31, 17), (35, 18.5), (35, 20), (31, 18.5), (27.5, 16.5)], (har, 2))
@@ -1063,21 +1060,24 @@ def granne(P):
     P.poly([(34, 38), (43, 41), (46, 48), (40, 48)], ("graa", 4))
     oyre(P, hud, 9, 19)
     # rundt og fyldig: stor, rund skalle og runde kjakar som bular ut over skjegget
-    kantar = kant(5, 34, 14, 37, krune=9, kjeve=0.7, form="rund", hake=(21, 32), kinn=(20, 32), kinn_ut=1)
+    # (runde 94: smalare på høgre sida, så det ikkje er lang veg frå det fjerne auget til kanten)
+    kantar = kant(5, 34, 14, 34, krune=9, kjeve=0.7, form="rund", hake=(21, 31), kinn=(20, 32), kinn_ut=1)
     andlet(P, hud, kantar, kinn=(20, 30))
-    P.poly([(25, 6), (31, 7), (34, 11), (27, 9)], (hud, 5))                       # blank skalle
-    # vennlege, opne auge som smiler: det nedre loket bular opp, smilerynker og posar under
-    auge(P, har, hud, iris, [" LLLL ", "LwiphL", "rlmGgl", "r rrr "], ["LLLL ", "iphwL", "lmGlr", " rr r"],
+    P.poly([(24, 6), (30, 7), (32, 11), (26, 9)], (hud, 5))                       # blank skalle
+    # vennlege, opne auge som smiler: det nedre loket bular opp, smilerynker og posar under. Pupillane
+    # står midt i begge auga (same blikk), det fjerne auget er smalare (tre kvart).
+    auge(P, har, hud, iris, [" LLLL ", "LwiphL", "rlmGgl", "r rrr "], ["LLLL ", "wiphL", "lmGgl", " rr r"],
          19, 20, 28, 20)
-    P.linje([(17, 20), (18, 19)], (hud, 3)); P.linje([(34, 22), (35, 21)], (hud, 3))   # fleire smilerynker
+    P.linje([(17, 20), (18, 19)], (hud, 3))                                        # smilerynke ved den ytre kroken
     P.poly([(18, 18), (21, 16.5), (25, 17.5), (25, 18.5), (18, 19)], (har, 3))     # buskute, bogne bryn
-    P.poly([(28, 17.5), (32, 16.5), (35, 18), (35, 19), (28, 18.5)], (har, 3))
+    P.poly([(28, 17.5), (31, 16.5), (33, 18), (33, 19), (28, 18.5)], (har, 3))
     nase34(P, hud, 26, 21, 27)
     P.poly([(27, 25), (30, 25), (31, 27), (28, 28)], ("kinn", 2)); P.p(29, 25, ("kinn", 3))   # raud nase
     # ---- tjukt kvitt skjegg og bart
+    P.poly([(15, 27), (20, 29), (32, 29), (35, 27), (35, 33), (31, 41), (21, 41), (15, 33)], (har, 2))   # grunnflate
     harflak(P, har, [(15, 26), (14, 32), (16, 38), (21, 42), (24, 44)],
-            [(37, 26), (37, 32), (35, 38), (30, 42), (27, 44)], 5, 2.4, (0.05, 0.3), bolgje=(0.5, 7, 0.0), ytre_mork=False,
-            lys=-0.1)
+            [(35, 26), (35, 32), (33, 38), (30, 42), (27, 44)], 5, 2.4, (0.05, 0.3), bolgje=(0.5, 7, 0.0), ytre_mork=False,
+            lys=-0.1, ujamn=False)
     lokk(P, har, [(22, 30), (26, 29), (28, 29)], [1.6, 1.8, 1.2], (0.0, 0.6))     # barten
     lokk(P, har, [(34, 30), (30, 29), (28, 29)], [1.6, 1.8, 1.2], (0.0, 0.6))
     P.linje([(25, 32), (29, 32)], ("munn", 1))
@@ -1086,9 +1086,9 @@ def granne(P):
     P.p(38, 31, ("raud", 4)); P.linje([(37, 30), (40, 30)], ("tre", 3))
     for (x, y) in [(39, 27), (40, 24), (39, 20), (41, 16)]: P.p(x, y, ("kvit", 3)); P.p(x + 1, y - 1, ("kvit", 2))   # røyk
     # ---- kvit hårkrans
-    harflak(P, har, [(18, 9), (13, 11), (10, 15), (10, 19)], [(20, 10), (17, 12), (16, 15), (16, 18)], 2, 1.8,
+    # (runde 94: følgjer den runde skallen bak øyret; tusten på høgre sida frå den gamle forma er borte)
+    harflak(P, har, [(19, 8), (14, 10), (11, 14), (10, 19)], [(21, 10), (17, 12), (16, 15), (16, 19)], 2, 1.8,
             (0.1, 0.5), bolgje=(0.3, 6, 0.0))
-    lokk(P, har, [(34, 11), (36, 14), (36, 18)], [1.6, 1.6, 0.5], (0.1, 0.5))
 
 
 def budeia(P):
@@ -1119,15 +1119,19 @@ def budeia(P):
     # ---- andletet: breitt og sunt, med runde, raude kinn og ei brei, mjuk hake
     kantar = kant(10, 35, 15, 36, krune=5, kjeve=0.6, form="rund", hake=(23, 31), kinn=(22, 32), kinn_ut=1)
     andlet(P, hud, kantar, kinn=(21, 30))
-    P.poly([(30, 22), (34, 22), (34.5, 24), (31, 24)], (hud, 5))
-    P.poly([(18, 26), (22, 26), (21.5, 28), (18.5, 28)], ("kinn", 3)); P.poly([(30, 26), (34, 26), (33.5, 28), (30.5, 28)], ("kinn", 3))
+    # (runde 94: auga, nasa og munnen to pikslar mot høgre, så andletet sit midt i den breie forma)
+    D = 2
+    P.poly([(30 + D, 22), (34 + D, 22), (34.5 + D, 24), (31 + D, 24)], (hud, 5))
+    P.poly([(18 + D, 26), (22 + D, 26), (21.5 + D, 28), (18.5 + D, 28)], ("kinn", 3))
+    P.poly([(30 + D, 26), (33 + D, 26), (32.5 + D, 28), (30.5 + D, 28)], ("kinn", 3))
     # glade, opne auge: irisen syner heilt, det nedre loket bular opp av smilet
     auge(P, har, hud, iris, [" LLLLL ", "LwiphwL", " lmGgl ", "  lll  "], [" LLLL", "Liphw", "lmGgl", "  ll "],
-         18, 20, 28, 20, bryn=([(18, 18), (20, 16), (23, 16), (24, 17)], [(28, 17), (30, 16), (32, 16), (33, 17)]))
-    nase34(P, hud, 26, 21, 27)
-    P.p(22, 29, ("munn_iv", 1)); P.p(32, 29, ("munn_iv", 1))                      # breitt smil med tenner
-    P.linje([(23, 30), (31, 30)], ("lin", 4)); P.linje([(23, 30), (23, 30)], ("munn_iv", 1))
-    P.linje([(24, 31), (30, 31)], ("munn_iv", 0)); P.linje([(25, 32), (29, 32)], ("munn_iv", 2))
+         18 + D, 20, 28 + D, 20, bryn=([(18 + D, 18), (20 + D, 16), (23 + D, 16), (24 + D, 17)],
+                                       [(28 + D, 17), (30 + D, 16), (32 + D, 16), (33 + D, 17)]))
+    nase34(P, hud, 26 + D, 21, 27)
+    P.p(22 + D, 29, ("munn_iv", 1)); P.p(32 + D, 29, ("munn_iv", 1))              # breitt smil med tenner
+    P.linje([(23 + D, 30), (31 + D, 30)], ("lin", 4)); P.p(23 + D, 30, ("munn_iv", 1))
+    P.linje([(24 + D, 31), (30 + D, 31)], ("munn_iv", 0)); P.linje([(25 + D, 32), (29 + D, 32)], ("munn_iv", 2))
     # ---- gullhår i panna under skautet, og kanten på skautet
     harflak(P, har, [(17, 15), (20, 11), (26, 10)], [(18, 17), (22, 13), (27, 12)], 2, 1.6, (0.1, 0.5), bolgje=(0.2, 6, 0))
     harflak(P, har, [(26, 10), (32, 10), (35, 14)], [(27, 12), (32, 12), (34, 16)], 2, 1.6, (0.1, 0.5), bolgje=(0.2, 6, 0))
@@ -1231,13 +1235,14 @@ def bygd_gamal_mann(P):
         P.linje(pts, (hud, 3))                                                  # rynker og innsokne kinn
     # djuptliggjande, tolmodige auge: skugge i augeholet over, posar under, men opne og med glans
     P.linje([(18, 19), (25, 19)], (hud, 2)); P.linje([(28, 19), (33, 19)], (hud, 2))
-    auge(P, har, hud, iris, ["LLLLLL", "LwiphL", "kwmGgk", " rrrr "], ["LLLLL", "iphwL", "mGgwk", "rrrr "],
+    auge(P, har, hud, iris, ["LLLLLL", "LwiphL", "kwmGgk", " rrrr "], ["LLLLL", "wiphL", "wmGgk", "rrrr "],
          19, 20, 28, 20, bryn=([(18, 18), (21, 17), (24, 17)], [(28, 17), (31, 17), (34, 18)]))
     nase34(P, hud, 26, 21, 29)
     P.linje([(24, 32), (29, 32)], ("munn", 1))
     harflak(P, har, [(19, 6), (13, 8), (10, 12), (10, 18), (12, 22)], [(21, 8), (17, 10), (16, 13), (16, 17), (16, 20)],
             2, 1.8, (0.1, 0.4), bolgje=(0.3, 7, 0.0))
-    lokk(P, har, [(33, 9), (36, 12), (37, 17)], [1.4, 1.4, 0.5], (0.1, 0.5))
+    # tinningen på den fjerne sida: ei smal lokk som følgjer den smale skallen (runde 94, var for langt ute)
+    lokk(P, har, [(31, 8), (33.5, 11), (34, 15)], [1.2, 1.1, 0.4], (0.1, 0.5))
 
 
 def bygd_gamal_kone(P):
@@ -1280,7 +1285,7 @@ def bygd_gut(P):
     andlet(P, hud, kantar, kinn=(22, 31))
     P.linje([(18, 29), (20, 29)], ("kinn", 3)); P.linje([(31, 29), (33, 29)], ("kinn", 3))
     # store, nysgjerrige auge som ser opp mot høgre, med mykje kvitt og tydeleg glans
-    auge(P, har, hud, iris, [" LLLLL ", "LLwiphL", " wwmGgw", "  lll  "], ["LLLL ", "iphwL", "mGgww", " lll "],
+    auge(P, har, hud, iris, [" LLLLL ", "LLwiphL", " wwmGgw", "  lll  "], ["LLLL ", "wiphL", "wmGgw", " lll "],
          18, 22, 28, 22, bryn=([(18, 20), (20, 18), (23, 18), (24, 19)], [(28, 19), (30, 18), (33, 19)]))
     nase34(P, hud, 26, 25, 29)
     P.linje([(25, 32), (29, 32)], ("munn", 2)); P.p(30, 31, ("munn", 2))
@@ -1350,7 +1355,8 @@ def hakk(namn, k=None, d=3):
 # Opningar som skal vere der (namn, kjensle, piksel): luft mellom den knytte neven og hovudet til Ivar,
 # og mellom røykdottane frå pipa til grannen.
 HOL_LOV = {("ivar", "ivrig", (36, 35)), ("ivar", "ivrig", (35, 37)), ("ivar", "ivrig", (36, 37)),
-           ("ivar", "ivrig", (35, 38)), ("granne", None, (40, 17)), ("granne", None, (40, 22))}
+           ("ivar", "ivrig", (35, 38)), ("granne", None, (40, 17)), ("granne", None, (40, 22)), ("granne", None, (39, 22)),
+           ("granne", None, (39, 23)), ("granne", None, (39, 25)), ("granne", None, (38, 28))}
 
 
 def lag(namn, k=None):

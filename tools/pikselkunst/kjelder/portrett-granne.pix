@@ -17,78 +17,77 @@ palett:
   j = #9a96aa    har_kv6 2
   k = #cac8d6    har_kv6 3
   l = #ecebf2    har_kv6 4
-  m = #ffffff    har_kv6 5
-  n = #462430    hud_gm6 0
-  o = #86565a    hud_gm6 1
-  p = #b88478    hud_gm6 2
-  q = #dcac94    hud_gm6 3
-  r = #f0ccb4    hud_gm6 4
-  s = #fce8d8    hud_gm6 5
-  t = #1a0e06    iris_hz 0
-  u = #4a2a10    iris_hz 1
-  v = #7a5020    iris_hz 2
-  w = #a8803c    iris_hz 3
-  x = #d4b070    iris_hz 4
-  y = #e08a7e    kinn 2
-  z = #1a1020    kveld 0
-  A = #3a2040    kveld 1
-  B = #7a3a4a    kveld 2
-  C = #c06a48    kveld 3
-  D = #f0a860    kveld 4
-  E = #6a6478    kvit 0
-  F = #c8c6d2    kvit 2
-  G = #e6e4ec    kvit 3
-  H = #6a2a2c    munn 1
-  I = #dc7a6c    raud 4
-  J = #1a0e08    tre 0
-  K = #6a4424    tre 2
-  L = #9a6c3a    tre 3
+  m = #462430    hud_gm6 0
+  n = #86565a    hud_gm6 1
+  o = #b88478    hud_gm6 2
+  p = #dcac94    hud_gm6 3
+  q = #f0ccb4    hud_gm6 4
+  r = #fce8d8    hud_gm6 5
+  s = #1a0e06    iris_hz 0
+  t = #4a2a10    iris_hz 1
+  u = #7a5020    iris_hz 2
+  v = #a8803c    iris_hz 3
+  w = #d4b070    iris_hz 4
+  x = #e08a7e    kinn 2
+  y = #1a1020    kveld 0
+  z = #3a2040    kveld 1
+  A = #7a3a4a    kveld 2
+  B = #c06a48    kveld 3
+  C = #f0a860    kveld 4
+  D = #6a6478    kvit 0
+  E = #c8c6d2    kvit 2
+  F = #e6e4ec    kvit 3
+  G = #6a2a2c    munn 1
+  H = #dc7a6c    raud 4
+  I = #1a0e08    tre 0
+  J = #6a4424    tre 2
+  K = #9a6c3a    tre 3
 bilete:
-  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-  AAAAAAAAAAAAAAAAAAAnnnnnnnnnnnnnnAAAAAAAAAAAAAAA
-  AAAAAAAAAAAAAAAAAnnppqqrrrrrrrrrronAAAAAAAAAAAAA
-  AAAAAAAAAAAAAAAAnppqqrrrrsssrrrrrrroAAAAAAAAAAAA
-  AAAAAAAAAAAAAAAnppqqrrrrrrsssssrrrrroAAAAAAAAAAA
-  AAAAAAAAAAAAAAnppqjrrrrrrrrsssssrrrrroAAAAAAAAAA
-  BBBBBBBBBBBBhhkkkljjrrrrrrrrrssssjkrroBBBBBBBBBB
-  BBBBBBBBBBBhikkjlljjrrrrrrrrrrrrijkkroBBBBBBBBBB
-  BBBBBBBBBBBhiiijjjirrrrrrrrrrrrriijlrroBBBBBBBBB
-  BBBBBBBBBBhiiijjlqrrrrrrrrrrrrrrrijllroBBBBBBBBB
-  BBBBBBBBBhiiiijjlqrrrrrrrrrrrrrrrrijlkhBBBBBBBBB
-  BBBBBBBBBhiiijjjkqrrrrrrrrrrrrrrrrijjlhBBBEBBBBB
-  BBBBBBBBBhiiijjjqqrrrrrrrrrrrrrrrrrjjroBBEFEBBBB
-  BBBBBBBBBhiijijkqqrrrrrrrrrrrrrrrrrjkroBEGEBBBBB
-  CCCCCCCCCChihhjpqqrkkkkkkrrrkkkkkkrikroCCECCCCCC
-  CCCCCCCCCCnnnhjpqqkkkkkkkrrrkkkkkkkrrroCECCCCCCC
-  CCCCCCCCCnrrqoppqqqrrrrrrrrrrrrrrrrrrroEFECCCCCC
-  CCCCCCCCnrqppppppqqrhhhhrrrrhhhhrrrrrrEGECCCCCCC
-  CCCCCCCCnrpopppppqqhautbhrqrutbahrrqrroECCCCCCCC
-  CCCCCCggnqpoppppqqrqpvxwprqrpvxpqrqrrrroCECCCCCC
-  CCCCggzznqppopppqqrqrqqqrrqrrqqrqrrrrrroEFECCCCC
-  CgggzzzznqqpppppqqrrrrrrrrqrsrrrrrrrrrrEGECCCCCC
-  gzzzzzzzznqqppppjkrrrkkrrjkyyikrrrjkrrroEDDDDDDD
-  zzzzzzzzzznqqpppjkrrikkrrjlyyikkrijkrrrEFEDDDDDD
-  zzzzzzzzzzznqppijlrrikkrrkkpykklrikkrrrGEDDDDDDD
-  zzzzzzzzzzzznppjklrrjlllljjkjjklllklrrroDDDDDDDD
-  zzzzzzzzzzzzznpjllqrlllljjjjjjjjllllrroJJggggggg
-  zzzzzzzzzzzzzhijllqijjjjiiiliiiiijjjrLLLLJzzzzzz
-  zzzzzzzzzzzzzhijllqijiirijkkijkliiimrKIKJzzzzzzz
-  zzzzzzzzzzzzzhijkkqijkkriHHHHHGGGGllJKKKJzzzzzzz
-  zzzzzzzzzzzzzhijkkpijkkrijkkijkkjkGGGKKKJzzzzzzz
-  zzzzzzzzzzzzzhiikkkijkkqijkkijkijkkkhJJJzzzzzzzz
-  zzzzzzzzzzzzzzhikkkijkkkijkkjkkijkkkhzzzzzzzzzzz
-  zzzzzzzzzzzzzchijkkijkkkijkkjkkjjkkkhzzzzzzzzzzz
-  zzzzzzzzzzzccdeijkkijkkkjkkijkkkkkkhczzzzzzzzzzz
-  zzzzzzzzcccdddeijkkijkkijkkjjkkkkjkfeccczzzzzzzz
-  zzzzzzccddddddeiiikkijkijkijkkkkjjiffffecczzzzzz
-  zzzzzcddddddddeeiiijiikjjijkkkkkjiefffffffczzzzz
-  zzzzcdddddddddeeeiiijijjjjjkkkkjieeefffffffczzzz
-  zzzcdddddddddddeeeeiiiijkjkkkkjjeeeeefffffffczzz
-  zzzcdddddddddddeeeeeiiijkkkjjjjeeeeeefffffffczzz
-  zzcddddddddddddeeeeeeieijeeejjeeeeeeeefffffffczz
-  zzcddddddddddddeeeeeeeeeeeeeeeeeeeeeeefffffffczz
-  zzcddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeffffffczz
-  zcdddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeffffffcz
+  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzzzmmmmmmmmmmmmmzzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzzmooppqqqqqqqqqnzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzmooppqqqrrrqqqqqnzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzmooppqqqqqrrrrrqqqnzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzhmokkiiqqqqqqrrrrrqqqnzzzzzzzzzzzzz
+  AAAAAAAAAAAAhkikkiljjqqqqqqrrrrqqqnAAAAAAAAAAAAA
+  AAAAAAAAAAAAhikllljjiqqqqqqqqqrrqqqnAAAAAAAAAAAA
+  AAAAAAAAAAAhiiijjjiqqqqqqqqqqqqqqqqnAAAAAAAAAAAA
+  AAAAAAAAAAhiiijjlpqqqqqqqqqqqqqqqqqnAAAAAAAAAAAA
+  AAAAAAAAAhiiiijjlpqqqqqqqqqqqqqqqqqnAAAAAAAAAAAA
+  AAAAAAAAAhiiijjjkpqqqqqqqqqqqqqqqqqnAAAAAADAAAAA
+  AAAAAAAAAAhiiijkppqqqqqqqqqqqqqqqqqnAAAAADEDAAAA
+  AAAAAAAAAAhijijkppqqqqqqqqqqqqqqqqqnAAAADFDAAAAA
+  BBBBBBBBBBhihhjkppqkkkkkkqqqkkkkqqqnBBBBBDBBBBBB
+  BBBBBBBBBBmmmhjoppkkkkkkkqqqkkkkkqqnBBBBDBBBBBBB
+  BBBBBBBBBmqqpnoopppqqqqqqqqqqqqqqqqnBBBDEDBBBBBB
+  BBBBBBBBmqpooooooppqhhhhqqqqhhhhqqqnBBDFDBBBBBBB
+  BBBBBBBBmqonooooopphatsbhqpqatsbhqqnBBBDBBBBBBBB
+  BBBBBBggmponooooppqpouwvoqpqouwvoqqqnBBBBDBBBBBB
+  BBBBggyympoonoooppqpqpppqqpqqppqpqqqnBBBDEDBBBBB
+  BgggyyyymppoooooppqqqqqqqqpqrqqqqqqqnBBDFDBBBBBB
+  gyyyyyyyymppoooojkqqjkqqjkpxjkqqjkqqnCCCDCCCCCCC
+  yyyyyyyyyymppooojkqqjkqqjlqxjkxqjkqqnCCDEDCCCCCC
+  yyyyyyyyyyympooiklqijkqqjkkojkkijkjqnCDFDCCCCCCC
+  yyyyyyyyyyyymoojlljijlllljjkjjklllkqnCCDCCCCCCCC
+  yyyyyyyyyyyyymojlljilllljjjjjjjjllllhIIIIggggggg
+  yyyyyyyyyyyyyhijlljjjjjjiiiijiiiijjjIKKKKIyyyyyy
+  yyyyyyyyyyyyyhiklljjkiiijkkiklijliihIJHJIyyyyyyy
+  yyyyyyyyyyyyyhijkkjjklkijGGGGGFFFFjhIJJJIyyyyyyy
+  yyyyyyyyyyyyyhijkkjjkkkijkkjkkjjkkFFFJJJIyyyyyyy
+  yyyyyyyyyyyyyhijkkkikkkijkijkkjkkkhDDIIIyyyyyyyy
+  yyyyyyyyyyyyyhiikkkikkkijkijkijkkkhyyyyyyyyyyyyy
+  yyyyyyyyyyyyychijkkikkkijkijkijkkkhyyyyyyyyyyyyy
+  yyyyyyyyyyyccdeijkkijkkjkkijkjjkkkeccyyyyyyyyyyy
+  yyyyyyyycccdddeijkkijkiijkjkijkkkeffecccyyyyyyyy
+  yyyyyyccddddddeiijkiikkijijkjjkkkeeffffeccyyyyyy
+  yyyyycddddddddeeiiikijkijijkjkkkkeefffffffcyyyyy
+  yyyycdddddddddeeeiiiiijijjkijkkkeeeefffffffcyyyy
+  yyycdddddddddddeeeiiiiiijjkkkkkkeeeeefffffffcyyy
+  yyycdddddddddddeeeeeiiiijjkjjkkkeeeeefffffffcyyy
+  yycddddddddddddeeeeeeieiijkeekeeeeeeeefffffffcyy
+  yycddddddddddddeeeeeeeeeeeeeeeeeeeeeeefffffffcyy
+  yycddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeffffffcyy
+  ycdddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeffffffcy

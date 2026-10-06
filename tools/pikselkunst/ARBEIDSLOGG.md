@@ -2588,3 +2588,26 @@ same måte, uansett kven som tek over.
   (`synlegeKolonnar()`), så den smale senga står på flisa si inntil sideveggen. Gjeld stova og Nedre Hovde.
 - **Sjekka:** alle fem testane grøne. Før og etter: `forhand/skjerm/r93-for-etter-seng.png` (Ivar i senga før og
   etter, Ivar ved sida av senga før og etter, og Nedre Hovde).
+
+## Runde 94: grannen, den gamle mannen, budeia og Ivar som tenkjer
+
+- **Frå brukaren:** den gamle mannen på tunet (grannen) har ny hovudform, men håret er frå den gamle: ein tust på
+  høgre sida, grå strå som stikk ut ved kinnet, han skjel, og det er for lang veg frå høgre kanten til auget.
+  Andletet til budeia bør sitje eit par pikslar lenger til høgre. Haka til Ivar i `tenkje` ser ut som fleire lag
+  dobbelthake.
+- **Grannen:** høgre sida av hovudet er tre pikslar smalare (`xr` 37 til 34), så det fjerne auget sit nær kanten
+  som i tre kvart. Tusten på høgre sida er borte, og hårkransen følgjer den runde skallen bak øyret. Skjegget har
+  ei grunnflate og jamne lokkar (`ujamn=False`), så det ikkje stikk strå opp over kinnet.
+- **Skjeling:** pupillen i det fjerne auget stod heilt inn mot nasa (`iphwL`) medan det nære såg rett fram. No står
+  begge pupillane midt i auget (`wiphL`). Same feil var det hos den gamle mannen, presten og guten, og alle fire
+  er retta.
+- **Den gamle mannen** (`bygd-gamal-mann`): tinninglokka på den fjerne sida følgjer no den smale skallen og stikk
+  ikkje ut lenger.
+- **Budeia:** auga, bryna, nasa, munnen og raudmen er flytte to pikslar mot høgre (`D = 2`). Skautet og fletta
+  passar framleis.
+- **Ivar `tenkje`:** handa under haka er teken bort. Kjensla ligg i det løfta brynet, blikket og munnen som er
+  trekt til sida, og haka er den same som i dei andre kjenslene. Dei andre portretta til Ivar og Huldra er urørde.
+- **Sjekka:** `portrett.py hol` (røykdottane frå pipa til grannen står i `HOL_LOV`), `pix.py sjekk` (30 til 39
+  fargar), `node tools/sjekk-spel.js` og `sjekk-scene.html` grøne.
+- **Etter:** `forhand/portrett12-for-etter-8x.png` (før og etter i 8x) og `forhand/skjerm/portrett12-taleboks.png`
+  (Granne, Bestefaren, Budeia, Presten, Gjetarguten og Ivar med kjensla tenkje: «Kven var det?»).
