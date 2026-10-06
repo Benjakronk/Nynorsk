@@ -30,6 +30,8 @@
     val: {},          // val som skal hugsast: { id: indeks }
     traadar: {},      // forteljartrådar: { id: { tekst, opna: kapittel, lukka } }
     dagbok: [],       // [{ tekst, stad, kapittel }]
+    obSett: [],       // ord Ivar har sett på i Ordboka (dei andre er merkte «ny»)
+    obSortering: "alfabetisk",   // alfabetisk, lært eller lydfamilie (Q byter i Ordboka)
   });
   let st = ny();
   const lagra = () => { try { return JSON.parse(localStorage.getItem(NOKKEL) || "null"); } catch (e) { return null; } };
@@ -352,11 +354,12 @@
     for (const m of mål) { const s = stat(m); m.hp = Math.min(s.maxhp, Math.max(m.hp, 0) + n); }
     await Motor.tale(`Ivar syng «${o.aasen}». ${mål.map(m => D.PARTI[m.id].namn).join(" og ")} får att kreftene.`);
   }
-  async function feltTing() {
+  // valtId: tingen er alt vald (frå lista i menyen).
+  async function feltTing(valtId) {
     const eigd = Object.entries(st.ting).filter(([id, n]) => n > 0 && (D.TING[id].lækje || D.TING[id].rost));
     if (!eigd.length) { await Motor.tale("Ivar har ingen ting å bruke no."); return; }
-    const i = await Motor.val("Kva vil du bruke?", [...eigd.map(([id, n]) => `${D.TING[id].namn} ×${n}`), "Ingenting"]);
-    if (i >= eigd.length) return;
+    const i = valtId ? eigd.findIndex(([id]) => id === valtId) : await Motor.val("Kva vil du bruke?", [...eigd.map(([id, n]) => `${D.TING[id].namn} ×${n}`), "Ingenting"]);
+    if (i < 0 || i >= eigd.length) return;
     const id = eigd[i][0], t = D.TING[id];
     const m = st.parti[st.parti.length > 1 ? await Motor.val("Kven?", st.parti.map(m => D.PARTI[m.id].namn)) : 0];
     const s = stat(m);
@@ -426,35 +429,96 @@
   /* ---------- Menyen ---------- */
   const menyEl = $("rpg-meny");
   const FAM_ORDEN = ["hard", "diftong", "j", "sporjeord", "smaaord", "nokkel"];
-  function ordbokHtml() {
-    const kjende = Object.keys(st.ord);
-    const former = kjende.reduce((n, id) => n + Object.keys(st.ord[id].former).length, 0);
-    let h = `<p class="mn-liten">${kjende.length} ord og ${former} former. Norrøne former og røter kan Ivar lese frå kapittel 2.</p>`;
-    for (const famId of FAM_ORDEN) {
-      const fam = D.FAMILIAR[famId];
-      const ider = Object.keys(D.ORD).filter(id => D.ORD[id].fam === famId);
-      const har = ider.filter(id => st.ord[id]);
-      h += `<h3 class="ob-fam" style="--fam:${fam.farge}">${E(fam.namn)} <small>${E(fam.evne)} · ${har.length} av ${ider.length}</small></h3>`;
-      if (!har.length) { h += `<p class="mn-liten">${famId === "nokkel" ? "Nøkkelorda finst berre ved å rekonstruere rota frå mange bygder." : "Ingen ord enno."}</p>`; continue; }
-      h += `<ul class="ob-liste">${har.map(id => {
-        const o = D.ORD[id], f = st.ord[id].former;
-        return `<li><b>${E(o.aasen)}</b> <small>«${E(o.tyding)}»</small><br>
-          <small>Former: ${Object.entries(f).map(([form, k]) => `<span class="ob-form">${E(form)}</span> <span class="ob-kjelde">(${E(k.kven ? k.kven + ", " : "")}${E(k.stad)})</span>`).join(" · ")}</small><br>
-          <small>Dansk: <i>${E(o.dansk)}</i> · Norrønt: ${st.kapittel >= 2 ? `<i>${E(o.norront || "ukjent")}</i>` : "???"} · ${E(o.tekst)}</small></li>`;
-      }).join("")}</ul>`;
-    }
-    return h;
-  }
-  function stevHtml() {
-    const alle = Object.keys(D.STEVGALDR);
-    let h = `<p class="mn-liten">Ivar har lært ${st.stev.length} av ${alle.length} stev. Eit stev kan kvedast i kamp når kvedemålaren er full. Hola fyller han med ord han har funne.</p>`;
-    for (const id of alle) {
-      const def = D.STEVGALDR[id];
-      if (!st.stev.includes(id)) { h += `<div class="stev-kort"><h3>???</h3></div>`; continue; }
-      const linje = l => Stev.delLine(l).map(w => w.hol ? `<b class="stev-hol ${st.ord[def.hol[w.hol].ord] ? "rett" : "tomt"}">${st.ord[def.hol[w.hol].ord] ? E(def.hol[w.hol].rett[0]) : "???"}</b>${E(w.etter)}` : E(w.tekst)).join(" ");
-      h += `<div class="stev-kort"><h3>${E(def.namn)} <small>frå ${E(def.kjelde)}</small></h3>${def.liner.map(l => `<p class="stev-line">${linje(l)}</p>`).join("")}<p class="mn-liten">${E(def.tekst)}</p></div>`;
-    }
-    return h;
+  /* Lister med detaljar i menyen (Ordboka, Ting, Stev, Vesen, Nøkkelting), som i FF6: ei rulleliste
+     med fast storleik (Motor.liste) og eit fast felt under med detaljane til det peikaren står på.
+     Z på menyvalet går inn i lista, B går attende. Kvar liste gir { topp, alt, ider, detalj(i, aktiv),
+     kolonner, vel(i), sorter() } eller { tom: "tekst" }. */
+  const SORTERINGAR = ["alfabetisk", "lært", "lydfamilie"];
+  const nnSort = (a, b) => a.localeCompare(b, "nn");
+  const MENYLISTER = {
+    Ordboka() {
+      if (!st.nokkel.includes("ordboka") && !ordtal()) return { tom: "Ivar har inga bok å skrive i enno." };
+      const kjende = Object.keys(st.ord).filter(id => D.ORD[id]);
+      const former = kjende.reduce((n, id) => n + Object.keys(st.ord[id].former).length, 0);
+      const sort = SORTERINGAR.includes(st.obSortering) ? st.obSortering : "alfabetisk";
+      const ider = kjende.slice();                                     // «lært»: rekkjefølgja dei kom i
+      if (sort === "alfabetisk") ider.sort((a, b) => nnSort(D.ORD[a].aasen, D.ORD[b].aasen));
+      if (sort === "lydfamilie") ider.sort((a, b) => FAM_ORDEN.indexOf(D.ORD[a].fam) - FAM_ORDEN.indexOf(D.ORD[b].fam) || nnSort(D.ORD[a].aasen, D.ORD[b].aasen));
+      const sett = st.obSett || (st.obSett = []);
+      const nokkel = Object.keys(D.ORD).filter(id => D.ORD[id].fam === "nokkel"), nokkelHar = nokkel.filter(id => st.ord[id]).length;
+      return {
+        topp: `${kjende.length} ord og ${former} former · sortert ${sort} <span class="mn-sorter">(Q byter)</span>`,
+        topp2: `Nøkkelord: ${nokkelHar} av ${nokkel.length}. Dei krev rota frå mange bygder.`,
+        ider, kolonner: 2, tomListe: "Ingen ord enno.",
+        alt: ider.map(id => ({ namn: `${E(D.ORD[id].aasen)}${sett.includes(id) ? "" : ' <b class="ob-ny">ny</b>'}`, farge: D.FAMILIAR[D.ORD[id].fam].farge })),
+        detalj(i, aktiv) {
+          const id = ider[i], o = D.ORD[id], fam = D.FAMILIAR[o.fam], f = st.ord[id].former;
+          if (aktiv && !sett.includes(id)) sett.push(id);
+          const famIder = Object.keys(D.ORD).filter(x => D.ORD[x].fam === o.fam);
+          return `<p><span class="ob-ordet">${E(o.aasen)}</span> <small>«${E(o.tyding)}»</small></p>
+            <p class="ob-fam-line" style="--fam:${fam.farge}">${E(fam.namn)} <small>${E(fam.evne)} · ${famIder.filter(x => st.ord[x]).length} av ${famIder.length}</small></p>
+            <p><small>Former: ${Object.entries(f).map(([form, k]) => `<span class="ob-form">${E(form)}</span> <span class="ob-kjelde">(${E(k.kven ? k.kven + ", " : "")}${E(k.stad)})</span>`).join(" · ")}</small></p>
+            <p><small>Dansk: ${E(o.dansk)} · Norrønt: ${st.kapittel >= 2 ? E(o.norront || "ukjent") : "??? (frå kapittel 2)"}</small></p>
+            <p><small>Galdr: ${E(o.tekst)}</small></p>`;
+        },
+        sorter() { st.obSortering = SORTERINGAR[(SORTERINGAR.indexOf(sort) + 1) % SORTERINGAR.length]; },
+      };
+    },
+    Ting() {
+      const ider = Object.keys(st.ting).filter(id => st.ting[id] > 0 && D.TING[id]);
+      const kanBruke = id => !!(D.TING[id].lækje || D.TING[id].rost);
+      return {
+        topp: `Skreppa: ${ider.length ? ider.reduce((n, id) => n + st.ting[id], 0) + " ting" : "tom"} · ${st.pengar} skilling`, topp2: "Trykk Z på ein ting for å bruke han.",
+        ider, tomListe: "Skreppa er tom.",
+        alt: ider.map(id => ({ namn: E(D.TING[id].namn), info: `×${st.ting[id]}`, av: !kanBruke(id) })),
+        detalj: i => `<p><span class="ob-ordet">${E(D.TING[ider[i]].namn)}</span> <small>×${st.ting[ider[i]]}</small></p><p><small>${E(D.TING[ider[i]].tekst)}</small></p>${kanBruke(ider[i]) ? "<p class=\"mn-liten\">Z: bruk</p>" : ""}`,
+        vel: i => feltTing(ider[i]),
+      };
+    },
+    Stev() {
+      const ider = Object.keys(D.STEVGALDR);
+      return {
+        topp: `Ivar har lært ${st.stev.length} av ${ider.length} stev.`, topp2: "Eit stev kan kvedast i kamp når kvedemålaren er full. Hola fyller han med ord han har funne.",
+        ider, alt: ider.map(id => ({ namn: st.stev.includes(id) ? E(D.STEVGALDR[id].namn) : "???" })),
+        detalj(i) {
+          const def = D.STEVGALDR[ider[i]];
+          if (!st.stev.includes(ider[i])) return "<p>???</p>";
+          const linje = l => Stev.delLine(l).map(w => w.hol ? `<b class="stev-hol ${st.ord[def.hol[w.hol].ord] ? "rett" : "tomt"}">${st.ord[def.hol[w.hol].ord] ? E(def.hol[w.hol].rett[0]) : "???"}</b>${E(w.etter)}` : E(w.tekst)).join(" ");
+          return `<p><span class="ob-ordet">${E(def.namn)}</span> <small>frå ${E(def.kjelde)}</small></p>${def.liner.map(l => `<p class="stev-line">${linje(l)}</p>`).join("")}<p class="mn-liten">${E(def.tekst)}</p>`;
+        },
+      };
+    },
+    Vesen() {
+      const ider = Object.keys(D.FIENDAR);
+      return {
+        topp: `Vesen Ivar har møtt: ${Object.keys(st.vesen).length} av ${ider.length}.`,
+        ider, alt: ider.map(id => ({ namn: st.vesen[id] ? E(D.FIENDAR[id].namn) : "???" })),
+        detalj(i) {
+          const v = st.vesen[ider[i]], d = D.FIENDAR[ider[i]];
+          return v ? `<p><span class="ob-ordet">${E(d.namn)}</span></p><p><small>${E(d.slag)} · slegne: ${v.slegne}</small></p><p><small>${E(d.tekst)}</small></p>` : "<p>???</p><p class=\"mn-liten\">Ivar har ikkje møtt dette vesenet enno.</p>";
+        },
+      };
+    },
+    Nøkkelting() {
+      const ider = st.nokkel.filter(id => D.NOKKELTING[id]);
+      return {
+        topp: `Nøkkelting: ${ider.length}`, ider, tomListe: "Ingen nøkkelting enno.",
+        alt: ider.map(id => ({ namn: E(D.NOKKELTING[id].namn) })),
+        detalj: i => `<p><span class="ob-ordet">${E(D.NOKKELTING[ider[i]].namn)}</span></p><p><small>${E(D.NOKKELTING[ider[i]].tekst)}</small></p>`,
+      };
+    },
+  };
+  // Lista og detaljfeltet i høgre del av menyen. passiv: berre vist (peikaren står i venstre del).
+  function menyListe(def, opt = {}) {
+    const h = menyEl.querySelector(".mn-hogre");
+    if (def.tom) { h.innerHTML = `<p>${E(def.tom)}</p>`; return null; }
+    h.classList.add("mn-delt");
+    h.innerHTML = `<p class="mn-topp">${def.topp || ""}${def.topp2 ? `<br><small>${E(def.topp2)}</small>` : ""}</p><div class="mn-lista"></div><div class="mn-detalj"></div>`;
+    const lista = h.querySelector(".mn-lista"), detalj = h.querySelector(".mn-detalj");
+    if (!def.alt.length) { lista.innerHTML = `<p class="mn-liten">${E(def.tomListe || "")}</p>`; return null; }
+    const fp = parseFloat(getComputedStyle($("rpg-skjerm")).getPropertyValue("--fp")) || 2;
+    const rader = Math.max(2, Math.floor(lista.clientHeight / (17 * fp)));
+    return Motor.liste(lista, def.alt, Object.assign({ rader, kolonner: def.kolonner || 1, tilbake: true, merk: i => { detalj.innerHTML = def.detalj(i, !opt.passiv); if (opt.vedMerk) opt.vedMerk(i); } }, opt));
   }
   /* Dagboka: trådane i forteljinga (opne først) og linjene Ivar har skrive, kapittel for kapittel. */
   function dagbokHtml() {
@@ -473,14 +537,6 @@
     }
     return h;
   }
-  function vesenHtml() {
-    const ider = Object.keys(D.FIENDAR);
-    return `<p class="mn-liten">Vesen Ivar har møtt: ${Object.keys(st.vesen).length} av ${ider.length}.</p><ul class="mn-liste">${ider.map(id => {
-      const v = st.vesen[id], d = D.FIENDAR[id];
-      if (!v) return `<li><b>???</b></li>`;
-      return `<li><b>${E(d.namn)}</b> <small>${E(d.slag)} · slegne: ${v.slegne}</small><br><small>${E(d.tekst)}</small></li>`;
-    }).join("")}</ul>`;
-  }
   async function meny() {
     if (modus !== "felt") return;
     Motor.pause(true);
@@ -491,13 +547,9 @@
       const v = valg[valt];
       if (v === "Status") return st.parti.map(m => { fyll(m); const s = stat(m); return `<div class="mn-kort"><img class="mn-figur" src="${sprite(m.id).rammer[0][0].toDataURL()}" alt=""><div><h3>${E(D.PARTI[m.id].namn)} <small>nivå ${m.niva}</small></h3><p>HP ${m.hp}/${s.maxhp} · Røyst ${m.rost}/${s.maxrost}</p><p>Åtak ${Math.round(s.atk)} · Vern ${Math.round(s.def)} · Fart ${Math.round(s.spd)}</p><p class="mn-liten">Røynsle ${m.xp} av ${xpNeste(m.niva)} til neste nivå${m.id === "huldra" ? ` · Kraft ${Math.round(huldrekraft() * 100)} %` : ""}</p></div></div>`; }).join("") + `<p class="mn-liten">Pengar: ${st.pengar} skilling · Stad: ${E(Motor.kart ? Motor.kart.def.namn : "")}</p>`;
       if (v === "Galdr") return `<p>Trykk Z eller Enter for å syngje ein galdr her ute. J-orda lækjer, og «kvar» finn gøymde ting.</p><p class="mn-liten">I kamp kan Ivar bruke alle orda. Lydfamilien avgjer kva galdren gjer:</p><ul class="mn-liste">${FAM_ORDEN.slice(0, 5).map(f => `<li style="--fam:${D.FAMILIAR[f].farge}" class="ob-fam-li"><b>${E(D.FAMILIAR[f].namn)}: ${E(D.FAMILIAR[f].evne)}</b><br><small>${E(D.FAMILIAR[f].tekst)}</small></li>`).join("")}</ul>`;
-      if (v === "Ting") { const t = Object.entries(st.ting).filter(([, n]) => n > 0); return (t.length ? `<ul class="mn-liste">${t.map(([id, n]) => `<li><b>${E(D.TING[id].namn)}</b> ×${n}<br><small>${E(D.TING[id].tekst)}</small></li>`).join("")}</ul>` : "<p>Skreppa er tom.</p>") + "<p class=\"mn-liten\">Trykk Z eller Enter for å bruke ein ting.</p>"; }
-      if (v === "Ordboka") return st.nokkel.includes("ordboka") || ordtal() ? ordbokHtml() : "<p>Ivar har inga bok å skrive i enno.</p>";
+      if (MENYLISTER[v]) return "";                                // lista blir teikna av menyListe()
       if (v === "Dagboka") return dagbokHtml();
       if (v === "Til kurssida") return `<p>Trykk Z eller Enter for å gå attende til kurssida.</p><p class="mn-liten">Det du ikkje har lagra, går tapt. Du kan lagre ved ei lykt eller eit bål.</p>`;
-      if (v === "Vesen") return vesenHtml();
-      if (v === "Stev") return stevHtml();
-      if (v === "Nøkkelting") return st.nokkel.length ? `<ul class="mn-liste">${st.nokkel.map(id => `<li><b>${E(D.NOKKELTING[id].namn)}</b><br><small>${E(D.NOKKELTING[id].tekst)}</small></li>`).join("")}</ul>` : "<p>Ingen nøkkelting enno.</p>";
       if (v === "Kurset") { const gv = gaaver(); return `<p>Fullfører du modular i nynorskkurset, får du gåver i spelet.</p><ul class="mn-liste">${D.GAAVER.map(x => `<li class="${gv[x.id] ? "har" : ""}"><b>${gv[x.id] ? "✓" : "🔒"} ${E(x.namn)}</b><br><small>${E(x.tekst)} Modul: ${x.modular.map(id => E((Modules.get(id) || {}).title || id)).join(" eller ")}.</small></li>`).join("")}</ul>`; }
       return "";
     };
@@ -505,8 +557,9 @@
       menyEl.innerHTML = `<div class="mn-venstre">${valg.map((v, i) => `<button type="button" class="${i === valt ? "peikar" : ""}" data-i="${i}">${v}</button>`).join("")}</div><div class="mn-hogre">${innhald()}</div><span class="mn-opp" hidden>▲</span><span class="mn-ned" hidden>▼</span>`;
       // Lange lister (Ordboka, Ting, Galdr, Stev): fast vindauge som blar ei side med venstre og høgre, med ▲ og ▼.
       const h = menyEl.querySelector(".mn-hogre"), piler = () => { menyEl.querySelector(".mn-opp").hidden = h.scrollTop <= 0; menyEl.querySelector(".mn-ned").hidden = h.scrollTop + h.clientHeight >= h.scrollHeight - 1; };
+      if (MENYLISTER[valg[valt]]) menyListe(MENYLISTER[valg[valt]](), { passiv: true });
       h.onscroll = piler; piler();
-      menyEl.querySelectorAll("[data-i]").forEach(b => b.addEventListener("click", () => { if (valt === +b.dataset.i) handling(); else { valt = +b.dataset.i; teikn(); } }));
+      menyEl.querySelectorAll(".mn-venstre [data-i]").forEach(b => b.addEventListener("click", () => { if (valt === +b.dataset.i) handling(); else { valt = +b.dataset.i; teikn(); } }));
     };
     let slepp = null;
     const lukk = () => { menyEl.hidden = true; slepp(); Motor.pause(false); };
@@ -519,7 +572,29 @@
         if (i === 0) { await Motor.tonUt(); location.href = "index.html"; return; }
         menyEl.hidden = false; slepp = Motor.lytt(lyttar); teikn(); return;
       }
-      if (v === "Galdr" || v === "Ting") { menyEl.hidden = true; slepp(); await (v === "Galdr" ? feltGaldr() : feltTing()); menyEl.hidden = false; slepp = Motor.lytt(lyttar); teikn(); }
+      // Lister: Z går inn i lista (peikaren flyttar seg dit), B går attende til menyvala.
+      if (MENYLISTER[v] && !MENYLISTER[v]().tom && MENYLISTER[v]().alt.length) {
+        slepp();
+        menyEl.querySelector(".mn-venstre .peikar").classList.add("vald");
+        let start = 0;
+        while (true) {
+          const def = MENYLISTER[v](), avbryt = {};
+          const sorter = () => { if (!def.sorter) return; const id = def.ider[aktiv]; def.sorter(); avbryt.no(-2); start = MENYLISTER[v]().ider.indexOf(id); };
+          let aktiv = start;
+          const tastQ = e => { if (["q", "Q", "Tab"].includes(e.key)) { e.preventDefault(); sorter(); } };
+          document.addEventListener("keydown", tastQ);
+          const p = menyListe(def, { start, avbryt, vedMerk: j => { aktiv = j; } });
+          const s = menyEl.querySelector(".mn-sorter"); if (s) s.onclick = sorter;
+          const i = await p;
+          document.removeEventListener("keydown", tastQ);
+          if (i === -2) continue;
+          if (i < 0) break;
+          start = i;
+          if (def.vel) { menyEl.hidden = true; await def.vel(i); menyEl.hidden = false; }
+        }
+        slepp = Motor.lytt(lyttar); teikn(); return;
+      }
+      if (v === "Galdr") { menyEl.hidden = true; slepp(); await (v === "Galdr" ? feltGaldr() : feltTing()); menyEl.hidden = false; slepp = Motor.lytt(lyttar); teikn(); }
     };
     const lyttar = { a: handling, b: lukk, retning: d => { if (d === 1) valt = (valt + valg.length - 1) % valg.length; if (d === 0) valt = (valt + 1) % valg.length; if (d === 2 || d === 3) { const h = menyEl.querySelector(".mn-hogre"); if (h) h.scrollTop += (d === 3 ? 1 : -1) * Math.max(40, h.clientHeight - 40); return; } teikn(); } };
     slepp = Motor.lytt(lyttar);

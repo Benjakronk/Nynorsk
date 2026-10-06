@@ -2079,7 +2079,8 @@ window.Motor = (function () {
      Opp og ned går rad for rad og rullar ved kanten (frå første til siste og omvendt); venstre og
      høgre går mellom kolonnane, eller ei side om gongen når lista har éi kolonne.
      alt: [{ namn (HTML), info, av, farge, klasse }]. opt.merk(i) blir kalla når peikaren flyttar seg,
-     opt.tilbake lèt B gi -1, opt.b gir indeksen B skal velje. Gir indeksen som vart vald. */
+     opt.tilbake lèt B gi -1, opt.b gir indeksen B skal velje, opt.start er der peikaren står først,
+     opt.passiv teiknar berre, og opt.avbryt.no(i) lukkar lista utanfrå. Gir indeksen som vart vald. */
   function liste(el, alt, opt = {}) {
     const { rader = 4, kolonner = 1, tilbake = false, merk: paaMerk = null } = opt;
     return new Promise(res => {
@@ -2097,7 +2098,7 @@ window.Motor = (function () {
         if (r >= topp + rader) topp = r - rader + 1;
         let h = "";
         for (let i = topp * kolonner; i < Math.min(n, (topp + rader) * kolonner); i++) {
-          const a = alt[i], kl = [a.klasse, i === valt ? "peikar" : ""].filter(Boolean).join(" ");
+          const a = alt[i], kl = [a.klasse, i === valt && !opt.passiv ? "peikar" : ""].filter(Boolean).join(" ");
           h += `<button type="button" data-i="${i}"${kl ? ` class="${kl}"` : ""}${a.av ? " disabled" : ""}${a.farge ? ` style="--fam:${a.farge}"` : ""}><span>${a.namn}</span>${a.info ? `<small>${a.info}</small>` : ""}</button>`;
         }
         ruter.innerHTML = h;
@@ -2111,7 +2112,10 @@ window.Motor = (function () {
         else valt = d === 2 ? Math.max(0, valt - rader) : Math.min(n - 1, valt + rader);
         teikn();
       };
+      // opt.passiv: berre teikn lista (utan peikar og tastar), til dømes før ein går inn i ho.
+      if (opt.passiv) { teikn(); res(-1); return; }
       const ferdig = i => { if (svart) return; svart = true; slepp(); res(i); };
+      if (opt.avbryt) opt.avbryt.no = i => ferdig(i);              // lukk lista utanfrå (til dømes ny sortering)
       ruter.addEventListener("click", e => {
         const b = e.target.closest("button"); if (!b) return;
         e.stopPropagation();

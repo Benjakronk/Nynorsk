@@ -1,0 +1,88 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Sjekk lista i menyen</title>
+<!-- Sjekkar Ordboka og dei andre listene i menyen (Motor.liste med detaljfelt):
+     1. Ivar får 100 ord. Z på Ordboka går inn i lista, peikaren når første og siste ord,
+        og detaljfeltet viser ordet peikaren står på.
+     2. Q byter sortering (alfabetisk, lært, lydfamilie), og peikaren står att på same ordet.
+     3. B går attende til menyvala. Menyen, lista og detaljfeltet held storleiken heile vegen.
+     4. Ting, Stev, Vesen og Nøkkelting blir viste som lister utan feil.
+     Køyr: python tools/kjoyr-test.py tools/sjekk-meny.html 60000 -->
+<style>body{margin:0;background:#000;color:#fff;font:12px monospace} iframe{width:1100px;height:720px;border:0} #ut{white-space:pre-wrap;padding:4px}</style>
+<iframe id="f"></iframe>
+<div id="ut">køyrer …</div>
+<script>
+const f = document.getElementById("f");
+f.src = "../spel.html?test=1";
+const vent = ms => new Promise(r => setTimeout(r, ms));
+f.onload = async () => {
+  const w = f.contentWindow, d = w.document, M = w.Motor, ut = [], feil = [];
+  let alleOk = true;
+  const sjekk = (ok, tekst) => { ut.push((ok ? "OK   " : "FEIL ") + tekst); if (!ok) alleOk = false; };
+  w.addEventListener("error", e => feil.push(e.message));
+  const tast = async (k, ms = 20) => { d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true })); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true })); await vent(ms); };
+  const synleg = sel => { const e = d.querySelector(sel); return e && !e.hidden; };
+  const rect = sel => { const e = d.querySelector(sel); if (!e) return null; const r = e.getBoundingClientRect(); return [r.left, r.top, r.width, r.height].map(Math.round).join(","); };
+  for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
+  d.querySelector("#rpg-tittel-val button").click();
+  await vent(300);
+  for (let n = 0; n < 400 && (!w.RPGTest.st().scener.heime || synleg("#rpg-tale") || synleg("#rpg-fort")); n++) await tast("z", 60);
+  await vent(500);
+  const O = w.RPGData.ORD, ekte = Object.keys(O).filter(id => O[id].fam !== "nokkel");
+  for (let i = 0; Object.keys(O).filter(id => O[id].fam !== "nokkel").length < 100; i++) { const k = ekte[i % ekte.length]; O["prov" + i] = Object.assign({}, O[k], { aasen: O[k].aasen + (i + 1) }); }
+  const st = w.RPGTest.st();
+  for (const id of Object.keys(O)) if (O[id].fam !== "nokkel") st.ord[id] = { former: { [O[id].aasen]: { stad: "Åsen", kven: "Mor" } } };
+  st.nokkel.push("ordboka"); st.ting = { kaffi: 2, flatbrod: 1 };
+  const ordtal = Object.keys(st.ord).length;
+
+  await tast("Escape", 300);
+  const peikarVenstre = () => (d.querySelector(".mn-venstre .peikar") || {}).textContent;
+  for (let n = 0; n < 12 && peikarVenstre() !== "Ordboka"; n++) await tast("ArrowDown");
+  const meny = rect("#rpg-meny"), lista = rect(".mn-lista"), detalj = rect(".mn-detalj");
+  sjekk(peikarVenstre() === "Ordboka" && !d.querySelector(".mn-lista .peikar") && d.querySelectorAll(".mn-lista button").length > 0, "Ordboka viser lista, peikaren står på menyvalet");
+  await tast("z", 100);
+  const peikar = () => { const b = d.querySelector(".mn-lista .peikar"); return b ? +b.dataset.i : -1; };
+  const kol = +getComputedStyle(d.querySelector(".mn-lista")).getPropertyValue("--kolonner") || 1;
+  const knappar = d.querySelectorAll(".mn-lista button").length;
+  sjekk(peikar() === 0, `Z går inn i lista (${knappar} ruter synlege for ${ordtal} ord, ${kol} kolonner)`);
+  const ordet = () => (d.querySelector(".mn-detalj .ob-ordet") || {}).textContent;
+  const namnPaa = () => { const b = d.querySelector(".mn-lista .peikar span"); return b ? b.textContent.replace(/\s*ny$/, "") : ""; };
+  sjekk(ordet() === namnPaa(), `detaljfeltet viser ordet peikaren står på («${ordet()}»)`);
+  let steg = 0, rett = true;
+  while (peikar() < ordtal - kol && steg < 200) { await tast("ArrowDown", 0); steg++; if (ordet() !== namnPaa()) rett = false; }
+  while (peikar() < ordtal - 1 && steg < 210) { await tast("ArrowRight", 0); steg++; }
+  sjekk(peikar() === ordtal - 1 && rett && ordet() === namnPaa(), `peikaren kom til siste ord (${peikar() + 1} av ${ordtal}) på ${steg} trykk, og detaljane fylgde med`);
+  sjekk(synleg(".mn-lista .rl-opp") && !synleg(".mn-lista .rl-ned"), "nedst: ▲ syner og ▼ ikkje");
+  await tast("ArrowDown"); sjekk(peikar() === 0, "ned frå siste rad går til første ord");
+  sjekk(!synleg(".mn-lista .rl-opp") && synleg(".mn-lista .rl-ned"), "øvst: ▼ syner og ▲ ikkje");
+  await tast("ArrowUp"); sjekk(peikar() === ordtal - 1, "opp frå første rad går til siste ord");
+
+  // Sortering: Q byter, og peikaren står att på same ordet.
+  for (let n = 0; n < 7; n++) await tast("ArrowUp", 0);
+  const for_ = ordet(), s0 = st.obSortering;
+  await tast("q", 100);
+  sjekk(st.obSortering !== s0 && ordet() === for_ && namnPaa() === for_, `Q byter sortering (${s0} til ${st.obSortering}), og peikaren står att på «${for_}»`);
+  await tast("q", 100); await tast("q", 100);
+  sjekk(st.obSortering === s0, "tre trykk på Q gir same sortering att");
+  const alfa = [...d.querySelectorAll(".mn-lista button span")].map(s => s.textContent.replace(/\s*ny$/, ""));
+  sjekk(alfa.every((x, i) => !i || alfa[i - 1].localeCompare(x, "nn") <= 0), "alfabetisk sortering");
+  sjekk(rect("#rpg-meny") === meny && rect(".mn-lista") === lista && rect(".mn-detalj") === detalj, "menyen, lista og detaljfeltet held storleiken");
+  await tast("x", 100);
+  sjekk(peikarVenstre() === "Ordboka" && !d.querySelector(".mn-lista .peikar") && synleg("#rpg-meny"), "B går attende til menyvala, og menyen er open");
+
+  // Dei andre listene
+  for (const namn of ["Ting", "Stev", "Vesen", "Nøkkelting"]) {
+    for (let n = 0; n < 12 && peikarVenstre() !== namn; n++) await tast("ArrowUp");
+    const harListe = !!d.querySelector(".mn-lista");
+    await tast("z", 150);
+    const inne = !!d.querySelector(".mn-lista .peikar");
+    const detaljen = (d.querySelector(".mn-detalj") || {}).textContent || "";
+    if (inne) await tast("x", 100);
+    sjekk(harListe && (!inne || detaljen.trim().length > 0) && peikarVenstre() === namn && rect("#rpg-meny") === meny, `${namn}: liste${inne ? " med peikar og detaljar" : " (tom)"}, B attende`);
+  }
+  if (feil.length) sjekk(false, "feil i spelet: " + feil.join(" | "));
+  ut.push(alleOk ? "Alt ser rett ut." : "Noko er feil.");
+  document.getElementById("ut").textContent = ut.join("\n");
+  f.remove();
+};
+</script>

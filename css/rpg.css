@@ -154,6 +154,24 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 .ob-liste, .mn-liste { list-style: none; padding: 0; margin: 0 0 calc(var(--fp) * 4); display: grid; gap: calc(var(--fp) * 3); }
 .ob-liste li, .mn-liste li { padding: calc(var(--fp) * 3) calc(var(--fp) * 5); background: rgba(255, 255, 255, .07); }
 .ob-liste small, .mn-liste small { color: var(--lys); }
+/* Lister med detaljar i menyen (Ordboka, Ting, Stev, Vesen, Nøkkelting): topplina, rullelista som
+   fyller resten, og eit fast detaljfelt nedst. Peikaren står att (dempa) på menyvalet medan ein er i lista. */
+.mn-hogre.mn-delt { display: flex; flex-direction: column; overflow: hidden; }
+.mn-topp { flex: none; margin: 0 0 calc(var(--fp) * 3); height: calc(var(--fp) * 30); overflow: hidden; white-space: nowrap; }
+.mn-topp small { color: var(--lys); }
+.mn-sorter { color: var(--dempa); cursor: pointer; }
+.mn-lista { flex: 1; min-height: 0; overflow: hidden; }
+.mn-detalj { flex: none; height: calc(var(--fp) * 96); box-sizing: border-box; padding-top: calc(var(--fp) * 3); border-top: var(--fp) solid rgba(168, 176, 216, .45); overflow: hidden; }
+.mn-detalj p { margin: 0; }
+.mn-detalj small { color: var(--lys); }
+.mn-detalj .stev-line { margin: 0; }
+.ob-ordet { color: var(--gull); }
+.ob-fam-line { border-left: calc(var(--fp) * 3) solid var(--fam); padding-left: calc(var(--fp) * 4); }
+.ob-ny { color: var(--gull); }
+.rulleliste button { display: flex; justify-content: space-between; gap: calc(var(--fp) * 8); white-space: nowrap; overflow: hidden; }
+.rulleliste button small { color: #9fd0ff; }
+.rulleliste button[style*="--fam"] span::before { content: ""; display: inline-block; width: calc(var(--fp) * 4); height: calc(var(--fp) * 4); margin-right: calc(var(--fp) * 4); vertical-align: calc(var(--fp) * 1); background: var(--fam); box-shadow: var(--fp) var(--fp) 0 #0a0514; }
+.mn-venstre button.vald::before { filter: grayscale(1) brightness(.65); animation: none; }
 .ob-form { color: var(--gull); }
 .ob-kjelde { color: var(--dempa); }
 .mn-liten { color: var(--lys); }
