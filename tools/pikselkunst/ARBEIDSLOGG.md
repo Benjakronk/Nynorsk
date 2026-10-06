@@ -2611,3 +2611,21 @@ same måte, uansett kven som tek over.
   fargar), `node tools/sjekk-spel.js` og `sjekk-scene.html` grøne.
 - **Etter:** `forhand/portrett12-for-etter-8x.png` (før og etter i 8x) og `forhand/skjerm/portrett12-taleboks.png`
   (Granne, Bestefaren, Budeia, Presten, Gjetarguten og Ivar med kjensla tenkje: «Kven var det?»).
+
+## Runde 95: loddrette benker
+
+- **Frå brukaren:** ved benker som står på langs (sett frå sida) hamna Ivar delvis under benken når han gjekk
+  inn for å setje seg og når han gjekk av.
+- **Kvifor:** i steget inn og ut vart han sortert etter rada han stod på (ikkje sitjande enno), medan setet
+  vart sortert etter den nedste rada si, så den nedre delen av benken vart teikna over han. Seta var heller
+  ikkje delte i stripar per rad (runde 92).
+- **Retta:** i steget inn på eller ut av eit sete (utan ryggen mot kameraet) blir figuren sortert som den som
+  sit der (`foran` i `figurVis`), så setet aldri dekkjer han. Sete blir òg delte i stripar per flisrad
+  (utanom kyrkjebenkene med ryggen mot kameraet), så ein som står attmed ein ståande benk, berre blir dekt
+  av det som er lenger nede enn føtene hans. Gjeld alle figurar.
+- **Test** (sjekk-scene, bolk 8g): Ivar går inn på og ut av alle 24 loddrette sete (dei ståande benkene i koret og
+  våpenhuset, kubbestolane, sofaen, stolane i boksamlinga og stokkane) frå kvar ledig nabo-rute, og ei vakt
+  per bilete (`Motor.spelarDekt`: sete som blir teikna over han) sjekkar at han aldri er dekt. Utan rettinga
+  fann vakta feilen ved benkene i koret. `kjoyr-test.py` gir sjekk-scene 260 sekund (testen brukar om lag 220).
+- **Bilete:** `forhand/skjerm/r95-inn-ut-rekke.png` (steget inn ovanfrå på benken i koret, 40, 100, 160 og 240 ms,
+  og steget ut att).

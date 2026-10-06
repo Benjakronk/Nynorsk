@@ -431,6 +431,45 @@ f.onload = async () => {
       sjekk(!hopp.length, `Huldra flyttar seg aldri meir enn éi rute per steg${hopp.length ? ": " + hopp.slice(0, 3).join("; ") : ""}`);
     }
 
+    // 8g. Loddrette benker og andre sete (runde 95): Ivar går inn på kvart ledige sete (utan ryggen mot
+    //     kameraet) frå kvar ledig nabo-rute, og ut att same vegen. Ei vakt per bilete sjekkar at ingen del av
+    //     eit sete blir teikna over han (Motor.spelarDekt) i stega inn og ut.
+    {
+      M.settFylgje(null);
+      const tN = k => d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true }));
+      const tO = k => d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true }));
+      const TAST = ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"], DX = [0, 0, -1, 1], DY = [1, -1, 0, 0], MOT = [1, 0, 3, 2];
+      async function steg10(k) {
+        const x0 = M.spelar.x, y0 = M.spelar.y; tN(k);
+        for (let n = 0; n < 20 && M.spelar.x === x0 && M.spelar.y === y0; n++) await vent(20);
+        tO(k); for (let n = 0; n < 40 && M.spelar.flytt; n++) await vent(20); await vent(40);
+      }
+      const dekt = [], prova = []; let aktiv = false, kva = "";
+      const vakt = () => { if (M.spelar.flytt && M.spelarDekt.length) dekt.push(`${kva}: ${M.spelarDekt.join(", ")}`); if (aktiv) w.requestAnimationFrame(vakt); };
+      for (const id of ["kyrkja", "kyrkje-galleri", "asen-stova", "prestegarden", "ekset-stova", "utmarka", "vegen"]) {
+        M.last(id, "1"); await vent(150);
+        const fri = (x, y) => { const c = (M.kart.fliser[y] || [])[x]; return c != null && !w.Pikslar.FAST.has(c) && !"DdE".includes(c) && !M.kart.folk.some(f => f.x === x && f.y === y); };
+        for (let y = 0; y < M.kart.h; y++) for (let x = 0; x < M.kart.w; x++) {
+          const st = M.seteVed(x, y);
+          if (!st || st.s.fram || M.kart.folk.some(f => f.x === x && f.y === y)) continue;
+          const loddrett = st.b.h > 1 || st.s.retning === 2 || st.s.retning === 3 || st.b.id === "inne-sofa";
+          if (!loddrett) continue;
+          for (let dd = 0; dd < 4; dd++) {
+            const nx = x - DX[dd], ny = y - DY[dd];
+            if (!fri(nx, ny) || (M.seteVed(nx, ny) || {}).b === st.b) continue;
+            M.plasser(nx, ny, dd); await vent(60);
+            kva = `${id} ${x},${y} inn ${TAST[dd]}`; aktiv = true; w.requestAnimationFrame(vakt);
+            await steg10(TAST[dd]);
+            if (M.spelar.x === x && M.spelar.y === y) { kva = `${id} ${x},${y} ut ${TAST[MOT[dd]]}`; await steg10(TAST[MOT[dd]]); prova.push(`${id} ${x},${y} ${dd}`); }
+            aktiv = false; await vent(30);
+          }
+        }
+      }
+      sjekk(prova.length >= 10, `Ivar gjekk inn på og ut av ${prova.length} loddrette sete frå sidene, ovanfrå og nedanfrå`);
+      sjekk(!dekt.length, `inn på og ut av loddrette benker, stolar og sofaen blir Ivar aldri dekt av setet${dekt.length ? ": " + [...new Set(dekt)].slice(0, 4).join("; ") : ""}`);
+      M.settFylgje(w.Pikslar.figur(w.RPGData.U.huldra));               // huldra er med att (bolk 9 ventar henne)
+    }
+
     // 9. Posar: knele, sitje, peike, liggje og sove. Posen varer til figuren går eller hendinga
     //    er slutt, og folk med pose i kartet (syster ved bordet) får han att etterpå.
     const feil9 = []; w.addEventListener("error", e => feil9.push(e.message));

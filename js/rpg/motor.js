@@ -514,6 +514,9 @@ window.Motor = (function () {
     } else if (!f) {
       if (v.pose === "sitje") v.sete = seteVed(v.x, v.y);
       else if (v.pose === "sove" || v.pose === "liggje") v.seng = sengVed(v.x, v.y);
+    } else {                                                          // steget inn på eller ut av eit sete
+      const s = seteVed(a.x, a.y) || seteVed(f.fx, f.fy);
+      if (s && !s.s.fram) v.foran = s;
     }
     if (v.sete) {
       const k = a.sitT ? Math.min(1, Math.max(0, (performance.now() - a.sitT) / (3 * TIKK))) : 1;
@@ -1298,6 +1301,7 @@ window.Motor = (function () {
   // Tida lyset brukte i siste bilete (for testane): alt, og berre lesinga av lerretet. Lesinga
   // tvingar nettlesaren til å teikne ferdig biletet, så ho inneheld òg teikninga av kartet.
   let lysMs = 0, lesMs = 0;
+  let spelarDekt = [];                            // sete som ligg over spelaren i siste bilete (for testane, runde 95)
   function lys(no, ox, oy) {
     const t0 = performance.now();
     const st = (RPGData.STEMNINGAR || {})[kart.def.stemning] || {};
@@ -1712,7 +1716,8 @@ window.Motor = (function () {
       /* Store møblar inne (runde 92) blir delte i ei stripe per flisrad, kvar sortert etter rada si, så
          ein figur som står attmed møbelet, blir dekt berre av den delen som er lenger nede enn føtene
          hans (Ivar ved sida av senga). Den øvste stripa tek med alt over møbelet (pipa, gavlen). */
-      const del = kart.def.inne && !b.over && !b.flat && b.lag == null && !b.faktor && !(Pikslar.SETE && Pikslar.SETE[b.id]);
+      // Sete blir òg delte (runde 95: loddrette benker), utanom dei med ryggen mot kameraet (fram).
+      const del = kart.def.inne && !b.over && !b.flat && b.lag == null && !b.faktor && !(Pikslar.SETE && Pikslar.SETE[b.id] && Pikslar.SETE[b.id].fram);
       if (del) { for (let r = b.y; r < b.y + b.h; r++) figurar.push({ y: r - 0.05, by: b.y + b.h - 1, x: b.x, bygg: img, id: b.id, b, stripe: [r === b.y ? null : r, r === b.y + b.h - 1 ? null : r + 1], botn: r === b.y + b.h - 1 }); continue; }
       figurar.push({ y: b.over ? 999 + b.y / 1000 : b.flat ? -1 : b.lag != null ? b.lag : b.y + b.h - 1 + (fram ? 0.03 : 0.01), by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id, b, botn: true }); }
     // Den som sit eller ligg, blir teikna over inventaret på same rad (benken, senga). Den som sit
@@ -1720,8 +1725,18 @@ window.Motor = (function () {
     // kart.def.lag: { "x,y": djupn } gir den som står på ruta ein annan plass i teikneorden (til dømes i
     // korga på preikestolen: etter veggen og laget bak, før framsida).
     const lagVed = f => f.sp && kart.def.lag && kart.def.lag[Math.round(f.x) + "," + Math.round(f.y)];
-    const djupn = f => lagVed(f) || (f.sete ? f.sete.b.y + f.sete.b.h - 1 : f.seng ? f.seng.b.y + f.seng.b.h - 1 : f.y) + (f.pose && f.pose !== "knele" && f.pose !== "peike" ? 0.02 : 0);
+    // foran (runde 95): i steget inn på eller ut av eit sete (ikkje med ryggen mot kameraet) blir figuren
+    // sortert som den som sit der, så setet aldri dekkjer han medan han går inn eller ut.
+    const djupn = f => lagVed(f) || (f.foran ? f.foran.b.y + f.foran.b.h - 1 + 0.02 : (f.sete ? f.sete.b.y + f.sete.b.h - 1 : f.seng ? f.seng.b.y + f.seng.b.h - 1 : f.y) + (f.pose && f.pose !== "knele" && f.pose !== "peike" ? 0.02 : 0));
     figurar.sort((a, b) => djupn(a) - djupn(b));
+    // For testane: inventar som blir teikna etter spelaren og ligg over han (spelarDekt).
+    const spf = figurar.find(f => f.sp === spelar.sprite);
+    spelarDekt = spf ? figurar.filter(f => f.bygg && !f.over && !f.b.flat && djupn(f) > djupn(spf) && Pikslar.SETE && Pikslar.SETE[f.id] && (() => {
+      const [bx, by] = byggPos(f.b, f.bygg, ox, oy), sx = Math.round((spf.x + ox) * S), sy = Math.round((spf.y + oy) * S) - FOT + (spf.lyft || 0);
+      const y0 = f.stripe && f.stripe[0] != null ? Math.round((f.stripe[0] + oy) * S) : -1e4, y1 = f.stripe && f.stripe[1] != null ? Math.round((f.stripe[1] + oy) * S) : 1e4;
+      const [k0, k1] = synlegeKolonnar(f.bygg);
+      return sx + 13 > bx + k0 && sx + 3 < bx + k1 && sy + 23 > Math.max(by, y0) && sy + 2 < Math.min(by + f.bygg.height, y1);
+    })()).map(f => f.id) : [];
     let klipt = false;                                   // klippet for ein figur i ein gang i muren (sjå under)
     for (const f of figurar) {
       if (klipt) { g.restore(); if (figMaske) fg.restore(); klipt = false; }
@@ -2096,6 +2111,7 @@ window.Motor = (function () {
     gaa, snu, inn, byt, brukMoebel, reis, kamera, rist, kort, naerbilete, blink, tone, spot, aktor, vent,
     get lysMs() { return lysMs; }, get lysLesMs() { return lesMs; },  // tida lyset brukte i siste bilete
     get lysEffekt() { return effekt; },                               // toning, blink og spotlight (for testane)
+    get spelarDekt() { return spelarDekt; },
     spelarVis, figurVis, seteVed, sengVed,                                    // korleis spelaren blir teikna, sete og senger (for testane)
     // Retningane spelaren kan reise seg og gå ut av setet eller senga han er på (for testane).
     utvegar: () => [0, 1, 2, 3].filter(d => { const nx = spelar.x + DX[d], ny = spelar.y + DY[d], st = seteVed(spelar.x, spelar.y), sg = sengVed(spelar.x, spelar.y);
