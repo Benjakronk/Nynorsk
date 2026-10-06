@@ -132,18 +132,42 @@ window.Motor = (function () {
     if (paaTrykk && paaTrykk.b) { if (e) e.preventDefault(); paaTrykk.b(); return; }
     if (!pausa && !spelar.flytt && krokar.meny) { if (e) e.preventDefault(); krokar.meny(); }
   }
-  // Styrekrossen på skjermen (mobil og nettbrett)
-  document.querySelectorAll("[data-pad]").forEach(b => {
+  /* Styrekrossen på skjermen (mobil og nettbrett). Krossen er éi flate som fangar fingeren
+     (setPointerCapture): retninga blir rekna ut frå vinkelen til midten, så ein kan skli mellom
+     pilene utan å lyfte fingeren, som på ein ekte kontroller. A, B og Q er eigne knappar.
+     Langt trykk gir verken merking eller kontekstmeny (sjå .rpg-pad i rpg.css). */
+  const pad = document.querySelector(".rpg-pad");
+  if (pad) pad.addEventListener("contextmenu", e => e.preventDefault());
+  const kross = document.querySelector("[data-kross]");
+  if (kross) {
+    let aktiv = null;                                                    // retninga fingeren held no
+    const arm = d => kross.querySelector(`[data-pad="${d}"]`);
+    const set = d => {
+      if (d === aktiv) return;
+      if (aktiv != null) { halde.delete(aktiv); arm(aktiv).classList.remove("trykt"); }
+      aktiv = d;
+      if (d != null) { arm(d).classList.add("trykt"); trykk(d); if (paaTrykk && paaTrykk.retning) paaTrykk.retning(d); }
+    };
+    const retningFra = e => {
+      const r = kross.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+      if (Math.hypot(dx, dy) < r.width * 0.12) return aktiv;            // midt i krossen: hald fram med same retning
+      return Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 3 : 2) : (dy > 0 ? 0 : 1);
+    };
+    kross.addEventListener("pointerdown", e => { e.preventDefault(); kross.setPointerCapture(e.pointerId); set(retningFra(e)); });
+    kross.addEventListener("pointermove", e => { if (aktiv != null) set(retningFra(e)); });
+    const slepp = () => set(null);
+    kross.addEventListener("pointerup", slepp); kross.addEventListener("pointercancel", slepp); kross.addEventListener("lostpointercapture", slepp);
+  }
+  document.querySelectorAll(".rpg-ab [data-pad]").forEach(b => {
     const v = b.dataset.pad;
     const ned = e => {
-      e.preventDefault();
+      e.preventDefault(); b.setPointerCapture(e.pointerId); b.classList.add("trykt");
       if (v === "a") { springTast = true; trykkA(); } else if (v === "b") trykkB();
       else if (v === "q") document.dispatchEvent(new KeyboardEvent("keydown", { key: "q", bubbles: true }));   // byt sortering (som Q)
-      else { trykk(+v); if (paaTrykk && paaTrykk.retning) paaTrykk.retning(+v); }
     };
-    const opp = () => { if (v === "a") springTast = false; else if (v !== "b") halde.delete(+v); };
+    const opp = () => { b.classList.remove("trykt"); if (v === "a") springTast = false; };
     b.addEventListener("pointerdown", ned);
-    b.addEventListener("pointerup", opp); b.addEventListener("pointerleave", opp); b.addEventListener("pointercancel", opp);
+    b.addEventListener("pointerup", opp); b.addEventListener("pointercancel", opp); b.addEventListener("lostpointercapture", opp);
   });
   // Lyttarane ligg i ein stabel: den øvste får tastane. Når ein blir sleppt, går han ut av
   // stabelen same kvar han ligg, så eit kort som går bort under eit val, ikkje tek valet med seg.

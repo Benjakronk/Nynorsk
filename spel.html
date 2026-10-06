@@ -69,16 +69,19 @@
   </section>
 
   <div class="rpg-pad" aria-hidden="true">
-    <div class="rpg-kross">
-      <button type="button" data-pad="1" class="p-opp">▲</button>
-      <button type="button" data-pad="2" class="p-venstre">◀</button>
-      <button type="button" data-pad="3" class="p-hogre">▶</button>
-      <button type="button" data-pad="0" class="p-ned">▼</button>
+    <!-- Krossen er éi flate: retninga blir rekna ut frå kvar fingeren er, så ein kan skli mellom pilene.
+         Pilene og bokstavane er teikna med CSS (::before), så det finst ingen tekst å merke eller kopiere. -->
+    <div class="rpg-kross" data-kross>
+      <span data-pad="1" class="p-opp"></span>
+      <span data-pad="2" class="p-venstre"></span>
+      <span data-pad="3" class="p-hogre"></span>
+      <span data-pad="0" class="p-ned"></span>
+      <span class="p-midt"></span>
     </div>
     <div class="rpg-ab">
-      <button type="button" data-pad="b" class="p-b">B</button>
-      <button type="button" data-pad="a" class="p-a">A</button>
-      <button type="button" data-pad="q" class="p-q" title="Byt sortering (Q)">Q</button>
+      <span data-pad="b" class="p-b" data-merke="B"></span>
+      <span data-pad="a" class="p-a" data-merke="A"></span>
+      <span data-pad="q" class="p-q" data-merke="Q"></span>
     </div>
   </div>
 </main>
