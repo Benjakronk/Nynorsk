@@ -29,7 +29,7 @@ f.onload = async () => {
   }
   try {
     for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
-    d.querySelector("#rpg-tittel-val button").click();
+    d.dispatchEvent(new w.KeyboardEvent("keydown", { key: "Enter", bubbles: true })); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: "Enter", bubbles: true }));   // første valet på tittelskjermen (berre tastar)
     await vent(300);
 
     // 1. «heime»: Ivar søv i senga, vaknar og står opp før storebror kjem bort til han (runde 90);
@@ -681,7 +681,7 @@ f.onload = async () => {
       for (let n = 0; n < 900 && !ferdig(); n++) {
         if (logg) logg();
         const knappar = d.querySelectorAll("#rpg-tale button[data-i]");
-        if (knappar.length && synleg("#rpg-tale")) { await vent(250); const i = velj ? velj(taleTekst(), knappar.length) : 0; knappar[i].click(); }
+        if (knappar.length && synleg("#rpg-tale")) { await vent(250); const i = velj ? velj(taleTekst(), knappar.length) : 0; for (let k = 0; k < i; k++) tast("ArrowDown"); tast("z"); }   // valet med piltastar og Z
         else if (synleg("#rpg-tale") || synleg("#rpg-fort") || d.querySelector(".rpg-kort, .rpg-naer")) tast("z");
         await vent(70);
       }
@@ -931,7 +931,7 @@ f.onload = async () => {
     sjekk(T().modus() === "tittel" && T().st().kapittel === 2 && T().lagra().flagg.latt, "kapittelslutten kom, og spelet er lagra med blekklatten slegen");
     // Hald fram: arkivet utan blekklatten.
     for (let n = 0; n < 60 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
-    d.querySelector("#rpg-tittel-val button").click();
+    d.dispatchEvent(new w.KeyboardEvent("keydown", { key: "Enter", bubbles: true })); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: "Enter", bubbles: true }));   // første valet på tittelskjermen (berre tastar)
     for (let n = 0; n < 60 && T().modus() !== "felt"; n++) await vent(50);
     await vent(400);
     const s12b = T().st();

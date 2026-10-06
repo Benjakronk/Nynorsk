@@ -25,7 +25,7 @@ f.onload = async () => {
   const blaFram = async () => { let n = 0; while (n++ < 200 && (synleg("#rpg-tale") || synleg("#rpg-fort"))) { await tast("z"); await vent(80); } };
   // Vent til grafikken er lasta og tittelskjermen har knappar.
   for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
-  d.querySelector("#rpg-tittel-val button").click();
+  d.dispatchEvent(new w.KeyboardEvent("keydown", { key: "Enter", bubbles: true })); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: "Enter", bubbles: true }));   // første valet på tittelskjermen (berre tastar)
   // Opningsscena (Storebror i stova) blir spela ferdig før vi går til kartet, elles kjem samtalen
   // hans over biletet, og scena held fram på eit kart der han ikkje finst.
   // opning=ms (runde 90): skjermbilete av opningsscena sjølv, ms etter at forteljinga og kortet er borte

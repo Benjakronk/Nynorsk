@@ -19,7 +19,7 @@ open(side, "w", encoding="utf-8").write("""<!doctype html><meta charset="utf-8">
 const f=document.getElementById("f"), vent=ms=>new Promise(r=>setTimeout(r,ms));
 f.onload=async()=>{const w=f.contentWindow,d=w.document;
 for(let n=0;n<200&&!d.querySelector("#rpg-tittel-val button");n++)await vent(50);
-d.querySelector("#rpg-tittel-val button").click();await vent(300);
+for(const t of ["keydown","keyup"])d.dispatchEvent(new w.KeyboardEvent(t,{key:"Enter",bubbles:true}));await vent(300);
 """ + skript + "};</script>")
 ut = os.path.join(os.path.abspath(sys.argv[3]) if len(sys.argv) > 3 else os.getcwd(), namn + ".png")
 try:

@@ -21,7 +21,7 @@ f.onload = async () => {
   const tast = async k => { d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true })); await vent(20); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true })); await vent(20); };
   const synleg = sel => { const e = d.querySelector(sel); return e && !e.hidden; };
   for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
-  d.querySelector("#rpg-tittel-val button").click();
+  d.dispatchEvent(new w.KeyboardEvent("keydown", { key: "Enter", bubbles: true })); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: "Enter", bubbles: true }));   // første valet på tittelskjermen (berre tastar)
   await vent(300);
   for (let n = 0; n < 400 && (!w.RPGTest.st().scener.heime || synleg("#rpg-tale") || synleg("#rpg-fort")); n++) { await tast("z"); await vent(40); }
   await vent(800);

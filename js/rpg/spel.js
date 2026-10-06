@@ -245,7 +245,6 @@
       setTimeout(() => el.classList.add("glir"), 500);
       setTimeout(() => el.classList.add("klar"), 2600);
       setTimeout(slutt, 6000);
-      el.onclick = () => { if (el.classList.contains("klar")) slutt(); };
     });
   }
   /* Ein scene frå D.SCENER: { namn, stad, tid, steg }. Stad og tid kjem som eit kort først
@@ -559,7 +558,6 @@
       const h = menyEl.querySelector(".mn-hogre"), piler = () => { menyEl.querySelector(".mn-opp").hidden = h.scrollTop <= 0; menyEl.querySelector(".mn-ned").hidden = h.scrollTop + h.clientHeight >= h.scrollHeight - 1; };
       if (MENYLISTER[valg[valt]]) menyListe(MENYLISTER[valg[valt]](), { passiv: true });
       h.onscroll = piler; piler();
-      menyEl.querySelectorAll(".mn-venstre [data-i]").forEach(b => b.addEventListener("click", () => { if (valt === +b.dataset.i) handling(); else { valt = +b.dataset.i; teikn(); } }));
     };
     let slepp = null;
     const lukk = () => { menyEl.hidden = true; slepp(); Motor.pause(false); };
@@ -584,7 +582,6 @@
           const tastQ = e => { if (["q", "Q", "Tab"].includes(e.key)) { e.preventDefault(); sorter(); } };
           document.addEventListener("keydown", tastQ);
           const p = menyListe(def, { start, avbryt, vedMerk: j => { aktiv = j; } });
-          const s = menyEl.querySelector(".mn-sorter"); if (s) s.onclick = sorter;
           const i = await p;
           document.removeEventListener("keydown", tastQ);
           if (i === -2) continue;
@@ -696,7 +693,6 @@
         else if (mal.manus) { await hending(D.MANUS[mal.manus]); }
         res();
       };
-      kn.forEach((b, i) => b.addEventListener("click", () => reis(i)));
       const slepp = Motor.lytt({ a: () => reis(valt), retning: d => { valt = (valt + (d === 1 || d === 2 ? kn.length - 1 : 1)) % kn.length; merk(); } });
     });
   }
@@ -742,7 +738,6 @@
         st = ny(); start(false);
       }
     };
-    kn.forEach((b, i) => b.addEventListener("click", () => vel(i)));
     const slepp = Motor.lytt({ a: () => vel(valt), retning: d => { valt = (valt + (d === 1 ? kn.length - 1 : 1)) % kn.length; merk(); } });
   }
   // Prøvekamp for stev-prototypen: Ivar og huldra med orda frå kapittel 1 og full kvedemålar.

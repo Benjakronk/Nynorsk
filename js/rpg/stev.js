@@ -85,7 +85,6 @@ window.Stev = (function () {
             await vent(rett ? 900 : 1800);
             r({ form: liste[i], rett });
           };
-          kn.forEach((b, i) => b.addEventListener("click", () => ok(i)));
           const tast = e => { const n = parseInt(e.key, 10); if (n >= 1 && n <= liste.length) { e.preventDefault(); e.stopPropagation(); ok(n - 1); } };
           document.addEventListener("keydown", tast, true);
           const slepp = Motor.lytt({ a: () => ok(v), retning: d => { v = (v + (d === 1 || d === 2 ? liste.length - 1 : 1)) % liste.length; merk(); } });
@@ -122,7 +121,6 @@ window.Stev = (function () {
         else prikkar[i].classList.add("bom");
       };
       const slepp = Motor.lytt({ a: trykk });
-      el.onpointerdown = e => { e.preventDefault(); trykk(); };
       await new Promise(r => {
         const tid = setInterval(() => {
           const no = performance.now(), i = Math.floor((no - t0 + tempo / 2) / tempo);
@@ -134,7 +132,7 @@ window.Stev = (function () {
           if (no > t0 + (slagListe.length - 0.5) * tempo + VINDAUGE) { clearInterval(tid); r(); }
         }, 15);
       });
-      slepp(); el.onpointerdown = null;
+      slepp();
       const kraft = Math.max(0.2, (treff / slagListe.length) * Math.pow(0.6, manglar.length));
       el.insertAdjacentHTML("beforeend", `<p class="sp-svar ${kraft > 0.6 ? "rett" : "feil"}">Takta: ${treff} av ${slagListe.length} slag${manglar.length ? `, ${manglar.length} hol utan ord` : ""}. Krafta er ${Math.round(kraft * 100)} %.</p>`);
       await vent(1600);

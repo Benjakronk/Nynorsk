@@ -24,7 +24,7 @@ f.onload = async () => {
   const synleg = sel => { const e = d.querySelector(sel); return e && !e.hidden; };
   const rect = sel => { const e = d.querySelector(sel); if (!e || e.hidden) return null; const r = e.getBoundingClientRect(); return [r.left, r.top, r.width, r.height].map(Math.round).join(","); };
   for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
-  d.querySelector("#rpg-tittel-val button").click();
+  d.dispatchEvent(new w.KeyboardEvent("keydown", { key: "Enter", bubbles: true })); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: "Enter", bubbles: true }));   // første valet på tittelskjermen (berre tastar)
   await vent(300);
   for (let n = 0; n < 400 && (!w.RPGTest.st().scener.heime || synleg("#rpg-tale") || synleg("#rpg-fort")); n++) { await tast("z", 60); }
   await vent(500);

@@ -24,7 +24,7 @@ f.onload = async () => {
   const synleg = sel => { const e = d.querySelector(sel); return e && !e.hidden; };
   const rect = sel => { const e = d.querySelector(sel); if (!e) return null; const r = e.getBoundingClientRect(); return [r.left, r.top, r.width, r.height].map(Math.round).join(","); };
   for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
-  d.querySelector("#rpg-tittel-val button").click();
+  d.dispatchEvent(new w.KeyboardEvent("keydown", { key: "Enter", bubbles: true })); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: "Enter", bubbles: true }));   // første valet på tittelskjermen (berre tastar)
   await vent(300);
   for (let n = 0; n < 400 && (!w.RPGTest.st().scener.heime || synleg("#rpg-tale") || synleg("#rpg-fort")); n++) await tast("z", 60);
   await vent(500);
@@ -80,6 +80,13 @@ f.onload = async () => {
     if (inne) await tast("x", 100);
     sjekk(harListe && (!inne || detaljen.trim().length > 0) && peikarVenstre() === namn && rect("#rpg-meny") === meny, `${namn}: liste${inne ? " med peikar og detaljar" : " (tom)"}, B attende`);
   }
+  // Musa styrer ingenting: knappane tek ikkje imot peikaren, og musepeikaren er gøymd.
+  const knapp = d.querySelector(".mn-venstre button"), kr = knapp.getBoundingClientRect();
+  const under = d.elementFromPoint(kr.left + kr.width / 2, kr.top + kr.height / 2);
+  const forValt = peikarVenstre();
+  knapp.click(); d.querySelector(".mn-venstre button:last-child").click(); await vent(100);
+  sjekk(!knapp.contains(under) && w.getComputedStyle(knapp).cursor === "none" && peikarVenstre() === forValt && synleg("#rpg-meny"),
+    `musa kan ikkje peike eller klikke i menyen (under musa: ${under && under.id || under && under.className}, peikar ${w.getComputedStyle(knapp).cursor})`);
   if (feil.length) sjekk(false, "feil i spelet: " + feil.join(" | "));
   ut.push(alleOk ? "Alt ser rett ut." : "Noko er feil.");
   document.getElementById("ut").textContent = ut.join("\n");

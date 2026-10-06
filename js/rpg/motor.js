@@ -138,6 +138,7 @@ window.Motor = (function () {
     const ned = e => {
       e.preventDefault();
       if (v === "a") { springTast = true; trykkA(); } else if (v === "b") trykkB();
+      else if (v === "q") document.dispatchEvent(new KeyboardEvent("keydown", { key: "q", bubbles: true }));   // byt sortering (som Q)
       else { trykk(+v); if (paaTrykk && paaTrykk.retning) paaTrykk.retning(+v); }
     };
     const opp = () => { if (v === "a") springTast = false; else if (v !== "b") halde.delete(+v); };
@@ -949,7 +950,6 @@ window.Motor = (function () {
       let ferdig = false;
       const slutt = () => { if (ferdig) return; ferdig = true; slepp(); el.classList.add("ut"); setTimeout(() => { el.remove(); res(); }, 400); };
       const slepp = lytt({ a: slutt });
-      el.onclick = slutt;
     });
   }
 
@@ -2057,7 +2057,6 @@ window.Motor = (function () {
         boksTekst.innerHTML = teiknAv(String(tekst), opt.norront ? "n" : "").map(t => `<span class="u${t.k ? " " + t.k : ""}">${E(t.c)}</span>`).join("");
         sp = [...boksTekst.children];
         start = sidestart(sp);
-        boks.onclick = () => paaTrykk && paaTrykk.a && paaTrykk.a();
         visSide();
       };
       // Skrifta må vere lasta før lina blir broten (elles blir sidene rekna med ei anna skrift).
@@ -2116,13 +2115,6 @@ window.Motor = (function () {
       if (opt.passiv) { teikn(); res(-1); return; }
       const ferdig = i => { if (svart) return; svart = true; slepp(); res(i); };
       if (opt.avbryt) opt.avbryt.no = i => ferdig(i);              // lukk lista utanfrå (til dømes ny sortering)
-      ruter.addEventListener("click", e => {
-        const b = e.target.closest("button"); if (!b) return;
-        e.stopPropagation();
-        const i = +b.dataset.i;
-        if (i === valt || opt.klikkVel) { if (!alt[i].av) ferdig(i); } else { valt = i; teikn(); }
-      });
-      el.onwheel = e => { e.preventDefault(); if (e.deltaY) flytt(e.deltaY > 0 ? 0 : 1); };
       const slepp = lytt({
         a: () => { if (!alt[valt].av) ferdig(valt); },
         b: () => { if (opt.b != null) ferdig(opt.b); else if (tilbake) ferdig(-1); },
@@ -2138,8 +2130,7 @@ window.Motor = (function () {
       boksNamn.textContent = namn || ""; boksNamn.hidden = !namn; visPortrett(namn);
       boksTekst.innerHTML = `${merkHtml(tekst)}<span class="rpg-val"></span>`;
       boks.classList.add("klar");
-      boks.onclick = null;
-      liste(boksTekst.querySelector(".rpg-val"), alt.map(a => ({ namn: merkHtml(a) })), { rader: Math.min(5, alt.length), b: alt.length - 1, klikkVel: true })
+      liste(boksTekst.querySelector(".rpg-val"), alt.map(a => ({ namn: merkHtml(a) })), { rader: Math.min(5, alt.length), b: alt.length - 1 })
         .then(i => { boks.hidden = true; boks.classList.remove("med-val"); boksTekst.innerHTML = ""; res(i); });
     });
   }
@@ -2155,7 +2146,6 @@ window.Motor = (function () {
         fortEl.appendChild(p);
       };
       const slepp = lytt({ a: neste });
-      fortEl.onclick = () => neste();
       neste();
     });
   }

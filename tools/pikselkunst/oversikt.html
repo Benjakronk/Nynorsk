@@ -19,7 +19,7 @@ f.onload = async () => {
   const tast = async k => { d.dispatchEvent(new w.KeyboardEvent("keydown", { key: k, bubbles: true })); await vent(30); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: k, bubbles: true })); };
   const synleg = sel => { const e = d.querySelector(sel); return e && !e.hidden; };
   for (let n = 0; n < 200 && !d.querySelector("#rpg-tittel-val button"); n++) await vent(50);
-  d.querySelector("#rpg-tittel-val button").click();
+  d.dispatchEvent(new w.KeyboardEvent("keydown", { key: "Enter", bubbles: true })); d.dispatchEvent(new w.KeyboardEvent("keyup", { key: "Enter", bubbles: true }));   // første valet på tittelskjermen (berre tastar)
   await vent(300);
   for (let n = 0; n < 60; n++) { let k = 0; while (k++ < 200 && (synleg("#rpg-tale") || synleg("#rpg-fort"))) { await tast("z"); await vent(80); } await vent(100); }
   for (const fl of (q.get("flagg") || "").split(",").filter(Boolean)) w.RPGTest.st().flagg[fl] = true;

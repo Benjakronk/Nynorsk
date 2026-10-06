@@ -115,7 +115,6 @@ window.Kamp = (function () {
         el.insertAdjacentHTML("beforeend", `<p class="sp-svar ${rett ? "rett" : "feil"}">${rett ? "Rett! " : ""}${E(forklaring)}</p>`);
         setTimeout(() => { el.remove(); res({ rett, form }); }, rett ? 1100 : 2600);
       };
-      kn.forEach((b, i) => b.addEventListener("click", () => svar(i)));
       const tast = e => { const n = parseInt(e.key, 10); if (n >= 1 && n <= alt.length) { e.preventDefault(); e.stopPropagation(); svar(n - 1); } };
       document.addEventListener("keydown", tast, true);
       const sleppLytt = Motor.lytt({ a: () => svar(valt), retning: d => { if (d === 1 || d === 2) valt = (valt + alt.length - 1) % alt.length; else valt = (valt + 1) % alt.length; merk(); } });
@@ -545,7 +544,7 @@ window.Kamp = (function () {
           meny.innerHTML = `<p class="km-tittel">${E(tittel)}</p><div class="km-alt"></div>${liste ? '<p class="km-info"><span></span></p>' : ""}`;
           const info = meny.querySelector(".km-info span");
           return Motor.liste(meny.querySelector(".km-alt"), alt.map(a => Object.assign({}, a, { namn: E(a.namn), info: a.info ? E(a.info) : "" })), {
-            rader: liste ? 4 : 5, kolonner: liste ? 2 : 1, tilbake, klikkVel: true,
+            rader: liste ? 4 : 5, kolonner: liste ? 2 : 1, tilbake,
             start: Math.max(0, alt.findIndex(a => !a.av)),
             merk: i => { if (info) info.textContent = alt[i].tekst || " "; },
           });
@@ -644,7 +643,7 @@ window.Kamp = (function () {
         const p = document.createElement("p"); p.textContent = l; vin.appendChild(p);
         while (vin.children.length > 2) vin.firstChild.remove();
         vin.classList.add("klar");
-        await new Promise(res => { const slepp = Motor.lytt({ a: () => { slepp(); res(); } }); vin.onclick = () => { slepp(); res(); }; });
+        await new Promise(res => { const slepp = Motor.lytt({ a: () => { slepp(); res(); } }); });
         vin.classList.remove("klar");
       }
       siger = 0;

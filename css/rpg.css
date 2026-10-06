@@ -43,6 +43,11 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 }
 .kamp-melding > *, .fv-tekst > * { display: inline-block; }
 .rpg-skjerm .rpg-tale-tekst *, .mn-venstre *, .mn-hogre *, .kamp-vindauge *, .kamp-sporsmal *, .tt-val * { text-shadow: none !important; }
+/* Spelet blir styrt berre med tastar (og styrekrossen på mobil, som ligg utanfor skjermen): musa
+   kan ikkje peike, klikke eller rulle i noko på spelflata, og musepeikaren er gøymd. Nye
+   UI-element skal ikkje ha klikk, hover eller musehjul (sjå js/rpg/README.md). */
+.rpg-skjerm, .rpg-skjerm * { cursor: none !important; }
+.rpg-skjerm * { pointer-events: none !important; }
 .rpg-lerret { image-rendering: pixelated; image-rendering: crisp-edges; display: block; background: #0e0c12; }
 
 /* Vindauge: blå gradient inne i ei pikselramme (bilete/spel/ui/ramme.png, 9 × 9, hjørne på 4). */
@@ -57,20 +62,18 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 }
 /* Knappar med peikarhanda (bilete/spel/ui/peikar.png, 16 × 11) til venstre. */
 .rpg-vindauge button, .kamp-vindauge button {
-  font: inherit; color: #fff; background: transparent; border: 0; border-radius: 0; text-align: left; cursor: pointer;
+  font: inherit; color: #fff; background: transparent; border: 0; border-radius: 0; text-align: left;
   padding: var(--fp) calc(var(--fp) * 4) var(--fp) calc(var(--fp) * 19); position: relative; text-shadow: inherit;
   min-height: calc(var(--fp) * 17);
 }
-.rpg-vindauge button.peikar::before, .rpg-vindauge button:hover::before,
-.kamp-vindauge button.peikar::before, .kamp-vindauge button:hover::before {
+.rpg-vindauge button.peikar::before, .kamp-vindauge button.peikar::before {
   content: ""; position: absolute; left: var(--fp); top: calc(var(--fp) * 3);
   width: calc(var(--fp) * 16); height: calc(var(--fp) * 11);
   background: url("../bilete/spel/ui/peikar.png") 0 0 / 100% 100% no-repeat; image-rendering: pixelated;
 }
-.rpg-vindauge button:not(.peikar):hover::before, .kamp-vindauge button:not(.peikar):hover::before { opacity: .55; }
 .rpg-vindauge button.peikar::before, .kamp-vindauge button.peikar::before { animation: peikar 1s steps(1) infinite; }
 @keyframes peikar { 50% { transform: translateX(calc(var(--fp) * -1)); } }
-.rpg-vindauge button:disabled, .kamp-vindauge button:disabled { color: var(--dempa); cursor: default; }
+.rpg-vindauge button:disabled, .kamp-vindauge button:disabled { color: var(--dempa); }
 .rpg-vindauge button:disabled::before, .kamp-vindauge button:disabled::before { display: none; }
 
 /* Stadnamnet som dukkar opp når ein kjem til eit nytt kart */
@@ -90,7 +93,7 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 .rpg-tale {
   position: absolute; left: var(--tale-x, 12px); top: var(--tale-y, auto); bottom: auto;
   width: var(--tale-b, min(760px, calc(100% - 24px))); height: var(--tale-h, auto);
-  padding: calc(var(--fp) * 4) calc(var(--fp) * 8); z-index: 20; cursor: pointer; overflow: hidden;
+  padding: calc(var(--fp) * 4) calc(var(--fp) * 8); z-index: 20; overflow: hidden;
 }
 .rpg-tale.med-val { height: auto; min-height: var(--tale-h, auto); top: auto; bottom: var(--tale-botn, 12px); }
 .rpg-tale[hidden] { display: none; }
@@ -123,7 +126,7 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 .rpg-fort {
   position: absolute; inset: 0; z-index: 30; background: #000; color: #f1ead6;
   display: flex; flex-direction: column; justify-content: center; align-items: center; gap: calc(var(--fp) * 8);
-  padding: calc(var(--fp) * 12); text-align: center; cursor: pointer; transition: opacity .35s steps(6);
+  padding: calc(var(--fp) * 12); text-align: center; transition: opacity .35s steps(6);
   line-height: calc(var(--fp) * 18); text-shadow: var(--fp) var(--fp) 0 #2a2150;
 }
 .rpg-fort[hidden] { display: none; }
@@ -159,7 +162,7 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 .mn-hogre.mn-delt { display: flex; flex-direction: column; overflow: hidden; }
 .mn-topp { flex: none; margin: 0 0 calc(var(--fp) * 3); height: calc(var(--fp) * 30); overflow: hidden; white-space: nowrap; }
 .mn-topp small { color: var(--lys); }
-.mn-sorter { color: var(--dempa); cursor: pointer; }
+.mn-sorter { color: var(--dempa); }
 .mn-lista { flex: 1; min-height: 0; overflow: hidden; }
 .mn-detalj { flex: none; height: calc(var(--fp) * 96); box-sizing: border-box; padding-top: calc(var(--fp) * 3); border-top: var(--fp) solid rgba(168, 176, 216, .45); overflow: hidden; }
 .mn-detalj p { margin: 0; }
@@ -191,7 +194,6 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 /* ---------- Kamp ---------- */
 .rpg-kamp { position: absolute; left: var(--lx); top: var(--ly); width: var(--lb); height: var(--lh); z-index: 10; pointer-events: none; }
 .rpg-kamp[hidden] { display: none; }
-.rpg-kamp > * { pointer-events: auto; }
 /* Alle vindauga i kampen har fast storleik, uansett kor mykje som står i dei (som i FF6).
    Meldinga øvst: éi line over heile breidda. */
 .kamp-melding {
@@ -201,7 +203,7 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 .kamp-melding > span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; vertical-align: top; }
 .kamp-melding[hidden] { display: none; }
 /* Sigervindauget: røynsle, pengar og funne ting, éi ny line for kvar Z, to liner om gongen */
-.kamp-siger { position: absolute; top: calc(var(--fp) * 4); left: calc(var(--fp) * 4); right: calc(var(--fp) * 4); height: calc(var(--fp) * 44); min-height: 0; overflow: hidden; cursor: pointer; }
+.kamp-siger { position: absolute; top: calc(var(--fp) * 4); left: calc(var(--fp) * 4); right: calc(var(--fp) * 4); height: calc(var(--fp) * 44); min-height: 0; overflow: hidden; }
 .kamp-siger[hidden] { display: none; }
 .kamp-siger p { margin: 0 0 var(--fp); white-space: nowrap; }
 .kamp-siger.klar::after { content: "▼"; position: absolute; right: calc(var(--fp) * 4); bottom: 0; animation: blink-pil .8s steps(2) infinite; }
@@ -267,10 +269,10 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 .sp-setning { line-height: calc(var(--fp) * 17); }
 .sp-alt { display: flex; flex-wrap: wrap; gap: calc(var(--fp) * 4); justify-content: center; }
 .sp-alt button {
-  font: inherit; color: #fff; cursor: pointer; padding: calc(var(--fp) * 3) calc(var(--fp) * 7); text-shadow: inherit;
+  font: inherit; color: #fff; padding: calc(var(--fp) * 3) calc(var(--fp) * 7); text-shadow: inherit;
   background: rgba(255, 255, 255, .1); border: var(--fp) solid #9a92c8; border-radius: 0;
 }
-.sp-alt button.peikar, .sp-alt button:hover:not(:disabled) { border-color: var(--gull); background: rgba(255, 227, 154, .18); }
+.sp-alt button.peikar { border-color: var(--gull); background: rgba(255, 227, 154, .18); }
 .sp-alt button.rett { border-color: #9ff09f; background: rgba(159, 240, 159, .25); }
 .sp-alt button.feil { border-color: #ff8a80; background: rgba(255, 138, 128, .25); }
 .sp-tast { display: inline-block; width: calc(var(--fp) * 9); margin-right: calc(var(--fp) * 4); color: var(--gull); }
@@ -367,6 +369,7 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
   .rpg-ab { position: relative; width: 130px; height: 90px; }
   .rpg-ab button { width: 56px; height: 56px; border-radius: 50%; font-weight: 700; font-size: 20px; }
   .p-a { right: 0; top: 0; background: #9c3b2e; } .p-b { left: 0; bottom: 0; }
+  .rpg-ab .p-q { width: 34px; height: 34px; left: 0; top: 0; font-size: 14px; }   /* byt sortering (Q) */
   .rpg-meny { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
   .mn-venstre { flex-direction: row; flex-wrap: wrap; border-right: 0; box-shadow: none; border-bottom: var(--fp) solid #a8b0d8; }
   .rpg-verd { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
