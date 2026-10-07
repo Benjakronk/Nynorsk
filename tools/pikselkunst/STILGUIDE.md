@@ -193,6 +193,14 @@ i spelpikslar:
   tråflate og kort, mørk framside, og rekkverket er laget framfor. `hogd` følgjer trinnet under føtene.
 - Gjeld nye objekt frå no av. Eldre objekt med for låg vinkel står i ARBEIDSLOGG.md (runde 56).
 
+## Skildre i staden for å animere (arbeidsregel)
+
+Det som er unødvendig kostbart å animere, kan teksten skildre. Ei kort setning i manus («Det luktar
+mold, og noko trengjer seg opp mellom golvplankane») saman med dei visuelle elementa som finst frå
+før (blink, `rist`, `tone`, `byt` til eit nytt bilete, ein enkel pose) held. Lag ikkje eigne
+rammeanimasjonar for eingongshendingar som kyrkjegrimen som stig opp av golvet. Animasjon er for det
+spelaren ser ofte: gange, sitjing, eld, vatn og kjensler.
+
 ## Norsk byggjeskikk, natur og kle (sjå konsept/)
 
 - Torvtak: solbleikt olivengrønt og gult om sommaren, med tuster og blomar,
