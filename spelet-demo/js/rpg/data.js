@@ -665,7 +665,7 @@ window.RPGData = (function () {
         { id: "inne-benk-staande-kort", x: 5, y: 9, h: 2 }, { id: "inne-benk-staande-kort", x: 15, y: 9, h: 2 },
         { id: "inne-skipvegg-v", x: 1, y: 9, h: 5 }, { id: "inne-skipvegg-h", x: 16, y: 9, h: 5 }, { id: "inne-korskilje", x: 5, y: 13, h: 1 },
         // Preikestolen i to lag: ryggbrettet og lydhimlingen bak den som står i korga, korga og trappa framfor.
-        { id: "inne-preikestol-bak", x: 1, y: 14, h: 2 }, { id: "inne-preikestol-karm", x: 1, y: 15, h: 2, lag: 15.3 }, { id: "inne-preikestol", x: 1, y: 15, h: 2 }, { id: "inne-preikestol-himling", x: 1, y: 15, h: 2, over: true }, { id: "inne-dopefont", x: 17, y: 15, h: 1 },
+        { id: "inne-preikestol-bak", x: 1, y: 14, h: 2 }, { id: "inne-preikestol-karm", x: 1, y: 15, h: 2, lag: 15.3 }, { id: "inne-preikestol", x: 1, y: 15, h: 2, heil: true }, { id: "inne-preikestol-himling", x: 1, y: 15, h: 2, over: true }, { id: "inne-dopefont", x: 17, y: 15, h: 1 },
         // Benkene: salmebøker i dei fleste (variant "" og 5), hatt (2) og sjal (3) berre ved folka som
         // sit der og eitt gløymt sjal, slitte benker med stokk (4). Setet ligg flatt under figurane,
         // ryggen framfor (standardperspektivet, sjå STILGUIDE.md).

@@ -1416,6 +1416,7 @@ window.Motor = (function () {
   // tvingar nettlesaren til å teikne ferdig biletet, så ho inneheld òg teikninga av kartet.
   let lysMs = 0, lesMs = 0;
   let spelarDekt = [];                            // sete som ligg over spelaren i siste bilete (for testane, runde 95)
+  let rekkjefolgje = [];                          // teikneorden for inventaret og spelaren («spelar») i siste bilete (for testane)
   function lys(no, ox, oy) {
     const t0 = performance.now();
     const st = (RPGData.STEMNINGAR || {})[kart.def.stemning] || {};
@@ -1811,7 +1812,8 @@ window.Motor = (function () {
          ein figur som står attmed møbelet, blir dekt berre av den delen som er lenger nede enn føtene
          hans (Ivar ved sida av senga). Den øvste stripa tek med alt over møbelet (pipa, gavlen). */
       // Sete blir òg delte (runde 95: loddrette benker), utanom dei med ryggen mot kameraet (fram).
-      const del = kart.def.inne && !b.over && !b.flat && b.lag == null && !b.faktor && !(Pikslar.SETE && Pikslar.SETE[b.id] && Pikslar.SETE[b.id].fram);
+      // heil: true held eit møbel samla (framsida av preikestolen: korga skal liggje over den som står i ho).
+      const del = kart.def.inne && !b.over && !b.flat && !b.heil && b.lag == null && !b.faktor && !(Pikslar.SETE && Pikslar.SETE[b.id] && Pikslar.SETE[b.id].fram);
       if (del) { for (let r = b.y; r < b.y + b.h; r++) figurar.push({ y: r - 0.05, by: b.y + b.h - 1, x: b.x, bygg: img, id: b.id, b, stripe: [r === b.y ? null : r, r === b.y + b.h - 1 ? null : r + 1], botn: r === b.y + b.h - 1 }); continue; }
       figurar.push({ y: b.over ? 999 + b.y / 1000 : b.flat ? -1 : b.lag != null ? b.lag : b.y + b.h - 1 + (fram ? 0.03 : 0.01), by: b.y + b.h - 1, x: b.x, bygg: img, over: b.over, id: b.id, b, botn: true }); }
     // Den som sit eller ligg, blir teikna over inventaret på same rad (benken, senga). Den som sit
@@ -1827,6 +1829,7 @@ window.Motor = (function () {
     figurar.sort((a, b) => a.dj - b.dj);
     // For testane: inventar som blir teikna etter spelaren og ligg over han (spelarDekt).
     const spf = figurar.find(f => f.sp === spelar.sprite);
+    rekkjefolgje = figurar.filter(f => f === spf || (f.bygg && !f.over)).map(f => f === spf ? "spelar" : f.id);
     spelarDekt = spf ? figurar.filter(f => f.bygg && !f.over && !f.b.flat && djupn(f) > djupn(spf) && Pikslar.SETE && Pikslar.SETE[f.id] && (() => {
       const [bx, by] = byggPos(f.b, f.bygg, ox, oy), sx = Math.round((spf.x + ox) * S), sy = Math.round((spf.y + oy) * S) - FOT + (spf.lyft || 0);
       const y0 = f.stripe && f.stripe[0] != null ? Math.round((f.stripe[0] + oy) * S) : -1e4, y1 = f.stripe && f.stripe[1] != null ? Math.round((f.stripe[1] + oy) * S) : 1e4;
@@ -1961,10 +1964,19 @@ window.Motor = (function () {
       if (fk === "X" || fk === "c") { g.fillStyle = "#140c10"; g.fillRect(sx, sy, S, 2); g.fillStyle = "#2a1a1c"; g.fillRect(sx, sy + 2, S, 1); }   // takbjelka
     }
   }
+  /* Bakveggen kan vere fleire rader høg (tårnet: tre rader over golvet, med lydluker). Radene der
+     ingen rute er golv, er bakvegg, og dei blir ikkje teikna over møblane (klokka og klokkestolen står
+     framfor han). Berre sideveggane, kolonnane som framleis er vegg i den første golvrada, blir det. */
+  const bakRader = () => {
+    if (kart.bakRader == null) { let y = 0; while (y < kart.h && [...kart.fliser[y]].every(c => "XcGEØøÖöĜu ".includes(c))) y++; kart.bakRader = y; }
+    return kart.bakRader;
+  };
   function sideveggOver(ox, oy, no) {
+    const br = bakRader(), golvRad = kart.fliser[br] || "";
     const x0 = Math.max(0, Math.floor(-ox) - 1), y0 = Math.max(0, Math.floor(-oy) - 1);
     for (let y = y0; y < Math.min(kart.h, y0 + VH + 3); y++) for (let x = x0; x < Math.min(kart.w, x0 + VW + 3); x++) {
       if (!veggTopp(x, y)) continue;
+      if (y < br && !VEGG.includes(golvRad[x])) continue;               // bakveggen, ikkje sideveggen
       g.drawImage(Pikslar.flis(kart.fliser[y][x] + "t", no, x, y, kart.def.golv), Math.round((x + ox) * S), Math.round((y + oy) * S));
     }
   }
@@ -2252,6 +2264,7 @@ window.Motor = (function () {
     get lysMs() { return lysMs; }, get lysLesMs() { return lesMs; },  // tida lyset brukte i siste bilete
     get lysEffekt() { return effekt; },                               // toning, blink og spotlight (for testane)
     get spelarDekt() { return spelarDekt; },
+    get rekkjefolgje() { return rekkjefolgje; },
     spelarVis, figurVis, seteVed, sengVed,                                    // korleis spelaren blir teikna, sete og senger (for testane)
     // Retningane spelaren kan reise seg og gå ut av setet eller senga han er på (for testane).
     utvegar: () => [0, 1, 2, 3].filter(d => { const nx = spelar.x + DX[d], ny = spelar.y + DY[d], st = seteVed(spelar.x, spelar.y), sg = sengVed(spelar.x, spelar.y);

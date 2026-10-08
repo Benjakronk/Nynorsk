@@ -285,6 +285,12 @@ f.onload = async () => {
       M.plasser(4, 19, 0); await vent(150);
       await steg("ArrowDown"); await steg("ArrowRight");
       sjekk(sitPaa(4, 20, 1), "plassen der kona sit i benken, er opptatt, og Ivar blir sitjande");
+      // Preikestolen: i korga (1,12) blir framsida teikna etter Ivar, og ryggbrettet før han. Framsida
+      // må ikkje delast i striper som store møblar (heil: true), elles kjem Ivar framfor korga.
+      M.plasser(1, 12, 0); await vent(250);
+      const ro = M.rekkjefolgje, ix = id => ro.map((r, i) => r === id ? i : -1).filter(i => i >= 0), ivar = ro.indexOf("spelar");
+      sjekk(ix("inne-preikestol").length === 1 && ix("inne-preikestol")[0] > ivar && ix("inne-preikestol-bak").every(i => i < ivar),
+        `i korga på preikestolen står Ivar bak heile framsida og framfor ryggbrettet (framsida ${ix("inne-preikestol")}, ryggbrettet ${ix("inne-preikestol-bak")}, Ivar ${ivar})`);
       // e) Stokken ved bålet (utan rygg): Ivar set seg med andletet mot elden.
       const R9 = w.RPGData.KART.utmarka.rader, sy9 = R9.findIndex(r => r.includes("Å")), sx9 = R9[sy9].indexOf("Å") - 1;
       M.last("utmarka", "1"); M.plasser(sx9, sy9 - 1, 0); await vent(250);
