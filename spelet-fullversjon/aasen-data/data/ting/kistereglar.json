@@ -1,0 +1,163 @@
+{
+ "tal_per_stad": [
+  {
+   "slag_stad": "Storby",
+   "kister": "6 til 10, mest i hamna, på loft og i kjellarar utan eigar, og i dungeonane under byen",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:120"
+  },
+  {
+   "slag_stad": "Småby",
+   "kister": "2 til 4",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:121"
+  },
+  {
+   "slag_stad": "Bygd og kyrkjestad",
+   "kister": "1 til 3",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:122"
+  },
+  {
+   "slag_stad": "Gard og grend",
+   "kister": "0 til 1",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:123"
+  },
+  {
+   "slag_stad": "Fjellstue og skysskifte",
+   "kister": "0 til 1",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:124"
+  },
+  {
+   "slag_stad": "Dungeon",
+   "kister": "1 til 2 per lag eller rom, 4 til 12 i alt",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:125"
+  },
+  {
+   "slag_stad": "Villmark",
+   "kister": "1 til 2 per etappe og 1 til 3 i dungeonen, 6 til 10 i alt",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:126"
+  },
+  {
+   "slag_stad": "Samband på verdskartet",
+   "kister": "0 til 1",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:127"
+  }
+ ],
+ "fordeling": [
+  {
+   "del": "4 av 10",
+   "innhald": "2 til 3 ting frå mat, lækjing eller verneskikkar",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:135"
+  },
+  {
+   "del": "2 av 10",
+   "innhald": "Ei salsvare",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:136"
+  },
+  {
+   "del": "2 av 10",
+   "innhald": "Pengar: om lag 3 skilling gonger tilrådd nivå, runda av",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:137"
+  },
+  {
+   "del": "1 av 10",
+   "innhald": "Utstyr: ein butikkting frå neste region, eller ein kistefunn",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:138"
+  },
+  {
+   "del": "Sjeldan",
+   "innhald": "Ein lommeting frå kistefunna eller ei ventekiste",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:139"
+  }
+ ],
+ "niva": [
+  {
+   "fraa_niva": 1,
+   "til_niva": 9,
+   "ting": [
+    "flatbrod",
+    "graut",
+    "kritt",
+    "lys",
+    "salt",
+    "ull",
+    "fjor",
+    "kalveskinn",
+    "topplue",
+    "vadmaalstroye"
+   ],
+   "niva_tekst": "1 til 9",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:145"
+  },
+  {
+   "fraa_niva": 10,
+   "til_niva": 19,
+   "ting": [
+    "rommegraut",
+    "kaffi",
+    "hoffmannsdropar",
+    "honningvatn",
+    "luktesalt",
+    "tjore",
+    "einer",
+    "ull",
+    "fjor",
+    "kalveskinn",
+    "dun",
+    "skinnlue",
+    "reisekappe_av_vadmaal",
+    "fora_vadmalskappe",
+    "strikka_topplue"
+   ],
+   "niva_tekst": "10 til 19",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:146"
+  },
+  {
+   "fraa_niva": 20,
+   "til_niva": 29,
+   "ting": [
+    "spekekjot",
+    "kaffi_kandis",
+    "revskinn",
+    "gaupeskinn",
+    "bergkrystall",
+    "gamle_myntar",
+    "einerstokk",
+    "kopparlur",
+    "messingkompass",
+    "bjornetann"
+   ],
+   "niva_tekst": "20 til 29",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:147"
+  },
+  {
+   "fraa_niva": 30,
+   "til_niva": 39,
+   "ting": [
+    "lusekam",
+    "gaupeskinn",
+    "bjorneskinn",
+    "gamle_myntar",
+    "solvskje",
+    "reiseskreppa",
+    "ullvottar"
+   ],
+   "niva_tekst": "30 til 39",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:148"
+  },
+  {
+   "fraa_niva": 40,
+   "til_niva": null,
+   "ting": [
+    "ullsokkar",
+    "kjotsuppe",
+    "kaffikjelen",
+    "kamferdropar",
+    "bjorneskinn",
+    "solvskje",
+    "gamal_eikelinjal",
+    "ullvottar"
+   ],
+   "niva_tekst": "40 og opp",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:149"
+  }
+ ]
+}

@@ -1,0 +1,4985 @@
+{
+ "fane": "Trøndelag og Nord-Noreg",
+ "stader": [
+  {
+   "id": "TRD",
+   "namn": "Trondheim og Trøndelag",
+   "fane": "trondelag_og_nord_noreg",
+   "storleik": null,
+   "skildring": "Trondheim er storby utan eiga fane, bygd kompakt med 13 skjermar ute og 9 rom inne. Sju skjermar på landet rundt høyrer til same region, så heile Trøndelag har 29. Byen ligg på halvøya i Nidelva slik Cicignon la han ut i 1681: Torvet i midten, Munkegata som brei brannavenye ned til domkyrkja i sør, Ravnkloa og hamna mot fjorden i nord, sjøhusa langs elva i aust og Bakklandet over trebrua. Kristiansten står over Bakklandet, og Munkholmen ligg ute i fjorden. Partyet kjem ned Drivdalen og over Oppdal, Soknedal og Gauldalen i november 1845 (Dagboka, 11te November). Epokane er reiseåra frå 3.17 i desember 1845 til hausten 1847, med hybelen vinteren 1846 til 1847, så fimbulvinteren frå jotunen er vunnen i 6.13 (oktober 1852) til porten i 7.3, med den store opninga, så etter oppgjeret og epilogen. I juli 1851 er berre dampskipsbrygga open, som overgang til Nordlandsdampskipet (forslag). Der kolonnen Epokar seier «Alle», tyder det reiseåra, fimbulvinteren, etter oppgjeret og epilogen. Torg og gater har møterate Ingen. Bakgardar, veiter, bryggjer og byutkant har sona «Trondheim: bakgardane, Bakklandet, bryggene og byutkanten» i reiseåra og «Bakgardane og byutkanten langs Nidelva» i fimbulvinteren.",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:26"
+  },
+  {
+   "id": "TRL",
+   "namn": "Trondheim og Trøndelag",
+   "fane": "trondelag_og_nord_noreg",
+   "storleik": null,
+   "skildring": "Trondheim er storby utan eiga fane, bygd kompakt med 13 skjermar ute og 9 rom inne. Sju skjermar på landet rundt høyrer til same region, så heile Trøndelag har 29. Byen ligg på halvøya i Nidelva slik Cicignon la han ut i 1681: Torvet i midten, Munkegata som brei brannavenye ned til domkyrkja i sør, Ravnkloa og hamna mot fjorden i nord, sjøhusa langs elva i aust og Bakklandet over trebrua. Kristiansten står over Bakklandet, og Munkholmen ligg ute i fjorden. Partyet kjem ned Drivdalen og over Oppdal, Soknedal og Gauldalen i november 1845 (Dagboka, 11te November). Epokane er reiseåra frå 3.17 i desember 1845 til hausten 1847, med hybelen vinteren 1846 til 1847, så fimbulvinteren frå jotunen er vunnen i 6.13 (oktober 1852) til porten i 7.3, med den store opninga, så etter oppgjeret og epilogen. I juli 1851 er berre dampskipsbrygga open, som overgang til Nordlandsdampskipet (forslag). Der kolonnen Epokar seier «Alle», tyder det reiseåra, fimbulvinteren, etter oppgjeret og epilogen. Torg og gater har møterate Ingen. Bakgardar, veiter, bryggjer og byutkant har sona «Trondheim: bakgardane, Bakklandet, bryggene og byutkanten» i reiseåra og «Bakgardane og byutkanten langs Nidelva» i fimbulvinteren.",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:26"
+  },
+  {
+   "id": "NID",
+   "namn": "Nidarosdomen",
+   "fane": "trondelag_og_nord_noreg",
+   "storleik": "dungeon",
+   "skildring": "Ruin og gamal stad, ei frostnatt i januar 1846 (3.18), nivå 26 og om lag 15 minutt. Halve kyrkja er ruin, månelyset fell gjennom hol i kvelvingane, og snøen ligg på steingolvet. Skipet låg i ruin til restaureringa tok til i 1869, og berre oktogonen, koret og kryssingen var i bruk. Dungeonen har sju rom i to lag, slik dungeonfana føreslår. Kyrkjerommet er fristad med møterate Ingen, og her går lyttegåta: spelaren står på ulike stader på golvet og kjenner etter pulsen i kontrollen til han slår som eit hjarte nær høgkoret. Sakristiet med dei gamle kyrkjebøkene er den farlege delen, med sona «Nidarosdomen, sakristiet» (Høg): Innførsla i sakristiet og Blekkdropen. Sakristiet låg truleg i kapittelhuset nord for koret (sjekk). Det finst ingen boss. Kvilestaden er skipet, og snarvegen går frå sakristiet rett ut i koret. Løna er nøkkelordet ætt, låst til 7.6, og tråden om sagakrafta i kongsgrava. I fimbulvinteren er kyrkjerommet framleis fristad og vegen ned til Olavsbrønnen (S2.31).",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:89"
+  },
+  {
+   "id": "OLA",
+   "namn": "Olavsbrønnen i 1846",
+   "fane": "trondelag_og_nord_noreg",
+   "storleik": "dungeon",
+   "skildring": "Ruin og gamal stad, mars 1846 (S1.40), nivå 26 og 5 til 10 minutt. Ei lita jente har sett ein konge med øks ved brønnen under domkyrkja. Olavsbrønnen var ein heilag brønn over ei kjelde, og pilegrimar drakk av han i mellomalderen. No er han tildekt, og sagakrafta frå kongsgrava lek ned i vatnet. Manuset har eitt fuktig rom med brønnen. Her er det delt i tre rom, så nedgangen og rommet får kvar sin skjerm. Det er ingen kamp, ingen tabell og ingen boss. Kvilestaden og snarvegen er brønnen. Partyet må ha stevet frå den gamle mannen på Bakklandet (TRD-10). Same rommet er den øvste etasjen i superbossdungeonen Olavsbrønnen i 1853, og vegen inn dit byrjar i brønnrommet.",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:113"
+  },
+  {
+   "id": "MUN",
+   "namn": "Tårnet på Munkholmen",
+   "fane": "trondelag_og_nord_noreg",
+   "storleik": "dungeon",
+   "skildring": "Ruin og gamal stad, ei natt i januar 1846 med is på fjorden (S1.39), nivå 27 og om lag 15 minutt. Fiskarane på Ravnkloa ser lys i fangetårnet. Gjengangaren er Peder Griffenfeld, kanslaren som sat fanga her frå 1680 til 1698 og framleis skriv forordningar som ingen les. Blekket hans er det eldste Aasen har møtt. Festninga blei bygd frå 1658 til 1661, og ho blei bygd om mellom 1825 og 1850 (lokalhistoriewiki.no). Om det låg vakter på holmen i 1846, er usikkert (sjekk). Dungeonen har seks rom: isen, porten, borggarden og tre etasjar i tårnet, slik dungeonfana føreslår. Sona «Tårnet på Munkholmen (S1.39)» (Høg) gjeld frå borggarden og inn, med Forordninga i Sogn som papirfuglar. Kvilestaden er brønnen i borggarden (forslag frå dungeonfana). Bossen er Griffenfeld.",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:130"
+  },
+  {
+   "id": "NMR",
+   "namn": "Nordmøre",
+   "fane": "trondelag_og_nord_noreg",
+   "storleik": null,
+   "skildring": "Småregion med åtte skjermar, open våren og sommaren 1846 i reiseåra. Regionen har inga fimbulvinterscene. Ruta kjem frå Trondheim om Orkdalen og Surnadal, eller med båt ut fjorden og langs leia til fiskeværet. Surnadal med setra under Trollheimen ligg innerst, Tingvoll med gjestgiveriet og den gamle steinkyrkja i midten, og Kristiansund, kjøpstad sidan 1742, ytst ved havet med klippfiskberga. Fiskeværet med naustet ligg ved kysten, og Grip ligg ute i havet. Frå fiskeværet går båten langs leia til Beian. Bygderegelen er at havorda er heime her: Dagboka glir over i landsmål midt i ei setning. I Kristiansund trur klippfisken at han er spansk, og i Trollheimen svarar ekkoet berre på dansk. Vegar og skog har sona «Postvegane og skogane i Gauldalen, Orkdalen og på Nordmøre», og kysten har «Nordmørskysten og Kristiansund». Alle skjermane er opne i reiseåra.",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:150"
+  },
+  {
+   "id": "DFB",
+   "namn": "Folla og Namdalen",
+   "fane": "trondelag_og_nord_noreg",
+   "storleik": "dungeon",
+   "skildring": "Småregion som er eit skip. Folla, som Dagboka kallar Folden, er eit ope havstykke utan le, så ein robåt kan ikkje gå her. Dampbåten frå Beian med Nordlandsruta er heile regionen. Statsdampskipet «Prinds Gustav» gjekk mellom Trondheim og Nord-Noreg frå 1838, berre i sommarhalvåret. Epoken er éi natt i storm tidleg i september 1846 (3.20 og 3.21). Namdalen ser partyet berre frå skipet på veg sørover i oktober 1846, og det er ein reiseetappe utan skjerm. I september 1853 byrjar vegen inn i Skipet ned gjennom Folla (S2.33) på Beian (TRL-06), og den dungeonen teiknar ei anna gruppe. Dampbåten er ein dungeon av typen om bord, nivå 26 og om lag 15 minutt, med seks rom i to lag. I 3.20 kan spelaren gå fritt og snakke med passasjerane medan vêret slår om, og i 3.21 er fordekket kampstaden. Temaet er havet som tek ein kar av kvar båt, og grepet er krenginga. Her er ingen vanlege kampar og ingen tabell. Stormen er fienden, og Draugen over Folla er bossen.",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:179"
+  },
+  {
+   "id": "HLG",
+   "namn": "Helgeland",
+   "fane": "trondelag_og_nord_noreg",
+   "storleik": null,
+   "skildring": "Småregion med åtte skjermar og to rom, open i september og oktober 1846. Dampbåten set partyet i land ved Brønnøy etter 3.21. Torghatten og Leka ligg ute ved kysten, og Alstahaug med kyrkja der Petter Dass var prest, ligg lenger nord. Mosjøen er handelsstad innst i Vefsnfjorden. Innanfor kysten ligg fjellsenka med lavvoen og gammen ved fjellfoten i Vefsn. Brønnøysund og Mosjøen er ikkje byar enno: Mosjøen blir ladestad i 1875 og Brønnøysund i 1923. Bygderegelen er grensa. Sørsamane talar eit mål Aasen ikkje kan skrive, og Ordboka svarar «Inga ord funne». Kysten har sona «Kysten og holmane ved Brønnøy, Vega og Leka», og fjellsenka har «Fjellsenka i Vefsn». Handelsstaden, kyrkja, lavvoen og gammen har møterate Ingen. Etter 3.22 opnar villmarka Helgelandskysten og dunværa (V9) seg, og vegen inn byrjar i leia ved Leka og Vega (HLG-03). Partyet reiser sørover til Trondheim med dampbåten frå Brønnøy eller ei jekt (overgangen etter 3.22).",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:204"
+  },
+  {
+   "id": "HTG",
+   "namn": "Holet i Torghatten",
+   "fane": "trondelag_og_nord_noreg",
+   "storleik": "dungeon",
+   "skildring": "Folkevesen og natur, september 1846 (S1.43), nivå 27 og om lag 10 minutt. Etter segna skaut Hestmannen ei pil etter Lekamøya, og kongen av Sømna kasta hatten sin i vegen. Pila gjekk gjennom hatten og laga holet, og då sola stod opp, blei alle til stein. No har nokon hogge runer for å vekkje Hestmannen, og runene er feil og lagar berre sinne. Dungeonen har seks rom: tre på fjellsida opp og tre i holet. Steinen talar berre når sola skin gjennom holet, så gåta heng på morgonlyset. Det finst ingen tabell. Gygra som ventar på sola står synleg på hylla. Det er ingen boss, og dungeonen endar i valet om Hestmannen. Kvilestaden er ein hellar i ura (forslag frå dungeonfana). Kva side av fjellet sola kjem inn frå, må sjekkast mot terrenget (sjekk).",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:233"
+  },
+  {
+   "id": "LFN",
+   "namn": "Lofoten og Nord",
+   "fane": "trondelag_og_nord_noreg",
+   "storleik": null,
+   "skildring": "Hovudregion med 19 skjermar og rom: Bodø, fiskeværet under Vågakallen med Kabelvåg like ved, Værøy ute i havet, Nord-Troms og Steilneset i Vardø. Epoken er fimbulvinteren. Fiskeværet er første staden i akten utan snø, med midnattssol låg over havet i juli 1851 (5.15 til 5.17), og naustet kjem ein søndag i august (5.18). Nord-sida opnar seg etter 7. juli 1851 og står open for retur med dampskip. Steilneset kjem i august 1851 (S2.28) og Nord-Troms i juli 1852 (S2.9). Ved den store opninga ligg Ormen i Lofotveggen klar. I juli 1851 står hjellane tomme, for tørrfisken er teken ned og ligg i pakkhuset til handelsmannen. Vågan kyrkje i Kabelvåg er langkyrkja frå 1798, for «Lofotkatedralen» kom i 1898. Bygderegelen er at Ordboka sluttar å fungere når samane talar, og problemet er gjelda: handlaren held fiskarane i boka si, og forkynnaren i naustet talar mot brennevinet. Aasen kjem aldri til Finnmark, og S2.28 i Vardø gjer Ravdna og huldra medan Aasen ventar i Kabelvåg. Fiskeværet og fjøra har sona «Fiskeværa og fjøra» (Høg), pakkhusa «Kjellarane og pakkhusa i handelsstaden» (Vanleg) og Værøy «Fuglefjellet og fjøra på Værøy» (Høg). Trygge stader er rorbuene og naustet i været, Kabelvåg med kyrkja og handelsstaden, hellersteinen, steinbua på Værøy og gjestgiveriet i Bodø. Nord-Troms har to soner frå bolken «Fimbulvinteren: Nord-Troms, Finnmark og Kautokeino, 1852».",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:253"
+  },
+  {
+   "id": "NTR",
+   "namn": "Lofoten og Nord",
+   "fane": "trondelag_og_nord_noreg",
+   "storleik": null,
+   "skildring": "Hovudregion med 19 skjermar og rom: Bodø, fiskeværet under Vågakallen med Kabelvåg like ved, Værøy ute i havet, Nord-Troms og Steilneset i Vardø. Epoken er fimbulvinteren. Fiskeværet er første staden i akten utan snø, med midnattssol låg over havet i juli 1851 (5.15 til 5.17), og naustet kjem ein søndag i august (5.18). Nord-sida opnar seg etter 7. juli 1851 og står open for retur med dampskip. Steilneset kjem i august 1851 (S2.28) og Nord-Troms i juli 1852 (S2.9). Ved den store opninga ligg Ormen i Lofotveggen klar. I juli 1851 står hjellane tomme, for tørrfisken er teken ned og ligg i pakkhuset til handelsmannen. Vågan kyrkje i Kabelvåg er langkyrkja frå 1798, for «Lofotkatedralen» kom i 1898. Bygderegelen er at Ordboka sluttar å fungere når samane talar, og problemet er gjelda: handlaren held fiskarane i boka si, og forkynnaren i naustet talar mot brennevinet. Aasen kjem aldri til Finnmark, og S2.28 i Vardø gjer Ravdna og huldra medan Aasen ventar i Kabelvåg. Fiskeværet og fjøra har sona «Fiskeværa og fjøra» (Høg), pakkhusa «Kjellarane og pakkhusa i handelsstaden» (Vanleg) og Værøy «Fuglefjellet og fjøra på Værøy» (Høg). Trygge stader er rorbuene og naustet i været, Kabelvåg med kyrkja og handelsstaden, hellersteinen, steinbua på Værøy og gjestgiveriet i Bodø. Nord-Troms har to soner frå bolken «Fimbulvinteren: Nord-Troms, Finnmark og Kautokeino, 1852».",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:253"
+  },
+  {
+   "id": "VAR",
+   "namn": "Lofoten og Nord",
+   "fane": "trondelag_og_nord_noreg",
+   "storleik": null,
+   "skildring": "Hovudregion med 19 skjermar og rom: Bodø, fiskeværet under Vågakallen med Kabelvåg like ved, Værøy ute i havet, Nord-Troms og Steilneset i Vardø. Epoken er fimbulvinteren. Fiskeværet er første staden i akten utan snø, med midnattssol låg over havet i juli 1851 (5.15 til 5.17), og naustet kjem ein søndag i august (5.18). Nord-sida opnar seg etter 7. juli 1851 og står open for retur med dampskip. Steilneset kjem i august 1851 (S2.28) og Nord-Troms i juli 1852 (S2.9). Ved den store opninga ligg Ormen i Lofotveggen klar. I juli 1851 står hjellane tomme, for tørrfisken er teken ned og ligg i pakkhuset til handelsmannen. Vågan kyrkje i Kabelvåg er langkyrkja frå 1798, for «Lofotkatedralen» kom i 1898. Bygderegelen er at Ordboka sluttar å fungere når samane talar, og problemet er gjelda: handlaren held fiskarane i boka si, og forkynnaren i naustet talar mot brennevinet. Aasen kjem aldri til Finnmark, og S2.28 i Vardø gjer Ravdna og huldra medan Aasen ventar i Kabelvåg. Fiskeværet og fjøra har sona «Fiskeværa og fjøra» (Høg), pakkhusa «Kjellarane og pakkhusa i handelsstaden» (Vanleg) og Værøy «Fuglefjellet og fjøra på Værøy» (Høg). Trygge stader er rorbuene og naustet i været, Kabelvåg med kyrkja og handelsstaden, hellersteinen, steinbua på Værøy og gjestgiveriet i Bodø. Nord-Troms har to soner frå bolken «Fimbulvinteren: Nord-Troms, Finnmark og Kautokeino, 1852».",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:253"
+  },
+  {
+   "id": "TBV",
+   "namn": "Inne i tingboka i Vardø",
+   "fane": "trondelag_og_nord_noreg",
+   "storleik": "dungeon",
+   "skildring": "Inne i ein tekst, august 1851 (S2.28), om lag 10 til 15 minutt. På 1600-talet blei nærare hundre menneske dømde for trolldom i Finnmark, både norske kvinner og samiske menn og kvinner, og dommane står i tingbøkene. Blekket har halde stemmene deira fast i to hundre år. Ravdna og huldra må vere med, saman med eitt fritt val, og Aasen er ikkje med. Kvar side er eit rettsrom. Dei dømde står fast i skrifta. Ingen kan bruke galdr, og spelaren brukar berre Lytt og Joike. Når ein person har fått snakke, blir teksten på sida bleik. Det finst ingen kamp, ingen tabell, ingen kvilestad, ingen snarveg og ingen boss. Oppdraget er alvorleg og skal ikkje skremme meir enn naudsynt, så ingen dom og inga avretting blir vist, og romma har ingen kister. Dungeonen har seks rom. Utover dei to personane manuset viser, får dei dømde ingen namn og inga eiga line i spelet.",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:300"
+  },
+  {
+   "id": "KAU",
+   "namn": "Kautokeino",
+   "fane": "trondelag_og_nord_noreg",
+   "storleik": null,
+   "skildring": "Småregion med åtte skjermar og eitt rom, berre for Ravdna. Kyrkja på vidda er bygd 1701 til 1703. Ravdna kjem heim i slutten av oktober 1852, og kapittelet hennar går til kvelden 8. november 1852 (6.14 til 6.16). Kapittelet stengjer når det er over. Joiken frå vidda held fram inn i 6.17, der vidda og hybelen i Christiania glir saman. Vinteren 1856 står Ravdna åleine med flokken under nordlyset (7.21). Staden kjem på kartet gjennom Tandberg-kartet. Kyrkjestaden har kyrkja, prestegarden der Hvoslef bur, handelshuset til Ruth og gamma til mora Máret. Gamma til dei vakte ligg utanfor, reingjerdet ligg ved Kautokeinoelva, og vidda strekkjer seg rundt. Regelen er at alt her blir fortalt frå Ravdnas side, og det gjeld for kartet òg. Ravdna er åleine, og kampen mot Gjeldsboka kan ikkje vinnast med styrke. Manuset viser ingen kamp mot menneske og ingen drap på skjermen. Joike er einaste feltevne, og kvar joik har ein pris her: joiken er forboden i kyrkja og fordømd av dei vakte, og folk snur seg bort når ho brukar han. Vidda har sona «Finnmarksvidda kring Kautokeino» (Høg), med aldri meir enn to fiendar. Kyrkjestaden, gammene, prestegarden, handelshuset og reingjerdet har møterate Ingen. Morgonen 8. november er ein sanntidssekvens utan tilfeldige kampar: Ravdna kan hjelpe borna i prestegarden å gøyme seg i fjøset, dra ein skadd mann ut av snøen eller finne Niillas, og ho rekk ikkje alt. Dei to stiane frå valet i 6.15 møtest ved handelshuset.",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:315"
+  }
+ ],
+ "skjermar": [
+  {
+   "id": "TRD-01",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Kalvskinnet og vegen inn frå sør",
+   "innhald_tekst": "Byutkanten der vegen frå Gauldalen kjem inn mellom hagar og låge trehus. Eksersisplassen med Soldaten på eksersisplassen (staden sjekk). Byutkant med møte",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRL-01",
+     "namn": "Gauldalsvegen og Soknedal"
+    },
+    {
+     "til": "TRD-02",
+     "namn": "Torvet og Munkegata"
+    },
+    {
+     "til": "TRD-08",
+     "namn": "Ila og fjøra"
+    }
+   ],
+   "utgangar_tekst": "TRL-01 Gauldalsvegen og Soknedal, TRD-02 Torvet og Munkegata, TRD-08 Ila og fjøra",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:32"
+  },
+  {
+   "id": "TRD-02",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Torvet og Munkegata",
+   "innhald_tekst": "Torvet utan søyle og statue, for Olav Tryggvason-søyla kom i 1921. Munkegata går brei mot domkyrkja, og Stiftsgården står i bybiletet. Første inntrykket frå Dagboka i 1845: folk går langsamt og helsar. Møterate Ingen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRD-01",
+     "namn": "Kalvskinnet"
+    },
+    {
+     "til": "TRD-03",
+     "namn": "Kyrkjegarden og vestfronten"
+    },
+    {
+     "til": "TRD-04",
+     "namn": "Katedralskolen"
+    },
+    {
+     "til": "TRD-06",
+     "namn": "Ravnkloa"
+    },
+    {
+     "til": "TRD-12",
+     "namn": "Bakgarden med hybelen"
+    },
+    {
+     "til": "TRD-13",
+     "namn": "Handelsgatene ved Torvet"
+    }
+   ],
+   "utgangar_tekst": "TRD-01 Kalvskinnet, TRD-03 Kyrkjegarden og vestfronten, TRD-04 Katedralskolen, TRD-06 Ravnkloa, TRD-12 Bakgarden med hybelen, TRD-13 Handelsgatene ved Torvet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:33"
+  },
+  {
+   "id": "TRD-03",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Kyrkjegarden og vestfronten",
+   "innhald_tekst": "Vestfronten av Nidarosdomen i ruin og skipet utan tak. Gravaren står i døra med lykta ei frostnatt i januar 1846 (3.18). Kyrkjebyggjaren står utanfor muren som valfri elitekamp, og i fimbulvinteren står han frosen ved muren han byggjer. Etter 3.18 fortel jenta Maren her at ho har sett ein konge med øks ved brønnen under domkyrkja (S1.40, utløysing). I epilogen står stillas rundt koret og oktogonen, for restaureringa tok til i 1869",
+   "scener": [
+    "s3_18",
+    "S1_40"
+   ],
+   "utgangar": [
+    {
+     "til": "TRD-02",
+     "namn": "Torvet og Munkegata"
+    },
+    {
+     "til": "TRD-04",
+     "namn": "Katedralskolen"
+    },
+    {
+     "til": "TRD-09",
+     "namn": "Brua over Nidelva"
+    },
+    {
+     "til": "NID-01",
+     "namn": "Vestdøra"
+    }
+   ],
+   "utgangar_tekst": "TRD-02 Torvet og Munkegata, TRD-04 Katedralskolen, TRD-09 Brua over Nidelva, NID-01 Vestdøra",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:34"
+  },
+  {
+   "id": "TRD-04",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Katedralskolen",
+   "innhald_tekst": "Skuleplassen ved domkyrkja. Huset til Det Kongelige Norske Videnskabers Selskab ligg i skulen. Møterate Ingen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRD-02",
+     "namn": "Torvet og Munkegata"
+    },
+    {
+     "til": "TRD-03",
+     "namn": "Kyrkjegarden og vestfronten"
+    },
+    {
+     "til": "TRD-04a",
+     "namn": "Rommet til Videnskabers Selskab"
+    }
+   ],
+   "utgangar_tekst": "TRD-02 Torvet og Munkegata, TRD-03 Kyrkjegarden og vestfronten, TRD-04a Rommet til Videnskabers Selskab",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:35"
+  },
+  {
+   "id": "TRD-04a",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Rommet til Videnskabers Selskab",
+   "innhald_tekst": "Høgt rom med bokhyller og ein kakkelomn som ikkje varmar. Reiseberetninga og rekneskapspuslespelet med sekretæren, der tre skilling ligg i lomma til Vinje (3.17). Etter scena kan reiseberetninga lesast her som oversyn over orda frå kvar bygd. Lesestykke: soga om Olav den heilage med slaget på Stiklestad, i Jacob Aalls omsetjing (1838 til 1839)",
+   "scener": [
+    "s3_17"
+   ],
+   "utgangar": [
+    {
+     "til": "TRD-04",
+     "namn": "Katedralskolen"
+    }
+   ],
+   "utgangar_tekst": "TRD-04 Katedralskolen",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra, fimbulvinteren",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:36"
+  },
+  {
+   "id": "TRD-05",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Kjøpmannsgata og sjøhusa",
+   "innhald_tekst": "Sjøhusa står på pålar langs elva, med bryggjer, bakgardar og trange veiter mellom husa. Bryggjer og bakgardar har møte",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRD-02",
+     "namn": "Torvet og Munkegata"
+    },
+    {
+     "til": "TRD-05a",
+     "namn": "Loftet i det tomme sjøhuset"
+    },
+    {
+     "til": "TRD-06",
+     "namn": "Ravnkloa"
+    },
+    {
+     "til": "TRD-09",
+     "namn": "Brua over Nidelva"
+    },
+    {
+     "til": "TRD-12",
+     "namn": "Bakgarden med hybelen"
+    }
+   ],
+   "utgangar_tekst": "TRD-02 Torvet og Munkegata, TRD-05a Loftet i det tomme sjøhuset, TRD-06 Ravnkloa, TRD-09 Brua over Nidelva, TRD-12 Bakgarden med hybelen",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:37"
+  },
+  {
+   "id": "TRD-05a",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Loftet i det tomme sjøhuset",
+   "innhald_tekst": "Eit sjøhus som står tomt, med ein lem opp til loftet (forslag). Inga eigar, så kista her kan opnast. Møterate som kjellarar, Vanleg",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRD-05",
+     "namn": "Kjøpmannsgata og sjøhusa"
+    }
+   ],
+   "utgangar_tekst": "TRD-05 Kjøpmannsgata og sjøhusa",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra, fimbulvinteren",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:38"
+  },
+  {
+   "id": "TRD-06",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Ravnkloa",
+   "innhald_tekst": "Fiskemarknaden ved sjøen. Fiskekonene frå Fosen og Byneset sel fisk og talar kvar sitt mål (stad utan framdrift, 3.17). Fiskarane her seier at det lyser i det gamle fangetårnet på Munkholmen om natta (S1.39, utløysing). Vinteren 1845 til 1846 ligg isen frå fjøra ut mot holmen. Ved den store opninga ligg det isflak i fjøra, og ei fiskekone sel frosen sild. Møterate Ingen",
+   "scener": [
+    "s3_17",
+    "S1_39"
+   ],
+   "utgangar": [
+    {
+     "til": "TRD-02",
+     "namn": "Torvet og Munkegata"
+    },
+    {
+     "til": "TRD-05",
+     "namn": "Kjøpmannsgata og sjøhusa"
+    },
+    {
+     "til": "TRD-07",
+     "namn": "Hamna og dampskipsbrygga"
+    },
+    {
+     "til": "TRD-08",
+     "namn": "Ila og fjøra"
+    },
+    {
+     "til": "MUN-01",
+     "namn": "Isen over fjorden",
+     "merknad": "januar 1846"
+    }
+   ],
+   "utgangar_tekst": "TRD-02 Torvet og Munkegata, TRD-05 Kjøpmannsgata og sjøhusa, TRD-07 Hamna og dampskipsbrygga, TRD-08 Ila og fjøra, MUN-01 Isen over fjorden (januar 1846)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:39"
+  },
+  {
+   "id": "TRD-07",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Hamna og dampskipsbrygga",
+   "innhald_tekst": "Bryggja der «Nordcap» går til Bergen frå 1841 og statsdampskipet «Prinds Gustav» nordover i sommarhalvåret. Båtar går ut fjorden til Beian og langs leia til Nordmøre (overgangen etter 3.18). I juli 1851 er dette einaste opne skjermen i byen, og Nordlandsdampskipet går herifrå til Bodø og Lofoten (overgangen før 5.15). Hamna blir snarveg når historia har vore der",
+   "scener": [
+    "s3_18",
+    "s5_15"
+   ],
+   "utgangar": [
+    {
+     "til": "TRD-06",
+     "namn": "Ravnkloa"
+    },
+    {
+     "til": "TRL-06",
+     "namn": "Beian ved Ørlandet"
+    },
+    {
+     "til": "NMR-06",
+     "namn": "Fiskeværet med naustet"
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "kystleia"
+    },
+    {
+     "til": "LFN-01",
+     "namn": "Bodø: kaia og gata",
+     "merknad": "Nordlandsdampskipet"
+    }
+   ],
+   "utgangar_tekst": "TRD-06 Ravnkloa, TRL-06 Beian ved Ørlandet, NMR-06 Fiskeværet med naustet, Verdskartet (kystleia), LFN-01 Bodø: kaia og gata (Nordlandsdampskipet)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle, og juli 1851",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:40"
+  },
+  {
+   "id": "TRD-08",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Ila og fjøra",
+   "innhald_tekst": "Byutkanten vest for byen, ned mot fjøra ved Ila. Vegen vestover mot Orkdalen byrjar her. I fimbulvinteren står Frostvetten i fjøra ved Ila, Svartbaken ved Ila og Stormen over Trondheimsfjorden her",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRD-01",
+     "namn": "Kalvskinnet"
+    },
+    {
+     "til": "TRD-06",
+     "namn": "Ravnkloa"
+    },
+    {
+     "til": "TRL-02",
+     "namn": "Orkdalsvegen"
+    }
+   ],
+   "utgangar_tekst": "TRD-01 Kalvskinnet, TRD-06 Ravnkloa, TRL-02 Orkdalsvegen",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:41"
+  },
+  {
+   "id": "TRD-09",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Brua over Nidelva",
+   "innhald_tekst": "Trebrua som var vakta byport fram til 1816. Vaktbuene står tomme (forslag). Nøkkelmannen kan dukke opp her på vegen mellom Bakklandet og domkyrkja (3.18). I fimbulvinteren ligg Isvesenet i Nidelva og Oteren i Nidelva under brua. Etter oppgjeret og i epilogen står den nye bybrua frå 1861, den som i dag heiter Gamle Bybro. Brua er lenkja mellom epokane i byen",
+   "scener": [
+    "s3_18"
+   ],
+   "utgangar": [
+    {
+     "til": "TRD-03",
+     "namn": "Kyrkjegarden og vestfronten"
+    },
+    {
+     "til": "TRD-05",
+     "namn": "Kjøpmannsgata og sjøhusa"
+    },
+    {
+     "til": "TRD-10",
+     "namn": "Bakklandet"
+    }
+   ],
+   "utgangar_tekst": "TRD-03 Kyrkjegarden og vestfronten, TRD-05 Kjøpmannsgata og sjøhusa, TRD-10 Bakklandet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:42"
+  },
+  {
+   "id": "TRD-10",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Bakklandet",
+   "innhald_tekst": "Trehus og sjøbuer langs elva. Den gamle mannen på Bakklandet kan eit stev om Olav, og Aasen må lære det av han før brønnen (S1.40). Kusken på Bakklandet køyrer i veitene. I reiseåra har veitene møte og gata framfor gjestgiveriet ingen. I fimbulvinteren er gata trygg, og bakgardane har Frostmusene på Bakklandet og Ikornen på Bakklandet",
+   "scener": [
+    "S1_40"
+   ],
+   "utgangar": [
+    {
+     "til": "TRD-09",
+     "namn": "Brua over Nidelva"
+    },
+    {
+     "til": "TRD-10a",
+     "namn": "Gjestgiveriet på Bakklandet"
+    },
+    {
+     "til": "TRD-10b",
+     "namn": "Sjøbua på Bakklandet"
+    },
+    {
+     "til": "TRD-11",
+     "namn": "Bakken under Kristiansten"
+    }
+   ],
+   "utgangar_tekst": "TRD-09 Brua over Nidelva, TRD-10a Gjestgiveriet på Bakklandet, TRD-10b Sjøbua på Bakklandet, TRD-11 Bakken under Kristiansten",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:43"
+  },
+  {
+   "id": "TRD-10a",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Gjestgiveriet på Bakklandet",
+   "innhald_tekst": "Kvileplass for bønder og skysskarar frå dalane (3.17). Lesestykke: «Trondhjems Adresse-Contoirs Efterretninger», avisa frå 1767. Møterate Ingen",
+   "scener": [
+    "s3_17"
+   ],
+   "utgangar": [
+    {
+     "til": "TRD-10",
+     "namn": "Bakklandet"
+    }
+   ],
+   "utgangar_tekst": "TRD-10 Bakklandet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:44"
+  },
+  {
+   "id": "TRD-10b",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Sjøbua på Bakklandet",
+   "innhald_tekst": "Sjøbua til fiskarane på Bakklandet, med kista der dei legg det dei byter til seg i Nordland. Ventekista VK13 med raud segl på låsen. Lytt: «Båtane er ikkje heime frå Lofoten.»",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRD-10",
+     "namn": "Bakklandet"
+    }
+   ],
+   "utgangar_tekst": "TRD-10 Bakklandet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:45"
+  },
+  {
+   "id": "TRD-11",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Bakken under Kristiansten",
+   "innhald_tekst": "Bratt bakke frå Bakklandet opp mot festninga, som står i bybiletet. Utsyn over byen, domkyrkja og fjorden med Munkholmen. Byutkant med møte. I fimbulvinteren Reven på Kristiansten",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRD-10",
+     "namn": "Bakklandet"
+    }
+   ],
+   "utgangar_tekst": "TRD-10 Bakklandet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:46"
+  },
+  {
+   "id": "TRD-12",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Bakgarden med hybelen",
+   "innhald_tekst": "Ein bakgard ved Kjøpmannsgata, der Aasen leiger rom (staden er forslag). Møterate Ingen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRD-02",
+     "namn": "Torvet og Munkegata"
+    },
+    {
+     "til": "TRD-05",
+     "namn": "Kjøpmannsgata og sjøhusa"
+    },
+    {
+     "til": "TRD-12a",
+     "namn": "Hybelen"
+    }
+   ],
+   "utgangar_tekst": "TRD-02 Torvet og Munkegata, TRD-05 Kjøpmannsgata og sjøhusa, TRD-12a Hybelen",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:47"
+  },
+  {
+   "id": "TRD-12a",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Hybelen",
+   "innhald_tekst": "Losjiet i februar 1846 (Samtale 13, Snøen i Trondheim) og basen vinteren 1846 til 1847. Snøen står i gatelyset, Vinje søv på benken, og huldra sit ved vindauget med beinstykket. Brevet til Amerika (3.23), med brevet frå fiskaren på Nordmøre under om spelaren valde B i 3.21. Lesestykke: Johan Nordahl Brun, «For Norge, Kiempers Fødeland» (1771), på eit ark. Kvile og lagring",
+   "scener": [
+    "s3_23"
+   ],
+   "utgangar": [
+    {
+     "til": "TRD-12",
+     "namn": "Bakgarden med hybelen"
+    }
+   ],
+   "utgangar_tekst": "TRD-12 Bakgarden med hybelen",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:48"
+  },
+  {
+   "id": "TRD-13",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Handelsgatene ved Torvet",
+   "innhald_tekst": "Krambuer, apotek, bokhandel og skreddar i trehus langs ei brannavenye. Møterate Ingen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRD-02",
+     "namn": "Torvet og Munkegata"
+    },
+    {
+     "til": "TRD-13a",
+     "namn": "Apoteket"
+    },
+    {
+     "til": "TRD-13b",
+     "namn": "Bokhandelen"
+    },
+    {
+     "til": "TRD-13c",
+     "namn": "Skreddaren"
+    },
+    {
+     "til": "TRD-13d",
+     "namn": "Krambua"
+    }
+   ],
+   "utgangar_tekst": "TRD-02 Torvet og Munkegata, TRD-13a Apoteket, TRD-13b Bokhandelen, TRD-13c Skreddaren, TRD-13d Krambua",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:49"
+  },
+  {
+   "id": "TRD-13a",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Apoteket",
+   "innhald_tekst": "Svaneapoteket (sjekk)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRD-13",
+     "namn": "Handelsgatene ved Torvet"
+    }
+   ],
+   "utgangar_tekst": "TRD-13 Handelsgatene ved Torvet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:50"
+  },
+  {
+   "id": "TRD-13b",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Bokhandelen",
+   "innhald_tekst": "Bøker og papir",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRD-13",
+     "namn": "Handelsgatene ved Torvet"
+    }
+   ],
+   "utgangar_tekst": "TRD-13 Handelsgatene ved Torvet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:51"
+  },
+  {
+   "id": "TRD-13c",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Skreddaren",
+   "innhald_tekst": "Klede og hovudplagg",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRD-13",
+     "namn": "Handelsgatene ved Torvet"
+    }
+   ],
+   "utgangar_tekst": "TRD-13 Handelsgatene ved Torvet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:52"
+  },
+  {
+   "id": "TRD-13d",
+   "stad": "TRD",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Krambua",
+   "innhald_tekst": "Handelsstad med varer frå byen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRD-13",
+     "namn": "Handelsgatene ved Torvet"
+    }
+   ],
+   "utgangar_tekst": "TRD-13 Handelsgatene ved Torvet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:53"
+  },
+  {
+   "id": "TRL-01",
+   "stad": "TRL",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Gauldalsvegen og Soknedal",
+   "innhald_tekst": "Postvegen ned frå Dovre gjennom Soknedal og Gauldalen, med skysskifte i Soknedal og ein skysskar med gauldalsmål (forslag). Sone: «Postvegane og skogane i Gauldalen, Orkdalen og på Nordmøre». Ulvane i Gauldalen, Elgkua i Gauldalen, og Elgen som gullfiende i skogen. I fimbulvinteren er vegen reiseetappe utan tabell",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Dovrefjell"
+    },
+    {
+     "til": "TRD-01",
+     "namn": "Kalvskinnet"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (Dovrefjell), TRD-01 Kalvskinnet",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra, fimbulvinteren",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva",
+    "9b_postvegane_og_skogane_i_gauldalen_orkdalen_og_paa_nordmore"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:54"
+  },
+  {
+   "id": "TRL-02",
+   "stad": "TRL",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Orkdalsvegen",
+   "innhald_tekst": "Landvegen vestover gjennom Orkdalen mot Surnadal, det eine valet etter 3.18. Skoggaupa i Orkdalen. Same sone som TRL-01",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRD-08",
+     "namn": "Ila og fjøra"
+    },
+    {
+     "til": "NMR-01",
+     "namn": "Surnadal"
+    }
+   ],
+   "utgangar_tekst": "TRD-08 Ila og fjøra, NMR-01 Surnadal",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:55"
+  },
+  {
+   "id": "TRL-03",
+   "stad": "TRL",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Vegen gjennom Innherred",
+   "innhald_tekst": "Postvegen nord frå byen gjennom bygdene til Verdal. I fimbulvinteren sona «Vegane og bygdene i Innherred», med Skrubben (frosen), Lensmannen med panteboka (frosen med tenestejenta) og Elgoksen i Verdal",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "postvegen nordover"
+    },
+    {
+     "til": "TRL-04",
+     "namn": "Kyrkjebakken på Stiklestad"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (postvegen nordover), TRL-04 Kyrkjebakken på Stiklestad",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra, fimbulvinteren",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva",
+    "9c_vegane_og_bygdene_i_innherred"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:56"
+  },
+  {
+   "id": "TRL-04",
+   "stad": "TRL",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Kyrkjebakken på Stiklestad",
+   "innhald_tekst": "Steinkyrkja frå 1100-talet og Olavsstøtta frå 1807. Ved den store opninga fortel klokkaren om slaget på verdalsmål (stad utan framdrift). Møterate Ingen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRL-03",
+     "namn": "Vegen gjennom Innherred"
+    },
+    {
+     "til": "TRL-04a",
+     "namn": "Stiklestad kyrkje"
+    },
+    {
+     "til": "TRL-05",
+     "namn": "Jordet på Stiklestad"
+    }
+   ],
+   "utgangar_tekst": "TRL-03 Vegen gjennom Innherred, TRL-04a Stiklestad kyrkje, TRL-05 Jordet på Stiklestad",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra, fimbulvinteren",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:57"
+  },
+  {
+   "id": "TRL-04a",
+   "stad": "TRL",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Stiklestad kyrkje",
+   "innhald_tekst": "Fristad. I fimbulvinteren kvilestaden før Kongsormen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRL-04",
+     "namn": "Kyrkjebakken på Stiklestad"
+    }
+   ],
+   "utgangar_tekst": "TRL-04 Kyrkjebakken på Stiklestad",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra, fimbulvinteren",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:58"
+  },
+  {
+   "id": "TRL-05",
+   "stad": "TRL",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Jordet på Stiklestad",
+   "innhald_tekst": "Jordet der Olav fall i 1030. Ingen dungeon. Frå 6.13 legg jotunen handa på jorda her, og Kongsormen kjem opp (S2.29, superboss på nivå 53, jotunen må vere med). Snarvegen etter kampen er vegen ned til kyrkja. Frostvetten på Stiklestad og Orrhanen i Innherred i fimbulvinteren",
+   "scener": [
+    "S2_29"
+   ],
+   "utgangar": [
+    {
+     "til": "TRL-04",
+     "namn": "Kyrkjebakken på Stiklestad"
+    }
+   ],
+   "utgangar_tekst": "TRL-04 Kyrkjebakken på Stiklestad",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra (berre jordet), fimbulvinteren",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:59"
+  },
+  {
+   "id": "TRL-06",
+   "stad": "TRL",
+   "omraade": "Trondheim og Trøndelag",
+   "namn": "Beian ved Ørlandet",
+   "innhald_tekst": "Hamna nordover. Partyet kjem hit med båt langs leia frå Nordmøre og går om bord i dampbåten tidleg i september 1846 (3.20). I september 1853, når Kongsormen er slått og Dagboka har lina «Afreist med Dampbaaden fra Beian. Igjen.», byrjar vegen inn i Skipet ned gjennom Folla her (S2.33). Ingen kampar, for sona ved Beian er teken ut",
+   "scener": [
+    "s3_20",
+    "S2_33"
+   ],
+   "utgangar": [
+    {
+     "til": "TRD-07",
+     "namn": "Hamna og dampskipsbrygga"
+    },
+    {
+     "til": "NMR-06",
+     "namn": "Fiskeværet med naustet"
+    },
+    {
+     "til": "DFB-01",
+     "namn": "Midtskipet ved pipa",
+     "merknad": "september 1846"
+    },
+    {
+     "til": null,
+     "namn": "Superbossdungeon Skipet ned gjennom Folla, lag 1",
+     "merknad": "september 1853",
+     "fleire_treff": null
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "kystleia"
+    }
+   ],
+   "utgangar_tekst": "TRD-07 Hamna og dampskipsbrygga, NMR-06 Fiskeværet med naustet, DFB-01 Midtskipet ved pipa (september 1846), Superbossdungeon Skipet ned gjennom Folla, lag 1 (september 1853), Verdskartet (kystleia)",
+   "epokar": [
+    "reiseaara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "Reiseåra (september 1846), september 1853",
+   "soner": [
+    "9b_trondheim_bakgardane_bakklandet_bryggene_og_byutkanten",
+    "9c_bakgardane_og_byutkanten_langs_nidelva"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:60"
+  },
+  {
+   "id": "NMR-01",
+   "stad": "NMR",
+   "omraade": "Nordmøre",
+   "namn": "Surnadal",
+   "innhald_tekst": "Gardane langs elva under Trollheimen. Ein gjetar fortel at ekkoet i fjellet berre svarar på dansk (S1.42, utløysing). Ulvehamen står synleg ved bygda om natta første gong. Sona for postvegane",
+   "scener": [
+    "S1_42"
+   ],
+   "utgangar": [
+    {
+     "til": "TRL-02",
+     "namn": "Orkdalsvegen"
+    },
+    {
+     "til": "NMR-02",
+     "namn": "Setra under Trollheimen"
+    },
+    {
+     "til": "NMR-03",
+     "namn": "Tingvoll"
+    }
+   ],
+   "utgangar_tekst": "TRL-02 Orkdalsvegen, NMR-02 Setra under Trollheimen, NMR-03 Tingvoll",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_postvegane_og_skogane_i_gauldalen_orkdalen_og_paa_nordmore",
+    "9b_nordmorskysten_og_kristiansund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:156"
+  },
+  {
+   "id": "NMR-02",
+   "stad": "NMR",
+   "omraade": "Nordmøre",
+   "namn": "Setra under Trollheimen",
+   "innhald_tekst": "Setra med fjellet over seg. Kallespelet om kvelden med gjetarguten Per Ola: spelaren ropar inn i fjellet til ekkoet har svart rett tre gonger, og huldra lokkar (S1.42). Forslag: Kved att får ekkoet til å hugse heilt, og då gjev det eit gammalt ord til",
+   "scener": [
+    "S1_42"
+   ],
+   "utgangar": [
+    {
+     "til": "NMR-01",
+     "namn": "Surnadal"
+    }
+   ],
+   "utgangar_tekst": "NMR-01 Surnadal",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_postvegane_og_skogane_i_gauldalen_orkdalen_og_paa_nordmore",
+    "9b_nordmorskysten_og_kristiansund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:157"
+  },
+  {
+   "id": "NMR-03",
+   "stad": "NMR",
+   "omraade": "Nordmøre",
+   "namn": "Tingvoll",
+   "innhald_tekst": "Kyrkjestaden med den gamle steinkyrkja og gjestgiveriet (stad utan framdrift, 3.19). Lensmannen med panteboka og Tenestejenta som skal vitne står synlege her som lærarfiendar. Møterate Ingen ved kyrkja",
+   "scener": [
+    "s3_19"
+   ],
+   "utgangar": [
+    {
+     "til": "NMR-01",
+     "namn": "Surnadal"
+    },
+    {
+     "til": "NMR-03a",
+     "namn": "Gjestgiveriet på Tingvoll"
+    },
+    {
+     "til": "NMR-04",
+     "namn": "Kristiansund: kaia",
+     "merknad": "båt over fjorden"
+    }
+   ],
+   "utgangar_tekst": "NMR-01 Surnadal, NMR-03a Gjestgiveriet på Tingvoll, NMR-04 Kristiansund: kaia (båt over fjorden)",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_postvegane_og_skogane_i_gauldalen_orkdalen_og_paa_nordmore",
+    "9b_nordmorskysten_og_kristiansund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:158"
+  },
+  {
+   "id": "NMR-03a",
+   "stad": "NMR",
+   "omraade": "Nordmøre",
+   "namn": "Gjestgiveriet på Tingvoll",
+   "innhald_tekst": "Kvileplass ved kyrkjestaden. Lesestykke: Jens Kraft, «Topographisk-statistisk Beskrivelse over Kongeriget Norge», stykket om Romsdals amt",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "NMR-03",
+     "namn": "Tingvoll"
+    }
+   ],
+   "utgangar_tekst": "NMR-03 Tingvoll",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_postvegane_og_skogane_i_gauldalen_orkdalen_og_paa_nordmore",
+    "9b_nordmorskysten_og_kristiansund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:159"
+  },
+  {
+   "id": "NMR-04",
+   "stad": "NMR",
+   "omraade": "Nordmøre",
+   "namn": "Kristiansund: kaia",
+   "innhald_tekst": "Kaia og handelsstaden. Handelslova av 8. august 1842 heng på kaia, og kjøpmennene les henne høgt (lesestykke). Forslag: post frå Trondheim kjem hit. Møterate Ingen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "NMR-03",
+     "namn": "Tingvoll"
+    },
+    {
+     "til": "NMR-05",
+     "namn": "Klippfiskberga"
+    },
+    {
+     "til": "NMR-06",
+     "namn": "Fiskeværet med naustet"
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "kystleia"
+    }
+   ],
+   "utgangar_tekst": "NMR-03 Tingvoll, NMR-05 Klippfiskberga, NMR-06 Fiskeværet med naustet, Verdskartet (kystleia)",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_postvegane_og_skogane_i_gauldalen_orkdalen_og_paa_nordmore",
+    "9b_nordmorskysten_og_kristiansund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:160"
+  },
+  {
+   "id": "NMR-05",
+   "stad": "NMR",
+   "omraade": "Nordmøre",
+   "namn": "Klippfiskberga",
+   "innhald_tekst": "Berga ved hamna der klippfisken ligg våt i solskin. Klippfiskkjerringa Oline og sjømannen med dei spanske orda (S1.41). Sone: Nordmørskysten og Kristiansund, med Selen og Draugen ved Kristiansund",
+   "scener": [
+    "S1_41"
+   ],
+   "utgangar": [
+    {
+     "til": "NMR-04",
+     "namn": "Kristiansund: kaia"
+    }
+   ],
+   "utgangar_tekst": "NMR-04 Kristiansund: kaia",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_postvegane_og_skogane_i_gauldalen_orkdalen_og_paa_nordmore",
+    "9b_nordmorskysten_og_kristiansund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:161"
+  },
+  {
+   "id": "NMR-06",
+   "stad": "NMR",
+   "omraade": "Nordmøre",
+   "namn": "Fiskeværet med naustet",
+   "innhald_tekst": "Ein gammal mann bøter garn på naustveggen og ser ikkje opp (3.19). Havorda kjem inn i Ordboka, og valet om namnet til broren endrar sjøslaget på Folla. Møterate Ingen. Båtar til Grip og langs leia",
+   "scener": [
+    "s3_19"
+   ],
+   "utgangar": [
+    {
+     "til": "NMR-04",
+     "namn": "Kristiansund: kaia"
+    },
+    {
+     "til": "NMR-07",
+     "namn": "Grip"
+    },
+    {
+     "til": "TRL-06",
+     "namn": "Beian ved Ørlandet",
+     "merknad": "båt langs leia"
+    },
+    {
+     "til": "TRD-07",
+     "namn": "Hamna og dampskipsbrygga",
+     "merknad": "båt inn fjorden"
+    }
+   ],
+   "utgangar_tekst": "NMR-04 Kristiansund: kaia, NMR-07 Grip, TRL-06 Beian ved Ørlandet (båt langs leia), TRD-07 Hamna og dampskipsbrygga (båt inn fjorden)",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_postvegane_og_skogane_i_gauldalen_orkdalen_og_paa_nordmore",
+    "9b_nordmorskysten_og_kristiansund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:162"
+  },
+  {
+   "id": "NMR-07",
+   "stad": "NMR",
+   "omraade": "Nordmøre",
+   "namn": "Grip",
+   "innhald_tekst": "Fiskeværet ute i havet med Grip stavkyrkje midt i været. Fiskarane har eigne ord for kvar båe og kvar straum (stad utan framdrift). Port: berre med båt i godt vêr. Sone: Nordmørskysten, med Sjøørna ved Grip",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "NMR-06",
+     "namn": "Fiskeværet med naustet"
+    }
+   ],
+   "utgangar_tekst": "NMR-06 Fiskeværet med naustet",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_postvegane_og_skogane_i_gauldalen_orkdalen_og_paa_nordmore",
+    "9b_nordmorskysten_og_kristiansund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:163"
+  },
+  {
+   "id": "HLG-01",
+   "stad": "HLG",
+   "omraade": "Helgeland",
+   "namn": "Landingsstaden ved Brønnøy",
+   "innhald_tekst": "Dampbåten set partyet i land på morgonen etter stormen. Ei bryggje, nokre naust og båtar ut til Torghatten og leia. Nisa ved Brønnøy i sona for kysten",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HLG-02",
+     "namn": "Under Torghatten"
+    },
+    {
+     "til": "HLG-03",
+     "namn": "Leia ved Leka og Vega"
+    },
+    {
+     "til": "HLG-06",
+     "namn": "Fjellsenka i Vefsn"
+    },
+    {
+     "til": "TRD-07",
+     "namn": "Hamna og dampskipsbrygga",
+     "merknad": "dampbåt eller jekt sørover, oktober 1846"
+    }
+   ],
+   "utgangar_tekst": "HLG-02 Under Torghatten, HLG-03 Leia ved Leka og Vega, HLG-06 Fjellsenka i Vefsn, TRD-07 Hamna og dampskipsbrygga (dampbåt eller jekt sørover, oktober 1846)",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_kysten_og_holmane_ved_bronnoy_vega_og_leka",
+    "9b_fjellsenka_i_vefsn"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:210"
+  },
+  {
+   "id": "HLG-02",
+   "stad": "HLG",
+   "omraade": "Helgeland",
+   "namn": "Under Torghatten",
+   "innhald_tekst": "Fjellet med holet, som partyet ser frå båten etter Folla (S1.43, utløysing). Inngangen til Holet i Torghatten",
+   "scener": [
+    "S1_43"
+   ],
+   "utgangar": [
+    {
+     "til": "HLG-01",
+     "namn": "Landingsstaden ved Brønnøy"
+    },
+    {
+     "til": "HTG-01",
+     "namn": "Ura under fjellet"
+    }
+   ],
+   "utgangar_tekst": "HLG-01 Landingsstaden ved Brønnøy, HTG-01 Ura under fjellet",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_kysten_og_holmane_ved_bronnoy_vega_og_leka",
+    "9b_fjellsenka_i_vefsn"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:211"
+  },
+  {
+   "id": "HLG-03",
+   "stad": "HLG",
+   "omraade": "Helgeland",
+   "namn": "Leia ved Leka og Vega",
+   "innhald_tekst": "Holmar og skjer, og ærfugl som ligg i lange rader på sjøen. Leka ligg ute. Draugbåten står synleg langs leia første gong. Etter 3.22 byrjar vegen inn i villmarka V9 her",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HLG-01",
+     "namn": "Landingsstaden ved Brønnøy"
+    },
+    {
+     "til": "HLG-04",
+     "namn": "Alstahaug"
+    },
+    {
+     "til": "HKY-01",
+     "namn": "Villmark V9, inngangsvarden",
+     "merknad": "etter 3.22",
+     "slatt_opp": true
+    }
+   ],
+   "utgangar_tekst": "HLG-01 Landingsstaden ved Brønnøy, HLG-04 Alstahaug, Villmark V9, inngangsvarden (etter 3.22)",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_kysten_og_holmane_ved_bronnoy_vega_og_leka",
+    "9b_fjellsenka_i_vefsn"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:212"
+  },
+  {
+   "id": "HLG-04",
+   "stad": "HLG",
+   "omraade": "Helgeland",
+   "namn": "Alstahaug",
+   "innhald_tekst": "Kyrkja og prestegarden der Petter Dass var prest. Folk syng songane hans og talar helgelandsmål (stad utan framdrift). Lesestykke: Petter Dass, «Nordlands Trompet», i prestegarden. Møterate Ingen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HLG-03",
+     "namn": "Leia ved Leka og Vega"
+    },
+    {
+     "til": "HLG-04a",
+     "namn": "Alstahaug kyrkje"
+    },
+    {
+     "til": "HLG-05",
+     "namn": "Mosjøen",
+     "merknad": "båt inn Vefsnfjorden"
+    }
+   ],
+   "utgangar_tekst": "HLG-03 Leia ved Leka og Vega, HLG-04a Alstahaug kyrkje, HLG-05 Mosjøen (båt inn Vefsnfjorden)",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_kysten_og_holmane_ved_bronnoy_vega_og_leka",
+    "9b_fjellsenka_i_vefsn"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:213"
+  },
+  {
+   "id": "HLG-04a",
+   "stad": "HLG",
+   "omraade": "Helgeland",
+   "namn": "Alstahaug kyrkje",
+   "innhald_tekst": "Fristad. Lesestykke: Petter Dass, «Katechismus-Sange» (1715), i benkene",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HLG-04",
+     "namn": "Alstahaug"
+    }
+   ],
+   "utgangar_tekst": "HLG-04 Alstahaug",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_kysten_og_holmane_ved_bronnoy_vega_og_leka",
+    "9b_fjellsenka_i_vefsn"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:214"
+  },
+  {
+   "id": "HLG-05",
+   "stad": "HLG",
+   "omraade": "Helgeland",
+   "namn": "Mosjøen",
+   "innhald_tekst": "Handelsstaden innst i Vefsnfjorden, med kai og nokre hus (stad utan framdrift). Møterate Ingen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HLG-04",
+     "namn": "Alstahaug"
+    },
+    {
+     "til": "HLG-05a",
+     "namn": "Handelsstaden i Mosjøen"
+    },
+    {
+     "til": "HLG-06",
+     "namn": "Fjellsenka i Vefsn"
+    }
+   ],
+   "utgangar_tekst": "HLG-04 Alstahaug, HLG-05a Handelsstaden i Mosjøen, HLG-06 Fjellsenka i Vefsn",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_kysten_og_holmane_ved_bronnoy_vega_og_leka",
+    "9b_fjellsenka_i_vefsn"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:215"
+  },
+  {
+   "id": "HLG-05a",
+   "stad": "HLG",
+   "omraade": "Helgeland",
+   "namn": "Handelsstaden i Mosjøen",
+   "innhald_tekst": "Kvile og handel",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HLG-05",
+     "namn": "Mosjøen"
+    }
+   ],
+   "utgangar_tekst": "HLG-05 Mosjøen",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_kysten_og_holmane_ved_bronnoy_vega_og_leka",
+    "9b_fjellsenka_i_vefsn"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:216"
+  },
+  {
+   "id": "HLG-06",
+   "stad": "HLG",
+   "omraade": "Helgeland",
+   "namn": "Fjellsenka i Vefsn",
+   "innhald_tekst": "Myr og vatn innanfor kysten. Stigar i landskapet som Aasen ikkje ser, og som spelaren ser berre når kameraet følgjer huldra (3.22). Ulvane i Vefsn og Jerven i Vefsn. Forslag frå regionfana: Joike (Ravdna) viser det gøymde her ved den store opninga, og Dagboka merkjer staden med portrettet hennar",
+   "scener": [
+    "s3_22"
+   ],
+   "utgangar": [
+    {
+     "til": "HLG-01",
+     "namn": "Landingsstaden ved Brønnøy"
+    },
+    {
+     "til": "HLG-05",
+     "namn": "Mosjøen"
+    },
+    {
+     "til": "HLG-07",
+     "namn": "Lavvoen ved vatnet"
+    },
+    {
+     "til": "HLG-08",
+     "namn": "Gammen ved fjellfoten"
+    }
+   ],
+   "utgangar_tekst": "HLG-01 Landingsstaden ved Brønnøy, HLG-05 Mosjøen, HLG-07 Lavvoen ved vatnet, HLG-08 Gammen ved fjellfoten",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_kysten_og_holmane_ved_bronnoy_vega_og_leka",
+    "9b_fjellsenka_i_vefsn"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:217"
+  },
+  {
+   "id": "HLG-07",
+   "stad": "HLG",
+   "omraade": "Helgeland",
+   "namn": "Lavvoen ved vatnet",
+   "innhald_tekst": "Lavvoen, rein på beite, den gamle kvinna som skjer i eit bein og guten med reinen (3.22). Huldra set seg ved bålet og omset. Handelsmannen frå dampbåten kjem over myra, og tønna hans blir ståande att utanfor lavvoen. Om kvelden joikar guten mot fjellet. Om morgonen får huldra beinstykket",
+   "scener": [
+    "s3_22"
+   ],
+   "utgangar": [
+    {
+     "til": "HLG-06",
+     "namn": "Fjellsenka i Vefsn"
+    }
+   ],
+   "utgangar_tekst": "HLG-06 Fjellsenka i Vefsn",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_kysten_og_holmane_ved_bronnoy_vega_og_leka",
+    "9b_fjellsenka_i_vefsn"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:218"
+  },
+  {
+   "id": "HLG-08",
+   "stad": "HLG",
+   "omraade": "Helgeland",
+   "namn": "Gammen ved fjellfoten",
+   "innhald_tekst": "Røyk og reinskinn. Elle ber huldra om hjelp med namnet på fjellet, som eit kart frå amtet har gjeve eit norsk namn (S1.44). Val A: kartbladet brenn i elden, og reinen går opp mot fjellet neste morgon. Val B: brevet til amtmannen og hornkniven. Forslag frå regionfana: ved den store opninga har fjellet fått namnet sitt att på kartet om Aasen valde å stryke det norske, og då står reinen der",
+   "scener": [
+    "S1_44"
+   ],
+   "utgangar": [
+    {
+     "til": "HLG-06",
+     "namn": "Fjellsenka i Vefsn"
+    }
+   ],
+   "utgangar_tekst": "HLG-06 Fjellsenka i Vefsn",
+   "epokar": [],
+   "epokar_tekst": "Reiseåra",
+   "soner": [
+    "9b_kysten_og_holmane_ved_bronnoy_vega_og_leka",
+    "9b_fjellsenka_i_vefsn"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:219"
+  },
+  {
+   "id": "LFN-01",
+   "stad": "LFN",
+   "omraade": "Lofoten og Nord",
+   "namn": "Bodø: kaia og gata",
+   "innhald_tekst": "Kjøpstad sidan 1816. Nordlandsdampskipet legg til her (stad utan framdrift). Møterate Ingen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Nordlandsdampskipet til Trondheim"
+    },
+    {
+     "til": "TRD-07",
+     "namn": "Hamna og dampskipsbrygga"
+    },
+    {
+     "til": "LFN-01a",
+     "namn": "Gjestgiveriet i Bodø"
+    },
+    {
+     "til": "LFN-02",
+     "namn": "Kaia og hjellane i fiskeværet",
+     "merknad": "dampskip"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (Nordlandsdampskipet til Trondheim), TRD-07 Hamna og dampskipsbrygga, LFN-01a Gjestgiveriet i Bodø, LFN-02 Kaia og hjellane i fiskeværet (dampskip)",
+   "epokar": [],
+   "epokar_tekst": "Fimbulvinteren",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:259"
+  },
+  {
+   "id": "LFN-01a",
+   "stad": "LFN",
+   "omraade": "Lofoten og Nord",
+   "namn": "Gjestgiveriet i Bodø",
+   "innhald_tekst": "Kvile. Posten frå Christiania ventar her. Lesestykke: Leopold von Buch, «Reise durch Norwegen und Lappland» (1810)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LFN-01",
+     "namn": "Bodø: kaia og gata"
+    }
+   ],
+   "utgangar_tekst": "LFN-01 Bodø: kaia og gata",
+   "epokar": [],
+   "epokar_tekst": "Fimbulvinteren",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:260"
+  },
+  {
+   "id": "LFN-02",
+   "stad": "LFN",
+   "omraade": "Lofoten og Nord",
+   "namn": "Kaia og hjellane i fiskeværet",
+   "innhald_tekst": "Partyet går i land (5.15). Tomme hjellar, måkar og ein båt med samar som talar samisk seg imellom og norsk til handelsmannen. Ein ung prest les om Finnefondet for folk som ikkje høyrer etter. Ordboka blar og stoppar ikkje når samane talar. Rorbuene langs kaia er trygge. Krakeungen står synleg på skjeret utanfor første gong. Vågakallen står over været",
+   "scener": [
+    "s5_15"
+   ],
+   "utgangar": [
+    {
+     "til": "LFN-01",
+     "namn": "Bodø: kaia og gata"
+    },
+    {
+     "til": "LFN-03",
+     "namn": "Krambua til handelsmannen"
+    },
+    {
+     "til": "LFN-04",
+     "namn": "Stranda med bålet"
+    },
+    {
+     "til": "LFN-06",
+     "namn": "Naustet"
+    },
+    {
+     "til": "LFN-07",
+     "namn": "Kabelvåg"
+    },
+    {
+     "til": "LFN-10",
+     "namn": "Værøy",
+     "merknad": "båt"
+    }
+   ],
+   "utgangar_tekst": "LFN-01 Bodø: kaia og gata, LFN-03 Krambua til handelsmannen, LFN-04 Stranda med bålet, LFN-06 Naustet, LFN-07 Kabelvåg, LFN-10 Værøy (båt)",
+   "epokar": [],
+   "epokar_tekst": "Fimbulvinteren",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:261"
+  },
+  {
+   "id": "LFN-03",
+   "stad": "LFN",
+   "omraade": "Lofoten og Nord",
+   "namn": "Krambua til handelsmannen",
+   "innhald_tekst": "Handelsmannen står i døra med ei tønne brennevin på trillebåre og ei tjukk bok under armen, og blekket kjem ut av boka som røyk (5.15). Gjeldsboka blir fiende seinare",
+   "scener": [
+    "s5_15"
+   ],
+   "utgangar": [
+    {
+     "til": "LFN-02",
+     "namn": "Kaia og hjellane i fiskeværet"
+    },
+    {
+     "til": "LFN-03a",
+     "namn": "Pakkhuset og kjellaren"
+    }
+   ],
+   "utgangar_tekst": "LFN-02 Kaia og hjellane i fiskeværet, LFN-03a Pakkhuset og kjellaren",
+   "epokar": [],
+   "epokar_tekst": "Fimbulvinteren",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:262"
+  },
+  {
+   "id": "LFN-03a",
+   "stad": "LFN",
+   "omraade": "Lofoten og Nord",
+   "namn": "Pakkhuset og kjellaren",
+   "innhald_tekst": "Tørrfisken frå hjellane ligg her. Renteskrivaren i fiskeværet og Fiskaren med lotten i boka. Oteren kjem inn frå hjellane etter fisken",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LFN-03",
+     "namn": "Krambua til handelsmannen"
+    }
+   ],
+   "utgangar_tekst": "LFN-03 Krambua til handelsmannen",
+   "epokar": [],
+   "epokar_tekst": "Fimbulvinteren",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:263"
+  },
+  {
+   "id": "LFN-04",
+   "stad": "LFN",
+   "omraade": "Lofoten og Nord",
+   "namn": "Stranda med bålet",
+   "innhald_tekst": "Ravdna sit ved eit bål i fjøra og bøter garn (5.16). Bosskampen Gjeldsbøkene: blekket frå boka til handelsmannen strøymer ned i fjøra, og Ravdna joikar stranda så tidvatnet dreg blekket ut. Ravdna blir med. Seinare står Havfrua ved bålet synleg når partyet har tent bål her om kvelden",
+   "scener": [
+    "s5_16"
+   ],
+   "utgangar": [
+    {
+     "til": "LFN-02",
+     "namn": "Kaia og hjellane i fiskeværet"
+    },
+    {
+     "til": "LFN-05",
+     "namn": "Hellersteinen over været"
+    }
+   ],
+   "utgangar_tekst": "LFN-02 Kaia og hjellane i fiskeværet, LFN-05 Hellersteinen over været",
+   "epokar": [],
+   "epokar_tekst": "Fimbulvinteren",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:264"
+  },
+  {
+   "id": "LFN-05",
+   "stad": "LFN",
+   "omraade": "Lofoten og Nord",
+   "namn": "Hellersteinen over været",
+   "innhald_tekst": "Bålet under midnattssola. Ravdna joikar huldra, og huldra hugsar ravnen på ringen (5.17). Ingen kamp. Kvile ved bålet. Forslag: ein av dei tre joikesteinane i Nordland og Troms (S2.35) ligg her",
+   "scener": [
+    "s5_17",
+    "S2_35"
+   ],
+   "utgangar": [
+    {
+     "til": "LFN-04",
+     "namn": "Stranda med bålet"
+    },
+    {
+     "til": "LFN-08",
+     "namn": "Stigen mot Vågakallen"
+    }
+   ],
+   "utgangar_tekst": "LFN-04 Stranda med bålet, LFN-08 Stigen mot Vågakallen",
+   "epokar": [],
+   "epokar_tekst": "Fimbulvinteren",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:265"
+  },
+  {
+   "id": "LFN-06",
+   "stad": "LFN",
+   "omraade": "Lofoten og Nord",
+   "namn": "Naustet",
+   "innhald_tekst": "Søndagsmøtet: ein samisk lekpredikant talar frå ei tønne (5.18). Bosskampen Brennevinsånda, med predikanten som vernemål. Gjeldsboka brenn på bålet etterpå. Var Berte ikkje med, står komagane til predikanten att i naustet og kan hentast når partyet kjem nord att. Trygt utanom kampen",
+   "scener": [
+    "s5_18"
+   ],
+   "utgangar": [
+    {
+     "til": "LFN-02",
+     "namn": "Kaia og hjellane i fiskeværet"
+    }
+   ],
+   "utgangar_tekst": "LFN-02 Kaia og hjellane i fiskeværet",
+   "epokar": [],
+   "epokar_tekst": "Fimbulvinteren",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:266"
+  },
+  {
+   "id": "LFN-07",
+   "stad": "LFN",
+   "omraade": "Lofoten og Nord",
+   "namn": "Kabelvåg",
+   "innhald_tekst": "Vågan kyrkje, langkyrkja frå 1798 (fristad), og handelsstaden. Fiskarar frå heile Nordland talar breitt nordlandsmål (stad utan framdrift), og ein av dei kallar dønningane noko ingen andre skjønar (S2.34). Aasen ventar her medan Ravdna og huldra er i Vardø (S2.28), og huldra fortel han kva dei høyrde når dei kjem att. Møterate Ingen",
+   "scener": [
+    "S2_34",
+    "S2_28"
+   ],
+   "utgangar": [
+    {
+     "til": "LFN-02",
+     "namn": "Kaia og hjellane i fiskeværet"
+    },
+    {
+     "til": "LFN-07a",
+     "namn": "Handelsstaden i Kabelvåg"
+    },
+    {
+     "til": "VAR-01",
+     "namn": "Steilneset",
+     "merknad": "båt nordover, august 1851"
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "dampskip"
+    }
+   ],
+   "utgangar_tekst": "LFN-02 Kaia og hjellane i fiskeværet, LFN-07a Handelsstaden i Kabelvåg, VAR-01 Steilneset (båt nordover, august 1851), Verdskartet (dampskip)",
+   "epokar": [],
+   "epokar_tekst": "Fimbulvinteren",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:267"
+  },
+  {
+   "id": "LFN-07a",
+   "stad": "LFN",
+   "omraade": "Lofoten og Nord",
+   "namn": "Handelsstaden i Kabelvåg",
+   "innhald_tekst": "Kvile og handel. Lesestykke: Lofotlova av 1816 på veggen. Forslag frå regionfana: etter oppgjeret er plakaten bytt ut med lova frå 1857",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LFN-07",
+     "namn": "Kabelvåg"
+    }
+   ],
+   "utgangar_tekst": "LFN-07 Kabelvåg",
+   "epokar": [],
+   "epokar_tekst": "Fimbulvinteren, etter oppgjeret (forslag)",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:268"
+  },
+  {
+   "id": "LFN-08",
+   "stad": "LFN",
+   "omraade": "Lofoten og Nord",
+   "namn": "Stigen mot Vågakallen",
+   "innhald_tekst": "Stigen opp mot fjellveggen under Vågakallen, kjenneteiknet i regionen (forslag frå dungeonfana). Utmark i sona for fiskeværa",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LFN-05",
+     "namn": "Hellersteinen over været"
+    },
+    {
+     "til": "LFN-09",
+     "namn": "Hellaren i Lofotveggen",
+     "merknad": "etter Kongsormen"
+    }
+   ],
+   "utgangar_tekst": "LFN-05 Hellersteinen over været, LFN-09 Hellaren i Lofotveggen (etter Kongsormen)",
+   "epokar": [
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "Fimbulvinteren, den store opninga",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:269"
+  },
+  {
+   "id": "LFN-09",
+   "stad": "LFN",
+   "omraade": "Lofoten og Nord",
+   "namn": "Hellaren i Lofotveggen",
+   "innhald_tekst": "Drakestaden for Ormen i Lofotveggen (S2.29), nivå 50 med joik og 60 utan. Ormen vil bli joika. Med Ravdna eller alle fem joikesteinane kjem han ut av veggen utan kamp. Utan joik er kampstaden Fjellveggen. Kvilestaden er joikesteinane om dei er samla, elles naustet (LFN-06). Ingen tabell",
+   "scener": [
+    "S2_29"
+   ],
+   "utgangar": [
+    {
+     "til": "LFN-08",
+     "namn": "Stigen mot Vågakallen"
+    }
+   ],
+   "utgangar_tekst": "LFN-08 Stigen mot Vågakallen",
+   "epokar": [
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "Den store opninga, etter Kongsormen",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:270"
+  },
+  {
+   "id": "LFN-10",
+   "stad": "LFN",
+   "omraade": "Lofoten og Nord",
+   "namn": "Værøy: kaia, steinbua og notbua",
+   "innhald_tekst": "Ei lita kai under fuglefjellet. Steinbua er trygg, og mannen frå steinbua kan bli med opp. Notbua sel lasso til Ravdna",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LFN-02",
+     "namn": "Kaia og hjellane i fiskeværet",
+     "merknad": "båt"
+    },
+    {
+     "til": "LFN-11",
+     "namn": "Fuglefjellet på Værøy"
+    }
+   ],
+   "utgangar_tekst": "LFN-02 Kaia og hjellane i fiskeværet (båt), LFN-11 Fuglefjellet på Værøy",
+   "epokar": [],
+   "epokar_tekst": "Fimbulvinteren",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:271"
+  },
+  {
+   "id": "LFN-11",
+   "stad": "LFN",
+   "omraade": "Lofoten og Nord",
+   "namn": "Fuglefjellet på Værøy",
+   "innhald_tekst": "Krykkjene på Værøy og Sjøørna over Vestfjorden. Havørna står synleg første gong når mannen frå steinbua er med, og ho gjev Ørnefjør. Lundehunden er gullfiende og kjem i éin av tjue kampar, og han gjev Seks tær. Forslag: ein joikestein på toppen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LFN-10",
+     "namn": "Værøy: kaia, steinbua og notbua"
+    }
+   ],
+   "utgangar_tekst": "LFN-10 Værøy: kaia, steinbua og notbua",
+   "epokar": [],
+   "epokar_tekst": "Fimbulvinteren",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:272"
+  },
+  {
+   "id": "NTR-01",
+   "stad": "NTR",
+   "omraade": "Lofoten og Nord",
+   "namn": "Fjøra og elvebreidda",
+   "innhald_tekst": "Langs fjorden til krambua og opp elva til gamma (S2.9). Håkjerringa står i fjorden, og Kast verkar ikkje på henne før nokon har kjøpt juksa i krambua. Sone: «Nord-Troms: fjøra og elvebreidda frå krambua til gamma» (Høg). Forslag: ein joikestein ved elva",
+   "scener": [
+    "S2_9"
+   ],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "dampskip"
+    },
+    {
+     "til": "NTR-02",
+     "namn": "Krambua til Heggelund"
+    },
+    {
+     "til": "NTR-03",
+     "namn": "Gamma ved elva"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (dampskip), NTR-02 Krambua til Heggelund, NTR-03 Gamma ved elva",
+   "epokar": [
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "Juli 1852",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy",
+    "9c_nord_troms_fjora_og_elvebreidda_fraa_krambua_til_gamma_s2.9_juli_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:273"
+  },
+  {
+   "id": "NTR-02",
+   "stad": "NTR",
+   "omraade": "Lofoten og Nord",
+   "namn": "Krambua til Heggelund",
+   "innhald_tekst": "Krambua ved fjorden er stengd, og Isak hjelper partyet inn (S2.9.1). Heggelund bak disken med gjeldsboka. Bossen Gjeldsboka hos Heggelund (nivå 40) kallar fram brennevinsånder som stel. Sona «Nord-Troms: krambua og pakkhuset til Heggelund» gjeld fram til bossen. Etterpå er krambua trygg, og Niillas får stemma att",
+   "scener": [
+    "S2_9_1"
+   ],
+   "utgangar": [
+    {
+     "til": "NTR-01",
+     "namn": "Fjøra og elvebreidda"
+    },
+    {
+     "til": "NTR-02a",
+     "namn": "Pakkhuset til Heggelund"
+    }
+   ],
+   "utgangar_tekst": "NTR-01 Fjøra og elvebreidda, NTR-02a Pakkhuset til Heggelund",
+   "epokar": [
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "Juli 1852",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy",
+    "9c_nord_troms_krambua_og_pakkhuset_til_heggelund_s2.9_juli_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:274"
+  },
+  {
+   "id": "NTR-02a",
+   "stad": "NTR",
+   "omraade": "Lofoten og Nord",
+   "namn": "Pakkhuset til Heggelund",
+   "innhald_tekst": "Same sone. Handelskatten, som er trollkatten til Heggelund, og Renteskrivaren hos Heggelund. Oteren kjem inn frå fjøra etter fisken",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "NTR-02",
+     "namn": "Krambua til Heggelund"
+    }
+   ],
+   "utgangar_tekst": "NTR-02 Krambua til Heggelund",
+   "epokar": [
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "Juli 1852",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:275"
+  },
+  {
+   "id": "NTR-03",
+   "stad": "NTR",
+   "omraade": "Lofoten og Nord",
+   "namn": "Gamma ved elva",
+   "innhald_tekst": "Kveld. Niillas sit lenge stille og joikar så Ravdna (S2.9.2). Spelaren gjer ingenting. Valet om kva Aasen skriv i Dagboka. Trygg",
+   "scener": [
+    "S2_9_2"
+   ],
+   "utgangar": [
+    {
+     "til": "NTR-01",
+     "namn": "Fjøra og elvebreidda"
+    }
+   ],
+   "utgangar_tekst": "NTR-01 Fjøra og elvebreidda",
+   "epokar": [
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "Juli 1852",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:276"
+  },
+  {
+   "id": "VAR-01",
+   "stad": "VAR",
+   "omraade": "Lofoten og Nord",
+   "namn": "Steilneset",
+   "innhald_tekst": "Kveld og vind. Ravdna og huldra på neset der dei brende joikarar (S2.28.1). Aasen er ikkje med. Inngangen til tingboka. Ingen kamp. Vardøhus festning står i bybiletet (sjekk). Minnesmerket som står på neset i dag, fanst ikkje og skal ikkje stå på kartet",
+   "scener": [
+    "S2_28_1"
+   ],
+   "utgangar": [
+    {
+     "til": "LFN-07",
+     "namn": "Kabelvåg",
+     "merknad": "båt sørover"
+    },
+    {
+     "til": "TBV-01",
+     "namn": "Permen"
+    }
+   ],
+   "utgangar_tekst": "LFN-07 Kabelvåg (båt sørover), TBV-01 Permen",
+   "epokar": [
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "August 1851",
+   "soner": [
+    "9c_fiskevaera_og_fjora",
+    "9c_kjellarane_og_pakkhusa_i_handelsstaden",
+    "9c_fuglefjellet_og_fjora_paa_vaeroy"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:277"
+  },
+  {
+   "id": "KAU-01",
+   "stad": "KAU",
+   "omraade": "Kautokeino",
+   "namn": "Vidda ned mot kyrkjestaden",
+   "innhald_tekst": "Reinflokkane er på veg ned frå vidda om hausten, og røyken frå gammer og hus står over kyrkjestaden (6.14). Sona for vidda. Forslag: ein av dei to joikesteinane i Finnmark (S2.35)",
+   "scener": [
+    "s6_14",
+    "S2_35"
+   ],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null
+    },
+    {
+     "til": "KAU-02",
+     "namn": "Kyrkjestaden"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet, KAU-02 Kyrkjestaden",
+   "epokar": [
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "Hausten 1852",
+   "soner": [
+    "9c_finnmarksvidda_kring_kautokeino"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:321"
+  },
+  {
+   "id": "KAU-02",
+   "stad": "KAU",
+   "omraade": "Kautokeino",
+   "namn": "Kyrkjestaden",
+   "innhald_tekst": "Kyrkja, gammer og hus rundt ein open plass. Den 8. november ligg ein skadd mann i snøen her, og Ravdna kan dra han ut",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAU-01",
+     "namn": "Vidda ned mot kyrkjestaden"
+    },
+    {
+     "til": "KAU-02a",
+     "namn": "Kautokeino kyrkje"
+    },
+    {
+     "til": "KAU-03",
+     "namn": "Gamma til Máret"
+    },
+    {
+     "til": "KAU-04",
+     "namn": "Handelshuset til Ruth"
+    },
+    {
+     "til": "KAU-05",
+     "namn": "Prestegarden"
+    },
+    {
+     "til": "KAU-06",
+     "namn": "Gamma til dei vakte"
+    },
+    {
+     "til": "KAU-07",
+     "namn": "Reingjerdet ved Kautokeinoelva"
+    }
+   ],
+   "utgangar_tekst": "KAU-01 Vidda ned mot kyrkjestaden, KAU-02a Kautokeino kyrkje, KAU-03 Gamma til Máret, KAU-04 Handelshuset til Ruth, KAU-05 Prestegarden, KAU-06 Gamma til dei vakte, KAU-07 Reingjerdet ved Kautokeinoelva",
+   "epokar": [
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "Hausten 1852, 8. november 1852",
+   "soner": [
+    "9c_finnmarksvidda_kring_kautokeino"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:322"
+  },
+  {
+   "id": "KAU-02a",
+   "stad": "KAU",
+   "omraade": "Kautokeino",
+   "namn": "Kautokeino kyrkje",
+   "innhald_tekst": "Fristad. Joiken er forboden her. Lesestykke: N.V. Stockfleth, Det nye testamentet på samisk (1840), i kyrkjebenken, utan forklarande liner",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAU-02",
+     "namn": "Kyrkjestaden"
+    }
+   ],
+   "utgangar_tekst": "KAU-02 Kyrkjestaden",
+   "epokar": [
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "Hausten 1852",
+   "soner": [
+    "9c_finnmarksvidda_kring_kautokeino"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:323"
+  },
+  {
+   "id": "KAU-03",
+   "stad": "KAU",
+   "omraade": "Kautokeino",
+   "namn": "Gamma til Máret",
+   "innhald_tekst": "Ravdna kjem heim, og elden er liten. Faren søv og har sove sidan handelsmannen var der (6.14). Han vil ikkje bli med til prestegarden",
+   "scener": [
+    "s6_14"
+   ],
+   "utgangar": [
+    {
+     "til": "KAU-02",
+     "namn": "Kyrkjestaden"
+    }
+   ],
+   "utgangar_tekst": "KAU-02 Kyrkjestaden",
+   "epokar": [
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "Hausten 1852",
+   "soner": [
+    "9c_finnmarksvidda_kring_kautokeino"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:324"
+  },
+  {
+   "id": "KAU-04",
+   "stad": "KAU",
+   "omraade": "Kautokeino",
+   "namn": "Handelshuset til Ruth",
+   "innhald_tekst": "Tønner langs veggen og lukta av brennevin og tjære. Ruth bak disken med protokollen. Lensmann Bucht kjem inn. Protokollen opnar seg, og tala reiser seg som svarte insekt: kampen mot Gjeldsboka, som endar når Hvoslef kjem inn etter fjerde runde (6.14). Lesestykke: Knud Leem, «Beskrivelse over Finmarkens Lapper» (1767), og Ravdna kan velje å leggje boka frå seg. Den 8. november møtest stiane her, og huset brenn. Spelaren kan gå mot det, og Ravdna stoppar sjølv",
+   "scener": [
+    "s6_14"
+   ],
+   "utgangar": [
+    {
+     "til": "KAU-02",
+     "namn": "Kyrkjestaden"
+    }
+   ],
+   "utgangar_tekst": "KAU-02 Kyrkjestaden",
+   "epokar": [
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "Hausten 1852, 8. november 1852",
+   "soner": [
+    "9c_finnmarksvidda_kring_kautokeino"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:325"
+  },
+  {
+   "id": "KAU-05",
+   "stad": "KAU",
+   "omraade": "Kautokeino",
+   "namn": "Prestegarden",
+   "innhald_tekst": "Kona til Hvoslef held ei seng til Ravdna og mora gjennom vinteren (stad utan framdrift). Sti B den 8. november byrjar her: presten i gangen og kona med borna, og fjøset der borna kan gøymast. Om kvelden ligg Hvoslef med vindauget på gløtt og høyrer joiken",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAU-02",
+     "namn": "Kyrkjestaden"
+    }
+   ],
+   "utgangar_tekst": "KAU-02 Kyrkjestaden",
+   "epokar": [
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "Hausten 1852, 8. november 1852",
+   "soner": [
+    "9c_finnmarksvidda_kring_kautokeino"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:326"
+  },
+  {
+   "id": "KAU-06",
+   "stad": "KAU",
+   "omraade": "Kautokeino",
+   "namn": "Gamma til dei vakte",
+   "innhald_tekst": "Utanfor kyrkjestaden. Gamma er full, og Ravdna kan snakke med dei vakte ein etter ein om kva dei har mista. Niillas står ved døra. Valet avgjer kvar Ravdna vaknar den 8. november (6.15). Sti A byrjar her",
+   "scener": [
+    "s6_15"
+   ],
+   "utgangar": [
+    {
+     "til": "KAU-02",
+     "namn": "Kyrkjestaden"
+    }
+   ],
+   "utgangar_tekst": "KAU-02 Kyrkjestaden",
+   "epokar": [
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "Hausten 1852, 8. november 1852",
+   "soner": [
+    "9c_finnmarksvidda_kring_kautokeino"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:327"
+  },
+  {
+   "id": "KAU-07",
+   "stad": "KAU",
+   "omraade": "Kautokeino",
+   "namn": "Reingjerdet ved Kautokeinoelva",
+   "innhald_tekst": "Ein gammal reindriftssame fortel om vidda på samisk (stad utan framdrift). Forslag: den andre joikesteinen i Finnmark",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAU-02",
+     "namn": "Kyrkjestaden"
+    },
+    {
+     "til": "KAU-08",
+     "namn": "Vidda utanfor kyrkjestaden"
+    }
+   ],
+   "utgangar_tekst": "KAU-02 Kyrkjestaden, KAU-08 Vidda utanfor kyrkjestaden",
+   "epokar": [
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "Hausten 1852",
+   "soner": [
+    "9c_finnmarksvidda_kring_kautokeino"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:328"
+  },
+  {
+   "id": "KAU-08",
+   "stad": "KAU",
+   "omraade": "Kautokeino",
+   "namn": "Vidda utanfor kyrkjestaden",
+   "innhald_tekst": "Kvelden 8. november går Ravdna ut hit der ingen kan sjå henne, og spelaren må trykkje sjølv for at ho skal byrje å joike (6.16). Det er første gong i kapittelet at joiken ikkje kostar noko. Joiken går vidare inn i 6.17. Vinteren 1856: nordlys, Ravdna åleine med flokken, og teksten viser berre samisk (7.21). Sona for vidda gjeld i hausten 1852",
+   "scener": [
+    "s6_16",
+    "s7_21"
+   ],
+   "utgangar": [
+    {
+     "til": "KAU-07",
+     "namn": "Reingjerdet ved Kautokeinoelva"
+    },
+    {
+     "til": "KAU-02",
+     "namn": "Kyrkjestaden"
+    }
+   ],
+   "utgangar_tekst": "KAU-07 Reingjerdet ved Kautokeinoelva, KAU-02 Kyrkjestaden",
+   "epokar": [
+    "fimbulvinteren",
+    "etter_oppgjeret"
+   ],
+   "epokar_tekst": "Hausten 1852, 8. november 1852, vinteren 1856",
+   "soner": [
+    "9c_finnmarksvidda_kring_kautokeino"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:329"
+  }
+ ],
+ "rom": [
+  {
+   "id": "NID-01",
+   "stad": "NID",
+   "omraade": "Nidarosdomen",
+   "dungeon": "Nidarosdomen",
+   "lag": "Kyrkjerommet",
+   "namn": "Vestdøra",
+   "innhald_tekst": "Gravaren åtvarar partyet i døra og fortel om professoren som målte golvet med snor (3.18). Fristad",
+   "scener": [
+    "s3_18"
+   ],
+   "utgangar": [
+    {
+     "til": "TRD-03",
+     "namn": "Kyrkjegarden og vestfronten"
+    },
+    {
+     "til": "NID-02",
+     "namn": "Skipet i ruin"
+    }
+   ],
+   "utgangar_tekst": "TRD-03 Kyrkjegarden og vestfronten, NID-02 Skipet i ruin",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_nidarosdomen_sakristiet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:95"
+  },
+  {
+   "id": "NID-02",
+   "stad": "NID",
+   "omraade": "Nidarosdomen",
+   "dungeon": "Nidarosdomen",
+   "lag": "Kyrkjerommet",
+   "namn": "Skipet i ruin",
+   "innhald_tekst": "Søyler utan kvelving, månelys gjennom hola og snø på steingolvet. Kvilestaden: kvile og lagring i skipet. Fristad",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "NID-01",
+     "namn": "Vestdøra"
+    },
+    {
+     "til": "NID-03",
+     "namn": "Kryssingen"
+    }
+   ],
+   "utgangar_tekst": "NID-01 Vestdøra, NID-03 Kryssingen",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_nidarosdomen_sakristiet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:96"
+  },
+  {
+   "id": "NID-03",
+   "stad": "NID",
+   "omraade": "Nidarosdomen",
+   "dungeon": "Nidarosdomen",
+   "lag": "Kyrkjerommet",
+   "namn": "Kryssingen",
+   "innhald_tekst": "Kryssingen under tårnet med tverrskipa. Lyttegåta byrjar: kontrollen dirrar svakt når spelaren står stille på golvet. Døra til sakristiet. Fristad",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "NID-02",
+     "namn": "Skipet i ruin"
+    },
+    {
+     "til": "NID-04",
+     "namn": "Koret og oktogonen"
+    },
+    {
+     "til": "NID-06",
+     "namn": "Sakristiet"
+    }
+   ],
+   "utgangar_tekst": "NID-02 Skipet i ruin, NID-04 Koret og oktogonen, NID-06 Sakristiet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_nidarosdomen_sakristiet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:97"
+  },
+  {
+   "id": "NID-04",
+   "stad": "NID",
+   "omraade": "Nidarosdomen",
+   "dungeon": "Nidarosdomen",
+   "lag": "Kyrkjerommet",
+   "namn": "Koret og oktogonen",
+   "innhald_tekst": "Olavsbrønnen ligg under golvet i oktogonen. Lemmen opnar seg i mars 1846, etter at Maren har fortalt om kongen (S1.40). I fimbulvinteren, når Kongsormen er slått, går brønnen ned mot kongsgrava, og vegen inn i S2.31 byrjar her. I epilogen står stillas innanfor murane. Fristad",
+   "scener": [
+    "S1_40"
+   ],
+   "utgangar": [
+    {
+     "til": "NID-03",
+     "namn": "Kryssingen"
+    },
+    {
+     "til": "NID-05",
+     "namn": "Høgkoret"
+    },
+    {
+     "til": "NID-07",
+     "namn": "Kammeret med dei eldste bøkene",
+     "merknad": "snarveg, opna frå andre sida",
+     "snarveg": true
+    },
+    {
+     "til": "OLA-01",
+     "namn": "Lemmen og trappa",
+     "merknad": "frå mars 1846"
+    }
+   ],
+   "utgangar_tekst": "NID-03 Kryssingen, NID-05 Høgkoret, NID-07 Kammeret med dei eldste bøkene (snarveg, opna frå andre sida), OLA-01 Lemmen og trappa (frå mars 1846)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_nidarosdomen_sakristiet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:98"
+  },
+  {
+   "id": "NID-05",
+   "stad": "NID",
+   "omraade": "Nidarosdomen",
+   "dungeon": "Nidarosdomen",
+   "lag": "Kyrkjerommet",
+   "namn": "Høgkoret",
+   "innhald_tekst": "Lyttegåta løyser seg: her slår pulsen som eit hjarte. Huldra legg handa på steinen og seier at kongen ikkje får sove (3.18). Snøen løftar seg ein tomme og legg seg. Ordet ætt. Når partyet går ut, blir avskrifta frå Munch varm i skreppa. Fristad",
+   "scener": [
+    "s3_18"
+   ],
+   "utgangar": [
+    {
+     "til": "NID-04",
+     "namn": "Koret og oktogonen"
+    }
+   ],
+   "utgangar_tekst": "NID-04 Koret og oktogonen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_nidarosdomen_sakristiet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:99"
+  },
+  {
+   "id": "NID-06",
+   "stad": "NID",
+   "omraade": "Nidarosdomen",
+   "dungeon": "Nidarosdomen",
+   "lag": "Sakristiet",
+   "namn": "Sakristiet",
+   "innhald_tekst": "Hyller med gamle kyrkjebøker der kanselliblekket bur. Blekket vaknar, og salmane held det unna. Songen til Landstad gjev eit svakt vern sjølv om han er borte. Forslag: Følgje heim (Landstad) opnar sakristiet utan kamp",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "NID-03",
+     "namn": "Kryssingen"
+    },
+    {
+     "til": "NID-07",
+     "namn": "Kammeret med dei eldste bøkene"
+    }
+   ],
+   "utgangar_tekst": "NID-03 Kryssingen, NID-07 Kammeret med dei eldste bøkene",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_nidarosdomen_sakristiet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:100"
+  },
+  {
+   "id": "NID-07",
+   "stad": "NID",
+   "omraade": "Nidarosdomen",
+   "dungeon": "Nidarosdomen",
+   "lag": "Sakristiet",
+   "namn": "Kammeret med dei eldste bøkene",
+   "innhald_tekst": "Det inste rommet, der blekket er tjukkast. Snarvegen: ei låg dør opnar seg frå innsida og går rett ut i koret",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "NID-06",
+     "namn": "Sakristiet"
+    },
+    {
+     "til": "NID-04",
+     "namn": "Koret og oktogonen",
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "NID-06 Sakristiet, NID-04 Koret og oktogonen (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_nidarosdomen_sakristiet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:101"
+  },
+  {
+   "id": "OLA-01",
+   "stad": "OLA",
+   "omraade": "Olavsbrønnen i 1846",
+   "dungeon": "Olavsbrønnen i 1846",
+   "lag": "Under golvet",
+   "namn": "Lemmen og trappa",
+   "innhald_tekst": "Ei lem i golvet i oktogonen og ei smal steintrapp ned i mørkret. Ingen kamp",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "NID-04",
+     "namn": "Koret og oktogonen"
+    },
+    {
+     "til": "OLA-02",
+     "namn": "Den fuktige gangen"
+    }
+   ],
+   "utgangar_tekst": "NID-04 Koret og oktogonen, OLA-02 Den fuktige gangen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:119"
+  },
+  {
+   "id": "OLA-02",
+   "stad": "OLA",
+   "omraade": "Olavsbrønnen i 1846",
+   "dungeon": "Olavsbrønnen i 1846",
+   "lag": "Under golvet",
+   "namn": "Den fuktige gangen",
+   "innhald_tekst": "Vatnet sig ned murane, og pulsslaget frå kongsgrava høyrest gjennom steinen. Ingen kamp",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "OLA-01",
+     "namn": "Lemmen og trappa"
+    },
+    {
+     "til": "OLA-03",
+     "namn": "Brønnrommet"
+    }
+   ],
+   "utgangar_tekst": "OLA-01 Lemmen og trappa, OLA-03 Brønnrommet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:120"
+  },
+  {
+   "id": "OLA-03",
+   "stad": "OLA",
+   "omraade": "Olavsbrønnen i 1846",
+   "dungeon": "Olavsbrønnen i 1846",
+   "lag": "Under golvet",
+   "namn": "Brønnrommet",
+   "innhald_tekst": "Den tildekte brønnen. Maren ser kongen, og ekkoet seier «Heim» (S1.40). Aasen syng stevet frå Bakklandet, og Landstad kan syngje med om han er med. Ekkoet søkk ned i brønnen. Kvilestaden er brønnen. Løn: ordet kjelde og pilegrimsmerket i bly frå Maren. I fimbulvinteren, når Kongsormen er slått, er rommet den øvste etasjen i S2.31, og brønnen går vidare ned",
+   "scener": [
+    "S1_40"
+   ],
+   "utgangar": [
+    {
+     "til": "OLA-02",
+     "namn": "Den fuktige gangen"
+    },
+    {
+     "til": null,
+     "namn": "Superbossdungeon Olavsbrønnen, etasje 1",
+     "merknad": "fimbulvinteren, etter Kongsormen",
+     "fleire_treff": null
+    }
+   ],
+   "utgangar_tekst": "OLA-02 Den fuktige gangen, Superbossdungeon Olavsbrønnen, etasje 1 (fimbulvinteren, etter Kongsormen)",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:121"
+  },
+  {
+   "id": "MUN-01",
+   "stad": "MUN",
+   "omraade": "Tårnet på Munkholmen",
+   "dungeon": "Tårnet på Munkholmen",
+   "lag": "Fjorden",
+   "namn": "Isen over fjorden",
+   "innhald_tekst": "Isen frå Ravnkloa ut til holmen, med lyset i tårnet framfor. Ingen tilfeldige kampar (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRD-06",
+     "namn": "Ravnkloa"
+    },
+    {
+     "til": "MUN-02",
+     "namn": "Porten"
+    }
+   ],
+   "utgangar_tekst": "TRD-06 Ravnkloa, MUN-02 Porten",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_taarnet_paa_munkholmen_s1.39"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:136"
+  },
+  {
+   "id": "MUN-02",
+   "stad": "MUN",
+   "omraade": "Tårnet på Munkholmen",
+   "dungeon": "Tårnet på Munkholmen",
+   "lag": "Festninga",
+   "namn": "Porten",
+   "innhald_tekst": "Festningsmuren med porten og landgangen. Snøen ligg urørd",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "MUN-01",
+     "namn": "Isen over fjorden"
+    },
+    {
+     "til": "MUN-03",
+     "namn": "Borggarden"
+    }
+   ],
+   "utgangar_tekst": "MUN-01 Isen over fjorden, MUN-03 Borggarden",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_taarnet_paa_munkholmen_s1.39"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:137"
+  },
+  {
+   "id": "MUN-03",
+   "stad": "MUN",
+   "omraade": "Tårnet på Munkholmen",
+   "dungeon": "Tårnet på Munkholmen",
+   "lag": "Festninga",
+   "namn": "Borggarden",
+   "innhald_tekst": "Kvilestaden: brønnen i borggarden, der Aasen rissar kvileruna i karmen (forslag). Sona byrjar her",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "MUN-02",
+     "namn": "Porten"
+    },
+    {
+     "til": "MUN-04",
+     "namn": "Tårnet, første etasje"
+    },
+    {
+     "til": "MUN-06",
+     "namn": "Fangekammeret",
+     "merknad": "snarveg, etter Griffenfeld",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "MUN-02 Porten, MUN-04 Tårnet, første etasje, MUN-06 Fangekammeret (snarveg, etter Griffenfeld)",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_taarnet_paa_munkholmen_s1.39"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:138"
+  },
+  {
+   "id": "MUN-04",
+   "stad": "MUN",
+   "omraade": "Tårnet på Munkholmen",
+   "dungeon": "Tårnet på Munkholmen",
+   "lag": "Tårnet",
+   "namn": "Tårnet, første etasje",
+   "innhald_tekst": "Forordningar flyg langs veggane som papirfuglar med statusen «rettskriven»",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "MUN-03",
+     "namn": "Borggarden"
+    },
+    {
+     "til": "MUN-05",
+     "namn": "Tårnet, andre etasje"
+    }
+   ],
+   "utgangar_tekst": "MUN-03 Borggarden, MUN-05 Tårnet, andre etasje",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_taarnet_paa_munkholmen_s1.39"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:139"
+  },
+  {
+   "id": "MUN-05",
+   "stad": "MUN",
+   "omraade": "Tårnet på Munkholmen",
+   "dungeon": "Tårnet på Munkholmen",
+   "lag": "Tårnet",
+   "namn": "Tårnet, andre etasje",
+   "innhald_tekst": "Skrivarstova. Forordningar i stablar og spikra på veggane, alle med same handskrift",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "MUN-04",
+     "namn": "Tårnet, første etasje"
+    },
+    {
+     "til": "MUN-06",
+     "namn": "Fangekammeret"
+    }
+   ],
+   "utgangar_tekst": "MUN-04 Tårnet, første etasje, MUN-06 Fangekammeret",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_taarnet_paa_munkholmen_s1.39"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:140"
+  },
+  {
+   "id": "MUN-06",
+   "stad": "MUN",
+   "omraade": "Tårnet på Munkholmen",
+   "dungeon": "Tårnet på Munkholmen",
+   "lag": "Tårnet",
+   "namn": "Fangekammeret",
+   "innhald_tekst": "Bossrommet. Griffenfeld ved pulten. Fase ein: forordningane flyg mot partyet. Fase to opnar seg berre om spelaren ikkje går til åtak i tre rundar, og då kan kampen vinnast ved at Aasen lyttar. «Eg spør først.» Løn: ordet spyrja, og fjørpennen frå Griffenfeld om samtalen blir vald. Snarvegen: ei trapp utanpå tårnet ned til borggarden, og isen attende til Ravnkloa. Forslag frå regionfana: lytta Aasen til Griffenfeld, ligg ei siste forordning att her i 1853 med eit nytt ord i margen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "MUN-05",
+     "namn": "Tårnet, andre etasje"
+    },
+    {
+     "til": "MUN-03",
+     "namn": "Borggarden",
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "MUN-05 Tårnet, andre etasje, MUN-03 Borggarden (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9b_taarnet_paa_munkholmen_s1.39"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:141"
+  },
+  {
+   "id": "DFB-01",
+   "stad": "DFB",
+   "omraade": "Folla og Namdalen",
+   "dungeon": "Folla og Namdalen",
+   "lag": "Dekk",
+   "namn": "Midtskipet ved pipa",
+   "innhald_tekst": "Landgangen frå Beian. Dekket er vått av regn, og røyken frå pipa legg seg flatt over sjøen (3.20). Handelsmannen klappar på tønna som er surra til rekka. Når bølgjene byrjar å slå over, skyl dei ein ting ut av veska om spelaren står ved rekka (forslag frå dungeonfana)",
+   "scener": [
+    "s3_20"
+   ],
+   "utgangar": [
+    {
+     "til": "TRL-06",
+     "namn": "Beian ved Ørlandet",
+     "merknad": "før avgang"
+    },
+    {
+     "til": "DFB-02",
+     "namn": "Akterdekket"
+    },
+    {
+     "til": "DFB-03",
+     "namn": "Salongen"
+    },
+    {
+     "til": "DFB-06",
+     "namn": "Fordekket"
+    }
+   ],
+   "utgangar_tekst": "TRL-06 Beian ved Ørlandet (før avgang), DFB-02 Akterdekket, DFB-03 Salongen, DFB-06 Fordekket",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:185"
+  },
+  {
+   "id": "DFB-02",
+   "stad": "DFB",
+   "omraade": "Folla og Namdalen",
+   "dungeon": "Folla og Namdalen",
+   "lag": "Dekk",
+   "namn": "Akterdekket",
+   "innhald_tekst": "Kapteinen ved roret ropar at damene skal gå under dekk. Herifrå høyrest songen ute i mørkret først, og kapteinen seier at det er vinden i riggen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DFB-01",
+     "namn": "Midtskipet ved pipa"
+    }
+   ],
+   "utgangar_tekst": "DFB-01 Midtskipet ved pipa",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:186"
+  },
+  {
+   "id": "DFB-03",
+   "stad": "DFB",
+   "omraade": "Folla og Namdalen",
+   "dungeon": "Folla og Namdalen",
+   "lag": "Under dekk",
+   "namn": "Salongen",
+   "innhald_tekst": "Passasjerane og damene som har gått ned. Kvilestaden: ei vasstønne med kvileruna rissa i staven sidan ein annan reisande gjorde det (forslag frå dungeonfana). Lesestykke: «Almanak for det Aar efter Christi Fødsel 1846» med månefasar og tider for sola. Trappa opp til fordekket er snarvegen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DFB-01",
+     "namn": "Midtskipet ved pipa"
+    },
+    {
+     "til": "DFB-04",
+     "namn": "Lugaren til losen"
+    },
+    {
+     "til": "DFB-05",
+     "namn": "Lasterommet"
+    },
+    {
+     "til": "DFB-06",
+     "namn": "Fordekket",
+     "merknad": "trappa, snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "DFB-01 Midtskipet ved pipa, DFB-04 Lugaren til losen, DFB-05 Lasterommet, DFB-06 Fordekket (trappa, snarveg)",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:187"
+  },
+  {
+   "id": "DFB-04",
+   "stad": "DFB",
+   "omraade": "Folla og Namdalen",
+   "dungeon": "Folla og Namdalen",
+   "lag": "Under dekk",
+   "namn": "Lugaren til losen",
+   "innhald_tekst": "Losen fortel om skjera (stad utan framdrift). Forslag frå regionfana: losen er frå Vikna og talar namdalsmål",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DFB-03",
+     "namn": "Salongen"
+    }
+   ],
+   "utgangar_tekst": "DFB-03 Salongen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:188"
+  },
+  {
+   "id": "DFB-05",
+   "stad": "DFB",
+   "omraade": "Folla og Namdalen",
+   "dungeon": "Folla og Namdalen",
+   "lag": "Under dekk",
+   "namn": "Lasterommet",
+   "innhald_tekst": "Dei seks tønnene til handelsmannen, surra fast. Valfri samtale om kva som er i dei. Huldra trekkjer seg unna",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DFB-03",
+     "namn": "Salongen"
+    }
+   ],
+   "utgangar_tekst": "DFB-03 Salongen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:189"
+  },
+  {
+   "id": "DFB-06",
+   "stad": "DFB",
+   "omraade": "Folla og Namdalen",
+   "dungeon": "Folla og Namdalen",
+   "lag": "Dekk",
+   "namn": "Fordekket",
+   "innhald_tekst": "Bossrommet. Draugen over Folla stig opp av ei bølgje ved sida av båten (3.21), nivå 26, kampstaden Båt, tre fasar. Krenginga byter kvar runde, og bølgjene vaskar over kvar tredje. Mannskapet og handelsmannen er vernemål. Val A skriv draugen ned, val B seier namnet Anders Nilsen (berre etter 3.19), og val C kjempar til han søkk. Etterpå: morgon, stille sjø, og handelsmannen tel tønnene. Val C lèt sideoppdraget «Songen over Folla» stå ope. Løn: ordet storm",
+   "scener": [
+    "s3_21",
+    "s3_19"
+   ],
+   "utgangar": [
+    {
+     "til": "DFB-01",
+     "namn": "Midtskipet ved pipa"
+    },
+    {
+     "til": "DFB-03",
+     "namn": "Salongen",
+     "merknad": "snarveg",
+     "snarveg": true
+    },
+    {
+     "til": "HLG-01",
+     "namn": "Landingsstaden ved Brønnøy",
+     "merknad": "etter 3.21"
+    }
+   ],
+   "utgangar_tekst": "DFB-01 Midtskipet ved pipa, DFB-03 Salongen (snarveg), HLG-01 Landingsstaden ved Brønnøy (etter 3.21)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:190"
+  },
+  {
+   "id": "HTG-01",
+   "stad": "HTG",
+   "omraade": "Holet i Torghatten",
+   "dungeon": "Holet i Torghatten",
+   "lag": "Fjellsida",
+   "namn": "Ura under fjellet",
+   "innhald_tekst": "Store steinar og lyng nedst under holet. Klatringa byrjar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HLG-02",
+     "namn": "Under Torghatten"
+    },
+    {
+     "til": "HTG-02",
+     "namn": "Hellaren i ura"
+    }
+   ],
+   "utgangar_tekst": "HLG-02 Under Torghatten, HTG-02 Hellaren i ura",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:239"
+  },
+  {
+   "id": "HTG-02",
+   "stad": "HTG",
+   "omraade": "Holet i Torghatten",
+   "dungeon": "Holet i Torghatten",
+   "lag": "Fjellsida",
+   "namn": "Hellaren i ura",
+   "innhald_tekst": "Kvilestaden: ein hellar med kvilerune (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HTG-01",
+     "namn": "Ura under fjellet"
+    },
+    {
+     "til": "HTG-03",
+     "namn": "Hyllene"
+    }
+   ],
+   "utgangar_tekst": "HTG-01 Ura under fjellet, HTG-03 Hyllene",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:240"
+  },
+  {
+   "id": "HTG-03",
+   "stad": "HTG",
+   "omraade": "Holet i Torghatten",
+   "dungeon": "Holet i Torghatten",
+   "lag": "Fjellsida",
+   "namn": "Hyllene",
+   "innhald_tekst": "Klatring langs smale hyller opp mot holet. Gygra som ventar på sola står synleg på hylla",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HTG-02",
+     "namn": "Hellaren i ura"
+    },
+    {
+     "til": "HTG-04",
+     "namn": "Den første munninga"
+    }
+   ],
+   "utgangar_tekst": "HTG-02 Hellaren i ura, HTG-04 Den første munninga",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:241"
+  },
+  {
+   "id": "HTG-04",
+   "stad": "HTG",
+   "omraade": "Holet i Torghatten",
+   "dungeon": "Holet i Torghatten",
+   "lag": "Holet",
+   "namn": "Den første munninga",
+   "innhald_tekst": "Opninga av holet. Gjennom fjellet ser ein havet på den andre sida",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HTG-03",
+     "namn": "Hyllene"
+    },
+    {
+     "til": "HTG-05",
+     "namn": "Inne i holet"
+    }
+   ],
+   "utgangar_tekst": "HTG-03 Hyllene, HTG-05 Inne i holet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:242"
+  },
+  {
+   "id": "HTG-05",
+   "stad": "HTG",
+   "omraade": "Holet i Torghatten",
+   "dungeon": "Holet i Torghatten",
+   "lag": "Holet",
+   "namn": "Inne i holet",
+   "innhald_tekst": "Runegåta. Når sola skin gjennom holet, talar steinen med stemmene til Hestmannen og Lekamøya. Runene er hogne feil. Ei lita teikning av ein fugl over ei bok er skrapa i steinen ved sida av, og spelaren kan leggje merke til henne eller la vere. Val A: Aasen skrapar runene vekk, og fjellet blir stille. Val B: Aasen rettar dei, og Hestmannen seier eitt namn før han sovnar att. Løn: runa Sol gjennom stein",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HTG-04",
+     "namn": "Den første munninga"
+    },
+    {
+     "til": "HTG-06",
+     "namn": "Den andre munninga"
+    }
+   ],
+   "utgangar_tekst": "HTG-04 Den første munninga, HTG-06 Den andre munninga",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:243"
+  },
+  {
+   "id": "HTG-06",
+   "stad": "HTG",
+   "omraade": "Holet i Torghatten",
+   "dungeon": "Holet i Torghatten",
+   "lag": "Holet",
+   "namn": "Den andre munninga",
+   "innhald_tekst": "Utsyn mot Leka. Snarvegen: ein sti ned på andre sida av fjellet til foten (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HTG-05",
+     "namn": "Inne i holet"
+    },
+    {
+     "til": "HLG-02",
+     "namn": "Under Torghatten",
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "HTG-05 Inne i holet, HLG-02 Under Torghatten (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:244"
+  },
+  {
+   "id": "TBV-01",
+   "stad": "TBV",
+   "omraade": "Inne i tingboka i Vardø",
+   "dungeon": "Inne i tingboka i Vardø",
+   "lag": "Inngangen",
+   "namn": "Permen",
+   "innhald_tekst": "Boka opnar seg på neset, og gruppa går inn mellom permane. Skrifta er landskapet",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VAR-01",
+     "namn": "Steilneset"
+    },
+    {
+     "til": "TBV-02",
+     "namn": "Den første sida"
+    }
+   ],
+   "utgangar_tekst": "VAR-01 Steilneset, TBV-02 Den første sida",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:306"
+  },
+  {
+   "id": "TBV-02",
+   "stad": "TBV",
+   "omraade": "Inne i tingboka i Vardø",
+   "dungeon": "Inne i tingboka i Vardø",
+   "lag": "Rettsrom",
+   "namn": "Den første sida",
+   "innhald_tekst": "Ei kvinne står i ein rettssal av blekk, og skrivaren sit ved bordet og skriv det han har bestemt seg for. KVINNA: «Eg sa at vinden snudde. Eg sa ikkje at eg snudde han.» Huldra seier at ho ber det heim til ein som lyttar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TBV-01",
+     "namn": "Permen"
+    },
+    {
+     "til": "TBV-03",
+     "namn": "Sidene med dei norske kvinnene"
+    }
+   ],
+   "utgangar_tekst": "TBV-01 Permen, TBV-03 Sidene med dei norske kvinnene",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:307"
+  },
+  {
+   "id": "TBV-03",
+   "stad": "TBV",
+   "omraade": "Inne i tingboka i Vardø",
+   "dungeon": "Inne i tingboka i Vardø",
+   "lag": "Rettsrom",
+   "namn": "Sidene med dei norske kvinnene",
+   "innhald_tekst": "Fleire rettsrom etter kvarandre, kvart med ein dømd som står fast i skrifta. Lytt lèt dei seie det dei ikkje fekk seie i retten",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TBV-02",
+     "namn": "Den første sida"
+    },
+    {
+     "til": "TBV-04",
+     "namn": "Sida med den samiske mannen"
+    }
+   ],
+   "utgangar_tekst": "TBV-02 Den første sida, TBV-04 Sida med den samiske mannen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:308"
+  },
+  {
+   "id": "TBV-04",
+   "stad": "TBV",
+   "omraade": "Inne i tingboka i Vardø",
+   "dungeon": "Inne i tingboka i Vardø",
+   "lag": "Rettsrom",
+   "namn": "Sida med den samiske mannen",
+   "innhald_tekst": "Ravdna joikar for han. Huldra omset ikkje og seier berre: «Dette er hans.»",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TBV-03",
+     "namn": "Sidene med dei norske kvinnene"
+    },
+    {
+     "til": "TBV-05",
+     "namn": "Sidene med dei samiske dømde"
+    }
+   ],
+   "utgangar_tekst": "TBV-03 Sidene med dei norske kvinnene, TBV-05 Sidene med dei samiske dømde",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:309"
+  },
+  {
+   "id": "TBV-05",
+   "stad": "TBV",
+   "omraade": "Inne i tingboka i Vardø",
+   "dungeon": "Inne i tingboka i Vardø",
+   "lag": "Rettsrom",
+   "namn": "Sidene med dei samiske dømde",
+   "innhald_tekst": "Fleire rettsrom der Joike og Lytt gjer arbeidet. Teksten blir bleik side for side",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TBV-04",
+     "namn": "Sida med den samiske mannen"
+    },
+    {
+     "til": "TBV-06",
+     "namn": "Den siste sida"
+    }
+   ],
+   "utgangar_tekst": "TBV-04 Sida med den samiske mannen, TBV-06 Den siste sida",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:310"
+  },
+  {
+   "id": "TBV-06",
+   "stad": "TBV",
+   "omraade": "Inne i tingboka i Vardø",
+   "dungeon": "Inne i tingboka i Vardø",
+   "lag": "Bakpermen",
+   "namn": "Den siste sida",
+   "innhald_tekst": "Val A: huldra lukkar tingboka, og Ravdna legg ein stein på henne, så stemmene får kvile. Val B: gruppa tek tingboka med til Aasen, og ho blir ein ekstra fase i Kanselliarkivet (S2.30). Løn: Steinen frå Steilneset",
+   "scener": [
+    "S2_30"
+   ],
+   "utgangar": [
+    {
+     "til": "TBV-05",
+     "namn": "Sidene med dei samiske dømde"
+    },
+    {
+     "til": "VAR-01",
+     "namn": "Steilneset"
+    }
+   ],
+   "utgangar_tekst": "TBV-05 Sidene med dei samiske dømde, VAR-01 Steilneset",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:311"
+  }
+ ],
+ "kister": [
+  {
+   "id": "K-TRD-05-1",
+   "skjerm": "TRD-05",
+   "behaldar": "Ei tønne under bryggja",
+   "innhald": [
+    {
+     "pengar": 80
+    }
+   ],
+   "kjelde_tekst": "80 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:66"
+  },
+  {
+   "id": "K-TRD-05a-1",
+   "skjerm": "TRD-05a",
+   "behaldar": "Ei kiste på loftet",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut, 1 luktesalt",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:67"
+  },
+  {
+   "id": "K-TRD-06-1",
+   "skjerm": "TRD-06",
+   "behaldar": "Ei fiskekasse i fjøra",
+   "innhald": [
+    {
+     "ting": "kaffi",
+     "tal": 2
+    },
+    {
+     "ting": "einer",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kaffi, 2 einer",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:68"
+  },
+  {
+   "id": "K-TRD-07-1",
+   "skjerm": "TRD-07",
+   "behaldar": "Ein sekk ved pakkhusveggen",
+   "innhald": [
+    {
+     "ting": "messingkompass",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Messingkompass",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:69"
+  },
+  {
+   "id": "K-TRD-08-1",
+   "skjerm": "TRD-08",
+   "behaldar": "Ei gøymsle under ein stein i fjøra",
+   "innhald": [
+    {
+     "ting": "ullsokkar",
+     "tal": 2
+    },
+    {
+     "ting": "kjotsuppe",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 ullsokkar, 1 kjøtsuppe",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Kjem fram med Lytt",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:70"
+  },
+  {
+   "id": "K-TRD-09-1",
+   "skjerm": "TRD-09",
+   "behaldar": "Ein sekk under brukaret",
+   "innhald": [
+    {
+     "pengar": 120
+    }
+   ],
+   "kjelde_tekst": "1 spd",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:71"
+  },
+  {
+   "id": "K-TRD-10b-1",
+   "skjerm": "TRD-10b",
+   "behaldar": "Kista til fiskarane",
+   "innhald": [],
+   "kjelde_tekst": "Sjå VK13",
+   "tid": [
+    "T2",
+    "T4"
+   ],
+   "tid_tekst": "T2, T4",
+   "ventekiste": "VK13",
+   "merknad": "VK13",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:72"
+  },
+  {
+   "id": "K-TRD-11-1",
+   "skjerm": "TRD-11",
+   "behaldar": "Ein varde i bakken",
+   "innhald": [
+    {
+     "ting": "revskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Revskinn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:73"
+  },
+  {
+   "id": "K-TRD-12a-1",
+   "skjerm": "TRD-12a",
+   "behaldar": "Skuffa under vindauget",
+   "innhald": [
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kaffi med kandis",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Rommet til Aasen",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:74"
+  },
+  {
+   "id": "K-TRL-01-1",
+   "skjerm": "TRL-01",
+   "behaldar": "Ein sekk under ei gran ved vegen",
+   "innhald": [
+    {
+     "ting": "gaupeskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gaupeskinn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:75"
+  },
+  {
+   "id": "K-TRL-05-1",
+   "skjerm": "TRL-05",
+   "behaldar": "Ein varde i kanten av jordet",
+   "innhald": [
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    },
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "1 kamferdropar, 2 kjøtsuppe",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:76"
+  },
+  {
+   "id": "K-NID-02-1",
+   "skjerm": "NID-02",
+   "behaldar": "Ei krukke under snøen ved ein søylefot",
+   "innhald": [
+    {
+     "ting": "gamle_myntar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamle myntar",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:107"
+  },
+  {
+   "id": "K-NID-02-2",
+   "skjerm": "NID-02",
+   "behaldar": "Eit skrin i ein murnisje i skipet",
+   "innhald": [
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    },
+    {
+     "ting": "ullsokkar",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "1 kamferdropar, 2 ullsokkar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Står berre i fimbulvinteren",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:108"
+  },
+  {
+   "id": "K-NID-03-1",
+   "skjerm": "NID-03",
+   "behaldar": "Ei kiste i tverrskipet",
+   "innhald": [
+    {
+     "ting": "tjore",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 tjøre, 1 luktesalt",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:109"
+  },
+  {
+   "id": "K-NID-06-1",
+   "skjerm": "NID-06",
+   "behaldar": "Ei skuffe i skrivepulten",
+   "innhald": [
+    {
+     "ting": "honningvatn",
+     "tal": 2
+    },
+    {
+     "ting": "hoffmannsdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 honningvatn, 1 hoffmannsdropar",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:110"
+  },
+  {
+   "id": "K-NID-07-1",
+   "skjerm": "NID-07",
+   "behaldar": "Ei kiste under den nedste hylla",
+   "innhald": [
+    {
+     "ting": "kopparlur",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Kopparlur",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:111"
+  },
+  {
+   "id": "K-OLA-01-1",
+   "skjerm": "OLA-01",
+   "behaldar": "Ei krukke på trappeavsatsen",
+   "innhald": [
+    {
+     "ting": "kaffi",
+     "tal": 2
+    },
+    {
+     "ting": "rommegraut",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi, 1 rømmegraut",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:125"
+  },
+  {
+   "id": "K-OLA-02-1",
+   "skjerm": "OLA-02",
+   "behaldar": "Ein nisje i muren",
+   "innhald": [
+    {
+     "ting": "hoffmannsdropar",
+     "tal": 2
+    },
+    {
+     "ting": "honningvatn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 hoffmannsdropar, 1 honningvatn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:126"
+  },
+  {
+   "id": "K-OLA-02-2",
+   "skjerm": "OLA-02",
+   "behaldar": "Ein skinnpung på ein stein",
+   "innhald": [
+    {
+     "pengar": 80
+    }
+   ],
+   "kjelde_tekst": "80 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:127"
+  },
+  {
+   "id": "K-OLA-03-1",
+   "skjerm": "OLA-03",
+   "behaldar": "Ein nisje ved brønnkanten",
+   "innhald": [
+    {
+     "ting": "gamle_myntar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamle myntar",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Kjem fram med Lytt",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:128"
+  },
+  {
+   "id": "K-MUN-02-1",
+   "skjerm": "MUN-02",
+   "behaldar": "Ei kasse inntil muren",
+   "innhald": [
+    {
+     "ting": "spekekjot",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 spekekjøt",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:145"
+  },
+  {
+   "id": "K-MUN-04-1",
+   "skjerm": "MUN-04",
+   "behaldar": "Ei kiste under trappa",
+   "innhald": [
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi med kandis, 1 luktesalt",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:146"
+  },
+  {
+   "id": "K-MUN-05-1",
+   "skjerm": "MUN-05",
+   "behaldar": "Ei skuffe i skrivepulten",
+   "innhald": [
+    {
+     "pengar": 80
+    }
+   ],
+   "kjelde_tekst": "80 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:147"
+  },
+  {
+   "id": "K-MUN-05-2",
+   "skjerm": "MUN-05",
+   "behaldar": "Eit skrin bak ein stabel forordningar",
+   "innhald": [
+    {
+     "ting": "bjornetann",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Bjørnetann på band",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:148"
+  },
+  {
+   "id": "K-NMR-01-1",
+   "skjerm": "NMR-01",
+   "behaldar": "Ein sekk i ei forlaten løe ved vegen",
+   "innhald": [
+    {
+     "ting": "gaupeskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gaupeskinn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:169"
+  },
+  {
+   "id": "K-NMR-02-1",
+   "skjerm": "NMR-02",
+   "behaldar": "Ein varde på stølsvegen",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "honningvatn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut, 1 honningvatn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:170"
+  },
+  {
+   "id": "K-NMR-05-1",
+   "skjerm": "NMR-05",
+   "behaldar": "Ei tønne mellom berga",
+   "innhald": [
+    {
+     "ting": "kaffi",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi, 1 luktesalt",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:171"
+  },
+  {
+   "id": "K-NMR-07-1",
+   "skjerm": "NMR-07",
+   "behaldar": "Ei gøymsle under ein stein i fjøra",
+   "innhald": [
+    {
+     "pengar": 80
+    }
+   ],
+   "kjelde_tekst": "80 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:172"
+  },
+  {
+   "id": "K-DFB-01-1",
+   "skjerm": "DFB-01",
+   "behaldar": "Ei kasse som har slite seg laus ved pipa",
+   "innhald": [
+    {
+     "ting": "spekekjot",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 spekekjøt",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Berre i 3.20, før stormen",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:194"
+  },
+  {
+   "id": "K-DFB-03-1",
+   "skjerm": "DFB-03",
+   "behaldar": "Ei skuffe under benken i salongen",
+   "innhald": [
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi med kandis, 1 luktesalt",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:195"
+  },
+  {
+   "id": "K-DFB-05-1",
+   "skjerm": "DFB-05",
+   "behaldar": "Ein sekk utan merke bak tønnene",
+   "innhald": [
+    {
+     "ting": "einerstokk",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Einerstokk",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:196"
+  },
+  {
+   "id": "K-DFB-06-1",
+   "skjerm": "DFB-06",
+   "behaldar": "Ei kiste som stormen har skylt om bord (forslag)",
+   "innhald": [
+    {
+     "ting": "gamle_myntar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamle myntar",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Står der morgonen etter 3.21",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:197"
+  },
+  {
+   "id": "K-HLG-02-1",
+   "skjerm": "HLG-02",
+   "behaldar": "Ei gøymsle under ein stein i fjøra",
+   "innhald": [
+    {
+     "ting": "spekekjot",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 spekekjøt, 1 luktesalt",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:225"
+  },
+  {
+   "id": "K-HLG-03-1",
+   "skjerm": "HLG-03",
+   "behaldar": "Ein varde på ein holme",
+   "innhald": [
+    {
+     "ting": "dun",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Dun",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Lytt finn holmen",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:226"
+  },
+  {
+   "id": "K-HLG-06-1",
+   "skjerm": "HLG-06",
+   "behaldar": "Ein varde ved myrkanten",
+   "innhald": [
+    {
+     "ting": "bergkrystall",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Bergkrystall",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:227"
+  },
+  {
+   "id": "K-HTG-01-1",
+   "skjerm": "HTG-01",
+   "behaldar": "Ei gøymsle mellom steinane",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "kaffi",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut, 1 kaffi",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:248"
+  },
+  {
+   "id": "K-HTG-03-1",
+   "skjerm": "HTG-03",
+   "behaldar": "Ein sprekk i berget",
+   "innhald": [
+    {
+     "ting": "bergkrystall",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Bergkrystall",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:249"
+  },
+  {
+   "id": "K-HTG-04-1",
+   "skjerm": "HTG-04",
+   "behaldar": "Ein skinnpung under ein stein",
+   "innhald": [
+    {
+     "pengar": 80
+    }
+   ],
+   "kjelde_tekst": "80 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:250"
+  },
+  {
+   "id": "K-HTG-06-1",
+   "skjerm": "HTG-06",
+   "behaldar": "Ein varde ved munninga",
+   "innhald": [
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kaffi med kandis",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:251"
+  },
+  {
+   "id": "K-LFN-02-1",
+   "skjerm": "LFN-02",
+   "behaldar": "Ei kasse under kaia",
+   "innhald": [
+    {
+     "ting": "spekekjot",
+     "tal": 2
+    },
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 spekekjøt, 2 kaffi med kandis",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:283"
+  },
+  {
+   "id": "K-LFN-04-1",
+   "skjerm": "LFN-04",
+   "behaldar": "Ei gøymsle i drivveden",
+   "innhald": [
+    {
+     "ting": "luktesalt",
+     "tal": 2
+    },
+    {
+     "ting": "lusekam",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 luktesalt, 1 lusekam",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:284"
+  },
+  {
+   "id": "K-LFN-05-1",
+   "skjerm": "LFN-05",
+   "behaldar": "Ein varde ved hellersteinen",
+   "innhald": [
+    {
+     "ting": "ullvottar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Ullvottar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:285"
+  },
+  {
+   "id": "K-LFN-08-1",
+   "skjerm": "LFN-08",
+   "behaldar": "Ein varde ved stigen",
+   "innhald": [
+    {
+     "pengar": 110
+    }
+   ],
+   "kjelde_tekst": "110 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:286"
+  },
+  {
+   "id": "K-LFN-09-1",
+   "skjerm": "LFN-09",
+   "behaldar": "Ei kiste i botnen av hellaren",
+   "innhald": [
+    {
+     "ting": "solvskje",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Sølvskei",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Den store opninga",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:287"
+  },
+  {
+   "id": "K-LFN-11-1",
+   "skjerm": "LFN-11",
+   "behaldar": "Ei gøymsle under ein stein på toppen",
+   "innhald": [
+    {
+     "ting": "reiseskreppa",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Reiseskreppa",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:288"
+  },
+  {
+   "id": "K-NTR-01-1",
+   "skjerm": "NTR-01",
+   "behaldar": "Ei kasse i fjøra",
+   "innhald": [
+    {
+     "ting": "ullsokkar",
+     "tal": 2
+    },
+    {
+     "ting": "kjotsuppe",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 ullsokkar, 1 kjøtsuppe",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:289"
+  },
+  {
+   "id": "K-NTR-01-2",
+   "skjerm": "NTR-01",
+   "behaldar": "Ein varde ved elvebreidda",
+   "innhald": [
+    {
+     "ting": "bjorneskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Bjørneskinn",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:290"
+  },
+  {
+   "id": "K-KAU-01-1",
+   "skjerm": "KAU-01",
+   "behaldar": "Ein varde ved slepa ned frå vidda",
+   "innhald": [
+    {
+     "ting": "spekekjot",
+     "tal": 2
+    },
+    {
+     "ting": "ullsokkar",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 spekekjøt, 2 ullsokkar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Hausten 1852, før 8. november",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:335"
+  },
+  {
+   "id": "K-KAU-08-1",
+   "skjerm": "KAU-08",
+   "behaldar": "Ei gøymsle under ein stein på vidda",
+   "innhald": [
+    {
+     "ting": "ullvottar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Ullvottar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Hausten 1852, før 8. november",
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:336"
+  }
+ ],
+ "butikkar": [
+  {
+   "skjerm": "TRD-10a",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri, kvile 8 s per figur",
+   "kven": "Verten",
+   "ekstra": [
+    "kjotsuppe",
+    "kaffikjelen",
+    "ullsokkar"
+   ],
+   "ekstra_tekst": "Varene til typen. Frå T4 kjøtsuppe, kaffikjelen og ullsokkar",
+   "tid": [
+    "T2",
+    "T4"
+   ],
+   "tid_tekst": "T2, T4",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:80",
+   "ekstra_anna": [
+    "Varene til typen"
+   ],
+   "kvile_pris": 8
+  },
+  {
+   "skjerm": "TRD-12a",
+   "type": "kvile",
+   "type_tekst": "Kvile, gratis",
+   "kven": "Aasen sjølv",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:81",
+   "kvile_pris": 0
+  },
+  {
+   "skjerm": "TRD-13a",
+   "type": "apotek",
+   "type_tekst": "Apotek",
+   "kven": "Apotekaren",
+   "ekstra": [],
+   "ekstra_tekst": "Varene til typen, med lusekam",
+   "tid": [
+    "T2",
+    "T4"
+   ],
+   "tid_tekst": "T2, T4",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:82",
+   "ekstra_anna": [
+    "Varene til typen",
+    "med lusekam"
+   ]
+  },
+  {
+   "skjerm": "TRD-13b",
+   "type": "bokhandel",
+   "type_tekst": "Bokhandel",
+   "kven": "Bokhandlaren",
+   "ekstra": [
+    "kritt",
+    "gaasefjorpenn",
+    "staalpenn"
+   ],
+   "ekstra_tekst": "Kritt og gåsefjørpenn (1 spd 40 s), det beste ord-reiskapet i ein bokhandel før Trondheim. Frå T4 stålpenn (11 spd 40 s)",
+   "tid": [
+    "T2",
+    "T4"
+   ],
+   "tid_tekst": "T2, T4",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:83",
+   "ekstra_anna": [
+    "det beste ord-reiskapet i ein bokhandel før Trondheim"
+   ]
+  },
+  {
+   "skjerm": "TRD-13c",
+   "type": "skreddar",
+   "type_tekst": "Skreddar",
+   "kven": "Skreddaren",
+   "ekstra": [
+    "skinnlue",
+    "skaut",
+    "vargskinnspels"
+   ],
+   "ekstra_tekst": "T2: skinnkufte (6 spd 100 s), skinnlue (1 spd 80 s) og skaut (3 spd 80 s), det beste i kvart slag frå regionane før. T4: pelslue av oter (11 spd 10 s) og vargskinnspels (18 spd 70 s)",
+   "tid": [
+    "T2",
+    "T4"
+   ],
+   "tid_tekst": "T2, T4",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:84",
+   "ekstra_fraa": [
+    {
+     "ting": "skinnlue",
+     "fraa": "frå regionane før"
+    },
+    {
+     "ting": "skaut",
+     "fraa": "frå regionane før"
+    }
+   ],
+   "ekstra_anna": [
+    "T2: skinnkufte",
+    "det beste i kvart slag",
+    "T4: pelslue av oter"
+   ]
+  },
+  {
+   "skjerm": "TRD-13d",
+   "type": "handelsstad",
+   "type_tekst": "Handelsstad",
+   "kven": "Kjøpmannen",
+   "ekstra": [
+    "spekekjot",
+    "kaffi_kandis",
+    "lusekam"
+   ],
+   "ekstra_tekst": "Varene til typen. Frå T2 spekekjøt, kaffi med kandis og lusekam, frå T4 ullsokkar",
+   "tid": [
+    "T2",
+    "T4"
+   ],
+   "tid_tekst": "T2, T4",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:85",
+   "ekstra_fraa": [
+    {
+     "ting": "spekekjot",
+     "fraa": "frå T4 ullsokkar"
+    },
+    {
+     "ting": "kaffi_kandis",
+     "fraa": "frå T4 ullsokkar"
+    },
+    {
+     "ting": "lusekam",
+     "fraa": "frå T4 ullsokkar"
+    }
+   ],
+   "ekstra_anna": [
+    "Varene til typen"
+   ]
+  },
+  {
+   "skjerm": "TRL-01",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri på skysskiftet i Soknedal (forslag)",
+   "kven": "Verten",
+   "ekstra": [],
+   "ekstra_tekst": "Varene til typen",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:86",
+   "ekstra_anna": [
+    "Varene til typen"
+   ]
+  },
+  {
+   "skjerm": "TRL-04a",
+   "type": "kvile",
+   "type_tekst": "Kvile i kyrkja",
+   "kven": "Ingen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:87"
+  },
+  {
+   "skjerm": "NMR-03a",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri, kvile 8 s per figur",
+   "kven": "Verten",
+   "ekstra": [],
+   "ekstra_tekst": "Varene til typen",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:176",
+   "ekstra_anna": [
+    "Varene til typen"
+   ],
+   "kvile_pris": 8
+  },
+  {
+   "skjerm": "NMR-04",
+   "type": "handelsstad",
+   "type_tekst": "Handelsstad",
+   "kven": "Kjøpmennene på kaia",
+   "ekstra": [],
+   "ekstra_tekst": "Varene til typen",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:177",
+   "ekstra_anna": [
+    "Varene til typen"
+   ]
+  },
+  {
+   "skjerm": "DFB-03",
+   "type": "kvile",
+   "type_tekst": "Kvile ved vasstønna",
+   "kven": "Ingen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:201"
+  },
+  {
+   "skjerm": "DFB-01",
+   "type": "kremmar",
+   "type_tekst": "Kremmar, berre i 3.20 før stormen",
+   "kven": "Handelsmannen",
+   "ekstra": [],
+   "ekstra_tekst": "Varene til typen, med lusekam",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:202",
+   "ekstra_anna": [
+    "Varene til typen",
+    "med lusekam"
+   ]
+  },
+  {
+   "skjerm": "HLG-05a",
+   "type": "handelsstad",
+   "type_tekst": "Handelsstad med kvile, 8 s per figur",
+   "kven": "Handelsmannen i Mosjøen",
+   "ekstra": [],
+   "ekstra_tekst": "Varene til typen",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:231",
+   "ekstra_anna": [
+    "Varene til typen"
+   ],
+   "kvile_pris": 8
+  },
+  {
+   "skjerm": "LFN-01a",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri, kvile 8 s per figur",
+   "kven": "Verten",
+   "ekstra": [],
+   "ekstra_tekst": "Varene til typen i T4",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:294",
+   "ekstra_anna": [
+    "Varene til typen i T4"
+   ],
+   "kvile_pris": 8
+  },
+  {
+   "skjerm": "LFN-05",
+   "type": "kvile",
+   "type_tekst": "Kvile ved bålet",
+   "kven": "Ingen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:295"
+  },
+  {
+   "skjerm": "LFN-07a",
+   "type": "handelsstad",
+   "type_tekst": "Handelsstad med kvile, 8 s per figur",
+   "kven": "Handelsmannen i Kabelvåg",
+   "ekstra": [],
+   "ekstra_tekst": "Varene til typen i T4. Kofte til Ravdna (13 spd 90 s)",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:296",
+   "ekstra_anna": [
+    "Varene til typen i T4",
+    "Kofte til Ravdna"
+   ],
+   "kvile_pris": 8
+  },
+  {
+   "skjerm": "LFN-10",
+   "type": "saerbutikk",
+   "type_tekst": "Særbutikk: notbua på Værøy",
+   "kven": "Folket i notbua",
+   "ekstra": [],
+   "ekstra_tekst": "Lasso av lærreim til Ravdna (17 spd 20 s)",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:297",
+   "ekstra_anna": [
+    "Lasso av lærreim til Ravdna"
+   ]
+  },
+  {
+   "skjerm": "NTR-02",
+   "type": "saerbutikk",
+   "type_tekst": "Særbutikk: krambua til Heggelund",
+   "kven": "Heggelund",
+   "ekstra": [
+    "juksa"
+   ],
+   "ekstra_tekst": "Juksa med jernkjetting (24 s)",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, juli 1852",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:298"
+  },
+  {
+   "skjerm": "KAU-05",
+   "type": "kvile",
+   "type_tekst": "Kvile, gratis",
+   "kven": "Kona til Hvoslef",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, hausten 1852",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/06 Kart Trøndelag og Nord-Noreg.md:340",
+   "kvile_pris": 0
+  }
+ ]
+}

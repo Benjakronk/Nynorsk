@@ -1,0 +1,6198 @@
+{
+ "fane": "Vestlandet, Sørlandet og Telemark",
+ "stader": [
+  {
+   "id": "LKG",
+   "namn": "Sogn",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Sogn er ein hovudregion med 19 skjermar og rom. Kjenneteiknet er Borgund stavkyrkje innst i Lærdal. Regionen er open i oktober 1842 og vinteren 1843 (nivå 11 til 12), i august 1852 (nivå 40), ved den store opninga i november 1853 og i epilogen, då den nye Borgund kyrkje frå 1868 står ved sida av stavkyrkja. Han er bygd som ei line langs fjorden. Leikanger ligg midt på med garden til Anders, kyrkjebakken og bygda, og Hermansverk og Njøs ligg austover langs stranda. Frå båtstøa går båt over fjorden til Solvorn og Hafslo og til Hopperstad. Lærdalsøyri ligg innst, og dalen går opp om Øvre Ljøsne til Borgund og kongevegen mot Filefjell. Urnes og lauvliene i Lyster høyrer til villmarka V2.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:7"
+  },
+  {
+   "id": "HFS",
+   "namn": "Sogn",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Sogn er ein hovudregion med 19 skjermar og rom. Kjenneteiknet er Borgund stavkyrkje innst i Lærdal. Regionen er open i oktober 1842 og vinteren 1843 (nivå 11 til 12), i august 1852 (nivå 40), ved den store opninga i november 1853 og i epilogen, då den nye Borgund kyrkje frå 1868 står ved sida av stavkyrkja. Han er bygd som ei line langs fjorden. Leikanger ligg midt på med garden til Anders, kyrkjebakken og bygda, og Hermansverk og Njøs ligg austover langs stranda. Frå båtstøa går båt over fjorden til Solvorn og Hafslo og til Hopperstad. Lærdalsøyri ligg innst, og dalen går opp om Øvre Ljøsne til Borgund og kongevegen mot Filefjell. Urnes og lauvliene i Lyster høyrer til villmarka V2.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:7"
+  },
+  {
+   "id": "HPS",
+   "namn": "Sogn",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Sogn er ein hovudregion med 19 skjermar og rom. Kjenneteiknet er Borgund stavkyrkje innst i Lærdal. Regionen er open i oktober 1842 og vinteren 1843 (nivå 11 til 12), i august 1852 (nivå 40), ved den store opninga i november 1853 og i epilogen, då den nye Borgund kyrkje frå 1868 står ved sida av stavkyrkja. Han er bygd som ei line langs fjorden. Leikanger ligg midt på med garden til Anders, kyrkjebakken og bygda, og Hermansverk og Njøs ligg austover langs stranda. Frå båtstøa går båt over fjorden til Solvorn og Hafslo og til Hopperstad. Lærdalsøyri ligg innst, og dalen går opp om Øvre Ljøsne til Borgund og kongevegen mot Filefjell. Urnes og lauvliene i Lyster høyrer til villmarka V2.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:7"
+  },
+  {
+   "id": "LRD",
+   "namn": "Sogn",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Sogn er ein hovudregion med 19 skjermar og rom. Kjenneteiknet er Borgund stavkyrkje innst i Lærdal. Regionen er open i oktober 1842 og vinteren 1843 (nivå 11 til 12), i august 1852 (nivå 40), ved den store opninga i november 1853 og i epilogen, då den nye Borgund kyrkje frå 1868 står ved sida av stavkyrkja. Han er bygd som ei line langs fjorden. Leikanger ligg midt på med garden til Anders, kyrkjebakken og bygda, og Hermansverk og Njøs ligg austover langs stranda. Frå båtstøa går båt over fjorden til Solvorn og Hafslo og til Hopperstad. Lærdalsøyri ligg innst, og dalen går opp om Øvre Ljøsne til Borgund og kongevegen mot Filefjell. Urnes og lauvliene i Lyster høyrer til villmarka V2.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:7"
+  },
+  {
+   "id": "BGD",
+   "namn": "Sogn",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Sogn er ein hovudregion med 19 skjermar og rom. Kjenneteiknet er Borgund stavkyrkje innst i Lærdal. Regionen er open i oktober 1842 og vinteren 1843 (nivå 11 til 12), i august 1852 (nivå 40), ved den store opninga i november 1853 og i epilogen, då den nye Borgund kyrkje frå 1868 står ved sida av stavkyrkja. Han er bygd som ei line langs fjorden. Leikanger ligg midt på med garden til Anders, kyrkjebakken og bygda, og Hermansverk og Njøs ligg austover langs stranda. Frå båtstøa går båt over fjorden til Solvorn og Hafslo og til Hopperstad. Lærdalsøyri ligg innst, og dalen går opp om Øvre Ljøsne til Borgund og kongevegen mot Filefjell. Urnes og lauvliene i Lyster høyrer til villmarka V2.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:7"
+  },
+  {
+   "id": "BLS",
+   "namn": "Voss og Hardanger",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Voss og Hardanger er ein hovudregion med 18 skjermar og rom og dungeonen Bak Tvindefossen. Kjenneteiknet er Folgefonna over Sørfjorden. Regionen er open frå april til juni 1844 (nivå 15 til 16) og i fimbulvinteren: Voss i oktober 1852 (S2.24) og fjorden i mai 1853 (S2.6), med fimbulvinterrada på nivå 40 frå juni 1852. Partyet kjem med båt inn Osterfjorden til Bolstadøyri og går om Evanger til Vangen, der kyrkja, skulestova, Finnesloftet og brudestova ligg rundt Vangsvatnet. Tvindefossen ligg nord for Vangen. Skjervet går ned til Granvin, og båt fører over Hardangerfjorden til Lofthus og Utne. Tingstova i Ullensvang og havgrotta høyrer til villmarka V3, som byrjar ved Munketreppene bak Lofthus.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:53"
+  },
+  {
+   "id": "VNG",
+   "namn": "Voss og Hardanger",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Voss og Hardanger er ein hovudregion med 18 skjermar og rom og dungeonen Bak Tvindefossen. Kjenneteiknet er Folgefonna over Sørfjorden. Regionen er open frå april til juni 1844 (nivå 15 til 16) og i fimbulvinteren: Voss i oktober 1852 (S2.24) og fjorden i mai 1853 (S2.6), med fimbulvinterrada på nivå 40 frå juni 1852. Partyet kjem med båt inn Osterfjorden til Bolstadøyri og går om Evanger til Vangen, der kyrkja, skulestova, Finnesloftet og brudestova ligg rundt Vangsvatnet. Tvindefossen ligg nord for Vangen. Skjervet går ned til Granvin, og båt fører over Hardangerfjorden til Lofthus og Utne. Tingstova i Ullensvang og havgrotta høyrer til villmarka V3, som byrjar ved Munketreppene bak Lofthus.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:53"
+  },
+  {
+   "id": "TVI",
+   "namn": "Voss og Hardanger",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Voss og Hardanger er ein hovudregion med 18 skjermar og rom og dungeonen Bak Tvindefossen. Kjenneteiknet er Folgefonna over Sørfjorden. Regionen er open frå april til juni 1844 (nivå 15 til 16) og i fimbulvinteren: Voss i oktober 1852 (S2.24) og fjorden i mai 1853 (S2.6), med fimbulvinterrada på nivå 40 frå juni 1852. Partyet kjem med båt inn Osterfjorden til Bolstadøyri og går om Evanger til Vangen, der kyrkja, skulestova, Finnesloftet og brudestova ligg rundt Vangsvatnet. Tvindefossen ligg nord for Vangen. Skjervet går ned til Granvin, og båt fører over Hardangerfjorden til Lofthus og Utne. Tingstova i Ullensvang og havgrotta høyrer til villmarka V3, som byrjar ved Munketreppene bak Lofthus.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:53"
+  },
+  {
+   "id": "SKJ",
+   "namn": "Voss og Hardanger",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Voss og Hardanger er ein hovudregion med 18 skjermar og rom og dungeonen Bak Tvindefossen. Kjenneteiknet er Folgefonna over Sørfjorden. Regionen er open frå april til juni 1844 (nivå 15 til 16) og i fimbulvinteren: Voss i oktober 1852 (S2.24) og fjorden i mai 1853 (S2.6), med fimbulvinterrada på nivå 40 frå juni 1852. Partyet kjem med båt inn Osterfjorden til Bolstadøyri og går om Evanger til Vangen, der kyrkja, skulestova, Finnesloftet og brudestova ligg rundt Vangsvatnet. Tvindefossen ligg nord for Vangen. Skjervet går ned til Granvin, og båt fører over Hardangerfjorden til Lofthus og Utne. Tingstova i Ullensvang og havgrotta høyrer til villmarka V3, som byrjar ved Munketreppene bak Lofthus.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:53"
+  },
+  {
+   "id": "LFH",
+   "namn": "Voss og Hardanger",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Voss og Hardanger er ein hovudregion med 18 skjermar og rom og dungeonen Bak Tvindefossen. Kjenneteiknet er Folgefonna over Sørfjorden. Regionen er open frå april til juni 1844 (nivå 15 til 16) og i fimbulvinteren: Voss i oktober 1852 (S2.24) og fjorden i mai 1853 (S2.6), med fimbulvinterrada på nivå 40 frå juni 1852. Partyet kjem med båt inn Osterfjorden til Bolstadøyri og går om Evanger til Vangen, der kyrkja, skulestova, Finnesloftet og brudestova ligg rundt Vangsvatnet. Tvindefossen ligg nord for Vangen. Skjervet går ned til Granvin, og båt fører over Hardangerfjorden til Lofthus og Utne. Tingstova i Ullensvang og havgrotta høyrer til villmarka V3, som byrjar ved Munketreppene bak Lofthus.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:53"
+  },
+  {
+   "id": "UTN",
+   "namn": "Voss og Hardanger",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Voss og Hardanger er ein hovudregion med 18 skjermar og rom og dungeonen Bak Tvindefossen. Kjenneteiknet er Folgefonna over Sørfjorden. Regionen er open frå april til juni 1844 (nivå 15 til 16) og i fimbulvinteren: Voss i oktober 1852 (S2.24) og fjorden i mai 1853 (S2.6), med fimbulvinterrada på nivå 40 frå juni 1852. Partyet kjem med båt inn Osterfjorden til Bolstadøyri og går om Evanger til Vangen, der kyrkja, skulestova, Finnesloftet og brudestova ligg rundt Vangsvatnet. Tvindefossen ligg nord for Vangen. Skjervet går ned til Granvin, og båt fører over Hardangerfjorden til Lofthus og Utne. Tingstova i Ullensvang og havgrotta høyrer til villmarka V3, som byrjar ved Munketreppene bak Lofthus.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:53"
+  },
+  {
+   "id": "TVD",
+   "namn": "Bak Tvindefossen (S1.17)",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": "dungeon",
+   "skildring": "Dungeonen er ein folkevesen- og naturdungeon på om lag 10 til 15 minutt, mai 1844, nivå 15. Inngangen er bak fosseskodda ved TVI-01 torsdag kveld. Temaet er den siste slåtten utan ende, og grepet er lytting gjennom bruset. Møtetabellen er fana 9b, bolken «Voss, april til juni 1844», sona «Bak Tvindefossen (S1.17)».",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:101"
+  },
+  {
+   "id": "JAR",
+   "namn": "Rogaland, Jæren og Ryfylke",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Rogaland er ein småregion med 11 skjermar og rom, av dei eitt samband. Kjenneteiknet er Stavanger domkyrkje, og frå 1853 Valbergtårnet. Regionen er open frå august til oktober 1844 (nivå 16 til 17), på isvegen nord frå Stavanger i mars 1852 (nivå 38), ved den store opninga i november 1853 (nivå 44) og i epilogen. Bygda på Jæren har tunet og stova til Kari på Haugen, stranda med leirbålet og Hå prestegard. Stavanger er bygd rundt Vågen, med Strandkaien og utvandrarkaia på eine sida, Torget og domkyrkja i botnen og Skagen med Valberget på andre sida. Fjellvegen frå Hardanger går over Røldal og ned mot Suldal og Ryfylke.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:121"
+  },
+  {
+   "id": "STV",
+   "namn": "Rogaland, Jæren og Ryfylke",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Rogaland er ein småregion med 11 skjermar og rom, av dei eitt samband. Kjenneteiknet er Stavanger domkyrkje, og frå 1853 Valbergtårnet. Regionen er open frå august til oktober 1844 (nivå 16 til 17), på isvegen nord frå Stavanger i mars 1852 (nivå 38), ved den store opninga i november 1853 (nivå 44) og i epilogen. Bygda på Jæren har tunet og stova til Kari på Haugen, stranda med leirbålet og Hå prestegard. Stavanger er bygd rundt Vågen, med Strandkaien og utvandrarkaia på eine sida, Torget og domkyrkja i botnen og Skagen med Valberget på andre sida. Fjellvegen frå Hardanger går over Røldal og ned mot Suldal og Ryfylke.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:121"
+  },
+  {
+   "id": "RLD",
+   "namn": "Rogaland, Jæren og Ryfylke",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Rogaland er ein småregion med 11 skjermar og rom, av dei eitt samband. Kjenneteiknet er Stavanger domkyrkje, og frå 1853 Valbergtårnet. Regionen er open frå august til oktober 1844 (nivå 16 til 17), på isvegen nord frå Stavanger i mars 1852 (nivå 38), ved den store opninga i november 1853 (nivå 44) og i epilogen. Bygda på Jæren har tunet og stova til Kari på Haugen, stranda med leirbålet og Hå prestegard. Stavanger er bygd rundt Vågen, med Strandkaien og utvandrarkaia på eine sida, Torget og domkyrkja i botnen og Skagen med Valberget på andre sida. Fjellvegen frå Hardanger går over Røldal og ned mot Suldal og Ryfylke.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:121"
+  },
+  {
+   "id": "BYG",
+   "namn": "Setesdal",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Setesdal er ein småregion med 8 skjermar og rom. Kjenneteiknet er Rygnestadloftet i Valle. Regionen er open i november og desember 1844 (nivå 18 til 19), ved den store opninga i november 1853 (nivå 44), då det er jul heile tida i dalen og Grotormen vaknar, og i epilogen. Nedst ligg skysskiftet ved Byglandsfjorden, der skysskaren ror folk over. Bygland har leikvollen, garden med stevstigen og steinrøysa. Dalvegen går langs Otra opp til Rysstad, Rygnestad og Valle kyrkje, og øvst renn kjelda ved Byklestigen, der villmarka V5 byrjar. I 1844 er køyrevegen under bygging, og han når Valle kyrkje i 1846.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:159"
+  },
+  {
+   "id": "VLE",
+   "namn": "Setesdal",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Setesdal er ein småregion med 8 skjermar og rom. Kjenneteiknet er Rygnestadloftet i Valle. Regionen er open i november og desember 1844 (nivå 18 til 19), ved den store opninga i november 1853 (nivå 44), då det er jul heile tida i dalen og Grotormen vaknar, og i epilogen. Nedst ligg skysskiftet ved Byglandsfjorden, der skysskaren ror folk over. Bygland har leikvollen, garden med stevstigen og steinrøysa. Dalvegen går langs Otra opp til Rysstad, Rygnestad og Valle kyrkje, og øvst renn kjelda ved Byklestigen, der villmarka V5 byrjar. I 1844 er køyrevegen under bygging, og han når Valle kyrkje i 1846.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:159"
+  },
+  {
+   "id": "KRS",
+   "namn": "Kristiansand",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": "småby",
+   "skildring": "Kristiansand er ein småby med 11 skjermar og rom. Kjenneteiknet er domkyrkja Vor Frue frå 1738 over Kvadraturen. Byen er open julaftan og i romjula 1844, som dampskipsstopp i 1850, 1851 og 1852 (4.20, 5.14 og 6.9 og reisa i mars 1852), ved den store opninga i november 1853 og i epilogen, då ei ny kyrkje frå 1885 står der den gamle brann i 1880. Byen er utan kamp i alle epokar. Kvadraturen er eit rutenett av gater med Torvet midt i og domkyrkja ved Torvet. Dampskipsbrygga er inngangen frå sjøen, kyrkjegarden ligg ved hamna, Posebyen ligg i nordaust, og lasarettet på Odderøya ligg ute i hamna. Markene og holmane utanfor byen har kamp berre ved den store opninga.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:191"
+  },
+  {
+   "id": "BOE",
+   "namn": "Telemark",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Telemark er ein hovudregion med 20 skjermar og rom og eitt samband, og fire av dungeonane i fana ligg her. Kjenneteiknet er Gaustatoppen. Regionen er open frå januar til mai 1845 (nivå 20 til 22), i fimbulvinteren frå juli 1852 til februar 1853 og ved den store opninga (nivå 40 til 42), i august 1856 og i epilogen. Postvegen kjem inn om Heddal og Bø eller om Hjartdal og Nutheim i Flatdal. Seljord har prestegarden med arkivkammeret, studerkammeret og loftet, kyrkja ved vatnet, klokkargarden, stranda og gardane med haugane. Vegen til Rauland går over isen i Kviteseid, forbi Morgedal og Plassen i Vinje, og endar på Tveitli høgt over Totak. Gaustatoppen og Tinnsjøen ligg aust mot Tinn. Landstad flyttar historisk til Fredrikshald i 1849, så i fimbulvinteren er han ein klokkaren hugsar.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:223"
+  },
+  {
+   "id": "NUT",
+   "namn": "Telemark",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Telemark er ein hovudregion med 20 skjermar og rom og eitt samband, og fire av dungeonane i fana ligg her. Kjenneteiknet er Gaustatoppen. Regionen er open frå januar til mai 1845 (nivå 20 til 22), i fimbulvinteren frå juli 1852 til februar 1853 og ved den store opninga (nivå 40 til 42), i august 1856 og i epilogen. Postvegen kjem inn om Heddal og Bø eller om Hjartdal og Nutheim i Flatdal. Seljord har prestegarden med arkivkammeret, studerkammeret og loftet, kyrkja ved vatnet, klokkargarden, stranda og gardane med haugane. Vegen til Rauland går over isen i Kviteseid, forbi Morgedal og Plassen i Vinje, og endar på Tveitli høgt over Totak. Gaustatoppen og Tinnsjøen ligg aust mot Tinn. Landstad flyttar historisk til Fredrikshald i 1849, så i fimbulvinteren er han ein klokkaren hugsar.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:223"
+  },
+  {
+   "id": "SEL",
+   "namn": "Telemark",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Telemark er ein hovudregion med 20 skjermar og rom og eitt samband, og fire av dungeonane i fana ligg her. Kjenneteiknet er Gaustatoppen. Regionen er open frå januar til mai 1845 (nivå 20 til 22), i fimbulvinteren frå juli 1852 til februar 1853 og ved den store opninga (nivå 40 til 42), i august 1856 og i epilogen. Postvegen kjem inn om Heddal og Bø eller om Hjartdal og Nutheim i Flatdal. Seljord har prestegarden med arkivkammeret, studerkammeret og loftet, kyrkja ved vatnet, klokkargarden, stranda og gardane med haugane. Vegen til Rauland går over isen i Kviteseid, forbi Morgedal og Plassen i Vinje, og endar på Tveitli høgt over Totak. Gaustatoppen og Tinnsjøen ligg aust mot Tinn. Landstad flyttar historisk til Fredrikshald i 1849, så i fimbulvinteren er han ein klokkaren hugsar.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:223"
+  },
+  {
+   "id": "KVI",
+   "namn": "Telemark",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Telemark er ein hovudregion med 20 skjermar og rom og eitt samband, og fire av dungeonane i fana ligg her. Kjenneteiknet er Gaustatoppen. Regionen er open frå januar til mai 1845 (nivå 20 til 22), i fimbulvinteren frå juli 1852 til februar 1853 og ved den store opninga (nivå 40 til 42), i august 1856 og i epilogen. Postvegen kjem inn om Heddal og Bø eller om Hjartdal og Nutheim i Flatdal. Seljord har prestegarden med arkivkammeret, studerkammeret og loftet, kyrkja ved vatnet, klokkargarden, stranda og gardane med haugane. Vegen til Rauland går over isen i Kviteseid, forbi Morgedal og Plassen i Vinje, og endar på Tveitli høgt over Totak. Gaustatoppen og Tinnsjøen ligg aust mot Tinn. Landstad flyttar historisk til Fredrikshald i 1849, så i fimbulvinteren er han ein klokkaren hugsar.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:223"
+  },
+  {
+   "id": "MOR",
+   "namn": "Telemark",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Telemark er ein hovudregion med 20 skjermar og rom og eitt samband, og fire av dungeonane i fana ligg her. Kjenneteiknet er Gaustatoppen. Regionen er open frå januar til mai 1845 (nivå 20 til 22), i fimbulvinteren frå juli 1852 til februar 1853 og ved den store opninga (nivå 40 til 42), i august 1856 og i epilogen. Postvegen kjem inn om Heddal og Bø eller om Hjartdal og Nutheim i Flatdal. Seljord har prestegarden med arkivkammeret, studerkammeret og loftet, kyrkja ved vatnet, klokkargarden, stranda og gardane med haugane. Vegen til Rauland går over isen i Kviteseid, forbi Morgedal og Plassen i Vinje, og endar på Tveitli høgt over Totak. Gaustatoppen og Tinnsjøen ligg aust mot Tinn. Landstad flyttar historisk til Fredrikshald i 1849, så i fimbulvinteren er han ein klokkaren hugsar.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:223"
+  },
+  {
+   "id": "VIN",
+   "namn": "Telemark",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Telemark er ein hovudregion med 20 skjermar og rom og eitt samband, og fire av dungeonane i fana ligg her. Kjenneteiknet er Gaustatoppen. Regionen er open frå januar til mai 1845 (nivå 20 til 22), i fimbulvinteren frå juli 1852 til februar 1853 og ved den store opninga (nivå 40 til 42), i august 1856 og i epilogen. Postvegen kjem inn om Heddal og Bø eller om Hjartdal og Nutheim i Flatdal. Seljord har prestegarden med arkivkammeret, studerkammeret og loftet, kyrkja ved vatnet, klokkargarden, stranda og gardane med haugane. Vegen til Rauland går over isen i Kviteseid, forbi Morgedal og Plassen i Vinje, og endar på Tveitli høgt over Totak. Gaustatoppen og Tinnsjøen ligg aust mot Tinn. Landstad flyttar historisk til Fredrikshald i 1849, så i fimbulvinteren er han ein klokkaren hugsar.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:223"
+  },
+  {
+   "id": "RAU",
+   "namn": "Telemark",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Telemark er ein hovudregion med 20 skjermar og rom og eitt samband, og fire av dungeonane i fana ligg her. Kjenneteiknet er Gaustatoppen. Regionen er open frå januar til mai 1845 (nivå 20 til 22), i fimbulvinteren frå juli 1852 til februar 1853 og ved den store opninga (nivå 40 til 42), i august 1856 og i epilogen. Postvegen kjem inn om Heddal og Bø eller om Hjartdal og Nutheim i Flatdal. Seljord har prestegarden med arkivkammeret, studerkammeret og loftet, kyrkja ved vatnet, klokkargarden, stranda og gardane med haugane. Vegen til Rauland går over isen i Kviteseid, forbi Morgedal og Plassen i Vinje, og endar på Tveitli høgt over Totak. Gaustatoppen og Tinnsjøen ligg aust mot Tinn. Landstad flyttar historisk til Fredrikshald i 1849, så i fimbulvinteren er han ein klokkaren hugsar.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:223"
+  },
+  {
+   "id": "GAU",
+   "namn": "Telemark",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": null,
+   "skildring": "Telemark er ein hovudregion med 20 skjermar og rom og eitt samband, og fire av dungeonane i fana ligg her. Kjenneteiknet er Gaustatoppen. Regionen er open frå januar til mai 1845 (nivå 20 til 22), i fimbulvinteren frå juli 1852 til februar 1853 og ved den store opninga (nivå 40 til 42), i august 1856 og i epilogen. Postvegen kjem inn om Heddal og Bø eller om Hjartdal og Nutheim i Flatdal. Seljord har prestegarden med arkivkammeret, studerkammeret og loftet, kyrkja ved vatnet, klokkargarden, stranda og gardane med haugane. Vegen til Rauland går over isen i Kviteseid, forbi Morgedal og Plassen i Vinje, og endar på Tveitli høgt over Totak. Gaustatoppen og Tinnsjøen ligg aust mot Tinn. Landstad flyttar historisk til Fredrikshald i 1849, så i fimbulvinteren er han ein klokkaren hugsar.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:223"
+  },
+  {
+   "id": "SAK",
+   "namn": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": "dungeon",
+   "skildring": "Arkivkammeret er ein blekkdungeon på om lag 20 minutt, januar 1845, nivå 20. Inngangen er døra på SEL-01, som Landstad låser opp om natta. Temaet er dei døde som blir retta til dei ikkje er seg sjølve lenger, og grepet er namneoppgåver. Manuset har tre rom, dåp, vigslar og gravferder, og her er kvart rom delt i to. Kvar namneoppgåve sender partyet ut gjennom SAK-01 til SEL-05, der dei spør levande folk kva besteforeldra heitte. Når namnet er uttala slik dei gjorde, opnar døra til neste rom, og romma som er løyste, står opne. Møtetabellane er fana 9b, sona «Arkivkammeret i Seljord», og for fase 2 sona «Seljord kyrkje, januar 1845 (Unntak)».",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:275"
+  },
+  {
+   "id": "SKB",
+   "namn": "Inne i kyrkjeboka (S1.26)",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": "dungeon",
+   "skildring": "Kyrkjeboka er ein dungeon inne i ein tekst på om lag 15 minutt, februar 1845, nivå 20. Landstad ber om hjelp, og partyet går inn i boka frå pulten i studerkammeret (SEL-01b). Temaet er namna til dei døde og dei døypte som blir retta, og grepet er sidegåter: teksten er landskapet, og orda er stigane. Møtetabellen er fana 9b, sona «Inne i kyrkjeboka (S1.26)».",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:299"
+  },
+  {
+   "id": "LMP",
+   "namn": "Protokollen i lensmannsgarden (S2.1)",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": "dungeon",
+   "skildring": "Protokollen er ein dungeon inne i ein tekst på om lag 15 minutt, juli 1852, nivå 40. Han opnar seg etter S2.1.1 på VIN-01, og Vinje må vere med. Temaet er kontraktar som skriv seg sjølve, og grepet er dei tre linjerte sidene der arbeidsplikta veks. Erte hos Vinje får husmennene på VIN-01 til å fortelje meir før partyet går inn. Møtetabellen er fana 9c, sona «Protokollen i lensmannsgarden (S2.1, juli 1852)».",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:320"
+  },
+  {
+   "id": "SLP",
+   "namn": "Loftet på Seljord prestegard (S2.2)",
+   "fane": "vestlandet_sorlandet_og_telemark",
+   "storleik": "dungeon",
+   "skildring": "Loftet er ein blekkdungeon på om lag 10 minutt, hausten 1852, nivå 41. Landstad må vere med, og inngangen er lemmen frå SEL-01. Temaet er visa i minnet til Landstad, og grepet er korrekturarka som hakkar. Kvar gong ei kråke av papir treffer, mistar spelaren ei line av visa og må finne ho att hos folk på SEL-05. Møtetabellen er fana 9c, sona «Loftet på Seljord prestegard (S2.2, hausten 1852)», med Rimkorrekturen på prestegardsloftet.",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:341"
+  }
+ ],
+ "skjermar": [
+  {
+   "id": "LKG-01",
+   "stad": "LKG",
+   "omraade": "Sogn",
+   "namn": "Båtstøa på Leikanger",
+   "innhald_tekst": "Frukttre langs stranda og den gamle steinkyrkja over bygda. Båten legg til her. Sognemålet er halvt uleseleg i tekstboksane til 2.4 er løyst (2.3)",
+   "scener": [
+    "s2_3"
+   ],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Sognefjorden"
+    },
+    {
+     "til": "LKG-02",
+     "namn": "Garden til Anders"
+    },
+    {
+     "til": "LKG-06",
+     "namn": "Skysskiftet på Hermansverk"
+    },
+    {
+     "til": "HFS-01",
+     "namn": "Solvorn og Hafslovatnet",
+     "merknad": "båt"
+    },
+    {
+     "til": "HPS-01",
+     "namn": "Hopperstad stavkyrkje",
+     "merknad": "båt"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (Sognefjorden), LKG-02 Garden til Anders, LKG-06 Skysskiftet på Hermansverk, HFS-01 Solvorn og Hafslovatnet (båt), HPS-01 Hopperstad stavkyrkje (båt)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:13"
+  },
+  {
+   "id": "LKG-02",
+   "stad": "LKG",
+   "omraade": "Sogn",
+   "namn": "Garden til Anders",
+   "innhald_tekst": "Tun med frukttre. Anders hogg ved, Ingeborg kjem ut med fatet, og Per sit på trappa (2.3). I 1852 seier eit barn «vætt» om noko som gjekk gale, ein rest i S2.34",
+   "scener": [
+    "s2_3"
+   ],
+   "utgangar": [
+    {
+     "til": "LKG-01",
+     "namn": null
+    },
+    {
+     "til": "LKG-02a",
+     "namn": "Stova på garden"
+    },
+    {
+     "til": "LKG-03",
+     "namn": "Kyrkjebakken"
+    }
+   ],
+   "utgangar_tekst": "LKG-01, LKG-02a Stova på garden, LKG-03 Kyrkjebakken",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:14"
+  },
+  {
+   "id": "LKG-02a",
+   "stad": "LKG",
+   "omraade": "Sogn",
+   "namn": "Stova på garden",
+   "innhald_tekst": "Glør i grua og Anders på benken. Lydpuslespelet «Sognemålet» med Per (2.4). Kvileplass i 1842",
+   "scener": [
+    "s2_4"
+   ],
+   "utgangar": [
+    {
+     "til": "LKG-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LKG-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:15"
+  },
+  {
+   "id": "LKG-03",
+   "stad": "LKG",
+   "omraade": "Sogn",
+   "namn": "Kyrkjebakken",
+   "innhald_tekst": "Leikanger kyrkje i stein. Plakaten «imod Banden og Sværgen» heng på kyrkjedøra og glinsar. Miniboss Plakaten imod Banden, nivå 11, og Småfanden på trappa etterpå (2.5)",
+   "scener": [
+    "s2_5"
+   ],
+   "utgangar": [
+    {
+     "til": "LKG-02",
+     "namn": null
+    },
+    {
+     "til": "LKG-03a",
+     "namn": "Kyrkjerommet"
+    },
+    {
+     "til": "LKG-04",
+     "namn": "Bygda"
+    }
+   ],
+   "utgangar_tekst": "LKG-02, LKG-03a Kyrkjerommet, LKG-04 Bygda",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:16"
+  },
+  {
+   "id": "LKG-03a",
+   "stad": "LKG",
+   "omraade": "Sogn",
+   "namn": "Kyrkjerommet",
+   "innhald_tekst": "Fristad. Christian Vs «Norske Lov» (1687), sjette boka, kapittel 1 og 2, heng innanfor døra ved sida av plakaten (lesestykke). Forslag: i 1852 er kyrkjebøkene ei lita valfri lomme for Rett",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LKG-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LKG-03",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:17"
+  },
+  {
+   "id": "LKG-04",
+   "stad": "LKG",
+   "omraade": "Sogn",
+   "namn": "Bygda",
+   "innhald_tekst": "Gardar og stiar mellom kyrkja og fjorden, der partyet lokkar fram bannorda: Per og tåa til Anders, bonden med mjølsekken og den gamle kona (2.5)",
+   "scener": [
+    "s2_5"
+   ],
+   "utgangar": [
+    {
+     "til": "LKG-03",
+     "namn": null
+    },
+    {
+     "til": "LKG-04a",
+     "namn": "Stova til Kari Øvrebø"
+    },
+    {
+     "til": "LKG-05",
+     "namn": "Gjestgiveriet"
+    },
+    {
+     "til": "LKG-07",
+     "namn": "Naustet på Njøs"
+    }
+   ],
+   "utgangar_tekst": "LKG-03, LKG-04a Stova til Kari Øvrebø, LKG-05 Gjestgiveriet, LKG-07 Naustet på Njøs",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:18"
+  },
+  {
+   "id": "LKG-04a",
+   "stad": "LKG",
+   "omraade": "Sogn",
+   "namn": "Stova til Kari Øvrebø",
+   "innhald_tekst": "Klokka på veggen og brevet frå Wisconsin (S1.11, vinteren 1843). Ole Rynning, «Sandfærdig Beretning om Amerika» (1838), ligg på bordet (lesestykke)",
+   "scener": [
+    "S1_11"
+   ],
+   "utgangar": [
+    {
+     "til": "LKG-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LKG-04",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:19"
+  },
+  {
+   "id": "LKG-05",
+   "stad": "LKG",
+   "omraade": "Sogn",
+   "namn": "Gjestgiveriet på Leikanger",
+   "innhald_tekst": "Kvileplass. Posten frå Bergen kjem hit. Forslag: har Aasen skrive svar for Kari i 1843, ligg eit nytt brev frå Wisconsin her",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LKG-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LKG-04",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1852, 1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:20"
+  },
+  {
+   "id": "LKG-06",
+   "stad": "LKG",
+   "omraade": "Sogn",
+   "namn": "Skysskiftet på Hermansverk",
+   "innhald_tekst": "Skysskaren Ola veit alt om vegane i Sogn (stad utan framdrift). Kvileplass",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LKG-01",
+     "namn": null
+    },
+    {
+     "til": "LKG-07",
+     "namn": null
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Sognefjorden"
+    }
+   ],
+   "utgangar_tekst": "LKG-01, LKG-07, Verdskartet (Sognefjorden)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:21"
+  },
+  {
+   "id": "LKG-07",
+   "stad": "LKG",
+   "omraade": "Sogn",
+   "namn": "Naustet på Njøs",
+   "innhald_tekst": "Gamle Lars bøter garn og talar sognemål (stad utan framdrift). Fiskaren som mistar garnet i 2.5, står i fjøra",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LKG-04",
+     "namn": null
+    },
+    {
+     "til": "LKG-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LKG-04, LKG-06",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:22"
+  },
+  {
+   "id": "HFS-01",
+   "stad": "HFS",
+   "omraade": "Sogn",
+   "namn": "Solvorn og Hafslovatnet",
+   "innhald_tekst": "Båtstøa i Solvorn og stranda ved vatnet. Ein kvit, våt hest står ved vasskanten kvar kveld. Boss Nøkken, nivå 12, med guten Knut som vernemål, skumring (S1.10, november 1842). Stien opp i lauvlia over Solvorn",
+   "scener": [
+    "S1_10"
+   ],
+   "utgangar": [
+    {
+     "til": "LKG-01",
+     "namn": null,
+     "merknad": "båt"
+    },
+    {
+     "til": "LYS-01",
+     "namn": "Villmark V2, inngangsvarden",
+     "slatt_opp": true
+    }
+   ],
+   "utgangar_tekst": "LKG-01 (båt), Villmark V2, inngangsvarden",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:23"
+  },
+  {
+   "id": "HPS-01",
+   "stad": "HPS",
+   "omraade": "Sogn",
+   "namn": "Hopperstad stavkyrkje",
+   "innhald_tekst": "Ein avkrok på sørsida av fjorden. Dragehovudet på vassbrettet blunkar når Aasen seier det gamle ordet for drake, ein rest i S2.34",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LKG-01",
+     "namn": null,
+     "merknad": "båt"
+    }
+   ],
+   "utgangar_tekst": "LKG-01 (båt)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:24"
+  },
+  {
+   "id": "LRD-01",
+   "stad": "LRD",
+   "omraade": "Sogn",
+   "namn": "Lærdalsøyri",
+   "innhald_tekst": "Øyri ved elvemunningen, kaia og handelsstaden. Bannskapen byrjar her morgonen etter lydpuslespelet (S1.9). Frå 1845 går dampbåten «Bjørgvin» mellom Bergen og Lærdal, og i 1852 er kaia dampskipshamn",
+   "scener": [
+    "S1_9"
+   ],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Sognefjorden"
+    },
+    {
+     "til": "LRD-01a",
+     "namn": "Krambua"
+    },
+    {
+     "til": "LRD-02",
+     "namn": "Tunet til Lars Hauge"
+    },
+    {
+     "til": "LRD-03",
+     "namn": "Øvre Ljøsne"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (Sognefjorden), LRD-01a Krambua, LRD-02 Tunet til Lars Hauge, LRD-03 Øvre Ljøsne",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:25"
+  },
+  {
+   "id": "LRD-01a",
+   "stad": "LRD",
+   "omraade": "Sogn",
+   "namn": "Krambua hjå handelsmannen",
+   "innhald_tekst": "Handelsstad. Ei trapp går opp til lagerloftet",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LRD-01",
+     "namn": null
+    },
+    {
+     "til": "LRD-01b",
+     "namn": "Lagerloftet"
+    }
+   ],
+   "utgangar_tekst": "LRD-01, LRD-01b Lagerloftet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:26"
+  },
+  {
+   "id": "LRD-01b",
+   "stad": "LRD",
+   "omraade": "Sogn",
+   "namn": "Lagerloftet",
+   "innhald_tekst": "Varer handelsmannen ikkje har fått selt. Ventekista VK03",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LRD-01a",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LRD-01a",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:27"
+  },
+  {
+   "id": "LRD-02",
+   "stad": "LRD",
+   "omraade": "Sogn",
+   "namn": "Tunet til Lars Hauge",
+   "innhald_tekst": "Morgon. Den vennlegaste samtalen, med bannord som må fangast i takt og ein liten svart djevel under trappa (S1.9)",
+   "scener": [
+    "S1_9"
+   ],
+   "utgangar": [
+    {
+     "til": "LRD-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LRD-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:28"
+  },
+  {
+   "id": "LRD-03",
+   "stad": "LRD",
+   "omraade": "Sogn",
+   "namn": "Øvre Ljøsne",
+   "innhald_tekst": "Tunet oppe i dalen. To bønder som helsar «kjære granne» utan ende (S2.23.1, august 1852)",
+   "scener": [
+    "S2_23_1"
+   ],
+   "utgangar": [
+    {
+     "til": "LRD-01",
+     "namn": null
+    },
+    {
+     "til": "LRD-04",
+     "namn": "Gravhaugen"
+    },
+    {
+     "til": "BGD-01",
+     "namn": "Borgund stavkyrkje"
+    }
+   ],
+   "utgangar_tekst": "LRD-01, LRD-04 Gravhaugen, BGD-01 Borgund stavkyrkje",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:29"
+  },
+  {
+   "id": "LRD-04",
+   "stad": "LRD",
+   "omraade": "Sogn",
+   "namn": "Gravhaugen ovanfor bygda",
+   "innhald_tekst": "Boss Bannkongen, nivå 40. Berre ertestev skadar han (S2.23.2)",
+   "scener": [
+    "S2_23_2"
+   ],
+   "utgangar": [
+    {
+     "til": "LRD-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LRD-03",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:30"
+  },
+  {
+   "id": "BGD-01",
+   "stad": "BGD",
+   "omraade": "Sogn",
+   "namn": "Borgund stavkyrkje",
+   "innhald_tekst": "Stavkyrkja med dragehovuda på mønet og klokkestapelen. Kongevegen går vidare gjennom Vindhella mot Filefjell (sjekk byggjeåret, 1842 til 1843). Fåvne blir funnen når Aasen lyttar ved dragehovudet (S2.29). I 1852 held klokkaren snøen unna stapelen og fortel kvifor dragehovuda fekk sitje (stad utan framdrift). I epilogen står den nye kyrkja frå 1868 ved sida, og med val B i S2.29 peikar eit barn på dragehovudet som blunka",
+   "scener": [
+    "S2_29"
+   ],
+   "utgangar": [
+    {
+     "til": "LRD-03",
+     "namn": null
+    },
+    {
+     "til": null,
+     "namn": "Filefjell",
+     "merknad": "samband",
+     "fleire_treff": null
+    },
+    {
+     "til": null,
+     "namn": "Drakestadene: under golvet i Borgund",
+     "fleire_treff": null
+    }
+   ],
+   "utgangar_tekst": "LRD-03, Filefjell (samband), Drakestadene: under golvet i Borgund",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:31"
+  },
+  {
+   "id": "BLS-01",
+   "stad": "BLS",
+   "omraade": "Voss og Hardanger",
+   "namn": "Bolstadøyri",
+   "innhald_tekst": "Båtstøa innst i Osterfjorden og vegen opp om Evanger",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Osterfjorden og Bolstadøyri"
+    },
+    {
+     "til": "VNG-01",
+     "namn": "Vangen"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (Osterfjorden og Bolstadøyri), VNG-01 Vangen",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:59"
+  },
+  {
+   "id": "VNG-01",
+   "stad": "VNG",
+   "omraade": "Voss og Hardanger",
+   "namn": "Vangen",
+   "innhald_tekst": "Vangskyrkja frå 1200-talet ved Vangsvatnet og gardane rundt. Byttingen startar som Samtale i ei av stovene",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BLS-01",
+     "namn": null
+    },
+    {
+     "til": "VNG-01a",
+     "namn": "Vangskyrkja"
+    },
+    {
+     "til": "VNG-02",
+     "namn": "Skulestova"
+    },
+    {
+     "til": "VNG-03",
+     "namn": "Finnesloftet"
+    },
+    {
+     "til": "VNG-04",
+     "namn": "Garden ved Vangsvatnet"
+    },
+    {
+     "til": "VNG-05",
+     "namn": "Utmarka og legdsvegen"
+    },
+    {
+     "til": "TVI-01",
+     "namn": "Foten av Tvindefossen"
+    },
+    {
+     "til": "SKJ-01",
+     "namn": "Skjervet"
+    }
+   ],
+   "utgangar_tekst": "BLS-01, VNG-01a Vangskyrkja, VNG-02 Skulestova, VNG-03 Finnesloftet, VNG-04 Garden ved Vangsvatnet, VNG-05 Utmarka og legdsvegen, TVI-01 Foten av Tvindefossen, SKJ-01 Skjervet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:60"
+  },
+  {
+   "id": "VNG-01a",
+   "stad": "VNG",
+   "omraade": "Voss og Hardanger",
+   "namn": "Vangskyrkja",
+   "innhald_tekst": "Fristad",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VNG-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VNG-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:61"
+  },
+  {
+   "id": "VNG-02",
+   "stad": "VNG",
+   "omraade": "Voss og Hardanger",
+   "namn": "Tunet ved skulestova",
+   "innhald_tekst": "Mora Guri ved døra etter timen (2.11)",
+   "scener": [
+    "s2_11"
+   ],
+   "utgangar": [
+    {
+     "til": "VNG-01",
+     "namn": null
+    },
+    {
+     "til": "VNG-02a",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VNG-01, VNG-02a",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:62"
+  },
+  {
+   "id": "VNG-02a",
+   "stad": "VNG",
+   "omraade": "Voss og Hardanger",
+   "namn": "Skulestova",
+   "innhald_tekst": "Borna på rader og tavla med «Jeg gaaer. Du gaaer. Han gaaer.» i kanselliblekk. Skammen ligg som grå tåke over Brita (2.11). Kvileplass om Aasen valde B. Forslag: i 1852 er Brita skulehaldar her",
+   "scener": [
+    "s2_11"
+   ],
+   "utgangar": [
+    {
+     "til": "VNG-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VNG-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:63"
+  },
+  {
+   "id": "VNG-03",
+   "stad": "VNG",
+   "omraade": "Voss og Hardanger",
+   "namn": "Finnesloftet",
+   "innhald_tekst": "Gamle Gjertrud fortel om loftet og talar vossamål (stad utan framdrift)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VNG-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VNG-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:64"
+  },
+  {
+   "id": "VNG-04",
+   "stad": "VNG",
+   "omraade": "Voss og Hardanger",
+   "namn": "Garden ved Vangsvatnet",
+   "innhald_tekst": "Bryllaupsgarden og eit naust ved vatnet",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VNG-01",
+     "namn": null
+    },
+    {
+     "til": "VNG-04a",
+     "namn": "Brudestova"
+    }
+   ],
+   "utgangar_tekst": "VNG-01, VNG-04a Brudestova",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:65"
+  },
+  {
+   "id": "VNG-04a",
+   "stad": "VNG",
+   "omraade": "Voss og Hardanger",
+   "namn": "Brudestova",
+   "innhald_tekst": "Førti gjester, kjøkemeisteren utan stemme og den eldre kona på kjøkenet med bryllaupsformlane. Talespelet om kvelden (S1.16)",
+   "scener": [
+    "S1_16"
+   ],
+   "utgangar": [
+    {
+     "til": "VNG-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VNG-04",
+   "epokar": [
+    "reiseaara"
+   ],
+   "epokar_tekst": "1844",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:66"
+  },
+  {
+   "id": "VNG-05",
+   "stad": "VNG",
+   "omraade": "Voss og Hardanger",
+   "namn": "Utmarka og legdsvegen",
+   "innhald_tekst": "Elvane og utmarka på Voss. Kjelebrennaren står synleg ved kjelen sin i 1844. I oktober 1852 går gamle Nils med bylten frå gard til gard, fire gardar med kvar si bok i blekk (S2.24). Fleire gardar står tomme etter Oleana-nybyggjarane",
+   "scener": [
+    "S2_24"
+   ],
+   "utgangar": [
+    {
+     "til": "VNG-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VNG-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:67"
+  },
+  {
+   "id": "TVI-01",
+   "stad": "TVI",
+   "omraade": "Voss og Hardanger",
+   "namn": "Foten av Tvindefossen",
+   "innhald_tekst": "Fossen nord for Vangen og kulpen under. Mor til den unge felespelaren seier at han gjekk for å lære slåttar (S1.17). I 1852 står fossen frosen, og felespelaren frå S1.17 spelar her kvar torsdag (stad utan framdrift)",
+   "scener": [
+    "S1_17"
+   ],
+   "utgangar": [
+    {
+     "til": "VNG-01",
+     "namn": null
+    },
+    {
+     "til": "TVD-01",
+     "namn": "Inngangen bak fosseskodda"
+    }
+   ],
+   "utgangar_tekst": "VNG-01, TVD-01 Inngangen bak fosseskodda",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:68"
+  },
+  {
+   "id": "SKJ-01",
+   "stad": "SKJ",
+   "omraade": "Voss og Hardanger",
+   "namn": "Skjervet",
+   "innhald_tekst": "Vegen ned frå Voss med Skjervsfossen ved sida. Forslag: stengt av ras i fimbulvinteren",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VNG-01",
+     "namn": null
+    },
+    {
+     "til": "SKJ-02",
+     "namn": "Granvin"
+    }
+   ],
+   "utgangar_tekst": "VNG-01, SKJ-02 Granvin",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:69"
+  },
+  {
+   "id": "SKJ-02",
+   "stad": "SKJ",
+   "omraade": "Voss og Hardanger",
+   "namn": "Granvin og båtstøa",
+   "innhald_tekst": "Båt over Hardangerfjorden og inn Sørfjorden",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SKJ-01",
+     "namn": null
+    },
+    {
+     "til": "LFH-01",
+     "namn": "Lofthus",
+     "merknad": "båt"
+    },
+    {
+     "til": "UTN-01",
+     "namn": "Utne",
+     "merknad": "båt"
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Hardangerfjorden"
+    }
+   ],
+   "utgangar_tekst": "SKJ-01, LFH-01 Lofthus (båt), UTN-01 Utne (båt), Verdskartet (Hardangerfjorden)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:70"
+  },
+  {
+   "id": "LFH-01",
+   "stad": "LFH",
+   "omraade": "Voss og Hardanger",
+   "namn": "Lofthus og kyrkjegarden",
+   "innhald_tekst": "Kirsebærtre i blom og Folgefonna over fjorden. Nils stemmer fela på ein stein ved kyrkjegarden, huldreslåtten som minispel, og budeia med bøtta (2.12). Olav fortel om tinget",
+   "scener": [
+    "s2_12"
+   ],
+   "utgangar": [
+    {
+     "til": "SKJ-02",
+     "namn": null,
+     "merknad": "båt"
+    },
+    {
+     "til": "UTN-01",
+     "namn": null,
+     "merknad": "båt"
+    },
+    {
+     "til": "LFH-02",
+     "namn": "Frukthagen"
+    },
+    {
+     "til": "LFH-03",
+     "namn": "Tunet der partyet bur"
+    },
+    {
+     "til": null,
+     "namn": "Villmark V3, inngangsvarden",
+     "fleire_treff": null
+    },
+    {
+     "til": null,
+     "namn": "Voss og Hardanger",
+     "fleire_treff": null
+    },
+    {
+     "til": null,
+     "namn": "Lofthus",
+     "fleire_treff": null
+    },
+    {
+     "til": "FOL-02",
+     "namn": "Prestegarden på Lofthus"
+    },
+    {
+     "til": "FOL-05",
+     "namn": "Ferjestaden og Sørfjorden"
+    },
+    {
+     "til": "TIN-01",
+     "namn": "Tunet ved tingstova"
+    },
+    {
+     "til": "FOL-10",
+     "namn": "Naustet til Hans Utne",
+     "merknad": "1853"
+    },
+    {
+     "til": "FOL-11",
+     "namn": "Frukthagane under snø",
+     "merknad": "1853"
+    },
+    {
+     "til": "verdskartet",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SKJ-02 (båt), UTN-01 (båt), LFH-02 Frukthagen, LFH-03 Tunet der partyet bur, Villmark V3, inngangsvarden",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [
+    "FOL-01"
+   ],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:71",
+   "alias_namn": "Lofthus og Ullensvang kyrkje",
+   "alias_innhald_tekst": "Etappe 1. Kyrkja utan vesttårn, kyrkjegarden og steinen der Nils stemmer fela (2.12). Frukthagane under Folgefonna. Inngangsvarden med kvileruna står ved grinda til frukthagen. Olav fortel om saka etter huldreslåtten"
+  },
+  {
+   "id": "LFH-02",
+   "stad": "LFH",
+   "omraade": "Voss og Hardanger",
+   "namn": "Frukthagen",
+   "innhald_tekst": "Kveld med Ingebjørg, Sjur og vesle Brita, kvart tre sitt ord (S1.18). Aasen og huldra under kirsebærtreet om kvelden (2.12). Kvefsebolet sit synleg i eit epletre i juni 1844. I mai 1853 ligg snøen over trea midt i blomstringa",
+   "scener": [
+    "S1_18",
+    "s2_12"
+   ],
+   "utgangar": [
+    {
+     "til": "LFH-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LFH-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:72"
+  },
+  {
+   "id": "LFH-03",
+   "stad": "LFH",
+   "omraade": "Voss og Hardanger",
+   "namn": "Tunet der partyet bur",
+   "innhald_tekst": "Garden der Aasen bur i seks veker i 1844. I 1853 er Hotel Ullensvang, som Hans Utne starta i 1846 med to senger i eit naust, kvileplass her",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LFH-01",
+     "namn": null
+    },
+    {
+     "til": "LFH-03a",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LFH-01, LFH-03a",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:73"
+  },
+  {
+   "id": "LFH-03a",
+   "stad": "LFH",
+   "omraade": "Voss og Hardanger",
+   "namn": "Kammerset og naustet",
+   "innhald_tekst": "Kammerset i 1844. Naustet med dei to sengene i 1853",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LFH-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LFH-03",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:74"
+  },
+  {
+   "id": "UTN-01",
+   "stad": "UTN",
+   "omraade": "Voss og Hardanger",
+   "namn": "Utne",
+   "innhald_tekst": "Kaia der fjordane møtest, med skysskarar og fjordfolk (stad utan framdrift)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SKJ-02",
+     "namn": null,
+     "merknad": "båt"
+    },
+    {
+     "til": "LFH-01",
+     "namn": null,
+     "merknad": "båt"
+    },
+    {
+     "til": "UTN-01a",
+     "namn": "Gjestgiveriet"
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Hardangerfjorden"
+    }
+   ],
+   "utgangar_tekst": "SKJ-02 (båt), LFH-01 (båt), UTN-01a Gjestgiveriet, Verdskartet (Hardangerfjorden)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:75"
+  },
+  {
+   "id": "UTN-01a",
+   "stad": "UTN",
+   "omraade": "Voss og Hardanger",
+   "namn": "Gjestgiveriet på Utne",
+   "innhald_tekst": "Kvile, handel og post. Andreas Munch, «Brudefærden i Hardanger», ligg på bordet frå Christiania-åra, og Dagboka seier at han er fetteren til P.A. Munch (lesestykke)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UTN-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UTN-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:76"
+  },
+  {
+   "id": "JAR-01",
+   "stad": "JAR",
+   "omraade": "Rogaland, Jæren og Ryfylke",
+   "namn": "Tunet til Kari på Haugen",
+   "innhald_tekst": "Flatt land, lange steingardar og hav i vest. Kari kardar ull på trappa, og Tønnes kastar stein i dammen. Ingen born leikar, og steinane står stille (2.14). Med «kvar» ser Aasen blekkspor langs vegen mot Stavanger. Har Kari fått halde det siste eventyret, har Tønnes lært det når partyet kjem att. I epilogen går Jærbanen frå 1878 over flata",
+   "scener": [
+    "s2_14"
+   ],
+   "utgangar": [
+    {
+     "til": "JAR-01a",
+     "namn": "Stova til Kari"
+    },
+    {
+     "til": "JAR-02",
+     "namn": "Stranda og leirbålet"
+    },
+    {
+     "til": "STV-02",
+     "namn": "Torget",
+     "merknad": "vegen til byen"
+    }
+   ],
+   "utgangar_tekst": "JAR-01a Stova til Kari, JAR-02 Stranda og leirbålet, STV-02 Torget (vegen til byen)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:127"
+  },
+  {
+   "id": "JAR-01a",
+   "stad": "JAR",
+   "omraade": "Rogaland, Jæren og Ryfylke",
+   "namn": "Stova til Kari",
+   "innhald_tekst": "Kveld. Asbjørnsen med kaffikoppen og Moe ved vindauget. Boss Samlaren, nivå 17 (2.16). Kvileplass",
+   "scener": [
+    "s2_16"
+   ],
+   "utgangar": [
+    {
+     "til": "JAR-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "JAR-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:128"
+  },
+  {
+   "id": "JAR-02",
+   "stad": "JAR",
+   "omraade": "Rogaland, Jæren og Ryfylke",
+   "namn": "Stranda og leirbålet",
+   "innhald_tekst": "Havet brummar i mørkret. Leirbålet same natt, kvileplass (2.17). Lyngheia i tåke byrjar bak steingarden",
+   "scener": [
+    "s2_17"
+   ],
+   "utgangar": [
+    {
+     "til": "JAR-01",
+     "namn": null
+    },
+    {
+     "til": "JAR-03",
+     "namn": "Hå prestegard"
+    },
+    {
+     "til": "JRN-01",
+     "namn": "Villmark V4, inngangsvarden",
+     "slatt_opp": true
+    }
+   ],
+   "utgangar_tekst": "JAR-01, JAR-03 Hå prestegard, Villmark V4, inngangsvarden",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:129"
+  },
+  {
+   "id": "JAR-03",
+   "stad": "JAR",
+   "omraade": "Rogaland, Jæren og Ryfylke",
+   "namn": "Hå prestegard",
+   "innhald_tekst": "Prestegarden ved stranda med hovudbygning frå 1787. Klokkaren talar jærsk og tek vare på vrakgods (stad utan framdrift). Gravrøysene ligg i lyngen bak",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "JAR-02",
+     "namn": null
+    },
+    {
+     "til": "JRN-06",
+     "namn": "Stranda nord for Håelva"
+    },
+    {
+     "til": "JRN-08",
+     "namn": "Gravfeltet"
+    },
+    {
+     "til": "RHA-06",
+     "namn": "Kammeret til vorden",
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "JAR-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [
+    "JRN-07"
+   ],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:130",
+   "alias_namn": "Hå prestegard og Håelva",
+   "alias_innhald_tekst": "Hovudbygningen frå 1787. Klokkaren på Hå tek vare på vrakgodset og seier at folk har teke stein frå røysene. Lyttestaden for Stilleprøva er ein stein ved Håelva. Trygg stad. Snarvegen frå røysa kjem ut i lyngen her. Varden for etappe 3"
+  },
+  {
+   "id": "STV-01",
+   "stad": "STV",
+   "omraade": "Rogaland, Jæren og Ryfylke",
+   "namn": "Vågen og Strandkaien",
+   "innhald_tekst": "Dampskipshamn frå 2.14 og sjøbuene langs kaia. På utvandrarkaia ventar familien frå Tysvær på skip til New York i grålysinga (S1.21, oktober 1844)",
+   "scener": [
+    "S1_21"
+   ],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Kystleia"
+    },
+    {
+     "til": "STV-01a",
+     "namn": "Sjøbua"
+    },
+    {
+     "til": "STV-02",
+     "namn": "Torget"
+    },
+    {
+     "til": "STV-03",
+     "namn": "Skagen"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (Kystleia), STV-01a Sjøbua, STV-02 Torget, STV-03 Skagen",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:131"
+  },
+  {
+   "id": "STV-01a",
+   "stad": "STV",
+   "omraade": "Rogaland, Jæren og Ryfylke",
+   "namn": "Sjøbua på Strandkaien",
+   "innhald_tekst": "Kveld. Ane Tjelta talar, og partyet vernar henne mot Konventikkelplakaten, nivå 16 (S1.20). Plakaten frå 1741 heng falma på veggen, og Hauge, «Betragtninger over Verdens Daarlighed» (1796), ligg på benken (lesestykke)",
+   "scener": [
+    "S1_20"
+   ],
+   "utgangar": [
+    {
+     "til": "STV-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "STV-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:132"
+  },
+  {
+   "id": "STV-02",
+   "stad": "STV",
+   "omraade": "Rogaland, Jæren og Ryfylke",
+   "namn": "Torget og domkyrkja",
+   "innhald_tekst": "Domkyrkja over Torget, fristad. Kaffegrutkona startar som Samtale på kjøkenet bak Torget. Apoteket",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "STV-01",
+     "namn": null
+    },
+    {
+     "til": "STV-02a",
+     "namn": "Bokbindaren"
+    },
+    {
+     "til": "STV-03",
+     "namn": null
+    },
+    {
+     "til": "JAR-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "STV-01, STV-02a Bokbindaren, STV-03, JAR-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:133"
+  },
+  {
+   "id": "STV-02a",
+   "stad": "STV",
+   "omraade": "Rogaland, Jæren og Ryfylke",
+   "namn": "Bokbindaren",
+   "innhald_tekst": "Ein smal butikk med lim og lêr. Heftet med tussen i tresnittet (2.15)",
+   "scener": [
+    "s2_15"
+   ],
+   "utgangar": [
+    {
+     "til": "STV-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "STV-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:134"
+  },
+  {
+   "id": "STV-03",
+   "stad": "STV",
+   "omraade": "Rogaland, Jæren og Ryfylke",
+   "namn": "Skagen og Valberget",
+   "innhald_tekst": "Sjøfolk frå heile kysten ventar på dampskipet (stad utan framdrift). Valberget er bert i 1844, har stillas i 1852 og eit tårn med brannvakt frå 1853",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "STV-01",
+     "namn": null
+    },
+    {
+     "til": "STV-02",
+     "namn": null
+    },
+    {
+     "til": "STV-04",
+     "namn": "Isvegen og holmane"
+    }
+   ],
+   "utgangar_tekst": "STV-01, STV-02, STV-04 Isvegen og holmane",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:135"
+  },
+  {
+   "id": "STV-04",
+   "stad": "STV",
+   "omraade": "Rogaland, Jæren og Ryfylke",
+   "namn": "Isvegen og holmane",
+   "innhald_tekst": "Isvegen nord frå byen mot Bergen, med skuter som har frose fast ved holmane. Draugsteinen står synleg i ballasten første gong",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "STV-03",
+     "namn": null
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "isvegen mot Bergen"
+    }
+   ],
+   "utgangar_tekst": "STV-03, Verdskartet (isvegen mot Bergen)",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1852, 1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:136"
+  },
+  {
+   "id": "RLD-01",
+   "stad": "RLD",
+   "omraade": "Rogaland, Jæren og Ryfylke",
+   "namn": "Røldal stavkyrkje",
+   "innhald_tekst": "Samband Røldal og Suldal. Fjellvegen frå Hardanger ned mot Ryfylke. Stavkyrkja er kvilestad og stad utan framdrift",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "mot Hardanger og mot Ryfylke"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (mot Hardanger og mot Ryfylke)",
+   "epokar": [
+    "reiseaara"
+   ],
+   "epokar_tekst": "1844",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:137"
+  },
+  {
+   "id": "BYG-01",
+   "stad": "BYG",
+   "omraade": "Setesdal",
+   "namn": "Skysskiftet ved Byglandsfjorden",
+   "innhald_tekst": "Skysskaren ror folk over og veit kven som bur kvar (stad utan framdrift). Skysslova av 1816 med takstplata heng på veggen (lesestykke). I epilogen er det anleggsarbeid for Setesdalsbanen, som når Byglandsfjord i 1896, og dampbåten går på fjorden frå 1867",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Byglandsfjorden og Otra"
+    },
+    {
+     "til": "BYG-02",
+     "namn": "Leikvollen",
+     "merknad": "båt"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (Byglandsfjorden og Otra), BYG-02 Leikvollen (båt)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:165"
+  },
+  {
+   "id": "BYG-02",
+   "stad": "BYG",
+   "omraade": "Setesdal",
+   "namn": "Leikvollen ved fjorden",
+   "innhald_tekst": "Frost i graset, dei unge i ein klynge, klokkaren med salmeboka og Tarjei med pipa (2.18). Bålet om kvelden og stevduellen, boss Tarjei, nivå 19 (2.19). Steinrøysa der Grotormen søv. Ved den store opninga ligg vollen under snø, og dei unge frå 1844 kvedar for å halde ormen sovande. Kved att vekkjer han, og kampen står her utan dungeon (S2.29, superboss 54)",
+   "scener": [
+    "s2_18",
+    "s2_19",
+    "S2_29"
+   ],
+   "utgangar": [
+    {
+     "til": "BYG-01",
+     "namn": null
+    },
+    {
+     "til": "BYG-03",
+     "namn": "Garden ved fjorden"
+    },
+    {
+     "til": "VLE-01",
+     "namn": "Dalvegen"
+    }
+   ],
+   "utgangar_tekst": "BYG-01, BYG-03 Garden ved fjorden, VLE-01 Dalvegen",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:166"
+  },
+  {
+   "id": "BYG-03",
+   "stad": "BYG",
+   "omraade": "Setesdal",
+   "namn": "Garden ved fjorden",
+   "innhald_tekst": "Tunet med bål, stevstigen og Gamle-Tarjei (S1.22). Lussi langnatt står ved vindauget lussinatta. Forslag: garden tek partyet inn etter 2.19",
+   "scener": [
+    "S1_22"
+   ],
+   "utgangar": [
+    {
+     "til": "BYG-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BYG-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:167"
+  },
+  {
+   "id": "VLE-01",
+   "stad": "VLE",
+   "omraade": "Setesdal",
+   "namn": "Dalvegen langs Otra",
+   "innhald_tekst": "Vegen opp dalen forbi Rysstad. Trollungen under brua over Otra og Vassnykken ved elva står synlege",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BYG-02",
+     "namn": null
+    },
+    {
+     "til": "VLE-01a",
+     "namn": "Løa på Rysstad"
+    },
+    {
+     "til": "VLE-02",
+     "namn": "Rygnestad"
+    },
+    {
+     "til": "VLE-03",
+     "namn": "Valle kyrkjestad"
+    }
+   ],
+   "utgangar_tekst": "BYG-02, VLE-01a Løa på Rysstad, VLE-02 Rygnestad, VLE-03 Valle kyrkjestad",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:168"
+  },
+  {
+   "id": "VLE-01a",
+   "stad": "VLE",
+   "omraade": "Setesdal",
+   "namn": "Løa på Rysstad",
+   "innhald_tekst": "Natt. Forhandlinga med nissen om smøret (S1.23)",
+   "scener": [
+    "S1_23"
+   ],
+   "utgangar": [
+    {
+     "til": "VLE-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VLE-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:169"
+  },
+  {
+   "id": "VLE-02",
+   "stad": "VLE",
+   "omraade": "Setesdal",
+   "namn": "Rygnestad",
+   "innhald_tekst": "Rygnestadloftet i tre etasjar tømmer. Gamle Ingebjørg kvedar og talar setesdalsmål (stad utan framdrift) og ler av korleis stevet er skrive i Moes «Samling af Sange, Folkeviser og Stev» (1840) (lesestykke). Ormeslyngen på eit stabbur er ein rest i S2.34",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VLE-01",
+     "namn": null
+    },
+    {
+     "til": "VLE-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VLE-01, VLE-03",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:170"
+  },
+  {
+   "id": "VLE-03",
+   "stad": "VLE",
+   "omraade": "Setesdal",
+   "namn": "Valle kyrkjestad",
+   "innhald_tekst": "Den gamle kyrkja er riven, og den nye blir vigsla 1. desember 1844 (første etappa i V5). Fristad i 1853",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VLE-01",
+     "namn": null
+    },
+    {
+     "til": "VLE-02",
+     "namn": null
+    },
+    {
+     "til": "VLE-04",
+     "namn": "Kjelda ved Byklestigen"
+    }
+   ],
+   "utgangar_tekst": "VLE-01, VLE-02, VLE-04 Kjelda ved Byklestigen",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:171"
+  },
+  {
+   "id": "VLE-04",
+   "stad": "VLE",
+   "omraade": "Setesdal",
+   "namn": "Kjelda ved Byklestigen",
+   "innhald_tekst": "Ei kjelde renn ut frå berget øvst i dalen. Aasen rissar ei kvilerune, og kjelda blir kvileplass og lagringspunkt (opninga etter 2.18)",
+   "scener": [
+    "s2_18"
+   ],
+   "utgangar": [
+    {
+     "til": "VLE-03",
+     "namn": null
+    },
+    {
+     "til": "BYK-01",
+     "namn": "Villmark V5, inngangsvarden",
+     "slatt_opp": true
+    }
+   ],
+   "utgangar_tekst": "VLE-03, Villmark V5, inngangsvarden",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:172"
+  },
+  {
+   "id": "KRS-01",
+   "stad": "KRS",
+   "omraade": "Kristiansand",
+   "namn": "Dampskipsbrygga",
+   "innhald_tekst": "Inngangen frå sjøen. Handelsmannen frå dampbåten har varene sine her (stad utan framdrift). Dampskipet legg til i 1850 til 1852, og midtvinters ligg ruta i opplag",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Kystleia"
+    },
+    {
+     "til": "KRS-02",
+     "namn": "Torvet"
+    },
+    {
+     "til": "KRS-05",
+     "namn": "Kyrkjegarden ved hamna"
+    },
+    {
+     "til": "KRS-07",
+     "namn": "Lasarettet på Odderøya"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (Kystleia), KRS-02 Torvet, KRS-05 Kyrkjegarden ved hamna, KRS-07 Lasarettet på Odderøya",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:197"
+  },
+  {
+   "id": "KRS-02",
+   "stad": "KRS",
+   "omraade": "Kristiansand",
+   "namn": "Torvet",
+   "innhald_tekst": "Fiskarkoner frå Flekkerøy sel fisk og talar sørlandsmål med skarre-r (stad utan framdrift). Etter S2.42 står Tobine her med sjalet frå Amsterdam. Forslag: huset der Wergeland blei fødd i 1808, er merkt i Kvadraturen frå 1845",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KRS-01",
+     "namn": null
+    },
+    {
+     "til": "KRS-02a",
+     "namn": "Apoteket"
+    },
+    {
+     "til": "KRS-03",
+     "namn": "Domkyrkja"
+    },
+    {
+     "til": "KRS-04",
+     "namn": "Bakgarden"
+    },
+    {
+     "til": "KRS-06",
+     "namn": "Posebyen"
+    }
+   ],
+   "utgangar_tekst": "KRS-01, KRS-02a Apoteket, KRS-03 Domkyrkja, KRS-04 Bakgarden, KRS-06 Posebyen",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:198"
+  },
+  {
+   "id": "KRS-02a",
+   "stad": "KRS",
+   "omraade": "Kristiansand",
+   "namn": "Apoteket",
+   "innhald_tekst": "Apotek (sjekk namn og stad i 1844)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KRS-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "KRS-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:199"
+  },
+  {
+   "id": "KRS-03",
+   "stad": "KRS",
+   "omraade": "Kristiansand",
+   "namn": "Domkyrkja Vor Frue",
+   "innhald_tekst": "Steinkyrkja frå 1738. Klokkene slår timane over heile byen. Brenn i 1880, og i epilogen står den nye kyrkja frå 1885",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KRS-02",
+     "namn": null
+    },
+    {
+     "til": "KRS-03a",
+     "namn": "Kyrkjerommet"
+    }
+   ],
+   "utgangar_tekst": "KRS-02, KRS-03a Kyrkjerommet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:200"
+  },
+  {
+   "id": "KRS-03a",
+   "stad": "KRS",
+   "omraade": "Kristiansand",
+   "namn": "Kyrkjerommet",
+   "innhald_tekst": "Fristad. Julaftan med lys i alle vindauge og kyrkjelyden som syng danske salmar. Huldra sit bakarst på ein benk (S1.24). «Evangelisk-christelig Psalmebog» (1798) ligg i benkene (lesestykke)",
+   "scener": [
+    "S1_24"
+   ],
+   "utgangar": [
+    {
+     "til": "KRS-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "KRS-03",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:201"
+  },
+  {
+   "id": "KRS-04",
+   "stad": "KRS",
+   "omraade": "Kristiansand",
+   "namn": "Bakgarden",
+   "innhald_tekst": "Snø og eit piano langt borte. Familiar går forbi med lykter på veg til kyrkja",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KRS-02",
+     "namn": null
+    },
+    {
+     "til": "KRS-04a",
+     "namn": "Kammerset"
+    }
+   ],
+   "utgangar_tekst": "KRS-02, KRS-04a Kammerset",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:202"
+  },
+  {
+   "id": "KRS-04a",
+   "stad": "KRS",
+   "omraade": "Kristiansand",
+   "namn": "Kammerset",
+   "innhald_tekst": "Smalt rom med skråvegg, seng, bord og vindauge mot bakgarden. Julaftan, vertinna og risengrynsgrauten (2.20). Første juledag og rimkvisten (2.21). Samtale 4. Kvileplass. «Christianssands Stiftsavis og Adresse-Contors Efterretninger» med rutelysinga for dampskipet ligg på bordet (lesestykke)",
+   "scener": [
+    "s2_20",
+    "s2_21"
+   ],
+   "utgangar": [
+    {
+     "til": "KRS-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "KRS-04",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:203"
+  },
+  {
+   "id": "KRS-05",
+   "stad": "KRS",
+   "omraade": "Kristiansand",
+   "namn": "Kyrkjegarden ved hamna",
+   "innhald_tekst": "Natt. Den nederlandske gravsteinen seier namnet feil, og enkja Gunhild Tollefsen høyrer det. Runegåte og skarre-r (S1.25). Etter oppdraget seier steinen namnet rett",
+   "scener": [
+    "S1_25"
+   ],
+   "utgangar": [
+    {
+     "til": "KRS-01",
+     "namn": null
+    },
+    {
+     "til": "KRS-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "KRS-01, KRS-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:204"
+  },
+  {
+   "id": "KRS-06",
+   "stad": "KRS",
+   "omraade": "Kristiansand",
+   "namn": "Posebyen",
+   "innhald_tekst": "Låge trehus i nordaust. Ei grannekone fortel om sonen til Tobine og kista på Odderøya (S2.42)",
+   "scener": [
+    "S2_42"
+   ],
+   "utgangar": [
+    {
+     "til": "KRS-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "KRS-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:205"
+  },
+  {
+   "id": "KRS-07",
+   "stad": "KRS",
+   "omraade": "Kristiansand",
+   "namn": "Lasarettet på Odderøya",
+   "innhald_tekst": "Kvitkalka mur rundt låge hus, sidan 1804. Karantenevakta med protokollen i porten, Tobine på ein stein, røykjeomnen som fraus i oktober. Minispel med einer og tang frå fjøra, utan kamp (S2.42, november 1853). Utsyn til Christiansholm festning og tårnet på domkyrkja",
+   "scener": [
+    "S2_42"
+   ],
+   "utgangar": [
+    {
+     "til": "KRS-01",
+     "namn": null
+    },
+    {
+     "til": "KRS-08",
+     "namn": "Markene og holmane"
+    }
+   ],
+   "utgangar_tekst": "KRS-01, KRS-08 Markene og holmane",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:206"
+  },
+  {
+   "id": "KRS-08",
+   "stad": "KRS",
+   "omraade": "Kristiansand",
+   "namn": "Markene og holmane utanfor byen",
+   "innhald_tekst": "Einaste staden med kamp, nivå 44",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KRS-07",
+     "namn": null
+    },
+    {
+     "til": "verdskartet",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "KRS-07, Verdskartet",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1853",
+   "soner": [
+    "9c_markene_og_holmane_utanfor_byen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:207"
+  },
+  {
+   "id": "BOE-01",
+   "stad": "BOE",
+   "omraade": "Telemark",
+   "namn": "Postvegen ved Heddal og Bø",
+   "innhald_tekst": "Postvegen inn frå Skien og Kongsberg. Heddal stavkyrkje står i stillas 1849 til 1851 under Nebelongs restaurering. Ormane i portalane er ein rest i S2.34 og kan først finnast når stillaset er teke ned",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "postvegen mot Skien og Kongsberg"
+    },
+    {
+     "til": "SEL-01",
+     "namn": "Tunet på prestegarden"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (postvegen mot Skien og Kongsberg), SEL-01 Tunet på prestegarden",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:229"
+  },
+  {
+   "id": "NUT-01",
+   "stad": "NUT",
+   "omraade": "Telemark",
+   "namn": "Nutheim gjestgiveri i Flatdal",
+   "innhald_tekst": "Skysskarane tek inn, og posten ventar (stad utan framdrift). Kvileplass",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "postvegen om Hjartdal mot Kongsberg"
+    },
+    {
+     "til": "SEL-05",
+     "namn": "Gardane og haugane"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (postvegen om Hjartdal mot Kongsberg), SEL-05 Gardane og haugane",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:230"
+  },
+  {
+   "id": "SEL-01",
+   "stad": "SEL",
+   "omraade": "Telemark",
+   "namn": "Tunet på Seljord prestegard",
+   "innhald_tekst": "Ein varm prestegard med brønnen på tunet. Døra til arkivkammeret, der blekket ligg tungt (2.22). Lemmen opp til loftet hausten 1852 (S2.2)",
+   "scener": [
+    "s2_22",
+    "S2_2"
+   ],
+   "utgangar": [
+    {
+     "til": "BOE-01",
+     "namn": null
+    },
+    {
+     "til": "SEL-01a",
+     "namn": "Stova"
+    },
+    {
+     "til": "SAK-01",
+     "namn": "Døra til arkivkammeret"
+    },
+    {
+     "til": "SLP-01",
+     "namn": "Lemmen"
+    },
+    {
+     "til": "SEL-02",
+     "namn": "Kyrkjebakken"
+    },
+    {
+     "til": "SEL-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BOE-01, SEL-01a Stova, SAK-01 Døra til arkivkammeret, SLP-01 Lemmen, SEL-02 Kyrkjebakken, SEL-05",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:231"
+  },
+  {
+   "id": "SEL-01a",
+   "stad": "SEL",
+   "omraade": "Telemark",
+   "namn": "Stova i prestegarden",
+   "innhald_tekst": "Landstad tek imot i døra med bondekona Signe (2.22). Kvileplass i 1845. Etter oppgjeret ligg Landstad, «Norske Folkeviser» (1853), her, og klokkaren viser fram visene frå bygda (lesestykke)",
+   "scener": [
+    "s2_22"
+   ],
+   "utgangar": [
+    {
+     "til": "SEL-01",
+     "namn": null
+    },
+    {
+     "til": "SEL-01b",
+     "namn": "Studerkammeret"
+    }
+   ],
+   "utgangar_tekst": "SEL-01, SEL-01b Studerkammeret",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:232"
+  },
+  {
+   "id": "SEL-01b",
+   "stad": "SEL",
+   "omraade": "Telemark",
+   "namn": "Studerkammeret",
+   "innhald_tekst": "Kista med visene og brevet med fugleseglet (2.24b). Det greske testamentet om natta (S1.48). Kyrkjeboka på pulten er inngangen til S1.26 i februar 1845",
+   "scener": [
+    "s2_24b",
+    "S1_48"
+   ],
+   "utgangar": [
+    {
+     "til": "SEL-01a",
+     "namn": null
+    },
+    {
+     "til": "SKB-01",
+     "namn": "Permen"
+    }
+   ],
+   "utgangar_tekst": "SEL-01a, SKB-01 Permen",
+   "epokar": [
+    "reiseaara"
+   ],
+   "epokar_tekst": "1845",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:233"
+  },
+  {
+   "id": "SEL-02",
+   "stad": "SEL",
+   "omraade": "Telemark",
+   "namn": "Kyrkjebakken",
+   "innhald_tekst": "Seljord kyrkje i stein frå 1100-talet ved vatnet. I 1852 står klokkaren her og hugsar Landstad frå åra hans i bygda (stad utan framdrift)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SEL-01",
+     "namn": null
+    },
+    {
+     "til": "SEL-02a",
+     "namn": "Kyrkjerommet"
+    },
+    {
+     "til": "SEL-03",
+     "namn": "Klokkargarden"
+    },
+    {
+     "til": "SEL-04",
+     "namn": "Stranda"
+    }
+   ],
+   "utgangar_tekst": "SEL-01, SEL-02a Kyrkjerommet, SEL-03 Klokkargarden, SEL-04 Stranda",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:234"
+  },
+  {
+   "id": "SEL-02a",
+   "stad": "SEL",
+   "omraade": "Telemark",
+   "namn": "Kyrkjerommet",
+   "innhald_tekst": "Fase 2 mot Blekkpresten søndag morgon, med kyrkjelyden som syng (2.24). Unntak frå fristaden til Blekkpresten er slegen. Deretter fristad og kvileplass for resten av spelet",
+   "scener": [
+    "s2_24"
+   ],
+   "utgangar": [
+    {
+     "til": "SEL-02",
+     "namn": null
+    },
+    {
+     "til": "SAK-08",
+     "namn": "Den gamle gangen"
+    }
+   ],
+   "utgangar_tekst": "SEL-02, SAK-08 Den gamle gangen",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:235"
+  },
+  {
+   "id": "SEL-03",
+   "stad": "SEL",
+   "omraade": "Telemark",
+   "namn": "Klokkargarden i Seljord",
+   "innhald_tekst": "Klokkaren sel salmebøker og talar vesttelemål",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SEL-02",
+     "namn": null
+    },
+    {
+     "til": "SEL-03a",
+     "namn": "Loftet hjå klokkaren"
+    }
+   ],
+   "utgangar_tekst": "SEL-02, SEL-03a Loftet hjå klokkaren",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:236"
+  },
+  {
+   "id": "SEL-03a",
+   "stad": "SEL",
+   "omraade": "Telemark",
+   "namn": "Loftet hjå klokkaren",
+   "innhald_tekst": "Bøker som klokkaren set av til den som skal syngje i kyrkja. Ventekista VK14",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SEL-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SEL-03",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:237"
+  },
+  {
+   "id": "SEL-04",
+   "stad": "SEL",
+   "omraade": "Telemark",
+   "namn": "Stranda ved Seljordsvatnet",
+   "innhald_tekst": "Gamle Tov talar telemål og fortel om sjøormen (stad utan framdrift i 1845). Ei månelys natt i mars 1845 sprekk isen i bogar ute på vatnet, boss Ormen på isen med Vinje, nivå 21 (S1.27). Hausten 1852 står Landstad og Aasen utanfor stova til kvedarkona om natta (S2.2.3)",
+   "scener": [
+    "S1_27",
+    "S2_2_3"
+   ],
+   "utgangar": [
+    {
+     "til": "SEL-02",
+     "namn": null
+    },
+    {
+     "til": "SEL-04a",
+     "namn": "Stova til kvedarkona"
+    },
+    {
+     "til": "KVI-01",
+     "namn": "Isvegen over Kviteseid"
+    }
+   ],
+   "utgangar_tekst": "SEL-02, SEL-04a Stova til kvedarkona, KVI-01 Isvegen over Kviteseid",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:238"
+  },
+  {
+   "id": "SEL-04a",
+   "stad": "SEL",
+   "omraade": "Telemark",
+   "namn": "Stova til kvedarkona",
+   "innhald_tekst": "Kvedarkona ligg for døden, og Gro flettar halm ved fotenden. Landstad syng visa (S2.2.2)",
+   "scener": [
+    "S2_2_2"
+   ],
+   "utgangar": [
+    {
+     "til": "SEL-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SEL-04",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1852–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:239"
+  },
+  {
+   "id": "SEL-05",
+   "stad": "SEL",
+   "omraade": "Telemark",
+   "namn": "Gardane og haugane i Seljord",
+   "innhald_tekst": "Dei levande som veit kva besteforeldra heitte, til namneoppgåvene i 2.23. Haugbonden står synleg ved tuntreet på ein gard, Stimannen grev på haugane om natta, og Haugfolket går på vegen. Hausten 1852 ligg dei fire versa av visa spreidde hos folk her (S2.2). Kivlemøyane står i steinen i Kivledalen",
+   "scener": [
+    "S2_2"
+   ],
+   "utgangar": [
+    {
+     "til": "SEL-01",
+     "namn": null
+    },
+    {
+     "til": "NUT-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SEL-01, NUT-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:240"
+  },
+  {
+   "id": "KVI-01",
+   "stad": "KVI",
+   "omraade": "Telemark",
+   "namn": "Isvegen over Kviteseid",
+   "innhald_tekst": "Samband Kviteseid og Vinje. Isvegar over vatna om vinteren. Vegen langs vatna om sommaren",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SEL-04",
+     "namn": null
+    },
+    {
+     "til": "MOR-01",
+     "namn": "Morgedal"
+    },
+    {
+     "til": "VIN-01",
+     "namn": "Vinje"
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "vintervegen gjennom Nissedal"
+    }
+   ],
+   "utgangar_tekst": "SEL-04, MOR-01 Morgedal, VIN-01 Vinje, Verdskartet (vintervegen gjennom Nissedal)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:241"
+  },
+  {
+   "id": "MOR-01",
+   "stad": "MOR",
+   "omraade": "Telemark",
+   "namn": "Morgedal",
+   "innhald_tekst": "Bakken ovanfor Øverbø. Hopprennet med Sondre Norheim mot Fonnvetten, februar 1853 (S2.25)",
+   "scener": [
+    "S2_25"
+   ],
+   "utgangar": [
+    {
+     "til": "KVI-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "KVI-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:242"
+  },
+  {
+   "id": "VIN-01",
+   "stad": "VIN",
+   "omraade": "Telemark",
+   "namn": "Vinje, Plassen og lensmannsgarden",
+   "innhald_tekst": "Husmannsplassen under Nordgarden. Forlaten i mai 1845, med rifta i veggen der det står «Høyrt» (S1.29). I juli 1852 bur Olav Plassen her med fem born, og husmennene står ute i snøen langs vegen (S2.1.1). Stabben på tunet om morgonen (S2.1.3). Svartebokeigaren i Vinje står synleg med Vorden i 1845. Lensmannsgarden opnar seg på kartet etter S2.1.1. I epilogen ligg Vinje, «Dølen», her (lesestykke)",
+   "scener": [
+    "S1_29",
+    "S2_1_1",
+    "S2_1_3"
+   ],
+   "utgangar": [
+    {
+     "til": "KVI-01",
+     "namn": null
+    },
+    {
+     "til": "RAU-03",
+     "namn": "Totak"
+    },
+    {
+     "til": "LMP-01",
+     "namn": "Lensmannskontoret"
+    }
+   ],
+   "utgangar_tekst": "KVI-01, RAU-03 Totak, LMP-01 Lensmannskontoret",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:243"
+  },
+  {
+   "id": "RAU-01",
+   "stad": "RAU",
+   "omraade": "Telemark",
+   "namn": "Tunet på Tveitli",
+   "innhald_tekst": "Gamalt tun høgt over Totak. Aslaug i døra med tresleiva (2.25). Vinje kjem gåande med bokbylten (2.26). Stevduellen Aslaug mot Vinje, nivå 22, med folk frå grendene (2.27). Landstad og Aasen på tunet siste kvelden (2.28). I juli 1852 ligg snø på tunet og grønt gras under skaren, og Aslaug og Aasen står ved grinda (6.7b). I mars 1853 legg det seg ein ring av lys i snøen rundt garden når Guro seier «løyv» til hunden (6.18)",
+   "scener": [
+    "s2_25",
+    "s2_26",
+    "s2_27",
+    "s2_28",
+    "s6_7b",
+    "s6_18"
+   ],
+   "utgangar": [
+    {
+     "til": "RAU-01a",
+     "namn": "Røykstova"
+    },
+    {
+     "til": "RAU-02",
+     "namn": "Klokkargarden i Rauland"
+    },
+    {
+     "til": "RAU-03",
+     "namn": null
+    },
+    {
+     "til": "RAU-04",
+     "namn": "Setra"
+    }
+   ],
+   "utgangar_tekst": "RAU-01a Røykstova, RAU-02 Klokkargarden i Rauland, RAU-03, RAU-04 Setra",
+   "epokar": [
+    "reiseaara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret"
+   ],
+   "epokar_tekst": "1845, 1852–53, 1856",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:244"
+  },
+  {
+   "id": "RAU-01a",
+   "stad": "RAU",
+   "omraade": "Telemark",
+   "namn": "Røykstova på Tveitli",
+   "innhald_tekst": "Grua og benken. Kvileplass. Ord utan papir (2.25). Visa som ikkje vart skriven (2.28). Kvedarkvinna og penna (S1.28). Kampen mot Frostkveda (6.7b). Stevjinga og «Gje vidare» (6.18). Aslaugs stove i S2.3.2",
+   "scener": [
+    "s2_25",
+    "s2_28",
+    "S1_28",
+    "s6_7b",
+    "s6_18"
+   ],
+   "utgangar": [
+    {
+     "til": "RAU-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "RAU-01",
+   "epokar": [
+    "reiseaara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1845, 1852–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:245"
+  },
+  {
+   "id": "RAU-02",
+   "stad": "RAU",
+   "omraade": "Telemark",
+   "namn": "Klokkargarden og kyrkjebakken i Rauland",
+   "innhald_tekst": "Rauland kyrkje frå 1803. Klokkaren les breva frå Wisconsin på dansk for Tone, liten boss Rettskrivarbrillene, nivå 42 (S2.3.1, januar 1853). Stevjingsturneringa ved jul 1852 (S2.37, staden er forslag)",
+   "scener": [
+    "S2_3_1",
+    "S2_37"
+   ],
+   "utgangar": [
+    {
+     "til": "RAU-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "RAU-01",
+   "epokar": [
+    "reiseaara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1845, 1852–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:246"
+  },
+  {
+   "id": "RAU-03",
+   "stad": "RAU",
+   "omraade": "Telemark",
+   "namn": "Totak",
+   "innhald_tekst": "Isen ligg på vatnet i mars. Vegen ned frå Tveitli (2.26). Gjetarguten kved stev på raulandsmål (stad utan framdrift i 1852). Langs vatnet ligg Urebø-ura",
+   "scener": [
+    "s2_26"
+   ],
+   "utgangar": [
+    {
+     "til": "RAU-01",
+     "namn": null
+    },
+    {
+     "til": "VIN-01",
+     "namn": null
+    },
+    {
+     "til": "GAU-01",
+     "namn": "Tinnsjøen og Gaustatoppen"
+    },
+    {
+     "til": "HVR-01",
+     "namn": "Villmark V6, inngangsvarden",
+     "slatt_opp": true
+    }
+   ],
+   "utgangar_tekst": "RAU-01, VIN-01, GAU-01 Tinnsjøen og Gaustatoppen, Villmark V6, inngangsvarden",
+   "epokar": [
+    "reiseaara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1845, 1852–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:247"
+  },
+  {
+   "id": "RAU-04",
+   "stad": "RAU",
+   "omraade": "Telemark",
+   "namn": "Setra i Rauland",
+   "innhald_tekst": "Aslaug lærer opp ei jente frå grenda, og ein samlar frå Universitetet kjem opp stien (7.17, august 1856)",
+   "scener": [
+    "s7_17"
+   ],
+   "utgangar": [
+    {
+     "til": "RAU-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "RAU-01",
+   "epokar": [
+    "etter_oppgjeret"
+   ],
+   "epokar_tekst": "1856",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:248"
+  },
+  {
+   "id": "GAU-01",
+   "stad": "GAU",
+   "omraade": "Telemark",
+   "namn": "Tinnsjøen og Gaustatoppen",
+   "innhald_tekst": "Kjenneteiknet. Fjellvegen om Tinn mot Kongsberg (2.28). Isveg over Tinnsjøen i fimbulvinteren. Jotunskuggen på Gaustatoppen står på fjella under toppen",
+   "scener": [
+    "s2_28"
+   ],
+   "utgangar": [
+    {
+     "til": "RAU-03",
+     "namn": null
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "fjellvegen om Tinn"
+    },
+    {
+     "til": null,
+     "namn": "Drakestadene: Gaustatoppen",
+     "fleire_treff": null
+    }
+   ],
+   "utgangar_tekst": "RAU-03, Verdskartet (fjellvegen om Tinn), Drakestadene: Gaustatoppen",
+   "epokar": [
+    "reiseaara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1845, 1852–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:249"
+  }
+ ],
+ "rom": [
+  {
+   "id": "TVD-01",
+   "stad": "TVD",
+   "omraade": "Bak Tvindefossen (S1.17)",
+   "dungeon": "Bak Tvindefossen (S1.17)",
+   "lag": "Hylla",
+   "namn": "Inngangen bak fosseskodda",
+   "innhald_tekst": "Bruset fyller alt. Lytt skil ut éin tone om gongen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TVI-01",
+     "namn": "Foten av Tvindefossen"
+    },
+    {
+     "til": "TVD-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "TVI-01 Foten av Tvindefossen, TVD-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_bak_tvindefossen_s1.17"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:107"
+  },
+  {
+   "id": "TVD-02",
+   "stad": "TVD",
+   "omraade": "Bak Tvindefossen (S1.17)",
+   "dungeon": "Bak Tvindefossen (S1.17)",
+   "lag": "Hylla",
+   "namn": "Den våte hylla",
+   "innhald_tekst": "Ei smal hylle bak vasskvelven. Hubroen og Stuten",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TVD-01",
+     "namn": null
+    },
+    {
+     "til": "TVD-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "TVD-01, TVD-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_bak_tvindefossen_s1.17"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:108"
+  },
+  {
+   "id": "TVD-03",
+   "stad": "TVD",
+   "omraade": "Bak Tvindefossen (S1.17)",
+   "dungeon": "Bak Tvindefossen (S1.17)",
+   "lag": "Hylla",
+   "namn": "Holrommet med ekkoet",
+   "innhald_tekst": "Gåta: tonane frå slåtten kjem att i bruset, og spelaren skil dei ut ein og ein. Kvar tone som er funnen, viser eit steg vidare",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TVD-02",
+     "namn": null
+    },
+    {
+     "til": "TVD-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "TVD-02, TVD-04",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": true,
+   "soner": [
+    "9b_bak_tvindefossen_s1.17"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:109"
+  },
+  {
+   "id": "TVD-04",
+   "stad": "TVD",
+   "omraade": "Bak Tvindefossen (S1.17)",
+   "dungeon": "Bak Tvindefossen (S1.17)",
+   "lag": "Botnen",
+   "namn": "Stigen ned bak vatnet",
+   "innhald_tekst": "Stigen går ned innanfor vasskvelven mot botnen av fossen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TVD-03",
+     "namn": null
+    },
+    {
+     "til": "TVD-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "TVD-03, TVD-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_bak_tvindefossen_s1.17"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:110"
+  },
+  {
+   "id": "TVD-05",
+   "stad": "TVD",
+   "omraade": "Bak Tvindefossen (S1.17)",
+   "dungeon": "Bak Tvindefossen (S1.17)",
+   "lag": "Botnen",
+   "namn": "Kjelda ved foten av fossen",
+   "innhald_tekst": "Kvilestad. Kjelda kjem fram innanfor vasskvelven",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TVD-04",
+     "namn": null
+    },
+    {
+     "til": "TVD-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "TVD-04, TVD-06",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_bak_tvindefossen_s1.17"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:111"
+  },
+  {
+   "id": "TVD-06",
+   "stad": "TVD",
+   "omraade": "Bak Tvindefossen (S1.17)",
+   "dungeon": "Bak Tvindefossen (S1.17)",
+   "lag": "Botnen",
+   "namn": "Steinen bak fossen",
+   "innhald_tekst": "Bossrom. Fossegrimen spelar, og Olav er gjest med kommandoen Spel. Aasen finn ordet «slutt» og seier det i takt. Val A eller B (S1.17). Snarveg: etter kampen går partyet ut gjennom vasskvelven til TVI-01",
+   "scener": [
+    "S1_17"
+   ],
+   "utgangar": [
+    {
+     "til": "TVD-05",
+     "namn": null
+    },
+    {
+     "til": "TVI-01",
+     "namn": null,
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "TVD-05, TVI-01 (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9b_bak_tvindefossen_s1.17"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:112"
+  },
+  {
+   "id": "SAK-01",
+   "stad": "SAK",
+   "omraade": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "dungeon": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "lag": "Inngang",
+   "namn": "Døra og forkammeret",
+   "innhald_tekst": "Det luktar fuktig papir, og bøkene kviskrar namn. Ei bok frå 1780-talet viser namnet Torbjørn Olsen Nordgaard som skiftar medan dei ser på (2.23)",
+   "scener": [
+    "s2_23"
+   ],
+   "utgangar": [
+    {
+     "til": "SEL-01",
+     "namn": "Tunet på prestegarden"
+    },
+    {
+     "til": "SAK-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SEL-01 Tunet på prestegarden, SAK-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_arkivkammeret_i_seljord",
+    "9b_seljord_kyrkje_januar_1845_unntak"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:281"
+  },
+  {
+   "id": "SAK-02",
+   "stad": "SAK",
+   "omraade": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "dungeon": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "lag": "Dåp",
+   "namn": "Dåpsrommet, hyllene",
+   "innhald_tekst": "Innførslar og Blekkdropar. Det vandrande dåpsnamnet leitar etter folk mellom hyllene",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SAK-01",
+     "namn": null
+    },
+    {
+     "til": "SAK-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SAK-01, SAK-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_seljord_kyrkje_januar_1845_unntak"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:282"
+  },
+  {
+   "id": "SAK-03",
+   "stad": "SAK",
+   "omraade": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "dungeon": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "lag": "Dåp",
+   "namn": "Dåpsrommet, døypeboka",
+   "innhald_tekst": "Første namneoppgåva",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SAK-02",
+     "namn": null
+    },
+    {
+     "til": "SAK-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SAK-02, SAK-04",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_seljord_kyrkje_januar_1845_unntak"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:283"
+  },
+  {
+   "id": "SAK-04",
+   "stad": "SAK",
+   "omraade": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "dungeon": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "lag": "Vigslar",
+   "namn": "Vigselsrommet, hyllene",
+   "innhald_tekst": "Innførslar og Blekkdropar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SAK-03",
+     "namn": null
+    },
+    {
+     "til": "SAK-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SAK-03, SAK-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_seljord_kyrkje_januar_1845_unntak"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:284"
+  },
+  {
+   "id": "SAK-05",
+   "stad": "SAK",
+   "omraade": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "dungeon": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "lag": "Vigslar",
+   "namn": "Vigselsrommet, pulten",
+   "innhald_tekst": "Andre namneoppgåva",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SAK-04",
+     "namn": null
+    },
+    {
+     "til": "SAK-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SAK-04, SAK-06",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_seljord_kyrkje_januar_1845_unntak"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:285"
+  },
+  {
+   "id": "SAK-06",
+   "stad": "SAK",
+   "omraade": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "dungeon": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "lag": "Tunet",
+   "namn": "Bakdøra og brønnen",
+   "innhald_tekst": "Kvilestad: Aasen rissar kvileruna i brønnen på prestegarden (forslag i Dungeonane)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SAK-05",
+     "namn": null
+    },
+    {
+     "til": "SAK-07",
+     "namn": null
+    },
+    {
+     "til": "SEL-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SAK-05, SAK-07, SEL-01",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_seljord_kyrkje_januar_1845_unntak"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:286"
+  },
+  {
+   "id": "SAK-07",
+   "stad": "SAK",
+   "omraade": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "dungeon": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "lag": "Gravferder",
+   "namn": "Gravferdsrommet",
+   "innhald_tekst": "Tredje namneoppgåva. Blekket reiser seg, og bossrommet for fase 1: Blekkpresten rettar namna til partyet, og Landstad syng folkevisestubbar som lækjer rettinga. Ved halv Liv flyktar han (2.23)",
+   "scener": [
+    "s2_23"
+   ],
+   "utgangar": [
+    {
+     "til": "SAK-06",
+     "namn": null
+    },
+    {
+     "til": "SAK-08",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SAK-06, SAK-08",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9b_seljord_kyrkje_januar_1845_unntak"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:287"
+  },
+  {
+   "id": "SAK-08",
+   "stad": "SAK",
+   "omraade": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "dungeon": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "lag": "Gangen",
+   "namn": "Den gamle gangen",
+   "innhald_tekst": "Gangen frå prestegarden inn til kyrkja. Klipp til søndag morgon, og kampen held fram utan kvile",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SAK-07",
+     "namn": null
+    },
+    {
+     "til": "SAK-09",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SAK-07, SAK-09",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_seljord_kyrkje_januar_1845_unntak"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:288"
+  },
+  {
+   "id": "SAK-09",
+   "stad": "SAK",
+   "omraade": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "dungeon": "Arkivkammeret i Seljord (2.23 til 2.24)",
+   "lag": "Kyrkja",
+   "namn": "Kyrkjerommet",
+   "innhald_tekst": "Bossrommet for fase 2, same flate som SEL-02a. Kyrkjelyden syng Brorson på telemål, og Blekkpresten dryp ned i døypefonten (2.24). Snarveg: kyrkja blir kvileplass, og gangen går tilbake til arkivet",
+   "scener": [
+    "s2_24"
+   ],
+   "utgangar": [
+    {
+     "til": "SAK-08",
+     "namn": null
+    },
+    {
+     "til": "SEL-02",
+     "namn": "Kyrkjebakken"
+    }
+   ],
+   "utgangar_tekst": "SAK-08, SEL-02 Kyrkjebakken",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9b_seljord_kyrkje_januar_1845_unntak"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:289"
+  },
+  {
+   "id": "SKB-01",
+   "stad": "SKB",
+   "omraade": "Inne i kyrkjeboka (S1.26)",
+   "dungeon": "Inne i kyrkjeboka (S1.26)",
+   "lag": "Inngang",
+   "namn": "Permen",
+   "innhald_tekst": "Innsida av permen. Snarvegen ut etter bossen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SEL-01b",
+     "namn": "Studerkammeret"
+    },
+    {
+     "til": "SKB-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SEL-01b Studerkammeret, SKB-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_inne_i_kyrkjeboka_s1.26"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:305"
+  },
+  {
+   "id": "SKB-02",
+   "stad": "SKB",
+   "omraade": "Inne i kyrkjeboka (S1.26)",
+   "dungeon": "Inne i kyrkjeboka (S1.26)",
+   "lag": "Side 1",
+   "namn": "Første oppslaget",
+   "innhald_tekst": "Eit landskap av papir der blekkstrekane er vegar. Asgaut står som Asgaud. Sidegåte: når namnet er retta, blir streken ein stig vidare",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SKB-01",
+     "namn": null
+    },
+    {
+     "til": "SKB-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SKB-01, SKB-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_inne_i_kyrkjeboka_s1.26"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:306"
+  },
+  {
+   "id": "SKB-03",
+   "stad": "SKB",
+   "omraade": "Inne i kyrkjeboka (S1.26)",
+   "dungeon": "Inne i kyrkjeboka (S1.26)",
+   "lag": "Falsen",
+   "namn": "Linjene over falsen",
+   "innhald_tekst": "Linjene går som bruer over den kvite falsen. Innførslar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SKB-02",
+     "namn": null
+    },
+    {
+     "til": "SKB-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SKB-02, SKB-04",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_inne_i_kyrkjeboka_s1.26"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:307"
+  },
+  {
+   "id": "SKB-04",
+   "stad": "SKB",
+   "omraade": "Inne i kyrkjeboka (S1.26)",
+   "dungeon": "Inne i kyrkjeboka (S1.26)",
+   "lag": "Side 2",
+   "namn": "Andre oppslaget",
+   "innhald_tekst": "Tarjei står som Thorgeir. Sidegåte",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SKB-03",
+     "namn": null
+    },
+    {
+     "til": "SKB-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SKB-03, SKB-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_inne_i_kyrkjeboka_s1.26"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:308"
+  },
+  {
+   "id": "SKB-05",
+   "stad": "SKB",
+   "omraade": "Inne i kyrkjeboka (S1.26)",
+   "dungeon": "Inne i kyrkjeboka (S1.26)",
+   "lag": "Side 3",
+   "namn": "Tredje oppslaget",
+   "innhald_tekst": "Ungen som blei døypt Gunvor, står som Gundvor. Sidegåte",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SKB-04",
+     "namn": null
+    },
+    {
+     "til": "SKB-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SKB-04, SKB-06",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_inne_i_kyrkjeboka_s1.26"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:309"
+  },
+  {
+   "id": "SKB-06",
+   "stad": "SKB",
+   "omraade": "Inne i kyrkjeboka (S1.26)",
+   "dungeon": "Inne i kyrkjeboka (S1.26)",
+   "lag": "Margen",
+   "namn": "Randen utan skrift",
+   "innhald_tekst": "Kvilestad (forslag i Dungeonane)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SKB-05",
+     "namn": null
+    },
+    {
+     "til": "SKB-07",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SKB-05, SKB-07",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_inne_i_kyrkjeboka_s1.26"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:310"
+  },
+  {
+   "id": "SKB-07",
+   "stad": "SKB",
+   "omraade": "Inne i kyrkjeboka (S1.26)",
+   "dungeon": "Inne i kyrkjeboka (S1.26)",
+   "lag": "Side 4",
+   "namn": "Den siste sida",
+   "innhald_tekst": "Bossrom. Kirkebogsføreren rettar namna tilbake like fort som partyet reiser dei, og i fase 2 syng Landstad namna. Val B legg ei liste på telemål bakarst i boka (S1.26)",
+   "scener": [
+    "S1_26"
+   ],
+   "utgangar": [
+    {
+     "til": "SKB-06",
+     "namn": null
+    },
+    {
+     "til": "SKB-01",
+     "namn": null,
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "SKB-06, SKB-01 (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9b_inne_i_kyrkjeboka_s1.26"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:311"
+  },
+  {
+   "id": "LMP-01",
+   "stad": "LMP",
+   "omraade": "Protokollen i lensmannsgarden (S2.1)",
+   "dungeon": "Protokollen i lensmannsgarden (S2.1)",
+   "lag": "Garden",
+   "namn": "Lensmannskontoret om natta",
+   "innhald_tekst": "Protokollen ligg open på pulten",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VIN-01",
+     "namn": "Vinje"
+    },
+    {
+     "til": "LMP-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VIN-01 Vinje, LMP-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_protokollen_i_lensmannsgarden_s2.1_juli_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:326"
+  },
+  {
+   "id": "LMP-02",
+   "stad": "LMP",
+   "omraade": "Protokollen i lensmannsgarden (S2.1)",
+   "dungeon": "Protokollen i lensmannsgarden (S2.1)",
+   "lag": "Side 1",
+   "namn": "Kontraktane",
+   "innhald_tekst": "Linjerte rader med husmannskontraktane. Paragrafen i lensmannsprotokollen går til åtak med «rettskriven»",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LMP-01",
+     "namn": null
+    },
+    {
+     "til": "LMP-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LMP-01, LMP-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_protokollen_i_lensmannsgarden_s2.1_juli_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:327"
+  },
+  {
+   "id": "LMP-03",
+   "stad": "LMP",
+   "omraade": "Protokollen i lensmannsgarden (S2.1)",
+   "dungeon": "Protokollen i lensmannsgarden (S2.1)",
+   "lag": "Side 1",
+   "namn": "Margen",
+   "innhald_tekst": "Renteskrivaren i lensmannsgarden legg ventetid på turen til partyet",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LMP-02",
+     "namn": null
+    },
+    {
+     "til": "LMP-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LMP-02, LMP-04",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_protokollen_i_lensmannsgarden_s2.1_juli_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:328"
+  },
+  {
+   "id": "LMP-04",
+   "stad": "LMP",
+   "omraade": "Protokollen i lensmannsgarden (S2.1)",
+   "dungeon": "Protokollen i lensmannsgarden (S2.1)",
+   "lag": "Side 2",
+   "namn": "Arbeidsdagane",
+   "innhald_tekst": "Talet på pliktdagar veks for kvar line, til det står tre hundre dagar i året",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LMP-03",
+     "namn": null
+    },
+    {
+     "til": "LMP-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LMP-03, LMP-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_protokollen_i_lensmannsgarden_s2.1_juli_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:329"
+  },
+  {
+   "id": "LMP-05",
+   "stad": "LMP",
+   "omraade": "Protokollen i lensmannsgarden (S2.1)",
+   "dungeon": "Protokollen i lensmannsgarden (S2.1)",
+   "lag": "Side 2 og 3",
+   "namn": "Linja med søndagane",
+   "innhald_tekst": "Linja der lensmannen reknar med søndagane, er brua over til tredje sida",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LMP-04",
+     "namn": null
+    },
+    {
+     "til": "LMP-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LMP-04, LMP-06",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_protokollen_i_lensmannsgarden_s2.1_juli_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:330"
+  },
+  {
+   "id": "LMP-06",
+   "stad": "LMP",
+   "omraade": "Protokollen i lensmannsgarden (S2.1)",
+   "dungeon": "Protokollen i lensmannsgarden (S2.1)",
+   "lag": "Side 3",
+   "namn": "Hjørnet mot omnsveggen",
+   "innhald_tekst": "Kvilestad: ein snøfonn som er tint ved omnsveggen (forslag i Dungeonane)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LMP-05",
+     "namn": null
+    },
+    {
+     "til": "LMP-07",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LMP-05, LMP-07",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_protokollen_i_lensmannsgarden_s2.1_juli_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:331"
+  },
+  {
+   "id": "LMP-07",
+   "stad": "LMP",
+   "omraade": "Protokollen i lensmannsgarden (S2.1)",
+   "dungeon": "Protokollen i lensmannsgarden (S2.1)",
+   "lag": "Side 3",
+   "namn": "Botnen av sida",
+   "innhald_tekst": "Bossrom. Protokollen les kontraktane i fase 1 og Vinjes avisstykke i fase 2, og Vinje svarar med stev. Val A eller B (S2.1.2). Snarveg: sida som blir skriven om eller riven ut, fører rett til kontoret",
+   "scener": [
+    "S2_1_2"
+   ],
+   "utgangar": [
+    {
+     "til": "LMP-06",
+     "namn": null
+    },
+    {
+     "til": "LMP-01",
+     "namn": null,
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "LMP-06, LMP-01 (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9c_protokollen_i_lensmannsgarden_s2.1_juli_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:332"
+  },
+  {
+   "id": "SLP-01",
+   "stad": "SLP",
+   "omraade": "Loftet på Seljord prestegard (S2.2)",
+   "dungeon": "Loftet på Seljord prestegard (S2.2)",
+   "lag": "Loftet",
+   "namn": "Lemmen",
+   "innhald_tekst": "Trappa opp frå tunet. Landstad les korrektur på Norske Folkeviser",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SEL-01",
+     "namn": "Tunet på prestegarden"
+    },
+    {
+     "til": "SLP-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SEL-01 Tunet på prestegarden, SLP-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_loftet_paa_seljord_prestegard_s2.2_hausten_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:347"
+  },
+  {
+   "id": "SLP-02",
+   "stad": "SLP",
+   "omraade": "Loftet på Seljord prestegard (S2.2)",
+   "dungeon": "Loftet på Seljord prestegard (S2.2)",
+   "lag": "Loftet",
+   "namn": "Snorene med ark",
+   "innhald_tekst": "Korrekturarka flyg som kråker og hakkar etter linjer i minnet til Landstad",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SLP-01",
+     "namn": null
+    },
+    {
+     "til": "SLP-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLP-01, SLP-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_loftet_paa_seljord_prestegard_s2.2_hausten_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:348"
+  },
+  {
+   "id": "SLP-03",
+   "stad": "SLP",
+   "omraade": "Loftet på Seljord prestegard (S2.2)",
+   "dungeon": "Loftet på Seljord prestegard (S2.2)",
+   "lag": "Loftet",
+   "namn": "Kistene under takskjegget",
+   "innhald_tekst": "Ein trong gang mellom gamle kister",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SLP-02",
+     "namn": null
+    },
+    {
+     "til": "SLP-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLP-02, SLP-04",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_loftet_paa_seljord_prestegard_s2.2_hausten_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:349"
+  },
+  {
+   "id": "SLP-04",
+   "stad": "SLP",
+   "omraade": "Loftet på Seljord prestegard (S2.2)",
+   "dungeon": "Loftet på Seljord prestegard (S2.2)",
+   "lag": "Loftet",
+   "namn": "Mønet",
+   "innhald_tekst": "Kråkene av papir sit i rader langs mønsåsen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SLP-03",
+     "namn": null
+    },
+    {
+     "til": "SLP-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLP-03, SLP-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_loftet_paa_seljord_prestegard_s2.2_hausten_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:350"
+  },
+  {
+   "id": "SLP-05",
+   "stad": "SLP",
+   "omraade": "Loftet på Seljord prestegard (S2.2)",
+   "dungeon": "Loftet på Seljord prestegard (S2.2)",
+   "lag": "Loftet",
+   "namn": "Gluggen med snøsmelte",
+   "innhald_tekst": "Kvilestad (forslag i Dungeonane)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SLP-04",
+     "namn": null
+    },
+    {
+     "til": "SLP-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLP-04, SLP-06",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_loftet_paa_seljord_prestegard_s2.2_hausten_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:351"
+  },
+  {
+   "id": "SLP-06",
+   "stad": "SLP",
+   "omraade": "Loftet på Seljord prestegard (S2.2)",
+   "dungeon": "Loftet på Seljord prestegard (S2.2)",
+   "lag": "Loftet",
+   "namn": "Arka i sats",
+   "innhald_tekst": "Bossrom. Korrekturarket vil setje visa i sats (S2.2.1). Snarveg: lemmen ned til tunet",
+   "scener": [
+    "S2_2_1"
+   ],
+   "utgangar": [
+    {
+     "til": "SLP-05",
+     "namn": null
+    },
+    {
+     "til": "SEL-01",
+     "namn": null,
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "SLP-05, SEL-01 (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9c_loftet_paa_seljord_prestegard_s2.2_hausten_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:352"
+  }
+ ],
+ "kister": [
+  {
+   "id": "K-LKG-02-1",
+   "skjerm": "LKG-02",
+   "behaldar": "Gøymsle under ein stein i bøen ovanfor tunet",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "honningvatn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut og 1 honningvatn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Lytt på staden",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:37"
+  },
+  {
+   "id": "K-LKG-07-1",
+   "skjerm": "LKG-07",
+   "behaldar": "Kiste i naustet",
+   "innhald": [
+    {
+     "ting": "dun",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Dun",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Lars har sagt ja",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:38"
+  },
+  {
+   "id": "K-HFS-01-1",
+   "skjerm": "HFS-01",
+   "behaldar": "Sekk i ei båtstø ved vatnet",
+   "innhald": [
+    {
+     "pengar": 36
+    }
+   ],
+   "kjelde_tekst": "36 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:39"
+  },
+  {
+   "id": "K-LRD-01b-1",
+   "skjerm": "LRD-01b",
+   "behaldar": "Kiste med raud segl",
+   "innhald": [],
+   "kjelde_tekst": "Sjå VK03",
+   "tid": [
+    "T2",
+    "T4"
+   ],
+   "tid_tekst": "T2, T4",
+   "ventekiste": "VK03",
+   "merknad": "VK03. Lytt: «Han har ikkje rydda loftet på lenge.»",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:40"
+  },
+  {
+   "id": "K-LRD-04-1",
+   "skjerm": "LRD-04",
+   "behaldar": "Krukke i foten av haugen",
+   "innhald": [
+    {
+     "pengar": 120
+    }
+   ],
+   "kjelde_tekst": "1 spd",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Kjem fram når Bannkongen er slegen",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:41"
+  },
+  {
+   "id": "K-BGD-01-1",
+   "skjerm": "BGD-01",
+   "behaldar": "Varde ved kongevegen",
+   "innhald": [
+    {
+     "ting": "fora_vadmalskappe",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Fôra vadmålskappe",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:42"
+  },
+  {
+   "id": "K-BGD-01-2",
+   "skjerm": "BGD-01",
+   "behaldar": "Skrin under klokkestapelen",
+   "innhald": [
+    {
+     "ting": "ullsokkar",
+     "tal": 2
+    },
+    {
+     "ting": "kjotsuppe",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 ullsokkar og 1 kjøtsuppe",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:43"
+  },
+  {
+   "id": "K-BLS-01-1",
+   "skjerm": "BLS-01",
+   "behaldar": "Kasse i eit naust ved båtstøa",
+   "innhald": [
+    {
+     "ting": "kaffi",
+     "tal": 2
+    },
+    {
+     "ting": "hoffmannsdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi og 1 hoffmannsdropar",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Eigaren har sagt ja",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:82"
+  },
+  {
+   "id": "K-VNG-04-1",
+   "skjerm": "VNG-04",
+   "behaldar": "Kiste i naustet ved Vangsvatnet",
+   "innhald": [
+    {
+     "ting": "kalveskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Kalveskinn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:83"
+  },
+  {
+   "id": "K-VNG-05-1",
+   "skjerm": "VNG-05",
+   "behaldar": "Skuff i ein tom gard på legdsvegen",
+   "innhald": [
+    {
+     "pengar": 123
+    }
+   ],
+   "kjelde_tekst": "1 spd 3 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Garden står forlaten etter Oleana",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:84"
+  },
+  {
+   "id": "K-TVI-01-1",
+   "skjerm": "TVI-01",
+   "behaldar": "Gøymsle under ein stein ved kulpen",
+   "innhald": [
+    {
+     "pengar": 45
+    }
+   ],
+   "kjelde_tekst": "45 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Lytt på staden",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:85"
+  },
+  {
+   "id": "K-TVI-01-2",
+   "skjerm": "TVI-01",
+   "behaldar": "Gøymsle i isen ved foten av fossen",
+   "innhald": [
+    {
+     "ting": "ullvottar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Ullvottar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:86"
+  },
+  {
+   "id": "K-SKJ-01-1",
+   "skjerm": "SKJ-01",
+   "behaldar": "Varde ved vegen",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut og 1 luktesalt",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:87"
+  },
+  {
+   "id": "K-LFH-02-1",
+   "skjerm": "LFH-02",
+   "behaldar": "Korg i ei løe i frukthagen",
+   "innhald": [
+    {
+     "ting": "kaffi",
+     "tal": 2
+    },
+    {
+     "ting": "honningvatn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi og 1 honningvatn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Eigaren har sagt ja",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:88"
+  },
+  {
+   "id": "K-LFH-02-2",
+   "skjerm": "LFH-02",
+   "behaldar": "Gøymsle under snøen ved eit kirsebærtre",
+   "innhald": [
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    },
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi med kandis og 1 kamferdropar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Mai 1853",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:89"
+  },
+  {
+   "id": "K-UTN-01-1",
+   "skjerm": "UTN-01",
+   "behaldar": "Kasse i eit naust ved kaia",
+   "innhald": [
+    {
+     "ting": "dun",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Dun",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:90"
+  },
+  {
+   "id": "K-TVD-02-1",
+   "skjerm": "TVD-02",
+   "behaldar": "Krukke i ei sprekk i berget",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "kaffi",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut og 1 kaffi",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:116"
+  },
+  {
+   "id": "K-TVD-03-1",
+   "skjerm": "TVD-03",
+   "behaldar": "Pung som ein spelemann gløymde",
+   "innhald": [
+    {
+     "pengar": 45
+    }
+   ],
+   "kjelde_tekst": "45 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:117"
+  },
+  {
+   "id": "K-TVD-04-1",
+   "skjerm": "TVD-04",
+   "behaldar": "Gøymsle under ein stein",
+   "innhald": [
+    {
+     "ting": "strikka_topplue",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Strikka topplue",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Kistefunn. Lytt på staden",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:118"
+  },
+  {
+   "id": "K-TVD-05-1",
+   "skjerm": "TVD-05",
+   "behaldar": "Skrin ved kjelda",
+   "innhald": [
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    },
+    {
+     "ting": "honningvatn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 luktesalt og 1 honningvatn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:119"
+  },
+  {
+   "id": "K-JAR-02-1",
+   "skjerm": "JAR-02",
+   "behaldar": "Gøymsle i steingarden",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "kaffi",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut og 1 kaffi",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Lytt på staden",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:143"
+  },
+  {
+   "id": "K-STV-01-1",
+   "skjerm": "STV-01",
+   "behaldar": "Tom tønne under ei sjøbu utan eigar",
+   "innhald": [
+    {
+     "pengar": 51
+    }
+   ],
+   "kjelde_tekst": "51 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:144"
+  },
+  {
+   "id": "K-STV-03-1",
+   "skjerm": "STV-03",
+   "behaldar": "Skreppe på loftet over ei sjøbu utan eigar",
+   "innhald": [
+    {
+     "ting": "fora_vadmalskappe",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Fôra vadmålskappe",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:145"
+  },
+  {
+   "id": "K-STV-04-1",
+   "skjerm": "STV-04",
+   "behaldar": "Kiste i ei skute som har frose fast",
+   "innhald": [
+    {
+     "ting": "gamle_myntar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamle myntar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Mars 1852",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:146"
+  },
+  {
+   "id": "K-RLD-01-1",
+   "skjerm": "RLD-01",
+   "behaldar": "Varde ved fjellvegen",
+   "innhald": [
+    {
+     "ting": "kaffi",
+     "tal": 2
+    },
+    {
+     "ting": "einer",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi og 1 einer",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Samband",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:147"
+  },
+  {
+   "id": "K-BYG-01-1",
+   "skjerm": "BYG-01",
+   "behaldar": "Kasse i naustet til skysskaren",
+   "innhald": [
+    {
+     "pengar": 57
+    }
+   ],
+   "kjelde_tekst": "57 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Skysskaren har sagt ja",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:178"
+  },
+  {
+   "id": "K-BYG-02-1",
+   "skjerm": "BYG-02",
+   "behaldar": "Gøymsle under bålsteinane",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "honningvatn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut og 1 honningvatn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:179"
+  },
+  {
+   "id": "K-BYG-02-2",
+   "skjerm": "BYG-02",
+   "behaldar": "Skrin under snøen på vollen",
+   "innhald": [
+    {
+     "pengar": 132
+    }
+   ],
+   "kjelde_tekst": "1 spd 12 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:180"
+  },
+  {
+   "id": "K-VLE-01-1",
+   "skjerm": "VLE-01",
+   "behaldar": "Sekk under brua over Otra",
+   "innhald": [
+    {
+     "ting": "kalveskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Kalveskinn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Trollungen står ved brua",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:181"
+  },
+  {
+   "id": "K-VLE-04-1",
+   "skjerm": "VLE-04",
+   "behaldar": "Gøymsle i berget ved kjelda",
+   "innhald": [
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    },
+    {
+     "ting": "kaffi",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "1 luktesalt og 2 kaffi",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:182"
+  },
+  {
+   "id": "K-KRS-01-1",
+   "skjerm": "KRS-01",
+   "behaldar": "Tønne som er sett av ved pakkhusveggen",
+   "innhald": [
+    {
+     "pengar": 60
+    }
+   ],
+   "kjelde_tekst": "60 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:213"
+  },
+  {
+   "id": "K-KRS-04-1",
+   "skjerm": "KRS-04",
+   "behaldar": "Vedkasse i bakgarden",
+   "innhald": [
+    {
+     "ting": "lys",
+     "tal": 2
+    },
+    {
+     "ting": "kaffi",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 lys og 1 kaffi",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:214"
+  },
+  {
+   "id": "K-KRS-08-1",
+   "skjerm": "KRS-08",
+   "behaldar": "Kiste i ei bu på ein holme",
+   "innhald": [
+    {
+     "ting": "ullsokkar",
+     "tal": 2
+    },
+    {
+     "ting": "kjotsuppe",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 ullsokkar og 1 kjøtsuppe",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:215"
+  },
+  {
+   "id": "K-BOE-01-1",
+   "skjerm": "BOE-01",
+   "behaldar": "Varde ved postvegen",
+   "innhald": [
+    {
+     "ting": "spekekjot",
+     "tal": 1
+    },
+    {
+     "ting": "kaffi_kandis",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 spekekjøt og 1 kaffi med kandis",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:255"
+  },
+  {
+   "id": "K-SEL-03a-1",
+   "skjerm": "SEL-03a",
+   "behaldar": "Kiste med raud segl",
+   "innhald": [],
+   "kjelde_tekst": "Sjå VK14",
+   "tid": [
+    "T2",
+    "T4"
+   ],
+   "tid_tekst": "T2, T4",
+   "ventekiste": "VK14",
+   "merknad": "VK14. Lytt: «Han har ikkje fått alle bøkene enno.»",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:256"
+  },
+  {
+   "id": "K-SEL-04-1",
+   "skjerm": "SEL-04",
+   "behaldar": "Kiste i naustet til Tov",
+   "innhald": [
+    {
+     "ting": "revskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Revskinn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Tov har sagt ja",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:257"
+  },
+  {
+   "id": "K-SEL-05-1",
+   "skjerm": "SEL-05",
+   "behaldar": "Gøymsle i ein haug",
+   "innhald": [
+    {
+     "ting": "gamle_myntar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamle myntar",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Lytt på staden. Stimannen grev her om natta",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:258"
+  },
+  {
+   "id": "K-KVI-01-1",
+   "skjerm": "KVI-01",
+   "behaldar": "Varde på isvegen",
+   "innhald": [
+    {
+     "pengar": 63
+    }
+   ],
+   "kjelde_tekst": "63 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Samband",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:259"
+  },
+  {
+   "id": "K-MOR-01-1",
+   "skjerm": "MOR-01",
+   "behaldar": "Skrin i ei løe ved bakken",
+   "innhald": [
+    {
+     "pengar": 126
+    }
+   ],
+   "kjelde_tekst": "1 spd 6 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:260"
+  },
+  {
+   "id": "K-RAU-03-1",
+   "skjerm": "RAU-03",
+   "behaldar": "Kiste i eit naust ved Totak",
+   "innhald": [
+    {
+     "ting": "einerstokk",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Einerstokk",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:261"
+  },
+  {
+   "id": "K-RAU-03-2",
+   "skjerm": "RAU-03",
+   "behaldar": "Gøymsle under isen ved stranda",
+   "innhald": [
+    {
+     "ting": "ullsokkar",
+     "tal": 2
+    },
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 ullsokkar og 1 kamferdropar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:262"
+  },
+  {
+   "id": "K-GAU-01-1",
+   "skjerm": "GAU-01",
+   "behaldar": "Varde under fjella",
+   "innhald": [
+    {
+     "ting": "bergkrystall",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Bergkrystall",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:263"
+  },
+  {
+   "id": "K-SAK-02-1",
+   "skjerm": "SAK-02",
+   "behaldar": "Skuff under ei hylle",
+   "innhald": [
+    {
+     "ting": "honningvatn",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 honningvatn og 1 luktesalt",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:293"
+  },
+  {
+   "id": "K-SAK-04-1",
+   "skjerm": "SAK-04",
+   "behaldar": "Skrin bak vigselsbøkene",
+   "innhald": [
+    {
+     "pengar": 60
+    }
+   ],
+   "kjelde_tekst": "60 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:294"
+  },
+  {
+   "id": "K-SAK-05-1",
+   "skjerm": "SAK-05",
+   "behaldar": "Skuff i pulten",
+   "innhald": [
+    {
+     "ting": "gamle_myntar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamle myntar",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:295"
+  },
+  {
+   "id": "K-SAK-06-1",
+   "skjerm": "SAK-06",
+   "behaldar": "Bøtte ved brønnen",
+   "innhald": [
+    {
+     "ting": "spekekjot",
+     "tal": 1
+    },
+    {
+     "ting": "kaffi",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "1 spekekjøt og 2 kaffi",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:296"
+  },
+  {
+   "id": "K-SAK-08-1",
+   "skjerm": "SAK-08",
+   "behaldar": "Kiste i ei nisje i gangen",
+   "innhald": [
+    {
+     "ting": "kopparlur",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Kopparlur",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:297"
+  },
+  {
+   "id": "K-SKB-02-1",
+   "skjerm": "SKB-02",
+   "behaldar": "Ein blekkflekk som opnar seg",
+   "innhald": [
+    {
+     "ting": "kaffi",
+     "tal": 2
+    },
+    {
+     "ting": "hoffmannsdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi og 1 hoffmannsdropar",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:315"
+  },
+  {
+   "id": "K-SKB-03-1",
+   "skjerm": "SKB-03",
+   "behaldar": "Ei lomme i falsen",
+   "innhald": [
+    {
+     "pengar": 60
+    }
+   ],
+   "kjelde_tekst": "60 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:316"
+  },
+  {
+   "id": "K-SKB-05-1",
+   "skjerm": "SKB-05",
+   "behaldar": "Ei rubrikk som står open",
+   "innhald": [
+    {
+     "ting": "messingkompass",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Messingkompass",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:317"
+  },
+  {
+   "id": "K-SKB-06-1",
+   "skjerm": "SKB-06",
+   "behaldar": "Eit eselsøyre i randen",
+   "innhald": [
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    },
+    {
+     "ting": "kaffi_kandis",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 luktesalt og 1 kaffi med kandis",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:318"
+  },
+  {
+   "id": "K-LMP-02-1",
+   "skjerm": "LMP-02",
+   "behaldar": "Ei rubrikk som står open",
+   "innhald": [
+    {
+     "ting": "ullsokkar",
+     "tal": 2
+    },
+    {
+     "ting": "kjotsuppe",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 ullsokkar og 1 kjøtsuppe",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:336"
+  },
+  {
+   "id": "K-LMP-03-1",
+   "skjerm": "LMP-03",
+   "behaldar": "Eit innlagt ark i margen",
+   "innhald": [
+    {
+     "pengar": 120
+    }
+   ],
+   "kjelde_tekst": "1 spd",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:337"
+  },
+  {
+   "id": "K-LMP-04-1",
+   "skjerm": "LMP-04",
+   "behaldar": "Ein pant som er ført inn",
+   "innhald": [
+    {
+     "ting": "solvskje",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Sølvskei",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:338"
+  },
+  {
+   "id": "K-LMP-06-1",
+   "skjerm": "LMP-06",
+   "behaldar": "Skuff i omnsveggen",
+   "innhald": [
+    {
+     "ting": "kaffikjelen",
+     "tal": 1
+    },
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 kaffikjelen og 1 kamferdropar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:339"
+  },
+  {
+   "id": "K-SLP-02-1",
+   "skjerm": "SLP-02",
+   "behaldar": "Korg under snorene",
+   "innhald": [
+    {
+     "ting": "kjotsuppe",
+     "tal": 1
+    },
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "1 kjøtsuppe og 2 kaffi med kandis",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:356"
+  },
+  {
+   "id": "K-SLP-03-1",
+   "skjerm": "SLP-03",
+   "behaldar": "Ei av dei gamle kistene",
+   "innhald": [
+    {
+     "ting": "gamal_eikelinjal",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamal eikelinjal",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:357"
+  },
+  {
+   "id": "K-SLP-04-1",
+   "skjerm": "SLP-04",
+   "behaldar": "Pung på mønsåsen",
+   "innhald": [
+    {
+     "pengar": 123
+    }
+   ],
+   "kjelde_tekst": "1 spd 3 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:358"
+  },
+  {
+   "id": "K-SLP-05-1",
+   "skjerm": "SLP-05",
+   "behaldar": "Skrin under gluggen",
+   "innhald": [
+    {
+     "ting": "ullsokkar",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 ullsokkar og 1 luktesalt",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:359"
+  }
+ ],
+ "butikkar": [
+  {
+   "skjerm": "LKG-02a",
+   "type": "kvile",
+   "type_tekst": "Kvile",
+   "kven": "Garden til Anders",
+   "ekstra": [],
+   "ekstra_tekst": "Gratis kvile og lagring",
+   "tid": [],
+   "tid_tekst": "1842–43",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:47"
+  },
+  {
+   "skjerm": "LKG-06",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri",
+   "kven": "Skysskiftet på Hermansverk",
+   "ekstra": [
+    "kaffi_kandis",
+    "kaffikjelen",
+    "ullsokkar"
+   ],
+   "ekstra_tekst": "Kaffi med kandis. I 1852 og 1853 òg kjøtsuppe, kaffikjelen og ullsokkar",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:48",
+   "ekstra_anna": [
+    "1853 òg kjøtsuppe"
+   ]
+  },
+  {
+   "skjerm": "LKG-05",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri og post",
+   "kven": "Gjestgiveriet på Leikanger",
+   "ekstra": [
+    "kaffi_kandis",
+    "kjotsuppe",
+    "kaffikjelen",
+    "ullsokkar",
+    "fugledaare"
+   ],
+   "ekstra_tekst": "Kaffi med kandis, kjøtsuppe, kaffikjelen, ullsokkar, fugledåre (6 s)",
+   "tid": [],
+   "tid_tekst": "1852, 1853",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:49"
+  },
+  {
+   "skjerm": "LRD-01a",
+   "type": "handelsstad",
+   "type_tekst": "Handelsstad",
+   "kven": "Handelsmannen i Lærdal",
+   "ekstra": [
+    "spekekjot",
+    "kaffi_kandis",
+    "lusekam",
+    "askestokk",
+    "reisekappe_av_vadmaal",
+    "skinnlue",
+    "gaasefjorpenn",
+    "ullsokkar",
+    "fugledaare"
+   ],
+   "ekstra_tekst": "Spekekjøt, kaffi med kandis, lusekam. Askestokk (1 spd 110 s), reisekappe av vadmål (4 spd 10 s), skinnlue (1 spd 80 s). Frå Bergen: bergensfrakk (2 spd) og gåsefjørpenn (1 spd 40 s). I 1852 òg ullsokkar og fugledåre",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:50",
+   "ekstra_anna": [
+    "Frå Bergen: bergensfrakk"
+   ]
+  },
+  {
+   "skjerm": "LRD-02",
+   "type": "kremmar",
+   "type_tekst": "Kremmar",
+   "kven": "Lars Hauge, om spelaren valde B i S1.9",
+   "ekstra": [
+    "lusekam",
+    "ullsokkar"
+   ],
+   "ekstra_tekst": "Kremmarvarer og lusekam. I 1852 òg ullsokkar",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:51",
+   "ekstra_anna": [
+    "Kremmarvarer"
+   ]
+  },
+  {
+   "skjerm": "VNG-01",
+   "type": "kremmar",
+   "type_tekst": "Kremmar",
+   "kven": "Ein kremmar ved kyrkja",
+   "ekstra": [
+    "lusekam",
+    "ullsokkar",
+    "fugledaare"
+   ],
+   "ekstra_tekst": "Lusekam. I 1852 òg ullsokkar og fugledåre (6 s)",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:94"
+  },
+  {
+   "skjerm": "VNG-04",
+   "type": "skreddar",
+   "type_tekst": "Skreddar på omgang (forslag)",
+   "kven": "Skreddaren som syr til bryllaupet",
+   "ekstra": [
+    "skaut",
+    "skinnlue"
+   ],
+   "ekstra_tekst": "Skaut (3 spd 80 s). Frå Sogn: reisekappe av vadmål (4 spd 10 s) og skinnlue (1 spd 80 s)",
+   "tid": [],
+   "tid_tekst": "1844",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:95",
+   "ekstra_anna": [
+    "Frå Sogn: reisekappe av vadmål"
+   ]
+  },
+  {
+   "skjerm": "VNG-02a",
+   "type": "kvile",
+   "type_tekst": "Kvile",
+   "kven": "Skulestova, om Aasen valde B i 2.11",
+   "ekstra": [],
+   "ekstra_tekst": "Gratis kvile og lagring",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:96"
+  },
+  {
+   "skjerm": "LFH-03a",
+   "type": "kvile",
+   "type_tekst": "Kvile",
+   "kven": "Garden på Lofthus",
+   "ekstra": [],
+   "ekstra_tekst": "Gratis kvile og lagring",
+   "tid": [],
+   "tid_tekst": "1844",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:97"
+  },
+  {
+   "skjerm": "LFH-03a",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri",
+   "kven": "Hotel Ullensvang",
+   "ekstra": [
+    "kjotsuppe",
+    "kaffikjelen",
+    "ullsokkar"
+   ],
+   "ekstra_tekst": "Kjøtsuppe, kaffikjelen, ullsokkar",
+   "tid": [],
+   "tid_tekst": "1853",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:98"
+  },
+  {
+   "skjerm": "UTN-01a",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri og post",
+   "kven": "Gjestgiveriet på Utne",
+   "ekstra": [
+    "kaffi_kandis",
+    "kaffikjelen",
+    "ullsokkar"
+   ],
+   "ekstra_tekst": "Kaffi med kandis. I 1852 og 1853 òg kjøtsuppe, kaffikjelen og ullsokkar",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:99",
+   "ekstra_anna": [
+    "1853 òg kjøtsuppe"
+   ]
+  },
+  {
+   "skjerm": "JAR-01a",
+   "type": "kvile",
+   "type_tekst": "Kvile",
+   "kven": "Stova til Kari",
+   "ekstra": [],
+   "ekstra_tekst": "Gratis kvile og lagring",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:151"
+  },
+  {
+   "skjerm": "JAR-02",
+   "type": "kvile",
+   "type_tekst": "Kvile",
+   "kven": "Leirbålet",
+   "ekstra": [],
+   "ekstra_tekst": "Kvile og lagring",
+   "tid": [],
+   "tid_tekst": "1844",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:152"
+  },
+  {
+   "skjerm": "STV-01",
+   "type": "handelsstad",
+   "type_tekst": "Handelsstad",
+   "kven": "Ei kjøpmannsbu på Strandkaien",
+   "ekstra": [
+    "spekekjot",
+    "kaffi_kandis",
+    "lusekam"
+   ],
+   "ekstra_tekst": "Spekekjøt, kaffi med kandis, lusekam. Ullsokkar i 1852 og 1853",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:153",
+   "ekstra_anna": [
+    "Ullsokkar i 1852",
+    "1853"
+   ]
+  },
+  {
+   "skjerm": "STV-02",
+   "type": "apotek",
+   "type_tekst": "Apotek",
+   "kven": "Apoteket i Stavanger",
+   "ekstra": [
+    "hoffmannsdropar",
+    "honningvatn",
+    "luktesalt",
+    "lusekam"
+   ],
+   "ekstra_tekst": "Hoffmannsdropar, honningvatn, luktesalt, lusekam",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:154"
+  },
+  {
+   "skjerm": "STV-02a",
+   "type": "bokhandel",
+   "type_tekst": "Bokhandel",
+   "kven": "Bokbindaren",
+   "ekstra": [
+    "kritt"
+   ],
+   "ekstra_tekst": "Kritt. Tabellen har inga ord-reiskap frå Rogaland",
+   "tid": [],
+   "tid_tekst": "1844",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:155",
+   "ekstra_anna": [
+    "Tabellen har inga ord-reiskap"
+   ]
+  },
+  {
+   "skjerm": "STV-03",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri (forslag frå Regionane)",
+   "kven": "Eit gjestgiveri på Skagen",
+   "ekstra": [
+    "kaffi_kandis",
+    "kaffikjelen",
+    "ullsokkar"
+   ],
+   "ekstra_tekst": "Kaffi med kandis. I 1852 og 1853 òg kjøtsuppe, kaffikjelen og ullsokkar",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:156",
+   "ekstra_anna": [
+    "1853 òg kjøtsuppe"
+   ]
+  },
+  {
+   "skjerm": "RLD-01",
+   "type": "kvile",
+   "type_tekst": "Kvile",
+   "kven": "Røldal stavkyrkje",
+   "ekstra": [],
+   "ekstra_tekst": "Kvile og lagring",
+   "tid": [],
+   "tid_tekst": "1844",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:157"
+  },
+  {
+   "skjerm": "BYG-01",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri",
+   "kven": "Skysskiftet ved Byglandsfjorden",
+   "ekstra": [
+    "kaffi_kandis",
+    "kjotsuppe",
+    "kaffikjelen",
+    "ullsokkar"
+   ],
+   "ekstra_tekst": "Kaffi med kandis. I 1853 òg kjøtsuppe, kaffikjelen og ullsokkar",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:186"
+  },
+  {
+   "skjerm": "BYG-02",
+   "type": "kremmar",
+   "type_tekst": "Kremmar",
+   "kven": "Ein kremmar ved leikvollen",
+   "ekstra": [
+    "lusekam",
+    "ullsokkar"
+   ],
+   "ekstra_tekst": "Lusekam. I 1853 òg ullsokkar",
+   "tid": [],
+   "tid_tekst": "1844, 1853",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:187"
+  },
+  {
+   "skjerm": "BYG-03",
+   "type": "kvile",
+   "type_tekst": "Kvile (forslag)",
+   "kven": "Garden ved fjorden, etter 2.19",
+   "ekstra": [],
+   "ekstra_tekst": "Gratis kvile og lagring",
+   "tid": [],
+   "tid_tekst": "1844",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:188"
+  },
+  {
+   "skjerm": "VLE-04",
+   "type": "kvile",
+   "type_tekst": "Kvile",
+   "kven": "Kjelda ved Byklestigen",
+   "ekstra": [],
+   "ekstra_tekst": "Kvile og lagring",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:189"
+  },
+  {
+   "skjerm": "KRS-01",
+   "type": "handelsstad",
+   "type_tekst": "Handelsstad",
+   "kven": "Handelsmannen frå dampbåten",
+   "ekstra": [
+    "spekekjot",
+    "kaffi_kandis",
+    "lusekam"
+   ],
+   "ekstra_tekst": "Spekekjøt, kaffi med kandis, lusekam. Ullsokkar i 1853",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:219",
+   "ekstra_anna": [
+    "Ullsokkar i 1853"
+   ]
+  },
+  {
+   "skjerm": "KRS-02a",
+   "type": "apotek",
+   "type_tekst": "Apotek",
+   "kven": "Apoteket i Kristiansand",
+   "ekstra": [
+    "hoffmannsdropar",
+    "honningvatn",
+    "luktesalt",
+    "lusekam"
+   ],
+   "ekstra_tekst": "Hoffmannsdropar, honningvatn, luktesalt, lusekam",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:220"
+  },
+  {
+   "skjerm": "KRS-04a",
+   "type": "kvile",
+   "type_tekst": "Kvile",
+   "kven": "Det leigde kammerset",
+   "ekstra": [],
+   "ekstra_tekst": "Gratis kvile og lagring. Forslag: vertinna leiger ut kammerset att i 1850 til 1853",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:221",
+   "ekstra_anna": [
+    "Forslag: vertinna leiger ut kammerset att i 1850 til 1853"
+   ]
+  },
+  {
+   "skjerm": "NUT-01",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri og post",
+   "kven": "Nutheim gjestgiveri",
+   "ekstra": [
+    "kaffi_kandis",
+    "kaffikjelen",
+    "ullsokkar"
+   ],
+   "ekstra_tekst": "Kaffi med kandis. I 1852 og 1853 òg kjøtsuppe, kaffikjelen og ullsokkar",
+   "tid": [],
+   "tid_tekst": "1845, 1852–53",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:267",
+   "ekstra_anna": [
+    "1853 òg kjøtsuppe"
+   ]
+  },
+  {
+   "skjerm": "SEL-01a",
+   "type": "kvile",
+   "type_tekst": "Kvile",
+   "kven": "Prestegarden",
+   "ekstra": [],
+   "ekstra_tekst": "Gratis kvile og lagring",
+   "tid": [],
+   "tid_tekst": "1845",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:268"
+  },
+  {
+   "skjerm": "SEL-02a",
+   "type": "kvile",
+   "type_tekst": "Kvile",
+   "kven": "Seljord kyrkje, etter 2.24",
+   "ekstra": [],
+   "ekstra_tekst": "Kvile og lagring",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:269"
+  },
+  {
+   "skjerm": "SEL-03",
+   "type": "saerbutikk",
+   "type_tekst": "Særbutikk",
+   "kven": "Klokkaren i Seljord",
+   "ekstra": [
+    "kingos_salmebok",
+    "kritt",
+    "lys"
+   ],
+   "ekstra_tekst": "Kingos salmebok (5 spd 10 s), kritt, lys",
+   "tid": [],
+   "tid_tekst": "1845, 1852–53",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:270"
+  },
+  {
+   "skjerm": "SEL-02",
+   "type": "skreddar",
+   "type_tekst": "Skreddar på omgang (forslag)",
+   "kven": "Ein skreddar som går gard frå gard",
+   "ekstra": [
+    "prestekjole",
+    "skaut"
+   ],
+   "ekstra_tekst": "Prestekjole (4 spd 110 s). Frå tidlegare regionar: reisekappe av vadmål (4 spd 10 s) og skaut (3 spd 80 s)",
+   "tid": [],
+   "tid_tekst": "1845",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:271",
+   "ekstra_anna": [
+    "Frå tidlegare regionar: reisekappe av vadmål"
+   ]
+  },
+  {
+   "skjerm": "RAU-01a",
+   "type": "kvile",
+   "type_tekst": "Kvile",
+   "kven": "Røykstova på Tveitli",
+   "ekstra": [],
+   "ekstra_tekst": "Gratis kvile og lagring",
+   "tid": [],
+   "tid_tekst": "1845, 1852–53",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:272"
+  },
+  {
+   "skjerm": "RAU-02",
+   "type": "kremmar",
+   "type_tekst": "Kremmar",
+   "kven": "Ein kremmar ved kyrkja (forslag)",
+   "ekstra": [
+    "lusekam",
+    "ullsokkar",
+    "bandgrind"
+   ],
+   "ekstra_tekst": "Lusekam, ullsokkar. Bandgrind (21 spd 10 s)",
+   "tid": [],
+   "tid_tekst": "1852–53",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/04 Kart Vestlandet, Sørlandet og Telemark.md:273"
+  }
+ ]
+}

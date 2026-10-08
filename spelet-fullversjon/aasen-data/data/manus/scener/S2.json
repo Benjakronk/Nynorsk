@@ -1,0 +1,6236 @@
+[
+ {
+  "id": "S2_1_1",
+  "namn": "Plassen",
+  "del": "S2",
+  "stad_tekst": "Husmannsplassen under Nordgarden",
+  "tid_tekst": "juli 1852, snø på bøen",
+  "stad_og_tid_tekst": "Husmannsplassen under Nordgarden, juli 1852, snø på bøen",
+  "skjerm": "VIN-01",
+  "aar": 1852,
+  "med": [
+   "vinje",
+   "aasen"
+  ],
+  "med_andre": [
+   "Olav Plassen",
+   "fem born"
+  ],
+  "med_tekst": "Vinje, Aasen, Olav Plassen, fem born",
+  "spel": "Utforsking. Spelaren snakkar med husmennene langs vegen, samlar ord og finn ut kvar kontraktane ligg.",
+  "steg": [
+   {
+    "regi": "Ei låg stove med torvtak. Fem ungar under eitt skinnfell. Olav står i døra med lua i handa, endå det er hans eiga dør."
+   },
+   {
+    "s": "Olav",
+    "t": "Aasmund. Du er blitt fin."
+   },
+   {
+    "s": "Vinje",
+    "t": "Eg har fått ny frakk. Han er lånt."
+   },
+   {
+    "s": "Olav",
+    "t": "Det står i brevet at eg skuldar tre hundre dagar i året no."
+   },
+   {
+    "s": "Vinje",
+    "t": "Det er fleire dagar enn det finst."
+   },
+   {
+    "s": "Olav",
+    "t": "Lensmannen seier han reknar med søndagane."
+   },
+   {
+    "s": "Vinje",
+    "t": "Då har Vårherre fått konkurranse."
+   },
+   {
+    "regi": "Olav ler ikkje. Vinje ser på ungane."
+   },
+   {
+    "s": "Vinje",
+    "t": "Ivar. Eg sprang her berrføtt. Eg gøymde bøker i løa så far min ikkje skulle sjå kor mykje tid eg brukte."
+   },
+   {
+    "s": "Aasen",
+    "t": "Og no?"
+   },
+   {
+    "s": "Vinje",
+    "t": "No har eg skrive i avisa at husmannen er landets rygg. Det var fint sagt. Det har ikkje hjelpt ein einaste dag."
+   }
+  ],
+  "utfall_tekst": "Ord lært: «arbeid» (diftongane, vern). Lensmannsgarden blir opna på kartet.",
+  "ord": [
+   "arbeid"
+  ],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_1",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:29"
+ },
+ {
+  "id": "S2_1_2",
+  "namn": "Protokollen",
+  "del": "S2",
+  "stad_tekst": "Lensmannsgarden",
+  "tid_tekst": "natt",
+  "stad_og_tid_tekst": "Lensmannsgarden, natt",
+  "skjerm": "LMP-07",
+  "aar": null,
+  "med": [
+   "vinje",
+   "aasen"
+  ],
+  "med_andre": [
+   "valfri tredje"
+  ],
+  "med_tekst": "Vinje, Aasen, valfri tredje",
+  "spel": "Dungeon over tre sider. Paragrafane går til åtak med «rettskriven». Renteskrivarane legg til ventetid på turen til partyet. Bossen Protokollen har to fasar. I første fase les han kontraktane høgt og skadar heile partyet. I andre fase les han Vinjes eigne setningar frå avisa, og kvar setning skadar Vinje dobbelt. Vinje kan berre svare med stev, og spelaren vel linjer i stevminispelet.",
+  "steg": [
+   {
+    "s": "Protokollen",
+    "t": "«Husmanden er Landets Ryg.» Skrevet af A. O. Vinje. Trykt. Bundet."
+   },
+   {
+    "s": "Vinje",
+    "t": "Det var eg som skreiv det."
+   },
+   {
+    "s": "Protokollen",
+    "t": "Og det er sandt. Ryggen skal bære."
+   },
+   {
+    "s": "Aasen",
+    "t": "Han brukar orda dine til å leggja bører på."
+   },
+   {
+    "s": "Vinje",
+    "t": "Då får eg seia dei om att. Høgt. Med ei anna meining."
+   },
+   {
+    "s": "Protokollen",
+    "t": "En Ryg er skabt at bære, en Husmand skabt at bøie, det staar her sort paa hvidt, og Blækket gjør det nøie."
+   },
+   {
+    "s": "Vinje",
+    "t": "Du skriv at ryggen ber, og ryggen kan òg retta seg. Når han står i heile si lengd, då ser han ned på deg."
+   },
+   {
+    "regi": "Val: A) «Skriv rettane til Olav inn i protokollen på telemål» → Vinje skriv kontrakten om sjølv. Husmennene får dagane sine tilbake, men Protokollen lever vidare som ei tam bok på hylla til lensmannen. B) «Riv ut sida og les ho høgt på tunet» → Kontrakten blir munnleg igjen. Husmennene hugsar kva dei blei lova, og lensmannen må forhandle med dei andlet til andlet. Vinje får ei ekstra stevlinje i stevjingsmenyen.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Bossen Protokollen er nedkjempa. Om spelaren valde A, får S2.19 ein replikk der Vinje seier at han ikkje stolar på papir lenger.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_1_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_1",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:43"
+ },
+ {
+  "id": "S2_1_3",
+  "namn": "Stabben",
+  "del": "S2",
+  "stad_tekst": "Tunet på plassen",
+  "tid_tekst": "morgon",
+  "stad_og_tid_tekst": "Tunet på plassen, morgon",
+  "skjerm": "VIN-01",
+  "aar": null,
+  "med": [
+   "vinje"
+  ],
+  "med_andre": [
+   "Olav"
+  ],
+  "med_tekst": "Vinje, Olav",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "regi": "Olav og Vinje sit på ein stabbe. Ungane kastar snøball på Aasen, som lèt som han ikkje merkar det."
+   },
+   {
+    "s": "Olav",
+    "t": "Du må skriva om dette."
+   },
+   {
+    "s": "Vinje",
+    "t": "Kanskje. Først må eg læra å sjå det med to auge."
+   },
+   {
+    "s": "Olav",
+    "t": "Kva meiner du med det?"
+   },
+   {
+    "s": "Vinje",
+    "t": "Det eine auget ler av lensmannen. Det andre græt for deg. Kunsten er å halda båe opne på ein gong."
+   },
+   {
+    "s": "Olav",
+    "t": "Det høyrest vondt ut."
+   },
+   {
+    "s": "Vinje",
+    "t": "Det er vondt. Men det er det einaste som er sant."
+   }
+  ],
+  "utfall_tekst": "Vinjes sterkaste evne, Tvisyn. Vinje ser ein fiende med begge auga. Første treffet er eit latterstev som gjev «forvirra». Andre treffet er eit sorgstev som gjer meir skade di meir skade partyet sjølv har teke. Gjenstand: Den lånte frakken (rustning, styrkjer stevjing).",
+  "ord": [],
+  "ting": [
+   "den_laante_frakken"
+  ],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_1",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:57"
+ },
+ {
+  "id": "S2_2_1",
+  "namn": "Korrekturen",
+  "del": "S2",
+  "stad_tekst": "Loftet på Seljord prestegard",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Loftet på Seljord prestegard",
+  "skjerm": "SLP-06",
+  "aar": null,
+  "med": [
+   "landstad",
+   "aasen"
+  ],
+  "med_andre": [
+   "valfri tredje"
+  ],
+  "med_tekst": "Landstad, Aasen, valfri tredje",
+  "spel": "Kort dungeon. Korrekturarka flyg som kråker og hakkar etter linjer i minnet til Landstad. Kvar gong dei treffer, mistar spelaren ei linje av visa og må finne ho igjen i bygda. Bossen Korrekturarket prøver å setje visa i sats.",
+  "steg": [
+   {
+    "s": "Korrekturarket",
+    "t": "Mangler. Tredie Vers. Anden Linie. Udfyld."
+   },
+   {
+    "s": "Landstad",
+    "t": "Nei."
+   },
+   {
+    "s": "Korrekturarket",
+    "t": "Samlingen er ufuldstændig uden den."
+   },
+   {
+    "s": "Landstad",
+    "t": "Samlingen er ufuldstændig uansett. Det er den eneste ærlige setningen i hele boken."
+   }
+  ],
+  "utfall_tekst": "Korrekturarket er nedkjempa. Landstad seier til Aasen at han har samla tre hundre viser, og at denne er den einaste han kan utanåt.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_2",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:73"
+ },
+ {
+  "id": "S2_2_2",
+  "namn": "Kvelven",
+  "del": "S2",
+  "stad_tekst": "Ei stove ved Seljordsvatnet",
+  "tid_tekst": "kveld",
+  "stad_og_tid_tekst": "Ei stove ved Seljordsvatnet, kveld",
+  "skjerm": "SEL-04a",
+  "aar": null,
+  "med": [
+   "landstad",
+   "aasen"
+  ],
+  "med_andre": [
+   "kvedarkona",
+   "barnebarnet Gro (ni år)"
+  ],
+  "med_tekst": "Landstad, Aasen, kvedarkona, barnebarnet Gro (ni år)",
+  "spel": "Rytmeminispel. Landstad syng, og spelaren held takten. Visa blir aldri vist som tekst. Spelaren høyrer berre melodien.",
+  "steg": [
+   {
+    "regi": "Kvedarkona ligg i senga. Gro sit ved fotenden og flettar halm."
+   },
+   {
+    "s": "Kvedarkona",
+    "t": "Du kom."
+   },
+   {
+    "s": "Landstad",
+    "t": "Eg lova det ikkje. Men eg kom."
+   },
+   {
+    "s": "Kvedarkona",
+    "t": "Syng."
+   },
+   {
+    "regi": "Landstad syng. Midt i tredje vers løfter ho ein finger."
+   },
+   {
+    "s": "Kvedarkona",
+    "t": "Du sa «kveld»."
+   },
+   {
+    "s": "Landstad",
+    "t": "Ja?"
+   },
+   {
+    "s": "Kvedarkona",
+    "t": "Det heiter «kvelv». Himmelkvelven. Du har sunge feil i sju år."
+   },
+   {
+    "s": "Landstad",
+    "t": "Eg har ikkje sunge ho for nokon."
+   },
+   {
+    "s": "Kvedarkona",
+    "t": "Så var det ingen som høyrde det. Bra."
+   },
+   {
+    "regi": "Ho lukkar auga. Så opnar ho dei igjen og ser på Gro."
+   },
+   {
+    "s": "Kvedarkona",
+    "t": "Ho kan ikkje lesa. Lær henne visa."
+   },
+   {
+    "s": "Landstad",
+    "t": "Ho burde læra å lesa òg."
+   },
+   {
+    "s": "Kvedarkona",
+    "t": "Det får du ta med presten."
+   },
+   {
+    "s": "Landstad",
+    "t": "Eg er presten."
+   },
+   {
+    "s": "Kvedarkona",
+    "t": "Her inne er du han som kan visa mi."
+   },
+   {
+    "regi": "Val: A) «Eg skal læra henne visa og bokstavane» → Gro stiller i S2.37 som ung deltakar som kan både lese og kvede. B) «Eg skal læra henne visa» → Gro kved visa for Landstad i epilogen, utan at teksten blir vist.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Landstad og Gro blir ei ny kjelde under «kvelv» (kv-orda, avsløring). Visa blir aldri lagd i Ordboka.",
+  "ord": [
+   "kvelv"
+  ],
+  "ting": [],
+  "flagg_set": [
+   "S2_2_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_2",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:81"
+ },
+ {
+  "id": "S2_2_3",
+  "namn": "Etterpå",
+  "del": "S2",
+  "stad_tekst": "Utanfor stova",
+  "tid_tekst": "natt",
+  "stad_og_tid_tekst": "Utanfor stova, natt",
+  "skjerm": "SEL-04",
+  "aar": null,
+  "med": [
+   "landstad",
+   "aasen"
+  ],
+  "med_andre": [],
+  "med_tekst": "Landstad, Aasen",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "s": "Landstad",
+    "t": "Jeg har bundet tre hundrede Viser, Aasen. Denne ene har jeg bare båret."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva for ei vog mest?"
+   },
+   {
+    "s": "Landstad",
+    "t": "Denne. Den har gjort vondt hele tiden."
+   }
+  ],
+  "utfall_tekst": "Landstads sterkaste evne, Kvelvsongen. Lækjer heile partyet fullt, vekkjer falne figurar og fjernar «rettskriven» og skam. Kan brukast éin gong per kamp. Gjenstand: Gros halmfletting (tilbehøyr, vern mot tausheit).",
+  "ord": [],
+  "ting": [
+   "gros_halmfletting"
+  ],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_2",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:101"
+ },
+ {
+  "id": "S2_3_1",
+  "namn": "Klokkaren les",
+  "del": "S2",
+  "stad_tekst": "Klokkargarden i Rauland",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Klokkargarden i Rauland",
+  "skjerm": "RAU-02",
+  "aar": null,
+  "med": [
+   "aslaug",
+   "aasen"
+  ],
+  "med_andre": [
+   "Tone",
+   "klokkaren"
+  ],
+  "med_tekst": "Aslaug, Aasen, Tone, klokkaren",
+  "spel": "Samtale, så kamp mot Rettskrivarbrillene (liten boss som legg «rettskriven» på alle ord partyet brukar).",
+  "steg": [
+   {
+    "s": "Klokkaren",
+    "t": "«Kjære Tone. Jeg befinder mig vel og haaber det samme om Dem.»"
+   },
+   {
+    "s": "Tone",
+    "t": "Han har aldri sagt «Dem» til meg."
+   },
+   {
+    "s": "Klokkaren",
+    "t": "Han skriver det slik det bør skrives."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Han skriv det slik du les det."
+   },
+   {
+    "s": "Klokkaren",
+    "t": "Det er det samme."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Gje meg brevet."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_3",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:115"
+ },
+ {
+  "id": "S2_3_2",
+  "namn": "Slik Halvor skreiv",
+  "del": "S2",
+  "stad_tekst": "Aslaugs stove",
+  "tid_tekst": "kveld",
+  "stad_og_tid_tekst": "Aslaugs stove, kveld",
+  "skjerm": null,
+  "aar": null,
+  "med": [
+   "aslaug",
+   "aasen"
+  ],
+  "med_andre": [
+   "Tone"
+  ],
+  "med_tekst": "Aslaug, Aasen, Tone",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "regi": "Aasen les brevet høgt, ord for ord, slik det står. Stavemåten er skeiv. Stemma er Halvors."
+   },
+   {
+    "s": "Aasen",
+    "t": "«Kjære Tone. Eg hev det bra, men eg frys om nettene, og her er det ingen som kan kveda. Eg syng for kyrne. Dei skjønar ingenting.»"
+   },
+   {
+    "regi": "Tone ler og græt på same tid. Aslaug ser lenge på arket."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Står det der? Slik?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Slik han sa det."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Då er det han som står der."
+   },
+   {
+    "s": "Tone",
+    "t": "Eg vil læra å skriva, faster."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Til kva nytte?"
+   },
+   {
+    "s": "Tone",
+    "t": "Så Halvor får vita kva eg meiner. Klokkaren skriv berre det han sjølv meiner."
+   },
+   {
+    "regi": "Lang pause."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Eg gjev deg eitt stev. Du skriv det nedst på arket. Berre dette eine. Og du seier ikkje til nokon at det er mitt."
+   },
+   {
+    "regi": "Val: A) «Skal eg skriva det for dykk?» → Aslaug: «Nei. Ho skal skriva det.» Tone skriv med skjelvande hand, og Aslaug stavar for henne. B) Aasen seier ingenting og går ut → Aslaug og Tone blir åleine. Spelaren høyrer berre stemmene gjennom veggen.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Stevet blir aldri vist. Aslaug gjev ikkje frå seg fleire stev på papir, og ho nektar framleis Landstad visene sine. Aslaugs sterkaste evne, Havstevet. Eit stev som når alle fiendar, òg dei som er Gøymde. Det gjev dobbel skade mot fiendar som er Utanfor rekkjevidd, Skjerma eller Gøymde. Aslaug får ein ny replikk ved leirbålet: «Eit stev kan fara langt. Det kjem an på kven som ber det.»",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_3_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_3",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:121"
+ },
+ {
+  "id": "S2_4_1",
+  "namn": "Trykkeriet",
+  "del": "S2",
+  "stad_tekst": "Eit trykkeri ved Akerselva",
+  "tid_tekst": "natt",
+  "stad_og_tid_tekst": "Eit trykkeri ved Akerselva, natt",
+  "skjerm": "CHR-15d",
+  "aar": null,
+  "med": [
+   "collett",
+   "aasen"
+  ],
+  "med_andre": [
+   "valfri tredje"
+  ],
+  "med_tekst": "Collett, Aasen, valfri tredje",
+  "spel": "Snikeoppdrag forbi studentar som set sats, så boss. Bossen Blekk-Henrik har tre fasar. I første fase talar han om fedrelandet. I andre fase blir talane hans stadig meir like Munchs. I tredje fase seier han noko om jødane som den verkelege Henrik aldri ville ha sagt, og Collett får eit eige åtak.",
+  "steg": [
+   {
+    "s": "Blekk-Henrik",
+    "t": "Camilla! Søster! Norge vaagner!"
+   },
+   {
+    "s": "Collett",
+    "t": "Du har feil stemme."
+   },
+   {
+    "s": "Blekk-Henrik",
+    "t": "Jeg har hans ord."
+   },
+   {
+    "s": "Collett",
+    "t": "Ordene har du stjålet. Hjertet hans fikk du aldri tak i. Han ville aldri stillet seg ved siden av en mann som vil stenge landet."
+   },
+   {
+    "s": "Blekk-Henrik",
+    "t": "Norge for Nordmænd. Kun for Nordmænd."
+   },
+   {
+    "s": "Collett",
+    "t": "Der. Nå hørte alle det."
+   },
+   {
+    "regi": "Aasen kviskrar til Collett."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva vil du gjera med han?"
+   },
+   {
+    "s": "Collett",
+    "t": "Jeg vil gjøre ham stum. Og så vil jeg gå hjem og gråte, og det skal De ikke se på."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_4",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:149"
+ },
+ {
+  "id": "S2_4_2",
+  "namn": "Heftet",
+  "del": "S2",
+  "stad_tekst": "Wergelands grav",
+  "tid_tekst": "morgon",
+  "stad_og_tid_tekst": "Wergelands grav, morgon",
+  "skjerm": "CHR-13",
+  "aar": null,
+  "med": [
+   "collett",
+   "aasen"
+  ],
+  "med_andre": [],
+  "med_tekst": "Collett, Aasen",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "regi": "Collett held heftet. Det er skrive med den urolege handa til broren, overstroke og teikna i margen."
+   },
+   {
+    "s": "Collett",
+    "t": "Han skrev det siste om en Gyldenlak. «Gyldenlak, før Du din Glands har tabt, da er jeg bleven det, hvoraf Alt er skabt.» Det er trykt. Det er bundet. Det er vakkert likevel."
+   },
+   {
+    "s": "Aasen",
+    "t": "Og dette heftet?"
+   },
+   {
+    "s": "Collett",
+    "t": "Det er ingen som har lest det. Ikke engang jeg."
+   },
+   {
+    "regi": "Val: A) «Brenn det» → Heftet brenn på grava. Collett står og ser til det er borte. Ingen gjenstand, men Collett får ein ekstra replikk i epilogen om at noko av broren fekk vere fritt. B) «Gje det til enkja hans» → Collett leverer heftet til Amalie. Gjenstand: Heftet til broren (tilbehøyr som gjev heile partyet vern mot skam). C) «Les eitt dikt høgt her» → Collett les eitt dikt høgt ved grava, og spelaren høyrer berre at det er eit dikt. Ho held på resten. Gyldenlak blir sterkare med éin runde.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Colletts sterkaste evne, Gyldenlak. Heile partyet får vern mot skam, falne figurar blir vekte, og alle fiendar blir stumme i tre rundar.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_4_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_4",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:159"
+ },
+ {
+  "id": "S2_5_1",
+  "namn": "Klasserommet",
+  "del": "S2",
+  "stad_tekst": "Katedralskulen, føremiddag",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Katedralskulen, føremiddag",
+  "skjerm": "CHR-03a",
+  "aar": null,
+  "med": [
+   "knudsen",
+   "aasen"
+  ],
+  "med_andre": [
+   "Anton",
+   "klassen"
+  ],
+  "med_tekst": "Knudsen, Aasen, Anton, klassen",
+  "spel": "Skamma ligg som tåke. Fornorskingsevnene til Knudsen verkar ikkje. Spelaren må lytte til kvar elev for å løfte tåka rad for rad.",
+  "steg": [
+   {
+    "s": "Knudsen",
+    "t": "Hansen. Les setningen. (Anton ser ned.)"
+   },
+   {
+    "s": "Knudsen",
+    "t": "Hansen."
+   },
+   {
+    "s": "Ein gut bakarst",
+    "t": "Han kan ikke lese fint, herr adjunkt. Han sier «boka». (Latter.)"
+   },
+   {
+    "s": "Knudsen",
+    "t": "Det heter «Bogen»."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det heiter «boka» der han kjem frå."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Takk, Aasen. De er ikke ansatt her."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_5",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:177"
+ },
+ {
+  "id": "S2_5_2",
+  "namn": "Vaterland",
+  "del": "S2",
+  "stad_tekst": "Ein bakgard i Vaterland",
+  "tid_tekst": "kveld",
+  "stad_og_tid_tekst": "Ein bakgard i Vaterland, kveld",
+  "skjerm": "CHR-15",
+  "aar": null,
+  "med": [
+   "knudsen",
+   "aasen"
+  ],
+  "med_andre": [
+   "Anton",
+   "Antons mor"
+  ],
+  "med_tekst": "Knudsen, Aasen, Anton, Antons mor",
+  "spel": "Utforsking. Spelaren samlar bymålsord frå folk i bakgarden. Knudsen noterer dei som om dei var fuglar han aldri har sett.",
+  "steg": [
+   {
+    "regi": "Anton snakkar fort og høgt med mora. Han ser Knudsen og stivnar."
+   },
+   {
+    "s": "Antons mor",
+    "t": "Dem har kommi helt hit, herr adjunkt?"
+   },
+   {
+    "s": "Knudsen",
+    "t": "Jeg ville høre hvordan Anton snakker."
+   },
+   {
+    "s": "Antons mor",
+    "t": "Han snakker som far sin."
+   },
+   {
+    "s": "Anton",
+    "t": "Jenta på tredje kasta boka mi i elva."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Si det igjen."
+   },
+   {
+    "s": "Anton",
+    "t": "Hvorfor?"
+   },
+   {
+    "s": "Knudsen",
+    "t": "Fordi det var en god setning, og jeg vil huske den."
+   },
+   {
+    "regi": "Aasen står i porten og seier ingenting. Knudsen ser på han."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Ikke si det, landsmålsmannen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg sa ingenting."
+   },
+   {
+    "s": "Knudsen",
+    "t": "De tenkte det høyt."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_5",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:183"
+ },
+ {
+  "id": "S2_5_3",
+  "namn": "Tavla",
+  "del": "S2",
+  "stad_tekst": "Katedralskulen",
+  "tid_tekst": "neste dag",
+  "stad_og_tid_tekst": "Katedralskulen, neste dag",
+  "skjerm": "CHR-03a",
+  "aar": null,
+  "med": [
+   "knudsen"
+  ],
+  "med_andre": [
+   "Anton",
+   "klassen",
+   "rektor i døra"
+  ],
+  "med_tekst": "Knudsen, Anton, klassen, rektor i døra",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "regi": "Knudsen gjev Anton krittet."
+   },
+   {
+    "regi": "Val: A) «Skriv det slik du sier det» → Anton skriv «Jenta kasta boka». Klassen er stille. Rektor ber Knudsen kome på kontoret. Anton snakkar resten av timen. Knudsen får ein ekstra replikk i Morgenbladet-striden om at borna i byen òg har eit mål. B) «Skriv det slik vi kan bli enige om» → Knudsen hjelper Anton med å skrive «Jenten kastet boken». Anton ser lenge på det og seier: «Det er nesten meg.» Knudsen skriv det ned i notatboka si.",
+    "val": true
+   },
+   {
+    "s": "Aasen",
+    "t": "No veit du korleis det er å vera landsmålsmannen."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Jeg vet hvordan det er å være lærer, Aasen. Det er værre."
+   }
+  ],
+  "utfall_tekst": "Knudsens sterkaste evne, Landsgyldig uttale. Alle blekkvesena på slagmarka blir fornorska med éin gong, utan opplading. Etter val A gjer evna ekstra skade på vesen frå skulebøker.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_5_3_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_5",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:195"
+ },
+ {
+  "id": "S2_6_1",
+  "namn": "Skrapa",
+  "del": "S2",
+  "stad_tekst": "Robåt på Hardangerfjorden",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Robåt på Hardangerfjorden",
+  "skjerm": "FOL-05",
+  "aar": null,
+  "med": [
+   "asbjornsen",
+   "aasen"
+  ],
+  "med_andre": [
+   "ein fiskar"
+  ],
+  "med_tekst": "Asbjørnsen, Aasen, ein fiskar",
+  "spel": "Minispel med skrape. Spelaren senkar skrapa og dreg opp dyr frå botnen. Kvart dyr blir ei side i bestiariet. Til slutt kjem ein sjøstjerne med elleve armar som lyser svakt.",
+  "steg": [
+   {
+    "s": "Asbjørnsen",
+    "t": "Se her! Elleve Arme! Den har ingen Navn endnu."
+   },
+   {
+    "s": "Fiskaren",
+    "t": "Mor mi kalla slike for brisingar. Ho sa dei var smuler av eit halsband."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Jeg har hørt det før."
+   },
+   {
+    "s": "Aasen",
+    "t": "Du har skrive det før."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Halvt, Aasen. Jeg skrev det halvt."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_6",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:213"
+ },
+ {
+  "id": "S2_6_2",
+  "namn": "Kladden",
+  "del": "S2",
+  "stad_tekst": "Havgrotta under Folgefonna, fjøre",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Havgrotta under Folgefonna, fjøre",
+  "skjerm": "HAV-07",
+  "aar": null,
+  "med": [
+   "asbjornsen",
+   "aasen"
+  ],
+  "med_andre": [
+   "valfri tredje"
+  ],
+  "med_tekst": "Asbjørnsen, Aasen, valfri tredje",
+  "spel": "Dungeon med tidvatn. Bossen Kladden har form som den unge Asbjørnsen med samlarveske. Den kopierer påkallingane til Asbjørnsen og brukar dei mot partyet. Kampstaden er Kjellar. Vatnet stig kvar tiande runde, med ei line øvst på skjermen. Kvar gong får alle i bakrad Fimbul.",
+  "steg": [
+   {
+    "s": "Kladden",
+    "t": "Alt skal samles. Intet maa gaa tabt."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Det sa jeg. Jeg mente det."
+   },
+   {
+    "s": "Kladden",
+    "t": "Velgjøreren var fornøiet."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Velgjøreren fikk det han ville. Det var jeg som bar sekken."
+   },
+   {
+    "regi": "Etter kampen ligg kladdeboka på ein stein. Lyset frå djupet blinkar under henne."
+   },
+   {
+    "regi": "Val: A) «Behald boka. Du kan kalla på Brisingen» → Asbjørnsen får påkallinga Brisingen, som gjev heile partyet vern og lys. Lyset er svakare for kvar gong det blir brukt. B) «Lat boka søkka» → Asbjørnsen kastar boka i fjorden. Lyset stig, blir ståande over vatnet ei stund og går ned igjen. Asbjørnsen seier ingenting på lenge.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_6_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_6",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:219"
+ },
+ {
+  "id": "S2_6_3",
+  "namn": "Namnet",
+  "del": "S2",
+  "stad_tekst": "Robåten",
+  "tid_tekst": "kveld",
+  "stad_og_tid_tekst": "Robåten, kveld",
+  "skjerm": "FOL-05",
+  "aar": null,
+  "med": [
+   "asbjornsen",
+   "aasen"
+  ],
+  "med_andre": [],
+  "med_tekst": "Asbjørnsen, Aasen",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "s": "Asbjørnsen",
+    "t": "Jeg skal skrive den inn i en Afhandling. Brisinga. Efter Frøias Halsbaand."
+   },
+   {
+    "s": "Aasen",
+    "t": "Bind du han då?"
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Et Navn er en Knagg at henge Tanker paa. Fortellingen er det som holder fast. Den beholder jeg ikke mer."
+   },
+   {
+    "s": "Aasen",
+    "t": "Du lærer fort."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Jeg lærer sent. Men jeg lærer."
+   }
+  ],
+  "utfall_tekst": "Asbjørnsens sterkaste evne, Det frie kallet (etter val B). Asbjørnsen ropar, og eit fritt vesen kjem om det vil. Det er tilfeldig kven som kjem, og om nokon kjem, men dei som kjem, er sterkare enn noko i eventyrboka. Etter val A får han i staden Brisingen som fast påkalling og ein svakare versjon av Det frie kallet.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_6",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:229"
+ },
+ {
+  "id": "S2_7_1",
+  "namn": "Døra",
+  "del": "S2",
+  "stad_tekst": "Prestegarden i Krødsherad",
+  "tid_tekst": "midnatt",
+  "stad_og_tid_tekst": "Prestegarden i Krødsherad, midnatt",
+  "skjerm": "KRH-03",
+  "aar": null,
+  "med": [
+   "moe",
+   "aasen"
+  ],
+  "med_andre": [
+   "Guro (gjengangar)"
+  ],
+  "med_tekst": "Moe, Aasen, Guro (gjengangar)",
+  "spel": "Samtale med eit spøkelse. Aasen kan bruke kv-ord for å sjå henne tydeleg.",
+  "steg": [
+   {
+    "regi": "Tre slag på døra. Moe opnar. Ingen står der. Så står ho der."
+   },
+   {
+    "s": "Guro",
+    "t": "Er det du som er presten no?"
+   },
+   {
+    "s": "Moe",
+    "t": "Jeg er kapellanen."
+   },
+   {
+    "s": "Guro",
+    "t": "Dei ropar på ei Gurine der nede. Eg går og går. Eg finn ikkje henne."
+   },
+   {
+    "s": "Moe",
+    "t": "Det er deg de roper på."
+   },
+   {
+    "s": "Guro",
+    "t": "Nei. Eg heiter Guro."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_7",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:243"
+ },
+ {
+  "id": "S2_7_2",
+  "namn": "Ministerialboka",
+  "del": "S2",
+  "stad_tekst": "Arkivet i prestegarden",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Arkivet i prestegarden",
+  "skjerm": "AKR-08",
+  "aar": null,
+  "med": [
+   "moe",
+   "aasen"
+  ],
+  "med_andre": [
+   "valfri tredje"
+  ],
+  "med_tekst": "Moe, Aasen, valfri tredje",
+  "spel": "Dungeon mellom hyller med kyrkjebøker. Kvar bok er ein gang. Fiendane er Innførslar som gjentek dåpsnamn på dansk. Bossen Ministerialboka har tusen namn, og kvart av dei er litt feil. Ho lækjer seg sjølv kvar gong nokon i partyet seier eit dansk ord.",
+  "steg": [
+   {
+    "s": "Ministerialboka",
+    "t": "Gurine. Nielsdatter. Død. Begravet. Indført."
+   },
+   {
+    "s": "Moe",
+    "t": "Du har rett i alt utenom navnet."
+   },
+   {
+    "s": "Ministerialboka",
+    "t": "Navnet er Kongens."
+   },
+   {
+    "s": "Moe",
+    "t": "Navnet var hennes mors."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_7",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:251"
+ },
+ {
+  "id": "S2_7_3",
+  "namn": "Margen",
+  "del": "S2",
+  "stad_tekst": "Arkivet",
+  "tid_tekst": "morgon",
+  "stad_og_tid_tekst": "Arkivet, morgon",
+  "skjerm": "AKR-08",
+  "aar": null,
+  "med": [
+   "moe",
+   "aasen"
+  ],
+  "med_andre": [],
+  "med_tekst": "Moe, Aasen",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "regi": "Moe held pennen over boka. Handa skjelv."
+   },
+   {
+    "s": "Moe",
+    "t": "Det er en offentlig protokoll, Aasen. Jeg har sverget."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva skal du skriva?"
+   },
+   {
+    "s": "Moe",
+    "t": "Ingenting i selve linjen. Bare i margen."
+   },
+   {
+    "regi": "Val: A) «Skriv det i margen» → Moe skriv med lita hand: «kaldet Guro». Guro kviler. Eit nytt samleoppdrag blir opna: tolv andre namn i margane i Sigdal og Krødsherad. B) «Seie namnet hennar ved grava» → Moe går ut og seier namnet høgt ved grava. Guro kviler, men dei andre gjengangarane går framleis, og det er ingen samleoppdrag.",
+    "val": true
+   },
+   {
+    "s": "Guro",
+    "t": "Takk, prest.",
+    "regi": "frå grava, svakt"
+   },
+   {
+    "s": "Moe",
+    "t": "Kapellan."
+   },
+   {
+    "s": "Guro",
+    "t": "Takk likevel."
+   }
+  ],
+  "utfall_tekst": "Moes sterkaste evne, Signinga. Ei velsigning på morsmålet som lækjer partyet, gjev vern mot «rettskriven» resten av kampen og løyser bindinga på éin fiende, slik at han sluttar å slåst. Evna verkar ikkje på Munch.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_7_3_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_7",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:257"
+ },
+ {
+  "id": "S2_8_1",
+  "namn": "Tilståinga",
+  "del": "S2",
+  "stad_tekst": "Valestrand",
+  "tid_tekst": "kveld",
+  "stad_og_tid_tekst": "Valestrand, kveld",
+  "skjerm": "VAL-01",
+  "aar": null,
+  "med": [
+   "ole_bull",
+   "aasen"
+  ],
+  "med_andre": [],
+  "med_tekst": "Ole Bull, Aasen",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "s": "Ole Bull",
+    "t": "Aasen, I must tell you something. Jeg har aldri sagt det til nogen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Du har sagt det meste til dei fleste."
+   },
+   {
+    "s": "Ole Bull",
+    "t": "Not this. Fela. Det er ikke jeg som spiller."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kven er det då?"
+   },
+   {
+    "s": "Ole Bull",
+    "t": "Han i fossen. Jeg er bare hænderne. (Han ser på fela. Ein streng har sprokke.)"
+   },
+   {
+    "s": "Ole Bull",
+    "t": "Oleana er borte. Pengene er borte. Nu spiller han falsk, og det er min skyld."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_8",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:277"
+ },
+ {
+  "id": "S2_8_2",
+  "namn": "Valestrandsfossen",
+  "del": "S2",
+  "stad_tekst": "Valestrandsfossen, frosen",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Valestrandsfossen, frosen",
+  "skjerm": "VSF-05",
+  "aar": null,
+  "med": [
+   "ole_bull",
+   "aasen"
+  ],
+  "med_andre": [
+   "valfri tredje"
+  ],
+  "med_tekst": "Ole Bull, Aasen, valfri tredje",
+  "spel": "Klatring opp langs ein frosen foss. Så ein kamp der Ole Bull spelar for fossen med innskriving, og isvesena går mot han. Dei andre vernar han med Dekk. Bossen er Isen sjølv, som berre kan skadast medan fela klingar.",
+  "steg": [
+   {
+    "regi": "Øvst i fossen, inne i isen, sit ein naken skikkelse med fele i fanget. Han ser ut som han har venta lenge."
+   },
+   {
+    "s": "Fossegrimen",
+    "t": "Kjøt."
+   },
+   {
+    "s": "Ole Bull",
+    "t": "Excuse me?"
+   },
+   {
+    "s": "Fossegrimen",
+    "t": "Feitt kjøt. Du har aldri gjeve meg noko."
+   },
+   {
+    "s": "Ole Bull",
+    "t": "Jeg har gitt dig hele verden! New York og Paris!"
+   },
+   {
+    "s": "Fossegrimen",
+    "t": "Eg har ikkje sett noko av det. Eg har sete i ei bjørk."
+   },
+   {
+    "regi": "Val: A) «Gje han fela tilbake» → Ole Bull legg fela i isen. Fossen tinar. Fossegrimen spelar ein låt for han, fritt, og Ole Bull lærer låten ved å lytte. B) «Gje han eit spekelår og behald fela» → Fossegrimen tek kjøtet og blir litt sterkare, men han er framleis bunden. Ole Bull held på Grimsfela, det beste våpenet hans.",
+    "val": true
+   },
+   {
+    "s": "Ole Bull",
+    "t": "Den var laget av noget som levde.",
+    "regi": "etter val A, stille"
+   },
+   {
+    "s": "Aasen",
+    "t": "Det meste er det."
+   },
+   {
+    "s": "Ole Bull",
+    "t": "I know. Men jeg visste det ikke før i kveld."
+   }
+  ],
+  "utfall_tekst": "Ole Bulls sterkaste evne, Fossegrimslåtten (etter val A). Heile partyet får to handlingar per tur i tre rundar. Etter val B held han på Grimsfela, som gjev sterke åtak, men Fossegrimslåtten er låst resten av spelet.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_8_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_8",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:283"
+ },
+ {
+  "id": "S2_9_1",
+  "namn": "Krambua",
+  "del": "S2",
+  "stad_tekst": "Heggelunds krambu ved fjorden",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Heggelunds krambu ved fjorden",
+  "skjerm": "NTR-02",
+  "aar": null,
+  "med": [
+   "ravdna",
+   "huldra",
+   "aasen"
+  ],
+  "med_andre": [
+   "Isak",
+   "Heggelund"
+  ],
+  "med_tekst": "Ravdna, huldra, Aasen, Isak, Heggelund",
+  "spel": "Samtale og kamp. Bossen Gjeldsboka kallar fram brennevinsånder som gjev «berusa» og stel gjenstandane til partyet.",
+  "steg": [
+   {
+    "s": "Heggelund",
+    "t": "Hvad vil De? Butikken er lukket."
+   },
+   {
+    "s": "Isak",
+    "t": "Butikken har vore open for lenge."
+   },
+   {
+    "s": "Ravdna",
+    "t": "Dus lea mu viellja girjjis. \\[Du har bror min i ei bok.\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho seier du har bror hennar i ei bok."
+   },
+   {
+    "s": "Heggelund",
+    "t": "Han skylder. Det er ordentlig ført."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det er ført på eit mål han ikkje kan lesa."
+   },
+   {
+    "s": "Heggelund",
+    "t": "Det er ikke mitt problem."
+   },
+   {
+    "s": "Isak",
+    "t": "Det vert ditt no."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_9",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:303"
+ },
+ {
+  "id": "S2_9_2",
+  "namn": "Joiken",
+  "del": "S2",
+  "stad_tekst": "Ei gamme ved elva",
+  "tid_tekst": "kveld",
+  "stad_og_tid_tekst": "Ei gamme ved elva, kveld",
+  "skjerm": "NTR-03",
+  "aar": null,
+  "med": [
+   "ravdna",
+   "huldra",
+   "aasen"
+  ],
+  "med_andre": [
+   "Niillas"
+  ],
+  "med_tekst": "Ravdna, huldra, Aasen, Niillas",
+  "spel": "Joiken blir spelt som ein lydscene. Spelaren gjer ingenting.",
+  "steg": [
+   {
+    "regi": "Niillas sit lenge stille. Så byrjar han å joike. Ravdna ser opp."
+   },
+   {
+    "s": "Ravdna",
+    "t": "Mu son juoigá. \\[Det er meg han joikar.\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Det er henne han joikar."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva seier joiken?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Han seier ingenting. Han er henne."
+   },
+   {
+    "s": "Ravdna",
+    "t": "Ale čále dan. \\[Ikkje skriv han.\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho ber deg..."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg skjønte det."
+   },
+   {
+    "regi": "Aasen legg pennen i lomma utan å bli beden om det igjen."
+   },
+   {
+    "regi": "Val: A) «Eg skriv berre at du fekk joiken din» → Aasen skriv éi setning i Dagboka. Ravdna ser på den og nikkar. B) Aasen skriv ingenting → Dagboka for denne dagen står tom. Ravdna legg ein liten stein på den tomme sida.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Ravdnas sterkaste evne, Ravdnas joik. Eit vesen kjem og blir hos partyet heile kampen utan å vere bunde. Det slåst når det sjølv vil.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_9_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_9",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:309"
+ },
+ {
+  "id": "S2_10_1",
+  "namn": "Stabburet",
+  "del": "S2",
+  "stad_tekst": "Garden der Sigrid bur",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Garden der Sigrid bur",
+  "skjerm": "HAL-06",
+  "aar": null,
+  "med": [
+   "huldra",
+   "aasen"
+  ],
+  "med_andre": [
+   "Sigrid"
+  ],
+  "med_tekst": "Huldra, Aasen, Sigrid",
+  "spel": "Samtale. Spelaren kan leite etter gamle ord i huset medan huldra og Sigrid snakkar.",
+  "steg": [
+   {
+    "regi": "Sigrid sit ved vindauget. Ho ser huldra og ler lågt."
+   },
+   {
+    "s": "Sigrid",
+    "t": "Du lukter av myr."
+   },
+   {
+    "s": "Huldra",
+    "t": "Du lukter av brød."
+   },
+   {
+    "s": "Sigrid",
+    "t": "Det tok meg femti år."
+   },
+   {
+    "s": "Huldra",
+    "t": "Kva kosta det?"
+   },
+   {
+    "s": "Sigrid",
+    "t": "Halen. Og at eg ikkje høyrer bergi syngja lenger."
+   },
+   {
+    "s": "Huldra",
+    "t": "Og kva fekk du?"
+   },
+   {
+    "s": "Sigrid",
+    "t": "Eit namn og ein mann. Sju born, tre av dei i grava."
+   },
+   {
+    "s": "Huldra",
+    "t": "Fekk du namnet av dei?"
+   },
+   {
+    "s": "Sigrid",
+    "t": "Av presten. Eg likte det ikkje. Så vart eg glad i det."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_10",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:329"
+ },
+ {
+  "id": "S2_10_2",
+  "namn": "Setra om natta",
+  "del": "S2",
+  "stad_tekst": "Den tomme setra ovanfor garden",
+  "tid_tekst": "natt",
+  "stad_og_tid_tekst": "Den tomme setra ovanfor garden, natt",
+  "skjerm": "HAL-07",
+  "aar": null,
+  "med": [
+   "huldra",
+   "aasen"
+  ],
+  "med_andre": [
+   "eventuelt Collett"
+  ],
+  "med_tekst": "Huldra, Aasen, eventuelt Collett",
+  "spel": "Utforsking. Huldreheimen under setra er tom. Stovene står slik dei blei forlatne då eventyra blei skrivne ned. Spelaren finn små spor etter kvar huldre som budde der: ein kam, eit lokk som heng att i lufta, ei bjølle.",
+  "steg": [
+   {
+    "regi": "Huldra går gjennom romma. Ho rører ingenting."
+   },
+   {
+    "s": "Huldra",
+    "t": "Her budde fem. No bur her ingen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Dei er i bøkene."
+   },
+   {
+    "s": "Huldra",
+    "t": "Dei er i bøkene. Og ho nede i garden er i grava snart. Kva er best?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg veit ikkje."
+   },
+   {
+    "s": "Huldra",
+    "t": "Du veit alltid ord."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ikkje til dette."
+   },
+   {
+    "regi": "Om Collett er med:"
+   },
+   {
+    "s": "Collett",
+    "t": "De spør som om det finnes to dører. Det finnes flere. Jeg vet det, fordi jeg har stått foran dem."
+   },
+   {
+    "s": "Huldra",
+    "t": "Kva dør gjekk du gjennom?"
+   },
+   {
+    "s": "Collett",
+    "t": "Ingen ennå. Jeg står i gangen og skriver."
+   },
+   {
+    "regi": "Val: A) «Du treng ikkje namn for å vera nokon» → Huldra ser lenge på Aasen og svarar ikkje. B) Aasen seier ingenting → Huldra tek handa hans eit augeblink og slepper henne. Ingen av dei nemner det.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Huldra får ein ny replikk ved leirbålet: «Ho Sigrid valde. Det var det som var hennar.» Huldras sterkaste evne, Huldrelokk. Ho lokkar som på setra. Alle fiendar gløymer å gå til åtak i éin runde, og vesen blant fiendane slåst for partyet i to rundar frå plassen sin på fiendesida. Evna blir ikkje svekt av nye huldre-eventyr.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_10_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_10",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:337"
+ },
+ {
+  "id": "S2_11_1",
+  "namn": "Det tomme fjøset",
+  "del": "S2",
+  "stad_tekst": "Fjøset på Åsen",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Fjøset på Åsen",
+  "skjerm": "ASN-02",
+  "aar": null,
+  "med": [
+   "tussen",
+   "aasen"
+  ],
+  "med_andre": [],
+  "med_tekst": "Tussen, Aasen",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "s": "Tussen",
+    "t": "Ivar-guten. Kom."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det er ingen kyr her."
+   },
+   {
+    "s": "Tussen",
+    "t": "Nei."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kvar gjekk dei?"
+   },
+   {
+    "s": "Tussen",
+    "t": "Burt. Alle gjekk burt. (Tussen legg handa på ein stokk i veggen.)"
+   },
+   {
+    "s": "Tussen",
+    "t": "Her."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_11",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:361",
+  "skjermar": [
+   "ASN-02",
+   "UGF-01"
+  ]
+ },
+ {
+  "id": "S2_11_2",
+  "namn": "Under golvet",
+  "del": "S2",
+  "stad_tekst": "Inne i fjøsveggen og under golvet",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Inne i fjøsveggen og under golvet",
+  "skjerm": "UGF-08",
+  "aar": null,
+  "med": [
+   "tussen",
+   "aasen"
+  ],
+  "med_andre": [],
+  "med_tekst": "Tussen, Aasen (liten)",
+  "spel": "Dungeon i storleiken til tussen. Halmstrå er tre, ei mjølkebøtte er eit fjell. Fiendane er Frostmus. Bossen Frostkatten er ein katt av is som har flytta inn då folket drog. Kampen er komisk og vanskeleg. Tussen bit katten i halen.",
+  "steg": [
+   {
+    "s": "Tussen",
+    "t": "Katt."
+   },
+   {
+    "s": "Aasen",
+    "t": "Han er stor."
+   },
+   {
+    "s": "Tussen",
+    "t": "Du er liten."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det er ditt verk."
+   },
+   {
+    "s": "Tussen",
+    "t": "Ja. (fornøgd)"
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_11",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:367"
+ },
+ {
+  "id": "S2_11_3",
+  "namn": "Bjølla",
+  "del": "S2",
+  "stad_tekst": "Fjøset",
+  "tid_tekst": "kveld",
+  "stad_og_tid_tekst": "Fjøset, kveld",
+  "skjerm": "ASN-02",
+  "aar": null,
+  "med": [
+   "tussen",
+   "aasen"
+  ],
+  "med_andre": [],
+  "med_tekst": "Tussen, Aasen",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "regi": "Tussen dreg fram ei gammal kubjølle. Ho er full av høy."
+   },
+   {
+    "s": "Tussen",
+    "t": "Rist."
+   },
+   {
+    "regi": "Aasen ristar. Frå bjølla kjem ei guterøyst, tynn og høg, frå 1820-åra. Ho seier eitt ord, veldig bestemt: «Eg!»"
+   },
+   {
+    "s": "Aasen",
+    "t": "Det er meg."
+   },
+   {
+    "s": "Tussen",
+    "t": "Du sa det. Høgt. Før presten."
+   },
+   {
+    "s": "Aasen",
+    "t": "Og du tok vare på det."
+   },
+   {
+    "s": "Tussen",
+    "t": "Ja."
+   },
+   {
+    "s": "Aasen",
+    "t": "I tjue år."
+   },
+   {
+    "s": "Tussen",
+    "t": "Kva er tjue år?"
+   },
+   {
+    "regi": "Aasen set seg på golvet. Tussen set seg på kneet hans."
+   },
+   {
+    "regi": "Spelnotat: Er partyet i Ørsta julenatta 1852, held dei døde midnattsmessa si i Ørsta kyrkje. Går partyet inn i kyrkja den natta, byrjar kampen mot Messefolket. Kyrkja er eit unntak frå fristaden berre denne natta, fordi messa høyrer dei døde til. Kampen er valfri."
+   }
+  ],
+  "utfall_tekst": "Småordet «eg» får ordevna Guten sitt eg, som er gratis og alltid treffer. Tussens sterkaste evne, Fjøsvarme. Vekkjer heile partyet med full helse éin gong per kamp. Om tussen er i partyet når han går tilbake til fjøset i sluttspelet, blir bjølla liggjande i bagasjen til Aasen som gjenstand.",
+  "ord": [
+   "eg"
+  ],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_11",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:373"
+ },
+ {
+  "id": "S2_12_1",
+  "namn": "Toppen",
+  "del": "S2",
+  "stad_tekst": "Snøhetta, første natt",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Snøhetta, første natt",
+  "skjerm": "DOV-10",
+  "aar": null,
+  "med": [
+   "jotunen",
+   "aasen"
+  ],
+  "med_andre": [
+   "valfri tredje"
+  ],
+  "med_tekst": "Jotunen, Aasen, valfri tredje",
+  "spel": "Overlevingsminispel. Partyet må halde bål med j-ord og vern med diftongar. Stormvesen går til åtak kvar time. I kampane står bålet som vernemål ytst på partysida, og j-ord held det ved like. Ordboka er låst i grått, og ei åtvaring står over henne.",
+  "steg": [
+   {
+    "regi": "Jotunen står framfor isen. Inne i den ligg eit andlet like stort som ei dør."
+   },
+   {
+    "s": "Jotunen",
+    "t": "Systir."
+   },
+   {
+    "s": "Aasen",
+    "t": "Syster di? (Jotunen nikkar.)"
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg skal ikkje skriva noko. Du har mitt ord. (Jotunen ser lenge på han. Så set han seg ned med ryggen mot isen og held den med begge hendene.)"
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_12",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:399",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_12_2",
+  "namn": "Tredje natta",
+  "del": "S2",
+  "stad_tekst": "Snøhetta, tredje natt",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Snøhetta, tredje natt",
+  "skjerm": "DOV-10",
+  "aar": null,
+  "med": [
+   "jotunen",
+   "aasen"
+  ],
+  "med_andre": [
+   "jotunkvinna"
+  ],
+  "med_tekst": "Jotunen, Aasen, jotunkvinna",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "regi": "Isen sprekk. Jotunkvinna opnar auga og ser på bror sin."
+   },
+   {
+    "s": "Jotunkvinna",
+    "t": "Bróðir. \\[Bror.\\]"
+   },
+   {
+    "regi": "Val: A) «La henne gå» → Ho reiser seg, legg handa på andletet til broren og går nordover inn i fjellet. Jotunen blir hos partyet. B) «Lat henne sova til alt er over» → Jotunen legg isen tilbake over henne med hendene sine. Han sit hos henne til morgonen og kjem så ned til partyet igjen.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Etter begge vala seier jotunen eitt ord til Aasen, for første gong til han åleine: «Þǫkk.» Det tyder takk. Aasen kjenner igjen rota og seier ingenting. Jotunens sterkaste evne, Jotunsteget. Treffer alle fiendar, knuser skjold og kan ikkje bli gjord «rettskriven». Etter val A får jotunen òg ein tilfeldig sjanse til at systera dukkar opp i sluttkampen og tek eitt slag for partyet.",
+  "ord": [
+   "takk"
+  ],
+  "ting": [],
+  "flagg_set": [
+   "S2_12_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_12",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:407",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_12b_1",
+  "namn": "Cella",
+  "del": "S2",
+  "stad_tekst": "Ei celle i Tukthuset, ettermiddag",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Ei celle i Tukthuset, ettermiddag",
+  "skjerm": "CHR-14b",
+  "aar": null,
+  "med": [
+   "berte",
+   "aasen"
+  ],
+  "med_andre": [
+   "Thrane"
+  ],
+  "med_tekst": "Berte, Aasen, Thrane",
+  "spel": "Samtale. Ingen kamp.",
+  "steg": [
+   {
+    "regi": "Ei lita celle med eit bord og ein bunke papir. Thrane sit og skriv. Han reiser seg når dei kjem inn."
+   },
+   {
+    "s": "Thrane",
+    "t": "Hr. Aasen. Og en Dame jeg ikke kender."
+   },
+   {
+    "s": "Berte",
+    "t": "Berte Aarflot. Frå Ørsta."
+   },
+   {
+    "s": "Thrane",
+    "t": "Er De kommet for at omvende mig, Madame?"
+   },
+   {
+    "s": "Berte",
+    "t": "Eg kom for å sjå om du hadde nok ved."
+   },
+   {
+    "s": "Thrane",
+    "t": "Det har jeg ikke.",
+    "regi": "ser på omnen"
+   },
+   {
+    "s": "Berte",
+    "t": "Nei. Det såg eg."
+   },
+   {
+    "regi": "Ho legg ein bunke ved frå kurven på golvet. Aasen ser at ho har bore han heile vegen."
+   },
+   {
+    "s": "Thrane",
+    "t": "Jeg tror ikke paa Deres Gud, Madame. Det skal De vide."
+   },
+   {
+    "s": "Berte",
+    "t": "Det var ikkje det eg spurde om."
+   },
+   {
+    "s": "Thrane",
+    "t": "Hvad læser De da for Fangerne?"
+   },
+   {
+    "s": "Berte",
+    "t": "Paulus. Han sat i lenkjer han òg. Han bad om ord. «at der maa gives mig Ord, naar jeg oplader min Mund ... for hvis Skyld jeg er et Sendebud i Lænker.»"
+   },
+   {
+    "s": "Thrane",
+    "t": "Ord har jeg nok af. Det er Folk, der hører, jeg mangler.",
+    "regi": "ser på papira sine"
+   },
+   {
+    "s": "Berte",
+    "t": "Då skal eg be om det."
+   },
+   {
+    "regi": "Vaktmeisteren bankar på døra. Kvarteret er over."
+   },
+   {
+    "s": "Thrane",
+    "t": "Madame. Kommer De igjen?"
+   },
+   {
+    "s": "Berte",
+    "t": "Om eg er i byen."
+   },
+   {
+    "s": "Thrane",
+    "t": "De vil finde mig her. Det er det sikreste, jeg har."
+   },
+   {
+    "regi": "Val: A) Berte ber for Thrane før ho går → Thrane sit stille med hovudet oppreist og seier ingenting imot. Dagboka får ei linje. B) Berte legg att salmeboka si hos han → Thrane tek imot og legg boka under papira.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Hugmålar-evna Frimod er lært. Valet gjev ei linje i Dagboka.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_12b_1_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_12b",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:427",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_13_1",
+  "namn": "Tavla i kjellaren",
+  "del": "S2",
+  "stad_tekst": "Ein kjellar i Pipervika, sundag",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Ein kjellar i Pipervika, sundag",
+  "skjerm": "PIP-02",
+  "aar": null,
+  "med": [
+   "aasen",
+   "vinje"
+  ],
+  "med_andre": [
+   "Marte (tenestejente)",
+   "Hans Olsen (sjauar)"
+  ],
+  "med_tekst": "Aasen, Vinje, Marte (tenestejente), Hans Olsen (sjauar)",
+  "spel": "Samtale og lytting. Spelaren kan lære bort eitt ord til kvar elev, og elevane gjev eit ord tilbake.",
+  "steg": [
+   {
+    "s": "Hans Olsen",
+    "t": "Eg vil skriva namnet mitt. Resten får vera."
+   },
+   {
+    "s": "Vinje",
+    "t": "Kvifor berre namnet?"
+   },
+   {
+    "s": "Hans Olsen",
+    "t": "Fordi dei spør om det kvar gong. Og kvar gong set eg eit kross."
+   },
+   {
+    "s": "Marte",
+    "t": "Og så skriv presten namnet ved sida av. Feil."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva heiter du?"
+   },
+   {
+    "s": "Marte",
+    "t": "Marte. Han skriv Martha. Med h."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kvar er h-en når du seier det?"
+   },
+   {
+    "s": "Marte",
+    "t": "Eg har leita. Han er ikkje der."
+   }
+  ],
+  "utfall_tekst": "Nøkkelordet «namn» opnar seg (låser opp ein bonus på alle namngjevne fiendar). Forma utan h frå Marte blir ei ny line under oppslaget. Marte skriv namnet sitt utan h og viser det til alle.",
+  "ord": [
+   "namn"
+  ],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_13",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:455"
+ },
+ {
+  "id": "S2_13_2",
+  "namn": "ABC-boka",
+  "del": "S2",
+  "stad_tekst": "Same kjellar",
+  "tid_tekst": "natt",
+  "stad_og_tid_tekst": "Same kjellar, natt",
+  "skjerm": "CHR-17",
+  "aar": null,
+  "med": [
+   "aasen",
+   "vinje",
+   "huldra"
+  ],
+  "med_andre": [],
+  "med_tekst": "Aasen, Vinje, huldra",
+  "spel": "Kort kamp mot tre ABC-vesen. Dei går til åtak med «rettskriven» og kallar på eit fjerde, Petisjonsarket, som veks for kvar underskrift partyet ikkje har verna.",
+  "steg": [
+   {
+    "regi": "Etter kampen blar Vinje i petisjonen. Det er tusenvis av namn."
+   },
+   {
+    "s": "Vinje",
+    "t": "Kongen les ikkje dette."
+   },
+   {
+    "s": "Aasen",
+    "t": "Nei."
+   },
+   {
+    "s": "Vinje",
+    "t": "Men han må bera det. Kvar eit namn. Det er ei byrd for ein konge."
+   },
+   {
+    "s": "Huldra",
+    "t": "Namn er tunge."
+   },
+   {
+    "s": "Vinje",
+    "t": "Høyr på henne. Ho veit."
+   },
+   {
+    "regi": "Ein mann i god frakk står i døra ei lita stund og går igjen. Om spelaren brukar eit kv-ord på han, ser Aasen at han har ein ring med ein fugl på. Ingen kommenterer det."
+   }
+  ],
+  "utfall_tekst": "Våren 1850 blir bøna levert til kongen med nær 13 000 namn. Dagboka får ei line om det, og Marte sitt namn står utan h. Seinare, under S2.19, hugsar Vinje kjellaren. Om spelaren brukte kv-ordet på mannen, får Aasen ei ekstra linje i Dagboka etter 1850: «Den Ringen. Eg burde ha spurt.» Tavlekritt (gjenstand som lèt Aasen lære bort eit ord til ein figur i ei bygd for å løfte skamma raskare).",
+  "ord": [
+   "jokul"
+  ],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_13",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:463",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_14_1",
+  "namn": "Besøket",
+  "del": "S2",
+  "stad_tekst": "Aasens hybel",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Aasens hybel",
+  "skjerm": "CHR-12a",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra"
+  ],
+  "med_andre": [
+   "Gyllenstierna"
+  ],
+  "med_tekst": "Aasen, Gyllenstierna, huldra",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "s": "Gyllenstierna",
+    "t": "Herr Aasen. Jag har läst er grammatik. Den är vacker."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ho er ikkje ferdig."
+   },
+   {
+    "s": "Gyllenstierna",
+    "t": "Ingenting fint är färdigt. Hans Majestät älskar folkvisor."
+   },
+   {
+    "s": "Aasen",
+    "t": "Alle elskar folkeviser. Det er folket dei er meir usikre på."
+   },
+   {
+    "s": "Gyllenstierna",
+    "t": "Ni är rolig. Hjälp mig ordna dem.",
+    "regi": "ler"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ordna?"
+   },
+   {
+    "s": "Gyllenstierna",
+    "t": "I en följd. Från Skåne till Finnmarken. En kedja."
+   },
+   {
+    "s": "Huldra",
+    "t": "Ei lenkje."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_14",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:483"
+ },
+ {
+  "id": "S2_14_2",
+  "namn": "Torsdagskvelden",
+  "del": "S2",
+  "stad_tekst": "Kjellaren under proviantbygningen på Akershus, torsdag kveld",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Kjellaren under proviantbygningen på Akershus, torsdag kveld",
+  "skjerm": "PRV-05",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra",
+   "vinje"
+  ],
+  "med_andre": [],
+  "med_tekst": "Aasen, huldra, Vinje",
+  "spel": "Snikeoppdrag forbi svenske vakter, så rytmeminispel der spelaren syng med i ei vise og må halde takten så lyden ikkje når vaktene.",
+  "steg": [
+   {
+    "regi": "Tolv menneske sit rundt eit talglys. Ei vaskekone frå Hedmarken leier. Ho syng den same visa som står i boka til Gyllenstierna, men med andre ord i siste vers."
+   },
+   {
+    "s": "Vaskekona",
+    "t": "Kven er de?"
+   },
+   {
+    "s": "Vinje",
+    "t": "Folk som kan halda kjeft."
+   },
+   {
+    "s": "Vaskekona",
+    "t": "Han der ser ut som han skriv ting ned."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg skal ikkje skriva dette."
+   },
+   {
+    "s": "Vaskekona",
+    "t": "Det er det dei alle seier."
+   },
+   {
+    "regi": "Val: A) «Gje løytnanten visene slik dei står i boka hans» → Gyllenstierna blir fornøgd. Boka blir gjeven til kongen og ligg ubrukt i Stockholm. Ingen skade skjer, og visekvelden held fram. B) «Gje løytnanten visene slik dei blir sungne her» → Boka blir ubrukeleg som lenkje fordi kvar bygd syng annleis. Gyllenstierna forstår kva som har skjedd. C) Vinje overtaler Gyllenstierna til å kome på torsdagskvelden → Løytnanten sit bakarst med lua i fanget. Han kjem tilbake i fimbulvinteren i S2.20 som løynleg hjelpar.",
+    "val": true
+   },
+   {
+    "s": "Gyllenstierna",
+    "t": "Hos oss sjunger de den också. I Värmland. Med ett annat slut.",
+    "regi": "etter val C"
+   },
+   {
+    "s": "Vaskekona",
+    "t": "Då er det vel ei anna vise."
+   },
+   {
+    "s": "Gyllenstierna",
+    "t": "Eller samma visa med två slut."
+   }
+  ],
+  "utfall_tekst": "Unionsmerket (gjenstand som lèt partyet passere svenske vaktpostar i fimbulvinteren). Etter val C blir S2.20 opna med ein alliert.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_14_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_14",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:489"
+ },
+ {
+  "id": "S2_15_1",
+  "namn": "Brygga",
+  "del": "S2",
+  "stad_tekst": "Pipervikbrygga",
+  "tid_tekst": "morgon",
+  "stad_og_tid_tekst": "Pipervikbrygga, morgon",
+  "skjerm": "CHR-17b",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra"
+  ],
+  "med_andre": [
+   "Kari",
+   "barnebarnet Ingrid"
+  ],
+  "med_tekst": "Aasen, huldra, Kari, barnebarnet Ingrid",
+  "spel": "Ordjakt på brygga og i vertshuset der hallingar ventar. Kvart ord må hentast frå ein person frå rett bygd. Spelaren har fire timar i speltid.",
+  "steg": [
+   {
+    "s": "Kari",
+    "t": "Dei seier det er flatt der. Ikkje ein bakke."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det finst bakkar i Amerika òg. Berre langt unna."
+   },
+   {
+    "s": "Kari",
+    "t": "Kva skal eg kalla ein bakke eg aldri ser?"
+   },
+   {
+    "s": "Ingrid",
+    "t": "Bestemor gret heile natta."
+   },
+   {
+    "s": "Kari",
+    "t": "Eg gret ikkje. Eg sat og sa namna på alle dei gamle. Det tek tid."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_15",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:509"
+ },
+ {
+  "id": "S2_15_2",
+  "namn": "Lokket",
+  "del": "S2",
+  "stad_tekst": "Brygga, rett før avgang",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Brygga, rett før avgang",
+  "skjerm": "CHR-17",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra"
+  ],
+  "med_andre": [
+   "Kari",
+   "Ingrid"
+  ],
+  "med_tekst": "Aasen, huldra, Kari, Ingrid",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "regi": "Aasen gjev Kari ein lapp. Ho ser på den. Ho kan ikkje lese."
+   },
+   {
+    "s": "Kari",
+    "t": "Kva står det?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Ti ord frå Hallingdal. «Geil», «bøling», «støl»..."
+   },
+   {
+    "s": "Kari",
+    "t": "Eg kan dei."
+   },
+   {
+    "s": "Aasen",
+    "t": "Då treng du ikkje lappen."
+   },
+   {
+    "s": "Kari",
+    "t": "Men Ingrid kan læra å lesa. Ho kan lesa dei for borna sine."
+   },
+   {
+    "s": "Huldra",
+    "t": "Og så er dei bundne i ei kiste i Amerika."
+   },
+   {
+    "s": "Kari",
+    "t": "Betre bundne i ei kiste enn gløymde på havet."
+   },
+   {
+    "regi": "Val: A) «Legg lappen i kista» → Kista tek med seg orda. I epilogen i 1885 kjem eit brev frå Ingrid i Minnesota, skrive på ei blanding av hallingmål og engelsk. B) «Lær Ingrid orda utanåt» → Ingrid gjentek dei til ho kan dei. I epilogen kjem det ikkje noko brev. Ein ung mann med hallingtrøye står i salen under Ervingen i 1855 og nikkar til Aasen.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Ord lært: «geil» (diftongane, vern). Emigrasjon blir opna som tema i Dagboka. Emigrantkista (gjenstand, lagrar inntil fem ord som ikkje kan stelast av blekkvesen).",
+  "ord": [
+   "geil"
+  ],
+  "ting": [],
+  "flagg_set": [
+   "S2_15_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_15",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:515"
+ },
+ {
+  "id": "S2_16_1",
+  "namn": "Hybelen om natta",
+  "del": "S2",
+  "stad_tekst": "Aasens hybel",
+  "tid_tekst": "klokka tre",
+  "stad_og_tid_tekst": "Aasens hybel, klokka tre",
+  "skjerm": "CHR-12a",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra"
+  ],
+  "med_andre": [],
+  "med_tekst": "Aasen, huldra",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "s": "Boka",
+    "t": "Heim. Heim. Heim. Det hedder Hjem."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det er natt."
+   },
+   {
+    "s": "Boka",
+    "t": "Det hedder Nat. Med et t."
+   },
+   {
+    "s": "Huldra",
+    "t": "Skal eg kasta henne på elden?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Ho er ikkje mi. Eg må levera henne."
+   },
+   {
+    "s": "Huldra",
+    "t": "Du er for pertentleg."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_16",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:535"
+ },
+ {
+  "id": "S2_16_2",
+  "namn": "Utlånsskranken",
+  "del": "S2",
+  "stad_tekst": "Biblioteket, føremiddag",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Biblioteket, føremiddag",
+  "skjerm": "CHR-01a",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra",
+   "knudsen"
+  ],
+  "med_andre": [
+   "bibliotekaren"
+  ],
+  "med_tekst": "Aasen, huldra, Knudsen, bibliotekaren",
+  "spel": "Liten dungeon i magasinet. Kvar hylle har ei rettskrivingsgåte. Bossen er Utlånsprotokollen, som kjempar med forseinkingsgebyr (skade som veks for kvar runde). Knudsen hjelper ved å rette protokollen tilbake.",
+  "steg": [
+   {
+    "s": "Knudsen",
+    "t": "De har den også? Jeg har hatt min i to år."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva seier ho til deg?"
+   },
+   {
+    "s": "Knudsen",
+    "t": "At jeg er for norsk."
+   },
+   {
+    "s": "Aasen",
+    "t": "Og til meg seier ho at eg er for norsk."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Så vi er begge feil. Det er trøstende."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eller ho er feil."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Det har jeg skrevet i margen. Med blyant. Jeg er ikke en barbar."
+   }
+  ],
+  "utfall_tekst": "Knudsens margnotat (gjenstand som gjev 10 prosent sjanse for at «rettskriven» slår tilbake på fienden). Knudsen får ein ny replikk i Knudsens kapittel om at han saknar å krangle med Aasen om natta.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_16",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:541",
+  "skjermar": [
+   "CHR-01a",
+   "MAG-01"
+  ]
+ },
+ {
+  "id": "S2_17_1",
+  "namn": "Auksjonen",
+  "del": "S2",
+  "stad_tekst": "Lokalet til Fattigkommisjonen",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Lokalet til Fattigkommisjonen",
+  "skjerm": "CHR-16c",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra",
+   "vinje"
+  ],
+  "med_andre": [
+   "Lars",
+   "ein kommisjonær",
+   "tre bydarar"
+  ],
+  "med_tekst": "Aasen, huldra, Vinje, Lars, ein kommisjonær, tre bydarar",
+  "spel": "Valscene. Spelaren kan by sjølv, snakke med bydarane eller bruke kv-ord for å sjå kva bydarane eigentleg vil med guten.",
+  "steg": [
+   {
+    "s": "Kommisjonæren",
+    "t": "Lem nummer to hundrede og fjorten. Gut, ti Aar. Hvem tager ham for mindst?"
+   },
+   {
+    "s": "Ein bonde frå aker",
+    "t": "Fire spesidaler."
+   },
+   {
+    "s": "Kommisjonæren",
+    "t": "Fire. Nogen lavere?"
+   },
+   {
+    "s": "Vinje",
+    "t": "Kva skal han gjera for fire spesidalar?"
+   },
+   {
+    "s": "Bonden",
+    "t": "Gjæte. Bære ved. Det vanlige."
+   },
+   {
+    "s": "Vinje",
+    "t": "Og skule?"
+   },
+   {
+    "s": "Bonden",
+    "t": "Det er ikke med i prisen."
+   },
+   {
+    "regi": "Val: A) Aasen byr sjølv, null spesidalar → Han har ikkje råd til å fø ein gut. Han må selje eit av ordbokmanuskripta sine til Universitetet for å klare utgiftene. Lars bur hos vertinna til Aasen, og Aasen går glipp av eit ord i Ordboka som han aldri får igjen. B) Vinje skriv om auksjonen i avisa same kvelden → Kommisjonen utset saka. Lars blir hos mora på Fattighuset ein månad til, og så forsvinn han frå spelet. I 1855 står han i billettkøen til Ervingen. C) Huldra ser på bonden frå Aker til han seier at han tek guten utan betaling og sender han på skule → Bonden held ordet og handsamar Lars godt. Han veit ikkje sjølv kvifor han sa det.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_17_1_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_17",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:555"
+ },
+ {
+  "id": "S2_17_2",
+  "namn": "Trappa",
+  "del": "S2",
+  "stad_tekst": "Utanfor",
+  "tid_tekst": "kveld",
+  "stad_og_tid_tekst": "Utanfor, kveld",
+  "skjerm": "CHR-16",
+  "aar": null,
+  "med": [
+   "aasen"
+  ],
+  "med_andre": [
+   "Lars"
+  ],
+  "med_tekst": "Aasen, Lars",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "s": "Lars",
+    "t": "Du sa namnet mitt."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det er namnet ditt."
+   },
+   {
+    "s": "Lars",
+    "t": "Ingen har sagt det sidan mor vart sjuk."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva sa dei då?"
+   },
+   {
+    "s": "Lars",
+    "t": "«Du der.»"
+   }
+  ],
+  "utfall_tekst": "Lars blir nemnd i Dagboka. Aasen skriv ei setning om fattige born i byen, og Vinje seier at det er det første Aasen har skrive som ikkje er eit ord i ei ordbok. Ingen gjenstand. Aasen lærer galdret «Kven er du?» (kv-ord), som gjer namnlause blekkvesen sårbare.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_17",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:563"
+ },
+ {
+  "id": "S2_18_1",
+  "namn": "Bispegarden",
+  "del": "S2",
+  "stad_tekst": "Bispegarden i Bergen",
+  "tid_tekst": "februar 1848",
+  "stad_og_tid_tekst": "Bispegarden i Bergen, februar 1848",
+  "skjerm": "BGN-08b",
+  "aar": 1848,
+  "med": [
+   "aasen",
+   "huldra"
+  ],
+  "med_andre": [
+   "Neumanns tenestejente Anna"
+  ],
+  "med_tekst": "Aasen, huldra, Neumanns tenestejente Anna",
+  "spel": "Arkivet er ein kort dungeon med kyrkjebøker som prøver å skrive Neumann inn som «død, begravet». Neumann er alt gravlagd, og bøkene vil ha med breva hans òg. Bossen Dødsregisteret er langsam og trist og går til åtak med «gløymsle», som fjernar eit tilfeldig ord frå Ordboka i kampen.",
+  "steg": [
+   {
+    "s": "Anna",
+    "t": "Biskopen sat oppe den siste natta. Han skreiv til mange."
+   },
+   {
+    "s": "Aasen",
+    "t": "Til meg òg?"
+   },
+   {
+    "s": "Anna",
+    "t": "Han sa namnet Deres. Han sa: «Den unge mand fra Ørsten. Han maa ikke skamme sig.»"
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_18",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:579"
+ },
+ {
+  "id": "S2_18_2",
+  "namn": "Det siste arket",
+  "del": "S2",
+  "stad_tekst": "Arbeidsrommet i bispegarden",
+  "tid_tekst": "natt",
+  "stad_og_tid_tekst": "Arbeidsrommet i bispegarden, natt",
+  "skjerm": "BGN-08c",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra"
+  ],
+  "med_andre": [],
+  "med_tekst": "Aasen, huldra",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "regi": "Aasen les. Brevet er på Neumanns formelle dansk."
+   },
+   {
+    "s": "Aasen",
+    "t": "«Kjære Aasen. Jeg har hørt at De har været i Christiania og at De taler med mange lærde Mænd. Det er godt. Men De skal vide, at jeg i sin Tid anbefalede Dem, fordi De talede som De gjorde. Glem ikke det.»"
+   },
+   {
+    "s": "Huldra",
+    "t": "Er det alt?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Det er ei linje til. Ho er ikkje ferdig."
+   },
+   {
+    "s": "Huldra",
+    "t": "Kva står det?"
+   },
+   {
+    "s": "Aasen",
+    "t": "«Vær varsom med den, som roser for meget.»"
+   },
+   {
+    "regi": "Aasen brettar brevet saman og puttar det innerst i frakken."
+   },
+   {
+    "s": "Huldra",
+    "t": "Kven meinte han?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Han skreiv det ikkje."
+   }
+  ],
+  "utfall_tekst": "Brevet blir ein gjenstand i bagasjen til Aasen. Når Munch rosar grammatikken seinare i 1848, lyser brevet svakt, men Aasen kommenterer det ikkje. Etter 1850 får Aasen ein replikk i Dagboka: «Neumann visste det. Eller han ante det.» Bispebrevet (tilbehøyr, vern mot skam og mot evner som brukar smiger).",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_18",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:585"
+ },
+ {
+  "id": "S2_40_1",
+  "namn": "Kammerset",
+  "del": "S2",
+  "stad_tekst": "Eit leigd kammers på Grønland, ettermiddag",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Eit leigd kammers på Grønland, ettermiddag",
+  "skjerm": "CHR-16b",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra",
+   "vinje"
+  ],
+  "med_andre": [
+   "Eirik Rukke"
+  ],
+  "med_tekst": "Aasen, huldra, Vinje, Eirik Rukke",
+  "spel": "Samtale. Spelaren kan sjå seg om i kammerset. Ei grå kappe heng på spikaren. På bordet ligg ei lita salmebok med dansk tekst og eit ark med tre linjer på.",
+  "steg": [
+   {
+    "regi": "Eirik sit på senga i skjorteermane og pussar ein knapp som ikkje treng pussing. Han er tjueto år og ser eldre ut. Når han ser Aasen, kjenner han han igjen."
+   },
+   {
+    "s": "Eirik",
+    "t": "Skulemeisteren. Han som inkje kunne danse."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg kan det framleis ikkje."
+   },
+   {
+    "s": "Eirik",
+    "t": "Bestefar har sendt deg."
+   },
+   {
+    "s": "Aasen",
+    "t": "Tandberg skreiv. Tore bad han."
+   },
+   {
+    "s": "Eirik",
+    "t": "Han kan inkje skrive sjølv. Det er godt. Då kan han inkje spørje meg kva eg gjorde der nede."
+   },
+   {
+    "s": "Vinje",
+    "t": "Kva gjorde du der nede?"
+   },
+   {
+    "s": "Eirik",
+    "t": "Venta. Mest venta. I regn. Me grov grøfter og låg i dei, og så grov me nye."
+   },
+   {
+    "regi": "Han legg frå seg knappen."
+   },
+   {
+    "s": "Eirik",
+    "t": "Me var tre i grøfta mi. Rasmus frå Fyn og Per frå Skåne og eg. Rasmus sa grøft. Eg sa grøft. Per sa dike. Det skjønte me òg. Me forstod kvarandre i grøfta, skulemeister. Me trong inga ordbok."
+   },
+   {
+    "s": "Aasen",
+    "t": "Nei."
+   },
+   {
+    "s": "Eirik",
+    "t": "So kvifor samlar du berre ord frå Noreg? Dei har same orda der nede. Du kunne ha teke heile Norden i éi bok."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kven skulle bera ho?"
+   },
+   {
+    "s": "Eirik",
+    "t": "Du tulla med meg."
+   },
+   {
+    "s": "Aasen",
+    "t": "Litt."
+   },
+   {
+    "regi": "Huldra har teke opp salmeboka. Det står eit namn innanfor permen."
+   },
+   {
+    "s": "Huldra",
+    "t": "Kven er Rasmus Hansen?"
+   },
+   {
+    "s": "Eirik",
+    "t": "Gje meg den."
+   },
+   {
+    "regi": "Ho gir han boka. Han held henne i begge hendene."
+   },
+   {
+    "s": "Eirik",
+    "t": "Han døydde i ei løe på Jylland før slaget. Av magesott. Det var mange som døydde slik. Det står inkje i visene."
+   },
+   {
+    "s": "Vinje",
+    "t": "Nei. Det gjer det aldri."
+   },
+   {
+    "s": "Eirik",
+    "t": "Eg lova han å skrive til mor hans. Eg har skrive tre linjer på eitt år."
+   },
+   {
+    "regi": "Val: A) «Kvifor fekk du det ikkje til?» → EIRIK: «Kvar gong eg skriv, vert det dansk. Det er inkje meg. Når eg skriv som eg talar, vert det ein hallingdøl, og ho kjenner inkje nokon hallingdøl.» B) Sei ingenting og vent → Eirik ser lenge på arket. «Eg veit inkje kva mål eg skal skrive det på,» seier han til slutt. «Eg veit inkje kva mål eg er i lenger.»",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Tråd blir opna: brevet til Fyn. Vinje skriv namnet til Rasmus Hansen inn i notisboka si.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_40_1_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_40",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:607"
+ },
+ {
+  "id": "S2_40_2",
+  "namn": "Trommeslagaren",
+  "del": "S2",
+  "stad_tekst": "Same kammers",
+  "tid_tekst": "natt",
+  "stad_og_tid_tekst": "Same kammers, natt",
+  "skjerm": "CHR-16b",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra",
+   "vinje"
+  ],
+  "med_andre": [
+   "Eirik Rukke"
+  ],
+  "med_tekst": "Aasen, huldra, Vinje, Eirik Rukke",
+  "spel": "Bosskamp mot «Trommeslagaren», ein liten skikkelse i blå uniform med ein tromme som er større enn han sjølv. Han er laga av alle marsjane Eirik høyrde i leiren. Han slår takt, og kvar runde får partyet statusen «Takt»: alle figurane handlar i fast rekkjefølgje etter plassen sin, og diftongvern verkar ikkje på den som har slått, før neste tur hans. Han syng om ære og gode kameratar. Bak han syner veggen i kammerset ei løe med halm på golvet og menn som ligg tett.",
+  "steg": [
+   {
+    "regi": "Klokka slår tolv. Eirik reiser seg frå senga utan å vakne og går i takt mot døra. Ein tromme slår. Trommeslagaren står midt på golvet."
+   },
+   {
+    "s": "Trommeslagaren",
+    "t": "Rask og frisk! Rask og frisk! Ingen har det so godt som soldaten!"
+   },
+   {
+    "s": "Huldra",
+    "t": "Han lyg i takt."
+   },
+   {
+    "s": "Vinje",
+    "t": "Det er den verste måten å ljuga på."
+   },
+   {
+    "regi": "Kamp. Første fase: «Takt» kan ikkje fjernast. Diftongane vernar, men slår ikkje igjennom. Andre fase: spelaren må bryte takten. Har Vinje hallingkastet frå S1.30, kan han dansa takten i stykke. Har heile partyet den delte versjonen, kan Aasen gjere det, dårleg, men det held. Har ingen av dei evna, vaknar Eirik på golvet og ser på at Aasen prøver. Eirik står som vernemål, og det han gjer, kjem som hendingar mellom turane."
+   },
+   {
+    "kamp": "trommeslagaren"
+   },
+   {
+    "s": "Eirik",
+    "t": "Du gjer det feil, skulemeister."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg veit."
+   },
+   {
+    "s": "Eirik",
+    "t": "Bestefar lærte meg det. Eg har inkje dansa sidan eg reiste.",
+    "regi": "reiser seg"
+   },
+   {
+    "regi": "Hending mellom turane, med ei line øvst på skjermen. Hallingen er ein animasjon. Eirik dansar halling i det trange kammerset. Takten frå trommeslagaren går i stykke mot den ujamne rytmen. Han sparkar i taket med skotuppen. Trommeslagaren sluttar å syngje midt i ei linje."
+   },
+   {
+    "regi": "Når kampen er over, blir trommeslagaren til ein liten gut i for stor uniform. Han set seg på golvet og blir borte. Det luktar halm ei stund."
+   },
+   {
+    "s": "Eirik",
+    "t": "Han var ikkje så gamal som han lét.",
+    "regi": "andpusten"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ingen av dei var det."
+   },
+   {
+    "regi": "Eirik legg seg på senga med kleda på. Han søv før Aasen har fått sløkt lyset."
+   }
+  ],
+  "utfall_tekst": "Eirik søv natta gjennom for første gong sidan han kom heim. Ord lært: «leir» (diftong, vern), med grannemålsformene «lejr» (Fyn, gjennom Eirik Rukke) og «läger» (Skåne, gjennom Eirik Rukke). Dersom Eirik dansa, får han hallingkastet attende, og Tore Rukke får ein ekstra replikk i Hallingdal i 1852.",
+  "ord": [
+   "leir"
+  ],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_40",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:631"
+ },
+ {
+  "id": "S2_40_3",
+  "namn": "Brevet til Fyn",
+  "del": "S2",
+  "stad_tekst": "Same kammers",
+  "tid_tekst": "morgon",
+  "stad_og_tid_tekst": "Same kammers, morgon",
+  "skjerm": "CHR-16b",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra",
+   "vinje"
+  ],
+  "med_andre": [
+   "Eirik Rukke"
+  ],
+  "med_tekst": "Aasen, huldra, Vinje, Eirik Rukke",
+  "spel": "Samtale med val. Spelaren vel korleis brevet blir skrive.",
+  "steg": [
+   {
+    "regi": "Eirik sit ved bordet med arket. Aasen har lånt han penn og blekk. Vinje har gått etter kaffi og kjem tilbake med brød."
+   },
+   {
+    "s": "Eirik",
+    "t": "Ho heiter Karen. Dei har ein husmannsplass ved Faaborg. Han hadde fire syskjen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva vil du seia til henne?"
+   },
+   {
+    "s": "Eirik",
+    "t": "At han inkje var redd. Det er ei lygn. At han song. Det er sant."
+   },
+   {
+    "regi": "Val: A) «Eg skriv det på dansk for deg» → Aasen skriv eit fint brev på dansk. Det har rett form og rette ord. Eirik les det og skriv under. «Det er godt,» seier han. «Det er inkje meg.» Brevet blir sendt. Det kjem inkje svar. B) «Sei det som du talar, so skriv eg det ned» → Eirik talar hallingmål, og Aasen skriv det slik det blir sagt. Vinje rettar ingenting. Om vinteren kjem det eit svar frå Fyn, skrive av presten der. Karen har forstått nesten alt. Det ho ikkje skjønte, spurde ho om. Ho skriv: «De skrev som Rasmus fortalte om Dem.» C) «Skriv det sjølv. Eg ser på» → Eirik skriv sjølv, seint, med feil på kvar linje, halvt dansk og halvt hallingmål. Aasen rettar ikkje. Det kjem eit kort svar om våren. Karen takkar og ber han kome til Fyn ein gong.",
+    "val": true
+   },
+   {
+    "regi": "Etterpå. Eirik brettar brevet saman."
+   },
+   {
+    "s": "Eirik",
+    "t": "Eg trudde du skulle seia at eg tok feil. Um Norden."
+   },
+   {
+    "s": "Aasen",
+    "t": "Du låg i grøfta. Eg gjorde ikkje det."
+   },
+   {
+    "s": "Eirik",
+    "t": "Eg kjem til å halde med Norden enno."
+   },
+   {
+    "s": "Aasen",
+    "t": "Gjer det. Gjer det på hallingmål."
+   },
+   {
+    "s": "Eirik",
+    "t": "Det er det einaste eg kan.",
+    "regi": "smiler for første gong"
+   },
+   {
+    "s": "Vinje",
+    "t": "Då er du betre stelt enn studentane."
+   },
+   {
+    "regi": "Eirik tek kappa ned frå spikaren. Han ser på henne ei stund og heng henne opp att."
+   },
+   {
+    "s": "Eirik",
+    "t": "Eg reiser heim til jul. Bestefar vil vite um eg kan dansa enno."
+   },
+   {
+    "s": "Huldra",
+    "t": "Du kan."
+   },
+   {
+    "s": "Eirik",
+    "t": "Ja. Det var det som kom att."
+   }
+  ],
+  "utfall_tekst": "Eirik Rukke reiser heim til Nes. Han står i fakkeltoget i 5.12c i juni 1851 og kan møtast på Nes i 1852. Val B gir ordet «brev» ei ny grannemålsform frå Fyn i Ordboka og opnar ein replikk for Aasen i ordskiftet i 5.12b: «Ei mor på Fyn hev lese hallingmål. Ho trong ingen tolk.» Val A gir ingen ny replikk. Val C gir Eirik ei lita evne om han seinare blir med som gjest: «Brevet» (lindrar éin figur og tek bort Skam). Salmeboka frå Fyn (tilbehøyr, vern mot statusen «Takt» og mot evner som tvingar partyet til å handle i fast rekkjefølgje). Eirik gir henne til Aasen og seier at mor til Rasmus har ei eiga.",
+  "ord": [
+   "brev"
+  ],
+  "ting": [],
+  "flagg_set": [
+   "S2_40_3_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "ord_ukjende": [
+   "Brevet"
+  ],
+  "oppdrag": "S2_40",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:653"
+ },
+ {
+  "id": "S2_43_1",
+  "namn": "Salongen om dagen",
+  "del": "S2",
+  "stad_tekst": "Stova til Collett, ettermiddag",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Stova til Collett, ettermiddag",
+  "skjerm": "CHR-03c",
+  "aar": null,
+  "med": [
+   "aasen",
+   "collett"
+  ],
+  "med_andre": [],
+  "med_tekst": "Aasen, Collett",
+  "spel": "Lesing og samtale.",
+  "steg": [
+   {
+    "s": "Collett",
+    "t": "Hun lader dem tale, som de taler. Paa Fransk, Aasen. I Paris."
+   },
+   {
+    "s": "Aasen",
+    "t": "Og dei lo ikkje?"
+   },
+   {
+    "s": "Collett",
+    "t": "Nogle lo. Andre græd. Bogen blev læst."
+   },
+   {
+    "s": "Aasen",
+    "t": "Her seier ein gut eit ord som ikkje er i ordboka di.",
+    "regi": "les"
+   },
+   {
+    "s": "Collett",
+    "t": "Saa staar det i hans."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ja. Det er den boka ingen har skrive enno."
+   },
+   {
+    "s": "Collett",
+    "t": "De læser Fransk som en Mand, der har læst alt andet først.",
+    "regi": "ser på han lenge"
+   }
+  ],
+  "utfall_tekst": "Ei fransk ordbok går inn i bokhylla, ei gåve frå Collett. Tillit til Collett aukar. Franske ord gjev høvesbonus mot salongfiendane hos Welhaven og i Dæmringen (S2.32).",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_43",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:681",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_19_1",
+  "namn": "Døra",
+  "del": "S2",
+  "stad_tekst": "Aasens hybel",
+  "tid_tekst": "natt",
+  "stad_og_tid_tekst": "Aasens hybel, natt",
+  "skjerm": "CHR-15a",
+  "aar": null,
+  "med": [
+   "aasen",
+   "vinje"
+  ],
+  "med_andre": [
+   "Kristiansen"
+  ],
+  "med_tekst": "Aasen, Vinje, Kristiansen",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "s": "Kristiansen",
+    "t": "Dei seier me har laga vinteren."
+   },
+   {
+    "s": "Vinje",
+    "t": "De kan ikkje eingong laga eit møte som sluttar i tide."
+   },
+   {
+    "s": "Kristiansen",
+    "t": "Det er ikkje morosamt, Vinje."
+   },
+   {
+    "s": "Vinje",
+    "t": "Nei. Det er det som gjer at eg må le."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kven har skrive blada?"
+   },
+   {
+    "s": "Kristiansen",
+    "t": "Ingen av oss. Me har ikkje råd til så fint papir."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_19",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:697"
+ },
+ {
+  "id": "S2_19_2",
+  "namn": "Pressa i Kirkegata",
+  "del": "S2",
+  "stad_tekst": "Eit kjellartrykkeri i Kirkegata",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Eit kjellartrykkeri i Kirkegata",
+  "skjerm": "CHR-04",
+  "aar": null,
+  "med": [
+   "aasen",
+   "vinje",
+   "collett"
+  ],
+  "med_andre": [],
+  "med_tekst": "Aasen, Vinje, Collett",
+  "spel": "Dungeon med snikedel og boss. Bossen Flygebladet deler seg i nye kopiar kvar gong det blir skadd. Det må stoppast ved at Collett gjer den originale satsen stum.",
+  "steg": [
+   {
+    "s": "Collett",
+    "t": "Se på skriften. Det er god Sats. Dyr."
+   },
+   {
+    "s": "Vinje",
+    "t": "Dei har pengar."
+   },
+   {
+    "s": "Collett",
+    "t": "De har mer. De har en som lærte dem å skrive som Henrik. Hør."
+   },
+   {
+    "s": "Flygebladet",
+    "t": "Arbeidere! Reiser Eder! Lad Vinteren komme!"
+   },
+   {
+    "s": "Collett",
+    "t": "Min bror ville aldri ropt på vinter. Han var redd for kulde. Han hadde alltid for tynne sko."
+   },
+   {
+    "regi": "Val: A) Øydelegg satsen → Flygeblada sluttar å spreie seg, men politiet finn aldri beviset. B) Ta med satsen til Morgenbladet → Beviset blir trykt. Knudsen les det seinare og nemner det i striden med Munch. Kristiansen må likevel rømme til Amerika.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Om S2.1 blei løyst med val A, seier Vinje: «Eg stolar ikkje på papir lenger. Ikkje eingong mitt eige.» Settarens vinkelhake (våpen for Vinje, raske åtak som knekkjer blekkvesen).",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_19_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_19",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:703",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_20_1",
+  "namn": "Kjellaren igjen",
+  "del": "S2",
+  "stad_tekst": "Kjellaren under proviantbygningen",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Kjellaren under proviantbygningen",
+  "skjerm": "PRV-05",
+  "aar": null,
+  "med": [
+   "aasen",
+   "knudsen"
+  ],
+  "med_andre": [
+   "vaskekona",
+   "eventuelt Gyllenstierna"
+  ],
+  "med_tekst": "Aasen, Knudsen, vaskekona, eventuelt Gyllenstierna",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "s": "Vaskekona",
+    "t": "Du skreiv det ikkje ned. Eg har følgt med."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg sa eg ikkje skulle."
+   },
+   {
+    "s": "Vaskekona",
+    "t": "Folk seier mykje."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Hvem er denne damen?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Ho leier eit hemmeleg lag."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Selvfølgelig gjør hun det."
+   },
+   {
+    "regi": "Om Gyllenstierna er med:"
+   },
+   {
+    "s": "Gyllenstierna",
+    "t": "Rosenschöld är min överordnade. Han tror att stenar lyder."
+   },
+   {
+    "s": "Aasen",
+    "t": "Gjer dei ikkje?"
+   },
+   {
+    "s": "Gyllenstierna",
+    "t": "Inte svenska stenar i alla fall. Jag vet inte med norska."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_20",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:721"
+ },
+ {
+  "id": "S2_20_2",
+  "namn": "Kaia",
+  "del": "S2",
+  "stad_tekst": "Christiania hamn",
+  "tid_tekst": "natt, snøstorm",
+  "stad_og_tid_tekst": "Christiania hamn, natt, snøstorm",
+  "skjerm": "CHR-08",
+  "aar": null,
+  "med": [
+   "aasen",
+   "knudsen"
+  ],
+  "med_andre": [
+   "valfri tredje"
+  ],
+  "med_tekst": "Aasen, Knudsen, valfri tredje",
+  "spel": "Boss mot major Rosenschöld og runesteinen han har bunde med svenske formular. Kampen har to mål: skade majoren eller løyse runene. Om spelaren løyser runene først, snur steinen seg mot majoren. Runene må lesast rett i ei runegåte. Feil runer slår tilbake.",
+  "steg": [
+   {
+    "regi": "ROSENSCHÖLD: Norrmän. Alltid så envisa.",
+    "utan_parentes": true
+   },
+   {
+    "s": "Knudsen",
+    "t": "Det heter sta, major. Vi har et eget ord. ROSENSCHÖLD: Stenen talar svenska nu."
+   },
+   {
+    "s": "Aasen",
+    "t": "Steinen var her før svensk og før norsk. ROSENSCHÖLD: Då talar den ingenting."
+   },
+   {
+    "s": "Aasen",
+    "t": "Då får me høyra etter."
+   },
+   {
+    "regi": "Val: A) Steinen blir sett tilbake på Tune → Ein bonde i Østfold vaknar av at steinen står der igjen om morgonen. B) Steinen blir senka i fjorden så ingen kan bruke han → Majoren reiser tomhendt heim. Om våren dreg bøndene steinen opp att og set han ved Tune kyrkje, men runa har gått ut i vatnet og er borte frå spelet og kan ikkje brukast i S2.36. Etter begge vala står steinen ved Tune kyrkje til han blir flytt til Oldsaksamlinga i Christiania i 1857.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Unionsløva (tilbehøyr, vern mot svenske formular og formularbaserte åtak). Rosenschöld dukkar opp igjen i S2.26.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_20_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_20",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:731"
+ },
+ {
+  "id": "S2_21_1",
+  "namn": "Plakaten",
+  "del": "S2",
+  "stad_tekst": "Bryggen",
+  "tid_tekst": "morgon",
+  "stad_og_tid_tekst": "Bryggen, morgon",
+  "skjerm": "BGN-02",
+  "aar": null,
+  "med": [
+   "aasen",
+   "ole_bull"
+  ],
+  "med_andre": [
+   "Torbjørn",
+   "Brita Myklebust"
+  ],
+  "med_tekst": "Aasen, Ole Bull, Torbjørn og Brita Myklebust",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "s": "Ole Bull",
+    "t": "New Norway! Fri jord, fri kunst, frit folk!"
+   },
+   {
+    "s": "Torbjørn",
+    "t": "Er det sant?"
+   },
+   {
+    "s": "Ole Bull",
+    "t": "Every word."
+   },
+   {
+    "s": "Brita",
+    "t": "Kva er «every»?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Det tyder «kvart»."
+   },
+   {
+    "s": "Brita",
+    "t": "Så han meiner kvart ord."
+   },
+   {
+    "s": "Ole Bull",
+    "t": "Absolutely."
+   },
+   {
+    "s": "Aasen",
+    "t": "Og det tyder at han meiner det svært mykje."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_21",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:747",
+  "skjermar": [
+   "BGN-02",
+   "LAS-01"
+  ]
+ },
+ {
+  "id": "S2_21_2",
+  "namn": "Lasterommet",
+  "del": "S2",
+  "stad_tekst": "Om bord på emigrantskipet, Nordsjøen",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Om bord på emigrantskipet, Nordsjøen",
+  "skjerm": null,
+  "aar": null,
+  "med": [
+   "aasen",
+   "ole_bull"
+  ],
+  "med_andre": [
+   "valfri tredje"
+  ],
+  "med_tekst": "Aasen, Ole Bull, valfri tredje",
+  "spel": "Dungeon i lasterommet under storm. Bossen Landkjøpsbrevet er eit skøyte som skriv om sine eigne vilkår. For kvar runde blir eitt ord i kontrakten endra, og evnene til partyet endrar seg tilsvarande.",
+  "steg": [
+   {
+    "s": "Landkjøpsbrevet",
+    "t": "Kjøberen erholder intet. Kjøberen erholder intet."
+   },
+   {
+    "s": "Ole Bull",
+    "t": "Det står ikke så! I signed it myself!"
+   },
+   {
+    "s": "Aasen",
+    "t": "Du skreiv under på det som stod der då."
+   },
+   {
+    "s": "Ole Bull",
+    "t": "Papir er en forræder, Aasen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Papir er papir. Det er folk som les det om att."
+   },
+   {
+    "regi": "Val: A) Ole Bull riv skøytet og lovar familien at han personleg garanterer for dei → Familien reiser vidare. Hausten 1853 kjem eit brev om at kolonien har falle og at dei har flytt til Wisconsin. Ole Bull sender dei pengar han ikkje har. B) Aasen overtaler familien til å reise heim → Familien går i land i Liverpool og tek neste båt heim. Dei har ikkje båt lenger, og Torbjørn tek arbeid i Bergen. Ole Bull ser dei på gata ein dag og helsar ikkje.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Løftet (tilbehøyr for Ole Bull, gir ekstra kraft til styrkande låtar så lenge ingen i partyet har falle i kampen). Etter val A får Ole Bull ein ekstra replikk i S2.8.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_21_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_21",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:753"
+ },
+ {
+  "id": "S2_22_1",
+  "namn": "Disken",
+  "del": "S2",
+  "stad_tekst": "Posthuset på Nes",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Posthuset på Nes",
+  "skjerm": "PSN-01",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra"
+  ],
+  "med_andre": [
+   "Tandberg"
+  ],
+  "med_tekst": "Aasen, huldra, Tandberg",
+  "spel": "Dungeon i postsekkene. Breva er små rom. Kvart rom er ein heim i Amerika. Fiendane er Gløymslefrimerke. Om spelaren reddar alle dei tolv breva, får tolv familiar i Hallingdal vite korleis det går med sine.",
+  "steg": [
+   {
+    "s": "Tandberg",
+    "t": "De kom tilbake."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg kom tilbake."
+   },
+   {
+    "s": "Tandberg",
+    "t": "Det er ikkje mange som gjer det. Dei reiser til Amerika. Eller dei døyr."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg hugsar sonen Dykkar kvar dag."
+   },
+   {
+    "s": "Tandberg",
+    "t": "Det gjer eg òg. Det har ikkje hjelpt. (Han dreg ut ei skuffe.)"
+   },
+   {
+    "s": "Tandberg",
+    "t": "Han skreiv dette til Dykk. Eg har ikkje opna det."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_22",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:769"
+ },
+ {
+  "id": "S2_22_2",
+  "namn": "Brevet",
+  "del": "S2",
+  "stad_tekst": "Posthuset",
+  "tid_tekst": "kveld",
+  "stad_og_tid_tekst": "Posthuset, kveld",
+  "skjerm": "PSN-14",
+  "aar": null,
+  "med": [
+   "aasen"
+  ],
+  "med_andre": [
+   "Tandberg"
+  ],
+  "med_tekst": "Aasen, Tandberg",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "regi": "Aasen opnar brevet. Det er kort."
+   },
+   {
+    "s": "Aasen",
+    "t": "«Aasen. Eg har tenkt på det ordet De sa i går, om snøen som fell på vatnet. Eg meiner det heiter noko anna her. Eg skal spørja mor når ho kjem. Dykkar venn.»"
+   },
+   {
+    "s": "Tandberg",
+    "t": "Kva ord var det?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg hugsar det ikkje."
+   },
+   {
+    "s": "Tandberg",
+    "t": "Og mor hans?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Kan eg spørja henne?"
+   },
+   {
+    "s": "Tandberg",
+    "t": "Ho døydde i fjor."
+   },
+   {
+    "regi": "Lang pause. Tandberg tek brevet og legg det i skuffa igjen."
+   },
+   {
+    "s": "Tandberg",
+    "t": "Det får liggja. Det er hans."
+   }
+  ],
+  "utfall_tekst": "Ordet blir aldri funne. Eit tomt felt i Ordboka står merkt «Nes, 1845». Det kan ikkje fyllast. Posthorn (gjenstand, lèt partyet sende eit brev frå Dagboka til ein figur som ikkje er med, for å låse opp ein leirbålsamtale).",
+  "ord": [
+   "stein"
+  ],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_22",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:775"
+ },
+ {
+  "id": "S2_23_1",
+  "namn": "Høflegheita",
+  "del": "S2",
+  "stad_tekst": "Tunet på Øvre Ljøsne",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Tunet på Øvre Ljøsne",
+  "skjerm": "LRD-03",
+  "aar": null,
+  "med": [
+   "aasen",
+   "vinje"
+  ],
+  "med_andre": [
+   "to bønder"
+  ],
+  "med_tekst": "Aasen, Vinje, to bønder",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "regi": "BONDE 1: God dag, kjære granne. BONDE 2: God dag, kjære granne. BONDE 1: Korleis står det til med deg, kjære granne? BONDE 2: Takk, kjære granne. Og med deg?",
+    "utan_parentes": true
+   },
+   {
+    "s": "Vinje",
+    "t": "Kor lenge har dei halde på?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Sidan i morgon tidleg. BONDE 1: (desperat, til Aasen) Kjære herre. Gjer noko."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_23",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:797"
+ },
+ {
+  "id": "S2_23_2",
+  "namn": "Haugen",
+  "del": "S2",
+  "stad_tekst": "Gravhaugen ovanfor bygda",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Gravhaugen ovanfor bygda",
+  "skjerm": "LRD-04",
+  "aar": null,
+  "med": [
+   "aasen",
+   "vinje",
+   "aslaug"
+  ],
+  "med_andre": [],
+  "med_tekst": "Aasen, Vinje, Aslaug",
+  "spel": "Boss mot Bannkongen, som berre kan skadast med stev som er uhøflege nok. Berre ertestev frå pungen gjev Kraft, og dei pene steva gjer ingen skade. Aslaug og Vinje tek kvart sitt stev. Alle bannord i spelet står som vanlege ord som «fanden» og «pokker», slik at det passar for skulen.",
+  "steg": [
+   {
+    "s": "Bannkongen",
+    "t": "Eg er fanden sjølv i haugen, eg er pokker og hans far, de har bunde bort mitt folk, og no står eg her og tar."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Du er berre småe ord som ein bonde slepte laus. Kom deg heim og hald deg der, og slutt å vera så forbanna raus."
+   },
+   {
+    "regi": "Bannkongen stansar. Så ler han så haugen ristar."
+   },
+   {
+    "s": "Bannkongen",
+    "t": "Den var god, kjerring."
+   },
+   {
+    "regi": "Val: A) Bannkongen blir sleppt fri → Bygda bannar igjen innan ein time. Folk er lukkelege. Presten er mindre lukkeleg. B) Aasen skriv ned tre av bannorda i Ordboka → Bannkongen blir svakare, men Aasen får galdret Lærdalsbannet, eit kraftig åtak med tilfeldig verknad. Eitt av orda står igjen i Ordboka, og Aasen stryk det ut seinare med ein kommentar: «Heldt ikkje mål.»",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Aslaugs replikk «Den var god, kjerring» blir ein leirbålspøk. Vinje får evna Bannstevet.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_23_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_23",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:803"
+ },
+ {
+  "id": "S2_24_1",
+  "namn": "Vegen",
+  "del": "S2",
+  "stad_tekst": "Vegen mellom to gardar",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Vegen mellom to gardar",
+  "skjerm": "VNG-05",
+  "aar": null,
+  "med": [
+   "aasen",
+   "landstad"
+  ],
+  "med_andre": [
+   "Nils"
+  ],
+  "med_tekst": "Aasen, Landstad, Nils",
+  "spel": "Fire gardar. På kvar gard har blekket bunde noko (ei kyrkjebok, ein arveskifteprotokoll, ei skulebok, eit fattigmanntal). Når partyet løyser det, opnar gardfolket døra for Nils, og Nils gir partyet eit gammalt ord.",
+  "steg": [
+   {
+    "s": "Nils",
+    "t": "Eg har vore på denne garden tjueto gonger."
+   },
+   {
+    "s": "Landstad",
+    "t": "Kjenner De folket godt?"
+   },
+   {
+    "s": "Nils",
+    "t": "Eg kjenner golvet godt. Eg søv på det."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva ord har de for det? Ein som går på legd?"
+   },
+   {
+    "s": "Nils",
+    "t": "Dei kallar meg legdskall. Eg kallar meg Nils."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_24",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:825",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_24_2",
+  "namn": "Den siste garden",
+  "del": "S2",
+  "stad_tekst": "Den fjerde garden",
+  "tid_tekst": "kveld",
+  "stad_og_tid_tekst": "Den fjerde garden, kveld",
+  "skjerm": "VNG-05",
+  "aar": null,
+  "med": [
+   "aasen",
+   "landstad"
+  ],
+  "med_andre": [
+   "Nils",
+   "husfrua"
+  ],
+  "med_tekst": "Aasen, Landstad, Nils, husfrua",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "s": "Husfrua",
+    "t": "Han kan få sove i stova. Ikkje på golvet."
+   },
+   {
+    "s": "Nils",
+    "t": "Kvar då?"
+   },
+   {
+    "s": "Husfrua",
+    "t": "I senga til far. Far er død no."
+   },
+   {
+    "s": "Nils",
+    "t": "Eg har ikkje lege i ei seng sidan førtito.",
+    "regi": "lenge"
+   },
+   {
+    "regi": "Landstad tek Aasen til sides."
+   },
+   {
+    "s": "Landstad",
+    "t": "Jeg har begravet mange slike som ham. Jeg sa pene ord over dem."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det er ikkje galt."
+   },
+   {
+    "s": "Landstad",
+    "t": "Nei. Men jeg vet ikke navnet på en eneste av dem lenger."
+   },
+   {
+    "regi": "Val: A) Landstad skriv ned alle orda Nils har gitt → Landstad får fem nye viselinjer og ei lækjing som verkar på heile partyet. B) Landstad ber Nils syngje noko og skriv ingenting → Nils syng eit halvt stev med skjelvande stemme og sovnar midt i. Landstads Kvelvsong blir sterkare.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Legdsstaven (våpen for Landstad, aukar lækjinga på figurar med lite helse).",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_24_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_24",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:831",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_25_1",
+  "namn": "Bakken",
+  "del": "S2",
+  "stad_tekst": "Bakken ovanfor Øverbø",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Bakken ovanfor Øverbø",
+  "skjerm": "MOR-01",
+  "aar": null,
+  "med": [
+   "aasen",
+   "aslaug",
+   "vinje"
+  ],
+  "med_andre": [
+   "Sondre"
+  ],
+  "med_tekst": "Aasen, Aslaug, Vinje, Sondre",
+  "spel": "Minispel. Tre rundar. Spelaren styrer først Vinje, som dett. Så Aslaug, som hoppar kort og kontrollert. Så Sondre mot Fonnvetten. Kvart fall i snøen gir eit nytt ord om snø. Det finst elleve snøord å samle i Morgedal.",
+  "steg": [
+   {
+    "s": "Sondre",
+    "t": "De kan stå på ski?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg er frå Sunnmøre."
+   },
+   {
+    "s": "Sondre",
+    "t": "Det var ikkje svar på det eg spurde om."
+   },
+   {
+    "s": "Vinje",
+    "t": "Det er svar på alt for han."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Sondre. Syn dei vidjene."
+   },
+   {
+    "s": "Sondre",
+    "t": "Det er berre ei bjørkerot rundt hælen. Så sleppar ikkje foten."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva kallar du det?"
+   },
+   {
+    "s": "Sondre",
+    "t": "Eg kallar det ingenting. Eg brukar det."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_25",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:851",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_25_2",
+  "namn": "Etterpå",
+  "del": "S2",
+  "stad_tekst": "Botnen av bakken",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Botnen av bakken",
+  "skjerm": "MOR-01",
+  "aar": null,
+  "med": [],
+  "med_andre": [
+   "Alle"
+  ],
+  "med_tekst": "Alle",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "regi": "Fonnvetten ligg i bitar. Sondre står og pustar."
+   },
+   {
+    "s": "Vinje",
+    "t": "Ein dag reiser du til Christiania og hoppar for kongen."
+   },
+   {
+    "s": "Sondre",
+    "t": "Kva skal kongen med det?"
+   },
+   {
+    "s": "Vinje",
+    "t": "Ingenting. Det er det som er fint med det."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Han reiser ikkje nokon stad."
+   },
+   {
+    "s": "Sondre",
+    "t": "Eg reiser kanskje til Amerika."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Ja. Det gjer dei.",
+    "regi": "etter ei stund"
+   }
+  ],
+  "utfall_tekst": "Telemarksvidjene (tilbehøyr, gir partyet første tur i alle kampar i snø). Elleve snøord, mellom dei «fonn», «skare» og «kram». kram får tydinga våt snø under same oppslag som småvarene til høkarkona i Vika (1848). Har Aasen møtt henne, er ordet kontrollert.",
+  "ord": [
+   "fonn",
+   "skare",
+   "kram"
+  ],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "ord_ukjende": [
+   "kontrollert"
+  ],
+  "oppdrag": "S2_25",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:857",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_26_1",
+  "namn": "Prestegarden",
+  "del": "S2",
+  "stad_tekst": "Prestegarden i Fredrikshald",
+  "tid_tekst": "natt",
+  "stad_og_tid_tekst": "Prestegarden i Fredrikshald, natt",
+  "skjerm": "FHD-04a",
+  "aar": null,
+  "med": [
+   "aasen",
+   "landstad"
+  ],
+  "med_andre": [],
+  "med_tekst": "Aasen, Landstad",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "s": "Landstad",
+    "t": "Jeg hører trommene hver natt. Menigheten tror det er meg som har feber."
+   },
+   {
+    "s": "Aasen",
+    "t": "Har du det?"
+   },
+   {
+    "s": "Landstad",
+    "t": "Ja. Men det er ikke derfor."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_26",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:873"
+ },
+ {
+  "id": "S2_26_2",
+  "namn": "Løpegravene",
+  "del": "S2",
+  "stad_tekst": "Fredriksten festning",
+  "tid_tekst": "natt",
+  "stad_og_tid_tekst": "Fredriksten festning, natt",
+  "skjerm": "LPG-09",
+  "aar": null,
+  "med": [
+   "aasen",
+   "landstad"
+  ],
+  "med_andre": [
+   "valfri tredje"
+  ],
+  "med_tekst": "Aasen, Landstad, valfri tredje",
+  "spel": "Dungeon i løpegravene. Svenske gjengangarsoldatar marsjerer i formasjon. Bossen Karl XII har tre fasar: i første slåst han med kården, i andre kallar han på troppane sine, i tredje hugsar han at han er død og blir farlegast.",
+  "steg": [
+   {
+    "regi": "ROSENSCHÖLD: Ers Majestät. Fästningen väntar.",
+    "utan_parentes": true
+   },
+   {
+    "s": "Karl xii",
+    "t": "Var är mina karoliner? ROSENSCHÖLD: Här. De följer er."
+   },
+   {
+    "s": "Karl xii",
+    "t": "Det är kallt. Det var kallt då också."
+   },
+   {
+    "s": "Landstad",
+    "t": "Deres Majestæt. Det er over hundrede og tredive Aar siden."
+   },
+   {
+    "s": "Karl xii",
+    "t": "Omöjligt. Jag stod här i går."
+   },
+   {
+    "s": "Landstad",
+    "t": "De stod her i går, i alle bøkene."
+   },
+   {
+    "regi": "Val: A) Landstad syng ein gammal svensk salme for kongen → Kongen høyrer på han og legg ned kården. Han går inn i muren og blir der. Rosenschöld mistar makta over han. B) Partyet kjempar tredje fase til slutt → Kongen fell igjen. Rosenschöld blir teken til fange og send heim.",
+    "val": true
+   },
+   {
+    "s": "Karl xii",
+    "t": "Mamma sjöng den.",
+    "regi": "etter val A"
+   },
+   {
+    "s": "Landstad",
+    "t": "Min også. På dansk."
+   },
+   {
+    "s": "Karl xii",
+    "t": "Samma melodi."
+   }
+  ],
+  "utfall_tekst": "Rosenschölds tråd blir lukka (om han stod bak, sjå S2.20). Etter val A står han igjen på muren utan konge og utan krønike, og neste morgon har han reist til Stockholm. Etter begge vala ligg den svenske krønika igjen i løpegravene med ei blank side der Karl XII stod. Karolinarkappa (rustning, høgt vern mot kulde). Etter val A får Landstad ein lækjande salme på svensk som verkar òg på svenske fiendar, og kan få dei til å leggje ned våpna.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_26_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_26",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:879"
+ },
+ {
+  "id": "S2_27_1",
+  "namn": "Stua",
+  "del": "S2",
+  "stad_tekst": "Fjellstua, første kveld",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Fjellstua, første kveld",
+  "skjerm": "HJK-02",
+  "aar": null,
+  "med": [
+   "aasen"
+  ],
+  "med_andre": [
+   "stuekona Marit",
+   "dei reisande"
+  ],
+  "med_tekst": "Aasen, stuekona Marit, dei reisande",
+  "spel": "Etterforsking over tre netter. Kvar natt forsvinn ein reisande inn i veska. Spelaren kan skulde éin person per dag. Feil skulding gjer stemninga verre og gir kamp med den skulda, som ikkje har gjort noko. Svaret er tollbetjenten. Jenta er ei jotunjente som leitar etter jotunen, og om jotunen er med, går han bort til henne utan eit ord.",
+  "steg": [
+   {
+    "s": "Marit",
+    "t": "Eg har tolv gjester og mat til fire."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kven kom sist?"
+   },
+   {
+    "s": "Marit",
+    "t": "Jenta. Ho kom åleine gjennom stormen. Ho var ikkje eingong våt."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva seier ho?"
+   },
+   {
+    "s": "Marit",
+    "t": "Ingenting. Ho sit ved glaset og ser på fjellet."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_27",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:899"
+ },
+ {
+  "id": "S2_27_2",
+  "namn": "Veska",
+  "del": "S2",
+  "stad_tekst": "Fjellstua, tredje natt",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Fjellstua, tredje natt",
+  "skjerm": "HJK-04",
+  "aar": null,
+  "med": [
+   "aasen",
+   "jotunen"
+  ],
+  "med_andre": [
+   "tollbetjenten"
+  ],
+  "med_tekst": "Aasen, tollbetjenten, jotunen",
+  "spel": "Boss mot Kurerveska, som slepper ut dei reisande ho har slukt, ein etter ein, som motstandarar.",
+  "steg": [
+   {
+    "s": "Tollbetjenten",
+    "t": "Jag bär bara posten."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kvar skal han?"
+   },
+   {
+    "s": "Tollbetjenten",
+    "t": "Till Trondhjem."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kvifor har du då gått sørover i to dagar?"
+   },
+   {
+    "regi": "Om jotunen er med, sit han med jotunjenta ved glaset etter kampen. Ho seier ingenting. Han seier ingenting. Om morgonen er ho borte."
+   }
+  ],
+  "utfall_tekst": "Kurerens kappe (tilbehøyr). Ord lært: «hjell» og «fjellstue». Stuekona gir partyet ein fast kvileplass på Dovre.",
+  "ord": [
+   "hjell",
+   "fjellstova"
+  ],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_27",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:905"
+ },
+ {
+  "id": "S2_28_1",
+  "namn": "Neset",
+  "del": "S2",
+  "stad_tekst": "Steilneset",
+  "tid_tekst": "kveld, vind",
+  "stad_og_tid_tekst": "Steilneset, kveld, vind",
+  "skjerm": "VAR-01",
+  "aar": null,
+  "med": [
+   "ravdna",
+   "huldra"
+  ],
+  "med_andre": [],
+  "med_tekst": "Ravdna, huldra",
+  "spel": "Samtale.",
+  "steg": [
+   {
+    "s": "Ravdna",
+    "t": "Dáppe sii bolde juoigiid. \\[Her brende dei joikarar.\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Her brente dei folk som joika.",
+    "regi": "for seg sjølv, som om ho øver på det ho skal seie til Aasen"
+   },
+   {
+    "s": "Huldra",
+    "t": "Han kjem til å spørje om dei andre. (Lyttar mot vinden.) Nokre fordi dei kunne ord. Nokre fordi naboen var sint."
+   },
+   {
+    "s": "Huldra",
+    "t": "Same slags ord som han samlar."
+   },
+   {
+    "regi": "Huldra ser ned på handa si, som om ho venta å finne Ordboka der. Handa er tom."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_28",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:921"
+ },
+ {
+  "id": "S2_28_2",
+  "namn": "Tingboka",
+  "del": "S2",
+  "stad_tekst": "Inne i tingboka",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Inne i tingboka",
+  "skjerm": "LFN-07",
+  "aar": null,
+  "med": [
+   "ravdna",
+   "huldra"
+  ],
+  "med_andre": [
+   "eitt fritt val"
+  ],
+  "med_tekst": "Ravdna, huldra, eitt fritt val",
+  "spel": "Utforsking side for side. Kvar side er eit rettsrom. Dei dømde står fast i skrifta. Ingen kan bruke galdr her. Spelaren brukar berre Lytt og Joike. Når ein person har fått snakke, blir teksten på sida bleik.",
+  "steg": [
+   {
+    "regi": "Ei kvinne står i ein rettssal av blekk. Skrivaren sit ved bordet og skriv det han har bestemt seg for."
+   },
+   {
+    "s": "Kvinna",
+    "t": "Eg sa at vinden snudde. Eg sa ikkje at eg snudde han."
+   },
+   {
+    "s": "Huldra",
+    "t": "Eg høyrer deg."
+   },
+   {
+    "s": "Kvinna",
+    "t": "Han skreiv det andre."
+   },
+   {
+    "s": "Huldra",
+    "t": "Eg veit."
+   },
+   {
+    "s": "Kvinna",
+    "t": "Kva skal du skriva?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ingenting. Eg ber det heim til ein som lyttar."
+   },
+   {
+    "regi": "Ravdna joikar for ein samisk mann på ei anna side. Huldra omset ikkje. Ho seier berre: «Dette er hans.»"
+   },
+   {
+    "regi": "Val: A) Huldra lukkar tingboka, og Ravdna legg ein stein på henne → Stemmene får kvile. B) Gruppa tek tingboka med til Aasen, og han tek henne med til Christiania for å gi henne til riksarkivet → Ho blir ein del av Kanselliarkivet i S2.30, der ho gir ein ekstra fase med stemmene til dei dømde, som kjempar på partyets side.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Dette oppdraget gir ingen ord og inga evne. Når gruppa kjem attende til Kabelvåg, fortel huldra Aasen det dei høyrde. Dagboka for den dagen er kort, og Aasen skriv berre at han har lytta til ein som lytta. Ravdna brukar ikkje joik i neste kamp og seier at ho må kvile. Steinen frå Steilneset (tilbehøyr utan tal. Skildring: «Du veit kvifor du ber han.»).",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_28_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_28",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:929",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_42_1",
+  "namn": "Lasarettet",
+  "del": "S2",
+  "stad_tekst": "Lasarettet på Odderøya, ettermiddag",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Lasarettet på Odderøya, ettermiddag. Over hamna ligg Christiansholm festning kvit av snø. Bak husa i Kvadraturen står tårnet på domkyrkja, steinkyrkja frå 1738.",
+  "skjerm": "KRS-06",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra"
+  ],
+  "med_andre": [
+   "fritt val",
+   "karantenevakta",
+   "Tobine"
+  ],
+  "med_tekst": "Aasen, huldra, fritt val, karantenevakta, Tobine",
+  "spel": "Samtale og eit lite minispel. Spelaren ber einer og tang opp frå fjøra og held røyken jamn i omnen medan protokollen les reglane høgt. Når røyken har gått gjennom kista, slepper protokollen henne.",
+  "steg": [
+   {
+    "regi": "Ei kvitkalka mur rundt nokre låge hus. Karantenevakta, ein gammal underoffiser frå Christiansholm, står i porten med protokollen under armen. Tobine sit på ein stein utanfor med sjalet over hovudet."
+   },
+   {
+    "s": "Karantenevakta",
+    "t": "Intet udleveres uden Røgning. Saa staar det."
+   },
+   {
+    "s": "Tobine",
+    "t": "Han røykte pipe frå han var tolv, gutten min. Det kan de skrive i boka."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva heitte han?"
+   },
+   {
+    "s": "Tobine",
+    "t": "Salve. Han skulle heim te jul."
+   },
+   {
+    "regi": "Minispel ved omnen. Når røyken har gått gjennom kista, lukkar protokollen seg av seg sjølv. Vakta opnar lokket. Nedst, under ei trøye, ligg eit brev. Tobine held det ut mot Aasen."
+   },
+   {
+    "s": "Tobine",
+    "t": "Eg kan ikkje lese."
+   },
+   {
+    "s": "Aasen",
+    "t": "«Kjære Mor. Me ligge ved Odderøen og maa vente. Eg he kjøpt eit Sjal te deg i Amsterdam, og Kage. Kagen he eg ede opp. Salve.»",
+    "regi": "les"
+   },
+   {
+    "s": "Tobine",
+    "t": "Kage. Han skreiv kage.",
+    "regi": "ler, og teier"
+   },
+   {
+    "s": "Huldra",
+    "t": "Han skreiv slik han sa det."
+   },
+   {
+    "s": "Tobine",
+    "t": "Ja. Det gjorde han alltid."
+   },
+   {
+    "regi": "Val: A) Aasen skriv opp forma «kage» → Forma står i Ordboka for alltid. Tobine ser på medan han skriv. B) Aasen gjev brevet tilbake utan å skrive → TOBINE: «Sei det ein gong te.» Aasen seier ordet høgt, og det blir hugsa.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Forma «kage» kjem inn under oppslaget kake, med staden Christianssand og merknaden blaut konsonant. Med val A er ho skriven, med val B hugsa. Tobine legg sjalet frå Amsterdam over skuldrene og står att på Torvet i Kvadraturen. Der er ho stad utan framdrift resten av spelet og i Etter soga-fila. Ordforma «kage». Oppdraget gjev inga evne.",
+  "ord": [
+   "kaka"
+  ],
+  "ting": [],
+  "flagg_set": [
+   "S2_42_1_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_42",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:951",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_29_1",
+  "namn": "Kongsormen",
+  "del": "S2",
+  "stad_tekst": "Stiklestad, når jotunen legg handa på jorda der",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Stiklestad, når jotunen legg handa på jorda der",
+  "skjerm": "DST-03",
+  "aar": null,
+  "med": [
+   "aasen",
+   "jotunen"
+  ],
+  "med_andre": [
+   "to frie val"
+  ],
+  "med_tekst": "Aasen, jotunen, to frie val",
+  "spel": "Superboss i fire fasar. I første fase skal partyet bryte skjoldet. I andre fase kallar Kongsormen på dei sju andre drakane som skuggar, før spelaren har møtt dei. I tredje fase gjer den seg til skrift og legg «rettskriven» på alt. I fjerde fase ristar den seg fri av skrifta, og då gjer alle åtaka til partyet dobbel skade, òg mot partyet sjølv.",
+  "steg": [
+   {
+    "regi": "I første fase ropar Kongsormen herropet frå Stiklestad med ei stemme som ikkje er hans eiga."
+   },
+   {
+    "s": "Kongsormen",
+    "t": "Fram, fram, Kristsmenn, krossmenn, konungsmenn! \\[Fram, fram, Kristmenn, krossmenn, kongsmenn!\\]"
+   },
+   {
+    "regi": "Etter at skjoldet er brote, talar han med si eiga stemme."
+   },
+   {
+    "s": "Kongsormen",
+    "t": "Hvert sinn var ek ritaðr. Hvert sinn var ek í tré skorinn. \\[Kvar gong vart eg skriven. Kvar gong vart eg skoren i tre.\\]"
+   },
+   {
+    "s": "Aasen",
+    "t": "Og kvar gong kom du att."
+   },
+   {
+    "s": "Kongsormen",
+    "t": "Í drekahǫfði á mæni. Í orði undir orði. \\[I dragehovudet på mønet. I ordet under ordet.\\]"
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva vil du no?"
+   },
+   {
+    "s": "Kongsormen",
+    "t": "Ekki. Liggja vil ek. \\[Ingenting. Eg vil liggja.\\]"
+   },
+   {
+    "regi": "Etter kampen ligg Kongsormen i graset og pustar."
+   },
+   {
+    "regi": "Val: A) «Me bind deg att. Med vår skrift.» → Aasen skriv ormen inn med landsmål, og Asbjørnsen får påkallinga Ormen, den sterkaste i spelet. Dei sju andre drakane kjenner att den som har bunde kongen deira, og startar med eitt segl ekstra. I epilogen står dragehovuda på stavkyrkjene som før. B) «Gå. Liggje der du vil.» → Kongsormen går inn i fjellet, og dei sju andre gjer det same etter kvart som dei blir roa. I epilogen i 1885 er det ein scene der eit barn peikar på dragehovudet på stavkyrkja i Borgund i Lærdal og seier at det blunka.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Påkallinga Ormen (etter val A), eller evna Dragesyn til heile partyet (etter val B). Med Dragesyn ser partyet gøymde gjenstandar, løynde stigar og skjulte vesen i feltet, dragehovuda på kartet lyser der ein superboss ventar, og i kamp kan Gøymde fiendar veljast som mål og varselet før eit katastrofeåtak kjem éin runde tidlegare. Etter kampen blir dei andre superbossane opna.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_29_1_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_29",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:997"
+ },
+ {
+  "id": "S2_30_1",
+  "namn": "Kansellisten",
+  "del": "S2",
+  "stad_tekst": "Botnen av arkivet",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Botnen av arkivet",
+  "skjerm": "TBV-06",
+  "aar": null,
+  "med": [
+   "aasen",
+   "knudsen"
+  ],
+  "med_andre": [
+   "to frie val"
+  ],
+  "med_tekst": "Aasen, Knudsen, to frie val",
+  "spel": "Superboss. Kansellisten er ein liten gammal embetsmann som har sete her sidan 1600-talet. Han er sårbar for slag og nesten uovervinneleg elles, fordi alt han seier, blir lov. Kampen er ein duell i forordningar. Kvar runde skriv han ein regel. Partyet må svare med ein unntaksregel som Knudsen formulerer. Til slutt gjeld berre dei reglane partyet har laga.",
+  "steg": [
+   {
+    "s": "Kansellisten",
+    "t": "Hvo som skriver, skal skrive som Kongen skriver."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Kongen bor i Stockholm nå. Han skriver svensk."
+   },
+   {
+    "s": "Kansellisten",
+    "t": "Det er ikke forudseet.",
+    "regi": "stansar"
+   },
+   {
+    "s": "Knudsen",
+    "t": "Nei. Det er mye De ikke har forutsett."
+   },
+   {
+    "s": "Kansellisten",
+    "t": "Hvo som taler, skal tale som Præsten taler."
+   },
+   {
+    "s": "Aasen",
+    "t": "Presten i Ørsta sa «kva» når han trudde ingen høyrde."
+   },
+   {
+    "s": "Kansellisten",
+    "t": "Det er ikke indført."
+   },
+   {
+    "s": "Aasen",
+    "t": "Då fører eg det inn."
+   },
+   {
+    "regi": "Etter kampen sit Kansellisten ved pulten sin og ser på pennen."
+   },
+   {
+    "s": "Kansellisten",
+    "t": "Fire hundrede Aar. Ingen har spurgt mig, hvorfor."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Hvorfor?"
+   },
+   {
+    "s": "Kansellisten",
+    "t": "Fordi det var bestemt."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Det er et dårlig svar. Jeg ville gitt det en toer."
+   }
+  ],
+  "utfall_tekst": "Kansellistens penn (Knudsens sterkaste våpen, lèt alle fornorskingsevner ladast dobbelt så raskt). Om tingboka frå S2.28 blei teken med hit, får partyet ein ekstra fase der stemmene til dei dømde kjempar med dei.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_30",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1031",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_31_1",
+  "namn": "Olavsbrønnen",
+  "del": "S2",
+  "stad_tekst": "Olavsbrønnen inne i domen",
+  "tid_tekst": "same brønnen som i S1.40",
+  "stad_og_tid_tekst": "Olavsbrønnen inne i domen, same brønnen som i S1.40. No går han ned mot kongsgrava.",
+  "skjerm": "OLB-02",
+  "aar": null,
+  "med": [
+   "aasen",
+   "landstad",
+   "moe"
+  ],
+  "med_andre": [],
+  "med_tekst": "Aasen, Landstad, Moe",
+  "spel": "Dungeon ned under koret. Kvar etasje er eit hundreår av pilegrimar. Fiendane er pilegrimsskuggar. Dei går aldri til åtak først. Dei ber om noko. Om spelaren gir dei det (ei lækjing, eit ord, ein gjenstand), går dei vidare og etterlèt ei gåve. Om spelaren kjempar, blir dei sterkare.",
+  "steg": [
+   {
+    "s": "Moe",
+    "t": "Det står i sagaen at vannet helbreder."
+   },
+   {
+    "s": "Landstad",
+    "t": "Det står mye i sagaene."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det står her òg. I steinen. (Han peikar på ei utviska innskrift ved brønnkanten. Runene er grunne og skeive: ᛂᚴ᛬ᛑᚱᛆᚴ᛬ᚼᛂᚱ᛬ᚮᚴ᛬ᚢᛆᚦ᛬ᚼᛂᛚ.)"
+   },
+   {
+    "s": "Aasen",
+    "t": "Nokon har skrive det med kniv. Det er ikkje latin."
+   },
+   {
+    "s": "Moe",
+    "t": "Hva står det?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Ek drakk hér ok varð heill. Eg drakk her og vart god att. Med to feil.",
+    "regi": "les"
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_31",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1049"
+ },
+ {
+  "id": "S2_31_2",
+  "namn": "Den blinde kongen",
+  "del": "S2",
+  "stad_tekst": "Kongsgrava, djupt under koret",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Kongsgrava, djupt under koret",
+  "skjerm": "OLB-13",
+  "aar": null,
+  "med": [],
+  "med_andre": [
+   "Fritt party"
+  ],
+  "med_tekst": "Fritt party",
+  "spel": "Superboss i fem fasar. Kvar fase er ein ny versjon av kongen: vikingen, sagakongen, martyren, helgenen og til slutt nasjonalkongen, som Munch har prøvd å bruke. Kvar fase tek skade frå ulike lydfamiliar. I femte fase skiftar kongen fase kvar runde. For å vinne må spelaren gjette kva for eit andlet som er det første, og det er ingen av dei fem. Løysinga er å bruke kv-ordet «kven» når kongen står stille mellom to fasar.",
+  "steg": [
+   {
+    "regi": "Kvar fase talar sitt eige mål. Vikingen og sagakongen talar norrønt, martyren og helgenen latin, nasjonalkongen dansk. Når kongen står stille mellom to fasar, er det nasjonalkongen som talar."
+   },
+   {
+    "s": "Den blinde kongen",
+    "t": "Hvem er jeg?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Du er mange."
+   },
+   {
+    "s": "Den blinde kongen",
+    "t": "Hvem var jeg?"
+   },
+   {
+    "s": "Landstad",
+    "t": "En mann som var redd før slaget. Det står det også."
+   },
+   {
+    "s": "Den blinde kongen",
+    "t": "Det står der.",
+    "regi": "stille"
+   },
+   {
+    "s": "Moe",
+    "t": "Og som gav bort sølvet sitt til de sårede. Det står der også."
+   },
+   {
+    "s": "Den blinde kongen",
+    "t": "Jeg husker ikke."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kven er du, når ingen skriv om deg?"
+   },
+   {
+    "regi": "Kongen set seg ned. Det er berre ein mann igjen, i jernskjorte, med eit sår i beinet."
+   },
+   {
+    "s": "Den blinde kongen",
+    "t": "Veit ek eigi. \\[Eg veit ikkje.\\]"
+   },
+   {
+    "s": "Aasen",
+    "t": "Det er eit godt svar."
+   }
+  ],
+  "utfall_tekst": "Olavsbrødet (gjenstand som lækjer heile partyet fullt og kan brukast igjen etter kvar kvile). Landstad og Moe får ei fellesevne, Pilegrimssongen, der dei syng saman for partyet.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_31",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1055"
+ },
+ {
+  "id": "S2_32_1",
+  "namn": "Salen",
+  "del": "S2",
+  "stad_tekst": "Welhavens leilegheit",
+  "tid_tekst": "kveld",
+  "stad_og_tid_tekst": "Welhavens leilegheit, kveld",
+  "skjerm": "WEL-03",
+  "aar": null,
+  "med": [
+   "aasen",
+   "vinje"
+  ],
+  "med_andre": [
+   "Welhaven"
+  ],
+  "med_tekst": "Aasen, Vinje, Welhaven",
+  "spel": "Fire rom med versduellar. Mot ein kjend dansk kritikar (venleik), mot ein student som siterer Wergeland feil (sanning), mot ein patriot frå Andhrimner (fedreland), og mot Welhaven sjølv.",
+  "steg": [
+   {
+    "s": "Welhaven",
+    "t": "Herr Vinje. De ser ut som De har lånt frakken."
+   },
+   {
+    "s": "Vinje",
+    "t": "Eg har lånt han av ein som har lånt han av Dykk."
+   },
+   {
+    "s": "Welhaven",
+    "t": "Det forklarer at den sitter så godt."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kvifor bad De oss?"
+   },
+   {
+    "s": "Welhaven",
+    "t": "Fordi jeg er lei av folk som er enige med meg."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_32",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1075"
+ },
+ {
+  "id": "S2_32_2",
+  "namn": "Det inste rommet",
+  "del": "S2",
+  "stad_tekst": "Welhavens arbeidsrom",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Welhavens arbeidsrom",
+  "skjerm": "WEL-10",
+  "aar": null,
+  "med": [
+   "aasen",
+   "vinje",
+   "collett"
+  ],
+  "med_andre": [
+   "Welhaven"
+  ],
+  "med_tekst": "Aasen, Vinje, Collett, Welhaven",
+  "spel": "Boss. Versa frå Norges Dæmring og feiden med Wergeland har samla seg til eit vesen, Dæmringen, som kjempar med Welhavens stemme frå 1834. Welhaven sjølv kan ikkje skade det. Collett må gjere det.",
+  "steg": [
+   {
+    "s": "Dæmringen",
+    "t": "Et Folk af Bønder, som drømmer, at det er en Nation."
+   },
+   {
+    "s": "Welhaven",
+    "t": "Noe i den retning skrev jeg."
+   },
+   {
+    "s": "Collett",
+    "t": "Du skrev det. Og Henrik svarte."
+   },
+   {
+    "s": "Welhaven",
+    "t": "Han svarte med langt flere Linjer enn jeg."
+   },
+   {
+    "s": "Collett",
+    "t": "Han hadde mye å si."
+   },
+   {
+    "s": "Welhaven",
+    "t": "Jeg skulle gjerne sagt noe til ham nå.",
+    "regi": "lågt"
+   },
+   {
+    "regi": "Val: A) Collett slår Dæmringen med eit vers av bror sin → Vesenet går i oppløysing. Welhaven ser ut av vindauget. Collett går utan å seie adjø. B) Collett lèt Welhaven sjølv seie noko til Dæmringen → Welhaven seier éi setning, og spelaren høyrer den ikkje. Dæmringen blir stille. Collett ser på han og nikkar kort. Seinare, ved leirbålet, seier ho at det var første gongen ho såg han skamme seg over noko.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Welhavens sølvpenn (gjenstand for Collett, gjer versduellar lettare). Ny samtale blir låst opp: Welhaven og Aasen (sjå Samtalar undervegs).",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "S2_32_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_32",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1081"
+ },
+ {
+  "id": "S2_33_1",
+  "namn": "Havbotnen",
+  "del": "S2",
+  "stad_tekst": "Havbotnen under Folla",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Havbotnen under Folla",
+  "skjerm": "SFO-11",
+  "aar": null,
+  "med": [],
+  "med_andre": [
+   "Fritt party"
+  ],
+  "med_tekst": "Fritt party",
+  "spel": "Superboss. Heildraugen er ein halv båt og ein halv mann. Han har tre hundre års drukna sjøfolk i seg. Kampen har seks fasar. For kvar fase slepper han ut ein drukna sjømann, og om spelaren brukar ei lækjing på sjømannen i staden for å gå til åtak på draugen, får mannen fred og draugen blir svakare.",
+  "steg": [
+   {
+    "s": "Heildraugen",
+    "t": "Dei skreiv oss i kirkeboka. «Omkommen paa Havet.» Så var det slutt."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kven var de før de omkom?"
+   },
+   {
+    "s": "Heildraugen",
+    "t": "Kven spør om det?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg spør."
+   },
+   {
+    "s": "Heildraugen",
+    "t": "Hans frå Vikna. Ola frå Flatanger. Brørne Sund frå Leka, båe to. Og ei jente som berre var med for å sjå.",
+    "regi": "lenge"
+   }
+  ],
+  "utfall_tekst": "Draugens åre (våpen for jotunen), og Aasen kan leggje sjømannsnamna inn på ei eiga side i Dagboka. Det er den einaste sida i Dagboka der namna står utan ord ved sida av.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_33",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1097"
+ },
+ {
+  "id": "S2_41_1",
+  "namn": "Bautaen",
+  "del": "S2",
+  "stad_tekst": "Framfor døra til skrivarrommet",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Framfor døra til skrivarrommet",
+  "skjerm": "DUB-13",
+  "aar": null,
+  "med": [
+   "aasen"
+  ],
+  "med_andre": [
+   "huldra om ho er med"
+  ],
+  "med_tekst": "Aasen, huldra om ho er med",
+  "spel": "Samtale og delingsskjermen.",
+  "steg": [
+   {
+    "regi": "Ei låg dør av svart tre. Bak henne høyrest ein penn som skrapar mot skinn, jamt og utan stans. Gyda-pinnen i skinnpungen er stille for første gong sidan 1844."
+   },
+   {
+    "s": "Huldra",
+    "t": "Høyr. Han skriv."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kven?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Den første. Han som byrja."
+   },
+   {
+    "s": "Aasen",
+    "t": "Då går eg inn."
+   },
+   {
+    "s": "Huldra",
+    "t": "Han slepper deg ikkje inn enno. Han vil sjå dei andre først."
+   },
+   {
+    "regi": "Døra opnar seg på gløtt for alle andre enn Aasen. Delingsskjermen kjem opp."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_41",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1111"
+ },
+ {
+  "id": "S2_41_2",
+  "namn": "Den første skrivaren",
+  "del": "S2",
+  "stad_tekst": "Skrivarrommet",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Skrivarrommet",
+  "skjerm": "DUB-14",
+  "aar": null,
+  "med": [],
+  "med_andre": [
+   "Første parti",
+   "så andre parti med Aasen"
+  ],
+  "med_tekst": "Første parti, så andre parti med Aasen",
+  "spel": "Superboss i fem fasar. Skrivaren viser syklusane av binding etter kvarandre: Sagaskrivaren, Presten med kyrkjeboka og Samlaren mot det første partyet, og Ordbokmannen med Aasens andlet mot det andre. Kanselliet manglar, fordi Kansellisten alt har gjeve seg. Partia byter éin gong, mellom tredje og fjerde fase. Det første partyet må vinne utan galdr frå Ordboka, og det andre må vinne med det som lever utanfor boka: Hugsen, runepinnane, stevjing og forteljing. Den femte fasen er ingen kamp.",
+  "steg": [
+   {
+    "regi": "Ein mann sit ved eit skråbord med ryggen til. Han skjer eit nytt skinn til, dyppar pennen og skriv vidare utan å snu seg."
+   },
+   {
+    "s": "Den første skrivaren",
+    "t": "Ek reit, svá at eigi gleymðisk. \\[Eg skreiv, så det ikkje skulle gløymast.\\]"
+   },
+   {
+    "regi": "Etter fjerde fase snur han seg. Andletet er Aasens eige, eldre."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg òg."
+   },
+   {
+    "regi": "Skrivaren held fram pennen."
+   },
+   {
+    "s": "Den første skrivaren",
+    "t": "Tak við. \\[Ta imot.\\]"
+   },
+   {
+    "regi": "Val: A) Aasen tek pennen og skriv han ned → Kampen byrjar på nytt frå første fase. Begge partia er fullt lækte, og Sagaskrivaren har no Aasens andlet. Ei ny binding startar berre ein ny syklus. B) Aasen lyttar → Skrivaren legg ned pennen og går inn i margen på det første skinnet. Han blir verande der, i ein avkrok ingen les.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Kampkommandoen Lån ordet for Aasen. Han lånar eit ord frå Hugsen til ein annan figur, som brukar det éin gong med full Ande-effekt, og ordet kjem att til Aasen etter kampen i sterkare form. Skrivaren gjev inga påkalling og kjem aldri inn i Ordboka. I epilogen i 1896 er den siste sida i Dagboka tom, som før, men på innsida av permen er det rissa ei lita rune.",
+  "ord": [
+   "drake",
+   "frost"
+  ],
+  "ting": [],
+  "flagg_set": [
+   "S2_41_2_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_41",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1121"
+ },
+ {
+  "id": "S2_34_1",
+  "namn": "Restar av det temde",
+  "del": "S2",
+  "stad_tekst": "Heile landet",
+  "tid_tekst": "1850–1853",
+  "stad_og_tid_tekst": "Heile landet, 1850–1853",
+  "skjerm": "HAL-04",
+  "aar": 1850,
+  "med": [],
+  "med_andre": [
+   "Aasen i alle party. Gang: Eit samleoppdrag. Rundt i landet finst 64 restar av det som blei temt. Kvar rest gir eit ord",
+   "ei rune eller ein gjenstand. Når Aasen har funne mange",
+   "blir nye sider i Lydtreet opna. Dei ligg i avkrokar",
+   "blir berre synlege når spelaren står stille",
+   "lyttar i fem sekund."
+  ],
+  "med_tekst": "Aasen i alle party. Gang: Eit samleoppdrag. Rundt i landet finst 64 restar av det som blei temt. Kvar rest gir eit ord, ei rune eller ein gjenstand. Når Aasen har funne mange, blir nye sider i Lydtreet opna. Dei ligg i avkrokar og blir berre synlege når spelaren står stille og lyttar i fem sekund.",
+  "spel": null,
+  "steg": [
+   {
+    "regi": "Typar:",
+    "utan_parentes": true
+   },
+   {
+    "regi": "Drakar på stavkyrkjer (8). Dragehovuda på gavlane i Borgund i Lærdal og Lom, dragehovudet på vassbrettet i Hopperstad, dyra og ormane i nordportalen på Urnes, ormane i portalane i Heddal, drakane over vestportalen i Ringebu, toppdrakane over portalen i Gol og drakane i vestportalen i Hedalen. Kvar drake ser på spelaren når han går forbi. Om Aasen seier det gamle ordet for «drake» framfor han, blunkar han.",
+    "utan_parentes": true
+   },
+   {
+    "regi": "Utskjeringar (12). Akantusrankar i stover i Gudbrandsdalen, ein ormeslyng på eit stabbur i Setesdal, ei andletsmaske under takskjegget på eit naust i Nordfjord. Dei flyttar seg litt kvar gong spelaren ser bort.",
+    "utan_parentes": true
+   },
+   {
+    "regi": "Gamle ord i avkrokar (24). Ord som berre éin gammal person i bygda hugsar. Eit barn i Sogn som seier «vætt» om noko som gjekk gale. Ein fiskar i Lofoten som kallar dønningane noko ingen andre skjønar. Kvart ord gir ei rotform som låser opp noko i Lydtreet.",
+    "utan_parentes": true
+   },
+   {
+    "regi": "Rosemåling (10). Rosene gror om Aasen ser på dei lenge nok. Dei gir j-ord.",
+    "utan_parentes": true
+   },
+   {
+    "regi": "Bautaer og heilage kjelder (10). Stader der runer kan rissast og partyet kan kvile.",
+    "utan_parentes": true
+   },
+   {
+    "regi": "Løn ved 64 av 64: Aasen får evna Avkroken. Han kan gå inn på ein løynd sti i alle bygder og finne eit lite rom der magien har gøymt seg. I Etter soga-fila blir eit ekstra rom opna i fjøsveggen på Åsen, same veggen som i S2.11, og der sit tussen.",
+    "utan_parentes": true
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_34",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1145",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_35_1",
+  "namn": "Joikesteinane",
+  "del": "S2",
+  "stad_tekst": "Nordland og Troms i 1851",
+  "tid_tekst": "Finnmark i 1852",
+  "stad_og_tid_tekst": "Nordland og Troms i 1851, Finnmark i 1852",
+  "skjerm": "LFN-05",
+  "aar": 1851,
+  "med": [
+   "ravdna",
+   "huldra"
+  ],
+  "med_andre": [
+   "Aasen i Nordland",
+   "Troms. Aasen kjem aldri til Finnmark",
+   "og dei to steinane der finn Ravdna åleine i kapittelet sitt i Kautokeino (6.14–6.16). Ho fortel Aasen om dei i joiken som når Christiania (6.17). Gang: Ravdna viser partyet at somme steinar i landskapet har ein joik. Steinane har aldri vore bundne. Aasen kan ikkje skrive dei ned",
+   "og han kan ikkje samle dei. Han kan berre finne dei",
+   "la Ravdna joike dei. Etter at Ravdna har gått heim",
+   "kan steinane framleis finnast",
+   "men dei blir ikkje joika. Aasen kan berre sitje ved dei."
+  ],
+  "med_tekst": "Ravdna, huldra og Aasen i Nordland og Troms. Aasen kjem aldri til Finnmark, og dei to steinane der finn Ravdna åleine i kapittelet sitt i Kautokeino (6.14–6.16). Ho fortel Aasen om dei i joiken som når Christiania (6.17). Gang: Ravdna viser partyet at somme steinar i landskapet har ein joik. Steinane har aldri vore bundne. Aasen kan ikkje skrive dei ned, og han kan ikkje samle dei. Han kan berre finne dei og la Ravdna joike dei. Etter at Ravdna har gått heim, kan steinane framleis finnast, men dei blir ikkje joika. Aasen kan berre sitje ved dei.",
+  "spel": null,
+  "steg": [
+   {
+    "s": "Ravdna",
+    "t": "Dán geađggis lea luohti. It sáhte dan váldit. \\[Denne steinen har ein joik. Du kan ikkje ta han.\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho seier at du ikkje kan ta joiken."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kan eg høyra han?"
+   },
+   {
+    "s": "Ravdna",
+    "t": "Sáhtát. Dan várás dat lea. \\[Det kan du. Det er det han er til.\\]"
+   }
+  ],
+  "utfall_tekst": "Fem steinar gir Ravdna ei ekstra evne. Alle fem gjer det mogleg å joike Ormen i Lofotveggen fri i S2.29. Om spelaren finn steinane etter at Ravdna har gått heim, får Aasen i staden ei linje i Dagboka for kvar av dei, utan ord.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_35",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1165",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_36_1",
+  "namn": "Runegåtene",
+  "del": "S2",
+  "stad_tekst": "Heile landet",
+  "tid_tekst": "1850–1853",
+  "stad_og_tid_tekst": "Heile landet, 1850–1853",
+  "skjerm": "OSF-01",
+  "aar": 1850,
+  "med": [],
+  "med_andre": [
+   "Aasen. Gang: Tjuefire runegåter spreidde ut. Kvar gåte er ei innskrift der éi rune manglar eller er feil. Spelaren vel rune frå futharken. Rett rune gir ein kvileplass eller ein løynd sti. Feil rune slår tilbake som i Egils saga: kulde",
+   "sjukdom eller at ein fiende i nærleiken blir sterkare. Jo nærare spelaren kjem Sagahallen",
+   "jo vanskelegare blir gåtene. Den siste gåta står på innsida av døra til Sagahallen",
+   "og ho kan berre løysast om spelaren har løyst alle dei andre."
+  ],
+  "med_tekst": "Aasen. Gang: Tjuefire runegåter spreidde ut. Kvar gåte er ei innskrift der éi rune manglar eller er feil. Spelaren vel rune frå futharken. Rett rune gir ein kvileplass eller ein løynd sti. Feil rune slår tilbake som i Egils saga: kulde, sjukdom eller at ein fiende i nærleiken blir sterkare. Jo nærare spelaren kjem Sagahallen, jo vanskelegare blir gåtene. Den siste gåta står på innsida av døra til Sagahallen, og ho kan berre løysast om spelaren har løyst alle dei andre.",
+  "spel": null,
+  "steg": [
+   {
+    "regi": "Døme, Tunesteinen (etter S2.20 val A):",
+    "utan_parentes": true
+   },
+   {
+    "regi": "Steinen står i ein åker. Éi rune er slått av. Runene er eldre enn alle Aasen har lese før, og det er fleire av dei: ᛖᚲ ᚹᛁᚹᚨᛉ ᚨᚠᛏᛖᚱ ᚹᛟᛞᚢᚱᛁᛞᛖ … ᚦᚱᛁᛃᛟᛉ ᛞᛟᚺᛏᚱᛁᛉ ᛞᚨᛚᛁᛞᚢᚾ ᚨᚱᛒᛁᛃᚨ."
+   },
+   {
+    "s": "Bonden",
+    "t": "Far min sa at om nokon les henne rett, kjem kornet att."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kven skreiv henne?"
+   },
+   {
+    "s": "Bonden",
+    "t": "Ein som hadde ei dotter, seier dei."
+   },
+   {
+    "s": "Aasen",
+    "t": "Þrijoʀ dohtriʀ. Det er eldre enn norrønt. (stille) Tre døtrer. Det står tre.",
+    "regi": "følgjer runene med fingeren"
+   },
+   {
+    "s": "Bonden",
+    "t": "Far min var aldri god til å telje. (Spelaren vel rune.)"
+   },
+   {
+    "regi": "Rett svar gir eit fullt kornfelt midt i fimbulvinteren, og bonden gir partyet mat for resten av spelet. Feil svar fører til at kornet frys og bonden ser på Aasen som om han har gjort det med vilje.",
+    "utan_parentes": true
+   },
+   {
+    "regi": "Løn ved alle 24: Rotruna, eit tilbehøyr som lèt Aasen risse runer i kamp.",
+    "utan_parentes": true
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [
+   "S2_20_val"
+  ],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_36",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1175",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_37_1",
+  "namn": "Stevjingsturneringa på Rauland",
+  "del": "S2",
+  "stad_tekst": "Rauland, Vest-Telemark",
+  "tid_tekst": "jul 1852",
+  "stad_og_tid_tekst": "Rauland, Vest-Telemark, jul 1852",
+  "skjerm": "RAU-02",
+  "aar": 1852,
+  "med": [],
+  "med_andre": [
+   "Heile partyet kan melde seg på. Gang: Ei turnering i tre rundar",
+   "åtte deltakarar. Kvar kamp er fire stev. Spelaren kan velje kva for ein partyfigur som stiller. Deltakarane har ulike svakheiter",
+   "stilar. Eit minispel som kan spelast igjen kvar gong partyet kjem tilbake til Rauland."
+  ],
+  "med_tekst": "Heile partyet kan melde seg på. Gang: Ei turnering i tre rundar, åtte deltakarar. Kvar kamp er fire stev. Spelaren kan velje kva for ein partyfigur som stiller. Deltakarane har ulike svakheiter og stilar. Eit minispel som kan spelast igjen kvar gong partyet kjem tilbake til Rauland.",
+  "spel": null,
+  "steg": [
+   {
+    "regi": "Deltakarane:",
+    "utan_parentes": true
+   },
+   {
+    "regi": "Aslaug Tveitli, forsvarande meister. Kort og tørr. Gamle Tarjei, som berre kan eitt tema: kyrne sine. Ei ni år gammal jente, Gro, frå Seljord (om S2.2 blei løyst med val A), som kan både lese og kvede og brukar det. Ein student frå Christiania, som rimar for fint og tapar på det. Ein svensk underoffiser frå torsdagslaget, som syng på svensk og vinn på sjarm. Knudsen, om han er med, som rettar rima til dei andre. Vinje, som alltid kjem til finalen og alltid tapar for Aslaug. Tussen, om han er med, som berre syng «ja».",
+    "utan_parentes": true
+   },
+   {
+    "regi": "Døme frå finalen, Vinje mot Aslaug:",
+    "utan_parentes": true
+   },
+   {
+    "s": "Vinje",
+    "t": "Eg har vore i byen og lese, eg har skrive i blad som vert trykt, eg kan le av ein prest og ein futen, det har ingen på Rauland gjort slikt."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Du har skrive og lese i byen, du har ledd av ein prest og ein fut, men du sprang her med snørr under nasen, og det skreiv du vel ikkje, gut."
+   },
+   {
+    "regi": "Publikum ler. Vinje ler òg."
+   }
+  ],
+  "utfall_tekst": "Vinn spelaren med Aslaug, får ho Julestevet. Vinn spelaren med Vinje (berre mogleg på tredje forsøk eller seinare), seier Aslaug: «No har du lært noko.» Vinje får Julestevet i staden, og han nemner det i kvar leirbålsamtale resten av spelet. Vinn spelaren med tussen, får alle ei ekstra jul i Dagboka.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_37",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1191",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_38_1",
+  "namn": "Hallingdansen på Gol",
+  "del": "S2",
+  "stad_tekst": "Gol, Hallingdal",
+  "tid_tekst": "juni 1852",
+  "stad_og_tid_tekst": "Gol, Hallingdal, juni 1852",
+  "skjerm": "HAL-03",
+  "aar": 1852,
+  "med": [],
+  "med_andre": [
+   "Heile partyet. Gang: Eit rytmeminispel som byggjer på hallingdansen frå 1845",
+   "no med fleire steg. Spelaren styrer éin dansar om gongen. Høgdepunktet er hallingkastet",
+   "der dansaren skal sparke hatten ned frå ein stav som blir halden høgare",
+   "høgare. Partyfigurane dansar på ulike måtar: Aasen stivt",
+   "nøyaktig",
+   "Vinje for vilt",
+   "Knudsen etter teljinga",
+   "jotunen så golvet ristar",
+   "Ole Bull aldri",
+   "fordi han spelar. Collett nektar først",
+   "dansar så betre enn alle."
+  ],
+  "med_tekst": "Heile partyet. Gang: Eit rytmeminispel som byggjer på hallingdansen frå 1845, no med fleire steg. Spelaren styrer éin dansar om gongen. Høgdepunktet er hallingkastet, der dansaren skal sparke hatten ned frå ein stav som blir halden høgare og høgare. Partyfigurane dansar på ulike måtar: Aasen stivt og nøyaktig, Vinje for vilt, Knudsen etter teljinga, jotunen så golvet ristar, Ole Bull aldri, fordi han spelar. Collett nektar først og dansar så betre enn alle.",
+  "spel": null,
+  "steg": [
+   {
+    "regi": "Ein gammal mann i hallingtrøye med svarte og raude kilar står ved staven."
+   },
+   {
+    "s": "Gamlingen",
+    "t": "De danser som ein prest, De."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg har aldri vore prest."
+   },
+   {
+    "s": "Gamlingen",
+    "t": "Det kjem ikkje an på det."
+   },
+   {
+    "s": "Collett",
+    "t": "Gi meg den hatten."
+   },
+   {
+    "s": "Gamlingen",
+    "t": "Frua skal ikkje danse halling."
+   },
+   {
+    "s": "Collett",
+    "t": "Frua har danset hele livet mellom menn som sa hun ikke skulle."
+   }
+  ],
+  "utfall_tekst": "Kvar figur som klarer hallingkastet, får ein ekstra variant av hallingkastet i kamp. Om heile partyet klarer det, får partyet evna Hallingringen, som lèt alle gå til åtak samtidig éin gong per kamp.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_38",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1211",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_39_1",
+  "namn": "Dagbokssidene",
+  "del": "S2",
+  "stad_tekst": "Heile fimbulvinteren",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Heile fimbulvinteren",
+  "skjerm": "NES-03b",
+  "aar": null,
+  "med": [],
+  "med_andre": [
+   "Aasen. Gang: For kvart tredje sideoppdrag blir ei ekstra side i Dagboka opna. Sidene er små tekstar Aasen skriv om dagen. I byrjinga er dei på dansk med landsmålsord innimellom. Mot slutten er dei på landsmål. Den siste sida blir berre opna om spelaren har gjort alle sideoppdraga i denne delen. Den handlar om huldra",
+   "har to linjer. Den første er skriven ut. Den andre er streka over",
+   "så ingen kan lese den."
+  ],
+  "med_tekst": "Aasen. Gang: For kvart tredje sideoppdrag blir ei ekstra side i Dagboka opna. Sidene er små tekstar Aasen skriv om dagen. I byrjinga er dei på dansk med landsmålsord innimellom. Mot slutten er dei på landsmål. Den siste sida blir berre opna om spelaren har gjort alle sideoppdraga i denne delen. Den handlar om huldra og har to linjer. Den første er skriven ut. Den andre er streka over, så ingen kan lese den.",
+  "spel": null,
+  "steg": [
+   {
+    "regi": "Døme, frå etter S2.22:",
+    "utan_parentes": true
+   },
+   {
+    "regi": "«Nes, Juni 1852. Tandberg gav mig Brevet. Eg las det. Ordet han meinte, veit eg ikkje. Det skal ikkje stå i Ordboka. Det kan stå her, som eit tomt rom.»",
+    "utan_parentes": true
+   }
+  ],
+  "utfall_tekst": "Inga. Sidene er løna.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "oppdrag": "S2_39",
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1223",
+  "skjerm_fraa_oppdrag": true
+ },
+ {
+  "id": "S2_samtale_1",
+  "namn": "Heim og hjem (Knudsen og Vinje)",
+  "del": "S2",
+  "stad_tekst": "Leirbål i Hallingdal",
+  "tid_tekst": "1852",
+  "stad_og_tid_tekst": "Leirbål i Hallingdal, 1852",
+  "skjerm": null,
+  "aar": 1852,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Vinje",
+    "t": "Knudsen. Kva heiter det du bur i?"
+   },
+   {
+    "s": "Knudsen",
+    "t": "Et hus."
+   },
+   {
+    "s": "Vinje",
+    "t": "Og når du går dit om kvelden?"
+   },
+   {
+    "s": "Knudsen",
+    "t": "Jeg går hjem."
+   },
+   {
+    "s": "Vinje",
+    "t": "Høyrde du det, Ivar? Han går hjem."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg høyrde det."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Det er ingen skam å gå hjem."
+   },
+   {
+    "s": "Vinje",
+    "t": "Nei. Men du sa det med ein j så lang at eg trudde du skulle til Danmark."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Og De sier «heim» med en diftong så bred at jeg trodde De skulle til Telemark."
+   },
+   {
+    "s": "Vinje",
+    "t": "Eg skal til Telemark."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Det er det verste."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1239",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_2",
+  "namn": "Å bli brukt (Collett og huldra)",
+  "del": "S2",
+  "stad_tekst": "Eit vertshus i Christiania",
+  "tid_tekst": "hausten 1851",
+  "stad_og_tid_tekst": "Eit vertshus i Christiania, hausten 1851",
+  "skjerm": null,
+  "aar": 1851,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Collett",
+    "t": "De ser ut som De fryser."
+   },
+   {
+    "s": "Huldra",
+    "t": "Eg frys ikkje. Eg tenkjer."
+   },
+   {
+    "s": "Collett",
+    "t": "På hva?"
+   },
+   {
+    "s": "Huldra",
+    "t": "At alle vil ha noko av meg. Asbjørnsen ville ha eventyr. Munch ville ha ein ring."
+   },
+   {
+    "s": "Collett",
+    "t": "Og Aasen?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Han vil ha ord."
+   },
+   {
+    "s": "Collett",
+    "t": "Det er ikke det samme."
+   },
+   {
+    "s": "Huldra",
+    "t": "Nei?"
+   },
+   {
+    "s": "Collett",
+    "t": "Han spør først."
+   },
+   {
+    "s": "Huldra",
+    "t": "Det er sant. Han spør.",
+    "regi": "lenge"
+   },
+   {
+    "s": "Collett",
+    "t": "De skulle vite hvor mange som aldri har spurt meg om noe som helst."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1245",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_3",
+  "namn": "Den du fanga (Asbjørnsen og tussen)",
+  "del": "S2",
+  "stad_tekst": "Ved eit fjøs i Hallingdal",
+  "tid_tekst": "1852 (krev at tussen er fri)",
+  "stad_og_tid_tekst": "Ved eit fjøs i Hallingdal, 1852 (krev at tussen er fri)",
+  "skjerm": null,
+  "aar": 1852,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "regi": "Asbjørnsen sit på ein stabbe. Tussen står og ser på han."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Jeg skrev Dig ned."
+   },
+   {
+    "s": "Tussen",
+    "t": "Ja."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "I et Hefte. For tolv Skilling."
+   },
+   {
+    "s": "Tussen",
+    "t": "Kva er skilling?"
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Penger."
+   },
+   {
+    "s": "Tussen",
+    "t": "Fekk du mange?"
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Nei. Det gjorde jeg ikke."
+   },
+   {
+    "s": "Tussen",
+    "t": "Då var det dumt."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Ja. Det var dumt.",
+    "regi": "ler, og så sluttar han å le"
+   },
+   {
+    "regi": "Tussen klatrar opp på stabben og set seg ved sida av han."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1251",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_4",
+  "namn": "Store folk (Ole Bull og jotunen)",
+  "del": "S2",
+  "stad_tekst": "Leirbål på Dovrefjell",
+  "tid_tekst": "1853",
+  "stad_og_tid_tekst": "Leirbål på Dovrefjell, 1853",
+  "skjerm": null,
+  "aar": 1853,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Ole bull",
+    "t": "You are very big. (Jotunen ser på han.)"
+   },
+   {
+    "s": "Ole bull",
+    "t": "I have played for kings. For the President of America too. (Jotunen ser på han.)"
+   },
+   {
+    "s": "Ole bull",
+    "t": "De har kanskje ikke hørt om mig. (Jotunen ser på han.)"
+   },
+   {
+    "s": "Ole bull",
+    "t": "Skal jeg spille noget?"
+   },
+   {
+    "s": "Jotunen",
+    "t": "Já."
+   },
+   {
+    "regi": "Ole Bull spelar. Jotunen lukkar auga. Når låten er slutt, legg jotunen ein stein i fanget til Ole Bull. Den er varm."
+   },
+   {
+    "s": "Ole bull",
+    "t": "Det er den beste anmeldelsen jeg har fått.",
+    "regi": "stille"
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1261",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_5",
+  "namn": "Morgenbladet (Welhaven og Aasen)",
+  "del": "S2",
+  "stad_tekst": "Eit bord i Studentersamfundet",
+  "tid_tekst": "vinteren 1853 (krev S2.32)",
+  "stad_og_tid_tekst": "Eit bord i Studentersamfundet, vinteren 1853 (krev S2.32)",
+  "skjerm": null,
+  "aar": 1853,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Welhaven",
+    "t": "Jeg har lest grammatikken Deres."
+   },
+   {
+    "s": "Aasen",
+    "t": "Og?"
+   },
+   {
+    "s": "Welhaven",
+    "t": "Den er god. Jeg liker den ikke."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det er ærleg."
+   },
+   {
+    "s": "Welhaven",
+    "t": "Jeg har gjort narr av bondemålet i tjue år, Aasen. Jeg har ment det hver gang."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg veit."
+   },
+   {
+    "s": "Welhaven",
+    "t": "Men jeg har aldri skrevet noe så nøyaktig om mitt eget."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det kan De enno."
+   },
+   {
+    "s": "Welhaven",
+    "t": "Nei. Jeg er for gammel og for vittig. Det ødelegger nøyaktigheten."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kvifor står De ikkje med Munch?"
+   },
+   {
+    "s": "Welhaven",
+    "t": "Fordi han vil at alle skal snakke som i sagaene. Jeg vil at folk skal snakke vakkert. Det er to forskjellige feil, og jeg foretrekker min."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1271",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_6",
+  "namn": "Tvil (Landstad og Moe)",
+  "del": "S2",
+  "stad_tekst": "Prestegarden i Krødsherad",
+  "tid_tekst": "1853",
+  "stad_og_tid_tekst": "Prestegarden i Krødsherad, 1853",
+  "skjerm": null,
+  "aar": 1853,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Moe",
+    "t": "Tviler De noen gang, Landstad?"
+   },
+   {
+    "s": "Landstad",
+    "t": "Hver dag."
+   },
+   {
+    "s": "Moe",
+    "t": "På Gud?"
+   },
+   {
+    "s": "Landstad",
+    "t": "På meg selv. Gud har jeg sluttet å bekymre meg for. Han klarer seg."
+   },
+   {
+    "s": "Moe",
+    "t": "Jeg er redd for planen. At vi løser bindingene og at alt blir borte."
+   },
+   {
+    "s": "Landstad",
+    "t": "Det går dit vi ikke kan skrive det."
+   },
+   {
+    "s": "Moe",
+    "t": "Er det bedre?"
+   },
+   {
+    "s": "Landstad",
+    "t": "Jeg tror det er riktigere. Det er ikke alltid det samme som bedre."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1277",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_7",
+  "namn": "Rauland (Aslaug og Vinje)",
+  "del": "S2",
+  "stad_tekst": "Vegen over Hardangervidda",
+  "tid_tekst": "1853",
+  "stad_og_tid_tekst": "Vegen over Hardangervidda, 1853",
+  "skjerm": null,
+  "aar": 1853,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Aslaug",
+    "t": "Du hadde snørr under nasen til du var tolv."
+   },
+   {
+    "s": "Vinje",
+    "t": "Elleve."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Tolv. Eg hugsar det."
+   },
+   {
+    "s": "Vinje",
+    "t": "Du hugsar alt som gjer meg liten."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Eg hugsar alt. Du er berre med i ein del av det."
+   },
+   {
+    "s": "Vinje",
+    "t": "Aslaug. Eg skriv om deg ein dag."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Om du gjer det, kjem eg til byen og slår deg i stevjing midt på torget."
+   },
+   {
+    "s": "Vinje",
+    "t": "Då skriv eg om det òg."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Skriv det rett, då.",
+    "regi": "etter ei stund, nesten mildt"
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1283",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_8",
+  "namn": "Norsk (Knudsen og Aasen)",
+  "del": "S2",
+  "stad_tekst": "Aasens hybel",
+  "tid_tekst": "våren 1852",
+  "stad_og_tid_tekst": "Aasens hybel, våren 1852",
+  "skjerm": null,
+  "aar": 1852,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Knudsen",
+    "t": "Vi skal skrive mot Munch i Morgenbladet. Begge to."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kvar for seg."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Selvfølgelig kvar for seg. Vi er uenige om alt."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ikkje alt."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Nevn én ting."
+   },
+   {
+    "s": "Aasen",
+    "t": "At det skal vera norsk."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Jeg mener at det norske skal vokse ut av det vi har. De mener det skal hentes fra fjellet.",
+    "regi": "etter ein pause"
+   },
+   {
+    "s": "Aasen",
+    "t": "Fjellet er det me har."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Byen også, Aasen. Anton i Vaterland også."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ja. Anton òg.",
+    "regi": "etter lang pause"
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1289",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_9",
+  "namn": "Heimen (Ravdna og Aasen, med huldra)",
+  "del": "S2",
+  "stad_tekst": "Eit bål ved Altaelva",
+  "tid_tekst": "1852",
+  "stad_og_tid_tekst": "Eit bål ved Altaelva, 1852",
+  "skjerm": null,
+  "aar": 1852,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Ravdna",
+    "t": "Manne don it čále min sániid? \\[Kvifor skriv du ikkje orda våre?\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho spør kvifor du ikkje skriv ned orda deira."
+   },
+   {
+    "s": "Aasen",
+    "t": "Fordi eg ikkje forstår dei."
+   },
+   {
+    "s": "Ravdna",
+    "t": "Dat ii leat sivva. \\[Det er ikkje grunnen.\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho seier det ikkje er grunnen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Fordi ordboka mi heiter «det norske Folkesprog». Og de er ikkje med i tittelen.",
+    "regi": "etter ei stund"
+   },
+   {
+    "s": "Huldra",
+    "t": "",
+    "regi": "omset lågt"
+   },
+   {
+    "s": "Ravdna",
+    "t": "De dat lea heajos namma. \\[Då er det ein dårleg tittel.\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho seier..."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg skjønte det."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1295",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_10",
+  "namn": "Mor (Collett og Aasen)",
+  "del": "S2",
+  "stad_tekst": "Eit vertshus på Eidsvoll",
+  "tid_tekst": "vinteren 1852",
+  "stad_og_tid_tekst": "Eit vertshus på Eidsvoll, vinteren 1852",
+  "skjerm": null,
+  "aar": 1852,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Collett",
+    "t": "De har ingen familie, Aasen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg hadde. Dei døydde."
+   },
+   {
+    "s": "Collett",
+    "t": "Og De har ingen kone."
+   },
+   {
+    "s": "Aasen",
+    "t": "Nei."
+   },
+   {
+    "s": "Collett",
+    "t": "Kommer De til å få en?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg trur ikkje det."
+   },
+   {
+    "s": "Collett",
+    "t": "Hvorfor ikke?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg har ikkje tid."
+   },
+   {
+    "s": "Collett",
+    "t": "Det er den dårligste løgnen jeg har hørt på lenge. (Aasen ser bort mot bordet der huldra sit og snakkar med tussen.)"
+   },
+   {
+    "s": "Collett",
+    "t": "Å. (lågt) Beklager."
+   },
+   {
+    "s": "Aasen",
+    "t": "De treng ikkje."
+   },
+   {
+    "s": "Collett",
+    "t": "Jeg ba ikke om lov."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1301",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_11",
+  "namn": "Innvandringsteorien (Moe og jotunen)",
+  "del": "S2",
+  "stad_tekst": "Leirbål under Snøhetta",
+  "tid_tekst": "1853",
+  "stad_og_tid_tekst": "Leirbål under Snøhetta, 1853",
+  "skjerm": null,
+  "aar": 1853,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Moe",
+    "t": "Munch sier at nordmennene kom hit nordfra. At vi er et eget folk. (Jotunen ser på han.)"
+   },
+   {
+    "s": "Moe",
+    "t": "Men De var her før."
+   },
+   {
+    "s": "Jotunen",
+    "t": "Já."
+   },
+   {
+    "s": "Moe",
+    "t": "Før alle."
+   },
+   {
+    "s": "Jotunen",
+    "t": "Já."
+   },
+   {
+    "s": "Moe",
+    "t": "Så hvem er vi da? (Jotunen tenkjer lenge. Så peikar han på Moe, så på bålet, så på seg sjølv, og så på fjellet.)"
+   },
+   {
+    "s": "Moe",
+    "t": "Alle sammen? (Jotunen trekkjer på skuldrene. Moe ler.)"
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1307",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_12",
+  "namn": "Fela og boka (Ole Bull og Asbjørnsen)",
+  "del": "S2",
+  "stad_tekst": "Det norske Theater i Bergen, bak scena",
+  "tid_tekst": "1853",
+  "stad_og_tid_tekst": "Det norske Theater i Bergen, bak scena, 1853",
+  "skjerm": null,
+  "aar": 1853,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Asbjørnsen",
+    "t": "Vi er to av samme Slag, Bull. Vi tar noget fra Fjeldet og viser det frem i Byen."
+   },
+   {
+    "s": "Ole bull",
+    "t": "I play what I hear."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Og jeg skriver det jeg hører."
+   },
+   {
+    "s": "Ole bull",
+    "t": "Men min låt forsvinner når jeg har spilt den. Your book stays."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Det har jeg aldri tænkt paa.",
+    "regi": "etter ei stund"
+   },
+   {
+    "s": "Ole bull",
+    "t": "I think about it every night. Det er derfor jeg spiller igjen."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1313",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_13",
+  "namn": "Skam (Vinje og Aasen)",
+  "del": "S2",
+  "stad_tekst": "På vegen til Christiania",
+  "tid_tekst": "hausten 1851",
+  "stad_og_tid_tekst": "På vegen til Christiania, hausten 1851",
+  "skjerm": null,
+  "aar": 1851,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Vinje",
+    "t": "Ivar. Er du nokon gong skamfull over at du er frå Ørsta?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg var det."
+   },
+   {
+    "s": "Vinje",
+    "t": "Kva hende?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg vart lei av det."
+   },
+   {
+    "s": "Vinje",
+    "t": "Så enkelt?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Nei. Det tok tretti år."
+   },
+   {
+    "s": "Vinje",
+    "t": "Eg er ikkje skamfull over Vinje. Eg er skamfull over at eg er skamfull over at eg ikkje er skamfull."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det skjøner eg ikkje."
+   },
+   {
+    "s": "Vinje",
+    "t": "Nei. Det gjer ikkje eg heller. Men det høyrdest godt."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1319",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_14",
+  "namn": "Visene (Aslaug og Landstad)",
+  "del": "S2",
+  "stad_tekst": "Kyrkjebakken i Seljord",
+  "tid_tekst": "1853",
+  "stad_og_tid_tekst": "Kyrkjebakken i Seljord, 1853",
+  "skjerm": null,
+  "aar": 1853,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Landstad",
+    "t": "Norske Folkeviser er på trykk nå. Deres er ikke med."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Eg veit."
+   },
+   {
+    "s": "Landstad",
+    "t": "Det er et hull i boken."
+   },
+   {
+    "s": "Aslaug",
+    "t": "Det er der boka sluttar."
+   },
+   {
+    "s": "Landstad",
+    "t": "Er det forskjell?"
+   },
+   {
+    "s": "Aslaug",
+    "t": "Eit hol er noko som manglar. Der boka sluttar, byrjar me andre."
+   },
+   {
+    "s": "Landstad",
+    "t": "Jeg skulle gjerne skrevet det ned.",
+    "regi": "etter ei stund"
+   },
+   {
+    "s": "Aslaug",
+    "t": "Eg veit det."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1325",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_15",
+  "namn": "Hundre år (huldra og tussen)",
+  "del": "S2",
+  "stad_tekst": "Eit fjøs ein stad i Telemark",
+  "tid_tekst": "1852",
+  "stad_og_tid_tekst": "Eit fjøs ein stad i Telemark, 1852",
+  "skjerm": null,
+  "aar": 1852,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Tussen",
+    "t": "Du er gamal."
+   },
+   {
+    "s": "Huldra",
+    "t": "Ja."
+   },
+   {
+    "s": "Tussen",
+    "t": "Eg òg."
+   },
+   {
+    "s": "Huldra",
+    "t": "Kor gamal?"
+   },
+   {
+    "s": "Tussen",
+    "t": "Mange kyr."
+   },
+   {
+    "s": "Huldra",
+    "t": "Eg er mange skogar."
+   },
+   {
+    "s": "Tussen",
+    "t": "Du skal bli menneske."
+   },
+   {
+    "s": "Huldra",
+    "t": "Kven har sagt det?"
+   },
+   {
+    "s": "Tussen",
+    "t": "Ingen. Eg ser det."
+   },
+   {
+    "s": "Huldra",
+    "t": "Og du?"
+   },
+   {
+    "s": "Tussen",
+    "t": "Eg skal heim til fjøset."
+   },
+   {
+    "s": "Huldra",
+    "t": "Er du lei deg?"
+   },
+   {
+    "s": "Tussen",
+    "t": "Nei. Fjøset er godt. Det luktar ku."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1331",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_16",
+  "namn": "Brørne (Collett og Vinje)",
+  "del": "S2",
+  "stad_tekst": "Eit bål utanfor Christiania",
+  "tid_tekst": "sommaren 1851",
+  "stad_og_tid_tekst": "Eit bål utanfor Christiania, sommaren 1851",
+  "skjerm": null,
+  "aar": 1851,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Vinje",
+    "t": "Patriotane brukar namnet til bror din."
+   },
+   {
+    "s": "Collett",
+    "t": "Jeg vet. De bruker det som et flagg."
+   },
+   {
+    "s": "Vinje",
+    "t": "Eg har òg brukt det."
+   },
+   {
+    "s": "Collett",
+    "t": "Jeg vet det også."
+   },
+   {
+    "s": "Vinje",
+    "t": "Unnskyld."
+   },
+   {
+    "s": "Collett",
+    "t": "Han ville ha likt Dem, Vinje. Han likte folk som var for høylytte."
+   },
+   {
+    "s": "Vinje",
+    "t": "Og deg?"
+   },
+   {
+    "s": "Collett",
+    "t": "Meg elsket han. Det er noe annet. Det tålte ingen av oss særlig godt."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1337",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_17",
+  "namn": "Knudsen og Asbjørnsen",
+  "del": "S2",
+  "stad_tekst": "Leirbål ved Mjøsa",
+  "tid_tekst": "1852 (etter Knudsens kapittel)",
+  "stad_og_tid_tekst": "Leirbål ved Mjøsa, 1852 (etter Knudsens kapittel)",
+  "skjerm": null,
+  "aar": 1852,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "s": "Asbjørnsen",
+    "t": "Knudsen. Den natten..."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Ikke nå."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Jeg stod der. Jeg saa paa."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Jeg vet. Jeg så Dem også."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Jeg burde..."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Ja. De burde. Og nå sitter De her."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Er det nok?"
+   },
+   {
+    "s": "Knudsen",
+    "t": "Nei. Men det er et sted å begynne. Rekk meg poteten."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1343",
+  "samtale": true
+ },
+ {
+  "id": "S2_samtale_18",
+  "namn": "Munch (Aasen og huldra)",
+  "del": "S2",
+  "stad_tekst": "Det siste bålet før Sagahallen",
+  "tid_tekst": "1853",
+  "stad_og_tid_tekst": "Det siste bålet før Sagahallen, 1853",
+  "skjerm": null,
+  "aar": 1853,
+  "med": [],
+  "med_andre": [],
+  "med_tekst": null,
+  "spel": null,
+  "steg": [
+   {
+    "regi": "Alle andre søv."
+   },
+   {
+    "s": "Huldra",
+    "t": "Du likte han."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ja."
+   },
+   {
+    "s": "Huldra",
+    "t": "Han var god mot deg."
+   },
+   {
+    "s": "Aasen",
+    "t": "Han las det eg skreiv. Det var det få som gjorde."
+   },
+   {
+    "s": "Huldra",
+    "t": "Og i morgon?"
+   },
+   {
+    "s": "Aasen",
+    "t": "I morgon skal eg visa han runepinnane frå Bryggen."
+   },
+   {
+    "s": "Huldra",
+    "t": "Og om han ikkje forstår?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Då har eg vist han det likevel."
+   },
+   {
+    "regi": "Ho lener hovudet mot skuldra hans. Han sit stille til bålet har brunne ned. Om spelaren har gjort alle dei personlege oppdraga, nynnar huldra ein liten melodi frå setra i Hemsedal. Aasen kjenner den ikkje. Dagboka for den kvelden er tom."
+   }
+  ],
+  "utfall_tekst": null,
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/09 Sideoppdrag 2.md:1349",
+  "samtale": true
+ }
+]

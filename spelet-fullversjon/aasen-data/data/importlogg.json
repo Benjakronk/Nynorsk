@@ -1,0 +1,509 @@
+{
+ "uklar": [
+  {
+   "fil": "09 Ordboka/05 Ordlista kapittel 11, 13 og 14.md",
+   "line": 23,
+   "tekst": "Rada for 11.13 manglar kolonnen Nr. Nummeret står i parentes etter oppslaget, og kolonnane er flytte eitt steg. Skriptet har lese rada med nummeret frå parentesen"
+  },
+  {
+   "fil": "09 Ordboka/05 Ordlista kapittel 11, 13 og 14.md",
+   "line": 38,
+   "tekst": "Rada for 11.28 manglar kolonnen Nr. Nummeret står i parentes etter oppslaget, og kolonnane er flytte eitt steg. Skriptet har lese rada med nummeret frå parentesen"
+  },
+  {
+   "fil": "09 Ordboka/05 Ordlista kapittel 11, 13 og 14.md",
+   "line": 46,
+   "tekst": "Rada for 11.36 manglar kolonnen Nr. Nummeret står i parentes etter oppslaget, og kolonnane er flytte eitt steg. Skriptet har lese rada med nummeret frå parentesen"
+  },
+  {
+   "fil": "09 Ordboka/05 Ordlista kapittel 11, 13 og 14.md",
+   "line": 46,
+   "tekst": "11.36 folkesnakk er i familien harde konsonantar, men står ikkje i Trekka til orda"
+  },
+  {
+   "fil": "09 Ordboka/05 Ordlista kapittel 11, 13 og 14.md",
+   "line": 117,
+   "tekst": "Rad utan nummer og oppslag (berre «7.13, Trappa ved Vor Frelsers kyrkje, Christiania. Kven sa det: du» i kolonnen Kjelde i spelet). Ho ser ut til å høyre til rada over. Skriptet har hoppa over henne"
+  },
+  {
+   "fil": "05 Mekanikk/09a Bestiarium vanlege fiendar.md",
+   "line": 114,
+   "tekst": "Kleggen på slåttemyra: slaget av segl i «1 (sverm)» kunne ikkje tolkast"
+  },
+  {
+   "fil": "05 Mekanikk/09a Bestiarium vanlege fiendar.md",
+   "line": 115,
+   "tekst": "Myggen i torvmyra: slaget av segl i «1 (sverm)» kunne ikkje tolkast"
+  },
+  {
+   "fil": "05 Mekanikk/09a Bestiarium vanlege fiendar.md",
+   "line": 116,
+   "tekst": "Myggen på Dovre: slaget av segl i «2 (sverm)» kunne ikkje tolkast"
+  },
+  {
+   "fil": "05 Mekanikk/09a Bestiarium vanlege fiendar.md",
+   "line": 117,
+   "tekst": "Vepsane i bakgarden: slaget av segl i «2 (sverm)» kunne ikkje tolkast"
+  },
+  {
+   "fil": "05 Mekanikk/09a Bestiarium vanlege fiendar.md",
+   "line": 118,
+   "tekst": "Myggen på finnmyra: slaget av segl i «3 (sverm)» kunne ikkje tolkast"
+  },
+  {
+   "fil": "05 Mekanikk/09a Bestiarium vanlege fiendar.md",
+   "line": 827,
+   "tekst": "Snøvetten i bratten: Trinn og nivå «I, fast» kunne ikkje tolkast heilt"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 103,
+   "tekst": "Bossen Musekongen og hoffet hans har ingen fasar med Liv og segl som kunne lesast"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 230,
+   "tekst": "Bossen Den trykte huldra har ingen fasar med Liv og segl som kunne lesast"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 236,
+   "tekst": "Bossen Settardjevelen har ingen fasar med Liv og segl som kunne lesast"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 248,
+   "tekst": "Bossen Hugin og Munin har ingen fasar med Liv og segl som kunne lesast"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 304,
+   "tekst": "Bossen Fanen har ingen fasar med Liv og segl som kunne lesast"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 343,
+   "tekst": "Bossen Knudsen mot Moe og Asbjørnsen har ingen fasar med Liv og segl som kunne lesast"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 387,
+   "tekst": "Bossen Gjeldsboka i Kautokeino har ingen fasar med Liv og segl som kunne lesast"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 451,
+   "tekst": "Bossen Tor og Odin har ingen fasar med Liv og segl som kunne lesast"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 608,
+   "tekst": "Bossen Konventikkelplakaten: «Kan ikkje skadast» kunne ikkje tolkast som Liv og segl"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 624,
+   "tekst": "Bossen Blekk-Henrik: «Tre fasar med 4 000 Liv kvar og 5, 5 og 3 dropar» kunne ikkje tolkast som Liv og segl"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 633,
+   "tekst": "Bossen Bannkongen: «Ingen Liv. Stevjing som eigen kampmodus» kunne ikkje tolkast som Liv og segl"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 662,
+   "tekst": "Bossen Fossegrimen i isen: «3 800 Liv. 2 rimkrystallar framfor 3 knutar av fosseskum» kunne ikkje tolkast som Liv og segl"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 667,
+   "tekst": "Bossen Iskappa på Glittertind: «5 500 Liv. Ho startar med 4 rimkrystallar og legg på seg eitt til kvar runde, høgst 8» kunne ikkje tolkast som Liv og segl"
+  },
+  {
+   "fil": "05 Mekanikk/10 Superbossar.md",
+   "line": 166,
+   "tekst": "Superbossen Sjøormen ved Stad har ingen fasetabell"
+  },
+  {
+   "fil": "05 Mekanikk/10 Superbossar.md",
+   "line": 216,
+   "tekst": "Superbossen Ormen i Lofotveggen har ingen fasetabell"
+  },
+  {
+   "fil": "05 Mekanikk/10 Superbossar.md",
+   "line": 358,
+   "tekst": "Superbossen Dæmringen i Welhavens salong har ingen fasetabell"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 685,
+   "tekst": "Vanskekurva: «Nøkken» har ingen eigen bolk som boss"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 691,
+   "tekst": "Vanskekurva: «Tarjei» har ingen eigen bolk som boss"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 691,
+   "tekst": "Vanskekurva: «Gamle-Tarjei» har ingen eigen bolk som boss"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 695,
+   "tekst": "Vanskekurva: «Aslaug mot Vinje» har ingen eigen bolk som boss"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 697,
+   "tekst": "Vanskekurva: «Stilebokblekket» har ingen eigen bolk som boss"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 699,
+   "tekst": "Vanskekurva: «Frostvette» har ingen eigen bolk som boss"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 705,
+   "tekst": "Vanskekurva: «Sideoppdrag i byen» har ingen eigen bolk som boss"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 715,
+   "tekst": "Vanskekurva: «Brennevinsånda» har ingen eigen bolk som boss"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 716,
+   "tekst": "Vanskekurva: «Andhrimner» har ingen eigen bolk som boss"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 717,
+   "tekst": "Vanskekurva: «Samlarane» har ingen eigen bolk som boss"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 720,
+   "tekst": "Vanskekurva: «Personlege oppdrag» har ingen eigen bolk som boss"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 726,
+   "tekst": "Vanskekurva: «Aslaug mot Vinje igjen» har ingen eigen bolk som boss"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 727,
+   "tekst": "Vanskekurva: «Regionale sideoppdrag» har ingen eigen bolk som boss"
+  },
+  {
+   "fil": "05 Mekanikk/05 Fiendar og bossar.md",
+   "line": 732,
+   "tekst": "Vanskekurva: «Olav» har ingen eigen bolk som boss"
+  },
+  {
+   "fil": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md",
+   "line": 135,
+   "tekst": "Sona «Stien og skaret»: nivået «fast» kunne ikkje tolkast"
+  },
+  {
+   "fil": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md",
+   "line": 1059,
+   "tekst": "Sona «Postvegen frå Drammen over Hokksund og Modum»: nivået «39 i 1852 og 43 i 1853» kunne ikkje tolkast"
+  },
+  {
+   "fil": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md",
+   "line": 1082,
+   "tekst": "Sona «Skogen langs Krøderen og under Norefjell»: nivået «39 i 1852 og 43 i 1853» kunne ikkje tolkast"
+  },
+  {
+   "fil": "05 Mekanikk/09d Møtetabellar villmarkene.md",
+   "line": 53,
+   "tekst": "Sona «Trollgjølet på Molaup» har ikkje noko årstal i overskrifta, så epoken er ukjend"
+  },
+  {
+   "fil": "05 Mekanikk/09d Møtetabellar villmarkene.md",
+   "line": 159,
+   "tekst": "Sona «Under Nigardsbreen» har ikkje noko årstal i overskrifta, så epoken er ukjend"
+  },
+  {
+   "fil": "05 Mekanikk/09d Møtetabellar villmarkene.md",
+   "line": 310,
+   "tekst": "Sona «Røysene ved Hå» har ikkje noko årstal i overskrifta, så epoken er ukjend"
+  },
+  {
+   "fil": "05 Mekanikk/09d Møtetabellar villmarkene.md",
+   "line": 413,
+   "tekst": "Sona «Blesterplassen på Hovden» har ikkje noko årstal i overskrifta, så epoken er ukjend"
+  },
+  {
+   "fil": "05 Mekanikk/09d Møtetabellar villmarkene.md",
+   "line": 491,
+   "tekst": "Sona «Steinbua under Falkenuten» har ikkje noko årstal i overskrifta, så epoken er ukjend"
+  },
+  {
+   "fil": "05 Mekanikk/09d Møtetabellar villmarkene.md",
+   "line": 575,
+   "tekst": "Sona «Jøtulberget i Vågå» har ikkje noko årstal i overskrifta, så epoken er ukjend"
+  },
+  {
+   "fil": "05 Mekanikk/09d Møtetabellar villmarkene.md",
+   "line": 653,
+   "tekst": "Sona «Grova ved Hjerkinn» har ikkje noko årstal i overskrifta, så epoken er ukjend"
+  },
+  {
+   "fil": "05 Mekanikk/09d Møtetabellar villmarkene.md",
+   "line": 760,
+   "tekst": "Sona «Kirkehelleren på Sanna» har ikkje noko årstal i overskrifta, så epoken er ukjend"
+  },
+  {
+   "fil": "05 Mekanikk/09d Møtetabellar villmarkene.md",
+   "line": 861,
+   "tekst": "Sona «Romsdalshornet» har ikkje noko årstal i overskrifta, så epoken er ukjend"
+  },
+  {
+   "fil": "05 Mekanikk/09d Møtetabellar villmarkene.md",
+   "line": 943,
+   "tekst": "Sona «Tømmervasen i Glomma» har ikkje noko årstal i overskrifta, så epoken er ukjend"
+  },
+  {
+   "fil": "05 Mekanikk/09d Møtetabellar villmarkene.md",
+   "line": 1040,
+   "tekst": "Sona «Svedjebrannen» har ikkje noko årstal i overskrifta, så epoken er ukjend"
+  },
+  {
+   "fil": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md",
+   "line": 1242,
+   "tekst": "Startmåten: fienden «Musekongen og hoffet (1.3)» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md",
+   "line": 1257,
+   "tekst": "Startmåten: fienden «Kopistar» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md",
+   "line": 1258,
+   "tekst": "Startmåten: fienden «Protokollfantar» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md",
+   "line": 1259,
+   "tekst": "Startmåten: fienden «Snøvettar i 1.17» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md",
+   "line": 1265,
+   "tekst": "Startmåten: fienden «Snøvettar» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md",
+   "line": 1282,
+   "tekst": "Startmåten: fienden «Brannvaka under Bryggen (2.9)» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md",
+   "line": 1287,
+   "tekst": "Startmåten: fienden «Fossegrimen i Tvinde (S1.17)» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md",
+   "line": 1326,
+   "tekst": "Startmåten: fienden «Blekkvesenet i kyrkjeboka (3.5)» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md",
+   "line": 1327,
+   "tekst": "Startmåten: fienden «Folkevesen frå epoketabellen» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md",
+   "line": 1329,
+   "tekst": "Startmåten: fienden «Stilebokblekket (3.11)» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md",
+   "line": 1357,
+   "tekst": "Startmåten: fienden «Frostvettene ved Hjerkinn (3.16)» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md",
+   "line": 1381,
+   "tekst": "Startmåten: fienden «Skulebok-, trykkeri- og teaterblekk» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md",
+   "line": 1388,
+   "tekst": "Startmåten: fienden «Isravnen over Nordmarka ved enden av vegen (4.30)» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md",
+   "line": 1745,
+   "tekst": "Startmåten: fienden «Gjeldsbøkene og Brennevinsånda» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md",
+   "line": 1768,
+   "tekst": "Startmåten: fienden «Bannkongen i Lærdal» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md",
+   "line": 1816,
+   "tekst": "Startmåten: fienden «Den første skrivaren» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md",
+   "line": 1889,
+   "tekst": "Startmåten: fienden «Frosne gardsvesen» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md",
+   "line": 1894,
+   "tekst": "Startmåten: fienden «Fimbulvintervesen: frostvette, isvesen, Frostmus og ravnar av is» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md",
+   "line": 1895,
+   "tekst": "Startmåten: fienden «Fimbulvintervesen: stormvesen og frosne kulissar» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09d Møtetabellar villmarkene.md",
+   "line": 1104,
+   "tekst": "Startmåten: fienden «Kladden i havgrotta (S2.6)» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "05 Mekanikk/09d Møtetabellar villmarkene.md",
+   "line": 1136,
+   "tekst": "Startmåten: fienden «Frostvettene ved Hjerkinn (3.16)» finst ikkje i bestiaria"
+  },
+  {
+   "fil": "07 Kart og rom/03 Kart Christiania.md",
+   "line": 117,
+   "tekst": "Skjermen CHR-08: «Dampskipsbrygga» er verken ein butikktype eller kvile"
+  },
+  {
+   "fil": "07 Kart og rom/03 Kart Christiania.md",
+   "line": 118,
+   "tekst": "Skjermen CHR-15 og CHR-17: «Skyss» er verken ein butikktype eller kvile"
+  },
+  {
+   "fil": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md",
+   "line": 591,
+   "tekst": "Skjermen BYO-02: «Ingen» er verken ein butikktype eller kvile"
+  },
+  {
+   "fil": "07 Kart og rom/08 Kart villmarkene V7 til V12.md",
+   "line": 130,
+   "tekst": "Skjermen FOK-06: «Fjellstua på Hjerkinn» er verken ein butikktype eller kvile"
+  },
+  {
+   "fil": "07 Kart og rom/00 Kart og rom.md",
+   "line": 62,
+   "tekst": "Staden «Kjelda ved Byklestigen og Valle» står i to faner. ID-ane «Vestlandet: VLE-03 og VLE-04» og «Villmarkene V1 til V6: BYK-skjermane» er ikkje to einskilde skjermar. Difor har skriptet ikkje slått dei saman"
+  },
+  {
+   "fil": "07 Kart og rom/00 Kart og rom.md",
+   "line": 63,
+   "tekst": "Staden «Vågakallen» står i to faner. ID-ane «Sagahallen og superbossane: DVK» og «Trøndelag og Nord-Noreg: LFN-08 og LFN-09» er ikkje to einskilde skjermar. Difor har skriptet ikkje slått dei saman"
+  },
+  {
+   "fil": "07 Kart og rom/00 Kart og rom.md",
+   "line": 64,
+   "tekst": "Staden «Stiklestad» står i to faner. ID-ane «Trøndelag og Nord-Noreg: TRL-05» og «Sagahallen og superbossane: DST» er ikkje to einskilde skjermar. Difor har skriptet ikkje slått dei saman"
+  },
+  {
+   "fil": "07 Kart og rom/00 Kart og rom.md",
+   "line": 65,
+   "tekst": "Staden «Olavsbrønnen» står i to faner. ID-ane «Trøndelag og Nord-Noreg: OLA for 1846» og «Sagahallen og superbossane: OLB for 1853» er ikkje to einskilde skjermar. Difor har skriptet ikkje slått dei saman"
+  },
+  {
+   "fil": "07 Kart og rom/00 Kart og rom.md",
+   "line": 66,
+   "tekst": "Staden «Vor Frelsers kyrkje i november 1853» står i to faner. ID-ane «Christiania» og «Sagahallen og superbossane: SGH-10» er ikkje to einskilde skjermar. Difor har skriptet ikkje slått dei saman"
+  },
+  {
+   "fil": "04 Manus/04 Christiania.md",
+   "line": 451,
+   "tekst": "Det står ikkje kva som opnar Thrane"
+  },
+  {
+   "fil": "04 Manus/04 Christiania.md",
+   "line": 583,
+   "tekst": "Det står ikkje kva som opnar Studentfabrikken"
+  }
+ ],
+ "motseiingar": [
+  {
+   "tekst": "«Fugledåre» står både som vare (05 Mekanikk/13 Varer og kister.md:62) og som utstyr (05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:858). Begge postane er med, i kvar si fil",
+   "stader": [
+    "05 Mekanikk/13 Varer og kister.md:62",
+    "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:858"
+   ]
+  },
+  {
+   "tekst": "Ande for Grunnord: Magisystemet seier «Éin alliert får same høvesbonusen på neste handling», Ordboka del 3 seier «Éin alliert får same høvesbonusen på neste handling mot same mål»",
+   "stader": [
+    "09 Ordboka/01 Magisystemet frå ord til galdr.md:127",
+    "09 Ordboka/00 Ordboka.md:165"
+   ]
+  },
+  {
+   "tekst": "Grafikk og stil har stemning for epoken «Sagahallen 1853», men lista over lag i Verda (Same stad gjennom tida) har ingen epoke med det namnet eller dei åra",
+   "stader": [
+    "10 Produksjon/02 Grafikk og stil.md:128",
+    "06 Verda/00 Verda.md:118"
+   ]
+  },
+  {
+   "tekst": "Samspelet «Gje han ord» står i figurfana, men ikkje i den samla lista i Grunnsystemet",
+   "stader": [
+    "05 Mekanikk/04 Figurar Collett til jotunen.md:543"
+   ]
+  },
+  {
+   "tekst": "Samspelet «Salme og bøn» står i figurfana, men ikkje i den samla lista i Grunnsystemet",
+   "stader": [
+    "05 Mekanikk/04 Figurar Collett til jotunen.md:545"
+   ]
+  },
+  {
+   "tekst": "Samspelet «Ord og joik» står i figurfana, men ikkje i den samla lista i Grunnsystemet",
+   "stader": [
+    "05 Mekanikk/04 Figurar Collett til jotunen.md:546"
+   ]
+  },
+  {
+   "tekst": "Oversikta i Manus seier 198 scener i hovudhistoria, men fanene har 209 overskrifter «Scene». del 2: 28 i oversikta, 29 overskrifter «Scene» i fana (mellom dei s2_24b); del 5: 29 i oversikta, 31 overskrifter «Scene» i fana (mellom dei s5_5b, s5_12b, s5_12c, s5_13b); del 6: 22 i oversikta, 25 overskrifter «Scene» i fana (mellom dei s6_7b, s6_19b, s6_19c); del 7: 32 i oversikta, 37 overskrifter «Scene» i fana (mellom dei s7_7b, s7_9b, s7_9c, s7_14b, s7_17b)",
+   "stader": [
+    "04 Manus/00 Manus.md:5"
+   ]
+  },
+  {
+   "tekst": "Oversikta i Manus seier 84 oppdrag og 32 samtalar, skriptet fann 93 oppdrag og 32 samtalar",
+   "stader": [
+    "04 Manus/00 Manus.md:5"
+   ]
+  }
+ ],
+ "merknader": [
+  "Fargane og teikna til lydfamiliane står ikkje i dokumentet (Grafikk og stil har dei ikkje). Fargane finst i prototypen (FAMILIAR i data.js) og høyrer heime i data/hand/ord/familiar.json. Felta farge og teikn er null til då",
+  "Oppslagsordet «ør» står 2 gonger (1.37, 5.39). Det første har ID-en or, dei andre har tal etter",
+  "Feltet hove_merke er null på alle oppslag. Dokumentet har inga liste over tydingsmerke, og Høvesbonus-kolonnen er fri tekst, så merka kan ikkje lesast sikkert",
+  "Feltet felt (bruk utanfor kamp) er null på alle oppslag. Ordlistene har ingen kolonne for det",
+  "Familien til kvar form (former[].fam) er rekna ut med regelrekkja i Magisystemet. Feltet fam på oppslaget er familien som står i ordlista",
+  "Feltet god (sann eller usann) er null på alle statusar. Dokumentet deler ikkje statusane i gode og vonde. Feltet ikon er null av same grunn",
+  "Tida T1 til T4 på kvar epoke er sett etter åra i tabellen Tidene i Varer og kister. Etter oppgjeret og Epilogen har fått T4, fordi T4 er «1850 til 1853 og seinare»",
+  "Felta portrett og kartfigur (filnamn) er null på alle figurar. Dokumentet har ingen filnamn. Prototypen har dei i PORTRETT og U i data.js",
+  "Ressursen til figurane er lesen frå setningar som «Ekte er ein målar frå 0 til 5». Ikonet står ikkje i dokumentet og er null",
+  "Kontrollsum: fana Christiania har 52 skjermar etter oversikta i Kart og rom, men tabellane i fana har 53 (07 Kart og rom/00 Kart og rom.md:21)",
+  "Kontrollsum: fana Christiania har 30 butikkar og kvile etter oversikta i Kart og rom, men tabellane i fana har 21 (07 Kart og rom/00 Kart og rom.md:21)",
+  "Kontrollsum: 2 skjermar i fana villmarkene V1 til V6 er slegne saman med skjermen i fana som eig staden (tabellen Stader som står i to faner), og står som alias der",
+  "Kontrollsum: 1 skjermar i fana villmarkene V7 til V12 er slegne saman med skjermen i fana som eig staden (tabellen Stader som står i to faner), og står som alias der",
+  "Scenene i sideoppdraga har ID-en til oppdraget og eit løpenummer (S1_1_1). I S2 står nummeret i manus (S2.1.1 blir S2_1_1). Samtalane undervegs har ID-ar som S1_samtale_1",
+  "Flagga står ikkje med namn i dokumentet. Skriptet lagar eitt flagg per val i manus (<scene>_val, med bokstavane som verdiar) og les tilvisingar som «val B i S1.28» eller «1.17, val B» i manus, sideoppdrag og kartfanene. Standardverdien er null for alle"
+ ]
+}

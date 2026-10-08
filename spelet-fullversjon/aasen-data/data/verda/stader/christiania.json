@@ -1,0 +1,6326 @@
+{
+ "fane": "Christiania",
+ "stader": [
+  {
+   "id": "CHR",
+   "namn": "Christiania",
+   "fane": "christiania",
+   "storleik": "storby",
+   "skildring": "Christiania er storbyen i spelet og heimebasen frå 4.1 til slutten. Kartet er teikna som eit bykart frå 1840-åra med Kvadraturen som rutenett i midten. Stortorvet bind Kvadraturen saman med Storgata og Vaterland i aust, Akersgata og Hammersborg i nord og hovudgata vest mot Slottsveien og Bellevue. Hamna går rundt Akershus frå Pipervika til Bjørvika. Byutkantane i Nordmarka, langs Akerselva og på fjordisen er overgangar til verdskartet og har eigne møtesoner. Kolonnen Epokar brukar desse merka: «1845» er 19. juli til byrjinga av august 1845, «1847–50» er 24. september 1847 til 30. juli 1850, «natta» er den faste natta 30. juli til 4. august 1850, «1851–53» er fimbulvinteren frå januar 1851 til oktober 1853, og «nov. 1853» er den store opninga og sluttnatta. «Alle» tyder 1845, 1847–50, 1851–53 og nov. 1853. Byen har 19 skjermar ute og 33 rom inne, fleire enn spennet for ein storby, sjå Opne spørsmål.",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:7"
+  },
+  {
+   "id": "AKK",
+   "namn": "Arkivkjellaren på Akershus (S1.33)",
+   "fane": "christiania",
+   "storleik": "dungeon",
+   "skildring": "Ein blekkdungeon på om lag 15 minutt under Riksarkivet på Akershus i juli 1845, nivå 24. Knudsen utfordrar Aasen etter 3.10 og er gjest denne eine gongen. Temaet er klaga frå bønder på Sunnmøre, omsett av ein skrivar som ikkje forstod dei, og grepet er at orda til bøndene står i margen med blyant. Seks kvelvar med protokollar frå 1760-åra. Møtetabell: fana 9b, bolken «Christiania, juli 1845», sona «Arkivkjellaren på Akershus (S1.33)».",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:136"
+  },
+  {
+   "id": "TRY",
+   "namn": "Trykkeriet (4.12)",
+   "fane": "christiania",
+   "storleik": "dungeon",
+   "skildring": "Ein blekkdungeon på om lag 15 minutt i boktrykkeriet i Kirkegata våren 1848, nivå 29 til 33. Grammatikken skal trykkjast, og «heim» er blitt «Hjem» på arket. Temaet er trykket som kan binde, og grepet er at spelaren må rette feil før arka tørkar. Kvar presse er ei klokke som går. Landstad er gjest. Dei tre romma i dungeonfana er delte i åtte. Møtetabell: fana 9b, bolken «Christiania, september 1847 til juli 1850», sona «Trykkeriet».",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:156"
+  },
+  {
+   "id": "PRV",
+   "namn": "Kjellaren under proviantbygningen (S2.14)",
+   "fane": "christiania",
+   "storleik": "dungeon",
+   "skildring": "Ein snikedungeon på om lag 10 minutt på Akershus våren 1848, nivå 29. Torsdagskvelden i S2.14.2 går forbi svenske vakter ned til kjellaren der underoffiserar og vaskekoner syng visene slik dei syng dei heime. Grepet er at takta må haldast låg. Ingen boss, ingen kvilestad og ingen snarveg, slik dungeonfana seier. Same kjellaren kjem att i mars 1852 (S2.20.1), og då slepp Unionsmerket partyet forbi vaktpostane. Møtetabell: ingen. Vaktpostane står synlege.",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:179"
+  },
+  {
+   "id": "MAG",
+   "namn": "Magasinet i biblioteket (S2.16)",
+   "fane": "christiania",
+   "storleik": "dungeon",
+   "skildring": "Ein blekkdungeon på 10 til 15 minutt i magasinet i Rådmannsgården hausten 1848, nivå 30. Ei rettskrivingsbok frå 1790-åra låner seg sjølv ut. Knudsen er gjest. Grepet er at kvar hylle har ei rettskrivingsgåte, og Knudsen hjelper ved å rette protokollen. Møtetabell: fana 9b, bolken «Christiania, september 1847 til juli 1850», sona «Magasinet i biblioteket (S2.16)».",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:198"
+  },
+  {
+   "id": "MAL",
+   "namn": "Inne i måleriet (4.14)",
+   "fane": "christiania",
+   "storleik": "dungeon",
+   "skildring": "Ein tekstdungeon på om lag 10 minutt inne i Brudeferden i Hardanger, som heng som bakteppe på soaréen i Christiania Theater i mars 1849, nivå 30. Temaet er den vakre lygna om folket, og grepet er at ingen svarar og Ordboka gjev ingen nye ord. Måleriet har tre stader, her delte i seks rom. Tre lygner må avslørast med kv-ord, og då sprekk lerretet. Ingen fiendar, ingen boss, ingen kvilestad og ingen møtetabell.",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:218"
+  },
+  {
+   "id": "PIP",
+   "namn": "Kjellaren i Pipervika (S2.13)",
+   "fane": "christiania",
+   "storleik": "dungeon",
+   "skildring": "Ein blekkdungeon på om lag 10 minutt i ein kjellar i Pipervika vinteren 1849–50, nivå 28. Arbeidarforeininga held sundagsskule for vaksne som vil skrive under bøna til kongen. Om dagen er kjellaren ei skulestove (S2.13.1). Om natta går partyet gjennom kjellarane mot tre ABC-vesen og Petisjonsarket, som veks for kvar underskrift partyet ikkje har verna (S2.13.2). Møtetabell: fana 9b, bolken «Christiania, september 1847 til juli 1850», sona «Kjellaren i Pipervika (S2.13)».",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:233"
+  },
+  {
+   "id": "BHH",
+   "namn": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "fane": "christiania",
+   "storleik": "dungeon",
+   "skildring": "Ein snikedungeon på om lag 25 minutt i leilegheita til Botten-Hansen ei natt i februar 1851, nivå 35. Klokka tre går Aasen inn i hyllene medan Vinje les eit langt dikt i stova. Temaet er boksamlaren som har bunde noko i kvar bok, og grepet er at hyllene flyttar seg når ingen ser. «Kven» gjer kviskringa tydeleg og viser veg, og «kvar» viser kva hyller som snart flyttar seg. Ein tidtakar går frå tre til kvart på seks. Inngangen er valet i 5.8. Møtetabell: fana 9c, bolken «Fimbulvinteren: Christiania, 1851 til 1853», sona «Hyllene hos Botten-Hansen (5.9, februar 1851)», med raten Vanleg etter val B.",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:252"
+  },
+  {
+   "id": "TVF",
+   "namn": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "fane": "christiania",
+   "storleik": "dungeon",
+   "skildring": "Ein blekkdungeon på om lag 15 minutt opp gjennom det nye tårnet ein kald morgon i juni 1851, nivå 36. Berte må vere med. Ein framand i svart frakk peikar opp frå kyrkjeveggen. Temaet er freistinga til å bli høyrd, og grepet er at Fristaren går føre og ventar på kvar avsats. Stillaset er teke ned, og koparen på spiret er blank. Kyrkjerommet under er fristad, og kampane går føre seg på loftet og over taket. Blekkvesena går etter kvinnene i partyet først. Rekkjefølgja mellom loftet og klokkestolen er eit forslag, sjå Opne spørsmål. Møtetabell: fana 9c, bolken «Fimbulvinteren: Christiania, 1851 til 1853», sona «Tårnet på Vor Frelsers kyrkje (5.13b, juni 1851)».",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:271"
+  },
+  {
+   "id": "KTK",
+   "namn": "Kjellartrykkeriet i Kirkegata (S2.19)",
+   "fane": "christiania",
+   "storleik": "dungeon",
+   "skildring": "Ein blekkdungeon med snikedel på om lag 15 minutt dagen etter at Thrane blei arrestert 7. juli 1851, nivå 36. Typografen Kristiansen bankar på, og falske flygeblad med kanselliblekk skriv seg om i hendene på den som les dei. Partyet er Aasen, Vinje og Collett. Bakgarden, gangen og trykkeriet er delte i seks rom. Møtetabell: ingen. Politibetjenten (frosen) står synleg i bakgarden og gangen.",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:293"
+  },
+  {
+   "id": "KLA",
+   "namn": "Klasse 4 B (5.22)",
+   "fane": "christiania",
+   "storleik": "dungeon",
+   "skildring": "Ein blekkdungeon på om lag 10 minutt i eit kaldt klasserom på katedralskolen ein morgon i januar 1852, nivå 36. Knudsen er åleine, og dungeonen lærer bort kampsystemet hans. Temaet er skulen som tek talen frå born, og grepet er at kvar elev er eit lite rom. Manuset legg Ånda i stileboka ved pulten til Hans som første kamp, og kartet følgjer manuset. Dei andre radene er kampar spelaren kan ta eller gå forbi. Møtetabell: fana 9c, bolken «Fimbulvinteren: Christiania, 1851 til 1853», sona «Klasse 4 B (5.22, januar 1852)».",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:313"
+  },
+  {
+   "id": "KAN",
+   "namn": "Kanselliarkivet under Akershus (S2.30)",
+   "fane": "christiania",
+   "storleik": "dungeon",
+   "skildring": "Superbossdungeonen under festninga, open frå 1852 og laga for den store opninga, nivå 60 og 45 til 60 minutt. Knudsen må vere med, Den gamle nøkkelen frå 5.22 må vere i veska, og Kongsormen må vere slått. Rett opnar dei låste kanselli-dørene mellom etasjane. Temaet er lova som aldri er blitt spurd om kvifor, og grepet er at fiendane skriv lover medan partyet kjempar. Tolv etasjar går frå åra fram til 1814 øvst til dei første åra til Christian IV nedst, og blekket blir eldre og tjukkare nedover. Lagring og kvile står berre i etasje 3, 6 og 9, og ein bauta står rett før Kansellisten. Møtetabell: fana 9c, bolken «Superbossdungeonane», sonene «Kanselliarkivet under Akershus, etasje 1 til 3: forordningane (S2.30)», «etasje 4 til 6: kyrkjebøkene», «etasje 7 til 9: skulebøkene» og «etasje 10 til 12: kopistane».",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:333"
+  },
+  {
+   "id": "WEL",
+   "namn": "Welhavens salong (S2.32)",
+   "fane": "christiania",
+   "storleik": "dungeon",
+   "skildring": "Superbossdungeonen i heimen til Welhaven ein aftan i desember 1852, uavhengig av nivå med gjestene på nivå 41, om lag 30 minutt. Welhaven blir alliert i 6.11 og bed Aasen. Collett må vere med for å opne det inste rommet, og Blikket gjer ein plagsam gjest taus så partyet kan gå forbi. Temaet er dei danna som avgjorde kva som var fint nok til å skrivast, og grepet er at romma er samtalar. Partyet kan ikkje bruke vanlege åtak. Fire versduellar og arbeidsrommet er dei fem romma i dungeonfana. Namna på romma er forslag. Møtetabell: fana 9c, bolken «Superbossdungeonane», sona «Welhavens salong: gangen og romma mellom versduellane (S2.32)».",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:368"
+  }
+ ],
+ "skjermar": [
+  {
+   "id": "CHR-01",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Det gamle Torvet og Rådhusgata",
+   "innhald_tekst": "Plassen med Rådmannsgården i Rådhusgata, Anatomigården og Garnisonssjukehuset. Asbjørnsen ber kista til sidedøra, og Trollet i døra vaktar henne (4.24). Munch låser opp same døra (4.27). Frosten breier seg herifrå, flukta byrjar på plassen, og Vinje blir dregen bort i Rådhusgata (4.30). Nordlyset står over plassen til biblioteket flyttar i 1851. Etter det står Rådmannsgården tom, og sidedøra er frosen att",
+   "scener": [
+    "s4_24",
+    "s4_27",
+    "s4_30"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-01a",
+     "namn": "Rådmannsgården"
+    },
+    {
+     "til": "CHR-02",
+     "namn": "Kongens gate og Prinsens gate"
+    },
+    {
+     "til": "CHR-04",
+     "namn": "Kirkegata"
+    },
+    {
+     "til": "CHR-08",
+     "namn": "Hamna"
+    }
+   ],
+   "utgangar_tekst": "CHR-01a Rådmannsgården, CHR-02 Kongens gate og Prinsens gate, CHR-04 Kirkegata, CHR-08 Hamna",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle, natta",
+   "soner": [
+    "9b_bakgardane_i_kvadraturen_og_rundt_stortorvet",
+    "9c_bakgardane_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:13"
+  },
+  {
+   "id": "CHR-01a",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Rådmannsgården: universitetsbiblioteket og handskriftsamlinga",
+   "innhald_tekst": "Utlånsskranken, lesesalen og handskriftsamlinga med montrar. Munch fører Aasen hit med lykta, kvart blad gjev eit gammalt ord, og inst står den låge døra med jernbeslag (4.8). «Kvar» lyser opp eit riss av noko med venger. Skranken er inngangen til Magasinet (S2.16.2). Den faste natta går Munch føre gjennom dei mørke salane til den opne døra (4.27). Inngangen til Sagahallen i 1850",
+   "scener": [
+    "s4_8",
+    "S2_16_2",
+    "s4_27"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-01",
+     "namn": "Det gamle Torvet"
+    },
+    {
+     "til": "MAG-01",
+     "namn": "Utlånsskranken"
+    },
+    {
+     "til": null,
+     "namn": "Sagahallen",
+     "merknad": "ei anna gruppe",
+     "fleire_treff": null
+    }
+   ],
+   "utgangar_tekst": "CHR-01 Det gamle Torvet, MAG-01 Utlånsskranken, Sagahallen (ei anna gruppe)",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "1847–50, natta",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:14"
+  },
+  {
+   "id": "CHR-02",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Kongens gate og Prinsens gate",
+   "innhald_tekst": "Rutenettgater med embetsmenn nedst og svenner på loftet. Mariboegården på hjørnet. Apoteket (sjekk namn og adresse) og ein jernvarehandel. Hjørnet før gata går ut av rutenettet, der Knudsen spring forbi med skulebøkene (4.30). Bakgardane har møtesona for Kvadraturen",
+   "scener": [
+    "s4_30"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-01",
+     "namn": "Det gamle Torvet"
+    },
+    {
+     "til": "CHR-02a",
+     "namn": "Mariboegården"
+    },
+    {
+     "til": "CHR-02b",
+     "namn": "Jernvarehandelen"
+    },
+    {
+     "til": "CHR-03",
+     "namn": "Dronningens gate"
+    },
+    {
+     "til": "CHR-05",
+     "namn": "Bankplassen"
+    }
+   ],
+   "utgangar_tekst": "CHR-01 Det gamle Torvet, CHR-02a Mariboegården, CHR-02b Jernvarehandelen, CHR-03 Dronningens gate, CHR-05 Bankplassen",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle, natta",
+   "soner": [
+    "9b_bakgardane_i_kvadraturen_og_rundt_stortorvet",
+    "9c_bakgardane_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:15"
+  },
+  {
+   "id": "CHR-02a",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Mariboegården",
+   "innhald_tekst": "Førelesingssalen der Munch kjem ut med lykta (4.8), og arbeidsrommet hans med kart over heile bordet (4.17, kartet Prikkane i val B). Frå 1851 flyttar universitetet ut, og romma står meir og meir tomme",
+   "scener": [
+    "s4_8",
+    "s4_17"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-02",
+     "namn": "Kongens gate og Prinsens gate"
+    }
+   ],
+   "utgangar_tekst": "CHR-02 Kongens gate og Prinsens gate",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1847–50, 1851–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:16"
+  },
+  {
+   "id": "CHR-02b",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Jernvarehandelen",
+   "innhald_tekst": "Disk med spikar, ljåblad, økser og gruvereiskap. Geologhammaren heng på veggen bak disken",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-02",
+     "namn": "Kongens gate og Prinsens gate"
+    }
+   ],
+   "utgangar_tekst": "CHR-02 Kongens gate og Prinsens gate",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1847–50, 1851–53, nov. 1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:17"
+  },
+  {
+   "id": "CHR-03",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Dronningens gate",
+   "innhald_tekst": "Katedralskolen i nr. 15, der Stortinget òg møtest til 1854. Huset til Collett (plassering fri). Knudsen går forbi klasserommet og forbi lyset i vindauget til Collett på veg til Aasen (5.27)",
+   "scener": [
+    "s5_27"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-02",
+     "namn": "Kongens gate og Prinsens gate"
+    },
+    {
+     "til": "CHR-03a",
+     "namn": "Katedralskolen"
+    },
+    {
+     "til": "CHR-03b",
+     "namn": "Galleriet i Stortinget"
+    },
+    {
+     "til": "CHR-03c",
+     "namn": "Heime hos Collett"
+    },
+    {
+     "til": "CHR-08",
+     "namn": "Hamna"
+    },
+    {
+     "til": "CHR-09",
+     "namn": "Stortorvet"
+    }
+   ],
+   "utgangar_tekst": "CHR-02 Kongens gate og Prinsens gate, CHR-03a Katedralskolen, CHR-03b Galleriet i Stortinget, CHR-03c Heime hos Collett, CHR-08 Hamna, CHR-09 Stortorvet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_bakgardane_i_kvadraturen_og_rundt_stortorvet",
+    "9c_bakgardane_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:18"
+  },
+  {
+   "id": "CHR-03a",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Katedralskolen: skulegarden og Klasse 4 B",
+   "innhald_tekst": "Skulegarden med lyttespelet i friminuttet, og klasserommet der Knudsen skriv Steen, Been og Hjem, og Rettskrivingsregelen reiser seg av krittstøvet (4.7). Klasserommet er dungeonen Klasse 4 B i januar 1852 (5.22). Anton og skamma som tåke (S2.5.1) og tavla dagen etter (S2.5.3) i mars 1852",
+   "scener": [
+    "s4_7",
+    "s5_22",
+    "S2_5_1",
+    "S2_5_3"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-03",
+     "namn": "Dronningens gate"
+    },
+    {
+     "til": "KLA-01",
+     "namn": "Gangen"
+    }
+   ],
+   "utgangar_tekst": "CHR-03 Dronningens gate, KLA-01 Gangen",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1847–50, 1851–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:19"
+  },
+  {
+   "id": "CHR-03b",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Galleriet i Stortinget",
+   "innhald_tekst": "Same bygning som skulen. Debatten om stipendet, orda frå bonderepresentantane og blekket som sildrar frå protokollen til sekretæren (5.11). Lesestykke: Grunnlova, med strek gjennom jødeparagrafen etter 13. juni 1851",
+   "scener": [
+    "s5_11"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-03",
+     "namn": "Dronningens gate"
+    },
+    {
+     "til": "CHR-03a",
+     "namn": "Katedralskolen"
+    }
+   ],
+   "utgangar_tekst": "CHR-03 Dronningens gate, CHR-03a Katedralskolen",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1851–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:20"
+  },
+  {
+   "id": "CHR-03c",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Heime hos Collett",
+   "innhald_tekst": "Salongen med bøker som ligg opne og pianoet med «Mig selv». Brevet frå 1834 ved skrivepulten (4.2), minna i 4.3 og 4.4, og samtalen etter lyset (4.5). Romanen frå Paris (S2.43). Det indre rommet der professoren hostar, skrinet med breva (5.12) og kvelden han døyr (5.21). Lesestykke: «Mig selv» og heftet Norges Dæmring",
+   "scener": [
+    "s4_2",
+    "s4_5",
+    "S2_43",
+    "s5_12",
+    "s5_21"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-03",
+     "namn": "Dronningens gate"
+    }
+   ],
+   "utgangar_tekst": "CHR-03 Dronningens gate",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1847–50, 1851–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:21"
+  },
+  {
+   "id": "CHR-04",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Kirkegata",
+   "innhald_tekst": "Gata frå Akershus opp mot Stortorvet. Garden til Dahl frå 1836, boktrykkeriet, avistrykkeriet og papirhandelen. Kaffihuset i Kvadraturen, der Aasen høyrer om opprøret i Paris (Dagboka, mars 1848), med Christiania-Posten frå 1848 som lesestykke. Porten til bakgarden med kjellartrykkeriet (S2.19)",
+   "scener": [
+    "S2_19"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-01",
+     "namn": "Det gamle Torvet"
+    },
+    {
+     "til": "CHR-04a",
+     "namn": "Johan Dahls bokhandel"
+    },
+    {
+     "til": "CHR-04b",
+     "namn": "Boktrykkeriet"
+    },
+    {
+     "til": "CHR-04c",
+     "namn": "Avistrykkeriet"
+    },
+    {
+     "til": "CHR-04d",
+     "namn": "Papirhandelen"
+    },
+    {
+     "til": "CHR-07",
+     "namn": "Akershus"
+    },
+    {
+     "til": "CHR-09",
+     "namn": "Stortorvet"
+    },
+    {
+     "til": "KTK-01",
+     "namn": "Porten"
+    }
+   ],
+   "utgangar_tekst": "CHR-01 Det gamle Torvet, CHR-04a Johan Dahls bokhandel, CHR-04b Boktrykkeriet, CHR-04c Avistrykkeriet, CHR-04d Papirhandelen, CHR-07 Akershus, CHR-09 Stortorvet, KTK-01 Porten",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_bakgardane_i_kvadraturen_og_rundt_stortorvet",
+    "9c_bakgardane_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:22"
+  },
+  {
+   "id": "CHR-04a",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Johan Dahls bokhandel",
+   "innhald_tekst": "Disken og den siste Hallager på hylla. Ordduellen om heim og hjem og Knudsens skilling (3.10). Lesestykke: Den Constitutionelle på disken (1845 og hausten 1847), Welhavens Digte og Nyere Digte, Norske Huldre-Eventyr (1847–50), grammatikken i vindauget frå 1848 og Landstads Norske Folkeviser i november 1853",
+   "scener": [
+    "s3_10"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-04",
+     "namn": "Kirkegata"
+    }
+   ],
+   "utgangar_tekst": "CHR-04 Kirkegata",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:23"
+  },
+  {
+   "id": "CHR-04b",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Boktrykkeriet",
+   "innhald_tekst": "Kontoret, settarsalen, pressene og tørkeloftet. Inngangen til dungeonen Trykkeriet våren 1848 (4.12). Trykkeriet kan heite Werner. I november 1853 er settekassane kalde, trykkaren fyrer med makulatur, og Aasen får Prøver af Landsmaalet (7.1). Spelaren startar 7.1 her ved å seie at partyet er klart",
+   "scener": [
+    "s4_12",
+    "s7_1"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-04",
+     "namn": "Kirkegata"
+    },
+    {
+     "til": "TRY-01",
+     "namn": "Kontoret"
+    }
+   ],
+   "utgangar_tekst": "CHR-04 Kirkegata, TRY-01 Kontoret",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1847–50, nov. 1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:24"
+  },
+  {
+   "id": "CHR-04c",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Avistrykkeriet",
+   "innhald_tekst": "Redaktøren bak korrekturhaugen og blekket i hornet ved albogen. Minispelet med innlegget til Vinje (4.6)",
+   "scener": [
+    "s4_6"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-04",
+     "namn": "Kirkegata"
+    }
+   ],
+   "utgangar_tekst": "CHR-04 Kirkegata",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "1847–50",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:25"
+  },
+  {
+   "id": "CHR-04d",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Papirhandelen",
+   "innhald_tekst": "Særbutikk med pennar, papir og linjalar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-04",
+     "namn": "Kirkegata"
+    }
+   ],
+   "utgangar_tekst": "CHR-04 Kirkegata",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1847–50, 1851–53, nov. 1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:26"
+  },
+  {
+   "id": "CHR-05",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Bankplassen",
+   "innhald_tekst": "Christiania Theater frå 1837, Norges Bank og Logen. Utanfor teatret står Gude og røykjer (4.15). Fakkeltoget går herifrå ned mot kaia (5.12c). Portvakta ved Logen (Blikket, Collett, forslag). Bakgarden og kjellaren ved teatret har eiga møtesone, og i 1853 står frosne kulissar i kulisselageret. Ingen park før 1860",
+   "scener": [
+    "s4_15",
+    "s5_12c"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-02",
+     "namn": "Kongens gate og Prinsens gate"
+    },
+    {
+     "til": "CHR-05a",
+     "namn": "Christiania Theater"
+    },
+    {
+     "til": "CHR-05b",
+     "namn": "Logen"
+    },
+    {
+     "til": "CHR-06",
+     "namn": "Øvre Slottsgate"
+    },
+    {
+     "til": "CHR-07",
+     "namn": "Akershus"
+    }
+   ],
+   "utgangar_tekst": "CHR-02 Kongens gate og Prinsens gate, CHR-05a Christiania Theater, CHR-05b Logen, CHR-06 Øvre Slottsgate, CHR-07 Akershus",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_bakgardane_i_kvadraturen_og_rundt_stortorvet",
+    "9c_bakgardane_1853",
+    "9b_bakgarden_og_kjellaren_ved_christiania_theater_og_bak_studentgildet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:27"
+  },
+  {
+   "id": "CHR-05a",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Christiania Theater",
+   "innhald_tekst": "Salen med parkett, losjar og galleri. Minnet frå 28. januar 1838 og slagsmålet med fløytestudentane (4.4). Soaréen i mars 1849 med Brudeferden i Hardanger som bakteppe og songarar i bunad i ein båt (4.14). Scenekanten er inngangen til dungeonen Inne i måleriet. Teatret er stengt etter kvelden",
+   "scener": [
+    "s4_4",
+    "s4_14"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-05",
+     "namn": "Bankplassen"
+    },
+    {
+     "til": "MAL-01",
+     "namn": "Ramma"
+    }
+   ],
+   "utgangar_tekst": "CHR-05 Bankplassen, MAL-01 Ramma",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "1847–50",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:28"
+  },
+  {
+   "id": "CHR-05b",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Logen",
+   "innhald_tekst": "Festsalen frå 1844 med tre flagg, punsjbollen og dei danske studentane. Studentmøtet 9. juni 1851, talen til Welhaven og ordskiftet med Krag og Holm (5.12b)",
+   "scener": [
+    "s5_12b"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-05",
+     "namn": "Bankplassen"
+    }
+   ],
+   "utgangar_tekst": "CHR-05 Bankplassen",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1851–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:29"
+  },
+  {
+   "id": "CHR-06",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Øvre Slottsgate",
+   "innhald_tekst": "Embetsmannshus, Studentersamfundet i Madame Delphins gard og husa til Munch og Welhaven (plassering fri)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-05",
+     "namn": "Bankplassen"
+    },
+    {
+     "til": "CHR-06a",
+     "namn": "Embetsmannshuset"
+    },
+    {
+     "til": "CHR-06b",
+     "namn": "Studentersamfundet"
+    },
+    {
+     "til": "CHR-06c",
+     "namn": "Munchs bustad"
+    },
+    {
+     "til": "CHR-06d",
+     "namn": "Welhavens heim"
+    },
+    {
+     "til": "CHR-10",
+     "namn": "Østre gade og Slottsveien"
+    }
+   ],
+   "utgangar_tekst": "CHR-05 Bankplassen, CHR-06a Embetsmannshuset, CHR-06b Studentersamfundet, CHR-06c Munchs bustad, CHR-06d Welhavens heim, CHR-10 Østre gade og Slottsveien",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle, natta",
+   "soner": [
+    "9b_bakgardane_i_kvadraturen_og_rundt_stortorvet",
+    "9c_bakgardane_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:30"
+  },
+  {
+   "id": "CHR-06a",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Embetsmannshuset",
+   "innhald_tekst": "Lysekroner og grupper av gjester. Selskapet, Grimm-sitatet til Asbjørnsen og ordduellen med Welhaven (3.12). Selskapet med Munchs skål hausten 1848 (4.13) går i same hus (forslag). Minnet frå selskapet vinteren 1834 (4.3) kan bruke same kulisse (forslag)",
+   "scener": [
+    "s3_12",
+    "s4_13",
+    "s4_3"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-06",
+     "namn": "Øvre Slottsgate"
+    }
+   ],
+   "utgangar_tekst": "CHR-06 Øvre Slottsgate",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "1845, 1847–50",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:31"
+  },
+  {
+   "id": "CHR-06b",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Studentersamfundet",
+   "innhald_tekst": "Røyk og lange bord. Knudsen åleine mot Andhrimners redaksjon, og Botten-Hansen seier kvar handskriftene og døra har flytt (5.23). Leirsamtale 5",
+   "scener": [
+    "s5_23"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-06",
+     "namn": "Øvre Slottsgate"
+    }
+   ],
+   "utgangar_tekst": "CHR-06 Øvre Slottsgate",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1851–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:32"
+  },
+  {
+   "id": "CHR-06c",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Munchs bustad",
+   "innhald_tekst": "Eit stort rom med levande lys og bøker langs alle veggene. Middagen og steika (4.26). Berre vegen hit er open den faste natta",
+   "scener": [
+    "s4_26"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-06",
+     "namn": "Øvre Slottsgate"
+    }
+   ],
+   "utgangar_tekst": "CHR-06 Øvre Slottsgate",
+   "epokar": [],
+   "epokar_tekst": "Natta",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:33"
+  },
+  {
+   "id": "CHR-06d",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Welhavens heim",
+   "innhald_tekst": "Salongen med lysekroner og porselen, og biblioteket der Munch og Welhaven talar (6.11). Welhavens nøkkel. Inngangen til dungeonen Welhavens salong frå desember 1852",
+   "scener": [
+    "s6_11"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-06",
+     "namn": "Øvre Slottsgate"
+    },
+    {
+     "til": "WEL-01",
+     "namn": "Trappa"
+    }
+   ],
+   "utgangar_tekst": "CHR-06 Øvre Slottsgate, WEL-01 Trappa",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1851–53, nov. 1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:34"
+  },
+  {
+   "id": "CHR-07",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Akershus festning",
+   "innhald_tekst": "Porten er vakta. Riksarkivet til 1866, proviantbygningen og vollane. Slaverifangar i lenker. Svenske vaktpostar i fimbulvinteren slepp berre forbi med Unionsmerket (S2.14). Muren under gitteret, der Ravdna joikar, Fangeprotokollen fell og Vårløysing blir lært (6.19b). Muren er kvileplass etter 6.19b, og om kvelden høyrest joiken til Niillas der (Joike, Ravdna). Døra til Kanselliarkivet. Jotunen av frost står over festninga (4.29, mellomsekvens)",
+   "scener": [
+    "S2_14",
+    "s6_19b",
+    "s4_29"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-04",
+     "namn": "Kirkegata"
+    },
+    {
+     "til": "CHR-05",
+     "namn": "Bankplassen"
+    },
+    {
+     "til": "CHR-08",
+     "namn": "Hamna"
+    },
+    {
+     "til": "AKK-01",
+     "namn": "Trappa ned"
+    },
+    {
+     "til": "PRV-01",
+     "namn": "Porten"
+    },
+    {
+     "til": "KAN-01",
+     "namn": "Døra"
+    }
+   ],
+   "utgangar_tekst": "CHR-04 Kirkegata, CHR-05 Bankplassen, CHR-08 Hamna, AKK-01 Trappa ned, PRV-01 Porten, KAN-01 Døra",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9c_byutkantane_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:35"
+  },
+  {
+   "id": "CHR-08",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Hamna: Tollbugata, dampskipsbrygga og Bjørvika",
+   "innhald_tekst": "Dampskipsbrygga, Tollbuda ved vatnet og Bjørvika i aust. Fakkeltoget endar ved «Slesvig» (5.12c). Ibsen ved landgangen (5.20). Rosenschöld på kaia i snøstorm (S2.20.2). Ole Bull kjem ned landgangen frå Hull, og Spele opp får sjauarane til å setje ned sekkene (6.19c). Skipperar frå Vestlandet ventar på isen i november 1853. Sluttnatta står jotunen ved Tollbuda og ser mot nord (7.12)",
+   "scener": [
+    "s5_12c",
+    "s5_20",
+    "S2_20_2",
+    "s6_19c",
+    "s7_12"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-03",
+     "namn": "Dronningens gate"
+    },
+    {
+     "til": "CHR-07",
+     "namn": "Akershus"
+    },
+    {
+     "til": "CHR-15",
+     "namn": "Vaterland og Akerselva"
+    },
+    {
+     "til": "CHR-17",
+     "namn": "Pipervika og Vika"
+    },
+    {
+     "til": "CHR-19",
+     "namn": "Isen på fjorden",
+     "merknad": "vinter"
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "dampskip"
+    }
+   ],
+   "utgangar_tekst": "CHR-03 Dronningens gate, CHR-07 Akershus, CHR-15 Vaterland og Akerselva, CHR-17 Pipervika og Vika, CHR-19 Isen på fjorden (vinter), Verdskartet (dampskip)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:36"
+  },
+  {
+   "id": "CHR-09",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Stortorvet og Kirkeristen",
+   "innhald_tekst": "Akseltorvet med ved, høy og smør, og marknadsveka i februar 1849 med lommetjuv og kortlesar (Samtale). Basarane i raud tegl er under bygging i alle epokane, og stillaset står på tårnet 1849–50. Fiskekona frå Nesodden (3.11). Regn og Knudsen under port-taket (3.25). Landstad syng isen tilbake ved Kirkeristen (4.30). Suppegryta, kassen ved kyrkjeveggen og jenta frå Vaterland (5.13b). Kassen ved kyrkjeveggen (Samle til møte, Berte). Holet under ein halvferdig boge (Tussestorleik, tussen). Ei bod i Kirkeristen er tom i 1845 og har ein bokhandlar i 1851 (forslag). Kyrkjetrappa i soloppgangen (7.13)",
+   "scener": [
+    "s3_11",
+    "s3_25",
+    "s4_30",
+    "s5_13b",
+    "s7_13"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-03",
+     "namn": "Dronningens gate"
+    },
+    {
+     "til": "CHR-04",
+     "namn": "Kirkegata"
+    },
+    {
+     "til": "CHR-09a",
+     "namn": "Vor Frelsers kyrkje"
+    },
+    {
+     "til": "CHR-10",
+     "namn": "Østre gade og Slottsveien"
+    },
+    {
+     "til": "CHR-12",
+     "namn": "Akersgata og Hammersborg"
+    },
+    {
+     "til": "CHR-14",
+     "namn": "Storgata"
+    }
+   ],
+   "utgangar_tekst": "CHR-03 Dronningens gate, CHR-04 Kirkegata, CHR-09a Vor Frelsers kyrkje, CHR-10 Østre gade og Slottsveien, CHR-12 Akersgata og Hammersborg, CHR-14 Storgata",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle, natta",
+   "soner": [
+    "9b_bakgardane_i_kvadraturen_og_rundt_stortorvet",
+    "9c_bakgardane_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:37"
+  },
+  {
+   "id": "CHR-09a",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Vor Frelsers kyrkje",
+   "innhald_tekst": "Kyrkjerommet er fristad og kvileplass. Gamal tårnhatt i 1845, nytt kyrkjerom frå hausten 1850. Landstad tek folk inn i den nesten ferdige kyrkja (4.30). Våpenhuset er inngangen til tårnet (5.13b). Prøvepreika (6.8). Lappen i salmeboka (S2.20). Eventyrboka går tilbake (7.2). Sluttnatta fyller kyrkja seg, og messa, Fristaren i messa og Draget (7.5, 7.7b, 7.9b, 7.11) høyrer til planen for Sagahallen. Sakristiet med kyrkjebøkene (Følgje heim, Landstad, forslag om ein kort blekkdungeon)",
+   "scener": [
+    "s4_30",
+    "s5_13b",
+    "s6_8",
+    "S2_20",
+    "s7_2",
+    "s7_5",
+    "s7_7b",
+    "s7_9b",
+    "s7_11"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-09",
+     "namn": "Stortorvet og Kirkeristen"
+    },
+    {
+     "til": "TVF-01",
+     "namn": "Våpenhuset"
+    }
+   ],
+   "utgangar_tekst": "CHR-09 Stortorvet og Kirkeristen, TVF-01 Våpenhuset",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1845, 1847–50 (sjekk), natta, 1851–53, nov. 1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:38"
+  },
+  {
+   "id": "CHR-10",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Østre gade, Egertorvet og Slottsveien",
+   "innhald_tekst": "Hovudgata frå Stortorvet over Egertorvet og vest mot slottet. Gasslyktene frå vinteren 1848–49, med kvitt lys i hovudgata og tranlamper i sidegatene (stad utan framdrift). Byggjeplassen for universitetet til 1851 og biblioteksbygningen etter. Urmakaren. Trappa der Knudsen sit med Moes skjerf og Asbjørnsens frakk blir liggjande (5.26). Frakken kan hentast i eit lite sideoppdrag. Welhaven ventar i trappa med lykt og nøkkel, og Berte går over plassen til kyrkja (7.3). Vaktmeisteren om natta (Blikket, Collett, forslag). Nordlyset står over biblioteket frå 1851",
+   "scener": [
+    "s5_26",
+    "s7_3"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-06",
+     "namn": "Øvre Slottsgate"
+    },
+    {
+     "til": "CHR-09",
+     "namn": "Stortorvet og Kirkeristen"
+    },
+    {
+     "til": "CHR-10a",
+     "namn": "Biblioteksbygningen"
+    },
+    {
+     "til": "CHR-11",
+     "namn": "Bellevue og slottet"
+    }
+   ],
+   "utgangar_tekst": "CHR-06 Øvre Slottsgate, CHR-09 Stortorvet og Kirkeristen, CHR-10a Biblioteksbygningen, CHR-11 Bellevue og slottet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_bakgardane_i_kvadraturen_og_rundt_stortorvet",
+    "9c_bakgardane_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:39"
+  },
+  {
+   "id": "CHR-10a",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Biblioteksbygningen ved Slottsveien",
+   "innhald_tekst": "Den lange gangen med glasmontrar og den tunge døra med seglet i messing, der Knudsen møter Samlarane (5.24). Handskriftsamlinga med pergamenthyllene og treveggen som er skoren som ein stavkyrkjeportal. Welhaven låser opp ved midnatt, og «kvar» vrir dragehovuda til sides (7.3). Dagboka varslar to gonger, og spelaren kan snu. Inngangen til Sagahallen frå 1852",
+   "scener": [
+    "s5_24",
+    "s7_3"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-10",
+     "namn": "Østre gade og Slottsveien"
+    },
+    {
+     "til": "SGH-02",
+     "namn": "Sagahallen, porthallen",
+     "merknad": "ei anna gruppe",
+     "slatt_opp": true
+    }
+   ],
+   "utgangar_tekst": "CHR-10 Østre gade og Slottsveien, Sagahallen, porthallen (ei anna gruppe)",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1851–53, nov. 1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:40"
+  },
+  {
+   "id": "CHR-11",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Bellevue og slottet",
+   "innhald_tekst": "Byggjeplass i 1845 og 1847, der slaverifangar i lenker planerer høgda. Slottet står ferdig i 1848. Utsyn over fjorden. Lytt på fangane gjev mål frå heile landet (stad utan framdrift). Fangen på Bellevue (forslag om lenkje til 6.19b). Frose i fimbulvinteren",
+   "scener": [
+    "s6_19b"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-10",
+     "namn": "Østre gade og Slottsveien"
+    },
+    {
+     "til": "CHR-17",
+     "namn": "Pipervika og Vika"
+    }
+   ],
+   "utgangar_tekst": "CHR-10 Østre gade og Slottsveien, CHR-17 Pipervika og Vika",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:41"
+  },
+  {
+   "id": "CHR-12",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Akersgata og Hammersborg",
+   "innhald_tekst": "Gata opp frå Stortorvet. Asbjørnsen står med blafrande eventyrbok, og Moe ber Aasen halde fast huldra (4.30). Siste strekninga opp mot Hammersborg, der frosten reiser seg som Isravnen over Nordmarka og huldra blir riven bort (4.30). Bakgardshuset med hybelen. Olav spelar slåtten frå Tvindefossen i bakgarden i desember 1848 (valfri). Leilegheita til Botten-Hansen og hybelen til Asbjørnsen (plassering fri)",
+   "scener": [
+    "s4_30"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-09",
+     "namn": "Stortorvet og Kirkeristen"
+    },
+    {
+     "til": "CHR-12a",
+     "namn": "Hybelen",
+     "merknad": "1"
+    },
+    {
+     "til": "CHR-12b",
+     "namn": "Botten-Hansens leilegheit"
+    },
+    {
+     "til": "CHR-12c",
+     "namn": "Asbjørnsens hybel"
+    },
+    {
+     "til": "CHR-13",
+     "namn": "Vor Frelsers gravlund"
+    },
+    {
+     "til": "CHR-18",
+     "namn": "Nordmarka"
+    }
+   ],
+   "utgangar_tekst": "CHR-09 Stortorvet og Kirkeristen, CHR-12a Hybelen (1), CHR-12b Botten-Hansens leilegheit, CHR-12c Asbjørnsens hybel, CHR-13 Vor Frelsers gravlund, CHR-18 Nordmarka",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle, natta",
+   "soner": [
+    "9b_bakgardane_i_kvadraturen_og_rundt_stortorvet",
+    "9c_bakgardane_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:42"
+  },
+  {
+   "id": "CHR-12a",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Hybelen (1)",
+   "innhald_tekst": "Rom under taket med skrått tak, seng, bord, stol, kistene, bokhylla og lampa med den grøne skjermen. Heimebase og kvileplass. Framkomsten og brevet med raudt lakk (3.25), innflyttinga og Munch med lampa (4.1), Den trykte huldra (4.9), julenatta (4.10), brevet frå Bergen (4.11), den siste lappen (4.23), seglet (4.25), lampa (4.31), Gyllenstierna (S2.14.1) og boka som ikkje ville leverast (S2.16.1). VK08 under senga. I fimbulvinteren er det den gamle hybelen, med is på innsida av glaset, og lampa kan hentast (5.19). Lesestykke: Ordbog over det norske Folkesprog frå juli 1850. Brevet i skuffa (forslag)",
+   "scener": [
+    "s3_25",
+    "s4_1",
+    "s4_9",
+    "s4_10",
+    "s4_11",
+    "s4_23",
+    "s4_25",
+    "s4_31",
+    "S2_14_1",
+    "S2_16_1",
+    "s5_19"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-12",
+     "namn": "Akersgata og Hammersborg"
+    }
+   ],
+   "utgangar_tekst": "CHR-12 Akersgata og Hammersborg",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1847–50, natta, 1851–53, nov. 1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:43"
+  },
+  {
+   "id": "CHR-12b",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Botten-Hansens leilegheit",
+   "innhald_tekst": "Bøker frå golv til tak. Kretsen og den kalde boka med fuglemerket (4.22). Andhrimner og punsjen (5.6) og grammatikken med Munchs segl (5.7). Inngangen til dungeonen Hyllene hos Botten-Hansen (5.8, 5.9). I november 1853 har frosten lagt seg over ryggane, og Bokstavravnane dreg Botten-Hansen inn i hyllene (6.22). Lesestykke: Andhrimner med Ibsens «Norma». Antikvariatet frå november 1853",
+   "scener": [
+    "s4_22",
+    "s5_6",
+    "s5_7",
+    "s5_8",
+    "s5_9",
+    "s6_22"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-12",
+     "namn": "Akersgata og Hammersborg"
+    },
+    {
+     "til": "BHH-01",
+     "namn": "Trappa"
+    }
+   ],
+   "utgangar_tekst": "CHR-12 Akersgata og Hammersborg, BHH-01 Trappa",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1847–50, 1851–53, nov. 1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:44"
+  },
+  {
+   "id": "CHR-12c",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Asbjørnsens hybel",
+   "innhald_tekst": "Utstoppa fuglar, steinprøver og glas med insekt. Eventyrboka med messingbeslag, og Grimm-boka under tiuren (6.9). Lesestykke: Norske Folkeeventyr, andre utgåva 1852",
+   "scener": [
+    "s6_9"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-12",
+     "namn": "Akersgata og Hammersborg"
+    }
+   ],
+   "utgangar_tekst": "CHR-12 Akersgata og Hammersborg",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1851–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:45"
+  },
+  {
+   "id": "CHR-13",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Vor Frelsers gravlund",
+   "innhald_tekst": "Grava til Wergeland, ny og full av kransar, og kvinna i svart som plantar (3.9). Studentane med lykter fangar orda hans i glas om natta (S1.34). Fanen (5.13). Heftet og Gyldenlak om morgonen (S2.4.2). Planta ved grava (forslag om lenkje frå val B i 3.9). Lesestykke: «Til min Gyldenlak». Den norske dramatiske Skoles Theater i Møllergata 1 opnar i 1852 like ved",
+   "scener": [
+    "s3_9",
+    "S1_34",
+    "s5_13",
+    "S2_4_2"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-12",
+     "namn": "Akersgata og Hammersborg"
+    }
+   ],
+   "utgangar_tekst": "CHR-12 Akersgata og Hammersborg",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:46"
+  },
+  {
+   "id": "CHR-14",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Storgata",
+   "innhald_tekst": "Gata frå Stortorvet mot Vaterland. Tukthuset. Bakgarden med hybelen i Storgata 6 frå 1. oktober 1851. Knudsen haltar gjennom tomme gater og seier eitt ord ved kvar gatelykt (5.27)",
+   "scener": [
+    "s5_27"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-09",
+     "namn": "Stortorvet og Kirkeristen"
+    },
+    {
+     "til": "CHR-14a",
+     "namn": "Hybelen",
+     "merknad": "2"
+    },
+    {
+     "til": "CHR-14b",
+     "namn": "Tukthuset"
+    },
+    {
+     "til": "CHR-15",
+     "namn": "Vaterland og Akerselva"
+    }
+   ],
+   "utgangar_tekst": "CHR-09 Stortorvet og Kirkeristen, CHR-14a Hybelen (2), CHR-14b Tukthuset, CHR-15 Vaterland og Akerselva",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_bakgardane_i_kvadraturen_og_rundt_stortorvet",
+    "9c_bakgardane_1853",
+    "9b_vaterland_og_gronland_kjellarane_og_bakgardane",
+    "9c_kjellarane_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:47"
+  },
+  {
+   "id": "CHR-14a",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Hybelen (2), Storgata 6",
+   "innhald_tekst": "Rom under taket med seng, bord og vindauge mot bakgarden. Innreiinga og hårlokken i skuffa (5.19), Knudsen på dørstokken (5.27), joiken (6.17) og brevet frå Ole Bull (6.19c). Heimebase, kvileplass, post og partybyte. Leirsamtale 8",
+   "scener": [
+    "s5_19",
+    "s5_27",
+    "s6_17",
+    "s6_19c"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-14",
+     "namn": "Storgata"
+    }
+   ],
+   "utgangar_tekst": "CHR-14 Storgata",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1851–53, nov. 1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:48"
+  },
+  {
+   "id": "CHR-14b",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Tukthuset",
+   "innhald_tekst": "Vaktmeisteren og Arrestprotokollen. Cella med Thrane, omnen utan ved og Bertes besøk (S2.12b). Kjellarane under arresten har møtesone",
+   "scener": [
+    "S2_12b"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-14",
+     "namn": "Storgata"
+    }
+   ],
+   "utgangar_tekst": "CHR-14 Storgata",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1851–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:49"
+  },
+  {
+   "id": "CHR-15",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Vaterland og Akerselva",
+   "innhald_tekst": "Vaterlands bru over Akerselva, tett handverkarstrok, sagbruk og verkstader langs elva. Guten som ropar «Je ska hjem te mor!» (3.11). Bakgarden med Anton og mora (S2.5.2). Arbeidsfolk frå bygdene (5.5). Skomakar og skreddar (forslag frå 02_christiania). Heilaren med to tjuvar står synleg. Lokk (huldra): purka og fressen fylgjer og viser vegen til ein bakgard. Fortelje (Moe): ein nøkk i elva roar seg og opnar vegen under brua. I grålysinga går ein nøkk opp elva mot straumen (7.12)",
+   "scener": [
+    "s3_11",
+    "S2_5_2",
+    "s5_5",
+    "s7_12"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-08",
+     "namn": "Hamna"
+    },
+    {
+     "til": "CHR-14",
+     "namn": "Storgata"
+    },
+    {
+     "til": "CHR-15a",
+     "namn": "Gjestgiveriet i Vaterland"
+    },
+    {
+     "til": "CHR-15b",
+     "namn": "Lokalet til arbeidarforeininga"
+    },
+    {
+     "til": "CHR-15c",
+     "namn": "Pogeskulen"
+    },
+    {
+     "til": "CHR-15d",
+     "namn": "Trykkeriet ved Akerselva"
+    },
+    {
+     "til": "CHR-15e",
+     "namn": "Stova i Vaterland"
+    },
+    {
+     "til": "CHR-16",
+     "namn": "Grønland"
+    },
+    {
+     "til": "CHR-18",
+     "namn": "Nordmarka"
+    }
+   ],
+   "utgangar_tekst": "CHR-08 Hamna, CHR-14 Storgata, CHR-15a Gjestgiveriet i Vaterland, CHR-15b Lokalet til arbeidarforeininga, CHR-15c Pogeskulen, CHR-15d Trykkeriet ved Akerselva, CHR-15e Stova i Vaterland, CHR-16 Grønland, CHR-18 Nordmarka",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_vaterland_og_gronland_kjellarane_og_bakgardane",
+    "9c_kjellarane_1853",
+    "9b_nordmarka_krokskogen_akerselva_og_ekeberg",
+    "9c_byutkantane_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:50"
+  },
+  {
+   "id": "CHR-15a",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Gjestgiveriet i Vaterland",
+   "innhald_tekst": "Skysskarar som kviler og posten som ventar (4.1). Morgenbladet på bordet. Rommet til Aasen i februar 1851, der Vinje fortel om Huldrebrylluppet og partyet vel inngang (5.8). Kristiansen bankar på (S2.19.1, sjå Opne spørsmål). Vertshuset med arbeidsfolk frå Hedemarken og Gudbrandsdalen i november 1853. Leirsamtale 2",
+   "scener": [
+    "s4_1",
+    "s5_8",
+    "S2_19_1"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-15",
+     "namn": "Vaterland og Akerselva"
+    }
+   ],
+   "utgangar_tekst": "CHR-15 Vaterland og Akerselva",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1847–50, 1851–53, nov. 1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:51"
+  },
+  {
+   "id": "CHR-15b",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Lokalet til arbeidarforeininga",
+   "innhald_tekst": "Benkar og kassen Thrane står på. Protokollen sniker seg mot døra (4.16). Avisa, pakken med ravnen og arrestasjonen 7. juli 1851 (5.14). Lesestykke: Arbeider-Foreningernes Blad. Kvileplass hos arbeidarane etter val C i 5.14 (plassering fri)",
+   "scener": [
+    "s4_16",
+    "s5_14"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-15",
+     "namn": "Vaterland og Akerselva"
+    }
+   ],
+   "utgangar_tekst": "CHR-15 Vaterland og Akerselva",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1847–50, 1851–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:52"
+  },
+  {
+   "id": "CHR-15c",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Pogeskulen",
+   "innhald_tekst": "Gutar med stilebøker, guten som græt over «Gaden», og Stilebokblekket (3.11)",
+   "scener": [
+    "s3_11"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-15",
+     "namn": "Vaterland og Akerselva"
+    }
+   ],
+   "utgangar_tekst": "CHR-15 Vaterland og Akerselva",
+   "epokar": [
+    "reiseaara"
+   ],
+   "epokar_tekst": "1845",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:53"
+  },
+  {
+   "id": "CHR-15d",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Trykkeriet ved Akerselva",
+   "innhald_tekst": "Studentar set sats. Snikedel og Blekk-Henrik (S2.4.1)",
+   "scener": [
+    "S2_4_1"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-15",
+     "namn": "Vaterland og Akerselva"
+    }
+   ],
+   "utgangar_tekst": "CHR-15 Vaterland og Akerselva",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1851–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:54"
+  },
+  {
+   "id": "CHR-15e",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Stova i Vaterland",
+   "innhald_tekst": "Heimen til jenta som gav Berte skautet. Berte held møte her resten av akten etter val B i 5.13b. Kvileplass",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-15",
+     "namn": "Vaterland og Akerselva"
+    }
+   ],
+   "utgangar_tekst": "CHR-15 Vaterland og Akerselva",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1851–53",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:55"
+  },
+  {
+   "id": "CHR-16",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Grønland",
+   "innhald_tekst": "Den fattige forstaden. Bønder kjem inn med varer på sleden (5.5). Trappa der huldra finn Lars, og samtalen etter auksjonen (S2.17, S2.17.2). Botsfengselet frå 1851. Ekebergskråninga i aust",
+   "scener": [
+    "s5_5",
+    "S2_17",
+    "S2_17_2"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-15",
+     "namn": "Vaterland og Akerselva"
+    },
+    {
+     "til": "CHR-16a",
+     "namn": "Gjestgiveriet på Grønland"
+    },
+    {
+     "til": "CHR-16b",
+     "namn": "Kammerset"
+    },
+    {
+     "til": "CHR-16c",
+     "namn": "Lokalet til Fattigkommisjonen"
+    },
+    {
+     "til": "CHR-16d",
+     "namn": "Botsfengselet"
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Trondhjemsvegen, med bokmerka Villmark V11, Nordre Øyeren, og Villmark V12, Finnskogen, i 1849"
+    }
+   ],
+   "utgangar_tekst": "CHR-15 Vaterland og Akerselva, CHR-16a Gjestgiveriet på Grønland, CHR-16b Kammerset, CHR-16c Lokalet til Fattigkommisjonen, CHR-16d Botsfengselet, Verdskartet (Trondhjemsvegen, med bokmerka Villmark V11, Nordre Øyeren, og Villmark V12, Finnskogen, i 1849)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_vaterland_og_gronland_kjellarane_og_bakgardane",
+    "9c_kjellarane_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:56"
+  },
+  {
+   "id": "CHR-16a",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Gjestgiveriet på Grønland",
+   "innhald_tekst": "Bønder frå Romerike tek inn med lassa sine (3.9). Kvileplass i juli 1845",
+   "scener": [
+    "s3_9"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-16",
+     "namn": "Grønland"
+    }
+   ],
+   "utgangar_tekst": "CHR-16 Grønland",
+   "epokar": [
+    "reiseaara"
+   ],
+   "epokar_tekst": "1845",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:57"
+  },
+  {
+   "id": "CHR-16b",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Kammerset på Grønland",
+   "innhald_tekst": "Grå kappe på spikaren og ei salmebok med dansk tekst. Eirik Rukke (S2.40.1), Trommeslagaren (S2.40.2) og brevet til Fyn (S2.40.3)",
+   "scener": [
+    "S2_40_1",
+    "S2_40_2",
+    "S2_40_3"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-16",
+     "namn": "Grønland"
+    }
+   ],
+   "utgangar_tekst": "CHR-16 Grønland",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "1847–50",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:58"
+  },
+  {
+   "id": "CHR-16c",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Lokalet til Fattigkommisjonen",
+   "innhald_tekst": "Auksjonen over lem nr. 214 (S2.17.1)",
+   "scener": [
+    "S2_17_1"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-16",
+     "namn": "Grønland"
+    }
+   ],
+   "utgangar_tekst": "CHR-16 Grønland",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "1847–50",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:59"
+  },
+  {
+   "id": "CHR-16d",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Botsfengselet",
+   "innhald_tekst": "Aasen lyttar til fangar frå mange bygder gjennom luka i celledøra (stad utan framdrift, november 1853)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-16",
+     "namn": "Grønland"
+    }
+   ],
+   "utgangar_tekst": "CHR-16 Grønland",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1851–53, nov. 1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:60"
+  },
+  {
+   "id": "CHR-17",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Pipervika og Vika",
+   "innhald_tekst": "Einetasjes småhus frå 1700-talet og nyare hus med mur nede og tre oppe. Fiskarar og båtfolk frå heile fjorden (3.9). Høkarbuene. Pipervikbrygga, der briggen «Hebe» går til Amerika (S2.15.2). Bakgarden med kjellartrappa til sundagsskulen (S2.13). Heltbergs skule på Øvre Hjortnes (sjekk plassering). Is i vika i fimbulvinteren",
+   "scener": [
+    "s3_9",
+    "S2_15_2",
+    "S2_13"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-08",
+     "namn": "Hamna"
+    },
+    {
+     "til": "CHR-11",
+     "namn": "Bellevue og slottet"
+    },
+    {
+     "til": "CHR-17a",
+     "namn": "Heltbergs latinskule"
+    },
+    {
+     "til": "CHR-17b",
+     "namn": "Vertshuset ved Pipervikbrygga"
+    },
+    {
+     "til": "PIP-01",
+     "namn": "Kjellartrappa"
+    },
+    {
+     "til": "CHR-19",
+     "namn": "Isen på fjorden",
+     "merknad": "vinter"
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Drammensvegen og Krokskogen"
+    }
+   ],
+   "utgangar_tekst": "CHR-08 Hamna, CHR-11 Bellevue og slottet, CHR-17a Heltbergs latinskule, CHR-17b Vertshuset ved Pipervikbrygga, PIP-01 Kjellartrappa, CHR-19 Isen på fjorden (vinter), Verdskartet (Drammensvegen og Krokskogen)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_vika_og_pipervika",
+    "9c_bakgardane_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:61"
+  },
+  {
+   "id": "CHR-17a",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Heltbergs latinskule",
+   "innhald_tekst": "Eit trongt klasserom med vaksne menn og unge gutar. Latinprøva, Ibsen og Bjørnson (4.21)",
+   "scener": [
+    "s4_21"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-17",
+     "namn": "Pipervika og Vika"
+    }
+   ],
+   "utgangar_tekst": "CHR-17 Pipervika og Vika",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "1847–50",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:62"
+  },
+  {
+   "id": "CHR-17b",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Vertshuset ved Pipervikbrygga",
+   "innhald_tekst": "Hallingar som ventar på briggen. Ordjakta etter ti ord til Kari (S2.15.1)",
+   "scener": [
+    "S2_15_1"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-17",
+     "namn": "Pipervika og Vika"
+    }
+   ],
+   "utgangar_tekst": "CHR-17 Pipervika og Vika",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren"
+   ],
+   "epokar_tekst": "1847–50",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:63"
+  },
+  {
+   "id": "CHR-18",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Nordmarka",
+   "innhald_tekst": "Skogen og Maridalen nord for byen. Ulveflokken og Gråbein vinteren 1848 står synlege. Ei segn som kan skrivast ned (Notere, Asbjørnsen, forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-12",
+     "namn": "Akersgata og Hammersborg"
+    },
+    {
+     "til": "CHR-15",
+     "namn": "Vaterland og Akerselva"
+    }
+   ],
+   "utgangar_tekst": "CHR-12 Akersgata og Hammersborg, CHR-15 Vaterland og Akerselva",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_nordmarka_krokskogen_akerselva_og_ekeberg",
+    "9c_byutkantane_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:64"
+  },
+  {
+   "id": "CHR-19",
+   "stad": "CHR",
+   "omraade": "Christiania",
+   "namn": "Isen på fjorden",
+   "innhald_tekst": "Frosen fjord frå Bjørvika og Pipervika ut mot Drøbak. Sledevegen til dampskipet ved iskanten (Spor G, S2.18, reisa i mars 1852). Skipet til Rosenschöld ligg innefrose (S2.20)",
+   "scener": [
+    "S2_18",
+    "S2_20"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-08",
+     "namn": "Hamna"
+    },
+    {
+     "til": "CHR-17",
+     "namn": "Pipervika og Vika"
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "sledevegen til Drøbak"
+    }
+   ],
+   "utgangar_tekst": "CHR-08 Hamna, CHR-17 Pipervika og Vika, Verdskartet (sledevegen til Drøbak)",
+   "epokar": [
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "Midtvinters 1848–50, 1851–53, nov. 1853",
+   "soner": [
+    "9c_byutkantane_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:65"
+  }
+ ],
+ "rom": [
+  {
+   "id": "AKK-01",
+   "stad": "AKK",
+   "omraade": "Arkivkjellaren på Akershus (S1.33)",
+   "dungeon": "Arkivkjellaren på Akershus (S1.33)",
+   "lag": "Kvelvane",
+   "namn": "Trappa ned frå Riksarkivet",
+   "innhald_tekst": "Inngang. Knudsen blir med som gjest",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-07",
+     "namn": "Akershus"
+    },
+    {
+     "til": "AKK-02",
+     "namn": "Reolkvelven"
+    }
+   ],
+   "utgangar_tekst": "CHR-07 Akershus, AKK-02 Reolkvelven",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_arkivkjellaren_paa_akershus_s1.33"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:142"
+  },
+  {
+   "id": "AKK-02",
+   "stad": "AKK",
+   "omraade": "Arkivkjellaren på Akershus (S1.33)",
+   "dungeon": "Arkivkjellaren på Akershus (S1.33)",
+   "lag": "Kvelvane",
+   "namn": "Reolkvelven",
+   "innhald_tekst": "Protokollreolar frå 1700-talet. Kopisten i arkivkjellaren og Paragrafen i tingstova",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "AKK-01",
+     "namn": "Trappa"
+    },
+    {
+     "til": "AKK-03",
+     "namn": "Kvelven med 1760-åra"
+    }
+   ],
+   "utgangar_tekst": "AKK-01 Trappa, AKK-03 Kvelven med 1760-åra",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_arkivkjellaren_paa_akershus_s1.33"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:143"
+  },
+  {
+   "id": "AKK-03",
+   "stad": "AKK",
+   "omraade": "Arkivkjellaren på Akershus (S1.33)",
+   "dungeon": "Arkivkjellaren på Akershus (S1.33)",
+   "lag": "Kvelvane",
+   "namn": "Kvelven med 1760-åra",
+   "innhald_tekst": "Protokollen med klaga frå Sunnmøre. «Supplicanterne» høyrest gjennom muren. Første del av gåta: finn sidene der skrivaren har notert i margen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "AKK-02",
+     "namn": "Reolkvelven"
+    },
+    {
+     "til": "AKK-04",
+     "namn": "Sidekvelven"
+    }
+   ],
+   "utgangar_tekst": "AKK-02 Reolkvelven, AKK-04 Sidekvelven",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": true,
+   "soner": [
+    "9b_arkivkjellaren_paa_akershus_s1.33"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:144"
+  },
+  {
+   "id": "AKK-04",
+   "stad": "AKK",
+   "omraade": "Arkivkjellaren på Akershus (S1.33)",
+   "dungeon": "Arkivkjellaren på Akershus (S1.33)",
+   "lag": "Kvelvane",
+   "namn": "Sidekvelven",
+   "innhald_tekst": "Andre del av gåta: orda til bøndene i blyant, «Vi hev ikkje meir korn»",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "AKK-03",
+     "namn": "Kvelven med 1760-åra"
+    },
+    {
+     "til": "AKK-05",
+     "namn": "Vasstønna"
+    }
+   ],
+   "utgangar_tekst": "AKK-03 Kvelven med 1760-åra, AKK-05 Vasstønna",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": true,
+   "soner": [
+    "9b_arkivkjellaren_paa_akershus_s1.33"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:145"
+  },
+  {
+   "id": "AKK-05",
+   "stad": "AKK",
+   "omraade": "Arkivkjellaren på Akershus (S1.33)",
+   "dungeon": "Arkivkjellaren på Akershus (S1.33)",
+   "lag": "Kvelvane",
+   "namn": "Vasstønna ved muren",
+   "innhald_tekst": "Kvilestad. Aasen rissar kvileruna i tønna",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "AKK-04",
+     "namn": "Sidekvelven"
+    },
+    {
+     "til": "AKK-06",
+     "namn": "Det inste kvelvet"
+    }
+   ],
+   "utgangar_tekst": "AKK-04 Sidekvelven, AKK-06 Det inste kvelvet",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_arkivkjellaren_paa_akershus_s1.33"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:146"
+  },
+  {
+   "id": "AKK-06",
+   "stad": "AKK",
+   "omraade": "Arkivkjellaren på Akershus (S1.33)",
+   "dungeon": "Arkivkjellaren på Akershus (S1.33)",
+   "lag": "Kvelvane",
+   "namn": "Det inste kvelvet",
+   "innhald_tekst": "Bossrom: Supplicanterne. Rett og slett blir lært. Snarveg: trappa opp",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "AKK-05",
+     "namn": "Vasstønna"
+    },
+    {
+     "til": "AKK-01",
+     "namn": "Trappa",
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "AKK-05 Vasstønna, AKK-01 Trappa (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9b_arkivkjellaren_paa_akershus_s1.33"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:147"
+  },
+  {
+   "id": "TRY-01",
+   "stad": "TRY",
+   "omraade": "Trykkeriet (4.12)",
+   "dungeon": "Trykkeriet (4.12)",
+   "lag": "Settarsalen",
+   "namn": "Kontoret",
+   "innhald_tekst": "Inngang. Vinje les korrekturarket med tittelen på dansk, og Landstad kjem med skyssen (4.12)",
+   "scener": [
+    "s4_12"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-04b",
+     "namn": "Boktrykkeriet"
+    },
+    {
+     "til": "TRY-02",
+     "namn": "Settarsalen"
+    }
+   ],
+   "utgangar_tekst": "CHR-04b Boktrykkeriet, TRY-02 Settarsalen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_trykkeriet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:162"
+  },
+  {
+   "id": "TRY-02",
+   "stad": "TRY",
+   "omraade": "Trykkeriet (4.12)",
+   "dungeon": "Trykkeriet (4.12)",
+   "lag": "Settarsalen",
+   "namn": "Settarsalen",
+   "innhald_tekst": "Settekassane fulle av blekkvesen som byter landsmålsformer med danske. Settarlærlingen ropar, og «heim» står som «Hjem». Lemmen frå loftet endar her",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRY-01",
+     "namn": "Kontoret"
+    },
+    {
+     "til": "TRY-03",
+     "namn": "Første pressa"
+    }
+   ],
+   "utgangar_tekst": "TRY-01 Kontoret, TRY-03 Første pressa",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_trykkeriet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:163"
+  },
+  {
+   "id": "TRY-03",
+   "stad": "TRY",
+   "omraade": "Trykkeriet (4.12)",
+   "dungeon": "Trykkeriet (4.12)",
+   "lag": "Pressrommet",
+   "namn": "Første pressa",
+   "innhald_tekst": "Pressa dunkar, og eit ark tørkar på tid. Spelaren rettar ordet med kv-ord før arket er tørt",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRY-02",
+     "namn": "Settarsalen"
+    },
+    {
+     "til": "TRY-04",
+     "namn": "Andre og tredje pressa"
+    }
+   ],
+   "utgangar_tekst": "TRY-02 Settarsalen, TRY-04 Andre og tredje pressa",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_trykkeriet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:164"
+  },
+  {
+   "id": "TRY-04",
+   "stad": "TRY",
+   "omraade": "Trykkeriet (4.12)",
+   "dungeon": "Trykkeriet (4.12)",
+   "lag": "Pressrommet",
+   "namn": "Andre og tredje pressa",
+   "innhald_tekst": "To klokker som går i ulik takt. Spelaren går mellom pressene med kv-ord",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRY-03",
+     "namn": "Første pressa"
+    },
+    {
+     "til": "TRY-05",
+     "namn": "Papirlageret"
+    }
+   ],
+   "utgangar_tekst": "TRY-03 Første pressa, TRY-05 Papirlageret",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_trykkeriet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:165"
+  },
+  {
+   "id": "TRY-05",
+   "stad": "TRY",
+   "omraade": "Trykkeriet (4.12)",
+   "dungeon": "Trykkeriet (4.12)",
+   "lag": "Pressrommet",
+   "namn": "Papirlageret",
+   "innhald_tekst": "Papirballar og blekktønner. Trykkerirotta et papir (forslag om rom)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRY-04",
+     "namn": "Andre og tredje pressa"
+    },
+    {
+     "til": "TRY-06",
+     "namn": "Vaskekroken"
+    }
+   ],
+   "utgangar_tekst": "TRY-04 Andre og tredje pressa, TRY-06 Vaskekroken",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_trykkeriet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:166"
+  },
+  {
+   "id": "TRY-06",
+   "stad": "TRY",
+   "omraade": "Trykkeriet (4.12)",
+   "dungeon": "Trykkeriet (4.12)",
+   "lag": "Pressrommet",
+   "namn": "Vaskekroken",
+   "innhald_tekst": "Kvilestad: vasskaret der settarane vaskar typane, med kvileruna i kanten. Trappa opp",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRY-05",
+     "namn": "Papirlageret"
+    },
+    {
+     "til": "TRY-07",
+     "namn": "Snorene"
+    }
+   ],
+   "utgangar_tekst": "TRY-05 Papirlageret, TRY-07 Snorene",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_trykkeriet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:167"
+  },
+  {
+   "id": "TRY-07",
+   "stad": "TRY",
+   "omraade": "Trykkeriet (4.12)",
+   "dungeon": "Trykkeriet (4.12)",
+   "lag": "Tørkeloftet",
+   "namn": "Snorene",
+   "innhald_tekst": "Arka heng på snorer. Siste rettingane før arka er tørre",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRY-06",
+     "namn": "Vaskekroken"
+    },
+    {
+     "til": "TRY-08",
+     "namn": "Inst på loftet"
+    }
+   ],
+   "utgangar_tekst": "TRY-06 Vaskekroken, TRY-08 Inst på loftet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_trykkeriet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:168"
+  },
+  {
+   "id": "TRY-08",
+   "stad": "TRY",
+   "omraade": "Trykkeriet (4.12)",
+   "dungeon": "Trykkeriet (4.12)",
+   "lag": "Tørkeloftet",
+   "namn": "Inst på loftet",
+   "innhald_tekst": "Bossrom: Settardjevelen i to fasar. Landstad syng typane mjuke. Den første boka ligg på bordet etterpå. Snarveg: lemmen ned i settarsalen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TRY-07",
+     "namn": "Snorene"
+    },
+    {
+     "til": "TRY-02",
+     "namn": "Settarsalen",
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "TRY-07 Snorene, TRY-02 Settarsalen (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9b_trykkeriet"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:169"
+  },
+  {
+   "id": "PRV-01",
+   "stad": "PRV",
+   "omraade": "Kjellaren under proviantbygningen (S2.14)",
+   "dungeon": "Kjellaren under proviantbygningen (S2.14)",
+   "lag": "Festninga",
+   "namn": "Porten i festningsmuren",
+   "innhald_tekst": "Inngang. Svenske vakter med lykter. Snik i skuggen av muren",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-07",
+     "namn": "Akershus"
+    },
+    {
+     "til": "PRV-02",
+     "namn": "Gardsrommet"
+    }
+   ],
+   "utgangar_tekst": "CHR-07 Akershus, PRV-02 Gardsrommet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:185"
+  },
+  {
+   "id": "PRV-02",
+   "stad": "PRV",
+   "omraade": "Kjellaren under proviantbygningen (S2.14)",
+   "dungeon": "Kjellaren under proviantbygningen (S2.14)",
+   "lag": "Festninga",
+   "namn": "Gardsrommet ved proviantbygningen",
+   "innhald_tekst": "Vaktpostar går faste ruter. Kved att (Aslaug, forslag) gjer at visene blir hugsa utan papir",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "PRV-01",
+     "namn": "Porten"
+    },
+    {
+     "til": "PRV-03",
+     "namn": "Tønnelageret"
+    }
+   ],
+   "utgangar_tekst": "PRV-01 Porten, PRV-03 Tønnelageret",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:186"
+  },
+  {
+   "id": "PRV-03",
+   "stad": "PRV",
+   "omraade": "Kjellaren under proviantbygningen (S2.14)",
+   "dungeon": "Kjellaren under proviantbygningen (S2.14)",
+   "lag": "Kjellaren",
+   "namn": "Tønnelageret",
+   "innhald_tekst": "Gøymestader mellom tønnene. Éin vaktpost går inn og ut",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "PRV-02",
+     "namn": "Gardsrommet"
+    },
+    {
+     "til": "PRV-04",
+     "namn": "Trappa ned"
+    }
+   ],
+   "utgangar_tekst": "PRV-02 Gardsrommet, PRV-04 Trappa ned",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:187"
+  },
+  {
+   "id": "PRV-04",
+   "stad": "PRV",
+   "omraade": "Kjellaren under proviantbygningen (S2.14)",
+   "dungeon": "Kjellaren under proviantbygningen (S2.14)",
+   "lag": "Kjellaren",
+   "namn": "Trappa ned",
+   "innhald_tekst": "Songen høyrest nedanfrå. Vakta over trappa snur seg når lyden blir for sterk",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "PRV-03",
+     "namn": "Tønnelageret"
+    },
+    {
+     "til": "PRV-05",
+     "namn": "Visekjellaren"
+    }
+   ],
+   "utgangar_tekst": "PRV-03 Tønnelageret, PRV-05 Visekjellaren",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:188"
+  },
+  {
+   "id": "PRV-05",
+   "stad": "PRV",
+   "omraade": "Kjellaren under proviantbygningen (S2.14)",
+   "dungeon": "Kjellaren under proviantbygningen (S2.14)",
+   "lag": "Kjellaren",
+   "namn": "Visekjellaren",
+   "innhald_tekst": "Tolv menneske rundt eit talglys og vaskekona frå Hedmarken. Rytmeminispelet (S2.14.2). Samtalen med vaskekona i 1852 (S2.20.1)",
+   "scener": [
+    "S2_14_2",
+    "S2_20_1"
+   ],
+   "utgangar": [
+    {
+     "til": "PRV-04",
+     "namn": "Trappa ned"
+    }
+   ],
+   "utgangar_tekst": "PRV-04 Trappa ned",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:189"
+  },
+  {
+   "id": "MAG-01",
+   "stad": "MAG",
+   "omraade": "Magasinet i biblioteket (S2.16)",
+   "dungeon": "Magasinet i biblioteket (S2.16)",
+   "lag": "Skranken",
+   "namn": "Utlånsskranken",
+   "innhald_tekst": "Inngang. Bibliotekaren og Knudsen med sitt eige eksemplar (S2.16.2)",
+   "scener": [
+    "S2_16_2"
+   ],
+   "utgangar": [
+    {
+     "til": "CHR-01a",
+     "namn": "Rådmannsgården"
+    },
+    {
+     "til": "MAG-02",
+     "namn": "Første hylla"
+    }
+   ],
+   "utgangar_tekst": "CHR-01a Rådmannsgården, MAG-02 Første hylla",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_magasinet_i_biblioteket_s2.16"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:204"
+  },
+  {
+   "id": "MAG-02",
+   "stad": "MAG",
+   "omraade": "Magasinet i biblioteket (S2.16)",
+   "dungeon": "Magasinet i biblioteket (S2.16)",
+   "lag": "Magasinet",
+   "namn": "Første hylla",
+   "innhald_tekst": "Rettskrivingsgåte. Ravnen i magasinet",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "MAG-01",
+     "namn": "Utlånsskranken"
+    },
+    {
+     "til": "MAG-03",
+     "namn": "Andre hylla"
+    }
+   ],
+   "utgangar_tekst": "MAG-01 Utlånsskranken, MAG-03 Andre hylla",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_magasinet_i_biblioteket_s2.16"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:205"
+  },
+  {
+   "id": "MAG-03",
+   "stad": "MAG",
+   "omraade": "Magasinet i biblioteket (S2.16)",
+   "dungeon": "Magasinet i biblioteket (S2.16)",
+   "lag": "Magasinet",
+   "namn": "Andre hylla",
+   "innhald_tekst": "Rettskrivingsgåte. Den bundne haugkona",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "MAG-02",
+     "namn": "Første hylla"
+    },
+    {
+     "til": "MAG-04",
+     "namn": "Kartbøkene"
+    }
+   ],
+   "utgangar_tekst": "MAG-02 Første hylla, MAG-04 Kartbøkene",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_magasinet_i_biblioteket_s2.16"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:206"
+  },
+  {
+   "id": "MAG-04",
+   "stad": "MAG",
+   "omraade": "Magasinet i biblioteket (S2.16)",
+   "dungeon": "Magasinet i biblioteket (S2.16)",
+   "lag": "Magasinet",
+   "namn": "Kartbøkene",
+   "innhald_tekst": "Rettskrivingsgåte. Deildegasten i kartboka med dei to blekkdropane",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "MAG-03",
+     "namn": "Andre hylla"
+    },
+    {
+     "til": "MAG-05",
+     "namn": "Kontoret"
+    }
+   ],
+   "utgangar_tekst": "MAG-03 Andre hylla, MAG-05 Kontoret",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_magasinet_i_biblioteket_s2.16"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:207"
+  },
+  {
+   "id": "MAG-05",
+   "stad": "MAG",
+   "omraade": "Magasinet i biblioteket (S2.16)",
+   "dungeon": "Magasinet i biblioteket (S2.16)",
+   "lag": "Kontoret",
+   "namn": "Kontoret til bibliotekaren",
+   "innhald_tekst": "Kvilestad: vaskeservanten (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "MAG-04",
+     "namn": "Kartbøkene"
+    },
+    {
+     "til": "MAG-06",
+     "namn": "Protokollkammeret"
+    }
+   ],
+   "utgangar_tekst": "MAG-04 Kartbøkene, MAG-06 Protokollkammeret",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_magasinet_i_biblioteket_s2.16"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:208"
+  },
+  {
+   "id": "MAG-06",
+   "stad": "MAG",
+   "omraade": "Magasinet i biblioteket (S2.16)",
+   "dungeon": "Magasinet i biblioteket (S2.16)",
+   "lag": "Kontoret",
+   "namn": "Protokollkammeret",
+   "innhald_tekst": "Bossrom: Utlånsprotokollen med forseinkingsgebyr. Knudsen rettar protokollen tilbake. Snarveg: døra til skranken",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "MAG-05",
+     "namn": "Kontoret"
+    },
+    {
+     "til": "MAG-01",
+     "namn": "Utlånsskranken",
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "MAG-05 Kontoret, MAG-01 Utlånsskranken (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9b_magasinet_i_biblioteket_s2.16"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:209"
+  },
+  {
+   "id": "MAL-01",
+   "stad": "MAL",
+   "omraade": "Inne i måleriet (4.14)",
+   "dungeon": "Inne i måleriet (4.14)",
+   "lag": "Fjorden",
+   "namn": "Ramma",
+   "innhald_tekst": "Inngang frå scenekanten. Songen og salen blir borte",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-05a",
+     "namn": "Christiania Theater"
+    },
+    {
+     "til": "MAL-02",
+     "namn": "Den blanke fjorden"
+    }
+   ],
+   "utgangar_tekst": "CHR-05a Christiania Theater, MAL-02 Den blanke fjorden",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:224"
+  },
+  {
+   "id": "MAL-02",
+   "stad": "MAL",
+   "omraade": "Inne i måleriet (4.14)",
+   "dungeon": "Inne i måleriet (4.14)",
+   "lag": "Fjorden",
+   "namn": "Den blanke fjorden",
+   "innhald_tekst": "Brudefølgjet i båtane. Guten som smiler og ikkje svarar (4.14)",
+   "scener": [
+    "s4_14"
+   ],
+   "utgangar": [
+    {
+     "til": "MAL-01",
+     "namn": "Ramma"
+    },
+    {
+     "til": "MAL-03",
+     "namn": "Baugen"
+    },
+    {
+     "til": "MAL-04",
+     "namn": "Stranda"
+    }
+   ],
+   "utgangar_tekst": "MAL-01 Ramma, MAL-03 Baugen, MAL-04 Stranda",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:225"
+  },
+  {
+   "id": "MAL-03",
+   "stad": "MAL",
+   "omraade": "Inne i måleriet (4.14)",
+   "dungeon": "Inne i måleriet (4.14)",
+   "lag": "Fjorden",
+   "namn": "Baugen",
+   "innhald_tekst": "Roaren og mannen som held hatten. Lygn 1: «kven» viser at roaren er måla etter ein modell i Düsseldorf",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "MAL-02",
+     "namn": "Den blanke fjorden"
+    }
+   ],
+   "utgangar_tekst": "MAL-02 Den blanke fjorden",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:226"
+  },
+  {
+   "id": "MAL-04",
+   "stad": "MAL",
+   "omraade": "Inne i måleriet (4.14)",
+   "dungeon": "Inne i måleriet (4.14)",
+   "lag": "Stranda",
+   "namn": "Stranda med kyrkja",
+   "innhald_tekst": "Brura med krona. Lygn 3: krona er lånt frå nabogarden (forslag i dungeonfana, Aasen seier det i 4.14)",
+   "scener": [
+    "s4_14"
+   ],
+   "utgangar": [
+    {
+     "til": "MAL-02",
+     "namn": "Den blanke fjorden"
+    },
+    {
+     "til": "MAL-05",
+     "namn": "Fjella"
+    }
+   ],
+   "utgangar_tekst": "MAL-02 Den blanke fjorden, MAL-05 Fjella",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:227"
+  },
+  {
+   "id": "MAL-05",
+   "stad": "MAL",
+   "omraade": "Inne i måleriet (4.14)",
+   "dungeon": "Inne i måleriet (4.14)",
+   "lag": "Fjella",
+   "namn": "Fjella",
+   "innhald_tekst": "Kvite og klare fjell. Lygn 2: «kvar» viser at fjellet er sett saman av tre ulike fjell",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "MAL-04",
+     "namn": "Stranda med kyrkja"
+    },
+    {
+     "til": "MAL-06",
+     "namn": "Sprekken"
+    }
+   ],
+   "utgangar_tekst": "MAL-04 Stranda med kyrkja, MAL-06 Sprekken",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:228"
+  },
+  {
+   "id": "MAL-06",
+   "stad": "MAL",
+   "omraade": "Inne i måleriet (4.14)",
+   "dungeon": "Inne i måleriet (4.14)",
+   "lag": "Fjella",
+   "namn": "Sprekken i lerretet",
+   "innhald_tekst": "Opnar seg når tre lygner er avslørte. Snarveg og utgang til salen. Statusen Framand varer til 4.15",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-05a",
+     "namn": "Christiania Theater"
+    }
+   ],
+   "utgangar_tekst": "CHR-05a Christiania Theater",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:229"
+  },
+  {
+   "id": "PIP-01",
+   "stad": "PIP",
+   "omraade": "Kjellaren i Pipervika (S2.13)",
+   "dungeon": "Kjellaren i Pipervika (S2.13)",
+   "lag": "Kjellaren",
+   "namn": "Kjellartrappa",
+   "innhald_tekst": "Inngang frå bakgarden",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-17",
+     "namn": "Pipervika og Vika"
+    },
+    {
+     "til": "PIP-02",
+     "namn": "Skulekjellaren"
+    },
+    {
+     "til": "PIP-03",
+     "namn": "Vedkjellaren"
+    }
+   ],
+   "utgangar_tekst": "CHR-17 Pipervika og Vika, PIP-02 Skulekjellaren, PIP-03 Vedkjellaren",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_kjellaren_i_pipervika_s2.13"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:239"
+  },
+  {
+   "id": "PIP-02",
+   "stad": "PIP",
+   "omraade": "Kjellaren i Pipervika (S2.13)",
+   "dungeon": "Kjellaren i Pipervika (S2.13)",
+   "lag": "Kjellaren",
+   "namn": "Skulekjellaren",
+   "innhald_tekst": "Tavla og benkane. Om sundagen: Marte og Hans Olsen, eitt ord inn og eitt ord att (S2.13.1). Om natta: bossrom med Petisjonsarket. Etter kampen står ein mann i god frakk i døra, og kv-ord viser ringen med fuglen",
+   "scener": [
+    "S2_13_1"
+   ],
+   "utgangar": [
+    {
+     "til": "PIP-01",
+     "namn": "Kjellartrappa"
+    },
+    {
+     "til": "PIP-05",
+     "namn": "Vaskekroken"
+    }
+   ],
+   "utgangar_tekst": "PIP-01 Kjellartrappa, PIP-05 Vaskekroken",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9b_kjellaren_i_pipervika_s2.13"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:240"
+  },
+  {
+   "id": "PIP-03",
+   "stad": "PIP",
+   "omraade": "Kjellaren i Pipervika (S2.13)",
+   "dungeon": "Kjellaren i Pipervika (S2.13)",
+   "lag": "Kjellaren",
+   "namn": "Vedkjellaren",
+   "innhald_tekst": "Om natta: ABC-vesen i Pipervika og eit underskriftsark som må vernast (forslag om å dele gåta i rom)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "PIP-01",
+     "namn": "Kjellartrappa"
+    },
+    {
+     "til": "PIP-04",
+     "namn": "Matkjellaren"
+    }
+   ],
+   "utgangar_tekst": "PIP-01 Kjellartrappa, PIP-04 Matkjellaren",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": true,
+   "soner": [
+    "9b_kjellaren_i_pipervika_s2.13"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:241"
+  },
+  {
+   "id": "PIP-04",
+   "stad": "PIP",
+   "omraade": "Kjellaren i Pipervika (S2.13)",
+   "dungeon": "Kjellaren i Pipervika (S2.13)",
+   "lag": "Kjellaren",
+   "namn": "Matkjellaren",
+   "innhald_tekst": "Om natta: ABC-vesen og eit nytt underskriftsark",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "PIP-03",
+     "namn": "Vedkjellaren"
+    },
+    {
+     "til": "PIP-05",
+     "namn": "Vaskekroken"
+    }
+   ],
+   "utgangar_tekst": "PIP-03 Vedkjellaren, PIP-05 Vaskekroken",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_kjellaren_i_pipervika_s2.13"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:242"
+  },
+  {
+   "id": "PIP-05",
+   "stad": "PIP",
+   "omraade": "Kjellaren i Pipervika (S2.13)",
+   "dungeon": "Kjellaren i Pipervika (S2.13)",
+   "lag": "Kjellaren",
+   "namn": "Vaskekroken",
+   "innhald_tekst": "Kvilestad: vassbøtta til tenestejenta (forslag). Døra inn til skulekjellaren er snarvegen etter bossen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "PIP-04",
+     "namn": "Matkjellaren"
+    },
+    {
+     "til": "PIP-02",
+     "namn": "Skulekjellaren"
+    }
+   ],
+   "utgangar_tekst": "PIP-04 Matkjellaren, PIP-02 Skulekjellaren",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_kjellaren_i_pipervika_s2.13"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:243"
+  },
+  {
+   "id": "BHH-01",
+   "stad": "BHH",
+   "omraade": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "dungeon": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "lag": "Inngangane",
+   "namn": "Trappa og gangdøra",
+   "innhald_tekst": "Inngang. Tidtakaren klokka tre",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-12b",
+     "namn": "Botten-Hansens leilegheit"
+    },
+    {
+     "til": "BHH-02",
+     "namn": "Kjøkenet"
+    },
+    {
+     "til": "BHH-03",
+     "namn": "Stova"
+    }
+   ],
+   "utgangar_tekst": "CHR-12b Botten-Hansens leilegheit, BHH-02 Kjøkenet, BHH-03 Stova",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_hyllene_hos_botten_hansen_5.9_februar_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:258"
+  },
+  {
+   "id": "BHH-02",
+   "stad": "BHH",
+   "omraade": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "dungeon": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "lag": "Inngangane",
+   "namn": "Kjøkenet",
+   "innhald_tekst": "Val A: Aasen går inn bak. Omnskråa er kvileplass på denne vegen, for manuset lovar fleire kvileplassar her (forslag om stad)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BHH-01",
+     "namn": "Trappa"
+    },
+    {
+     "til": "BHH-04",
+     "namn": "Korridoren av bøker"
+    }
+   ],
+   "utgangar_tekst": "BHH-01 Trappa, BHH-04 Korridoren av bøker",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_hyllene_hos_botten_hansen_5.9_februar_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:259"
+  },
+  {
+   "id": "BHH-03",
+   "stad": "BHH",
+   "omraade": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "dungeon": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "lag": "Inngangane",
+   "namn": "Stova",
+   "innhald_tekst": "Vinje på stolen med diktet utan ende, Bjørnson og Ibsen. Spelet klipper hit i mellomsekvensane. Val B: samtalegåte med Bjørnson og Ibsen. Val C: Collett gjer vaktene stumme med Blikket og går den kortaste vegen rett til BHH-07",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BHH-01",
+     "namn": "Trappa"
+    },
+    {
+     "til": "BHH-04",
+     "namn": "Korridoren av bøker"
+    },
+    {
+     "til": "BHH-07",
+     "namn": "Det smale rommet",
+     "merknad": "val C"
+    }
+   ],
+   "utgangar_tekst": "BHH-01 Trappa, BHH-04 Korridoren av bøker, BHH-07 Det smale rommet (val C)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_hyllene_hos_botten_hansen_5.9_februar_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:260"
+  },
+  {
+   "id": "BHH-04",
+   "stad": "BHH",
+   "omraade": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "dungeon": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "lag": "Korridoren",
+   "namn": "Korridoren av bøker",
+   "innhald_tekst": "Holberg, Snorre, tyske ordbøker og hundre årgangar Morgenbladet. Hyllene går høgare enn taket. Rimkopisten hos Botten-Hansen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BHH-02",
+     "namn": "Kjøkenet"
+    },
+    {
+     "til": "BHH-03",
+     "namn": "Stova"
+    },
+    {
+     "til": "BHH-05",
+     "namn": "Svingane"
+    }
+   ],
+   "utgangar_tekst": "BHH-02 Kjøkenet, BHH-03 Stova, BHH-05 Svingane",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_hyllene_hos_botten_hansen_5.9_februar_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:261"
+  },
+  {
+   "id": "BHH-05",
+   "stad": "BHH",
+   "omraade": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "dungeon": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "lag": "Korridoren",
+   "namn": "Svingane",
+   "innhald_tekst": "Rundt kvart hjørne flyttar hyllene seg og lagar nye gangar. «Kvar» viser kva hyller som flyttar seg",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BHH-04",
+     "namn": "Korridoren av bøker"
+    },
+    {
+     "til": "BHH-06",
+     "namn": "Golvet som knirkar"
+    }
+   ],
+   "utgangar_tekst": "BHH-04 Korridoren av bøker, BHH-06 Golvet som knirkar",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_hyllene_hos_botten_hansen_5.9_februar_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:262"
+  },
+  {
+   "id": "BHH-06",
+   "stad": "BHH",
+   "omraade": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "dungeon": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "lag": "Korridoren",
+   "namn": "Golvet som knirkar",
+   "innhald_tekst": "Golvplankar knirkar, og bøker kviskrar namn. Veggedyra i panelet bit den som står stille (forslag om flytting). Rimkorrekturen hos Botten-Hansen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BHH-05",
+     "namn": "Svingane"
+    },
+    {
+     "til": "BHH-07",
+     "namn": "Det smale rommet"
+    }
+   ],
+   "utgangar_tekst": "BHH-05 Svingane, BHH-07 Det smale rommet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_hyllene_hos_botten_hansen_5.9_februar_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:263"
+  },
+  {
+   "id": "BHH-07",
+   "stad": "BHH",
+   "omraade": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "dungeon": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "lag": "Korridoren",
+   "namn": "Det smale rommet",
+   "innhald_tekst": "Huldra halvt gjennomsiktig mellom to hyller, med bokstavar som kryp over armane (5.9)",
+   "scener": [
+    "s5_9"
+   ],
+   "utgangar": [
+    {
+     "til": "BHH-06",
+     "namn": "Golvet som knirkar"
+    },
+    {
+     "til": "BHH-08",
+     "namn": "Brudlaupsfølgjet"
+    }
+   ],
+   "utgangar_tekst": "BHH-06 Golvet som knirkar, BHH-08 Brudlaupsfølgjet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_hyllene_hos_botten_hansen_5.9_februar_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:264"
+  },
+  {
+   "id": "BHH-08",
+   "stad": "BHH",
+   "omraade": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "dungeon": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "lag": "Korridoren",
+   "namn": "Brudlaupsfølgjet",
+   "innhald_tekst": "Hyllene lukkar seg. Seks papirgjester syng ei brudevise. Kamp med teljinga Døra 4 og Mot døra. Collett kan gjere gjestene stumme",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BHH-07",
+     "namn": "Det smale rommet"
+    },
+    {
+     "til": "BHH-09",
+     "namn": "Hjørnet med runekalenderen"
+    }
+   ],
+   "utgangar_tekst": "BHH-07 Det smale rommet, BHH-09 Hjørnet med runekalenderen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_hyllene_hos_botten_hansen_5.9_februar_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:265"
+  },
+  {
+   "id": "BHH-09",
+   "stad": "BHH",
+   "omraade": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "dungeon": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "lag": "Arbeidsrommet",
+   "namn": "Hjørnet med runekalenderen",
+   "innhald_tekst": "Kvilestad frå manuset: den gamle runekalenderen som Botten-Hansen har kjøpt og aldri lese",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BHH-08",
+     "namn": "Brudlaupsfølgjet"
+    },
+    {
+     "til": "BHH-10",
+     "namn": "Arbeidsrommet"
+    }
+   ],
+   "utgangar_tekst": "BHH-08 Brudlaupsfølgjet, BHH-10 Arbeidsrommet",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_hyllene_hos_botten_hansen_5.9_februar_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:266"
+  },
+  {
+   "id": "BHH-10",
+   "stad": "BHH",
+   "omraade": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "dungeon": "Hyllene hos Botten-Hansen (5.9 til 5.10)",
+   "lag": "Arbeidsrommet",
+   "namn": "Arbeidsrommet",
+   "innhald_tekst": "Bossrom: Botten-Hansen og manuskriptet i tre fasar. Vinje riv den siste sida klokka seks (5.10). Snarveg: korridoren rettar seg ut",
+   "scener": [
+    "s5_10"
+   ],
+   "utgangar": [
+    {
+     "til": "BHH-09",
+     "namn": "Hjørnet med runekalenderen"
+    },
+    {
+     "til": "BHH-01",
+     "namn": "Trappa",
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "BHH-09 Hjørnet med runekalenderen, BHH-01 Trappa (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9c_hyllene_hos_botten_hansen_5.9_februar_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:267"
+  },
+  {
+   "id": "TVF-01",
+   "stad": "TVF",
+   "omraade": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "dungeon": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "lag": "Tårnet",
+   "namn": "Våpenhuset",
+   "innhald_tekst": "Inngang frå kyrkjerommet. Klokkestrengen heng ned hit",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-09a",
+     "namn": "Vor Frelsers kyrkje"
+    },
+    {
+     "til": "TVF-02",
+     "namn": "Tårntrappa"
+    }
+   ],
+   "utgangar_tekst": "CHR-09a Vor Frelsers kyrkje, TVF-02 Tårntrappa",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_taarnet_paa_vor_frelsers_kyrkje_5.13b_juni_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:277"
+  },
+  {
+   "id": "TVF-02",
+   "stad": "TVF",
+   "omraade": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "dungeon": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "lag": "Tårnet",
+   "namn": "Tårntrappa",
+   "innhald_tekst": "Den framande står på første avsatsen og ventar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TVF-01",
+     "namn": "Våpenhuset"
+    },
+    {
+     "til": "TVF-03",
+     "namn": "Bokhyllene på loftet"
+    }
+   ],
+   "utgangar_tekst": "TVF-01 Våpenhuset, TVF-03 Bokhyllene på loftet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_taarnet_paa_vor_frelsers_kyrkje_5.13b_juni_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:278"
+  },
+  {
+   "id": "TVF-03",
+   "stad": "TVF",
+   "omraade": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "dungeon": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "lag": "Kyrkjeloftet",
+   "namn": "Bokhyllene på loftet",
+   "innhald_tekst": "Dei eldste kyrkjebøkene. Blekket vaknar. Innførsla på kyrkjeloftet",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TVF-02",
+     "namn": "Tårntrappa"
+    },
+    {
+     "til": "TVF-04",
+     "namn": "Over kvelvingane"
+    }
+   ],
+   "utgangar_tekst": "TVF-02 Tårntrappa, TVF-04 Over kvelvingane",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_taarnet_paa_vor_frelsers_kyrkje_5.13b_juni_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:279"
+  },
+  {
+   "id": "TVF-04",
+   "stad": "TVF",
+   "omraade": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "dungeon": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "lag": "Kyrkjeloftet",
+   "namn": "Over kvelvingane",
+   "innhald_tekst": "Plankegangar over kvelvingane. Rimkopisten på kyrkjeloftet",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TVF-03",
+     "namn": "Bokhyllene på loftet"
+    },
+    {
+     "til": "TVF-05",
+     "namn": "Klokkestolen"
+    }
+   ],
+   "utgangar_tekst": "TVF-03 Bokhyllene på loftet, TVF-05 Klokkestolen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_taarnet_paa_vor_frelsers_kyrkje_5.13b_juni_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:280"
+  },
+  {
+   "id": "TVF-05",
+   "stad": "TVF",
+   "omraade": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "dungeon": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "lag": "Tårnet",
+   "namn": "Klokkestolen",
+   "innhald_tekst": "Kvilestad: vasskanna til klokkaren med kvileruna (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TVF-04",
+     "namn": "Over kvelvingane"
+    },
+    {
+     "til": "TVF-06",
+     "namn": "Loftet under tårnet"
+    }
+   ],
+   "utgangar_tekst": "TVF-04 Over kvelvingane, TVF-06 Loftet under tårnet",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_taarnet_paa_vor_frelsers_kyrkje_5.13b_juni_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:281"
+  },
+  {
+   "id": "TVF-06",
+   "stad": "TVF",
+   "omraade": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "dungeon": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "lag": "Kyrkjeloftet",
+   "namn": "Loftet under tårnet",
+   "innhald_tekst": "Bossrom, fase 1: Fristaren i tårnet. Etter fasen går han vidare opp",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TVF-05",
+     "namn": "Klokkestolen"
+    },
+    {
+     "til": "TVF-07",
+     "namn": "Den opne trappa"
+    }
+   ],
+   "utgangar_tekst": "TVF-05 Klokkestolen, TVF-07 Den opne trappa",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9c_taarnet_paa_vor_frelsers_kyrkje_5.13b_juni_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:282"
+  },
+  {
+   "id": "TVF-07",
+   "stad": "TVF",
+   "omraade": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "dungeon": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "lag": "Spiret",
+   "namn": "Den opne trappa",
+   "innhald_tekst": "Trappa på utsida av tårnet, der vinden riv i kleda (forslag). Overgang mellom fasane",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TVF-06",
+     "namn": "Loftet under tårnet"
+    },
+    {
+     "til": "TVF-08",
+     "namn": "Spiret"
+    }
+   ],
+   "utgangar_tekst": "TVF-06 Loftet under tårnet, TVF-08 Spiret",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_taarnet_paa_vor_frelsers_kyrkje_5.13b_juni_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:283"
+  },
+  {
+   "id": "TVF-08",
+   "stad": "TVF",
+   "omraade": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "dungeon": "Tårnet på Vor Frelsers kyrkje (5.13b)",
+   "lag": "Spiret",
+   "namn": "Spiret",
+   "innhald_tekst": "Bossrom, fase 2. Berte svarar med Matt 4:7, og vinden tek skautet. Snarveg: klokkestrengen ned til våpenhuset",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "TVF-07",
+     "namn": "Den opne trappa"
+    },
+    {
+     "til": "TVF-01",
+     "namn": "Våpenhuset",
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "TVF-07 Den opne trappa, TVF-01 Våpenhuset (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9c_taarnet_paa_vor_frelsers_kyrkje_5.13b_juni_1851"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:284"
+  },
+  {
+   "id": "KTK-01",
+   "stad": "KTK",
+   "omraade": "Kjellartrykkeriet i Kirkegata (S2.19)",
+   "dungeon": "Kjellartrykkeriet i Kirkegata (S2.19)",
+   "lag": "Bakgarden",
+   "namn": "Porten frå Kirkegata",
+   "innhald_tekst": "Inngang",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-04",
+     "namn": "Kirkegata"
+    },
+    {
+     "til": "KTK-02",
+     "namn": "Bakgarden"
+    }
+   ],
+   "utgangar_tekst": "CHR-04 Kirkegata, KTK-02 Bakgarden",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:299"
+  },
+  {
+   "id": "KTK-02",
+   "stad": "KTK",
+   "omraade": "Kjellartrykkeriet i Kirkegata (S2.19)",
+   "dungeon": "Kjellartrykkeriet i Kirkegata (S2.19)",
+   "lag": "Bakgarden",
+   "namn": "Bakgarden",
+   "innhald_tekst": "Politibetjenten (frosen) går fast runde. Snik i skuggen av vedskjulet",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KTK-01",
+     "namn": "Porten"
+    },
+    {
+     "til": "KTK-03",
+     "namn": "Regntønna"
+    }
+   ],
+   "utgangar_tekst": "KTK-01 Porten, KTK-03 Regntønna",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:300"
+  },
+  {
+   "id": "KTK-03",
+   "stad": "KTK",
+   "omraade": "Kjellartrykkeriet i Kirkegata (S2.19)",
+   "dungeon": "Kjellartrykkeriet i Kirkegata (S2.19)",
+   "lag": "Bakgarden",
+   "namn": "Regntønna",
+   "innhald_tekst": "Kvilestad: regntønna ved kjellardøra (forslag). Kolluka frå pressrommet endar her",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KTK-02",
+     "namn": "Bakgarden"
+    },
+    {
+     "til": "KTK-04",
+     "namn": "Kjellargangen"
+    }
+   ],
+   "utgangar_tekst": "KTK-02 Bakgarden, KTK-04 Kjellargangen",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:301"
+  },
+  {
+   "id": "KTK-04",
+   "stad": "KTK",
+   "omraade": "Kjellartrykkeriet i Kirkegata (S2.19)",
+   "dungeon": "Kjellartrykkeriet i Kirkegata (S2.19)",
+   "lag": "Kjellaren",
+   "namn": "Kjellargangen",
+   "innhald_tekst": "Ein politibetjent til. Flygeblad på veggene skriv seg om når nokon les",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KTK-03",
+     "namn": "Regntønna"
+    },
+    {
+     "til": "KTK-05",
+     "namn": "Papirlageret"
+    }
+   ],
+   "utgangar_tekst": "KTK-03 Regntønna, KTK-05 Papirlageret",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:302"
+  },
+  {
+   "id": "KTK-05",
+   "stad": "KTK",
+   "omraade": "Kjellartrykkeriet i Kirkegata (S2.19)",
+   "dungeon": "Kjellartrykkeriet i Kirkegata (S2.19)",
+   "lag": "Kjellaren",
+   "namn": "Papirlageret",
+   "innhald_tekst": "Dyrt papir i stablar. Avisskrivaren står synleg",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KTK-04",
+     "namn": "Kjellargangen"
+    },
+    {
+     "til": "KTK-06",
+     "namn": "Pressrommet"
+    }
+   ],
+   "utgangar_tekst": "KTK-04 Kjellargangen, KTK-06 Pressrommet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:303"
+  },
+  {
+   "id": "KTK-06",
+   "stad": "KTK",
+   "omraade": "Kjellartrykkeriet i Kirkegata (S2.19)",
+   "dungeon": "Kjellartrykkeriet i Kirkegata (S2.19)",
+   "lag": "Kjellaren",
+   "namn": "Pressrommet",
+   "innhald_tekst": "Bossrom: Flygebladet, som deler seg kvar gong det blir skadd. Collett gjer den originale satsen stum. Valet om satsen. Snarveg: kolluka opp til bakgarden (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KTK-05",
+     "namn": "Papirlageret"
+    },
+    {
+     "til": "KTK-03",
+     "namn": "Regntønna",
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "KTK-05 Papirlageret, KTK-03 Regntønna (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:304"
+  },
+  {
+   "id": "KLA-01",
+   "stad": "KLA",
+   "omraade": "Klasse 4 B (5.22)",
+   "dungeon": "Klasse 4 B (5.22)",
+   "lag": "Gangen",
+   "namn": "Gangen",
+   "innhald_tekst": "Inngang. Sida frå Knudsens Protokol",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-03a",
+     "namn": "Katedralskolen"
+    },
+    {
+     "til": "KLA-02",
+     "namn": "Omnskråa"
+    }
+   ],
+   "utgangar_tekst": "CHR-03a Katedralskolen, KLA-02 Omnskråa",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_klasse_4_b_5.22_januar_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:319"
+  },
+  {
+   "id": "KLA-02",
+   "stad": "KLA",
+   "omraade": "Klasse 4 B (5.22)",
+   "dungeon": "Klasse 4 B (5.22)",
+   "lag": "Klasserommet",
+   "namn": "Omnskråa",
+   "innhald_tekst": "Kvilestad: bøtta med snø som vaktmeisteren har sett til å smelte (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KLA-01",
+     "namn": "Gangen"
+    },
+    {
+     "til": "KLA-03",
+     "namn": "Første rada"
+    }
+   ],
+   "utgangar_tekst": "KLA-01 Gangen, KLA-03 Første rada",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_klasse_4_b_5.22_januar_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:320"
+  },
+  {
+   "id": "KLA-03",
+   "stad": "KLA",
+   "omraade": "Klasse 4 B (5.22)",
+   "dungeon": "Klasse 4 B (5.22)",
+   "lag": "Klasserommet",
+   "namn": "Første rada",
+   "innhald_tekst": "Hans og grauten. Bossrom: Ånda i stileboka, innføring i Ret",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KLA-02",
+     "namn": "Omnskråa"
+    },
+    {
+     "til": "KLA-04",
+     "namn": "Andre rada"
+    }
+   ],
+   "utgangar_tekst": "KLA-02 Omnskråa, KLA-04 Andre rada",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9c_klasse_4_b_5.22_januar_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:321"
+  },
+  {
+   "id": "KLA-04",
+   "stad": "KLA",
+   "omraade": "Klasse 4 B (5.22)",
+   "dungeon": "Klasse 4 B (5.22)",
+   "lag": "Klasserommet",
+   "namn": "Andre rada",
+   "innhald_tekst": "Gutar med orda i stiv skrift over hovuda. ABC-vesenet og Stileblekket i Klasse 4 B",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KLA-03",
+     "namn": "Første rada"
+    },
+    {
+     "til": "KLA-05",
+     "namn": "Tredje rada"
+    }
+   ],
+   "utgangar_tekst": "KLA-03 Første rada, KLA-05 Tredje rada",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_klasse_4_b_5.22_januar_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:322"
+  },
+  {
+   "id": "KLA-05",
+   "stad": "KLA",
+   "omraade": "Klasse 4 B (5.22)",
+   "dungeon": "Klasse 4 B (5.22)",
+   "lag": "Klasserommet",
+   "namn": "Tredje rada",
+   "innhald_tekst": "Same slag kamp ved vindauget",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KLA-04",
+     "namn": "Andre rada"
+    },
+    {
+     "til": "KLA-06",
+     "namn": "Kateteret"
+    }
+   ],
+   "utgangar_tekst": "KLA-04 Andre rada, KLA-06 Kateteret",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_klasse_4_b_5.22_januar_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:323"
+  },
+  {
+   "id": "KLA-06",
+   "stad": "KLA",
+   "omraade": "Klasse 4 B (5.22)",
+   "dungeon": "Klasse 4 B (5.22)",
+   "lag": "Kateteret",
+   "namn": "Kateteret og bokskåpet",
+   "innhald_tekst": "Bokskåpet er låst med kanselliblekk. Rett på skiltet opnar det, og under stilebøker frå førre hundreåret ligg Den gamle nøkkelen. Snarveg: døra ut til gangen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KLA-05",
+     "namn": "Tredje rada"
+    },
+    {
+     "til": "KLA-01",
+     "namn": "Gangen",
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "KLA-05 Tredje rada, KLA-01 Gangen (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_klasse_4_b_5.22_januar_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:324"
+  },
+  {
+   "id": "KAN-01",
+   "stad": "KAN",
+   "omraade": "Kanselliarkivet under Akershus (S2.30)",
+   "dungeon": "Kanselliarkivet under Akershus (S2.30)",
+   "lag": "Forordningane",
+   "namn": "Døra under festninga",
+   "innhald_tekst": "Inngang. Rikkar seg berre med nøkkelen og når Kongsormen er slått",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-07",
+     "namn": "Akershus"
+    },
+    {
+     "til": "KAN-02",
+     "namn": "Etasje 1"
+    }
+   ],
+   "utgangar_tekst": "CHR-07 Akershus, KAN-02 Etasje 1",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_kanselliarkivet_under_akershus_etasje_1_til_3_forordningane_s2.30"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:339"
+  },
+  {
+   "id": "KAN-02",
+   "stad": "KAN",
+   "omraade": "Kanselliarkivet under Akershus (S2.30)",
+   "dungeon": "Kanselliarkivet under Akershus (S2.30)",
+   "lag": "Forordningane",
+   "namn": "Etasje 1",
+   "innhald_tekst": "Det ferskaste blekket. Paragrafar og Renteskrivarar. Kvar ny lov gjev ein regel på slagmarka. Protokollvinda endar her",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAN-01",
+     "namn": "Døra"
+    },
+    {
+     "til": "KAN-03",
+     "namn": "Etasje 2",
+     "merknad": "Rett"
+    }
+   ],
+   "utgangar_tekst": "KAN-01 Døra, KAN-03 Etasje 2 (Rett)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_kanselliarkivet_under_akershus_etasje_1_til_3_forordningane_s2.30"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:340"
+  },
+  {
+   "id": "KAN-03",
+   "stad": "KAN",
+   "omraade": "Kanselliarkivet under Akershus (S2.30)",
+   "dungeon": "Kanselliarkivet under Akershus (S2.30)",
+   "lag": "Forordningane",
+   "namn": "Etasje 2",
+   "innhald_tekst": "Forordningar som papirfuglar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAN-02",
+     "namn": "Etasje 1"
+    },
+    {
+     "til": "KAN-04",
+     "namn": "Etasje 3",
+     "merknad": "Rett"
+    }
+   ],
+   "utgangar_tekst": "KAN-02 Etasje 1, KAN-04 Etasje 3 (Rett)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_kanselliarkivet_under_akershus_etasje_1_til_3_forordningane_s2.30"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:341"
+  },
+  {
+   "id": "KAN-04",
+   "stad": "KAN",
+   "omraade": "Kanselliarkivet under Akershus (S2.30)",
+   "dungeon": "Kanselliarkivet under Akershus (S2.30)",
+   "lag": "Forordningane",
+   "namn": "Etasje 3",
+   "innhald_tekst": "Lagring og kvile",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAN-03",
+     "namn": "Etasje 2"
+    },
+    {
+     "til": "KAN-05",
+     "namn": "Etasje 4",
+     "merknad": "Rett"
+    }
+   ],
+   "utgangar_tekst": "KAN-03 Etasje 2, KAN-05 Etasje 4 (Rett)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_kanselliarkivet_under_akershus_etasje_1_til_3_forordningane_s2.30"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:342"
+  },
+  {
+   "id": "KAN-05",
+   "stad": "KAN",
+   "omraade": "Kanselliarkivet under Akershus (S2.30)",
+   "dungeon": "Kanselliarkivet under Akershus (S2.30)",
+   "lag": "Kyrkjebøkene",
+   "namn": "Etasje 4",
+   "innhald_tekst": "Innførsla i kanselliarkivet. Moe kan skrive margnotat og få gjengangarane til å hjelpe",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAN-04",
+     "namn": "Etasje 3"
+    },
+    {
+     "til": "KAN-06",
+     "namn": "Etasje 5",
+     "merknad": "Rett"
+    }
+   ],
+   "utgangar_tekst": "KAN-04 Etasje 3, KAN-06 Etasje 5 (Rett)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_kanselliarkivet_under_akershus_etasje_1_til_3_forordningane_s2.30"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:343"
+  },
+  {
+   "id": "KAN-06",
+   "stad": "KAN",
+   "omraade": "Kanselliarkivet under Akershus (S2.30)",
+   "dungeon": "Kanselliarkivet under Akershus (S2.30)",
+   "lag": "Kyrkjebøkene",
+   "namn": "Etasje 5",
+   "innhald_tekst": "Eit vandrande dåpsnamn leitar etter folk",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAN-05",
+     "namn": "Etasje 4"
+    },
+    {
+     "til": "KAN-07",
+     "namn": "Etasje 6",
+     "merknad": "Rett"
+    }
+   ],
+   "utgangar_tekst": "KAN-05 Etasje 4, KAN-07 Etasje 6 (Rett)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_kanselliarkivet_under_akershus_etasje_1_til_3_forordningane_s2.30"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:344"
+  },
+  {
+   "id": "KAN-07",
+   "stad": "KAN",
+   "omraade": "Kanselliarkivet under Akershus (S2.30)",
+   "dungeon": "Kanselliarkivet under Akershus (S2.30)",
+   "lag": "Kyrkjebøkene",
+   "namn": "Etasje 6",
+   "innhald_tekst": "Lagring og kvile",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAN-06",
+     "namn": "Etasje 5"
+    },
+    {
+     "til": "KAN-08",
+     "namn": "Etasje 7",
+     "merknad": "Rett"
+    }
+   ],
+   "utgangar_tekst": "KAN-06 Etasje 5, KAN-08 Etasje 7 (Rett)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_kanselliarkivet_under_akershus_etasje_1_til_3_forordningane_s2.30"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:345"
+  },
+  {
+   "id": "KAN-08",
+   "stad": "KAN",
+   "omraade": "Kanselliarkivet under Akershus (S2.30)",
+   "dungeon": "Kanselliarkivet under Akershus (S2.30)",
+   "lag": "Skulebøkene",
+   "namn": "Etasje 7",
+   "innhald_tekst": "Forklaringa spør og krev rette svar. Feil svar gjev skam",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAN-07",
+     "namn": "Etasje 6"
+    },
+    {
+     "til": "KAN-09",
+     "namn": "Etasje 8",
+     "merknad": "Rett"
+    }
+   ],
+   "utgangar_tekst": "KAN-07 Etasje 6, KAN-09 Etasje 8 (Rett)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_kanselliarkivet_under_akershus_etasje_1_til_3_forordningane_s2.30"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:346"
+  },
+  {
+   "id": "KAN-09",
+   "stad": "KAN",
+   "omraade": "Kanselliarkivet under Akershus (S2.30)",
+   "dungeon": "Kanselliarkivet under Akershus (S2.30)",
+   "lag": "Skulebøkene",
+   "namn": "Etasje 8",
+   "innhald_tekst": "Barnelærdomen i lange rader",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAN-08",
+     "namn": "Etasje 7"
+    },
+    {
+     "til": "KAN-10",
+     "namn": "Etasje 9",
+     "merknad": "Rett"
+    }
+   ],
+   "utgangar_tekst": "KAN-08 Etasje 7, KAN-10 Etasje 9 (Rett)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_kanselliarkivet_under_akershus_etasje_1_til_3_forordningane_s2.30"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:347"
+  },
+  {
+   "id": "KAN-10",
+   "stad": "KAN",
+   "omraade": "Kanselliarkivet under Akershus (S2.30)",
+   "dungeon": "Kanselliarkivet under Akershus (S2.30)",
+   "lag": "Skulebøkene",
+   "namn": "Etasje 9",
+   "innhald_tekst": "Lagring og kvile",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAN-09",
+     "namn": "Etasje 8"
+    },
+    {
+     "til": "KAN-11",
+     "namn": "Etasje 10",
+     "merknad": "Rett"
+    }
+   ],
+   "utgangar_tekst": "KAN-09 Etasje 8, KAN-11 Etasje 10 (Rett)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_kanselliarkivet_under_akershus_etasje_1_til_3_forordningane_s2.30"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:348"
+  },
+  {
+   "id": "KAN-11",
+   "stad": "KAN",
+   "omraade": "Kanselliarkivet under Akershus (S2.30)",
+   "dungeon": "Kanselliarkivet under Akershus (S2.30)",
+   "lag": "Kopistane",
+   "namn": "Etasje 10",
+   "innhald_tekst": "Hundrevis av blekkskrivarar ved pultane som kopierer same setninga. Dei går ikkje til åtak. Den som avbryt, blir kopiert",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAN-10",
+     "namn": "Etasje 9"
+    },
+    {
+     "til": "KAN-12",
+     "namn": "Etasje 11",
+     "merknad": "Rett"
+    }
+   ],
+   "utgangar_tekst": "KAN-10 Etasje 9, KAN-12 Etasje 11 (Rett)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_kanselliarkivet_under_akershus_etasje_1_til_3_forordningane_s2.30"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:349"
+  },
+  {
+   "id": "KAN-12",
+   "stad": "KAN",
+   "omraade": "Kanselliarkivet under Akershus (S2.30)",
+   "dungeon": "Kanselliarkivet under Akershus (S2.30)",
+   "lag": "Kopistane",
+   "namn": "Etasje 11",
+   "innhald_tekst": "Same gåte i ein trongare sal",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAN-11",
+     "namn": "Etasje 10"
+    },
+    {
+     "til": "KAN-13",
+     "namn": "Etasje 12",
+     "merknad": "Rett"
+    }
+   ],
+   "utgangar_tekst": "KAN-11 Etasje 10, KAN-13 Etasje 12 (Rett)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": true,
+   "soner": [
+    "9c_kanselliarkivet_under_akershus_etasje_1_til_3_forordningane_s2.30"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:350"
+  },
+  {
+   "id": "KAN-13",
+   "stad": "KAN",
+   "omraade": "Kanselliarkivet under Akershus (S2.30)",
+   "dungeon": "Kanselliarkivet under Akershus (S2.30)",
+   "lag": "Kopistane",
+   "namn": "Etasje 12",
+   "innhald_tekst": "Dei første åra til Christian IV. Det tjukkaste blekket",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAN-12",
+     "namn": "Etasje 11"
+    },
+    {
+     "til": "KAN-14",
+     "namn": "Bautaen"
+    }
+   ],
+   "utgangar_tekst": "KAN-12 Etasje 11, KAN-14 Bautaen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_kanselliarkivet_under_akershus_etasje_1_til_3_forordningane_s2.30"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:351"
+  },
+  {
+   "id": "KAN-14",
+   "stad": "KAN",
+   "omraade": "Kanselliarkivet under Akershus (S2.30)",
+   "dungeon": "Kanselliarkivet under Akershus (S2.30)",
+   "lag": "Botnen",
+   "namn": "Bautaen",
+   "innhald_tekst": "Kvilestad utan lagring, slik superbossar.md seier",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAN-13",
+     "namn": "Etasje 12"
+    },
+    {
+     "til": "KAN-15",
+     "namn": "Pulten"
+    }
+   ],
+   "utgangar_tekst": "KAN-13 Etasje 12, KAN-15 Pulten",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_kanselliarkivet_under_akershus_etasje_1_til_3_forordningane_s2.30"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:352"
+  },
+  {
+   "id": "KAN-15",
+   "stad": "KAN",
+   "omraade": "Kanselliarkivet under Akershus (S2.30)",
+   "dungeon": "Kanselliarkivet under Akershus (S2.30)",
+   "lag": "Botnen",
+   "namn": "Pulten på botnen",
+   "innhald_tekst": "Bossrom: Kansellisten med forordningane. Tingboka frå Vardø ligg her om partyet tok henne med, og gjev ein ekstra fase. Snarveg: protokollvinda opp til etasje 1",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "KAN-14",
+     "namn": "Bautaen"
+    },
+    {
+     "til": "KAN-02",
+     "namn": "Etasje 1",
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "KAN-14 Bautaen, KAN-02 Etasje 1 (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9c_kanselliarkivet_under_akershus_etasje_1_til_3_forordningane_s2.30"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:353"
+  },
+  {
+   "id": "WEL-01",
+   "stad": "WEL",
+   "omraade": "Welhavens salong (S2.32)",
+   "dungeon": "Welhavens salong (S2.32)",
+   "lag": "Forstova",
+   "namn": "Trappa frå gata",
+   "innhald_tekst": "Inngang",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "CHR-06d",
+     "namn": "Welhavens heim"
+    },
+    {
+     "til": "WEL-02",
+     "namn": "Forstova"
+    }
+   ],
+   "utgangar_tekst": "CHR-06d Welhavens heim, WEL-02 Forstova",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_welhavens_salong_gangen_og_romma_mellom_versduellane_s2.32"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:374"
+  },
+  {
+   "id": "WEL-02",
+   "stad": "WEL",
+   "omraade": "Welhavens salong (S2.32)",
+   "dungeon": "Welhavens salong (S2.32)",
+   "lag": "Forstova",
+   "namn": "Forstova",
+   "innhald_tekst": "Kvilestad: buffeten med ein karaffel kjeldevatn med kvileruna i glaset (forslag). Tenarstrappa endar her",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "WEL-01",
+     "namn": "Trappa"
+    },
+    {
+     "til": "WEL-03",
+     "namn": "Gangen"
+    }
+   ],
+   "utgangar_tekst": "WEL-01 Trappa, WEL-03 Gangen",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_welhavens_salong_gangen_og_romma_mellom_versduellane_s2.32"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:375"
+  },
+  {
+   "id": "WEL-03",
+   "stad": "WEL",
+   "omraade": "Welhavens salong (S2.32)",
+   "dungeon": "Welhavens salong (S2.32)",
+   "lag": "Duellane",
+   "namn": "Gangen",
+   "innhald_tekst": "Studentflokken som første møte. Sitatet i salongen og Komplimentet i salongen. Welhaven og Vinje om den lånte frakken (S2.32.1)",
+   "scener": [
+    "S2_32_1"
+   ],
+   "utgangar": [
+    {
+     "til": "WEL-02",
+     "namn": "Forstova"
+    },
+    {
+     "til": "WEL-04",
+     "namn": "Salongen"
+    }
+   ],
+   "utgangar_tekst": "WEL-02 Forstova, WEL-04 Salongen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_welhavens_salong_gangen_og_romma_mellom_versduellane_s2.32"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:376"
+  },
+  {
+   "id": "WEL-04",
+   "stad": "WEL",
+   "omraade": "Welhavens salong (S2.32)",
+   "dungeon": "Welhavens salong (S2.32)",
+   "lag": "Duellane",
+   "namn": "Salongen",
+   "innhald_tekst": "Første versduell: ein kjend dansk kritikar om venleik",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "WEL-03",
+     "namn": "Gangen"
+    },
+    {
+     "til": "WEL-05",
+     "namn": "Spisestova"
+    }
+   ],
+   "utgangar_tekst": "WEL-03 Gangen, WEL-05 Spisestova",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_welhavens_salong_gangen_og_romma_mellom_versduellane_s2.32"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:377"
+  },
+  {
+   "id": "WEL-05",
+   "stad": "WEL",
+   "omraade": "Welhavens salong (S2.32)",
+   "dungeon": "Welhavens salong (S2.32)",
+   "lag": "Duellane",
+   "namn": "Spisestova",
+   "innhald_tekst": "Andre versduell: ein student som siterer Wergeland feil om sanning",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "WEL-04",
+     "namn": "Salongen"
+    },
+    {
+     "til": "WEL-06",
+     "namn": "Den bakre gangen"
+    }
+   ],
+   "utgangar_tekst": "WEL-04 Salongen, WEL-06 Den bakre gangen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_welhavens_salong_gangen_og_romma_mellom_versduellane_s2.32"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:378"
+  },
+  {
+   "id": "WEL-06",
+   "stad": "WEL",
+   "omraade": "Welhavens salong (S2.32)",
+   "dungeon": "Welhavens salong (S2.32)",
+   "lag": "Duellane",
+   "namn": "Den bakre gangen",
+   "innhald_tekst": "Gjester mellom duellane. Kortaste vegen tilbake til forstova",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "WEL-05",
+     "namn": "Spisestova"
+    },
+    {
+     "til": "WEL-07",
+     "namn": "Røykjerommet"
+    },
+    {
+     "til": "WEL-02",
+     "namn": "Forstova"
+    }
+   ],
+   "utgangar_tekst": "WEL-05 Spisestova, WEL-07 Røykjerommet, WEL-02 Forstova",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_welhavens_salong_gangen_og_romma_mellom_versduellane_s2.32"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:379"
+  },
+  {
+   "id": "WEL-07",
+   "stad": "WEL",
+   "omraade": "Welhavens salong (S2.32)",
+   "dungeon": "Welhavens salong (S2.32)",
+   "lag": "Duellane",
+   "namn": "Røykjerommet",
+   "innhald_tekst": "Tredje versduell: ein patriot frå Andhrimner om fedrelandet",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "WEL-06",
+     "namn": "Den bakre gangen"
+    },
+    {
+     "til": "WEL-08",
+     "namn": "Biblioteket"
+    }
+   ],
+   "utgangar_tekst": "WEL-06 Den bakre gangen, WEL-08 Biblioteket",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_welhavens_salong_gangen_og_romma_mellom_versduellane_s2.32"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:380"
+  },
+  {
+   "id": "WEL-08",
+   "stad": "WEL",
+   "omraade": "Welhavens salong (S2.32)",
+   "dungeon": "Welhavens salong (S2.32)",
+   "lag": "Duellane",
+   "namn": "Biblioteket",
+   "innhald_tekst": "Fjerde versduell: Welhaven sjølv. Same rommet som i 6.11",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "WEL-07",
+     "namn": "Røykjerommet"
+    },
+    {
+     "til": "WEL-09",
+     "namn": "Døra til det inste rommet"
+    }
+   ],
+   "utgangar_tekst": "WEL-07 Røykjerommet, WEL-09 Døra til det inste rommet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_welhavens_salong_gangen_og_romma_mellom_versduellane_s2.32"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:381"
+  },
+  {
+   "id": "WEL-09",
+   "stad": "WEL",
+   "omraade": "Welhavens salong (S2.32)",
+   "dungeon": "Welhavens salong (S2.32)",
+   "lag": "Det inste",
+   "namn": "Døra til det inste rommet",
+   "innhald_tekst": "Ein plagsam gjest står i vegen. Collett gjer han taus med Blikket. Utan Collett er døra stengd",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "WEL-08",
+     "namn": "Biblioteket"
+    },
+    {
+     "til": "WEL-10",
+     "namn": "Arbeidsrommet"
+    }
+   ],
+   "utgangar_tekst": "WEL-08 Biblioteket, WEL-10 Arbeidsrommet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_welhavens_salong_gangen_og_romma_mellom_versduellane_s2.32"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:382"
+  },
+  {
+   "id": "WEL-10",
+   "stad": "WEL",
+   "omraade": "Welhavens salong (S2.32)",
+   "dungeon": "Welhavens salong (S2.32)",
+   "lag": "Det inste",
+   "namn": "Arbeidsrommet",
+   "innhald_tekst": "Bossrom: Dæmringen i stevjingsmodus, med Welhaven som gjest (S2.32.2). Snarveg: tenarstrappa ned til forstova",
+   "scener": [
+    "S2_32_2"
+   ],
+   "utgangar": [
+    {
+     "til": "WEL-09",
+     "namn": "Døra"
+    },
+    {
+     "til": "WEL-02",
+     "namn": "Forstova",
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "WEL-09 Døra, WEL-02 Forstova (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9c_welhavens_salong_gangen_og_romma_mellom_versduellane_s2.32"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:383"
+  }
+ ],
+ "kister": [
+  {
+   "id": "K-CHR-08-1",
+   "skjerm": "CHR-08",
+   "behaldar": "Ei kasse med vrakgods under brygga ved Tollbuda",
+   "innhald": [
+    {
+     "ting": "spekekjot",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 spekekjøt og 1 luktesalt",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2, juli 1845",
+   "ventekiste": null,
+   "merknad": "Står til ho blir opna",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:85"
+  },
+  {
+   "id": "K-CHR-17-1",
+   "skjerm": "CHR-17",
+   "behaldar": "Ein båtsekk i eit forlate naust på stranda",
+   "innhald": [
+    {
+     "ting": "dun",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Dun",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2, juli 1845",
+   "ventekiste": null,
+   "merknad": "Salsvare",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:86"
+  },
+  {
+   "id": "K-CHR-12a-1",
+   "skjerm": "CHR-12a",
+   "behaldar": "Ei kiste under senga",
+   "innhald": [],
+   "kjelde_tekst": "Sjå VK08",
+   "tid": [
+    "T3",
+    "T4"
+   ],
+   "tid_tekst": "T3 og T4",
+   "ventekiste": "VK08",
+   "merknad": "VK08. Raudt segl på låsen. Opna i T3 er ho tom etterpå. Står ho urørd, ligg T4-innhaldet der når partyet vitjar den gamle hybelen i fimbulvinteren. Grunnen er at posten heimanfrå framleis kjem til den gamle adressa, og vertinna legg pakkane under senga (forslag)",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:87"
+  },
+  {
+   "id": "K-CHR-15-1",
+   "skjerm": "CHR-15",
+   "behaldar": "Ein sekk som har drive i land under Vaterlands bru",
+   "innhald": [
+    {
+     "pengar": 90
+    }
+   ],
+   "kjelde_tekst": "90 skilling",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, 1847–50",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:88"
+  },
+  {
+   "id": "K-CHR-09-1",
+   "skjerm": "CHR-09",
+   "behaldar": "Ei kasse på loftet i ein halvferdig basarboge",
+   "innhald": [
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    },
+    {
+     "ting": "hoffmannsdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi med kandis og 1 hoffmannsdropar",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, 1847–50",
+   "ventekiste": null,
+   "merknad": "Boda har ingen leigetakar enno",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:89"
+  },
+  {
+   "id": "K-CHR-18-1",
+   "skjerm": "CHR-18",
+   "behaldar": "Ei kiste i ei tømmerkoie som står tom om vinteren",
+   "innhald": [
+    {
+     "ting": "gaupeskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gaupeskinn",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, vinteren 1848",
+   "ventekiste": null,
+   "merknad": "Salsvare",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:90"
+  },
+  {
+   "id": "K-CHR-16-1",
+   "skjerm": "CHR-16",
+   "behaldar": "Ei skuffe i eit hus som står forlate i kulda",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut og 1 luktesalt",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, 1851–52",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:91"
+  },
+  {
+   "id": "K-CHR-19-1",
+   "skjerm": "CHR-19",
+   "behaldar": "Ein innefrosen færing utan folk",
+   "innhald": [
+    {
+     "ting": "ullvottar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Ullvottar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, 1851–53",
+   "ventekiste": null,
+   "merknad": "Kistefunn. Berre når isen ligg",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:92"
+  },
+  {
+   "id": "K-CHR-15-2",
+   "skjerm": "CHR-15",
+   "behaldar": "Ein forlaten lekter som har frose fast ved sagbruket",
+   "innhald": [
+    {
+     "pengar": 126
+    }
+   ],
+   "kjelde_tekst": "1 spd 6 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, nov. 1853",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:93"
+  },
+  {
+   "id": "K-CHR-09-2",
+   "skjerm": "CHR-09",
+   "behaldar": "Ei gøymsle i holet under ein halvferdig boge",
+   "innhald": [
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    },
+    {
+     "ting": "kjotsuppe",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 kamferdropar og 1 kjøtsuppe",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, nov. 1853",
+   "ventekiste": null,
+   "merknad": "Gøymd. Krev Tussestorleik (tussen, sjekk frå når)",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:94"
+  },
+  {
+   "id": "K-AKK-02-1",
+   "skjerm": "AKK-02",
+   "behaldar": "Ei skuffe i ein protokollreol",
+   "innhald": [
+    {
+     "ting": "gamle_myntar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamle myntar",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2, juli 1845",
+   "ventekiste": null,
+   "merknad": "Salsvare",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:151"
+  },
+  {
+   "id": "K-AKK-03-1",
+   "skjerm": "AKK-03",
+   "behaldar": "Ei lyskiste for arkivskrivarane",
+   "innhald": [
+    {
+     "ting": "kaffi",
+     "tal": 2
+    },
+    {
+     "ting": "honningvatn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi og 1 honningvatn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2, juli 1845",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:152"
+  },
+  {
+   "id": "K-AKK-04-1",
+   "skjerm": "AKK-04",
+   "behaldar": "Ein lærpung bak protokollane",
+   "innhald": [
+    {
+     "pengar": 72
+    }
+   ],
+   "kjelde_tekst": "72 skilling",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2, juli 1845",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:153"
+  },
+  {
+   "id": "K-AKK-05-1",
+   "skjerm": "AKK-05",
+   "behaldar": "Ei kasse ved tønna",
+   "innhald": [
+    {
+     "ting": "messingkompass",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Messingkompass",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2, juli 1845",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:154"
+  },
+  {
+   "id": "K-TRY-02-1",
+   "skjerm": "TRY-02",
+   "behaldar": "Ei skuffe under settekassane",
+   "innhald": [
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    },
+    {
+     "ting": "hoffmannsdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi med kandis og 1 hoffmannsdropar",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, våren 1848",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:173"
+  },
+  {
+   "id": "K-TRY-03-1",
+   "skjerm": "TRY-03",
+   "behaldar": "Makulaturkassa ved pressa",
+   "innhald": [
+    {
+     "pengar": 90
+    }
+   ],
+   "kjelde_tekst": "90 skilling",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, våren 1848",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:174"
+  },
+  {
+   "id": "K-TRY-05-1",
+   "skjerm": "TRY-05",
+   "behaldar": "Ein rull bak papirballane",
+   "innhald": [
+    {
+     "ting": "kalveskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Kalveskinn",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, våren 1848",
+   "ventekiste": null,
+   "merknad": "Salsvare. Skinn til bokbind",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:175"
+  },
+  {
+   "id": "K-TRY-06-1",
+   "skjerm": "TRY-06",
+   "behaldar": "Ei hylle over vasskaret",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "honningvatn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut og 1 honningvatn",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, våren 1848",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:176"
+  },
+  {
+   "id": "K-TRY-07-1",
+   "skjerm": "TRY-07",
+   "behaldar": "Ei kiste med makulatur",
+   "innhald": [
+    {
+     "ting": "reiseskreppa",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Reiseskreppa",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, våren 1848",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:177"
+  },
+  {
+   "id": "K-PRV-01-1",
+   "skjerm": "PRV-01",
+   "behaldar": "Ei vaktkasse som er sett frå seg i porten",
+   "innhald": [
+    {
+     "ting": "kaffi",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi og 1 luktesalt",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, våren 1848",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:193"
+  },
+  {
+   "id": "K-PRV-02-1",
+   "skjerm": "PRV-02",
+   "behaldar": "Ei kasse med avskriven proviant",
+   "innhald": [
+    {
+     "ting": "spekekjot",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 spekekjøt",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, våren 1848",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:194"
+  },
+  {
+   "id": "K-PRV-03-1",
+   "skjerm": "PRV-03",
+   "behaldar": "Ein pung bak tønnene",
+   "innhald": [
+    {
+     "pengar": 87
+    }
+   ],
+   "kjelde_tekst": "87 skilling",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, våren 1848",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:195"
+  },
+  {
+   "id": "K-PRV-04-1",
+   "skjerm": "PRV-04",
+   "behaldar": "Ein knagg under trappa",
+   "innhald": [
+    {
+     "ting": "strikka_topplue",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Strikka topplue",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, våren 1848",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:196"
+  },
+  {
+   "id": "K-MAG-02-1",
+   "skjerm": "MAG-02",
+   "behaldar": "Ei skuffe i katalogskåpet",
+   "innhald": [
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    },
+    {
+     "ting": "hoffmannsdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi med kandis og 1 hoffmannsdropar",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, hausten 1848",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:213"
+  },
+  {
+   "id": "K-MAG-03-1",
+   "skjerm": "MAG-03",
+   "behaldar": "Ein gammal skilling brukt som bokmerke",
+   "innhald": [
+    {
+     "ting": "gamle_myntar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamle myntar",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, hausten 1848",
+   "ventekiste": null,
+   "merknad": "Salsvare",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:214"
+  },
+  {
+   "id": "K-MAG-04-1",
+   "skjerm": "MAG-04",
+   "behaldar": "Ein pung som nokon har gløymt mellom to kartbøker",
+   "innhald": [
+    {
+     "pengar": 90
+    }
+   ],
+   "kjelde_tekst": "90 skilling",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, hausten 1848",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:215"
+  },
+  {
+   "id": "K-MAG-05-1",
+   "skjerm": "MAG-05",
+   "behaldar": "Ei korg under vaskeservanten",
+   "innhald": [
+    {
+     "ting": "ullvottar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Ullvottar",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, hausten 1848",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:216"
+  },
+  {
+   "id": "K-PIP-01-1",
+   "skjerm": "PIP-01",
+   "behaldar": "Ei kasse under trappa",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "kaffi",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut og 1 kaffi",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, vinteren 1849–50",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:247"
+  },
+  {
+   "id": "K-PIP-03-1",
+   "skjerm": "PIP-03",
+   "behaldar": "Ein pung i vedstabelen",
+   "innhald": [
+    {
+     "pengar": 84
+    }
+   ],
+   "kjelde_tekst": "84 skilling",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, vinteren 1849–50",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:248"
+  },
+  {
+   "id": "K-PIP-04-1",
+   "skjerm": "PIP-04",
+   "behaldar": "Ei kasse med avlagde ting",
+   "innhald": [
+    {
+     "ting": "spekekjot",
+     "tal": 2
+    },
+    {
+     "ting": "honningvatn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 spekekjøt og 1 honningvatn",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, vinteren 1849–50",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:249"
+  },
+  {
+   "id": "K-PIP-05-1",
+   "skjerm": "PIP-05",
+   "behaldar": "Ei hylle over bøtta",
+   "innhald": [
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    },
+    {
+     "ting": "hoffmannsdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 luktesalt og 1 hoffmannsdropar",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3, vinteren 1849–50",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:250"
+  },
+  {
+   "id": "K-TVF-03-1",
+   "skjerm": "TVF-03",
+   "behaldar": "Ei gammal kollektbøsse som er sett bort på hylla",
+   "innhald": [
+    {
+     "ting": "gamle_myntar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamle myntar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, juni 1851",
+   "ventekiste": null,
+   "merknad": "Salsvare",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:288"
+  },
+  {
+   "id": "K-TVF-04-1",
+   "skjerm": "TVF-04",
+   "behaldar": "Ei kasse som handverkarane gløymde",
+   "innhald": [
+    {
+     "ting": "spekekjot",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 spekekjøt og 1 luktesalt",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, juni 1851",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:289"
+  },
+  {
+   "id": "K-TVF-05-1",
+   "skjerm": "TVF-05",
+   "behaldar": "Ei korg ved vasskanna",
+   "innhald": [
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    },
+    {
+     "ting": "tjore",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi med kandis og 1 tjøre",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, juni 1851",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:290"
+  },
+  {
+   "id": "K-TVF-06-1",
+   "skjerm": "TVF-06",
+   "behaldar": "Ein pung som ein handverkar mista då stillaset blei teke ned",
+   "innhald": [
+    {
+     "pengar": 108
+    }
+   ],
+   "kjelde_tekst": "108 skilling",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, juni 1851",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:291"
+  },
+  {
+   "id": "K-KTK-02-1",
+   "skjerm": "KTK-02",
+   "behaldar": "Ei vedkasse i hjørnet",
+   "innhald": [
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    },
+    {
+     "ting": "tjore",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi med kandis og 1 tjøre",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, juli 1851",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:308"
+  },
+  {
+   "id": "K-KTK-04-1",
+   "skjerm": "KTK-04",
+   "behaldar": "Ein pung i ei nisje i muren",
+   "innhald": [
+    {
+     "pengar": 108
+    }
+   ],
+   "kjelde_tekst": "108 skilling",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, juli 1851",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:309"
+  },
+  {
+   "id": "K-KTK-05-1",
+   "skjerm": "KTK-05",
+   "behaldar": "Ei kiste under papirstablane",
+   "innhald": [
+    {
+     "ting": "solvskje",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Sølvskei",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, juli 1851",
+   "ventekiste": null,
+   "merknad": "Salsvare",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:310"
+  },
+  {
+   "id": "K-KTK-06-1",
+   "skjerm": "KTK-06",
+   "behaldar": "Ei skuffe under settarbordet",
+   "innhald": [
+    {
+     "ting": "messinglinjal",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Messinglinjal",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, juli 1851",
+   "ventekiste": null,
+   "merknad": "Butikkting frå Christiania 1852",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:311"
+  },
+  {
+   "id": "K-KLA-02-1",
+   "skjerm": "KLA-02",
+   "behaldar": "Vedkassa ved omnen",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut og 1 luktesalt",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, januar 1852",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:328"
+  },
+  {
+   "id": "K-KLA-04-1",
+   "skjerm": "KLA-04",
+   "behaldar": "Ei hylle med stilebøker frå førre hundreåret",
+   "innhald": [
+    {
+     "ting": "gamle_myntar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamle myntar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, januar 1852",
+   "ventekiste": null,
+   "merknad": "Salsvare",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:329"
+  },
+  {
+   "id": "K-KLA-05-1",
+   "skjerm": "KLA-05",
+   "behaldar": "Kartskåpet",
+   "innhald": [
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kaffi med kandis",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, januar 1852",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:330"
+  },
+  {
+   "id": "K-KLA-06-1",
+   "skjerm": "KLA-06",
+   "behaldar": "Skuffa i kateteret, som er Knudsens eiga",
+   "innhald": [
+    {
+     "pengar": 108
+    }
+   ],
+   "kjelde_tekst": "108 skilling",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, januar 1852",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:331"
+  },
+  {
+   "id": "K-KAN-02-1",
+   "skjerm": "KAN-02",
+   "behaldar": "Ei arkivkiste med kanselliseglet",
+   "innhald": [
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kjøtsuppe",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, 1852–53",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:357"
+  },
+  {
+   "id": "K-KAN-03-1",
+   "skjerm": "KAN-03",
+   "behaldar": "Ein skrivepult utan skrivar",
+   "innhald": [
+    {
+     "pengar": 180
+    }
+   ],
+   "kjelde_tekst": "1 spd 60 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, 1852–53",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:358"
+  },
+  {
+   "id": "K-KAN-04-1",
+   "skjerm": "KAN-04",
+   "behaldar": "Ei kiste ved lagringa",
+   "innhald": [
+    {
+     "ting": "kaffikjelen",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kaffikjelen",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, 1852–53",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:359"
+  },
+  {
+   "id": "K-KAN-05-1",
+   "skjerm": "KAN-05",
+   "behaldar": "Eit dåpsfat i ei hylle",
+   "innhald": [
+    {
+     "ting": "solvskje",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Sølvskei",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, 1852–53",
+   "ventekiste": null,
+   "merknad": "Salsvare",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:360"
+  },
+  {
+   "id": "K-KAN-06-1",
+   "skjerm": "KAN-06",
+   "behaldar": "Ei kiste med gamle kyrkjebøker",
+   "innhald": [
+    {
+     "ting": "ullsokkar",
+     "tal": 2
+    },
+    {
+     "ting": "kjotsuppe",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 ullsokkar og 1 kjøtsuppe",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, 1852–53",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:361"
+  },
+  {
+   "id": "K-KAN-07-1",
+   "skjerm": "KAN-07",
+   "behaldar": "Eit lite skrin ved lagringa",
+   "innhald": [
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 kamferdropar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, 1852–53",
+   "ventekiste": null,
+   "merknad": "Sjeldan",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:362"
+  },
+  {
+   "id": "K-KAN-08-1",
+   "skjerm": "KAN-08",
+   "behaldar": "Eit kateter utan lærar",
+   "innhald": [
+    {
+     "ting": "gamal_eikelinjal",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamal eikelinjal",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, 1852–53",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:363"
+  },
+  {
+   "id": "K-KAN-09-1",
+   "skjerm": "KAN-09",
+   "behaldar": "Ein pult med stilebøker",
+   "innhald": [
+    {
+     "pengar": 180
+    }
+   ],
+   "kjelde_tekst": "1 spd 60 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, 1852–53",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:364"
+  },
+  {
+   "id": "K-KAN-11-1",
+   "skjerm": "KAN-11",
+   "behaldar": "Ei skuffe under ein kopistpult",
+   "innhald": [
+    {
+     "ting": "gamle_myntar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamle myntar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, 1852–53",
+   "ventekiste": null,
+   "merknad": "Salsvare",
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:365"
+  },
+  {
+   "id": "K-KAN-13-1",
+   "skjerm": "KAN-13",
+   "behaldar": "Ei kiste med monogrammet til Christian IV",
+   "innhald": [
+    {
+     "ting": "kaffikjelen",
+     "tal": 2
+    },
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffikjelen og 1 kamferdropar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, 1852–53",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:366"
+  }
+ ],
+ "butikkar": [
+  {
+   "skjerm": "CHR-16a",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri: gjestgiveriet på Grønland",
+   "kven": "Verten",
+   "ekstra": [
+    "flatbrod",
+    "rommegraut",
+    "kaffi",
+    "kaffi_kandis"
+   ],
+   "ekstra_tekst": "Kvile for 8 s per figur. Flatbrød, rømmegraut, kaffi og kaffi med kandis",
+   "tid": [],
+   "tid_tekst": "1845",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:98"
+  },
+  {
+   "skjerm": "CHR-15a",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri: gjestgiveriet i Vaterland",
+   "kven": "Verten",
+   "ekstra": [
+    "kjotsuppe",
+    "kaffikjelen",
+    "ullsokkar"
+   ],
+   "ekstra_tekst": "Same varer. Frå 1851 òg kjøtsuppe, kaffikjelen og ullsokkar",
+   "tid": [],
+   "tid_tekst": "1847–50, 1851–53, nov. 1853",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:99"
+  },
+  {
+   "skjerm": "CHR-12a",
+   "type": "kvile",
+   "type_tekst": "Kvile: hybelen (1)",
+   "kven": "Aasen",
+   "ekstra": [],
+   "ekstra_tekst": "Gratis kvile, lagring, post, partybyte og spor i Dagboka. Lampa gjev dobbel kraft til rotformer",
+   "tid": [],
+   "tid_tekst": "1847–50",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:100"
+  },
+  {
+   "skjerm": "CHR-14a",
+   "type": "kvile",
+   "type_tekst": "Kvile: hybelen (2)",
+   "kven": "Aasen",
+   "ekstra": [],
+   "ekstra_tekst": "Same som hybelen (1). Lampa om ho er henta",
+   "tid": [],
+   "tid_tekst": "1851–53, nov. 1853",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:101"
+  },
+  {
+   "skjerm": "CHR-09a",
+   "type": "kvile",
+   "type_tekst": "Kvile: kyrkjerommet, fristad",
+   "kven": "Klokkaren",
+   "ekstra": [],
+   "ekstra_tekst": "Gratis kvile. Klokkaren sel Preikeboka (Moe) frå 1852",
+   "tid": [],
+   "tid_tekst": "1845, 1847–50 (sjekk), 1851–53, nov. 1853",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:102",
+   "ekstra_anna": [
+    "Klokkaren sel Preikeboka"
+   ]
+  },
+  {
+   "skjerm": "CHR-15e",
+   "type": "kvile",
+   "type_tekst": "Kvile: stova i Vaterland",
+   "kven": "Berte og jenta frå Vaterland",
+   "ekstra": [],
+   "ekstra_tekst": "Gratis kvile etter val B i 5.13b",
+   "tid": [],
+   "tid_tekst": "1851–53",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:103"
+  },
+  {
+   "skjerm": "CHR-15b",
+   "type": "kvile",
+   "type_tekst": "Kvile: hos arbeidarane",
+   "kven": "Arbeidarane i foreininga",
+   "ekstra": [],
+   "ekstra_tekst": "Gratis kvile etter val C i 5.14",
+   "tid": [],
+   "tid_tekst": "1852–53",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:104"
+  },
+  {
+   "skjerm": "CHR-07",
+   "type": "kvile",
+   "type_tekst": "Kvile: muren under gitteret",
+   "kven": "",
+   "ekstra": [],
+   "ekstra_tekst": "Gratis kvile etter 6.19b",
+   "tid": [],
+   "tid_tekst": "August til november 1853",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:105"
+  },
+  {
+   "skjerm": "CHR-04a",
+   "type": "bokhandel",
+   "type_tekst": "Bokhandel: Johan Dahls bokhandel",
+   "kven": "Dahl og bokhandlarsvennen",
+   "ekstra": [
+    "kritt",
+    "drammens_tiidende"
+   ],
+   "ekstra_tekst": "Kritt. Drammens Tiidende (Vinje) frå 1851. Utstyrstabellen har ikkje noko ord-reiskap for Christiania før 1848",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:106",
+   "ekstra_fraa": [
+    {
+     "ting": "drammens_tiidende",
+     "fraa": "frå 1851"
+    }
+   ]
+  },
+  {
+   "skjerm": "CHR-09",
+   "type": "bokhandel",
+   "type_tekst": "Bokhandel: boda i Kirkeristen (forslag frå 02_christiania)",
+   "kven": "Bokhandlaren",
+   "ekstra": [
+    "kritt",
+    "drammens_tiidende"
+   ],
+   "ekstra_tekst": "Kritt og Drammens Tiidende (Vinje)",
+   "tid": [],
+   "tid_tekst": "1851–53, nov. 1853",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:107"
+  },
+  {
+   "skjerm": "CHR-04d",
+   "type": "saerbutikk",
+   "type_tekst": "Særbutikk: papirhandelen i Kirkegata",
+   "kven": "Papirhandlaren",
+   "ekstra": [
+    "staalpenn",
+    "raudblyant",
+    "messinglinjal",
+    "notisboka"
+   ],
+   "ekstra_tekst": "Stålpenn frå 1848. Raudblyant, Messinglinjal og Notisboka frå 1852",
+   "tid": [],
+   "tid_tekst": "1847–50, 1851–53, nov. 1853",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:108",
+   "ekstra_fraa": [
+    {
+     "ting": "staalpenn",
+     "fraa": "frå 1848"
+    },
+    {
+     "ting": "raudblyant",
+     "fraa": "frå 1852"
+    },
+    {
+     "ting": "messinglinjal",
+     "fraa": "frå 1852"
+    },
+    {
+     "ting": "notisboka",
+     "fraa": "frå 1852"
+    }
+   ]
+  },
+  {
+   "skjerm": "CHR-10",
+   "type": "saerbutikk",
+   "type_tekst": "Særbutikk: urmakaren",
+   "kven": "Urmakaren",
+   "ekstra": [
+    "lommeur",
+    "lesebriller"
+   ],
+   "ekstra_tekst": "Lommeur. Lesebriller (forslag om at urmakaren sel dei)",
+   "tid": [],
+   "tid_tekst": "Frå 1849",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:109"
+  },
+  {
+   "skjerm": "CHR-02",
+   "type": "apotek",
+   "type_tekst": "Apotek: apoteket i Kvadraturen",
+   "kven": "Apotekaren",
+   "ekstra": [
+    "hoffmannsdropar",
+    "honningvatn",
+    "luktesalt",
+    "lusekam"
+   ],
+   "ekstra_tekst": "Hoffmannsdropar, honningvatn, luktesalt og lusekam",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:110"
+  },
+  {
+   "skjerm": "CHR-15",
+   "type": "skreddar",
+   "type_tekst": "Skreddar i Vaterland (forslag frå 02_christiania)",
+   "kven": "Skreddaren",
+   "ekstra": [
+    "flosshatt",
+    "silkekjole",
+    "vifte_med_perlemor"
+   ],
+   "ekstra_tekst": "Skinnkufte (Hallingdal 1845, førre region) i 1845. Flosshatt frå 1847 og Studentfrakk frå 1848. Silkekjole og Vifte med perlemor frå 1851 (forslag om at vifta blir seld her)",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:111",
+   "ekstra_fraa": [
+    {
+     "ting": "flosshatt",
+     "fraa": "frå 1847 og Studentfrakk frå 1848"
+    },
+    {
+     "ting": "silkekjole",
+     "fraa": "frå 1851 (forslag om at vifta blir seld her)"
+    },
+    {
+     "ting": "vifte_med_perlemor",
+     "fraa": "frå 1851 (forslag om at vifta blir seld her)"
+    }
+   ],
+   "ekstra_anna": [
+    "Skinnkufte i 1845"
+   ]
+  },
+  {
+   "skjerm": "CHR-09",
+   "type": "handelsstad",
+   "type_tekst": "Handelsstad: akseltorvet",
+   "kven": "Bøndene frå Romerike og Hedemarken",
+   "ekstra": [
+    "flatbrod",
+    "rommegraut",
+    "graut",
+    "smor",
+    "ol",
+    "kaffi",
+    "salt",
+    "lys",
+    "kritt",
+    "tjore",
+    "einer",
+    "staal",
+    "spekekjot",
+    "kaffi_kandis",
+    "lusekam"
+   ],
+   "ekstra_tekst": "Flatbrød, rømmegraut, graut, smør, øl, kaffi, salt, lys, kritt, tjøre, einer, stål, spekekjøt, kaffi med kandis og lusekam. Same varer i marknadsveka i februar 1849",
+   "tid": [],
+   "tid_tekst": "1845, 1847–50",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:112"
+  },
+  {
+   "skjerm": "CHR-17",
+   "type": "handelsstad",
+   "type_tekst": "Handelsstad: høkarbuene i Vika (forslag frå 02_christiania)",
+   "kven": "Høkarkona",
+   "ekstra": [
+    "ullsokkar"
+   ],
+   "ekstra_tekst": "Same varer som akseltorvet. Ullsokkar frå 1851",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:113",
+   "ekstra_fraa": [
+    {
+     "ting": "ullsokkar",
+     "fraa": "frå 1851"
+    }
+   ]
+  },
+  {
+   "skjerm": "CHR-16",
+   "type": "handelsstad",
+   "type_tekst": "Handelsstad: bøndene med slede på Grønland (forslag)",
+   "kven": "Bøndene",
+   "ekstra": [],
+   "ekstra_tekst": "Same varer som akseltorvet, og ullsokkar",
+   "tid": [],
+   "tid_tekst": "1851–53, nov. 1853",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:114"
+  },
+  {
+   "skjerm": "CHR-02b",
+   "type": "smie",
+   "type_tekst": "Smie: jernvarehandelen i Kongens gate",
+   "kven": "Jernvarehandlaren",
+   "ekstra": [
+    "staal",
+    "geologhammar"
+   ],
+   "ekstra_tekst": "Stål. Geologhammar (Asbjørnsen) frå 1852",
+   "tid": [],
+   "tid_tekst": "1847–50, 1851–53, nov. 1853",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:115",
+   "ekstra_fraa": [
+    {
+     "ting": "geologhammar",
+     "fraa": "frå 1852"
+    }
+   ]
+  },
+  {
+   "skjerm": "CHR-12b",
+   "type": "saerbutikk",
+   "type_tekst": "Særbutikk: antikvariatet til Botten-Hansen",
+   "kven": "Botten-Hansen",
+   "ekstra": [],
+   "ekstra_tekst": "Utstyrstabellen har ingen ting med denne staden enno",
+   "tid": [],
+   "tid_tekst": "Nov. 1853",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:116"
+  },
+  {
+   "skjerm": "CHR-08",
+   "type": null,
+   "type_tekst": "Dampskipsbrygga",
+   "kven": "Billettluka",
+   "ekstra": [],
+   "ekstra_tekst": "Billettar med skilling etter fana Verda og reisene",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:117"
+  },
+  {
+   "skjerm": "CHR-15 og CHR-17",
+   "type": null,
+   "type_tekst": "Skyss",
+   "kven": "Skysskarane",
+   "ekstra": [],
+   "ekstra_tekst": "Hest og karjol eller slede, skilling per mil frå Reiseposen",
+   "tid": [],
+   "tid_tekst": "Alle",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/03 Kart Christiania.md:118"
+  }
+ ]
+}

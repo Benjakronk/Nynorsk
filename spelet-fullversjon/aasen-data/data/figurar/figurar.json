@@ -1,0 +1,1185 @@
+[
+ {
+  "id": "aasen",
+  "namn": "Ivar Aasen",
+  "kort_namn": "Aasen",
+  "blir_med": [
+   {
+    "scene": null,
+    "tekst": "Ekset 1833",
+    "niva": null,
+    "niva_tekst": "Same som unge Ivar",
+    "tillegg": "Sjå under",
+    "merknad": "vaksen",
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:429"
+   }
+  ],
+  "profil": {
+   "liv": 0.8,
+   "royst": 1.25,
+   "kraft": {
+    "grunn": 12,
+    "vekst": 0.25
+   },
+   "ordkraft": {
+    "grunn": 22,
+    "vekst": 0.8
+   },
+   "herdsle": {
+    "grunn": 10,
+    "vekst": 0.25
+   },
+   "tole": {
+    "grunn": 18,
+    "vekst": 0.55
+   },
+   "snogg": {
+    "grunn": 24,
+    "vekst": 0.1
+   },
+   "lukke": {
+    "grunn": 18,
+    "vekst": 0.2
+   }
+  },
+  "vekst": "kurver.json#vekst",
+  "meny": [
+   "angrip",
+   "aasen_galdr",
+   "aasen_ekko",
+   "aasen_stev",
+   "aasen_rist",
+   "aasen_laan_ordet",
+   "lytt",
+   "ting"
+  ],
+  "ressurs": null,
+  "ordplassar": null,
+  "feltevne": [
+   "aasen_skriv_opp"
+  ],
+  "hugmaalar": "aasen_nokkelordet",
+  "utstyr": {
+   "reiskap": "Stokk eller penn",
+   "klede_og_hovud": "Alt for menn",
+   "lomme": "To",
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:739"
+  },
+  "portrett": null,
+  "kartfigur": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:5"
+ },
+ {
+  "id": "tussen",
+  "namn": "Tussen",
+  "kort_namn": "Tussen",
+  "blir_med": [
+   {
+    "scene": "s1_3",
+    "tekst": "1.3, julekvelden 1820",
+    "niva": 3,
+    "niva_tekst": null,
+    "tillegg": "Same nivå som Ivar",
+    "merknad": null,
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:428"
+   }
+  ],
+  "profil": {
+   "liv": 0.55,
+   "royst": null,
+   "kraft": {
+    "grunn": 14,
+    "vekst": 0.3
+   },
+   "ordkraft": {
+    "grunn": 20,
+    "vekst": 0.5
+   },
+   "herdsle": {
+    "grunn": 8,
+    "vekst": 0.2
+   },
+   "tole": {
+    "grunn": 20,
+    "vekst": 0.5
+   },
+   "snogg": {
+    "grunn": 40,
+    "vekst": 0.15
+   },
+   "lukke": {
+    "grunn": 30,
+    "vekst": 0.25
+   },
+   "royst_tekst": "ingen"
+  },
+  "vekst": "kurver.json#vekst",
+  "meny": [
+   "angrip",
+   "tussen_knip",
+   "tussen_goym_deg_i_halmen",
+   "tussen_eitt_ord",
+   "lytt"
+  ],
+  "ressurs": {
+   "id": "mett",
+   "namn": "Mett",
+   "maks": 3,
+   "ikon": null
+  },
+  "ordplassar": {
+   "har": false,
+   "kva_ord": null,
+   "kva_ord_tekst": null,
+   "eigenart": "Tussen lærer ord i fjøset gjennom Eitt ord",
+   "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:373"
+  },
+  "feltevne": [
+   "tussen_kyroyra",
+   "tussen_tussestorleik"
+  ],
+  "hugmaalar": "tussen_fjosvarme",
+  "utstyr": {
+   "reiskap": "Ingenting",
+   "klede_og_hovud": "Ingenting",
+   "lomme": "Ingen. Tussen et det han får, slik figurar_a.md seier",
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:740"
+  },
+  "portrett": null,
+  "kartfigur": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:312",
+  "meny_tekst": "Angrip, Knip, Gøym deg i halmen, Eitt ord og Lytt. Angrip er eit lite bit i leggen. Tussen kan ikkje bruke ting. Han et dei."
+ },
+ {
+  "id": "huldra",
+  "namn": "Huldra",
+  "kort_namn": "Huldra",
+  "blir_med": [
+   {
+    "scene": "s1_17",
+    "tekst": "1.17, Solnør 1841",
+    "niva": 8,
+    "niva_tekst": null,
+    "tillegg": "Same nivå som Aasen",
+    "merknad": null,
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:430"
+   }
+  ],
+  "profil": {
+   "liv": 0.85,
+   "royst": 1.3,
+   "kraft": {
+    "grunn": 10,
+    "vekst": 0.2
+   },
+   "ordkraft": {
+    "grunn": 26,
+    "vekst": 0.75
+   },
+   "herdsle": {
+    "grunn": 14,
+    "vekst": 0.3
+   },
+   "tole": {
+    "grunn": 26,
+    "vekst": 0.7
+   },
+   "snogg": {
+    "grunn": 30,
+    "vekst": 0.1
+   },
+   "lukke": {
+    "grunn": 22,
+    "vekst": 0.2
+   }
+  },
+  "vekst": "kurver.json#vekst",
+  "meny": [
+   "angrip",
+   "huldra_gamle_ord",
+   "huldra_lokk",
+   "huldra_ord",
+   "lytt",
+   "ting",
+   "huldra_joiken_min"
+  ],
+  "ressurs": null,
+  "ordplassar": {
+   "har": true,
+   "kva_ord": "hugsa",
+   "kva_ord_tekst": "Berre hugsa ord",
+   "eigenart": "Hugsa ord blir aldri halvgløymde når ho blir slegen ut, fordi ho hugsar for Aasen",
+   "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:361"
+  },
+  "feltevne": [
+   "huldra_felt_lokk",
+   "huldra_omsetjing"
+  ],
+  "hugmaalar": "huldra_huldrelokk",
+  "utstyr": {
+   "reiskap": "Horn og lurar, aldri noko skrive",
+   "klede_og_hovud": "Kjolar og skaut, aldri noko skrive",
+   "lomme": "To, aldri noko skrive",
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:741"
+  },
+  "portrett": null,
+  "kartfigur": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:386",
+  "meny_tekst": "Angrip, Gamle ord, Lokk (S1.42), Ord, Lytt og Ting, og frå 5.17 Joiken min. Ord opnar seg på Litlebergen (2.6) og brukar lånte ord frå Aasen (Magisystemet, «Lånte ord»). Huldra tek berre imot hugsa ord, og eit hugsa ord blir aldri halvgløymt når ho blir slegen ut. I sluttkampen kjem Ravdnas joik til éin gong. Frå 5.17 har huldra òg ein eigen meny merkt med eit noteark utan notar, der dei to orda som kom att med joiken, ligg (sjå under).",
+  "prolog_meny": [
+   "angrip",
+   "huldra_gamle_ord",
+   "lytt"
+  ]
+ },
+ {
+  "id": "vinje",
+  "namn": "Aasmund Olavsson Vinje",
+  "kort_namn": "Vinje",
+  "blir_med": [
+   {
+    "scene": "s2_27",
+    "tekst": "2.27, Rauland 1845",
+    "niva": 22,
+    "niva_tekst": null,
+    "tillegg": "Snittet",
+    "merknad": null,
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:432"
+   }
+  ],
+  "profil": {
+   "liv": 1.15,
+   "royst": 0.9,
+   "kraft": {
+    "grunn": 20,
+    "vekst": 0.55
+   },
+   "ordkraft": {
+    "grunn": 20,
+    "vekst": 0.6
+   },
+   "herdsle": {
+    "grunn": 16,
+    "vekst": 0.4
+   },
+   "tole": {
+    "grunn": 12,
+    "vekst": 0.3
+   },
+   "snogg": {
+    "grunn": 32,
+    "vekst": 0.15
+   },
+   "lukke": {
+    "grunn": 20,
+    "vekst": 0.25
+   }
+  },
+  "vekst": "kurver.json#vekst",
+  "meny": [
+   "angrip",
+   "vinje_stev",
+   "vinje_haan",
+   "vinje_ord",
+   "lytt",
+   "ting"
+  ],
+  "ressurs": {
+   "id": "ekte",
+   "namn": "Ekte",
+   "maks": 5,
+   "ikon": null
+  },
+  "ordplassar": {
+   "har": true,
+   "kva_ord": "begge",
+   "kva_ord_tekst": "Alle",
+   "eigenart": "Ord med ei form frå Telemark gjev 1 Ekte når han brukar dei",
+   "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:362"
+  },
+  "feltevne": [
+   "vinje_erte"
+  ],
+  "hugmaalar": "vinje_tvisyn",
+  "utstyr": {
+   "reiskap": "Stokk eller avisblad",
+   "klede_og_hovud": "Alt for menn",
+   "lomme": "To",
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:742"
+  },
+  "portrett": null,
+  "kartfigur": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:493",
+  "meny_tekst": "Angrip, Stev, Hån, Ord, Lytt og Ting. Frå 5.10 kjem Riv. Ord brukar lånte ord frå Aasen (Magisystemet, «Lånte ord»). Vinje tek imot alle ord, og eit ord med ei form frå Telemark gjev 1 Ekte når han brukar det. Angrip er vanleg fysisk åtak, og Vinje slår hardare enn dei fleste. Hån gjer lita skade og tek 10 prosent av målaren til fienden, og evna blir sterkare etter S1.27."
+ },
+ {
+  "id": "landstad",
+  "namn": "Magnus Brostrup Landstad",
+  "kort_namn": "Landstad",
+  "blir_med": [
+   {
+    "scene": "s2_24b",
+    "tekst": "2.24b, Seljord 1845",
+    "niva": 20,
+    "niva_tekst": null,
+    "tillegg": "Snittet",
+    "merknad": null,
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:431"
+   },
+   {
+    "scene": "s6_5",
+    "tekst": "6.5, Drammen, juni 1852",
+    "niva": 39,
+    "niva_tekst": null,
+    "tillegg": "Aasen minus to eller eige",
+    "merknad": "att",
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:439"
+   }
+  ],
+  "profil": {
+   "liv": 0.95,
+   "royst": 1.2,
+   "kraft": {
+    "grunn": 12,
+    "vekst": 0.25
+   },
+   "ordkraft": {
+    "grunn": 20,
+    "vekst": 0.65
+   },
+   "herdsle": {
+    "grunn": 15,
+    "vekst": 0.35
+   },
+   "tole": {
+    "grunn": 22,
+    "vekst": 0.6
+   },
+   "snogg": {
+    "grunn": 18,
+    "vekst": 0.05
+   },
+   "lukke": {
+    "grunn": 14,
+    "vekst": 0.15
+   }
+  },
+  "vekst": "kurver.json#vekst",
+  "meny": [
+   "angrip",
+   "landstad_syng",
+   "landstad_skift_maal",
+   "landstad_ord",
+   "lytt",
+   "ting"
+  ],
+  "ressurs": {
+   "id": "tvil",
+   "namn": "Tvil",
+   "maks": 100,
+   "ikon": null
+  },
+  "ordplassar": {
+   "har": true,
+   "kva_ord": "begge",
+   "kva_ord_tekst": "Alle",
+   "eigenart": "Lånte j-ord lækjer 25 prosent meir",
+   "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:363"
+  },
+  "feltevne": [
+   "landstad_folgje_heim"
+  ],
+  "hugmaalar": "landstad_kvelvsongen",
+  "utstyr": {
+   "reiskap": "Salmebok eller stav",
+   "klede_og_hovud": "Alt for menn, prestekjole",
+   "lomme": "To",
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:743"
+  },
+  "portrett": null,
+  "kartfigur": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:575",
+  "meny_tekst": "Angrip, Syng, Skift mål, Ord, Lytt og Ting. Ord brukar lånte ord frå Aasen (Magisystemet, «Lånte ord»). Landstad tek imot alle ord, og lånte j-ord lækjer 25 prosent meir hos han. Som gjest har han berre Angrip, Syng og Lytt, og Syng har berre Salmesong og Folkevise."
+ },
+ {
+  "id": "aslaug",
+  "namn": "Aslaug Tveitli",
+  "kort_namn": "Aslaug",
+  "blir_med": [
+   {
+    "scene": "s2_27",
+    "tekst": "2.27, Rauland 1845",
+    "niva": 22,
+    "niva_tekst": null,
+    "tillegg": "Snittet. Berre i Telemark, og ho blir verande i Rauland i 2.28",
+    "merknad": "gjest",
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:433"
+   },
+   {
+    "scene": "s6_7b",
+    "tekst": "6.7b, Rauland, juli 1852",
+    "niva": 40,
+    "niva_tekst": null,
+    "tillegg": "Snittet, +2 om spelaren valde B i S1.28",
+    "merknad": null,
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:441"
+   }
+  ],
+  "profil": {
+   "liv": 0.95,
+   "royst": 1.0,
+   "kraft": {
+    "grunn": 12,
+    "vekst": 0.3
+   },
+   "ordkraft": {
+    "grunn": 24,
+    "vekst": 0.7
+   },
+   "herdsle": {
+    "grunn": 14,
+    "vekst": 0.35
+   },
+   "tole": {
+    "grunn": 22,
+    "vekst": 0.55
+   },
+   "snogg": {
+    "grunn": 16,
+    "vekst": 0.05
+   },
+   "lukke": {
+    "grunn": 20,
+    "vekst": 0.2
+   }
+  },
+  "vekst": "kurver.json#vekst",
+  "meny": [
+   "angrip",
+   "aslaug_kved",
+   "aslaug_gje_vidare",
+   "aslaug_ord",
+   "lytt",
+   "ting"
+  ],
+  "ressurs": null,
+  "ordplassar": {
+   "har": true,
+   "kva_ord": "hugsa",
+   "kva_ord_tekst": "Berre hugsa ord",
+   "eigenart": "Eit lånt ord gjer 30 prosent meir når fienden handla sist",
+   "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:364"
+  },
+  "feltevne": [
+   "aslaug_kved_att"
+  ],
+  "hugmaalar": "aslaug_havstevet",
+  "utstyr": {
+   "reiskap": "Handarbeid som bandgrind, aldri noko skrive",
+   "klede_og_hovud": "Kjolar og skaut",
+   "lomme": "To, aldri noko skrive",
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:744"
+  },
+  "portrett": null,
+  "kartfigur": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:652",
+  "meny_tekst": "Angrip, Kved, Gje vidare, Ord, Lytt og Ting. I menyen under Kved ligg Bie. Ord brukar lånte ord frå Aasen (Magisystemet, «Lånte ord»). Aslaug tek berre imot hugsa ord, og eit lånt ord gjer 30 prosent meir når fienden handla sist. Som gjest i 1845 har ho ikkje Ord."
+ },
+ {
+  "id": "ravdna",
+  "namn": "Ravdna",
+  "kort_namn": "Ravdna",
+  "blir_med": [
+   {
+    "scene": "s5_16",
+    "tekst": "5.16, Lofoten 1851",
+    "niva": 37,
+    "niva_tekst": null,
+    "tillegg": "Snittet",
+    "merknad": null,
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:437"
+   },
+   {
+    "scene": "s6_19b",
+    "tekst": "6.19b, Akershus, august 1853",
+    "niva": 43,
+    "niva_tekst": null,
+    "tillegg": "Aasen minus to eller eige",
+    "merknad": "att",
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:443"
+   }
+  ],
+  "profil": {
+   "liv": 1.05,
+   "royst": 1.05,
+   "kraft": {
+    "grunn": 16,
+    "vekst": 0.4
+   },
+   "ordkraft": {
+    "grunn": 22,
+    "vekst": 0.6
+   },
+   "herdsle": {
+    "grunn": 16,
+    "vekst": 0.4
+   },
+   "tole": {
+    "grunn": 24,
+    "vekst": 0.55
+   },
+   "snogg": {
+    "grunn": 26,
+    "vekst": 0.1
+   },
+   "lukke": {
+    "grunn": 22,
+    "vekst": 0.2
+   }
+  },
+  "vekst": "kurver.json#vekst",
+  "meny": [
+   "angrip",
+   "ravdna_joik",
+   "ravdna_kast",
+   "ravdna_ord",
+   "lytt",
+   "ting"
+  ],
+  "ressurs": null,
+  "ordplassar": {
+   "har": true,
+   "kva_ord": "begge",
+   "kva_ord_tekst": "Alle",
+   "eigenart": "Ord med trekket Ro verkar dobbelt",
+   "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:365"
+  },
+  "feltevne": [
+   "ravdna_joike"
+  ],
+  "hugmaalar": "ravdna_ravdnas_joik",
+  "utstyr": {
+   "reiskap": "Lasso",
+   "klede_og_hovud": "Kofte og vinterklede, skaut",
+   "lomme": "To",
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:745"
+  },
+  "portrett": null,
+  "kartfigur": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:735",
+  "meny_tekst": "Angrip, Joik, Kast, Ord, Lytt og Ting. Ord brukar lånte ord frå Aasen (Magisystemet, «Lånte ord»). Ravdna tek imot alle ord, og ord med trekket Ro verkar dobbelt hos henne. Kast er ei lasso som seinkar ein fiende og fjernar statusen Utanfor rekkjevidd."
+ },
+ {
+  "id": "collett",
+  "namn": "Camilla Collett",
+  "kort_namn": "Collett",
+  "blir_med": [
+   {
+    "scene": "s5_12",
+    "tekst": "5.12, april 1851",
+    "niva": 35,
+    "niva_tekst": null,
+    "tillegg": "Snittet",
+    "merknad": null,
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:435"
+   }
+  ],
+  "profil": {
+   "liv": 0.85,
+   "royst": 1.1,
+   "kraft": {
+    "grunn": 10,
+    "vekst": 0.2
+   },
+   "ordkraft": {
+    "grunn": 20,
+    "vekst": 0.6
+   },
+   "herdsle": {
+    "grunn": 12,
+    "vekst": 0.3
+   },
+   "tole": {
+    "grunn": 24,
+    "vekst": 0.6
+   },
+   "snogg": {
+    "grunn": 34,
+    "vekst": 0.15
+   },
+   "lukke": {
+    "grunn": 24,
+    "vekst": 0.25
+   }
+  },
+  "vekst": "kurver.json#vekst",
+  "meny": [
+   "angrip",
+   "collett_taus",
+   "collett_salong",
+   "collett_stilling",
+   "collett_ord",
+   "lytt",
+   "ting"
+  ],
+  "ressurs": null,
+  "ordplassar": {
+   "har": true,
+   "kva_ord": "begge",
+   "kva_ord_tekst": "Alle",
+   "eigenart": "Lånte ord hos henne kan ikkje bli rettskrivne",
+   "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:366"
+  },
+  "feltevne": [
+   "collett_blikket"
+  ],
+  "hugmaalar": "collett_gyldenlak",
+  "utstyr": {
+   "reiskap": "Vifte eller penn",
+   "klede_og_hovud": "Kjolar og skaut",
+   "lomme": "To",
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:746"
+  },
+  "portrett": null,
+  "kartfigur": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:38",
+  "meny_tekst": "Angrip, Taus, Salong (evnelista), Stilling (Ope eller Anonym), Ord, Lytt og Ting. Ord brukar lånte ord frå Aasen (Magisystemet, «Lånte ord»). Collett tek imot alle ord, og lånte ord hos henne kan ikkje bli rettskrivne."
+ },
+ {
+  "id": "knudsen",
+  "namn": "Knud Knudsen",
+  "kort_namn": "Knudsen",
+  "blir_med": [
+   {
+    "scene": "s5_22",
+    "tekst": "5.22, eige kapittel",
+    "niva": 36,
+    "niva_tekst": null,
+    "tillegg": "Fast",
+    "merknad": null,
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:436"
+   }
+  ],
+  "profil": {
+   "liv": 1.1,
+   "royst": 0.8,
+   "kraft": {
+    "grunn": 16,
+    "vekst": 0.35
+   },
+   "ordkraft": {
+    "grunn": 18,
+    "vekst": 0.6
+   },
+   "herdsle": {
+    "grunn": 20,
+    "vekst": 0.5
+   },
+   "tole": {
+    "grunn": 18,
+    "vekst": 0.45
+   },
+   "snogg": {
+    "grunn": 22,
+    "vekst": 0.08
+   },
+   "lukke": {
+    "grunn": 14,
+    "vekst": 0.1
+   }
+  },
+  "vekst": "kurver.json#vekst",
+  "meny": [
+   "angrip",
+   "knudsen_ret",
+   "knudsen_ladeevner",
+   "knudsen_saklegheit",
+   "knudsen_ord",
+   "lytt",
+   "ting"
+  ],
+  "ressurs": null,
+  "ordplassar": {
+   "har": true,
+   "kva_ord": "skrivne",
+   "kva_ord_tekst": "Berre skrivne ord",
+   "eigenart": "Lånte ord gjer 20 prosent mindre i første runde og 10 prosent meir for kvar runde etter, opp til 40 prosent meir",
+   "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:367"
+  },
+  "feltevne": [
+   "knudsen_rett"
+  ],
+  "hugmaalar": "knudsen_landsgyldig_uttale",
+  "utstyr": {
+   "reiskap": "Penn, raudblyant eller linjal",
+   "klede_og_hovud": "Alt for menn",
+   "lomme": "To",
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:747"
+  },
+  "portrett": null,
+  "kartfigur": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:119",
+  "meny_tekst": "Angrip, Ret, Ladeevner, Saklegheit, Ord, Lytt og Ting. Ord brukar lånte ord frå Aasen (Magisystemet, «Lånte ord»). Knudsen tek berre imot skrivne ord. Lånte ord gjer 20 prosent mindre i første runde og 10 prosent meir for kvar runde etter, opp til 40 prosent meir. Tvo mål står i samspelmenyen når Aasen er med."
+ },
+ {
+  "id": "asbjornsen",
+  "namn": "Peter Christen Asbjørnsen",
+  "kort_namn": "Asbjørnsen",
+  "blir_med": [
+   {
+    "scene": "s6_8",
+    "tekst": "6.8 og 6.9",
+    "niva": 40,
+    "niva_tekst": null,
+    "tillegg": "Snittet",
+    "merknad": null,
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:440"
+   }
+  ],
+  "profil": {
+   "liv": 0.85,
+   "royst": 1.35,
+   "kraft": {
+    "grunn": 16,
+    "vekst": 0.35
+   },
+   "ordkraft": {
+    "grunn": 22,
+    "vekst": 0.75
+   },
+   "herdsle": {
+    "grunn": 12,
+    "vekst": 0.3
+   },
+   "tole": {
+    "grunn": 14,
+    "vekst": 0.35
+   },
+   "snogg": {
+    "grunn": 26,
+    "vekst": 0.1
+   },
+   "lukke": {
+    "grunn": 26,
+    "vekst": 0.25
+   }
+  },
+  "vekst": "kurver.json#vekst",
+  "meny": [
+   "angrip",
+   "asbjornsen_paakall",
+   "asbjornsen_granske",
+   "asbjornsen_ord",
+   "lytt",
+   "ting"
+  ],
+  "ressurs": {
+   "id": "vilje",
+   "namn": "Vilje",
+   "maks": null,
+   "ikon": null,
+   "maks_tekst": "Vilje-målar på 3 til 6 prikkar"
+  },
+  "ordplassar": {
+   "har": true,
+   "kva_ord": "skrivne",
+   "kva_ord_tekst": "Berre skrivne ord",
+   "eigenart": "Lånte ord tek eitt segl ekstra mot vesen som har ei side i eventyrboka",
+   "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:368"
+  },
+  "feltevne": [
+   "asbjornsen_notere"
+  ],
+  "hugmaalar": "asbjornsen_det_frie_kallet",
+  "utstyr": {
+   "reiskap": "Hammar eller notisbok",
+   "klede_og_hovud": "Alt for menn",
+   "lomme": "To, og han ber eventyrboka",
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:748"
+  },
+  "portrett": null,
+  "kartfigur": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:216",
+  "meny_tekst": "Angrip, Påkall, Granske, Ord, Lytt og Ting. Ord brukar lånte ord frå Aasen (Magisystemet, «Lånte ord»). Asbjørnsen tek berre imot skrivne ord, og lånte ord tek eitt segl ekstra mot vesen som har ei side i eventyrboka.",
+  "prolog_meny": [
+   "angrip",
+   "asbjornsen_paakall",
+   "asbjornsen_samle",
+   "lytt"
+  ]
+ },
+ {
+  "id": "moe",
+  "namn": "Jørgen Moe",
+  "kort_namn": "Moe",
+  "blir_med": [
+   {
+    "scene": "s6_8",
+    "tekst": "6.8 og 6.9",
+    "niva": 40,
+    "niva_tekst": null,
+    "tillegg": "Snittet",
+    "merknad": null,
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:440"
+   }
+  ],
+  "profil": {
+   "liv": 0.8,
+   "royst": 1.15,
+   "kraft": {
+    "grunn": 8,
+    "vekst": 0.15
+   },
+   "ordkraft": {
+    "grunn": 22,
+    "vekst": 0.7
+   },
+   "herdsle": {
+    "grunn": 12,
+    "vekst": 0.3
+   },
+   "tole": {
+    "grunn": 22,
+    "vekst": 0.6
+   },
+   "snogg": {
+    "grunn": 16,
+    "vekst": 0.05
+   },
+   "lukke": {
+    "grunn": 18,
+    "vekst": 0.2
+   }
+  },
+  "vekst": "kurver.json#vekst",
+  "meny": [
+   "angrip",
+   "moe_fortelje",
+   "moe_troyst",
+   "moe_ord",
+   "lytt",
+   "ting"
+  ],
+  "ressurs": null,
+  "ordplassar": {
+   "har": true,
+   "kva_ord": "begge",
+   "kva_ord_tekst": "Alle",
+   "eigenart": "Svevn og Løyse frå lånte ord varer éin runde lenger",
+   "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:369"
+  },
+  "feltevne": [
+   "moe_felt_fortelje"
+  ],
+  "hugmaalar": "moe_signinga",
+  "utstyr": {
+   "reiskap": "Bok eller stokk",
+   "klede_og_hovud": "Alt for menn",
+   "lomme": "To",
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:749"
+  },
+  "portrett": null,
+  "kartfigur": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:298",
+  "meny_tekst": "Angrip, Fortelje, Trøyst, Ord, Lytt og Ting. Ord brukar lånte ord frå Aasen (Magisystemet, «Lånte ord»). Moe tek imot alle ord, og Svevn og Løyse frå lånte ord varer éin runde lenger hos han.",
+  "prolog_meny": [
+   "angrip",
+   "moe_fortelje",
+   "lytt"
+  ]
+ },
+ {
+  "id": "ole_bull",
+  "namn": "Ole Bull",
+  "kort_namn": "Ole Bull",
+  "blir_med": [
+   {
+    "scene": "s6_3",
+    "tekst": "6.3, 1852",
+    "niva": 39,
+    "niva_tekst": null,
+    "tillegg": "Snittet",
+    "merknad": null,
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:438"
+   }
+  ],
+  "profil": {
+   "liv": 0.95,
+   "royst": 1.1,
+   "kraft": {
+    "grunn": 14,
+    "vekst": 0.3
+   },
+   "ordkraft": {
+    "grunn": 22,
+    "vekst": 0.65
+   },
+   "herdsle": {
+    "grunn": 14,
+    "vekst": 0.3
+   },
+   "tole": {
+    "grunn": 18,
+    "vekst": 0.45
+   },
+   "snogg": {
+    "grunn": 28,
+    "vekst": 0.12
+   },
+   "lukke": {
+    "grunn": 28,
+    "vekst": 0.3
+   }
+  },
+  "vekst": "kurver.json#vekst",
+  "meny": [
+   "angrip",
+   "ole_bull_spel",
+   "ole_bull_dobbelgrep",
+   "ole_bull_stopp",
+   "ole_bull_ord",
+   "lytt",
+   "ting"
+  ],
+  "ressurs": null,
+  "ordplassar": {
+   "har": true,
+   "kva_ord": "begge",
+   "kva_ord_tekst": "Alle",
+   "eigenart": "Eit lånt ord gjev 20 prosent meir til den neste figuren som brukar same lydfamilie i runden",
+   "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:370"
+  },
+  "feltevne": [
+   "ole_bull_spele_opp"
+  ],
+  "hugmaalar": "ole_bull_fossegrimslaatten",
+  "utstyr": {
+   "reiskap": "Fele",
+   "klede_og_hovud": "Alt for menn",
+   "lomme": "To",
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:750"
+  },
+  "portrett": null,
+  "kartfigur": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:368",
+  "meny_tekst": "Angrip, Spel, Dobbelgrep, Stopp, Ord, Lytt og Ting. Stopp står berre i menyen medan han spelar, og Ord kan ikkje brukast då. Ord brukar lånte ord frå Aasen (Magisystemet, «Lånte ord»). Bull tek imot alle ord, og eit lånt ord gjev 20 prosent meir til den neste figuren som brukar same lydfamilie i runden."
+ },
+ {
+  "id": "berte",
+  "namn": "Berte Kanutte Aarflot",
+  "kort_namn": "Berte",
+  "blir_med": [
+   {
+    "scene": "s5_5b",
+    "tekst": "5.5b, Årflot, januar 1851",
+    "niva": 34,
+    "niva_tekst": null,
+    "tillegg": "Same nivå som Aasen",
+    "merknad": null,
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:434"
+   }
+  ],
+  "profil": {
+   "liv": 1.0,
+   "royst": 1.15,
+   "kraft": {
+    "grunn": 12,
+    "vekst": 0.3
+   },
+   "ordkraft": {
+    "grunn": 22,
+    "vekst": 0.65
+   },
+   "herdsle": {
+    "grunn": 16,
+    "vekst": 0.4
+   },
+   "tole": {
+    "grunn": 26,
+    "vekst": 0.7
+   },
+   "snogg": {
+    "grunn": 18,
+    "vekst": 0.05
+   },
+   "lukke": {
+    "grunn": 18,
+    "vekst": 0.2
+   }
+  },
+  "vekst": "kurver.json#vekst",
+  "meny": [
+   "angrip",
+   "berte_det_staar_skrive",
+   "berte_kle_paa",
+   "berte_be",
+   "lytt",
+   "ting"
+  ],
+  "ressurs": null,
+  "ordplassar": {
+   "har": false,
+   "kva_ord": null,
+   "kva_ord_tekst": null,
+   "eigenart": "Ho brukar ikkje galdr. Minneversa er hennar",
+   "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:371"
+  },
+  "feltevne": [
+   "berte_samle_til_mote"
+  ],
+  "hugmaalar": "berte_frimod",
+  "utstyr": {
+   "reiskap": "Stav",
+   "klede_og_hovud": "Kjolar og skaut",
+   "lomme": "To. Rustninga ligg i ein eigen meny og blir lånt ut til dei andre",
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:751"
+  },
+  "portrett": null,
+  "kartfigur": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:436",
+  "meny_tekst": "Angrip, Det står skrive, Kle på, Be, Lytt og Ting. Angrip er eit slag med staven. Berte kan ikkje bere eventyrsider og vil ikkje vere med på påkallingar. Når Asbjørnsen påkallar, snur ho ryggen til, og den runden får ho ikkje Ande."
+ },
+ {
+  "id": "jotunen",
+  "namn": "Jotunen",
+  "kort_namn": "Jotunen",
+  "blir_med": [
+   {
+    "scene": "s6_13",
+    "tekst": "6.13, Hjerkinn",
+    "niva": 41,
+    "niva_tekst": null,
+    "tillegg": "Snittet",
+    "merknad": null,
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:442"
+   }
+  ],
+  "profil": {
+   "liv": 1.5,
+   "royst": null,
+   "kraft": {
+    "grunn": 34,
+    "vekst": 0.95
+   },
+   "ordkraft": {
+    "grunn": 4,
+    "vekst": 0.05
+   },
+   "herdsle": {
+    "grunn": 30,
+    "vekst": 0.75
+   },
+   "tole": {
+    "grunn": 20,
+    "vekst": 0.45
+   },
+   "snogg": {
+    "grunn": 18,
+    "vekst": 0.05
+   },
+   "lukke": {
+    "grunn": 8,
+    "vekst": 0.05
+   },
+   "royst_tekst": "ingen"
+  },
+  "vekst": "kurver.json#vekst",
+  "meny": [
+   "angrip",
+   "jotunen_eitt_ord"
+  ],
+  "ressurs": {
+   "id": "tillit",
+   "namn": "Tillit",
+   "maks": null,
+   "ikon": null
+  },
+  "ordplassar": {
+   "har": false,
+   "kva_ord": null,
+   "kva_ord_tekst": null,
+   "eigenart": "Han får eitt ord om gongen gjennom Tillit og gåver",
+   "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:372"
+  },
+  "feltevne": [
+   "jotunen_lyfte"
+  ],
+  "hugmaalar": "jotunen_jotunsteget",
+  "utstyr": {
+   "reiskap": "Stein eller åre, berre gåver",
+   "klede_og_hovud": "Ingenting",
+   "lomme": "To, berre gåver",
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:752"
+  },
+  "portrett": null,
+  "kartfigur": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:566",
+  "meny_tekst": "Jotunen har ein stutt meny: Angrip og Eitt ord. Angrip er eit slag med steinen han ber, og det hardaste vanlege slaget i spelet. Han tek ikkje imot ting."
+ },
+ {
+  "id": "unge_ivar",
+  "namn": "Unge Ivar",
+  "kort_namn": "Unge Ivar",
+  "blir_med": [
+   {
+    "scene": "s1_1",
+    "tekst": "1.1, 1816",
+    "niva": 1,
+    "niva_tekst": null,
+    "tillegg": null,
+    "merknad": null,
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:427"
+   }
+  ],
+  "profil": null,
+  "vekst": "kurver.json#unge_ivar",
+  "meny": [
+   "angrip",
+   "aasen_galdr",
+   "aasen_ekko",
+   "lytt",
+   "ting"
+  ],
+  "ressurs": null,
+  "ordplassar": {
+   "har": false,
+   "kva_ord": null,
+   "kva_ord_tekst": null,
+   "eigenart": "Tussen lærer ord i fjøset gjennom Eitt ord",
+   "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:373"
+  },
+  "feltevne": [],
+  "hugmaalar": null,
+  "utstyr": {
+   "reiskap": "Kjepp eller griffel",
+   "klede_og_hovud": "Barneklede og lue",
+   "lomme": "Éi lomme",
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:738"
+  },
+  "portrett": null,
+  "kartfigur": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:184",
+  "meny_tekst": "Unge Ivar (1816–1831) har ein mindre meny: Angrip, Galdr, Ekko, Lytt og Ting. Han har berre sunnmørske former. Former han høyrer i andre grender på omgangsskulen (1.8), kostar 50 prosent meir Røyst til grammatikken er skriven, fordi han ikkje har gjort dei til sine enno. Han har maks 2 Ande til Bergen 1841."
+ },
+ {
+  "id": "rasmus",
+  "namn": "Rasmus",
+  "kort_namn": "Rasmus",
+  "blir_med": [],
+  "profil": null,
+  "vekst": null,
+  "meny": [
+   "angrip",
+   "rasmus_flykt"
+  ],
+  "ressurs": null,
+  "ordplassar": null,
+  "feltevne": [],
+  "hugmaalar": null,
+  "utstyr": null,
+  "portrett": null,
+  "kartfigur": null,
+  "berre_prologen": true,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:16"
+ }
+]

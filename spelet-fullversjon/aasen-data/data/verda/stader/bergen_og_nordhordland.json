@@ -1,0 +1,6245 @@
+{
+ "fane": "Bergen og Nordhordland",
+ "stader": [
+  {
+   "id": "BGN",
+   "namn": "Bergen",
+   "fane": "bergen_og_nordhordland",
+   "storleik": "storby",
+   "skildring": "Bergen er ein storby og den einaste storbyen spelaren kjem til i ungdomen. Byen er open i juni og juli 1841 (1.19 til 1.25), frå juni 1843 til reiseåra lukkar seg i 3.25 med tyngda i vinteren 1843 til 1844, i februar 1848 (S2.18), 2. og 3. januar 1850 (Spor G), frå mars til mai 1852 (6.1 til S2.21) og i den store opninga hausten 1853. I 1857 står berre salen i Komediehuset (7.18). Byen er bygd rundt Vågen som ein hestesko, og kvar bydel er éin skjerm som opnar seg ut frå hamna. Torget i Vågsbotnen bind dei to sidene saman til lands. I tabellen tyder «Alle» 1841, 1843–44, 1848 og 1850, 1852 og 1853. Laget for 1857 er teikna som 1853, og berre BGN-11 og BGN-11a er i bruk der. Bygderegelen skiftar med epoken, slik fana Bergen viser: for mange stemmer i 1841, glør i golvet på Bryggen i 1843–44 (forslag), sorg i 1848, teaterdansk i 1850, frosne folk i 1852 og rim på Torget i 1853.",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:7"
+  },
+  {
+   "id": "ARK",
+   "namn": "Arkivet under Rådstova",
+   "fane": "bergen_og_nordhordland",
+   "storleik": "dungeon",
+   "skildring": "Den første blekkdungeonen ligg i kjellaren under Rådstova, som var byarrest til 1867. Han er open éin natt i juni 1841 etter 1.22, tek om lag tjue minutt og står på nivå 9. Kjellaren har tre delar på same plan under kvelvane: arrestcellene, dei to gamle cellene Dårekista og Trollkjerringarresten, og den inste kvelven. Grepet er rettskriving som gåte, og spelaren lærer Rettskriven og småorda som motgift i første del. Møtetabell: fana 9b, bolken «Bergen, juni og juli 1841», sona «Arkivet under Rådstova».",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:78"
+  },
+  {
+   "id": "REK",
+   "namn": "Rekneskapsbøkene",
+   "fane": "bergen_og_nordhordland",
+   "storleik": "dungeon",
+   "skildring": "Ein liten blekkdungeon i rekneskapsbøkene til ein handelsforvaltar på Bryggen, sommaren 1841 (S1.8). Han tek om lag ti minutt og står på nivå 10. Inngangen er Synnøve som græt utanfor kontoret. Grepet er gjeld skriven på dansk og ei kvittering på nordhordlandsk: Aasen må finne lappen «greidd i fisk, tri vog» før Debitoren kan slåast. Dei tre bøkene er landskap ein går inn i frå pulten. Møtetabell: fana 9b, bolken «Bergen, juni og juli 1841», sona «Rekneskapsbøkene (S1.8)».",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:101"
+  },
+  {
+   "id": "UBR",
+   "namn": "Under Bryggen",
+   "fane": "bergen_og_nordhordland",
+   "storleik": "dungeon",
+   "skildring": "Under Bryggen er ein ruin i ni lag under eit gamalt pakkhus, open frå hausten 1843 til mars 1844 (2.8 til 2.9) og for retur til 3.25. Kvar tur inn frå Litlebergen opnar eitt nytt lag nedover, og heile dungeonen tek om lag 40 minutt over ni turar på nivå 12 til 14. Grepet er lag ned gjennom tida: jo djupare, jo eldre er orda i lufta, og musikken mistar eitt instrument for kvart lag. Inndelinga følgjer den godkjende tabellen i fana Bergen. Møtetabell: fana 9b, bolken «Nordhordland og Bergen, juni 1843 til mars 1844», sonene «Under Bryggen, lag 1 til 4» og «Under Bryggen, lag 5 til 8». Lag 8 har Svært høg, og lag 9 har berre bossen. I 1852 har kjellarane under Bryggen sona «Pakkhuskjellarane ved Vågen og kjellarane under Bryggen» i fana 9c.",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:120"
+  },
+  {
+   "id": "VFD",
+   "namn": "Varden på Fedje",
+   "fane": "bergen_og_nordhordland",
+   "storleik": "dungeon",
+   "skildring": "Varden på Fedje er ein liten dungeon i storm, hausten 1843 (S1.12). Han tek om lag ti minutt og står på nivå 13. Fedje kan berre nåast med båt frå Holsnøy i storm, og fyret på Hellisøy er ikkje bygd. Grepet er vinden: han kastar Aasen bakover om han går oppreist, og spelaren kryp mellom steinane frå le til le. Her er ingen boss, og samtalen med vardekona er enden. Møtetabell: fana 9b, bolken «Nordhordland og Bergen, juni 1843 til mars 1844», sona «Varden på Fedje (S1.12)».",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:156"
+  },
+  {
+   "id": "ABG",
+   "namn": "Arkivet i bispegarden",
+   "fane": "bergen_og_nordhordland",
+   "storleik": "dungeon",
+   "skildring": "Ein kort blekkdungeon i huset til Neumann i februar 1848, tre veker etter at han døydde (S2.18). Han tek om lag ti minutt og står på nivå 32. Anna slepper partyet inn frå arbeidsrommet. Kyrkjebøkene vil skrive inn Neumann og breva hans, og Innførslane går til åtak. Bossen Dødsregisteret er langsam og fjernar eit tilfeldig ord frå Ordboka i kampen med «gløymsle». Kistene står berre i arkivromma og gardsrommet, ikkje der folk bur. Møtetabell: fana 9b, bolken «Bergen, februar 1848 og januar 1850», sona «Arkivet i bispegarden (S2.18)».",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:176"
+  },
+  {
+   "id": "BKL",
+   "namn": "Bak kulissane",
+   "fane": "bergen_og_nordhordland",
+   "storleik": "dungeon",
+   "skildring": "Premierekvelden i Det norske Theater i Komediehuset 2. januar 1850 er ein dungeon bak scena (4.19). Han tek om lag tjue minutt og står på nivå 30 til 34. Ole Bull møter Aasen i gangen og er med som gjest. Grepet er å finne skodespelarar som har stivna midt i replikken og gje dei orda attende med ord frå Nordhordland og Bergen. Dungeonfana deler huset i fire område med ein stivna skodespelar i kvart: garderobane, sidescena med kulissane på hjul, snorloftet og gangen ned til sufflørkassa. Møtetabell: fana 9b, bolken «Bergen, februar 1848 og januar 1850», sona «Bak kulissane».",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:196"
+  },
+  {
+   "id": "SUF",
+   "namn": "Sufflørkassa",
+   "fane": "bergen_og_nordhordland",
+   "storleik": "dungeon",
+   "skildring": "Ein liten dungeon under scenegolvet i Komediehuset i mars 1852, same natt som 6.1 (6.2). Han tek om lag femten minutt og står på nivå 39. Ole Bull spelar på scena over hovuda og er gjest på den fjerde plassen, anten han seinare blir med eller ikkje, og Vinje står i reserve. Grepet er Taktringen: fela høyrest gjennom golvplankane og avgjer kva lydfamilie som får dobbel verknad. Dei tre laga er forslag i dungeonfana: lageret for gamle kulissar, rekvisittkammeret med dei danske strykingane som istappar, og gangen til sufflørkassa. Møtetabell: fana 9c, bolken «Fimbulvinteren: Bergen, 1852», sona «Sufflørkassa (6.2)».",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:219"
+  },
+  {
+   "id": "LAS",
+   "namn": "Lasterommet på emigrantskipet",
+   "fane": "bergen_og_nordhordland",
+   "storleik": "dungeon",
+   "skildring": "Lasterommet er ein dungeon om bord på emigrantskipet frå Bergen til Liverpool i mai 1852 (S2.21). Han tek om lag femten minutt og står på nivå 39. Ole Bull må vere med. Fiskarfamilien Myklebust er om bord. Grepet er storm: dekket krengjer, og vatnet stig, slik typen «Om bord» seier. Tre rom i lasta har kvar sin synlege fiende eller kamp. Bossen Landkjøpsbrevet skriv om vilkåra sine for kvar runde. Møtetabell: ingen. Fiendane står synlege, slik bolken «Fimbulvinteren: Bergen, 1852» i fana 9c seier.",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:242"
+  },
+  {
+   "id": "DUB",
+   "namn": "Djupet under Bryggen",
+   "fane": "bergen_og_nordhordland",
+   "storleik": "dungeon",
+   "skildring": "Djupet under Bryggen er superbossdungeonen for Den første skrivaren, den siste superbossen (S2.41). Han opnar seg i 1853 frå UBR-16 når Kongsormen er slått, alle åtte drakane er roa og Kansellisten, Den blinde kongen, Dæmringen og Heildraugen er slegne, og Aasen har Avkroken og Gyda-pinnen. Gyda-pinnen kviskrar i skinnpungen ei natt i Bergen, og der det var leire, står ein sti open. Dungeonen går frå tre til skinn i tre lag på om lag femten minutt kvar, i alt om lag 45 minutt. Fiendane står på nivå 63 og 64, og bossen på 68 til 70. Skinnskrivarane skriv namnet til ein figur over to rundar, og etasjane lærer slik bort forteljarlina til Sagaskrivaren. Kampen må takast før Sagahallen eller i Etter soga-fila. Møtetabell: fana 9c, bolken «Superbossdungeonane», sonene «Djupet under Bryggen, leira med dei siste runepinnane (S2.41)» og «Djupet under Bryggen, kammeret med skinna». Skrivarrommet har berre bossen.",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:263"
+  },
+  {
+   "id": "LBG",
+   "namn": "Nordhordland",
+   "fane": "bergen_og_nordhordland",
+   "storleik": null,
+   "skildring": "Nordhordland er ein småregion med 20 til 45 minutt første gong. Han er open frå 2.6 i juni 1843 til reiseåra lukkar seg i 3.25, og Valestrand på Osterøy er open hausten 1853 for S2.8. Litlebergen på Holsnøy er kvileplass og skrivebase, og dit kjem partyet attende etter kvar tur inn til Bergen. Holsnøy med holmane er utmark, Alverstraumen er handelsstaden og gjestgiveriet der straumen går hardt mellom fjordane, og Radøy med kyrkjestaden Manger ligg ein båttur ut. Fedje er dungeonen Varden på Fedje over. I 1843 høyrde Holsnøy og Alverstraumen til Hamre, og namna Alversund og Meland skal ikkje brukast. Bygderegelen er eit forslag i fana: fram til første nedslaget i 2.6 gjev Lytt berre dei bergenske formene, og nordhordlandsformene står med ei tynn line over seg. Litlebergen, Alverstraumen og Manger har møterate Ingen. Holsnøy har sona «Holsnøy, holmane og strendene» og fjordane sona «Fjordane ved Alverstraumen og sunda mot Fedje» i fana 9b, bolken «Nordhordland og Bergen, juni 1843 til mars 1844».",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:293"
+  },
+  {
+   "id": "HSN",
+   "namn": "Nordhordland",
+   "fane": "bergen_og_nordhordland",
+   "storleik": null,
+   "skildring": "Nordhordland er ein småregion med 20 til 45 minutt første gong. Han er open frå 2.6 i juni 1843 til reiseåra lukkar seg i 3.25, og Valestrand på Osterøy er open hausten 1853 for S2.8. Litlebergen på Holsnøy er kvileplass og skrivebase, og dit kjem partyet attende etter kvar tur inn til Bergen. Holsnøy med holmane er utmark, Alverstraumen er handelsstaden og gjestgiveriet der straumen går hardt mellom fjordane, og Radøy med kyrkjestaden Manger ligg ein båttur ut. Fedje er dungeonen Varden på Fedje over. I 1843 høyrde Holsnøy og Alverstraumen til Hamre, og namna Alversund og Meland skal ikkje brukast. Bygderegelen er eit forslag i fana: fram til første nedslaget i 2.6 gjev Lytt berre dei bergenske formene, og nordhordlandsformene står med ei tynn line over seg. Litlebergen, Alverstraumen og Manger har møterate Ingen. Holsnøy har sona «Holsnøy, holmane og strendene» og fjordane sona «Fjordane ved Alverstraumen og sunda mot Fedje» i fana 9b, bolken «Nordhordland og Bergen, juni 1843 til mars 1844».",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:293"
+  },
+  {
+   "id": "ALV",
+   "namn": "Nordhordland",
+   "fane": "bergen_og_nordhordland",
+   "storleik": null,
+   "skildring": "Nordhordland er ein småregion med 20 til 45 minutt første gong. Han er open frå 2.6 i juni 1843 til reiseåra lukkar seg i 3.25, og Valestrand på Osterøy er open hausten 1853 for S2.8. Litlebergen på Holsnøy er kvileplass og skrivebase, og dit kjem partyet attende etter kvar tur inn til Bergen. Holsnøy med holmane er utmark, Alverstraumen er handelsstaden og gjestgiveriet der straumen går hardt mellom fjordane, og Radøy med kyrkjestaden Manger ligg ein båttur ut. Fedje er dungeonen Varden på Fedje over. I 1843 høyrde Holsnøy og Alverstraumen til Hamre, og namna Alversund og Meland skal ikkje brukast. Bygderegelen er eit forslag i fana: fram til første nedslaget i 2.6 gjev Lytt berre dei bergenske formene, og nordhordlandsformene står med ei tynn line over seg. Litlebergen, Alverstraumen og Manger har møterate Ingen. Holsnøy har sona «Holsnøy, holmane og strendene» og fjordane sona «Fjordane ved Alverstraumen og sunda mot Fedje» i fana 9b, bolken «Nordhordland og Bergen, juni 1843 til mars 1844».",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:293"
+  },
+  {
+   "id": "RAD",
+   "namn": "Nordhordland",
+   "fane": "bergen_og_nordhordland",
+   "storleik": null,
+   "skildring": "Nordhordland er ein småregion med 20 til 45 minutt første gong. Han er open frå 2.6 i juni 1843 til reiseåra lukkar seg i 3.25, og Valestrand på Osterøy er open hausten 1853 for S2.8. Litlebergen på Holsnøy er kvileplass og skrivebase, og dit kjem partyet attende etter kvar tur inn til Bergen. Holsnøy med holmane er utmark, Alverstraumen er handelsstaden og gjestgiveriet der straumen går hardt mellom fjordane, og Radøy med kyrkjestaden Manger ligg ein båttur ut. Fedje er dungeonen Varden på Fedje over. I 1843 høyrde Holsnøy og Alverstraumen til Hamre, og namna Alversund og Meland skal ikkje brukast. Bygderegelen er eit forslag i fana: fram til første nedslaget i 2.6 gjev Lytt berre dei bergenske formene, og nordhordlandsformene står med ei tynn line over seg. Litlebergen, Alverstraumen og Manger har møterate Ingen. Holsnøy har sona «Holsnøy, holmane og strendene» og fjordane sona «Fjordane ved Alverstraumen og sunda mot Fedje» i fana 9b, bolken «Nordhordland og Bergen, juni 1843 til mars 1844».",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:293"
+  },
+  {
+   "id": "VAL",
+   "namn": "Nordhordland",
+   "fane": "bergen_og_nordhordland",
+   "storleik": null,
+   "skildring": "Nordhordland er ein småregion med 20 til 45 minutt første gong. Han er open frå 2.6 i juni 1843 til reiseåra lukkar seg i 3.25, og Valestrand på Osterøy er open hausten 1853 for S2.8. Litlebergen på Holsnøy er kvileplass og skrivebase, og dit kjem partyet attende etter kvar tur inn til Bergen. Holsnøy med holmane er utmark, Alverstraumen er handelsstaden og gjestgiveriet der straumen går hardt mellom fjordane, og Radøy med kyrkjestaden Manger ligg ein båttur ut. Fedje er dungeonen Varden på Fedje over. I 1843 høyrde Holsnøy og Alverstraumen til Hamre, og namna Alversund og Meland skal ikkje brukast. Bygderegelen er eit forslag i fana: fram til første nedslaget i 2.6 gjev Lytt berre dei bergenske formene, og nordhordlandsformene står med ei tynn line over seg. Litlebergen, Alverstraumen og Manger har møterate Ingen. Holsnøy har sona «Holsnøy, holmane og strendene» og fjordane sona «Fjordane ved Alverstraumen og sunda mot Fedje» i fana 9b, bolken «Nordhordland og Bergen, juni 1843 til mars 1844».",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:293"
+  },
+  {
+   "id": "OST",
+   "namn": "Osterfjorden og Bolstadøyri",
+   "fane": "bergen_og_nordhordland",
+   "storleik": null,
+   "skildring": "Sambandet går med båt frå Bergen inn Osterfjorden til Bolstadøyri, og derifrå til fots om Evanger mot Voss. Det opnar seg i overgangen etter 2.10 i mars og april 1844, og ruta står open for retur. Sambandet er ei lita sone med to skjermar og ingen eigen møtetabell.",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:327"
+  },
+  {
+   "id": "VSF",
+   "namn": "Valestrandsfossen",
+   "fane": "bergen_og_nordhordland",
+   "storleik": "dungeon",
+   "skildring": "Valestrandsfossen er ein frosen foss ovanfor garden til Bull-familien på Osterøy, hausten 1853 (S2.8). Han tek om lag femten minutt og står på nivå 43. Ole Bull må vere med, og oppdraget er valfritt. Grepet er klatring opp tre hyller i isen. I bosskampen spelar Bull for fossen, og Isen kan berre skadast medan fela klingar. Dungeonfana set kvilestaden ved ei open råk i elva under fossen (forslag), så han står ved foten. Møtetabell: fana 9c, bolken «Fimbulvinteren: Bergen, 1852», sona «Valestrandsfossen på Osterøy (S2.8, hausten 1853)».",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:340"
+  }
+ ],
+ "skjermar": [
+  {
+   "id": "BGN-01",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Vågen",
+   "innhald_tekst": "Jekter til ankers, lekterar og flotmenn, ingen kairekkje. Jakta legg til (1.19). Vårstemne i 1841 og haust-stemne i 1843 (2.7). Vågekvalen i Skogsvåg står synleg i 1841 og kan nåast frå robåt. Dampskipet legg til frå 1843, med *Efterretninger fra Adresse-Contoiret* ved dampskipskaia. I 1852 er hamna frosen, og partyet kan gå på isen (forslag). Eit skip står fast med Pesta i lasta i ein skinnbunt, og Sjøhorven går i råka. I 1853 går isen, og emigrantskipet har gått",
+   "scener": [
+    "s1_19",
+    "s2_7"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-02",
+     "namn": "Bryggen"
+    },
+    {
+     "til": "BGN-06",
+     "namn": "Torget"
+    },
+    {
+     "til": "BGN-12",
+     "namn": "Strandsiden"
+    },
+    {
+     "til": "BGN-01a",
+     "namn": "Om bord i jakta",
+     "merknad": "1841"
+    },
+    {
+     "til": "LBG-02",
+     "namn": "Naustet på Litlebergen",
+     "merknad": "båt, 1843–47"
+    },
+    {
+     "til": "OST-01",
+     "namn": "Osterfjorden",
+     "merknad": "frå 2.10"
+    },
+    {
+     "til": "VAL-01",
+     "namn": "Valestrand",
+     "merknad": "båt, 1853"
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "dampskip frå 1843, isvegen i 1852"
+    }
+   ],
+   "utgangar_tekst": "BGN-02 Bryggen, BGN-06 Torget, BGN-12 Strandsiden, BGN-01a Om bord i jakta (1841), LBG-02 Naustet på Litlebergen (båt, 1843–47), OST-01 Osterfjorden (frå 2.10), VAL-01 Valestrand (båt, 1853), Verdskartet (dampskip frå 1843, isvegen i 1852)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_smuga_paa_bryggen_vaagen_og_kaiene",
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:13"
+  },
+  {
+   "id": "BGN-01a",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Om bord i jakta",
+   "innhald_tekst": "Nattjakta ut Vågen, skipperen ved roret, huldra på rekka (1.25). Lysa frå Bryggen og kjellarvindauget under Rådstova følgjer kjølvatnet. Første akt lukkar seg her",
+   "scener": [
+    "s1_25"
+   ],
+   "utgangar": [],
+   "utgangar_tekst": "Ingen. Scena endar akten",
+   "epokar": [
+    "ungdomen"
+   ],
+   "epokar_tekst": "1841",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:14"
+  },
+  {
+   "id": "BGN-02",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Bryggen (Tyskebryggen)",
+   "innhald_tekst": "Bryggegardane med pakkhus, schøtstuer og trange passasjar. Lyttespelet i mengd (1.19). Tyske kontoristar og Tollbetjenten på Bryggen, synleg før 1.23. Synnøve græt utanfor kontoret til handelsforvaltaren (S1.8). Islendingen på tønna ved kaia etter 1.22 (S1.46). Glør i sprekkene mellom plankane i 1843–44 (forslag i fana). Johannes ved pakkhuset (2.8). Draugsteinen i ballasten og Ole Bull med Oleana-plakatane i mai 1852 (S2.21.1). Plakatane heng rivne i 1853",
+   "scener": [
+    "s1_19",
+    "S1_8",
+    "S1_46",
+    "s2_8",
+    "S2_21_1"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-01",
+     "namn": "Vågen"
+    },
+    {
+     "til": "BGN-06",
+     "namn": "Torget"
+    },
+    {
+     "til": "BGN-03",
+     "namn": "Mariakirken og Øvregaten"
+    },
+    {
+     "til": "BGN-04",
+     "namn": "Bergenhus"
+    },
+    {
+     "til": "BGN-02a",
+     "namn": "Pakkhuset"
+    },
+    {
+     "til": "BGN-02b",
+     "namn": "Loftet i pakkhuset"
+    },
+    {
+     "til": "BGN-02c",
+     "namn": "Bakrommet"
+    },
+    {
+     "til": "REK-01",
+     "namn": "Kontoret",
+     "merknad": "1841"
+    },
+    {
+     "til": "LAS-01",
+     "namn": "Dekket på emigrantskipet",
+     "merknad": "mai 1852"
+    }
+   ],
+   "utgangar_tekst": "BGN-01 Vågen, BGN-06 Torget, BGN-03 Mariakirken og Øvregaten, BGN-04 Bergenhus, BGN-02a Pakkhuset, BGN-02b Loftet i pakkhuset, BGN-02c Bakrommet, REK-01 Kontoret (1841), LAS-01 Dekket på emigrantskipet (mai 1852)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_smuga_paa_bryggen_vaagen_og_kaiene",
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:15"
+  },
+  {
+   "id": "BGN-02a",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Pakkhuset over kjellaren",
+   "innhald_tekst": "Det gamle pakkhuset der Christies brev blir vist fram (2.8). Lem ned til kjellaren, og stigen frå lag 4 kjem opp her",
+   "scener": [
+    "s2_8"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-02",
+     "namn": "Bryggen"
+    },
+    {
+     "til": "UBR-01",
+     "namn": "Kjellaren under pakkhuset"
+    },
+    {
+     "til": "UBR-08",
+     "namn": "Stigen",
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "BGN-02 Bryggen, UBR-01 Kjellaren under pakkhuset, UBR-08 Stigen (snarveg)",
+   "epokar": [
+    "reiseaara"
+   ],
+   "epokar_tekst": "1843–44 og seinare",
+   "soner": [
+    "9b_smuga_paa_bryggen_vaagen_og_kaiene",
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:16"
+  },
+  {
+   "id": "BGN-02b",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Loftet i pakkhuset",
+   "innhald_tekst": "Kjøpmannen med den plattyske kontorboka, lykt (S1.47). Etter oppdraget seier kjøpmannen ja til at partyet tek det som står på loftet",
+   "scener": [
+    "S1_47"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-02",
+     "namn": "Bryggen"
+    }
+   ],
+   "utgangar_tekst": "BGN-02 Bryggen",
+   "epokar": [
+    "reiseaara"
+   ],
+   "epokar_tekst": "1843–44",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:17"
+  },
+  {
+   "id": "BGN-02c",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Bakrommet på Bryggen",
+   "innhald_tekst": "Gunnhild får runepinnen som sa «kyss meg» (S1.13). Ingen kister, folk bur her",
+   "scener": [
+    "S1_13"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-02",
+     "namn": "Bryggen"
+    }
+   ],
+   "utgangar_tekst": "BGN-02 Bryggen",
+   "epokar": [
+    "reiseaara"
+   ],
+   "epokar_tekst": "1843–44",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:18"
+  },
+  {
+   "id": "BGN-03",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Mariakirken og Øvregaten",
+   "innhald_tekst": "Den tyske kyrkja med dei to tårna, smale gater opp mot fjellsida. Stigen opp til Fløien er stengd av snøras i 1852 (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-02",
+     "namn": "Bryggen"
+    },
+    {
+     "til": "BGN-03a",
+     "namn": "Mariakirken"
+    },
+    {
+     "til": "BGN-14",
+     "namn": "Fløien"
+    }
+   ],
+   "utgangar_tekst": "BGN-02 Bryggen, BGN-03a Mariakirken, BGN-14 Fløien",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_smuga_paa_bryggen_vaagen_og_kaiene",
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:19"
+  },
+  {
+   "id": "BGN-03a",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Mariakirken",
+   "innhald_tekst": "Fristad. Ein tysk prest preikar for ein liten kyrkjelyd, og Lytt gjev plattyske lånord (stad utan framdrift). Orgel om søndagen. Frosen preikestol i 1852 (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-03",
+     "namn": "Mariakirken og Øvregaten"
+    }
+   ],
+   "utgangar_tekst": "BGN-03 Mariakirken og Øvregaten",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:20"
+  },
+  {
+   "id": "BGN-04",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Bergenhus",
+   "innhald_tekst": "Festningsplassen, vakter og kornsekker. Døra til Håkonshallen med vakta ved kornmagasinet, Blikket opnar (forslag). Døra til Rosenkrantztårnet, låst med ein protokoll i kanselliblekk, Rett opnar (forslag). Dagboka merkjer begge dørene med portrett av Collett og Knudsen frå 1841",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-02",
+     "namn": "Bryggen"
+    },
+    {
+     "til": "BGN-05",
+     "namn": "Sandviken"
+    },
+    {
+     "til": "BGN-04a",
+     "namn": "Håkonshallen"
+    },
+    {
+     "til": "BGN-04b",
+     "namn": "Rosenkrantztårnet"
+    }
+   ],
+   "utgangar_tekst": "BGN-02 Bryggen, BGN-05 Sandviken, BGN-04a Håkonshallen, BGN-04b Rosenkrantztårnet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_smuga_paa_bryggen_vaagen_og_kaiene",
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:21"
+  },
+  {
+   "id": "BGN-04a",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Håkonshallen",
+   "innhald_tekst": "Kornmagasin for garnisonen. Ein lærar ved katedralskulen fortel at hallen nyleg er kjend att, og at J. C. Dahl vil ha han sett i stand (stad utan framdrift). Kornsekkene er frosne fast i 1852 (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-04",
+     "namn": "Bergenhus"
+    }
+   ],
+   "utgangar_tekst": "BGN-04 Bergenhus",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:22"
+  },
+  {
+   "id": "BGN-04b",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Rosenkrantztårnet",
+   "innhald_tekst": "Kruttmagasinet innanfor den låste døra (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-04",
+     "namn": "Bergenhus"
+    }
+   ],
+   "utgangar_tekst": "BGN-04 Bergenhus",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:23"
+  },
+  {
+   "id": "BGN-05",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Sandviken",
+   "innhald_tekst": "Sjøbuer og jektefolk frå Nordland og Sogn (stad utan framdrift). Stemne-scena: ein nordlending og ein sogning prutar med same handelsfullmektig i 1841 og 1843. Mjølkekona frå Åsane i 1852, trygg stad. Jektene kjem att i 1853",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-04",
+     "namn": "Bergenhus, vegen mot Åsane",
+     "merknad": "stengd"
+    }
+   ],
+   "utgangar_tekst": "BGN-04 Bergenhus, vegen mot Åsane (stengd)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_smuga_paa_bryggen_vaagen_og_kaiene",
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:24"
+  },
+  {
+   "id": "BGN-06",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Torget og Fisketorget",
+   "innhald_tekst": "Fiskarkona med «sprell» og visesongaren på tønna (1.19, Samtale). Vardøgeren ved døra til bokhandelen (1.24, Samtale). Askøy-konene ropar ut fangsten i 1843–44. I 1852 står fiskekona frosen over torsken med Hermeramnen over seg, og stripa med smelta snø går opp mot Engen (6.1). Ho er sint i 6.3 og har selt torsken i 1853, då visesongaren syng «Oleana» (forslag i fana) og kvar replikk sluttar på rim",
+   "scener": [
+    "s1_19",
+    "s1_24",
+    "s6_1"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-01",
+     "namn": "Vågen"
+    },
+    {
+     "til": "BGN-02",
+     "namn": "Bryggen"
+    },
+    {
+     "til": "BGN-12",
+     "namn": "Strandsiden"
+    },
+    {
+     "til": "BGN-07",
+     "namn": "Korskirken og Rådstova"
+    },
+    {
+     "til": "BGN-11",
+     "namn": "Engen"
+    },
+    {
+     "til": "BGN-06a",
+     "namn": "Bokhandelen"
+    }
+   ],
+   "utgangar_tekst": "BGN-01 Vågen, BGN-02 Bryggen, BGN-12 Strandsiden, BGN-07 Korskirken og Rådstova, BGN-11 Engen, BGN-06a Bokhandelen",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_smuga_paa_bryggen_vaagen_og_kaiene",
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:25"
+  },
+  {
+   "id": "BGN-06a",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Bokhandelen der Torget møter Vågen",
+   "innhald_tekst": "Moes *Samling af Sange, Folkeviser og Stev* i vindauget og Grimm i omsetjinga til Lindencrone på disken (1.24). *Efterretninger fra Adresse-Contoiret* på disken",
+   "scener": [
+    "s1_24"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-06",
+     "namn": "Torget"
+    }
+   ],
+   "utgangar_tekst": "BGN-06 Torget",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle utanom 1852",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:26"
+  },
+  {
+   "id": "BGN-07",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Korskirken og Rådstova",
+   "innhald_tekst": "Rådstova med vaktmannen og nøkkelknippet om natta (1.23). Bergensvektaren synleg om natta før 1.23. Vegen opp til Domkirken",
+   "scener": [
+    "s1_23"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-06",
+     "namn": "Torget"
+    },
+    {
+     "til": "BGN-08",
+     "namn": "Domkirken og Bispegarden"
+    },
+    {
+     "til": "BGN-07a",
+     "namn": "Korskirken"
+    },
+    {
+     "til": "ARK-01",
+     "namn": "Trappa ned frå Rådstova",
+     "merknad": "1841, natt"
+    }
+   ],
+   "utgangar_tekst": "BGN-06 Torget, BGN-08 Domkirken og Bispegarden, BGN-07a Korskirken, ARK-01 Trappa ned frå Rådstova (1841, natt)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_smuga_paa_bryggen_vaagen_og_kaiene",
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:27"
+  },
+  {
+   "id": "BGN-07a",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Korskirken",
+   "innhald_tekst": "Fristad i alle epokar. I 1852 søkjer folk inn hit",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-07",
+     "namn": "Korskirken og Rådstova"
+    }
+   ],
+   "utgangar_tekst": "BGN-07 Korskirken og Rådstova",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:28"
+  },
+  {
+   "id": "BGN-08",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Domkirken og Bispegarden",
+   "innhald_tekst": "Domkirken med kanonkula i vestmuren. Huset til Neumann står ved kyrkja (plasseringa er fri, sjå fana Bergen)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-07",
+     "namn": "Korskirken og Rådstova"
+    },
+    {
+     "til": "BGN-09",
+     "namn": "Stadsporten"
+    },
+    {
+     "til": "BGN-10",
+     "namn": "Klagenbergs gard"
+    },
+    {
+     "til": "BGN-08a",
+     "namn": "Domkirken"
+    },
+    {
+     "til": "BGN-08b",
+     "namn": "Forstova i Bispegarden"
+    }
+   ],
+   "utgangar_tekst": "BGN-07 Korskirken og Rådstova, BGN-09 Stadsporten, BGN-10 Klagenbergs gard, BGN-08a Domkirken, BGN-08b Forstova i Bispegarden",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_smuga_paa_bryggen_vaagen_og_kaiene",
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:29"
+  },
+  {
+   "id": "BGN-08a",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Domkirken",
+   "innhald_tekst": "Fristad. *Siælens Sang-Offer* på ein benk, og *Taare-Offer* på same benken i 1848 og 1852. Rim på benkane i 1852",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-08",
+     "namn": "Domkirken og Bispegarden"
+    }
+   ],
+   "utgangar_tekst": "BGN-08 Domkirken og Bispegarden",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:30"
+  },
+  {
+   "id": "BGN-08b",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Forstova i Bispegarden",
+   "innhald_tekst": "Portrettet av biskopen frå 1600-talet og huldra med skoa i handa (1.21). Holbergs *Bergens Beskrivelse* på hylla. Anna tek imot partyet i februar 1848 (S2.18.1). Ingen kister, folk bur her",
+   "scener": [
+    "s1_21",
+    "S2_18_1"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-08",
+     "namn": "Domkirken og Bispegarden"
+    },
+    {
+     "til": "BGN-08c",
+     "namn": "Stova og arbeidsrommet"
+    }
+   ],
+   "utgangar_tekst": "BGN-08 Domkirken og Bispegarden, BGN-08c Stova og arbeidsrommet",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara"
+   ],
+   "epokar_tekst": "1841, 1843–44, 1848",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:31"
+  },
+  {
+   "id": "BGN-08c",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Stova og arbeidsrommet til Neumann",
+   "innhald_tekst": "Den høge stova med portrett og bunken med brev, seglet med ramnen (1.20, 1.21). Det siste arket blir lese her om natta i 1848 (S2.18.2). Døra til arkivet",
+   "scener": [
+    "s1_20",
+    "s1_21",
+    "S2_18_2"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-08b",
+     "namn": "Forstova"
+    },
+    {
+     "til": "ABG-01",
+     "namn": "Gangen til arkivet",
+     "merknad": "1848"
+    }
+   ],
+   "utgangar_tekst": "BGN-08b Forstova, ABG-01 Gangen til arkivet (1848)",
+   "epokar": [
+    "ungdomen",
+    "christiania_aara"
+   ],
+   "epokar_tekst": "1841, 1848",
+   "soner": [
+    "9b_smuga_paa_bryggen_vaagen_og_kaiene",
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:32"
+  },
+  {
+   "id": "BGN-09",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Stadsporten",
+   "innhald_tekst": "Byporten frå 1628 på vegen ut av byen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-08",
+     "namn": "Domkirken og Bispegarden"
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "stengd i 1841"
+    }
+   ],
+   "utgangar_tekst": "BGN-08 Domkirken og Bispegarden, Verdskartet (stengd i 1841)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_smuga_paa_bryggen_vaagen_og_kaiene",
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:33"
+  },
+  {
+   "id": "BGN-10",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Klagenbergs gard og Lille Lungegårdsvann",
+   "innhald_tekst": "Bergens Museum i garden ved vatnet. I 1852 ligg isen trygg, og frosne born står midt i ein skøyteleik (stad utan framdrift)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-08",
+     "namn": "Domkirken og Bispegarden"
+    },
+    {
+     "til": "BGN-11",
+     "namn": "Engen"
+    },
+    {
+     "til": "BGN-10a",
+     "namn": "Fuglesalen"
+    }
+   ],
+   "utgangar_tekst": "BGN-08 Domkirken og Bispegarden, BGN-11 Engen, BGN-10a Fuglesalen",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_smuga_paa_bryggen_vaagen_og_kaiene",
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:34"
+  },
+  {
+   "id": "BGN-10a",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Fuglesalen i museet",
+   "innhald_tekst": "Monteren med kolibriane (S1.7 før 1.22, så 1.22 og 2.7). Runesteinane og oldsakene til valet i 1.22. Etter val B i S1.7 står huldra i døra i 2.7. Monterane rima i 1852 (forslag)",
+   "scener": [
+    "S1_7",
+    "s1_22",
+    "s2_7"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-10",
+     "namn": "Klagenbergs gard"
+    },
+    {
+     "til": "BGN-10b",
+     "namn": "Kjellaren i museet"
+    }
+   ],
+   "utgangar_tekst": "BGN-10 Klagenbergs gard, BGN-10b Kjellaren i museet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:35"
+  },
+  {
+   "id": "BGN-10b",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Kjellaren i museet",
+   "innhald_tekst": "Kista med dragehovudet, som har stått der sidan 1831 (S1.14)",
+   "scener": [
+    "S1_14"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-10a",
+     "namn": "Fuglesalen"
+    }
+   ],
+   "utgangar_tekst": "BGN-10a Fuglesalen",
+   "epokar": [
+    "reiseaara"
+   ],
+   "epokar_tekst": "1843–44 og seinare",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:36"
+  },
+  {
+   "id": "BGN-11",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Engen",
+   "innhald_tekst": "Komediehuset frå 1800 og opne plassar. Huset er stengt til 1850. Skiltet «Det norske Theater» og plakaten frå 2. januar 1850 over døra. Trappa der Ole Bull spelar i snøen (4.20). I 1852 er ringen rundt huset bar, og Ibsen står ved døra (6.1). Kvartalet tinar i 6.3",
+   "scener": [
+    "s4_20",
+    "s6_1"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-06",
+     "namn": "Torget"
+    },
+    {
+     "til": "BGN-12",
+     "namn": "Strandsiden"
+    },
+    {
+     "til": "BGN-10",
+     "namn": "Klagenbergs gard"
+    },
+    {
+     "til": "BGN-11a",
+     "namn": "Salen og scena",
+     "merknad": "frå 1850"
+    },
+    {
+     "til": "BKL-01",
+     "namn": "Gangen bak scena",
+     "merknad": "4.19"
+    },
+    {
+     "til": "BGN-11b",
+     "namn": "Verkstaden til felemakaren",
+     "merknad": "1852, 1853"
+    }
+   ],
+   "utgangar_tekst": "BGN-06 Torget, BGN-12 Strandsiden, BGN-10 Klagenbergs gard, BGN-11a Salen og scena (frå 1850), BKL-01 Gangen bak scena (4.19), BGN-11b Verkstaden til felemakaren (1852, 1853)",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_smuga_paa_bryggen_vaagen_og_kaiene",
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:37"
+  },
+  {
+   "id": "BGN-11a",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Salen og scena i Komediehuset",
+   "innhald_tekst": "Premieresalen som klappar (4.19). Ole Bull på scena i pels og strømpesokkar, skodespelarane i teppe (6.1). Kvileplass i 1852. Bull skiftar streng på scenekanten (6.3). Ole Bull og Ibsen i den tomme salen (7.18). Lemmen i scenegolvet",
+   "scener": [
+    "s4_19",
+    "s6_1",
+    "s6_3",
+    "s7_18"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-11",
+     "namn": "Engen"
+    },
+    {
+     "til": "SUF-01",
+     "namn": "Trappa ned under scena",
+     "merknad": "1852"
+    },
+    {
+     "til": "SUF-08",
+     "namn": "Sufflørkassa",
+     "merknad": "lemmen, snarveg etter 6.2",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "BGN-11 Engen, SUF-01 Trappa ned under scena (1852), SUF-08 Sufflørkassa (lemmen, snarveg etter 6.2)",
+   "epokar": [
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret"
+   ],
+   "epokar_tekst": "1850, 1852, 1853, 1857",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:38"
+  },
+  {
+   "id": "BGN-11b",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Verkstaden til felemakaren",
+   "innhald_tekst": "Felemakaren i kvartalet som tinar i 6.3 (forslag til plassering)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-11",
+     "namn": "Engen"
+    }
+   ],
+   "utgangar_tekst": "BGN-11 Engen",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1852, 1853",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:39"
+  },
+  {
+   "id": "BGN-12",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Strandsiden",
+   "innhald_tekst": "Kaiene på vestsida, gjestgiveriet og butikkane",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-01",
+     "namn": "Vågen"
+    },
+    {
+     "til": "BGN-06",
+     "namn": "Torget"
+    },
+    {
+     "til": "BGN-11",
+     "namn": "Engen"
+    },
+    {
+     "til": "BGN-13",
+     "namn": "Nordnes og Nøstet"
+    },
+    {
+     "til": "BGN-12a",
+     "namn": "Gjestgiveriet"
+    },
+    {
+     "til": "BGN-12b",
+     "namn": "Apoteket"
+    },
+    {
+     "til": "BGN-12c",
+     "namn": "Skreddaren"
+    },
+    {
+     "til": "BGN-12d",
+     "namn": "Krambua"
+    }
+   ],
+   "utgangar_tekst": "BGN-01 Vågen, BGN-06 Torget, BGN-11 Engen, BGN-13 Nordnes og Nøstet, BGN-12a Gjestgiveriet, BGN-12b Apoteket, BGN-12c Skreddaren, BGN-12d Krambua",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9b_smuga_paa_bryggen_vaagen_og_kaiene",
+    "9c_vaagen_kaiene_og_bryggen",
+    "9b_nordnes_strandsiden_og_kjellarane"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:40"
+  },
+  {
+   "id": "BGN-12a",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Gjestgiveriet på Strandsiden",
+   "innhald_tekst": "Kvileplass (del1:993). Mara står ved senga den første natta i juni 1841 (Unntak). *Bergens Stiftstidende* på bordet, *Bergenske Blade* i 1850 og 1852. Rommet til Aasen med skuffen der eit brev frå 1841 har fått svar i 1850 (forslag i fana). Står kaldt i 1852 (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-12",
+     "namn": "Strandsiden"
+    }
+   ],
+   "utgangar_tekst": "BGN-12 Strandsiden",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:41"
+  },
+  {
+   "id": "BGN-12b",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Apoteket i Strandgaten",
+   "innhald_tekst": "Apotekaren. Frose fast i 1852",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-12",
+     "namn": "Strandsiden"
+    }
+   ],
+   "utgangar_tekst": "BGN-12 Strandsiden",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle utanom 1852",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:42"
+  },
+  {
+   "id": "BGN-12c",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Skreddaren",
+   "innhald_tekst": "Skreddaren. Frose fast i 1852",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-12",
+     "namn": "Strandsiden"
+    }
+   ],
+   "utgangar_tekst": "BGN-12 Strandsiden",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle utanom 1852",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:43"
+  },
+  {
+   "id": "BGN-12d",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Krambua",
+   "innhald_tekst": "Krambuhandlaren. Frose fast i 1852",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-12",
+     "namn": "Strandsiden"
+    }
+   ],
+   "utgangar_tekst": "BGN-12 Strandsiden",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle utanom 1852",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:44"
+  },
+  {
+   "id": "BGN-13",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Nordnes og Nøstet",
+   "innhald_tekst": "Gamle losar på steinane (1841, 1850, stad utan framdrift). Kjellarverten på Nordnes synleg om natta før 1.23. Fredriksberg ytst",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-12",
+     "namn": "Strandsiden"
+    },
+    {
+     "til": "BGN-13a",
+     "namn": "Sjøbua på Nøstet"
+    },
+    {
+     "til": "BGN-13b",
+     "namn": "Gjestgiveriet på Nøstet"
+    },
+    {
+     "til": "BGN-13c",
+     "namn": "Pakkhuskjellaren på Nordnes"
+    }
+   ],
+   "utgangar_tekst": "BGN-12 Strandsiden, BGN-13a Sjøbua på Nøstet, BGN-13b Gjestgiveriet på Nøstet, BGN-13c Pakkhuskjellaren på Nordnes",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen",
+    "9b_nordnes_strandsiden_og_kjellarane"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:45"
+  },
+  {
+   "id": "BGN-13a",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Sjøbua på Nøstet",
+   "innhald_tekst": "Sjøbua til nordlandsskipperen med ventekista VK02. Skipperen ventar på isgangen i 1852 og har segla i 1853",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-13",
+     "namn": "Nordnes og Nøstet"
+    }
+   ],
+   "utgangar_tekst": "BGN-13 Nordnes og Nøstet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:46"
+  },
+  {
+   "id": "BGN-13b",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Gjestgiveriet på Nøstet",
+   "innhald_tekst": "Nordlandsskipperen ventar på at isen skal gå (stad utan framdrift, 1852). Trygg stad",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-13",
+     "namn": "Nordnes og Nøstet"
+    }
+   ],
+   "utgangar_tekst": "BGN-13 Nordnes og Nøstet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:47"
+  },
+  {
+   "id": "BGN-13c",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Pakkhuskjellaren på Nordnes",
+   "innhald_tekst": "Ein tom kjellar utan eigar. Små lys frå orda som følgde jakta ut i 1.25, i 1843–44",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-13",
+     "namn": "Nordnes og Nøstet"
+    }
+   ],
+   "utgangar_tekst": "BGN-13 Nordnes og Nøstet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen",
+    "9b_nordnes_strandsiden_og_kjellarane",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:48"
+  },
+  {
+   "id": "BGN-14",
+   "stad": "BGN",
+   "omraade": "Bergen",
+   "namn": "Fløien",
+   "innhald_tekst": "Bratt fjellside med sauestigar og utsikt over heile byen. «Udsigter fra Ulriken» på ein stein. I 1852 opnar Lyfte eller Spele opp stigen (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-03",
+     "namn": "Mariakirken og Øvregaten"
+    }
+   ],
+   "utgangar_tekst": "BGN-03 Mariakirken og Øvregaten",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret",
+    "epilogen"
+   ],
+   "epokar_tekst": "Alle",
+   "soner": [
+    "9c_vaagen_kaiene_og_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:49"
+  },
+  {
+   "id": "LBG-01",
+   "stad": "LBG",
+   "omraade": "Nordhordland",
+   "namn": "Tunet på Litlebergen",
+   "innhald_tekst": "Gamle Mons, stova og loftet. Snø på Holsnøy om vinteren",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LBG-01a",
+     "namn": "Loftet"
+    },
+    {
+     "til": "LBG-02",
+     "namn": "Naustet"
+    },
+    {
+     "til": "HSN-01",
+     "namn": "Stranda"
+    }
+   ],
+   "utgangar_tekst": "LBG-01a Loftet, LBG-02 Naustet, HSN-01 Stranda",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara"
+   ],
+   "epokar_tekst": "1843–47",
+   "soner": [
+    "9b_holsnoy_holmane_og_strendene",
+    "9b_fjordane_ved_alverstraumen_og_sunda_mot_fedje"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:299"
+  },
+  {
+   "id": "LBG-01a",
+   "stad": "LBG",
+   "omraade": "Nordhordland",
+   "namn": "Loftet",
+   "innhald_tekst": "Loftsrommet med skråtak og havet blankt under vindauget. Dei tre nedslaga i 2.6 med «kor» og «kvar» og ordet naust. Samtale 3 ein regnkveld. Mons kjem med brevet frå Berte, og draumen om biblioteket på Ekset (2.10). Brevet som startar S1.15. Rommet til Aasen",
+   "scener": [
+    "s2_10"
+   ],
+   "utgangar": [
+    {
+     "til": "LBG-01",
+     "namn": "Tunet"
+    }
+   ],
+   "utgangar_tekst": "LBG-01 Tunet",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara"
+   ],
+   "epokar_tekst": "1843–47",
+   "soner": [
+    "9b_holsnoy_holmane_og_strendene",
+    "9b_fjordane_ved_alverstraumen_og_sunda_mot_fedje"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:300"
+  },
+  {
+   "id": "LBG-02",
+   "stad": "LBG",
+   "omraade": "Nordhordland",
+   "namn": "Naustet og støa",
+   "innhald_tekst": "Båten inn til Bergen og ut att",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LBG-01",
+     "namn": "Tunet"
+    },
+    {
+     "til": "BGN-01",
+     "namn": "Vågen",
+     "merknad": "båt"
+    }
+   ],
+   "utgangar_tekst": "LBG-01 Tunet, BGN-01 Vågen (båt)",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara"
+   ],
+   "epokar_tekst": "1843–47",
+   "soner": [
+    "9b_holsnoy_holmane_og_strendene",
+    "9b_fjordane_ved_alverstraumen_og_sunda_mot_fedje"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:301"
+  },
+  {
+   "id": "HSN-01",
+   "stad": "HSN",
+   "omraade": "Nordhordland",
+   "namn": "Stranda med kverna",
+   "innhald_tekst": "Kattane ved kverna står synlege første gong. Fiskaren som fortel at lykta på Fedje lyser feil (S1.12). Synnøve er nabo og set garn (S1.8, forslag til lenkje i fana)",
+   "scener": [
+    "S1_12",
+    "S1_8"
+   ],
+   "utgangar": [
+    {
+     "til": "LBG-01",
+     "namn": "Tunet"
+    },
+    {
+     "til": "HSN-02",
+     "namn": "Holmane"
+    },
+    {
+     "til": "ALV-01",
+     "namn": "Alverstraumen"
+    }
+   ],
+   "utgangar_tekst": "LBG-01 Tunet, HSN-02 Holmane, ALV-01 Alverstraumen",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara"
+   ],
+   "epokar_tekst": "1843–47",
+   "soner": [
+    "9b_holsnoy_holmane_og_strendene",
+    "9b_fjordane_ved_alverstraumen_og_sunda_mot_fedje"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:302"
+  },
+  {
+   "id": "HSN-02",
+   "stad": "HSN",
+   "omraade": "Nordhordland",
+   "namn": "Holmane",
+   "innhald_tekst": "Slått på holmane om sommaren og villsau. Marmælet er gullfiende. Staden der spelaren kan sitje med Mons og sjå på villsauen (stad utan framdrift). Med Lokk følgjer villsauen etter til ein løynd hellar (forslag). Båten til Fedje går berre i storm",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HSN-01",
+     "namn": "Stranda"
+    },
+    {
+     "til": "VFD-01",
+     "namn": "Landingsstaden på Fedje",
+     "merknad": "storm, S1.12"
+    }
+   ],
+   "utgangar_tekst": "HSN-01 Stranda, VFD-01 Landingsstaden på Fedje (storm, S1.12)",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara"
+   ],
+   "epokar_tekst": "1843–47",
+   "soner": [
+    "9b_holsnoy_holmane_og_strendene",
+    "9b_fjordane_ved_alverstraumen_og_sunda_mot_fedje"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:303"
+  },
+  {
+   "id": "ALV-01",
+   "stad": "ALV",
+   "omraade": "Nordhordland",
+   "namn": "Alverstraumen",
+   "innhald_tekst": "Straumen mellom fjordane, brygga og båten til Radøy. Gjestgiveri sidan minst 1660",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HSN-01",
+     "namn": "Stranda"
+    },
+    {
+     "til": "ALV-01a",
+     "namn": "Handelsstaden"
+    },
+    {
+     "til": "RAD-01",
+     "namn": "Manger",
+     "merknad": "båt"
+    },
+    {
+     "til": "BGN-01",
+     "namn": "Vågen",
+     "merknad": "båt"
+    },
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "landvegen frå Sogn"
+    }
+   ],
+   "utgangar_tekst": "HSN-01 Stranda, ALV-01a Handelsstaden, RAD-01 Manger (båt), BGN-01 Vågen (båt), Verdskartet (landvegen frå Sogn)",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara"
+   ],
+   "epokar_tekst": "1843–47",
+   "soner": [
+    "9b_holsnoy_holmane_og_strendene",
+    "9b_fjordane_ved_alverstraumen_og_sunda_mot_fedje"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:304"
+  },
+  {
+   "id": "ALV-01a",
+   "stad": "ALV",
+   "omraade": "Nordhordland",
+   "namn": "Handelsstaden og gjestgiveriet",
+   "innhald_tekst": "Disken med Wergelands *Jøden* ope, lesescenene «Skibbrudet» og «Juleaftenen». Bøndene frå Radøy ventar på båten (stad utan framdrift). Ingen kister, folk bur her",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ALV-01",
+     "namn": "Alverstraumen"
+    }
+   ],
+   "utgangar_tekst": "ALV-01 Alverstraumen",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara"
+   ],
+   "epokar_tekst": "1843–47",
+   "soner": [
+    "9b_holsnoy_holmane_og_strendene",
+    "9b_fjordane_ved_alverstraumen_og_sunda_mot_fedje"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:305"
+  },
+  {
+   "id": "RAD-01",
+   "stad": "RAD",
+   "omraade": "Nordhordland",
+   "namn": "Manger og gardane på Radøy",
+   "innhald_tekst": "Kyrkjestaden med steinkyrkja frå 1743 og nokre gardar. Båten går når bøndene har handla ferdig",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ALV-01",
+     "namn": "Alverstraumen",
+     "merknad": "båt"
+    }
+   ],
+   "utgangar_tekst": "ALV-01 Alverstraumen (båt)",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara"
+   ],
+   "epokar_tekst": "1843–47",
+   "soner": [
+    "9b_holsnoy_holmane_og_strendene",
+    "9b_fjordane_ved_alverstraumen_og_sunda_mot_fedje"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:306"
+  },
+  {
+   "id": "VAL-01",
+   "stad": "VAL",
+   "omraade": "Nordhordland",
+   "namn": "Valestrand på Osterøy",
+   "innhald_tekst": "Garden til Bull-familien. Ole Bull fortel om fela om kvelden (S2.8.1)",
+   "scener": [
+    "S2_8_1"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-01",
+     "namn": "Vågen",
+     "merknad": "båt"
+    },
+    {
+     "til": "VAL-02",
+     "namn": "Elva under fossen"
+    }
+   ],
+   "utgangar_tekst": "BGN-01 Vågen (båt), VAL-02 Elva under fossen",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1853",
+   "soner": [
+    "9b_holsnoy_holmane_og_strendene",
+    "9b_fjordane_ved_alverstraumen_og_sunda_mot_fedje"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:307"
+  },
+  {
+   "id": "VAL-02",
+   "stad": "VAL",
+   "omraade": "Nordhordland",
+   "namn": "Elva under fossen",
+   "innhald_tekst": "Stien langs elva opp mot Valestrandsfossen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VAL-01",
+     "namn": "Valestrand"
+    },
+    {
+     "til": "VSF-01",
+     "namn": "Råka under fossen"
+    }
+   ],
+   "utgangar_tekst": "VAL-01 Valestrand, VSF-01 Råka under fossen",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1853",
+   "soner": [
+    "9b_holsnoy_holmane_og_strendene",
+    "9b_fjordane_ved_alverstraumen_og_sunda_mot_fedje"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:308"
+  },
+  {
+   "id": "OST-01",
+   "stad": "OST",
+   "omraade": "Osterfjorden og Bolstadøyri",
+   "namn": "Osterfjorden",
+   "innhald_tekst": "Båtleia mellom bratte lier. Dagboksida «Mot Voss og Hardanger» blir lesen undervegs",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-01",
+     "namn": "Vågen"
+    },
+    {
+     "til": "OST-02",
+     "namn": "Bolstadøyri"
+    }
+   ],
+   "utgangar_tekst": "BGN-01 Vågen, OST-02 Bolstadøyri",
+   "epokar": [],
+   "epokar_tekst": "Frå 2.10",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:333"
+  },
+  {
+   "id": "OST-02",
+   "stad": "OST",
+   "omraade": "Osterfjorden og Bolstadøyri",
+   "namn": "Bolstadøyri",
+   "innhald_tekst": "Landingsstaden i fjordbotnen og vegen opp om Evanger",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "OST-01",
+     "namn": "Osterfjorden"
+    },
+    {
+     "til": null,
+     "namn": "Voss og Hardanger",
+     "fleire_treff": null
+    },
+    {
+     "til": "VNG-01",
+     "namn": "Vangen",
+     "slatt_opp": true
+    }
+   ],
+   "utgangar_tekst": "OST-01 Osterfjorden, Voss og Hardanger, Vangen",
+   "epokar": [],
+   "epokar_tekst": "Frå 2.10",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:334"
+  }
+ ],
+ "rom": [
+  {
+   "id": "ARK-01",
+   "stad": "ARK",
+   "omraade": "Arkivet under Rådstova",
+   "dungeon": "Arkivet under Rådstova",
+   "lag": "Første del",
+   "namn": "Trappa ned frå Rådstova",
+   "innhald_tekst": "Vaktmannen låser opp og går att. Blekklukta svir i auga, og summinga har same takt overalt (1.23)",
+   "scener": [
+    "s1_23"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-07",
+     "namn": "Korskirken og Rådstova"
+    },
+    {
+     "til": "ARK-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BGN-07 Korskirken og Rådstova, ARK-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_arkivet_under_raadstova"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:84"
+  },
+  {
+   "id": "ARK-02",
+   "stad": "ARK",
+   "omraade": "Arkivet under Rådstova",
+   "dungeon": "Arkivet under Rådstova",
+   "lag": "Første del",
+   "namn": "Gangen langs arrestcellene",
+   "innhald_tekst": "Gitterdører på begge sider. Blekket dryp frå ei hylle og reiser seg som Kopist. Første kamp og statusen Rettskriven, «Kage» (1.23)",
+   "scener": [
+    "s1_23"
+   ],
+   "utgangar": [
+    {
+     "til": "ARK-01",
+     "namn": null
+    },
+    {
+     "til": "ARK-03",
+     "namn": null
+    },
+    {
+     "til": "ARK-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ARK-01, ARK-03, ARK-04",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_arkivet_under_raadstova"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:85"
+  },
+  {
+   "id": "ARK-03",
+   "stad": "ARK",
+   "omraade": "Arkivet under Rådstova",
+   "dungeon": "Arkivet under Rådstova",
+   "lag": "Første del",
+   "namn": "Ei arrestcelle med protokollar",
+   "innhald_tekst": "Hyller bak gitterdøra, ei celle som står open",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ARK-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ARK-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_arkivet_under_raadstova"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:86"
+  },
+  {
+   "id": "ARK-04",
+   "stad": "ARK",
+   "omraade": "Arkivet under Rådstova",
+   "dungeon": "Arkivet under Rådstova",
+   "lag": "Første del",
+   "namn": "Hyllene bak cellene",
+   "innhald_tekst": "Protokollar som strekkjer seg inn i mørkret",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ARK-02",
+     "namn": null
+    },
+    {
+     "til": "ARK-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ARK-02, ARK-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_arkivet_under_raadstova"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:87"
+  },
+  {
+   "id": "ARK-05",
+   "stad": "ARK",
+   "omraade": "Arkivet under Rådstova",
+   "dungeon": "Arkivet under Rådstova",
+   "lag": "Andre del",
+   "namn": "Dårekista",
+   "innhald_tekst": "Den eine av dei to eldste cellene, med det gamle namnet over døra",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ARK-04",
+     "namn": null
+    },
+    {
+     "til": "ARK-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ARK-04, ARK-06",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_arkivet_under_raadstova"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:88"
+  },
+  {
+   "id": "ARK-06",
+   "stad": "ARK",
+   "omraade": "Arkivet under Rådstova",
+   "dungeon": "Arkivet under Rådstova",
+   "lag": "Andre del",
+   "namn": "Trollkjerringarresten",
+   "innhald_tekst": "Gåta: protokollane ligg stabla, og «kvat» viser kva bok som summar annleis. Saka om kona i Sogn som «brugte Bondesprog for Retten». Minispelet der tre ord kjem fram under strekane og flyg ut gjennom kjellarvindauget (1.23, attklang i 1.25)",
+   "scener": [
+    "s1_23",
+    "s1_25"
+   ],
+   "utgangar": [
+    {
+     "til": "ARK-05",
+     "namn": null
+    },
+    {
+     "til": "ARK-07",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ARK-05, ARK-07",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": true,
+   "soner": [
+    "9b_arkivet_under_raadstova"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:89"
+  },
+  {
+   "id": "ARK-07",
+   "stad": "ARK",
+   "omraade": "Arkivet under Rådstova",
+   "dungeon": "Arkivet under Rådstova",
+   "lag": "Tredje del",
+   "namn": "Framfor den inste kvelven",
+   "innhald_tekst": "Kvilestad: den gamle vasstønna der Aasen rissar kvileruna for første gong i ein bygning (forslag i dungeonfana)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ARK-06",
+     "namn": null
+    },
+    {
+     "til": "ARK-08",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ARK-06, ARK-08",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_arkivet_under_raadstova"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:90"
+  },
+  {
+   "id": "ARK-08",
+   "stad": "ARK",
+   "omraade": "Arkivet under Rådstova",
+   "dungeon": "Arkivet under Rådstova",
+   "lag": "Tredje del",
+   "namn": "Den inste kvelven",
+   "innhald_tekst": "Bossrom: Stiftskrivaren (nivå 9) på den høge pulten. Løn: þegi til huldra og tingboka til Christie. Snarveg etter bossen: vinda med kassa for protokollar heilt opp til vaktmannen (forslag i dungeonfana)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ARK-07",
+     "namn": null
+    },
+    {
+     "til": "BGN-07",
+     "namn": null,
+     "merknad": "vinda"
+    }
+   ],
+   "utgangar_tekst": "ARK-07, BGN-07 (vinda)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9b_arkivet_under_raadstova"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:91"
+  },
+  {
+   "id": "REK-01",
+   "stad": "REK",
+   "omraade": "Rekneskapsbøkene",
+   "dungeon": "Rekneskapsbøkene",
+   "lag": "Kontoret",
+   "namn": "Kontoret",
+   "innhald_tekst": "Pultar og lampelys. Kvilestad: vasskaret i kontoret",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-02",
+     "namn": "Bryggen"
+    },
+    {
+     "til": "REK-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BGN-02 Bryggen, REK-02",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_rekneskapsbokene_s1.8"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:107"
+  },
+  {
+   "id": "REK-02",
+   "stad": "REK",
+   "omraade": "Rekneskapsbøkene",
+   "dungeon": "Rekneskapsbøkene",
+   "lag": "Kontoret",
+   "namn": "Rekneskapskammeret",
+   "innhald_tekst": "Dei tre bøkene opne på pulten. Bossrom: Debitoren (nivå 10), når kvitteringa er funnen. Løn: ordet greidd og tørrfisken frå Synnøve. Snarveg etter bossen: døra ut til bryggja",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "REK-01",
+     "namn": null
+    },
+    {
+     "til": "REK-03",
+     "namn": null
+    },
+    {
+     "til": "REK-04",
+     "namn": null
+    },
+    {
+     "til": "REK-05",
+     "namn": null
+    },
+    {
+     "til": "BGN-02",
+     "namn": null,
+     "merknad": "døra ut til bryggja"
+    }
+   ],
+   "utgangar_tekst": "REK-01, REK-03, REK-04, REK-05, BGN-02 (døra ut til bryggja)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9b_rekneskapsbokene_s1.8"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:108"
+  },
+  {
+   "id": "REK-03",
+   "stad": "REK",
+   "omraade": "Rekneskapsbøkene",
+   "dungeon": "Rekneskapsbøkene",
+   "lag": "Inne i bøkene",
+   "namn": "Den første boka",
+   "innhald_tekst": "Gjelda står skriven på dansk så tungt at blekket har fått liv",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "REK-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "REK-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_rekneskapsbokene_s1.8"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:109"
+  },
+  {
+   "id": "REK-04",
+   "stad": "REK",
+   "omraade": "Rekneskapsbøkene",
+   "dungeon": "Rekneskapsbøkene",
+   "lag": "Inne i bøkene",
+   "namn": "Den andre boka",
+   "innhald_tekst": "Tre vog fisk ført som «Ikke erlagt»",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "REK-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "REK-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_rekneskapsbokene_s1.8"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:110"
+  },
+  {
+   "id": "REK-05",
+   "stad": "REK",
+   "omraade": "Rekneskapsbøkene",
+   "dungeon": "Rekneskapsbøkene",
+   "lag": "Inne i bøkene",
+   "namn": "Den tredje boka",
+   "innhald_tekst": "Kvitteringa på nordhordlandsk ligg mellom sidene (forslag til plassering)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "REK-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "REK-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_rekneskapsbokene_s1.8"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:111"
+  },
+  {
+   "id": "UBR-01",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 1, 1702, tur 1",
+   "namn": "Kjellaren under pakkhuset",
+   "innhald_tekst": "Det luktar tjøre og tang. Johannes gjev Aasen lykta og spring (2.8). Ordet tjøre",
+   "scener": [
+    "s2_8"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-02a",
+     "namn": "Pakkhuset"
+    },
+    {
+     "til": "UBR-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BGN-02a Pakkhuset, UBR-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:126"
+  },
+  {
+   "id": "UBR-02",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 1, tur 1",
+   "namn": "Oskelaget frå 1702",
+   "innhald_tekst": "Svart oske og forkola bjelkar. Bergensk og dansk i lufta. Temaet høyrest dempa gjennom golvplankane",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UBR-01",
+     "namn": null
+    },
+    {
+     "til": "UBR-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UBR-01, UBR-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:127"
+  },
+  {
+   "id": "UBR-03",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 2, tur 2",
+   "namn": "Brannlaget frå 1476",
+   "innhald_tekst": "Tyske kjøpmannsord i veggene. Plattyske lånord frå S1.47 gjev høvesbonus",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UBR-02",
+     "namn": null
+    },
+    {
+     "til": "UBR-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UBR-02, UBR-04",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:128"
+  },
+  {
+   "id": "UBR-04",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 2, tur 2",
+   "namn": "Schøtstua i oska",
+   "innhald_tekst": "Ei schøtstue i oske (forslag i fana)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UBR-03",
+     "namn": null
+    },
+    {
+     "til": "UBR-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UBR-03, UBR-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:129"
+  },
+  {
+   "id": "UBR-05",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 3, tur 3",
+   "namn": "Brannlaget frå 1248",
+   "innhald_tekst": "Dei første norrøne lydane. Brende kyrkjeord frå dei elleve kyrkjene som brann i 1248 (forslag i fana)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UBR-04",
+     "namn": null
+    },
+    {
+     "til": "UBR-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UBR-04, UBR-06",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:130"
+  },
+  {
+   "id": "UBR-06",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 3, tur 3",
+   "namn": "Bakgarden i 1248-laget",
+   "innhald_tekst": "Norrønt frå byen til Håkon Håkonsson",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UBR-05",
+     "namn": null
+    },
+    {
+     "til": "UBR-07",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UBR-05, UBR-07",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:131"
+  },
+  {
+   "id": "UBR-07",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 4, 1198, tur 4",
+   "namn": "Den skorne firkanten",
+   "innhald_tekst": "Jorda er skoren reint bort i ein firkant med skarpe kantar. «Denne tok» (2.8). Tråden mot Munch",
+   "scener": [
+    "s2_8"
+   ],
+   "utgangar": [
+    {
+     "til": "UBR-06",
+     "namn": null
+    },
+    {
+     "til": "UBR-08",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UBR-06, UBR-08",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:132"
+  },
+  {
+   "id": "UBR-08",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 4, tur 4",
+   "namn": "Stigen",
+   "innhald_tekst": "Snarveg: stigen rett opp til pakkhuset. Etter 2.9 held han heile vegen ned til UBR-16",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UBR-07",
+     "namn": null
+    },
+    {
+     "til": "UBR-09",
+     "namn": null
+    },
+    {
+     "til": "BGN-02a",
+     "namn": "Pakkhuset"
+    },
+    {
+     "til": "UBR-16",
+     "namn": null,
+     "merknad": "etter 2.9"
+    }
+   ],
+   "utgangar_tekst": "UBR-07, UBR-09, BGN-02a Pakkhuset, UBR-16 (etter 2.9)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:133"
+  },
+  {
+   "id": "UBR-09",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 5, 1170/71, tur 5",
+   "namn": "Den eldste oska",
+   "innhald_tekst": "Den eldste kjende bybrannen. Berre éi stemme att i musikken",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UBR-08",
+     "namn": null
+    },
+    {
+     "til": "UBR-10",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UBR-08, UBR-10",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:134"
+  },
+  {
+   "id": "UBR-10",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 6, tur 6",
+   "namn": "Bryggestolpane",
+   "innhald_tekst": "Dei eldste bryggestolpane frå 1100-talet (forslag i fana). Kviskring og få ord",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UBR-09",
+     "namn": null
+    },
+    {
+     "til": "UBR-11",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UBR-09, UBR-11",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:135"
+  },
+  {
+   "id": "UBR-11",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 7, tur 7",
+   "namn": "Strandkanten",
+   "innhald_tekst": "Strandkanten under bryggene",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UBR-10",
+     "namn": null
+    },
+    {
+     "til": "UBR-12",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UBR-10, UBR-12",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:136"
+  },
+  {
+   "id": "UBR-12",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 7, tur 7",
+   "namn": "Brønnen",
+   "innhald_tekst": "Kvilestad: den gamle brønnen der Aasen rissar kvileruna før dei djupaste laga (del2:358)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UBR-11",
+     "namn": null
+    },
+    {
+     "til": "UBR-13",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UBR-11, UBR-13",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:137"
+  },
+  {
+   "id": "UBR-13",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 8, tur 8",
+   "namn": "Leira med pinnane",
+   "innhald_tekst": "Hundrevis av runepinnar som kviskrar og slår tilbake når dei blir lesne feil (forslag i fana)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UBR-12",
+     "namn": null
+    },
+    {
+     "til": "UBR-14",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UBR-12, UBR-14",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:138"
+  },
+  {
+   "id": "UBR-14",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 8, tur 8",
+   "namn": "Pinnen som glør",
+   "innhald_tekst": "Pinnen til Gunnhild glør her og startar S1.13",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UBR-13",
+     "namn": null
+    },
+    {
+     "til": "UBR-15",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UBR-13, UBR-15",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:139"
+  },
+  {
+   "id": "UBR-15",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 9, 2.9",
+   "namn": "Den nedste kjellaren",
+   "innhald_tekst": "Gåta: spelaren les pinnane éin etter éin for å opne vegen, og feil lesing gjev ein støyt av sagakraft. Tore, malten, Ingebjørg og «kyss mik» (2.9)",
+   "scener": [
+    "s2_9"
+   ],
+   "utgangar": [
+    {
+     "til": "UBR-14",
+     "namn": null
+    },
+    {
+     "til": "UBR-16",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UBR-14, UBR-16",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": true,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:140"
+  },
+  {
+   "id": "UBR-16",
+   "stad": "UBR",
+   "omraade": "Under Bryggen",
+   "dungeon": "Under Bryggen",
+   "lag": "Lag 9, 2.9",
+   "namn": "Ved bjelken innerst",
+   "innhald_tekst": "Gyda-pinnen glør ved bjelken. Bossrom: Brannvaka (nivå 14), med pinnane i veggen til situasjonskommandoen Les. Løn: Gyda-pinnen, Runelesing nivå 1, heimr under heim. Den løynde stien til Djupet opnar seg her i 1853 (S2.41)",
+   "scener": [
+    "S2_41"
+   ],
+   "utgangar": [
+    {
+     "til": "UBR-15",
+     "namn": null
+    },
+    {
+     "til": "UBR-08",
+     "namn": null,
+     "merknad": "stigen etter 2.9"
+    },
+    {
+     "til": "DUB-01",
+     "namn": null,
+     "merknad": "Avkroken og Gyda-pinnen"
+    }
+   ],
+   "utgangar_tekst": "UBR-15, UBR-08 (stigen etter 2.9), DUB-01 (Avkroken og Gyda-pinnen)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9b_under_bryggen_lag_1_til_4",
+    "9b_under_bryggen_lag_5_til_8",
+    "9c_pakkhuskjellarane_ved_vaagen_og_kjellarane_under_bryggen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:141"
+  },
+  {
+   "id": "VFD-01",
+   "stad": "VFD",
+   "omraade": "Varden på Fedje",
+   "dungeon": "Varden på Fedje",
+   "lag": "Fjøra",
+   "namn": "Landingsstaden",
+   "innhald_tekst": "Båten frå Holsnøy, storm og regn",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HSN-02",
+     "namn": "Holmane"
+    },
+    {
+     "til": "VFD-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "HSN-02 Holmane, VFD-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_varden_paa_fedje_s1.12"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:162"
+  },
+  {
+   "id": "VFD-02",
+   "stad": "VFD",
+   "omraade": "Varden på Fedje",
+   "dungeon": "Varden på Fedje",
+   "lag": "Lyngkollen",
+   "namn": "Den første le-staden",
+   "innhald_tekst": "Spelaren kryp mellom steinane (forslag i dungeonfana)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VFD-01",
+     "namn": null
+    },
+    {
+     "til": "VFD-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VFD-01, VFD-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_varden_paa_fedje_s1.12"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:163"
+  },
+  {
+   "id": "VFD-03",
+   "stad": "VFD",
+   "omraade": "Varden på Fedje",
+   "dungeon": "Varden på Fedje",
+   "lag": "Lyngkollen",
+   "namn": "Den andre le-staden",
+   "innhald_tekst": "Vêren på holmane søkjer le same stad",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VFD-02",
+     "namn": null
+    },
+    {
+     "til": "VFD-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VFD-02, VFD-04",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_varden_paa_fedje_s1.12"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:164"
+  },
+  {
+   "id": "VFD-04",
+   "stad": "VFD",
+   "omraade": "Varden på Fedje",
+   "dungeon": "Varden på Fedje",
+   "lag": "Lyngkollen",
+   "namn": "Den tredje le-staden",
+   "innhald_tekst": "Lyset frå varden syner over kanten",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VFD-03",
+     "namn": null
+    },
+    {
+     "til": "VFD-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VFD-03, VFD-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_varden_paa_fedje_s1.12"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:165"
+  },
+  {
+   "id": "VFD-05",
+   "stad": "VFD",
+   "omraade": "Varden på Fedje",
+   "dungeon": "Varden på Fedje",
+   "lag": "Under toppen",
+   "namn": "Steinbua",
+   "innhald_tekst": "Kvilestad: ei steinbu (forslag i dungeonfana)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VFD-04",
+     "namn": null
+    },
+    {
+     "til": "VFD-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VFD-04, VFD-06",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_varden_paa_fedje_s1.12"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:166"
+  },
+  {
+   "id": "VFD-06",
+   "stad": "VFD",
+   "omraade": "Varden på Fedje",
+   "dungeon": "Varden på Fedje",
+   "lag": "Toppen",
+   "namn": "Varden",
+   "innhald_tekst": "Vardekona ser seglet (S1.12). Samtale og val i staden for boss. Løn: ordet varde og runa Vardeljos. Snarveg etterpå: stormen legg seg, og stien går rett ned til landingsstaden (forslag)",
+   "scener": [
+    "S1_12"
+   ],
+   "utgangar": [
+    {
+     "til": "VFD-05",
+     "namn": null
+    },
+    {
+     "til": "VFD-01",
+     "namn": null,
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "VFD-05, VFD-01 (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_varden_paa_fedje_s1.12"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:167"
+  },
+  {
+   "id": "ABG-01",
+   "stad": "ABG",
+   "omraade": "Arkivet i bispegarden",
+   "dungeon": "Arkivet i bispegarden",
+   "lag": "Arkivet",
+   "namn": "Gangen til arkivet",
+   "innhald_tekst": "Kyrkjeklokkene slår i ettermiddagane, og bøkene skriv namn på eiga hand (forslag til bygderegel i fana)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BGN-08c",
+     "namn": "Arbeidsrommet"
+    },
+    {
+     "til": "ABG-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BGN-08c Arbeidsrommet, ABG-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_arkivet_i_bispegarden_s2.18"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:182"
+  },
+  {
+   "id": "ABG-02",
+   "stad": "ABG",
+   "omraade": "Arkivet i bispegarden",
+   "dungeon": "Arkivet i bispegarden",
+   "lag": "Arkivet",
+   "namn": "Den første hyllerada",
+   "innhald_tekst": "Kyrkjebøker som vil skrive inn breva",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ABG-01",
+     "namn": null
+    },
+    {
+     "til": "ABG-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ABG-01, ABG-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_arkivet_i_bispegarden_s2.18"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:183"
+  },
+  {
+   "id": "ABG-03",
+   "stad": "ABG",
+   "omraade": "Arkivet i bispegarden",
+   "dungeon": "Arkivet i bispegarden",
+   "lag": "Arkivet",
+   "namn": "Den andre hyllerada",
+   "innhald_tekst": "Innførslane i bispegarden står tettare",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ABG-02",
+     "namn": null
+    },
+    {
+     "til": "ABG-04",
+     "namn": null
+    },
+    {
+     "til": "ABG-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ABG-02, ABG-04, ABG-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_arkivet_i_bispegarden_s2.18"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:184"
+  },
+  {
+   "id": "ABG-04",
+   "stad": "ABG",
+   "omraade": "Arkivet i bispegarden",
+   "dungeon": "Arkivet i bispegarden",
+   "lag": "Arkivet",
+   "namn": "Skapet med breva",
+   "innhald_tekst": "Breva til Neumann ligg i arkivet",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ABG-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ABG-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_arkivet_i_bispegarden_s2.18"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:185"
+  },
+  {
+   "id": "ABG-05",
+   "stad": "ABG",
+   "omraade": "Arkivet i bispegarden",
+   "dungeon": "Arkivet i bispegarden",
+   "lag": "Ute",
+   "namn": "Gardsrommet",
+   "innhald_tekst": "Kvilestad: brønnen i gardsrommet (forslag i dungeonfana)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ABG-03",
+     "namn": null
+    },
+    {
+     "til": "ABG-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ABG-03, ABG-06",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_arkivet_i_bispegarden_s2.18"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:186"
+  },
+  {
+   "id": "ABG-06",
+   "stad": "ABG",
+   "omraade": "Arkivet i bispegarden",
+   "dungeon": "Arkivet i bispegarden",
+   "lag": "Arkivet",
+   "namn": "Det inste arkivkammeret",
+   "innhald_tekst": "Bossrom: Dødsregisteret (nivå 32). Løn: Bispebrevet. Snarveg etter bossen: døra rett inn i arbeidsrommet (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ABG-05",
+     "namn": null
+    },
+    {
+     "til": "BGN-08c",
+     "namn": null,
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "ABG-05, BGN-08c (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9b_arkivet_i_bispegarden_s2.18"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:187"
+  },
+  {
+   "id": "BKL-01",
+   "stad": "BKL",
+   "omraade": "Bak kulissane",
+   "dungeon": "Bak kulissane",
+   "lag": "Inngang",
+   "namn": "Gangen bak scena",
+   "innhald_tekst": "Ole Bull i frakk med blome i knappholet, fela under armen (4.19)",
+   "scener": [
+    "s4_19"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-11",
+     "namn": "Engen"
+    },
+    {
+     "til": "BKL-02",
+     "namn": null
+    },
+    {
+     "til": "BKL-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BGN-11 Engen, BKL-02, BKL-04",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_bak_kulissane"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:202"
+  },
+  {
+   "id": "BKL-02",
+   "stad": "BKL",
+   "omraade": "Bak kulissane",
+   "dungeon": "Bak kulissane",
+   "lag": "Garderobane",
+   "namn": "Garderoben for herrane",
+   "innhald_tekst": "Ein stivna skodespelar. Kvilestad: vasskanna til skodespelarane, med kvileruna i botnen (forslag i dungeonfana)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BKL-01",
+     "namn": null
+    },
+    {
+     "til": "BKL-03",
+     "namn": null
+    },
+    {
+     "til": "BKL-09",
+     "namn": null,
+     "merknad": "falluka, snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "BKL-01, BKL-03, BKL-09 (falluka, snarveg)",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_bak_kulissane"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:203"
+  },
+  {
+   "id": "BKL-03",
+   "stad": "BKL",
+   "omraade": "Bak kulissane",
+   "dungeon": "Bak kulissane",
+   "lag": "Garderobane",
+   "namn": "Garderoben for damene",
+   "innhald_tekst": "Kostyme og sminkebord",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BKL-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BKL-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_bak_kulissane"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:204"
+  },
+  {
+   "id": "BKL-04",
+   "stad": "BKL",
+   "omraade": "Bak kulissane",
+   "dungeon": "Bak kulissane",
+   "lag": "Sidescena",
+   "namn": "Sidescena vest",
+   "innhald_tekst": "Kulissar på hjul som må skuvast for å kome fram. Ein stivna skodespelar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BKL-01",
+     "namn": null
+    },
+    {
+     "til": "BKL-05",
+     "namn": null
+    },
+    {
+     "til": "BKL-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BKL-01, BKL-05, BKL-06",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_bak_kulissane"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:205"
+  },
+  {
+   "id": "BKL-05",
+   "stad": "BKL",
+   "omraade": "Bak kulissane",
+   "dungeon": "Bak kulissane",
+   "lag": "Sidescena",
+   "namn": "Sidescena aust",
+   "innhald_tekst": "Den danske skodespelaren med sufflørguten",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BKL-04",
+     "namn": null
+    },
+    {
+     "til": "BKL-08",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BKL-04, BKL-08",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_bak_kulissane"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:206"
+  },
+  {
+   "id": "BKL-06",
+   "stad": "BKL",
+   "omraade": "Bak kulissane",
+   "dungeon": "Bak kulissane",
+   "lag": "Snorloftet",
+   "namn": "Snorloftet",
+   "innhald_tekst": "Tau og trekk over scena. Ein stivna skodespelar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BKL-04",
+     "namn": null
+    },
+    {
+     "til": "BKL-07",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BKL-04, BKL-07",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_bak_kulissane"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:207"
+  },
+  {
+   "id": "BKL-07",
+   "stad": "BKL",
+   "omraade": "Bak kulissane",
+   "dungeon": "Bak kulissane",
+   "lag": "Snorloftet",
+   "namn": "Gangbrua over rampa",
+   "innhald_tekst": "Utsyn ned på scena og salen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BKL-06",
+     "namn": null
+    },
+    {
+     "til": "BKL-08",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BKL-06, BKL-08",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_bak_kulissane"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:208"
+  },
+  {
+   "id": "BKL-08",
+   "stad": "BKL",
+   "omraade": "Bak kulissane",
+   "dungeon": "Bak kulissane",
+   "lag": "Gangen",
+   "namn": "Gangen ned til sufflørkassa",
+   "innhald_tekst": "Ein stivna skodespelar. Kvesinga frå kassa",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BKL-05",
+     "namn": null
+    },
+    {
+     "til": "BKL-07",
+     "namn": null
+    },
+    {
+     "til": "BKL-09",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BKL-05, BKL-07, BKL-09",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_bak_kulissane"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:209"
+  },
+  {
+   "id": "BKL-09",
+   "stad": "BKL",
+   "omraade": "Bak kulissane",
+   "dungeon": "Bak kulissane",
+   "lag": "Scena",
+   "namn": "Scena framfor sufflørkassa",
+   "innhald_tekst": "Bossrom: Suffløren (nivå 30 til 34) med to skodespelarar som vernemål. Løn: ordet spel. Snarveg etter bossen: falluka på scena ned til garderobane",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BKL-08",
+     "namn": null
+    },
+    {
+     "til": "BKL-02",
+     "namn": null,
+     "merknad": "falluka"
+    },
+    {
+     "til": "BGN-11a",
+     "namn": "Salen"
+    }
+   ],
+   "utgangar_tekst": "BKL-08, BKL-02 (falluka), BGN-11a Salen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9b_bak_kulissane"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:210"
+  },
+  {
+   "id": "SUF-01",
+   "stad": "SUF",
+   "omraade": "Sufflørkassa",
+   "dungeon": "Sufflørkassa",
+   "lag": "Lageret",
+   "namn": "Trappa ned under scena",
+   "innhald_tekst": "Ibsen står på trappa med boka og gjev hint (6.2)",
+   "scener": [
+    "s6_2"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-11a",
+     "namn": "Salen og scena"
+    },
+    {
+     "til": "SUF-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BGN-11a Salen og scena, SUF-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_sufflorkassa_6.2"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:225"
+  },
+  {
+   "id": "SUF-02",
+   "stad": "SUF",
+   "omraade": "Sufflørkassa",
+   "dungeon": "Sufflørkassa",
+   "lag": "Lageret",
+   "namn": "Lageret for gamle kulissar, vest",
+   "innhald_tekst": "Kulissar som vaknar til liv (Kulissen i Komediehuset)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SUF-01",
+     "namn": null
+    },
+    {
+     "til": "SUF-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SUF-01, SUF-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_sufflorkassa_6.2"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:226"
+  },
+  {
+   "id": "SUF-03",
+   "stad": "SUF",
+   "omraade": "Sufflørkassa",
+   "dungeon": "Sufflørkassa",
+   "lag": "Lageret",
+   "namn": "Lageret for gamle kulissar, aust",
+   "innhald_tekst": "Skipsrotter som har kome inn frå pakkhusa for varmen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SUF-02",
+     "namn": null
+    },
+    {
+     "til": "SUF-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SUF-02, SUF-04",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_sufflorkassa_6.2"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:227"
+  },
+  {
+   "id": "SUF-04",
+   "stad": "SUF",
+   "omraade": "Sufflørkassa",
+   "dungeon": "Sufflørkassa",
+   "lag": "Rekvisittkammeret",
+   "namn": "Rekvisittkammeret",
+   "innhald_tekst": "Pesta i lasta står synleg i kista med kostyme frå hamna",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SUF-03",
+     "namn": null
+    },
+    {
+     "til": "SUF-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SUF-03, SUF-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_sufflorkassa_6.2"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:228"
+  },
+  {
+   "id": "SUF-05",
+   "stad": "SUF",
+   "omraade": "Sufflørkassa",
+   "dungeon": "Sufflørkassa",
+   "lag": "Rekvisittkammeret",
+   "namn": "Manuskripthyllene",
+   "innhald_tekst": "Strykingane heng som istappar frå manuskripta. *Den Vægelsindede* med dei danske strykingane",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SUF-04",
+     "namn": null
+    },
+    {
+     "til": "SUF-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SUF-04, SUF-06",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_sufflorkassa_6.2"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:229"
+  },
+  {
+   "id": "SUF-06",
+   "stad": "SUF",
+   "omraade": "Sufflørkassa",
+   "dungeon": "Sufflørkassa",
+   "lag": "Gangen",
+   "namn": "Rett under scena",
+   "innhald_tekst": "Kvilestad: staden der fela høyrest best, og rimet har tint til ein pøl Aasen kan risse kvileruna i (forslag i dungeonfana)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SUF-05",
+     "namn": null
+    },
+    {
+     "til": "SUF-07",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SUF-05, SUF-07",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_sufflorkassa_6.2"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:230"
+  },
+  {
+   "id": "SUF-07",
+   "stad": "SUF",
+   "omraade": "Sufflørkassa",
+   "dungeon": "Sufflørkassa",
+   "lag": "Gangen",
+   "namn": "Gangen til sufflørkassa",
+   "innhald_tekst": "Kviskinga kjem frå eit lite hol i taket",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SUF-06",
+     "namn": null
+    },
+    {
+     "til": "SUF-08",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SUF-06, SUF-08",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_sufflorkassa_6.2"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:231"
+  },
+  {
+   "id": "SUF-08",
+   "stad": "SUF",
+   "omraade": "Sufflørkassa",
+   "dungeon": "Sufflørkassa",
+   "lag": "Gangen",
+   "namn": "Sufflørkassa",
+   "innhald_tekst": "Bossrom: Rimsuffløren (nivå 39). Strengen ryk etter fase 1. Løn: ordet strok og boka med strykingane, som Ibsen tek. Snarveg etter bossen: lemmen opp til scena",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SUF-07",
+     "namn": null
+    },
+    {
+     "til": "SUF-08a",
+     "namn": null
+    },
+    {
+     "til": "BGN-11a",
+     "namn": null,
+     "merknad": "lemmen"
+    }
+   ],
+   "utgangar_tekst": "SUF-07, SUF-08a, BGN-11a (lemmen)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9c_sufflorkassa_6.2"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:232"
+  },
+  {
+   "id": "SUF-08a",
+   "stad": "SUF",
+   "omraade": "Sufflørkassa",
+   "dungeon": "Sufflørkassa",
+   "lag": "Gangen",
+   "namn": "Holet i sufflørkassa",
+   "innhald_tekst": "For trongt for andre enn tussen. Tussestorleik opnar (forslag i fana)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SUF-08",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SUF-08",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_sufflorkassa_6.2"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:233"
+  },
+  {
+   "id": "LAS-01",
+   "stad": "LAS",
+   "omraade": "Lasterommet på emigrantskipet",
+   "dungeon": "Lasterommet på emigrantskipet",
+   "lag": "Dekket",
+   "namn": "Dekket i storm",
+   "innhald_tekst": "Skipet går ut frå Bryggen etter plakaten (S2.21.1). Dekket krengjer",
+   "scener": [
+    "S2_21_1"
+   ],
+   "utgangar": [
+    {
+     "til": "BGN-02",
+     "namn": "Bryggen",
+     "merknad": "før avgang"
+    },
+    {
+     "til": "LAS-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BGN-02 Bryggen (før avgang), LAS-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:248"
+  },
+  {
+   "id": "LAS-02",
+   "stad": "LAS",
+   "omraade": "Lasterommet på emigrantskipet",
+   "dungeon": "Lasterommet på emigrantskipet",
+   "lag": "Dekket",
+   "namn": "Lukeskottet",
+   "innhald_tekst": "Trappa ned i lasta. Vatnet renn ned langs trinna",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LAS-01",
+     "namn": null
+    },
+    {
+     "til": "LAS-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LAS-01, LAS-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:249"
+  },
+  {
+   "id": "LAS-03",
+   "stad": "LAS",
+   "omraade": "Lasterommet på emigrantskipet",
+   "dungeon": "Lasterommet på emigrantskipet",
+   "lag": "Lasta, rom 1",
+   "namn": "Forlasta",
+   "innhald_tekst": "Tønner og kister med proviant som har slite seg",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LAS-02",
+     "namn": null
+    },
+    {
+     "til": "LAS-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LAS-02, LAS-04",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:250"
+  },
+  {
+   "id": "LAS-04",
+   "stad": "LAS",
+   "omraade": "Lasterommet på emigrantskipet",
+   "dungeon": "Lasterommet på emigrantskipet",
+   "lag": "Lasta, rom 2",
+   "namn": "Midtlasta med ballasten",
+   "innhald_tekst": "Draugsteinen står synleg i ballasten",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LAS-03",
+     "namn": null
+    },
+    {
+     "til": "LAS-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LAS-03, LAS-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:251"
+  },
+  {
+   "id": "LAS-05",
+   "stad": "LAS",
+   "omraade": "Lasterommet på emigrantskipet",
+   "dungeon": "Lasterommet på emigrantskipet",
+   "lag": "Lasta, rom 3",
+   "namn": "Akterlasta",
+   "innhald_tekst": "Pesta i lasta står synleg i ein skinnbunt. Vatnet stig",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LAS-04",
+     "namn": null
+    },
+    {
+     "til": "LAS-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LAS-04, LAS-06",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:252"
+  },
+  {
+   "id": "LAS-06",
+   "stad": "LAS",
+   "omraade": "Lasterommet på emigrantskipet",
+   "dungeon": "Lasterommet på emigrantskipet",
+   "lag": "Lasta",
+   "namn": "Køyene til utvandrarane",
+   "innhald_tekst": "Kvilestad: vasstønna for utvandrarane",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LAS-05",
+     "namn": null
+    },
+    {
+     "til": "LAS-07",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "LAS-05, LAS-07",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:253"
+  },
+  {
+   "id": "LAS-07",
+   "stad": "LAS",
+   "omraade": "Lasterommet på emigrantskipet",
+   "dungeon": "Lasterommet på emigrantskipet",
+   "lag": "Lasta",
+   "namn": "Kista med skøytet",
+   "innhald_tekst": "Bossrom: Landkjøpsbrevet (nivå 39). Val om familien Myklebust. Løn: Løftet. Snarveg etter bossen: lukeskottet rett opp til dekket (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LAS-06",
+     "namn": null
+    },
+    {
+     "til": "LAS-01",
+     "namn": null,
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "LAS-06, LAS-01 (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:254"
+  },
+  {
+   "id": "DUB-01",
+   "stad": "DUB",
+   "omraade": "Djupet under Bryggen",
+   "dungeon": "Djupet under Bryggen",
+   "lag": "Leira",
+   "namn": "Den løynde stien",
+   "innhald_tekst": "Stien opnar seg med Avkroken og Gyda-pinnen, djupare enn rommet der pinnen låg",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UBR-16",
+     "namn": "Ved bjelken innerst"
+    },
+    {
+     "til": "DUB-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UBR-16 Ved bjelken innerst, DUB-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_djupet_under_bryggen_leira_med_dei_siste_runepinnane_s2.41",
+    "9c_djupet_under_bryggen_kammeret_med_skinna"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:269"
+  },
+  {
+   "id": "DUB-02",
+   "stad": "DUB",
+   "omraade": "Djupet under Bryggen",
+   "dungeon": "Djupet under Bryggen",
+   "lag": "Leira",
+   "namn": "Leira under lag 9",
+   "innhald_tekst": "Runeskuggane i leira. Pinnane står tettare enn nokon gong",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DUB-01",
+     "namn": null
+    },
+    {
+     "til": "DUB-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "DUB-01, DUB-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_djupet_under_bryggen_leira_med_dei_siste_runepinnane_s2.41",
+    "9c_djupet_under_bryggen_kammeret_med_skinna"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:270"
+  },
+  {
+   "id": "DUB-03",
+   "stad": "DUB",
+   "omraade": "Djupet under Bryggen",
+   "dungeon": "Djupet under Bryggen",
+   "lag": "Leira",
+   "namn": "Pinnane som kviskrar",
+   "innhald_tekst": "Kviskring frå alle kantar og ein låg puls i leira",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DUB-02",
+     "namn": null
+    },
+    {
+     "til": "DUB-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "DUB-02, DUB-04",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_djupet_under_bryggen_leira_med_dei_siste_runepinnane_s2.41",
+    "9c_djupet_under_bryggen_kammeret_med_skinna"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:271"
+  },
+  {
+   "id": "DUB-04",
+   "stad": "DUB",
+   "omraade": "Djupet under Bryggen",
+   "dungeon": "Djupet under Bryggen",
+   "lag": "Leira",
+   "namn": "Den smale gangen i leira",
+   "innhald_tekst": "Gangen svingar ned mellom stolperestar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DUB-03",
+     "namn": null
+    },
+    {
+     "til": "DUB-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "DUB-03, DUB-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_djupet_under_bryggen_leira_med_dei_siste_runepinnane_s2.41",
+    "9c_djupet_under_bryggen_kammeret_med_skinna"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:272"
+  },
+  {
+   "id": "DUB-05",
+   "stad": "DUB",
+   "omraade": "Djupet under Bryggen",
+   "dungeon": "Djupet under Bryggen",
+   "lag": "Leira",
+   "namn": "Dei siste runepinnane",
+   "innhald_tekst": "Pinnane blir færre",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DUB-04",
+     "namn": null
+    },
+    {
+     "til": "DUB-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "DUB-04, DUB-06",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_djupet_under_bryggen_leira_med_dei_siste_runepinnane_s2.41",
+    "9c_djupet_under_bryggen_kammeret_med_skinna"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:273"
+  },
+  {
+   "id": "DUB-06",
+   "stad": "DUB",
+   "omraade": "Djupet under Bryggen",
+   "dungeon": "Djupet under Bryggen",
+   "lag": "Leira",
+   "namn": "Der det første pergamentet byrjar",
+   "innhald_tekst": "Overgangen frå tre til skinn",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DUB-05",
+     "namn": null
+    },
+    {
+     "til": "DUB-07",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "DUB-05, DUB-07",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_djupet_under_bryggen_leira_med_dei_siste_runepinnane_s2.41",
+    "9c_djupet_under_bryggen_kammeret_med_skinna"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:274"
+  },
+  {
+   "id": "DUB-07",
+   "stad": "DUB",
+   "omraade": "Djupet under Bryggen",
+   "dungeon": "Djupet under Bryggen",
+   "lag": "Kammeret med skinna",
+   "namn": "Forkammeret",
+   "innhald_tekst": "Dei første skinna spikra opp til tørk. Skinnskrivarane",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DUB-06",
+     "namn": null
+    },
+    {
+     "til": "DUB-08",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "DUB-06, DUB-08",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_djupet_under_bryggen_leira_med_dei_siste_runepinnane_s2.41",
+    "9c_djupet_under_bryggen_kammeret_med_skinna"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:275"
+  },
+  {
+   "id": "DUB-08",
+   "stad": "DUB",
+   "omraade": "Djupet under Bryggen",
+   "dungeon": "Djupet under Bryggen",
+   "lag": "Kammeret med skinna",
+   "namn": "Skinnrammene i vest",
+   "innhald_tekst": "Rader med skinn på rammer",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DUB-07",
+     "namn": null
+    },
+    {
+     "til": "DUB-09",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "DUB-07, DUB-09",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_djupet_under_bryggen_leira_med_dei_siste_runepinnane_s2.41",
+    "9c_djupet_under_bryggen_kammeret_med_skinna"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:276"
+  },
+  {
+   "id": "DUB-09",
+   "stad": "DUB",
+   "omraade": "Djupet under Bryggen",
+   "dungeon": "Djupet under Bryggen",
+   "lag": "Kammeret med skinna",
+   "namn": "Skinnrammene i aust",
+   "innhald_tekst": "Rader med skinn på rammer",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DUB-08",
+     "namn": null
+    },
+    {
+     "til": "DUB-10",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "DUB-08, DUB-10",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_djupet_under_bryggen_leira_med_dei_siste_runepinnane_s2.41",
+    "9c_djupet_under_bryggen_kammeret_med_skinna"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:277"
+  },
+  {
+   "id": "DUB-10",
+   "stad": "DUB",
+   "omraade": "Djupet under Bryggen",
+   "dungeon": "Djupet under Bryggen",
+   "lag": "Kammeret med skinna",
+   "namn": "Skinna med namn",
+   "innhald_tekst": "Skinn der Skinnskrivarane har skrive namn",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DUB-09",
+     "namn": null
+    },
+    {
+     "til": "DUB-11",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "DUB-09, DUB-11",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_djupet_under_bryggen_leira_med_dei_siste_runepinnane_s2.41",
+    "9c_djupet_under_bryggen_kammeret_med_skinna"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:278"
+  },
+  {
+   "id": "DUB-11",
+   "stad": "DUB",
+   "omraade": "Djupet under Bryggen",
+   "dungeon": "Djupet under Bryggen",
+   "lag": "Kammeret med skinna",
+   "namn": "Det inste kammeret",
+   "innhald_tekst": "Dei nyaste skinna, enno våte",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DUB-10",
+     "namn": null
+    },
+    {
+     "til": "DUB-12",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "DUB-10, DUB-12",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_djupet_under_bryggen_leira_med_dei_siste_runepinnane_s2.41",
+    "9c_djupet_under_bryggen_kammeret_med_skinna"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:279"
+  },
+  {
+   "id": "DUB-12",
+   "stad": "DUB",
+   "omraade": "Djupet under Bryggen",
+   "dungeon": "Djupet under Bryggen",
+   "lag": "Kammeret med skinna",
+   "namn": "Gangen mot døra",
+   "innhald_tekst": "Penneskrapet bak døra høyrest",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DUB-11",
+     "namn": null
+    },
+    {
+     "til": "DUB-13",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "DUB-11, DUB-13",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_djupet_under_bryggen_leira_med_dei_siste_runepinnane_s2.41",
+    "9c_djupet_under_bryggen_kammeret_med_skinna"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:280"
+  },
+  {
+   "id": "DUB-13",
+   "stad": "DUB",
+   "omraade": "Djupet under Bryggen",
+   "dungeon": "Djupet under Bryggen",
+   "lag": "Skrivarrommet",
+   "namn": "Bautaen framfor døra",
+   "innhald_tekst": "Kvilestad: bautaen med kvile og lagring og delingsskjermen for to parti à fire. Gyda-pinnen er stille (S2.41.1)",
+   "scener": [
+    "S2_41_1"
+   ],
+   "utgangar": [
+    {
+     "til": "DUB-12",
+     "namn": null
+    },
+    {
+     "til": "DUB-14",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "DUB-12, DUB-14",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_djupet_under_bryggen_leira_med_dei_siste_runepinnane_s2.41",
+    "9c_djupet_under_bryggen_kammeret_med_skinna"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:281"
+  },
+  {
+   "id": "DUB-14",
+   "stad": "DUB",
+   "omraade": "Djupet under Bryggen",
+   "dungeon": "Djupet under Bryggen",
+   "lag": "Skrivarrommet",
+   "namn": "Skrivarrommet",
+   "innhald_tekst": "Bossrom: Den første skrivaren (nivå 68 til 70) ved skråbordet, fem fasar, partia byter ved fase 4 (S2.41.2). Løn: Lån ordet. Snarveg etter bossen: stigen frå lag 4 opp til pakkhuset, som superbossfana seier",
+   "scener": [
+    "S2_41_2"
+   ],
+   "utgangar": [
+    {
+     "til": "DUB-13",
+     "namn": null
+    },
+    {
+     "til": "UBR-08",
+     "namn": null,
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "DUB-13, UBR-08 (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9c_djupet_under_bryggen_leira_med_dei_siste_runepinnane_s2.41",
+    "9c_djupet_under_bryggen_kammeret_med_skinna"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:282"
+  },
+  {
+   "id": "VSF-01",
+   "stad": "VSF",
+   "omraade": "Valestrandsfossen",
+   "dungeon": "Valestrandsfossen",
+   "lag": "Foten",
+   "namn": "Råka under fossen",
+   "innhald_tekst": "Kvilestad: ei open råk i elva under fossen (forslag i dungeonfana). Det er heilt stille",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VAL-02",
+     "namn": "Elva under fossen"
+    },
+    {
+     "til": "VSF-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VAL-02 Elva under fossen, VSF-02",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_valestrandsfossen_paa_osteroy_s2.8_hausten_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:346"
+  },
+  {
+   "id": "VSF-02",
+   "stad": "VSF",
+   "omraade": "Valestrandsfossen",
+   "dungeon": "Valestrandsfossen",
+   "lag": "Hylle 1",
+   "namn": "Den første hylla",
+   "innhald_tekst": "Klatring på isen. Isvesenet i Valestrandsfossen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VSF-01",
+     "namn": null
+    },
+    {
+     "til": "VSF-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VSF-01, VSF-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_valestrandsfossen_paa_osteroy_s2.8_hausten_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:347"
+  },
+  {
+   "id": "VSF-03",
+   "stad": "VSF",
+   "omraade": "Valestrandsfossen",
+   "dungeon": "Valestrandsfossen",
+   "lag": "Hylle 2",
+   "namn": "Den andre hylla",
+   "innhald_tekst": "Isen heng i tunge kranser over hylla",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VSF-02",
+     "namn": null
+    },
+    {
+     "til": "VSF-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VSF-02, VSF-04",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_valestrandsfossen_paa_osteroy_s2.8_hausten_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:348"
+  },
+  {
+   "id": "VSF-04",
+   "stad": "VSF",
+   "omraade": "Valestrandsfossen",
+   "dungeon": "Valestrandsfossen",
+   "lag": "Hylle 3",
+   "namn": "Den tredje hylla",
+   "innhald_tekst": "Siste stykket opp. Ein skugge med fele syner gjennom isen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VSF-03",
+     "namn": null
+    },
+    {
+     "til": "VSF-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VSF-03, VSF-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_valestrandsfossen_paa_osteroy_s2.8_hausten_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:349"
+  },
+  {
+   "id": "VSF-05",
+   "stad": "VSF",
+   "omraade": "Valestrandsfossen",
+   "dungeon": "Valestrandsfossen",
+   "lag": "Toppen",
+   "namn": "Toppen av fossen",
+   "innhald_tekst": "Fossegrimen sit naken inne i isen med fele i fanget (S2.8.2)",
+   "scener": [
+    "S2_8_2"
+   ],
+   "utgangar": [
+    {
+     "til": "VSF-04",
+     "namn": null
+    },
+    {
+     "til": "VSF-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VSF-04, VSF-06",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_valestrandsfossen_paa_osteroy_s2.8_hausten_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:350"
+  },
+  {
+   "id": "VSF-06",
+   "stad": "VSF",
+   "omraade": "Valestrandsfossen",
+   "dungeon": "Valestrandsfossen",
+   "lag": "Toppen",
+   "namn": "Inne i isen",
+   "innhald_tekst": "Bossrom: Isen (nivå 43). Val om fela. Løn: Fossegrimslåtten eller Grimsfela. Snarveg etter bossen: etter val A tinar fossen, og elvebreidda går rett ned til råka (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VSF-05",
+     "namn": null
+    },
+    {
+     "til": "VSF-01",
+     "namn": null,
+     "merknad": "snarveg",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "VSF-05, VSF-01 (snarveg)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9c_valestrandsfossen_paa_osteroy_s2.8_hausten_1853"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:351"
+  }
+ ],
+ "kister": [
+  {
+   "id": "K-BGN-01-1",
+   "skjerm": "BGN-01",
+   "behaldar": "Ei tønne på ein lekter som ligg fortøydd ute i hamna",
+   "innhald": [
+    {
+     "ting": "flatbrod",
+     "tal": 3
+    },
+    {
+     "ting": "kaffi",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "3 flatbrød og 1 kaffi",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Berre med robåt",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:55"
+  },
+  {
+   "id": "K-BGN-01-2",
+   "skjerm": "BGN-01",
+   "behaldar": "Ei proviantkiste på dekket av skipet som står fast",
+   "innhald": [
+    {
+     "ting": "spekekjot",
+     "tal": 2
+    },
+    {
+     "ting": "kaffi_kandis",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 spekekjøt og 1 kaffi med kandis",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "1852, over isen",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:56"
+  },
+  {
+   "id": "K-BGN-05-1",
+   "skjerm": "BGN-05",
+   "behaldar": "Ein sekk under trappa til ei tom sjøbu",
+   "innhald": [
+    {
+     "ting": "fjor",
+     "tal": 3
+    }
+   ],
+   "kjelde_tekst": "3 fjør",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:57"
+  },
+  {
+   "id": "K-BGN-13a-1",
+   "skjerm": "BGN-13a",
+   "behaldar": "Kista til nordlandsskipperen",
+   "innhald": [],
+   "kjelde_tekst": "Sjå VK02",
+   "tid": [
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+   ],
+   "tid_tekst": "T1 til T4",
+   "ventekiste": "VK02",
+   "merknad": "VK02. Raud segl. Lytt: «Han kjem att med meir til hausten.»",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:58"
+  },
+  {
+   "id": "K-BGN-13c-1",
+   "skjerm": "BGN-13c",
+   "behaldar": "Ei gammal kiste bak tønnene",
+   "innhald": [
+    {
+     "pengar": 30
+    }
+   ],
+   "kjelde_tekst": "30 s",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:59"
+  },
+  {
+   "id": "K-BGN-02b-1",
+   "skjerm": "BGN-02b",
+   "behaldar": "Ei skuffe i ein gamal kontorpult",
+   "innhald": [
+    {
+     "ting": "strikka_topplue",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Strikka topplue",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Etter S1.47, når kjøpmannen har sagt ja",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:60"
+  },
+  {
+   "id": "K-BGN-04a-1",
+   "skjerm": "BGN-04a",
+   "behaldar": "Ein sekk bak kornsekkene",
+   "innhald": [
+    {
+     "pengar": 96
+    }
+   ],
+   "kjelde_tekst": "96 s",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3",
+   "ventekiste": null,
+   "merknad": "Bak Blikket (forslag)",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:61"
+  },
+  {
+   "id": "K-BGN-04b-1",
+   "skjerm": "BGN-04b",
+   "behaldar": "Ei kruttkiste utan krutt",
+   "innhald": [
+    {
+     "ting": "ullvottar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Ullvottar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Bak Rett (forslag)",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:62"
+  },
+  {
+   "id": "K-BGN-14-1",
+   "skjerm": "BGN-14",
+   "behaldar": "Ein varde ved stigen",
+   "innhald": [
+    {
+     "ting": "flatbrod",
+     "tal": 2
+    },
+    {
+     "ting": "lys",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 flatbrød og 2 lys",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Reisande legg att noko",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:63"
+  },
+  {
+   "id": "K-BGN-14-2",
+   "skjerm": "BGN-14",
+   "behaldar": "Same varden, nedsnødd",
+   "innhald": [
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi med kandis og 1 luktesalt",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "1852 og 1853. I 1852 bak Lyfte eller Spele opp (forslag)",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:64"
+  },
+  {
+   "id": "K-ARK-02-1",
+   "skjerm": "ARK-02",
+   "behaldar": "Ei kasse under benken til vaktmannen",
+   "innhald": [
+    {
+     "ting": "kritt",
+     "tal": 3
+    },
+    {
+     "ting": "lys",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "3 kritt og 2 lys",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:95"
+  },
+  {
+   "id": "K-ARK-03-1",
+   "skjerm": "ARK-03",
+   "behaldar": "Ein pengepung som nokon har gløymt i cella",
+   "innhald": [
+    {
+     "pengar": 27
+    }
+   ],
+   "kjelde_tekst": "27 s",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:96"
+  },
+  {
+   "id": "K-ARK-05-1",
+   "skjerm": "ARK-05",
+   "behaldar": "Ei krukke på hylla",
+   "innhald": [
+    {
+     "ting": "graut",
+     "tal": 2
+    },
+    {
+     "ting": "flatbrod",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 graut og 2 flatbrød",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:97"
+  },
+  {
+   "id": "K-ARK-06-1",
+   "skjerm": "ARK-06",
+   "behaldar": "Ein protokoll med perm av kalveskinn som har lose seg frå bandet",
+   "innhald": [
+    {
+     "ting": "kalveskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Kalveskinn",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:98"
+  },
+  {
+   "id": "K-ARK-07-1",
+   "skjerm": "ARK-07",
+   "behaldar": "Ei kasse ved vasstønna",
+   "innhald": [
+    {
+     "ting": "salt",
+     "tal": 3
+    }
+   ],
+   "kjelde_tekst": "3 salt",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:99"
+  },
+  {
+   "id": "K-REK-02-1",
+   "skjerm": "REK-02",
+   "behaldar": "Eit pengeskrin under pulten",
+   "innhald": [
+    {
+     "pengar": 30
+    }
+   ],
+   "kjelde_tekst": "30 s",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:115"
+  },
+  {
+   "id": "K-REK-03-1",
+   "skjerm": "REK-03",
+   "behaldar": "Ei kiste skriven inn i ei kolonne",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "kaffi",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut og 1 kaffi",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:116"
+  },
+  {
+   "id": "K-REK-04-1",
+   "skjerm": "REK-04",
+   "behaldar": "Eit fat i varelista",
+   "innhald": [
+    {
+     "ting": "hoffmannsdropar",
+     "tal": 1
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 hoffmannsdropar og 1 luktesalt",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:117"
+  },
+  {
+   "id": "K-REK-05-1",
+   "skjerm": "REK-05",
+   "behaldar": "Ein ballepakke i margen",
+   "innhald": [
+    {
+     "ting": "skinnlue",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Skinnlue",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Butikkting frå neste region (Sogn)",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:118"
+  },
+  {
+   "id": "K-UBR-02-1",
+   "skjerm": "UBR-02",
+   "behaldar": "Ei forkola kiste",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "tjore",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut og 1 tjøre",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:145"
+  },
+  {
+   "id": "K-UBR-04-1",
+   "skjerm": "UBR-04",
+   "behaldar": "Ei kiste under benken i schøtstua",
+   "innhald": [
+    {
+     "pengar": 36
+    }
+   ],
+   "kjelde_tekst": "36 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:146"
+  },
+  {
+   "id": "K-UBR-05-1",
+   "skjerm": "UBR-05",
+   "behaldar": "Ei krukke i oska",
+   "innhald": [
+    {
+     "ting": "kaffi",
+     "tal": 2
+    },
+    {
+     "ting": "honningvatn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi og 1 honningvatn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:147"
+  },
+  {
+   "id": "K-UBR-06-1",
+   "skjerm": "UBR-06",
+   "behaldar": "Ein sekk i bakgarden",
+   "innhald": [
+    {
+     "ting": "kalveskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Kalveskinn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:148"
+  },
+  {
+   "id": "K-UBR-08-1",
+   "skjerm": "UBR-08",
+   "behaldar": "Ei skuffe ved foten av stigen",
+   "innhald": [
+    {
+     "pengar": 39
+    }
+   ],
+   "kjelde_tekst": "39 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:149"
+  },
+  {
+   "id": "K-UBR-09-1",
+   "skjerm": "UBR-09",
+   "behaldar": "Ei kiste i den eldste oska",
+   "innhald": [
+    {
+     "ting": "strikka_topplue",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Strikka topplue",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:150"
+  },
+  {
+   "id": "K-UBR-10-1",
+   "skjerm": "UBR-10",
+   "behaldar": "Ei tønne mellom stolpane",
+   "innhald": [
+    {
+     "ting": "hoffmannsdropar",
+     "tal": 2
+    },
+    {
+     "ting": "einer",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 hoffmannsdropar og 1 einer",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:151"
+  },
+  {
+   "id": "K-UBR-11-1",
+   "skjerm": "UBR-11",
+   "behaldar": "Ei gøymsle under ein stein i strandkanten",
+   "innhald": [
+    {
+     "ting": "messingkompass",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Messingkompass",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Sjeldan lommeting frå kistefunna",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:152"
+  },
+  {
+   "id": "K-UBR-13-1",
+   "skjerm": "UBR-13",
+   "behaldar": "Ein skinnpung i leira",
+   "innhald": [
+    {
+     "pengar": 42
+    }
+   ],
+   "kjelde_tekst": "42 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:153"
+  },
+  {
+   "id": "K-UBR-15-1",
+   "skjerm": "UBR-15",
+   "behaldar": "Ei kiste ved inngangen til den nedste kjellaren",
+   "innhald": [
+    {
+     "ting": "luktesalt",
+     "tal": 2
+    },
+    {
+     "ting": "kaffi",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 luktesalt og 1 kaffi",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:154"
+  },
+  {
+   "id": "K-VFD-02-1",
+   "skjerm": "VFD-02",
+   "behaldar": "Ei gøymsle under ein stein",
+   "innhald": [
+    {
+     "ting": "fjor",
+     "tal": 3
+    }
+   ],
+   "kjelde_tekst": "3 fjør",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:171"
+  },
+  {
+   "id": "K-VFD-03-1",
+   "skjerm": "VFD-03",
+   "behaldar": "Ein sekk som har drive i land",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "tjore",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut og 1 tjøre",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:172"
+  },
+  {
+   "id": "K-VFD-04-1",
+   "skjerm": "VFD-04",
+   "behaldar": "Ein varde ved stigen",
+   "innhald": [
+    {
+     "pengar": 39
+    }
+   ],
+   "kjelde_tekst": "39 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:173"
+  },
+  {
+   "id": "K-VFD-05-1",
+   "skjerm": "VFD-05",
+   "behaldar": "Ei kasse i steinbua",
+   "innhald": [
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    },
+    {
+     "ting": "kaffi",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 luktesalt og 1 kaffi",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:174"
+  },
+  {
+   "id": "K-ABG-02-1",
+   "skjerm": "ABG-02",
+   "behaldar": "Ei skuffe under hylla",
+   "innhald": [
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kaffi med kandis",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:191"
+  },
+  {
+   "id": "K-ABG-03-1",
+   "skjerm": "ABG-03",
+   "behaldar": "Eit skrin bak kyrkjebøkene",
+   "innhald": [
+    {
+     "ting": "gamle_myntar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamle myntar",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:192"
+  },
+  {
+   "id": "K-ABG-04-1",
+   "skjerm": "ABG-04",
+   "behaldar": "Ein brevpakke med pengar til porto",
+   "innhald": [
+    {
+     "pengar": 96
+    }
+   ],
+   "kjelde_tekst": "96 s",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:193"
+  },
+  {
+   "id": "K-ABG-05-1",
+   "skjerm": "ABG-05",
+   "behaldar": "Ei kasse ved brønnen",
+   "innhald": [
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    },
+    {
+     "ting": "hoffmannsdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 luktesalt og 1 hoffmannsdropar",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:194"
+  },
+  {
+   "id": "K-BKL-02-1",
+   "skjerm": "BKL-02",
+   "behaldar": "Ei kurv under vasskanna",
+   "innhald": [
+    {
+     "ting": "kaffi_kandis",
+     "tal": 2
+    },
+    {
+     "ting": "honningvatn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi med kandis og 1 honningvatn",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:214"
+  },
+  {
+   "id": "K-BKL-04-1",
+   "skjerm": "BKL-04",
+   "behaldar": "Ei rekvisittkiste bak ein kulisse",
+   "innhald": [
+    {
+     "pengar": 96
+    }
+   ],
+   "kjelde_tekst": "96 s",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:215"
+  },
+  {
+   "id": "K-BKL-06-1",
+   "skjerm": "BKL-06",
+   "behaldar": "Ein sekk mellom motvektene",
+   "innhald": [
+    {
+     "ting": "reiseskreppa",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Reiseskreppa",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3",
+   "ventekiste": null,
+   "merknad": "Sjeldan lommeting frå kistefunna",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:216"
+  },
+  {
+   "id": "K-BKL-08-1",
+   "skjerm": "BKL-08",
+   "behaldar": "Ei kasse med lys",
+   "innhald": [
+    {
+     "ting": "luktesalt",
+     "tal": 2
+    },
+    {
+     "ting": "lys",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 luktesalt og 2 lys",
+   "tid": [
+    "T3"
+   ],
+   "tid_tekst": "T3",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:217"
+  },
+  {
+   "id": "K-SUF-02-1",
+   "skjerm": "SUF-02",
+   "behaldar": "Ei kiste bak ein frosen kulisse",
+   "innhald": [
+    {
+     "ting": "spekekjot",
+     "tal": 2
+    },
+    {
+     "ting": "lusekam",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 spekekjøt og 1 lusekam",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:237"
+  },
+  {
+   "id": "K-SUF-05-1",
+   "skjerm": "SUF-05",
+   "behaldar": "Eit skrin på manuskripthylla",
+   "innhald": [
+    {
+     "ting": "gamle_myntar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamle myntar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:238"
+  },
+  {
+   "id": "K-SUF-07-1",
+   "skjerm": "SUF-07",
+   "behaldar": "Ei billettkasse som er sett ned hit",
+   "innhald": [
+    {
+     "pengar": 120
+    }
+   ],
+   "kjelde_tekst": "1 spd",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:239"
+  },
+  {
+   "id": "K-SUF-08a-1",
+   "skjerm": "SUF-08a",
+   "behaldar": "Ei lita kiste inst i holet",
+   "innhald": [
+    {
+     "ting": "ullvottar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Ullvottar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Bak Tussestorleik (forslag)",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:240"
+  },
+  {
+   "id": "K-LAS-03-1",
+   "skjerm": "LAS-03",
+   "behaldar": "Ei proviantkasse",
+   "innhald": [
+    {
+     "ting": "spekekjot",
+     "tal": 2
+    },
+    {
+     "ting": "kaffi",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 spekekjøt og 2 kaffi",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:258"
+  },
+  {
+   "id": "K-LAS-04-1",
+   "skjerm": "LAS-04",
+   "behaldar": "Ein sekk i ballasten",
+   "innhald": [
+    {
+     "ting": "solvskje",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Sølvskei",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:259"
+  },
+  {
+   "id": "K-LAS-05-1",
+   "skjerm": "LAS-05",
+   "behaldar": "Ei kiste med skipsapotek",
+   "innhald": [
+    {
+     "ting": "lusekam",
+     "tal": 1
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 lusekam og 1 luktesalt",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:260"
+  },
+  {
+   "id": "K-LAS-06-1",
+   "skjerm": "LAS-06",
+   "behaldar": "Ein pengepung i ei sprekk i skottet",
+   "innhald": [
+    {
+     "pengar": 120
+    }
+   ],
+   "kjelde_tekst": "1 spd",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:261"
+  },
+  {
+   "id": "K-DUB-02-1",
+   "skjerm": "DUB-02",
+   "behaldar": "Ei kiste halvt i leira",
+   "innhald": [
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    },
+    {
+     "ting": "kaffikjelen",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kjøtsuppe og 1 kaffikjelen",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:286"
+  },
+  {
+   "id": "K-DUB-04-1",
+   "skjerm": "DUB-04",
+   "behaldar": "Ein skinnpung på ein stolperest",
+   "innhald": [
+    {
+     "ting": "solvskje",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Sølvskei",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:287"
+  },
+  {
+   "id": "K-DUB-06-1",
+   "skjerm": "DUB-06",
+   "behaldar": "Eit skrin der treet sluttar",
+   "innhald": [
+    {
+     "pengar": 190
+    }
+   ],
+   "kjelde_tekst": "1 spd 70 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:288"
+  },
+  {
+   "id": "K-DUB-08-1",
+   "skjerm": "DUB-08",
+   "behaldar": "Ei kiste under ei skinnramme",
+   "innhald": [
+    {
+     "ting": "kamferdropar",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kamferdropar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:289"
+  },
+  {
+   "id": "K-DUB-10-1",
+   "skjerm": "DUB-10",
+   "behaldar": "Ein sekk med skinnrestar",
+   "innhald": [
+    {
+     "ting": "gamal_eikelinjal",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamal eikelinjal",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:290"
+  },
+  {
+   "id": "K-DUB-12-1",
+   "skjerm": "DUB-12",
+   "behaldar": "Ei kasse ved veggen",
+   "innhald": [
+    {
+     "ting": "ullsokkar",
+     "tal": 3
+    },
+    {
+     "ting": "kaffikjelen",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "3 ullsokkar og 1 kaffikjelen",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:291"
+  },
+  {
+   "id": "K-LBG-01a-1",
+   "skjerm": "LBG-01a",
+   "behaldar": "Kista til Aasen under skråtaket",
+   "innhald": [
+    {
+     "ting": "kaffi",
+     "tal": 2
+    },
+    {
+     "ting": "tjore",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi og 1 tjøre",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Rommet til Aasen sjølv",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:314"
+  },
+  {
+   "id": "K-HSN-02-1",
+   "skjerm": "HSN-02",
+   "behaldar": "Ein sekk i ein steingard på holmen",
+   "innhald": [
+    {
+     "ting": "fjor",
+     "tal": 4
+    }
+   ],
+   "kjelde_tekst": "4 fjør",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:315"
+  },
+  {
+   "id": "K-HSN-02-2",
+   "skjerm": "HSN-02",
+   "behaldar": "Ei kiste inst i hellaren",
+   "innhald": [
+    {
+     "ting": "fora_vadmalskappe",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Fôra vadmålskappe",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Bak Lokk (forslag)",
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:316"
+  },
+  {
+   "id": "K-ALV-01-1",
+   "skjerm": "ALV-01",
+   "behaldar": "Ei kasse under brygga",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "honningvatn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut og 1 honningvatn",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:317"
+  },
+  {
+   "id": "K-RAD-01-1",
+   "skjerm": "RAD-01",
+   "behaldar": "Ei gøymsle under ein stein i kyrkjegardsmuren",
+   "innhald": [
+    {
+     "pengar": 39
+    }
+   ],
+   "kjelde_tekst": "39 s",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:318"
+  },
+  {
+   "id": "K-VAL-02-1",
+   "skjerm": "VAL-02",
+   "behaldar": "Ei kiste i eit nedsnødd naust ved elva",
+   "innhald": [
+    {
+     "ting": "ullsokkar",
+     "tal": 2
+    },
+    {
+     "ting": "kjotsuppe",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 ullsokkar og 1 kjøtsuppe",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:319"
+  },
+  {
+   "id": "K-OST-02-1",
+   "skjerm": "OST-02",
+   "behaldar": "Ei kasse i eit naust der skysskaren har sagt ja",
+   "innhald": [
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    },
+    {
+     "ting": "kaffi",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "1 luktesalt og 2 kaffi",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:338"
+  },
+  {
+   "id": "K-VSF-01-1",
+   "skjerm": "VSF-01",
+   "behaldar": "Ein sekk under ein stein ved råka",
+   "innhald": [
+    {
+     "ting": "kaffikjelen",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Kaffikjelen",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:355"
+  },
+  {
+   "id": "K-VSF-02-1",
+   "skjerm": "VSF-02",
+   "behaldar": "Ei kiste frosen inn i hylla",
+   "innhald": [
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kjøtsuppe",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:356"
+  },
+  {
+   "id": "K-VSF-03-1",
+   "skjerm": "VSF-03",
+   "behaldar": "Ein pung i ei sprekk i isen",
+   "innhald": [
+    {
+     "pengar": 130
+    }
+   ],
+   "kjelde_tekst": "1 spd 10 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:357"
+  },
+  {
+   "id": "K-VSF-04-1",
+   "skjerm": "VSF-04",
+   "behaldar": "Ei kiste på kanten av hylla",
+   "innhald": [
+    {
+     "ting": "ullsokkar",
+     "tal": 2
+    },
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 ullsokkar og 1 kamferdropar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:358"
+  }
+ ],
+ "butikkar": [
+  {
+   "skjerm": "BGN-12a",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri, kvile 8 s per figur",
+   "kven": "Verten på Strandsiden",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "1841, 1843–44 (kvile i byen er forslag), 1848, 1850, 1853. Stengd i 1852",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:68",
+   "kvile_pris": 8
+  },
+  {
+   "skjerm": "BGN-11a",
+   "type": "kvile",
+   "type_tekst": "Kvile utan handel",
+   "kven": "Komediehuset, halde varmt av Ole Bull",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "1852",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:69"
+  },
+  {
+   "skjerm": "BGN-13b",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri utan kvile (forslag)",
+   "kven": "Verten på Nøstet",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "1852",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:70"
+  },
+  {
+   "skjerm": "BGN-06a",
+   "type": "bokhandel",
+   "type_tekst": "Bokhandel",
+   "kven": "Bokhandlaren",
+   "ekstra": [
+    "gaasefjorpenn",
+    "staalpenn",
+    "raudblyant"
+   ],
+   "ekstra_tekst": "Gåsefjørpenn 1 spd 40 s frå T1. Stålpenn 11 spd 40 s frå T3, som beste Ord-reiskap frå Christiania. Raudblyant 18 spd 20 s i 1853",
+   "tid": [],
+   "tid_tekst": "Alle utanom 1852",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:71",
+   "ekstra_fraa": [
+    {
+     "ting": "gaasefjorpenn",
+     "fraa": "frå T1"
+    },
+    {
+     "ting": "staalpenn",
+     "fraa": "frå T3, som beste Ord-reiskap frå Christiania"
+    }
+   ]
+  },
+  {
+   "skjerm": "BGN-12b",
+   "type": "apotek",
+   "type_tekst": "Apotek",
+   "kven": "Apotekaren",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Alle utanom 1852",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:72"
+  },
+  {
+   "skjerm": "BGN-12c",
+   "type": "skreddar",
+   "type_tekst": "Skreddar",
+   "kven": "Skreddaren",
+   "ekstra": [
+    "bergensfrakk",
+    "gode_sko",
+    "reisekappe_av_vadmaal",
+    "skinnlue",
+    "studentfrakk",
+    "flosshatt",
+    "silkekjole"
+   ],
+   "ekstra_tekst": "Bergensfrakk 2 spd og Gode sko 3 spd frå T1, og Kufte med messingknappar 1 spd 10 s frå Ekset. Frå T2 Reisekappe av vadmål 4 spd 10 s og Skinnlue 1 spd 80 s frå Sogn. Frå T3 Studentfrakk 9 spd 10 s og Flosshatt 5 spd 80 s frå Christiania. I 1853 Silkekjole 12 spd 40 s",
+   "tid": [],
+   "tid_tekst": "Alle utanom 1852",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:73",
+   "ekstra_fraa": [
+    {
+     "ting": "bergensfrakk",
+     "fraa": "frå T1, og Kufte med messingknappar 1 spd 10 s frå Ekset"
+    },
+    {
+     "ting": "gode_sko",
+     "fraa": "frå T1, og Kufte med messingknappar 1 spd 10 s frå Ekset"
+    },
+    {
+     "ting": "reisekappe_av_vadmaal",
+     "fraa": "frå Sogn"
+    },
+    {
+     "ting": "skinnlue",
+     "fraa": "frå Sogn"
+    },
+    {
+     "ting": "studentfrakk",
+     "fraa": "frå Christiania"
+    },
+    {
+     "ting": "flosshatt",
+     "fraa": "frå Christiania"
+    }
+   ]
+  },
+  {
+   "skjerm": "BGN-12d",
+   "type": "handelsstad",
+   "type_tekst": "Handelsstad (krambu)",
+   "kven": "Krambuhandlaren",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Alle utanom 1852",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:74"
+  },
+  {
+   "skjerm": "BGN-11b",
+   "type": "saerbutikk",
+   "type_tekst": "Særbutikk",
+   "kven": "Felemakaren",
+   "ekstra": [],
+   "ekstra_tekst": "Hardingfele frå Valdres 19 spd 10 s",
+   "tid": [],
+   "tid_tekst": "1852, 1853",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:75",
+   "ekstra_anna": [
+    "Hardingfele"
+   ]
+  },
+  {
+   "skjerm": "BGN-11",
+   "type": "saerbutikk",
+   "type_tekst": "Særbutikk",
+   "kven": "Auksjonen på Engen (forslag til plassering)",
+   "ekstra": [
+    "gasparo_da_salo_fela"
+   ],
+   "ekstra_tekst": "Gasparo da Salò-fela 80 spd",
+   "tid": [],
+   "tid_tekst": "1852, 1853",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:76"
+  },
+  {
+   "skjerm": "LBG-01a",
+   "type": "kvile",
+   "type_tekst": "Kvile og skrivebase",
+   "kven": "Mons",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen handel. Post kjem med båten, og Mons ber han opp",
+   "tid": [],
+   "tid_tekst": "1843–47",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:323",
+   "ekstra_anna": [
+    "Post kjem med båten",
+    "Mons ber han opp"
+   ]
+  },
+  {
+   "skjerm": "ALV-01a",
+   "type": "handelsstad",
+   "type_tekst": "Handelsstad",
+   "kven": "Handelsmannen på Alverstraumen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "1843–47",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:324"
+  },
+  {
+   "skjerm": "ALV-01a",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri, kvile 8 s per figur (forslag)",
+   "kven": "Verten på Alverstraumen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "1843–47",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/02 Kart Bergen og Nordhordland.md:325",
+   "kvile_pris": 8
+  }
+ ]
+}

@@ -1,0 +1,4604 @@
+{
+ "fane": "Sagahallen og superbossdungeonane",
+ "stader": [
+  {
+   "id": "SGH",
+   "namn": "Sagahallen",
+   "fane": "sagahallen_og_superbossdungeonane",
+   "storleik": "dungeon",
+   "skildring": "Sagahallen er sluttdungeonen i november 1853 og den einaste staden i spelet utan kart. Han tek 60 til 90 minutt og er bygd som Kefkas tårn i FF6: ein porthall, tre vegar for tre faste grupper og eit hjarte der alle møtest. Vinje går draugvegen med Aslaug og Landstad (og Ravdna om ho er med), Knudsen går kongevegen med Collett (og Ole Bull om han er med), og Aasen går gudevegen med huldra og jotunen. Manuset legg vegane i fast rekkjefølgje: draugvegen, mellomspelet i kyrkja, kongevegen, gudevegen, den fjerde vegen i kyrkja og så porten med seglet. Kvar veg går gjennom frosne kopiar av stader gruppa har vore saman på, før han endar i ei scene frå sagaen. Kopiane kjennest att og er feil, ravnane til Munch sit på mønet av kvar kopi, og folk og vesen der seier berre det dei sa første gongen (spelnotatet i 7.3). Porthallen er same flata som hallen der Munch braut seglet i august 1850 (4.28–4.29) og der Knudsen fall i februar 1852 (5.25). I 1850 veks frosten over hyllene som bregner, i 1852 heng sagakrafta som eit nordlys under taket, og i 1853 står porten av is høg som eit kyrkjeskip. Heile hallen har møterate Svært høg og nivå 45 til 46, og fiendane står i fana 9c, bolken «Sagahallen, november 1853». Feltevnene som verkar på kvar veg, står i dungeonfana: Erte, Kved att, Følgje heim og Joike på draugvegen, Rett, Blikket og Spele opp på kongevegen, og Lytt, Skriv opp, Lokk og Lyfte på gudevegen. Tabellen under viser dei som har ein fast stad.",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:7"
+  },
+  {
+   "id": "DST",
+   "namn": "Drakestadene",
+   "fane": "sagahallen_og_superbossdungeonane",
+   "storleik": "dungeon",
+   "skildring": "Når jotunen er vunnen (6.13), stoppar han ved fjell og legg handa på bakken, og Aasen finn åtte ravnesegl på baksida av Tandberg-kartet. Berre seglet ved Stiklestad står ope. Når Kongsormen er slått, vaknar dei sju andre i Borgund, Mjøsa, Stad, Gaustatoppen, Bygland, Urnes og Vågakallen, og spelaren tek dei i fri rekkjefølgje. Dei står opne til porten i 7.3 og att i Etter soga-fila. Kvar drakestad er liten, for kampen er det store. Gaustatoppen er den einaste som manuset kallar ein dungeon, og Stiklestad og Bygland har ingen dungeon. Difor har stadene ulikt tal på rom: frå to på Bygland til fem på Gaustatoppen og Stad. Kvar stad har ein kvilestad før draken og ein veg attende etter kampen. Fleire av stadene har inngangen på ein skjerm som fana for regionen teiknar, og då står regionen som utgang. Møtetabellane står i fana 9c, bolken «Superbossdungeonane». Stiklestad følgjer tabellen for Innherred, og Stad, Bygland og Vågakallen har ingen tabell. Kistene står samla etter den siste staden. Fleire av dei er gøymde og kjem fram med Lytt på staden eller med Dragesyn, som partyet får etter val B ved Kongsormen.",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:73"
+  },
+  {
+   "id": "DBO",
+   "namn": "Drakestadene",
+   "fane": "sagahallen_og_superbossdungeonane",
+   "storleik": "dungeon",
+   "skildring": "Når jotunen er vunnen (6.13), stoppar han ved fjell og legg handa på bakken, og Aasen finn åtte ravnesegl på baksida av Tandberg-kartet. Berre seglet ved Stiklestad står ope. Når Kongsormen er slått, vaknar dei sju andre i Borgund, Mjøsa, Stad, Gaustatoppen, Bygland, Urnes og Vågakallen, og spelaren tek dei i fri rekkjefølgje. Dei står opne til porten i 7.3 og att i Etter soga-fila. Kvar drakestad er liten, for kampen er det store. Gaustatoppen er den einaste som manuset kallar ein dungeon, og Stiklestad og Bygland har ingen dungeon. Difor har stadene ulikt tal på rom: frå to på Bygland til fem på Gaustatoppen og Stad. Kvar stad har ein kvilestad før draken og ein veg attende etter kampen. Fleire av stadene har inngangen på ein skjerm som fana for regionen teiknar, og då står regionen som utgang. Møtetabellane står i fana 9c, bolken «Superbossdungeonane». Stiklestad følgjer tabellen for Innherred, og Stad, Bygland og Vågakallen har ingen tabell. Kistene står samla etter den siste staden. Fleire av dei er gøymde og kjem fram med Lytt på staden eller med Dragesyn, som partyet får etter val B ved Kongsormen.",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:73"
+  },
+  {
+   "id": "DMJ",
+   "namn": "Drakestadene",
+   "fane": "sagahallen_og_superbossdungeonane",
+   "storleik": "dungeon",
+   "skildring": "Når jotunen er vunnen (6.13), stoppar han ved fjell og legg handa på bakken, og Aasen finn åtte ravnesegl på baksida av Tandberg-kartet. Berre seglet ved Stiklestad står ope. Når Kongsormen er slått, vaknar dei sju andre i Borgund, Mjøsa, Stad, Gaustatoppen, Bygland, Urnes og Vågakallen, og spelaren tek dei i fri rekkjefølgje. Dei står opne til porten i 7.3 og att i Etter soga-fila. Kvar drakestad er liten, for kampen er det store. Gaustatoppen er den einaste som manuset kallar ein dungeon, og Stiklestad og Bygland har ingen dungeon. Difor har stadene ulikt tal på rom: frå to på Bygland til fem på Gaustatoppen og Stad. Kvar stad har ein kvilestad før draken og ein veg attende etter kampen. Fleire av stadene har inngangen på ein skjerm som fana for regionen teiknar, og då står regionen som utgang. Møtetabellane står i fana 9c, bolken «Superbossdungeonane». Stiklestad følgjer tabellen for Innherred, og Stad, Bygland og Vågakallen har ingen tabell. Kistene står samla etter den siste staden. Fleire av dei er gøymde og kjem fram med Lytt på staden eller med Dragesyn, som partyet får etter val B ved Kongsormen.",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:73"
+  },
+  {
+   "id": "DSD",
+   "namn": "Drakestadene",
+   "fane": "sagahallen_og_superbossdungeonane",
+   "storleik": "dungeon",
+   "skildring": "Når jotunen er vunnen (6.13), stoppar han ved fjell og legg handa på bakken, og Aasen finn åtte ravnesegl på baksida av Tandberg-kartet. Berre seglet ved Stiklestad står ope. Når Kongsormen er slått, vaknar dei sju andre i Borgund, Mjøsa, Stad, Gaustatoppen, Bygland, Urnes og Vågakallen, og spelaren tek dei i fri rekkjefølgje. Dei står opne til porten i 7.3 og att i Etter soga-fila. Kvar drakestad er liten, for kampen er det store. Gaustatoppen er den einaste som manuset kallar ein dungeon, og Stiklestad og Bygland har ingen dungeon. Difor har stadene ulikt tal på rom: frå to på Bygland til fem på Gaustatoppen og Stad. Kvar stad har ein kvilestad før draken og ein veg attende etter kampen. Fleire av stadene har inngangen på ein skjerm som fana for regionen teiknar, og då står regionen som utgang. Møtetabellane står i fana 9c, bolken «Superbossdungeonane». Stiklestad følgjer tabellen for Innherred, og Stad, Bygland og Vågakallen har ingen tabell. Kistene står samla etter den siste staden. Fleire av dei er gøymde og kjem fram med Lytt på staden eller med Dragesyn, som partyet får etter val B ved Kongsormen.",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:73"
+  },
+  {
+   "id": "DGA",
+   "namn": "Drakestadene",
+   "fane": "sagahallen_og_superbossdungeonane",
+   "storleik": "dungeon",
+   "skildring": "Når jotunen er vunnen (6.13), stoppar han ved fjell og legg handa på bakken, og Aasen finn åtte ravnesegl på baksida av Tandberg-kartet. Berre seglet ved Stiklestad står ope. Når Kongsormen er slått, vaknar dei sju andre i Borgund, Mjøsa, Stad, Gaustatoppen, Bygland, Urnes og Vågakallen, og spelaren tek dei i fri rekkjefølgje. Dei står opne til porten i 7.3 og att i Etter soga-fila. Kvar drakestad er liten, for kampen er det store. Gaustatoppen er den einaste som manuset kallar ein dungeon, og Stiklestad og Bygland har ingen dungeon. Difor har stadene ulikt tal på rom: frå to på Bygland til fem på Gaustatoppen og Stad. Kvar stad har ein kvilestad før draken og ein veg attende etter kampen. Fleire av stadene har inngangen på ein skjerm som fana for regionen teiknar, og då står regionen som utgang. Møtetabellane står i fana 9c, bolken «Superbossdungeonane». Stiklestad følgjer tabellen for Innherred, og Stad, Bygland og Vågakallen har ingen tabell. Kistene står samla etter den siste staden. Fleire av dei er gøymde og kjem fram med Lytt på staden eller med Dragesyn, som partyet får etter val B ved Kongsormen.",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:73"
+  },
+  {
+   "id": "DBY",
+   "namn": "Drakestadene",
+   "fane": "sagahallen_og_superbossdungeonane",
+   "storleik": "dungeon",
+   "skildring": "Når jotunen er vunnen (6.13), stoppar han ved fjell og legg handa på bakken, og Aasen finn åtte ravnesegl på baksida av Tandberg-kartet. Berre seglet ved Stiklestad står ope. Når Kongsormen er slått, vaknar dei sju andre i Borgund, Mjøsa, Stad, Gaustatoppen, Bygland, Urnes og Vågakallen, og spelaren tek dei i fri rekkjefølgje. Dei står opne til porten i 7.3 og att i Etter soga-fila. Kvar drakestad er liten, for kampen er det store. Gaustatoppen er den einaste som manuset kallar ein dungeon, og Stiklestad og Bygland har ingen dungeon. Difor har stadene ulikt tal på rom: frå to på Bygland til fem på Gaustatoppen og Stad. Kvar stad har ein kvilestad før draken og ein veg attende etter kampen. Fleire av stadene har inngangen på ein skjerm som fana for regionen teiknar, og då står regionen som utgang. Møtetabellane står i fana 9c, bolken «Superbossdungeonane». Stiklestad følgjer tabellen for Innherred, og Stad, Bygland og Vågakallen har ingen tabell. Kistene står samla etter den siste staden. Fleire av dei er gøymde og kjem fram med Lytt på staden eller med Dragesyn, som partyet får etter val B ved Kongsormen.",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:73"
+  },
+  {
+   "id": "DUR",
+   "namn": "Drakestadene",
+   "fane": "sagahallen_og_superbossdungeonane",
+   "storleik": "dungeon",
+   "skildring": "Når jotunen er vunnen (6.13), stoppar han ved fjell og legg handa på bakken, og Aasen finn åtte ravnesegl på baksida av Tandberg-kartet. Berre seglet ved Stiklestad står ope. Når Kongsormen er slått, vaknar dei sju andre i Borgund, Mjøsa, Stad, Gaustatoppen, Bygland, Urnes og Vågakallen, og spelaren tek dei i fri rekkjefølgje. Dei står opne til porten i 7.3 og att i Etter soga-fila. Kvar drakestad er liten, for kampen er det store. Gaustatoppen er den einaste som manuset kallar ein dungeon, og Stiklestad og Bygland har ingen dungeon. Difor har stadene ulikt tal på rom: frå to på Bygland til fem på Gaustatoppen og Stad. Kvar stad har ein kvilestad før draken og ein veg attende etter kampen. Fleire av stadene har inngangen på ein skjerm som fana for regionen teiknar, og då står regionen som utgang. Møtetabellane står i fana 9c, bolken «Superbossdungeonane». Stiklestad følgjer tabellen for Innherred, og Stad, Bygland og Vågakallen har ingen tabell. Kistene står samla etter den siste staden. Fleire av dei er gøymde og kjem fram med Lytt på staden eller med Dragesyn, som partyet får etter val B ved Kongsormen.",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:73"
+  },
+  {
+   "id": "DVK",
+   "namn": "Drakestadene",
+   "fane": "sagahallen_og_superbossdungeonane",
+   "storleik": "dungeon",
+   "skildring": "Når jotunen er vunnen (6.13), stoppar han ved fjell og legg handa på bakken, og Aasen finn åtte ravnesegl på baksida av Tandberg-kartet. Berre seglet ved Stiklestad står ope. Når Kongsormen er slått, vaknar dei sju andre i Borgund, Mjøsa, Stad, Gaustatoppen, Bygland, Urnes og Vågakallen, og spelaren tek dei i fri rekkjefølgje. Dei står opne til porten i 7.3 og att i Etter soga-fila. Kvar drakestad er liten, for kampen er det store. Gaustatoppen er den einaste som manuset kallar ein dungeon, og Stiklestad og Bygland har ingen dungeon. Difor har stadene ulikt tal på rom: frå to på Bygland til fem på Gaustatoppen og Stad. Kvar stad har ein kvilestad før draken og ein veg attende etter kampen. Fleire av stadene har inngangen på ein skjerm som fana for regionen teiknar, og då står regionen som utgang. Møtetabellane står i fana 9c, bolken «Superbossdungeonane». Stiklestad følgjer tabellen for Innherred, og Stad, Bygland og Vågakallen har ingen tabell. Kistene står samla etter den siste staden. Fleire av dei er gøymde og kjem fram med Lytt på staden eller med Dragesyn, som partyet får etter val B ved Kongsormen.",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:73"
+  },
+  {
+   "id": "OLB",
+   "namn": "Olavsbrønnen",
+   "fane": "sagahallen_og_superbossdungeonane",
+   "storleik": "dungeon",
+   "skildring": "Olavsbrønnen ligg i oktogonen, det åttekanta koret aust i Nidarosdomen, og er same brønnen som i S1.40. Rommet frå 1846 er den øvste etasjen. Dungeonen opnar seg når Kongsormen er slått og pulsslaget frå kongsgrava slår sterkare (S2.31), og han står open til 7.3 og i Etter soga-fila. Han tek 30 til 40 minutt. Kvar etasje er eit hundreår av pilegrimar: øvst dei siste før reformasjonen, som veit at skrinet skal smeltast, nedst dei første, som kjende Olav. Kvar etasje har to rom, ei trapp ned og eit kammer der pilegrimane står. Grepet er å gje. Pilegrimsskuggane går aldri til åtak først, ber om ei lækjing, eit ord eller ein gjenstand, og går vidare og legg att ei gåve når dei får rett ting. Kyrkjerommet over er fristad, så alle kampane går føre seg under golvet. Etasje 1 til 3 har møtetabellen «Olavsbrønnen, etasje 1 til 3 (S2.31)» med Høg rate og nivå 55 til 56, og etasje 4 og 5 har «Olavsbrønnen, etasje 4 og 5» med Svært høg rate og nivå 56 til 57. Den blinde kongen står på nivå 60. Det som står om kvart hundreår, er bakteppe og forslag.",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:192"
+  },
+  {
+   "id": "SFO",
+   "namn": "Skipet ned gjennom Folla",
+   "fane": "sagahallen_og_superbossdungeonane",
+   "storleik": "dungeon",
+   "skildring": "Når Kongsormen er slått og Dagboka har nådd september 1853, står det ei line i Dagboka som Aasen ikkje har skrive: «Afreist med Dampbaaden fra Beian. Igjen.» Partyet kjem til Folla med dampskipet om Beian, og den same stormen som i 1846 har kome att (S2.33). Dungeonen er eit skip som søkk gjennom fem lag av drukna sjøfolk til havbotnen, der det er stille og tørt. Øvst er dekket frå 1846, kjent att og vått, så ei nordlandsjekt frå 1700-talet med lasta av tørrfisk, ein fembøring frå 1600-talet, ein båt utan namn frå før kyrkjebøkene tok til, og til slutt havbotnen. Kvart lag tek seks til åtte minutt. Krenginga frå 3.21 gjeld i dei to øvste laga. Lag 1 til 3 har møtetabellen «Skipet ned gjennom Folla, lag 1 til 3 (S2.33)» med Høg rate og nivå 57, og lag 4 og 5 har «Skipet ned gjennom Folla, lag 4 og 5» med Svært høg rate og nivå 59. Skipet har flagget natt i alle lag. Heildraugen står på nivå 62. Dei fire områda om bord i 1846 (akterdekket, salongen, lasterommet og fordekket) er forslag i dungeonfana, og lag 1 brukar tre av dei.",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:230"
+  },
+  {
+   "id": "UTG",
+   "namn": "Utgard i Eidaskogen",
+   "fane": "sagahallen_og_superbossdungeonane",
+   "storleik": "dungeon",
+   "skildring": "Utgard finst berre i ei Etter soga-fil med den opne ringen på permen til Dagboka, når alle superbossane er slegne eller roa, Kyrkjegrimen med. Jotunen går frå partyet ved neste kvileplass, og verdskartet viser Eidaskogen aust for Romerike ved den gamle vegen mot Sverige. Jotunen ventar i skogkanten og må vere med heile vegen. Dungeonen følgjer ferda til Tor i Gylfaginning (kap. 44 til 47) og tek 60 til 70 minutt. Han har fem lag: skogen, hallen i skogen, Skrymes under eika, porten og hallen i Utgard. Grepet er synkverving. Fiendane viser seg som fiendar spelaren kjenner, til det sanne namnet er sagt med kven, med Lytt eller med ordkortet Sjá frå jotunen. Skogen og hallen i skogen har møtetabellen «Utgard i Eidaskogen: skogen og hallen i skogen (løynd)» med Høg rate og nivå 73. Eika og porten har «Utgard i Eidaskogen: under eika og ved porten» med Svært høg rate og nivå 75. Hallen i Utgard har berre prøvene og Utgardsloke, som står på nivå 90. Eidaskogen og grensevegen er verkelege, og at Utgard ligg der, er dikta.",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:264"
+  }
+ ],
+ "skjermar": [],
+ "rom": [
+  {
+   "id": "SGH-01",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Inngang",
+   "namn": "Handskriftsamlinga og treveggen",
+   "innhald_tekst": "Hyllene av pergament i mørkret i den nye biblioteksbygningen ved Slottsveien. Welhaven låser opp ved midnatt og står att ved døra med lykta (7.3). Første varselet i Dagboka kjem når nøkkelen blir vriden om. Bakarst står veggen av tre, skoren som portalen på ei stavkyrkje. Aasen brukar «kvar», dragehovuda vrir seg til sides, og nøkkelordet vord opnar seg. Let Aasen kista i museet vere i S1.14, heng dragehovudet av jern att og talar. Andre varselet kjem når holet opnar seg. Spelaren kan snu ved begge varsla. Ingen kampar",
+   "scener": [
+    "s7_3"
+   ],
+   "utgangar": [
+    {
+     "til": null,
+     "namn": "Christiania",
+     "fleire_treff": null
+    },
+    {
+     "til": null,
+     "namn": "Universitetet ved Slottsveien",
+     "merknad": "gangen med glasmontrar",
+     "fleire_treff": null
+    },
+    {
+     "til": "SGH-02",
+     "namn": "Porthallen"
+    }
+   ],
+   "utgangar_tekst": "Christiania, Universitetet ved Slottsveien (gangen med glasmontrar), SGH-02 Porthallen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:13"
+  },
+  {
+   "id": "SGH-02",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Porthallen",
+   "namn": "Porthallen",
+   "innhald_tekst": "Eit rom større enn bygningen, med søyler av innbundne handskrifter og is over golvet, der bokstavar ligg frosne midt i ei setning (7.3). Tre vegar under runene ᛏᚱᛅᚢᚴᛦ, ᚴᚢᚾᚢᚴᛅᛦ og ᛅᛋᛁᛦ. Her deler partyet seg, spelaren fordeler ting og utstyr mellom gruppene, og Aasen kan seie eit ord til Vinje eller Knudsen ved avskilet. Same rommet er hallen med lesepulten og seglet i 4.28 og 4.29 (1850) og i 5.25 (1852). Lytt verkar. Møtetabell «Porthallen (7.3)», med Ravnen på mønet over porten",
+   "scener": [
+    "s7_3"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-01",
+     "namn": "Handskriftsamlinga"
+    },
+    {
+     "til": "SGH-03",
+     "namn": "Runa ᛏᚱᛅᚢᚴᛦ"
+    },
+    {
+     "til": "SGH-11",
+     "namn": "Runa ᚴᚢᚾᚢᚴᛅᛦ"
+    },
+    {
+     "til": "SGH-19",
+     "namn": "Runa ᛅᛋᛁᛦ"
+    }
+   ],
+   "utgangar_tekst": "SGH-01 Handskriftsamlinga, SGH-03 Runa ᛏᚱᛅᚢᚴᛦ, SGH-11 Runa ᚴᚢᚾᚢᚴᛅᛦ, SGH-19 Runa ᛅᛋᛁᛦ",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_porthallen_7.3"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:14"
+  },
+  {
+   "id": "SGH-03",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Draugvegen",
+   "namn": "Runa ᛏᚱᛅᚢᚴᛦ",
+   "innhald_tekst": "Inngangen til draugvegen. Runa gjev kvilestad, slik manuset seier. Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SGH-02",
+     "namn": "Porthallen"
+    },
+    {
+     "til": "SGH-04",
+     "namn": "Tunet på Tveitli"
+    }
+   ],
+   "utgangar_tekst": "SGH-02 Porthallen, SGH-04 Tunet på Tveitli",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:15"
+  },
+  {
+   "id": "SGH-04",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Draugvegen",
+   "namn": "Kopi: tunet på Tveitli",
+   "innhald_tekst": "Fjellgarden over Totak under snø, der Aslaug kvad i mars 1845 (kopi av 2.25). Glørne i grua er kalde, og ravnane sit på mønet. Møtetabell «Draugvegen, kopiane (7.4)»",
+   "scener": [
+    "s2_25",
+    "s7_4"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-03",
+     "namn": "Runa"
+    },
+    {
+     "til": "SGH-04a",
+     "namn": "Sidekammeret"
+    },
+    {
+     "til": "SGH-05",
+     "namn": "Arkivkammeret"
+    }
+   ],
+   "utgangar_tekst": "SGH-03 Runa, SGH-04a Sidekammeret, SGH-05 Arkivkammeret",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_draugvegen_kopiane_7.4"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:16"
+  },
+  {
+   "id": "SGH-04a",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Draugvegen",
+   "namn": "Kopi: det løynde kammeret bak Tveitli",
+   "innhald_tekst": "Valfritt rom. Det står i fjellet bak tunet og kjem fram når Ravdna joikar staden. Joike verkar i eitt valfritt rom på draugvegen, og rommet er det. Kva kopien viser, er eit forslag: løa på Tveitli med høyet frose til ein vegg. Same møtetabell",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SGH-04",
+     "namn": "Tunet på Tveitli"
+    }
+   ],
+   "utgangar_tekst": "SGH-04 Tunet på Tveitli",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:17"
+  },
+  {
+   "id": "SGH-05",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Draugvegen",
+   "namn": "Kopi: arkivkammeret i Seljord",
+   "innhald_tekst": "Kammeret med kyrkjebøkene, der namna skifter på sidene (kopi av 2.23). Innførslane står frosne. Landstad brukar Følgje heim på kyrkjebokskåpet, og då ligg det ei salmebok att i SGH-11 (forslag i dungeonfana). Same møtetabell",
+   "scener": [
+    "s2_23"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-04",
+     "namn": "Tunet på Tveitli"
+    },
+    {
+     "til": "SGH-06",
+     "namn": "Dekket"
+    }
+   ],
+   "utgangar_tekst": "SGH-04 Tunet på Tveitli, SGH-06 Dekket",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:18"
+  },
+  {
+   "id": "SGH-06",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Draugvegen",
+   "namn": "Kopi: dekket på dampbåten på Folla",
+   "innhald_tekst": "Dekket frå september 1846, der Vinje stod (kopi av 3.20). Dekket krengjer heile tida. Same møtetabell, med Draugen i Folla-kopien",
+   "scener": [
+    "s3_20"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-05",
+     "namn": "Arkivkammeret"
+    },
+    {
+     "til": "SGH-07",
+     "namn": "Torvgarden"
+    }
+   ],
+   "utgangar_tekst": "SGH-05 Arkivkammeret, SGH-07 Torvgarden",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:19"
+  },
+  {
+   "id": "SGH-07",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Draugvegen",
+   "namn": "Torvgarden: vegen inn og tunet med kvea",
+   "innhald_tekst": "Ein islandsk gard frå Grettes saga, frosen i måneskin (7.4). Sauene står stivfrosne i kvea. Høna som skulle til Dovre (andre møtet) står synleg på vegen inn, og Haugbonden i draugvegen står synleg på haugen ved tunet. Møtetabell «Draugvegen, torvgarden (7.4)»",
+   "scener": [
+    "s7_4"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-06",
+     "namn": "Dekket"
+    },
+    {
+     "til": "SGH-08",
+     "namn": "Brønnen"
+    }
+   ],
+   "utgangar_tekst": "SGH-06 Dekket, SGH-08 Brønnen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_draugvegen_torvgarden_7.4"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:20"
+  },
+  {
+   "id": "SGH-08",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Draugvegen",
+   "namn": "Brønnen på torvgarden",
+   "innhald_tekst": "Kvilestad før bossen. Brønnen er frosen, og Aslaug kvedar han open med Kved att. Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SGH-07",
+     "namn": "Torvgarden"
+    },
+    {
+     "til": "SGH-09",
+     "namn": "Døra i måneskinet"
+    }
+   ],
+   "utgangar_tekst": "SGH-07 Torvgarden, SGH-09 Døra i måneskinet",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:21"
+  },
+  {
+   "id": "SGH-09",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Draugvegen",
+   "namn": "Døra i måneskinet",
+   "innhald_tekst": "Bossrom. Glåm står i døra med andletet mot månen. Mørkeredsle i fase 1, stevjing i måneskinet i fase 2 (7.4). Etter kampen går månen bak ei sky, og spelet klipper til kyrkja (7.5). Treskurden opnar seg att mot porthallen",
+   "scener": [
+    "s7_4",
+    "s7_5"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-02",
+     "namn": "Porthallen",
+     "merknad": "snarveg",
+     "snarveg": true
+    },
+    {
+     "til": "SGH-27",
+     "namn": "Framfor seglet",
+     "merknad": "når alle tre vegane er gåtte"
+    }
+   ],
+   "utgangar_tekst": "SGH-02 Porthallen (snarveg), SGH-27 Framfor seglet (når alle tre vegane er gåtte)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:22"
+  },
+  {
+   "id": "SGH-10",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Kyrkja",
+   "namn": "Vor Frelsers kyrkje natta",
+   "innhald_tekst": "Den andre fronten. Messa tek til klokka elleve, og Moe les frå preikestolen medan vesena går ut av boka (7.5, mellomsekvens). Berte kjempar åleine mot Fristaren i messa (7.7b). Asbjørnsen og Moe kjempar mot Draget klokka tre om natta (7.9b). Kyrkja er unntak frå fristaden i 7.7b og 7.9b. Kartflata er kyrkja i fana Christiania, natta i november 1853",
+   "scener": [
+    "s7_5",
+    "s7_7b",
+    "s7_9b"
+   ],
+   "utgangar": [],
+   "utgangar_tekst": "Ingen. Spelet klipper til og frå Sagahallen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:23"
+  },
+  {
+   "id": "SGH-11",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Kongevegen",
+   "namn": "Runa ᚴᚢᚾᚢᚴᛅᛦ",
+   "innhald_tekst": "Inngangen til kongevegen. Runa gjev kvilestad. Her ligg salmeboka om Landstad brukte Følgje heim i SGH-05, og ho lækjer gruppa éin gong (forslag i dungeonfana). Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SGH-02",
+     "namn": "Porthallen"
+    },
+    {
+     "til": "SGH-12",
+     "namn": "Bokhandelen"
+    }
+   ],
+   "utgangar_tekst": "SGH-02 Porthallen, SGH-12 Bokhandelen",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:24"
+  },
+  {
+   "id": "SGH-12",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Kongevegen",
+   "namn": "Kopi: bokhandelen til Johan Dahl",
+   "innhald_tekst": "Bokhandelen der Knudsen og Aasen kjempa om heim og hjem i juli 1845 (kopi av 3.10). Alle bøkene står med ryggen inn. Møtetabell «Kongevegen, kopiane (7.6)»",
+   "scener": [
+    "s3_10",
+    "s7_6"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-11",
+     "namn": "Runa"
+    },
+    {
+     "til": "SGH-13",
+     "namn": "Salongen"
+    }
+   ],
+   "utgangar_tekst": "SGH-11 Runa, SGH-13 Salongen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_kongevegen_kopiane_7.6"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:25"
+  },
+  {
+   "id": "SGH-13",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Kongevegen",
+   "namn": "Kopi: salongen til Collett",
+   "innhald_tekst": "Stova til Collett med pianoet (kopi av 5.12, sjekk). Same møtetabell",
+   "scener": [
+    "s5_12"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-12",
+     "namn": "Bokhandelen"
+    },
+    {
+     "til": "SGH-14",
+     "namn": "Klasse 4 B"
+    },
+    {
+     "til": "SGH-14a",
+     "namn": "Komediehuset"
+    }
+   ],
+   "utgangar_tekst": "SGH-12 Bokhandelen, SGH-14 Klasse 4 B, SGH-14a Komediehuset",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:26"
+  },
+  {
+   "id": "SGH-14",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Kongevegen",
+   "namn": "Kopi: Klasse 4 B",
+   "innhald_tekst": "Klasserommet på katedralskulen frå januar 1852 (kopi av 5.22), med pultane i tre rader og kateteret. Same møtetabell",
+   "scener": [
+    "s5_22"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-13",
+     "namn": "Salongen"
+    },
+    {
+     "til": "SGH-15",
+     "namn": "Kongsgarden"
+    }
+   ],
+   "utgangar_tekst": "SGH-13 Salongen, SGH-15 Kongsgarden",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:27"
+  },
+  {
+   "id": "SGH-14a",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Kongevegen",
+   "namn": "Kopi: eit rom i Komediehuset i Bergen",
+   "innhald_tekst": "Valfritt rom. Opnar seg med Spele opp når Ole Bull er med. Kopien er sidescena med kulissane på hjul frå premierekvelden i 1850 (kopi av 4.19, forslag om kva rom). Kulissen i kopien av Komediehuset står berre her",
+   "scener": [
+    "s4_19"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-13",
+     "namn": "Salongen"
+    }
+   ],
+   "utgangar_tekst": "SGH-13 Salongen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:28"
+  },
+  {
+   "id": "SGH-15",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Kongevegen",
+   "namn": "Kongsgarden, første etasje",
+   "innhald_tekst": "Ein kongsgard av tømmer der alt som blir sagt, blir gjenteke av ei stemme frå taket (7.6). Korridorane er setningar frå Heimskringla og må lesast i rett rekkjefølgje. Skiltet over døra kan rettast med Rett, og då peikar skiltet i gudevegen mot kista ved asken (forslag i dungeonfana). Møtetabell «Kongevegen, kongsgarden (7.6)»",
+   "scener": [
+    "s7_6"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-14",
+     "namn": "Klasse 4 B"
+    },
+    {
+     "til": "SGH-16",
+     "namn": "Andre etasje"
+    }
+   ],
+   "utgangar_tekst": "SGH-14 Klasse 4 B, SGH-16 Andre etasje",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_kongevegen_kongsgarden_7.6"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:29"
+  },
+  {
+   "id": "SGH-16",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Kongevegen",
+   "namn": "Kongsgarden, andre etasje",
+   "innhald_tekst": "Andre halvdelen av setningane. Ei feil lesing fører attende til byrjinga av etasjen (forslag). Same møtetabell",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SGH-15",
+     "namn": "Første etasje"
+    },
+    {
+     "til": "SGH-17",
+     "namn": "Forhallen"
+    }
+   ],
+   "utgangar_tekst": "SGH-15 Første etasje, SGH-17 Forhallen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:30"
+  },
+  {
+   "id": "SGH-17",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Kongevegen",
+   "namn": "Forhallen med bautaen",
+   "innhald_tekst": "Kvilestad før bossen: ein bauta av tømmer. Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SGH-16",
+     "namn": "Andre etasje"
+    },
+    {
+     "til": "SGH-18",
+     "namn": "Hallen med høgsetet"
+    }
+   ],
+   "utgangar_tekst": "SGH-16 Andre etasje, SGH-18 Hallen med høgsetet",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:31"
+  },
+  {
+   "id": "SGH-18",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Kongevegen",
+   "namn": "Hallen med høgsetet",
+   "innhald_tekst": "Bossrom. Harald Hårfagre og Olav den heilage sit stive som treskurd, og Snorre-stemma fortel kva dei gjer (7.6). Collett gjer stemma stum, og Knudsen fornorskar kongane. Kongane bukkar og går inn i treskurden på veggen. Treskurden opnar seg att mot porthallen",
+   "scener": [
+    "s7_6"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-02",
+     "namn": "Porthallen",
+     "merknad": "snarveg",
+     "snarveg": true
+    },
+    {
+     "til": "SGH-27",
+     "namn": "Framfor seglet",
+     "merknad": "når alle tre vegane er gåtte"
+    }
+   ],
+   "utgangar_tekst": "SGH-02 Porthallen (snarveg), SGH-27 Framfor seglet (når alle tre vegane er gåtte)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:32"
+  },
+  {
+   "id": "SGH-19",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Gudevegen",
+   "namn": "Runa ᛅᛋᛁᛦ",
+   "innhald_tekst": "Inngangen til gudevegen. Runa gjev kvilestad. Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SGH-02",
+     "namn": "Porthallen"
+    },
+    {
+     "til": "SGH-20",
+     "namn": "Blåisen"
+    }
+   ],
+   "utgangar_tekst": "SGH-02 Porthallen, SGH-20 Blåisen",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:33"
+  },
+  {
+   "id": "SGH-20",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Gudevegen",
+   "namn": "Kopi: blåisen på prologtoppen",
+   "innhald_tekst": "Blåisen frå januar 1841, der jotunen låg og huldra stod (kopi av 0.4). Det ligg ikkje noko andlet under isen lenger, for jotunen står ved sida av partyet. Møtetabell «Gudevegen, kopiane (7.7)»",
+   "scener": [
+    "s0_4",
+    "s7_7"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-19",
+     "namn": "Runa"
+    },
+    {
+     "til": "SGH-21",
+     "namn": "Lia over Solnør"
+    }
+   ],
+   "utgangar_tekst": "SGH-19 Runa, SGH-21 Lia over Solnør",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_gudevegen_kopiane_7.7"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:34"
+  },
+  {
+   "id": "SGH-21",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Gudevegen",
+   "namn": "Kopi: lia over Solnør",
+   "innhald_tekst": "Lia og kjelda frå våren 1838, i snøstorm (kopi av 1.13). Same møtetabell",
+   "scener": [
+    "s1_13"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-20",
+     "namn": "Blåisen"
+    },
+    {
+     "til": "SGH-22",
+     "namn": "Brannlaga"
+    }
+   ],
+   "utgangar_tekst": "SGH-20 Blåisen, SGH-22 Brannlaga",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:35"
+  },
+  {
+   "id": "SGH-22",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Gudevegen",
+   "namn": "Kopi: brannlaga under Bryggen",
+   "innhald_tekst": "Laga under Bryggen med oska frå brannane (kopi av 2.8–2.9). Ein stein står framfor. Jotunen lyftar han, og då opnar det seg ein stig rett fram til porten med seglet (forslag i dungeonfana). Same møtetabell",
+   "scener": [
+    "s2_8",
+    "s2_9"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-21",
+     "namn": "Lia"
+    },
+    {
+     "til": "SGH-23",
+     "namn": "Hjerkinn"
+    },
+    {
+     "til": "SGH-27",
+     "namn": "Framfor seglet",
+     "merknad": "stigen etter Lyfte"
+    }
+   ],
+   "utgangar_tekst": "SGH-21 Lia, SGH-23 Hjerkinn, SGH-27 Framfor seglet (stigen etter Lyfte)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:36"
+  },
+  {
+   "id": "SGH-23",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Gudevegen",
+   "namn": "Kopi: ringen av pergamentark på Hjerkinn",
+   "innhald_tekst": "Ringen av ark som frys fast i bakken rundt steinrøysa (kopi av 6.12). Same møtetabell",
+   "scener": [
+    "s6_12"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-22",
+     "namn": "Brannlaga"
+    },
+    {
+     "til": "SGH-24",
+     "namn": "Isletta"
+    }
+   ],
+   "utgangar_tekst": "SGH-22 Brannlaga, SGH-24 Isletta",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:37"
+  },
+  {
+   "id": "SGH-24",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Gudevegen",
+   "namn": "Isletta under asken",
+   "innhald_tekst": "Ein ask veks gjennom taket, og under han ligg ei slette av is (7.7). Skalden med skaldemjøden står synleg under asken éin gong, og Alvis står synleg på isletta. Kista som skiltet frå kongevegen peikar mot, står ved rota. Møtetabell «Gudevegen, asken (7.7)»",
+   "scener": [
+    "s7_7"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-23",
+     "namn": "Hjerkinn"
+    },
+    {
+     "til": "SGH-25",
+     "namn": "Kjelda"
+    }
+   ],
+   "utgangar_tekst": "SGH-23 Hjerkinn, SGH-25 Kjelda",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_gudevegen_asken_7.7"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:38"
+  },
+  {
+   "id": "SGH-25",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Gudevegen",
+   "namn": "Kjelda under rota av asken",
+   "innhald_tekst": "Kvilestad før bossen: Urds brunn frå Edda. Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SGH-24",
+     "namn": "Isletta"
+    },
+    {
+     "til": "SGH-26",
+     "namn": "Under asken"
+    }
+   ],
+   "utgangar_tekst": "SGH-24 Isletta, SGH-26 Under asken",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:39"
+  },
+  {
+   "id": "SGH-26",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Gudevegen",
+   "namn": "Under asken",
+   "innhald_tekst": "Bossrom. Tor mot jotunen, så gåtekampen mot Odin på benken (7.7). Odin går inn i stammen på asken, og spelet klipper til kyrkja (7.7b). Treskurden opnar seg att mot porthallen",
+   "scener": [
+    "s7_7",
+    "s7_7b"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-02",
+     "namn": "Porthallen",
+     "merknad": "snarveg",
+     "snarveg": true
+    },
+    {
+     "til": "SGH-27",
+     "namn": "Framfor seglet"
+    }
+   ],
+   "utgangar_tekst": "SGH-02 Porthallen (snarveg), SGH-27 Framfor seglet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": true,
+   "gaate": true,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:40"
+  },
+  {
+   "id": "SGH-27",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Seglet",
+   "namn": "Framfor seglet",
+   "innhald_tekst": "Porten av is, høg som eit kyrkjeskip, med ravnen over den opne boka (7.8). Dei tre gruppene møtest. Siste kvilestad med full lækjing og siste høve til å byte utstyr. Kvar figur seier sin replikk på rad. Aasen legg handa på ravnen, og porten opnar seg innover. Ingen kampar",
+   "scener": [
+    "s7_8"
+   ],
+   "utgangar": [
+    {
+     "til": "SGH-09",
+     "namn": null
+    },
+    {
+     "til": "SGH-18",
+     "namn": "og SGH-26",
+     "merknad": "vegane attende"
+    },
+    {
+     "til": "SGH-22",
+     "namn": "Brannlaga",
+     "merknad": "stigen"
+    },
+    {
+     "til": "SGH-28",
+     "namn": "Hjartet"
+    }
+   ],
+   "utgangar_tekst": "SGH-09, SGH-18 og SGH-26 (vegane attende), SGH-22 Brannlaga (stigen), SGH-28 Hjartet",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:41"
+  },
+  {
+   "id": "SGH-28",
+   "stad": "SGH",
+   "omraade": "Sagahallen",
+   "dungeon": "Sagahallen",
+   "lag": "Hjartet",
+   "namn": "Hjartet",
+   "innhald_tekst": "Bossrom. Eit bibliotek utan veggar der bøkene heng i lufta som fuglar. Munch ved pulten med sagakrafta som eit nordlys i glas bak seg. Fase 1, Professoren, og fase 2, Ravnen (7.9). Klipp til kyrkja (7.9b). Ravnen og bøkene som ting-mål, med boka der dei fem orda frå 1850 og minnebitane ligg (7.9c). Fase 3, Mannen, og runepinnane (7.10). Hallen tinar etterpå, og Knudsen fører Munch ut. Ingen veg tilbake før kampen er over",
+   "scener": [
+    "s7_9",
+    "s7_9b",
+    "s7_9c",
+    "s7_10"
+   ],
+   "utgangar": [
+    {
+     "til": null,
+     "namn": "Etter 7.10: SGH-01 Handskriftsamlinga og ut til Christiania",
+     "merknad": "overgang til 7.11",
+     "fleire_treff": null
+    }
+   ],
+   "utgangar_tekst": "Etter 7.10: SGH-01 Handskriftsamlinga og ut til Christiania (overgang til 7.11)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": true,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:42"
+  },
+  {
+   "id": "DST-01",
+   "stad": "DST",
+   "omraade": "Drakestadene",
+   "dungeon": "Stiklestad: Kongsormen",
+   "lag": "Inngang",
+   "namn": "Stiklestad kyrkje",
+   "innhald_tekst": "Kyrkjerommet er fristad og kvilestad (forslag i dungeonfana). Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": null,
+     "namn": "Trøndelag",
+     "fleire_treff": null
+    },
+    {
+     "til": null,
+     "namn": "Stiklestad og Innherred",
+     "fleire_treff": null
+    },
+    {
+     "til": "DST-02",
+     "namn": "Vegen opp til jordet"
+    }
+   ],
+   "utgangar_tekst": "Trøndelag, Stiklestad og Innherred, DST-02 Vegen opp til jordet",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:83"
+  },
+  {
+   "id": "DST-02",
+   "stad": "DST",
+   "omraade": "Drakestadene",
+   "dungeon": "Stiklestad: Kongsormen",
+   "lag": "Vegen",
+   "namn": "Vegen mellom kyrkja og jordet",
+   "innhald_tekst": "Ein kort veg med steingard, snøen djup på begge sider. Møtetabell «Vegane og bygdene i Innherred»",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DST-01",
+     "namn": "Kyrkja"
+    },
+    {
+     "til": "DST-03",
+     "namn": "Jordet"
+    }
+   ],
+   "utgangar_tekst": "DST-01 Kyrkja, DST-03 Jordet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_vegane_og_bygdene_i_innherred",
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:84"
+  },
+  {
+   "id": "DST-03",
+   "stad": "DST",
+   "omraade": "Drakestadene",
+   "dungeon": "Stiklestad: Kongsormen",
+   "lag": "Drakerommet",
+   "namn": "Jordet der Olav fall",
+   "innhald_tekst": "Jotunen legg handa på jorda, og Kongsormen kjem opp med skjoldet til Olav (S2.29.1). Fire fasar. Etter kampen ligg ormen i graset og pustar, og spelaren vel A eller B. Dei sju segla på Tandberg-kartet blir svarte",
+   "scener": [
+    "S2_29_1"
+   ],
+   "utgangar": [
+    {
+     "til": "DST-02",
+     "namn": "Vegen",
+     "merknad": "snarvegen ned til kyrkja",
+     "snarveg": true
+    }
+   ],
+   "utgangar_tekst": "DST-02 Vegen (snarvegen ned til kyrkja)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:85"
+  },
+  {
+   "id": "DBO-01",
+   "stad": "DBO",
+   "omraade": "Drakestadene",
+   "dungeon": "Borgund i Lærdal: Fåvne",
+   "lag": "Inngang",
+   "namn": "Kyrkjerommet i Borgund",
+   "innhald_tekst": "Kyrkjerommet er fristad og kvilestad. Lemmen i golvet kjem fram når Aasen har lytta ved dragehovudet på mønet ute. Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": null,
+     "namn": "Sogn",
+     "fleire_treff": null
+    },
+    {
+     "til": "BGD-01",
+     "namn": "Borgund stavkyrkje",
+     "merknad": "kyrkjebakken",
+     "slatt_opp": true
+    },
+    {
+     "til": "DBO-02",
+     "namn": "Mellom stavane"
+    }
+   ],
+   "utgangar_tekst": "Sogn, Borgund stavkyrkje (kyrkjebakken), DBO-02 Mellom stavane",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:93"
+  },
+  {
+   "id": "DBO-02",
+   "stad": "DBO",
+   "omraade": "Drakestadene",
+   "dungeon": "Borgund i Lærdal: Fåvne",
+   "lag": "Under golvet",
+   "namn": "Mellom stavane",
+   "innhald_tekst": "Ein låg gang mellom stavane og sviller. Det glimar av gull lenger inne i mørkret",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DBO-01",
+     "namn": "Kyrkjerommet"
+    },
+    {
+     "til": "DBO-03",
+     "namn": "Grunnsteinane"
+    }
+   ],
+   "utgangar_tekst": "DBO-01 Kyrkjerommet, DBO-03 Grunnsteinane",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:94"
+  },
+  {
+   "id": "DBO-03",
+   "stad": "DBO",
+   "omraade": "Drakestadene",
+   "dungeon": "Borgund i Lærdal: Fåvne",
+   "lag": "Under golvet",
+   "namn": "Grunnsteinane",
+   "innhald_tekst": "Gangen går ned mellom grunnsteinane under koret. Runeskuggane held til i steinane",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DBO-02",
+     "namn": "Mellom stavane"
+    },
+    {
+     "til": "DBO-04",
+     "namn": "Gullhaugen"
+    }
+   ],
+   "utgangar_tekst": "DBO-02 Mellom stavane, DBO-04 Gullhaugen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:95"
+  },
+  {
+   "id": "DBO-04",
+   "stad": "DBO",
+   "omraade": "Drakestadene",
+   "dungeon": "Borgund i Lærdal: Fåvne",
+   "lag": "Drakerommet",
+   "namn": "Gullhaugen",
+   "innhald_tekst": "Fåvne på haugen sin (S2.29). Haugen veks med Ande han tek. Etter kampen kjem alle stolne gjenstandar att, og lemmen rett over opnar seg som snarveg",
+   "scener": [
+    "S2_29"
+   ],
+   "utgangar": [
+    {
+     "til": "DBO-01",
+     "namn": "Kyrkjerommet",
+     "merknad": "lemmen"
+    }
+   ],
+   "utgangar_tekst": "DBO-01 Kyrkjerommet (lemmen)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:96"
+  },
+  {
+   "id": "DMJ-01",
+   "stad": "DMJ",
+   "omraade": "Drakestadene",
+   "dungeon": "Mjøsa ved Helgøya: Lindormen",
+   "lag": "Inngang",
+   "namn": "Isfiskarbua på Helgøya",
+   "innhald_tekst": "Kvilestad (forslag i fana Regionane). Bua ligg i fjøra med isvegen ut framfor. Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": null,
+     "namn": "Mjøsa, isvegen og strendene",
+     "fleire_treff": null
+    },
+    {
+     "til": "DMJ-02",
+     "namn": "Isvegen"
+    }
+   ],
+   "utgangar_tekst": "Mjøsa, isvegen og strendene, DMJ-02 Isvegen",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:104"
+  },
+  {
+   "id": "DMJ-02",
+   "stad": "DMJ",
+   "omraade": "Drakestadene",
+   "dungeon": "Mjøsa ved Helgøya: Lindormen",
+   "lag": "Isen",
+   "namn": "Isvegen ut frå Helgøya",
+   "innhald_tekst": "Ein isveg merkt med granbar. Han går berre om natta",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DMJ-01",
+     "namn": "Isfiskarbua"
+    },
+    {
+     "til": "DMJ-03",
+     "namn": "Råkene"
+    }
+   ],
+   "utgangar_tekst": "DMJ-01 Isfiskarbua, DMJ-03 Råkene",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:105"
+  },
+  {
+   "id": "DMJ-03",
+   "stad": "DMJ",
+   "omraade": "Drakestadene",
+   "dungeon": "Mjøsa ved Helgøya: Lindormen",
+   "lag": "Isen",
+   "namn": "Råkene under månen",
+   "innhald_tekst": "Råkene opnar og lukkar seg etter månen, og stigen over isen endrar seg med dei",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DMJ-02",
+     "namn": "Isvegen"
+    },
+    {
+     "til": "DMJ-04",
+     "namn": "Råka"
+    }
+   ],
+   "utgangar_tekst": "DMJ-02 Isvegen, DMJ-04 Råka",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:106"
+  },
+  {
+   "id": "DMJ-04",
+   "stad": "DMJ",
+   "omraade": "Drakestadene",
+   "dungeon": "Mjøsa ved Helgøya: Lindormen",
+   "lag": "Drakerommet",
+   "namn": "Råka der isen syng",
+   "innhald_tekst": "Aasen lyttar på isen, og Lindormen bryt isen og dreg partyet ned (S2.29). Kampstaden er Isflak. Etter kampen frys råka att, og isvegen går rett attende til bua",
+   "scener": [
+    "S2_29"
+   ],
+   "utgangar": [
+    {
+     "til": "DMJ-01",
+     "namn": "Isfiskarbua",
+     "merknad": "isvegen attende"
+    }
+   ],
+   "utgangar_tekst": "DMJ-01 Isfiskarbua (isvegen attende)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:107"
+  },
+  {
+   "id": "DSD-01",
+   "stad": "DSD",
+   "omraade": "Drakestadene",
+   "dungeon": "Stad: Sjøormen",
+   "lag": "Inngang",
+   "namn": "Stova til bonden i Selje",
+   "innhald_tekst": "Kvileplass. Bonden fortel når det er stormdag. Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": null,
+     "namn": "Ørsta og Sunnmøre",
+     "fleire_treff": null
+    },
+    {
+     "til": null,
+     "namn": "Stad og Selje",
+     "fleire_treff": null
+    },
+    {
+     "til": "DSD-02",
+     "namn": "Naustet"
+    }
+   ],
+   "utgangar_tekst": "Ørsta og Sunnmøre, Stad og Selje, DSD-02 Naustet",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:115"
+  },
+  {
+   "id": "DSD-02",
+   "stad": "DSD",
+   "omraade": "Drakestadene",
+   "dungeon": "Stad: Sjøormen",
+   "lag": "Inngang",
+   "namn": "Naustet og stormbåten",
+   "innhald_tekst": "Båten til bonden. Robåten til partyet går ikkje på ope hav, og stormbåten går berre på stormdagar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DSD-01",
+     "namn": "Stova"
+    },
+    {
+     "til": "DSD-03",
+     "namn": "Ut mot Stadlandet"
+    }
+   ],
+   "utgangar_tekst": "DSD-01 Stova, DSD-03 Ut mot Stadlandet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:116"
+  },
+  {
+   "id": "DSD-03",
+   "stad": "DSD",
+   "omraade": "Drakestadene",
+   "dungeon": "Stad: Sjøormen",
+   "lag": "Havet",
+   "namn": "Ut mot Stadlandet",
+   "innhald_tekst": "Første del av roinga i storm, med bølgjer som må takast rett",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DSD-02",
+     "namn": "Naustet"
+    },
+    {
+     "til": "DSD-04",
+     "namn": "Under Stadlandet"
+    }
+   ],
+   "utgangar_tekst": "DSD-02 Naustet, DSD-04 Under Stadlandet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:117"
+  },
+  {
+   "id": "DSD-04",
+   "stad": "DSD",
+   "omraade": "Drakestadene",
+   "dungeon": "Stad: Sjøormen",
+   "lag": "Havet",
+   "namn": "Under Stadlandet",
+   "innhald_tekst": "Andre del av roinga, under bratta der sjøen kokar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DSD-03",
+     "namn": "Ut mot Stadlandet"
+    },
+    {
+     "til": "DSD-05",
+     "namn": "Havet ved Stad"
+    }
+   ],
+   "utgangar_tekst": "DSD-03 Ut mot Stadlandet, DSD-05 Havet ved Stad",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:118"
+  },
+  {
+   "id": "DSD-05",
+   "stad": "DSD",
+   "omraade": "Drakestadene",
+   "dungeon": "Stad: Sjøormen",
+   "lag": "Drakerommet",
+   "namn": "Havet ved Stad",
+   "innhald_tekst": "Sjøormen med tre hovud (S2.29). Sjøen skummar der neste hovud kjem opp. Når ormen dukkar, går båten attende til naustet",
+   "scener": [
+    "S2_29"
+   ],
+   "utgangar": [
+    {
+     "til": "DSD-02",
+     "namn": "Naustet",
+     "merknad": "båten attende"
+    }
+   ],
+   "utgangar_tekst": "DSD-02 Naustet (båten attende)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:119"
+  },
+  {
+   "id": "DGA-01",
+   "stad": "DGA",
+   "omraade": "Drakestadene",
+   "dungeon": "Gaustatoppen: Fjelldraken",
+   "lag": "Inngang",
+   "namn": "Foten av fjellet på Rjukan-sida",
+   "innhald_tekst": "Stigen opp byrjar i bjørkeskogen under snøen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Telemark"
+    },
+    {
+     "til": "DGA-02",
+     "namn": "Ura"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (Telemark), DGA-02 Ura",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:127"
+  },
+  {
+   "id": "DGA-02",
+   "stad": "DGA",
+   "omraade": "Drakestadene",
+   "dungeon": "Gaustatoppen: Fjelldraken",
+   "lag": "Lag 1",
+   "namn": "Ura over Rjukan-sida",
+   "innhald_tekst": "Store steinar under snøen. Stigen sikk-sakkar opp",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DGA-01",
+     "namn": "Foten"
+    },
+    {
+     "til": "DGA-03",
+     "namn": "Eggen"
+    }
+   ],
+   "utgangar_tekst": "DGA-01 Foten, DGA-03 Eggen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:128"
+  },
+  {
+   "id": "DGA-03",
+   "stad": "DGA",
+   "omraade": "Drakestadene",
+   "dungeon": "Gaustatoppen: Fjelldraken",
+   "lag": "Lag 2",
+   "namn": "Eggen med vardane",
+   "innhald_tekst": "Den smale eggen mot toppen, med vardar som viser vegen. Fimbul-vinden stoppar partyet fem sekund om gongen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DGA-02",
+     "namn": "Ura"
+    },
+    {
+     "til": "DGA-04",
+     "namn": "Varden med kvileruna"
+    }
+   ],
+   "utgangar_tekst": "DGA-02 Ura, DGA-04 Varden med kvileruna",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:129"
+  },
+  {
+   "id": "DGA-04",
+   "stad": "DGA",
+   "omraade": "Drakestadene",
+   "dungeon": "Gaustatoppen: Fjelldraken",
+   "lag": "Lag 2",
+   "namn": "Varden med kvileruna",
+   "innhald_tekst": "Kvilestad før draken: ein varde under toppen med kvilerune (forslag i dungeonfana). Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DGA-03",
+     "namn": "Eggen"
+    },
+    {
+     "til": "DGA-05",
+     "namn": "Fonna"
+    }
+   ],
+   "utgangar_tekst": "DGA-03 Eggen, DGA-05 Fonna",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:130"
+  },
+  {
+   "id": "DGA-05",
+   "stad": "DGA",
+   "omraade": "Drakestadene",
+   "dungeon": "Gaustatoppen: Fjelldraken",
+   "lag": "Lag 3",
+   "namn": "Fonna under toppen",
+   "innhald_tekst": "Fjelldraken ligg i fonna (S2.29). Kuldepusten frys Ordboka. Etter kampen går ei skiløype ned som snarveg",
+   "scener": [
+    "S2_29"
+   ],
+   "utgangar": [
+    {
+     "til": "DGA-04",
+     "namn": "Varden"
+    },
+    {
+     "til": "DGA-01",
+     "namn": "Foten",
+     "merknad": "skiløypa"
+    }
+   ],
+   "utgangar_tekst": "DGA-04 Varden, DGA-01 Foten (skiløypa)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:131"
+  },
+  {
+   "id": "DBY-01",
+   "stad": "DBY",
+   "omraade": "Drakestadene",
+   "dungeon": "Bygland: Grotormen",
+   "lag": "Inngang",
+   "namn": "Bålplassen på leikvollen",
+   "innhald_tekst": "Leikvollen under snø, med bålplassen frå 2.19. Kvilestad. Dei unge frå 1844 kvedar her (fana Regionane). Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": null,
+     "namn": "Setesdal, leikvollen på Bygland",
+     "fleire_treff": null
+    },
+    {
+     "til": "DBY-02",
+     "namn": "Steinrøysa"
+    }
+   ],
+   "utgangar_tekst": "Setesdal, leikvollen på Bygland, DBY-02 Steinrøysa",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:139"
+  },
+  {
+   "id": "DBY-02",
+   "stad": "DBY",
+   "omraade": "Drakestadene",
+   "dungeon": "Bygland: Grotormen",
+   "lag": "Drakerommet",
+   "namn": "Steinrøysa ved leikvollen",
+   "innhald_tekst": "Kved att vekkjer Grotormen (S2.29). Stevmålaren står midt på skjermen heile kampen. Etter kampen søkk røysa saman att",
+   "scener": [
+    "S2_29"
+   ],
+   "utgangar": [
+    {
+     "til": "DBY-01",
+     "namn": "Bålplassen"
+    }
+   ],
+   "utgangar_tekst": "DBY-01 Bålplassen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:140"
+  },
+  {
+   "id": "DUR-01",
+   "stad": "DUR",
+   "omraade": "Drakestadene",
+   "dungeon": "Urnes: Nidhoggsungen",
+   "lag": "Inngang",
+   "namn": "Bautaen og nordveggen",
+   "innhald_tekst": "Bautaen ved kyrkja, som manuset nemner, er kvilestad. Aasen lyttar til nordveggen og går inn i treskurden. Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": null,
+     "namn": "Sogn",
+     "fleire_treff": null
+    },
+    {
+     "til": "LYS-05",
+     "namn": "Urnes",
+     "slatt_opp": true
+    },
+    {
+     "til": "DUR-02",
+     "namn": "Dei ytste slyngane"
+    }
+   ],
+   "utgangar_tekst": "Sogn, Urnes, DUR-02 Dei ytste slyngane",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:148"
+  },
+  {
+   "id": "DUR-02",
+   "stad": "DUR",
+   "omraade": "Drakestadene",
+   "dungeon": "Urnes: Nidhoggsungen",
+   "lag": "Treskurden",
+   "namn": "Dei ytste slyngane",
+   "innhald_tekst": "Ormeslyngane er stigar som går opp og ned over veggen. Runevettene vaktar ristninga",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DUR-01",
+     "namn": "Nordveggen"
+    },
+    {
+     "til": "DUR-03",
+     "namn": "Slyngane inn mot asken"
+    }
+   ],
+   "utgangar_tekst": "DUR-01 Nordveggen, DUR-03 Slyngane inn mot asken",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:149"
+  },
+  {
+   "id": "DUR-03",
+   "stad": "DUR",
+   "omraade": "Drakestadene",
+   "dungeon": "Urnes: Nidhoggsungen",
+   "lag": "Treskurden",
+   "namn": "Slyngane inn mot asken",
+   "innhald_tekst": "Slyngane blir tettare og rører seg. Små bokstavar kryp langs dei",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DUR-02",
+     "namn": "Dei ytste slyngane"
+    },
+    {
+     "til": "DUR-04",
+     "namn": "Asken"
+    }
+   ],
+   "utgangar_tekst": "DUR-02 Dei ytste slyngane, DUR-04 Asken",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:150"
+  },
+  {
+   "id": "DUR-04",
+   "stad": "DUR",
+   "omraade": "Drakestadene",
+   "dungeon": "Urnes: Nidhoggsungen",
+   "lag": "Drakerommet",
+   "namn": "Asken i treskurden",
+   "innhald_tekst": "Nidhoggsungen gnagar på asken (S2.29). Kampstaden er Treskurden, med Riss og fem årringar. Etter kampen slepper treskurden partyet ut ved bautaen (forslag)",
+   "scener": [
+    "S2_29"
+   ],
+   "utgangar": [
+    {
+     "til": "DUR-01",
+     "namn": "Bautaen"
+    }
+   ],
+   "utgangar_tekst": "DUR-01 Bautaen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:151"
+  },
+  {
+   "id": "DVK-01",
+   "stad": "DVK",
+   "omraade": "Drakestadene",
+   "dungeon": "Vågakallen: Ormen i Lofotveggen",
+   "lag": "Inngang",
+   "namn": "Naustet ved fiskeværet",
+   "innhald_tekst": "Kvilestad, same naustet som i 5.18. Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "LFN-02",
+     "namn": "Lofoten og Nord, fiskeværet",
+     "slatt_opp": true
+    },
+    {
+     "til": "DVK-02",
+     "namn": "Fjæra"
+    }
+   ],
+   "utgangar_tekst": "Lofoten og Nord, fiskeværet, DVK-02 Fjæra",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:159"
+  },
+  {
+   "id": "DVK-02",
+   "stad": "DVK",
+   "omraade": "Drakestadene",
+   "dungeon": "Vågakallen: Ormen i Lofotveggen",
+   "lag": "Fjæra",
+   "namn": "Fjæra under Vågakallen",
+   "innhald_tekst": "Med joik legg ormen seg her til slutt, og Aasen sit ved steinane til han kjem (S2.29). Utan joik går stigen vidare",
+   "scener": [
+    "S2_29"
+   ],
+   "utgangar": [
+    {
+     "til": "DVK-01",
+     "namn": "Naustet"
+    },
+    {
+     "til": "DVK-03",
+     "namn": "Stigen"
+    }
+   ],
+   "utgangar_tekst": "DVK-01 Naustet, DVK-03 Stigen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:160"
+  },
+  {
+   "id": "DVK-03",
+   "stad": "DVK",
+   "omraade": "Drakestadene",
+   "dungeon": "Vågakallen: Ormen i Lofotveggen",
+   "lag": "Fjellet",
+   "namn": "Stigen opp til fjellveggen",
+   "innhald_tekst": "Ein bratt stig opp mot Lofotveggen. Ingen fiendar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "DVK-02",
+     "namn": "Fjæra"
+    },
+    {
+     "til": "DVK-04",
+     "namn": "Hellaren"
+    }
+   ],
+   "utgangar_tekst": "DVK-02 Fjæra, DVK-04 Hellaren",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:161"
+  },
+  {
+   "id": "DVK-04",
+   "stad": "DVK",
+   "omraade": "Drakestadene",
+   "dungeon": "Vågakallen: Ormen i Lofotveggen",
+   "lag": "Drakerommet",
+   "namn": "Hellaren i fjellveggen",
+   "innhald_tekst": "Ormen i Lofotveggen. Kampstaden er Fjellveggen, med steinsprang annankvar runde, og berre Lytt tek segla (S2.29). Etter kampen går stigen ned att",
+   "scener": [
+    "S2_29"
+   ],
+   "utgangar": [
+    {
+     "til": "DVK-03",
+     "namn": "Stigen"
+    }
+   ],
+   "utgangar_tekst": "DVK-03 Stigen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_drakestadene_under_golvet_i_borgund_stavkyrkje",
+    "9c_drakestadene_isvegen_ut_fraa_helgoya",
+    "9c_drakestadene_gaustatoppen",
+    "9c_drakestadene_inne_i_treskurden_paa_urnes"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:162"
+  },
+  {
+   "id": "OLB-01",
+   "stad": "OLB",
+   "omraade": "Olavsbrønnen",
+   "dungeon": "Olavsbrønnen",
+   "lag": "Koret",
+   "namn": "Oktogonen med brønnkanten",
+   "innhald_tekst": "Kyrkjerom og fristad. Pulsslaget frå kongsgrava høyrest gjennom golvet. Tauet og bøtta i brønnen er snarvegen opp frå kongsgrava etter kampen. Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": null,
+     "namn": "Trondheim",
+     "fleire_treff": null
+    },
+    {
+     "til": null,
+     "namn": "Nidarosdomen",
+     "merknad": "høgkoret",
+     "fleire_treff": null
+    },
+    {
+     "til": "OLB-02",
+     "namn": "Brønnrommet"
+    }
+   ],
+   "utgangar_tekst": "Trondheim, Nidarosdomen (høgkoret), OLB-02 Brønnrommet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_olavsbronnen_etasje_1_til_3_s2.31",
+    "9c_olavsbronnen_etasje_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:198"
+  },
+  {
+   "id": "OLB-02",
+   "stad": "OLB",
+   "omraade": "Olavsbrønnen",
+   "dungeon": "Olavsbrønnen",
+   "lag": "Etasje 1, 1500-talet",
+   "namn": "Brønnrommet frå 1846",
+   "innhald_tekst": "Same rommet som i S1.40. Den utviska innskrifta ved brønnkanten, «Ek drakk hér ok varð heill», som Aasen les med to feil (S2.31.1). Brønnvatnet er kvilestad, og innskrifta er kvileruna. Ingen kampar ved vatnet",
+   "scener": [
+    "S2_31_1"
+   ],
+   "utgangar": [
+    {
+     "til": "OLB-01",
+     "namn": "Oktogonen"
+    },
+    {
+     "til": "OLB-03",
+     "namn": "Kammeret"
+    }
+   ],
+   "utgangar_tekst": "OLB-01 Oktogonen, OLB-03 Kammeret",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_olavsbronnen_etasje_1_til_3_s2.31",
+    "9c_olavsbronnen_etasje_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:199"
+  },
+  {
+   "id": "OLB-03",
+   "stad": "OLB",
+   "omraade": "Olavsbrønnen",
+   "dungeon": "Olavsbrønnen",
+   "lag": "Etasje 1, 1500-talet",
+   "namn": "Kammeret til dei siste pilegrimane",
+   "innhald_tekst": "Pilegrimar som veit at skrinet skal førast bort og smeltast. Den sjuke pilegrimen og Skrinberaren",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "OLB-02",
+     "namn": "Brønnrommet"
+    },
+    {
+     "til": "OLB-04",
+     "namn": "Trappa"
+    }
+   ],
+   "utgangar_tekst": "OLB-02 Brønnrommet, OLB-04 Trappa",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_olavsbronnen_etasje_1_til_3_s2.31",
+    "9c_olavsbronnen_etasje_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:200"
+  },
+  {
+   "id": "OLB-04",
+   "stad": "OLB",
+   "omraade": "Olavsbrønnen",
+   "dungeon": "Olavsbrønnen",
+   "lag": "Etasje 2, 1400-talet",
+   "namn": "Trappa ned gjennom 1400-talet",
+   "innhald_tekst": "Ei vindeltrapp langs brønnsjakta. Pilegrimsmerke i bly ligg i steinen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "OLB-03",
+     "namn": "Kammeret"
+    },
+    {
+     "til": "OLB-05",
+     "namn": "Kammeret"
+    }
+   ],
+   "utgangar_tekst": "OLB-03 Kammeret, OLB-05 Kammeret",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_olavsbronnen_etasje_1_til_3_s2.31",
+    "9c_olavsbronnen_etasje_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:201"
+  },
+  {
+   "id": "OLB-05",
+   "stad": "OLB",
+   "omraade": "Olavsbrønnen",
+   "dungeon": "Olavsbrønnen",
+   "lag": "Etasje 2, 1400-talet",
+   "namn": "Kammeret med stavane",
+   "innhald_tekst": "Pilegrimsstavar står lent mot veggen. Skuggane ber om lækjing",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "OLB-04",
+     "namn": "Trappa"
+    },
+    {
+     "til": "OLB-06",
+     "namn": "Trappa"
+    }
+   ],
+   "utgangar_tekst": "OLB-04 Trappa, OLB-06 Trappa",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_olavsbronnen_etasje_1_til_3_s2.31",
+    "9c_olavsbronnen_etasje_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:202"
+  },
+  {
+   "id": "OLB-06",
+   "stad": "OLB",
+   "omraade": "Olavsbrønnen",
+   "dungeon": "Olavsbrønnen",
+   "lag": "Etasje 3, 1300-talet",
+   "namn": "Trappa ned gjennom 1300-talet",
+   "innhald_tekst": "Trappa er smalare. Bøner frå peståra står rissa i veggen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "OLB-05",
+     "namn": "Kammeret"
+    },
+    {
+     "til": "OLB-07",
+     "namn": "Kammeret"
+    }
+   ],
+   "utgangar_tekst": "OLB-05 Kammeret, OLB-07 Kammeret",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_olavsbronnen_etasje_1_til_3_s2.31",
+    "9c_olavsbronnen_etasje_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:203"
+  },
+  {
+   "id": "OLB-07",
+   "stad": "OLB",
+   "omraade": "Olavsbrønnen",
+   "dungeon": "Olavsbrønnen",
+   "lag": "Etasje 3, 1300-talet",
+   "namn": "Kammeret med bønene",
+   "innhald_tekst": "Skuggane ber om ein gjenstand før dei går",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "OLB-06",
+     "namn": "Trappa"
+    },
+    {
+     "til": "OLB-08",
+     "namn": "Trappa"
+    }
+   ],
+   "utgangar_tekst": "OLB-06 Trappa, OLB-08 Trappa",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_olavsbronnen_etasje_1_til_3_s2.31",
+    "9c_olavsbronnen_etasje_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:204"
+  },
+  {
+   "id": "OLB-08",
+   "stad": "OLB",
+   "omraade": "Olavsbrønnen",
+   "dungeon": "Olavsbrønnen",
+   "lag": "Etasje 4, 1200-talet",
+   "namn": "Trappa ned gjennom 1200-talet",
+   "innhald_tekst": "Kvedaren frå Selja kjem første gong her og ber om eit stev",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "OLB-07",
+     "namn": "Kammeret"
+    },
+    {
+     "til": "OLB-09",
+     "namn": "Kammeret"
+    }
+   ],
+   "utgangar_tekst": "OLB-07 Kammeret, OLB-09 Kammeret",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_olavsbronnen_etasje_1_til_3_s2.31",
+    "9c_olavsbronnen_etasje_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:205"
+  },
+  {
+   "id": "OLB-09",
+   "stad": "OLB",
+   "omraade": "Olavsbrønnen",
+   "dungeon": "Olavsbrønnen",
+   "lag": "Etasje 4, 1200-talet",
+   "namn": "Kammeret under skrinet",
+   "innhald_tekst": "Rommet ligg rett under der skrinet stod på høgaltaret. Lyset frå oppe fell gjennom sprekker",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "OLB-08",
+     "namn": "Trappa"
+    },
+    {
+     "til": "OLB-10",
+     "namn": "Trappa"
+    }
+   ],
+   "utgangar_tekst": "OLB-08 Trappa, OLB-10 Trappa",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_olavsbronnen_etasje_1_til_3_s2.31",
+    "9c_olavsbronnen_etasje_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:206"
+  },
+  {
+   "id": "OLB-10",
+   "stad": "OLB",
+   "omraade": "Olavsbrønnen",
+   "dungeon": "Olavsbrønnen",
+   "lag": "Etasje 5, 1000- og 1100-talet",
+   "namn": "Trappa ned til dei første",
+   "innhald_tekst": "Trappa er hoggen grovt. Pilegrimane her kjende Olav",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "OLB-09",
+     "namn": "Kammeret"
+    },
+    {
+     "til": "OLB-11",
+     "namn": "Kammeret"
+    }
+   ],
+   "utgangar_tekst": "OLB-09 Kammeret, OLB-11 Kammeret",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_olavsbronnen_etasje_1_til_3_s2.31",
+    "9c_olavsbronnen_etasje_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:207"
+  },
+  {
+   "id": "OLB-11",
+   "stad": "OLB",
+   "omraade": "Olavsbrønnen",
+   "dungeon": "Olavsbrønnen",
+   "lag": "Etasje 5, 1000- og 1100-talet",
+   "namn": "Kammeret til dei første pilegrimane",
+   "innhald_tekst": "Skuggane har ingen merke og ingen stavar. Dei ber om eit ord",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "OLB-10",
+     "namn": "Trappa"
+    },
+    {
+     "til": "OLB-12",
+     "namn": "Brønnbotnen"
+    }
+   ],
+   "utgangar_tekst": "OLB-10 Trappa, OLB-12 Brønnbotnen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_olavsbronnen_etasje_1_til_3_s2.31",
+    "9c_olavsbronnen_etasje_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:208"
+  },
+  {
+   "id": "OLB-12",
+   "stad": "OLB",
+   "omraade": "Olavsbrønnen",
+   "dungeon": "Olavsbrønnen",
+   "lag": "Etasje 5",
+   "namn": "Brønnbotnen",
+   "innhald_tekst": "Brønnsjakta endar i vatnet rett over kongsgrava. Same vatnet er kvilestad før bossen (forslag om plassering). Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "OLB-11",
+     "namn": "Kammeret"
+    },
+    {
+     "til": "OLB-13",
+     "namn": "Kongsgrava"
+    }
+   ],
+   "utgangar_tekst": "OLB-11 Kammeret, OLB-13 Kongsgrava",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_olavsbronnen_etasje_1_til_3_s2.31",
+    "9c_olavsbronnen_etasje_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:209"
+  },
+  {
+   "id": "OLB-13",
+   "stad": "OLB",
+   "omraade": "Olavsbrønnen",
+   "dungeon": "Olavsbrønnen",
+   "lag": "Kongsgrava",
+   "namn": "Kongsgrava",
+   "innhald_tekst": "Bossrom. Den blinde kongen i fem fasar (S2.31.2). Aasen spør «kven» når kongen står stille mellom andleta, og det står berre ein mann att i jernskjorte. Etter kampen går tauet og bøtta rett opp til koret",
+   "scener": [
+    "S2_31_2"
+   ],
+   "utgangar": [
+    {
+     "til": "OLB-12",
+     "namn": "Brønnbotnen"
+    },
+    {
+     "til": "OLB-01",
+     "namn": "Oktogonen",
+     "merknad": "tauet og bøtta"
+    }
+   ],
+   "utgangar_tekst": "OLB-12 Brønnbotnen, OLB-01 Oktogonen (tauet og bøtta)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9c_olavsbronnen_etasje_1_til_3_s2.31",
+    "9c_olavsbronnen_etasje_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:210"
+  },
+  {
+   "id": "SFO-01",
+   "stad": "SFO",
+   "omraade": "Skipet ned gjennom Folla",
+   "dungeon": "Skipet ned gjennom Folla",
+   "lag": "Lag 1, 1846",
+   "namn": "Akterdekket med roret",
+   "innhald_tekst": "Partyet går om bord frå dampskipet om Beian. Dekket er det same som i 3.20, vått og krengjande. Bølgjer slår over ripa",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "dampskipet om Beian"
+    },
+    {
+     "til": "SFO-02",
+     "namn": "Salongen"
+    },
+    {
+     "til": "SFO-03",
+     "namn": "Fordekket"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (dampskipet om Beian), SFO-02 Salongen, SFO-03 Fordekket",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_skipet_ned_gjennom_folla_lag_1_til_3_s2.33",
+    "9c_skipet_ned_gjennom_folla_lag_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:236"
+  },
+  {
+   "id": "SFO-02",
+   "stad": "SFO",
+   "omraade": "Skipet ned gjennom Folla",
+   "dungeon": "Skipet ned gjennom Folla",
+   "lag": "Lag 1, 1846",
+   "namn": "Salongen under dekk",
+   "innhald_tekst": "Salongen frå 1846 med sjø på golvet. Han krengjer med dekket",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SFO-01",
+     "namn": "Akterdekket"
+    }
+   ],
+   "utgangar_tekst": "SFO-01 Akterdekket",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_skipet_ned_gjennom_folla_lag_1_til_3_s2.33",
+    "9c_skipet_ned_gjennom_folla_lag_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:237"
+  },
+  {
+   "id": "SFO-03",
+   "stad": "SFO",
+   "omraade": "Skipet ned gjennom Folla",
+   "dungeon": "Skipet ned gjennom Folla",
+   "lag": "Lag 1, 1846",
+   "namn": "Fordekket",
+   "innhald_tekst": "Der draugen kom opp i 1846. Skipet søkk her, og dekket går under i jekta",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SFO-01",
+     "namn": "Akterdekket"
+    },
+    {
+     "til": "SFO-04",
+     "namn": "Jektedekket"
+    }
+   ],
+   "utgangar_tekst": "SFO-01 Akterdekket, SFO-04 Jektedekket",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_skipet_ned_gjennom_folla_lag_1_til_3_s2.33",
+    "9c_skipet_ned_gjennom_folla_lag_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:238"
+  },
+  {
+   "id": "SFO-04",
+   "stad": "SFO",
+   "omraade": "Skipet ned gjennom Folla",
+   "dungeon": "Skipet ned gjennom Folla",
+   "lag": "Lag 2, 1700-talet",
+   "namn": "Jektedekket med råseglet",
+   "innhald_tekst": "Ei nordlandsjekt med eitt stort råsegl. Dekket krengjer",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SFO-03",
+     "namn": "Fordekket"
+    },
+    {
+     "til": "SFO-05",
+     "namn": "Lasta"
+    }
+   ],
+   "utgangar_tekst": "SFO-03 Fordekket, SFO-05 Lasta",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_skipet_ned_gjennom_folla_lag_1_til_3_s2.33",
+    "9c_skipet_ned_gjennom_folla_lag_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:239"
+  },
+  {
+   "id": "SFO-05",
+   "stad": "SFO",
+   "omraade": "Skipet ned gjennom Folla",
+   "dungeon": "Skipet ned gjennom Folla",
+   "lag": "Lag 2, 1700-talet",
+   "namn": "Lasta med tørrfisk",
+   "innhald_tekst": "Tørrfisken står i stablar til taket. Ein lem i botnen går ned i fembøringen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SFO-04",
+     "namn": "Jektedekket"
+    },
+    {
+     "til": "SFO-06",
+     "namn": "Framskotet"
+    }
+   ],
+   "utgangar_tekst": "SFO-04 Jektedekket, SFO-06 Framskotet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_skipet_ned_gjennom_folla_lag_1_til_3_s2.33",
+    "9c_skipet_ned_gjennom_folla_lag_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:240"
+  },
+  {
+   "id": "SFO-06",
+   "stad": "SFO",
+   "omraade": "Skipet ned gjennom Folla",
+   "dungeon": "Skipet ned gjennom Folla",
+   "lag": "Lag 3, 1600-talet",
+   "namn": "Fembøringen, framskotet",
+   "innhald_tekst": "Ein open båt med fem par årer. Krenginga er over, og båten ligg stille i mørkt vatn",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SFO-05",
+     "namn": "Lasta"
+    },
+    {
+     "til": "SFO-07",
+     "namn": "Akterskotet"
+    }
+   ],
+   "utgangar_tekst": "SFO-05 Lasta, SFO-07 Akterskotet",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_skipet_ned_gjennom_folla_lag_1_til_3_s2.33",
+    "9c_skipet_ned_gjennom_folla_lag_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:241"
+  },
+  {
+   "id": "SFO-07",
+   "stad": "SFO",
+   "omraade": "Skipet ned gjennom Folla",
+   "dungeon": "Skipet ned gjennom Folla",
+   "lag": "Lag 3, 1600-talet",
+   "namn": "Fembøringen, akterskotet",
+   "innhald_tekst": "Styret og skottet bak. Båten søkk vidare herifrå",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SFO-06",
+     "namn": "Framskotet"
+    },
+    {
+     "til": "SFO-08",
+     "namn": "Båten utan namn"
+    }
+   ],
+   "utgangar_tekst": "SFO-06 Framskotet, SFO-08 Båten utan namn",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_skipet_ned_gjennom_folla_lag_1_til_3_s2.33",
+    "9c_skipet_ned_gjennom_folla_lag_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:242"
+  },
+  {
+   "id": "SFO-08",
+   "stad": "SFO",
+   "omraade": "Skipet ned gjennom Folla",
+   "dungeon": "Skipet ned gjennom Folla",
+   "lag": "Lag 4",
+   "namn": "Båten utan namn",
+   "innhald_tekst": "Ein liten båt frå før kyrkjebøkene tok til. Ingen namn er skorne i han",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SFO-07",
+     "namn": "Akterskotet"
+    },
+    {
+     "til": "SFO-09",
+     "namn": "Luftlomma"
+    }
+   ],
+   "utgangar_tekst": "SFO-07 Akterskotet, SFO-09 Luftlomma",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_skipet_ned_gjennom_folla_lag_1_til_3_s2.33",
+    "9c_skipet_ned_gjennom_folla_lag_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:243"
+  },
+  {
+   "id": "SFO-09",
+   "stad": "SFO",
+   "omraade": "Skipet ned gjennom Folla",
+   "dungeon": "Skipet ned gjennom Folla",
+   "lag": "Lag 4",
+   "namn": "Luftlomma under tofta",
+   "innhald_tekst": "Kvilestad: ei luftlomme i båten der ein sjømann ein gong rissa ei rune i tofta (forslag i dungeonfana). Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SFO-08",
+     "namn": "Båten utan namn"
+    },
+    {
+     "til": "SFO-10",
+     "namn": "Havbotnen"
+    }
+   ],
+   "utgangar_tekst": "SFO-08 Båten utan namn, SFO-10 Havbotnen",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_skipet_ned_gjennom_folla_lag_1_til_3_s2.33",
+    "9c_skipet_ned_gjennom_folla_lag_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:244"
+  },
+  {
+   "id": "SFO-10",
+   "stad": "SFO",
+   "omraade": "Skipet ned gjennom Folla",
+   "dungeon": "Skipet ned gjennom Folla",
+   "lag": "Lag 5",
+   "namn": "Havbotnen",
+   "innhald_tekst": "Stille og tørt. Ankerkjettingen frå dekket heng ned i sanda",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SFO-09",
+     "namn": "Luftlomma"
+    },
+    {
+     "til": "SFO-11",
+     "namn": "Der draugen ligg"
+    },
+    {
+     "til": "SFO-01",
+     "namn": "Akterdekket",
+     "merknad": "ankerkjettingen, etter kampen"
+    }
+   ],
+   "utgangar_tekst": "SFO-09 Luftlomma, SFO-11 Der draugen ligg, SFO-01 Akterdekket (ankerkjettingen, etter kampen)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_skipet_ned_gjennom_folla_lag_1_til_3_s2.33",
+    "9c_skipet_ned_gjennom_folla_lag_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:245"
+  },
+  {
+   "id": "SFO-11",
+   "stad": "SFO",
+   "omraade": "Skipet ned gjennom Folla",
+   "dungeon": "Skipet ned gjennom Folla",
+   "lag": "Lag 5",
+   "namn": "Der draugen ligg",
+   "innhald_tekst": "Bossrom. Heildraugen, ein halv båt og ein halv mann, i seks fasar (S2.33.1). Kvar fase slepper ut ein sjømann, og Lytt gjev namnet. Utfallet av 3.21 endrar kampen. Er Ole Bull med, spelar han for mannskapet",
+   "scener": [
+    "S2_33_1"
+   ],
+   "utgangar": [
+    {
+     "til": "SFO-10",
+     "namn": "Havbotnen"
+    }
+   ],
+   "utgangar_tekst": "SFO-10 Havbotnen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9c_skipet_ned_gjennom_folla_lag_1_til_3_s2.33",
+    "9c_skipet_ned_gjennom_folla_lag_4_og_5"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:246"
+  },
+  {
+   "id": "UTG-01",
+   "stad": "UTG",
+   "omraade": "Utgard i Eidaskogen",
+   "dungeon": "Utgard i Eidaskogen",
+   "lag": "Eidaskogen",
+   "namn": "Skogkanten ved grensevegen",
+   "innhald_tekst": "Jotunen ventar i skogkanten og blir med att. Lytt høyrer tunge steg austover",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Eidaskogen"
+    },
+    {
+     "til": "UTG-02",
+     "namn": "Stigen i ring"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (Eidaskogen), UTG-02 Stigen i ring",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_utgard_i_eidaskogen_skogen_og_hallen_i_skogen_loynd",
+    "9c_utgard_i_eidaskogen_under_eika_og_ved_porten"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:270"
+  },
+  {
+   "id": "UTG-02",
+   "stad": "UTG",
+   "omraade": "Utgard i Eidaskogen",
+   "dungeon": "Utgard i Eidaskogen",
+   "lag": "Eidaskogen",
+   "namn": "Stigen i ring, første runden",
+   "innhald_tekst": "Skogen er større enn han burde vere, og stigen går i ring attende til same tre",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UTG-01",
+     "namn": "Skogkanten"
+    },
+    {
+     "til": "UTG-03",
+     "namn": "Andre runden"
+    }
+   ],
+   "utgangar_tekst": "UTG-01 Skogkanten, UTG-03 Andre runden",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_utgard_i_eidaskogen_skogen_og_hallen_i_skogen_loynd",
+    "9c_utgard_i_eidaskogen_under_eika_og_ved_porten"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:271"
+  },
+  {
+   "id": "UTG-03",
+   "stad": "UTG",
+   "omraade": "Utgard i Eidaskogen",
+   "dungeon": "Utgard i Eidaskogen",
+   "lag": "Eidaskogen",
+   "namn": "Stigen i ring, andre runden",
+   "innhald_tekst": "Same skogen ein gong til. Lytt finn stega til jotunen og den rette stigen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UTG-02",
+     "namn": "Første runden"
+    },
+    {
+     "til": "UTG-04",
+     "namn": "Den rette stigen"
+    }
+   ],
+   "utgangar_tekst": "UTG-02 Første runden, UTG-04 Den rette stigen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_utgard_i_eidaskogen_skogen_og_hallen_i_skogen_loynd",
+    "9c_utgard_i_eidaskogen_under_eika_og_ved_porten"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:272"
+  },
+  {
+   "id": "UTG-04",
+   "stad": "UTG",
+   "omraade": "Utgard i Eidaskogen",
+   "dungeon": "Utgard i Eidaskogen",
+   "lag": "Eidaskogen",
+   "namn": "Den rette stigen",
+   "innhald_tekst": "Stega fører ut av ringen og inn i tettare skog",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UTG-03",
+     "namn": "Andre runden"
+    },
+    {
+     "til": "UTG-05",
+     "namn": "Hallen i skogen"
+    }
+   ],
+   "utgangar_tekst": "UTG-03 Andre runden, UTG-05 Hallen i skogen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_utgard_i_eidaskogen_skogen_og_hallen_i_skogen_loynd",
+    "9c_utgard_i_eidaskogen_under_eika_og_ved_porten"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:273"
+  },
+  {
+   "id": "UTG-05",
+   "stad": "UTG",
+   "omraade": "Utgard i Eidaskogen",
+   "dungeon": "Utgard i Eidaskogen",
+   "lag": "Hallen i skogen",
+   "namn": "Hallen i skogen",
+   "innhald_tekst": "Ein hall med eit trongt sidekammer. Jorda skjelv med jamne mellomrom, og Lytt høyrer snorking",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UTG-04",
+     "namn": "Den rette stigen"
+    },
+    {
+     "til": "UTG-06",
+     "namn": "Sidekammeret"
+    },
+    {
+     "til": "UTG-07",
+     "namn": "Under eika"
+    }
+   ],
+   "utgangar_tekst": "UTG-04 Den rette stigen, UTG-06 Sidekammeret, UTG-07 Under eika",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_utgard_i_eidaskogen_skogen_og_hallen_i_skogen_loynd",
+    "9c_utgard_i_eidaskogen_under_eika_og_ved_porten"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:274"
+  },
+  {
+   "id": "UTG-06",
+   "stad": "UTG",
+   "omraade": "Utgard i Eidaskogen",
+   "dungeon": "Utgard i Eidaskogen",
+   "lag": "Hallen i skogen",
+   "namn": "Sidekammeret",
+   "innhald_tekst": "Kvilestad der Tor og følgjet sov. Om morgonen ser partyet at hallen er hansken til Skrymes, og at kammeret er tommelen. Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UTG-05",
+     "namn": "Hallen i skogen"
+    }
+   ],
+   "utgangar_tekst": "UTG-05 Hallen i skogen",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_utgard_i_eidaskogen_skogen_og_hallen_i_skogen_loynd",
+    "9c_utgard_i_eidaskogen_under_eika_og_ved_porten"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:275"
+  },
+  {
+   "id": "UTG-07",
+   "stad": "UTG",
+   "omraade": "Utgard i Eidaskogen",
+   "dungeon": "Utgard i Eidaskogen",
+   "lag": "Skrymes",
+   "namn": "Under eika",
+   "innhald_tekst": "Ein jotun søv over stigen. Tre slag på den sovande, og kvart slag treffer fjellet bak og opnar ein dal. Skrymes vaknar kvar gong og spør om det fall eit blad eller ei eikenøtt",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UTG-05",
+     "namn": "Hallen i skogen"
+    },
+    {
+     "til": "UTG-08",
+     "namn": "Den første dalen"
+    },
+    {
+     "til": "UTG-09",
+     "namn": "Den andre dalen"
+    },
+    {
+     "til": "UTG-10",
+     "namn": "Den tredje dalen"
+    }
+   ],
+   "utgangar_tekst": "UTG-05 Hallen i skogen, UTG-08 Den første dalen, UTG-09 Den andre dalen, UTG-10 Den tredje dalen",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_utgard_i_eidaskogen_skogen_og_hallen_i_skogen_loynd",
+    "9c_utgard_i_eidaskogen_under_eika_og_ved_porten"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:276"
+  },
+  {
+   "id": "UTG-08",
+   "stad": "UTG",
+   "omraade": "Utgard i Eidaskogen",
+   "dungeon": "Utgard i Eidaskogen",
+   "lag": "Skrymes",
+   "namn": "Den første dalen",
+   "innhald_tekst": "Dalen etter det første slaget. Han endar blindt i fjellet",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UTG-07",
+     "namn": "Under eika"
+    }
+   ],
+   "utgangar_tekst": "UTG-07 Under eika",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_utgard_i_eidaskogen_skogen_og_hallen_i_skogen_loynd",
+    "9c_utgard_i_eidaskogen_under_eika_og_ved_porten"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:277"
+  },
+  {
+   "id": "UTG-09",
+   "stad": "UTG",
+   "omraade": "Utgard i Eidaskogen",
+   "dungeon": "Utgard i Eidaskogen",
+   "lag": "Skrymes",
+   "namn": "Den andre dalen",
+   "innhald_tekst": "Dalen etter det andre slaget. Han endar òg blindt",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UTG-07",
+     "namn": "Under eika"
+    }
+   ],
+   "utgangar_tekst": "UTG-07 Under eika",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_utgard_i_eidaskogen_skogen_og_hallen_i_skogen_loynd",
+    "9c_utgard_i_eidaskogen_under_eika_og_ved_porten"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:278"
+  },
+  {
+   "id": "UTG-10",
+   "stad": "UTG",
+   "omraade": "Utgard i Eidaskogen",
+   "dungeon": "Utgard i Eidaskogen",
+   "lag": "Skrymes",
+   "namn": "Den tredje dalen",
+   "innhald_tekst": "Dalen etter det tredje slaget er vegen vidare",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UTG-07",
+     "namn": "Under eika"
+    },
+    {
+     "til": "UTG-11",
+     "namn": "Framfor borga"
+    }
+   ],
+   "utgangar_tekst": "UTG-07 Under eika, UTG-11 Framfor borga",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_utgard_i_eidaskogen_skogen_og_hallen_i_skogen_loynd",
+    "9c_utgard_i_eidaskogen_under_eika_og_ved_porten"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:279"
+  },
+  {
+   "id": "UTG-11",
+   "stad": "UTG",
+   "omraade": "Utgard i Eidaskogen",
+   "dungeon": "Utgard i Eidaskogen",
+   "lag": "Porten",
+   "namn": "Framfor borga",
+   "innhald_tekst": "Ei borg så høg at partyet må bøye nakken bakover. Porten er stengd, og tussen smett mellom spilene og opnar frå innsida",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UTG-10",
+     "namn": "Den tredje dalen"
+    },
+    {
+     "til": "UTG-12",
+     "namn": "Borggarden"
+    }
+   ],
+   "utgangar_tekst": "UTG-10 Den tredje dalen, UTG-12 Borggarden",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_utgard_i_eidaskogen_skogen_og_hallen_i_skogen_loynd",
+    "9c_utgard_i_eidaskogen_under_eika_og_ved_porten"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:280"
+  },
+  {
+   "id": "UTG-12",
+   "stad": "UTG",
+   "omraade": "Utgard i Eidaskogen",
+   "dungeon": "Utgard i Eidaskogen",
+   "lag": "Porten",
+   "namn": "Borggarden",
+   "innhald_tekst": "Plassen innanfor spilene. Døra til hallen står i enden",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UTG-11",
+     "namn": "Framfor borga"
+    },
+    {
+     "til": "UTG-13",
+     "namn": "Benken ved døra"
+    }
+   ],
+   "utgangar_tekst": "UTG-11 Framfor borga, UTG-13 Benken ved døra",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_utgard_i_eidaskogen_skogen_og_hallen_i_skogen_loynd",
+    "9c_utgard_i_eidaskogen_under_eika_og_ved_porten"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:281"
+  },
+  {
+   "id": "UTG-13",
+   "stad": "UTG",
+   "omraade": "Utgard i Eidaskogen",
+   "dungeon": "Utgard i Eidaskogen",
+   "lag": "Hallen i Utgard",
+   "namn": "Benken ved døra",
+   "innhald_tekst": "Kvilestad med kvile og lagring. Prøvene og kampen blir tekne om herifrå. Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UTG-12",
+     "namn": "Borggarden"
+    },
+    {
+     "til": "UTG-14",
+     "namn": "Hallen i Utgard"
+    }
+   ],
+   "utgangar_tekst": "UTG-12 Borggarden, UTG-14 Hallen i Utgard",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_utgard_i_eidaskogen_skogen_og_hallen_i_skogen_loynd",
+    "9c_utgard_i_eidaskogen_under_eika_og_ved_porten"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:282"
+  },
+  {
+   "id": "UTG-14",
+   "stad": "UTG",
+   "omraade": "Utgard i Eidaskogen",
+   "dungeon": "Utgard i Eidaskogen",
+   "lag": "Hallen i Utgard",
+   "namn": "Hallen i Utgard",
+   "innhald_tekst": "Bossrom. Benkar fulle av jotnar, høgsetet til Utgardsloke og tavla med merka. Dei fem prøvene: kappåtet ved trauet, kappløpet, drikkehornet, katten og brytinga med Elli. Så kampen mot Utgardsloke i tre fasar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UTG-13",
+     "namn": "Benken ved døra"
+    },
+    {
+     "til": "UTG-15",
+     "namn": "Sletta",
+     "merknad": "etter kampen"
+    }
+   ],
+   "utgangar_tekst": "UTG-13 Benken ved døra, UTG-15 Sletta (etter kampen)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9c_utgard_i_eidaskogen_skogen_og_hallen_i_skogen_loynd",
+    "9c_utgard_i_eidaskogen_under_eika_og_ved_porten"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:283"
+  },
+  {
+   "id": "UTG-15",
+   "stad": "UTG",
+   "omraade": "Utgard i Eidaskogen",
+   "dungeon": "Utgard i Eidaskogen",
+   "lag": "Etter kampen",
+   "namn": "Sletta i skogkanten",
+   "innhald_tekst": "Borga er borte. Partyet står på ei vid slette med tre dalar i åsen bak seg. Jotunen ser austover ei stund. Ingen kampar",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null,
+     "merknad": "Eidaskogen"
+    }
+   ],
+   "utgangar_tekst": "Verdskartet (Eidaskogen)",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_utgard_i_eidaskogen_skogen_og_hallen_i_skogen_loynd",
+    "9c_utgard_i_eidaskogen_under_eika_og_ved_porten"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:284"
+  }
+ ],
+ "kister": [
+  {
+   "id": "K-SGH-02-1",
+   "skjerm": "SGH-02",
+   "behaldar": "Ei kiste frosen fast ved foten av ei søyle",
+   "innhald": [
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    },
+    {
+     "ting": "kaffikjelen",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kjøtsuppe og 1 kaffikjelen",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Står før delinga",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:50"
+  },
+  {
+   "id": "K-SGH-04a-1",
+   "skjerm": "SGH-04a",
+   "behaldar": "Ei kiste i høyveggen",
+   "innhald": [
+    {
+     "ting": "reiseskreppa",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Reiseskreppa",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Berre med Joike",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:51"
+  },
+  {
+   "id": "K-SGH-05-1",
+   "skjerm": "SGH-05",
+   "behaldar": "Ei skuffe under kyrkjebokskåpet",
+   "innhald": [
+    {
+     "ting": "solvskje",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Sølvskei",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:52"
+  },
+  {
+   "id": "K-SGH-06-1",
+   "skjerm": "SGH-06",
+   "behaldar": "Ei kiste surra fast ved rekka",
+   "innhald": [
+    {
+     "pengar": 135
+    }
+   ],
+   "kjelde_tekst": "1 spd 15 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Dekket krengjer. Kista glir mot rekka kvar gong båten legg seg over",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:53"
+  },
+  {
+   "id": "K-SGH-07-1",
+   "skjerm": "SGH-07",
+   "behaldar": "Ei kiste under torvveggen ved kvea",
+   "innhald": [
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kjøtsuppe og 2 luktesalt",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:54"
+  },
+  {
+   "id": "K-SGH-12-1",
+   "skjerm": "SGH-12",
+   "behaldar": "Ein bokpakke bunden med hyssing på disken",
+   "innhald": [
+    {
+     "ting": "kaffi_kandis",
+     "tal": 3
+    },
+    {
+     "ting": "kaffikjelen",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "3 kaffi med kandis og 1 kaffikjelen",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:55"
+  },
+  {
+   "id": "K-SGH-14-1",
+   "skjerm": "SGH-14",
+   "behaldar": "Skuffa i kateteret",
+   "innhald": [
+    {
+     "ting": "gamal_eikelinjal",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Gamal eikelinjal",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Kistefunn for Knudsen, som går denne vegen",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:56"
+  },
+  {
+   "id": "K-SGH-14a-1",
+   "skjerm": "SGH-14a",
+   "behaldar": "Ei kostymekiste bak kulissane",
+   "innhald": [
+    {
+     "ting": "bjorneskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Bjørneskinn",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Berre med Spele opp",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:57"
+  },
+  {
+   "id": "K-SGH-16-1",
+   "skjerm": "SGH-16",
+   "behaldar": "Ei kiste med jarnbeslag i ein krok av korridoren",
+   "innhald": [
+    {
+     "pengar": 138
+    }
+   ],
+   "kjelde_tekst": "1 spd 18 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:58"
+  },
+  {
+   "id": "K-SGH-21-1",
+   "skjerm": "SGH-21",
+   "behaldar": "Ei gøymsle under ein stein ved kjelda",
+   "innhald": [
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    },
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "1 kamferdropar og 2 kjøtsuppe",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Gøymd. Lytt på staden",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:59"
+  },
+  {
+   "id": "K-SGH-23-1",
+   "skjerm": "SGH-23",
+   "behaldar": "Ein varde utanfor ringen",
+   "innhald": [
+    {
+     "ting": "ullvottar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Ullvottar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:60"
+  },
+  {
+   "id": "K-SGH-24-1",
+   "skjerm": "SGH-24",
+   "behaldar": "Ei kiste ved rota av asken",
+   "innhald": [
+    {
+     "ting": "kaffikjelen",
+     "tal": 2
+    },
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffikjelen og 1 kamferdropar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Gøymd. Skiltet frå SGH-15 peikar hit. Utan skiltet finn Lytt på staden henne",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:61"
+  },
+  {
+   "id": "K-DST-02-1",
+   "skjerm": "DST-02",
+   "behaldar": "Ei gøymsle i steingarden",
+   "innhald": [
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    },
+    {
+     "ting": "ullsokkar",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kjøtsuppe og 2 ullsokkar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:168"
+  },
+  {
+   "id": "K-DBO-03-1",
+   "skjerm": "DBO-03",
+   "behaldar": "Ei krukke mellom grunnsteinane",
+   "innhald": [
+    {
+     "pengar": 147
+    }
+   ],
+   "kjelde_tekst": "1 spd 27 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:169"
+  },
+  {
+   "id": "K-DBO-04-1",
+   "skjerm": "DBO-04",
+   "behaldar": "Ein sekk i kanten av gullhaugen",
+   "innhald": [
+    {
+     "ting": "solvskje",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Sølvskei",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Kan opnast etter kampen",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:170"
+  },
+  {
+   "id": "K-DMJ-02-1",
+   "skjerm": "DMJ-02",
+   "behaldar": "Ein isfiskarsekk ved ei open råk",
+   "innhald": [
+    {
+     "ting": "kaffikjelen",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kaffikjelen",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:171"
+  },
+  {
+   "id": "K-DMJ-03-1",
+   "skjerm": "DMJ-03",
+   "behaldar": "Ei kiste frosen fast i isen",
+   "innhald": [
+    {
+     "ting": "bjorneskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Bjørneskinn",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Berre når råka ved ho er lukka",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:172"
+  },
+  {
+   "id": "K-DSD-02-1",
+   "skjerm": "DSD-02",
+   "behaldar": "Ei kiste i naustet",
+   "innhald": [
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    },
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "1 kamferdropar og 2 kjøtsuppe",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Bonden har sagt ja",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:173"
+  },
+  {
+   "id": "K-DGA-02-1",
+   "skjerm": "DGA-02",
+   "behaldar": "Ei gøymsle under ein stein i ura",
+   "innhald": [
+    {
+     "ting": "ullvottar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Ullvottar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Gøymd. Lytt på staden eller Dragesyn",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:174"
+  },
+  {
+   "id": "K-DGA-03-1",
+   "skjerm": "DGA-03",
+   "behaldar": "Ein varde på eggen",
+   "innhald": [
+    {
+     "pengar": 156
+    }
+   ],
+   "kjelde_tekst": "1 spd 36 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:175"
+  },
+  {
+   "id": "K-DBY-01-1",
+   "skjerm": "DBY-01",
+   "behaldar": "Ei gøymsle i steinane rundt bålplassen",
+   "innhald": [
+    {
+     "ting": "ullsokkar",
+     "tal": 3
+    },
+    {
+     "ting": "kaffikjelen",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "3 ullsokkar og 1 kaffikjelen",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:176"
+  },
+  {
+   "id": "K-DUR-02-1",
+   "skjerm": "DUR-02",
+   "behaldar": "Eit skrin som ein ormeslyng held fast",
+   "innhald": [
+    {
+     "ting": "reiseskreppa",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Reiseskreppa",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Gøymd. Lytt på staden eller Dragesyn",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:177"
+  },
+  {
+   "id": "K-DUR-03-1",
+   "skjerm": "DUR-03",
+   "behaldar": "Eit skrin i ein knute i treet",
+   "innhald": [
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    },
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kjøtsuppe og 1 kamferdropar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:178"
+  },
+  {
+   "id": "K-DVK-03-1",
+   "skjerm": "DVK-03",
+   "behaldar": "Ein varde ved stigen",
+   "innhald": [
+    {
+     "ting": "bjorneskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Bjørneskinn",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:179"
+  },
+  {
+   "id": "K-OLB-02-1",
+   "skjerm": "OLB-02",
+   "behaldar": "Eit offerskrin ved brønnkanten",
+   "innhald": [
+    {
+     "pengar": 165
+    }
+   ],
+   "kjelde_tekst": "1 spd 45 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:216"
+  },
+  {
+   "id": "K-OLB-05-1",
+   "skjerm": "OLB-05",
+   "behaldar": "Ei kiste ved pilegrimsstavane",
+   "innhald": [
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kjøtsuppe og 2 luktesalt",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:217"
+  },
+  {
+   "id": "K-OLB-07-1",
+   "skjerm": "OLB-07",
+   "behaldar": "Ein sekk i ein nisje",
+   "innhald": [
+    {
+     "ting": "solvskje",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Sølvskei",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:218"
+  },
+  {
+   "id": "K-OLB-09-1",
+   "skjerm": "OLB-09",
+   "behaldar": "Ei krukke under sprekkene",
+   "innhald": [
+    {
+     "ting": "kaffikjelen",
+     "tal": 2
+    },
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffikjelen og 1 kamferdropar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Gøymd. Lytt på staden eller Dragesyn",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:219"
+  },
+  {
+   "id": "K-OLB-10-1",
+   "skjerm": "OLB-10",
+   "behaldar": "Ei kiste på ein avsats",
+   "innhald": [
+    {
+     "ting": "bjorneskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Bjørneskinn",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:220"
+  },
+  {
+   "id": "K-OLB-11-1",
+   "skjerm": "OLB-11",
+   "behaldar": "Ein skinnsekk i kammeret",
+   "innhald": [
+    {
+     "pengar": 171
+    }
+   ],
+   "kjelde_tekst": "1 spd 51 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:221"
+  },
+  {
+   "id": "K-OLB-12-1",
+   "skjerm": "OLB-12",
+   "behaldar": "Ei kiste ved vatnet",
+   "innhald": [
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    },
+    {
+     "ting": "kaffikjelen",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kjøtsuppe og 2 kaffikjelen",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:222"
+  },
+  {
+   "id": "K-SFO-02-1",
+   "skjerm": "SFO-02",
+   "behaldar": "Ei kiste under benken",
+   "innhald": [
+    {
+     "ting": "ullsokkar",
+     "tal": 3
+    },
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "3 ullsokkar og 2 kjøtsuppe",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:252"
+  },
+  {
+   "id": "K-SFO-04-1",
+   "skjerm": "SFO-04",
+   "behaldar": "Ei kiste surra fast ved masta",
+   "innhald": [
+    {
+     "ting": "solvskje",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Sølvskei",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Dekket krengjer",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:253"
+  },
+  {
+   "id": "K-SFO-05-1",
+   "skjerm": "SFO-05",
+   "behaldar": "Ei kiste mellom tørrfiskstablane",
+   "innhald": [
+    {
+     "pengar": 171
+    }
+   ],
+   "kjelde_tekst": "1 spd 51 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:254"
+  },
+  {
+   "id": "K-SFO-07-1",
+   "skjerm": "SFO-07",
+   "behaldar": "Ein skinnsekk under tofta",
+   "innhald": [
+    {
+     "ting": "kaffikjelen",
+     "tal": 2
+    },
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffikjelen og 1 kamferdropar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:255"
+  },
+  {
+   "id": "K-SFO-08-1",
+   "skjerm": "SFO-08",
+   "behaldar": "Ei nevereske i botnen av båten",
+   "innhald": [
+    {
+     "ting": "kamferdropar",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kamferdropar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Gøymd. Lytt på staden eller Dragesyn",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:256"
+  },
+  {
+   "id": "K-SFO-10-1",
+   "skjerm": "SFO-10",
+   "behaldar": "Ei kiste halvt i sanda",
+   "innhald": [
+    {
+     "pengar": 177
+    }
+   ],
+   "kjelde_tekst": "1 spd 57 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:257"
+  },
+  {
+   "id": "K-SFO-10-2",
+   "skjerm": "SFO-10",
+   "behaldar": "Ei kiste ved ankerkjettingen",
+   "innhald": [
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kjøtsuppe og 2 luktesalt",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:258"
+  },
+  {
+   "id": "K-UTG-02-1",
+   "skjerm": "UTG-02",
+   "behaldar": "Ein sekk ved ein stubbe",
+   "innhald": [
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    },
+    {
+     "ting": "ullsokkar",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kjøtsuppe og 2 ullsokkar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, Etter soga-fila",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:290"
+  },
+  {
+   "id": "K-UTG-03-1",
+   "skjerm": "UTG-03",
+   "behaldar": "Ein varde ved stigen",
+   "innhald": [
+    {
+     "ting": "kaffikjelen",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kaffikjelen",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, Etter soga-fila",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:291"
+  },
+  {
+   "id": "K-UTG-04-1",
+   "skjerm": "UTG-04",
+   "behaldar": "Ei gøymsle under ei rot",
+   "innhald": [
+    {
+     "pengar": 219
+    }
+   ],
+   "kjelde_tekst": "1 spd 99 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, Etter soga-fila",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:292"
+  },
+  {
+   "id": "K-UTG-08-1",
+   "skjerm": "UTG-08",
+   "behaldar": "Ei kiste i dalbotnen",
+   "innhald": [
+    {
+     "ting": "bjorneskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Bjørneskinn",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, Etter soga-fila",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:293"
+  },
+  {
+   "id": "K-UTG-09-1",
+   "skjerm": "UTG-09",
+   "behaldar": "Ei gøymsle under ein stein",
+   "innhald": [
+    {
+     "ting": "kamferdropar",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 kamferdropar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, Etter soga-fila",
+   "ventekiste": null,
+   "merknad": "Gøymd. Lytt på staden eller Dragesyn",
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:294"
+  },
+  {
+   "id": "K-UTG-10-1",
+   "skjerm": "UTG-10",
+   "behaldar": "Ei kiste ved bekken i dalen",
+   "innhald": [
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    },
+    {
+     "ting": "kaffikjelen",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kjøtsuppe og 1 kaffikjelen",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, Etter soga-fila",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:295"
+  },
+  {
+   "id": "K-UTG-12-1",
+   "skjerm": "UTG-12",
+   "behaldar": "Ei kiste ved muren",
+   "innhald": [
+    {
+     "ting": "solvskje",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Sølvskei",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, Etter soga-fila",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:296"
+  },
+  {
+   "id": "K-UTG-12-2",
+   "skjerm": "UTG-12",
+   "behaldar": "Ei kiste under spilene",
+   "innhald": [
+    {
+     "pengar": 225
+    }
+   ],
+   "kjelde_tekst": "1 spd 105 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4, Etter soga-fila",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:297"
+  }
+ ],
+ "butikkar": [
+  {
+   "skjerm": "SGH-03",
+   "type": "kvile",
+   "type_tekst": "Kvile: runa ved inngangen",
+   "kven": "Draugvegen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "November 1853",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:65"
+  },
+  {
+   "skjerm": "SGH-08",
+   "type": "kvile",
+   "type_tekst": "Kvile: brønnen på torvgarden",
+   "kven": "Draugvegen, etter Kved att",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "November 1853",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:66"
+  },
+  {
+   "skjerm": "SGH-11",
+   "type": "kvile",
+   "type_tekst": "Kvile: runa ved inngangen",
+   "kven": "Kongevegen",
+   "ekstra": [],
+   "ekstra_tekst": "Salmeboka frå SGH-05 om ho ligg der",
+   "tid": [],
+   "tid_tekst": "November 1853",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:67",
+   "ekstra_anna": [
+    "Salmeboka"
+   ]
+  },
+  {
+   "skjerm": "SGH-17",
+   "type": "kvile",
+   "type_tekst": "Kvile: bautaen i forhallen",
+   "kven": "Kongevegen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "November 1853",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:68"
+  },
+  {
+   "skjerm": "SGH-19",
+   "type": "kvile",
+   "type_tekst": "Kvile: runa ved inngangen",
+   "kven": "Gudevegen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "November 1853",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:69"
+  },
+  {
+   "skjerm": "SGH-25",
+   "type": "kvile",
+   "type_tekst": "Kvile: kjelda under rota av asken",
+   "kven": "Gudevegen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "November 1853",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:70"
+  },
+  {
+   "skjerm": "SGH-27",
+   "type": "kvile",
+   "type_tekst": "Kvile: framfor seglet, full lækjing og byte av utstyr",
+   "kven": "Alle tre gruppene",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "November 1853",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:71"
+  },
+  {
+   "skjerm": "DST-01",
+   "type": "kvile",
+   "type_tekst": "Kvile: kyrkjerommet",
+   "kven": "Ingen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Frå 6.13",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:183"
+  },
+  {
+   "skjerm": "DBO-01",
+   "type": "kvile",
+   "type_tekst": "Kvile: kyrkjerommet",
+   "kven": "Ingen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Etter Kongsormen",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:184"
+  },
+  {
+   "skjerm": "DMJ-01",
+   "type": "kvile",
+   "type_tekst": "Kvile: isfiskarbua (forslag)",
+   "kven": "Ein isfiskar (forslag i fana Regionane)",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Etter Kongsormen",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:185"
+  },
+  {
+   "skjerm": "DSD-01",
+   "type": "kvile",
+   "type_tekst": "Kvile: stova til bonden i Selje",
+   "kven": "Bonden i Selje",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Etter Kongsormen",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:186"
+  },
+  {
+   "skjerm": "DGA-04",
+   "type": "kvile",
+   "type_tekst": "Kvile: varden med kvileruna",
+   "kven": "Ingen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Etter Kongsormen",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:187"
+  },
+  {
+   "skjerm": "DBY-01",
+   "type": "kvile",
+   "type_tekst": "Kvile: bålplassen på leikvollen",
+   "kven": "Dei unge frå 1844",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Etter Kongsormen",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:188"
+  },
+  {
+   "skjerm": "DUR-01",
+   "type": "kvile",
+   "type_tekst": "Kvile: bautaen ved kyrkja",
+   "kven": "Ingen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Etter Kongsormen",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:189"
+  },
+  {
+   "skjerm": "DVK-01",
+   "type": "kvile",
+   "type_tekst": "Kvile: naustet ved fiskeværet",
+   "kven": "Ingen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Etter Kongsormen",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:190"
+  },
+  {
+   "skjerm": "OLB-01",
+   "type": "kvile",
+   "type_tekst": "Fristad: kyrkjerommet over",
+   "kven": "Ingen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Etter Kongsormen",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:226"
+  },
+  {
+   "skjerm": "OLB-02",
+   "type": "kvile",
+   "type_tekst": "Kvile: brønnvatnet med innskrifta",
+   "kven": "Ingen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Etter Kongsormen",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:227"
+  },
+  {
+   "skjerm": "OLB-12",
+   "type": "kvile",
+   "type_tekst": "Kvile: brønnvatnet på botnen",
+   "kven": "Ingen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Etter Kongsormen",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:228"
+  },
+  {
+   "skjerm": "SFO-09",
+   "type": "kvile",
+   "type_tekst": "Kvile: luftlomma med runa i tofta",
+   "kven": "Ingen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "September 1853 og Etter soga-fila",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:262"
+  },
+  {
+   "skjerm": "UTG-06",
+   "type": "kvile",
+   "type_tekst": "Kvile: sidekammeret i hansken",
+   "kven": "Ingen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Etter soga-fila",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:301"
+  },
+  {
+   "skjerm": "UTG-13",
+   "type": "kvile",
+   "type_tekst": "Kvile og lagring: benken ved døra",
+   "kven": "Ingen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Etter soga-fila",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/09 Kart Sagahallen og superbossdungeonane.md:302"
+  }
+ ]
+}

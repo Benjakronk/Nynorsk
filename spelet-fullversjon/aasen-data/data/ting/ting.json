@@ -1,0 +1,804 @@
+[
+ {
+  "id": "flatbrod",
+  "namn": "Flatbrød",
+  "pris": 2,
+  "verknad_tekst": "Lækjer 25 prosent Liv på éin. Mettar òg dyr med Driv Svolt",
+  "verknad": {
+   "laekje_prosent": 25,
+   "maal": "ein"
+  },
+  "forste_butikk": "T1, kremmaren i Ørsta",
+  "tid": "T1",
+  "slag": "mat",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:26"
+ },
+ {
+  "id": "graut",
+  "namn": "Graut",
+  "pris": 3,
+  "verknad_tekst": "3 Mett til tussen og litt lækjing",
+  "verknad": null,
+  "forste_butikk": "T1, kremmaren i Ørsta",
+  "tid": "T1",
+  "slag": "mat",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:27"
+ },
+ {
+  "id": "smor",
+  "namn": "Smør",
+  "pris": 4,
+  "verknad_tekst": "Neste handling til tussen verkar dobbelt",
+  "verknad": null,
+  "forste_butikk": "T1, kremmaren i Ørsta",
+  "tid": "T1",
+  "slag": "mat",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:28"
+ },
+ {
+  "id": "rommegraut",
+  "namn": "Rømmegraut",
+  "pris": 8,
+  "verknad_tekst": "Lækjer 60 prosent Liv på éin",
+  "verknad": {
+   "laekje_prosent": 60,
+   "maal": "ein"
+  },
+  "forste_butikk": "T1, Bergen",
+  "tid": "T1",
+  "slag": "mat",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:29"
+ },
+ {
+  "id": "spekekjot",
+  "namn": "Spekekjøt",
+  "pris": 40,
+  "verknad_tekst": "Lækjer alt Liv på éin",
+  "verknad": {
+   "laekje_prosent": 100,
+   "maal": "ein"
+  },
+  "forste_butikk": "T2, byane og handelsstadene",
+  "tid": "T2",
+  "slag": "mat",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:30"
+ },
+ {
+  "id": "kjotsuppe",
+  "namn": "Kjøtsuppe",
+  "pris": 90,
+  "verknad_tekst": "Lækjer 40 prosent Liv på heile partyet",
+  "verknad": {
+   "laekje_prosent": 40,
+   "maal": "alle"
+  },
+  "forste_butikk": "T4, gjestgiveria",
+  "tid": "T4",
+  "slag": "mat",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:31"
+ },
+ {
+  "id": "kaffi",
+  "namn": "Kaffi",
+  "pris": 10,
+  "verknad_tekst": "Gjev att 25 prosent Røyst på éin",
+  "verknad": {
+   "royst_prosent": 25,
+   "maal": "ein"
+  },
+  "forste_butikk": "T1, Bergen",
+  "tid": "T1",
+  "slag": "mat",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:32"
+ },
+ {
+  "id": "kaffi_kandis",
+  "namn": "Kaffi med kandis",
+  "pris": 30,
+  "verknad_tekst": "Gjev att 60 prosent Røyst på éin",
+  "verknad": {
+   "royst_prosent": 60,
+   "maal": "ein"
+  },
+  "forste_butikk": "T2, byane og handelsstadene",
+  "tid": "T2",
+  "slag": "mat",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:33"
+ },
+ {
+  "id": "kaffikjelen",
+  "namn": "Kaffikjelen",
+  "pris": 120,
+  "verknad_tekst": "Gjev att 30 prosent Røyst på heile partyet",
+  "verknad": {
+   "royst_prosent": 30,
+   "maal": "alle"
+  },
+  "forste_butikk": "T4, gjestgiveria",
+  "tid": "T4",
+  "slag": "mat",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:34"
+ },
+ {
+  "id": "ol",
+  "namn": "Øl",
+  "pris": 3,
+  "verknad_tekst": "Gåve til vesen",
+  "verknad": null,
+  "forste_butikk": "T1, kremmaren i Ørsta",
+  "tid": "T1",
+  "slag": "gaave",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:35"
+ },
+ {
+  "id": "hoffmannsdropar",
+  "namn": "Hoffmannsdropar",
+  "pris": 10,
+  "verknad_tekst": "Løftar Ridd, Klumsa og Dåra på éin",
+  "verknad": {
+   "loftar": [
+    "ridd",
+    "klumsa",
+    "daara"
+   ],
+   "maal": "ein"
+  },
+  "forste_butikk": "T1, apoteket i Bergen",
+  "tid": "T1",
+  "slag": "laekjing",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:43"
+ },
+ {
+  "id": "honningvatn",
+  "namn": "Honningvatn",
+  "pris": 6,
+  "verknad_tekst": "Løftar Taus på éin",
+  "verknad": {
+   "loftar": [
+    "taus"
+   ],
+   "maal": "ein"
+  },
+  "forste_butikk": "T1, apoteket i Bergen",
+  "tid": "T1",
+  "slag": "laekjing",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:44"
+ },
+ {
+  "id": "luktesalt",
+  "namn": "Luktesalt",
+  "pris": 24,
+  "verknad_tekst": "Vekkjer ein figur som er slegen ut, med 25 prosent Liv",
+  "verknad": {
+   "vekkjer_prosent": 25,
+   "maal": "ein"
+  },
+  "forste_butikk": "T1, apoteket i Bergen",
+  "tid": "T1",
+  "slag": "laekjing",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:45"
+ },
+ {
+  "id": "ullsokkar",
+  "namn": "Ullsokkar",
+  "pris": 12,
+  "verknad_tekst": "Løftar Fimbul på éin",
+  "verknad": {
+   "loftar": [
+    "fimbul"
+   ],
+   "maal": "ein"
+  },
+  "forste_butikk": "T4, krambuene og gjestgiveria",
+  "tid": "T4",
+  "slag": "laekjing",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:46"
+ },
+ {
+  "id": "lusekam",
+  "namn": "Lusekam",
+  "pris": 4,
+  "verknad_tekst": "Tek eitt segl frå lusa utan å skade beraren",
+  "verknad": null,
+  "forste_butikk": "T2, krambuene",
+  "tid": "T2",
+  "slag": "laekjing",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:47"
+ },
+ {
+  "id": "kamferdropar",
+  "namn": "Kamferdropar",
+  "pris": null,
+  "pris_tekst": "Ikkje til sals",
+  "verknad_tekst": "Vekkjer ein figur som er slegen ut, med alt Liv",
+  "verknad": {
+   "vekkjer_prosent": 100,
+   "maal": "ein"
+  },
+  "forste_butikk": "Berre i kister",
+  "tid": null,
+  "slag": "laekjing",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:48"
+ },
+ {
+  "id": "kritt",
+  "namn": "Kritt",
+  "pris": 1,
+  "verknad_tekst": "Verneskikk: kross og ring",
+  "verknad": {
+   "verneskikk": true
+  },
+  "forste_butikk": "T1, kremmaren i Ørsta",
+  "tid": "T1",
+  "slag": "vern",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:56"
+ },
+ {
+  "id": "salt",
+  "namn": "Salt",
+  "pris": 2,
+  "verknad_tekst": "Verneskikk",
+  "verknad": {
+   "verneskikk": true
+  },
+  "forste_butikk": "T1, kremmaren i Ørsta",
+  "tid": "T1",
+  "slag": "vern",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:57"
+ },
+ {
+  "id": "lys",
+  "namn": "Lys",
+  "pris": 2,
+  "verknad_tekst": "Verneskikk",
+  "verknad": {
+   "verneskikk": true
+  },
+  "forste_butikk": "T1, kremmaren i Ørsta",
+  "tid": "T1",
+  "slag": "vern",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:58"
+ },
+ {
+  "id": "einer",
+  "namn": "Einer",
+  "pris": 2,
+  "verknad_tekst": "Røyk mot svermar",
+  "verknad": null,
+  "forste_butikk": "T1, kremmaren i Ørsta",
+  "tid": "T1",
+  "slag": "vern",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:59"
+ },
+ {
+  "id": "tjore",
+  "namn": "Tjøre",
+  "pris": 3,
+  "verknad_tekst": "Verneskikk: kross",
+  "verknad": {
+   "verneskikk": true
+  },
+  "forste_butikk": "T1, kremmaren i Ørsta",
+  "tid": "T1",
+  "slag": "vern",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:60"
+ },
+ {
+  "id": "staal",
+  "namn": "Stål",
+  "pris": 12,
+  "verknad_tekst": "Verneskikk. Ein kniv eller eit ljåblad",
+  "verknad": {
+   "verneskikk": true
+  },
+  "forste_butikk": "T1, smeden i Ørsta",
+  "tid": "T1",
+  "slag": "vern",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:61"
+ },
+ {
+  "id": "fugledaare",
+  "namn": "Fugledåre",
+  "pris": 6,
+  "verknad_tekst": "Lomme: vern mot Dåra",
+  "verknad": null,
+  "forste_butikk": "Vestlandet, våren 1852",
+  "tid": null,
+  "slag": "vern",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:62"
+ },
+ {
+  "id": "juksa",
+  "namn": "Juksa med jernkjetting",
+  "pris": 24,
+  "verknad_tekst": "Opnar Kast mot håkjerringa",
+  "verknad": null,
+  "forste_butikk": "Krambua til Heggelund i Nord-Troms",
+  "tid": null,
+  "slag": "vern",
+  "ny": false,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:63"
+ },
+ {
+  "id": "ull",
+  "namn": "Ull",
+  "pris": null,
+  "salspris": 3,
+  "verknad_tekst": null,
+  "verknad": null,
+  "kvar": "Kister på gardar og setrer frå T1",
+  "forste_butikk": null,
+  "tid": "T1",
+  "slag": "sal",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:71"
+ },
+ {
+  "id": "fjor",
+  "namn": "Fjør",
+  "pris": null,
+  "salspris": 2,
+  "verknad_tekst": null,
+  "verknad": null,
+  "kvar": "Kister ved kysten frå T1",
+  "forste_butikk": null,
+  "tid": "T1",
+  "slag": "sal",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:72"
+ },
+ {
+  "id": "dun",
+  "namn": "Dun",
+  "pris": null,
+  "salspris": 15,
+  "verknad_tekst": null,
+  "verknad": null,
+  "kvar": "Dunvær på Helgeland og kister ved kysten frå T2",
+  "forste_butikk": null,
+  "tid": "T2",
+  "slag": "sal",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:73"
+ },
+ {
+  "id": "kalveskinn",
+  "namn": "Kalveskinn",
+  "pris": null,
+  "salspris": 20,
+  "verknad_tekst": null,
+  "verknad": null,
+  "kvar": "Kister frå T1",
+  "forste_butikk": null,
+  "tid": "T1",
+  "slag": "sal",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:74"
+ },
+ {
+  "id": "revskinn",
+  "namn": "Revskinn",
+  "pris": null,
+  "salspris": 40,
+  "verknad_tekst": null,
+  "verknad": null,
+  "kvar": "Kister i skog og fjell frå T2",
+  "forste_butikk": null,
+  "tid": "T2",
+  "slag": "sal",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:75"
+ },
+ {
+  "id": "gaupeskinn",
+  "namn": "Gaupeskinn",
+  "pris": null,
+  "salspris": 80,
+  "verknad_tekst": null,
+  "verknad": null,
+  "kvar": "Kister i skog frå T2",
+  "forste_butikk": null,
+  "tid": "T2",
+  "slag": "sal",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:76"
+ },
+ {
+  "id": "bjorneskinn",
+  "namn": "Bjørneskinn",
+  "pris": null,
+  "salspris": 240,
+  "verknad_tekst": null,
+  "verknad": null,
+  "kvar": "Kister i villmarkene frå T3",
+  "forste_butikk": null,
+  "tid": "T3",
+  "slag": "sal",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:77"
+ },
+ {
+  "id": "bergkrystall",
+  "namn": "Bergkrystall",
+  "pris": null,
+  "salspris": 120,
+  "verknad_tekst": null,
+  "verknad": null,
+  "kvar": "Kister i fjellet frå T2",
+  "forste_butikk": null,
+  "tid": "T2",
+  "slag": "sal",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:78"
+ },
+ {
+  "id": "gamle_myntar",
+  "namn": "Gamle myntar",
+  "pris": null,
+  "salspris": 180,
+  "verknad_tekst": null,
+  "verknad": null,
+  "kvar": "Kister i ruinar og dungeonar frå T2",
+  "forste_butikk": null,
+  "tid": "T2",
+  "slag": "sal",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:79"
+ },
+ {
+  "id": "solvskje",
+  "namn": "Sølvskei",
+  "pris": null,
+  "salspris": 240,
+  "verknad_tekst": null,
+  "verknad": null,
+  "kvar": "Kister i dungeonar frå T3",
+  "forste_butikk": null,
+  "tid": "T3",
+  "slag": "sal",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:80"
+ },
+ {
+  "id": "trollgull",
+  "namn": "Trollgull",
+  "pris": null,
+  "salspris": 2400,
+  "verknad_tekst": null,
+  "verknad": null,
+  "kvar": "Berre ventekista i Trollgjølet, T4",
+  "forste_butikk": null,
+  "tid": "T4",
+  "slag": "sal",
+  "ny": true,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:81"
+ },
+ {
+  "id": "roykjelse",
+  "namn": "Røykjelse",
+  "pris": null,
+  "pris_tekst": "Ikkje til sals",
+  "verknad_tekst": "Vernegjenstand for verneskikken eld og lys (bestiarium_fabeldyr.md). Brukt med Ting eller Brenn mot Molaup-ormen stillar ho sjøen i 2 rundar",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "kven_tekst": "Alle",
+  "stad_tekst": "Djurra i Trollgjølet, V1, 1842. Ligg i krambua i Ørstavika i 1851 om partyet ikkje har henne",
+  "scener": [],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:898"
+ },
+ {
+  "id": "duputa",
+  "namn": "Duputa",
+  "pris": null,
+  "pris_tekst": "Ikkje til sals",
+  "verknad_tekst": "Løftar Fimbul frå heile partyet éin gong per kamp og blir ikkje brukt opp",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "kven_tekst": "Alle",
+  "stad_tekst": "Dunkona på Vega etter Hellervorden, V9, 1846",
+  "scener": [],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:902"
+ },
+ {
+  "id": "lampa_fraa_munch",
+  "namn": "Lampa frå Munch",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Står fast i hybelen. Rotformer laga ved henne gjer dobbel kraft resten av delen",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "4.1",
+  "scener": [
+   "s4_1"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:873"
+ },
+ {
+  "id": "eventyrboka",
+  "namn": "Eventyrboka",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Asbjørnsen ber henne. Gjev Påkall og plassen Side",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "6.9 til 7.2",
+  "scener": [
+   "s6_9",
+   "s7_2"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:874"
+ },
+ {
+  "id": "stipendbrevet",
+  "namn": "Stipendbrevet",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Gjev pengar kvar gong eit nytt kapittel i Dagboka blir opna",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "5.11",
+  "scener": [
+   "s5_11"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:875"
+ },
+ {
+  "id": "torrfisken_fraa_synnove",
+  "namn": "Tørrfisken frå Synnøve",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Lækjer fullt i kamp, éin gong",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "S1.8",
+  "scener": [
+   "S1_8"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:876"
+ },
+ {
+  "id": "korga_med_kirsebaer",
+  "namn": "Korga med kirsebær",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Full lækjing for heile partyet, fem gonger",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "S1.18",
+  "scener": [
+   "S1_18"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:877"
+ },
+ {
+  "id": "klippfisken_fraa_oline",
+  "namn": "Klippfisken frå Oline",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Mat som aldri går ut på dato. Mettar dyr med Driv Svolt og vernar mot Dåra",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "S1.41",
+  "scener": [
+   "S1_41"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:878"
+ },
+ {
+  "id": "rimkvist",
+  "namn": "Rimkvist",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Lita lækjing som aldri blir brukt opp, éin gong per kamp",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "2.21",
+  "scener": [
+   "s2_21"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:879"
+ },
+ {
+  "id": "olavsbrodet",
+  "namn": "Olavsbrødet",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Lækjer heile partyet fullt og kan brukast att etter kvar kvile",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "S2.31",
+  "scener": [
+   "S2_31"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:880"
+ },
+ {
+  "id": "tarjeis_stev",
+  "namn": "Tarjeis stev",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Ferdig svarvers i éin stevduell",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "S1.22",
+  "scener": [
+   "S1_22"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:881"
+ },
+ {
+  "id": "brudeblom",
+  "namn": "Brudeblom",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Løftar Skam frå éin",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "S1.16, val B",
+  "scener": [
+   "S1_16"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:882"
+ },
+ {
+  "id": "skaala_til_tussen",
+  "namn": "Skåla til tussen",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Tussen startar kvar kamp med 1 Mett ekstra",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "6.10",
+  "scener": [
+   "s6_10"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:883"
+ },
+ {
+  "id": "prover_af_landsmaalet",
+  "namn": "Prøver af Landsmaalet",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Opnar Prøvelesing",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "7.1",
+  "scener": [
+   "s7_1"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:884"
+ },
+ {
+  "id": "visebok_fraa_1840",
+  "namn": "Visebok frå 1840",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Kan ikkje utstyrast. Huldra mistar litt livskraft kvar natt boka ligg i veska",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "1.24, val A",
+  "scener": [
+   "s1_24"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:885"
+ },
+ {
+  "id": "norske_huldre_eventyr_og_folkesagn",
+  "namn": "Norske Huldre-Eventyr og Folkesagn",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Kan ikkje utstyrast eller kastast",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "3.8",
+  "scener": [
+   "s3_8"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:886"
+ },
+ {
+  "id": "grimm_boka",
+  "namn": "Grimm-boka",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Kan ikkje utstyrast. Opnar sida «Same eventyret, mange mål» i Ordboka",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "6.9",
+  "scener": [
+   "s6_9"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:887"
+ },
+ {
+  "id": "knudsens_skilling",
+  "namn": "Knudsens skilling",
+  "pris": null,
+  "pris_tekst": null,
+  "verknad_tekst": "Kan ikkje brukast eller seljast. Teksten seier «Fyrretyve Aar»",
+  "verknad": null,
+  "forste_butikk": null,
+  "tid": null,
+  "slag": "veska",
+  "stad_tekst": "7.28",
+  "scener": [
+   "s7_28"
+  ],
+  "ny": false,
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:888"
+ }
+]

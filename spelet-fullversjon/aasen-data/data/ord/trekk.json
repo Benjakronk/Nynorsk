@@ -1,0 +1,464 @@
+[
+ {
+  "id": "ingen",
+  "namn": "Ingen",
+  "verknad_tekst": "Ordet gjer full grunnverknad",
+  "verknad_prosent": 100,
+  "royst_tillegg": 0,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "hard",
+   "j",
+   "diftong",
+   "kv",
+   "smaa"
+  ],
+  "passar_til_tekst": "Alle fem",
+  "typiske_tydingar": "Konkrete ting utan ei sterk handling: stein, kaka",
+  "ande_regel": null,
+  "sfx": null,
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:165"
+ },
+ {
+  "id": "alle",
+  "namn": "Alle",
+  "verknad_tekst": "Når alle fiendane, eller heile partyet når ordet lækjer eller vernar",
+  "verknad_prosent": 65,
+  "royst_tillegg": 3,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "hard",
+   "j",
+   "diftong",
+   "kv",
+   "smaa"
+  ],
+  "passar_til_tekst": "Alle fem",
+  "typiske_tydingar": "Det som breier seg over mange: gate, veg, bygd, fjord, vind, regn, flokk",
+  "ande_regel": "Ande verkar som vanleg. Unntaket er ord med trekket Alle eller Ekko. Der blir kvar Ande som elles ville gjeve eit ekstra treff, eit ekstra mål eller ein runde ekstra, til 30 prosent meir kraft.",
+  "sfx": "sfx.trekk.alle",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:166"
+ },
+ {
+  "id": "gjennom",
+  "namn": "Gjennom",
+  "verknad_tekst": "Ser bort frå vern hos målet og halverer Tole",
+  "verknad_prosent": 85,
+  "royst_tillegg": 1,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "hard",
+   "kv"
+  ],
+  "passar_til_tekst": "Harde konsonantar, kv-ord",
+  "typiske_tydingar": "Skarpe ting og innsikt: nål, kniv, ljå, vita",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.gjennom",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:167"
+ },
+ {
+  "id": "naering",
+  "namn": "Næring",
+  "verknad_tekst": "Brukaren får att Liv lik 30 prosent av verknaden",
+  "verknad_prosent": 80,
+  "royst_tillegg": 1,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "hard",
+   "diftong",
+   "kv",
+   "smaa"
+  ],
+  "passar_til_tekst": "Harde konsonantar, diftongar, kv-ord, småord",
+  "typiske_tydingar": "Mat og kost",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.naering",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:168"
+ },
+ {
+  "id": "kjelde",
+  "namn": "Kjelde",
+  "verknad_tekst": "Brukaren får att 2 Røyst",
+  "verknad_prosent": 85,
+  "royst_tillegg": 1,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "hard",
+   "j",
+   "diftong",
+   "kv",
+   "smaa"
+  ],
+  "passar_til_tekst": "Alle fem",
+  "typiske_tydingar": "Drikke og vatn: kjelde, bekk, øl",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.kjelde",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:169"
+ },
+ {
+  "id": "pust",
+  "namn": "Pust",
+  "verknad_tekst": "Brukaren får 1 Ande etter handlinga. Ho tel ikkje som brukt",
+  "verknad_prosent": 70,
+  "royst_tillegg": 2,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "hard",
+   "j",
+   "diftong",
+   "kv",
+   "smaa"
+  ],
+  "passar_til_tekst": "Alle fem",
+  "typiske_tydingar": "Vind, pust, song, liv",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.pust",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:170"
+ },
+ {
+  "id": "rammar",
+  "namn": "Rammar",
+  "verknad_tekst": "Gjer i tillegg skade på fiendar av eitt slag, som står i lista over ordet",
+  "verknad_prosent": 85,
+  "royst_tillegg": 1,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "j",
+   "diftong",
+   "kv"
+  ],
+  "passar_til_tekst": "J-ord, diftongar, kv-ord",
+  "typiske_tydingar": "Motsetnader: ljos mot blekk, snjo mot eld",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.rammar",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:171"
+ },
+ {
+  "id": "svevn",
+  "namn": "Svevn",
+  "verknad_tekst": "Målet søv éin runde. Eit treff vekkjer han",
+  "verknad_prosent": 80,
+  "royst_tillegg": 1,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "diftong",
+   "j",
+   "kv",
+   "smaa"
+  ],
+  "passar_til_tekst": "Diftongar, j-ord, kv-ord, småord",
+  "typiske_tydingar": "Draum, natt, kveld, vogge",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.svevn",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:172"
+ },
+ {
+  "id": "loyse",
+  "namn": "Løyse",
+  "verknad_tekst": "Løyser Rettskriven og Bunden på partyet, og rettskrivne ord blir frie att",
+  "verknad_prosent": 70,
+  "royst_tillegg": 2,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "diftong",
+   "j",
+   "kv"
+  ],
+  "passar_til_tekst": "Diftongar, j-ord, kv-ord",
+  "typiske_tydingar": "Laus, fri, opne, nøkkel, vår",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.loyse",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:173"
+ },
+ {
+  "id": "syn",
+  "namn": "Syn",
+  "verknad_tekst": "Avslører éi sårbarheit hos målet",
+  "verknad_prosent": 80,
+  "royst_tillegg": 1,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "hard",
+   "diftong",
+   "j",
+   "smaa"
+  ],
+  "passar_til_tekst": "Harde konsonantar, diftongar, j-ord, småord",
+  "typiske_tydingar": "Auga, sjå, glas, spegel",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.syn",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:174"
+ },
+ {
+  "id": "snogg",
+  "namn": "Snøgg",
+  "verknad_tekst": "Brukaren får ein ny tur med ein gong",
+  "verknad_prosent": 60,
+  "royst_tillegg": 3,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "smaa",
+   "hard"
+  ],
+  "passar_til_tekst": "Småord, harde konsonantar",
+  "typiske_tydingar": "Eg, no, fort, sprang",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.snogg",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:175"
+ },
+ {
+  "id": "stogg",
+  "namn": "Stogg",
+  "verknad_tekst": "Målaren til målet går til null",
+  "verknad_prosent": 75,
+  "royst_tillegg": 2,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "smaa",
+   "hard",
+   "diftong"
+  ],
+  "passar_til_tekst": "Småord, harde konsonantar, diftongar",
+  "typiske_tydingar": "Nei, ikkje, stogg, mur, port",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.stogg",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:176"
+ },
+ {
+  "id": "tung",
+  "namn": "Tung",
+  "verknad_tekst": "Målaren til målet går halvt så fort i 2 rundar",
+  "verknad_prosent": 80,
+  "royst_tillegg": 1,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "hard",
+   "j",
+   "diftong",
+   "kv",
+   "smaa"
+  ],
+  "passar_til_tekst": "Alle fem",
+  "typiske_tydingar": "Myr, tjøre, is, leire, bør",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.tung",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:177"
+ },
+ {
+  "id": "skjul",
+  "namn": "Skjul",
+  "verknad_tekst": "Brukaren får Vern éin runde",
+  "verknad_prosent": 80,
+  "royst_tillegg": 1,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "hard",
+   "j",
+   "kv",
+   "smaa"
+  ],
+  "passar_til_tekst": "Harde konsonantar, j-ord, kv-ord, småord",
+  "typiske_tydingar": "Hus, tak, kappe, ull, naust",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.skjul",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:178"
+ },
+ {
+  "id": "varme",
+  "namn": "Varme",
+  "verknad_tekst": "Løftar Fimbul på ein venn, eller gjer eit fimbulvintervesen Tint",
+  "verknad_prosent": 85,
+  "royst_tillegg": 1,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "hard",
+   "j",
+   "diftong",
+   "kv",
+   "smaa"
+  ],
+  "passar_til_tekst": "Alle fem",
+  "typiske_tydingar": "Eld, sol, sommar, gryte, ull",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.varme",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:179"
+ },
+ {
+  "id": "togn",
+  "namn": "Togn",
+  "verknad_tekst": "Målet blir Stum éin runde",
+  "verknad_prosent": 75,
+  "royst_tillegg": 2,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "hard",
+   "kv",
+   "smaa",
+   "diftong"
+  ],
+  "passar_til_tekst": "Harde konsonantar, kv-ord, småord, diftongar",
+  "typiske_tydingar": "Stille, tagal, natt, snø",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.togn",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:180"
+ },
+ {
+  "id": "brot",
+  "namn": "Brot",
+  "verknad_tekst": "Tek eitt segl ekstra same kva målet er sårbar for",
+  "verknad_prosent": 80,
+  "royst_tillegg": 1,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "hard",
+   "kv",
+   "diftong"
+  ],
+  "passar_til_tekst": "Harde konsonantar, kv-ord, diftongar",
+  "typiske_tydingar": "Øks, hammar, lyn, bryte, kløyve",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.brot",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:181"
+ },
+ {
+  "id": "ekko",
+  "namn": "Ekko",
+  "verknad_tekst": "Verkar éin gong til ved starten av neste runde, med halv kraft",
+  "verknad_prosent": 70,
+  "royst_tillegg": 2,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "hard",
+   "j",
+   "diftong",
+   "kv",
+   "smaa"
+  ],
+  "passar_til_tekst": "Alle fem",
+  "typiske_tydingar": "Fjell, berg, horn, klokke, dal",
+  "ande_regel": "Ande verkar som vanleg. Unntaket er ord med trekket Alle eller Ekko. Der blir kvar Ande som elles ville gjeve eit ekstra treff, eit ekstra mål eller ein runde ekstra, til 30 prosent meir kraft.",
+  "sfx": "sfx.trekk.ekko",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:182"
+ },
+ {
+  "id": "ro",
+  "namn": "Ro",
+  "verknad_tekst": "Løftar Sint frå målet. Eit folkevesen eller dyr med eitt segl att går heim",
+  "verknad_prosent": 85,
+  "royst_tillegg": 1,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "j",
+   "diftong",
+   "kv",
+   "smaa"
+  ],
+  "passar_til_tekst": "J-ord, diftongar, kv-ord, småord",
+  "typiske_tydingar": "Mor, vogge, bån, mjølk",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.ro",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:183"
+ },
+ {
+  "id": "troyst",
+  "namn": "Trøyst",
+  "verknad_tekst": "Løftar Skam eitt trinn på ein venn",
+  "verknad_prosent": 85,
+  "royst_tillegg": 1,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "j",
+   "diftong",
+   "smaa"
+  ],
+  "passar_til_tekst": "J-ord, diftongar, småord",
+  "typiske_tydingar": "Heim, ven, kyrkje, mor",
+  "ande_regel": null,
+  "sfx": "sfx.trekk.troyst",
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:184"
+ },
+ {
+  "id": "eiga",
+  "namn": "Eiga",
+  "verknad_tekst": "Ein eigen verknad frå manuset, ei av dei om lag tjue ordevnene",
+  "verknad_prosent": null,
+  "royst_tillegg": null,
+  "royst_tillegg_gjeld": [
+   "kv",
+   "smaa"
+  ],
+  "passar_til": [
+   "hard",
+   "j",
+   "diftong",
+   "kv",
+   "smaa"
+  ],
+  "passar_til_tekst": "Alle fem",
+  "typiske_tydingar": "Sjå evnelista til Aasen i fana 3. Figurar: Aasen til Ravdna",
+  "ande_regel": null,
+  "sfx": null,
+  "kjelde": "09 Ordboka/01 Magisystemet frå ord til galdr.md:185",
+  "verknad_prosent_tekst": "Etter evna"
+ }
+]

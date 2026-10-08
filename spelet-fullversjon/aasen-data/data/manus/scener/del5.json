@@ -1,0 +1,4215 @@
+[
+ {
+  "id": "s5_1",
+  "namn": "Heim til Åsen",
+  "del": "5",
+  "stad_tekst": "Åsen i Hovdebygda, Ørsta, 16",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Åsen i Hovdebygda, Ørsta, 16. august 1850, kveld",
+  "skjerm": "ASN-01",
+  "aar": 1850,
+  "med": [
+   "aasen"
+  ],
+  "med_andre": [
+   "folket på Åsen",
+   "ei lita jente på garden"
+  ],
+  "med_tekst": "Aasen, folket på Åsen, ei lita jente på garden",
+  "spel": "Utforsking utan kamp. Spelaren går frå båten opp til garden. Galdr-menyen er grå. Når spelaren prøver eit ord, kjem det berre kvit pust.",
+  "steg": [
+   {
+    "regi": "Snøen legg seg på høyet som står ute. Folk riv i slåttegraset med frosne fingrar. Aasen kjem opp bakken med ein skinnsekk og ingen annan bagasje."
+   },
+   {
+    "s": "Ei lita jente",
+    "t": "Er du han som skriv?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg var det."
+   },
+   {
+    "s": "Ei lita jente",
+    "t": "Mor seier du skriv ned korleis me snakkar."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ja."
+   },
+   {
+    "s": "Ei lita jente",
+    "t": "Kvifor det?"
+   },
+   {
+    "s": "Aasen",
+    "t": "So det ikkje skal bli borte."
+   },
+   {
+    "s": "Ei lita jente",
+    "t": "Men me er her jo."
+   },
+   {
+    "regi": "Ho spring inn. Aasen blir ståande. Han prøver ordet «snjo» mot snøen på skuldrene. Ingenting skjer. Ordet heng framfor munnen som ein frosen røyk og fell ned."
+   },
+   {
+    "regi": "På tunet står ein mann frå garden med ljåen over skuldra."
+   },
+   {
+    "s": "Mannen",
+    "t": "Du kjem tidleg i år."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg kjem for vinteren."
+   },
+   {
+    "s": "Mannen",
+    "t": "Vinteren kom visst fyre deg."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ja. Han gjorde det."
+   },
+   {
+    "s": "Mannen",
+    "t": "Det er seng i loftet. Me et klokka seks."
+   },
+   {
+    "regi": "Spelaren kan gå rundt. Den som snakkar med folk, får korte svar. Folk på Åsen er venlege og seier lite. Ei gammal kone ved grinda seier berre «Ja, ja» og ser på snøen."
+   }
+  ],
+  "utfall_tekst": "Ingen nye ord. Statuseffekten Skam kjem tilbake for første gong sidan første akt, svakare enn før. Galdr-menyen er låst til Dagboka blir opna i 5.5.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": "Kartvegen på garden. Spelaren kan gå fritt på tunet, ved bekken og på stien bort til Ekset. Galdren verkar ikkje enno. Neste scene startar når Aasen går inn i fjøset om kvelden.",
+  "neste": "s5_2",
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:32",
+  "skjermar": [
+   "ASN-01",
+   "ASN-05",
+   "HVD-03",
+   "VOL-01"
+  ]
+ },
+ {
+  "id": "s5_2",
+  "namn": "Det tomme fjøset",
+  "del": "5",
+  "stad_tekst": "Fjøset på Åsen",
+  "tid_tekst": "frå august til desember 1850",
+  "stad_og_tid_tekst": "Fjøset på Åsen, frå august til desember 1850",
+  "skjerm": "ASN-01a",
+  "aar": 1850,
+  "med": [],
+  "med_andre": [
+   "Aasen åleine"
+  ],
+  "med_tekst": "Aasen åleine",
+  "spel": "Tidsminispel. Kvar dag vel spelaren eitt gjeremål (bere vatn, moke snø, gi kyrne høy, skrive i ordboka). Dagane går i korte klipp. Fjøset er den einaste staden på garden der musikken stoppar heilt.",
+  "steg": [
+   {
+    "regi": "Første kvelden. Aasen går inn i fjøset. Kyrne står der, varme og rolege. Båsen innst, der tussen budde, er tom og feia."
+   },
+   {
+    "s": "Aasen",
+    "t": "Tussen."
+   },
+   {
+    "regi": "Stillheit. Ei ku snur hovudet."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg veit du ikkje er her. Du ligg i eit hefte hjå Asbjørnsen. Eg såg det sjølv."
+   },
+   {
+    "regi": "Han set seg på mjølkekrakken."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg hev lært meg tusen ord sidan eg sat her sist. Eg hev ikkje eitt til deg."
+   },
+   {
+    "regi": "Klipp gjennom hausten. Kvar gong spelaren vel «skrive i ordboka», blir ei side blassare. Orda bleiknar bort under fingrane hans. I oktober skriv han «heim» og ser blekket frysa til rim før det tørkar. I november lèt han ordboka liggje i kista. Dagbokssidene blir kortare for kvar veke som går."
+   },
+   {
+    "regi": "Dagboka",
+    "sitat": true
+   },
+   {
+    "regi": "",
+    "sitat": true
+   },
+   {
+    "regi": "3die Oktober. Regn og Sludd. 19de Oktober. Sludd. 2den November. Skreiv ikkje. 11te November.",
+    "sitat": true
+   },
+   {
+    "regi": "Den siste datoen står åleine. Resten av sida er tom. Spelaren kan ikkje skrive noko i den."
+   },
+   {
+    "regi": "Julaftan. Folket på garden syng i stova. Aasen står i døra til fjøset. Dersom spelaren går inn i stova, får han ei skål graut og ein plass ved enden av bordet. Ingen spør han om noko. Dersom spelaren blir i fjøset, sit han i den tomme båsen til lyset går ned."
+   },
+   {
+    "regi": "Tok spelaren val A i S1.3, er Marta frå omgangsskulen no kona på garden. Ho kjenner han igjen med ein gong. På julaftan bed ho han inn sjølv: «Kvi står du der ute, skulemeister?» Ho spør han om noko kvar kveld resten av vinteren, og kvart spørsmål gir Aasen ei kv-form tilbake før Dagboka blir opna. Dette er hjelpa ho gir han i fimbulvinteren."
+   },
+   {
+    "regi": "Val: A) Gå inn i stova → Jenta frå 5.1 set seg ved sida av han og seier: «Du snakkar som oss når du et.» Aasen smiler ned i skåla. B) Bli i fjøset → Ei ku legg mulen mot skuldra hans. Ingen ord.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Spelaren kjenner Ørsta-vinteren som tid som går. Valet på julaftan gir eit lite minne i Ordboka (A: «graut», med staden Åsen og «jenta på garden» som kjelde; B: inga oppføring, men båsen i fjøset blir ein kvileplass seinare i spelet).",
+  "ord": [
+   "graut"
+  ],
+  "ting": [],
+  "flagg_set": [
+   "s5_2_val"
+  ],
+  "flagg_les": [
+   "S1_3_val"
+  ],
+  "overgang_tekst": "Klipp frå julaftan til nyttårsnatta. Tida hoppar ei veke utan dagbokside, og neste scene startar på loftet.",
+  "neste": null,
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:52",
+  "skjermar": [
+   "ASN-01a",
+   "ASN-02"
+  ]
+ },
+ {
+  "id": "s5_3",
+  "namn": "Breva på hylla",
+  "del": "5",
+  "stad_tekst": "Loftet på Åsen",
+  "tid_tekst": "nyttårsnatta 1850–51",
+  "stad_og_tid_tekst": "Loftet på Åsen, nyttårsnatta 1850–51",
+  "skjerm": "ASN-01c",
+  "aar": 1850,
+  "med": [],
+  "med_andre": [
+   "Aasen åleine"
+  ],
+  "med_tekst": "Aasen åleine",
+  "spel": "Val og ei lita gåte med gjenstandar. Spelaren skal tenne opp i omnen. Det finst tre ting å brenne: ordboka, ein bunke uopna brev, og ein lêrrull med Munchs avskrift.",
+  "steg": [
+   {
+    "regi": "Loftet er kaldt. Vinden står gjennom veggene. Aasen sit på senga med ordboka på fanget. Han ser på omnen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kvart ord eg skriv, bind noko. Munch sa det sjølv. Han takka meg for det."
+   },
+   {
+    "regi": "Han reiser seg og opnar omnsdøra. Spelaren får kontroll."
+   },
+   {
+    "regi": "Val: A) «Legg ordboka på elden» → Aasen riv ut den første sida. Øvst står «heim», med Ørsta som stad og «mor» som kjelde. Han held den over flammen lenge. Handa vil ikkje. Han legg sida tilbake i boka. B) «Legg breva på elden» → går rett vidare. C) «Legg avskrifta på elden» → Aasen tek i lêrrullen og slepper den med ein gong. Den er iskald. Han set seg igjen. Spelaren må velje på nytt.",
+    "val": true
+   },
+   {
+    "regi": "Alle vegar endar med at han tek brevbunken frå hylla. Han har ikkje opna eitt einaste brev sidan august. Valde spelaren B i S1.21, ligg det eit brev med amerikansk frimerke nedst i bunken, frå Guro i Wisconsin. Han les det seinare, i 5.5. Han kastar det øvste brevet inn i omnen. Det neste har ei handskrift han kjenner, brei og skeiv. Når han løftar det, fell noko ut. Ein lang lokk av hår, lys som tørt høy, og det luktar mose og seter av den."
+   },
+   {
+    "regi": "Musikken kjem tilbake. Eit enkelt tema på hardingfele, det som spelte då han fann huldra i snøen ved Solnør."
+   },
+   {
+    "s": "Aasen",
+    "t": "Du."
+   },
+   {
+    "regi": "Han opnar brevet. Vinjes stemme les."
+   },
+   {
+    "s": "Vinje",
+    "t": "Ivar. Ho er i byen. Eg veit kje kvar, men ho er her, for eg fann dette i ein bok hjå Botten-Hansen og det er kje hans hår. Me skal laga eit blad. Han kallar det etter kokken i Valhall, han er so lærd at det gjer vondt. Kom når du kan. Og opna breva dine. Eg veit du ikkje gjer det. Aasmund."
+   },
+   {
+    "regi": "Aasen ler. Det er første gong han ler i akten, og det høyrest rart ut i det kalde rommet."
+   },
+   {
+    "s": "Aasen",
+    "t": "Pertentleg, seier han. Og so skriv han utan dato."
+   }
+  ],
+  "utfall_tekst": "Gjenstand: huldras hårlokk (nøkkelgjenstand, lyser svakt når Aasen er nær henne). Tråd blir opna: Christiania. Skam går ned eitt trinn. Sida i ordboka med «heim» blir kraftig igjen.",
+  "ord": [
+   "heim"
+  ],
+  "ting": [],
+  "flagg_set": [
+   "s5_3_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:86"
+ },
+ {
+  "id": "s5_4",
+  "namn": "Munchs gåve",
+  "del": "5",
+  "stad_tekst": "Loftet på Åsen",
+  "tid_tekst": "same natt",
+  "stad_og_tid_tekst": "Loftet på Åsen, same natt",
+  "skjerm": "ASN-01c",
+  "aar": null,
+  "med": [],
+  "med_andre": [
+   "Aasen åleine"
+  ],
+  "med_tekst": "Aasen åleine",
+  "spel": "Minibosskamp. Aasen mot «Ravnen i margen», blekket frå Munchs avskrift. Berre småorda verkar i første fase. I andre fase kjem diftongane tilbake ein etter ein.",
+  "steg": [
+   {
+    "regi": "Aasen tek lêrrullen og rullar den ut på golvet. Avskrifta av bladet frå lovhandskriftet er vakker, med raude forbokstavar. Nedst står Munchs helsing frå Hallingdal: «Til Hr. Aasen, med Ønsket om at De maa finde, hvad De søger.»"
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg fann det. Du fann meg."
+   },
+   {
+    "regi": "Han les første linja høgt, den gamle lovformelen."
+   },
+   {
+    "s": "Aasen",
+    "t": "«Með lǫgum skal land byggja.» Med lov skal landet byggjast."
+   },
+   {
+    "regi": "Bokstavane rører på seg. Blekket renn saman i margen og reiser seg som ein ravn over ei open bok. Seglet. Det har sete der heile tida, teikna så fint at han aldri såg det."
+   },
+   {
+    "regi": "RAVNEN (Munchs stemme, varm og tørr): Kjære Aasen. De har gået saa langt. Jeg har fulgt hver Mil.",
+    "utan_parentes": true
+   },
+   {
+    "s": "Aasen",
+    "t": "Du hev lese dagboka mi."
+   },
+   {
+    "s": "Ravnen",
+    "t": "Jeg har læst Dem. Det er ikke det samme. De skriver bedre end De tror."
+   },
+   {
+    "regi": "Kamp. Første fase: ravnen hakkar på ordboka og stel ord. Kvar gong den treffer, forsvinn eitt ord frå Ordboka mellombels. Aasen har berre «eg», «ikkje» og «berre». Anvisning til spelaren i Dagboka: «Kvar ord du segjer høgt, kjem att.»"
+   },
+   {
+    "kamp": "ravnen_i_margen"
+   },
+   {
+    "regi": "Andre fase: når Aasen seier «heim» høgt, lyser hårlokken, og diftongane kjem tilbake. «Stein», «straum» og «draum» byggjer vern. Omnen står som vernemål ytst på partysida, og ravnen slår mot han for å sløkkje han."
+   },
+   {
+    "s": "Ravnen",
+    "t": "Brænder De mig, brænder De Kortet. De ved ikke længer, hvor De skal gaa."
+   },
+   {
+    "s": "Aasen",
+    "t": "Då fær eg spyrja."
+   },
+   {
+    "regi": "Spørjeorda blir låste opp midt i kampen. «Kvar» avslører svakheita: ravnen er laga av blekk på skinn og toler ikkje varme. Aasen vel omnen som mål for ordet «ljos» og kastar avskrifta inn i elden."
+   },
+   {
+    "regi": "Rullen tek fyr. Ravnen skrik med Munchs stemme og så med inga stemme i det heile. Loftet blir varmt. Aasen står og ser på elden til det lysnar."
+   },
+   {
+    "regi": "Morgon. Snøen ligg framleis, men det dryp frå takskjegget for første gong sidan august."
+   }
+  ],
+  "utfall_tekst": "Kampen kan ikkje tapast. Blir Aasen slått, reiser han seg med eitt livspunkt og seier «Eg er heime». Ord lært: «kvar» kjem tilbake (spørjeord, avsløring). Evne: «Brenn» (åtak med eld mot blekkvesen, kostnad høg). Gjenstand tapt: Munchs avskrift. Munch kan ikkje lenger følgje Aasen gjennom den. Tråd blir opna: Aasen veit at Munch har lese reisene hans.",
+  "ord": [
+   "kvar"
+  ],
+  "ting": [
+   "munchs_avskrift"
+  ],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:114"
+ },
+ {
+  "id": "s5_5",
+  "namn": "Dagboka opnar seg",
+  "del": "5",
+  "stad_tekst": "Loftet på Åsen",
+  "tid_tekst": "nyttårsdagen 1851",
+  "stad_og_tid_tekst": "Loftet på Åsen, nyttårsdagen 1851",
+  "skjerm": "ASN-01c",
+  "aar": 1851,
+  "med": [],
+  "med_andre": [
+   "Aasen åleine"
+  ],
+  "med_tekst": "Aasen åleine",
+  "spel": "Innføring i Dagboka som oppdragslogg. Spelaren blar gjennom sidene og vel det første målet.",
+  "steg": [
+   {
+    "regi": "Aasen sit ved vindauget med dagboka open. Det er første gong han skriv heile sida på landsmål. Spelaren ser handskrifta bli til skjermen."
+   },
+   {
+    "regi": "Dagboka",
+    "sitat": true
+   },
+   {
+    "regi": "",
+    "sitat": true
+   },
+   {
+    "regi": "Ørsta, 1ste Januar 1851. Brende i Natt det Bladet som Munch gav meg. Det var ein Ravn i det. Hev lagt Ordboka attende i Kista. Ho er ikkje ferdig. Eg er ikkje heller. Dei andre er ute ein Stad. Eg fær finna dei.",
+    "sitat": true
+   },
+   {
+    "regi": "Valde spelaren B i S1.21, opnar Aasen brevet frå Wisconsin no. Det er skrive på eit blanda mål, med norske ord og engelske stavemåtar. Nedst står det: «Er De Skulemeisteren med Lappen? Eg hev han enno i Jakka. Guro (Gugga).» Aasen ler for andre gong i akten. Ordboka får forma «gugga» under ordet Guro, med staden Wisconsin. Valde spelaren A i S1.21, kjem ikkje brevet.",
+    "val": true
+   },
+   {
+    "regi": "Sidene i Dagboka løftar seg. Kvar side er ein stad. Spelaren ser Christiania-sida med ei teikning av Vinjes skeive handskrift. Collett-sida har ein pressa blom frå Wergelands grav. Nord-sida er blank med ein lapp: «Kjem um Sumaren». Sidene for Landstad, Aslaug og Ole Bull står grå, og dei har namn. Ei side er grå og har ikkje namn, berre eit avtrykk av noko stort og kaldt."
+   },
+   {
+    "s": "Aasen",
+    "t": "Vinje fyrst. Nei. Kven som helst fyrst. Berre eg reiser."
+   },
+   {
+    "regi": "Når Aasen kjem ned frå loftet, står ein gut i døra med bod frå Årflot. Berte vil at han skal kome på møtet den 9. januar. Scene 5.5b kjem før spelaren vel side, og valet under blir teke etter at Berte er med."
+   },
+   {
+    "regi": "Val: A) «Christiania» → Scene 5.6. B) «Collett» → Scene 5.12, med eit kort tillegg der Collett nemner at Vinje har spurt etter han. C) «Bli ein dag til» → Aasen går til fjøset og seier farvel til den tomme båsen. Han legg hårlokken eit augeblink på høyet. Så går han. Deretter vel spelaren A eller B.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Dagboka er oppdragsloggen resten av akten. Galdr-menyen er open igjen. Lydtreet har fått ei ny grein, «Vinterord», som veks når spelaren finn følgjesvenner. Båsen i fjøset er kvileplass dersom spelaren valde C.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "s5_5_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": "Kartvegen gjennom snøen til Årflot. Ørsta er ope fram til møtet. Neste scene startar når partyet går inn i røykstova på Årflot om kvelden den 9. januar.",
+  "neste": "s5_5b",
+  "ord_ukjende": [
+   "Vinterord"
+  ],
+  "opning_tekst": "Fimbulvinteren opnar seg gradvis, som World of Ruin i Final Fantasy VI. Først er Ørsta og Årflot opne, og Dagboka viser sidene for Christiania og Collett. Christiania blir ope når partyet kjem dit. Nord-sida står blank til etter 7. juli 1851. Sidene for Landstad, Aslaug, Ole Bull og jotunen står grå. Stader utan framdrift i Ørsta: Ekset, der folket på garden hugsar Aasen som guten som lånte bøker og talar som før, og kyrkjebakken i Ørsta, der folk står att etter preika og talar sunnmørsmål om snøen som kom i august. Ei kone seier at no kan kven som helst halde preik i ei stove, «det er lov no, sidan førtito». I Christiania: Vaterland, der arbeidsfolk frå bygdene talar kvar sitt mål, og Grønland, der bønder kjem inn til byen med varer på sleden.",
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:144",
+  "skjermar": [
+   "ASN-01c",
+   "ORV-02",
+   "EKS-01",
+   "CHR-15",
+   "CHR-16"
+  ]
+ },
+ {
+  "id": "s5_5b",
+  "namn": "Møtet på Årflot",
+  "del": "5",
+  "stad_tekst": "Røykstova på Årflot i Ørsta, 9",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Røykstova på Årflot i Ørsta, 9. januar 1851, kveld",
+  "skjerm": "ARF-01a",
+  "aar": 1851,
+  "med": [
+   "aasen"
+  ],
+  "med_andre": [
+   "Berte Kanutte Aarflot (56)",
+   "mannen hennar Amund",
+   "bygdefolk",
+   "ein framand i svart frakk"
+  ],
+  "med_tekst": "Aasen, Berte Kanutte Aarflot (56), mannen hennar Amund, bygdefolk, ein framand i svart frakk",
+  "spel": "Lytting under møtet, så minibosskamp (Fristaren på Årflot). Berte blir med.",
+  "steg": [
+   {
+    "regi": "Snøen ligg til gluggane. Røykstova er full. Folk har gått langt i kulda, og mange har ikkje ete i dag. Elden brenn lågt. Berte sit framme på same krakken som i 1829. Håret under skautet er grått no. Ho syng ein av sine eigne salmar, og folk syng med."
+   },
+   {
+    "regi": "Anvisning: Dette er den første staden i fimbulvinteren der orda ikkje frys. Når spelaren lyttar, stig songen som varm luft mot taket. Aasen merkar det."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det frys ikkje.",
+    "regi": "kviskrar"
+   },
+   {
+    "s": "Amund",
+    "t": "Kva frys ikkje?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Det de syng."
+   },
+   {
+    "s": "Amund",
+    "t": "Det hev det aldri gjort."
+   },
+   {
+    "regi": "Berte ser Aasen bakarst. Ho smiler, men ho stoggar ikkje songen."
+   },
+   {
+    "regi": "Etter songen."
+   },
+   {
+    "s": "Berte",
+    "t": "Me har lite mat i vinter. Det veit de. (Pause.) Me har ord. «Mennesket lever ikke alene af Brød.»"
+   },
+   {
+    "s": "Ei kone",
+    "t": "Ord mettar ikkje ungane, Berte."
+   },
+   {
+    "s": "Berte",
+    "t": "Nei. Difor skal me dele det me har òg."
+   },
+   {
+    "regi": "Døra går opp. Ein mann i svart frakk kjem inn med snø på skuldrene. Ingen høyrde han kome. Andletet ligg i skugge, sjølv når han står ved elden."
+   },
+   {
+    "s": "Den framande",
+    "t": "God Aften. Jeg hørte Sang og gik efter den."
+   },
+   {
+    "s": "Berte",
+    "t": "Sit ned. Det er plass."
+   },
+   {
+    "s": "Den framande",
+    "t": "Tak. Jeg staar helst. (Ser på Aasen.) Hr. Aasen. De har mistet Deres Ord, hører jeg."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kven er du?"
+   },
+   {
+    "s": "Den framande",
+    "t": "En Læser. (Ser på folket.) Her er mange, som sulter. Og her er en Mand, som kunde sige et Ord og gjøre Sten til Brød. Han maatte bare binde lidt."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg bind ikkje meir."
+   },
+   {
+    "s": "Den framande",
+    "t": "«Dersom en Broder eller Søster ere nøgne, og fattes den daglige Næring ... hvad Gavn er det?» Det staar skrevet, Madame. De kan Deres Bibel.",
+    "regi": "mildt, til Berte"
+   },
+   {
+    "s": "Berte",
+    "t": "Eg kan henne."
+   },
+   {
+    "s": "Den framande",
+    "t": "Saa lad ham gjøre det."
+   },
+   {
+    "regi": "Folk ser på Aasen. Ein gut held fram ein stein frå grua."
+   },
+   {
+    "regi": "Val: A) «Eg prøver» → Aasen seier «brød» over steinen. Galdren tinar med ein gong, og steinen blir varm og mjuk i handa til guten. Samstundes høyrer spelaren eit lite skrik inne i veggen. Gardvorden på Årflot er bunden inn i steinen. Berte reiser seg. B) Aasen ser på Berte → Kampen byrjar med ein gong.",
+    "val": true
+   },
+   {
+    "s": "Berte",
+    "t": "Det står skrive meir. «Der er skrevet: Mennesket lever ikke alene af Brød, men ved hvert Ord, som udgaaer igjennem Guds Mund.»",
+    "regi": "stiller seg mellom Aasen og den framande"
+   },
+   {
+    "s": "Den framande",
+    "t": "Den kan De ogsaa. Lad os se, hvor længe.",
+    "regi": "smiler"
+   },
+   {
+    "regi": "Berte tek takka frå bakstebordet. Kamp: Fristaren på Årflot. Berte er spelbar for første gong. Svarvalet blir forklart i Dagboka første gong eit Skriftord blir lese."
+   },
+   {
+    "kamp": "fristaren_paa_aarflot"
+   },
+   {
+    "regi": "Etter kampen. Den framande står ved døra. Snøen har ikkje smelta på frakken hans."
+   },
+   {
+    "s": "Den framande",
+    "t": "Godt svaret, Madame. Vi ses."
+   },
+   {
+    "regi": "Han går. Det er ingen fotspor i snøen utanfor."
+   },
+   {
+    "s": "Berte",
+    "t": "Han går frå ein for ei tid. Det står òg.",
+    "regi": "set seg tungt"
+   },
+   {
+    "s": "Aasen",
+    "t": "Kven var det?"
+   },
+   {
+    "s": "Berte",
+    "t": "Kven trur du?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Han lukta blekk."
+   },
+   {
+    "s": "Berte",
+    "t": "Han lukta svovel."
+   },
+   {
+    "regi": "Amund kjem ned frå loftet med ein stabel flatbrød i fanget og deler ut. Det rekk akkurat rundt."
+   },
+   {
+    "regi": "Valde spelaren A, går Berte ut i snøen med steinen i begge hendene og legg han på trappesteinen. Gardvorden kjem ikkje ut. Aasen står i døra og veit kva han har gjort. Steinen blir verande i Lomma som tilbehøyret «Steinen frå Årflot». Han gjev 10 prosent meir lækjing og Skam trinn 1 kvar gong han blir brukt. Gardvorden kjem fri når bindingane losnar i 7.12.",
+    "val": true
+   },
+   {
+    "regi": "Seinare. Folket har gått. Aasen og Berte sit ved grua."
+   },
+   {
+    "s": "Berte",
+    "t": "Du skal reise."
+   },
+   {
+    "s": "Aasen",
+    "t": "Til Christiania. Dei andre er der ein stad."
+   },
+   {
+    "s": "Berte",
+    "t": "Eg kjem med."
+   },
+   {
+    "s": "Aasen",
+    "t": "Du er over femti."
+   },
+   {
+    "s": "Berte",
+    "t": "Femtiseks. (Pause.) Det er den onde dagen no, Ivar. Då skal ein stå."
+   },
+   {
+    "s": "Amund",
+    "t": "Ho hev bestemt seg. Eg såg det då ho tok takka.",
+    "regi": "frå døra"
+   },
+   {
+    "s": "Berte",
+    "t": "Johannes kan ta garden ein vinter. Han er vaksen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva skal du gjere i byen?"
+   },
+   {
+    "s": "Berte",
+    "t": "Det same som her. (Ser på han.) Og be for deg. Du ser ut som ein som treng det."
+   },
+   {
+    "regi": "Ho tek fram eit vove band frå kista og knyter det om livet. Det var mor hennar sitt."
+   },
+   {
+    "s": "Berte",
+    "t": "«Saa staaer da omgjordede om Eders Lænder med Sandhed.» (Ho dreg hardt i knuten.) So. No kan me gå."
+   },
+   {
+    "regi": "Val: A) «Kvifor frys ikkje orda dine?» → BERTE: «Eg veit ikkje. Kanskje dei aldri var dine å fryse.» Aasen tenkjer lenge på det. Dagboka får ei linje. B) «Takk.» → BERTE: «Takk Amund. Det var han som bar flatbrødet.»",
+    "val": true
+   },
+   {
+    "regi": "Dagboka",
+    "sitat": true
+   },
+   {
+    "regi": "",
+    "sitat": true
+   },
+   {
+    "regi": "Ørsta, 9de Januar 1851. Berte paa Aarflot fylgjer meg. Ho fyllte seks og femti Aar for ei Vika sidan og ber Takka under Armen. Det var ein Mann der i Kveld som kunde Skrifti betre enn Presten. Eg likar honom ikkje.",
+    "sitat": true
+   }
+  ],
+  "utfall_tekst": "Berte Kanutte Aarflot blir med (nivå 34). Rustninga opnar seg som eigen meny med Beltet, Skjoldet (takka) og Sverdet (bibelen). Minnevers: Ef 6:10, Matt 4:4 og 2 Mos 4:11. Samspelet Gje han ord opnar seg. Feltevna Samle til møte er open, og røykstova på Årflot er kvileplass resten av spelet. Dagboka får sida «Årflot» med ei teikning av ei takke.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "s5_5b_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": "Reiseetappe frå Ørsta til Christiania. Dagboksida frå 9. januar kjem før avreisa, og sida frå Christiania 14. januar kjem når partyet er framme. Spelaren vel isvegen over fjordane til Romsdalen og postvegen ned Gudbrandsdalen med skysslede, eller isvegen til Ålesund og dampskipet rundt kysten så langt isen slepper. Neste scene startar når partyet går inn til Botten-Hansen (5.6), eller hos Collett (5.12) om spelaren valde henne i 5.5. Ørsta og Årflot står opne for retur.",
+  "neste": "s5_6",
+  "ord_ukjende": [
+   "Årflot"
+  ],
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:170",
+  "skjermar": [
+   "ARF-01a",
+   "GBD-08",
+   "RMS-01"
+  ]
+ },
+ {
+  "id": "s5_6",
+  "namn": "Kokken i Valhall",
+  "del": "5",
+  "stad_tekst": "Botten-Hansens leilegheit i Christiania",
+  "tid_tekst": "januar 1851, kveld",
+  "stad_og_tid_tekst": "Botten-Hansens leilegheit i Christiania, januar 1851, kveld",
+  "skjerm": "CHR-12b",
+  "aar": 1851,
+  "med": [
+   "aasen",
+   "vinje"
+  ],
+  "med_andre": [
+   "Botten-Hansen",
+   "Ibsen",
+   "Bjørnson"
+  ],
+  "med_tekst": "Aasen, Vinje, Botten-Hansen, Ibsen, Bjørnson",
+  "spel": "Samtale og utforsking. Leilegheita er full av bøker frå golv til tak. Spelaren kan snakke med alle, og kvar samtale gir eit nytt inntrykk av patriotane. Ingen kamp.",
+  "steg": [
+   {
+    "regi": "Det luktar tobakk og punsj. Ibsen sit i vindaugskarmen og skriv. Bjørnson står midt i stova og snakkar for høgt. Botten-Hansen ligg nesten i ein lenestol med ei bok over andletet. Vinje opnar døra."
+   },
+   {
+    "s": "Vinje",
+    "t": "Ivar! Du las brevet."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg las det. Det var ikkje datert."
+   },
+   {
+    "s": "Vinje",
+    "t": "Eg visste du ville seia det. Kom inn. Her er varmt, og her er folk som snakkar meir enn deg."
+   },
+   {
+    "regi": "Botten-Hansen tek boka bort frå andletet."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Landsmaalsmanden. Velkommen til Andhrimner."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kven er det?"
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Kokken i Valhal. Han koger Galten Særimne hver Dag, og hver Aften er Galten hel igjen. Vi har tænkt at det er et godt Navn paa et Ugeblad. Man skriver det samme om og om igjen, og det bliver aldrig opspist."
+   },
+   {
+    "s": "Ibsen",
+    "t": "Det blir aldri lest heller."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Ibsen er vor Pessimist. Han har ret i det meste."
+   },
+   {
+    "regi": "Bjørnson grip Aasens hand og ristar den."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Aasen! Grammatikken! Ordbogen! De har gjort mer for Norge end hele Stortinget!"
+   },
+   {
+    "s": "Aasen",
+    "t": "Stortinget hev ikkje gjort so mykje."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Nettop!"
+   },
+   {
+    "regi": "Vinje ler. Ibsen ser opp eit sekund, så skriv han vidare."
+   },
+   {
+    "regi": "Val: A) Snakk med Ibsen → IBSEN: «De ser trett ut.» AASEN: «Eg hev vore heime.» IBSEN: «Det er det som gjør folk trette.» Han viser Aasen eit ark: «Norma, eller en Politikers Kjærlighed», ein parodi på Stortinget skriven som ein opera. B) Snakk med Bjørnson → Bjørnson fortel om Nesset i Romsdal, der han voks opp på prestegarden, og om snøen som ikkje har gått frå i fjor. «Folk der oppe har sluttet at synge,» seier han. Han seier det lågt, og det er det einaste han seier lågt heile kvelden. C) Snakk med Botten-Hansen → Han viser fram ei hylle med gamle handskrifter. Aasen kjenner igjen skrifttypen frå Munchs avskrift.",
+    "val": true
+   },
+   {
+    "regi": "Dersom spelaren vel C, blir Aasen stille. Botten-Hansen legg merke til det og legg boka tilbake i hylla med ryggen innover."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Laante Ting. Man faar saa meget laant i denne By."
+   }
+  ],
+  "utfall_tekst": "Patriotane blir kjende som enkeltpersonar. Ord lært: «kok» (harde konsonantar, åtak) frå Vinje, som ropar det når punsjen kokar over. Tråd blir opna: handskriftene hos Botten-Hansen. Ibsens «Norma» kan lesast i Dagboka som ein liten tekst. Den stod i Andhrimner i 1851.",
+  "ord": [
+   "kok"
+  ],
+  "ting": [],
+  "flagg_set": [
+   "s5_6_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "ord_ukjende": [
+   "Norma"
+  ],
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:234"
+ },
+ {
+  "id": "s5_7",
+  "namn": "Særimne",
+  "del": "5",
+  "stad_tekst": "Same leilegheit, seint på natta",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Same leilegheit, seint på natta",
+  "skjerm": "CHR-12b",
+  "aar": null,
+  "med": [
+   "aasen",
+   "vinje"
+  ],
+  "med_andre": [
+   "Botten-Hansen",
+   "Bjørnson",
+   "Ibsen"
+  ],
+  "med_tekst": "Aasen, Vinje, Botten-Hansen, Bjørnson, Ibsen",
+  "spel": "Samtale med val. Patriotane legg korta på bordet.",
+  "steg": [
+   {
+    "regi": "Punsjen er drukken. Bjørnson har lagt seg på teppet og ser i taket. Botten-Hansen tenner eit lys og set det framfor Aasen."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Vi skal være ærlige med hinanden, Aasen. Det er en Luksus i dette Land."
+   },
+   {
+    "s": "Aasen",
+    "t": "So ver det."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Vi hjelper Munch."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg veit det. BJØRNSON (frå golvet): Han vil gi os Sagatiden tilbake! Kongerne og Skibene! Et Norge som ingen Svenske kan binde!"
+   },
+   {
+    "s": "Aasen",
+    "t": "Han bind heile landet for å gjera det."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Ingen binder sin egen Moder."
+   },
+   {
+    "s": "Aasen",
+    "t": "Han bind ho so ho ikkje kan snakka."
+   },
+   {
+    "regi": "Stillheit. Ibsen ser på Aasen og så på Botten-Hansen."
+   },
+   {
+    "s": "Ibsen",
+    "t": "Han har et poeng."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Han har alltid et Poeng. Det er det som er saa trættende ved ham."
+   },
+   {
+    "regi": "Botten-Hansen skuvar ei bok over bordet. Det er Aasens eigen grammatikk frå 1848. Den har Munchs segl stempla på innsida av permen."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Munch bad mig give Dem dette. Han vil have Dem tilbage. Ordbogen er halvt hans alligevel."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kven sa det?"
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Han."
+   },
+   {
+    "regi": "Val: A) «Seg til Munch at eg brende gaven hans» → Botten-Hansen løftar augebryna. «De brændte et Haandskrift?» Han ser nesten såra ut. B) «Kvar er ho?» → Rommet blir heilt stille. Vinje ser ned i koppen sin. Botten-Hansen svarar ikkje. C) Sei ingenting → Aasen reiser seg og tek på seg frakken. Vinje følgjer han ut.",
+    "val": true
+   },
+   {
+    "regi": "Alle val endar med at Aasen og Vinje står i trappa. Vinje held seg i rekkverket."
+   },
+   {
+    "s": "Vinje",
+    "t": "Eg er ein av dei, Ivar. Eg skriv i bladet deira. Dei er dei fyrste som har gjeve meg lov å vera klok."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg veit."
+   },
+   {
+    "s": "Vinje",
+    "t": "Du veit so mykje. Veit du kvar ho er?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Nei."
+   },
+   {
+    "s": "Vinje",
+    "t": "Ikkje eg heller. Men han skriv på noko. Han let ingen lesa det."
+   }
+  ],
+  "utfall_tekst": "Tråd blir opna: Botten-Hansens hemmelege manuskript. Dersom spelaren valde B, får Aasen ein kort visjon om natta: huldras stemme frå ei side. Vinje er med i partyet på prøve. Han går tilbake til patriotane kvar kveld, og spelaren kan ikkje bruke han i kamp etter at det har mørkna.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "s5_7_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": "Kartvegen i Christiania. Byen er open, og spelaren kan oppsøkje Collett (5.12) no eller seinare. Neste scene startar når Aasen legg seg på rommet sitt på gjestgjeveriet. Då går Dagboka fram til ei natt i februar.",
+  "neste": "s5_8",
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:260"
+ },
+ {
+  "id": "s5_8",
+  "namn": "Manuskriptet",
+  "del": "5",
+  "stad_tekst": "Aasens rom på eit gjestgjeveri i Christiania",
+  "tid_tekst": "februar 1851, natt",
+  "stad_og_tid_tekst": "Aasens rom på eit gjestgjeveri i Christiania, februar 1851, natt",
+  "skjerm": "CHR-12b",
+  "aar": 1851,
+  "med": [
+   "aasen",
+   "vinje"
+  ],
+  "med_andre": [],
+  "med_tekst": "Aasen, Vinje (Collett dersom ho er funnen)",
+  "spel": "Samtale og planlegging. Spelaren vel inngang til leilegheita og kven som skal gjere kva.",
+  "steg": [
+   {
+    "regi": "Det bankar hardt. Vinje kjem inn utan lue. Han har blekk på fingrane."
+   },
+   {
+    "s": "Vinje",
+    "t": "Han kallar det Huldrebrylluppet."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kven?"
+   },
+   {
+    "s": "Vinje",
+    "t": "Botten-Hansen. Eit dikt. Ei huldre som vert gift med ein bonde og misser halen i kyrkja og vert eit godt menneske. Han les det høgt for oss, og kvar gong han les, ser eg ho. Ho står i hjørnet av stova og vert tynnare."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kor lenge hev han lese?"
+   },
+   {
+    "s": "Vinje",
+    "t": "Sidan jul. Han er på siste sida no. Trykkjaren kjem og hentar det klokka seks i morgon tidleg."
+   },
+   {
+    "regi": "Aasen tek fram hårlokken. Den lyser svakt og blafrar mot vindauget, mot byen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kvifor fortel du meg dette?"
+   },
+   {
+    "s": "Vinje",
+    "t": "Eg veit kje. Eg skal ikkje gjera det."
+   },
+   {
+    "regi": "Dersom Collett er med:"
+   },
+   {
+    "s": "Collett",
+    "t": "Han vil gifte hende bort i en Bog. Saa er hun ufarlig. Det er det de altid gør med os."
+   },
+   {
+    "s": "Vinje",
+    "t": "Fru Collett, eg meinte ikkje..."
+   },
+   {
+    "s": "Collett",
+    "t": "De meente ingenting. Det er derfor De er her."
+   },
+   {
+    "regi": "Planlegging. Spelaren vel inngang."
+   },
+   {
+    "regi": "Val: A) «Gjennom kjøkenet» → Aasen går inn bak, Vinje held dei andre opptekne i stova med opplesing. Snikeoppdrag med fleire kvileplassar. B) «Gjennom stova» → Aasen går inn som gjest og snakkar seg forbi, medan Vinje leitar. Samtalegåte med Bjørnson og Ibsen, færre kampar. C, berre med Collett) «Ho går fyrst» → Collett går inn som professorfrue på seint besøk og gjer vaktene stumme med eitt blikk. Kortaste veg, men Vinje må gjere valet sitt åleine utan Aasen i rommet i første del av 5.10.",
+    "val": true
+   }
+  ],
+  "utfall_tekst": "Tråd: Huldrebrylluppet. Klokka seks blir ein synleg tidtakar i hjørnet av skjermen resten av oppdraget.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "s5_8_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": "Kartvegen gjennom nattbyen til Botten-Hansens leilegheit. Tidtakaren går heile vegen. Neste scene startar når partyet går inn den vegen spelaren valde.",
+  "neste": "s5_9",
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:286",
+  "skjermar": [
+   "CHR-12b",
+   "CHR-15a"
+  ]
+ },
+ {
+  "id": "s5_9",
+  "namn": "Hyllene",
+  "del": "5",
+  "stad_tekst": "Botten-Hansens leilegheit",
+  "tid_tekst": "same natt, frå klokka tre",
+  "stad_og_tid_tekst": "Botten-Hansens leilegheit, same natt, frå klokka tre",
+  "skjerm": "CHR-12b",
+  "aar": null,
+  "med": [
+   "aasen"
+  ],
+  "med_andre": [
+   "Vinje i stova i mellomsekvensar"
+  ],
+  "med_tekst": "Aasen (og Collett dersom valt), Vinje i stova i mellomsekvensar",
+  "spel": "Dungeon inne i leilegheita. Bokhyllene flyttar seg når ingen ser på dei. Snikeoppdrag der golvplankar knirkar og bøker kviskrar namn. Klipp mellom Aasen i hyllene og Vinje i stova, som les høgt for å dekkje over lydane.",
+  "steg": [
+   {
+    "regi": "Kjøkenet. Så ein korridor av bøker. Hyllene går høgare enn taket skulle tillate. Det er Holberg og Snorre og tyske ordbøker og hundre årgangar Morgenbladet. Rundt kvart hjørne flyttar hyllene seg og lagar nye gangar."
+   },
+   {
+    "regi": "Anvisning: når Aasen står stille, høyrer han bøkene. Kvar bok har bunde noko. Nokre av dei kviskrar namnet på det dei held. Spørjeordet «kven» gjer kviskringa tydeleg og viser veg. Spørjeordet «kvar» viser kva hyller som snart flyttar seg."
+   },
+   {
+    "regi": "Klipp til stova. Vinje står på ein stol."
+   },
+   {
+    "s": "Vinje",
+    "t": "No skal de høyra eit dikt om ein gut frå Vinje som kom til byen og vart so klok at han gløymde kva han heitte!"
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Er det langt?"
+   },
+   {
+    "s": "Vinje",
+    "t": "Det er so langt som eg vil!"
+   },
+   {
+    "s": "Ibsen",
+    "t": "Da er det langt."
+   },
+   {
+    "regi": "Klipp tilbake. Aasen finn huldra. Ho står i eit smalt rom mellom to hyller, halvt gjennomsiktig. Bokstavar kryp over armane hennar som maur. Der dei har gått, blir huda til papir."
+   },
+   {
+    "s": "Aasen",
+    "t": "Du."
+   },
+   {
+    "s": "Huldra",
+    "t": "Ivar. Eg er i boki."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg ser det."
+   },
+   {
+    "s": "Huldra",
+    "t": "Han skriv meg gift. Eg vil ikkje vera gift. Eg vil ikkje vera nokon han skriv."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kvar er sida?"
+   },
+   {
+    "s": "Huldra",
+    "t": "På bordet hans. Boki ser deg no."
+   },
+   {
+    "regi": "Hyllene lukkar seg bak han. Bokvesen stig ut av ryggane: små gjester i bryllaupsklede, laga av tett trykt tekst. Dei syng ei gammal brudevise, og der dei syng, blir golvet til papir."
+   },
+   {
+    "regi": "Kamp: «Brudlaupsfølgjet». Seks papirgjester i to rekkjer. Dei lækjer kvarandre med vers. Harde konsonantar riv dei i stykke, men kvar gong ein gjest fell, blir han skriven på nytt frå manuskriptet i neste rom. Aasen har teljinga Døra 4. Situasjonskommandoen Mot døra (berre Aasen) tek teljinga eitt steg ned og kostar turen. Ved null er kampen over. Dersom Collett er med, kan ho gjere gjestene stumme ein om gongen, og då sluttar dei å lækje."
+   },
+   {
+    "regi": "Klipp til stova. Vinje les framleis. Botten-Hansen reiser seg."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Aasmund. Dit Digt har ingen Rim."
+   },
+   {
+    "s": "Vinje",
+    "t": "Det er moderne."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Og ingen Ende."
+   },
+   {
+    "s": "Vinje",
+    "t": "Det er òg moderne."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Og hvorfor hører jeg nogen i mine Hylder?"
+   },
+   {
+    "regi": "Tidtakaren står på halv fem."
+   }
+  ],
+  "utfall_tekst": "Ord lært: «brudlaup» (diftong, vern) frå ein av papirgjestene, med kjelda «ein gjest som ikkje fanst». Kvileplass: eit hjørne med ein gammal runekalender som Botten-Hansen har kjøpt og aldri lese. Huldra følgjer Aasen, men kan ikkje kjempe.",
+  "ord": [
+   "brudlaup"
+  ],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:310",
+  "skjermar": [
+   "CHR-12b",
+   "BHH-07"
+  ]
+ },
+ {
+  "id": "s5_10",
+  "namn": "Siste sida",
+  "del": "5",
+  "stad_tekst": "Botten-Hansens arbeidsrom",
+  "tid_tekst": "same natt, kvart på seks",
+  "stad_og_tid_tekst": "Botten-Hansens arbeidsrom, same natt, kvart på seks",
+  "skjerm": "BHH-10",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra",
+   "vinje"
+  ],
+  "med_andre": [
+   "Botten-Hansen",
+   "Bjørnson",
+   "Ibsen (Collett dersom valt)"
+  ],
+  "med_tekst": "Aasen, huldra, Vinje, Botten-Hansen, Bjørnson, Ibsen (Collett dersom valt)",
+  "spel": "Bosskamp i tre fasar mot Botten-Hansen og manuskriptet. Tredje fase kan ikkje vinnast av Aasen. Den blir avgjord av Vinjes val.",
+  "steg": [
+   {
+    "regi": "Eit lite rom med eitt vindauge. På skrivebordet ligg eit tjukt manuskript under ei lampe. Tittelen: «Huldrebrylluppet». Botten-Hansen står bak bordet med pennen i handa. Bjørnson står i døra. Ibsen står bak han og ser. Vinje kjem sist."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Godmorgen, Aasen. De har en fin Følelse for Tid."
+   },
+   {
+    "s": "Aasen",
+    "t": "Gje meg sida."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Hun er ikke færdig."
+   },
+   {
+    "s": "Aasen",
+    "t": "Då er det enno tid."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Kjære Ven. Munch har lovet os, at naar dette Digt er trykt, vil hun være bundet til Norge for alltid. En Huldre i hver Bondestue. I hver Skolebog. Er det ikke hvad De ønsker? At Folket skal kjende sit eget?"
+   },
+   {
+    "regi": "Huldra står bak Aasen. Ho er nesten berre papir."
+   },
+   {
+    "s": "Huldra",
+    "t": "Han talar som ein prest. Pennen hans er kald."
+   },
+   {
+    "regi": "Kamp, første fase: «Botten-Hansen, bibliofilen». Han slår med sitat. Kvart sitat han seier, låser eitt av Aasens ord eit par rundar. Han har ein eigen motstand mot spørjeord: «De kan spørge mig om alt. Jeg har læst det.» Diftongane er beste forsvar."
+   },
+   {
+    "kamp": "botten_hansen_og_manuskriptet"
+   },
+   {
+    "regi": "Andre fase: «Huldrebrylluppet». Manuskriptet reiser seg frå bordet som ei brur i eit slør av sider. Botten-Hansen les høgt. Kvar runde han les, blir ein målar fylt, og huldra blir meir gjennomsiktig. Når Aasen slår manuskriptet, sprekk sider av og fell, men Botten-Hansen skriv nye like fort. Aasen kan bremse målaren med «hugs» og «heim», men han kan ikkje stanse den."
+   },
+   {
+    "regi": "Tredje fase. Målaren er nesten full. Botten-Hansen løftar den siste sida. Anvisning: alle Aasens åtak sviktar. Dersom spelaren vel «Skriv», brukar Aasen sine eigne ord mot manuskriptet, og målaren stig raskare. Aasens skrift bind òg."
+   },
+   {
+    "s": "Huldra",
+    "t": "Ikkje skriv, Ivar."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg hev ingenting anna."
+   },
+   {
+    "regi": "Vinje går fram."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Aasmund. Du ved hvad dette betyder."
+   },
+   {
+    "s": "Vinje",
+    "t": "Eg veit kva det tyder."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Vi gav dig en Stol. Vi gav dig et Blad. Du var en Bondedreng fra Vinje, og nu er du Redaktør."
+   },
+   {
+    "s": "Vinje",
+    "t": "Ja."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Vinje! Du er en af os!"
+   },
+   {
+    "s": "Vinje",
+    "t": "Eg veit det, Bjørnson. Eg hev aldri vore ein av nokon fyrr."
+   },
+   {
+    "regi": "Han ser på huldra. Så på Aasen."
+   },
+   {
+    "s": "Vinje",
+    "t": "Ivar, du er so pertentleg. Du hadde skrive ei betre side enn dette. Du hadde skrive henne rett. Og ho hadde vore like fast."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ja."
+   },
+   {
+    "s": "Vinje",
+    "t": "Eg skriv dårleg. Eg kan riva."
+   },
+   {
+    "regi": "Han tek den siste sida ut av handa til Botten-Hansen. Botten-Hansen held imot. Eit augeblink står dei begge med arket mellom seg."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Aasmund. Det er den beste Side jeg har skrevet."
+   },
+   {
+    "s": "Vinje",
+    "t": "Då fær du skriva ei ny. Ho fær ikkje det."
+   },
+   {
+    "regi": "Han riv arket i to. Så i fire. Bitane fell på golvet. Lyset i rommet endrar seg. Papiret på huldras armar losnar og blæs av henne som snø. Ho fell framover, og Aasen tek imot henne."
+   },
+   {
+    "regi": "Stillheit. Ute byrjar kyrkjeklokkene å slå seks. Det bankar på døra nede. Trykkjaren."
+   },
+   {
+    "s": "Huldra",
+    "t": "Eg er her."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ja."
+   },
+   {
+    "s": "Huldra",
+    "t": "Eg var gift ei stund. Det var ikkje godt."
+   },
+   {
+    "regi": "Vinje ler, og så græt han. Han gjer begge delar på ein gong og ser ikkje på nokon."
+   },
+   {
+    "regi": "Bjørnson går ut av rommet utan eit ord. Ibsen blir ståande."
+   },
+   {
+    "s": "Ibsen",
+    "t": "Du har valgt, Vinje."
+   },
+   {
+    "s": "Vinje",
+    "t": "Du òg, Henrik. Du berre veit det ikkje enno."
+   },
+   {
+    "s": "Ibsen",
+    "t": "Kanskje."
+   },
+   {
+    "regi": "Ibsen går. Botten-Hansen samlar bitane av sida frå golvet og legg dei i ei skuffe. Han ser gammal ut."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Jeg kunde have skrevet hende om. Det ved De."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kvifor gjer du det ikkje?"
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Jeg har ikke lyst længer. Det er det værste, jeg har ikke lyst."
+   },
+   {
+    "regi": "Han opnar døra for guten til trykkjaren."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Beklager. Manuskriptet er ufuldendt. Det er en Tragedie."
+   },
+   {
+    "regi": "Utanfor, i gata, i morgonlyset. Huldra går mellom Aasen og Vinje. Ho held Vinjes erme."
+   },
+   {
+    "s": "Huldra",
+    "t": "Du reiv sida for meg."
+   },
+   {
+    "s": "Vinje",
+    "t": "Eg reiv henne for meg sjølv. Du var berre der."
+   },
+   {
+    "s": "Huldra",
+    "t": "Du lyg."
+   },
+   {
+    "s": "Vinje",
+    "t": "Ja. Eg er god til det."
+   },
+   {
+    "regi": "Dagboka",
+    "sitat": true
+   },
+   {
+    "regi": "",
+    "sitat": true
+   },
+   {
+    "regi": "Christiania, 2den Marts 1851. Ho søv mykje. Når ho vaknar, spyr ho etter Ord ho hev mist. Eg hev tvo av dei i Ordboki, men eg torer ikkje segja dei. Eg veit ikkje um dei er mine.",
+    "sitat": true
+   }
+  ],
+  "utfall_tekst": "Nøkkelordet «fri» opnar seg når Vinje riv siste sida av Huldrebrylluppet. Huldra er med i partyet igjen, svekt. Ho har mista to gamle ord, som må finnast igjen i Nord-Noreg. Vinje er fullt med i partyet og kan brukast om natta. Evne for Vinje: «Riv» (knuser ein bindande tekst, ein gong per kamp). Botten-Hansen er framleis med Munch, men han er ikkje lenger ivrig. Bjørnson er såra og sint. Ibsen har byrja å tvile. Dersom spelaren brukte «Skriv» i tredje fase, får Aasen ein merknad i Dagboka: «Eg skreiv. Det hjelpte honom.»",
+  "ord": [
+   "fri",
+   "tala"
+  ],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": "Dagbokside (Christiania, 2den Marts 1851). Etterpå er Christiania ope att. Stipendet, jødeparagrafen og Thrane er faste hendingar som blir utløyste når partyet går gjennom byen. Neste scene startar når partyet går opp på galleriet i Stortinget i katedralskulen. Collett kan oppsøkjast før eller etter.",
+  "neste": "s5_11",
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:338",
+  "skjermar": [
+   "BHH-10",
+   "FOK-02",
+   "OYR-05",
+   "FSK-05"
+  ]
+ },
+ {
+  "id": "s5_11",
+  "namn": "Pengar til ordi",
+  "del": "5",
+  "stad_tekst": "Galleriet i Stortinget (lokalet i katedralskulen), Christiania",
+  "tid_tekst": "våren 1851",
+  "stad_og_tid_tekst": "Galleriet i Stortinget (lokalet i katedralskulen), Christiania, våren 1851",
+  "skjerm": "CHR-03b",
+  "aar": 1851,
+  "med": [
+   "aasen",
+   "huldra",
+   "vinje",
+   "knudsen"
+  ],
+  "med_andre": [
+   "representantar i salen"
+  ],
+  "med_tekst": "Aasen, huldra, Vinje, Knudsen, representantar i salen",
+  "spel": "Samtale og eit lite minispel: spelaren lyttar til debatten og samlar ord frå representantane. Bøndene i salen gir dialektord, embetsmennene gir kanselliblekk som må avvergjast. Ingen kamp.",
+  "steg": [
+   {
+    "regi": "Galleriet er fullt av frakkar. Nede i salen står ein bonderepresentant frå Vestlandet og les frå eit papir. Huldra sit på ytste benken med hetta over håret."
+   },
+   {
+    "s": "Representanten",
+    "t": "... at Hr. Aasen maa tilstaaes et aarligt Stipendium, saa han kan fortsætte sit Arbeide med vort Folkesprog."
+   },
+   {
+    "s": "Ein embetsmann",
+    "t": "Og hvad skal Folket med et Sprog, det allerede har?"
+   },
+   {
+    "s": "Representanten",
+    "t": "Det skal få skriva det."
+   },
+   {
+    "regi": "Latter i salen. Nokre klappar. Blekk sildrar ut av protokollen til sekretæren og kryp mot galleriet. Spelaren må fange orda frå bøndene før blekket når dei."
+   },
+   {
+    "regi": "Ein mann set seg ved sida av Aasen. Stiv snipp, rask blyant."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Landsmaalsmanden. De er i Byen igjen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Knudsen."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Jeg hører, De har været hjem."
+   },
+   {
+    "s": "Aasen",
+    "t": "Heim."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Hjem. Vi blir aldri enige om det Ord."
+   },
+   {
+    "s": "Aasen",
+    "t": "Nei."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Godt. Saa har vi noget at snakke om."
+   },
+   {
+    "regi": "Voteringa. Stipendet blir vedteke. Nede i salen snur bonderepresentanten seg og ser opp på galleriet."
+   },
+   {
+    "s": "Vinje",
+    "t": "Ivar. Du er embetsmann no."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg fær løn for å gå og lyda på folk."
+   },
+   {
+    "s": "Vinje",
+    "t": "Det er det beste embetet i landet."
+   },
+   {
+    "s": "Knudsen",
+    "t": "De skulde gi mig det samme. Jeg lytter til Guttene paa Katedralskolen hver Dag."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva segjer dei?"
+   },
+   {
+    "s": "Knudsen",
+    "t": "I Vinter sier de ingenting. De sidder og ser ud av Vinduet. Det er ikke Latskab, Aasen. Noget har sat sig i Munden paa dem."
+   },
+   {
+    "regi": "Han reiser seg og går før Aasen kan svare."
+   },
+   {
+    "s": "Huldra",
+    "t": "Han er redd."
+   },
+   {
+    "s": "Aasen",
+    "t": "Knudsen er aldri redd."
+   },
+   {
+    "s": "Huldra",
+    "t": "Han er redd for dei han lærer. Det er ei anna redsle."
+   }
+  ],
+  "utfall_tekst": "Gjenstand: stipendbrevet (gir pengar kvar gong eit nytt kapittel i Dagboka blir opna, slik at Aasen kan kjøpe utstyr). Ord lært: «løn» frå bonderepresentanten. Tråd blir opna: Knudsen har sett fimbulvinteren i klasserommet. Knudsen blir ikkje med enno.",
+  "ord": [
+   "lon"
+  ],
+  "ting": [
+   "stipendbrevet"
+  ],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": "Kartvegen i Christiania. Neste scene startar når partyet bankar på hos familien Collett. Er Collett alt med, går historia vidare til studentmøtet i losjen (5.12b).",
+  "neste": "s5_12",
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:402"
+ },
+ {
+  "id": "s5_12",
+  "namn": "Fru Collett",
+  "del": "5",
+  "stad_tekst": "Familien Colletts heim i Christiania",
+  "tid_tekst": "april 1851",
+  "stad_og_tid_tekst": "Familien Colletts heim i Christiania, april 1851",
+  "skjerm": "CHR-03c",
+  "aar": 1851,
+  "med": [
+   "aasen",
+   "huldra"
+  ],
+  "med_andre": [
+   "Camilla Collett"
+  ],
+  "med_tekst": "Aasen, Camilla Collett, huldra (Vinje ventar ute)",
+  "spel": "Samtale og eit minnepuslespel. Collett har eit skrin med Wergelands brev. Spelaren legg dei i rett rekkjefølgje for å låse opp evna hennar.",
+  "steg": [
+   {
+    "regi": "Ei stove med gardinene trekte for. Frå eit rom innanfor høyrer ein ein mann som hostar. Collett tek imot dei i døra, rank og bleik."
+   },
+   {
+    "s": "Collett",
+    "t": "Hr. Aasen. De kommer altid paa de besværlige Dage."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg kan gå."
+   },
+   {
+    "s": "Collett",
+    "t": "Det har jeg ikke sagt. Sæt Dem."
+   },
+   {
+    "regi": "Ho ser på huldra."
+   },
+   {
+    "s": "Collett",
+    "t": "Og De har fundet hende igjen."
+   },
+   {
+    "s": "Huldra",
+    "t": "Han fann meg ikkje. Vinje reiv meg laus."
+   },
+   {
+    "s": "Collett",
+    "t": "Saa har Vinje gjort én fornuftig Ting i sit Liv. Jeg skal skrive det ned."
+   },
+   {
+    "s": "Huldra",
+    "t": "Ikkje."
+   },
+   {
+    "s": "Collett",
+    "t": "Nej. Undskyld. Det var en Vane."
+   },
+   {
+    "regi": "Hoste frå det indre rommet. Collett ser mot døra og ser bort igjen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Er professoren sjuk?"
+   },
+   {
+    "s": "Collett",
+    "t": "Han har været syg hele Vinteren. Lægen siger, det gaar over. Lægen siger altid det."
+   },
+   {
+    "regi": "Ho opnar skrinet med brev."
+   },
+   {
+    "s": "Collett",
+    "t": "De Herrer i Andhrimner vil have min Broders Navn. De skriver om ham, som om han var deres. Henrik var ingen Patriot i deres Forstand. Han var en Mand som raabte for høit og elskede for meget. De vil gjøre ham til en Fane."
+   },
+   {
+    "s": "Aasen",
+    "t": "Munch treng namn. Namn hev kraft."
+   },
+   {
+    "s": "Collett",
+    "t": "Saa faar han ikke hans."
+   },
+   {
+    "regi": "Puslespel: breva frå 1830-åra. Når spelaren legg dei i rekkjefølgje, les Collett ei linje frå kvart, raskt og halvt for seg sjølv. Det siste brevet er det Wergeland skreiv til henne då ho var ung og forelska i Welhaven. Ho legg det tilbake utan å lese det."
+   },
+   {
+    "s": "Collett",
+    "t": "Jeg kommer med Dem. Paa en Betingelse."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ja?"
+   },
+   {
+    "s": "Collett",
+    "t": "De skriver mig ikke ned i den Bog."
+   },
+   {
+    "s": "Aasen",
+    "t": "Du er ikkje eit ord."
+   },
+   {
+    "s": "Collett",
+    "t": "Tak. Det er det venligste, en Mand har sagt til mig i ti Aar."
+   }
+  ],
+  "utfall_tekst": "Collett blir med i partyet. Evne: «Taus» (gjer ein fiende stum i tre rundar). Evne: «Løft skammen» (fjernar Skam frå heile partyet). Tråd blir opna: Wergelands namn. Collett må gå heim til mannen sin mellom oppdraga, og ho er ikkje tilgjengeleg på kvileplassane om natta.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": "Kartvegen i Christiania. Neste scene startar når partyet går inn i Frimurarlosjen ein kveld i juni, etter at studentane frå København og Lund har kome med «Slesvig». Då går Dagboka fram til juni.",
+  "neste": "s5_12b",
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:428",
+  "skjermar": [
+   "CHR-03c",
+   "SGH-13"
+  ]
+ },
+ {
+  "id": "s5_12b",
+  "namn": "Studentmøtet",
+  "del": "5",
+  "stad_tekst": "Frimurarlosjen i Christiania, 9",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Frimurarlosjen i Christiania, 9. juni 1851, kveld",
+  "skjerm": "CHR-05b",
+  "aar": 1851,
+  "med": [
+   "aasen",
+   "huldra",
+   "vinje",
+   "collett"
+  ],
+  "med_andre": [
+   "Bjørnson",
+   "J. S. Welhaven",
+   "Lindqvist (svensk embetsmann)",
+   "dei danske studentane Frederik Holm",
+   "Søren Krag",
+   "Nils Ljungberg (student frå Lund)",
+   "norske studentar"
+  ],
+  "med_tekst": "Aasen, huldra, Vinje, Collett (dersom ho er med), Bjørnson, J. S. Welhaven, Lindqvist (svensk embetsmann), dei danske studentane Frederik Holm og Søren Krag, Nils Ljungberg (student frå Lund), norske studentar",
+  "spel": "Selskapsscene. Spelaren går mellom borda og samlar ord frå tre land. Ord som finst i alle tre språka, gir ein liten lydbonus. Talen til Welhaven er ein mellomsekvens. Scena endar med eit ordskifte som blir spela som ordduell utan skade. Innsatsen er Bjørnson.",
+  "steg": [
+   {
+    "regi": "Ein stor sal med lysekroner. Tre flagg heng over talarstolen. Det er så fullt at folk står i vindaugskarmane. Studentane frå København og Lund kom med dampskipet «Slesvig», og dei har teke med seg songane sine. Danskane syng «Den tappre Landsoldat». Vinje nynnar med utan å kunne orda."
+   },
+   {
+    "regi": "Bjørnson står ved punsjbollen. Han ser Vinje og Aasen og snur seg halvvegs bort."
+   },
+   {
+    "s": "Vinje",
+    "t": "Bjørnson."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Vinje. Du har revet flere Sider siden sidst?"
+   },
+   {
+    "s": "Vinje",
+    "t": "Berre éi. Ho var lang nok."
+   },
+   {
+    "regi": "Ein lyshåra dansk student kjem imellom dei med to glas. Han rekkjer det eine til Bjørnson og det andre til Vinje."
+   },
+   {
+    "s": "Holm",
+    "t": "Frederik Holm, fra Kjøbenhavn. I er Nordmænd begge to? Saa skaal for Norge!"
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Skaal for Danmark!"
+   },
+   {
+    "s": "Holm",
+    "t": "Nej, nej. Skaal for Norden. Det er billigere, saa slipper man at skaale tre Gange."
+   },
+   {
+    "regi": "Bjørnson ler. Det er første gong sidan mars. Han dreg Holm med seg mot songarane."
+   },
+   {
+    "regi": "Ved eit bord nær døra sit ein ung mann i studentfrakk og et kake. Aasen set seg ved sida av han."
+   },
+   {
+    "s": "Ljungberg",
+    "t": "Nils Ljungberg. Lund."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ivar Aasen."
+   },
+   {
+    "s": "Ljungberg",
+    "t": "Ordboken? Då ska jag tala långsamt."
+   },
+   {
+    "s": "Aasen",
+    "t": "Tal som du vil. Eg høyrer godt."
+   },
+   {
+    "s": "Huldra",
+    "t": "Kvar er dei andre? Du sa tre land."
+   },
+   {
+    "s": "Ljungberg",
+    "t": "Vi är bara från Lund i kväll. Uppsala kunde inte komma. Terminen är inte slut, och de har promotion vid midsommar."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kjem dei ikkje i det heile?"
+   },
+   {
+    "s": "Ljungberg",
+    "t": "Nästa år, säger de. De har blivit bjudna. (et opp kaka) Uppsala säger alltid nästa år."
+   },
+   {
+    "regi": "Ein mann i svart frakk med ordensband går langsamt langs veggen. Han klappar for songarane med to fingrar."
+   },
+   {
+    "regi": "Dersom spelaren møtte Lindqvist på Kongsvold i S1.38:"
+   },
+   {
+    "s": "Lindqvist",
+    "t": "Herr Aasen. Ni har kommit ner från fjället."
+   },
+   {
+    "s": "Aasen",
+    "t": "For lenge sidan."
+   },
+   {
+    "s": "Lindqvist",
+    "t": "Heim. Var det inte så ni sa?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Det er framleis so."
+   },
+   {
+    "regi": "Dersom ikkje, helsar han kort og presenterer seg som «Lindqvist, i konungens tjänst»."
+   },
+   {
+    "s": "Lindqvist",
+    "t": "Hans majestät ser gärna att studenterna sjunger tillsammans. Ett folk som sjunger tillsammans gör inte uppror."
+   },
+   {
+    "s": "Huldra",
+    "t": "Han tel songane."
+   },
+   {
+    "s": "Lindqvist",
+    "t": "Någon måste göra det.",
+    "regi": "smiler til henne"
+   },
+   {
+    "regi": "Dersom Collett er med, står ho ved ein pilar og ser mot talarstolen. Ein slank mann med kvite mansjettar går opp dit."
+   },
+   {
+    "s": "Collett",
+    "t": "Han taler endnu smukt. Det er det mest utaalelige ved ham.",
+    "regi": "lågt"
+   },
+   {
+    "s": "Huldra",
+    "t": "Du lyttar annleis til han."
+   },
+   {
+    "s": "Collett",
+    "t": "Det er tyve Aar siden. Tonefaldet glemmer man sidst."
+   },
+   {
+    "regi": "Mellomsekvens: Welhaven talar. Salen blir stille."
+   },
+   {
+    "s": "Welhaven",
+    "t": "Mine Herrer. Brødre fra Kjøbenhavn og fra Lund. For tre Aar siden stod mange af Dem ved Dybbøl, mens vi her hjemme læste Aviserne. Det skammer jeg mig over. Jeg skal fatte mig i Korthed. Lange Taler fik De nok af i Krigen."
+   },
+   {
+    "s": "Welhaven",
+    "t": "Vi har ét Bogsprog fra Kjøbenhavn til Nordkap, og Svensken læser det med lidt Taalmod. Det har vore Fædre givet os. Tre Folk, der kan læse hinandens Digte uden Ordbog, er rigere end tre Folk med hver sin."
+   },
+   {
+    "s": "Welhaven",
+    "t": "Jeg har intet imod Ordbøger, Hr. Aasen. Jeg ejer flere. Jeg slaar bare sjelden op i dem.",
+    "regi": "ser ned i salen, finn Aasen"
+   },
+   {
+    "regi": "Latter. Nokre ser på Aasen. Aasen ser i glaset sitt."
+   },
+   {
+    "s": "Welhaven",
+    "t": "Til Norden. Og til at vi forstaar hinanden, ogsaa naar vi er uenige."
+   },
+   {
+    "regi": "Jubel. Bjørnson står på ein stol og ropar «Norden!» høgare enn nokon annan. Holm held han i beinet så han ikkje fell."
+   },
+   {
+    "regi": "Etter talen. Den andre danske studenten, Søren Krag, kjem bort til Aasen. Han er mager og alvorleg og har ei lita bok under armen. Det er grammatikken frå 1848."
+   },
+   {
+    "s": "Krag",
+    "t": "Hr. Aasen. Vi har læst Deres Grammatik i Kjøbenhavn. Den er grundig."
+   },
+   {
+    "s": "Aasen",
+    "t": "Takk."
+   },
+   {
+    "s": "Krag",
+    "t": "Jeg forstaar bare ikke hvorfor. Naar en Nordmand skriver, forstaar vi ham. Skriver han Deres Sprog, maa vi have Tolk."
+   },
+   {
+    "s": "Aasen",
+    "t": "Bonden i Hallingdal treng tolk når han les det de skriv."
+   },
+   {
+    "s": "Krag",
+    "t": "Saa lærer han at læse. Det gjorde Bønderne paa Fyn."
+   },
+   {
+    "s": "Vinje",
+    "t": "Og slutta dei å tala som seg sjølve?"
+   },
+   {
+    "s": "Krag",
+    "t": "De taler fynsk endnu. De skriver dansk. Man kan godt begge Dele."
+   },
+   {
+    "regi": "Dersom spelaren valde B i S2.40.3:"
+   },
+   {
+    "s": "Aasen",
+    "t": "Ei mor på Fyn hev lese hallingmål. Ho trong ingen tolk."
+   },
+   {
+    "s": "Krag",
+    "t": "Saa har hun lært noget, vi andre ikke har.",
+    "regi": "stille ei stund"
+   },
+   {
+    "regi": "Spel: Ordskiftet. Krag og Holm spør. Spelaren vel svar. Bjørnson har kome ned frå stolen og står og høyrer på."
+   },
+   {
+    "s": "Holm",
+    "t": "Og Krigen, Hr. Aasen. Nogle af Deres Landsmænd kom til os. Deres Konge kom ikke. Tre smaa Folk, der staar hver for sig, bliver taget ét ad Gangen. Det har vi lært. (Val: A) «Eg vil gjerne vera bror. Eg vil ikkje vera lillebror.» → Holm ler og løftar glaset. Krag blir stille og skriv noko i margen. Poeng til Aasen. B) «Målet i bygdene ligg nærare svensken enn dansken gjer.» → Lindqvist nikkar motvillig. Ljungberg ropar «Skål för Hallingdal!». Krag spør om Aasen vil gjere Noreg svensk, og salen ler. Poeng til Aasen. C) «De kan ha rett. Eit eige mål kan skilja.» → Aasen seier høgt det han er redd for. Huldra ser lenge på han. Krag rekkjer han handa. Poeng til Krag.)"
+   },
+   {
+    "s": "Krag",
+    "t": "De bygger et Gærde om hver Dal, Hr. Aasen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Gjerda stod der før meg. Eg skriv namnet på garden."
+   },
+   {
+    "s": "Krag",
+    "t": "Og naar hver Gaard har sit eget Sprog?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Då hev dei noko å tala um når dei møtest. (Val: A) «Ljungberg talar svensk, du talar dansk, eg talar som eg gjer. Hev nokon av oss trengt tolk i kveld?» →"
+   },
+   {
+    "s": "Ljungberg",
+    "t": "«Bara när Vinje talar.»"
+   },
+   {
+    "s": "Vinje",
+    "t": "«Det er fordi eg talar fort.» Stort poeng til Aasen. B) «Eit folk som ikkje kan skriva sitt eige mål, kan ikkje vera bror med nokon. Det kan berre fylgja med.» → Krag tenkjer seg om lenge. Poeng til Aasen.)"
+   },
+   {
+    "regi": "Bjørnson trengjer seg fram."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Aasen! Hører De dem? Tre Folk under ét Tag! Hvorfor skal vi sidde i hver vor Dal og skrive Ordbøger?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Fordi dalane er der."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Brødrene er ogsaa der!"
+   },
+   {
+    "s": "Vinje",
+    "t": "I vinter var det sagaen. I kveld er det brørne. Kva er det til hausten, Bjørnson?"
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Det er Norge hele Tiden, Vinje! Et Norge med Brødre er stærkere end et Norge alene.",
+    "regi": "raud i andletet"
+   },
+   {
+    "s": "Lindqvist",
+    "t": "Väl talat.",
+    "regi": "frå veggen"
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Ikke under en svensk Konge.",
+    "regi": "snur seg mot han, brått kald"
+   },
+   {
+    "s": "Lindqvist",
+    "t": "Naturligtvis inte.",
+    "regi": "bukkar lett"
+   }
+  ],
+  "utfall_tekst": "Vann Aasen ordskiftet, nølar Bjørnson ved fakkeltoget og får ein ekstra replikk i 5.12c. Tapte han, går Bjørnson først i toget. Ord lært: «me» (småord, rask evne som gir heile partyet eit lite vern i ein runde) frå Ljungberg, som seier «vi» og høyrer Aasen seie «me». Ordboka får ei grannemålsform under «heim»: «hem, Lund». Tråd blir opna: Lindqvist i Christiania.",
+  "ord": [
+   "me",
+   "korn",
+   "heim"
+  ],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [
+   "S2_40_3_val"
+  ],
+  "overgang_tekst": null,
+  "neste": null,
+  "ord_ukjende": [
+   "høyrer"
+  ],
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:456"
+ },
+ {
+  "id": "s5_12c",
+  "namn": "Fakkeltoget",
+  "del": "5",
+  "stad_tekst": "Gatene frå losjen ned til kaia der «Slesvig» ligg",
+  "tid_tekst": "same natt",
+  "stad_og_tid_tekst": "Gatene frå losjen ned til kaia der «Slesvig» ligg, same natt",
+  "skjerm": "CHR-05",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra",
+   "vinje",
+   "collett"
+  ],
+  "med_andre": [
+   "Bjørnson",
+   "Holm",
+   "Krag",
+   "Ljungberg",
+   "Lindqvist",
+   "studentar"
+  ],
+  "med_tekst": "Aasen, huldra, Vinje, Collett (dersom ho er med), Bjørnson, Holm, Krag, Ljungberg, Lindqvist, studentar",
+  "spel": "Minispel: fakkeltoget. Spelaren held fakkelen tend i vinden frå fjorden og går i takt med songen. Når songen skiftar frå dansk til svensk til norsk, skiftar takten. Går spelaren i takt, brenn fakkelen sterkare og huldra ser meir. Går spelaren ut av takt med vilje, ser Aasen trådane i lyset tydelegare, men fakkelen blafrar. Ingen kamp.",
+  "steg": [
+   {
+    "regi": "Hundrevis av faklar. Dei går to og to nedover gata. Folk står i vindauga med lys."
+   },
+   {
+    "regi": "Vinje går med fakkelen sin, men ikkje i takt."
+   },
+   {
+    "s": "Vinje",
+    "t": "Eg går i takt med meg sjølv."
+   },
+   {
+    "s": "Aasen",
+    "t": "Då kjem du fram til ei anna tid enn oss."
+   },
+   {
+    "s": "Vinje",
+    "t": "Det hev eg alltid gjort."
+   },
+   {
+    "regi": "Dersom S2.40 er fullført, går Eirik Rukke frå Nes ytst i toget. Han ber ingen fakkel."
+   },
+   {
+    "s": "Eirik",
+    "t": "Eg hev bore nok eld for ei stund."
+   },
+   {
+    "regi": "Halvvegs ned til kaia stansar huldra. Ho ser på flammane. Dei bøyer seg mot kvarandre, alle same vegen, sjølv om vinden står frå sjøen."
+   },
+   {
+    "s": "Huldra",
+    "t": "Sjå."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg ser faklar."
+   },
+   {
+    "s": "Huldra",
+    "t": "Sjå med «kvar»."
+   },
+   {
+    "regi": "Spelaren brukar spørjeordet «kvar». Mellom faklane strekkjer det seg tunne trådar av lys, frå hand til hand, frå handledd til handledd. Over toget knyter trådane seg saman til tre kroner av ljos som heng i lufta."
+   },
+   {
+    "s": "Huldra",
+    "t": "Eg hev sett dei før. Ei dronning bar dei. Ho samla tre land."
+   },
+   {
+    "s": "Aasen",
+    "t": "Gjekk det godt?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ei stund."
+   },
+   {
+    "s": "Aasen",
+    "t": "Er det det same som Munch gjer?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Munch frys fast. Dette varmar fast. Det er mildare."
+   },
+   {
+    "s": "Aasen",
+    "t": "Er det vondt?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ikkje enno."
+   },
+   {
+    "regi": "Bjørnson går framfor dei med Holm under armen. Ein tråd har lagt seg rundt handleddet hans. Han merkar det ikkje. Han syng."
+   },
+   {
+    "s": "Huldra",
+    "t": "Han ber ein ring no òg."
+   },
+   {
+    "s": "Aasen",
+    "t": "Av jern?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Av ljos. Han kjem ikkje til å kjenne han på lenge."
+   },
+   {
+    "regi": "Lindqvist går sist i toget utan fakkel. Han ser opp på krunene. Spelaren kan ikkje sjå om han ser dei."
+   },
+   {
+    "regi": "Kaia. «Slesvig» ligg med lys i alle ventilar. Studentane kastar faklane i ein haug, og elden står høgt mot himmelen. Trådane slepper éin etter éin og går ut som gneistar. Tråden rundt handleddet til Bjørnson slepper ikkje. Han lyser svakt."
+   },
+   {
+    "regi": "Bjørnson klatrar opp på ein pullert."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Brødre! Næste Gang kommer vi til Dem! Til Kjøbenhavn! Til Upsala!"
+   },
+   {
+    "regi": "Jubel. Han hoppar ned og blir ståande ved Aasen ei stund medan elden fell saman."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "De synes, jeg skifter Flag, Aasen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg trur du leitar etter eit flagg som er stort nok."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Norge er saa lidet om Natten.",
+    "regi": "ler, så lågare"
+   },
+   {
+    "regi": "Vann Aasen ordskiftet i 5.12b:"
+   },
+   {
+    "s": "Bjørnson",
+    "t": "De talede godt derinde. Jeg vil ikke sige det til nogen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det trengst ikkje."
+   },
+   {
+    "regi": "Krag kjem forbi på veg om bord. Han stansar."
+   },
+   {
+    "s": "Krag",
+    "t": "Hr. Aasen. Skriv Deres Ordbog færdig. Saa skal jeg læse den. Med Tolk."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg skal senda ein."
+   },
+   {
+    "regi": "Dampfløyta. Studentane går om bord. Ljungberg vinkar med lua. Vinje vinkar tilbake med begge hendene."
+   },
+   {
+    "regi": "Dersom Collett er med, ser ho Welhaven gå heim åleine langs kaia. Ho seier ingenting."
+   },
+   {
+    "regi": "Dagboka",
+    "sitat": true
+   },
+   {
+    "regi": "",
+    "sitat": true
+   },
+   {
+    "regi": "Christiania, 10de Juni 1851. Studentarne fraa Kjøbenhavn song heile Natti. Dei er gode Folk. Dei vil at me skal vera Brør, og det vil eg og. Eg veit berre ikkje kvat Maal Brør skal skriva paa. (Om spelaren gjekk ut av takt:) Tri Kronur yver Gata. Ho sa ho hadde set dei fyrr.",
+    "sitat": true
+   }
+  ],
+  "utfall_tekst": "Ord lært: «fakkel» (harde konsonantar, åtak) frå studentane på kaia. Lydtreet får greina «Grannemål»: ord som finst i svensk eller dansk med same rot, gir ekstra verknad mot svenske og danske vesen. Tråd blir planta: ljosringen rundt handleddet til Bjørnson. Han lyser svakt i alle seinare scener med Bjørnson, og spelaren kan sjå han med «kvar». Tråden held fram i 5.13 og 7.22 og blir lukka i 7.28. Dersom spelaren gjekk ut av takt med vilje heile vegen, får Aasen ein merknad i Dagboka om dei tre krunene.",
+  "ord": [
+   "fakkel",
+   "kvar"
+  ],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": "Dagbokside (Christiania, 10de Juni 1851). Etterpå går partyet gjennom byen. Neste scene startar når partyet kjem inn på Vor Frelsers gravlund 13. juni, der folk samlast ved grava til Wergeland.",
+  "neste": "s5_13",
+  "ord_ukjende": [
+   "Grannemål"
+  ],
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:520",
+  "skjermar": [
+   "CHR-05",
+   "CHR-08"
+  ]
+ },
+ {
+  "id": "s5_13",
+  "namn": "Fanen over grava",
+  "del": "5",
+  "stad_tekst": "Wergelands grav på Vor Frelsers gravlund, Christiania, 13",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Wergelands grav på Vor Frelsers gravlund, Christiania, 13. juni 1851",
+  "skjerm": "CHR-13",
+  "aar": 1851,
+  "med": [
+   "aasen",
+   "collett",
+   "vinje",
+   "huldra"
+  ],
+  "med_andre": [
+   "Bjørnson",
+   "patriotar",
+   "ein jødisk handelsmann frå Hamburg"
+  ],
+  "med_tekst": "Aasen, Collett, Vinje, huldra, Bjørnson, patriotar, ein jødisk handelsmann frå Hamburg",
+  "spel": "Samtale som går over i kamp. Bosskamp mot «Fanen», ei ånd av papir og blekk som patriotane har vekt av Wergelands dikt.",
+  "steg": [
+   {
+    "regi": "Stortinget har nett oppheva jødeparagrafen. Nyheita har gått gjennom byen på ein time. Ved grava står folk med blomar. Bjørnson står på ein benk og talar."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Wergeland kjæmpede for dette i ti Aar! I Dag har Norge givet ham ret! Og hvis han kunde se os nu, saa vilde han sige: videre! Mod Sagatiden! Mod et Norge uden Konge fra Stockholm!"
+   },
+   {
+    "regi": "Jubel. Bak Bjørnson står to menn i mørke frakkar. Ein av dei har ein ring med ein ravn over ei open bok."
+   },
+   {
+    "regi": "Ein eldre mann med utanlandsk frakk står litt unna. Han held ein blom, og han legg den ikkje ned."
+   },
+   {
+    "s": "Handelsmannen",
+    "t": "Han skrev for os. Jeg læste det i Hamburg. Jeg troede ikke, jeg vilde se det."
+   },
+   {
+    "s": "Aasen",
+    "t": "No ser du det."
+   },
+   {
+    "s": "Handelsmannen",
+    "t": "Nu ser jeg en ung Mand, som bruger det til noget andet."
+   },
+   {
+    "regi": "Collett går fram. Ho stiller seg mellom Bjørnson og grava."
+   },
+   {
+    "s": "Collett",
+    "t": "Hr. Bjørnson. Stig ned."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Fru Collett! Vi hedrer Deres Broder!"
+   },
+   {
+    "s": "Collett",
+    "t": "De hedrer Dem selv. Min Broder raabte for Jøder og for Tjenestepiger. Han raabte aldrig for Konger."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Han var en Patriot!"
+   },
+   {
+    "s": "Collett",
+    "t": "Han var min Broder. Stig ned fra hans Grav."
+   },
+   {
+    "regi": "Mennene i mørke frakkar tek fram sider med Wergelands dikt. Dei les. Papirarka løftar seg frå hendene deira og blir til ein fane med ravneseglet på. Den flagrar over grava og ropar Wergelands linjer utan meining, berre lyd."
+   },
+   {
+    "regi": "Kamp: «Fanen». Første fase: Fanen ropar, og kvart rop gir heile partyet Skam. Collett må bruke «Løft skammen» kvar tredje runde. Andre fase: Fanen tek Wergelands stemme. Collett kan gjere den stum. Då fell den saman, og Aasen kan gå til åtak på den med harde konsonantar."
+   },
+   {
+    "kamp": "fanen"
+   },
+   {
+    "regi": "Når Fanen fell, blir arka til vanlege sider igjen. Collett plukkar dei opp eitt og eitt."
+   },
+   {
+    "s": "Collett",
+    "t": "Det er hans Digte. De har skrevet dem af. Med en daarlig Pen."
+   },
+   {
+    "s": "Vinje",
+    "t": "Kven skreiv dei av?"
+   },
+   {
+    "s": "Collett",
+    "t": "Det behøver De ikke spørge om."
+   },
+   {
+    "regi": "Bjørnson står nede ved benken. Han ser på seglet på arka."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Det var ikke meningen."
+   },
+   {
+    "s": "Collett",
+    "t": "Nej. Det er det aldrig."
+   },
+   {
+    "regi": "Handelsmannen legg blomen sin på grava. Så går han."
+   }
+  ],
+  "utfall_tekst": "Ord lært: «rop» (harde konsonantar) frå Wergelands dikt, med kjelda «Henrik Wergeland, gjennom syster hans». Tråd: Bjørnson har sett seglet og tvilar for første gong. Opphevinga av jødeparagrafen står i Dagboka som ei historisk note: vedteken i Stortinget 13. juni 1851.",
+  "ord": [
+   "rop"
+  ],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": "Kartvegen i Christiania. Berte må vere i partyet. Neste scene startar når partyet kjem over Stortorvet ein kald morgon i juni.",
+  "neste": "s5_13b",
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:578"
+ },
+ {
+  "id": "s5_13b",
+  "namn": "Tårnet",
+  "del": "5",
+  "stad_tekst": "Stortorvet og tårnet på Vor Frelsers kyrkje, Christiania",
+  "tid_tekst": "juni 1851",
+  "stad_og_tid_tekst": "Stortorvet og tårnet på Vor Frelsers kyrkje, Christiania, juni 1851",
+  "skjerm": "CHR-09",
+  "aar": 1851,
+  "med": [
+   "berte",
+   "aasen",
+   "huldra",
+   "collett"
+  ],
+  "med_andre": [
+   "klokkaren",
+   "ein framand i svart frakk",
+   "ei jente frå Vaterland"
+  ],
+  "med_tekst": "Berte, Aasen, huldra, Collett (dersom ho er med), klokkaren, ein framand i svart frakk, ei jente frå Vaterland",
+  "spel": "Samtale på torget, kort dungeon opp tårnet, bosskamp (Fristaren i tårnet). Berte må vere med.",
+  "steg": [
+   {
+    "regi": "Stortorvet ein kald morgon i juni. Det har snødd i natt. Folk står i kø ved ei suppegryte som fattigkommisjonen har sett ut. Berte har stilt seg på ein kasse ved kyrkjeveggen. Nokre har stogga for å høyre. Klokkaren kjem ut av kyrkjedøra."
+   },
+   {
+    "s": "Klokkaren",
+    "t": "Madame. De kan ikke staa her."
+   },
+   {
+    "s": "Berte",
+    "t": "Eg står på ein kasse. Kassen er min."
+   },
+   {
+    "s": "Klokkaren",
+    "t": "Det er Kirkens Mur."
+   },
+   {
+    "s": "Berte",
+    "t": "Då skal eg ikkje lene meg på han."
+   },
+   {
+    "s": "Klokkaren",
+    "t": "Fruentimmer prædiker ikke i Christiania. Det er ikke Skik."
+   },
+   {
+    "s": "Collett",
+    "t": "Det er ikke Skik at nogen hører efter heller. Lad hende prøve.",
+    "regi": "dersom ho er med"
+   },
+   {
+    "regi": "Klokkaren går inn att. Folk ler litt. Så kjem ein mann i svart frakk ut av den same døra. Andletet ligg i skugge."
+   },
+   {
+    "s": "Den framande",
+    "t": "Madame Aarflot. Her nede hører de Dem ikke. (Peikar opp.) Taarnet er nyt. Fra Spiret kan hele Byen høre Dem."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ikkje gå, Berte."
+   },
+   {
+    "s": "Berte",
+    "t": "Han vil noko. Eg vil vite kva."
+   },
+   {
+    "regi": "Dungeon: Tårnet. Trappa går gjennom eit loft der dei eldste kyrkjebøkene står på hyller. Blekket i dei vaknar. Blekkvesena går etter kvinnene i partyet først. Fristaren går føre heile vegen og ventar på kvar avsats."
+   },
+   {
+    "regi": "Kamp: Fristaren i tårnet, fase 1, på kyrkjeloftet. Etter fase 1 går han vidare opp. Kampen går over i fase 2 på spiret med ny bakgrunn. Liv, Røyst og statusar blir med. Vinden riv i kleda."
+   },
+   {
+    "kamp": "fristaren_i_taarnet"
+   },
+   {
+    "s": "Den framande",
+    "t": "Se, Madame. Hele Byen. De har talt i Røgstuer i tredive Aar. Her kunde alle høre Dem."
+   },
+   {
+    "s": "Berte",
+    "t": "Eg høyrer at du vil noko."
+   },
+   {
+    "s": "Den framande",
+    "t": "Kast Dem ned. «Han skal give sine Engle Befaling om dig, og de skulle bære dig paa Hænderne.» Saa vil de se, at Gud er med Dem. Saa vil ingen Klokker nægte Dem Ordet igjen."
+   },
+   {
+    "s": "Berte",
+    "t": "Det står i Salmane."
+   },
+   {
+    "s": "Den framande",
+    "t": "Det gør det. Jeg lyver aldrig."
+   },
+   {
+    "s": "Berte",
+    "t": "Nei. Du les berre halve."
+   },
+   {
+    "regi": "Kamp: Fristaren i tårnet, fase 2, på spiret. Når Berte svarar med Matt 4:7, stansar vinden."
+   },
+   {
+    "kamp": "fristaren_i_taarnet"
+   },
+   {
+    "s": "Berte",
+    "t": "«Der er atter skrevet: du skal ikke friste Herren din Gud.»"
+   },
+   {
+    "regi": "Den framande ser på henne lenge. Så går han ned trappa, roleg, som ein som har god tid."
+   },
+   {
+    "s": "Den framande",
+    "t": "Til en anden Gang."
+   },
+   {
+    "regi": "Ein vindkule tek skautet til Berte. Det flyg ut over Stortorvet og blir borte."
+   },
+   {
+    "regi": "Nede. Partyet kjem ut av kyrkjedøra. Huldra går ved sida av Berte."
+   },
+   {
+    "s": "Huldra",
+    "t": "Du nølte. Då han las om trollkvinna."
+   },
+   {
+    "s": "Berte",
+    "t": "Ja."
+   },
+   {
+    "s": "Huldra",
+    "t": "Kvifor svara du likevel?"
+   },
+   {
+    "s": "Berte",
+    "t": "Fordi han ville at du skulle døy. Det ville ikkje Han som sa det andre ordet."
+   },
+   {
+    "s": "Huldra",
+    "t": "Trur du eg er ei trollkvinne?"
+   },
+   {
+    "s": "Berte",
+    "t": "Eg veit ikkje kva du er, jenta mi. Eg veit kven som kastar steinar."
+   },
+   {
+    "regi": "Ved suppegryta står ei jente frå Vaterland, kanskje ti år. Ho ser på håret til Berte, som flagrar grått i vinden. Ho tek av seg sitt eige skaut og held det fram."
+   },
+   {
+    "s": "Berte",
+    "t": "Du frys sjølv."
+   },
+   {
+    "s": "Jenta",
+    "t": "Jeg har hår."
+   },
+   {
+    "s": "Berte",
+    "t": "Det har eg òg."
+   },
+   {
+    "s": "Jenta",
+    "t": "Ikke så mye."
+   },
+   {
+    "regi": "Berte ler, tek imot skautet og knyter det under haka. Det er tunt og lappa."
+   },
+   {
+    "s": "Berte",
+    "t": "«Saliggjørelsens Hjelm.» (til Aasen) Det står ikkje kven som skal gje han."
+   },
+   {
+    "regi": "Val: A) Berte held møte på kassen likevel → Fleire stoggar. Klokkaren kjem ut att og blir ståande i døra og lyttar. Dagboka får ei linje. B) Berte går med jenta til Vaterland → Spelaren finn ein ny kvileplass i ei stove i Vaterland, der Berte kan halde møte resten av akten.",
+    "val": true
+   },
+   {
+    "regi": "Dagboka",
+    "sitat": true
+   },
+   {
+    "regi": "",
+    "sitat": true
+   },
+   {
+    "regi": "Christiania, 17de Juni 1851. Ei Gjenta gav Berte Skautet sitt paa Torget. Berte segjer at det var den beste Preika ho hev høyrt i Byen.",
+    "sitat": true
+   }
+  ],
+  "utfall_tekst": "Hjelmen (skautet frå jenta i Vaterland). Minnevers: Apg 2:17, Apg 5:29, Joh 8:7, Matt 4:7 og Englevakt, som er Teke attende. Samspelet Kvinna skal tale opnar seg om Collett er med. Huldra får eit varig lite pluss i Tole når Berte er i partyet.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "s5_13b_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": "Dagbokside (Christiania, 17de Juni 1851). Neste scene startar når partyet går inn i lokalet til arbeidarforeininga 7. juli.",
+  "neste": "s5_14",
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:614",
+  "skjermar": [
+   "CHR-09",
+   "CHR-09a"
+  ]
+ },
+ {
+  "id": "s5_14",
+  "namn": "Thrane",
+  "del": "5",
+  "stad_tekst": "Eit lokale for arbeidarforeininga i Christiania, 7",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Eit lokale for arbeidarforeininga i Christiania, 7. juli 1851",
+  "skjerm": "CHR-15b",
+  "aar": 1851,
+  "med": [
+   "aasen",
+   "vinje",
+   "huldra",
+   "collett",
+   "berte"
+  ],
+  "med_andre": [
+   "Marcus Thrane",
+   "arbeidarar",
+   "politi",
+   "ein av Munchs menn"
+  ],
+  "med_tekst": "Aasen, Vinje, huldra, Collett (valfritt), Berte (valfritt), Marcus Thrane, arbeidarar, politi, ein av Munchs menn",
+  "spel": "Utforsking under tidspress. Lokalet blir storma. Spelaren vel kva Aasen reddar: Thranes papir, ein ung arbeidar som ikkje kan gå fort, eller eit bevis på at Munchs folk har planta noko.",
+  "steg": [
+   {
+    "regi": "Eit trongt lokale med benkar. Thrane står ved eit bord og deler ut avisa si. Han er roleg og sliten."
+   },
+   {
+    "s": "Thrane",
+    "t": "Hr. Aasen. De er den eneste Professor, som kommer her."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg er ikkje professor."
+   },
+   {
+    "s": "Thrane",
+    "t": "Nej. Det er vel derfor."
+   },
+   {
+    "regi": "Vinje står og snakkar med ein ung arbeidar. Han ler høgt. Det er tydeleg at han har vore her før."
+   },
+   {
+    "s": "Vinje",
+    "t": "Dei skriv betre enn studentane, Ivar. Dei skriv som dei snakkar."
+   },
+   {
+    "s": "Thrane",
+    "t": "De skriver om Brød. Det er let at skrive godt om Brød."
+   },
+   {
+    "regi": "Ein mann i mørk frakk kjem inn, legg ein pakke på eit bord bakarst og går igjen. Huldra ser han."
+   },
+   {
+    "s": "Huldra",
+    "t": "Han la att ein ravn."
+   },
+   {
+    "regi": "Utanfor høyrest hestar. Døra blir slegen opp. Politiet kjem inn."
+   },
+   {
+    "s": "Politimannen",
+    "t": "Marcus Thrane. De er arresteret."
+   },
+   {
+    "s": "Thrane",
+    "t": "For hvad?"
+   },
+   {
+    "s": "Politimannen",
+    "t": "For Uroen. For Frosten paa Landet."
+   },
+   {
+    "s": "Thrane",
+    "t": "Jeg har ikke gjort det koldt, Konstabel."
+   },
+   {
+    "s": "Politimannen",
+    "t": "Nogen har."
+   },
+   {
+    "regi": "Slapp protokollvesenet unna i scene 4.16, har politimannen ei liste. Han les opp tre namn. Det er dei same tre som står under «Namn i protokollen» i Dagboka, og dei tre arbeidarane blir førte ut saman med Thrane. Vinje kjenner igjen eitt av namna. Blei vesenet fanga i 1848, har politimannen inga liste, og berre Thrane blir teken."
+   },
+   {
+    "regi": "Kaos. Spelaren har eitt val før lokalet er tomt."
+   },
+   {
+    "regi": "Val: A) Ta pakken bakarst → Aasen finn forsegla papir med Munchs segl, fulle av falske planar om opprør i Thranes namn. Han brenn dei med «Brenn». Politiet finn ikkje noko der, men Thrane blir teken likevel. B) Hjelp den unge arbeidaren → Vinje og Aasen får guten ut bakdøra. Han gir Aasen ordet «slit». C) Ta Thranes papir → Aasen reddar avisa og medlemslistene. Thrane ser det medan han blir ført ut og nikkar.",
+    "val": true
+   },
+   {
+    "regi": "Thrane blir ført ut i gata. Han snur seg i døra."
+   },
+   {
+    "s": "Thrane",
+    "t": "Hr. Aasen. Skriv det paa deres Sprog. Saa kan de ikke sige, at de ikke forstod det."
+   },
+   {
+    "regi": "Utanfor, i gata. Vinje står og ser på vogna som køyrer."
+   },
+   {
+    "s": "Vinje",
+    "t": "Dei tek han for det Munch gjer."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ja."
+   },
+   {
+    "s": "Vinje",
+    "t": "Og eg skreiv i Andhrimner at Thrane var ein narr. For å vera morosam."
+   },
+   {
+    "s": "Collett",
+    "t": "Var det morsomt?"
+   },
+   {
+    "s": "Vinje",
+    "t": "Det var det."
+   },
+   {
+    "regi": "Han seier ikkje meir. Han går framfor dei heile vegen heim."
+   },
+   {
+    "regi": "Er Berte med, kjem ei kone frå foreininga springande etter dei med ein lappa vadmålsvest."
+   },
+   {
+    "s": "Kona",
+    "t": "Det er vesten til Ole. Han trenger'n ikke i arresten. Der får de grå klær."
+   },
+   {
+    "s": "Berte",
+    "t": "Han skal få han att."
+   },
+   {
+    "s": "Kona",
+    "t": "Ta'n på. Det er rettferdig at noen går med'n så lenge."
+   },
+   {
+    "s": "Berte",
+    "t": "«iførte Retfærdighedens Panser.» Han er tung.",
+    "regi": "tek han på"
+   },
+   {
+    "s": "Kona",
+    "t": "Ole har båret mye i'n."
+   },
+   {
+    "regi": "Dagboka",
+    "sitat": true
+   },
+   {
+    "regi": "",
+    "sitat": true
+   },
+   {
+    "regi": "Christiania, 9de Juli 1851. Thrane sit i Arresten. Vinje skriv ikkje. Fru Collett segjer at han kjem til seg sjølv. Nordpå er det Sol um Natti. Eg vil høyra korleis dei talar der ingen Blekk hev vore.",
+    "sitat": true
+   }
+  ],
+  "utfall_tekst": "Valet gir ulike ord og ein tråd: A gir ein gjenstand, «Den falske pakken», som beviser at Munchs folk brukar Thrane som syndebukk og kan visast til Bjørnson seinare. B gir ei ny form av «slit» frå arbeidarane, og ordet blir kontrollert (harde konsonantar, åtak). C gir «Arbeiderbladet» som gjenstand og ein ny kvileplass hos arbeidarane i andre del av akten. Vinje får ein stille statuseffekt, «Anger», som forsvinn etter Nord-Noreg. Tråden «Namn i protokollen» blir lukka her: anten med dei tre namna på lista til politiet, eller med at lista ikkje finst. Er Berte med, får ho Brynja (vesten til Ole). Er ho ikkje med, kjem vesten til Årflot-sida med eit brev før Nord-Noreg. Sideoppdraget S2.12b opnar seg.",
+  "ord": [
+   "stein",
+   "slit"
+  ],
+  "ting": [],
+  "flagg_set": [
+   "s5_14_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": "Dagbokside (Christiania, 9de Juli 1851), så reiseetappe frå Christiania til Lofoten. Spelaren vel dampskipet rundt kysten om Kristiansand, Bergen og Trondheim, eller skyss gjennom Østerdalen til Trondheim. Frå Trondheim går Nordlandsdampskipet nordover. Huldra må vere med. Neste scene startar når partyet går i land i fiskeværet. Christiania står open for retur.",
+  "neste": "s5_15",
+  "ord_ukjende": [
+   "Arbeiderbladet",
+   "Anger"
+  ],
+  "opning_tekst": "Nord-sida opnar seg etter 7. juli 1851, når sommaren kjem. Lofoten og kysten nordover blir ope, og Nordlandsdampskipet blir ein snarveg dit. Stader utan framdrift: Kabelvåg, med den gamle Vågan kyrkje og handelsstaden, der fiskarar frå heile Nordland talar breitt nordlandsmål, og gjestgiveriet i Bodø, der dampskipet legg til og posten frå Christiania ventar.",
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:664"
+ },
+ {
+  "id": "s5_15",
+  "namn": "Lofoten",
+  "del": "5",
+  "stad_tekst": "Eit fiskevær i Lofoten",
+  "tid_tekst": "juli 1851",
+  "stad_og_tid_tekst": "Eit fiskevær i Lofoten, juli 1851",
+  "skjerm": "TRD-07",
+  "aar": 1851,
+  "med": [
+   "aasen",
+   "huldra",
+   "vinje"
+  ],
+  "med_andre": [
+   "fiskarar",
+   "ein handelsmann",
+   "ein ung prest"
+  ],
+  "med_tekst": "Aasen, huldra, Vinje, fiskarar, ein handelsmann, ein ung prest",
+  "spel": "Utforsking og samtale. Været er den første staden i akten utan snø. Midnattssola ligg lågt. Spelaren samlar ord frå fiskarane og merkar at Ordboka sluttar å fungere når samane snakkar.",
+  "steg": [
+   {
+    "regi": "Tomme hjellar. Tørrfisken er teken ned og ligg i pakkhuset til handelsmannen. Måker. Ein båt kjem inn med kvinner og menn som snakkar samisk seg imellom og norsk til handelsmannen."
+   },
+   {
+    "s": "Vinje",
+    "t": "Her er det varmt."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det er ikkje varmt."
+   },
+   {
+    "s": "Vinje",
+    "t": "Det er varmare enn i Christiania. Der fraus eg innvendes."
+   },
+   {
+    "regi": "Ein ung prest står på kaia med eit brev og les høgt for folk som ikkje høyrer etter."
+   },
+   {
+    "s": "Presten",
+    "t": "Stortinget har bevilget et Fond til Oplysning blandt Finnerne. De skal lære norsk, saa de kan læse Guds Ord og forstaa Øvrigheden."
+   },
+   {
+    "s": "Ein fiskar",
+    "t": "Dei forstår øvrigheita godt nok. Det er difor dei ikkje ler."
+   },
+   {
+    "regi": "Aasen prøver å lytte til samane ved båten. Ordboka opnar seg av seg sjølv. Sidene blar og blar og stoppar ikkje på noko."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg høyrer det. Eg kan ikkje skriva det."
+   },
+   {
+    "s": "Huldra",
+    "t": "Du skal ikkje skriva det."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kvifor ikkje?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Det er ikkje ditt mål. Det er ein annan heim."
+   },
+   {
+    "regi": "Handelsmannen står i døra til krambua. Han har ei tønne brennevin på trillebåre og ei tjukk bok under armen. Når han opnar boka, kjem blekket ut som røyk."
+   },
+   {
+    "s": "Handelsmannen",
+    "t": "Hvem er De? Opkjøber?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Ordsamlar."
+   },
+   {
+    "s": "Handelsmannen",
+    "t": "Ord er gratis her. Alt andet koster."
+   }
+  ],
+  "utfall_tekst": "Tråd: Finnefondet. Aasen merkar grensa for sitt eige folkemål. Ordboka får ei ny side med tittelen «Anna mål», som står tom. Gjeldsboka til handelsmannen blir ein fiende seinare.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": "Kartvegen i fiskeværet. Neste scene startar når partyet går ned til bålet i fjøra om kvelden.",
+  "neste": "s5_16",
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:716",
+  "skjermar": [
+   "TRD-07",
+   "LFN-02",
+   "LFN-03"
+  ]
+ },
+ {
+  "id": "s5_16",
+  "namn": "Ravdna",
+  "del": "5",
+  "stad_tekst": "Stranda utanfor fiskeværet",
+  "tid_tekst": "same natt",
+  "stad_og_tid_tekst": "Stranda utanfor fiskeværet, same natt",
+  "skjerm": "LFN-04",
+  "aar": null,
+  "med": [
+   "aasen",
+   "huldra",
+   "vinje",
+   "ravdna"
+  ],
+  "med_andre": [],
+  "med_tekst": "Aasen, huldra, Vinje, Ravdna",
+  "spel": "Samtale gjennom huldra, så kamp side om side mot blekket i gjeldsboka. Ravdna er gjest i kampen og blir med etter han.",
+  "steg": [
+   {
+    "regi": "Ei ung kvinne sit ved eit bål i fjøra. Ho bøter eit garn. Ho ser på Aasens bok og så på han."
+   },
+   {
+    "s": "Ravdna",
+    "t": "Dus lea girji. Leatgo don báhppa vai gávpeolmmái? \\[Du har ei bok. Er du prest eller handelsmann?\\]"
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva segjer ho?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho spør um du er prest eller krambu."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ingen av dei."
+   },
+   {
+    "s": "Huldra",
+    "t": "Son ii leat goabbáge. Son čohkke sániid. \\[Han er ingen av dei. Han samlar ord.\\]"
+   },
+   {
+    "s": "Ravdna",
+    "t": "Maid son áigu daiguin dahkat? \\[Kva skal han gjere med dei?\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho spør kva du skal med dei."
+   },
+   {
+    "s": "Aasen",
+    "t": "So dei ikkje skal bli borte."
+   },
+   {
+    "s": "Huldra",
+    "t": "Amas dat jávkat. \\[Så dei ikkje skal bli borte.\\]"
+   },
+   {
+    "regi": "Ravdna ler kort. Ho legg garnet ned."
+   },
+   {
+    "s": "Ravdna",
+    "t": "Sánit eai jávkka. Olbmot jávket. Sánit mannet sin mielde. \\[Orda blir ikkje borte. Folk blir borte. Orda går med dei.\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho segjer at ordi gjeng med folket. Ho meiner at du lyt ta vare på folket."
+   },
+   {
+    "s": "Aasen",
+    "t": "Sa ho alt det?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho sa det kortare."
+   },
+   {
+    "regi": "Vinje har sett seg på ein stein."
+   },
+   {
+    "s": "Vinje",
+    "t": "Kan du lære meg å seia noko?"
+   },
+   {
+    "s": "Ravdna",
+    "t": "In. \\[Nei.\\]"
+   },
+   {
+    "s": "Vinje",
+    "t": "Kva sa ho?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Nei."
+   },
+   {
+    "s": "Vinje",
+    "t": "Det skjøna eg."
+   },
+   {
+    "regi": "Eit rop frå krambua. Gjeldsboka til handelsmannen har opna seg. Blekket strøymer ned i fjøra og tek form av gamle fiskarar med tomme lommer og svarte tal over hjartet."
+   },
+   {
+    "regi": "Kamp: «Gjeldsbøkene». Blekkvesena gir statuseffekten «Skuld», som gjer at den som blir råka, hoppar over kvar andre tur. Aasens galdr verkar halvt. Ravdna joikar for første gong i spelet: ho joikar stranda, og tidvatnet dreg blekket ut i sjøen. Joiken bind ingen. Etter kampen står ingen av vesena i Ordboka."
+   },
+   {
+    "s": "Ravdna",
+    "t": "Gáddi, gáddi, lo lo lo / mearra boahtá, mearra manná, voia voia / váldá mielddis čáhppes sániid, nana na. \\[Stranda, stranda / havet kjem, havet går / tek med seg dei svarte orda.\\]",
+    "regi": "joikar"
+   },
+   {
+    "s": "Aasen",
+    "t": "Kvar vart dei av?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho song dei heim."
+   },
+   {
+    "s": "Ravdna",
+    "t": "Mun manan dinguin máttás muhtun áiggi. Gávpeolmmái dovdá mu ámadaju dál. \\[Eg går sørover med dykk ei tid. Handelsmannen kjenner andletet mitt no.\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho vil gå med oss. Ho segjer det er for handelsmannen si skuld. Det er ikkje heile sanningi."
+   }
+  ],
+  "utfall_tekst": "Ravdna blir med i partyet for ein periode. Ho brukar joik i staden for galdr. Joiken tek tid å byggje opp og bind ingenting, så vesena ho vinn over, gir inga oppføring i Ordboka og inga påkalling. Spelaren må velje mellom å samle og å la vere. Samtalar med Ravdna går alltid gjennom huldra, og huldra omset ikkje alltid ord for ord.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": "Kartvegen opp frå fjøra. Neste scene startar når partyet kviler ved bålet på hellersteinen over været, under midnattssola.",
+  "neste": "s5_17",
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:740"
+ },
+ {
+  "id": "s5_17",
+  "namn": "Joiken",
+  "del": "5",
+  "stad_tekst": "Ein hellerstein over fiskeværet, midnattssol",
+  "tid_tekst": "juli 1851",
+  "stad_og_tid_tekst": "Ein hellerstein over fiskeværet, midnattssol, juli 1851",
+  "skjerm": "LFN-05",
+  "aar": 1851,
+  "med": [
+   "aasen",
+   "huldra",
+   "ravdna",
+   "vinje"
+  ],
+  "med_andre": [],
+  "med_tekst": "Aasen, huldra, Ravdna, Vinje",
+  "spel": "Mellomsekvens med eitt lite val. Ingen kamp. Spelaren styrer berre kameraet sakte rundt bålet. Musikken er Ravdnas stemme åleine.",
+  "steg": [
+   {
+    "regi": "Sola står lågt over havet og går ikkje ned. Huldra sit med armane rundt knea. Ho har vore stille heile kvelden."
+   },
+   {
+    "s": "Aasen",
+    "t": "Du er trøytt."
+   },
+   {
+    "s": "Huldra",
+    "t": "Eg vantar noko. Eg veit ikkje kva."
+   },
+   {
+    "s": "Aasen",
+    "t": "Dei to ordi."
+   },
+   {
+    "s": "Huldra",
+    "t": "Meir enn dei. Det er eit hol der ringen sat."
+   },
+   {
+    "regi": "Ho ser ned på handleddet sitt. Det er ingenting der, men huda er lysare i ei smal stripe."
+   },
+   {
+    "s": "Ravdna",
+    "t": "Maid son dadjá? \\[Kva seier ho?\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ahte mus váilu juoga. \\[At eg manglar noko.\\]"
+   },
+   {
+    "s": "Ravdna",
+    "t": "Mii du namma lea? \\[Kva heiter du?\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Mus ii leat namma. \\[Eg har ikkje noko namn.\\]"
+   },
+   {
+    "regi": "Ravdna ser lenge på henne."
+   },
+   {
+    "s": "Ravdna",
+    "t": "De mun juoiggan du. Luohti ii dárbbaš nama. \\[Då joikar eg deg. Ein joik treng ikkje namn.\\]"
+   },
+   {
+    "regi": "Huldra omset ikkje. Aasen ser på henne."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva sa ho?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho vil syngja meg."
+   },
+   {
+    "s": "Aasen",
+    "t": "Vil du det?"
+   },
+   {
+    "regi": "Val: A) «Du treng ikkje» → HULDRA: «Eg veit.» Ho nikkar til Ravdna likevel. B) Sei ingenting → Huldra ser på Aasen. Han ser ned. Ho nikkar til Ravdna.",
+    "val": true
+   },
+   {
+    "regi": "Huldra tek fram beinstykket frå den gamle kvinna på Helgeland og legg det i handa til Ravdna. Ravdna kjenner på dei innskorne strekane med tommelen og nikkar, som om ho har fått ein tone å byrje på."
+   },
+   {
+    "s": "Ravdna",
+    "t": "Dát boahtá máttasámiin. Son diđii ahte muhtun boahtá juoigat du. \\[Dette er frå sørsamane. Ho visste at nokon skulle kome og joike deg.\\]"
+   },
+   {
+    "regi": "Ravdna lukkar auga. Ho byrjar lågt, utan ord. Joiken har inga byrjing. Den er der alt, og ho trer inn i den."
+   },
+   {
+    "regi": "Anvisning: joiken skal vere eitt av dei sterkaste augeblinka i spelet. Ingen tekst på skjermen. Musikken er ei enkel kvinnestemme, teken opp ute, med vind og hav under. Joiken skildrar ingenting. Den er huldra: noko raskt og skeivt som ler og så går tungt i snøen. Kameraet går frå Ravdnas andlet til huldras."
+   },
+   {
+    "regi": "Huldra byrjar å gråte utan lyd. Rundt henne dukkar det opp bilete i lyset frå midnattssola, svake som om dei var måla på luft. Ei seter om kvelden. Tusen år med kyr. Ei hand som set ein jernring rundt handleddet hennar. Snø. Eit brev på eit bål. Eit segl i raudt lakk."
+   },
+   {
+    "regi": "Seglet blir ståande i lufta. Ein ravn over ei open bok."
+   },
+   {
+    "s": "Huldra",
+    "t": "Ravnen."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ravnen var på ringen. Eg såg han kvar dag. Eg såg han når Asbjørnsen las brevet. Han var på brevet òg. Ivar, det var han heile tida."
+   },
+   {
+    "s": "Aasen",
+    "t": "Munch."
+   },
+   {
+    "s": "Huldra",
+    "t": "Det var Asbjørnsen som sette ringen på meg. Ringen var Munch sin."
+   },
+   {
+    "regi": "Joiken held fram. Ravdna opnar ikkje auga. No syng ho noko anna, noko lysare. Huldra ler midt i gråten."
+   },
+   {
+    "s": "Huldra",
+    "t": "No syng ho meg slik eg er no. Det er ikkje det same."
+   },
+   {
+    "s": "Aasen",
+    "t": "Er det betre?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Det er meir."
+   },
+   {
+    "regi": "Joiken stilnar. Ravdna opnar auga. Vinje sit med andletet i hendene. Han seier ingenting på lenge."
+   },
+   {
+    "s": "Ravdna",
+    "t": "Dál sus lea luohti. Dat gullá sutnje. Ii oktage sáhte dan čállit. \\[No har ho ein joik. Han høyrer henne til. Ingen kan skrive han.\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Giitu. \\[Takk.\\]"
+   },
+   {
+    "s": "Ravdna",
+    "t": "It dárbbaš giitit. Don ledjet doppe olles áiggi. \\[Du treng ikkje takke. Du var der heile tida.\\]"
+   },
+   {
+    "regi": "Aasen har ordboka open i fanget. Han har ikkje skrive noko. Han lukkar den."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva heiter det, det ho gjorde?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho joika meg."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg meinte ordet for det du vart."
+   },
+   {
+    "s": "Huldra",
+    "t": "Det ordet fær du ikkje."
+   }
+  ],
+  "utfall_tekst": "Huldra hugsar at det var Munchs segl på runeringen. Tråden frå prologen blir lukka: velgjeraren i brevet var Munch. Dei to tapte orda kjem tilbake, men dei står ikkje i Ordboka. Dei ligg i ein ny meny under huldras namn i partyoversikta, merkt med eit lite noteark utan notar. Beinstykket frå Helgeland får no verknad: det gjer at joiken når heilt inn til minnet om ringen, og det følgjer huldra resten av spelet som eit vern mot binding. Evne for huldra: «Joiken min» (full lækjing for henne sjølv ein gong per kamp). Vinjes «Anger» forsvinn.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "s5_17_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": "Kartvegen i Lofoten. Kysten nordover er open. Neste scene startar når partyet går inn i naustet ved fiskeværet ein søndag. Då går Dagboka fram til august.",
+  "neste": "s5_18",
+  "ord_ukjende": [
+   "Anger"
+  ],
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:768"
+ },
+ {
+  "id": "s5_18",
+  "namn": "Forkynnaren i naustet",
+  "del": "5",
+  "stad_tekst": "Eit naust ved fiskeværet, søndag",
+  "tid_tekst": "august 1851",
+  "stad_og_tid_tekst": "Eit naust ved fiskeværet, søndag, august 1851",
+  "skjerm": "LFN-06",
+  "aar": 1851,
+  "med": [
+   "aasen",
+   "huldra",
+   "ravdna",
+   "vinje",
+   "berte"
+  ],
+  "med_andre": [
+   "ein læstadiansk lekpredikant (samisk)",
+   "fiskarar",
+   "handelsmannen"
+  ],
+  "med_tekst": "Aasen, huldra, Ravdna, Vinje, Berte (valfritt), ein læstadiansk lekpredikant (samisk), fiskarar, handelsmannen",
+  "spel": "Samtale, så bosskamp mot handelsmannen og brennevinet. Predikanten står med partyet som vernemål.",
+  "steg": [
+   {
+    "regi": "Naustet er fullt. Folk står tett. Ein eldre mann utan prestekjole står på ei tønne og talar på samisk. Folk græt. Nokre ropar. Ravdna står heilt bakarst."
+   },
+   {
+    "s": "Predikanten",
+    "t": "Gávpeolmmái vuovdá didjiide viinni lávvordaga ja váldá din fatnasiid mánnodaga. Dat ii leat Ipmila dáhttu. Dat lea su dáhttu. \\[Handelsmannen sel dykk brennevin om laurdagen og tek båtane dykkar om måndagen. Det er ikkje Guds vilje. Det er hans vilje.\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Han talar mot brennevinet. Han talar som Berte i røykstova, Ivar. Med sitt eige mål."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg hugsar det."
+   },
+   {
+    "regi": "Aasen står stille og lyttar. Anvisning: sjølv om han ikkje forstår orda, gir scena Aasen den same vesle lyseffekten som scena med Berte i første akt. Skam fell frå han."
+   },
+   {
+    "regi": "Døra blir slegen opp. Handelsmannen kjem inn med to kraftige karar og ei tønne."
+   },
+   {
+    "s": "Handelsmannen",
+    "t": "Søndagsmøde. Saa er det vel ogsaa Søndagspris."
+   },
+   {
+    "s": "Predikanten",
+    "t": "Mana olggos. \\[Gå ut.\\]"
+   },
+   {
+    "s": "Handelsmannen",
+    "t": "Jeg forstaar ikke Finnesprog."
+   },
+   {
+    "s": "Vinje",
+    "t": "Han sa at du skal gå ut. Me forstod det alle saman."
+   },
+   {
+    "regi": "Handelsmannen slår opp tønna. Brennevinet renn over golvet og reiser seg som ein gjennomsiktig skikkelse med gjeldsboka som hjarte."
+   },
+   {
+    "regi": "Kamp: «Brennevinsånda». Den gjer partyet forvirra og får dei til å gå til åtak på kvarandre. Predikanten er vernemål med Steg 2 for preika. Teljinga går ned kvar runde han ikkje blir treft, og ho går tilbake til 2 når han blir treft. Ved null preikar han, og forvirringa blir løfta. Ravdna joikar naustet, og veggene held ånda inne. Sluttslaget kjem når spelaren går til åtak på gjeldsboka i hjartet av ånda."
+   },
+   {
+    "regi": "Etter kampen. Gjeldsboka ligg våt på golvet. Handelsmannen er borte. Predikanten tek opp boka og ber den ut til bålet."
+   },
+   {
+    "s": "Predikanten",
+    "t": "Dát galgá buollit. Ii oktage leat šat velggolaš sutnje. \\[Denne skal brenne. Ingen skuldar han noko lenger.\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Han segjer at ingen skuldar handelsmannen noko lenger."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det er ei bok som brenn. Eg hev brent ei sjølv. PREDIKANTEN (ser på Aasen, på dansk-norsk med tung aksent): Du. Skriver."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ja."
+   },
+   {
+    "s": "Predikanten",
+    "t": "Skriv sant."
+   },
+   {
+    "regi": "Han går. Ravdna følgjer han med auga."
+   },
+   {
+    "s": "Ravdna",
+    "t": "Girku válddii mu áhkus giela. Dát olmmái addá dan ruovttoluotta. In dieđe maid galggan jáhkkit girku birra. \\[Kyrkja tok språket frå bestemor mi. Denne mannen gir det tilbake. Eg veit ikkje kva eg skal tru om kyrkja.\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho veit ikkje kva ho skal tru um kyrkja."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ikkje eg heller."
+   },
+   {
+    "s": "Huldra",
+    "t": "Det sa eg ikkje til henne."
+   },
+   {
+    "regi": "Er Berte med: Predikanten stansar i døra og ser ned på skorne hennar. Dei er slitne gjennom."
+   },
+   {
+    "s": "Predikanten",
+    "t": "Don leat vázzán guhkás vai beasat sárdnidit. \\[Du har gått langt for å få tale.\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Han seier du har gått langt for å tale."
+   },
+   {
+    "s": "Berte",
+    "t": "Frå Sunnmøre."
+   },
+   {
+    "regi": "Predikanten tek av seg komagane og set dei framfor henne. Han går berrføtt ut i sanden."
+   },
+   {
+    "s": "Berte",
+    "t": "Kva skal han gå i?"
+   },
+   {
+    "s": "Huldra",
+    "t": "Han seier han er heime."
+   },
+   {
+    "s": "Berte",
+    "t": "«Fødderne ombundne med Færdighed i Fredens Evangelium.» (Ser etter han.) Eg forstod ikkje eit ord av preika hans.",
+    "regi": "tek dei på"
+   },
+   {
+    "s": "Huldra",
+    "t": "Du sat og nikka heile tida."
+   },
+   {
+    "s": "Berte",
+    "t": "Ja. Eg forstod ho likevel."
+   },
+   {
+    "regi": "Dagboka",
+    "sitat": true
+   },
+   {
+    "regi": "",
+    "sitat": true
+   },
+   {
+    "regi": "Lofoten, 20de August 1851. Hev lært at det finst Ord eg aldri skal skriva. Det er ikkje tungt. Det er lettare. Ravdna fylgjer oss sudetter. Ho segjer lite, og det ho segjer, fær eg berre høyra gjenom deg.",
+    "sitat": true
+   }
+  ],
+  "utfall_tekst": "Kyrkja får eit nytt andlet i akten: forkynnaren som talar med autoritet på sitt eige mål. Tråd blir opna mot Kautokeino (Ravdna ser både handelsmennene og kyrkja med andre auge). Gjenstand: «Forkynnarens psalmebok», som gir vern mot forvirring. Skam er borte frå Aasen for resten av akten. Er Berte med, får ho Skorne (komagane frå forkynnaren), og samspelet Ord og joik opnar seg. Er ho ikkje med, står komagane att i naustet og kan hentast der seinare, når partyet reiser nord att.",
+  "ord": [],
+  "ting": [
+   "forkynnarens_psalmebok"
+  ],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": "Dagbokside (Lofoten, 20de August 1851), så reiseetappe sørover til Christiania med same ruteval som på veg nord. Ravdna følgjer med. Neste scene startar når partyet går inn i den nye hybelen 1. oktober. Nord-sida står open for retur med dampskip.",
+  "neste": "s5_19",
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:820"
+ },
+ {
+  "id": "s5_19",
+  "namn": "Hybelen",
+  "del": "5",
+  "stad_tekst": "Aasens nye hybel i ein bakgard i Storgata, mellom Stortorvet og Vaterland, Christiania, 1",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Aasens nye hybel i ein bakgard i Storgata, mellom Stortorvet og Vaterland, Christiania, 1. oktober 1851",
+  "skjerm": "CHR-12a",
+  "aar": 1851,
+  "med": [
+   "aasen",
+   "huldra",
+   "vinje",
+   "ravdna"
+  ],
+  "med_andre": [],
+  "med_tekst": "Aasen, huldra, Vinje, Ravdna",
+  "spel": "Innreiing. Spelaren plasserer Aasens få ting i eit lite rom: kista med ordboka, eit bord, ein stol og eit vindauge mot ein bakgard. Kvar ting som blir plassert, gir ein kort replikk. Hybelen blir kvileplass for resten av spelet.",
+  "steg": [
+   {
+    "regi": "Eit rom under taket. Ei seng, eit bord, eit vindauge. Aasen står midt i rommet med kista."
+   },
+   {
+    "s": "Vinje",
+    "t": "Er det heile?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Det er nok."
+   },
+   {
+    "s": "Vinje",
+    "t": "Du kunne ha fått noko større for stipendet."
+   },
+   {
+    "s": "Aasen",
+    "t": "Då måtte eg ha fylt det."
+   },
+   {
+    "regi": "Ravdna ser seg rundt og seier noko kort."
+   },
+   {
+    "s": "Ravdna",
+    "t": "Son ássá dego olmmoš gii áigu vuolgit. \\[Han bur som ein som har tenkt å reise.\\]"
+   },
+   {
+    "s": "Huldra",
+    "t": "Ho segjer det er eit godt rom."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det sa ho ikkje."
+   },
+   {
+    "s": "Huldra",
+    "t": "Nei."
+   },
+   {
+    "regi": "Aasen set kista under vindauget. Han tek fram ordboka og legg den på bordet. Så tek han fram hårlokken frå Ørsta og legg den i skuffa."
+   },
+   {
+    "regi": "Har spelaren henta lampa med den grøne skjermen frå den gamle hybelen (scene 4.31), set Aasen den på bordet. Han ser på den ei stund før han tenner."
+   },
+   {
+    "s": "Vinje",
+    "t": "Er det ikkje professoren si?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Han sa eg skulle gje ho att når ordboka var ferdig. Ho er ikkje ferdig."
+   },
+   {
+    "s": "Huldra",
+    "t": "Du hev enno det."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ja."
+   },
+   {
+    "s": "Huldra",
+    "t": "Kvifor?"
+   },
+   {
+    "s": "Aasen",
+    "t": "Det kom i eit brev."
+   },
+   {
+    "regi": "Ho svarar ikkje. Ho går bort til vindauget og ser ut."
+   }
+  ],
+  "utfall_tekst": "Hybelen er kvileplass og ny heimebase. Han ligg i Storgata 6, der Aasen budde frå 1. oktober 1851 til 31. august 1857, slik som i røynda. Seinare budde Aasen i Teatergata 6 og frå 1880 i Holbergs gate. I spelet er hybelen i Storgata heimebasen, og epilogen går i Holbergs gate. Hårlokken kan sjåast i skuffa kvar gong spelaren kviler her. Tråden om lampa frå Munch blir lukka her: har spelaren henta den, står den på bordet resten av spelet og gir igjen dobbel kraft til rotformer laga ved den (sjå 4.1). Det er denne lampa som står på bordet i 1885.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": "Kartvegen i Christiania. Hybelen er heimebasen frå no. Der byter spelaren party, les post og vel neste spor. Neste scene startar når partyet går ned på brygga ein grå dag i slutten av oktober.",
+  "neste": "s5_20",
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:862",
+  "skjermar": [
+   "CHR-12a",
+   "CHR-14a"
+  ]
+ },
+ {
+  "id": "s5_20",
+  "namn": "Ibsen reiser",
+  "del": "5",
+  "stad_tekst": "Brygga i Christiania",
+  "tid_tekst": "slutten av oktober 1851, grått vêr",
+  "stad_og_tid_tekst": "Brygga i Christiania, slutten av oktober 1851, grått vêr",
+  "skjerm": "CHR-08",
+  "aar": 1851,
+  "med": [
+   "aasen",
+   "vinje",
+   "huldra"
+  ],
+  "med_andre": [
+   "Ibsen"
+  ],
+  "med_tekst": "Aasen, Vinje, Ibsen, huldra",
+  "spel": "Kort samtale. Spelaren kan gi Ibsen ein gjenstand frå inventaret som avskilsgåve. Gåva dukkar opp igjen i Bergen seinare i akten.",
+  "steg": [
+   {
+    "regi": "Eit dampskip ligg ved kaia. Ibsen står ved landgangen med ein koffert og eit brev i handa. Han har ikkje fortalt nokon at han reiser."
+   },
+   {
+    "s": "Vinje",
+    "t": "Henrik! Du skulle stikke av utan å seia noko."
+   },
+   {
+    "s": "Ibsen",
+    "t": "Ja."
+   },
+   {
+    "s": "Vinje",
+    "t": "Kvar skal du?"
+   },
+   {
+    "s": "Ibsen",
+    "t": "Bergen. Ole Bull har et teater. Han trenger en som kan skrive."
+   },
+   {
+    "s": "Vinje",
+    "t": "Du kan skriva."
+   },
+   {
+    "s": "Ibsen",
+    "t": "Han trenger en som kan lytte også. Jeg har lyttet et år i Botten-Hansens stue."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kva høyrde du?"
+   },
+   {
+    "s": "Ibsen",
+    "t": "At de snakker om Norge som om det var en bok de hadde lest. Jeg vil se folk på en scene i stedet."
+   },
+   {
+    "regi": "Han ser på huldra."
+   },
+   {
+    "s": "Ibsen",
+    "t": "Det var riktig av deg, Vinje. Den natten."
+   },
+   {
+    "s": "Vinje",
+    "t": "Du sa ingenting den natta."
+   },
+   {
+    "s": "Ibsen",
+    "t": "Jeg skriver det heller."
+   },
+   {
+    "s": "Huldra",
+    "t": "Ikkje skriv meg."
+   },
+   {
+    "s": "Ibsen",
+    "t": "Nei. Jeg skal skrive om andre."
+   },
+   {
+    "regi": "Skipsklokka ringjer."
+   },
+   {
+    "regi": "Val: A) Gi Ibsen stipendbrevet eit augeblink å lese → Ibsen smiler for første gong. «Staten betaler Dem for å lytte. Det må være første gang.» B) Gi han eit ord → Aasen seier «heim» til han. Ibsen gjentek det, med sin eigen skarpe uttale. C) Gi han ingenting → Ibsen nikkar og går om bord.",
+    "val": true
+   },
+   {
+    "regi": "Ibsen går opp landgangen. Han snur seg ikkje. Vinje står lenge og ser."
+   },
+   {
+    "s": "Vinje",
+    "t": "No er me to att."
+   },
+   {
+    "s": "Aasen",
+    "t": "Tre. Og Ravdna."
+   },
+   {
+    "s": "Vinje",
+    "t": "Du tel alltid rett, Ivar. Det er so trøyttande."
+   }
+  ],
+  "utfall_tekst": "Ibsen forlèt patriotane og dreg til Bergen. Tråd blir opna mot Bergen og Ole Bull (neste del). Gåva frå valet kjem tilbake i scenene i Bergen.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [
+   "s5_20_val"
+  ],
+  "flagg_les": [],
+  "overgang_tekst": "Kartvegen i Christiania. Neste scene startar når Aasen bankar på hos Collett kvelden 18. desember. Etter den scena tek Knudsens kapittel kontrollen ei stund. Det som står att i Christiania, Ørsta og Nord, bør difor gjerast før.",
+  "neste": "s5_21",
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:888"
+ },
+ {
+  "id": "s5_21",
+  "namn": "Professor Collett",
+  "del": "5",
+  "stad_tekst": "Colletts heim, Christiania, 18",
+  "tid_tekst": null,
+  "stad_og_tid_tekst": "Colletts heim, Christiania, 18. desember 1851, kveld",
+  "skjerm": "CHR-03c",
+  "aar": 1851,
+  "med": [
+   "aasen"
+  ],
+  "med_andre": [
+   "Camilla Collett"
+  ],
+  "med_tekst": "Aasen, Camilla Collett",
+  "spel": "Stille scene utan val. Spelaren kan berre gå fram og setje seg.",
+  "steg": [
+   {
+    "regi": "Lysa er tende. Døra til det indre rommet står open. Det er stille der inne. Collett sit ved vindauget i ein mørk kjole. Aasen står i døra med lua i handa."
+   },
+   {
+    "s": "Collett",
+    "t": "Han døde i Eftermiddag. Lungerne."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg er lei for det."
+   },
+   {
+    "s": "Collett",
+    "t": "Ja. Det er alle."
+   },
+   {
+    "regi": "Stillheit."
+   },
+   {
+    "s": "Collett",
+    "t": "Han var en god Mand, Aasen. Han læste alt, jeg skrev, og sagde aldrig, at det var for meget."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det er sjeldan."
+   },
+   {
+    "s": "Collett",
+    "t": "Det er aldrig. Nu er der ingen, som læser det."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg kan lesa det."
+   },
+   {
+    "s": "Collett",
+    "t": "De læser Ordbøger."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg les langsamt. Eg les alt."
+   },
+   {
+    "regi": "Ho ler, kort og nesten utan lyd."
+   },
+   {
+    "s": "Collett",
+    "t": "Gaa hjem, Hr. Aasen. Kom igjen i Morgen. Jeg kommer til at skrive noget en Dag. En Roman om Døtre, som ikke faar sige noget. Jeg vil have en, som læser langsomt."
+   },
+   {
+    "regi": "Aasen går. I gata snør det tett. Anvisning: kameraet blir ståande ved vindauget hennar etter at Aasen er ute av biletet. Så blir det klipt til ein annan del av byen, der ein mann med stiv snipp går heim frå katedralskulen med ein bunke stilar under armen."
+   }
+  ],
+  "utfall_tekst": "Collett er enkje. Ho er borte frå partyet nokre veker og kjem tilbake i neste del. Tråd fraus: «Amtmandens Døttre» (1854–55). Spelet byter til Knudsens kapittel.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": "Klipp til Knudsens kapittel. Dagboka blir lukka, og sida frå Knudsens Protokol (3die Januar 1852) opnar kapitlet. Spelet tek kontrollen ei stund, frå 5.22 til 5.27. Spelaren styrer Knudsen åleine i Christiania. Hybelen, kartet og partyet til Aasen er stengde til Knudsen står ved døra til Aasen.",
+  "neste": null,
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:912"
+ },
+ {
+  "id": "s5_22",
+  "namn": "Klasse 4 B",
+  "del": "5",
+  "stad_tekst": "Katedralskulen i Christiania",
+  "tid_tekst": "januar 1852, morgon",
+  "stad_og_tid_tekst": "Katedralskulen i Christiania, januar 1852, morgon",
+  "skjerm": "CHR-03a",
+  "aar": 1852,
+  "med": [
+   "knudsen"
+  ],
+  "med_andre": [
+   "elevar i 4 B",
+   "ein elev som heiter Hans"
+  ],
+  "med_tekst": "Knudsen, elevar i 4 B, ein elev som heiter Hans",
+  "spel": "Innføring i Knudsens kampsystem. Klasserommet er ein liten dungeon der kanselliblekket har sett seg i bøkene og i munnen på elevane. Knudsen må få dei til å snakke igjen.",
+  "steg": [
+   {
+    "regi": "Eit kaldt klasserom. Tjue gutar sit heilt stille med hendene på pulten. Orda over hovuda deira står skrivne i lufta med gammal, stiv skrift. Knudsen står ved kateteret."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Godmorgen. ELEVANE (alle samtidig, i kansellistil): Godmorgen, Hr. Adjunkt."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Hans. Hvad spiste du til frokost?"
+   },
+   {
+    "s": "Hans",
+    "t": "Jeg spiiste Grød, Hr. Adjunkt."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Du sier «gröt» hjemme."
+   },
+   {
+    "s": "Hans",
+    "t": "Nej, Hr. Adjunkt."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Jo, det gjør du. Jeg har hørt deg i gården."
+   },
+   {
+    "regi": "Blekket reiser seg frå pulten til Hans som eit lite vesen i snipp og kjole."
+   },
+   {
+    "regi": "Kamp: «Ånda i stileboka». Innføring. Knudsen har evna «Ret» som skifter ein bokstav i namnet til fienden per runde. Etter tre rundar er «Grød» blitt «Grøt», og vesenet mistar halve krafta. Etter fem rundar har det fått byens eigen uttale og løyser seg opp. Anvisning i Protokollen: «Tålmodighet vinner. Hver runde teller.»"
+   },
+   {
+    "kamp": "protokollen"
+   },
+   {
+    "regi": "Hans blunkar. Han ser seg rundt."
+   },
+   {
+    "s": "Hans",
+    "t": "Grøt. Med sirup. Mor hadde kjøpt sirup."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Det var godt, Hans."
+   },
+   {
+    "s": "Hans",
+    "t": "Hvorfor har vi vært så stille, Hr. Knudsen?"
+   },
+   {
+    "s": "Knudsen",
+    "t": "Fordi noen har bestemt at dere skal skrive som døde folk. Jeg skal finne ut hvem."
+   },
+   {
+    "regi": "Resten av klassen sit framleis stille. Knudsen går frå pult til pult. Spelaren kan løyse fleire små kampar, eller gå vidare."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Aasen hadde samlet ord fra hver gård i landet. Jeg har bare denne klassen. Det får holde."
+   },
+   {
+    "regi": "Bokskåpet bak kateteret er låst, og skiltet på døra er skrive med kanselliblekk. Brukar spelaren Rett på skiltet, rettar Knudsen skrifta, og døra glir opp. Nedst, under stilebøker frå førre hundreåret, ligg ein tung jernnøkkel med monogrammet til Christian IV."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Denne passer ikke til noe i denne skolen.",
+    "regi": "veg nøkkelen i handa"
+   }
+  ],
+  "utfall_tekst": "Spelaren lærer Knudsens system: evner som blir lada («Ret», «Daglegtale», «Lydrett»). Gjenstand: Den gamle nøkkelen (nøkkelgjenstand). Han opnar Kanselliarkivet under Akershus i S2.30 når Kongsormen er slått. Ord i Protokollen blir skrivne med formene til byen. Knudsen får eit eige lite lydtre, «Talemålstreet». Tråd: Knudsen veit at blekket kjem frå ein stad i byen.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": "Kartvegen i Christiania, med Knudsen åleine. Neste scene startar når Knudsen går inn i lokalet der patriotane møtest, ein kveld i februar.",
+  "neste": "s5_23",
+  "ord_ukjende": [
+   "Talemålstreet"
+  ],
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:942",
+  "skjermar": [
+   "CHR-03a",
+   "SGH-14"
+  ]
+ },
+ {
+  "id": "s5_23",
+  "namn": "Studentersamfundet",
+  "del": "5",
+  "stad_tekst": "Eit lokale der patriotane møtest",
+  "tid_tekst": "februar 1852, kveld",
+  "stad_og_tid_tekst": "Eit lokale der patriotane møtest, februar 1852, kveld",
+  "skjerm": "CHR-06b",
+  "aar": 1852,
+  "med": [
+   "knudsen"
+  ],
+  "med_andre": [
+   "Bjørnson",
+   "Botten-Hansen",
+   "patriotar"
+  ],
+  "med_tekst": "Knudsen, Bjørnson, Botten-Hansen, patriotar",
+  "spel": "Samtale som blir til kamp. Knudsen åleine mot tre patriotar og Bjørnson. Kampen kan vinnast.",
+  "steg": [
+   {
+    "regi": "Røyk og lange bord. Bjørnson står på ein stol igjen. Botten-Hansen sit i hjørnet med ei bok og drikk ikkje. Knudsen kjem inn med snøen på skuldrene."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Adjunkten! Kommer De for at melde Dem ind?"
+   },
+   {
+    "s": "Knudsen",
+    "t": "Jeg kommer for å spørre hvem som har fryst min klasse."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Det er Vinteren."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Vinteren taler ikke kanselliprosa, Bjørnson."
+   },
+   {
+    "regi": "Latter. Botten-Hansen senkar boka."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Hr. Knudsen. De er en praktisk Mand. Munch vil Norrønt. Aasen vil Bondemaal. De vil Dansk med norsk Tone. Hvem af Dem tror De vinder?"
+   },
+   {
+    "s": "Knudsen",
+    "t": "Den som tar lengst tid på seg."
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Det er et kedeligt Svar."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Det er et riktig svar. Det er ofte kjedelig."
+   },
+   {
+    "regi": "Bjørnson hoppar ned frå stolen."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "De holder med Aasen!"
+   },
+   {
+    "s": "Knudsen",
+    "t": "Jeg har aldri holdt med Aasen. Vi er uenige om hvert eneste ord. Men han har ikke fryst noen skolegutter."
+   },
+   {
+    "regi": "Tre patriotar reiser seg med sider frå Andhrimner. Blekket stig."
+   },
+   {
+    "regi": "Kamp: «Andhrimners redaksjon». Tre fiendar med vittigheiter som åtak. Kvar vittigheit gir statuseffekten «Latterleggjord», som hindrar Knudsen i å lade evner. Knudsen må reinse seg med «Saklegheit» før han kan byggje opp igjen. Bjørnson står bak og aukar krafta til fiendane med rop. Kampen kan vinnast, men den tek lang tid."
+   },
+   {
+    "regi": "Når patriotane er slått, står Bjørnson åleine. Han rører seg ikkje."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Hvor er han, Bjørnson?"
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Jeg ved ikke, hvad De mener."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Jo. BOTTEN-HANSEN (lågt): Bag Haandskriftsamlingen, Hr. Knudsen. Paa Universitetet. Og gaa ikke derhen alene."
+   },
+   {
+    "s": "Knudsen",
+    "t": "I Raadmandsgaarden? Ved det gamle Torv?"
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Biblioteket flyttede op til Slotsveien i fjor. Haandskrifterne flyttede med. Og det, som staar bag dem."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Botten-Hansen!"
+   },
+   {
+    "s": "Botten-Hansen",
+    "t": "Jeg har ikke Lyst længer, Bjørnson. Jeg har sagt det før."
+   }
+  ],
+  "utfall_tekst": "Knudsen vinn. Botten-Hansen røper staden (Sagahallen). Tråd: Botten-Hansen er på veg bort frå Munch. Knudsen får ordet «kjedelig» som ei ladeevne: den gjer ingen skade, men gir motstand mot latterleggjering.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": "Kartvegen gjennom byen til den nye biblioteksbygningen til universitetet ved Slottsveien. Døra til Sagahallen har flytt med handskriftsamlinga frå Rådmannsgården. Neste scene startar når Knudsen går inn i gangen til handskriftsamlinga om natta.",
+  "neste": "s5_24",
+  "ord_ukjende": [
+   "kjedelig"
+  ],
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:970"
+ },
+ {
+  "id": "s5_24",
+  "namn": "Asbjørnsen og Moe",
+  "del": "5",
+  "stad_tekst": "Gangen til handskriftsamlinga i den nye biblioteksbygningen ved Slottsveien, Universitetet i Christiania",
+  "tid_tekst": "februar 1852, natt",
+  "stad_og_tid_tekst": "Gangen til handskriftsamlinga i den nye biblioteksbygningen ved Slottsveien, Universitetet i Christiania, februar 1852, natt",
+  "skjerm": "CHR-10a",
+  "aar": 1852,
+  "med": [
+   "knudsen",
+   "asbjornsen",
+   "moe"
+  ],
+  "med_andre": [],
+  "med_tekst": "Knudsen, Asbjørnsen, Moe",
+  "spel": "Bosskamp mot to motstandarar med ulike roller. Knudsen kan vinne mot Moe og halde stand mot Asbjørnsen, men ikkje begge samstundes utan å bli svekt før neste kamp.",
+  "steg": [
+   {
+    "regi": "Ein lang gang med glasmontrar. Innst ei tung dør med seglet i messing: ein ravn over ei open bok. Framfor døra står Asbjørnsen med eventyrboka og Moe med eit ark i handa."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Knudsen! Hvad i al Verden gjør De her? Klokken er tolv!"
+   },
+   {
+    "s": "Knudsen",
+    "t": "Jeg kunne spørre Dem om det samme."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Jeg er her for Videnskabens Skyld. Vi har arbeidet med Professor Munch i ... ja, nogen Aar. Han er en stor Velgjører for Folkeeventyrene."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Han har fryst min klasse."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Det er en Misforstaaelse."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Da kan De flytte Dem."
+   },
+   {
+    "regi": "Asbjørnsen ser på Moe. Moe ser ned i arket."
+   },
+   {
+    "s": "Moe",
+    "t": "Peter. Han har Ret."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Jørgen, ikke nu."
+   },
+   {
+    "s": "Moe",
+    "t": "Du sagde det samme i Fjor. Og Aaret før."
+   },
+   {
+    "regi": "Asbjørnsen opnar boka. Eit troll stig ut, bunde med tekstlinjer rundt armane."
+   },
+   {
+    "regi": "Kamp: «Samlarane». Asbjørnsen påkallar vesen frå eventyrboka: eit troll, ein nøkk, og til slutt, dersom kampen varer lenge, tussen frå «Gutten og tussen i fjøsbåsen». Moe står bak og les høgt, og kvar gong han les, blir vesena sterkare. Knudsen kan fornorske namna på vesena gradvis, og då blir dei mindre bundne og mindre villige til å slåst."
+   },
+   {
+    "regi": "Anvisning: dersom tussen blir påkalla, stoppar kampen eit augeblink. Tussen ser på Knudsen og seier «Ivar-guten?». Knudsen svarar: «Nei. Men jeg kjenner ham.» Tussen går tilbake i boka av seg sjølv."
+   },
+   {
+    "regi": "Når Knudsen har fått nøkken til å tale bymål, sluttar Moe å lese. Han legg arket ned."
+   },
+   {
+    "s": "Moe",
+    "t": "Jeg kan ikke mer, Peter."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Jørgen!"
+   },
+   {
+    "s": "Moe",
+    "t": "Hør paa ham. Han taler som Gutterne i Gaden. Og Trollet forstaar ham."
+   },
+   {
+    "regi": "Asbjørnsen senkar boka. Trollet står og ventar. Knudsen har ikkje vunne, men kampen stoppar."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Gaa hjem, Knudsen. De ved ikke, hvad der er bag den Dør."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Det er derfor jeg går inn."
+   },
+   {
+    "regi": "Døra opnar seg sjølv, innanfrå. Ei varm stemme kallar."
+   },
+   {
+    "regi": "MUNCH (utanfor biletet): Lad ham komme, Asbjørnsen. Hr. Knudsen har altid været en Mand, som vil se Tingene selv.",
+    "utan_parentes": true
+   }
+  ],
+  "utfall_tekst": "Moe har slutta å lese høgt for Munch. Asbjørnsen er usikker. Knudsen er såra, og ingen evner kan ladast før neste kamp. Spelaren får ikkje kvile. Protokollen skriv: «Jeg burde gaa hjem. Jeg gaar ind.»",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:998"
+ },
+ {
+  "id": "s5_25",
+  "namn": "Sagahallen",
+  "del": "5",
+  "stad_tekst": "Sagahallen bak handskriftsamlinga",
+  "tid_tekst": "februar 1852, natt",
+  "stad_og_tid_tekst": "Sagahallen bak handskriftsamlinga, februar 1852, natt",
+  "skjerm": null,
+  "aar": 1852,
+  "med": [
+   "knudsen",
+   "asbjornsen",
+   "moe"
+  ],
+  "med_andre": [
+   "P. A. Munch",
+   "Bjørnson",
+   "Botten-Hansen"
+  ],
+  "med_tekst": "Knudsen, P. A. Munch, Asbjørnsen, Moe, Bjørnson, Botten-Hansen",
+  "spel": "Bosskamp som ikkje kan vinnast. Knudsen åleine mot Munch. Kampen har tre fasar. Spelaren kan gjere skade, men Munch nullstiller alt. Kampen sluttar når Knudsen fell, og det er same kva spelaren gjer.",
+  "steg": [
+   {
+    "regi": "Ein hall som er større enn bygningen. Hyller av handskrifter går opp i mørkret. Midt i rommet kvervlar sagakrafta som eit nordlys fanga under taket. Kongenamn og runer flyt i det. Munch står ved ein lesepult. Han ser ut som han alltid har gjort: venleg og velstelt, med lesebriller på nasetippen."
+   },
+   {
+    "s": "Munch",
+    "t": "Hr. Knudsen. Velkommen. Jeg har læst Deres Artikler."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Jeg har lest Deres."
+   },
+   {
+    "s": "Munch",
+    "t": "Saa ved vi begge, hvad den anden mener. Det er sjeldent i dette Land."
+   },
+   {
+    "s": "Knudsen",
+    "t": "De fryser skolebarn."
+   },
+   {
+    "s": "Munch",
+    "t": "Jeg bevarer dem. Den Tale, De lærer dem, er et Dansk, der har mistet sin Holdning. Om hundrede Aar vil ingen vide, hvad der var norsk ved den. Jeg vil give dem Sproget, der var før Danskerne kom."
+   },
+   {
+    "s": "Knudsen",
+    "t": "De vil gi dem et språk ingen har snakket på fem hundre år."
+   },
+   {
+    "s": "Munch",
+    "t": "Man har ikke glemt det. Man er bare ikke blevet mindet om det."
+   },
+   {
+    "regi": "Asbjørnsen, Moe og Bjørnson kjem inn bak Knudsen. Botten-Hansen stiller seg i døropninga og kjem ikkje lenger."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Jeg taler som folk i denne byen snakker. Jeg retter én bokstav om gangen. Det tar hundre år. Da er det riktig."
+   },
+   {
+    "s": "Munch",
+    "t": "Hundrede Aar. De er en taalmodig Mand."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Jeg er skolelærer."
+   },
+   {
+    "regi": "Kamp, første fase: «Munch, historikaren». Munch går til åtak med «Rettskriven», som gjer Knudsens evner danske og kraftlause. Knudsen kan lade «Ret», men kvar gong ladinga er full, seier Munch ei norrøn form, og ladinga blir tømd. Knudsens åtak treffer og gjer skade."
+   },
+   {
+    "s": "Munch",
+    "t": "De retter en Bogstav. Jeg har en hel Oldtid."
+   },
+   {
+    "regi": "Andre fase: Munch dreg sagakrafta ned. Sagakongar med blekk i skjegga står fram frå hyllene og forsvarer han. Knudsen kan fornorske ein av dei gradvis. Då blir kongen ståande, forvirra, og seier noko på bymål. Munch ser på det med oppriktig interesse."
+   },
+   {
+    "s": "Munch",
+    "t": "Se. De gjør ham til en Arbeidsmand fra Vaterland. Det er næsten morsomt."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Han har det bedre sånn."
+   },
+   {
+    "regi": "Tredje fase. Munch løftar handa. Seglet på døra lyser. Livsmålaren til Knudsen fell med halvparten. Alle evner er låste. Spelaren kan berre velje «Stå» eller «Tale»."
+   },
+   {
+    "regi": "Anvisning: dersom spelaren vel «Stå», står Knudsen ein runde til. Dersom spelaren vel «Tale», seier Knudsen ein kort replikk. Begge kan veljast fleire gonger. Ingenting stoppar Munch."
+   },
+   {
+    "regi": "KNUDSEN (Tale 1): Jeg har rettet stiler i seks år. Jeg vet når noen skriver noe de ikke mener. KNUDSEN (Tale 2): De mener det. Det er det verste. KNUDSEN (Tale 3): Asbjørnsen. De kan gå nå.",
+    "utan_parentes": true
+   },
+   {
+    "regi": "Asbjørnsen tek eit halvt steg fram. Han opnar munnen. Han har eventyrboka i handa og fingrane på ei side. Han opnar den ikkje."
+   },
+   {
+    "s": "Munch",
+    "t": "Asbjørnsen. Jeg har altid kunnet stole paa Dem."
+   },
+   {
+    "regi": "Asbjørnsen blir ståande. Han ser på Munch, så på Knudsen. Han dreg handa bort frå boka."
+   },
+   {
+    "regi": "Bjørnson står heilt stille. Han har hendene knytte. Han seier ingenting. Kameraet stoppar på andletet hans eitt sekund lenger enn det treng."
+   },
+   {
+    "regi": "Munch senkar handa. Sagakrafta fell over Knudsen som snø. Knudsen går ned på eitt kne. Han prøver å reise seg og kjem halvvegs."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Hjem."
+   },
+   {
+    "regi": "Han seier det lågt, til seg sjølv. Så fell han."
+   },
+   {
+    "regi": "Munch går bort og ser ned på han. Han tek av seg brillene."
+   },
+   {
+    "s": "Munch",
+    "t": "Han er en hæderlig Mand. Bær ham ud. Læg ham ikke i Sneen. Jeg er ingen Barbar."
+   }
+  ],
+  "utfall_tekst": "Knudsen er slått. Kampen kan ikkje vinnast. Spelet lagrar likevel kor mykje skade spelaren gjorde, og kor mange gonger Knudsen stod. Talet dukkar opp i Morgenbladet-striden seinare som «Knudsens rundar». Tråd: Munchs styrke er kjend. Asbjørnsen og Bjørnson har sett kva dei er med på.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:1030"
+ },
+ {
+  "id": "s5_26",
+  "namn": "Trappa",
+  "del": "5",
+  "stad_tekst": "Trappa utanfor Universitetet",
+  "tid_tekst": "same natt",
+  "stad_og_tid_tekst": "Trappa utanfor Universitetet, same natt",
+  "skjerm": "CHR-10",
+  "aar": null,
+  "med": [
+   "knudsen",
+   "asbjornsen",
+   "moe"
+  ],
+  "med_andre": [
+   "Bjørnson"
+  ],
+  "med_tekst": "Knudsen, Bjørnson, Asbjørnsen, Moe",
+  "spel": "Mellomsekvens. Ingen kontroll.",
+  "steg": [
+   {
+    "regi": "Snø. Knudsen sit i trappa, lent mot ei søyle. Blodet har frose i augebrynet. Moe står ved sida av han med sitt eige skjerf rundt halsen hans."
+   },
+   {
+    "regi": "Asbjørnsen kjem ut. Han har frakken over armen. Han står i døra."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Knudsen. Jeg ... Han sagde, at ingen skulde komme til Skade. Han sagde det i ti Aar."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Og De trodde ham."
+   },
+   {
+    "s": "Asbjørnsen",
+    "t": "Jeg vilde tro ham."
+   },
+   {
+    "regi": "Han rekkjer fram frakken. Knudsen tek den ikkje. Asbjørnsen legg den på trappetrinnet ved sida av han og går inn igjen. Døra går att etter han."
+   },
+   {
+    "s": "Moe",
+    "t": "Han kommer til at vende om. Jeg tror det."
+   },
+   {
+    "s": "Knudsen",
+    "t": "De tror mye, Moe."
+   },
+   {
+    "s": "Moe",
+    "t": "Det er mit Fag."
+   },
+   {
+    "regi": "Bjørnson kjem ut sist. Han stoppar nedst i trappa. Han ser ikkje på Knudsen."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Jeg skulde have sagt noget."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Ja."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Jeg har aldrig været stille før. Aldrig. Jeg taler altid."
+   },
+   {
+    "s": "Knudsen",
+    "t": "I kveld gjorde De ikke det."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Nej."
+   },
+   {
+    "regi": "Han står lenge."
+   },
+   {
+    "s": "Bjørnson",
+    "t": "Min Far skrev fra Nesset i Gaar. Kirkeklokken er frosset. Folk gaar til Kirke og synger ikke. Han skriver, at det har været saadan siden Nytaar."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Da vet De hvorfor."
+   },
+   {
+    "regi": "Bjørnson går. Han går fort, med hovudet nede, gjennom snøen."
+   },
+   {
+    "regi": "Moe hjelper Knudsen opp. Knudsen tek ikkje frakken til Asbjørnsen. Han tek skjerfet til Moe."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Takk for skjerfet."
+   },
+   {
+    "s": "Moe",
+    "t": "Hvor skal De hen?"
+   },
+   {
+    "s": "Knudsen",
+    "t": "Til en mann jeg ikke er enig med."
+   }
+  ],
+  "utfall_tekst": "Asbjørnsens nøling er synleg og usvara. Bjørnsons skam er open. Gjenstand: Moes skjerf (Knudsen held på det; det dukkar opp igjen i 1852 når Moe blir vend om). Asbjørnsens frakk blir liggjande i trappa og kan hentast av Aasen seinare som eit lite sideoppdrag.",
+  "ord": [],
+  "ting": [
+   "moes_skjerf"
+  ],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": null,
+  "neste": null,
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:1076",
+  "skjermar": [
+   "CHR-10",
+   "FSK-07"
+  ]
+ },
+ {
+  "id": "s5_27",
+  "namn": "Døra",
+  "del": "5",
+  "stad_tekst": "Trappa opp til Aasens hybel i Storgata",
+  "tid_tekst": "same natt, seint",
+  "stad_og_tid_tekst": "Trappa opp til Aasens hybel i Storgata, same natt, seint",
+  "skjerm": "CHR-03",
+  "aar": null,
+  "med": [
+   "knudsen"
+  ],
+  "med_andre": [
+   "så Aasen"
+  ],
+  "med_tekst": "Knudsen, så Aasen",
+  "spel": "Knudsen går gjennom byen åleine. Spelaren styrer han sakte. Han haltar. Alle gatene er tomme. Ved kvar gatelykt kan spelaren stoppe og la Knudsen seie eitt ord høgt. Orda er ord frå talen i byen. Dei gir ingen effekt.",
+  "steg": [
+   {
+    "regi": "Gatene er kvite. Knudsen går forbi katedralskulen i Dronningens gate, der Stortinget òg held til, og ser opp på vindauga i klasserommet. Han går forbi huset til Collett, der det står eit lys i vindauget."
+   },
+   {
+    "regi": "Ved ein gatelykt kan spelaren trykkje. Knudsen seier:"
+   },
+   {
+    "s": "Knudsen",
+    "t": "Gate."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Snø."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Gutt."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Kald."
+   },
+   {
+    "regi": "Han kjem til ein bakgard. Ei smal trapp. Øvst ei dør med ein papirlapp der det står med pertentleg skrift: «I. Aasen»."
+   },
+   {
+    "regi": "Knudsen går opp trappa. Han stoppar framfor døra. Han løftar handa for å banke og held den i lufta."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Landsmålsmannen."
+   },
+   {
+    "regi": "Han bankar. Stillheit. Så lyd av ein stol som blir skuva bakover. Steg. Døra går opp på gløtt. Lampelys fell ut i trappa."
+   },
+   {
+    "regi": "Aasen står i døra med fjørpenn i handa og blekk på fingrane. Han ser på blodet i augebrynet til Knudsen og på skjerfet, som ikkje er hans."
+   },
+   {
+    "s": "Aasen",
+    "t": "Knudsen."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Aasen. Jeg har tapt."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kven for?"
+   },
+   {
+    "s": "Knudsen",
+    "t": "For Munch. Jeg gikk inn alene. Det var dumt."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ja."
+   },
+   {
+    "s": "Knudsen",
+    "t": "De kunne si noe annet."
+   },
+   {
+    "s": "Aasen",
+    "t": "Det var modig. Og dumt."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Takk."
+   },
+   {
+    "regi": "Stillheit. Knudsen ser forbi Aasen, inn i det vesle rommet med eitt bord og ein stol."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Jeg har ikke tenkt å bli enig med Dem. Om noe."
+   },
+   {
+    "s": "Aasen",
+    "t": "Nei."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Han tar barna i min klasse. Han tar Deres bønder."
+   },
+   {
+    "s": "Aasen",
+    "t": "Eg veit det."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Da trenger De en som vet hvordan byen snakker."
+   },
+   {
+    "regi": "Aasen ser på han lenge. Så går han til sides og held døra opp."
+   },
+   {
+    "s": "Aasen",
+    "t": "Kom inn i varmen. Du er langt heimanfrå."
+   },
+   {
+    "s": "Knudsen",
+    "t": "Hjemmefra."
+   },
+   {
+    "s": "Aasen",
+    "t": "Ja, ja."
+   },
+   {
+    "regi": "Knudsen blir ståande på terskelen, med den eine foten inne og den andre ute i snøen. Biletet frys der. Dagboka opnar seg over biletet."
+   },
+   {
+    "regi": "Dagboka",
+    "sitat": true
+   },
+   {
+    "regi": "",
+    "sitat": true
+   },
+   {
+    "regi": "Christiania, 24de Februar 1852. Knudsen kom i Natt. Han segjer «hjem». Eg lét det vera.",
+    "sitat": true
+   }
+  ],
+  "utfall_tekst": "Knudsen blir med i partyet. Han held på sitt eige kampsystem med evner som blir lada over rundar, og han kan kombinere «Ret» med Aasens rotformer til ei felles evne, «Tvo mål» (blir lada i fire rundar, slår hardt mot kanselliblekk). Tråd blir opna: striden i Morgenbladet 1852–53, der Munch skriv mot Knudsen og Knudsen svarar. Den blir eit sideoppdrag i neste del, med stevjing i prosa. Dagboka opnar nye sider: Bergen, Hallingdal og ei grå side for Dovrefjell. Neste del byrjar i Bergen med Ole Bull og Ibsen.",
+  "ord": [],
+  "ting": [],
+  "flagg_set": [],
+  "flagg_les": [],
+  "overgang_tekst": "Dagbokside. Neste del opnar med sida «Christiania, i Mars 1852». Knudsens kapittel er over, og kontrollen går tilbake til Aasen i hybelen, med Knudsen i partyet. Dagboka er oppdragsloggen att. Bergen og Ole Bull-tråden (6.1) kan takast fritt. Reisa dit står i overgangen før 6.1.",
+  "neste": null,
+  "kjelde": "04 Manus/05 Fimbulvinteren, første del.md:1106",
+  "skjermar": [
+   "CHR-03",
+   "CHR-14",
+   "CHR-14a"
+  ]
+ }
+]

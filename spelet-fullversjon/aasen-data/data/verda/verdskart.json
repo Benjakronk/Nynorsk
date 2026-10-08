@@ -1,0 +1,1525 @@
+{
+ "epokar": [
+  {
+   "epoke_tekst": "Barndomen og ungdomen, 1816 til 1841",
+   "epokar": [
+    "barndomen",
+    "ungdomen"
+   ],
+   "kartet": "Inga verdskart. Feltet er verda",
+   "ope": "Ørsta, seinare Sunnmøre med båt. Bergen 1841 er eige felt",
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:15"
+  },
+  {
+   "epoke_tekst": "Reiseåra, 2.2 til 3.25",
+   "epokar": [],
+   "kartet": "Verdskartet, region for region etter ruta til Aasen",
+   "ope": "Kvar region partyet har vore i, står open for retur med skyss og båt. Kystleia frå 2.6",
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:16"
+  },
+  {
+   "epoke_tekst": "Christiania-åra, september 1847 til juli 1850",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren"
+   ],
+   "kartet": "Christiania med hybelen. Utfarter som spor i Dagboka",
+   "ope": "Christiania, Gulsvik (spor F), Bergen (spor G og S2.18), V11 og V12. Tidlegare regionar kan nåast med dampskip og skyss",
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:17"
+  },
+  {
+   "epoke_tekst": "Den faste natta, 30. juli til 4. august 1850",
+   "epokar": [
+    "christiania_aara",
+    "fimbulvinteren"
+   ],
+   "kartet": "Kartet er stengt",
+   "ope": "Berre Christiania",
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:18"
+  },
+  {
+   "epoke_tekst": "Fimbulvinteren, første del, 5.1 til 5.21",
+   "epokar": [],
+   "kartet": "Opnar seg gradvis",
+   "ope": "Ørsta og Årflot, Christiania. Januar 1851: Romsdalen, Gudbrandsdalen, Mjøsa og Trondhjemsvegen som veg med skysslede. Nord etter 7. juli 1851",
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:19"
+  },
+  {
+   "epoke_tekst": "Knudsens kapittel, januar og februar 1852",
+   "epokar": [
+    "fimbulvinteren"
+   ],
+   "kartet": "Kartet er stengt",
+   "ope": "Berre Christiania, med Knudsen åleine",
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:20"
+  },
+  {
+   "epoke_tekst": "Fimbulvinteren, andre del",
+   "epokar": [],
+   "kartet": "Sidene i Dagboka opnar knutepunkta",
+   "ope": "Bergen mars 1852, Drammen og Hallingdal juni 1852, Dovre og Gudbrandsdalen frå 6.7, Telemark juli 1852, Sogn august 1852, Voss oktober 1852, Kautokeino med Ravdna åleine, Østfold april 1853, Krødsherad september 1853",
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:21"
+  },
+  {
+   "epoke_tekst": "Den store opninga, etter 6.22",
+   "epokar": [
+    "den_store_opninga"
+   ],
+   "kartet": "Heile kartet",
+   "ope": "Alle knutepunkt som finst i fimbulvinteren, alle dampskipsruter og isvegar, superbossstadene",
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:22"
+  },
+  {
+   "epoke_tekst": "Sagahallen",
+   "epokar": [],
+   "kartet": "Inga kart",
+   "ope": "Berre dungeonen",
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:23"
+  },
+  {
+   "epoke_tekst": "Etter oppgjeret og epilogen",
+   "epokar": [],
+   "kartet": "Lineært",
+   "ope": "Berre scenene 7.14 til 7.32",
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:24"
+  },
+  {
+   "epoke_tekst": "Etter soga",
+   "epokar": [],
+   "kartet": "Fimbulvinterlaget att",
+   "ope": "Det same som ved den store opninga, og Eidaskogen når ringen på Dagboka er open",
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:25"
+  }
+ ],
+ "knutepunkt": [
+  {
+   "id": "VDK-01",
+   "namn": "Ørsta og Sunnmøre",
+   "reisemaate": "Til fots og robåt. Dampskip til Ålesund. Isveg i fimbulvinteren",
+   "vidare": [
+    {
+     "til": "VDK-03",
+     "namn": "Voldsfjorden"
+    },
+    {
+     "til": "VDK-02",
+     "namn": "Stad og Selje"
+    },
+    {
+     "til": "VDK-14",
+     "namn": "Kystleia"
+    },
+    {
+     "til": "VDK-35",
+     "namn": "Romsdalen"
+    },
+    {
+     "til": null,
+     "namn": "Villmark V1",
+     "villmark": "V1"
+    }
+   ],
+   "vidare_tekst": "VDK-03 Voldsfjorden, VDK-02 Stad og Selje, VDK-14 Kystleia, VDK-35 Romsdalen, Villmark V1",
+   "ope_tekst": "Første knutepunkt frå 2.2. Heimkomst i reiseåra og Christiania-åra. Fimbulvinteren frå 5.1. Opninga. Etter oppgjeret og epilogen berre scener",
+   "scener": [
+    "s2_2",
+    "s5_1"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:29"
+  },
+  {
+   "id": "VDK-02",
+   "namn": "Stad og Selje",
+   "reisemaate": "Båten til bonden i Selje, i storm",
+   "vidare": [
+    {
+     "til": "VDK-01",
+     "namn": "Ørsta og Sunnmøre"
+    }
+   ],
+   "vidare_tekst": "VDK-01 Ørsta og Sunnmøre",
+   "ope_tekst": "Stengd for robåten heile spelet. Ope når Kongsormen er slått (S2.29)",
+   "scener": [
+    "S2_29"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:30"
+  },
+  {
+   "id": "VDK-03",
+   "namn": "Voldsfjorden",
+   "reisemaate": "Ferja og robåten",
+   "vidare": [
+    {
+     "til": "VDK-01",
+     "namn": "Ørsta og Sunnmøre"
+    },
+    {
+     "til": "VDK-04",
+     "namn": "Nordfjord"
+    },
+    {
+     "til": null,
+     "namn": "Jølster og Førde"
+    }
+   ],
+   "vidare_tekst": "VDK-01 Ørsta og Sunnmøre, VDK-04 Nordfjord, Jølster og Førde",
+   "ope_tekst": "Frå 2.2. Isveg i fimbulvinteren",
+   "scener": [
+    "s2_2"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:31"
+  },
+  {
+   "id": "VDK-04",
+   "namn": "Nordfjord, Jølster og Førde",
+   "reisemaate": "Reiseetappe til fots, eller båt langs kysten til Sunnfjord",
+   "vidare": [
+    {
+     "til": "VDK-03",
+     "namn": "Voldsfjorden"
+    },
+    {
+     "til": "VDK-06",
+     "namn": "Sognefjorden"
+    }
+   ],
+   "vidare_tekst": "VDK-03 Voldsfjorden, VDK-06 Sognefjorden",
+   "ope_tekst": "Berre reiseetappe i 2.2. Inga felt",
+   "scener": [
+    "s2_2"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:32"
+  },
+  {
+   "id": "VDK-05",
+   "namn": "Sogn",
+   "reisemaate": "Båt, skyss og til fots",
+   "vidare": [
+    {
+     "til": "VDK-06",
+     "namn": "Sognefjorden"
+    },
+    {
+     "til": "VDK-29",
+     "namn": "Filefjell"
+    },
+    {
+     "til": null,
+     "namn": "Villmark V2",
+     "villmark": "V2"
+    }
+   ],
+   "vidare_tekst": "VDK-06 Sognefjorden, VDK-29 Filefjell, Villmark V2",
+   "ope_tekst": "Oktober 1842 til 3.25. Fimbulvinteren frå august 1852. Opninga med Fåvne og Nidhoggsungen",
+   "scener": [
+    "s3_25"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:33"
+  },
+  {
+   "id": "VDK-06",
+   "namn": "Sognefjorden",
+   "reisemaate": "Båt. Dampskipet «Bjørgvin» til Lærdal frå 1845",
+   "vidare": [
+    {
+     "til": "VDK-05",
+     "namn": "Sogn"
+    },
+    {
+     "til": "VDK-07",
+     "namn": "Nordhordland"
+    },
+    {
+     "til": "VDK-08",
+     "namn": "Bergen"
+    }
+   ],
+   "vidare_tekst": "VDK-05 Sogn, VDK-07 Nordhordland, VDK-08 Bergen",
+   "ope_tekst": "Frå 2.3. Reiseåra skal ikkje krevje «Bjørgvin»",
+   "scener": [
+    "s2_3"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:34"
+  },
+  {
+   "id": "VDK-07",
+   "namn": "Nordhordland",
+   "reisemaate": "Jakt ut Sognefjorden, eller skyss og ferjer. Båt frå Vågen",
+   "vidare": [
+    {
+     "til": "VDK-06",
+     "namn": "Sognefjorden"
+    },
+    {
+     "til": "VDK-08",
+     "namn": "Bergen"
+    }
+   ],
+   "vidare_tekst": "VDK-06 Sognefjorden, VDK-08 Bergen",
+   "ope_tekst": "Juni 1843 til 3.25. Opninga",
+   "scener": [
+    "s3_25"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:35"
+  },
+  {
+   "id": "VDK-08",
+   "namn": "Bergen",
+   "reisemaate": "Båt og dampskip",
+   "vidare": [
+    {
+     "til": "VDK-07",
+     "namn": "Nordhordland"
+    },
+    {
+     "til": "VDK-09",
+     "namn": "Osterfjorden og Bolstadøyri"
+    },
+    {
+     "til": "VDK-14",
+     "namn": "Kystleia"
+    }
+   ],
+   "vidare_tekst": "VDK-07 Nordhordland, VDK-09 Osterfjorden og Bolstadøyri, VDK-14 Kystleia",
+   "ope_tekst": "Eige felt i 1841. Frå 2.6. Spor G og S2.18 i Christiania-åra. Fimbulvinteren frå mars 1852. Opninga",
+   "scener": [
+    "s2_6",
+    "S2_18"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:36"
+  },
+  {
+   "id": "VDK-09",
+   "namn": "Osterfjorden og Bolstadøyri",
+   "reisemaate": "Båt og skyss",
+   "vidare": [
+    {
+     "til": "VDK-08",
+     "namn": "Bergen"
+    },
+    {
+     "til": "VDK-10",
+     "namn": "Voss og Hardanger"
+    }
+   ],
+   "vidare_tekst": "VDK-08 Bergen, VDK-10 Voss og Hardanger",
+   "ope_tekst": "Frå 2.10",
+   "scener": [
+    "s2_10"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:37"
+  },
+  {
+   "id": "VDK-10",
+   "namn": "Voss og Hardanger",
+   "reisemaate": "Til fots, båt over Hardangerfjorden",
+   "vidare": [
+    {
+     "til": "VDK-09",
+     "namn": "Osterfjorden"
+    },
+    {
+     "til": "VDK-11",
+     "namn": "Skjervet"
+    },
+    {
+     "til": "VDK-12",
+     "namn": "Røldal og Suldal"
+    },
+    {
+     "til": "VDK-14",
+     "namn": "Kystleia"
+    },
+    {
+     "til": null,
+     "namn": "Villmark V3",
+     "villmark": "V3"
+    }
+   ],
+   "vidare_tekst": "VDK-09 Osterfjorden, VDK-11 Skjervet, VDK-12 Røldal og Suldal, VDK-14 Kystleia, Villmark V3",
+   "ope_tekst": "April 1844 til 3.25. Fimbulvinteren oktober 1852 og mai 1853. Opninga",
+   "scener": [
+    "s3_25"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:38"
+  },
+  {
+   "id": "VDK-11",
+   "namn": "Skjervet",
+   "reisemaate": "Til fots",
+   "vidare": [
+    {
+     "til": null,
+     "namn": "Vangen og Granvin innanfor VDK-10"
+    }
+   ],
+   "vidare_tekst": "Vangen og Granvin innanfor VDK-10",
+   "ope_tekst": "Med Voss. Forslag i regionfana: stengt av ras i fimbulvinteren til Lyfte opnar",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:39"
+  },
+  {
+   "id": "VDK-12",
+   "namn": "Røldal og Suldal",
+   "reisemaate": "Fjellveg til fots",
+   "vidare": [
+    {
+     "til": "VDK-10",
+     "namn": "Voss og Hardanger"
+    },
+    {
+     "til": "VDK-13",
+     "namn": "Rogaland"
+    }
+   ],
+   "vidare_tekst": "VDK-10 Voss og Hardanger, VDK-13 Rogaland",
+   "ope_tekst": "Reiseåra 1844. Stengd av snø i fimbulvinteren. Skjermar RSU",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:40"
+  },
+  {
+   "id": "VDK-13",
+   "namn": "Rogaland, Jæren og Stavanger",
+   "reisemaate": "Båt langs kysten eller fjellvegen. Dampskip frå 2.14",
+   "vidare": [
+    {
+     "til": "VDK-12",
+     "namn": "Røldal og Suldal"
+    },
+    {
+     "til": "VDK-14",
+     "namn": "Kystleia"
+    },
+    {
+     "til": "VDK-15",
+     "namn": "Setesdal"
+    },
+    {
+     "til": null,
+     "namn": "Villmark V4",
+     "villmark": "V4"
+    }
+   ],
+   "vidare_tekst": "VDK-12 Røldal og Suldal, VDK-14 Kystleia, VDK-15 Setesdal, Villmark V4",
+   "ope_tekst": "August til oktober 1844. Isvegen nord frå Stavanger i mars 1852. Opninga (forslag)",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:41"
+  },
+  {
+   "id": "VDK-14",
+   "namn": "Kystleia",
+   "reisemaate": "Dampskip mellom hamner",
+   "vidare": [
+    {
+     "til": null,
+     "namn": "Christiania",
+     "merknad": "om Drøbak midtvinters"
+    },
+    {
+     "til": null,
+     "namn": "Kristiansand"
+    },
+    {
+     "til": null,
+     "namn": "Stavanger"
+    },
+    {
+     "til": null,
+     "namn": "Bergen"
+    },
+    {
+     "til": null,
+     "namn": "Lærdal"
+    },
+    {
+     "til": null,
+     "namn": "Ålesund"
+    },
+    {
+     "til": null,
+     "namn": "Trondheim"
+    },
+    {
+     "til": null,
+     "namn": "Beian"
+    },
+    {
+     "til": null,
+     "namn": "Bodø"
+    },
+    {
+     "til": null,
+     "namn": "Lofoten"
+    }
+   ],
+   "vidare_tekst": "Christiania (om Drøbak midtvinters), Kristiansand, Stavanger, Bergen, Lærdal, Ålesund, Trondheim, Beian, Bodø, Lofoten",
+   "ope_tekst": "Frå 2.6. Ei hamn blir snarveg når historia har vore der. Midtvinters sjeldnare, og ruter med is ligg i opplag. I fimbulvinteren så langt isen slepper. Opninga: alle ruter",
+   "scener": [
+    "s2_6"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:42"
+  },
+  {
+   "id": "VDK-15",
+   "namn": "Setesdal",
+   "reisemaate": "Postvegen om Egersund og Flekkefjord, eller heivegen frå Sirdal",
+   "vidare": [
+    {
+     "til": "VDK-13",
+     "namn": "Rogaland"
+    },
+    {
+     "til": "VDK-16",
+     "namn": "Byglandsfjorden og Otra"
+    },
+    {
+     "til": null,
+     "namn": "Villmark V5",
+     "villmark": "V5"
+    }
+   ],
+   "vidare_tekst": "VDK-13 Rogaland, VDK-16 Byglandsfjorden og Otra, Villmark V5",
+   "ope_tekst": "November 1844 til 3.25. Opninga med Grotormen",
+   "scener": [
+    "s3_25"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:43"
+  },
+  {
+   "id": "VDK-16",
+   "namn": "Byglandsfjorden og Otra",
+   "reisemaate": "Skysshest og båt over fjorden",
+   "vidare": [
+    {
+     "til": "VDK-15",
+     "namn": "Setesdal"
+    },
+    {
+     "til": "VDK-17",
+     "namn": "Kristiansand"
+    }
+   ],
+   "vidare_tekst": "VDK-15 Setesdal, VDK-17 Kristiansand",
+   "ope_tekst": "Frå 2.18. Opninga. Epilogen som anleggsplass. Skjermar BYO",
+   "scener": [
+    "s2_18"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:44"
+  },
+  {
+   "id": "VDK-17",
+   "namn": "Kristiansand",
+   "reisemaate": "Skysshest ned Otra, dampskip",
+   "vidare": [
+    {
+     "til": "VDK-16",
+     "namn": "Byglandsfjorden og Otra"
+    },
+    {
+     "til": "VDK-14",
+     "namn": "Kystleia"
+    },
+    {
+     "til": "VDK-18",
+     "namn": "Telemark"
+    }
+   ],
+   "vidare_tekst": "VDK-16 Byglandsfjorden og Otra, VDK-14 Kystleia, VDK-18 Telemark",
+   "ope_tekst": "Jula 1844 til 3.25. Dampskipsstopp i 4.20, 5.14 og 6.9. Opninga med S2.42",
+   "scener": [
+    "s3_25",
+    "s4_20",
+    "s5_14",
+    "s6_9",
+    "S2_42"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:45"
+  },
+  {
+   "id": "VDK-18",
+   "namn": "Telemark",
+   "reisemaate": "Postvegen om Arendal og Skien, eller vintervegen gjennom Nissedal",
+   "vidare": [
+    {
+     "til": "VDK-17",
+     "namn": "Kristiansand"
+    },
+    {
+     "til": "VDK-19",
+     "namn": "Kviteseid og Vinje"
+    },
+    {
+     "til": "VDK-20",
+     "namn": "Kongsberg"
+    },
+    {
+     "til": null,
+     "namn": "Villmark V6",
+     "villmark": "V6"
+    }
+   ],
+   "vidare_tekst": "VDK-17 Kristiansand, VDK-19 Kviteseid og Vinje, VDK-20 Kongsberg, Villmark V6",
+   "ope_tekst": "Januar til mai 1845. Fimbulvinteren frå juli 1852. Opninga. 1856 som scene",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:46"
+  },
+  {
+   "id": "VDK-19",
+   "namn": "Kviteseid og Vinje",
+   "reisemaate": "Isveg om vinteren",
+   "vidare": [
+    {
+     "til": null,
+     "namn": "Seljord og Rauland innanfor VDK-18"
+    }
+   ],
+   "vidare_tekst": "Seljord og Rauland innanfor VDK-18",
+   "ope_tekst": "Står i Telemark-kartet",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:47"
+  },
+  {
+   "id": "VDK-20",
+   "namn": "Kongsberg",
+   "reisemaate": "Skyss om Seljord og Bø, eller over fjellet om Tinn",
+   "vidare": [
+    {
+     "til": "VDK-18",
+     "namn": "Telemark"
+    },
+    {
+     "til": "VDK-21",
+     "namn": "Eker"
+    },
+    {
+     "til": null,
+     "namn": "Modum og Ringerike"
+    },
+    {
+     "til": "VDK-22",
+     "namn": "Drammen"
+    }
+   ],
+   "vidare_tekst": "VDK-18 Telemark, VDK-21 Eker, Modum og Ringerike, VDK-22 Drammen",
+   "ope_tekst": "Mai 1845. Seinare stopp på reiseetappar (6.7, 6.18). Skjermar KBG",
+   "scener": [
+    "s6_7",
+    "s6_18"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:48"
+  },
+  {
+   "id": "VDK-21",
+   "namn": "Eker, Modum og Ringerike",
+   "reisemaate": "Postvegen med skysshest. Båt eller is over Tyrifjorden",
+   "vidare": [
+    {
+     "til": "VDK-20",
+     "namn": "Kongsberg"
+    },
+    {
+     "til": "VDK-22",
+     "namn": "Drammen"
+    },
+    {
+     "til": "VDK-23",
+     "namn": "Krødsherad"
+    },
+    {
+     "til": "VDK-24",
+     "namn": "Hallingdal"
+    },
+    {
+     "til": "VDK-25",
+     "namn": "Krokskogen"
+    },
+    {
+     "til": "VDK-28",
+     "namn": "Valdres"
+    },
+    {
+     "til": "VDK-31",
+     "namn": "Land"
+    },
+    {
+     "til": null,
+     "namn": "Hadeland og Randsfjorden"
+    }
+   ],
+   "vidare_tekst": "VDK-20 Kongsberg, VDK-22 Drammen, VDK-23 Krødsherad, VDK-24 Hallingdal, VDK-25 Krokskogen, VDK-28 Valdres, VDK-31 Land, Hadeland og Randsfjorden",
+   "ope_tekst": "1845, 1849, 1852, 1853, opninga. Skjermar EMR",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:49"
+  },
+  {
+   "id": "VDK-22",
+   "namn": "Drammen",
+   "reisemaate": "Postvegen. Drammensvegen om Lier",
+   "vidare": [
+    {
+     "til": "VDK-21",
+     "namn": "Eker"
+    },
+    {
+     "til": null,
+     "namn": "Modum og Ringerike"
+    },
+    {
+     "til": "VDK-26",
+     "namn": "Christiania"
+    },
+    {
+     "til": "VDK-47",
+     "namn": "Horten og Moss"
+    }
+   ],
+   "vidare_tekst": "VDK-21 Eker, Modum og Ringerike, VDK-26 Christiania, VDK-47 Horten og Moss",
+   "ope_tekst": "Drammensvegen i august 1845 (3.13). Byen juni 1852, 1853, opninga. Skjermar DRM",
+   "scener": [
+    "s3_13"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:50"
+  },
+  {
+   "id": "VDK-23",
+   "namn": "Krødsherad og Krøderen",
+   "reisemaate": "Postvegen frå Modum. Isvegen over Krøderen",
+   "vidare": [
+    {
+     "til": "VDK-21",
+     "namn": "Eker"
+    },
+    {
+     "til": null,
+     "namn": "Modum og Ringerike"
+    },
+    {
+     "til": "VDK-24",
+     "namn": "Hallingdal"
+    }
+   ],
+   "vidare_tekst": "VDK-21 Eker, Modum og Ringerike, VDK-24 Hallingdal",
+   "ope_tekst": "September 1853, opninga, 1856. Skjermar KRH og ARK",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:51"
+  },
+  {
+   "id": "VDK-24",
+   "namn": "Hallingdal",
+   "reisemaate": "Postvegen langs Krøderen",
+   "vidare": [
+    {
+     "til": "VDK-21",
+     "namn": "Eker"
+    },
+    {
+     "til": null,
+     "namn": "Modum og Ringerike"
+    },
+    {
+     "til": "VDK-23",
+     "namn": "Krødsherad"
+    }
+   ],
+   "vidare_tekst": "VDK-21 Eker, Modum og Ringerike, VDK-23 Krødsherad",
+   "ope_tekst": "Mai til juli 1845. Sommaren 1849 til nyttår 1850 (spor F). Juni 1852. Opninga. Skjermar NES, HAL og PSN",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:52"
+  },
+  {
+   "id": "VDK-25",
+   "namn": "Krokskogen",
+   "reisemaate": "Postvegen gjennom skogen",
+   "vidare": [
+    {
+     "til": "VDK-21",
+     "namn": "Eker"
+    },
+    {
+     "til": null,
+     "namn": "Modum og Ringerike"
+    },
+    {
+     "til": "VDK-26",
+     "namn": "Christiania"
+    }
+   ],
+   "vidare_tekst": "VDK-21 Eker, Modum og Ringerike, VDK-26 Christiania",
+   "ope_tekst": "Står i Christiania-fana",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:53"
+  },
+  {
+   "id": "VDK-26",
+   "namn": "Christiania",
+   "reisemaate": "Postvegane, dampskip, slede over isen",
+   "vidare": [
+    {
+     "til": "VDK-22",
+     "namn": "Drammen"
+    },
+    {
+     "til": "VDK-25",
+     "namn": "Krokskogen"
+    },
+    {
+     "til": "VDK-27",
+     "namn": "Isen ved Drøbak"
+    },
+    {
+     "til": "VDK-37",
+     "namn": "Østerdalen"
+    },
+    {
+     "til": "VDK-45",
+     "namn": "Trondhjemsvegen"
+    },
+    {
+     "til": "VDK-48",
+     "namn": "Østfold"
+    }
+   ],
+   "vidare_tekst": "VDK-22 Drammen, VDK-25 Krokskogen, VDK-27 Isen ved Drøbak, VDK-37 Østerdalen, VDK-45 Trondhjemsvegen, VDK-48 Østfold",
+   "ope_tekst": "Juli 1845. September 1847 til august 1850. Fimbulvinteren frå januar 1851. Opninga, etter, epilogen og Etter soga",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:54"
+  },
+  {
+   "id": "VDK-27",
+   "namn": "Isen på Christianiafjorden og Drøbak",
+   "reisemaate": "Slede over isen til skipet ved iskanten",
+   "vidare": [
+    {
+     "til": "VDK-26",
+     "namn": "Christiania"
+    },
+    {
+     "til": "VDK-14",
+     "namn": "Kystleia"
+    }
+   ],
+   "vidare_tekst": "VDK-26 Christiania, VDK-14 Kystleia",
+   "ope_tekst": "Midtvinters i Christiania-åra og i heile fimbulvinteren",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:55"
+  },
+  {
+   "id": "VDK-28",
+   "namn": "Valdres",
+   "reisemaate": "Postvegen opp Begnadalen, eller om Hadeland og Randsfjorden",
+   "vidare": [
+    {
+     "til": "VDK-21",
+     "namn": "Eker"
+    },
+    {
+     "til": null,
+     "namn": "Modum og Ringerike"
+    },
+    {
+     "til": "VDK-29",
+     "namn": "Filefjell"
+    },
+    {
+     "til": "VDK-30",
+     "namn": "Valdresflya"
+    },
+    {
+     "til": "VDK-31",
+     "namn": "Land"
+    },
+    {
+     "til": null,
+     "namn": "Hadeland og Randsfjorden"
+    }
+   ],
+   "vidare_tekst": "VDK-21 Eker, Modum og Ringerike, VDK-29 Filefjell, VDK-30 Valdresflya, VDK-31 Land, Hadeland og Randsfjorden",
+   "ope_tekst": "August 1845 til 3.25. Inga fimbulvinterscene. Skjermar VAL",
+   "scener": [
+    "s3_25"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:56"
+  },
+  {
+   "id": "VDK-29",
+   "namn": "Filefjell",
+   "reisemaate": "Kongevegen til fots og med skyss",
+   "vidare": [
+    {
+     "til": "VDK-28",
+     "namn": "Valdres"
+    },
+    {
+     "til": "VDK-05",
+     "namn": "Sogn"
+    }
+   ],
+   "vidare_tekst": "VDK-28 Valdres, VDK-05 Sogn",
+   "ope_tekst": "August 1845 til 3.25. Stengd av snø i fimbulvinteren. Opninga med Lyfte (forslag). Skjermar FIL",
+   "scener": [
+    "s3_25"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:57"
+  },
+  {
+   "id": "VDK-30",
+   "namn": "Valdresflya",
+   "reisemaate": "Fjellsti til fots",
+   "vidare": [
+    {
+     "til": "VDK-28",
+     "namn": "Valdres"
+    },
+    {
+     "til": "VDK-32",
+     "namn": "Gudbrandsdalen",
+     "merknad": "Vågå"
+    }
+   ],
+   "vidare_tekst": "VDK-28 Valdres, VDK-32 Gudbrandsdalen (Vågå)",
+   "ope_tekst": "1845. Stengd i fimbulvinteren",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:58"
+  },
+  {
+   "id": "VDK-31",
+   "namn": "Land, Hadeland og Randsfjorden",
+   "reisemaate": "Reiseetappe",
+   "vidare": [
+    {
+     "til": "VDK-21",
+     "namn": "Eker"
+    },
+    {
+     "til": null,
+     "namn": "Modum og Ringerike"
+    },
+    {
+     "til": "VDK-28",
+     "namn": "Valdres"
+    },
+    {
+     "til": "VDK-33",
+     "namn": "Mjøsa"
+    }
+   ],
+   "vidare_tekst": "VDK-21 Eker, Modum og Ringerike, VDK-28 Valdres, VDK-33 Mjøsa",
+   "ope_tekst": "Berre reiseetappe i 1845",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:59"
+  },
+  {
+   "id": "VDK-32",
+   "namn": "Gudbrandsdalen",
+   "reisemaate": "Postvegen med skysshest",
+   "vidare": [
+    {
+     "til": "VDK-30",
+     "namn": "Valdresflya"
+    },
+    {
+     "til": "VDK-33",
+     "namn": "Mjøsa"
+    },
+    {
+     "til": "VDK-34",
+     "namn": "Dovre"
+    },
+    {
+     "til": "VDK-35",
+     "namn": "Romsdalen"
+    },
+    {
+     "til": null,
+     "namn": "Villmark V7",
+     "villmark": "V7"
+    },
+    {
+     "til": null,
+     "namn": "Villmark V10",
+     "villmark": "V10"
+    }
+   ],
+   "vidare_tekst": "VDK-30 Valdresflya, VDK-33 Mjøsa, VDK-34 Dovre, VDK-35 Romsdalen, Villmark V7, Villmark V10",
+   "ope_tekst": "September 1845, sommaren 1847, januar 1851, frå juni 1852, opninga. Skjermar GBD og FHL",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:60"
+  },
+  {
+   "id": "VDK-33",
+   "namn": "Mjøsa",
+   "reisemaate": "Til fots langs vegen, «Jernbarden» i 1847, isveg i fimbulvinteren",
+   "vidare": [
+    {
+     "til": "VDK-31",
+     "namn": "Land"
+    },
+    {
+     "til": "VDK-32",
+     "namn": "Gudbrandsdalen"
+    },
+    {
+     "til": "VDK-46",
+     "namn": "Eidsvoll og Romerike"
+    }
+   ],
+   "vidare_tekst": "VDK-31 Land, VDK-32 Gudbrandsdalen, VDK-46 Eidsvoll og Romerike",
+   "ope_tekst": "1845, 1847, januar 1851, frå juni 1852, opninga med Lindormen. Skjermar MJO",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:61"
+  },
+  {
+   "id": "VDK-34",
+   "namn": "Dovre og Dovrefjell",
+   "reisemaate": "Kongevegen",
+   "vidare": [
+    {
+     "til": "VDK-32",
+     "namn": "Gudbrandsdalen"
+    },
+    {
+     "til": "VDK-36",
+     "namn": "Drivdalen"
+    },
+    {
+     "til": null,
+     "namn": "Oppdal og Gauldalen"
+    },
+    {
+     "til": null,
+     "namn": "Villmark V8",
+     "villmark": "V8"
+    }
+   ],
+   "vidare_tekst": "VDK-32 Gudbrandsdalen, VDK-36 Drivdalen, Oppdal og Gauldalen, Villmark V8",
+   "ope_tekst": "November 1845, sommaren 1847, frå 6.7 til 7.1, opninga, 1857 som scene. Skjermar DOV og HJF",
+   "scener": [
+    "s6_7",
+    "s7_1"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:62"
+  },
+  {
+   "id": "VDK-35",
+   "namn": "Romsdalen",
+   "reisemaate": "Isvegen frå Sunnmøre, dalvegen frå Lesja",
+   "vidare": [
+    {
+     "til": "VDK-01",
+     "namn": "Ørsta og Sunnmøre"
+    },
+    {
+     "til": "VDK-32",
+     "namn": "Gudbrandsdalen"
+    },
+    {
+     "til": null,
+     "namn": "Villmark V10",
+     "villmark": "V10"
+    }
+   ],
+   "vidare_tekst": "VDK-01 Ørsta og Sunnmøre, VDK-32 Gudbrandsdalen, Villmark V10",
+   "ope_tekst": "Sommaren 1847, januar 1851, opninga. Skjermar RMS",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:63"
+  },
+  {
+   "id": "VDK-36",
+   "namn": "Drivdalen, Oppdal og Gauldalen",
+   "reisemaate": "Kongevegen, reiseetappe",
+   "vidare": [
+    {
+     "til": "VDK-34",
+     "namn": "Dovre"
+    },
+    {
+     "til": "VDK-38",
+     "namn": "Trondheim"
+    }
+   ],
+   "vidare_tekst": "VDK-34 Dovre, VDK-38 Trondheim",
+   "ope_tekst": "Reiseetappe i 1845 og 1847",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:64"
+  },
+  {
+   "id": "VDK-37",
+   "namn": "Østerdalen og Røros",
+   "reisemaate": "Skyss, reiseetappe",
+   "vidare": [
+    {
+     "til": "VDK-26",
+     "namn": "Christiania"
+    },
+    {
+     "til": "VDK-38",
+     "namn": "Trondheim"
+    }
+   ],
+   "vidare_tekst": "VDK-26 Christiania, VDK-38 Trondheim",
+   "ope_tekst": "Reiseetappe i juli og august 1851",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:65"
+  },
+  {
+   "id": "VDK-38",
+   "namn": "Trondheim og Trøndelag",
+   "reisemaate": "Kongevegen, Orkdalen, dampskip",
+   "vidare": [
+    {
+     "til": "VDK-36",
+     "namn": "Drivdalen"
+    },
+    {
+     "til": "VDK-37",
+     "namn": "Østerdalen"
+    },
+    {
+     "til": "VDK-39",
+     "namn": "Orkdalen og Surnadal"
+    },
+    {
+     "til": "VDK-14",
+     "namn": "Kystleia"
+    }
+   ],
+   "vidare_tekst": "VDK-36 Drivdalen, VDK-37 Østerdalen, VDK-39 Orkdalen og Surnadal, VDK-14 Kystleia",
+   "ope_tekst": "Desember 1845 til hausten 1847. Fimbulvinteren frå 6.13. Opninga med Stiklestad og Nidarosdomen",
+   "scener": [
+    "s6_13"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:66"
+  },
+  {
+   "id": "VDK-39",
+   "namn": "Orkdalen og Surnadal",
+   "reisemaate": "Landvegen, reiseetappe",
+   "vidare": [
+    {
+     "til": "VDK-38",
+     "namn": "Trondheim"
+    },
+    {
+     "til": "VDK-40",
+     "namn": "Nordmøre"
+    }
+   ],
+   "vidare_tekst": "VDK-38 Trondheim, VDK-40 Nordmøre",
+   "ope_tekst": "Reiseetappe i 1846",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:67"
+  },
+  {
+   "id": "VDK-40",
+   "namn": "Nordmøre",
+   "reisemaate": "Landvegen eller båt langs leia",
+   "vidare": [
+    {
+     "til": "VDK-39",
+     "namn": "Orkdalen"
+    },
+    {
+     "til": "VDK-14",
+     "namn": "Kystleia",
+     "merknad": "Beian"
+    }
+   ],
+   "vidare_tekst": "VDK-39 Orkdalen, VDK-14 Kystleia (Beian)",
+   "ope_tekst": "Våren og sommaren 1846",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:68"
+  },
+  {
+   "id": "VDK-41",
+   "namn": "Folla",
+   "reisemaate": "Om bord i dampbåten frå Beian",
+   "vidare": [
+    {
+     "til": "VDK-14",
+     "namn": "Kystleia"
+    },
+    {
+     "til": "VDK-42",
+     "namn": "Helgeland"
+    }
+   ],
+   "vidare_tekst": "VDK-14 Kystleia, VDK-42 Helgeland",
+   "ope_tekst": "September 1846. September 1853 med Heildraugen",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:69"
+  },
+  {
+   "id": "VDK-42",
+   "namn": "Helgeland",
+   "reisemaate": "Dampbåten set partyet i land ved Brønnøy",
+   "vidare": [
+    {
+     "til": "VDK-41",
+     "namn": "Folla"
+    },
+    {
+     "til": null,
+     "namn": "Villmark V9",
+     "villmark": "V9"
+    }
+   ],
+   "vidare_tekst": "VDK-41 Folla, Villmark V9",
+   "ope_tekst": "September og oktober 1846. V9 i juli 1851",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:70"
+  },
+  {
+   "id": "VDK-43",
+   "namn": "Lofoten og Nord",
+   "reisemaate": "Nordlandsdampskipet frå Trondheim",
+   "vidare": [
+    {
+     "til": "VDK-14",
+     "namn": "Kystleia"
+    },
+    {
+     "til": "VDK-44",
+     "namn": "Kautokeino"
+    }
+   ],
+   "vidare_tekst": "VDK-14 Kystleia, VDK-44 Kautokeino",
+   "ope_tekst": "Etter 7. juli 1851. Nord-Troms juli 1852. Opninga",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:71"
+  },
+  {
+   "id": "VDK-44",
+   "namn": "Kautokeino",
+   "reisemaate": "Gjennom Tandberg-kartet, berre med Ravdna",
+   "vidare": [
+    {
+     "til": "VDK-43",
+     "namn": "Lofoten og Nord"
+    }
+   ],
+   "vidare_tekst": "VDK-43 Lofoten og Nord",
+   "ope_tekst": "Oktober til 8. november 1852. 1856 som scene. Aasen kjem aldri dit",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:72"
+  },
+  {
+   "id": "VDK-45",
+   "namn": "Trondhjemsvegen",
+   "reisemaate": "Postvegen med skysshest og slede",
+   "vidare": [
+    {
+     "til": "VDK-26",
+     "namn": "Christiania"
+    },
+    {
+     "til": "VDK-46",
+     "namn": "Eidsvoll"
+    },
+    {
+     "til": "VDK-49",
+     "namn": "Eidaskogen"
+    },
+    {
+     "til": null,
+     "namn": "Villmark V11",
+     "villmark": "V11"
+    },
+    {
+     "til": null,
+     "namn": "Villmark V12",
+     "villmark": "V12"
+    }
+   ],
+   "vidare_tekst": "VDK-26 Christiania, VDK-46 Eidsvoll, VDK-49 Eidaskogen, Villmark V11, Villmark V12",
+   "ope_tekst": "22. september 1847. Christiania-åra for V11 og V12. Januar 1851, frå juni 1852, opninga. Skjermar ROM",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:73"
+  },
+  {
+   "id": "VDK-46",
+   "namn": "Eidsvoll og Romerike",
+   "reisemaate": "Frå Minnesund, eller Trondhjemsvegen",
+   "vidare": [
+    {
+     "til": "VDK-33",
+     "namn": "Mjøsa"
+    },
+    {
+     "til": "VDK-45",
+     "namn": "Trondhjemsvegen"
+    }
+   ],
+   "vidare_tekst": "VDK-33 Mjøsa, VDK-45 Trondhjemsvegen",
+   "ope_tekst": "22. september 1847. Fimbulvinteren. Opninga. Etter, med stasjonen frå 1854. Skjermar EDS",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:74"
+  },
+  {
+   "id": "VDK-47",
+   "namn": "Horten og Moss",
+   "reisemaate": "Isvegen over fjorden",
+   "vidare": [
+    {
+     "til": "VDK-22",
+     "namn": "Drammen"
+    },
+    {
+     "til": "VDK-48",
+     "namn": "Østfold"
+    }
+   ],
+   "vidare_tekst": "VDK-22 Drammen, VDK-48 Østfold",
+   "ope_tekst": "Sommaren 1853 og opninga. Skjermar HMO",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:75"
+  },
+  {
+   "id": "VDK-48",
+   "namn": "Østfold og Fredrikshald",
+   "reisemaate": "Postvegen om Moss, eller isvegen frå Horten",
+   "vidare": [
+    {
+     "til": "VDK-26",
+     "namn": "Christiania"
+    },
+    {
+     "til": "VDK-47",
+     "namn": "Horten og Moss"
+    }
+   ],
+   "vidare_tekst": "VDK-26 Christiania, VDK-47 Horten og Moss",
+   "ope_tekst": "April 1853. Ope frå Moss til Svinesund etter 6.19. Opninga. 1855 som scene. Skjermar MOS, OST, FHD og LPG",
+   "scener": [
+    "s6_19"
+   ],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:76"
+  },
+  {
+   "id": "VDK-49",
+   "namn": "Eidaskogen",
+   "reisemaate": "Til fots langs den gamle vegen mot Sverige",
+   "vidare": [
+    {
+     "til": "VDK-45",
+     "namn": "Trondhjemsvegen"
+    }
+   ],
+   "vidare_tekst": "VDK-45 Trondhjemsvegen",
+   "ope_tekst": "Berre i Etter soga, når alle superbossane er slegne. Skjerm ROM-05",
+   "scener": [],
+   "kjelde": "07 Kart og rom/05 Kart Austlandet, innlandet og verdskartet.md:77"
+  }
+ ],
+ "reiser": [
+  {
+   "tabell": "Kartet gjennom epokane",
+   "kjelde": "05 Mekanikk/12 Verda og reisene.md:15",
+   "rader": [
+    {
+     "epoke": "Prologen 1841",
+     "kartet": "Fjellet, éin sti",
+     "korleis_ein_reiser": "Til fots"
+    },
+    {
+     "epoke": "Ørsta 1816–1831",
+     "kartet": "Bygda: Åsen, setra, fjøset, kyrkja, Årflot, Ekset og grendene",
+     "korleis_ein_reiser": "Til fots. Lite og trygt, som Narshe"
+    },
+    {
+     "epoke": "Ekset og Solnør 1833–1841",
+     "kartet": "Sunnmøre: Ørsta, Ekset, Solnør og fjordane mellom",
+     "korleis_ein_reiser": "Til fots og med båt over fjorden"
+    },
+    {
+     "epoke": "Bergen 1841",
+     "kartet": "Byen som eige felt",
+     "korleis_ein_reiser": "Gater og brygger"
+    },
+    {
+     "epoke": "Reiseåra 1842–1847",
+     "kartet": "Verdskartet, region for region etter dei verkelege rutene hans",
+     "korleis_ein_reiser": "Til fots, skysshest på postvegane, båt og dampbåt langs kysten"
+    },
+    {
+     "epoke": "Christiania 1847–1850",
+     "kartet": "Byen, med hybelen som heimebase, og verdskartet for utfarter",
+     "korleis_ein_reiser": "Til fots i byen. Skyss og dampskip ut"
+    },
+    {
+     "epoke": "Fimbulvinteren 1850–1853",
+     "kartet": "Heile landet, endra av vinteren",
+     "korleis_ein_reiser": "Isvegar over frosne fjordar, dampskip så langt isen slepper. Pass og vegar stengde til dei blir opna"
+    },
+    {
+     "epoke": "Sagahallen 1853",
+     "kartet": "Ingen kart, berre dungeonen",
+     "korleis_ein_reiser": "Ingenting"
+    }
+   ]
+  },
+  {
+   "tabell": "Overgangane i manuset",
+   "kjelde": "05 Mekanikk/12 Verda og reisene.md:54",
+   "rader": [
+    {
+     "merke": "Klipp",
+     "kva_det_er": "Scena går rett over i neste, same stad eller kort tid etter",
+     "kva_spelaren_gjer": "Ingenting. Klipp blir berre merkt når det skil seg frå det ein ventar, til dømes når eit tidshopp skjer utan dagbokside"
+    },
+    {
+     "merke": "Kartvegen",
+     "kva_det_er": "Neste stad ligg i feltet eller på kartet",
+     "kva_spelaren_gjer": "Går dit sjølv. Neste scene startar når partyet kjem inn på staden eller talar med ein person"
+    },
+    {
+     "merke": "Reiseetappe",
+     "kva_det_er": "Lang reise mellom regionar",
+     "kva_spelaren_gjer": "Vel rute i Reiseberetninga, opplever to eller tre små hendingar og kjem fram"
+    },
+    {
+     "merke": "Om bord",
+     "kva_det_er": "Reisa er sjølv ei spelbar scene på båt",
+     "kva_spelaren_gjer": "Spelar mellomspelet"
+    },
+    {
+     "merke": "Dagbokside",
+     "kva_det_er": "Tidshopp mellom kapittel eller innanfor eit kapittel",
+     "kva_spelaren_gjer": "Les sida, brevet og montasjen. Etterpå er partyet på ny stad i ny tid"
+    }
+   ]
+  },
+  {
+   "tabell": "Overgangane i manuset",
+   "kjelde": "05 Mekanikk/12 Verda og reisene.md:66",
+   "rader": [
+    {
+     "merke": "Opning:",
+     "kva_det_tyder": "Ein region, eit felt eller heile kartet blir ope for fri utforsking. Staden står open til neste lukking"
+    },
+    {
+     "merke": "Lukking:",
+     "kva_det_tyder": "Noko stengjer for godt, eller til ein seinare epoke. Spelet varslar alltid i Dagboka før ei lukking, og spelaren vel sjølv når han går vidare"
+    }
+   ]
+  },
+  {
+   "tabell": "Tekstar i verda",
+   "kjelde": "05 Mekanikk/12 Verda og reisene.md:97",
+   "rader": [
+    {
+     "tekst": "Wergeland: «Mig selv» (1841)",
+     "stad": "På pianoet i salongen til Collett, frå 4.2",
+     "kva_spelaren_finn": "Svaret til Morgenbladet, som hadde skrive at han var i dårleg lune. Diktet byrjar «Jeg i slet Lune, Morgenblad?», og han skriv at han treng berre eit glimt av sola for å briste i latter. Å ergre seg over ei dårleg avis «vilde være som at dræbe himmelblaa og rosenrøde Sommerfugle»"
+    },
+    {
+     "tekst": "Wergeland: *Jøden. Ni blomstrende Tornekviste* (1842)",
+     "stad": "Ope på disken i handelsstaden på Alverstraumen i Nordhordland, frå 1843",
+     "kva_spelaren_finn": "Lesescener av «Skibbrudet» og «Juleaftenen», sjå under"
+    },
+    {
+     "tekst": "Eventyr, salmar, preiker, aviser og kunngjeringar",
+     "stad": "Der folk las: gjestgiveri, kyrkjer, poststover, skysskifte og stover",
+     "kva_spelaren_finn": "Eitt til tre i kvar region. Lista blir fylt ut region for region"
+    }
+   ]
+  },
+  {
+   "tabell": "Når spelet opnar seg",
+   "kjelde": "05 Mekanikk/12 Verda og reisene.md:117",
+   "rader": [
+    {
+     "del": "Prologen",
+     "kor_ope": "Éin sti opp fjellet",
+     "opning_og_lukking": "Lukkar seg når ringen brest (0.5)"
+    },
+    {
+     "del": "Ørsta 1816–1831",
+     "kor_ope": "Bygda er open mellom scenene. Kvart tidshopp gjev same bygda i eit nytt år",
+     "opning_og_lukking": "Kvart hopp lukkar det året. 1.9 lukkar barndomen"
+    },
+    {
+     "del": "Ekset og Solnør",
+     "kor_ope": "Sunnmøre er ope med båt",
+     "opning_og_lukking": "1.18 lukkar Solnør"
+    },
+    {
+     "del": "Bergen 1841",
+     "kor_ope": "Byen er open",
+     "opning_og_lukking": "Jakta i 1.25 lukkar første akt"
+    },
+    {
+     "del": "Reiseåra",
+     "kor_ope": "Første store opning: verdskartet i 2.2. Kvar ny region opnar seg når partyet kjem dit, og alle regionar ein har vore i, står opne for retur med skyss og båt. Villmarkene opnar seg i regionane sine, og to av dei ligg på hovudvegen (fana Villmarkene)",
+     "opning_og_lukking": "3.25 lukkar reiseåra. S1-oppdrag som heng på ein dato, stengjer då"
+    },
+    {
+     "del": "Christiania 1847–1850",
+     "kor_ope": "Byen er open med hybelen som base. Spora kan takast i fri rekkjefølgje. Tidlegare regionar kan nåast med dampskip og skyss",
+     "opning_og_lukking": "Dagboka varslar i 4.23. Frå 4.24 går historia i fast rekkjefølgje til 5.5"
+    },
+    {
+     "del": "Fimbulvinteren, første del",
+     "kor_ope": "Opnar seg gradvis frå 5.5, som i World of Ruin: Ørsta, Årflot, Christiania og Collett først, Nord etter 7. juli 1851",
+     "opning_og_lukking": "Knudsens kapittel (5.22–5.27) tek kontrollen ei stund"
+    },
+    {
+     "del": "Fimbulvinteren, andre del",
+     "kor_ope": "Bergen og Ole Bull-tråden fritt, deretter Hallingdal, Vestlandet, Dovre, Kautokeino, Telemark og Østfold etter kvart som sidene blir opna. Vinterlaga i villmarkene står som eigne sider i Dagboka når dei opnar seg",
+     "opning_og_lukking": "6.19b og 6.19c må takast før 6.22. Jotunsporet (6.12–6.13) står ope frå 6.7 og må vere teke før 7.1, utan frist"
+    },
+    {
+     "del": "Den store opninga",
+     "kor_ope": "Etter 6.22 er heile kartet ope, med alle dampskipsruter og isvegar. Alle stader frå alle epokar som finst i fimbulvinteren, kan vitjast. Dagboka står på november 1853, og snøen ligg",
+     "opning_og_lukking": "Spelaren vel sjølv når 7.1 skal starte, ved å gå til trykkeriet i Christiania og seie at partyet er klart. Er jotunen ikkje vunnen, viser Dagboka Hjerkinn som neste mål, og 7.1 ventar til han er med"
+    },
+    {
+     "del": "Sluttkampen",
+     "kor_ope": "7.1 til 7.3 går i fast rekkjefølgje",
+     "opning_og_lukking": "Lukking ved porten bak handskriftene i 7.3. Spelet varslar to gonger: Sagahallen har ingen veg ut"
+    },
+    {
+     "del": "Etter oppgjeret og epilogen",
+     "kor_ope": "Avslutningssekvensen er lineær",
+     "opning_og_lukking": "Etter rulleteksten kan spelaren lagre ei Etter soga-fil"
+    }
+   ]
+  },
+  {
+   "tabell": "Når superbossane kan jaktast",
+   "kjelde": "05 Mekanikk/12 Verda og reisene.md:141",
+   "rader": [
+    {
+     "superboss": "Kansellisten",
+     "opnar_seg": "Når Kongsormen er slått. Knudsen har funne nøkkelen med monogrammet til Christian IV i bokskåpet i Klasse 4 B (5.22)",
+     "stad": "Akershus"
+    },
+    {
+     "superboss": "Den blinde kongen",
+     "opnar_seg": "Når Kongsormen er slått og partyet kjem tilbake til Nidarosdomen",
+     "stad": "Nidarosdomen"
+    },
+    {
+     "superboss": "Kongsormen, så dei sju andre drakane",
+     "opnar_seg": "Kongsormen når partyet har vunne jotunen (6.13) og ravnesegla står på baksida av Tandberg-kartet. Han er den første. Dei sju andre drakane vaknar når han er slått",
+     "stad": "Stiklestad, så Borgund, Mjøsa, Stad, Gaustatoppen, Bygland, Urnes og Vågakallen"
+    },
+    {
+     "superboss": "Dæmringen",
+     "opnar_seg": "Desember 1852, når Welhaven inviterer Aasen. Han høyrer til forteljinga og ventar ikkje på Kongsormen",
+     "stad": "Welhavens salong"
+    },
+    {
+     "superboss": "Heildraugen",
+     "opnar_seg": "Når Kongsormen er slått og Dagboka har nådd september 1853",
+     "stad": "Folla"
+    },
+    {
+     "superboss": "Den første skrivaren (forslag)",
+     "opnar_seg": "Når alle dei andre er slegne og Avkroken er lært",
+     "stad": "Under Bryggen"
+    }
+   ]
+  }
+ ]
+}

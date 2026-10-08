@@ -1,0 +1,541 @@
+[
+ {
+  "id": "VK01",
+  "skjerm": "SET-02a",
+  "kiste": "K-SET-02a-1",
+  "stad_tekst": "Seterbua på Åsen-setra, Ørsta",
+  "grunn": "Huldrefolket legg att ting i kista på setra. Dei legg betre ting jo lenger dei får vente",
+  "line": "Det er ikkje ferdig lagt.",
+  "innhald": {
+   "T1": {
+    "innhald": [
+     {
+      "ting": "flatbrod",
+      "tal": 3
+     }
+    ],
+    "kjelde_tekst": "3 flatbrød"
+   },
+   "T2": {
+    "innhald": [
+     {
+      "ting": "rommegraut",
+      "tal": 2
+     },
+     {
+      "ting": "ull",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "2 rømmegraut og ull"
+   },
+   "T3": {
+    "innhald": [
+     {
+      "ting": "strikka_topplue",
+      "tal": 1
+     },
+     {
+      "ting": "kaffi",
+      "tal": 2
+     }
+    ],
+    "kjelde_tekst": "Strikka topplue og 2 kaffi"
+   },
+   "T4": {
+    "innhald": [
+     {
+      "ting": "solvsolje",
+      "tal": 1
+     },
+     {
+      "ting": "spekekjot",
+      "tal": 3
+     }
+    ],
+    "kjelde_tekst": "Sølvsølje og 3 spekekjøt"
+   }
+  },
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:191",
+  "fane": "Ørsta og Sunnmøre",
+  "skjerm_tekst": "SET-02a Seterbua på Åsen-setra"
+ },
+ {
+  "id": "VK02",
+  "skjerm": "BGN-13a",
+  "kiste": "K-BGN-13a-1",
+  "stad_tekst": "Sjøbua på Nøstet, Bergen",
+  "grunn": "Nordlandsskipperen legg noko nytt i kista kvar gong han kjem heim, og seier at Aasen kan ta det som ligg der",
+  "line": "Han kjem att med meir til hausten.",
+  "innhald": {
+   "T1": {
+    "innhald": [
+     {
+      "ting": "kaffi",
+      "tal": 2
+     }
+    ],
+    "kjelde_tekst": "2 kaffi"
+   },
+   "T2": {
+    "innhald": [
+     {
+      "ting": "skinnlue",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "Skinnlue"
+   },
+   "T3": {
+    "innhald": [
+     {
+      "ting": "studentfrakk",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "Studentfrakk"
+   },
+   "T4": {
+    "innhald": [
+     {
+      "ting": "skipperjakke",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "Skipperjakke"
+   }
+  },
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:192",
+  "fane": "Bergen og Nordhordland",
+  "skjerm_tekst": "BGN-13a Sjøbua på Nøstet"
+ },
+ {
+  "id": "VK03",
+  "skjerm": "LRD-01b",
+  "kiste": "K-LRD-01b-1",
+  "stad_tekst": "Lagerloftet hjå handelsmannen i Lærdal, Sogn",
+  "grunn": "Handelsmannen set av det han ikkje får selt, og varene blir betre for kvart år handelsstaden går godt",
+  "line": "Han har ikkje rydda loftet på lenge.",
+  "innhald": {
+   "T1": null,
+   "T2": {
+    "innhald": [
+     {
+      "ting": "rommegraut",
+      "tal": 4
+     }
+    ],
+    "kjelde_tekst": "4 rømmegraut"
+   },
+   "T3": null,
+   "T4": {
+    "innhald": [
+     {
+      "ting": "stokk_jarnhol",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "Stokk med jarnhol"
+   }
+  },
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:193",
+  "fane": "Vestlandet, Sørlandet og Telemark",
+  "skjerm_tekst": "LRD-01b Lagerloftet hjå handelsmannen i Lærdal"
+ },
+ {
+  "id": "VK04",
+  "skjerm": "HVR-02",
+  "kiste": "K-HVR-02-1",
+  "stad_tekst": "Jegerbua ved Totak, V6 Hardangervidda",
+  "grunn": "Jegerar legg att det dei kan unnvere til den neste som treng det",
+  "line": "Den neste jegeren har ikkje vore her enno.",
+  "innhald": {
+   "T1": null,
+   "T2": {
+    "innhald": [
+     {
+      "ting": "skinnkufte",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "Skinnkufte"
+   },
+   "T3": null,
+   "T4": {
+    "innhald": [
+     {
+      "ting": "truger",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "Truger"
+   }
+  },
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:194",
+  "fane": "Villmarkene V1 til V6",
+  "skjerm_tekst": "HVR-02 Jegerbua ved Totak"
+ },
+ {
+  "id": "VK05",
+  "skjerm": "TGJ-04",
+  "kiste": "K-TGJ-04-1",
+  "stad_tekst": "Trollkista i Trollgjølet, V1 Hjørundfjorden",
+  "grunn": "Trollet i gjølet samlar alt som fell ned frå Molaup",
+  "line": "Det ramlar meir ned kvar vinter.",
+  "innhald": {
+   "T1": null,
+   "T2": {
+    "innhald": [
+     {
+      "ting": "gamle_myntar",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "Gamle myntar"
+   },
+   "T3": null,
+   "T4": {
+    "innhald": [
+     {
+      "ting": "trollgull",
+      "tal": 1
+     },
+     {
+      "ting": "trollsteinen",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "Trollgull og Trollsteinen"
+   }
+  },
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:195",
+  "fane": "Villmarkene V1 til V6",
+  "skjerm_tekst": "TGJ-04 Under fallholet i Trollgjølet"
+ },
+ {
+  "id": "VK06",
+  "skjerm": "FIL-03",
+  "kiste": "K-FIL-03-1",
+  "stad_tekst": "Varden på Filefjell, Valdres og Filefjell",
+  "grunn": "Reisande på kongevegen legg att noko i varden til den neste",
+  "line": "Han er ikkje så høg enno.",
+  "innhald": {
+   "T1": null,
+   "T2": {
+    "innhald": [
+     {
+      "ting": "kaffi",
+      "tal": 3
+     }
+    ],
+    "kjelde_tekst": "3 kaffi"
+   },
+   "T3": null,
+   "T4": {
+    "innhald": [
+     {
+      "ting": "kaffikvern",
+      "tal": 1
+     },
+     {
+      "ting": "kaffikjelen",
+      "tal": 2
+     }
+    ],
+    "kjelde_tekst": "Kaffikverna og 2 kaffikjelen"
+   }
+  },
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:196",
+  "fane": "Austlandet, innlandet og verdskartet",
+  "skjerm_tekst": "FIL-03 Kyrkjestølane og varden på Filefjell"
+ },
+ {
+  "id": "VK07",
+  "skjerm": "HKY-02",
+  "kiste": "K-HKY-02-1",
+  "stad_tekst": "Dunbua på Vega, V9 Helgelandskysten",
+  "grunn": "Dunkona legg til side det beste av dunet kvart år",
+  "line": "Ho har ikkje gått over dunet i år.",
+  "innhald": {
+   "T1": null,
+   "T2": {
+    "innhald": [
+     {
+      "ting": "dun",
+      "tal": 2
+     }
+    ],
+    "kjelde_tekst": "2 dun"
+   },
+   "T3": null,
+   "T4": {
+    "innhald": [
+     {
+      "ting": "aerfuglvest",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "Ærfuglvest"
+   }
+  },
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:197",
+  "fane": "Villmarkene V7 til V12",
+  "skjerm_tekst": "HKY-02 Stova og dunbua på Vega"
+ },
+ {
+  "id": "VK08",
+  "skjerm": "CHR-12a",
+  "kiste": "K-CHR-12a-1",
+  "stad_tekst": "Under senga på hybelen til Aasen, Christiania",
+  "grunn": "Pakkar heimanfrå kjem med posten og blir lagde under senga medan Aasen er ute",
+  "line": "Det står ein lapp: Fleire pakkar på veg.",
+  "innhald": {
+   "T1": null,
+   "T2": null,
+   "T3": {
+    "innhald": [
+     {
+      "ting": "kaffi_kandis",
+      "tal": 3
+     }
+    ],
+    "kjelde_tekst": "3 kaffi med kandis"
+   },
+   "T4": {
+    "innhald": [
+     {
+      "ting": "heimestrikka_troye",
+      "tal": 1
+     },
+     {
+      "ting": "ullsokkar",
+      "tal": 3
+     }
+    ],
+    "kjelde_tekst": "Heimestrikka trøye og 3 ullsokkar"
+   }
+  },
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:198",
+  "fane": "Christiania",
+  "skjerm_tekst": "CHR-12a Den første hybelen til Aasen"
+ },
+ {
+  "id": "VK09",
+  "skjerm": "DOV-03b",
+  "kiste": "K-DOV-03b-1",
+  "stad_tekst": "Kjellaren i fjellstua på Hjerkinn, Dovre",
+  "grunn": "Verten set av det reisande gløymer att",
+  "line": "Han seier det kjem fleire reisande til våren.",
+  "innhald": {
+   "T1": null,
+   "T2": {
+    "innhald": [
+     {
+      "ting": "rommegraut",
+      "tal": 2
+     },
+     {
+      "ting": "luktesalt",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "2 rømmegraut og 1 luktesalt"
+   },
+   "T3": null,
+   "T4": {
+    "innhald": [
+     {
+      "ting": "kamferdropar",
+      "tal": 2
+     },
+     {
+      "ting": "ullvottar",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "2 kamferdropar og Ullvottar"
+   }
+  },
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:199",
+  "fane": "Austlandet, innlandet og verdskartet",
+  "skjerm_tekst": "DOV-03b Kjellaren i fjellstua på Hjerkinn, same rom som HJK-10 i dungeonen"
+ },
+ {
+  "id": "VK10",
+  "skjerm": "JTB-05",
+  "kiste": "K-JTB-05-1",
+  "stad_tekst": "Kista i Jøtulberget, V7 Jotunfjella",
+  "grunn": "Jøtulen gøymer det han finn i fjellet, og han vil gje det til ein av sitt eige slag",
+  "line": "Det er ikkje for deg, seier steinen.",
+  "innhald": {
+   "T1": null,
+   "T2": {
+    "innhald": [
+     {
+      "ting": "bergkrystall",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "Bergkrystall"
+   },
+   "T3": null,
+   "T4": {
+    "innhald": [
+     {
+      "ting": "jotulvotten",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "Jøtulvotten. Kista opnar seg berre for jotunen i T4",
+    "merknad": "Kista opnar seg berre for jotunen i T4"
+   }
+  },
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:200",
+  "fane": "Villmarkene V7 til V12",
+  "skjerm_tekst": "JTB-05 Jøtulkammeret i Jøtulberget"
+ },
+ {
+  "id": "VK11",
+  "skjerm": "OYR-05",
+  "kiste": "K-OYR-05-1",
+  "stad_tekst": "Fløtarkoia ved Nordre Øyeren, V11",
+  "grunn": "Fløtarane legg att utstyr når dei går heim om hausten",
+  "line": "Fløtinga er ikkje over.",
+  "innhald": {
+   "T1": null,
+   "T2": null,
+   "T3": {
+    "innhald": [
+     {
+      "ting": "flatbrod",
+      "tal": 3
+     },
+     {
+      "ting": "einer",
+      "tal": 3
+     }
+    ],
+    "kjelde_tekst": "3 flatbrød og 3 einer"
+   },
+   "T4": {
+    "innhald": [
+     {
+      "ting": "brodd",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "Brodd"
+   }
+  },
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:201",
+  "fane": "Villmarkene V7 til V12",
+  "skjerm_tekst": "OYR-05 Fløtarleiren ved Nordre Øyeren"
+ },
+ {
+  "id": "VK12",
+  "skjerm": "FSK-08",
+  "kiste": "K-FSK-08-1",
+  "stad_tekst": "Svedjebua på Finnskogen, V12",
+  "grunn": "Folket i grenda legg att det dei har til overs etter svedjinga",
+  "line": "Svedja har ikkje gjeve korn enno.",
+  "innhald": {
+   "T1": null,
+   "T2": null,
+   "T3": {
+    "innhald": [
+     {
+      "ting": "tjore",
+      "tal": 2
+     },
+     {
+      "ting": "einer",
+      "tal": 2
+     }
+    ],
+    "kjelde_tekst": "2 tjøre og 2 einer"
+   },
+   "T4": {
+    "innhald": [
+     {
+      "ting": "bjorneskinn",
+      "tal": 1
+     },
+     {
+      "ting": "kamferdropar",
+      "tal": 2
+     }
+    ],
+    "kjelde_tekst": "Bjørneskinn og 2 kamferdropar"
+   }
+  },
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:202",
+  "fane": "Villmarkene V7 til V12",
+  "skjerm_tekst": "FSK-08 Svedja på Finnskogen"
+ },
+ {
+  "id": "VK13",
+  "skjerm": "TRD-10b",
+  "kiste": "K-TRD-10b-1",
+  "stad_tekst": "Sjøbua på Bakklandet, Trondheim",
+  "grunn": "Fiskarane på Bakklandet legg i kista det dei byter til seg i Nordland",
+  "line": "Båtane er ikkje heime frå Lofoten.",
+  "innhald": {
+   "T1": null,
+   "T2": {
+    "innhald": [
+     {
+      "ting": "kaffi",
+      "tal": 2
+     }
+    ],
+    "kjelde_tekst": "2 kaffi"
+   },
+   "T3": null,
+   "T4": {
+    "innhald": [
+     {
+      "ting": "selskinnslue",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "Selskinnslue"
+   }
+  },
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:203",
+  "fane": "Trøndelag og Nord-Noreg",
+  "skjerm_tekst": "TRD-10b Sjøbua på Bakklandet"
+ },
+ {
+  "id": "VK14",
+  "skjerm": "SEL-03a",
+  "kiste": "K-SEL-03a-1",
+  "stad_tekst": "Loftet hjå klokkaren i Seljord, Telemark",
+  "grunn": "Klokkaren set av bøker til den som skal syngje i kyrkja",
+  "line": "Han har ikkje fått alle bøkene enno.",
+  "innhald": {
+   "T1": null,
+   "T2": {
+    "innhald": [
+     {
+      "ting": "kingos_salmebok",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "Kingos salmebok"
+   },
+   "T3": null,
+   "T4": {
+    "innhald": [
+     {
+      "ting": "salmebok_messing",
+      "tal": 1
+     }
+    ],
+    "kjelde_tekst": "Salmeboka med messinghjørne"
+   }
+  },
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:204",
+  "fane": "Vestlandet, Sørlandet og Telemark",
+  "skjerm_tekst": "SEL-03a Loftet hjå klokkaren i Seljord"
+ }
+]

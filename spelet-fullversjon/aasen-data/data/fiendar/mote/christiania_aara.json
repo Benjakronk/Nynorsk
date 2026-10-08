@@ -1,0 +1,2323 @@
+[
+ {
+  "id": "9b_bakgardane_rundt_stortorvet_om_natta_i_marknadsveka_februar_1849",
+  "namn": "Bakgardane rundt Stortorvet om natta i marknadsveka, februar 1849",
+  "del": "Christiania, september 1847 til juli 1850",
+  "skjermar": [],
+  "stader": [],
+  "epoke": "christiania_aara",
+  "moterate": "vanleg",
+  "niva": {
+   "min": 28,
+   "maks": 34
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "den_fulle_vektaren",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1048"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "politibetjenten",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1049"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "nattvektaren_i_christiania",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1050"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "den_fulle_vektaren",
+      "fil": "namngjevne",
+      "tal": 1
+     },
+     {
+      "id": "politibetjenten",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1051"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "fressen",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1052"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "kjellarkunden",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "med skjenkaren"
+     },
+     {
+      "id": "den_fulle_vektaren",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1053"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "den_fulle_vektaren",
+      "fil": "namngjevne",
+      "tal": 2
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1054"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "varulven_i_christiania",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1055"
+   },
+   {
+    "gruppe": 9,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "den_fulle_vektaren",
+      "fil": "namngjevne",
+      "tal": 1
+     },
+     {
+      "id": "politibetjenten",
+      "fil": "namngjevne",
+      "tal": 1
+     },
+     {
+      "id": "nattvektaren_i_christiania",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1056"
+   }
+  ],
+  "moterate_tekst": "Vanleg",
+  "merknad": "Sona gjeld om natta den første veka i februar 1849. Elles gjeld tabellen for Kvadraturen.",
+  "synleg_tekst": "Høilands lærling (andre møtet).",
+  "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1042"
+ },
+ {
+  "id": "9b_gatene_i_christiania_natta_til_4._august_1850_unntak",
+  "namn": "Gatene i Christiania natta til 4. august 1850 (Unntak)",
+  "del": "Christiania, september 1847 til juli 1850",
+  "skjermar": [],
+  "stader": [],
+  "epoke": "christiania_aara",
+  "moterate": "hog",
+  "niva": {
+   "min": 34,
+   "maks": 34
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "isravnen_over_nordmarka",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 25,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1136"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "frostmusene_i_vaterland",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1137"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "vektaren_i_kulda",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1138"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "isravnen_over_nordmarka",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1139"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "varulven_i_christiania",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1140"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "vektaren_i_kulda",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "frostmusene_i_vaterland",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1141"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "isravnen_over_nordmarka",
+      "fil": "vanlege",
+      "tal": 3
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1142"
+   }
+  ],
+  "moterate_tekst": "Høg",
+  "merknad": "Gatene har Ingen som grunnregel, og raten er Høg fordi frosten fyller byen denne natta.",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1128"
+ },
+ {
+  "id": "9b_arkivet_i_bispegarden_s2.18",
+  "namn": "Arkivet i bispegarden (S2.18)",
+  "del": "Bergen, februar 1848 og januar 1850",
+  "skjermar": [
+   "ABG-01",
+   "ABG-02",
+   "ABG-03",
+   "ABG-04",
+   "ABG-05",
+   "ABG-06"
+  ],
+  "stader": [
+   "ABG"
+  ],
+  "epoke": "christiania_aara",
+  "moterate": "hog",
+  "niva": {
+   "min": 32,
+   "maks": 32
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "innforsla_i_bispegarden",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 35,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1156"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "innforsla_i_bispegarden",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 25,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1157"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "innforsla_i_bispegarden",
+      "fil": "vanlege",
+      "tal": 3
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1158"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "innforsla_i_bispegarden",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1159"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "innforsla_i_bispegarden",
+      "fil": "vanlege",
+      "tal": 3
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1160"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "innforsla_i_bispegarden",
+      "fil": "vanlege",
+      "tal": 4
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1161"
+   }
+  ],
+  "epokar": [
+   "christiania_aara",
+   "fimbulvinteren"
+  ],
+  "moterate_tekst": "Høg",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1150"
+ },
+ {
+  "id": "9b_bak_kulissane",
+  "namn": "Bak kulissane",
+  "del": "Bergen, februar 1848 og januar 1850",
+  "skjermar": [
+   "BKL-01",
+   "BKL-02",
+   "BKL-03",
+   "BKL-04",
+   "BKL-05",
+   "BKL-06",
+   "BKL-07",
+   "BKL-08",
+   "BKL-09"
+  ],
+  "stader": [
+   "BKL"
+  ],
+  "epoke": "christiania_aara",
+  "moterate": "hog",
+  "niva": {
+   "min": 30,
+   "maks": 34
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "teaterkopisten",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 30,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1171"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "teaterkopisten",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 25,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1172"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "den_danske_skodespelaren",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "med sufflørguten"
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1173"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "teaterkopisten",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "den_danske_skodespelaren",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "med sufflørguten"
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1174"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "teaterkopisten",
+      "fil": "vanlege",
+      "tal": 3
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1175"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "teaterkopisten",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1176"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "teaterkopisten",
+      "fil": "vanlege",
+      "tal": 2
+     },
+     {
+      "id": "den_danske_skodespelaren",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "med sufflørguten"
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1177"
+   }
+  ],
+  "epokar": [
+   "christiania_aara",
+   "fimbulvinteren"
+  ],
+  "moterate_tekst": "Høg",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1165"
+ },
+ {
+  "id": "9b_vegane_langs_kroderen_og_opp_dalen_til_nes",
+  "namn": "Vegane langs Krøderen og opp dalen til Nes",
+  "del": "Hallingdal med Gulsvik, sommaren 1849",
+  "skjermar": [
+   "HAL-01"
+  ],
+  "stader": [
+   "HAL"
+  ],
+  "epoke": "christiania_aara",
+  "moterate": "laag",
+  "niva": {
+   "min": 30,
+   "maks": 30
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "bryllaupsgjesten_fraa_gulsvik",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1191"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "skreppekaren_ved_gulsvik",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1192"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "skromtet_langs_kroderen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1193"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "bryllaupsgjesten_fraa_gulsvik",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "skreppekaren_ved_gulsvik",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1194"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "knotten",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1195"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "bryllaupsgjesten_fraa_gulsvik",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1196"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "muru",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1197"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "bryllaupsgjesten_fraa_gulsvik",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "knotten",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1198"
+   },
+   {
+    "gruppe": 9,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "bryllaupsgjesten_fraa_gulsvik",
+      "fil": "vanlege",
+      "tal": 3
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1199"
+   }
+  ],
+  "moterate_tekst": "Låg",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1185"
+ },
+ {
+  "id": "9b_strendene_ved_kroderen_utmarka_og_kollane",
+  "namn": "Strendene ved Krøderen, utmarka og kollane",
+  "del": "Hallingdal med Gulsvik, sommaren 1849",
+  "skjermar": [],
+  "stader": [],
+  "epoke": "christiania_aara",
+  "moterate": "vanleg",
+  "niva": {
+   "min": 30,
+   "maks": 30
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "nokken_i_kroderen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1209"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "oteren_i_kroderen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1210"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "bjornen_ved_kroderen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1211"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "alvedansarane",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1212"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "knotten",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1213"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "oteren_i_kroderen",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "knotten",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1214"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "muru",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1215"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "alvedansarane",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1216"
+   },
+   {
+    "gruppe": 9,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "nokken_i_kroderen",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1217"
+   }
+  ],
+  "moterate_tekst": "Vanleg",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09b Møtetabellar barndomen til Christiania.md:1203"
+ },
+ {
+  "id": "9c_innmarka_og_bygdevegane_i_hovdebygda_og_paa_aarflot",
+  "namn": "Innmarka og bygdevegane i Hovdebygda og på Årflot",
+  "del": "Fimbulvinteren: Ørsta, 1850 til 1852",
+  "skjermar": [
+   "ASN-01",
+   "ASN-01a",
+   "ASN-01b",
+   "ASN-01c",
+   "ASN-02",
+   "ASN-03",
+   "ASN-03a",
+   "ASN-04",
+   "ASN-05"
+  ],
+  "stader": [
+   "ASN"
+  ],
+  "epoke": "christiania_aara",
+  "moterate": "vanleg",
+  "niva": {
+   "min": 34,
+   "maks": 34
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "frostvetten_paa_tunet",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "frostmusene_i_fjoset",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 14,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:23"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "reven_paa_aarflot",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:24"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "stangegeita",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "frosen"
+     },
+     {
+      "id": "frostvetten_paa_tunet",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:25"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "hanen_paa_aasen",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "frosen"
+     },
+     {
+      "id": "frostvetten_paa_tunet",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:26"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "mikkel_i_honsehuset",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "frosen"
+     },
+     {
+      "id": "reven_paa_aarflot",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:27"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "gjeldsinnkrevjaren",
+      "fil": "namngjevne",
+      "tal": 1
+     },
+     {
+      "id": "frostvetten_paa_tunet",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:28"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "stabbursmusa",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "frosen"
+     },
+     {
+      "id": "frostmusene_i_fjoset",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:29"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "knurrungen_og_knurrfaren",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 8,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:30"
+   },
+   {
+    "gruppe": 9,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "kraakeflokken",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "frosen"
+     },
+     {
+      "id": "frostvetten_paa_tunet",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 7,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:31"
+   },
+   {
+    "gruppe": 10,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "frostvetten_paa_tunet",
+      "fil": "vanlege",
+      "tal": 2
+     },
+     {
+      "id": "reven_paa_aarflot",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "hanen_paa_aasen",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "frosen"
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:32"
+   }
+  ],
+  "epokar": [
+   "christiania_aara",
+   "fimbulvinteren"
+  ],
+  "moterate_tekst": "Vanleg",
+  "etter_forste_kampen_tekst": "Etter første kampen: Knurrungen og Knurrfaren kan møtast i gruppe 8.",
+  "synleg_tekst": "Kua i vårknipa i båsen på Årflot med dei to frostvettene sine, Knurrungen og Knurrfaren (første gong) ved kverna i bekken på Åsen.",
+  "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:17"
+ },
+ {
+  "id": "9c_utmarka_lia_og_kyrkjegarden",
+  "namn": "Utmarka, lia og kyrkjegarden",
+  "del": "Fimbulvinteren: Ørsta, 1850 til 1852",
+  "skjermar": [
+   "SET-01",
+   "SET-02",
+   "SET-02a",
+   "SET-03",
+   "ORV-01",
+   "ORV-02",
+   "ORV-02a",
+   "ORV-02b",
+   "ORV-02c",
+   "ORV-03",
+   "ORV-04",
+   "ORV-04a",
+   "ORV-05",
+   "ORV-06"
+  ],
+  "stader": [
+   "SET",
+   "ORV"
+  ],
+  "epoke": "christiania_aara",
+  "moterate": "hog",
+  "niva": {
+   "min": 34,
+   "maks": 34
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "ravnen_over_orsta",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "rypa_i_lia",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:46"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "rypa_i_lia",
+      "fil": "vanlege",
+      "tal": 3
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:47"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "kraakeflokken",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "frosen"
+     },
+     {
+      "id": "ravnen_over_orsta",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:48"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "frostvetten_paa_tunet",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "rypa_i_lia",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:49"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "ravnen_over_orsta",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "frostvetten_paa_tunet",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:50"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "kattugla_paa_kyrkjegarden",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "frostvetten_paa_tunet",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:51"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "stangegeita",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "frosen"
+     },
+     {
+      "id": "rypa_i_lia",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 9,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:52"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "kattugla_paa_kyrkjegarden",
+      "fil": "vanlege",
+      "tal": 2
+     },
+     {
+      "id": "ravnen_over_orsta",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 8,
+    "formasjonar": [
+     "Vanleg",
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:53"
+   },
+   {
+    "gruppe": 9,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "reven_paa_aarflot",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "kraakeflokken",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "frosen"
+     }
+    ],
+    "vekt": 7,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:54"
+   },
+   {
+    "gruppe": 10,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "ravnen_over_orsta",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "kraakeflokken",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "frosen"
+     },
+     {
+      "id": "frostvetten_paa_tunet",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:55"
+   }
+  ],
+  "epokar": [
+   "christiania_aara",
+   "fimbulvinteren"
+  ],
+  "moterate_tekst": "Høg",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:40"
+ },
+ {
+  "id": "9c_fjora_og_isvegane_fraa_orstavika_til_vartdal_og_aalesund",
+  "namn": "Fjøra og isvegane frå Ørstavika til Vartdal og Ålesund",
+  "del": "Fimbulvinteren: Ørsta, 1850 til 1852",
+  "skjermar": [
+   "HVD-01",
+   "HVD-02",
+   "HVD-02a",
+   "HVD-03",
+   "FJD-01",
+   "FJD-02",
+   "FJD-03",
+   "FJD-04"
+  ],
+  "stader": [
+   "HVD",
+   "FJD"
+  ],
+  "epoke": "christiania_aara",
+  "moterate": "hog",
+  "niva": {
+   "min": 34,
+   "maks": 34
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "einherjen_fraa_hjorungavaag",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "svartbaken_paa_isvegen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 14,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:67"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "einherjen_fraa_hjorungavaag",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:68"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "svartbaken_paa_isvegen",
+      "fil": "vanlege",
+      "tal": 3
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:69"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "sildastimen",
+      "fil": "namngjevne",
+      "tal": 1
+     },
+     {
+      "id": "svartbaken_paa_isvegen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:70"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "haugbokken",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "frosen"
+     },
+     {
+      "id": "frostvetten_paa_tunet",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:71"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "einherjen_fraa_hjorungavaag",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "frostvetten_paa_tunet",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:72"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "skronemakaren_i_nausta",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "frosen"
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:73"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "sildastimen",
+      "fil": "namngjevne",
+      "tal": 1
+     },
+     {
+      "id": "einherjen_fraa_hjorungavaag",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 8,
+    "formasjonar": [
+     "Vanleg",
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:74"
+   },
+   {
+    "gruppe": 9,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "skronemakaren_i_nausta",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "frosen"
+     },
+     {
+      "id": "haugbokken",
+      "fil": "namngjevne",
+      "tal": 1,
+      "merknad": "frosen"
+     }
+    ],
+    "vekt": 7,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:75"
+   },
+   {
+    "gruppe": 10,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "einherjen_fraa_hjorungavaag",
+      "fil": "vanlege",
+      "tal": 3
+     },
+     {
+      "id": "svartbaken_paa_isvegen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:76"
+   }
+  ],
+  "epokar": [
+   "christiania_aara",
+   "fimbulvinteren"
+  ],
+  "moterate_tekst": "Høg",
+  "merknad": "Isvegane over Ørstafjorden og Vartdalsfjorden ligg langs fjøra og høyrer til same sona, så heile sona har raten for kyst.",
+  "synleg_tekst": "Molaup-ormen i den kvite korridoren på Hjørundfjorden innanfor Bondalen.",
+  "kjelde": "05 Mekanikk/09c Møtetabellar fimbulvinteren og Sagahallen.md:61"
+ },
+ {
+  "id": "9d_oyrane_sunda_og_lopa_ved_fetsund_i_flaumen_mai_1849",
+  "namn": "Øyrane, sunda og løpa ved Fetsund i flaumen, mai 1849",
+  "del": "V11 Nordre Øyeren",
+  "skjermar": [
+   "OYR-01",
+   "OYR-02",
+   "OYR-03",
+   "OYR-04",
+   "OYR-05",
+   "OYR-06",
+   "OYR-07",
+   "OYR-08",
+   "OYR-09",
+   "OYR-10",
+   "OYR-11",
+   "OYR-12",
+   "TVA-01",
+   "TVA-02",
+   "TVA-03",
+   "TVA-04",
+   "TVA-05",
+   "TVA-06"
+  ],
+  "stader": [
+   "OYR",
+   "TVA"
+  ],
+  "epoke": "christiania_aara",
+  "moterate": "vanleg",
+  "niva": {
+   "min": 31,
+   "maks": 31
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "flotaren_paa_glomma",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 14,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:928"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "nokken_i_nitelva",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:929"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "oteren_i_kroderen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:930"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "flotaren_paa_glomma",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "oteren_i_kroderen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:931"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "flotaren_paa_glomma",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:932"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "nokken_i_kroderen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:933"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "nokken_i_nitelva",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "oteren_i_kroderen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:934"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "skromtet_langs_kroderen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 8,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:935"
+   },
+   {
+    "gruppe": 9,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "flotaren_paa_glomma",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "nokken_i_nitelva",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 7,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:936"
+   },
+   {
+    "gruppe": 10,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "flotaren_paa_glomma",
+      "fil": "vanlege",
+      "tal": 3
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:937"
+   }
+  ],
+  "moterate_tekst": "Vanleg",
+  "merknad": "Eikja i sunda har raten Låg og same tabell.",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:922"
+ },
+ {
+  "id": "9d_skogen_fraa_grue_til_revholt_jonsok_1849",
+  "namn": "Skogen frå Grue til Revholt, jonsok 1849",
+  "del": "V12 Finnskogen",
+  "skjermar": [
+   "FSK-01",
+   "FSK-02",
+   "FSK-03",
+   "FSK-04"
+  ],
+  "stader": [
+   "FSK"
+  ],
+  "epoke": "christiania_aara",
+  "moterate": "vanleg",
+  "niva": {
+   "min": 32,
+   "maks": 32
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "ulvane_i_finnskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 14,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1008"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "bjornen_i_finnskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1009"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "skoggaupa_i_krokskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1010"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "huldra_i_granskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1011"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "myggen_paa_finnmyra",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1012"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "ulvane_i_finnskogen",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "myggen_paa_finnmyra",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1013"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "ormen_paa_ekeberg",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1014"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "stimannen_i_krokskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 8,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1015"
+   },
+   {
+    "gruppe": 9,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "elgoksen_i_finnskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 7,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1016"
+   },
+   {
+    "gruppe": 10,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "bjornen_i_finnskogen",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "ulvane_i_finnskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1017"
+   }
+  ],
+  "moterate_tekst": "Vanleg",
+  "merknad": "På vegen opp Glomma og i bygda Grue er raten Låg.",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1002"
+ },
+ {
+  "id": "9d_myrane_tjornene_og_svedja_ved_grenda_jonsok_1849",
+  "namn": "Myrane, tjørnene og svedja ved grenda, jonsok 1849",
+  "del": "V12 Finnskogen",
+  "skjermar": [
+   "FSK-05",
+   "FSK-06",
+   "FSK-07",
+   "FSK-08",
+   "FSK-09"
+  ],
+  "stader": [
+   "FSK"
+  ],
+  "epoke": "christiania_aara",
+  "moterate": "vanleg",
+  "niva": {
+   "min": 32,
+   "maks": 32
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "myggen_paa_finnmyra",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 14,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1027"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "huldra_i_granskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1028"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "ulvane_i_finnskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1029"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "nokken_i_kroderen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 12,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1030"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "ormen_paa_ekeberg",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1031"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "myggen_paa_finnmyra",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "huldra_i_granskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1032"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "bjornen_i_finnskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1033"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "elgoksen_i_finnskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 8,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1034"
+   },
+   {
+    "gruppe": 9,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "skoggaupa_i_krokskogen",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "myggen_paa_finnmyra",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 7,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1035"
+   },
+   {
+    "gruppe": 10,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "ulvane_i_finnskogen",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1036"
+   }
+  ],
+  "moterate_tekst": "Vanleg",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1021"
+ }
+]

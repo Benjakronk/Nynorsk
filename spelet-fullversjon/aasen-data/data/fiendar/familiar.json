@@ -1,0 +1,1125 @@
+[
+ {
+  "id": "rottene",
+  "namn": "Rottene",
+  "hovudfamilie": "Dyr",
+  "grunnform": "kjellarrotta_paa_nordnes",
+  "variantar": [
+   "kjellarrotta_paa_nordnes",
+   "lagerrotta_under_bryggen",
+   "rotta_i_vaterland",
+   "skipsrotta_i_vaagen"
+  ],
+  "omtale": "Grunnforma er brunrotta, som kom til landet på 1700-talet og fanst i alle byar og hamner i speltida. Rottene kjem to eller tre saman som ein flokk og har Driv Svolt. Kvart treff stel ein matgjenstand, og ei rotte som ber mat, har eit veskeikon over seg. Blir ho ikkje treft før sin neste tur, flyktar ho med maten (Skremd), og maten ligg att i kartsona, slik han gjer hos Bryggerakken. Ein matgjenstand gjeven med Ting gjer éi rotte mett (Mett). Rottene er sårbare for kulde og for ordet ljore, slik smådyra i hus og by er, og Katt frå tussen skremmer heile flokken med ein gong. Dei lærer spelaren at maten i veska kan brukast mot fienden.",
+  "aatferd": "rottene",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:62"
+ },
+ {
+  "id": "kraakene",
+  "namn": "Kråkene",
+  "hovudfamilie": "Dyr",
+  "grunnform": "kraaka_paa_boen",
+  "variantar": [
+   "kraaka_paa_boen",
+   "kraaka_i_fjora",
+   "kvitkraaka",
+   "notteskrika",
+   "kraaka_paa_isvegen"
+  ],
+  "omtale": "Grunnforma er hettekråka, som følgde folk på bøen og i fjøra over heile landet. Ho flyg og har statusen Utanfor rekkjevidd, slik varselfuglane i bestiarium\\_dyr.md har det. Ord, song og joik når henne, og Kast dreg henne ned. Annankvar runde landar ho for å ete og står på bakken til sin neste tur, og då når vanlege slag henne. Ho har Driv Svolt. Huss tek 1 Mot frå henne, og ein matgjenstand gjer henne mett. Kråkene lærer spelaren å vente på rett augneblink. Kråkeflokken, ramnen og skjæra i bestiarium\\_dyr.md er namngjevne slektningar med eigne reglar.",
+  "aatferd": "kraakene",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:73"
+ },
+ {
+  "id": "ternene",
+  "namn": "Ternene",
+  "hovudfamilie": "Dyr",
+  "grunnform": "terna_paa_holmen",
+  "variantar": [
+   "terna_paa_holmen",
+   "ternene_paa_holsnoy",
+   "ternene_paa_jaeren",
+   "ternene_paa_vega"
+  ],
+  "omtale": "Grunnforma er terna, som hekkar i koloniar på holmar og strender langs heile kysten og stuper på alt som kjem nær egga. Ternene er trekkfuglar og finst berre når årstidsflagget i kartsona er sommar, og på Helgeland i september 1846, før dei siste har trekt sørover. Dei har Driv Revir, flyg og har statusen Utanfor rekkjevidd. Når ei terne stuper, går ho til åtak på ein figur i framrada og er nede til sin neste tur, og då når slag henne. Står heile det aktive partyet i bakrada ein heil runde, har ternene vunne revir og går (Fred). Fleire terner i same kamp er ein flokk og følgjer regelen om eitt sinn for fuglar i flokk. Ternene lærer spelaren at det går an å vike.",
+  "aatferd": "ternene",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:85"
+ },
+ {
+  "id": "ulvane",
+  "namn": "Ulvane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "ulvane_paa_hardangervidda",
+  "variantar": [
+   "ulvane_paa_hardangervidda",
+   "ulvane_paa_filefjell",
+   "ulvane_paa_fokstumyra",
+   "ulvane_i_gauldalen",
+   "ulvane_i_vefsn",
+   "ulvane_i_finnskogen",
+   "ulvane_paa_romerike",
+   "ulvane_paa_mjosisen"
+  ],
+  "omtale": "Grunnforma er ein vanleg ulveflokk på to eller tre ulvar. Ulv fanst over store delar av landet i speltida, mest på Austlandet og i Trøndelag, og lova betalte skotpremie for kvar ulv. Alle ulvereglane i bestiarium\\_dyr.md gjeld. Kven ser først gjev Klumsa når kampen startar i Bakåtak, og møtetabellen seier om gruppa kan starte slik. Teljinga Ferten står over flokken. Noa-namna gråbein, skrubb og varg tek to segl, og ordet ulv gjev alle ulvane full målar. Ulvane har Driv Svolt. Ein matgjenstand gjer éin ulv mett, og den siste ulven i ein flokk flyktar på neste tur sin (Skremd). Ein roa ulv gjev lukke i kartsona. Ulvane lærer spelaren å lytte i første runde.",
+  "aatferd": "ulvane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:96"
+ },
+ {
+  "id": "sommarsvermane",
+  "namn": "Sommarsvermane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "myggen_ved_tjorna",
+  "variantar": [
+   "myggen_ved_tjorna",
+   "kleggen_paa_slaattemyra",
+   "myggen_i_torvmyra",
+   "myggen_paa_dovre",
+   "vepsane_i_bakgarden",
+   "myggen_paa_finnmyra"
+  ],
+  "omtale": "Grunnforma er ein sverm av stikkande insekt. Svermane følgjer reglane under Svermar under open himmel i bestiarium\\_dyr.md: enkeltåtak gjer halv skade og åtak på alle dobbel, svermen har ingen Mot, og han går når Livet er under halvparten (Skremd). Lokkerop, song, joik og noa-namn verkar ikkje på han. Han er sårbar for røyk, vind og kulde og finst berre når årstidsflagget er sommar eller haust. Svermen går etter jotunen om han er med, og elles etter den figuren som har mest Liv. Svermane lærer spelaren å bruke åtak på alle. Aasen får inga ord frå sjølve svermen. Ordet kjem frå nokon som står ved sida av og bannar, og Kven sa det-feltet viser kven.",
+  "aatferd": "sommarsvermane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:111"
+ },
+ {
+  "id": "revane",
+  "namn": "Revane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "reven_paa_setra",
+  "variantar": [
+   "reven_paa_setra",
+   "reven_i_bondalen",
+   "reven_i_lauvlia",
+   "reven_i_frukthagane",
+   "reven_paa_jaeren",
+   "fjellreven_paa_hjerkinn",
+   "reven_i_nordmarka",
+   "reven_paa_aarflot",
+   "reven_ved_akerselva",
+   "reven_paa_mjosisen",
+   "fjellreven_paa_vidda",
+   "reven_paa_kristiansten",
+   "reven_ved_fredriksten",
+   "reven_paa_svaberga"
+  ],
+  "omtale": "Grunnforma er raudreven, som fanst over heile landet i speltida og tok høner og lam der han kom til. Revane følgjer reglane for fjellkattar og rev i bestiarium\\_dyr.md. Dei har Driv Svolt og Mot 2 og startar med ei list: reven er Gøymd i lyngen eller i snøen ved kampstart. Eit kv-ord finn han, og ein rev som blir funnen, mistar første handlinga si. Det første treffet han får inn, stel ein matgjenstand, og ein rev som ber mat, har eit veskeikon over seg. Blir han ikkje treft før sin neste tur, flyktar han med maten (Skremd), og maten ligg att i kartsona, slik han gjer hos Bryggerakken. Noa-namnet Mikkel tek to segl, og ein matgjenstand gjeven med Ting gjer reven mett. Fjellreven er eit fargebytte i kvit vinterpels som høyrer til høgfjellet og vidda. Kvitreven, Mikkel i hønsehuset og Fjellrevkvelpen i ulveskinn i bestiarium\\_dyr.md er namngjevne slektningar. Reveskinn var det vanlegaste skinnet i premiesvindelen etter 1845. Revane lærer spelaren å leite før han slår.",
+  "aatferd": "revane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:124"
+ },
+ {
+  "id": "bjornane",
+  "namn": "Bjørnane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "bjornen_i_laerdal",
+  "variantar": [
+   "bjornen_i_laerdal",
+   "bjornen_paa_voss",
+   "bjornen_i_rauland",
+   "bjornen_ved_kroderen",
+   "bjornen_i_finnskogen",
+   "den_vekte_bjornen_i_luster",
+   "bjornen_som_ikkje_fekk_sove"
+  ],
+  "omtale": "Grunnforma er ein vaksen brunbjørn. Bjørnen var vanleg i speltida og stod tettast i Telemark og Agder, og lova av 1845 gav tre spesidalar i skotpremie. Bjørnane følgjer reglane under Bamse i bestiarium\\_dyr.md. Dei har Driv Svolt og Mot 4. Alle bjørnenamn er noa-namn og tek to segl, og flesk gjeve med Ting gjer bjørnen mett. Askeladden som kappåt med trollet og tusseordet Taka lurer han som dei andre bjørnane, og Kjetta på Dovre tek alt Motet hans. Bjørnen søv i hiet om vinteren og står berre i sonene når årstidsflagget ikkje er vinter. I fimbulvinteren har kulda vekt bjørnane, slik ho vekte Hibjørnen, og dei frosne bjørnane er svoltne og trøytte. Bamse ved åtet, Bjørnemora, Hibjørnen og Gofar er namngjevne slektningar. Bjørnane lærer spelaren å bruke maten i veska.",
+  "aatferd": "bjornane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:145"
+ },
+ {
+  "id": "jervane",
+  "namn": "Jervane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "jerven_under_vidda",
+  "variantar": [
+   "jerven_under_vidda",
+   "jerven_paa_heia",
+   "jerven_paa_filefjell",
+   "jerven_i_visdalen",
+   "jerven_ved_kongsvold",
+   "jerven_i_vefsn",
+   "jerven_ved_postvegen",
+   "jerven_paa_hardangervidda",
+   "jerven_paa_dovre",
+   "jerven_i_bykle"
+  ],
+  "omtale": "Grunnforma er jerven, som folk på fjellet kalla fjellfross. Han jaktar åleine og gøymer det han ikkje et. Jervane følgjer reglane for fjellkattar og rev i bestiarium\\_dyr.md, med Driv Svolt og Mot 3. Det første treffet han får inn, stel ein gjenstand frå veska, og runden etter flyktar han med han (Skremd) om han ikkje er open. Gjenstanden blir gøymd i kartsona, slik Fjellfrossen gøymer han, og Lytt i felt eller Kyrøyra finn han att. Noa-namnet fjellfross tek to segl. Står jerven i lag med andre dyr, stel han ein gjenstand til kvar gong eit av dei går. Lova av 1845 gav tre spesidalar for «Gaupe, Jerv eller Filfras». Fjellfrossen på Hjerkinn er ein namngjeven slektning. Jervane lærer spelaren å halde fast på veska.",
+  "aatferd": "jervane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:159"
+ },
+ {
+  "id": "gaupene",
+  "namn": "Gaupene",
+  "hovudfamilie": "Dyr",
+  "grunnform": "skoggaupa_i_valle",
+  "variantar": [
+   "skoggaupa_i_valle",
+   "skoggaupa_i_orkdalen",
+   "skoggaupa_i_krokskogen",
+   "skoggaupa_i_hjartdal",
+   "skoggaupa_i_verdal",
+   "skoggaupa_i_nordmarka",
+   "skoggaupa_under_norefjell",
+   "skoggaupa_i_bygland"
+  ],
+  "omtale": "Grunnforma er ei gaupe i skogen, eit fargebytte av Gaupa i Sogn. Variantane heiter skoggauper, så dei ikkje skal blandast med den namngjevne Gaupa. Gaupene følgjer reglane for fjellkattar og rev i bestiarium\\_dyr.md, med Driv Svolt og Mot 3. Gaupa ventar i eit tre og startar Gøymd, og første åtaket hennar kjem ovanfrå mot ein figur i bakrada. Eit kv-ord i første runde finn henne før ho hoppar, og ei gaupe som blir funnen, mistar første handlinga si. Lova av 1845 gav tre spesidalar for gaupe, og det første året blei det betalt premie for 104 gauper. Gaupene lærer spelaren å sjå opp.",
+  "aatferd": "gaupene",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:176"
+ },
+ {
+  "id": "maardyra",
+  "namn": "Mårdyra",
+  "hovudfamilie": "Dyr",
+  "grunnform": "royskatten_i_steingarden",
+  "variantar": [
+   "royskatten_i_steingarden",
+   "royskatten_i_roysa",
+   "maarden_i_seljordsskogen",
+   "grevlingen_paa_ekeberg",
+   "maarden_under_norefjell",
+   "maarden_i_stabburet",
+   "maarden_i_nordmarka"
+  ],
+  "omtale": "Grunnforma er røyskatten, som bur i steingardar og røyser og tek mus og egg. Familien har dei små mårdyra som gøymer seg der dei bur: røyskatten, mården og grevlingen. Dei følgjer reglane for fjellkattar og rev i bestiarium\\_dyr.md, med Driv Svolt og Mot 2. Dei startar Gøymde der dei bur, og eit kv-ord finn dei. Eit mårdyr som blir funne, mistar første handlinga si. Det første treffet stel ein matgjenstand, og den som vinn kampen, får han att. Røyskatten blir kvit om vinteren. Grevlingen søv om vinteren og står berre i sonene når årstidsflagget ikkje er vinter. Mår og røyskatt gav gode skinn, og mården kom ikkje på premielista før 1899. Mårdyra lærer spelaren å sjå i holene.",
+  "aatferd": "maardyra",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:191"
+ },
+ {
+  "id": "oterane",
+  "namn": "Oterane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "oteren_i_fjora",
+  "variantar": [
+   "oteren_i_fjora",
+   "oteren_under_molaup",
+   "oteren_paa_holsnoy",
+   "oteren_paa_leka",
+   "oteren_i_rauma",
+   "oteren_i_kroderen",
+   "oteren_under_hjellane",
+   "oteren_under_bryggen",
+   "oteren_ved_elveosen",
+   "oteren_i_raaka",
+   "oteren_i_nidelva",
+   "oteren_paa_isvegen"
+  ],
+  "omtale": "Grunnforma er oteren, som fiska i elvar og i fjøra over heile landet. Oterane følgjer reglane for havdyr og fisk i bestiarium\\_dyr.md: annankvar runde dukkar oteren og er Gøymd, og då når Havstevet til Aslaug, Kast og kv-ord han. Dei har Driv Svolt og Mot 2. Fisk frå veska gjer ein oter mett med ein gong. Når oteren kjem opp att, bit han den figuren som står nærast vatnet, på plass 1. Song og kv-ord tek segl. På kampstaden båt gjeld sjøorda. Oterskinn var verdfulle, og oteren kom ikkje på premielista før 1899. Oterane lærer spelaren å slå når fienden er oppe.",
+  "aatferd": "oterane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:205"
+ },
+ {
+  "id": "ikornane",
+  "namn": "Ikornane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "ikornen_i_seljord",
+  "variantar": [
+   "ikornen_i_seljord",
+   "ikornen_i_brannskogen",
+   "ikornen_ved_hokksund",
+   "ikornen_paa_bakklandet"
+  ],
+  "omtale": "Grunnforma er ikornen, ekornet, som samlar kongler og nøtter i skogen. Han sit i treet og er Utanfor rekkjevidd. Ord, song og joik når han, og Kast dreg han ned. Kvar runde kastar han ei kongle på ein figur. Det første treffet han får inn, stel ein matgjenstand, som han ber opp i treet. Han har Driv Svolt og Mot 1. Korn eller ein annan matgjenstand gjeven med Ting gjer han mett. Ikornen blir grå om vinteren og søv ikkje. Ikornane lærer spelaren at Kast er vegen til det som sit høgt.",
+  "aatferd": "ikornane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:224"
+ },
+ {
+  "id": "harane",
+  "namn": "Harane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "haren_paa_boen",
+  "variantar": [
+   "haren_paa_boen",
+   "haren_i_lyngheia",
+   "haren_i_svedja",
+   "haren_paa_trondhjemsvegen",
+   "haren_ved_laagen",
+   "haren_ved_grensa",
+   "haren_paa_markene"
+  ],
+  "omtale": "Grunnforma er haren. I speltida fanst berre fjellharen i landet, og han blir kvit om vinteren. Harane har Driv Revir og Mot 1. Haren går ikkje til åtak. Han spring i sikksakk og vel ein ny plass i partylista kvar runde, og den figuren han spring forbi, får målaren 10 prosent tommare. Etter sin tredje tur spring han (Skremd) om han ikkje er open. Eit kv-ord får han til å stanse og lytte i éin runde, og då kan han opnast med j-ord og diftongar. Står heile partyet i bakrada ein heil runde, har haren vunne revir og går (Fred). Korn gjeve med Ting tek eitt segl. Harane lærer spelaren å opne ein fiende før han er borte.",
+  "aatferd": "harane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:235"
+ },
+ {
+  "id": "skogsfuglane",
+  "namn": "Skogsfuglane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "orrhanen_paa_leiken",
+  "variantar": [
+   "orrhanen_paa_leiken",
+   "rypa_under_folgefonna",
+   "tiuren_i_furuskogen",
+   "rypa_paa_bykleheia",
+   "tiuren_paa_leiken",
+   "roya_i_valdres",
+   "rypene_paa_dovre",
+   "rypa_paa_fokstumyra",
+   "rypa_i_lia",
+   "tiuren_i_rauland",
+   "orrfuglen_i_snoen",
+   "rypene_ved_hjerkinn",
+   "rypa_paa_vidda",
+   "orrhanen_i_innherred",
+   "tiuren_under_norefjell",
+   "tiuren_i_valle"
+  ],
+  "omtale": "Grunnforma er orrhanen. Familien har hønsefuglane i skog og fjell: orrfuglen, tiuren og rypa. Dei sit på bakken eller i treet og er ikkje Utanfor rekkjevidd før dei lettar. Når éin av dei blir treft, flaksar alle i kampen opp og er Utanfor rekkjevidd til sin neste tur. Då når berre ord, song, joik og Hallingkastet dei, og Kast dreg dei ned. Om våren har hanane Driv Revir på leiken, og elles har fuglane Driv Svolt. Mot er 1 eller 2. Huss tek 1 Mot frå dei, og korn frå veska gjer ein fugl mett. Tiuren på leiken er gullfiende. Rypa og skogsfuglane var «andet Vildt», som lova av 1845 skulle frede. Skogsfuglane lærer spelaren å slå før flokken lettar.",
+  "aatferd": "skogsfuglane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:249"
+ },
+ {
+  "id": "ornane",
+  "namn": "Ørnane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "sjoorna_over_hjorundfjorden",
+  "variantar": [
+   "sjoorna_over_hjorundfjorden",
+   "sjoorna_over_fedje",
+   "landorna_over_ullensvang",
+   "jaktfalken_paa_falkeriset",
+   "jaktfalken_i_buret",
+   "landorna_over_boverdalen",
+   "sjoorna_ved_grip",
+   "sjoorna_ved_vega",
+   "landorna_over_lesja",
+   "landorna_paa_hornet",
+   "sjoorna_over_vestfjorden",
+   "sjoorna_i_nord_troms",
+   "landorna_over_dovre",
+   "landorna_over_mjosa",
+   "kvitfalken_over_haarteigen"
+  ],
+  "omtale": "Grunnforma er sjøørna. Lova av 1845 kalla ørnene «Land- og Søørn» og gav seksti skilling per ørn, og familien brukar dei gamle namna: landørna er kongeørna på fjellet og i dalane, og sjøørna er havørna ved sjøen. Ørnene flyg og er Utanfor rekkjevidd. Ord, song, joik og Hallingkastet når dei, og Kast dreg dei ned i éin runde. Dei har Driv Svolt og Mot 3. Kvar tredje runde stuper ørna på den figuren som har minst Liv att, og runden før står ho stille over han som varsel. Ein matgjenstand gjeven med Ting medan ho står stille, får henne til å stupe på maten, og då er ho nede til sin neste tur. Jaktfalken på Hardangervidda er eit mindre fargebytte i same familie, med eigne grep. Havørna på Værøy er ein namngjeven slektning, og ørnene lærer det same som ho i mindre form: mat i veska kan vere eit åte.",
+  "aatferd": "ornane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:272"
+ },
+ {
+  "id": "uglene",
+  "namn": "Uglene",
+  "hovudfamilie": "Dyr",
+  "grunnform": "kattugla_i_loa",
+  "variantar": [
+   "kattugla_i_loa",
+   "kattugla_paa_kyrkjebakken",
+   "snougla_i_lemenaaret",
+   "jordugla_paa_fokstumyra",
+   "kattugla_paa_kyrkjegarden",
+   "kattugla_paa_vollane",
+   "kattugla_ved_skysskiftet",
+   "kattugla_paa_tunet_i_seljord",
+   "snougla_paa_vidda",
+   "haukugla_i_innherred",
+   "kattugla_paa_festningsvegen"
+  ],
+  "omtale": "Grunnforma er kattugla, som jaktar om natta i skogen og på gardane. Uglene følgjer reglane for varselfuglane i bestiarium\\_dyr.md. Kattugla står berre i sonene når kartsona har flagget kveld eller natt. Snøugla og haukugla er fargebytte som jaktar om dagen. Ugla flyg og er Utanfor rekkjevidd, og ved kampstart er ho Gøymd til eit kv-ord finn henne. Kast dreg henne ned. Dei har Driv Revir og Mot 2. Varselet er ropet. Kvar tredje runde ropar ugla, og alle på begge sider får målaren 10 prosent tommare medan dei lyttar etter kven ropet galdt. Ein figur som lyttar til ugla medan ho ropar, tek eitt segl frå henne. Folketrua sa at ugla varsla død, og her varslar ropet for begge sider. Hubroen på Voss er ein namngjeven slektning. Uglene lærer spelaren å lytte i rett augneblink.",
+  "aatferd": "uglene",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:294"
+ },
+ {
+  "id": "ormane",
+  "namn": "Ormane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "ormen_i_roysa_paa_voss",
+  "variantar": [
+   "ormen_i_roysa_paa_voss",
+   "ormen_i_bakken_paa_nes",
+   "ormen_paa_ekeberg"
+  ],
+  "omtale": "Grunnforma er hoggormen, som låg på varme steinar over heile Sør-Noreg og nordover til Helgeland. Ormane følgjer reglane for orm og lemen i bestiarium\\_dyr.md og regelen Kappløpet til vatnet frå Hoggormen på Jæren. Ormen bit éin figur og får teljinga Til vatnet (Steg 1). Får den bitne figuren eit j-ord eller ordet vatn før teljinga når null, er ormen borte (Skremd). Når teljinga når null, mistar figuren 10 prosent av maks Liv til kampen er over. Ormane har Driv Revir og Mot 2. Dei søv om vinteren og står berre i sonene når årstidsflagget ikkje er vinter, så dei har ingen frosne variantar. Ormane lærer det same som Hoggormen, i fleire bakkar.",
+  "aatferd": "ormane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:312"
+ },
+ {
+  "id": "hjortane",
+  "namn": "Hjortane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "hjortekolla_i_leikanger",
+  "variantar": [
+   "hjortekolla_i_leikanger",
+   "hjortekolla_i_ullensvang",
+   "hjortekolla_i_luster"
+  ],
+  "omtale": "Grunnforma er ei hjortekolle, ei hind utan horn. Hjorten heldt seg langs kysten frå Rogaland til Trondheimsfjorden og fanst ikkje på Austlandet i speltida, så variantane står berre på Vestlandet. Hjortane følgjer reglane for hjortedyra i bestiarium\\_dyr.md. Dei har Mot 1 eller 2, Driv Revir om hausten og Ungar om våren, og når éin i flokken er skremd, går heile flokken utan ord. Kolla går i flokk med ei eller to andre koller. Kvar runde vel flokken eitt mål og spring forbi det, og figuren tek skade og blir flytt til den andre rada. Lyttar same figur på to turar på rad, roar flokken seg og beitar, og då er han open. Hjorten var «andet Vildt», som lova av 1845 skulle frede. Hjorten i Sogn er ein namngjeven slektning. Hjortane lærer spelaren å stå roleg.",
+  "aatferd": "hjortane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:322"
+ },
+ {
+  "id": "elgane",
+  "namn": "Elgane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "elgkua_i_gauldalen",
+  "variantar": [
+   "elgkua_i_gauldalen",
+   "elgoksen_i_finnskogen",
+   "elgkua_paa_romerike",
+   "elgoksen_i_verdal"
+  ],
+  "omtale": "Grunnforma er ei elgku. Elgen var nesten utrydda i speltida, og dei siste dyra heldt seg i skogane i Trøndelag og Hedmark. Elgane står difor berre i sjeldne grupper i møtetabellane, og Elgen i Trøndelag er gullfienden av same slaget. Dei følgjer reglane for hjortedyra i bestiarium\\_dyr.md: Mot 1 eller 2, Driv Revir om hausten og Ungar om våren, og Revir elles. Ein elg som blir skremd, går utan ord. Den som vil ha ordet, må opne han med j-ord, kv-ord og diftongar og lytte. Ein elg som blir treft med harde konsonantar, sparkar mot heile framrada på sin neste tur. Elgane lærer spelaren å fare varsamt med det som er sjeldsynt.",
+  "aatferd": "elgane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:332"
+ },
+ {
+  "id": "villreinane",
+  "namn": "Villreinane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "reinsflokken_paa_bykleheiane",
+  "variantar": [
+   "reinsflokken_paa_bykleheiane",
+   "simleflokken_ved_mosstrond",
+   "reinsflokken_paa_filefjell",
+   "reinsflokken_i_jotunfjella",
+   "reinsflokken_i_rondane",
+   "reinsflokken_ved_fangstgropene",
+   "reinsflokken_paa_hardangervidda",
+   "reinsflokken_paa_dovre",
+   "reinsflokken_paa_setesdalsheiane"
+  ],
+  "omtale": "Grunnforma er ein liten flokk villrein på tre dyr. Villreinen levde på høgfjellet sør for Trondheim, på Dovrefjell, i Rondane, på Hardangervidda og på heiane i Setesdal og Telemark. Villreinane følgjer reglane for hjortedyra i bestiarium\\_dyr.md, med Mot 1 og Driv Revir. Kvar rein er eige mål, og flokken har eitt sinn: alle spring etter same figur same runde. Når den første reinen flyktar, går heile flokken utan ord. Kaukelåten tek eitt segl frå alle i flokken. Lyttar Aasen til ein open rein, høyrer han ordet sikkert. Villreinflokken på Hardangervidda i bestiarium\\_dyr.md er ein større sverm med eigne reglar. Tamrein er aldri fiendar, og variantane står berre der reinen var vill. Villreinane lærer spelaren at ein flokk har eitt sinn.",
+  "aatferd": "villreinane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:343"
+ },
+ {
+  "id": "selane",
+  "namn": "Selane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "selen_i_storfjorden",
+  "variantar": [
+   "selen_i_storfjorden",
+   "steinkobben_i_sundet",
+   "nisa_i_alverstraumen",
+   "steinkobben_paa_jaeren",
+   "selen_ved_kristiansund",
+   "nisa_ved_bronnoy",
+   "selen_paa_fjordisen",
+   "selen_i_fiskevaeret",
+   "selen_i_karmsundet",
+   "selen_i_vaagen",
+   "steinkobben_paa_iddefjorden",
+   "steinkobben_ved_odderoya"
+  ],
+  "omtale": "Grunnforma er ein sel i fjorden. Familien har steinkobben, den vanlegaste selen langs kysten og inne i fjordane, og nisa, som er ein liten kval og står i familien som fargebytte. Selane følgjer reglane for havdyr og fisk i bestiarium\\_dyr.md. Annankvar runde dukkar dei og er Gøymde, og då når Havstevet til Aslaug, Kast og kv-ord dei. Dei har Driv Svolt og Mot 2 eller 3. Ein sel som høyrer song, blir over vatnet til sin neste tur, og fisk frå veska gjer han mett. På kampstaden båt gjeld sjøorda. I fimbulvinteren ligg selane på isen og dukkar gjennom råkene. Kobben på Vega er ein namngjeven slektning. Selane lærer spelaren å vente til fienden kjem opp.",
+  "aatferd": "selane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:359"
+ },
+ {
+  "id": "sjofuglane",
+  "namn": "Sjøfuglane",
+  "hovudfamilie": "Dyr",
+  "grunnform": "svartbaken_paa_hovden",
+  "variantar": [
+   "svartbaken_paa_hovden",
+   "skarven_paa_skjeret",
+   "svartbaken_ved_haa",
+   "aerfuglen_paa_vega",
+   "svartbaken_paa_isvegen",
+   "krykkjene_paa_vaeroy",
+   "lunden_paa_lovund",
+   "aerfuglen_i_snoen",
+   "skarven_paa_holmane",
+   "skarven_paa_bryggen",
+   "svartbaken_ved_ila",
+   "svartbaken_paa_jaeren",
+   "fiskemaasane_paa_holmane"
+  ],
+  "omtale": "Grunnforma er svartbaken, den største måsen langs kysten. Familien har måsar og skarvar, og dei følgjer reglane for fuglar i flokk i bestiarium\\_dyr.md. Dei flyg og har statusen Utanfor rekkjevidd, så enkeltslag bommar. Ord, song, joik og Hallingkastet når dei, og Kast dreg dei ned. Fleire fuglar i same kamp har eitt sinn: alle vel same mål og same handling som den første som handlar i runden. Dei har Driv Svolt og Mot 2 og stel fisk og mat frå veska. Fisk gjeven med Ting gjer éin fugl mett, og dei andre slåst om fisken i éin runde. Skarven dukkar etter fisk annankvar runde og er då Gøymd, slik havdyra gjer. Ærfuglen og lunden på Helgeland er fargebytte med eigne grep og stel ikkje mat. Gråmåsen i Bergen er ein namngjeven slektning. Sjøfuglane lærer spelaren at mat i veska kan bli eit våpen.",
+  "aatferd": "sjofuglane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:378"
+ },
+ {
+  "id": "runevettane",
+  "namn": "Runevettane",
+  "hovudfamilie": "Folkevesen",
+  "grunnform": "smaa_vetter_ved_runene",
+  "variantar": [
+   "smaa_vetter_ved_runene",
+   "runevetten_ved_borgund",
+   "runevetten_under_bryggen",
+   "oskevetten_under_bryggen",
+   "vetten_ved_bautaen",
+   "runevetten_ved_blestertufta",
+   "runevetten_i_jotulberget",
+   "vetten_ved_eldstaden",
+   "runevetten_ved_urnes",
+   "runevetten_i_treskurden"
+  ],
+  "omtale": "Grunnforma er ei lita vette som sit ved ei rune eller ei ristning og vaktar ho. Runa står som ting-mål på fiendesida. Eit åtak på runa slår attende på den som slo, med 10 prosent av maks Liv hans. Vettene er vaktsame og vil ha runa i fred, og ønsket blir oppfylt når nokon lyttar til runa. Dei er sårbare for kv-ord og Lytt, og frå 2.9 for Rist og Runelesing. Kampen lærer at feil runer slår tilbake, og at ein les før ein rører. Ei roa vette går inn i steinen att. Vettene i Ura i lia er Små vetter ved runene frå epoketabellen i fiendar\\_bossar.md.",
+  "aatferd": "runevettane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:402"
+ },
+ {
+  "id": "tussar_og_nissar",
+  "namn": "Tussar og nissar",
+  "hovudfamilie": "Folkevesen",
+  "grunnform": "tussen_i_roysa",
+  "variantar": [
+   "tussen_i_roysa",
+   "tussane_i_bakkehaugen",
+   "tussen_i_gravroysa",
+   "nissen_i_laaven",
+   "nissen_i_stallen",
+   "nissen_i_den_kalde_laaven"
+  ],
+  "omtale": "Grunnforma er ei lita gardvette i grå klede og raud hette som bur i haugen, røysa eller låven og passar på garden. Vestafjells heiter ho tusse og austafjells nisse, og variantane har namnet bygda brukar. Ho følgjer regelen for gardvesen i bestiarium\\_fabeldyr.md. Frå 1.23 gjev kvar krenking før kampen 1 segl ekstra, og kvart treff med slag eller harde konsonantar gjev 10 prosent meir skade på neste åtak hennar. Lynnet er vaktsamt, og ønsket er gåver og respekt. Ein matgjenstand eller Graut med smør gjeven med Ting oppfyller ønsket. Er tussen i partyet, går gardvettene aldri til åtak på han. Dei lærer spelaren å gje før han slår. Ei roa gardvette går inn i haugen, og garden får det betre.",
+  "aatferd": "tussar_og_nissar",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:419"
+ },
+ {
+  "id": "draugane",
+  "namn": "Draugane",
+  "hovudfamilie": "Folkevesen",
+  "grunnform": "draugen_i_fjora",
+  "variantar": [
+   "draugen_i_fjora",
+   "draugen_paa_boen",
+   "draugen_ved_revet",
+   "draugen_ved_kristiansund",
+   "draugen_ved_medane",
+   "draugen_i_kirkehelleren",
+   "draugen_i_vestfjorden",
+   "draugen_ved_brusanden",
+   "draugen_i_folla_kopien",
+   "draugen_i_havdjupet"
+  ],
+  "omtale": "Grunnforma er draugen, den drukna sjømannen som ikkje fekk kvile i vigsla jord. Han har tang der andre har hår og kjem berre når kartsona har flagget kveld eller natt. Draugane her er frie havvesen og ber knutar av tang. Dei er sårbare for eld og lys, Vigsla jord og Grastorv, slik draugfølgjet i bestiarium\\_fabeldyr.md er, og harde konsonantar gjer ingenting. Lynnet er sint, og ønsket er kvile. Ein open draug som får Vigsla jord med Ting, legg seg til ro, og Ordboka merkjer sida «kvilt». Draugane lærer spelaren å leggje frå seg slaga og ta fram lyset.",
+  "aatferd": "draugane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:432"
+ },
+ {
+  "id": "huldrefolket",
+  "namn": "Huldrefolket",
+  "hovudfamilie": "Folkevesen",
+  "grunnform": "huldrekallen_under_tindane",
+  "variantar": [
+   "huldrekallen_under_tindane",
+   "huldrekallen_i_jostedalen",
+   "huldrekallen_ved_buarbreen",
+   "huldrekallen_ved_setra",
+   "vettane_paa_heia",
+   "brudefolgjet_i_urebo_ura",
+   "vettane_i_kollen",
+   "huldrebudeia",
+   "huldrekua",
+   "vetten_ved_stolsvegen",
+   "vettane_i_ura_ved_horgheim",
+   "huldra_i_granskogen",
+   "huldrekallen_i_snoen"
+  ],
+  "omtale": "Grunnforma er ein av huldrefolket av lågare rang, ein huldrekall eller ei budeie frå stølane i berget. Dei følgjer reglane for underjordiske i bestiarium\\_fabeldyr.md. Dei bergtek ein figur, som er Borte i 2 rundar og kjem att med Gløymsle, og Stål med Ting på plassen hans før han kjem att, hentar han heim. Dei er sårbare for stål kasta over og for namnet. Lynnet er einsamt, og ønsket er at nokon blir hos dei. Ønsket blir oppfylt når ein figur kjem att frå berget av seg sjølv. Er huldra i partyet, kjenner dei henne att og går ikkje til åtak på henne i første runde. Ein roa huldrekall går inn i berget og stengjer døra. Huldrefolket lærer spelaren å bruke verneskikkane.",
+  "aatferd": "huldrefolket",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:449"
+ },
+ {
+  "id": "nokkane",
+  "namn": "Nøkkane",
+  "hovudfamilie": "Folkevesen",
+  "grunnform": "nokkeungen_i_tjorna",
+  "variantar": [
+   "nokkeungen_i_tjorna",
+   "nokken_i_vosso",
+   "vassnykken_i_setesdal",
+   "myrnokken_paa_hovden",
+   "nokken_i_kroderen",
+   "nokken_i_nitelva",
+   "nokken_under_stokkane",
+   "nokken_under_isen",
+   "nokken_ved_helgoya"
+  ],
+  "omtale": "Grunnforma er nøkken, vassvetten som bur i tjørner, elvar og hylar og lokkar folk ut i vatnet. Han kallar på éin figur om gongen. Ei Steg-teljing på 2 står over figuren og går ned kvar gong figuren skulle ha handla, og ved null er figuren Borte i 2 rundar under vatnet. Hald att set teljinga eitt steg attende og står i Tal-menyen i desse kampane. Nøkken er sårbar for namnet og for stål kasta i vatnet, slik folk gjorde når dei gjekk forbi. Lynnet er einsamt, og ønsket er selskap, og det blir oppfylt når heile partyet lyttar til han i same runde. Ein roa nøkk søkk ned i vatnet og kjem ikkje opp att same dagen. Nøkkane lærer spelaren å halde på kvarandre.",
+  "aatferd": "nokkane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:469"
+ },
+ {
+  "id": "trollungane",
+  "namn": "Trollungane",
+  "hovudfamilie": "Folkevesen",
+  "grunnform": "trollungen_i_trollgjolet",
+  "variantar": [
+   "trollungen_i_trollgjolet",
+   "trollungen_i_ura",
+   "trollungen_under_brua",
+   "trollungen_i_jotulberget",
+   "trollungane_paa_dovre",
+   "trollungen_i_grova",
+   "trollungen_paa_eggen",
+   "trollungane_paa_julestua",
+   "trollungen_ved_gullhaugen"
+  ],
+  "omtale": "Grunnforma er ein trollunge, nyfiken og grådig, som kjem ut av berget om natta. Han ber knutar av røter, og harde konsonantar prellar av. På slagmarka står Morgonen med 8 steg. Når han er full, går trollungane inn i berget, og partyet vinn om ein aktiv figur står. Nær ei kyrkje slår kyrkjeklokka i runde 5 og tek 2 segl. Trollungane er sårbare for namnet og for gåver. Lynnet er einsamt, og ønsket er å få noko å leike med, så ein gjenstand gjeven med Ting oppfyller det. Trollungane lærer spelaren at ein kamp kan vinnast ved å halde ut.",
+  "aatferd": "trollungane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:485"
+ },
+ {
+  "id": "skromta",
+  "namn": "Skrømta",
+  "hovudfamilie": "Folkevesen",
+  "grunnform": "skromtet_paa_laerdalsvegen",
+  "variantar": [
+   "skromtet_paa_laerdalsvegen",
+   "skromtet_i_steinbua",
+   "skromtet_paa_postvegen",
+   "skromtet_langs_kroderen",
+   "skromtet_paa_trondhjemsvegen"
+  ],
+  "omtale": "Grunnforma er eit skrømt på vegen, ein attergangar som går der han gjekk då han levde. Skrømta følgjer reglane for mara og gastane i bestiarium\\_fabeldyr.md. Dei kjem berre når kartsona har flagget kveld eller natt, ber knutar av lysveke og er sårbare for kv-ord og lys. Lynnet er redd, og ønsket er å bli sett. Eit kv-ord oppfyller ønsket. Skrømtet går ved sida av partyet. Kvar runde vel det ein ny plass i partylista og legg ei kald hand på figuren der, som får målaren 10 prosent tommare. Eit roa skrømt går vidare langs vegen og ser seg ikkje attende. Skrømta lærer spelaren å sjå på det som følgjer etter.",
+  "aatferd": "skromta",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:501"
+ },
+ {
+  "id": "fossegrimane",
+  "namn": "Fossegrimane",
+  "hovudfamilie": "Folkevesen",
+  "grunnform": "grimen_i_laerdalselva",
+  "variantar": [
+   "grimen_i_laerdalselva",
+   "grimen_i_feigefossen",
+   "grimen_under_skjervsfossen",
+   "grimen_i_hemsila",
+   "grimen_i_vermafossen",
+   "grimen_i_den_frosne_fossen"
+  ],
+  "omtale": "Grunnforma er grimen, fossegrimen, som sit under fossen og spelar. Segna seier at den som ofra eit feitt kje til grimen ein torsdagskveld, fekk lære å spele, og at den som ofra eit magert, berre lærte å stemme fela. Grimane ber knutar av skum og er sårbare for namnet og for stål kasta i vatnet, slik nøkkane er. Harde konsonantar gjer ingenting i fossesusen. Lynnet er stolt, og ønsket er offer. Flesk eller anna kjøt gjeve med Ting oppfyller ønsket. Annan mat tek berre eitt segl. Kvar runde spelar grimen ein slått, og alle figurane får statusen Takt til Hallingkastet bryt han. Ein slått frå Ole Bull eller ein song frå partyet som går ferdig, tek eitt segl. Fossegrimen i Tvinde er ein namngjeven slektning. Grimane lærer spelaren å bryte takta til ein annan.",
+  "aatferd": "fossegrimane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:513"
+ },
+ {
+  "id": "blekkdropane",
+  "namn": "Blekkdropane",
+  "hovudfamilie": "Kanselliblekk",
+  "grunnform": "blekkdropen",
+  "variantar": [
+   "blekkdropen",
+   "lakkseglet",
+   "blekkdropen_i_breen",
+   "tingblekket",
+   "trykksverta"
+  ],
+  "omtale": "Grunnforma er ein svart drope som hoppar over golvet i arkiva. Kvart treff legg Rettskriven på eitt ord i ordmenyen til målet, så ordet står med ein blekkflekk og gjer berre grunnskade. Eit småord løftar flekken. Dropane er dei svakaste blekkvesena og lærer spelaren at Rettskriven kan løftast. Står Trykkerirotta i same kamp, et ho av dei. I fimbulvinteren blir dropane til rimkopistar (sjå Fimbulvintervesen).",
+  "aatferd": "blekkdropane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:530"
+ },
+ {
+  "id": "kopistane",
+  "namn": "Kopistane",
+  "hovudfamilie": "Kanselliblekk",
+  "grunnform": "kopisten",
+  "variantar": [
+   "kopisten",
+   "kopisten_i_tingstova",
+   "kopisten_i_arkivkjellaren",
+   "teaterkopisten",
+   "sitatet_i_salongen",
+   "den_frosne_kopisten",
+   "kopisten_i_kanselliarkivet",
+   "skinnskrivaren"
+  ],
+  "omtale": "Grunnforma er ein kopist av blekk med fjørpenn og armslag, som skriv av ein tekst på forteljarlina, éi line per runde. Når siste lina står, blir målet Rettskrive i 1 runde. Det berande ordet er understreka. Eit avbrot tek lina eitt steg attende, og Taus medan det berande ordet står, stoppar heile lina. Kopistane lærer spelaren å stanse ein fiende som skriv, før setninga er ferdig.",
+  "aatferd": "kopistane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:542"
+ },
+ {
+  "id": "protokollfantane",
+  "namn": "Protokollfantane",
+  "hovudfamilie": "Kanselliblekk",
+  "grunnform": "protokollfanten",
+  "variantar": [
+   "protokollfanten",
+   "tollprotokollen",
+   "fattigprotokollen",
+   "arrestprotokollen_i_frosten"
+  ],
+  "omtale": "Grunnforma er ein protokoll på tynne bein som skriv ein figur inn som «anmerket». Figuren får statusen Anmerka og mistar 10 prosent av maks Liv kvar runde til eit j-ord løftar han. Ein protokollfant skriv inn éin figur om gongen, og ei ny innføring tek over frå den førre. Riv på protokollen tek 2 segl. Protokollfantane lærer spelaren at j-orda er motgift mot det skrifta gjer.",
+  "aatferd": "protokollfantane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:557"
+ },
+ {
+  "id": "paragrafane",
+  "namn": "Paragrafane",
+  "hovudfamilie": "Kanselliblekk",
+  "grunnform": "paragrafen_i_tingstova",
+  "variantar": [
+   "paragrafen_i_tingstova",
+   "plakatparagrafen",
+   "brennevinsparagrafen",
+   "paragrafen_i_lensmannsprotokollen",
+   "rimparagrafen",
+   "paragrafen_i_kanselliarkivet"
+  ],
+  "omtale": "Grunnforma er eit paragrafteikn av blekk som les ein paragraf på forteljarlina, eitt ledd per runde. Når siste leddet er lese, slår paragrafen til med Bunden, Skuld eller Rettskriven i 1 runde, alt etter varianten. Det berande ordet står understreka. Eit avbrot tek eitt ledd tilbake, og Taus medan leddet med det berande ordet står, stoppar heile paragrafen, så han må lesast frå første ledd. Riv tek 2 segl. Reglane er dei same som for Paragraf hos embetsfolka i bestiarium\\_menneske.md. Paragrafane lærer spelaren å telje ledda og avbryte i tide.",
+  "aatferd": "paragrafane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:568"
+ },
+ {
+  "id": "renteskrivarane",
+  "namn": "Renteskrivarane",
+  "hovudfamilie": "Kanselliblekk",
+  "grunnform": "renteskrivaren_i_rekneskapsbokene",
+  "variantar": [
+   "renteskrivaren_i_rekneskapsbokene",
+   "renteskrivaren_under_breen",
+   "renteskrivaren_hos_pengelaanaren",
+   "renteskrivaren_i_fiskevaeret",
+   "renteskrivaren_hos_heggelund",
+   "renteskrivaren_i_lensmannsgarden",
+   "renteskrivaren_i_kanselliarkivet"
+  ],
+  "omtale": "Grunnforma er ein skrivar av blekk bak ein pult med ein sum over hovudet. Summen veks kvar runde etter same regel som for Papirmakt i bestiarium\\_menneske.md. Når summen når talet ved sida av, slår han til med Skuld, og summen byrjar på null att. Riv tek papiret og set summen til null for resten av kampen, og eit kv-ord viser kva summen eigentleg er, så han søkk med ein tredel. Renteskrivaren går i oppløysing når summen er null og segla er borte. Renteskrivarane lærer spelaren å ta papiret før talet.",
+  "aatferd": "renteskrivarane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:581"
+ },
+ {
+  "id": "papirfuglane",
+  "namn": "Papirfuglane",
+  "hovudfamilie": "Kanselliblekk",
+  "grunnform": "forordninga_i_sogn",
+  "variantar": [
+   "forordninga_i_sogn",
+   "lysinga_paa_kyrkjebakken",
+   "avisarket",
+   "rimforordninga",
+   "forordninga_i_kanselliarkivet"
+  ],
+  "omtale": "Grunnforma er ei forordning bretta til ein papirfugl, slik forordningane til Griffenfeld er det. Ho flyg og har statusen Utanfor rekkjevidd, så enkeltslag bommar. Ord, song, joik og åtak på alle når henne, og Kast dreg henne ned. Kvart treff gjev Rettskriven til målet. Papirfuglane lærer spelaren kva Utanfor rekkjevidd tyder.",
+  "aatferd": "papirfuglane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:595"
+ },
+ {
+  "id": "innforslane",
+  "namn": "Innførslane",
+  "hovudfamilie": "Kyrkjebok- og skulebokvesen",
+  "grunnform": "innforsla_i_daapsboka",
+  "variantar": [
+   "innforsla_i_daapsboka",
+   "det_vandrande_daapsnamnet",
+   "innforsla_i_sakristiet",
+   "innforsla_i_bispegarden",
+   "innforsla_paa_kyrkjeloftet",
+   "innforsla_i_arkivet_i_krodsherad",
+   "den_frosne_innforsla",
+   "innforsla_i_kanselliarkivet"
+  ],
+  "omtale": "Grunnforma er ei innføring i ei kyrkjebok, ei line med eit namn som har reist seg frå sida. Kvart treff gjev Retta namn, og figuren gjer 10 prosent mindre skade til Namnesong eller Folkevise syng namnet rett. Innførslane lærer spelaren at namn og song held det skrifta tek. Ei open innføring som blir lytta til, legg seg att på sida med namnet i bygdeform.",
+  "aatferd": "innforslane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:611"
+ },
+ {
+  "id": "abc_vesena",
+  "namn": "ABC-vesena",
+  "hovudfamilie": "Kyrkjebok- og skulebokvesen",
+  "grunnform": "abc_vesenet_i_skulekjellaren",
+  "variantar": [
+   "abc_vesenet_i_skulekjellaren",
+   "abc_vesenet_i_pipervika",
+   "abc_vesenet_i_klasse_4_b",
+   "abc_vesenet_i_kongevegen",
+   "forklaringa"
+  ],
+  "omtale": "Grunnforma er ei ABC-bok som har reist seg, med bokstavane på rekkje som tenner. Kvart treff gjev Rettskriven. Vesenet går etter tussen om han er med, og elles etter figuren på plass 4. Når Aasen lyttar til eit ope ABC-vesen, høyrer han bymålsforma, som går til fana Bymål med den danske forma ved sida av. ABC-vesena lærer spelaren at bymålet òg er norsk.",
+  "aatferd": "abc_vesena",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:626"
+ },
+ {
+  "id": "korrekturarka",
+  "namn": "Korrekturarka",
+  "hovudfamilie": "Kyrkjebok- og skulebokvesen",
+  "grunnform": "korrekturarket_i_settarsalen",
+  "variantar": [
+   "korrekturarket_i_settarsalen",
+   "korrekturarket_paa_torkeloftet",
+   "rimkorrekturen_hos_botten_hansen",
+   "rimkorrekturen_paa_prestegardsloftet",
+   "komplimentet_i_salongen"
+  ],
+  "omtale": "Grunnforma er eit korrekturark med raude strekar som strekar over ord i ordmenyen. Kvart treff stryk eitt ord. Ordet står med ein blekkflekk og gjer berre grunnskade for heile partyet til arket er ope, eller til Ret har retta det. Arka er sårbare for Riv og for liner frå bygda sungne med Syng eller Folkevise i Bygd. Dei lærer spelaren å halde orda i fleire former.",
+  "aatferd": "korrekturarka",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:638"
+ },
+ {
+  "id": "stilebokblekket",
+  "namn": "Stilebokblekket",
+  "hovudfamilie": "Kyrkjebok- og skulebokvesen",
+  "grunnform": "stileblekket_i_skulekjellaren",
+  "variantar": [
+   "stileblekket_i_skulekjellaren",
+   "stila_med_laudabilis",
+   "stileblekket_i_latinskulen",
+   "stileblekket_i_klasse_4_b"
+  ],
+  "omtale": "Grunnforma er blekk som har runne ut av ei stilebok, med raude rettestrekar i seg. Kvart treff gjev Rettskriven på målet i 1 runde. Blekket går helst etter tussen om han er med, og elles etter figuren på plass 4. Når Aasen lyttar til eit ope stilebokblekk, høyrer han ordet eleven skreiv før læraren retta det. Stilebokblekket lærer spelaren at ein feil i stila kan vere eit rett ord.",
+  "aatferd": "stilebokblekket",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:650"
+ },
+ {
+  "id": "stimennene",
+  "namn": "Stimennene",
+  "hovudfamilie": "Menneske",
+  "grunnform": "stimannen_i_laerdal",
+  "variantar": [
+   "stimannen_i_laerdal",
+   "stimannen_som_grev_etter_skatten",
+   "stimannen_paa_postvegen",
+   "stimannen_i_krokskogen",
+   "stimannen_paa_isvegen"
+  ],
+  "omtale": "Grunnforma er ein stimann, ein landevegsrøvar med hatten ned i panna som ventar der vegen er øyde. Han følgjer reglane for Lettfingra i bestiarium\\_menneske.md. Kvart treff stel med 50 prosent sjanse ein gjenstand eller 1 Ande, og tyvegodset står som ein pakke ved portrettet. Skoa ved portrettet er ei Steg-teljing, og ved null flyktar han. Kast, Lokk og Hald att set teljinga eitt steg attende, og Ta att hentar ein ting frå pakken. Det stolne kjem att når han er open eller gjev opp, og flyktar han, hamnar det hos heilaren i regionen. Landevegsran var sjeldne i Noreg i speltida, og stimennene står difor sjeldan i møtetabellane. Dei lærer spelaren å halde fast på det han har.",
+  "aatferd": "stimennene",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:665"
+ },
+ {
+  "id": "smuglarane",
+  "namn": "Smuglarane",
+  "hovudfamilie": "Menneske",
+  "grunnform": "smuglaren_i_vaagen",
+  "variantar": [
+   "smuglaren_i_vaagen",
+   "tobakkssmuglaren_under_bryggen",
+   "brennevinssmuglaren_paa_jaeren",
+   "smuglaren_paa_isen_ved_drobak"
+  ],
+  "omtale": "Grunnforma er ein smuglar med gods han ikkje har betalt toll for. Han følgjer reglane for smuglarar i bestiarium\\_menneske.md. Godset står som ting-mål med eige Liv og vernar eigaren så lenge det står. På tredje turen hans kjem ein tollar inn med 30 prosent sjanse om det er plass, og tollaren går etter smuglaren som hendingar mellom turane. Kv-ord viser kva som er gods, og Ta att tek det. Smuglaren gjev opp når godset er teke. Smuglarane lærer spelaren å sjå kva fienden vernar.",
+  "aatferd": "smuglarane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:677"
+ },
+ {
+  "id": "drammekarane",
+  "namn": "Drammekarane",
+  "hovudfamilie": "Menneske",
+  "grunnform": "drammekaren_paa_strandsiden",
+  "variantar": [
+   "drammekaren_paa_strandsiden",
+   "drammekaren_paa_kyrkjebakken",
+   "skyssguten_paa_nes",
+   "drammekaren_paa_skysskiftet",
+   "bryllaupsgjesten_fraa_gulsvik",
+   "den_fulle_fiskaren_i_vaeret"
+  ],
+  "omtale": "Grunnforma er ein mann som har drukke for mykje. Han følgjer reglane for drammeglade i bestiarium\\_menneske.md. Han er Berusa heile kampen og har rusdropar over hovudet, og kvart j-ord eller ord med tydingsmerket mat tek ein drope. Ein song frå partyet som går ferdig, tek ein drope frå alle drammeglade, og den første songen syng dei med på. Ved null dropar blir han edru og flau og går heim, og ordet hans går sikkert til Høyrt-brettet. Når Livet er tomt, sovnar han der han står. Står det ein frå Brennevinsfolket i same kamp, får dei påfyll. Drammekarane lærer spelaren at ein fiende kan bli edru.",
+  "aatferd": "drammekarane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:688"
+ },
+ {
+  "id": "nattvektarane",
+  "namn": "Nattvektarane",
+  "hovudfamilie": "Menneske",
+  "grunnform": "nattvektaren_i_stavanger",
+  "variantar": [
+   "nattvektaren_i_stavanger",
+   "nattvektaren_i_trondheim",
+   "nattvektaren_i_christiania",
+   "vektaren_i_kulda",
+   "vektaren_i_den_lange_natta"
+  ],
+  "omtale": "Grunnforma er ein nattvektar med lykt og morgonstjerne. Han følgjer reglane for vektarar i bestiarium\\_menneske.md. Morgonstjerna slår like hardt i bakrada, og lykta gjer at partyet ikkje kan flykte eller gøyme seg. Vektarverset går over to liner med «slagen» som berande ord, og når det er ferdig, kjem ein vektar til om det er plass. Eit avbrot tek verset éi line tilbake, og Taus på «slagen» stoppar heile verset. Ein open vektar går vidare med runden sin. Lytt gjev eit tidsord frå heimbygda hans, for under frakken snakkar han bygdemål. Vektarane står i bakgardar, smug og kaiar om natta. Dei lærer spelaren å avbryte ein fiende som tel.",
+  "aatferd": "nattvektarane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:701"
+ },
+ {
+  "id": "soldatane",
+  "namn": "Soldatane",
+  "hovudfamilie": "Menneske",
+  "grunnform": "soldaten_paa_eksersisplassen",
+  "variantar": [
+   "soldaten_paa_eksersisplassen",
+   "den_verva_soldaten",
+   "festningsvakta_paa_akershus",
+   "soldaten_paa_fredriksten",
+   "gjengangarsoldaten_i_lopegrava"
+  ],
+  "omtale": "Grunnforma er ein soldat i uniform med gevær og bajonett, utskriven eller verva til linja. Han ladar på forteljarlina over to liner, «Lad» og «Fyr», med «Fyr» som berande ord. Når lina er ferdig, skyt han éin figur for tung skade. Eit avbrot tek lina eitt steg attende, og Taus på «Fyr» stoppar ho. Mellom skota stikk han med bajonetten mot framrada. Ein open soldat går tilbake til vakta si. Lytt gjev eit ord frå heimbygda, for under uniforma snakkar han bygdemål, slik embetsfolk og vektarar gjer. Soldatane lærer spelaren å telje til skotet.",
+  "aatferd": "soldatane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:713"
+ },
+ {
+  "id": "skreppekarane",
+  "namn": "Skreppekarane",
+  "hovudfamilie": "Menneske",
+  "grunnform": "skreppekaren_paa_vossevangen",
+  "variantar": [
+   "skreppekaren_paa_vossevangen",
+   "skreppekaren_paa_skysskiftet",
+   "skreppekaren_ved_gulsvik",
+   "skreppekaren_paa_isvegen"
+  ],
+  "omtale": "Grunnforma er ein skreppekar, ein handelsmann som gjekk mellom gardane med kram i skreppa. Skreppekarane var bygdefolk og byfolk frå mange stader, og familien er bygd på yrket. Han følgjer reglane for smuglarar, heilarar og falskmyntarar i bestiarium\\_menneske.md, for skreppa er godset hans. Skreppa står som ting-mål med eige Liv, og så lenge ho står, er skreppekaren Skjerma. Kv-ord viser kva i skreppa som er ekte, og Ta att tek ei vare. Han gjev opp når skreppa har 0 Liv eller er tom. Handelen gjekk ofte utan løyve, og på tredje turen hans kjem ein lensmann inn med 30 prosent sjanse om det er plass. Lytt gjev eit ord om handel. Skreppekarane lærer spelaren å sjå kva fienden vernar.",
+  "aatferd": "skreppekarane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:725"
+ },
+ {
+  "id": "kvaksalvarane",
+  "namn": "Kvaksalvarane",
+  "hovudfamilie": "Menneske",
+  "grunnform": "kvaksalvaren_i_stavanger",
+  "variantar": [
+   "kvaksalvaren_i_stavanger",
+   "kvaksalvaren_paa_gronland",
+   "kvaksalvaren_i_pakkhuskjellaren"
+  ],
+  "omtale": "Grunnforma er ein kvaksalvar som sel lækjedom han har blanda sjølv. Han følgjer reglane for gjøglarar i bestiarium\\_menneske.md. Trikset er flaskene: tre flasker står som ting-mål ved sida av han, og éi av dei har noko i seg som verkar. Eit treff på ei falsk flaske gjev kvaksalvaren ein lydar. Kv-ord og Granske viser kva flaske som er ekte, og den ekte flaska lækjer han 15 prosent kvar runde til ho er knust. Han gjev opp når trikset er avslørt og alle lydarane har snudd seg. Lytt gjev eit ord om sjukdom og bot, og ein open kvaksalvar fortel kva som var i flaskene. Kvaksalvarane lærer spelaren å finne det ekte mellom det falske.",
+  "aatferd": "kvaksalvarane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:736"
+ },
+ {
+  "id": "flotarane",
+  "namn": "Fløtarane",
+  "hovudfamilie": "Menneske",
+  "grunnform": "flotaren_paa_glomma",
+  "variantar": [
+   "flotaren_paa_glomma",
+   "tommerflotaren_i_vasen",
+   "flotaren_i_vinterhogsten"
+  ],
+  "omtale": "Grunnforma er ein fløtar, ein av mennene som fløytte tømmeret nedover elvane om våren. Tømmer har vore fløytt på Glomma sidan 1300-talet, og kvar stokk bar merket til eigaren, hogge inn i veden. Fløtarane følgjer reglane for menneske i bestiarium\\_menneske.md og ber knappar. Fløtaren står på ein stokk som ting-mål med eige Liv, og så lenge stokken flyt, er han Skjerma. Kvar runde rekk han ut fløtarhaken og dreg éin figur til den andre rada. Runelesing eller eit kv-ord på merket viser kven stokken høyrer til, og då gjev fløtaren opp. Lytt gjev eit ord frå arbeidet på elva. Familien er bygd på yrket, og fløtarane kom frå bygdene langs elvane. Fløtarane lærer spelaren å lese merket før han slår.",
+  "aatferd": "flotarane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:746"
+ },
+ {
+  "id": "ravnane",
+  "namn": "Ravnane",
+  "hovudfamilie": "Sagavesen",
+  "grunnform": "ravnen_i_magasinet",
+  "variantar": [
+   "ravnen_i_magasinet",
+   "ravnen_over_orsta",
+   "ravnen_over_nidaros",
+   "ravnen_paa_monet"
+  ],
+  "omtale": "Grunnforma er ein svart ravn med blekk i fjørene, ein av dei små ravnane til Munch. Han flyg og er Utanfor rekkjevidd, så enkeltslag bommar, og Kast dreg han ned. Kvart treff stel eitt ord frå Ordboka, aldri eit hugsa ord, og ordet står grått i ordmenyen til ravnen går ut av kampen og slepper det. Ravnane lærer spelaren kvifor Hugsen er verd plassane sine.",
+  "aatferd": "ravnane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:760"
+ },
+ {
+  "id": "einherjane",
+  "namn": "Einherjane",
+  "hovudfamilie": "Sagavesen",
+  "grunnform": "einherjen_fraa_hjorungavaag",
+  "variantar": [
+   "einherjen_fraa_hjorungavaag",
+   "einherjen_fraa_hafrsfjord",
+   "einherjen_i_draugvegen",
+   "einherjen_i_gudevegen"
+  ],
+  "omtale": "Grunnforma er ein einherje, ein fallen krigar frå eitt av dei gamle slaga, med skjold og sverd og rim i skjegget. Han reiser seg att etter to rundar om han fell utan å ha vore open, slik fiendar\\_bossar.md seier. Spelaren må difor opne han før Livet er tomt. Kvardagsord tek segl, og gamle ord gjer halv skade. Einherjane lærer spelaren å opne før han slår ut.",
+  "aatferd": "einherjane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:771"
+ },
+ {
+  "id": "runeskuggane",
+  "namn": "Runeskuggane",
+  "hovudfamilie": "Sagavesen",
+  "grunnform": "runeskuggen_under_bryggen",
+  "variantar": [
+   "runeskuggen_under_bryggen",
+   "runeskuggen_ved_borgund",
+   "runeskuggen_i_kongsgarden",
+   "runeskuggen_i_grunnsteinane",
+   "skrinberaren",
+   "den_sjuke_pilegrimen",
+   "runeskuggen_i_leira"
+  ],
+  "omtale": "Grunnforma er ein skugge av runer som har lese seg laus frå ein stein eller ein pinne. Han riss ei rune på forteljarlina over to rundar, og når ho er ferdig, er målet Bunden i 1 runde. Runeskuggane blir opna av Rist, fordi runene er eldre enn bindinga, og Runelesing på dei tek eitt segl. Dei lærer spelaren å bruke runene sine som åtak.",
+  "aatferd": "runeskuggane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:782"
+ },
+ {
+  "id": "skaldane",
+  "namn": "Skaldane",
+  "hovudfamilie": "Sagavesen",
+  "grunnform": "skalden_paa_avaldsnes",
+  "variantar": [
+   "skalden_paa_avaldsnes",
+   "skalden_ved_nidaros",
+   "skalden_i_gudevegen",
+   "skalden_med_skaldemjoden",
+   "kvedaren_fraa_selja"
+  ],
+  "omtale": "Grunnforma er ein skald i kappe som kvedar ei drápa på forteljarlina over tre liner. Når ho er ferdig, slår ho heile partyet, og eitt ord i Hugsen blir Forstokka. Taus medan lina med det berande ordet står, stoppar ho. Skaldane blir opna av Stevjing: eit vunne stevbyte tek alle segla. Dei lærer spelaren å svare i same form.",
+  "aatferd": "skaldane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:796"
+ },
+ {
+  "id": "jotunskuggane",
+  "namn": "Jotunskuggane",
+  "hovudfamilie": "Sagavesen",
+  "grunnform": "jotunskuggen_paa_hardangervidda",
+  "variantar": [
+   "jotunskuggen_paa_hardangervidda",
+   "jotunskuggen_paa_dovre",
+   "jotunskuggen_paa_gaustatoppen",
+   "jotunskuggen_i_jotunfjella",
+   "jotunskuggen_i_gudevegen",
+   "jotunskuggen_under_gaustatoppen"
+  ],
+  "omtale": "Grunnforma er skuggen av ein jotun, ein bergrise som har vakna av sagakrafta. Kvar tredje runde trampar han, og heile framrada tek tung skade. Runden før løftar han foten som varsel. Harde konsonantar prellar av, og kvardagsord tek segl. Er jotunen i partyet, ventar skuggen første runde og ser på han. Jotunskuggane lærer spelaren å flytte folk ut av framrada i tide.",
+  "aatferd": "jotunskuggane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:808"
+ },
+ {
+  "id": "frostvettane",
+  "namn": "Frostvettane",
+  "hovudfamilie": "Fimbulvintervesen",
+  "grunnform": "snovetten_i_bratten",
+  "variantar": [
+   "snovetten_i_bratten",
+   "frostvetten_paa_tunet",
+   "frostvetten_i_bondalen",
+   "frostvettane_paa_veblungsnes",
+   "frostvetten_i_fiskevaeret",
+   "frostvetten_i_aerfuglhuset",
+   "frostvetten_i_lyngen",
+   "frostvetten_paa_nes",
+   "frostvetten_paa_kvam",
+   "frostvetten_i_lauvlia",
+   "frostvetten_ved_haarteigen",
+   "frostvetten_paa_stiklestad",
+   "frostvetten_paa_vidda",
+   "frostvetten_i_fjora_ved_ila",
+   "frostvetten_paa_fokstumyra",
+   "frostvetten_ved_roykstova",
+   "frostvetten_ved_fetsund",
+   "frostvettane_ved_fredrikshald",
+   "frostvetten_ved_kroderen",
+   "frostvetten_i_frukthagen",
+   "frostvetten_paa_heia",
+   "frostvetten_paa_jaeren"
+  ],
+  "omtale": "Grunnforma er ei lita vette av snø. I prologen er ho eit fritt folkevesen med ein knut av snø, og knuten blir eit bokmerke i notisboka til Asbjørnsen. I fimbulvinteren har vinteren teke vettene, og dei ber rimkrystallar. Då gjev kvart treff Fimbul, og vettene tek berre skade medan dei er Tint. Eit kv-ord viser når dei er Tint. Frostvettane lærer spelaren at varme er ein ressurs.",
+  "aatferd": "frostvettane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:825"
+ },
+ {
+  "id": "isvesena",
+  "namn": "Isvesena",
+  "hovudfamilie": "Fimbulvintervesen",
+  "grunnform": "isvesenet_ved_drobak",
+  "variantar": [
+   "isvesenet_ved_drobak",
+   "isvesenet_i_hjorundfjorden",
+   "isvesenet_i_rauma",
+   "isvesenet_i_karmsundet",
+   "isvesenet_i_vaagen",
+   "isvesenet_i_drammenselva",
+   "isvesenet_paa_hardangerfjorden",
+   "isvesenet_i_mjosa",
+   "isvesenet_i_laagen",
+   "isvesenet_ved_nigardsbreen",
+   "isvesenet_i_nidelva",
+   "isvesenet_paa_styggebreen",
+   "isvesenet_i_bjorvika",
+   "isvesenet_paa_oyrane",
+   "isvesenet_i_havgrotta",
+   "isvesenet_i_valestrandsfossen",
+   "isvesenet_i_sorfjorden",
+   "isvesenet_ved_odderoya",
+   "isvesenet_i_otra",
+   "isvesenet_i_raaka"
+  ],
+  "omtale": "Grunnforma er ein skikkelse av blå is som står på frosne fjordar og vatn. Isvesenet tek berre skade medan det er Tint, slik isvesena i S2.8 gjer, og alle varmeverknader gjev Tint her. Medan det ikkje er Tint, gjer slag og ord ingenting, og eit kv-ord viser det. Isvesena lærer spelaren å dele varmen i partyet.",
+  "aatferd": "isvesena",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:854"
+ },
+ {
+  "id": "stormvesena",
+  "namn": "Stormvesena",
+  "hovudfamilie": "Fimbulvintervesen",
+  "grunnform": "snofokket_paa_trondhjemsvegen",
+  "variantar": [
+   "snofokket_paa_trondhjemsvegen",
+   "skredroyken_i_romsdalen",
+   "kvaften_ved_vestfjorden",
+   "snofokket_over_lyngheia",
+   "snorokket_over_hemsedal",
+   "stormkastet_over_dovre",
+   "snokavet_i_rauland",
+   "drevet_paa_vidda",
+   "uveret_i_innherred",
+   "stormen_over_trondheimsfjorden",
+   "snofokket_over_galdhopiggen",
+   "snofokket_ved_vardane",
+   "snodrevet_i_kvadraturen",
+   "snodrevet_fraa_folgefonna",
+   "kastevinden_i_byklestigen",
+   "fimbulvinden_paa_gaustatoppen"
+  ],
+  "omtale": "Grunnforma er eit stormvesen, ein kvervel av snø og vind som fimbulvinteren driv over landet. Han flyg og har statusen Utanfor rekkjevidd, så enkeltslag bommar. Ord, song, joik, åtak på alle og Hallingkastet når han, og Kast dreg han ned. Kvar tredje runde blæs han, og éin figur blir flytt til den andre rada og får Fimbul. Runden før står snøen vassrett over han som varsel. Han tek berre skade medan han er Tint, slik isvesena gjer, og ein varmeverknad gjev Tint i 2 rundar. Når han går ut av kampen, legg han seg som vanleg snø. Stormvesena lærer spelaren å halde rekkjene med Rad.",
+  "aatferd": "stormvesena",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:881"
+ },
+ {
+  "id": "frostmusene",
+  "namn": "Frostmusene",
+  "hovudfamilie": "Fimbulvintervesen",
+  "grunnform": "frostmusene_i_fjoset",
+  "variantar": [
+   "frostmusene_i_fjoset",
+   "frostmusene_i_vaterland",
+   "frostmusene_i_sufflorkassa",
+   "frostmusene_i_stabburet",
+   "frostmusene_under_fjosgolvet",
+   "frostmusene_paa_bakklandet"
+  ],
+  "omtale": "Grunnforma er ein sverm av små mus med rim i pelsen, slik frostmusene hos Frostkatten er (S2.11). Svermen følgjer sverm-regelen: halv skade frå enkeltåtak, dobbel frå åtak på alle, og han spreier seg når Livet er under halvparten. Kvart bit gjev Fimbul og stel ein matgjenstand. Katt frå tussen tek to segl. Frostmusene lærer spelaren å bruke åtak på alle mot svermar i vinteren òg.",
+  "aatferd": "frostmusene",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:904"
+ },
+ {
+  "id": "isravnane",
+  "namn": "Isravnane",
+  "hovudfamilie": "Fimbulvintervesen",
+  "grunnform": "isravnen_over_nordmarka",
+  "variantar": [
+   "isravnen_over_nordmarka",
+   "isravnen_over_dovre",
+   "isravnen_over_nord_troms",
+   "isravnen_over_romerike",
+   "isravnen_over_tinn",
+   "isravnen_over_finnskogen",
+   "isravnen_over_christiansholm",
+   "isravnen_i_porthallen"
+  ],
+  "omtale": "Grunnforma er ein ravn av klar is, ein av ravnane av is som fimbulvinteren sender ut. Han flyg og er Utanfor rekkjevidd, og Kast dreg han ned. Kvart treff frys eitt hugsa ord i 1 runde. Han stel ingen ord, og det skil han frå ravnane til Munch. Isravnane lærer spelaren å bruke Hugsen før vinteren tek han.",
+  "aatferd": "isravnane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:917"
+ },
+ {
+  "id": "rimkopistane",
+  "namn": "Rimkopistane",
+  "hovudfamilie": "Fimbulvintervesen",
+  "grunnform": "rimkopisten_hos_botten_hansen",
+  "variantar": [
+   "rimkopisten_hos_botten_hansen",
+   "rimkopisten_paa_kyrkjeloftet",
+   "gloymslefrimerket",
+   "rimkopisten_i_arkivet_i_krodsherad"
+  ],
+  "omtale": "Grunnforma er ein rimkopist, ein blekkdrope som vinteren har frose. Han gjev Rettskriven og Fimbul i same treff, slik fiendar\\_bossar.md seier om blekket i fimbulvinteren. Segla er blekkdropar med rimkrystallar framfor. Varme tek rimkrystallane, og deretter gjeld reglane for kanselliblekk. Når Aasen lyttar til ein open rimkopist, høyrer han ordet under streken, som for andre blekkvesen. Rimkopistane lærer spelaren å bruke varme og småord i rett rekkjefølgje.",
+  "aatferd": "rimkopistane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:932"
+ },
+ {
+  "id": "frosne_kulissar",
+  "namn": "Frosne kulissar",
+  "hovudfamilie": "Fimbulvintervesen",
+  "grunnform": "kulissen_i_komediehuset",
+  "variantar": [
+   "kulissen_i_komediehuset",
+   "kulissen_i_christiania_theater",
+   "kulissen_i_kopien_av_komediehuset"
+  ],
+  "omtale": "Grunnforma er ein kulisse frå eit teater, eit måla lerret på ramme som fimbulvinteren har frose og vekt. Kulissane høyrer til teater og scener, som Komediehuset i Bergen og Christiania Theater. Ein kulisse står på fiendesida som eit landskap eller ei stove, og så lenge han står, er dei andre fiendane i kampen Skjerma. Han tek berre skade medan han er Tint, slik dei andre fimbulvintervesena, og ein slått frå Ole Bull gjev alltid Tint. Riv tek to segl, for lerretet ryk. Ein kulisse som går ut av kampen, fell saman og blir lerret att. Kulissane lærer spelaren å ta vernet først.",
+  "aatferd": "frosne_kulissar",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:943"
+ },
+ {
+  "id": "synkvervingane",
+  "namn": "Synkvervingane",
+  "hovudfamilie": "Synkvervingar",
+  "grunnform": "skodda",
+  "variantar": [
+   "skodda",
+   "ljomet",
+   "eimen",
+   "gufsen",
+   "skuggen"
+  ],
+  "omtale": "Grunnforma er ei synkverving, eit blendverk jotnane i Utgard lagar, slik Snorre fortel om Loge, Huge og katten i Gylfaginning. Kvar synkverving lånar skapnaden til ein fiende spelaren kjenner frå før, med namn, målar og sårbarheiter. Bak skapnaden er ho ei vanleg kraft i naturen. Ho har statusen Synkverva til det sanne namnet er sagt med kv-ordet kven, med Lytt frå Aasen eller med ordkortet Sjá frå jotunen, og då står ho som ho er i 2 rundar. Treff på den lånte skapnaden gjer ingen skade. Familien lærer bort hovudregelen i kampen mot Utgardsloke. Når ei synkverving er slegen, blir ho det ho er: litt skodde i lufta, eit ekko som døyr ut, eit gufs i greinene.",
+  "aatferd": "synkvervingane",
+  "kjelde": "05 Mekanikk/09a Bestiarium vanlege fiendar.md:957"
+ }
+]

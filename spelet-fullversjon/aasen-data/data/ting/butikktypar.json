@@ -1,0 +1,175 @@
+[
+ {
+  "id": "handelsstad",
+  "namn": "Handelsstad",
+  "kvar": "Byar, ladestader og kremmarleier, til dømes Lærdalsøyri",
+  "alltid": [
+   "flatbrod",
+   "rommegraut",
+   "graut",
+   "smor",
+   "ol",
+   "kaffi",
+   "salt",
+   "lys",
+   "kritt",
+   "tjore",
+   "einer",
+   "staal"
+  ],
+  "alltid_tekst": "Flatbrød, rømmegraut, graut, smør, øl, kaffi, salt, lys, kritt, tjøre, einer, stål",
+  "fraa_T2": [
+   "spekekjot",
+   "kaffi_kandis",
+   "lusekam"
+  ],
+  "fraa_T2_tekst": "Spekekjøt, kaffi med kandis, lusekam",
+  "fraa_T4": [
+   "ullsokkar"
+  ],
+  "fraa_T4_tekst": "Ullsokkar",
+  "kvile_pris": null,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:97"
+ },
+ {
+  "id": "gjestgiveri",
+  "namn": "Gjestgiveri",
+  "kvar": "Skysskifte, gjestgiveri og fjellstuer",
+  "alltid": [
+   "flatbrod",
+   "rommegraut",
+   "kaffi"
+  ],
+  "alltid_tekst": "Kvile for 8 s per figur, flatbrød, rømmegraut, kaffi",
+  "alltid_anna": [
+   "Kvile for 8 s per figur"
+  ],
+  "fraa_T2": [
+   "kaffi_kandis"
+  ],
+  "fraa_T2_tekst": "Kaffi med kandis",
+  "fraa_T4": [
+   "kjotsuppe",
+   "kaffikjelen",
+   "ullsokkar"
+  ],
+  "fraa_T4_tekst": "Kjøtsuppe, kaffikjelen, ullsokkar",
+  "kvile_pris": 8,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:98"
+ },
+ {
+  "id": "kremmar",
+  "namn": "Kremmar",
+  "kvar": "Bygder utan handelsstad. Han står på tunet eller ved kyrkja nokre dagar",
+  "alltid": [
+   "flatbrod",
+   "graut",
+   "smor",
+   "ol",
+   "salt",
+   "lys",
+   "kritt",
+   "tjore",
+   "einer"
+  ],
+  "alltid_tekst": "Flatbrød, graut, smør, øl, salt, lys, kritt, tjøre, einer",
+  "fraa_T2": [
+   "lusekam"
+  ],
+  "fraa_T2_tekst": "Lusekam",
+  "fraa_T4": [
+   "ullsokkar"
+  ],
+  "fraa_T4_tekst": "Ullsokkar",
+  "kvile_pris": null,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:99"
+ },
+ {
+  "id": "apotek",
+  "namn": "Apotek",
+  "kvar": "Bergen, Christiania, Trondheim, Kristiansand, Stavanger, Drammen",
+  "alltid": [
+   "hoffmannsdropar",
+   "honningvatn",
+   "luktesalt"
+  ],
+  "alltid_tekst": "Hoffmannsdropar, honningvatn, luktesalt",
+  "fraa_T2": [
+   "lusekam"
+  ],
+  "fraa_T2_tekst": "Lusekam",
+  "fraa_T4": [],
+  "fraa_T4_tekst": "Ingen endring",
+  "kvile_pris": null,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:100"
+ },
+ {
+  "id": "bokhandel",
+  "namn": "Bokhandel",
+  "kvar": "Byane",
+  "alltid": [
+   "kritt"
+  ],
+  "alltid_tekst": "Ord-reiskap etter utstyrstabellen, kritt",
+  "alltid_anna": [
+   "Ord-reiskap etter utstyrstabellen"
+  ],
+  "fraa_T2": [],
+  "fraa_T2_tekst": "Ingen endring",
+  "fraa_T4": [],
+  "fraa_T4_tekst": "Ingen endring",
+  "kvile_pris": null,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:101"
+ },
+ {
+  "id": "skreddar",
+  "namn": "Skreddar",
+  "kvar": "Byane, og på omgang i bygdene",
+  "alltid": [],
+  "alltid_tekst": "Klede og hovudplagg etter utstyrstabellen",
+  "alltid_anna": [
+   "Klede",
+   "hovudplagg etter utstyrstabellen"
+  ],
+  "fraa_T2": [],
+  "fraa_T2_tekst": "Ingen endring",
+  "fraa_T4": [],
+  "fraa_T4_tekst": "Ingen endring",
+  "kvile_pris": null,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:102"
+ },
+ {
+  "id": "smie",
+  "namn": "Smie",
+  "kvar": "Bygder og byar med smed",
+  "alltid": [
+   "staal"
+  ],
+  "alltid_tekst": "Stål, Slag-reiskap etter utstyrstabellen",
+  "alltid_anna": [
+   "Slag-reiskap etter utstyrstabellen"
+  ],
+  "fraa_T2": [],
+  "fraa_T2_tekst": "Ingen endring",
+  "fraa_T4": [],
+  "fraa_T4_tekst": "Ingen endring",
+  "kvile_pris": null,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:103"
+ },
+ {
+  "id": "saerbutikk",
+  "namn": "Særbutikk",
+  "kvar": "Felemakaren og auksjonen i Bergen, urmakaren og papirhandelen i Christiania, notbua på Værøy, krambua til Heggelund, antikvariatet til Botten-Hansen",
+  "alltid": [],
+  "alltid_tekst": "Det utstyrstabellen seier for staden",
+  "alltid_anna": [
+   "Det utstyrstabellen seier for staden"
+  ],
+  "fraa_T2": [],
+  "fraa_T2_tekst": null,
+  "fraa_T4": [],
+  "fraa_T4_tekst": null,
+  "kvile_pris": null,
+  "kjelde": "05 Mekanikk/13 Varer og kister.md:104"
+ }
+]

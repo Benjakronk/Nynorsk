@@ -1,0 +1,114 @@
+{
+ "epokar": [
+  {
+   "id": "barndomen",
+   "namn": "Barndomen",
+   "fraa": 1816,
+   "til": 1831,
+   "tid_tekst": "1816–1831",
+   "tid": "T1",
+   "stemning": "Lyst og varmt, Minish Cap-fargar. Morgon og kveld etter tida i manus",
+   "kjelde": "06 Verda/00 Verda.md:120"
+  },
+  {
+   "id": "ungdomen",
+   "namn": "Ungdomen",
+   "fraa": 1833,
+   "til": 1841,
+   "tid_tekst": "1833–1841",
+   "tid": "T1",
+   "stemning": "Lampelys inne, regn og grått i Bergen",
+   "kjelde": "06 Verda/00 Verda.md:121"
+  },
+  {
+   "id": "reiseaara",
+   "namn": "Reiseåra",
+   "fraa": 1842,
+   "til": 1847,
+   "tid_tekst": "1842–1847",
+   "tid": "T2",
+   "stemning": "Årstida følgjer manus: haust i Sogn, vår i Hardanger, jul i Kristiansand, vinter i Telemark",
+   "kjelde": "06 Verda/00 Verda.md:122"
+  },
+  {
+   "id": "christiania_aara",
+   "namn": "Christiania-åra",
+   "fraa": 1847,
+   "til": 1850,
+   "tid_tekst": "1847–1850",
+   "tid": "T3",
+   "stemning": "Bylys, salongar, gasslykter frå 1848–49",
+   "kjelde": "06 Verda/00 Verda.md:123"
+  },
+  {
+   "id": "fimbulvinteren",
+   "namn": "Fimbulvinteren",
+   "fraa": 1850,
+   "til": 1853,
+   "tid_tekst": "1850–1853",
+   "tid": "T4",
+   "stemning": "Kaldt og blågrått med lite metting. Nordlyset over Christiania er det einaste sterke lyset",
+   "kjelde": "06 Verda/00 Verda.md:124"
+  },
+  {
+   "id": "den_store_opninga",
+   "namn": "Den store opninga",
+   "fraa": 1853,
+   "til": 1853,
+   "tid_tekst": "november 1853",
+   "tid": "T4",
+   "stemning": null,
+   "kjelde": "06 Verda/00 Verda.md:125"
+  },
+  {
+   "id": "etter_oppgjeret",
+   "namn": "Etter oppgjeret",
+   "fraa": 1854,
+   "til": 1863,
+   "tid_tekst": "1854–1863",
+   "tid": "T4",
+   "stemning": "Grålysing og tining, vatn som renn",
+   "kjelde": "06 Verda/00 Verda.md:126"
+  },
+  {
+   "id": "epilogen",
+   "namn": "Epilogen",
+   "fraa": 1885,
+   "til": 1896,
+   "tid_tekst": "1885–1896",
+   "tid": "T4",
+   "stemning": "Mildt seinsommarlys",
+   "kjelde": "06 Verda/00 Verda.md:127"
+  }
+ ],
+ "tider": [
+  {
+   "id": "T1",
+   "aar_tekst": "1816 til 1841",
+   "delar": "Ørsta, Ekset og Solnør, Bergen 1841",
+   "niva_tekst": "1 til 10",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:13"
+  },
+  {
+   "id": "T2",
+   "aar_tekst": "1842 til 1847",
+   "delar": "Reiseåra",
+   "niva_tekst": "10 til 27",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:14"
+  },
+  {
+   "id": "T3",
+   "aar_tekst": "1847 til 1850",
+   "delar": "Christiania",
+   "niva_tekst": "28 til 34",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:15"
+  },
+  {
+   "id": "T4",
+   "aar_tekst": "1850 til 1853 og seinare",
+   "delar": "Fimbulvinteren, Sagahallen, superbossane og epilogen",
+   "niva_tekst": "34 og opp",
+   "kjelde": "05 Mekanikk/13 Varer og kister.md:16"
+  }
+ ]
+}

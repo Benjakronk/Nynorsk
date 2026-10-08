@@ -1,0 +1,2016 @@
+[
+ {
+  "id": "9d_trollgjolet_paa_molaup",
+  "namn": "Trollgjølet på Molaup",
+  "del": "V1 Hjørundfjorden",
+  "skjermar": [
+   "HJF-01",
+   "HJF-02",
+   "HJF-03",
+   "HJF-03a",
+   "HJF-04",
+   "HJF-05",
+   "HJF-06",
+   "HJF-07",
+   "HJF-08",
+   "HJF-09",
+   "HJF-10",
+   "HJF-11",
+   "HJF-12",
+   "HJF-13",
+   "HJF-14",
+   "HJF-15",
+   "HJF-16",
+   "TGJ-01",
+   "TGJ-02",
+   "TGJ-03",
+   "TGJ-04",
+   "TGJ-05",
+   "TGJ-06"
+  ],
+  "stader": [
+   "HJF",
+   "TGJ"
+  ],
+  "epoke": null,
+  "moterate": "hog",
+  "niva": {
+   "min": 10,
+   "maks": 10
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "trollungen_i_trollgjolet",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 25,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:59"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "trollungen_i_trollgjolet",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:60"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "trollungen_i_trollgjolet",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "trollungen_i_ura",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:61"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "trollungen_i_ura",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:62"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "trollungen_i_trollgjolet",
+      "fil": "vanlege",
+      "tal": 3
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:63"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "trollungen_i_ura",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:64"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "trollungen_i_trollgjolet",
+      "fil": "vanlege",
+      "tal": 2
+     },
+     {
+      "id": "trollungen_i_ura",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:65"
+   }
+  ],
+  "moterate_tekst": "Høg",
+  "merknad": "Katalogen har éin fiende for dungeonen. Trollungen i ura er lånt frå rada for Sogn.",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:53"
+ },
+ {
+  "id": "9d_under_nigardsbreen",
+  "namn": "Under Nigardsbreen",
+  "del": "V2 Lauvliene i Lyster",
+  "skjermar": [
+   "LYS-01",
+   "LYS-02",
+   "LYS-03",
+   "LYS-04",
+   "LYS-05",
+   "LYS-05a",
+   "LYS-06",
+   "LYS-07",
+   "LYS-08",
+   "LYS-09",
+   "LYS-10",
+   "LYS-11",
+   "LYS-12",
+   "LYS-13",
+   "LYS-14",
+   "LYS-15",
+   "LYS-15a",
+   "NGB-01",
+   "NGB-02",
+   "NGB-03",
+   "NGB-04",
+   "NGB-05",
+   "NGB-06"
+  ],
+  "stader": [
+   "LYS",
+   "NGB"
+  ],
+  "epoke": null,
+  "moterate": "hog",
+  "niva": {
+   "min": 12,
+   "maks": 12
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "blekkdropen_i_breen",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:165"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "renteskrivaren_under_breen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:166"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "renteskrivaren_under_breen",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "blekkdropen_i_breen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:167"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "blekkdropen_i_breen",
+      "fil": "vanlege",
+      "tal": 3
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:168"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "renteskrivaren_under_breen",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "blekkdropen_i_breen",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:169"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "elvetrollet",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:170"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "renteskrivaren_under_breen",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:171"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "elvetrollet",
+      "fil": "namngjevne",
+      "tal": 1
+     },
+     {
+      "id": "renteskrivaren_under_breen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:172"
+   }
+  ],
+  "moterate_tekst": "Høg",
+  "merknad": "Elvetrollet kjem opp der breelva renn under isen.",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:159"
+ },
+ {
+  "id": "9d_roysene_ved_haa",
+  "namn": "Røysene ved Hå",
+  "del": "V4 Lyngheia og strendene på Jæren",
+  "skjermar": [
+   "JRN-01",
+   "JRN-02",
+   "JRN-03",
+   "JRN-04",
+   "JRN-05",
+   "JRN-06",
+   "JRN-08",
+   "JRN-09",
+   "JRN-10",
+   "JRN-11",
+   "JRN-12",
+   "JRN-13",
+   "RHA-01",
+   "RHA-02",
+   "RHA-03",
+   "RHA-04",
+   "RHA-05",
+   "RHA-06"
+  ],
+  "stader": [
+   "JRN",
+   "RHA"
+  ],
+  "epoke": null,
+  "moterate": "hog",
+  "niva": {
+   "min": 17,
+   "maks": 17
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "tussen_i_gravroysa",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:316"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "vetten_ved_bautaen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:317"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "royskatten_i_roysa",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg",
+     "Førsteslag"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:318"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "tussen_i_gravroysa",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "royskatten_i_roysa",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:319"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "vetten_ved_bautaen",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:320"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "tussen_i_gravroysa",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "vetten_ved_bautaen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:321"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "royskatten_i_roysa",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:322"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "tussen_i_gravroysa",
+      "fil": "vanlege",
+      "tal": 2
+     },
+     {
+      "id": "vetten_ved_bautaen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:323"
+   }
+  ],
+  "moterate_tekst": "Høg",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:310"
+ },
+ {
+  "id": "9d_blesterplassen_paa_hovden",
+  "namn": "Blesterplassen på Hovden",
+  "del": "V5 Setesdalsheiane og Byklestigen",
+  "skjermar": [
+   "BYK-01",
+   "BYK-02",
+   "BYK-03",
+   "BYK-03a",
+   "BYK-04",
+   "BYK-05",
+   "BYK-06",
+   "BYK-06a",
+   "BYK-07",
+   "BYK-08",
+   "BYK-09",
+   "BYK-10",
+   "BYK-11",
+   "BYK-12",
+   "BYK-13",
+   "BLE-01",
+   "BLE-02",
+   "BLE-03",
+   "BLE-04",
+   "BLE-05",
+   "BLE-06"
+  ],
+  "stader": [
+   "BYK",
+   "BLE"
+  ],
+  "epoke": null,
+  "moterate": "hog",
+  "niva": {
+   "min": 19,
+   "maks": 19
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "runevetten_ved_blestertufta",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:419"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "myrnokken_paa_hovden",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:420"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "runevetten_ved_blestertufta",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:421"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "runevetten_ved_blestertufta",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "myrnokken_paa_hovden",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:422"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "dvergsmeden",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:423"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "dvergsmeden",
+      "fil": "namngjevne",
+      "tal": 1
+     },
+     {
+      "id": "runevetten_ved_blestertufta",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:424"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "myrnokken_paa_hovden",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:425"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "dvergsmeden",
+      "fil": "namngjevne",
+      "tal": 2
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:426"
+   }
+  ],
+  "moterate_tekst": "Høg",
+  "merknad": "Dvergsmeden er lånt frå rada for Hardanger, for blesterplassen er ein smiestad.",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:413"
+ },
+ {
+  "id": "9d_steinbua_under_falkenuten",
+  "namn": "Steinbua under Falkenuten",
+  "del": "V6 Hardangervidda frå Rauland",
+  "skjermar": [
+   "HVR-01",
+   "HVR-02",
+   "HVR-03",
+   "HVR-04",
+   "HVR-05",
+   "HVR-05a",
+   "HVR-06",
+   "HVR-07",
+   "HVR-08",
+   "HVR-09",
+   "HVR-10",
+   "HVR-11",
+   "HVR-12",
+   "HVR-13",
+   "HVR-14",
+   "HVR-15",
+   "STB-01",
+   "STB-02",
+   "STB-03",
+   "STB-04",
+   "STB-05",
+   "STB-06"
+  ],
+  "stader": [
+   "HVR",
+   "STB"
+  ],
+  "epoke": null,
+  "moterate": "hog",
+  "niva": {
+   "min": 22,
+   "maks": 22
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "jaktfalken_i_buret",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:497"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "skromtet_i_steinbua",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:498"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "skromtet_i_steinbua",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "jaktfalken_i_buret",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:499"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "jaktfalken_i_buret",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:500"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "skromtet_i_steinbua",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:501"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "jaktfalken_paa_falkeriset",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "jaktfalken_i_buret",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:502"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "skromtet_i_steinbua",
+      "fil": "vanlege",
+      "tal": 2
+     },
+     {
+      "id": "jaktfalken_i_buret",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:503"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "jaktfalken_i_buret",
+      "fil": "vanlege",
+      "tal": 3
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:504"
+   }
+  ],
+  "moterate_tekst": "Høg",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:491"
+ },
+ {
+  "id": "9d_jotulberget_i_vaagaa",
+  "namn": "Jøtulberget i Vågå",
+  "del": "V7 Jotunfjella frå Vågå og Lom",
+  "skjermar": [
+   "JOT-01",
+   "JOT-02",
+   "JOT-03",
+   "JOT-04",
+   "JOT-05",
+   "JOT-06",
+   "JOT-07",
+   "JOT-08",
+   "JOT-09",
+   "JOT-10",
+   "JOT-11",
+   "JOT-12",
+   "JOT-13",
+   "JTB-01",
+   "JTB-02",
+   "JTB-03",
+   "JTB-04",
+   "JTB-05",
+   "JTB-06"
+  ],
+  "stader": [
+   "JOT",
+   "JTB"
+  ],
+  "epoke": null,
+  "moterate": "hog",
+  "niva": {
+   "min": 24,
+   "maks": 24
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "trollungen_i_jotulberget",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:581"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "runevetten_i_jotulberget",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:582"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "trollungen_i_jotulberget",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:583"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "trollungen_i_jotulberget",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "runevetten_i_jotulberget",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:584"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "runevetten_i_jotulberget",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:585"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "dvergsmeden",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:586"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "trollungen_i_jotulberget",
+      "fil": "vanlege",
+      "tal": 3
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:587"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "dvergsmeden",
+      "fil": "namngjevne",
+      "tal": 1
+     },
+     {
+      "id": "runevetten_i_jotulberget",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:588"
+   }
+  ],
+  "moterate_tekst": "Høg",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:575"
+ },
+ {
+  "id": "9d_grova_ved_hjerkinn",
+  "namn": "Grova ved Hjerkinn",
+  "del": "V8 Dovrefjell og Fokstumyra",
+  "skjermar": [
+   "FOK-01",
+   "FOK-02",
+   "FOK-03",
+   "FOK-04",
+   "FOK-05",
+   "FOK-07",
+   "FOK-08",
+   "FOK-09",
+   "FOK-10",
+   "FOK-11",
+   "FOK-12",
+   "GRV-01",
+   "GRV-02",
+   "GRV-03",
+   "GRV-04",
+   "GRV-05"
+  ],
+  "stader": [
+   "FOK",
+   "GRV"
+  ],
+  "epoke": null,
+  "moterate": "hog",
+  "niva": {
+   "min": 25,
+   "maks": 25
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "trollungen_i_grova",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:659"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "trollungen_i_grova",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:660"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "fjellreven_paa_hjerkinn",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:661"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "trollungen_i_grova",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "trollungane_paa_dovre",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:662"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "fjellfrossen",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:663"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "fjellfrossen",
+      "fil": "namngjevne",
+      "tal": 1
+     },
+     {
+      "id": "trollungen_i_grova",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:664"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "trollungen_i_grova",
+      "fil": "vanlege",
+      "tal": 3
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:665"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "trollungane_paa_dovre",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "trollungen_i_grova",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:666"
+   }
+  ],
+  "moterate_tekst": "Høg",
+  "merknad": "Grova er ny i villmarka. Fjellreven på Hjerkinn, Trollungane på Dovre og Fjellfrossen kjem ned i grova frå fjellet.",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:653"
+ },
+ {
+  "id": "9d_kirkehelleren_paa_sanna",
+  "namn": "Kirkehelleren på Sanna",
+  "del": "V9 Helgelandskysten og dunværa",
+  "skjermar": [
+   "HKY-01",
+   "HKY-02",
+   "HKY-03",
+   "HKY-04",
+   "HKY-05",
+   "HKY-06",
+   "HKY-07",
+   "HKY-08",
+   "HKY-09",
+   "HKY-10",
+   "HKY-11",
+   "HKY-12",
+   "HKY-13",
+   "HKY-14",
+   "KHL-01",
+   "KHL-02",
+   "KHL-03",
+   "KHL-04",
+   "KHL-05",
+   "KHL-06",
+   "KHL-07"
+  ],
+  "stader": [
+   "HKY",
+   "KHL"
+  ],
+  "epoke": null,
+  "moterate": "hog",
+  "niva": {
+   "min": 27,
+   "maks": 27
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "draugen_i_kirkehelleren",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:766"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "vetten_ved_eldstaden",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:767"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "draugen_i_kirkehelleren",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "vetten_ved_eldstaden",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:768"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "vetten_ved_eldstaden",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:769"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "draajen",
+      "fil": "namngjevne",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:770"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "draugen_i_kirkehelleren",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:771"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "draajen",
+      "fil": "namngjevne",
+      "tal": 1
+     },
+     {
+      "id": "vetten_ved_eldstaden",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:772"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "draajen",
+      "fil": "namngjevne",
+      "tal": 1
+     },
+     {
+      "id": "draugen_i_kirkehelleren",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "vetten_ved_eldstaden",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:773"
+   }
+  ],
+  "moterate_tekst": "Høg",
+  "merknad": "Inne i helleren er det alltid kveld for draugane, så dei kjem utan flagget.",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:760"
+ },
+ {
+  "id": "9d_romsdalshornet",
+  "namn": "Romsdalshornet",
+  "del": "V10 Romsdalen og Romsdalshornet",
+  "skjermar": [
+   "RMD-01",
+   "RMD-02",
+   "RMD-03",
+   "RMD-04",
+   "RMD-05",
+   "RMD-06",
+   "RMD-07",
+   "RMD-08",
+   "RMD-09",
+   "RMD-10",
+   "RMD-11",
+   "RHN-01",
+   "RHN-02",
+   "RHN-03",
+   "RHN-04",
+   "RHN-05",
+   "RHN-06",
+   "RHN-07"
+  ],
+  "stader": [
+   "RMD",
+   "RHN"
+  ],
+  "epoke": null,
+  "moterate": "hog",
+  "niva": {
+   "min": 27,
+   "maks": 27
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "trollungen_paa_eggen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:867"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "landorna_paa_hornet",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:868"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "trollungen_paa_eggen",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "landorna_paa_hornet",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:869"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "trollungen_paa_eggen",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:870"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "landorna_over_lesja",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:871"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "landorna_paa_hornet",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:872"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "vettane_i_ura_ved_horgheim",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:873"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "trollungen_paa_eggen",
+      "fil": "vanlege",
+      "tal": 3
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:874"
+   }
+  ],
+  "moterate_tekst": "Høg",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:861"
+ },
+ {
+  "id": "9d_tommervasen_i_glomma",
+  "namn": "Tømmervasen i Glomma",
+  "del": "V11 Nordre Øyeren",
+  "skjermar": [
+   "OYR-01",
+   "OYR-02",
+   "OYR-03",
+   "OYR-04",
+   "OYR-05",
+   "OYR-06",
+   "OYR-07",
+   "OYR-08",
+   "OYR-09",
+   "OYR-10",
+   "OYR-11",
+   "OYR-12",
+   "TVA-01",
+   "TVA-02",
+   "TVA-03",
+   "TVA-04",
+   "TVA-05",
+   "TVA-06"
+  ],
+  "stader": [
+   "OYR",
+   "TVA"
+  ],
+  "epoke": null,
+  "moterate": "hog",
+  "niva": {
+   "min": 31,
+   "maks": 31
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "tommerflotaren_i_vasen",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "nokken_under_stokkane",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:949"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "nokken_under_stokkane",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:950"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "tommerflotaren_i_vasen",
+      "fil": "vanlege",
+      "tal": 2
+     },
+     {
+      "id": "nokken_under_stokkane",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:951"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "tommerflotaren_i_vasen",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:952"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "oteren_i_kroderen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:953"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "nokken_under_stokkane",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:954"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "oteren_i_kroderen",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "nokken_under_stokkane",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:955"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "nokken_under_stokkane",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "tommerflotaren_i_vasen",
+      "fil": "vanlege",
+      "tal": 3
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Knipetak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:956"
+   }
+  ],
+  "moterate_tekst": "Høg",
+  "merknad": "Tømmerfløtaren i vasen byter side når ein nøkk i same kampen gjev opp. I gruppe 4 står han utan nøkk og gjev opp etter reglane for menneske.",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:943"
+ },
+ {
+  "id": "9d_svedjebrannen",
+  "namn": "Svedjebrannen",
+  "del": "V12 Finnskogen",
+  "skjermar": [
+   "FSK-01",
+   "FSK-02",
+   "FSK-03",
+   "FSK-04",
+   "FSK-05",
+   "FSK-06",
+   "FSK-06a",
+   "FSK-07",
+   "FSK-08",
+   "FSK-09",
+   "FSK-10",
+   "FSK-11",
+   "FSK-12",
+   "SVB-01",
+   "SVB-02",
+   "SVB-03",
+   "SVB-04",
+   "SVB-05",
+   "SVB-06"
+  ],
+  "stader": [
+   "FSK",
+   "SVB"
+  ],
+  "epoke": null,
+  "moterate": "hog",
+  "niva": {
+   "min": 32,
+   "maks": 32
+  },
+  "grupper": [
+   {
+    "gruppe": 1,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "haren_i_svedja",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1046"
+   },
+   {
+    "gruppe": 2,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "ikornen_i_brannskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 20,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1047"
+   },
+   {
+    "gruppe": 3,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "haren_i_svedja",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1048"
+   },
+   {
+    "gruppe": 4,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "haren_i_svedja",
+      "fil": "vanlege",
+      "tal": 1
+     },
+     {
+      "id": "ikornen_i_brannskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 15,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1049"
+   },
+   {
+    "gruppe": 5,
+    "sjeldan": null,
+    "fiendar": [
+     {
+      "id": "ikornen_i_brannskogen",
+      "fil": "vanlege",
+      "tal": 2
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg",
+     "Bakåtak"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1050"
+   },
+   {
+    "gruppe": 6,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "ulvane_i_finnskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 10,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1051"
+   },
+   {
+    "gruppe": 7,
+    "sjeldan": "sjeldan",
+    "fiendar": [
+     {
+      "id": "bjornen_i_finnskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1052"
+   },
+   {
+    "gruppe": 8,
+    "sjeldan": "svaert_sjeldan",
+    "fiendar": [
+     {
+      "id": "elgoksen_i_finnskogen",
+      "fil": "vanlege",
+      "tal": 1
+     }
+    ],
+    "vekt": 5,
+    "formasjonar": [
+     "Vanleg"
+    ],
+    "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1053"
+   }
+  ],
+  "moterate_tekst": "Høg",
+  "merknad": "Det brenn på kampstaden i alle kampane her, og dyra i dungeonen flyktar frå elden.",
+  "synleg_tekst": "ingen.",
+  "kjelde": "05 Mekanikk/09d Møtetabellar villmarkene.md:1040"
+ }
+]

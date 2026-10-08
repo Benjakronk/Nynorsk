@@ -1,0 +1,4764 @@
+{
+ "fane": "Ørsta og Sunnmøre",
+ "stader": [
+  {
+   "id": "PRF",
+   "namn": "Prologfjellet: Stien og skaret",
+   "fane": "orsta_og_sunnmore",
+   "storleik": "dungeon",
+   "skildring": "Prologen går på «eit fjell utan namn på Sunnmøre» (del1:9). Fjellet ligg over Storfjorden, innanfor Solnør, slik fana 03 gjer framlegg om, og toppen kan sjåast frå lia over Solnør (SLN-05). Det er ein dungeon av typen folkevesen og natur på om lag ti minutt, med fast prologstyrke og éin sti. Stien kan berre gåast i januar 1841 og lukkar seg for godt når ringen brest (del1:194). I rulleteksten (7.31) flyg kameraet over fjellet, utan styring. Partyet er Asbjørnsen, Moe, huldra og fjellføraren Rasmus. Møtetabellen er sona «Stien og skaret» i fana 9b.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:7"
+  },
+  {
+   "id": "ASN",
+   "namn": "Åsen",
+   "fane": "orsta_og_sunnmore",
+   "storleik": "gard",
+   "skildring": "Åsen er garden i Hovdebygda der Ivar veks opp, og midtpunktet i barndomskartet. Garden er ein gard i storleik, men han er heimebase i barndomen og kjem att i alle epokane, så han har ni skjermar og rom. Tunet er knutepunktet med fire utgangar: sti opp til setra, veg nord gjennom Hovdebygda mot Årflot og Ørstavika, veg sør over eidet mot Ekset og Volda, og sti ned til Hovden og fjøra. Garden er open frå 1.1 i 1816 til Ivar går i båten etter 1.10, og med robåt frå Solnør 1835–1841. Storebroren eig garden frå 1831 (1.9). I reiseåra og Christiania-åra er Åsen ein stad å kome heim til utan kampar. I fimbulvinteren er Åsen open frå 5.1, og frå 6.10 i august 1852 står tunet og fjøset tomme fordi folket har flytt ned til Årflot. Etter oppgjeret kjem fjøset att i 7.24, og i epilogen berre i 7.32 utan styring. Møtetabellane er sonene «Bøane, innmarka og vegane på Åsen» i fana 9b og «Innmarka og bygdevegane i Hovdebygda og på Årflot» i fana 9c. Tunet, stova, loftet og fjøset har møterate Ingen.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:35"
+  },
+  {
+   "id": "UGF",
+   "namn": "Under golvet i fjøset",
+   "fane": "orsta_og_sunnmore",
+   "storleik": "dungeon",
+   "skildring": "Dungeonen i S2.11 ligg inne i fjøsveggen og under golvet på Åsen i desember 1852. Han er av typen små rom, på nivå 41 og om lag 15 minutt. Grepet er Tussestorleik: halmstrå er tre, og ei mjølkebøtte er eit fjell. Tussen må vere med, og dei andre ventar utanfor fjøset. Fiendane er Frostmusene under fjøsgolvet og Stabbursmusa (frosen), sona «Under golvet i fjøset (S2.11, desember 1852)» i fana 9c. Bossen er Frostkatten, og løna er Fjøsvarme og bjølla. I Etter soga-fila er Avkroken frå S2.34 eit eige rom i same veggen.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:64"
+  },
+  {
+   "id": "SET",
+   "namn": "Åsen-setra",
+   "fane": "orsta_og_sunnmore",
+   "storleik": null,
+   "skildring": "Setra ligg opp gjennom lia frå tunet og er utmark med vanleg møterate, sona «Setra, tjørna og utmarka over Åsen» i fana 9b. Ho er ei lita seter med tre skjermar: lia, setervollen med buene og ekkoberget ved tjørna. Ho er open i alle lag frå 1820 til den store opninga, men har ikkje scener etter 1.2. Ekkoberget er ei lenkje over heile spelet (forslag i fana 03): det svarar med eldre former, er frose i fimbulvinteren og svarar att i den store opninga. I fimbulvinteren gjeld sona «Utmarka, lia og kyrkjegarden» i fana 9c.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:95"
+  },
+  {
+   "id": "HVD",
+   "namn": "Hovdebygda og Hovden",
+   "fane": "orsta_og_sunnmore",
+   "storleik": "grend",
+   "skildring": "Hovdebygda er grenda rundt Åsen, mellom Ørsta og Volda. Ho er bygd som to vegar ut frå tunet: bygdevegen nord mot Årflot og Ørstavika, og stien ned til Hovden og fjøra. Hovden er ei grend med den siste røykstova, der Gamle-Brita bur til ho døyr vinteren 1826. Huset står tomt etter det. Fjøra under Hovden er der Haugbokken står synleg og der Aasen går i land frå båten i 5.1. Staden har fire skjermar og er open i alle lag frå 1816 til den store opninga. Møtetabellane er «Bøane, innmarka og vegane på Åsen» og «Hovden og fjøra» i fana 9b, og «Innmarka og bygdevegane» og «Fjøra og isvegane frå Ørstavika til Vartdal og Ålesund» i fana 9c.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:113"
+  },
+  {
+   "id": "ORV",
+   "namn": "Ørstavika og Ørsta kyrkje",
+   "fane": "orsta_og_sunnmore",
+   "storleik": "bygd og kyrkjestad",
+   "skildring": "Ørstavika er kyrkjestaden og sjøsida av bygda, nord for Åsen. Han er ein bygd og kyrkjestad med åtte skjermar og rom: marknadsplassen, kyrkjebakken, kyrkjerommet med tårnet, kyrkjegarden, nausta, Ørstaosen og smia. Kyrkja er den gamle trekyrkja frå mellomalderen, utvida til korskyrkje, om lag 50 meter vest for dagens kyrkje. Ho står til 1864, og tårn og takform kan formast fritt (verda/03). Ørstavika er open frå 1820 til den store opninga. Frå 2.2 er nausta den eine av dei to innfallsportane frå verdskartet. Torget, kyrkja og nausta har møterate Ingen. Kyrkjegarden høyrer til sona «Utmarka, lia og kyrkjegarden» i fana 9c, og isvegen frå nausta til sona for fjøra og isvegane.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:131"
+  },
+  {
+   "id": "ARF",
+   "namn": "Årflot",
+   "fane": "orsta_og_sunnmore",
+   "storleik": "gard",
+   "skildring": "Årflot er garden til Berte og Amund Aarflot, og ligg på vegen frå Hovdebygda til Ørstavika. Han er ein gard med fire skjermar og rom. Røykstova er staden for lekpreika i 1829, møtet i januar 1851 og den siste scena til Berte i 1859. Frå 5.5b er ho kvileplass resten av spelet, og ho er den første staden i fimbulvinteren der orda ikkje frys. Vinteren 1852–53 bur folket frå Åsen her. Tunet og røykstova har møterate Ingen. Bekken og bøane høyrer til sona for innmarka i fana 9b og 9c.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:166"
+  },
+  {
+   "id": "EKS",
+   "namn": "Ekset",
+   "fane": "orsta_og_sunnmore",
+   "storleik": "gard",
+   "skildring": "Ekset er nabogarden til Åsen i spelet, i Volda, med biblioteket og trykkeriet til Aarflot. Han er ein gard med fem skjermar og rom. Biblioteket står heilt i 1830 og er brunne i 1844, og det er den tydelegaste lenkja mellom epokane her. I barndomen kan Ivar låne ei ny bok i kvart kapittel. Trykkeriet blir berga i brannen natta til 9. januar 1844 og går i familien. Bokhandelen til Rasmus Aarflot opnar i 1839. I fimbulvinteren er Ekset stad utan framdrift. Tunet og husa har møterate Ingen, og innmarka høyrer til «Innmarka på Ekset, Solnør og Skodje» i fana 9b. Biblioteket er òg draumen i 2.10, spelt frå Litlebergen.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:183"
+  },
+  {
+   "id": "VOL",
+   "namn": "Volda",
+   "fane": "orsta_og_sunnmore",
+   "storleik": "kyrkjestad",
+   "skildring": "Volda er hovudkyrkja i prestegjeldet og ligg sør for Åsen over eit lågt eid. Han er ein kyrkjestad med sju skjermar og rom: eidet, Øyra med kyrkja og prestegarden, og ferjestaden med skysskiftet. Presten bur på prestegarden på Øyra, og overhøyringa i 1.5 går der. Volda kyrkje er stavkyrkja som var utvida til korskyrkje, og står til 1858. Frå 2.2 er ferjestaden den andre innfallsporten frå verdskartet. Kyrkja og prestegarden har møterate Ingen, eidet høyrer til innmarka.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:204"
+  },
+  {
+   "id": "BON",
+   "namn": "Bondalen og grendene",
+   "fane": "orsta_og_sunnmore",
+   "storleik": "bygd",
+   "skildring": "Bondalen ligg aust for Ørstavika, og vegen går vidare over eidet ned mot Sæbø og Hjørundfjorden. Storleiken er ei bygd med seks skjermar og rom for omgangsskulen i 1.8 og garden til Marta i S1.3. Fire grender gjev fire former av same ordet: kva på Åsen, ka i éi grend lenger ute, kvat hos ein gammal mann og kvæ hos ei ung jente frå fjorden. Bondalen opnar seg først i 1.8, er stengd i ungdomen og open igjen frå reiseåra. Vegane høyrer til sona «Bøane, innmarka og vegane på Åsen, i grendene og i Bondalen» i fana 9b.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:226"
+  },
+  {
+   "id": "HRY",
+   "namn": "Herøy",
+   "fane": "orsta_og_sunnmore",
+   "storleik": null,
+   "skildring": "Herøy er staden der Ivar les hos prosten Hans Conrad Thoresen 1833–1835. Manuset har berre dagboksida «Herø, februar 1834» og montasjen av båten ut fjorden mot havet. Staden er difor éin skjerm, og han er eit forslag. Han blir vist i montasjen og kan nåast som anløp for dampskipet Nordcap frå reiseåra.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:247"
+  },
+  {
+   "id": "SLN",
+   "namn": "Solnør",
+   "fane": "orsta_og_sunnmore",
+   "storleik": null,
+   "skildring": "Solnør er storgarden til kaptein Daae i Skodje, ved Storfjorden. Han er heimebasen 1835–1841 og har elleve skjermar og rom, fordi spelaren bur her i seks år. Hovudhuset har stova, biblioteket, skulestova, kammerset til Aasen og kjøkenet. Drengestova står for seg sjølv på tunet. Frå naustet ror partyet over fjordane, og lia over garden fører til ura og kjelda. Frå 2.2 er Solnør stad utan framdrift, der fru Daae og borna tek imot Aasen på kjøkenet. I fimbulvinteren ligg snøen, og hagen er grøn under skaren (forslag). Regelen i stova er at ho talar dansk, og kjøkenet talar mål. Innmarka høyrer til «Innmarka på Ekset, Solnør og Skodje», og sjøen til «Fjøra og nausta», begge i fana 9b. Kammerset og kjelda har møterate Ingen.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:257"
+  },
+  {
+   "id": "URA",
+   "namn": "Ura i lia",
+   "fane": "orsta_og_sunnmore",
+   "storleik": "dungeon",
+   "skildring": "Ura i lia er dungeonen i 1.13, våren 1838, av typen folkevesen og natur på nivå 6 og om lag ti minutt. Aasen går opp med Mette og vesle Ludvig på ryggen. Temaet er det eldste skriftsystemet i landet, og grepet er runegåta ved hella. Fiendane er Små vetter ved runene og Røyskatten i steingarden, sona «Ura i lia» i fana 9b. Dungeonen har ingen boss, og kjelda er målet.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:288"
+  },
+  {
+   "id": "EGL",
+   "namn": "Hornet i Egils saga",
+   "fane": "orsta_og_sunnmore",
+   "storleik": "dungeon",
+   "skildring": "Dungeonen i S1.5 er inne i ein tekst, vinteren 1838, på om lag fem til ti minutt. Ei natt når Aasen blir sitjande for lenge ved Snorre i biblioteket, fell eit band ned av seg sjølv, og Aasen hamnar i Egils saga, i stova hos bonden Bård i Atløy. Teksten er landskapet. Det er ingen fiendar, ingen kvilestad og ingen boss. Gåta er runegåta på tid medan hornet sprekk. Løna er ordet «rista».",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:313"
+  },
+  {
+   "id": "SKD",
+   "namn": "Skodje",
+   "fane": "orsta_og_sunnmore",
+   "storleik": "kyrkjestad",
+   "skildring": "Skodje er kyrkjesoknet til Solnør. Storleiken er ein kyrkjestad med tre skjermar og rom: kyrkjebakken og stranda med naustet til Ola Vik. Han er open 1835–1841 og frå reiseåra til den store opninga. Kyrkjebakken i Skodje er stad utan framdrift (del1:666). Korleis kyrkja i Skodje såg ut i 1830-åra, er ikkje undersøkt (sjekk). Kyrkjebakken har møterate Ingen. Stranda høyrer til «Fjøra og nausta» i fana 9b.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:325"
+  },
+  {
+   "id": "FJD",
+   "namn": "Fjordane og isvegane",
+   "fane": "orsta_og_sunnmore",
+   "storleik": null,
+   "skildring": "Fjordane er sambandet mellom hamnene på Sunnmøre. Frå 1.11 ror partyet frå naustet på Solnør, og robåten går berre i fjordar og le. Kartet er eit lite fjordsystem med fire skjermar. Frå 5.5b frys fjordane, og isvegane gjer kartflata til eitt samanhengande felt. Robåten har låg møterate (sona «Fjordane i robåt» i fana 9b). Isvegen høyrer til «Fjøra og isvegane frå Ørstavika til Vartdal og Ålesund» i fana 9c, med raten for kyst.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:345"
+  },
+  {
+   "id": "VRT",
+   "namn": "Vartdal",
+   "fane": "orsta_og_sunnmore",
+   "storleik": null,
+   "skildring": "Vartdal er ei strand på andre sida av Vartdalsfjorden. Folket høyrde til Ulstein og rodde til kyrkje, for Vartdal fekk inga kyrkje før 1876. Storleiken er éin skjerm, ein stad utan framdrift (del1:666). Båtfolk ventar på bør og fortel om fjordane i ungdomen. I fimbulvinteren går isvegen forbi. Andre juledag 1841 kantra ein kyrkjebåt her. Minnet om det er forslag i fana 03 og er ikkje teikna. Stranda høyrer til «Fjøra og nausta» i fana 9b og isvegsona i fana 9c.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:365"
+  },
+  {
+   "id": "ALS",
+   "namn": "Ålesund og Brosundet",
+   "fane": "orsta_og_sunnmore",
+   "storleik": null,
+   "skildring": "Ålesund er ladestad med 482 innbyggjarar i 1835 og kjøpstad frå 1848. Hamna er Brosundet, og byen har inga eiga kyrkje før 1855, så Borgund kyrkje er soknekyrkja. Storleiken er ein liten småby med sju skjermar og rom rundt Brosundet. I ungdomen er han ei hamn for robåten (forslag i fana 03). Frå 1841 legg dampskipet Nordcap innom, og i reiseåra er byen ei hamn på kystleia. I fimbulvinteren ventar losen frå Giske på isgangen på kaia, og dampskipet går hit så langt isen slepper (5.5b, 6.9). Gatene og kaia har møterate Ingen.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:379"
+  },
+  {
+   "id": "BRG",
+   "namn": "Borgund",
+   "fane": "orsta_og_sunnmore",
+   "storleik": "kyrkjestad",
+   "skildring": "Borgund kyrkje er mellomaldersk steinkyrkje, truleg frå om lag 1130, og soknekyrkja for Ålesund til 1855. Storleiken er ein kyrkjestad med to skjermar. Ho er stad utan framdrift i fimbulvinteren og kan nåast frå Ålesund i alle epokane byen er open. Kyrkjegarden og kyrkja har møterate Ingen.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:404"
+  },
+  {
+   "id": "STD",
+   "namn": "Stad og Selje",
+   "fane": "orsta_og_sunnmore",
+   "storleik": null,
+   "skildring": "Stad står på kartet som eigen stad på grensa mot Nordfjord, for Stad og Selje låg i Nordre Bergenhus amt (fana 03 og Regionane). I 1841 går jakta rundt Stad i montasje. Frå 1852 kan partyet ro rundt Stadlandet i storm med båten til bonden i Selje og møte Sjøormen (S2.29), ein superboss på nivå 54. Stormdagar står i Dagboka, og bonden seier ifrå. Storleiken er tre skjermar. Roinga er eit minispel utan tilfeldige kampar, og stova til bonden er trygg. Det finst ingen møtetabell.",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:415"
+  }
+ ],
+ "skjermar": [
+  {
+   "id": "ASN-01",
+   "stad": "ASN",
+   "omraade": "Åsen",
+   "namn": "Tunet på Åsen",
+   "innhald_tekst": "Stova, loftet, fjøset, løa og stabburet rundt eit tun med gras på torvtaka. Trappa der mora sit med ullkorga (1.1). Steingjerdet og grinda der faren legg stein (1.2). Stangegeita (1821) og Hanen på Åsen (1822) står synlege. Grannekona Gjertrud og huldra ved grinda, tåke over bygda (2.1). Snø på høyet og ei lita jente (5.1). Tomt tun under snø (6.10). Bordet i stova har Bergens Stiftstidende frå 22. august 1841 i 1842",
+   "scener": [
+    "s1_1",
+    "s1_2",
+    "s2_1",
+    "s5_1",
+    "s6_10"
+   ],
+   "utgangar": [
+    {
+     "til": "ASN-01a",
+     "namn": null
+    },
+    {
+     "til": "ASN-01c",
+     "namn": null
+    },
+    {
+     "til": "ASN-02",
+     "namn": null
+    },
+    {
+     "til": "ASN-03",
+     "namn": null
+    },
+    {
+     "til": "ASN-04",
+     "namn": null
+    },
+    {
+     "til": "ASN-05",
+     "namn": null
+    },
+    {
+     "til": "SET-01",
+     "namn": null
+    },
+    {
+     "til": "HVD-01",
+     "namn": null
+    },
+    {
+     "til": "HVD-02",
+     "namn": null
+    },
+    {
+     "til": "VOL-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ASN-01a, ASN-01c, ASN-02, ASN-03, ASN-04, ASN-05, SET-01, HVD-01, HVD-02, VOL-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1850, 1850–1853, 1855–56",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen",
+    "9c_innmarka_og_bygdevegane_i_hovdebygda_og_paa_aarflot"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:41"
+  },
+  {
+   "id": "ASN-01a",
+   "stad": "ASN",
+   "omraade": "Åsen",
+   "namn": "Stova",
+   "innhald_tekst": "Grua med grauten som småkokar. Senga der Ivar legg seg før kvart tidshopp. Katekismen. Julaftan med graut og plass ved enden av bordet, Marta som kona på garden om val A i S1.3 (5.2). Det kalde kjøkenet der Aasen kokar graut til tussen (6.10). Hylla med Prøver af Landsmaalet og lampa der huldra skriv brevet (7.24)",
+   "scener": [
+    "s5_2",
+    "s6_10",
+    "s7_24"
+   ],
+   "utgangar": [
+    {
+     "til": "ASN-01",
+     "namn": null
+    },
+    {
+     "til": "ASN-01b",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ASN-01, ASN-01b",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1850, 1850–1853, 1855–56",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen",
+    "9c_innmarka_og_bygdevegane_i_hovdebygda_og_paa_aarflot"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:42"
+  },
+  {
+   "id": "ASN-01b",
+   "stad": "ASN",
+   "omraade": "Åsen",
+   "namn": "Sengekammerset",
+   "innhald_tekst": "Faren sjuk i senga, Ivar på krakken med katekismen (1.4)",
+   "scener": [
+    "s1_4"
+   ],
+   "utgangar": [
+    {
+     "til": "ASN-01a",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ASN-01a",
+   "epokar": [
+    "barndomen"
+   ],
+   "epokar_tekst": "1826",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen",
+    "9c_innmarka_og_bygdevegane_i_hovdebygda_og_paa_aarflot"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:43"
+  },
+  {
+   "id": "ASN-01c",
+   "stad": "ASN",
+   "omraade": "Åsen",
+   "namn": "Loftet",
+   "innhald_tekst": "Tunkallen i barndomen (Samtale). Senga til Aasen i fimbulvinteren. Omnen, kista med Ordboka, hylla med breva (5.3). Ravnen i margen (5.4). Vindauget der Dagboka opnar seg (5.5). Mara på Åsen kjem som Unntak når Aasen kviler åleine her",
+   "scener": [
+    "s5_3",
+    "s5_4",
+    "s5_5"
+   ],
+   "utgangar": [
+    {
+     "til": "ASN-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ASN-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1850–1853",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen",
+    "9c_innmarka_og_bygdevegane_i_hovdebygda_og_paa_aarflot"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:44"
+  },
+  {
+   "id": "ASN-02",
+   "stad": "ASN",
+   "omraade": "Åsen",
+   "namn": "Fjøset",
+   "innhald_tekst": "Båsane med kyrne og båsen innst der tussen bur. Julelyset i gluggen og museholet, Musekongen og hoffet (1.3). Dokka (S1.1). Ivar ved tussen (1.4). Halmknuten (1.9). Tom bås (2.1). Snø over eit tomt fjøs i montasjen (4.30). Musikken stoppar heilt, tidsminispelet (5.2). Steinen ved båsen, knaggen ved døra, båsen til Dokka, Moe på mjølkekrakken (6.10). Det tomme fjøset og stokken i veggen (S2.11.1). Bjølla (S2.11.3). Huldra mjølkar og spannet flyttar seg (7.24). Bestemora og barnet (7.32)",
+   "scener": [
+    "s1_3",
+    "S1_1",
+    "s1_4",
+    "s1_9",
+    "s2_1",
+    "s4_30",
+    "s5_2",
+    "s6_10",
+    "S2_11_1",
+    "S2_11_3",
+    "s7_24",
+    "s7_32"
+   ],
+   "utgangar": [
+    {
+     "til": "ASN-01",
+     "namn": null
+    },
+    {
+     "til": "UGF-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ASN-01, UGF-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1850, 1850–1853, 1855–56, Epilog",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen",
+    "9c_innmarka_og_bygdevegane_i_hovdebygda_og_paa_aarflot"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:45"
+  },
+  {
+   "id": "ASN-03",
+   "stad": "ASN",
+   "omraade": "Åsen",
+   "namn": "Løa og stabburet",
+   "innhald_tekst": "Hjørnet av løa der Gassen kjem (miniboss i 1.2). Stabburet med døra som julelyset opnar",
+   "scener": [
+    "s1_2"
+   ],
+   "utgangar": [
+    {
+     "til": "ASN-01",
+     "namn": null
+    },
+    {
+     "til": "ASN-03a",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ASN-01, ASN-03a",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen",
+    "9c_innmarka_og_bygdevegane_i_hovdebygda_og_paa_aarflot"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:46"
+  },
+  {
+   "id": "ASN-03a",
+   "stad": "ASN",
+   "omraade": "Åsen",
+   "namn": "Stabburet",
+   "innhald_tekst": "Mørkt rom. Lageret til Stabbursmusa, som står synleg (1823). Opnar seg med Julelyset (1.3)",
+   "scener": [
+    "s1_3"
+   ],
+   "utgangar": [
+    {
+     "til": "ASN-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ASN-03",
+   "epokar": [
+    "barndomen",
+    "ungdomen"
+   ],
+   "epokar_tekst": "1820–1841",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen",
+    "9c_innmarka_og_bygdevegane_i_hovdebygda_og_paa_aarflot"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:47"
+  },
+  {
+   "id": "ASN-04",
+   "stad": "ASN",
+   "omraade": "Åsen",
+   "namn": "Bekken med kverna og hønsehuset",
+   "innhald_tekst": "Kverna i bekken med Kvernknurren synleg. Mikkel i hønsehuset (1825). I fimbulvinteren står kverna, og Knurrungen og Knurrfaren står synlege ved henne",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ASN-01",
+     "namn": null
+    },
+    {
+     "til": "ASN-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ASN-01, ASN-05",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1850–1853",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen",
+    "9c_innmarka_og_bygdevegane_i_hovdebygda_og_paa_aarflot"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:48"
+  },
+  {
+   "id": "ASN-05",
+   "stad": "ASN",
+   "omraade": "Åsen",
+   "namn": "Bøen og sommarenga",
+   "innhald_tekst": "Innmarka med tilfeldige kampar. Sommarenga der løvetannfrøet landar på nasen til guten (0.6). Slåttegras under snø i august 1850 (5.1)",
+   "scener": [
+    "s0_6",
+    "s5_1"
+   ],
+   "utgangar": [
+    {
+     "til": "ASN-01",
+     "namn": null
+    },
+    {
+     "til": "ASN-04",
+     "namn": null
+    },
+    {
+     "til": "HVD-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ASN-01, ASN-04, HVD-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen",
+    "9c_innmarka_og_bygdevegane_i_hovdebygda_og_paa_aarflot"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:49"
+  },
+  {
+   "id": "SET-01",
+   "stad": "SET",
+   "omraade": "Åsen-setra",
+   "namn": "Lia opp frå tunet",
+   "innhald_tekst": "Stien gjennom lia, steinen der Ivar slår opp kneet (1.2)",
+   "scener": [
+    "s1_2"
+   ],
+   "utgangar": [
+    {
+     "til": "ASN-01",
+     "namn": null
+    },
+    {
+     "til": "SET-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ASN-01, SET-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [
+    "9b_setra_tjorna_og_utmarka_over_aasen",
+    "9c_utmarka_lia_og_kyrkjegarden"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:101"
+  },
+  {
+   "id": "SET-02",
+   "stad": "SET",
+   "omraade": "Åsen-setra",
+   "namn": "Setervollen",
+   "innhald_tekst": "Buene og setervollen. Budeia Brita med trauet og mjølka i tresleiva (1.2). Ho seier snjo her oppe og snø i bygda",
+   "scener": [
+    "s1_2"
+   ],
+   "utgangar": [
+    {
+     "til": "SET-01",
+     "namn": null
+    },
+    {
+     "til": "SET-02a",
+     "namn": null
+    },
+    {
+     "til": "SET-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SET-01, SET-02a, SET-03",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [
+    "9b_setra_tjorna_og_utmarka_over_aasen",
+    "9c_utmarka_lia_og_kyrkjegarden"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:102"
+  },
+  {
+   "id": "SET-02a",
+   "stad": "SET",
+   "omraade": "Åsen-setra",
+   "namn": "Seterbua",
+   "innhald_tekst": "Kista med det raude seglet (VK01)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SET-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SET-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [
+    "9b_setra_tjorna_og_utmarka_over_aasen",
+    "9c_utmarka_lia_og_kyrkjegarden"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:103"
+  },
+  {
+   "id": "SET-03",
+   "stad": "SET",
+   "omraade": "Åsen-setra",
+   "namn": "Ekkoberget og tjørna",
+   "innhald_tekst": "Ekkospelet: Ivar ropar ord ut over dalen, og berget svarar «heimr» (1.2). Nøkkeungen i tjørna. Ekkoet er frose i fimbulvinteren (forslag)",
+   "scener": [
+    "s1_2"
+   ],
+   "utgangar": [
+    {
+     "til": "SET-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SET-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [
+    "9b_setra_tjorna_og_utmarka_over_aasen",
+    "9c_utmarka_lia_og_kyrkjegarden"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:104"
+  },
+  {
+   "id": "HVD-01",
+   "stad": "HVD",
+   "omraade": "Hovdebygda og Hovden",
+   "namn": "Bygdevegen i Hovdebygda",
+   "innhald_tekst": "Vegen nord frå Åsen forbi bøane. Gutane som ertar Gamle-Brita (utløyser S1.2). Folk i slåttegraset med frosne fingrar i 1850",
+   "scener": [
+    "S1_2"
+   ],
+   "utgangar": [
+    {
+     "til": "ASN-01",
+     "namn": null
+    },
+    {
+     "til": "ASN-05",
+     "namn": null
+    },
+    {
+     "til": "ARF-01",
+     "namn": null
+    },
+    {
+     "til": "ORV-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ASN-01, ASN-05, ARF-01, ORV-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen",
+    "9b_hovden_og_fjora",
+    "9c_fjora_og_isvegane_fraa_orstavika_til_vartdal_og_aalesund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:119"
+  },
+  {
+   "id": "HVD-02",
+   "stad": "HVD",
+   "omraade": "Hovdebygda og Hovden",
+   "namn": "Hovden",
+   "innhald_tekst": "Røykstova til Gamle-Brita. Ved og vatn i tre dagar (S1.2)",
+   "scener": [
+    "S1_2"
+   ],
+   "utgangar": [
+    {
+     "til": "ASN-01",
+     "namn": null
+    },
+    {
+     "til": "HVD-02a",
+     "namn": null
+    },
+    {
+     "til": "HVD-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ASN-01, HVD-02a, HVD-03",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen",
+    "9b_hovden_og_fjora",
+    "9c_fjora_og_isvegane_fraa_orstavika_til_vartdal_og_aalesund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:120"
+  },
+  {
+   "id": "HVD-02a",
+   "stad": "HVD",
+   "omraade": "Hovdebygda og Hovden",
+   "namn": "Røykstova på Hovden",
+   "innhald_tekst": "Røyken ligg lågt, og spelaren held Ivar nede ved golvet. Ljoren og stonga (S1.2). I 1826 står ljoren open og det luktar nysløkt varme, utan replikkar. Tomt hus frå 1827",
+   "scener": [
+    "S1_2"
+   ],
+   "utgangar": [
+    {
+     "til": "HVD-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "HVD-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1824–1826, tom 1827–1853",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen",
+    "9b_hovden_og_fjora",
+    "9c_fjora_og_isvegane_fraa_orstavika_til_vartdal_og_aalesund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:121"
+  },
+  {
+   "id": "HVD-03",
+   "stad": "HVD",
+   "omraade": "Hovdebygda og Hovden",
+   "namn": "Fjøra under Hovden",
+   "innhald_tekst": "Fjøra der Haugbokken står synleg. Landingsstaden der Aasen går frå båten opp bakken (5.1). Isvegen langs fjøra i fimbulvinteren",
+   "scener": [
+    "s5_1"
+   ],
+   "utgangar": [
+    {
+     "til": "HVD-02",
+     "namn": null
+    },
+    {
+     "til": "FJD-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "HVD-02, FJD-04",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen",
+    "9b_hovden_og_fjora",
+    "9c_fjora_og_isvegane_fraa_orstavika_til_vartdal_og_aalesund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:122"
+  },
+  {
+   "id": "ORV-01",
+   "stad": "ORV",
+   "omraade": "Ørstavika og Ørsta kyrkje",
+   "namn": "Marknadsplassen",
+   "innhald_tekst": "Marknaden med Marknadsbonden (Samtale). Ivar sel visene for tolv skilling og ei ny lue om val A i 1.10",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "HVD-01",
+     "namn": null
+    },
+    {
+     "til": "ORV-02",
+     "namn": null
+    },
+    {
+     "til": "ORV-04",
+     "namn": null
+    },
+    {
+     "til": "BON-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "HVD-01, ORV-02, ORV-04, BON-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [
+    "9c_utmarka_lia_og_kyrkjegarden"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:137"
+  },
+  {
+   "id": "ORV-02",
+   "stad": "ORV",
+   "omraade": "Ørstavika og Ørsta kyrkje",
+   "namn": "Kyrkjebakken",
+   "innhald_tekst": "Folk frå alle grendene står att etter preika (stad utan framdrift, del1:300). Kunngjeringar. Konventikkelplakaten på kyrkjedøra i 1829. Kremmaren og Visekremmaren på kremmardag 1829–1830. Sunnmørsmål om snøen i august og kona som seier at lekpreik er lov sidan førtito (opninga etter 5.5)",
+   "scener": [
+    "s5_5"
+   ],
+   "utgangar": [
+    {
+     "til": "ORV-01",
+     "namn": null
+    },
+    {
+     "til": "ORV-02a",
+     "namn": null
+    },
+    {
+     "til": "ORV-03",
+     "namn": null
+    },
+    {
+     "til": "ORV-04",
+     "namn": null
+    },
+    {
+     "til": "ORV-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ORV-01, ORV-02a, ORV-03, ORV-04, ORV-05",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [
+    "9c_utmarka_lia_og_kyrkjegarden"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:138"
+  },
+  {
+   "id": "ORV-02a",
+   "stad": "ORV",
+   "omraade": "Ørstavika og Ørsta kyrkje",
+   "namn": "Kyrkjerommet",
+   "innhald_tekst": "Fristad. Kingos salmebok på kyrkjebenken. Klokkaren: «Sit still under preika, de ungar, og ring ikkje i klokka utan at det trengst.» Messefolket julenatta 1852, éin gong medan partyet er i Ørsta for S2.11 (Unntak). Trappa frå koret opp i tårnet",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ORV-02",
+     "namn": null
+    },
+    {
+     "til": "ORV-02b",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ORV-02, ORV-02b",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853, Etter soga",
+   "soner": [
+    "9c_utmarka_lia_og_kyrkjegarden"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:139"
+  },
+  {
+   "id": "ORV-02b",
+   "stad": "ORV",
+   "omraade": "Ørstavika og Ørsta kyrkje",
+   "namn": "Tårntrappa",
+   "innhald_tekst": "Trappa frå koret opp mot klokka. Ingen kampar, ingen kvilestad",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ORV-02a",
+     "namn": null
+    },
+    {
+     "til": "ORV-02c",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ORV-02a, ORV-02c",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853, Etter soga",
+   "soner": [
+    "9c_utmarka_lia_og_kyrkjegarden"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:140"
+  },
+  {
+   "id": "ORV-02c",
+   "stad": "ORV",
+   "omraade": "Ørstavika og Ørsta kyrkje",
+   "namn": "Klokkerommet",
+   "innhald_tekst": "Klokka og klokketauet. Sju drag vekkjer Kyrkjegrimen. Kampen går her, utanfor fristaden",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ORV-02b",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ORV-02b",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853, Etter soga",
+   "soner": [
+    "9c_utmarka_lia_og_kyrkjegarden"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:141"
+  },
+  {
+   "id": "ORV-03",
+   "stad": "ORV",
+   "omraade": "Ørstavika og Ørsta kyrkje",
+   "namn": "Kyrkjegarden",
+   "innhald_tekst": "Grava til mora, der Ivar sit på armen til faren og høyrer salmar han ikkje forstår (1.1). Kattugla på kyrkjegarden om kvelden i fimbulvinteren",
+   "scener": [
+    "s1_1"
+   ],
+   "utgangar": [
+    {
+     "til": "ORV-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ORV-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [
+    "9c_utmarka_lia_og_kyrkjegarden"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:142"
+  },
+  {
+   "id": "ORV-04",
+   "stad": "ORV",
+   "omraade": "Ørstavika og Ørsta kyrkje",
+   "namn": "Nausta",
+   "innhald_tekst": "Fiskarane bøter garn og gjev ord for båt og sjø (stad utan framdrift). Skrønemakaren i nausta står synleg. Båten som tek Ivar ut fjorden mot Herøy etter 1.10. Hamna for robåten 1835–1841. Innfallsport frå verdskartet frå 2.2. Isvegen inn Ørstafjorden (6.9)",
+   "scener": [
+    "s6_9"
+   ],
+   "utgangar": [
+    {
+     "til": "ORV-01",
+     "namn": null
+    },
+    {
+     "til": "ORV-02",
+     "namn": null
+    },
+    {
+     "til": "ORV-04a",
+     "namn": null
+    },
+    {
+     "til": "ORV-06",
+     "namn": null
+    },
+    {
+     "til": "FJD-04",
+     "namn": null
+    },
+    {
+     "til": "verdskartet",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ORV-01, ORV-02, ORV-04a, ORV-06, FJD-04, Verdskartet",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [
+    "9c_utmarka_lia_og_kyrkjegarden"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:143"
+  },
+  {
+   "id": "ORV-04a",
+   "stad": "ORV",
+   "omraade": "Ørstavika og Ørsta kyrkje",
+   "namn": "Kremmarbua",
+   "innhald_tekst": "Ei sjøbu der kremmaren held til om vinteren, med nesten tomme hyller (forslag i fana 03). Trygg stad",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ORV-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ORV-04",
+   "epokar": [
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1850–1853",
+   "soner": [
+    "9c_utmarka_lia_og_kyrkjegarden"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:144"
+  },
+  {
+   "id": "ORV-05",
+   "stad": "ORV",
+   "omraade": "Ørstavika og Ørsta kyrkje",
+   "namn": "Ørstaosen",
+   "innhald_tekst": "Naustet ved osen der gamle Rasmus bøter garn. Han er fjellføraren frå prologen og seier berre at det som søv på fjellet, skal få sova (del2:79)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ORV-02",
+     "namn": null
+    },
+    {
+     "til": "ORV-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ORV-02, ORV-06",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1842–1853",
+   "soner": [
+    "9c_utmarka_lia_og_kyrkjegarden"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:145"
+  },
+  {
+   "id": "ORV-06",
+   "stad": "ORV",
+   "omraade": "Ørstavika og Ørsta kyrkje",
+   "namn": "Smia",
+   "innhald_tekst": "Smeden i Ørsta, den einaste smia i T1 (plassering ved osen er forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ORV-04",
+     "namn": null
+    },
+    {
+     "til": "ORV-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ORV-04, ORV-05",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [
+    "9c_utmarka_lia_og_kyrkjegarden"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:146"
+  },
+  {
+   "id": "ARF-01",
+   "stad": "ARF",
+   "omraade": "Årflot",
+   "namn": "Tunet på Årflot",
+   "innhald_tekst": "Grinda der vaktguten ser lensmannen (1.6). Trappesteinen der Berte legg steinen om val A i 5.5b. Folket frå Åsen bur her vinteren 1852–53",
+   "scener": [
+    "s1_6"
+   ],
+   "utgangar": [
+    {
+     "til": "HVD-01",
+     "namn": null
+    },
+    {
+     "til": "ORV-01",
+     "namn": null
+    },
+    {
+     "til": "ARF-01a",
+     "namn": null
+    },
+    {
+     "til": "ARF-01b",
+     "namn": null
+    },
+    {
+     "til": "ARF-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "HVD-01, ORV-01, ARF-01a, ARF-01b, ARF-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853, 1859",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:172"
+  },
+  {
+   "id": "ARF-01a",
+   "stad": "ARF",
+   "omraade": "Årflot",
+   "namn": "Røykstova",
+   "innhald_tekst": "Benkar og kister, Berte på krakken med jenta på fanget. Lyttespel under preika (1.6). Møtet med den framande i svart frakk og Fristaren på Årflot, Berte blir med (5.5b). Berte syng med barnebarnet, utan styring (7.17b)",
+   "scener": [
+    "s1_6",
+    "s5_5b",
+    "s7_17b"
+   ],
+   "utgangar": [
+    {
+     "til": "ARF-01",
+     "namn": null
+    },
+    {
+     "til": "ARF-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ARF-01, ARF-02",
+   "epokar": [
+    "barndomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga",
+    "etter_oppgjeret"
+   ],
+   "epokar_tekst": "1829, 1842–1853, 1859",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:173"
+  },
+  {
+   "id": "ARF-01b",
+   "stad": "ARF",
+   "omraade": "Årflot",
+   "namn": "Fjøset på Årflot",
+   "innhald_tekst": "Kua i vårknipa i båsen med dei to frostvettene sine (synleg redningskamp)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ARF-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ARF-01",
+   "epokar": [
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1850–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:174"
+  },
+  {
+   "id": "ARF-02",
+   "stad": "ARF",
+   "omraade": "Årflot",
+   "namn": "Bekken bak røykstova",
+   "innhald_tekst": "Snikespelet: Ivar og tre gamle koner ut bakdøra og over bekken. Lensmannsdrengen. Berte finn Ivar ved bekken (1.6)",
+   "scener": [
+    "s1_6"
+   ],
+   "utgangar": [
+    {
+     "til": "ARF-01",
+     "namn": null
+    },
+    {
+     "til": "ARF-01a",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ARF-01, ARF-01a",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:175"
+  },
+  {
+   "id": "EKS-01",
+   "stad": "EKS",
+   "omraade": "Ekset",
+   "namn": "Tunet på Ekset",
+   "innhald_tekst": "Gardsbikkja (1833). Folket på garden hugsar Aasen som guten som lånte bøker (opninga etter 5.5). Oska under snøen etter 1844",
+   "scener": [
+    "s5_5"
+   ],
+   "utgangar": [
+    {
+     "til": "VOL-01",
+     "namn": null
+    },
+    {
+     "til": "EKS-01a",
+     "namn": null
+    },
+    {
+     "til": "EKS-01b",
+     "namn": null
+    },
+    {
+     "til": "EKS-01c",
+     "namn": null
+    },
+    {
+     "til": "EKS-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VOL-01, EKS-01a, EKS-01b, EKS-01c, EKS-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:189"
+  },
+  {
+   "id": "EKS-01a",
+   "stad": "EKS",
+   "omraade": "Ekset",
+   "namn": "Biblioteket",
+   "innhald_tekst": "Bøker frå golv til tak, biletet av Sivert Aarflot over døra. Bøkene summar som ein bikube bak ein vegg. Valet mellom grammatikken og plantebøka (1.7). Lesestykke: Hans Strøm, Norsk Landboeblad, Billed-ABC-Bog",
+   "scener": [
+    "s1_7"
+   ],
+   "utgangar": [
+    {
+     "til": "EKS-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "EKS-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara"
+   ],
+   "epokar_tekst": "1830–1843",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:190"
+  },
+  {
+   "id": "EKS-01b",
+   "stad": "EKS",
+   "omraade": "Ekset",
+   "namn": "Trykkeriet i sideskjulet",
+   "innhald_tekst": "Trykkpressa av tre og jern. Lukt av trykksverte og tjøre. Typesetjing med trykkardrengen Ola og visene (1.10)",
+   "scener": [
+    "s1_10"
+   ],
+   "utgangar": [
+    {
+     "til": "EKS-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "EKS-01",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1830–1853",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:191"
+  },
+  {
+   "id": "EKS-01c",
+   "stad": "EKS",
+   "omraade": "Ekset",
+   "namn": "Bokhandelen",
+   "innhald_tekst": "Bokhandelen til Rasmus Aarflot, Landboe-Avisen på disken. Plasseringa i huset er forslag (sjekk)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "EKS-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "EKS-01",
+   "epokar": [
+    "ungdomen",
+    "reiseaara"
+   ],
+   "epokar_tekst": "1839–1843",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:192"
+  },
+  {
+   "id": "EKS-02",
+   "stad": "EKS",
+   "omraade": "Ekset",
+   "namn": "Ruinen etter biblioteket",
+   "innhald_tekst": "Oskeoppdraget med Aarflot og huldra, glør under snøen (S1.15). Stad utan framdrift i fimbulvinteren, ruinen under snøen",
+   "scener": [
+    "S1_15"
+   ],
+   "utgangar": [
+    {
+     "til": "EKS-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "EKS-01",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1844–1853",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:193"
+  },
+  {
+   "id": "VOL-01",
+   "stad": "VOL",
+   "omraade": "Volda",
+   "namn": "Eidet",
+   "innhald_tekst": "Vegen sør frå Åsen over eit lågt eid. Stien bort til Ekset (5.1)",
+   "scener": [
+    "s5_1"
+   ],
+   "utgangar": [
+    {
+     "til": "ASN-01",
+     "namn": null
+    },
+    {
+     "til": "EKS-01",
+     "namn": null
+    },
+    {
+     "til": "VOL-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ASN-01, EKS-01, VOL-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:210"
+  },
+  {
+   "id": "VOL-02",
+   "stad": "VOL",
+   "omraade": "Volda",
+   "namn": "Øyra",
+   "innhald_tekst": "Kyrkjebakken i Volda, prestegarden og kyrkja",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VOL-01",
+     "namn": null
+    },
+    {
+     "til": "VOL-02a",
+     "namn": null
+    },
+    {
+     "til": "VOL-02b",
+     "namn": null
+    },
+    {
+     "til": "VOL-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VOL-01, VOL-02a, VOL-02b, VOL-03",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:211"
+  },
+  {
+   "id": "VOL-02a",
+   "stad": "VOL",
+   "omraade": "Volda",
+   "namn": "Volda kyrkje",
+   "innhald_tekst": "Stavkyrkja, utvida til korskyrkje. Fristad. Aasen blei konfirmert her hausten 1828",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VOL-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VOL-02",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:212"
+  },
+  {
+   "id": "VOL-02b",
+   "stad": "VOL",
+   "omraade": "Volda",
+   "namn": "Prestegarden",
+   "innhald_tekst": "Eit langt bord, konfirmantane langs veggen, overhøyringa og Skammen (1.5). Presten stansar Ivar i gangen. Pontoppidans forklaring på bordet. Døra til arkivet er låst med kanselliblekk",
+   "scener": [
+    "s1_5"
+   ],
+   "utgangar": [
+    {
+     "til": "VOL-02",
+     "namn": null
+    },
+    {
+     "til": "VOL-02c",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VOL-02, VOL-02c",
+   "epokar": [
+    "barndomen",
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1816–1841, 1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:213"
+  },
+  {
+   "id": "VOL-02c",
+   "stad": "VOL",
+   "omraade": "Volda",
+   "namn": "Arkivet",
+   "innhald_tekst": "Kyrkjebøkene. Opnar med Følgje heim (Landstad) eller Rett (Knudsen). Inngangen til Kyrkjeboka i Volda (forslag i fana 03, ikkje teikna her)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VOL-02b",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VOL-02b",
+   "epokar": [
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1850–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:214"
+  },
+  {
+   "id": "VOL-03",
+   "stad": "VOL",
+   "omraade": "Volda",
+   "namn": "Ferjestaden",
+   "innhald_tekst": "Ferjemannen og roinga over Voldsfjorden som minispel. Verdskartet blir opna når båten legg til (2.2). Innfallsport frå verdskartet",
+   "scener": [
+    "s2_2"
+   ],
+   "utgangar": [
+    {
+     "til": "VOL-02",
+     "namn": null
+    },
+    {
+     "til": "VOL-03a",
+     "namn": null
+    },
+    {
+     "til": "verdskartet",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VOL-02, VOL-03a, Verdskartet",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:215"
+  },
+  {
+   "id": "VOL-03a",
+   "stad": "VOL",
+   "omraade": "Volda",
+   "namn": "Skysskiftet i Volda",
+   "innhald_tekst": "Skysskaren Knut med voldamål og nytt frå Nordfjord (stad utan framdrift). Skysskiftet er i drift frå reiseåra (sjekk)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "VOL-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "VOL-03",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:216"
+  },
+  {
+   "id": "BON-01",
+   "stad": "BON",
+   "omraade": "Bondalen og grendene",
+   "namn": "Grendevegen",
+   "innhald_tekst": "Ivar med skreppa frå gard til gard (1.8). Vegen inn i dalen",
+   "scener": [
+    "s1_8"
+   ],
+   "utgangar": [
+    {
+     "til": "ORV-01",
+     "namn": null
+    },
+    {
+     "til": "BON-02",
+     "namn": null
+    },
+    {
+     "til": "BON-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ORV-01, BON-02, BON-03",
+   "epokar": [
+    "barndomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1831, 1842–1853",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:232"
+  },
+  {
+   "id": "BON-02",
+   "stad": "BON",
+   "omraade": "Bondalen og grendene",
+   "namn": "Grendene ved fjorden",
+   "innhald_tekst": "To tun. Ka i den eine grenda, kvæ hos jenta frå fjorden (1.8)",
+   "scener": [
+    "s1_8"
+   ],
+   "utgangar": [
+    {
+     "til": "BON-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BON-01",
+   "epokar": [
+    "barndomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1831, 1842–1853",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:233"
+  },
+  {
+   "id": "BON-03",
+   "stad": "BON",
+   "omraade": "Bondalen og grendene",
+   "namn": "Grendene inne i dalen",
+   "innhald_tekst": "To tun. Kvat hos den gamle mannen (1.8). Garden der skulestova står",
+   "scener": [
+    "s1_8"
+   ],
+   "utgangar": [
+    {
+     "til": "BON-01",
+     "namn": null
+    },
+    {
+     "til": "BON-03a",
+     "namn": null
+    },
+    {
+     "til": "BON-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BON-01, BON-03a, BON-04",
+   "epokar": [
+    "barndomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1831, 1842–1853",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:234"
+  },
+  {
+   "id": "BON-03a",
+   "stad": "BON",
+   "omraade": "Bondalen og grendene",
+   "namn": "Skulestova",
+   "innhald_tekst": "Seks ungar på ein benk, Per som snublar i katekismen, valet (1.8)",
+   "scener": [
+    "s1_8"
+   ],
+   "utgangar": [
+    {
+     "til": "BON-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BON-03",
+   "epokar": [
+    "barndomen"
+   ],
+   "epokar_tekst": "1831",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:235"
+  },
+  {
+   "id": "BON-04",
+   "stad": "BON",
+   "omraade": "Bondalen og grendene",
+   "namn": "Garden til Marta",
+   "innhald_tekst": "Tunet der Ivar samlar formene for spørjeordet frå dei vaksne (S1.3). Eidet vidare mot Sæbø",
+   "scener": [
+    "S1_3"
+   ],
+   "utgangar": [
+    {
+     "til": "BON-03",
+     "namn": null
+    },
+    {
+     "til": "BON-04a",
+     "namn": null
+    },
+    {
+     "til": "HJF-02",
+     "namn": "Villmark V1 Hjørundfjorden, etappe 1",
+     "slatt_opp": true
+    }
+   ],
+   "utgangar_tekst": "BON-03, BON-04a, Villmark V1 Hjørundfjorden, etappe 1",
+   "epokar": [
+    "barndomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1831–32, 1842–1853",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:236"
+  },
+  {
+   "id": "BON-04a",
+   "stad": "BON",
+   "omraade": "Bondalen og grendene",
+   "namn": "Stova på garden",
+   "innhald_tekst": "Leksa frå Pontoppidans forklaring, Marta, gardkona, tavla (S1.3)",
+   "scener": [
+    "S1_3"
+   ],
+   "utgangar": [
+    {
+     "til": "BON-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BON-04",
+   "epokar": [
+    "barndomen"
+   ],
+   "epokar_tekst": "1831–32",
+   "soner": [
+    "9b_boane_innmarka_og_vegane_paa_aasen_i_grendene_og_i_bondalen"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:237"
+  },
+  {
+   "id": "HRY-01",
+   "stad": "HRY",
+   "omraade": "Herøy",
+   "namn": "Anløpet ved Herøy",
+   "innhald_tekst": "Kyrkja og prestegarden sett frå sjøen. Montasjen 1834 (forslag som spelbar skjerm)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "verdskartet",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "Verdskartet",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1834 i montasje, 1842–1853 (forslag)",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:253"
+  },
+  {
+   "id": "SLN-01",
+   "stad": "SLN",
+   "omraade": "Solnør",
+   "namn": "Tunet på Solnør",
+   "innhald_tekst": "Det store kvitmåla huset med glas i alle vindauge. Trappa der kapteinen tek imot Aasen (1.11)",
+   "scener": [
+    "s1_11"
+   ],
+   "utgangar": [
+    {
+     "til": "SLN-01a",
+     "namn": null
+    },
+    {
+     "til": "SLN-01e",
+     "namn": null
+    },
+    {
+     "til": "SLN-02",
+     "namn": null
+    },
+    {
+     "til": "SLN-03",
+     "namn": null
+    },
+    {
+     "til": "SLN-04",
+     "namn": null
+    },
+    {
+     "til": "SLN-05",
+     "namn": null
+    },
+    {
+     "til": "SKD-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-01a, SLN-01e, SLN-02, SLN-03, SLN-04, SLN-05, SKD-01",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1842–1853",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje",
+    "9b_fjora_og_nausta"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:263"
+  },
+  {
+   "id": "SLN-01a",
+   "stad": "SLN",
+   "omraade": "Solnør",
+   "namn": "Stova",
+   "innhald_tekst": "Klokka i stova. Kapteinen i lenestolen med avisene frå Christiania, innlegget av Munch, valet om brevet (1.14). Landboe-Avisen",
+   "scener": [
+    "s1_14"
+   ],
+   "utgangar": [
+    {
+     "til": "SLN-01",
+     "namn": null
+    },
+    {
+     "til": "SLN-01b",
+     "namn": null
+    },
+    {
+     "til": "SLN-01c",
+     "namn": null
+    },
+    {
+     "til": "SLN-01d",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-01, SLN-01b, SLN-01c, SLN-01d",
+   "epokar": [
+    "ungdomen"
+   ],
+   "epokar_tekst": "1835–1841",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje",
+    "9b_fjora_og_nausta"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:264"
+  },
+  {
+   "id": "SLN-01b",
+   "stad": "SLN",
+   "omraade": "Solnør",
+   "namn": "Biblioteket",
+   "innhald_tekst": "Snorre i omsetjinga til Aall, talglyset, kartet over Sunnmøre som brenn (1.12). Om natta fell eit band ned, og S1.5 opnar seg. Den latinske floraen som står skeivt (S1.45)",
+   "scener": [
+    "s1_12",
+    "S1_45"
+   ],
+   "utgangar": [
+    {
+     "til": "SLN-01a",
+     "namn": null
+    },
+    {
+     "til": "EGL-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-01a, EGL-01",
+   "epokar": [
+    "ungdomen"
+   ],
+   "epokar_tekst": "1835–1841",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje",
+    "9b_fjora_og_nausta"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:265"
+  },
+  {
+   "id": "SLN-01c",
+   "stad": "SLN",
+   "omraade": "Solnør",
+   "namn": "Skulestova",
+   "innhald_tekst": "Mette med griffeltavla, Hanna i døra, vesle Ludvig som bit i bokstavtavla (1.11). Ludvig og sko (1.16). Herbariet (S1.45)",
+   "scener": [
+    "s1_11",
+    "s1_16",
+    "S1_45"
+   ],
+   "utgangar": [
+    {
+     "til": "SLN-01a",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-01a",
+   "epokar": [
+    "ungdomen"
+   ],
+   "epokar_tekst": "1835–1841",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje",
+    "9b_fjora_og_nausta"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:266"
+  },
+  {
+   "id": "SLN-01d",
+   "stad": "SLN",
+   "omraade": "Solnør",
+   "namn": "Kammerset til Aasen",
+   "innhald_tekst": "Skrivebordet, grammatikken «Den søndmørske Dialekt» (1.16). Wergeland i lampelyset (1.15). Skuffa med brevet til Munch og «Om vort Skriftsprog». Huldra i døra (1.18)",
+   "scener": [
+    "s1_16",
+    "s1_15",
+    "s1_18"
+   ],
+   "utgangar": [
+    {
+     "til": "SLN-01a",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-01a",
+   "epokar": [
+    "ungdomen"
+   ],
+   "epokar_tekst": "1835–1841",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje",
+    "9b_fjora_og_nausta"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:267"
+  },
+  {
+   "id": "SLN-01e",
+   "stad": "SLN",
+   "omraade": "Solnør",
+   "namn": "Kjøkenet",
+   "innhald_tekst": "Grua og benken der huldra sit. Fru Daae, kammerset ved vevstova (1.18). Fru Daae og borna tek imot Aasen (stad utan framdrift frå 2.2)",
+   "scener": [
+    "s1_18",
+    "s2_2"
+   ],
+   "utgangar": [
+    {
+     "til": "SLN-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-01",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1842–1853",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje",
+    "9b_fjora_og_nausta"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:268"
+  },
+  {
+   "id": "SLN-02",
+   "stad": "SLN",
+   "omraade": "Solnør",
+   "namn": "Drengestova",
+   "innhald_tekst": "Gamle Sunniva spinn og snakkar (1.16). Omnen der huldra spør kva ho heiter (Samtale 1)",
+   "scener": [
+    "s1_16"
+   ],
+   "utgangar": [
+    {
+     "til": "SLN-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-01",
+   "epokar": [
+    "ungdomen"
+   ],
+   "epokar_tekst": "1835–1841",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje",
+    "9b_fjora_og_nausta"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:269"
+  },
+  {
+   "id": "SLN-03",
+   "stad": "SLN",
+   "omraade": "Solnør",
+   "namn": "Hagen",
+   "innhald_tekst": "Kålen og steinen med den snudde staven (S1.4). Plantene til herbariet (S1.45). Fjøset der huldra sit ei natt (1.18) og hesten med den vridde foten, der Signekjerringa står synleg (1836)",
+   "scener": [
+    "S1_4",
+    "S1_45",
+    "s1_18"
+   ],
+   "utgangar": [
+    {
+     "til": "SLN-01",
+     "namn": null
+    },
+    {
+     "til": "SLN-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-01, SLN-04",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1842–1853",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje",
+    "9b_fjora_og_nausta"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:270"
+  },
+  {
+   "id": "SLN-04",
+   "stad": "SLN",
+   "omraade": "Solnør",
+   "namn": "Sjøen med bautaen og naustet",
+   "innhald_tekst": "Bautaen ved naustet med den rette runa (S1.4). Naustet med robåten frå 1.11. Jakta til Bergen legg frå her etter 1.18",
+   "scener": [
+    "S1_4"
+   ],
+   "utgangar": [
+    {
+     "til": "SLN-01",
+     "namn": null
+    },
+    {
+     "til": "SLN-03",
+     "namn": null
+    },
+    {
+     "til": "FJD-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-01, SLN-03, FJD-01",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1842–1853",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje",
+    "9b_fjora_og_nausta"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:271"
+  },
+  {
+   "id": "SLN-05",
+   "stad": "SLN",
+   "omraade": "Solnør",
+   "namn": "Lia over Solnør",
+   "innhald_tekst": "Merket frå kartet. Ura og stien opp. Toppen av prologfjellet syner over Storfjorden, og i fimbulvinteren lyser han svakt blå (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SLN-01",
+     "namn": null
+    },
+    {
+     "til": "URA-01",
+     "namn": null
+    },
+    {
+     "til": "SLN-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-01, URA-01, SLN-06",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1838–1841, 1842–1853",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje",
+    "9b_fjora_og_nausta"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:272"
+  },
+  {
+   "id": "SLN-06",
+   "stad": "SLN",
+   "omraade": "Solnør",
+   "namn": "Kjelda i lia",
+   "innhald_tekst": "Same flate som URA-05 etter 1.13. Kvileruna ᛚ ved kjelda. Snøstorm, treskoen til Ludvig, spora i ring, huldra på hella, snøvettane (1.17)",
+   "scener": [
+    "s1_17"
+   ],
+   "utgangar": [
+    {
+     "til": "SLN-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-05",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1838–1841, 1842–1853",
+   "soner": [
+    "9b_innmarka_paa_ekset_solnor_og_skodje",
+    "9b_fjora_og_nausta"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:273"
+  },
+  {
+   "id": "SKD-01",
+   "stad": "SKD",
+   "omraade": "Skodje",
+   "namn": "Kyrkjebakken i Skodje",
+   "innhald_tekst": "Folk frå heile sognet står att etter preika. Bryllaupet der skillingsvisa blir sungen feil, utløyser S1.6",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SLN-01",
+     "namn": null
+    },
+    {
+     "til": "SKD-02",
+     "namn": null
+    },
+    {
+     "til": "FJD-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-01, SKD-02, FJD-01",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1842–1853",
+   "soner": [
+    "9b_fjora_og_nausta"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:331"
+  },
+  {
+   "id": "SKD-02",
+   "stad": "SKD",
+   "omraade": "Skodje",
+   "namn": "Stranda ved Vik",
+   "innhald_tekst": "Naustet til Ola Vik og båten hans",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SKD-01",
+     "namn": null
+    },
+    {
+     "til": "SKD-02a",
+     "namn": null
+    },
+    {
+     "til": "FJD-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SKD-01, SKD-02a, FJD-01",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1842–1853",
+   "soner": [
+    "9b_fjora_og_nausta"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:332"
+  },
+  {
+   "id": "SKD-02a",
+   "stad": "SKD",
+   "omraade": "Skodje",
+   "namn": "Naustet til Ola Vik",
+   "innhald_tekst": "Ola Vik og strofa han dikta sjølv (S1.6)",
+   "scener": [
+    "S1_6"
+   ],
+   "utgangar": [
+    {
+     "til": "SKD-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SKD-02",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1842–1853",
+   "soner": [
+    "9b_fjora_og_nausta"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:333"
+  },
+  {
+   "id": "FJD-01",
+   "stad": "FJD",
+   "omraade": "Fjordane og isvegane",
+   "namn": "Storfjorden ved Solnør",
+   "innhald_tekst": "Robåten ut frå Solnør. Selen i Storfjorden. Holmane",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SLN-04",
+     "namn": null
+    },
+    {
+     "til": "SKD-01",
+     "namn": null
+    },
+    {
+     "til": "SKD-02",
+     "namn": null
+    },
+    {
+     "til": "FJD-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-04, SKD-01, SKD-02, FJD-02",
+   "epokar": [
+    "ungdomen",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1850–1853 som isveg",
+   "soner": [
+    "9b_fjordane_i_robaat",
+    "9c_fjora_og_isvegane_fraa_orstavika_til_vartdal_og_aalesund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:351"
+  },
+  {
+   "id": "FJD-02",
+   "stad": "FJD",
+   "omraade": "Fjordane og isvegane",
+   "namn": "Leia mot Ålesund",
+   "innhald_tekst": "Le av øyane ytst. Sundet inn til Brosundet",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "FJD-01",
+     "namn": null
+    },
+    {
+     "til": "FJD-03",
+     "namn": null
+    },
+    {
+     "til": "ALS-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "FJD-01, FJD-03, ALS-01",
+   "epokar": [
+    "ungdomen",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1850–1853 som isveg",
+   "soner": [
+    "9b_fjordane_i_robaat",
+    "9c_fjora_og_isvegane_fraa_orstavika_til_vartdal_og_aalesund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:352"
+  },
+  {
+   "id": "FJD-03",
+   "stad": "FJD",
+   "omraade": "Fjordane og isvegane",
+   "namn": "Vartdalsfjorden",
+   "innhald_tekst": "Vinden som ikkje kjem. Isvegen over fjorden der dampskipsferda endar (6.9)",
+   "scener": [
+    "s6_9"
+   ],
+   "utgangar": [
+    {
+     "til": "FJD-02",
+     "namn": null
+    },
+    {
+     "til": "FJD-04",
+     "namn": null
+    },
+    {
+     "til": "VRT-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "FJD-02, FJD-04, VRT-01",
+   "epokar": [
+    "ungdomen",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1850–1853 som isveg",
+   "soner": [
+    "9b_fjordane_i_robaat",
+    "9c_fjora_og_isvegane_fraa_orstavika_til_vartdal_og_aalesund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:353"
+  },
+  {
+   "id": "FJD-04",
+   "stad": "FJD",
+   "omraade": "Fjordane og isvegane",
+   "namn": "Ørstafjorden og Voldsfjorden",
+   "innhald_tekst": "Inn til Ørstavika og fjøra under Hovden. Isvegen inn Ørstafjorden (6.9). Hjørundfjorden ligg som ein kvit korridor innanfor (V1, vinterlaget)",
+   "scener": [
+    "s6_9"
+   ],
+   "utgangar": [
+    {
+     "til": "FJD-03",
+     "namn": null
+    },
+    {
+     "til": "ORV-04",
+     "namn": null
+    },
+    {
+     "til": "HVD-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "FJD-03, ORV-04, HVD-03",
+   "epokar": [
+    "ungdomen",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1850–1853 som isveg",
+   "soner": [
+    "9b_fjordane_i_robaat",
+    "9c_fjora_og_isvegane_fraa_orstavika_til_vartdal_og_aalesund"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:354"
+  },
+  {
+   "id": "VRT-01",
+   "stad": "VRT",
+   "omraade": "Vartdal",
+   "namn": "Stranda i Vartdal",
+   "innhald_tekst": "Båtfolk som ventar på bør, orda deira for bør og vind",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "FJD-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "FJD-03",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1842–1853",
+   "soner": [
+    "9b_fjora_og_nausta"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:371"
+  },
+  {
+   "id": "ALS-01",
+   "stad": "ALS",
+   "omraade": "Ålesund og Brosundet",
+   "namn": "Brosundet",
+   "innhald_tekst": "Det smale sundet med sjøbuer på begge sider. Hamna for robåten",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "FJD-02",
+     "namn": null
+    },
+    {
+     "til": "ALS-02",
+     "namn": null
+    },
+    {
+     "til": "ALS-03",
+     "namn": null
+    },
+    {
+     "til": "ALS-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "FJD-02, ALS-02, ALS-03, ALS-04",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:385"
+  },
+  {
+   "id": "ALS-02",
+   "stad": "ALS",
+   "omraade": "Ålesund og Brosundet",
+   "namn": "Kaia",
+   "innhald_tekst": "Anløpet for Nordcap frå 1841. Losen frå Giske ventar på isgangen (stad utan framdrift, del6:572). Erte (Vinje) får han til å seie lokale ord for is og straum (forslag i fana 03)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ALS-01",
+     "namn": null
+    },
+    {
+     "til": "verdskartet",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ALS-01, Verdskartet",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:386"
+  },
+  {
+   "id": "ALS-03",
+   "stad": "ALS",
+   "omraade": "Ålesund og Brosundet",
+   "namn": "Husa ved sundet",
+   "innhald_tekst": "Gata med trehus og folk. Ålesund i fimbulvinteren har 15 til 25 å snakke med",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ALS-01",
+     "namn": null
+    },
+    {
+     "til": "ALS-03a",
+     "namn": null
+    },
+    {
+     "til": "ALS-03b",
+     "namn": null
+    },
+    {
+     "til": "ALS-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ALS-01, ALS-03a, ALS-03b, ALS-05",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:387"
+  },
+  {
+   "id": "ALS-03a",
+   "stad": "ALS",
+   "omraade": "Ålesund og Brosundet",
+   "namn": "Gjestgiveriet",
+   "innhald_tekst": "Kvile og post (sjekk)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ALS-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ALS-03",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:388"
+  },
+  {
+   "id": "ALS-03b",
+   "stad": "ALS",
+   "omraade": "Ålesund og Brosundet",
+   "namn": "Handelsstaden",
+   "innhald_tekst": "Kjøpmannen i ladestaden og kjøpstaden",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ALS-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ALS-03",
+   "epokar": [
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:389"
+  },
+  {
+   "id": "ALS-04",
+   "stad": "ALS",
+   "omraade": "Ålesund og Brosundet",
+   "namn": "Sjøbuene",
+   "innhald_tekst": "Eigarlause sjøbuer innst i sundet",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ALS-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ALS-01",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:390"
+  },
+  {
+   "id": "ALS-05",
+   "stad": "ALS",
+   "omraade": "Ålesund og Brosundet",
+   "namn": "Vegen mot Borgund",
+   "innhald_tekst": "Vegen aust ut av byen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ALS-03",
+     "namn": null
+    },
+    {
+     "til": "BRG-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ALS-03, BRG-01",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:391"
+  },
+  {
+   "id": "BRG-01",
+   "stad": "BRG",
+   "omraade": "Borgund",
+   "namn": "Kyrkjebakken i Borgund",
+   "innhald_tekst": "Steinkyrkja og kyrkjegarden",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "ALS-05",
+     "namn": null
+    },
+    {
+     "til": "BRG-01a",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ALS-05, BRG-01a",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:410"
+  },
+  {
+   "id": "BRG-01a",
+   "stad": "BRG",
+   "omraade": "Borgund",
+   "namn": "Kyrkjerommet",
+   "innhald_tekst": "Fristad. Ein kyrkjebenk med Kingos salmebok",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "BRG-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "BRG-01",
+   "epokar": [
+    "ungdomen",
+    "reiseaara",
+    "christiania_aara",
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1835–1841, 1842–1853",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:411"
+  },
+  {
+   "id": "STD-01",
+   "stad": "STD",
+   "omraade": "Stad og Selje",
+   "namn": "Tunet til bonden i Selje",
+   "innhald_tekst": "Bonden som eig stormbåten og seier ifrå om stormdagane. Stova er trygg",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "STD-02",
+     "namn": null
+    },
+    {
+     "til": "verdskartet",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "STD-02, Verdskartet",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1852–1853, Etter soga",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:421"
+  },
+  {
+   "id": "STD-02",
+   "stad": "STD",
+   "omraade": "Stad og Selje",
+   "namn": "Naustet med stormbåten",
+   "innhald_tekst": "Stormbåten. Porten til havet: robåten går ikkje på ope hav",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "STD-01",
+     "namn": null
+    },
+    {
+     "til": "STD-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "STD-01, STD-03",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1852–1853, Etter soga",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:422"
+  },
+  {
+   "id": "STD-03",
+   "stad": "STD",
+   "omraade": "Stad og Selje",
+   "namn": "Havet rundt Stadlandet",
+   "innhald_tekst": "Roinga i storm som minispel. Sjøormen med tre hovud. Ormen dukkar etter fem rundar, og Liv blir lagra mellom stormane",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "STD-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "STD-02",
+   "epokar": [
+    "fimbulvinteren",
+    "den_store_opninga"
+   ],
+   "epokar_tekst": "1852–1853, Etter soga",
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:423"
+  }
+ ],
+ "rom": [
+  {
+   "id": "PRF-01",
+   "stad": "PRF",
+   "omraade": "Prologfjellet: Stien og skaret",
+   "dungeon": "Prologfjellet: Stien og skaret",
+   "lag": "Stien",
+   "namn": "Snøbratten",
+   "innhald_tekst": "Inngangen og opninga av spelet. Fire skikkelsar i rekkje opp bratten, rulletekst over snøen. Historiekampen mot tre snøvettar lærer kampmenyen (0.1). Der huldra trakkar, blir snøen hardare",
+   "scener": [
+    "s0_1"
+   ],
+   "utgangar": [
+    {
+     "til": "PRF-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "PRF-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_stien_og_skaret"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:13"
+  },
+  {
+   "id": "PRF-02",
+   "stad": "PRF",
+   "omraade": "Prologfjellet: Stien og skaret",
+   "dungeon": "Prologfjellet: Stien og skaret",
+   "lag": "Stien",
+   "namn": "Stien under kollen",
+   "innhald_tekst": "Tilfeldige kampar med høg rate: Snøvetten i bratten, Kvitreven, Dvergmålet. Ein stein utanfor stien der Kløvsmuglaren står synleg (valfri kamp)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "PRF-01",
+     "namn": null
+    },
+    {
+     "til": "PRF-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "PRF-01, PRF-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_stien_og_skaret"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:14"
+  },
+  {
+   "id": "PRF-03",
+   "stad": "PRF",
+   "omraade": "Prologfjellet: Stien og skaret",
+   "dungeon": "Prologfjellet: Stien og skaret",
+   "lag": "Stien",
+   "namn": "Varden ved skaret",
+   "innhald_tekst": "Kvilestaden. Ein gammal varde med kvilerune i den øvste steinen. Rasmus legg ein stein på han. Kvile og lagring før bossen (overgangen etter 0.1)",
+   "scener": [
+    "s0_1"
+   ],
+   "utgangar": [
+    {
+     "til": "PRF-02",
+     "namn": null
+    },
+    {
+     "til": "PRF-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "PRF-02, PRF-04",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_stien_og_skaret"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:15"
+  },
+  {
+   "id": "PRF-04",
+   "stad": "PRF",
+   "omraade": "Prologfjellet: Stien og skaret",
+   "dungeon": "Prologfjellet: Stien og skaret",
+   "lag": "Skaret",
+   "namn": "Skaret under toppen",
+   "innhald_tekst": "Bossrommet. Eit trongt skar med snøveggar som heng tunge på begge sider. Rasmus seier «Ikkje rop her». Fonnkjerringa i to fasar (0.2). I fase 2 gjer Lytt partyet Bunden",
+   "scener": [
+    "s0_2"
+   ],
+   "utgangar": [
+    {
+     "til": "PRF-03",
+     "namn": null
+    },
+    {
+     "til": "PRF-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "PRF-03, PRF-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9b_stien_og_skaret"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:16"
+  },
+  {
+   "id": "PRF-05",
+   "stad": "PRF",
+   "omraade": "Prologfjellet: Stien og skaret",
+   "dungeon": "Prologfjellet: Stien og skaret",
+   "lag": "Skaret",
+   "namn": "Stien over skaret",
+   "innhald_tekst": "Kort stykke med tilfeldige kampar fram mot steinen. Snøen fell saman til vanleg snø etter bossen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "PRF-04",
+     "namn": null
+    },
+    {
+     "til": "PRF-06",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "PRF-04, PRF-06",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_stien_og_skaret"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:17"
+  },
+  {
+   "id": "PRF-06",
+   "stad": "PRF",
+   "omraade": "Prologfjellet: Stien og skaret",
+   "dungeon": "Prologfjellet: Stien og skaret",
+   "lag": "Skaret",
+   "namn": "Ly under den store steinen",
+   "innhald_tekst": "Leirbål og lagring, samtalar i valfri rekkjefølgje og valet til Moe (0.3). Brevet med ravneseglet. Dagboka varslar: «Toppen ligg framfor. Herifrå går ingen veg attende.» Morgonen kjem når partyet søv",
+   "scener": [
+    "s0_3"
+   ],
+   "utgangar": [
+    {
+     "til": "PRF-05",
+     "namn": null
+    },
+    {
+     "til": "PRF-07",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "PRF-05, PRF-07",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_stien_og_skaret"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:18"
+  },
+  {
+   "id": "PRF-07",
+   "stad": "PRF",
+   "omraade": "Prologfjellet: Stien og skaret",
+   "dungeon": "Prologfjellet: Stien og skaret",
+   "lag": "Toppen",
+   "namn": "Toppen, blåisen",
+   "innhald_tekst": "Slette av blå is med andletet til jotunen under (0.4). Kort utforsking, så skrivesekvensen. Ringen brest, huldra spring inn i føyka, Rasmus spring ned (0.5). Klipp til 0.6",
+   "scener": [
+    "s0_4",
+    "s0_5"
+   ],
+   "utgangar": [],
+   "utgangar_tekst": "Ingen. Prologen lukkar seg",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_stien_og_skaret"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:19"
+  },
+  {
+   "id": "UGF-01",
+   "stad": "UGF",
+   "omraade": "Under golvet i fjøset",
+   "dungeon": "Under golvet i fjøset",
+   "lag": "Veggen",
+   "namn": "Stokken i veggen",
+   "innhald_tekst": "Inngangen. Tussen legg handa på stokken (S2.11.1). Aasen seier eit småord om og om att til verda blir stor",
+   "scener": [
+    "S2_11_1"
+   ],
+   "utgangar": [
+    {
+     "til": "ASN-02",
+     "namn": null
+    },
+    {
+     "til": "UGF-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "ASN-02, UGF-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_under_golvet_i_fjoset_s2.11_desember_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:70"
+  },
+  {
+   "id": "UGF-02",
+   "stad": "UGF",
+   "omraade": "Under golvet i fjøset",
+   "dungeon": "Under golvet i fjøset",
+   "lag": "Veggen",
+   "namn": "Inne i fjøsveggen",
+   "innhald_tekst": "Sprekker mellom stokkane, rim på innsida. Første kampane mot Frostmus",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UGF-01",
+     "namn": null
+    },
+    {
+     "til": "UGF-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UGF-01, UGF-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_under_golvet_i_fjoset_s2.11_desember_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:71"
+  },
+  {
+   "id": "UGF-03",
+   "stad": "UGF",
+   "omraade": "Under golvet i fjøset",
+   "dungeon": "Under golvet i fjøset",
+   "lag": "Veggen",
+   "namn": "Halmskogen",
+   "innhald_tekst": "Halmstrå står som tre. Høystøv i lysstriper frå gluggen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UGF-02",
+     "namn": null
+    },
+    {
+     "til": "UGF-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UGF-02, UGF-04",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_under_golvet_i_fjoset_s2.11_desember_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:72"
+  },
+  {
+   "id": "UGF-04",
+   "stad": "UGF",
+   "omraade": "Under golvet i fjøset",
+   "dungeon": "Under golvet i fjøset",
+   "lag": "Golvet",
+   "namn": "Mjølkebøtta",
+   "innhald_tekst": "Ei tom mjølkebøtte reiser seg som eit fjell. Vegen går rundt og over kanten (forslag)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UGF-03",
+     "namn": null
+    },
+    {
+     "til": "UGF-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UGF-03, UGF-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_under_golvet_i_fjoset_s2.11_desember_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:73"
+  },
+  {
+   "id": "UGF-05",
+   "stad": "UGF",
+   "omraade": "Under golvet i fjøset",
+   "dungeon": "Under golvet i fjøset",
+   "lag": "Golvet",
+   "namn": "Under golvplankane",
+   "innhald_tekst": "Mørkt rom der lyset kjem ned gjennom sprekkene i plankane",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UGF-04",
+     "namn": null
+    },
+    {
+     "til": "UGF-06",
+     "namn": null
+    },
+    {
+     "til": "UGF-07",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UGF-04, UGF-06, UGF-07",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_under_golvet_i_fjoset_s2.11_desember_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:74"
+  },
+  {
+   "id": "UGF-06",
+   "stad": "UGF",
+   "omraade": "Under golvet i fjøset",
+   "dungeon": "Under golvet i fjøset",
+   "lag": "Golvet",
+   "namn": "Musegangane",
+   "innhald_tekst": "Reiret til frostmusene. Svermane står tett",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UGF-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UGF-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_under_golvet_i_fjoset_s2.11_desember_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:75"
+  },
+  {
+   "id": "UGF-07",
+   "stad": "UGF",
+   "omraade": "Under golvet i fjøset",
+   "dungeon": "Under golvet i fjøset",
+   "lag": "Golvet",
+   "namn": "Spikarholet",
+   "innhald_tekst": "Kvilestaden: ei vassdrope i eit spikarhol der Aasen rissar kvileruna (forslag i dungeonfana)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UGF-05",
+     "namn": null
+    },
+    {
+     "til": "UGF-08",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UGF-05, UGF-08",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_under_golvet_i_fjoset_s2.11_desember_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:76"
+  },
+  {
+   "id": "UGF-08",
+   "stad": "UGF",
+   "omraade": "Under golvet i fjøset",
+   "dungeon": "Under golvet i fjøset",
+   "lag": "Golvet",
+   "namn": "Under den inste båsen",
+   "innhald_tekst": "Bossrommet. Frostkatten, ein katt av is som flytte inn då folket drog. Tussen bit han i halen (S2.11.2)",
+   "scener": [
+    "S2_11_2"
+   ],
+   "utgangar": [
+    {
+     "til": "UGF-07",
+     "namn": null
+    },
+    {
+     "til": "UGF-09",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UGF-07, UGF-09",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": true,
+   "gaate": false,
+   "soner": [
+    "9c_under_golvet_i_fjoset_s2.11_desember_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:77"
+  },
+  {
+   "id": "UGF-09",
+   "stad": "UGF",
+   "omraade": "Under golvet i fjøset",
+   "dungeon": "Under golvet i fjøset",
+   "lag": "Veggen",
+   "namn": "Gøymestaden i veggen",
+   "innhald_tekst": "Den gamle kubjølla full av høy. Snarvegen: ei sprekk opp gjennom båsgolvet til fjøset, der S2.11.3 går",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UGF-08",
+     "namn": null
+    },
+    {
+     "til": "ASN-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UGF-08, ASN-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_under_golvet_i_fjoset_s2.11_desember_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:78"
+  },
+  {
+   "id": "UGF-10",
+   "stad": "UGF",
+   "omraade": "Under golvet i fjøset",
+   "dungeon": "Under golvet i fjøset",
+   "lag": "Veggen",
+   "namn": "Avkroken",
+   "innhald_tekst": "Det ekstra rommet frå S2.34 når alle 64 restane er funne. Tussen sit der. Berre i Etter soga-fila",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "UGF-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "UGF-01",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9c_under_golvet_i_fjoset_s2.11_desember_1852"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:79"
+  },
+  {
+   "id": "URA-01",
+   "stad": "URA",
+   "omraade": "Ura i lia",
+   "dungeon": "Ura i lia",
+   "lag": "Ura",
+   "namn": "Foten av ura",
+   "innhald_tekst": "Inngangen frå lia. Ludvig seier «hest» til alt. Mette ber matpakken",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SLN-05",
+     "namn": null
+    },
+    {
+     "til": "URA-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-05, URA-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_ura_i_lia"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:294"
+  },
+  {
+   "id": "URA-02",
+   "stad": "URA",
+   "omraade": "Ura i lia",
+   "dungeon": "Ura i lia",
+   "lag": "Ura",
+   "namn": "Mosegangane",
+   "innhald_tekst": "Labyrint av steinblokker. Lytt finn gangar under mosen",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "URA-01",
+     "namn": null
+    },
+    {
+     "til": "URA-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "URA-01, URA-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_ura_i_lia"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:295"
+  },
+  {
+   "id": "URA-03",
+   "stad": "URA",
+   "omraade": "Ura i lia",
+   "dungeon": "Ura i lia",
+   "lag": "Ura",
+   "namn": "Øvste ura",
+   "innhald_tekst": "Blokkene sluttar framfor ei flat helle. Lytt høyrer ingenting her",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "URA-02",
+     "namn": null
+    },
+    {
+     "til": "URA-04",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "URA-02, URA-04",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_ura_i_lia"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:296"
+  },
+  {
+   "id": "URA-04",
+   "stad": "URA",
+   "omraade": "Ura i lia",
+   "dungeon": "Ura i lia",
+   "lag": "Hella",
+   "namn": "Hella",
+   "innhald_tekst": "Gåta. Med «kvat» lyser rissa opp. Tre runer er slitne bort, og spelaren vel frå settet i notane til Aall. Feil runer gjev kald vind som gjer partyet sløvt, og Mette mistar matpakken. Rett rad les «Lǫgr er, fellr ór fjalli foss»",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "URA-03",
+     "namn": null
+    },
+    {
+     "til": "URA-05",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "URA-03, URA-05",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": true,
+   "soner": [
+    "9b_ura_i_lia"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:297"
+  },
+  {
+   "id": "URA-05",
+   "stad": "URA",
+   "omraade": "Ura i lia",
+   "dungeon": "Ura i lia",
+   "lag": "Grotta",
+   "namn": "Grotta med kjelda",
+   "innhald_tekst": "Hella glir til sides. Den stille kjelda. Aasen rissar ᛚ, og kjelda byrjar å renne. Første kvilestaden i spelet. Ordet ur frå Mette. Snarvegen: stien rett ned til garden",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "URA-04",
+     "namn": null
+    },
+    {
+     "til": "SLN-06",
+     "namn": null
+    },
+    {
+     "til": "SLN-01",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "URA-04, SLN-06, SLN-01",
+   "epokar": [],
+   "kvile": true,
+   "snarveg": true,
+   "boss": false,
+   "gaate": false,
+   "soner": [
+    "9b_ura_i_lia"
+   ],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:298"
+  },
+  {
+   "id": "EGL-01",
+   "stad": "EGL",
+   "omraade": "Hornet i Egils saga",
+   "dungeon": "Hornet i Egils saga",
+   "lag": "Teksten",
+   "namn": "Sida som opnar seg",
+   "innhald_tekst": "Inngangen frå biblioteket. Sagaorda ligg som ein stig over sida mot garden (forslag etter typen «Inne i ein tekst»)",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SLN-01b",
+     "namn": null
+    },
+    {
+     "til": "EGL-02",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-01b, EGL-02",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:319"
+  },
+  {
+   "id": "EGL-02",
+   "stad": "EGL",
+   "omraade": "Hornet i Egils saga",
+   "dungeon": "Hornet i Egils saga",
+   "lag": "Teksten",
+   "namn": "Tunet på Atløy",
+   "innhald_tekst": "Kveld i sagaen. Stova til Bård",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "EGL-01",
+     "namn": null
+    },
+    {
+     "til": "EGL-03",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "EGL-01, EGL-03",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:320"
+  },
+  {
+   "id": "EGL-03",
+   "stad": "EGL",
+   "omraade": "Hornet i Egils saga",
+   "dungeon": "Hornet i Egils saga",
+   "lag": "Teksten",
+   "namn": "Stova hos Bård",
+   "innhald_tekst": "Egil skjer seg i handa og rissar på drikkehornet. Runepuslespel med tidsgrense, hornet sprekk meir for kvart trekk. Egil spør kven Aasen er. Hornet brest, og Aasen vaknar med panna mot bordplata",
+   "scener": [],
+   "utgangar": [
+    {
+     "til": "SLN-01b",
+     "namn": null
+    }
+   ],
+   "utgangar_tekst": "SLN-01b",
+   "epokar": [],
+   "kvile": false,
+   "snarveg": false,
+   "boss": false,
+   "gaate": false,
+   "soner": [],
+   "alias": [],
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:321"
+  }
+ ],
+ "kister": [
+  {
+   "id": "K-PRF-01-1",
+   "skjerm": "PRF-01",
+   "behaldar": "Gøymsle under ein stein",
+   "innhald": [
+    {
+     "ting": "flatbrod",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 flatbrød",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Første kista i spelet",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:25"
+  },
+  {
+   "id": "K-PRF-02-1",
+   "skjerm": "PRF-02",
+   "behaldar": "Gøymsle ved steinen til Kløvsmuglaren",
+   "innhald": [
+    {
+     "ting": "flatbrod",
+     "tal": 3
+    }
+   ],
+   "kjelde_tekst": "3 flatbrød",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Utanfor stien. Kan takast utan kampen",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:26"
+  },
+  {
+   "id": "K-PRF-03-1",
+   "skjerm": "PRF-03",
+   "behaldar": "Varden",
+   "innhald": [
+    {
+     "ting": "lys",
+     "tal": 2
+    },
+    {
+     "ting": "salt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 lys og 1 salt",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Reisande legg att noko til den neste",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:27"
+  },
+  {
+   "id": "K-PRF-05-1",
+   "skjerm": "PRF-05",
+   "behaldar": "Ei frosen skreppe i snøen",
+   "innhald": [
+    {
+     "ting": "kritt",
+     "tal": 2
+    },
+    {
+     "ting": "salt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kritt og 1 salt",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:28"
+  },
+  {
+   "id": "K-ASN-02-1",
+   "skjerm": "ASN-02",
+   "behaldar": "Gøymsle i halmen",
+   "innhald": [
+    {
+     "ting": "topplue",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 topplue",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Synleg berre med Kyrøyra (S1.1)",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:55"
+  },
+  {
+   "id": "K-ASN-03a-1",
+   "skjerm": "ASN-03a",
+   "behaldar": "Musehaugen bak tønnene",
+   "innhald": [
+    {
+     "ting": "graut",
+     "tal": 2
+    },
+    {
+     "ting": "lys",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 graut og 1 lys",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Lageret til Stabbursmusa. Opnar etter 1.3",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:56"
+  },
+  {
+   "id": "K-UGF-02-1",
+   "skjerm": "UGF-02",
+   "behaldar": "Eit gløymt fingerbøl",
+   "innhald": [
+    {
+     "ting": "ullsokkar",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 ullsokkar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:85"
+  },
+  {
+   "id": "K-UGF-04-1",
+   "skjerm": "UGF-04",
+   "behaldar": "Ei sølvskei i sprekka ved bøtta",
+   "innhald": [
+    {
+     "ting": "solvskje",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 sølvskei",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Salsvare",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:86"
+  },
+  {
+   "id": "K-UGF-05-1",
+   "skjerm": "UGF-05",
+   "behaldar": "Myntar som har rulla ned mellom plankane",
+   "innhald": [
+    {
+     "pengar": 120
+    }
+   ],
+   "kjelde_tekst": "1 spd",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:87"
+  },
+  {
+   "id": "K-UGF-06-1",
+   "skjerm": "UGF-06",
+   "behaldar": "Lageret til musene",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut og 1 luktesalt",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:88"
+  },
+  {
+   "id": "K-UGF-09-1",
+   "skjerm": "UGF-09",
+   "behaldar": "Eit nøtteskal ved bjølla",
+   "innhald": [
+    {
+     "ting": "ullvottar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Ullvottar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Kistefunn",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:89"
+  },
+  {
+   "id": "K-SET-02a-1",
+   "skjerm": "SET-02a",
+   "behaldar": "Kista i seterbua",
+   "innhald": [],
+   "kjelde_tekst": "Sjå VK01",
+   "tid": [
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+   ],
+   "tid_tekst": "T1 til T4",
+   "ventekiste": "VK01",
+   "merknad": "VK01. Lytt: «Det er ikkje ferdig lagt.»",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:108"
+  },
+  {
+   "id": "K-SET-03-1",
+   "skjerm": "SET-03",
+   "behaldar": "Gøymsle under ein stein ved tjørna",
+   "innhald": [
+    {
+     "ting": "kalveskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 kalveskinn",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Salsvare",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:109"
+  },
+  {
+   "id": "K-HVD-03-1",
+   "skjerm": "HVD-03",
+   "behaldar": "Rekved i fjøra",
+   "innhald": [
+    {
+     "ting": "fjor",
+     "tal": 3
+    }
+   ],
+   "kjelde_tekst": "3 fjør",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Salsvare",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:126"
+  },
+  {
+   "id": "K-HVD-03-2",
+   "skjerm": "HVD-03",
+   "behaldar": "Ei islagd kasse i fjøresteinane",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut og 1 luktesalt",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:127"
+  },
+  {
+   "id": "K-ORV-04-1",
+   "skjerm": "ORV-04",
+   "behaldar": "Garnkassa i naustet",
+   "innhald": [
+    {
+     "ting": "salt",
+     "tal": 2
+    },
+    {
+     "ting": "flatbrod",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 salt og 1 flatbrød",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Fiskarane har sagt ja",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:152"
+  },
+  {
+   "id": "K-ORV-05-1",
+   "skjerm": "ORV-05",
+   "behaldar": "Under ein kvelvd båt i snøen",
+   "innhald": [
+    {
+     "pengar": 100
+    }
+   ],
+   "kjelde_tekst": "100 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:153"
+  },
+  {
+   "id": "K-EKS-02-1",
+   "skjerm": "EKS-02",
+   "behaldar": "Under ein forkola bjelke",
+   "innhald": [
+    {
+     "ting": "gamle_myntar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 gamle myntar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Ingen eigar bur i ruinen",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:197"
+  },
+  {
+   "id": "K-VOL-03-1",
+   "skjerm": "VOL-03",
+   "behaldar": "Ei kiste i naustet til ferjemannen",
+   "innhald": [
+    {
+     "ting": "rommegraut",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 rømmegraut",
+   "tid": [
+    "T2"
+   ],
+   "tid_tekst": "T2",
+   "ventekiste": null,
+   "merknad": "Ferjemannen har sagt ja",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:220"
+  },
+  {
+   "id": "K-BON-01-1",
+   "skjerm": "BON-01",
+   "behaldar": "Gøymsle i ein steingard",
+   "innhald": [
+    {
+     "pengar": 15
+    }
+   ],
+   "kjelde_tekst": "15 s",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:243"
+  },
+  {
+   "id": "K-SLN-01d-1",
+   "skjerm": "SLN-01d",
+   "behaldar": "Kista til Aasen",
+   "innhald": [
+    {
+     "ting": "lys",
+     "tal": 2
+    },
+    {
+     "ting": "kritt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 lys og 1 kritt",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Rommet til Aasen sjølv",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:279"
+  },
+  {
+   "id": "K-SLN-04-1",
+   "skjerm": "SLN-04",
+   "behaldar": "Ei kiste i naustet",
+   "innhald": [
+    {
+     "ting": "kalveskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 kalveskinn",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Kapteinen har sagt ja",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:280"
+  },
+  {
+   "id": "K-SLN-05-1",
+   "skjerm": "SLN-05",
+   "behaldar": "Gøymsle under ein stein i lia",
+   "innhald": [
+    {
+     "pengar": 20
+    }
+   ],
+   "kjelde_tekst": "20 s",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:281"
+  },
+  {
+   "id": "K-URA-01-1",
+   "skjerm": "URA-01",
+   "behaldar": "Gøymsle under ein stein",
+   "innhald": [
+    {
+     "ting": "graut",
+     "tal": 2
+    },
+    {
+     "ting": "salt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 graut og 1 salt",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:304"
+  },
+  {
+   "id": "K-URA-02-1",
+   "skjerm": "URA-02",
+   "behaldar": "Hol under mosen",
+   "innhald": [
+    {
+     "ting": "kalveskinn",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 kalveskinn",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Synleg med Lytt",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:305"
+  },
+  {
+   "id": "K-URA-03-1",
+   "skjerm": "URA-03",
+   "behaldar": "Mellom to blokker",
+   "innhald": [
+    {
+     "pengar": 20
+    }
+   ],
+   "kjelde_tekst": "20 s",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:306"
+  },
+  {
+   "id": "K-URA-05-1",
+   "skjerm": "URA-05",
+   "behaldar": "Ei hylle i grottveggen",
+   "innhald": [
+    {
+     "ting": "topplue",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 topplue",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:307"
+  },
+  {
+   "id": "K-SKD-02-1",
+   "skjerm": "SKD-02",
+   "behaldar": "Rekved i fjøra",
+   "innhald": [
+    {
+     "ting": "ull",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "1 ull",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Salsvare",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:339"
+  },
+  {
+   "id": "K-FJD-01-1",
+   "skjerm": "FJD-01",
+   "behaldar": "Ein varde på ein holme",
+   "innhald": [
+    {
+     "ting": "flatbrod",
+     "tal": 2
+    },
+    {
+     "ting": "salt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 flatbrød og 1 salt",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": "Reisande legg att noko til den neste",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:360"
+  },
+  {
+   "id": "K-FJD-03-1",
+   "skjerm": "FJD-03",
+   "behaldar": "Ein båt frosen fast i isen",
+   "innhald": [
+    {
+     "ting": "kaffi",
+     "tal": 2
+    },
+    {
+     "ting": "luktesalt",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kaffi og 1 luktesalt",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:361"
+  },
+  {
+   "id": "K-VRT-01-1",
+   "skjerm": "VRT-01",
+   "behaldar": "Vrakgods i fjøra",
+   "innhald": [
+    {
+     "pengar": 20
+    }
+   ],
+   "kjelde_tekst": "20 s",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:375"
+  },
+  {
+   "id": "K-ALS-04-1",
+   "skjerm": "ALS-04",
+   "behaldar": "Ei kiste i ei eigarlaus sjøbu",
+   "innhald": [
+    {
+     "ting": "lys",
+     "tal": 2
+    },
+    {
+     "ting": "salt",
+     "tal": 2
+    }
+   ],
+   "kjelde_tekst": "2 lys og 2 salt",
+   "tid": [
+    "T1"
+   ],
+   "tid_tekst": "T1",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:395"
+  },
+  {
+   "id": "K-ALS-04-2",
+   "skjerm": "ALS-04",
+   "behaldar": "Ei tønne i same sjøbua",
+   "innhald": [
+    {
+     "pengar": 100
+    }
+   ],
+   "kjelde_tekst": "100 s",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": null,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:396"
+  },
+  {
+   "id": "K-ALS-02-1",
+   "skjerm": "ALS-02",
+   "behaldar": "Ei kasse som er sett att på kaia",
+   "innhald": [
+    {
+     "ting": "reiseskreppa",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "Reiseskreppa",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Kistefunn. Losen seier at ingen har henta henne",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:397"
+  },
+  {
+   "id": "K-STD-02-1",
+   "skjerm": "STD-02",
+   "behaldar": "Ei kiste i naustet",
+   "innhald": [
+    {
+     "ting": "kjotsuppe",
+     "tal": 2
+    },
+    {
+     "ting": "kamferdropar",
+     "tal": 1
+    }
+   ],
+   "kjelde_tekst": "2 kjøtsuppe og 1 kamferdropar",
+   "tid": [
+    "T4"
+   ],
+   "tid_tekst": "T4",
+   "ventekiste": null,
+   "merknad": "Bonden har sagt ja",
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:427"
+  }
+ ],
+ "butikkar": [
+  {
+   "skjerm": "PRF-03",
+   "type": "kvile",
+   "type_tekst": "Kvile og lagring",
+   "kven": "Varden med kvileruna",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Januar 1841",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:32"
+  },
+  {
+   "skjerm": "PRF-06",
+   "type": "kvile",
+   "type_tekst": "Kvile og lagring",
+   "kven": "Leirbålet under steinen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Januar 1841",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:33"
+  },
+  {
+   "skjerm": "ASN-01a",
+   "type": "kvile",
+   "type_tekst": "Kvile og lagring",
+   "kven": "Stova. Å leggje seg utløyser tidshoppet",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "1816–1831, og hos storebroren 1842–1850",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:60"
+  },
+  {
+   "skjerm": "ASN-01c",
+   "type": "kvile",
+   "type_tekst": "Kvile og lagring",
+   "kven": "Loftet",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "August 1850 til januar 1851",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:61"
+  },
+  {
+   "skjerm": "ASN-02",
+   "type": "kvile",
+   "type_tekst": "Kvile og lagring",
+   "kven": "Båsen innst",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Etter val B i 5.2 eller val C i 5.5",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:62"
+  },
+  {
+   "skjerm": "UGF-07",
+   "type": "kvile",
+   "type_tekst": "Kvile og lagring",
+   "kven": "Vassdropen i spikarholet",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Desember 1852 og seinare",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:93"
+  },
+  {
+   "skjerm": "ORV-02",
+   "type": "kremmar",
+   "type_tekst": "Kremmar",
+   "kven": "Kremmaren",
+   "ekstra": [
+    "hasselkjepp",
+    "vadmaalstroye",
+    "topplue"
+   ],
+   "ekstra_tekst": "Hasselkjepp 4 s, vadmålstrøye 16 s, topplue 6 s",
+   "tid": [],
+   "tid_tekst": "1820–1841",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:157"
+  },
+  {
+   "skjerm": "ORV-02a",
+   "type": "kvile",
+   "type_tekst": "Kvile",
+   "kven": "Kyrkjerommet som fristad. Spelaren kan kvile her mellom forsøka mot Kyrkjegrimen",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Alle epokar med kyrkja, utanom julenatta 1852",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:158"
+  },
+  {
+   "skjerm": "ORV-04a",
+   "type": "kremmar",
+   "type_tekst": "Kremmar",
+   "kven": "Kremmaren i kremmarbua",
+   "ekstra": [
+    "lusekam",
+    "ullsokkar"
+   ],
+   "ekstra_tekst": "Lusekam og ullsokkar frå typen. Røykjelse om partyet ikkje har henne frå V1",
+   "tid": [],
+   "tid_tekst": "1850–1853",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:159",
+   "ekstra_fraa": [
+    {
+     "ting": "lusekam",
+     "fraa": "frå typen"
+    },
+    {
+     "ting": "ullsokkar",
+     "fraa": "frå typen"
+    }
+   ],
+   "ekstra_anna": [
+    "Røykjelse om partyet ikkje har henne"
+   ]
+  },
+  {
+   "skjerm": "ORV-06",
+   "type": "smie",
+   "type_tekst": "Smie",
+   "kven": "Smeden i Ørsta",
+   "ekstra": [
+    "staal",
+    "hasselkjepp"
+   ],
+   "ekstra_tekst": "Stål 12 s, hasselkjepp 4 s",
+   "tid": [],
+   "tid_tekst": "1816–1853",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:160"
+  },
+  {
+   "skjerm": "ARF-01a",
+   "type": "kvile",
+   "type_tekst": "Kvile og lagring, gratis",
+   "kven": "Røykstova på Årflot",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Frå 5.5b i januar 1851 resten av spelet",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:181",
+   "kvile_pris": 0
+  },
+  {
+   "skjerm": "EKS-01",
+   "type": "skreddar",
+   "type_tekst": "Skreddar",
+   "kven": "Skreddaren på omgang",
+   "ekstra": [
+    "kufte_med_messingknappar",
+    "vadmaalstroye",
+    "topplue"
+   ],
+   "ekstra_tekst": "Kufte med messingknappar 1 spd 10 s, vadmålstrøye 16 s, topplue 6 s",
+   "tid": [],
+   "tid_tekst": "1833–1841",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:201"
+  },
+  {
+   "skjerm": "EKS-01c",
+   "type": "bokhandel",
+   "type_tekst": "Bokhandel",
+   "kven": "Rasmus Aarflot",
+   "ekstra": [
+    "kritt"
+   ],
+   "ekstra_tekst": "Kritt. Inga ord-reiskap i T1 (sjå Opne spørsmål)",
+   "tid": [],
+   "tid_tekst": "1839–1843",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:202",
+   "ekstra_anna": [
+    "Inga ord-reiskap i T1"
+   ]
+  },
+  {
+   "skjerm": "VOL-03a",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri, kvile 8 s per figur",
+   "kven": "Skysskaren Knut",
+   "ekstra": [
+    "kaffi_kandis",
+    "kjotsuppe",
+    "kaffikjelen",
+    "ullsokkar"
+   ],
+   "ekstra_tekst": "Kaffi med kandis frå T2. Kjøtsuppe, kaffikjelen og ullsokkar frå T4",
+   "tid": [],
+   "tid_tekst": "1842–1853",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:224",
+   "ekstra_fraa": [
+    {
+     "ting": "kaffi_kandis",
+     "fraa": "frå T2"
+    },
+    {
+     "ting": "kjotsuppe",
+     "fraa": "frå T4"
+    },
+    {
+     "ting": "kaffikjelen",
+     "fraa": "frå T4"
+    },
+    {
+     "ting": "ullsokkar",
+     "fraa": "frå T4"
+    }
+   ],
+   "kvile_pris": 8
+  },
+  {
+   "skjerm": "SLN-01d",
+   "type": "kvile",
+   "type_tekst": "Kvile og lagring",
+   "kven": "Kammerset",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "1835–1841",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:285"
+  },
+  {
+   "skjerm": "SLN-06",
+   "type": "kvile",
+   "type_tekst": "Kvile og lagring",
+   "kven": "Kjelda med kvileruna",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Frå 1.13 i 1838",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:286"
+  },
+  {
+   "skjerm": "URA-05",
+   "type": "kvile",
+   "type_tekst": "Kvile og lagring",
+   "kven": "Kjelda med kvileruna",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "Frå 1.13",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:311"
+  },
+  {
+   "skjerm": "SKD-01",
+   "type": "kremmar",
+   "type_tekst": "Kremmar",
+   "kven": "Ein kremmar som kjem til kyrkjebakken nokre dagar (forslag)",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen utstyr",
+   "tid": [],
+   "tid_tekst": "1835–1841",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:343"
+  },
+  {
+   "skjerm": "ALS-03a",
+   "type": "gjestgiveri",
+   "type_tekst": "Gjestgiveri, kvile 8 s per figur",
+   "kven": "Verten (sjekk)",
+   "ekstra": [
+    "kaffi_kandis",
+    "kjotsuppe",
+    "kaffikjelen",
+    "ullsokkar"
+   ],
+   "ekstra_tekst": "Kaffi med kandis frå T2. Kjøtsuppe, kaffikjelen og ullsokkar frå T4",
+   "tid": [],
+   "tid_tekst": "1842–1853",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:401",
+   "ekstra_fraa": [
+    {
+     "ting": "kaffi_kandis",
+     "fraa": "frå T2"
+    },
+    {
+     "ting": "kjotsuppe",
+     "fraa": "frå T4"
+    },
+    {
+     "ting": "kaffikjelen",
+     "fraa": "frå T4"
+    },
+    {
+     "ting": "ullsokkar",
+     "fraa": "frå T4"
+    }
+   ],
+   "kvile_pris": 8
+  },
+  {
+   "skjerm": "ALS-03b",
+   "type": "handelsstad",
+   "type_tekst": "Handelsstad",
+   "kven": "Kjøpmannen",
+   "ekstra": [
+    "spekekjot",
+    "kaffi_kandis",
+    "lusekam",
+    "ullsokkar"
+   ],
+   "ekstra_tekst": "Spekekjøt, kaffi med kandis og lusekam frå T2. Ullsokkar frå T4. Inga utstyr med stad Ålesund",
+   "tid": [],
+   "tid_tekst": "1842–1853",
+   "kvile": false,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:402",
+   "ekstra_fraa": [
+    {
+     "ting": "spekekjot",
+     "fraa": "frå T2"
+    },
+    {
+     "ting": "kaffi_kandis",
+     "fraa": "frå T2"
+    },
+    {
+     "ting": "lusekam",
+     "fraa": "frå T2"
+    },
+    {
+     "ting": "ullsokkar",
+     "fraa": "frå T4"
+    }
+   ],
+   "ekstra_anna": [
+    "Inga utstyr med stad Ålesund"
+   ]
+  },
+  {
+   "skjerm": "STD-01",
+   "type": "kvile",
+   "type_tekst": "Kvile og lagring (forslag)",
+   "kven": "Stova til bonden",
+   "ekstra": [],
+   "ekstra_tekst": "Ingen",
+   "tid": [],
+   "tid_tekst": "1852–1853, Etter soga",
+   "kvile": true,
+   "kjelde": "07 Kart og rom/01 Kart Ørsta og Sunnmøre.md:431"
+  }
+ ]
+}

@@ -1,0 +1,3577 @@
+[
+ {
+  "id": "angrip",
+  "figur": null,
+  "namn": "Angrip",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:135"
+ },
+ {
+  "id": "lytt",
+  "figur": null,
+  "namn": "Lytt",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:135"
+ },
+ {
+  "id": "ting",
+  "figur": null,
+  "namn": "Ting",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:135"
+ },
+ {
+  "id": "staa_still",
+  "figur": null,
+  "namn": "Stå still",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:139"
+ },
+ {
+  "id": "aasen_galdr",
+  "figur": "aasen",
+  "namn": "Galdr",
+  "type": "kommando",
+  "kostnad": "Etter ord",
+  "verknad_tekst": "Ord frå Ordboka og Hugsen. Den unike kommandoen",
+  "laert": "1820 (1.2)",
+  "laert_scener": [
+   "s1_2"
+  ],
+  "under": null,
+  "aatferd": "aasen_galdr",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:18",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:205"
+  ]
+ },
+ {
+  "id": "aasen_ekko",
+  "figur": "aasen",
+  "namn": "Ekko",
+  "type": "kommando",
+  "kostnad": "3 Røyst",
+  "verknad_tekst": "Berre unge Ivar og berre under ope fjell. Ropar eit ord og får den eldre forma att éin gong per kamp",
+  "laert": "Setra 1820 (1.2)",
+  "laert_scener": [
+   "s1_2"
+  ],
+  "under": null,
+  "aatferd": "aasen_ekko",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:19",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:206"
+  ]
+ },
+ {
+  "id": "aasen_stev",
+  "figur": "aasen",
+  "namn": "Stev",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": "Startar stevjing mot fiendar som har stev som sårbarheit",
+  "laert": "Stevjing nivå 1 på Bygland 1844 (2.19), nivå 2 i Rauland 1845 (2.27)",
+  "laert_scener": [
+   "s2_19",
+   "s2_27"
+  ],
+  "under": null,
+  "aatferd": "aasen_stev",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:20"
+ },
+ {
+  "id": "aasen_rist",
+  "figur": "aasen",
+  "namn": "Rist",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": "Riss ei rune med innskriving. Runa ligg som status på partyet eller fienden",
+  "laert": "Runelesing nivå 1 under Bryggen (2.9)",
+  "laert_scener": [
+   "s2_9"
+  ],
+  "under": null,
+  "aatferd": "aasen_rist",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:21"
+ },
+ {
+  "id": "aasen_laan_ordet",
+  "figur": "aasen",
+  "namn": "Lån ordet",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": "Lånar eit ord frå Hugsen til ein annan figur, som brukar det éin gong med full Ande-effekt. Ordet kjem att til Aasen etter kampen i sterkare form",
+  "laert": "Løn frå Den første skrivaren (superbossar.md)",
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "aasen_laan_ordet",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:22"
+ },
+ {
+  "id": "aasen_lytt",
+  "figur": "aasen",
+  "namn": "Lytt",
+  "type": "evne",
+  "kostnad": "Ein tur",
+  "verknad_tekst": "Mindre skade, 1 Ande, litt Røyst. Høyrer ord frå fienden",
+  "laert": "1.1",
+  "laert_scener": [
+   "s1_1"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:204"
+ },
+ {
+  "id": "aasen_guten_sitt_eg",
+  "figur": "aasen",
+  "namn": "Guten sitt eg",
+  "type": "evne",
+  "kostnad": "0",
+  "verknad_tekst": "Småord som alltid treffer. Avbryt ein fiende som ladar opp",
+  "laert": "S2.11",
+  "laert_scener": [
+   "S2_11"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:207"
+ },
+ {
+  "id": "aasen_slutt",
+  "figur": "aasen",
+  "namn": "slutt",
+  "type": "evne",
+  "kostnad": "3 Røyst",
+  "verknad_tekst": "Småord som avbryt åtaket til fienden",
+  "laert": "S1.17",
+  "laert_scener": [
+   "S1_17"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:208"
+ },
+ {
+  "id": "aasen_me",
+  "figur": "aasen",
+  "namn": "me",
+  "type": "evne",
+  "kostnad": "4 Røyst",
+  "verknad_tekst": "Småord. Lite vern på heile partyet i éin runde",
+  "laert": "5.12b",
+  "laert_scener": [
+   "s5_12b"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:209"
+ },
+ {
+  "id": "aasen_kyss",
+  "figur": "aasen",
+  "namn": "kyss",
+  "type": "evne",
+  "kostnad": "5 Røyst",
+  "verknad_tekst": "Liten skade. Menneskelege fiendar blir forvirra éin runde",
+  "laert": "S1.13",
+  "laert_scener": [
+   "S1_13"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:210"
+ },
+ {
+  "id": "aasen_ord_for_alle",
+  "figur": "aasen",
+  "namn": "Ord for alle",
+  "type": "evne",
+  "kostnad": "8 Røyst",
+  "verknad_tekst": "Lite vern på heile partyet i éin runde, fyller hugmålaren litt",
+  "laert": "S1.16",
+  "laert_scener": [
+   "S1_16"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:211"
+ },
+ {
+  "id": "aasen_sognebanning",
+  "figur": "aasen",
+  "namn": "Sognebanning",
+  "type": "evne",
+  "kostnad": "14 Røyst",
+  "verknad_tekst": "Ordevne på småorda fanden og pokker. Stor skade, men Aasen blir flau i to rundar",
+  "laert": "S1.9",
+  "laert_scener": [
+   "S1_9"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:212"
+ },
+ {
+  "id": "aasen_bergteken",
+  "figur": "aasen",
+  "namn": "bergteken",
+  "type": "evne",
+  "kostnad": "10 Røyst",
+  "verknad_tekst": "Fangar ein fiende i éin runde",
+  "laert": "S1.36, val B",
+  "laert_scener": [
+   "S1_36"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:213"
+ },
+ {
+  "id": "aasen_dvergmaal",
+  "figur": "aasen",
+  "namn": "dvergmål",
+  "type": "evne",
+  "kostnad": "12 Røyst",
+  "verknad_tekst": "Kastar det siste åtaket til fienden tilbake som eit ekko. Utanfor lydfamiliane",
+  "laert": "3.15",
+  "laert_scener": [
+   "s3_15"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:214"
+ },
+ {
+  "id": "aasen_heimvern",
+  "figur": "aasen",
+  "namn": "Heimvern",
+  "type": "evne",
+  "kostnad": "18 Røyst",
+  "verknad_tekst": "Diftongskjold over heile partyet i tre rundar",
+  "laert": "3.10, rotforma heim",
+  "laert_scener": [
+   "s3_10"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:215"
+ },
+ {
+  "id": "aasen_brenn",
+  "figur": "aasen",
+  "namn": "Brenn",
+  "type": "evne",
+  "kostnad": "24 Røyst",
+  "verknad_tekst": "Åtak med eld mot blekkvesen. Tek to segl av blekkvesen",
+  "laert": "5.4",
+  "laert_scener": [
+   "s5_4"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:216"
+ },
+ {
+  "id": "aasen_hvar",
+  "figur": "aasen",
+  "namn": "hvar",
+  "type": "evne",
+  "kostnad": "12 Røyst",
+  "verknad_tekst": "Rotform. Avslører alle sårbarheiter hos alle fiendar",
+  "laert": "6.7",
+  "laert_scener": [
+   "s6_7"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:217"
+ },
+ {
+  "id": "aasen_stevjing_nivaa_1",
+  "figur": "aasen",
+  "namn": "Stevjing nivå 1",
+  "type": "evne",
+  "kostnad": "Ein tur",
+  "verknad_tekst": "Svarar med eitt stev mot fiendar med stev som sårbarheit",
+  "laert": "2.19",
+  "laert_scener": [
+   "s2_19"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:218"
+ },
+ {
+  "id": "aasen_stevjing_nivaa_2",
+  "figur": "aasen",
+  "namn": "Stevjing nivå 2",
+  "type": "evne",
+  "kostnad": "Ein tur",
+  "verknad_tekst": "Som nivå 1. Eit vunne byte opnar fienden med ein gong",
+  "laert": "2.27",
+  "laert_scener": [
+   "s2_27"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:219"
+ },
+ {
+  "id": "aasen_stevjing_nivaa_3",
+  "figur": "aasen",
+  "namn": "Stevjing nivå 3",
+  "type": "evne",
+  "kostnad": "Ein tur",
+  "verknad_tekst": "Vinje eller Aslaug held eit stev gåande over to rundar for dobbel verknad",
+  "laert": "Sjøormen ved Stad (S2.29)",
+  "laert_scener": [
+   "S2_29"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:220"
+ },
+ {
+  "id": "aasen_runelesing_nivaa_1",
+  "figur": "aasen",
+  "namn": "Runelesing nivå 1",
+  "type": "evne",
+  "kostnad": "0",
+  "verknad_tekst": "Les runer i kamp og felt. Opnar Rist",
+  "laert": "2.9",
+  "laert_scener": [
+   "s2_9"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:221"
+ },
+ {
+  "id": "aasen_avlyd",
+  "figur": "aasen",
+  "namn": "Avlyd",
+  "type": "evne",
+  "kostnad": "Ein tur, 0 Røyst",
+  "verknad_tekst": "Bøyer eit sterkt verb og skiftar lydfamilie",
+  "laert": "4.12",
+  "laert_scener": [
+   "s4_12"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:222"
+ },
+ {
+  "id": "aasen_lovnad",
+  "figur": "aasen",
+  "namn": "Lovnad",
+  "type": "evne",
+  "kostnad": "Passiv",
+  "verknad_tekst": "Sterkt vern i sluttkampen. Forsvinn om Aasen fell",
+  "laert": "7.2, val A",
+  "laert_scener": [
+   "s7_2"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:223"
+ },
+ {
+  "id": "aasen_baasvarme",
+  "figur": "aasen",
+  "namn": "Båsvarme",
+  "type": "evne",
+  "kostnad": "Passiv",
+  "verknad_tekst": "J-orda lindrar dobbelt",
+  "laert": "7.2, val B",
+  "laert_scener": [
+   "s7_2"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:224"
+ },
+ {
+  "id": "aasen_provelesing",
+  "figur": "aasen",
+  "namn": "Prøvelesing",
+  "type": "evne",
+  "kostnad": "Som ordet",
+  "verknad_tekst": "Ord lese frå Prøver af Landsmaalet verkar som galdr utan å tære på huldra og utan å binde",
+  "laert": "7.1",
+  "laert_scener": [
+   "s7_1"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:225"
+ },
+ {
+  "id": "aasen_vis",
+  "figur": "aasen",
+  "namn": "Vis",
+  "type": "evne",
+  "kostnad": "Ein tur",
+  "verknad_tekst": "Berre i sluttkampen. Legg fram runepinnane for Munch",
+  "laert": "7.10",
+  "laert_scener": [
+   "s7_10"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:226"
+ },
+ {
+  "id": "aasen_nokkelordet",
+  "figur": "aasen",
+  "namn": "Nøkkelordet",
+  "type": "hugmaalar",
+  "kostnad": null,
+  "verknad_tekst": "Manuset gjev ikkje Aasen eit eige personleg oppdrag i S2.1–S2.12. Nøkkelorda er hugmålar-evna hans. Når hugmålaren er full, kan spelaren velje eitt av nøkkelorda Aasen har opna. Dei kostar inga Røyst. Slik blir den sterkaste evna til Aasen sjølve historia om språket, og ho veks med verka hans. | Nøkkelord | Opnar seg | Verknad | | --- | --- | --- | | tunga | Låst plass frå 1.6. Lyser første gongen Skam er heilt løfta frå ei bygd (Voss, 2.11), og opnar seg i 4.23 (Den siste lappen) | Løftar Skam frå heile partyet og gjev vern mot Skam i tre rundar. Neste Tal-handling til kvar figur får 1 Ande gratis | | hugsa | Tom plass frå 1.1. Lært i 6.10 | Gjenopplivar heile partyet og fjernar Skam, éin gong per kamp | | mål | 1848 (4.12) | Alle ord i Ordboka verkar som rotformer i to rundar | | landsmål | 7.1 | Som mål i tre rundar. Ingen ord kan bli Rettskrivne medan det varer | | fri | Låst frå 3.24. Opnar seg når Vinje riv sida av Huldrebrylluppet (5.10) | Fjernar Bunden og Rettskriven frå heile partyet | | løyndom | Låst frå 4.8. Opnar seg i 7.7 med val B, elles i 7.8 | Legendarisk vern. Kan aldri brukast til åtak | | minne | Grått frå 4.28, lyser frå 6.21, opnar seg i 7.9 (Ordskiftet) | Alle halvgløymde ord kjem att, Gløymsle forsvinn frå partyet, og huldra har full Gamle ord-liste i tre rundar | Hugmålaren til Aasen fyllest òg litt kvar gong han høyrer eit nytt ord. Det løner spelaren som lyttar. Fem nøkkelord til står i krona. namn er låst frå 2.23 og opnar seg i S2.13 eller seinast i 7.10. Verknaden er bonusen frå S2.13: alle ord får høvesbonus mot namngjevne fiendar i tre rundar. vord er låst frå 3.14 og opnar seg i 7.3. Verknaden er vern for det gløymde: i tre rundar kan ingen ord i Hugsen eller Ordboka bli stolne eller frosne. ætt er låst frå 3.18 og opnar seg i 7.6. Verknaden er at kvar figur får høvesbonus på neste handling, og sagakongar og draugar mistar eitt segl kvar. giva opnar seg i 6.18, når Aslaug gjev eit ord. Verknaden er at ord som er gjevne vidare, kan brukast i tre rundar i den sterkare forma dei kjem att i, og kvar figur får 1 Ande. tru opnar seg i 6.20 hos kapellanen i Krødsherad. Verknaden er vern mot sagakrafta: i tre rundar tek sagavesen full skade av gamle ord og rotformer, og ingen i partyet kan bli Forstokka. Opningsscenene følgjer ordliste\\_4.md.",
+  "laert": null,
+  "laert_scener": [
+   "S2_1",
+   "S2_12"
+  ],
+  "under": null,
+  "aatferd": "aasen_nokkelordet",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:228"
+ },
+ {
+  "id": "aasen_skriv_opp",
+  "figur": "aasen",
+  "namn": "Skriv opp",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "Skriv opp er feltevna til Aasen. Han skriv ned det ein person seier, og det lukkast alltid. Spelaren får ordet med alle former som personen brukar, og ei side i Ordboka. Prisen kjem etterpå. Ein person med Skam kan bli stillare (ein grå sky over hovudet, slik Per i 1.8). Eit vesen kan bli bunde. Ei vise blir stille. Ord frå huldra svekkjer henne. Skriv opp står i par med Kved att hos Aslaug. Kved att høyrer og hugsar, er mjukare og kan slå feil. Same person kan ofte nåast med begge, og valet er det same som i kamp: det trygge som bind, eller det levande som kan gå tapt. Lytt i felt er den andre delen av feltevna. Aasen lyttar til terrenget, til ein stad eller til eit fiendesymbol på feltet. Brukt i terrenget høyrer han kva som rører seg rundt han. Faremålaren stig då halvt så fort dei neste 50 stega, og kjem det ein tilfeldig kamp i den tida, startar han i Førsteslag. Brukt på eit synleg fiendesymbol høyrer han kvar fienden står før han blir sett, og kampen startar i Førsteslag. Slik møter han ulvane i Nordmarka (bestiarium\\_dyr.md). Brukt på ein stad finn han gøymde ting og spor, til dømes spora i snøen og gjenstanden fjellfrossen grov ned på Hjerkinn. Rist verkar òg i felt, og rotformene gjev synet sitt (stigar og løynde dører). Kyrøyra frå S1.1 høyrer til tussen i første akt og blir verande i Lydtreet til Aasen etterpå.",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "aasen_skriv_opp",
+  "sfx": "sfx.felt.skrivopp",
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:246"
+ },
+ {
+  "id": "tussen_kvar",
+  "figur": "tussen",
+  "namn": "Kvar",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Avslører éi sårbarheit og alle fiendar som gøymer seg",
+  "laert": "1.3",
+  "laert_scener": [
+   "s1_3"
+  ],
+  "under": "tussen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:334"
+ },
+ {
+  "id": "tussen_graut",
+  "figur": "tussen",
+  "namn": "Graut",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Tussen et sjølv. 2 Mett og litt Liv",
+  "laert": "1.3",
+  "laert_scener": [
+   "s1_3"
+  ],
+  "under": "tussen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:335"
+ },
+ {
+  "id": "tussen_jau",
+  "figur": "tussen",
+  "namn": "Jau",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Seier det siste tusseordet om att utan å bruke Mett",
+  "laert": "1.3",
+  "laert_scener": [
+   "s1_3"
+  ],
+  "under": "tussen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:336"
+ },
+ {
+  "id": "tussen_tjyr",
+  "figur": "tussen",
+  "namn": "Tjyr",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Kyrne kjem. Alle fiendar mistar 30 prosent av målaren",
+  "laert": "6.10",
+  "laert_scener": [
+   "s6_10"
+  ],
+  "under": "tussen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:337"
+ },
+ {
+  "id": "tussen_taka",
+  "figur": "tussen",
+  "namn": "Taka",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Tussen tek noko frå ein fiende (stel ein gjenstand). Mot ein tjuv eller eit gods verkar Taka som situasjonskommandoen Ta att i grunnsystemet",
+  "laert": "forslag",
+  "laert_scener": [],
+  "under": "tussen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:338"
+ },
+ {
+  "id": "tussen_mjok",
+  "figur": "tussen",
+  "namn": "Mjøk",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Lita lindring på éin og løftar Fimbul",
+  "laert": "forslag",
+  "laert_scener": [],
+  "under": "tussen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:339"
+ },
+ {
+  "id": "tussen_nei",
+  "figur": "tussen",
+  "namn": "Nei",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Neste åtak mot tussen bommar",
+  "laert": "forslag",
+  "laert_scener": [],
+  "under": "tussen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:340"
+ },
+ {
+  "id": "tussen_katt",
+  "figur": "tussen",
+  "namn": "Katt",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Tussen bit ein fiende i halen. Stor skade mot dyr, og fienden mistar neste tur",
+  "laert": "S2.11",
+  "laert_scener": [
+   "S2_11"
+  ],
+  "under": "tussen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:341"
+ },
+ {
+  "id": "tussen_knip",
+  "figur": "tussen",
+  "namn": "Knip",
+  "type": "kommando",
+  "kostnad": "1 Mett",
+  "verknad_tekst": "Lita skade, alltid treff",
+  "laert": "1.3",
+  "laert_scener": [
+   "s1_3"
+  ],
+  "under": null,
+  "aatferd": "tussen_knip",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:347",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:318"
+  ]
+ },
+ {
+  "id": "tussen_goym_deg_i_halmen",
+  "figur": "tussen",
+  "namn": "Gøym deg i halmen",
+  "type": "kommando",
+  "kostnad": "0",
+  "verknad_tekst": "Kan ikkje treffast éin runde",
+  "laert": "1.3",
+  "laert_scener": [
+   "s1_3"
+  ],
+  "under": null,
+  "aatferd": "tussen_goym_deg_i_halmen",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:348",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:318"
+  ]
+ },
+ {
+  "id": "tussen_eitt_ord",
+  "figur": "tussen",
+  "namn": "Eitt ord",
+  "type": "kommando",
+  "kostnad": "1 Mett",
+  "verknad_tekst": "Sjå tabellen over",
+  "laert": "1.3 og fjøset",
+  "laert_scener": [
+   "s1_3"
+  ],
+  "under": null,
+  "aatferd": "tussen_eitt_ord",
+  "sfx": "sfx.fig.tussen.eittord",
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:349",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:318"
+  ]
+ },
+ {
+  "id": "tussen_fjosvarme",
+  "figur": "tussen",
+  "namn": "Fjøsvarme",
+  "type": "hugmaalar",
+  "kostnad": "Hugmålar",
+  "verknad_tekst": "Vekkjer heile partyet med full Liv og løftar Fimbul, éin gong per kamp",
+  "laert": "S2.11",
+  "laert_scener": [
+   "S2_11"
+  ],
+  "under": null,
+  "aatferd": "tussen_fjosvarme",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:350",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:352"
+  ]
+ },
+ {
+  "id": "tussen_kyroyra",
+  "figur": "tussen",
+  "namn": "Kyrøyra",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "I første akt har tussen Kyrøyra (S1.1). Han lærer Ivar å høyre lydar som ikkje er ord, og løynde ting i fjøs og buer blir synlege. Evna er trygg og avgrensa til små rom. Ho står i par med Joike hos Ravdna, som når ein heil stad men har ein pris. I 1852 får tussen Tussestorleik (S2.11). Aasen seier eit småord om og om igjen til verda blir stor, og dei to kan gå inn i veggar og under golv. Kvar gong krympinga blir brukt, kostar ho eitt småord frå Hugsen i resten av området.",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "tussen_kyroyra",
+  "sfx": "sfx.felt.kyroyra",
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:356"
+ },
+ {
+  "id": "tussen_tussestorleik",
+  "figur": "tussen",
+  "namn": "Tussestorleik",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "I første akt har tussen Kyrøyra (S1.1). Han lærer Ivar å høyre lydar som ikkje er ord, og løynde ting i fjøs og buer blir synlege. Evna er trygg og avgrensa til små rom. Ho står i par med Joike hos Ravdna, som når ein heil stad men har ein pris. I 1852 får tussen Tussestorleik (S2.11). Aasen seier eit småord om og om igjen til verda blir stor, og dei to kan gå inn i veggar og under golv. Kvar gong krympinga blir brukt, kostar ho eitt småord frå Hugsen i resten av området.",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "tussen_tussestorleik",
+  "sfx": "sfx.felt.tussestorleik",
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:356"
+ },
+ {
+  "id": "huldra_hagl",
+  "figur": "huldra",
+  "namn": "hagl",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Isnåler på alle fiendar",
+  "laert": "0.1",
+  "laert_scener": [
+   "s0_1"
+  ],
+  "under": "huldra_gamle_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:404"
+ },
+ {
+  "id": "huldra_heimr",
+  "figur": "huldra",
+  "namn": "heimr",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Hus av lys, vern på heile partyet i tre rundar",
+  "laert": "1.17",
+  "laert_scener": [
+   "s1_17"
+  ],
+  "under": "huldra_gamle_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:405"
+ },
+ {
+  "id": "huldra_thegi",
+  "figur": "huldra",
+  "namn": "þegi",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Ein fiende blir Stum éin runde",
+  "laert": "1.23",
+  "laert_scener": [
+   "s1_23"
+  ],
+  "under": "huldra_gamle_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:406"
+ },
+ {
+  "id": "huldra_batr",
+  "figur": "huldra",
+  "namn": "bátr",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Partyet byter rad utan å miste tur",
+  "laert": "1.19",
+  "laert_scener": [
+   "s1_19"
+  ],
+  "under": "huldra_gamle_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:407"
+ },
+ {
+  "id": "huldra_grid",
+  "figur": "huldra",
+  "namn": "grið",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Ingen kan gå til åtak på éin alliert i éin runde",
+  "laert": "forslag",
+  "laert_scener": [],
+  "under": "huldra_gamle_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:408"
+ },
+ {
+  "id": "huldra_sol",
+  "figur": "huldra",
+  "namn": "sól",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Lindring og Fimbul løfta",
+  "laert": "forslag",
+  "laert_scener": [],
+  "under": "huldra_gamle_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:409"
+ },
+ {
+  "id": "huldra_vetr",
+  "figur": "huldra",
+  "namn": "vetr",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Alle fiendar får Fimbul",
+  "laert": "forslag",
+  "laert_scener": [],
+  "under": "huldra_gamle_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:410"
+ },
+ {
+  "id": "huldra_hamr",
+  "figur": "huldra",
+  "namn": "hamr",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Huldra skiftar ham og kan ikkje treffast av fysiske åtak éin runde",
+  "laert": "forslag",
+  "laert_scener": [],
+  "under": "huldra_gamle_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:411"
+ },
+ {
+  "id": "huldra_iss",
+  "figur": "huldra",
+  "namn": "íss",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Ein fiende frys fast og mistar neste tur",
+  "laert": "forslag",
+  "laert_scener": [],
+  "under": "huldra_gamle_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:412"
+ },
+ {
+  "id": "huldra_logr",
+  "figur": "huldra",
+  "namn": "lǫgr",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Sløkkjer eld og brann på heile partyet og lindrar litt",
+  "laert": "forslag",
+  "laert_scener": [],
+  "under": "huldra_gamle_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:413"
+ },
+ {
+  "id": "huldra_ar",
+  "figur": "huldra",
+  "namn": "ár",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Lukke opp for heile partyet i tre rundar",
+  "laert": "forslag",
+  "laert_scener": [],
+  "under": "huldra_gamle_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:414"
+ },
+ {
+  "id": "huldra_gamle_ord",
+  "figur": "huldra",
+  "namn": "Gamle ord",
+  "type": "kommando",
+  "kostnad": "10–20 Røyst",
+  "verknad_tekst": "Sjå tabellen over",
+  "laert": "0.1, att i 1.17",
+  "laert_scener": [
+   "s0_1",
+   "s1_17"
+  ],
+  "under": null,
+  "aatferd": "huldra_gamle_ord",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:441",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:392"
+  ]
+ },
+ {
+  "id": "huldra_skeivsyn",
+  "figur": "huldra",
+  "namn": "Skeivsyn",
+  "type": "evne",
+  "kostnad": "Passiv",
+  "verknad_tekst": "Ei gåte om éi sårbarheit ved starten av kampen",
+  "laert": "1.17",
+  "laert_scener": [
+   "s1_17"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:442"
+ },
+ {
+  "id": "huldra_lokk",
+  "figur": "huldra",
+  "namn": "Lokk",
+  "type": "kommando",
+  "kostnad": "8 Røyst",
+  "verknad_tekst": "Gjev fiendar eller dyr statusen Samla",
+  "laert": "S1.42",
+  "laert_scener": [
+   "S1_42"
+  ],
+  "under": null,
+  "aatferd": "huldra_lokk",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:443",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:392"
+  ]
+ },
+ {
+  "id": "huldra_joiken_min",
+  "figur": "huldra",
+  "namn": "Joiken min",
+  "type": "kommando",
+  "kostnad": "0",
+  "verknad_tekst": "Full lækjing for henne sjølv, éin gong per kamp",
+  "laert": "5.17",
+  "laert_scener": [
+   "s5_17"
+  ],
+  "under": null,
+  "aatferd": "huldra_joiken_min",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:444",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:392"
+  ]
+ },
+ {
+  "id": "huldra_joikorda",
+  "figur": "huldra",
+  "namn": "Joikorda",
+  "type": "evne",
+  "kostnad": "12 Røyst",
+  "verknad_tekst": "Dei to orda som kom att med joiken. Kan aldri skrivast ned eller blekkast",
+  "laert": "5.17",
+  "laert_scener": [
+   "s5_17"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:445"
+ },
+ {
+  "id": "huldra_huldrelokk",
+  "figur": "huldra",
+  "namn": "Huldrelokk",
+  "type": "hugmaalar",
+  "kostnad": "Hugmålar",
+  "verknad_tekst": "Sjå under",
+  "laert": "S2.10",
+  "laert_scener": [
+   "S2_10"
+  ],
+  "under": null,
+  "aatferd": "huldra_huldrelokk",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:446",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:449"
+  ]
+ },
+ {
+  "id": "huldra_ravdnas_joik",
+  "figur": "huldra",
+  "namn": "Ravdnas joik",
+  "type": "evne",
+  "kostnad": "Éin gong",
+  "verknad_tekst": "Eit fritt vesen kjem og slåst med partyet heile kampen",
+  "laert": "6.17, berre i sluttkampen",
+  "laert_scener": [
+   "s6_17"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:447"
+ },
+ {
+  "id": "huldra_ord",
+  "figur": "huldra",
+  "namn": "Ord",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "huldra_ord",
+  "sfx": "sfx.fig.huldra.gamleord",
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:392"
+ },
+ {
+  "id": "huldra_felt_lokk",
+  "figur": "huldra",
+  "namn": "Lokk",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "I felt lokkar huldra dyr og folk til å fylgje etter seg eller flytte seg. Det kan slå feil, og lukkast det for ofte i same bygd, blir folk redde, og nokre dører blir stengde. Evna står i par med Følgje heim hos Landstad, som når same mål gjennom tillit og embete. Når huldra er med, blir samiske replikkar omsette, men ikkje alltid ord for ord.",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "huldra_felt_lokk",
+  "sfx": "sfx.felt.lokk",
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:453"
+ },
+ {
+  "id": "huldra_omsetjing",
+  "figur": "huldra",
+  "namn": "omsetjing",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "I felt lokkar huldra dyr og folk til å fylgje etter seg eller flytte seg. Det kan slå feil, og lukkast det for ofte i same bygd, blir folk redde, og nokre dører blir stengde. Evna står i par med Følgje heim hos Landstad, som når same mål gjennom tillit og embete. Når huldra er med, blir samiske replikkar omsette, men ikkje alltid ord for ord.",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "huldra_omsetjing",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:453"
+ },
+ {
+  "id": "vinje_haan",
+  "figur": "vinje",
+  "namn": "Hån",
+  "type": "kommando",
+  "kostnad": "3 Røyst",
+  "verknad_tekst": "Lita skade, fienden mistar 10 prosent av målaren",
+  "laert": "2.27, sterkare etter S1.27",
+  "laert_scener": [
+   "s2_27",
+   "S1_27"
+  ],
+  "under": null,
+  "aatferd": "vinje_haan",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:537",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:499"
+  ]
+ },
+ {
+  "id": "vinje_stev",
+  "figur": "vinje",
+  "namn": "Stev",
+  "type": "kommando",
+  "kostnad": "6–10 Røyst",
+  "verknad_tekst": "Sjå over",
+  "laert": "2.27",
+  "laert_scener": [
+   "s2_27"
+  ],
+  "under": null,
+  "aatferd": "vinje_stev",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:538",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:499"
+  ]
+ },
+ {
+  "id": "vinje_svartebukken",
+  "figur": "vinje",
+  "namn": "Svartebukken",
+  "type": "evne",
+  "kostnad": "3 Ekte",
+  "verknad_tekst": "Ekstra skade med Vinjes eigne ord",
+  "laert": "2.27",
+  "laert_scener": [
+   "s2_27"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:539"
+ },
+ {
+  "id": "vinje_skal_hoyrast",
+  "figur": "vinje",
+  "namn": "Skal høyrast",
+  "type": "evne",
+  "kostnad": "8 Røyst",
+  "verknad_tekst": "Alle fiendar rettar åtaket mot Vinje i éin runde, og han får eit skjold",
+  "laert": "S1.29",
+  "laert_scener": [
+   "S1_29"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:540"
+ },
+ {
+  "id": "vinje_hallingkastet",
+  "figur": "vinje",
+  "namn": "Hallingkastet",
+  "type": "evne",
+  "kostnad": "10 Røyst",
+  "verknad_tekst": "Høgt spark som treffer fiendar som er Utanfor rekkjevidd, og slår av hattar, hjelmar og segl. Sparket smell og tek 1 Mot frå dyr",
+  "laert": "3.4, S1.30 val A",
+  "laert_scener": [
+   "s3_4",
+   "S1_30"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:541"
+ },
+ {
+  "id": "vinje_pausa",
+  "figur": "vinje",
+  "namn": "Pausa",
+  "type": "evne",
+  "kostnad": "Ein tur",
+  "verknad_tekst": "Dobbel kraft på neste stev",
+  "laert": "Sideoppdrag 1, samtale med Aslaug",
+  "laert_scener": [],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:542"
+ },
+ {
+  "id": "vinje_riv",
+  "figur": "vinje",
+  "namn": "Riv",
+  "type": "evne",
+  "kostnad": "Éin gong per kamp",
+  "verknad_tekst": "Knuser ein bindande tekst",
+  "laert": "5.10",
+  "laert_scener": [
+   "s5_10"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:543"
+ },
+ {
+  "id": "vinje_open_hand",
+  "figur": "vinje",
+  "namn": "Open hand",
+  "type": "evne",
+  "kostnad": "2 Ekte per Ande",
+  "verknad_tekst": "Gjev Ekte og Rimkjede til ein alliert som Ande, opp til 3",
+  "laert": "6.18, om spelaren valde gode stev",
+  "laert_scener": [
+   "s6_18"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:544"
+ },
+ {
+  "id": "vinje_tvisyn",
+  "figur": "vinje",
+  "namn": "Tvisyn",
+  "type": "hugmaalar",
+  "kostnad": "Hugmålar",
+  "verknad_tekst": "Sjå under",
+  "laert": "S2.1",
+  "laert_scener": [
+   "S2_1"
+  ],
+  "under": null,
+  "aatferd": "vinje_tvisyn",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:545",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:547"
+  ]
+ },
+ {
+  "id": "vinje_ord",
+  "figur": "vinje",
+  "namn": "Ord",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "vinje_ord",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:499"
+ },
+ {
+  "id": "vinje_erte",
+  "figur": "vinje",
+  "namn": "Erte",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "Vinje kan erte ein person i felt. Lukkast det, kan han utfordre personen til stevduell eller til kappestrid, og personen seier ting han elles ikkje ville sagt. Det slår feil om lag éin av tre gonger. Då blir folk i bygda kjølegare, og nokre samtalar blir stengde til spelaren har gjort noko for bygda. Erte har ikkje eit fast par blant figurane i denne delen. Teamet kan setje ho i par med ei edlare utfordringsevne hos ein av figurane til den andre skrivaren.",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "vinje_erte",
+  "sfx": "sfx.felt.erte",
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:551"
+ },
+ {
+  "id": "landstad_salmesong",
+  "figur": "landstad",
+  "namn": "Salmesong",
+  "type": "evne",
+  "kostnad": "16 Røyst, Embete",
+  "verknad_tekst": "Lækjer heile partyet 30 prosent, fjernar Rettskriven og Taus",
+  "laert": "2.24",
+  "laert_scener": [
+   "s2_24"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:612"
+ },
+ {
+  "id": "landstad_folkevise",
+  "figur": "landstad",
+  "namn": "Folkevise",
+  "type": "evne",
+  "kostnad": "10 Røyst, Bygd",
+  "verknad_tekst": "Skade på blekkvesen og lita lindring på éin. Sterkare mot blekk etter tillitsnivå to",
+  "laert": "2.22, sideoppdrag 1",
+  "laert_scener": [
+   "s2_22"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:613"
+ },
+ {
+  "id": "landstad_namnesong",
+  "figur": "landstad",
+  "namn": "Namnesong",
+  "type": "evne",
+  "kostnad": "14 Røyst, Bygd",
+  "verknad_tekst": "Lækjer ved å syngje namna. Løftar Gløymsle",
+  "laert": "S1.26",
+  "laert_scener": [
+   "S1_26"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:614"
+ },
+ {
+  "id": "landstad_draumkvedet",
+  "figur": "landstad",
+  "namn": "Draumkvedet",
+  "type": "evne",
+  "kostnad": "12 Røyst, Bygd, utanåt",
+  "verknad_tekst": "Fjernar Mørkeredsle og redsle frå heile gruppa",
+  "laert": "7.4",
+  "laert_scener": [
+   "s7_4"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:615"
+ },
+ {
+  "id": "landstad_den_uskrivne_visa",
+  "figur": "landstad",
+  "namn": "Den uskrivne visa",
+  "type": "evne",
+  "kostnad": "Éin gong per dungeon, utanåt",
+  "verknad_tekst": "Den sterkaste lækjinga i partyet. Full Liv på alle",
+  "laert": "6.19",
+  "laert_scener": [
+   "s6_19"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:616"
+ },
+ {
+  "id": "landstad_kvelvsongen",
+  "figur": "landstad",
+  "namn": "Kvelvsongen",
+  "type": "hugmaalar",
+  "kostnad": "Hugmålar",
+  "verknad_tekst": "Sjå under",
+  "laert": "S2.2",
+  "laert_scener": [
+   "S2_2"
+  ],
+  "under": null,
+  "aatferd": "landstad_kvelvsongen",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:617",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:619"
+  ]
+ },
+ {
+  "id": "landstad_syng",
+  "figur": "landstad",
+  "namn": "Syng",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "landstad_syng",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:581"
+ },
+ {
+  "id": "landstad_skift_maal",
+  "figur": "landstad",
+  "namn": "Skift mål",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "landstad_skift_maal",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:581"
+ },
+ {
+  "id": "landstad_ord",
+  "figur": "landstad",
+  "namn": "Ord",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "landstad_ord",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:581"
+ },
+ {
+  "id": "landstad_folgje_heim",
+  "figur": "landstad",
+  "namn": "Følgje heim",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "Landstad kan følgje ein person heim, slik han følgjer Signe i 2.22. Det krev tillit eller embete, og det slår aldri feil når krava er oppfylte. Personen fortel undervegs, og nokre stader opnar seg berre for ein prest: prestegardar, arkivrom og sjukesenger. Evna står i par med Lokk hos huldra, som når same mål utan krav, men med risiko. Når Landstad står i Embete, opnar han kyrkjebøker. I Bygd får han viser og ord.",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "landstad_folgje_heim",
+  "sfx": "sfx.felt.folgjeheim",
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:623"
+ },
+ {
+  "id": "aslaug_kved",
+  "figur": "aslaug",
+  "namn": "Kved",
+  "type": "kommando",
+  "kostnad": "8 Røyst",
+  "verknad_tekst": "Sjå over",
+  "laert": "Når ho blir med",
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "aslaug_kved",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:699",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:658"
+  ]
+ },
+ {
+  "id": "aslaug_bie",
+  "figur": "aslaug",
+  "namn": "Bie",
+  "type": "evne",
+  "kostnad": "0",
+  "verknad_tekst": "Fangar krokar frå fienden",
+  "laert": "Når ho blir med",
+  "laert_scener": [],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:700"
+ },
+ {
+  "id": "aslaug_gje_vidare",
+  "figur": "aslaug",
+  "namn": "Gje vidare",
+  "type": "kommando",
+  "kostnad": "1 krok",
+  "verknad_tekst": "Løyser Bunden. Neste handling til den allierte blir sterkare",
+  "laert": "Når ho blir med, utvida i 6.18",
+  "laert_scener": [
+   "s6_18"
+  ],
+  "under": null,
+  "aatferd": "aslaug_gje_vidare",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:701",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:658"
+  ]
+ },
+ {
+  "id": "aslaug_utan_papir",
+  "figur": "aslaug",
+  "namn": "Utan papir",
+  "type": "evne",
+  "kostnad": "Passiv",
+  "verknad_tekst": "Kan ikkje bli Rettskriven",
+  "laert": "Når ho blir med",
+  "laert_scener": [],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:702"
+ },
+ {
+  "id": "aslaug_havstevet",
+  "figur": "aslaug",
+  "namn": "Havstevet",
+  "type": "hugmaalar",
+  "kostnad": "Hugmålar",
+  "verknad_tekst": "Sjå under",
+  "laert": "S2.3",
+  "laert_scener": [
+   "S2_3"
+  ],
+  "under": null,
+  "aatferd": "aslaug_havstevet",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:703",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:705"
+  ]
+ },
+ {
+  "id": "aslaug_ord",
+  "figur": "aslaug",
+  "namn": "Ord",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "aslaug_ord",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:658"
+ },
+ {
+  "id": "aslaug_kved_att",
+  "figur": "aslaug",
+  "namn": "Kved att",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "Kved att er feltevna som høyrer og hugsar. Aslaug lyttar til ein person eller ei vise og ber det vidare utan papir. Aasen får ordet som hugsa ord, eller eit halvgløymt ord kjem att. Evna slår feil om lag tre gonger av ti, oftare der folk ikkje kjenner henne. Ho kostar ingenting, og ingen blir bundne. Kved att står i par med Skriv opp hos Aasen.",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "aslaug_kved_att",
+  "sfx": "sfx.felt.kvedatt",
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:709"
+ },
+ {
+  "id": "ravdna_joik",
+  "figur": "ravdna",
+  "namn": "Joik",
+  "type": "kommando",
+  "kostnad": "6 Røyst, så 4 per runde",
+  "verknad_tekst": "Sjå over",
+  "laert": "5.16",
+  "laert_scener": [
+   "s5_16"
+  ],
+  "under": null,
+  "aatferd": "ravdna_joik",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:774",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:741"
+  ]
+ },
+ {
+  "id": "ravdna_kast",
+  "figur": "ravdna",
+  "namn": "Kast",
+  "type": "kommando",
+  "kostnad": "4 Røyst",
+  "verknad_tekst": "Seinkar éin fiende og fjernar Utanfor rekkjevidd",
+  "laert": "5.16",
+  "laert_scener": [
+   "s5_16"
+  ],
+  "under": null,
+  "aatferd": "ravdna_kast",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:775",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:741"
+  ]
+ },
+ {
+  "id": "ravdna_joik_over_tal",
+  "figur": "ravdna",
+  "namn": "Joik over tal",
+  "type": "evne",
+  "kostnad": "8 Røyst",
+  "verknad_tekst": "Roar eit blekkvesen, som mistar neste tur. Éin gong per fiende per kamp",
+  "laert": "6.14",
+  "laert_scener": [
+   "s6_14"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:776"
+ },
+ {
+  "id": "ravdna_joik_for_dei_dode",
+  "figur": "ravdna",
+  "namn": "Joik for dei døde",
+  "type": "evne",
+  "kostnad": "Éin gong per kamp",
+  "verknad_tekst": "Løftar Skam og alle statusar frå partyet",
+  "laert": "6.16",
+  "laert_scener": [
+   "s6_16"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:777"
+ },
+ {
+  "id": "ravdna_ravdnas_joik",
+  "figur": "ravdna",
+  "namn": "Ravdnas joik",
+  "type": "hugmaalar",
+  "kostnad": "Hugmålar",
+  "verknad_tekst": "Sjå under",
+  "laert": "S2.9",
+  "laert_scener": [
+   "S2_9"
+  ],
+  "under": null,
+  "aatferd": "ravdna_ravdnas_joik",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:778",
+  "kjelder": [
+   "05 Mekanikk/03 Figurar Aasen til Ravdna.md:780"
+  ]
+ },
+ {
+  "id": "ravdna_ord",
+  "figur": "ravdna",
+  "namn": "Ord",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "ravdna_ord",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:741"
+ },
+ {
+  "id": "ravdna_joike",
+  "figur": "ravdna",
+  "namn": "Joike",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "I felt kan Ravdna joike ein stad eller ein person. Ein joika stad viser det som er gøymt i heile området: stigar, vesen som held seg unna og gamle spor. Ein joika person opnar seg og fortel. Ingen blir bundne. Prisen er at handelsmenn, dei vakte og somme prestar snur seg bort i det området. Feltevna er også måten ho lærer motiv på. Ho står i par med Kyrøyra hos tussen, som er trygg og liten.",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "ravdna_joike",
+  "sfx": "sfx.felt.joike",
+  "kjelde": "05 Mekanikk/03 Figurar Aasen til Ravdna.md:788"
+ },
+ {
+  "id": "collett_taus",
+  "figur": "collett",
+  "namn": "Taus",
+  "type": "kommando",
+  "kostnad": "8 Røyst",
+  "verknad_tekst": "Éin fiende Stum i 1 til 3 rundar etter Blikket",
+  "laert": "5.12",
+  "laert_scener": [
+   "s5_12"
+  ],
+  "under": null,
+  "aatferd": "collett_taus",
+  "sfx": "sfx.fig.collett.taus",
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:79",
+  "kjelder": [
+   "05 Mekanikk/04 Figurar Collett til jotunen.md:44"
+  ]
+ },
+ {
+  "id": "collett_loft_skammen",
+  "figur": "collett",
+  "namn": "Løft skammen",
+  "type": "evne",
+  "kostnad": "12 Røyst",
+  "verknad_tekst": "Fjernar Skam frå heile partyet",
+  "laert": "5.12",
+  "laert_scener": [
+   "s5_12"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:80"
+ },
+ {
+  "id": "collett_blikk_over_hansken",
+  "figur": "collett",
+  "namn": "Blikk over hansken",
+  "type": "evne",
+  "kostnad": "4 Røyst",
+  "verknad_tekst": "Ein fiende som førebur ei evne, blir flau og mistar turen. Éin gong per fiende per kamp",
+  "laert": "Minnet i 4.4",
+  "laert_scener": [
+   "s4_4"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:81"
+ },
+ {
+  "id": "collett_stum_salong",
+  "figur": "collett",
+  "namn": "Stum salong",
+  "type": "evne",
+  "kostnad": "24 Røyst",
+  "verknad_tekst": "Alle fiendar Stum i 1 runde, 2 om Camilla teidde i første runde av Norges Dæmring",
+  "laert": "Minnet i 4.3, brukbar frå 1851",
+  "laert_scener": [
+   "s4_3"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:82"
+ },
+ {
+  "id": "collett_kvass_replikk",
+  "figur": "collett",
+  "namn": "Kvass replikk",
+  "type": "evne",
+  "kostnad": "6 Røyst",
+  "verknad_tekst": "Skade på éin, 50 prosent meir mot fiendar som brukar smiger, vitsar eller latterleggjering",
+  "laert": "Når ho blir med",
+  "laert_scener": [],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:83"
+ },
+ {
+  "id": "collett_usendt_brev",
+  "figur": "collett",
+  "namn": "Usendt brev",
+  "type": "evne",
+  "kostnad": "10 Røyst",
+  "verknad_tekst": "Legg Taus eller Løft skammen klar med eit vilkår",
+  "laert": "Når ho blir med (brevet frå 1834 i 4.2)",
+  "laert_scener": [
+   "s4_2"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:84"
+ },
+ {
+  "id": "collett_gyldenlak",
+  "figur": "collett",
+  "namn": "Gyldenlak",
+  "type": "hugmaalar",
+  "kostnad": "Hugmålar",
+  "verknad_tekst": "Sjå under",
+  "laert": "S2.4",
+  "laert_scener": [
+   "S2_4"
+  ],
+  "under": null,
+  "aatferd": "collett_gyldenlak",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:85",
+  "kjelder": [
+   "05 Mekanikk/04 Figurar Collett til jotunen.md:89"
+  ]
+ },
+ {
+  "id": "collett_salong",
+  "figur": "collett",
+  "namn": "Salong",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "collett_salong",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:44"
+ },
+ {
+  "id": "collett_stilling",
+  "figur": "collett",
+  "namn": "Stilling",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "collett_stilling",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:44"
+ },
+ {
+  "id": "collett_ord",
+  "figur": "collett",
+  "namn": "Ord",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "collett_ord",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:44"
+ },
+ {
+  "id": "collett_blikket",
+  "figur": "collett",
+  "namn": "Blikket",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "Collett gjer ein vakt eller ein plagsam person taus ei stund, slik ho gjer i 5.10. Partyet kjem forbi eller får snakke med andre i fred. Det lukkast alltid på vakter og har om lag 60 prosent sjanse på folk med høg rang. Feilar det, vil personen ikkje snakke med partyet resten av dagen. Blikket står i par med Rett til Knudsen: ho får folk til å teie og kan bomme, han rettar det som står skrive og lukkast alltid, med ein pris. Fram til desember 1851 er Collett ikkje med på kvileplassane om natta, fordi ho må heim til mannen sin (5.12).",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "collett_blikket",
+  "sfx": "sfx.felt.blikket",
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:93"
+ },
+ {
+  "id": "knudsen_ret",
+  "figur": "knudsen",
+  "namn": "Ret",
+  "type": "kommando",
+  "kostnad": "0 Røyst, fyller 1 felt",
+  "verknad_tekst": "Rettar éin bokstav",
+  "laert": "Gjest i 3.11, eigen kommando i 5.22",
+  "laert_scener": [
+   "s3_11",
+   "s5_22"
+  ],
+  "under": "knudsen_ladeevner",
+  "aatferd": "knudsen_ret",
+  "sfx": "sfx.fig.knudsen.ret",
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:155",
+  "kjelder": [
+   "05 Mekanikk/04 Figurar Collett til jotunen.md:125"
+  ]
+ },
+ {
+  "id": "knudsen_fornorsking",
+  "figur": "knudsen",
+  "namn": "Fornorsking",
+  "type": "evne",
+  "kostnad": "3 felt",
+  "verknad_tekst": "Rettar alle att-verande blaute konsonantar på éin fiende, opptil tre (to på bossar). Verkar på sagavesen frå 7.6",
+  "laert": "3.11, full utgåve i 5.22",
+  "laert_scener": [
+   "s3_11",
+   "s5_22"
+  ],
+  "under": "knudsen_ladeevner",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:156"
+ },
+ {
+  "id": "knudsen_daglegtale",
+  "figur": "knudsen",
+  "namn": "Daglegtale",
+  "type": "evne",
+  "kostnad": "2 felt",
+  "verknad_tekst": "Fjernar Rettskriven frå éin og gjev motstand i 2 rundar",
+  "laert": "5.22",
+  "laert_scener": [
+   "s5_22"
+  ],
+  "under": "knudsen_ladeevner",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:157"
+ },
+ {
+  "id": "knudsen_lydrett",
+  "figur": "knudsen",
+  "namn": "Lydrett",
+  "type": "evne",
+  "kostnad": "4 felt",
+  "verknad_tekst": "Alle fiendar får eitt Hard-merke, og harde konsonantar gjer 50 prosent meir for heile partyet i 2 rundar",
+  "laert": "5.22",
+  "laert_scener": [
+   "s5_22"
+  ],
+  "under": "knudsen_ladeevner",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:158"
+ },
+ {
+  "id": "knudsen_kjedelig",
+  "figur": "knudsen",
+  "namn": "«Kjedelig»",
+  "type": "evne",
+  "kostnad": "1 felt",
+  "verknad_tekst": "Ingen skade. Motstand mot Latterleggjord og smiger i 3 rundar",
+  "laert": "5.23",
+  "laert_scener": [
+   "s5_23"
+  ],
+  "under": "knudsen_ladeevner",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:159"
+ },
+ {
+  "id": "knudsen_unntak",
+  "figur": "knudsen",
+  "namn": "Unntak",
+  "type": "evne",
+  "kostnad": "3 felt",
+  "verknad_tekst": "Opphevar éin regel ein fiende har sett, til dømes ein aura eller statusen Takt, i 2 rundar. Mot forordningane til Kansellisten (S2.30) er opphevinga varig ut kampen",
+  "laert": "S2.30",
+  "laert_scener": [
+   "S2_30"
+  ],
+  "under": "knudsen_ladeevner",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:160"
+ },
+ {
+  "id": "knudsen_saklegheit",
+  "figur": "knudsen",
+  "namn": "Saklegheit",
+  "type": "kommando",
+  "kostnad": "6 Røyst",
+  "verknad_tekst": "Fjernar Latterleggjord frå Knudsen",
+  "laert": "5.23",
+  "laert_scener": [
+   "s5_23"
+  ],
+  "under": "knudsen_ladeevner",
+  "aatferd": "knudsen_saklegheit",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:161",
+  "kjelder": [
+   "05 Mekanikk/04 Figurar Collett til jotunen.md:125"
+  ]
+ },
+ {
+  "id": "knudsen_landsgyldig_uttale",
+  "figur": "knudsen",
+  "namn": "Landsgyldig uttale",
+  "type": "hugmaalar",
+  "kostnad": "Hugmålar",
+  "verknad_tekst": "Sjå under",
+  "laert": "S2.5",
+  "laert_scener": [
+   "S2_5"
+  ],
+  "under": "knudsen_ladeevner",
+  "aatferd": "knudsen_landsgyldig_uttale",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:162",
+  "kjelder": [
+   "05 Mekanikk/04 Figurar Collett til jotunen.md:166"
+  ]
+ },
+ {
+  "id": "knudsen_ladeevner",
+  "figur": "knudsen",
+  "namn": "Ladeevner",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "knudsen_ladeevner",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:125"
+ },
+ {
+  "id": "knudsen_ord",
+  "figur": "knudsen",
+  "namn": "Ord",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "knudsen_ord",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:125"
+ },
+ {
+  "id": "knudsen_rett",
+  "figur": "knudsen",
+  "namn": "Rett",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "Knudsen rettar skilt, dørskilt, protokollar og lister skrivne med kanselliblekk. Det lukkast alltid, og låste dører i kanselli-område opnar seg. Den som skreiv, får Skam, og av og til reiser blekket seg til ein liten kamp. Rett står i par med Blikket til Collett.",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "knudsen_rett",
+  "sfx": "sfx.felt.rett",
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:170"
+ },
+ {
+  "id": "asbjornsen_trolla_paa_hedalsskogen",
+  "figur": "asbjornsen",
+  "namn": "Trolla på Hedalsskogen",
+  "type": "evne",
+  "kostnad": "16",
+  "verknad_tekst": "Trykk når auget sit i hovudet som vender mot målet. Eitt til tre treff på éin",
+  "laert": null,
+  "laert_scener": [],
+  "under": "asbjornsen_paakall",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:238"
+ },
+ {
+  "id": "asbjornsen_kjetta_paa_dovre",
+  "figur": "asbjornsen",
+  "namn": "Kjetta på Dovre",
+  "type": "evne",
+  "kostnad": "28",
+  "verknad_tekst": "Hald inne for eit lengre brøl og meir skade på alle. Slår i to rundar. Held spelaren for lenge, mistar bjørnen neste tur",
+  "laert": null,
+  "laert_scener": [],
+  "under": "asbjornsen_paakall",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:239"
+ },
+ {
+  "id": "asbjornsen_bukkane_bruse",
+  "figur": "asbjornsen",
+  "namn": "Bukkane Bruse",
+  "type": "evne",
+  "kostnad": "20",
+  "verknad_tekst": "Vel rekkjefølgja bukkane stangar i. Kvar et éin styrking frå fienden. Storebukken sist gjev full skade",
+  "laert": null,
+  "laert_scener": [],
+  "under": "asbjornsen_paakall",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:240"
+ },
+ {
+  "id": "asbjornsen_trollet_med_tre_hovud",
+  "figur": "asbjornsen",
+  "namn": "Trollet med tre hovud",
+  "type": "evne",
+  "kostnad": "30",
+  "verknad_tekst": "Tre åtak med kvar sin lydfamilie",
+  "laert": null,
+  "laert_scener": [],
+  "under": "asbjornsen_paakall",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:241"
+ },
+ {
+  "id": "asbjornsen_nokken_fraa_ringerike",
+  "figur": "asbjornsen",
+  "namn": "Nøkken frå Ringerike",
+  "type": "evne",
+  "kostnad": "18",
+  "verknad_tekst": "Lokkar éin fiende bort. Han er Gøymd og kan ikkje handle i 1 runde, 2 om spelaren treffer takta i songen",
+  "laert": null,
+  "laert_scener": [],
+  "under": "asbjornsen_paakall",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:242"
+ },
+ {
+  "id": "asbjornsen_kverna_paa_havsens_botn",
+  "figur": "asbjornsen",
+  "namn": "Kverna på havsens botn",
+  "type": "evne",
+  "kostnad": "22",
+  "verknad_tekst": "Mel Røyst til partyet for kvar takt. Spelaren må stoppe ho før femte takt, elles mel ho salt over partyet",
+  "laert": null,
+  "laert_scener": [],
+  "under": "asbjornsen_paakall",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:243"
+ },
+ {
+  "id": "asbjornsen_askeladden_som_kappaat_med_trollet",
+  "figur": "asbjornsen",
+  "namn": "Askeladden som kappåt med trollet",
+  "type": "evne",
+  "kostnad": "14",
+  "verknad_tekst": "Vel ei av tre skrøner. Rett skrøne får fienden til å skade seg sjølv",
+  "laert": null,
+  "laert_scener": [],
+  "under": "asbjornsen_paakall",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:244"
+ },
+ {
+  "id": "asbjornsen_tussen",
+  "figur": "asbjornsen",
+  "namn": "Tussen (etter 6.10)",
+  "type": "evne",
+  "kostnad": "6",
+  "verknad_tekst": "Fjernar Skam frå Aasen og gjev han 1 Ande. Kostar ingen Vilje, fordi tussen hugsar",
+  "laert": null,
+  "laert_scener": [],
+  "under": "asbjornsen_paakall",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:245"
+ },
+ {
+  "id": "asbjornsen_ormen",
+  "figur": "asbjornsen",
+  "namn": "Ormen (Kongsormen, S2.29 val A)",
+  "type": "evne",
+  "kostnad": "36",
+  "verknad_tekst": "Trykk i takt med herropet, tre gonger. Alle i partyet tek halv skade til neste tur til Asbjørnsen, og eit Kongsord tek 4 segl frå éin fiende og gjer stor skade på alle. Kostar 1 Vilje mindre med Landstad eller Moe i partyet",
+  "laert": null,
+  "laert_scener": [],
+  "under": "asbjornsen_paakall",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:246"
+ },
+ {
+  "id": "asbjornsen_huldra",
+  "figur": "asbjornsen",
+  "namn": "Huldra",
+  "type": "evne",
+  "kostnad": "Låst",
+  "verknad_tekst": "Asbjørnsen held dei to kapitla attlatne, slik huldra bad om i 6.9",
+  "laert": null,
+  "laert_scener": [],
+  "under": "asbjornsen_paakall",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:247"
+ },
+ {
+  "id": "asbjornsen_paakall",
+  "figur": "asbjornsen",
+  "namn": "Påkall",
+  "type": "kommando",
+  "kostnad": "Etter side",
+  "verknad_tekst": "Kallar fram eit vesen frå boka",
+  "laert": "Prologen, spelbar frå 6.9",
+  "laert_scener": [
+   "s6_9"
+  ],
+  "under": null,
+  "aatferd": "asbjornsen_paakall",
+  "sfx": "sfx.fig.asbjornsen.paakall",
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:261",
+  "kjelder": [
+   "05 Mekanikk/04 Figurar Collett til jotunen.md:222"
+  ]
+ },
+ {
+  "id": "asbjornsen_samle",
+  "figur": "asbjornsen",
+  "namn": "Samle",
+  "type": "evne",
+  "kostnad": "Kostar huldra Liv",
+  "verknad_tekst": "Bind ein open eller svak fiende",
+  "laert": "Berre i prologen",
+  "laert_scener": [],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:262"
+ },
+ {
+  "id": "asbjornsen_granske",
+  "figur": "asbjornsen",
+  "namn": "Granske",
+  "type": "kommando",
+  "kostnad": "5 Røyst",
+  "verknad_tekst": "Liv og sårbarheiter",
+  "laert": "6.9",
+  "laert_scener": [
+   "s6_9"
+  ],
+  "under": null,
+  "aatferd": "asbjornsen_granske",
+  "sfx": "sfx.fig.asbjornsen.granske",
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:263",
+  "kjelder": [
+   "05 Mekanikk/04 Figurar Collett til jotunen.md:222"
+  ]
+ },
+ {
+  "id": "asbjornsen_brisingen",
+  "figur": "asbjornsen",
+  "namn": "Brisingen",
+  "type": "evne",
+  "kostnad": "20 Røyst",
+  "verknad_tekst": "Vern og lys for heile partyet, svakare kvar gong",
+  "laert": "S2.6, val A",
+  "laert_scener": [
+   "S2_6"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:264"
+ },
+ {
+  "id": "asbjornsen_det_frie_kallet",
+  "figur": "asbjornsen",
+  "namn": "Det frie kallet",
+  "type": "hugmaalar",
+  "kostnad": "Hugmålar",
+  "verknad_tekst": "Sjå under",
+  "laert": "S2.6, val B",
+  "laert_scener": [
+   "S2_6"
+  ],
+  "under": null,
+  "aatferd": "asbjornsen_det_frie_kallet",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:265",
+  "kjelder": [
+   "05 Mekanikk/04 Figurar Collett til jotunen.md:268"
+  ]
+ },
+ {
+  "id": "asbjornsen_riv_ut",
+  "figur": "asbjornsen",
+  "namn": "Riv ut",
+  "type": "evne",
+  "kostnad": "Kostar turen",
+  "verknad_tekst": "Riv ei side ut av notisboka og gjev forteljinga attende. Teljinga på ei side Munch dreg i, går to steg ned, eller Steg-teljinga til Moe går eitt steg opp",
+  "laert": "7.9b, om han lèt trollet gå",
+  "laert_scener": [
+   "s7_9b"
+  ],
+  "under": null,
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:266"
+ },
+ {
+  "id": "asbjornsen_ord",
+  "figur": "asbjornsen",
+  "namn": "Ord",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "asbjornsen_ord",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:222"
+ },
+ {
+  "id": "asbjornsen_notere",
+  "figur": "asbjornsen",
+  "namn": "Notere",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "Asbjørnsen skriv ned det folk fortel. Det lukkast alltid, og personen gjev frå seg ei opplysning eller ein gjenstand. Kostnaden er at forteljinga flyttar inn i notisboka: personen fortel henne ikkje lenger, og bygda mistar eit ord frå lyttelista til Aasen. Notere står i par med Fortelje til Moe. Etter S2.6 val B skriv Asbjørnsen berre halve forteljinga. Sjansen søkk til 50 prosent, og bygda mistar ingenting.",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "asbjornsen_notere",
+  "sfx": "sfx.felt.notere",
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:272"
+ },
+ {
+  "id": "moe_bukkane_bruse",
+  "figur": "moe",
+  "namn": "Bukkane Bruse",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Løyser Bunden på éin, eller tek 2 segl frå éin fiende",
+  "laert": "6.8",
+  "laert_scener": [
+   "s6_8"
+  ],
+  "under": "moe_fortelje",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:323"
+ },
+ {
+  "id": "moe_askeladden_som_kappaat_med_trollet",
+  "figur": "moe",
+  "namn": "Askeladden som kappåt med trollet",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Fienden tek skaden av sitt eige neste åtak",
+  "laert": "6.8",
+  "laert_scener": [
+   "s6_8"
+  ],
+  "under": "moe_fortelje",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:324"
+ },
+ {
+  "id": "moe_kongsdottera",
+  "figur": "moe",
+  "namn": "Kongsdottera",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Eit vesen som er bunde til fienden, sluttar å slåst og går",
+  "laert": "6.9",
+  "laert_scener": [
+   "s6_9"
+  ],
+  "under": "moe_fortelje",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:325"
+ },
+ {
+  "id": "moe_kverna_paa_havsens_botn",
+  "figur": "moe",
+  "namn": "Kverna på havsens botn",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Lækjer heile partyet litt kvar runde i 4 rundar",
+  "laert": "6.9",
+  "laert_scener": [
+   "s6_9"
+  ],
+  "under": "moe_fortelje",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:326"
+ },
+ {
+  "id": "moe_i_bronnen_og_i_tjernet",
+  "figur": "moe",
+  "namn": "I brønnen og i tjernet",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Fjernar Gløymsle og Taus frå éin og gjev 1 Ande",
+  "laert": "Første kamp ved vatn",
+  "laert_scener": [],
+  "under": "moe_fortelje",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:327"
+ },
+ {
+  "id": "moe_gutten_og_tussen_i_fjosbaasen",
+  "figur": "moe",
+  "namn": "Gutten og tussen i fjøsbåsen",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Løyser alle bindingar på slagmarka i 3 rundar. Éin gong per kamp",
+  "laert": "6.10",
+  "laert_scener": [
+   "s6_10"
+  ],
+  "under": "moe_fortelje",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:328"
+ },
+ {
+  "id": "moe_fortelje",
+  "figur": "moe",
+  "namn": "Fortelje",
+  "type": "kommando",
+  "kostnad": "4 eller 7 Røyst per avsnitt",
+  "verknad_tekst": "Sjå over",
+  "laert": "Prologen (mørk utgåve), 6.8",
+  "laert_scener": [
+   "s6_8"
+  ],
+  "under": null,
+  "aatferd": "moe_fortelje",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:338",
+  "kjelder": [
+   "05 Mekanikk/04 Figurar Collett til jotunen.md:304"
+  ]
+ },
+ {
+  "id": "moe_troyst",
+  "figur": "moe",
+  "namn": "Trøyst",
+  "type": "kommando",
+  "kostnad": "6 Røyst",
+  "verknad_tekst": "Lækjer éin litt og fjernar Skam",
+  "laert": "6.8",
+  "laert_scener": [
+   "s6_8"
+  ],
+  "under": null,
+  "aatferd": "moe_troyst",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:339",
+  "kjelder": [
+   "05 Mekanikk/04 Figurar Collett til jotunen.md:304"
+  ]
+ },
+ {
+  "id": "moe_signinga",
+  "figur": "moe",
+  "namn": "Signinga",
+  "type": "hugmaalar",
+  "kostnad": "Hugmålar",
+  "verknad_tekst": "Sjå under",
+  "laert": "S2.7",
+  "laert_scener": [
+   "S2_7"
+  ],
+  "under": null,
+  "aatferd": "moe_signinga",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:340",
+  "kjelder": [
+   "05 Mekanikk/04 Figurar Collett til jotunen.md:342"
+  ]
+ },
+ {
+  "id": "moe_ord",
+  "figur": "moe",
+  "namn": "Ord",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "moe_ord",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:304"
+ },
+ {
+  "id": "moe_felt_fortelje",
+  "figur": "moe",
+  "namn": "Fortelje",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "Moe fortel eit eventyr til ein person eller eit vesen. Rett eventyr til rett lynne får folk til å fortelje noko attende eller late ei dør opp, og vesen roar seg. Det kan slå feil, og då må spelaren prøve eit anna eventyr neste dag. Ingenting blir bunde. Fortelje står i par med Notere til Asbjørnsen.",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "moe_felt_fortelje",
+  "sfx": "sfx.felt.fortelje",
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:346"
+ },
+ {
+  "id": "ole_bull_slaatt_fraa_valdres",
+  "figur": "ole_bull",
+  "namn": "Slått frå Valdres",
+  "type": "evne",
+  "kostnad": "10 Røyst, 3 per runde",
+  "verknad_tekst": "Vern mot Rettskriven for partyet",
+  "laert": "4.19 og 6.2",
+  "laert_scener": [
+   "s4_19",
+   "s6_2"
+  ],
+  "under": "ole_bull_spel",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:392"
+ },
+ {
+  "id": "ole_bull_springar",
+  "figur": "ole_bull",
+  "namn": "Springar",
+  "type": "evne",
+  "kostnad": "12, 4 per runde",
+  "verknad_tekst": "Målarane til partyet går 20 prosent fortare",
+  "laert": "6.3",
+  "laert_scener": [
+   "s6_3"
+  ],
+  "under": "ole_bull_spel",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:393"
+ },
+ {
+  "id": "ole_bull_halling",
+  "figur": "ole_bull",
+  "namn": "Halling",
+  "type": "evne",
+  "kostnad": "12, 4 per runde",
+  "verknad_tekst": "Hallingkast gjev eitt treff ekstra",
+  "laert": "6.3",
+  "laert_scener": [
+   "s6_3"
+  ],
+  "under": "ole_bull_spel",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:394"
+ },
+ {
+  "id": "ole_bull_fanitullen",
+  "figur": "ole_bull",
+  "namn": "Fanitullen",
+  "type": "evne",
+  "kostnad": "14, 4 per runde",
+  "verknad_tekst": "Partyet tek 30 prosent mindre skade. Han må stoppe etter 3 rundar",
+  "laert": "7.6, eller tidlegare i Hallingdal 1852",
+  "laert_scener": [
+   "s7_6"
+  ],
+  "under": "ole_bull_spel",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:395"
+ },
+ {
+  "id": "ole_bull_heimlengt",
+  "figur": "ole_bull",
+  "namn": "Heimlengt",
+  "type": "evne",
+  "kostnad": "10, 3 per runde",
+  "verknad_tekst": "Lækjer partyet 5 prosent per runde. Før 6.19c kostar det Bull like mykje av hans eige Liv",
+  "laert": "6.4",
+  "laert_scener": [
+   "s6_4"
+  ],
+  "under": "ole_bull_spel",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:396"
+ },
+ {
+  "id": "ole_bull_audmjuk",
+  "figur": "ole_bull",
+  "namn": "Audmjuk",
+  "type": "evne",
+  "kostnad": "16, 3 per runde",
+  "verknad_tekst": "Skjold for heile partyet, det sterkaste vernet han har",
+  "laert": "6.19c",
+  "laert_scener": [
+   "s6_19c"
+  ],
+  "under": "ole_bull_spel",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:397"
+ },
+ {
+  "id": "ole_bull_bravur",
+  "figur": "ole_bull",
+  "namn": "Bravur",
+  "type": "evne",
+  "kostnad": "20, 6 per runde",
+  "verknad_tekst": "Partyet blir 40 prosent sterkare. Alle enkeltåtak går mot Bull, og kvart treff kan ta ein streng",
+  "laert": "6.3",
+  "laert_scener": [
+   "s6_3"
+  ],
+  "under": "ole_bull_spel",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:398"
+ },
+ {
+  "id": "ole_bull_storplanen",
+  "figur": "ole_bull",
+  "namn": "Storplanen",
+  "type": "evne",
+  "kostnad": "25, éin gong",
+  "verknad_tekst": "Om tre rundar får alle full Røyst og 2 Ande, om ingen har falle. Fell nokon, får Bull Skam",
+  "laert": "6.3, borte etter 6.19c",
+  "laert_scener": [
+   "s6_3",
+   "s6_19c"
+  ],
+  "under": "ole_bull_spel",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:399"
+ },
+ {
+  "id": "ole_bull_dobbelgrep",
+  "figur": "ole_bull",
+  "namn": "Dobbelgrep",
+  "type": "kommando",
+  "kostnad": "6 Røyst",
+  "verknad_tekst": "Skade av typen song på éin. Sterkast med Grimsfela (S2.8, val B)",
+  "laert": "6.3",
+  "laert_scener": [
+   "s6_3"
+  ],
+  "under": "ole_bull_spel",
+  "aatferd": "ole_bull_dobbelgrep",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:400",
+  "kjelder": [
+   "05 Mekanikk/04 Figurar Collett til jotunen.md:374"
+  ]
+ },
+ {
+  "id": "ole_bull_spel",
+  "figur": "ole_bull",
+  "namn": "Spel",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "ole_bull_spel",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:374"
+ },
+ {
+  "id": "ole_bull_stopp",
+  "figur": "ole_bull",
+  "namn": "Stopp",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "ole_bull_stopp",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:374"
+ },
+ {
+  "id": "ole_bull_ord",
+  "figur": "ole_bull",
+  "namn": "Ord",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "ole_bull_ord",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:374"
+ },
+ {
+  "id": "ole_bull_fossegrimslaatten",
+  "figur": "ole_bull",
+  "namn": "Fossegrimslåtten",
+  "type": "hugmaalar",
+  "kostnad": null,
+  "verknad_tekst": "Heile partyet får to handlingar per tur i tre rundar (S2.8, val A). Bull lærte slåtten ved å lytte til fossegrimen han gav fela tilbake til. Etter val B er evna låst resten av spelet, og han har Grimsfela. Hugmålaren fyllest òg kvar gong ein streng ryk.",
+  "laert": null,
+  "laert_scener": [
+   "S2_8"
+  ],
+  "under": null,
+  "aatferd": "ole_bull_fossegrimslaatten",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:406"
+ },
+ {
+  "id": "ole_bull_spele_opp",
+  "figur": "ole_bull",
+  "namn": "Spele opp",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "Bull spelar på gata eller i ei stove. Folk samlar seg og fortel meir, og i fimbulvinteren tinar dei som har frose midt i ei setning, i ein ring rundt han, som på Torget i Bergen (6.1). Er folk for redde eller for frosne, går dei inn att. Spele opp står i par med Lyfte til jotunen: Bull lokkar folk ut, jotunen flyttar det som står i vegen og skremmer dei. Bull dansar aldri hallingkast, fordi han spelar (S2.38).",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "ole_bull_spele_opp",
+  "sfx": "sfx.felt.speleopp",
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:410"
+ },
+ {
+  "id": "berte_sverdet_guds_ord",
+  "figur": "berte",
+  "namn": "Sverdet: «Guds Ord»",
+  "type": "evne",
+  "kostnad": "12 Røyst",
+  "verknad_tekst": "Ordskade på éin. × 1,5 mot blekkvesen og fiendar med Skriftord. Med Ande treffer det fleire",
+  "laert": "5.5b",
+  "laert_scener": [
+   "s5_5b"
+  ],
+  "under": "berte_det_staar_skrive",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:483"
+ },
+ {
+  "id": "berte_vorder_staerke_i_herren",
+  "figur": "berte",
+  "namn": "«Vorder stærke i Herren»",
+  "type": "evne",
+  "kostnad": "10 Røyst",
+  "verknad_tekst": "Kraft og Ordkraft 20 prosent opp for heile partyet i 3 rundar",
+  "laert": "5.5b",
+  "laert_scener": [
+   "s5_5b"
+  ],
+  "under": "berte_det_staar_skrive",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:484"
+ },
+ {
+  "id": "berte_hvo_giver_mennesket_mund",
+  "figur": "berte",
+  "namn": "«Hvo giver Mennesket Mund?»",
+  "type": "evne",
+  "kostnad": "8 Røyst",
+  "verknad_tekst": "Løftar Skam og Taus frå éin. Er målet Aasen, får neste galdr høvesbonus",
+  "laert": "1.6, blir evne i 5.5b",
+  "laert_scener": [
+   "s1_6",
+   "s5_5b"
+  ],
+  "under": "berte_det_staar_skrive",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:485"
+ },
+ {
+  "id": "berte_mennesket_lever_ikke_alene_af_brod",
+  "figur": "berte",
+  "namn": "«Mennesket lever ikke alene af Brød»",
+  "type": "evne",
+  "kostnad": "12 Røyst",
+  "verknad_tekst": "Lækjer partyet 15 prosent og løftar Dåra og Fimbul",
+  "laert": "5.5b, svar til Fristaren",
+  "laert_scener": [
+   "s5_5b"
+  ],
+  "under": "berte_det_staar_skrive",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:486"
+ },
+ {
+  "id": "berte_eders_sonner_og_eders_dottre_skulle_prophetere",
+  "figur": "berte",
+  "namn": "«Eders Sønner og Eders Døttre skulle prophetere»",
+  "type": "evne",
+  "kostnad": "12 Røyst",
+  "verknad_tekst": "Løftar Taus frå heile partyet. Hugmålaren til kvinnene i partyet stig 20 prosent",
+  "laert": "5.13b, svar til Fristaren",
+  "laert_scener": [
+   "s5_13b"
+  ],
+  "under": "berte_det_staar_skrive",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:487"
+ },
+ {
+  "id": "berte_man_bor_adlyde_gud_mere_end_menneskene",
+  "figur": "berte",
+  "namn": "«Man bør adlyde Gud mere end Menneskene»",
+  "type": "evne",
+  "kostnad": "12 Røyst",
+  "verknad_tekst": "Løftar Bunden og Rettskriven frå éin og gjev vern mot Bunden i 3 rundar",
+  "laert": "5.13b, svar til Fristaren",
+  "laert_scener": [
+   "s5_13b"
+  ],
+  "under": "berte_det_staar_skrive",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:488"
+ },
+ {
+  "id": "berte_den_som_er_syndelos_iblandt_eder_kaste_forst_stenen",
+  "figur": "berte",
+  "namn": "«Den, som er syndeløs iblandt Eder, kaste først Stenen»",
+  "type": "evne",
+  "kostnad": "10 Røyst",
+  "verknad_tekst": "Alle fiendar hoppar over neste åtak mot den figuren som har minst Liv",
+  "laert": "5.13b, svar til Fristaren",
+  "laert_scener": [
+   "s5_13b"
+  ],
+  "under": "berte_det_staar_skrive",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:489"
+ },
+ {
+  "id": "berte_der_er_atter_skrevet_du_skal_ikke_friste_herren_din_gud",
+  "figur": "berte",
+  "namn": "«Der er atter skrevet: du skal ikke friste Herren din Gud»",
+  "type": "evne",
+  "kostnad": "8 Røyst",
+  "verknad_tekst": "Løftar Overmot. Den neste evna fienden brukar med teikn, bommar",
+  "laert": "5.13b, svar til Fristaren",
+  "laert_scener": [
+   "s5_13b"
+  ],
+  "under": "berte_det_staar_skrive",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:490"
+ },
+ {
+  "id": "berte_englevakt_han_skal_give_sine_engle_befaling_om_dig",
+  "figur": "berte",
+  "namn": "Englevakt: «Han skal give sine Engle Befaling om dig»",
+  "type": "evne",
+  "kostnad": "16 Røyst",
+  "verknad_tekst": "I 2 rundar kan ingen i partyet ta meir enn 30 prosent av maks Liv i eitt treff",
+  "laert": "5.13b, Teke attende",
+  "laert_scener": [
+   "s5_13b"
+  ],
+  "under": "berte_det_staar_skrive",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:491"
+ },
+ {
+  "id": "berte_jeg_troer_herre_hjaelp_min_vantro",
+  "figur": "berte",
+  "namn": "«Jeg troer, Herre! hjælp min Vantro»",
+  "type": "evne",
+  "kostnad": "8 Røyst",
+  "verknad_tekst": "Tek 30 Tvil frå Landstad eller løftar Gløymsle frå éin",
+  "laert": "Samtale med Landstad",
+  "laert_scener": [],
+  "under": "berte_det_staar_skrive",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:492"
+ },
+ {
+  "id": "berte_en_tid_til_at_graede_og_en_tid_til_at_le",
+  "figur": "berte",
+  "namn": "«En Tid til at græde og en Tid til at le»",
+  "type": "evne",
+  "kostnad": "8 Røyst",
+  "verknad_tekst": "Løftar Anger og Latterleggjord frå éin",
+  "laert": "Samtale med Vinje",
+  "laert_scener": [],
+  "under": "berte_det_staar_skrive",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:493"
+ },
+ {
+  "id": "berte_vig_bort_satan",
+  "figur": "berte",
+  "namn": "«Vig bort, Satan!»",
+  "type": "evne",
+  "kostnad": "Berre svar",
+  "verknad_tekst": "Brukt i 7.7b. Kan ikkje brukast som evne",
+  "laert": "7.7b",
+  "laert_scener": [
+   "s7_7b"
+  ],
+  "under": "berte_det_staar_skrive",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:494"
+ },
+ {
+  "id": "berte_be_for_ein",
+  "figur": "berte",
+  "namn": "Be for éin",
+  "type": "evne",
+  "kostnad": "6 Røyst, så 2 per runde",
+  "verknad_tekst": "Målet blir lækt 8 prosent per runde og får 1 Ande ekstra på kvar tur",
+  "laert": null,
+  "laert_scener": [],
+  "under": "berte_be",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:521"
+ },
+ {
+  "id": "berte_be_for_alle",
+  "figur": "berte",
+  "namn": "Be for alle",
+  "type": "evne",
+  "kostnad": "10 Røyst, så 3 per runde",
+  "verknad_tekst": "Heile partyet blir lækt 4 prosent per runde",
+  "laert": null,
+  "laert_scener": [],
+  "under": "berte_be",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:522"
+ },
+ {
+  "id": "berte_be_om_ord",
+  "figur": "berte",
+  "namn": "Be om ord",
+  "type": "evne",
+  "kostnad": "8 Røyst, så 2 per runde. Berre for Aasen",
+  "verknad_tekst": "Etter to rundar kostar neste galdr til Aasen ingen Røyst og får høvesbonus. Eitt ord kjem attende frå Gløymsle eller Nedskriven. I fimbulvinteren tinar eitt frose ord",
+  "laert": null,
+  "laert_scener": [],
+  "under": "berte_be",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:523"
+ },
+ {
+  "id": "berte_det_staar_skrive",
+  "figur": "berte",
+  "namn": "Det står skrive",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "berte_det_staar_skrive",
+  "sfx": "sfx.fig.berte.staarskrive",
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:446"
+ },
+ {
+  "id": "berte_kle_paa",
+  "figur": "berte",
+  "namn": "Kle på",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "berte_kle_paa",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:446"
+ },
+ {
+  "id": "berte_be",
+  "figur": "berte",
+  "namn": "Be",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "berte_be",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:446"
+ },
+ {
+  "id": "berte_frimod",
+  "figur": "berte",
+  "namn": "Frimod",
+  "type": "hugmaalar",
+  "kostnad": null,
+  "verknad_tekst": "Frimod er 6:19–20, der Paulus kallar seg «et Sendebud i Lænker» og ber om frimod til å tale. I tre rundar kan verken Berte eller nokon i partyet bli Taus, Bunden eller få Skam, og alle svar på Skriftord blir rette av seg sjølv. Evna kjem frå S2.12b. Hugmålaren til Berte fyllest òg kvar gong ho svarar rett.",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "berte_frimod",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:529"
+ },
+ {
+  "id": "berte_samle_til_mote",
+  "figur": "berte",
+  "namn": "Samle til møte",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "I ei bygd kan Berte samle folk til møte i ei stove. Stova blir kvileplass for natta, og Skammen over bygda går ned eitt trinn. Folk står fram og talar på sitt eige mål, og Aasen kan lytte og få ei ny form av eit ord han har frå før. Møtet kan haldast éin gong per bygd. Somme stader vil ikkje presten ha møte i bygda, og då må spelaren finne ei løe eller eit naust. Evna står i par med Lokk hos huldra og Spele opp hos Ole Bull. Hos Berte talar folk om seg sjølve. Før 1842 var lekpreiking forbode utan løyve frå presten, og i 1.6 må møtet på Årflot gøymast for lensmannen. Konventikkelplakaten blei oppheva i 1842. Når Berte er med i fimbulvinteren, er møta lovlege, og lensmenn kan ikkje stoppe dei.",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "berte_samle_til_mote",
+  "sfx": "sfx.felt.samle",
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:533"
+ },
+ {
+  "id": "jotunen_steinn",
+  "figur": "jotunen",
+  "namn": "Steinn",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Stor skade på éin fiende",
+  "laert": "Når han blir med",
+  "laert_scener": [],
+  "under": "jotunen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:596"
+ },
+ {
+  "id": "jotunen_jord",
+  "figur": "jotunen",
+  "namn": "Jǫrð",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Skade på alle fiendar som ikkje er Utanfor rekkjevidd, 20 prosent sjanse for at kvar mistar turen. Ordet smell og tek 1 Mot frå dyr",
+  "laert": "Når han blir med",
+  "laert_scener": [],
+  "under": "jotunen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:597"
+ },
+ {
+  "id": "jotunen_kaldr",
+  "figur": "jotunen",
+  "namn": "Kaldr",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Alle fiendar får Fimbul i 2 rundar",
+  "laert": "6.13, første natta",
+  "laert_scener": [
+   "s6_13"
+  ],
+  "under": "jotunen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:598"
+ },
+ {
+  "id": "jotunen_saman",
+  "figur": "jotunen",
+  "namn": "Saman",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Tek imot alle enkeltåtak mot éin ven i 1 runde",
+  "laert": "6.13, tredje natta",
+  "laert_scener": [
+   "s6_13"
+  ],
+  "under": "jotunen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:599"
+ },
+ {
+  "id": "jotunen_brjot",
+  "figur": "jotunen",
+  "namn": "Brjót",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Tek 2 segl om fienden er sårbar for slag, elles 1",
+  "laert": "Tillit 5",
+  "laert_scener": [],
+  "under": "jotunen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:600"
+ },
+ {
+  "id": "jotunen_nei",
+  "figur": "jotunen",
+  "namn": "Nei",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Fjernar Bunden eller Gløymsle frå seg sjølv eller ein ven",
+  "laert": "Tillit 6",
+  "laert_scener": [],
+  "under": "jotunen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:601"
+ },
+ {
+  "id": "jotunen_hlif",
+  "figur": "jotunen",
+  "namn": "Hlíf",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Skjold over heile partyet i 2 rundar",
+  "laert": "Tillit 7",
+  "laert_scener": [],
+  "under": "jotunen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:602"
+ },
+ {
+  "id": "jotunen_thokk",
+  "figur": "jotunen",
+  "namn": "Þǫkk",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Gjev éin ven 2 Ande",
+  "laert": "S2.12",
+  "laert_scener": [
+   "S2_12"
+  ],
+  "under": "jotunen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:603"
+ },
+ {
+  "id": "jotunen_var",
+  "figur": "jotunen",
+  "namn": "Vár",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Fjernar Fimbul frå heile partyet og lækjer litt",
+  "laert": "Tillit 8, eller S2.12 val A",
+  "laert_scener": [
+   "S2_12"
+  ],
+  "under": "jotunen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:604"
+ },
+ {
+  "id": "jotunen_heimr",
+  "figur": "jotunen",
+  "namn": "Heimr",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Vern for heile partyet, sterkare langt heimanfrå",
+  "laert": "Om spelaren høyrde fjellet seie ordet i 3.16",
+  "laert_scener": [
+   "s3_16"
+  ],
+  "under": "jotunen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:605"
+ },
+ {
+  "id": "jotunen_haf",
+  "figur": "jotunen",
+  "namn": "Haf",
+  "type": "evne",
+  "kostnad": null,
+  "verknad_tekst": "Ei bølgje over alle fiendar",
+  "laert": "Gåva Draugens åre (S2.33)",
+  "laert_scener": [
+   "S2_33"
+  ],
+  "under": "jotunen_eitt_ord",
+  "aatferd": null,
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:606"
+ },
+ {
+  "id": "jotunen_eitt_ord",
+  "figur": "jotunen",
+  "namn": "Eitt ord",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "jotunen_eitt_ord",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:572"
+ },
+ {
+  "id": "jotunen_jotunsteget",
+  "figur": "jotunen",
+  "namn": "Jotunsteget",
+  "type": "hugmaalar",
+  "kostnad": null,
+  "verknad_tekst": "Treffer alle fiendar, knuser skjold og kan ikkje bli gjord Rettskriven (S2.12). Å knuse skjold tyder her at vanlege fiendar mistar alle segl og bossar 3. Etter val A kan systera dukke opp i sluttkampen og ta eitt slag for partyet. Når hugmålaren er full, står Jotunsteget som eit eige kort, og det er den einaste delen av jotunen spelaren alltid styrer sjølv.",
+  "laert": null,
+  "laert_scener": [
+   "S2_12"
+  ],
+  "under": null,
+  "aatferd": "jotunen_jotunsteget",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:610"
+ },
+ {
+  "id": "jotunen_lyfte",
+  "figur": "jotunen",
+  "namn": "Lyfte",
+  "type": "feltevne",
+  "kostnad": null,
+  "verknad_tekst": "Jotunen flyttar steinar og ras og opnar stigar ingen andre kan gå. Det lukkast alltid. Folk i nærleiken blir skremde, og i bygder vil ingen snakke med partyet resten av dagen. Lyfte står i par med Spele opp til Ole Bull.",
+  "laert": null,
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "jotunen_lyfte",
+  "sfx": "sfx.felt.lyfte",
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:614"
+ },
+ {
+  "id": "rasmus_flykt",
+  "figur": "rasmus",
+  "namn": "Flykt",
+  "type": "kommando",
+  "kostnad": null,
+  "verknad_tekst": null,
+  "laert": "0.1",
+  "laert_scener": [
+   "s0_1"
+  ],
+  "under": null,
+  "aatferd": "rasmus_flykt",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/04 Figurar Collett til jotunen.md:16"
+ },
+ {
+  "id": "samspel_knip_og_kaka",
+  "figur": [
+   "unge_ivar",
+   "tussen"
+  ],
+  "namn": "Knip og kaka",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Ivar kastar kaka, tussen knip same mål. To treff som tek to segl, og tussen blir mett",
+  "laert": "1.3",
+  "laert_scener": [
+   "s1_3"
+  ],
+  "under": null,
+  "aatferd": "samspel_knip_og_kaka",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:294"
+ },
+ {
+  "id": "samspel_ordet_i_handa",
+  "figur": [
+   "aasen",
+   "huldra"
+  ],
+  "namn": "Ordet i handa",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Huldra held eit gamalt ord, Aasen seier det. Ordet verkar med hennar fulle kraft og blir ikkje skrive",
+  "laert": "1.17, val B",
+  "laert_scener": [
+   "s1_17"
+  ],
+  "under": null,
+  "aatferd": "samspel_ordet_i_handa",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:295"
+ },
+ {
+  "id": "samspel_preike_og_haan",
+  "figur": [
+   "landstad",
+   "vinje"
+  ],
+  "namn": "Preike og hån",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Landstad preikar, Vinje hånar. Fiendane blir Stum i éin runde og tek skade",
+  "laert": "Samtale 6, sideoppdrag 1",
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "samspel_preike_og_haan",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:296"
+ },
+ {
+  "id": "samspel_fristadsong",
+  "figur": [
+   "landstad",
+   "huldra"
+  ],
+  "namn": "Fristadsong",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Heile partyet blir lækt og får vern mot Bunden i tre rundar",
+  "laert": "Samtale 14, sideoppdrag 1",
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "samspel_fristadsong",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:297"
+ },
+ {
+  "id": "samspel_rett_og_slett",
+  "figur": [
+   "aasen",
+   "knudsen"
+  ],
+  "namn": "Rett og slett",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Den svakare utgåva av Tvo mål før 1852. Gjer eitt blekkåtak eller eit blekkvesen om til vanleg tale",
+  "laert": "S1.33",
+  "laert_scener": [
+   "S1_33"
+  ],
+  "under": null,
+  "aatferd": "samspel_rett_og_slett",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:298"
+ },
+ {
+  "id": "samspel_heimjoik",
+  "figur": [
+   "huldra",
+   "ravdna"
+  ],
+  "namn": "Heimjoik",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Ravdna joikar eit vesen, huldra kallar på det. Vesenet går heim med ein gong",
+  "laert": "5.17",
+  "laert_scener": [
+   "s5_17"
+  ],
+  "under": null,
+  "aatferd": "samspel_heimjoik",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:299"
+ },
+ {
+  "id": "samspel_tre_maal",
+  "figur": [
+   "aasen",
+   "huldra",
+   "ravdna"
+  ],
+  "namn": "Tre mål",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Kvar talar sitt eige mål i same runde. Alle fiendar blir Lytta, og alle sårbarheiter blir viste",
+  "laert": "5.17",
+  "laert_scener": [
+   "s5_17"
+  ],
+  "under": null,
+  "aatferd": "samspel_tre_maal",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:300"
+ },
+ {
+  "id": "samspel_vaarloysing",
+  "figur": [
+   "aasen",
+   "ravdna"
+  ],
+  "namn": "Vårløysing",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Aasen legg eit j-ord på isen medan Ravdna joikar staden. Ordet kjem med innskriving: spelaren trykkjer idet joiken kjem attende til byrjinga. Fimbul blir løfta frå heile partyet, og partyet får lindring kvar runde så lenge joiken varer",
+  "laert": "6.19b",
+  "laert_scener": [
+   "s6_19b"
+  ],
+  "under": null,
+  "aatferd": "samspel_vaarloysing",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:301"
+ },
+ {
+  "id": "samspel_tvo_maal",
+  "figur": [
+   "aasen",
+   "knudsen"
+  ],
+  "namn": "Tvo mål",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Rotform og Ret saman, lada i fire rundar. Knudsen treng 4 ladefelt og Aasen ei rotform. Mot kanselliblekk tek det alle segl på vanlege blekkvesen og 3 segl på bossar. Mot Kansellisten (S2.30) skriv det ei partylov",
+  "laert": "5.27",
+  "laert_scener": [
+   "s5_27"
+  ],
+  "under": null,
+  "aatferd": "samspel_tvo_maal",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:302"
+ },
+ {
+  "id": "samspel_salme_og_hardingfele",
+  "figur": [
+   "landstad",
+   "ole_bull"
+  ],
+  "namn": "Salme og hardingfele",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Landstad syng Salmesong medan Bull spelar Slått frå Valdres. Heile partyet blir lækt og har vern mot Rettskriven og Taus i tre rundar",
+  "laert": "6.6, når begge er med",
+  "laert_scener": [
+   "s6_6"
+  ],
+  "under": null,
+  "aatferd": "samspel_salme_og_hardingfele",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:303"
+ },
+ {
+  "id": "samspel_der_var_ein_gong",
+  "figur": [
+   "asbjornsen",
+   "moe"
+  ],
+  "namn": "Der var ein gong",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Moe les medan Asbjørnsen kallar. Vesenet handlar to gonger og får att 1 Vilje. I 7.9b blir samspelet snudd: Asbjørnsen les saman med Moe, og draget frå Munch slepper boka",
+  "laert": "6.9, når begge er med",
+  "laert_scener": [
+   "s6_9"
+  ],
+  "under": null,
+  "aatferd": "samspel_der_var_ein_gong",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:304"
+ },
+ {
+  "id": "samspel_trollet_forstaar",
+  "figur": [
+   "knudsen",
+   "asbjornsen"
+  ],
+  "namn": "Trollet forstår",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Asbjørnsen påkallar, Knudsen rettar namnet på vesenet til bymål, og vesenet handlar éin gong ekstra utan å miste Vilje",
+  "laert": "6.9, val B",
+  "laert_scener": [
+   "s6_9"
+  ],
+  "under": null,
+  "aatferd": "samspel_trollet_forstaar",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:305"
+ },
+ {
+  "id": "samspel_julegraut",
+  "figur": [
+   "aasen",
+   "huldra",
+   "tussen"
+  ],
+  "namn": "Julegraut",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Heile partyet blir lækt, Fimbul forsvinn, og tussen handlar to gonger neste runde",
+  "laert": "6.10",
+  "laert_scener": [
+   "s6_10"
+  ],
+  "under": null,
+  "aatferd": "samspel_julegraut",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:306"
+ },
+ {
+  "id": "samspel_stein_og_streng",
+  "figur": [
+   "ole_bull",
+   "jotunen"
+  ],
+  "namn": "Stein og streng",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Bull spelar, jotunen trampar i takt mot alle fiendar og får 2 Tillit",
+  "laert": "Samtale 4 (Ole Bull og jotunen)",
+  "laert_scener": [],
+  "under": null,
+  "aatferd": "samspel_stein_og_streng",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:307"
+ },
+ {
+  "id": "samspel_leiv",
+  "figur": [
+   "aasen",
+   "aslaug"
+  ],
+  "namn": "Leiv",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Eit hugsa ord blir delt med heile partyet. Alle får verknaden i same runde, ordet blir ikkje brukt opp, og plassen i Hugsen står att",
+  "laert": "6.18",
+  "laert_scener": [
+   "s6_18"
+  ],
+  "under": null,
+  "aatferd": "samspel_leiv",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:308"
+ },
+ {
+  "id": "samspel_stev_og_motstev",
+  "figur": [
+   "vinje",
+   "aslaug"
+  ],
+  "namn": "Stev og motstev",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Vinje opnar med ei Kvikk-line, Aslaug svarar med lina hans som krok. Kvedet hennar tel som om ho hadde tre krokar",
+  "laert": "6.18",
+  "laert_scener": [
+   "s6_18"
+  ],
+  "under": null,
+  "aatferd": "samspel_stev_og_motstev",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:309"
+ },
+ {
+  "id": "samspel_stille_time",
+  "figur": [
+   "collett",
+   "knudsen"
+  ],
+  "namn": "Stille time",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Alle fiendar blir Stum i 2 rundar, og Knudsen fyller 3 ladefelt",
+  "laert": "Etter fem kampar saman, eller i kongevegen (7.6)",
+  "laert_scener": [
+   "s7_6"
+  ],
+  "under": null,
+  "aatferd": "samspel_stille_time",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:310"
+ },
+ {
+  "id": "samspel_teppefall",
+  "figur": [
+   "collett",
+   "knudsen",
+   "ole_bull"
+  ],
+  "namn": "Teppefall",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Collett stansar stemma, Bull spelar over henne, og Knudsen fornorskar. Alle fiendar som er Stum, blir retta eitt steg og mistar 2 segl",
+  "laert": "7.6",
+  "laert_scener": [
+   "s7_6"
+  ],
+  "under": null,
+  "aatferd": "samspel_teppefall",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:311"
+ },
+ {
+  "id": "samspel_draumkvedet",
+  "figur": [
+   "landstad",
+   "aslaug",
+   "vinje"
+  ],
+  "namn": "Draumkvedet",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Landstad syng utan bok, Aslaug kvedar, Vinje held takten. Fjernar alle statusar frå gruppa og gjev vern mot redsle resten av dungeonen. Landstad har òg ei eiga evne med same namn",
+  "laert": "7.4",
+  "laert_scener": [
+   "s7_4"
+  ],
+  "under": null,
+  "aatferd": "samspel_draumkvedet",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:312"
+ },
+ {
+  "id": "samspel_kvinna_skal_tale",
+  "figur": [
+   "collett",
+   "berte"
+  ],
+  "namn": "Kvinna skal tale",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Collett gjer fienden Stum, og Berte seier Apg 2:17. Ingen i partyet kan bli Taus resten av kampen",
+  "laert": "5.13b, når begge er med",
+  "laert_scener": [
+   "s5_13b"
+  ],
+  "under": null,
+  "aatferd": "samspel_kvinna_skal_tale",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:313"
+ },
+ {
+  "id": "samspel_pilegrimssongen",
+  "figur": [
+   "landstad",
+   "moe"
+  ],
+  "namn": "Pilegrimssongen",
+  "type": "samspel",
+  "kostnad": null,
+  "verknad_tekst": "Dei syng saman for partyet. Heile partyet blir lækt og får vern mot Rettskriven og Forstokka i tre rundar",
+  "laert": "S2.31",
+  "laert_scener": [
+   "S2_31"
+  ],
+  "under": null,
+  "aatferd": "samspel_pilegrimssongen",
+  "sfx": null,
+  "kjelde": "05 Mekanikk/01 Grunnsystemet.md:314"
+ }
+]

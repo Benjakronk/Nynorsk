@@ -1,0 +1,1479 @@
+[
+ {
+  "id": "V1",
+  "namn": "Hjørundfjorden",
+  "naturtype": "Fjord og tindar",
+  "region": "Ørsta og Sunnmøre",
+  "forste_besok": "September 1842",
+  "vinterlag": "Januar 1851",
+  "veg": "Valfri",
+  "niva_tekst": "10, vinter 34",
+  "dungeon_og_boss": "Trollgjølet på Molaup: Djurra. Vinter: Molaup-ormen",
+  "lag": [
+   {
+    "id": "forste_besok",
+    "etappar": [
+     {
+      "nr": 1,
+      "stad": "Bondalen og eidet",
+      "maal": "Kome ned til Sæbø og få låne båt",
+      "grep": "Geitene har spreidd seg i lia, og bonden lånar ikkje ut båten før dei er heime. Lokk samlar dei. Lytt peikar mot røyken over Molaup",
+      "opnar": "Inngangsvarden ved kyrkja på Sæbø og robåten",
+      "kjelde": "06 Verda/06 Villmarkene.md:87"
+     },
+     {
+      "nr": 2,
+      "stad": "Stranda mellom Næs og Molaup",
+      "maal": "Finne Djurre-føttet",
+      "grep": "Fotsporet ligg under tang og stein. Stadordet fjøra opnar det, og eit syn viser djurra som sparkar frå i stormen",
+      "opnar": "Vegen opp lia mot Raamanden",
+      "kjelde": "06 Verda/06 Villmarkene.md:88"
+     },
+     {
+      "nr": 3,
+      "stad": "Raamanden",
+      "maal": "Få steinmannen til å seie kvar djurra bur",
+      "grep": "Steinmannen har Skam etter spyttet. Aasen lyttar i tre rundar utan å spørje, slik han lærte i 1.13 og 2.11, og skammen sig av. Stadordet ur legg ura til ro",
+      "opnar": "Stien over ura til holet",
+      "kjelde": "06 Verda/06 Villmarkene.md:89"
+     },
+     {
+      "nr": 4,
+      "stad": "Stavset-fluda",
+      "maal": "Finne ankeret frå djurreskipet",
+      "grep": "Fiskaren på fluda vil ha ein fangst før han fortel. I skodda viser stadordet skodda masta under vatnet",
+      "opnar": "Trollgjølet",
+      "kjelde": "06 Verda/06 Villmarkene.md:90"
+     }
+    ]
+   },
+   {
+    "id": "vinterlag",
+    "etappar": [
+     {
+      "nr": 5,
+      "stad": "Sæbø",
+      "maal": "Samle bygda i kyrkja",
+      "grep": "Folk sit innestengde på gardane. Berte samlar dei med Samle til møte, og kyrkja blir fristad og kvileplass",
+      "opnar": "Isen på fjorden",
+      "kjelde": "06 Verda/06 Villmarkene.md:100"
+     },
+     {
+      "nr": 6,
+      "stad": "Djurre-føttet under isen",
+      "maal": "Finne kvar ormen har gått",
+      "grep": "Stadordet tele viser frosen grunn som ber. Svart is er tynn, og Lytt høyrer han syngje",
+      "opnar": "Vegen mot Molaup",
+      "kjelde": "06 Verda/06 Villmarkene.md:101"
+     },
+     {
+      "nr": 7,
+      "stad": "Den kvite korridoren",
+      "maal": "Møte Molaup-ormen",
+      "grep": "Uvêret veks for kvart steg. Røykjelse frå første besøk gjev ein kort stille stund",
+      "opnar": "Bosskampen",
+      "kjelde": "06 Verda/06 Villmarkene.md:102"
+     }
+    ]
+   }
+  ],
+  "stadord": [
+   {
+    "ord": "fjora",
+    "form": "fjøra",
+    "nr": "1.24"
+   },
+   {
+    "ord": "ur",
+    "form": "ur",
+    "nr": "1.51"
+   },
+   {
+    "ord": "skodda",
+    "form": "skodda",
+    "nr": "1.45"
+   },
+   {
+    "ord": "naust",
+    "form": "naust",
+    "nr": "1.50"
+   },
+   {
+    "ord": "tele",
+    "form": "tele",
+    "nr": "12.36"
+   },
+   {
+    "ord": "is",
+    "form": "is",
+    "nr": "12.17"
+   }
+  ],
+  "stadord_tekst": "Stadord: fjøra (1.24), ur (1.51), skodda (1.45), naust (1.50). I vinterlaget: tele (12.36) og is (12.17).",
+  "stadminne_tekst": "Lyttestaden er ein stein på eidet over Bondalen. Ekkoa ligg i den tause fjorden, og Aasen går i fjøra og på isfrie berg. Rennande bekkar fyller stillemålaren.",
+  "skjermar": [],
+  "kjelde": "06 Verda/06 Villmarkene.md:60"
+ },
+ {
+  "id": "V2",
+  "namn": "Lauvliene i Lyster",
+  "naturtype": "Lauvskog og bre",
+  "region": "Sogn",
+  "forste_besok": "Oktober 1842 til februar 1843",
+  "vinterlag": "August 1852",
+  "veg": "Valfri",
+  "niva_tekst": "12, vinter 40",
+  "dungeon_og_boss": "Under Nigardsbreen: Takstprotokollen i isen. Vinter: Breframstøyten",
+  "lag": [
+   {
+    "id": "forste_besok",
+    "etappar": [
+     {
+      "nr": 1,
+      "stad": "Lauvlia over Solvorn",
+      "maal": "Finne ut kvar lauvet blir av",
+      "grep": "Lytt på trea skil mellom tre som er styva i år og tre som ikkje er det. Lokk får geitene til å vise kvar kjervane låg",
+      "opnar": "Robåten over til Urnes",
+      "kjelde": "06 Verda/06 Villmarkene.md:130"
+     },
+     {
+      "nr": 2,
+      "stad": "Urnes",
+      "maal": "Høyre om breen og om Rjupa",
+      "grep": "Klokkaren fortel segna om Jostedalsrypa og om breen som tok Nigard. Kyrkja er fristad og kvileplass",
+      "opnar": "Stien nordover mot Feigefossen",
+      "kjelde": "06 Verda/06 Villmarkene.md:131"
+     },
+     {
+      "nr": 3,
+      "stad": "Feigefossen",
+      "maal": "Kome forbi fossen",
+      "grep": "Stadordet foss opnar ein sti bak fosseskodda. Bak han ligg ein lauvlo der nokon har teke kjervar og lagt att eit blekkmerke",
+      "opnar": "Vegen inn mot Jostedalen",
+      "kjelde": "06 Verda/06 Villmarkene.md:132"
+     },
+     {
+      "nr": 4,
+      "stad": "Brefronten ved Nigard",
+      "maal": "Finne inngangen i isen",
+      "grep": "Gjetaren i Jostedalen gjev ordet jøkul. Stadordet jøkul ved brefronten opnar ein port i isen",
+      "opnar": "Under Nigardsbreen",
+      "kjelde": "06 Verda/06 Villmarkene.md:133"
+     }
+    ]
+   },
+   {
+    "id": "vinterlag",
+    "etappar": [
+     {
+      "nr": 5,
+      "stad": "Lauvliene",
+      "maal": "Berge lauvet på fem tre",
+      "grep": "Snøen må ristast av før greinene knekk, og lauvet må skjerast før kvelden frys det. Stadordet kvist og eit j-ord tiner ei grein",
+      "opnar": "Fortun",
+      "kjelde": "06 Verda/06 Villmarkene.md:143"
+     },
+     {
+      "nr": 6,
+      "stad": "Fortun",
+      "maal": "Samle folk som vil hjelpe",
+      "grep": "Fortun stavkyrkje er fristad. Folk frå Sognefjellet har søkt ly her",
+      "opnar": "Vegen inn Jostedalen",
+      "kjelde": "06 Verda/06 Villmarkene.md:144"
+     },
+     {
+      "nr": 7,
+      "stad": "Nigard",
+      "maal": "Stoppe breen før han tek tunet",
+      "grep": "Breen har gått til gjerdet. Tunet står som vernemål",
+      "opnar": "Bosskampen",
+      "kjelde": "06 Verda/06 Villmarkene.md:145"
+     }
+    ]
+   }
+  ],
+  "stadord": [
+   {
+    "ord": "foss",
+    "form": "foss",
+    "nr": "3.20"
+   },
+   {
+    "ord": "jokul",
+    "form": "jøkul",
+    "nr": "3.37"
+   },
+   {
+    "ord": "gil",
+    "form": "il",
+    "nr": "3.33"
+   },
+   {
+    "ord": "rjupa",
+    "form": "rjupa",
+    "nr": "3.36"
+   },
+   {
+    "ord": "kvist",
+    "form": "kvist",
+    "nr": "4.27"
+   },
+   {
+    "ord": "tre",
+    "form": "tre",
+    "nr": "4.22"
+   }
+  ],
+  "stadord_tekst": "Stadord: foss (3.20), jøkul (3.37), gil (3.33), rjupa (3.36). I vinterlaget: kvist (4.27) og tre (4.22).",
+  "stadminne_tekst": "Lyttestaden er ein styva alm over Solvorn. Ekkoa ligg i den tause lia, der kvart tre ein gong blei kalla med eit namn. Raslande lauv fyller stillemålaren.",
+  "skjermar": [],
+  "kjelde": "06 Verda/06 Villmarkene.md:61"
+ },
+ {
+  "id": "V3",
+  "namn": "Folgefonna og Sørfjorden",
+  "naturtype": "Bre og fjord",
+  "region": "Voss og Hardanger",
+  "forste_besok": "Mai 1844",
+  "vinterlag": "Mai 1853",
+  "veg": "Hovudveg (2.12–2.13)",
+  "niva_tekst": "15, vinter 43",
+  "dungeon_og_boss": "Tingstova i Ullensvang: Tingbokvesenet. Vinter: Havgrotta, Kladden (S2.6)",
+  "lag": [
+   {
+    "id": "forste_besok",
+    "etappar": [
+     {
+      "nr": 1,
+      "stad": "Frukthagane og prestegarden på Lofthus",
+      "maal": "Finne ut kvar dei gamle grensene gjekk",
+      "grep": "Etter huldreslåtten i 2.12 fortel Olav om saka. Vêrbøkene til Hertzberg ligg på prestegarden og viser kva dagar fonna låg i skodde. Lytt peikar opp lia",
+      "opnar": "Munketreppene",
+      "kjelde": "06 Verda/06 Villmarkene.md:171"
+     },
+     {
+      "nr": 2,
+      "stad": "Munketreppene og Nosi",
+      "maal": "Finne reinsjegaren",
+      "grep": "Trappene er bratte og glatte. Reinsjegaren gjev ordet vidd og fortel at ein gast går langs den gamle grensa under fonna om natta",
+      "opnar": "Vegen ned att og båten",
+      "kjelde": "06 Verda/06 Villmarkene.md:172"
+     },
+     {
+      "nr": 3,
+      "stad": "Over Sørfjorden til stølen under Buarbreen",
+      "maal": "Finne gjetarguten og budeia",
+      "grep": "Ferjemannen gjev ordet fjord, og gjetarguten under fonna gjev jøkul. Stadordet jøkul ved breen opnar ei snøbru. Budeia hugsar kor den raude steinen låg før gasten flytte han",
+      "opnar": "Kanten av fonna",
+      "kjelde": "06 Verda/06 Villmarkene.md:173"
+     },
+     {
+      "nr": 4,
+      "stad": "Kanten av fonna om natta",
+      "maal": "Møte Deildegasten",
+      "grep": "Deildegasten ber steinen og spør kvar han skal setje han. Kampen er gåtekampen han har i bestiariet, og han lærer deilestein. Har partyet møtt han før i lia, ber han steinen vidare til kanten av fonna, og ærendet kan berre gjerast der. Når ærendet er gjort, får Olav vitnemålet",
+      "opnar": "Tingstova, og 2.13 byrjar",
+      "kjelde": "06 Verda/06 Villmarkene.md:174"
+     }
+    ]
+   },
+   {
+    "id": "vinterlag",
+    "etappar": [
+     {
+      "nr": 5,
+      "stad": "Frukthagane",
+      "maal": "Grave fram trea før greinene knekk",
+      "grep": "Snøen må gravast frå stammane og ristast av greinene. Stadordet apall viser kva tre som lever",
+      "opnar": "Båten over fjorden",
+      "kjelde": "06 Verda/06 Villmarkene.md:184"
+     },
+     {
+      "nr": 6,
+      "stad": "Stølen under Buarbreen",
+      "maal": "Berge budeia og kyrne",
+      "grep": "Breen står ved stølsveggen. Lokk får kyrne ut, og budeia kjenner att huldra frå 1844",
+      "opnar": "Fjøra under fonna",
+      "kjelde": "06 Verda/06 Villmarkene.md:185"
+     },
+     {
+      "nr": 7,
+      "stad": "Fjøra under fonna",
+      "maal": "Kome inn i havgrotta ved fjøre sjø",
+      "grep": "Partyet ventar på fjøra, slik S2.6 krev",
+      "opnar": "Havgrotta under Folgefonna (S2.6)",
+      "kjelde": "06 Verda/06 Villmarkene.md:186"
+     }
+    ]
+   }
+  ],
+  "stadord": [
+   {
+    "ord": "fjord",
+    "form": "fjord",
+    "nr": "3.32"
+   },
+   {
+    "ord": "jokul",
+    "form": "jøkul",
+    "nr": "3.37"
+   },
+   {
+    "ord": "bleik",
+    "form": "bleik",
+    "nr": "4.33"
+   },
+   {
+    "ord": "bjolla",
+    "form": "bjølla",
+    "nr": "4.01"
+   },
+   {
+    "ord": "deilestein",
+    "form": "deilestein",
+    "nr": "4.05"
+   },
+   {
+    "ord": "apall",
+    "form": "apall",
+    "nr": "4.25"
+   },
+   {
+    "ord": "loysing",
+    "form": "løysin",
+    "nr": "12.28"
+   }
+  ],
+  "stadord_tekst": "Stadord: fjord (3.32), jøkul (3.37), bleik (4.33), bjølla (4.01), deilestein (4.05). I vinterlaget: apall (4.25) og løysing (12.28).",
+  "stadminne_tekst": "Lyttestaden er ein stein ved stølen under Buarbreen. Ekkoa er bjølleklangar frå kyr som gjekk her før breen voks. Skodda frå fonna fyller stillemålaren når ho driv over Aasen.",
+  "skjermar": [],
+  "kjelde": "06 Verda/06 Villmarkene.md:62"
+ },
+ {
+  "id": "V4",
+  "namn": "Lyngheia og strendene på Jæren",
+  "naturtype": "Kystlynghei, myr og sanddyner",
+  "region": "Rogaland",
+  "forste_besok": "August til oktober 1844",
+  "vinterlag": "Mars 1852",
+  "veg": "Valfri",
+  "niva_tekst": "17, vinter 38",
+  "dungeon_og_boss": "Røysene ved Hå: Røysvorden. Vinter: Uvêret over Revet",
+  "lag": [
+   {
+    "id": "forste_besok",
+    "etappar": [
+     {
+      "nr": 1,
+      "stad": "Lyngheia i tåke (S1.19)",
+      "maal": "Kalle sauene heim med trollet sin måte",
+      "grep": "Slik S1.19 skildrar det",
+      "opnar": "Myra",
+      "kjelde": "06 Verda/06 Villmarkene.md:212"
+     },
+     {
+      "nr": 2,
+      "stad": "Myra og torvtaket",
+      "maal": "Kome over myra til stranda",
+      "grep": "Torvskjeraren gjev ordet myr og myrbonden blaut. Stadordet blaut viser kvar tuene ber. Lokk får villsauene over først",
+      "opnar": "Stranda ved Hå",
+      "kjelde": "06 Verda/06 Villmarkene.md:213"
+     },
+     {
+      "nr": 3,
+      "stad": "Stranda ved Hå",
+      "maal": "Finne ut kvifor steinane står stille",
+      "grep": "Klokkaren på Hå tek vare på vrakgodset. Han seier at folk har teke stein frå røysene til gardane i mange mannsaldrar",
+      "opnar": "Gravfeltet",
+      "kjelde": "06 Verda/06 Villmarkene.md:214"
+     },
+     {
+      "nr": 4,
+      "stad": "Gravfeltet",
+      "maal": "Finne døra i røysa",
+      "grep": "Stadordet stett på ein stein i steingarden viser kva røys han kom frå. Lytt finn døra",
+      "opnar": "Røysene ved Hå",
+      "kjelde": "06 Verda/06 Villmarkene.md:215"
+     }
+    ]
+   },
+   {
+    "id": "vinterlag",
+    "etappar": [
+     {
+      "nr": 5,
+      "stad": "Lyngheia under snø",
+      "maal": "Finne lyng som kan brenne",
+      "grep": "Snøen må skrapast av, og lyngen under er turr. Stadordet glod tenner han",
+      "opnar": "Stranda",
+      "kjelde": "06 Verda/06 Villmarkene.md:225"
+     },
+     {
+      "nr": 6,
+      "stad": "Stranda ved Hå og Obrestad",
+      "maal": "Tenne to bål som skuta kan sjå",
+      "grep": "Vinden sløkkjer bål som ikkje er verna med torv. Folk frå bygda kjem med torv når dei ser elden",
+      "opnar": "Revet",
+      "kjelde": "06 Verda/06 Villmarkene.md:226"
+     },
+     {
+      "nr": 7,
+      "stad": "Revet",
+      "maal": "Halde bålet ved revet brennande til skuta har snudd",
+      "grep": "Tre bål står som vernemål",
+      "opnar": "Bosskampen",
+      "kjelde": "06 Verda/06 Villmarkene.md:227"
+     }
+    ]
+   }
+  ],
+  "stadord": [
+   {
+    "ord": "myr",
+    "form": "myr",
+    "nr": "5.10"
+   },
+   {
+    "ord": "blaut",
+    "form": "blaut",
+    "nr": "5.28"
+   },
+   {
+    "ord": "saud",
+    "form": "saud",
+    "nr": "5.17"
+   },
+   {
+    "ord": "tjorn",
+    "form": "tjørn",
+    "nr": "5.26"
+   },
+   {
+    "ord": "stett",
+    "form": "stett",
+    "nr": "5.18"
+   },
+   {
+    "ord": "stein",
+    "form": "stein",
+    "nr": "1.05"
+   },
+   {
+    "ord": "glod",
+    "form": "lod",
+    "nr": "2.37"
+   },
+   {
+    "ord": "storm",
+    "form": "storm",
+    "nr": "8.28"
+   }
+  ],
+  "stadord_tekst": "Stadord: myr (5.10), blaut (5.28), saud (5.17), tjørn (5.26), stett (5.18), stein (1.05). I vinterlaget: glod (2.37) og storm (8.28).",
+  "stadminne_tekst": "Lyttestaden er ein stein ved Håelva. Ekkoa er jærske ord ingen seier lenger. Flygesanden fyller stillemålaren.",
+  "skjermar": [],
+  "kjelde": "06 Verda/06 Villmarkene.md:63"
+ },
+ {
+  "id": "V5",
+  "namn": "Setesdalsheiane og Byklestigen",
+  "naturtype": "Dal og hei",
+  "region": "Setesdal",
+  "forste_besok": "November og desember 1844",
+  "vinterlag": "November 1853",
+  "veg": "Valfri",
+  "niva_tekst": "19, vinter 44",
+  "dungeon_og_boss": "Blesterplassen på Hovden: Blestervetten. Vinter: Kaldblesteren",
+  "lag": [
+   {
+    "id": "forste_besok",
+    "etappar": [
+     {
+      "nr": 1,
+      "stad": "Valle",
+      "maal": "Kome til vigslinga av den nye kyrkja",
+      "grep": "Bygda bur seg til vigslinga 1. desember. Den gamle kyrkja er riven, og klokkaren manglar folk til å bere. Partyet ser vigslinga frå galleriet",
+      "opnar": "Byklestigen",
+      "kjelde": "06 Verda/06 Villmarkene.md:253"
+     },
+     {
+      "nr": 2,
+      "stad": "Byklestigen",
+      "maal": "Kome opp stigen mellom kastevindane",
+      "grep": "Stigen er glatt. Lytt høyrer vinden kome. Stadordet straum stiller Otra under stigen slik at ein høyrer vinden betre",
+      "opnar": "Bykle",
+      "kjelde": "06 Verda/06 Villmarkene.md:254"
+     },
+     {
+      "nr": 3,
+      "stad": "Bykle kyrkje",
+      "maal": "Lese himmelen i taket",
+      "grep": "Stjernene og skyene i rosemålinga syner ein veg over heia. Kyrkja er fristad",
+      "opnar": "Heia",
+      "kjelde": "06 Verda/06 Villmarkene.md:255"
+     },
+     {
+      "nr": 4,
+      "stad": "Heia",
+      "maal": "Finne skyttaren",
+      "grep": "Skyttaren ligg i eit bogastelle ved dyregravene. Lokk får simla med kalven bort frå grava. Han fortel ei soge Aasen kan skrive ned",
+      "opnar": "Blesterplassen på Hovden",
+      "kjelde": "06 Verda/06 Villmarkene.md:256"
+     }
+    ]
+   },
+   {
+    "id": "vinterlag",
+    "etappar": [
+     {
+      "nr": 5,
+      "stad": "Valle kyrkje",
+      "maal": "Samle bygda",
+      "grep": "Kyrkja er ni år gammal og fristad. Dei unge frå 1844 kvedar for å halde Grotormen sovande",
+      "opnar": "Byklestigen",
+      "kjelde": "06 Verda/06 Villmarkene.md:266"
+     },
+     {
+      "nr": 6,
+      "stad": "Byklestigen under ras",
+      "maal": "Opne stigen",
+      "grep": "Lyfte flyttar steinane. Stadordet kleiv viser kvar stigen gjekk",
+      "opnar": "Heia",
+      "kjelde": "06 Verda/06 Villmarkene.md:267"
+     },
+     {
+      "nr": 7,
+      "stad": "Hovden",
+      "maal": "Sløkkje den kalde blesteren",
+      "grep": "Fimbulvinteren har tent blesteren att med kulde",
+      "opnar": "Bosskampen",
+      "kjelde": "06 Verda/06 Villmarkene.md:268"
+     }
+    ]
+   }
+  ],
+  "stadord": [
+   {
+    "ord": "straum",
+    "form": "straum",
+    "nr": "3.08"
+   },
+   {
+    "ord": "ur",
+    "form": "ur",
+    "nr": "1.51"
+   },
+   {
+    "ord": "skrida",
+    "form": "skrida",
+    "nr": "3.34"
+   },
+   {
+    "ord": "myr",
+    "form": "myr",
+    "nr": "5.10"
+   },
+   {
+    "ord": "stev",
+    "form": "stev",
+    "nr": "5.19"
+   },
+   {
+    "ord": "tjeld",
+    "form": "tjeld",
+    "nr": "5.09"
+   },
+   {
+    "ord": "kleiv",
+    "form": "kleiv",
+    "nr": "10.14"
+   },
+   {
+    "ord": "skare",
+    "form": "skare",
+    "nr": "6.26"
+   },
+   {
+    "ord": "fonn",
+    "form": "fonn",
+    "nr": "6.25"
+   }
+  ],
+  "stadord_tekst": "Stadord: straum (3.08), ur (1.51), skrida (3.34), myr (5.10), stev (5.19), tjeld (5.09). I vinterlaget: kleiv (10.14), skare (6.26) og fonn (6.25).",
+  "stadminne_tekst": "Lyttestaden er ein stein ved Bykle kyrkje. Ekkoa er steva som blei kvedne på heia. Vinden i stigen fyller stillemålaren.",
+  "skjermar": [],
+  "kjelde": "06 Verda/06 Villmarkene.md:64"
+ },
+ {
+  "id": "V6",
+  "namn": "Hardangervidda frå Rauland",
+  "naturtype": "Vidde",
+  "region": "Telemark",
+  "forste_besok": "Mai 1845",
+  "vinterlag": "Juli 1852 til februar 1853",
+  "veg": "Valfri",
+  "niva_tekst": "22, vinter 40",
+  "dungeon_og_boss": "Steinbua under Falkenuten: Falkonerdraugen. Vinter: Førsteordenspunktet på Hårteigen",
+  "lag": [
+   {
+    "id": "forste_besok",
+    "etappar": [
+     {
+      "nr": 1,
+      "stad": "Urebø-ura ved Totak",
+      "maal": "Høyre segna om bryllaupsfølgjet",
+      "grep": "Myllarguten spelar ein slått som får steinane til å nynne. Kved att hos Aslaug held på slåtten",
+      "opnar": "Stien opp frå Totak",
+      "kjelde": "06 Verda/06 Villmarkene.md:294"
+     },
+     {
+      "nr": 2,
+      "stad": "Møsstrond",
+      "maal": "Få vegvisar inn på vidda",
+      "grep": "Tre prestegjeld fører kvar si kyrkjebok for same grenda, og ingen er samde om kven som bur der. Følgje heim hos Landstad opnar døra hos den eldste",
+      "opnar": "Vidda",
+      "kjelde": "06 Verda/06 Villmarkene.md:295"
+     },
+     {
+      "nr": 3,
+      "stad": "Vidda",
+      "maal": "Følgje reinen over skaren",
+      "grep": "Simlene kalvar. Lokk får flokken til å gå utanom tjørnene der isen er rotten. Stadordet vidd viser kvar flokken går",
+      "opnar": "Falkenuten",
+      "kjelde": "06 Verda/06 Villmarkene.md:296"
+     },
+     {
+      "nr": 4,
+      "stad": "Falkeriset",
+      "maal": "Finne steinbua",
+      "grep": "Erte hos Vinje får ein gjetar til å seie kva han har sett der om natta",
+      "opnar": "Steinbua under Falkenuten",
+      "kjelde": "06 Verda/06 Villmarkene.md:297"
+     }
+    ]
+   },
+   {
+    "id": "vinterlag",
+    "etappar": [
+     {
+      "nr": 5,
+      "stad": "Tveitli",
+      "maal": "Få ski",
+      "grep": "Aslaug blir med i 6.7b, og folket på Tveitli lånar partyet ski. Forslag: har partyet høyrt slåtten til Myllarguten i 1845, lånar han dei lette skia sine i staden, og partyet går dobbelt så fort på vidda",
+      "opnar": "Vidda på ski",
+      "kjelde": "06 Verda/06 Villmarkene.md:307"
+     },
+     {
+      "nr": 6,
+      "stad": "Vidda",
+      "maal": "Berge tamreinen",
+      "grep": "Reinen svelt under skaren. Lokk fører flokken til ein rabbe der vinden har blåse snøen vekk",
+      "opnar": "Hårteigen",
+      "kjelde": "06 Verda/06 Villmarkene.md:308"
+     },
+     {
+      "nr": 7,
+      "stad": "Hårteigen",
+      "maal": "Finne landmålarane",
+      "grep": "Dei har bygt ein varde som skal vere fast punkt i oppmålinga av landet. Varden har eit ravnesegl som på Munch-kartet frå 6.7",
+      "opnar": "Bosskampen",
+      "kjelde": "06 Verda/06 Villmarkene.md:309"
+     }
+    ]
+   }
+  ],
+  "stadord": [
+   {
+    "ord": "vidd",
+    "form": "vidd",
+    "nr": "4.24"
+   },
+   {
+    "ord": "rein",
+    "form": "rein",
+    "nr": "4.14"
+   },
+   {
+    "ord": "simla",
+    "form": "simla",
+    "nr": "5.16"
+   },
+   {
+    "ord": "kvelv",
+    "form": "kvelv",
+    "nr": "6.14"
+   },
+   {
+    "ord": "tjorn",
+    "form": "tjørn",
+    "nr": "5.26"
+   },
+   {
+    "ord": "skare",
+    "form": "skare",
+    "nr": "6.26"
+   },
+   {
+    "ord": "fonn",
+    "form": "fonn",
+    "nr": "6.25"
+   },
+   {
+    "ord": "vok",
+    "form": "vok",
+    "nr": "12.39"
+   }
+  ],
+  "stadord_tekst": "Stadord: vidd (4.24), rein (4.14), simla (5.16), kvelv (6.14), tjørn (5.26). I vinterlaget: skare (6.26), fonn (6.25) og vok (12.39).",
+  "stadminne_tekst": "Lyttestaden er ein stein ved Nordmannsslepa, nord på vidda. Ekkoa er rop frå gjetarar og drivarar. Bekkar i vårløysinga fyller stillemålaren.",
+  "skjermar": [],
+  "kjelde": "06 Verda/06 Villmarkene.md:65"
+ },
+ {
+  "id": "V7",
+  "namn": "Jotunfjella frå Vågå og Lom",
+  "naturtype": "Høgfjell og bre",
+  "region": "Gudbrandsdalen",
+  "forste_besok": "September 1845",
+  "vinterlag": "Hausten 1852",
+  "veg": "Valfri",
+  "niva_tekst": "24, vinter 41",
+  "dungeon_og_boss": "Jøtulberget i Vågå: Jøtulen. Vinter: Iskappa på Glittertind",
+  "lag": [
+   {
+    "id": "forste_besok",
+    "etappar": [
+     {
+      "nr": 1,
+      "stad": "Vågå",
+      "maal": "Høyre kvifor jøtulen kastar",
+      "grep": "Den glatte steinen under kyrkja er varm. Folk i Vågå fortel segna. Lytt peikar vestover mot fjella",
+      "opnar": "Vegen til Lom",
+      "kjelde": "06 Verda/06 Villmarkene.md:335"
+     },
+     {
+      "nr": 2,
+      "stad": "Lom og Bøverdalen",
+      "maal": "Samle namna på tindane",
+      "grep": "Stølsfolk og reinsjegerar har sine namn på kvar tind. Kvart namn som blir høyrt, lettar skodda over ein tind på kartet",
+      "opnar": "Spiterstulen",
+      "kjelde": "06 Verda/06 Villmarkene.md:336"
+     },
+     {
+      "nr": 3,
+      "stad": "Spiterstulen og Visdalen",
+      "maal": "Kome til breen under Glittertind",
+      "grep": "Steinar Sulheim tek imot reisande og seier at ingen har stått på Galdhøpiggen. Vinje klatrar. Stadordet jøkul opnar ei snøbru",
+      "opnar": "Toppen av Glittertind",
+      "kjelde": "06 Verda/06 Villmarkene.md:337"
+     },
+     {
+      "nr": 4,
+      "stad": "Glittertind",
+      "maal": "Høyre fjellet sitt eige namn",
+      "grep": "På toppen høyrer Aasen namnet fjellet hadde før nokon skreiv det",
+      "opnar": "Jøtulberget i Vågå",
+      "kjelde": "06 Verda/06 Villmarkene.md:338"
+     }
+    ]
+   },
+   {
+    "id": "vinterlag",
+    "etappar": [
+     {
+      "nr": 5,
+      "stad": "Spiterstulen under snø",
+      "maal": "Få Steinar Sulheim med",
+      "grep": "Han vil ikkje gå før jotunen har vist at han ikkje er farleg. Jotunen sit stille ved varmen ein heil kveld",
+      "opnar": "Styggebreen",
+      "kjelde": "06 Verda/06 Villmarkene.md:348"
+     },
+     {
+      "nr": 6,
+      "stad": "Styggebreen",
+      "maal": "Klyve opp til Galdhøpiggen",
+      "grep": "Lyfte flyttar isblokker. Stadordet skavl viser kvar skavlen ber",
+      "opnar": "Toppen",
+      "kjelde": "06 Verda/06 Villmarkene.md:349"
+     },
+     {
+      "nr": 7,
+      "stad": "Glittertind",
+      "maal": "Møte iskappa",
+      "grep": "Jotunen ser at fjellet berre vil vere høgast",
+      "opnar": "Bosskampen",
+      "kjelde": "06 Verda/06 Villmarkene.md:350"
+     }
+    ]
+   }
+  ],
+  "stadord": [
+   {
+    "ord": "jokul",
+    "form": "jøkul",
+    "nr": "3.37"
+   },
+   {
+    "ord": "fjell",
+    "form": "fjell",
+    "nr": "3.01"
+   },
+   {
+    "ord": "ur",
+    "form": "ur",
+    "nr": "1.51"
+   },
+   {
+    "ord": "gil",
+    "form": "il",
+    "nr": "3.33"
+   },
+   {
+    "ord": "berg",
+    "form": "ber",
+    "nr": "10.01"
+   },
+   {
+    "ord": "skavl",
+    "form": "skavl",
+    "nr": "12.32"
+   },
+   {
+    "ord": "svell",
+    "form": "svell",
+    "nr": "12.35"
+   },
+   {
+    "ord": "jotul",
+    "form": "jøtul",
+    "nr": "8.12"
+   }
+  ],
+  "stadord_tekst": "Stadord: jøkul (3.37), fjell (3.01), ur (1.51), gil (3.33), berg (10.01). I vinterlaget: skavl (12.32), svell (12.35) og jøtul (8.12).",
+  "stadminne_tekst": "Lyttestaden er ein stein ved Spiterstulen. Ekkoa er stadnamn frå før nokon skreiv dei ned. Brebekkane fyller stillemålaren.",
+  "skjermar": [],
+  "kjelde": "06 Verda/06 Villmarkene.md:66"
+ },
+ {
+  "id": "V8",
+  "namn": "Dovrefjell og Fokstumyra",
+  "naturtype": "Fjellvidde og myr",
+  "region": "Dovre",
+  "forste_besok": "November 1845, sommaren 1847",
+  "vinterlag": "Oktober 1852",
+  "veg": "Hovudveg (3.16, 6.12)",
+  "niva_tekst": "25, sommar 27, vinter 41",
+  "dungeon_og_boss": "Grova ved Hjerkinn: Frostvettene. Vinter: Ringen av pergament, Kjettingskrivaren",
+  "lag": [
+   {
+    "id": "forste_besok",
+    "etappar": [
+     {
+      "nr": 1,
+      "stad": "Fokstumyra",
+      "maal": "Kome over myra før mørkret",
+      "grep": "Tuene er frosne og ber, medan dyene under snøen ikkje ber. Stadordet myr viser fast grunn. Lytt høyrer isen",
+      "opnar": "Kongevegen ved Fokstua",
+      "kjelde": "06 Verda/06 Villmarkene.md:376"
+     },
+     {
+      "nr": 2,
+      "stad": "Fangstgropene",
+      "maal": "Få reinflokken forbi gropene",
+      "grep": "Reinsbukken ved fangstgropa er lærarfiende. Lokk fører flokken utanom, og då viser reinsjegaren frå Lesja vegen",
+      "opnar": "Hjerkinnhø",
+      "kjelde": "06 Verda/06 Villmarkene.md:377"
+     },
+     {
+      "nr": 3,
+      "stad": "Hjerkinn",
+      "maal": "Finne kvar sporet tek til",
+      "grep": "Stuekona Marit vil ikkje snakke om det. Erte hos Vinje får henne til å seie at noko stort har lege i grova",
+      "opnar": "Grova ved Hjerkinn",
+      "kjelde": "06 Verda/06 Villmarkene.md:378"
+     }
+    ]
+   },
+   {
+    "id": "vinterlag",
+    "etappar": [
+     {
+      "nr": 4,
+      "stad": "Kongevegen i storm",
+      "maal": "Kome frå Kongsvold til Fokstumyra",
+      "grep": "Bål ved vardane held varmen. Feil rissa vardar fører mot stupet",
+      "opnar": "Myra",
+      "kjelde": "06 Verda/06 Villmarkene.md:390"
+     },
+     {
+      "nr": 5,
+      "stad": "Fokstumyra frosen",
+      "maal": "Kome over myra",
+      "grep": "Ulveflokken jagar i stormen. Stadordet varg skremmer dei éin gong",
+      "opnar": "Hjerkinn",
+      "kjelde": "06 Verda/06 Villmarkene.md:391"
+     },
+     {
+      "nr": 6,
+      "stad": "Hjerkinn",
+      "maal": "Finne ringen",
+      "grep": "Sporet fører til steinrøysa som er jotunen",
+      "opnar": "Ringen av pergament og 6.12",
+      "kjelde": "06 Verda/06 Villmarkene.md:392"
+     }
+    ]
+   }
+  ],
+  "stadord": [
+   {
+    "ord": "myr",
+    "form": "myr",
+    "nr": "5.10"
+   },
+   {
+    "ord": "blaut",
+    "form": "blaut",
+    "nr": "5.28"
+   },
+   {
+    "ord": "varde",
+    "form": "varde",
+    "nr": "2.24"
+   },
+   {
+    "ord": "fjell",
+    "form": "fjell",
+    "nr": "3.01"
+   },
+   {
+    "ord": "boyg",
+    "form": "bøy",
+    "nr": "10.05"
+   },
+   {
+    "ord": "fangstgrav",
+    "form": "fangstgrav",
+    "nr": "10.07"
+   },
+   {
+    "ord": "varg",
+    "form": "var",
+    "nr": "10.24"
+   },
+   {
+    "ord": "fjellstova",
+    "form": "fjellstova",
+    "nr": "10.10"
+   },
+   {
+    "ord": "kleiv",
+    "form": "kleiv",
+    "nr": "10.14"
+   }
+  ],
+  "stadord_tekst": "Stadord: myr (5.10), blaut (5.28), varde (2.24), fjell (3.01), bøyg (10.05), fangstgrav (10.07). I vinterlaget: varg (10.24), fjellstova (10.10) og kleiv (10.14).",
+  "stadminne_tekst": "Lyttestaden er ein stein ved den attgrodde grova. Ekkoa er ord jotunen sa i søvne. Vind over myra fyller stillemålaren.",
+  "skjermar": [],
+  "kjelde": "06 Verda/06 Villmarkene.md:67"
+ },
+ {
+  "id": "V9",
+  "namn": "Helgelandskysten og dunværa",
+  "naturtype": "Skjergard og fuglevær",
+  "region": "Helgeland",
+  "forste_besok": "September og oktober 1846",
+  "vinterlag": "Juli 1851",
+  "veg": "Valfri",
+  "niva_tekst": "27, vinter 37",
+  "dungeon_og_boss": "Kirkehelleren på Sanna: Hellervorden. Vinter: Kvitørna over Lovund",
+  "lag": [
+   {
+    "id": "forste_besok",
+    "etappar": [
+     {
+      "nr": 1,
+      "stad": "Vega og dunværa",
+      "maal": "Hjelpe dunkona",
+      "grep": "Dunsesongen er over, og kona reinsar dun inne. Ho vil vite om ærfuglen kjem att til våren, for nokon har teke frå ærfuglhusa. Lytt på sjøen finn ei rad med ærfugl",
+      "opnar": "Båten ut mot havet",
+      "kjelde": "06 Verda/06 Villmarkene.md:418"
+     },
+     {
+      "nr": 2,
+      "stad": "Medane",
+      "maal": "Lære tre medar av ein gammal fiskar",
+      "grep": "Han viser kva fjell som skal stå i hop. Når skodda kjem, held medane kursen",
+      "opnar": "Lovund",
+      "kjelde": "06 Verda/06 Villmarkene.md:419"
+     },
+     {
+      "nr": 3,
+      "stad": "Lovund",
+      "maal": "Finne lundefangaren",
+      "grep": "Fuglefjellet er tomt om hausten. Fangaren viser hyllene der hunden gjekk inn. Stadordet kobbe får ein kobbe til å vise ein sti ved fjøre",
+      "opnar": "Træna",
+      "kjelde": "06 Verda/06 Villmarkene.md:420"
+     },
+     {
+      "nr": 4,
+      "stad": "Træna",
+      "maal": "Finne inngangen til helleren",
+      "grep": "Kyrkja frå 1773 er fristad. Ved fjøre sjø kjem stien til Kirkehelleren fram",
+      "opnar": "Kirkehelleren på Sanna",
+      "kjelde": "06 Verda/06 Villmarkene.md:421"
+     }
+    ]
+   },
+   {
+    "id": "vinterlag",
+    "etappar": [
+     {
+      "nr": 5,
+      "stad": "Vega",
+      "maal": "Dekkje reira",
+      "grep": "Tang og torv må berast til ærfuglhusa før eggja frys. Dunkona frå 1846 leier arbeidet",
+      "opnar": "Lovund",
+      "kjelde": "06 Verda/06 Villmarkene.md:431"
+     },
+     {
+      "nr": 6,
+      "stad": "Lovund",
+      "maal": "Hjelpe lundefangaren",
+      "grep": "Lundehunden går inn i holene og hentar fuglar som har frose fast. Stadordet lundehund kallar han",
+      "opnar": "Fuglefjellet",
+      "kjelde": "06 Verda/06 Villmarkene.md:432"
+     },
+     {
+      "nr": 7,
+      "stad": "Fuglefjellet på Lovund",
+      "maal": "Stogge ørna som tek egg",
+      "grep": "Ørna har blitt kvit av frost",
+      "opnar": "Bosskampen",
+      "kjelde": "06 Verda/06 Villmarkene.md:433"
+     }
+    ]
+   }
+  ],
+  "stadord": [
+   {
+    "ord": "skjer",
+    "form": "skjer",
+    "nr": "5.35"
+   },
+   {
+    "ord": "leid",
+    "form": "leid",
+    "nr": "5.36"
+   },
+   {
+    "ord": "straum",
+    "form": "straum",
+    "nr": "3.08"
+   },
+   {
+    "ord": "fjora",
+    "form": "fjøra",
+    "nr": "1.24"
+   },
+   {
+    "ord": "kobbe",
+    "form": "kobbe",
+    "nr": "9.17"
+   },
+   {
+    "ord": "mygg",
+    "form": "my",
+    "nr": "9.26"
+   },
+   {
+    "ord": "lundehund",
+    "form": "lundehund",
+    "nr": "9.22"
+   },
+   {
+    "ord": "teiste",
+    "form": "teiste",
+    "nr": "9.34"
+   }
+  ],
+  "stadord_tekst": "Stadord: skjer (5.35), leid (5.36), straum (3.08), fjøra (1.24), kobbe (9.17), mygg (9.26). I vinterlaget: lundehund (9.22) og teiste (9.34).",
+  "stadminne_tekst": "Lyttestaden er ein stein på Vega med utsyn mot havet. Ekkoa er stadnamn på skjer og grunnar. Brenningane fyller stillemålaren.",
+  "skjermar": [],
+  "kjelde": "06 Verda/06 Villmarkene.md:68"
+ },
+ {
+  "id": "V10",
+  "namn": "Romsdalen og Romsdalshornet",
+  "naturtype": "Trong dal og fjellvegg",
+  "region": "Gudbrandsdalen og Nordmøre",
+  "forste_besok": "Sommaren 1847",
+  "vinterlag": "Januar 1851",
+  "veg": "Valfri",
+  "niva_tekst": "27, vinter 34",
+  "dungeon_og_boss": "Romsdalshornet: Steinspranget. Vinter: Fossegrimen i isen",
+  "lag": [
+   {
+    "id": "forste_besok",
+    "etappar": [
+     {
+      "nr": 1,
+      "stad": "Lesjaskogsvatnet",
+      "maal": "Kome ned i Romsdalen",
+      "grep": "Vatnet renn to vegar. Stadordet straum viser kva veg ein båt vil drive",
+      "opnar": "Vegen ned dalen",
+      "kjelde": "06 Verda/06 Villmarkene.md:459"
+     },
+     {
+      "nr": 2,
+      "stad": "Horgheim",
+      "maal": "Kome gjennom steinura",
+      "grep": "Steinsprang kjem med ujamne mellomrom. Stadordet ur legg ei rås til ro",
+      "opnar": "Rauma",
+      "kjelde": "06 Verda/06 Villmarkene.md:460"
+     },
+     {
+      "nr": 3,
+      "stad": "Rauma",
+      "maal": "Finne nokon som veit om Hornet",
+      "grep": "Ein britisk laksefiskar og ein fiskar frå dalen er usamde om alt. Erte hos Vinje får begge til å fortelje om dei to som gjekk opp i 1828",
+      "opnar": "Foten av Hornet",
+      "kjelde": "06 Verda/06 Villmarkene.md:461"
+     },
+     {
+      "nr": 4,
+      "stad": "Foten av Hornet",
+      "maal": "Finne vegen opp",
+      "grep": "Ingen i dalen trur på segna. Ein gammal smed frå Gausdal har lagt att eit merke ved foten",
+      "opnar": "Romsdalshornet",
+      "kjelde": "06 Verda/06 Villmarkene.md:462"
+     }
+    ]
+   },
+   {
+    "id": "vinterlag",
+    "etappar": [
+     {
+      "nr": 5,
+      "stad": "Veblungsnes",
+      "maal": "Kome i land",
+      "grep": "Martnadsplassen er frosen, og handelsfolka står fast i isen ved kaia. Berte samlar dei",
+      "opnar": "Dalen",
+      "kjelde": "06 Verda/06 Villmarkene.md:472"
+     },
+     {
+      "nr": 6,
+      "stad": "Dalen under snø",
+      "maal": "Kome forbi skreda",
+      "grep": "Snøskred går frå sidene. Gamle folk hugsar Tjelleraset og veit kvar ein ikkje skal gå",
+      "opnar": "Værmedalsfossen",
+      "kjelde": "06 Verda/06 Villmarkene.md:473"
+     },
+     {
+      "nr": 7,
+      "stad": "Værmedalsfossen",
+      "maal": "Tine fossen",
+      "grep": "Fossen er frosen, og fossegrimen sit fast i isen",
+      "opnar": "Bosskampen",
+      "kjelde": "06 Verda/06 Villmarkene.md:474"
+     }
+    ]
+   }
+  ],
+  "stadord": [
+   {
+    "ord": "straum",
+    "form": "straum",
+    "nr": "3.08"
+   },
+   {
+    "ord": "ur",
+    "form": "ur",
+    "nr": "1.51"
+   },
+   {
+    "ord": "skrida",
+    "form": "skrida",
+    "nr": "3.34"
+   },
+   {
+    "ord": "gil",
+    "form": "il",
+    "nr": "3.33"
+   },
+   {
+    "ord": "foss",
+    "form": "foss",
+    "nr": "3.20"
+   },
+   {
+    "ord": "laks",
+    "form": "laks",
+    "nr": "3.14"
+   },
+   {
+    "ord": "is",
+    "form": "is",
+    "nr": "12.17"
+   },
+   {
+    "ord": "tele",
+    "form": "tele",
+    "nr": "12.36"
+   }
+  ],
+  "stadord_tekst": "Stadord: straum (3.08), ur (1.51), skrida (3.34), gil (3.33), foss (3.20), laks (3.14). I vinterlaget: is (12.17) og tele (12.36).",
+  "stadminne_tekst": "Lyttestaden er ein stein ved Lesjaskogsvatnet. Ekkoa er namn på gardar som ligg under ura. Rauma fyller stillemålaren.",
+  "skjermar": [],
+  "kjelde": "06 Verda/06 Villmarkene.md:69"
+ },
+ {
+  "id": "V11",
+  "namn": "Nordre Øyeren",
+  "naturtype": "Elvedelta og våtmark",
+  "region": "Eidsvoll og Romerike",
+  "forste_besok": "Mai 1849",
+  "vinterlag": "Februar 1853",
+  "veg": "Valfri",
+  "niva_tekst": "31, vinter 42",
+  "dungeon_og_boss": "Tømmervasen i Glomma: Nøkken i vasen. Vinter: Frostrøyken",
+  "lag": [
+   {
+    "id": "forste_besok",
+    "etappar": [
+     {
+      "nr": 1,
+      "stad": "Ferjestaden ved Fetsund",
+      "maal": "Kome ut i deltaet",
+      "grep": "Ferjemannen vil ikkje ro i flaumen. Han lånar ut ei eikje om partyet finn kua hans, som står på ei øyr",
+      "opnar": "Eikja",
+      "kjelde": "06 Verda/06 Villmarkene.md:500"
+     },
+     {
+      "nr": 2,
+      "stad": "Øyrane under vatn",
+      "maal": "Finne stigen gjennom deltaet",
+      "grep": "Stadordet øyr viser kvar sandbanken ligg rett under vatnet. Lytt høyrer straumen i dei djupe løpa",
+      "opnar": "Fløtarleiren",
+      "kjelde": "06 Verda/06 Villmarkene.md:501"
+     },
+     {
+      "nr": 3,
+      "stad": "Fløtarane",
+      "maal": "Finne ut kvifor tømmeret står",
+      "grep": "Fløtarane les merka på stokkane. Aasen les dei med runelesinga han fekk i 2.9 og ser at nokre merke er retta med blekk",
+      "opnar": "Bingen lenser",
+      "kjelde": "06 Verda/06 Villmarkene.md:502"
+     },
+     {
+      "nr": 4,
+      "stad": "Bingen lenser",
+      "maal": "Få lensa til å sleppe",
+      "grep": "Lensemannen fører protokoll over kvar stokk. Han seier at vasen ovanfor har stengt elva i ei veke",
+      "opnar": "Tømmervasen i Glomma",
+      "kjelde": "06 Verda/06 Villmarkene.md:503"
+     }
+    ]
+   },
+   {
+    "id": "vinterlag",
+    "etappar": [
+     {
+      "nr": 5,
+      "stad": "Øyrane i lågvatn",
+      "maal": "Kome ut der båtane gjekk",
+      "grep": "Stadordet svell viser is som ber. Tørre øyrar er nye stigar",
+      "opnar": "Fløtarane i skogen",
+      "kjelde": "06 Verda/06 Villmarkene.md:513"
+     },
+     {
+      "nr": 6,
+      "stad": "Vinterhogsten",
+      "maal": "Finne fløtarane",
+      "grep": "Fløtarane arbeider i skogen om vinteren. Dei har sett noko i frostrøyken ved Fetsund",
+      "opnar": "Det opne løpet",
+      "kjelde": "06 Verda/06 Villmarkene.md:514"
+     },
+     {
+      "nr": 7,
+      "stad": "Det opne løpet ved Fetsund",
+      "maal": "Sjå gjennom frostrøyken",
+      "grep": "Eit kv-ord viser kvar vesenet står",
+      "opnar": "Bosskampen",
+      "kjelde": "06 Verda/06 Villmarkene.md:515"
+     }
+    ]
+   }
+  ],
+  "stadord": [
+   {
+    "ord": "oyr",
+    "form": "øyr",
+    "nr": "4.31"
+   },
+   {
+    "ord": "straum",
+    "form": "straum",
+    "nr": "3.08"
+   },
+   {
+    "ord": "vatn",
+    "form": "vatn",
+    "nr": "3.16"
+   },
+   {
+    "ord": "eikja",
+    "form": "eikja",
+    "nr": "8.07"
+   },
+   {
+    "ord": "myr",
+    "form": "myr",
+    "nr": "5.10"
+   },
+   {
+    "ord": "svell",
+    "form": "svell",
+    "nr": "12.35"
+   },
+   {
+    "ord": "is",
+    "form": "is",
+    "nr": "12.17"
+   },
+   {
+    "ord": "vok",
+    "form": "vok",
+    "nr": "12.39"
+   }
+  ],
+  "stadord_tekst": "Stadord: øyr (4.31), straum (3.08), vatn (3.16), eikja (8.07), myr (5.10). I vinterlaget: svell (12.35), is (12.17) og vok (12.39).",
+  "stadminne_tekst": "Lyttestaden er ein stein ved Fetsund. Ekkoa er rop frå fløtarar. Straumen fyller stillemålaren.",
+  "skjermar": [],
+  "kjelde": "06 Verda/06 Villmarkene.md:70"
+ },
+ {
+  "id": "V12",
+  "namn": "Finnskogen",
+  "naturtype": "Barskog, svedje og myr",
+  "region": "Eidsvoll og Romerike (Solør)",
+  "forste_besok": "Jonsok 1849",
+  "vinterlag": "Desember 1852 til mars 1853",
+  "veg": "Valfri",
+  "niva_tekst": "32, vinter 41",
+  "dungeon_og_boss": "Svedjebrannen: Svedjeelden. Vinter: Rimvargen",
+  "lag": [
+   {
+    "id": "forste_besok",
+    "etappar": [
+     {
+      "nr": 1,
+      "stad": "Grue",
+      "maal": "Finne nokon som vil vise vegen inn",
+      "grep": "Kyrkjedørene opnar seg utover, etter brannen. Ei eldre kone fortel om pinsedagen i 1822 om spelaren lyttar og ikkje spør. Ei finsk jente som tener på ein gard i bygda, vil vise vegen",
+      "opnar": "Stien inn i skogen",
+      "kjelde": "06 Verda/06 Villmarkene.md:543"
+     },
+     {
+      "nr": 2,
+      "stad": "Revholt og skogen",
+      "maal": "Kome fram til grenda",
+      "grep": "Stien går gjennom myr og over åsar. Stadordet myr viser fast grunn. Jenta talar finsk med folk ho møter, og Ordboka får ingen ord",
+      "opnar": "Røykstova",
+      "kjelde": "06 Verda/06 Villmarkene.md:544"
+     },
+     {
+      "nr": 3,
+      "stad": "Røykstova",
+      "maal": "Få snakke med den vise kona",
+      "grep": "Ho vil ikkje gje formlane sine til papir. Ein herre frå Sverige skreiv dei opp for snart tretti år sidan, og ho meiner dei mista krafta. Aasen legg frå seg Ordboka for at ho skal tale",
+      "opnar": "Svedja",
+      "kjelde": "06 Verda/06 Villmarkene.md:545"
+     },
+     {
+      "nr": 4,
+      "stad": "Svedja",
+      "maal": "Vere med på brenninga",
+      "grep": "Elden går ved midtsommar. Vinden snur, og elden går laus mot grenda",
+      "opnar": "Svedjebrannen",
+      "kjelde": "06 Verda/06 Villmarkene.md:546"
+     }
+    ]
+   },
+   {
+    "id": "vinterlag",
+    "etappar": [
+     {
+      "nr": 5,
+      "stad": "Røykstova",
+      "maal": "Halde elden i omnen",
+      "grep": "Ved må hoggast og berast inn. Folk frå Grue har kome hit for å få varme",
+      "opnar": "Skogen",
+      "kjelde": "06 Verda/06 Villmarkene.md:556"
+     },
+     {
+      "nr": 6,
+      "stad": "Skogen",
+      "maal": "Følgje ulvesporet",
+      "grep": "Lokk lokkar flokken bort frå grenda. Stadordet varg skremmer dei éin gong",
+      "opnar": "Myra",
+      "kjelde": "06 Verda/06 Villmarkene.md:557"
+     },
+     {
+      "nr": 7,
+      "stad": "Myra",
+      "maal": "Møte leiaren for flokken",
+      "grep": "Røyken frå røykstova står som vernemål",
+      "opnar": "Bosskampen",
+      "kjelde": "06 Verda/06 Villmarkene.md:558"
+     }
+    ]
+   }
+  ],
+  "stadord": [
+   {
+    "ord": "myr",
+    "form": "myr",
+    "nr": "5.10"
+   },
+   {
+    "ord": "tjorn",
+    "form": "tjørn",
+    "nr": "5.26"
+   },
+   {
+    "ord": "elg",
+    "form": "el",
+    "nr": "8.08"
+   },
+   {
+    "ord": "skrubb",
+    "form": "skrubb",
+    "nr": "8.25"
+   },
+   {
+    "ord": "veida",
+    "form": "veida",
+    "nr": "8.33"
+   },
+   {
+    "ord": "varg",
+    "form": "var",
+    "nr": "10.24"
+   },
+   {
+    "ord": "baal",
+    "form": "bål",
+    "nr": "12.02"
+   },
+   {
+    "ord": "frost",
+    "form": "frost",
+    "nr": "12.11"
+   }
+  ],
+  "stadord_tekst": "Stadord: myr (5.10), tjørn (5.26), elg (8.08), skrubb (8.25), veida (8.33). I vinterlaget: varg (10.24), bål (12.02) og frost (12.11).",
+  "stadminne_tekst": "Lyttestaden er ein stein ved ei tjørn i skogen. Ekkoa er finske ord, og Aasen kan høyre dei utan å skrive dei. Knitrande kvist fyller stillemålaren.",
+  "skjermar": [],
+  "kjelde": "06 Verda/06 Villmarkene.md:71"
+ }
+]

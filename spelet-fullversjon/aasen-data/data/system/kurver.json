@@ -1,0 +1,3010 @@
+{
+ "eigenskapar": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:19",
+  "rader": [
+   {
+    "eigenskap": "Kraft",
+    "kva_han_gjer": "Går inn i skaden frå slag, Kast, Steinn og alle fysiske åtak",
+    "tak": 99,
+    "henta_fraa": "Vigor i FF6, Power i Chrono Trigger"
+   },
+   {
+    "eigenskap": "Ordkraft",
+    "kva_han_gjer": "Går inn i skaden og lækjinga frå galdr, song, stev, kved, joik, forteljing, slåttar og påkallingar",
+    "tak": 99,
+    "henta_fraa": "Magic Power i FF6"
+   },
+   {
+    "eigenskap": "Herdsle",
+    "kva_han_gjer": "Forsvar mot slag. Blir lagd saman med Vern frå kleda",
+    "tak": 99,
+    "henta_fraa": "Stamina og Defense i FF6"
+   },
+   {
+    "eigenskap": "Tole",
+    "kva_han_gjer": "Forsvar mot galdr og song frå fiendar, og motstand mot statusar",
+    "tak": 99,
+    "henta_fraa": "Magic Defense i FF6 og E.Def i Octopath"
+   },
+   {
+    "eigenskap": "Snøggleik",
+    "kva_han_gjer": "Kor fort tidsmålaren fyllest",
+    "tak": 50,
+    "henta_fraa": "Speed i FF6, med tak som Speed i Chrono Trigger"
+   },
+   {
+    "eigenskap": "Lukke",
+    "kva_han_gjer": "Sjanse for kritisk treff, flukt og stjeling",
+    "tak": 50,
+    "henta_fraa": "Critical i Octopath og Luck i Dragon Quest"
+   }
+  ]
+ },
+ "tidsmaalar": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:103",
+  "rader": [
+   {
+    "snoggleik": 10,
+    "sekund_til_full_maalar": 5.0,
+    "med_fimbul": 10.0,
+    "med_springar": 4.17
+   },
+   {
+    "snoggleik": 16,
+    "sekund_til_full_maalar": 4.17,
+    "med_fimbul": 8.33,
+    "med_springar": 3.47
+   },
+   {
+    "snoggleik": 20,
+    "sekund_til_full_maalar": 3.75,
+    "med_fimbul": 7.5,
+    "med_springar": 3.13
+   },
+   {
+    "snoggleik": 25,
+    "sekund_til_full_maalar": 3.33,
+    "med_fimbul": 6.67,
+    "med_springar": 2.78
+   },
+   {
+    "snoggleik": 30,
+    "sekund_til_full_maalar": 3.0,
+    "med_fimbul": 6.0,
+    "med_springar": 2.5
+   },
+   {
+    "snoggleik": 35,
+    "sekund_til_full_maalar": 2.73,
+    "med_fimbul": 5.45,
+    "med_springar": 2.27
+   },
+   {
+    "snoggleik": 40,
+    "sekund_til_full_maalar": 2.5,
+    "med_fimbul": 5.0,
+    "med_springar": 2.08
+   },
+   {
+    "snoggleik": 50,
+    "sekund_til_full_maalar": 2.14,
+    "med_fimbul": 4.29,
+    "med_springar": 1.79
+   }
+  ],
+  "formel_tekst": "Tid til full målar i sekund = 150 / (Snøggleik + 20)",
+  "formel_kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:99"
+ },
+ "royst_skala": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:130",
+  "rader": [
+   {
+    "nivaa": 10,
+    "royst_typisk": 33,
+    "royst_skala": 1.0,
+    "evne_med_grunnkostnad_10_kostar": 10,
+    "bruk_paa_full_royst": 3
+   },
+   {
+    "nivaa": 20,
+    "royst_typisk": 70,
+    "royst_skala": 1.0,
+    "evne_med_grunnkostnad_10_kostar": 10,
+    "bruk_paa_full_royst": 7
+   },
+   {
+    "nivaa": 25,
+    "royst_typisk": 98,
+    "royst_skala": 1.0,
+    "evne_med_grunnkostnad_10_kostar": 10,
+    "bruk_paa_full_royst": 10
+   },
+   {
+    "nivaa": 30,
+    "royst_typisk": 133,
+    "royst_skala": 1.2,
+    "evne_med_grunnkostnad_10_kostar": 12,
+    "bruk_paa_full_royst": 11
+   },
+   {
+    "nivaa": 40,
+    "royst_typisk": 220,
+    "royst_skala": 1.6,
+    "evne_med_grunnkostnad_10_kostar": 16,
+    "bruk_paa_full_royst": 14
+   },
+   {
+    "nivaa": 45,
+    "royst_typisk": 273,
+    "royst_skala": 1.8,
+    "evne_med_grunnkostnad_10_kostar": 18,
+    "bruk_paa_full_royst": 15
+   },
+   {
+    "nivaa": 55,
+    "royst_typisk": 398,
+    "royst_skala": 2.2,
+    "evne_med_grunnkostnad_10_kostar": 22,
+    "bruk_paa_full_royst": 18
+   },
+   {
+    "nivaa": 62,
+    "royst_typisk": 501,
+    "royst_skala": 2.48,
+    "evne_med_grunnkostnad_10_kostar": 25,
+    "bruk_paa_full_royst": 20
+   },
+   {
+    "nivaa": 70,
+    "royst_typisk": 633,
+    "royst_skala": 2.8,
+    "evne_med_grunnkostnad_10_kostar": 28,
+    "bruk_paa_full_royst": 23
+   }
+  ]
+ },
+ "kontroll_typisk_figur": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:148",
+  "rader": [
+   {
+    "nivaa": 1,
+    "liv_typisk": 94,
+    "royst_typisk": 20,
+    "kraft_typisk": 18,
+    "butikkreiskap": 7,
+    "forsvar_fiende": 3,
+    "vanleg_treff": 8,
+    "prosent_av_liv": 8.6,
+    "3_ande_hugsa_125": 40,
+    "3_ande_kvikk_14": 45
+   },
+   {
+    "nivaa": 10,
+    "liv_typisk": 670,
+    "royst_typisk": 33,
+    "kraft_typisk": 22,
+    "butikkreiskap": 12,
+    "forsvar_fiende": 30,
+    "vanleg_treff": 87,
+    "prosent_av_liv": 12.9,
+    "3_ande_hugsa_125": 433,
+    "3_ande_kvikk_14": 485
+   },
+   {
+    "nivaa": 20,
+    "liv_typisk": 1310,
+    "royst_typisk": 70,
+    "kraft_typisk": 26,
+    "butikkreiskap": 18,
+    "forsvar_fiende": 60,
+    "vanleg_treff": 183,
+    "prosent_av_liv": 14.0,
+    "3_ande_hugsa_125": 916,
+    "3_ande_kvikk_14": 1026
+   },
+   {
+    "nivaa": 25,
+    "liv_typisk": 1630,
+    "royst_typisk": 98,
+    "kraft_typisk": 28,
+    "butikkreiskap": 21,
+    "forsvar_fiende": 75,
+    "vanleg_treff": 234,
+    "prosent_av_liv": 14.3,
+    "3_ande_hugsa_125": 1169,
+    "3_ande_kvikk_14": 1309
+   },
+   {
+    "nivaa": 30,
+    "liv_typisk": 1950,
+    "royst_typisk": 133,
+    "kraft_typisk": 30,
+    "butikkreiskap": 24,
+    "forsvar_fiende": 90,
+    "vanleg_treff": 285,
+    "prosent_av_liv": 14.6,
+    "3_ande_hugsa_125": 1426,
+    "3_ande_kvikk_14": 1597
+   },
+   {
+    "nivaa": 40,
+    "liv_typisk": 2590,
+    "royst_typisk": 220,
+    "kraft_typisk": 34,
+    "butikkreiskap": 30,
+    "forsvar_fiende": 120,
+    "vanleg_treff": 390,
+    "prosent_av_liv": 15.1,
+    "3_ande_hugsa_125": 1951,
+    "3_ande_kvikk_14": 2185
+   },
+   {
+    "nivaa": 45,
+    "liv_typisk": 2910,
+    "royst_typisk": 273,
+    "kraft_typisk": 36,
+    "butikkreiskap": 33,
+    "forsvar_fiende": 135,
+    "vanleg_treff": 443,
+    "prosent_av_liv": 15.2,
+    "3_ande_hugsa_125": 2217,
+    "3_ande_kvikk_14": 2484
+   },
+   {
+    "nivaa": 47,
+    "liv_typisk": 3038,
+    "royst_typisk": 296,
+    "kraft_typisk": 37,
+    "butikkreiskap": 34,
+    "forsvar_fiende": 141,
+    "vanleg_treff": 464,
+    "prosent_av_liv": 15.3,
+    "3_ande_hugsa_125": 2318,
+    "3_ande_kvikk_14": 2596
+   },
+   {
+    "nivaa": 55,
+    "liv_typisk": 3550,
+    "royst_typisk": 398,
+    "kraft_typisk": 41,
+    "butikkreiskap": 39,
+    "forsvar_fiende": 165,
+    "vanleg_treff": 551,
+    "prosent_av_liv": 15.5,
+    "3_ande_hugsa_125": 2756,
+    "3_ande_kvikk_14": 3087
+   },
+   {
+    "nivaa": 62,
+    "liv_typisk": 3998,
+    "royst_typisk": 501,
+    "kraft_typisk": 44,
+    "butikkreiskap": 43,
+    "forsvar_fiende": 186,
+    "vanleg_treff": 626,
+    "prosent_av_liv": 15.7,
+    "3_ande_hugsa_125": 3130,
+    "3_ande_kvikk_14": 3505
+   },
+   {
+    "nivaa": 70,
+    "liv_typisk": 4510,
+    "royst_typisk": 633,
+    "kraft_typisk": 47,
+    "butikkreiskap": 48,
+    "forsvar_fiende": 210,
+    "vanleg_treff": 715,
+    "prosent_av_liv": 15.9,
+    "3_ande_hugsa_125": 3575,
+    "3_ande_kvikk_14": 4003
+   }
+  ]
+ },
+ "fiendar_per_niva": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:184",
+  "rader": [
+   {
+    "nivaa": 1,
+    "liv_vanleg_fiende": 40,
+    "forsvar_og_tole": 3,
+    "aatak": 24,
+    "slag_mot_typisk_figur_prosent_av_liv": 7.2,
+    "roynsle": 6,
+    "roynsle_boss": 15
+   },
+   {
+    "nivaa": 5,
+    "liv_vanleg_fiende": 210,
+    "forsvar_og_tole": 15,
+    "aatak": 25,
+    "slag_mot_typisk_figur_prosent_av_liv": 9.7,
+    "roynsle": 21,
+    "roynsle_boss": 105
+   },
+   {
+    "nivaa": 10,
+    "liv_vanleg_fiende": 430,
+    "forsvar_og_tole": 30,
+    "aatak": 27,
+    "slag_mot_typisk_figur_prosent_av_liv": 10.6,
+    "roynsle": 51,
+    "roynsle_boss": 330
+   },
+   {
+    "nivaa": 15,
+    "liv_vanleg_fiende": 670,
+    "forsvar_og_tole": 45,
+    "aatak": 28,
+    "slag_mot_typisk_figur_prosent_av_liv": 10.7,
+    "roynsle": 91,
+    "roynsle_boss": 680
+   },
+   {
+    "nivaa": 20,
+    "liv_vanleg_fiende": 920,
+    "forsvar_og_tole": 60,
+    "aatak": 29,
+    "slag_mot_typisk_figur_prosent_av_liv": 10.8,
+    "roynsle": 138,
+    "roynsle_boss": 1155
+   },
+   {
+    "nivaa": 25,
+    "liv_vanleg_fiende": 1170,
+    "forsvar_og_tole": 75,
+    "aatak": 30,
+    "slag_mot_typisk_figur_prosent_av_liv": 10.8,
+    "roynsle": 192,
+    "roynsle_boss": 1755
+   },
+   {
+    "nivaa": 30,
+    "liv_vanleg_fiende": 1430,
+    "forsvar_og_tole": 90,
+    "aatak": 32,
+    "slag_mot_typisk_figur_prosent_av_liv": 11.2,
+    "roynsle": 250,
+    "roynsle_boss": 2480
+   },
+   {
+    "nivaa": 35,
+    "liv_vanleg_fiende": 1690,
+    "forsvar_og_tole": 105,
+    "aatak": 33,
+    "slag_mot_typisk_figur_prosent_av_liv": 11.2,
+    "roynsle": 315,
+    "roynsle_boss": 3330
+   },
+   {
+    "nivaa": 40,
+    "liv_vanleg_fiende": 1950,
+    "forsvar_og_tole": 120,
+    "aatak": 34,
+    "slag_mot_typisk_figur_prosent_av_liv": 11.2,
+    "roynsle": 383,
+    "roynsle_boss": 4305
+   },
+   {
+    "nivaa": 45,
+    "liv_vanleg_fiende": 2220,
+    "forsvar_og_tole": 135,
+    "aatak": 35,
+    "slag_mot_typisk_figur_prosent_av_liv": 11.2,
+    "roynsle": 457,
+    "roynsle_boss": 5405
+   },
+   {
+    "nivaa": 50,
+    "liv_vanleg_fiende": 2490,
+    "forsvar_og_tole": 150,
+    "aatak": 37,
+    "slag_mot_typisk_figur_prosent_av_liv": 11.6,
+    "roynsle": 534,
+    "roynsle_boss": 6630
+   },
+   {
+    "nivaa": 55,
+    "liv_vanleg_fiende": 2760,
+    "forsvar_og_tole": 165,
+    "aatak": 38,
+    "slag_mot_typisk_figur_prosent_av_liv": 11.6,
+    "roynsle": 616,
+    "roynsle_boss": 7980
+   },
+   {
+    "nivaa": 60,
+    "liv_vanleg_fiende": 3030,
+    "forsvar_og_tole": 180,
+    "aatak": 39,
+    "slag_mot_typisk_figur_prosent_av_liv": 11.5,
+    "roynsle": 701,
+    "roynsle_boss": 9455
+   },
+   {
+    "nivaa": 65,
+    "liv_vanleg_fiende": 3300,
+    "forsvar_og_tole": 195,
+    "aatak": 40,
+    "slag_mot_typisk_figur_prosent_av_liv": 11.5,
+    "roynsle": 790,
+    "roynsle_boss": 11055
+   },
+   {
+    "nivaa": 70,
+    "liv_vanleg_fiende": 3570,
+    "forsvar_og_tole": 210,
+    "aatak": 42,
+    "slag_mot_typisk_figur_prosent_av_liv": 11.8,
+    "roynsle": 882,
+    "roynsle_boss": 12780
+   },
+   {
+    "nivaa": 75,
+    "liv_vanleg_fiende": 3840,
+    "forsvar_og_tole": 225,
+    "aatak": 43,
+    "slag_mot_typisk_figur_prosent_av_liv": 12.1,
+    "roynsle": 977,
+    "roynsle_boss": 14630
+   },
+   {
+    "nivaa": 80,
+    "liv_vanleg_fiende": 4110,
+    "forsvar_og_tole": 240,
+    "aatak": 44,
+    "slag_mot_typisk_figur_prosent_av_liv": 12.4,
+    "roynsle": 1075,
+    "roynsle_boss": 16605
+   },
+   {
+    "nivaa": 85,
+    "liv_vanleg_fiende": 4380,
+    "forsvar_og_tole": 255,
+    "aatak": 46,
+    "slag_mot_typisk_figur_prosent_av_liv": 12.9,
+    "roynsle": 1176,
+    "roynsle_boss": 18705
+   },
+   {
+    "nivaa": 90,
+    "liv_vanleg_fiende": 4650,
+    "forsvar_og_tole": 270,
+    "aatak": 47,
+    "slag_mot_typisk_figur_prosent_av_liv": 13.2,
+    "roynsle": 1280,
+    "roynsle_boss": 20930
+   },
+   {
+    "nivaa": 95,
+    "liv_vanleg_fiende": 4920,
+    "forsvar_og_tole": 285,
+    "aatak": 48,
+    "slag_mot_typisk_figur_prosent_av_liv": 13.5,
+    "roynsle": 1387,
+    "roynsle_boss": 23280
+   },
+   {
+    "nivaa": 99,
+    "liv_vanleg_fiende": 5140,
+    "forsvar_og_tole": 297,
+    "aatak": 49,
+    "slag_mot_typisk_figur_prosent_av_liv": 13.8,
+    "roynsle": 1474,
+    "roynsle_boss": 25160
+   }
+  ]
+ },
+ "vekst": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:220",
+  "rader": [
+   {
+    "figur": "aasen",
+    "liv_faktor": 0.8,
+    "royst_faktor": 1.25,
+    "kraft": {
+     "grunn": 12,
+     "vekst": 0.25
+    },
+    "ordkraft": {
+     "grunn": 22,
+     "vekst": 0.8
+    },
+    "herdsle": {
+     "grunn": 10,
+     "vekst": 0.25
+    },
+    "tole": {
+     "grunn": 18,
+     "vekst": 0.55
+    },
+    "snogg": {
+     "grunn": 24,
+     "vekst": 0.1
+    },
+    "lukke": {
+     "grunn": 18,
+     "vekst": 0.2
+    },
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:222"
+   },
+   {
+    "figur": "tussen",
+    "liv_faktor": 0.55,
+    "royst_faktor": null,
+    "royst_faktor_tekst": "ingen",
+    "kraft": {
+     "grunn": 14,
+     "vekst": 0.3
+    },
+    "ordkraft": {
+     "grunn": 20,
+     "vekst": 0.5
+    },
+    "herdsle": {
+     "grunn": 8,
+     "vekst": 0.2
+    },
+    "tole": {
+     "grunn": 20,
+     "vekst": 0.5
+    },
+    "snogg": {
+     "grunn": 40,
+     "vekst": 0.15
+    },
+    "lukke": {
+     "grunn": 30,
+     "vekst": 0.25
+    },
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:223"
+   },
+   {
+    "figur": "huldra",
+    "liv_faktor": 0.85,
+    "royst_faktor": 1.3,
+    "kraft": {
+     "grunn": 10,
+     "vekst": 0.2
+    },
+    "ordkraft": {
+     "grunn": 26,
+     "vekst": 0.75
+    },
+    "herdsle": {
+     "grunn": 14,
+     "vekst": 0.3
+    },
+    "tole": {
+     "grunn": 26,
+     "vekst": 0.7
+    },
+    "snogg": {
+     "grunn": 30,
+     "vekst": 0.1
+    },
+    "lukke": {
+     "grunn": 22,
+     "vekst": 0.2
+    },
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:224"
+   },
+   {
+    "figur": "vinje",
+    "liv_faktor": 1.15,
+    "royst_faktor": 0.9,
+    "kraft": {
+     "grunn": 20,
+     "vekst": 0.55
+    },
+    "ordkraft": {
+     "grunn": 20,
+     "vekst": 0.6
+    },
+    "herdsle": {
+     "grunn": 16,
+     "vekst": 0.4
+    },
+    "tole": {
+     "grunn": 12,
+     "vekst": 0.3
+    },
+    "snogg": {
+     "grunn": 32,
+     "vekst": 0.15
+    },
+    "lukke": {
+     "grunn": 20,
+     "vekst": 0.25
+    },
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:225"
+   },
+   {
+    "figur": "landstad",
+    "liv_faktor": 0.95,
+    "royst_faktor": 1.2,
+    "kraft": {
+     "grunn": 12,
+     "vekst": 0.25
+    },
+    "ordkraft": {
+     "grunn": 20,
+     "vekst": 0.65
+    },
+    "herdsle": {
+     "grunn": 15,
+     "vekst": 0.35
+    },
+    "tole": {
+     "grunn": 22,
+     "vekst": 0.6
+    },
+    "snogg": {
+     "grunn": 18,
+     "vekst": 0.05
+    },
+    "lukke": {
+     "grunn": 14,
+     "vekst": 0.15
+    },
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:226"
+   },
+   {
+    "figur": "aslaug",
+    "liv_faktor": 0.95,
+    "royst_faktor": 1.0,
+    "kraft": {
+     "grunn": 12,
+     "vekst": 0.3
+    },
+    "ordkraft": {
+     "grunn": 24,
+     "vekst": 0.7
+    },
+    "herdsle": {
+     "grunn": 14,
+     "vekst": 0.35
+    },
+    "tole": {
+     "grunn": 22,
+     "vekst": 0.55
+    },
+    "snogg": {
+     "grunn": 16,
+     "vekst": 0.05
+    },
+    "lukke": {
+     "grunn": 20,
+     "vekst": 0.2
+    },
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:227"
+   },
+   {
+    "figur": "ravdna",
+    "liv_faktor": 1.05,
+    "royst_faktor": 1.05,
+    "kraft": {
+     "grunn": 16,
+     "vekst": 0.4
+    },
+    "ordkraft": {
+     "grunn": 22,
+     "vekst": 0.6
+    },
+    "herdsle": {
+     "grunn": 16,
+     "vekst": 0.4
+    },
+    "tole": {
+     "grunn": 24,
+     "vekst": 0.55
+    },
+    "snogg": {
+     "grunn": 26,
+     "vekst": 0.1
+    },
+    "lukke": {
+     "grunn": 22,
+     "vekst": 0.2
+    },
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:228"
+   },
+   {
+    "figur": "collett",
+    "liv_faktor": 0.85,
+    "royst_faktor": 1.1,
+    "kraft": {
+     "grunn": 10,
+     "vekst": 0.2
+    },
+    "ordkraft": {
+     "grunn": 20,
+     "vekst": 0.6
+    },
+    "herdsle": {
+     "grunn": 12,
+     "vekst": 0.3
+    },
+    "tole": {
+     "grunn": 24,
+     "vekst": 0.6
+    },
+    "snogg": {
+     "grunn": 34,
+     "vekst": 0.15
+    },
+    "lukke": {
+     "grunn": 24,
+     "vekst": 0.25
+    },
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:229"
+   },
+   {
+    "figur": "knudsen",
+    "liv_faktor": 1.1,
+    "royst_faktor": 0.8,
+    "kraft": {
+     "grunn": 16,
+     "vekst": 0.35
+    },
+    "ordkraft": {
+     "grunn": 18,
+     "vekst": 0.6
+    },
+    "herdsle": {
+     "grunn": 20,
+     "vekst": 0.5
+    },
+    "tole": {
+     "grunn": 18,
+     "vekst": 0.45
+    },
+    "snogg": {
+     "grunn": 22,
+     "vekst": 0.08
+    },
+    "lukke": {
+     "grunn": 14,
+     "vekst": 0.1
+    },
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:230"
+   },
+   {
+    "figur": "asbjornsen",
+    "liv_faktor": 0.85,
+    "royst_faktor": 1.35,
+    "kraft": {
+     "grunn": 16,
+     "vekst": 0.35
+    },
+    "ordkraft": {
+     "grunn": 22,
+     "vekst": 0.75
+    },
+    "herdsle": {
+     "grunn": 12,
+     "vekst": 0.3
+    },
+    "tole": {
+     "grunn": 14,
+     "vekst": 0.35
+    },
+    "snogg": {
+     "grunn": 26,
+     "vekst": 0.1
+    },
+    "lukke": {
+     "grunn": 26,
+     "vekst": 0.25
+    },
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:231"
+   },
+   {
+    "figur": "moe",
+    "liv_faktor": 0.8,
+    "royst_faktor": 1.15,
+    "kraft": {
+     "grunn": 8,
+     "vekst": 0.15
+    },
+    "ordkraft": {
+     "grunn": 22,
+     "vekst": 0.7
+    },
+    "herdsle": {
+     "grunn": 12,
+     "vekst": 0.3
+    },
+    "tole": {
+     "grunn": 22,
+     "vekst": 0.6
+    },
+    "snogg": {
+     "grunn": 16,
+     "vekst": 0.05
+    },
+    "lukke": {
+     "grunn": 18,
+     "vekst": 0.2
+    },
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:232"
+   },
+   {
+    "figur": "ole_bull",
+    "liv_faktor": 0.95,
+    "royst_faktor": 1.1,
+    "kraft": {
+     "grunn": 14,
+     "vekst": 0.3
+    },
+    "ordkraft": {
+     "grunn": 22,
+     "vekst": 0.65
+    },
+    "herdsle": {
+     "grunn": 14,
+     "vekst": 0.3
+    },
+    "tole": {
+     "grunn": 18,
+     "vekst": 0.45
+    },
+    "snogg": {
+     "grunn": 28,
+     "vekst": 0.12
+    },
+    "lukke": {
+     "grunn": 28,
+     "vekst": 0.3
+    },
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:233"
+   },
+   {
+    "figur": "berte",
+    "liv_faktor": 1.0,
+    "royst_faktor": 1.15,
+    "kraft": {
+     "grunn": 12,
+     "vekst": 0.3
+    },
+    "ordkraft": {
+     "grunn": 22,
+     "vekst": 0.65
+    },
+    "herdsle": {
+     "grunn": 16,
+     "vekst": 0.4
+    },
+    "tole": {
+     "grunn": 26,
+     "vekst": 0.7
+    },
+    "snogg": {
+     "grunn": 18,
+     "vekst": 0.05
+    },
+    "lukke": {
+     "grunn": 18,
+     "vekst": 0.2
+    },
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:234"
+   },
+   {
+    "figur": "jotunen",
+    "liv_faktor": 1.5,
+    "royst_faktor": null,
+    "royst_faktor_tekst": "ingen",
+    "kraft": {
+     "grunn": 34,
+     "vekst": 0.95
+    },
+    "ordkraft": {
+     "grunn": 4,
+     "vekst": 0.05
+    },
+    "herdsle": {
+     "grunn": 30,
+     "vekst": 0.75
+    },
+    "tole": {
+     "grunn": 20,
+     "vekst": 0.45
+    },
+    "snogg": {
+     "grunn": 18,
+     "vekst": 0.05
+    },
+    "lukke": {
+     "grunn": 8,
+     "vekst": 0.05
+    },
+    "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:235"
+   }
+  ],
+  "formel_tekst": "Kvar eigenskap følgjer grunnverdi + vekst × (nivå − 1), runda av. Liv er Liv-faktor × (30 + 64 × nivå), og Røyst er Røyst-faktor × (20 + nivå × nivå / 8). I tabellen under står grunnverdi og vekst per nivå. «22 + 0,8» tyder 22 på nivå 1 og 0,8 meir for kvart nivå.",
+  "formel_kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:218"
+ },
+ "eigenskapar_per_niva": {
+  "liv": {
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:271",
+   "rader": [
+    {
+     "figur": "aasen",
+     "1": 75,
+     "10": 536,
+     "20": 1048,
+     "30": 1560,
+     "45": 2328,
+     "55": 2840,
+     "70": 3608
+    },
+    {
+     "figur": "tussen",
+     "1": 52,
+     "10": 369,
+     "20": 721,
+     "30": 1073,
+     "45": 1601,
+     "55": 1953,
+     "70": 2481
+    },
+    {
+     "figur": "huldra",
+     "1": 80,
+     "10": 570,
+     "20": 1114,
+     "30": 1658,
+     "45": 2474,
+     "55": 3018,
+     "70": 3834
+    },
+    {
+     "figur": "vinje",
+     "1": 108,
+     "10": 770,
+     "20": 1506,
+     "30": 2243,
+     "45": 3346,
+     "55": 4082,
+     "70": 5187
+    },
+    {
+     "figur": "landstad",
+     "1": 89,
+     "10": 637,
+     "20": 1245,
+     "30": 1853,
+     "45": 2765,
+     "55": 3373,
+     "70": 4285
+    },
+    {
+     "figur": "aslaug",
+     "1": 89,
+     "10": 637,
+     "20": 1245,
+     "30": 1853,
+     "45": 2765,
+     "55": 3373,
+     "70": 4285
+    },
+    {
+     "figur": "ravdna",
+     "1": 99,
+     "10": 704,
+     "20": 1376,
+     "30": 2048,
+     "45": 3056,
+     "55": 3728,
+     "70": 4736
+    },
+    {
+     "figur": "collett",
+     "1": 80,
+     "10": 570,
+     "20": 1114,
+     "30": 1658,
+     "45": 2474,
+     "55": 3018,
+     "70": 3834
+    },
+    {
+     "figur": "knudsen",
+     "1": 103,
+     "10": 737,
+     "20": 1441,
+     "30": 2145,
+     "45": 3201,
+     "55": 3905,
+     "70": 4961
+    },
+    {
+     "figur": "asbjornsen",
+     "1": 80,
+     "10": 570,
+     "20": 1114,
+     "30": 1658,
+     "45": 2474,
+     "55": 3018,
+     "70": 3834
+    },
+    {
+     "figur": "moe",
+     "1": 75,
+     "10": 536,
+     "20": 1048,
+     "30": 1560,
+     "45": 2328,
+     "55": 2840,
+     "70": 3608
+    },
+    {
+     "figur": "ole_bull",
+     "1": 89,
+     "10": 637,
+     "20": 1245,
+     "30": 1853,
+     "45": 2765,
+     "55": 3373,
+     "70": 4285
+    },
+    {
+     "figur": "berte",
+     "1": 94,
+     "10": 670,
+     "20": 1310,
+     "30": 1950,
+     "45": 2910,
+     "55": 3550,
+     "70": 4510
+    },
+    {
+     "figur": "jotunen",
+     "1": 141,
+     "10": 1005,
+     "20": 1965,
+     "30": 2925,
+     "45": 4365,
+     "55": 5325,
+     "70": 6765
+    }
+   ]
+  },
+  "royst": {
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:290",
+   "rader": [
+    {
+     "figur": "aasen",
+     "1": 25,
+     "10": 41,
+     "20": 88,
+     "30": 166,
+     "45": 341,
+     "55": 498,
+     "70": 791
+    },
+    {
+     "figur": "tussen",
+     "1": null,
+     "10": null,
+     "20": null,
+     "30": null,
+     "45": null,
+     "55": null,
+     "70": null
+    },
+    {
+     "figur": "huldra",
+     "1": 26,
+     "10": 42,
+     "20": 91,
+     "30": 172,
+     "45": 355,
+     "55": 518,
+     "70": 822
+    },
+    {
+     "figur": "vinje",
+     "1": 18,
+     "10": 29,
+     "20": 63,
+     "30": 119,
+     "45": 246,
+     "55": 358,
+     "70": 569
+    },
+    {
+     "figur": "landstad",
+     "1": 24,
+     "10": 39,
+     "20": 84,
+     "30": 159,
+     "45": 328,
+     "55": 478,
+     "70": 759
+    },
+    {
+     "figur": "aslaug",
+     "1": 20,
+     "10": 33,
+     "20": 70,
+     "30": 133,
+     "45": 273,
+     "55": 398,
+     "70": 633
+    },
+    {
+     "figur": "ravdna",
+     "1": 21,
+     "10": 34,
+     "20": 74,
+     "30": 139,
+     "45": 287,
+     "55": 418,
+     "70": 664
+    },
+    {
+     "figur": "collett",
+     "1": 22,
+     "10": 36,
+     "20": 77,
+     "30": 146,
+     "45": 300,
+     "55": 438,
+     "70": 696
+    },
+    {
+     "figur": "knudsen",
+     "1": 16,
+     "10": 26,
+     "20": 56,
+     "30": 106,
+     "45": 219,
+     "55": 319,
+     "70": 506
+    },
+    {
+     "figur": "asbjornsen",
+     "1": 27,
+     "10": 44,
+     "20": 95,
+     "30": 179,
+     "45": 369,
+     "55": 537,
+     "70": 854
+    },
+    {
+     "figur": "moe",
+     "1": 23,
+     "10": 37,
+     "20": 81,
+     "30": 152,
+     "45": 314,
+     "55": 458,
+     "70": 727
+    },
+    {
+     "figur": "ole_bull",
+     "1": 22,
+     "10": 36,
+     "20": 77,
+     "30": 146,
+     "45": 300,
+     "55": 438,
+     "70": 696
+    },
+    {
+     "figur": "berte",
+     "1": 23,
+     "10": 37,
+     "20": 81,
+     "30": 152,
+     "45": 314,
+     "55": 458,
+     "70": 727
+    },
+    {
+     "figur": "jotunen",
+     "1": null,
+     "10": null,
+     "20": null,
+     "30": null,
+     "45": null,
+     "55": null,
+     "70": null
+    }
+   ]
+  },
+  "kraft": {
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:309",
+   "rader": [
+    {
+     "figur": "aasen",
+     "1": 12,
+     "10": 14,
+     "20": 17,
+     "30": 19,
+     "45": 23,
+     "55": 26,
+     "70": 29
+    },
+    {
+     "figur": "tussen",
+     "1": 14,
+     "10": 17,
+     "20": 20,
+     "30": 23,
+     "45": 27,
+     "55": 30,
+     "70": 35
+    },
+    {
+     "figur": "huldra",
+     "1": 10,
+     "10": 12,
+     "20": 14,
+     "30": 16,
+     "45": 19,
+     "55": 21,
+     "70": 24
+    },
+    {
+     "figur": "vinje",
+     "1": 20,
+     "10": 25,
+     "20": 30,
+     "30": 36,
+     "45": 44,
+     "55": 50,
+     "70": 58
+    },
+    {
+     "figur": "landstad",
+     "1": 12,
+     "10": 14,
+     "20": 17,
+     "30": 19,
+     "45": 23,
+     "55": 26,
+     "70": 29
+    },
+    {
+     "figur": "aslaug",
+     "1": 12,
+     "10": 15,
+     "20": 18,
+     "30": 21,
+     "45": 25,
+     "55": 28,
+     "70": 33
+    },
+    {
+     "figur": "ravdna",
+     "1": 16,
+     "10": 20,
+     "20": 24,
+     "30": 28,
+     "45": 34,
+     "55": 38,
+     "70": 44
+    },
+    {
+     "figur": "collett",
+     "1": 10,
+     "10": 12,
+     "20": 14,
+     "30": 16,
+     "45": 19,
+     "55": 21,
+     "70": 24
+    },
+    {
+     "figur": "knudsen",
+     "1": 16,
+     "10": 19,
+     "20": 23,
+     "30": 26,
+     "45": 31,
+     "55": 35,
+     "70": 40
+    },
+    {
+     "figur": "asbjornsen",
+     "1": 16,
+     "10": 19,
+     "20": 23,
+     "30": 26,
+     "45": 31,
+     "55": 35,
+     "70": 40
+    },
+    {
+     "figur": "moe",
+     "1": 8,
+     "10": 9,
+     "20": 11,
+     "30": 12,
+     "45": 15,
+     "55": 16,
+     "70": 18
+    },
+    {
+     "figur": "ole_bull",
+     "1": 14,
+     "10": 17,
+     "20": 20,
+     "30": 23,
+     "45": 27,
+     "55": 30,
+     "70": 35
+    },
+    {
+     "figur": "berte",
+     "1": 12,
+     "10": 15,
+     "20": 18,
+     "30": 21,
+     "45": 25,
+     "55": 28,
+     "70": 33
+    },
+    {
+     "figur": "jotunen",
+     "1": 34,
+     "10": 43,
+     "20": 52,
+     "30": 62,
+     "45": 76,
+     "55": 85,
+     "70": 99
+    }
+   ]
+  },
+  "ordkraft": {
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:328",
+   "rader": [
+    {
+     "figur": "aasen",
+     "1": 22,
+     "10": 29,
+     "20": 37,
+     "30": 45,
+     "45": 57,
+     "55": 65,
+     "70": 77
+    },
+    {
+     "figur": "tussen",
+     "1": 20,
+     "10": 25,
+     "20": 30,
+     "30": 35,
+     "45": 42,
+     "55": 47,
+     "70": 55
+    },
+    {
+     "figur": "huldra",
+     "1": 26,
+     "10": 33,
+     "20": 40,
+     "30": 48,
+     "45": 59,
+     "55": 67,
+     "70": 78
+    },
+    {
+     "figur": "vinje",
+     "1": 20,
+     "10": 25,
+     "20": 31,
+     "30": 37,
+     "45": 46,
+     "55": 52,
+     "70": 61
+    },
+    {
+     "figur": "landstad",
+     "1": 20,
+     "10": 26,
+     "20": 32,
+     "30": 39,
+     "45": 49,
+     "55": 55,
+     "70": 65
+    },
+    {
+     "figur": "aslaug",
+     "1": 24,
+     "10": 30,
+     "20": 37,
+     "30": 44,
+     "45": 55,
+     "55": 62,
+     "70": 72
+    },
+    {
+     "figur": "ravdna",
+     "1": 22,
+     "10": 27,
+     "20": 33,
+     "30": 39,
+     "45": 48,
+     "55": 54,
+     "70": 63
+    },
+    {
+     "figur": "collett",
+     "1": 20,
+     "10": 25,
+     "20": 31,
+     "30": 37,
+     "45": 46,
+     "55": 52,
+     "70": 61
+    },
+    {
+     "figur": "knudsen",
+     "1": 18,
+     "10": 23,
+     "20": 29,
+     "30": 35,
+     "45": 44,
+     "55": 50,
+     "70": 59
+    },
+    {
+     "figur": "asbjornsen",
+     "1": 22,
+     "10": 29,
+     "20": 36,
+     "30": 44,
+     "45": 55,
+     "55": 63,
+     "70": 74
+    },
+    {
+     "figur": "moe",
+     "1": 22,
+     "10": 28,
+     "20": 35,
+     "30": 42,
+     "45": 53,
+     "55": 60,
+     "70": 70
+    },
+    {
+     "figur": "ole_bull",
+     "1": 22,
+     "10": 28,
+     "20": 34,
+     "30": 41,
+     "45": 51,
+     "55": 57,
+     "70": 67
+    },
+    {
+     "figur": "berte",
+     "1": 22,
+     "10": 28,
+     "20": 34,
+     "30": 41,
+     "45": 51,
+     "55": 57,
+     "70": 67
+    },
+    {
+     "figur": "jotunen",
+     "1": 4,
+     "10": 4,
+     "20": 5,
+     "30": 5,
+     "45": 6,
+     "55": 7,
+     "70": 7
+    }
+   ]
+  },
+  "herdsle": {
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:347",
+   "rader": [
+    {
+     "figur": "aasen",
+     "1": 10,
+     "10": 12,
+     "20": 15,
+     "30": 17,
+     "45": 21,
+     "55": 24,
+     "70": 27
+    },
+    {
+     "figur": "tussen",
+     "1": 8,
+     "10": 10,
+     "20": 12,
+     "30": 14,
+     "45": 17,
+     "55": 19,
+     "70": 22
+    },
+    {
+     "figur": "huldra",
+     "1": 14,
+     "10": 17,
+     "20": 20,
+     "30": 23,
+     "45": 27,
+     "55": 30,
+     "70": 35
+    },
+    {
+     "figur": "vinje",
+     "1": 16,
+     "10": 20,
+     "20": 24,
+     "30": 28,
+     "45": 34,
+     "55": 38,
+     "70": 44
+    },
+    {
+     "figur": "landstad",
+     "1": 15,
+     "10": 18,
+     "20": 22,
+     "30": 25,
+     "45": 30,
+     "55": 34,
+     "70": 39
+    },
+    {
+     "figur": "aslaug",
+     "1": 14,
+     "10": 17,
+     "20": 21,
+     "30": 24,
+     "45": 29,
+     "55": 33,
+     "70": 38
+    },
+    {
+     "figur": "ravdna",
+     "1": 16,
+     "10": 20,
+     "20": 24,
+     "30": 28,
+     "45": 34,
+     "55": 38,
+     "70": 44
+    },
+    {
+     "figur": "collett",
+     "1": 12,
+     "10": 15,
+     "20": 18,
+     "30": 21,
+     "45": 25,
+     "55": 28,
+     "70": 33
+    },
+    {
+     "figur": "knudsen",
+     "1": 20,
+     "10": 25,
+     "20": 30,
+     "30": 35,
+     "45": 42,
+     "55": 47,
+     "70": 55
+    },
+    {
+     "figur": "asbjornsen",
+     "1": 12,
+     "10": 15,
+     "20": 18,
+     "30": 21,
+     "45": 25,
+     "55": 28,
+     "70": 33
+    },
+    {
+     "figur": "moe",
+     "1": 12,
+     "10": 15,
+     "20": 18,
+     "30": 21,
+     "45": 25,
+     "55": 28,
+     "70": 33
+    },
+    {
+     "figur": "ole_bull",
+     "1": 14,
+     "10": 17,
+     "20": 20,
+     "30": 23,
+     "45": 27,
+     "55": 30,
+     "70": 35
+    },
+    {
+     "figur": "berte",
+     "1": 16,
+     "10": 20,
+     "20": 24,
+     "30": 28,
+     "45": 34,
+     "55": 38,
+     "70": 44
+    },
+    {
+     "figur": "jotunen",
+     "1": 30,
+     "10": 37,
+     "20": 44,
+     "30": 52,
+     "45": 63,
+     "55": 71,
+     "70": 82
+    }
+   ]
+  },
+  "tole": {
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:366",
+   "rader": [
+    {
+     "figur": "aasen",
+     "1": 18,
+     "10": 23,
+     "20": 28,
+     "30": 34,
+     "45": 42,
+     "55": 48,
+     "70": 56
+    },
+    {
+     "figur": "tussen",
+     "1": 20,
+     "10": 25,
+     "20": 30,
+     "30": 35,
+     "45": 42,
+     "55": 47,
+     "70": 55
+    },
+    {
+     "figur": "huldra",
+     "1": 26,
+     "10": 32,
+     "20": 39,
+     "30": 46,
+     "45": 57,
+     "55": 64,
+     "70": 74
+    },
+    {
+     "figur": "vinje",
+     "1": 12,
+     "10": 15,
+     "20": 18,
+     "30": 21,
+     "45": 25,
+     "55": 28,
+     "70": 33
+    },
+    {
+     "figur": "landstad",
+     "1": 22,
+     "10": 27,
+     "20": 33,
+     "30": 39,
+     "45": 48,
+     "55": 54,
+     "70": 63
+    },
+    {
+     "figur": "aslaug",
+     "1": 22,
+     "10": 27,
+     "20": 32,
+     "30": 38,
+     "45": 46,
+     "55": 52,
+     "70": 60
+    },
+    {
+     "figur": "ravdna",
+     "1": 24,
+     "10": 29,
+     "20": 34,
+     "30": 40,
+     "45": 48,
+     "55": 54,
+     "70": 62
+    },
+    {
+     "figur": "collett",
+     "1": 24,
+     "10": 29,
+     "20": 35,
+     "30": 41,
+     "45": 50,
+     "55": 56,
+     "70": 65
+    },
+    {
+     "figur": "knudsen",
+     "1": 18,
+     "10": 22,
+     "20": 27,
+     "30": 31,
+     "45": 38,
+     "55": 42,
+     "70": 49
+    },
+    {
+     "figur": "asbjornsen",
+     "1": 14,
+     "10": 17,
+     "20": 21,
+     "30": 24,
+     "45": 29,
+     "55": 33,
+     "70": 38
+    },
+    {
+     "figur": "moe",
+     "1": 22,
+     "10": 27,
+     "20": 33,
+     "30": 39,
+     "45": 48,
+     "55": 54,
+     "70": 63
+    },
+    {
+     "figur": "ole_bull",
+     "1": 18,
+     "10": 22,
+     "20": 27,
+     "30": 31,
+     "45": 38,
+     "55": 42,
+     "70": 49
+    },
+    {
+     "figur": "berte",
+     "1": 26,
+     "10": 32,
+     "20": 39,
+     "30": 46,
+     "45": 57,
+     "55": 64,
+     "70": 74
+    },
+    {
+     "figur": "jotunen",
+     "1": 20,
+     "10": 24,
+     "20": 29,
+     "30": 33,
+     "45": 40,
+     "55": 44,
+     "70": 51
+    }
+   ]
+  },
+  "snogg": {
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:385",
+   "rader": [
+    {
+     "figur": "aasen",
+     "1": 24,
+     "10": 25,
+     "20": 26,
+     "30": 27,
+     "45": 28,
+     "55": 29,
+     "70": 31
+    },
+    {
+     "figur": "tussen",
+     "1": 40,
+     "10": 41,
+     "20": 43,
+     "30": 44,
+     "45": 47,
+     "55": 48,
+     "70": 50
+    },
+    {
+     "figur": "huldra",
+     "1": 30,
+     "10": 31,
+     "20": 32,
+     "30": 33,
+     "45": 34,
+     "55": 35,
+     "70": 37
+    },
+    {
+     "figur": "vinje",
+     "1": 32,
+     "10": 33,
+     "20": 35,
+     "30": 36,
+     "45": 39,
+     "55": 40,
+     "70": 42
+    },
+    {
+     "figur": "landstad",
+     "1": 18,
+     "10": 18,
+     "20": 19,
+     "30": 19,
+     "45": 20,
+     "55": 21,
+     "70": 21
+    },
+    {
+     "figur": "aslaug",
+     "1": 16,
+     "10": 16,
+     "20": 17,
+     "30": 17,
+     "45": 18,
+     "55": 19,
+     "70": 19
+    },
+    {
+     "figur": "ravdna",
+     "1": 26,
+     "10": 27,
+     "20": 28,
+     "30": 29,
+     "45": 30,
+     "55": 31,
+     "70": 33
+    },
+    {
+     "figur": "collett",
+     "1": 34,
+     "10": 35,
+     "20": 37,
+     "30": 38,
+     "45": 41,
+     "55": 42,
+     "70": 44
+    },
+    {
+     "figur": "knudsen",
+     "1": 22,
+     "10": 23,
+     "20": 24,
+     "30": 24,
+     "45": 26,
+     "55": 26,
+     "70": 28
+    },
+    {
+     "figur": "asbjornsen",
+     "1": 26,
+     "10": 27,
+     "20": 28,
+     "30": 29,
+     "45": 30,
+     "55": 31,
+     "70": 33
+    },
+    {
+     "figur": "moe",
+     "1": 16,
+     "10": 16,
+     "20": 17,
+     "30": 17,
+     "45": 18,
+     "55": 19,
+     "70": 19
+    },
+    {
+     "figur": "ole_bull",
+     "1": 28,
+     "10": 29,
+     "20": 30,
+     "30": 31,
+     "45": 33,
+     "55": 34,
+     "70": 36
+    },
+    {
+     "figur": "berte",
+     "1": 18,
+     "10": 18,
+     "20": 19,
+     "30": 19,
+     "45": 20,
+     "55": 21,
+     "70": 21
+    },
+    {
+     "figur": "jotunen",
+     "1": 18,
+     "10": 18,
+     "20": 19,
+     "30": 19,
+     "45": 20,
+     "55": 21,
+     "70": 21
+    }
+   ]
+  },
+  "lukke": {
+   "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:404",
+   "rader": [
+    {
+     "figur": "aasen",
+     "1": 18,
+     "10": 20,
+     "20": 22,
+     "30": 24,
+     "45": 27,
+     "55": 29,
+     "70": 32
+    },
+    {
+     "figur": "tussen",
+     "1": 30,
+     "10": 32,
+     "20": 35,
+     "30": 37,
+     "45": 41,
+     "55": 44,
+     "70": 47
+    },
+    {
+     "figur": "huldra",
+     "1": 22,
+     "10": 24,
+     "20": 26,
+     "30": 28,
+     "45": 31,
+     "55": 33,
+     "70": 36
+    },
+    {
+     "figur": "vinje",
+     "1": 20,
+     "10": 22,
+     "20": 25,
+     "30": 27,
+     "45": 31,
+     "55": 34,
+     "70": 37
+    },
+    {
+     "figur": "landstad",
+     "1": 14,
+     "10": 15,
+     "20": 17,
+     "30": 18,
+     "45": 21,
+     "55": 22,
+     "70": 24
+    },
+    {
+     "figur": "aslaug",
+     "1": 20,
+     "10": 22,
+     "20": 24,
+     "30": 26,
+     "45": 29,
+     "55": 31,
+     "70": 34
+    },
+    {
+     "figur": "ravdna",
+     "1": 22,
+     "10": 24,
+     "20": 26,
+     "30": 28,
+     "45": 31,
+     "55": 33,
+     "70": 36
+    },
+    {
+     "figur": "collett",
+     "1": 24,
+     "10": 26,
+     "20": 29,
+     "30": 31,
+     "45": 35,
+     "55": 38,
+     "70": 41
+    },
+    {
+     "figur": "knudsen",
+     "1": 14,
+     "10": 15,
+     "20": 16,
+     "30": 17,
+     "45": 18,
+     "55": 19,
+     "70": 21
+    },
+    {
+     "figur": "asbjornsen",
+     "1": 26,
+     "10": 28,
+     "20": 31,
+     "30": 33,
+     "45": 37,
+     "55": 40,
+     "70": 43
+    },
+    {
+     "figur": "moe",
+     "1": 18,
+     "10": 20,
+     "20": 22,
+     "30": 24,
+     "45": 27,
+     "55": 29,
+     "70": 32
+    },
+    {
+     "figur": "ole_bull",
+     "1": 28,
+     "10": 31,
+     "20": 34,
+     "30": 37,
+     "45": 41,
+     "55": 44,
+     "70": 49
+    },
+    {
+     "figur": "berte",
+     "1": 18,
+     "10": 20,
+     "20": 22,
+     "30": 24,
+     "45": 27,
+     "55": 29,
+     "70": 32
+    },
+    {
+     "figur": "jotunen",
+     "1": 8,
+     "10": 8,
+     "20": 9,
+     "30": 9,
+     "45": 10,
+     "55": 11,
+     "70": 11
+    }
+   ]
+  }
+ },
+ "unge_ivar": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:451",
+  "rader": [
+   {
+    "nivaa": 1,
+    "liv": 56,
+    "royst": 20,
+    "kraft": 6,
+    "ordkraft": 16,
+    "herdsle": 6,
+    "tole": 12,
+    "snoggleik": 26,
+    "lukke": 20
+   },
+   {
+    "nivaa": 2,
+    "liv": 95,
+    "royst": 21,
+    "kraft": 6,
+    "ordkraft": 17,
+    "herdsle": 6,
+    "tole": 13,
+    "snoggleik": 26,
+    "lukke": 20
+   },
+   {
+    "nivaa": 3,
+    "liv": 133,
+    "royst": 21,
+    "kraft": 7,
+    "ordkraft": 18,
+    "herdsle": 7,
+    "tole": 13,
+    "snoggleik": 26,
+    "lukke": 20
+   },
+   {
+    "nivaa": 4,
+    "liv": 172,
+    "royst": 22,
+    "kraft": 7,
+    "ordkraft": 18,
+    "herdsle": 7,
+    "tole": 14,
+    "snoggleik": 27,
+    "lukke": 21
+   },
+   {
+    "nivaa": 5,
+    "liv": 210,
+    "royst": 23,
+    "kraft": 7,
+    "ordkraft": 19,
+    "herdsle": 7,
+    "tole": 14,
+    "snoggleik": 27,
+    "lukke": 21
+   },
+   {
+    "nivaa": 6,
+    "liv": 248,
+    "royst": 25,
+    "kraft": 8,
+    "ordkraft": 20,
+    "herdsle": 7,
+    "tole": 15,
+    "snoggleik": 27,
+    "lukke": 21
+   },
+   {
+    "nivaa": 7,
+    "liv": 287,
+    "royst": 26,
+    "kraft": 8,
+    "ordkraft": 21,
+    "herdsle": 8,
+    "tole": 15,
+    "snoggleik": 27,
+    "lukke": 21
+   },
+   {
+    "nivaa": 8,
+    "liv": 325,
+    "royst": 28,
+    "kraft": 8,
+    "ordkraft": 22,
+    "herdsle": 8,
+    "tole": 16,
+    "snoggleik": 27,
+    "lukke": 21
+   }
+  ]
+ },
+ "huldra_nedskrivne_ord": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:470",
+  "rader": [
+   {
+    "skrivne_huldreord_heimr_medrekna": 0,
+    "maks_liv_i_forste_akt": 100,
+    "nivaa_10": 570,
+    "nivaa_30": 1658,
+    "nivaa_45": 2474,
+    "nivaa_55": 3018
+   },
+   {
+    "skrivne_huldreord_heimr_medrekna": 1,
+    "maks_liv_i_forste_akt": 90,
+    "nivaa_10": 513,
+    "nivaa_30": 1658,
+    "nivaa_45": 2474,
+    "nivaa_55": 3018
+   },
+   {
+    "skrivne_huldreord_heimr_medrekna": 2,
+    "maks_liv_i_forste_akt": 85,
+    "nivaa_10": 485,
+    "nivaa_30": 1575,
+    "nivaa_45": 2350,
+    "nivaa_55": 2867
+   },
+   {
+    "skrivne_huldreord_heimr_medrekna": 3,
+    "maks_liv_i_forste_akt": 80,
+    "nivaa_10": 456,
+    "nivaa_30": 1492,
+    "nivaa_45": 2227,
+    "nivaa_55": 2716
+   },
+   {
+    "skrivne_huldreord_heimr_medrekna": 5,
+    "maks_liv_i_forste_akt": 70,
+    "nivaa_10": 399,
+    "nivaa_30": 1326,
+    "nivaa_45": 1979,
+    "nivaa_55": 2414
+   },
+   {
+    "skrivne_huldreord_heimr_medrekna": 8,
+    "maks_liv_i_forste_akt": 55,
+    "nivaa_10": 314,
+    "nivaa_30": 1078,
+    "nivaa_45": 1608,
+    "nivaa_55": 1962
+   }
+  ]
+ },
+ "roynslekurve": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:542",
+  "rader": [
+   {
+    "nivaa": 1,
+    "til_neste_nivaa": 30,
+    "samla_ved_nivaaet": 0,
+    "roynsle_vanleg_fiende_paa_nivaaet": 6,
+    "kampar_per_nivaa_tre_fiendar": 1.7
+   },
+   {
+    "nivaa": 2,
+    "til_neste_nivaa": 60,
+    "samla_ved_nivaaet": 30,
+    "roynsle_vanleg_fiende_paa_nivaaet": 8,
+    "kampar_per_nivaa_tre_fiendar": 2.5
+   },
+   {
+    "nivaa": 3,
+    "til_neste_nivaa": 100,
+    "samla_ved_nivaaet": 90,
+    "roynsle_vanleg_fiende_paa_nivaaet": 12,
+    "kampar_per_nivaa_tre_fiendar": 2.8
+   },
+   {
+    "nivaa": 4,
+    "til_neste_nivaa": 150,
+    "samla_ved_nivaaet": 190,
+    "roynsle_vanleg_fiende_paa_nivaaet": 16,
+    "kampar_per_nivaa_tre_fiendar": 3.1
+   },
+   {
+    "nivaa": 5,
+    "til_neste_nivaa": 210,
+    "samla_ved_nivaaet": 340,
+    "roynsle_vanleg_fiende_paa_nivaaet": 21,
+    "kampar_per_nivaa_tre_fiendar": 3.3
+   },
+   {
+    "nivaa": 6,
+    "til_neste_nivaa": 280,
+    "samla_ved_nivaaet": 550,
+    "roynsle_vanleg_fiende_paa_nivaaet": 26,
+    "kampar_per_nivaa_tre_fiendar": 3.6
+   },
+   {
+    "nivaa": 8,
+    "til_neste_nivaa": 450,
+    "samla_ved_nivaaet": 1190,
+    "roynsle_vanleg_fiende_paa_nivaaet": 38,
+    "kampar_per_nivaa_tre_fiendar": 3.9
+   },
+   {
+    "nivaa": 10,
+    "til_neste_nivaa": 660,
+    "samla_ved_nivaaet": 2190,
+    "roynsle_vanleg_fiende_paa_nivaaet": 51,
+    "kampar_per_nivaa_tre_fiendar": 4.3
+   },
+   {
+    "nivaa": 12,
+    "til_neste_nivaa": 910,
+    "samla_ved_nivaaet": 3630,
+    "roynsle_vanleg_fiende_paa_nivaaet": 66,
+    "kampar_per_nivaa_tre_fiendar": 4.6
+   },
+   {
+    "nivaa": 15,
+    "til_neste_nivaa": 1360,
+    "samla_ved_nivaaet": 6790,
+    "roynsle_vanleg_fiende_paa_nivaaet": 91,
+    "kampar_per_nivaa_tre_fiendar": 5.0
+   },
+   {
+    "nivaa": 20,
+    "til_neste_nivaa": 2310,
+    "samla_ved_nivaaet": 15390,
+    "roynsle_vanleg_fiende_paa_nivaaet": 138,
+    "kampar_per_nivaa_tre_fiendar": 5.6
+   },
+   {
+    "nivaa": 25,
+    "til_neste_nivaa": 3510,
+    "samla_ved_nivaaet": 29240,
+    "roynsle_vanleg_fiende_paa_nivaaet": 192,
+    "kampar_per_nivaa_tre_fiendar": 6.1
+   },
+   {
+    "nivaa": 30,
+    "til_neste_nivaa": 4960,
+    "samla_ved_nivaaet": 49590,
+    "roynsle_vanleg_fiende_paa_nivaaet": 250,
+    "kampar_per_nivaa_tre_fiendar": 6.6
+   },
+   {
+    "nivaa": 34,
+    "til_neste_nivaa": 6300,
+    "samla_ved_nivaaet": 71390,
+    "roynsle_vanleg_fiende_paa_nivaaet": 301,
+    "kampar_per_nivaa_tre_fiendar": 7.0
+   },
+   {
+    "nivaa": 38,
+    "til_neste_nivaa": 7800,
+    "samla_ved_nivaaet": 98790,
+    "roynsle_vanleg_fiende_paa_nivaaet": 355,
+    "kampar_per_nivaa_tre_fiendar": 7.3
+   },
+   {
+    "nivaa": 41,
+    "til_neste_nivaa": 9030,
+    "samla_ved_nivaaet": 123400,
+    "roynsle_vanleg_fiende_paa_nivaaet": 398,
+    "kampar_per_nivaa_tre_fiendar": 7.6
+   },
+   {
+    "nivaa": 45,
+    "til_neste_nivaa": 10810,
+    "samla_ved_nivaaet": 162140,
+    "roynsle_vanleg_fiende_paa_nivaaet": 457,
+    "kampar_per_nivaa_tre_fiendar": 7.9
+   },
+   {
+    "nivaa": 47,
+    "til_neste_nivaa": 11760,
+    "samla_ved_nivaaet": 184230,
+    "roynsle_vanleg_fiende_paa_nivaaet": 487,
+    "kampar_per_nivaa_tre_fiendar": 8.0
+   },
+   {
+    "nivaa": 50,
+    "til_neste_nivaa": 13260,
+    "samla_ved_nivaaet": 220990,
+    "roynsle_vanleg_fiende_paa_nivaaet": 534,
+    "kampar_per_nivaa_tre_fiendar": 8.3
+   },
+   {
+    "nivaa": 55,
+    "til_neste_nivaa": 15960,
+    "samla_ved_nivaaet": 292590,
+    "roynsle_vanleg_fiende_paa_nivaaet": 616,
+    "kampar_per_nivaa_tre_fiendar": 8.6
+   },
+   {
+    "nivaa": 60,
+    "til_neste_nivaa": 18910,
+    "samla_ved_nivaaet": 378190,
+    "roynsle_vanleg_fiende_paa_nivaaet": 701,
+    "kampar_per_nivaa_tre_fiendar": 9.0
+   },
+   {
+    "nivaa": 65,
+    "til_neste_nivaa": 22110,
+    "samla_ved_nivaaet": 479040,
+    "roynsle_vanleg_fiende_paa_nivaaet": 790,
+    "kampar_per_nivaa_tre_fiendar": 9.3
+   },
+   {
+    "nivaa": 69,
+    "til_neste_nivaa": 24850,
+    "samla_ved_nivaaet": 571540,
+    "roynsle_vanleg_fiende_paa_nivaaet": 864,
+    "kampar_per_nivaa_tre_fiendar": 9.6
+   }
+  ],
+  "formel_tekst": "Røynsle til neste nivå = 5 × nivå × nivå + 15 × nivå + 10",
+  "formel_kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:536",
+  "fiende_formel_tekst": "Røynsle frå ein vanleg fiende på nivå E = 1,5 × E^1,5 + 4, runda av. Ein boss gjev halvparten av det som trengst frå nivået sitt til det neste. Fienderøynsla veks litt saktare enn kravet, og difor stig talet på kampar per nivå sakte gjennom spelet, frå to eller tre i Ørsta til åtte i Sagahallen. Det er Schreiber si «slightly increasing curve, where each area takes a little more time than the last» (research 6.2)."
+ },
+ "gummiband": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:580",
+  "rader": [
+   {
+    "fienden_over_eller_under_figuren": -10,
+    "roynsle": 10,
+    "kampar_per_nivaa_for_ein_figur_paa_nivaa_30": 119.8
+   },
+   {
+    "fienden_over_eller_under_figuren": -8,
+    "roynsle": 10,
+    "kampar_per_nivaa_for_ein_figur_paa_nivaa_30": 104.0
+   },
+   {
+    "fienden_over_eller_under_figuren": -6,
+    "roynsle": 28,
+    "kampar_per_nivaa_for_ein_figur_paa_nivaa_30": 32.8
+   },
+   {
+    "fienden_over_eller_under_figuren": -4,
+    "roynsle": 52,
+    "kampar_per_nivaa_for_ein_figur_paa_nivaa_30": 15.7
+   },
+   {
+    "fienden_over_eller_under_figuren": -2,
+    "roynsle": 76,
+    "kampar_per_nivaa_for_ein_figur_paa_nivaa_30": 9.6
+   },
+   {
+    "fienden_over_eller_under_figuren": 0,
+    "roynsle": 100,
+    "kampar_per_nivaa_for_ein_figur_paa_nivaa_30": 6.6
+   },
+   {
+    "fienden_over_eller_under_figuren": 2,
+    "roynsle": 120,
+    "kampar_per_nivaa_for_ein_figur_paa_nivaa_30": 5.0
+   },
+   {
+    "fienden_over_eller_under_figuren": 4,
+    "roynsle": 140,
+    "kampar_per_nivaa_for_ein_figur_paa_nivaa_30": 3.9
+   },
+   {
+    "fienden_over_eller_under_figuren": 6,
+    "roynsle": 160,
+    "kampar_per_nivaa_for_ein_figur_paa_nivaa_30": 3.2
+   },
+   {
+    "fienden_over_eller_under_figuren": 8,
+    "roynsle": 180,
+    "kampar_per_nivaa_for_ein_figur_paa_nivaa_30": 2.6
+   },
+   {
+    "fienden_over_eller_under_figuren": 10,
+    "roynsle": 200,
+    "kampar_per_nivaa_for_ein_figur_paa_nivaa_30": 2.2
+   }
+  ]
+ },
+ "kampar_per_del": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:602",
+  "rader": [
+   {
+    "del": "Ørsta 1816–1831",
+    "nivaa": "1 til 6",
+    "nivaa_i_alt": 5,
+    "kampar_paa_nivaa_om_lag": 13,
+    "snitt_per_nivaa": 2.7
+   },
+   {
+    "del": "Ekset, Solnør og Bergen 1833–1841",
+    "nivaa": "6 til 10",
+    "nivaa_i_alt": 4,
+    "kampar_paa_nivaa_om_lag": 15,
+    "snitt_per_nivaa": 3.8
+   },
+   {
+    "del": "Reiseåra 1842–1847",
+    "nivaa": "10 til 27",
+    "nivaa_i_alt": 17,
+    "kampar_paa_nivaa_om_lag": 90,
+    "snitt_per_nivaa": 5.3
+   },
+   {
+    "del": "Christiania 1847–1850",
+    "nivaa": "27 til 34",
+    "nivaa_i_alt": 7,
+    "kampar_paa_nivaa_om_lag": 46,
+    "snitt_per_nivaa": 6.6
+   },
+   {
+    "del": "Fimbulvinteren 1850–1853",
+    "nivaa": "34 til 45",
+    "nivaa_i_alt": 11,
+    "kampar_paa_nivaa_om_lag": 81,
+    "snitt_per_nivaa": 7.4
+   },
+   {
+    "del": "Sagahallen 1853",
+    "nivaa": "45 til 47",
+    "nivaa_i_alt": 2,
+    "kampar_paa_nivaa_om_lag": 16,
+    "snitt_per_nivaa": 7.9
+   },
+   {
+    "del": "Superbossar (valfritt)",
+    "nivaa": "47 til 62",
+    "nivaa_i_alt": 15,
+    "kampar_paa_nivaa_om_lag": 128,
+    "snitt_per_nivaa": 8.6
+   }
+  ]
+ },
+ "tilraadd_niva_per_del": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:620",
+  "rader": [
+   {
+    "del": "Prologen 1841",
+    "nivaa_inn": "fast",
+    "nivaa_ut": "fast",
+    "bossar_med_tilraadd_nivaa": "Fonnkjerringa (fast prologstyrke)"
+   },
+   {
+    "del": "Ørsta 1816–1831",
+    "nivaa_inn": 1,
+    "nivaa_ut": 6,
+    "bossar_med_tilraadd_nivaa": "Gassen 2, Musekongen 3"
+   },
+   {
+    "del": "Ekset og Solnør 1833–1841",
+    "nivaa_inn": 6,
+    "nivaa_ut": 8,
+    "bossar_med_tilraadd_nivaa": "Ingen store bossar"
+   },
+   {
+    "del": "Bergen 1841",
+    "nivaa_inn": 8,
+    "nivaa_ut": 10,
+    "bossar_med_tilraadd_nivaa": "Stiftskrivaren 9, Debitoren 10"
+   },
+   {
+    "del": "Reiseåra 1842–1847",
+    "nivaa_inn": 10,
+    "nivaa_ut": 27,
+    "bossar_med_tilraadd_nivaa": "Djurra i Trollgjølet 10, Plakaten imod Banden 11, Nøkken 12, Takstprotokollen i isen 12, Brannvaka 14, Tingbokvesenet 15, Samlaren 17, Røysvorden 17, Tarjei 19, Blestervetten 19, Blekkpresten 20, Ormen på isen 21, Aslaug mot Vinje 22, Falkonerdraugen 22, Stilebokblekket 24, Jøtulen i Jøtulberget 24, Frostvette 25, Draugen over Folla 26, Griffenfeld 27, Hellervorden 27, Steinspranget 27"
+   },
+   {
+    "del": "Christiania 1847–1850",
+    "nivaa_inn": 28,
+    "nivaa_ut": 34,
+    "bossar_med_tilraadd_nivaa": "Den trykte huldra 28 til 32, Settardjevelen 29 til 33, Nøkken i vasen 31, Svedjeelden 32, Suffløren 30 til 34, Trollet i døra 33"
+   },
+   {
+    "del": "Fimbulvinteren 1850–1853",
+    "nivaa_inn": 34,
+    "nivaa_ut": 44,
+    "bossar_med_tilraadd_nivaa": "Ravnen i margen 34, Fossegrimen i isen 34, Botten-Hansen 35, Fanen 36, Knudsens kapittel 36, Kvitørna over Lovund 37, Lofoten 37 til 38, Uvêret over Revet 38, personlege oppdrag 38 til 43, Rimsuffløren 39, Breframstøyten 40, Førsteordenspunktet på Hårteigen 40, Iskappa på Glittertind 41, Kjettingskrivaren 41, Rimvargen 41, Aslaug mot Vinje igjen 42, Frostrøyken 42, Kanslisskrivarane 43, Kaldblesteren 44, Bokstavravnane 44"
+   },
+   {
+    "del": "Sagahallen 1853",
+    "nivaa_inn": 45,
+    "nivaa_ut": 47,
+    "bossar_med_tilraadd_nivaa": "Glåm 45, Harald og Olav 46, Tor og Odin 46, Munch 47"
+   },
+   {
+    "del": "Superbossar",
+    "nivaa_inn": 50,
+    "nivaa_ut": 70,
+    "bossar_med_tilraadd_nivaa": "Kongsormen 53 som den første, Ormen i Lofotveggen 50 med joik, Fåvne og Lindormen 52, Sjøormen og Grotormen 54, Fjelldraken 55, Nidhoggsungen 56, Kansellisten og Den blinde kongen 60, Heildraugen 62, Den første skrivaren 68 til 70"
+   }
+  ]
+ },
+ "roynsle_etter_utgang": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:638",
+  "rader": [
+   {
+    "utgang": "Folkevesen roa: open, og nokon lyttar",
+    "roynsle": 150,
+    "kjelde": "fiendar_bossar.md"
+   },
+   {
+    "utgang": "Folkevesen med tom Liv",
+    "roynsle": 100,
+    "kjelde": null
+   },
+   {
+    "utgang": "Folkevesen roa medan Ravdna joikar",
+    "roynsle": "100 prosent, inga ord",
+    "kjelde": "figurar_a.md"
+   },
+   {
+    "utgang": "Dyr Roleg",
+    "roynsle": 150,
+    "kjelde": "bestiarium_dyr.md"
+   },
+   {
+    "utgang": "Dyr Mett eller Skremd",
+    "roynsle": 100,
+    "kjelde": "bestiarium_dyr.md"
+   },
+   {
+    "utgang": "Dyr Slegen",
+    "roynsle": 50,
+    "kjelde": "bestiarium_dyr.md"
+   },
+   {
+    "utgang": "Menneske gjev opp",
+    "roynsle": 100,
+    "kjelde": null
+   },
+   {
+    "utgang": "Menneske flyktar",
+    "roynsle": 50,
+    "kjelde": null
+   },
+   {
+    "utgang": "Pressa folk",
+    "roynsle": "Ingen",
+    "kjelde": "bestiarium_menneske.md"
+   },
+   {
+    "utgang": "Blekkvesen, sagavesen og fimbulvintervesen",
+    "roynsle": 100,
+    "kjelde": null
+   },
+   {
+    "utgang": "Gullfiendar",
+    "roynsle": "3 til 5 gonger vanleg, Marmælet tre gonger ved Set ut att",
+    "kjelde": "bestiarium_oversikt.md"
+   },
+   {
+    "utgang": "Boss",
+    "roynsle": "Halve nivået, sjå fiendetabellen",
+    "kjelde": null
+   }
+  ]
+ },
+ "eventyrboka_sider": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:677",
+  "rader": [
+   {
+    "side": "Trolla på Hedalsskogen",
+    "vilje": 5,
+    "bonus_per_nivaa": "Kraft +1",
+    "merknad": null
+   },
+   {
+    "side": "Trollet med tre hovud",
+    "vilje": 4,
+    "bonus_per_nivaa": "Kraft +2",
+    "merknad": "Som Bismarck i FF6"
+   },
+   {
+    "side": "Kjetta på Dovre",
+    "vilje": 4,
+    "bonus_per_nivaa": "Liv +30 prosent av nivåauken",
+    "merknad": "Som Midgardsormr"
+   },
+   {
+    "side": "Bukkane Bruse",
+    "vilje": 6,
+    "bonus_per_nivaa": "Herdsle +1",
+    "merknad": null
+   },
+   {
+    "side": "Nøkken frå Ringerike",
+    "vilje": 5,
+    "bonus_per_nivaa": "Ordkraft +1",
+    "merknad": null
+   },
+   {
+    "side": "Kverna på havsens botn",
+    "vilje": 3,
+    "bonus_per_nivaa": "Røyst +30 prosent av nivåauken",
+    "merknad": "Som Fenrir"
+   },
+   {
+    "side": "Askeladden som kappåt med trollet",
+    "vilje": 6,
+    "bonus_per_nivaa": "Lukke +1",
+    "merknad": null
+   },
+   {
+    "side": "Tussen",
+    "vilje": "Ingen",
+    "bonus_per_nivaa": "Liv +10 prosent av nivåauken",
+    "merknad": "Kostar ingen Vilje, fordi tussen hugsar"
+   },
+   {
+    "side": "Lyngtrollet (S1.19, val A)",
+    "vilje": 4,
+    "bonus_per_nivaa": "Herdsle +2",
+    "merknad": null
+   },
+   {
+    "side": "Seljordsormen",
+    "vilje": 4,
+    "bonus_per_nivaa": "Liv +50 prosent av nivåauken",
+    "merknad": "Som Bahamut"
+   },
+   {
+    "side": "Draugen over Folla (3.21, val A)",
+    "vilje": 5,
+    "bonus_per_nivaa": "Tole +2",
+    "merknad": "Huldra mistar 1 prosent maks Liv ved kvar bonus"
+   },
+   {
+    "side": "Nøkken i Hafslovatnet (S1.10, om han blei skriven)",
+    "vilje": 5,
+    "bonus_per_nivaa": "Ordkraft +2",
+    "merknad": null
+   }
+  ]
+ },
+ "styrkjeting": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:700",
+  "rader": [
+   {
+    "ting": "Vatn frå ei heilag kjelde",
+    "verknad": "Liv +100",
+    "tal_i_spelet": 5,
+    "kvar_dei_finst": "Olavsbrønnen under Nidarosdomen (S1.40) og fire andre kjelder, éi i kvar landsdel. Alle er tildekte av blekk, is eller stein og må opnast. Folk trudde at vatnet frå slike kjelder lækte"
+   },
+   {
+    "ting": "Ein drope skaldemjød",
+    "verknad": "Røyst +20",
+    "tal_i_spelet": 5,
+    "kvar_dei_finst": "Skaldar i fimbulvinteren og Sagahallen (sjeldan), Den blinde kongen og Kongsormen. Mjøden som gjorde den som drakk, til skald"
+   },
+   {
+    "ting": "Ein slurk frå trollflaska",
+    "verknad": "Kraft +3",
+    "tal_i_spelet": 4,
+    "kvar_dei_finst": "Troll som er roa og ikkje slegne. Etter Soria Moria slott, der Halvor drikk av flaska og kan løfte sverdet"
+   },
+   {
+    "ting": "Ei fjør frå Hugin",
+    "verknad": "Ordkraft +3",
+    "tal_i_spelet": 4,
+    "kvar_dei_finst": "Hugin og Munin (4.29), boka med «kvar» i 7.9, og to ravnar av is i fimbulvinteren. Hugin er tanken"
+   },
+   {
+    "ting": "Bork frå tuntreet",
+    "verknad": "Herdsle +3",
+    "tal_i_spelet": 4,
+    "kvar_dei_finst": "Gardvord som er roa, og gardar der partyet ikkje har krenkt tunet. Gardvorden gjev barken sjølv. Den som hoggar, får ingenting"
+   },
+   {
+    "ting": "Ein stein med hol",
+    "verknad": "Tole +3",
+    "tal_i_spelet": 4,
+    "kvar_dei_finst": "Etter at Mara er roa, og i fjøs der nokon har hengt han opp. Steinen med hol verna mot mara i folketrua"
+   },
+   {
+    "ting": "Ein hestesko frå nøkken",
+    "verknad": "Snøggleik +3",
+    "tal_i_spelet": 3,
+    "kvar_dei_finst": "Ved elvar der nøkken er roa i hesteform. Nøkken som kvit hest er snøggare enn noko anna"
+   },
+   {
+    "ting": "Ein firkløver plukka jonsoknatta",
+    "verknad": "Lukke +3",
+    "tal_i_spelet": 3,
+    "kvar_dei_finst": "Berre jonsoknatta, i tre sideoppdrag i ulike år. Firkløver plukka den natta skulle gje lukke"
+   }
+  ]
+ },
+ "pengar_per_del": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:957",
+  "rader": [
+   {
+    "del": "Ørsta 1816–1831",
+    "pengar_spelaren_styrer_om_lag": "40 s",
+    "viktigaste_kjelder": "Småtenester på gardane, mor",
+    "beste_reiskap_i_butikk": "3 til 12 s"
+   },
+   {
+    "del": "Ekset og Solnør 1833–1841",
+    "pengar_spelaren_styrer_om_lag": "8 spd",
+    "viktigaste_kjelder": "Visene, løn som huslærar på Solnør",
+    "beste_reiskap_i_butikk": "20 s til 1 spd"
+   },
+   {
+    "del": "Bergen 1841",
+    "pengar_spelaren_styrer_om_lag": "4 spd",
+    "viktigaste_kjelder": "Skrivearbeid, resten av lønna",
+    "beste_reiskap_i_butikk": "1 til 2 spd"
+   },
+   {
+    "del": "Reiseåra 1842–1847",
+    "pengar_spelaren_styrer_om_lag": "250 spd",
+    "viktigaste_kjelder": "Stipendet frå Videnskabsselskabet, honorar, sal",
+    "beste_reiskap_i_butikk": "2 til 9 spd"
+   },
+   {
+    "del": "Christiania 1847–1850",
+    "pengar_spelaren_styrer_om_lag": "170 spd",
+    "viktigaste_kjelder": "Stipendet, skrivearbeid i byen",
+    "beste_reiskap_i_butikk": "9 til 16 spd"
+   },
+   {
+    "del": "Fimbulvinteren 1850–1853",
+    "pengar_spelaren_styrer_om_lag": "380 spd",
+    "viktigaste_kjelder": "Stipendbrevet, skrivearbeid, honorar, sal",
+    "beste_reiskap_i_butikk": "16 til 25 spd"
+   }
+  ]
+ },
+ "pengekjelder": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:944",
+  "rader": [
+   {
+    "kjelde": "Reiseposen",
+    "kva_spelaren_faar": "Ei rate av stipendet kvar gong eit nytt kapittel i Dagboka opnar seg. Om lag tre firedelar går til skyss og kost og blir førte i Reiseberetninga. Resten går i pungen",
+    "naar": "Frå 2.1, 1842"
+   },
+   {
+    "kjelde": "Stipendbrevet",
+    "kva_spelaren_faar": "Same ordninga med stipendet frå Stortinget, som er dobbelt så stort",
+    "naar": "Frå 5.11, 1851"
+   },
+   {
+    "kjelde": "Honorar frå Videnskabsselskabet",
+    "kva_spelaren_faar": "6 skilling per skrive ord i ordlistene Aasen sender frå ein stad med post. Hugsa ord kan ikkje sendast",
+    "naar": "Frå 1842"
+   },
+   {
+    "kjelde": "Skrivearbeid",
+    "kva_spelaren_faar": "1 til 4 spd per oppdrag i Dagboka: brev for folk som ikkje kan skrive, avskrifter, korrektur",
+    "naar": "Heile spelet"
+   },
+   {
+    "kjelde": "Sal",
+    "kva_spelaren_faar": "Ting frå dyr (ull, fjør, egg), skinn som bønder gjev som takk når partyet har roa eit dyr som plaga bygda, og overflødig utstyr til halv pris",
+    "naar": "Heile spelet"
+   },
+   {
+    "kjelde": "Skillingsviser",
+    "kva_spelaren_faar": "12 skilling for visene på marknaden, om spelaren vel det (1.10, val A)",
+    "naar": "Ekset 1833"
+   }
+  ]
+ },
+ "bossar_mot_formlane": {
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:1010",
+  "rader": [
+   {
+    "boss": "Plakaten imod Banden",
+    "nivaa": 11,
+    "figurar": 2,
+    "liv": 1400,
+    "vanleg_treff": 97,
+    "treff_i_alt": 14,
+    "rundar_om_lag": 4
+   },
+   {
+    "boss": "Brannvaka",
+    "nivaa": 14,
+    "figurar": 2,
+    "liv": 3200,
+    "vanleg_treff": 123,
+    "treff_i_alt": 26,
+    "rundar_om_lag": 7
+   },
+   {
+    "boss": "Blekkpresten",
+    "nivaa": 20,
+    "figurar": 3,
+    "liv": 5600,
+    "vanleg_treff": 183,
+    "treff_i_alt": 31,
+    "rundar_om_lag": 5
+   },
+   {
+    "boss": "Draugen over Folla",
+    "nivaa": 26,
+    "figurar": 3,
+    "liv": 10000,
+    "vanleg_treff": 246,
+    "treff_i_alt": 41,
+    "rundar_om_lag": 7
+   },
+   {
+    "boss": "Settardjevelen",
+    "nivaa": 31,
+    "figurar": 4,
+    "liv": 9000,
+    "vanleg_treff": 298,
+    "treff_i_alt": 30,
+    "rundar_om_lag": 4
+   },
+   {
+    "boss": "Suffløren",
+    "nivaa": 32,
+    "figurar": 3,
+    "liv": 10000,
+    "vanleg_treff": 305,
+    "treff_i_alt": 33,
+    "rundar_om_lag": 6
+   },
+   {
+    "boss": "Fristaren på Årflot",
+    "nivaa": 34,
+    "figurar": 2,
+    "liv": 6000,
+    "vanleg_treff": 328,
+    "treff_i_alt": 18,
+    "rundar_om_lag": 5
+   },
+   {
+    "boss": "Fanen",
+    "nivaa": 36,
+    "figurar": 4,
+    "liv": 11000,
+    "vanleg_treff": 350,
+    "treff_i_alt": 31,
+    "rundar_om_lag": 4
+   },
+   {
+    "boss": "Fristaren i tårnet",
+    "nivaa": 36,
+    "figurar": 4,
+    "liv": 12000,
+    "vanleg_treff": 350,
+    "treff_i_alt": 34,
+    "rundar_om_lag": 5
+   },
+   {
+    "boss": "Rimsuffløren",
+    "nivaa": 39,
+    "figurar": 4,
+    "liv": 15000,
+    "vanleg_treff": 377,
+    "treff_i_alt": 40,
+    "rundar_om_lag": 5
+   },
+   {
+    "boss": "Kjettingskrivaren",
+    "nivaa": 41,
+    "figurar": 4,
+    "liv": 9000,
+    "vanleg_treff": 403,
+    "treff_i_alt": 22,
+    "rundar_om_lag": 3
+   },
+   {
+    "boss": "Glåm (fase 1)",
+    "nivaa": 45,
+    "figurar": 3,
+    "liv": 14000,
+    "vanleg_treff": 443,
+    "treff_i_alt": 32,
+    "rundar_om_lag": 5
+   },
+   {
+    "boss": "Fristaren i messa",
+    "nivaa": 46,
+    "figurar": "1 og 2 gjestar",
+    "liv": 14000,
+    "vanleg_treff": 454,
+    "treff_i_alt": 31,
+    "rundar_om_lag": 6
+   },
+   {
+    "boss": "Munch (fase 1 og 2)",
+    "nivaa": 47,
+    "figurar": 4,
+    "liv": 42000,
+    "vanleg_treff": 464,
+    "treff_i_alt": 91,
+    "rundar_om_lag": 12
+   },
+   {
+    "boss": "Fåvne",
+    "nivaa": 52,
+    "figurar": 4,
+    "liv": 38000,
+    "vanleg_treff": 517,
+    "treff_i_alt": 73,
+    "rundar_om_lag": 9
+   },
+   {
+    "boss": "Fjelldraken",
+    "nivaa": 55,
+    "figurar": 4,
+    "liv": 40000,
+    "vanleg_treff": 551,
+    "treff_i_alt": 73,
+    "rundar_om_lag": 9
+   },
+   {
+    "boss": "Heildraugen (seks fasar)",
+    "nivaa": 62,
+    "figurar": 4,
+    "liv": 84000,
+    "vanleg_treff": 626,
+    "treff_i_alt": 134,
+    "rundar_om_lag": 17
+   }
+  ]
+ },
+ "pengar": {
+  "skilling_per_speciedalar": 120,
+  "kjelde_tekst": "Pengane i spelet er speciedalar og skilling. I myntsystemet frå 1816 gjekk det 120 skilling på ein speciedalar (snl.no, «skilling»). Mellomleddet ort, som var 24 skilling, blir ikkje brukt i menyane, fordi det gjer rekninga tyngre for spelaren. Menyen skriv «spd» og «s», til dømes 2 spd 40 s. I 1875 blei speciedalaren bytt ut med fire kroner, men då er spelet over.",
+  "kjelde": "05 Mekanikk/02 Nivå, eigenskapar og utstyr.md:934"
+ }
+}
