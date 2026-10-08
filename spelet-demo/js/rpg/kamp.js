@@ -22,6 +22,10 @@ window.Kamp = (function () {
   const stokk = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const vent = ms => new Promise(r => setTimeout(r, ms));
   let siger = 0;              // tidspunktet sigerfeiringa byrja, eller 0
+  // Lyd (js/rpg/lyd.js): fiendeslaga har lydar etter gruppa i fana Lydeffektar, galdrane etter lydfamilien.
+  const lyd = id => window.Lyd && Lyd.sfx(id);
+  const LYDGRUPPE = { blekk: "blekk", bok: "papir", vette: "vette", eld: "eld", dyr: "smaadyr" };
+  const LYDFAM = { diftong: "diftong", hard: "hard", sporjeord: "kv", j: "j", smaaord: "smaa", nokkel: "nokkel" };
   const kvitt = document.createElement("canvas");
   function kvittLerret(bilde, styrke) {
     kvitt.width = bilde.width; kvitt.height = bilde.height;
@@ -334,13 +338,17 @@ window.Kamp = (function () {
     };
 
     /* Handlingar */
-    function skade(frå, til, faktor = 1, { gjennom } = {}) {
+    function skade(frå, til, faktor = 1, { gjennom, galdr } = {}) {
       const vern = til.vern > 0 && !gjennom ? 1.8 : 1;
       const avsl = til.avslort > 0 ? 1.5 : 1;
       let s = (frå.atk * 2 + rnd(0, frå.atk / 2)) * faktor * avsl - (gjennom ? 0 : til.def * vern);
       if (til.vern > 0 && !gjennom) s *= 0.6;
       s = Math.max(1, Math.round(s));
       til.hp = Math.max(0, til.hp - s);
+      const gruppe = f => LYDGRUPPE[f.d.slag] || "vette";
+      if (frå.fiende) lyd(`fiende.${gruppe(frå)}.aatak`);
+      else if (!galdr) lyd(s >= Math.max(12, til.maxhp * 0.2) ? "kamp.slag.tungt" : "kamp.slag");
+      if (til.hp <= 0) lyd(til.fiende ? (til.d.slag === "blekk" ? "kamp.fiende.blekk" : `fiende.${gruppe(til)}.skade`) : "kamp.slegen");
       til.blink = performance.now() + 400;
       if (til.hp <= 0 && til.fiende) { til.dod = performance.now(); paaVesen && paaVesen(til.id, true); }
       if (!til.fiende) kvedAuke(til, 12);
@@ -353,7 +361,7 @@ window.Kamp = (function () {
       visTal(til, s, til.fiende ? "#fff" : "#ffb0a0");
       return s;
     }
-    const lækj = (v, n) => { const før = v.hp; v.hp = Math.min(v.maxhp, v.hp + Math.round(n)); visTal(v, `+${Math.round(v.hp - før)}`, "#9ff09f"); };
+    const lækj = (v, n) => { lyd("kamp.laekje"); const før = v.hp; v.hp = Math.min(v.maxhp, v.hp + Math.round(n)); visTal(v, `+${Math.round(v.hp - før)}`, "#9ff09f"); };
     const levandeFi = () => fi.filter(f => f.hp > 0);
     const levandePa = () => pa.filter(m => m.hp > 0);
     function rettskriv(f, sp) {
@@ -447,6 +455,7 @@ window.Kamp = (function () {
       {
         const fra = midtPa(m), mål = mal ? midt(mal) : v.lækje || v.vern ? { x: 250, y: 90 } : { x: 90, y: 80 };
         leggFx({ type: "ordkast", fra, til: mål, tekst: o.aasen, farge: fam.farge, dur: 460 });
+        lyd(`galdr.${LYDFAM[o.fam] || "grunn"}${(rs || !rett) && o.fam !== "nokkel" ? ".dansk" : ""}`);
         await vent(460);
         const ber = rett ? 1 : 0.5;
         if (v.vern) levandePa().forEach(p => { const c = midtPa(p); leggFx({ type: "ring", x: c.x, y: c.y, r0: 4, r1: 18, flat: 1.2, farge: "#f8d840", dur: 700 }); });
@@ -462,11 +471,11 @@ window.Kamp = (function () {
         for (const f of mål) {
           const bonus = passar(f) ? 1.6 : 1;
           if (bonus > 1) tekst = `Ordet passar! «${o.aasen}» råkar ${f.namn} hardt.`;
-          skade(m, f, (v.skade + m.atk * 0.8) / (m.atk * 2.2) * mult * bonus, { gjennom: v.gjennom });
+          skade(m, f, (v.skade + m.atk * 0.8) / (m.atk * 2.2) * mult * bonus, { gjennom: v.gjennom, galdr: true });
         }
       }
       if (v.skadeMot) {
-        for (const f of levandeFi().filter(passar)) { skade(m, f, (v.skadeMot + m.atk * 0.5) / (m.atk * 2.2) * mult); tekst = `Ordet passar! ${f.d.slag === "blekk" ? "Ljoset brenn blekket." : "Snøen sløkkjer ljoset."}`; }
+        for (const f of levandeFi().filter(passar)) { skade(m, f, (v.skadeMot + m.atk * 0.5) / (m.atk * 2.2) * mult, { galdr: true }); tekst = `Ordet passar! ${f.d.slag === "blekk" ? "Ljoset brenn blekket." : "Snøen sløkkjer ljoset."}`; }
       }
       if (v.lækje) for (const p of v.alle ? levandePa() : [mal || m]) lækj(p, (v.lækje + m.atk) * mult);
       if (v.meto) lækj(m, v.meto * mult);
@@ -529,15 +538,15 @@ window.Kamp = (function () {
         await vent(700);
       } else if (kommando === "ting") {
         const t = D.TING[ting];
-        m.brukTing(ting);
+        m.brukTing(ting); lyd("kamp.ting");
         if (t.lækje) lækj(mal, t.lækje);
         if (t.rost) { const før = mal.rost; mal.rost = Math.min(mal.maxrost, mal.rost + t.rost); visTal(mal, `+${mal.rost - før} røyst`, "#9fd0ff"); }
         if (t.vekk && mal.hp <= 0) { mal.hp = Math.round(mal.maxhp * t.vekk); visTal(mal, "Vaken!", "#9ff09f"); }
         meld(`${m.namn} brukar ${t.namn}.`);
         await vent(700);
       } else if (kommando === "flykt") {
-        if (!boss && Math.random() < 0.65) { meld("Partiet kom seg unna!"); await vent(700); utfall = "flukt"; }
-        else { meld(boss ? "Du kan ikkje flykte frå denne!" : "Kom ikkje unna!"); await vent(700); }
+        if (!boss && Math.random() < 0.65) { lyd("kamp.flukt"); meld("Partiet kom seg unna!"); await vent(700); utfall = "flukt"; }
+        else { lyd("kamp.flukt.stengd"); meld(boss ? "Du kan ikkje flykte frå denne!" : "Kom ikkje unna!"); await vent(700); }
       }
       m.atb = snogg ? 99.9 : 0;
       if (m.stum > 0) m.stum--;                                       // røysta kjem att etter éin tur
@@ -637,6 +646,7 @@ window.Kamp = (function () {
         oppdaterLister();
       }
     }
+    if (window.Lyd) Lyd.musikk(utfall === "siger" ? "seier_fanfare" : null);   // sigerfanfaren, elles stilt
     await vent(utfall === "siger" ? 800 : 300);
     const xp = utfall === "siger" ? fi.reduce((s, f) => s + f.d.xp, 0) : 0;
     const pengar = utfall === "siger" ? fi.reduce((s, f) => s + f.d.pengar, 0) : 0;

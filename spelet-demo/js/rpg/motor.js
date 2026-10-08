@@ -178,8 +178,10 @@ window.Motor = (function () {
   }
 
   /* ---------- Kart ---------- */
+  const lyd = id => window.Lyd && Lyd.sfx(id);                         // lydeffekt (js/rpg/lyd.js)
   function last(id, merkeId, dir) {
     const def = RPGData.KART[id];
+    if (window.Lyd) Lyd.kart(id);                                       // musikken og miljølyden til kartet
     const rader = def.rader;
     const h = rader.length, w = Math.max(...rader.map(r => r.length));
     const fliser = [], merke = {};
@@ -278,6 +280,7 @@ window.Motor = (function () {
   const dorDef = (x, y) => kart && (kart.def.dorer || []).find(d => !d.kant && d.ved[0] === x && d.ved[1] === y);
   function opneDor(x, y, ms = DOR_LUKK, fast = false) {
     const k = x + "," + y, o = opneDorer.get(k);
+    if (!o || o.til < performance.now()) lyd(kart && /^kyrkj/.test(kart.id) && !/galleri|tarn/.test(kart.id) ? "dor.kyrkje" : "dor.tre");
     opneDorer.set(k, { til: Math.max(o ? o.til : 0, performance.now() + ms), fast: fast || !!(o && o.fast) });
   }
   // Lukkar døra (scenesteget { dor, open: false }); går nokon i opninga, held dei ho open til dei er gått.
@@ -548,9 +551,10 @@ window.Motor = (function () {
      i kartet og i manus. Retninga kjem frå setet; i senga ligg ein med andletet opp (retning 0).
      ligg: posen i senga ("sove" eller "liggje"). */
   function setjeSeg(a, inn, ligg = "sove") {
-    if (sengVed(a.x, a.y)) { a.pose = ligg; a.dir = 0; return "seng"; }
+    if (sengVed(a.x, a.y)) { if (a.pose !== ligg) lyd("seng"); a.pose = ligg; a.dir = 0; return "seng"; }
     const st = seteVed(a.x, a.y);
     if (!st) return false;
+    if (a.pose !== "sitje") lyd("sitje");
     if (a.pose !== "sitje") a.sitT = performance.now();               // høgda glir opp på setet (figurVis)
     a.pose = "sitje";
     const liggjande = byggBreidd(st.b) >= st.b.h, passar = st.s.retning != null ? a.dir === st.s.retning : (liggjande ? a.dir < 2 : a.dir >= 2);
@@ -2090,6 +2094,7 @@ window.Motor = (function () {
         a: () => {
           if (!sp.length) return;
           if (!ferdig) return ferdigSide();
+          lyd("tekst.neste");
           if (side + 1 < start.length) { side++; visSide(); return; }
           clearInterval(skriv); slepp(); boks.hidden = true; res();
         },
@@ -2133,6 +2138,7 @@ window.Motor = (function () {
         else if (d === 0) valt = valt + kolonner <= n - 1 ? valt + kolonner : radAv(valt) === radtal - 1 ? 0 : n - 1;
         else if (kolonner > 1) valt = d === 2 ? Math.max(0, valt - 1) : Math.min(n - 1, valt + 1);
         else valt = d === 2 ? Math.max(0, valt - rader) : Math.min(n - 1, valt + rader);
+        lyd("meny.peikar");
         teikn();
       };
       // opt.passiv: berre teikn lista (utan peikar og tastar), til dømes før ein går inn i ho.
@@ -2140,8 +2146,8 @@ window.Motor = (function () {
       const ferdig = i => { if (svart) return; svart = true; slepp(); res(i); };
       if (opt.avbryt) opt.avbryt.no = i => ferdig(i);              // lukk lista utanfrå (til dømes ny sortering)
       const slepp = lytt({
-        a: () => { if (!alt[valt].av) ferdig(valt); },
-        b: () => { if (opt.b != null) ferdig(opt.b); else if (tilbake) ferdig(-1); },
+        a: () => { if (alt[valt].av) return lyd("meny.stengd"); lyd("meny.vel"); ferdig(valt); },
+        b: () => { if (opt.b != null) { lyd("meny.attende"); ferdig(opt.b); } else if (tilbake) { lyd("meny.attende"); ferdig(-1); } },
         retning: flytt,
       });
       teikn();

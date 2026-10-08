@@ -14,6 +14,7 @@
   const D = RPGData, E = Motor.E;
   const $ = id => document.getElementById(id);
   const NOKKEL = "nynorskkurs:rpg:v2";
+  const lyd = id => window.Lyd && Lyd.sfx(id);                         // lydeffekt (js/rpg/lyd.js)
   let modus = "tittel";
 
   /* ---------- Tilstand ---------- */
@@ -84,6 +85,7 @@
   async function meldOrd(id, form, kva) {
     const o = D.ORD[id], fam = D.FAMILIAR[o.fam];
     if (kva === "nytt") Motor.kjensle("ivrig");                      // Ivar blir glad for kvart nytt ord
+    if (kva) lyd("ord.hoyrt");
     if (kva === "nytt") {
       const forste = ordtal() === 1;
       await Motor.tale(`Nytt ord: «${form}» (${o.aasen}). ${fam.namn} gir ${fam.evne.toLowerCase()}.`, "Ordboka");
@@ -127,6 +129,9 @@
     if (s.tone) return Motor.tone(s.tone, s.rgb, s.ms);
     if (s.spot !== undefined) return Motor.spot(s.spot && (typeof s.spot === "string" ? regiNamn(s.spot) : s.spot), s.r, s.ms);
     if (s.rist) return Motor.rist(s.rist, s.styrke);
+    // Lyd (js/rpg/lyd.js): { lyd: "scene.klokke" } er ein lydeffekt, { musikk: "id" } byter låt (null tonar ut).
+    if (s.lyd) { if (window.Lyd) Lyd.sfx(s.lyd); return null; }
+    if (s.musikk !== undefined) { if (window.Lyd) Lyd.musikk(s.musikk); return null; }
     return null;
   }
   /* Scenekart: kart som berre finst for ei scene (KART med scene: true), som ein draum eller
@@ -290,6 +295,8 @@
       return Object.assign({ ref: m, namn: D.PARTI[m.id].namn, sprite: sprite(m.id), hp: m.hp, rost: m.rost, galdr: m.id === "ivar", evner: D.PARTI[m.id].evner, ting: () => st.ting, brukTing: id => { st.ting[id]--; } }, s);
     });
     // Inn i kampen: pikseleffekt, så toning til svart. Kampscena tonar inn når ho er teikna.
+    lyd("kamp.inn");
+    if (window.Lyd) Lyd.kamp(lag, boss);
     await Motor.overgang();
     await Motor.tonUt();
     const bakgrunn = eigenBakgrunn || (Motor.kart && Motor.kart.def.bakgrunn) || "tun";   // kamp-steget kan ha eigen bakgrunn
@@ -313,6 +320,7 @@
     });
     parti.forEach(p => { p.ref.hp = Math.max(0, Math.round(p.hp)); p.ref.rost = p.rost; });
     modus = "felt";
+    if (window.Lyd && Motor.kart) Lyd.kart(Motor.kart.id);             // attende til musikken på kartet
     requestAnimationFrame(() => Motor.tonInn());                      // kartet er teikna att: ton inn
     if (r.utfall === "tap") { await tap(); return "tap"; }
     if (r.utfall === "siger") for (const m of st.parti) if (m.hp <= 0) m.hp = 1;   // den som fall, reiser seg med litt liv
@@ -382,15 +390,16 @@
     opna: k => st.opna.includes(k.id),
     synleg: () => !!(Motor.kart && st.avdekt[Motor.kart.id]),
     samtale: f => { const m = D.MANUS[f.tale]; if (m) hending(m); },
-    laast: t => hending([{ t }]),
+    laast: t => { lyd("dor.last"); return hending([{ t }]); },
     // Ein naturting sett ut med vilje (til dømes ein bauta): manuset hans når Ivar undersøkjer han.
     undersok: n => hending(D.MANUS[n.manus]),
     inngang: i => hending(D.MANUS[i.manus]),
     kamp: lag => kamp(lag, false),
     meny: () => meny(),
     kiste: k => {
-      if (st.opna.includes(k.id)) return hending([{ t: k.tom || "Kista er tom." }]);
+      if (st.opna.includes(k.id)) { lyd("kiste.tom"); return hending([{ t: k.tom || "Kista er tom." }]); }
       st.opna.push(k.id);
+      lyd("kiste.opne");
       // Ei kiste med manus (til dømes skrinet etter far) spelar manuset i staden for å gi noko sjølv.
       if (k.manus) return hending(D.MANUS[k.manus]);
       // Ei kiste kan ha pengar, ein ting eller begge.
@@ -411,10 +420,11 @@
       const tekst = kyrkje ? "Kyrkjelyden syng ein salme. Songen fyller kyrkja, og partiet får att alle kreftene."
         : baal ? "Ivar set seg ved bålet. Elden knitrar og varmar, og partiet kviler. Alle er friske att."
         : "Lyset er varmt. Partiet kviler, og alle er friske att.";
+      lyd(baal ? "kvile.baal" : "kvile.lykt");
       hending([...(baal ? [{ pose: "Ivar", p: "sitje" }] : []), { lækje: 1 }, { t: tekst }, ...kvile]).then(async () => {
         Motor.pause(true);
         const i = await Motor.val("Vil du lagre?", ["Lagre", "Ikkje no"]);
-        if (i === 0) { lagre(); await Motor.tale("Spelet er lagra."); }
+        if (i === 0) { lagre(); lyd("lagre"); await Motor.tale("Spelet er lagra."); }
         Motor.pause(false);
       });
     },
@@ -549,6 +559,7 @@
     const valg = ["Status", "Galdr", "Stev", "Ting", "Ordboka", "Dagboka", "Vesen", "Nøkkelting", "Kurset", "Til kurssida", "Lukk"];
     let valt = 0;
     menyEl.hidden = false;
+    lyd("meny.opne");
     const innhald = () => {
       const v = valg[valt];
       if (v === "Status") return st.parti.map(m => { fyll(m); const s = stat(m); return `<div class="mn-kort"><img class="mn-figur" src="${sprite(m.id).rammer[0][0].toDataURL()}" alt=""><div><h3>${E(D.PARTI[m.id].namn)} <small>nivå ${m.niva}</small></h3><p>HP ${m.hp}/${s.maxhp} · Røyst ${m.rost}/${s.maxrost}</p><p>Åtak ${Math.round(s.atk)} · Vern ${Math.round(s.def)} · Fart ${Math.round(s.spd)}</p><p class="mn-liten">Røynsle ${m.xp} av ${xpNeste(m.niva)} til neste nivå${m.id === "huldra" ? ` · Kraft ${Math.round(huldrekraft() * 100)} %` : ""}</p></div></div>`; }).join("") + `<p class="mn-liten">Pengar: ${st.pengar} skilling · Stad: ${E(Motor.kart ? Motor.kart.def.namn : "")}</p>`;
@@ -567,7 +578,7 @@
       h.onscroll = piler; piler();
     };
     let slepp = null;
-    const lukk = () => { menyEl.hidden = true; slepp(); Motor.pause(false); };
+    const lukk = () => { lyd("meny.lukk"); menyEl.hidden = true; slepp(); Motor.pause(false); };
     const handling = async () => {
       const v = valg[valt];
       if (v === "Lukk") return lukk();
@@ -600,7 +611,7 @@
       }
       if (v === "Galdr") { menyEl.hidden = true; slepp(); await (v === "Galdr" ? feltGaldr() : feltTing()); menyEl.hidden = false; slepp = Motor.lytt(lyttar); teikn(); }
     };
-    const lyttar = { a: handling, b: lukk, retning: d => { if (d === 1) valt = (valt + valg.length - 1) % valg.length; if (d === 0) valt = (valt + 1) % valg.length; if (d === 2 || d === 3) { const h = menyEl.querySelector(".mn-hogre"); if (h) h.scrollTop += (d === 3 ? 1 : -1) * Math.max(40, h.clientHeight - 40); return; } teikn(); } };
+    const lyttar = { a: () => { lyd("meny.vel"); return handling(); }, b: lukk, retning: d => { lyd("meny.peikar"); if (d === 1) valt = (valt + valg.length - 1) % valg.length; if (d === 0) valt = (valt + 1) % valg.length; if (d === 2 || d === 3) { const h = menyEl.querySelector(".mn-hogre"); if (h) h.scrollTop += (d === 3 ? 1 : -1) * Math.max(40, h.clientHeight - 40); return; } teikn(); } };
     slepp = Motor.lytt(lyttar);
     teikn();
   }
@@ -725,6 +736,7 @@
     modus = "tittel";
     Motor.pause(true);
     tittelEl.hidden = false;
+    if (window.Lyd) Lyd.musikk("tittel");
     const s = lagra();
     const alt = (s ? [["hald", "Hald fram"], ["ny", "Ny reise"]] : [["ny", "Ny reise"]]).concat([["stev", "Prøv stev (prototype)"], ["kurs", "Til kurssida"]]);
     $("rpg-tittel-val").innerHTML = alt.map(([id, t], i) => `<button type="button" data-id="${id}" class="${i === 0 ? "peikar" : ""}">${t}</button>`).join("") +
@@ -745,7 +757,7 @@
         st = ny(); start(false);
       }
     };
-    const slepp = Motor.lytt({ a: () => vel(valt), retning: d => { valt = (valt + (d === 1 ? kn.length - 1 : 1)) % kn.length; merk(); } });
+    const slepp = Motor.lytt({ a: () => { lyd("meny.vel"); vel(valt); }, retning: d => { lyd("meny.peikar"); valt = (valt + (d === 1 ? kn.length - 1 : 1)) % kn.length; merk(); } });
   }
   // Prøvekamp for stev-prototypen: Ivar og huldra med orda frå kapittel 1 og full kvedemålar.
   async function provStev() {

@@ -1523,16 +1523,16 @@ window.RPGData = (function () {
         const panikk = [{ fjern: "Dua" }, { inn: { namn: "Dua", vesen: "due-fly-2", rute: "!" } },
           ...[3, 2, 3, 1, 3, 2, 4, 5, 6, 7].flatMap(i => [{ byt: "Dua", vesen: "due-fly-" + i }, { vent: 70 }]), { fjern: "Dua" }];
         return [
-          { vent: 500 },
+          { musikk: null }, { vent: 500 },                              // musikken tonar ut
           ...sving(4, 0, 75),                                           // tauet heng stille: ingen dreg
-          { saman: [[{ rist: 900, styrke: 4 }, { t: "DONG …" }], panikk] },
+          { lyd: "scene.klokke" }, { saman: [[{ rist: 900, styrke: 4 }, { t: "DONG …" }], panikk] },
           ...sving(0, 8, 60), { rist: 500, styrke: 3 }, ...sving(8, 4, 90),
           { t: "Klokka slo ein åttande gong. Ingen drog i tauet." },
           { saman: [[{ tone: "bakgrunn", rgb: [-11, -9, -2], ms: 1400 }], [{ tone: "figurar", rgb: [-4, -3, 1], ms: 1400 }]] },
           { snu: "Ivar", retning: "ned" },
           { t: "Det luktar mold. Golvplankane knirkar, og noko svart trengjer seg opp mellom dei." },
           { rist: 700, styrke: 2 },
-          { blink: 1, rgb: [8, 2, 12], ms: 500, ikkjeVent: true }, { inn: { namn: "Kyrkjegrimen", vesen: "kyrkjegrimen", rute: [3, 7] } }, { vent: 500 },
+          { lyd: "scene.blink" }, { blink: 1, rgb: [8, 2, 12], ms: 500, ikkjeVent: true }, { inn: { namn: "Kyrkjegrimen", vesen: "kyrkjegrimen", rute: [3, 7] } }, { vent: 500 },
           { snu: "Ivar", mot: "Kyrkjegrimen" },
           { s: "Kyrkjegrimen", t: "⟨Hverr hringir klukkunni?⟩ Sju slag utan lik og utan brudlaup. Kven vekkjer meg?" },
           { s: "Ivar", t: "Eit svart lam med auge som glør … Kyrkjegrimen! Far sa du berre var ei skrøne.", kjensle: "sjokk" },
@@ -1747,9 +1747,9 @@ window.RPGData = (function () {
       const ivar = { s: "Ivar", t: "No høyrer dei det heilt nede i Hovdebygda.", kjensle: "glad" };
       return [
         { byt: "Klokketauet", vesen: "klokketau-dradd" }, ...sving(4, 0, 45), { byt: "Klokketauet", vesen: "klokketau" },
-        { saman: [[{ rist: 600, styrke: 3 }, { t: "DONG …" }], dua] },
+        { lyd: "scene.klokke" }, { saman: [[{ rist: 600, styrke: 3 }, { t: "DONG …" }], dua] },
         { byt: "Klokketauet", vesen: "klokketau-dradd" }, ...sving(0, 8, 50), { byt: "Klokketauet", vesen: "klokketau" },
-        { rist: 450, styrke: 2 }, { t: "DONG …" },
+        { lyd: "scene.klokke" }, { rist: 450, styrke: 2 }, { t: "DONG …" },
         ...sving(8, 1, 55), ...sving(1, 6, 60), ...sving(6, 3, 70), ...sving(3, 4, 85),
         // Det sjuande draget i same besøket i tårnet vekkjer kyrkjegrimen (éin gong, sjå scena).
         // Sju drag på rad er ei handling med vilje: ein som ringjer litt kvar gong han er innom, skal ikkje

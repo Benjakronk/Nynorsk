@@ -13,7 +13,8 @@ sida (`../css/style.css`), så mappa må liggje i kurset.
 spelet-demo/
 ├── spel.html          Spelet
 ├── css/rpg.css        Stil for spelet
-├── js/rpg/            pikslar.js, data.js, motor.js, kamp.js, stev.js, spel.js (sjå js/rpg/README.md)
+├── js/rpg/            pikslar.js, data.js, motor.js, kamp.js, stev.js, lyd.js, spel.js (sjå js/rpg/README.md)
+├── lyd/               Musikk og lydeffektar til prøving, henta frå fullversjonen (sjå js/rpg/lyd.js)
 ├── bilete/spel/       All pikselgrafikken
 ├── fonts/             Spelskrift, Runeskrift og Pixelify Sans
 ├── docs/              grafikk-og-design.md med skjermbilete

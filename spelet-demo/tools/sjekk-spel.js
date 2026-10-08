@@ -301,6 +301,51 @@ for (const [id, o] of Object.entries(D.ORD)) {
   if (!fam) { feil.push(`ord ${id}: ukjend familie`); continue; }
   if (fam.sterk) { const alle = [...o.former, o.dansk]; if (!alle.some(f => fam.sterk(f, o))) feil.push(`ord ${id}: ingen sterk form`); if (fam.sterk(o.dansk, o)) feil.push(`ord ${id}: den danske forma «${o.dansk}» blir rekna som sterk`); }
 }
+/* Lyd (js/rpg/lyd.js): kvar låt og kvar lydeffekt koden viser til, finst i lyd/. Låtene og
+   miljølydane som skal loope, har looppunkt (LOOPSTART og LOOPLENGTH) innanfor lengda av fila,
+   og fanfaren har ingen. Lengda er siste granulposisjon i Ogg-fila delt på samplefrekvensen.
+   Om lyden faktisk spelar, må prøvast i ein nettlesar: Edge utan skjerm dekodar ikkje lyd. */
+{
+  const fs = require("fs"), sti = require("path"), lydMappe = sti.join(__dirname, "..", "lyd");
+  Object.assign(window, { addEventListener: () => {} }); global.location = { search: "" };
+  global.localStorage = { getItem: () => null, setItem: () => {} };
+  require(sti.join(__dirname, "..", "js", "rpg", "lyd.js"));
+  const K = window.Lyd.kjelder;
+  const ogg = fil => {
+    const b = fs.readFileSync(fil), s = b.toString("latin1", 0, Math.min(b.length, 8192));
+    const v = s.indexOf("\x01vorbis"), rate = v >= 0 ? b.readUInt32LE(v + 12) : 44100;
+    const j = b.lastIndexOf("OggS"), lengd = Number(b.readBigInt64LE(j + 6)) / rate;
+    const st = /LOOPSTART=(\d+)/.exec(s), ln = /LOOPLENGTH=(\d+)/.exec(s);
+    return { lengd, loop: st && ln ? { start: +st[1] / rate, slutt: (+st[1] + +ln[1]) / rate } : null };
+  };
+  const sjekkFil = (fil, skalLoope, kven) => {
+    if (!fs.existsSync(fil)) return feil.push(`lyd: ${sti.relative(lydMappe, fil)} finst ikkje (${kven})`);
+    const { lengd, loop } = ogg(fil);
+    if (skalLoope && !loop) feil.push(`lyd: ${sti.basename(fil)} skal loope, men har ikkje looppunkt`);
+    if (!skalLoope && loop) feil.push(`lyd: ${sti.basename(fil)} skal ikkje loope`);
+    if (loop && (loop.slutt > lengd + 0.05 || loop.slutt <= loop.start)) feil.push(`lyd: looppunkta i ${sti.basename(fil)} ligg utanfor fila`);
+  };
+  const musikk = new Set([...K.faste, ...Object.values(K.BOSS_LAAT), ...Object.values(K.KART_LYD).map(v => v[0])]);
+  // Tittellåta har ikkje looppunkt (ho blir spela heil og byrjar på nytt), og fanfaren loopar ikkje.
+  for (const id of musikk) sjekkFil(sti.join(lydMappe, "musikk", id + ".ogg"), !["tittel", "seier_fanfare"].includes(id), "musikk");
+  for (const [k, [, mi]] of Object.entries(K.KART_LYD)) { if (!D.KART[k]) feil.push(`lyd: kartet ${k} i KART_LYD finst ikkje`); if (mi) sjekkFil(sti.join(lydMappe, "sfx", `sfx.${mi}.ogg`), true, "miljø på " + k); }
+  for (const k of Object.keys(D.KART)) if (!K.KART_LYD[k]) feil.push(`lyd: kartet ${k} har inga låt i KART_LYD`);
+  // Lydeffektane: lyd("…") og Lyd.sfx("…") i koden, { lyd: "…" } i manus, og dei som blir sette saman i kamp.js.
+  const kode = ["motor.js", "spel.js", "kamp.js", "data.js"].map(f => fs.readFileSync(sti.join(__dirname, "..", "js", "rpg", f), "utf8")).join(String.fromCharCode(10));
+  const sfx = new Set([...kode.matchAll(/\blyd\(\s*"([a-z.]+)"/g), ...kode.matchAll(/Lyd\.sfx\(\s*"([a-z.]+)"/g), ...kode.matchAll(/\blyd: "([a-z.]+)"/g)].map(m => m[1]));
+  for (const l of kode.split(String.fromCharCode(10)).filter(l => /\blyd\(/.test(l) && /\?/.test(l))) for (const s of l.matchAll(/"([a-z]+\.[a-z.]+)"/g)) sfx.add(s[1]);   // val med ?: i lyd(…)
+  for (const g of ["blekk", "papir", "vette", "eld", "smaadyr"]) { sfx.add(`fiende.${g}.aatak`); sfx.add(`fiende.${g}.skade`); }
+  for (const f of ["diftong", "hard", "kv", "j", "smaa", "grunn"]) { sfx.add(`galdr.${f}`); sfx.add(`galdr.${f}.dansk`); }
+  sfx.add("galdr.nokkel");
+  for (const id of sfx) {
+    const n = K.VARIANTAR[id];
+    for (const v of n ? Array.from({ length: n }, (_, i) => `.${i + 1}`) : [""]) sjekkFil(sti.join(lydMappe, "sfx", `sfx.${id}${v}.ogg`), false, "lydeffekt");
+  }
+  const brukt = new Set([...sfx].flatMap(id => K.VARIANTAR[id] ? Array.from({ length: K.VARIANTAR[id] }, (_, i) => `sfx.${id}.${i + 1}.ogg`) : [`sfx.${id}.ogg`]).concat(Object.values(K.KART_LYD).map(v => v[1]).filter(Boolean).map(m => `sfx.${m}.ogg`)));
+  const ubrukt = fs.readdirSync(sti.join(lydMappe, "sfx")).filter(f => !brukt.has(f));
+  if (ubrukt.length) feil.push(`lyd: lydeffektar ingen brukar: ${ubrukt.join(", ")}`);
+  console.log(`Lyd: ${musikk.size} låtar og ${sfx.size} lydeffektar sjekka.`);
+}
 const lytta = new Set(); (function samle(x) { if (Array.isArray(x)) x.forEach(samle); else if (x && typeof x === "object") { if (x.lytt) lytta.add(x.lytt[0]); if (x.tilbod) lytta.add(x.tilbod[0]); Object.values(x).forEach(samle); } })([D.MANUS, D.SCENER]);
 console.log("Ord som kan samlast i kapittel 1:", [...lytta].join(", "));
 console.log("Ord som ikkje finst i kapittel 1:", Object.keys(D.ORD).filter(i => !lytta.has(i)).join(", "));

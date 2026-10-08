@@ -274,6 +274,23 @@ Alle hendingane i prototypen brukar no scenemotoren, og dei som talar, står på
 - Følgjet går attende til plassen bak Ivar først når han går. Eit steg som set følgjet attende (`{ gaa: "Huldra", bak: true }` eller liknande) ville gjere det reinare etter scener der huldra har gått fram.
 - Kampane er stubba i sjekk-scene.html. Ein test som køyrer den ekte rettleiingskampen inne i skiftebrevet, manglar.
 
+## Lyd
+
+`js/rpg/lyd.js` spelar musikk, lydeffektar og miljølydar. Filene i `lyd/` er eit utval frå
+fullversjonen (Aasen-spelet: aasen-musikk og aasen-sfx), så prototypen kan prøvast med lyd.
+Kvart kart har ei låt og ofte ein miljølyd (`KART_LYD`), kampane har vanleg kampmusikk eller
+bosslåt (`BOSS_LAAT`: Kyrkjegrimen og Blekklatten har eigne), og sigeren har fanfaren. Ei låt som
+loopar, er éi fil med looppunkta i seg, og Web Audio loopar utan glipp. Lydeffektane er kopla til
+menyane, samtaleboksen, dører, kister, lagringsstader, sitjeplassar, nye ord og kampen
+(slag, galdrar etter lydfamilie, fiendeåtak etter gruppe). I manus er `{ lyd: "scene.klokke" }`
+ein lydeffekt og `{ musikk: "id" }` eit låtbyte (`null` tonar ut).
+
+Lyden startar ved første tastetrykk (nettlesaren krev det), og M slår han av og på. Under
+testane (`?test=1`) er lyden av. `node tools/sjekk-spel.js` sjekkar at kvar låt og lydeffekt finst
+og at looppunkta ligg innanfor fila. Om lyden høyrest rett ut, må prøvast i ein nettlesar:
+Edge utan skjerm dekodar ikkje lyd. Kategorien «Spillmodus og felles steder» i musikkatalogen
+var ikkje med i leveransen, så kyrkja har «Messefolket» og utmarka «Lauvliene i Lyster».
+
 ## Skrift, vindauge og tekst i manus
 
 ### Skriftene
