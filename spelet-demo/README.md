@@ -2,7 +2,7 @@
 
 Denne mappa er prototypen av rollespelet «Aasen: Språkvandringa». Alt her er
 prototypearbeid: kart, scener, grafikk, kamp og system er laga for å prøve ut
-stil og mekanikk. Fullversjonen blir planlagd i `../spelet-fullversjon/`
+stil og mekanikk. Fullversjonen blir planlagd i eit eige prosjekt utanfor kurset
 (designdokument, datamodell og musikk).
 
 Spelet blir opna på `spelet-demo/spel.html`. Det bruker innhaldet i kurset
