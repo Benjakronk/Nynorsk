@@ -4,10 +4,12 @@
    Ei låt som loopar, er éi Ogg-fil med introen og loopen etter kvarandre. Looppunkta står i fila
    (LOOPSTART og LOOPLENGTH, i samplar), og Web Audio hoppar attende til LOOPSTART utan glipp.
    Ein lydeffekt med variantar (sfx.kamp.slag.1 til .3) får ein tilfeldig variant kvar gong.
-   I manus er { lyd: "scene.klokke" } ein lydeffekt og { musikk: "id" } eit låtbyte (spel.js).
+   I manus er { lyd: "scene.klokke" } ein lydeffekt, { musikk: "id" } eit låtbyte og
+   { stikk: "id" } eit stikk (spel.js).
 
      Lyd.kart(id)        musikken og miljølyden til kartet (KART_LYD under)
      Lyd.musikk(id)      byt låt (null tonar ut). Same låt som spelar, held fram
+     Lyd.stikk(id)       eit stikk éin gong, og så låta som spela før
      Lyd.kamp(lag, boss) kampmusikken etter fiendane
      Lyd.sfx(id)         ein lydeffekt, til dømes "meny.peikar" (utan «sfx.» framfor)
      Lyd.av()            M slår lyden av og på, og valet blir hugsa
@@ -21,19 +23,20 @@ window.Lyd = (function () {
   const TEST = /[?&]test=1/.test(location.search);
   const NOKKEL = "aasen-lyd";
 
-  // Kart → låt og miljølyd. Kategorien «Spillmodus og felles steder» (kirke, utmark …) var ikkje med
-  // i musikkleveransen, så kyrkja har «Messefolket» og utmarka «Lauvliene i Lyster» til dei kjem.
+  // Kart → låt og miljølyd
   const KART_LYD = {
     "asen": ["o_barndom", "miljo.tun"], "asen-stova": ["o_barndom", "miljo.klokke.stove"],
     "asen-stabbur": ["x_kjellarane"], "minne-far": ["sc_minne"],
-    "utmarka": ["vm_lyster", "miljo.skog"], "bygda": ["o_barndom", "miljo.tun"],
+    "utmarka": ["utmark", "miljo.skog"], "bygda": ["o_barndom", "miljo.tun"],
     "nedre-hovde": ["o_barndom", "miljo.klokke.stove"], "prestegarden": ["o_barndom", "miljo.klokke.stove"],
-    "kyrkja": ["o_messefolket"], "kyrkje-galleri": ["o_messefolket"], "kyrkje-tarn": ["o_messefolket"],
+    "kyrkja": ["kirke"], "kyrkje-galleri": ["kirke"], "kyrkje-tarn": ["kirke"],
     "kontoret": ["d_blekk"], "arkivet": ["d_blekk"],
     "vegen": ["overworld", "miljo.skog"], "ekset": ["o_ekset", "miljo.tun"], "ekset-stova": ["o_ekset"],
   };
   // Bossar med eiga låt. Blekklatten er kanselliblekket, så han får låta for bossane frå eineveldet.
   const BOSS_LAAT = { kyrkjegrimen: "m_kyrkjegrimen", blekklatten: "danmark" };
+  // Stikk som blir spela éin gong: sigerfanfaren og overnattinga (når Ivar søv i senga)
+  const EIN_GONG = ["seier_fanfare", "m_overnatting"];
   // Lydeffektar med variantar (talet på filer)
   const VARIANTAR = { "kamp.slag": 3, "kamp.slag.tungt": 2 };
   const STYRKE = { musikk: 0.45, sfx: 0.7, miljo: 0.22 };
@@ -86,7 +89,8 @@ window.Lyd = (function () {
     g.gain.linearRampToValueAtTime(til, t + ms / 1000);
   }
   // Spel ei låt eller ein miljølyd i eit spor («musikk» eller «miljo»), med toning mellom dei.
-  function spor(namn, id, fil, loopHeile) {
+  // etter blir kalla når ei låt som ikkje loopar, er ferdig (og ingen har bytt ho ut).
+  function spor(namn, id, fil, loopHeile, etter) {
     ynskt[namn] = id;
     if (!ctx || laast) return;
     const no = spel[namn];
@@ -103,13 +107,18 @@ window.Lyd = (function () {
       k.connect(ny.gain); k.start();
       ny.kjelde = k;
       ton(ny.gain, STYRKE[namn], 400);
-      if (!k.loop) k.onended = () => { if (spel[namn] === ny) spel[namn] = null; };
+      if (!k.loop) k.onended = () => { if (spel[namn] === ny) { spel[namn] = null; if (etter) etter(); } };
     }).catch(() => { });
   }
 
   const Lyd = {
-    // Ei låt utan looppunkt (tittellåta) blir spela heilt og byrjar på nytt. Fanfaren blir spela éin gong.
-    musikk(id) { spor("musikk", id || null, "musikk/" + id + ".ogg", id !== "seier_fanfare"); },
+    // Ei låt utan looppunkt (tittellåta) blir spela heilt og byrjar på nytt. Stikka blir spela éin gong.
+    musikk(id) { spor("musikk", id || null, "musikk/" + id + ".ogg", !EIN_GONG.includes(id)); },
+    // Eit stikk (til dømes overnattinga): spelar éin gong, og så kjem låta som spela før, att.
+    stikk(id) {
+      const for_ = spel.musikk ? spel.musikk.id : ynskt.musikk;
+      spor("musikk", id, "musikk/" + id + ".ogg", false, () => Lyd.musikk(for_));
+    },
     miljo(id) { spor("miljo", id || null, "sfx/sfx." + id + ".ogg", true); },
     kart(id) {
       const [m = null, mi = null] = KART_LYD[id] || [];
@@ -138,7 +147,7 @@ window.Lyd = (function () {
     },
     get paa() { return paa; },
     // Til tools/sjekk-spel.js, som sjekkar at filene finst og at looppunkta ligg innanfor fila.
-    kjelder: { KART_LYD, BOSS_LAAT, VARIANTAR, faste: ["tittel", "kamp", "boss", "seier_fanfare"] },
+    kjelder: { KART_LYD, BOSS_LAAT, VARIANTAR, EIN_GONG, faste: ["tittel", "kamp", "boss", ...EIN_GONG] },
   };
   // Lås opp ved første trykk: lag lydkonteksten og start det som skal spele.
   const lasOpp = () => {

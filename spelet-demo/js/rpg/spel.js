@@ -132,6 +132,7 @@
     // Lyd (js/rpg/lyd.js): { lyd: "scene.klokke" } er ein lydeffekt, { musikk: "id" } byter låt (null tonar ut).
     if (s.lyd) { if (window.Lyd) Lyd.sfx(s.lyd); return null; }
     if (s.musikk !== undefined) { if (window.Lyd) Lyd.musikk(s.musikk); return null; }
+    if (s.stikk) { if (window.Lyd) Lyd.stikk(s.stikk); return null; }      // éin gong, så låta som spela før
     return null;
   }
   /* Scenekart: kart som berre finst for ei scene (KART med scene: true), som ein draum eller
@@ -412,7 +413,7 @@
     // spela første gong partiet kviler der. Ved bålet set Ivar seg ned.
     // Ivar har lagt seg under dyna (Motor.setSeg i senga): han kviler, men det er ingen lagring her.
     // Som på eit vertshus i FF6: ei kort stund, så tonar skjermen til svart og inn att, og så teksten.
-    seng: () => hending([{ vent: 700 }, { ton: "ut", ms: 900 }, { lækje: 1 }, { vent: 900 }, { ton: "inn", ms: 900 },
+    seng: () => hending([{ vent: 700 }, { stikk: "m_overnatting" }, { ton: "ut", ms: 900 }, { lækje: 1 }, { vent: 900 }, { ton: "inn", ms: 900 },
       { t: "Ivar kraup under dyna og sov ei god stund. Alle er friske att." }]),
     lampe: (type = "lykt") => {
       const def = Motor.kart && Motor.kart.def, kyrkje = def && def.fristad, baal = type === "baal";

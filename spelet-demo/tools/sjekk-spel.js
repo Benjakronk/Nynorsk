@@ -327,7 +327,7 @@ for (const [id, o] of Object.entries(D.ORD)) {
   };
   const musikk = new Set([...K.faste, ...Object.values(K.BOSS_LAAT), ...Object.values(K.KART_LYD).map(v => v[0])]);
   // Tittellåta har ikkje looppunkt (ho blir spela heil og byrjar på nytt), og fanfaren loopar ikkje.
-  for (const id of musikk) sjekkFil(sti.join(lydMappe, "musikk", id + ".ogg"), !["tittel", "seier_fanfare"].includes(id), "musikk");
+  for (const id of musikk) sjekkFil(sti.join(lydMappe, "musikk", id + ".ogg"), !["tittel", ...K.EIN_GONG].includes(id), "musikk");
   for (const [k, [, mi]] of Object.entries(K.KART_LYD)) { if (!D.KART[k]) feil.push(`lyd: kartet ${k} i KART_LYD finst ikkje`); if (mi) sjekkFil(sti.join(lydMappe, "sfx", `sfx.${mi}.ogg`), true, "miljø på " + k); }
   for (const k of Object.keys(D.KART)) if (!K.KART_LYD[k]) feil.push(`lyd: kartet ${k} har inga låt i KART_LYD`);
   // Lydeffektane: lyd("…") og Lyd.sfx("…") i koden, { lyd: "…" } i manus, og dei som blir sette saman i kamp.js.

@@ -288,8 +288,8 @@ ein lydeffekt og `{ musikk: "id" }` eit låtbyte (`null` tonar ut).
 Lyden startar ved første tastetrykk (nettlesaren krev det), og M slår han av og på. Under
 testane (`?test=1`) er lyden av. `node tools/sjekk-spel.js` sjekkar at kvar låt og lydeffekt finst
 og at looppunkta ligg innanfor fila. Om lyden høyrest rett ut, må prøvast i ein nettlesar:
-Edge utan skjerm dekodar ikkje lyd. Kategorien «Spillmodus og felles steder» i musikkatalogen
-var ikkje med i leveransen, så kyrkja har «Messefolket» og utmarka «Lauvliene i Lyster».
+Edge utan skjerm dekodar ikkje lyd. Når Ivar søv i senga, spelar overnattingsstikket, og så
+kjem låta som spela før, att (`{ stikk: "m_overnatting" }`).
 
 ## Skrift, vindauge og tekst i manus
 
