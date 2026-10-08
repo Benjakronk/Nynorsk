@@ -9,12 +9,12 @@ Grafikken blir laga i ein fast sløyfe: skriv kjelda, lag biletet, sjå på det,
 vurder det mot stilguiden og forbetre. Gjenta til sjekklista er oppfylt.
 
 Større løft skjer i rundar (research, finn det svakaste, teikn, sjekk,
-dokumenter). Les `tools/pikselkunst/ARBEIDSLOGG.md` først: han skildrar
+dokumenter). Les `spelet-demo/tools/pikselkunst/ARBEIDSLOGG.md` først: han skildrar
 kvar runde, og «Står att» viser kvar neste runde bør starte.
 
 ## 0. Research
 
-- `python tools/pikselkunst/hent_referansar.py sok "<søk>"` finn bilete på
+- `python spelet-demo/tools/pikselkunst/hent_referansar.py sok "<søk>"` finn bilete på
   Wikimedia Commons. `... konsept <fil> "File:..." "<bruk>"` lastar ned eit
   bilete med fri lisens til `konsept/` og fører det inn i `konsept/KJELDER.md`.
 - `... zelda "TMC <namn>.png"` lastar ned skjermbilete frå The Minish Cap til
@@ -22,9 +22,9 @@ kvar runde, og «Står att» viser kvar neste runde bør starte.
   `hent_referansar.py`.
 - `... ark konsept|referansar [prefiks]` lagar kontaktark å sjå på.
 
-Les først `tools/pikselkunst/STILGUIDE.md`. Målestokken er Blekklatten
-(`bilete/spel/blekklatten.png`). Referansar for norsk byggjeskikk, natur og kle
-ligg i `tools/pikselkunst/konsept/` (sjå KJELDER.md der). Sjå på dei før du
+Les først `spelet-demo/tools/pikselkunst/STILGUIDE.md`. Målestokken er Blekklatten
+(`spelet-demo/bilete/spel/blekklatten.png`). Referansar for norsk byggjeskikk, natur og kle
+ligg i `spelet-demo/tools/pikselkunst/konsept/` (sjå KJELDER.md der). Sjå på dei før du
 teiknar noko nytt frå den tida.
 
 ## 1. Oppdrag
@@ -35,36 +35,36 @@ uttrykkje.
 
 ## 2. Kjelde
 
-Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
-øvst i `tools/pikselkunst/pix.py`). Fem måtar å lage henne på:
+Kjelda er alltid ei `.pix`-fil i `spelet-demo/tools/pikselkunst/kjelder/` (formatet står
+øvst i `spelet-demo/tools/pikselkunst/pix.py`). Fem måtar å lage henne på:
 
-- Portrett (48 × 48): skriv ein funksjon for personen i `tools/pikselkunst/portrett.py`
+- Portrett (48 × 48): skriv ein funksjon for personen i `spelet-demo/tools/pikselkunst/portrett.py`
   (eigen silhuett og eit kjenneteikn, sjå STILGUIDE.md), legg han i `PERSONAR`, og køyr
-  `python tools/pikselkunst/portrett.py <namn>` (skriv .pix og PNG). `portrett.py ark`
+  `python spelet-demo/tools/pikselkunst/portrett.py <namn>` (skriv .pix og PNG). `portrett.py ark`
   lagar kontaktark. Byggjeklossar i FF6-stil (sjå «Portrett i FF6-stil» i STILGUIDE.md):
   `andlet()` (hudflatene rad for rad), `nase34()`, `oyre()`, `hals()`, `lokk()` og `harflak()`
   (hår), og `bak_fyll()`, `bak_poly()` og `bak_p()` (bakgrunnen inne i ruta). Sjå portrettet i spelet med
   `skjermbilete.py namn kart=utmarka m=1 "tale=Huldra:Tekst"`.
-- Hus: legg huset til i `BYGG` i `tools/pikselkunst/bygg.py` (breidd, høgd, dører
-  og vindauge i fliser) og køyr `python tools/pikselkunst/bygg.py <namn>`. Huset
-  må ha same fotavtrykk og dør som i kartet, og står i `bygg` på kartet i `js/rpg/data.js`.
+- Hus: legg huset til i `BYGG` i `spelet-demo/tools/pikselkunst/bygg.py` (breidd, høgd, dører
+  og vindauge i fliser) og køyr `python spelet-demo/tools/pikselkunst/bygg.py <namn>`. Huset
+  må ha same fotavtrykk og dør som i kartet, og står i `bygg` på kartet i `spelet-demo/js/rpg/data.js`.
   `bakdor=[i]` gir inngang på baksida (bislag). Då ligg døra (`D`) i kartet i
   flisraden rett bak huset, og stien må kome ovanfrå. Hus med grue eller omn inne får
-  `pipe=<flisnummer>` (mura steinpipe) og ei røykopning i `ROYK` i `js/rpg/pikslar.js`.
+  `pipe=<flisnummer>` (mura steinpipe) og ei røykopning i `ROYK` i `spelet-demo/js/rpg/pikslar.js`.
   Dørene har to rammer som i FF6 (runde 96), lukka og open, utan animasjon: eit hus med dør treng
   òg «<namn>-open» i `BYGG` (same funksjonen med `ope=True`: `dor()` teiknar mørkt inne, svakt lys
   ved dørstokken og dørbladet slått innover på kant i karmen), og namnet i `OPEN_BYGG` i
-  `js/rpg/pikslar.js`. Same for inventar med ei dør (`inne-skipvegg-v-open`, døra i pilasteren).
+  `spelet-demo/js/rpg/pikslar.js`. Same for inventar med ei dør (`inne-skipvegg-v-open`, døra i pilasteren).
   Dørene inne er flisene `E` (lukka), `E:open`, og `E:opp`/`E:ned` med trinn i opninga (`trapp` på
-  døra i data.js). Sjå dei med `python tools/bilete-spel.py namn skript.js` og
+  døra i data.js). Sjå dei med `python spelet-demo/tools/bilete-spel.py namn skript.js` og
   `Motor.dorSteg([x, y], true)` (held døra open), som i `forhand/skjerm/r96-dorer.png`.
 - Nye bilete blir forhåndslasta automatisk når dei står i data.js (bygg, figurar,
   portrett, kampbakgrunnar). Andre bilete må leggjast til i `alleBilete` i `pikslar.js`.
 - Inventar inne (sjå `INVENTAR` i skriptet: kyrkja, bondestova og
   embetsmannsheimen med kakkelomn, skatoll, golvur, sofa, bokreolar …):
-  `python tools/pikselkunst/inventar.py <namn>`. Står i `bygg` på kartet,
+  `python spelet-demo/tools/pikselkunst/inventar.py <namn>`. Står i `bygg` på kartet,
   `over: true` teiknar figuren over alt anna (lysekrona). Inventar med eld får
-  flammerute i `ILD` i `js/rpg/pikslar.js` (levande eld teikna oppå biletet).
+  flammerute i `ILD` i `spelet-demo/js/rpg/pikslar.js` (levande eld teikna oppå biletet).
   Stabburet (runde 28): `kornbinge` (3 × 1), `tonne`, `kagge`, `sekker`, `stige` (1 × 1, går opp
   til ei luke i taket), `flatbrodstabel` (2 × 1), og på veggen (rad 0) `spekemat` (3 × 1) og
   `glugge` (1 × 1, lyskjelda `glugge`). Ting som heng på bakveggen, står i rad 0 med `h: 1`, så dei
@@ -101,10 +101,10 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   blir teikna med `_stempel` (strengar). Sjå med `skjermbilete.py namn kart=kyrkja m=1 x=10 y=9`
   (koret), `x=6 y=5` (altartavla heilt), `flagg=latt` (presten i altarringen), `m=3` (trappa),
   `kart=kyrkje-galleri m=1` og `kart=kyrkje-tarn m=1`, og heile kyrkja med
-  `python tools/pikselkunst/oversikt.py namn kart=kyrkja` (alle skjermane sette saman). Gangtida:
-  `python tools/kjoyr-test.py tools/sjekk-kyrkjegang.html 60000`.
+  `python spelet-demo/tools/pikselkunst/oversikt.py namn kart=kyrkja` (alle skjermane sette saman). Gangtida:
+  `python spelet-demo/tools/kjoyr-test.py spelet-demo/tools/sjekk-kyrkjegang.html 60000`.
 - Glød rundt ei lyskjelde (eld, ljos, lykt, krone): ei handteikna glødform i
-  `tools/pikselkunst/glod.py`, éin funksjon per kjelde med parameteren `r` (flimmerramma).
+  `spelet-demo/tools/pikselkunst/glod.py`, éin funksjon per kjelde med parameteren `r` (flimmerramma).
   Slik lagar du glød for ei ny lyskjelde:
   1. Finn ankeret: der lyset kjem frå, i pikslar på skjermen (nedst midt i elden for inventar
      med `ILD`, midt i biletet elles, eller ein fast stad i flisa). Koordinatane i skriptet er
@@ -115,14 +115,14 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
      lyset treffer: golvet sett på skrå (lågt og breitt), veggen ved sida, bakken under ei lykt.
   3. Teikn to eller tre rammer der forma endrar seg litt (eld meir enn ljos og lykter), og før
      funksjonen inn i `FORMER` med talet på rammer.
-  4. `python tools/pikselkunst/glod.py <namn>` skriv `kjelder/lys-<namn>.pix` og
-     `bilete/spel/lys/<namn>.png`, og `forhand/lys-ark.png` viser alle rammene.
+  4. `python spelet-demo/tools/pikselkunst/glod.py <namn>` skriv `kjelder/lys-<namn>.pix` og
+     `spelet-demo/bilete/spel/lys/<namn>.png`, og `forhand/lys-ark.png` viser alle rammene.
   5. Før kjelda inn i `LYSKJELDER` i `data.js` (`rammer` og `rekkje`, rekkjefølgja i
      flimmeret med 150 ms per steg) og i `lyskjelder()` i `motor.js` (kva bygg eller flis som
      lyser, og kvar ankeret er). Biletet blir forhåndslasta av seg sjølv.
   6. Sjå forma i spelet (`skjermbilete.py`), i alle stemningane ho kan lyse i. Fargane til
      trinna står i `glod` i `STEMNINGAR`.
-- Lagringsstadene (runde 86): `python tools/pikselkunst/eldstad.py alle` lagar lykta (`lykt`, på
+- Lagringsstadene (runde 86): `python spelet-demo/tools/pikselkunst/eldstad.py alle` lagar lykta (`lykt`, på
   stolpe, flisene `L` ute og `T`; `lykt-golv`, `L` inne), bålplassen (`baal`, `baal-ild` med fire
   flammerammer og `baal-fram`, flisa `å`) og `sitjestokk` (naturting ved bålet), og
   `forhand/eldstad-8x.png` (alle rammene saman). Bålet er tre lag: botnen (steinringen sett skrått
@@ -138,7 +138,7 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   setjast saman på fleire måtar. `x`, `y` er øvre venstre flis, `h` talet på flisrader, og breidda
   er (biletbreidd - 8) / 16 fliser. Alle rutene møbelet dekkjer, skal vere `(` (fast golv) i `rader`.
 
-  | Bilete (`bilete/spel/bygg/`) | Fliser (b × h) | Merknad |
+  | Bilete (`spelet-demo/bilete/spel/bygg/`) | Fliser (b × h) | Merknad |
   | --- | --- | --- |
   | `inne-langbord` | 4 × 2 | liggjande, utan stolar |
   | `inne-langbord-staande` | 2 × 4 | ståande (på langs nedover) |
@@ -154,14 +154,14 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   syner godt. Døme: `asen-stova` i data.js.
 
   Sitjande: ein person med `pose: "sitje"` på ei rute som eit sete dekkjer (`SETE` i
-  `js/rpg/pikslar.js`), blir lyft opp på setet og teikna utan skugge på golvet, utan
+  `spelet-demo/js/rpg/pikslar.js`), blir lyft opp på setet og teikna utan skugge på golvet, utan
   pikselforskyvingar i kartet. Ein stol med `retning` snur den som set seg (og folk i kartet utan
   `retning`) same vegen. Den som sit, blir sortert etter den nedste flisrada til setet, så han
   sit oppå ein ståande benk. `fram: true` (stolen sett bakfrå, `inne-kubbestol-opp`)
   teiknar stolen over den som sit, så ryggen dekkjer nedre del av han. Nye stolar og benker
   må førast inn i `SETE` med `hogd` (setehøgd i pikslar, 5 for bondemøblane). `inne-stol` på Ekset
   og `inne-sofa` i prestegarden står der med `retning: 0` (runde 87): ryggen er bak den som sit.
-  Alt i `SETE` er òg ein sitjeplass spelaren kan gå inn på (sjå «Sitjeplassar» i js/rpg/README.md):
+  Alt i `SETE` er òg ein sitjeplass spelaren kan gå inn på (sjå «Sitjeplassar» i spelet-demo/js/rpg/README.md):
   ein stol med `retning` kan ein ikkje gå inn i eller ut av bakfrå, så teikn ryggen på rett side.
   Ein naturting kan òg vere eit sete: `sete: { hogd, retning, rygg: false }` (stokken ved bålet).
   Ein benk utan `retning` får retninga på tvers av benken (mot bordet), så teikn benken slik at det
@@ -173,9 +173,9 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
 - Grua i bondestova (runde 89 og 91, `inventar.py grue`): mura og kalka, med firkanta pipe med
   loddrette sider heilt opp til takbjelken på den høge bakveggen (24 x 48), ei kappe med skrå toppflate, ei hylle med trebolle og kopparkanne,
   og gruemunnen mellom to pilarar. Etter `konsept/grue-gulsvik.jpg`. `ILD` og gløden står der dei stod.
-- Figurar (16 × 24): legg personen til i `U` i `js/rpg/data.js` og køyr
-  `python tools/pikselkunst/figur.py <id>` (eller `alle`). Arket hamnar i
-  `bilete/spel/figurar/<id>.png`. `figur.py ark` lagar eit kontaktark i
+- Figurar (16 × 24): legg personen til i `U` i `spelet-demo/js/rpg/data.js` og køyr
+  `python spelet-demo/tools/pikselkunst/figur.py <id>` (eller `alle`). Arket hamnar i
+  `spelet-demo/bilete/spel/figurar/<id>.png`. `figur.py ark` lagar eit kontaktark i
   `forhand/`. Nye frisyrar, plagg og kroppar blir teikna som delar i `figur.py`.
   Arket har gange (rad 0 til 3) og kampstillingar (rad 4 og 5). Nøklar for
   silhuetten: `krokrygg`, `stav` (`lang` eller `stokk`), `sid` (sid kjole),
@@ -204,11 +204,11 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   parameter k, før personen inn i `PORTRETT_KJENSLER` i portrett.py og i data.js, og køyr
   `portrett.py <namn>`. Sjå begge i spelet med
   `skjermbilete.py namn kart=asen-stova m=1 kjensle=sjokk "tale=Ivar:Tekst"`.
-- Kampbakgrunnar: `python tools/pikselkunst/bakgrunn.py <namn>` (malarverktøya ligg i
+- Kampbakgrunnar: `python spelet-demo/tools/pikselkunst/bakgrunn.py <namn>` (malarverktøya ligg i
   `maleri.py`: støy, dithering, fjell, gras, gran, bjørk, stein) skriv
-  `bilete/spel/kamp/<namn>.png` direkte (skriptet er kjelda). Namnet er
-  `bakgrunn` på kartet i `js/rpg/data.js`.
-- Vatn og steingard tilpassar seg naboane og blir teikna i `js/rpg/pikslar.js`
+  `spelet-demo/bilete/spel/kamp/<namn>.png` direkte (skriptet er kjelda). Namnet er
+  `bakgrunn` på kartet i `spelet-demo/js/rpg/data.js`.
+- Vatn og steingard tilpassar seg naboane og blir teikna i `spelet-demo/js/rpg/pikslar.js`
   (`vatn`, `steingard`), ikkje som faste bilete.
 - Stiar (`=`) blir teikna som i The Minish Cap (sjå `forhand/referansar/tmc-sti-naer1.png`):
   `Pikslar.sti(felt, x, y)` gir eit lag over grasflisa, frå `stifelt()` i `motor.js`. Kanten er eit glatt
@@ -240,8 +240,8 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
     (V mot spissen, luft rett under): kantvariant for variasjon ved andre klipper og fjellhyller. `N` er kanten
     øvst der bakken fell bort (`Pikslar.nordkant`, i rad 0 eller under luft på kart med `kameraOpp`;
     kanten bøyer ned mot sida der det er luft, så toppen kan vere høgast på midten).
-  - Bakgrunnslaga og forgrunnen: `python tools/pikselkunst/utsikt.py` (skriptet er kjelda) skriv
-    `bilete/spel/parallakse/<namn>.png` (himmel, fjell, dal-nord og naer øvst, li (dalsida som glir over i dalen sett ovanfrå), elv
+  - Bakgrunnslaga og forgrunnen: `python spelet-demo/tools/pikselkunst/utsikt.py` (skriptet er kjelda) skriv
+    `spelet-demo/bilete/spel/parallakse/<namn>.png` (himmel, fjell, dal-nord og naer øvst, li (dalsida som glir over i dalen sett ovanfrå), elv
     (4 rammer) og skyer (drift) under stupet som fast
     lag med faktor 1, li-kort og dal-under for varianten «dal», greiner, nabb og nabb-h (bergnabbar i forgrunnen), nabb-m (låg nabb midt nede ytst på hylla); alle sett skrått ovanfrå, fuglar) og
     `forhand/utsikt-ark.png`. På
@@ -256,22 +256,22 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
     `x=3 y=2`, `x=10 y=2` og `x=24 y=2` (toppen: utmarka til venstre, Hovdebygda til høgre), og
     `kart=minne-far m=1` (same lia under stupet i minnet). `variant=dal` viser varianten der dalen
     stig fram under lia (lag med `variant` blir berre teikna når kartet har den varianten).
-- Rottene i stabburet (fiendar i kampen og ei lita rotte til kartet): `python tools/pikselkunst/rotte.py alle`
+- Rottene i stabburet (fiendar i kampen og ei lita rotte til kartet): `python spelet-demo/tools/pikselkunst/rotte.py alle`
   skriv `kjelder/fiende-rotte*.pix`, så `pix.py lag`. Fiendar som PNG står i `PNG` i `pikslar.js`, og eit
   bilete berre til kartet (`vesen` i ei scene) kan stå der utan å vere i `FIENDAR`. Sjå med
   `skjermbilete.py namn kart=asen-stabbur m=1 kamp=rotte,rotte,rotte` og `kamp=rottemor,rotte`.
   Kartrotta har eit gangark (`rotte-kart-gang.png`: står og to steg i fire retningar, som figurane).
   Vesen med gangark står i `GANGARK` i `pikslar.js` (`vesenGang`), og motoren vel ramme etter retning og steg.
   Svermen på fem: `kamp=svermrotte,svermrotte,svermrotte,svermrotte,svermrotte`.
-- Kyrkjegrimen (runde 98, bossen i klokketårnet): `python tools/pikselkunst/grim.py alle` skriv
+- Kyrkjegrimen (runde 98, bossen i klokketårnet): `python spelet-demo/tools/pikselkunst/grim.py alle` skriv
   `kjelder/fiende-kyrkjegrimen.pix` og `-roleg.pix` (same biletet etter kampen, med slokna auge), så `pix.py lag`.
   Ulla er krøllete klumpar med eigen cel-skugge (`ull()`), horna spiralar (`horn()`). Kampbakgrunnen er
   `bakgrunn.py klokketarn`. Sjå med `skjermbilete.py namn kart=kyrkje-tarn m=1 bakgrunn=klokketarn kamp=kyrkjegrimen`,
   og scena med `skjermbilete.py namn kart=kyrkje-tarn m=1 x=8 y=8 scene=kyrkjegrimen replikk=3` (kampen blir
   vunnen med ein gong, så `replikk=8` viser grimen roleg etterpå).
-- Tre, steinar og haugar: `python tools/pikselkunst/natur.py <namn>` (sjå `NATUR`).
+- Tre, steinar og haugar: `python spelet-demo/tools/pikselkunst/natur.py <namn>` (sjå `NATUR`).
   Frittståande tre og steinar: kartteikna `i` (gran), `F` (furu), `t` (bjørk) og `o` (stein, einer)
-  vel variant etter plassen frå `NATURTYPE` i `js/rpg/pikslar.js`. Nye variantar må førast inn der.
+  vel variant etter plassen frå `NATURTYPE` i `spelet-demo/js/rpg/pikslar.js`. Nye variantar må førast inn der.
   Ting som skal stå ein bestemt stad (bautaen), er ikkje i `NATURTYPE`, men i `naturting` på kartet
   (`{ ved, bilete, manus }` på ei «o»-rute); dei kan undersøkjast med Z.
   Granene kjem frå `granfigur()` (greinlag som skjørt med hengjande spissar, `tone=-1` gir dei mørke
@@ -281,7 +281,7 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   `furu-gamal`. Sjå trea saman med `skjermbilete.py namn kart=vegen m=1 x=24 y=6 stemning=ingen`.
 - Kartkanten (`#`, ugjennomtrengjeleg skog langs kanten av kartet) blir teikna etter kanttypen til
   kartet: `kant: "granskog"` på kartet i `data.js` (standard, og einaste typen enno). Typane står i
-  `KANTTYPE` i `js/rpg/pikslar.js`: `botn` (fargane i skogbotnen), `framme` (trea i fremste rekkja),
+  `KANTTYPE` i `spelet-demo/js/rpg/pikslar.js`: `botn` (fargane i skogbotnen), `framme` (trea i fremste rekkja),
   `inne` (dei mørke trea innst og bak), `nede` (kanten nedst, utan høge stammer), `smaa` (små tre ute
   på graset framfor kanten), `sjanse` og `forskyv`. Motoren (`skogkant()` i `motor.js`) finn kva sider
   av flisa som har open mark, og `Pikslar.kantfigurar` set eitt til tre tre per flis: det fremste står
@@ -294,7 +294,7 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
   kartpikslane, så kanten ikkje følgjer rutenettet). Ein ny kanttype (lauvskog, berg, myr) er ein ny
   post i `KANTTYPE` med eigne bilete frå `natur.py`, og `kant: "<namn>"` på kartet. Gjer kanten ujamn i
   kartet òg: la `#` gå 1 til 3 fliser inn somme stader, men aldri framfor dører, stiar eller merke
-  (`node tools/sjekk-spel.js` sjekkar at alle dører, kister og folk kan nåast).
+  (`node spelet-demo/tools/sjekk-spel.js` sjekkar at alle dører, kister og folk kan nåast).
 - Små bilete: skriv rutenettet for hand.
 - Større bilete: eit lite Python-skript som teiknar flater med `span` og
   punkt, slik som `portrett.py`, og skriv `.pix`. Teikn flater for hand.
@@ -303,12 +303,12 @@ Kjelda er alltid ei `.pix`-fil i `tools/pikselkunst/kjelder/` (formatet står
 ## 3. Lag og sjekk
 
 ```
-python tools/pikselkunst/pix.py lag kjelder/<namn>.pix
-python tools/pikselkunst/pix.py sjekk kjelder/<namn>.pix
-python tools/pikselkunst/pix.py ark
+python spelet-demo/tools/pikselkunst/pix.py lag kjelder/<namn>.pix
+python spelet-demo/tools/pikselkunst/pix.py sjekk kjelder/<namn>.pix
+python spelet-demo/tools/pikselkunst/pix.py ark
 ```
 
-Sjå på `tools/pikselkunst/forhand/<namn>-8x.png`, `<namn>-samanheng.png` og
+Sjå på `spelet-demo/tools/pikselkunst/forhand/<namn>-8x.png`, `<namn>-samanheng.png` og
 `kontaktark.png` med Read-verktøyet.
 
 ## 4. Vurder
@@ -325,12 +325,12 @@ rundar. Stopp når sjekklista er oppfylt, og skriv kva som eventuelt står att.
 
 ## 6. Ta i bruk
 
-- Portrett: fila hamnar i `bilete/spel/portrett/`, og namnet må stå i
-  `PORTRETT` i `js/rpg/data.js`.
-- Fiendar: legg fila inn i `PNG` i `js/rpg/pikslar.js`.
-- Sjekk karta: `node tools/sjekk-spel.js`.
+- Portrett: fila hamnar i `spelet-demo/bilete/spel/portrett/`, og namnet må stå i
+  `PORTRETT` i `spelet-demo/js/rpg/data.js`.
+- Fiendar: legg fila inn i `PNG` i `spelet-demo/js/rpg/pikslar.js`.
+- Sjekk karta: `node spelet-demo/tools/sjekk-spel.js`.
 - Ta skjermbilete av spelet med grafikken i bruk:
-  `python tools/pikselkunst/skjermbilete.py <namn> kart=<kart> m=<merke> x=<x> y=<y>`
+  `python spelet-demo/tools/pikselkunst/skjermbilete.py <namn> kart=<kart> m=<merke> x=<x> y=<y>`
   (eller `kamp=fiende1,fiende2`), og sjå på `forhand/skjerm/<namn>-spel.png`.
 - Skriv runden inn i `ARBEIDSLOGG.md`.
 - Commit både `.pix`-kjelda og PNG-fila.

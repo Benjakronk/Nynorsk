@@ -52,18 +52,18 @@ Lisenstekstane: <https://creativecommons.org/licenses/by/2.0/deed.no>,
 
 favicon.svg, favicon.ico, favicon-16.png, favicon-32.png, apple-touch-icon.png, icon-192.png, icon-512.png og ivar-aasen.png er ein ikonpakke med eit stilisert portrett av Ivar Aasen, levert av kurseigaren (september 2026). favicon.svg er ein SVG-behaldar med innebygd PNG, ikkje ei vektorisert teikning.
 
-## Spelet (bilete/spel/)
+## Spelet (spelet-demo/bilete/spel/)
 
-blekklatten.png er Blekklatten, fienden i «Aasen: Språkvandringa», teikna som pikselkunst og levert av kurseigaren (september 2026). Fila er skalert ned til 80 × 72 pikslar, der kvar spelpiksel er éin piksel. Resten av grafikken i spelet blir teikna i kode (js/rpg/pikslar.js).
+blekklatten.png er Blekklatten, fienden i «Aasen: Språkvandringa», teikna som pikselkunst og levert av kurseigaren (september 2026). Fila er skalert ned til 80 × 72 pikslar, der kvar spelpiksel er éin piksel. Resten av grafikken i spelet blir teikna i kode (spelet-demo/js/rpg/pikslar.js).
 
 Blekklatten er laga av Claude Opus 5.5.
 
 vette3_nameless_1x.png og vette3_restored_1x.png (47 × 68) er den namnlause vetten og vetten som har fått namnet att, levert av kurseigaren (september 2026). Den namnlause blir brukt i kamp mot vettane og haugbonden, og biletet glir over i den attfunne når haugbonden får namnet sitt.
 
-bygg/ er hus som heile figurar (stove, løe, stabbur, seter, kyrkje og prestegard), laga med tools/pikselkunst/bygg.py etter referansane i tools/pikselkunst/konsept/. natur/ er gran, bjørk, stein og gravhaug, laga med tools/pikselkunst/natur.py. bygg/inne-*.png er inventaret i kyrkja (altartavle, alterring, preikestol og lysekrone) og i stovene (grue, hylle, sengebenk, langbord og rokk), laga med tools/pikselkunst/inventar.py. kamp/ er kampbakgrunnane, laga med tools/pikselkunst/bakgrunn.py. figurar/ er figurane på kartet og i kampen, laga med tools/pikselkunst/figur.py.
+bygg/ er hus som heile figurar (stove, løe, stabbur, seter, kyrkje og prestegard), laga med spelet-demo/tools/pikselkunst/bygg.py etter referansane i spelet-demo/tools/pikselkunst/konsept/. natur/ er gran, bjørk, stein og gravhaug, laga med spelet-demo/tools/pikselkunst/natur.py. bygg/inne-*.png er inventaret i kyrkja (altartavle, alterring, preikestol og lysekrone) og i stovene (grue, hylle, sengebenk, langbord og rokk), laga med spelet-demo/tools/pikselkunst/inventar.py. kamp/ er kampbakgrunnane, laga med spelet-demo/tools/pikselkunst/bakgrunn.py. figurar/ er figurane på kartet og i kampen, laga med spelet-demo/tools/pikselkunst/figur.py.
 
-portrett/ivar.png, storebror.png, syster.png, granne.png, budeia.png og framande.png er portrett til samtaleboksen, laga med verktøyet i tools/pikselkunst/ (kjeldene er .pix-filer i tools/pikselkunst/kjelder/).
+portrett/ivar.png, storebror.png, syster.png, granne.png, budeia.png og framande.png er portrett til samtaleboksen, laga med verktøyet i spelet-demo/tools/pikselkunst/ (kjeldene er .pix-filer i spelet-demo/tools/pikselkunst/kjelder/).
 
-## Skrift i spelet (fonts/)
+## Skrift i spelet (spelet-demo/fonts/)
 
-pixelify-sans-latin.woff2 er Pixelify Sans (Copyright 2021 The Pixelify Sans Project Authors), lisensiert under SIL Open Font License 1.1. Lisensteksten ligg i fonts/OFL-PixelifySans.txt.
+pixelify-sans-latin.woff2 er Pixelify Sans (Copyright 2021 The Pixelify Sans Project Authors), lisensiert under SIL Open Font License 1.1. Lisensteksten ligg i spelet-demo/fonts/OFL-PixelifySans.txt.

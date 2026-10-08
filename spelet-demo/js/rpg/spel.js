@@ -574,7 +574,7 @@
       if (v === "Til kurssida") {
         menyEl.hidden = true; slepp();
         const i = await Motor.val("Gå attende til kurssida? Det du ikkje har lagra, går tapt.", ["Gå til kurssida", "Bli i spelet"]);
-        if (i === 0) { await Motor.tonUt(); location.href = "index.html"; return; }
+        if (i === 0) { await Motor.tonUt(); location.href = "../index.html"; return; }
         menyEl.hidden = false; slepp = Motor.lytt(lyttar); teikn(); return;
       }
       // Lister: Z går inn i lista (peikaren flyttar seg dit), B går attende til menyvala.
@@ -735,7 +735,7 @@
     const vel = async i => {
       slepp();
       await Motor.tonUt();
-      if (alt[i][0] === "kurs") { location.href = "index.html"; return; }
+      if (alt[i][0] === "kurs") { location.href = "../index.html"; return; }
       tittelEl.hidden = true;
       requestAnimationFrame(() => requestAnimationFrame(() => Motor.tonInn()));
       if (alt[i][0] === "stev") { await provStev(); return; }

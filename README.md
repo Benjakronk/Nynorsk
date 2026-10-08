@@ -28,7 +28,7 @@ frå Språkrådet.
 - Språksjekk i skriveoppgåvene: bokmålsvarsel bygd på ordbanken i kurset, og skrivefeil mot ei nynorsk ordliste på 412 000 former, med tyding og direktelenkje til ordbokene.no for kvart forslag
 - Reisene til Ivar Aasen (`aasen-reise.html`): modul med interaktiv forelesing på eit 3D-kart over Noreg, der eleven følgjer ein liten Aasen-figur langs ruta kapittel for kapittel, med stoppestader, datoar og oppgåver undervegs
 - Bilete og små animerte figurar i modulane: portrett, historiske bilete, kart og norsk kunst frå Wikimedia Commons (`bilete/`, lisensar i `bilete/KJELDE.md`), tidslinje, «to liner»-diagram, ordbygg, dei fire formene, setningsledd, V2-demonstrasjon, kjønnskort og ein nummerert ordbokartikkel (`js/figurar.js` og «Figurar» i `css/style.css`)
-- Spelet «Aasen: Språkvandringa» (`spel.html`): eit rollespel i 16-bitsstil, som dei klassiske Final Fantasy-spela, om Ivar Aasen og arbeidet med å samle eit nytt norsk skriftspråk. Kvart ord Ivar høyrer i bygdene, blir ein galdr, og lydfamilien til ordet avgjer kva galdren gjer: diftongane gir vern, dei harde konsonantane åtak, spørjeorda avsløring og j-orda lækjing. Før galdren verkar, vel spelaren forma som har teke vare på lyden, ikkje den danske. Kanselliblekket er fienden, og det kan «rettskrive» orda til dansk. Ordboka i spelet er både samlarlogg og bestiarium. Kapittel 1, «Ørsta» (1826–1831), er ferdig. Kapittel 2 til 5 er skisserte i designdokumentet. Fullførte modular i kurset gir gåver i spelet. Stev er dei sterkaste galdrane (prototype, `js/rpg/stev.js`): det finst eit fast tal stev, Ivar lærer dei av folk han møter, og hola i stevet må fyllast med ord han har funne. Når kvedemålaren er full, kan han kvede stevet. Spelaren vel forma som rimar i kvart hol og slår takta på dei trykktunge orda. Stevet kan prøvast frå tittelskjermen. Kart, figurar og dei fleste fiendane blir teikna i kode, med kantar mellom flisene, stemningslys, effektar i kampen og pikselskrifta Pixelify Sans. Blekklatten (`bilete/spel/blekklatten.png`), vettane, husa og kyrkja (`bilete/spel/bygg/`), tre og steinar (`bilete/spel/natur/`) og portretta i samtaleboksen (`bilete/spel/portrett/`) er pikselkunst laga med arbeidsflyten i `tools/pikselkunst/` (sjå `STILGUIDE.md` der og skillen `.claude/skills/pikselkunst/`). Blekklatten viser stilen
+- Spelet «Aasen: Språkvandringa» (`spelet-demo/spel.html`, prototypen): eit rollespel i 16-bitsstil, som dei klassiske Final Fantasy-spela, om Ivar Aasen og arbeidet med å samle eit nytt norsk skriftspråk. Kvart ord Ivar høyrer i bygdene, blir ein galdr, og lydfamilien til ordet avgjer kva galdren gjer: diftongane gir vern, dei harde konsonantane åtak, spørjeorda avsløring og j-orda lækjing. Før galdren verkar, vel spelaren forma som har teke vare på lyden, ikkje den danske. Kanselliblekket er fienden, og det kan «rettskrive» orda til dansk. Ordboka i spelet er både samlarlogg og bestiarium. Kapittel 1, «Ørsta» (1826–1831), er ferdig. Kapittel 2 til 5 er skisserte i designdokumentet. Fullførte modular i kurset gir gåver i spelet. Stev er dei sterkaste galdrane (prototype, `spelet-demo/js/rpg/stev.js`): det finst eit fast tal stev, Ivar lærer dei av folk han møter, og hola i stevet må fyllast med ord han har funne. Når kvedemålaren er full, kan han kvede stevet. Spelaren vel forma som rimar i kvart hol og slår takta på dei trykktunge orda. Stevet kan prøvast frå tittelskjermen. Kart, figurar og dei fleste fiendane blir teikna i kode, med kantar mellom flisene, stemningslys, effektar i kampen og pikselskrifta Pixelify Sans. Blekklatten (`spelet-demo/bilete/spel/blekklatten.png`), vettane, husa og kyrkja (`spelet-demo/bilete/spel/bygg/`), tre og steinar (`spelet-demo/bilete/spel/natur/`) og portretta i samtaleboksen (`spelet-demo/bilete/spel/portrett/`) er pikselkunst laga med arbeidsflyten i `spelet-demo/tools/pikselkunst/` (sjå `STILGUIDE.md` der og skillen `.claude/skills/pikselkunst/`). Blekklatten viser stilen
 - Lærarsida (`larer/`): presentasjon til tavleundervisning og lærarrettleiing til kvar modul, med talarvindauge, tavleøvingar frå ordbanken, kompetansemål frå læreplanen i norsk (NOR01-08), manus og automatisk fasit. Formatet står i `larer/README.md`, og `node tools/validate-larar.js` sjekkar innhaldet
 - Heile sida er statisk og fungerer på GitHub Pages utan byggjesteg
 
@@ -54,16 +54,15 @@ npx serve .
 ├── modul.html              Sida for kvar modul (?id=<modul-id>)
 ├── om.html                 Kort om kurset
 ├── aasen-reise.html        Reisene til Ivar Aasen: 3D-kart med forelesing
-├── spel.html               Rollespelet «Aasen: Språkvandringa»
+├── spelet-demo/           Prototypen av rollespelet «Aasen: Språkvandringa» (sjå spelet-demo/README.md):
+│                           spel.html, css/rpg.css, js/rpg/, bilete/spel/, fonts/, docs/ og tools/ (testar og pikselkunst)
 ├── larer/                  Lærarsida: presentasjonar og rettleiingar (sjå larer/README.md)
 ├── bilete/                 Portrett og historiske bilete (kjelder i bilete/KJELDE.md)
 ├── css/style.css
 ├── css/aasen-reise.css     Stil for kartsida
-├── css/rpg.css             Stil for spelet
 ├── js/
 │   ├── kart3d.js           3D-kartet: terreng, hav, kamera, ruter, figuren og scenene
 │   ├── aasen-reise.js      Sida for reisemodulen: kapittel, oppgåver og ruta på kartet
-│   ├── rpg/                Spelet: pikslar.js (16-bitsgrafikk), data.js (ord, lydfamiliar, kart, manus, fiendar, stev), motor.js (feltet), kamp.js (ATB-kampar og galdrar), stev.js (stev-galdrar), spel.js (lagring, meny og ordbok, verdskart frå kapittel 2)
 │   ├── vendor/three.min.js three.js r147 (MIT), einaste eksterne bibliotek
 │   ├── storage.js          localStorage
 │   ├── modules.js          Modulregister (med grupper for Del 2 og 4)
@@ -97,9 +96,7 @@ npx serve .
 │   ├── validate-content.js Validerer alt innhald: node tools/validate-content.js
 │   ├── lag-ordbank.js      Lagar ordbanken på nytt frå Norsk ordbank
 │   ├── lag-terreng.js      Lagar høgdekartet på nytt frå opne terrengdata
-│   ├── test-grammatikk.js  Testar grammatikkreglane mot feil og kursprosa
-│   ├── sjekk-spel.js       Sjekkar karta, manus, ord, stev og bygg i spelet
-│   └── pikselkunst/        Lagar, sjekkar og viser pikselgrafikk til spelet (pix.py, portrett.py, bygg.py, inventar.py, natur.py, bakgrunn.py, maleri.py, figur.py, handfigur.py, ivar_figur.py, huldra_figur.py, hent_referansar.py, skjermbilete.py, STILGUIDE.md, ARBEIDSLOGG.md, konsept/ med referansar)
+│   └── test-grammatikk.js  Testar grammatikkreglane mot feil og kursprosa
 └── README.md
 ```
 
