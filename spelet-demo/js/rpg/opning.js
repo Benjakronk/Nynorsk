@@ -6,7 +6,7 @@
 
    1. Lastinga: blekkhuset fyllest medan grafikken blir lasta, så «Trykk ein tast».
       Tastetrykket opnar lyden. Leddet blir hoppa over om spelet har starta før i same økta.
-   2. Logoen: eit fotavtrykk i gull (etter eit babyfotavtrykk på ein kopp) og «Lektor Ensrud presenterer».
+   2. Logoen: fotavtrykket i gull (teikna av etter eit babyfotavtrykk på ein kopp) og «Lektor Ensrud presenterer».
    3. Tittelen: ein blekkdrope blir til AASEN, og undertittelen blir gull på mørk fiolett.
    4. Startsida: logotypen og «demo» i gull, nokre stjerner, og menyen frå spel.js over.
 
@@ -112,11 +112,11 @@
   /* ---------- 2. Logoen ---------- */
   // Fotavtrykket blir trykt ned i gull, namnet kjem fram bokstav for bokstav, og ein glans går over gullet.
   async function logo() {
-    const FX = (W - 64) / 2, FY = 22, NX = (W - 160) / 2, NY = 124;
+    const FX = (W - 68) / 2, FY = 18, NX = (W - 160) / 2, NY = 124;
     let fot = -1, skrive = 0, del = 0;
     teikn = () => {
       g.fillStyle = "#000"; g.fillRect(0, 0, W, H);
-      if (fot >= 0) ramme("fot", 64, fot, FX, FY);
+      if (fot >= 0) ramme("fot", 68, fot, FX, FY);
       BOKSTAVAR.forEach(([, x0, y0, x1, y1], i) => {
         const h = i < skrive ? y1 - y0 : i === skrive ? Math.round((y1 - y0) * del / 2) : 0;
         if (h > 0) g.drawImage(B.namn, x0, y0, x1 - x0, h, NX + x0, NY + y0, x1 - x0, h);
