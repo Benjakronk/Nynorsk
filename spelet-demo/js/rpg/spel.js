@@ -737,7 +737,7 @@
     modus = "tittel";
     Motor.pause(true);
     tittelEl.hidden = false;
-    if (window.Lyd) Lyd.musikk("tittel");
+    Opning.vis(tittelEl);                                               // startsida bak menyen, med tittellåta
     const s = lagra();
     const alt = (s ? [["hald", "Hald fram"], ["ny", "Ny reise"]] : [["ny", "Ny reise"]]).concat([["stev", "Prøv stev (prototype)"], ["kurs", "Til kurssida"]]);
     $("rpg-tittel-val").innerHTML = alt.map(([id, t], i) => `<button type="button" data-id="${id}" class="${i === 0 ? "peikar" : ""}">${t}</button>`).join("") +
@@ -749,7 +749,7 @@
       slepp();
       await Motor.tonUt();
       if (alt[i][0] === "kurs") { location.href = "../index.html"; return; }
-      tittelEl.hidden = true;
+      tittelEl.hidden = true; Opning.gjoym();
       requestAnimationFrame(() => requestAnimationFrame(() => Motor.tonInn()));
       if (alt[i][0] === "stev") { await provStev(); return; }
       if (alt[i][0] === "hald") { st = Object.assign(ny(), s); start(true); }
@@ -797,9 +797,9 @@
   }
 
   // Last all grafikk (og pikselskrifta) før tittelskjermen syner, så ingenting poppar inn seinare.
+  // Opningssekvensen (js/rpg/opning.js) viser blekkhuset medan det lastar, og går så til startsida.
   Motor.tilpass();
-  $("rpg-tittel-val").innerHTML = '<p class="tt-lagra">Lastar grafikk …</p>';
-  Promise.all([Pikslar.forhandslast(Pikslar.alleBilete(D)), document.fonts ? document.fonts.load('16px "Pixelify Sans"').catch(() => {}) : null])
+  Opning.start(Promise.all([Pikslar.forhandslast(Pikslar.alleBilete(D)), document.fonts ? document.fonts.load('16px "Pixelify Sans"').catch(() => {}) : null]))
     .then(() => { Pikslar.figur(D.U.ivar); visTittel(); });
   // Til automatiske testar: les tilstanden og modusen.
   window.RPGTest = { st: () => st, modus: () => modus, lagre, lagra, hending, scene: id => hending([{ scene: id }]), forScene: () => forScene, iHending: () => hendingar > 0 };

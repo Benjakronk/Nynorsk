@@ -36,7 +36,7 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
    eller heilt open (alfa over 1/2 blir 1, mellom 0,3 og 0,5 blir 0, svake flater under 0,3 får
    stå), og teiknar skuggen éin skriftpiksel nede til høgre (dx og dy blir sette i tilpassUI).
    Filteret ligg på elementa med teksten, ikkje på vindauga, så gradienten ikkje er med. */
-.rpg-tale-namn, .rpg-tale-tekst, .tt-val > *, .tt-under, .tt-hjelp, .mn-venstre, .mn-hogre,
+.rpg-tale-namn, .rpg-tale-tekst, .tt-val > *, .mn-venstre, .mn-hogre,
 .kamp-vindauge > *, .kamp-melding > *, .kamp-hint, .kamp-sporsmal > *, .rpg-stadnamn,
 .rpg-kort > *, .fv-tekst > *, .rpg-fort p, .rpg-verd-panel > * {
   filter: url(#skarp); text-shadow: none !important;
@@ -339,22 +339,19 @@ body.rpg-side { display: flex; flex-direction: column; height: 100vh; height: 10
 .vp-tittel { margin: 0 0 calc(var(--fp) * 3) calc(var(--fp) * 4); color: var(--gull); }
 
 /* Tittelskjermen */
+/* Startsida (js/rpg/opning.js): lerretet med logotypen ligg under, og menyen står over det,
+   under «demo». Tittelboksen dekkjer akkurat spelflata (--lx, --ly, --lb og --lh frå Motor.tilpass). */
+.rpg-opning { position: absolute; left: var(--lx); top: var(--ly); z-index: 39; image-rendering: pixelated; image-rendering: crisp-edges; }
+.rpg-opning[hidden] { display: none; }
 .rpg-tittel {
-  position: absolute; inset: 0; z-index: 40; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(var(--fp) * 5);
-  background: radial-gradient(ellipse at 50% 40%, #2a2150 0%, #0e0c12 70%); color: #f1ead6; text-align: center; padding: calc(var(--fp) * 10);
+  position: absolute; left: var(--lx); top: var(--ly); width: var(--lb); height: var(--lh); z-index: 40; box-sizing: border-box;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  padding-top: calc(var(--lh) * 0.43); color: #f1ead6; text-align: center;
 }
 .rpg-tittel[hidden] { display: none; }
-.rpg-tittel .tt-latt { width: calc(var(--np, 3px) * 80); height: calc(var(--np, 3px) * 72); image-rendering: pixelated; animation: svev 3s steps(12) infinite; }
-@keyframes svev { 50% { transform: translateY(calc(var(--np, 3px) * -3)); } }
-.rpg-tittel h1 {
-  margin: 0; font-size: 4em; line-height: calc(var(--fp) * 60);
-  color: var(--gull); text-shadow: calc(var(--fp) * 4) calc(var(--fp) * 4) 0 #6b3f6f;
-}
-.tt-undertittel { display: block; font-size: .5em; line-height: calc(var(--fp) * 30); text-transform: uppercase; color: var(--lys); text-shadow: calc(var(--fp) * 2) calc(var(--fp) * 2) 0 #2a2150; margin-top: calc(var(--fp) * 2); }
-.tt-under { margin: 0 0 calc(var(--fp) * 5); color: var(--lys); text-shadow: var(--fp) var(--fp) 0 #0e0c12; }
+.tt-skjult { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: 0; }
 .tt-val { display: flex; flex-direction: column; padding: calc(var(--fp) * 3) calc(var(--fp) * 8) calc(var(--fp) * 3) calc(var(--fp) * 3); min-width: calc(var(--fp) * 120); }
 .tt-lagra { margin: calc(var(--fp) * 4) 0 0; color: var(--lys); }
-.tt-hjelp { margin-top: calc(var(--fp) * 8); color: var(--dempa); max-width: calc(var(--fp) * 300); text-shadow: var(--fp) var(--fp) 0 #0e0c12; }
 
 /* Styrekross for mobil og nettbrett */
 .rpg-pad { display: none; }

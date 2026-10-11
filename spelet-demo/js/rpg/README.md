@@ -9,6 +9,7 @@ Denne mappa held rollespelet i `spel.html`. Alt arbeidet til no er **prototypear
 | `spel.js` | tilstand og lagring, manuskøyring, meny, kamp-oppstart, verdskart |
 | `kamp.js` | kampsystemet |
 | `stev.js` | stev (prøve) |
+| `opning.js` | opningssekvensen: lastinga, logoen, tittelen og startsida (grafikken frå fullversjonen) |
 | `pikslar.js` | grafikk, fliser, figurar, eld og røyk |
 
 ## Prototypen og designdokumentet
