@@ -6,7 +6,7 @@
 
    1. Lastinga: blekkhuset fyllest medan grafikken blir lasta, så «Trykk ein tast».
       Tastetrykket opnar lyden. Leddet blir hoppa over om spelet har starta før i same økta.
-   2. Logoen: krittet skriv «Lektor Ensrud presenterer» på griffeltavla, bokstav for bokstav.
+   2. Logoen: eit fotavtrykk i gull (etter eit babyfotavtrykk på ein kopp) og «Lektor Ensrud presenterer».
    3. Tittelen: ein blekkdrope blir til AASEN, og undertittelen blir gull på mørk fiolett.
    4. Startsida: logotypen og «demo» i gull, nokre stjerner, og menyen frå spel.js over.
 
@@ -22,11 +22,11 @@
   const TITTEL_Y = 40, ORD_Y = 84, NY_Y = 106;               // under tittelen
   const START_LOGO = 16, START_ORD = 56;                     // på startsida
   const VERSJON = "demo 0.1";
-  // Krittbokstavane i opning-krit.png: [ord, x0, y0, x1, y1] (ord 0 Lektor, 1 Ensrud, 2 presenterer)
-  const KRIT = [[0,9,15,19,33],[0,19,15,31,33],[0,31,15,41,33],[0,41,15,51,33],[0,51,15,63,33],[0,63,15,73,33],
-    [1,73,15,93,33],[1,93,15,105,33],[1,105,15,117,33],[1,117,15,127,33],[1,127,15,139,33],[1,139,15,151,33],
-    [2,49,44,54,55],[2,54,44,59,55],[2,59,44,65,55],[2,65,44,71,55],[2,71,44,77,55],[2,77,44,83,55],[2,83,44,88,55],
-    [2,88,44,94,55],[2,94,44,99,55],[2,99,44,105,55],[2,105,44,110,55]];
+  // Bokstavane i opning-namn.png: [ord, x0, y0, x1, y1] (ord 0 Lektor, 1 Ensrud, 2 presenterer)
+  const BOKSTAVAR = [[0,9,2,20,21],[0,19,2,32,21],[0,31,2,42,21],[0,41,2,52,21],[0,51,2,64,21],[0,63,2,74,21],
+    [1,73,2,94,21],[1,93,2,106,21],[1,105,2,118,21],[1,117,2,128,21],[1,127,2,140,21],[1,139,2,152,21],
+    [2,49,28,55,40],[2,54,28,60,40],[2,59,28,66,40],[2,65,28,72,40],[2,71,28,78,40],[2,77,28,84,40],[2,83,28,89,40],
+    [2,88,28,95,40],[2,94,28,100,40],[2,99,28,106,40],[2,105,28,111,40]];
   // Kor orda står i rutene sine på 96 × 24 (x0, x1), så pennen byrjar og sluttar der blekket er.
   const SPENN = { nordmanden: [5, 90], strek: [2, 94], demo: [29, 66] };
   const STJERNER = [[24, 22], [52, 70], [36, 128], [276, 18], [298, 64], [262, 112], [18, 96], [300, 146], [120, 8], [214, 6]];
@@ -39,7 +39,7 @@
   const lyd = id => window.Lyd && Lyd.sfx(id);
 
   const B = {};
-  const NAMN = ["blekkhus", "tavle", "krit", "papir", "drope", "sproyt", "samandrag", "logo", "nordmanden", "strek", "demo", "penn", "stjerne"];
+  const NAMN = ["blekkhus", "fot", "namn", "papir", "drope", "sproyt", "samandrag", "logo", "nordmanden", "strek", "demo", "penn", "stjerne"];
   const bileta = Promise.all(NAMN.map(n => new Promise(ok => {
     const im = new Image(); im.onload = im.onerror = () => ok(); im.src = `bilete/spel/ui/opning-${n}.png`; B[n] = im;
   })));
@@ -110,27 +110,26 @@
   }
 
   /* ---------- 2. Logoen ---------- */
+  // Fotavtrykket blir trykt ned i gull, namnet kjem fram bokstav for bokstav, og ein glans går over gullet.
   async function logo() {
-    const TX = (W - 160) / 2, TY = 60;
-    let skrive = 0, del = 0, stov = [];
+    const FX = (W - 64) / 2, FY = 22, NX = (W - 160) / 2, NY = 124;
+    let fot = -1, skrive = 0, del = 0;
     teikn = () => {
       g.fillStyle = "#000"; g.fillRect(0, 0, W, H);
-      g.drawImage(B.tavle, TX, TY);
-      KRIT.forEach(([, x0, y0, x1, y1], i) => {
-        const h = i < skrive ? y1 - y0 : i === skrive ? Math.round((y1 - y0) * del / 3) : 0;
-        if (h > 0) g.drawImage(B.krit, x0, y0, x1 - x0, h, TX + x0, TY + y0, x1 - x0, h);
+      if (fot >= 0) ramme("fot", 64, fot, FX, FY);
+      BOKSTAVAR.forEach(([, x0, y0, x1, y1], i) => {
+        const h = i < skrive ? y1 - y0 : i === skrive ? Math.round((y1 - y0) * del / 2) : 0;
+        if (h > 0) g.drawImage(B.namn, x0, y0, x1 - x0, h, NX + x0, NY + y0, x1 - x0, h);
       });
-      g.fillStyle = "#c4ccc8";
-      stov = stov.filter(s => s.liv-- > 0);
-      for (const s of stov) { if (s.liv % 2 === 0) s.y++; g.fillStyle = s.liv > 8 ? "#c4ccc8" : "#8a9492"; g.fillRect(TX + s.x, TY + s.y, 1, 1); }
     };
-    await tonInn();
-    for (skrive = 0; skrive < KRIT.length; skrive++) {
-      const [ord, x0, , x1, y1] = KRIT[skrive];
-      if (skrive === 0 || KRIT[skrive - 1][0] !== ord) lyd("opning.griffel");
-      for (del = 1; del <= 3; del++) await vent(2);
-      if (Math.random() < 0.6) stov.push({ x: x0 + Math.floor(Math.random() * (x1 - x0)), y: y1, liv: 16 });
-    }
+    await vent(20);
+    for (fot = 0; fot < 3; fot++) await vent(4);                         // foten på veg ned
+    fot = 3;
+    await vent(24);
+    for (skrive = 0; skrive < BOKSTAVAR.length; skrive++) for (del = 1; del <= 2; del++) await vent(2);
+    await vent(16);
+    for (fot = 4; fot < 8; fot++) await vent(4);                         // glansen over gullet
+    fot = 3;
     await vent(60);
     await tonUt();
   }
