@@ -208,6 +208,12 @@ Kjelda er alltid ei `.pix`-fil i `spelet-demo/tools/pikselkunst/kjelder/` (forma
   `maleri.py`: støy, dithering, fjell, gras, gran, bjørk, stein) skriv
   `spelet-demo/bilete/spel/kamp/<namn>.png` direkte (skriptet er kjelda). Namnet er
   `bakgrunn` på kartet i `spelet-demo/js/rpg/data.js`.
+  I fullversjonen (`../Aasen-spelet`) er kampbakgrunnane måla i HD i retning Octopath Traveler, med eigne
+  bilete for kvar årstid (`<namn>.png`, `-vaar`, `-haust`, `-vinter`): `python tools/pikselkunst/bakgrunn_hd.py
+  <namn>` eller `alle` (modulane `bakgrunn_hd_<gruppe>.py`, `BG_UT=<mappe>` skriv til scratch). Reglane står i
+  STILGUIDE.md der («Kampbakgrunnar i HD»), og arbeidsflyten (éin bakgrunn først med før og etter til
+  godkjenning, så agentar i parallell med kvar si fil, så kontroll i kampen med
+  `RPGTest.hending([{ kamp, boss: 1, bakgrunn }])`) i ARBEIDSLOGG.md, «Runde 245 til 247».
 - Vatn og steingard tilpassar seg naboane og blir teikna i `spelet-demo/js/rpg/pikslar.js`
   (`vatn`, `steingard`), ikkje som faste bilete.
 - Stiar (`=`) blir teikna som i The Minish Cap (sjå `forhand/referansar/tmc-sti-naer1.png`):
