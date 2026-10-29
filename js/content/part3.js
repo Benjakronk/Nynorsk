@@ -28,7 +28,7 @@ Modules.register({
         <p><a href="https://ordbokene.no/" target="_blank" rel="noopener">ordbokene.no</a>
         er <em>Bokmålsordboka</em> og <em>Nynorskordboka</em>, og dei viser den offisielle
         rettskrivinga. Står ei form der, er ho lov å bruke. Nynorskordboka har rundt 90 000
-        oppslagsord og Bokmålsordboka rundt 65 000, så her finn du langt fleire ord enn i
+        oppslagsord og Bokmålsordboka rundt 85 000, så her finn du langt fleire ord enn i
         Lexin. Du får bøying, uttale, ordhistorie, faste uttrykk og døme. Ordbøkene blir
         drivne av Språkrådet og Universitetet i Bergen, og finst òg som app på telefonen.</p>
 
@@ -155,8 +155,8 @@ Modules.register({
               <em class="nn">-er</em>, <em class="nn">-ene</em>.
               <em class="nn">jentene</em> → <em class="nn">jente</em>,
               <em class="nn">husa</em> → <em class="nn">hus</em>.</li>
-          <li><strong>Svake verb:</strong> stryk <em class="nn">-a</em>, <em class="nn">-te</em>,
-              <em class="nn">-de</em> eller <em class="nn">-r</em> og legg til
+          <li><strong>Svake verb:</strong> stryk <em class="nn">-a</em>, <em class="nn">-ar</em>, <em class="nn">-er</em>, <em class="nn">-te</em>
+              eller <em class="nn">-de</em> og legg til
               <em class="nn">-e</em>. <em class="nn">kasta</em> → <em class="nn">kaste</em>,
               <em class="nn">høyrde</em> → <em class="nn">høyre</em>.</li>
           <li><strong>Sterke verb</strong> byter vokal, og då hjelper det ikkje å stryke
@@ -178,7 +178,7 @@ Modules.register({
       exerciseType: "fillIn",
       question: "Skriv grunnforma du må slå opp på, altså det ordet som står i ordboka.",
       items: [
-        { prompt: "gutane → ___", accept: ["gut", "gutt"] },
+        { prompt: "gutane → ___", accept: ["gut"] },
         { prompt: "skreiv → ___", accept: ["skrive"] },
         { prompt: "høgaste → ___", accept: ["høg"] },
         { prompt: "hendene → ___", accept: ["hand"] },
@@ -220,7 +220,7 @@ Modules.register({
       exerciseType: "matching",
       question: "Kva oppslagsord må du leite etter?",
       pairs: [
-        ["auga", "auge"],
+        ["menn", "mann"],
         ["gjekk", "gå"],
         ["verst", "vond"],
         ["nettene", "natt"],
@@ -273,7 +273,7 @@ Modules.register({
               viser kva bøyingsmønster ordet følgjer.</li>
           <li><span class="merk" data-n="3"></span><strong>Bøyinga</strong> står i rekkjefølgja bestemt eintal, ubestemt fleirtal,
               bestemt fleirtal: <em class="nn">boka, bøker, bøkene</em>. Står det fleire
-              former skilde med komma på same plass, er begge lov.</li>
+              former skilde med komma på same plass, er alle lov.</li>
           <li><span class="merk" data-n="4"></span><strong>Tydingane</strong> er nummererte. Den vanlegaste kjem først.</li>
           <li><span class="merk" data-n="5"></span><strong>Døma</strong> står i kursiv og viser ordet i bruk. Dei er ofte det
               mest nyttige i heile artikkelen, for dei viser kva preposisjon eller
@@ -409,8 +409,8 @@ Modules.register({
               målformene, og då får du treff med ein gong.</li>
           <li>Får du ikkje treff, slå opp ordet i <strong>Bokmålsordboka</strong> og les
               forklaringa. Forklaringa gir deg som regel eit anna ord du kan søkje på.
-              <em class="bm">Anledning</em> blir forklart som «høve, sjanse», og
-              <em class="nn">høve</em> finn du i Nynorskordboka.</li>
+              <em class="bm">Mulighet</em> blir mellom anna forklart med «sjanse» og «utsikt», og
+              <em class="nn">sjanse</em> finn du i Nynorskordboka.</li>
           <li>På ordbokene.no kan du søkje i begge ordbøkene samtidig, så du ser med ein
               gong om ordet finst i begge.</li>
           <li>I <strong>Lexin</strong> kan du byte mellom bokmål og nynorsk på same
@@ -428,15 +428,15 @@ Modules.register({
     {
       type: "exercise",
       exerciseType: "multipleChoice",
-      question: "Du har skrive <em class=\"bm\">forskjellen</em> i teksten din, og finn ikkje ordet i Nynorskordboka. Kva gjer du?",
+      question: "Du har skrive <em class=\"bm\">muligheten</em> i teksten din, og finn ikkje ordet i Nynorskordboka. Kva gjer du?",
       options: [
         "Bruker ordet likevel, for det høyrest greitt ut",
-        "Slår opp ordet i Bokmålsordboka, les forklaringa og finn eit nynorskord derifrå, til dømes <em class=\"nn\">skilnaden</em>",
+        "Slår opp ordet i Bokmålsordboka, les forklaringa og finn eit nynorskord derifrå, til dømes <em class=\"nn\">sjansen</em>",
         "Stryk heile setninga",
         "Byter til eit engelsk ord",
       ],
       correct: 1,
-      explanation: "Forklaringa i Bokmålsordboka gir deg orda du kan søkje vidare på. <em class=\"bm\">Forskjell</em> blir forklart som «ulikskap, skilnad», og <em class=\"nn\">skilnad</em> står i Nynorskordboka.",
+      explanation: "Forklaringa i Bokmålsordboka gir deg orda du kan søkje vidare på. <em class=\"bm\">Mulighet</em> blir mellom anna forklart med «sjanse» og «utsikt», og <em class=\"nn\">sjanse</em> står i Nynorskordboka. Der finn du òg <em class=\"nn\">moglegheit</em>.",
     },
     {
       type: "exercise",
@@ -458,8 +458,14 @@ Modules.register({
       accept: [
         "Skilnaden mellom dei to bøkene er ikkje stor, men eg likte den første best.",
         "Skilnaden mellom dei to bøkene er ikkje stor, men eg likte den fyrste best.",
+        "Skilnaden mellom dei to bøkene er ikkje stor, men eg lika den første best.",
+        "Skilnaden mellom dei to bøkene er ikkje stor, men eg lika den fyrste best.",
+        "Forskjellen mellom dei to bøkene er ikkje stor, men eg likte den første best.",
+        "Forskjellen mellom dei to bøkene er ikkje stor, men eg likte den fyrste best.",
+        "Forskjellen mellom dei to bøkene er ikkje stor, men eg lika den første best.",
+        "Forskjellen mellom dei to bøkene er ikkje stor, men eg lika den fyrste best.",
       ],
-      hint: "Slå opp <em class=\"bm\">forskjell</em> i Bokmålsordboka og sjå kva nynorskord forklaringa gir deg.",
+      hint: "Slå opp <em class=\"nn\">forskjell</em> i Nynorskordboka. Ordet er lov, men forklaringa viser deg til eit typisk nynorskord.",
     },
     {
       type: "exercise",

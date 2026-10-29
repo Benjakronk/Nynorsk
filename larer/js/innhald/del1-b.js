@@ -11,7 +11,7 @@ Larar.register("historie-i-dag", {
         <li>forstå kravet om <strong>25 %</strong></li>
         <li>drøfte <strong>sidemålsdebatten</strong> med argument for og mot</li>
       </ul>`,
-      notes: "Knyt an til dei tidlegare modulane: jamstillinga i 1885 og samnorskpolitikken som vart gitt opp i 1981. Denne modulen svarer på spørsmålet: kva vart resultatet?",
+      notes: "Knyt an til dei tidlegare modulane: jamstillinga i 1885 og samnorsklinja som i praksis vart oppgitt i 1981. Denne modulen svarer på spørsmålet: kva vart resultatet?",
     },
     {
       type: "diskuter",
@@ -20,7 +20,7 @@ Larar.register("historie-i-dag", {
         <p class="liten">Tenk på skilt, nettsider, TV, songtekstar, lærebøker, sosiale medium.</p>`,
       form: "Snakk med sidemannen",
       tid: 2,
-      notes: "Skriv svara på tavla. Mange elevar oppdagar at dei møter nynorsk oftare enn dei trur: i NRK-tekstar, på offentlege nettsider og i songtekstar. Er klassen på eit nynorskområde, snu spørsmålet: kvar møter de bokmål? Ta vare på lista, du kan vise til ho når de kjem til NRK og 25 %-kravet.",
+      notes: "Skriv svara på tavla. Mange elevar oppdagar at dei møter nynorsk oftare enn dei trur: i NRK-tekstar, på offentlege nettsider og i songtekstar. Er klassen på eit nynorskområde, snu spørsmålet: kvar møter de bokmål? Ta vare på lista: du kan vise til ho når de kjem til NRK og 25 %-kravet.",
     },
     {
       title: "Kor mange skriv nynorsk?",
@@ -51,8 +51,8 @@ Larar.register("historie-i-dag", {
           <div class="boks"><h3>Hovudmål</h3><p>det skriftspråket du lærer først og skriv mest</p></div>
           <div class="boks"><h3>Sidemål</h3><p>det av dei to du <strong>ikkje</strong> har som hovudmål</p></div>
         </div>`,
-      steps: ["<p class=\"stor midt\">Sidan <strong>1907</strong> har alle elevar lært båe.</p>"],
-      notes: "Poenget er at omgrepa er relative: for ein elev i Ørsta er bokmål sidemålet. Spør klassen: kva er sidemålet for ein elev i Volda? Kva er det for dykk? Mange elevar trur at «sidemål» er eit anna ord for nynorsk. Det er det ikkje.",
+      steps: ["<p class=\"stor midt\">Sidan <strong>1974</strong> har alle elevar i ungdomsskulen lært båe.</p>"],
+      notes: "Poenget er at omgrepa er relative: for ein elev i Ørsta er bokmål sidemålet. Spør klassen: kva er sidemålet for ein elev i Volda? Kva er det for dykk? Mange elevar trur at «sidemål» er eit anna ord for nynorsk. Det er det ikkje. Sidemålet har lang historie i skulen: i 1907 vart sidemål kravd til eksamen på gymnaset, men først frå 1974 fekk alle elevar i ungdomsskulen opplæring i båe skriftspråka.",
     },
     {
       title: "Språklova frå 2022",
@@ -135,7 +135,7 @@ Larar.register("historie-i-dag", {
         <p>Still deg på ei linje frå <strong>heilt einig</strong> til <strong>heilt ueinig</strong>. Grunngi med minst eitt argument.</p>`,
       form: "Heile klassen: meiningslinje",
       tid: 8,
-      notes: "Meiningslinja: elevane stiller seg langs veggen etter kor einige dei er. Spør nokre frå kvar ende og nokre frå midten. Krev at dei grunngir, og la gjerne ein elev flytte seg om han eller ho blir overtydd. Pass på tonen: sidemål kan vekkje sterke kjensler, og nynorskelevar i klassen skal ikkje kjenne seg som ein debattsak. Til slutt: få fram at dei beste innlegga viste til fakta, til dømes språklova eller 25 %-kravet.",
+      notes: "Meiningslinja: elevane stiller seg langs veggen etter kor einige dei er. Spør nokre frå kvar ende og nokre frå midten. Krev at dei grunngir, og la gjerne ein elev flytte seg om han eller ho blir overtydd. Pass på tonen: sidemål kan vekkje sterke kjensler, og nynorskelevar i klassen skal ikkje kjenne seg som ei debattsak. Til slutt: få fram at dei beste innlegga viste til fakta, til dømes språklova eller 25 %-kravet.",
     },
     {
       title: "Nynorsk i kulturen",
@@ -209,7 +209,7 @@ Larar.register("historie-i-dag", {
       "Elevane kan presentere argument for og mot sidemålsopplæring og grunngi eit eige standpunkt med fakta.",
     ],
     lareplan: [15, 9, 10],
-    forkunnskapar: "Elevane bør ha gått gjennom dei tre første modulane i Del 1, særleg jamstillingsvedtaket i 1885 og samnorskpolitikken som vart gitt opp i 1981.",
+    forkunnskapar: "Elevane bør ha gått gjennom dei tre første modulane i Del 1, særleg jamstillingsvedtaket i 1885 og samnorsklinja som i praksis vart oppgitt i 1981.",
     forebuing: [
       "Ha klar ein stad i klasserommet der elevane kan stille seg på ei meiningslinje (lysbilete 14).",
       "Finn gjerne eit kort utdrag av ein låt med nynorsk tekst til lysbilete 15.",
@@ -319,14 +319,14 @@ Larar.register("historie-skriving", {
         "<p class=\"stor\"><strong>Tid:</strong> <em class=\"nn\">først, deretter, seinare, til slutt</em></p>",
         "<p class=\"stor\"><strong>Oppsummering:</strong> <em class=\"nn\">altså</em></p>",
       ],
-      notes: "Grupperinga hjelper elevane å velje rett ord til rett bruk. Minn om at <em>difor</em> og <em>derfor</em> begge er rette på nynorsk. Bokmålsforma <em>da</em> finst ikkje: skriv <em>då</em> eller <em>når</em>.",
+      notes: "Grupperinga hjelper elevane å velje rett ord til rett bruk. Minn om at <em>difor</em> og <em>derfor</em> begge er rette på nynorsk. Forma <em>da</em> er lov, men <em>då</em> er det vanlege på nynorsk.",
     },
     {
       type: "sporsmal",
       question: "Kva bindeord passar? <em class=\"nn\">Aasen ville byggje på talemålet, ___ reiste han rundt og samla dialektar.</em>",
       options: ["<em class=\"nn\">men</em>", "<em class=\"nn\">difor</em>", "<em class=\"nn\">likevel</em>", "<em class=\"nn\">samtidig</em>"],
       correct: 1,
-      explain: "<em class=\"nn\">difor</em> viser at reisene var ein følgje av det Aasen ville. Legg merke til ordstillinga: etter <em class=\"nn\">difor</em> kjem verbalet <em class=\"nn\">reiste</em> før subjektet.",
+      explain: "<em class=\"nn\">difor</em> viser at reisene var ei følgje av det Aasen ville. Legg merke til ordstillinga: etter <em class=\"nn\">difor</em> kjem verbalet <em class=\"nn\">reiste</em> før subjektet.",
       notes: "Bruk høvet til å minne om V2-regelen frå Del 2: <em>difor reiste han</em>, ikkje <em>difor han reiste</em>. Det er ein vanleg feil når elevane byrjar å bruke fleire bindeord.",
     },
     {
@@ -351,12 +351,12 @@ Larar.register("historie-skriving", {
       body: `<table>
           <thead><tr><th>År</th><th>Hending</th></tr></thead>
           <tbody>
-            <tr><td>1907</td><td>Alle elevar skal lære båe skriftspråka</td></tr>
-            <tr><td>1907, 1917, 1938</td><td>Rettskrivingsreformer i samnorskretning</td></tr>
+            <tr><td>1907</td><td>Sidemål blir kravd til eksamen på gymnaset</td></tr>
+            <tr><td>1917, 1938</td><td>Rettskrivingsreformer i samnorskretning</td></tr>
             <tr><td>1929</td><td>Landsmål får namnet nynorsk</td></tr>
-            <tr><td>1940-talet</td><td>Foreldreaksjonen mot samnorsk blir starta</td></tr>
+            <tr><td>1951</td><td>Foreldreaksjonen mot samnorsk blir skipa</td></tr>
             <tr><td>1980</td><td>Mållova: staten skal bruke begge skriftspråka</td></tr>
-            <tr><td>1981</td><td>Stortinget gir opp samnorskpolitikken</td></tr>
+            <tr><td>1981, 2002</td><td>Samnorsk blir oppgitt, i praksis (1981) og formelt (2002)</td></tr>
             <tr><td>2005 og 2012</td><td>Ny rettskriving for bokmål og for nynorsk</td></tr>
             <tr><td>2022</td><td>Ny språklov: bokmål og nynorsk er likeverdige</td></tr>
           </tbody>
@@ -421,7 +421,7 @@ Larar.register("historie-skriving", {
       ],
       correct: 2,
       explain: "Begge ville ha eit norsk skriftspråk, men dei gjekk motsett veg: Aasen frå dialektane, Knudsen frå dansk skrift.",
-      notes: "Det fjerde alternativet er ein tidsfeil: foreldreaksjonen kom på slutten av 1940-talet, lenge etter at begge var døde. Bruk det til å minne om at fakta i ein tekst må stemme med tida.",
+      notes: "Det fjerde alternativet er ein tidsfeil: foreldreaksjonen kom i 1951, lenge etter at begge var døde. Bruk det til å minne om at fakta i ein tekst må stemme med tida.",
     },
     {
       type: "diskuter",
@@ -732,7 +732,7 @@ Larar.register("historie-repetisjon", {
         "Å gjere dansk til hovudspråk igjen",
       ],
       correct: 0,
-      explain: "Rettskrivingsreformene i 1907, 1917 og 1938 endra begge språka i denne retninga. Politikken vart aldri gjennomført fullt ut.",
+      explain: "Rettskrivingsreformene i 1917 og 1938 endra begge språka i denne retninga. Politikken vart aldri gjennomført fullt ut.",
       notes: "Understrek at samnorsk var ein politikk, ikkje eit ferdig språk.",
     },
     {
@@ -746,7 +746,7 @@ Larar.register("historie-repetisjon", {
         "Dei tok bøkene med til Stortinget.",
       ],
       correct: 2,
-      explain: "Foreldra sletta samnorske former med blekk og skreiv inn eldre former. Aksjonen vart starta på slutten av 1940-talet, og striden var hard på 1950-talet.",
+      explain: "Foreldra sletta samnorske former med blekk og skreiv inn eldre former. Aksjonen vart skipa i 1951, og striden var hard på 1950-talet.",
       notes: "Knyt til eleven sin kvardag: kva ville foreldra dykkar gjort om skulen endra skrivemåten av ord dei var vande med? Språk handlar om identitet.",
     },
     {
@@ -755,7 +755,7 @@ Larar.register("historie-repetisjon", {
       question: "Kva skjedde i 1929?",
       options: [
         "Landsmål fekk namnet nynorsk.",
-        "Samnorskpolitikken vart gitt opp.",
+        "Samnorsklinja vart oppgitt.",
         "Jamstillingsvedtaket vart gjort.",
         "Aasen gav ut ordboka.",
       ],
@@ -769,13 +769,13 @@ Larar.register("historie-repetisjon", {
       question: "Kva skjedde i 1981?",
       options: [
         "Ny språklov",
-        "Stortinget gav opp samnorskpolitikken",
+        "Samnorsklinja vart i praksis oppgitt",
         "Nynorsk fekk ny rettskriving",
         "Alle elevar fekk sidemål",
       ],
       correct: 1,
-      explain: "Frå 1981 skulle bokmål og nynorsk få utvikle seg kvar for seg. Seinare kom nye rettskrivingar: 2005 for bokmål og 2012 for nynorsk.",
-      notes: "Dei andre alternativa er rette hendingar med feil årstal: språklova kom i 2022, nynorskrettskrivinga i 2012, og sidemål for alle i 1907. Spør laga om dei kan plassere dei rett.",
+      explain: "I 1981 fekk bokmål ei rettskriving som opna for tradisjonelle former, og bokmål og nynorsk fekk utvikle seg kvar for seg. Formelt vart samnorsk oppgitt i 2002, då Stortinget oppheva tilnærmingsparagrafen.",
+      notes: "Dei andre alternativa er rette hendingar med feil årstal: språklova kom i 2022, nynorskrettskrivinga i 2012, og sidemål for alle i ungdomsskulen i 1974. Spør laga om dei kan plassere dei rett.",
     },
     {
       type: "sporsmal",
@@ -830,7 +830,7 @@ Larar.register("historie-repetisjon", {
           <li>B. Jamstillingsvedtaket</li>
           <li>C. Ny språklov</li>
           <li>D. Grammatikken til Aasen</li>
-          <li>E. Samnorskpolitikken blir oppgitt</li>
+          <li>E. Samnorsklinja blir i praksis oppgitt</li>
         </ul>`,
       form: "I laga, skriv svaret ned",
       tid: 3,
@@ -844,7 +844,7 @@ Larar.register("historie-repetisjon", {
       body: `<ol>
           <li>Kva år kom ordboka til Aasen?</li>
           <li>Kva år kom <em class="nn">Prøver af Landsmaalet i Norge</em>?</li>
-          <li>Sidan kva år har alle elevar lært båe skriftspråka?</li>
+          <li>Kva år vart sidemål kravd til eksamen på gymnaset?</li>
           <li>Kva år vart staten pålagd å bruke begge skriftspråka?</li>
           <li>Kva år fekk nynorsk rettskrivinga som gjeld i dag?</li>
         </ol>`,

@@ -29,7 +29,7 @@ Larar.register("skriving-omsetjing", {
         "<p class=\"stor\">2. <strong>Verb og bøying</strong>: presens, preteritum, perfektum</p>",
         "<p class=\"stor\">3. <strong>Substantiv og samsvar</strong>: <em class=\"nn\">jenta, boka, husa</em></p>",
       ],
-      notes: "Dette er metoden i dag. Rekkjefølgja er med vilje: småorda er flest og lettast å rette, så dei tek vi først. Verba er det nest vanlegaste feilområdet. Substantiv og adjektiv krev mest tankearbeid, derfor kjem dei til slutt. Be elevane skrive dei tre stega i margen på arket når dei skriv.",
+      notes: "Dette er metoden i dag. Rekkjefølgja er med vilje: småorda er flest og lettast å rette, så dei tek vi først. Verba er det nest vanlegaste feilområdet. Substantiv og adjektiv krev mest tankearbeid, difor kjem dei til slutt. Be elevane skrive dei tre stega i margen på arket når dei skriv.",
     },
     {
       title: "Steg 1: småorda",
@@ -127,8 +127,8 @@ Larar.register("skriving-omsetjing", {
         "<em class=\"nn\">Boka ligg på bordet i kjøkenet.</em>",
       ],
       correct: 2,
-      explain: "<em class=\"nn\">bok</em> er hokjønn, så det blir <em class=\"nn\">boka</em>. <em class=\"nn\">ligge</em> er sterkt og får inga ending: <em class=\"nn\">ligg</em>. Og <em class=\"nn\">kjøken</em> har éin k på nynorsk.",
-      notes: "Her er alle tre stega i éi setning. <em>kjøken</em> med éin k overraskar mange. Bruk det som døme på at det er lurt å slå opp når eit ord ser nesten likt ut.",
+      explain: "<em class=\"nn\">bok</em> er hokjønn, så det blir <em class=\"nn\">boka</em>. <em class=\"nn\">ligge</em> er sterkt og får inga ending: <em class=\"nn\">ligg</em>. Både <em class=\"nn\">kjøken</em> og <em class=\"nn\">kjøkken</em> er rette på nynorsk.",
+      notes: "Her er alle tre stega i éi setning. At <em>kjøken</em> med éin k òg er rett, overraskar mange. Bruk det som døme på at det er lurt å slå opp når eit ord ser nesten likt ut.",
     },
     {
       type: "sitat",
@@ -223,7 +223,7 @@ Larar.register("skriving-omsetjing", {
     forkunnskapar: "Elevane bør kjenne ordklassane og ha møtt skilnaden på sterke og svake verb. Modulane Verb: sterke og svake og Substantiv: kjønn og bøying er gode å ha gjort før.",
     forebuing: [
       "Test presentasjonen på tavla, særleg tavleøvinga på lysbilete 8.",
-      "Ha ordbokene.no open i ein fane, så du kan vise eit oppslag live.",
+      "Ha ordbokene.no open i ei fane, så du kan vise eit oppslag live.",
       "Skriv ut bokmålsteksten på lysbilete 13 om du vil at elevane skal notere på papir.",
     ],
     okt: [
@@ -248,7 +248,7 @@ Larar.register("skriving-omsetjing", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane ei huskelapp med dei tre stega og dei tolv vanlegaste småorda.",
+        "Gi elevane ein hugselapp med dei tre stega og dei tolv vanlegaste småorda.",
         "La elevane setje om éi setning om gongen og få ho godkjend før dei går vidare.",
         "La elevane understreke småord med éin farge og verb med ein annan før dei set om.",
       ],
@@ -483,7 +483,7 @@ Larar.register("skriving-korte-tekstar", {
       { feil: "«Ei melding treng ikkje vere på nynorsk, for det er berre ei melding.»", hjelp: "I oppgåva er poenget å øve nynorsk i ein kvardagssjanger. Meldinga får vere uformell i tonen, men orda skal vere nynorske: <em class=\"nn\">eg, kjem, heim</em>." },
       { feil: "«Høfleg betyr lang og stiv.»", hjelp: "Vis e-posten på lysbilete 7: han er tre linjer og likevel høfleg. Å vere høfleg handlar om opning, tydeleg ærend og helsing, ikkje om lengd." },
       { feil: "«Eg kan skrive både vart og blei i same tekst, for begge er rette.»", hjelp: "Begge formene er rette, men ein tekst skal vere konsekvent. Vel éi form og hald deg til henne." },
-      { feil: "«Dagboka skal stå i presens fordi det er i dag.»", hjelp: "Eit dagboknotat fortel om noko som alt har skjedd, derfor står det mest i preteritum: <em class=\"nn\">i dag var, eg gjekk, vi åt</em>." },
+      { feil: "«Dagboka skal stå i presens fordi det er i dag.»", hjelp: "Eit dagboknotat fortel om noko som alt har skjedd, difor står det mest i preteritum: <em class=\"nn\">i dag var, eg gjekk, vi åt</em>." },
     ],
     samtale: [
       "Kva gjer at vi høyrer kven mottakaren er, sjølv om vi ikkje ser namnet?",
@@ -673,7 +673,7 @@ Larar.register("skriving-lengre-tekstar", {
       question: "Kva appellform er dette? <em class=\"nn\">«Eg har vore trenar for yngre lag i to år, så eg veit kva som skal til.»</em>",
       options: ["Logos", "Etos", "Patos"],
       correct: 1,
-      explain: "Skribenten viser til eigen erfaring for å verke truverdig. Det er etos.",
+      explain: "Skribenten viser til eiga erfaring for å verke truverdig. Det er etos.",
       notes: "Følg opp med å be elevane lage ei patos-setning om same tema. Kva kjensle vil dei vekkje?",
     },
     {
@@ -794,7 +794,7 @@ Larar.register("skriving-lengre-tekstar", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane ein skriveramme med dei fem stega eller dei fire delane, og éi startsetning til kvar del.",
+        "Gi elevane ei skriveramme med dei fem stega eller dei fire delane, og éi startsetning til kvar del.",
         "La elevane lage tankekart før dei skriv, og få det godkjent av læraren.",
         "Senk kravet til lengd og legg vekt på struktur og korrekt nynorsk.",
       ],

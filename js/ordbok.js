@@ -12,7 +12,7 @@
    Oppslaget er det einaste i heile kurset som snakkar med ein annan tenar. Det
    skjer først når eleven har bedt om ein språksjekk, og det er berre sjølve
    ordet som blir sendt. Slår det feil, til dømes utan nett, viser vi lenkjene
-   og ikkje noko feilmelding. */
+   og inga feilmelding. */
 
 const Ordbok = (() => {
   const API = "https://ord.uib.no";
@@ -99,7 +99,7 @@ const Ordbok = (() => {
   }
 
   // Returnerer { word, lemma, tyding, ordklasse, url } eller null om ordet ikkje
-  // finst. Feilar oppslaget, blir det null, og den som kallar viser berre ordet.
+  // finst. Feilar oppslaget, blir det null, og den som kallar, viser berre ordet.
   // dict er "nn" (standard) eller "bm".
   function lookup(word, dict) {
     const ordbok = dict === "bm" ? "bm" : "nn";

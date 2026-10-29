@@ -71,7 +71,7 @@ Larar.register("ordbok-verktoya", {
         `<p class="stor">Står forma der, er ho <strong>lov</strong></p>`,
         `<p class="stor">Nynorskordboka: rundt <strong>90 000</strong> oppslagsord</p>`,
       ],
-      notes: "Bokmålsordboka har rundt 65 000 oppslagsord, så her finn ein langt fleire ord enn i Lexin. Ein får bøying, uttale, ordhistorie, faste uttrykk og døme. Ordbøkene blir drivne av Språkrådet og Universitetet i Bergen, og finst òg som app på telefonen. Det viktigaste å hugse: det er denne ordboka som avgjer kva som er rett.",
+      notes: "Bokmålsordboka har rundt 85 000 oppslagsord, så her finn ein langt fleire ord enn i Lexin. Ein får bøying, uttale, ordhistorie, faste uttrykk og døme. Ordbøkene blir drivne av Språkrådet og Universitetet i Bergen, og finst òg som app på telefonen. Det viktigaste å hugse: det er denne ordboka som avgjer kva som er rett.",
     },
     {
       kicker: "Demonstrasjon",
@@ -340,7 +340,7 @@ Larar.register("ordbok-grunnform", {
       prompt: `<p class="stor"><em class="nn">skreiv · høgaste · hendene · sov · auga</em></p>`,
       form: "Skriv på ark, to og to",
       tid: 3,
-      svar: "<em class=\"nn\">skrive, høg, hand, sove, auge</em>. <em class=\"nn\">Hendene</em>, <em class=\"nn\">skreiv</em> og <em class=\"nn\">sov</em> byter vokal, så der må du kjenne ordet.",
+      svar: "<em class=\"nn\">skrive, høg, hand, sove, auge</em>. <em class=\"nn\">Hendene</em> og <em class=\"nn\">skreiv</em> byter vokal, så der må du kjenne ordet.",
       notes: "Be para merke av dei orda der det ikkje held å stryke ei ending. Det er poenget med øvinga: nokre ord må ein kjenne. <em>Auga</em> er bestemt form eintal av <em>auge</em>, som er inkjekjønn.",
     },
     {
@@ -490,7 +490,7 @@ Larar.register("ordbok-grunnform", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane tabellen med dei tre ordklassane og grunnforma som huskelapp.",
+        "Gi elevane tabellen med dei tre ordklassane og grunnforma som hugselapp.",
         "Start med substantiv og svake verb før de tek sterke verb.",
         "La elevane bruke søket på nett til å sjekke svara sine.",
       ],
@@ -536,7 +536,7 @@ Larar.register("ordbok-artikkel", {
         `<p><span class="merk" data-n="2"></span> <strong>Ordklasse og kjønn</strong> · <span class="merk" data-n="3"></span> <strong>Bøyinga</strong></p>`,
         `<p><span class="merk" data-n="4"></span> <strong>Tydingane</strong> · <span class="merk" data-n="5"></span> <strong>Døma</strong> i kursiv</p>`,
       ],
-      notes: "Artikkelen er litt forenkla samanlikna med Nynorskordboka. Peik på dei nummererte merka i figuren mens du viser stega. Spør klassen for kvart nummer: kva fortel dette deg?",
+      notes: "Artikkelen er litt forenkla samanlikna med Nynorskordboka. Peik på dei nummererte merka i figuren medan du viser stega. Spør klassen for kvart nummer: kva fortel dette deg?",
     },
     {
       title: "Forkortingane",
@@ -737,7 +737,7 @@ Larar.register("ordbok-artikkel", {
     tilpassing: {
       stotte: [
         "Gi elevane ein kopi av figuren med dei fem nummera forklarte.",
-        "Gi elevane rekkjefølgja i bøyinga for substantiv og verb på ein huskelapp.",
+        "Gi elevane rekkjefølgja i bøyinga for substantiv og verb på ein hugselapp.",
         "La elevane arbeide med éin artikkel om gongen og markere dei fem delane med fargar.",
       ],
       utfordring: [
@@ -784,7 +784,7 @@ Larar.register("ordbok-i-skriving", {
         `<p class="stor">3. Ordet <strong>luktar bokmål</strong>.</p>`,
         `<p class="stor">4. Du har brukt <strong>same ord</strong> fem gonger.</p>`,
       ],
-      notes: "Ein kan ikkje slå opp kvart ord. Desse fire situasjonane er verdt tida. Under bøyinga er det særleg fleirtal av hankjønnsord (-ar og -ane) og preteritum av sterke verb som er vanskeleg. Under nummer 4 kan ein leite etter eit ord som tyder omtrent det same.",
+      notes: "Ein kan ikkje slå opp kvart ord. Desse fire situasjonane er verdt tida. Under bøyinga er det særleg fleirtal av hankjønnsord (-ar og -ane) og preteritum av sterke verb som er vanskelege. Under nummer 4 kan ein leite etter eit ord som tyder omtrent det same.",
     },
     {
       title: "Kjønnet smittar",
@@ -823,27 +823,27 @@ Larar.register("ordbok-i-skriving", {
     },
     {
       kicker: "Demonstrasjon",
-      title: "Kva heiter <em class=\"bm\">anledning</em> på nynorsk?",
+      title: "Kva heiter <em class=\"bm\">mulighet</em> på nynorsk?",
       steps: [
-        `<p class="stor">1. Søk <em class="bm">anledning</em> i Nynorskordboka</p>`,
+        `<p class="stor">1. Søk <em class="bm">mulighet</em> i Nynorskordboka: ingen treff</p>`,
         `<p class="stor">2. Les forklaringa i Bokmålsordboka</p>`,
-        `<p class="stor">3. Søk <em class="nn">høve</em> i Nynorskordboka</p>`,
+        `<p class="stor">3. Søk <em class="nn">sjanse</em> i Nynorskordboka</p>`,
         `<p class="stor">4. Les eitt døme</p>`,
       ],
-      notes: "Gjer dette live på ordbokene.no. I Bokmålsordboka blir <em>anledning</em> forklart som «høve, sjanse» i Bokmålsordboka. Be klassen sjå etter kva ord forklaringa gir, og søk så vidare på <em>høve</em>. Les eit døme høgt, så klassen ser at ordet passar i same samanheng. Vis gjerne til slutt at du kan søkje i begge ordbøkene samtidig. Test oppslaget på førehand.",
+      notes: "Gjer dette live på ordbokene.no. <em>Mulighet</em> gir ingen treff i Nynorskordboka. I Bokmålsordboka blir ordet mellom anna forklart med «sjanse» og «utsikt». Be klassen sjå etter kva ord forklaringa gir, og søk så vidare på <em>sjanse</em>. Vis gjerne at Nynorskordboka òg har <em>moglegheit</em>. Les eit døme høgt, så klassen ser at ordet passar i same samanheng. Vis gjerne til slutt at du kan søkje i begge ordbøkene samtidig. Test oppslaget på førehand.",
     },
     {
       type: "sporsmal",
-      question: "Du har skrive <em class=\"bm\">forskjellen</em> og finn ikkje ordet i Nynorskordboka. Kva gjer du?",
+      question: "Du har skrive <em class=\"bm\">muligheten</em> og finn ikkje ordet i Nynorskordboka. Kva gjer du?",
       options: [
         "Bruker ordet likevel, det høyrest greitt ut",
-        "Les forklaringa i Bokmålsordboka og finn t.d. <em class=\"nn\">skilnaden</em>",
+        "Les forklaringa i Bokmålsordboka og finn t.d. <em class=\"nn\">sjansen</em>",
         "Stryk heile setninga",
         "Byter til eit engelsk ord",
       ],
       correct: 1,
-      explain: "<em class=\"bm\">Forskjell</em> blir forklart som «ulikskap, skilnad», og <em class=\"nn\">skilnad</em> står i Nynorskordboka.",
-      notes: "Om du har tid, gjer oppslaget live etter at svaret er vist: <em>forskjell</em> i Bokmålsordboka, så <em>skilnad</em> i Nynorskordboka.",
+      explain: "<em class=\"bm\">Mulighet</em> blir mellom anna forklart med «sjanse» og «utsikt», og <em class=\"nn\">sjanse</em> står i Nynorskordboka. Der finn du òg <em class=\"nn\">moglegheit</em>.",
+      notes: "Om du har tid, gjer oppslaget live etter at svaret er vist: <em>mulighet</em> i Bokmålsordboka, så <em>sjanse</em> og <em>moglegheit</em> i Nynorskordboka.",
     },
     {
       title: "Felle: ordet finst, men passar det?",
@@ -872,8 +872,8 @@ Larar.register("ordbok-i-skriving", {
       prompt: `<p class="stor"><em class="bm">Forskjellen mellom de to bøkene er ikke stor, men jeg likte den første best.</em></p>`,
       form: "To og to, med ordboka open",
       tid: 4,
-      svar: "<em class=\"nn\">Skilnaden mellom dei to bøkene er ikkje stor, men eg likte den første best.</em> <em class=\"nn\">Fyrste</em> er òg lov.",
-      notes: "Be para bruke ordbokene.no på dei orda dei er usikre på. Spør etterpå kva ord dei slo opp. Sannsynlegvis <em>forskjell</em>. Nokre slår kanskje opp <em>første</em> og ser at <em>fyrste</em> òg er lov.",
+      svar: "<em class=\"nn\">Skilnaden mellom dei to bøkene er ikkje stor, men eg likte den første best.</em> <em class=\"nn\">Fyrste</em> og <em class=\"nn\">lika</em> er òg lov, og <em class=\"nn\">forskjellen</em> står i Nynorskordboka, men <em class=\"nn\">skilnaden</em> er det typiske nynorskordet.",
+      notes: "Be para bruke ordbokene.no på dei orda dei er usikre på. Spør etterpå kva ord dei slo opp. Sannsynlegvis <em>forskjell</em>: ordet finst i Nynorskordboka, men forklaringa viser til <em>skilnad</em>. Nokre slår kanskje opp <em>første</em> og ser at <em>fyrste</em> òg er lov.",
     },
     {
       type: "oppgave",
@@ -922,14 +922,14 @@ Larar.register("ordbok-i-skriving", {
     lareplan: [10, 11],
     forkunnskapar: "Elevane bør ha gått gjennom dei tre første ordbokmodulane: Tre ordbøker, tre styrkar, Finn oppslagsordet og Les ein ordbokartikkel.",
     forebuing: [
-      "Test oppslaga på ordbokene.no før timen: <em class=\"bm\">anledning</em>, <em class=\"nn\">høve</em>, <em class=\"bm\">forskjell</em> og <em class=\"nn\">skilnad</em>.",
+      "Test oppslaga på ordbokene.no før timen: <em class=\"bm\">mulighet</em>, <em class=\"nn\">sjanse</em>, <em class=\"nn\">moglegheit</em>, <em class=\"bm\">forskjell</em> og <em class=\"nn\">skilnad</em>.",
       "Ha ordbokene.no og Lexin opne i kvar si fane på tavla.",
       "Sjå til at elevane har tilgang til ordbokene.no på mobil eller PC på lysbilete 12 og 13, eller ha papirordbøker klare. Elevane skriv i skriveboka.",
     ],
     okt: [
       { fase: "Oppstart", min: 3, gjer: "<p>Gå gjennom måla og la elevane ta stilling til påstanden om å skrive som det høyrest ut.</p>", lysbilete: "2 og 3" },
       { fase: "Når slår vi opp?", min: 5, gjer: "<p>Gå gjennom dei fire situasjonane, kjønn som smittar, og spørsmålet om null treff.</p>", lysbilete: "4 til 6" },
-      { fase: "Frå bokmål til nynorsk", min: 8, gjer: "<p>Vis vegvisaren og demonstrer <em class=\"bm\">anledning</em> live. Ta spørsmålet om <em class=\"bm\">forskjellen</em> og snakk om fella.</p>", lysbilete: "7 til 10" },
+      { fase: "Frå bokmål til nynorsk", min: 8, gjer: "<p>Vis vegvisaren og demonstrer <em class=\"bm\">mulighet</em> live. Ta spørsmålet om <em class=\"bm\">muligheten</em> og snakk om fella.</p>", lysbilete: "7 til 10" },
       { fase: "Øving i klassen", min: 8, gjer: "<p>Vel rett plass i bøyingsrekkja, og set om ei setning med ordboka open.</p>", lysbilete: "11 og 12" },
       { fase: "Eigenarbeid", min: 15, gjer: "<p>Elevane skriv teksten om ein stad og slår opp minst fem ord. Dei som blir ferdige, byter skrivebok med sidemannen og finn eitt ord som burde vore slått opp.</p>", lysbilete: "13" },
       { fase: "Avslutning", min: 6, gjer: "<p>Gå tilbake til påstanden frå oppstarten og oppsummer.</p>", lysbilete: "14 og 15" },
@@ -948,7 +948,7 @@ Larar.register("ordbok-i-skriving", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane vegvisaren som huskelapp mens dei skriv.",
+        "Gi elevane vegvisaren som hugselapp medan dei skriv.",
         "La elevane skrive ein kortare tekst og slå opp tre ord i staden for fem.",
         "Bruk Lexin og byt mellom bokmål og nynorsk for korte, vanlege ord.",
       ],

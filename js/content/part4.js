@@ -40,8 +40,8 @@ Modules.register({
             <tr><td>øye</td><td>auge</td></tr>
             <tr><td>språk</td><td>språk (likt) / mål</td></tr>
             <tr><td>familie</td><td>familie (likt) / slekt</td></tr>
-            <tr><td>skole</td><td>skule</td></tr>
-            <tr><td>nå</td><td>no</td></tr>
+            <tr><td>skole</td><td>skule (skole er òg rett)</td></tr>
+            <tr><td>nå</td><td>no (nå er òg rett)</td></tr>
           </tbody>
         </table>
 
@@ -58,6 +58,7 @@ Modules.register({
       source: "Jeg vet ikke hva jeg skal gjøre.",
       accept: [
         "Eg veit ikkje kva eg skal gjere.",
+        "Eg veit ikkje kva eg skal gjera.",
       ],
       hint: "Tenk på «jeg», «ikke», «hva», «gjøre».",
     },
@@ -80,6 +81,7 @@ Modules.register({
       source: "Hun gikk til skolen og så ingen.",
       accept: [
         "Ho gjekk til skulen og såg ingen.",
+        "Ho gjekk til skolen og såg ingen.",
       ],
       hint: "«hun» → «ho»; «gikk» → «gjekk»; «så» (preteritum av å se) → «såg»; «skolen» → «skulen».",
     },
@@ -90,6 +92,9 @@ Modules.register({
       source: "Hvorfor flyttet familien din hit fra Oslo?",
       accept: [
         "Kvifor flytta familien din hit frå Oslo?",
+        "Kvifor flytte familien din hit frå Oslo?",
+        "Korfor flytta familien din hit frå Oslo?",
+        "Korfor flytte familien din hit frå Oslo?",
       ],
       hint: "«hvorfor» → «kvifor»; «flyttet» (a-verb) → «flytta»; «fra» → «frå».",
     },
@@ -100,18 +105,19 @@ Modules.register({
       source: "Boken ligger på bordet i kjøkkenet.",
       accept: [
         "Boka ligg på bordet i kjøkenet.",
-        "Boka ligg på bordet i kjøkken.",
+        "Boka ligg på bordet i kjøkkenet.",
         "Boka ligg på bordet på kjøkenet.",
+        "Boka ligg på bordet på kjøkkenet.",
       ],
-      hint: "«boken» → «boka» (hokjønn); «ligger» → «ligg»; «kjøkkenet» → «kjøkenet».",
-      explanation: "På nynorsk skriv vi <em class=\"nn\">kjøken</em> med éin k. Hovudform i bestemt form er <em class=\"nn\">kjøkenet</em>.",
+      hint: "«boken» → «boka» (hokjønn); «ligger» → «ligg»; «kjøkkenet» kan stå som det er, eller bli «kjøkenet».",
+      explanation: "På nynorsk kan du skrive både <em class=\"nn\">kjøken</em> og <em class=\"nn\">kjøkken</em>. I bestemt form blir det <em class=\"nn\">kjøkenet</em> eller <em class=\"nn\">kjøkkenet</em>.",
     },
     {
       type: "exercise",
       exerciseType: "fillIn",
       question: "Byt ut orda i hermeteikn. Skriv berre det nye ordet:",
       items: [
-        { prompt: "«hvor» bur du? → ___", accept: ["kvar", "Kvar"] },
+        { prompt: "«hvor» bur du? → ___", accept: ["kvar", "Kvar", "kor", "Kor"] },
         { prompt: "Eg «vet» det. → ___", accept: ["veit"] },
         { prompt: "Han kom «fra» Bergen. → ___", accept: ["frå"] },
         { prompt: "Vi «spiste» middag. → ___", accept: ["åt"] },
@@ -293,7 +299,7 @@ Modules.register({
         <ul>
           <li><strong>Logos:</strong> fakta og fornuft.</li>
           <li><strong>Etos:</strong> truverd, kjelder.</li>
-          <li><strong>Patos:</strong> kjensler, eksempel som rørar.</li>
+          <li><strong>Patos:</strong> kjensler, eksempel som rører.</li>
         </ul>
 
         <div class="callout">
@@ -337,7 +343,7 @@ Modules.register({
         "Tydeleg anslag: fang lesaren med éin gong.",
         "Skildre kvar og når det skjer.",
         "Bygg opp spenning før klimaks.",
-        "Bruk minst éin replikk (med tankestrek).",
+        "Bruk minst éin replikk (med hermeteikn).",
         "Variasjon i setningslengd.",
         "Skriv konsekvent på nynorsk.",
       ],

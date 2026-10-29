@@ -425,7 +425,7 @@ Modules.register({
         <p>Sommaren 1846 gjekk reisa først vestover til Nordmøre og Orkdalen, så ut til
         Fosen, og i september med båt nordover kysten til Helgeland. På Kulstad i Vefsn
         og Søvik i Alstahaug var han i om lag ein månad.</p>
-        <p>Dette var det lengste nord han kom på langferda. Nordanfor Helgeland kom han
+        <p>Lenger nord enn dette kom han ikkje på langferda. Nordanfor Helgeland kom han
         først i 1851.</p>`,
     },
     {
@@ -449,7 +449,7 @@ Modules.register({
       items: [
         { prompt: "På fire år reiste Aasen om lag ___ kilometer.", accept: ["4550", "4 550"] },
         { prompt: "Langferda enda i ___ 5. desember 1846.", accept: ["Trondheim"] },
-        { prompt: "Det lengste nord han kom på langferda, var ___ i Nordland.", accept: ["Helgeland"] },
+        { prompt: "Lengst nord på langferda kom han til ___ i Nordland.", accept: ["Helgeland"] },
       ],
       explanation: "4550 kilometer, tilbake til Trondheim like før jul 1846, og Helgeland var nordgrensa for langferda.",
     },
@@ -490,8 +490,9 @@ Modules.register({
         reisenotata om til grammatikk og ordbok.</p>
         <p>Frå august 1850 til september 1851 budde han heime i Ørsta. I 1851 vedtok
         Stortinget å gi han eit årleg stipend på 300 spesidalar, og han vart den første
-        statsstipendiaten i landet. Same året gav han det nye språket namnet
-        landsmål.</p>
+        statsstipendiaten i landet. Same året skreiv han ordet «landsmaal» i
+        dagboka si, så langt vi veit for første gong. Offentleg kom namnet to år
+        seinare, i tittelen på «Prøver af Landsmaalet i Norge».</p>
         <div class="callout">
           <strong>300 spesidalar</strong> var det same som ein universitetsstipendiat fekk,
           og tolv årsløner for ein dreng. Rekna etter prisane er det om lag 130 000
@@ -504,10 +505,10 @@ Modules.register({
       pairs: [
         ["1848", "Det norske Folkesprogs Grammatik"],
         ["1850", "Ordbog over det norske Folkesprog"],
-        ["1851", "Stipend frå Stortinget, og namnet landsmål"],
+        ["1851", "Stipend frå Stortinget"],
         ["1853", "Prøver af Landsmaalet i Norge"],
       ],
-      explanation: "Grammatikken kom i 1848, ordboka i 1850, statsstipendet og namnet landsmål i 1851, og dømetekstane i 1853.",
+      explanation: "Grammatikken kom i 1848, ordboka i 1850, statsstipendet i 1851, og dømetekstane i 1853. Med dømetekstane vart namnet landsmål kjent.",
     },
     {
       id: "kap-tromso", type: "lesson", title: "Lofoten og Tromsø",
@@ -537,7 +538,7 @@ Modules.register({
         <p>I 1853 viste Aasen i «Prøver af Landsmaalet i Norge» korleis det nye språket
         kunne sjå ut. Så kom «Norsk Grammatik» i 1864 og «Norsk Ordbog» i 1873, med om
         lag 45 000 oppslagsord. I 1885 vedtok Stortinget at landsmålet skulle vere
-        jamstilt med det danske skriftspråket.</p>
+        jamstilt med det dansk-norske skriftspråket.</p>
         <p>Statsstipendet voks med åra. Frå 1884 fekk han 3500 kroner i året, som
         svarar til over 300 000 kroner i dag rekna etter prisane, og fleire gonger det
         ein vanleg arbeidar tente. Aasen brukte lite på seg sjølv.</p>

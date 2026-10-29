@@ -311,7 +311,7 @@ Larar.register("lesing-hm-vesaas", {
         <p>Kva høyrer du? Kva luktar det? Kven er vaken først?</p>`,
       form: "Tenk sjølv, så sidemannen",
       tid: 2,
-      notes: "La elevane tenke i stillheit i eit halvt minutt først. Ingen treng å dele noko privat: det held å nemne ein lyd eller ei lukt. Samle nokre på tavla. Poenget er at sansane er det som gjer ein morgon til din morgon.",
+      notes: "La elevane tenkje i stillheit i eit halvt minutt først. Ingen treng å dele noko privat: det held å nemne ein lyd eller ei lukt. Samle nokre på tavla. Poenget er at sansane er det som gjer ein morgon til din morgon.",
     },
     {
       title: "Ord i teksten",
@@ -323,7 +323,7 @@ Larar.register("lesing-hm-vesaas", {
             <tr><td><em class="nn">vert</em></td><td>blir</td></tr>
           </tbody>
         </table>`,
-      notes: "<em>vert</em> og <em>blir</em> er begge rett på nynorsk. Teksten bruker <em>vert</em> i den siste setninga, noko som gir ein litt høgtidleg klang. Det er eit lite stilval elevane kan leggje merke til.",
+      notes: "<em>vert</em> og <em>blir</em> er begge rette på nynorsk. Teksten bruker <em>vert</em> i den siste setninga, noko som gir ein litt høgtidleg klang. Det er eit lite stilval elevane kan leggje merke til.",
     },
     {
       type: "bilete",
@@ -540,7 +540,7 @@ Larar.register("lesing-hm-vesaas", {
 /* ------------------------------------------------------------------ */
 
 Larar.register("lesing-fosse", {
-  tittelnotat: "«Frå hytta» er skriven for kurset i stilen til Jon Fosse, ikkje av Fosse. Teksten er lengre og meir krevjande enn dei førre: lange setningar, mykje gjentaking og nesten inga handling. Førebu elevane på at det er meint slik, og at nokre kjem til å synest han er keisam første gong. Det er ein god stad å starte samtalen.",
+  tittelnotat: "«Frå hytta» er skriven for kurset i stilen til Jon Fosse, ikkje av Fosse. Teksten er lengre og meir krevjande enn dei førre: lange setningar, mykje gjentaking og nesten inga handling. Førebu elevane på at det er meint slik, og at nokre kjem til å synast han er keisam første gong. Det er ein god stad å starte samtalen.",
   slides: [
     {
       title: "I dag skal vi",
@@ -854,7 +854,7 @@ Larar.register("lesing-grytten", {
         <ul>
           <li>frå Odda i Hardanger</li>
           <li>forfattar og journalist</li>
-          <li>små augneblink: ein bussreise, eit møte, ein middag</li>
+          <li>små augneblinkar: ei bussreise, eit møte, ein middag</li>
           <li><em class="nn">Bikubesong</em> (1999)</li>
         </ul>`,
       notes: "Grytten voks opp i industribygda Odda, og industriarbeidarane og bygdesamfunnet pregar mykje av forfattarskapen. Bikubesong er bygd opp som mange korte forteljingar om naboar i ei blokk i Odda, og fekk Brageprisen. Han skriv òg kommentarar i avisene.",
@@ -1018,7 +1018,7 @@ Larar.register("lesing-grytten", {
         <p>Kvifor trur de forfattaren aldri fortel det?</p>`,
       form: "I grupper på tre",
       tid: 5,
-      svar: "Det finst ikkje éitt rett svar. Gode forslag byggjer på spora: Sander, dei to avvisingane, at mor òg har grine, og at Marius seier «Du må ikkje vere åleine om det er noko». Når forfattaren ikkje fortel, må lesaren gjere jobben, og teksten blir meir levande.",
+      svar: "Det finst ikkje eitt rett svar. Gode forslag byggjer på spora: Sander, dei to avvisingane, at mor òg har grine, og at Marius seier «Du må ikkje vere åleine om det er noko». Når forfattaren ikkje fortel, må lesaren gjere jobben, og teksten blir meir levande.",
       notes: "Krev spor. Eit forslag utan spor er gjetting, eit forslag med spor er tolking. Merk deg om nokon gruppe meiner at det ikkje spelar noka rolle kva som har skjedd: det er eit modent svar, for teksten handlar om korleis Lina taklar det og om kven som stiller opp.",
     },
     {
@@ -1096,7 +1096,7 @@ Larar.register("lesing-grytten", {
     ],
     tilpassing: {
       stotte: [
-        "Gi eleven ei ferdig tabell med to kolonnar, Kva veit vi? og Kva veit vi ikkje?, med eitt døme i kvar.",
+        "Gi eleven ein ferdig tabell med to kolonnar, Kva veit vi? og Kva veit vi ikkje?, med eitt døme i kvar.",
         "Les dialogane saman i klassen med to elevar som tek rollene.",
         "La eleven svare på dei to første spørsmåla, som har eitt rett svar, før dei to tolkingsspørsmåla.",
       ],
@@ -1289,7 +1289,7 @@ Larar.register("lesing-eikemo", {
         <p>Grunngi med eit døme frå din eigen kvardag.</p>`,
       form: "Heile klassen",
       tid: 5,
-      notes: "Ein sakleg samtale der elevane skal grunngi. Unngå at det blir ein moralpreik om skjermbruk: det gjer ikkje teksten heller. Løft fram elevar som ser fordelar med rask lesing. Knyt det til at forfattaren sjølv held tvilen open, og at elevane kan gjere det same i essayet sitt.",
+      notes: "Ein sakleg samtale der elevane skal grunngi. Unngå at det blir eit moralpreik om skjermbruk: det gjer ikkje teksten heller. Løft fram elevar som ser fordelar med rask lesing. Knyt det til at forfattaren sjølv held tvilen open, og at elevane kan gjere det same i essayet sitt.",
     },
     {
       type: "oppgave",
@@ -1420,7 +1420,7 @@ Larar.register("lesing-nilssen", {
         <p>Kva ville du leggje merke til om du såg på det i dag?</p>`,
       form: "Tenk sjølv",
       tid: 2,
-      notes: "Dette er ein stille tankeøving, ingen treng å dele. Spør etterpå berre: var det noko som hadde endra seg? Nokre vil kanskje seie noko frivillig. Førlesinga gjer at elevane kjenner att situasjonen når dei les.",
+      notes: "Dette er ei stille tankeøving, ingen treng å dele. Spør etterpå berre: var det noko som hadde endra seg? Nokre vil kanskje seie noko frivillig. Førlesinga gjer at elevane kjenner att situasjonen når dei les.",
     },
     {
       title: "Ord og omgrep",
@@ -1493,7 +1493,7 @@ Larar.register("lesing-nilssen", {
 
         <p>Eg trur kanskje vaksne ikkje skjønar at å sjå på eit gamalt bilete kan vere
         arbeid òg. Det er ikkje berre nostalgi. Det er noko ein gjer for å finne ut
-        korleis ein er kome hit. Kor mange val og uhell og avskjeder som skal til for
+        korleis ein er komen hit. Kor mange val og uhell og avskjedar som skal til for
         at den jenta på biletet, ho i den stygge blå hettegenseren, blir til den jenta
         som no sit på senga si og tenkjer.</p>`,
       kjelde: KJELDE_NILSSEN,
@@ -1541,7 +1541,7 @@ Larar.register("lesing-nilssen", {
     },
     {
       type: "sitat",
-      text: "Eg trur kanskje vaksne ikkje skjønar at å sjå på eit gamalt bilete kan vere arbeid òg. Det er ikkje berre nostalgi. Det er noko ein gjer for å finne ut korleis ein er kome hit.",
+      text: "Eg trur kanskje vaksne ikkje skjønar at å sjå på eit gamalt bilete kan vere arbeid òg. Det er ikkje berre nostalgi. Det er noko ein gjer for å finne ut korleis ein er komen hit.",
       kjelde: KJELDE_NILSSEN,
       notes: "Dette er tolkingsnøkkelen, og tema for spørsmål 3 på lysbilete 16. Elevane overser ofte ordet «kanskje»: forteljaren er ikkje skråsikker. Legg òg merke til at teksten sluttar med «den jenta som no sit på senga si og tenkjer», altså i notida, med biletet i fanget.",
     },
@@ -1593,7 +1593,7 @@ Larar.register("lesing-nilssen", {
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Modulen er ei leseøkt med «Klassebilete», ein personleg tekst skriven for kurset i stilen til Olaug Nilssen. Ei femten år gammal jente ser på eit klassebilete frå 7. trinn og tenkjer på kva som har skjedd sidan: venner som har flytta, venskap som har tatt slutt og ein klassekamerat som har døydd. Økta legg vekt på den nøkterne tonen som verkemiddel, og på korleis teksten framstiller det å vere ung og å forstå seg sjølv gjennom minne.</p>",
+    intro: "<p>Modulen er ei leseøkt med «Klassebilete», ein personleg tekst skriven for kurset i stilen til Olaug Nilssen. Ei femten år gammal jente ser på eit klassebilete frå 7. trinn og tenkjer på kva som har skjedd sidan: venner som har flytta, venskap som har teke slutt og ein klassekamerat som har døydd. Økta legg vekt på den nøkterne tonen som verkemiddel, og på korleis teksten framstiller det å vere ung og å forstå seg sjølv gjennom minne.</p>",
     mal: [
       "Elevane kan forklare korleis ein nøktern tone kan gjere noko vondt sterkare.",
       "Elevane kan vise korleis konkrete detaljar erstattar kjensleord i teksten.",
@@ -1608,7 +1608,7 @@ Larar.register("lesing-nilssen", {
       "Kjenn til innhaldet i Få meg på, for faen før du gir Nettbiblioteket-leksa, og ha eit alternativ klart.",
     ],
     okt: [
-      { fase: "Førlesing", min: 5, gjer: "<p>Mål for timen, kort om Nilssen, ein stille tankeøving om klassebilete og omgrepa nøktern og nostalgi.</p>", lysbilete: "2 til 5" },
+      { fase: "Førlesing", min: 5, gjer: "<p>Mål for timen, kort om Nilssen, ei stille tankeøving om klassebilete og omgrepa nøktern og nostalgi.</p>", lysbilete: "2 til 5" },
       { fase: "Lesing", min: 9, gjer: "<p>Gå gjennom kva elevane skal sjå etter. Les høgt frå tavla, og la elevane lese stille ein gong til og skrive ned kva som er kort og langt.</p>", lysbilete: "6 til 8" },
       { fase: "Samtale", min: 15, gjer: "<p>Biletskildringa, setningane om Mikkel, kva det er å vere femten, samtalen med mor og tanken om at bilete kan vere arbeid.</p>", lysbilete: "9 til 15" },
       { fase: "Spørsmål til teksten", min: 6, gjer: "<p>Elevane svarar på dei fire spørsmåla i skriveboka. Vis svaret til slutt.</p>", lysbilete: "16" },

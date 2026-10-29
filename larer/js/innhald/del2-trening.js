@@ -92,9 +92,9 @@ Larar.register("trening-substantiv", {
       steps: [
         "<p class=\"stor\">Bestemt eintal på <strong>-a</strong>: <em class=\"nn\">boka, sola, døra</em></p>",
         "<p class=\"stor\">Omlyd i fleirtal: <em class=\"nn\">bok → bøker, hand → hender, natt → netter</em></p>",
-        "<p class=\"stor\">Nokre får <strong>-ar</strong>: <em class=\"nn\">elv → elvar, øy → øyar</em></p>",
+        "<p class=\"stor\">Nokre kan få <strong>-ar</strong>: <em class=\"nn\">elv → elvar, øy → øyar</em></p>",
       ],
-      notes: "Omlyd betyr at vokalen skifter. Elevane kjenner fenomenet frå engelsk <em>foot, feet</em>. Hokjønnsorda med <em>-ar</em> i fleirtal er få, men dei kjem i øvinga. Minn om at <em class=\"bm\">boken</em> og <em class=\"bm\">solen</em> alltid er feil på nynorsk.",
+      notes: "Omlyd betyr at vokalen skifter. Elevane kjenner fenomenet frå engelsk <em>foot, feet</em>. Hokjønnsorda med <em>-ar</em> i fleirtal er få, men dei kjem i øvinga. Etter rettskrivinga frå 2012 kan dei også få <em>-er</em>: <em>elver, øyer</em>. Minn om at <em class=\"bm\">boken</em> og <em class=\"bm\">solen</em> alltid er feil på nynorsk.",
     },
     {
       type: "drill",
@@ -143,8 +143,8 @@ Larar.register("trening-substantiv", {
         </div>`,
       form: "Åleine",
       tid: 6,
-      svar: "1 bilar, bilane · 2 klokker, klokkene · 3 år, åra · 4 hender, hendene · 5 føter, føtene · 6 brev, breva · 7 øyar, øyane · 8 tenner, tennene · 9 bilete, bileta · 10 bønder, bøndene",
-      notes: "Her kjem alle tre mønstera og nokre uregelrette ord. Når fasiten kjem, spør: kva ord har vokalskifte? (<em>hender, føter, tenner, bønder</em>). Og kva hokjønnsord får <em>-ar</em>? (<em>øyar</em>). Inkjekjønnsorda <em>år, brev, bilete</em> har inga ending i ubestemt fleirtal.",
+      svar: "1 bilar, bilane · 2 klokker, klokkene · 3 år, åra · 4 hender, hendene · 5 føter, føtene · 6 brev, breva · 7 øyar, øyane (eller øyer, øyene) · 8 tenner, tennene · 9 bilete, bileta · 10 bønder, bøndene",
+      notes: "Her kjem alle tre mønstera og nokre uregelrette ord. Når fasiten kjem, spør: kva ord har vokalskifte? (<em>hender, føter, tenner, bønder</em>). Og kva hokjønnsord kan få <em>-ar</em>? (<em>øyar</em>, men <em>øyer</em> er òg rett). Inkjekjønnsorda <em>år, brev, bilete</em> har inga ending i ubestemt fleirtal.",
     },
     {
       type: "oppgave",
@@ -210,7 +210,7 @@ Larar.register("trening-substantiv", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane kjønnskortet frå lysbilete 4 som huskelapp under eigentreninga.",
+        "Gi elevane kjønnskortet frå lysbilete 4 som hugselapp under eigentreninga.",
         "La elevar som skriv seint, gjere berre dei fem første orda i oppgåve 1 og 2.",
         "Bruk fleirvalsrundane (tommel eller fingrar) meir enn dei skriftlege for elevar som skriv seint.",
       ],
@@ -305,7 +305,7 @@ Larar.register("trening-verb", {
       options: ["<em>skriver</em>", "<em>skriv</em>", "<em>skrivar</em>", "<em>skreiv</em>"],
       correct: 1,
       explain: "Sterke verb får inga ending i presens: <em class=\"nn\">skriv, finn, kjem, et</em>. <em class=\"bm\">skriver</em> er bokmål, og <em class=\"nn\">skreiv</em> er preteritum.",
-      notes: "Spør kvifor så mange vel <em>skriver</em>. Svaret er at bokmål har <em>-er</em> i presens for nesten alle verb. På nynorsk har berre e-verba <em>-er</em>.",
+      notes: "Spør kvifor så mange vel <em>skriver</em>. Svaret er at bokmål har <em>-er</em> i presens for nesten alle verb. På nynorsk har berre e-verba og nokre få j-verb (<em>byggjer, følgjer</em>) <em>-er</em>.",
     },
     {
       type: "drill",
@@ -334,7 +334,7 @@ Larar.register("trening-verb", {
       intro: "Lag mot lag: skriv forma, rådfør dykk i ti sekund.",
       spec: { bank: "verbs", filter: { cls: ["sterk"] }, tasks: ["pret"], mode: "type" },
       n: 8,
-      notes: "Laga skriv svaret på kvar si tavle eller ark. Rett svar gir eitt poeng. Er begge laga rette, går poenget til laget som var raskast. Legg merke til at både <em>gav</em> og <em>ga</em>, <em>blei</em> og <em>vart</em> er rette.",
+      notes: "Laga skriv svaret på kvar si tavle eller ark. Rett svar gir eitt poeng. Er begge laga rette, går poenget til laget som var raskast. Legg merke til at både <em>blei</em> og <em>vart</em> er rette, men at preteritum av <em>gi/gje</em> berre er <em>gav</em> på nynorsk.",
     },
     {
       type: "drill",
@@ -371,7 +371,7 @@ Larar.register("trening-verb", {
       form: "Åleine",
       tid: 6,
       svar: "1 høyrer, høyrde, har høyrt · 2 spør, spurde, har spurt · 3 bur, budde, har budd · 4 skriv, skreiv, har skrive · 5 kjøper, kjøpte, har kjøpt · 6 går, gjekk, har gått · 7 seier, sa, har sagt · 8 snakkar, snakka, har snakka",
-      notes: "Eitt verb frå kvar gruppe, pluss eitt uregelrett og eitt ekstra a-verb. Når fasiten kjem, spør: kva gruppe høyrer kvart verb til? Sjå etter <em class=\"bm\">spurte</em>, <em class=\"bm\">skriver</em> og <em class=\"bm\">snakket</em>.",
+      notes: "Minst eitt verb frå kvar gruppe, pluss det uregelrette verbet <em>seie</em>. Når fasiten kjem, spør: kva gruppe høyrer kvart verb til? Sjå etter <em class=\"bm\">spurte</em>, <em class=\"bm\">skriver</em> og <em class=\"bm\">snakket</em>.",
     },
     {
       type: "oppgave",
@@ -444,7 +444,7 @@ Larar.register("trening-verb", {
     ],
     misoppfatningar: [
       { feil: "«Ho kastet ballen.»", hjelp: "A-verb får <em class=\"nn\">-a</em> i preteritum og perfektum: <em class=\"nn\">kasta, har kasta</em>. <em class=\"bm\">-et</em> finst ikkje i nynorske verbformer." },
-      { feil: "«Han skriver, finner, kommer.»", hjelp: "Sterke verb får inga ending i presens: <em class=\"nn\">skriv, finn, kjem</em>. Berre e-verba har <em class=\"nn\">-er</em>." },
+      { feil: "«Han skriver, finner, kommer.»", hjelp: "Sterke verb får inga ending i presens: <em class=\"nn\">skriv, finn, kjem</em>. Berre e-verba og nokre få j-verb har <em class=\"nn\">-er</em>." },
       { feil: "«Eg spørjer» eller «han spurte».", hjelp: "Dei fleste j-verba mistar j-en og endinga i presens og får <em class=\"nn\">-de</em> i preteritum: <em class=\"nn\">spør, spurde, har spurt</em>." },
       { feil: "«Ho har skrivi» eller «har skrevet».", hjelp: "Sterke verb får oftast <em class=\"nn\">-e</em> i perfektum: <em class=\"nn\">har skrive, har funne</em>. Unntaka er verb som <em class=\"nn\">har gått, har sett, har fått</em>." },
     ],
@@ -455,7 +455,7 @@ Larar.register("trening-verb", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane tabellen frå lysbilete 4 som huskelapp under eigentreninga.",
+        "Gi elevane tabellen frå lysbilete 4 som hugselapp under eigentreninga.",
         "La elevar som skriv seint, gjere berre dei fire første verba i oppgåve 1 og bruke tabellen som hjelp.",
         "Lag ei eiga liste med dei ti vanlegaste sterke verba som eleven lærer utanåt.",
       ],
@@ -516,7 +516,7 @@ Larar.register("trening-adjektiv", {
             <tr><td>endar på <strong>-leg, -ig, -sk</strong></td><td><em class="nn">eit vanleg hus, eit viktig val, eit norsk ord</em></td></tr>
             <tr><td>endar på <strong>-t</strong></td><td><em class="nn">eit lett spørsmål, eit trøytt barn</em></td></tr>
             <tr><td>endar på lang vokal</td><td><em class="nn">ny → nytt, brei → breitt</em></td></tr>
-            <tr><td>endar på <strong>-en</strong></td><td><em class="nn">open → ope, liten → lite</em></td></tr>
+            <tr><td>endar på <strong>-en</strong></td><td><em class="nn">open → ope/opent, liten → lite</em></td></tr>
             <tr><td>endar på dobbel konsonant</td><td><em class="nn">snill → snilt, tjukk → tjukt</em></td></tr>
           </tbody>
         </table>`,
@@ -589,8 +589,8 @@ Larar.register("trening-adjektiv", {
         </div>`,
       form: "Åleine",
       tid: 5,
-      svar: "1 stort · 2 vanleg · 3 nytt · 4 ope · 5 snilt · 6 lett · 7 raudt · 8 viktig · 9 gammalt · 10 lite",
-      notes: "Nesten alle radene i unntakstabellen er med. Når fasiten kjem, spør for kvart unntak: kva rad i tabellen høyrer det til? Sjå særleg etter <em class=\"bm\">vanlegt</em>, <em class=\"bm\">viktigt</em> og <em class=\"bm\">opent</em>.",
+      svar: "1 stort · 2 vanleg · 3 nytt · 4 ope eller opent · 5 snilt · 6 lett · 7 raudt · 8 viktig · 9 gammalt · 10 lite",
+      notes: "Nesten alle radene i unntakstabellen er med. Når fasiten kjem, spør for kvart unntak: kva rad i tabellen høyrer det til? Sjå særleg etter <em class=\"bm\">vanlegt</em> og <em class=\"bm\">viktigt</em>. Både <em class=\"nn\">ope</em> og <em class=\"nn\">opent</em> er rette.",
     },
     {
       type: "oppgave",
@@ -665,7 +665,7 @@ Larar.register("trening-adjektiv", {
       { feil: "«Eit vanlegt hus», «eit viktigt val».", hjelp: "Adjektiv på <em class=\"nn\">-leg</em> og <em class=\"nn\">-ig</em> får aldri <em class=\"nn\">-t</em>: <em class=\"nn\">eit vanleg hus, eit viktig val</em>." },
       { feil: "«Finere, finest.»", hjelp: "Nynorsk gradbøyer med <em class=\"nn\">-are</em> og <em class=\"nn\">-ast</em>: <em class=\"nn\">finare, finast</em>. Hugs: <em class=\"nn\">a</em> der bokmål har <em class=\"bm\">e</em>." },
       { feil: "«Huset er stor.»", hjelp: "Adjektivet rettar seg etter substantivet også etter <em class=\"nn\">er</em>: <em class=\"nn\">huset er stort</em>. Tenk deg adjektivet framfor substantivet: <em class=\"nn\">eit stort hus</em>." },
-      { feil: "«Eit opent vindauge», «gammale hus».", hjelp: "Adjektiv på <em class=\"nn\">-en</em> får <em class=\"nn\">-e</em> i inkjekjønn: <em class=\"nn\">eit ope vindauge</em>. <em class=\"nn\">gammal, vakker, open</em> mistar ein vokal i fleirtal: <em class=\"nn\">gamle, vakre, opne</em>." },
+      { feil: "«Gammale hus», «opene vindauge».", hjelp: "<em class=\"nn\">gammal, vakker, open</em> mistar ein vokal i fleirtal: <em class=\"nn\">gamle, vakre, opne</em>." },
     ],
     samtale: [
       "Kvifor trur du <em class=\"bm\">-ere</em> og <em class=\"bm\">-est</em> sit så godt, sjølv hos elevar som elles skriv god nynorsk?",
@@ -674,7 +674,7 @@ Larar.register("trening-adjektiv", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane unntakstabellen frå lysbilete 5 som huskelapp.",
+        "Gi elevane unntakstabellen frå lysbilete 5 som hugselapp.",
         "La elevane seie frasen <em class=\"nn\">eit … hus</em> høgt før dei skriv inkjekjønnsforma.",
         "Start med den vanlege gradbøyinga (<em class=\"nn\">fin, finare, finast</em>) før dei uregelrette.",
       ],
@@ -942,7 +942,7 @@ Larar.register("trening-smaord", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane ei liste med dei tjue vanlegaste småorda som huskelapp.",
+        "Gi elevane ei liste med dei tjue vanlegaste småorda som hugselapp.",
         "La elevar som skriv seint, skrive berre ordet som manglar i oppgåve 2 til 4, ikkje heile setninga.",
         "Bruk alternativa på tavla (tommel opp og ned) meir enn skriftlege rundar.",
       ],
@@ -1031,7 +1031,7 @@ Larar.register("trening-setning", {
     {
       type: "drill",
       title: "Heilsetning eller leddsetning?",
-      intro: "Kan delen stå åleine? Manglar ho verbal?",
+      intro: "Kan delen stå åleine? Manglar han verbal?",
       spec: { bank: "sentences", set: "heilLedd", mode: "choice" },
       n: 5,
       notes: "Lat elevane lese delen høgt åleine: gir han meining? Svaralternativet «berre eit ledd» gjeld delar utan verbal, som <em>i går kveld</em>.",
@@ -1189,7 +1189,7 @@ Larar.register("trening-setning", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane ei huskelapp med dei fem spørsmåla i rekkjefølgje.",
+        "Gi elevane ein hugselapp med dei fem spørsmåla i rekkjefølgje.",
         "La elevar som slit, gjere oppgåve 1 og 4 grundig før dei tek fatt på dei andre.",
         "La elevane markere ledda med fargar når dei skriv av setningane i skriveboka.",
       ],
@@ -1280,7 +1280,7 @@ Larar.register("trening-blanda", {
     {
       type: "diskuter",
       title: "Runde 3: finn feila",
-      prompt: `<p>I går skrev eg eit brev til bestemor. Da eg kom heim, eg åt middag med venninnen min som bur ved sida av oss. Huset hennar er stor, men ho har ikke nokon hage.</p>
+      prompt: `<p>I går skrev eg eit brev til bestemor. Når eg kom heim, eg åt middag med venninnen min som bur ved sida av oss. Huset hennar er stor, men ho har ikke nokon hage.</p>
         <p class="stor">Det er seks feil. Finn alle!</p>`,
       form: "Laget samarbeider",
       tid: 3,
@@ -1409,7 +1409,7 @@ Larar.register("trening-blanda", {
     misoppfatningar: [
       { feil: "«Eg kan reglane, så eg treng ikkje trene.»", hjelp: "Blandingsrunden viser skilnaden på å kunne ein regel og å bruke han når alt kjem om kvarandre. Samanlikn resultatet med gjettinga frå starten." },
       { feil: "«Har ikke nokon hage» blir retta til «ikkje noko hage».", hjelp: "<em class=\"nn\">hage</em> er hankjønn, så i spørsmål og nekting heiter det <em class=\"nn\">nokon hage</em>. <em class=\"nn\">noko</em> brukar vi om inkjekjønnsord og mengd." },
-      { feil: "«Da eg kom heim, eg åt …»", hjelp: "To feil på éin gong: <em class=\"bm\">da</em> finst ikkje på nynorsk, og verbalet skal stå på andreplass: <em class=\"nn\">Då eg kom heim, åt eg …</em>" },
+      { feil: "«Når eg kom heim i går, eg åt …»", hjelp: "Verbalet skal stå på andreplass, og éin gong i fortida skal ha <em class=\"nn\">då</em>, ikkje <em class=\"nn\">når</em>: <em class=\"nn\">Då eg kom heim, åt eg …</em>" },
       { feil: "«Huset hennar er stor.»", hjelp: "Predikativet rettar seg etter subjektet: <em class=\"nn\">huset</em> er inkjekjønn, så det heiter <em class=\"nn\">stort</em>." },
     ],
     samtale: [
@@ -1419,9 +1419,9 @@ Larar.register("trening-blanda", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane sjekklista frå lysbilete 4 som huskelapp.",
+        "Gi elevane sjekklista frå lysbilete 4 som hugselapp.",
         "La elevar som skriv seint, gjere oppgåve 1 til 3 og skrive tre setningar i oppgåve 4.",
-        "Sett saman laga slik at sterke og svake elevar er fordelte.",
+        "Set saman laga slik at sterke og svake elevar er fordelte.",
       ],
       utfordring: [
         "Utfordre elevane til å skrive teksten i oppgåve 4 utan éin einaste feil, og til å bruke minst tre leddsetningar.",

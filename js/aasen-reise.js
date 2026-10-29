@@ -3,7 +3,7 @@
    Sjølve 3D-kartet (terreng, hav, kamera, figuren, scenene og rutene) ligg i
    js/kart3d.js, som spelet «Aasen: Språkvandringa» òg brukar. Her ligg det som høyrer
    til modulen: stadene i js/content/aasen-reise.js blir plasserte på kartet,
-   kvart kapittel (lesson med `reise`) teiknar ruta si som ei slange lagd oppå
+   kvart kapittel (lesson med `reise`) teiknar ruta si som ein slange lagd oppå
    terrenget, og ein liten figur av Aasen går langs henne. Oppgåvene mellom
    kapitla blir teikna av js/exercises.js og lagra som i resten av kurset, så
    modulen får framdrift og «Fullført» på oversikta. */
@@ -139,7 +139,7 @@
       }
       noRute = { punkt, idar, stoppPos, lengd, fasar, dur: akkMs, framdrift: 0, t0: performance.now() + 1600, mesh: null, seg: 0, ferdig: false };
     }
-    bygdForAvstand = 0; // tvinger ny oppbygging med rett tjukkleik
+    bygdForAvstand = 0; // tvingar ny oppbygging med rett tjukkleik
 
     // Etikettar
     etikettEl.innerHTML = ""; etikettar.clear();

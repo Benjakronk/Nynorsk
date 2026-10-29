@@ -102,7 +102,7 @@ Larar.register("grammatikk-substantiv", {
         "<p class=\"stor midt\">Ubestemt fleirtal: <strong>ingen ending</strong>. <em class=\"nn\">mange eple</em></p>",
         "<p class=\"stor midt\">Bestemt fleirtal: <strong>-a</strong>. <em class=\"nn\">alle epla</em></p>",
       ],
-      notes: "Ord som <em>eple</em> endar på -e, og då fell -e bort før endinga: <em>epl-et, epl-a</em>. Det same gjeld <em>eit rike, eit stykke</em>. Bokmål seier <em>epler</em> og <em>eplene</em>, så her bommar mange. Andre vanlege ord i same gruppe: <em>barn, år, tre, dyr</em>.",
+      notes: "Ord som <em>eple</em> endar på -e, og då fell -e bort før endinga: <em>epl-et, epl-a</em>. Det same gjeld <em>eit rike, eit stykke</em>. Bokmål seier <em>epler</em> og <em>eplene</em>, så her bommar mange. Andre vanlege inkjekjønnsord utan ending i ubestemt fleirtal: <em>barn, år, tre, dyr</em>.",
     },
     {
       type: "sporsmal",
@@ -226,7 +226,7 @@ Larar.register("grammatikk-substantiv", {
       { feil: "«Det heiter <em>boken</em> og <em>døren</em>.»", hjelp: "Spør kva kjønn ordet har. Hokjønn får alltid <em class=\"nn\">-a</em> i bestemt eintal: <em class=\"nn\">jenta, boka, sola</em>." },
       { feil: "«Inkjekjønn får -ene i bestemt fleirtal, som på bokmål.»", hjelp: "Inkjekjønn får <em class=\"nn\">-a</em>: <em class=\"nn\">husa, barna, epla</em>. Lat elevane seie «alle husa» høgt til det sit." },
       { feil: "«Alle ord som endar på -e, er hokjønn.»", hjelp: "Vis motdøme: <em class=\"nn\">ein hage</em> er hankjønn og <em class=\"nn\">eit eple</em> er inkjekjønn. Kjønnet står i ordboka, ikkje i endinga." },
-      { feil: "«Kjønnet har med biologisk kjønn å gjere.»", hjelp: "Grammatisk kjønn er ein ordklasse, ikkje eit biologisk kjønn. <em class=\"nn\">ei bok</em> og <em class=\"nn\">ei sol</em> er hokjønn, <em class=\"nn\">eit barn</em> er inkjekjønn." },
+      { feil: "«Kjønnet har med biologisk kjønn å gjere.»", hjelp: "Grammatisk kjønn er ein eigenskap ved ordet, ikkje eit biologisk kjønn. <em class=\"nn\">ei bok</em> og <em class=\"nn\">ei sol</em> er hokjønn, <em class=\"nn\">eit barn</em> er inkjekjønn." },
     ],
     samtale: [
       "Har du hokjønn i talemålet ditt? Seier du «boka» eller «boken»?",
@@ -236,7 +236,7 @@ Larar.register("grammatikk-substantiv", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane ein huskelapp med dei tre kjønnskorta og endingane.",
+        "Gi elevane ein hugselapp med dei tre kjønnskorta og endingane.",
         "Lat elevane bruke hjelpeorda ein, denne, mange, alle når dei bøyer.",
         "Start med vanlege ord dei kjenner godt, som <em class=\"nn\">gut, jente, hus</em>.",
       ],
@@ -330,7 +330,7 @@ Larar.register("grammatikk-verb", {
         "<p class=\"stor midt\">ikkje <em class=\"bm\">kaster</em></p>",
         "<p class=\"midt\">Tips: <em class=\"bm\">kastet</em> på bokmål gir ofte eit a-verb: <em class=\"nn\">kasta, kastar</em></p>",
       ],
-      notes: "Dette er den vanlegaste verbfeilen i sidemålstekstar: elevane skriv <em>kaster, snakker, hopper</em>. A-verba er den største gruppa, og alle har -ar i presens. Tipset i siste steget er ein peikepinn, ikkje ein regel: <em>svare</em> er eit a-verb på nynorsk (<em>svarar, svara</em>) sjølv om bokmål ofte har <em>svarte</em>. Er du usikker, slå opp.",
+      notes: "Dette er den vanlegaste verbfeilen i sidemålstekstar: elevane skriv <em>kaster, snakker, hopper</em>. A-verba er den største gruppa, og alle har -ar i presens. Tipset i siste steget er ein peikepinn, ikkje ein regel: nokre verb kan bøyast på begge måtar på nynorsk, til dømes <em>svare</em> (<em>svarar, svara</em> eller <em>svarer, svarte</em>). Er du usikker, slå opp.",
     },
     {
       type: "sporsmal",
@@ -363,7 +363,7 @@ Larar.register("grammatikk-verb", {
       intro: "Bøy verbet i hovudet først: «i går …»",
       spec: { bank: "verbs", tasks: ["cls"], mode: "choice" },
       n: 6,
-      notes: "Be elevane seie preteritumsforma høgt før dei vel klasse. Det er preteritum som avslører klassen: -a gir a-verb, -de eller -te gir e-verb, vokalskifte gir sterkt verb.",
+      notes: "Be elevane seie preteritumsforma høgt før dei vel klasse. Det er preteritum som avslører klassen: -a gir a-verb, -de eller -te gir e-verb eller j-verb, -dde gir kortverb, vokalskifte gir sterkt verb.",
     },
     {
       title: "Sterke verb: lær dei utanåt",
@@ -483,7 +483,7 @@ Larar.register("grammatikk-verb", {
     misoppfatningar: [
       { feil: "«Presens heiter <em>kaster</em> på nynorsk òg.»", hjelp: "a-verba har <em class=\"nn\">-ar</em> i presens: <em class=\"nn\">kastar, snakkar, hoppar</em>. Samanlikn med preteritum <em class=\"nn\">kasta</em>: presens har ein ekstra r." },
       { feil: "«<em>har skreiv</em> er perfektum.»", hjelp: "Perfektum er <em class=\"nn\">har</em> + perfektum partisipp, og for sterke verb er det ei eiga form: <em class=\"nn\">har skrive</em>. Lat elevane seie heile rekkja høgt." },
-      { feil: "«Alle verb får -te eller -de i preteritum.»", hjelp: "Det gjeld berre e-verb og j-verb. a-verb får <em class=\"nn\">-a</em>, og sterke verb får inga ending: <em class=\"nn\">skreiv, fann, gjekk</em>." },
+      { feil: "«Alle verb får -te eller -de i preteritum.»", hjelp: "Det gjeld berre e-verb, j-verb og kortverb (<em class=\"nn\">-dde</em>). a-verb får <em class=\"nn\">-a</em>, og sterke verb får inga ending: <em class=\"nn\">skreiv, fann, gjekk</em>." },
       { feil: "«<em>spiste</em> og <em>gikk</em> er nynorsk.»", hjelp: "Dei vanlege verba <em class=\"nn\">ete</em> og <em class=\"nn\">gå</em> har eigne former: <em class=\"nn\">åt</em> og <em class=\"nn\">gjekk</em>. Lag ei liste over dei verba eleven oftast bommar på." },
     ],
     samtale: [
@@ -494,7 +494,7 @@ Larar.register("grammatikk-verb", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane ein huskelapp med dei fire klassane og ti sterke verb.",
+        "Gi elevane ein hugselapp med dei fire klassane og ti sterke verb.",
         "Lat elevane alltid bøye i ei fast setning: «Eg … no. Eg … i går. Eg har …».",
         "Start med a-verb, som er den største og mest regelrette gruppa.",
       ],
@@ -563,7 +563,7 @@ Larar.register("grammatikk-pronomen", {
             <tr><td>3. person fleirtal</td><td><em class="nn">dei</em></td><td><em class="nn">dei</em></td></tr>
           </tbody>
         </table>`,
-      notes: "Tre ting å peike på: <em>vi</em> og <em>me</em> er likestilte, så elevane kan velje, men bør halde seg til éi form i same tekst. <em>han</em> er både subjekt og objekt på nynorsk. <em>honom</em> er lov som objektsform, men sjeldan brukt. Bokmålsforma <em>ham</em> finst ikkje. I 2. person fleirtal er <em>dokker</em> òg tillate, både som subjekt og objekt.",
+      notes: "Tre ting å peike på: <em>vi</em> og <em>me</em> er likestilte, så elevane kan velje, men bør halde seg til éi form i same tekst. <em>han</em> er både subjekt og objekt på nynorsk. Forma <em>honom</em> vart fjerna frå rettskrivinga i 2012. Bokmålsforma <em>ham</em> finst ikkje. I 2. person fleirtal er <em>dokker</em> òg tillate, både som subjekt og objekt.",
     },
     {
       title: "Fella: de og dei",
@@ -662,8 +662,8 @@ Larar.register("grammatikk-pronomen", {
       prompt: `<p class="stor midt"><em class="bm">Hvor bor du, og hvorfor flyttet dere hit?</em></p>`,
       form: "Skriv saman i par",
       tid: 3,
-      svar: "<em class=\"nn\">Kvar bur du, og kvifor flytta de hit?</em>",
-      notes: "Tre ting å sjå etter: <em>kvar</em> om stad, <em>kvifor</em>, og <em>de</em> fordi pronomenet er subjekt for <em>flytta</em>. <em>flytte</em> er eit a-verb, så preteritum er <em>flytta</em>. Be eit par skrive svaret på tavla og la klassen rette.",
+      svar: "<em class=\"nn\">Kvar bur du, og kvifor flytta de hit?</em> (Òg rett: <em class=\"nn\">… kvifor flytte de hit?</em>)",
+      notes: "Tre ting å sjå etter: <em>kvar</em> om stad, <em>kvifor</em>, og <em>de</em> fordi pronomenet er subjekt for <em>flytta</em>. <em>flytte</em> kan bøyast som a-verb med preteritum <em>flytta</em>, men <em>flytte</em> er òg rett preteritum. Be eit par skrive svaret på tavla og la klassen rette.",
     },
     {
       type: "oppgave",
@@ -743,7 +743,7 @@ Larar.register("grammatikk-pronomen", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane ein huskelapp med pronomenpara og spørjeorda.",
+        "Gi elevane ein hugselapp med pronomenpara og spørjeorda.",
         "Lat elevane markere subjektet med blått og objektet med raudt før dei vel pronomen.",
         "Øv på <em class=\"nn\">de</em> og <em class=\"nn\">dei</em> munnleg med korte setningar før dei skriv.",
       ],
@@ -994,7 +994,7 @@ Larar.register("grammatikk-adjektiv", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane ein huskelapp med dei tre endingane: ingen, -t og -e.",
+        "Gi elevane ein hugselapp med dei tre endingane: ingen, -t og -e.",
         "Lat elevane skrive artikkelen eller subjektet med farge før dei bøyer adjektivet.",
         "Bruk dei same få adjektiva, som <em class=\"nn\">fin</em> og <em class=\"nn\">stor</em>, til mønsteret sit.",
       ],

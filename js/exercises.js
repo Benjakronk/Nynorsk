@@ -56,7 +56,7 @@ const Exercises = (() => {
   /* ---------- Multiple choice ---------- */
   function renderMultipleChoice(s, modId) {
     const root = el("div", { class: "exercise multiplechoice" });
-    root.appendChild(tag("Fleirvalg"));
+    root.appendChild(tag("Fleirval"));
     root.appendChild(el("div", { class: "question", html: s.question }));
     if (s.hint) root.appendChild(el("div", { class: "hint" }, s.hint));
 
@@ -158,7 +158,7 @@ const Exercises = (() => {
         answers.push(input.value);
       });
       fbHolder.innerHTML = "";
-      fbHolder.appendChild(feedbackEl(allRight, s.explanation || (allRight ? "" : "Sjå rettferda variant i forklaringa eller prøv igjen.")));
+      fbHolder.appendChild(feedbackEl(allRight, s.explanation || (allRight ? "" : "Sjå over svara dine og prøv igjen.")));
       if (!allRight && visFasit(s, modId)) fbHolder.appendChild(fasitEl(inputs.map(o => `<em class="nn">${o.accept[0]}</em>`).join(", ")));
       Store.recordAnswer(modId, s.id, { correct: allRight, answer: answers });
       document.dispatchEvent(new CustomEvent("exercise-answered"));
@@ -846,7 +846,7 @@ const Exercises = (() => {
   };
   const OVERSKRIFT_KLASSE = { bokmal: "bm", ukjent: "unknown", grammatikk: "gram" };
 
-  // Tegnar heile panelet på nytt for det funnet eleven står på.
+  // Teiknar heile panelet på nytt for det funnet eleven står på.
   function visFunn(panel, resultat, funn, hentIndeks, settIndeks, visMarkering) {
     panel.innerHTML = "";
 
@@ -1060,7 +1060,7 @@ const Exercises = (() => {
         }
       });
       const summary = gradable > 0
-        ? `${right} av ${gradable} fleirval rett.${inputs.some(i => i.type === "free") ? " Friskriftssvara må du vurdere sjølv eller saman med lærar." : ""}`
+        ? `${right} av ${gradable} fleirval rett.${inputs.some(i => i.type === "free") ? " Fritekstsvara må du vurdere sjølv eller saman med læraren." : ""}`
         : "Svara dine er lagra. Samanlikn med dømesvara om du vil.";
       fbHolder.innerHTML = "";
       fbHolder.appendChild(feedbackEl(allRight, s.explanation || summary));

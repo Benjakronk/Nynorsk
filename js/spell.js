@@ -11,7 +11,7 @@
       i js/grammatikk.js bruker. Lista blir lasta ned i
       bakgrunnen (sjå sw.js) og fangar vanlege skrivefeil. Ukjende ord blir
       først prøvde delte som samansetning, slik at skulebiblioteket, som ikkje
-      står i lista, ikkje blir melt som feil.
+      står i lista, ikkje blir meldt som feil.
 
    Bokmålsvarselet går først. Ordlista er ei formliste utan ordklasseskilje, og
    ein del bokmålsord har ein sjeldan nynorsk homograf (hun, boken), så lista
@@ -131,7 +131,7 @@ const Spell = (() => {
       }
       // Presens av svake verb har ikkje -r på nynorsk
       if (v.cls !== "sterk" && v.cls !== "u" && !pres.endsWith("r")) {
-        addWrong(map, pres + "r", pres, "Svake verb har ikkje -r i presens på nynorsk.");
+        addWrong(map, pres + "r", pres, "Dette verbet har ikkje -r i presens på nynorsk.");
       }
     });
 
@@ -303,7 +303,7 @@ const Spell = (() => {
         if (out.length >= (max || 3) * 3) break;
       }
     }
-    // Dei som liknar mest kjem først. Starten av ordet tel dobbelt, for eleven
+    // Dei som liknar mest, kjem først. Starten av ordet tel dobbelt, for eleven
     // har som regel byrjinga rett og bommar lenger ute: løse skal gi løyse, ikkje
     // sløse, som berre deler slutten. Står det likt, vinn ordet eleven møter i
     // kurset.

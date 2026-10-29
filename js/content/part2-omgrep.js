@@ -129,7 +129,7 @@ Modules.register({
         "jenta-",
       ],
       correct: 0,
-      explanation: "Når ordet endar på <em class=\"nn\">-e</em> i grunnforma, fell den <em class=\"nn\">-e</em>-en bort før endinga. Difor heiter det <em class=\"nn\">jenta</em> og <em class=\"nn\">jenter</em>, ikkje <em class=\"nn\">jentea</em>.",
+      explanation: "Når ordet endar på <em class=\"nn\">-e</em> i grunnforma, fell den <em class=\"nn\">-e</em>-en bort før endinga. Difor heiter det <em class=\"nn\">jenta</em> og <em class=\"nn\">jenter</em>, ikkje <em class=\"bm\">jentea</em>.",
     },
     {
       id: "ord5",
@@ -194,7 +194,7 @@ Modules.register({
         <p>Legg merke til at nynorsk gjerne brukar <em class="nn">-dom, -leik, -skap</em> og
         <em class="nn">-nad</em> der bokmål brukar <em class="bm">-het</em> og
         <em class="bm">-else</em>: <em class="nn">fridom</em> (frihet), <em class="nn">kjærleik</em>
-        (kjærlighet), <em class="nn">søknad</em> (søknad), <em class="nn">røynsle</em> (erfaring).</p>
+        (kjærlighet), <em class="nn">storleik</em> (størrelse), <em class="nn">røynsle</em> (erfaring).</p>
 
       `,
     },
@@ -223,7 +223,7 @@ Modules.register({
         <div class="callout">
           <strong>Sisteleddet bestemmer.</strong> Det siste ordet i ei samansetning avgjer kjønn og
           bøying: <em class="nn">ei skule<strong>bok</strong></em> (fordi <em class="nn">bok</em> er hokjønn),
-          <em class="nn">eit fot<strong>ballag</strong></em> (fordi <em class="nn">lag</em> er inkjekjønn).
+          <em class="nn">eit fotbal<strong>lag</strong></em> (fordi <em class="nn">lag</em> er inkjekjønn).
           Samansette ord skal alltid skrivast i <strong>eitt ord</strong>: <em class="nn">skulebok</em>,
           ikkje <em class="bm">skule bok</em>.
         </div>
@@ -713,7 +713,7 @@ Modules.register({
         ["Subjunksjon", "innleier ei leddsetning: at, fordi, dersom"],
         ["Interjeksjon", "utrop og svarord: au, ja, nei"],
       ],
-      explanation: "Kvar ordklasse har sin test. Dei fem første er bøyelege, dei fem siste er (stort sett) ubøyelege.",
+      explanation: "Kvar ordklasse har sin test. Substantiv, verb, adjektiv, pronomen og determinativ er bøyelege, dei fem andre er (stort sett) ubøyelege.",
     },
     {
       id: "okl17",
@@ -840,15 +840,16 @@ Modules.register({
         "solet",
       ],
       correct: 0,
-      explanation: "Hokjønn bestemt eintal får <em class=\"nn\">-a</em> på nynorsk. <em class=\"bm\">solen</em> er bokmålsforma, og er ein av dei vanlegaste feila.",
+      explanation: "Hokjønn bestemt eintal får <em class=\"nn\">-a</em> på nynorsk. <em class=\"bm\">solen</em> er bokmålsforma og er ein av dei vanlegaste feila.",
     },
     {
       id: "boy5",
       type: "lesson",
-      title: "Eigedom: ikkje s-genitiv",
-      content: `        <h3>Eigedom: ikkje s-genitiv</h3>
+      title: "Eigedom: helst utan s-genitiv",
+      content: `        <h3>Eigedom: helst utan s-genitiv</h3>
         <p>På bokmål viser du ofte eigedom med <em class="bm">-s</em>: <em class="bm">Karis bok,
-        guttens sykkel</em>. På nynorsk skal du vanlegvis <strong>ikkje</strong> bruke s-genitiv.
+        guttens sykkel</em>. S-genitiv er lov på nynorsk òg, særleg ved namn, men han er lite
+        brukt og verkar ofte bokmålsprega. Det vanlege, og betre nynorsk stil, er å skrive om.
         Du har to gode alternativ:</p>
         <table>
           <thead><tr><th>Bokmål</th><th>Nynorsk med preposisjon</th><th>Nynorsk med sin/si/sitt/sine</th></tr></thead>
@@ -871,14 +872,14 @@ Modules.register({
       type: "exercise",
       exerciseType: "multipleChoice",
       title: "Sjekk: sin, si, sitt, sine",
-      question: "Kva er rett på nynorsk?",
+      question: "Kva er best nynorsk?",
       options: [
         "Kari si bok",
         "Kari sin bok",
         "Karis bok",
       ],
       correct: 0,
-      explanation: "<em class=\"nn\">sin/si/sitt/sine</em> rettar seg etter det som blir eigd. <em class=\"nn\">bok</em> er hokjønn, difor <em class=\"nn\">si</em>. S-genitiv unngår vi på nynorsk.",
+      explanation: "<em class=\"nn\">sin/si/sitt/sine</em> rettar seg etter det som blir eigd. <em class=\"nn\">bok</em> er hokjønn, difor <em class=\"nn\">si</em>. <em class=\"nn\">Kari sin bok</em> er feil, for det manglar samsvar. <em class=\"nn\">Karis bok</em> er lov, men s-genitiv er lite brukt på nynorsk, og det er betre stil å skrive om.",
     },
     {
       id: "boy7",
@@ -1086,7 +1087,7 @@ Modules.register({
         <p><strong>J-verb</strong> har <em class="nn">-je</em> eller <em class="nn">-ja</em> i infinitiv. Dei mistar
         <em class="nn">j</em>-en i dei andre formene, får <strong>inga ending i presens</strong> og
         skiftar ofte vokal i preteritum, men dei er likevel svake, fordi dei har ending
-        (<em class="nn">-de</em>) i preteritum.</p>
+        (<em class="nn">-de</em> eller <em class="nn">-te</em>) i preteritum.</p>
         <table>
           <thead><tr><th>Infinitiv</th><th>Presens</th><th>Preteritum</th><th>Perf. partisipp</th></tr></thead>
           <tbody>
@@ -1100,7 +1101,7 @@ Modules.register({
         </table>
         <p><strong>Kortverb</strong> har berre éi staving og ingen <em class="nn">-e</em> i infinitiv.
         Dei får <em class="nn">-r</em> i presens, <em class="nn">-dde</em> i preteritum og
-        <em class="nn">-dd</em> i perfektum partisipp.</p>
+        <em class="nn">-dd</em> (eller <em class="nn">-tt</em>) i perfektum partisipp.</p>
         <table>
           <thead><tr><th>Infinitiv</th><th>Presens</th><th>Preteritum</th><th>Perf. partisipp</th></tr></thead>
           <tbody>
@@ -1183,10 +1184,10 @@ Modules.register({
       id: "boy20",
       type: "exercise",
       exerciseType: "multipleChoice",
-      question: "Kva er god nynorsk for bokmål <em class=\"bm\">Karis bok</em>?",
+      question: "Kva er best nynorsk for bokmål <em class=\"bm\">Karis bok</em>?",
       options: ["Karis bok", "boka til Kari", "Kari sin bok", "Karis boka"],
       correct: 1,
-      explanation: "Nynorsk unngår s-genitiv. Skriv <em class=\"nn\">boka til Kari</em> eller <em class=\"nn\">Kari si bok</em>. <em class=\"nn\">Kari sin bok</em> er feil fordi <em class=\"nn\">bok</em> er hokjønn, og då må det vere <em class=\"nn\">si</em>.",
+      explanation: "S-genitiv er lov på nynorsk, men lite brukt. Betre nynorsk stil er å skrive om: <em class=\"nn\">boka til Kari</em> eller <em class=\"nn\">Kari si bok</em>. <em class=\"nn\">Kari sin bok</em> er feil fordi <em class=\"nn\">bok</em> er hokjønn, og då må det vere <em class=\"nn\">si</em>.",
     },
     {
       id: "boy21",
@@ -1220,10 +1221,10 @@ Modules.register({
         { prompt: "(telje) Kan du ___ til hundre på nynorsk?", accept: ["telje"] },
         { prompt: "(bu) Dei ___ i Bergen no.", accept: ["bur"] },
         { prompt: "(nå) Eg ___ akkurat bussen i dag tidleg.", accept: ["nådde"] },
-        { prompt: "(tru) Ho har ___ på det heile tida.", accept: ["trudd"] },
+        { prompt: "(tru) Ho har ___ på det heile tida.", accept: ["trudd", "trutt"] },
         { prompt: "(sy) Bestemor ___ ein kjole til meg i fjor.", accept: ["sydde"] },
       ],
-      explanation: "J-verb mistar j-en og har inga ending i presens (set, spør), men får -de/-te i preteritum (spurde, sette) og -t i partisipp (valt). Kortverb får -r, -dde, -dd: bur, nådde, trudd, sydde.",
+      explanation: "J-verb mistar j-en og har inga ending i presens (set, spør), men får -de/-te i preteritum (spurde, sette) og -t i partisipp (valt). Kortverb får -r, -dde, -dd (eller -tt): bur, nådde, trudd, sydde.",
     },
     {
       id: "boy24",
@@ -1447,9 +1448,10 @@ Modules.register({
           </tbody>
         </table>
         <div class="callout warn">
-          <strong>Vanleg feil:</strong> bokmål <em class="bm">da</em> finst ikkje på nynorsk. Det heiter
-          <em class="nn">då</em>, både som subjunksjon (<em class="nn">då eg kom</em>) og som adverb
-          (<em class="nn">då gjekk vi</em>, <em class="nn">kom då!</em>).
+          <strong>Merk:</strong> <em class="nn">da</em> står i Nynorskordboka ved sida av <em class="nn">då</em>,
+          men <em class="nn">då</em> er det vanlege på nynorsk, og det er forma kurset bruker, både som
+          subjunksjon (<em class="nn">då eg kom</em>) og som adverb (<em class="nn">då gjekk vi</em>,
+          <em class="nn">kom då!</em>). Den vanlege feilen er å skrive <em class="nn">når</em> der det skal vere <em class="nn">då</em>.
         </div>
 
       `,
@@ -1463,10 +1465,10 @@ Modules.register({
       options: [
         "Då",
         "Når",
-        "Da",
+        "Om",
       ],
       correct: 0,
-      explanation: "Det skjedde éin bestemt gong i fortida, så det heiter <em class=\"nn\">då</em>. Hugseregelen er «den gongen då, kvar gong når». Bokmål <em class=\"bm\">da</em> finst ikkje på nynorsk.",
+      explanation: "Det skjedde éin bestemt gong i fortida, så det heiter <em class=\"nn\">då</em>. Hugseregelen er «den gongen då, kvar gong når». (<em class=\"nn\">Da</em> er òg lov på nynorsk, men <em class=\"nn\">då</em> er det vanlege.)",
     },
     {
       id: "set9",
@@ -1494,7 +1496,7 @@ Modules.register({
             <tr><td><em class="nn">Då han kom heim,</em></td><td><em class="nn">åt</em></td><td><em class="nn">han middag.</em></td></tr>
           </tbody>
         </table>
-        <p>Legg merke til den siste: ei leddsetning som står først, tel som <em>éitt ledd</em> på
+        <p>Legg merke til den siste: ei leddsetning som står først, tel som <em>eitt ledd</em> på
         plass 1. Difor kjem verbalet rett etter kommaet, og subjektet etterpå:
         <em class="nn">Då han kom heim, <strong>åt han</strong></em>, ikkje
         <em class="bm">Då han kom heim, han åt</em>.</p>
@@ -1577,9 +1579,9 @@ Modules.register({
       type: "exercise",
       exerciseType: "multipleChoice",
       question: "Kva ord skal inn? «___ eg var liten, budde vi i Bergen.»",
-      options: ["Då", "Når", "Da", "Nå"],
+      options: ["Då", "Når", "Om", "Nå"],
       correct: 0,
-      explanation: "Det handlar om éin bestemt periode i fortida («den gongen då»). <em class=\"bm\">Da</em> finst ikkje på nynorsk, og <em class=\"nn\">nå</em> er eit adverb som tyder «no».",
+      explanation: "Det handlar om éin bestemt periode i fortida («den gongen då»). <em class=\"nn\">Da</em> er òg lov, men <em class=\"nn\">då</em> er det vanlege på nynorsk. <em class=\"nn\">Nå</em> er eit adverb som tyder «no».",
     },
     {
       id: "set15",
@@ -1604,17 +1606,15 @@ Modules.register({
       accept: [
         "Då han kom heim, åt han ikkje middag fordi han ikkje var svolten",
         "Då han kom heim, åt han ikkje middag, fordi han ikkje var svolten",
-        "Då han kom heim, åt han ikkje middag fordi han ikkje var sulten",
-        "Då han kom heim, åt han ikkje middag, fordi han ikkje var sulten",
       ],
-      hint: "spise → ete (sterkt verb: et – åt – har ete); sulten → svolten (eller sulten).",
+      hint: "spise → ete (sterkt verb: et – åt – har ete); sulten → svolten.",
       explanation: "<em class=\"nn\">Då</em> fordi det er éin bestemt gong. Leddsetninga står først, så verbalet kjem rett etter kommaet: <em class=\"nn\">åt han</em>. I leddsetninga <em class=\"nn\">fordi han ikkje var svolten</em> står <em class=\"nn\">ikkje</em> framfor verbalet.",
     },
     {
       id: "set17",
       type: "exercise",
       exerciseType: "matching",
-      question: "Para saman setningsleddet med dømet. Alle døma er henta frå setninga «I går gav Kari guten ei bok på skulen» og «Kari er glad».",
+      question: "Para saman setningsleddet med dømet. Alle døma er henta frå setningane «I går gav Kari guten ei bok på skulen» og «Kari er glad».",
       pairs: [
         ["Subjekt", "Kari i «Kari gav guten ei bok»"],
         ["Verbal", "gav i «Kari gav guten ei bok»"],

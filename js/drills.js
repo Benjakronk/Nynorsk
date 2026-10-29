@@ -158,7 +158,11 @@ const Drills = (() => {
   }
 
   /* ---------- VERBS ---------- */
-  // { inf, cls: "a"|"e"|"j"|"kort"|"sterk", f: [presens, preteritum, perfektum partisipp], bm? }
+  // { inf, cls: "a"|"e"|"j"|"kort"|"sterk", f: [presens, preteritum, perfektum partisipp], bm?, tyding?, bmTyding?, ikkjeGale? }
+  // tyding: kort forklaring når infinitiven har ei anna tyding òg, til dømes sterke «fryse»
+  // (bli til is) mot svake «fryse» (fryse ned mat). ikkjeGale: rette former av det andre
+  // verbet, som aldri skal brukast som gale val. bmTyding: same for bm-ordet når det òg er
+  // eit nynorskord med anna tyding («huske» er å gynge på nynorsk).
 
   const VERB_RULE = {
     a: "A-verb får -ar i presens og -a i preteritum og perfektum.",
@@ -182,6 +186,9 @@ const Drills = (() => {
     if (idx === 2) return [st + "et", st + "t", st + "a", st + "d"];
     return [];
   }
+  function verbNamn(v) {
+    return `«å ${first(v.inf)}»` + (v.tyding ? ` (${v.tyding})` : "");
+  }
   const VERB_LABEL = ["Presens", "Preteritum", "Perfektum"];
   const VERB_CUE = ["(i dag …)", "(i går …)", "(har …)"];
 
@@ -189,12 +196,13 @@ const Drills = (() => {
     let accept = splitAlt(v.f[idx]);
     if (idx === 2) accept = accept.concat(accept.map(a => "har " + a));
     const borrow = all.filter(x => x !== v).map(x => first(x.f[idx]));
+    const ikkje = new Set((v.ikkjeGale || []).map(normalize));
     return {
       key: `verbs:f${idx}:${first(v.inf)}`,
-      prompt: `${VERB_LABEL[idx]} av «å ${first(v.inf)}»`,
+      prompt: `${VERB_LABEL[idx]} av ${verbNamn(v)}`,
       cue: VERB_CUE[idx],
       accept,
-      options: finishOptions(splitAlt(v.f[idx]), verbWrongForms(v, idx), borrow, 2),
+      options: finishOptions(splitAlt(v.f[idx]), verbWrongForms(v, idx).filter(w => !ikkje.has(normalize(w))), borrow, 2),
       kind: "either",
       why: verbWhy(v),
     };
@@ -207,7 +215,7 @@ const Drills = (() => {
       const others = shuffle(Object.keys(CLASS_NAME).filter(c => c !== v.cls)).slice(0, 3);
       return {
         key: `verbs:cls:${first(v.inf)}`,
-        prompt: `Kva slags verb er «å ${first(v.inf)}»?`,
+        prompt: `Kva slags verb er ${verbNamn(v)}?`,
         cue: `Tenk på preteritum: «i går ${first(v.f[1])}».`,
         accept: [CLASS_NAME[v.cls]],
         options: [CLASS_NAME[v.cls]].concat(others.map(c => CLASS_NAME[c])),
@@ -219,7 +227,7 @@ const Drills = (() => {
       if (!v.bm || normalize(v.bm) === normalize(first(v.inf))) return null;
       return {
         key: `verbs:fromBm:${first(v.inf)}`,
-        prompt: `Kva heiter «å ${v.bm}» på nynorsk?`,
+        prompt: `Kva heiter «å ${v.bm}»${v.bmTyding ? ` (${v.bmTyding})` : ""} på nynorsk?`,
         cue: "Skriv infinitiv utan «å».",
         accept: splitAlt(v.inf),
         options: finishOptions(splitAlt(v.inf), [v.bm], all.map(x => first(x.inf)), 2),

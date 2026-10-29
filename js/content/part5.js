@@ -16,7 +16,7 @@ Modules.register({
       type: "lesson",
       title: "Kvifor møte forfattarane?",
       content: `
-        <p>Tekstane du har lese (eller skal lese) i lesetreningsmodulane er originale,
+        <p>Tekstane du har lese (eller skal lese) i lesetreningsmodulane, er originale,
         eg har skrive dei sjølv, men dei er <em class="nn">inspirerte av stilen</em>
         til ni kjende nynorskforfattarar. I denne modulen får du møte dei sjølve.</p>
 
@@ -42,7 +42,7 @@ Modules.register({
         <p>Vinje voks opp i fattige kår og arbeidde seg fram som lærar og seinare jurist
         og journalist. Han var ein av dei første som tok i bruk landsmålet til Ivar
         Aasen i praktisk skrift. I 1858 grunnla han bladet <em class="nn">Dølen</em>,
-        som han skreiv mest sjølv, eit slags eit-mannsblad fullt av reisebrev,
+        som han skreiv mest sjølv, eit slags einmannsblad fullt av reisebrev,
         meiningar, dikt og kommentarar.</p>
 
         <p><strong>Stil:</strong> Han var observant og ironisk, og blanda høgt og lågt
@@ -70,7 +70,7 @@ Modules.register({
       question: "Vinje grunnla bladet <em class=\"nn\">Dølen</em> i 1858. Kva var spesielt med det?",
       options: ["Det var det første bladet på bokmål.","Det kom berre ut éin gong.","Han skreiv det meste av bladet sjølv, på landsmål.","Det handla berre om musikk."],
       correct: 2,
-      explanation: "Dølen var nesten eit eit-mannsblad: reisebrev, meiningar, dikt og kommentarar, det meste skrive av Vinje sjølv. Han var ein av dei første som brukte landsmålet til Aasen i praktisk skrift.",
+      explanation: "Dølen var nesten eit einmannsblad: reisebrev, meiningar, dikt og kommentarar, det meste skrive av Vinje sjølv. Han var ein av dei første som brukte landsmålet til Aasen i praktisk skrift.",
     },
     {
       type: "lesson",
@@ -83,8 +83,8 @@ Modules.register({
         <p><strong>Frå:</strong> Time på Jæren.<br>
         <strong>Yrke:</strong> Romanforfattar, lyrikar, kulturkritikar.</p>
 
-        <p>Garborg var ein av dei sterkaste røystene i nynorsk-bevegelsen på 1800- og
-        tidleg 1900-tal. Han skreiv om bondelivet han kom frå, om reisa til byen, om
+        <p>Garborg var ein av dei sterkaste røystene i nynorsk-bevegelsen på 1800-talet og
+        tidleg på 1900-talet. Han skreiv om bondelivet han kom frå, om reisa til byen, om
         unge menneske som strir med tru, tvil og lengsel.</p>
 
         <p><strong>Stil:</strong> Sosialrealistisk og psykologisk. Han var blant dei
@@ -130,7 +130,7 @@ Modules.register({
 
         <p>Duun voks opp på ei lita øy ved kysten og bar med seg heile livet språket
         og forteljingane derifrå. Hovudverket hans er ein svær slektsroman om
-        Juvik-folket, ein gard ved kysten i Trøndelag, gjennom mange generasjonar.</p>
+        Juvik-folket, ei slekt på ein gard ved kysten i Trøndelag, gjennom mange generasjonar.</p>
 
         <p><strong>Stil:</strong> Episk og dramatisk. Duun skreiv om sterke karakterar
         som strir med naturen, med sine eigne kjensler og med lagnaden. Bøkene hans
@@ -174,7 +174,7 @@ Modules.register({
         Han var gift med lyrikaren Halldis Moren Vesaas.</p>
 
         <p><strong>Stil:</strong> Sparsom, poetisk, symbolsk. Vesaas brukar enkle ord
-        og korte setningar, men det han skriv om er ofte djupt: frykt, einsemd,
+        og korte setningar, men det han skriv om, er ofte djupt: frykt, einsemd,
         venskap, naturen som spegel for menneskesinnet.</p>
 
         <p><strong>Kjende verk:</strong></p>
@@ -255,7 +255,7 @@ Modules.register({
           <img src="bilete/fosse.jpg" alt="Portrett av Jon Fosse" loading="lazy">
           <figcaption>Jon Fosse. Foto: Tom A. Kolstad / Det Norske Samlaget (CC BY-SA 4.0).</figcaption>
         </figure>
-        <p><strong>Frå:</strong> Haugesund. Bur i dag i æresbustaden Grotten i Oslo, og har
+        <p><strong>Frå:</strong> Haugesund. Bur i dag i æresbustaden Grotten i Oslo og har
         heim på Frekhaug ved Bergen og i Hainburg i Austerrike.<br>
         <strong>Yrke:</strong> Dramatikar, romanforfattar, lyrikar, omsetjar.</p>
 
@@ -275,7 +275,7 @@ Modules.register({
           <li><em class="nn">Morgon og kveld</em> (2000): kort roman om eit liv frå
               fødsel til død.</li>
           <li><em class="nn">Septologien</em> (2019–2021, tre band): eit hovudverk,
-              med tittelen <em class="nn">«Det andre namnet»</em>, <em class="nn">«Eg er
+              med titlane <em class="nn">«Det andre namnet»</em>, <em class="nn">«Eg er
               ein annan»</em> og <em class="nn">«Eit nytt namn»</em>.</li>
           <li><em class="nn">Trilogien</em> (2014): fekk Nordisk råds litteraturpris.</li>
         </ul>
@@ -311,7 +311,7 @@ Modules.register({
         kortprosa, songtekstar og kommentarar i avisene.</p>
 
         <p><strong>Stil:</strong> Urban og kvardagsleg. Han skriv ofte korte forteljingar
-        som zoomar inn på små augneblink, ein bussreise, eit møte, ein middag, og
+        som zoomar inn på små augneblinkar, ei bussreise, eit møte, ein middag, og
         får dei til å vere viktige.</p>
 
         <p><strong>Kjende verk:</strong></p>
@@ -344,7 +344,7 @@ Modules.register({
         <p><strong>Frå:</strong> Odda i Hardanger.<br>
         <strong>Yrke:</strong> Forfattar, essayist, kulturarbeidar.</p>
 
-        <p>Marit Eikemo skriv både skjønnlitteratur og sakprosa, og har vore leiar
+        <p>Marit Eikemo skriv både skjønnlitteratur og sakprosa og har vore leiar
         for Litteratursymposiet i Odda. Ho er kjend for å skrive nært på samtida,
         om kva som skjer med oss og kulturen vår akkurat no.</p>
 
@@ -467,7 +467,7 @@ Modules.register({
       type: "lesson",
       title: "Om teksten",
       content: `
-        <p><strong>Aasmund Olavsson Vinje</strong> var journalist, dikter og reiseskildrar, og
+        <p><strong>Aasmund Olavsson Vinje</strong> var journalist, diktar og reiseskildrar, og
         den første som verkeleg brukte landsmålet til noko anna enn ordlister. Han gav ut bladet
         <em class="nn">Dølen</em>, som han skreiv mest sjølv, og reiseboka
         <em class="nn">Ferdaminne fraa Sumaren 1860</em>.</p>
@@ -499,13 +499,13 @@ Modules.register({
         <div class="callout warn">
           <strong>To tekstar i denne modulen.</strong> Den første er skriven for dette
           kurset, i stilen til Vinje, så du kan øve på moderne nynorsk. Den andre er
-          diktet «Ved Rundarne» frå 1864, skriven av Vinje sjølv, i original staving med ordliste.
+          diktet «Ved Rundarne» frå 1864, skrive av Vinje sjølv, i original staving med ordliste.
           Les dei i den rekkjefølgja dei står.
         </div>
 
         <div class="callout">
           <strong>Vil du lese ekte tekstar av Aasmund Olavsson Vinje (1818–1870)?</strong>
-          <p>Vinje døydde i 1870, så alt han skreiv er fritt tilgjengeleg. Du kan lese
+          <p>Vinje døydde i 1870, så alt han skreiv, er fritt tilgjengeleg. Du kan lese
         <em class="nn">Ferdaminni</em> og dikta hans gratis hjå
         <a href="https://www.bokselskap.no/forfattere/vinje" target="_blank" rel="noopener">bokselskap.no</a>.
         Merk at han skreiv landsmål slik det såg ut i 1861, med former som
@@ -533,7 +533,7 @@ Modules.register({
         over høgtalaren, og folk reiser seg for å fotografere kvarandre framfor
         stasjonsskiltet. To engelskmenn står med ryggsekkar like store som dei sjølve.
         Dei skal gå over vidda til Aurland, høyrer eg, fire dagar i raude jakker
-        mellom kvite stein.</p>
+        mellom kvite steinar.</p>
 
         <p>«Trur du dei klarer det?» spør guten.<br>
         «Sikkert», seier mora.</p>
@@ -702,7 +702,7 @@ Modules.register({
       type: "exercise",
       exerciseType: "freeText",
       title: "Skriv: di eiga reiseskildring",
-      question: "Skriv ei kort reiseskildring (150–250 ord) frå ei reise du har gjort, kort eller lang. Bland det du såg med det du tenkte, slik Vinje gjer.",
+      question: "Skriv ei kort reiseskildring (150–250 ord) frå ei reise du har gjort, kort eller lang. Bland det du såg, med det du tenkte, slik Vinje gjer.",
       hint: "Ei reiseskildring er ikkje ei ruteliste. Vel ut nokre få ting du la merke til, og la tankane henge seg på dei.",
       minWords: 150,
       checklist: [
@@ -756,13 +756,13 @@ Modules.register({
         <div class="callout warn">
           <strong>To tekstar i denne modulen.</strong> Den første er skriven for dette
           kurset, i stilen til Garborg, så du kan øve på moderne nynorsk. Den andre er
-          eit utdrag frå «Bondestudentar» frå 1883, skriven av Garborg sjølv, i original staving med ordliste.
+          eit utdrag frå «Bondestudentar» frå 1883, skrive av Garborg sjølv, i original staving med ordliste.
           Les dei i den rekkjefølgja dei står.
         </div>
 
         <div class="callout">
           <strong>Vil du lese ekte tekstar av Arne Garborg (1851–1924)?</strong>
-          <p>Garborg døydde i 1924, så alt han skreiv er fritt tilgjengeleg. Heile
+          <p>Garborg døydde i 1924, så alt han skreiv, er fritt tilgjengeleg. Heile
         <em class="nn">Bondestudentar</em>, <em class="nn">Fred</em> og
         <em class="nn">Haugtussa</em> ligg gratis hjå
         <a href="https://www.bokselskap.no/forfattere/garborg" target="_blank" rel="noopener">bokselskap.no</a>.
@@ -783,8 +783,8 @@ Modules.register({
 
         <p>Anders sette frå seg ryggsekken på stasjonen og såg seg om. Bygda låg der ho
         låg. Tre nye hus oppe i bakken. Men dei gamle, dei var som før. Butikken på
-        hjørnet var open. Skiltet på frisørsalongen var det same. Berre dei nye
-        målestrøka var ulike.</p>
+        hjørnet var open. Skiltet på frisørsalongen var det same. Berre nokre av
+        husa hadde fått ny måling.</p>
 
         <p>Han hadde studert i Oslo. Sosialantropologi. Han hadde tenkt at det skulle
         vere noko som opna verda for han, og det hadde det vore òg, ein periode. Men i
@@ -798,7 +798,7 @@ Modules.register({
         dei vart tynnare for kvar gong.</p>
 
         <p>Mor stod i kjøkenet då han kom inn. Ho sette frå seg kaffekoppen, kom mot
-        han, og klemde han lenge utan å seie noko. Det var akkurat det han hadde grua
+        han og klemde han lenge utan å seie noko. Det var akkurat det han hadde grua
         seg til og lengta etter på same tid: at ho ikkje skulle spørje. At ho berre
         skulle klemme.</p>
 
@@ -820,7 +820,7 @@ Modules.register({
         der folk venta at ein skulle snakke om det viktige.</p>
 
         <p>Den første natta sov han ikkje. Han låg og høyrde fjøsen. Kyrne snufsa. Ein
-        hund glefsa langt borte. Han høyrde elva bak låven, ho som hadde rensa
+        hund glefsa langt borte. Han høyrde elva bak låven, ho som hadde reinsa
         kveldsdusta i alle hans somrar. Det var ein lyd som var så velkjend at han
         hadde gløymt at han var der.</p>
 
@@ -844,7 +844,7 @@ Modules.register({
 
         <p>Det var det dei sa om saka. Anders såg ut over enga. Han tenkte: kanskje eg
         blir verande. Kanskje eg reiser igjen. Han visste ikkje. Men for første gong
-        sidan i fjor haust, var det å ikkje vite ikkje ein vond ting. Det var berre ein
+        sidan i fjor haust var det å ikkje vite ikkje ein vond ting. Det var berre ein
         ting. Han kunne leve med det ei stund.</p>
       `,
       questions: [
@@ -854,7 +854,7 @@ Modules.register({
           options: [
             "For å hjelpe far med innhausting.",
             "For å arbeide som lærar i bygda.",
-            "Han har slita psykisk i Oslo og treng å vere ein stad han kjenner.",
+            "Han har slite psykisk i Oslo og treng å vere ein stad han kjenner.",
             "Han har fått sparken frå studiet.",
           ],
           correct: 2,
@@ -877,7 +877,7 @@ Modules.register({
             "Han blir lei og slit med å hugse korleis det skal gjerast.",
             "Han kjenner at kroppen hugsar arbeidet, og det gir ein ro.",
             "Han forstår at han aldri vil arbeide i fjøsen att.",
-            "Han krangler med far.",
+            "Han kranglar med far.",
           ],
           correct: 1,
         },
@@ -994,7 +994,7 @@ Modules.register({
       checklist: [
         "Vel ein stad og gjer han konkret med tre eller fire detaljar.",
         "Ikkje skriv kva personen kjenner. Vis det.",
-        "Ta med minst ein kort replikkveksling.",
+        "Ta med minst ei kort replikkveksling.",
         "La noko vere usagt mellom personane.",
         "Skriv på nynorsk.",
       ],
@@ -1190,7 +1190,7 @@ Modules.register({
         {
           type: "freeShort",
           question: "Kva betyr det at mor græt på slutten, etter at bestefar har snakka til henne?",
-          modelAnswer: "Det er ein blanding av lette og sorg. Lette over at far hennar framleis er der, ein liten augneblink. Sorg fordi ho veit at slike augneblink no er sjeldne, at han for det meste er borte, sjølv om han fysisk er hjå dei.",
+          modelAnswer: "Det er ein blanding av lette og sorg. Lette over at far hennar framleis er der, ein liten augneblink. Sorg fordi ho veit at slike augneblinkar no er sjeldne, at han for det meste er borte, sjølv om han fysisk er hjå dei.",
         },
       ],
     },
@@ -1288,7 +1288,7 @@ Modules.register({
         {
           type: "freeShort",
           question: "«Han var ingen husmanns-larv, vilde dei vita det!» Kva fortel denne setninga om Per, og kvifor står ho heilt til slutt?",
-          modelAnswer: "Ho fortel at Per set æra si over alt anna. Han er fattig og eigedomslaus, men han nektar å bli sett på som ein stakkar som kan kjøpast eller kommanderast. At setninga står til slutt gjer henne til ein konklusjon: alt han har gjort i avsnittet, valdet og neitakket, blir forklart av denne eine haldninga.",
+          modelAnswer: "Ho fortel at Per set æra si over alt anna. Han er fattig og eigedomslaus, men han nektar å bli sett på som ein stakkar som kan kjøpast eller kommanderast. At setninga står til slutt, gjer henne til ein konklusjon: alt han har gjort i avsnittet, valdet og neitakket, blir forklart av denne eine haldninga.",
         },
         {
           type: "freeShort",
@@ -1327,7 +1327,7 @@ Modules.register({
       title: "Om teksten",
       content: `
         <p><strong>Tarjei Vesaas</strong> skriv sparsamt, poetisk og symbolsk. Han brukar
-        enkle ord og korte setningar, men det han skriv om er ofte djupt: frykt, einsemd,
+        enkle ord og korte setningar, men det han skriv om, er ofte djupt: frykt, einsemd,
         venskap og naturen som spegel for menneskesinnet. <em class="nn">Is-slottet</em> (1963)
         og <em class="nn">Fuglane</em> (1957) er dei mest kjende bøkene hans.</p>
 
@@ -1830,7 +1830,7 @@ Modules.register({
       title: "Om teksten",
       content: `
         <p><strong>Frode Grytten</strong> skriv urbant og kvardagsleg. Han lagar ofte korte
-        forteljingar som zoomar inn på små augneblink, ein bussreise, eit møte, ein middag, og
+        forteljingar som zoomar inn på små augneblinkar, ei bussreise, eit møte, ein middag, og
         får dei til å vere viktige. <em class="nn">Bikubesong</em> (1999) er bygd opp som mange
         korte historier frå same bygard.</p>
 
@@ -1935,7 +1935,7 @@ Modules.register({
           type: "multipleChoice",
           question: "Korleis verkar forholdet mellom Lina og mora hennar?",
           options: [
-            "Heilt openbart og lett.",
+            "Heilt ope og lett.",
             "Anstrengt: det er noko som ikkje er sagt mellom dei.",
             "Veldig formelt.",
             "Dei kjenner kvarandre dårleg.",
@@ -1946,7 +1946,7 @@ Modules.register({
           type: "multipleChoice",
           question: "Kva slags person verkar Marius som?",
           options: [
-            "Påtrengjande og høglydd.",
+            "Påtrengjande og høgrøysta.",
             "Likegyldig.",
             "Stille, men merksam: han skjønar at noko er gale.",
             "Sint.",
@@ -2130,7 +2130,7 @@ Modules.register({
         {
           type: "freeShort",
           question: "Kva slags lesing gjer du sjølv? Liknar det meir på den raske eller den sakte måten forfattaren skildrar? Grunngi.",
-          modelAnswer: "Eit svar kan vere: Eg les for det meste raskt på nettet, særleg når eg skal finne ut noko spesifikt. Men når eg les ei bok eg verkeleg liker, kan eg gløyme tida, og då er det meir lik den sakte lesinga forfattaren skildrar.",
+          modelAnswer: "Eit svar kan vere: Eg les for det meste raskt på nettet, særleg når eg skal finne ut noko spesifikt. Men når eg les ei bok eg verkeleg liker, kan eg gløyme tida, og då er det meir likt den sakte lesinga forfattaren skildrar.",
         },
       ],
     },
@@ -2257,7 +2257,7 @@ Modules.register({
 
         <p>Eg trur kanskje vaksne ikkje skjønar at å sjå på eit gamalt bilete kan vere
         arbeid òg. Det er ikkje berre nostalgi. Det er noko ein gjer for å finne ut
-        korleis ein er kome hit. Kor mange val og uhell og avskjeder som skal til for
+        korleis ein er komen hit. Kor mange val og uhell og avskjedar som skal til for
         at den jenta på biletet, ho i den stygge blå hettegenseren, blir til den jenta
         som no sit på senga si og tenkjer.</p>
       `,
@@ -2279,7 +2279,7 @@ Modules.register({
           options: [
             "Med sinne.",
             "Med likegyldigheit.",
-            "Sakleg og kort, men med ein nærleik: han er ein av fleire skjebner ho nemner.",
+            "Sakleg og kort, men med ein nærleik: han er ein av fleire skjebnar ho nemner.",
             "Med dramatisk sorg.",
           ],
           correct: 2,

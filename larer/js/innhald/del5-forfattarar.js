@@ -33,7 +33,7 @@ Larar.register("nynorskforfattarane", {
       steps: [
         "<p class=\"midt\">Dei første skreiv på <strong>landsmål</strong>, like etter at Ivar Aasen laga det skriftlege grunnlaget.</p>",
       ],
-      notes: "Kople til Del 1: Aasen gav ut grammatikken og ordboka si, og då måtte nokon vise at språket kunne brukast til skjønnlitteratur, journalistikk og dikt. Det gjorde Vinje og Garborg. Poenget for elevane er at nynorsken ikkje berre er ei rettskrivingsregel, men eit språk med ein lang litterær tradisjon. Denne sorteringa kjem att i oppgåva til slutt i timen (lysbilete 21).",
+      notes: "Kople til Del 1: Aasen gav ut grammatikken og ordboka si, og då måtte nokon vise at språket kunne brukast til skjønnlitteratur, journalistikk og dikt. Det gjorde Vinje og Garborg. Poenget for elevane er at nynorsken ikkje berre er ein rettskrivingsregel, men eit språk med ein lang litterær tradisjon. Denne sorteringa kjem att i oppgåva til slutt i timen (lysbilete 21).",
     },
     {
       type: "bilete",
@@ -87,7 +87,7 @@ Larar.register("nynorskforfattarane", {
           <li><em class="nn">Juvikfolket</em> (1918–1923), seks band</li>
           <li>Nominert til Nobelprisen fleire gonger</li>
         </ul>`,
-      notes: "Duun var lærar og voks opp på ei lita øy ved kysten i Trøndelag. <em>Juvikfolket</em> er ein slektsroman om ein gard ved kysten gjennom mange generasjonar, rekna som eit av dei store norske romanverka. Stilen kan minne om islandsk sagalitteratur: sterke karakterar som strir med naturen, kjenslene sine og lagnaden. Andre verk: <em>Medmenneske</em> (1929) og <em>Ragnhild</em> (1931). Forklar ordet slektsroman: ei forteljing som følgjer ei familie gjennom fleire generasjonar.",
+      notes: "Duun var lærar og voks opp på ei lita øy ved kysten i Trøndelag. <em>Juvikfolket</em> er ein slektsroman om ein gard ved kysten gjennom mange generasjonar, rekna som eit av dei store norske romanverka. Stilen kan minne om islandsk sagalitteratur: sterke karakterar som strir med naturen, kjenslene sine og lagnaden. Andre verk: <em>Medmenneske</em> (1929) og <em>Ragnhild</em> (1931). Forklar ordet slektsroman: ei forteljing som følgjer ein familie gjennom fleire generasjonar.",
     },
     {
       type: "bilete",
@@ -168,11 +168,11 @@ Larar.register("nynorskforfattarane", {
       caption: "Foto: Jarvin (CC BY 3.0)",
       body: `<ul>
           <li>Frå industribygda Odda</li>
-          <li>Små augneblink i kvardagen</li>
+          <li>Små augneblinkar i kvardagen</li>
           <li><em class="nn">Bikubesong</em> (1999): naboar i ei blokk</li>
           <li>Fekk Brageprisen</li>
         </ul>`,
-      notes: "Grytten er forfattar og journalist, og industriarbeidarane og bygdesamfunnet i Odda pregar mykje av forfattarskapen. Han skriv romanar, kortprosa, songtekstar og aviskommentarar. Stilen er kvardagsleg: han zoomar inn på ein bussreise, eit møte, ein middag, og får det til å vere viktig. <em>Bikubesong</em> er sett saman av mange korte historier, så ein kan lese éi av gongen. Det gjer boka fin å tilrå elevar som ikkje likar lange bøker.",
+      notes: "Grytten er forfattar og journalist, og industriarbeidarane og bygdesamfunnet i Odda pregar mykje av forfattarskapen. Han skriv romanar, kortprosa, songtekstar og aviskommentarar. Stilen er kvardagsleg: han zoomar inn på ei bussreise, eit møte, ein middag, og får det til å vere viktig. <em>Bikubesong</em> er sett saman av mange korte historier, så ein kan lese éi av gongen. Det gjer boka fin å tilrå elevar som ikkje likar lange bøker.",
     },
     {
       kicker: "fødd 1971",
@@ -207,7 +207,7 @@ Larar.register("nynorskforfattarane", {
           <div class="boks"><h3>2017</h3><p>Olaug Nilssen</p><p><em class="nn">Tung tids tale</em>, roman om ein son med autisme</p></div>
         </div>`,
       steps: ["<p class=\"midt stor\">Nilssen: det er ei tung tid for mange foreldre <strong>no òg</strong>.</p>"],
-      svar: "Når ein forfattar lånar ein tittel eller ei linje frå ein eldre tekst, kallar vi det ein <strong>referanse</strong> eller ei <strong>allusjon</strong>. Den nye teksten får med seg meininga frå den gamle.",
+      svar: "Når ein forfattar lånar ein tittel eller ei linje frå ein eldre tekst, kallar vi det ein <strong>referanse</strong> eller ein <strong>allusjon</strong>. Den nye teksten får med seg meininga frå den gamle.",
       notes: "Dette er eit fint døme på at litteraturen er ein samtale over tid. Spør før du viser steget: kvifor vel ein forfattar i 2017 ein tittel frå 1945? Kva får lesaren med seg frå det gamle diktet? Elevane pleier å oversjå at referansen seier noko om korleis Nilssen ser på si eiga tid: det er ikkje krig, men for nokre er det like tungt.",
     },
     {
@@ -263,7 +263,7 @@ Larar.register("nynorskforfattarane", {
         "<p class=\"stor\">Stilane er svært ulike: ironisk, episk, sparsam, repetitiv, direkte.</p>",
         "<p class=\"stor\">I 2023 fekk <strong>Jon Fosse</strong> Nobelprisen.</p>",
       ],
-      notes: "Exit-lapp: be elevane skrive namnet på éin forfattar og eitt stikkord om stilen hans eller hennar. Då ser du raskt om stil-omgrepa har sett seg. Fortel at dei neste timane skal vi lese tekstar i stilen til desse forfattarane.",
+      notes: "Exit-lapp: be elevane skrive namnet på éin forfattar og eitt stikkord om stilen hans eller hennar. Då ser du raskt om stilomgrepa har sett seg. Fortel at dei neste timane skal vi lese tekstar i stilen til desse forfattarane.",
     },
   ],
   guide: {
@@ -306,7 +306,7 @@ Larar.register("nynorskforfattarane", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane ei tabell med tre kolonnar (namn, tid, stil) dei fyller ut undervegs.",
+        "Gi elevane ein tabell med tre kolonnar (namn, tid, stil) dei fyller ut undervegs.",
         "La elevane konsentrere seg om tre forfattarar, éin frå kvar tid.",
         "Skriv stikkorda for kvar forfattar på tavla undervegs, så elevane har dei framfor seg når dei sorterer.",
       ],
@@ -415,7 +415,7 @@ Larar.register("lesing-vinje", {
         over høgtalaren, og folk reiser seg for å fotografere kvarandre framfor
         stasjonsskiltet. To engelskmenn står med ryggsekkar like store som dei sjølve.
         Dei skal gå over vidda til Aurland, høyrer eg, fire dagar i raude jakker
-        mellom kvite stein.</p>
+        mellom kvite steinar.</p>
 
         <p>«Trur du dei klarer det?» spør guten.<br>
         «Sikkert», seier mora.</p>
@@ -440,7 +440,7 @@ Larar.register("lesing-vinje", {
       text: "Slik er det med oss vaksne òg: vi gjev svar med stødig stemme, sjølv om vi berre delvis veit kva vi snakkar om.",
       kjelde: "«Med toget over vidda»",
       steps: ["<p>Kva har skjedd rett før denne setninga? Kven er «vi»?</p>"],
-      notes: "Rett før spør guten mor si om reinsdyr, fjell og innsjøar, og ho svarer tolmodig utan å vite alt. Forteljaren gjer eit lite augneblink om til ein tanke om alle vaksne, og han tek seg sjølv med: «oss vaksne». Det er det sjølvironiske. Oppfølging: kjenner de att at vaksne svarer sikkert sjølv om dei ikkje veit? Gjer de det sjølve?",
+      notes: "Rett før spør guten mor si om reinsdyr, fjell og innsjøar, og ho svarer tolmodig utan å vite alt. Forteljaren gjer ein liten augneblink om til ein tanke om alle vaksne, og han tek seg sjølv med: «oss vaksne». Det er det sjølvironiske. Oppfølging: kjenner de att at vaksne svarer sikkert sjølv om dei ikkje veit? Gjer de det sjølve?",
     },
     {
       title: "Frå det han ser til det han tenkjer",
@@ -726,7 +726,7 @@ Larar.register("lesing-garborg", {
         <p>Kva kan ho handle om? Korleis er det å kome heim etter lang tid borte?</p>`,
       form: "Snakk med sidemannen",
       tid: 2,
-      notes: "La elevane gjette handlinga ut frå tittelen, og samle eit par forventingar på tavla. Kom tilbake til dei etter lesinga: stemde det? Mange elevar har erfaring med å kome heim etter ein leir, ei ferie eller ei tid hos den andre forelderen. Knyt gjerne an til det.",
+      notes: "La elevane gjette handlinga ut frå tittelen, og samle eit par forventingar på tavla. Kom tilbake til dei etter lesinga: stemde det? Mange elevar har erfaring med å kome heim etter ein leir, ein ferie eller ei tid hos den andre forelderen. Knyt gjerne an til det.",
     },
     {
       title: "Ord i teksten",
@@ -734,7 +734,7 @@ Larar.register("lesing-garborg", {
         "<p class=\"stor\"><em class=\"nn\">sosialantropologi</em>: eit universitetsfag om kulturar og samfunn</p>",
         "<p class=\"stor\"><em class=\"nn\">førelesing</em>: undervisning på universitetet</p>",
         "<p class=\"stor\"><em class=\"nn\">stabbur</em>: gammalt lagerhus på garden</p>",
-        "<p class=\"stor\"><em class=\"nn\">grue seg</em> og <em class=\"nn\">lengte</em>: å gru seg til og lengte etter noko <strong>på same tid</strong></p>",
+        "<p class=\"stor\"><em class=\"nn\">grue seg</em> og <em class=\"nn\">lengte</em>: å grue seg til og lengte etter noko <strong>på same tid</strong></p>",
       ],
       notes: "Det siste punktet er ikkje eit vanskeleg ord, men ein nøkkel til teksten: Anders gruar seg til og lengtar etter det same, at mor skal klemme han utan å spørje. Spør om nokon har kjent det slik. Det er eit døme på motstridande kjensler, som er typisk for psykologisk realisme.",
     },
@@ -774,8 +774,8 @@ Larar.register("lesing-garborg", {
 
         <p>Anders sette frå seg ryggsekken på stasjonen og såg seg om. Bygda låg der ho
         låg. Tre nye hus oppe i bakken. Men dei gamle, dei var som før. Butikken på
-        hjørnet var open. Skiltet på frisørsalongen var det same. Berre dei nye
-        målestrøka var ulike.</p>
+        hjørnet var open. Skiltet på frisørsalongen var det same. Berre nokre av
+        husa hadde fått ny måling.</p>
 
         <p>Han hadde studert i Oslo. Sosialantropologi. Han hadde tenkt at det skulle
         vere noko som opna verda for han, og det hadde det vore òg, ein periode. Men i
@@ -789,7 +789,7 @@ Larar.register("lesing-garborg", {
         dei vart tynnare for kvar gong.</p>
 
         <p>Mor stod i kjøkenet då han kom inn. Ho sette frå seg kaffekoppen, kom mot
-        han, og klemde han lenge utan å seie noko. Det var akkurat det han hadde grua
+        han og klemde han lenge utan å seie noko. Det var akkurat det han hadde grua
         seg til og lengta etter på same tid: at ho ikkje skulle spørje. At ho berre
         skulle klemme.</p>
 
@@ -811,7 +811,7 @@ Larar.register("lesing-garborg", {
         der folk venta at ein skulle snakke om det viktige.</p>
 
         <p>Den første natta sov han ikkje. Han låg og høyrde fjøsen. Kyrne snufsa. Ein
-        hund glefsa langt borte. Han høyrde elva bak låven, ho som hadde rensa
+        hund glefsa langt borte. Han høyrde elva bak låven, ho som hadde reinsa
         kveldsdusta i alle hans somrar. Det var ein lyd som var så velkjend at han
         hadde gløymt at han var der.</p>
 
@@ -835,10 +835,10 @@ Larar.register("lesing-garborg", {
 
         <p>Det var det dei sa om saka. Anders såg ut over enga. Han tenkte: kanskje eg
         blir verande. Kanskje eg reiser igjen. Han visste ikkje. Men for første gong
-        sidan i fjor haust, var det å ikkje vite ikkje ein vond ting. Det var berre ein
+        sidan i fjor haust var det å ikkje vite ikkje ein vond ting. Det var berre ein
         ting. Han kunne leve med det ei stund.</p>`,
       kjelde: "Skriven for kurset i stilen til Garborg",
-      notes: "Heile kursteksten, ordrett. Kvart trykk blar ei side. Ikkje stopp for å forklare undervegs. Orda er gjennomgått på lysbilete 5. Ver merksam på avsnittet om at noko «knekt» i Oslo: det kan treffe nokon i klassen.",
+      notes: "Heile kursteksten, ordrett. Kvart trykk blar ei side. Ikkje stopp for å forklare undervegs. Orda er gjennomgått på lysbilete 5. Ver merksam på avsnittet om at noko har «knekt» i Oslo: det kan treffe nokon i klassen.",
     },
     {
       type: "sitat",
@@ -852,7 +852,7 @@ Larar.register("lesing-garborg", {
       type: "sitat",
       text: "Når noko var stort, sa ein lite. Når noko var lite, sa ein meir.",
       kjelde: "«Heim att»",
-      steps: ["<p>Stemmer dette i di familie? Kva er fordelen, og kva er ulempa?</p>"],
+      steps: ["<p>Stemmer dette i familien din? Kva er fordelen, og kva er ulempa?</p>"],
       notes: "Denne setninga er nøkkelen til heile teksten, og ho kjem att i spørsmål 4 på lysbilete 19. Legg merke til oppbygginga: to setningar som speglar kvarandre, med stort og lite bytt om. Det er eit verkemiddel (kiasme eller spegling). Teksten seier sjølv kva ulempa er: Anders har teke med seg denne logikken «som ein sjukdom» til byen, der folk venta at ein skulle snakke om det viktige.",
     },
     {
@@ -878,7 +878,7 @@ Larar.register("lesing-garborg", {
     {
       type: "diskuter",
       title: "Slutten",
-      prompt: `<p><em class="nn">«for første gong sidan i fjor haust, var det å ikkje vite ikkje ein vond ting»</em></p>
+      prompt: `<p><em class="nn">«for første gong sidan i fjor haust var det å ikkje vite ikkje ein vond ting»</em></p>
         <p>Er slutten lukkeleg? Kva har endra seg for Anders?</p>`,
       form: "Snakk i grupper på tre",
       tid: 3,
@@ -1231,7 +1231,7 @@ Larar.register("lesing-duun", {
         sau. Det er den eg vil hugse han med. Ikkje stolen ved omnen. Stormen. Sauen
         i krattet. Mor som gret.</p>`,
       kjelde: "Skriven for kurset i stilen til Duun",
-      notes: "Heile kursteksten, ordrett. Kvart trykk blar ei side. Les med roleg, aukande tempo mot stormscena, og la det vere stille eit augneblink etter siste setning før du går vidare. Bestefar har ein sjukdom som gjer at han gløymer. Ver merksam på elevar med besteforeldre med demens.",
+      notes: "Heile kursteksten, ordrett. Kvart trykk blar ei side. Les med roleg, aukande tempo mot stormscena, og la det vere stille ein augneblink etter siste setning før du går vidare. Bestefar har ein sjukdom som gjer at han gløymer. Ver merksam på elevar med besteforeldre med demens.",
     },
     {
       type: "sitat",
@@ -1259,7 +1259,7 @@ Larar.register("lesing-duun", {
         "<p class=\"stor\"><em class=\"nn\">«den slags regn som finn deg uansett kva du har på deg»</em></p>",
         "<p class=\"midt\">Vinden og regnet <strong>gjer</strong> ting, som om dei hadde vilje: <strong>besjeling</strong>.</p>",
       ],
-      notes: "Besjeling (personifisering) er når noko som ikkje lever, får menneskelege eigenskapar. Regnet som «finn» deg er eit godt døme. Spør: korleis ville stormen verke om han berre vart skildra med vindstyrke og regnmengd? Poenget er at naturen blir ein motpart, slik det ofte er hos Duun.",
+      notes: "Besjeling (personifisering) er når noko som ikkje lever, får menneskelege eigenskapar. Regnet som «finn» deg, er eit godt døme. Spør: korleis ville stormen verke om han berre vart skildra med vindstyrke og regnmengd? Poenget er at naturen blir ein motpart, slik det ofte er hos Duun.",
     },
     {
       type: "diskuter",

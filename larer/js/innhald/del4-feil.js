@@ -81,7 +81,7 @@ Larar.register("grammatikk-skriveregler", {
       body: `<p>Mange ord har <strong>to vokalar</strong> på nynorsk der bokmål har éin:</p>`,
       steps: [
         `<p class="stor"><em class="bm">ben, sten, hjem</em> → <em class="nn">bein, stein, heim</em></p>`,
-        `<p class="stor"><em class="bm">øye</em> → <em class="nn">auge</em></p>`,
+        `<p class="stor"><em class="bm">dø, løse</em> → <em class="nn">døy, løyse</em></p>`,
         `<p class="stor"><em class="bm">rød, drøm, strøm</em> → <em class="nn">raud, draum, straum</em></p>`,
         `<p class="stor"><em class="bm">høre</em> → <em class="nn">høyre</em></p>`,
       ],
@@ -154,7 +154,7 @@ Larar.register("grammatikk-skriveregler", {
       steps: [
         `<p class="midt">Og preteritum av <em class="nn">bli/verte</em>: både <em class="nn">blei</em> og <em class="nn">vart</em> er rett. <em class="bm">ble</em> er bokmål.</p>`,
       ],
-      notes: `Særskriving er ikkje ein nynorskfeil spesielt, men han dukkar opp i alle elevtekstar. Vis skilnaden i tyding med eit døme: ein <em>røykfri</em> restaurant og ein <em>røyk fri</em> restaurant. Om vart og blei: vel éi form og hald deg til henne i heile teksten.`,
+      notes: `Særskriving er ikkje ein nynorskfeil spesielt, men ho dukkar opp i alle elevtekstar. Vis skilnaden i tyding med eit døme: ein <em>røykfri</em> restaurant og ein <em>røyk fri</em> restaurant. Om vart og blei: vel éi form og hald deg til henne i heile teksten.`,
     },
     {
       title: "Finn feila",
@@ -242,7 +242,7 @@ Larar.register("grammatikk-skriveregler", {
     ],
     tilpassing: {
       stotte: [
-        `Gi elevane ein huskelapp med småorda og spørjeorda, bokmål til venstre og nynorsk til høgre.`,
+        `Gi elevane ein hugselapp med småorda og spørjeorda, bokmål til venstre og nynorsk til høgre.`,
         `Lat elevane bruke teljetesten som to faste spørsmål: kan eg telje det, og er setninga positiv?`,
         `Lat elevane bruke småordlista på lysbilete 4 når dei gjer oppgåve 1 på lysbilete 17.`,
       ],
@@ -364,7 +364,7 @@ Larar.register("feil-boying", {
       body: `<p class="stor midt"><em class="bm">Alle husene i bygda har raude tak, og bilene står parkert langs den smale veien.</em></p>`,
       steps: [`<p class="midt">Det er <strong>3 feil</strong>.</p>`],
       svar: `<em class="nn">Alle <strong>husa</strong> i bygda har raude tak, og <strong>bilane</strong> står parkert langs den smale <strong>vegen</strong>.</em>`,
-      notes: `<em>Husa</em>: inkjekjønn i bestemt fleirtal. <em>Bilane</em>: hankjønn. <em>Vegen</em> er eit bokmålsord meir enn ein bøyingsfeil: <em class="bm">vei</em> heiter <em>veg</em> på nynorsk. Bygda er rett, for bygd er hokjønn.`,
+      notes: `<em>Husa</em>: inkjekjønn i bestemt fleirtal. <em>Bilane</em>: hankjønn. <em class="bm">Veien</em> er eit bokmålsord meir enn ein bøyingsfeil: <em class="bm">vei</em> heiter <em>veg</em> på nynorsk. Bygda er rett, for bygd er hokjønn.`,
     },
     {
       title: "Adjektivet",
@@ -387,8 +387,8 @@ Larar.register("feil-boying", {
       title: "Finn feila",
       body: `<p><em class="bm">I sommar reiste vi til ei lita hytte ved sjøen. Kvar morgon hoppet vi i vatnet, og etterpå spilte vi fotball på stranden. Om kvelden leste far høgt frå ei gammal bok, og vi sovnet tidleg.</em></p>`,
       steps: [`<p class="midt">Det er <strong>5 feil</strong>, og alle er bøyingsfeil.</p>`],
-      svar: `<em class="bm">hoppet</em> → <em class="nn">hoppa</em>, <em class="bm">spilte</em> → <em class="nn">spela</em>, <em class="bm">stranden</em> → <em class="nn">stranda</em>, <em class="bm">leste</em> → <em class="nn">las</em>, <em class="bm">sovnet</em> → <em class="nn">sovna</em>`,
-      notes: `Lat elevane arbeide to og to i to minutt. <em>Spilte</em> og <em>leste</em> er vanskelegast: på nynorsk er <em>spele</em> eit a-verb (<em>spela</em>), og <em>lese</em> er sterkt (<em>les, las, har lese</em>). <em>Reiste</em> er rett, for reise er eit e-verb.`,
+      svar: `<em class="bm">hoppet</em> → <em class="nn">hoppa</em>, <em class="bm">spilte</em> → <em class="nn">spela</em> (eller <em class="nn">spelte</em>), <em class="bm">stranden</em> → <em class="nn">stranda</em>, <em class="bm">leste</em> → <em class="nn">las</em>, <em class="bm">sovnet</em> → <em class="nn">sovna</em>`,
+      notes: `Lat elevane arbeide to og to i to minutt. <em>Spilte</em> og <em>leste</em> er vanskelegast: på nynorsk heiter verbet <em>spele</em> (<em>spela</em> eller <em>spelte</em>), og <em>lese</em> er sterkt (<em>les, las, har lese</em>). <em>Reiste</em> er rett, for reise er eit e-verb.`,
     },
     {
       type: "oppgave",
@@ -522,7 +522,7 @@ Larar.register("feil-bokmalsord", {
               <tr><td><em class="bm">uke</em></td><td>→ <em class="nn">veke</em></td></tr>
               <tr><td><em class="bm">spise</em></td><td>→ <em class="nn">ete</em></td></tr>
               <tr><td><em class="bm">kirke</em></td><td>→ <em class="nn">kyrkje</em></td></tr>
-              <tr><td><em class="bm">søster</em></td><td>→ <em class="nn">syster</em></td></tr>
+              <tr><td><em class="bm">gjøre</em></td><td>→ <em class="nn">gjere</em></td></tr>
               <tr><td><em class="bm">sammen</em></td><td>→ <em class="nn">saman</em></td></tr>
             </tbody>
           </table>
@@ -561,11 +561,11 @@ Larar.register("feil-bokmalsord", {
             <tr><td><em class="bm">frihet</em></td><td><em class="nn">fridom</em></td></tr>
             <tr><td><em class="bm">sannhet</em></td><td><em class="nn">sanning</em></td></tr>
             <tr><td><em class="bm">mulighet</em></td><td><em class="nn">moglegheit, høve, sjanse</em></td></tr>
-            <tr><td><em class="bm">bevegelse</em></td><td><em class="nn">rørsle</em></td></tr>
-            <tr><td><em class="bm">skuffelse</em></td><td><em class="nn">vonbrot</em></td></tr>
+            <tr><td><em class="bm">begynnelse</em></td><td><em class="nn">byrjing, start</em></td></tr>
+            <tr><td><em class="bm">opplevelse</em></td><td><em class="nn">oppleving</em></td></tr>
           </tbody>
         </table>`,
-      notes: `Ord på -het og -else er nesten alltid feil på nynorsk. Legg merke til <em>moglegheit</em>: ho endar på -heit, ikkje -het, og er heilt vanleg nynorsk.`,
+      notes: `Ord på -het er nesten alltid feil på nynorsk, og det same gjeld dei fleste orda på -else. Nokre få -else-ord står likevel i Nynorskordboka, til dømes <em>bevegelse</em> og <em>skuffelse</em>, men <em>rørsle</em> og <em>vonbrot</em> er betre nynorsk. Legg merke til <em>moglegheit</em>: ho endar på -heit, ikkje -het, og er heilt vanleg nynorsk.`,
     },
     {
       title: "Mønsteret",
@@ -619,7 +619,7 @@ Larar.register("feil-bokmalsord", {
         <p class="stor"><em>sannhet · bestemme · forskjell · bevegelse · erfaring · moglegheit</em></p>`,
       form: "To og to",
       tid: 3,
-      svar: `Feil: <em class="bm">sannhet, bevegelse</em>. Lov, men finst betre: <em class="nn">forskjell</em> (skilnad), <em class="nn">erfaring</em> (røynsle). Heilt greitt: <em class="nn">bestemme, moglegheit</em>.`,
+      svar: `Feil: <em class="bm">sannhet</em>. Lov, men finst betre: <em class="nn">forskjell</em> (skilnad), <em class="nn">erfaring</em> (røynsle), <em class="nn">bevegelse</em> (rørsle). Heilt greitt: <em class="nn">bestemme, moglegheit</em>.`,
       notes: `Bruk dei to boksane frå tidlegare i timen. Lat elevane grunngi plasseringa: kva ending har ordet, og står det i ordboka?`,
     },
     {
@@ -642,7 +642,7 @@ Larar.register("feil-bokmalsord", {
         </ol>`,
       form: "Åleine",
       tid: 5,
-      svar: `1. <em class="nn">et</em> 2. <em class="nn">sidan</em> 3. <em class="nn">pengar</em> 4. <em class="nn">Viss</em>, <em class="nn">Dersom</em> eller <em class="nn">Om</em> 5. <em class="nn">enno</em> eller <em class="nn">endå</em>`,
+      svar: `1. <em class="nn">et</em> 2. <em class="nn">sidan</em> 3. <em class="nn">pengar</em> 4. <em class="nn">Viss</em>, <em class="nn">Dersom</em> eller <em class="nn">Om</em> 5. <em class="nn">enno</em> eller <em class="nn">endå</em> (<em class="nn">ennå</em> er òg tillate på nynorsk)`,
       notes: `Oppgåve 1 er den vanskelegaste: <em>ete</em> er sterkt, så presens er <em>et</em>. Minn om bøyinga <em>ete, et, åt, har ete</em>. I oppgåve 4 og 5 er fleire svar rette.`,
     },
     {
@@ -661,7 +661,7 @@ Larar.register("feil-bokmalsord", {
     {
       title: "Tre raske kontrollar",
       steps: [
-        `<p class="stor">1. Leit etter snikarane: <em class="bm">ikke, bare, hva, jeg, hvis, da, siden, selv</em>.</p>`,
+        `<p class="stor">1. Leit etter snikarane: <em class="bm">ikke, bare, hva, jeg, hvis, siden, selv</em>.</p>`,
         `<p class="stor">2. Leit etter <em class="bm">-het</em> og <em class="bm">-else</em>. Finn eit nynorskord.</p>`,
         `<p class="stor">3. Eit an- eller be-ord? Sjekk ordboka <strong>før</strong> du rettar.</p>`,
       ],
@@ -741,7 +741,7 @@ Larar.register("feil-smaord", {
       question: "Du snakkar til to vener som er seine. Kva seier du?",
       options: [`<em class="nn">Dei må skunde dykk!</em>`, `<em class="nn">De må skunde dykk!</em>`, `<em class="nn">De må skunde dei!</em>`],
       correct: 1,
-      explain: `Du snakkar <strong>til</strong> dei: <em class="nn">de</em> er subjekt og <em class="nn">dykk</em> er objekt. <em class="nn">Dei må skunde seg</em> ville handla om nokon andre.`,
+      explain: `Du snakkar <strong>til</strong> dei: <em class="nn">de</em> er subjekt og <em class="nn">dykk</em> er objekt. <em class="nn">Dei må skunde seg</em> ville handle om nokon andre.`,
       notes: `Ta dette før du forklarer noko. Mange vel det første alternativet, fordi <em>dei</em> kjennest meir nynorsk. Det er den største fella i heile modulen.`,
     },
     {
@@ -757,7 +757,7 @@ Larar.register("feil-smaord", {
       body: `<table>
           <thead><tr><th>Subjekt</th><th>Objekt</th><th>Eigedom</th></tr></thead>
           <tbody>
-            <tr><td><em class="nn">han</em></td><td><em class="nn">han</em> (honom)</td><td><em class="nn">hans</em></td></tr>
+            <tr><td><em class="nn">han</em></td><td><em class="nn">han</em></td><td><em class="nn">hans</em></td></tr>
             <tr><td><em class="nn">ho</em></td><td><em class="nn">henne</em> (ho)</td><td><em class="nn">hennar</em></td></tr>
             <tr><td><em class="nn">de</em></td><td><em class="nn">dykk</em></td><td><em class="nn">dykkar</em></td></tr>
             <tr><td><em class="nn">dei</em></td><td><em class="nn">dei</em></td><td><em class="nn">deira</em></td></tr>
@@ -794,12 +794,12 @@ Larar.register("feil-smaord", {
     },
     {
       title: "Eigedom: Kari si bok",
-      body: `<p class="stor midt">Ikkje <em class="bm">Karis bok</em>, men <em class="nn">Kari si bok</em> eller <em class="nn">boka til Kari</em>.</p>`,
+      body: `<p class="stor midt">Helst ikkje <em class="bm">Karis bok</em>, men <em class="nn">Kari si bok</em> eller <em class="nn">boka til Kari</em>.</p>`,
       steps: [
         `<p class="stor"><em class="nn">Kari sin</em> bil · <em class="nn">Kari si</em> bok · <em class="nn">Kari sitt</em> hus · <em class="nn">Kari sine</em> bøker</p>`,
         `<p class="stor midt">Feil: <em class="bm">Kari sin bok</em> (manglar samsvar)</p>`,
       ],
-      notes: `Sin-forma må samsvare med det ein eig, ikkje med den som eig. Bok er hokjønn, så det heiter <em>si</em>, same kven som eig boka: også <em>Per si bok</em>.`,
+      notes: `S-genitiv (<em>Karis bok</em>) er lov på nynorsk, særleg ved namn, men lite brukt. Det vanlege, og betre nynorsk stil, er å skrive om. <em>Kari sin bok</em> er derimot ein ekte feil. Sin-forma må samsvare med det ein eig, ikkje med den som eig. Bok er hokjønn, så det heiter <em>si</em>, same kven som eig boka: også <em>Per si bok</em>.`,
     },
     {
       title: "Sin eller hans?",
@@ -834,7 +834,7 @@ Larar.register("feil-smaord", {
         `<p class="stor"><em class="bm">hvilken</em> → <em class="nn">kva for ein</em> (bil), <em class="nn">kva for ei</em> (bok), <em class="nn">kva for eit</em> (hus)</p>`,
         `<p class="stor">Ofte held det med <em class="nn">kva</em>: <em class="nn">Kva bok les du?</em></p>`,
       ],
-      notes: `<em class="bm">En</em> og <em class="bm">et</em> er alltid feil i ein nynorsktekst. Dei er lette å oversjå fordi dei er så korte. I fleirtal heiter det <em>kva for nokre</em> (bøker).`,
+      notes: `Som artiklar er <em class="bm">en</em> og <em class="bm">et</em> alltid feil i ein nynorsktekst (<em>et</em> er berre rett som verb: <em>eg et</em>). Dei er lette å oversjå fordi dei er så korte. I fleirtal heiter det <em>kva for nokre</em> (bøker).`,
     },
     {
       title: "Finn feila",
@@ -847,9 +847,9 @@ Larar.register("feil-smaord", {
     {
       title: "Finn feila",
       body: `<p class="stor"><em class="bm">Kari sin bok ligg på bordet, men Karis pennal er borte. Per seier at han la det i sekken hennes i går.</em></p>`,
-      steps: [`<p class="midt">Det er <strong>3 feil</strong>, og alle handlar om eigedom.</p>`],
+      steps: [`<p class="midt">Det er <strong>3 ting</strong> som bør rettast eller skrivast om, og alle handlar om eigedom.</p>`],
       svar: `<em class="nn">Kari <strong>si</strong> bok</em>, <em class="nn">Kari <strong>sitt</strong> pennal</em> (eller <em class="nn">pennalet til Kari</em>), <em class="nn">sekken <strong>hennar</strong></em>`,
-      notes: `Bok er hokjønn: <em>si</em>. Pennal er inkjekjønn: <em>sitt</em>. Til slutt er det <em>hennar</em> og ikkje <em>sin</em>, for subjektet er Per, og sekken er Kari sin.`,
+      notes: `To er feil, og <em>Karis</em> er ein s-genitiv som er lov, men lite brukt, så han skal skrivast om. Bok er hokjønn: <em>si</em>. Pennal er inkjekjønn: <em>sitt</em>. Til slutt er det <em>hennar</em> og ikkje <em>sin</em>, for subjektet er Per, og sekken er Kari sin.`,
     },
     {
       type: "oppgave",
@@ -864,21 +864,21 @@ Larar.register("feil-smaord", {
         </ol>`,
       form: "Åleine",
       tid: 5,
-      svar: `1. <em class="nn">de</em> (subjekt) 2. <em class="nn">dykk</em> (objekt) 3. <em class="nn">dei</em> 4. <em class="nn">hennar</em> 5. <em class="nn">Då</em> (éin gong i fortida). <em class="nn">Dokker</em> er òg rett i 1 og 2.`,
+      svar: `1. <em class="nn">de</em> (subjekt) 2. <em class="nn">dykk</em> (objekt) 3. <em class="nn">dei</em> 4. <em class="nn">hennar</em> 5. <em class="nn">Då</em> (éin gong i fortida). <em class="nn">Dokker</em> er òg rett i 1 og 2, og <em class="nn">Da</em> er òg rett nynorsk i 5.`,
       notes: `Oppgåve 1 og 2 er den same fella: <em>dere</em> blir <em>de</em> som subjekt og <em>dykk</em> som objekt. Be elevane seie om ordet er subjekt eller objekt når de går gjennom svaret.`,
     },
     {
       type: "oppgave",
       title: "Finn feila",
-      body: `<p><em class="bm">«Dei må møte på stasjonen klokka åtte», sa læraren til oss, men Jonas kom ikkje før halv ni. Når han endeleg dukka opp, sa Sara at ho aldri meir ville vente på ham. Ida hadde gløymt jakka si, så Mia lånte henne en genser. Kristian påstod at han hadde vore i Bergen før med foreldrene hans. Då vi kom heim, var Jonas ennå sur.</em></p>
+      body: `<p><em class="bm">«Dei må møte på stasjonen klokka åtte», sa læraren til oss, men Jonas kom ikkje før halv ni. Når han endeleg dukka opp, sa Sara at ho aldri meir ville vente på ham. Ida hadde gløymt jakka si, så Mia lånte henne en genser. Kristian påstod at han hadde vore i Bergen før med foreldrene hans. Då vi kom heim, var Jonas fremdeles sur.</em></p>
         <ol>
           <li>Det er <strong>7 feil</strong>, alle i småord eller bøying. Skriv dei retta orda.</li>
           <li>Sjå særleg etter <em class="nn">de/dei</em>, <em class="nn">då/når</em> og eigedomsord.</li>
         </ol>`,
       form: "Åleine",
       tid: 7,
-      svar: `<em class="bm">Dei</em> → <em class="nn">De</em>, <em class="bm">Når</em> → <em class="nn">Då</em>, <em class="bm">ham</em> → <em class="nn">han</em>, <em class="bm">en</em> → <em class="nn">ein</em>, <em class="bm">foreldrene hans</em> → <em class="nn">foreldra sine</em> (to feil), <em class="bm">ennå</em> → <em class="nn">enno</em> eller <em class="nn">endå</em>`,
-      notes: `Dette er den vanskelegaste oppgåva i timen. Læraren snakkar til elevane, så det er <em>De må møte</em>. Kristian snakkar om sine eigne foreldre, så det er <em>sine</em> og ikkje <em>hans</em>, og foreldre er inkjekjønn i fleirtal: <em>foreldra</em>. <em>Si</em>, <em>henne</em> og <em>Då vi kom heim</em> er rette. <em>Honom</em> er òg rett for <em>ham</em>.`,
+      svar: `<em class="bm">Dei</em> → <em class="nn">De</em>, <em class="bm">Når</em> → <em class="nn">Då</em>, <em class="bm">ham</em> → <em class="nn">han</em>, <em class="bm">en</em> → <em class="nn">ein</em>, <em class="bm">foreldrene hans</em> → <em class="nn">foreldra sine</em> (to feil), <em class="bm">fremdeles</em> → <em class="nn">framleis</em> eller <em class="nn">enno</em>`,
+      notes: `Dette er den vanskelegaste oppgåva i timen. Læraren snakkar til elevane, så det er <em>De må møte</em>. Kristian snakkar om sine eigne foreldre, så det er <em>sine</em> og ikkje <em>hans</em>, og bunden form fleirtal av <em>forelder</em> er <em>foreldra</em>. <em>Si</em>, <em>henne</em> og <em>Då vi kom heim</em> er rette. Objektsforma er berre <em>han</em>: <em class="bm">honom</em> er ikkje lenger tillate.`,
     },
     {
       title: "Tre raske kontrollar",
@@ -928,7 +928,7 @@ Larar.register("feil-smaord", {
     ],
     tilpassing: {
       stotte: [
-        `Gi elevane pronomentabellen på ein huskelapp.`,
+        `Gi elevane pronomentabellen på ein hugselapp.`,
         `Lat elevane teikne ei pil i margen for kvar de/dei: mot lesaren (de) eller bort (dei).`,
         `Bruk berre dei korte finn-feila-setningane før dei går laus på klassetur-teksten.`,
       ],
@@ -958,7 +958,7 @@ Larar.register("feil-setning", {
         <li>skrive om <strong>s-genitiv</strong></li>
         <li>gjere tunge setningar <strong>lette</strong></li>
       </ul>`,
-      notes: `Gå raskt gjennom måla. Fortel at dette er skilnaden mellom rett nynorsk og god nynorsk. Nokre av punkta er reine feil (s-passiv, s-genitiv), andre er stil.`,
+      notes: `Gå raskt gjennom måla. Fortel at dette er skilnaden mellom rett nynorsk og god nynorsk. S-passiv på <em>-ast</em> og s-genitiv er lov på nynorsk, men lite brukte og bokmålsprega, så det vanlege er å skrive dei om. Bokmålsendinga <em>-es</em> (<em>vaskes</em>) er derimot ein ekte feil. Substantivsjuke er rein stil.`,
     },
     {
       type: "diskuter",
@@ -972,13 +972,13 @@ Larar.register("feil-setning", {
       notes: `Lat elevane kjenne på skilnaden før du gir han eit namn. Dei fleste ser at den andre er kortare og klarare. Kom tilbake til dette når de snakkar om substantivsjuke.`,
     },
     {
-      title: "S-passiv: berre etter modalverb",
+      title: "S-passiv: helst etter modalverb",
       body: `<div class="to-kol">
-          <div class="boks"><h3>Feil</h3><p><em class="bm">Bilen vaskes kvar laurdag.</em></p></div>
-          <div class="boks"><h3>Rett</h3><p><em class="nn">Bilen blir vaska kvar laurdag.</em></p><p><em class="nn">Vi vaskar bilen kvar laurdag.</em></p></div>
+          <div class="boks"><h3>Unngå</h3><p><em class="bm">Bilen vaskes kvar laurdag.</em></p></div>
+          <div class="boks"><h3>Vanleg nynorsk</h3><p><em class="nn">Bilen blir vaska kvar laurdag.</em></p><p><em class="nn">Vi vaskar bilen kvar laurdag.</em></p></div>
         </div>`,
       steps: [`<p class="stor midt">Etter <em class="nn">kan, skal, må, bør, vil</em> er s-passiv greitt: <em class="nn">Bilen må vaskast.</em></p>`],
-      notes: `Utan modalverb har elevane to val: <em>blir/vert</em> + partisipp, eller skriv om til aktiv. Aktiv er ofte best, fordi lesaren får vite kven som gjer noko. Hugs samsvar i fleirtal: <em>Billettar blir selde</em>.`,
+      notes: `<em>Vaskes</em> er bokmål og feil. Nynorsk s-passiv endar på <em>-ast</em> (<em>vaskast, lagast, opnast</em>). Utan modalverb er desse formene lov, men lite brukte og stive. Elevane har då to betre val: <em>blir/vert</em> + partisipp, eller skriv om til aktiv. Aktiv er ofte best, fordi lesaren får vite kven som gjer noko. Hugs samsvar i fleirtal: <em>Billettar blir selde</em>.`,
     },
     {
       title: "Ikkje passiv",
@@ -988,11 +988,11 @@ Larar.register("feil-setning", {
     },
     {
       type: "sporsmal",
-      question: "Kva for ei setning må skrivast om?",
+      question: "Kva for ei setning bør skrivast om?",
       options: [`<em class="nn">Bilen må vaskast.</em>`, `<em class="nn">Det finst mange løysingar.</em>`, `<em class="bm">Døra opnast klokka åtte.</em>`, `<em class="nn">Ho synest det er gøy.</em>`],
       correct: 2,
-      explain: `<em class="bm">Opnast</em> står utan modalverb, så det skal vere <em class="nn">Døra blir opna klokka åtte</em>. <em class="nn">Må vaskast</em> har modalverb, og <em class="nn">finst</em> og <em class="nn">synest</em> er eigne verb.`,
-      notes: `Lat elevane grunngi kvifor dei andre tre er rette. Det er like viktig som å finne feilen.`,
+      explain: `<em class="bm">Opnast</em> står utan modalverb. Det er lov, men lite brukt, så skriv heller <em class="nn">Døra blir opna klokka åtte</em>. <em class="nn">Må vaskast</em> har modalverb, og <em class="nn">finst</em> og <em class="nn">synest</em> er eigne verb.`,
+      notes: `Lat elevane grunngi kvifor dei andre tre er heilt vanlege. Det er like viktig som å finne den som bør skrivast om.`,
     },
     {
       type: "diskuter",
@@ -1007,7 +1007,7 @@ Larar.register("feil-setning", {
       form: "Tommel opp eller ned",
       tid: 2,
       svar: `Greitt: <em class="nn">kan kjøpast, bør gjerast</em>. Skriv om: <em class="nn">Maten blir laga</em>, <em class="nn">Brevet blir sendt</em>, <em class="nn">Det blir sagt at han er rik</em> (eller <em class="nn">Folk seier at han er rik</em>).`,
-      notes: `Les setningane éi og éi og lat klassen vise tommel opp for greitt og ned for skriv om. Be ein elev om å skrive om kvar av dei som er feil, munnleg.`,
+      notes: `Les setningane éi og éi og lat klassen vise tommel opp for greitt og ned for skriv om. Be ein elev om å skrive om kvar av dei som bør skrivast om, munnleg. Formene er lov, men <em>blir/vert</em> er det vanlege utan modalverb.`,
     },
     {
       title: "Substantivsjuke",
@@ -1044,7 +1044,7 @@ Larar.register("feil-setning", {
         `<p class="stor">Faste uttrykk er greie: <em class="nn">til fjells, til sjøs, til bords</em></p>`,
         `<p class="stor">Men ikkje overdriv: <em class="bm">bilen sin motor sin lyd</em> → <em class="nn">lyden frå motoren i bilen</em></p>`,
       ],
-      notes: `Omskriving med <em>til, på, i</em> er ofte finast. Sin-forma er grei, men blir tung når ho står fleire gonger etter kvarandre. Hugs samsvar: <em>kommunen sitt budsjett</em>, <em>skulen sin rektor</em>.`,
+      notes: `S-genitiv er lov på nynorsk, særleg ved namn, men lite brukt og bokmålsprega. Omskriving med <em>til, på, i</em> er ofte finast. Sin-forma er grei, men blir tung når ho står fleire gonger etter kvarandre. Hugs samsvar: <em>kommunen sitt budsjett</em>, <em>skulen sin rektor</em>.`,
     },
     {
       title: "Tunge setningar",
@@ -1082,14 +1082,14 @@ Larar.register("feil-setning", {
       ],
       correct: 1,
       explain: `Syster er hokjønn, så det heiter <em class="nn">Kari si syster</em> (eller <em class="nn">syster til Kari</em>). Framfor yrke står det ingen artikkel: <em class="nn">er sjukepleiar</em>.`,
-      notes: `Tre av alternativa har éin eller to feil. Lat elevane finne feilen i kvart av dei: samsvar, s-genitiv og artikkel.`,
+      notes: `Tre av alternativa har noko som bør rettast. Lat elevane finne det i kvart av dei: samsvar, s-genitiv og artikkel. S-genitiven <em>Karis</em> er lov, men lite brukt, medan samsvarsfeilen og artikkelen er ekte feil.`,
     },
     {
       title: "Finn feila",
       body: `<p class="stor"><em class="bm">Skulens nye gymsal opnast i morgon, og alle elevane er inviterte. Den gamle sal skal rivast til hausten.</em></p>`,
-      steps: [`<p class="midt">Det er <strong>3 feil</strong>. Éin s-passiv er rett!</p>`],
+      steps: [`<p class="midt">Det er <strong>3 ting</strong> som bør rettast eller skrivast om. Éin s-passiv er heilt vanleg!</p>`],
       svar: `<em class="nn"><strong>Skulen sin</strong> nye gymsal <strong>blir opna</strong> i morgon … <strong>Den gamle salen</strong> skal rivast til hausten.</em>`,
-      notes: `<em>Skal rivast</em> er rett, for det står eit modalverb framfor. Spør klassen kven som rørte den. Det er ei god påminning om at vi ikkje skal rette det som er rett.`,
+      notes: `<em>Skulens</em> og <em>opnast</em> er lov, men lite brukte, så dei skal skrivast om. <em>Den gamle sal</em> er ein ekte feil. <em>Skal rivast</em> er heilt vanleg, for det står eit modalverb framfor. Spør klassen kven som rørte den. Det er ei god påminning om at vi ikkje skal rette det som er rett.`,
     },
     {
       type: "oppgave",
@@ -1099,7 +1099,7 @@ Larar.register("feil-setning", {
           <li><em class="bm">Gjennomføringen av prøven skjer i morgen.</em></li>
           <li><em class="bm">Kommunens budsjett er for lite.</em></li>
         </ol>
-        <p>Unngå s-passiv, substantivsjuke og s-genitiv.</p>`,
+        <p>Skriv om s-passiv, substantivsjuke og s-genitiv.</p>`,
       form: "Åleine",
       tid: 5,
       svar: `1. <em class="nn">Bilen blir vaska kvar laurdag.</em> / <em class="nn">Vi vaskar bilen kvar laurdag.</em> 2. <em class="nn">Vi gjennomfører prøva i morgon.</em> / <em class="nn">Prøva blir gjennomført i morgon.</em> 3. <em class="nn">Budsjettet til kommunen er for lite.</em> / <em class="nn">Kommunen sitt budsjett er for lite.</em>`,
@@ -1110,18 +1110,18 @@ Larar.register("feil-setning", {
       title: "Finn feila",
       body: `<p><em class="bm">Kvar vår arrangerer skulen vår ein idrettsdag. Dagen planleggjast av elevrådet, og lærarane hjelper til der det trengst. I år ble det bestemt at dagen skulle haldast på den nye bane ved elva. Billettar til grillfesten selges i kantina. Kommunens ordførar har lova å kome. Premiane delast ut klokka fem.</em></p>
         <ol>
-          <li>Det er <strong>6 feil</strong>. Skriv dei retta orda. Rettinga kan vere fleire ord.</li>
+          <li>Det er <strong>6 ting</strong> som bør rettast eller skrivast om. Skriv dei retta orda. Rettinga kan vere fleire ord.</li>
           <li>Ferdig? Skriv om: <em class="bm">Innsamling av pengar finn stad kvar fredag.</em></li>
         </ol>`,
       form: "Åleine",
       tid: 7,
       svar: `<em class="nn">blir planlagd</em>, <em class="nn">blei</em> eller <em class="nn">vart</em>, <em class="nn">den nye banen</em>, <em class="nn">blir selde</em>, <em class="nn">Kommunen sin ordførar</em> (eller <em class="nn">ordføraren i kommunen</em>), <em class="nn">blir delte ut</em>. Ekstra: <em class="nn">Vi samlar inn pengar kvar fredag.</em>`,
-      notes: `<em>Skulle haldast</em> og <em>trengst</em> er rette: den første har modalverb framfor, og <em>trengst</em> er eit eige verb på -st. Spør klassen kven som rørte dei. <em>Vert</em> er like rett som <em>blir</em>, og <em>planlagt, selt, delt</em> er òg rette former.`,
+      notes: `<em>Ble</em>, <em>bane</em> og <em>selges</em> er ekte feil. <em>Planleggjast</em>, <em>delast</em> og <em>Kommunens</em> er lov, men lite brukte, så dei skal skrivast om. <em>Skulle haldast</em> og <em>trengst</em> er heilt vanlege: den første har modalverb framfor, og <em>trengst</em> er eit eige verb på -st. Spør klassen kven som rørte dei. <em>Vert</em> er like rett som <em>blir</em>, og <em>planlagt, selt, delt</em> er òg rette former.`,
     },
     {
       title: "Tre raske kontrollar",
       steps: [
-        `<p class="stor">1. Verb på <em class="bm">-es</em> eller <em class="bm">-ast</em>? Står det eit modalverb framfor?</p>`,
+        `<p class="stor">1. Verb på <em class="bm">-es</em>? Rett det. Verb på <em class="bm">-ast</em>? Står det ikkje eit modalverb framfor, skriv helst om.</p>`,
         `<p class="stor">2. <em class="bm">skjer, finn stad, -ing av</em>? Finn verbet som gøymer seg.</p>`,
         `<p class="stor">3. <em class="bm">-s</em> på eit substantiv? Skriv om med <em class="nn">til</em> eller <em class="nn">sin</em>.</p>`,
       ],
@@ -1130,7 +1130,7 @@ Larar.register("feil-setning", {
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: `<p>Modulen handlar om setningsbygnad og stil: s-passiv utan modalverb, substantivsjuke, s-genitiv, tunge «det er … som»-setningar, ordstilling i leddsetningar og heilsetningar, dobbel bestemming og artikkel framfor yrke. Nokre av punkta er reine feil, andre er stil. Målet er at elevane skal skrive nynorsk som flyt, ikkje bokmål med nynorske endingar.</p>`,
+    intro: `<p>Modulen handlar om setningsbygnad og stil: s-passiv utan modalverb, substantivsjuke, s-genitiv, tunge «det er … som»-setningar, ordstilling i leddsetningar og heilsetningar, dobbel bestemming og artikkel framfor yrke. Nokre av punkta er reine feil (bokmålsendinga -es, ordstilling, dobbel bestemming, artikkel framfor yrke), andre er stil. S-passiv på -ast og s-genitiv er lov på nynorsk, men lite brukte og bokmålsprega, så det vanlege er å skrive dei om. Målet er at elevane skal skrive nynorsk som flyt, ikkje bokmål med nynorske endingar.</p>`,
     mal: [
       `Elevane kan skrive om s-passiv utan modalverb med <em class="nn">blir/vert</em> eller til aktiv.`,
       `Elevane kan kjenne att substantivsjuke og skrive om slik at verbet gjer jobben.`,
@@ -1154,7 +1154,7 @@ Larar.register("feil-setning", {
       { fase: "Avslutning", min: 3, gjer: `<p>Gå gjennom dei tre kontrollane.</p>`, lysbilete: "19" },
     ],
     misoppfatningar: [
-      { feil: `«S-passiv er alltid feil på nynorsk.»`, hjelp: `Etter modalverb er han heilt rett: <em class="nn">Bilen må vaskast</em>. Lat eleven sjå etter <em class="nn">kan, skal, må, bør, vil</em> framfor verbet.` },
+      { feil: `«S-passiv er alltid feil på nynorsk.»`, hjelp: `S-passiv på -ast er aldri feil, berre lite brukt utan modalverb. Etter modalverb er han heilt vanleg: <em class="nn">Bilen må vaskast</em>. Lat eleven sjå etter <em class="nn">kan, skal, må, bør, vil</em> framfor verbet.` },
       { feil: `«<em class="nn">Finst</em> og <em class="nn">synest</em> er s-passiv og må skrivast om.»`, hjelp: `Dei er eigne verb på -st og alltid rette. Prøv <em>blir</em> + partisipp: tydinga endrar seg, så det er ikkje passiv.` },
       { feil: `«Substantivsjuke er ein rettskrivingsfeil.»`, hjelp: `Setningane kan vere heilt korrekte. Det handlar om stil: teksten blir tyngre og mindre klar. Spør: kven gjer noko i setninga?` },
       { feil: `«<em class="nn">Har blitt</em> er bokmål, det må vere <em class="nn">er blitt</em>.»`, hjelp: `Begge er rette på nynorsk, og <em class="nn">har vorte</em> og <em class="nn">er vorten</em> òg.` },
@@ -1167,7 +1167,7 @@ Larar.register("feil-setning", {
     tilpassing: {
       stotte: [
         `Gi elevane ei liste med modalverba: <em class="nn">kan, skal, må, bør, vil</em>. Står eitt av dei framfor, er s-passiv greitt.`,
-        `Lat elevane starte med s-passiv og s-genitiv, som er reine feil, før dei går laus på substantivsjuke, som er stil.`,
+        `Lat elevane starte med s-passiv og s-genitiv, som har faste omskrivingar, før dei går laus på substantivsjuke, som krev meir skjønn.`,
         `Gi ferdige subjekt å velje mellom når dei skriv om til aktiv: <em class="nn">vi, dei, elevrådet</em>.`,
       ],
       utfordring: [
@@ -1177,8 +1177,8 @@ Larar.register("feil-setning", {
     },
     vurdering: [
       `Tommel-runden på lysbilete 7 viser om elevane skil mellom s-passiv etter modalverb og utan.`,
-      `Omskrivingane på lysbilete 17 og feilfinninga på lysbilete 18 viser om eleven kan rette s-passiv, s-genitiv og substantivsjuke utan å endre innhaldet.`,
-      `Kjenneteikn på god måloppnåing: eleven rettar s-passiv og s-genitiv, skriv om substantivsjuke til aktive setningar og overrettar ikkje s-passiv etter modalverb.`,
+      `Omskrivingane på lysbilete 17 og feilfinninga på lysbilete 18 viser om eleven kan skrive om s-passiv, s-genitiv og substantivsjuke utan å endre innhaldet.`,
+      `Kjenneteikn på god måloppnåing: eleven skriv om s-passiv og s-genitiv til vanleg nynorsk, skriv om substantivsjuke til aktive setningar og overrettar ikkje s-passiv etter modalverb.`,
     ],
     vidare: `Gå vidare til Rettelesing: finn og rett feila, der alle feiltypane frå Typiske feil kjem saman i heile tekstar. Som frivillig lekse kan elevane gjere elevmodulen Setningsbygnad og stil, der dei mellom anna skriv om eit tungt avsnitt om innsamling til klasseturen.`,
   },
@@ -1252,7 +1252,7 @@ Larar.register("feil-rettelesing", {
     {
       title: "Sjekkliste: setningar og ord",
       body: `<table>
-          <thead><tr><th>Feil</th><th>Rett</th></tr></thead>
+          <thead><tr><th>Rett eller skriv om</th><th>Vanleg nynorsk</th></tr></thead>
           <tbody>
             <tr><td><em class="bm">Maten lagast på kjøkkenet.</em></td><td><em class="nn">Maten blir laga …</em></td></tr>
             <tr><td><em class="bm">skulens rektor</em></td><td><em class="nn">rektoren på skulen</em></td></tr>
@@ -1260,7 +1260,7 @@ Larar.register("feil-rettelesing", {
             <tr><td><em class="bm">ikke, bare, hva, jeg, hun</em></td><td><em class="nn">ikkje, berre, kva, eg, ho</em></td></tr>
           </tbody>
         </table>`,
-      notes: `S-passiv er berre lov etter modalverb. S-genitiv skriv vi om med preposisjon eller sin-form. Dei tre sjekklistelysbileta (6 til 8) kan du vise att medan elevane rettar eigen tekst til slutt i timen.`,
+      notes: `S-passiv utan modalverb og s-genitiv er lov, men lite brukte, så i rettelesinga skriv vi dei om: s-passiv med <em>blir/vert</em>, s-genitiv med preposisjon eller sin-form. Særskriving og bokmålsorda er ekte feil. Dei tre sjekklistelysbileta (6 til 8) kan du vise att medan elevane rettar eigen tekst til slutt i timen.`,
     },
     {
       title: "Vi les korrektur saman",
@@ -1288,9 +1288,9 @@ Larar.register("feil-rettelesing", {
     {
       title: "Finn feila",
       body: `<p class="stor"><em class="bm">Maten lagast ikkje på skulen. Rektor seier at kommunens budsjett ikkje rekk til, men i fjor ble det brukt hundre tusen kroner på nye skilt.</em></p>`,
-      steps: [`<p class="midt">Det er <strong>3 feil</strong>. Rettinga kan vere fleire ord.</p>`],
+      steps: [`<p class="midt">Det er <strong>3 ting</strong> som bør rettast eller skrivast om. Rettinga kan vere fleire ord.</p>`],
       svar: `<em class="nn">Maten <strong>blir</strong> ikkje <strong>laga</strong> på skulen.</em> <em class="bm">kommunens</em> → <em class="nn">kommunen sitt</em>, <em class="bm">ble</em> → <em class="nn">blei</em> eller <em class="nn">vart</em>`,
-      notes: `Frå tekst 4, lesarinnlegget. Her er feila vanskelegare å sjå fordi orda liknar nynorsk: <em>lagast</em> har nynorsk ending, men står utan modalverb. Spør: kva hjelpeverb står framfor?`,
+      notes: `Frå tekst 4, lesarinnlegget. Her er det vanskelegare å sjå kva som bør skrivast om, fordi orda er nynorsk: <em>lagast</em> og <em>kommunens</em> er lov, men lite brukte, og <em>lagast</em> står utan modalverb. Spør: kva hjelpeverb står framfor? <em>Ble</em> er den einaste ekte feilen her.`,
     },
     {
       title: "To feller i ei forteljing",

@@ -2,7 +2,7 @@
    Ivar Aasen, reisene til Aasen og språkstriden. Formatet står i larer/README.md. */
 
 Larar.register("historie-bakgrunn", {
-  tittelnotat: "Mange elevar trur at nynorsk og bokmål alltid har funnist, eller at nynorsk er ein dialekt. Start med å slå fast at i fleire hundre år skreiv ingen i Noreg norsk i det heile: dei skreiv dansk. Det er utgangspunktet for heile Del 1.",
+  tittelnotat: "Mange elevar trur at nynorsk og bokmål alltid har funnest, eller at nynorsk er ein dialekt. Start med å slå fast at i fleire hundre år skreiv ingen i Noreg norsk i det heile: dei skreiv dansk. Det er utgangspunktet for heile Del 1.",
   slides: [
     {
       title: "I dag skal vi",
@@ -141,7 +141,8 @@ Larar.register("historie-bakgrunn", {
           <li><span class="aar">1848–1850</span><span class="hend">Aasen gjev ut grammatikk og ordbok over «det norske Folkesprog».</span></li>
           <li><span class="aar">1885</span><span class="hend">Stortinget jamstiller landsmål og det dansk-norske skriftspråket.</span></li>
           <li><span class="aar">1929</span><span class="hend">Namna blir nynorsk og bokmål.</span></li>
-          <li><span class="aar">1981</span><span class="hend">Samnorskpolitikken blir oppgitt. Dei to skriftspråka utviklar seg kvar for seg.</span></li>
+          <li><span class="aar">1981</span><span class="hend">Ny rettskriving for bokmål opnar for tradisjonelle former. Samnorsklinja er i praksis oppgitt.</span></li>
+          <li><span class="aar">2002</span><span class="hend">Stortinget opphevar tilnærmingsparagrafen. Målet om eitt felles skriftspråk er formelt oppgitt.</span></li>
           <li><span class="aar">2022</span><span class="hend">Ny språklov: bokmål og nynorsk er likeverdige skriftspråk.</span></li>
         </ol>`,
       notes: "Dette er same tidslinje som står i modulen. I dag har vi berre sett på dei to første punkta. Peik på 1836: Ivar Aasen var 22 år, altså ikkje så mykje eldre enn elevane. Det er ein fin overgang til neste modul. Elevane treng ikkje hugse alle årstala no: dei kjem att i dei neste modulane.",
@@ -330,7 +331,7 @@ Larar.register("historie-aasen", {
       ],
       correct: 1,
       explain: "Aasen fekk stipend frå Det Kongelige Norske Videnskabers Selskab i Trondheim.",
-      notes: "Mange vel Stortinget. Det kjem i modulen om reisene: Stortinget gav han stipend først seinare. Kongen i Danmark er eit felle for dei som trur Noreg framleis var dansk.",
+      notes: "Mange vel Stortinget. Det kjem i modulen om reisene: Stortinget gav han stipend først seinare. Kongen i Danmark er ei felle for dei som trur Noreg framleis var dansk.",
     },
     {
       type: "bilete",
@@ -348,7 +349,7 @@ Larar.register("historie-aasen", {
     {
       type: "bilete",
       src: "bilete/brudeferd-hardanger.jpg",
-      alt: "Måleri av ein brudefølgje i robåtar på ein blank fjord med fjell og grøne lier",
+      alt: "Måleri av eit brudefølgje i robåtar på ein blank fjord med fjell og grøne lier",
       caption: "«Brudeferd i Hardanger» av Adolph Tidemand og Hans Gude, 1848 (offentleg eigedom)",
       title: "Landsmål",
       steps: [
@@ -716,9 +717,9 @@ Larar.register("historie-aasen-reise", {
         "<p class=\"stor\">Ni månader i Trondheim: skreiv på grammatikken</p>",
         "<p class=\"stor\">1847: flytte til <strong>Christiania</strong> for resten av livet</p>",
         "<p class=\"stor\"><strong>1848</strong> grammatikken, <strong>1850</strong> ordboka med nær 24 000 ord</p>",
-        "<p class=\"stor\"><strong>1851:</strong> første statsstipendiat, og namnet <em class=\"nn\">landsmål</em></p>",
+        "<p class=\"stor\"><strong>1851:</strong> første statsstipendiat i landet</p>",
       ],
-      notes: "Aasen skreiv at arbeidet «ikke vel kunne udføres andensteds end i en stor By»: der fanst bibliotek, prenteverk og lærde folk å drøfte med. Det er eit fint poeng å stoppe ved etter lysbiletet om bygdene: han trong bygdene for å samle, men byen for å skrive. Stortinget gav han 300 spesidalar i året, like mykje som ein universitetsstipendiat. Modulen om Aasen seier at han kalla språket landsmål i tekstprøvene frå 1853. Her står det at han gav det namnet i 1851. Begge delar går saman: namnet kom i 1851, og i 1853 viste han språket fram.",
+      notes: "Aasen skreiv at arbeidet «ikke vel kunne udføres andensteds end i en stor By»: der fanst bibliotek, prenteverk og lærde folk å drøfte med. Det er eit fint poeng å stoppe ved etter lysbiletet om bygdene: han trong bygdene for å samle, men byen for å skrive. Stortinget gav han 300 spesidalar i året, like mykje som ein universitetsstipendiat. Same året skreiv Aasen ordet «landsmaal» i dagboka, så langt vi veit for første gong. Offentleg kom namnet i 1853, i tittelen på tekstprøvene, og det er difor 1853 som står i modulane.",
     },
     {
       title: "Lofoten og Tromsø",
@@ -850,7 +851,7 @@ Larar.register("historie-aasen-reise", {
 });
 
 Larar.register("historie-striden", {
-  tittelnotat: "Modulen dekkjer over hundre år: frå Knud Knudsen og jamstillinga i 1885, gjennom samnorskpolitikken og foreldreaksjonen, til 1981. Mange elevar ser ingen grunn til at folk krangla om rettskriving. Poenget med timen er å vise at språk handlar om identitet, ikkje berre om reglar.",
+  tittelnotat: "Modulen dekkjer over hundre år: frå Knud Knudsen og jamstillinga i 1885, gjennom samnorskpolitikken og foreldreaksjonen, til 1981 og 2002. Mange elevar ser ingen grunn til at folk krangla om rettskriving. Poenget med timen er å vise at språk handlar om identitet, ikkje berre om reglar.",
   slides: [
     {
       title: "I dag skal vi",
@@ -937,12 +938,12 @@ Larar.register("historie-striden", {
     {
       title: "Samnorsk: to språk blir eitt?",
       steps: [
-        "<p class=\"stor\">Frå tidleg 1900-tal til 1960-talet</p>",
+        "<p class=\"stor\">Frå 1917 til 1960-talet</p>",
         "<p class=\"stor\">Ein <strong>politikk</strong>: føre bokmål og nynorsk <strong>saman</strong></p>",
-        "<p class=\"stor\">Rettskrivingsreformer i <strong>1907, 1917 og 1938</strong></p>",
+        "<p class=\"stor\">Rettskrivingsreformer i <strong>1917 og 1938</strong></p>",
         "<p class=\"stor\">Endra <strong>både</strong> bokmål og nynorsk</p>",
       ],
-      notes: "Understrek ordet politikk: samnorsk var ikkje eit ferdig språk som nokon skreiv, men eit mål styresmaktene arbeidde mot gjennom rettskrivingsreformer. Tanken var at dei to språka skulle nærme seg kvarandre til dei vart eitt.",
+      notes: "Understrek ordet politikk: samnorsk var ikkje eit ferdig språk som nokon skreiv, men eit mål styresmaktene arbeidde mot gjennom rettskrivingsreformer. Tanken var at dei to språka skulle nærme seg kvarandre til dei vart eitt. Reforma i 1907 høyrer ikkje med: ho fornorska riksmålet etter lina til Knudsen, men rørte ikkje landsmålet.",
     },
     {
       type: "diskuter",
@@ -956,12 +957,12 @@ Larar.register("historie-striden", {
     {
       title: "Foreldreaksjonen",
       steps: [
-        "<p class=\"stor\">Starta på slutten av <strong>1940-talet</strong></p>",
+        "<p class=\"stor\">Skipa i Oslo i <strong>1951</strong></p>",
         "<p class=\"stor\">Særleg på Austlandet og i byane</p>",
         "<p class=\"stor\">Foreldre retta <strong>lærebøkene</strong> med blekk</p>",
         "<p class=\"stor\">Hard strid på <strong>1950-talet</strong></p>",
       ],
-      notes: "Modulen fortel at foreldra sletta ut samnorske former med blekk og skreiv inn dei eldre formene attmed. Aksjonen vart organisert som Foreldreaksjonen mot samnorsk i 1951. Spør elevane: ville foreldra dykkar gjort noko slikt? Kva seier det om kor sterke kjensler språk vekkjer?",
+      notes: "Modulen fortel at foreldra sletta ut samnorske former med blekk og skreiv inn dei eldre formene attmed. Misnøya bygde seg opp gjennom 1940-talet, særleg etter at Oslo skulestyre i 1939 gjekk inn for dei mest radikale bokmålsformene i lærebøkene. Aksjonen vart skipa 7. desember 1951, og i 1953 samla han over 400 000 underskrifter. Spør elevane: ville foreldra dykkar gjort noko slikt? Kva seier det om kor sterke kjensler språk vekkjer?",
     },
     {
       type: "sitat",
@@ -973,11 +974,12 @@ Larar.register("historie-striden", {
     {
       title: "1981: kvar sin veg",
       steps: [
-        "<p class=\"stor\">Stortinget: samnorskpolitikken skal <strong>ikkje lenger gjelde</strong></p>",
+        "<p class=\"stor\">Ny bokmålsrettskriving: <strong>tradisjonelle former</strong> blir lov att</p>",
         "<p class=\"stor\">Bokmål og nynorsk utviklar seg <strong>kvar for seg</strong></p>",
+        "<p class=\"stor\"><strong>2002</strong>: tilnærmingsparagrafen blir oppheva</p>",
         "<p class=\"stor\">Moderne rettskriving: bokmål <strong>2005</strong>, nynorsk <strong>2012</strong></p>",
       ],
-      notes: "Politikken vart altså aldri gjennomført fullt ut. Rettskrivinga frå 2012 er den elevane lærer i dag. Spør: kva ville ha vore annleis for dykk om samnorsk hadde vorte gjennomført?",
+      notes: "Politikken vart altså aldri gjennomført fullt ut. I 1981 vedtok Stortinget ei bokmålsrettskriving som opna for mange tradisjonelle former, og dermed var samnorsklinja i praksis oppgitt. Formelt levde ho lenger: lova om Norsk språkråd frå 1971 sa at rådet skulle fremje tiltak som på lang sikt kunne føre målformene nærmare kvarandre. Denne tilnærmingsparagrafen fekk lite å seie etter 1981, og Stortinget oppheva han samrøystes i 2002. Rettskrivinga frå 2012 er den elevane lærer i dag. Spør: kva ville ha vore annleis for dykk om samnorsk hadde vorte gjennomført?",
     },
     {
       type: "sporsmal",
@@ -989,7 +991,7 @@ Larar.register("historie-striden", {
         "Dialekta i Oslo",
       ],
       correct: 1,
-      explain: "Samnorsk var ein politikk, ikkje eit ferdig språk. Han vart aldri gjennomført fullt ut og vart formelt avslutta i 1981.",
+      explain: "Samnorsk var ein politikk, ikkje eit ferdig språk. Han vart aldri gjennomført fullt ut, vart oppgitt i praksis i 1981 og formelt i 2002.",
       notes: "Den vanlegaste feilen er A: elevane trur samnorsk er eit språk som finst. Minn om ordet politikk frå lysbilete 9.",
     },
     {
@@ -1004,8 +1006,8 @@ Larar.register("historie-striden", {
           </div>
           <div class="line midt">
             <div class="boks svak">1885: jamstilte</div>
-            <div class="boks svak">1907, 1917, 1938: samnorsk-reformer prøver å føre dei saman</div>
-            <div class="boks svak">1981: oppgitt, kvar sin veg</div>
+            <div class="boks svak">1917, 1938: samnorsk-reformer prøver å føre dei saman</div>
+            <div class="boks svak">1981: oppgitt i praksis, kvar sin veg (formelt i 2002)</div>
           </div>
           <div class="line knudsen">
             <div class="boks">Dansk skriftspråk</div>
@@ -1028,7 +1030,7 @@ Larar.register("historie-striden", {
     {
       type: "diskuter",
       title: "Éitt felles skriftspråk?",
-      prompt: `<p class="stor">Burde Noreg hatt éitt felles skriftspråk?</p>
+      prompt: `<p class="stor">Burde Noreg hatt eitt felles skriftspråk?</p>
         <p>Finn eitt argument <strong>for</strong> og eitt <strong>mot</strong>.</p>`,
       form: "Grupper på tre",
       tid: 4,
@@ -1041,7 +1043,7 @@ Larar.register("historie-striden", {
       body: `<p>Skriv heile setninga.</p>
         <ol class="stor">
           <li>Jamstillingsvedtaket vart gjort i <span class="blank"></span>.</li>
-          <li>Samnorskpolitikken vart oppgitt i <span class="blank"></span>.</li>
+          <li>Samnorsklinja vart i praksis oppgitt i <span class="blank"></span>.</li>
           <li>Den nye nynorskrettskrivinga kom i <span class="blank"></span>.</li>
           <li>Knud Knudsen ville <span class="blank"></span> dansk skrift.</li>
         </ol>`,
@@ -1066,7 +1068,7 @@ Larar.register("historie-striden", {
     {
       type: "oppgave",
       title: "Oppgåve 3: drøft",
-      body: `<p class="stor">Burde Noreg ha hatt éitt felles skriftspråk?</p>
+      body: `<p class="stor">Burde Noreg ha hatt eitt felles skriftspråk?</p>
         <p>Skriv 100 til 180 ord på nynorsk.</p>
         <ul>
           <li>Eitt argument <strong>for</strong></li>
@@ -1082,7 +1084,7 @@ Larar.register("historie-striden", {
       steps: [
         "<p class=\"stor\"><strong>Aasen</strong>: frå dialektane. <strong>Knudsen</strong>: fornorska dansk.</p>",
         "<p class=\"stor\"><strong>1885</strong>: jamstilte skriftspråk</p>",
-        "<p class=\"stor\"><strong>Samnorsk</strong>: ein politikk, oppgitt i <strong>1981</strong></p>",
+        "<p class=\"stor\"><strong>Samnorsk</strong>: ein politikk, oppgitt i <strong>1981</strong> (formelt 2002)</p>",
         "<p class=\"stor\">Språk handlar om <strong>identitet</strong>.</p>",
       ],
       notes: "Be elevane skrive ned det dei synest var mest overraskande i dag på ein lapp. Mange nemner foreldra som retta lærebøkene.",
@@ -1090,7 +1092,7 @@ Larar.register("historie-striden", {
   ],
   guide: {
     tid: "Éi økt på 45 minutt",
-    intro: "<p>Modulen viser korleis Noreg fekk to skriftspråk. Knud Knudsen (1812–1895) ville fornorske dansk skrift steg for steg, og den lina vart riksmål og seinare bokmål, medan lina til Aasen vart landsmål og seinare nynorsk. I 1885 jamstilte Stortinget dei to skriftspråka. Frå tidleg 1900-tal prøvde styresmaktene å føre dei saman til samnorsk gjennom reformene i 1907, 1917 og 1938. Foreldreaksjonen mot samnorsk frå slutten av 1940-talet viste kor sterke kjensler språk vekkjer, og i 1981 vart samnorskpolitikken oppgitt. Poenget er at språk handlar om identitet, ikkje berre om reglar.</p>",
+    intro: "<p>Modulen viser korleis Noreg fekk to skriftspråk. Knud Knudsen (1812–1895) ville fornorske dansk skrift steg for steg, og den lina vart riksmål og seinare bokmål, medan lina til Aasen vart landsmål og seinare nynorsk. I 1885 jamstilte Stortinget dei to skriftspråka. Frå 1917 prøvde styresmaktene å føre dei saman til samnorsk gjennom reformene i 1917 og 1938. Foreldreaksjonen mot samnorsk, skipa i 1951, viste kor sterke kjensler språk vekkjer. I 1981 vart samnorsklinja i praksis oppgitt, og i 2002 oppheva Stortinget tilnærmingsparagrafen. Poenget er at språk handlar om identitet, ikkje berre om reglar.</p>",
     mal: [
       "Elevane kan samanlikne metodane til Ivar Aasen og Knud Knudsen og kva dei førte til.",
       "Elevane kan forklare kva jamstillingsvedtaket i 1885 innebar.",
@@ -1116,7 +1118,7 @@ Larar.register("historie-striden", {
       { fase: "Avslutning", min: 3, gjer: "<p>Oppsummer og lat elevane skrive kva som overraska dei mest.</p>", lysbilete: "21" },
     ],
     misoppfatningar: [
-      { feil: "«Samnorsk er eit språk som finst.»", hjelp: "Samnorsk var ein politikk som ville føre bokmål og nynorsk saman. Han vart aldri gjennomført fullt ut og vart avslutta i 1981." },
+      { feil: "«Samnorsk er eit språk som finst.»", hjelp: "Samnorsk var ein politikk som ville føre bokmål og nynorsk saman. Han vart aldri gjennomført fullt ut, vart oppgitt i praksis i 1981 og formelt i 2002." },
       { feil: "«Bokmål er dansk.»", hjelp: "Bokmål byggjer på dansk skrift, men er fornorska steg for steg etter lina til Knud Knudsen. Vis figuren med dei to linene." },
       { feil: "«I 1885 måtte alle byrje å skrive landsmål.»", hjelp: "Jamstilling tyder at begge skriftspråka vart likeverdige i skule og forvaltning. Ingen vart tvinga til å bruke landsmål." },
       { feil: "«Språkstriden handla berre om rettskriving.»", hjelp: "Bruk sitatet frå leseteksten: striden viste at språk handlar om identitet. Folk opplevde at endringar i skriftspråket endra noko ved dei sjølve." },

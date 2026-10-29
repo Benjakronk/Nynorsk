@@ -255,7 +255,7 @@ Larar.register("omgrep-ordet", {
       stotte: [
         "Bruk korte ord med tydeleg ending først: <em class=\"nn\">gutar, huset, kastar</em>.",
         "Lat elevane skrive stamma og endinga i to ulike fargar.",
-        "Gi ei huskelapp med dei tre omgrepa og eitt døme på kvart.",
+        "Gi ein hugselapp med dei tre omgrepa og eitt døme på kvart.",
       ],
       utfordring: [
         "Be elevane finne ord med både forstaving, etterstaving og bøyingsending, som <em class=\"nn\">uvenleg</em> eller <em class=\"nn\">samarbeidet</em>.",
@@ -470,7 +470,7 @@ Larar.register("omgrep-ordklassar", {
       form: "Åleine",
       tid: 6,
       svar: "Substantiv: <em class=\"nn\">skule, lærar</em> (<em class=\"nn\">ein/ei/eit</em> framfor). Verb: <em class=\"nn\">springe, gå</em> (<em class=\"nn\">å</em> framfor, bøying i tid). Adjektiv: <em class=\"nn\">trøytt, blå</em> (gradbøying). Adverb: <em class=\"nn\">ikkje, ofte</em> (korleis, kvar, når). Pronomen: <em class=\"nn\">seg, ho</em> (i staden for eit substantiv).",
-      notes: "Oppgåva byggjer på dei tre store og legg til adverb og pronomen, slik gjennomgangen gjorde. Gå rundt og spør «kva test brukte du?» når elevane er usikre. Er testen skriven øvst i kolonnen, har eleven ein huskelapp til seinare.",
+      notes: "Oppgåva byggjer på dei tre store og legg til adverb og pronomen, slik gjennomgangen gjorde. Gå rundt og spør «kva test brukte du?» når elevane er usikre. Er testen skriven øvst i kolonnen, har eleven ein hugselapp til seinare.",
     },
     {
       type: "oppgave",
@@ -535,7 +535,7 @@ Larar.register("omgrep-ordklassar", {
     tilpassing: {
       stotte: [
         "Start med dei tre store ordklassane og legg til dei andre gradvis, slik sorteringsoppgåvene på tavla gjer.",
-        "Gi elevane ei huskelapp med testen for kvar ordklasse.",
+        "Gi elevane ein hugselapp med testen for kvar ordklasse.",
         "Bruk same fargar som i figuren når elevane markerer ord i ein tekst.",
       ],
       utfordring: [
@@ -627,7 +627,7 @@ Larar.register("omgrep-boying", {
       notes: "Oppgåvene er trekte frå ordbanken, så runden blir ny kvar gong. Be elevane seie kjønnet høgt før dei vel form, til dømes «ei bok, så boka».",
     },
     {
-      title: "Eigedom utan s-genitiv",
+      title: "Eigedom: helst utan s-genitiv",
       body: `<table>
           <thead><tr><th>Bokmål</th><th>Nynorsk</th><th>Nynorsk</th></tr></thead>
           <tbody>
@@ -637,12 +637,12 @@ Larar.register("omgrep-boying", {
           </tbody>
         </table>`,
       steps: ["<p class=\"midt stor\"><em class=\"nn\">sin, si, sitt, sine</em> rettar seg etter <strong>det som blir eigd</strong>.</p>"],
-      notes: "På nynorsk skal vi vanlegvis ikkje bruke s-genitiv. Gå gjennom rekkja: <em>Kari sin bil</em> (hankjønn), <em>Kari si bok</em> (hokjønn), <em>Kari sitt hus</em> (inkjekjønn), <em>Kari sine bøker</em> (fleirtal). Her får elevane bruk for kjønnet dei nettopp har øvd på.",
+      notes: "S-genitiv er lov på nynorsk, særleg ved namn (<em>Karis bok</em>), men han er lite brukt og verkar ofte bokmålsprega. Det vanlege, og betre nynorsk stil, er å skrive om. Gå gjennom rekkja: <em>Kari sin bil</em> (hankjønn), <em>Kari si bok</em> (hokjønn), <em>Kari sitt hus</em> (inkjekjønn), <em>Kari sine bøker</em> (fleirtal). Her får elevane bruk for kjønnet dei nettopp har øvd på.",
     },
     {
       type: "sporsmal",
       question: "Kva er rett på nynorsk?",
-      options: ["<em class=\"nn\">Kari si bok</em>", "<em class=\"nn\">Kari sin bok</em>", "<em class=\"bm\">Karis bok</em>"],
+      options: ["<em class=\"nn\">Kari si bok</em>", "<em class=\"nn\">Kari sin bok</em>", "<em class=\"nn\">Kari sitt bok</em>"],
       correct: 0,
       explain: "<em class=\"nn\">bok</em> er hokjønn, så det må vere <em class=\"nn\">si</em>. <em class=\"nn\">boka til Kari</em> er òg rett.",
       notes: "Den vanlegaste feilen er <em>sin</em> på alle ord. Spør: kva er det Kari eig? Kva kjønn har det ordet?",
@@ -795,7 +795,7 @@ Larar.register("omgrep-boying", {
     intro: "<p>Modulen forklarar omgrepa bak bøyinga av substantiv og verb: kjønn, tal og bestemtheit, eigedom utan s-genitiv, finitte og infinitte former, tempus, partisipp, imperativ, sterke og svake verb og dei små gruppene j-verb og kortverb. Målet er at elevane skal forstå kva omgrepa tyder, ikkje berre kjenne tabellane, slik at dei kan lese ordboka, forstå tilbakemeldingar og bruke fagspråk om eigne feil.</p>",
     mal: [
       "Elevane kan forklare kjønn, tal og bestemtheit og bøye substantiv i alle fire formene.",
-      "Elevane kan uttrykkje eigedom på nynorsk utan s-genitiv.",
+      "Elevane kan uttrykkje eigedom på vanleg nynorsk utan s-genitiv, og veit at s-genitiv er lov, men lite brukt.",
       "Elevane kan skilje finitte og infinitte verbformer og namngi dei fire tempusa.",
       "Elevane kan skilje sterke og svake verb og finne verbklassen med bokmålspreteritum som nøkkel.",
     ],
@@ -830,7 +830,7 @@ Larar.register("omgrep-boying", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane kjønnskorta og tempuslinja som huskelapp.",
+        "Gi elevane kjønnskorta og tempuslinja som hugselapp.",
         "Lat elevane arbeide med eitt ord av kvart kjønn og eitt verb av kvar klasse før dei tek fleire.",
         "Bruk vegvisaren som sjekkliste når elevane er usikre på eit verb.",
       ],
@@ -924,7 +924,7 @@ Larar.register("omgrep-setning", {
     },
     {
       title: "Predikativet rettar seg etter subjektet",
-      body: "<p>Etter <em class=\"nn\">er, blir, verte, heiter</em> kjem eit predikativ. Er det eit adjektiv, bøyer vi det etter subjektet.</p>",
+      body: "<p>Etter <em class=\"nn\">er, blir, vert, heiter</em> kjem eit predikativ. Er det eit adjektiv, bøyer vi det etter subjektet.</p>",
       steps: [
         "<p class=\"stor\"><em class=\"nn\">Bilen er <strong>stor</strong>.</em> <span class=\"liten\">hankjønn eintal</span></p>",
         "<p class=\"stor\"><em class=\"nn\">Huset er <strong>stort</strong>.</em> <span class=\"liten\">inkjekjønn eintal: -t</span></p>",
@@ -980,7 +980,7 @@ Larar.register("omgrep-setning", {
         </div>`,
       steps: [
         "<p class=\"kjempe midt\">«Den gongen då, kvar gong når.»</p>",
-        "<p class=\"midt\">Bokmål <em class=\"bm\">da</em> finst ikkje på nynorsk.</p>",
+        "<p class=\"midt\">Skriv <em class=\"nn\">då</em>. <em class=\"nn\">Da</em> er lov, men lite brukt på nynorsk.</p>",
       ],
       notes: "Denne feilen er blant dei aller vanlegaste i sidemålstekstar. Be elevane seie hugseregelen høgt i kor.",
     },
@@ -1049,7 +1049,7 @@ Larar.register("omgrep-setning", {
         </ol>`,
       form: "Åleine",
       tid: 8,
-      svar: "1: <em class=\"nn\">Då han kom heim, åt han ikkje middag fordi han ikkje var svolten.</em> (<em class=\"nn\">sulten</em> er òg rett.)",
+      svar: "1: <em class=\"nn\">Då han kom heim, åt han ikkje middag fordi han ikkje var svolten.</em> (<em class=\"bm\">sulten</em> er bokmål.)",
       notes: "Omsetjinga samlar tre reglar frå timen: <em>då</em> for éin gong i fortida, verbalet rett etter kommaet når leddsetninga står først, og <em>ikkje</em> framfor verbalet i leddsetninga. <em>spise</em> blir <em>ete</em>, med preteritum <em>åt</em>. I skriveoppgåva: sjekk at setninga med <em>I går</em> har verbalet på andreplass. Mengdetreninga i setningslære og skriveoppgåva i elevmodulen passar som lekse.",
     },
     {
@@ -1101,7 +1101,7 @@ Larar.register("omgrep-setning", {
     ],
     tilpassing: {
       stotte: [
-        "Gi elevane ei huskelapp med dei fem spørsmåla i rekkjefølgje.",
+        "Gi elevane ein hugselapp med dei fem spørsmåla i rekkjefølgje.",
         "Bruk korte setningar med tre ledd før de går over til lengre setningar.",
         "La elevane markere ledda med fargar, same fargar som i figurane.",
       ],

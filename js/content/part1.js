@@ -56,7 +56,8 @@ Modules.register({
           <li><span class="aar">1848–1850</span><span class="hend">Aasen gjev ut grammatikk og ordbok over «det norske Folkesprog».</span></li>
           <li><span class="aar">1885</span><span class="hend">Stortinget jamstiller landsmål og det dansk-norske skriftspråket.</span></li>
           <li><span class="aar">1929</span><span class="hend">Namna blir nynorsk og bokmål.</span></li>
-          <li><span class="aar">1981</span><span class="hend">Samnorskpolitikken blir oppgitt. Dei to skriftspråka utviklar seg kvar for seg.</span></li>
+          <li><span class="aar">1981</span><span class="hend">Ny rettskriving for bokmål opnar for tradisjonelle former. Samnorsklinja er i praksis oppgitt.</span></li>
+          <li><span class="aar">2002</span><span class="hend">Stortinget opphevar tilnærmingsparagrafen. Målet om eitt felles skriftspråk er formelt oppgitt.</span></li>
           <li><span class="aar">2022</span><span class="hend">Ny språklov: bokmål og nynorsk er likeverdige skriftspråk.</span></li>
         </ol>
       `,
@@ -156,7 +157,7 @@ Modules.register({
         </figure>
         <p><strong>Ivar Aasen</strong> (1813–1896) voks opp på ein liten gard i Ørsta på
         Sunnmøre. Familien var fattig, og Ivar måtte tidleg ut og jobbe. Men han var
-        usedvanleg lærenem og lærte seg språk på eiga hand, først dansk og latin, seinare
+        usedvanleg lærenæm og lærte seg språk på eiga hand, først dansk og latin, seinare
         tysk, engelsk, fransk og fleire.</p>
 
         <h3>Reisene 1842–1846</h3>
@@ -189,13 +190,13 @@ Modules.register({
 
 
         <figure class="figur brei">
-          <img src="bilete/brudeferd-hardanger.jpg" alt="Måleri av ein brudefølgje i robåtar på ein blank fjord med fjell og grøne lier" loading="lazy">
+          <img src="bilete/brudeferd-hardanger.jpg" alt="Måleri av eit brudefølgje i robåtar på ein blank fjord med fjell og grøne lier" loading="lazy">
           <figcaption>«Brudeferd i Hardanger» (1848) av Adolph Tidemand og Hans Gude. Same år som Aasen gav ut grammatikken, leitte kunstnarar, diktarar og forskarar etter det særnorske i bygdene. Tida blir kalla nasjonalromantikken (offentleg eigedom).</figcaption>
         </figure>
         <h3>Korleis bygde han det opp?</h3>
         <p>Aasen ville ikkje berre velje éin dialekt og gjere han til skriftspråk. I staden
         prøvde han å finne dei eldre, fellesgjeldande formene som dei norske dialektane
-        hadde til felles. Han vekta gjerne vestnorske og inste-bygdene sine former, fordi
+        hadde til felles. Han vekta gjerne former frå Vestlandet og frå dei indre bygdene, fordi
         dei ofte stod nærare gamalnorsk.</p>
 
         <div class="callout">
@@ -297,7 +298,7 @@ Modules.register({
   id: "historie-striden",
   part: 1,
   title: "Språkstriden og samnorsk",
-  summary: "To skriftspråk, mange reformer og ei lang strid.",
+  summary: "To skriftspråk, mange reformer og ein lang strid.",
   estimatedMinutes: 25,
   sections: [
     {
@@ -324,26 +325,36 @@ Modules.register({
         </figure>
 
         <h3>Samnorskpolitikken</h3>
-        <p>Frå tidleg 1900-tal og fram til 1960-talet prøvde styresmaktene å føre dei to
-        skriftspråka <em class="nn">saman</em> til éitt felles språk, kalla
-        <strong>samnorsk</strong>. Tre store rettskrivingsreformer (<strong>1907, 1917, 1938</strong>)
-        endra både bokmål og nynorsk i denne retninga.</p>
+        <p>Frå 1917 og fram til 1960-talet prøvde styresmaktene å føre dei to
+        skriftspråka <em class="nn">saman</em> til eitt felles språk, kalla
+        <strong>samnorsk</strong>. Dei store rettskrivingsreformene i <strong>1917</strong> og
+        <strong>1938</strong> endra både bokmål og nynorsk i denne retninga. Reforma i 1907
+        var noko anna: ho fornorska riksmålet, slik Knud Knudsen hadde ønskt.</p>
 
         <h3>Foreldreaksjonen</h3>
-        <p>Mange foreldre, særleg på austlandet og i byane, reagerte sterkt mot reformene.
-        På slutten av 1940-talet vart <em class="nn">foreldreaksjonen mot samnorsk</em>
-        starta. Dei retta lærebøkene tilbake mot eldre former. Striden var hard på 1950-talet.</p>
+        <p>Mange foreldre, særleg på Austlandet og i byane, reagerte sterkt mot reformene.
+        I 1951 vart <em class="nn">Foreldreaksjonen mot samnorsk</em> skipa i Oslo. Foreldra
+        samla over 400 000 underskrifter og retta lærebøkene tilbake mot eldre former.
+        Striden var hard på 1950-talet.</p>
 
-        <h3>1981: samnorsklinja oppgitt</h3>
-        <p>I 1981 vedtok Stortinget at samnorskpolitikken ikkje lenger skulle gjelde.
-        Bokmål og nynorsk skulle få utvikle seg kvar for seg. Seinare har det kome
-        moderne rettskrivingar: <strong>2005 for bokmål</strong> og
-        <strong>2012 for nynorsk</strong>.</p>
+        <h3>1981: samnorsklinja oppgitt i praksis</h3>
+        <p>I 1981 vedtok Stortinget ei ny rettskriving for bokmål som opna for mange
+        tradisjonelle former. Dermed var samnorsklinja i praksis oppgitt, og bokmål og
+        nynorsk fekk utvikle seg kvar for seg. Seinare har det kome moderne
+        rettskrivingar: <strong>2005 for bokmål</strong> og <strong>2012 for nynorsk</strong>.</p>
+
+        <h3>2002: tilnærmingsparagrafen</h3>
+        <p>Formelt levde målet om eitt skriftspråk lenger. I lova om Norsk språkråd frå
+        1971 stod det at rådet skulle fremje tiltak som på lang sikt kunne føre bokmål og
+        nynorsk nærmare kvarandre. Denne regelen vart kalla
+        <strong>tilnærmingsparagrafen</strong>. Etter 1981 fekk han lite å seie, og i 2002
+        oppheva Stortinget han samrøystes. Då gav styresmaktene også formelt opp målet om
+        eitt felles skriftspråk.</p>
 
         <div class="callout warn">
           <strong>Viktig omgrep:</strong> «Samnorsk» tyder ikkje at språka vart eitt. Det
           var ein <em>politikk</em> som freista å smelte dei saman. Politikken vart altså
-          aldri gjennomført fullt ut, og vart formelt avslutta i 1981.
+          aldri gjennomført fullt ut. Han vart oppgitt i praksis i 1981 og formelt i 2002.
         </div>
         <h3>Dei to linene i eitt bilete</h3>
         <div class="toliner">
@@ -356,8 +367,8 @@ Modules.register({
           </div>
           <div class="line midt">
             <div class="boks svak">1885: jamstilte</div>
-            <div class="boks svak">1907, 1917, 1938: samnorsk-reformer prøver å føre dei saman</div>
-            <div class="boks svak">1981: oppgitt, kvar sin veg</div>
+            <div class="boks svak">1917, 1938: samnorsk-reformer prøver å føre dei saman</div>
+            <div class="boks svak">1981: oppgitt i praksis, kvar sin veg (formelt i 2002)</div>
           </div>
           <div class="line knudsen">
             <div class="boks">Dansk skriftspråk</div>
@@ -374,7 +385,7 @@ Modules.register({
       exerciseType: "multipleChoice",
       question: "Kva tyder jamstillingsvedtaket frå 1885?",
       options: [
-        "At landsmål og bokmål skulle vere likeverdige skriftspråk.",
+        "At landsmål og det norsk-danske skriftspråket skulle vere likeverdige.",
         "At alle måtte velje landsmål.",
         "At dansk vart forbode i Noreg.",
         "At norsk språk skulle smeltast saman til eitt.",
@@ -389,11 +400,11 @@ Modules.register({
       options: [
         "Å gjere nynorsk til einaste skriftspråk.",
         "Å gjere bokmål til einaste skriftspråk.",
-        "Å smelte bokmål og nynorsk saman til éitt felles språk.",
+        "Å smelte bokmål og nynorsk saman til eitt felles språk.",
         "Å innføre svensk i Noreg.",
       ],
       correct: 2,
-      explanation: "Samnorsk var ein politikk som ville nærme bokmål og nynorsk slik at dei til slutt vart eitt språk. Politikken vart oppgitt i 1981.",
+      explanation: "Samnorsk var ein politikk som ville nærme bokmål og nynorsk slik at dei til slutt vart eitt språk. Politikken vart oppgitt i praksis i 1981 og formelt i 2002.",
     },
     {
       type: "exercise",
@@ -412,7 +423,8 @@ Modules.register({
       question: "Fyll inn årstal og ord:",
       items: [
         { prompt: "Jamstillingsvedtaket vart gjort i året ___.", accept: ["1885"] },
-        { prompt: "Samnorskpolitikken vart formelt oppgitt i ___.", accept: ["1981"] },
+        { prompt: "Samnorsklinja vart i praksis oppgitt i ___.", accept: ["1981"] },
+        { prompt: "Stortinget oppheva tilnærmingsparagrafen i ___.", accept: ["2002"] },
         { prompt: "Den nye nynorskrettskrivinga kom i ___.", accept: ["2012"] },
         { prompt: "Knud Knudsen ville ___ dansk skrift.", accept: ["fornorske", "fornorska"] },
       ],
@@ -434,10 +446,10 @@ Modules.register({
       type: "reading",
       title: "Foreldreaksjonen: kort kjelde",
       passage: `
-        <p>På slutten av 1940-talet og utover 1950-talet retta foreldre rundt om i landet
-        sjølv lærebøkene til borna sine. Dei sletta ut samnorske former med blekk og skreiv
-        inn dei eldre formene attmed. Aksjonen vart organisert som <em class="nn">Foreldreaksjonen
-        mot samnorsk</em> i 1951.</p>
+        <p>Utover 1950-talet retta foreldre rundt om i landet sjølv lærebøkene til borna
+        sine. Dei sletta ut samnorske former med blekk og skreiv inn dei eldre formene
+        attmed. Aksjonen vart skipa som <em class="nn">Foreldreaksjonen mot samnorsk</em> i
+        1951, og i 1953 hadde han samla over 400 000 underskrifter.</p>
         <p>Mange opplevde at reformene gjorde skriftspråket framand for dei. Andre meinte
         at språket måtte vere meir folkeleg, og at samnorsk var ein god tanke. Striden
         viste at språk handlar om identitet, ikkje berre om reglar.</p>
@@ -465,7 +477,7 @@ Modules.register({
       type: "exercise",
       exerciseType: "freeText",
       title: "Drøft kort",
-      question: "Burde Noreg ha hatt éitt felles skriftspråk (samnorsk)? Skriv 100–180 ord der du gir både eit argument for og eit argument mot, og avsluttar med ditt eige standpunkt.",
+      question: "Burde Noreg ha hatt eitt felles skriftspråk (samnorsk)? Skriv 100–180 ord der du gir både eit argument for og eit argument mot, og avsluttar med ditt eige standpunkt.",
       minWords: 100,
       checklist: [
         "Eitt argument for samnorsk.",
@@ -495,8 +507,8 @@ Modules.register({
         og det andre som <em class="nn">sidemål</em>.</p>
 
         <h3>Mållova (no: språklova frå 2022)</h3>
-        <p>Sidan 1980 har staten vore pålagd å bruke begge skriftspråka. I 2022 fekk Noreg
-        ei ny <strong>språklov</strong>. Lova fastslår at <em class="nn">norsk er
+        <p>Sidan 1980 har staten vore pålagd å bruke begge skriftspråka. I 2021 vedtok
+        Stortinget ei ny <strong>språklov</strong>, som tok til å gjelde i 2022. Lova fastslår at <em class="nn">norsk er
         hovudspråket</em>, og at <em class="nn">bokmål og nynorsk er likeverdige skriftspråk</em>.
         Statsorgan skal bruke minst 25 % nynorsk og minst 25 % bokmål i tekstar retta mot
         ålmenta.</p>
@@ -506,7 +518,8 @@ Modules.register({
         sine. Dette gjeld både tekst og munnleg, og blir målt jamleg.</p>
 
         <h3>Sidemålsdebatten</h3>
-        <p>Sidan 1907 har alle norske elevar lært båe skriftspråka. Sidemålet er det av dei
+        <p>Sidan 1907 har elevar på gymnaset skrive sidemål til eksamen, og sidan 1974 har
+        alle elevar i ungdomsskulen lært båe skriftspråka. Sidemålet er det av dei
         to du <em>ikkje</em> har som hovudmål. Debatten har gått i bølgjer:</p>
         <ul>
           <li><strong>Mot sidemålskrav:</strong> Mange synest det er tungvint å lære to
@@ -573,7 +586,7 @@ Modules.register({
       question: "Fyll inn:",
       items: [
         { prompt: "I dag har om lag ___ prosent av nordmenn nynorsk som hovudmål.", accept: ["10", "12", "10–12", "10-12", "ca. 10", "ca. 12", "om lag 10", "om lag 12"] },
-        { prompt: "Den nye språklova kom i året ___.", accept: ["2022"] },
+        { prompt: "Den nye språklova kom i året ___.", accept: ["2022", "2021"] },
         { prompt: "Det skriftspråket du ikkje har som hovudmål, kallar vi ___.", accept: ["sidemål", "sidemålet"] },
       ],
     },
@@ -685,12 +698,14 @@ Modules.register({
             <tr><td>1850</td><td><em class="nn">Ordbog over det norske Folkesprog</em></td></tr>
             <tr><td>1853</td><td><em class="nn">Prøver af Landsmaalet i Norge</em>. Aasen kallar språket landsmål.</td></tr>
             <tr><td>1885</td><td>Jamstillingsvedtaket: landsmål og det norsk-danske skriftspråket blir likeverdige.</td></tr>
-            <tr><td>1907</td><td>Alle norske elevar skal lære båe skriftspråka. Første rettskrivingsreforma i samnorskretning.</td></tr>
+            <tr><td>1907</td><td>Ny rettskriving fornorskar riksmålet. Elevar på gymnaset må skrive sidemål til eksamen.</td></tr>
             <tr><td>1917 og 1938</td><td>To nye rettskrivingsreformer i samnorskretning.</td></tr>
             <tr><td>1929</td><td>Landsmål får namnet nynorsk.</td></tr>
-            <tr><td>1940-talet</td><td>Foreldreaksjonen mot samnorsk blir starta. Striden er hard på 1950-talet.</td></tr>
+            <tr><td>1951</td><td>Foreldreaksjonen mot samnorsk blir skipa. Striden er hard på 1950-talet.</td></tr>
+            <tr><td>1974</td><td>Alle elevar i ungdomsskulen får opplæring i båe skriftspråka.</td></tr>
             <tr><td>1980</td><td>Staten blir pålagd å bruke begge skriftspråka (mållova).</td></tr>
-            <tr><td>1981</td><td>Stortinget gir opp samnorskpolitikken.</td></tr>
+            <tr><td>1981</td><td>Ny bokmålsrettskriving opnar for tradisjonelle former. Samnorsklinja er i praksis oppgitt.</td></tr>
+            <tr><td>2002</td><td>Stortinget opphevar tilnærmingsparagrafen. Samnorsk er formelt oppgitt.</td></tr>
             <tr><td>2005 og 2012</td><td>Moderne rettskriving for bokmål (2005) og nynorsk (2012).</td></tr>
             <tr><td>2022</td><td>Ny språklov: norsk er hovudspråket, og bokmål og nynorsk er likeverdige.</td></tr>
           </tbody>
@@ -819,21 +834,24 @@ Modules.register({
     { key: "rep-aar-jamstilling", prompt: "Kva år kom jamstillingsvedtaket?", cue: "(årstal)",
       accept: ["1885"], options: ["1853", "1907"],
       why: "I 1885 vedtok Stortinget at landsmål og det norsk-danske skriftspråket skulle vere jamstilte." },
-    { key: "rep-aar-sidemaal", prompt: "Sidan kva år har alle norske elevar lært båe skriftspråka?", cue: "(årstal)",
+    { key: "rep-aar-sidemaal", prompt: "Kva år vart sidemål kravd til eksamen på gymnaset?", cue: "(årstal)",
       accept: ["1907"], options: ["1885", "1938"],
-      why: "Sidan 1907 har sidemål vore ein del av skulen for alle." },
+      why: "I 1907 vedtok Stortinget at gymnaselevane skulle skrive sidemål til eksamen. Sidan 1974 har alle elevar i ungdomsskulen lært båe skriftspråka." },
     { key: "rep-aar-namnet", prompt: "Kva år fekk landsmålet namnet nynorsk?", cue: "(årstal)",
       accept: ["1929"], options: ["1907", "1938"],
       why: "Namnet vart endra i 1929. Språket var det same." },
-    { key: "rep-aar-foreldre", prompt: "Kva tiår vart foreldreaksjonen mot samnorsk starta i?", cue: "(tiår)",
-      accept: ["1940-talet", "1940-åra", "40-talet", "1940"], options: ["1950-talet", "1960-talet"],
-      why: "Aksjonen vart starta på slutten av 1940-talet. Striden var hardast på 1950-talet." },
+    { key: "rep-aar-foreldre", prompt: "Kva år vart Foreldreaksjonen mot samnorsk skipa?", cue: "(årstal)",
+      accept: ["1951"], options: ["1938", "1966"],
+      why: "Aksjonen vart skipa i Oslo i 1951. Striden var hardast på 1950-talet." },
     { key: "rep-aar-mallov", prompt: "Kva år vart staten pålagd å bruke begge skriftspråka?", cue: "(årstal)",
       accept: ["1980"], options: ["1981", "2022"],
       why: "Mållova frå 1980 gav staten plikt til å bruke både bokmål og nynorsk." },
-    { key: "rep-aar-1981", prompt: "Kva år gav Stortinget opp samnorskpolitikken?", cue: "(årstal)",
+    { key: "rep-aar-1981", prompt: "Kva år vart samnorsklinja i praksis oppgitt?", cue: "(årstal)",
       accept: ["1981"], options: ["1938", "1959"],
-      why: "I 1981 vart det vedteke at bokmål og nynorsk skulle få utvikle seg kvar for seg." },
+      why: "I 1981 fekk bokmål ei rettskriving som opna for tradisjonelle former. Formelt vart samnorsk oppgitt i 2002, då Stortinget oppheva tilnærmingsparagrafen." },
+    { key: "rep-aar-2002", prompt: "Kva år oppheva Stortinget tilnærmingsparagrafen?", cue: "(årstal)",
+      accept: ["2002"], options: ["1981", "2005"],
+      why: "I 2002 oppheva Stortinget samrøystes paragrafen om at bokmål og nynorsk på lang sikt skulle førast nærmare kvarandre." },
     { key: "rep-aar-bokmal2005", prompt: "Kva år fekk bokmål si moderne rettskriving?", cue: "(årstal)",
       accept: ["2005"], options: ["2012", "1981"],
       why: "Bokmål fekk ny rettskriving i 2005, nynorsk i 2012." },
@@ -841,8 +859,8 @@ Modules.register({
       accept: ["2012"], options: ["2005", "2022"],
       why: "Rettskrivingsvedtaket for nynorsk kom i 2012." },
     { key: "rep-aar-spraaklov", prompt: "Kva år fekk Noreg ei ny språklov?", cue: "(årstal)",
-      accept: ["2022"], options: ["1980", "2012"],
-      why: "Språklova frå 2022 slår fast at norsk er hovudspråket, og at bokmål og nynorsk er likeverdige." },
+      accept: ["2022", "2021"], options: ["1980", "2012"],
+      why: "Språklova vart vedteken i 2021 og gjeld frå 2022. Ho slår fast at norsk er hovudspråket, og at bokmål og nynorsk er likeverdige." },
   ];
 
   // Korte svar: namn og omgrep. Går som skriving eller val.
@@ -910,12 +928,12 @@ Modules.register({
     { key: "rep-kon-samnorsk", prompt: "Kva var målet med samnorskpolitikken?",
       accept: ["Å føre bokmål og nynorsk saman til eitt felles skriftspråk"],
       options: ["Å fjerne nynorsk heilt", "Å gjere dansk til hovudspråk igjen"],
-      why: "Tre store rettskrivingsreformer i 1907, 1917 og 1938 endra begge språka i denne retninga." },
+      why: "Dei store rettskrivingsreformene i 1917 og 1938 endra begge språka i denne retninga." },
     { key: "rep-kon-foreldre", prompt: "Kva gjorde foreldra i foreldreaksjonen mot samnorsk?",
       accept: ["Dei retta lærebøkene tilbake mot eldre former"],
       options: ["Dei kravde meir nynorsk i skulen", "Dei starta ei eiga avis"],
       why: "Aksjonen var sterkast på Austlandet og i byane, og striden var hard på 1950-talet." },
-    { key: "rep-kon-1981", prompt: "Kva vart resultatet av at samnorskpolitikken vart gitt opp i 1981?",
+    { key: "rep-kon-1981", prompt: "Kva vart resultatet av at samnorsklinja vart oppgitt i praksis i 1981?",
       accept: ["Bokmål og nynorsk skulle få utvikle seg kvar for seg"],
       options: ["Nynorsk mista den offisielle statusen sin", "Dei to språka vart slått saman"],
       why: "Etterpå kom moderne rettskrivingar for kvart språk: 2005 for bokmål og 2012 for nynorsk." },

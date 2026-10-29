@@ -67,7 +67,7 @@ Modules.register({
         "Hokjønn (ei …)": ["jente", "bok", "klokke", "natt", "sol"],
         "Inkjekjønn (eit …)": ["hus", "barn", "eple", "tre", "år"],
       },
-      explanation: "Kjønnet kan du sjekke i ei ordliste, til dømes <a href=\"https://ordbokene.no/nno\" target=\"_blank\" rel=\"noopener\">Nynorskordboka</a>. Det er sjeldan å sjå på ordet kva kjønn det har.",
+      explanation: "Kjønnet kan du sjekke i ei ordliste, til dømes <a href=\"https://ordbokene.no/nno\" target=\"_blank\" rel=\"noopener\">Nynorskordboka</a>. Det går sjeldan an å sjå på ordet kva kjønn det har.",
     },
     {
       type: "exercise",
@@ -135,7 +135,7 @@ Modules.register({
         "Ho las boka heile dagen.",
         "Ho las boka i heile dag.",
       ],
-      hint: "«leste» (preteritum av lese) heiter «las» på nynorsk; «heile» har ofte ein -e meir.",
+      hint: "«leste» (preteritum av lese) heiter «las» på nynorsk; «hele» heiter «heile» på nynorsk.",
       explanation: "Verbet «å lese» er sterkt og bøyest: lese – les – las – har lese.",
     },
     {
@@ -175,7 +175,7 @@ Modules.register({
       type: "lesson",
       title: "Verbsystemet på nynorsk",
       content: `
-        <p>Verb på nynorsk har infinitiv på <strong>-e</strong> (hovudform). Du finn fire
+        <p>Verb på nynorsk kan ha infinitiv på -a eller -e. I dette kurset bruker vi <strong>-e</strong>. Du finn fire
         store grupper svake verb og ei stor gruppe sterke verb.</p>
 
         <h3>Svake verb: fire klasser</h3>
@@ -198,7 +198,7 @@ Modules.register({
             <tr><td>å gå</td><td>går</td><td>gjekk</td><td>har gått</td></tr>
             <tr><td>å vere</td><td>er</td><td>var</td><td>har vore</td></tr>
             <tr><td>å sjå</td><td>ser</td><td>såg</td><td>har sett</td></tr>
-            <tr><td>å gi</td><td>gir/gjev</td><td>gav</td><td>har gjeve/gitt</td></tr>
+            <tr><td>å gi / å gje</td><td>gir / gjev</td><td>gav</td><td>har gitt / har gjeve</td></tr>
           </tbody>
         </table>
 
@@ -212,7 +212,7 @@ Modules.register({
           <li><em class="bm">spise</em> → <em class="nn">ete</em> (ete – et – åt – har ete)</li>
           <li><em class="bm">gjør</em> → <em class="nn">gjer</em> (gjere – gjer – gjorde – har gjort)</li>
           <li><em class="bm">sier</em> → <em class="nn">seier</em> (seie – seier – sa – har sagt)</li>
-          <li><em class="bm">blir</em> → <em class="nn">blir</em> eller <em class="nn">vert</em> (vere/verte er litt ulike verb)</li>
+          <li><em class="bm">blir</em> → <em class="nn">blir</em> eller <em class="nn">vert</em> (<em class="nn">bli</em> og <em class="nn">verte</em> er like rette)</li>
         </ul>
         <h3>Sjå skilnaden</h3>
         <div class="vokalskifte" data-spel>
@@ -359,7 +359,7 @@ Modules.register({
           <tbody>
             <tr><td>1. person eintal</td><td>eg</td><td>meg</td></tr>
             <tr><td>2. person eintal</td><td>du</td><td>deg</td></tr>
-            <tr><td>3. person eintal (han)</td><td>han</td><td>han / honom (sjeldan)</td></tr>
+            <tr><td>3. person eintal (han)</td><td>han</td><td>han</td></tr>
             <tr><td>3. person eintal (ho)</td><td>ho</td><td>henne</td></tr>
             <tr><td>3. person eintal (det)</td><td>det</td><td>det</td></tr>
             <tr><td>1. person fleirtal</td><td>vi / me</td><td>oss</td></tr>
@@ -390,7 +390,7 @@ Modules.register({
           <tbody>
             <tr><td>kva</td><td>hva (bm)</td></tr>
             <tr><td>kven</td><td>hvem (bm)</td></tr>
-            <tr><td>kvar / kor</td><td>hvor (bm): «kvar» = stad, «kor» = grad/mengd</td></tr>
+            <tr><td>kvar / kor</td><td>hvor (bm): «kvar» = stad, «kor» = grad/mengd (kor kan òg brukast om stad)</td></tr>
             <tr><td>korleis</td><td>hvordan (bm)</td></tr>
             <tr><td>kvifor</td><td>hvorfor (bm)</td></tr>
             <tr><td>når</td><td>når (likt)</td></tr>
@@ -479,7 +479,13 @@ Modules.register({
       source: "Hvor bor du, og hvorfor flyttet dere hit?",
       accept: [
         "Kvar bur du, og kvifor flytta de hit?",
-        "Kvar bur du, og kvifor flytta dykk hit?",
+        "Kvar bur du, og kvifor flytte de hit?",
+        "Kvar bur du, og kvifor flytta dokker hit?",
+        "Kvar bur du, og kvifor flytte dokker hit?",
+        "Kor bur du, og kvifor flytta de hit?",
+        "Kor bur du, og kvifor flytte de hit?",
+        "Kor bur du, og kvifor flytta dokker hit?",
+        "Kor bur du, og kvifor flytte dokker hit?",
       ],
       hint: "«hvor» → «kvar» (stad); «hvorfor» → «kvifor»; «dere» → «de» (subjekt).",
       explanation: "Subjektsforma er <em class=\"nn\">de</em>; objektsforma er <em class=\"nn\">dykk</em>. Her er det subjektet for verbet «flytta», så det skal vere <em class=\"nn\">de</em>.",
@@ -534,7 +540,7 @@ Modules.register({
           <li>dei fin<strong>e</strong> gutane</li>
         </ul>
 
-        <h3>Predikativ samsvar</h3>
+        <h3>Predikativt samsvar</h3>
         <ul>
           <li>Guten er fin.</li>
           <li>Jenta er fin.</li>

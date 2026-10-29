@@ -145,7 +145,7 @@ Modules.register({
           <em class="bm">-er</em> i presens: <em class="nn">kjem, finn, skriv</em>. Repetisjon finn du i
           <a href="modul.html?id=grammatikk-verb">Verb: sterke og svake</a> og
           <a href="modul.html?id=omgrep-boying">Bøyingsomgrep</a>. Der to former er tillatne
-          (<em class="nn">gav/ga, blei/vart</em>), blir begge godtekne.
+          (<em class="nn">blei/vart, gitt/gjeve</em>), blir begge godtekne.
         </div>
       `,
     },
@@ -347,7 +347,7 @@ Modules.register({
             <li><em class="nn">ho</em> er subjekt, <em class="nn">henne</em> er objekt. <em class="nn">han</em> er begge delar.</li>
             <li><em class="nn">de</em> = «dere» (subjekt), <em class="nn">dykk</em> = «dere» (objekt), <em class="nn">dei</em> = «de/dem».</li>
             <li><em class="nn">noko</em> om mengd (<em class="nn">noko brød</em>); <em class="nn">nokon</em>, <em class="nn">noka</em>, <em class="nn">noko</em> om éin ting i spørsmål og nekting (<em class="nn">ikkje noko hus</em>); <em class="nn">ein</em>, <em class="nn">ei</em>, <em class="nn">eit</em> om éin ting i positiv setning; <em class="nn">nokre</em> i fleirtal.</li>
-            <li><em class="nn">då</em> = éin gong i fortida, <em class="nn">når</em> = kvar gong / framtid. <em class="nn">kvar</em> = stad, <em class="nn">kor</em> = grad.</li>
+            <li><em class="nn">då</em> = éin gong i fortida, <em class="nn">når</em> = kvar gong / framtid. <em class="nn">kvar</em> = stad, <em class="nn">kor</em> = grad (men <em class="nn">kor</em> kan òg brukast om stad).</li>
             <li><em class="nn">sin/si/sitt/sine</em> viser tilbake til subjektet; elles <em class="nn">hans/hennar/deira</em>.</li>
           </ul>
           Repetisjon: <a href="modul.html?id=grammatikk-pronomen">Pronomen og spørjeord</a> og
@@ -402,7 +402,7 @@ Modules.register({
       type: "exercise",
       exerciseType: "drill",
       title: "Pronomen i setning",
-      intro: "Set inn rett pronomen: <em class=\"nn\">ho/henne, han/honom, de/dykk, dei, vi/oss</em>.",
+      intro: "Set inn rett pronomen: <em class=\"nn\">ho/henne, han, de/dykk, dei, vi/oss</em>.",
       bank: "sentences",
       set: "pronomen",
       perRound: 10,
@@ -514,7 +514,7 @@ Modules.register({
       type: "exercise",
       exerciseType: "drill",
       title: "Heilsetning eller leddsetning?",
-      intro: "Kan delen stå åleine og gi meining? Då er ho ei heilsetning. Manglar ho verbal, er ho ikkje ei setning i det heile.",
+      intro: "Kan delen stå åleine og gi meining? Då er han ei heilsetning. Manglar han verbal, er han ikkje ei setning i det heile.",
       bank: "sentences",
       set: "heilLedd",
       perRound: 10,
