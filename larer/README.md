@@ -1,13 +1,15 @@
 # Lærarsida
 
 Lærarsida (`larer/index.html`) har ein presentasjon til tavleundervisning og ei
-lærarrettleiing til kvar modul i kurset.
+lærarrettleiing til kvar modul i kurset, og ei vurderingsside til kvar del.
 
 - `larer/presentasjon.html?id=<modul-id>`: presentasjonen. Lysbileta blir teikna
   på ei fast flate på 1024 × 576 punkt og skalerte til skjermen.
 - `larer/rettleiing.html?id=<modul-id>`: rettleiinga, med manus til
   presentasjonen og ein fasit til elevmodulen som blir bygd automatisk frå
   oppgåvene.
+- `larer/vurdering.html?del=<1 til 5>`: vurderingane til ein del, sjå
+  «Vurdering» nedanfor.
 - `larer/js/innhald/*.js`: innhaldet, éi fil per del eller gruppe.
 - `larer/js/larar.js`: registeret og kompetansemåla (NOR01-08, etter 10. trinn,
   ordrett frå udir.no).
@@ -87,7 +89,7 @@ Lysbilete blir nummererte frå 1, og framsida er nummer 1.
 
 Skuletimane er på 45 minutt. `tid` er «Éi økt på 45 minutt» eller «To økter
 på 45 minutt», og fasane i `okt` summerer til 45 minutt per økt. Går modulen
-over to økter, byrjar økt 2 ved eit fasskifte etter 45 minutt, og fasane kan
+over to økter, byrjar økt 2 ved eit faseskifte etter 45 minutt, og fasane kan
 heite «Økt 1: …» og «Økt 2: …». Validatoren sjekkar òg at samtaleklokkene
 (`tid` på diskuter-lysbilete) og eigenarbeidet (`tid` på oppgåvelysbilete) får
 plass i fasane som viser til lysbiletet.
@@ -102,8 +104,57 @@ og då står det i `utstyr`. Elevmodulen kan nemnast i `guide.vidare` eller i
 notata som lekse eller vidare arbeid, men lysbileta og planen for økta skal
 ikkje sende elevane dit. Validatoren sjekkar dette.
 
+## Vurdering
+
+Kvar del har ei vurderingsside, `larer/vurdering.html?del=<1 til 5>`, med
+lenkje frå oversikta og frå rettleiinga til kvar modul. Sida har:
+
+- **Kjenneteikn på måloppnåing** for delen, på tre nivå (låg, middels og høg).
+  Formuleringane byggjer på kjenneteikna til Utdanningsdirektoratet for norsk
+  etter 10. trinn, med eigne rader for ordbøying, ordforråd, rettskriving og
+  teiknsetjing på sidemålet.
+- **Sluttvurdering**: prøver og oppgåver med elevark, fasit, eventuelle poeng
+  og vurderingsskjema. `karaktergrunnlag` seier om vurderinga kan inngå i
+  grunnlaget for karakter.
+- **Undervegsvurdering** til kvar modul i delen: ei kort oppgåve til slutten
+  av økta, med fasit, kva læraren ser etter og forslag til framovermelding.
+- **Eigenvurdering**: eit skjema eleven fyller ut.
+
+Elevarka, fasitane og eigenvurderinga kan skrivast ut kvar for seg med
+knappane på sida. Innhaldet ligg i `larer/js/vurdering/del1.js` til `del5.js`,
+registeret i `larer/js/vurdering.js` og sida i `larer/js/vurderingsside.js`.
+Sjekk med `node tools/validate-vurdering.js` (eller `… del2.js` for éi fil).
+
+```js
+Vurdering.register(2, {
+  intro: "<p>…</p>",
+  lareplan: [11, 12],                      // kompetansemål (1 til 16)
+  kompetanse: "<p>Kva eleven skal vise etter delen.</p>",
+  kjenneteikn: [{ omrade: "Ordbøying på sidemålet", lag: "…", middels: "…", hog: "…" }],
+  provar: [{
+    id: "skriftleg-prove", tittel: "…",
+    type: "skriftleg",                     // skriftleg | skriving | munnleg | praktisk
+    tid: "60 minutt", form: "Individuelt", hjelpemiddel: "…",
+    karaktergrunnlag: true,
+    lareplan: [11, 12], modular: ["grammatikk-verb"],
+    lararinfo: "<p>…</p>", elevark: "<h4>…</h4>…", fasit: "…",
+    poeng: { maks: 60, lag: "18 til 32 poeng", middels: "…", hog: "…" },  // valfritt
+    skjema: [{ omrade: "…", lag: "…", middels: "…", hog: "…" }],
+  }],
+  undervegs: {                             // éi til kvar modul i delen
+    "grammatikk-verb": { tittel: "Exit-lapp", tid: 10, form: "Åleine",
+      oppgave: "…", fasit: "…", sjaa: ["…", "…"], framover: "…" },
+  },
+  eigenvurdering: ["bøye sterke verb i preteritum", "…"],   // utan «Eg kan»
+});
+```
+
+I elevarket gir `<div class="skrivelinjer"></div>` ei skrivelinje. Validatoren
+krev undervegsvurdering til alle modulane i delen og åtvarar mot tankestrek i
+prosa.
+
 ## Språk
 
-Alt er på nynorsk, i same form som resten av kurset (a-mål, `ikkje`, `eg`,
+Alt er på nynorsk, i same form som resten av kurset (e-infinitiv, `ikkje`, `eg`,
 `kva`, `korleis`, `mellom anna`). Ingen tankestrek i brødteksten: bruk kolon,
 komma eller ei ny setning. Tankestrek er berre lov i talrekkjer (1814–1905) og i ordrette tekstar og sitat (`text` på tekst- og sitatlysbilete).

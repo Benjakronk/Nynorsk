@@ -1,6 +1,6 @@
 # Nynorskkurs for ungdomsskulen
 
-Eit statisk nettsted som let elevar arbeide med nynorsk i sitt eige tempo.
+Ein statisk nettstad som let elevar arbeide med nynorsk i sitt eige tempo.
 Kurset er bygd på kompetansemåla i LK20 og følgjer gjeldande nynorskrettskriving
 frå Språkrådet.
 
@@ -29,7 +29,7 @@ frå Språkrådet.
 - Reisene til Ivar Aasen (`aasen-reise.html`): modul med interaktiv forelesing på eit 3D-kart over Noreg, der eleven følgjer ein liten Aasen-figur langs ruta kapittel for kapittel, med stoppestader, datoar og oppgåver undervegs
 - Bilete og små animerte figurar i modulane: portrett, historiske bilete, kart og norsk kunst frå Wikimedia Commons (`bilete/`, lisensar i `bilete/KJELDE.md`), tidslinje, «to liner»-diagram, ordbygg, dei fire formene, setningsledd, V2-demonstrasjon, kjønnskort og ein nummerert ordbokartikkel (`js/figurar.js` og «Figurar» i `css/style.css`)
 - Spelet «Aasen: Språkvandringa» (`spelet-demo/spel.html`, prototypen): eit rollespel i 16-bitsstil, som dei klassiske Final Fantasy-spela, om Ivar Aasen og arbeidet med å samle eit nytt norsk skriftspråk. Kvart ord Ivar høyrer i bygdene, blir ein galdr, og lydfamilien til ordet avgjer kva galdren gjer: diftongane gir vern, dei harde konsonantane åtak, spørjeorda avsløring og j-orda lækjing. Før galdren verkar, vel spelaren forma som har teke vare på lyden, ikkje den danske. Kanselliblekket er fienden, og det kan «rettskrive» orda til dansk. Ordboka i spelet er både samlarlogg og bestiarium. Kapittel 1, «Ørsta» (1826–1831), er ferdig. Kapittel 2 til 5 er skisserte i designdokumentet. Fullførte modular i kurset gir gåver i spelet. Stev er dei sterkaste galdrane (prototype, `spelet-demo/js/rpg/stev.js`): det finst eit fast tal stev, Ivar lærer dei av folk han møter, og hola i stevet må fyllast med ord han har funne. Når kvedemålaren er full, kan han kvede stevet. Spelaren vel forma som rimar i kvart hol og slår takta på dei trykktunge orda. Stevet kan prøvast frå tittelskjermen. Kart, figurar og dei fleste fiendane blir teikna i kode, med kantar mellom flisene, stemningslys, effektar i kampen og pikselskrifta Pixelify Sans. Blekklatten (`spelet-demo/bilete/spel/blekklatten.png`), vettane, husa og kyrkja (`spelet-demo/bilete/spel/bygg/`), tre og steinar (`spelet-demo/bilete/spel/natur/`) og portretta i samtaleboksen (`spelet-demo/bilete/spel/portrett/`) er pikselkunst laga med arbeidsflyten i `spelet-demo/tools/pikselkunst/` (sjå `STILGUIDE.md` der og skillen `.claude/skills/pikselkunst/`). Blekklatten viser stilen
-- Lærarsida (`larer/`): presentasjon til tavleundervisning og lærarrettleiing til kvar modul, med talarvindauge, tavleøvingar frå ordbanken, kompetansemål frå læreplanen i norsk (NOR01-08), manus og automatisk fasit. Formatet står i `larer/README.md`, og `node tools/validate-larar.js` sjekkar innhaldet
+- Lærarsida (`larer/`): presentasjon til tavleundervisning og lærarrettleiing til kvar modul, med talarvindauge, tavleøvingar frå ordbanken, kompetansemål frå læreplanen i norsk (NOR01-08), manus og automatisk fasit. Kvar del har òg ei vurderingsside (`larer/vurdering.html?del=1` til `5`) med sluttvurderingar (elevark, fasit og vurderingsskjema), undervegsvurdering til kvar modul og eigenvurdering, med kjenneteikn på måloppnåing i tråd med læreplanen og vurderinga av nynorsk som sidemål. Formatet står i `larer/README.md`, og `node tools/validate-larar.js` og `node tools/validate-vurdering.js` sjekkar innhaldet
 - Heile sida er statisk og fungerer på GitHub Pages utan byggjesteg
 
 ## Køyre lokalt
@@ -56,7 +56,7 @@ npx serve .
 ├── aasen-reise.html        Reisene til Ivar Aasen: 3D-kart med forelesing
 ├── spelet-demo/           Prototypen av rollespelet «Aasen: Språkvandringa» (sjå spelet-demo/README.md):
 │                           spel.html, css/rpg.css, js/rpg/, bilete/spel/, fonts/, docs/ og tools/ (testar og pikselkunst)
-├── larer/                  Lærarsida: presentasjonar og rettleiingar (sjå larer/README.md)
+├── larer/                  Lærarsida: presentasjonar, rettleiingar og vurderingar (sjå larer/README.md)
 ├── bilete/                 Portrett og historiske bilete (kjelder i bilete/KJELDE.md)
 ├── css/style.css
 ├── css/aasen-reise.css     Stil for kartsida
@@ -96,7 +96,9 @@ npx serve .
 │   ├── validate-content.js Validerer alt innhald: node tools/validate-content.js
 │   ├── lag-ordbank.js      Lagar ordbanken på nytt frå Norsk ordbank
 │   ├── lag-terreng.js      Lagar høgdekartet på nytt frå opne terrengdata
-│   └── test-grammatikk.js  Testar grammatikkreglane mot feil og kursprosa
+│   ├── test-grammatikk.js  Testar grammatikkreglane mot feil og kursprosa
+│   ├── validate-larar.js   Validerer lærarsida: node tools/validate-larar.js
+│   └── validate-vurdering.js Validerer vurderingane: node tools/validate-vurdering.js
 └── README.md
 ```
 
@@ -140,7 +142,7 @@ delt i bitar på 64 × 64 pikslar som blir bygde på tre detaljnivå etter kor n
 kameramålet dei er: grov, mellom og fin (det fine høgdelaget, når det er
 lasta). Nivåa blir vurderte på nytt medan kameraet flyttar seg, med skjørt
 langs kantane så det ikkje blir sprekker. Havet er eit eige flatt plan med
-eigen shader: fargen går frå grunt til djupt etter havdjupet, det er ei lys
+eigen shader: fargen går frå grunt til djupt etter havdjupet, det er ein lys
 strandkant inn mot land og eit svakt solglimt frå låge bølgjer når ein er
 nær. Landnettet held fram under havflata med havbotnen, så strandlinja er
 snittet mellom plan og land, ikkje ein kant i nettet. Kysten og innsjøkantane

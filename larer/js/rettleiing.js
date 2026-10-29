@@ -88,7 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ${seksjon("Vanlege misoppfatningar", miss)}
     ${seksjon("Samtalespørsmål", liste(g.samtale))}
     ${seksjon("Tilpassa opplæring", tilp)}
-    ${seksjon("Vurdering", liste(g.vurdering))}
+    ${seksjon("Vurdering", liste(g.vurdering) + (typeof Vurdering !== "undefined" && Vurdering.get(m.part)
+      ? `<p><a href="larer/vurdering.html?del=${m.part}#m-${encodeURIComponent(m.id)}">Undervegsvurdering til modulen</a> · <a href="larer/vurdering.html?del=${m.part}#provar">Sluttvurdering for Del ${m.part}</a></p>` : ""))}
     ${seksjon("Vidare arbeid", g.vidare ? `<p>${g.vidare}</p>` : "")}
     ${seksjon("Elevmodulen", `<p>${m.sections.filter(s => s.type === "lesson").length} fagtekstar og ${Modules.exerciseCount(m)} oppgåver: ${Larar.oppgaveTal(m).join(", ")}.</p>`)}
     ${seksjon("Manus: lysbileta med notat", manus)}

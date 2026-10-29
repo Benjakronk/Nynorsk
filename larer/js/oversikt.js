@@ -24,7 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let html = "";
   for (let p = 1; p <= 5; p++) {
-    html += `<section class="larar-del" id="del-${p}"><h2>Del ${p}: ${DELNAMN[p]}</h2>`;
+    const vurd = typeof Vurdering !== "undefined" && Vurdering.get(p)
+      ? `<p class="larar-vurd"><a class="btn small" href="larer/vurdering.html?del=${p}">Vurdering for Del ${p}</a> <span class="muted">Sluttvurdering, undervegsvurdering til kvar modul og eigenvurdering</span></p>` : "";
+    html += `<section class="larar-del" id="del-${p}"><h2>Del ${p}: ${DELNAMN[p]}</h2>${vurd}`;
     for (const { group, modules } of Modules.groupsFor(p)) {
       if (group) html += `<h3 class="larar-gruppe">${E(group.title)}</h3>`;
       html += `<ul class="larar-liste">${modules.map(rad).join("")}</ul>`;
